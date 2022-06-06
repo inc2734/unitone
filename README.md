@@ -1,6 +1,14 @@
 # unitone
 
-unitone is a WordPress theme (block theme) for web developers that supports full site editing. unitone is inspired and developed by (Every Layout)[https://every-layout.dev/]. It has features such as layout primitive blocks, rules-based typography, and responsive design based on content, not breakpoints.
+unitone is a WordPress theme (block theme) for web developers that supports full site editing. unitone is inspired and developed by [Every Layout](https://every-layout.dev/). It has features such as layout primitive blocks, rules-based typography, and responsive design based on content, not breakpoints.
+
+## GitHub
+
+https://github.com/inc2734/unitone/
+
+## Web site
+
+https://unitone.2inc.org/
 
 ## Photos
 

@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/gutters",
+	"title": "Gutters",
+	"description": "A block for separating content with top and bottom padding.",
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"unitone": {
+			"padding": true
+		}
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

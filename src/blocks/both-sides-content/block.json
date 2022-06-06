@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/both-sides-content",
+	"title": "Content",
+	"description": "The content of the both-sides block.",
+	"parent": [ "unitone/both-sides" ],
+	"attributes": {
+		"contentWidth": {
+			"type": "string"
+		},
+		"contentMaxWidth": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

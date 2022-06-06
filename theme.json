@@ -1,0 +1,388 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/theme.json",
+	"version": 2,
+	"settings": {
+		"border": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"color": {
+			"link": true,
+			"gradients": [
+				{
+					"slug":"unitone-accent",
+					"gradient":"linear-gradient(135deg,hsl(276,49%,47%) 0%,hsl(253,49%,17%) 100%)",
+					"name":"Accent color gradation"
+				}
+			],
+			"palette": [
+				{
+					"slug": "unitone/accent",
+					"color": "#1f1640",
+					"name": "Accent color"
+				},
+				{
+					"slug": "unitone/bright-gray",
+					"color": "#f8f9fa",
+					"name": "Bright gray"
+				},
+				{
+					"slug": "unitone/light-gray",
+					"color": "#e9ecef",
+					"name": "Light gray"
+				},
+				{
+					"slug": "unitone/gray",
+					"color": "#ced4da",
+					"name": "gray"
+				},
+				{
+					"slug": "unitone/dark-gray",
+					"color": "#868e96",
+					"name": "Dark gray"
+				}
+			]
+		},
+		"custom": {
+			"container-max-width": "min(100% - var(--rem1) * 2, var(--container-max-width))",
+			"content-max-width": "min(100% - var(--rem1) * 2, var(--measure))"
+		},
+		"layout": {
+			"contentSize": "var(--wp--custom--content-max-width)",
+			"wideSize": "var(--wp--custom--container-max-width)"
+		},
+		"typography": {
+			"dropCap": false,
+			"customFontSize": false,
+			"textTransform": true,
+			"lineHeight": true,
+			"fontSizes": [
+				{
+					"slug": "unitone-xs",
+					"size": "0.8rem",
+					"name": "XS"
+				},
+				{
+					"slug": "unitone-s",
+					"size": "0.88rem",
+					"name": "S"
+				},
+				{
+					"slug": "unitone-m",
+					"size": "1rem",
+					"name": "M"
+				},
+				{
+					"slug": "unitone-l",
+					"size": "1.14rem",
+					"name": "L"
+				},
+				{
+					"slug": "unitone-xl",
+					"size": "1.33rem",
+					"name": "XL"
+				},
+				{
+					"slug": "unitone-2xl",
+					"size": "1.6rem",
+					"name": "2XL"
+				},
+				{
+					"slug": "unitone-3xl",
+					"size": "2rem",
+					"name": "3XL"
+				},
+				{
+					"slug": "unitone-4xl",
+					"size": "2.66rem",
+					"name": "4XL"
+				},
+				{
+					"slug": "unitone-5xl",
+					"size": "4rem",
+					"name": "5XL"
+				},
+				{
+					"slug": "unitone-6xl",
+					"size": "8rem",
+					"name": "6XL"
+				}
+			]
+		},
+		"spacing": {
+			"blockGap": true,
+			"padding": false
+		}
+	},
+	"styles": {
+		"spacing": {
+			"blockGap": "var(--s1)"
+		}
+	},
+	"customTemplates": [
+		{
+			"name": "page-page-header-slim",
+			"title": "Page (Page header (Slim))",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "single-header-footer",
+			"title": "Single post (Header / Footer)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "page-header-footer",
+			"title": "Page (Header / Footer)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "archive-product",
+			"title": "Archive product",
+			"postTypes": [
+				"product"
+			]
+		},
+		{
+			"name": "single-product",
+			"title": "Single product",
+			"postTypes": [
+				"product"
+			]
+		}
+	],
+	"templateParts": [
+		{
+			"name": "header",
+			"title": "Header",
+			"area": "header"
+		},
+		{
+			"name": "footer",
+			"title": "Footer",
+			"area": "footer"
+		},
+		{
+			"name": "comments",
+			"title": "Comments",
+			"area": "unitone/comments"
+		},
+		{
+			"name": "footer-breadcrumbs",
+			"title": "Breadcrumbs",
+			"area": "unitone/footer-breadcrumbs"
+		},
+		{
+			"name": "contents-404",
+			"title": "404 contents",
+			"area": "unitone/contents/404"
+		},
+		{
+			"name": "contents-404-page-header-image",
+			"title": "404 contents (Page header (Image))",
+			"area": "unitone/contents/404"
+		},
+		{
+			"name": "page-header-404",
+			"title": "404 page header",
+			"area": "unitone/page-header/404"
+		},
+		{
+			"name": "page-header-404-image",
+			"title": "404 page header (Image)",
+			"area": "unitone/page-header/404"
+		},
+		{
+			"name": "contents-archive-product",
+			"title": "WooCommerce product archive contents",
+			"area": "unitone/contents/product-archive"
+		},
+		{
+			"name": "contents-archive-product-page-header-image",
+			"title": "WooCommerce product archive contents (Page header (Image))",
+			"area": "unitone/contents/product-archive"
+		},
+		{
+			"name": "page-header-archive-product",
+			"title": "WooCommerce product archive page header",
+			"area": "unitone/page-header/product-archive"
+		},
+		{
+			"name": "page-header-archive-product-image",
+			"title": "WooCommerce product archive page header (Image)",
+			"area": "unitone/page-header/product-archive"
+		},
+		{
+			"name": "contents-archive",
+			"title": "Archive contents",
+			"area": "unitone/contents/archive"
+		},
+		{
+			"name": "contents-archive-page-header-image",
+			"title": "Archive contents (Page header (Image))",
+			"area": "unitone/contents/archive"
+		},
+		{
+			"name": "page-header-archive",
+			"title": "Archive page header",
+			"area": "unitone/page-header/archive"
+		},
+		{
+			"name": "page-header-archive-image",
+			"title": "Archive page header (Image)",
+			"area": "unitone/page-header/archive"
+		},
+		{
+			"name": "contents-home",
+			"title": "Home contents",
+			"area": "unitone/contents/home"
+		},
+		{
+			"name": "contents-home-blank",
+			"title": "Home contents (Blank)",
+			"area": "unitone/contents/home"
+		},
+		{
+			"name": "contents-home-page-header-image",
+			"title": "Home contents (Page header (Image))",
+			"area": "unitone/contents/home"
+		},
+		{
+			"name": "page-header-home",
+			"title": "Home page header",
+			"area": "unitone/page-header/home"
+		},
+		{
+			"name": "page-header-home-image",
+			"title": "Home page header (Image)",
+			"area": "unitone/page-header/home"
+		},
+		{
+			"name": "contents-page",
+			"title": "Page contents",
+			"area": "unitone/contents/page"
+		},
+		{
+			"name": "contents-page-page-header-featured",
+			"title": "Page contents (Page header (Featured image))",
+			"area": "unitone/contents/page"
+		},
+		{
+			"name": "contents-page-page-header-image",
+			"title": "Page contents (Page header (Image))",
+			"area": "unitone/contents/page"
+		},
+		{
+			"name": "contents-page-page-header-slim",
+			"title": "Page contents (Page header (Slim))",
+			"area": "unitone/contents/page"
+		},
+		{
+			"name": "contents-page-blank",
+			"title": "Page contents (Blank)",
+			"area": "unitone/contents/page"
+		},
+		{
+			"name": "page-header-page",
+			"title": "Page header",
+			"area": "unitone/page-header/page"
+		},
+		{
+			"name": "page-header-page-featured",
+			"title": "Page header (Featured image)",
+			"area": "unitone/page-header/page"
+		},
+		{
+			"name": "page-header-page-image",
+			"title": "Page header (Image)",
+			"area": "unitone/page-header/page"
+		},
+		{
+			"name": "page-header-page-slim",
+			"title": "Page header (Slim)",
+			"area": "unitone/page-header/page"
+		},
+		{
+			"name": "contents-search",
+			"title": "Search contents",
+			"area": "unitone/contents/search"
+		},
+		{
+			"name": "contents-search-page-header-image",
+			"title": "Search contents (Page header (Image))",
+			"area": "unitone/contents/search"
+		},
+		{
+			"name": "page-header-search",
+			"title": "Search page header",
+			"area": "unitone/page-header/search"
+		},
+		{
+			"name": "page-header-search-image",
+			"title": "Search page header (Image)",
+			"area": "unitone/page-header/search"
+		},
+		{
+			"name": "contents-single",
+			"title": "Post contents",
+			"area": "unitone/contents/post"
+		},
+		{
+			"name": "contents-single-page-header-featured",
+			"title": "Post contents (Page header (Featured image))",
+			"area": "unitone/contents/post"
+		},
+		{
+			"name": "contents-single-page-header-image",
+			"title": "Post contents (Page header (Image))",
+			"area": "unitone/contents/post"
+		},
+		{
+			"name": "contents-single-blank",
+			"title": "Post contents (Blank)",
+			"area": "unitone/contents/post"
+		},
+		{
+			"name": "page-header-single",
+			"title": "Post page header",
+			"area": "unitone/page-header/post"
+		},
+		{
+			"name": "page-header-single-featured",
+			"title": "Post page header (Featured image)",
+			"area": "unitone/page-header/post"
+		},
+		{
+			"name": "page-header-single-image",
+			"title": "Post page header (Image)",
+			"area": "unitone/page-header/post"
+		},
+		{
+			"name": "contents-single-product",
+			"title": "WooCommerce product contents",
+			"area": "unitone/contents/product"
+		},
+		{
+			"name": "contents-single-product-page-header-image",
+			"title": "WooCommerce product contents (Page header (Image))",
+			"area": "unitone/contents/product"
+		},
+		{
+			"name": "page-header-single-product",
+			"title": "WooCommerce product page header",
+			"area": "unitone/page-header/product"
+		},
+		{
+			"name": "page-header-single-product-image",
+			"title": "WooCommerce product page header (Image)",
+			"area": "unitone/page-header/product"
+		}
+	]
+}

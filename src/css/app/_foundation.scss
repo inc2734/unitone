@@ -1,0 +1,27 @@
+@use '../../../node_modules/@inc2734/basis2/src/foundation/foundation';
+
+@mixin foundation() {
+	@include foundation.foundation();
+
+	:root {
+		--container-max-width: 1180px;
+	}
+
+	body {
+		overflow-x: hidden;
+	}
+
+	a {
+		color: var(--wp--preset--color--unitone-accent);
+	}
+
+	code,
+	kbd {
+		--font-size: -1;
+
+		display: inline-block;
+		background-color: var(--wp--preset--color--unitone-light-gray);
+		padding: 0 var(--s-2);
+		border-radius: 4px;
+	}
+}

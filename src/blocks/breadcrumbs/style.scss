@@ -1,0 +1,28 @@
+.unitone-breadcrumbs {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s-1);
+
+	&__item {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: var(--s-1);
+
+		&:not(:first-child) {
+			&::before {
+				display: inline-block;
+				content: '/';
+			}
+		}
+	}
+
+	a {
+		color: inherit;
+	}
+}
+
+.editor-styles-wrapper .unitone-breadcrumbs__item {
+	margin-left: 0;
+}

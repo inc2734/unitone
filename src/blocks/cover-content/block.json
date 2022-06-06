@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/cover-content",
+	"title": "Cover content",
+	"description": "This block places the content inside the cover block.",
+	"parent": [ "unitone/cover" ],
+	"attributes": {
+		"position": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

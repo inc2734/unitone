@@ -1,0 +1,12 @@
+@mixin block-styles() {
+	.wp-block-post-terms.is-style-badge {
+		border-radius: 1rem;
+		background-color: var(--wp--preset--color--black);
+
+		> a {
+			display: inline-block;
+			padding: var(--s-2) var(--s-1);
+			text-decoration: none;
+		}
+	}
+}

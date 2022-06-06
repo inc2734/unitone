@@ -1,0 +1,32 @@
+@mixin align() {
+	.alignfull {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+		max-width: 100%;
+	}
+
+	.alignright,
+	.alignleft {
+		max-width: min(50%, var(--wp--custom--content-max-width));
+
+		figcaption {
+			margin: var(--s-2) 0 0;
+			display: table-caption;
+			caption-side: bottom;
+			text-align: left;
+		}
+	}
+
+	.alignright.alignright.alignright {
+		margin: 0 var(--padding) var(--s1) var(--s1);
+	}
+
+	.alignleft.alignleft.alignleft {
+		margin: 0 var(--s1) var(--s1) var(--padding);
+	}
+
+	* > .alignright:first-child + *,
+	* > .alignleft:first-child + * {
+		margin-top: 0 !important;
+	}
+}

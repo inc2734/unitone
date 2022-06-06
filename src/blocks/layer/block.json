@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/layer",
+	"title": "Layer",
+	"description": "The layer of the layers block. Vertical grid of 12 is set. If grid-row is deleted, the elements overlap completely.",
+	"parent": [ "unitone/layers" ],
+	"attributes": {
+		"alignSelf": {
+			"type": "string"
+		},
+		"justifySelf": {
+			"type": "string"
+		},
+		"gridColumn": {
+			"type": "string"
+		},
+		"gridRow": {
+			"type": "string",
+			"default": "auto"
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

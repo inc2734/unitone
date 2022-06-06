@@ -1,0 +1,90 @@
+/**
+ * Using add_editor_style() causes specificity issues.
+ * The order of loading CSS for the core editor changes depending on the WP_DEBUG status.
+ * Therefore, load CSS with enqueue_block_editor_assets instead of add_editor_styles().
+ * However, the CSS output by @use settings includes :root, html and body,
+ * which should be replaced by .editor-styles-wrapper in PHP.
+ */
+
+@use '../../../node_modules/@inc2734/basis2/src/settings/settings';
+
+@use 'foundation';
+@use 'layout-primitives';
+@use 'font-sizes';
+@use 'align';
+@use 'wp-blocks';
+@use 'main';
+@use 'block-styles/block-styles';
+
+.editor-styles-wrapper {
+	@include foundation.foundation();
+
+	@include layout-primitives.layout-primitives();
+	@include font-sizes.font-sizes();
+	@include align.align();
+	@include wp-blocks.wp-blocks();
+	@include main.main();
+	@include block-styles.block-styles();
+
+	.is-root-container.is-outline-mode.is-focus-mode {
+		> [data-layout~="position"] {
+			position: static;
+		}
+	}
+
+	.edit-post-visual-editor__post-title-wrapper {
+		margin-bottom: var(--s2);
+		background-color: var(--wp--preset--color--unitone-bright-gray);
+		border-bottom: 1px solid #e0e0e0;
+		padding-top: var(--s1);
+		padding-bottom: var(--s1);
+
+		> * {
+			max-width: var(--wp--custom--container-max-width) !important;
+		}
+	}
+
+	[data-layout~="center"] {
+		> .block-list-appender {
+			width: 100%;
+		}
+	}
+
+	[data-layout~="frame"],
+	[data-layout~="layers__layer"] {
+		> figure {
+			display: block;
+
+			> .components-resizable-box__container,
+			> .components-disabled {
+				height: 100% !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				max-height: 100% !important;
+
+				> div {
+					display: none; // Remove resizer
+				}
+			}
+
+			> figcaption {
+				display: none;
+			}
+		}
+	}
+
+	[data-layout~="text"] {
+		&[class*="wp-container-"] > * {
+			max-width: var(--max-width);
+			margin-right: auto;
+			margin-left: auto;
+		}
+	}
+
+	[data-layout~="layers"] {
+		> .block-list-appender {
+			align-self: end;
+			justify-self: end;
+		}
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/frame",
+	"title": "Frame",
+	"description": "This block is used to fit the image into a fixed angle of view.",
+	"attributes": {
+		"ratio": {
+			"type": "string"
+		},
+		"switchRatio": {
+			"type": "boolean"
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

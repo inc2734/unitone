@@ -1,0 +1,59 @@
+<!-- wp:comments-query-loop -->
+<div class="wp-block-comments-query-loop">
+	<!-- wp:unitone/stack -->
+	<div data-layout="stack">
+		<!-- wp:comments-title {"fontSize":"unitone-xl"} /-->
+
+		<!-- wp:comment-template -->
+			<!-- wp:unitone/decorator {"backgroundColor":"unitone/bright-gray","unitone":{"padding":1}} -->
+			<div data-layout="decorator -padding:1" class="has-unitone-bright-gray-background-color has-background">
+				<!-- wp:unitone/with-sidebar {"sidebar":"left","unitone":{"gap":-1}} -->
+				<div data-layout="with-sidebar -sidebar:left -gap:-1">
+					<!-- wp:unitone/with-sidebar-content -->
+					<div data-layout="with-sidebar__content">
+						<!-- wp:avatar {"size":40,"style":{"border":{"radius":"20px"}}} /-->
+					</div>
+					<!-- /wp:unitone/with-sidebar-content -->
+					<!-- wp:unitone/with-sidebar-content -->
+					<div data-layout="with-sidebar__content">
+						<!-- wp:unitone/stack {"unitone":{"gap":-1}} -->
+						<div data-layout="stack -gap:-1">
+							<!-- wp:unitone/stack {"unitone":{"gap":0}} -->
+							<div data-layout="stack -gap:0">
+								<!-- wp:comment-author-name /-->
+
+								<!-- wp:unitone/decorator {"textColor":"unitone/dark-gray","fontSize":"unitone-xs"} -->
+								<div data-layout="decorator" class="has-unitone-dark-gray-color has-text-color has-unitone-xs-font-size">
+									<!-- wp:unitone/cluster {"unitone":{"gap":-1}} -->
+									<div data-layout="cluster -gap:-1">
+										<!-- wp:comment-date /-->
+										<!-- wp:comment-edit-link /-->
+									</div>
+									<!-- /wp:unitone/cluster -->
+								</div>
+								<!-- /wp:unitone/decorator -->
+							</div>
+							<!-- /wp:unitone/stack -->
+
+							<!-- wp:comment-content /-->
+
+							<!-- wp:comment-reply-link /-->
+						</div>
+						<!-- /wp:unitone/stack -->
+					</div>
+					<!-- /wp:unitone/with-sidebar-content -->
+				</div>
+				<!-- /wp:unitone/with-sidebar -->
+			</div>
+			<!-- /wp:unitone/decorator -->
+		<!-- /wp:comment-template -->
+
+		<!-- wp:comments-pagination {"paginationArrow":"arrow","layout":{"type":"flex","justifyContent":"center"}} -->
+			<!-- wp:comments-pagination-numbers /-->
+		<!-- /wp:comments-pagination -->
+
+		<!-- wp:post-comments-form /-->
+	</div>
+	<!-- /wp:unitone/stack -->
+</div>
+<!-- /wp:comments-query-loop -->

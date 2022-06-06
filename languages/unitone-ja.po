@@ -1,0 +1,981 @@
+# Copyright (C) 2022 Takashi Kitajima
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: unitone 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
+"POT-Creation-Date: 2022-06-06T05:58:29+00:00\n"
+"PO-Revision-Date: 2022-06-06 14:59+0900\n"
+"Last-Translator: inc2734 <inc@2inc.org>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Domain: unitone\n"
+
+#. Theme Name of the theme
+#: inc/block-categories.php:18 inc/block-categories.php:29
+msgid "unitone"
+msgstr "unitone"
+
+#. Theme URI of the theme
+msgid "https://snow-monkey.2inc.org"
+msgstr "https://snow-monkey.2inc.org"
+
+#. Author of the theme
+msgid "Takashi Kitajima"
+msgstr "Takashi Kitajima"
+
+#. Author URI of the theme
+msgid "https://2inc.org"
+msgstr "https://2inc.org"
+
+#: functions.php:42
+msgid "Primary"
+msgstr ""
+
+#: inc/block-categories.php:21 dist/js/editor/editor.js:1
+msgid "Layout"
+msgstr "レイアウト"
+
+#: inc/block-categories.php:32
+msgid "Component"
+msgstr "コンポーネント"
+
+#: inc/block-patterns.php:15
+msgid "Section"
+msgstr "セクション"
+
+#: inc/block-patterns.php:16
+msgid "Hero"
+msgstr "ヒーロー"
+
+#: inc/block-patterns.php:17
+msgid "Columns"
+msgstr "カラム"
+
+#: inc/block-patterns.php:18
+msgid "Banners"
+msgstr "バナー"
+
+#: inc/block-patterns.php:19
+msgid "Call to action"
+msgstr "CTA"
+
+#: inc/block-patterns.php:20
+msgid "FAQ"
+msgstr "FAQ"
+
+#: inc/block-patterns.php:21
+msgid "Teams"
+msgstr "チーム"
+
+#: inc/block-patterns.php:22
+msgid "Query"
+msgstr "クエリー"
+
+#: inc/block-patterns.php:23
+msgid "Pages"
+msgstr "ページ"
+
+#: inc/block-patterns.php:24
+msgid "Headers"
+msgstr "ヘッダー"
+
+#: inc/block-patterns.php:25
+msgid "Footers"
+msgstr "フッター"
+
+#: inc/block-styles.php:13
+msgid "Badge"
+msgstr "バッジ"
+
+#: inc/block-styles.php:21
+msgid "Block link (Underline)"
+msgstr "ブロックリンク（アンダーライン）"
+
+#: inc/block-styles.php:29 inc/block-styles.php:37
+msgid "Block link (Bordered)"
+msgstr "ブロックリンク（ボーダー）"
+
+#: inc/template-part-areas.php:20
+msgid "Post contents"
+msgstr "個別投稿のコンテンツ"
+
+#: inc/template-part-areas.php:27
+msgid "Page contents"
+msgstr "固定ページのコンテンツ"
+
+#: inc/template-part-areas.php:34
+msgid "Post page header"
+msgstr "個別投稿のページヘッダー"
+
+#: inc/template-part-areas.php:41
+msgid "Page header"
+msgstr "ページヘッダー"
+
+#: inc/template-part-areas.php:48
+msgid "404 contents"
+msgstr "404のコンテンツ"
+
+#: inc/template-part-areas.php:55
+msgid "404 page header"
+msgstr "404のページヘッダー"
+
+#: inc/template-part-areas.php:62
+msgid "Home contents"
+msgstr "ホームのコンテンツ"
+
+#: inc/template-part-areas.php:69
+msgid "Home page header"
+msgstr "ホームのページヘッダー"
+
+#: inc/template-part-areas.php:76
+msgid "Archive contents"
+msgstr "アーカイブのコンテンツ"
+
+#: inc/template-part-areas.php:83
+msgid "archive page header"
+msgstr "アーカイブのページヘッダー"
+
+#: inc/template-part-areas.php:90
+msgid "Search contents"
+msgstr "検索結果のコンテンツ"
+
+#: inc/template-part-areas.php:97
+msgid "Search page header"
+msgstr "検索結果のページヘッダー"
+
+#: inc/template-part-areas.php:104
+msgid "WooCommerce product archive contents"
+msgstr "WooCommerce 商品アーカイブのコンテンツ"
+
+#: inc/template-part-areas.php:111
+msgid "WooCommerce product archive page header"
+msgstr "WooCommerce 商品アーカイブのページヘッダー"
+
+#: inc/template-part-areas.php:118
+msgid "WooCommerce product contents"
+msgstr "WooCommerce 個別商品のコンテンツ"
+
+#: inc/template-part-areas.php:125
+msgid "WooCommerce product page header"
+msgstr "Woocommerce 個別商品のページヘッダー"
+
+#: inc/template-part-areas.php:132
+msgid "Comments"
+msgstr "コメント"
+
+#: inc/template-part-areas.php:139
+msgid "Footer breadcrumbs"
+msgstr "フッターのパンくずリスト"
+
+#: inc/woocommerce.php:108
+msgid "Home"
+msgstr "ホーム"
+
+#: inc/woocommerce.php:114
+msgid "My account"
+msgstr "マイアカウント"
+
+#: patterns/404-contents.php:9
+msgid ""
+"Woops! Page not found. The page you are looking for may be moved or deleted. "
+"Please search this search box."
+msgstr ""
+"ページが見つかりません。お探しのページは移動または削除された可能性がありま"
+"す。下記の検索ボックスで検索してください。"
+
+#: patterns/home-heading.php:9
+msgid "Blog"
+msgstr "ブログ"
+
+#: patterns/search-results-heading.php:9
+msgid "Search results"
+msgstr "検索結果"
+
+#: dist/blocks/both-sides-content/index.js:1
+msgid "Width"
+msgstr "幅"
+
+#: dist/blocks/both-sides-content/index.js:1 dist/js/editor/editor.js:1
+msgid "Max width"
+msgstr "最大幅"
+
+#: dist/blocks/center/index.js:1 dist/blocks/cover/index.js:1
+#: dist/blocks/decorator/index.js:1 dist/blocks/layer/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/responsive-grid/index.js:1
+#: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+msgid "General"
+msgstr "一般"
+
+#: dist/blocks/center/index.js:1
+msgid "Text is also centered"
+msgstr "テキストも一緒に中央揃え"
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Cover content (Top)"
+msgstr "カバーコンテンツ（上部）"
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Cover content (Center)"
+msgstr "カバーコンテンツ（中央）"
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Cover content (Bottom)"
+msgstr "カバーコンテンツ（下部）"
+
+#: dist/blocks/cover/index.js:1
+msgid "No padding"
+msgstr "パディング無し"
+
+#: dist/blocks/decorator/index.js:1
+msgid "With shadow"
+msgstr "影付き"
+
+#: dist/blocks/decorator/index.js:1
+msgid "HTML element"
+msgstr "HTML 要素"
+
+#: dist/blocks/decorator/index.js:1 dist/js/editor/editor.js:1
+msgid "Position"
+msgstr "位置"
+
+#: dist/blocks/decorator/index.js:1
+msgid "static"
+msgstr "static"
+
+#: dist/blocks/decorator/index.js:1
+msgid "relative"
+msgstr "relative"
+
+#: dist/blocks/decorator/index.js:1
+msgid "absolute"
+msgstr "absolute"
+
+#: dist/blocks/decorator/index.js:1
+msgid "fixed"
+msgstr "fixed"
+
+#: dist/blocks/decorator/index.js:1
+msgid "sticky"
+msgstr "上部固定"
+
+#: dist/blocks/decorator/index.js:1
+msgid "Top"
+msgstr "上"
+
+#: dist/blocks/decorator/index.js:1 dist/blocks/with-sidebar/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Right"
+msgstr "右"
+
+#: dist/blocks/decorator/index.js:1
+msgid "Bottom"
+msgstr "下"
+
+#: dist/blocks/decorator/index.js:1 dist/blocks/with-sidebar/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Left"
+msgstr "左"
+
+#: dist/blocks/decorator/index.js:1
+msgid "z-index"
+msgstr "z-index"
+
+#: dist/blocks/frame/index.js:1
+msgid "Dimensions"
+msgstr "寸法"
+
+#: dist/blocks/frame/index.js:1
+msgid "Switch aspect ratio when portrait"
+msgstr "ポートフォリオのとき比率を切り替える"
+
+#: dist/blocks/frame/index.js:1
+msgid "Framed image"
+msgstr "フレーム画像"
+
+#: dist/blocks/frame/index.js:1
+msgid "Framed video"
+msgstr "フレームビデオ"
+
+#: dist/blocks/layer/index.js:1
+msgid "Align self"
+msgstr "垂直配置"
+
+#: dist/blocks/layer/index.js:1
+msgid "Justify self"
+msgstr "項目の揃え位置"
+
+#: dist/blocks/layer/index.js:1
+msgid "grid-column"
+msgstr "grid-column"
+
+#: dist/blocks/layer/index.js:1
+msgid "grid-row"
+msgstr "grid-row"
+
+#: dist/blocks/layers/index.js:1
+msgid "Cover"
+msgstr "カバー"
+
+#: dist/blocks/layers/index.js:1
+msgid "Background image"
+msgstr "背景画像"
+
+#: dist/blocks/layers/index.js:1
+msgid "Background framed image"
+msgstr "背景フレーム画像"
+
+#: dist/blocks/responsive-grid/index.js:1
+msgid "Column min width"
+msgstr "カラムの最小幅"
+
+#: dist/blocks/switcher/index.js:1
+msgid "Threshold"
+msgstr "閾値"
+
+#: dist/blocks/text/index.js:1
+msgid "Centering by intrinsic size of children"
+msgstr "子要素の内在的なサイズによって中央揃えする"
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Sidebar width"
+msgstr "サイドバーの幅"
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Content min width"
+msgstr "コンテンツの最小幅"
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Content max width"
+msgstr "コンテンツの最大幅"
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Revert"
+msgstr "逆転する"
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Sidebar"
+msgstr "サイドバー"
+
+#: dist/js/editor/editor.js:1
+msgid "Padding"
+msgstr "パディング"
+
+#: dist/js/editor/editor.js:1
+msgid "Gutters"
+msgstr "ガター"
+
+#: dist/js/editor/editor.js:1
+msgid "Gap"
+msgstr "間隔"
+
+#: dist/js/editor/editor.js:1
+msgid "Using negative margin"
+msgstr "ネガティブマージンを使用"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify items left"
+msgstr "コンテンツを左揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify items center"
+msgstr "コンテンツを中央揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify items right"
+msgstr "コンテンツを右揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify items space-between"
+msgstr "コンテンツを両端揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content"
+msgstr "項目の揃え位置"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify items top"
+msgstr "コンテンツを上揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify items bottom"
+msgstr "コンテンツを下揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Align items"
+msgstr "垂直配置"
+
+#: dist/js/editor/editor.js:1
+msgid "Align items top"
+msgstr "コンテンツを上揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Align items center"
+msgstr "コンテンツを中央揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Align items bottom"
+msgstr "コンテンツを下揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Center"
+msgstr "中央"
+
+#: dist/js/editor/editor.js:1
+msgid "Block alignment"
+msgstr "ブロックの配置"
+
+#: dist/js/editor/editor.js:1
+msgid "Min height"
+msgstr "最小の高さ"
+
+#: dist/js/editor/editor.js:1
+msgid "Fluid typography"
+msgstr "流体タイポグラフィ"
+
+#: dist/js/editor/editor.js:1
+msgid "Default"
+msgstr "デフォルト"
+
+#: dist/js/editor/editor.js:1
+msgid "Overlay"
+msgstr "オーバレイ"
+
+#: dist/js/editor/editor.js:1
+msgid "Fixed"
+msgstr "固定"
+
+#: dist/blocks/both-sides-content/block.json
+#: dist/blocks/with-sidebar-content/block.json
+msgctxt "block title"
+msgid "Content"
+msgstr "コンテンツ"
+
+#: dist/blocks/both-sides-content/block.json
+msgctxt "block description"
+msgid "The content of the both-sides block."
+msgstr "両端ブロックのコンテンツです。"
+
+#: dist/blocks/both-sides/block.json
+msgctxt "block title"
+msgid "Both sides"
+msgstr "両端"
+
+#: dist/blocks/both-sides/block.json
+msgctxt "block description"
+msgid "This block aligns children on both sides."
+msgstr "子要素を両端に配置します。"
+
+#: dist/blocks/breadcrumbs/block.json
+msgctxt "block title"
+msgid "Breadcrumbs"
+msgstr "パンくずリスト"
+
+#: dist/blocks/breadcrumbs/block.json
+msgctxt "block description"
+msgid "This block indicates the current page location."
+msgstr "現在のページの位置を示します。"
+
+#: dist/blocks/center/block.json
+msgctxt "block title"
+msgid "Center"
+msgstr "センター"
+
+#: dist/blocks/center/block.json
+msgctxt "block description"
+msgid "This block centers the children."
+msgstr "子要素を中央揃えします。"
+
+#: dist/blocks/cluster/block.json
+msgctxt "block title"
+msgid "Cluster"
+msgstr "クラスター"
+
+#: dist/blocks/cluster/block.json
+msgctxt "block description"
+msgid "This block arranges children horizontally."
+msgstr "子要素を水平に並べます。"
+
+#: dist/blocks/container/block.json
+msgctxt "block title"
+msgid "Container"
+msgstr "コンテナー"
+
+#: dist/blocks/container/block.json
+msgctxt "block description"
+msgid ""
+"Keep the content area within a certain width, plus appropriate margins on "
+"the left and right."
+msgstr "コンテンツ領域を一定の幅に収め、さらに左右に適切な余白を確保します。"
+
+#: dist/blocks/cover-content/block.json
+msgctxt "block title"
+msgid "Cover content"
+msgstr "カバーコンテンツ"
+
+#: dist/blocks/cover-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the cover block."
+msgstr "現在のページの位置を示します。"
+
+#: dist/blocks/cover/block.json
+msgctxt "block title"
+msgid "Cover"
+msgstr "カバー"
+
+#: dist/blocks/cover/block.json
+msgctxt "block description"
+msgid "This block is designed to cover a large area of the screen."
+msgstr "画面の広い範囲をカバーするようにデザインされています。"
+
+#: dist/blocks/decorator/block.json
+msgctxt "block title"
+msgid "Decorator"
+msgstr "デコレーター"
+
+#: dist/blocks/decorator/block.json
+msgctxt "block description"
+msgid "Decorative block. Color, padding and position can be set."
+msgstr "装飾用ブロック。色、パディング、位置が設定できます。"
+
+#: dist/blocks/frame/block.json
+msgctxt "block title"
+msgid "Frame"
+msgstr "フレーム"
+
+#: dist/blocks/frame/block.json
+msgctxt "block description"
+msgid "This block is used to fit the image into a fixed angle of view."
+msgstr "画像を一定の画角に収めるために使用されます。"
+
+#: dist/blocks/gutters/block.json
+msgctxt "block title"
+msgid "Gutters"
+msgstr "ガター"
+
+#: dist/blocks/gutters/block.json
+msgctxt "block description"
+msgid "A block for separating content with top and bottom padding."
+msgstr "上下のパディングでコンテンツを区切るためのブロック。"
+
+#: dist/blocks/layer/block.json
+msgctxt "block title"
+msgid "Layer"
+msgstr "レイヤー"
+
+#: dist/blocks/layer/block.json
+msgctxt "block description"
+msgid ""
+"The layer of the layers block. Vertical grid of 12 is set. If grid-row is "
+"deleted, the elements overlap completely."
+msgstr ""
+"レイヤーブロックのレイヤーです。縦方向のグリッドが12個設定されています。grid-"
+"rowを削除すると、要素が完全に重なります。"
+
+#: dist/blocks/layers/block.json
+msgctxt "block title"
+msgid "Layers"
+msgstr "レイヤー"
+
+#: dist/blocks/layers/block.json
+msgctxt "block description"
+msgid "This block layers the children."
+msgstr "子要素を重ねます。"
+
+#: dist/blocks/responsive-grid/block.json
+msgctxt "block title"
+msgid "Responsive grid"
+msgstr "レスポンシブグリッド"
+
+#: dist/blocks/responsive-grid/block.json
+msgctxt "block description"
+msgid "This block generates a simple grid."
+msgstr "シンプルなグリッドを生成します。"
+
+#: dist/blocks/stack/block.json
+msgctxt "block title"
+msgid "Stack"
+msgstr "スタック"
+
+#: dist/blocks/stack/block.json
+msgctxt "block description"
+msgid "This block is used to arrange children vertically at regular intervals."
+msgstr "子要素を一定間隔で縦に並べます。"
+
+#: dist/blocks/switcher/block.json
+msgctxt "block title"
+msgid "Switcher"
+msgstr "スイッチャー"
+
+#: dist/blocks/switcher/block.json
+msgctxt "block description"
+msgid ""
+"This block switches the direction of contents flow depending on its contents."
+msgstr "内容によってコンテンツの流れる方向が切り替わります。"
+
+#: dist/blocks/text/block.json
+msgctxt "block title"
+msgid "Text"
+msgstr "テキスト"
+
+#: dist/blocks/text/block.json
+msgctxt "block description"
+msgid "This block is designed to display easy-to-read text."
+msgstr "読みやすいテキストを表示するためにデザインされています。"
+
+#: dist/blocks/with-sidebar-content/block.json
+msgctxt "block description"
+msgid "The content of the with sidebar block."
+msgstr "サイドバーブロックのコンテンツです。"
+
+#: dist/blocks/with-sidebar/block.json
+msgctxt "block title"
+msgid "With sidebar"
+msgstr "サイドバー"
+
+#: dist/blocks/with-sidebar/block.json
+msgctxt "block description"
+msgid "This block is used to assemble components with sidebars."
+msgstr "サイドバー付きのコンポーネントを組み立てます。"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XS"
+msgstr "XS"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "S"
+msgstr "S"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "M"
+msgstr "M"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "L"
+msgstr "L"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XL"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "2XL"
+msgstr "2XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "3XL"
+msgstr "3XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "4XL"
+msgstr "4XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "5XL"
+msgstr "5XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "6XL"
+msgstr "6XL"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Accent color"
+msgstr "アクセントカラー"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Bright gray"
+msgstr "最も明るいグレー"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Light gray"
+msgstr "ライトグレー"
+
+#: theme.json
+msgctxt "Color name"
+msgid "gray"
+msgstr "グレー"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark gray"
+msgstr "ダークグレー"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Accent color gradation"
+msgstr "アクセントカラーグラデーション"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (Page header (Slim))"
+msgstr "固定ページ（ページヘッダー（スリム））"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single post (Header / Footer)"
+msgstr "個別投稿（ヘッダー / フッター）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (Header / Footer)"
+msgstr "固定ページ（ヘッダー / フッター）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Archive product"
+msgstr "商品アーカイブ"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single product"
+msgstr "個別商品"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "ヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "フッター"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Comments"
+msgstr "コメント"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Breadcrumbs"
+msgstr "パンくずリスト"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "404 contents"
+msgstr "404のコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "404 contents (Page header (Image))"
+msgstr "404のコンテンツ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "404 page header"
+msgstr "404のページヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "404 page header (Image)"
+msgstr "404のページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product archive contents"
+msgstr "WooCommerce 商品アーカイブのコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product archive contents (Page header (Image))"
+msgstr "WooCommerce 商品アーカイブのコンテンツ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product archive page header"
+msgstr "WooCommerce 商品アーカイブのページヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product archive page header (Image)"
+msgstr "WooCommerce 商品アーカイブのページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Archive contents"
+msgstr "アーカイブのコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Archive contents (Page header (Image))"
+msgstr "アーカイブのコンテンツ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Archive page header"
+msgstr "アーカイブのページヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Archive page header (Image)"
+msgstr "アーカイブのページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Home contents"
+msgstr "ホームのコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Home contents (Blank)"
+msgstr "ホームのコンテンツ（空）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Home contents (Page header (Image))"
+msgstr "ホームのコンテンツ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Home page header"
+msgstr "ホームのページヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Home page header (Image)"
+msgstr "ホームのページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page contents"
+msgstr "固定ページのコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page contents (Page header (Featured image))"
+msgstr "固定ページのkンテンツ（ページヘッダー（アイキャッチ画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page contents (Page header (Image))"
+msgstr "固定ページのコンテンツ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page contents (Page header (Slim))"
+msgstr "固定ページのコンテンツ（ページヘッダー（スリム））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page contents (Blank)"
+msgstr "固定ページのコンテンツ（空）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page header"
+msgstr "ページヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page header (Featured image)"
+msgstr "固定ページのページヘッダー（アイキャッチ画像）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page header (Image)"
+msgstr "ページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page header (Slim)"
+msgstr "固定ページのページヘッダー（スリム）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Search contents"
+msgstr "検索結果のコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Search contents (Page header (Image))"
+msgstr "検索結果のコンテンツ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Search page header"
+msgstr "検索結果のページヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Search page header (Image)"
+msgstr "検索結果のページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post contents"
+msgstr "個別投稿のコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post contents (Page header (Featured image))"
+msgstr "個別投稿のコンテンツ（ページヘッダー（アイキャッチ画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post contents (Page header (Image))"
+msgstr "個別投稿（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post contents (Blank)"
+msgstr "個別投稿のコンテンツ（空）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post page header"
+msgstr "個別投稿のページヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post page header (Featured image)"
+msgstr "個別投稿のページヘッダー（アイキャッチ画像）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post page header (Image)"
+msgstr "個別投稿のページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product contents"
+msgstr "WooCommerce 個別商品のコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product contents (Page header (Image))"
+msgstr "WooCommerce 個別投稿のコンテンツ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product page header"
+msgstr "Woocommerce 個別商品のページヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product page header (Image)"
+msgstr "WooCommerce 個別商品のページヘッダー（画像）"
+
+#~ msgctxt "block description"
+#~ msgid ""
+#~ "This block is used to ensure appropriate margins on the left and right "
+#~ "sides of the content area."
+#~ msgstr "コンテンツ領域の左右に適切な余白を確保します。"

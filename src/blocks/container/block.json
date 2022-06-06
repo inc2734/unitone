@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/container",
+	"title": "Container",
+	"description": "Keep the content area within a certain width, plus appropriate margins on the left and right.",
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"typography": {
+			"fontSize": true
+		},
+		"unitone": {
+			"maxWidth": true,
+			"gutters": true,
+			"blockAlign": true
+		}
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

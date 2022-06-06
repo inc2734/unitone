@@ -1,0 +1,59 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/decorator",
+	"title": "Decorator",
+	"description": "Decorative block. Color, padding and position can be set.",
+	"attributes": {
+		"tagName": {
+			"type": "string"
+		},
+		"shadow": {
+			"type": "boolean",
+			"default": false
+		},
+		"position": {
+			"type": "string"
+		},
+		"top": {
+			"type": "string"
+		},
+		"right": {
+			"type": "string"
+		},
+		"bottom": {
+			"type": "string"
+		},
+		"left": {
+			"type": "string"
+		},
+		"zIndex": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"align": [ "full" ],
+		"color": {
+			"background": true,
+			"color": true,
+			"gradients": true
+		},
+		"typography": {
+			"fontSize": true
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"unitone": {
+			"padding": true
+		}
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

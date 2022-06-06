@@ -1,0 +1,34 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/text",
+	"title": "Text",
+	"description": "This block is designed to display easy-to-read text.",
+	"attributes": {
+		"center": {
+			"type": "boolean",
+			"default": false
+		},
+		"layout": {
+			"type": "object",
+			"default": {
+				"inherit": true
+			}
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"unitone": {
+			"maxWidth": true
+		},
+		"__experimentalLayout": {
+			"allowSwitching": false,
+			"allowEditing": false,
+			"allowInheriting": true
+		}
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

@@ -1,0 +1,79 @@
+import classnames from 'classnames';
+
+import {
+	InspectorControls,
+	InnerBlocks,
+	useBlockProps,
+	useInnerBlocksProps,
+	useSetting,
+} from '@wordpress/block-editor';
+
+import { PanelBody, ToggleControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
+
+export default function ( { attributes, setAttributes, clientId } ) {
+	const { center } = attributes;
+
+	// const hasInnerBlocks = useSelect(
+	// 	( select ) =>
+	// 		!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
+	// 			?.length,
+	// 	[ clientId ]
+	// );
+
+	const { hasInnerBlocks, themeSupportsLayout } = useSelect(
+		( select ) => {
+			const { getBlock, getSettings } = select( 'core/block-editor' );
+			const block = getBlock( clientId );
+			return {
+				hasInnerBlocks: !! ( block && block.innerBlocks.length ),
+				themeSupportsLayout: getSettings()?.supportsLayout,
+			};
+		},
+		[ clientId ]
+	);
+	const defaultLayout = useSetting( 'layout' ) || {};
+	const { layout = {} } = attributes;
+	const usedLayout = !! layout && layout.inherit ? defaultLayout : layout;
+	const { type = 'default' } = usedLayout;
+	const layoutSupportEnabled = themeSupportsLayout || type !== 'default';
+
+	const blockProps = useBlockProps();
+	blockProps[ 'data-layout' ] = classnames(
+		'text',
+		blockProps[ 'data-layout' ],
+		{
+			'-center': center,
+		}
+	);
+
+	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+		templateLock: false,
+		renderAppender: hasInnerBlocks
+			? InnerBlocks.DefaultBlockAppender
+			: InnerBlocks.ButtonBlockAppender,
+		__experimentalLayout: layoutSupportEnabled ? usedLayout : undefined,
+	} );
+
+	return (
+		<>
+			<InspectorControls>
+				<PanelBody title={ __( 'General', 'unitone' ) }>
+					<ToggleControl
+						label={ __(
+							'Centering by intrinsic size of children',
+							'unitone'
+						) }
+						checked={ center }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { center: newAttribute } );
+						} }
+					/>
+				</PanelBody>
+			</InspectorControls>
+
+			<div { ...innerBlocksProps } />
+		</>
+	);
+}

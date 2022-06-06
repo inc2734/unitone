@@ -1,0 +1,17 @@
+@use '../../../node_modules/@inc2734/basis2/src/settings/settings';
+
+@use 'foundation';
+@use 'layout-primitives';
+@use 'font-sizes';
+@use 'align';
+@use 'wp-blocks';
+@use 'main';
+@use 'block-styles/block-styles';
+
+@include foundation.foundation();
+@include layout-primitives.layout-primitives();
+@include font-sizes.font-sizes();
+@include align.align();
+@include wp-blocks.wp-blocks();
+@include main.main();
+@include block-styles.block-styles();

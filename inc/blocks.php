@@ -93,7 +93,7 @@ add_filter(
 			add_filter( 'get_custom_logo', $set_default_custom_logo );
 			$attributes = array_merge( $default_attributes, $block['attrs'] );
 			$html       = render_block_core_site_logo( $attributes );
-			$html       = str_replace( array( 'wp-block-pattern', 'site-header' ), 'wp-block-site-logo', $html );
+			$html       = preg_replace( '|class="[^"]+"|ms', 'class="wp-block-site-logo"', $html );
 			remove_filter( 'get_custom_logo', $set_default_custom_logo );
 			return $html;
 		}

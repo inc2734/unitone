@@ -8,8 +8,8 @@
 ?>
 <!-- wp:unitone/decorator {"align":"full","fontSize":"unitone-xs"} -->
 <div data-layout="decorator" class="alignfull has-unitone-xs-font-size">
-	<!-- wp:unitone/gutters {"unitone":{"padding":"-1"}} -->
-	<div data-layout="gutters -padding:-1">
+	<!-- wp:unitone/gutters {"unitone":{"padding":"2"}} -->
+	<div data-layout="gutters -padding:2">
 		<!-- wp:unitone/container -->
 		<div data-layout="container">
 			<!-- wp:unitone/stack -->

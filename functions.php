@@ -2,7 +2,7 @@
 /**
  * @package unitone
  * @author inc2734
- * @version 1.0.0
+ * @license GPL-2.0+
  */
 
 /**

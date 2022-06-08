@@ -37,16 +37,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const blockProps = useBlockProps( {
 		style: {
-			'--top': top || undefined,
-			'--right': right || undefined,
-			'--bottom': bottom || undefined,
-			'--left': left || undefined,
-			'--z-index': zIndex || undefined,
+			'--unitone--top': top || undefined,
+			'--unitone--right': right || undefined,
+			'--unitone--bottom': bottom || undefined,
+			'--unitone--left': left || undefined,
+			'--unitone--z-index': zIndex || undefined,
 		},
 	} );
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'decorator',
-		blockProps[ 'data-layout' ],
+		blockProps[ 'data-unitone-layout' ],
 		{
 			[ `-position:${ position }` ]: position,
 			'-shadow': shadow,

@@ -7,25 +7,25 @@
  */
 ?>
 <!-- wp:unitone/decorator {"tagName":"section","align":"full"} -->
-<section data-layout="decorator" class="alignfull">
+<section data-unitone-layout="decorator" class="alignfull">
 	<!-- wp:unitone/gutters {"lock":{"move":true,"remove":true}} -->
-	<div data-layout="gutters">
-		<!-- wp:unitone/with-sidebar {"sidebarWidth":"50%","contentMinWidth":"var(--measure)","contentMaxWidth":"","revert":true,"sidebar":"left","lock":{"move":true,"remove":true},"unitone":{"alignItems":"center"}} -->
-		<div data-layout="with-sidebar -sidebar:left -revert -align-items:center" style="--sidebar-width:50%;--content-min-width:var(--measure)">
+	<div data-unitone-layout="gutters">
+		<!-- wp:unitone/with-sidebar {"sidebarWidth":"50%","contentMinWidth":"var(--unitone--measure)","contentMaxWidth":"","revert":true,"sidebar":"left","lock":{"move":true,"remove":true},"unitone":{"alignItems":"center"}} -->
+		<div data-unitone-layout="with-sidebar -sidebar:left -revert -align-items:center" style="--unitone--sidebar-width:50%;--unitone--content-min-width:var(--unitone--measure)">
 			<!-- wp:unitone/with-sidebar-content {"lock":{"move":true,"remove":true}} -->
-			<div data-layout="with-sidebar__content">
+			<div data-unitone-layout="with-sidebar__content">
 				<!-- wp:unitone/decorator {"lock":{"move":true,"remove":true},"unitone":{"padding":"2"}} -->
-				<div data-layout="decorator -padding:2">
-					<!-- wp:unitone/container {"lock":{"move":true,"remove":true},"unitone":{"maxWidth":"var(--measure)","gutters":"0"}} -->
-					<div data-layout="container -gutters:0" style="--max-width:var(--measure)">
+				<div data-unitone-layout="decorator -padding:2">
+					<!-- wp:unitone/container {"lock":{"move":true,"remove":true},"unitone":{"maxWidth":"var(--unitone--measure)","gutters":"0"}} -->
+					<div data-unitone-layout="container -gutters:0" style="--unitone--max-width:var(--unitone--measure)">
 						<!-- wp:unitone/stack {"lock":{"move":true,"remove":true},"unitone":{"gap":"2"}} -->
-						<div data-layout="stack -gap:2">
+						<div data-unitone-layout="stack -gap:2">
 							<!-- wp:heading {"fontSize":"unitone-3xl"} -->
 							<h2 class="has-unitone-3-xl-font-size">Lorem ipsum dolor sit amet</h2>
 							<!-- /wp:heading -->
 
 							<!-- wp:unitone/text {"lock":{"move":true,"remove":true}} -->
-							<div data-layout="text">
+							<div data-unitone-layout="text">
 								<!-- wp:paragraph -->
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill</p>
 								<!-- /wp:paragraph -->
@@ -45,13 +45,13 @@
 			<!-- /wp:unitone/with-sidebar-content -->
 
 			<!-- wp:unitone/with-sidebar-content {"lock":{"move":true,"remove":true}} -->
-			<div data-layout="with-sidebar__content">
+			<div data-unitone-layout="with-sidebar__content">
 				<!-- wp:unitone/responsive-grid {"columnMinWidth":"234px","lock":{"move":true,"remove":true},"unitone":{"gap":"2"}} -->
-				<div data-layout="responsive-grid -gap:2" style="--column-min-width:234px">
-					<!-- wp:unitone/decorator {"position":"relative","top":"calc(-1 * var(--s1))","lock":{"move":true,"remove":true}} -->
-					<div style="--top:calc(-1 * var(--s1))" data-layout="decorator -position:relative">
+				<div data-unitone-layout="responsive-grid -gap:2" style="--unitone--column-min-width:234px">
+					<!-- wp:unitone/decorator {"position":"relative","top":"calc(-1 * var(--unitone--s1))","lock":{"move":true,"remove":true}} -->
+					<div style="--unitone--top:calc(-1 * var(--unitone--s1))" data-unitone-layout="decorator -position:relative">
 						<!-- wp:unitone/frame {"ratio":"9/16","lock":{"move":true,"remove":true}} -->
-						<div data-layout="frame" style="--ratio:9/16">
+						<div data-unitone-layout="frame" style="--unitone--ratio:9/16">
 							<!-- wp:image {"id":1,"width":1920,"height":1280} -->
 							<figure class="wp-block-image">
 								<img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" width="1920" height="1280" class="wp-image-1"/>
@@ -62,10 +62,10 @@
 					</div>
 					<!-- /wp:unitone/decorator -->
 
-					<!-- wp:unitone/decorator {"position":"relative","bottom":"calc(-1 * var(--s1))","lock":{"move":true,"remove":true}} -->
-					<div style="--bottom:calc(-1 * var(--s1))" data-layout="decorator -position:relative">
+					<!-- wp:unitone/decorator {"position":"relative","bottom":"calc(-1 * var(--unitone--s1))","lock":{"move":true,"remove":true}} -->
+					<div style="--unitone--bottom:calc(-1 * var(--unitone--s1))" data-unitone-layout="decorator -position:relative">
 						<!-- wp:unitone/frame {"ratio":"9/16","lock":{"move":true,"remove":true}} -->
-						<div data-layout="frame" style="--ratio:9/16">
+						<div data-unitone-layout="frame" style="--unitone--ratio:9/16">
 							<!-- wp:image {"id":1,"width":1920,"height":1280} -->
 							<figure class="wp-block-image">
 								<img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_ydxj69toal.jpg" alt="" width="1920" height="1280" class="wp-image-1"/>

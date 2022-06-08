@@ -7,13 +7,13 @@
  */
 ?>
 <!-- wp:unitone/decorator {"align":"full","fontSize":"unitone-xs"} -->
-<div data-layout="decorator" class="alignfull has-unitone-xs-font-size">
+<div data-unitone-layout="decorator" class="alignfull has-unitone-xs-font-size">
 	<!-- wp:unitone/gutters {"unitone":{"padding":"-1"}} -->
-	<div data-layout="gutters -padding:-1">
+	<div data-unitone-layout="gutters -padding:-1">
 		<!-- wp:unitone/container -->
-		<div data-layout="container">
+		<div data-unitone-layout="container">
 			<!-- wp:unitone/cluster {"unitone":{"alignItems":"center","justifyContent":"space-between"}} -->
-			<div data-layout="cluster -align-items:center -justify-content:space-between">
+			<div data-unitone-layout="cluster -align-items:center -justify-content:space-between">
 				<!-- wp:paragraph -->
 				<p>Proudly powered by <a href="https://wordpress.org/">WordPress</a>.</p>
 				<!-- /wp:paragraph -->

@@ -22,9 +22,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps();
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'layers',
-		blockProps[ 'data-layout' ],
+		blockProps[ 'data-unitone-layout' ],
 		{
 			'-cover': cover,
 		}

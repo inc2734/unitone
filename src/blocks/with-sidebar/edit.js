@@ -26,14 +26,14 @@ export default function ( { attributes, setAttributes } ) {
 
 	const blockProps = useBlockProps( {
 		style: {
-			'--sidebar-width': sidebarWidth || undefined,
-			'--content-min-width': contentMinWidth || undefined,
-			'--content-max-width': contentMaxWidth || undefined,
+			'--unitone--sidebar-width': sidebarWidth || undefined,
+			'--unitone--content-min-width': contentMinWidth || undefined,
+			'--unitone--content-max-width': contentMaxWidth || undefined,
 		},
 	} );
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'with-sidebar',
-		blockProps[ 'data-layout' ],
+		blockProps[ 'data-unitone-layout' ],
 		{
 			[ `-sidebar:${ sidebar }` ]: !! sidebar,
 			'-revert': revert,

@@ -17,9 +17,9 @@ export default function ( { clientId } ) {
 	);
 
 	const blockProps = useBlockProps();
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'container',
-		blockProps[ 'data-layout' ]
+		blockProps[ 'data-unitone-layout' ]
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {

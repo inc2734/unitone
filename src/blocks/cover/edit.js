@@ -23,9 +23,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps();
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'cover',
-		blockProps[ 'data-layout' ],
+		blockProps[ 'data-unitone-layout' ],
 		{
 			'-no-padding': noPadding,
 		}

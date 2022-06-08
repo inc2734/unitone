@@ -9,11 +9,11 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-layout': classnames( 'frame', {
+					'data-unitone-layout': classnames( 'frame', {
 						'-switch': switchRatio,
 					} ),
 					style: {
-						'--ratio': ratio || undefined,
+						'--unitone--ratio': ratio || undefined,
 					},
 				} )
 			) }

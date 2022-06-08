@@ -7,13 +7,13 @@
  */
 ?>
 <!-- wp:unitone/decorator {"align":"full"} -->
-<div data-layout="decorator" class="alignfull">
+<div data-unitone-layout="decorator" class="alignfull">
 	<!-- wp:unitone/layers {"lock":{"move":true,"remove":true}} -->
-	<div data-layout="layers">
+	<div data-unitone-layout="layers">
 		<!-- wp:unitone/layer {"gridColumn":"2/-1","gridRow":"","lock":{"move":true,"remove":true}} -->
-		<div data-layout="layers__layer" style="--grid-column:2/-1">
+		<div data-unitone-layout="layers__layer" style="--unitone--grid-column:2/-1">
 			<!-- wp:unitone/frame {"switchRatio":true,"ratio":"16/9","lock":{"remove":true,"move":true}} -->
-			<div data-layout="frame -switch" style="--ratio:16/9">
+			<div data-unitone-layout="frame -switch" style="--unitone--ratio:16/9">
 				<!-- wp:image {"id":1,"width":1920,"height":1280,"lock":{"move":true,"remove":true}} -->
 				<figure class="wp-block-image">
 					<img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" width="1920" height="1280" class="wp-image-1"/>

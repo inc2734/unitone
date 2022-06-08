@@ -1,5 +1,5 @@
 @use "sass:map";
-@use '../../../node_modules/@inc2734/basis2/src/variables/variables';
+@use '../../../node_modules/@inc2734/unitone-css/src/variables/variables';
 
 @mixin font-sizes() {
 	$font-sizes: (
@@ -47,7 +47,7 @@
 
 	@each $font-size in $font-sizes {
 		.has-#{ map.get($font-size, slug) }-font-size {
-			--font-size: #{ map.get($font-size, size) } !important;
+			--unitone--font-size: #{ map.get($font-size, size) } !important;
 			--wp--preset--font-size--#{ map.get($font-size, slug) }: #{ variables.$font-size } !important;
 		}
 	}

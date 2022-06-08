@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'classnames/dedupe';
 
 import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 import { hasBlockSupport } from '@wordpress/blocks';
@@ -104,8 +104,17 @@ export function saveBlockAlignProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-layout' ] = classnames(
-		extraProps[ 'data-layout' ],
+	// Deprecation.
+	if ( !! extraProps?.[ 'data-layout' ] ) {
+		extraProps[ 'data-layout' ] = classnames(
+			extraProps[ 'data-layout' ],
+			`-align:${ attributes.unitone?.blockAlign }`
+		);
+		return extraProps;
+	}
+
+	extraProps[ 'data-unitone-layout' ] = classnames(
+		extraProps[ 'data-unitone-layout' ],
 		`-align:${ attributes.unitone?.blockAlign }`
 	);
 

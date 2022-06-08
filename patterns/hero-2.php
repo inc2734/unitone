@@ -7,11 +7,11 @@
  */
 ?>
 <!-- wp:unitone/decorator {"align":"full","tagName":"section"} -->
-<section data-layout="decorator" class="alignfull">
+<section data-unitone-layout="decorator" class="alignfull">
 	<!-- wp:unitone/layers {"cover":true,"lock":{"remove":true,"move":true}} -->
-	<div data-layout="layers -cover">
+	<div data-unitone-layout="layers -cover">
 		<!-- wp:unitone/layer {"gridColumn":"2/-1","gridRow":"","lock":{"remove":true,"move":true}} -->
-		<div data-layout="layers__layer" style="--grid-column:2/-1">
+		<div data-unitone-layout="layers__layer" style="--unitone--grid-column:2/-1">
 			<!-- wp:image {"id":1,"width":1920,"height":1280,"lock":{"remove":true,"move":true}} -->
 			<figure class="wp-block-image">
 				<img src="<?php echo get_template_directory_uri(); ?>/dist/img/swing-ocean-sea2875.jpg" alt="" width="1920" height="1280" class="wp-image-1"/>
@@ -21,19 +21,19 @@
 		<!-- /wp:unitone/layer -->
 
 		<!-- wp:unitone/layer {"alignSelf":"center","gridRow":"","lock":{"remove":true,"move":true}} -->
-		<div data-layout="layers__layer -align-self:center">
+		<div data-unitone-layout="layers__layer -align-self:center">
 			<!-- wp:unitone/decorator {"textColor":"black","lock":{"remove":true,"move":true}} -->
-			<div data-layout="decorator" class="has-black-color has-text-color">
+			<div data-unitone-layout="decorator" class="has-black-color has-text-color">
 				<!-- wp:unitone/cover {"noPadding":true,"unitone":{"justifyContent":"end"},"lock":{"remove":true,"move":true}} -->
-				<div data-layout="cover -no-padding -justify-content:end">
+				<div data-unitone-layout="cover -no-padding -justify-content:end">
 					<!-- wp:unitone/gutters {"unitone":{"padding":"4"},"lock":{"remove":true,"move":true}} -->
-					<div data-layout="gutters -padding:4">
-						<!-- wp:unitone/container {"unitone":{"blockAlign":"start","maxWidth":"var(--measure)"},"lock":{"remove":true,"move":true}} -->
-						<div data-layout="container -align:start" style="--max-width:var(--measure)">
+					<div data-unitone-layout="gutters -padding:4">
+						<!-- wp:unitone/container {"unitone":{"blockAlign":"start","maxWidth":"var(--unitone--measure)"},"lock":{"remove":true,"move":true}} -->
+						<div data-unitone-layout="container -align:start" style="--unitone--max-width:var(--unitone--measure)">
 							<!-- wp:unitone/stack {"lock":{"remove":true,"move":true} -->
-							<div data-layout="stack">
+							<div data-unitone-layout="stack">
 								<!-- wp:paragraph {"fontSize":"unitone-5xl","unitone":{"fluidTypography":true}} -->
-								<p class="has-unitone-5-xl-font-size" data-layout="-fluid-typography"><strong>Lorem ipsum dolor sit amet</strong></p>
+								<p class="has-unitone-5-xl-font-size" data-unitone-layout="-fluid-typography"><strong>Lorem ipsum dolor sit amet</strong></p>
 								<!-- /wp:paragraph -->
 
 								<!-- wp:paragraph {"fontSize":"unitone-xl"} -->

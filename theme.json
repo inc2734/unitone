@@ -46,8 +46,8 @@
 			]
 		},
 		"custom": {
-			"container-max-width": "min(100% - var(--rem1) * 2, var(--container-max-width))",
-			"content-max-width": "min(100% - var(--rem1) * 2, var(--measure))"
+			"container-max-width": "min(100% - var(--unitone--rem1) * 2, var(--unitone--container-max-width))",
+			"content-max-width": "min(100% - var(--unitone--rem1) * 2, var(--unitone--measure))"
 		},
 		"layout": {
 			"contentSize": "var(--wp--custom--content-max-width)",
@@ -118,7 +118,7 @@
 	},
 	"styles": {
 		"spacing": {
-			"blockGap": "var(--s1)"
+			"blockGap": "var(--unitone--s1)"
 		}
 	},
 	"customTemplates": [

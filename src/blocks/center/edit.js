@@ -22,9 +22,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps();
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'center',
-		blockProps[ 'data-layout' ],
+		blockProps[ 'data-unitone-layout' ],
 		{
 			'-with-text': withText,
 		}

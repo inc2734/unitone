@@ -9,7 +9,7 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-layout': classnames( 'center', {
+					'data-unitone-layout': classnames( 'center', {
 						'-with-text': withText,
 					} ),
 				} )

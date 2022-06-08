@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'classnames/dedupe';
 
 import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport } from '@wordpress/blocks';
@@ -103,8 +103,17 @@ export function saveAlignItemsProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-layout' ] = classnames(
-		extraProps[ 'data-layout' ],
+	// Deprecation.
+	if ( !! extraProps?.[ 'data-layout' ] ) {
+		extraProps[ 'data-layout' ] = classnames(
+			extraProps[ 'data-layout' ],
+			`-align-items:${ attributes.unitone?.alignItems }`
+		);
+		return extraProps;
+	}
+
+	extraProps[ 'data-unitone-layout' ] = classnames(
+		extraProps[ 'data-unitone-layout' ],
 		`-align-items:${ attributes.unitone?.alignItems }`
 	);
 

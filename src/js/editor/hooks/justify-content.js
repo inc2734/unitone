@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'classnames/dedupe';
 
 import { JustifyToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport } from '@wordpress/blocks';
@@ -114,8 +114,17 @@ export function saveJustifyContentProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-layout' ] = classnames(
-		extraProps[ 'data-layout' ],
+	// Deprecation.
+	if ( !! extraProps?.[ 'data-layout' ] ) {
+		extraProps[ 'data-layout' ] = classnames(
+			extraProps[ 'data-layout' ],
+			`-justify-content:${ attributes.unitone?.justifyContent }`
+		);
+		return extraProps;
+	}
+
+	extraProps[ 'data-unitone-layout' ] = classnames(
+		extraProps[ 'data-unitone-layout' ],
 		`-justify-content:${ attributes.unitone?.justifyContent }`
 	);
 

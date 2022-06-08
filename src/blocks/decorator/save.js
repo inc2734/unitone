@@ -21,13 +21,13 @@ export default function ( { attributes } ) {
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
 					style: {
-						'--top': top || undefined,
-						'--right': right || undefined,
-						'--bottom': bottom || undefined,
-						'--left': left || undefined,
-						'--z-index': zIndex || undefined,
+						'--unitone--top': top || undefined,
+						'--unitone--right': right || undefined,
+						'--unitone--bottom': bottom || undefined,
+						'--unitone--left': left || undefined,
+						'--unitone--z-index': zIndex || undefined,
 					},
-					'data-layout': classnames( 'decorator', {
+					'data-unitone-layout': classnames( 'decorator', {
 						[ `-position:${ position }` ]: position,
 						'-shadow': shadow,
 					} ),

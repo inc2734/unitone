@@ -19,9 +19,9 @@ export default function ( { attributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps();
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'cover__content',
-		blockProps[ 'data-layout' ],
+		blockProps[ 'data-unitone-layout' ],
 		{
 			[ `-position:${ position }` ]: !! position,
 		}

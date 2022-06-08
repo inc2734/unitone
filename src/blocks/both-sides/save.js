@@ -7,7 +7,7 @@ export default function () {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-layout': classnames( 'both-sides' ),
+					'data-unitone-layout': classnames( 'both-sides' ),
 				} )
 			) }
 		/>

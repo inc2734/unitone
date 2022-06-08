@@ -9,13 +9,13 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-layout': classnames( 'layers__layer', {
+					'data-unitone-layout': classnames( 'layers__layer', {
 						[ `-align-self:${ alignSelf }` ]: !! alignSelf,
 						[ `-justify-self:${ justifySelf }` ]: !! justifySelf,
 					} ),
 					style: {
-						'--grid-column': gridColumn || undefined,
-						'--grid-row': gridRow || undefined,
+						'--unitone--grid-column': gridColumn || undefined,
+						'--unitone--grid-row': gridRow || undefined,
 					},
 				} )
 			) }

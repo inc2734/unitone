@@ -7,9 +7,9 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-layout': 'switcher',
+					'data-unitone-layout': 'switcher',
 					style: {
-						'--threshold': threshold || undefined,
+						'--unitone--threshold': threshold || undefined,
 					},
 				} )
 			) }

@@ -14,12 +14,12 @@ $images = array(
 );
 ?>
 <!-- wp:unitone/responsive-grid {"columnMinWidth":"220px"} -->
-<div data-layout="responsive-grid" style="--column-min-width:220px">
+<div data-unitone-layout="responsive-grid" style="--unitone--column-min-width:220px">
 	<?php for ( $i = 0; $i < 4; $i ++ ) : ?>
 	<!-- wp:unitone/cover {"noPadding":true,"unitone":{"minHeight":"100%","justifyContent":"space-between"}} -->
-	<div data-layout="cover -no-padding -justify-content:space-between" style="--min-height:100%">
+	<div data-unitone-layout="cover -no-padding -justify-content:space-between" style="--unitone--min-height:100%">
 		<!-- wp:unitone/stack {"unitone":{"gap":-1},"lock":{"remove":true,"move":true}} -->
-		<div data-layout="stack -gap:-1">
+		<div data-unitone-layout="stack -gap:-1">
 			<!-- wp:heading {"level":3} -->
 			<h3>Lorem ipsum dolor sit amet</h3>
 			<!-- /wp:heading -->
@@ -31,7 +31,7 @@ $images = array(
 		<!-- /wp:unitone/stack -->
 
 		<!-- wp:unitone/frame {"ratio":"4/3","lock":{"remove":true,"move":true}} -->
-		<div data-layout="frame" style="--ratio:4/3">
+		<div data-unitone-layout="frame" style="--unitone--ratio:4/3">
 			<!-- wp:image {"id":1,"width":1920,"height":1280,"lock":{"remove":true,"move":true}} -->
 			<figure class="wp-block-image">
 				<img src="<?php echo esc_url( $images[ $i ] ); ?>" alt="" width="1920" height="1280" class="wp-image-1"/>

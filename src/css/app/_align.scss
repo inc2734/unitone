@@ -10,7 +10,7 @@
 		max-width: min(50%, var(--wp--custom--content-max-width));
 
 		figcaption {
-			margin: var(--s-2) 0 0;
+			margin: var(--unitone--s-2) 0 0;
 			display: table-caption;
 			caption-side: bottom;
 			text-align: left;
@@ -18,11 +18,11 @@
 	}
 
 	.alignright.alignright.alignright {
-		margin: 0 var(--padding) var(--s1) var(--s1);
+		margin: 0 var(--unitone--padding) var(--unitone--s1) var(--unitone--s1);
 	}
 
 	.alignleft.alignleft.alignleft {
-		margin: 0 var(--s1) var(--s1) var(--padding);
+		margin: 0 var(--unitone--s1) var(--unitone--s1) var(--unitone--padding);
 	}
 
 	* > .alignright:first-child + *,

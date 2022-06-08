@@ -4,9 +4,9 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function () {
 	const blockProps = useBlockProps();
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'both-sides',
-		blockProps[ 'data-layout' ]
+		blockProps[ 'data-unitone-layout' ]
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {

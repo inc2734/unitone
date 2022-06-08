@@ -7,25 +7,25 @@
  */
 ?>
 <!-- wp:unitone/decorator {"tagName":"section","align":"full"} -->
-<section data-layout="decorator" class="alignfull">
+<section data-unitone-layout="decorator" class="alignfull">
 	<!-- wp:unitone/gutters {"lock":{"move":true,"remove":true}} -->
-	<div data-layout="gutters">
+	<div data-unitone-layout="gutters">
 		<!-- wp:unitone/container {"lock":{"move":true,"remove":true}} -->
-		<div data-layout="container">
-			<!-- wp:unitone/with-sidebar {"sidebarWidth":"var(--cg4)","contentMaxWidth":"var(--measure)","lock":{"move":true,"remove":true},"unitone":{"gap":"2","alignItems":"center"}} -->
-			<div data-layout="with-sidebar -sidebar:right -align-items:center -gap:2" style="--sidebar-width:var(--cg4);--content-max-width:var(--measure)">
+		<div data-unitone-layout="container">
+			<!-- wp:unitone/with-sidebar {"sidebarWidth":"var(--unitone--cg4)","contentMaxWidth":"var(--unitone--measure)","lock":{"move":true,"remove":true},"unitone":{"gap":"2","alignItems":"center"}} -->
+			<div data-unitone-layout="with-sidebar -sidebar:right -align-items:center -gap:2" style="--unitone--sidebar-width:var(--unitone--cg4);--unitone--content-max-width:var(--unitone--measure)">
 				<!-- wp:unitone/with-sidebar-content {"lock":{"move":true,"remove":true},"unitone":{"blockAlign":"center"}} -->
-				<div data-layout="with-sidebar__content -align:center">
+				<div data-unitone-layout="with-sidebar__content -align:center">
 					<!-- wp:unitone/text {"lock":{"move":true,"remove":true}} -->
-					<div data-layout="text">
+					<div data-unitone-layout="text">
 						<!-- wp:unitone/stack {"lock":{"move":true,"remove":true}} -->
-						<div data-layout="stack">
+						<div data-unitone-layout="stack">
 							<!-- wp:heading {"fontSize":"unitone-3xl"} -->
 							<h2 class="has-unitone-3-xl-font-size">Lorem ipsum dolor sit amet</h2>
 							<!-- /wp:heading -->
 
 							<!-- wp:unitone/text {"unitone":{"maxWidth":"100%"}} -->
-							<div data-layout="text" style="--max-width:100%">
+							<div data-unitone-layout="text" style="--unitone--max-width:100%">
 								<!-- wp:paragraph -->
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill</p>
 								<!-- /wp:paragraph -->
@@ -39,9 +39,9 @@
 				<!-- /wp:unitone/with-sidebar-content -->
 
 				<!-- wp:unitone/with-sidebar-content {"lock":{"move":true,"remove":true}} -->
-				<div data-layout="with-sidebar__content">
+				<div data-unitone-layout="with-sidebar__content">
 				<!-- wp:unitone/frame {"lock":{"move":true,"remove":true}} -->
-					<div data-layout="frame">
+					<div data-unitone-layout="frame">
 						<!-- wp:image {"id":1,"width":1920,"height":1280,"lock":{"move":true,"remove":true}} -->
 						<figure class="wp-block-image">
 							<img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" width="1920" height="1280" class="wp-image-1"/>

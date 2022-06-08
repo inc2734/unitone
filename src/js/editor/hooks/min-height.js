@@ -41,10 +41,21 @@ export function saveMinHeightProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
+	// Deprecation.
+	// Blocks with data-layout have no prefix in the CSS custom property.
+	if ( !! extraProps?.[ 'data-layout' ] ) {
+		extraProps.style = {
+			...extraProps.style,
+			'--min-height': attributes?.unitone?.minHeight,
+		};
+		return extraProps;
+	}
+
 	extraProps.style = {
 		...extraProps.style,
-		'--min-height': attributes?.unitone?.minHeight,
+		'--unitone--min-height': attributes?.unitone?.minHeight,
 	};
+
 	return extraProps;
 }
 

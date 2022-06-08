@@ -24,13 +24,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const blockProps = useBlockProps( {
 		style: {
-			'--content-width': contentWidth || undefined,
-			'--content-max-width': contentMaxWidth || undefined,
+			'--unitone--content-width': contentWidth || undefined,
+			'--unitone--content-max-width': contentMaxWidth || undefined,
 		},
 	} );
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'both-sides__content',
-		blockProps[ 'data-layout' ]
+		blockProps[ 'data-unitone-layout' ]
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {

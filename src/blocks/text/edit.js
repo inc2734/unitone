@@ -40,9 +40,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const layoutSupportEnabled = themeSupportsLayout || type !== 'default';
 
 	const blockProps = useBlockProps();
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'text',
-		blockProps[ 'data-layout' ],
+		blockProps[ 'data-unitone-layout' ],
 		{
 			'-center': center,
 		}

@@ -55,7 +55,7 @@ add_action(
 		if ( is_checkout() || is_cart() || is_account_page() ) {
 			wp_add_inline_style(
 				'unitone',
-				'.entry-content, .wp-block-post-content { --max-width: var(--wp--custom--container-max-width) }'
+				'.entry-content, .wp-block-post-content { --unitone--max-width: var(--wp--custom--container-max-width) }'
 			);
 		}
 	}

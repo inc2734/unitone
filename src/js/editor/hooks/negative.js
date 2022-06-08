@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
@@ -58,8 +58,17 @@ export function saveNegativeProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-layout' ] = classnames(
-		extraProps[ 'data-layout' ],
+	// Deprecation.
+	if ( !! extraProps?.[ 'data-layout' ] ) {
+		extraProps[ 'data-layout' ] = classnames(
+			extraProps[ 'data-layout' ],
+			'-negative'
+		);
+		return extraProps;
+	}
+
+	extraProps[ 'data-unitone-layout' ] = classnames(
+		extraProps[ 'data-unitone-layout' ],
 		'-negative'
 	);
 

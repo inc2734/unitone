@@ -41,10 +41,21 @@ export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
+	// Deprecation.
+	// Blocks with data-layout have no prefix in the CSS custom property.
+	if ( !! extraProps?.[ 'data-layout' ] ) {
+		extraProps.style = {
+			...extraProps.style,
+			'--max-width': attributes?.unitone?.maxWidth,
+		};
+		return extraProps;
+	}
+
 	extraProps.style = {
 		...extraProps.style,
-		'--max-width': attributes?.unitone?.maxWidth,
+		'--unitone--max-width': attributes?.unitone?.maxWidth,
 	};
+
 	return extraProps;
 }
 

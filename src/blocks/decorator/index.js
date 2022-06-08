@@ -4,6 +4,7 @@ import icon from '../icon';
 import edit from './edit';
 import save from './save';
 import transforms from './transforms';
+import deprecated from './deprecated';
 
 registerBlockType( 'unitone/decorator', {
 	icon: {
@@ -12,4 +13,5 @@ registerBlockType( 'unitone/decorator', {
 	edit,
 	save,
 	transforms,
+	deprecated,
 } );

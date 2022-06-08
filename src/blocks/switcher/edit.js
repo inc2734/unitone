@@ -23,12 +23,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const blockProps = useBlockProps( {
 		style: {
-			'--threshold': threshold || undefined,
+			'--unitone--threshold': threshold || undefined,
 		},
 	} );
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'switcher',
-		blockProps[ 'data-layout' ]
+		blockProps[ 'data-unitone-layout' ]
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {

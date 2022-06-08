@@ -9,7 +9,7 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-layout': classnames( 'cover__content', {
+					'data-unitone-layout': classnames( 'cover__content', {
 						[ `-position:${ position }` ]: !! position,
 					} ),
 				} )

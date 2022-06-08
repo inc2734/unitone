@@ -1,1 +1,1 @@
-import '../../../node_modules/@inc2734/basis2/src/app';
+import '../../../node_modules/@inc2734/unitone-css/src/app';

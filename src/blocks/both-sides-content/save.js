@@ -7,10 +7,11 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-layout': 'both-sides__content',
+					'data-unitone-layout': 'both-sides__content',
 					style: {
-						'--content-width': contentWidth || undefined,
-						'--content-max-width': contentMaxWidth || undefined,
+						'--unitone--content-width': contentWidth || undefined,
+						'--unitone--content-max-width':
+							contentMaxWidth || undefined,
 					},
 				} )
 			) }

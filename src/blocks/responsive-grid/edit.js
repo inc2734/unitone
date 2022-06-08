@@ -23,12 +23,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const blockProps = useBlockProps( {
 		style: {
-			'--column-min-width': columnMinWidth || undefined,
+			'--unitone--column-min-width': columnMinWidth || undefined,
 		},
 	} );
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'responsive-grid',
-		blockProps[ 'data-layout' ]
+		blockProps[ 'data-unitone-layout' ]
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {

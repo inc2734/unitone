@@ -6,7 +6,7 @@
  * which should be replaced by .editor-styles-wrapper in PHP.
  */
 
-@use '../../../node_modules/@inc2734/basis2/src/settings/settings';
+@use '../../../node_modules/@inc2734/unitone-css/src/settings/settings';
 
 @use 'foundation';
 @use 'layout-primitives';
@@ -27,30 +27,30 @@
 	@include block-styles.block-styles();
 
 	.is-root-container.is-outline-mode.is-focus-mode {
-		> [data-layout~="position"] {
+		> [data-unitone-layout~="position"] {
 			position: static;
 		}
 	}
 
 	.edit-post-visual-editor__post-title-wrapper {
-		margin-bottom: var(--s2);
+		margin-bottom: var(--unitone--s2);
 		border-bottom: 1px solid #e0e0e0;
-		padding-top: var(--s1);
-		padding-bottom: var(--s1);
+		padding-top: var(--unitone--s1);
+		padding-bottom: var(--unitone--s1);
 
 		> * {
 			max-width: var(--wp--custom--container-max-width) !important;
 		}
 	}
 
-	[data-layout~="center"] {
+	[data-unitone-layout~="center"] {
 		> .block-list-appender {
 			width: 100%;
 		}
 	}
 
-	[data-layout~="frame"],
-	[data-layout~="layers__layer"] {
+	[data-unitone-layout~="frame"],
+	[data-unitone-layout~="layers__layer"] {
 		> figure {
 			display: block;
 
@@ -72,15 +72,15 @@
 		}
 	}
 
-	[data-layout~="text"] {
+	[data-unitone-layout~="text"] {
 		&[class*="wp-container-"] > * {
-			max-width: var(--max-width);
+			max-width: var(--unitone--max-width);
 			margin-right: auto;
 			margin-left: auto;
 		}
 	}
 
-	[data-layout~="layers"] {
+	[data-unitone-layout~="layers"] {
 		> .block-list-appender {
 			align-self: end;
 			justify-self: end;

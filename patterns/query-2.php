@@ -10,11 +10,11 @@
 <div class="wp-block-query is-style-block-link-underline">
 	<!-- wp:post-template -->
 		<!-- wp:unitone/stack -->
-		<div data-layout="stack">
+		<div data-unitone-layout="stack">
 			<!-- wp:unitone/decorator {"backgroundColor":"unitone/gray"} -->
-			<div data-layout="decorator" class="has-unitone-gray-background-color has-background">
+			<div data-unitone-layout="decorator" class="has-unitone-gray-background-color has-background">
 				<!-- wp:unitone/frame {"ratio":"4/3"} -->
-				<div data-layout="frame" style="--ratio:4/3">
+				<div data-unitone-layout="frame" style="--unitone--ratio:4/3">
 					<!-- wp:post-featured-image /-->
 				</div>
 				<!-- /wp:unitone/frame -->
@@ -22,11 +22,11 @@
 			<!-- /wp:unitone/decorator -->
 
 			<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
-			<div data-layout="stack -gap:-2">
+			<div data-unitone-layout="stack -gap:-2">
 				<!-- wp:post-title {"isLink":true} /-->
 
 				<!-- wp:unitone/cluster {"fontSize":"unitone-xs","unitone":{"gap":"-1","alignItems":"center"}} -->
-				<div data-layout="cluster -align-items:center -gap:-1" class="has-unitone-xs-font-size">
+				<div data-unitone-layout="cluster -align-items:center -gap:-1" class="has-unitone-xs-font-size">
 					<!-- wp:post-date /-->
 					<!-- wp:post-terms {"term":"category","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"black","className":"is-style-badge"} /-->
 				</div>

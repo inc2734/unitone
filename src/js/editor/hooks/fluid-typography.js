@@ -58,8 +58,8 @@ export function saveFluidTypographyProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-layout' ] = classnames(
-		extraProps[ 'data-layout' ],
+	extraProps[ 'data-unitone-layout' ] = classnames(
+		extraProps[ 'data-unitone-layout' ],
 		'-fluid-typography'
 	);
 

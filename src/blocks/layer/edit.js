@@ -23,13 +23,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const blockProps = useBlockProps( {
 		style: {
-			'--grid-column': gridColumn || undefined,
-			'--grid-row': gridRow || undefined,
+			'--unitone--grid-column': gridColumn || undefined,
+			'--unitone--grid-row': gridRow || undefined,
 		},
 	} );
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'layers__layer',
-		blockProps[ 'data-layout' ],
+		blockProps[ 'data-unitone-layout' ],
 		{
 			[ `-align-self:${ alignSelf }` ]: !! alignSelf,
 			[ `-justify-self:${ justifySelf }` ]: !! justifySelf,

@@ -5,6 +5,7 @@ import icon from '../icon';
 import edit from './edit';
 import save from './save';
 import transforms from './transforms';
+import deprecated from './deprecated';
 
 registerBlockType( 'unitone/frame', {
 	icon: {
@@ -13,6 +14,7 @@ registerBlockType( 'unitone/frame', {
 	edit,
 	save,
 	transforms,
+	deprecated,
 	variations: [
 		{
 			name: 'framed-image',

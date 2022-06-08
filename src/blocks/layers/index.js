@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import icon from '../icon';
 import edit from './edit';
 import save from './save';
+import deprecated from './deprecated';
 
 registerBlockType( 'unitone/layers', {
 	icon: {
@@ -11,6 +12,7 @@ registerBlockType( 'unitone/layers', {
 	},
 	edit,
 	save,
+	deprecated,
 	variations: [
 		{
 			name: 'background-image',

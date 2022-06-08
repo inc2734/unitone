@@ -7,11 +7,11 @@
  */
 ?>
 <!-- wp:unitone/container -->
-<div data-layout="container">
+<div data-unitone-layout="container">
 	<!-- wp:unitone/gutters {"unitone":{"padding":"1"}} -->
-	<div data-layout="gutters -padding:1">
+	<div data-unitone-layout="gutters -padding:1">
 		<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
-		<div data-layout="stack -gap:-2">
+		<div data-unitone-layout="stack -gap:-2">
 			<!-- wp:site-logo /-->
 			<!-- wp:site-title /-->
 

@@ -63,7 +63,7 @@ add_filter(
 	function( $block_content, $block ) {
 		if (
 			0 === strpos( $block['blockName'], 'unitone/' )
-			&& preg_match( '|<[^>]+?data-layout="[^"]+?" ?[^>?]*? class="[^"]*?wp-container-[\d]+|ms', $block_content, $match )
+			&& preg_match( '|<[^>]+?data-unitone-layout="[^"]+?" ?[^>?]*? class="[^"]*?wp-container-[\d]+|ms', $block_content, $match )
 		) {
 			$block_content = preg_replace( '|wp-container-[\d]+|', '', $block_content );
 		}

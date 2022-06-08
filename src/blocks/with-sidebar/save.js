@@ -15,14 +15,16 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-layout': classnames( 'with-sidebar', {
+					'data-unitone-layout': classnames( 'with-sidebar', {
 						[ `-sidebar:${ sidebar }` ]: !! sidebar,
 						'-revert': revert,
 					} ),
 					style: {
-						'--sidebar-width': sidebarWidth || undefined,
-						'--content-min-width': contentMinWidth || undefined,
-						'--content-max-width': contentMaxWidth || undefined,
+						'--unitone--sidebar-width': sidebarWidth || undefined,
+						'--unitone--content-min-width':
+							contentMinWidth || undefined,
+						'--unitone--content-max-width':
+							contentMaxWidth || undefined,
 					},
 				} )
 			) }

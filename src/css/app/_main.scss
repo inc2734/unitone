@@ -1,10 +1,10 @@
-@use '../../../node_modules/@inc2734/basis2/src/layout-primitives/text/text';
+@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
 
 @mixin main() {
 	.entry-content,
 	.wp-block-post-content {
 		@include text.abstract-text();
-		--max-width: var(--wp--custom--content-max-width);
+		--unitone--max-width: var(--wp--custom--content-max-width);
 
 		> *:where(:not(.alignright):not(.alignleft)) {
 			margin-right: auto;
@@ -23,7 +23,7 @@
 	}
 	:where(.entry-content > *),
 	:where(.wp-block-post-content > *) {
-		max-width: var(--max-width);
+		max-width: var(--unitone--max-width);
 	}
 
 	.wp-site-blocks {
@@ -76,7 +76,7 @@
 		}
 
 		.wp-block-navigation__responsive-container:not([aria-hidden="false"]) {
-			--wp--style--block-gap: var(--s2);
+			--wp--style--block-gap: var(--unitone--s2);
 		}
 	}
 
@@ -87,7 +87,7 @@
 		}
 
 		.wp-block-navigation.is-vertical {
-			gap: var(--s-1);
+			gap: var(--unitone--s-1);
 		}
 	}
 

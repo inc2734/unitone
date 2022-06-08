@@ -14,12 +14,12 @@ export default function ( { attributes, setAttributes } ) {
 
 	const blockProps = useBlockProps( {
 		style: {
-			'--ratio': ratio || undefined,
+			'--unitone--ratio': ratio || undefined,
 		},
 	} );
-	blockProps[ 'data-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = classnames(
 		'frame',
-		blockProps[ 'data-layout' ],
+		blockProps[ 'data-unitone-layout' ],
 		{
 			'-switch': switchRatio,
 		}

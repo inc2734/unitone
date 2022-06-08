@@ -1,21 +1,21 @@
-@use '../../../node_modules/@inc2734/basis2/src/layout-primitives/layout-primitives';
-@use '../../../node_modules/@inc2734/basis2/src/helper/helper';
+@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/layout-primitives';
+@use '../../../node_modules/@inc2734/unitone-css/src/helper/helper';
 
 @mixin layout-primitives() {
 	@include layout-primitives.layout-primitives();
 	@include helper.helper();
 
-	[data-layout~="cover"] {
-		--min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+	[data-unitone-layout~="cover"] {
+		--unitone--min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
 	}
 
-	[data-layout~="layers"][data-layout~="-cover"] {
-		[data-layout~="layers__layer"] {
+	[data-unitone-layout~="layers"][data-unitone-layout~="-cover"] {
+		[data-unitone-layout~="layers__layer"] {
 			position: relative;
 		}
 	}
 
-	[data-layout~="decorator"] {
-		--position: relative;
+	[data-unitone-layout~="decorator"] {
+		--unitone--position: relative;
 	}
 }

@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
@@ -104,8 +104,17 @@ export function saveGapProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-layout' ] = classnames(
-		extraProps[ 'data-layout' ],
+	// Deprecation.
+	if ( !! extraProps?.[ 'data-layout' ] ) {
+		extraProps[ 'data-layout' ] = classnames(
+			extraProps[ 'data-layout' ],
+			`-gap:${ attributes.unitone?.gap }`
+		);
+		return extraProps;
+	}
+
+	extraProps[ 'data-unitone-layout' ] = classnames(
+		extraProps[ 'data-unitone-layout' ],
 		`-gap:${ attributes.unitone?.gap }`
 	);
 

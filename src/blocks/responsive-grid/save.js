@@ -7,9 +7,10 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-layout': 'responsive-grid',
+					'data-unitone-layout': 'responsive-grid',
 					style: {
-						'--column-min-width': columnMinWidth || undefined,
+						'--unitone--column-min-width':
+							columnMinWidth || undefined,
 					},
 				} )
 			) }

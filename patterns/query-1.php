@@ -10,9 +10,9 @@
 <div class="wp-block-query is-style-block-link-underline">
 	<!-- wp:post-template -->
 		<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
-		<div data-layout="stack -gap:-2">
+		<div data-unitone-layout="stack -gap:-2">
 			<!-- wp:unitone/cluster {"fontSize":"unitone-xs","unitone":{"gap":"-1","alignItems":"center"}} -->
-			<div data-layout="cluster -align-items:center -gap:-1" class="has-unitone-xs-font-size">
+			<div data-unitone-layout="cluster -align-items:center -gap:-1" class="has-unitone-xs-font-size">
 				<!-- wp:post-date /-->
 				<!-- wp:post-terms {"term":"category","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"black","className":"is-style-badge"} /-->
 			</div>

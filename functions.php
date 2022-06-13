@@ -64,6 +64,9 @@ function unitone_restore_customizer( $wp_customize ) {
 }
 add_action( 'customize_register', 'unitone_restore_customizer' );
 
+// Updater.
+require get_template_directory() . '/inc/updater.php';
+
 // Enqueue assets.
 require get_template_directory() . '/inc/assets.php';
 

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-06-06T05:58:29+00:00\n"
-"PO-Revision-Date: 2022-06-06 14:59+0900\n"
+"POT-Creation-Date: 2022-06-13T08:40:13+00:00\n"
+"PO-Revision-Date: 2022-06-13 17:40+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -32,6 +32,27 @@ msgstr "Takashi Kitajima"
 #. Author URI of the theme
 msgid "https://2inc.org"
 msgstr "https://2inc.org"
+
+#: App/Controller/Manager.php:53 App/Controller/Manager.php:54
+#: App/Controller/Manager.php:60
+msgid "unitone settings"
+msgstr "unitone 設定"
+
+#: App/Controller/Manager.php:74
+msgid "Reset settings"
+msgstr "設定をリセット"
+
+#: App/Controller/Manager.php:110
+msgid "Settings"
+msgstr "設定"
+
+#: App/Controller/Manager.php:118
+msgid "License key"
+msgstr "ライセンスキー"
+
+#: App/Controller/Manager.php:129
+msgid "If the license key entered is valid, the theme can be updated."
+msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
 #: functions.php:42
 msgid "Primary"

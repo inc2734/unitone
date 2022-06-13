@@ -6,6 +6,7 @@
  */
 
 use Inc2734\WP_GitHub_Theme_Updater\Bootstrap;
+use Unitone\App\Controller\Manager;
 
 new Bootstrap(
 	get_template(),
@@ -37,15 +38,15 @@ add_action(
  * @param string $url
  * @return string|false
  */
-// add_filter(
-// 	'inc2734_github_theme_updater_zip_url_inc2734/unitone',
-// 	function( $url ) {
-// 		if ( 0 !== strpos( $url, 'https://unitone.2inc.org/' ) ) {
-// 			return false;
-// 		}
-// 		return $url;
-// 	}
-// );
+add_filter(
+	'inc2734_github_theme_updater_zip_url_inc2734/unitone',
+	function( $url ) {
+		if ( 0 !== strpos( $url, 'https://unitone.2inc.org/' ) ) {
+			return false;
+		}
+		return $url;
+	}
+);
 
 /**
  * Customize request URL that for updating.
@@ -56,7 +57,7 @@ add_action(
 add_filter(
 	'inc2734_github_theme_updater_request_url_inc2734/unitone',
 	function() {
-		$license_key = get_option( 'unitone-license-key' );
+		$license_key = Manager::get_option( 'license-key' );
 		return sprintf(
 			'https://unitone.2inc.org/wp-json/license-manager/v1/update/%1$s',
 			esc_attr( $license_key )

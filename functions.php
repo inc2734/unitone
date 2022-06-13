@@ -67,6 +67,9 @@ add_action( 'customize_register', 'unitone_restore_customizer' );
 // Updater.
 require get_template_directory() . '/inc/updater.php';
 
+// Add manager.
+require get_template_directory() . '/inc/manager.php';
+
 // Enqueue assets.
 require get_template_directory() . '/inc/assets.php';
 

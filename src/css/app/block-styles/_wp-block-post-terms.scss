@@ -1,11 +1,11 @@
 @mixin block-styles() {
 	.wp-block-post-terms.is-style-badge {
-		border-radius: 1rem;
 		background-color: var(--wp--preset--color--black);
+		border-radius: 4px;
 
 		> a {
 			display: inline-block;
-			padding: var(--unitone--s-2) var(--unitone--s-1);
+			padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
 			text-decoration: none;
 		}
 	}

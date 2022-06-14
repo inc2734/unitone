@@ -74,9 +74,7 @@
 
 	[data-unitone-layout~="text"] {
 		&[class*="wp-container-"] > * {
-			max-width: var(--unitone--max-width);
-			margin-right: auto;
-			margin-left: auto;
+			max-width: min(100%,var(--unitone--max-width));
 		}
 	}
 

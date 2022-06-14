@@ -3,16 +3,8 @@ import classnames from 'classnames';
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function ( { attributes } ) {
-	const {
-		tagName,
-		shadow,
-		position,
-		top,
-		right,
-		bottom,
-		left,
-		zIndex,
-	} = attributes;
+	const { tagName, shadow, position, top, right, bottom, left, zIndex } =
+		attributes;
 
 	const TagName = tagName || 'div';
 

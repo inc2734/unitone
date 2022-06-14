@@ -4,7 +4,7 @@
 		"npm": ">=6.9.0 <7"
 	},
 	"devDependencies": {
-		"@inc2734/unitone-css": "^0.23.0",
+		"@inc2734/unitone-css": "^0.23.2",
 		"@wordpress/env": "^4.8.0",
 		"@wordpress/icons": "^9.1.0",
 		"@wordpress/scripts": "^23.2.0",
@@ -17,9 +17,9 @@
 		"postcss": "^8.4.14",
 		"postcss-cli": "^9.1.0",
 		"postcss-import": "^14.1.0",
-		"prettier": "npm:wp-prettier@2.2.1-beta-1",
+		"prettier": "npm:wp-prettier@2.6.2",
 		"rimraf": "^3.0.2",
-		"sass": "^1.52.2"
+		"sass": "^1.52.3"
 	},
 	"scripts": {
 		"export:wp-content:plugins": "npm run cli 'cp -r wp-content/plugins .export/wp-content'",

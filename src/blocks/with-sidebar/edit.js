@@ -16,13 +16,8 @@ import {
 import { __ } from '@wordpress/i18n';
 
 export default function ( { attributes, setAttributes } ) {
-	const {
-		sidebarWidth,
-		contentMinWidth,
-		contentMaxWidth,
-		revert,
-		sidebar,
-	} = attributes;
+	const { sidebarWidth, contentMinWidth, contentMaxWidth, revert, sidebar } =
+		attributes;
 
 	const blockProps = useBlockProps( {
 		style: {

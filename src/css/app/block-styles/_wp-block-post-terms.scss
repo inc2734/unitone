@@ -1,7 +1,7 @@
 @mixin block-styles() {
 	.wp-block-post-terms.is-style-badge {
 		background-color: var(--wp--preset--color--black);
-		border-radius: 4px;
+		border-radius: var(--unitone--global--border-radius);
 
 		> a {
 			display: inline-block;

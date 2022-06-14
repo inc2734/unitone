@@ -23,7 +23,8 @@ export default [
 						useBlockProps.save( {
 							'data-layout': classnames( 'layers__layer', {
 								[ `-align-self:${ alignSelf }` ]: !! alignSelf,
-								[ `-justify-self:${ justifySelf }` ]: !! justifySelf,
+								[ `-justify-self:${ justifySelf }` ]:
+									!! justifySelf,
 							} ),
 							style: {
 								'--grid-column': gridColumn || undefined,

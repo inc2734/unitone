@@ -56,8 +56,18 @@ function unitone_enqueue_block_editor_assets() {
 	);
 
 	$css = file_get_contents( get_template_directory() . '/dist/css/app/editor-style.css' );
-	$css = str_replace( array( ':root', 'html', 'body' ), '.editor-styles-wrapper', $css );
-	$css = preg_replace( '|(.editor-styles-wrapper ?){2,}|', '.editor-styes-wrapper', $css );
+	$css = str_replace(
+		array(
+			'.editor-styles-wrapper :root',
+			'.editor-styles-wrapper html',
+			'.editor-styles-wrapper body',
+			':root',
+			'html',
+			'body',
+		),
+		'.editor-styles-wrapper',
+		$css
+	);
 	wp_add_inline_style(
 		'unitone',
 		$css

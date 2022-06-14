@@ -69,9 +69,8 @@ export {
 
 export function LayoutPanel( props ) {
 	const isJustifyContentDisabled = useIsJustifyContentDisabled( props );
-	const isJustifyContentColumnDisabled = useIsJustifyContentColumnDisabled(
-		props
-	);
+	const isJustifyContentColumnDisabled =
+		useIsJustifyContentColumnDisabled( props );
 	const isAlignItemsDisabled = useIsAlignItemsDisabled( props );
 	const isBlockAlignDisabled = useIsBlockAlignDisabled( props );
 	const isMaxWidthDisabled = useIsMaxWidthDisabled( props );

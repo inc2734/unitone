@@ -17,16 +17,8 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const {
-		tagName,
-		shadow,
-		position,
-		top,
-		right,
-		bottom,
-		left,
-		zIndex,
-	} = attributes;
+	const { tagName, shadow, position, top, right, bottom, left, zIndex } =
+		attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>

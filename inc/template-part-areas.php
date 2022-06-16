@@ -128,6 +128,20 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 				'area_tag'    => 'header',
 			),
 			array(
+				'area'        => 'unitone/contents/bbpress',
+				'label'       => __( 'bbPress contents', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => '',
+				'area_tag'    => 'main',
+			),
+			array(
+				'area'        => 'unitone/page-header/bbpress',
+				'label'       => __( 'bbPress page header', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => '',
+				'area_tag'    => 'header',
+			),
+			array(
 				'area'        => 'unitone/comments',
 				'label'       => __( 'Comments', 'unitone' ),
 				'icon'        => 'layout',

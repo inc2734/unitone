@@ -93,3 +93,6 @@ require get_template_directory() . '/inc/global-styles.php';
 
 // WooCommerce integration.
 require get_template_directory() . '/inc/woocommerce.php';
+
+// bbPress integration.
+require get_template_directory() . '/inc/bbpress.php';

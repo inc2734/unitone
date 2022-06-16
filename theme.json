@@ -156,6 +156,13 @@
 			"postTypes": [
 				"product"
 			]
+		},
+		{
+			"name": "page-bbpress",
+			"title": "for bbPress",
+			"postTypes": [
+				"false"
+			]
 		}
 	],
 	"templateParts": [
@@ -383,6 +390,26 @@
 			"name": "page-header-single-product-image",
 			"title": "WooCommerce product page header (Image)",
 			"area": "unitone/page-header/product"
+		},
+		{
+			"name": "contents-bbpress",
+			"title": "bbPress contents",
+			"area": "unitone/contents/bbpress"
+		},
+		{
+			"name": "contents-bbpress-page-header-image",
+			"title": "bbPress contents (Page header (Image))",
+			"area": "unitone/contents/bbpress"
+		},
+		{
+			"name": "page-header-bbpress",
+			"title": "bbPress page header",
+			"area": "unitone/page-header/bbpress"
+		},
+		{
+			"name": "page-header-bbpress-image",
+			"title": "bbPress page header (Image)",
+			"area": "unitone/page-header/bbpress"
 		}
 	]
 }

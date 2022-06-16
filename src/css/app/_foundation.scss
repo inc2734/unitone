@@ -24,4 +24,40 @@
 		padding: 0 var(--unitone--s-2);
 		border-radius: var(--unitone--global--border-radius);
 	}
+
+	:where(
+		[type=email],
+		[type=number],
+		[type=password],
+		[type=search],
+		[type=tel],
+		[type=text],
+		[type=url],
+		textarea
+	) {
+		border: 1px solid var(--wp--preset--color--unitone-gray);
+		padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
+		border-radius: var(--unitone--global--border-radius);
+	}
+
+	:where(select) {
+		border: 1px solid var(--wp--preset--color--unitone-gray);
+		padding: var(--unitone--s-2) var(--unitone--s-2);
+		border-radius: var(--unitone--global--border-radius);
+	}
+
+	:where(
+		[type=button],
+		[type=reset],
+		[type=submit],
+		button
+	) {
+		border: 1px solid var(--wp--preset--color--unitone-gray);
+		padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
+		border-radius: var(--unitone--global--border-radius);
+
+		&:active {
+			border-color: var(--wp--preset--color--unitone-dark-gray);
+		}
+	}
 }

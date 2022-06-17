@@ -50,7 +50,8 @@ add_filter(
 
 /**
  * Customize request URL that for updating.
- * Access https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/... and return json after authentication passes.
+ * Access https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/...?repository=unitone
+ * and return json after authentication passes.
  *
  * @return string
  */
@@ -59,7 +60,7 @@ add_filter(
 	function() {
 		$license_key = Manager::get_option( 'license-key' );
 		return sprintf(
-			'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/%1$s',
+			'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/%1$s?repository=unitone',
 			esc_attr( $license_key )
 		);
 	}

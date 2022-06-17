@@ -41,7 +41,6 @@
 		"css:app": "sass --no-source-map src/css/app/app.scss:dist/css/app/app.css && postcss dist/css/app/app.css -r",
 		"css:editor-styles": "sass --no-source-map src/css/app/editor-style.scss:dist/css/app/editor-style.css && postcss dist/css/app/editor-style.css -r",
 		"css:editor": "sass --no-source-map src/css/editor/editor.scss:dist/css/editor/editor.css && postcss dist/css/editor/editor.css -r",
-		"css:woocommerce": "sass --no-source-map src/css/woocommerce/woocommerce.scss:dist/css/woocommerce/woocommerce.css && postcss dist/css/woocommerce/woocommerce.css -r",
 		"css": "run-p css:*",
 		"blocks:format": "wp-scripts format src/blocks",
 		"blocks:build": "rimraf -r dist/blocks && wp-scripts build --output-path=dist",

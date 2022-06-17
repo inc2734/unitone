@@ -60,4 +60,14 @@
 			border-color: var(--wp--preset--color--unitone-dark-gray);
 		}
 	}
+
+	fieldset {
+		border: 1px solid var(--wp--preset--color--unitone-light-gray);
+		padding: var(--unitone--s-1);
+	}
+
+	legend {
+		padding-right: var(--unitone--s-2);
+		padding-left: var(--unitone--s-2);
+	}
 }

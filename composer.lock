@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "90d967d24d960972fdaf1ea5a84a8aed",
+    "content-hash": "a69a2b3bf6723dd6a0c6f557c9bc7c7f",
     "packages": [
         {
             "name": "inc2734/wp-breadcrumbs",
@@ -102,6 +102,55 @@
                 "source": "https://github.com/inc2734/wp-github-theme-updater/tree/3.1.1"
             },
             "time": "2022-06-01T01:30:28+00:00"
+        },
+        {
+            "name": "inc2734/wp-oembed-blog-card",
+            "version": "11.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inc2734/wp-oembed-blog-card.git",
+                "reference": "326da8cd21675c4185d4f092fee11730bcbeadbd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inc2734/wp-oembed-blog-card/zipball/326da8cd21675c4185d4f092fee11730bcbeadbd",
+                "reference": "326da8cd21675c4185d4f092fee11730bcbeadbd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+                "phpcompatibility/php-compatibility": "^9.3",
+                "sirbrillig/phpcs-variable-analysis": "^2.11",
+                "squizlabs/php_codesniffer": "^3.6",
+                "wp-coding-standards/wpcs": "^2.3",
+                "wp-phpunit/wp-phpunit": "^5.8",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Inc2734\\WP_OEmbed_Blog_Card\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Takashi Kitajima",
+                    "email": "inc@2inc.org"
+                }
+            ],
+            "description": "A library for WordPress oEmbed Blog Card.",
+            "support": {
+                "issues": "https://github.com/inc2734/wp-oembed-blog-card/issues",
+                "source": "https://github.com/inc2734/wp-oembed-blog-card/tree/11.1.0"
+            },
+            "time": "2022-04-21T06:32:41+00:00"
         }
     ],
     "packages-dev": [

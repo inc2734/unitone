@@ -91,6 +91,9 @@ require get_template_directory() . '/inc/template-part-areas.php';
 // Add global styles.
 require get_template_directory() . '/inc/global-styles.php';
 
+// Customize oEmbed.
+require get_template_directory() . '/inc/oembed.php';
+
 // WooCommerce integration.
 require get_template_directory() . '/inc/woocommerce.php';
 

@@ -82,6 +82,9 @@ require get_template_directory() . '/inc/blocks.php';
 // Add block patterns.
 require get_template_directory() . '/inc/block-patterns.php';
 
+// Add remote block patterns.
+require get_template_directory() . '/inc/remote-block-patterns.php';
+
 // Add block styles.
 require get_template_directory() . '/inc/block-styles.php';
 

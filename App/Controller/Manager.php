@@ -98,6 +98,9 @@ class Manager {
 			self::MENU_SLUG,
 			self::SETTINGS_NAME,
 			function( $option ) {
+				$transient_name = 'unitone-remote-patterns';
+				$transient      = delete_transient( $transient_name );
+
 				if ( isset( $option['reset'] ) && '1' === $option['reset'] ) {
 					return array();
 				}

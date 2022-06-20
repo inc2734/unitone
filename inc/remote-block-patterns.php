@@ -71,7 +71,7 @@ function unitone_register_remote_block_patterns() {
 			continue;
 		}
 
-		$pattern_name = sanitize_title( $pattern['slug'] );
+		$pattern_name = esc_html( $pattern['slug'] );
 		// Some patterns might be already registered as core patterns with the `core` prefix.
 		$is_registered = $registry->is_registered( $pattern_name ) || $registry->is_registered( $pattern_name );
 		if ( ! $is_registered ) {

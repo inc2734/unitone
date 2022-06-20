@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-06-13T08:40:13+00:00\n"
-"PO-Revision-Date: 2022-06-13 17:40+0900\n"
+"POT-Creation-Date: 2022-06-20T08:22:11+00:00\n"
+"PO-Revision-Date: 2022-06-20 17:23+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
@@ -42,15 +42,15 @@ msgstr "unitone 設定"
 msgid "Reset settings"
 msgstr "設定をリセット"
 
-#: App/Controller/Manager.php:110
+#: App/Controller/Manager.php:113
 msgid "Settings"
 msgstr "設定"
 
-#: App/Controller/Manager.php:118
+#: App/Controller/Manager.php:121
 msgid "License key"
 msgstr "ライセンスキー"
 
-#: App/Controller/Manager.php:129
+#: App/Controller/Manager.php:132
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
@@ -187,20 +187,20 @@ msgid "WooCommerce product page header"
 msgstr "Woocommerce 個別商品のページヘッダー"
 
 #: inc/template-part-areas.php:132
+msgid "bbPress contents"
+msgstr "bbPress のコンテンツ"
+
+#: inc/template-part-areas.php:139
+msgid "bbPress page header"
+msgstr "bbPress のページヘッダー"
+
+#: inc/template-part-areas.php:146
 msgid "Comments"
 msgstr "コメント"
 
-#: inc/template-part-areas.php:139
+#: inc/template-part-areas.php:153
 msgid "Footer breadcrumbs"
 msgstr "フッターのパンくずリスト"
-
-#: inc/woocommerce.php:108
-msgid "Home"
-msgstr "ホーム"
-
-#: inc/woocommerce.php:114
-msgid "My account"
-msgstr "マイアカウント"
 
 #: patterns/404-contents.php:9
 msgid ""
@@ -237,18 +237,6 @@ msgstr "一般"
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
 msgstr "テキストも一緒に中央揃え"
-
-#: dist/blocks/cover-content/index.js:1
-msgid "Cover content (Top)"
-msgstr "カバーコンテンツ（上部）"
-
-#: dist/blocks/cover-content/index.js:1
-msgid "Cover content (Center)"
-msgstr "カバーコンテンツ（中央）"
-
-#: dist/blocks/cover-content/index.js:1
-msgid "Cover content (Bottom)"
-msgstr "カバーコンテンツ（下部）"
 
 #: dist/blocks/cover/index.js:1
 msgid "No padding"
@@ -535,16 +523,6 @@ msgid ""
 "the left and right."
 msgstr "コンテンツ領域を一定の幅に収め、さらに左右に適切な余白を確保します。"
 
-#: dist/blocks/cover-content/block.json
-msgctxt "block title"
-msgid "Cover content"
-msgstr "カバーコンテンツ"
-
-#: dist/blocks/cover-content/block.json
-msgctxt "block description"
-msgid "This block places the content inside the cover block."
-msgstr "現在のページの位置を示します。"
-
 #: dist/blocks/cover/block.json
 msgctxt "block title"
 msgid "Cover"
@@ -771,6 +749,11 @@ msgid "Single product"
 msgstr "個別商品"
 
 #: theme.json
+msgctxt "Custom template name"
+msgid "for bbPress"
+msgstr "bbPress用"
+
+#: theme.json
 msgctxt "Template part name"
 msgid "Header"
 msgstr "ヘッダー"
@@ -995,8 +978,39 @@ msgctxt "Template part name"
 msgid "WooCommerce product page header (Image)"
 msgstr "WooCommerce 個別商品のページヘッダー（画像）"
 
+#: theme.json
+msgctxt "Template part name"
+msgid "bbPress contents"
+msgstr "bbPress のコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "bbPress contents (Page header (Image))"
+msgstr "bbPress のコンテンツ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "bbPress page header"
+msgstr "bbPress のページヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "bbPress page header (Image)"
+msgstr "bbPress のページヘッダー（画像）"
+
+#~ msgid "Cover content (Top)"
+#~ msgstr "カバーコンテンツ（上部）"
+
+#~ msgid "Cover content (Center)"
+#~ msgstr "カバーコンテンツ（中央）"
+
+#~ msgid "Cover content (Bottom)"
+#~ msgstr "カバーコンテンツ（下部）"
+
+#~ msgctxt "block title"
+#~ msgid "Cover content"
+#~ msgstr "カバーコンテンツ"
+
 #~ msgctxt "block description"
-#~ msgid ""
-#~ "This block is used to ensure appropriate margins on the left and right "
-#~ "sides of the content area."
-#~ msgstr "コンテンツ領域の左右に適切な余白を確保します。"
+#~ msgid "This block places the content inside the cover block."
+#~ msgstr "現在のページの位置を示します。"

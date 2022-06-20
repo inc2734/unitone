@@ -44,6 +44,15 @@ function unitone_get_remote_block_pattens() {
 	}
 
 	$patterns = json_decode( wp_remote_retrieve_body( $response ), true );
+
+	foreach ( $patterns as $key => $pattern ) {
+		$patterns[ $key ]['content'] = str_replace(
+			'https://unitone.2inc.org/wp-content/themes/unitone',
+			get_template_directory_uri(),
+			$pattern['content'],
+		);
+	}
+
 	set_transient( $transient_name, $patterns, 60 * 10 );
 
 	return $patterns;

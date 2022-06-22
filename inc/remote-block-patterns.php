@@ -53,7 +53,7 @@ function unitone_get_remote_block_pattens() {
 		);
 	}
 
-	set_transient( $transient_name, $patterns, 60 * 10 );
+	set_transient( $transient_name, $patterns, 60 * 60 * 24 );
 
 	return $patterns;
 }

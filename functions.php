@@ -56,6 +56,14 @@ if ( ! function_exists( 'unitone_theme_setup' ) ) {
 add_action( 'after_setup_theme', 'unitone_theme_setup' );
 
 /**
+ * Remove archive title prefix.
+ */
+function unitone_remove_archive_title_prefix( $title, $original_title ) {
+	return $original_title;
+}
+add_filter( 'get_the_archive_title', 'unitone_remove_archive_title_prefix', 10, 2 );
+
+/**
  * Restores the Customizer since we still rely on it.
  */
 function unitone_restore_customizer( $wp_customize ) {

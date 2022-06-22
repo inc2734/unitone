@@ -2,6 +2,7 @@
 /**
  * Title: Image
  * Slug: unitone/image
+ * inserter: false
  */
 ?>
 <!-- wp:image {"id":1,"width":1920,"height":1280,"lock":{"remove":true,"move":true}} -->

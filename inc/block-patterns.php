@@ -46,4 +46,5 @@ function unitone_register_block_patterns() {
 		}
 	}
 }
+// 9 or the category order will be unintended when the pattern is added with unitone_register_remote_block_patterns().
 add_action( 'init', 'unitone_register_block_patterns', 9 );

@@ -63,6 +63,10 @@ function unitone_get_remote_block_pattens() {
  * This requires a valid license key.
  */
 function unitone_register_remote_block_patterns() {
+	if ( ! is_admin() && current_user_can( 'edit-post' ) ) {
+		return;
+	}
+
 	$remote_block_patterns = unitone_get_remote_block_pattens();
 	$registry              = WP_Block_Patterns_Registry::get_instance();
 

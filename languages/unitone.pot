@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 0.0.4\n"
+"Project-Id-Version: unitone 0.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-06-20T08:22:11+00:00\n"
+"POT-Creation-Date: 2022-06-13T08:40:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -42,15 +42,15 @@ msgstr ""
 msgid "Reset settings"
 msgstr ""
 
-#: App/Controller/Manager.php:113
+#: App/Controller/Manager.php:110
 msgid "Settings"
 msgstr ""
 
-#: App/Controller/Manager.php:121
+#: App/Controller/Manager.php:118
 msgid "License key"
 msgstr ""
 
-#: App/Controller/Manager.php:132
+#: App/Controller/Manager.php:129
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr ""
 
@@ -189,19 +189,19 @@ msgid "WooCommerce product page header"
 msgstr ""
 
 #: inc/template-part-areas.php:132
-msgid "bbPress contents"
-msgstr ""
-
-#: inc/template-part-areas.php:139
-msgid "bbPress page header"
-msgstr ""
-
-#: inc/template-part-areas.php:146
 msgid "Comments"
 msgstr ""
 
-#: inc/template-part-areas.php:153
+#: inc/template-part-areas.php:139
 msgid "Footer breadcrumbs"
+msgstr ""
+
+#: inc/woocommerce.php:108
+msgid "Home"
+msgstr ""
+
+#: inc/woocommerce.php:114
+msgid "My account"
 msgstr ""
 
 #: patterns/404-contents.php:9
@@ -240,6 +240,18 @@ msgstr ""
 
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
+msgstr ""
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Cover content (Top)"
+msgstr ""
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Cover content (Center)"
+msgstr ""
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Cover content (Bottom)"
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
@@ -528,6 +540,16 @@ msgctxt "block description"
 msgid "Keep the content area within a certain width, plus appropriate margins on the left and right."
 msgstr ""
 
+#: dist/blocks/cover-content/block.json
+msgctxt "block title"
+msgid "Cover content"
+msgstr ""
+
+#: dist/blocks/cover-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the cover block."
+msgstr ""
+
 #: dist/blocks/cover/block.json
 msgctxt "block title"
 msgid "Cover"
@@ -746,11 +768,6 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single product"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "for bbPress"
 msgstr ""
 
 #: theme.json
@@ -976,24 +993,4 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "WooCommerce product page header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress contents"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress contents (Page header (Image))"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress page header"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress page header (Image)"
 msgstr ""

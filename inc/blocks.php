@@ -18,6 +18,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/cluster' );
 	register_block_type( get_template_directory() . '/dist/blocks/container' );
 	register_block_type( get_template_directory() . '/dist/blocks/cover' );
+	register_block_type( get_template_directory() . '/dist/blocks/cover-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/frame' );
 	register_block_type( get_template_directory() . '/dist/blocks/layer' );
 	register_block_type( get_template_directory() . '/dist/blocks/layers' );

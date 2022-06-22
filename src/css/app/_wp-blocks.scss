@@ -162,6 +162,11 @@
 		}
 	}
 
+	.wp-block-query-pagination {
+		display: flex;
+		justify-content: center;
+	}
+
 	.wp-block-query-pagination-numbers,
 	.wp-block-comments-pagination-numbers {
 		display: flex;

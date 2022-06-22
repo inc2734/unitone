@@ -10,7 +10,7 @@ export default function ( { attributes } ) {
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
 					'data-unitone-layout': classnames( 'cover__content', {
-						[ `-position:${ position }` ]: !! position,
+						[ `-valign:${ position }` ]: !! position,
 					} ),
 				} )
 			) }

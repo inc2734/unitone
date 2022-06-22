@@ -21,6 +21,14 @@ html :where(.editor-styles-wrapper) {
 	height: 100vh;
 }
 
+.block-editor-block-preview__content-iframe {
+	[data-unitone-layout~=text] {
+		> .block-list-appender:only-child {
+			display: block;
+		}
+	}
+}
+
 .block-editor-block-inspector {
 	> div:not([class]) {
 		display: flex;

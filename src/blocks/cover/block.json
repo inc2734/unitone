@@ -16,8 +16,7 @@
 		"anchor": true,
 		"unitone": {
 			"gap": true,
-			"minHeight": true,
-			"justifyContentColumn": true
+			"minHeight": true
 		}
 	},
 	"category": "unitone/layout",

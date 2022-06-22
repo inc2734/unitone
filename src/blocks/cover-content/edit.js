@@ -23,7 +23,7 @@ export default function ( { attributes, clientId } ) {
 		'cover__content',
 		blockProps[ 'data-unitone-layout' ],
 		{
-			[ `-position:${ position }` ]: !! position,
+			[ `-valign:${ position }` ]: !! position,
 		}
 	);
 

@@ -84,4 +84,12 @@
 			justify-self: end;
 		}
 	}
+
+	[data-type="unitone/cover"] {
+		> .block-editor-block-variation-picker.has-many-variations {
+			> .components-placeholder__fieldset {
+				max-width: 100%;
+			}
+		}
+	}
 }

@@ -30,6 +30,10 @@
 		},
 		"zIndex": {
 			"type": "string"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", false ]
 		}
 	},
 	"supports": {

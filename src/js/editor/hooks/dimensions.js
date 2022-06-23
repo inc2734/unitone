@@ -85,7 +85,7 @@ export function DimensionsPanel( props ) {
 						label={ __( 'Padding', 'unitone' ) }
 						onDeselect={ () => resetPadding( props ) }
 						resetAllFilter={ createResetAllFilter( 'padding' ) }
-						isShownByDefault={ false }
+						isShownByDefault={ true }
 						panelId={ props.clientId }
 					>
 						<PaddingEdit { ...props } />
@@ -98,7 +98,7 @@ export function DimensionsPanel( props ) {
 						label={ __( 'Gutters', 'unitone' ) }
 						onDeselect={ () => resetGutters( props ) }
 						resetAllFilter={ createResetAllFilter( 'gutters' ) }
-						isShownByDefault={ false }
+						isShownByDefault={ true }
 						panelId={ props.clientId }
 					>
 						<GuttersEdit { ...props } />
@@ -111,7 +111,7 @@ export function DimensionsPanel( props ) {
 						label={ __( 'Gap', 'unitone' ) }
 						onDeselect={ () => resetGap( props ) }
 						resetAllFilter={ createResetAllFilter( 'gap' ) }
-						isShownByDefault={ false }
+						isShownByDefault={ true }
 						panelId={ props.clientId }
 					>
 						<GapEdit { ...props } />
@@ -124,7 +124,7 @@ export function DimensionsPanel( props ) {
 						label={ __( 'Using negative margin', 'unitone' ) }
 						onDeselect={ () => resetNegative( props ) }
 						resetAllFilter={ createResetAllFilter( 'negative' ) }
-						isShownByDefault={ false }
+						isShownByDefault={ true }
 						panelId={ props.clientId }
 					>
 						<NegativeEdit { ...props } />

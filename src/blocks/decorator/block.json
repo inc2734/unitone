@@ -43,16 +43,29 @@
 		"color": {
 			"background": true,
 			"color": true,
-			"gradients": true
+			"gradients": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
 		},
 		"typography": {
-			"fontSize": true
+			"fontSize": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
 		},
 		"__experimentalBorder": {
 			"color": true,
 			"radius": true,
 			"style": true,
-			"width": true
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
 		},
 		"unitone": {
 			"padding": true

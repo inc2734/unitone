@@ -14,7 +14,10 @@
 		"className": false,
 		"anchor": true,
 		"typography": {
-			"fontSize": true
+			"fontSize": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
 		},
 		"unitone": {
 			"gap": true,

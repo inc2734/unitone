@@ -34,7 +34,10 @@ export default function ( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody label={ __( 'Dimensions', 'unitone' ) }>
+				<PanelBody
+					title={ __( 'Dimensions', 'unitone' ) }
+					initialOpen={ false }
+				>
 					<TextControl
 						value={ ratio }
 						onChange={ ( newAttribute ) =>

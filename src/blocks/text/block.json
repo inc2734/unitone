@@ -10,6 +10,10 @@
 			"type": "boolean",
 			"default": false
 		},
+		"column": {
+			"type": "boolean",
+			"default": false
+		},
 		"layout": {
 			"type": "object",
 			"default": {
@@ -21,6 +25,7 @@
 		"className": false,
 		"anchor": true,
 		"unitone": {
+			"gap": true,
 			"maxWidth": true
 		},
 		"__experimentalLayout": {

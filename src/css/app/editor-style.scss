@@ -76,6 +76,10 @@
 		&[class*="wp-container-"] > * {
 			max-width: min(100%,var(--unitone--max-width));
 		}
+
+		&[data-unitone-layout~="-column"][class*="wp-container-"] > * {
+			max-width: initial;
+		}
 	}
 
 	[data-unitone-layout~="layers"] {

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-06-22T05:08:40+00:00\n"
-"PO-Revision-Date: 2022-06-22 14:10+0900\n"
+"POT-Creation-Date: 2022-06-24T01:56:33+00:00\n"
+"PO-Revision-Date: 2022-06-24 10:56+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -387,6 +387,10 @@ msgstr "閾値"
 #: dist/blocks/text/index.js:1
 msgid "Centering by intrinsic size of children"
 msgstr "子要素の内在的なサイズによって中央揃えする"
+
+#: dist/blocks/text/index.js:1
+msgid "Multi columns"
+msgstr "マルチカラム"
 
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Sidebar width"

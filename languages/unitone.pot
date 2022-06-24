@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-06-22T05:08:40+00:00\n"
+"POT-Creation-Date: 2022-06-24T01:56:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -393,6 +393,10 @@ msgstr ""
 
 #: dist/blocks/text/index.js:1
 msgid "Centering by intrinsic size of children"
+msgstr ""
+
+#: dist/blocks/text/index.js:1
+msgid "Multi columns"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1

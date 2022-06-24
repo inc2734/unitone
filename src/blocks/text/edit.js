@@ -13,7 +13,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { center } = attributes;
+	const { center, column } = attributes;
 
 	// const hasInnerBlocks = useSelect(
 	// 	( select ) =>
@@ -45,6 +45,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		blockProps[ 'data-unitone-layout' ],
 		{
 			'-center': center,
+			'-column': column,
 		}
 	);
 
@@ -68,6 +69,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						checked={ center }
 						onChange={ ( newAttribute ) => {
 							setAttributes( { center: newAttribute } );
+						} }
+					/>
+
+					<ToggleControl
+						label={ __( 'Multi columns', 'unitone' ) }
+						checked={ column }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { column: newAttribute } );
 						} }
 					/>
 				</PanelBody>

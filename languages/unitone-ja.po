@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-06-24T01:56:33+00:00\n"
-"PO-Revision-Date: 2022-06-24 10:56+0900\n"
+"POT-Creation-Date: 2022-06-25T04:41:57+00:00\n"
+"PO-Revision-Date: 2022-06-25 13:42+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -747,6 +747,11 @@ msgstr "6XL"
 msgctxt "Color name"
 msgid "Accent color"
 msgstr "アクセントカラー"
+
+#: theme.json
+msgctxt "Color name"
+msgid "text"
+msgstr "テキスト"
 
 #: theme.json
 msgctxt "Color name"

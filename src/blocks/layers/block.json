@@ -15,7 +15,8 @@
 		"className": false,
 		"anchor": true,
 		"unitone": {
-			"gap": true
+			"gap": true,
+			"minHeight": true
 		}
 	},
 	"category": "unitone/layout",

@@ -24,6 +24,11 @@
 					"name": "Accent color"
 				},
 				{
+					"slug": "unitone/text",
+					"color": "var(--unitone--color-text)",
+					"name": "text"
+				},
+				{
 					"slug": "unitone/bright-gray",
 					"color": "#f8f9fa",
 					"name": "Bright gray"

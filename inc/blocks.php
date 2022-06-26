@@ -58,16 +58,14 @@ add_filter(
 /**
  * Fix .wp-container-* class being added by itself in the query loop block.
  */
+remove_filter( 'render_block', 'wp_render_layout_support_flag' );
 add_filter(
 	'render_block',
 	function( $block_content, $block ) {
-		if (
-			0 === strpos( $block['blockName'], 'unitone/' )
-			&& preg_match( '|<[^>]+?data-unitone-layout="[^"]+?" ?[^>?]*? class="[^"]*?wp-container-[\d]+|ms', $block_content, $match )
-		) {
-			$block_content = preg_replace( '|wp-container-[\d]+|', '', $block_content );
+		if ( 0 === strpos( $block['blockName'], 'unitone/' ) ) {
+			return $block_content;
 		}
-		return $block_content;
+		return wp_render_layout_support_flag( $block_content, $block );
 	},
 	10,
 	2

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-06-25T04:41:57+00:00\n"
+"POT-Creation-Date: 2022-06-28T02:17:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -42,15 +42,23 @@ msgstr ""
 msgid "Reset settings"
 msgstr ""
 
-#: App/Controller/Manager.php:113
+#: App/Controller/Manager.php:116
 msgid "Settings"
 msgstr ""
 
-#: App/Controller/Manager.php:121
+#: App/Controller/Manager.php:124
 msgid "License key"
 msgstr ""
 
-#: App/Controller/Manager.php:132
+#: App/Controller/Manager.php:170
+msgid "Enable"
+msgstr ""
+
+#: App/Controller/Manager.php:175
+msgid "Disable"
+msgstr ""
+
+#: App/Controller/Manager.php:195
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr ""
 

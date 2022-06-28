@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-06-25T04:41:57+00:00\n"
-"PO-Revision-Date: 2022-06-25 13:42+0900\n"
+"POT-Creation-Date: 2022-06-28T02:17:12+00:00\n"
+"PO-Revision-Date: 2022-06-28 11:17+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -42,15 +42,23 @@ msgstr "unitone 設定"
 msgid "Reset settings"
 msgstr "設定をリセット"
 
-#: App/Controller/Manager.php:113
+#: App/Controller/Manager.php:116
 msgid "Settings"
 msgstr "設定"
 
-#: App/Controller/Manager.php:121
+#: App/Controller/Manager.php:124
 msgid "License key"
 msgstr "ライセンスキー"
 
-#: App/Controller/Manager.php:132
+#: App/Controller/Manager.php:170
+msgid "Enable"
+msgstr "有効"
+
+#: App/Controller/Manager.php:175
+msgid "Disable"
+msgstr "無効"
+
+#: App/Controller/Manager.php:195
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 

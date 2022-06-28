@@ -101,6 +101,9 @@ class Manager {
 				$transient_name = 'unitone-remote-patterns';
 				$transient      = delete_transient( $transient_name );
 
+				$transient_name = 'unitone-license-status';
+				$transient      = delete_transient( $transient_name );
+
 				if ( isset( $option['reset'] ) && '1' === $option['reset'] ) {
 					return array();
 				}
@@ -120,14 +123,74 @@ class Manager {
 			'license-key',
 			'<label for="license-key">' . esc_html__( 'License key', 'unitone' ) . '</label>',
 			function() {
+				global $wp_version;
+
+				$status = null;
+
+				$transient_name = 'unitone-license-status';
+				$transient      = get_transient( $transient_name );
+				if ( false !== $transient ) {
+					$status = $transient;
+				} else {
+					$license_key = static::get_option( 'license-key' );
+					$response    = wp_remote_get(
+						sprintf(
+							'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/validate/%1$s?repository=unitone',
+							esc_attr( $license_key )
+						),
+						array(
+							'user-agent' => 'WordPress/' . $wp_version,
+							'timeout'    => 30,
+							'headers'    => array(
+								'Accept-Encoding' => '',
+							),
+						)
+					);
+
+					if ( ! $response || is_wp_error( $response ) ) {
+						$status = 'error';
+					}
+
+					if ( ! $status ) {
+						$response_code = wp_remote_retrieve_response_code( $response );
+						if ( 200 !== $response_code ) {
+							$status = 'error';
+						}
+					}
+
+					if ( ! $status ) {
+						$status = wp_remote_retrieve_body( $response );
+					}
+
+					set_transient( $transient_name, $status, 60 * 5 );
+				}
+
+				$button = 'true' === $status
+					? array(
+						'label'   => __( 'Enable', 'unitone' ),
+						'color'   => '#fff',
+						'bgcolor' => '#51cf66',
+					)
+					: array(
+						'label'   => __( 'Disable', 'unitone' ),
+						'color'   => '#fff',
+						'bgcolor' => '#e03131',
+					);
 				?>
-				<input
-					type="text"
-					id="license-key"
-					class="widefat"
-					name="<?php echo esc_attr( self::SETTINGS_NAME ); ?>[license-key]"
-					value="<?php echo esc_attr( static::get_option( 'license-key' ) ); ?>"
-				>
+				<div style="display: flex; align-items: center; gap: .5rem">
+					<div style="flex: 1 1 auto">
+						<input
+							type="text"
+							id="license-key"
+							class="widefat"
+							name="<?php echo esc_attr( self::SETTINGS_NAME ); ?>[license-key]"
+							value="<?php echo esc_attr( static::get_option( 'license-key' ) ); ?>"
+						>
+					</div>
+					<div style="flex: 0 0 auto">
+						<span style="background-color: <?php echo esc_attr( $button['bgcolor'] ); ?>; color: <?php echo esc_attr( $button['color'] ); ?>; padding: .25em .5em; display: inline-block; font-size: 14px"><?php echo esc_html( $button['label'] ); ?></span>
+					</div>
+				</div>
 				<p class="description">
 					<?php esc_html_e( 'If the license key entered is valid, the theme can be updated.', 'unitone' ); ?>
 				</p>

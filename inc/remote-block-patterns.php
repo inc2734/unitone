@@ -13,12 +13,6 @@
 function unitone_get_remote_block_pattens() {
 	global $wp_version;
 
-	$transient_name = 'unitone-remote-patterns';
-	$transient      = get_transient( $transient_name );
-	if ( false !== $transient ) {
-		return $transient;
-	}
-
 	$license_key = \Unitone\App\Controller\Manager::get_option( 'license-key' );
 	$response    = wp_remote_get(
 		sprintf(
@@ -53,8 +47,6 @@ function unitone_get_remote_block_pattens() {
 		);
 	}
 
-	set_transient( $transient_name, $patterns, 60 * 60 );
-
 	return $patterns;
 }
 
@@ -63,12 +55,22 @@ function unitone_get_remote_block_pattens() {
  * This requires a valid license key.
  */
 function unitone_register_remote_block_patterns() {
-	if ( ! is_admin() && current_user_can( 'edit-post' ) ) {
-		return;
+	if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
+		if ( false !== strpos( $_SERVER['REQUEST_URI'], 'wp-json/unitone-license-manager' ) ) {
+			return;
+		}
 	}
 
-	$remote_block_patterns = unitone_get_remote_block_pattens();
-	$registry              = WP_Block_Patterns_Registry::get_instance();
+	$transient_name = 'unitone-remote-patterns';
+	$transient      = get_transient( $transient_name );
+	if ( false !== $transient ) {
+		$remote_block_patterns = $transient;
+	} else {
+		$remote_block_patterns = unitone_get_remote_block_pattens();
+		set_transient( $transient_name, $remote_block_patterns, 60 * 10 );
+	}
+
+	$registry = WP_Block_Patterns_Registry::get_instance();
 
 	foreach ( $remote_block_patterns as $pattern ) {
 		if ( ! $pattern['title'] || ! $pattern['slug'] || ! $pattern['content'] ) {

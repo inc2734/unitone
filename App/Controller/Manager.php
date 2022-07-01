@@ -162,7 +162,7 @@ class Manager {
 						$status = wp_remote_retrieve_body( $response );
 					}
 
-					set_transient( $transient_name, $status, 60 * 5 );
+					set_transient( $transient_name, $status, 60 * 10 );
 				}
 
 				$button = 'true' === $status

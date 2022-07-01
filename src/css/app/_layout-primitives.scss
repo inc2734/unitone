@@ -18,4 +18,10 @@
 	[data-unitone-layout~="decorator"] {
 		--unitone--position: relative;
 	}
+
+	[data-unitone-layout~="frame"] {
+		figcaption {
+			display: none;
+		}
+	}
 }

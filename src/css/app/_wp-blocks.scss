@@ -31,6 +31,20 @@
 	.wp-block-image {
 		margin-top: 0;
 		margin-bottom: 0;
+
+		> a {
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	.wp-block-post-featured-image {
+		> a {
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
 	}
 
 	.wp-block-social-links {

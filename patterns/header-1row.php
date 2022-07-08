@@ -8,10 +8,10 @@
 ?>
 <!-- wp:unitone/container -->
 <div data-unitone-layout="container">
-	<!-- wp:unitone/gutters {"unitone":{"padding":"1"}} -->
-	<div data-unitone-layout="gutters -padding:1">
-		<!-- wp:unitone/both-sides {"unitone":{"alignItems":"center"}} -->
-		<div data-unitone-layout="both-sides -align-items:center">
+	<!-- wp:unitone/gutters {"unitone":{"padding":"-1"}} -->
+	<div data-unitone-layout="gutters -padding:-1">
+		<!-- wp:unitone/both-sides {"unitone":{"alignItems":"center","gap":-1}} -->
+		<div data-unitone-layout="both-sides -align-items:center -gap:-1">
 			<!-- wp:unitone/both-sides-content -->
 			<div data-unitone-layout="both-sides__content">
 				<!-- wp:site-logo /-->

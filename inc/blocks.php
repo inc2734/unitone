@@ -63,6 +63,11 @@ add_filter(
 	'render_block',
 	function( $block_content, $block ) {
 		if ( 0 === strpos( $block['blockName'], 'unitone/' ) ) {
+			$block_content = preg_replace(
+				'|(<[^>]+?data-unitone-layout[^>]+?)wp-container-\d+?([^>]+?>)|ms',
+				'$1$2',
+				$block_content
+			);
 			return $block_content;
 		}
 		return wp_render_layout_support_flag( $block_content, $block );

@@ -25,6 +25,11 @@ add_filter(
 add_filter(
 	'inc2734_wp_oembed_blog_card_block_editor_template',
 	function( $template, $url ) {
+		$template .= sprintf(
+			'<link rel="stylesheet" href="%1$s?ver=%2$s">',
+			esc_url_raw( get_template_directory_uri() . '/dist/css/app/app.css' ),
+			filemtime( get_template_directory() . '/dist/css/app/app.css' )
+		);
 		return apply_filters( 'unitone_oembed_blog_card_block_editor_template', $template, $url );
 	},
 	10,

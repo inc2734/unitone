@@ -26,6 +26,11 @@
 
 	.wp-block-embed {
 		width: auto;
+
+		figcaption {
+			margin: var(--unitone--s-2) 0 0;
+			font-size: var(--wp--preset--font-size--unitone-s);
+		}
 	}
 
 	.wp-block-image {

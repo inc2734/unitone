@@ -1,0 +1,9 @@
+@mixin snow-monkey-editor() {
+	.wp-block-image.is-style-sme-shadowed {
+		img {
+			box-shadow: var(--unitone--global--box-shadow);
+		}
+	}
+}
+
+@include snow-monkey-editor();

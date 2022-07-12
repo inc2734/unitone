@@ -1,0 +1,5 @@
+@use './app';
+
+.editor-styles-wrapper {
+	@include app.snow-monkey-editor();
+}

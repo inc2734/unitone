@@ -294,8 +294,9 @@
 	}
 
 	.wp-block-comment-template,
-	.wp-block-comment-template .comment,
-	.wp-block-comment-template ol,
+	.wp-block-comment-template > li,
+	.wp-block-comment-template > li > ol,
+	.wp-block-comment-template > li > ol > li,
 	.wp-block-post-comments-form,
 	.comment-form {
 		display: flex;
@@ -303,8 +304,9 @@
 	}
 
 	.wp-block-comment-template,
-	.wp-block-comment-template .comment,
-	.wp-block-comment-template ol {
+	.wp-block-comment-template > li,
+	.wp-block-comment-template > li > ol,
+	.wp-block-comment-template > li > ol > li {
 		gap: var(--unitone--s1);
 	}
 

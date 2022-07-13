@@ -21,7 +21,7 @@
 
 			<!-- wp:unitone/with-sidebar-content -->
 			<div data-unitone-layout="with-sidebar__content">
-				<!-- wp:navigation {"layout":{"type":"flex","justifyContent":"left","orientation":"horizontal"},"style":{"typography":{"fontWeight":"600"}},"fontSize":"unitone-s"} -->
+				<!-- wp:navigation {"layout":{"type":"flex","justifyContent":"left","orientation":"horizontal"},"style":{"typography":{"fontWeight":"600"}},"fontSize":"unitone-s","className":"is-style-unitone"} -->
 					<!-- wp:page-list /-->
 				<!-- /wp:navigation -->
 			</div>

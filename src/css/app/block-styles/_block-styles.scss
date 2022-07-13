@@ -1,7 +1,9 @@
+@use 'wp-block-navigation';
 @use 'wp-block-post-terms';
 @use 'wp-block-query';
 
 @mixin block-styles() {
+	@include wp-block-navigation.block-styles();
 	@include wp-block-post-terms.block-styles();
 	@include wp-block-query.block-styles();
 }

@@ -37,5 +37,13 @@ function unitone_register_block_styles() {
 			'label' => __( 'Block link (Bordered)', 'unitone' ),
 		)
 	);
+
+	register_block_style(
+		'core/navigation',
+		array(
+			'name'  => 'unitone',
+			'label' => __( 'unitone', 'unitone' ),
+		)
+	);
 }
 add_action( 'init', 'unitone_register_block_styles', 9 );

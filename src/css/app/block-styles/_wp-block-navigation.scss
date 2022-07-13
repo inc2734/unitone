@@ -1,0 +1,42 @@
+@mixin block-styles() {
+	.wp-block-navigation.is-style-unitone {
+		// No background-color
+		&:not(.has-background) {
+			.wp-block-navigation__submenu-container {
+				background-color: var(--wp--preset--color--unitone-accent);
+				color: var(--wp--preset--color--white);
+			}
+		}
+
+		.wp-block-navigation__responsive-container {
+			// Global navigation
+			&:not(.is-menu-open) {
+				.wp-block-navigation__responsive-container-content {
+					> .wp-block-navigation__container,
+					> .wp-block-page-list {
+						> .wp-block-navigation-item {
+							> .wp-block-navigation__submenu-container {
+								transform: translateX(-50%);
+								left: 50%;
+								border: none;
+								font-weight: normal;
+
+								.wp-block-navigation__submenu-container {
+									top: 0;
+								}
+
+								.wp-block-navigation-item {
+									&:hover,
+									&:active,
+									&:focus {
+										background-color: rgba(255, 255, 255, 0.1);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

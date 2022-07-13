@@ -21,7 +21,7 @@
 
 			<!-- wp:unitone/both-sides-content {"contentMaxWidth":"100%"} -->
 			<div data-unitone-layout="both-sides__content" style="--unitone--content-max-width:100%">
-				<!-- wp:navigation {"overlayMenu":"always","layout":{"type":"flex","orientation":"horizontal"},"style":{"typography":{"fontWeight":"600"}},"fontSize":"unitone-s"} -->
+				<!-- wp:navigation {"overlayMenu":"always","layout":{"type":"flex","orientation":"horizontal"},"style":{"typography":{"fontWeight":"600"}},"fontSize":"unitone-s","className":"is-style-unitone"} -->
 					<!-- wp:page-list /-->
 				<!-- /wp:navigation -->
 			</div>

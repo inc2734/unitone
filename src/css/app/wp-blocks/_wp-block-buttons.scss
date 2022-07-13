@@ -1,0 +1,20 @@
+@mixin include() {
+	.wp-block-buttons {
+		--wp--style--block-gap: var(--unitone--s-1);
+	}
+
+	.wp-block-button {
+		--unitone--padding: var(--unitone--s-2);
+	}
+
+	.wp-block-button__link {
+		font-size: inherit;
+		background-color: var(--wp--preset--color--black);
+		padding: var(--unitone--padding) var(--unitone--s1);
+	}
+
+	.is-style-outline > :where(.wp-block-button__link),
+	:where(.wp-block-button__link).is-style-outline {
+		border-width: 1px;
+	}
+}

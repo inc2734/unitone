@@ -1,0 +1,20 @@
+@mixin include() {
+	.wp-block-code {
+		border: none;
+		border-radius: 0;
+		background-color: var(--unitone--color-text);
+		color: var(--unitone--color-white);
+		padding: var(--unitone--s-1);
+		overflow: auto;
+
+		code {
+			background-color: transparent;
+			border: none;
+			border-radius: 0;
+			color: inherit;
+			font-size: inherit;
+			padding: 0;
+			white-space: inherit;
+		}
+	}
+}

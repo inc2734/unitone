@@ -1,4 +1,4 @@
-@mixin snow-monkey-editor() {
+@mixin include() {
 	.wp-block-image.is-style-sme-shadowed {
 		img {
 			box-shadow: var(--unitone--global--box-shadow);
@@ -6,4 +6,4 @@
 	}
 }
 
-@include snow-monkey-editor();
+@include include();

@@ -1,31 +1,4 @@
-@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
-
-@mixin main() {
-	.entry-content,
-	.wp-block-post-content {
-		@include text.abstract-text();
-		--unitone--max-width: var(--wp--custom--content-max-width);
-
-		> *:where(:not(.alignright):not(.alignleft)) {
-			margin-right: auto;
-			margin-left: auto;
-		}
-
-		&:lang(ja) {
-			font-feature-settings: "palt" 0;
-			font-kerning: none;
-
-			> :where(h1, h2, h3, h4, h5) {
-				font-feature-settings: "palt" 1;
-				font-kerning: normal;
-			}
-		}
-	}
-	:where(.entry-content > *),
-	:where(.wp-block-post-content > *) {
-		max-width: var(--unitone--max-width);
-	}
-
+@mixin include() {
 	.wp-site-blocks {
 		display: flex;
 		flex-direction: column;

@@ -1,0 +1,23 @@
+@mixin include() {
+	.wp-block-post-comments-form {
+		gap: var(--unitone--s-1);
+	}
+
+	.comment-form {
+		gap: var(--unitone--s-1);
+
+		> [class*="comment-form-"] {
+			display: flex;
+			flex-direction: column;
+			gap: var(--unitone--s-2);
+
+			label {
+				margin-bottom: 0;
+			}
+		}
+
+		.comment-form-cookies-consent {
+			flex-direction: row;
+		}
+	}
+}

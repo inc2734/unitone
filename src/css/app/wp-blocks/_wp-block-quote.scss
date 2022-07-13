@@ -1,0 +1,23 @@
+@use '../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
+
+@mixin include() {
+	.wp-block-quote {
+		@include text.abstract-text();
+		--unitone--max-width: inherit;
+
+		padding: 0;
+
+		&:where(:not(.is-style-plain)) {
+			padding-left: var(--unitone--s1);
+		}
+
+		cite,
+		footer {
+			font-size: var(--wp--preset--font-size--unitone-s);
+		}
+
+		> * {
+			--unitone--gap: var(--unitone--s-1);
+		}
+	}
+}

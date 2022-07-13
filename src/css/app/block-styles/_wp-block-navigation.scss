@@ -1,4 +1,4 @@
-@mixin block-styles() {
+@mixin include() {
 	.wp-block-navigation.is-style-unitone {
 		// No background-color
 		&:not(.has-background) {

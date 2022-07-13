@@ -2,16 +2,12 @@
 
 @use 'foundation';
 @use 'layout-primitives';
-@use 'font-sizes';
-@use 'align';
-@use 'wp-blocks';
+@use 'wp-blocks/wp-blocks';
 @use 'main';
 @use 'block-styles/block-styles';
 
-@include foundation.foundation();
-@include layout-primitives.layout-primitives();
-@include font-sizes.font-sizes();
-@include align.align();
-@include wp-blocks.wp-blocks();
-@include main.main();
-@include block-styles.block-styles();
+@include foundation.include();
+@include layout-primitives.include();
+@include wp-blocks.include();
+@include main.include();
+@include block-styles.include();

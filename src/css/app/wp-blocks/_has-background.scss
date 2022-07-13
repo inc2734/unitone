@@ -1,0 +1,13 @@
+@mixin include() {
+	p.has-background,
+	.wp-block-preformatted.has-background,
+	.wp-block-template-part.has-background,
+	.wp-block-group.has-background {
+		padding: var(--unitone--s1);
+	}
+
+	ul.has-background,
+	ol.has-background {
+		padding: var(--unitone--s1);
+	}
+}

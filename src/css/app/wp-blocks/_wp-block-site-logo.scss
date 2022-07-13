@@ -1,0 +1,12 @@
+@mixin include() {
+	.wp-block-site-logo {
+		a {
+			padding-top: var(--unitone--s-1);
+			padding-bottom: var(--unitone--s-1);
+		}
+
+		img {
+			display: table;
+		}
+	}
+}

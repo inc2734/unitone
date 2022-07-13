@@ -1,0 +1,9 @@
+@mixin include() {
+	.wp-block-post-featured-image {
+		> a {
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}

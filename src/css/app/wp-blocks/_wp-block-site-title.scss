@@ -1,0 +1,12 @@
+@mixin include() {
+	.wp-block-site-title {
+		a {
+			color: currentColor;
+			text-decoration: none;
+		}
+	}
+
+	.wp-block-site-logo + .wp-block-site-title {
+		display: none;
+	}
+}

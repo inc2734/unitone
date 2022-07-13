@@ -1,0 +1,12 @@
+@mixin include() {
+	.wp-block-image {
+		margin-top: 0;
+		margin-bottom: 0;
+
+		> a {
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}

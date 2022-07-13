@@ -1,4 +1,4 @@
-@mixin block-styles() {
+@mixin include() {
 	.wp-block-post-terms.is-style-badge {
 		background-color: var(--wp--preset--color--black);
 		border-radius: var(--unitone--global--border-radius);

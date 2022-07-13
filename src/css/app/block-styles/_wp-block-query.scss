@@ -1,4 +1,4 @@
-@mixin block-styles() {
+@mixin include() {
 	.wp-block-query.is-style-block-link-underline,
 	.wp-block-query.is-style-block-link-bordered {
 		.wp-block-post-template {

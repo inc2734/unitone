@@ -1,7 +1,7 @@
 @use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/layout-primitives';
 @use '../../../node_modules/@inc2734/unitone-css/src/helper/helper';
 
-@mixin layout-primitives() {
+@mixin include() {
 	@include layout-primitives.layout-primitives();
 	@include helper.helper();
 

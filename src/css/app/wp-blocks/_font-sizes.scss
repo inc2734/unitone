@@ -1,7 +1,7 @@
 @use "sass:map";
-@use '../../../node_modules/@inc2734/unitone-css/src/variables/variables';
+@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
 
-@mixin font-sizes() {
+@mixin include() {
 	$font-sizes: (
 		(
 			slug: unitone-xs,

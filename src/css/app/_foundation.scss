@@ -1,6 +1,6 @@
 @use '../../../node_modules/@inc2734/unitone-css/src/foundation/foundation';
 
-@mixin foundation() {
+@mixin include() {
 	@include foundation.foundation();
 
 	:root {

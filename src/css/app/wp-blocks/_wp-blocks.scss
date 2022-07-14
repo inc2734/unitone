@@ -1,11 +1,15 @@
 @use 'align';
 @use 'font-sizes';
 @use 'has-background';
+@use 'wp-block-archives';
 @use 'wp-block-buttons';
+@use 'wp-block-categories';
 @use 'wp-block-code';
 @use 'wp-block-comment';
 @use 'wp-block-embed';
 @use 'wp-block-image';
+@use 'wp-block-latest-comments';
+@use 'wp-block-latest-posts';
 @use 'wp-block-navigation';
 @use 'wp-block-post-comments-form';
 @use 'wp-block-post-content';
@@ -15,6 +19,7 @@
 @use 'wp-block-pullquote';
 @use 'wp-block-query';
 @use 'wp-block-quote';
+@use 'wp-block-rss';
 @use 'wp-block-search';
 @use 'wp-block-site-logo';
 @use 'wp-block-site-title';
@@ -24,11 +29,15 @@
 	@include align.include();
 	@include font-sizes.include();
 	@include has-background.include();
+	@include wp-block-archives.include();
 	@include wp-block-buttons.include();
+	@include wp-block-categories.include();
 	@include wp-block-code.include();
 	@include wp-block-comment.include();
 	@include wp-block-embed.include();
 	@include wp-block-image.include();
+	@include wp-block-latest-comments.include();
+	@include wp-block-latest-posts.include();
 	@include wp-block-navigation.include();
 	@include wp-block-post-comments-form.include();
 	@include wp-block-post-content.include();
@@ -38,6 +47,7 @@
 	@include wp-block-pullquote.include();
 	@include wp-block-query.include();
 	@include wp-block-quote.include();
+	@include wp-block-rss.include();
 	@include wp-block-search.include();
 	@include wp-block-site-logo.include();
 	@include wp-block-site-title.include();

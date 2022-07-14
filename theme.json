@@ -128,8 +128,22 @@
 	},
 	"customTemplates": [
 		{
+			"name": "page-header-footer",
+			"title": "Page (Header / Footer)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
 			"name": "page-page-header-slim",
 			"title": "Page (Page header (Slim))",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "page-right-sidebar",
+			"title": "Page (Right sidebar)",
 			"postTypes": [
 				"page"
 			]
@@ -142,10 +156,10 @@
 			]
 		},
 		{
-			"name": "page-header-footer",
-			"title": "Page (Header / Footer)",
+			"name": "single-right-sidebar",
+			"title": "Single post (Right sidebar)",
 			"postTypes": [
-				"page"
+				"post"
 			]
 		},
 		{
@@ -163,7 +177,7 @@
 			]
 		},
 		{
-			"name": "page-bbpress",
+			"name": "bbpress",
 			"title": "for bbPress",
 			"postTypes": [
 				"false"
@@ -202,6 +216,11 @@
 			"area": "unitone/contents/404"
 		},
 		{
+			"name": "contents-404-right-sidebar",
+			"title": "404 contents (Right sidebar)",
+			"area": "unitone/contents/404"
+		},
+		{
 			"name": "page-header-404",
 			"title": "404 page header",
 			"area": "unitone/page-header/404"
@@ -219,6 +238,11 @@
 		{
 			"name": "contents-archive-product-page-header-image",
 			"title": "WooCommerce product archive contents (Page header (Image))",
+			"area": "unitone/contents/product-archive"
+		},
+		{
+			"name": "contents-archive-product-right-sidebar",
+			"title": "WooCommerce product archive contents (Right sidebar)",
 			"area": "unitone/contents/product-archive"
 		},
 		{
@@ -242,6 +266,11 @@
 			"area": "unitone/contents/archive"
 		},
 		{
+			"name": "contents-archive-right-sidebar",
+			"title": "Archive contents (Right sidebar)",
+			"area": "unitone/contents/archive"
+		},
+		{
 			"name": "page-header-archive",
 			"title": "Archive page header",
 			"area": "unitone/page-header/archive"
@@ -250,6 +279,31 @@
 			"name": "page-header-archive-image",
 			"title": "Archive page header (Image)",
 			"area": "unitone/page-header/archive"
+		},
+		{
+			"name": "contents-bbpress",
+			"title": "bbPress contents",
+			"area": "unitone/contents/bbpress"
+		},
+		{
+			"name": "contents-bbpress-page-header-image",
+			"title": "bbPress contents (Page header (Image))",
+			"area": "unitone/contents/bbpress"
+		},
+		{
+			"name": "contents-bbpress-right-sidebar",
+			"title": "bbPress contents (Right sidebar)",
+			"area": "unitone/contents/bbpress"
+		},
+		{
+			"name": "page-header-bbpress",
+			"title": "bbPress page header",
+			"area": "unitone/page-header/bbpress"
+		},
+		{
+			"name": "page-header-bbpress-image",
+			"title": "bbPress page header (Image)",
+			"area": "unitone/page-header/bbpress"
 		},
 		{
 			"name": "contents-home",
@@ -264,6 +318,11 @@
 		{
 			"name": "contents-home-page-header-image",
 			"title": "Home contents (Page header (Image))",
+			"area": "unitone/contents/home"
+		},
+		{
+			"name": "contents-home-right-sidebar",
+			"title": "Home contents (Right sidebar)",
 			"area": "unitone/contents/home"
 		},
 		{
@@ -294,6 +353,11 @@
 		{
 			"name": "contents-page-page-header-slim",
 			"title": "Page contents (Page header (Slim))",
+			"area": "unitone/contents/page"
+		},
+		{
+			"name": "contents-page-right-sidebar",
+			"title": "Page contents (Right sidebar)",
 			"area": "unitone/contents/page"
 		},
 		{
@@ -332,6 +396,11 @@
 			"area": "unitone/contents/search"
 		},
 		{
+			"name": "contents-search-right-sidebar",
+			"title": "Search contents (Right sidebar)",
+			"area": "unitone/contents/search"
+		},
+		{
 			"name": "page-header-search",
 			"title": "Search page header",
 			"area": "unitone/page-header/search"
@@ -347,6 +416,11 @@
 			"area": "unitone/contents/post"
 		},
 		{
+			"name": "contents-single-blank",
+			"title": "Post contents (Blank)",
+			"area": "unitone/contents/post"
+		},
+		{
 			"name": "contents-single-page-header-featured",
 			"title": "Post contents (Page header (Featured image))",
 			"area": "unitone/contents/post"
@@ -357,8 +431,8 @@
 			"area": "unitone/contents/post"
 		},
 		{
-			"name": "contents-single-blank",
-			"title": "Post contents (Blank)",
+			"name": "contents-single-right-sidebar",
+			"title": "Post contents (Right-sidebar)",
 			"area": "unitone/contents/post"
 		},
 		{
@@ -387,6 +461,11 @@
 			"area": "unitone/contents/product"
 		},
 		{
+			"name": "contents-single-product-right-sidebar",
+			"title": "WooCommerce product contents (Right sidebar)",
+			"area": "unitone/contents/product"
+		},
+		{
 			"name": "page-header-single-product",
 			"title": "WooCommerce product page header",
 			"area": "unitone/page-header/product"
@@ -395,26 +474,6 @@
 			"name": "page-header-single-product-image",
 			"title": "WooCommerce product page header (Image)",
 			"area": "unitone/page-header/product"
-		},
-		{
-			"name": "contents-bbpress",
-			"title": "bbPress contents",
-			"area": "unitone/contents/bbpress"
-		},
-		{
-			"name": "contents-bbpress-page-header-image",
-			"title": "bbPress contents (Page header (Image))",
-			"area": "unitone/contents/bbpress"
-		},
-		{
-			"name": "page-header-bbpress",
-			"title": "bbPress page header",
-			"area": "unitone/page-header/bbpress"
-		},
-		{
-			"name": "page-header-bbpress-image",
-			"title": "bbPress page header (Image)",
-			"area": "unitone/page-header/bbpress"
 		}
 	]
 }

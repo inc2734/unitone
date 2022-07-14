@@ -8,6 +8,14 @@
 			}
 		}
 
+		.wp-block-navigation__submenu-container {
+			border: none;
+		}
+
+		.wp-block-navigation__submenu-icon {
+			background-color: transparent;
+		}
+
 		.wp-block-navigation__responsive-container {
 			// Global navigation
 			&:not(.is-menu-open) {

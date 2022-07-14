@@ -27,6 +27,12 @@ html :where(.editor-styles-wrapper) {
 			display: block;
 		}
 	}
+
+	header[data-type=core\/template-part].block-editor-block-content-overlay {
+		[data-unitone-layout~=cover] {
+			--unitone--min-height: 400px !important;
+		}
+	}
 }
 
 .block-editor-block-inspector {

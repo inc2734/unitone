@@ -90,6 +90,10 @@ export default function ( { attributes, setAttributes } ) {
 						value={ sidebar }
 						options={ [
 							{
+								label: __( 'Default', 'unitone' ),
+								value: '',
+							},
+							{
 								label: __( 'Right', 'unitone' ),
 								value: 'right',
 							},

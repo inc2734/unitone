@@ -11,7 +11,7 @@
 	<!-- wp:unitone/gutters {"unitone":{"padding":"-1"}} -->
 	<div data-unitone-layout="gutters -padding:-1">
 		<!-- wp:unitone/with-sidebar {"sidebarWidth":"calc(((601px - var(--unitone--gutters) * 2 - 100%) * 999) * -1)","unitone":{"alignItems":"center","gap":-1}} -->
-		<div data-unitone-layout="with-sidebar -sidebar:right -align-items:center -gap:-1" style="--unitone--sidebar-width:calc(((601px - var(--unitone--gutters) * 2 - 100%) * 999) * -1)">
+		<div data-unitone-layout="with-sidebar -align-items:center -gap:-1" style="--unitone--sidebar-width:calc(((601px - var(--unitone--gutters) * 2 - 100%) * 999) * -1)">
 			<!-- wp:unitone/with-sidebar-content -->
 			<div data-unitone-layout="with-sidebar__content">
 				<!-- wp:site-logo /-->

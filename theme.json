@@ -222,13 +222,11 @@
 		},
 		{
 			"name": "page-header-404",
-			"title": "404 page header",
-			"area": "unitone/page-header/404"
+			"title": "404 page header"
 		},
 		{
 			"name": "page-header-404-image",
-			"title": "404 page header (Image)",
-			"area": "unitone/page-header/404"
+			"title": "404 page header (Image)"
 		},
 		{
 			"name": "contents-archive-product",
@@ -247,13 +245,11 @@
 		},
 		{
 			"name": "page-header-archive-product",
-			"title": "WooCommerce product archive page header",
-			"area": "unitone/page-header/product-archive"
+			"title": "WooCommerce product archive page header"
 		},
 		{
 			"name": "page-header-archive-product-image",
-			"title": "WooCommerce product archive page header (Image)",
-			"area": "unitone/page-header/product-archive"
+			"title": "WooCommerce product archive page header (Image)"
 		},
 		{
 			"name": "contents-archive",
@@ -272,13 +268,11 @@
 		},
 		{
 			"name": "page-header-archive",
-			"title": "Archive page header",
-			"area": "unitone/page-header/archive"
+			"title": "Archive page header"
 		},
 		{
 			"name": "page-header-archive-image",
-			"title": "Archive page header (Image)",
-			"area": "unitone/page-header/archive"
+			"title": "Archive page header (Image)"
 		},
 		{
 			"name": "contents-bbpress",
@@ -297,13 +291,11 @@
 		},
 		{
 			"name": "page-header-bbpress",
-			"title": "bbPress page header",
-			"area": "unitone/page-header/bbpress"
+			"title": "bbPress page header"
 		},
 		{
 			"name": "page-header-bbpress-image",
-			"title": "bbPress page header (Image)",
-			"area": "unitone/page-header/bbpress"
+			"title": "bbPress page header (Image)"
 		},
 		{
 			"name": "contents-home",
@@ -327,13 +319,11 @@
 		},
 		{
 			"name": "page-header-home",
-			"title": "Home page header",
-			"area": "unitone/page-header/home"
+			"title": "Home page header"
 		},
 		{
 			"name": "page-header-home-image",
-			"title": "Home page header (Image)",
-			"area": "unitone/page-header/home"
+			"title": "Home page header (Image)"
 		},
 		{
 			"name": "contents-page",
@@ -367,23 +357,19 @@
 		},
 		{
 			"name": "page-header-page",
-			"title": "Page header",
-			"area": "unitone/page-header/page"
+			"title": "Page header"
 		},
 		{
 			"name": "page-header-page-featured",
-			"title": "Page header (Featured image)",
-			"area": "unitone/page-header/page"
+			"title": "Page header (Featured image)"
 		},
 		{
 			"name": "page-header-page-image",
-			"title": "Page header (Image)",
-			"area": "unitone/page-header/page"
+			"title": "Page header (Image)"
 		},
 		{
 			"name": "page-header-page-slim",
-			"title": "Page header (Slim)",
-			"area": "unitone/page-header/page"
+			"title": "Page header (Slim)"
 		},
 		{
 			"name": "contents-search",
@@ -402,13 +388,11 @@
 		},
 		{
 			"name": "page-header-search",
-			"title": "Search page header",
-			"area": "unitone/page-header/search"
+			"title": "Search page header"
 		},
 		{
 			"name": "page-header-search-image",
-			"title": "Search page header (Image)",
-			"area": "unitone/page-header/search"
+			"title": "Search page header (Image)"
 		},
 		{
 			"name": "contents-single",
@@ -437,18 +421,15 @@
 		},
 		{
 			"name": "page-header-single",
-			"title": "Post page header",
-			"area": "unitone/page-header/post"
+			"title": "Post page header"
 		},
 		{
 			"name": "page-header-single-featured",
-			"title": "Post page header (Featured image)",
-			"area": "unitone/page-header/post"
+			"title": "Post page header (Featured image)"
 		},
 		{
 			"name": "page-header-single-image",
-			"title": "Post page header (Image)",
-			"area": "unitone/page-header/post"
+			"title": "Post page header (Image)"
 		},
 		{
 			"name": "contents-single-product",
@@ -467,13 +448,11 @@
 		},
 		{
 			"name": "page-header-single-product",
-			"title": "WooCommerce product page header",
-			"area": "unitone/page-header/product"
+			"title": "WooCommerce product page header"
 		},
 		{
 			"name": "page-header-single-product-image",
-			"title": "WooCommerce product page header (Image)",
-			"area": "unitone/page-header/product"
+			"title": "WooCommerce product page header (Image)"
 		}
 	]
 }

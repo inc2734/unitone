@@ -149,6 +149,13 @@
 			]
 		},
 		{
+			"name": "page-left-header",
+			"title": "Page (Left header)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
 			"name": "single-header-footer",
 			"title": "Single post (Header / Footer)",
 			"postTypes": [
@@ -158,6 +165,13 @@
 		{
 			"name": "single-right-sidebar",
 			"title": "Single post (Right sidebar)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "single-left-header",
+			"title": "Single post (Left header)",
 			"postTypes": [
 				"post"
 			]

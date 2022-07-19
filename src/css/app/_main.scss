@@ -120,8 +120,8 @@
 		}
 	}
 
-	.site-container-fixed-sidebar {
-		--unitone--sidebar-width: var(--unitone--cg3);
+	.site-container-left-header {
+		--unitone--sidebar-width: clamp(var(--unitone--cg2), 30%, var(--unitone--cg3));
 
 		@media (min-width: 600px) {
 			display: flex;
@@ -141,6 +141,10 @@
 			> :last-child {
 				flex: 1 1 auto;
 				margin-left: var(--unitone--sidebar-width);
+
+				> .site-contents {
+					height: 100%;
+				}
 
 				.site-footer {
 					margin-top: auto;

@@ -2,8 +2,8 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"textdomain": "unitone",
-	"name": "unitone/site-container-fixed-sidebar",
-	"title": "Site container with fixed sidebar",
+	"name": "unitone/site-container-left-header",
+	"title": "Site container (Left header)",
 	"description": "This block is for the site editor.",
 	"attributes": {
 		"sidebarWidth": {

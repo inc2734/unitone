@@ -5,7 +5,7 @@ export default function () {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					className: 'site-container-fixed-sidebar__content',
+					className: 'site-container-left-header__content',
 				} )
 			) }
 		/>

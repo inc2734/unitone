@@ -7,7 +7,7 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					className: 'site-container-fixed-sidebar',
+					className: 'site-container-left-header',
 					style: {
 						'--unitone--sidebar-width': sidebarWidth || undefined,
 					},

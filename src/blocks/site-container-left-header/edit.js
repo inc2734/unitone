@@ -12,7 +12,7 @@ export default function ( { attributes, setAttributes } ) {
 	const { sidebarWidth } = attributes;
 
 	const blockProps = useBlockProps( {
-		className: 'site-container-fixed-sidebar',
+		className: 'site-container-left-header',
 		style: {
 			'--unitone--sidebar-width': sidebarWidth || undefined,
 		},
@@ -21,8 +21,8 @@ export default function ( { attributes, setAttributes } ) {
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock: 'all',
 		template: [
-			[ 'unitone/site-container-fixed-sidebar-content' ],
-			[ 'unitone/site-container-fixed-sidebar-content' ],
+			[ 'unitone/site-container-left-header-content' ],
+			[ 'unitone/site-container-left-header-content' ],
 		],
 	} );
 

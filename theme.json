@@ -216,8 +216,8 @@
 			"area": "unitone/template/404"
 		},
 		{
-			"name": "template-404-fixed-sidebar",
-			"title": "404 (Fixed sidebar)",
+			"name": "template-404-left-header",
+			"title": "404 (Left header)",
 			"area": "unitone/template/404"
 		},
 		{
@@ -256,8 +256,8 @@
 			"area": "unitone/template/archive-product"
 		},
 		{
-			"name": "template-archive-product-fixed-sidebar",
-			"title": "WooCommerce product archive (Fixed sidebar)",
+			"name": "template-archive-product-left-header",
+			"title": "WooCommerce product archive (Left header)",
 			"area": "unitone/template/archive-product"
 		},
 		{
@@ -291,8 +291,8 @@
 			"area": "unitone/template/archive"
 		},
 		{
-			"name": "template-archive-fixed-sidebar",
-			"title": "Archive (Fixed sidebar)",
+			"name": "template-archive-left-header",
+			"title": "Archive (Left header)",
 			"area": "unitone/template/archive"
 		},
 		{
@@ -326,8 +326,8 @@
 			"area": "unitone/template/bbpress"
 		},
 		{
-			"name": "template-bbpress-fixed-sidebar",
-			"title": "bbPress (Fixed sidebar)",
+			"name": "template-bbpress-left-header",
+			"title": "bbPress (Left header)",
 			"area": "unitone/template/bbpress"
 		},
 		{
@@ -361,8 +361,8 @@
 			"area": "unitone/template/home"
 		},
 		{
-			"name": "template-home-fixed-sidebar",
-			"title": "Home (Fixed sidebar)",
+			"name": "template-home-left-header",
+			"title": "Home (Left header)",
 			"area": "unitone/template/home"
 		},
 		{
@@ -417,8 +417,8 @@
 			"area": "unitone/template/page"
 		},
 		{
-			"name": "template-page-fixed-sidebar",
-			"title": "Page (Fixed sidebar)",
+			"name": "template-page-left-header",
+			"title": "Page (Left header)",
 			"area": "unitone/template/page"
 		},
 		{
@@ -477,8 +477,8 @@
 			"area": "unitone/template/search"
 		},
 		{
-			"name": "template-search-fixed-sidebar",
-			"title": "Search (Fixed sidebar)",
+			"name": "template-search-left-header",
+			"title": "Search (Left header)",
 			"area": "unitone/template/search"
 		},
 		{
@@ -522,8 +522,8 @@
 			"area": "unitone/template/single"
 		},
 		{
-			"name": "template-single-fixed-sidebar",
-			"title": "Single post (Fixed sidebar)",
+			"name": "template-single-left-header",
+			"title": "Single post (Left header)",
 			"area": "unitone/template/single"
 		},
 		{
@@ -577,8 +577,8 @@
 			"area": "unitone/template/product"
 		},
 		{
-			"name": "template-single-product-fixed-sidebar",
-			"title": "WooCommerce single product (Fixed sidebar)",
+			"name": "template-single-product-left-header",
+			"title": "WooCommerce single product (Left header)",
 			"area": "unitone/template/product"
 		},
 		{

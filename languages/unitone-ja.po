@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-07-19T02:10:26+00:00\n"
-"PO-Revision-Date: 2022-07-19 11:11+0900\n"
+"POT-Creation-Date: 2022-07-19T02:38:50+00:00\n"
+"PO-Revision-Date: 2022-07-19 11:40+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -250,7 +250,7 @@ msgstr "最大幅"
 #: dist/blocks/center/index.js:1 dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1 dist/blocks/layer/index.js:1
 #: dist/blocks/layers/index.js:1 dist/blocks/responsive-grid/index.js:1
-#: dist/blocks/site-container-fixed-sidebar/index.js:1
+#: dist/blocks/site-container-left-header/index.js:1
 #: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
 msgid "General"
@@ -402,7 +402,7 @@ msgstr "背景フレーム画像"
 msgid "Column min width"
 msgstr "カラムの最小幅"
 
-#: dist/blocks/site-container-fixed-sidebar/index.js:1
+#: dist/blocks/site-container-left-header/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Sidebar width"
 msgstr "サイドバーの幅"
@@ -524,7 +524,7 @@ msgid "Fixed"
 msgstr "固定"
 
 #: dist/blocks/both-sides-content/block.json
-#: dist/blocks/site-container-fixed-sidebar-content/block.json
+#: dist/blocks/site-container-left-header-content/block.json
 #: dist/blocks/with-sidebar-content/block.json
 msgctxt "block title"
 msgid "Content"
@@ -671,17 +671,12 @@ msgctxt "block description"
 msgid "This block generates a simple grid."
 msgstr "シンプルなグリッドを生成します。"
 
-#: dist/blocks/site-container-fixed-sidebar-content/block.json
-msgctxt "block description"
-msgid "The content of the site container fixed sidebar block."
-msgstr "固定サイドバーありのサイトコンテナーブロックのコンテンツです。"
-
-#: dist/blocks/site-container-fixed-sidebar/block.json
+#: dist/blocks/site-container-left-header/block.json
 msgctxt "block title"
-msgid "Site container with fixed sidebar"
-msgstr "固定サイドバーのあるサイトコンテナー"
+msgid "Site container (Left header)"
+msgstr "サイトコンテナー（左ヘッダー）"
 
-#: dist/blocks/site-container-fixed-sidebar/block.json
+#: dist/blocks/site-container-left-header/block.json
 msgctxt "block description"
 msgid "This block is for the site editor."
 msgstr "このブロックはサイトエディター用です。"
@@ -889,8 +884,8 @@ msgstr "404"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 (Fixed sidebar)"
-msgstr "404（固定サイドバー）"
+msgid "404 (Left header)"
+msgstr "404（左ヘッダー）"
 
 #: theme.json
 msgctxt "Template part name"
@@ -929,8 +924,8 @@ msgstr "WooCommerce 商品アーカイブ"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive (Fixed sidebar)"
-msgstr "WooCommerce 商品アーカイブ（固定サイドバー）"
+msgid "WooCommerce product archive (Left header)"
+msgstr "WooCommerce 商品アーカイブ（左ヘッダー）"
 
 #: theme.json
 msgctxt "Template part name"
@@ -964,8 +959,8 @@ msgstr "アーカイブ"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive (Fixed sidebar)"
-msgstr "アーカイブ（固定サイドバー）"
+msgid "Archive (Left header)"
+msgstr "アーカイブ（左ヘッダー）"
 
 #: theme.json
 msgctxt "Template part name"
@@ -999,8 +994,8 @@ msgstr "bbPress"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress (Fixed sidebar)"
-msgstr "bbPress（固定サイドバー）"
+msgid "bbPress (Left header)"
+msgstr "bbPress（左ヘッダー）"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1034,8 +1029,8 @@ msgstr "ホーム"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home (Fixed sidebar)"
-msgstr "ホーム（固定サイドバー）"
+msgid "Home (Left header)"
+msgstr "ホーム（左ヘッダー）"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1089,8 +1084,8 @@ msgstr "固定ページ（右サイドバー）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Fixed sidebar)"
-msgstr "固定ページ（固定サイドバー）"
+msgid "Page (Left header)"
+msgstr "固定ページ（左ヘッダー）"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1149,8 +1144,8 @@ msgstr "検索"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search (Fixed sidebar)"
-msgstr "検索結果（固定サイドバー）"
+msgid "Search (Left header)"
+msgstr "検索結果（左ヘッダー）"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1194,8 +1189,8 @@ msgstr "個別投稿（ヘッダー / フッター）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post (Fixed sidebar)"
-msgstr "個別投稿（固定サイドバー）"
+msgid "Single post (Left header)"
+msgstr "個別投稿（左ヘッダー）"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1249,8 +1244,8 @@ msgstr "WooCommerce 個別商品"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product (Fixed sidebar)"
-msgstr "WooCommerce 個別商品（固定サイドバー）"
+msgid "WooCommerce single product (Left header)"
+msgstr "Woocommerce 個別商品（左ヘッダー）"
 
 #: theme.json
 msgctxt "Template part name"

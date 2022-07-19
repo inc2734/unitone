@@ -4,7 +4,7 @@ import icon from '../icon';
 import edit from './edit';
 import save from './save';
 
-registerBlockType( 'unitone/site-container-fixed-sidebar-content', {
+registerBlockType( 'unitone/site-container-left-header', {
 	icon: {
 		src: icon,
 	},

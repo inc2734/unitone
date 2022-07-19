@@ -15,7 +15,7 @@ export default function ( { clientId } ) {
 	);
 
 	const blockProps = useBlockProps( {
-		className: 'site-container-fixed-sidebar__content',
+		className: 'site-container-left-header__content',
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {

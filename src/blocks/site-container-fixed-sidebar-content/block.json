@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/site-container-fixed-sidebar-content",
+	"title": "Content",
+	"description": "The content of the site container fixed sidebar block.",
+	"parent": [ "unitone/site-container-fixed-sidebar" ],
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"inserter": false
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

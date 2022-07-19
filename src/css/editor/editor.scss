@@ -65,3 +65,7 @@ html :where(.editor-styles-wrapper) {
 .block-editor-block-list__layout .block-editor-rich-text__editable:hover::after {
 	box-shadow: 0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color);
 }
+
+.block-editor-block-patterns-list__item {
+	height: auto;
+}

@@ -191,6 +191,11 @@
 			"area": "header"
 		},
 		{
+			"name": "header-vertical",
+			"title": "Header (Vertical)",
+			"area": "header"
+		},
+		{
 			"name": "footer",
 			"title": "Footer",
 			"area": "footer"
@@ -204,6 +209,16 @@
 			"name": "footer-breadcrumbs",
 			"title": "Breadcrumbs",
 			"area": "unitone/footer-breadcrumbs"
+		},
+		{
+			"name": "template-404",
+			"title": "404",
+			"area": "unitone/template/404"
+		},
+		{
+			"name": "template-404-fixed-sidebar",
+			"title": "404 (Fixed sidebar)",
+			"area": "unitone/template/404"
 		},
 		{
 			"name": "contents-404",
@@ -222,34 +237,63 @@
 		},
 		{
 			"name": "page-header-404",
-			"title": "404 page header"
+			"title": "404 page header",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-404-image",
-			"title": "404 page header (Image)"
+			"title": "404 page header (Image)",
+			"area": "uncategorized"
+		},
+		{
+			"name": "page-header-404-wide",
+			"title": "404 page header (Wide)",
+			"area": "uncategorized"
+		},
+		{
+			"name": "template-archive-product",
+			"title": "WooCommerce product archive",
+			"area": "unitone/template/archive-product"
+		},
+		{
+			"name": "template-archive-product-fixed-sidebar",
+			"title": "WooCommerce product archive (Fixed sidebar)",
+			"area": "unitone/template/archive-product"
 		},
 		{
 			"name": "contents-archive-product",
 			"title": "WooCommerce product archive contents",
-			"area": "unitone/contents/product-archive"
+			"area": "unitone/contents/archive-product"
 		},
 		{
 			"name": "contents-archive-product-page-header-image",
 			"title": "WooCommerce product archive contents (Page header (Image))",
-			"area": "unitone/contents/product-archive"
+			"area": "unitone/contents/archive-product"
 		},
 		{
 			"name": "contents-archive-product-right-sidebar",
 			"title": "WooCommerce product archive contents (Right sidebar)",
-			"area": "unitone/contents/product-archive"
+			"area": "unitone/contents/archive-product"
 		},
 		{
 			"name": "page-header-archive-product",
-			"title": "WooCommerce product archive page header"
+			"title": "WooCommerce product archive page header",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-archive-product-image",
-			"title": "WooCommerce product archive page header (Image)"
+			"title": "WooCommerce product archive page header (Image)",
+			"area": "uncategorized"
+		},
+		{
+			"name": "template-archive",
+			"title": "Archive",
+			"area": "unitone/template/archive"
+		},
+		{
+			"name": "template-archive-fixed-sidebar",
+			"title": "Archive (Fixed sidebar)",
+			"area": "unitone/template/archive"
 		},
 		{
 			"name": "contents-archive",
@@ -268,11 +312,23 @@
 		},
 		{
 			"name": "page-header-archive",
-			"title": "Archive page header"
+			"title": "Archive page header",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-archive-image",
-			"title": "Archive page header (Image)"
+			"title": "Archive page header (Image)",
+			"area": "uncategorized"
+		},
+		{
+			"name": "template-bbpress",
+			"title": "bbPress",
+			"area": "unitone/template/bbpress"
+		},
+		{
+			"name": "template-bbpress-fixed-sidebar",
+			"title": "bbPress (Fixed sidebar)",
+			"area": "unitone/template/bbpress"
 		},
 		{
 			"name": "contents-bbpress",
@@ -291,11 +347,23 @@
 		},
 		{
 			"name": "page-header-bbpress",
-			"title": "bbPress page header"
+			"title": "bbPress page header",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-bbpress-image",
-			"title": "bbPress page header (Image)"
+			"title": "bbPress page header (Image)",
+			"area": "uncategorized"
+		},
+		{
+			"name": "template-home",
+			"title": "Home",
+			"area": "unitone/template/home"
+		},
+		{
+			"name": "template-home-fixed-sidebar",
+			"title": "Home (Fixed sidebar)",
+			"area": "unitone/template/home"
 		},
 		{
 			"name": "contents-home",
@@ -319,11 +387,39 @@
 		},
 		{
 			"name": "page-header-home",
-			"title": "Home page header"
+			"title": "Home page header",
+			"area": "uncategorized"
+
 		},
 		{
 			"name": "page-header-home-image",
-			"title": "Home page header (Image)"
+			"title": "Home page header (Image)",
+			"area": "uncategorized"
+		},
+		{
+			"name": "template-page",
+			"title": "Page",
+			"area": "unitone/template/page"
+		},
+		{
+			"name": "template-page-header-footer",
+			"title": "Page (Header / Footer)",
+			"area": "unitone/template/page"
+		},
+		{
+			"name": "template-page-page-header-slim",
+			"title": "Page (Page header (Slim))",
+			"area": "unitone/template/page"
+		},
+		{
+			"name": "template-page-right-sidebar",
+			"title": "Page (Right sidebar)",
+			"area": "unitone/template/page"
+		},
+		{
+			"name": "template-page-fixed-sidebar",
+			"title": "Page (Fixed sidebar)",
+			"area": "unitone/template/page"
 		},
 		{
 			"name": "contents-page",
@@ -357,19 +453,33 @@
 		},
 		{
 			"name": "page-header-page",
-			"title": "Page header"
+			"title": "Page header",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-page-featured",
-			"title": "Page header (Featured image)"
+			"title": "Page header (Featured image)",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-page-image",
-			"title": "Page header (Image)"
+			"title": "Page header (Image)",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-page-slim",
-			"title": "Page header (Slim)"
+			"title": "Page header (Slim)",
+			"area": "uncategorized"
+		},
+		{
+			"name": "template-search",
+			"title": "Search",
+			"area": "unitone/template/search"
+		},
+		{
+			"name": "template-search-fixed-sidebar",
+			"title": "Search (Fixed sidebar)",
+			"area": "unitone/template/search"
 		},
 		{
 			"name": "contents-search",
@@ -388,71 +498,113 @@
 		},
 		{
 			"name": "page-header-search",
-			"title": "Search page header"
+			"title": "Search page header",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-search-image",
-			"title": "Search page header (Image)"
+			"title": "Search page header (Image)",
+			"area": "uncategorized"
+		},
+		{
+			"name": "template-single",
+			"title": "Single post",
+			"area": "unitone/template/single"
+		},
+		{
+			"name": "template-single-right-sidebar",
+			"title": "Single post (Right sidebar)",
+			"area": "unitone/template/single"
+		},
+		{
+			"name": "template-single-header-footer",
+			"title": "Single post (Header / Footer)",
+			"area": "unitone/template/single"
+		},
+		{
+			"name": "template-single-fixed-sidebar",
+			"title": "Single post (Fixed sidebar)",
+			"area": "unitone/template/single"
 		},
 		{
 			"name": "contents-single",
-			"title": "Post contents",
-			"area": "unitone/contents/post"
+			"title": "Single post contents",
+			"area": "unitone/contents/single"
 		},
 		{
 			"name": "contents-single-blank",
-			"title": "Post contents (Blank)",
-			"area": "unitone/contents/post"
+			"title": "Single post contents (Blank)",
+			"area": "unitone/contents/single"
 		},
 		{
 			"name": "contents-single-page-header-featured",
-			"title": "Post contents (Page header (Featured image))",
-			"area": "unitone/contents/post"
+			"title": "Single post contents (Page header (Featured image))",
+			"area": "unitone/contents/single"
 		},
 		{
 			"name": "contents-single-page-header-image",
-			"title": "Post contents (Page header (Image))",
-			"area": "unitone/contents/post"
+			"title": "Single post contents (Page header (Image))",
+			"area": "unitone/contents/single"
 		},
 		{
 			"name": "contents-single-right-sidebar",
-			"title": "Post contents (Right-sidebar)",
-			"area": "unitone/contents/post"
+			"title": "Single post contents (Right sidebar)",
+			"area": "unitone/contents/single"
 		},
 		{
 			"name": "page-header-single",
-			"title": "Post page header"
+			"title": "Single post page header",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-single-featured",
-			"title": "Post page header (Featured image)"
+			"title": "Single post page header (Featured image)",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-single-image",
-			"title": "Post page header (Image)"
+			"title": "Single post page header (Image)",
+			"area": "uncategorized"
+		},
+		{
+			"name": "page-header-single-wide",
+			"title": "Single post page header (Wide)",
+			"area": "uncategorized"
+		},
+		{
+			"name": "template-single-product",
+			"title": "WooCommerce single product",
+			"area": "unitone/template/product"
+		},
+		{
+			"name": "template-single-product-fixed-sidebar",
+			"title": "WooCommerce single product (Fixed sidebar)",
+			"area": "unitone/template/product"
 		},
 		{
 			"name": "contents-single-product",
-			"title": "WooCommerce product contents",
+			"title": "WooCommerce single product contents",
 			"area": "unitone/contents/product"
 		},
 		{
 			"name": "contents-single-product-page-header-image",
-			"title": "WooCommerce product contents (Page header (Image))",
+			"title": "WooCommerce single product contents (Page header (Image))",
 			"area": "unitone/contents/product"
 		},
 		{
 			"name": "contents-single-product-right-sidebar",
-			"title": "WooCommerce product contents (Right sidebar)",
+			"title": "WooCommerce single product contents (Right sidebar)",
 			"area": "unitone/contents/product"
 		},
 		{
 			"name": "page-header-single-product",
-			"title": "WooCommerce product page header"
+			"title": "WooCommerce single product page header",
+			"area": "uncategorized"
 		},
 		{
 			"name": "page-header-single-product-image",
-			"title": "WooCommerce product page header (Image)"
+			"title": "WooCommerce single product page header (Image)",
+			"area": "uncategorized"
 		}
 	]
 }

@@ -1,15 +1,18 @@
 import classnames from 'classnames';
 
 import {
+	InspectorControls,
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
+import { PanelBody, ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
-export default function ( { attributes, clientId } ) {
-	const { position } = attributes;
+export default function ( { attributes, setAttributes, clientId } ) {
+	const { fill, position } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -23,6 +26,7 @@ export default function ( { attributes, clientId } ) {
 		'cover__content',
 		blockProps[ 'data-unitone-layout' ],
 		{
+			'-fill': fill,
 			[ `-valign:${ position }` ]: !! position,
 		}
 	);
@@ -34,5 +38,21 @@ export default function ( { attributes, clientId } ) {
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 
-	return <div { ...innerBlocksProps } />;
+	return (
+		<>
+			<InspectorControls>
+				<PanelBody title={ __( 'General', 'unitone' ) }>
+					<ToggleControl
+						label={ __( 'Fill a space', 'unitone' ) }
+						checked={ fill }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { fill: newAttribute } );
+						} }
+					/>
+				</PanelBody>
+			</InspectorControls>
+
+			<div { ...innerBlocksProps } />
+		</>
+	);
 }

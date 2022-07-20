@@ -7,6 +7,10 @@
 	"description": "This block places the content inside the cover block.",
 	"parent": [ "unitone/cover" ],
 	"attributes": {
+		"fill": {
+			"type": "boolean",
+			"default": false
+		},
 		"position": {
 			"type": "string"
 		}

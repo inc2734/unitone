@@ -17,17 +17,14 @@ function enqueue_typography_styles() {
 	$settings   = WP_Theme_JSON_Resolver::get_merged_data( 'custom' )->get_raw_data()['settings'];
 	$font_sizes = ! empty( $settings['typography']['fontSizes']['theme'] ) ? $settings['typography']['fontSizes']['theme'] : array();
 
-	$base_font_size = 16;
+	$unitone_font_size = 0;
+	$base_font_size    = 16;
 	if ( $font_sizes ) {
 		if ( $font_size ) {
-			foreach ( $font_sizes as $_font_size ) {
+			foreach ( $font_sizes as $key => $_font_size ) {
 				if ( $font_size === $_font_size['slug'] ) {
-					$size      = $_font_size['size'];
-					$maybe_int = str_replace( 'rem', '', $size );
-
-					if ( preg_match( '|\d+|', $maybe_int ) ) {
-						$base_font_size = $base_font_size * $maybe_int;
-					}
+					$unitone_font_size = $key;
+					break;
 				}
 			}
 		}
@@ -39,8 +36,8 @@ function enqueue_typography_styles() {
 	}
 
 	$stylesheet = sprintf(
-		':root, .editor-styles-wrapper {--unitone--base-font-size: %1$s; --unitone--half-leading: %2$s;}',
-		$base_font_size,
+		'body, .editor-styles-wrapper {--unitone--font-size: %1$s; --unitone--half-leading: %2$s}',
+		$unitone_font_size,
 		$half_leading
 	);
 	wp_add_inline_style( get_stylesheet(), $stylesheet );

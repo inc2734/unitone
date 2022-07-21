@@ -39,7 +39,7 @@ function enqueue_typography_styles() {
 	}
 
 	$stylesheet = sprintf(
-		':root, .editor-styles-wrapper.block-editor-writing-flow {--unitone--base-font-size: %1$s; --unitone--half-leading: %2$s;}',
+		':root, .editor-styles-wrapper {--unitone--base-font-size: %1$s; --unitone--half-leading: %2$s;}',
 		$base_font_size,
 		$half_leading
 	);

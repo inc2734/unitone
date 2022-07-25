@@ -9,12 +9,12 @@
  * Set custom global typography.
  */
 function enqueue_typography_styles() {
-	$styles      = WP_Theme_JSON_Resolver::get_merged_data( 'custom' )->get_raw_data()['styles'];
+	$styles      = WP_Theme_JSON_Resolver::get_merged_data()->get_raw_data()['styles'];
 	$typography  = ! empty( $styles['typography'] ) ? $styles['typography'] : array();
 	$font_size   = ! empty( $typography['fontSize'] ) ? explode( '|', $typography['fontSize'] )[2] : null;
 	$line_height = ! empty( $typography['lineHeight'] ) ? $typography['lineHeight'] : null;
 
-	$settings   = WP_Theme_JSON_Resolver::get_merged_data( 'custom' )->get_raw_data()['settings'];
+	$settings   = WP_Theme_JSON_Resolver::get_merged_data()->get_raw_data()['settings'];
 	$font_sizes = ! empty( $settings['typography']['fontSizes']['theme'] ) ? $settings['typography']['fontSizes']['theme'] : array();
 
 	$unitone_font_size = 0;

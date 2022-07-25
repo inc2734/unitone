@@ -2,15 +2,16 @@
 	.wp-block-post-terms.is-style-badge {
 		background-color: var(--wp--preset--color--black);
 		border-radius: var(--unitone--global--border-radius);
+		color: var(--wp--preset--color--white);
 
 		> a {
 			display: inline-block;
 			padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
 			text-decoration: none;
 		}
+	}
 
-		.wp-block-post-terms__separator {
-			color: var(--wp--preset--color--white);
-		}
+	:where(.wp-block-post-terms.is-style-badge a) {
+		color: var(--wp--preset--color--white);
 	}
 }

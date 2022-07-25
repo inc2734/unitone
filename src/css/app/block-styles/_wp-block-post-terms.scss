@@ -8,5 +8,9 @@
 			padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
 			text-decoration: none;
 		}
+
+		.wp-block-post-terms__separator {
+			color: var(--wp--preset--color--white);
+		}
 	}
 }

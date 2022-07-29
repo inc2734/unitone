@@ -24,6 +24,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/layers' );
 	register_block_type( get_template_directory() . '/dist/blocks/reel' );
 	register_block_type( get_template_directory() . '/dist/blocks/responsive-grid' );
+	register_block_type( get_template_directory() . '/dist/blocks/slider' );
 	register_block_type( get_template_directory() . '/dist/blocks/gutters' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack' );
 	register_block_type( get_template_directory() . '/dist/blocks/switcher' );

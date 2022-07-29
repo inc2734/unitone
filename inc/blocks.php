@@ -22,6 +22,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/frame' );
 	register_block_type( get_template_directory() . '/dist/blocks/layer' );
 	register_block_type( get_template_directory() . '/dist/blocks/layers' );
+	register_block_type( get_template_directory() . '/dist/blocks/reel' );
 	register_block_type( get_template_directory() . '/dist/blocks/responsive-grid' );
 	register_block_type( get_template_directory() . '/dist/blocks/gutters' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack' );

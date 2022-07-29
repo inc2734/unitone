@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-07-19T04:44:04+00:00\n"
-"PO-Revision-Date: 2022-07-19 13:44+0900\n"
+"POT-Creation-Date: 2022-07-29T03:54:07+00:00\n"
+"PO-Revision-Date: 2022-07-29 12:55+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -247,10 +247,10 @@ msgstr "幅"
 msgid "Max width"
 msgstr "最大幅"
 
-#: dist/blocks/center/index.js:1 dist/blocks/cover/index.js:1
-#: dist/blocks/decorator/index.js:1 dist/blocks/layer/index.js:1
-#: dist/blocks/layers/index.js:1 dist/blocks/responsive-grid/index.js:1
-#: dist/blocks/site-container-left-header/index.js:1
+#: dist/blocks/center/index.js:1 dist/blocks/cover-content/index.js:1
+#: dist/blocks/cover/index.js:1 dist/blocks/decorator/index.js:1
+#: dist/blocks/layer/index.js:1 dist/blocks/layers/index.js:1
+#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
 msgid "General"
@@ -259,6 +259,10 @@ msgstr "一般"
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
 msgstr "テキストも一緒に中央揃え"
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Fill a space"
+msgstr "スペースを埋める"
 
 #: dist/blocks/cover-content/index.js:1
 msgid "Cover content (Top)"
@@ -398,14 +402,25 @@ msgstr "背景画像"
 msgid "Background framed image"
 msgstr "背景フレーム画像"
 
+#: dist/blocks/reel/index.js:1
+msgid "Height"
+msgstr "高さ"
+
+#: dist/blocks/reel/index.js:1
+msgid "Each items width"
+msgstr "各項目の幅"
+
+#: dist/blocks/reel/index.js:1
+msgid "No scrollbar"
+msgstr "スクロールバーなし"
+
+#: dist/blocks/reel/index.js:1
+msgid "Shifted"
+msgstr "ずらす"
+
 #: dist/blocks/responsive-grid/index.js:1
 msgid "Column min width"
 msgstr "カラムの最小幅"
-
-#: dist/blocks/site-container-left-header/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Sidebar width"
-msgstr "サイドバーの幅"
 
 #: dist/blocks/switcher/index.js:1
 msgid "Threshold"
@@ -418,6 +433,10 @@ msgstr "子要素の内在的なサイズによって中央揃えする"
 #: dist/blocks/text/index.js:1
 msgid "Multi columns"
 msgstr "マルチカラム"
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Sidebar width"
+msgstr "サイドバーの幅"
 
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Content min width"
@@ -524,7 +543,6 @@ msgid "Fixed"
 msgstr "固定"
 
 #: dist/blocks/both-sides-content/block.json
-#: dist/blocks/site-container-left-header-content/block.json
 #: dist/blocks/with-sidebar-content/block.json
 msgctxt "block title"
 msgid "Content"
@@ -661,6 +679,16 @@ msgctxt "block description"
 msgid "This block layers the children."
 msgstr "子要素を重ねます。"
 
+#: dist/blocks/reel/block.json
+msgctxt "block title"
+msgid "Reel"
+msgstr "リール"
+
+#: dist/blocks/reel/block.json
+msgctxt "block description"
+msgid "This block displays children scrolling horizontally."
+msgstr "子要素を水平スクロールして表示します。"
+
 #: dist/blocks/responsive-grid/block.json
 msgctxt "block title"
 msgid "Responsive grid"
@@ -670,16 +698,6 @@ msgstr "レスポンシブグリッド"
 msgctxt "block description"
 msgid "This block generates a simple grid."
 msgstr "シンプルなグリッドを生成します。"
-
-#: dist/blocks/site-container-left-header/block.json
-msgctxt "block title"
-msgid "Site container (Left header)"
-msgstr "サイトコンテナー（左ヘッダー）"
-
-#: dist/blocks/site-container-left-header/block.json
-msgctxt "block description"
-msgid "This block is for the site editor."
-msgstr "このブロックはサイトエディター用です。"
 
 #: dist/blocks/stack/block.json
 msgctxt "block title"
@@ -1281,3 +1299,11 @@ msgstr "Woocommerce 個別商品のページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product page header (Image)"
 msgstr "WooCommerce 個別商品のページヘッダー（画像）"
+
+#~ msgctxt "block title"
+#~ msgid "Site container (Left header)"
+#~ msgstr "サイトコンテナー（左ヘッダー）"
+
+#~ msgctxt "block description"
+#~ msgid "This block is for the site editor."
+#~ msgstr "このブロックはサイトエディター用です。"

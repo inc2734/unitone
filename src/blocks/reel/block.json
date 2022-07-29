@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/reel",
+	"title": "Reel",
+	"description": "This block displays children scrolling horizontally.",
+	"attributes": {
+		"height": {
+			"type": "string"
+		},
+		"itemWidth": {
+			"type": "string"
+		},
+		"noBar": {
+			"type": "boolean"
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"unitone": {
+			"gap": true
+		}
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

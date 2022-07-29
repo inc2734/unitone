@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 1.0.2\n"
+"Project-Id-Version: unitone 3.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-19T04:44:04+00:00\n"
+"POT-Creation-Date: 2022-07-29T03:54:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -247,12 +247,13 @@ msgid "Max width"
 msgstr ""
 
 #: dist/blocks/center/index.js:1
+#: dist/blocks/cover-content/index.js:1
 #: dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1
 #: dist/blocks/layer/index.js:1
 #: dist/blocks/layers/index.js:1
+#: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
-#: dist/blocks/site-container-left-header/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
@@ -262,6 +263,10 @@ msgstr ""
 
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
+msgstr ""
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Fill a space"
 msgstr ""
 
 #: dist/blocks/cover-content/index.js:1
@@ -405,13 +410,24 @@ msgstr ""
 msgid "Background framed image"
 msgstr ""
 
-#: dist/blocks/responsive-grid/index.js:1
-msgid "Column min width"
+#: dist/blocks/reel/index.js:1
+msgid "Height"
 msgstr ""
 
-#: dist/blocks/site-container-left-header/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Sidebar width"
+#: dist/blocks/reel/index.js:1
+msgid "Each items width"
+msgstr ""
+
+#: dist/blocks/reel/index.js:1
+msgid "No scrollbar"
+msgstr ""
+
+#: dist/blocks/reel/index.js:1
+msgid "Shifted"
+msgstr ""
+
+#: dist/blocks/responsive-grid/index.js:1
+msgid "Column min width"
 msgstr ""
 
 #: dist/blocks/switcher/index.js:1
@@ -424,6 +440,10 @@ msgstr ""
 
 #: dist/blocks/text/index.js:1
 msgid "Multi columns"
+msgstr ""
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Sidebar width"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
@@ -532,7 +552,6 @@ msgid "Fixed"
 msgstr ""
 
 #: dist/blocks/both-sides-content/block.json
-#: dist/blocks/site-container-left-header-content/block.json
 #: dist/blocks/with-sidebar-content/block.json
 msgctxt "block title"
 msgid "Content"
@@ -663,6 +682,16 @@ msgctxt "block description"
 msgid "This block layers the children."
 msgstr ""
 
+#: dist/blocks/reel/block.json
+msgctxt "block title"
+msgid "Reel"
+msgstr ""
+
+#: dist/blocks/reel/block.json
+msgctxt "block description"
+msgid "This block displays children scrolling horizontally."
+msgstr ""
+
 #: dist/blocks/responsive-grid/block.json
 msgctxt "block title"
 msgid "Responsive grid"
@@ -671,16 +700,6 @@ msgstr ""
 #: dist/blocks/responsive-grid/block.json
 msgctxt "block description"
 msgid "This block generates a simple grid."
-msgstr ""
-
-#: dist/blocks/site-container-left-header/block.json
-msgctxt "block title"
-msgid "Site container (Left header)"
-msgstr ""
-
-#: dist/blocks/site-container-left-header/block.json
-msgctxt "block description"
-msgid "This block is for the site editor."
 msgstr ""
 
 #: dist/blocks/stack/block.json

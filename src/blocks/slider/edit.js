@@ -1,3 +1,5 @@
+import './editor.scss';
+
 import classnames from 'classnames';
 
 import {
@@ -7,93 +9,181 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
-import { useState, useRef } from '@wordpress/element';
+import {
+	Button,
+	PanelBody,
+	TextControl,
+	ToggleControl,
+} from '@wordpress/components';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-export default function ( { clientId } ) {
-	const [ translateX, setTranslateX ] = useState( 0 );
+export default function ( {
+	attributes,
+	setAttributes,
+	isSelected,
+	clientId,
+} ) {
+	const { arrows, pagination, slideWidth } = attributes;
 
-	const ref = useRef();
+	const { selectBlock } = useDispatch( 'core/block-editor' );
 
-	const hasInnerBlocks = useSelect(
-		( select ) =>
-			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
-				?.length,
+	const { slides, selectedSlides, hasChildSelected } = useSelect(
+		( select ) => {
+			const _slides =
+				select( 'core/block-editor' ).getBlock( clientId ).innerBlocks;
+
+			return {
+				slides: _slides,
+				selectedSlides: _slides.filter(
+					( slide ) =>
+						slide.clientId ===
+						select( 'core/block-editor' ).getSelectedBlockClientId()
+				),
+				hasChildSelected: select(
+					'core/block-editor'
+				).hasSelectedInnerBlock( clientId, true ),
+			};
+		},
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps( {
-		style: {},
+	useEffect( () => {
+		if ( 0 < selectedSlides.length ) {
+			const slide = document.querySelector(
+				`.wp-block[data-block="${ selectedSlides[ 0 ].clientId }"]`
+			);
+			const wrapper = slide.parentNode;
+			const slider = document.querySelector(
+				`.wp-block[data-block="${ clientId }"]`
+			);
+			let x =
+				wrapper.getBoundingClientRect().left -
+				slide.getBoundingClientRect().left;
+
+			wrapper.style.transform = `translateX(${ x }px)`;
+
+			const lastSlide = document.querySelector(
+				`.wp-block[data-block="${
+					slides[ slides.length - 1 ].clientId
+				}"]`
+			);
+
+			const lastSlideRight =
+				lastSlide.getBoundingClientRect().left + lastSlide.offsetWidth;
+
+			const sliderRight =
+				slider.getBoundingClientRect().left + slider.offsetWidth;
+
+			if ( lastSlideRight < sliderRight ) {
+				x = x + sliderRight - lastSlideRight;
+				wrapper.style.transform = `translateX(${ x }px)`;
+			}
+		}
 	} );
-	blockProps[ 'data-unitone-layout' ] = classnames(
-		'slider',
-		blockProps[ 'data-unitone-layout' ],
-		{}
-	);
+
+	const blockProps = useBlockProps( {
+		className: classnames( 'unitone-slider', {
+			'unitone-slider--has-pagination': pagination,
+		} ),
+		style: {
+			'--unitone--slide-width': slideWidth,
+		},
+	} );
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{
-			'data-unitone-layout': 'slider__track',
-			style: {
-				transform: `translateX(${ translateX }px)`,
-			},
-			ref,
+			className: classnames(
+				'unitone-slider__wrapper',
+				'swiper-wrapper'
+			),
 		},
 		{
 			templateLock: false,
-			renderAppender: hasInnerBlocks
-				? InnerBlocks.DefaultBlockAppender
-				: InnerBlocks.ButtonBlockAppender,
+			allowedBlocks: [ 'unitone/slide' ],
+			renderAppender: false,
 		}
 	);
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }></PanelBody>
+				<PanelBody title={ __( 'General', 'unitone' ) }>
+					<TextControl
+						label={ __( 'Each items width', 'unitone' ) }
+						value={ slideWidth }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { slideWidth: newAttribute } );
+						} }
+					/>
+
+					<ToggleControl
+						label={ __( 'Using prev/next buttons', 'unitone' ) }
+						checked={ arrows }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { arrows: newAttribute } );
+						} }
+					/>
+
+					<ToggleControl
+						label={ __( 'Using pagination', 'unitone' ) }
+						checked={ pagination }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { pagination: newAttribute } );
+						} }
+					/>
+				</PanelBody>
 			</InspectorControls>
 			<div { ...blockProps }>
-				<div { ...innerBlocksProps } />
-				<div data-unitone-layout="slider__arrows">
-					<button
-						data-unitone-layout="slider__arrow slider__arrow--prev"
-						onClick={ () => {
-							if ( 0 < ref.current?.children?.length ) {
-								const gap = window
-									.getComputedStyle( ref.current )
-									.getPropertyValue( 'gap' );
-								const width =
-									ref.current.children[ 0 ].offsetWidth;
+				<div className="unitone-slider__canvas">
+					<div { ...innerBlocksProps } />
 
-								setTranslateX(
-									translateX - parseInt( gap ) - width
-								);
-							}
-						} }
-					>
-						←
-					</button>
-					<button
-						data-unitone-layout="slider__arrow slider__arrow--next"
-						onClick={ () => {
-							if ( 0 < ref.current?.children?.length ) {
-								const gap = window
-									.getComputedStyle( ref.current )
-									.getPropertyValue( 'gap' );
-								const width =
-									ref.current.children[ 0 ].offsetWidth;
+					{ pagination && (
+						<div className="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
+							{ slides.map( ( slide, index ) => (
+								<span
+									className="swiper-pagination-bullet"
+									key={ index }
+								></span>
+							) ) }
+						</div>
+					) }
 
-								setTranslateX(
-									translateX + parseInt( gap ) + width
-								);
-							}
-						} }
-					>
-						→
-					</button>
+					{ arrows && (
+						<>
+							<div className="swiper-button-prev"></div>
+							<div className="swiper-button-next"></div>
+						</>
+					) }
 				</div>
+
+				{ ( isSelected || hasChildSelected ) && (
+					<div className="unitone-slider-pagination">
+						{ slides.map( ( slide, index ) => {
+							const sliderClientId = slide.clientId;
+							const isActive =
+								sliderClientId ===
+								selectedSlides[ 0 ]?.clientId;
+
+							return (
+								<Button
+									isPrimary={ isActive }
+									isSecondary={ ! isActive }
+									className="block-editor-button-block-appender"
+									onClick={ () => {
+										selectBlock( sliderClientId );
+									} }
+									key={ index }
+								>
+									<span>{ index + 1 }</span>
+								</Button>
+							);
+						} ) }
+
+						<InnerBlocks.ButtonBlockAppender />
+					</div>
+				) }
 			</div>
 		</>
 	);

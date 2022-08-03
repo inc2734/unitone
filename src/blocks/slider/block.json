@@ -5,7 +5,19 @@
 	"name": "unitone/slider",
 	"title": "Slider",
 	"description": "This block displays children scrolling horizontally.",
-	"attributes": {},
+	"attributes": {
+		"arrows": {
+			"type": "boolean",
+			"default": false
+		},
+		"pagination": {
+			"type": "boolean",
+			"default": false
+		},
+		"slideWidth": {
+			"type": "string"
+		}
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,
@@ -13,6 +25,9 @@
 			"gap": true
 		}
 	},
-	"category": "unitone/layout",
-	"editorScript": "file:./index.js"
+	"category": "unitone/component",
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./app.js",
+	"style": "file:./index.css",
+	"editorStyle": "file:./editor.css"
 }

@@ -19,7 +19,8 @@
 		"postcss-import": "^14.1.0",
 		"prettier": "npm:wp-prettier@2.6.2",
 		"rimraf": "^3.0.2",
-		"sass": "^1.54.0"
+		"sass": "^1.54.0",
+		"swiper": "^8.3.2"
 	},
 	"scripts": {
 		"export:wp-content:plugins": "npm run cli 'cp -r wp-content/plugins .export/wp-content'",

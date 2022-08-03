@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-29T03:54:07+00:00\n"
+"POT-Creation-Date: 2022-08-03T04:51:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -254,6 +254,7 @@ msgstr ""
 #: dist/blocks/layers/index.js:1
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
+#: dist/blocks/slider/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
@@ -415,6 +416,7 @@ msgid "Height"
 msgstr ""
 
 #: dist/blocks/reel/index.js:1
+#: dist/blocks/slider/index.js:1
 msgid "Each items width"
 msgstr ""
 
@@ -422,12 +424,16 @@ msgstr ""
 msgid "No scrollbar"
 msgstr ""
 
-#: dist/blocks/reel/index.js:1
-msgid "Shifted"
-msgstr ""
-
 #: dist/blocks/responsive-grid/index.js:1
 msgid "Column min width"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Using prev/next buttons"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Using pagination"
 msgstr ""
 
 #: dist/blocks/switcher/index.js:1
@@ -688,6 +694,7 @@ msgid "Reel"
 msgstr ""
 
 #: dist/blocks/reel/block.json
+#: dist/blocks/slider/block.json
 msgctxt "block description"
 msgid "This block displays children scrolling horizontally."
 msgstr ""
@@ -700,6 +707,16 @@ msgstr ""
 #: dist/blocks/responsive-grid/block.json
 msgctxt "block description"
 msgid "This block generates a simple grid."
+msgstr ""
+
+#: dist/blocks/slide/block.json
+msgctxt "block title"
+msgid "Slide"
+msgstr ""
+
+#: dist/blocks/slider/block.json
+msgctxt "block title"
+msgid "Slider"
 msgstr ""
 
 #: dist/blocks/stack/block.json

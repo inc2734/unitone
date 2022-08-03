@@ -10,6 +10,12 @@ https://github.com/inc2734/unitone/
 
 https://unitone.2inc.org/
 
+## Third party resources
+
+### Swiper
+- https://github.com/nolimits4web/swiper
+	- License: MIT License
+
 ## Photos
 
 **Donald Tong**

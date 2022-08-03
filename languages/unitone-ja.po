@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-07-29T03:54:07+00:00\n"
-"PO-Revision-Date: 2022-07-29 12:55+0900\n"
+"POT-Creation-Date: 2022-08-03T04:51:30+00:00\n"
+"PO-Revision-Date: 2022-08-03 13:52+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -251,8 +251,9 @@ msgstr "最大幅"
 #: dist/blocks/cover/index.js:1 dist/blocks/decorator/index.js:1
 #: dist/blocks/layer/index.js:1 dist/blocks/layers/index.js:1
 #: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid/index.js:1
-#: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/switcher/index.js:1
+#: dist/blocks/text/index.js:1 dist/blocks/with-sidebar/index.js:1
+#: dist/js/editor/editor.js:1
 msgid "General"
 msgstr "一般"
 
@@ -406,7 +407,7 @@ msgstr "背景フレーム画像"
 msgid "Height"
 msgstr "高さ"
 
-#: dist/blocks/reel/index.js:1
+#: dist/blocks/reel/index.js:1 dist/blocks/slider/index.js:1
 msgid "Each items width"
 msgstr "各項目の幅"
 
@@ -414,13 +415,17 @@ msgstr "各項目の幅"
 msgid "No scrollbar"
 msgstr "スクロールバーなし"
 
-#: dist/blocks/reel/index.js:1
-msgid "Shifted"
-msgstr "ずらす"
-
 #: dist/blocks/responsive-grid/index.js:1
 msgid "Column min width"
 msgstr "カラムの最小幅"
+
+#: dist/blocks/slider/index.js:1
+msgid "Using prev/next buttons"
+msgstr "前へ/次へボタンを使用する"
+
+#: dist/blocks/slider/index.js:1
+msgid "Using pagination"
+msgstr "ページネーションを使用する"
 
 #: dist/blocks/switcher/index.js:1
 msgid "Threshold"
@@ -684,7 +689,7 @@ msgctxt "block title"
 msgid "Reel"
 msgstr "リール"
 
-#: dist/blocks/reel/block.json
+#: dist/blocks/reel/block.json dist/blocks/slider/block.json
 msgctxt "block description"
 msgid "This block displays children scrolling horizontally."
 msgstr "子要素を水平スクロールして表示します。"
@@ -698,6 +703,16 @@ msgstr "レスポンシブグリッド"
 msgctxt "block description"
 msgid "This block generates a simple grid."
 msgstr "シンプルなグリッドを生成します。"
+
+#: dist/blocks/slide/block.json
+msgctxt "block title"
+msgid "Slide"
+msgstr "スライド"
+
+#: dist/blocks/slider/block.json
+msgctxt "block title"
+msgid "Slider"
+msgstr "スライダー"
 
 #: dist/blocks/stack/block.json
 msgctxt "block title"
@@ -1299,6 +1314,9 @@ msgstr "Woocommerce 個別商品のページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product page header (Image)"
 msgstr "WooCommerce 個別商品のページヘッダー（画像）"
+
+#~ msgid "Shifted"
+#~ msgstr "ずらす"
 
 #~ msgctxt "block title"
 #~ msgid "Site container (Left header)"

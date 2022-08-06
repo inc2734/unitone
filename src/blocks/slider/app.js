@@ -1,7 +1,7 @@
 import Swiper, { Navigation, Pagination } from 'swiper';
 
 document.addEventListener( 'DOMContentLoaded', () => {
-	const unitoneSlider = new Swiper( '.unitone-slider__canvas', {
+	new Swiper( '.unitone-slider__canvas', {
 		modules: [ Navigation, Pagination ],
 		followFinger: false,
 		// freeMode: true,

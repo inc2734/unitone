@@ -58,7 +58,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						label={ __( 'Each items width', 'unitone' ) }
 						value={ itemWidth }
 						onChange={ ( newAttribute ) => {
-							setAttributes( { contentWidth: newAttribute } );
+							setAttributes( { itemWidth: newAttribute } );
 						} }
 					/>
 

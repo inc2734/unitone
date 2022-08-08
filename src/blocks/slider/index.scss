@@ -1,7 +1,7 @@
 .unitone-slider {
 	--unitone--gap: var(--unitone--s1);
 	--unitone--slide-width: calc(50% - var(--unitone--gap) / 2);
-	--swiper-navigation-size: 1rem;
+	--swiper-navigation-size: .5em;
 	--swiper-navigation-color: var(--wp--preset--color--unitone-accent);
 	--swiper-pagination-color: var(--wp--preset--color--unitone-accent);
 	--swiper-pagination-bullet-inactive-color: var(--wp--preset--color--unitone-dark-gray);
@@ -9,18 +9,13 @@
 
 	position: relative;
 
-	&--has-pagination {
-		.swiper-pagination {
-			margin-top: var(--unitone--s1);
-		}
-	}
-
 	&--hide-outside {
 		.unitone-slider__canvas {
 			overflow: hidden;
 		}
 	}
 
+	&__canvas-wrapper,
 	&__canvas {
 		position: relative;
 	}
@@ -35,25 +30,25 @@
 		width: var(--unitone--slide-width);
 	}
 
-	.swiper-button-prev,
-	.swiper-button-next {
+	.swiper-buttons {
+		display: flex;
+		gap: var(--unitone--gap);
+		justify-content: center;
+		margin-top: var(--unitone--s-1);
+	}
+
+	.swiper-button {
+		position: static;
 		font-weight: bold;
 
 		&::after {
-			padding: .5rem;
+			padding: 1em;
 		}
-	}
-
-	.swiper-button-prev {
-		left: calc(var(--unitone--s1) * -1);
-	}
-
-	.swiper-button-next {
-		right: calc(var(--unitone--s1) * -1);
 	}
 
 	.swiper-pagination {
 		position: static;
+		margin-top: var(--unitone--s-1);
 	}
 
 	.swiper-pagination-bullets.swiper-pagination-horizontal {

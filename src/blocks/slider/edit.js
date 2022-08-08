@@ -150,8 +150,17 @@ export default function ( {
 			</InspectorControls>
 
 			<div { ...blockProps }>
-				<div className="unitone-slider__canvas">
-					<div { ...innerBlocksProps } />
+				<div className="unitone-slider__canvas-wrapper">
+					<div className="unitone-slider__canvas">
+						<div { ...innerBlocksProps } />
+					</div>
+
+					{ arrows && (
+						<div className="swiper-buttons">
+							<div className="swiper-button swiper-button-prev"></div>
+							<div className="swiper-button swiper-button-next"></div>
+						</div>
+					) }
 				</div>
 
 				{ pagination && (
@@ -163,13 +172,6 @@ export default function ( {
 							></span>
 						) ) }
 					</div>
-				) }
-
-				{ arrows && (
-					<>
-						<div className="swiper-button-prev"></div>
-						<div className="swiper-button-next"></div>
-					</>
 				) }
 
 				{ ( isSelected || hasChildSelected ) && (

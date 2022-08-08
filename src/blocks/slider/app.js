@@ -1,17 +1,16 @@
 import Swiper, { Navigation, Pagination } from 'swiper';
 
 document.addEventListener( 'DOMContentLoaded', () => {
-	const sliders = document.querySelectorAll( '.unitone-slider__canvas' );
-	sliders.forEach( ( slider ) => {
-		const pagination =
-			slider.parentNode.querySelector( '.swiper-pagination' );
-		const next = slider.parentNode.querySelector( '.swiper-button-next' );
-		const prev = slider.parentNode.querySelector( '.swiper-button-prev' );
+	const canvases = document.querySelectorAll( '.unitone-slider__canvas' );
+	canvases.forEach( ( canvas ) => {
+		const slider = canvas.closest( '.unitone-slider' );
+		const pagination = slider.querySelector( '.swiper-pagination' );
+		const next = slider.querySelector( '.swiper-button-next' );
+		const prev = slider.querySelector( '.swiper-button-prev' );
 
-		new Swiper( slider, {
+		new Swiper( canvas, {
 			modules: [ Navigation, Pagination ],
 			followFinger: false,
-			// freeMode: true,
 			grabCursor: true,
 			slidesPerView: 'auto',
 			watchSlidesProgress: true,

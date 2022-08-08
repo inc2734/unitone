@@ -10,6 +10,10 @@
 			"type": "boolean",
 			"default": false
 		},
+		"hideOutside": {
+			"type": "boolean",
+			"default": false
+		},
 		"pagination": {
 			"type": "boolean",
 			"default": false

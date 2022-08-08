@@ -15,6 +15,7 @@ import {
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
+
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -25,7 +26,7 @@ export default function ( {
 	isSelected,
 	clientId,
 } ) {
-	const { arrows, pagination, slideWidth } = attributes;
+	const { arrows, hideOutSide, pagination, slideWidth } = attributes;
 
 	const { selectBlock } = useDispatch( 'core/block-editor' );
 
@@ -85,6 +86,7 @@ export default function ( {
 
 	const blockProps = useBlockProps( {
 		className: classnames( 'unitone-slider', {
+			'unitone-slider--hide-outside': hideOutSide,
 			'unitone-slider--has-pagination': pagination,
 		} ),
 		style: {
@@ -133,30 +135,42 @@ export default function ( {
 							setAttributes( { pagination: newAttribute } );
 						} }
 					/>
+
+					<ToggleControl
+						label={ __(
+							'Hide parts that extend beyond the canvas',
+							'unitone'
+						) }
+						checked={ hideOutSide }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { hideOutSide: newAttribute } );
+						} }
+					/>
 				</PanelBody>
 			</InspectorControls>
+
 			<div { ...blockProps }>
 				<div className="unitone-slider__canvas">
 					<div { ...innerBlocksProps } />
-
-					{ pagination && (
-						<div className="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
-							{ slides.map( ( slide, index ) => (
-								<span
-									className="swiper-pagination-bullet"
-									key={ index }
-								></span>
-							) ) }
-						</div>
-					) }
-
-					{ arrows && (
-						<>
-							<div className="swiper-button-prev"></div>
-							<div className="swiper-button-next"></div>
-						</>
-					) }
 				</div>
+
+				{ pagination && (
+					<div className="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
+						{ slides.map( ( slide, index ) => (
+							<span
+								className="swiper-pagination-bullet"
+								key={ index }
+							></span>
+						) ) }
+					</div>
+				) }
+
+				{ arrows && (
+					<>
+						<div className="swiper-button-prev"></div>
+						<div className="swiper-button-next"></div>
+					</>
+				) }
 
 				{ ( isSelected || hasChildSelected ) && (
 					<div className="unitone-slider-pagination">

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-08-03T04:51:30+00:00\n"
-"PO-Revision-Date: 2022-08-03 13:52+0900\n"
+"POT-Creation-Date: 2022-08-08T01:21:45+00:00\n"
+"PO-Revision-Date: 2022-08-08 10:22+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -426,6 +426,10 @@ msgstr "前へ/次へボタンを使用する"
 #: dist/blocks/slider/index.js:1
 msgid "Using pagination"
 msgstr "ページネーションを使用する"
+
+#: dist/blocks/slider/index.js:1
+msgid "Hide parts that extend beyond the canvas"
+msgstr "キャンバスからはみ出した部分を隠す"
 
 #: dist/blocks/switcher/index.js:1
 msgid "Threshold"
@@ -1314,14 +1318,3 @@ msgstr "Woocommerce 個別商品のページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product page header (Image)"
 msgstr "WooCommerce 個別商品のページヘッダー（画像）"
-
-#~ msgid "Shifted"
-#~ msgstr "ずらす"
-
-#~ msgctxt "block title"
-#~ msgid "Site container (Left header)"
-#~ msgstr "サイトコンテナー（左ヘッダー）"
-
-#~ msgctxt "block description"
-#~ msgid "This block is for the site editor."
-#~ msgstr "このブロックはサイトエディター用です。"

@@ -7,10 +7,17 @@
 	--swiper-pagination-bullet-inactive-color: var(--wp--preset--color--unitone-dark-gray);
 	--swiper-pagination-bullet-horizontal-gap: calc(var(--unitone--s-2) / 2);
 
+	position: relative;
 
 	&--has-pagination {
+		.swiper-pagination {
+			margin-top: var(--unitone--s1);
+		}
+	}
+
+	&--hide-outside {
 		.unitone-slider__canvas {
-			padding-bottom: var(--unitone--s2);
+			overflow: hidden;
 		}
 	}
 
@@ -45,9 +52,11 @@
 		right: calc(var(--unitone--s1) * -1);
 	}
 
-	.swiper-pagination-bullets.swiper-pagination-horizontal {
-		bottom: 0;
+	.swiper-pagination {
+		position: static;
+	}
 
+	.swiper-pagination-bullets.swiper-pagination-horizontal {
 		.swiper-pagination-bullet {
 			&::after {
 				content: '';

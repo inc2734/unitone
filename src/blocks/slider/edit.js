@@ -104,6 +104,7 @@ export default function ( {
 		{
 			templateLock: false,
 			allowedBlocks: [ 'unitone/slide' ],
+			template: [ [ 'unitone/slide' ], [ 'unitone/slide' ] ],
 			renderAppender: false,
 		}
 	);

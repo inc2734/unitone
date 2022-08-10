@@ -43,6 +43,7 @@
 		"color": {
 			"background": true,
 			"color": true,
+			"link": true,
 			"gradients": true,
 			"__experimentalDefaultControls": {
 				"background": true,

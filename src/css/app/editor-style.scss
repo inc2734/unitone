@@ -40,7 +40,7 @@
 
 	[data-unitone-layout~="stack"],
 	[data-unitone-layout~="center"] {
-		> .block-list-appender {
+		> .block-list-appender:first-child {
 			width: 100%;
 		}
 	}

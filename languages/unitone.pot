@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 3.0.1\n"
+"Project-Id-Version: unitone 3.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-08T01:21:45+00:00\n"
+"POT-Creation-Date: 2022-08-10T05:54:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -235,6 +235,10 @@ msgstr ""
 
 #: patterns/sidebar.php:33
 msgid "Archives"
+msgstr ""
+
+#: dist/blocks/accordion/index.js:1
+msgid "Enter summary here"
 msgstr ""
 
 #: dist/blocks/both-sides-content/index.js:1
@@ -559,6 +563,31 @@ msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Fixed"
+msgstr ""
+
+#: dist/blocks/accordion/block.json
+msgctxt "block title"
+msgid "Accordion"
+msgstr ""
+
+#: dist/blocks/accordion/block.json
+msgctxt "block description"
+msgid "This block displays folded content."
+msgstr ""
+
+#: dist/blocks/accordion/block.json
+msgctxt "block style label"
+msgid "Default"
+msgstr ""
+
+#: dist/blocks/accordion/block.json
+msgctxt "block style label"
+msgid "Box"
+msgstr ""
+
+#: dist/blocks/accordion/block.json
+msgctxt "block style label"
+msgid "Panel"
 msgstr ""
 
 #: dist/blocks/both-sides-content/block.json

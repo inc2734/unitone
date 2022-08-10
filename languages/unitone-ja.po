@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-08-08T01:21:45+00:00\n"
-"PO-Revision-Date: 2022-08-08 10:22+0900\n"
+"POT-Creation-Date: 2022-08-10T05:54:44+00:00\n"
+"PO-Revision-Date: 2022-08-10 14:55+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -238,6 +238,10 @@ msgstr "カテゴリー"
 #: patterns/sidebar.php:33
 msgid "Archives"
 msgstr "アーカイブ"
+
+#: dist/blocks/accordion/index.js:1
+msgid "Enter summary here"
+msgstr "ここに概要を入力"
 
 #: dist/blocks/both-sides-content/index.js:1
 msgid "Width"
@@ -550,6 +554,31 @@ msgstr "オーバレイ"
 #: dist/js/editor/editor.js:1
 msgid "Fixed"
 msgstr "固定"
+
+#: dist/blocks/accordion/block.json
+msgctxt "block title"
+msgid "Accordion"
+msgstr "アコーディオン"
+
+#: dist/blocks/accordion/block.json
+msgctxt "block description"
+msgid "This block displays folded content."
+msgstr "折り畳まれたコンテンツを表示するブロックです。"
+
+#: dist/blocks/accordion/block.json
+msgctxt "block style label"
+msgid "Default"
+msgstr "デフォルト"
+
+#: dist/blocks/accordion/block.json
+msgctxt "block style label"
+msgid "Box"
+msgstr "ボックス"
+
+#: dist/blocks/accordion/block.json
+msgctxt "block style label"
+msgid "Panel"
+msgstr "パネル"
 
 #: dist/blocks/both-sides-content/block.json
 #: dist/blocks/with-sidebar-content/block.json

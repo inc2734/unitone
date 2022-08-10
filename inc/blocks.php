@@ -11,6 +11,7 @@ use Unitone\App\DynamicBlock;
  * Register blocks.
  */
 function unitone_register_blocks() {
+	register_block_type( get_template_directory() . '/dist/blocks/accordion' );
 	register_block_type( get_template_directory() . '/dist/blocks/both-sides' );
 	register_block_type( get_template_directory() . '/dist/blocks/both-sides-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/decorator' );

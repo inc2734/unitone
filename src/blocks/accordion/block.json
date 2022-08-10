@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/accordion",
+	"title": "Accordion",
+	"description": "This block displays folded content.",
+	"attributes": {
+		"summary": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"color": {
+			"background": true,
+			"color": true,
+			"link": true
+		},
+		"unitone": {
+			"padding": true
+		}
+	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Default",
+			"isDefault": true
+		},
+		{
+			"name": "box",
+			"label": "Box"
+		},
+		{
+			"name": "panel",
+			"label": "Panel"
+		}
+	],
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

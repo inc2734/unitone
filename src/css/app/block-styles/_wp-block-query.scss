@@ -50,6 +50,16 @@
 		}
 	}
 
+	.wp-block-query.is-style-block-link-underline {
+		.wp-block-post-template {
+			&:not(.is-flex-container) {
+				> li:first-child {
+					padding-top: 0;
+				}
+			}
+		}
+	}
+
 	.wp-block-query.is-style-block-link-bordered {
 		.wp-block-post-template {
 			&.is-flex-container {

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-10T05:54:44+00:00\n"
+"POT-Creation-Date: 2022-08-19T04:31:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -251,6 +251,7 @@ msgid "Max width"
 msgstr ""
 
 #: dist/blocks/center/index.js:1
+#: dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1
 #: dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1
@@ -259,6 +260,7 @@ msgstr ""
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
@@ -268,6 +270,37 @@ msgstr ""
 
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/stack-divided/index.js:1
+msgid "Divider"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/stack-divided/index.js:1
+msgid "Stripe"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Slash"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/stack-divided/index.js:1
+msgid "Bordered"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: stripe)"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: slash)"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: bordered)"
 msgstr ""
 
 #: dist/blocks/cover-content/index.js:1
@@ -442,6 +475,22 @@ msgstr ""
 
 #: dist/blocks/slider/index.js:1
 msgid "Hide parts that extend beyond the canvas"
+msgstr ""
+
+#: dist/blocks/stack-divided/index.js:1
+msgid "Underline"
+msgstr ""
+
+#: dist/blocks/stack-divided/index.js:1
+msgid "Stack (Divider: stripe)"
+msgstr ""
+
+#: dist/blocks/stack-divided/index.js:1
+msgid "Stack (Divider: underline)"
+msgstr ""
+
+#: dist/blocks/stack-divided/index.js:1
+msgid "Stack (Divider: bordered)"
 msgstr ""
 
 #: dist/blocks/switcher/index.js:1
@@ -631,14 +680,30 @@ msgctxt "block description"
 msgid "This block centers the children."
 msgstr ""
 
-#: dist/blocks/cluster/block.json
+#: dist/blocks/cluster-divided-content/block.json
 msgctxt "block title"
-msgid "Cluster"
+msgid "Cluster (Divided) content"
 msgstr ""
 
+#: dist/blocks/cluster-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the cluster (Divided) block."
+msgstr ""
+
+#: dist/blocks/cluster-divided/block.json
+msgctxt "block title"
+msgid "Cluster (Divided)"
+msgstr ""
+
+#: dist/blocks/cluster-divided/block.json
 #: dist/blocks/cluster/block.json
 msgctxt "block description"
 msgid "This block arranges children horizontally."
+msgstr ""
+
+#: dist/blocks/cluster/block.json
+msgctxt "block title"
+msgid "Cluster"
 msgstr ""
 
 #: dist/blocks/container/block.json
@@ -752,14 +817,30 @@ msgctxt "block title"
 msgid "Slider"
 msgstr ""
 
-#: dist/blocks/stack/block.json
+#: dist/blocks/stack-divided-content/block.json
 msgctxt "block title"
-msgid "Stack"
+msgid "Stack (Divided) content"
 msgstr ""
 
+#: dist/blocks/stack-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the stack (Divided) block."
+msgstr ""
+
+#: dist/blocks/stack-divided/block.json
+msgctxt "block title"
+msgid "Stack (Divided)"
+msgstr ""
+
+#: dist/blocks/stack-divided/block.json
 #: dist/blocks/stack/block.json
 msgctxt "block description"
 msgid "This block is used to arrange children vertically at regular intervals."
+msgstr ""
+
+#: dist/blocks/stack/block.json
+msgctxt "block title"
+msgid "Stack"
 msgstr ""
 
 #: dist/blocks/switcher/block.json

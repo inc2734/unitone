@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/cluster-divided",
+	"title": "Cluster (Divided)",
+	"description": "This block arranges children horizontally.",
+	"attributes": {
+		"divider": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"typography": {
+			"fontSize": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"unitone": {
+			"alignItems": true,
+			"justifyContent": true,
+			"gap": true
+		}
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

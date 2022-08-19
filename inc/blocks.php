@@ -17,6 +17,8 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/decorator' );
 	register_block_type( get_template_directory() . '/dist/blocks/center' );
 	register_block_type( get_template_directory() . '/dist/blocks/cluster' );
+	register_block_type( get_template_directory() . '/dist/blocks/cluster-divided' );
+	register_block_type( get_template_directory() . '/dist/blocks/cluster-divided-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/container' );
 	register_block_type( get_template_directory() . '/dist/blocks/cover' );
 	register_block_type( get_template_directory() . '/dist/blocks/cover-content' );
@@ -29,6 +31,8 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/slider' );
 	register_block_type( get_template_directory() . '/dist/blocks/gutters' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack' );
+	register_block_type( get_template_directory() . '/dist/blocks/stack-divided' );
+	register_block_type( get_template_directory() . '/dist/blocks/stack-divided-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/switcher' );
 	register_block_type( get_template_directory() . '/dist/blocks/text' );
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar' );

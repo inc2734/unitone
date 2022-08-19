@@ -25,27 +25,27 @@
 				},
 				{
 					"slug": "unitone/text",
-					"color": "var(--unitone--color-text)",
+					"color": "var(--unitone--color--text)",
 					"name": "text"
 				},
 				{
 					"slug": "unitone/bright-gray",
-					"color": "#f8f9fa",
+					"color": "var(--unitone--color--bright-gray)",
 					"name": "Bright gray"
 				},
 				{
 					"slug": "unitone/light-gray",
-					"color": "#e9ecef",
+					"color": "var(--unitone--color--light-gray)",
 					"name": "Light gray"
 				},
 				{
 					"slug": "unitone/gray",
-					"color": "#ced4da",
+					"color": "var(--unitone--color--gray)",
 					"name": "gray"
 				},
 				{
 					"slug": "unitone/dark-gray",
-					"color": "#868e96",
+					"color": "var(--unitone--color--dark-gray)",
 					"name": "Dark gray"
 				}
 			]

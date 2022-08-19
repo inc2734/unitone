@@ -1,5 +1,5 @@
 .unitone-accordion {
-	--unitone--padding: -1;
+	--unitone--padding: var(--unitone--s-1);
 
 	&[open] {
 		.unitone-accordion__icon {

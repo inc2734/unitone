@@ -80,6 +80,20 @@ function unitone_enqueue_block_editor_assets() {
 		$css
 	);
 
+	// For color picker.
+	$css = file_get_contents( get_template_directory() . '/dist/css/app/editor-style.css' );
+	$css = preg_match_all(
+		'|--unitone--color--[^:]+:#[a-f0-9]{3,6};|ims',
+		$css,
+		$matches
+	);
+	if ( $matches ) {
+		wp_add_inline_style(
+			'global-styles-css-custom-properties',
+			':root{' . implode( '', $matches[0] ) . '}'
+		);
+	}
+
 	wp_localize_script(
 		'wp-block-editor',
 		'unitone',

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-08-19T04:31:42+00:00\n"
-"PO-Revision-Date: 2022-08-19 13:33+0900\n"
+"POT-Creation-Date: 2022-08-26T04:44:22+00:00\n"
+"PO-Revision-Date: 2022-08-26 13:45+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -351,26 +351,6 @@ msgid "Position"
 msgstr "位置"
 
 #: dist/blocks/decorator/index.js:1
-msgid "static"
-msgstr "static"
-
-#: dist/blocks/decorator/index.js:1
-msgid "relative"
-msgstr "relative"
-
-#: dist/blocks/decorator/index.js:1
-msgid "absolute"
-msgstr "absolute"
-
-#: dist/blocks/decorator/index.js:1
-msgid "fixed"
-msgstr "fixed"
-
-#: dist/blocks/decorator/index.js:1
-msgid "sticky"
-msgstr "上部固定"
-
-#: dist/blocks/decorator/index.js:1
 msgid "Top"
 msgstr "上"
 
@@ -391,6 +371,10 @@ msgstr "左"
 #: dist/blocks/decorator/index.js:1
 msgid "z-index"
 msgstr "z-index"
+
+#: dist/blocks/decorator/index.js:1
+msgid "Learn more"
+msgstr "さらに詳しく"
 
 #: dist/blocks/frame/index.js:1
 msgid "Dimensions"
@@ -1424,3 +1408,18 @@ msgstr "Woocommerce 個別商品のページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product page header (Image)"
 msgstr "WooCommerce 個別商品のページヘッダー（画像）"
+
+#~ msgid "static"
+#~ msgstr "static"
+
+#~ msgid "relative"
+#~ msgstr "relative"
+
+#~ msgid "absolute"
+#~ msgstr "absolute"
+
+#~ msgid "fixed"
+#~ msgstr "fixed"
+
+#~ msgid "sticky"
+#~ msgstr "上部固定"

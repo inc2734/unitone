@@ -23,6 +23,32 @@
 		--unitone--position: relative;
 	}
 
+	:where([data-unitone-layout~="decorator"] a) {
+		position: relative;
+		z-index: 1;
+	}
+
+	[data-unitone-layout~="decorator__inner"] {
+		position: relative;
+	}
+
+	[data-unitone-layout~="decorator__link"] {
+		position: static !important;
+		display: block !important;
+		height: 0 !important;
+		width: 0 !important;
+		text-indent: -99999px !important;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: calc(-1 * var(--unitone--padding));
+			right: calc(-1 * var(--unitone--padding));
+			bottom: calc(-1 * var(--unitone--padding));
+			left: calc(-1 * var(--unitone--padding));
+		}
+	}
+
 	[data-unitone-layout~="frame"] {
 		figcaption {
 			display: none;

@@ -1,22 +1,37 @@
 import classnames from 'classnames';
 
 import {
+	BlockControls,
 	InspectorControls,
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
+	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
 
 import {
 	PanelBody,
+	Popover,
 	SelectControl,
 	TextControl,
 	ToggleControl,
+	ToolbarButton,
 } from '@wordpress/components';
+
+import { useCallback, useEffect, useState, useRef } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
+import { link, linkOff } from '@wordpress/icons';
+import { displayShortcut } from '@wordpress/keycodes';
 import { __ } from '@wordpress/i18n';
 
-export default function ( { attributes, setAttributes, clientId } ) {
+const NEW_TAB_REL = 'noreferrer noopener';
+
+export default function ( {
+	attributes,
+	setAttributes,
+	isSelected,
+	clientId,
+} ) {
 	const {
 		tagName,
 		shadow,
@@ -27,7 +42,35 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		left,
 		zIndex,
 		templateLock,
+		rel,
+		href,
+		linkTarget,
 	} = attributes;
+
+	const onSetLinkRel = useCallback(
+		( value ) => {
+			setAttributes( { rel: value } );
+		},
+		[ setAttributes ]
+	);
+
+	function onToggleOpenInNewTab( value ) {
+		const newLinkTarget = value ? '_blank' : undefined;
+
+		let updatedRel = rel;
+		if ( newLinkTarget && ! rel ) {
+			updatedRel = NEW_TAB_REL;
+		} else if ( ! newLinkTarget && rel === NEW_TAB_REL ) {
+			updatedRel = undefined;
+		}
+
+		setAttributes( {
+			linkTarget: newLinkTarget,
+			rel: updatedRel,
+		} );
+	}
+
+	const ref = useRef();
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -37,6 +80,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps( {
+		ref,
 		style: {
 			'--unitone--top': top || undefined,
 			'--unitone--right': right || undefined,
@@ -54,12 +98,36 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		}
 	);
 
-	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+	const innerBlocksPropsArgs = {
 		templateLock,
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,
-	} );
+	};
+
+	const [ isEditingHref, setIsEditingHref ] = useState( false );
+	const isHrefSet = !! href;
+	const opensInNewTab = linkTarget === '_blank';
+
+	function startEditing( event ) {
+		event.preventDefault();
+		setIsEditingHref( true );
+	}
+
+	function unlink() {
+		setAttributes( {
+			href: undefined,
+			linkTarget: undefined,
+			rel: undefined,
+		} );
+		setIsEditingHref( false );
+	}
+
+	useEffect( () => {
+		if ( ! isSelected ) {
+			setIsEditingHref( false );
+		}
+	}, [ isSelected ] );
 
 	const TagName = tagName || 'div';
 
@@ -101,20 +169,20 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						options={ [
 							{ label: '', value: '' },
 							{
-								label: __( 'static', 'unitone' ),
+								label: 'static',
 								value: 'static',
 							},
 							{
-								label: __( 'relative', 'unitone' ),
+								label: 'relative',
 								value: 'relative',
 							},
 							{
-								label: __( 'absolute', 'unitone' ),
+								label: 'absolute',
 								value: 'absolute',
 							},
-							{ label: __( 'fixed', 'unitone' ), value: 'fixed' },
+							{ label: 'fixed', value: 'fixed' },
 							{
-								label: __( 'sticky', 'unitone' ),
+								label: 'sticky',
 								value: 'sticky',
 							},
 						] }
@@ -176,7 +244,85 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				</PanelBody>
 			</InspectorControls>
 
-			<TagName { ...innerBlocksProps } />
+			<BlockControls group="block">
+				{ ! isHrefSet && (
+					<ToolbarButton
+						name="link"
+						icon={ link }
+						title={ __( 'Link' ) }
+						shortcut={ displayShortcut.primary( 'k' ) }
+						onClick={ startEditing }
+					/>
+				) }
+				{ isHrefSet && (
+					<ToolbarButton
+						name="link"
+						icon={ linkOff }
+						title={ __( 'Unlink' ) }
+						shortcut={ displayShortcut.primaryShift( 'k' ) }
+						onClick={ unlink }
+						isActive={ true }
+					/>
+				) }
+			</BlockControls>
+
+			{ isSelected && ( isEditingHref || isHrefSet ) && (
+				<Popover
+					position="bottom center"
+					onClose={ () => {
+						setIsEditingHref( false );
+					} }
+					anchorRef={ ref?.current }
+					focusOnMount={ isEditingHref ? 'firstElement' : false }
+				>
+					<LinkControl
+						className="wp-block-navigation-link__inline-link-input"
+						value={ { url: href, opensInNewTab } }
+						onChange={ ( {
+							url: newHref = '',
+							opensInNewTab: newOpensInNewTab,
+						} ) => {
+							setAttributes( { href: newHref } );
+
+							if ( opensInNewTab !== newOpensInNewTab ) {
+								onToggleOpenInNewTab( newOpensInNewTab );
+							}
+						} }
+						onRemove={ () => {
+							unlink();
+						} }
+						forceIsEditingLink={ isEditingHref }
+					/>
+				</Popover>
+			) }
+
+			<InspectorControls __experimentalGroup="advanced">
+				<TextControl
+					label={ __( 'Link rel' ) }
+					value={ rel || '' }
+					onChange={ onSetLinkRel }
+				/>
+			</InspectorControls>
+
+			{ isHrefSet ? (
+				<TagName { ...blockProps }>
+					<div data-unitone-layout="decorator__inner">
+						<div
+							{ ...useInnerBlocksProps(
+								{},
+								innerBlocksPropsArgs
+							) }
+						/>
+					</div>
+				</TagName>
+			) : (
+				<TagName
+					{ ...useInnerBlocksProps(
+						blockProps,
+						innerBlocksPropsArgs
+					) }
+				/>
+			) }
 		</>
 	);
 }

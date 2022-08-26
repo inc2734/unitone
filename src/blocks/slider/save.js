@@ -2,8 +2,19 @@ import classnames from 'classnames';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
+import { Arrows, Pagination } from './components';
+
 export default function ( { attributes } ) {
-	const { arrows, hideOutSide, pagination, slideWidth } = attributes;
+	const {
+		arrows,
+		arrowsAlignment,
+		arrowsJustification,
+		hideOutSide,
+		pagination,
+		paginationAlignment,
+		paginationJustification,
+		slideWidth,
+	} = attributes;
 
 	return (
 		<div
@@ -17,7 +28,21 @@ export default function ( { attributes } ) {
 				},
 			} ) }
 		>
+			{ pagination && 'top' === paginationAlignment && (
+				<Pagination
+					alignment={ paginationAlignment }
+					justification={ paginationJustification }
+				/>
+			) }
+
 			<div className="unitone-slider__canvas-wrapper">
+				{ arrows && 'top' === arrowsAlignment && (
+					<Arrows
+						alignment={ arrowsAlignment }
+						justification={ arrowsJustification }
+					/>
+				) }
+
 				<div className="unitone-slider__canvas">
 					<div
 						{ ...useInnerBlocksProps.save( {
@@ -29,15 +54,22 @@ export default function ( { attributes } ) {
 					/>
 				</div>
 
-				{ arrows && (
-					<div className="swiper-buttons">
-						<div className="swiper-button swiper-button-prev"></div>
-						<div className="swiper-button swiper-button-next"></div>
-					</div>
-				) }
+				{ arrows &&
+					( 'bottom' === arrowsAlignment ||
+						'center' === arrowsAlignment ) && (
+						<Arrows
+							alignment={ arrowsAlignment }
+							justification={ arrowsJustification }
+						/>
+					) }
 			</div>
 
-			{ pagination && <div className="swiper-pagination"></div> }
+			{ pagination && 'bottom' === paginationAlignment && (
+				<Pagination
+					alignment={ paginationAlignment }
+					justification={ paginationJustification }
+				/>
+			) }
 		</div>
 	);
 }

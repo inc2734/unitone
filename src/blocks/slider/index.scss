@@ -5,7 +5,7 @@
 	--swiper-navigation-color: var(--wp--preset--color--unitone-accent);
 	--swiper-pagination-color: var(--wp--preset--color--unitone-accent);
 	--swiper-pagination-bullet-inactive-color: var(--wp--preset--color--unitone-dark-gray);
-	--swiper-pagination-bullet-horizontal-gap: calc(var(--unitone--s-2) / 2);
+	--swiper-pagination-bullet-horizontal-gap: var(--unitone--s-2);
 
 	position: relative;
 
@@ -32,13 +32,47 @@
 
 	.swiper-buttons {
 		display: flex;
+		flex-wrap: nowrap;
 		gap: var(--unitone--gap);
 		justify-content: center;
-		margin-top: var(--unitone--s-1);
+
+		&--alignment\:top {
+			margin-bottom: var(--unitone--s-1);
+		}
+
+		&--alignment\:center {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			left: 0;
+			z-index: 1;
+			transform: translateY(-50%);
+		}
+
+		&--alignment\:bottom {
+			margin-top: var(--unitone--s-1);
+		}
+
+		&--justification\:left {
+			justify-content: flex-start;
+		}
+
+		&--justification\:center {
+			justify-content: center;
+		}
+
+		&--justification\:right {
+			justify-content: flex-end;
+		}
+
+		&--justification\:space-between {
+			justify-content: space-between;
+		}
 	}
 
 	.swiper-button {
 		position: static;
+		display: flex;
 		font-weight: bold;
 
 		&::after {
@@ -48,16 +82,41 @@
 
 	.swiper-pagination {
 		position: static;
-		margin-top: var(--unitone--s-1);
+		display: flex;
+		justify-content: center;
+
+		&--alignment\:top {
+			margin-bottom: var(--unitone--s-1);
+		}
+
+		&--alignment\:bottom {
+			margin-top: var(--unitone--s-1);
+		}
+
+		&--justification\:left {
+			justify-content: flex-start;
+		}
+
+		&--justification\:center {
+			justify-content: center;
+		}
+
+		&--justification\:right {
+			justify-content: flex-end;
+		}
 	}
 
 	.swiper-pagination-bullets.swiper-pagination-horizontal {
+		gap: var(--swiper-pagination-bullet-horizontal-gap);
+
 		.swiper-pagination-bullet {
+			margin: 0;
+
 			&::after {
 				content: '';
 				display: block;
-				height: calc(100% + var(--swiper-pagination-bullet-horizontal-gap) * 2);
-				width: calc(100% + var(--swiper-pagination-bullet-horizontal-gap) * 2);
+				height: calc(100% + var(--swiper-pagination-bullet-horizontal-gap));
+				width: calc(100% + var(--swiper-pagination-bullet-horizontal-gap));
 			}
 		}
 	}

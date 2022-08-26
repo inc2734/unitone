@@ -10,6 +10,14 @@
 			"type": "boolean",
 			"default": false
 		},
+		"arrowsAlignment": {
+			"type": "string",
+			"default": "bottom"
+		},
+		"arrowsJustification": {
+			"type": "string",
+			"default": "center"
+		},
 		"hideOutside": {
 			"type": "boolean",
 			"default": false
@@ -17,6 +25,14 @@
 		"pagination": {
 			"type": "boolean",
 			"default": false
+		},
+		"paginationAlignment": {
+			"type": "string",
+			"default": "bottom"
+		},
+		"paginationJustification": {
+			"type": "string",
+			"default": "center"
 		},
 		"slideWidth": {
 			"type": "string"

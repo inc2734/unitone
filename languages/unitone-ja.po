@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-08-26T04:44:22+00:00\n"
-"PO-Revision-Date: 2022-08-26 13:45+0900\n"
+"POT-Creation-Date: 2022-08-26T12:11:08+00:00\n"
+"PO-Revision-Date: 2022-08-26 21:12+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -436,17 +436,69 @@ msgstr "スクロールバーなし"
 msgid "Column min width"
 msgstr "カラムの最小幅"
 
-#: dist/blocks/slider/index.js:1
-msgid "Using prev/next buttons"
-msgstr "前へ/次へボタンを使用する"
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+msgid "Align items top"
+msgstr "コンテンツを上揃え"
 
-#: dist/blocks/slider/index.js:1
-msgid "Using pagination"
-msgstr "ページネーションを使用する"
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+msgid "Align items center"
+msgstr "コンテンツを中央揃え"
+
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+msgid "Align items bottom"
+msgstr "コンテンツを下揃え"
+
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+msgid "Justify items left"
+msgstr "コンテンツを左揃え"
+
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+msgid "Justify items center"
+msgstr "コンテンツを中央揃え"
+
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+msgid "Justify items right"
+msgstr "コンテンツを右揃え"
+
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+msgid "Justify items space-between"
+msgstr "コンテンツを両端揃え"
 
 #: dist/blocks/slider/index.js:1
 msgid "Hide parts that extend beyond the canvas"
 msgstr "キャンバスからはみ出した部分を隠す"
+
+#: dist/blocks/slider/index.js:1
+msgid "The prev/next buttons"
+msgstr "前へ/次へボタン"
+
+#: dist/blocks/slider/index.js:1
+msgid "Using the prev/next buttons"
+msgstr "前へ/次へボタンを使用する"
+
+#: dist/blocks/slider/index.js:1
+msgid "Arrows alignment"
+msgstr "矢印の垂直位置"
+
+#: dist/blocks/slider/index.js:1
+msgid "Arrows justification"
+msgstr "矢印の配置"
+
+#: dist/blocks/slider/index.js:1
+msgid "The pagination"
+msgstr "ページネーション"
+
+#: dist/blocks/slider/index.js:1
+msgid "Using the pagination"
+msgstr "ページネーションを使用する"
+
+#: dist/blocks/slider/index.js:1
+msgid "Pagination alignment"
+msgstr "ページネーションの垂直位置"
+
+#: dist/blocks/slider/index.js:1
+msgid "Pagination justification"
+msgstr "ページネーションの配置"
 
 #: dist/blocks/stack-divided/index.js:1
 msgid "Underline"
@@ -517,22 +569,6 @@ msgid "Using negative margin"
 msgstr "ネガティブマージンを使用"
 
 #: dist/js/editor/editor.js:1
-msgid "Justify items left"
-msgstr "コンテンツを左揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items center"
-msgstr "コンテンツを中央揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items right"
-msgstr "コンテンツを右揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items space-between"
-msgstr "コンテンツを両端揃え"
-
-#: dist/js/editor/editor.js:1
 msgid "Justify content"
 msgstr "項目の揃え位置"
 
@@ -547,18 +583,6 @@ msgstr "コンテンツを下揃え"
 #: dist/js/editor/editor.js:1
 msgid "Align items"
 msgstr "垂直配置"
-
-#: dist/js/editor/editor.js:1
-msgid "Align items top"
-msgstr "コンテンツを上揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Align items center"
-msgstr "コンテンツを中央揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Align items bottom"
-msgstr "コンテンツを下揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Center"

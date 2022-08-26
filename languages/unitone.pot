@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-26T04:44:22+00:00\n"
+"POT-Creation-Date: 2022-08-26T12:11:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -450,15 +450,74 @@ msgid "Column min width"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-msgid "Using prev/next buttons"
+#: dist/js/editor/editor.js:1
+msgid "Align items top"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-msgid "Using pagination"
+#: dist/js/editor/editor.js:1
+msgid "Align items center"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Align items bottom"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Justify items left"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Justify items center"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Justify items right"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Justify items space-between"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
 msgid "Hide parts that extend beyond the canvas"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "The prev/next buttons"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Using the prev/next buttons"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Arrows alignment"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Arrows justification"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "The pagination"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Using the pagination"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Pagination alignment"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Pagination justification"
 msgstr ""
 
 #: dist/blocks/stack-divided/index.js:1
@@ -531,22 +590,6 @@ msgid "Using negative margin"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Justify items left"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items center"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items right"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items space-between"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
 msgid "Justify content"
 msgstr ""
 
@@ -560,18 +603,6 @@ msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Align items"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Align items top"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Align items center"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Align items bottom"
 msgstr ""
 
 #: dist/js/editor/editor.js:1

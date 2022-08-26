@@ -16,9 +16,65 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 
+import {
+	justifyLeft,
+	justifyCenter,
+	justifyRight,
+	justifySpaceBetween,
+} from '@wordpress/icons';
+
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
+import {
+	alignBottom,
+	alignCenter,
+	alignTop,
+} from '../../js/editor/hooks/icons';
+
+import { Arrows, Pagination } from './components';
+
+const alignmentOptions = [
+	{
+		value: 'top',
+		icon: alignTop,
+		label: __( 'Align items top', 'unitone' ),
+	},
+	{
+		value: 'center',
+		icon: alignCenter,
+		label: __( 'Align items center', 'unitone' ),
+	},
+	{
+		value: 'bottom',
+		icon: alignBottom,
+		label: __( 'Align items bottom', 'unitone' ),
+	},
+];
+
+const justificationOptions = [
+	{
+		value: 'left',
+		icon: justifyLeft,
+		label: __( 'Justify items left', 'unitone' ),
+	},
+	{
+		value: 'center',
+		icon: justifyCenter,
+		label: __( 'Justify items center', 'unitone' ),
+	},
+	{
+		value: 'right',
+		icon: justifyRight,
+		label: __( 'Justify items right', 'unitone' ),
+	},
+	{
+		value: 'space-between',
+		icon: justifySpaceBetween,
+		label: __( 'Justify items space-between', 'unitone' ),
+	},
+];
 
 export default function ( {
 	attributes,
@@ -26,7 +82,16 @@ export default function ( {
 	isSelected,
 	clientId,
 } ) {
-	const { arrows, hideOutSide, pagination, slideWidth } = attributes;
+	const {
+		arrows,
+		arrowsAlignment,
+		arrowsJustification,
+		hideOutSide,
+		pagination,
+		paginationAlignment,
+		paginationJustification,
+		slideWidth,
+	} = attributes;
 
 	const { selectBlock } = useDispatch( 'core/block-editor' );
 
@@ -122,22 +187,6 @@ export default function ( {
 					/>
 
 					<ToggleControl
-						label={ __( 'Using prev/next buttons', 'unitone' ) }
-						checked={ arrows }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { arrows: newAttribute } );
-						} }
-					/>
-
-					<ToggleControl
-						label={ __( 'Using pagination', 'unitone' ) }
-						checked={ pagination }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { pagination: newAttribute } );
-						} }
-					/>
-
-					<ToggleControl
 						label={ __(
 							'Hide parts that extend beyond the canvas',
 							'unitone'
@@ -148,31 +197,195 @@ export default function ( {
 						} }
 					/>
 				</PanelBody>
+				<PanelBody title={ __( 'The prev/next buttons', 'unitone' ) }>
+					<ToggleControl
+						label={ __( 'Using the prev/next buttons', 'unitone' ) }
+						checked={ arrows }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { arrows: newAttribute } );
+						} }
+					/>
+
+					{ arrows && (
+						<>
+							<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+								<legend>
+									{ __( 'Arrows alignment', 'unitone' ) }
+								</legend>
+								<div>
+									{ alignmentOptions.map(
+										( { value, icon, label } ) => {
+											return (
+												<Button
+													key={ value }
+													label={ label }
+													icon={ icon }
+													isPressed={
+														arrowsAlignment ===
+														value
+													}
+													onClick={ () => {
+														setAttributes( {
+															arrowsAlignment:
+																value,
+														} );
+													} }
+												/>
+											);
+										}
+									) }
+								</div>
+							</fieldset>
+
+							<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+								<legend>
+									{ __( 'Arrows justification', 'unitone' ) }
+								</legend>
+								<div>
+									{ justificationOptions.map(
+										( { value, icon, label } ) => {
+											return (
+												<Button
+													key={ value }
+													label={ label }
+													icon={ icon }
+													isPressed={
+														arrowsJustification ===
+														value
+													}
+													onClick={ () => {
+														setAttributes( {
+															arrowsJustification:
+																value,
+														} );
+													} }
+												/>
+											);
+										}
+									) }
+								</div>
+							</fieldset>
+						</>
+					) }
+				</PanelBody>
+				<PanelBody title={ __( 'The pagination', 'unitone' ) }>
+					<ToggleControl
+						label={ __( 'Using the pagination', 'unitone' ) }
+						checked={ pagination }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { pagination: newAttribute } );
+						} }
+					/>
+
+					{ pagination && (
+						<>
+							<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+								<legend>
+									{ __( 'Pagination alignment', 'unitone' ) }
+								</legend>
+								<div>
+									{ alignmentOptions
+										.filter(
+											( { value } ) => 'center' !== value
+										)
+										.map( ( { value, icon, label } ) => {
+											return (
+												<Button
+													key={ value }
+													label={ label }
+													icon={ icon }
+													isPressed={
+														paginationAlignment ===
+														value
+													}
+													onClick={ () => {
+														setAttributes( {
+															paginationAlignment:
+																value,
+														} );
+													} }
+												/>
+											);
+										} ) }
+								</div>
+							</fieldset>
+
+							<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+								<legend>
+									{ __(
+										'Pagination justification',
+										'unitone'
+									) }
+								</legend>
+								<div>
+									{ justificationOptions
+										.filter(
+											( { value } ) =>
+												'space-between' !== value
+										)
+										.map( ( { value, icon, label } ) => {
+											return (
+												<Button
+													key={ value }
+													label={ label }
+													icon={ icon }
+													isPressed={
+														paginationJustification ===
+														value
+													}
+													onClick={ () => {
+														setAttributes( {
+															paginationJustification:
+																value,
+														} );
+													} }
+												/>
+											);
+										} ) }
+								</div>
+							</fieldset>
+						</>
+					) }
+				</PanelBody>
 			</InspectorControls>
 
 			<div { ...blockProps }>
+				{ pagination && 'top' === paginationAlignment && (
+					<Pagination
+						slides={ slides }
+						alignment={ paginationAlignment }
+						justification={ paginationJustification }
+					/>
+				) }
+
 				<div className="unitone-slider__canvas-wrapper">
+					{ arrows && 'top' === arrowsAlignment && (
+						<Arrows
+							alignment={ arrowsAlignment }
+							justification={ arrowsJustification }
+						/>
+					) }
+
 					<div className="unitone-slider__canvas">
 						<div { ...innerBlocksProps } />
 					</div>
 
-					{ arrows && (
-						<div className="swiper-buttons">
-							<div className="swiper-button swiper-button-prev"></div>
-							<div className="swiper-button swiper-button-next"></div>
-						</div>
-					) }
+					{ arrows &&
+						( 'bottom' === arrowsAlignment ||
+							'center' === arrowsAlignment ) && (
+							<Arrows
+								alignment={ arrowsAlignment }
+								justification={ arrowsJustification }
+							/>
+						) }
 				</div>
 
-				{ pagination && (
-					<div className="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
-						{ slides.map( ( slide, index ) => (
-							<span
-								className="swiper-pagination-bullet"
-								key={ index }
-							></span>
-						) ) }
-					</div>
+				{ pagination && 'bottom' === paginationAlignment && (
+					<Pagination
+						slides={ slides }
+						alignment={ paginationAlignment }
+						justification={ paginationJustification }
+					/>
 				) }
 
 				{ ( isSelected || hasChildSelected ) && (

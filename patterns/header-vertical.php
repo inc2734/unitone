@@ -20,7 +20,7 @@
 
 			<!-- wp:unitone/both-sides-content {"contentMaxWidth":"100%"} -->
 			<div data-unitone-layout="both-sides__content" style="--unitone--content-max-width:100%">
-				<!-- wp:navigation {"layout":{"type":"flex","orientation":"vertical"},"style":{"typography":{"fontWeight":"600"}},"fontSize":"unitone-xs","className":"is-style-unitone"} -->
+				<!-- wp:navigation {"layout":{"type":"flex","orientation":"vertical"},"style":{"typography":{"fontWeight":"600"}},"fontSize":"unitone-s","className":"is-style-unitone"} -->
 					<!-- wp:page-list /-->
 				<!-- /wp:navigation -->
 			</div>

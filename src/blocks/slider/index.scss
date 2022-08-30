@@ -33,7 +33,7 @@
 	.swiper-buttons {
 		display: flex;
 		flex-wrap: nowrap;
-		gap: var(--unitone--gap);
+		gap: var(--unitone--s-1);
 		justify-content: center;
 
 		&--alignment\:top {
@@ -71,13 +71,12 @@
 	}
 
 	.swiper-button {
+		margin-top: 0;
 		position: static;
 		display: flex;
 		font-weight: bold;
-
-		&::after {
-			padding: 1em;
-		}
+		height: auto;
+		padding: calc(1rem - var(--swiper-navigation-size) / 2) 1rem;
 	}
 
 	.swiper-pagination {

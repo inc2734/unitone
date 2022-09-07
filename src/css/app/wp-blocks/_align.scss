@@ -8,13 +8,6 @@
 	.alignright,
 	.alignleft {
 		max-width: min(50%, var(--wp--custom--content-max-width));
-
-		figcaption {
-			margin: var(--unitone--s-2) 0 0;
-			display: table-caption;
-			caption-side: bottom;
-			text-align: left;
-		}
 	}
 
 	.alignright.alignright.alignright {
@@ -28,5 +21,10 @@
 	* > .alignright:first-child + *,
 	* > .alignleft:first-child + * {
 		margin-top: 0 !important;
+	}
+
+	.wp-block-image.aligncenter {
+		margin-right: auto;
+		margin-left: auto;
 	}
 }

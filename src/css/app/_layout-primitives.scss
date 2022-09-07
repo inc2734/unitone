@@ -54,4 +54,16 @@
 			display: none;
 		}
 	}
+
+	// @see https://github.com/inc2734/unitone/issues/22
+	[data-unitone-layout~="-align:start"]:not(:root):not(:root) {
+		margin-left:0 !important;
+	}
+	[data-unitone-layout~="-align:center"]:not(:root):not(:root) {
+		margin-left:auto !important;
+		margin-right: auto !important;
+	}
+	[data-unitone-layout~="-align:end"]:not(:root):not(:root) {
+		margin-right:0 !important;
+	}
 }

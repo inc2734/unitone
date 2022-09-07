@@ -88,7 +88,11 @@ export function JustifyContentColumnEdit( props ) {
 									const newUnitone = {
 										...unitone,
 										justifyContent:
-											physicalToLogical( value ),
+											logicalToPhysical(
+												unitone?.justifyContent
+											) !== value
+												? physicalToLogical( value )
+												: undefined,
 									};
 
 									setAttributes( {

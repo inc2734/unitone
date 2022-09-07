@@ -79,7 +79,13 @@ export function AlignItemsEdit( props ) {
 							onClick={ () => {
 								const newUnitone = {
 									...unitone,
-									alignItems: physicalToLogical( value ),
+									alignItems:
+										logicalToPhysical(
+											unitone?.alignItems,
+											'vertical'
+										) !== value
+											? physicalToLogical( value )
+											: undefined,
 								};
 
 								setAttributes( {

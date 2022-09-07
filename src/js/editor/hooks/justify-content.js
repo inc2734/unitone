@@ -90,7 +90,12 @@ export function JustifyContentEdit( props ) {
 							onClick={ () => {
 								const newUnitone = {
 									...unitone,
-									justifyContent: physicalToLogical( value ),
+									justifyContent:
+										logicalToPhysical(
+											unitone?.justifyContent
+										) !== value
+											? physicalToLogical( value )
+											: undefined,
 								};
 
 								setAttributes( {

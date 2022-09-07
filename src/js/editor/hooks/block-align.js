@@ -80,7 +80,12 @@ export function BlockAlignEdit( props ) {
 							onClick={ () => {
 								const newUnitone = {
 									...unitone,
-									blockAlign: physicalToLogical( value ),
+									blockAlign:
+										logicalToPhysical(
+											unitone?.blockAlign
+										) !== value
+											? physicalToLogical( value )
+											: undefined,
 								};
 
 								setAttributes( {

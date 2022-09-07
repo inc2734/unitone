@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-08-26T12:11:08+00:00\n"
-"PO-Revision-Date: 2022-08-26 21:12+0900\n"
+"POT-Creation-Date: 2022-09-07T16:53:43+00:00\n"
+"PO-Revision-Date: 2022-09-08 01:54+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -337,6 +337,10 @@ msgstr "カバー（上部 / 下部）"
 #: dist/blocks/cover/index.js:1
 msgid "Cover (Center / Bottom)"
 msgstr "カバー（中央 / 下部）"
+
+#: dist/blocks/cover/index.js:1
+msgid "Cover (Top / Center / Bottom)"
+msgstr "カバー（上部 / 中央 / 下部）"
 
 #: dist/blocks/decorator/index.js:1
 msgid "With shadow"

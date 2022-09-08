@@ -69,6 +69,25 @@
 		}
 	}
 
+	.wp-block-embed-wp-oembed-blog-card figure.wp-block-embed {
+		margin-top: -5px;
+		margin-right: -14px;
+		margin-left: -14px;
+		width: calc(100% + 14px * 2);
+		max-width: none;
+
+		figcaption {
+			position: relative;
+			margin-top: -18px;
+			margin-right: 14px;
+			margin-left: 14px;
+
+			> span {
+				font-size: inherit;
+			}
+		}
+	}
+
 	[data-unitone-layout~="text"] {
 		&[class*="wp-container-"] > * {
 			max-width: min(100%,var(--unitone--max-width));

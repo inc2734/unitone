@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-09-07T16:53:43+00:00\n"
+"POT-Creation-Date: 2022-09-14T02:32:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -493,6 +493,14 @@ msgid "Hide parts that extend beyond the canvas"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+msgid "Speed (s)"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Loop"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
 msgid "The prev/next buttons"
 msgstr ""
 
@@ -522,6 +530,22 @@ msgstr ""
 
 #: dist/blocks/slider/index.js:1
 msgid "Pagination justification"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Autoplay"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Using the autoplay"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Delay (s)"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "When 0, the prev/next buttons and the pagination will not be displayed."
 msgstr ""
 
 #: dist/blocks/stack-divided/index.js:1

@@ -14,7 +14,15 @@ export default function ( { attributes } ) {
 		paginationAlignment,
 		paginationJustification,
 		slideWidth,
+		autoplay,
+		autoplayDelay,
+		speed,
+		loop,
 	} = attributes;
+
+	const isDisplayArrows = arrows && ! ( autoplay && 0 === autoplayDelay );
+	const isDisplayPagination =
+		pagination && ! ( autoplay && 0 === autoplayDelay );
 
 	return (
 		<div
@@ -28,7 +36,7 @@ export default function ( { attributes } ) {
 				},
 			} ) }
 		>
-			{ pagination && 'top' === paginationAlignment && (
+			{ isDisplayPagination && 'top' === paginationAlignment && (
 				<Pagination
 					alignment={ paginationAlignment }
 					justification={ paginationJustification }
@@ -36,14 +44,23 @@ export default function ( { attributes } ) {
 			) }
 
 			<div className="unitone-slider__canvas-wrapper">
-				{ arrows && 'top' === arrowsAlignment && (
+				{ isDisplayArrows && 'top' === arrowsAlignment && (
 					<Arrows
 						alignment={ arrowsAlignment }
 						justification={ arrowsJustification }
 					/>
 				) }
 
-				<div className="unitone-slider__canvas">
+				<div
+					className="unitone-slider__canvas"
+					data-unitone-swiper-autoplay-delay={
+						autoplay ? autoplayDelay * 1000 : undefined
+					}
+					data-unitone-swiper-speed={
+						0 < speed ? speed * 1000 : undefined
+					}
+					data-unitone-swiper-loop={ loop ? 'true' : undefined }
+				>
 					<div
 						{ ...useInnerBlocksProps.save( {
 							className: classnames(
@@ -54,7 +71,7 @@ export default function ( { attributes } ) {
 					/>
 				</div>
 
-				{ arrows &&
+				{ isDisplayArrows &&
 					( 'bottom' === arrowsAlignment ||
 						'center' === arrowsAlignment ) && (
 						<Arrows
@@ -64,7 +81,7 @@ export default function ( { attributes } ) {
 					) }
 			</div>
 
-			{ pagination && 'bottom' === paginationAlignment && (
+			{ isDisplayPagination && 'bottom' === paginationAlignment && (
 				<Pagination
 					alignment={ paginationAlignment }
 					justification={ paginationJustification }

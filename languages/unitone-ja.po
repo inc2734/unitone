@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-09-07T16:53:43+00:00\n"
-"PO-Revision-Date: 2022-09-08 01:54+0900\n"
+"POT-Creation-Date: 2022-09-14T02:32:20+00:00\n"
+"PO-Revision-Date: 2022-09-14 11:32+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -473,6 +473,14 @@ msgid "Hide parts that extend beyond the canvas"
 msgstr "キャンバスからはみ出した部分を隠す"
 
 #: dist/blocks/slider/index.js:1
+msgid "Speed (s)"
+msgstr "スピード（秒）"
+
+#: dist/blocks/slider/index.js:1
+msgid "Loop"
+msgstr "ループ"
+
+#: dist/blocks/slider/index.js:1
 msgid "The prev/next buttons"
 msgstr "前へ/次へボタン"
 
@@ -503,6 +511,22 @@ msgstr "ページネーションの垂直位置"
 #: dist/blocks/slider/index.js:1
 msgid "Pagination justification"
 msgstr "ページネーションの配置"
+
+#: dist/blocks/slider/index.js:1
+msgid "Autoplay"
+msgstr "自動再生"
+
+#: dist/blocks/slider/index.js:1
+msgid "Using the autoplay"
+msgstr "自動再生を使用する"
+
+#: dist/blocks/slider/index.js:1
+msgid "Delay (s)"
+msgstr "遅延（秒）"
+
+#: dist/blocks/slider/index.js:1
+msgid "When 0, the prev/next buttons and the pagination will not be displayed."
+msgstr "0の場合、前へ/次へボタンおよびページネーションは表示されません。"
 
 #: dist/blocks/stack-divided/index.js:1
 msgid "Underline"

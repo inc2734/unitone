@@ -1,6 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 
 import 'swiper/scss'; // eslint-disable-line import/no-unresolved
+import 'swiper/scss/autoplay'; // eslint-disable-line import/no-unresolved
 import 'swiper/scss/navigation'; // eslint-disable-line import/no-unresolved
 import 'swiper/scss/pagination'; // eslint-disable-line import/no-unresolved
 import './index.scss';

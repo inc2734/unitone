@@ -36,6 +36,21 @@
 		},
 		"slideWidth": {
 			"type": "string"
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": false
+		},
+		"autoplayDelay": {
+			"type": "number",
+			"default": 0
+		},
+		"loop": {
+			"type": "boolean",
+			"default": false
+		},
+		"speed": {
+			"type": "number"
 		}
 	},
 	"supports": {

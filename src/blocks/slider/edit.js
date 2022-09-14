@@ -12,6 +12,7 @@ import {
 import {
 	Button,
 	PanelBody,
+	RangeControl,
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
@@ -91,6 +92,10 @@ export default function ( {
 		paginationAlignment,
 		paginationJustification,
 		slideWidth,
+		autoplay,
+		autoplayDelay,
+		speed,
+		loop,
 	} = attributes;
 
 	const { selectBlock } = useDispatch( 'core/block-editor' );
@@ -149,6 +154,10 @@ export default function ( {
 		}
 	} );
 
+	const isDisplayArrows = arrows && ! ( autoplay && 0 === autoplayDelay );
+	const isDisplayPagination =
+		pagination && ! ( autoplay && 0 === autoplayDelay );
+
 	const blockProps = useBlockProps( {
 		className: classnames( 'unitone-slider', {
 			'unitone-slider--hide-outside': hideOutSide,
@@ -196,7 +205,29 @@ export default function ( {
 							setAttributes( { hideOutSide: newAttribute } );
 						} }
 					/>
+
+					<RangeControl
+						label={ __( 'Speed (s)', 'unitone' ) }
+						value={ speed || 0.3 }
+						onChange={ ( newAttribute ) => {
+							setAttributes( {
+								speed: parseFloat( newAttribute ),
+							} );
+						} }
+						min={ 0 }
+						max={ 10 }
+						step={ 0.1 }
+					/>
+
+					<ToggleControl
+						label={ __( 'Loop', 'unitone' ) }
+						checked={ loop }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { loop: newAttribute } );
+						} }
+					/>
 				</PanelBody>
+
 				<PanelBody title={ __( 'The prev/next buttons', 'unitone' ) }>
 					<ToggleControl
 						label={ __( 'Using the prev/next buttons', 'unitone' ) }
@@ -268,6 +299,7 @@ export default function ( {
 						</>
 					) }
 				</PanelBody>
+
 				<PanelBody title={ __( 'The pagination', 'unitone' ) }>
 					<ToggleControl
 						label={ __( 'Using the pagination', 'unitone' ) }
@@ -347,10 +379,39 @@ export default function ( {
 						</>
 					) }
 				</PanelBody>
+
+				<PanelBody title={ __( 'Autoplay', 'unitone' ) }>
+					<ToggleControl
+						label={ __( 'Using the autoplay', 'unitone' ) }
+						checked={ autoplay }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { autoplay: newAttribute } );
+						} }
+					/>
+
+					{ autoplay && (
+						<RangeControl
+							label={ __( 'Delay (s)', 'unitone' ) }
+							value={ autoplayDelay }
+							help={ __(
+								'When 0, the prev/next buttons and the pagination will not be displayed.',
+								'unitone'
+							) }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									autoplayDelay: parseFloat( newAttribute ),
+								} );
+							} }
+							min={ 0 }
+							max={ 10 }
+							step={ 0.1 }
+						/>
+					) }
+				</PanelBody>
 			</InspectorControls>
 
 			<div { ...blockProps }>
-				{ pagination && 'top' === paginationAlignment && (
+				{ isDisplayPagination && 'top' === paginationAlignment && (
 					<Pagination
 						slides={ slides }
 						alignment={ paginationAlignment }
@@ -359,7 +420,7 @@ export default function ( {
 				) }
 
 				<div className="unitone-slider__canvas-wrapper">
-					{ arrows && 'top' === arrowsAlignment && (
+					{ isDisplayArrows && 'top' === arrowsAlignment && (
 						<Arrows
 							alignment={ arrowsAlignment }
 							justification={ arrowsJustification }
@@ -370,7 +431,7 @@ export default function ( {
 						<div { ...innerBlocksProps } />
 					</div>
 
-					{ arrows &&
+					{ isDisplayArrows &&
 						( 'bottom' === arrowsAlignment ||
 							'center' === arrowsAlignment ) && (
 							<Arrows
@@ -380,7 +441,7 @@ export default function ( {
 						) }
 				</div>
 
-				{ pagination && 'bottom' === paginationAlignment && (
+				{ isDisplayPagination && 'bottom' === paginationAlignment && (
 					<Pagination
 						slides={ slides }
 						alignment={ paginationAlignment }

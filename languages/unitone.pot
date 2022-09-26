@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 3.3.0\n"
+"Project-Id-Version: unitone 3.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-09-14T02:32:20+00:00\n"
+"POT-Creation-Date: 2022-09-26T01:45:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -242,10 +242,12 @@ msgid "Enter summary here"
 msgstr ""
 
 #: dist/blocks/both-sides-content/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
 msgid "Width"
 msgstr ""
 
 #: dist/blocks/both-sides-content/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Max width"
 msgstr ""
@@ -385,7 +387,7 @@ msgid "Left"
 msgstr ""
 
 #: dist/blocks/decorator/index.js:1
-msgid "z-index"
+msgid "The stack level"
 msgstr ""
 
 #: dist/blocks/decorator/index.js:1
@@ -417,11 +419,11 @@ msgid "Justify self"
 msgstr ""
 
 #: dist/blocks/layer/index.js:1
-msgid "grid-column"
+msgid "A grid item's size and location within a grid column"
 msgstr ""
 
 #: dist/blocks/layer/index.js:1
-msgid "grid-row"
+msgid "A grid item's size and location within the grid row"
 msgstr ""
 
 #: dist/blocks/layers/index.js:1
@@ -451,6 +453,11 @@ msgstr ""
 
 #: dist/blocks/responsive-grid/index.js:1
 msgid "Column min width"
+msgstr ""
+
+#. translators: %1$s: <code>, %2$s: </code>
+#: dist/blocks/responsive-grid/index.js:2
+msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -568,24 +575,17 @@ msgstr ""
 msgid "Threshold"
 msgstr ""
 
+#. translators: %1$s: <code>, %2$s: </code>
+#: dist/blocks/switcher/index.js:2
+msgid "Inside the %1$sflex-basis%2$s formula"
+msgstr ""
+
 #: dist/blocks/text/index.js:1
 msgid "Centering by intrinsic size of children"
 msgstr ""
 
 #: dist/blocks/text/index.js:1
 msgid "Multi columns"
-msgstr ""
-
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Sidebar width"
-msgstr ""
-
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Content min width"
-msgstr ""
-
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Content max width"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
@@ -597,8 +597,20 @@ msgid "Sidebar"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
+msgid "Columns to be treated as sidebars"
+msgstr ""
+
+#: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Default"
+msgstr ""
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Content"
+msgstr ""
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Min width"
 msgstr ""
 
 #: dist/js/editor/editor.js:1

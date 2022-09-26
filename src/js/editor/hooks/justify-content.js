@@ -75,7 +75,14 @@ export function JustifyContentEdit( props ) {
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-			<legend>{ __( 'Justify content', 'unitone' ) }</legend>
+			<legend>
+				{
+					<>
+						{ __( 'Justify content', 'unitone' ) } :
+						<code>justify-content</code>
+					</>
+				}
+			</legend>
 			<div>
 				{ justifyContentOptions.map( ( { value, icon, label } ) => {
 					return (

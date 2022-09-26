@@ -9,7 +9,7 @@ import {
 
 import { PanelBody, TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { threshold } = attributes;
@@ -43,7 +43,24 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			<InspectorControls>
 				<PanelBody title={ __( 'General', 'unitone' ) }>
 					<TextControl
-						label={ __( 'Threshold', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Threshold', 'unitone' ) }:
+								<span
+									dangerouslySetInnerHTML={ {
+										__html: sprintf(
+											// translators: %1$s: <code>, %2$s: </code>
+											__(
+												'Inside the %1$sflex-basis%2$s formula',
+												'unitone'
+											),
+											'<code>',
+											'</code>'
+										),
+									} }
+								/>
+							</>
+						}
 						value={ threshold }
 						onChange={ ( newAttribute ) => {
 							setAttributes( {

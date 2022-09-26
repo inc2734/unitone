@@ -160,12 +160,18 @@ export default function ( {
 						}
 					/>
 				</PanelBody>
+
 				<PanelBody
 					title={ __( 'Position', 'unitone' ) }
 					initialOpen={ false }
 				>
 					<SelectControl
-						label={ __( 'Position', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Position', 'unitone' ) } :
+								<code>position</code>
+							</>
+						}
 						options={ [
 							{ label: '', value: '' },
 							{
@@ -195,7 +201,11 @@ export default function ( {
 					/>
 
 					<TextControl
-						label={ __( 'Top', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Top', 'unitone' ) } : <code>top</code>
+							</>
+						}
 						value={ top }
 						onChange={ ( newAttribute ) => {
 							setAttributes( { top: newAttribute } );
@@ -203,7 +213,11 @@ export default function ( {
 					/>
 
 					<TextControl
-						label={ __( 'Right', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Right', 'unitone' ) } :<code>right</code>
+							</>
+						}
 						value={ right }
 						onChange={ ( newAttribute ) => {
 							setAttributes( {
@@ -213,7 +227,12 @@ export default function ( {
 					/>
 
 					<TextControl
-						label={ __( 'Bottom', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Bottom', 'unitone' ) } :
+								<code>bottom</code>
+							</>
+						}
 						value={ bottom }
 						onChange={ ( newAttribute ) => {
 							setAttributes( {
@@ -223,7 +242,11 @@ export default function ( {
 					/>
 
 					<TextControl
-						label={ __( 'Left', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Left', 'unitone' ) } : <code>left</code>
+							</>
+						}
 						value={ left }
 						onChange={ ( newAttribute ) => {
 							setAttributes( {
@@ -233,7 +256,12 @@ export default function ( {
 					/>
 
 					<TextControl
-						label={ __( 'z-index', 'unitone' ) }
+						label={
+							<>
+								{ __( 'The stack level', 'unitone' ) } :
+								<code>z-index</code>
+							</>
+						}
 						value={ zIndex }
 						onChange={ ( newAttribute ) => {
 							setAttributes( {

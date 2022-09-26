@@ -36,7 +36,11 @@ export function PaddingEdit( props ) {
 
 	return (
 		<SelectControl
-			label={ __( 'Padding', 'unitone' ) }
+			label={
+				<>
+					{ __( 'Padding', 'unitone' ) } : <code>padding</code>
+				</>
+			}
 			value={ unitone?.padding }
 			options={ [
 				{

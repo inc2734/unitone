@@ -16,7 +16,11 @@ export function MinHeightEdit( props ) {
 
 	return (
 		<TextControl
-			label={ __( 'Min height', 'unitone' ) }
+			label={
+				<>
+					{ __( 'Min height', 'unitone' ) } : <code>min-height</code>
+				</>
+			}
 			value={ unitone?.minHeight }
 			onChange={ ( newValue ) => {
 				const newUnitone = {

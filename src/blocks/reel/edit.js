@@ -47,7 +47,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			<InspectorControls>
 				<PanelBody title={ __( 'General', 'unitone' ) }>
 					<TextControl
-						label={ __( 'Height', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Height', 'unitone' ) } :
+								<code>height</code>
+							</>
+						}
 						value={ height }
 						onChange={ ( newAttribute ) => {
 							setAttributes( { height: newAttribute } );
@@ -55,7 +60,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					/>
 
 					<TextControl
-						label={ __( 'Each items width', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Each items width', 'unitone' ) } :
+								<code>width</code>
+							</>
+						}
 						value={ itemWidth }
 						onChange={ ( newAttribute ) => {
 							setAttributes( { itemWidth: newAttribute } );

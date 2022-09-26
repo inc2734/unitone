@@ -45,7 +45,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			<InspectorControls>
 				<PanelBody>
 					<TextControl
-						label={ __( 'Width', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Width', 'unitone' ) } :
+								<code>flex-basis</code>
+							</>
+						}
 						value={ contentWidth }
 						onChange={ ( newAttribute ) => {
 							setAttributes( { contentWidth: newAttribute } );
@@ -53,7 +58,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					/>
 
 					<TextControl
-						label={ __( 'Max width', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Max width', 'unitone' ) } :
+								<code>max-width</code>
+							</>
+						}
 						value={ contentMaxWidth }
 						onChange={ ( newAttribute ) => {
 							setAttributes( { contentMaxWidth: newAttribute } );

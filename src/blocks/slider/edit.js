@@ -188,7 +188,12 @@ export default function ( {
 			<InspectorControls>
 				<PanelBody title={ __( 'General', 'unitone' ) }>
 					<TextControl
-						label={ __( 'Each items width', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Each items width', 'unitone' ) }:
+								<code>width</code>
+							</>
+						}
 						value={ slideWidth }
 						onChange={ ( newAttribute ) => {
 							setAttributes( { slideWidth: newAttribute } );

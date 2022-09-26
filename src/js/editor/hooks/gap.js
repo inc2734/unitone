@@ -33,7 +33,11 @@ export function GapEdit( props ) {
 
 	return (
 		<SelectControl
-			label={ __( 'Gap', 'unitone' ) }
+			label={
+				<>
+					{ __( 'Gap', 'unitone' ) } : <code>gap</code>
+				</>
+			}
 			value={ unitone?.gap }
 			options={ [
 				{

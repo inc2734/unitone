@@ -62,7 +62,14 @@ export function AlignItemsEdit( props ) {
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-			<legend>{ __( 'Align items', 'unitone' ) }</legend>
+			<legend>
+				{
+					<>
+						{ __( 'Align items', 'unitone' ) } :
+						<code>align-items</code>
+					</>
+				}
+			</legend>
 			<div>
 				{ alignItemsOptions.map( ( { value, icon, label } ) => {
 					return (

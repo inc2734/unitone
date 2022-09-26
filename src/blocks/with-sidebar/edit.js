@@ -47,36 +47,6 @@ export default function ( { attributes, setAttributes } ) {
 		<>
 			<InspectorControls>
 				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<TextControl
-						label={ __( 'Sidebar width', 'unitone' ) }
-						value={ sidebarWidth }
-						onChange={ ( newAttribute ) => {
-							setAttributes( {
-								sidebarWidth: newAttribute,
-							} );
-						} }
-					/>
-
-					<TextControl
-						label={ __( 'Content min width', 'unitone' ) }
-						value={ contentMinWidth }
-						onChange={ ( newAttribute ) => {
-							setAttributes( {
-								contentMinWidth: newAttribute,
-							} );
-						} }
-					/>
-
-					<TextControl
-						label={ __( 'Content max width', 'unitone' ) }
-						value={ contentMaxWidth }
-						onChange={ ( newAttribute ) => {
-							setAttributes( {
-								contentMaxWidth: newAttribute,
-							} );
-						} }
-					/>
-
 					<ToggleControl
 						label={ __( 'Revert', 'unitone' ) }
 						checked={ revert }
@@ -84,9 +54,14 @@ export default function ( { attributes, setAttributes } ) {
 							setAttributes( { revert: newAttribute } );
 						} }
 					/>
+				</PanelBody>
 
+				<PanelBody title={ __( 'Sidebar', 'unitone' ) }>
 					<SelectControl
-						label={ __( 'Sidebar', 'unitone' ) }
+						label={ __(
+							'Columns to be treated as sidebars',
+							'unitone'
+						) }
 						value={ sidebar }
 						options={ [
 							{
@@ -107,6 +82,53 @@ export default function ( { attributes, setAttributes } ) {
 								sidebar: newAttribute,
 							} )
 						}
+					/>
+
+					<TextControl
+						label={
+							<>
+								{ __( 'Width', 'unitone' ) }:
+								<code>flex-basis</code>
+							</>
+						}
+						value={ sidebarWidth }
+						onChange={ ( newAttribute ) => {
+							setAttributes( {
+								sidebarWidth: newAttribute,
+							} );
+						} }
+					/>
+				</PanelBody>
+
+				<PanelBody title={ __( 'Content', 'unitone' ) }>
+					<TextControl
+						label={
+							<>
+								{ __( 'Max width', 'unitone' ) }:
+								<code>max-width</code>
+							</>
+						}
+						value={ contentMaxWidth }
+						onChange={ ( newAttribute ) => {
+							setAttributes( {
+								contentMaxWidth: newAttribute,
+							} );
+						} }
+					/>
+
+					<TextControl
+						label={
+							<>
+								{ __( 'Min width', 'unitone' ) }:
+								<code>min-width</code>
+							</>
+						}
+						value={ contentMinWidth }
+						onChange={ ( newAttribute ) => {
+							setAttributes( {
+								contentMinWidth: newAttribute,
+							} );
+						} }
 					/>
 				</PanelBody>
 			</InspectorControls>

@@ -47,7 +47,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			<InspectorControls>
 				<PanelBody title={ __( 'General', 'unitone' ) }>
 					<SelectControl
-						label={ __( 'Align self', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Align self', 'unitone' ) } :
+								<code>align-self</code>
+							</>
+						}
 						options={ [
 							{
 								label: '',
@@ -89,7 +94,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					/>
 
 					<SelectControl
-						label={ __( 'Justify self', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Justify self', 'unitone' ) } :
+								<code>justify-self</code>
+							</>
+						}
 						options={ [
 							{
 								label: '',
@@ -131,7 +141,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					/>
 
 					<TextControl
-						label={ __( 'grid-column', 'unitone' ) }
+						label={
+							<>
+								{ __(
+									"A grid item's size and location within a grid column",
+									'unitone'
+								) }
+								: <code>grid-column</code>
+							</>
+						}
 						value={ gridColumn }
 						onChange={ ( newAttribute ) => {
 							setAttributes( { gridColumn: newAttribute } );
@@ -139,7 +157,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					/>
 
 					<TextControl
-						label={ __( 'grid-row', 'unitone' ) }
+						label={
+							<>
+								{ __(
+									"A grid item's size and location within the grid row",
+									'unitone'
+								) }
+								: <code>grid-row</code>
+							</>
+						}
 						value={ gridRow }
 						onChange={ ( newAttribute ) => {
 							setAttributes( { gridRow: newAttribute } );

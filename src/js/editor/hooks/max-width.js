@@ -16,7 +16,11 @@ export function MaxWidthEdit( props ) {
 
 	return (
 		<TextControl
-			label={ __( 'Max width', 'unitone' ) }
+			label={
+				<>
+					{ __( 'Max width', 'unitone' ) } : <code>max-width</code>
+				</>
+			}
 			value={ unitone?.maxWidth }
 			onChange={ ( newValue ) => {
 				const newUnitone = {

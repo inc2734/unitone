@@ -1,5 +1,3 @@
-import './editor.scss';
-
 import classnames from 'classnames';
 
 import {

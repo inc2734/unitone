@@ -63,6 +63,6 @@
 	"category": "unitone/component",
 	"editorScript": "file:./index.js",
 	"viewScript": "file:./app.js",
-	"style": "file:./index.css",
-	"editorStyle": "file:./editor.css"
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
 }

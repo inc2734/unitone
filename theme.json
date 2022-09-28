@@ -122,6 +122,41 @@
 		}
 	},
 	"styles": {
+		"elements": {
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--unitone-accent)"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "var:preset|color|unitone-accent"
+				}
+			}
+		},
+		"blocks": {
+			"core/code": {
+				"color": {
+					"background": "var(--wp--preset--color--black)",
+					"text": "var(--unitone--color--white)"
+				}
+			},
+			"core/search": {
+				"color": {
+					"background": "var(--wp--preset--color--black)"
+				}
+			},
+			"core/post-terms": {
+				"elements": {
+					"link": {
+						"color": {
+							"background": "var(--wp--preset--color--unitone-accent)",
+							"text": "var(--wp--preset--color--white)"
+						}
+					}
+				}
+			}
+		},
 		"spacing": {
 			"blockGap": "var(--unitone--s1)"
 		}

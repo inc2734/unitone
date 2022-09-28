@@ -11,10 +11,6 @@
 		overflow-x: hidden;
 	}
 
-	:where(a) {
-		color: var(--wp--preset--color--unitone-accent);
-	}
-
 	code,
 	kbd {
 		--unitone--font-size: -1;

@@ -3,9 +3,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--unitone--s-2);
-		// background-color: var(--wp--preset--color--unitone-accent);
 		background-color: transparent !important;
-		color: var(--wp--preset--color--white);
 
 		a {
 			display: inline-block;
@@ -17,10 +15,5 @@
 		.wp-block-post-terms__separator {
 			display: none;
 		}
-	}
-
-	:where(.wp-block-post-terms.is-style-badge a) {
-		background-color: var(--wp--preset--color--unitone-accent);
-		color: var(--wp--preset--color--white);
 	}
 }

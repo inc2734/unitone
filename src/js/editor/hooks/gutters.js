@@ -1,9 +1,9 @@
 import classnames from 'classnames/dedupe';
 
 import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
-import { SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
+import { SpacingSizeControl } from './components';
 import { cleanEmptyObject } from './utils';
 
 export function hasGuttersValue( props ) {
@@ -32,56 +32,20 @@ export function GuttersEdit( props ) {
 	} = props;
 
 	return (
-		<SelectControl
-			label={ __( 'Gutters', 'unitone' ) }
+		<SpacingSizeControl
+			label={
+				<>
+					{ __( 'Gutters', 'unitone' ) } :
+					<code>padding-right/left</code>
+				</>
+			}
 			value={ unitone?.gutters }
-			options={ [
-				{
-					label: '',
-					value: undefined,
-				},
-				{
-					label: '-2',
-					value: '-2',
-				},
-				{
-					label: '-1',
-					value: '-1',
-				},
-				{
-					label: '0',
-					value: '0',
-				},
-				{
-					label: '1',
-					value: '1',
-				},
-				{
-					label: '2',
-					value: '2',
-				},
-				{
-					label: '3',
-					value: '3',
-				},
-				{
-					label: '4',
-					value: '4',
-				},
-				{
-					label: '5',
-					value: '5',
-				},
-				{
-					label: '6',
-					value: '6',
-				},
-				{
-					label: '7',
-					value: '7',
-				},
-			] }
 			onChange={ ( newValue ) => {
+				if ( 'undefined' !== typeof newValue ) {
+					// RangeControl returns Int, SelectControl returns String.
+					// So cast Int all values.
+					newValue = String( newValue );
+				}
 				const newUnitone = {
 					...unitone,
 					gutters: newValue,

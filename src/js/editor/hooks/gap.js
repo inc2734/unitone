@@ -1,9 +1,9 @@
 import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport } from '@wordpress/blocks';
-import { SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
+import { SpacingSizeControl } from './components';
 import { cleanEmptyObject } from './utils';
 
 export function hasGapValue( props ) {
@@ -32,60 +32,19 @@ export function GapEdit( props ) {
 	} = props;
 
 	return (
-		<SelectControl
+		<SpacingSizeControl
 			label={
 				<>
 					{ __( 'Gap', 'unitone' ) } : <code>gap</code>
 				</>
 			}
 			value={ unitone?.gap }
-			options={ [
-				{
-					label: '',
-					value: undefined,
-				},
-				{
-					label: '-2',
-					value: '-2',
-				},
-				{
-					label: '-1',
-					value: '-1',
-				},
-				{
-					label: '0',
-					value: '0',
-				},
-				{
-					label: '1',
-					value: '1',
-				},
-				{
-					label: '2',
-					value: '2',
-				},
-				{
-					label: '3',
-					value: '3',
-				},
-				{
-					label: '4',
-					value: '4',
-				},
-				{
-					label: '5',
-					value: '5',
-				},
-				{
-					label: '6',
-					value: '6',
-				},
-				{
-					label: '7',
-					value: '7',
-				},
-			] }
 			onChange={ ( newValue ) => {
+				if ( 'undefined' !== typeof newValue ) {
+					// RangeControl returns Int, SelectControl returns String.
+					// So cast Int all values.
+					newValue = String( newValue );
+				}
 				const newUnitone = {
 					...unitone,
 					gap: newValue,

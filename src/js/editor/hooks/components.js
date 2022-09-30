@@ -16,7 +16,7 @@ export function SpacingSizeControl( { options, onChange, label, value } ) {
 		},
 		{
 			label: '-1',
-			value: ' -1',
+			value: '-1',
 		},
 		{
 			label: '0',

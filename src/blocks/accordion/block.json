@@ -7,6 +7,32 @@
 	"description": "This block displays folded content.",
 	"attributes": {
 		"summary": {
+			"type": "string",
+			"source": "text",
+			"selector": ".unitone-accordion__summary-text"
+		},
+		"q": {
+			"type": "boolean",
+			"default": false
+		},
+		"qLabel": {
+			"type": "string",
+			"source": "text",
+			"selector": ".unitone-accordion__q-text"
+		},
+		"qWidth": {
+			"type": "string"
+		},
+		"a": {
+			"type": "boolean",
+			"default": false
+		},
+		"aLabel": {
+			"type": "string",
+			"source": "text",
+			"selector": ".unitone-accordion__a-text"
+		},
+		"aWidth": {
 			"type": "string"
 		}
 	},
@@ -37,7 +63,7 @@
 			"label": "Panel"
 		}
 	],
-	"category": "unitone/layout",
+	"category": "unitone/component",
 	"editorScript": "file:./index.js",
 	"style": "file:./style-index.css"
 }

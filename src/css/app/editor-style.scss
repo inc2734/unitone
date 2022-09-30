@@ -9,14 +9,14 @@
 @use '../../../node_modules/@inc2734/unitone-css/src/settings/settings';
 
 @use 'foundation';
-@use 'layout-primitives';
+@use 'blocks';
 @use 'wp-blocks/wp-blocks';
 @use 'main';
 @use 'block-styles/block-styles';
 
 .editor-styles-wrapper {
 	@include foundation.include();
-	@include layout-primitives.include();
+	@include blocks.include();
 	@include wp-blocks.include();
 	@include main.include();
 	@include block-styles.include();
@@ -89,11 +89,11 @@
 	}
 
 	[data-unitone-layout~="text"] {
-		&[class*="wp-container-"] > * {
+		&.is-layout-constrained > * {
 			max-width: min(100%,var(--unitone--max-width));
 		}
 
-		&[data-unitone-layout~="-column"][class*="wp-container-"] > * {
+		&[data-unitone-layout~="-column"].is-layout-constrained > * {
 			max-width: initial;
 		}
 	}

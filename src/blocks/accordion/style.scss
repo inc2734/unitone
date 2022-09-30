@@ -1,5 +1,5 @@
 .unitone-accordion {
-	--unitone--padding: var(--unitone--s-1);
+	--unitone--padding: var(--unitone--s-2);
 
 	&[open] {
 		.unitone-accordion__icon {
@@ -9,10 +9,11 @@
 
 	&.is-style-box,
 	&.is-style-panel {
+		--unitone--padding: var(--unitone--s1);
+
 		> .unitone-accordion__summary,
 		> .unitone-accordion__content {
-			padding-right: var(--unitone--padding);
-			padding-left: var(--unitone--padding);
+			padding: var(--unitone--padding);
 		}
 	}
 
@@ -25,10 +26,7 @@
 	}
 
 	&__summary {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: var(--unitone--padding);
+		display: block;
 		cursor: pointer;
 
 		&::-webkit-details-marker {
@@ -42,9 +40,16 @@
 		padding-bottom: var(--unitone--padding);
 	}
 
+	&__summary-content[data-unitone-layout~="with-sidebar"],
+	&__content[data-unitone-layout~="with-sidebar"] {
+		--unitone--gap: var(--unitone--s-1);
+	}
+
 	&__icon {
+		margin-top: calc(1.375em * var(--unitone--half-leading));
 		display: flex;
 		height: .75rem;
 		width: .75rem;
+		min-width: initial !important;
 	}
 }

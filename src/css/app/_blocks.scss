@@ -66,4 +66,18 @@
 	[data-unitone-layout~="-align:end"]:not(:root):not(:root) {
 		margin-right:0 !important;
 	}
+
+	[data-unitone-layout~="slider"] {
+		--unitone--gap: var(--unitone--s1);
+		--unitone--item-width: calc(var(--unitone--measure) / 3);
+	}
+	[data-unitone-layout~="slider__track"] {
+		display: flex;
+		gap: var(--unitone--gap);
+		transition: transform .5s ease-in-out;
+
+		> * {
+			flex: 0 0 var(--unitone--item-width);
+		}
+	}
 }

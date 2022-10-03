@@ -1,4 +1,8 @@
 @mixin include() {
+	#wpadminbar {
+		position: fixed !important;
+	}
+
 	.site-header {
 		&.-header-position\:fixed {
 			position: fixed;

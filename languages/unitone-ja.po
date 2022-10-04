@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-10-04T01:59:39+00:00\n"
-"PO-Revision-Date: 2022-10-04 11:01+0900\n"
+"POT-Creation-Date: 2022-10-04T03:03:13+00:00\n"
+"PO-Revision-Date: 2022-10-04 12:09+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1169,8 +1169,28 @@ msgstr "404"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "404 (Page header (Image))"
+msgstr "404（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "404 (Right sidebar)"
+msgstr "404（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "404 (Right sidebar / Page header (Image))"
+msgstr "404（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "404 (Left header)"
 msgstr "404（左ヘッダー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "404 (Left header / Page header (Image))"
+msgstr "404（左ヘッダー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1186,6 +1206,11 @@ msgstr "404のコンテンツ（ページヘッダー（画像））"
 msgctxt "Template part name"
 msgid "404 contents (Right sidebar)"
 msgstr "404のコンテンツ（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "404 contents (Right sidebar / Page header (Image))"
+msgstr "404 のコンテンツ（右サイドバー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1209,8 +1234,28 @@ msgstr "WooCommerce 商品アーカイブ"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "WooCommerce product archive (Page header (Image))"
+msgstr "WooCommerce 商品アーカイブ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product archive (Right sidebar)"
+msgstr "WooCommerce 商品アーカイブ（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product archive (Right sidebar / Page header (Image))"
+msgstr "WooCommerce 商品アーカイブ（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "WooCommerce product archive (Left header)"
 msgstr "WooCommerce 商品アーカイブ（左ヘッダー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce product archive (Left header / Page header (Image))"
+msgstr "WooCommerce 商品アーカイブ（左ヘッダー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1229,6 +1274,14 @@ msgstr "WooCommerce 商品アーカイブのコンテンツ（右サイドバー
 
 #: theme.json
 msgctxt "Template part name"
+msgid ""
+"WooCommerce product archive contents (Right sidebar / Page header (Image))"
+msgstr ""
+"WooCommerce 商品アーカイブのコンテンツ（右サイドバー / ページヘッダー（画"
+"像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "WooCommerce product archive page header"
 msgstr "WooCommerce 商品アーカイブのページヘッダー"
 
@@ -1244,8 +1297,28 @@ msgstr "アーカイブ"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "Archive (Page header (Image))"
+msgstr "アーカイブ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Archive (Right sidebar)"
+msgstr "アーカイブ（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Archive (Right sidebar / Page header (Image))"
+msgstr "アーカイブ（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "Archive (Left header)"
 msgstr "アーカイブ（左ヘッダー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Archive (Left header / Page header (Image))"
+msgstr "アーカイブ（左ヘッダー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1264,6 +1337,11 @@ msgstr "アーカイブのコンテンツ（右サイドバー）"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "Archive contents (Right sidebar / Page header (Image))"
+msgstr "アーカイブのコンテンツ（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "Archive page header"
 msgstr "アーカイブのページヘッダー"
 
@@ -1279,8 +1357,28 @@ msgstr "bbPress"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "bbPress (Page header (Image))"
+msgstr "bbPress（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "bbPress (Right sidebar)"
+msgstr "bbPress（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "bbPress (Right sidebar / Page header (Image))"
+msgstr "bbPress（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "bbPress (Left header)"
 msgstr "bbPress（左ヘッダー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "bbPress (Left header / Page header (Image))"
+msgstr "bbPress（左ヘッダー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1299,6 +1397,11 @@ msgstr "bbPress のコンテンツ（右サイドバー）"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "bbPress contents (Right sidebar / Page header (Image))"
+msgstr "bbPress のコンテンツ（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "bbPress page header"
 msgstr "bbPress のページヘッダー"
 
@@ -1314,8 +1417,28 @@ msgstr "ホーム"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "Home (Page header (Image))"
+msgstr "ホーム（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Home (Right sidebar)"
+msgstr "ホーム（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Home (Right sidebar / Page header (Image))"
+msgstr "ホーム（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "Home (Left header)"
 msgstr "ホーム（左ヘッダー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Home (Left header / Page header (Image))"
+msgstr "ホーム（左ヘッダー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1336,6 +1459,11 @@ msgstr "ホームのコンテンツ（ページヘッダー（画像））"
 msgctxt "Template part name"
 msgid "Home contents (Right sidebar)"
 msgstr "ホームのコンテンツ（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Home contents (Right sidebar / Page header (Image))"
+msgstr "ホームのコンテンツ（右サイドバー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1470,8 +1598,28 @@ msgstr "検索"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "Search (Page header (Image))"
+msgstr "検索結果（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Search (Right sidebar)"
+msgstr "検索結果（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Search (Right sidebar / Page header (Image))"
+msgstr "検索結果（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "Search (Left header)"
 msgstr "検索結果（左ヘッダー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Search (Left header / Page header (Image))"
+msgstr "検索結果（左ヘッダー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1487,6 +1635,11 @@ msgstr "検索結果のコンテンツ（ページヘッダー（画像））"
 msgctxt "Template part name"
 msgid "Search contents (Right sidebar)"
 msgstr "検索結果のコンテンツ（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Search contents (Right sidebar / Page header (Image))"
+msgstr "検索結果のコンテンツ（右サイドバー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"

@@ -339,8 +339,28 @@
 			"area": "unitone/template/404"
 		},
 		{
+			"name": "template-404-page-header-image",
+			"title": "404 (Page header (Image))",
+			"area": "unitone/template/404"
+		},
+		{
+			"name": "template-404-right-sidebar",
+			"title": "404 (Right sidebar)",
+			"area": "unitone/template/404"
+		},
+		{
+			"name": "template-404-right-sidebar-page-header-image",
+			"title": "404 (Right sidebar / Page header (Image))",
+			"area": "unitone/template/404"
+		},
+		{
 			"name": "template-404-left-header",
 			"title": "404 (Left header)",
+			"area": "unitone/template/404"
+		},
+		{
+			"name": "template-404-left-header-page-header-image",
+			"title": "404 (Left header / Page header (Image))",
 			"area": "unitone/template/404"
 		},
 		{
@@ -356,6 +376,11 @@
 		{
 			"name": "contents-404-right-sidebar",
 			"title": "404 contents (Right sidebar)",
+			"area": "unitone/contents/404"
+		},
+		{
+			"name": "contents-404-right-sidebar-page-header-image",
+			"title": "404 contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/404"
 		},
 		{
@@ -379,8 +404,28 @@
 			"area": "unitone/template/archive-product"
 		},
 		{
+			"name": "template-archive-product-page-header-image",
+			"title": "WooCommerce product archive (Page header (Image))",
+			"area": "unitone/template/archive-product"
+		},
+		{
+			"name": "template-archive-product-right-sidebar",
+			"title": "WooCommerce product archive (Right sidebar)",
+			"area": "unitone/template/archive-product"
+		},
+		{
+			"name": "template-archive-product-right-sidebar-page-header-image",
+			"title": "WooCommerce product archive (Right sidebar / Page header (Image))",
+			"area": "unitone/template/archive-product"
+		},
+		{
 			"name": "template-archive-product-left-header",
 			"title": "WooCommerce product archive (Left header)",
+			"area": "unitone/template/archive-product"
+		},
+		{
+			"name": "template-archive-product-left-header-page-header-image",
+			"title": "WooCommerce product archive (Left header / Page header (Image))",
 			"area": "unitone/template/archive-product"
 		},
 		{
@@ -399,6 +444,11 @@
 			"area": "unitone/contents/archive-product"
 		},
 		{
+			"name": "contents-archive-product-right-sidebar-page-header-image",
+			"title": "WooCommerce product archive contents (Right sidebar / Page header (Image))",
+			"area": "unitone/contents/archive-product"
+		},
+		{
 			"name": "page-header-archive-product",
 			"title": "WooCommerce product archive page header",
 			"area": "uncategorized"
@@ -414,8 +464,28 @@
 			"area": "unitone/template/archive"
 		},
 		{
+			"name": "template-archive-page-header-image",
+			"title": "Archive (Page header (Image))",
+			"area": "unitone/template/archive"
+		},
+		{
+			"name": "template-archive-right-sidebar",
+			"title": "Archive (Right sidebar)",
+			"area": "unitone/template/archive"
+		},
+		{
+			"name": "template-archive-right-sidebar-page-header-image",
+			"title": "Archive (Right sidebar / Page header (Image))",
+			"area": "unitone/template/archive"
+		},
+		{
 			"name": "template-archive-left-header",
 			"title": "Archive (Left header)",
+			"area": "unitone/template/archive"
+		},
+		{
+			"name": "template-archive-left-header-page-header-image",
+			"title": "Archive (Left header / Page header (Image))",
 			"area": "unitone/template/archive"
 		},
 		{
@@ -434,6 +504,11 @@
 			"area": "unitone/contents/archive"
 		},
 		{
+			"name": "contents-archive-right-sidebar-page-header-image",
+			"title": "Archive contents (Right sidebar / Page header (Image))",
+			"area": "unitone/contents/archive"
+		},
+		{
 			"name": "page-header-archive",
 			"title": "Archive page header",
 			"area": "uncategorized"
@@ -449,8 +524,28 @@
 			"area": "unitone/template/bbpress"
 		},
 		{
+			"name": "template-bbpress-page-header-image",
+			"title": "bbPress (Page header (Image))",
+			"area": "unitone/template/bbpress"
+		},
+		{
+			"name": "template-bbpress-right-sidebar",
+			"title": "bbPress (Right sidebar)",
+			"area": "unitone/template/bbpress"
+		},
+		{
+			"name": "template-bbpress-right-sidebar-page-header-image",
+			"title": "bbPress (Right sidebar / Page header (Image))",
+			"area": "unitone/template/bbpress"
+		},
+		{
 			"name": "template-bbpress-left-header",
 			"title": "bbPress (Left header)",
+			"area": "unitone/template/bbpress"
+		},
+		{
+			"name": "template-bbpress-left-header-page-header-image",
+			"title": "bbPress (Left header / Page header (Image))",
 			"area": "unitone/template/bbpress"
 		},
 		{
@@ -469,6 +564,11 @@
 			"area": "unitone/contents/bbpress"
 		},
 		{
+			"name": "contents-bbpress-right-sidebar-page-header-image",
+			"title": "bbPress contents (Right sidebar / Page header (Image))",
+			"area": "unitone/contents/bbpress"
+		},
+		{
 			"name": "page-header-bbpress",
 			"title": "bbPress page header",
 			"area": "uncategorized"
@@ -484,8 +584,28 @@
 			"area": "unitone/template/home"
 		},
 		{
+			"name": "template-home-page-header-image",
+			"title": "Home (Page header (Image))",
+			"area": "unitone/template/home"
+		},
+		{
+			"name": "template-home-right-sidebar",
+			"title": "Home (Right sidebar)",
+			"area": "unitone/template/home"
+		},
+		{
+			"name": "template-home-right-sidebar-page-header-image",
+			"title": "Home (Right sidebar / Page header (Image))",
+			"area": "unitone/template/home"
+		},
+		{
 			"name": "template-home-left-header",
 			"title": "Home (Left header)",
+			"area": "unitone/template/home"
+		},
+		{
+			"name": "template-home-left-header-page-header-image",
+			"title": "Home (Left header / Page header (Image))",
 			"area": "unitone/template/home"
 		},
 		{
@@ -506,6 +626,11 @@
 		{
 			"name": "contents-home-right-sidebar",
 			"title": "Home contents (Right sidebar)",
+			"area": "unitone/contents/home"
+		},
+		{
+			"name": "contents-home-right-sidebar-page-header-image",
+			"title": "Home contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/home"
 		},
 		{
@@ -640,8 +765,28 @@
 			"area": "unitone/template/search"
 		},
 		{
+			"name": "template-search-page-header-image",
+			"title": "Search (Page header (Image))",
+			"area": "unitone/template/search"
+		},
+		{
+			"name": "template-search-right-sidebar",
+			"title": "Search (Right sidebar)",
+			"area": "unitone/template/search"
+		},
+		{
+			"name": "template-search-right-sidebar-page-header-image",
+			"title": "Search (Right sidebar / Page header (Image))",
+			"area": "unitone/template/search"
+		},
+		{
 			"name": "template-search-left-header",
 			"title": "Search (Left header)",
+			"area": "unitone/template/search"
+		},
+		{
+			"name": "template-search-left-header-page-header-image",
+			"title": "Search (Left header / Page header (Image))",
 			"area": "unitone/template/search"
 		},
 		{
@@ -657,6 +802,11 @@
 		{
 			"name": "contents-search-right-sidebar",
 			"title": "Search contents (Right sidebar)",
+			"area": "unitone/contents/search"
+		},
+		{
+			"name": "contents-search-right-sidebar-page-header-image",
+			"title": "Search contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/search"
 		},
 		{

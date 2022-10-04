@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-10-04T03:03:13+00:00\n"
-"PO-Revision-Date: 2022-10-04 12:09+0900\n"
+"POT-Creation-Date: 2022-10-04T05:42:55+00:00\n"
+"PO-Revision-Date: 2022-10-04 14:45+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1134,6 +1134,31 @@ msgstr "個別商品"
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Single product (Page header (Image))"
+msgstr "WooCommerce 個別商品（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single product (Right sidebar)"
+msgstr "WooCommerce 個別商品（右サイドバー）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single product (Right sidebar / Page header (Image))"
+msgstr "WooCommerce 個別商品（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single product (Left header)"
+msgstr "Woocommerce 個別商品（左ヘッダー）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single product (Left header / Page header (Image))"
+msgstr "WooCommerce 個別商品（左ヘッダー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "for bbPress"
 msgstr "bbPress 用"
 
@@ -1764,8 +1789,28 @@ msgstr "WooCommerce 個別商品"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "WooCommerce single product (Page header (Image))"
+msgstr "WooCommerce 個別商品（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce single product (Right sidebar)"
+msgstr "WooCommerce 個別商品（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce single product (Right sidebar / Page header (Image))"
+msgstr "WooCommerce 個別商品（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "WooCommerce single product (Left header)"
 msgstr "Woocommerce 個別商品（左ヘッダー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "WooCommerce single product (Left header / Page header (Image))"
+msgstr "WooCommerce 個別商品（左ヘッダー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1781,6 +1826,13 @@ msgstr "WooCommerce 個別投稿のコンテンツ（ページヘッダー（画
 msgctxt "Template part name"
 msgid "WooCommerce single product contents (Right sidebar)"
 msgstr "WooCommerce 個別商品のコンテンツ（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid ""
+"WooCommerce single product contents (Right sidebar / Page header (Image))"
+msgstr ""
+"WooCommerce 個別商品のコンテンツ（右サイドバー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"

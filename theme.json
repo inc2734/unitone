@@ -286,15 +286,43 @@
 			]
 		},
 		{
-			"name": "archive-product",
-			"title": "Archive product",
+			"name": "single-product",
+			"title": "Single product",
 			"postTypes": [
 				"product"
 			]
 		},
 		{
-			"name": "single-product",
-			"title": "Single product",
+			"name": "single-product-page-header-image",
+			"title": "Single product (Page header (Image))",
+			"postTypes": [
+				"product"
+			]
+		},
+		{
+			"name": "single-product-right-sidebar",
+			"title": "Single product (Right sidebar)",
+			"postTypes": [
+				"product"
+			]
+		},
+		{
+			"name": "single-product-right-sidebar-page-header-image",
+			"title": "Single product (Right sidebar / Page header (Image))",
+			"postTypes": [
+				"product"
+			]
+		},
+		{
+			"name": "single-product-left-header",
+			"title": "Single product (Left header)",
+			"postTypes": [
+				"product"
+			]
+		},
+		{
+			"name": "single-product-left-header-page-header-image",
+			"title": "Single product (Left header / Page header (Image))",
 			"postTypes": [
 				"product"
 			]
@@ -930,8 +958,28 @@
 			"area": "unitone/template/product"
 		},
 		{
+			"name": "template-single-product-page-header-image",
+			"title": "WooCommerce single product (Page header (Image))",
+			"area": "unitone/template/product"
+		},
+		{
+			"name": "template-single-product-right-sidebar",
+			"title": "WooCommerce single product (Right sidebar)",
+			"area": "unitone/template/product"
+		},
+		{
+			"name": "template-single-product-right-sidebar-page-header-image",
+			"title": "WooCommerce single product (Right sidebar / Page header (Image))",
+			"area": "unitone/template/product"
+		},
+		{
 			"name": "template-single-product-left-header",
 			"title": "WooCommerce single product (Left header)",
+			"area": "unitone/template/product"
+		},
+		{
+			"name": "template-single-product-left-header-page-header-image",
+			"title": "WooCommerce single product (Left header / Page header (Image))",
 			"area": "unitone/template/product"
 		},
 		{
@@ -947,6 +995,11 @@
 		{
 			"name": "contents-single-product-right-sidebar",
 			"title": "WooCommerce single product contents (Right sidebar)",
+			"area": "unitone/contents/product"
+		},
+		{
+			"name": "contents-single-product-right-sidebar-page-header-image",
+			"title": "WooCommerce single product contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/product"
 		},
 		{

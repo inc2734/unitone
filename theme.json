@@ -181,6 +181,20 @@
 			]
 		},
 		{
+			"name": "single-page-header-featured",
+			"title": "Single post (Page header (Featured image))",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "single-page-header-image",
+			"title": "Single post (Page header (Image))",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
 			"name": "single-header-footer",
 			"title": "Single post (Header / Footer)",
 			"postTypes": [
@@ -195,8 +209,36 @@
 			]
 		},
 		{
+			"name": "single-right-sidebar-page-header-featured",
+			"title": "Single post (Right sidebar / Page header (Featured image))",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "single-right-sidebar-page-header-image",
+			"title": "Single post (Right sidebar / Page header (Image))",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
 			"name": "single-left-header",
 			"title": "Single post (Left header)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "single-left-header-page-header-featured",
+			"title": "Single post (Left header / Page header (Featured image))",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "single-left-header-page-header-image",
+			"title": "Single post (Left header / Page header (Image))",
 			"postTypes": [
 				"post"
 			]
@@ -551,8 +593,28 @@
 			"area": "unitone/template/single"
 		},
 		{
+			"name": "template-single-page-header-featured",
+			"title": "Single post (Page header (Featured image))",
+			"area": "unitone/template/single"
+		},
+		{
+			"name": "template-single-page-header-image",
+			"title": "Single post (Page header (Image))",
+			"area": "unitone/template/single"
+		},
+		{
 			"name": "template-single-right-sidebar",
 			"title": "Single post (Right sidebar)",
+			"area": "unitone/template/single"
+		},
+		{
+			"name": "template-single-right-sidebar-page-header-featured",
+			"title": "Single post (Right sidebar / Page header (Featured image))",
+			"area": "unitone/template/single"
+		},
+		{
+			"name": "template-single-right-sidebar-page-header-image",
+			"title": "Single post (Right sidebar / Page header (Image))",
 			"area": "unitone/template/single"
 		},
 		{
@@ -563,6 +625,16 @@
 		{
 			"name": "template-single-left-header",
 			"title": "Single post (Left header)",
+			"area": "unitone/template/single"
+		},
+		{
+			"name": "template-single-left-header-page-header-featured",
+			"title": "Single post (Left header / Page header (Featured image))",
+			"area": "unitone/template/single"
+		},
+		{
+			"name": "template-single-left-header-page-header-image",
+			"title": "Single post (Left header / Page header (Image))",
 			"area": "unitone/template/single"
 		},
 		{
@@ -588,6 +660,16 @@
 		{
 			"name": "contents-single-right-sidebar",
 			"title": "Single post contents (Right sidebar)",
+			"area": "unitone/contents/single"
+		},
+		{
+			"name": "contents-single-right-sidebar-page-header-featured",
+			"title": "Single post contents (Right sidebar / Page header (Featured image))",
+			"area": "unitone/contents/single"
+		},
+		{
+			"name": "contents-single-right-sidebar-page-header-image",
+			"title": "Single post contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/single"
 		},
 		{

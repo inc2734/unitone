@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-09-29T14:31:53+00:00\n"
+"POT-Creation-Date: 2022-10-04T01:34:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -246,6 +246,12 @@ msgid "Using label of the question"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:1
+#: dist/blocks/both-sides-content/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Width"
+msgstr ""
+
+#: dist/blocks/accordion/index.js:1
 msgid "Answer"
 msgstr ""
 
@@ -263,11 +269,6 @@ msgstr ""
 
 #: dist/blocks/accordion/index.js:1
 msgid "A"
-msgstr ""
-
-#: dist/blocks/both-sides-content/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Width"
 msgstr ""
 
 #: dist/blocks/both-sides-content/index.js:1
@@ -1064,6 +1065,16 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Single post (Page header (Featured image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single post (Page header (Image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Single post (Header / Footer)"
 msgstr ""
 
@@ -1074,7 +1085,27 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Single post (Right sidebar / Page header (Featured image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single post (Right sidebar / Page header (Image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Single post (Left header)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single post (Left header / Page header (Featured image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single post (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
@@ -1419,7 +1450,27 @@ msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
+msgid "Single post (Page header (Featured image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Single post (Page header (Image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
 msgid "Single post (Right sidebar)"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Single post (Right sidebar / Page header (Featured image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Single post (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
@@ -1430,6 +1481,16 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "Single post (Left header)"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Single post (Left header / Page header (Featured image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Single post (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
@@ -1455,6 +1516,16 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "Single post contents (Right sidebar)"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Single post contents (Right sidebar / Page header (Featured image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Single post contents (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json

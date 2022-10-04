@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-10-04T01:34:38+00:00\n"
-"PO-Revision-Date: 2022-10-04 10:37+0900\n"
+"POT-Creation-Date: 2022-10-04T01:59:39+00:00\n"
+"PO-Revision-Date: 2022-10-04 11:01+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1029,6 +1029,16 @@ msgstr "アクセントカラーグラデーション"
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Page (Page header (Featured image))"
+msgstr "固定ページ（ページヘッダー（アイキャッチ画像））"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (Page header (Image))"
+msgstr "固定ページ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Page (Header / Footer)"
 msgstr "固定ページ（ヘッダー / フッター）"
 
@@ -1044,8 +1054,28 @@ msgstr "固定ページ（右サイドバー）"
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Page (Right sidebar / Page header (Featured image))"
+msgstr "固定ページ（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (Right sidebar / Page header (Image))"
+msgstr "固定ページ（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Page (Left header)"
 msgstr "固定ページ（左ヘッダー）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (Left header / Page header (Featured image))"
+msgstr "固定ページ（左ヘッダー / ページヘッダー（アイキャッチ画像））"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (Left header / Page header (Image))"
+msgstr "固定ページ（左ヘッダー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -1324,6 +1354,16 @@ msgstr "固定ページ"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "Page (Page header (Featured image))"
+msgstr "固定ページ（ページヘッダー（アイキャッチ画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page (Page header (Image))"
+msgstr "固定ページ（ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "Page (Header / Footer)"
 msgstr "固定ページ（ヘッダー / フッター）"
 
@@ -1339,8 +1379,28 @@ msgstr "固定ページ（右サイドバー）"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "Page (Right sidebar / Page header (Featured image))"
+msgstr "固定ページ（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page (Right sidebar / Page header (Image))"
+msgstr "固定ページ（右サイドバー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "Page (Left header)"
 msgstr "固定ページ（左ヘッダー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page (Left header / Page header (Featured image))"
+msgstr "固定ページ（左ヘッダー / ページヘッダー（アイキャッチ画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page (Left header / Page header (Image))"
+msgstr "固定ページ（左ヘッダー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"
@@ -1366,6 +1426,17 @@ msgstr "固定ページのコンテンツ（ページヘッダー（スリム）
 msgctxt "Template part name"
 msgid "Page contents (Right sidebar)"
 msgstr "固定ページのコンテンツ（右サイドバー）"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page contents (Right sidebar / Page header (Featured image))"
+msgstr ""
+"固定ページのコンテンツ（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page contents (Right sidebar / Page header (Image))"
+msgstr "固定ページのコンテンツ（右サイドバー / ページヘッダー（画像））"
 
 #: theme.json
 msgctxt "Template part name"

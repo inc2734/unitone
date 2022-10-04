@@ -153,6 +153,20 @@
 	},
 	"customTemplates": [
 		{
+			"name": "page-page-header-featured",
+			"title": "Page (Page header (Featured image))",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "page-page-header-image",
+			"title": "Page (Page header (Image))",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
 			"name": "page-header-footer",
 			"title": "Page (Header / Footer)",
 			"postTypes": [
@@ -174,8 +188,36 @@
 			]
 		},
 		{
+			"name": "page-right-sidebar-page-header-featured",
+			"title": "Page (Right sidebar / Page header (Featured image))",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "page-right-sidebar-page-header-image",
+			"title": "Page (Right sidebar / Page header (Image))",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
 			"name": "page-left-header",
 			"title": "Page (Left header)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "page-left-header-page-header-featured",
+			"title": "Page (Left header / Page header (Featured image))",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "page-left-header-page-header-image",
+			"title": "Page (Left header / Page header (Image))",
 			"postTypes": [
 				"page"
 			]
@@ -483,6 +525,16 @@
 			"area": "unitone/template/page"
 		},
 		{
+			"name": "template-page-page-header-featured",
+			"title": "Page (Page header (Featured image))",
+			"area": "unitone/template/page"
+		},
+		{
+			"name": "template-page-page-header-image",
+			"title": "Page (Page header (Image))",
+			"area": "unitone/template/page"
+		},
+		{
 			"name": "template-page-header-footer",
 			"title": "Page (Header / Footer)",
 			"area": "unitone/template/page"
@@ -498,8 +550,28 @@
 			"area": "unitone/template/page"
 		},
 		{
+			"name": "template-page-right-sidebar-page-header-featured",
+			"title": "Page (Right sidebar / Page header (Featured image))",
+			"area": "unitone/template/page"
+		},
+		{
+			"name": "template-page-right-sidebar-page-header-image",
+			"title": "Page (Right sidebar / Page header (Image))",
+			"area": "unitone/template/page"
+		},
+		{
 			"name": "template-page-left-header",
 			"title": "Page (Left header)",
+			"area": "unitone/template/page"
+		},
+		{
+			"name": "template-page-left-header-page-header-featured",
+			"title": "Page (Left header / Page header (Featured image))",
+			"area": "unitone/template/page"
+		},
+		{
+			"name": "template-page-left-header-page-header-image",
+			"title": "Page (Left header / Page header (Image))",
 			"area": "unitone/template/page"
 		},
 		{
@@ -525,6 +597,16 @@
 		{
 			"name": "contents-page-right-sidebar",
 			"title": "Page contents (Right sidebar)",
+			"area": "unitone/contents/page"
+		},
+		{
+			"name": "contents-page-right-sidebar-page-header-featured",
+			"title": "Page contents (Right sidebar / Page header (Featured image))",
+			"area": "unitone/contents/page"
+		},
+		{
+			"name": "contents-page-right-sidebar-page-header-image",
+			"title": "Page contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/page"
 		},
 		{

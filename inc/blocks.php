@@ -37,6 +37,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/text' );
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar' );
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar-content' );
+	register_block_type( get_template_directory() . '/dist/blocks/pattern-placeholder' );
 
 	register_block_type(
 		get_template_directory() . '/dist/blocks/breadcrumbs',

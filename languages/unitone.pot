@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-04T05:42:55+00:00\n"
+"POT-Creation-Date: 2022-10-05T06:01:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unitone\n"
@@ -463,6 +463,18 @@ msgstr ""
 msgid "Background framed image"
 msgstr ""
 
+#: dist/blocks/pattern-placeholder/index.js:1
+msgid "Replace"
+msgstr ""
+
+#: dist/blocks/pattern-placeholder/index.js:1
+msgid "Block types"
+msgstr ""
+
+#: dist/blocks/pattern-placeholder/index.js:1
+msgid "Enter a name for this area. The block patterns associated with this name will appear in the modal."
+msgstr ""
+
 #: dist/blocks/reel/index.js:1
 msgid "Height"
 msgstr ""
@@ -866,6 +878,16 @@ msgctxt "block description"
 msgid "This block layers the children."
 msgstr ""
 
+#: dist/blocks/pattern-placeholder/block.json
+msgctxt "block title"
+msgid "Pattern placeholder"
+msgstr ""
+
+#: dist/blocks/pattern-placeholder/block.json
+msgctxt "block description"
+msgid "This block is used to insert arbitrary block patterns from the block patterns associated with the specified \"Block types\"."
+msgstr ""
+
 #: dist/blocks/reel/block.json
 msgctxt "block title"
 msgid "Reel"
@@ -1136,11 +1158,6 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single post (Left header / Page header (Image))"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Archive product"
 msgstr ""
 
 #: theme.json

@@ -15,7 +15,7 @@ import {
 	store as blockEditorStore,
 	BlockControls,
 } from '@wordpress/block-editor';
-import { Modal, ToolbarButton } from '@wordpress/components';
+import { Modal, ToolbarGroup, ToolbarButton } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
 import { store as coreStore } from '@wordpress/core-data';
 import { useState } from '@wordpress/element';
@@ -95,14 +95,16 @@ export const TemplatePartReplaceToolbar = ( props ) => {
 	return (
 		<>
 			{ canReplace && (
-				<BlockControls group="block">
-					<ToolbarButton
-						onClick={ () => {
-							setIsTemplatePartSelectionOpen( true );
-						} }
-					>
-						{ __( 'Replace', 'unitone' ) }
-					</ToolbarButton>
+				<BlockControls>
+					<ToolbarGroup>
+						<ToolbarButton
+							onClick={ () => {
+								setIsTemplatePartSelectionOpen( true );
+							} }
+						>
+							{ __( 'Replace', 'unitone' ) }
+						</ToolbarButton>
+					</ToolbarGroup>
 				</BlockControls>
 			) }
 

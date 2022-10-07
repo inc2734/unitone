@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-10-05T06:01:32+00:00\n"
-"PO-Revision-Date: 2022-10-05 15:02+0900\n"
+"POT-Creation-Date: 2022-10-07T05:39:48+00:00\n"
+"PO-Revision-Date: 2022-10-07 14:40+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -450,22 +450,6 @@ msgstr "背景画像"
 msgid "Background framed image"
 msgstr "背景フレーム画像"
 
-#: dist/blocks/pattern-placeholder/index.js:1
-msgid "Replace"
-msgstr "置換"
-
-#: dist/blocks/pattern-placeholder/index.js:1
-msgid "Block types"
-msgstr "Block types"
-
-#: dist/blocks/pattern-placeholder/index.js:1
-msgid ""
-"Enter a name for this area. The block patterns associated with this name "
-"will appear in the modal."
-msgstr ""
-"このエリアの名前を入力します。この名前に関連付けられたブロックパターンがモー"
-"ダルに表示されます。"
-
 #: dist/blocks/reel/index.js:1
 msgid "Height"
 msgstr "高さ"
@@ -688,6 +672,11 @@ msgstr "オーバレイ"
 msgid "Fixed"
 msgstr "固定"
 
+#. translators: %s: template part title.
+#: dist/js/editor/editor.js:3
+msgid "Replace"
+msgstr "置換"
+
 #: dist/blocks/accordion/block.json
 msgctxt "block title"
 msgid "Accordion"
@@ -865,20 +854,6 @@ msgstr "レイヤー"
 msgctxt "block description"
 msgid "This block layers the children."
 msgstr "子要素を重ねます。"
-
-#: dist/blocks/pattern-placeholder/block.json
-msgctxt "block title"
-msgid "Pattern placeholder"
-msgstr "パターンプレースホルダー"
-
-#: dist/blocks/pattern-placeholder/block.json
-msgctxt "block description"
-msgid ""
-"This block is used to insert arbitrary block patterns from the block "
-"patterns associated with the specified \"Block types\"."
-msgstr ""
-"指定された「Block types」に関連するブロックパターンから、任意のブロックパター"
-"ンを挿入するためのブロックです。"
 
 #: dist/blocks/reel/block.json
 msgctxt "block title"
@@ -1868,31 +1843,3 @@ msgstr "Woocommerce 個別商品のページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product page header (Image)"
 msgstr "WooCommerce 個別商品のページヘッダー（画像）"
-
-# Copyright (C) 2022 Takashi Kitajima
-# This file is distributed under the GNU General Public License v2 or later.
-#, fuzzy
-#~| msgid ""
-#~ msgctxt "block description"
-#~ msgid ""
-#~ msgstr ""
-#~ "Project-Id-Version: unitone 0.0.1\n"
-#~ "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-#~ "POT-Creation-Date: 2022-10-04T05:42:55+00:00\n"
-#~ "PO-Revision-Date: 2022-10-04 14:45+0900\n"
-#~ "Last-Translator: inc2734 <inc@2inc.org>\n"
-#~ "Language-Team: \n"
-#~ "Language: ja\n"
-#~ "MIME-Version: 1.0\n"
-#~ "Content-Type: text/plain; charset=UTF-8\n"
-#~ "Content-Transfer-Encoding: 8bit\n"
-#~ "Plural-Forms: nplurals=1; plural=0;\n"
-#~ "X-Generator: Poedit 3.1.1\n"
-#~ "X-Domain: unitone\n"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Archive product"
-#~ msgstr "商品アーカイブ"
-
-#~ msgid "Sidebar width"
-#~ msgstr "サイドバーの幅"

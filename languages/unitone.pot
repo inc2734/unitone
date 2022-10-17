@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-07T05:39:48+00:00\n"
+"POT-Creation-Date: 2022-10-17T02:34:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.7.0\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
@@ -138,91 +138,212 @@ msgid "Single post"
 msgstr ""
 
 #: inc/template-part-areas.php:27
-msgid "Single post contents"
+msgid "Single post page header"
 msgstr ""
 
 #: inc/template-part-areas.php:34
-msgid "Page"
+msgid "Single post contents"
 msgstr ""
 
 #: inc/template-part-areas.php:41
-msgid "Page contents"
+msgid "Page"
 msgstr ""
 
 #: inc/template-part-areas.php:48
-msgid "404"
+msgid "Page page header"
 msgstr ""
 
 #: inc/template-part-areas.php:55
-msgid "404 contents"
+msgid "Page contents"
 msgstr ""
 
 #: inc/template-part-areas.php:62
-msgid "Home"
+msgid "404"
 msgstr ""
 
 #: inc/template-part-areas.php:69
-msgid "Home contents"
+msgid "404 contents"
 msgstr ""
 
 #: inc/template-part-areas.php:76
-msgid "Archive"
+msgid "404 page header"
 msgstr ""
 
 #: inc/template-part-areas.php:83
-msgid "Archive contents"
+msgid "Home"
 msgstr ""
 
 #: inc/template-part-areas.php:90
-msgid "Search"
+msgid "Home page header"
 msgstr ""
 
 #: inc/template-part-areas.php:97
-msgid "Search contents"
+msgid "Home contents"
 msgstr ""
 
 #: inc/template-part-areas.php:104
-msgid "WooCommerce product archive"
+msgid "Archive"
 msgstr ""
 
 #: inc/template-part-areas.php:111
-msgid "WooCommerce product archive contents"
+msgid "Archive contents"
 msgstr ""
 
 #: inc/template-part-areas.php:118
-msgid "WooCommerce single product"
+msgid "Archive page header"
 msgstr ""
 
 #: inc/template-part-areas.php:125
-msgid "WooCommerce single product contents"
+msgid "Search"
 msgstr ""
 
 #: inc/template-part-areas.php:132
-msgid "bbPress"
+msgid "Search page header"
 msgstr ""
 
 #: inc/template-part-areas.php:139
-msgid "bbPress contents"
+msgid "Search contents"
 msgstr ""
 
 #: inc/template-part-areas.php:146
-msgid "Comments"
+msgid "WooCommerce product archive"
 msgstr ""
 
 #: inc/template-part-areas.php:153
+msgid "WooCommerce product archive contents"
+msgstr ""
+
+#: inc/template-part-areas.php:160
+msgid "WooCommerce product archive page header"
+msgstr ""
+
+#: inc/template-part-areas.php:167
+msgid "WooCommerce single product"
+msgstr ""
+
+#: inc/template-part-areas.php:174
+msgid "WooCommerce single product page header"
+msgstr ""
+
+#: inc/template-part-areas.php:181
+msgid "WooCommerce single product contents"
+msgstr ""
+
+#: inc/template-part-areas.php:188
+msgid "bbPress"
+msgstr ""
+
+#: inc/template-part-areas.php:195
+msgid "bbPress page header"
+msgstr ""
+
+#: inc/template-part-areas.php:202
+msgid "bbPress contents"
+msgstr ""
+
+#: inc/template-part-areas.php:209
+msgid "Comments"
+msgstr ""
+
+#: inc/template-part-areas.php:216
 msgid "Footer breadcrumbs"
+msgstr ""
+
+#: patterns/404-contents.php
+msgctxt "Pattern title"
+msgid "404 contents"
 msgstr ""
 
 #: patterns/404-contents.php:9
 msgid "Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box."
 msgstr ""
 
+#: patterns/footer-1.php
+msgctxt "Pattern title"
+msgid "Footer 1"
+msgstr ""
+
+#: patterns/footer-2.php
+msgctxt "Pattern title"
+msgid "Footer 2"
+msgstr ""
+
+#: patterns/footer-3.php
+msgctxt "Pattern title"
+msgid "Footer 3"
+msgstr ""
+
+#: patterns/footer-4.php
+msgctxt "Pattern title"
+msgid "Footer 4"
+msgstr ""
+
+#: patterns/footer-5.php
+msgctxt "Pattern title"
+msgid "Footer 5"
+msgstr ""
+
+#: patterns/header-1row.php
+msgctxt "Pattern title"
+msgid "Header (1 row)"
+msgstr ""
+
+#: patterns/header-2rows.php
+msgctxt "Pattern title"
+msgid "Header (2 rows)"
+msgstr ""
+
+#: patterns/header-simple.php
+msgctxt "Pattern title"
+msgid "Header (Simple)"
+msgstr ""
+
+#: patterns/header-vertical.php
+msgctxt "Pattern title"
+msgid "Header (Vertical)"
+msgstr ""
+
+#: patterns/home-heading.php
+msgctxt "Pattern title"
+msgid "Home heading"
+msgstr ""
+
 #: patterns/home-heading.php:9
 msgid "Blog"
 msgstr ""
 
+#: patterns/image.php
+msgctxt "Pattern title"
+msgid "Image"
+msgstr ""
+
+#: patterns/pages-1.php
+msgctxt "Pattern title"
+msgid "full width page"
+msgstr ""
+
+#: patterns/query-1.php
+msgctxt "Pattern title"
+msgid "Query (Simple / Block link)"
+msgstr ""
+
+#: patterns/query-2.php
+msgctxt "Pattern title"
+msgid "Query (Rich media / Block link)"
+msgstr ""
+
+#: patterns/search-results-heading.php
+msgctxt "Pattern title"
+msgid "Search results heading"
+msgstr ""
+
 #: patterns/search-results-heading.php:9
 msgid "Search results"
+msgstr ""
+
+#: patterns/sidebar.php
+msgctxt "Pattern title"
+msgid "Sidebar"
 msgstr ""
 
 #: patterns/sidebar.php:13
@@ -481,7 +602,7 @@ msgid "Column min width"
 msgstr ""
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: dist/blocks/responsive-grid/index.js:2
+#: dist/blocks/responsive-grid/index.js:3
 msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr ""
 
@@ -601,7 +722,7 @@ msgid "Threshold"
 msgstr ""
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: dist/blocks/switcher/index.js:2
+#: dist/blocks/switcher/index.js:3
 msgid "Inside the %1$sflex-basis%2$s formula"
 msgstr ""
 
@@ -695,7 +816,7 @@ msgid "Fixed"
 msgstr ""
 
 #. translators: %s: template part title.
-#: dist/js/editor/editor.js:3
+#: dist/js/editor/editor.js:2
 msgid "Replace"
 msgstr ""
 
@@ -964,6 +1085,41 @@ msgid "This block is used to assemble components with sidebars."
 msgstr ""
 
 #: theme.json
+msgctxt "Gradient name"
+msgid "Accent color gradation"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Accent color"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "text"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Bright gray"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Light gray"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "gray"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark gray"
+msgstr ""
+
+#: theme.json
 msgctxt "Font size name"
 msgid "XS"
 msgstr ""
@@ -1011,41 +1167,6 @@ msgstr ""
 #: theme.json
 msgctxt "Font size name"
 msgid "6XL"
-msgstr ""
-
-#: theme.json
-msgctxt "Color name"
-msgid "Accent color"
-msgstr ""
-
-#: theme.json
-msgctxt "Color name"
-msgid "text"
-msgstr ""
-
-#: theme.json
-msgctxt "Color name"
-msgid "Bright gray"
-msgstr ""
-
-#: theme.json
-msgctxt "Color name"
-msgid "Light gray"
-msgstr ""
-
-#: theme.json
-msgctxt "Color name"
-msgid "gray"
-msgstr ""
-
-#: theme.json
-msgctxt "Color name"
-msgid "Dark gray"
-msgstr ""
-
-#: theme.json
-msgctxt "Gradient name"
-msgid "Accent color gradation"
 msgstr ""
 
 #: theme.json

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-10-07T05:39:48+00:00\n"
-"PO-Revision-Date: 2022-10-07 14:40+0900\n"
+"POT-Creation-Date: 2022-10-17T02:34:10+00:00\n"
+"PO-Revision-Date: 2022-10-17 11:36+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -136,80 +136,121 @@ msgid "Single post"
 msgstr "個別商品"
 
 #: inc/template-part-areas.php:27
+msgid "Single post page header"
+msgstr "個別投稿のページヘッダー"
+
+#: inc/template-part-areas.php:34
 msgid "Single post contents"
 msgstr "個別投稿のコンテンツ"
 
-#: inc/template-part-areas.php:34
+#: inc/template-part-areas.php:41
 msgid "Page"
 msgstr "固定ページ"
 
-#: inc/template-part-areas.php:41
+#: inc/template-part-areas.php:48
+msgid "Page page header"
+msgstr "固定ページのページヘッダー"
+
+#: inc/template-part-areas.php:55
 msgid "Page contents"
 msgstr "固定ページのコンテンツ"
 
-#: inc/template-part-areas.php:48
+#: inc/template-part-areas.php:62
 msgid "404"
 msgstr "404"
 
-#: inc/template-part-areas.php:55
+#: inc/template-part-areas.php:69
 msgid "404 contents"
 msgstr "404のコンテンツ"
 
-#: inc/template-part-areas.php:62
+#: inc/template-part-areas.php:76
+msgid "404 page header"
+msgstr "404のページヘッダー"
+
+#: inc/template-part-areas.php:83
 msgid "Home"
 msgstr "ホーム"
 
-#: inc/template-part-areas.php:69
+#: inc/template-part-areas.php:90
+msgid "Home page header"
+msgstr "ホームのページヘッダー"
+
+#: inc/template-part-areas.php:97
 msgid "Home contents"
 msgstr "ホームのコンテンツ"
 
-#: inc/template-part-areas.php:76
+#: inc/template-part-areas.php:104
 msgid "Archive"
 msgstr "アーカイブ"
 
-#: inc/template-part-areas.php:83
+#: inc/template-part-areas.php:111
 msgid "Archive contents"
 msgstr "アーカイブのコンテンツ"
 
-#: inc/template-part-areas.php:90
+#: inc/template-part-areas.php:118
+msgid "Archive page header"
+msgstr "アーカイブのページヘッダー"
+
+#: inc/template-part-areas.php:125
 msgid "Search"
 msgstr "検索"
 
-#: inc/template-part-areas.php:97
+#: inc/template-part-areas.php:132
+msgid "Search page header"
+msgstr "検索結果のページヘッダー"
+
+#: inc/template-part-areas.php:139
 msgid "Search contents"
 msgstr "検索結果のコンテンツ"
 
-#: inc/template-part-areas.php:104
+#: inc/template-part-areas.php:146
 msgid "WooCommerce product archive"
 msgstr "WooCommerce 商品アーカイブ"
 
-#: inc/template-part-areas.php:111
+#: inc/template-part-areas.php:153
 msgid "WooCommerce product archive contents"
 msgstr "WooCommerce 商品アーカイブのコンテンツ"
 
-#: inc/template-part-areas.php:118
+#: inc/template-part-areas.php:160
+msgid "WooCommerce product archive page header"
+msgstr "WooCommerce 商品アーカイブのページヘッダー"
+
+#: inc/template-part-areas.php:167
 msgid "WooCommerce single product"
 msgstr "WooCommerce 個別商品"
 
-#: inc/template-part-areas.php:125
+#: inc/template-part-areas.php:174
+msgid "WooCommerce single product page header"
+msgstr "Woocommerce 個別商品のページヘッダー"
+
+#: inc/template-part-areas.php:181
 msgid "WooCommerce single product contents"
 msgstr "WooCommerce 個別商品のコンテンツ"
 
-#: inc/template-part-areas.php:132
+#: inc/template-part-areas.php:188
 msgid "bbPress"
 msgstr "bbPress"
 
-#: inc/template-part-areas.php:139
+#: inc/template-part-areas.php:195
+msgid "bbPress page header"
+msgstr "bbPress のページヘッダー"
+
+#: inc/template-part-areas.php:202
 msgid "bbPress contents"
 msgstr "bbPress のコンテンツ"
 
-#: inc/template-part-areas.php:146
+#: inc/template-part-areas.php:209
 msgid "Comments"
 msgstr "コメント"
 
-#: inc/template-part-areas.php:153
+#: inc/template-part-areas.php:216
 msgid "Footer breadcrumbs"
 msgstr "フッターのパンくずリスト"
+
+#: patterns/404-contents.php
+msgctxt "Pattern title"
+msgid "404 contents"
+msgstr "404のコンテンツ"
 
 #: patterns/404-contents.php:9
 msgid ""
@@ -219,13 +260,93 @@ msgstr ""
 "ページが見つかりません。お探しのページは移動または削除された可能性がありま"
 "す。下記の検索ボックスで検索してください。"
 
+#: patterns/footer-1.php
+msgctxt "Pattern title"
+msgid "Footer 1"
+msgstr "フッター1"
+
+#: patterns/footer-2.php
+msgctxt "Pattern title"
+msgid "Footer 2"
+msgstr "フッター2"
+
+#: patterns/footer-3.php
+msgctxt "Pattern title"
+msgid "Footer 3"
+msgstr "フッター3"
+
+#: patterns/footer-4.php
+msgctxt "Pattern title"
+msgid "Footer 4"
+msgstr "フッター4"
+
+#: patterns/footer-5.php
+msgctxt "Pattern title"
+msgid "Footer 5"
+msgstr "フッター5"
+
+#: patterns/header-1row.php
+msgctxt "Pattern title"
+msgid "Header (1 row)"
+msgstr "ヘッダー（1行）"
+
+#: patterns/header-2rows.php
+msgctxt "Pattern title"
+msgid "Header (2 rows)"
+msgstr "ヘッダー（2行）"
+
+#: patterns/header-simple.php
+msgctxt "Pattern title"
+msgid "Header (Simple)"
+msgstr "ヘッダー（シンプル）"
+
+#: patterns/header-vertical.php
+msgctxt "Pattern title"
+msgid "Header (Vertical)"
+msgstr "ヘッダー（縦）"
+
+#: patterns/home-heading.php
+msgctxt "Pattern title"
+msgid "Home heading"
+msgstr "ホームの見出し"
+
 #: patterns/home-heading.php:9
 msgid "Blog"
 msgstr "ブログ"
 
+#: patterns/image.php
+msgctxt "Pattern title"
+msgid "Image"
+msgstr "画像"
+
+#: patterns/pages-1.php
+msgctxt "Pattern title"
+msgid "full width page"
+msgstr "全幅ページ"
+
+#: patterns/query-1.php
+msgctxt "Pattern title"
+msgid "Query (Simple / Block link)"
+msgstr "クエリー（シンプル / ブロックリンク）"
+
+#: patterns/query-2.php
+msgctxt "Pattern title"
+msgid "Query (Rich media / Block link)"
+msgstr "クエリー（リッチメディア / ブロックリンク）"
+
+#: patterns/search-results-heading.php
+msgctxt "Pattern title"
+msgid "Search results heading"
+msgstr "検索結果の見出し"
+
 #: patterns/search-results-heading.php:9
 msgid "Search results"
 msgstr "検索結果"
+
+#: patterns/sidebar.php
+msgctxt "Pattern title"
+msgid "Sidebar"
+msgstr "サイドバー"
 
 #: patterns/sidebar.php:13
 msgid "Latest posts"
@@ -467,7 +588,7 @@ msgid "Column min width"
 msgstr "カラムの最小幅"
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: dist/blocks/responsive-grid/index.js:2
+#: dist/blocks/responsive-grid/index.js:3
 msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr "%1$sgrid-template-columns%2$sの計算式の中"
 
@@ -580,7 +701,7 @@ msgid "Threshold"
 msgstr "閾値"
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: dist/blocks/switcher/index.js:2
+#: dist/blocks/switcher/index.js:3
 msgid "Inside the %1$sflex-basis%2$s formula"
 msgstr "%1$sflex-basis%2$sの計算式の中"
 
@@ -673,7 +794,7 @@ msgid "Fixed"
 msgstr "固定"
 
 #. translators: %s: template part title.
-#: dist/js/editor/editor.js:3
+#: dist/js/editor/editor.js:2
 msgid "Replace"
 msgstr "置換"
 
@@ -948,6 +1069,41 @@ msgid "This block is used to assemble components with sidebars."
 msgstr "サイドバー付きのコンポーネントを組み立てます。"
 
 #: theme.json
+msgctxt "Gradient name"
+msgid "Accent color gradation"
+msgstr "アクセントカラーグラデーション"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Accent color"
+msgstr "アクセントカラー"
+
+#: theme.json
+msgctxt "Color name"
+msgid "text"
+msgstr "テキスト"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Bright gray"
+msgstr "最も明るいグレー"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Light gray"
+msgstr "ライトグレー"
+
+#: theme.json
+msgctxt "Color name"
+msgid "gray"
+msgstr "グレー"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark gray"
+msgstr "ダークグレー"
+
+#: theme.json
 msgctxt "Font size name"
 msgid "XS"
 msgstr "XS"
@@ -996,41 +1152,6 @@ msgstr "5XL"
 msgctxt "Font size name"
 msgid "6XL"
 msgstr "6XL"
-
-#: theme.json
-msgctxt "Color name"
-msgid "Accent color"
-msgstr "アクセントカラー"
-
-#: theme.json
-msgctxt "Color name"
-msgid "text"
-msgstr "テキスト"
-
-#: theme.json
-msgctxt "Color name"
-msgid "Bright gray"
-msgstr "最も明るいグレー"
-
-#: theme.json
-msgctxt "Color name"
-msgid "Light gray"
-msgstr "ライトグレー"
-
-#: theme.json
-msgctxt "Color name"
-msgid "gray"
-msgstr "グレー"
-
-#: theme.json
-msgctxt "Color name"
-msgid "Dark gray"
-msgstr "ダークグレー"
-
-#: theme.json
-msgctxt "Gradient name"
-msgid "Accent color gradation"
-msgstr "アクセントカラーグラデーション"
 
 #: theme.json
 msgctxt "Custom template name"

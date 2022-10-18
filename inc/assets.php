@@ -104,7 +104,7 @@ function unitone_enqueue_block_editor_assets() {
 		)
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_assets', 9 );
+add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_assets' );
 
 /**
  * Enqueue theme scripts and styles for the dashboard.

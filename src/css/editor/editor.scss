@@ -76,3 +76,7 @@
 	padding-right: 32px;
 	padding-left: 32px;
 }
+
+.components-color-palette__custom-color[style*="background: var(--unitone--color--"] .components-color-palette__custom-color-value {
+  display: none;
+}

@@ -22,7 +22,9 @@
 		"unitone": {
 			"alignItems": true,
 			"justifyContent": true,
-			"gap": true
+			"gap": true,
+			"dividerType": [ "stripe", "slash", "bordered" ],
+			"divider": true
 		}
 	},
 	"category": "unitone/layout",

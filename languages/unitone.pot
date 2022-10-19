@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-17T02:34:10+00:00\n"
+"POT-Creation-Date: 2022-10-19T16:12:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.0\n"
 "X-Domain: unitone\n"
@@ -399,7 +399,6 @@ msgid "Max width"
 msgstr ""
 
 #: dist/blocks/center/index.js:1
-#: dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1
 #: dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1
@@ -408,7 +407,6 @@ msgstr ""
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/slider/index.js:1
-#: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
@@ -418,25 +416,6 @@ msgstr ""
 
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
-msgstr ""
-
-#: dist/blocks/cluster-divided/index.js:1
-#: dist/blocks/stack-divided/index.js:1
-msgid "Divider"
-msgstr ""
-
-#: dist/blocks/cluster-divided/index.js:1
-#: dist/blocks/stack-divided/index.js:1
-msgid "Stripe"
-msgstr ""
-
-#: dist/blocks/cluster-divided/index.js:1
-msgid "Slash"
-msgstr ""
-
-#: dist/blocks/cluster-divided/index.js:1
-#: dist/blocks/stack-divided/index.js:1
-msgid "Bordered"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
@@ -702,10 +681,6 @@ msgid "When 0, the prev/next buttons and the pagination will not be displayed."
 msgstr ""
 
 #: dist/blocks/stack-divided/index.js:1
-msgid "Underline"
-msgstr ""
-
-#: dist/blocks/stack-divided/index.js:1
 msgid "Stack (Divider: stripe)"
 msgstr ""
 
@@ -805,6 +780,34 @@ msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Fluid typography"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Stripe"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Underline"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Slash"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Bordered"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Type"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Border"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Divider"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -1167,6 +1170,41 @@ msgstr ""
 #: theme.json
 msgctxt "Font size name"
 msgid "6XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "-2"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "-1"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5"
 msgstr ""
 
 #: theme.json

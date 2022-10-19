@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-10-17T02:34:10+00:00\n"
-"PO-Revision-Date: 2022-10-17 11:36+0900\n"
+"POT-Creation-Date: 2022-10-19T16:12:03+00:00\n"
+"PO-Revision-Date: 2022-10-20 01:13+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -398,12 +398,11 @@ msgstr "A"
 msgid "Max width"
 msgstr "最大幅"
 
-#: dist/blocks/center/index.js:1 dist/blocks/cluster-divided/index.js:1
-#: dist/blocks/cover-content/index.js:1 dist/blocks/cover/index.js:1
-#: dist/blocks/decorator/index.js:1 dist/blocks/layer/index.js:1
-#: dist/blocks/layers/index.js:1 dist/blocks/reel/index.js:1
-#: dist/blocks/responsive-grid/index.js:1 dist/blocks/slider/index.js:1
-#: dist/blocks/stack-divided/index.js:1 dist/blocks/switcher/index.js:1
+#: dist/blocks/center/index.js:1 dist/blocks/cover-content/index.js:1
+#: dist/blocks/cover/index.js:1 dist/blocks/decorator/index.js:1
+#: dist/blocks/layer/index.js:1 dist/blocks/layers/index.js:1
+#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid/index.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1 dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "General"
@@ -412,22 +411,6 @@ msgstr "一般"
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
 msgstr "テキストも一緒に中央揃え"
-
-#: dist/blocks/cluster-divided/index.js:1 dist/blocks/stack-divided/index.js:1
-msgid "Divider"
-msgstr "区切り"
-
-#: dist/blocks/cluster-divided/index.js:1 dist/blocks/stack-divided/index.js:1
-msgid "Stripe"
-msgstr "ストライプ"
-
-#: dist/blocks/cluster-divided/index.js:1
-msgid "Slash"
-msgstr "スラッシュ"
-
-#: dist/blocks/cluster-divided/index.js:1 dist/blocks/stack-divided/index.js:1
-msgid "Bordered"
-msgstr "ボーダー"
 
 #: dist/blocks/cluster-divided/index.js:1
 msgid "Cluster (Divider: stripe)"
@@ -681,10 +664,6 @@ msgid "When 0, the prev/next buttons and the pagination will not be displayed."
 msgstr "0の場合、前へ/次へボタンおよびページネーションは表示されません。"
 
 #: dist/blocks/stack-divided/index.js:1
-msgid "Underline"
-msgstr "下線"
-
-#: dist/blocks/stack-divided/index.js:1
 msgid "Stack (Divider: stripe)"
 msgstr "スタック（区切り：ストライプ）"
 
@@ -784,6 +763,34 @@ msgstr "最小の高さ"
 #: dist/js/editor/editor.js:1
 msgid "Fluid typography"
 msgstr "流体タイポグラフィ"
+
+#: dist/js/editor/editor.js:1
+msgid "Stripe"
+msgstr "ストライプ"
+
+#: dist/js/editor/editor.js:1
+msgid "Underline"
+msgstr "下線"
+
+#: dist/js/editor/editor.js:1
+msgid "Slash"
+msgstr "スラッシュ"
+
+#: dist/js/editor/editor.js:1
+msgid "Bordered"
+msgstr "ボーダー"
+
+#: dist/js/editor/editor.js:1
+msgid "Type"
+msgstr "種類"
+
+#: dist/js/editor/editor.js:1
+msgid "Border"
+msgstr "ボーダー"
+
+#: dist/js/editor/editor.js:1
+msgid "Divider"
+msgstr "区切り"
 
 #: dist/js/editor/editor.js:1
 msgid "Overlay"
@@ -1152,6 +1159,41 @@ msgstr "5XL"
 msgctxt "Font size name"
 msgid "6XL"
 msgstr "6XL"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "-2"
+msgstr "-2"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "-1"
+msgstr "-1"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1"
+msgstr "1"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2"
+msgstr "2"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3"
+msgstr "3"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4"
+msgstr "4"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5"
+msgstr "5"
 
 #: theme.json
 msgctxt "Custom template name"

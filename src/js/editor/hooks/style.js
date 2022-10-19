@@ -39,6 +39,14 @@ import {
 	editFluidTypographyProp,
 } from './typography';
 
+import {
+	DividerPanel,
+	saveDividerProp,
+	editDividerProp,
+	saveDividerTypeProp,
+	editDividerTypeProp,
+} from './divider';
+
 import { HeaderPanel } from './header';
 
 function addSaveProps( extraProps, blockType, attributes ) {
@@ -50,6 +58,8 @@ function addSaveProps( extraProps, blockType, attributes ) {
 		attributes
 	);
 	extraProps = saveFluidTypographyProp( extraProps, blockType, attributes );
+	extraProps = saveDividerProp( extraProps, blockType, attributes );
+	extraProps = saveDividerTypeProp( extraProps, blockType, attributes );
 	extraProps = saveGapProp( extraProps, blockType, attributes );
 	extraProps = saveGuttersProp( extraProps, blockType, attributes );
 	extraProps = saveJustifyContentProp( extraProps, blockType, attributes );
@@ -64,6 +74,8 @@ function addEditProps( settings ) {
 	settings = editAlignItemsProp( settings );
 	settings = editBlockAlignProp( settings );
 	settings = editFluidTypographyProp( settings );
+	settings = editDividerProp( settings );
+	settings = editDividerTypeProp( settings );
 	settings = editGapProp( settings );
 	settings = editGuttersProp( settings );
 	settings = editJustifyContentColumnProp( settings );
@@ -95,6 +107,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<DimensionsPanel { ...props } />
 				<LayoutPanel { ...props } />
 				<TypographyPanel { ...props } />
+				<DividerPanel { ...props } />
 
 				<HeaderPanel { ...props } />
 			</>

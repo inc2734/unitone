@@ -5,11 +5,6 @@
 	"name": "unitone/stack-divided",
 	"title": "Stack (Divided)",
 	"description": "This block is used to arrange children vertically at regular intervals.",
-	"attributes": {
-		"divider": {
-			"type": "string"
-		}
-	},
 	"supports": {
 		"className": false,
 		"anchor": true,
@@ -20,7 +15,9 @@
 			}
 		},
 		"unitone": {
-			"gap": true
+			"gap": true,
+			"dividerType": [ "stripe", "underline", "bordered" ],
+			"divider": true
 		}
 	},
 	"category": "unitone/layout",

@@ -1,19 +1,14 @@
 import classnames from 'classnames';
 
 import {
-	InspectorControls,
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { __ } from '@wordpress/i18n';
 
-export default function ( { attributes, setAttributes, clientId } ) {
-	const { divider } = attributes;
-
+export default function ( { clientId } ) {
 	const hasInnerBlocks = useSelect(
 		( select ) =>
 			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
@@ -24,10 +19,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'stack',
-		blockProps[ 'data-unitone-layout' ],
-		{
-			[ `-divider:${ divider }` ]: !! divider,
-		}
+		blockProps[ 'data-unitone-layout' ]
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
@@ -38,35 +30,5 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 
-	return (
-		<>
-			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<SelectControl
-						label={ __( 'Divider', 'unitone' ) }
-						options={ [
-							{
-								label: __( 'Stripe', 'unitone' ),
-								value: 'stripe',
-							},
-							{
-								label: __( 'Underline', 'unitone' ),
-								value: 'underline',
-							},
-							{
-								label: __( 'Bordered', 'unitone' ),
-								value: 'bordered',
-							},
-						] }
-						value={ divider }
-						onChange={ ( newAttribute ) =>
-							setAttributes( { divider: newAttribute } )
-						}
-					/>
-				</PanelBody>
-			</InspectorControls>
-
-			<div { ...innerBlocksProps } />
-		</>
-	);
+	return <div { ...innerBlocksProps } />;
 }

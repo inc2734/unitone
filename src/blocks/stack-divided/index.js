@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import icon from '../icon';
 import edit from './edit';
 import save from './save';
+import deprecated from './deprecated';
 
 registerBlockType( 'unitone/stack-divided', {
 	icon: {
@@ -11,12 +12,13 @@ registerBlockType( 'unitone/stack-divided', {
 	},
 	edit,
 	save,
+	deprecated,
 	variations: [
 		{
 			name: 'stack-divided-stripe',
 			title: __( 'Stack (Divider: stripe)', 'unitone' ),
 			isDefault: true,
-			attributes: { divider: 'stripe' },
+			attributes: { unitone: { deviderType: 'stripe' } },
 			scope: [ 'inserter' ],
 			innerBlocks: [
 				[ 'unitone/stack-divided-content' ],
@@ -27,7 +29,7 @@ registerBlockType( 'unitone/stack-divided', {
 			name: 'stack-divided-underline',
 			title: __( 'Stack (Divider: underline)', 'unitone' ),
 			isDefault: false,
-			attributes: { divider: 'underline' },
+			attributes: { unitone: { deviderType: 'underline' } },
 			scope: [ 'inserter' ],
 			innerBlocks: [
 				[ 'unitone/stack-divided-content' ],
@@ -38,7 +40,7 @@ registerBlockType( 'unitone/stack-divided', {
 			name: 'stack-divided-bordered',
 			title: __( 'Stack (Divider: bordered)', 'unitone' ),
 			isDefault: false,
-			attributes: { divider: 'bordered' },
+			attributes: { unitone: { deviderType: 'bordered' } },
 			scope: [ 'inserter' ],
 			innerBlocks: [
 				[ 'unitone/stack-divided-content' ],

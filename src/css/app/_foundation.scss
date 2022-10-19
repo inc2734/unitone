@@ -3,6 +3,10 @@
 @mixin include() {
 	@include foundation.foundation();
 
+	:where(*) {
+		position: relative;
+	}
+
 	:root {
 		--unitone--container-max-width: 1180px;
 	}

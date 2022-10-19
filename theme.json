@@ -118,7 +118,44 @@
 		},
 		"spacing": {
 			"blockGap": true,
-			"padding": false
+			"padding": false,
+			"spacingSizes": [
+				{
+					"name": "-2",
+					"slug": "20",
+					"size": "var(--unitone--s-2)"
+				},
+				{
+					"name": "-1",
+					"slug": "30",
+					"size": "var(--unitone--s-1)"
+				},
+				{
+					"name": "1",
+					"slug": "40",
+					"size": "var(--unitone--s1)"
+				},
+				{
+					"name": "2",
+					"slug": "50",
+					"size": "var(--unitone--s2)"
+				},
+				{
+					"name": "3",
+					"slug": "60",
+					"size": "var(--unitone--s3)"
+				},
+				{
+					"name": "4",
+					"slug": "70",
+					"size": "var(--unitone--s4)"
+				},
+				{
+					"name": "5",
+					"slug": "80",
+					"size": "var(--unitone--s5)"
+				}
+			]
 		}
 	},
 	"styles": {

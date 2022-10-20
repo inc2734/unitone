@@ -90,10 +90,12 @@
 	}
 
 	[data-unitone-layout~="text"] {
+		&[class*="wp-container-"] > *, // @todo For WordPress 6.0
 		&.is-layout-constrained > * {
 			max-width: min(100%,var(--unitone--max-width));
 		}
 
+		&[data-unitone-layout~="-column"][class*="wp-container-"] > *, // @todo For WordPress 6.0
 		&[data-unitone-layout~="-column"].is-layout-constrained > * {
 			max-width: initial;
 		}

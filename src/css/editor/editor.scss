@@ -80,3 +80,9 @@
 .components-color-palette__custom-color[style*="background: var(--unitone--color--"] .components-color-palette__custom-color-value {
   display: none;
 }
+
+// For WordPress 6.0
+// Template part replace button
+.wp-block-template-part__block-control-group + .wp-block-template-part__block-control-group {
+	display: none;
+}

@@ -96,7 +96,7 @@ export const TemplatePartReplaceToolbar = ( props ) => {
 		<>
 			{ canReplace && (
 				<BlockControls>
-					<ToolbarGroup>
+					<ToolbarGroup className="wp-block-template-part__block-control-group">
 						<ToolbarButton
 							onClick={ () => {
 								setIsTemplatePartSelectionOpen( true );

@@ -4,7 +4,7 @@
 	"textdomain": "unitone",
 	"name": "unitone/layer",
 	"title": "Layer",
-	"description": "The layer of the layers block. Vertical grid of 12 is set. If grid-row is deleted, the elements overlap completely.",
+	"description": "The layer of the layers block. If grid-row is deleted, the elements overlap completely.",
 	"parent": [ "unitone/layers" ],
 	"attributes": {
 		"alignSelf": {

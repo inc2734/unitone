@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 3.4.0\n"
+"Project-Id-Version: unitone 3.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-19T16:12:03+00:00\n"
+"POT-Creation-Date: 2022-10-20T05:20:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.0\n"
 "X-Domain: unitone\n"
@@ -982,7 +982,7 @@ msgstr ""
 
 #: dist/blocks/layer/block.json
 msgctxt "block description"
-msgid "The layer of the layers block. Vertical grid of 12 is set. If grid-row is deleted, the elements overlap completely."
+msgid "The layer of the layers block. If grid-row is deleted, the elements overlap completely."
 msgstr ""
 
 #: dist/blocks/layers/block.json

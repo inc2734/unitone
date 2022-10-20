@@ -18,7 +18,7 @@ registerBlockType( 'unitone/stack-divided', {
 			name: 'stack-divided-stripe',
 			title: __( 'Stack (Divider: stripe)', 'unitone' ),
 			isDefault: true,
-			attributes: { unitone: { deviderType: 'stripe' } },
+			attributes: { unitone: { dividerType: 'stripe' } },
 			scope: [ 'inserter' ],
 			innerBlocks: [
 				[ 'unitone/stack-divided-content' ],
@@ -29,7 +29,7 @@ registerBlockType( 'unitone/stack-divided', {
 			name: 'stack-divided-underline',
 			title: __( 'Stack (Divider: underline)', 'unitone' ),
 			isDefault: false,
-			attributes: { unitone: { deviderType: 'underline' } },
+			attributes: { unitone: { dividerType: 'underline' } },
 			scope: [ 'inserter' ],
 			innerBlocks: [
 				[ 'unitone/stack-divided-content' ],
@@ -40,7 +40,7 @@ registerBlockType( 'unitone/stack-divided', {
 			name: 'stack-divided-bordered',
 			title: __( 'Stack (Divider: bordered)', 'unitone' ),
 			isDefault: false,
-			attributes: { unitone: { deviderType: 'bordered' } },
+			attributes: { unitone: { dividerType: 'bordered' } },
 			scope: [ 'inserter' ],
 			innerBlocks: [
 				[ 'unitone/stack-divided-content' ],

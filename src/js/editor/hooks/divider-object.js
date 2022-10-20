@@ -5,6 +5,15 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from './utils';
 
+// @todo For WordPress 6.0
+import useMultipleOriginColorsAndGradientsFallback from './use-common-single-multiple-selects';
+
+// @todo For WordPress 6.0
+if ( undefined === useMultipleOriginColorsAndGradients ) {
+	useMultipleOriginColorsAndGradients =
+		useMultipleOriginColorsAndGradientsFallback;
+}
+
 const getColorByProperty = ( colors, property, value ) => {
 	let matchedColor;
 

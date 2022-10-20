@@ -18,7 +18,7 @@ registerBlockType( 'unitone/cluster-divided', {
 			name: 'cluster-divided-stripe',
 			title: __( 'Cluster (Divider: stripe)', 'unitone' ),
 			isDefault: true,
-			attributes: { unitone: { deviderType: 'stripe' } },
+			attributes: { unitone: { dividerType: 'stripe' } },
 			scope: [ 'inserter' ],
 			innerBlocks: [
 				[ 'unitone/cluster-divided-content' ],
@@ -29,7 +29,7 @@ registerBlockType( 'unitone/cluster-divided', {
 			name: 'cluster-divided-slash',
 			title: __( 'Cluster (Divider: slash)', 'unitone' ),
 			isDefault: false,
-			attributes: { unitone: { deviderType: 'slash' } },
+			attributes: { unitone: { dividerType: 'slash' } },
 			scope: [ 'inserter' ],
 			innerBlocks: [
 				[ 'unitone/cluster-divided-content' ],
@@ -40,7 +40,7 @@ registerBlockType( 'unitone/cluster-divided', {
 			name: 'cluster-divided-bordered',
 			title: __( 'Cluster (Divider: bordered)', 'unitone' ),
 			isDefault: false,
-			attributes: { unitone: { deviderType: 'bordered' } },
+			attributes: { unitone: { dividerType: 'bordered' } },
 			scope: [ 'inserter' ],
 			innerBlocks: [
 				[ 'unitone/cluster-divided-content' ],

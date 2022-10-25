@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-10-20T05:20:41+00:00\n"
-"PO-Revision-Date: 2022-10-20 14:21+0900\n"
+"POT-Creation-Date: 2022-10-25T05:05:09+00:00\n"
+"PO-Revision-Date: 2022-10-25 14:05+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1075,37 +1075,62 @@ msgctxt "block description"
 msgid "This block is used to assemble components with sidebars."
 msgstr "サイドバー付きのコンポーネントを組み立てます。"
 
-#: theme.json
+#: styles/asia.json styles/evening.json styles/grasslands.json
+#: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
 msgctxt "Gradient name"
-msgid "Accent color gradation"
-msgstr "アクセントカラーグラデーション"
+msgid "Accent gradation"
+msgstr "アクセントグラデーション"
 
-#: theme.json
+#: styles/asia.json styles/dark.json styles/evening.json styles/grasslands.json
+#: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
 msgctxt "Color name"
-msgid "Accent color"
-msgstr "アクセントカラー"
+msgid "Accent"
+msgstr "アクセント"
 
-#: theme.json
+#: styles/asia.json styles/dark.json styles/evening.json styles/grasslands.json
+#: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
 msgctxt "Color name"
-msgid "text"
+msgid "Background"
+msgstr "背景"
+
+#: styles/asia.json styles/dark.json styles/evening.json styles/grasslands.json
+#: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
+msgctxt "Color name"
+msgid "Background Alt"
+msgstr "背景（Alt）"
+
+#: styles/asia.json styles/dark.json styles/evening.json styles/grasslands.json
+#: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
+msgctxt "Color name"
+msgid "Text"
 msgstr "テキスト"
 
-#: theme.json
+#: styles/asia.json styles/dark.json styles/evening.json styles/grasslands.json
+#: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
+msgctxt "Color name"
+msgid "Text Alt"
+msgstr "テキスト（Alt）"
+
+#: styles/asia.json styles/dark.json styles/evening.json styles/grasslands.json
+#: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
 msgctxt "Color name"
 msgid "Bright gray"
 msgstr "最も明るいグレー"
 
-#: theme.json
+#: styles/asia.json styles/dark.json styles/evening.json styles/grasslands.json
+#: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
 msgctxt "Color name"
 msgid "Light gray"
 msgstr "ライトグレー"
 
-#: theme.json
+#: styles/asia.json styles/dark.json styles/evening.json styles/grasslands.json
+#: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
 msgctxt "Color name"
 msgid "gray"
 msgstr "グレー"
 
-#: theme.json
+#: styles/asia.json styles/dark.json styles/evening.json styles/grasslands.json
+#: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
 msgctxt "Color name"
 msgid "Dark gray"
 msgstr "ダークグレー"
@@ -2006,3 +2031,13 @@ msgstr "Woocommerce 個別商品のページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product page header (Image)"
 msgstr "WooCommerce 個別商品のページヘッダー（画像）"
+
+#, fuzzy
+#~| msgid "Background image"
+#~ msgctxt "Color name"
+#~ msgid "Background color Alt"
+#~ msgstr "背景画像"
+
+#~ msgctxt "Color name"
+#~ msgid "text"
+#~ msgstr "テキスト"

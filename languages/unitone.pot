@@ -2,16 +2,16 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 3.5.0\n"
+"Project-Id-Version: unitone 3.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-20T05:20:41+00:00\n"
+"POT-Creation-Date: 2022-10-25T05:05:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.0\n"
+"X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
@@ -1087,36 +1087,120 @@ msgctxt "block description"
 msgid "This block is used to assemble components with sidebars."
 msgstr ""
 
+#: styles/asia.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
 #: theme.json
 msgctxt "Gradient name"
-msgid "Accent color gradation"
+msgid "Accent gradation"
 msgstr ""
 
+#: styles/asia.json
+#: styles/dark.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
 #: theme.json
 msgctxt "Color name"
-msgid "Accent color"
+msgid "Accent"
 msgstr ""
 
+#: styles/asia.json
+#: styles/dark.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
 #: theme.json
 msgctxt "Color name"
-msgid "text"
+msgid "Background"
 msgstr ""
 
+#: styles/asia.json
+#: styles/dark.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
+#: theme.json
+msgctxt "Color name"
+msgid "Background Alt"
+msgstr ""
+
+#: styles/asia.json
+#: styles/dark.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
+#: theme.json
+msgctxt "Color name"
+msgid "Text"
+msgstr ""
+
+#: styles/asia.json
+#: styles/dark.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
+#: theme.json
+msgctxt "Color name"
+msgid "Text Alt"
+msgstr ""
+
+#: styles/asia.json
+#: styles/dark.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
 #: theme.json
 msgctxt "Color name"
 msgid "Bright gray"
 msgstr ""
 
+#: styles/asia.json
+#: styles/dark.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
 #: theme.json
 msgctxt "Color name"
 msgid "Light gray"
 msgstr ""
 
+#: styles/asia.json
+#: styles/dark.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
 #: theme.json
 msgctxt "Color name"
 msgid "gray"
 msgstr ""
 
+#: styles/asia.json
+#: styles/dark.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
 #: theme.json
 msgctxt "Color name"
 msgid "Dark gray"

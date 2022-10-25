@@ -31,7 +31,7 @@
 				{
 					"slug": "unitone/background-alt",
 					"color": "var(--wp--preset--color--unitone-light-gray)",
-					"name": "Background color Alt"
+					"name": "Background Alt"
 				},
 				{
 					"slug": "unitone/text",

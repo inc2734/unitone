@@ -1,0 +1,76 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/theme.json",
+	"version": 2,
+	"settings": {
+		"color": {
+			"gradients": [
+				{
+					"slug":"unitone-accent",
+					"gradient":"linear-gradient(135deg, #c9dff2 0%, #4f5873 100%)",
+					"name":"Accent gradation"
+				}
+			],
+			"palette": [
+				{
+					"slug": "unitone/accent",
+					"color": "#bf4e6d",
+					"name": "Accent"
+				},
+				{
+					"slug": "unitone/background",
+					"color": "#e9f1f2",
+					"name": "Background"
+				},
+				{
+					"slug": "unitone/background-alt",
+					"color": "var(--wp--preset--color--unitone-light-gray)",
+					"name": "Background Alt"
+				},
+				{
+					"slug": "unitone/text",
+					"color": "var(--unitone--color--text)",
+					"name": "Text"
+				},
+				{
+					"slug": "unitone/text-alt",
+					"color": "var(--wp--preset--color--white)",
+					"name": "Text Alt"
+				},
+				{
+					"slug": "unitone/bright-gray",
+					"color": "rgba(4, 27, 42, .025)",
+					"name": "Bright gray"
+				},
+				{
+					"slug": "unitone/light-gray",
+					"color": "rgba(4, 27, 42, .07)",
+					"name": "Light gray"
+				},
+				{
+					"slug": "unitone/gray",
+					"color": "rgba(4, 27, 42, .19)",
+					"name": "gray"
+				},
+				{
+					"slug": "unitone/dark-gray",
+					"color": "rgba(4, 27, 42, .42)",
+					"name": "Dark gray"
+				}
+			]
+		}
+	},
+	"styles": {
+		"elements": {
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--unitone-accent)"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "var(--wp--preset--color--unitone-accent)"
+				}
+			}
+		}
+	}
+}

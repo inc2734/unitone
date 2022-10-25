@@ -7,12 +7,14 @@
 		--unitone--padding: var(--unitone--s-2);
 	}
 
-	.wp-block-button__link {
+	.wp-block-button__link,
+	.wp-element-button {
 		font-size: inherit;
 		padding: var(--unitone--padding) var(--unitone--s1);
 	}
 
-	.is-style-outline > :where(.wp-block-button__link),
+	.wp-block-button.is-style-outline > .wp-block-button__link,
+	.wp-block-button.is-style-outline > .wp-element-button,
 	:where(.wp-block-button__link).is-style-outline {
 		border-width: 1px;
 	}

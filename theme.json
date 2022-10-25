@@ -14,38 +14,53 @@
 				{
 					"slug":"unitone-accent",
 					"gradient":"linear-gradient(135deg,hsl(276,49%,47%) 0%,hsl(253,49%,17%) 100%)",
-					"name":"Accent color gradation"
+					"name":"Accent gradation"
 				}
 			],
 			"palette": [
 				{
 					"slug": "unitone/accent",
 					"color": "#1f1640",
-					"name": "Accent color"
+					"name": "Accent"
+				},
+				{
+					"slug": "unitone/background",
+					"color": "var(--wp--preset--color--white)",
+					"name": "Background"
+				},
+				{
+					"slug": "unitone/background-alt",
+					"color": "var(--wp--preset--color--unitone-light-gray)",
+					"name": "Background color Alt"
 				},
 				{
 					"slug": "unitone/text",
 					"color": "var(--unitone--color--text)",
-					"name": "text"
+					"name": "Text"
+				},
+				{
+					"slug": "unitone/text-alt",
+					"color": "var(--wp--preset--color--white)",
+					"name": "Text Alt"
 				},
 				{
 					"slug": "unitone/bright-gray",
-					"color": "var(--unitone--color--bright-gray)",
+					"color": "rgba(4, 27, 42, .025)",
 					"name": "Bright gray"
 				},
 				{
 					"slug": "unitone/light-gray",
-					"color": "var(--unitone--color--light-gray)",
+					"color": "rgba(4, 27, 42, .07)",
 					"name": "Light gray"
 				},
 				{
 					"slug": "unitone/gray",
-					"color": "var(--unitone--color--gray)",
+					"color": "rgba(4, 27, 42, .19)",
 					"name": "gray"
 				},
 				{
 					"slug": "unitone/dark-gray",
-					"color": "var(--unitone--color--dark-gray)",
+					"color": "rgba(4, 27, 42, .42)",
 					"name": "Dark gray"
 				}
 			]
@@ -159,6 +174,10 @@
 		}
 	},
 	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--unitone-background)",
+			"text": "var(--wp--preset--color--unitone-text)"
+		},
 		"elements": {
 			"button": {
 				"color": {
@@ -167,15 +186,20 @@
 			},
 			"link": {
 				"color": {
-					"text": "var:preset|color|unitone-accent"
+					"text": "var(--wp--preset--color--unitone-accent)"
 				}
 			}
 		},
 		"blocks": {
 			"core/code": {
 				"color": {
-					"background": "var(--wp--preset--color--black)",
-					"text": "var(--unitone--color--white)"
+					"background": "var(--wp--preset--color--unitone-text)",
+					"text": "var(--wp--preset--color--unitone-text-alt)"
+				}
+			},
+			"core/social-links": {
+				"typography": {
+					"fontSize": "inherit"
 				}
 			}
 		},

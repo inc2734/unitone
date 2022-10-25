@@ -11,6 +11,9 @@
 	&.is-style-panel {
 		--unitone--padding: var(--unitone--s1);
 
+		background-color: var(--wp--preset--color--white);
+		color: var(--unitone--color--text);
+
 		> .unitone-accordion__summary,
 		> .unitone-accordion__content {
 			padding: var(--unitone--padding);

@@ -28,15 +28,27 @@
 						<!-- wp:unitone/responsive-grid {"columnMinWidth":"150px","unitone":{"gap":2}} -->
 						<div data-unitone-layout="responsive-grid -gap:2" style="--unitone--column-min-width:150px">
 							<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","justifyContent":"left","orientation":"vertical"}} -->
-								<!-- wp:page-list /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Home', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'About', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Services', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Blog', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Contact', 'unitone' ); ?>","url":"#"} /-->
 							<!-- /wp:navigation -->
 
 							<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","justifyContent":"left","orientation":"vertical"}} -->
-								<!-- wp:page-list /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Home', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'About', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Services', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Blog', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Contact', 'unitone' ); ?>","url":"#"} /-->
 							<!-- /wp:navigation -->
 
 							<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","justifyContent":"left","orientation":"vertical"}} -->
-								<!-- wp:page-list /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Home', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'About', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Services', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Blog', 'unitone' ); ?>","url":"#"} /-->
+								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Contact', 'unitone' ); ?>","url":"#"} /-->
 							<!-- /wp:navigation -->
 						</div>
 						<!-- /wp:unitone/responsive-grid -->

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-26T04:59:34+00:00\n"
+"POT-Creation-Date: 2022-10-26T06:24:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -170,6 +170,20 @@ msgid "404 page header"
 msgstr ""
 
 #: inc/template-part-areas.php:83
+#: patterns/footer-2.php:22
+#: patterns/footer-3.php:51
+#: patterns/footer-3.php:59
+#: patterns/footer-3.php:67
+#: patterns/footer-4.php:31
+#: patterns/footer-4.php:39
+#: patterns/footer-4.php:47
+#: patterns/footer-5.php:31
+#: patterns/footer-5.php:39
+#: patterns/footer-5.php:47
+#: patterns/header-1row.php:25
+#: patterns/header-2rows.php:25
+#: patterns/header-simple.php:25
+#: patterns/header-vertical.php:24
 msgid "Home"
 msgstr ""
 
@@ -268,6 +282,75 @@ msgctxt "Pattern title"
 msgid "Footer 2"
 msgstr ""
 
+#: patterns/footer-2.php:23
+#: patterns/footer-3.php:52
+#: patterns/footer-3.php:60
+#: patterns/footer-3.php:68
+#: patterns/footer-4.php:32
+#: patterns/footer-4.php:40
+#: patterns/footer-4.php:48
+#: patterns/footer-5.php:32
+#: patterns/footer-5.php:40
+#: patterns/footer-5.php:48
+#: patterns/header-1row.php:26
+#: patterns/header-2rows.php:26
+#: patterns/header-simple.php:26
+#: patterns/header-vertical.php:25
+msgid "About"
+msgstr ""
+
+#: patterns/footer-2.php:24
+#: patterns/footer-3.php:53
+#: patterns/footer-3.php:61
+#: patterns/footer-3.php:69
+#: patterns/footer-4.php:33
+#: patterns/footer-4.php:41
+#: patterns/footer-4.php:49
+#: patterns/footer-5.php:33
+#: patterns/footer-5.php:41
+#: patterns/footer-5.php:49
+#: patterns/header-1row.php:27
+#: patterns/header-2rows.php:27
+#: patterns/header-simple.php:27
+#: patterns/header-vertical.php:26
+msgid "Services"
+msgstr ""
+
+#: patterns/footer-2.php:25
+#: patterns/footer-3.php:54
+#: patterns/footer-3.php:62
+#: patterns/footer-3.php:70
+#: patterns/footer-4.php:34
+#: patterns/footer-4.php:42
+#: patterns/footer-4.php:50
+#: patterns/footer-5.php:34
+#: patterns/footer-5.php:42
+#: patterns/footer-5.php:50
+#: patterns/header-1row.php:32
+#: patterns/header-2rows.php:32
+#: patterns/header-simple.php:32
+#: patterns/header-vertical.php:31
+#: patterns/home-heading.php:9
+msgid "Blog"
+msgstr ""
+
+#: patterns/footer-2.php:26
+#: patterns/footer-3.php:55
+#: patterns/footer-3.php:63
+#: patterns/footer-3.php:71
+#: patterns/footer-4.php:35
+#: patterns/footer-4.php:43
+#: patterns/footer-4.php:51
+#: patterns/footer-5.php:35
+#: patterns/footer-5.php:43
+#: patterns/footer-5.php:51
+#: patterns/header-1row.php:33
+#: patterns/header-2rows.php:33
+#: patterns/header-simple.php:33
+#: patterns/header-vertical.php:32
+msgid "Contact"
+msgstr ""
+
 #: patterns/footer-3.php
 msgctxt "Pattern title"
 msgid "Footer 3"
@@ -288,6 +371,27 @@ msgctxt "Pattern title"
 msgid "Header (1 row)"
 msgstr ""
 
+#: patterns/header-1row.php:28
+#: patterns/header-2rows.php:28
+#: patterns/header-simple.php:28
+#: patterns/header-vertical.php:27
+msgid "Service 1"
+msgstr ""
+
+#: patterns/header-1row.php:29
+#: patterns/header-2rows.php:29
+#: patterns/header-simple.php:29
+#: patterns/header-vertical.php:28
+msgid "Service 2"
+msgstr ""
+
+#: patterns/header-1row.php:30
+#: patterns/header-2rows.php:30
+#: patterns/header-simple.php:30
+#: patterns/header-vertical.php:29
+msgid "Service 3"
+msgstr ""
+
 #: patterns/header-2rows.php
 msgctxt "Pattern title"
 msgid "Header (2 rows)"
@@ -306,10 +410,6 @@ msgstr ""
 #: patterns/home-heading.php
 msgctxt "Pattern title"
 msgid "Home heading"
-msgstr ""
-
-#: patterns/home-heading.php:9
-msgid "Blog"
 msgstr ""
 
 #: patterns/image.php

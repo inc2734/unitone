@@ -19,7 +19,11 @@
 				<!-- /wp:paragraph -->
 
 				<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","justifyContent":"center"}} -->
-					<!-- wp:page-list /-->
+					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Home', 'unitone' ); ?>","url":"#"} /-->
+					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'About', 'unitone' ); ?>","url":"#"} /-->
+					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Services', 'unitone' ); ?>","url":"#"} /-->
+					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Blog', 'unitone' ); ?>","url":"#"} /-->
+					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Contact', 'unitone' ); ?>","url":"#"} /-->
 				<!-- /wp:navigation -->
 
 				<!-- wp:social-links {"openInNewTab":true,"className":"is-style-default","layout":{"type":"flex","justifyContent":"right"}} -->

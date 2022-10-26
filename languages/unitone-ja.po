@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-10-26T04:59:34+00:00\n"
-"PO-Revision-Date: 2022-10-26 14:00+0900\n"
+"POT-Creation-Date: 2022-10-26T06:24:09+00:00\n"
+"PO-Revision-Date: 2022-10-26 15:25+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -167,7 +167,12 @@ msgstr "404のコンテンツ"
 msgid "404 page header"
 msgstr "404のページヘッダー"
 
-#: inc/template-part-areas.php:83
+#: inc/template-part-areas.php:83 patterns/footer-2.php:22
+#: patterns/footer-3.php:51 patterns/footer-3.php:59 patterns/footer-3.php:67
+#: patterns/footer-4.php:31 patterns/footer-4.php:39 patterns/footer-4.php:47
+#: patterns/footer-5.php:31 patterns/footer-5.php:39 patterns/footer-5.php:47
+#: patterns/header-1row.php:25 patterns/header-2rows.php:25
+#: patterns/header-simple.php:25 patterns/header-vertical.php:24
 msgid "Home"
 msgstr "ホーム"
 
@@ -270,6 +275,42 @@ msgctxt "Pattern title"
 msgid "Footer 2"
 msgstr "フッター2"
 
+#: patterns/footer-2.php:23 patterns/footer-3.php:52 patterns/footer-3.php:60
+#: patterns/footer-3.php:68 patterns/footer-4.php:32 patterns/footer-4.php:40
+#: patterns/footer-4.php:48 patterns/footer-5.php:32 patterns/footer-5.php:40
+#: patterns/footer-5.php:48 patterns/header-1row.php:26
+#: patterns/header-2rows.php:26 patterns/header-simple.php:26
+#: patterns/header-vertical.php:25
+msgid "About"
+msgstr "このサイトについて"
+
+#: patterns/footer-2.php:24 patterns/footer-3.php:53 patterns/footer-3.php:61
+#: patterns/footer-3.php:69 patterns/footer-4.php:33 patterns/footer-4.php:41
+#: patterns/footer-4.php:49 patterns/footer-5.php:33 patterns/footer-5.php:41
+#: patterns/footer-5.php:49 patterns/header-1row.php:27
+#: patterns/header-2rows.php:27 patterns/header-simple.php:27
+#: patterns/header-vertical.php:26
+msgid "Services"
+msgstr "サービス"
+
+#: patterns/footer-2.php:25 patterns/footer-3.php:54 patterns/footer-3.php:62
+#: patterns/footer-3.php:70 patterns/footer-4.php:34 patterns/footer-4.php:42
+#: patterns/footer-4.php:50 patterns/footer-5.php:34 patterns/footer-5.php:42
+#: patterns/footer-5.php:50 patterns/header-1row.php:32
+#: patterns/header-2rows.php:32 patterns/header-simple.php:32
+#: patterns/header-vertical.php:31 patterns/home-heading.php:9
+msgid "Blog"
+msgstr "ブログ"
+
+#: patterns/footer-2.php:26 patterns/footer-3.php:55 patterns/footer-3.php:63
+#: patterns/footer-3.php:71 patterns/footer-4.php:35 patterns/footer-4.php:43
+#: patterns/footer-4.php:51 patterns/footer-5.php:35 patterns/footer-5.php:43
+#: patterns/footer-5.php:51 patterns/header-1row.php:33
+#: patterns/header-2rows.php:33 patterns/header-simple.php:33
+#: patterns/header-vertical.php:32
+msgid "Contact"
+msgstr "お問い合わせ"
+
 #: patterns/footer-3.php
 msgctxt "Pattern title"
 msgid "Footer 3"
@@ -290,6 +331,21 @@ msgctxt "Pattern title"
 msgid "Header (1 row)"
 msgstr "ヘッダー（1行）"
 
+#: patterns/header-1row.php:28 patterns/header-2rows.php:28
+#: patterns/header-simple.php:28 patterns/header-vertical.php:27
+msgid "Service 1"
+msgstr "サービス 1"
+
+#: patterns/header-1row.php:29 patterns/header-2rows.php:29
+#: patterns/header-simple.php:29 patterns/header-vertical.php:28
+msgid "Service 2"
+msgstr "サービス 2"
+
+#: patterns/header-1row.php:30 patterns/header-2rows.php:30
+#: patterns/header-simple.php:30 patterns/header-vertical.php:29
+msgid "Service 3"
+msgstr "サービス 3"
+
 #: patterns/header-2rows.php
 msgctxt "Pattern title"
 msgid "Header (2 rows)"
@@ -309,10 +365,6 @@ msgstr "ヘッダー（縦）"
 msgctxt "Pattern title"
 msgid "Home heading"
 msgstr "ホームの見出し"
-
-#: patterns/home-heading.php:9
-msgid "Blog"
-msgstr "ブログ"
 
 #: patterns/image.php
 msgctxt "Pattern title"

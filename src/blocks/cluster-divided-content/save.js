@@ -1,8 +1,12 @@
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
-export default function () {
+export default function ( { attributes } ) {
+	const { tagName } = attributes;
+
+	const TagName = tagName || 'div';
+
 	return (
-		<div
+		<TagName
 			{ ...useBlockProps.save( {
 				'data-unitone-layout': 'cluster__content',
 			} ) }
@@ -12,6 +16,6 @@ export default function () {
 					'data-unitone-layout': 'cluster__content__content',
 				} ) }
 			/>
-		</div>
+		</TagName>
 	);
 }

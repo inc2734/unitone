@@ -6,9 +6,12 @@
 	"title": "Cluster (Divided)",
 	"description": "This block arranges children horizontally.",
 	"attributes": {
-		"divider": {
+		"tagName": {
 			"type": "string"
 		}
+	},
+	"providesContext": {
+		"unitone/cluster-divided/tagName": "tagName"
 	},
 	"supports": {
 		"className": false,

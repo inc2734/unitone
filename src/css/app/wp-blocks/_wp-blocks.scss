@@ -1,3 +1,5 @@
+@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
+
 @use 'align';
 @use 'font-sizes';
 @use 'has-background';
@@ -57,5 +59,20 @@
 
 	.required {
 		color: var(--wp--preset--color--vivid-red);
+	}
+
+	figure {
+		margin-bottom: 0;
+	}
+
+	.wp-element-caption,
+	.wp-block-audio figcaption,
+	.wp-block-embed figcaption,
+	.wp-block-gallery figcaption,
+	.wp-block-image figcaption,
+	.wp-block-table figcaption,
+	.wp-block-video figcaption {
+		font-size: #{ variables.$font-size };
+		text-align: left;
 	}
 }

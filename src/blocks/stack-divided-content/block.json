@@ -6,6 +6,12 @@
 	"title": "Stack (Divided) content",
 	"description": "This block places the content inside the stack (Divided) block.",
 	"parent": [ "unitone/stack-divided" ],
+	"attributes": {
+		"tagName": {
+			"type": "string"
+		}
+	},
+	"usesContext": [ "unitone/stack-divided/tagName" ],
 	"supports": {
 		"className": false,
 		"anchor": true

@@ -6,6 +6,12 @@
 	"title": "Cluster (Divided) content",
 	"description": "This block places the content inside the cluster (Divided) block.",
 	"parent": [ "unitone/cluster-divided" ],
+	"attributes": {
+		"tagName": {
+			"type": "string"
+		}
+	},
+	"usesContext": [ "unitone/cluster-divided/tagName" ],
 	"supports": {
 		"className": false,
 		"anchor": true

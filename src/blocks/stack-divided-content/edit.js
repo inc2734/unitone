@@ -7,8 +7,21 @@ import {
 } from '@wordpress/block-editor';
 
 import { useSelect } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
 
-export default function ( { clientId } ) {
+export default function ( { attributes, setAttributes, clientId, context } ) {
+	const { tagName } = attributes;
+
+	useEffect( () => {
+		setAttributes( {
+			tagName: [ 'ul', 'ol' ].includes(
+				context[ 'unitone/stack-divided/tagName' ]
+			)
+				? 'li'
+				: 'div',
+		} );
+	}, [ context ] );
+
 	const hasInnerBlocks = useSelect(
 		( select ) =>
 			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
@@ -29,5 +42,11 @@ export default function ( { clientId } ) {
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 
-	return <div { ...innerBlocksProps } />;
+	const TagName = tagName || 'div';
+
+	return (
+		<TagName { ...blockProps }>
+			<div { ...innerBlocksProps } />
+		</TagName>
+	);
 }

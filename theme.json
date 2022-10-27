@@ -193,6 +193,19 @@
 				"color": {
 					"text": "var(--wp--preset--color--unitone-accent)"
 				}
+			},
+			"caption": {
+				"color": {
+					"text": "inherit"
+				},
+				"spacing": {
+					"margin": {
+						"top": "var(--unitone--s-2)",
+						"right": "0",
+						"bottom": "0",
+						"left": "0"
+					}
+				}
 			}
 		},
 		"blocks": {

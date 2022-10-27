@@ -39,6 +39,11 @@
 		}
 	}
 
+	:where([data-unitone-layout~="stack"] > *) {
+		margin-right: 0;
+		margin-left: 0;
+	}
+
 	[data-unitone-layout~="stack"],
 	[data-unitone-layout~="center"] {
 		> .block-list-appender:first-child {

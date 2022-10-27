@@ -9,8 +9,8 @@
 <!-- wp:query {"query":{"perPage":10,"offset":0,"postType":"post","inherit":true},"displayLayout":{"type":"flex","columns":3},"className":"is-style-block-link-underline"} -->
 <div class="wp-block-query is-style-block-link-underline">
 	<!-- wp:post-template -->
-		<!-- wp:unitone/stack -->
-		<div data-unitone-layout="stack">
+		<!-- wp:unitone/stack {"unitone":{"gap":"-1"}} -->
+		<div data-unitone-layout="stack -gap:-1">
 			<!-- wp:unitone/decorator {"backgroundColor":"unitone/gray"} -->
 			<div data-unitone-layout="decorator" class="has-unitone-gray-background-color has-background">
 				<!-- wp:unitone/frame {"ratio":"4/3"} -->
@@ -28,7 +28,7 @@
 				<!-- wp:unitone/cluster {"fontSize":"unitone-xs","unitone":{"gap":"-1","alignItems":"center"}} -->
 				<div data-unitone-layout="cluster -align-items:center -gap:-1" class="has-unitone-xs-font-size">
 					<!-- wp:post-date /-->
-					<!-- wp:post-terms {"term":"category","className":"is-style-badge"} /-->
+					<!-- wp:post-terms {"term":"category","style":{"elements":{"link":{"color":{"text":"var:preset|color|unitone/text-alt"}}}},"className":"is-style-badge"} /-->
 				</div>
 				<!-- /wp:unitone/cluster -->
 			</div>

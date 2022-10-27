@@ -1,0 +1,56 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/child-pages",
+	"title": "Child pages",
+	"description": "This block displays child pages.",
+	"attributes": {
+		"showTopLevel": {
+			"type": "boolean",
+			"default": false
+		},
+		"parent": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true
+	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Default",
+			"isDefault": true
+		},
+		{
+			"name": "cluster-divided-stripe",
+			"label": "Cluster (Stripe)"
+		},
+		{
+			"name": "cluster-divided-slash",
+			"label": "Cluster (Slash)"
+		},
+		{
+			"name": "stack-divided-stripe",
+			"label": "Stack (Stripe)"
+		},
+		{
+			"name": "rich-media",
+			"label": "Rich media"
+		},
+		{
+			"name": "box",
+			"label": "Box"
+		},
+		{
+			"name": "panel",
+			"label": "Panel"
+		}
+	],
+	"category": "unitone/component",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}

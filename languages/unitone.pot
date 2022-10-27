@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-26T06:24:09+00:00\n"
+"POT-Creation-Date: 2022-10-27T11:43:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -61,6 +61,13 @@ msgstr ""
 
 #: App/Controller/Manager.php:195
 msgid "If the license key entered is valid, the theme can be updated."
+msgstr ""
+
+#: dist/blocks/child-pages/templates/box.php:15
+#: dist/blocks/child-pages/templates/panel.php:15
+#: dist/blocks/child-pages/templates/rich-media.php:24
+#: dist/blocks/decorator/index.js:1
+msgid "Learn more"
 msgstr ""
 
 #: functions.php:42
@@ -208,6 +215,7 @@ msgid "Archive page header"
 msgstr ""
 
 #: inc/template-part-areas.php:125
+#: dist/blocks/child-pages/index.js:1
 msgid "Search"
 msgstr ""
 
@@ -499,6 +507,7 @@ msgid "Max width"
 msgstr ""
 
 #: dist/blocks/center/index.js:1
+#: dist/blocks/child-pages/index.js:1
 #: dist/blocks/cover-content/index.js:1
 #: dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1
@@ -516,6 +525,18 @@ msgstr ""
 
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
+msgstr ""
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Show top-level child pages"
+msgstr ""
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Specify the parent page"
+msgstr ""
+
+#: dist/blocks/child-pages/index.js:1
+msgid "If not specified, a list of child pages of this page will be displayed."
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
@@ -613,10 +634,6 @@ msgstr ""
 
 #: dist/blocks/decorator/index.js:1
 msgid "The stack level"
-msgstr ""
-
-#: dist/blocks/decorator/index.js:1
-msgid "Learn more"
 msgstr ""
 
 #: dist/blocks/frame/index.js:1
@@ -934,16 +951,19 @@ msgid "This block displays folded content."
 msgstr ""
 
 #: dist/blocks/accordion/block.json
+#: dist/blocks/child-pages/block.json
 msgctxt "block style label"
 msgid "Default"
 msgstr ""
 
 #: dist/blocks/accordion/block.json
+#: dist/blocks/child-pages/block.json
 msgctxt "block style label"
 msgid "Box"
 msgstr ""
 
 #: dist/blocks/accordion/block.json
+#: dist/blocks/child-pages/block.json
 msgctxt "block style label"
 msgid "Panel"
 msgstr ""
@@ -987,6 +1007,36 @@ msgstr ""
 #: dist/blocks/center/block.json
 msgctxt "block description"
 msgid "This block centers the children."
+msgstr ""
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block title"
+msgid "Child pages"
+msgstr ""
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block description"
+msgid "This block displays child pages."
+msgstr ""
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Cluster (Stripe)"
+msgstr ""
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Cluster (Slash)"
+msgstr ""
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Stack (Stripe)"
+msgstr ""
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Rich media"
 msgstr ""
 
 #: dist/blocks/cluster-divided-content/block.json
@@ -1304,6 +1354,11 @@ msgstr ""
 #: theme.json
 msgctxt "Color name"
 msgid "Dark gray"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Text (Black)"
 msgstr ""
 
 #: theme.json

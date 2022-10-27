@@ -1,0 +1,30 @@
+.unitone-search-post-control {
+	.block-editor-link-control {
+		min-width: auto;
+	}
+
+	.block-editor-link-control__search-input {
+		margin: 0;
+	}
+
+	.block-editor-link-control__search-item {
+		padding: 0;
+	}
+
+	.block-editor-link-control__search-results-wrapper {
+		margin-top: 1rem;
+	}
+
+	.block-editor-link-control__search-results {
+		padding: 0;
+	}
+
+	.block-editor-link-control__search-item-header {
+		overflow: hidden;
+	}
+
+	.block-editor-link-control__search-item-title {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}

@@ -51,6 +51,9 @@ if ( ! function_exists( 'unitone_theme_setup' ) ) {
 
 		// Add support for the WooCommerce.
 		add_theme_support( 'woocommerce' );
+
+		// Add excerpt for pages.
+		add_post_type_support( 'page', 'excerpt' );
 	}
 }
 add_action( 'after_setup_theme', 'unitone_theme_setup' );

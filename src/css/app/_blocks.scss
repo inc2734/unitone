@@ -81,15 +81,8 @@
 		}
 	}
 
-	[data-unitone-layout~="cluster"] {
-		--unitone--divider-color:var(--wp--preset--color--unitone-light-gray);
-	}
-
-	[data-unitone-layout~="cluster"][data-unitone-layout~="-divider:slash"] {
+	[data-unitone-layout~="cluster"],
+	[data-unitone-layout~="stack"] {
 		--unitone--divider-color:var(--wp--preset--color--unitone-gray);
-	}
-
-	[data-unitone-layout~=stack] {
-		--unitone--divider-color:var(--wp--preset--color--unitone-light-gray);
 	}
 }

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-10-26T06:24:09+00:00\n"
-"PO-Revision-Date: 2022-10-26 15:25+0900\n"
+"POT-Creation-Date: 2022-10-27T11:43:27+00:00\n"
+"PO-Revision-Date: 2022-10-27 20:43+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -62,6 +62,13 @@ msgstr "無効"
 #: App/Controller/Manager.php:195
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
+
+#: dist/blocks/child-pages/templates/box.php:15
+#: dist/blocks/child-pages/templates/panel.php:15
+#: dist/blocks/child-pages/templates/rich-media.php:24
+#: dist/blocks/decorator/index.js:1
+msgid "Learn more"
+msgstr "さらに詳しく"
 
 #: functions.php:42
 msgid "Primary"
@@ -196,7 +203,7 @@ msgstr "アーカイブのコンテンツ"
 msgid "Archive page header"
 msgstr "アーカイブのページヘッダー"
 
-#: inc/template-part-areas.php:125
+#: inc/template-part-areas.php:125 dist/blocks/child-pages/index.js:1
 msgid "Search"
 msgstr "検索"
 
@@ -450,19 +457,31 @@ msgstr "A"
 msgid "Max width"
 msgstr "最大幅"
 
-#: dist/blocks/center/index.js:1 dist/blocks/cover-content/index.js:1
-#: dist/blocks/cover/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/layer/index.js:1 dist/blocks/layers/index.js:1
-#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid/index.js:1
-#: dist/blocks/slider/index.js:1 dist/blocks/switcher/index.js:1
-#: dist/blocks/text/index.js:1 dist/blocks/with-sidebar/index.js:1
-#: dist/js/editor/editor.js:1
+#: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
+#: dist/blocks/cover-content/index.js:1 dist/blocks/cover/index.js:1
+#: dist/blocks/decorator/index.js:1 dist/blocks/layer/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/reel/index.js:1
+#: dist/blocks/responsive-grid/index.js:1 dist/blocks/slider/index.js:1
+#: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
 msgid "General"
 msgstr "一般"
 
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
 msgstr "テキストも一緒に中央揃え"
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Show top-level child pages"
+msgstr "トップレベルの子ページ一覧を表示する"
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Specify the parent page"
+msgstr "親ページを指定する"
+
+#: dist/blocks/child-pages/index.js:1
+msgid "If not specified, a list of child pages of this page will be displayed."
+msgstr "実際の画面では、このページが子ページを持っている場合に表示されます。"
 
 #: dist/blocks/cluster-divided/index.js:1
 msgid "Cluster (Divider: stripe)"
@@ -557,10 +576,6 @@ msgstr "左"
 #: dist/blocks/decorator/index.js:1
 msgid "The stack level"
 msgstr "重ね合わせレベル"
-
-#: dist/blocks/decorator/index.js:1
-msgid "Learn more"
-msgstr "さらに詳しく"
 
 #: dist/blocks/frame/index.js:1
 msgid "Dimensions"
@@ -867,17 +882,17 @@ msgctxt "block description"
 msgid "This block displays folded content."
 msgstr "折り畳まれたコンテンツを表示するブロックです。"
 
-#: dist/blocks/accordion/block.json
+#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
 msgctxt "block style label"
 msgid "Default"
 msgstr "デフォルト"
 
-#: dist/blocks/accordion/block.json
+#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
 msgctxt "block style label"
 msgid "Box"
 msgstr "ボックス"
 
-#: dist/blocks/accordion/block.json
+#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
 msgctxt "block style label"
 msgid "Panel"
 msgstr "パネル"
@@ -922,6 +937,36 @@ msgstr "センター"
 msgctxt "block description"
 msgid "This block centers the children."
 msgstr "子要素を中央揃えします。"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block title"
+msgid "Child pages"
+msgstr "子ページの一覧"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block description"
+msgid "This block displays child pages."
+msgstr "このブロックは子ページの一覧を表示します。"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Cluster (Stripe)"
+msgstr "クラスター（区切り：ストライプ）"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Cluster (Slash)"
+msgstr "クラスター（区切り：スラッシュ）"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Stack (Stripe)"
+msgstr "スタック（区切り：ストライプ）"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Rich media"
+msgstr "リッチメディア"
 
 #: dist/blocks/cluster-divided-content/block.json
 msgctxt "block title"
@@ -1186,6 +1231,11 @@ msgstr "グレー"
 msgctxt "Color name"
 msgid "Dark gray"
 msgstr "ダークグレー"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Text (Black)"
+msgstr "テキスト（黒）"
 
 #: theme.json
 msgctxt "Font size name"

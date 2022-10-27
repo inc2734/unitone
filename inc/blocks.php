@@ -46,6 +46,15 @@ function unitone_register_blocks() {
 			},
 		)
 	);
+
+	register_block_type(
+		get_template_directory() . '/dist/blocks/child-pages',
+		array(
+			'render_callback' => function( $attributes, $content ) {
+				return DynamicBlock::render( get_template_directory() . '/dist/blocks/child-pages', $attributes, $content );
+			},
+		)
+	);
 }
 add_action( 'init', 'unitone_register_blocks' );
 

@@ -49,7 +49,8 @@ if ( ! file_exists( $template ) ) {
 	<?php
 	ob_start();
 	include( $template );
-	$html = preg_replace( '/[\r\n\t]/', '', ob_get_clean() );
+	$html = preg_replace( '/[\r\n\t]+/', ' ', ob_get_clean() );
+	$html = str_replace( '> </', '></', $html );
 	echo apply_filters( 'unitone_child_pages', $html, $wp_query, $attributes );
 	?>
 </div>

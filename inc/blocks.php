@@ -55,6 +55,8 @@ function unitone_register_blocks() {
 			},
 		)
 	);
+
+	\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes['unitone'] = array( 'type' => 'object' );
 }
 add_action( 'init', 'unitone_register_blocks' );
 

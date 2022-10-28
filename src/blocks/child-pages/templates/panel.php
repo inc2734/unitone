@@ -1,4 +1,20 @@
-<div data-unitone-layout="responsive-grid" style="--unitone--column-min-width: min(max(375px, (33.33333% - var(--unitone--gap) * 2 / 3)), 100%)">
+<?php
+$data_unitone_layout = array(
+	'responsive-grid',
+);
+if ( ! empty( $attributes['unitone']['gap'] ) ) {
+	$data_unitone_layout[] = '-gap:' . $attributes['unitone']['gap'];
+}
+
+$style = array();
+if ( ! empty( $attributes['columnMinWidth'] ) ) {
+	$style[] = '--unitone--column-min-width: ' . $attributes['columnMinWidth'];
+}
+?>
+<div
+	data-unitone-layout="<?php echo esc_attr( implode( ' ', $data_unitone_layout ) ); ?>"
+	style="<?php echo esc_attr( implode( ' ', $style ) ); ?>"
+>
 	<?php while ( $wp_query->have_posts() ) : ?>
 		<?php $wp_query->the_post(); ?>
 		<div data-unitone-layout="decorator -shadow -padding:1" class="has-background has-white-background-color has-text-color has-unitone-text-black-color">

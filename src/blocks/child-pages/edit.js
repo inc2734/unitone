@@ -8,15 +8,24 @@ import {
 	BaseControl,
 	Disabled,
 	PanelBody,
+	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
 
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 import ServerSideRender from '@wordpress/server-side-render';
 
+const multiIncludes = ( haystack, needles ) => {
+	if ( ! Array.isArray( haystack ) ) {
+		haystack = haystack.split( ' ' );
+	}
+
+	return needles.some( ( needle ) => haystack.includes( needle ) );
+};
+
 export default function ( { attributes, setAttributes } ) {
-	const { showTopLevel, parent } = attributes;
+	const { showTopLevel, parent, className, columnMinWidth } = attributes;
 
 	return (
 		<>
@@ -69,6 +78,39 @@ export default function ( { attributes, setAttributes } ) {
 								/>
 							</div>
 						</BaseControl>
+					) }
+
+					{ multiIncludes( className, [
+						'is-style-box',
+						'is-style-panel',
+						'is-style-rich-media',
+					] ) && (
+						<TextControl
+							label={
+								<>
+									{ __( 'Column min width', 'unitone' ) }:
+									<span
+										dangerouslySetInnerHTML={ {
+											__html: sprintf(
+												// translators: %1$s: <code>, %2$s: </code>
+												__(
+													'Inside the %1$sgrid-template-columns%2$s formula',
+													'unitone'
+												),
+												'<code>',
+												'</code>'
+											),
+										} }
+									/>
+								</>
+							}
+							value={ columnMinWidth }
+							onChange={ ( newAttribute ) =>
+								setAttributes( {
+									columnMinWidth: newAttribute,
+								} )
+							}
+						/>
 					) }
 				</PanelBody>
 			</InspectorControls>

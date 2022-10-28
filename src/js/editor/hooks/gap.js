@@ -1,6 +1,6 @@
 import classnames from 'classnames/dedupe';
 
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, getBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from './components';
@@ -21,8 +21,23 @@ export function resetGap( { attributes = {}, setAttributes } ) {
 	} );
 }
 
-export function useIsGapDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.gap' );
+export function useIsGapDisabled( props ) {
+	const { name: blockName } = props;
+
+	if ( ! hasBlockSupport( blockName, 'unitone.gap' ) ) {
+		return false;
+	}
+
+	const blockSupport = getBlockSupport( blockName, 'unitone.gap' );
+	const className = props.attributes?.className;
+	if ( !! className ) {
+		return ! className.split( ' ' ).some( ( needle ) => {
+			needle = needle.replace( 'is-style-', '' );
+			return blockSupport.styles?.[ needle ];
+		} );
+	}
+
+	return true;
 }
 
 export function GapEdit( props ) {

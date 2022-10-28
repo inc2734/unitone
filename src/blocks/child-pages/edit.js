@@ -18,7 +18,7 @@ import ServerSideRender from '@wordpress/server-side-render';
 
 const multiIncludes = ( haystack, needles ) => {
 	if ( ! Array.isArray( haystack ) ) {
-		haystack = haystack.split( ' ' );
+		haystack = !! haystack ? haystack.split( ' ' ) : [];
 	}
 
 	return needles.some( ( needle ) => haystack.includes( needle ) );

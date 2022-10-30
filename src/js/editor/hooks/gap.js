@@ -25,10 +25,14 @@ export function useIsGapDisabled( props ) {
 	const { name: blockName } = props;
 
 	if ( ! hasBlockSupport( blockName, 'unitone.gap' ) ) {
-		return false;
+		return true;
 	}
 
 	const blockSupport = getBlockSupport( blockName, 'unitone.gap' );
+	if ( true === blockSupport ) {
+		return false;
+	}
+
 	const className = props.attributes?.className;
 	if ( !! className ) {
 		return ! className.split( ' ' ).some( ( needle ) => {

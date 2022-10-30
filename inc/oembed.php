@@ -25,10 +25,14 @@ add_filter(
 add_filter(
 	'inc2734_wp_oembed_blog_card_block_editor_template',
 	function( $template, $url ) {
+		$global_styles = wp_get_global_styles();
+
 		$template .= sprintf(
-			'<link rel="stylesheet" href="%1$s?ver=%2$s">',
+			'<link rel="stylesheet" href="%1$s?ver=%2$s"><style>.rich.wp-block-embed__wrapper{background-color: %3$s; color: %4$s;}</style>',
 			esc_url_raw( get_template_directory_uri() . '/dist/css/app/app.css' ),
-			filemtime( get_template_directory() . '/dist/css/app/app.css' )
+			filemtime( get_template_directory() . '/dist/css/app/app.css' ),
+			esc_attr( $global_styles['color']['background'] ),
+			esc_attr( $global_styles['color']['text'] ),
 		);
 		return apply_filters( 'unitone_oembed_blog_card_block_editor_template', $template, $url );
 	},

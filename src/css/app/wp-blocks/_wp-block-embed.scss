@@ -1,5 +1,6 @@
 @mixin include() {
 	.wp-block-embed {
+		margin-bottom: 0;
 		width: auto;
 
 		figcaption {

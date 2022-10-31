@@ -15,7 +15,8 @@
 		"anchor": true,
 		"align": [ "full" ],
 		"unitone": {
-			"gap": true
+			"gap": true,
+			"autoRepeat": true
 		}
 	},
 	"category": "unitone/layout",

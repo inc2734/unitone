@@ -31,6 +31,8 @@ import {
 	editMaxWidthProp,
 	saveMinHeightProp,
 	editMinHeightProp,
+	saveAutoRepeatProp,
+	editAutoRepeatProp,
 } from './layout';
 
 import {
@@ -65,6 +67,7 @@ function addSaveProps( extraProps, blockType, attributes ) {
 	extraProps = saveJustifyContentProp( extraProps, blockType, attributes );
 	extraProps = saveMaxWidthProp( extraProps, blockType, attributes );
 	extraProps = saveMinHeightProp( extraProps, blockType, attributes );
+	extraProps = saveAutoRepeatProp( extraProps, blockType, attributes );
 	extraProps = saveNegativeProp( extraProps, blockType, attributes );
 	extraProps = savePaddingProp( extraProps, blockType, attributes );
 	return extraProps;
@@ -82,6 +85,7 @@ function addEditProps( settings ) {
 	settings = editJustifyContentProp( settings );
 	settings = editMaxWidthProp( settings );
 	settings = editMinHeightProp( settings );
+	settings = editAutoRepeatProp( settings );
 	settings = editNegativeProp( settings );
 	settings = editPaddingProp( settings );
 	return settings;

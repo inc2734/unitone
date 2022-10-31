@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 3.6.0\n"
+"Project-Id-Version: unitone 3.7.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-27T11:43:27+00:00\n"
+"POT-Creation-Date: 2022-10-31T03:06:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -63,9 +63,9 @@ msgstr ""
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr ""
 
-#: dist/blocks/child-pages/templates/box.php:15
-#: dist/blocks/child-pages/templates/panel.php:15
-#: dist/blocks/child-pages/templates/rich-media.php:24
+#: dist/blocks/child-pages/templates/box.php:31
+#: dist/blocks/child-pages/templates/panel.php:31
+#: dist/blocks/child-pages/templates/rich-media.php:40
 #: dist/blocks/decorator/index.js:1
 msgid "Learn more"
 msgstr ""
@@ -508,6 +508,7 @@ msgstr ""
 
 #: dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1
+#: dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1
 #: dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1
@@ -516,6 +517,7 @@ msgstr ""
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
@@ -537,6 +539,23 @@ msgstr ""
 
 #: dist/blocks/child-pages/index.js:1
 msgid "If not specified, a list of child pages of this page will be displayed."
+msgstr ""
+
+#: dist/blocks/child-pages/index.js:1
+#: dist/blocks/responsive-grid/index.js:1
+msgid "Column min width"
+msgstr ""
+
+#. translators: %1$s: <code>, %2$s: </code>
+#: dist/blocks/child-pages/index.js:3
+#: dist/blocks/responsive-grid/index.js:3
+msgid "Inside the %1$sgrid-template-columns%2$s formula"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/decorator/index.js:1
+#: dist/blocks/stack-divided/index.js:1
+msgid "HTML element"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
@@ -601,10 +620,6 @@ msgstr ""
 
 #: dist/blocks/decorator/index.js:1
 msgid "With shadow"
-msgstr ""
-
-#: dist/blocks/decorator/index.js:1
-msgid "HTML element"
 msgstr ""
 
 #: dist/blocks/decorator/index.js:1
@@ -691,15 +706,6 @@ msgstr ""
 
 #: dist/blocks/reel/index.js:1
 msgid "No scrollbar"
-msgstr ""
-
-#: dist/blocks/responsive-grid/index.js:1
-msgid "Column min width"
-msgstr ""
-
-#. translators: %1$s: <code>, %2$s: </code>
-#: dist/blocks/responsive-grid/index.js:3
-msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -893,6 +899,18 @@ msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Min height"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "auto-fill"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "auto-fit"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Auto repeat"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -1317,6 +1335,18 @@ msgstr ""
 #: styles/soft-light.json
 #: theme.json
 msgctxt "Color name"
+msgid "Text (Black)"
+msgstr ""
+
+#: styles/asia.json
+#: styles/dark.json
+#: styles/evening.json
+#: styles/grasslands.json
+#: styles/ice-lake.json
+#: styles/refined.json
+#: styles/soft-light.json
+#: theme.json
+msgctxt "Color name"
 msgid "Bright gray"
 msgstr ""
 
@@ -1354,11 +1384,6 @@ msgstr ""
 #: theme.json
 msgctxt "Color name"
 msgid "Dark gray"
-msgstr ""
-
-#: theme.json
-msgctxt "Color name"
-msgid "Text (Black)"
 msgstr ""
 
 #: theme.json

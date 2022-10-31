@@ -52,6 +52,13 @@ import {
 	editMinHeightProp,
 } from './min-height';
 
+import {
+	useIsAutoRepeatDisabled,
+	AutoRepeatEdit,
+	saveAutoRepeatProp,
+	editAutoRepeatProp,
+} from './auto-repeat';
+
 export {
 	saveAlignItemsProp,
 	editAlignItemsProp,
@@ -65,6 +72,8 @@ export {
 	editMaxWidthProp,
 	saveMinHeightProp,
 	editMinHeightProp,
+	saveAutoRepeatProp,
+	editAutoRepeatProp,
 };
 
 export function LayoutPanel( props ) {
@@ -75,6 +84,7 @@ export function LayoutPanel( props ) {
 	const isBlockAlignDisabled = useIsBlockAlignDisabled( props );
 	const isMaxWidthDisabled = useIsMaxWidthDisabled( props );
 	const isMinHeightDisabled = useIsMinHeightDisabled( props );
+	const isAutoRepeatDisabled = useIsAutoRepeatDisabled( props );
 
 	if (
 		isJustifyContentDisabled &&
@@ -82,7 +92,8 @@ export function LayoutPanel( props ) {
 		isAlignItemsDisabled &&
 		isBlockAlignDisabled &&
 		isMaxWidthDisabled &&
-		isMinHeightDisabled
+		isMinHeightDisabled &&
+		isAutoRepeatDisabled
 	) {
 		return null;
 	}
@@ -114,7 +125,8 @@ export function LayoutPanel( props ) {
 				! isAlignItemsDisabled ||
 				! isBlockAlignDisabled ||
 				! isMaxWidthDisabled ||
-				! isMinHeightDisabled ) && (
+				! isMinHeightDisabled ||
+				! isAutoRepeatDisabled ) && (
 				<InspectorControls>
 					<PanelBody title={ __( 'Layout', 'unitone' ) }>
 						{ ! isJustifyContentDisabled && (
@@ -134,6 +146,9 @@ export function LayoutPanel( props ) {
 						) }
 						{ ! isMinHeightDisabled && (
 							<MinHeightEdit { ...props } />
+						) }
+						{ ! isAutoRepeatDisabled && (
+							<AutoRepeatEdit { ...props } />
 						) }
 					</PanelBody>
 				</InspectorControls>

@@ -196,7 +196,10 @@
 			},
 			"caption": {
 				"color": {
-					"text": "inherit"
+					"text": "var(--wp--preset--color--unitone-dark-gray)"
+				},
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--unitone-s)"
 				},
 				"spacing": {
 					"margin": {

@@ -31,16 +31,14 @@
 	}
 
 	.wp-oembed-blog-card {
-		&,
-		&:hover,
-		&:active,
-		&:focus {
-			box-shadow: var(--unitone--global--box-shadow);
-		}
+		background-color: transparent;
+		box-shadow: none;
+		border-radius: 0;
 
 		> a,
 		> span {
-			padding: var(--unitone--s1);
+			color: inherit;
+			padding: 0;
 		}
 
 		&__domain {
@@ -56,13 +54,8 @@
 	}
 
 	// For iframe on the block editor
-	.rich.wp-block-embed__wrapper {
-		//height: calc(max-content + 15px);
-		padding-bottom: 18px;
-
-		.wp-oembed-blog-card {
-			margin: 5px 14px 0 !important;
-		}
+	.rich.wp-block-embed__wrapper .wp-oembed-blog-card {
+		margin: 0 !important;
 	}
 
 	.home {

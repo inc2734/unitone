@@ -4,17 +4,19 @@
 		width: auto;
 
 		figcaption {
-			margin: var(--unitone--s-2) 0 0;
-			color: var(--wp--preset--color--unitone-dark-gray);
-			font-size: var(--wp--preset--font-size--unitone-s);
 			caption-side: bottom;
 			text-align: left;
 		}
 	}
 
 	.wp-block-embed-wp-oembed-blog-card {
-		figcaption {
-			margin-top: var(--unitone--s-1);
+		.wp-block-embed__wrapper {
+			background-color: var(--wp--preset--color--white);
+			color: var(--wp--preset--color--unitone-text-black);
+			box-shadow: var(--unitone--global--box-shadow);
+			border-radius: var(--unitone--global--border-radius);
+			padding: var(--unitone--s1);
+			overflow: hidden;
 		}
 	}
 }

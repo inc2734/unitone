@@ -30,6 +30,11 @@
 					"name": "Text Alt"
 				},
 				{
+					"slug": "unitone/text-black",
+					"color": "var(--unitone--color--text)",
+					"name": "Text (Black)"
+				},
+				{
 					"slug": "unitone/bright-gray",
 					"color": "rgba(213, 228, 241, .15)",
 					"name": "Bright gray"

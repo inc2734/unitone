@@ -35,6 +35,14 @@
 		box-shadow: none;
 		border-radius: 0;
 
+		@media (hover: hover) and (pointer: fine) {
+			&:active,
+			&:focus,
+			&:hover {
+				box-shadow: none;
+			}
+		}
+
 		> a,
 		> span {
 			color: inherit;

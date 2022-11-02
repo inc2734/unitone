@@ -82,3 +82,9 @@
 .wp-block-template-part__block-control-group + .wp-block-template-part__block-control-group {
 	display: none;
 }
+
+// Remove the bottom margin of the element before one of the block list appender.
+// Since there is no the block list appender at the front.
+.editor-styles-wrapper .block-editor-block-list__layout > .wp-block:nth-last-child(2) {
+  margin-bottom: 0;
+}

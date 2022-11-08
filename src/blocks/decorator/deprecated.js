@@ -1,13 +1,145 @@
 import classnames from 'classnames';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
+
+import { cleanEmptyObject } from '../../js/editor/hooks/utils';
 
 export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			position: {
+				type: 'string',
+			},
+			top: {
+				type: 'string',
+			},
+			right: {
+				type: 'string',
+			},
+			bottom: {
+				type: 'string',
+			},
+			left: {
+				type: 'string',
+			},
+			zIndex: {
+				type: 'string',
+			},
+		},
+
+		migrate( attributes ) {
+			const { position, top, right, bottom, left, zIndex, unitone } =
+				attributes;
+
+			const newAttributes = {
+				...attributes,
+				unitone: {
+					...unitone,
+					position: cleanEmptyObject( {
+						position,
+						top,
+						right,
+						bottom,
+						left,
+						zIndex,
+					} ),
+				},
+			};
+
+			return {
+				...newAttributes,
+			};
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const {
+				tagName,
+				shadow,
+				position,
+				top,
+				right,
+				bottom,
+				left,
+				zIndex,
+				rel,
+				href,
+				linkTarget,
+			} = attributes;
+
+			const isHrefSet = !! href;
+
+			const TagName = tagName || 'div';
+
+			const blockProps = useBlockProps.save( {
+				style: {
+					'--unitone--top': top || undefined,
+					'--unitone--right': right || undefined,
+					'--unitone--bottom': bottom || undefined,
+					'--unitone--left': left || undefined,
+					'--unitone--z-index': zIndex || undefined,
+				},
+				'data-unitone-layout': classnames( 'decorator', {
+					[ `-position:${ position }` ]: position,
+					'-shadow': shadow,
+				} ),
+			} );
+
+			return (
+				<>
+					{ isHrefSet ? (
+						<TagName { ...blockProps }>
+							<div data-unitone-layout="decorator__inner">
+								<div { ...useInnerBlocksProps.save() } />
+								<a
+									data-unitone-layout="decorator__link"
+									href={ href }
+									target={ linkTarget }
+									rel={ rel }
+								>
+									{ __( 'Learn more', 'unitone' ) }
+								</a>
+							</div>
+						</TagName>
+					) : (
+						<TagName
+							{ ...useInnerBlocksProps.save( {
+								...blockProps,
+							} ) }
+						/>
+					) }
+				</>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+			position: {
+				type: 'string',
+			},
+			top: {
+				type: 'string',
+			},
+			right: {
+				type: 'string',
+			},
+			bottom: {
+				type: 'string',
+			},
+			left: {
+				type: 'string',
+			},
+			zIndex: {
+				type: 'string',
+			},
 		},
 
 		supports: {

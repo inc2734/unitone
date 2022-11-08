@@ -32,20 +32,7 @@ export default function ( {
 	isSelected,
 	clientId,
 } ) {
-	const {
-		tagName,
-		shadow,
-		position,
-		top,
-		right,
-		bottom,
-		left,
-		zIndex,
-		templateLock,
-		rel,
-		href,
-		linkTarget,
-	} = attributes;
+	const { tagName, shadow, templateLock, rel, href, linkTarget } = attributes;
 
 	const onSetLinkRel = useCallback(
 		( value ) => {
@@ -81,19 +68,11 @@ export default function ( {
 
 	const blockProps = useBlockProps( {
 		ref,
-		style: {
-			'--unitone--top': top || undefined,
-			'--unitone--right': right || undefined,
-			'--unitone--bottom': bottom || undefined,
-			'--unitone--left': left || undefined,
-			'--unitone--z-index': zIndex || undefined,
-		},
 	} );
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'decorator',
 		blockProps[ 'data-unitone-layout' ],
 		{
-			[ `-position:${ position }` ]: position,
 			'-shadow': shadow,
 		}
 	);
@@ -158,116 +137,6 @@ export default function ( {
 						onChange={ ( newAttribute ) =>
 							setAttributes( { tagName: newAttribute } )
 						}
-					/>
-				</PanelBody>
-
-				<PanelBody
-					title={ __( 'Position', 'unitone' ) }
-					initialOpen={ false }
-				>
-					<SelectControl
-						label={
-							<>
-								{ __( 'Position', 'unitone' ) } :
-								<code>position</code>
-							</>
-						}
-						options={ [
-							{ label: '', value: '' },
-							{
-								label: 'static',
-								value: 'static',
-							},
-							{
-								label: 'relative',
-								value: 'relative',
-							},
-							{
-								label: 'absolute',
-								value: 'absolute',
-							},
-							{ label: 'fixed', value: 'fixed' },
-							{
-								label: 'sticky',
-								value: 'sticky',
-							},
-						] }
-						value={ position }
-						onChange={ ( newAttribute ) =>
-							setAttributes( {
-								position: newAttribute,
-							} )
-						}
-					/>
-
-					<TextControl
-						label={
-							<>
-								{ __( 'Top', 'unitone' ) } : <code>top</code>
-							</>
-						}
-						value={ top }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { top: newAttribute } );
-						} }
-					/>
-
-					<TextControl
-						label={
-							<>
-								{ __( 'Right', 'unitone' ) } :<code>right</code>
-							</>
-						}
-						value={ right }
-						onChange={ ( newAttribute ) => {
-							setAttributes( {
-								right: newAttribute,
-							} );
-						} }
-					/>
-
-					<TextControl
-						label={
-							<>
-								{ __( 'Bottom', 'unitone' ) } :
-								<code>bottom</code>
-							</>
-						}
-						value={ bottom }
-						onChange={ ( newAttribute ) => {
-							setAttributes( {
-								bottom: newAttribute,
-							} );
-						} }
-					/>
-
-					<TextControl
-						label={
-							<>
-								{ __( 'Left', 'unitone' ) } : <code>left</code>
-							</>
-						}
-						value={ left }
-						onChange={ ( newAttribute ) => {
-							setAttributes( {
-								left: newAttribute,
-							} );
-						} }
-					/>
-
-					<TextControl
-						label={
-							<>
-								{ __( 'The stack level', 'unitone' ) } :
-								<code>z-index</code>
-							</>
-						}
-						value={ zIndex }
-						onChange={ ( newAttribute ) => {
-							setAttributes( {
-								zIndex: newAttribute,
-							} );
-						} }
 					/>
 				</PanelBody>
 			</InspectorControls>

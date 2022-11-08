@@ -4,6 +4,7 @@
 	}
 
 	.site-header {
+		// @deprecated
 		&.-header-position\:fixed {
 			position: fixed;
 			right: 0;
@@ -11,6 +12,7 @@
 			z-index: 1;
 		}
 
+		// @deprecated
 		&.-header-position\:overlay {
 			position: absolute;
 			right: 0;

@@ -49,7 +49,7 @@ import {
 	editDividerTypeProp,
 } from './divider';
 
-import { HeaderPanel } from './header';
+import { PositionPanel, savePositionProp, editPositionProp } from './position';
 
 function addSaveProps( extraProps, blockType, attributes ) {
 	extraProps = saveAlignItemsProp( extraProps, blockType, attributes );
@@ -70,6 +70,7 @@ function addSaveProps( extraProps, blockType, attributes ) {
 	extraProps = saveAutoRepeatProp( extraProps, blockType, attributes );
 	extraProps = saveNegativeProp( extraProps, blockType, attributes );
 	extraProps = savePaddingProp( extraProps, blockType, attributes );
+	extraProps = savePositionProp( extraProps, blockType, attributes );
 	return extraProps;
 }
 
@@ -88,6 +89,7 @@ function addEditProps( settings ) {
 	settings = editAutoRepeatProp( settings );
 	settings = editNegativeProp( settings );
 	settings = editPaddingProp( settings );
+	settings = editPositionProp( settings );
 	return settings;
 }
 
@@ -108,12 +110,13 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<>
 				<BlockEdit { ...props } />
+
 				<DimensionsPanel { ...props } />
 				<LayoutPanel { ...props } />
 				<TypographyPanel { ...props } />
 				<DividerPanel { ...props } />
 
-				<HeaderPanel { ...props } />
+				<PositionPanel { ...props } />
 			</>
 		);
 	};

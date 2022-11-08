@@ -1,7 +1,7 @@
 import classnames from 'classnames/dedupe';
 
 import { SelectControl } from '@wordpress/components';
-import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from './utils';
@@ -22,7 +22,7 @@ const autoRepeatOptions = [
 ];
 
 export function useIsAutoRepeatDisabled( { name: blockName } = {} ) {
-	return ! getBlockSupport( blockName, 'unitone.autoRepeat' );
+	return ! hasBlockSupport( blockName, 'unitone.autoRepeat' );
 }
 
 export function hasAutoRepeatValue( props ) {

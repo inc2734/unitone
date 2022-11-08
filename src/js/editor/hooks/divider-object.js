@@ -1,6 +1,6 @@
 import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients } from '@wordpress/block-editor';
 import { __experimentalBorderControl as BorderControl } from '@wordpress/components';
-import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from './utils';
@@ -106,7 +106,7 @@ export const resetDividerFilter = ( newAttributes ) => ( {
 } );
 
 export function useIsDividerDisabled( { name: blockName } = {} ) {
-	return ! getBlockSupport( blockName, 'unitone.divider' );
+	return ! hasBlockSupport( blockName, 'unitone.divider' );
 }
 
 export function DividerEdit( props ) {
@@ -160,7 +160,7 @@ export function DividerEdit( props ) {
 
 	return (
 		<BorderControl
-			label={ __( 'Border', 'unitone' ) }
+			label={ __( 'Divider', 'unitone' ) }
 			value={ hydratedDivider }
 			withSlider={ true }
 			onChange={ onChangeDivider }

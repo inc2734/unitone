@@ -13,24 +13,6 @@
 			"type": "boolean",
 			"default": false
 		},
-		"position": {
-			"type": "string"
-		},
-		"top": {
-			"type": "string"
-		},
-		"right": {
-			"type": "string"
-		},
-		"bottom": {
-			"type": "string"
-		},
-		"left": {
-			"type": "string"
-		},
-		"zIndex": {
-			"type": "string"
-		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", false ]
@@ -87,7 +69,8 @@
 			}
 		},
 		"unitone": {
-			"padding": true
+			"padding": true,
+			"position": true
 		}
 	},
 	"category": "unitone/layout",

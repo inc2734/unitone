@@ -1,6 +1,6 @@
 import classnames from 'classnames/dedupe';
 
-import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from './components';
@@ -22,7 +22,7 @@ export function resetGutters( { attributes = {}, setAttributes } ) {
 }
 
 export function useIsGuttersDisabled( { name: blockName } = {} ) {
-	return ! getBlockSupport( blockName, 'unitone.gutters' );
+	return ! hasBlockSupport( blockName, 'unitone.gutters' );
 }
 
 export function GuttersEdit( props ) {

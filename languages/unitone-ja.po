@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "POT-Creation-Date: 2022-11-08T01:02:29+00:00\n"
-"PO-Revision-Date: 2022-11-08 10:21+0900\n"
+"PO-Revision-Date: 2022-11-08 11:03+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -140,7 +140,7 @@ msgstr "ブロックリンク（ボーダー）"
 
 #: inc/template-part-areas.php:20
 msgid "Single post"
-msgstr "個別商品"
+msgstr "個別投稿"
 
 #: inc/template-part-areas.php:27
 msgid "Single post page header"
@@ -1978,7 +1978,7 @@ msgstr "検索結果：ページヘッダー（画像）"
 #: theme.json
 msgctxt "Template part name"
 msgid "Single post: Template"
-msgstr "個別商品：テンプレート"
+msgstr "個別投稿：テンプレート"
 
 #: theme.json
 msgctxt "Template part name"

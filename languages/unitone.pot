@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 3.7.2\n"
+"Project-Id-Version: unitone 3.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-31T03:06:30+00:00\n"
+"POT-Creation-Date: 2022-11-08T01:02:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -521,7 +521,6 @@ msgstr ""
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
-#: dist/js/editor/editor.js:1
 msgid "General"
 msgstr ""
 
@@ -620,35 +619,6 @@ msgstr ""
 
 #: dist/blocks/decorator/index.js:1
 msgid "With shadow"
-msgstr ""
-
-#: dist/blocks/decorator/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "Position"
-msgstr ""
-
-#: dist/blocks/decorator/index.js:1
-msgid "Top"
-msgstr ""
-
-#: dist/blocks/decorator/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "Right"
-msgstr ""
-
-#: dist/blocks/decorator/index.js:1
-msgid "Bottom"
-msgstr ""
-
-#: dist/blocks/decorator/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "Left"
-msgstr ""
-
-#: dist/blocks/decorator/index.js:1
-msgid "The stack level"
 msgstr ""
 
 #: dist/blocks/frame/index.js:1
@@ -845,8 +815,17 @@ msgid "Columns to be treated as sidebars"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
-#: dist/js/editor/editor.js:1
 msgid "Default"
+msgstr ""
+
+#: dist/blocks/with-sidebar/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Right"
+msgstr ""
+
+#: dist/blocks/with-sidebar/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Left"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
@@ -938,19 +917,23 @@ msgid "Type"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Border"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
 msgid "Divider"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Overlay"
+msgid "Position"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Fixed"
+msgid "Top"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Bottom"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "The stack level"
 msgstr ""
 
 #. translators: %s: template part title.
@@ -1628,650 +1611,650 @@ msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404"
+msgid "404: Template"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 (Page header (Image))"
+msgid "404: Template (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 (Right sidebar)"
+msgid "404: Template (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 (Right sidebar / Page header (Image))"
+msgid "404: Template (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 (Left header)"
+msgid "404: Template (Left header)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 (Left header / Page header (Image))"
+msgid "404: Template (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 contents"
+msgid "404: Contents"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 contents (Page header (Image))"
+msgid "404: Contents (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 contents (Right sidebar)"
+msgid "404: Contents (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 contents (Right sidebar / Page header (Image))"
+msgid "404: Contents (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 page header"
+msgid "404: Page header"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 page header (Image)"
+msgid "404: Page header (Image)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404 page header (Wide)"
+msgid "404: Page header (Wide)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive"
+msgid "WooCommerce product archive: Template"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive (Page header (Image))"
+msgid "WooCommerce product archive: Template (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive (Right sidebar)"
+msgid "WooCommerce product archive: Template (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive (Right sidebar / Page header (Image))"
+msgid "WooCommerce product archive: Template (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive (Left header)"
+msgid "WooCommerce product archive: Template (Left header)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive (Left header / Page header (Image))"
+msgid "WooCommerce product archive: Template (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive contents"
+msgid "WooCommerce product archive: Contents"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive contents (Page header (Image))"
+msgid "WooCommerce product archive: Contents (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive contents (Right sidebar)"
+msgid "WooCommerce product archive: Contents (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive contents (Right sidebar / Page header (Image))"
+msgid "WooCommerce product archive: Contents (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive page header"
+msgid "WooCommerce product archive: Page header"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive page header (Image)"
+msgid "WooCommerce product archive: Page header (Image)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive"
+msgid "Archive: Template"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive (Page header (Image))"
+msgid "Archive: Template (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive (Right sidebar)"
+msgid "Archive: Template (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive (Right sidebar / Page header (Image))"
+msgid "Archive: Template (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive (Left header)"
+msgid "Archive: Template (Left header)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive (Left header / Page header (Image))"
+msgid "Archive: Template (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive contents"
+msgid "Archive: Contents"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive contents (Page header (Image))"
+msgid "Archive: Contents (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive contents (Right sidebar)"
+msgid "Archive: Contents (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive contents (Right sidebar / Page header (Image))"
+msgid "Archive: Contents (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive page header"
+msgid "Archive: Page header"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Archive page header (Image)"
+msgid "Archive: Page header (Image)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress"
+msgid "bbPress: Template"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress (Page header (Image))"
+msgid "bbPress: Template (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress (Right sidebar)"
+msgid "bbPress: Template (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress (Right sidebar / Page header (Image))"
+msgid "bbPress: Template (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress (Left header)"
+msgid "bbPress: Template (Left header)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress (Left header / Page header (Image))"
+msgid "bbPress: Template (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress contents"
+msgid "bbPress: Contents"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress contents (Page header (Image))"
+msgid "bbPress: Contents (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress contents (Right sidebar)"
+msgid "bbPress: Contents (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress contents (Right sidebar / Page header (Image))"
+msgid "bbPress: Contents (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress page header"
+msgid "bbPress: Page header"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress page header (Image)"
+msgid "bbPress: Page header (Image)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home"
+msgid "Home: Template"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home (Page header (Image))"
+msgid "Home: Template (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home (Right sidebar)"
+msgid "Home: Template (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home (Right sidebar / Page header (Image))"
+msgid "Home: Template (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home (Left header)"
+msgid "Home: Template (Left header)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home (Left header / Page header (Image))"
+msgid "Home: Template (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home contents"
+msgid "Home: Contents"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home contents (Blank)"
+msgid "Home: Contents (Blank)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home contents (Page header (Image))"
+msgid "Home: Contents (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home contents (Right sidebar)"
+msgid "Home: Contents (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home contents (Right sidebar / Page header (Image))"
+msgid "Home: Contents (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home page header"
+msgid "Home: Page header"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home page header (Image)"
+msgid "Home: Page header (Image)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page"
+msgid "Page: Template"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Page header (Featured image))"
+msgid "Page: Template (Page header (Featured image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Page header (Image))"
+msgid "Page: Template (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Header / Footer)"
+msgid "Page: Template (Header / Footer)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Page header (Slim))"
+msgid "Page: Template (Page header (Slim))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Right sidebar)"
+msgid "Page: Template (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Right sidebar / Page header (Featured image))"
+msgid "Page: Template (Right sidebar / Page header (Featured image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Right sidebar / Page header (Image))"
+msgid "Page: Template (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Left header)"
+msgid "Page: Template (Left header)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Left header / Page header (Featured image))"
+msgid "Page: Template (Left header / Page header (Featured image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page (Left header / Page header (Image))"
+msgid "Page: Template (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page contents"
+msgid "Page: Contents"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page contents (Page header (Featured image))"
+msgid "Page: Contents (Page header (Featured image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page contents (Page header (Image))"
+msgid "Page: Contents (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page contents (Page header (Slim))"
+msgid "Page: Contents (Page header (Slim))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page contents (Right sidebar)"
+msgid "Page: Contents (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page contents (Right sidebar / Page header (Featured image))"
+msgid "Page: Contents (Right sidebar / Page header (Featured image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page contents (Right sidebar / Page header (Image))"
+msgid "Page: Contents (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page contents (Blank)"
+msgid "Page: Contents (Blank)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page header"
+msgid "Page: Page header"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page header (Featured image)"
+msgid "Page: Page header (Featured image)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page header (Image)"
+msgid "Page: Page header (Image)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page header (Slim)"
+msgid "Page: Page header (Slim)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search"
+msgid "Search: Template"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search (Page header (Image))"
+msgid "Search: Template (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search (Right sidebar)"
+msgid "Search: Template (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search (Right sidebar / Page header (Image))"
+msgid "Search: Template (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search (Left header)"
+msgid "Search: Template (Left header)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search (Left header / Page header (Image))"
+msgid "Search: Template (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search contents"
+msgid "Search: Contents"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search contents (Page header (Image))"
+msgid "Search: Contents (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search contents (Right sidebar)"
+msgid "Search: Contents (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search contents (Right sidebar / Page header (Image))"
+msgid "Search: Contents (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search page header"
+msgid "Search: Page header"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search page header (Image)"
+msgid "Search: Page header (Image)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post"
+msgid "Single post: Template"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post (Page header (Featured image))"
+msgid "Single post: Template (Page header (Featured image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post (Page header (Image))"
+msgid "Single post: Template (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post (Right sidebar)"
+msgid "Single post: Template (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post (Right sidebar / Page header (Featured image))"
+msgid "Single post: Template (Right sidebar / Page header (Featured image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post (Right sidebar / Page header (Image))"
+msgid "Single post: Template (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post (Header / Footer)"
+msgid "Single post: Template (Header / Footer)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post (Left header)"
+msgid "Single post: Template (Left header)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post (Left header / Page header (Featured image))"
+msgid "Single post: Template (Left header / Page header (Featured image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post (Left header / Page header (Image))"
+msgid "Single post: Template (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post contents"
+msgid "Single post: Contents"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post contents (Blank)"
+msgid "Single post: Contents (Blank)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post contents (Page header (Featured image))"
+msgid "Single post: Contents (Page header (Featured image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post contents (Page header (Image))"
+msgid "Single post: Contents (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post contents (Right sidebar)"
+msgid "Single post: Contents (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post contents (Right sidebar / Page header (Featured image))"
+msgid "Single post: Contents (Right sidebar / Page header (Featured image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post contents (Right sidebar / Page header (Image))"
+msgid "Single post: Contents (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post page header"
+msgid "Single post: Page header"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post page header (Featured image)"
+msgid "Single post: Page header (Featured image)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post page header (Image)"
+msgid "Single post: Page header (Image)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post page header (Wide)"
+msgid "Single post: Page header (Wide)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product"
+msgid "WooCommerce single product: Template"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product (Page header (Image))"
+msgid "WooCommerce single product: Template (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product (Right sidebar)"
+msgid "WooCommerce single product: Template (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product (Right sidebar / Page header (Image))"
+msgid "WooCommerce single product: Template (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product (Left header)"
+msgid "WooCommerce single product: Template (Left header)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product (Left header / Page header (Image))"
+msgid "WooCommerce single product: Template (Left header / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product contents"
+msgid "WooCommerce single product: Contents"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product contents (Page header (Image))"
+msgid "WooCommerce single product: Contents (Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product contents (Right sidebar)"
+msgid "WooCommerce single product: Contents (Right sidebar)"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product contents (Right sidebar / Page header (Image))"
+msgid "WooCommerce single product: Contents (Right sidebar / Page header (Image))"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product page header"
+msgid "WooCommerce single product: Page header"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product page header (Image)"
+msgid "WooCommerce single product: Page header (Image)"
 msgstr ""

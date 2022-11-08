@@ -440,653 +440,653 @@
 		},
 		{
 			"name": "template-404",
-			"title": "404",
+			"title": "404: Template",
 			"area": "unitone/template/404"
 		},
 		{
 			"name": "template-404-page-header-image",
-			"title": "404 (Page header (Image))",
+			"title": "404: Template (Page header (Image))",
 			"area": "unitone/template/404"
 		},
 		{
 			"name": "template-404-right-sidebar",
-			"title": "404 (Right sidebar)",
+			"title": "404: Template (Right sidebar)",
 			"area": "unitone/template/404"
 		},
 		{
 			"name": "template-404-right-sidebar-page-header-image",
-			"title": "404 (Right sidebar / Page header (Image))",
+			"title": "404: Template (Right sidebar / Page header (Image))",
 			"area": "unitone/template/404"
 		},
 		{
 			"name": "template-404-left-header",
-			"title": "404 (Left header)",
+			"title": "404: Template (Left header)",
 			"area": "unitone/template/404"
 		},
 		{
 			"name": "template-404-left-header-page-header-image",
-			"title": "404 (Left header / Page header (Image))",
+			"title": "404: Template (Left header / Page header (Image))",
 			"area": "unitone/template/404"
 		},
 		{
 			"name": "contents-404",
-			"title": "404 contents",
+			"title": "404: Contents",
 			"area": "unitone/contents/404"
 		},
 		{
 			"name": "contents-404-page-header-image",
-			"title": "404 contents (Page header (Image))",
+			"title": "404: Contents (Page header (Image))",
 			"area": "unitone/contents/404"
 		},
 		{
 			"name": "contents-404-right-sidebar",
-			"title": "404 contents (Right sidebar)",
+			"title": "404: Contents (Right sidebar)",
 			"area": "unitone/contents/404"
 		},
 		{
 			"name": "contents-404-right-sidebar-page-header-image",
-			"title": "404 contents (Right sidebar / Page header (Image))",
+			"title": "404: Contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/404"
 		},
 		{
 			"name": "page-header-404",
-			"title": "404 page header",
+			"title": "404: Page header",
 			"area": "unitone/page-header/404"
 		},
 		{
 			"name": "page-header-404-image",
-			"title": "404 page header (Image)",
+			"title": "404: Page header (Image)",
 			"area": "unitone/page-header/404"
 		},
 		{
 			"name": "page-header-404-wide",
-			"title": "404 page header (Wide)",
+			"title": "404: Page header (Wide)",
 			"area": "unitone/page-header/404"
 		},
 		{
 			"name": "template-archive-product",
-			"title": "WooCommerce product archive",
+			"title": "WooCommerce product archive: Template",
 			"area": "unitone/template/archive-product"
 		},
 		{
 			"name": "template-archive-product-page-header-image",
-			"title": "WooCommerce product archive (Page header (Image))",
+			"title": "WooCommerce product archive: Template (Page header (Image))",
 			"area": "unitone/template/archive-product"
 		},
 		{
 			"name": "template-archive-product-right-sidebar",
-			"title": "WooCommerce product archive (Right sidebar)",
+			"title": "WooCommerce product archive: Template (Right sidebar)",
 			"area": "unitone/template/archive-product"
 		},
 		{
 			"name": "template-archive-product-right-sidebar-page-header-image",
-			"title": "WooCommerce product archive (Right sidebar / Page header (Image))",
+			"title": "WooCommerce product archive: Template (Right sidebar / Page header (Image))",
 			"area": "unitone/template/archive-product"
 		},
 		{
 			"name": "template-archive-product-left-header",
-			"title": "WooCommerce product archive (Left header)",
+			"title": "WooCommerce product archive: Template (Left header)",
 			"area": "unitone/template/archive-product"
 		},
 		{
 			"name": "template-archive-product-left-header-page-header-image",
-			"title": "WooCommerce product archive (Left header / Page header (Image))",
+			"title": "WooCommerce product archive: Template (Left header / Page header (Image))",
 			"area": "unitone/template/archive-product"
 		},
 		{
 			"name": "contents-archive-product",
-			"title": "WooCommerce product archive contents",
+			"title": "WooCommerce product archive: Contents",
 			"area": "unitone/contents/archive-product"
 		},
 		{
 			"name": "contents-archive-product-page-header-image",
-			"title": "WooCommerce product archive contents (Page header (Image))",
+			"title": "WooCommerce product archive: Contents (Page header (Image))",
 			"area": "unitone/contents/archive-product"
 		},
 		{
 			"name": "contents-archive-product-right-sidebar",
-			"title": "WooCommerce product archive contents (Right sidebar)",
+			"title": "WooCommerce product archive: Contents (Right sidebar)",
 			"area": "unitone/contents/archive-product"
 		},
 		{
 			"name": "contents-archive-product-right-sidebar-page-header-image",
-			"title": "WooCommerce product archive contents (Right sidebar / Page header (Image))",
+			"title": "WooCommerce product archive: Contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/archive-product"
 		},
 		{
 			"name": "page-header-archive-product",
-			"title": "WooCommerce product archive page header",
+			"title": "WooCommerce product archive: Page header",
 			"area": "unitone/page-header/archive-product"
 		},
 		{
 			"name": "page-header-archive-product-image",
-			"title": "WooCommerce product archive page header (Image)",
+			"title": "WooCommerce product archive: Page header (Image)",
 			"area": "unitone/page-header/archive-product"
 		},
 		{
 			"name": "template-archive",
-			"title": "Archive",
+			"title": "Archive: Template",
 			"area": "unitone/template/archive"
 		},
 		{
 			"name": "template-archive-page-header-image",
-			"title": "Archive (Page header (Image))",
+			"title": "Archive: Template (Page header (Image))",
 			"area": "unitone/template/archive"
 		},
 		{
 			"name": "template-archive-right-sidebar",
-			"title": "Archive (Right sidebar)",
+			"title": "Archive: Template (Right sidebar)",
 			"area": "unitone/template/archive"
 		},
 		{
 			"name": "template-archive-right-sidebar-page-header-image",
-			"title": "Archive (Right sidebar / Page header (Image))",
+			"title": "Archive: Template (Right sidebar / Page header (Image))",
 			"area": "unitone/template/archive"
 		},
 		{
 			"name": "template-archive-left-header",
-			"title": "Archive (Left header)",
+			"title": "Archive: Template (Left header)",
 			"area": "unitone/template/archive"
 		},
 		{
 			"name": "template-archive-left-header-page-header-image",
-			"title": "Archive (Left header / Page header (Image))",
+			"title": "Archive: Template (Left header / Page header (Image))",
 			"area": "unitone/template/archive"
 		},
 		{
 			"name": "contents-archive",
-			"title": "Archive contents",
+			"title": "Archive: Contents",
 			"area": "unitone/contents/archive"
 		},
 		{
 			"name": "contents-archive-page-header-image",
-			"title": "Archive contents (Page header (Image))",
+			"title": "Archive: Contents (Page header (Image))",
 			"area": "unitone/contents/archive"
 		},
 		{
 			"name": "contents-archive-right-sidebar",
-			"title": "Archive contents (Right sidebar)",
+			"title": "Archive: Contents (Right sidebar)",
 			"area": "unitone/contents/archive"
 		},
 		{
 			"name": "contents-archive-right-sidebar-page-header-image",
-			"title": "Archive contents (Right sidebar / Page header (Image))",
+			"title": "Archive: Contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/archive"
 		},
 		{
 			"name": "page-header-archive",
-			"title": "Archive page header",
+			"title": "Archive: Page header",
 			"area": "unitone/page-header/archive"
 		},
 		{
 			"name": "page-header-archive-image",
-			"title": "Archive page header (Image)",
+			"title": "Archive: Page header (Image)",
 			"area": "unitone/page-header/archive"
 		},
 		{
 			"name": "template-bbpress",
-			"title": "bbPress",
+			"title": "bbPress: Template",
 			"area": "unitone/template/bbpress"
 		},
 		{
 			"name": "template-bbpress-page-header-image",
-			"title": "bbPress (Page header (Image))",
+			"title": "bbPress: Template (Page header (Image))",
 			"area": "unitone/template/bbpress"
 		},
 		{
 			"name": "template-bbpress-right-sidebar",
-			"title": "bbPress (Right sidebar)",
+			"title": "bbPress: Template (Right sidebar)",
 			"area": "unitone/template/bbpress"
 		},
 		{
 			"name": "template-bbpress-right-sidebar-page-header-image",
-			"title": "bbPress (Right sidebar / Page header (Image))",
+			"title": "bbPress: Template (Right sidebar / Page header (Image))",
 			"area": "unitone/template/bbpress"
 		},
 		{
 			"name": "template-bbpress-left-header",
-			"title": "bbPress (Left header)",
+			"title": "bbPress: Template (Left header)",
 			"area": "unitone/template/bbpress"
 		},
 		{
 			"name": "template-bbpress-left-header-page-header-image",
-			"title": "bbPress (Left header / Page header (Image))",
+			"title": "bbPress: Template (Left header / Page header (Image))",
 			"area": "unitone/template/bbpress"
 		},
 		{
 			"name": "contents-bbpress",
-			"title": "bbPress contents",
+			"title": "bbPress: Contents",
 			"area": "unitone/contents/bbpress"
 		},
 		{
 			"name": "contents-bbpress-page-header-image",
-			"title": "bbPress contents (Page header (Image))",
+			"title": "bbPress: Contents (Page header (Image))",
 			"area": "unitone/contents/bbpress"
 		},
 		{
 			"name": "contents-bbpress-right-sidebar",
-			"title": "bbPress contents (Right sidebar)",
+			"title": "bbPress: Contents (Right sidebar)",
 			"area": "unitone/contents/bbpress"
 		},
 		{
 			"name": "contents-bbpress-right-sidebar-page-header-image",
-			"title": "bbPress contents (Right sidebar / Page header (Image))",
+			"title": "bbPress: Contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/bbpress"
 		},
 		{
 			"name": "page-header-bbpress",
-			"title": "bbPress page header",
+			"title": "bbPress: Page header",
 			"area": "unitone/page-header/bbpress"
 		},
 		{
 			"name": "page-header-bbpress-image",
-			"title": "bbPress page header (Image)",
+			"title": "bbPress: Page header (Image)",
 			"area": "unitone/page-header/bbpress"
 		},
 		{
 			"name": "template-home",
-			"title": "Home",
+			"title": "Home: Template",
 			"area": "unitone/template/home"
 		},
 		{
 			"name": "template-home-page-header-image",
-			"title": "Home (Page header (Image))",
+			"title": "Home: Template (Page header (Image))",
 			"area": "unitone/template/home"
 		},
 		{
 			"name": "template-home-right-sidebar",
-			"title": "Home (Right sidebar)",
+			"title": "Home: Template (Right sidebar)",
 			"area": "unitone/template/home"
 		},
 		{
 			"name": "template-home-right-sidebar-page-header-image",
-			"title": "Home (Right sidebar / Page header (Image))",
+			"title": "Home: Template (Right sidebar / Page header (Image))",
 			"area": "unitone/template/home"
 		},
 		{
 			"name": "template-home-left-header",
-			"title": "Home (Left header)",
+			"title": "Home: Template (Left header)",
 			"area": "unitone/template/home"
 		},
 		{
 			"name": "template-home-left-header-page-header-image",
-			"title": "Home (Left header / Page header (Image))",
+			"title": "Home: Template (Left header / Page header (Image))",
 			"area": "unitone/template/home"
 		},
 		{
 			"name": "contents-home",
-			"title": "Home contents",
+			"title": "Home: Contents",
 			"area": "unitone/contents/home"
 		},
 		{
 			"name": "contents-home-blank",
-			"title": "Home contents (Blank)",
+			"title": "Home: Contents (Blank)",
 			"area": "unitone/contents/home"
 		},
 		{
 			"name": "contents-home-page-header-image",
-			"title": "Home contents (Page header (Image))",
+			"title": "Home: Contents (Page header (Image))",
 			"area": "unitone/contents/home"
 		},
 		{
 			"name": "contents-home-right-sidebar",
-			"title": "Home contents (Right sidebar)",
+			"title": "Home: Contents (Right sidebar)",
 			"area": "unitone/contents/home"
 		},
 		{
 			"name": "contents-home-right-sidebar-page-header-image",
-			"title": "Home contents (Right sidebar / Page header (Image))",
+			"title": "Home: Contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/home"
 		},
 		{
 			"name": "page-header-home",
-			"title": "Home page header",
+			"title": "Home: Page header",
 			"area": "unitone/page-header/home"
 
 		},
 		{
 			"name": "page-header-home-image",
-			"title": "Home page header (Image)",
+			"title": "Home: Page header (Image)",
 			"area": "unitone/page-header/home"
 		},
 		{
 			"name": "template-page",
-			"title": "Page",
+			"title": "Page: Template",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "template-page-page-header-featured",
-			"title": "Page (Page header (Featured image))",
+			"title": "Page: Template (Page header (Featured image))",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "template-page-page-header-image",
-			"title": "Page (Page header (Image))",
+			"title": "Page: Template (Page header (Image))",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "template-page-header-footer",
-			"title": "Page (Header / Footer)",
+			"title": "Page: Template (Header / Footer)",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "template-page-page-header-slim",
-			"title": "Page (Page header (Slim))",
+			"title": "Page: Template (Page header (Slim))",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "template-page-right-sidebar",
-			"title": "Page (Right sidebar)",
+			"title": "Page: Template (Right sidebar)",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "template-page-right-sidebar-page-header-featured",
-			"title": "Page (Right sidebar / Page header (Featured image))",
+			"title": "Page: Template (Right sidebar / Page header (Featured image))",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "template-page-right-sidebar-page-header-image",
-			"title": "Page (Right sidebar / Page header (Image))",
+			"title": "Page: Template (Right sidebar / Page header (Image))",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "template-page-left-header",
-			"title": "Page (Left header)",
+			"title": "Page: Template (Left header)",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "template-page-left-header-page-header-featured",
-			"title": "Page (Left header / Page header (Featured image))",
+			"title": "Page: Template (Left header / Page header (Featured image))",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "template-page-left-header-page-header-image",
-			"title": "Page (Left header / Page header (Image))",
+			"title": "Page: Template (Left header / Page header (Image))",
 			"area": "unitone/template/page"
 		},
 		{
 			"name": "contents-page",
-			"title": "Page contents",
+			"title": "Page: Contents",
 			"area": "unitone/contents/page"
 		},
 		{
 			"name": "contents-page-page-header-featured",
-			"title": "Page contents (Page header (Featured image))",
+			"title": "Page: Contents (Page header (Featured image))",
 			"area": "unitone/contents/page"
 		},
 		{
 			"name": "contents-page-page-header-image",
-			"title": "Page contents (Page header (Image))",
+			"title": "Page: Contents (Page header (Image))",
 			"area": "unitone/contents/page"
 		},
 		{
 			"name": "contents-page-page-header-slim",
-			"title": "Page contents (Page header (Slim))",
+			"title": "Page: Contents (Page header (Slim))",
 			"area": "unitone/contents/page"
 		},
 		{
 			"name": "contents-page-right-sidebar",
-			"title": "Page contents (Right sidebar)",
+			"title": "Page: Contents (Right sidebar)",
 			"area": "unitone/contents/page"
 		},
 		{
 			"name": "contents-page-right-sidebar-page-header-featured",
-			"title": "Page contents (Right sidebar / Page header (Featured image))",
+			"title": "Page: Contents (Right sidebar / Page header (Featured image))",
 			"area": "unitone/contents/page"
 		},
 		{
 			"name": "contents-page-right-sidebar-page-header-image",
-			"title": "Page contents (Right sidebar / Page header (Image))",
+			"title": "Page: Contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/page"
 		},
 		{
 			"name": "contents-page-blank",
-			"title": "Page contents (Blank)",
+			"title": "Page: Contents (Blank)",
 			"area": "unitone/contents/page"
 		},
 		{
 			"name": "page-header-page",
-			"title": "Page header",
+			"title": "Page: Page header",
 			"area": "unitone/page-header/page"
 		},
 		{
 			"name": "page-header-page-featured",
-			"title": "Page header (Featured image)",
+			"title": "Page: Page header (Featured image)",
 			"area": "unitone/page-header/page"
 		},
 		{
 			"name": "page-header-page-image",
-			"title": "Page header (Image)",
+			"title": "Page: Page header (Image)",
 			"area": "unitone/page-header/page"
 		},
 		{
 			"name": "page-header-page-slim",
-			"title": "Page header (Slim)",
+			"title": "Page: Page header (Slim)",
 			"area": "unitone/page-header/page"
 		},
 		{
 			"name": "template-search",
-			"title": "Search",
+			"title": "Search: Template",
 			"area": "unitone/template/search"
 		},
 		{
 			"name": "template-search-page-header-image",
-			"title": "Search (Page header (Image))",
+			"title": "Search: Template (Page header (Image))",
 			"area": "unitone/template/search"
 		},
 		{
 			"name": "template-search-right-sidebar",
-			"title": "Search (Right sidebar)",
+			"title": "Search: Template (Right sidebar)",
 			"area": "unitone/template/search"
 		},
 		{
 			"name": "template-search-right-sidebar-page-header-image",
-			"title": "Search (Right sidebar / Page header (Image))",
+			"title": "Search: Template (Right sidebar / Page header (Image))",
 			"area": "unitone/template/search"
 		},
 		{
 			"name": "template-search-left-header",
-			"title": "Search (Left header)",
+			"title": "Search: Template (Left header)",
 			"area": "unitone/template/search"
 		},
 		{
 			"name": "template-search-left-header-page-header-image",
-			"title": "Search (Left header / Page header (Image))",
+			"title": "Search: Template (Left header / Page header (Image))",
 			"area": "unitone/template/search"
 		},
 		{
 			"name": "contents-search",
-			"title": "Search contents",
+			"title": "Search: Contents",
 			"area": "unitone/contents/search"
 		},
 		{
 			"name": "contents-search-page-header-image",
-			"title": "Search contents (Page header (Image))",
+			"title": "Search: Contents (Page header (Image))",
 			"area": "unitone/contents/search"
 		},
 		{
 			"name": "contents-search-right-sidebar",
-			"title": "Search contents (Right sidebar)",
+			"title": "Search: Contents (Right sidebar)",
 			"area": "unitone/contents/search"
 		},
 		{
 			"name": "contents-search-right-sidebar-page-header-image",
-			"title": "Search contents (Right sidebar / Page header (Image))",
+			"title": "Search: Contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/search"
 		},
 		{
 			"name": "page-header-search",
-			"title": "Search page header",
+			"title": "Search: Page header",
 			"area": "unitone/page-header/search"
 		},
 		{
 			"name": "page-header-search-image",
-			"title": "Search page header (Image)",
+			"title": "Search: Page header (Image)",
 			"area": "unitone/page-header/search"
 		},
 		{
 			"name": "template-single",
-			"title": "Single post",
+			"title": "Single post: Template",
 			"area": "unitone/template/single"
 		},
 		{
 			"name": "template-single-page-header-featured",
-			"title": "Single post (Page header (Featured image))",
+			"title": "Single post: Template (Page header (Featured image))",
 			"area": "unitone/template/single"
 		},
 		{
 			"name": "template-single-page-header-image",
-			"title": "Single post (Page header (Image))",
+			"title": "Single post: Template (Page header (Image))",
 			"area": "unitone/template/single"
 		},
 		{
 			"name": "template-single-right-sidebar",
-			"title": "Single post (Right sidebar)",
+			"title": "Single post: Template (Right sidebar)",
 			"area": "unitone/template/single"
 		},
 		{
 			"name": "template-single-right-sidebar-page-header-featured",
-			"title": "Single post (Right sidebar / Page header (Featured image))",
+			"title": "Single post: Template (Right sidebar / Page header (Featured image))",
 			"area": "unitone/template/single"
 		},
 		{
 			"name": "template-single-right-sidebar-page-header-image",
-			"title": "Single post (Right sidebar / Page header (Image))",
+			"title": "Single post: Template (Right sidebar / Page header (Image))",
 			"area": "unitone/template/single"
 		},
 		{
 			"name": "template-single-header-footer",
-			"title": "Single post (Header / Footer)",
+			"title": "Single post: Template (Header / Footer)",
 			"area": "unitone/template/single"
 		},
 		{
 			"name": "template-single-left-header",
-			"title": "Single post (Left header)",
+			"title": "Single post: Template (Left header)",
 			"area": "unitone/template/single"
 		},
 		{
 			"name": "template-single-left-header-page-header-featured",
-			"title": "Single post (Left header / Page header (Featured image))",
+			"title": "Single post: Template (Left header / Page header (Featured image))",
 			"area": "unitone/template/single"
 		},
 		{
 			"name": "template-single-left-header-page-header-image",
-			"title": "Single post (Left header / Page header (Image))",
+			"title": "Single post: Template (Left header / Page header (Image))",
 			"area": "unitone/template/single"
 		},
 		{
 			"name": "contents-single",
-			"title": "Single post contents",
+			"title": "Single post: Contents",
 			"area": "unitone/contents/single"
 		},
 		{
 			"name": "contents-single-blank",
-			"title": "Single post contents (Blank)",
+			"title": "Single post: Contents (Blank)",
 			"area": "unitone/contents/single"
 		},
 		{
 			"name": "contents-single-page-header-featured",
-			"title": "Single post contents (Page header (Featured image))",
+			"title": "Single post: Contents (Page header (Featured image))",
 			"area": "unitone/contents/single"
 		},
 		{
 			"name": "contents-single-page-header-image",
-			"title": "Single post contents (Page header (Image))",
+			"title": "Single post: Contents (Page header (Image))",
 			"area": "unitone/contents/single"
 		},
 		{
 			"name": "contents-single-right-sidebar",
-			"title": "Single post contents (Right sidebar)",
+			"title": "Single post: Contents (Right sidebar)",
 			"area": "unitone/contents/single"
 		},
 		{
 			"name": "contents-single-right-sidebar-page-header-featured",
-			"title": "Single post contents (Right sidebar / Page header (Featured image))",
+			"title": "Single post: Contents (Right sidebar / Page header (Featured image))",
 			"area": "unitone/contents/single"
 		},
 		{
 			"name": "contents-single-right-sidebar-page-header-image",
-			"title": "Single post contents (Right sidebar / Page header (Image))",
+			"title": "Single post: Contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/single"
 		},
 		{
 			"name": "page-header-single",
-			"title": "Single post page header",
+			"title": "Single post: Page header",
 			"area": "unitone/page-header/single"
 		},
 		{
 			"name": "page-header-single-featured",
-			"title": "Single post page header (Featured image)",
+			"title": "Single post: Page header (Featured image)",
 			"area": "unitone/page-header/single"
 		},
 		{
 			"name": "page-header-single-image",
-			"title": "Single post page header (Image)",
+			"title": "Single post: Page header (Image)",
 			"area": "unitone/page-header/single"
 		},
 		{
 			"name": "page-header-single-wide",
-			"title": "Single post page header (Wide)",
+			"title": "Single post: Page header (Wide)",
 			"area": "unitone/page-header/single"
 		},
 		{
 			"name": "template-single-product",
-			"title": "WooCommerce single product",
+			"title": "WooCommerce single product: Template",
 			"area": "unitone/template/product"
 		},
 		{
 			"name": "template-single-product-page-header-image",
-			"title": "WooCommerce single product (Page header (Image))",
+			"title": "WooCommerce single product: Template (Page header (Image))",
 			"area": "unitone/template/product"
 		},
 		{
 			"name": "template-single-product-right-sidebar",
-			"title": "WooCommerce single product (Right sidebar)",
+			"title": "WooCommerce single product: Template (Right sidebar)",
 			"area": "unitone/template/product"
 		},
 		{
 			"name": "template-single-product-right-sidebar-page-header-image",
-			"title": "WooCommerce single product (Right sidebar / Page header (Image))",
+			"title": "WooCommerce single product: Template (Right sidebar / Page header (Image))",
 			"area": "unitone/template/product"
 		},
 		{
 			"name": "template-single-product-left-header",
-			"title": "WooCommerce single product (Left header)",
+			"title": "WooCommerce single product: Template (Left header)",
 			"area": "unitone/template/product"
 		},
 		{
 			"name": "template-single-product-left-header-page-header-image",
-			"title": "WooCommerce single product (Left header / Page header (Image))",
+			"title": "WooCommerce single product: Template (Left header / Page header (Image))",
 			"area": "unitone/template/product"
 		},
 		{
 			"name": "contents-single-product",
-			"title": "WooCommerce single product contents",
+			"title": "WooCommerce single product: Contents",
 			"area": "unitone/contents/product"
 		},
 		{
 			"name": "contents-single-product-page-header-image",
-			"title": "WooCommerce single product contents (Page header (Image))",
+			"title": "WooCommerce single product: Contents (Page header (Image))",
 			"area": "unitone/contents/product"
 		},
 		{
 			"name": "contents-single-product-right-sidebar",
-			"title": "WooCommerce single product contents (Right sidebar)",
+			"title": "WooCommerce single product: Contents (Right sidebar)",
 			"area": "unitone/contents/product"
 		},
 		{
 			"name": "contents-single-product-right-sidebar-page-header-image",
-			"title": "WooCommerce single product contents (Right sidebar / Page header (Image))",
+			"title": "WooCommerce single product: Contents (Right sidebar / Page header (Image))",
 			"area": "unitone/contents/product"
 		},
 		{
 			"name": "page-header-single-product",
-			"title": "WooCommerce single product page header",
+			"title": "WooCommerce single product: Page header",
 			"area": "unitone/page-header/product"
 		},
 		{
 			"name": "page-header-single-product-image",
-			"title": "WooCommerce single product page header (Image)",
+			"title": "WooCommerce single product: Page header (Image)",
 			"area": "unitone/page-header/product"
 		}
 	]

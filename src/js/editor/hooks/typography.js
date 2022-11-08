@@ -41,7 +41,7 @@ export function TypographyPanel( props ) {
 							hasValue={ () => hasFluidTypographyValue( props ) }
 							label={ __( 'Fluid typography', 'unitone' ) }
 							onDeselect={ () => resetFluidTypography( props ) }
-							isShownByDefault={ false }
+							isShownByDefault={ true }
 							resetAllFilter={ createResetAllFilter(
 								'fluidTypograpy'
 							) }

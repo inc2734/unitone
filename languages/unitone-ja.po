@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-11-08T01:02:29+00:00\n"
-"PO-Revision-Date: 2022-11-08 11:03+0900\n"
+"POT-Creation-Date: 2022-11-08T05:09:56+00:00\n"
+"PO-Revision-Date: 2022-11-08 14:10+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -782,6 +782,10 @@ msgstr "間隔"
 #: dist/js/editor/editor.js:1
 msgid "Using negative margin"
 msgstr "ネガティブマージンを使用する"
+
+#: dist/js/editor/editor.js:1
+msgid "Overflow"
+msgstr "オーバーフロー"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify content"

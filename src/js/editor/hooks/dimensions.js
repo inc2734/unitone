@@ -42,6 +42,15 @@ import {
 	editNegativeProp,
 } from './negative';
 
+import {
+	useIsOverflowDisabled,
+	hasOverflowValue,
+	resetOverflow,
+	OverflowEdit,
+	saveOverflowProp,
+	editOverflowProp,
+} from './overflow';
+
 export {
 	savePaddingProp,
 	editPaddingProp,
@@ -51,6 +60,8 @@ export {
 	editGapProp,
 	saveNegativeProp,
 	editNegativeProp,
+	saveOverflowProp,
+	editOverflowProp,
 };
 
 export function DimensionsPanel( props ) {
@@ -58,12 +69,14 @@ export function DimensionsPanel( props ) {
 	const isGuttersDisabled = useIsGuttersDisabled( props );
 	const isGapDisabled = useIsGapDisabled( props );
 	const isNegativeDisabled = useIsNegativeDisabled( props );
+	const isOverflowDisabled = useIsOverflowDisabled( props );
 
 	if (
 		isPaddingDisabled &&
 		isGuttersDisabled &&
 		isGapDisabled &&
-		isNegativeDisabled
+		isNegativeDisabled &&
+		isOverflowDisabled
 	) {
 		return null;
 	}
@@ -128,6 +141,19 @@ export function DimensionsPanel( props ) {
 						panelId={ props.clientId }
 					>
 						<NegativeEdit { ...props } />
+					</ToolsPanelItem>
+				) }
+
+				{ ! isOverflowDisabled && (
+					<ToolsPanelItem
+						hasValue={ () => hasOverflowValue( props ) }
+						label={ __( 'Overflow', 'unitone' ) }
+						onDeselect={ () => resetOverflow( props ) }
+						resetAllFilter={ createResetAllFilter( 'overflow' ) }
+						isShownByDefault={ true }
+						panelId={ props.clientId }
+					>
+						<OverflowEdit { ...props } />
 					</ToolsPanelItem>
 				) }
 			</InspectorControls>

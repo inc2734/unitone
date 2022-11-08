@@ -70,7 +70,8 @@
 		},
 		"unitone": {
 			"padding": true,
-			"position": true
+			"position": true,
+			"overflow": true
 		}
 	},
 	"category": "unitone/layout",

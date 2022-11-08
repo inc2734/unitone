@@ -15,6 +15,8 @@ import {
 	editGapProp,
 	saveNegativeProp,
 	editNegativeProp,
+	saveOverflowProp,
+	editOverflowProp,
 } from './dimensions';
 
 import {
@@ -69,6 +71,7 @@ function addSaveProps( extraProps, blockType, attributes ) {
 	extraProps = saveMinHeightProp( extraProps, blockType, attributes );
 	extraProps = saveAutoRepeatProp( extraProps, blockType, attributes );
 	extraProps = saveNegativeProp( extraProps, blockType, attributes );
+	extraProps = saveOverflowProp( extraProps, blockType, attributes );
 	extraProps = savePaddingProp( extraProps, blockType, attributes );
 	extraProps = savePositionProp( extraProps, blockType, attributes );
 	return extraProps;
@@ -88,6 +91,7 @@ function addEditProps( settings ) {
 	settings = editMinHeightProp( settings );
 	settings = editAutoRepeatProp( settings );
 	settings = editNegativeProp( settings );
+	settings = editOverflowProp( settings );
 	settings = editPaddingProp( settings );
 	settings = editPositionProp( settings );
 	return settings;

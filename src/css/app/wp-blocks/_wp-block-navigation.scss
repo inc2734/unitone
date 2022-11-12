@@ -9,6 +9,17 @@
 				min-width: 240px;
 			}
 		}
+
+		&:not(.has-background) {
+			.wp-block-navigation__responsive-container {
+
+				// Drawer
+				&.is-menu-open {
+					background-color: var(--wp--preset--color--unitone-background);
+					color: var(--wp--preset--color--unitone-text);
+				}
+			}
+		}
 	}
 
 	.wp-block-navigation__responsive-container {

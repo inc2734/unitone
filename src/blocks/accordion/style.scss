@@ -9,7 +9,7 @@
 
 	&.is-style-box,
 	&.is-style-panel {
-		--unitone--padding: var(--unitone--s1);
+		--unitone--padding: var(--unitone--global--text-gap);
 
 		background-color: var(--wp--preset--color--white);
 		color: var(--unitone--color--text);
@@ -45,7 +45,7 @@
 
 	&__summary-content[data-unitone-layout~="with-sidebar"],
 	&__content[data-unitone-layout~="with-sidebar"] {
-		--unitone--gap: var(--unitone--s-1);
+		--unitone--gap: var(--unitone--global--text-gap);
 	}
 
 	&__icon {

@@ -8,8 +8,8 @@
 ?>
 <!-- wp:unitone/decorator {"align":"full","fontSize":"unitone-xs"} -->
 <div data-unitone-layout="decorator" class="alignfull has-unitone-xs-font-size">
-	<!-- wp:unitone/gutters {"unitone":{"padding":"2"}} -->
-	<div data-unitone-layout="gutters -padding:2">
+	<!-- wp:unitone/gutters -->
+	<div data-unitone-layout="gutters">
 		<!-- wp:unitone/container -->
 		<div data-unitone-layout="container">
 			<!-- wp:unitone/stack -->
@@ -21,12 +21,12 @@
 				</div>
 				<!-- /wp:unitone/stack -->
 
-				<!-- wp:unitone/with-sidebar {"contentMinWidth":"calc(var(--unitone--measure) / 2)","sidebar":"left","sidebarWidth":"var(--unitone--pg7)","unitone":{"gap":2}} -->
-				<div data-unitone-layout="with-sidebar -sidebar:left -gap:2" style="--unitone--content-min-width:calc(var(--unitone--measure) / 2);--unitone--sidebar-width:var(--unitone--pg7)">
+				<!-- wp:unitone/with-sidebar {"contentMinWidth":"calc(var(--unitone--measure) / 2)","sidebar":"left","sidebarWidth":"var(--unitone--pg7)"} -->
+				<div data-unitone-layout="with-sidebar -sidebar:left" style="--unitone--content-min-width:calc(var(--unitone--measure) / 2);--unitone--sidebar-width:var(--unitone--pg7)">
 					<!-- wp:unitone/with-sidebar-content -->
 					<div data-unitone-layout="with-sidebar__content">
-						<!-- wp:unitone/responsive-grid {"columnMinWidth":"150px","unitone":{"gap":2}} -->
-						<div data-unitone-layout="responsive-grid -gap:2" style="--unitone--column-min-width:150px">
+						<!-- wp:unitone/responsive-grid {"columnMinWidth":"150px"} -->
+						<div data-unitone-layout="responsive-grid" style="--unitone--column-min-width:150px">
 							<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","justifyContent":"left","orientation":"vertical"}} -->
 								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Home', 'unitone' ); ?>","url":"#"} /-->
 								<!-- wp:navigation-link {"label":"<?php esc_html_e( 'About', 'unitone' ); ?>","url":"#"} /-->

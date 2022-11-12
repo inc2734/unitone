@@ -1,6 +1,6 @@
 @mixin include() {
 	.wp-block-navigation {
-		--wp--style--block-gap: var(--unitone--s2);
+		--wp--style--block-gap: var(--unitone--global--gap);
 
 		.has-child {
 			&:not(.open-on-click):hover > .wp-block-navigation__submenu-container,

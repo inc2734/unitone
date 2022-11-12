@@ -7,11 +7,9 @@
 		position: relative;
 	}
 
-	:root {
-		--unitone--container-max-width: 1180px;
-	}
-
 	body {
+		overflow-x: hidden;
+
 		// In WordPress 6.1, the value set in styles.spacing.blockGap is output as is,
 		// so you need to specify it again here.
 		.is-layout-flex.is-layout-flex {

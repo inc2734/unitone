@@ -4,13 +4,13 @@
 @import '../../../node_modules/swiper/modules/pagination/pagination.scss';
 
 .unitone-slider {
-	--unitone--gap: var(--unitone--s1);
+	--unitone--gap: var(--unitone--global--gap);
 	--unitone--slide-width: calc(50% - var(--unitone--gap) / 2);
 	--swiper-navigation-size: .5em;
 	--swiper-navigation-color: var(--wp--preset--color--unitone-accent);
 	--swiper-pagination-color: var(--wp--preset--color--unitone-accent);
 	--swiper-pagination-bullet-inactive-color: var(--wp--preset--color--unitone-dark-gray);
-	--swiper-pagination-bullet-horizontal-gap: var(--unitone--s-2);
+	--swiper-pagination-bullet-horizontal-gap: var(--unitone--global--text-gap);
 
 	position: relative;
 
@@ -46,11 +46,11 @@
 	.swiper-buttons {
 		display: flex;
 		flex-wrap: nowrap;
-		gap: var(--unitone--s-1);
+		gap: var(--unitone--global--text-gap);
 		justify-content: center;
 
 		&--alignment\:top {
-			margin-bottom: var(--unitone--s-1);
+			margin-bottom: var(--unitone--global--text-gap);
 		}
 
 		&--alignment\:center {
@@ -63,7 +63,7 @@
 		}
 
 		&--alignment\:bottom {
-			margin-top: var(--unitone--s-1);
+			margin-top: var(--unitone--global--text-gap);
 		}
 
 		&--justification\:left {
@@ -98,11 +98,11 @@
 		justify-content: center;
 
 		&--alignment\:top {
-			margin-bottom: var(--unitone--s-1);
+			margin-bottom: var(--unitone--global--text-gap);
 		}
 
 		&--alignment\:bottom {
-			margin-top: var(--unitone--s-1);
+			margin-top: var(--unitone--global--text-gap);
 		}
 
 		&--justification\:left {

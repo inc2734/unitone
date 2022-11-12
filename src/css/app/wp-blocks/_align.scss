@@ -12,11 +12,11 @@
 	}
 
 	.alignright.alignright.alignright {
-		margin: 0 var(--unitone--padding) var(--unitone--s1) var(--unitone--s1);
+		margin: 0 var(--unitone--global--gutters) var(--unitone--global--gap) var(--unitone--global--gap);
 	}
 
 	.alignleft.alignleft.alignleft {
-		margin: 0 var(--unitone--s1) var(--unitone--s1) var(--unitone--padding);
+		margin: 0 var(--unitone--global--gap) var(--unitone--global--gap) var(--unitone--global--gutters);
 	}
 
 	* > .alignright:first-child + *,

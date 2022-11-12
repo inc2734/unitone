@@ -8,16 +8,12 @@
 		padding: 0;
 
 		&:where(:not(.is-style-plain)) {
-			padding-left: var(--unitone--s1);
+			padding-left: var(--unitone--global--text-gap);
 		}
 
 		cite,
 		footer {
 			font-size: var(--wp--preset--font-size--unitone-s);
-		}
-
-		> * {
-			--unitone--gap: var(--unitone--s-1);
 		}
 	}
 }

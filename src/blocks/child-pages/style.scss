@@ -3,7 +3,7 @@
 	&.is-style-panel,
 	&.is-style-rich-media {
 		[data-unitone-layout~="responsive-grid"] {
-			--unitone--column-min-width: min(max(375px, (33.33333% - var(--unitone--gap) * 2 / 3)), 100%);
+			--unitone--column-min-width: min(max(375px, (100% - var(--unitone--gap) * 2) / 3), 100%);
 		}
 	}
 

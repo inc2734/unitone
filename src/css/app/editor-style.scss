@@ -29,10 +29,10 @@
 
 	.edit-post-visual-editor__post-title-wrapper {
 		margin-top: 0;
-		margin-bottom: var(--unitone--s2);
+		margin-bottom: var(--unitone--global--gap);
 		border-bottom: 1px solid #e0e0e0;
-		padding-top: var(--unitone--s1);
-		padding-bottom: var(--unitone--s1);
+		padding-top: var(--unitone--global--text-gap);
+		padding-bottom: var(--unitone--global--text-gap);
 
 		> * {
 			max-width: var(--wp--custom--container-max-width) !important;

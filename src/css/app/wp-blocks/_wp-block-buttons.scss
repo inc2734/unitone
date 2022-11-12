@@ -10,7 +10,7 @@
 	.wp-block-button__link,
 	.wp-element-button {
 		font-size: inherit;
-		padding: var(--unitone--padding) var(--unitone--s1);
+		padding: var(--unitone--padding) var(--unitone--global--text-gap);
 	}
 
 	.wp-block-button.is-style-outline > .wp-block-button__link,

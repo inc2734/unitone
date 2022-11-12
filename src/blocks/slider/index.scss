@@ -4,7 +4,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--unitone--s-2);
-	margin-top: var(--unitone--s1) !important;
+	margin-top: var(--unitone--global--text-gap) !important;
 
 	> * {
 		flex: 0 1 auto;

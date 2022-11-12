@@ -3,11 +3,11 @@
 	.wp-block-preformatted.has-background,
 	.wp-block-template-part.has-background,
 	.wp-block-group.has-background {
-		padding: var(--unitone--s1);
+		padding: var(--unitone--global--text-gap);
 	}
 
 	ul.has-background,
 	ol.has-background {
-		padding: var(--unitone--s1);
+		padding: var(--unitone--global--text-gap);
 	}
 }

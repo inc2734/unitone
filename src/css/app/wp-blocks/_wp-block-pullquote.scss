@@ -2,17 +2,13 @@
 
 @mixin include() {
 	.wp-block-pullquote {
-		padding: var(--unitone--s1) 0;
+		padding: var(--unitone--global--text-gap) 0;
 		max-width: var(--unitone--max-width);
 		width: auto;
 
 		blockquote {
 			@include text.abstract-text();
 			--unitone--max-width: inherit;
-
-			> * {
-				--unitone--gap: var(--unitone--s-1);
-			}
 		}
 	}
 }

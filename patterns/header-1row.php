@@ -6,8 +6,8 @@
  * Block Types: core/template-part/header
  */
 ?>
-<!-- wp:unitone/container -->
-<div data-unitone-layout="container">
+<!-- wp:unitone/container {"unitone":{"maxWidth":"100%"}} -->
+<div data-unitone-layout="container" style="--unitone--max-width:100%">
 	<!-- wp:unitone/gutters {"unitone":{"padding":"-1"}} -->
 	<div data-unitone-layout="gutters -padding:-1">
 		<!-- wp:unitone/both-sides {"unitone":{"alignItems":"center","gap":-1}} -->

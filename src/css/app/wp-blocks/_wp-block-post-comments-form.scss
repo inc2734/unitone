@@ -1,10 +1,10 @@
 @mixin include() {
 	.wp-block-post-comments-form {
-		gap: var(--unitone--s-1);
+		gap: var(--unitone--global--text-gap);
 	}
 
 	.comment-form {
-		gap: var(--unitone--s-1);
+		gap: var(--unitone--global--text-gap);
 
 		> [class*="comment-form-"] {
 			display: flex;

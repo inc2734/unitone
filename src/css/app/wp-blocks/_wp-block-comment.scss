@@ -13,7 +13,7 @@
 	.wp-block-comment-template > li,
 	.wp-block-comment-template > li > ol,
 	.wp-block-comment-template > li > ol > li {
-		gap: var(--unitone--s1);
+		gap: var(--unitone--global--text-gap);
 	}
 
 	.wp-block-comment-template {
@@ -23,7 +23,7 @@
 		}
 
 		ol {
-			padding-left: var(--unitone--s1);
+			padding-left: var(--unitone--global--text-gap);
 		}
 	}
 

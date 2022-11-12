@@ -77,7 +77,7 @@
 
 	[data-unitone-layout~="text"] {
 		&[class*="wp-container-"] > *, // @todo For WordPress 6.0
-		&.is-layout-constrained > * {
+		&.is-layout-constrained.is-layout-constrained > * {
 			max-width: min(100%,var(--unitone--max-width));
 		}
 

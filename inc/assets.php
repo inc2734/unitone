@@ -69,7 +69,6 @@ function unitone_enqueue_block_editor_assets() {
 		$css
 	);
 	$css = str_replace( '}:where(.editor-styles-wrapper)', '}html :where(.editor-styles-wrapper)', $css );
-	$css = str_replace( '.editor-styles-wrapper [data-unitone-layout~=', '[data-unitone-layout~=', $css );
 	wp_add_inline_style(
 		'unitone',
 		$css

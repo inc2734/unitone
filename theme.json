@@ -187,6 +187,17 @@
 			"button": {
 				"color": {
 					"background": "var(--wp--preset--color--unitone-accent)"
+				},
+				"border": {
+					"radius": "var(--unitone--global--border-radius)"
+				},
+				"spacing": {
+					"padding": {
+						"top": "calc(var(--unitone--padding) / 3)",
+						"right": "var(--unitone--padding)",
+						"bottom": "calc(var(--unitone--padding) / 3)",
+						"left": "var(--unitone--padding)"
+					}
 				}
 			},
 			"link": {
@@ -221,6 +232,12 @@
 			"core/social-links": {
 				"typography": {
 					"fontSize": "inherit"
+				}
+			},
+			"core/pullquote": {
+				"typography": {
+					"fontSize": "inherit",
+					"lineHeight": "inherit"
 				}
 			}
 		},

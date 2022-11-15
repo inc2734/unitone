@@ -10,5 +10,10 @@
 			@include text.abstract-text();
 			--unitone--max-width: inherit;
 		}
+
+		cite,
+		footer {
+			font-size: var(--wp--preset--font-size--unitone-s);
+		}
 	}
 }

@@ -44,6 +44,12 @@
 		margin-left: 0;
 	}
 
+	[data-type="core/image"] .components-resizable-box__container {
+		max-width: 100% !important;
+		max-height: none !important;
+		height: auto !important;
+	}
+
 	[data-unitone-layout~="stack"],
 	[data-unitone-layout~="center"] {
 		> .block-list-appender:first-child {

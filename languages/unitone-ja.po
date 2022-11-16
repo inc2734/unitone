@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-11-08T05:09:56+00:00\n"
-"PO-Revision-Date: 2022-11-08 14:10+0900\n"
+"POT-Creation-Date: 2022-11-16T06:07:15+00:00\n"
+"PO-Revision-Date: 2022-11-16 15:09+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1176,6 +1176,11 @@ msgctxt "block description"
 msgid "This block is used to assemble components with sidebars."
 msgstr "サイドバー付きのコンポーネントを組み立てます。"
 
+#: styles/asia.json
+msgctxt "Style variation name"
+msgid "Asia"
+msgstr "Asia"
+
 #: styles/asia.json styles/evening.json styles/grasslands.json
 #: styles/ice-lake.json styles/refined.json styles/soft-light.json theme.json
 msgctxt "Gradient name"
@@ -1241,6 +1246,36 @@ msgstr "グレー"
 msgctxt "Color name"
 msgid "Dark gray"
 msgstr "ダークグレー"
+
+#: styles/dark.json
+msgctxt "Style variation name"
+msgid "Dark"
+msgstr "Dark"
+
+#: styles/evening.json
+msgctxt "Style variation name"
+msgid "Evening"
+msgstr "Evening"
+
+#: styles/grasslands.json
+msgctxt "Style variation name"
+msgid "Grasslands"
+msgstr "Grasslands"
+
+#: styles/ice-lake.json
+msgctxt "Style variation name"
+msgid "Ice lake"
+msgstr "Ice lake"
+
+#: styles/refined.json
+msgctxt "Style variation name"
+msgid "Refined"
+msgstr "Refined"
+
+#: styles/soft-light.json
+msgctxt "Style variation name"
+msgid "Soft light"
+msgstr "Soft light"
 
 #: theme.json
 msgctxt "Font size name"

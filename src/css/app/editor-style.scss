@@ -95,8 +95,7 @@
 
 	[data-unitone-layout~="layers"] {
 		> .block-list-appender {
-			align-self: end;
-			justify-self: end;
+			position: absolute;
 		}
 	}
 

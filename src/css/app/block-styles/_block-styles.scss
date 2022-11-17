@@ -1,8 +1,10 @@
+@use 'wp-block-image';
 @use 'wp-block-navigation';
 @use 'wp-block-post-terms';
 @use 'wp-block-query';
 
 @mixin include() {
+	@include wp-block-image.include();
 	@include wp-block-navigation.include();
 	@include wp-block-post-terms.include();
 	@include wp-block-query.include();

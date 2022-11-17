@@ -45,6 +45,14 @@ function unitone_register_block_styles() {
 			'label' => __( 'unitone', 'unitone' ),
 		)
 	);
+
+	register_block_style(
+		'core/image',
+		array(
+			'name'  => 'cover',
+			'label' => __( 'Cover', 'unitone' ),
+		)
+	);
 }
 add_action( 'init', 'unitone_register_block_styles', 9 );
 

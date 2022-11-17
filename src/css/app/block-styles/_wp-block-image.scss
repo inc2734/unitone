@@ -1,0 +1,24 @@
+@mixin include() {
+	.wp-block-image.is-style-cover {
+		height: 100%;
+		width: 100%;
+
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+
+		figcaption {
+			display: none;
+		}
+
+		.components-resizable-box__container {
+			height: 100% !important;
+			width: 100% !important;
+			max-height: 100% !important;
+			max-width: 100% !important;
+			vertical-align: bottom;
+		}
+	}
+}

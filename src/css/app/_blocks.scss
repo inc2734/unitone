@@ -85,4 +85,13 @@
 	[data-unitone-layout~="stack"] {
 		--unitone--divider-color:var(--wp--preset--color--unitone-gray);
 	}
+
+	[data-unitone-layout~="with-sidebar__content"] {
+		display: flex;
+		flex-direction: column;
+
+		> * {
+			flex-grow: 1;
+		}
+	}
 }

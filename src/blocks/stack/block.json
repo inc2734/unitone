@@ -8,6 +8,10 @@
 	"attributes": {
 		"negative": {
 			"type": "boolean"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
 	"supports": {

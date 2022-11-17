@@ -5,6 +5,12 @@
 	"name": "unitone/gutters",
 	"title": "Gutters",
 	"description": "A block for separating content with top and bottom padding.",
+	"attributes": {
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-11-16T06:07:15+00:00\n"
-"PO-Revision-Date: 2022-11-16 15:09+0900\n"
+"POT-Creation-Date: 2022-11-19T13:08:45+00:00\n"
+"PO-Revision-Date: 2022-11-19 22:09+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -137,6 +137,10 @@ msgstr "ブロックリンク（アンダーライン）"
 #: inc/block-styles.php:29 inc/block-styles.php:37
 msgid "Block link (Bordered)"
 msgstr "ブロックリンク（ボーダー）"
+
+#: inc/block-styles.php:53 dist/blocks/layers/index.js:1
+msgid "Cover"
+msgstr "カバー"
 
 #: inc/template-part-areas.php:20
 msgid "Single post"
@@ -383,6 +387,11 @@ msgctxt "Pattern title"
 msgid "full width page"
 msgstr "全幅ページ"
 
+#: patterns/pages-2.php
+msgctxt "Pattern title"
+msgid "full width page for blank page"
+msgstr "空ページ用全幅ページ"
+
 #: patterns/query-1.php
 msgctxt "Pattern title"
 msgid "Query (Simple / Block link)"
@@ -593,10 +602,6 @@ msgstr "グリッド列の中におけるグリッドアイテムの寸法と位
 #: dist/blocks/layer/index.js:1
 msgid "A grid item's size and location within the grid row"
 msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
-
-#: dist/blocks/layers/index.js:1
-msgid "Cover"
-msgstr "カバー"
 
 #: dist/blocks/layers/index.js:1
 msgid "Background image"
@@ -1414,6 +1419,11 @@ msgstr "固定ページ（左ヘッダー / ページヘッダー（画像））
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Page (Blank)"
+msgstr "固定ページ（空）"
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Single post (Page header (Featured image))"
 msgstr "個別投稿（ページヘッダー（アイキャッチ画像））"
 
@@ -1892,6 +1902,11 @@ msgstr ""
 msgctxt "Template part name"
 msgid "Page: Template (Left header / Page header (Image))"
 msgstr "固定ページ：テンプレート（左ヘッダー / ページヘッダー（画像））"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page: Template (Blank)"
+msgstr "固定ページ：テンプレート（空）"
 
 #: theme.json
 msgctxt "Template part name"

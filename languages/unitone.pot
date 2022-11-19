@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 4.0.1\n"
+"Project-Id-Version: unitone 4.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-11-16T06:07:15+00:00\n"
+"POT-Creation-Date: 2022-11-19T13:08:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -138,6 +138,11 @@ msgstr ""
 #: inc/block-styles.php:29
 #: inc/block-styles.php:37
 msgid "Block link (Bordered)"
+msgstr ""
+
+#: inc/block-styles.php:53
+#: dist/blocks/layers/index.js:1
+msgid "Cover"
 msgstr ""
 
 #: inc/template-part-areas.php:20
@@ -430,6 +435,11 @@ msgctxt "Pattern title"
 msgid "full width page"
 msgstr ""
 
+#: patterns/pages-2.php
+msgctxt "Pattern title"
+msgid "full width page for blank page"
+msgstr ""
+
 #: patterns/query-1.php
 msgctxt "Pattern title"
 msgid "Query (Simple / Block link)"
@@ -651,10 +661,6 @@ msgstr ""
 
 #: dist/blocks/layer/index.js:1
 msgid "A grid item's size and location within the grid row"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Cover"
 msgstr ""
 
 #: dist/blocks/layers/index.js:1
@@ -1545,6 +1551,11 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Page (Blank)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Single post (Page header (Featured image))"
 msgstr ""
 
@@ -2011,6 +2022,11 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "Page: Template (Left header / Page header (Image))"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Page: Template (Blank)"
 msgstr ""
 
 #: theme.json

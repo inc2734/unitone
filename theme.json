@@ -317,6 +317,13 @@
 			]
 		},
 		{
+			"name": "page-blank",
+			"title": "Page (Blank)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
 			"name": "single-page-header-featured",
 			"title": "Single post (Page header (Featured image))",
 			"postTypes": [
@@ -819,6 +826,11 @@
 		{
 			"name": "template-page-left-header-page-header-image",
 			"title": "Page: Template (Left header / Page header (Image))",
+			"area": "unitone/template/page"
+		},
+		{
+			"name": "template-page-blank",
+			"title": "Page: Template (Blank)",
 			"area": "unitone/template/page"
 		},
 		{

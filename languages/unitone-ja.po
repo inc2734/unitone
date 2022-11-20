@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-11-19T13:08:45+00:00\n"
-"PO-Revision-Date: 2022-11-19 22:09+0900\n"
+"POT-Creation-Date: 2022-11-20T13:14:26+00:00\n"
+"PO-Revision-Date: 2022-11-20 22:14+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -835,6 +835,10 @@ msgstr "自動反復"
 #: dist/js/editor/editor.js:1
 msgid "Fluid typography"
 msgstr "流体タイポグラフィ"
+
+#: dist/js/editor/editor.js:1
+msgid "Half leading"
+msgstr "ハーフリーディング"
 
 #: dist/js/editor/editor.js:1
 msgid "Stripe"

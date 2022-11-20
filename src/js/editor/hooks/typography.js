@@ -15,12 +15,27 @@ import {
 	editFluidTypographyProp,
 } from './fluid-typography';
 
-export { saveFluidTypographyProp, editFluidTypographyProp };
+import {
+	useIsHalfLeadingDisabled,
+	hasHalfLeadingValue,
+	resetHalfLeading,
+	HalfLeadingEdit,
+	saveHalfLeadingProp,
+	editHalfLeadingProp,
+} from './half-leading';
+
+export {
+	saveFluidTypographyProp,
+	editFluidTypographyProp,
+	saveHalfLeadingProp,
+	editHalfLeadingProp,
+};
 
 export function TypographyPanel( props ) {
 	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( props );
+	const isHalfLeadingDisabled = useIsHalfLeadingDisabled( props );
 
-	if ( isFluidTypographyDisabled ) {
+	if ( isFluidTypographyDisabled && isHalfLeadingDisabled ) {
 		return null;
 	}
 
@@ -34,24 +49,35 @@ export function TypographyPanel( props ) {
 
 	return (
 		<>
-			{ ! isFluidTypographyDisabled && (
-				<InspectorControls __experimentalGroup="typography">
-					{ ! isFluidTypographyDisabled && (
-						<ToolsPanelItem
-							hasValue={ () => hasFluidTypographyValue( props ) }
-							label={ __( 'Fluid typography', 'unitone' ) }
-							onDeselect={ () => resetFluidTypography( props ) }
-							isShownByDefault={ true }
-							resetAllFilter={ createResetAllFilter(
-								'fluidTypograpy'
-							) }
-							panelId={ props.clientId }
-						>
-							<FluidTypographyEdit { ...props } />
-						</ToolsPanelItem>
-					) }
-				</InspectorControls>
-			) }
+			<InspectorControls __experimentalGroup="typography">
+				{ ! isFluidTypographyDisabled && (
+					<ToolsPanelItem
+						hasValue={ () => hasFluidTypographyValue( props ) }
+						label={ __( 'Fluid typography', 'unitone' ) }
+						onDeselect={ () => resetFluidTypography( props ) }
+						isShownByDefault={ true }
+						resetAllFilter={ createResetAllFilter(
+							'fluidTypograpy'
+						) }
+						panelId={ props.clientId }
+					>
+						<FluidTypographyEdit { ...props } />
+					</ToolsPanelItem>
+				) }
+
+				{ ! isHalfLeadingDisabled && (
+					<ToolsPanelItem
+						hasValue={ () => hasHalfLeadingValue( props ) }
+						label={ __( 'Half leading', 'unitone' ) }
+						onDeselect={ () => resetHalfLeading( props ) }
+						isShownByDefault={ true }
+						resetAllFilter={ createResetAllFilter( 'halfLeading' ) }
+						panelId={ props.clientId }
+					>
+						<HalfLeadingEdit { ...props } />
+					</ToolsPanelItem>
+				) }
+			</InspectorControls>
 		</>
 	);
 }

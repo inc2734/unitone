@@ -42,6 +42,8 @@ import {
 	TypographyPanel,
 	saveFluidTypographyProp,
 	editFluidTypographyProp,
+	saveHalfLeadingProp,
+	editHalfLeadingProp,
 } from './typography';
 
 import {
@@ -61,6 +63,7 @@ function addSaveProps( extraProps, blockType, attributes ) {
 			blockType,
 			attributes
 		);
+		extraProps = saveHalfLeadingProp( extraProps, blockType, attributes );
 	}
 
 	if ( !! blockType.supports?.unitone ) {
@@ -95,12 +98,12 @@ function addSaveProps( extraProps, blockType, attributes ) {
 function addEditProps( settings ) {
 	if ( !! settings.supports?.typography ) {
 		settings = editFluidTypographyProp( settings );
+		settings = editHalfLeadingProp( settings );
 	}
 
 	if ( !! settings.supports?.unitone ) {
 		settings = editAlignItemsProp( settings );
 		settings = editBlockAlignProp( settings );
-		settings = editFluidTypographyProp( settings );
 		settings = editDividerProp( settings );
 		settings = editDividerTypeProp( settings );
 		settings = editGapProp( settings );
@@ -142,6 +145,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		if (
 			! hasBlockSupport( props.name, 'typography.fontSize' ) &&
+			! hasBlockSupport( props.name, 'typography.lineHeight' ) &&
 			! hasBlockSupport( props.name, 'unitone' )
 		) {
 			return <BlockEdit { ...props } />;
@@ -151,9 +155,10 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 			<>
 				<BlockEdit { ...props } />
 
-				{ hasBlockSupport( props.name, 'typography.fontSize' ) && (
-					<TypographyPanel { ...props } />
-				) }
+				{ hasBlockSupport( props.name, 'typography.fontSize' ) &&
+					hasBlockSupport( props.name, 'typography.lineHeight' ) && (
+						<TypographyPanel { ...props } />
+					) }
 
 				{ hasBlockSupport( props.name, 'unitone' ) && (
 					<>

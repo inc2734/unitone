@@ -102,6 +102,10 @@ add_filter(
 	'render_block',
 	function( $block_content, $block ) {
 		if ( 'core/site-logo' === $block['blockName'] && ! $block_content ) {
+			if ( is_admin() ) {
+				return $block_content;
+			}
+
 			$metadata                = wp_json_file_decode( ABSPATH . WPINC . '/blocks/site-logo/block.json', array( 'associative' => true ) );
 			$set_default_custom_logo = function( $html ) {
 				return '<a href="' . get_home_url() . '" rel="home"><img loading="lazy" width="141" height="20" src="' . get_theme_file_uri( 'dist/img/logo.svg' ) . '" class="custom-logo" alt="unitone"></a>';

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-11-20T13:14:26+00:00\n"
+"POT-Creation-Date: 2022-11-21T12:40:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -457,6 +457,27 @@ msgstr ""
 
 #: patterns/search-results-heading.php:9
 msgid "Search results"
+msgstr ""
+
+#: patterns/sidebar-bbpress.php
+msgctxt "Pattern title"
+msgid "Sidebar (for bbPress)"
+msgstr ""
+
+#: patterns/sidebar-bbpress.php:10
+msgid "Login"
+msgstr ""
+
+#: patterns/sidebar-bbpress.php:11
+msgid "Statistics"
+msgstr ""
+
+#: patterns/sidebar-bbpress.php:12
+msgid "Recent Topics"
+msgstr ""
+
+#: patterns/sidebar-bbpress.php:13
+msgid "Forum Search"
 msgstr ""
 
 #: patterns/sidebar.php

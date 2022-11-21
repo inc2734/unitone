@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-11-20T13:14:26+00:00\n"
-"PO-Revision-Date: 2022-11-20 22:14+0900\n"
+"POT-Creation-Date: 2022-11-21T12:40:26+00:00\n"
+"PO-Revision-Date: 2022-11-21 21:42+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -410,6 +410,27 @@ msgstr "検索結果の見出し"
 #: patterns/search-results-heading.php:9
 msgid "Search results"
 msgstr "検索結果"
+
+#: patterns/sidebar-bbpress.php
+msgctxt "Pattern title"
+msgid "Sidebar (for bbPress)"
+msgstr "サイドバー（bbPress 用）"
+
+#: patterns/sidebar-bbpress.php:10
+msgid "Login"
+msgstr "ログイン"
+
+#: patterns/sidebar-bbpress.php:11
+msgid "Statistics"
+msgstr "統計情報"
+
+#: patterns/sidebar-bbpress.php:12
+msgid "Recent Topics"
+msgstr "最近のトピック"
+
+#: patterns/sidebar-bbpress.php:13
+msgid "Forum Search"
+msgstr "フォーラムを検索"
 
 #: patterns/sidebar.php
 msgctxt "Pattern title"

@@ -193,9 +193,9 @@
 				},
 				"spacing": {
 					"padding": {
-						"top": "calc(var(--unitone--padding) / 3)",
+						"top": "calc(var(--unitone--padding) / 1.5)",
 						"right": "var(--unitone--padding)",
-						"bottom": "calc(var(--unitone--padding) / 3)",
+						"bottom": "calc(var(--unitone--padding) / 1.5)",
 						"left": "var(--unitone--padding)"
 					}
 				}

@@ -95,21 +95,13 @@
 		}
 	}
 
-	.page-template-page-right-sidebar,
-	.post-template-single-right-sidebar,
-	.site-container-right-sidebar {
-		.entry-content {
-			> :where(:not(.alignleft):not(.alignright)) {
-				max-width: 100%;
-			}
+	[data-unitone-layout~="with-sidebar__content"] .is-layout-constrained {
+		> .alignright {
+			margin-right: 0;
+		}
 
-			.alignright {
-				margin-right: 0;
-			}
-
-			.alignleft {
-				margin-left: 0;
-			}
+		> .alignleft {
+			margin-left: 0;
 		}
 	}
 }

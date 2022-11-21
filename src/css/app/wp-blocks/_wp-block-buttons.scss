@@ -5,12 +5,12 @@
 
 	.wp-element-button:not(.wp-block-button__link),
 	.wp-block-button {
-		--unitone--padding: var(--unitone--global--text-gap);
+		--unitone--padding: var(--unitone--s-1);
 	}
 
 	.wp-block-button.is-style-outline > .wp-block-button__link,
 	:where(.wp-block-button__link).is-style-outline {
 		border-width: 1px;
-    padding: calc(var(--unitone--padding) / 3) var(--unitone--padding); // @see theme.json
+		padding: calc(var(--unitone--padding) / 1.5) var(--unitone--padding); // @see theme.json
 	}
 }

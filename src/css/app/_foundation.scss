@@ -38,13 +38,13 @@
 		textarea
 	) {
 		border: 1px solid var(--wp--preset--color--unitone-gray);
-		padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
+		padding: calc(var(--unitone--s-1) / 1.5);
 		border-radius: var(--unitone--global--border-radius);
 	}
 
 	:where(select) {
 		border: 1px solid var(--wp--preset--color--unitone-gray);
-		padding: var(--unitone--s-2) var(--unitone--s-2);
+		padding: calc(var(--unitone--s-1) / 1.5);
 		border-radius: var(--unitone--global--border-radius);
 	}
 
@@ -55,7 +55,7 @@
 		button
 	) {
 		border: 1px solid var(--wp--preset--color--unitone-gray);
-		padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
+		padding: calc(var(--unitone--s-1) / 1.5) var(--unitone--s-1);
 		border-radius: var(--unitone--global--border-radius);
 
 		&:active {

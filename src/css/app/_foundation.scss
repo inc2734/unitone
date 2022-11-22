@@ -41,6 +41,7 @@
 		padding: calc(var(--unitone--s-1) / 1.5);
 		border-radius: var(--unitone--global--border-radius);
 		font-family: inherit;
+		max-width: 100%;
 	}
 
 	:where(select) {
@@ -48,6 +49,7 @@
 		padding: calc(var(--unitone--s-1) / 1.5);
 		border-radius: var(--unitone--global--border-radius);
 		font-family: inherit;
+		max-width: 100%;
 	}
 
 	:where(
@@ -69,6 +71,7 @@
 	fieldset {
 		border: 1px solid var(--wp--preset--color--unitone-light-gray);
 		padding: var(--unitone--s-1);
+		min-width: auto;
 	}
 
 	legend {

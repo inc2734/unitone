@@ -40,12 +40,14 @@
 		border: 1px solid var(--wp--preset--color--unitone-gray);
 		padding: calc(var(--unitone--s-1) / 1.5);
 		border-radius: var(--unitone--global--border-radius);
+		font-family: inherit;
 	}
 
 	:where(select) {
 		border: 1px solid var(--wp--preset--color--unitone-gray);
 		padding: calc(var(--unitone--s-1) / 1.5);
 		border-radius: var(--unitone--global--border-radius);
+		font-family: inherit;
 	}
 
 	:where(
@@ -57,6 +59,7 @@
 		border: 1px solid var(--wp--preset--color--unitone-gray);
 		padding: calc(var(--unitone--s-1) / 1.5) var(--unitone--s-1);
 		border-radius: var(--unitone--global--border-radius);
+		font-family: inherit;
 
 		&:active {
 			border-color: var(--wp--preset--color--unitone-dark-gray);

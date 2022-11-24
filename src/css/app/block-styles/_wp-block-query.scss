@@ -21,36 +21,68 @@
 	/**
 	 * Common to all block link block styles.
 	 */
-	.wp-block-query.is-style-block-link-underline,
-	.wp-block-query.is-style-block-link-bordered,
-	.wp-block-query.is-style-block-link-stripe {
-		.wp-block-post,
-		.block-editor-block-preview__live-content {
-			position: relative;
-
-			* {
-				position: static;
-			}
-
-			a {
-				position: relative;
-			}
-		}
-
-		.wp-block-post-title a {
-			position: static;
-			z-index: 0;
-
-			&::after {
-				content: '';
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-			}
-		}
+	:where(.wp-block-query.is-style-block-link-underline :where(.wp-block-post, .block-editor-block-preview__live-content)),
+	:where(.wp-block-query.is-style-block-link-bordered :where(.wp-block-post, .block-editor-block-preview__live-content)),
+	:where(.wp-block-query.is-style-block-link-stripe :where(.wp-block-post, .block-editor-block-preview__live-content)) {
+		position: relative;
 	}
+	:where(.wp-block-query.is-style-block-link-underline :where(.wp-block-post, .block-editor-block-preview__live-content) *),
+	:where(.wp-block-query.is-style-block-link-bordered :where(.wp-block-post, .block-editor-block-preview__live-content) *),
+	:where(.wp-block-query.is-style-block-link-stripe :where(.wp-block-post, .block-editor-block-preview__live-content) *) {
+		position: static;
+	}
+	:where(.wp-block-query.is-style-block-link-underline :where(.wp-block-post, .block-editor-block-preview__live-content) a),
+	:where(.wp-block-query.is-style-block-link-bordered :where(.wp-block-post, .block-editor-block-preview__live-content) a),
+	:where(.wp-block-query.is-style-block-link-stripe :where(.wp-block-post, .block-editor-block-preview__live-content) a) {
+		position: relative;
+	}
+	:where(.wp-block-query.is-style-block-link-underline .wp-block-post-title a),
+	:where(.wp-block-query.is-style-block-link-bordered .wp-block-post-title a),
+	:where(.wp-block-query.is-style-block-link-stripe .wp-block-post-title a) {
+		position: static;
+		z-index: 0;
+	}
+	:where(.wp-block-query.is-style-block-link-underline .wp-block-post-title) a::after,
+	:where(.wp-block-query.is-style-block-link-bordered .wp-block-post-title) a::after,
+	:where(.wp-block-query.is-style-block-link-stripe .wp-block-post-title) a::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
+	// .wp-block-query.is-style-block-link-underline,
+	// .wp-block-query.is-style-block-link-bordered,
+	// .wp-block-query.is-style-block-link-stripe {
+	// 	.wp-block-post,
+	// 	.block-editor-block-preview__live-content {
+	// 		position: relative;
+
+	// 		* {
+	// 			position: static;
+	// 		}
+
+	// 		a {
+	// 			position: relative;
+	// 		}
+	// 	}
+
+	// 	.wp-block-post-title a {
+	// 		position: static;
+	// 		z-index: 0;
+
+	// 		&::after {
+	// 			content: '';
+	// 			position: absolute;
+	// 			top: 0;
+	// 			right: 0;
+	// 			bottom: 0;
+	// 			left: 0;
+	// 		}
+	// 	}
+	// }
 
 	/**
 	 * Common to all underline block styles.

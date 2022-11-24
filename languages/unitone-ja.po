@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2022-11-21T12:40:26+00:00\n"
-"PO-Revision-Date: 2022-11-21 21:42+0900\n"
+"POT-Creation-Date: 2022-11-24T06:12:44+00:00\n"
+"PO-Revision-Date: 2022-11-24 15:13+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #. Theme Name of the theme
 #: inc/block-categories.php:18 inc/block-categories.php:29
-#: inc/block-styles.php:45
+#: inc/block-styles.php:77
 msgid "unitone"
 msgstr "unitone"
 
@@ -130,15 +130,31 @@ msgstr "フッター"
 msgid "Badge"
 msgstr "バッジ"
 
-#: inc/block-styles.php:21
+#: inc/block-styles.php:21 dist/js/editor/editor.js:1
+msgid "Underline"
+msgstr "アンダーライン"
+
+#: inc/block-styles.php:29 dist/js/editor/editor.js:1
+msgid "Bordered"
+msgstr "ボーダー"
+
+#: inc/block-styles.php:37 dist/js/editor/editor.js:1
+msgid "Stripe"
+msgstr "ストライプ"
+
+#: inc/block-styles.php:45
 msgid "Block link (Underline)"
 msgstr "ブロックリンク（アンダーライン）"
 
-#: inc/block-styles.php:29 inc/block-styles.php:37
+#: inc/block-styles.php:53 inc/block-styles.php:69
 msgid "Block link (Bordered)"
 msgstr "ブロックリンク（ボーダー）"
 
-#: inc/block-styles.php:53 dist/blocks/layers/index.js:1
+#: inc/block-styles.php:61
+msgid "Block link (Stripe)"
+msgstr "ブロックリンク（ストライプ）"
+
+#: inc/block-styles.php:85 dist/blocks/layers/index.js:1
 msgid "Cover"
 msgstr "カバー"
 
@@ -394,13 +410,18 @@ msgstr "空ページ用全幅ページ"
 
 #: patterns/query-1.php
 msgctxt "Pattern title"
-msgid "Query (Simple / Block link)"
-msgstr "クエリー（シンプル / ブロックリンク）"
+msgid "Query (Underline)"
+msgstr "クエリー（アンダーライン）"
 
 #: patterns/query-2.php
 msgctxt "Pattern title"
 msgid "Query (Rich media / Block link)"
 msgstr "クエリー（リッチメディア / ブロックリンク）"
+
+#: patterns/query-3.php
+msgctxt "Pattern title"
+msgid "Query (Rich media / Block link / Bordered)"
+msgstr "クエリー（リッチメディア / ブロックリンク / ボーダー）"
 
 #: patterns/search-results-heading.php
 msgctxt "Pattern title"
@@ -738,7 +759,7 @@ msgstr "スタック（区切り：ストライプ）"
 
 #: dist/blocks/stack-divided/index.js:1
 msgid "Stack (Divider: underline)"
-msgstr "スタック（区切り：下線）"
+msgstr "スタック（区切り：アンダーライン）"
 
 #: dist/blocks/stack-divided/index.js:1
 msgid "Stack (Divider: bordered)"
@@ -862,20 +883,8 @@ msgid "Half leading"
 msgstr "ハーフリーディング"
 
 #: dist/js/editor/editor.js:1
-msgid "Stripe"
-msgstr "ストライプ"
-
-#: dist/js/editor/editor.js:1
-msgid "Underline"
-msgstr "下線"
-
-#: dist/js/editor/editor.js:1
 msgid "Slash"
 msgstr "スラッシュ"
-
-#: dist/js/editor/editor.js:1
-msgid "Bordered"
-msgstr "ボーダー"
 
 #: dist/js/editor/editor.js:1
 msgid "Type"
@@ -2227,3 +2236,7 @@ msgstr "Woocommerce 個別商品：ページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product: Page header (Image)"
 msgstr "WooCommerce 個別商品：ページヘッダー（画像）"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Query (Simple / Block link)"
+#~ msgstr "クエリー（シンプル / ブロックリンク）"

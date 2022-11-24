@@ -57,6 +57,12 @@
 		}
 	}
 
+	[data-unitone-layout~="frame"] {
+		.components-placeholder {
+			display: flex;
+		}
+	}
+
 	[data-unitone-layout~="frame"],
 	[data-unitone-layout~="layers__layer"] {
 		> figure {

@@ -17,6 +17,30 @@ function unitone_register_block_styles() {
 	register_block_style(
 		'core/query',
 		array(
+			'name'  => 'underline',
+			'label' => __( 'Underline', 'unitone' ),
+		)
+	);
+
+	register_block_style(
+		'core/query',
+		array(
+			'name'  => 'bordered',
+			'label' => __( 'Bordered', 'unitone' ),
+		)
+	);
+
+	register_block_style(
+		'core/query',
+		array(
+			'name'  => 'stripe',
+			'label' => __( 'Stripe', 'unitone' ),
+		)
+	);
+
+	register_block_style(
+		'core/query',
+		array(
 			'name'  => 'block-link-underline',
 			'label' => __( 'Block link (Underline)', 'unitone' ),
 		)
@@ -27,6 +51,14 @@ function unitone_register_block_styles() {
 		array(
 			'name'  => 'block-link-bordered',
 			'label' => __( 'Block link (Bordered)', 'unitone' ),
+		)
+	);
+
+	register_block_style(
+		'core/query',
+		array(
+			'name'  => 'block-link-stripe',
+			'label' => __( 'Block link (Stripe)', 'unitone' ),
 		)
 	);
 

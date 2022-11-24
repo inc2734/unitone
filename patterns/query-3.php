@@ -1,13 +1,13 @@
 <?php
 /**
- * Title: Query (Rich media / Block link)
- * Slug: unitone/query/2
+ * Title: Query (Rich media / Block link / Bordered)
+ * Slug: unitone/query/3
  * Categories: query
  * Block Types: core/query
  */
 ?>
-<!-- wp:query {"query":{"perPage":10,"offset":0,"postType":"post","inherit":true},"displayLayout":{"type":"flex","columns":3}} -->
-<div class="wp-block-query">
+<!-- wp:query {"query":{"perPage":10,"offset":0,"postType":"post","inherit":true},"displayLayout":{"type":"flex","columns":3},"className":"is-style-block-link-bordered"} -->
+<div class="wp-block-query is-style-block-link-bordered">
 	<!-- wp:post-template -->
 		<!-- wp:unitone/stack {"unitone":{"gap":"-1"}} -->
 		<div data-unitone-layout="stack -gap:-1">

@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 4.1.0\n"
+"Project-Id-Version: unitone 4.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-11-21T12:40:26+00:00\n"
+"POT-Creation-Date: 2022-11-24T06:12:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -17,7 +17,7 @@ msgstr ""
 #. Theme Name of the theme
 #: inc/block-categories.php:18
 #: inc/block-categories.php:29
-#: inc/block-styles.php:45
+#: inc/block-styles.php:77
 msgid "unitone"
 msgstr ""
 
@@ -132,15 +132,34 @@ msgid "Badge"
 msgstr ""
 
 #: inc/block-styles.php:21
-msgid "Block link (Underline)"
+#: dist/js/editor/editor.js:1
+msgid "Underline"
 msgstr ""
 
 #: inc/block-styles.php:29
+#: dist/js/editor/editor.js:1
+msgid "Bordered"
+msgstr ""
+
 #: inc/block-styles.php:37
-msgid "Block link (Bordered)"
+#: dist/js/editor/editor.js:1
+msgid "Stripe"
+msgstr ""
+
+#: inc/block-styles.php:45
+msgid "Block link (Underline)"
 msgstr ""
 
 #: inc/block-styles.php:53
+#: inc/block-styles.php:69
+msgid "Block link (Bordered)"
+msgstr ""
+
+#: inc/block-styles.php:61
+msgid "Block link (Stripe)"
+msgstr ""
+
+#: inc/block-styles.php:85
 #: dist/blocks/layers/index.js:1
 msgid "Cover"
 msgstr ""
@@ -442,12 +461,17 @@ msgstr ""
 
 #: patterns/query-1.php
 msgctxt "Pattern title"
-msgid "Query (Simple / Block link)"
+msgid "Query (Underline)"
 msgstr ""
 
 #: patterns/query-2.php
 msgctxt "Pattern title"
 msgid "Query (Rich media / Block link)"
+msgstr ""
+
+#: patterns/query-3.php
+msgctxt "Pattern title"
+msgid "Query (Rich media / Block link / Bordered)"
 msgstr ""
 
 #: patterns/search-results-heading.php
@@ -932,19 +956,7 @@ msgid "Half leading"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Stripe"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Underline"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
 msgid "Slash"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Bordered"
 msgstr ""
 
 #: dist/js/editor/editor.js:1

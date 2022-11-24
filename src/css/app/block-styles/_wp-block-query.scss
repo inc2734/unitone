@@ -53,37 +53,6 @@
 		left: 0;
 	}
 
-	// .wp-block-query.is-style-block-link-underline,
-	// .wp-block-query.is-style-block-link-bordered,
-	// .wp-block-query.is-style-block-link-stripe {
-	// 	.wp-block-post,
-	// 	.block-editor-block-preview__live-content {
-	// 		position: relative;
-
-	// 		* {
-	// 			position: static;
-	// 		}
-
-	// 		a {
-	// 			position: relative;
-	// 		}
-	// 	}
-
-	// 	.wp-block-post-title a {
-	// 		position: static;
-	// 		z-index: 0;
-
-	// 		&::after {
-	// 			content: '';
-	// 			position: absolute;
-	// 			top: 0;
-	// 			right: 0;
-	// 			bottom: 0;
-	// 			left: 0;
-	// 		}
-	// 	}
-	// }
-
 	/**
 	 * Common to all underline block styles.
 	 */
@@ -101,6 +70,7 @@
 				@media (min-width: 600px) {
 					.wp-block-post {
 						--unitone--gap: 0px;
+						--unitone--padding: calc(var(--unitone--global--gap) / 2);
 
 						padding-right: var(--unitone--padding);
 						padding-left: var(--unitone--padding);
@@ -139,6 +109,10 @@
 				}
 
 				@media (min-width: 600px) {
+					.wp-block-post {
+						--unitone--padding: calc(var(--unitone--global--gap) / 2);
+					}
+
 					@for $i from 2 through 6 {
 						&.columns-#{ $i } .wp-block-post {
 							&:nth-child(n + #{ $i + 1}) {
@@ -193,6 +167,8 @@
 
 				@media (min-width: 600px) {
 					.wp-block-post {
+						--unitone--padding: calc(var(--unitone--global--gap) / 2);
+
 						padding-right: var(--unitone--padding);
 						padding-left: var(--unitone--padding);
 					}

@@ -5,8 +5,6 @@
  * @license GPL-2.0+
  */
 
-use Unitone\App\DynamicBlock;
-
 /**
  * Register blocks.
  */

@@ -44,8 +44,14 @@ $template    = $block_style ? __DIR__ . '/templates/' . $block_style . '.php' : 
 if ( ! file_exists( $template ) ) {
 	return;
 }
+
+$block_wrapper_attributes = get_block_wrapper_attributes(
+	array(
+		'class' => 'unitone-child-pages',
+	)
+);
 ?>
-<div <?php echo get_block_wrapper_attributes( array( 'class' => 'unitone-child-pages' ) ); ?>>
+<div <?php echo $block_wrapper_attributes; ?>>
 	<?php
 	ob_start();
 	include( $template );

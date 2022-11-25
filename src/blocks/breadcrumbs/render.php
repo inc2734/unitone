@@ -34,9 +34,14 @@ $classes = array(
 if ( ! empty( $attributes['fontSize'] ) ) {
 	$classes[] = 'has-' . $attributes['fontSize'] . '-font-size';
 }
-?>
 
-<ol class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" itemscope itemtype="http://schema.org/BreadcrumbList">
+$block_wrapper_attributes = get_block_wrapper_attributes(
+	array(
+		'class' => implode( ' ', $classes ),
+	)
+);
+?>
+<ol <?php echo $block_wrapper_attributes; ?> itemscope itemtype="http://schema.org/BreadcrumbList">
 	<?php foreach ( $items as $key => $item ) : ?>
 		<?php
 		$is_last_item = (int) count( $items ) - 1 === (int) $key;

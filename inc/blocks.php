@@ -38,23 +38,8 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar' );
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar-content' );
 
-	register_block_type(
-		get_template_directory() . '/dist/blocks/breadcrumbs',
-		array(
-			'render_callback' => function( $attributes, $content ) {
-				return DynamicBlock::render( get_template_directory() . '/dist/blocks/breadcrumbs', $attributes, $content );
-			},
-		)
-	);
-
-	register_block_type(
-		get_template_directory() . '/dist/blocks/child-pages',
-		array(
-			'render_callback' => function( $attributes, $content ) {
-				return DynamicBlock::render( get_template_directory() . '/dist/blocks/child-pages', $attributes, $content );
-			},
-		)
-	);
+	register_block_type( get_template_directory() . '/dist/blocks/breadcrumbs' );
+	register_block_type( get_template_directory() . '/dist/blocks/child-pages' );
 
 	\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes['unitone'] = array( 'type' => 'object' );
 }

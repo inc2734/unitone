@@ -86,5 +86,28 @@
 // Remove the bottom margin of the element before one of the block list appender.
 // Since there is no the block list appender at the front.
 .editor-styles-wrapper .block-editor-block-list__layout:not(.is-root-container) > .wp-block:nth-last-child(2) {
-  margin-bottom: 0;
+	margin-bottom: 0;
+}
+
+// Expands hierarchy of list view
+.block-editor-list-view-leaf {
+	&[aria-level="10"] .block-editor-list-view__expander {
+		margin-left: 248px;
+	}
+
+	&[aria-level="11"] .block-editor-list-view__expander {
+		margin-left: 276px;
+	}
+
+	&[aria-level="12"] .block-editor-list-view__expander {
+		margin-left: 304px;
+	}
+}
+
+// Scroll list view
+@media (min-width: 782px) {
+	.interface-interface-skeleton__secondary-sidebar .edit-post-editor__list-view-panel-content {
+		max-width: 447px;
+		overflow: auto;
+	}
 }

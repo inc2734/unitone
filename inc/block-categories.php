@@ -29,7 +29,18 @@ function unitone_block_categories_all( $categories ) {
 								. __( 'unitone', 'unitone' )
 								. ']'
 								. ' '
-								. __( 'Component', 'unitone' ),
+								. __( 'Components', 'unitone' ),
+		);
+	}
+
+	if ( ! in_array( 'unitone/widget', $slugs, true ) ) {
+		$categories[] = array(
+			'slug'  => 'unitone/widget',
+			'title' => '['
+								. __( 'unitone', 'unitone' )
+								. ']'
+								. ' '
+								. __( 'Widgets', 'unitone' ),
 		);
 	}
 

@@ -1,15 +1,15 @@
-# Copyright (C) 2022 Takashi Kitajima
+# Copyright (C) 2023 Takashi Kitajima
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 4.2.1\n"
+"Project-Id-Version: unitone 4.3.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-11-24T06:12:44+00:00\n"
+"POT-Creation-Date: 2023-03-17T02:41:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -17,6 +17,7 @@ msgstr ""
 #. Theme Name of the theme
 #: inc/block-categories.php:18
 #: inc/block-categories.php:29
+#: inc/block-categories.php:40
 #: inc/block-styles.php:77
 msgid "unitone"
 msgstr ""
@@ -80,7 +81,11 @@ msgid "Layout"
 msgstr ""
 
 #: inc/block-categories.php:32
-msgid "Component"
+msgid "Components"
+msgstr ""
+
+#: inc/block-categories.php:43
+msgid "Widgets"
 msgstr ""
 
 #: inc/block-patterns.php:15

@@ -374,8 +374,8 @@ function unitone_patch_for_extraprops() {
 	$_post = get_post( $post_id );
 
 	$content = $_post->post_content;
-	$content = preg_replace( '/ data-unitone-layout="-fluid-typography[^"]+?"/ms', '', $content );
-	$content = preg_replace( '/ style="--unitone--half-leading:[^"]+?"/ms', '', $content );
+	$content = preg_replace( '/ data-unitone-layout="-fluid-typography[^"]*?"/ms', '', $content );
+	$content = preg_replace( '/ style="--unitone--half-leading:[^"]*?"/ms', '', $content );
 
 	$_post->post_content = $content;
 	wp_update_post( $_post, false, false );

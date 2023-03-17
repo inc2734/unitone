@@ -118,6 +118,13 @@ add_filter(
 add_filter(
 	'render_block',
 	function ( $block_content, $block ) {
+		if ( ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
+			require_once( get_template_directory() . '/classes/html-api/class-wp-html-attribute-token.php' );
+			require_once( get_template_directory() . '/classes/html-api/class-wp-html-span.php' );
+			require_once( get_template_directory() . '/classes/html-api/class-wp-html-tag-processor.php' );
+			require_once( get_template_directory() . '/classes/html-api/class-wp-html-text-replacement.php' );
+		}
+
 		$p = new WP_HTML_Tag_Processor( $block_content );
 		$p->next_tag();
 
@@ -367,7 +374,7 @@ function unitone_patch_for_extraprops() {
 	$_post = get_post( $post_id );
 
 	$content = $_post->post_content;
-	$content = str_replace( ' data-unitone-layout="-fluid-typography"', '', $content );
+	$content = preg_replace( '/ data-unitone-layout="-fluid-typography[^"]+?"/ms', '', $content );
 	$content = preg_replace( '/ style="--unitone--half-leading:[^"]+?"/ms', '', $content );
 
 	$_post->post_content = $content;

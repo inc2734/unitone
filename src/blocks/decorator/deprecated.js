@@ -11,6 +11,66 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const { tagName, shadow, rel, href, linkTarget } = attributes;
+
+			const isHrefSet = !! href;
+
+			const TagName = tagName || 'div';
+
+			const blockProps = useBlockProps.save( {
+				'data-unitone-layout': classnames( 'decorator', {
+					'-shadow': shadow,
+					[ `-overflow:${ attributes?.unitone?.overflow }` ]:
+						null != attributes?.unitone?.overflow,
+					[ `-padding:${ attributes?.unitone?.padding }` ]:
+						null != attributes?.unitone?.padding,
+					[ `-position:${ attributes?.unitone?.position?.position }` ]:
+						null != attributes?.unitone?.position?.position,
+				} ),
+				style: {
+					'--unitone--top': attributes?.unitone?.position?.top,
+					'--unitone--right': attributes?.unitone?.position?.right,
+					'--unitone--bottom': attributes?.unitone?.position?.bottom,
+					'--unitone--left': attributes?.unitone?.position?.left,
+					'--unitone--z-index': attributes?.unitone?.position?.zIndex,
+				},
+			} );
+
+			return (
+				<>
+					{ isHrefSet ? (
+						<TagName { ...blockProps }>
+							<div data-unitone-layout="decorator__inner">
+								<div { ...useInnerBlocksProps.save() } />
+								<a
+									data-unitone-layout="decorator__link"
+									href={ href }
+									target={ linkTarget }
+									rel={ rel }
+								>
+									{ __( 'Learn more', 'unitone' ) }
+								</a>
+							</div>
+						</TagName>
+					) : (
+						<TagName
+							{ ...useInnerBlocksProps.save( { ...blockProps } ) }
+						/>
+					) }
+				</>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
 			position: {
 				type: 'string',
 			},

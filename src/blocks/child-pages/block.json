@@ -22,16 +22,7 @@
 		"className": false,
 		"anchor": true,
 		"unitone": {
-			"gap": {
-				"styles": {
-					"cluster-divided-stripe": true,
-					"cluster-divided-slash": true,
-					"stack-divided-stripe": true,
-					"rich-media": true,
-					"box": true,
-					"panel": true
-				}
-			}
+			"gap": true
 		}
 	},
 	"styles": [

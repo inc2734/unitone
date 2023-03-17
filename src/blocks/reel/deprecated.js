@@ -15,13 +15,18 @@ export default [
 		},
 
 		save( { attributes } ) {
+			const { height, itemWidth, noBar } = attributes;
+
 			return (
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'both-sides', {
-								[ `-align-items:${ attributes?.unitone?.alignItems }` ]:
-									null != attributes?.unitone?.alignItems,
+							style: {
+								'--unitone--height': height || undefined,
+								'--unitone--item-width': itemWidth || undefined,
+							},
+							'data-unitone-layout': classnames( 'reel', {
+								'-no-bar': noBar,
 								[ `-gap:${ attributes?.unitone?.gap }` ]:
 									null != attributes?.unitone?.gap,
 							} ),
@@ -29,25 +34,6 @@ export default [
 					) }
 				/>
 			);
-		},
-	},
-	{
-		attributes: {
-			...metadata.attributes,
-		},
-
-		supports: {
-			...metadata.supports,
-		},
-
-		save() {
-			<div
-				{ ...useInnerBlocksProps.save(
-					useBlockProps.save( {
-						'data-layout': classnames( 'both-sides' ),
-					} )
-				) }
-			/>;
 		},
 	},
 ];

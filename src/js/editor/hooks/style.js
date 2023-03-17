@@ -8,92 +8,33 @@ import { addFilter } from '@wordpress/hooks';
 
 import {
 	DimensionsPanel,
-	savePaddingProp,
 	editPaddingProp,
-	saveGuttersProp,
 	editGuttersProp,
-	saveGapProp,
 	editGapProp,
-	saveNegativeProp,
 	editNegativeProp,
-	saveOverflowProp,
 	editOverflowProp,
 } from './dimensions';
 
 import {
 	LayoutPanel,
-	saveAlignItemsProp,
 	editAlignItemsProp,
-	saveJustifyContentProp,
 	editJustifyContentProp,
-	saveJustifyContentColumnProp,
 	editJustifyContentColumnProp,
-	saveBlockAlignProp,
 	editBlockAlignProp,
-	saveMaxWidthProp,
 	editMaxWidthProp,
-	saveMinHeightProp,
 	editMinHeightProp,
-	saveAutoRepeatProp,
 	editAutoRepeatProp,
 } from './layout';
 
 import {
 	TypographyPanel,
-	saveFluidTypographyProp,
 	editFluidTypographyProp,
-	saveHalfLeadingProp,
 	editHalfLeadingProp,
 } from './typography';
 
-import {
-	DividerPanel,
-	saveDividerProp,
-	editDividerProp,
-	saveDividerTypeProp,
-	editDividerTypeProp,
-} from './divider';
+import { DividerPanel, editDividerProp, editDividerTypeProp } from './divider';
 
-import { PositionPanel, savePositionProp, editPositionProp } from './position';
-
-function addSaveProps( extraProps, blockType, attributes ) {
-	if ( !! blockType.supports?.typography ) {
-		extraProps = saveFluidTypographyProp(
-			extraProps,
-			blockType,
-			attributes
-		);
-		extraProps = saveHalfLeadingProp( extraProps, blockType, attributes );
-	}
-
-	if ( !! blockType.supports?.unitone ) {
-		extraProps = saveAlignItemsProp( extraProps, blockType, attributes );
-		extraProps = saveBlockAlignProp( extraProps, blockType, attributes );
-		extraProps = saveJustifyContentColumnProp(
-			extraProps,
-			blockType,
-			attributes
-		);
-		extraProps = saveDividerProp( extraProps, blockType, attributes );
-		extraProps = saveDividerTypeProp( extraProps, blockType, attributes );
-		extraProps = saveGapProp( extraProps, blockType, attributes );
-		extraProps = saveGuttersProp( extraProps, blockType, attributes );
-		extraProps = saveJustifyContentProp(
-			extraProps,
-			blockType,
-			attributes
-		);
-		extraProps = saveMaxWidthProp( extraProps, blockType, attributes );
-		extraProps = saveMinHeightProp( extraProps, blockType, attributes );
-		extraProps = saveAutoRepeatProp( extraProps, blockType, attributes );
-		extraProps = saveNegativeProp( extraProps, blockType, attributes );
-		extraProps = saveOverflowProp( extraProps, blockType, attributes );
-		extraProps = savePaddingProp( extraProps, blockType, attributes );
-		extraProps = savePositionProp( extraProps, blockType, attributes );
-	}
-
-	return extraProps;
-}
+import { PositionPanel, editPositionProp } from './position';
 
 function addEditProps( settings ) {
 	if ( !! settings.supports?.typography ) {
@@ -178,12 +119,6 @@ addFilter(
 	'blocks.registerBlockType',
 	'unitone/style/addAttribute',
 	addAttribute
-);
-
-addFilter(
-	'blocks.getSaveContent.extraProps',
-	'unitone/style/addSaveProps',
-	addSaveProps
 );
 
 addFilter(

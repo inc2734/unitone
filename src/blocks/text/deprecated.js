@@ -15,6 +15,38 @@ export default [
 		},
 
 		save( { attributes } ) {
+			const { center, column } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							'data-unitone-layout': classnames( 'text', {
+								'-center': center,
+								'-column': column,
+								[ `-gap:${ attributes?.unitone?.gap }` ]:
+									null != attributes?.unitone?.gap,
+							} ),
+							style: {
+								'--unitone--max-width':
+									attributes?.unitone?.maxWidth,
+							},
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
 			const { center } = attributes;
 
 			return (

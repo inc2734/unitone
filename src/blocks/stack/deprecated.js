@@ -1,8 +1,36 @@
+import classnames from 'classnames';
+
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 import metadata from './block.json';
 
 export default [
+	{
+		attributes: {
+			...metadata.attributes,
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							'data-unitone-layout': classnames( 'stack', {
+								[ `-gap:${ attributes?.unitone?.gap }` ]:
+									null != attributes?.unitone?.gap,
+								'-negative':
+									null != attributes?.unitone?.negative,
+							} ),
+						} )
+					) }
+				/>
+			);
+		},
+	},
 	{
 		attributes: {
 			...metadata.attributes,

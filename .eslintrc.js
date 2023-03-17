@@ -10,5 +10,6 @@ module.exports = {
 	rules: {
 		...defaultConfig.rules,
 		'@wordpress/no-unsafe-wp-apis': 'off',
+		'eqeqeq': ['error', 'allow-null'],
 	},
 };

@@ -111,3 +111,266 @@ add_filter(
 	10,
 	2
 );
+
+/**
+ * Hooks.
+ */
+add_filter(
+	'render_block',
+	function ( $block_content, $block ) {
+		$p = new WP_HTML_Tag_Processor( $block_content );
+		$p->next_tag();
+
+		// -fluid-typography
+		if ( ! empty( $block['attrs']['unitone']['fluidTypography'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-fluid-typography';
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// --unitone--half-leading
+		if ( ! empty( $block['attrs']['unitone']['halfLeading'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--half-leading:';
+			if ( false === strpos( $style, $property ) ) {
+				$style_array   = $style ? explode( ';', $style ) : array();
+				$style_array[] = $property . $block['attrs']['unitone']['halfLeading'];
+				$style_array   = array_map( 'trim', $style_array );
+				$p->set_attribute( 'style', implode( ';', $style_array ) );
+			}
+		}
+
+		// -align-items
+		if ( ! empty( $block['attrs']['unitone']['alignItems'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-align-items:' . $block['attrs']['unitone']['alignItems'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// -auto-repeat
+		if ( ! empty( $block['attrs']['unitone']['autoRepeat'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-auto-repeat:' . $block['attrs']['unitone']['autoRepeat'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// -align
+		if ( ! empty( $block['attrs']['unitone']['blockAlign'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-align:' . $block['attrs']['unitone']['blockAlign'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// -divider
+		if ( ! empty( $block['attrs']['unitone']['dividerType'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-divider:' . $block['attrs']['unitone']['dividerType'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// --unitone--divier-color
+		if (
+			! empty( $block['attrs']['unitone']['dividerColor'] ) ||
+			! empty( $block['attrs']['unitone']['divider']['color'] )
+		) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--divider-color:';
+
+			$preset_color = ! empty( $block['attrs']['unitone']['dividerColor'] )
+				? 'var(--wp--preset--color--' . str_replace( '/', '-', $block['attrs']['unitone']['dividerColor'] ) . ')'
+				: false;
+			$color        = ! empty( $block['attrs']['unitone']['divider']['color'] )
+				? $block['attrs']['unitone']['divider']['color']
+				: false;
+
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property . ( $color ? $color : $preset_color ) . ';' ) );
+			}
+		}
+
+		// --unitone--divider-style
+		if ( ! empty( $block['attrs']['unitone']['divider']['style'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--divider-style:';
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['divider']['style'] . ';' ) );
+			}
+		}
+
+		// --unitone--divider-width
+		if ( ! empty( $block['attrs']['unitone']['divider']['width'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--divider-width:';
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['divider']['width'] . ';' ) );
+			}
+		}
+
+		// -gap
+		if ( ! empty( $block['attrs']['unitone']['gap'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-gap:' . $block['attrs']['unitone']['gap'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// -gutters
+		if ( ! empty( $block['attrs']['unitone']['gutters'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-gutters:' . $block['attrs']['unitone']['gutters'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// -justify-content
+		if ( ! empty( $block['attrs']['unitone']['justifyContent'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-justify-content:' . $block['attrs']['unitone']['justifyContent'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// --unitone--max-width
+		if ( ! empty( $block['attrs']['unitone']['maxWidth'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--max-width:';
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['maxWidth'] . ';' ) );
+			}
+		}
+
+		// --unitone--min-height
+		if ( ! empty( $block['attrs']['unitone']['minHeight'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--min-height:';
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['minHeight'] . ';' ) );
+			}
+		}
+
+		// -negative
+		if ( ! empty( $block['attrs']['unitone']['negative'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-negative';
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// -overflow
+		if ( ! empty( $block['attrs']['unitone']['overflow'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-overflow:' . $block['attrs']['unitone']['overflow'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// -padding
+		if ( ! empty( $block['attrs']['unitone']['padding'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-padding:' . $block['attrs']['unitone']['padding'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// -position
+		if ( ! empty( $block['attrs']['unitone']['position']['position'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-position:' . $block['attrs']['unitone']['position']['position'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// --unitone--top
+		if ( ! empty( $block['attrs']['unitone']['position']['top'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--top:';
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['position']['top'] . ';' ) );
+			}
+		}
+
+		// --unitone--right
+		if ( ! empty( $block['attrs']['unitone']['position']['right'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--right:';
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['position']['right'] . ';' ) );
+			}
+		}
+
+		// --unitone--bottom
+		if ( ! empty( $block['attrs']['unitone']['position']['bottom'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--bottom:';
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['position']['bottom'] . ';' ) );
+			}
+		}
+
+		// --unitone--left
+		if ( ! empty( $block['attrs']['unitone']['position']['left'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--left:';
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['position']['left'] . ';' ) );
+			}
+		}
+
+		// --unitone--z-index
+		if ( ! empty( $block['attrs']['unitone']['position']['zIndex'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--z-index:';
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['position']['zIndex'] . ';' ) );
+			}
+		}
+
+		$block_content = $p->get_updated_html();
+		return $block_content;
+	},
+	10,
+	2
+);
+
+/**
+ * A patch for `blocks.getSaveContent.extraProps`.
+ * Changed not to use B because it sometimes causes variation errors (v4.3.3).
+ * The effect of this patch is to compensate for the breakage of blocks that have already been applied.
+ */
+function unitone_patch_for_extraprops() {
+	if ( ! current_user_can( 'edit_posts' ) ) {
+		return;
+	}
+
+	$post_id = filter_input( INPUT_GET, 'post', FILTER_VALIDATE_INT, FILTER_SANITIZE_NUMBER_INT );
+	if ( ! $post_id ) {
+		return;
+	}
+
+	$_post = get_post( $post_id );
+
+	$content = $_post->post_content;
+	$content = str_replace( ' data-unitone-layout="-fluid-typography"', '', $content );
+	$content = preg_replace( '/ style="--unitone--half-leading:[^"]+?"/ms', '', $content );
+
+	$_post->post_content = $content;
+	wp_update_post( $_post, false, false );
+}
+add_action( 'load-post.php', 'unitone_patch_for_extraprops' );

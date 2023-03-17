@@ -100,6 +100,12 @@
 	}
 
 	[data-unitone-layout~="layers"] {
+		&[data-unitone-layout~="-cover"] {
+			>:first-child :where(picture,figure) > div {
+				display: contents;
+			}
+		}
+
 		> .block-list-appender {
 			position: absolute;
 		}

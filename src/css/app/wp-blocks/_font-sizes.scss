@@ -49,6 +49,10 @@
 		.has-#{ map.get($font-size, slug) }-font-size {
 			--unitone--font-size: #{ map.get($font-size, size) } !important;
 			--wp--preset--font-size--#{ map.get($font-size, slug) }: #{ variables.$font-size } !important;
+
+			&[data-unitone-layout~="-fluid-typography"] {
+				--wp--preset--font-size--#{ map.get($font-size, slug) }: #{ variables.$fluid-font-size } !important;
+			}
 		}
 	}
 }

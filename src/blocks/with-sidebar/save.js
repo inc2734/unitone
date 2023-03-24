@@ -3,8 +3,7 @@ import classnames from 'classnames';
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function ( { attributes } ) {
-	const { sidebarWidth, contentMinWidth, contentMaxWidth, revert, sidebar } =
-		attributes;
+	const { sidebarWidth, contentMinWidth, revert, sidebar } = attributes;
 
 	return (
 		<div
@@ -18,8 +17,6 @@ export default function ( { attributes } ) {
 						'--unitone--sidebar-width': sidebarWidth || undefined,
 						'--unitone--content-min-width':
 							contentMinWidth || undefined,
-						'--unitone--content-max-width':
-							contentMaxWidth || undefined,
 					},
 				} )
 			) }

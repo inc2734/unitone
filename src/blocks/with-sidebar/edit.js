@@ -16,14 +16,12 @@ import {
 import { __ } from '@wordpress/i18n';
 
 export default function ( { attributes, setAttributes } ) {
-	const { sidebarWidth, contentMinWidth, contentMaxWidth, revert, sidebar } =
-		attributes;
+	const { sidebarWidth, contentMinWidth, revert, sidebar } = attributes;
 
 	const blockProps = useBlockProps( {
 		style: {
 			'--unitone--sidebar-width': sidebarWidth || undefined,
 			'--unitone--content-min-width': contentMinWidth || undefined,
-			'--unitone--content-max-width': contentMaxWidth || undefined,
 		},
 	} );
 	blockProps[ 'data-unitone-layout' ] = classnames(
@@ -101,21 +99,6 @@ export default function ( { attributes, setAttributes } ) {
 				</PanelBody>
 
 				<PanelBody title={ __( 'Content', 'unitone' ) }>
-					<TextControl
-						label={
-							<>
-								{ __( 'Max width', 'unitone' ) }:
-								<code>max-width</code>
-							</>
-						}
-						value={ contentMaxWidth }
-						onChange={ ( newAttribute ) => {
-							setAttributes( {
-								contentMaxWidth: newAttribute,
-							} );
-						} }
-					/>
-
 					<TextControl
 						label={
 							<>

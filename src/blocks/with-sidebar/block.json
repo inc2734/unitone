@@ -12,9 +12,6 @@
 		"contentMinWidth": {
 			"type": "string"
 		},
-		"contentMaxWidth": {
-			"type": "string"
-		},
 		"revert": {
 			"type": "boolean",
 			"default": false

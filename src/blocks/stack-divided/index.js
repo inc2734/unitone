@@ -5,6 +5,7 @@ import icon from '../icon';
 import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
+import transforms from './transforms';
 
 registerBlockType( 'unitone/stack-divided', {
 	icon: {
@@ -13,6 +14,7 @@ registerBlockType( 'unitone/stack-divided', {
 	edit,
 	save,
 	deprecated,
+	transforms,
 	variations: [
 		{
 			name: 'stack-divided-stripe',

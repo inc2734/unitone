@@ -1,21 +1,27 @@
-/**
- * @see https://github.com/WordPress/gutenberg/blob/trunk/packages/block-library/src/group/transforms.js
- */
-
 import { createBlock } from '@wordpress/blocks';
 
 export default {
 	from: [
 		{
 			type: 'block',
-			blocks: [ 'unitone/stack-divided' ],
+			blocks: [ 'unitone/stack' ],
 			transform: ( attributes, innerBlocks ) => {
 				return createBlock(
-					'unitone/stack',
-					attributes,
-					innerBlocks
-						.map( ( innerBlock ) => innerBlock.innerBlocks )
-						.flat()
+					'unitone/stack-divided',
+					{
+						...attributes,
+						unitone: {
+							...attributes?.unitone,
+							dividerType: 'stripe',
+						},
+					},
+					innerBlocks.map( ( innerBlock ) => {
+						return createBlock(
+							'unitone/stack-divided-content',
+							{},
+							[ innerBlock ]
+						);
+					} )
 				);
 			},
 		},
@@ -30,14 +36,24 @@ export default {
 				// are removed both from their original location and within the
 				// new group block.
 				const groupInnerBlocks = blocks.map( ( block ) => {
-					return createBlock(
-						block.name,
-						block.attributes,
-						block.innerBlocks
-					);
+					return createBlock( 'unitone/stack-divided-content', {}, [
+						createBlock(
+							block.name,
+							block.attributes,
+							block.innerBlocks
+						),
+					] );
 				} );
 
-				return createBlock( 'unitone/stack', {}, groupInnerBlocks );
+				return createBlock(
+					'unitone/stack-divided',
+					{
+						unitone: {
+							dividerType: 'stripe',
+						},
+					},
+					groupInnerBlocks
+				);
 			},
 		},
 	],
@@ -46,7 +62,7 @@ export default {
 			type: 'block',
 			blocks: [ '*' ],
 			transform: ( attributes, innerBlocks ) =>
-				innerBlocks.flatMap( ( innerBlock ) => innerBlock ),
+				innerBlocks.flatMap( ( innerBlock ) => innerBlock.innerBlocks ),
 		},
 	],
 };

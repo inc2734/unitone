@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-03-17T02:41:43+00:00\n"
-"PO-Revision-Date: 2023-03-17 11:42+0900\n"
+"POT-Creation-Date: 2023-03-24T16:51:43+00:00\n"
+"PO-Revision-Date: 2023-03-25 01:52+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -507,8 +507,7 @@ msgstr "ここに概要を入力"
 msgid "A"
 msgstr "A"
 
-#: dist/blocks/both-sides-content/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+#: dist/blocks/both-sides-content/index.js:1 dist/js/editor/editor.js:1
 msgid "Max width"
 msgstr "最大幅"
 
@@ -811,12 +810,22 @@ msgid "Left"
 msgstr "左"
 
 #: dist/blocks/with-sidebar/index.js:1
+msgid ""
+"If unspecified, the width of the sidebar is calculated from the width of the "
+"child elements."
+msgstr "未指定の場合、サイドバーの幅は子要素の幅から算出されます。"
+
+#: dist/blocks/with-sidebar/index.js:1
 msgid "Content"
 msgstr "コンテンツ"
 
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Min width"
 msgstr "最小幅"
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Wrap when content equals this width."
+msgstr "コンテンツがこの幅と等しくなった場合に折り返されます。"
 
 #: dist/js/editor/editor.js:1
 msgid "Padding"
@@ -839,10 +848,6 @@ msgid "Overflow"
 msgstr "オーバーフロー"
 
 #: dist/js/editor/editor.js:1
-msgid "Justify content"
-msgstr "項目の揃え位置"
-
-#: dist/js/editor/editor.js:1
 msgid "Justify items top"
 msgstr "コンテンツを上揃え"
 
@@ -851,20 +856,8 @@ msgid "Justify items bottom"
 msgstr "コンテンツを下揃え"
 
 #: dist/js/editor/editor.js:1
-msgid "Align items"
-msgstr "垂直配置"
-
-#: dist/js/editor/editor.js:1
 msgid "Center"
 msgstr "中央"
-
-#: dist/js/editor/editor.js:1
-msgid "Block alignment"
-msgstr "ブロックの配置"
-
-#: dist/js/editor/editor.js:1
-msgid "Min height"
-msgstr "最小の高さ"
 
 #: dist/js/editor/editor.js:1
 msgid "auto-fill"
@@ -873,6 +866,22 @@ msgstr "auto-fill"
 #: dist/js/editor/editor.js:1
 msgid "auto-fit"
 msgstr "auto-fit"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content"
+msgstr "項目の揃え位置"
+
+#: dist/js/editor/editor.js:1
+msgid "Align items"
+msgstr "垂直配置"
+
+#: dist/js/editor/editor.js:1
+msgid "Block alignment"
+msgstr "ブロックの配置"
+
+#: dist/js/editor/editor.js:1
+msgid "Min height"
+msgstr "最小の高さ"
 
 #: dist/js/editor/editor.js:1
 msgid "Auto repeat"
@@ -891,12 +900,12 @@ msgid "Slash"
 msgstr "スラッシュ"
 
 #: dist/js/editor/editor.js:1
-msgid "Type"
-msgstr "種類"
-
-#: dist/js/editor/editor.js:1
 msgid "Divider"
 msgstr "区切り"
+
+#: dist/js/editor/editor.js:1
+msgid "Type"
+msgstr "種類"
 
 #: dist/js/editor/editor.js:1
 msgid "Position"

@@ -85,10 +85,14 @@ export default function ( { attributes, setAttributes } ) {
 					<TextControl
 						label={
 							<>
-								{ __( 'Width', 'unitone' ) }:
+								{ __( 'Width', 'unitone' ) }&nbsp;:&nbsp;
 								<code>flex-basis</code>
 							</>
 						}
+						help={ __(
+							'If unspecified, the width of the sidebar is calculated from the width of the child elements.',
+							'unitone'
+						) }
 						value={ sidebarWidth }
 						onChange={ ( newAttribute ) => {
 							setAttributes( {
@@ -102,10 +106,14 @@ export default function ( { attributes, setAttributes } ) {
 					<TextControl
 						label={
 							<>
-								{ __( 'Min width', 'unitone' ) }:
+								{ __( 'Min width', 'unitone' ) }&nbsp;:&nbsp;
 								<code>min-width</code>
 							</>
 						}
+						help={ __(
+							'Wrap when content equals this width.',
+							'unitone'
+						) }
 						value={ contentMinWidth }
 						onChange={ ( newAttribute ) => {
 							setAttributes( {

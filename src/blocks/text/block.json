@@ -47,6 +47,7 @@
 			}
 		},
 		"unitone": {
+			"blockAlign": true,
 			"gap": true,
 			"maxWidth": true,
 			"fluidTypography": true,

@@ -2,77 +2,81 @@
  *@see https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/dimensions.js
  */
 
+import {
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 import {
 	useIsJustifyContentDisabled,
+	hasJustifyContentValue,
+	resetJustifyContent,
 	JustifyContentToolbar,
 	JustifyContentEdit,
-	saveJustifyContentProp,
 	editJustifyContentProp,
 } from './justify-content';
 
 import {
 	useIsJustifyContentColumnDisabled,
+	hasJustifyContentColumnValue,
+	resetJustifyContentColumn,
 	JustifyContentColumnToolbar,
 	JustifyContentColumnEdit,
-	saveJustifyContentColumnProp,
 	editJustifyContentColumnProp,
 } from './justify-content-column';
 
 import {
 	useIsAlignItemsDisabled,
+	hasAlignItemsValue,
+	resetAlignItems,
 	AlignItemsToolbar,
 	AlignItemsEdit,
-	saveAlignItemsProp,
 	editAlignItemsProp,
 } from './align-items';
 
 import {
 	useIsBlockAlignDisabled,
+	hasBlockAlignValue,
+	resetBlockAlign,
 	BlockAlignToolbar,
 	BlockAlignEdit,
-	saveBlockAlignProp,
 	editBlockAlignProp,
 } from './block-align';
 
 import {
 	useIsMaxWidthDisabled,
+	hasMaxWidthValue,
+	resetMaxWidth,
 	MaxWidthEdit,
-	saveMaxWidthProp,
 	editMaxWidthProp,
 } from './max-width';
 
 import {
 	useIsMinHeightDisabled,
+	hasMinHeightValue,
+	resetMinHeight,
 	MinHeightEdit,
-	saveMinHeightProp,
 	editMinHeightProp,
 } from './min-height';
 
 import {
 	useIsAutoRepeatDisabled,
+	hasAutoRepeatValue,
+	resetAutoRepeat,
 	AutoRepeatEdit,
-	saveAutoRepeatProp,
 	editAutoRepeatProp,
 } from './auto-repeat';
 
 export {
-	saveAlignItemsProp,
 	editAlignItemsProp,
-	saveJustifyContentProp,
 	editJustifyContentProp,
-	saveJustifyContentColumnProp,
 	editJustifyContentColumnProp,
-	saveBlockAlignProp,
 	editBlockAlignProp,
-	saveMaxWidthProp,
 	editMaxWidthProp,
-	saveMinHeightProp,
 	editMinHeightProp,
-	saveAutoRepeatProp,
 	editAutoRepeatProp,
 };
 
@@ -97,7 +101,6 @@ export function LayoutPanel( props ) {
 	) {
 		return null;
 	}
-
 	return (
 		<>
 			{ ( ! isJustifyContentDisabled ||
@@ -128,29 +131,150 @@ export function LayoutPanel( props ) {
 				! isMinHeightDisabled ||
 				! isAutoRepeatDisabled ) && (
 				<InspectorControls>
-					<PanelBody title={ __( 'Layout', 'unitone' ) }>
+					<ToolsPanel label={ __( 'Layout', 'unitone' ) }>
 						{ ! isJustifyContentDisabled && (
-							<JustifyContentEdit { ...props } />
+							<ToolsPanelItem
+								hasValue={ () =>
+									hasJustifyContentValue( props )
+								}
+								label={ __( 'Justify content', 'unitone' ) }
+								onDeselect={ () =>
+									resetJustifyContent( props )
+								}
+								isShownByDefault
+							>
+								<JustifyContentEdit
+									{ ...props }
+									label={
+										<>
+											{ __(
+												'Justify content',
+												'unitone'
+											) }
+											&nbsp;:&nbsp;
+											<code>justify-content</code>
+										</>
+									}
+								/>
+							</ToolsPanelItem>
 						) }
+
 						{ ! isJustifyContentColumnDisabled && (
-							<JustifyContentColumnEdit { ...props } />
+							<ToolsPanelItem
+								hasValue={ () =>
+									hasJustifyContentColumnValue( props )
+								}
+								label={ __( 'Align items', 'unitone' ) }
+								onDeselect={ () =>
+									resetJustifyContentColumn( props )
+								}
+								isShownByDefault
+							>
+								<JustifyContentColumnEdit
+									{ ...props }
+									label={
+										<>
+											{ __( 'Align items', 'unitone' ) }
+											&nbsp;:&nbsp;
+											<code>justify-content</code>
+										</>
+									}
+								/>
+							</ToolsPanelItem>
 						) }
+
 						{ ! isAlignItemsDisabled && (
-							<AlignItemsEdit { ...props } />
+							<ToolsPanelItem
+								hasValue={ () => hasAlignItemsValue( props ) }
+								label={ __( 'Align items', 'unitone' ) }
+								onDeselect={ () => resetAlignItems( props ) }
+								isShownByDefault
+							>
+								<AlignItemsEdit
+									{ ...props }
+									label={
+										<>
+											{ __( 'Align items', 'unitone' ) }
+											&nbsp;:&nbsp;
+											<code>align-items</code>
+										</>
+									}
+								/>
+							</ToolsPanelItem>
 						) }
+
 						{ ! isBlockAlignDisabled && (
-							<BlockAlignEdit { ...props } />
+							<ToolsPanelItem
+								hasValue={ () => hasBlockAlignValue( props ) }
+								label={ __( 'Block alignment', 'unitone' ) }
+								onDeselect={ () => resetBlockAlign( props ) }
+								isShownByDefault
+							>
+								<BlockAlignEdit
+									{ ...props }
+									label={ __( 'Block alignment', 'unitone' ) }
+								/>
+							</ToolsPanelItem>
 						) }
+
 						{ ! isMaxWidthDisabled && (
-							<MaxWidthEdit { ...props } />
+							<ToolsPanelItem
+								hasValue={ () => hasMaxWidthValue( props ) }
+								label={ __( 'Max width', 'unitone' ) }
+								onDeselect={ () => resetMaxWidth( props ) }
+								isShownByDefault
+							>
+								<MaxWidthEdit
+									{ ...props }
+									label={
+										<>
+											{ __( 'Max width', 'unitone' ) }
+											&nbsp;:&nbsp;<code>max-width</code>
+										</>
+									}
+								/>
+							</ToolsPanelItem>
 						) }
+
 						{ ! isMinHeightDisabled && (
-							<MinHeightEdit { ...props } />
+							<ToolsPanelItem
+								hasValue={ () => hasMinHeightValue( props ) }
+								label={ __( 'Min height', 'unitone' ) }
+								onDeselect={ () => resetMinHeight( props ) }
+								isShownByDefault
+							>
+								<MinHeightEdit
+									{ ...props }
+									label={
+										<>
+											{ __( 'Min height', 'unitone' ) }
+											&nbsp;:&nbsp;<code>min-height</code>
+										</>
+									}
+								/>
+							</ToolsPanelItem>
 						) }
+
 						{ ! isAutoRepeatDisabled && (
-							<AutoRepeatEdit { ...props } />
+							<ToolsPanelItem
+								hasValue={ () => hasAutoRepeatValue( props ) }
+								label={ __( 'Auto repeat', 'unitone' ) }
+								onDeselect={ () => resetAutoRepeat( props ) }
+								isShownByDefault
+							>
+								<AutoRepeatEdit
+									{ ...props }
+									label={
+										<>
+											{ __( 'Auto repeat', 'unitone' ) }
+											&nbsp;:&nbsp;
+											<code>auto-repeat</code>
+										</>
+									}
+								/>
+							</ToolsPanelItem>
 						) }
-					</PanelBody>
+					</ToolsPanel>
 				</InspectorControls>
 			) }
 		</>

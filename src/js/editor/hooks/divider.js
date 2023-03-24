@@ -8,11 +8,9 @@ import {
 import { __ } from '@wordpress/i18n';
 
 import {
-	saveDividerTypeProp,
 	editDividerTypeProp,
 	useIsDividerTypeDisabled,
 	resetDividerType,
-	resetDividerTypeFilter,
 	hasDividerTypeValue,
 	DividerTypeEdit,
 } from './divider-type';
@@ -22,17 +20,11 @@ import {
 	editDividerProp,
 	useIsDividerDisabled,
 	resetDivider,
-	resetDividerFilter,
 	hasDividerValue,
 	DividerEdit,
 } from './divider-object';
 
-export {
-	saveDividerTypeProp,
-	editDividerTypeProp,
-	saveDividerProp,
-	editDividerProp,
-};
+export { editDividerTypeProp, saveDividerProp, editDividerProp };
 
 export function DividerPanel( props ) {
 	const isDividerTypeDisabled = useIsDividerTypeDisabled( props );
@@ -42,27 +34,20 @@ export function DividerPanel( props ) {
 		return null;
 	}
 
-	const resetAll = () => {
-		let newAttributes = { ...props.attributes };
-		newAttributes = resetDividerTypeFilter( newAttributes );
-		newAttributes = resetDividerFilter( newAttributes );
-		props.setAttributes( newAttributes );
-	};
-
 	return (
 		<InspectorControls>
-			<ToolsPanel
-				label={ __( 'Divider', 'unitone' ) }
-				resetAll={ resetAll }
-			>
+			<ToolsPanel label={ __( 'Divider', 'unitone' ) }>
 				{ ! isDividerTypeDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasDividerTypeValue( props ) }
 						label={ __( 'Type', 'unitone' ) }
 						onDeselect={ () => resetDividerType( props ) }
-						isShownByDefault={ true }
+						isShownByDefault
 					>
-						<DividerTypeEdit { ...props } />
+						<DividerTypeEdit
+							{ ...props }
+							label={ __( 'Type', 'unitone' ) }
+						/>
 					</ToolsPanelItem>
 				) }
 
@@ -71,9 +56,12 @@ export function DividerPanel( props ) {
 						hasValue={ () => hasDividerValue( props ) }
 						label={ __( 'Divider', 'unitone' ) }
 						onDeselect={ () => resetDivider( props ) }
-						isShownByDefault={ true }
+						isShownByDefault
 					>
-						<DividerEdit { ...props } />
+						<DividerEdit
+							{ ...props }
+							label={ __( 'Divider', 'unitone' ) }
+						/>
 					</ToolsPanelItem>
 				) }
 			</ToolsPanel>

@@ -1,23 +1,19 @@
 import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport, getBlockSupport } from '@wordpress/blocks';
-import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from './components';
-import { cleanEmptyObject } from './utils';
 
 export function hasGapValue( props ) {
 	return props.attributes?.unitone?.gap !== undefined;
 }
 
 export function resetGap( { attributes = {}, setAttributes } ) {
-	const { unitone } = attributes;
+	delete attributes?.unitone?.gap;
+	const newUnitone = { ...attributes?.unitone };
 
 	setAttributes( {
-		unitone: cleanEmptyObject( {
-			...unitone,
-			gap: undefined,
-		} ),
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
 	} );
 }
 
@@ -46,17 +42,14 @@ export function useIsGapDisabled( props ) {
 
 export function GapEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<SpacingSizeControl
-			label={
-				<>
-					{ __( 'Gap', 'unitone' ) } : <code>gap</code>
-				</>
-			}
+			label={ label }
 			value={ unitone?.gap }
 			onChange={ ( newValue ) => {
 				if ( 'undefined' !== typeof newValue ) {
@@ -64,13 +57,19 @@ export function GapEdit( props ) {
 					// So cast Int all values.
 					newValue = String( newValue );
 				}
+
 				const newUnitone = {
 					...unitone,
-					gap: newValue,
+					gap: newValue || undefined,
 				};
+				if ( null == newUnitone.gap ) {
+					delete newUnitone.gap;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>

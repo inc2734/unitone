@@ -6,7 +6,6 @@ import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 import { alignBottom, alignCenter, alignTop } from './icons';
-import { cleanEmptyObject } from './utils';
 import { physicalToLogical, logicalToPhysical } from '../../helper';
 
 const alignItemsOptions = [
@@ -27,6 +26,19 @@ const alignItemsOptions = [
 	},
 ];
 
+export function hasAlignItemsValue( props ) {
+	return props.attributes?.unitone?.alignItems !== undefined;
+}
+
+export function resetAlignItems( { attributes = {}, setAttributes } ) {
+	delete attributes?.unitone?.alignItems;
+	const newUnitone = { ...attributes?.unitone };
+
+	setAttributes( {
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+	} );
+}
+
 export function useIsAlignItemsDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.alignItems' );
 }
@@ -45,9 +57,14 @@ export function AlignItemsToolbar( props ) {
 					...unitone,
 					alignItems: physicalToLogical( newAttribute ),
 				};
+				if ( null == newUnitone.alignItems ) {
+					delete newUnitone.alignItems;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>
@@ -56,26 +73,21 @@ export function AlignItemsToolbar( props ) {
 
 export function AlignItemsEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-			<legend>
-				{
-					<>
-						{ __( 'Align items', 'unitone' ) } :
-						<code>align-items</code>
-					</>
-				}
-			</legend>
+			{ !! label && <legend>{ label }</legend> }
+
 			<div>
-				{ alignItemsOptions.map( ( { value, icon, label } ) => {
+				{ alignItemsOptions.map( ( { value, icon, iconLabel } ) => {
 					return (
 						<Button
 							key={ value }
-							label={ label }
+							label={ iconLabel }
 							icon={ icon }
 							isPressed={
 								logicalToPhysical(
@@ -94,9 +106,14 @@ export function AlignItemsEdit( props ) {
 											? physicalToLogical( value )
 											: undefined,
 								};
+								if ( null == newUnitone.alignItems ) {
+									delete newUnitone.alignItems;
+								}
 
 								setAttributes( {
-									unitone: cleanEmptyObject( newUnitone ),
+									unitone: !! Object.keys( newUnitone ).length
+										? newUnitone
+										: undefined,
 								} );
 							} }
 						/>

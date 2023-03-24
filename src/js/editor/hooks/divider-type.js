@@ -4,38 +4,6 @@ import { SelectControl } from '@wordpress/components';
 import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from './utils';
-
-export function useIsDividerTypeDisabled( { name: blockName } = {} ) {
-	return ! getBlockSupport( blockName, 'unitone.dividerType' );
-}
-
-export function hasDividerTypeValue( props ) {
-	return (
-		props.attributes?.unitone?.dividerType !== undefined &&
-		props.attributes?.unitone?.dividerType !== ''
-	);
-}
-
-export function resetDividerType( { attributes = {}, setAttributes } ) {
-	const { unitone } = attributes;
-
-	setAttributes( {
-		unitone: cleanEmptyObject( {
-			...unitone,
-			dividerType: undefined,
-		} ),
-	} );
-}
-
-export const resetDividerTypeFilter = ( newAttributes ) => ( {
-	...newAttributes,
-	unitone: cleanEmptyObject( {
-		...newAttributes?.unitone,
-		dividerType: undefined,
-	} ),
-} );
-
 const getDividerTypeOptions = ( { name: blockName } = {} ) => {
 	const options = getBlockSupport( blockName, 'unitone.dividerType' );
 
@@ -67,25 +35,51 @@ const getDividerTypeOptions = ( { name: blockName } = {} ) => {
 	} );
 };
 
+export function useIsDividerTypeDisabled( { name: blockName } = {} ) {
+	return ! getBlockSupport( blockName, 'unitone.dividerType' );
+}
+
+export function hasDividerTypeValue( props ) {
+	return (
+		props.attributes?.unitone?.dividerType !== undefined &&
+		props.attributes?.unitone?.dividerType !== ''
+	);
+}
+
+export function resetDividerType( { attributes = {}, setAttributes } ) {
+	delete attributes?.unitone?.dividerType;
+	const newUnitone = { ...attributes?.unitone };
+
+	setAttributes( {
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+	} );
+}
+
 export function DividerTypeEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<SelectControl
-			label={ __( 'Type', 'unitone' ) }
+			label={ label }
 			value={ unitone?.dividerType || '' }
 			options={ getDividerTypeOptions( props ) }
 			onChange={ ( newValue ) => {
-				const newUnitone = cleanEmptyObject( {
+				const newUnitone = {
 					...unitone,
-					dividerType: newValue,
-				} );
+					dividerType: newValue || undefined,
+				};
+				if ( null == newUnitone.dividerType ) {
+					delete newUnitone.dividerType;
+				}
 
 				setAttributes( {
-					unitone: newUnitone,
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>

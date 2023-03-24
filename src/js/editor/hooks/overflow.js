@@ -2,22 +2,33 @@ import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from './utils';
+const overflowOptions = [
+	{ label: '', value: '' },
+	{
+		label: 'visible',
+		value: 'visible',
+	},
+	{
+		label: 'hidden',
+		value: 'hidden',
+	},
+	{
+		label: 'scroll',
+		value: 'scroll',
+	},
+];
 
 export function hasOverflowValue( props ) {
 	return props.attributes?.unitone?.overflow !== undefined;
 }
 
 export function resetOverflow( { attributes = {}, setAttributes } ) {
-	const { unitone } = attributes;
+	delete attributes?.unitone?.overflow;
+	const newUnitone = { ...attributes?.unitone };
 
 	setAttributes( {
-		unitone: cleanEmptyObject( {
-			...unitone,
-			overflow: undefined,
-		} ),
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
 	} );
 }
 
@@ -27,41 +38,29 @@ export function useIsOverflowDisabled( { name: blockName } = {} ) {
 
 export function OverflowEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<SelectControl
-			label={
-				<>
-					{ __( 'Overflow', 'unitone' ) } :<code>overflow</code>
-				</>
-			}
-			options={ [
-				{ label: '', value: '' },
-				{
-					label: 'visible',
-					value: 'visible',
-				},
-				{
-					label: 'hidden',
-					value: 'hidden',
-				},
-				{
-					label: 'scroll',
-					value: 'scroll',
-				},
-			] }
-			value={ unitone?.overflow }
+			label={ label }
+			options={ overflowOptions }
+			value={ unitone?.overflow || '' }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
-					overflow: newValue,
+					overflow: newValue || undefined,
 				};
+				if ( null == newUnitone.overflow ) {
+					delete newUnitone.overflow;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>

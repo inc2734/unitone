@@ -1,8 +1,18 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from './utils';
+export function hasMinHeightValue( props ) {
+	return props.attributes?.unitone?.minHeight !== undefined;
+}
+
+export function resetMinHeight( { attributes = {}, setAttributes } ) {
+	delete attributes?.unitone?.minHeight;
+	const newUnitone = { ...attributes?.unitone };
+
+	setAttributes( {
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+	} );
+}
 
 export function useIsMinHeightDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.minHeight' );
@@ -10,26 +20,28 @@ export function useIsMinHeightDisabled( { name: blockName } = {} ) {
 
 export function MinHeightEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<TextControl
-			label={
-				<>
-					{ __( 'Min height', 'unitone' ) } : <code>min-height</code>
-				</>
-			}
-			value={ unitone?.minHeight }
+			label={ label }
+			value={ unitone?.minHeight || '' }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
-					minHeight: newValue,
+					minHeight: newValue || undefined,
 				};
+				if ( null == newUnitone.minHeight ) {
+					delete newUnitone.minHeight;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>

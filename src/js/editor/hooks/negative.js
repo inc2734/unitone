@@ -2,22 +2,17 @@ import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
-
-import { cleanEmptyObject } from './utils';
 
 export function hasNegativeValue( props ) {
 	return props.attributes?.unitone?.negative !== undefined;
 }
 
 export function resetNegative( { attributes = {}, setAttributes } ) {
-	const { unitone } = attributes;
+	delete attributes?.unitone?.negative;
+	const newUnitone = { ...attributes?.unitone };
 
 	setAttributes( {
-		unitone: cleanEmptyObject( {
-			...unitone,
-			negative: undefined,
-		} ),
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
 	} );
 }
 
@@ -27,22 +22,28 @@ export function useIsNegativeDisabled( { name: blockName } = {} ) {
 
 export function NegativeEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<ToggleControl
-			label={ __( 'Using negative margin', 'unitone' ) }
+			label={ label }
 			checked={ !! unitone?.negative }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
-					negative: !! newValue,
+					negative: newValue || undefined,
 				};
+				if ( null == newUnitone.negative ) {
+					delete newUnitone.negative;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>

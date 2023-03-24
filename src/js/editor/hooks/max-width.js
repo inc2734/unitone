@@ -1,8 +1,18 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from './utils';
+export function hasMaxWidthValue( props ) {
+	return props.attributes?.unitone?.maxWidth !== undefined;
+}
+
+export function resetMaxWidth( { attributes = {}, setAttributes } ) {
+	delete attributes?.unitone?.maxWidth;
+	const newUnitone = { ...attributes?.unitone };
+
+	setAttributes( {
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+	} );
+}
 
 export function useIsMaxWidthDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.maxWidth' );
@@ -10,26 +20,28 @@ export function useIsMaxWidthDisabled( { name: blockName } = {} ) {
 
 export function MaxWidthEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<TextControl
-			label={
-				<>
-					{ __( 'Max width', 'unitone' ) } : <code>max-width</code>
-				</>
-			}
-			value={ unitone?.maxWidth }
+			label={ label }
+			value={ unitone?.maxWidth || '' }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
-					maxWidth: newValue,
+					maxWidth: newValue || undefined,
 				};
+				if ( null == newUnitone.maxWidth ) {
+					delete newUnitone.maxWidth;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>

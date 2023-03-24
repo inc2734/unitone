@@ -11,7 +11,6 @@ import {
 	hasFluidTypographyValue,
 	resetFluidTypography,
 	FluidTypographyEdit,
-	saveFluidTypographyProp,
 	editFluidTypographyProp,
 } from './fluid-typography';
 
@@ -20,16 +19,10 @@ import {
 	hasHalfLeadingValue,
 	resetHalfLeading,
 	HalfLeadingEdit,
-	saveHalfLeadingProp,
 	editHalfLeadingProp,
 } from './half-leading';
 
-export {
-	saveFluidTypographyProp,
-	editFluidTypographyProp,
-	saveHalfLeadingProp,
-	editHalfLeadingProp,
-};
+export { editFluidTypographyProp, editHalfLeadingProp };
 
 export function TypographyPanel( props ) {
 	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( props );
@@ -39,14 +32,6 @@ export function TypographyPanel( props ) {
 		return null;
 	}
 
-	const createResetAllFilter = ( attribute ) => ( newAttributes ) => ( {
-		...newAttributes,
-		unitone: {
-			...newAttributes.unitone,
-			[ attribute ]: undefined,
-		},
-	} );
-
 	return (
 		<>
 			<InspectorControls __experimentalGroup="typography">
@@ -55,13 +40,14 @@ export function TypographyPanel( props ) {
 						hasValue={ () => hasFluidTypographyValue( props ) }
 						label={ __( 'Fluid typography', 'unitone' ) }
 						onDeselect={ () => resetFluidTypography( props ) }
-						isShownByDefault={ true }
-						resetAllFilter={ createResetAllFilter(
-							'fluidTypograpy'
-						) }
+						isShownByDefault
+						resetAllFilter={ () => resetFluidTypography( props ) }
 						panelId={ props.clientId }
 					>
-						<FluidTypographyEdit { ...props } />
+						<FluidTypographyEdit
+							{ ...props }
+							label={ __( 'Fluid typography', 'unitone' ) }
+						/>
 					</ToolsPanelItem>
 				) }
 
@@ -70,11 +56,14 @@ export function TypographyPanel( props ) {
 						hasValue={ () => hasHalfLeadingValue( props ) }
 						label={ __( 'Half leading', 'unitone' ) }
 						onDeselect={ () => resetHalfLeading( props ) }
-						isShownByDefault={ true }
-						resetAllFilter={ createResetAllFilter( 'halfLeading' ) }
+						isShownByDefault
+						resetAllFilter={ () => resetHalfLeading( props ) }
 						panelId={ props.clientId }
 					>
-						<HalfLeadingEdit { ...props } />
+						<HalfLeadingEdit
+							{ ...props }
+							label={ __( 'Half leading', 'unitone' ) }
+						/>
 					</ToolsPanelItem>
 				) }
 			</InspectorControls>

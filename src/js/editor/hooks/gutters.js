@@ -1,23 +1,19 @@
 import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport } from '@wordpress/blocks';
-import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from './components';
-import { cleanEmptyObject } from './utils';
 
 export function hasGuttersValue( props ) {
 	return props.attributes?.unitone?.gutters !== undefined;
 }
 
 export function resetGutters( { attributes = {}, setAttributes } ) {
-	const { unitone } = attributes;
+	delete attributes?.unitone?.gutters;
+	const newUnitone = { ...attributes?.unitone };
 
 	setAttributes( {
-		unitone: cleanEmptyObject( {
-			...unitone,
-			gutters: undefined,
-		} ),
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
 	} );
 }
 
@@ -27,18 +23,14 @@ export function useIsGuttersDisabled( { name: blockName } = {} ) {
 
 export function GuttersEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<SpacingSizeControl
-			label={
-				<>
-					{ __( 'Gutters', 'unitone' ) } :
-					<code>padding-right/left</code>
-				</>
-			}
+			label={ label }
 			value={ unitone?.gutters }
 			onChange={ ( newValue ) => {
 				if ( 'undefined' !== typeof newValue ) {
@@ -46,13 +38,19 @@ export function GuttersEdit( props ) {
 					// So cast Int all values.
 					newValue = String( newValue );
 				}
+
 				const newUnitone = {
 					...unitone,
-					gutters: newValue,
+					gutters: newValue || undefined,
 				};
+				if ( null == newUnitone.gutters ) {
+					delete newUnitone.gutters;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>

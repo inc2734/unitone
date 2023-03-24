@@ -11,7 +11,6 @@ import {
 	hasPaddingValue,
 	resetPadding,
 	PaddingEdit,
-	savePaddingProp,
 	editPaddingProp,
 } from './padding';
 
@@ -20,7 +19,6 @@ import {
 	hasGuttersValue,
 	resetGutters,
 	GuttersEdit,
-	saveGuttersProp,
 	editGuttersProp,
 } from './gutters';
 
@@ -29,7 +27,6 @@ import {
 	hasGapValue,
 	resetGap,
 	GapEdit,
-	saveGapProp,
 	editGapProp,
 } from './gap';
 
@@ -38,7 +35,6 @@ import {
 	hasNegativeValue,
 	resetNegative,
 	NegativeEdit,
-	saveNegativeProp,
 	editNegativeProp,
 } from './negative';
 
@@ -47,20 +43,14 @@ import {
 	hasOverflowValue,
 	resetOverflow,
 	OverflowEdit,
-	saveOverflowProp,
 	editOverflowProp,
 } from './overflow';
 
 export {
-	savePaddingProp,
 	editPaddingProp,
-	saveGuttersProp,
 	editGuttersProp,
-	saveGapProp,
 	editGapProp,
-	saveNegativeProp,
 	editNegativeProp,
-	saveOverflowProp,
 	editOverflowProp,
 };
 
@@ -81,14 +71,6 @@ export function DimensionsPanel( props ) {
 		return null;
 	}
 
-	const createResetAllFilter = ( attribute ) => ( newAttributes ) => ( {
-		...newAttributes,
-		unitone: {
-			...newAttributes.unitone,
-			[ attribute ]: undefined,
-		},
-	} );
-
 	return (
 		<>
 			<InspectorControls __experimentalGroup="dimensions">
@@ -97,11 +79,19 @@ export function DimensionsPanel( props ) {
 						hasValue={ () => hasPaddingValue( props ) }
 						label={ __( 'Padding', 'unitone' ) }
 						onDeselect={ () => resetPadding( props ) }
-						resetAllFilter={ createResetAllFilter( 'padding' ) }
-						isShownByDefault={ true }
+						resetAllFilter={ () => resetPadding( props ) }
+						isShownByDefault
 						panelId={ props.clientId }
 					>
-						<PaddingEdit { ...props } />
+						<PaddingEdit
+							{ ...props }
+							label={
+								<>
+									{ __( 'Padding', 'unitone' ) }&nbsp;:&nbsp;
+									<code>padding</code>
+								</>
+							}
+						/>
 					</ToolsPanelItem>
 				) }
 
@@ -110,11 +100,19 @@ export function DimensionsPanel( props ) {
 						hasValue={ () => hasGuttersValue( props ) }
 						label={ __( 'Gutters', 'unitone' ) }
 						onDeselect={ () => resetGutters( props ) }
-						resetAllFilter={ createResetAllFilter( 'gutters' ) }
+						resetAllFilter={ () => resetGutters( props ) }
 						isShownByDefault={ true }
 						panelId={ props.clientId }
 					>
-						<GuttersEdit { ...props } />
+						<GuttersEdit
+							{ ...props }
+							label={
+								<>
+									{ __( 'Gutters', 'unitone' ) }&nbsp;:&nbsp;
+									<code>padding-right/left</code>
+								</>
+							}
+						/>
 					</ToolsPanelItem>
 				) }
 
@@ -123,11 +121,19 @@ export function DimensionsPanel( props ) {
 						hasValue={ () => hasGapValue( props ) }
 						label={ __( 'Gap', 'unitone' ) }
 						onDeselect={ () => resetGap( props ) }
-						resetAllFilter={ createResetAllFilter( 'gap' ) }
+						resetAllFilter={ () => resetGap( props ) }
 						isShownByDefault={ true }
 						panelId={ props.clientId }
 					>
-						<GapEdit { ...props } />
+						<GapEdit
+							{ ...props }
+							label={
+								<>
+									{ __( 'Gap', 'unitone' ) }&nbsp;:&nbsp;
+									<code>gap</code>
+								</>
+							}
+						/>
 					</ToolsPanelItem>
 				) }
 
@@ -136,11 +142,14 @@ export function DimensionsPanel( props ) {
 						hasValue={ () => hasNegativeValue( props ) }
 						label={ __( 'Using negative margin', 'unitone' ) }
 						onDeselect={ () => resetNegative( props ) }
-						resetAllFilter={ createResetAllFilter( 'negative' ) }
+						resetAllFilter={ () => resetNegative( props ) }
 						isShownByDefault={ true }
 						panelId={ props.clientId }
 					>
-						<NegativeEdit { ...props } />
+						<NegativeEdit
+							{ ...props }
+							label={ __( 'Using negative margin', 'unitone' ) }
+						/>
 					</ToolsPanelItem>
 				) }
 
@@ -149,11 +158,19 @@ export function DimensionsPanel( props ) {
 						hasValue={ () => hasOverflowValue( props ) }
 						label={ __( 'Overflow', 'unitone' ) }
 						onDeselect={ () => resetOverflow( props ) }
-						resetAllFilter={ createResetAllFilter( 'overflow' ) }
+						resetAllFilter={ () => resetOverflow( props ) }
 						isShownByDefault={ true }
 						panelId={ props.clientId }
 					>
-						<OverflowEdit { ...props } />
+						<OverflowEdit
+							{ ...props }
+							label={
+								<>
+									{ __( 'Overflow', 'unitone' ) }&nbsp;:&nbsp;
+									<code>overflow</code>
+								</>
+							}
+						/>
 					</ToolsPanelItem>
 				) }
 			</InspectorControls>

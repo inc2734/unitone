@@ -6,7 +6,6 @@ import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { alignBottom, alignCenter, alignTop, alignSpaceBetween } from './icons';
 
-import { cleanEmptyObject } from './utils';
 import { physicalToLogical, logicalToPhysical } from '../../helper';
 
 const justifyContentColumnOptions = [
@@ -32,6 +31,22 @@ const justifyContentColumnOptions = [
 	},
 ];
 
+export function hasJustifyContentColumnValue( props ) {
+	return props.attributes?.unitone?.justifyContent !== undefined;
+}
+
+export function resetJustifyContentColumn( {
+	attributes = {},
+	setAttributes,
+} ) {
+	delete attributes?.unitone?.justifyContent;
+	const newUnitone = { ...attributes?.unitone };
+
+	setAttributes( {
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+	} );
+}
+
 export function useIsJustifyContentColumnDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.justifyContentColumn' );
 }
@@ -53,9 +68,14 @@ export function JustifyContentColumnToolbar( props ) {
 					...unitone,
 					justifyContent: physicalToLogical( newAttribute ),
 				};
+				if ( null == newUnitone.justifyContent ) {
+					delete newUnitone.justifyContent;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>
@@ -64,27 +84,22 @@ export function JustifyContentColumnToolbar( props ) {
 
 export function JustifyContentColumnEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-			<legend>
-				{
-					<>
-						{ __( 'Align items', 'unitone' ) } :
-						<code>justify-content</code>
-					</>
-				}
-			</legend>
+			{ !! label && <legend>{ label }</legend> }
+
 			<div>
 				{ justifyContentColumnOptions.map(
-					( { value, icon, label } ) => {
+					( { value, icon, iconLabel } ) => {
 						return (
 							<Button
 								key={ value }
-								label={ label }
+								label={ iconLabel }
 								icon={ icon }
 								isPressed={
 									logicalToPhysical(
@@ -101,9 +116,15 @@ export function JustifyContentColumnEdit( props ) {
 												? physicalToLogical( value )
 												: undefined,
 									};
+									if ( null == newUnitone.justifyContent ) {
+										delete newUnitone.justifyContent;
+									}
 
 									setAttributes( {
-										unitone: cleanEmptyObject( newUnitone ),
+										unitone: !! Object.keys( newUnitone )
+											.length
+											? newUnitone
+											: undefined,
 									} );
 								} }
 							/>

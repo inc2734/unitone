@@ -6,7 +6,6 @@ import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { justifyLeft, justifyCenter, justifyRight } from '@wordpress/icons';
 
-import { cleanEmptyObject } from './utils';
 import { physicalToLogical, logicalToPhysical } from '../../helper';
 
 const blockAlignOptions = [
@@ -26,6 +25,19 @@ const blockAlignOptions = [
 		label: __( 'Right', 'unitone' ),
 	},
 ];
+
+export function hasBlockAlignValue( props ) {
+	return props.attributes?.unitone?.blockAlign !== undefined;
+}
+
+export function resetBlockAlign( { attributes = {}, setAttributes } ) {
+	delete attributes?.unitone?.blockAlign;
+	const newUnitone = { ...attributes?.unitone };
+
+	setAttributes( {
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+	} );
+}
 
 export function useIsBlockAlignDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.blockAlign' );
@@ -47,9 +59,14 @@ export function BlockAlignToolbar( props ) {
 						...unitone,
 						blockAlign: physicalToLogical( newAttribute ),
 					};
+					if ( null == newUnitone.blockAlign ) {
+						delete newUnitone.blockAlign;
+					}
 
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: !! Object.keys( newUnitone ).length
+							? newUnitone
+							: undefined,
 					} );
 				} }
 			/>
@@ -59,19 +76,21 @@ export function BlockAlignToolbar( props ) {
 
 export function BlockAlignEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-			<legend>{ __( 'Block alignment', 'unitone' ) }</legend>
+			{ !! label && <legend>{ label }</legend> }
+
 			<div>
-				{ blockAlignOptions.map( ( { value, icon, label } ) => {
+				{ blockAlignOptions.map( ( { value, icon, iconLabel } ) => {
 					return (
 						<Button
 							key={ value }
-							label={ label }
+							label={ iconLabel }
 							icon={ icon }
 							isPressed={
 								logicalToPhysical( unitone?.blockAlign ) ===
@@ -87,9 +106,14 @@ export function BlockAlignEdit( props ) {
 											? physicalToLogical( value )
 											: undefined,
 								};
+								if ( null == newUnitone.blockAlign ) {
+									delete newUnitone.blockAlign;
+								}
 
 								setAttributes( {
-									unitone: cleanEmptyObject( newUnitone ),
+									unitone: !! Object.keys( newUnitone ).length
+										? newUnitone
+										: undefined,
 								} );
 							} }
 						/>

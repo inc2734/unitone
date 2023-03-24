@@ -1,7 +1,6 @@
 import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients } from '@wordpress/block-editor';
 import { __experimentalBorderControl as BorderControl } from '@wordpress/components';
 import { hasBlockSupport } from '@wordpress/blocks';
-import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from './utils';
 
@@ -85,25 +84,14 @@ export function hasDividerValue( props ) {
 }
 
 export function resetDivider( { attributes = {}, setAttributes } ) {
-	const { unitone } = attributes;
+	delete attributes?.unitone?.divider;
+	delete attributes?.unitone?.dividerColor;
+	const newUnitone = { ...attributes?.unitone };
 
 	setAttributes( {
-		unitone: cleanEmptyObject( {
-			...unitone,
-			divider: undefined,
-			dividerColor: undefined,
-		} ),
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
 	} );
 }
-
-export const resetDividerFilter = ( newAttributes ) => ( {
-	...newAttributes,
-	unitone: cleanEmptyObject( {
-		...newAttributes?.unitone,
-		dividerColor: undefined,
-		divider: undefined,
-	} ),
-} );
 
 export function useIsDividerDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.divider' );
@@ -111,6 +99,7 @@ export function useIsDividerDisabled( { name: blockName } = {} ) {
 
 export function DividerEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
@@ -160,7 +149,7 @@ export function DividerEdit( props ) {
 
 	return (
 		<BorderControl
-			label={ __( 'Divider', 'unitone' ) }
+			label={ label }
 			value={ hydratedDivider }
 			withSlider={ true }
 			onChange={ onChangeDivider }

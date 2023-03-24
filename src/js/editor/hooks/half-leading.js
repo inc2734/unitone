@@ -1,21 +1,16 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
-
-import { cleanEmptyObject } from './utils';
 
 export function hasHalfLeadingValue( props ) {
 	return props.attributes?.unitone?.halfLeading !== undefined;
 }
 
 export function resetHalfLeading( { attributes = {}, setAttributes } ) {
-	const { unitone } = attributes;
+	delete attributes?.unitone?.halfLeading;
+	const newUnitone = { ...attributes?.unitone };
 
 	setAttributes( {
-		unitone: cleanEmptyObject( {
-			...unitone,
-			halfLeading: undefined,
-		} ),
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
 	} );
 }
 
@@ -24,27 +19,29 @@ export function useIsHalfLeadingDisabled( { name: blockName } = {} ) {
 }
 
 export function HalfLeadingEdit( props ) {
-	const { attributes, setAttributes } = props;
+	const { label, attributes, setAttributes } = props;
 
 	const { unitone } = attributes;
 
 	return (
 		<RangeControl
-			label={ __( 'Half leading', 'unitone' ) }
+			label={ label }
 			value={ unitone?.halfLeading }
 			onChange={ ( newValue ) => {
-				newValue = isNaN( newValue ) ? undefined : newValue;
-
 				const newUnitone = {
 					...unitone,
-					halfLeading:
-						undefined === newValue
-							? undefined
-							: parseFloat( newValue ),
+					halfLeading: ! isNaN( newValue )
+						? parseFloat( newValue )
+						: undefined,
 				};
+				if ( null == newUnitone.halfLeading ) {
+					delete newUnitone.halfLeading;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 			allowReset={ true }

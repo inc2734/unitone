@@ -4,23 +4,19 @@
 import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport } from '@wordpress/blocks';
-import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from './components';
-import { cleanEmptyObject } from './utils';
 
 export function hasPaddingValue( props ) {
 	return props.attributes?.unitone?.padding !== undefined;
 }
 
 export function resetPadding( { attributes = {}, setAttributes } ) {
-	const { unitone } = attributes;
+	delete attributes?.unitone?.padding;
+	const newUnitone = { ...attributes?.unitone };
 
 	setAttributes( {
-		unitone: cleanEmptyObject( {
-			...unitone,
-			padding: undefined,
-		} ),
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
 	} );
 }
 
@@ -30,31 +26,34 @@ export function useIsPaddingDisabled( { name: blockName } = {} ) {
 
 export function PaddingEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<SpacingSizeControl
-			label={
-				<>
-					{ __( 'Padding', 'unitone' ) } : <code>padding</code>
-				</>
-			}
+			label={ label }
 			value={ unitone?.padding }
 			onChange={ ( newValue ) => {
-				if ( 'undefined' !== typeof newValue ) {
+				if ( null != newValue ) {
 					// RangeControl returns Int, SelectControl returns String.
 					// So cast Int all values.
 					newValue = String( newValue );
 				}
+
 				const newUnitone = {
 					...unitone,
-					padding: newValue,
+					padding: newValue || undefined,
 				};
+				if ( null == newUnitone.padding ) {
+					delete newUnitone.padding;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>

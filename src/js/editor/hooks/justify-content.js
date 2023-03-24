@@ -11,7 +11,6 @@ import {
 	justifySpaceBetween,
 } from '@wordpress/icons';
 
-import { cleanEmptyObject } from './utils';
 import { physicalToLogical, logicalToPhysical } from '../../helper';
 
 const justifyContentOptions = [
@@ -37,6 +36,19 @@ const justifyContentOptions = [
 	},
 ];
 
+export function hasJustifyContentValue( props ) {
+	return props.attributes?.unitone?.justifyContent !== undefined;
+}
+
+export function resetJustifyContent( { attributes = {}, setAttributes } ) {
+	delete attributes?.unitone?.justifyContent;
+	const newUnitone = { ...attributes?.unitone };
+
+	setAttributes( {
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+	} );
+}
+
 export function useIsJustifyContentDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.justifyContent' );
 }
@@ -58,9 +70,14 @@ export function JustifyContentToolbar( props ) {
 					...unitone,
 					justifyContent: physicalToLogical( newAttribute ),
 				};
+				if ( null == newUnitone.justifyContent ) {
+					delete newUnitone.justifyContent;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>
@@ -69,26 +86,21 @@ export function JustifyContentToolbar( props ) {
 
 export function JustifyContentEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-			<legend>
-				{
-					<>
-						{ __( 'Justify content', 'unitone' ) } :
-						<code>justify-content</code>
-					</>
-				}
-			</legend>
+			{ !! label && <legend>{ label }</legend> }
+
 			<div>
-				{ justifyContentOptions.map( ( { value, icon, label } ) => {
+				{ justifyContentOptions.map( ( { value, icon, iconLabel } ) => {
 					return (
 						<Button
 							key={ value }
-							label={ label }
+							label={ iconLabel }
 							icon={ icon }
 							isPressed={
 								logicalToPhysical( unitone?.justifyContent ) ===
@@ -104,9 +116,14 @@ export function JustifyContentEdit( props ) {
 											? physicalToLogical( value )
 											: undefined,
 								};
+								if ( null == newUnitone.justifyContent ) {
+									delete newUnitone.justifyContent;
+								}
 
 								setAttributes( {
-									unitone: cleanEmptyObject( newUnitone ),
+									unitone: !! Object.keys( newUnitone ).length
+										? newUnitone
+										: undefined,
 								} );
 							} }
 						/>

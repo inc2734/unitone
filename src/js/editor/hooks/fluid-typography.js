@@ -2,22 +2,17 @@ import classnames from 'classnames';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
-
-import { cleanEmptyObject } from './utils';
 
 export function hasFluidTypographyValue( props ) {
 	return props.attributes?.unitone?.fluidTypography !== undefined;
 }
 
 export function resetFluidTypography( { attributes = {}, setAttributes } ) {
-	const { unitone } = attributes;
+	delete attributes?.unitone?.fluidTypography;
+	const newUnitone = { ...attributes?.unitone };
 
 	setAttributes( {
-		unitone: cleanEmptyObject( {
-			...unitone,
-			fluidTypography: undefined,
-		} ),
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
 	} );
 }
 
@@ -27,22 +22,28 @@ export function useIsFluidTypographyDisabled( { name: blockName } = {} ) {
 
 export function FluidTypographyEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<ToggleControl
-			label={ __( 'Fluid typography', 'unitone' ) }
+			label={ label }
 			checked={ !! unitone?.fluidTypography }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
-					fluidTypography: !! newValue,
+					fluidTypography: newValue || undefined,
 				};
+				if ( null == newUnitone.fluidTypography ) {
+					delete newUnitone.fluidTypography;
+				}
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>

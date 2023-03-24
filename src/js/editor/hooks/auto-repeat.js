@@ -4,8 +4,6 @@ import { SelectControl } from '@wordpress/components';
 import { hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from './utils';
-
 const autoRepeatOptions = [
 	{
 		label: '',
@@ -33,48 +31,39 @@ export function hasAutoRepeatValue( props ) {
 }
 
 export function resetAutoRepeat( { attributes = {}, setAttributes } ) {
-	const { unitone } = attributes;
+	delete attributes?.unitone?.autoRepeat;
+	const newUnitone = { ...attributes?.unitone };
 
 	setAttributes( {
-		unitone: cleanEmptyObject( {
-			...unitone,
-			AutoRepeat: undefined,
-		} ),
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
 	} );
 }
 
-export const resetAutoRepeatFilter = ( newAttributes ) => ( {
-	...newAttributes,
-	unitone: cleanEmptyObject( {
-		...newAttributes?.unitone,
-		AutoRepeat: undefined,
-	} ),
-} );
-
 export function AutoRepeatEdit( props ) {
 	const {
+		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
 	return (
 		<SelectControl
-			label={
-				<>
-					{ __( 'Auto repeat', 'unitone' ) } :{ ' ' }
-					<code>auto-repeat</code>
-				</>
-			}
+			label={ label }
 			value={ unitone?.autoRepeat || '' }
 			options={ autoRepeatOptions }
 			onChange={ ( newValue ) => {
-				const newUnitone = cleanEmptyObject( {
+				const newUnitone = {
 					...unitone,
-					autoRepeat: newValue,
-				} );
+					autoRepeat: newValue || undefined,
+				};
+				if ( null == newUnitone.autoRepeat ) {
+					delete newUnitone.autoRepeat;
+				}
 
 				setAttributes( {
-					unitone: newUnitone,
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
 				} );
 			} }
 		/>

@@ -14,8 +14,20 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
 		"typography": {
 			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
 			"__experimentalDefaultControls": {
 				"fontSize": true
 			}
@@ -23,7 +35,9 @@
 		"unitone": {
 			"alignItems": true,
 			"justifyContent": true,
-			"gap": true
+			"gap": true,
+			"fluidTypography": true,
+			"lineHeight": true
 		}
 	},
 	"category": "unitone/layout",

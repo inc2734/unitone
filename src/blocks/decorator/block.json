@@ -44,14 +44,17 @@
 			"background": true,
 			"color": true,
 			"link": true,
-			"gradients": true,
-			"__experimentalDefaultControls": {
-				"background": true,
-				"text": true
-			}
+			"gradients": true
 		},
 		"typography": {
 			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
 			"__experimentalDefaultControls": {
 				"fontSize": true
 			}
@@ -71,7 +74,9 @@
 		"unitone": {
 			"padding": true,
 			"position": true,
-			"overflow": true
+			"overflow": true,
+			"fluidTypography": true,
+			"lineHeight": true
 		}
 	},
 	"category": "unitone/layout",

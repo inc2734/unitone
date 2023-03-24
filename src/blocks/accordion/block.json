@@ -46,10 +46,26 @@
 		"color": {
 			"background": true,
 			"color": true,
+			"gradients": true,
 			"link": true
 		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
 		"unitone": {
-			"padding": true
+			"padding": true,
+			"fluidTypography": true,
+			"lineHeight": true
 		}
 	},
 	"styles": [

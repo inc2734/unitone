@@ -222,7 +222,7 @@ export default function ( {
 				</Popover>
 			) }
 
-			<InspectorControls __experimentalGroup="advanced">
+			<InspectorControls group="advanced">
 				<TextControl
 					label={ __( 'Link rel' ) }
 					value={ rel || '' }

@@ -73,7 +73,7 @@ export function DimensionsPanel( props ) {
 
 	return (
 		<>
-			<InspectorControls __experimentalGroup="dimensions">
+			<InspectorControls group="dimensions">
 				{ ! isPaddingDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasPaddingValue( props ) }

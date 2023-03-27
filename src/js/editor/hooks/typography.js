@@ -34,7 +34,7 @@ export function TypographyPanel( props ) {
 
 	return (
 		<>
-			<InspectorControls __experimentalGroup="typography">
+			<InspectorControls group="typography">
 				{ ! isFluidTypographyDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasFluidTypographyValue( props ) }

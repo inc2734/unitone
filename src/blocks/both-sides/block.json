@@ -39,6 +39,32 @@
 			"lineHeight": true
 		}
 	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "unitone/both-sides-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Lorem ipsum"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/both-sides-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "dolor sit"
+						}
+					}
+				]
+			}
+		]
+	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js"
 }

@@ -40,6 +40,28 @@
 			"lineHeight": true
 		}
 	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Lorem ipsum amet"
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "dolor sit"
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "amet"
+				}
+			}
+		]
+	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js"
 }

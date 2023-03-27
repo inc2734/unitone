@@ -1,11 +1,11 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { __ } from '@wordpress/i18n';
 
 import icon from '../icon';
 import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import transforms from './transforms';
+import variations from './variations';
 
 registerBlockType( 'unitone/cluster-divided', {
 	icon: {
@@ -15,39 +15,5 @@ registerBlockType( 'unitone/cluster-divided', {
 	save,
 	deprecated,
 	transforms,
-	variations: [
-		{
-			name: 'cluster-divided-stripe',
-			title: __( 'Cluster (Divider: stripe)', 'unitone' ),
-			isDefault: true,
-			attributes: { unitone: { dividerType: 'stripe' } },
-			scope: [ 'inserter' ],
-			innerBlocks: [
-				[ 'unitone/cluster-divided-content' ],
-				[ 'unitone/cluster-divided-content' ],
-			],
-		},
-		{
-			name: 'cluster-divided-slash',
-			title: __( 'Cluster (Divider: slash)', 'unitone' ),
-			isDefault: false,
-			attributes: { unitone: { dividerType: 'slash' } },
-			scope: [ 'inserter' ],
-			innerBlocks: [
-				[ 'unitone/cluster-divided-content' ],
-				[ 'unitone/cluster-divided-content' ],
-			],
-		},
-		{
-			name: 'cluster-divided-bordered',
-			title: __( 'Cluster (Divider: bordered)', 'unitone' ),
-			isDefault: false,
-			attributes: { unitone: { dividerType: 'bordered' } },
-			scope: [ 'inserter' ],
-			innerBlocks: [
-				[ 'unitone/cluster-divided-content' ],
-				[ 'unitone/cluster-divided-content' ],
-			],
-		},
-	],
+	variations,
 } );

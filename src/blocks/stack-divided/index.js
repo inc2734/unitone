@@ -1,11 +1,11 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { __ } from '@wordpress/i18n';
 
 import icon from '../icon';
 import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import transforms from './transforms';
+import variations from './variations';
 
 registerBlockType( 'unitone/stack-divided', {
 	icon: {
@@ -15,39 +15,5 @@ registerBlockType( 'unitone/stack-divided', {
 	save,
 	deprecated,
 	transforms,
-	variations: [
-		{
-			name: 'stack-divided-stripe',
-			title: __( 'Stack (Divider: stripe)', 'unitone' ),
-			isDefault: true,
-			attributes: { unitone: { dividerType: 'stripe' } },
-			scope: [ 'inserter' ],
-			innerBlocks: [
-				[ 'unitone/stack-divided-content' ],
-				[ 'unitone/stack-divided-content' ],
-			],
-		},
-		{
-			name: 'stack-divided-underline',
-			title: __( 'Stack (Divider: underline)', 'unitone' ),
-			isDefault: false,
-			attributes: { unitone: { dividerType: 'underline' } },
-			scope: [ 'inserter' ],
-			innerBlocks: [
-				[ 'unitone/stack-divided-content' ],
-				[ 'unitone/stack-divided-content' ],
-			],
-		},
-		{
-			name: 'stack-divided-bordered',
-			title: __( 'Stack (Divider: bordered)', 'unitone' ),
-			isDefault: false,
-			attributes: { unitone: { dividerType: 'bordered' } },
-			scope: [ 'inserter' ],
-			innerBlocks: [
-				[ 'unitone/stack-divided-content' ],
-				[ 'unitone/stack-divided-content' ],
-			],
-		},
-	],
+	variations,
 } );

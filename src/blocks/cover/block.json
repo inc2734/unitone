@@ -43,6 +43,43 @@
 			"lineHeight": true
 		}
 	},
+	"example": {
+		"attributes": {
+			"unitone": {
+				"minHeight": "500px"
+			}
+		},
+		"innerBlocks": [
+			{
+				"name": "unitone/cover-content",
+				"attributes": {
+					"position": "top"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/cover-content",
+				"attributes": {
+					"position": "bottom"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+						}
+					}
+				]
+			}
+		]
+	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js"
 }

@@ -53,6 +53,32 @@
 			"lineHeight": true
 		}
 	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "unitone/with-sidebar-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Lorem ipsum dolor sit amet"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/with-sidebar-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "consectetur"
+						}
+					}
+				]
+			}
+		]
+	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js"
 }

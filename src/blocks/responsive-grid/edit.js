@@ -83,6 +83,17 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									/>
 								</>
 							}
+							help={
+								__(
+									'When the column width is less than this value, it is aligned in a single column.',
+									'unitone'
+								) +
+								' ' +
+								__(
+									'If "auto-repeat" is "auto-fill" the column will maintain this size." auto-fit", the column will stretch to fill the available space.',
+									'unitone'
+								)
+							}
 							value={ columnMinWidth || '' }
 							onChange={ ( newAttribute ) =>
 								setAttributes( {

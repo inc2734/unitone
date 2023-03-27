@@ -42,6 +42,28 @@
 			"lineHeight": true
 		}
 	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Duis aute irure dolor in reprehenderit in voluptate velit esse cill."
+				}
+			}
+		]
+	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js"
 }

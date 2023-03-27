@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-27T02:53:38+00:00\n"
+"POT-Creation-Date: 2023-03-27T06:26:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -61,6 +61,7 @@ msgstr ""
 #: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
 msgstr ""
 
@@ -610,12 +611,6 @@ msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
-#: dist/blocks/decorator/index.js:1
-#: dist/blocks/stack-divided/index.js:1
-msgid "HTML element"
-msgstr ""
-
-#: dist/blocks/cluster-divided/index.js:1
 msgid "Cluster (Divider: stripe)"
 msgstr ""
 
@@ -627,8 +622,10 @@ msgstr ""
 msgid "Cluster (Divider: bordered)"
 msgstr ""
 
-#: dist/blocks/cover-content/index.js:1
-msgid "Fill a space"
+#: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/decorator/index.js:1
+#: dist/blocks/stack-divided/index.js:1
+msgid "HTML element"
 msgstr ""
 
 #: dist/blocks/cover-content/index.js:1
@@ -643,8 +640,8 @@ msgstr ""
 msgid "Cover content (Bottom)"
 msgstr ""
 
-#: dist/blocks/cover/index.js:1
-msgid "No padding"
+#: dist/blocks/cover-content/index.js:1
+msgid "Fill a space"
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
@@ -675,16 +672,12 @@ msgstr ""
 msgid "Cover (Top / Center / Bottom)"
 msgstr ""
 
+#: dist/blocks/cover/index.js:1
+msgid "No padding"
+msgstr ""
+
 #: dist/blocks/decorator/index.js:1
 msgid "With shadow"
-msgstr ""
-
-#: dist/blocks/frame/index.js:1
-msgid "Preferred aspect ratio"
-msgstr ""
-
-#: dist/blocks/frame/index.js:1
-msgid "Switch aspect ratio when portrait"
 msgstr ""
 
 #: dist/blocks/frame/index.js:1
@@ -693,6 +686,14 @@ msgstr ""
 
 #: dist/blocks/frame/index.js:1
 msgid "Framed video"
+msgstr ""
+
+#: dist/blocks/frame/index.js:1
+msgid "Preferred aspect ratio"
+msgstr ""
+
+#: dist/blocks/frame/index.js:1
+msgid "Switch aspect ratio when portrait"
 msgstr ""
 
 #: dist/blocks/layer/index.js:1
@@ -730,6 +731,14 @@ msgstr ""
 
 #: dist/blocks/reel/index.js:1
 msgid "No scrollbar"
+msgstr ""
+
+#: dist/blocks/responsive-grid/index.js:3
+msgid "When the column width is less than this value, it is aligned in a single column."
+msgstr ""
+
+#: dist/blocks/responsive-grid/index.js:3
+msgid "If \"auto-repeat\" is \"auto-fill\" the column will maintain this size.\" auto-fit\", the column will stretch to fill the available space."
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -862,10 +871,6 @@ msgstr ""
 
 #: dist/blocks/text/index.js:1
 msgid "The \"Max width\" setting is used as the width of each column."
-msgstr ""
-
-#: dist/blocks/with-sidebar/index.js:1
-msgid "General"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1

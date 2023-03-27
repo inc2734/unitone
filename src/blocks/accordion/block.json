@@ -83,6 +83,16 @@
 			"label": "Panel"
 		}
 	],
+	"example": {
+		"attributes": {
+			"q": true,
+			"qLabel": "Q",
+			"a": true,
+			"aLabel": "A",
+			"summary": "Lorem ipsum dolor sit amet",
+			"className": "is-style-panel"
+		}
+	},
 	"category": "unitone/component",
 	"editorScript": "file:./index.js",
 	"style": "file:./style-index.css"

@@ -43,6 +43,29 @@
 			"lineHeight": true
 		}
 	},
+	"example": {
+		"viewportWidth": 1280,
+		"innerBlocks": [
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+				}
+			}
+		]
+	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js"
 }

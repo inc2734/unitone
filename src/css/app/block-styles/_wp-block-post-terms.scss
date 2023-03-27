@@ -2,14 +2,16 @@
 	.wp-block-post-terms.is-style-badge {
 		display: flex;
 		flex-wrap: wrap;
+		align-items: center;
 		gap: var(--unitone--s-2);
 		background-color: transparent !important;
-		color: var(--wp--preset--color--white);
 
 		a {
+			--unitone--font-size: -2;
+
 			display: inline-block;
 			border-radius: var(--unitone--global--border-radius);
-			padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
+			padding: calc(var(--unitone--s-1) / 2) var(--unitone--s-1);
 			text-decoration: none;
 		}
 
@@ -18,8 +20,25 @@
 		}
 	}
 
-	:where(.wp-block-post-terms.is-style-badge) a {
+	:where(.wp-block-post-terms.is-style-badge) a:not(.element-button) {
 		background-color: var(--wp--preset--color--unitone-accent);
 		color: var(--wp--preset--color--unitone-text-alt);
+	}
+
+	.wp-block-post-terms.is-style-outline {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--unitone--s-2);
+		background-color: transparent !important;
+
+		a {
+			--unitone--font-size: -2;
+
+			display: inline-block;
+			border: 1px solid currentColor;
+			padding: calc(var(--unitone--s-1) / 2) var(--unitone--s-1);
+			text-decoration: none;
+		}
 	}
 }

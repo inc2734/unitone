@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-27T06:26:04+00:00\n"
+"POT-Creation-Date: 2023-03-27T14:10:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -18,7 +18,7 @@ msgstr ""
 #: inc/block-categories.php:18
 #: inc/block-categories.php:29
 #: inc/block-categories.php:40
-#: inc/block-styles.php:77
+#: inc/block-styles.php:85
 msgid "unitone"
 msgstr ""
 
@@ -154,34 +154,38 @@ msgid "Badge"
 msgstr ""
 
 #: inc/block-styles.php:21
-#: dist/js/editor/editor.js:1
-msgid "Underline"
+msgid "Outline"
 msgstr ""
 
 #: inc/block-styles.php:29
 #: dist/js/editor/editor.js:1
-msgid "Bordered"
+msgid "Underline"
 msgstr ""
 
 #: inc/block-styles.php:37
 #: dist/js/editor/editor.js:1
-msgid "Stripe"
+msgid "Bordered"
 msgstr ""
 
 #: inc/block-styles.php:45
-msgid "Block link (Underline)"
+#: dist/js/editor/editor.js:1
+msgid "Stripe"
 msgstr ""
 
 #: inc/block-styles.php:53
-#: inc/block-styles.php:69
-msgid "Block link (Bordered)"
+msgid "Block link (Underline)"
 msgstr ""
 
 #: inc/block-styles.php:61
+#: inc/block-styles.php:77
+msgid "Block link (Bordered)"
+msgstr ""
+
+#: inc/block-styles.php:69
 msgid "Block link (Stripe)"
 msgstr ""
 
-#: inc/block-styles.php:85
+#: inc/block-styles.php:93
 #: dist/blocks/layers/index.js:1
 msgid "Cover"
 msgstr ""

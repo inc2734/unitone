@@ -69,11 +69,13 @@ add_filter( 'get_the_archive_title', 'unitone_remove_archive_title_prefix', 10, 
 /**
  * Restores the Customizer since we still rely on it.
  */
-function unitone_restore_customizer( $wp_customize ) {
-	// There's no need to return anything.
-	// The empty callback will do the trick.
+if ( wp_get_custom_css() ) {
+	function unitone_restore_customizer( $wp_customize ) {
+		// There's no need to return anything.
+		// The empty callback will do the trick.
+	}
+	add_action( 'customize_register', 'unitone_restore_customizer' );
 }
-add_action( 'customize_register', 'unitone_restore_customizer' );
 
 // Updater.
 require get_template_directory() . '/inc/updater.php';

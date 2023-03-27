@@ -9,10 +9,11 @@ import {
 
 import {
 	Button,
-	PanelBody,
 	RangeControl,
 	TextControl,
 	ToggleControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
 import {
@@ -75,6 +76,8 @@ const justificationOptions = [
 	},
 ];
 
+import metadata from './block.json';
+
 export default function ( {
 	attributes,
 	setAttributes,
@@ -85,7 +88,7 @@ export default function ( {
 		arrows,
 		arrowsAlignment,
 		arrowsJustification,
-		hideOutSide,
+		hideOutside,
 		pagination,
 		paginationAlignment,
 		paginationJustification,
@@ -158,7 +161,7 @@ export default function ( {
 
 	const blockProps = useBlockProps( {
 		className: classnames( 'unitone-slider', {
-			'unitone-slider--hide-outside': hideOutSide,
+			'unitone-slider--hide-outside': hideOutside,
 			'unitone-slider--has-pagination': pagination,
 		} ),
 		style: {
@@ -184,233 +187,442 @@ export default function ( {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<TextControl
-						label={
-							<>
-								{ __( 'Each items width', 'unitone' ) }:
-								<code>width</code>
-							</>
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							slideWidth !==
+							metadata.attributes.slideWidth.default
 						}
-						value={ slideWidth }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { slideWidth: newAttribute } );
-						} }
-					/>
+						isShownByDefault
+						label={ __( 'Each items width', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								slideWidth:
+									metadata.attributes.slideWidth.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __( 'Each items width', 'unitone' ) }
+									&nbsp;:&nbsp;
+									<code>width</code>
+								</>
+							}
+							value={ slideWidth || '' }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { slideWidth: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
 
-					<ToggleControl
+					<ToolsPanelItem
+						hasValue={ () =>
+							hideOutside !==
+							metadata.attributes.hideOutside.default
+						}
+						isShownByDefault
 						label={ __(
 							'Hide parts that extend beyond the canvas',
 							'unitone'
 						) }
-						checked={ hideOutSide }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { hideOutSide: newAttribute } );
-						} }
-					/>
-
-					<RangeControl
-						label={ __( 'Speed (s)', 'unitone' ) }
-						value={ speed || 0.3 }
-						onChange={ ( newAttribute ) => {
+						onDeselect={ () =>
 							setAttributes( {
-								speed: parseFloat( newAttribute ),
-							} );
-						} }
-						min={ 0 }
-						max={ 10 }
-						step={ 0.1 }
-					/>
-
-					<ToggleControl
-						label={ __( 'Loop', 'unitone' ) }
-						checked={ loop }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { loop: newAttribute } );
-						} }
-					/>
-				</PanelBody>
-
-				<PanelBody title={ __( 'The prev/next buttons', 'unitone' ) }>
-					<ToggleControl
-						label={ __( 'Using the prev/next buttons', 'unitone' ) }
-						checked={ arrows }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { arrows: newAttribute } );
-						} }
-					/>
-
-					{ arrows && (
-						<>
-							<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-								<legend>
-									{ __( 'Arrows alignment', 'unitone' ) }
-								</legend>
-								<div>
-									{ alignmentOptions.map(
-										( { value, icon, label } ) => {
-											return (
-												<Button
-													key={ value }
-													label={ label }
-													icon={ icon }
-													isPressed={
-														arrowsAlignment ===
-														value
-													}
-													onClick={ () => {
-														setAttributes( {
-															arrowsAlignment:
-																value,
-														} );
-													} }
-												/>
-											);
-										}
-									) }
-								</div>
-							</fieldset>
-
-							<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-								<legend>
-									{ __( 'Arrows justification', 'unitone' ) }
-								</legend>
-								<div>
-									{ justificationOptions.map(
-										( { value, icon, label } ) => {
-											return (
-												<Button
-													key={ value }
-													label={ label }
-													icon={ icon }
-													isPressed={
-														arrowsJustification ===
-														value
-													}
-													onClick={ () => {
-														setAttributes( {
-															arrowsJustification:
-																value,
-														} );
-													} }
-												/>
-											);
-										}
-									) }
-								</div>
-							</fieldset>
-						</>
-					) }
-				</PanelBody>
-
-				<PanelBody title={ __( 'The pagination', 'unitone' ) }>
-					<ToggleControl
-						label={ __( 'Using the pagination', 'unitone' ) }
-						checked={ pagination }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { pagination: newAttribute } );
-						} }
-					/>
-
-					{ pagination && (
-						<>
-							<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-								<legend>
-									{ __( 'Pagination alignment', 'unitone' ) }
-								</legend>
-								<div>
-									{ alignmentOptions
-										.filter(
-											( { value } ) => 'center' !== value
-										)
-										.map( ( { value, icon, label } ) => {
-											return (
-												<Button
-													key={ value }
-													label={ label }
-													icon={ icon }
-													isPressed={
-														paginationAlignment ===
-														value
-													}
-													onClick={ () => {
-														setAttributes( {
-															paginationAlignment:
-																value,
-														} );
-													} }
-												/>
-											);
-										} ) }
-								</div>
-							</fieldset>
-
-							<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-								<legend>
-									{ __(
-										'Pagination justification',
-										'unitone'
-									) }
-								</legend>
-								<div>
-									{ justificationOptions
-										.filter(
-											( { value } ) =>
-												'space-between' !== value
-										)
-										.map( ( { value, icon, label } ) => {
-											return (
-												<Button
-													key={ value }
-													label={ label }
-													icon={ icon }
-													isPressed={
-														paginationJustification ===
-														value
-													}
-													onClick={ () => {
-														setAttributes( {
-															paginationJustification:
-																value,
-														} );
-													} }
-												/>
-											);
-										} ) }
-								</div>
-							</fieldset>
-						</>
-					) }
-				</PanelBody>
-
-				<PanelBody title={ __( 'Autoplay', 'unitone' ) }>
-					<ToggleControl
-						label={ __( 'Using the autoplay', 'unitone' ) }
-						checked={ autoplay }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { autoplay: newAttribute } );
-						} }
-					/>
-
-					{ autoplay && (
-						<RangeControl
-							label={ __( 'Delay (s)', 'unitone' ) }
-							value={ autoplayDelay }
-							help={ __(
-								'When 0, the prev/next buttons and the pagination will not be displayed.',
+								hideOutside:
+									metadata.attributes.hideOutside.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __(
+								'Hide parts that extend beyond the canvas',
 								'unitone'
 							) }
+							checked={ hideOutside }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { hideOutside: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							speed !== metadata.attributes.speed.default
+						}
+						isShownByDefault
+						label={ __( 'Speed (s)', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								speed: metadata.attributes.speed.default,
+							} )
+						}
+					>
+						<RangeControl
+							label={ __( 'Speed (s)', 'unitone' ) }
+							value={ speed || 0.3 }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									autoplayDelay: parseFloat( newAttribute ),
+									speed: parseFloat( newAttribute ),
 								} );
 							} }
 							min={ 0 }
 							max={ 10 }
 							step={ 0.1 }
 						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							loop !== metadata.attributes.loop.default
+						}
+						isShownByDefault
+						label={ __( 'Loop', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								loop: metadata.attributes.loop.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'Loop', 'unitone' ) }
+							checked={ loop }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { loop: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
+
+				<ToolsPanel label={ __( 'The prev/next buttons', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							arrows !== metadata.attributes.arrows.default
+						}
+						isShownByDefault
+						label={ __( 'Using the prev/next buttons', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								arrows: metadata.attributes.arrows.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __(
+								'Using the prev/next buttons',
+								'unitone'
+							) }
+							checked={ arrows }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { arrows: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					{ arrows && (
+						<>
+							<ToolsPanelItem
+								hasValue={ () =>
+									arrowsAlignment !==
+									metadata.attributes.arrowsAlignment.default
+								}
+								isShownByDefault
+								label={ __( 'Arrows alignment', 'unitone' ) }
+								onDeselect={ () =>
+									setAttributes( {
+										arrowsAlignment:
+											metadata.attributes.arrowsAlignment
+												.default,
+									} )
+								}
+							>
+								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+									<legend>
+										{ __( 'Arrows alignment', 'unitone' ) }
+									</legend>
+									<div>
+										{ alignmentOptions.map(
+											( { value, icon, label } ) => {
+												return (
+													<Button
+														key={ value }
+														label={ label }
+														icon={ icon }
+														isPressed={
+															arrowsAlignment ===
+															value
+														}
+														onClick={ () => {
+															setAttributes( {
+																arrowsAlignment:
+																	value,
+															} );
+														} }
+													/>
+												);
+											}
+										) }
+									</div>
+								</fieldset>
+							</ToolsPanelItem>
+
+							<ToolsPanelItem
+								hasValue={ () =>
+									arrowsJustification !==
+									metadata.attributes.arrowsJustification
+										.default
+								}
+								isShownByDefault
+								label={ __(
+									'Arrows justification',
+									'unitone'
+								) }
+								onDeselect={ () =>
+									setAttributes( {
+										arrowsJustification:
+											metadata.attributes
+												.arrowsJustification.default,
+									} )
+								}
+							>
+								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+									<legend>
+										{ __(
+											'Arrows justification',
+											'unitone'
+										) }
+									</legend>
+									<div>
+										{ justificationOptions.map(
+											( { value, icon, label } ) => {
+												return (
+													<Button
+														key={ value }
+														label={ label }
+														icon={ icon }
+														isPressed={
+															arrowsJustification ===
+															value
+														}
+														onClick={ () => {
+															setAttributes( {
+																arrowsJustification:
+																	value,
+															} );
+														} }
+													/>
+												);
+											}
+										) }
+									</div>
+								</fieldset>
+							</ToolsPanelItem>
+						</>
 					) }
-				</PanelBody>
+				</ToolsPanel>
+
+				<ToolsPanel label={ __( 'The pagination', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							pagination !==
+							metadata.attributes.pagination.default
+						}
+						isShownByDefault
+						label={ __( 'Using the pagination', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								pagination:
+									metadata.attributes.pagination.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'Using the pagination', 'unitone' ) }
+							checked={ pagination }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { pagination: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					{ pagination && (
+						<>
+							<ToolsPanelItem
+								hasValue={ () =>
+									paginationAlignment !==
+									metadata.attributes.paginationAlignment
+										.default
+								}
+								isShownByDefault
+								label={ __(
+									'Pagination alignment',
+									'unitone'
+								) }
+								onDeselect={ () =>
+									setAttributes( {
+										paginationAlignment:
+											metadata.attributes
+												.paginationAlignment.default,
+									} )
+								}
+							>
+								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+									<legend>
+										{ __(
+											'Pagination alignment',
+											'unitone'
+										) }
+									</legend>
+									<div>
+										{ alignmentOptions
+											.filter(
+												( { value } ) =>
+													'center' !== value
+											)
+											.map(
+												( { value, icon, label } ) => {
+													return (
+														<Button
+															key={ value }
+															label={ label }
+															icon={ icon }
+															isPressed={
+																paginationAlignment ===
+																value
+															}
+															onClick={ () => {
+																setAttributes( {
+																	paginationAlignment:
+																		value,
+																} );
+															} }
+														/>
+													);
+												}
+											) }
+									</div>
+								</fieldset>
+							</ToolsPanelItem>
+
+							<ToolsPanelItem
+								hasValue={ () =>
+									paginationJustification !==
+									metadata.attributes.paginationJustification
+										.default
+								}
+								isShownByDefault
+								label={ __(
+									'Pagination justification',
+									'unitone'
+								) }
+								onDeselect={ () =>
+									setAttributes( {
+										paginationJustification:
+											metadata.attributes
+												.paginationJustification
+												.default,
+									} )
+								}
+							>
+								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+									<legend>
+										{ __(
+											'Pagination justification',
+											'unitone'
+										) }
+									</legend>
+									<div>
+										{ justificationOptions
+											.filter(
+												( { value } ) =>
+													'space-between' !== value
+											)
+											.map(
+												( { value, icon, label } ) => {
+													return (
+														<Button
+															key={ value }
+															label={ label }
+															icon={ icon }
+															isPressed={
+																paginationJustification ===
+																value
+															}
+															onClick={ () => {
+																setAttributes( {
+																	paginationJustification:
+																		value,
+																} );
+															} }
+														/>
+													);
+												}
+											) }
+									</div>
+								</fieldset>
+							</ToolsPanelItem>
+						</>
+					) }
+				</ToolsPanel>
+
+				<ToolsPanel label={ __( 'Autoplay', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							autoplay !== metadata.attributes.autoplay.default
+						}
+						isShownByDefault
+						label={ __( 'Using the autoplay', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								autoplay: metadata.attributes.autoplay.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'Using the autoplay', 'unitone' ) }
+							checked={ autoplay }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { autoplay: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					{ autoplay && (
+						<ToolsPanelItem
+							hasValue={ () =>
+								autoplayDelay !==
+								metadata.attributes.autoplayDelay.default
+							}
+							isShownByDefault
+							label={ __( 'Delay (s)', 'unitone' ) }
+							onDeselect={ () =>
+								setAttributes( {
+									autoplayDelay:
+										metadata.attributes.autoplayDelay
+											.default,
+								} )
+							}
+						>
+							<RangeControl
+								label={ __( 'Delay (s)', 'unitone' ) }
+								value={ autoplayDelay }
+								help={ __(
+									'When 0, the prev/next buttons and the pagination will not be displayed.',
+									'unitone'
+								) }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										autoplayDelay:
+											parseFloat( newAttribute ),
+									} );
+								} }
+								min={ 0 }
+								max={ 10 }
+								step={ 0.1 }
+							/>
+						</ToolsPanelItem>
+					) }
+				</ToolsPanel>
 			</InspectorControls>
 
 			<div { ...blockProps }>

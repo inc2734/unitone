@@ -7,10 +7,16 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, TextControl } from '@wordpress/components';
+import {
+	TextControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+
+import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { contentWidth, contentMaxWidth } = attributes;
@@ -43,33 +49,66 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody>
-					<TextControl
-						label={
-							<>
-								{ __( 'Width', 'unitone' ) } :
-								<code>flex-basis</code>
-							</>
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							contentWidth !==
+							metadata.attributes.contentWidth.default
 						}
-						value={ contentWidth }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { contentWidth: newAttribute } );
-						} }
-					/>
+						isShownByDefault
+						label={ __( 'Width', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								contentWidth:
+									metadata.attributes.contentWidth.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __( 'Width', 'unitone' ) }&nbsp;:&nbsp;
+									<code>flex-basis</code>
+								</>
+							}
+							value={ contentWidth || '' }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { contentWidth: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
 
-					<TextControl
-						label={
-							<>
-								{ __( 'Max width', 'unitone' ) } :
-								<code>max-width</code>
-							</>
+					<ToolsPanelItem
+						hasValue={ () =>
+							contentMaxWidth !==
+							metadata.attributes.contentMaxWidth.default
 						}
-						value={ contentMaxWidth }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { contentMaxWidth: newAttribute } );
-						} }
-					/>
-				</PanelBody>
+						isShownByDefault
+						label={ __( 'Max width', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								contentMaxWidth:
+									metadata.attributes.contentMaxWidth.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __( 'Max width', 'unitone' ) }
+									&nbsp;:&nbsp;
+									<code>max-width</code>
+								</>
+							}
+							value={ contentMaxWidth || '' }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									contentMaxWidth: newAttribute,
+								} );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 			<div { ...innerBlocksProps } />
 		</>

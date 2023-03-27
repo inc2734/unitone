@@ -8,10 +8,12 @@
 	"parent": [ "unitone/layers" ],
 	"attributes": {
 		"alignSelf": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"justifySelf": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"gridColumn": {
 			"type": "string"

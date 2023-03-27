@@ -5,6 +5,7 @@
 	"name": "unitone/decorator",
 	"title": "Decorator",
 	"description": "Decorative block. Color, padding and position can be set.",
+	"keywords": [ "Box" ],
 	"attributes": {
 		"tagName": {
 			"type": "string"

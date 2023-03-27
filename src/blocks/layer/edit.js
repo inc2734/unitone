@@ -7,9 +7,17 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, SelectControl, TextControl } from '@wordpress/components';
+import {
+	SelectControl,
+	TextControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+
+import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { alignSelf, justifySelf, gridColumn, gridRow } = attributes;
@@ -45,133 +53,200 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<SelectControl
-						label={
-							<>
-								{ __( 'Align self', 'unitone' ) } :
-								<code>align-self</code>
-							</>
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							alignSelf !== metadata.attributes.alignSelf.default
 						}
-						options={ [
-							{
-								label: '',
-								value: undefined,
-							},
-							{
-								label: 'auto',
-								value: 'auto',
-							},
-							{
-								label: 'normal',
-								value: 'normal',
-							},
-							{
-								label: 'start',
-								value: 'start',
-							},
-							{
-								label: 'center',
-								value: 'center',
-							},
-							{
-								label: 'end',
-								value: 'end',
-							},
-							{
-								label: 'stretch',
-								value: 'stretch',
-							},
-							{
-								label: 'baseline',
-								value: 'baseline',
-							},
-						] }
-						value={ alignSelf }
-						onChange={ ( newAttribute ) =>
-							setAttributes( { alignSelf: newAttribute } )
+						isShownByDefault
+						label={ __( 'Align self', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								alignSelf:
+									metadata.attributes.alignSelf.default,
+							} )
 						}
-					/>
+					>
+						<SelectControl
+							label={
+								<>
+									{ __( 'Align self', 'unitone' ) }
+									&nbsp;:&nbsp;
+									<code>align-self</code>
+								</>
+							}
+							options={ [
+								{
+									label: '',
+									value: '',
+								},
+								{
+									label: 'auto',
+									value: 'auto',
+								},
+								{
+									label: 'normal',
+									value: 'normal',
+								},
+								{
+									label: 'start',
+									value: 'start',
+								},
+								{
+									label: 'center',
+									value: 'center',
+								},
+								{
+									label: 'end',
+									value: 'end',
+								},
+								{
+									label: 'stretch',
+									value: 'stretch',
+								},
+								{
+									label: 'baseline',
+									value: 'baseline',
+								},
+							] }
+							value={ alignSelf }
+							onChange={ ( newAttribute ) =>
+								setAttributes( { alignSelf: newAttribute } )
+							}
+						/>
+					</ToolsPanelItem>
 
-					<SelectControl
-						label={
-							<>
-								{ __( 'Justify self', 'unitone' ) } :
-								<code>justify-self</code>
-							</>
+					<ToolsPanelItem
+						hasValue={ () =>
+							justifySelf !==
+							metadata.attributes.justifySelf.default
 						}
-						options={ [
-							{
-								label: '',
-								value: undefined,
-							},
-							{
-								label: 'auto',
-								value: 'auto',
-							},
-							{
-								label: 'normal',
-								value: 'normal',
-							},
-							{
-								label: 'start',
-								value: 'start',
-							},
-							{
-								label: 'center',
-								value: 'center',
-							},
-							{
-								label: 'end',
-								value: 'end',
-							},
-							{
-								label: 'stretch',
-								value: 'stretch',
-							},
-							{
-								label: 'baseline',
-								value: 'baseline',
-							},
-						] }
-						value={ justifySelf }
-						onChange={ ( newAttribute ) =>
-							setAttributes( { justifySelf: newAttribute } )
+						isShownByDefault
+						label={ __( 'Justify self', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								justifySelf:
+									metadata.attributes.justifySelf.default,
+							} )
 						}
-					/>
+					>
+						<SelectControl
+							label={
+								<>
+									{ __( 'Justify self', 'unitone' ) }
+									&nbsp;:&nbsp;
+									<code>justify-self</code>
+								</>
+							}
+							options={ [
+								{
+									label: '',
+									value: '',
+								},
+								{
+									label: 'auto',
+									value: 'auto',
+								},
+								{
+									label: 'normal',
+									value: 'normal',
+								},
+								{
+									label: 'start',
+									value: 'start',
+								},
+								{
+									label: 'center',
+									value: 'center',
+								},
+								{
+									label: 'end',
+									value: 'end',
+								},
+								{
+									label: 'stretch',
+									value: 'stretch',
+								},
+								{
+									label: 'baseline',
+									value: 'baseline',
+								},
+							] }
+							value={ justifySelf }
+							onChange={ ( newAttribute ) =>
+								setAttributes( { justifySelf: newAttribute } )
+							}
+						/>
+					</ToolsPanelItem>
 
-					<TextControl
-						label={
-							<>
-								{ __(
-									"A grid item's size and location within a grid column",
-									'unitone'
-								) }
-								: <code>grid-column</code>
-							</>
+					<ToolsPanelItem
+						hasValue={ () =>
+							gridColumn !==
+							metadata.attributes.gridColumn.default
 						}
-						value={ gridColumn }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { gridColumn: newAttribute } );
-						} }
-					/>
+						isShownByDefault
+						label={ __(
+							"A grid item's size and location within a grid column",
+							'unitone'
+						) }
+						onDeselect={ () =>
+							setAttributes( {
+								gridColumn:
+									metadata.attributes.gridColumn.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __(
+										"A grid item's size and location within a grid column",
+										'unitone'
+									) }
+									&nbsp;:&nbsp;
+									<code>grid-column</code>
+								</>
+							}
+							value={ gridColumn || '' }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { gridColumn: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
 
-					<TextControl
-						label={
-							<>
-								{ __(
-									"A grid item's size and location within the grid row",
-									'unitone'
-								) }
-								: <code>grid-row</code>
-							</>
+					<ToolsPanelItem
+						hasValue={ () =>
+							gridRow !== metadata.attributes.gridRow.default
 						}
-						value={ gridRow }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { gridRow: newAttribute } );
-						} }
-					/>
-				</PanelBody>
+						isShownByDefault
+						label={ __(
+							"A grid item's size and location within the grid row",
+							'unitone'
+						) }
+						onDeselect={ () =>
+							setAttributes( {
+								gridRow: metadata.attributes.gridRow.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __(
+										"A grid item's size and location within the grid row",
+										'unitone'
+									) }
+									&nbsp;:&nbsp;
+									<code>grid-row</code>
+								</>
+							}
+							value={ gridRow || '' }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { gridRow: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />

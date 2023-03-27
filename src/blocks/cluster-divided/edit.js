@@ -7,9 +7,16 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, SelectControl } from '@wordpress/components';
+import {
+	SelectControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+
+import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { tagName } = attributes;
@@ -40,20 +47,33 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<SelectControl
-						label={ __( 'HTML element', 'unitone' ) }
-						options={ [
-							{ label: '<div>', value: 'div' },
-							{ label: '<ul>', value: 'ul' },
-							{ label: '<ol>', value: 'ol' },
-						] }
-						value={ tagName || 'div' }
-						onChange={ ( newAttribute ) =>
-							setAttributes( { tagName: newAttribute } )
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							tagName !== metadata.attributes.tagName.default
 						}
-					/>
-				</PanelBody>
+						isShownByDefault
+						label={ __( 'HTML element', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								tagName: metadata.attributes.tagName.default,
+							} )
+						}
+					>
+						<SelectControl
+							label={ __( 'HTML element', 'unitone' ) }
+							options={ [
+								{ label: '<div>', value: 'div' },
+								{ label: '<ul>', value: 'ul' },
+								{ label: '<ol>', value: 'ol' },
+							] }
+							value={ tagName || 'div' }
+							onChange={ ( newAttribute ) =>
+								setAttributes( { tagName: newAttribute } )
+							}
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 
 			<TagName { ...innerBlocksProps } />

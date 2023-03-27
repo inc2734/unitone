@@ -7,9 +7,17 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
+import {
+	TextControl,
+	ToggleControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+
+import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { height, itemWidth, noBar } = attributes;
@@ -45,41 +53,81 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<TextControl
-						label={
-							<>
-								{ __( 'Height', 'unitone' ) } :
-								<code>height</code>
-							</>
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							height !== metadata.attributes.height.default
 						}
-						value={ height }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { height: newAttribute } );
-						} }
-					/>
-
-					<TextControl
-						label={
-							<>
-								{ __( 'Each items width', 'unitone' ) } :
-								<code>width</code>
-							</>
+						isShownByDefault
+						label={ __( 'Height', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								height: metadata.attributes.height.default,
+							} )
 						}
-						value={ itemWidth }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { itemWidth: newAttribute } );
-						} }
-					/>
+					>
+						<TextControl
+							label={
+								<>
+									{ __( 'Height', 'unitone' ) }&nbsp;:&nbsp;
+									<code>height</code>
+								</>
+							}
+							value={ height || '' }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { height: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
 
-					<ToggleControl
+					<ToolsPanelItem
+						hasValue={ () =>
+							itemWidth !== metadata.attributes.itemWidth.default
+						}
+						isShownByDefault
+						label={ __( 'Each items width', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								itemWidth:
+									metadata.attributes.itemWidth.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __( 'Each items width', 'unitone' ) } :
+									<code>width</code>
+								</>
+							}
+							value={ itemWidth || '' }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { itemWidth: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							noBar !== metadata.attributes.noBar.default
+						}
+						isShownByDefault
 						label={ __( 'No scrollbar', 'unitone' ) }
-						checked={ noBar }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { noBar: newAttribute } );
-						} }
-					/>
-				</PanelBody>
+						onDeselect={ () =>
+							setAttributes( {
+								noBar: metadata.attributes.noBar.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'No scrollbar', 'unitone' ) }
+							checked={ noBar }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { noBar: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 			<div { ...innerBlocksProps } />
 		</>

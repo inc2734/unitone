@@ -7,9 +7,16 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import {
+	ToggleControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+
+import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { withText } = attributes;
@@ -39,15 +46,28 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<ToggleControl
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							withText !== metadata.attributes.withText.default
+						}
+						isShownByDefault
 						label={ __( 'Text is also centered', 'unitone' ) }
-						checked={ withText }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { withText: newAttribute } );
-						} }
-					/>
-				</PanelBody>
+						onDeselect={ () =>
+							setAttributes( {
+								withText: metadata.attributes.withText.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'Text is also centered', 'unitone' ) }
+							checked={ withText }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { withText: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />

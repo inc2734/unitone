@@ -9,7 +9,7 @@ export default function ( { attributes } ) {
 		arrows,
 		arrowsAlignment,
 		arrowsJustification,
-		hideOutSide,
+		hideOutside,
 		pagination,
 		paginationAlignment,
 		paginationJustification,
@@ -28,7 +28,7 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useBlockProps.save( {
 				className: classnames( 'unitone-slider', {
-					'unitone-slider--hide-outside': hideOutSide,
+					'unitone-slider--hide-outside': hideOutside,
 					'unitone-slider--has-pagination': pagination,
 				} ),
 				style: {

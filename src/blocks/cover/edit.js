@@ -8,10 +8,17 @@ import {
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
 
+import {
+	ToggleControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
 import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
-import { PanelBody, ToggleControl } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+
+import metadata from './block.json';
 
 export default function ( { name, attributes, setAttributes, clientId } ) {
 	const { noPadding } = attributes;
@@ -41,15 +48,29 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<ToggleControl
-						label={ __( 'No padding', 'unitone' ) }
-						checked={ noPadding }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { noPadding: newAttribute } );
-						} }
-					/>
-				</PanelBody>
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							noPadding !== metadata.attributes.noPadding.default
+						}
+						isShownByDefault
+						label={ __( 'Width', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								noPadding:
+									metadata.attributes.noPadding.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'No padding', 'unitone' ) }
+							checked={ noPadding }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { noPadding: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 
 			{ hasInnerBlocks ? (

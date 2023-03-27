@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-03-24T16:51:43+00:00\n"
-"PO-Revision-Date: 2023-03-25 01:52+0900\n"
+"POT-Creation-Date: 2023-03-27T02:53:38+00:00\n"
+"PO-Revision-Date: 2023-03-27 11:53+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -43,7 +43,15 @@ msgstr "unitone 設定"
 msgid "Reset settings"
 msgstr "設定をリセット"
 
-#: App/Controller/Manager.php:116
+#: App/Controller/Manager.php:116 dist/blocks/both-sides-content/index.js:1
+#: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
+#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cover-content/index.js:1
+#: dist/blocks/cover/index.js:1 dist/blocks/decorator/index.js:1
+#: dist/blocks/frame/index.js:1 dist/blocks/layer/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/reel/index.js:1
+#: dist/blocks/responsive-grid/index.js:1 dist/blocks/slider/index.js:1
+#: dist/blocks/stack-divided/index.js:1 dist/blocks/switcher/index.js:1
+#: dist/blocks/text/index.js:1
 msgid "Settings"
 msgstr "設定"
 
@@ -84,7 +92,7 @@ msgstr "コンポーネント"
 
 #: inc/block-categories.php:43
 msgid "Widgets"
-msgstr "これらのウィジェットは WooCommerce のサイドバーに表示されます。"
+msgstr "ウィジェット"
 
 #: inc/block-patterns.php:15
 msgid "Section"
@@ -483,7 +491,7 @@ msgid "Using label of the question"
 msgstr "質問のラベルを使用する"
 
 #: dist/blocks/accordion/index.js:1 dist/blocks/both-sides-content/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
+#: dist/blocks/cover/index.js:1 dist/blocks/with-sidebar/index.js:1
 msgid "Width"
 msgstr "幅"
 
@@ -510,17 +518,6 @@ msgstr "A"
 #: dist/blocks/both-sides-content/index.js:1 dist/js/editor/editor.js:1
 msgid "Max width"
 msgstr "最大幅"
-
-#: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
-#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cover-content/index.js:1
-#: dist/blocks/cover/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/layer/index.js:1 dist/blocks/layers/index.js:1
-#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid/index.js:1
-#: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
-#: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "General"
-msgstr "一般"
 
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
@@ -617,8 +614,8 @@ msgid "With shadow"
 msgstr "影付き"
 
 #: dist/blocks/frame/index.js:1
-msgid "Dimensions"
-msgstr "寸法"
+msgid "Preferred aspect ratio"
+msgstr "推奨アスペクト比"
 
 #: dist/blocks/frame/index.js:1
 msgid "Switch aspect ratio when portrait"
@@ -777,6 +774,12 @@ msgstr "閾値"
 msgid "Inside the %1$sflex-basis%2$s formula"
 msgstr "%1$sflex-basis%2$sの計算式の中"
 
+#: dist/blocks/switcher/index.js:3
+msgid ""
+"When this block is smaller than this width, the contents are arranged in a "
+"single column."
+msgstr "このブロックがこの幅より小さくなったとき、コンテンツは1列に並びます。"
+
 #: dist/blocks/text/index.js:1
 msgid "Centering by intrinsic size of children"
 msgstr "子要素の内在的なサイズによって中央揃えする"
@@ -784,6 +787,14 @@ msgstr "子要素の内在的なサイズによって中央揃えする"
 #: dist/blocks/text/index.js:1
 msgid "Multi columns"
 msgstr "マルチカラム"
+
+#: dist/blocks/text/index.js:1
+msgid "The \"Max width\" setting is used as the width of each column."
+msgstr "「最大幅」の設定値が各カラムの幅として利用されます。"
+
+#: dist/blocks/with-sidebar/index.js:1
+msgid "General"
+msgstr "一般"
 
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Revert"
@@ -1091,6 +1102,11 @@ msgstr "デコレーター"
 msgctxt "block description"
 msgid "Decorative block. Color, padding and position can be set."
 msgstr "装飾用ブロック。色、パディング、位置が設定できます。"
+
+#: dist/blocks/decorator/block.json
+msgctxt "block keyword"
+msgid "Box"
+msgstr "ボックス"
 
 #: dist/blocks/frame/block.json
 msgctxt "block title"
@@ -2249,6 +2265,9 @@ msgstr "Woocommerce 個別商品：ページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product: Page header (Image)"
 msgstr "WooCommerce 個別商品：ページヘッダー（画像）"
+
+#~ msgid "Dimensions"
+#~ msgstr "寸法"
 
 #~ msgctxt "Pattern title"
 #~ msgid "Query (Simple / Block link)"

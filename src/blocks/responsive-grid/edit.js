@@ -7,7 +7,14 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, TextControl } from '@wordpress/components';
+import {
+	TextControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
+import metadata from './block.json';
+
 import { useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 
@@ -41,32 +48,50 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<TextControl
-						label={
-							<>
-								{ __( 'Column min width', 'unitone' ) }:
-								<span
-									dangerouslySetInnerHTML={ {
-										__html: sprintf(
-											// translators: %1$s: <code>, %2$s: </code>
-											__(
-												'Inside the %1$sgrid-template-columns%2$s formula',
-												'unitone'
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							columnMinWidth !==
+							metadata.attributes.columnMinWidth.default
+						}
+						isShownByDefault
+						label={ __( 'Column min width', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								columnMinWidth:
+									metadata.attributes.columnMinWidth.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __( 'Column min width', 'unitone' ) }
+									&nbsp;:&nbsp;
+									<span
+										dangerouslySetInnerHTML={ {
+											__html: sprintf(
+												// translators: %1$s: <code>, %2$s: </code>
+												__(
+													'Inside the %1$sgrid-template-columns%2$s formula',
+													'unitone'
+												),
+												'<code>',
+												'</code>'
 											),
-											'<code>',
-											'</code>'
-										),
-									} }
-								/>
-							</>
-						}
-						value={ columnMinWidth }
-						onChange={ ( newAttribute ) =>
-							setAttributes( { columnMinWidth: newAttribute } )
-						}
-					/>
-				</PanelBody>
+										} }
+									/>
+								</>
+							}
+							value={ columnMinWidth || '' }
+							onChange={ ( newAttribute ) =>
+								setAttributes( {
+									columnMinWidth: newAttribute,
+								} )
+							}
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />

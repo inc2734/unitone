@@ -6,8 +6,16 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
+import {
+	TextControl,
+	ToggleControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
 import { __ } from '@wordpress/i18n';
+
+import metadata from './block.json';
 
 export default function ( { attributes, setAttributes } ) {
 	const { ratio, switchRatio } = attributes;
@@ -34,28 +42,66 @@ export default function ( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody
-					title={ __( 'Dimensions', 'unitone' ) }
-					initialOpen={ false }
-				>
-					<TextControl
-						value={ ratio }
-						onChange={ ( newAttribute ) =>
-							setAttributes( { ratio: newAttribute } )
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							ratio !== metadata.attributes.ratio.default
 						}
-					/>
+						isShownByDefault
+						label={ __( 'Preferred aspect ratio', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								ratio: metadata.attributes.ratio.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __(
+										'Preferred aspect ratio',
+										'unitone'
+									) }
+									&nbsp;:&nbsp;
+									<code>aspect-ratio</code>
+								</>
+							}
+							value={ ratio || '' }
+							onChange={ ( newAttribute ) =>
+								setAttributes( { ratio: newAttribute } )
+							}
+						/>
+					</ToolsPanelItem>
 
-					<ToggleControl
+					<ToolsPanelItem
+						hasValue={ () =>
+							switchRatio !==
+							metadata.attributes.switchRatio.default
+						}
+						isShownByDefault
 						label={ __(
 							'Switch aspect ratio when portrait',
 							'unitone'
 						) }
-						checked={ switchRatio }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { switchRatio: newAttribute } );
-						} }
-					/>
-				</PanelBody>
+						onDeselect={ () =>
+							setAttributes( {
+								switchRatio:
+									metadata.attributes.switchRatio.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __(
+								'Switch aspect ratio when portrait',
+								'unitone'
+							) }
+							checked={ switchRatio }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { switchRatio: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />

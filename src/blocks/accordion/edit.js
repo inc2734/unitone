@@ -6,9 +6,17 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
+import {
+	TextControl,
+	ToggleControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+
+import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { summary, q, qLabel, qWidth, a, aLabel, aWidth } = attributes;
@@ -39,59 +47,115 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Question', 'unitone' ) }>
-					<ToggleControl
+				<ToolsPanel label={ __( 'Question', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () => q !== metadata.attributes.q.default }
+						isShownByDefault
 						label={ __( 'Using label of the question', 'unitone' ) }
-						checked={ q }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { q: newAttribute } );
-						} }
-					/>
+						onDeselect={ () =>
+							setAttributes( {
+								q: metadata.attributes.q.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __(
+								'Using label of the question',
+								'unitone'
+							) }
+							checked={ q }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { q: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
 
 					{ q && (
-						<TextControl
-							label={
-								<>
-									{ __( 'Width', 'unitone' ) }:
-									<code>flex-basis</code>
-								</>
+						<ToolsPanelItem
+							hasValue={ () =>
+								qWidth !== metadata.attributes.qWidth.default
 							}
-							value={ qWidth }
-							onChange={ ( newAttribute ) => {
+							isShownByDefault
+							label={ __( 'Width', 'unitone' ) }
+							onDeselect={ () =>
 								setAttributes( {
-									qWidth: newAttribute,
-								} );
+									qWidth: metadata.attributes.qWidth.default,
+								} )
+							}
+						>
+							<TextControl
+								label={
+									<>
+										{ __( 'Width', 'unitone' ) }
+										&nbsp;:&nbsp;
+										<code>flex-basis</code>
+									</>
+								}
+								value={ qWidth || '' }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										qWidth: newAttribute,
+									} );
+								} }
+							/>
+						</ToolsPanelItem>
+					) }
+				</ToolsPanel>
+
+				<ToolsPanel label={ __( 'Answer', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () => a !== metadata.attributes.a.default }
+						isShownByDefault
+						label={ __( 'Using labe of the answer', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								a: metadata.attributes.a.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __(
+								'Using labe of the answer',
+								'unitone'
+							) }
+							checked={ a }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { a: newAttribute } );
 							} }
 						/>
-					) }
-				</PanelBody>
-
-				<PanelBody title={ __( 'Answer', 'unitone' ) }>
-					<ToggleControl
-						label={ __( 'Using labe of the answer', 'unitone' ) }
-						checked={ a }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { a: newAttribute } );
-						} }
-					/>
+					</ToolsPanelItem>
 
 					{ a && (
-						<TextControl
-							label={
-								<>
-									{ __( 'Width', 'unitone' ) }:
-									<code>flex-basis</code>
-								</>
+						<ToolsPanelItem
+							hasValue={ () =>
+								aWidth !== metadata.attributes.aWidth.default
 							}
-							value={ aWidth }
-							onChange={ ( newAttribute ) => {
+							isShownByDefault
+							label={ __( 'Width', 'unitone' ) }
+							onDeselect={ () =>
 								setAttributes( {
-									aWidth: newAttribute,
-								} );
-							} }
-						/>
+									aWidth: metadata.attributes.aWidth.default,
+								} )
+							}
+						>
+							<TextControl
+								label={
+									<>
+										{ __( 'Width', 'unitone' ) }
+										&nbsp;:&nbsp;
+										<code>flex-basis</code>
+									</>
+								}
+								value={ aWidth || '' }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										aWidth: newAttribute,
+									} );
+								} }
+							/>
+						</ToolsPanelItem>
 					) }
-				</PanelBody>
+				</ToolsPanel>
 			</InspectorControls>
 
 			<details { ...blockProps }>

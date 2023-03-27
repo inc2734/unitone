@@ -17,7 +17,8 @@
 			"default": false
 		},
 		"sidebar": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

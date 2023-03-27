@@ -10,7 +10,8 @@
 			"type": "string"
 		},
 		"switchRatio": {
-			"type": "boolean"
+			"type": "boolean",
+			"default": false
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

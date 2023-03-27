@@ -13,7 +13,8 @@
 			"type": "string"
 		},
 		"noBar": {
-			"type": "boolean"
+			"type": "boolean",
+			"default": false
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

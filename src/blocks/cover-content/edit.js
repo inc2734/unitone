@@ -7,9 +7,16 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import {
+	ToggleControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+
+import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { fill, position } = attributes;
@@ -41,15 +48,28 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<ToggleControl
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							fill !== metadata.attributes.fill.default
+						}
+						isShownByDefault
 						label={ __( 'Fill a space', 'unitone' ) }
-						checked={ fill }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { fill: newAttribute } );
-						} }
-					/>
-				</PanelBody>
+						onDeselect={ () =>
+							setAttributes( {
+								fill: metadata.attributes.fill.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'Fill a space', 'unitone' ) }
+							checked={ fill }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { fill: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />

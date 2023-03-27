@@ -7,13 +7,16 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	PanelBody,
 	ToggleControl,
 	TextControl,
 	SelectControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
 import { __ } from '@wordpress/i18n';
+
+import metadata from './block.json';
 
 export default function ( { attributes, setAttributes } ) {
 	const { sidebarWidth, contentMinWidth, revert, sidebar } = attributes;
@@ -44,84 +47,144 @@ export default function ( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<ToggleControl
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							revert !== metadata.attributes.revert.default
+						}
+						isShownByDefault
 						label={ __( 'Revert', 'unitone' ) }
-						checked={ revert }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { revert: newAttribute } );
-						} }
-					/>
-				</PanelBody>
+						onDeselect={ () =>
+							setAttributes( {
+								revert: metadata.attributes.revert.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'Revert', 'unitone' ) }
+							checked={ revert }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { revert: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 
-				<PanelBody title={ __( 'Sidebar', 'unitone' ) }>
-					<SelectControl
+				<ToolsPanel label={ __( 'Sidebar', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							sidebar !== metadata.attributes.sidebar.default
+						}
+						isShownByDefault
 						label={ __(
 							'Columns to be treated as sidebars',
 							'unitone'
 						) }
-						value={ sidebar }
-						options={ [
-							{
-								label: __( 'Default', 'unitone' ),
-								value: '',
-							},
-							{
-								label: __( 'Right', 'unitone' ),
-								value: 'right',
-							},
-							{
-								label: __( 'Left', 'unitone' ),
-								value: 'left',
-							},
-						] }
-						onChange={ ( newAttribute ) =>
+						onDeselect={ () =>
 							setAttributes( {
-								sidebar: newAttribute,
+								sidebar: metadata.attributes.sidebar.default,
 							} )
 						}
-					/>
+					>
+						<SelectControl
+							label={ __(
+								'Columns to be treated as sidebars',
+								'unitone'
+							) }
+							value={ sidebar }
+							options={ [
+								{
+									label: __( 'Default', 'unitone' ),
+									value: '',
+								},
+								{
+									label: __( 'Right', 'unitone' ),
+									value: 'right',
+								},
+								{
+									label: __( 'Left', 'unitone' ),
+									value: 'left',
+								},
+							] }
+							onChange={ ( newAttribute ) =>
+								setAttributes( {
+									sidebar: newAttribute,
+								} )
+							}
+						/>
+					</ToolsPanelItem>
 
-					<TextControl
-						label={
-							<>
-								{ __( 'Width', 'unitone' ) }&nbsp;:&nbsp;
-								<code>flex-basis</code>
-							</>
+					<ToolsPanelItem
+						hasValue={ () =>
+							sidebarWidth !==
+							metadata.attributes.sidebarWidth.default
 						}
-						help={ __(
-							'If unspecified, the width of the sidebar is calculated from the width of the child elements.',
-							'unitone'
-						) }
-						value={ sidebarWidth }
-						onChange={ ( newAttribute ) => {
+						isShownByDefault
+						label={ __( 'Width', 'unitone' ) }
+						onDeselect={ () =>
 							setAttributes( {
-								sidebarWidth: newAttribute,
-							} );
-						} }
-					/>
-				</PanelBody>
+								sidebarWidth:
+									metadata.attributes.sidebarWidth.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __( 'Width', 'unitone' ) }&nbsp;:&nbsp;
+									<code>flex-basis</code>
+								</>
+							}
+							help={ __(
+								'If unspecified, the width of the sidebar is calculated from the width of the child elements.',
+								'unitone'
+							) }
+							value={ sidebarWidth || '' }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									sidebarWidth: newAttribute,
+								} );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 
-				<PanelBody title={ __( 'Content', 'unitone' ) }>
-					<TextControl
-						label={
-							<>
-								{ __( 'Min width', 'unitone' ) }&nbsp;:&nbsp;
-								<code>min-width</code>
-							</>
+				<ToolsPanel label={ __( 'Content', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							contentMinWidth !==
+							metadata.attributes.contentMinWidth.default
 						}
-						help={ __(
-							'Wrap when content equals this width.',
-							'unitone'
-						) }
-						value={ contentMinWidth }
-						onChange={ ( newAttribute ) => {
+						isShownByDefault
+						label={ __( 'Min width', 'unitone' ) }
+						onDeselect={ () =>
 							setAttributes( {
-								contentMinWidth: newAttribute,
-							} );
-						} }
-					/>
-				</PanelBody>
+								contentMinWidth:
+									metadata.attributes.contentMinWidth.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __( 'Min width', 'unitone' ) }
+									&nbsp;:&nbsp;
+									<code>min-width</code>
+								</>
+							}
+							help={ __(
+								'Wrap when content equals this width.',
+								'unitone'
+							) }
+							value={ contentMinWidth || '' }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									contentMinWidth: newAttribute,
+								} );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />

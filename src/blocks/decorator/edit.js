@@ -10,12 +10,13 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	PanelBody,
 	Popover,
 	SelectControl,
 	TextControl,
 	ToggleControl,
 	ToolbarButton,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
 import { useCallback, useEffect, useState, useRef } from '@wordpress/element';
@@ -25,6 +26,8 @@ import { displayShortcut } from '@wordpress/keycodes';
 import { __ } from '@wordpress/i18n';
 
 const NEW_TAB_REL = 'noreferrer noopener';
+
+import metadata from './block.json';
 
 export default function ( {
 	attributes,
@@ -113,32 +116,58 @@ export default function ( {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'General', 'unitone' ) }>
-					<ToggleControl
-						label={ __( 'With shadow', 'unitone' ) }
-						checked={ shadow }
-						onChange={ ( newAttribute ) => {
-							setAttributes( { shadow: newAttribute } );
-						} }
-					/>
-
-					<SelectControl
-						label={ __( 'HTML element', 'unitone' ) }
-						options={ [
-							{ label: '<header>', value: 'header' },
-							{ label: '<main>', value: 'main' },
-							{ label: '<section>', value: 'section' },
-							{ label: '<article>', value: 'article' },
-							{ label: '<aside>', value: 'aside' },
-							{ label: '<footer>', value: 'footer' },
-							{ label: '<div>', value: 'div' },
-						] }
-						value={ tagName || 'div' }
-						onChange={ ( newAttribute ) =>
-							setAttributes( { tagName: newAttribute } )
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							shadow !== metadata.attributes.shadow.default
 						}
-					/>
-				</PanelBody>
+						isShownByDefault
+						label={ __( 'With shadow', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								shadow: metadata.attributes.shadow.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'With shadow', 'unitone' ) }
+							checked={ shadow }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { shadow: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							tagName !== metadata.attributes.tagName.default
+						}
+						isShownByDefault
+						label={ __( 'HTML element', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								tagName: metadata.attributes.tagName.default,
+							} )
+						}
+					>
+						<SelectControl
+							label={ __( 'HTML element', 'unitone' ) }
+							options={ [
+								{ label: '<header>', value: 'header' },
+								{ label: '<main>', value: 'main' },
+								{ label: '<section>', value: 'section' },
+								{ label: '<article>', value: 'article' },
+								{ label: '<aside>', value: 'aside' },
+								{ label: '<footer>', value: 'footer' },
+								{ label: '<div>', value: 'div' },
+							] }
+							value={ tagName || 'div' }
+							onChange={ ( newAttribute ) =>
+								setAttributes( { tagName: newAttribute } )
+							}
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 
 			<BlockControls group="block">

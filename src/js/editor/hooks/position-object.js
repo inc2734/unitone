@@ -315,7 +315,7 @@ export function PositionEdit( props ) {
 				<TextControl
 					label={
 						<>
-							{ __( 'The stack level', 'unitone' ) } :{ ' ' }
+							{ __( 'The stack level', 'unitone' ) }&nbsp;:&nbsp;
 							<code>z-index</code>
 						</>
 					}

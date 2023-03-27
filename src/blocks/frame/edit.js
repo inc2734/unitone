@@ -66,7 +66,7 @@ export default function ( { attributes, setAttributes } ) {
 									<code>aspect-ratio</code>
 								</>
 							}
-							value={ ratio || '' }
+							value={ ratio }
 							onChange={ ( newAttribute ) =>
 								setAttributes( { ratio: newAttribute } )
 							}

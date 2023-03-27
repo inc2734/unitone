@@ -7,10 +7,12 @@
 	"description": "This block displays children scrolling horizontally.",
 	"attributes": {
 		"height": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"itemWidth": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"noBar": {
 			"type": "boolean",

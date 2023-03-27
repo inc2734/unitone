@@ -15,7 +15,8 @@
 			"default": {}
 		},
 		"columnMinWidth": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		}
 	},
 	"supports": {

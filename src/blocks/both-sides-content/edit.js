@@ -71,7 +71,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>flex-basis</code>
 								</>
 							}
-							value={ contentWidth || '' }
+							value={ contentWidth }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { contentWidth: newAttribute } );
 							} }
@@ -100,7 +100,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>max-width</code>
 								</>
 							}
-							value={ contentMaxWidth || '' }
+							value={ contentMaxWidth }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
 									contentMaxWidth: newAttribute,

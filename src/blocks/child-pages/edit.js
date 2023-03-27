@@ -157,7 +157,7 @@ export default function ( { attributes, setAttributes } ) {
 										/>
 									</>
 								}
-								value={ columnMinWidth || '' }
+								value={ columnMinWidth }
 								onChange={ ( newAttribute ) =>
 									setAttributes( {
 										columnMinWidth: newAttribute,

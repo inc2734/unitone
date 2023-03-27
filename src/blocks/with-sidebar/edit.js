@@ -139,7 +139,7 @@ export default function ( { attributes, setAttributes } ) {
 								'If unspecified, the width of the sidebar is calculated from the width of the child elements.',
 								'unitone'
 							) }
-							value={ sidebarWidth || '' }
+							value={ sidebarWidth }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
 									sidebarWidth: newAttribute,
@@ -176,7 +176,7 @@ export default function ( { attributes, setAttributes } ) {
 								'Wrap when content equals this width.',
 								'unitone'
 							) }
-							value={ contentMinWidth || '' }
+							value={ contentMinWidth }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
 									contentMinWidth: newAttribute,

@@ -7,10 +7,12 @@
 	"description": "This block is used to assemble components with sidebars.",
 	"attributes": {
 		"sidebarWidth": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"contentMinWidth": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"revert": {
 			"type": "boolean",

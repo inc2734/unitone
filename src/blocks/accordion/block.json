@@ -21,7 +21,8 @@
 			"selector": ".unitone-accordion__q-text"
 		},
 		"qWidth": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"a": {
 			"type": "boolean",
@@ -33,7 +34,8 @@
 			"selector": ".unitone-accordion__a-text"
 		},
 		"aWidth": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

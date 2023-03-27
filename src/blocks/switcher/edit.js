@@ -86,7 +86,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								'When this block is smaller than this width, the contents are arranged in a single column.',
 								'unitone'
 							) }
-							value={ threshold || '' }
+							value={ threshold }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
 									threshold: newAttribute,

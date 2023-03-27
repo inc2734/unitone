@@ -207,7 +207,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>grid-column</code>
 								</>
 							}
-							value={ gridColumn || '' }
+							value={ gridColumn }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { gridColumn: newAttribute } );
 							} }
@@ -240,7 +240,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>grid-row</code>
 								</>
 							}
-							value={ gridRow || '' }
+							value={ gridRow }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { gridRow: newAttribute } );
 							} }

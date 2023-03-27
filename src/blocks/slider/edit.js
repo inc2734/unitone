@@ -210,7 +210,7 @@ export default function ( {
 									<code>width</code>
 								</>
 							}
-							value={ slideWidth || '' }
+							value={ slideWidth }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { slideWidth: newAttribute } );
 							} }

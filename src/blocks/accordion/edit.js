@@ -91,7 +91,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										<code>flex-basis</code>
 									</>
 								}
-								value={ qWidth || '' }
+								value={ qWidth }
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
 										qWidth: newAttribute,
@@ -146,7 +146,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										<code>flex-basis</code>
 									</>
 								}
-								value={ aWidth || '' }
+								value={ aWidth }
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
 										aWidth: newAttribute,

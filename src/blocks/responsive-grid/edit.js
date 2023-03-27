@@ -94,7 +94,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									'unitone'
 								)
 							}
-							value={ columnMinWidth || '' }
+							value={ columnMinWidth }
 							onChange={ ( newAttribute ) =>
 								setAttributes( {
 									columnMinWidth: newAttribute,

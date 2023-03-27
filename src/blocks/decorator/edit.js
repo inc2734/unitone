@@ -225,7 +225,7 @@ export default function ( {
 			<InspectorControls group="advanced">
 				<TextControl
 					label={ __( 'Link rel' ) }
-					value={ rel || '' }
+					value={ rel }
 					onChange={ onSetLinkRel }
 				/>
 			</InspectorControls>

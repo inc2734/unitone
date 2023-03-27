@@ -8,10 +8,12 @@
 	"parent": [ "unitone/both-sides" ],
 	"attributes": {
 		"contentWidth": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"contentMaxWidth": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

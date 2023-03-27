@@ -35,7 +35,8 @@
 			"default": "center"
 		},
 		"slideWidth": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"autoplay": {
 			"type": "boolean",

@@ -73,7 +73,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>height</code>
 								</>
 							}
-							value={ height || '' }
+							value={ height }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { height: newAttribute } );
 							} }
@@ -100,7 +100,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>width</code>
 								</>
 							}
-							value={ itemWidth || '' }
+							value={ itemWidth }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { itemWidth: newAttribute } );
 							} }

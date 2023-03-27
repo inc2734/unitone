@@ -16,7 +16,8 @@
 			"default": ""
 		},
 		"gridColumn": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"gridRow": {
 			"type": "string",

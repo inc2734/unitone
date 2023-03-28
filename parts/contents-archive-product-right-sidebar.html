@@ -1,37 +1,33 @@
-<!-- wp:unitone/decorator -->
-<div data-unitone-layout="decorator">
-	<!-- wp:unitone/gutters {"unitone":{"padding":3}} -->
-	<div data-unitone-layout="gutters -padding:3">
-		<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
-		<div data-unitone-layout="stack -gap:3">
-			<!-- wp:template-part {"slug":"page-header-archive-product","tagName":"header"} /-->
+<!-- wp:unitone/gutters {"unitone":{"padding":3}} -->
+<div data-unitone-layout="gutters">
+	<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
+	<div data-unitone-layout="stack">
+		<!-- wp:template-part {"slug":"page-header-archive-product","tagName":"header"} /-->
 
-			<!-- wp:unitone/container -->
-			<div data-unitone-layout="container">
-				<!-- wp:unitone/with-sidebar {"sidebarWidth": "300px","contentMinWidth":"var(--unitone--measure)","unitone":{"gap":3}} -->
-				<div data-unitone-layout="with-sidebar -gap:3" style="--unitone--sidebar-width:300px;--unitone--content-min-width:var(--unitone--measure)">
-					<!-- wp:unitone/with-sidebar-content -->
-					<div data-unitone-layout="with-sidebar__content">
-						<!-- wp:unitone/text {"unitone":{"maxWidth":"100%"}} -->
-						<div data-unitone-layout="text" style="--unitone--max-width:100%">
-							<!-- wp:woocommerce/legacy-template {"template":"archive-product"} /-->
-						</div>
-						<!-- /wp:unitone/text -->
+		<!-- wp:unitone/container -->
+		<div data-unitone-layout="container">
+			<!-- wp:unitone/with-sidebar {"sidebarWidth": "300px","contentMinWidth":"var(--unitone--measure)","unitone":{"gap":3}} -->
+			<div data-unitone-layout="with-sidebar" style="--unitone--sidebar-width:300px;--unitone--content-min-width:var(--unitone--measure)">
+				<!-- wp:unitone/with-sidebar-content -->
+				<div data-unitone-layout="with-sidebar__content">
+					<!-- wp:unitone/text {"unitone":{"maxWidth":"100%"}} -->
+					<div data-unitone-layout="text">
+						<!-- wp:woocommerce/legacy-template {"template":"archive-product"} /-->
 					</div>
-					<!-- /wp:unitone/with-sidebar-content -->
-
-					<!-- wp:unitone/with-sidebar-content -->
-					<div data-unitone-layout="with-sidebar__content">
-						<!-- wp:pattern {"slug":"unitone/sidebar"} /-->
-					</div>
-					<!-- /wp:unitone/with-sidebar-content -->
+					<!-- /wp:unitone/text -->
 				</div>
-				<!-- /wp:unitone/with-sidebar -->
+				<!-- /wp:unitone/with-sidebar-content -->
+
+				<!-- wp:unitone/with-sidebar-content -->
+				<div data-unitone-layout="with-sidebar__content">
+					<!-- wp:pattern {"slug":"unitone/sidebar"} /-->
+				</div>
+				<!-- /wp:unitone/with-sidebar-content -->
 			</div>
-			<!-- /wp:unitone/container -->
+			<!-- /wp:unitone/with-sidebar -->
 		</div>
-		<!-- /wp:unitone/stack -->
+		<!-- /wp:unitone/container -->
 	</div>
-	<!-- /wp:unitone/gutters -->
+	<!-- /wp:unitone/stack -->
 </div>
-<!-- /wp:unitone/decorator -->
+<!-- /wp:unitone/gutters -->

@@ -10,23 +10,19 @@
 <div class="wp-block-query">
 	<!-- wp:post-template -->
 		<!-- wp:unitone/stack {"unitone":{"gap":"-1"}} -->
-		<div data-unitone-layout="stack -gap:-1">
-			<!-- wp:unitone/decorator {"backgroundColor":"unitone/gray"} -->
-			<div data-unitone-layout="decorator" class="has-unitone-gray-background-color has-background">
-				<!-- wp:unitone/frame {"ratio":"4/3"} -->
-				<div data-unitone-layout="frame" style="--unitone--ratio:4/3">
-					<!-- wp:post-featured-image /-->
-				</div>
-				<!-- /wp:unitone/frame -->
+		<div data-unitone-layout="stack">
+			<!-- wp:unitone/frame {"ratio":"4/3"} -->
+			<div data-unitone-layout="frame" style="--unitone--ratio:4/3">
+				<!-- wp:post-featured-image /-->
 			</div>
-			<!-- /wp:unitone/decorator -->
+			<!-- /wp:unitone/frame -->
 
 			<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
-			<div data-unitone-layout="stack -gap:-2">
+			<div data-unitone-layout="stack">
 				<!-- wp:post-title {"isLink":true} /-->
 
 				<!-- wp:unitone/cluster {"fontSize":"unitone-xs","unitone":{"gap":"-1","alignItems":"center"}} -->
-				<div data-unitone-layout="cluster -align-items:center -gap:-1" class="has-unitone-xs-font-size">
+				<div data-unitone-layout="cluster" class="has-unitone-xs-font-size">
 					<!-- wp:post-date /-->
 					<!-- wp:post-terms {"term":"category","style":{"elements":{"link":{"color":{"text":"var:preset|color|unitone/text-alt"}}}},"className":"is-style-badge"} /-->
 				</div>

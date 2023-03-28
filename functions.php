@@ -110,6 +110,9 @@ require get_template_directory() . '/inc/global-styles.php';
 // Customize oEmbed.
 require get_template_directory() . '/inc/oembed.php';
 
+// Thumbnail settings.
+require get_template_directory() . '/inc/thumbnail.php';
+
 // Snow Monkey Editor integration.
 require get_template_directory() . '/inc/snow-monkey-editor.php';
 

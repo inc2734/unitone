@@ -1,21 +1,17 @@
-<!-- wp:unitone/decorator -->
-<div data-unitone-layout="decorator">
-	<!-- wp:unitone/gutters {"unitone":{"padding":3}} -->
-	<div data-unitone-layout="gutters -padding:3">
-		<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
-		<div data-unitone-layout="stack -gap:3">
-			<!-- wp:template-part {"slug":"page-header-single","tagName":"header"} /-->
+<!-- wp:unitone/gutters {"unitone":{"padding":3}} -->
+<div data-unitone-layout="gutters">
+	<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
+	<div data-unitone-layout="stack">
+		<!-- wp:template-part {"slug":"page-header-single","tagName":"header"} /-->
 
-			<!-- wp:post-content {"layout":{"inherit":true}} /-->
+		<!-- wp:post-content {"layout":{"inherit":true}} /-->
 
-			<!-- wp:unitone/container {"unitone":{"maxWidth":"var(--wp--custom--content-max-width)"}} -->
-			<div data-unitone-layout="container" style="--unitone--max-width:var(--wp--custom--content-max-width)">
-				<!-- wp:template-part {"slug":"comments"} /-->
-			</div>
-			<!-- /wp:unitone/container -->
+		<!-- wp:unitone/container {"unitone":{"maxWidth":"var(--wp--custom--content-max-width)"}} -->
+		<div data-unitone-layout="container">
+			<!-- wp:template-part {"slug":"comments"} /-->
 		</div>
-		<!-- /wp:unitone/stack -->
+		<!-- /wp:unitone/container -->
 	</div>
-	<!-- /wp:unitone/gutters -->
+	<!-- /wp:unitone/stack -->
 </div>
-<!-- /wp:unitone/decorator -->
+<!-- /wp:unitone/gutters -->

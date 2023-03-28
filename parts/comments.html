@@ -6,32 +6,29 @@
 
 		<!-- wp:comment-template -->
 			<!-- wp:unitone/decorator {"backgroundColor":"unitone/background-alt","unitone":{"padding":1}} -->
-			<div data-unitone-layout="decorator -padding:1" class="has-unitone-background-alt-background-color has-background">
+			<div data-unitone-layout="decorator" class="has-unitone-background-alt-background-color has-background">
 				<!-- wp:unitone/with-sidebar {"sidebar":"left","sidebarWidth":"40px","unitone":{"gap":-1}} -->
-				<div data-unitone-layout="with-sidebar -sidebar:left -gap:-1" style="--unitone--sidebar-width:40px">
+				<div data-unitone-layout="with-sidebar -sidebar:left" style="--unitone--sidebar-width:40px">
 					<!-- wp:unitone/with-sidebar-content -->
 					<div data-unitone-layout="with-sidebar__content">
 						<!-- wp:avatar {"size":40,"style":{"border":{"radius":"20px"}}} /-->
 					</div>
 					<!-- /wp:unitone/with-sidebar-content -->
+
 					<!-- wp:unitone/with-sidebar-content -->
 					<div data-unitone-layout="with-sidebar__content">
 						<!-- wp:unitone/stack {"unitone":{"gap":-1}} -->
-						<div data-unitone-layout="stack -gap:-1">
+						<div data-unitone-layout="stack">
 							<!-- wp:unitone/stack {"unitone":{"gap":0}} -->
-							<div data-unitone-layout="stack -gap:0">
+							<div data-unitone-layout="stack">
 								<!-- wp:comment-author-name /-->
 
-								<!-- wp:unitone/decorator {"fontSize":"unitone-xs"} -->
-								<div data-unitone-layout="decorator" class="has-unitone-xs-font-size">
-									<!-- wp:unitone/cluster {"unitone":{"gap":-1}} -->
-									<div data-unitone-layout="cluster -gap:-1">
-										<!-- wp:comment-date /-->
-										<!-- wp:comment-edit-link /-->
-									</div>
-									<!-- /wp:unitone/cluster -->
+								<!-- wp:unitone/cluster {"fontSize":"unitone-xs","unitone":{"gap":-1}} -->
+								<div data-unitone-layout="cluster" class="has-unitone-xs-font-size">
+									<!-- wp:comment-date /-->
+									<!-- wp:comment-edit-link /-->
 								</div>
-								<!-- /wp:unitone/decorator -->
+								<!-- /wp:unitone/cluster -->
 							</div>
 							<!-- /wp:unitone/stack -->
 

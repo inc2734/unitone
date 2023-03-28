@@ -15,7 +15,7 @@
 			<!-- wp:unitone/stack -->
 			<div data-unitone-layout="stack">
 				<!-- wp:unitone/stack {"unitone":{"gap":0}} -->
-				<div data-unitone-layout="stack -gap:0">
+				<div data-unitone-layout="stack">
 					<!-- wp:site-logo /-->
 					<!-- wp:site-title /-->
 				</div>
@@ -86,7 +86,7 @@
 	<!-- wp:unitone/decorator -->
 	<div data-unitone-layout="decorator">
 		<!-- wp:unitone/gutters {"unitone":{"padding":"-1"}} -->
-		<div data-unitone-layout="gutters -padding:-1">
+		<div data-unitone-layout="gutters">
 			<!-- wp:unitone/container -->
 			<div data-unitone-layout="container">
 				<!-- wp:paragraph -->

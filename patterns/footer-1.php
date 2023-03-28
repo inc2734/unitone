@@ -9,7 +9,7 @@
 <!-- wp:unitone/decorator {"align":"full","fontSize":"unitone-xs"} -->
 <div data-unitone-layout="decorator" class="alignfull has-unitone-xs-font-size">
 	<!-- wp:unitone/gutters {"unitone":{"padding":"-1"}} -->
-	<div data-unitone-layout="gutters -padding:-1">
+	<div data-unitone-layout="gutters">
 		<!-- wp:unitone/container -->
 		<div data-unitone-layout="container">
 			<!-- wp:paragraph -->

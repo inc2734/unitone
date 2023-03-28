@@ -18,6 +18,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"align": [ "full", "wide" ],
 		"color": {
 			"background": false,
 			"link": true,

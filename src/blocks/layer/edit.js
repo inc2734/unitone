@@ -207,6 +207,21 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>grid-column</code>
 								</>
 							}
+							help={
+								<span
+									dangerouslySetInnerHTML={ {
+										__html: sprintf(
+											// translators: %1$s: <code>, %2$s: </code>
+											__(
+												'For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line).',
+												'unitone'
+											),
+											'<code>',
+											'</code>'
+										),
+									} }
+								/>
+							}
 							value={ gridColumn }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { gridColumn: newAttribute } );
@@ -239,6 +254,21 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									&nbsp;:&nbsp;
 									<code>grid-row</code>
 								</>
+							}
+							help={
+								<span
+									dangerouslySetInnerHTML={ {
+										__html: sprintf(
+											// translators: %1$s: <code>, %2$s: </code>
+											__(
+												'For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line).',
+												'unitone'
+											),
+											'<code>',
+											'</code>'
+										),
+									} }
+								/>
 							}
 							value={ gridRow }
 							onChange={ ( newAttribute ) => {

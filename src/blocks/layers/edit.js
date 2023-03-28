@@ -1,10 +1,12 @@
 import classnames from 'classnames';
+import { get } from 'lodash';
 
 import {
 	InspectorControls,
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
+	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
 
 import {
@@ -13,12 +15,13 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { useSelect } from '@wordpress/data';
+import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
+import { useSelect, useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
-export default function ( { attributes, setAttributes, clientId } ) {
+export default function ( { name, attributes, setAttributes, clientId } ) {
 	const { cover } = attributes;
 
 	const hasInnerBlocks = useSelect(
@@ -73,7 +76,57 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<div { ...innerBlocksProps } />
+			{ hasInnerBlocks ? (
+				<div { ...innerBlocksProps } />
+			) : (
+				<Placeholder { ...{ clientId, name, setAttributes } } />
+			) }
 		</>
+	);
+}
+
+function Placeholder( { clientId, name, setAttributes } ) {
+	const { blockType, defaultVariation, variations } = useSelect(
+		( select ) => {
+			const {
+				getBlockVariations,
+				getBlockType,
+				getDefaultBlockVariation,
+			} = select( 'core/blocks' );
+
+			return {
+				blockType: getBlockType( name ),
+				defaultVariation: getDefaultBlockVariation( name, 'block' ),
+				variations: getBlockVariations( name, 'block' ),
+			};
+		},
+		[ name ]
+	);
+
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
+	return (
+		<div { ...useBlockProps() }>
+			<BlockVariationPicker
+				icon={ get( blockType, [ 'icon', 'src' ] ) }
+				label={ get( blockType, [ 'title' ] ) }
+				variations={ variations }
+				onSelect={ ( nextVariation = defaultVariation ) => {
+					if ( nextVariation.attributes ) {
+						setAttributes( nextVariation.attributes );
+					}
+					if ( nextVariation.innerBlocks ) {
+						replaceInnerBlocks(
+							clientId,
+							createBlocksFromInnerBlocksTemplate(
+								nextVariation.innerBlocks
+							),
+							true
+						);
+					}
+				} }
+				allowSkip
+			/>
+		</div>
 	);
 }

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-27T14:10:11+00:00\n"
+"POT-Creation-Date: 2023-03-28T01:45:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -712,7 +712,13 @@ msgstr ""
 msgid "A grid item's size and location within a grid column"
 msgstr ""
 
-#: dist/blocks/layer/index.js:1
+#. translators: %1$s: <code>, %2$s: </code>
+#: dist/blocks/layer/index.js:3
+#: dist/blocks/layer/index.js:5
+msgid "For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line)."
+msgstr ""
+
+#: dist/blocks/layer/index.js:3
 msgid "A grid item's size and location within the grid row"
 msgstr ""
 
@@ -722,6 +728,31 @@ msgstr ""
 
 #: dist/blocks/layers/index.js:1
 msgid "Background framed image"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Default"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Hero (%1$s)"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Top / Left"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Top / Right"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Bottom / Left"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Bottom / Right"
 msgstr ""
 
 #: dist/blocks/reel/index.js:1
@@ -887,10 +918,6 @@ msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Columns to be treated as sidebars"
-msgstr ""
-
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Default"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1

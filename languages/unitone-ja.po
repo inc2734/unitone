@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-03-28T01:45:22+00:00\n"
-"PO-Revision-Date: 2023-03-28 10:46+0900\n"
+"POT-Creation-Date: 2023-03-28T07:47:22+00:00\n"
+"PO-Revision-Date: 2023-03-28 16:47+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -48,7 +48,7 @@ msgstr "設定をリセット"
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/cover-content/index.js:1
 #: dist/blocks/cover/index.js:1 dist/blocks/decorator/index.js:1
 #: dist/blocks/frame/index.js:1 dist/blocks/layer/index.js:1
-#: dist/blocks/layers/index.js:1 dist/blocks/reel/index.js:1
+#: dist/blocks/layers/index.js:17 dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/slider/index.js:1
 #: dist/blocks/stack-divided/index.js:1 dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1 dist/blocks/with-sidebar/index.js:1
@@ -170,7 +170,7 @@ msgstr "ブロックリンク（ボーダー）"
 msgid "Block link (Stripe)"
 msgstr "ブロックリンク（ストライプ）"
 
-#: inc/block-styles.php:93 dist/blocks/layers/index.js:1
+#: inc/block-styles.php:93 dist/blocks/layers/index.js:17
 msgid "Cover"
 msgstr "カバー"
 
@@ -524,6 +524,10 @@ msgid "Max width"
 msgstr "最大幅"
 
 #: dist/blocks/center/index.js:1
+msgid "Intrinsic centering"
+msgstr "内在的な中央揃え"
+
+#: dist/blocks/center/index.js:1
 msgid "Text is also centered"
 msgstr "テキストも一緒に中央揃え"
 
@@ -670,23 +674,29 @@ msgstr "背景フレーム画像"
 msgid "Default"
 msgstr "デフォルト"
 
-#: dist/blocks/layers/index.js:1
+#. translators: %1$s: position
+#: dist/blocks/layers/index.js:3 dist/blocks/layers/index.js:5
+#: dist/blocks/layers/index.js:7 dist/blocks/layers/index.js:9
+#: dist/blocks/layers/index.js:11 dist/blocks/layers/index.js:13
+#: dist/blocks/layers/index.js:15 dist/blocks/layers/index.js:17
 msgid "Hero (%1$s)"
 msgstr "ヒーロー（%1$s）"
 
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:3
 msgid "Top / Left"
 msgstr "上 / 左"
 
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:5
 msgid "Top / Right"
 msgstr "上 / 右"
 
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:7 dist/blocks/layers/index.js:11
+#: dist/blocks/layers/index.js:15
 msgid "Bottom / Left"
 msgstr "下 / 左"
 
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:9 dist/blocks/layers/index.js:13
+#: dist/blocks/layers/index.js:17
 msgid "Bottom / Right"
 msgstr "下 / 右"
 
@@ -880,6 +890,10 @@ msgstr "最小幅"
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Wrap when content equals this width."
 msgstr "コンテンツがこの幅と等しくなった場合に折り返されます。"
+
+#: dist/js/editor/editor.js:1
+msgid "Using root padding"
+msgstr "ルートパディングを使用"
 
 #: dist/js/editor/editor.js:1
 msgid "Padding"

@@ -2,9 +2,18 @@ import {
 	SelectControl,
 	RangeControl,
 	BaseControl,
+	ToggleControl,
 } from '@wordpress/components';
 
-export function SpacingSizeControl( { options, onChange, label, value } ) {
+import { __ } from '@wordpress/i18n';
+
+export function SpacingSizeControl( {
+	options,
+	onChange,
+	label,
+	value,
+	allowRoot = false,
+} ) {
 	const defaultOptions = [
 		{
 			label: '',
@@ -65,28 +74,44 @@ export function SpacingSizeControl( { options, onChange, label, value } ) {
 			label={ label }
 			className="component-spacing-sizes-control"
 		>
-			<RangeControl
-				className="components-spacing-sizes-control__range-control"
-				value={ parseInt( value ) }
-				allowReset={ true }
-				resetFallbackValue={ undefined }
-				onChange={ onChange }
-				withInputField={ false }
-				aria-valuenow={ value }
-				aria-valuetext={ value }
-				min={ options[ 0 ]?.value || options[ 1 ]?.value }
-				max={ options[ options.length - 1 ]?.value }
-				marks={ marks }
-				hideLabelFromVision={ true }
-			/>
+			{ allowRoot && (
+				<div style={ { marginTop: '12px' } }>
+					<ToggleControl
+						label={ __( 'Using root padding', 'unitone' ) }
+						checked={ 'root' === value }
+						onChange={ ( newValue ) => {
+							onChange( newValue ? 'root' : undefined );
+						} }
+					/>
+				</div>
+			) }
 
-			<div style={ { marginTop: '5px' } }>
-				<SelectControl
-					value={ value || '' }
-					options={ options }
-					onChange={ onChange }
-				/>
-			</div>
+			{ 'root' !== value && (
+				<>
+					<RangeControl
+						className="components-spacing-sizes-control__range-control"
+						value={ parseInt( value ) }
+						allowReset={ true }
+						resetFallbackValue={ undefined }
+						onChange={ onChange }
+						withInputField={ false }
+						aria-valuenow={ value }
+						aria-valuetext={ value }
+						min={ options[ 0 ]?.value || options[ 1 ]?.value }
+						max={ options[ options.length - 1 ]?.value }
+						marks={ marks }
+						hideLabelFromVision={ true }
+					/>
+
+					<div style={ { marginTop: '5px' } }>
+						<SelectControl
+							value={ value || '' }
+							options={ options }
+							onChange={ onChange }
+						/>
+					</div>
+				</>
+			) }
 		</BaseControl>
 	);
 }

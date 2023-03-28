@@ -32,6 +32,7 @@ export function GuttersEdit( props ) {
 		<SpacingSizeControl
 			label={ label }
 			value={ unitone?.gutters }
+			allowRoot
 			onChange={ ( newValue ) => {
 				if ( 'undefined' !== typeof newValue ) {
 					// RangeControl returns Int, SelectControl returns String.

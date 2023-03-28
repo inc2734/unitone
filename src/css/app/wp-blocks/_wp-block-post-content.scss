@@ -22,8 +22,8 @@
 		}
 	}
 
-	:where(.entry-content > :where(:not(.alignleft):not(.alignright))),
-	:where(.wp-block-post-content > :where(:not(.alignleft):not(.alignright))) {
+	:where(.entry-content > :not(.alignleft):not(.alignright)),
+	:where(.wp-block-post-content > :not(.alignleft):not(.alignright)) {
 		max-width: var(--unitone--max-width);
 	}
 }

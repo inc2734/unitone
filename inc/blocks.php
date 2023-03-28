@@ -381,3 +381,21 @@ function unitone_patch_for_extraprops() {
 	wp_update_post( $_post, false, false );
 }
 add_action( 'load-post.php', 'unitone_patch_for_extraprops' );
+
+/**
+ * Fallback patch for unitone/cover.
+ */
+add_filter(
+	'render_block_unitone/center',
+	function( $block_content, $block ) {
+		if ( ! isset( $block['attrs']['intrinsic'] ) && false === strpos( $block_content, '-intrinsic' ) ) {
+			$p = new WP_HTML_Tag_Processor( $block_content );
+			$p->next_tag();
+			$p->set_attribute( 'data-unitone-layout', $p->get_attribute( 'data-unitone-layout' ) . ' ' . '-intrinsic' );
+			$block_content = $p->get_updated_html();
+		}
+		return $block_content;
+	},
+	10,
+	2
+);

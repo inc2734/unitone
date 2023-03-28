@@ -21,6 +21,31 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
+							'data-unitone-layout': classnames( 'center', {
+								'-with-text': withText,
+							} ),
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const { withText } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
 							'data-layout': classnames( 'center', {
 								'-with-text': withText,
 							} ),

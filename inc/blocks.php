@@ -142,10 +142,8 @@ add_filter(
 			$style    = $p->get_attribute( 'style' );
 			$property = '--unitone--half-leading:';
 			if ( false === strpos( $style, $property ) ) {
-				$style_array   = $style ? explode( ';', $style ) : array();
-				$style_array[] = $property . $block['attrs']['unitone']['halfLeading'];
-				$style_array   = array_map( 'trim', $style_array );
-				$p->set_attribute( 'style', implode( ';', $style_array ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['halfLeading'] ) );
 			}
 		}
 
@@ -201,7 +199,8 @@ add_filter(
 				: false;
 
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property . ( $color ? $color : $preset_color ) . ';' ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . ( $color ? $color : $preset_color ) ) );
 			}
 		}
 
@@ -210,7 +209,8 @@ add_filter(
 			$style    = $p->get_attribute( 'style' );
 			$property = '--unitone--divider-style:';
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['divider']['style'] . ';' ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['divider']['style'] ) );
 			}
 		}
 
@@ -219,7 +219,8 @@ add_filter(
 			$style    = $p->get_attribute( 'style' );
 			$property = '--unitone--divider-width:';
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['divider']['width'] . ';' ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['divider']['width'] ) );
 			}
 		}
 
@@ -255,7 +256,8 @@ add_filter(
 			$style    = $p->get_attribute( 'style' );
 			$property = '--unitone--max-width:';
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['maxWidth'] . ';' ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['maxWidth'] ) );
 			}
 		}
 
@@ -264,7 +266,8 @@ add_filter(
 			$style    = $p->get_attribute( 'style' );
 			$property = '--unitone--min-height:';
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['minHeight'] . ';' ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['minHeight'] ) );
 			}
 		}
 
@@ -309,7 +312,8 @@ add_filter(
 			$style    = $p->get_attribute( 'style' );
 			$property = '--unitone--top:';
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['position']['top'] . ';' ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['position']['top'] ) );
 			}
 		}
 
@@ -318,7 +322,8 @@ add_filter(
 			$style    = $p->get_attribute( 'style' );
 			$property = '--unitone--right:';
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['position']['right'] . ';' ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['position']['right'] ) );
 			}
 		}
 
@@ -327,7 +332,8 @@ add_filter(
 			$style    = $p->get_attribute( 'style' );
 			$property = '--unitone--bottom:';
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['position']['bottom'] . ';' ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['position']['bottom'] ) );
 			}
 		}
 
@@ -336,7 +342,8 @@ add_filter(
 			$style    = $p->get_attribute( 'style' );
 			$property = '--unitone--left:';
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['position']['left'] . ';' ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['position']['left'] ) );
 			}
 		}
 
@@ -345,7 +352,8 @@ add_filter(
 			$style    = $p->get_attribute( 'style' );
 			$property = '--unitone--z-index:';
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property . $block['attrs']['unitone']['position']['zIndex'] . ';' ) );
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['position']['zIndex'] ) );
 			}
 		}
 

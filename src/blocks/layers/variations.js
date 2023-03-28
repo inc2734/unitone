@@ -201,6 +201,7 @@ export default [
 	{
 		name: 'hero-top-left-title',
 		title: sprintf(
+			// translators: %1$s: position
 			__( 'Hero (%1$s)', 'unitone' ),
 			__( 'Top / Left', 'unitone' )
 		),
@@ -269,6 +270,7 @@ export default [
 	{
 		name: 'hero-top-right-title',
 		title: sprintf(
+			// translators: %1$s: position
 			__( 'Hero (%1$s)', 'unitone' ),
 			__( 'Top / Right', 'unitone' )
 		),
@@ -338,6 +340,7 @@ export default [
 	{
 		name: 'hero-bottom-left-title',
 		title: sprintf(
+			// translators: %1$s: position
 			__( 'Hero (%1$s)', 'unitone' ),
 			__( 'Bottom / Left', 'unitone' )
 		),
@@ -406,6 +409,7 @@ export default [
 	{
 		name: 'hero-bottom-right-title',
 		title: sprintf(
+			// translators: %1$s: position
 			__( 'Hero (%1$s)', 'unitone' ),
 			__( 'Bottom / Right', 'unitone' )
 		),
@@ -475,6 +479,7 @@ export default [
 	{
 		name: 'hero-bottom-left-title-inside',
 		title: sprintf(
+			// translators: %1$s: position
 			__( 'Hero (%1$s)', 'unitone' ),
 			__( 'Bottom / Left', 'unitone' )
 		),
@@ -542,6 +547,7 @@ export default [
 	{
 		name: 'hero-bottom-right-title-inside',
 		title: sprintf(
+			// translators: %1$s: position
 			__( 'Hero (%1$s)', 'unitone' ),
 			__( 'Bottom / Right', 'unitone' )
 		),
@@ -610,6 +616,7 @@ export default [
 	{
 		name: 'hero-bottom-left-title-inset',
 		title: sprintf(
+			// translators: %1$s: position
 			__( 'Hero (%1$s)', 'unitone' ),
 			__( 'Bottom / Left', 'unitone' )
 		),
@@ -693,6 +700,7 @@ export default [
 	{
 		name: 'hero-bottom-right-title-inset',
 		title: sprintf(
+			// translators: %1$s: position
 			__( 'Hero (%1$s)', 'unitone' ),
 			__( 'Bottom / Right', 'unitone' )
 		),

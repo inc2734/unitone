@@ -35,6 +35,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+		orientation: 'horizontal',
 		templateLock: false,
 		allowedBlocks: [ 'unitone/cluster-divided-content' ],
 		renderAppender: hasInnerBlocks

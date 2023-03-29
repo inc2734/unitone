@@ -125,4 +125,10 @@
 			}
 		}
 	}
+
+	[data-type="unitone/both-sides"] {
+		> .block-list-appender {
+			position: static;
+		}
+	}
 }

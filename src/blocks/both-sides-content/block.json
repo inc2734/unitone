@@ -7,14 +7,6 @@
 	"description": "The content of the both-sides block.",
 	"parent": [ "unitone/both-sides" ],
 	"attributes": {
-		"contentWidth": {
-			"type": "string",
-			"default": ""
-		},
-		"contentMaxWidth": {
-			"type": "string",
-			"default": ""
-		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
@@ -43,6 +35,7 @@
 			}
 		},
 		"unitone": {
+			"flexBasis": true,
 			"fluidTypography": true,
 			"lineHeight": true
 		}

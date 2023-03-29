@@ -4,20 +4,17 @@ import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
-	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import { useSelect } from '@wordpress/data';
+import { store as editorStore } from '@wordpress/editor';
 
-export default function ( props ) {
-	const { clientId } = props;
+const MAX_CHILDREN_COUNT = 2;
 
-	const hasInnerBlocks = useSelect(
-		( select ) =>
-			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
-				?.length,
-		[ clientId ]
-	);
+export default function ( { clientId } ) {
+	const { getBlockOrder } = useSelect( ( select ) => select( editorStore ) );
+
+	const isMax = MAX_CHILDREN_COUNT <= getBlockOrder( clientId ).length;
 
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = classnames(
@@ -26,9 +23,9 @@ export default function ( props ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		renderAppender: hasInnerBlocks
-			? InnerBlocks.DefaultBlockAppender
-			: InnerBlocks.ButtonBlockAppender,
+		orientation: 'horizontal',
+		templateLock: isMax ? 'insert' : undefined,
+		renderAppender: ! isMax ? InnerBlocks.ButtonBlockAppender : false,
 	} );
 
 	return <div { ...innerBlocksProps } />;

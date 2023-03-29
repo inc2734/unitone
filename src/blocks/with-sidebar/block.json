@@ -20,7 +20,7 @@
 		},
 		"sidebar": {
 			"type": "string",
-			"default": ""
+			"default": "right"
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

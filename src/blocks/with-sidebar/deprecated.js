@@ -8,9 +8,20 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			sidebar: {
+				type: 'string',
+				default: '',
+			},
 			contentMaxWidth: {
 				type: 'string',
 			},
+		},
+
+		migrate( attributes ) {
+			if ( ! attributes.sidebar ) {
+				attributes.sidebar = 'right';
+			}
+			return attributes;
 		},
 
 		supports: {
@@ -51,6 +62,10 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			sidebar: {
+				type: 'string',
+				default: '',
+			},
 			contentMaxWidth: {
 				type: 'string',
 			},

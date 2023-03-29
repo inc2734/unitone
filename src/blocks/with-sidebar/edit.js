@@ -4,6 +4,7 @@ import {
 	InspectorControls,
 	useBlockProps,
 	useInnerBlocksProps,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import {
@@ -14,12 +15,32 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import { useDispatch, useSelect } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
-export default function ( { attributes, setAttributes } ) {
+export default function ( { attributes, setAttributes, clientId } ) {
 	const { sidebarWidth, contentMinWidth, revert, sidebar } = attributes;
+
+	const { updateBlockAttributes } = useDispatch( blockEditorStore );
+	const { getBlockOrder } = useSelect(
+		( select ) => select( blockEditorStore ),
+		[]
+	);
+
+	useEffect( () => {
+		const blocks = getBlockOrder( clientId );
+
+		if ( ! revert === ( 'left' === sidebar ) ) {
+			updateBlockAttributes( blocks[ 0 ], { type: 'aside' } );
+			updateBlockAttributes( blocks[ 1 ], { type: 'main' } );
+		} else {
+			updateBlockAttributes( blocks[ 0 ], { type: 'main' } );
+			updateBlockAttributes( blocks[ 1 ], { type: 'aside' } );
+		}
+	}, [ sidebar, revert ] );
 
 	const blockProps = useBlockProps( {
 		style: {
@@ -39,8 +60,8 @@ export default function ( { attributes, setAttributes } ) {
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock: 'all',
 		template: [
-			[ 'unitone/with-sidebar-content' ],
-			[ 'unitone/with-sidebar-content' ],
+			[ 'unitone/with-sidebar-content', { type: 'main' } ],
+			[ 'unitone/with-sidebar-content', { type: 'aside' } ],
 		],
 	} );
 
@@ -94,10 +115,6 @@ export default function ( { attributes, setAttributes } ) {
 							value={ sidebar }
 							options={ [
 								{
-									label: __( 'Default', 'unitone' ),
-									value: '',
-								},
-								{
 									label: __( 'Right', 'unitone' ),
 									value: 'right',
 								},
@@ -149,7 +166,7 @@ export default function ( { attributes, setAttributes } ) {
 					</ToolsPanelItem>
 				</ToolsPanel>
 
-				<ToolsPanel label={ __( 'Content', 'unitone' ) }>
+				<ToolsPanel label={ __( 'Main', 'unitone' ) }>
 					<ToolsPanelItem
 						hasValue={ () =>
 							contentMinWidth !==

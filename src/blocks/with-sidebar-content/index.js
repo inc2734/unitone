@@ -4,6 +4,7 @@ import icon from '../icon';
 import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
+import variations from './variations';
 
 registerBlockType( 'unitone/with-sidebar-content', {
 	icon: {
@@ -12,4 +13,5 @@ registerBlockType( 'unitone/with-sidebar-content', {
 	edit,
 	save,
 	deprecated,
+	variations,
 } );

@@ -7,12 +7,16 @@
 	"description": "The content of the with sidebar block.",
 	"parent": [ "unitone/with-sidebar" ],
 	"attributes": {
+		"type": {
+			"type": "string"
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
 	"supports": {
+		"inserter": false,
 		"className": false,
 		"anchor": true,
 		"color": {
@@ -34,7 +38,6 @@
 			}
 		},
 		"unitone": {
-			"blockAlign": true,
 			"fluidTypography": true,
 			"lineHeight": true
 		}

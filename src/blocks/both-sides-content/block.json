@@ -21,6 +21,7 @@
 		}
 	},
 	"supports": {
+		"inserter": false,
 		"className": false,
 		"anchor": true,
 		"color": {

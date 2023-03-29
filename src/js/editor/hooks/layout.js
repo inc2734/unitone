@@ -47,6 +47,14 @@ import {
 } from './block-align';
 
 import {
+	useIsFlexBasisDisabled,
+	hasFlexBasisValue,
+	resetFlexBasis,
+	FlexBasisEdit,
+	editFlexBasisProp,
+} from './flex-basis';
+
+import {
 	useIsMaxWidthDisabled,
 	hasMaxWidthValue,
 	resetMaxWidth,
@@ -75,6 +83,7 @@ export {
 	editJustifyContentProp,
 	editJustifyContentColumnProp,
 	editBlockAlignProp,
+	editFlexBasisProp,
 	editMaxWidthProp,
 	editMinHeightProp,
 	editAutoRepeatProp,
@@ -86,6 +95,7 @@ export function LayoutPanel( props ) {
 		useIsJustifyContentColumnDisabled( props );
 	const isAlignItemsDisabled = useIsAlignItemsDisabled( props );
 	const isBlockAlignDisabled = useIsBlockAlignDisabled( props );
+	const isFlexBasisDisabled = useIsFlexBasisDisabled( props );
 	const isMaxWidthDisabled = useIsMaxWidthDisabled( props );
 	const isMinHeightDisabled = useIsMinHeightDisabled( props );
 	const isAutoRepeatDisabled = useIsAutoRepeatDisabled( props );
@@ -95,6 +105,7 @@ export function LayoutPanel( props ) {
 		isJustifyContentColumnDisabled &&
 		isAlignItemsDisabled &&
 		isBlockAlignDisabled &&
+		isFlexBasisDisabled &&
 		isMaxWidthDisabled &&
 		isMinHeightDisabled &&
 		isAutoRepeatDisabled
@@ -127,6 +138,7 @@ export function LayoutPanel( props ) {
 				! isJustifyContentColumnDisabled ||
 				! isAlignItemsDisabled ||
 				! isBlockAlignDisabled ||
+				! isFlexBasisDisabled ||
 				! isMaxWidthDisabled ||
 				! isMinHeightDisabled ||
 				! isAutoRepeatDisabled ) && (
@@ -213,6 +225,28 @@ export function LayoutPanel( props ) {
 								<BlockAlignEdit
 									{ ...props }
 									label={ __( 'Block alignment', 'unitone' ) }
+								/>
+							</ToolsPanelItem>
+						) }
+
+						{ ! isFlexBasisDisabled && (
+							<ToolsPanelItem
+								hasValue={ () => hasFlexBasisValue( props ) }
+								label={ __( 'Recommended width', 'unitone' ) }
+								onDeselect={ () => resetFlexBasis( props ) }
+								isShownByDefault
+							>
+								<FlexBasisEdit
+									{ ...props }
+									label={
+										<>
+											{ __(
+												'Recommended width',
+												'unitone'
+											) }
+											&nbsp;:&nbsp;<code>flex-basis</code>
+										</>
+									}
 								/>
 							</ToolsPanelItem>
 						) }

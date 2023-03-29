@@ -5,6 +5,8 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
+import { useSelect } from '@wordpress/data';
+import { store as blockEditorStore } from '@wordpress/block-editor';
 
 import {
 	DimensionsPanel,
@@ -24,6 +26,7 @@ import {
 	editMaxWidthProp,
 	editMinHeightProp,
 	editAutoRepeatProp,
+	editFlexBasisProp,
 } from './layout';
 
 import {
@@ -37,47 +40,40 @@ import { DividerPanel, editDividerProp, editDividerTypeProp } from './divider';
 import { PositionPanel, editPositionProp } from './position';
 
 function addEditProps( settings ) {
-	if ( !! settings.supports?.typography ) {
+	if ( !! settings.supports?.typography?.fontSize ) {
 		settings = editFluidTypographyProp( settings );
+	}
+
+	if ( !! settings.supports?.typography?.lineHeight ) {
 		settings = editHalfLeadingProp( settings );
 	}
 
-	if ( !! settings.supports?.unitone ) {
-		settings = editAlignItemsProp( settings );
-		settings = editBlockAlignProp( settings );
-		settings = editDividerProp( settings );
-		settings = editDividerTypeProp( settings );
-		settings = editGapProp( settings );
-		settings = editGuttersProp( settings );
-		settings = editJustifyContentColumnProp( settings );
-		settings = editJustifyContentProp( settings );
-		settings = editMaxWidthProp( settings );
-		settings = editMinHeightProp( settings );
-		settings = editAutoRepeatProp( settings );
-		settings = editNegativeProp( settings );
-		settings = editOverflowProp( settings );
-		settings = editPaddingProp( settings );
-		settings = editPositionProp( settings );
-	}
+	settings = editAlignItemsProp( settings );
+	settings = editBlockAlignProp( settings );
+	settings = editDividerProp( settings );
+	settings = editDividerTypeProp( settings );
+	settings = editGapProp( settings );
+	settings = editGuttersProp( settings );
+	settings = editJustifyContentColumnProp( settings );
+	settings = editJustifyContentProp( settings );
+	settings = editMaxWidthProp( settings );
+	settings = editMinHeightProp( settings );
+	settings = editAutoRepeatProp( settings );
+	settings = editFlexBasisProp( settings );
+	settings = editNegativeProp( settings );
+	settings = editOverflowProp( settings );
+	settings = editPaddingProp( settings );
+	settings = editPositionProp( settings );
 
 	return settings;
 }
 
 const addAttribute = ( settings ) => {
-	if (
-		! settings.supports?.typography?.fontSize &&
-		! settings.supports?.unitone
-	) {
-		return settings;
-	}
-
-	if ( ! settings.attributes?.unitone ) {
-		Object.assign( settings.attributes, {
-			unitone: {
-				type: 'object',
-			},
-		} );
-	}
+	Object.assign( settings.attributes, {
+		unitone: {
+			type: 'object',
+		},
+	} );
 
 	return settings;
 };
@@ -87,7 +83,8 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 		if (
 			! hasBlockSupport( props.name, 'typography.fontSize' ) &&
 			! hasBlockSupport( props.name, 'typography.lineHeight' ) &&
-			! hasBlockSupport( props.name, 'unitone' )
+			! hasBlockSupport( props.name, 'unitone' ) &&
+			! props.attributes?.__unstableUnitoneSupports
 		) {
 			return <BlockEdit { ...props } />;
 		}
@@ -101,7 +98,8 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						<TypographyPanel { ...props } />
 					) }
 
-				{ hasBlockSupport( props.name, 'unitone' ) && (
+				{ ( hasBlockSupport( props.name, 'unitone' ) ||
+					!! props.attributes?.__unstableUnitoneSupports ) && (
 					<>
 						<DimensionsPanel { ...props } />
 						<LayoutPanel { ...props } />
@@ -131,4 +129,50 @@ addFilter(
 	'editor.BlockEdit',
 	'unitone/with-inspector-controls',
 	withInspectorControls
+);
+
+/**
+ * Add parent block name prop.
+ */
+const withChildBlockAttributes = createHigherOrderComponent(
+	( BlockListBlock ) => {
+		return ( props ) => {
+			const { getBlockParents, getBlock } = useSelect(
+				( select ) => {
+					return select( blockEditorStore );
+				},
+				[ props.clientId ]
+			);
+
+			const blockParents = getBlockParents( props.clientId );
+			if ( 0 < blockParents.length ) {
+				const parentClientId = blockParents[ blockParents.length - 1 ];
+				if ( !! parentClientId ) {
+					const parentBlock = getBlock( parentClientId );
+					if ( 'unitone/both-sides' === parentBlock?.name ) {
+						const newProps = {
+							...props,
+							attributes: {
+								...props.attributes,
+								__unstableUnitoneSupports: {
+									flexBasis: true,
+								},
+							},
+						};
+
+						return <BlockListBlock { ...newProps } />;
+					}
+				}
+			}
+
+			return <BlockListBlock { ...props } />;
+		};
+	},
+	'withClientIdClassName'
+);
+
+addFilter(
+	'editor.BlockListBlock',
+	'unitone/with-child-block-attributes',
+	withChildBlockAttributes
 );

@@ -14,8 +14,14 @@ export function resetMaxWidth( { attributes = {}, setAttributes } ) {
 	} );
 }
 
-export function useIsMaxWidthDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.maxWidth' );
+export function useIsMaxWidthDisabled( {
+	name: blockName,
+	attributes: { __unstableUnitoneSupports },
+} = {} ) {
+	return (
+		! hasBlockSupport( blockName, 'unitone.maxWidth' ) &&
+		! __unstableUnitoneSupports?.maxWidth
+	);
 }
 
 export function MaxWidthEdit( props ) {
@@ -49,7 +55,17 @@ export function MaxWidthEdit( props ) {
 }
 
 export function saveMaxWidthProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.maxWidth' ) ) {
+	if (
+		! hasBlockSupport( blockType, 'unitone.maxWidth' ) &&
+		! attributes?.__unstableUnitoneSupports?.maxWidth
+	) {
+		delete attributes?.unitone?.maxWidth;
+		if (
+			!! attributes?.unitone &&
+			! Object.keys( attributes?.unitone ).length
+		) {
+			delete attributes?.unitone;
+		}
 		return extraProps;
 	}
 
@@ -76,10 +92,6 @@ export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 }
 
 export function editMaxWidthProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.maxWidth' ) ) {
-		return settings;
-	}
-
 	const existingGetEditWrapperProps = settings.getEditWrapperProps;
 	settings.getEditWrapperProps = ( attributes ) => {
 		let props = {};

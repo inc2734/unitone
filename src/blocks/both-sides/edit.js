@@ -1,8 +1,24 @@
 import classnames from 'classnames';
 
-import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
+import {
+	InnerBlocks,
+	useBlockProps,
+	useInnerBlocksProps,
+	store as blockEditorStore,
+} from '@wordpress/block-editor';
 
-export default function () {
+import { useSelect } from '@wordpress/data';
+
+export default function ( props ) {
+	const { clientId } = props;
+
+	const hasInnerBlocks = useSelect(
+		( select ) =>
+			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
+				?.length,
+		[ clientId ]
+	);
+
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'both-sides',
@@ -10,11 +26,9 @@ export default function () {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: 'all',
-		template: [
-			[ 'unitone/both-sides-content' ],
-			[ 'unitone/both-sides-content' ],
-		],
+		renderAppender: hasInnerBlocks
+			? InnerBlocks.DefaultBlockAppender
+			: InnerBlocks.ButtonBlockAppender,
 	} );
 
 	return <div { ...innerBlocksProps } />;

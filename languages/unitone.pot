@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-28T07:47:22+00:00\n"
+"POT-Creation-Date: 2023-03-29T02:43:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -735,7 +735,6 @@ msgid "Background framed image"
 msgstr ""
 
 #: dist/blocks/layers/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
 msgid "Default"
 msgstr ""
 
@@ -924,6 +923,15 @@ msgstr ""
 msgid "The \"Max width\" setting is used as the width of each column."
 msgstr ""
 
+#: dist/blocks/with-sidebar-content/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Main"
+msgstr ""
+
+#: dist/blocks/with-sidebar-content/index.js:1
+msgid "Aside"
+msgstr ""
+
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Revert"
 msgstr ""
@@ -948,10 +956,6 @@ msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
 msgid "If unspecified, the width of the sidebar is calculated from the width of the child elements."
-msgstr ""
-
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Content"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
@@ -1016,6 +1020,10 @@ msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Block alignment"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Recommended width"
 msgstr ""
 
 #: dist/js/editor/editor.js:1

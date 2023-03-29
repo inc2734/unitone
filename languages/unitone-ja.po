@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-03-28T07:47:22+00:00\n"
-"PO-Revision-Date: 2023-03-28 16:47+0900\n"
+"POT-Creation-Date: 2023-03-29T02:43:32+00:00\n"
+"PO-Revision-Date: 2023-03-29 11:43+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -670,7 +670,7 @@ msgstr "背景画像"
 msgid "Background framed image"
 msgstr "背景フレーム画像"
 
-#: dist/blocks/layers/index.js:1 dist/blocks/with-sidebar/index.js:1
+#: dist/blocks/layers/index.js:1
 msgid "Default"
 msgstr "デフォルト"
 
@@ -853,6 +853,15 @@ msgstr "マルチカラム"
 msgid "The \"Max width\" setting is used as the width of each column."
 msgstr "「最大幅」の設定値が各カラムの幅として利用されます。"
 
+#: dist/blocks/with-sidebar-content/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Main"
+msgstr "メイン"
+
+#: dist/blocks/with-sidebar-content/index.js:1
+msgid "Aside"
+msgstr "アサイド"
+
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Revert"
 msgstr "逆転する"
@@ -878,10 +887,6 @@ msgid ""
 "If unspecified, the width of the sidebar is calculated from the width of the "
 "child elements."
 msgstr "未指定の場合、サイドバーの幅は子要素の幅から算出されます。"
-
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Content"
-msgstr "コンテンツ"
 
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Min width"
@@ -946,6 +951,10 @@ msgstr "垂直配置"
 #: dist/js/editor/editor.js:1
 msgid "Block alignment"
 msgstr "ブロックの配置"
+
+#: dist/js/editor/editor.js:1
+msgid "Recommended width"
+msgstr "推奨幅"
 
 #: dist/js/editor/editor.js:1
 msgid "Min height"
@@ -2322,6 +2331,9 @@ msgstr "Woocommerce 個別商品：ページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product: Page header (Image)"
 msgstr "WooCommerce 個別商品：ページヘッダー（画像）"
+
+#~ msgid "Content"
+#~ msgstr "コンテンツ"
 
 #~ msgid "General"
 #~ msgstr "一般"

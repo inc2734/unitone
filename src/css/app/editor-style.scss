@@ -70,12 +70,6 @@
 
 			> .components-resizable-box__container,
 			> .components-disabled {
-				height: 100% !important;
-				width: 100% !important;
-				max-width: 100% !important;
-				max-height: 100% !important;
-				vertical-align: top;
-
 				> div {
 					display: none; // Remove resizer
 				}
@@ -107,7 +101,7 @@
 		}
 
 		> .block-list-appender {
-			position: absolute;
+			grid-row: auto;
 		}
 	}
 

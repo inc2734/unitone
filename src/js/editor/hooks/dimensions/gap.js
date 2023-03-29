@@ -2,7 +2,7 @@ import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport, getBlockSupport } from '@wordpress/blocks';
 
-import { SpacingSizeControl } from './components';
+import { SpacingSizeControl } from '../components';
 
 export function hasGapValue( props ) {
 	return props.attributes?.unitone?.gap !== undefined;

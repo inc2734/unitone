@@ -5,8 +5,8 @@ import { hasBlockSupport } from '@wordpress/blocks';
 import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-import { alignBottom, alignCenter, alignTop } from './icons';
-import { physicalToLogical, logicalToPhysical } from '../../helper';
+import { alignBottom, alignCenter, alignTop } from '../icons';
+import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const alignItemsOptions = [
 	{

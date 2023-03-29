@@ -6,7 +6,7 @@ import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { justifyLeft, justifyCenter, justifyRight } from '@wordpress/icons';
 
-import { physicalToLogical, logicalToPhysical } from '../../helper';
+import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const blockAlignOptions = [
 	{

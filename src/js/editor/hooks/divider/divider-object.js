@@ -2,10 +2,10 @@ import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginC
 import { __experimentalBorderControl as BorderControl } from '@wordpress/components';
 import { hasBlockSupport } from '@wordpress/blocks';
 
-import { cleanEmptyObject } from './utils';
+import { cleanEmptyObject } from '../utils';
 
 // @todo For WordPress 6.0
-import useMultipleOriginColorsAndGradientsFallback from './use-common-single-multiple-selects';
+import useMultipleOriginColorsAndGradientsFallback from '../use-common-single-multiple-selects';
 
 // @todo For WordPress 6.0
 if ( undefined === useMultipleOriginColorsAndGradients ) {

@@ -18,9 +18,6 @@ export default [
 		innerBlocks: [
 			[
 				'unitone/layer',
-				{
-					gridRow: '',
-				},
 				[
 					[
 						'core/image',
@@ -34,8 +31,7 @@ export default [
 			[
 				'unitone/layer',
 				{
-					alignSelf: 'end',
-					gridRow: '',
+					unitone: { alignSelf: 'end' },
 				},
 				[
 					[
@@ -52,9 +48,6 @@ export default [
 			innerBlocks: [
 				{
 					name: 'unitone/layer',
-					attributes: {
-						gridRow: '',
-					},
 					innerBlocks: [
 						{
 							name: 'core/image',
@@ -68,8 +61,7 @@ export default [
 				{
 					name: 'unitone/layer',
 					attributes: {
-						alignSelf: 'end',
-						gridRow: '',
+						unitone: { alignSelf: 'end' },
 					},
 					innerBlocks: [
 						{
@@ -100,9 +92,6 @@ export default [
 		innerBlocks: [
 			[
 				'unitone/layer',
-				{
-					gridRow: '',
-				},
 				[
 					[
 						'unitone/frame',
@@ -122,8 +111,7 @@ export default [
 			[
 				'unitone/layer',
 				{
-					alignSelf: 'end',
-					gridRow: '',
+					unitone: { alignSelf: 'end' },
 				},
 				[
 					[
@@ -137,9 +125,6 @@ export default [
 			innerBlocks: [
 				{
 					name: 'unitone/layer',
-					attributes: {
-						gridRow: '',
-					},
 					innerBlocks: [
 						{
 							name: 'unitone/frame',
@@ -158,8 +143,7 @@ export default [
 				{
 					name: 'unitone/layer',
 					attributes: {
-						alignSelf: 'end',
-						gridRow: '',
+						unitone: { alignSelf: 'end' },
 					},
 					innerBlocks: [
 						{
@@ -188,14 +172,6 @@ export default [
 		isDefault: true,
 		title: __( 'Default', 'unitone' ),
 		scope: [ 'block' ],
-		innerBlocks: [
-			{
-				name: 'unitone/layer',
-			},
-			{
-				name: 'unitone/layer',
-			},
-		],
 		icon: <IconUnitone />,
 	},
 	{
@@ -214,9 +190,11 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					alignSelf: 'end',
-					gridColumn: '2/-1',
-					gridRow: '2/-1',
+					unitone: {
+						alignSelf: 'end',
+						gridColumn: '2/-1',
+						gridRow: '2/-1',
+					},
 				},
 				innerBlocks: [
 					{
@@ -240,7 +218,6 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					gridRow: '',
 					unitone: {
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
 					},
@@ -283,9 +260,11 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					alignSelf: 'end',
-					gridColumn: '1/-2',
-					gridRow: '2/-1',
+					unitone: {
+						alignSelf: 'end',
+						gridColumn: '1/-2',
+						gridRow: '2/-1',
+					},
 				},
 				innerBlocks: [
 					{
@@ -309,9 +288,8 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					gridRow: '',
-					justifySelf: 'end',
 					unitone: {
+						justifySelf: 'end',
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
 					},
 				},
@@ -353,8 +331,10 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					gridColumn: '2/-1',
-					gridRow: '1/-2',
+					unitone: {
+						gridColumn: '2/-1',
+						gridRow: '1/-2',
+					},
 				},
 				innerBlocks: [
 					{
@@ -378,9 +358,8 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					alignSelf: 'end',
-					gridRow: '',
 					unitone: {
+						alignSelf: 'end',
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
 					},
 				},
@@ -422,8 +401,10 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					gridColumn: '1/-2',
-					gridRow: '-2/1',
+					unitone: {
+						gridColumn: '1/-2',
+						gridRow: '-2/1',
+					},
 				},
 				innerBlocks: [
 					{
@@ -447,10 +428,9 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					alignSelf: 'end',
-					gridRow: '',
-					justifySelf: 'end',
 					unitone: {
+						alignSelf: 'end',
+						justifySelf: 'end',
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
 					},
 				},
@@ -496,7 +476,7 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					gridRow: '1/-2',
+					unitone: { gridRow: '1/-2' },
 				},
 				innerBlocks: [
 					{
@@ -511,9 +491,8 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					alignSelf: 'end',
-					gridRow: '',
 					unitone: {
+						alignSelf: 'end',
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
 					},
 				},
@@ -564,7 +543,7 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					gridRow: '1/-2',
+					unitone: { gridRow: '1/-2' },
 				},
 				innerBlocks: [
 					{
@@ -579,10 +558,9 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					alignSelf: 'end',
-					gridRow: '',
-					justifySelf: 'end',
 					unitone: {
+						alignSelf: 'end',
+						justifySelf: 'end',
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
 					},
 				},
@@ -633,9 +611,6 @@ export default [
 		innerBlocks: [
 			{
 				name: 'unitone/layer',
-				attributes: {
-					gridRow: '',
-				},
 				innerBlocks: [
 					{
 						name: 'core/image',
@@ -649,9 +624,8 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					alignSelf: 'end',
-					gridRow: '',
 					unitone: {
+						alignSelf: 'end',
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
 					},
 				},
@@ -717,9 +691,6 @@ export default [
 		innerBlocks: [
 			{
 				name: 'unitone/layer',
-				attributes: {
-					gridRow: '',
-				},
 				innerBlocks: [
 					{
 						name: 'core/image',
@@ -733,10 +704,9 @@ export default [
 			{
 				name: 'unitone/layer',
 				attributes: {
-					alignSelf: 'end',
-					gridRow: '',
-					justifySelf: 'end',
 					unitone: {
+						alignSelf: 'end',
+						justifySelf: 'end',
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
 					},
 				},

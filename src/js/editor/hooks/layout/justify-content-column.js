@@ -5,42 +5,45 @@ import { hasBlockSupport } from '@wordpress/blocks';
 import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import {
-	justifyLeft,
-	justifyCenter,
-	justifyRight,
-	justifySpaceBetween,
-} from '@wordpress/icons';
+	alignBottom,
+	alignCenter,
+	alignTop,
+	alignSpaceBetween,
+} from '../icons';
 
-import { physicalToLogical, logicalToPhysical } from '../../helper';
+import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
-const justifyContentOptions = [
+const justifyContentColumnOptions = [
 	{
 		value: 'left',
-		icon: justifyLeft,
-		label: __( 'Justify items left', 'unitone' ),
+		icon: alignTop,
+		label: __( 'Justify items top', 'unitone' ),
 	},
 	{
 		value: 'center',
-		icon: justifyCenter,
+		icon: alignCenter,
 		label: __( 'Justify items center', 'unitone' ),
 	},
 	{
 		value: 'right',
-		icon: justifyRight,
-		label: __( 'Justify items right', 'unitone' ),
+		icon: alignBottom,
+		label: __( 'Justify items bottom', 'unitone' ),
 	},
 	{
 		value: 'space-between',
-		icon: justifySpaceBetween,
+		icon: alignSpaceBetween,
 		label: __( 'Justify items space-between', 'unitone' ),
 	},
 ];
 
-export function hasJustifyContentValue( props ) {
+export function hasJustifyContentColumnValue( props ) {
 	return props.attributes?.unitone?.justifyContent !== undefined;
 }
 
-export function resetJustifyContent( { attributes = {}, setAttributes } ) {
+export function resetJustifyContentColumn( {
+	attributes = {},
+	setAttributes,
+} ) {
 	delete attributes?.unitone?.justifyContent;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -49,11 +52,11 @@ export function resetJustifyContent( { attributes = {}, setAttributes } ) {
 	} );
 }
 
-export function useIsJustifyContentDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.justifyContent' );
+export function useIsJustifyContentColumnDisabled( { name: blockName } = {} ) {
+	return ! hasBlockSupport( blockName, 'unitone.justifyContentColumn' );
 }
 
-export function JustifyContentToolbar( props ) {
+export function JustifyContentColumnToolbar( props ) {
 	const {
 		attributes: { unitone },
 		setAttributes,
@@ -61,7 +64,7 @@ export function JustifyContentToolbar( props ) {
 
 	return (
 		<JustifyToolbar
-			allowedControls={ justifyContentOptions.map(
+			allowedControls={ justifyContentColumnOptions.map(
 				( option ) => option.value
 			) }
 			value={ logicalToPhysical( unitone?.justifyContent ) }
@@ -84,7 +87,7 @@ export function JustifyContentToolbar( props ) {
 	);
 }
 
-export function JustifyContentEdit( props ) {
+export function JustifyContentColumnEdit( props ) {
 	const {
 		label,
 		attributes: { unitone },
@@ -96,46 +99,54 @@ export function JustifyContentEdit( props ) {
 			{ !! label && <legend>{ label }</legend> }
 
 			<div>
-				{ justifyContentOptions.map( ( { value, icon, iconLabel } ) => {
-					return (
-						<Button
-							key={ value }
-							label={ iconLabel }
-							icon={ icon }
-							isPressed={
-								logicalToPhysical( unitone?.justifyContent ) ===
-								value
-							}
-							onClick={ () => {
-								const newUnitone = {
-									...unitone,
-									justifyContent:
-										logicalToPhysical(
-											unitone?.justifyContent
-										) !== value
-											? physicalToLogical( value )
-											: undefined,
-								};
-								if ( null == newUnitone.justifyContent ) {
-									delete newUnitone.justifyContent;
+				{ justifyContentColumnOptions.map(
+					( { value, icon, iconLabel } ) => {
+						return (
+							<Button
+								key={ value }
+								label={ iconLabel }
+								icon={ icon }
+								isPressed={
+									logicalToPhysical(
+										unitone?.justifyContent
+									) === value
 								}
+								onClick={ () => {
+									const newUnitone = {
+										...unitone,
+										justifyContent:
+											logicalToPhysical(
+												unitone?.justifyContent
+											) !== value
+												? physicalToLogical( value )
+												: undefined,
+									};
+									if ( null == newUnitone.justifyContent ) {
+										delete newUnitone.justifyContent;
+									}
 
-								setAttributes( {
-									unitone: !! Object.keys( newUnitone ).length
-										? newUnitone
-										: undefined,
-								} );
-							} }
-						/>
-					);
-				} ) }
+									setAttributes( {
+										unitone: !! Object.keys( newUnitone )
+											.length
+											? newUnitone
+											: undefined,
+									} );
+								} }
+							/>
+						);
+					}
+				) }
 			</div>
 		</fieldset>
 	);
 }
 
-export function saveJustifyContentProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.justifyContent' ) ) {
+export function saveJustifyContentColumnProp(
+	extraProps,
+	blockType,
+	attributes
+) {
+	if ( ! hasBlockSupport( blockType, 'unitone.justifyContentColumn' ) ) {
 		return extraProps;
 	}
 
@@ -160,8 +171,8 @@ export function saveJustifyContentProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editJustifyContentProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.justifyContent' ) ) {
+export function editJustifyContentColumnProp( settings ) {
+	if ( ! hasBlockSupport( settings, 'unitone.justifyContentColumn' ) ) {
 		return settings;
 	}
 
@@ -171,7 +182,7 @@ export function editJustifyContentProp( settings ) {
 		if ( existingGetEditWrapperProps ) {
 			props = existingGetEditWrapperProps( attributes );
 		}
-		return saveJustifyContentProp( props, settings, attributes );
+		return saveJustifyContentColumnProp( props, settings, attributes );
 	};
 	return settings;
 }

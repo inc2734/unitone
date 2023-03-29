@@ -357,6 +357,54 @@ add_filter(
 			}
 		}
 
+		// --unitone--flex-basis
+		if ( isset( $block['attrs']['unitone']['flexBasis'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--flex-basis:';
+			if ( false === strpos( $style, $property ) ) {
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['flexBasis'] ) );
+			}
+		}
+
+		// -align-self
+		if ( isset( $block['attrs']['unitone']['alignSelf'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-align-self:' . $block['attrs']['unitone']['alignSelf'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// -justify-self
+		if ( isset( $block['attrs']['unitone']['justifySelf'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-justify-self:' . $block['attrs']['unitone']['justifySelf'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
+		// --unitone--grid-column
+		if ( isset( $block['attrs']['unitone']['gridColumn'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--grid-column:';
+			if ( false === strpos( $style, $property ) ) {
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['gridColumn'] ) );
+			}
+		}
+
+		// --unitone--grid-row
+		if ( isset( $block['attrs']['unitone']['gridRow'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--grid-row:';
+			if ( false === strpos( $style, $property ) ) {
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['gridRow'] ) );
+			}
+		}
+
 		$block_content = $p->get_updated_html();
 		return $block_content;
 	},

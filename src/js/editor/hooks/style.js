@@ -15,7 +15,7 @@ import {
 	editGapProp,
 	editNegativeProp,
 	editOverflowProp,
-} from './dimensions';
+} from './dimensions/dimensions';
 
 import {
 	LayoutPanel,
@@ -27,17 +27,29 @@ import {
 	editMinHeightProp,
 	editAutoRepeatProp,
 	editFlexBasisProp,
-} from './layout';
+} from './layout/layout';
+
+import {
+	LayerPanel,
+	editAlignSelfProp,
+	editJustifySelfProp,
+	editGridColumnProp,
+	editGridRowProp,
+} from './layer/layer';
 
 import {
 	TypographyPanel,
 	editFluidTypographyProp,
 	editHalfLeadingProp,
-} from './typography';
+} from './typography/typography';
 
-import { DividerPanel, editDividerProp, editDividerTypeProp } from './divider';
+import {
+	DividerPanel,
+	editDividerProp,
+	editDividerTypeProp,
+} from './divider/divider';
 
-import { PositionPanel, editPositionProp } from './position';
+import { PositionPanel, editPositionProp } from './position/position';
 
 function addEditProps( settings ) {
 	if ( !! settings.supports?.typography?.fontSize ) {
@@ -64,6 +76,10 @@ function addEditProps( settings ) {
 	settings = editOverflowProp( settings );
 	settings = editPaddingProp( settings );
 	settings = editPositionProp( settings );
+	settings = editAlignSelfProp( settings );
+	settings = editJustifySelfProp( settings );
+	settings = editGridColumnProp( settings );
+	settings = editGridRowProp( settings );
 
 	return settings;
 }
@@ -104,8 +120,8 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						<DimensionsPanel { ...props } />
 						<LayoutPanel { ...props } />
 						<DividerPanel { ...props } />
-
 						<PositionPanel { ...props } />
+						<LayerPanel { ...props } />
 					</>
 				) }
 			</>
@@ -144,28 +160,36 @@ const withChildBlockAttributes = createHigherOrderComponent(
 				[ props.clientId ]
 			);
 
+			const newProps = { ...props };
+
 			const blockParents = getBlockParents( props.clientId );
 			if ( 0 < blockParents.length ) {
 				const parentClientId = blockParents[ blockParents.length - 1 ];
 				if ( !! parentClientId ) {
 					const parentBlock = getBlock( parentClientId );
+
 					if ( 'unitone/both-sides' === parentBlock?.name ) {
-						const newProps = {
-							...props,
-							attributes: {
-								...props.attributes,
-								__unstableUnitoneSupports: {
-									flexBasis: true,
-								},
+						newProps.attributes = {
+							...newProps.attributes,
+							__unstableUnitoneSupports: {
+								flexBasis: true,
 							},
 						};
-
-						return <BlockListBlock { ...newProps } />;
+					} else if ( 'unitone/layers' === parentBlock?.name ) {
+						newProps.attributes = {
+							...newProps.attributes,
+							__unstableUnitoneSupports: {
+								alignSelf: true,
+								justifySelf: true,
+								gridColumn: true,
+								gridRow: true,
+							},
+						};
 					}
 				}
 			}
 
-			return <BlockListBlock { ...props } />;
+			return <BlockListBlock { ...newProps } />;
 		};
 	},
 	'withClientIdClassName'

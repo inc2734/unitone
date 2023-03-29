@@ -1,15 +1,18 @@
+/*
+ *@see https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/padding.js
+ */
 import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 
-import { SpacingSizeControl } from './components';
+import { SpacingSizeControl } from '../components';
 
-export function hasGuttersValue( props ) {
-	return props.attributes?.unitone?.gutters !== undefined;
+export function hasPaddingValue( props ) {
+	return props.attributes?.unitone?.padding !== undefined;
 }
 
-export function resetGutters( { attributes = {}, setAttributes } ) {
-	delete attributes?.unitone?.gutters;
+export function resetPadding( { attributes = {}, setAttributes } ) {
+	delete attributes?.unitone?.padding;
 	const newUnitone = { ...attributes?.unitone };
 
 	setAttributes( {
@@ -17,11 +20,11 @@ export function resetGutters( { attributes = {}, setAttributes } ) {
 	} );
 }
 
-export function useIsGuttersDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.gutters' );
+export function useIsPaddingDisabled( { name: blockName } = {} ) {
+	return ! hasBlockSupport( blockName, 'unitone.padding' );
 }
 
-export function GuttersEdit( props ) {
+export function PaddingEdit( props ) {
 	const {
 		label,
 		attributes: { unitone },
@@ -31,10 +34,9 @@ export function GuttersEdit( props ) {
 	return (
 		<SpacingSizeControl
 			label={ label }
-			value={ unitone?.gutters }
-			allowRoot
+			value={ unitone?.padding }
 			onChange={ ( newValue ) => {
-				if ( 'undefined' !== typeof newValue ) {
+				if ( null != newValue ) {
 					// RangeControl returns Int, SelectControl returns String.
 					// So cast Int all values.
 					newValue = String( newValue );
@@ -42,10 +44,10 @@ export function GuttersEdit( props ) {
 
 				const newUnitone = {
 					...unitone,
-					gutters: newValue || undefined,
+					padding: newValue || undefined,
 				};
-				if ( null == newUnitone.gutters ) {
-					delete newUnitone.gutters;
+				if ( null == newUnitone.padding ) {
+					delete newUnitone.padding;
 				}
 
 				setAttributes( {
@@ -58,12 +60,12 @@ export function GuttersEdit( props ) {
 	);
 }
 
-export function saveGuttersProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.gutters' ) ) {
+export function savePaddingProp( extraProps, blockType, attributes ) {
+	if ( ! hasBlockSupport( blockType, 'unitone.padding' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.gutters ) {
+	if ( undefined === attributes?.unitone?.padding ) {
 		return extraProps;
 	}
 
@@ -71,21 +73,21 @@ export function saveGuttersProp( extraProps, blockType, attributes ) {
 	if ( !! extraProps?.[ 'data-layout' ] ) {
 		extraProps[ 'data-layout' ] = classnames(
 			extraProps[ 'data-layout' ],
-			`-gutters:${ attributes.unitone?.gutters }`
+			`-padding:${ attributes.unitone?.padding }`
 		);
 		return extraProps;
 	}
 
 	extraProps[ 'data-unitone-layout' ] = classnames(
 		extraProps[ 'data-unitone-layout' ],
-		`-gutters:${ attributes.unitone?.gutters }`
+		`-padding:${ attributes.unitone?.padding }`
 	);
 
 	return extraProps;
 }
 
-export function editGuttersProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.gutters' ) ) {
+export function editPaddingProp( settings ) {
+	if ( ! hasBlockSupport( settings, 'unitone.padding' ) ) {
 		return settings;
 	}
 
@@ -95,8 +97,7 @@ export function editGuttersProp( settings ) {
 		if ( existingGetEditWrapperProps ) {
 			props = existingGetEditWrapperProps( attributes );
 		}
-		return saveGuttersProp( props, settings, attributes );
+		return savePaddingProp( props, settings, attributes );
 	};
-
 	return settings;
 }

@@ -35,7 +35,10 @@ export default function ( { attributes } ) {
 					'unitone-slider--has-pagination': pagination,
 				} ),
 				style: {
-					'--unitone--slide-width': canMultiSlides && slideWidth,
+					'--unitone--slide-width':
+						canMultiSlides && !! slideWidth
+							? slideWidth
+							: undefined,
 				},
 			} ) }
 		>

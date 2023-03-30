@@ -179,7 +179,8 @@ export default function ( {
 			'unitone-slider--has-pagination': pagination,
 		} ),
 		style: {
-			'--unitone--slide-width': canMultiSlides && slideWidth,
+			'--unitone--slide-width':
+				canMultiSlides && !! slideWidth ? slideWidth : undefined,
 		},
 	} );
 
@@ -691,7 +692,11 @@ export default function ( {
 						/>
 					) }
 
-					<div className="unitone-slider__canvas">
+					<div
+						className={ classnames( 'unitone-slider__canvas', {
+							'swiper-fade': 'fade' === effect,
+						} ) }
+					>
 						<div { ...innerBlocksProps } />
 					</div>
 

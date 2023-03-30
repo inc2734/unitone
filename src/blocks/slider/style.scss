@@ -134,6 +134,10 @@
 		}
 	}
 
+	.swiper-fade {
+		overflow: hidden;
+	}
+
 	// For some reason, the slide before the first one is not fully transparent.
 	.swiper-fade .swiper-slide.swiper-slide-visible.swiper-slide-prev {
 		opacity: 0 !important;

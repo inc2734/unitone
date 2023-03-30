@@ -12,14 +12,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			parseInt( canvas.getAttribute( 'data-unitone-swiper-speed' ) ) ||
 			undefined;
 		const autoplayDelay =
-			0 <=
-				parseInt(
-					canvas.getAttribute( 'data-unitone-swiper-autoplay-delay' )
-				) || undefined;
+			parseInt(
+				canvas.getAttribute( 'data-unitone-swiper-autoplay-delay' )
+			) || undefined;
 		const loop =
-			'true' === canvas.getAttribute( 'data-unitone-swiper-loop' )
-				? true
-				: false;
+			'true' === canvas.getAttribute( 'data-unitone-swiper-loop' );
 		const effect =
 			canvas.getAttribute( 'data-unitone-swiper-effect' ) || 'slide';
 

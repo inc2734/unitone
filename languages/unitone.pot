@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-29T02:43:32+00:00\n"
+"POT-Creation-Date: 2023-03-30T14:10:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -45,7 +45,6 @@ msgid "Reset settings"
 msgstr ""
 
 #: App/Controller/Manager.php:116
-#: dist/blocks/both-sides-content/index.js:1
 #: dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/cluster-divided/index.js:1
@@ -53,7 +52,6 @@ msgstr ""
 #: dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1
 #: dist/blocks/frame/index.js:1
-#: dist/blocks/layer/index.js:1
 #: dist/blocks/layers/index.js:17
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
@@ -158,17 +156,17 @@ msgid "Outline"
 msgstr ""
 
 #: inc/block-styles.php:29
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Underline"
 msgstr ""
 
 #: inc/block-styles.php:37
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Bordered"
 msgstr ""
 
 #: inc/block-styles.php:45
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Stripe"
 msgstr ""
 
@@ -234,13 +232,13 @@ msgstr ""
 #: patterns/footer-4.php:31
 #: patterns/footer-4.php:39
 #: patterns/footer-4.php:47
-#: patterns/footer-5.php:31
-#: patterns/footer-5.php:39
-#: patterns/footer-5.php:47
-#: patterns/header-1row.php:25
+#: patterns/footer-5.php:29
+#: patterns/footer-5.php:37
+#: patterns/footer-5.php:45
+#: patterns/header-1row.php:23
 #: patterns/header-2rows.php:25
-#: patterns/header-simple.php:25
-#: patterns/header-vertical.php:24
+#: patterns/header-simple.php:23
+#: patterns/header-vertical.php:22
 msgid "Home"
 msgstr ""
 
@@ -347,13 +345,13 @@ msgstr ""
 #: patterns/footer-4.php:32
 #: patterns/footer-4.php:40
 #: patterns/footer-4.php:48
-#: patterns/footer-5.php:32
-#: patterns/footer-5.php:40
-#: patterns/footer-5.php:48
-#: patterns/header-1row.php:26
+#: patterns/footer-5.php:30
+#: patterns/footer-5.php:38
+#: patterns/footer-5.php:46
+#: patterns/header-1row.php:24
 #: patterns/header-2rows.php:26
-#: patterns/header-simple.php:26
-#: patterns/header-vertical.php:25
+#: patterns/header-simple.php:24
+#: patterns/header-vertical.php:23
 msgid "About"
 msgstr ""
 
@@ -364,13 +362,13 @@ msgstr ""
 #: patterns/footer-4.php:33
 #: patterns/footer-4.php:41
 #: patterns/footer-4.php:49
-#: patterns/footer-5.php:33
-#: patterns/footer-5.php:41
-#: patterns/footer-5.php:49
-#: patterns/header-1row.php:27
+#: patterns/footer-5.php:31
+#: patterns/footer-5.php:39
+#: patterns/footer-5.php:47
+#: patterns/header-1row.php:25
 #: patterns/header-2rows.php:27
-#: patterns/header-simple.php:27
-#: patterns/header-vertical.php:26
+#: patterns/header-simple.php:25
+#: patterns/header-vertical.php:24
 msgid "Services"
 msgstr ""
 
@@ -381,13 +379,13 @@ msgstr ""
 #: patterns/footer-4.php:34
 #: patterns/footer-4.php:42
 #: patterns/footer-4.php:50
-#: patterns/footer-5.php:34
-#: patterns/footer-5.php:42
-#: patterns/footer-5.php:50
-#: patterns/header-1row.php:32
+#: patterns/footer-5.php:32
+#: patterns/footer-5.php:40
+#: patterns/footer-5.php:48
+#: patterns/header-1row.php:30
 #: patterns/header-2rows.php:32
-#: patterns/header-simple.php:32
-#: patterns/header-vertical.php:31
+#: patterns/header-simple.php:30
+#: patterns/header-vertical.php:29
 #: patterns/home-heading.php:9
 msgid "Blog"
 msgstr ""
@@ -399,13 +397,13 @@ msgstr ""
 #: patterns/footer-4.php:35
 #: patterns/footer-4.php:43
 #: patterns/footer-4.php:51
-#: patterns/footer-5.php:35
-#: patterns/footer-5.php:43
-#: patterns/footer-5.php:51
-#: patterns/header-1row.php:33
+#: patterns/footer-5.php:33
+#: patterns/footer-5.php:41
+#: patterns/footer-5.php:49
+#: patterns/header-1row.php:31
 #: patterns/header-2rows.php:33
-#: patterns/header-simple.php:33
-#: patterns/header-vertical.php:32
+#: patterns/header-simple.php:31
+#: patterns/header-vertical.php:30
 msgid "Contact"
 msgstr ""
 
@@ -429,24 +427,24 @@ msgctxt "Pattern title"
 msgid "Header (1 row)"
 msgstr ""
 
-#: patterns/header-1row.php:28
+#: patterns/header-1row.php:26
 #: patterns/header-2rows.php:28
-#: patterns/header-simple.php:28
-#: patterns/header-vertical.php:27
+#: patterns/header-simple.php:26
+#: patterns/header-vertical.php:25
 msgid "Service 1"
 msgstr ""
 
-#: patterns/header-1row.php:29
+#: patterns/header-1row.php:27
 #: patterns/header-2rows.php:29
-#: patterns/header-simple.php:29
-#: patterns/header-vertical.php:28
+#: patterns/header-simple.php:27
+#: patterns/header-vertical.php:26
 msgid "Service 2"
 msgstr ""
 
-#: patterns/header-1row.php:30
+#: patterns/header-1row.php:28
 #: patterns/header-2rows.php:30
-#: patterns/header-simple.php:30
-#: patterns/header-vertical.php:29
+#: patterns/header-simple.php:28
+#: patterns/header-vertical.php:27
 msgid "Service 3"
 msgstr ""
 
@@ -556,7 +554,6 @@ msgid "Using label of the question"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:1
-#: dist/blocks/both-sides-content/index.js:1
 #: dist/blocks/cover/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Width"
@@ -580,11 +577,6 @@ msgstr ""
 
 #: dist/blocks/accordion/index.js:1
 msgid "A"
-msgstr ""
-
-#: dist/blocks/both-sides-content/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "Max width"
 msgstr ""
 
 #: dist/blocks/center/index.js:1
@@ -704,28 +696,6 @@ msgstr ""
 msgid "Switch aspect ratio when portrait"
 msgstr ""
 
-#: dist/blocks/layer/index.js:1
-msgid "Align self"
-msgstr ""
-
-#: dist/blocks/layer/index.js:1
-msgid "Justify self"
-msgstr ""
-
-#: dist/blocks/layer/index.js:1
-msgid "A grid item's size and location within a grid column"
-msgstr ""
-
-#. translators: %1$s: <code>, %2$s: </code>
-#: dist/blocks/layer/index.js:3
-#: dist/blocks/layer/index.js:5
-msgid "For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line)."
-msgstr ""
-
-#: dist/blocks/layer/index.js:3
-msgid "A grid item's size and location within the grid row"
-msgstr ""
-
 #: dist/blocks/layers/index.js:1
 msgid "Background image"
 msgstr ""
@@ -824,6 +794,18 @@ msgstr ""
 #: dist/blocks/slider/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Justify items space-between"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Slide"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Fade"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Effect"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -946,11 +928,13 @@ msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Right"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Left"
 msgstr ""
 
@@ -1027,6 +1011,10 @@ msgid "Recommended width"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
+msgid "Max width"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
 msgid "Min height"
 msgstr ""
 
@@ -1035,43 +1023,69 @@ msgid "Auto repeat"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
+msgid "Layer"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align self"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Justify self"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "A grid item's size and location within a grid column"
+msgstr ""
+
+#. translators: %1$s: <code>, %2$s: </code>
+#: dist/js/editor/editor.js:3
+#: dist/js/editor/editor.js:5
+msgid "For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line)."
+msgstr ""
+
+#: dist/js/editor/editor.js:3
+msgid "A grid item's size and location within the grid row"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
 msgid "Fluid typography"
 msgstr ""
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Half leading"
 msgstr ""
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Slash"
 msgstr ""
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Divider"
 msgstr ""
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Type"
 msgstr ""
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Position"
 msgstr ""
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Top"
 msgstr ""
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Bottom"
 msgstr ""
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "The stack level"
 msgstr ""
 
 #. translators: %s: template part title.
-#: dist/js/editor/editor.js:2
+#: dist/js/editor/editor.js:6
 msgid "Replace"
 msgstr ""
 

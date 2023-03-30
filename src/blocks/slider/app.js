@@ -1,4 +1,4 @@
-import Swiper, { Autoplay, Navigation, Pagination } from 'swiper';
+import Swiper, { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	const canvases = document.querySelectorAll( '.unitone-slider__canvas' );
@@ -20,9 +20,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			'true' === canvas.getAttribute( 'data-unitone-swiper-loop' )
 				? true
 				: false;
+		const effect =
+			canvas.getAttribute( 'data-unitone-swiper-effect' ) || 'slide';
 
 		const swiperOptions = {
-			modules: [ Autoplay, Navigation, Pagination ],
+			modules: [ Autoplay, EffectFade, Navigation, Pagination ],
+			effect,
 			followFinger: false,
 			grabCursor: true,
 			slidesPerView: 'auto',
@@ -37,16 +40,24 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			},
 		};
 
-		if ( 'undefined' !== typeof speed ) {
+		if ( 'fade' === effect ) {
+			swiperOptions.fadeEffect = {
+				crossFade: true,
+			};
+		}
+
+		if ( null != speed ) {
 			swiperOptions.speed = speed;
 		}
-		if ( 'undefined' !== typeof autoplayDelay ) {
+
+		if ( null != autoplayDelay ) {
 			swiperOptions.autoplay = {
 				delay: autoplayDelay,
 			};
 			swiperOptions.allowTouchMove = false;
 			swiperOptions.grabCursor = false;
 		}
+
 		if ( loop ) {
 			swiperOptions.loop = true;
 		} else {

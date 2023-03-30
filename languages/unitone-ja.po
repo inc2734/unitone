@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-03-29T02:43:32+00:00\n"
-"PO-Revision-Date: 2023-03-29 11:43+0900\n"
+"POT-Creation-Date: 2023-03-30T14:10:27+00:00\n"
+"PO-Revision-Date: 2023-03-30 23:11+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -43,11 +43,10 @@ msgstr "unitone 設定"
 msgid "Reset settings"
 msgstr "設定をリセット"
 
-#: App/Controller/Manager.php:116 dist/blocks/both-sides-content/index.js:1
-#: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
-#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cover-content/index.js:1
-#: dist/blocks/cover/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/frame/index.js:1 dist/blocks/layer/index.js:1
+#: App/Controller/Manager.php:116 dist/blocks/center/index.js:1
+#: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/cover-content/index.js:1 dist/blocks/cover/index.js:1
+#: dist/blocks/decorator/index.js:1 dist/blocks/frame/index.js:1
 #: dist/blocks/layers/index.js:17 dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/slider/index.js:1
 #: dist/blocks/stack-divided/index.js:1 dist/blocks/switcher/index.js:1
@@ -146,15 +145,15 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:29 dist/js/editor/editor.js:1
+#: inc/block-styles.php:29 dist/js/editor/editor.js:5
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: inc/block-styles.php:37 dist/js/editor/editor.js:1
+#: inc/block-styles.php:37 dist/js/editor/editor.js:5
 msgid "Bordered"
 msgstr "ボーダー"
 
-#: inc/block-styles.php:45 dist/js/editor/editor.js:1
+#: inc/block-styles.php:45 dist/js/editor/editor.js:5
 msgid "Stripe"
 msgstr "ストライプ"
 
@@ -213,9 +212,9 @@ msgstr "404のページヘッダー"
 #: inc/template-part-areas.php:83 patterns/footer-2.php:22
 #: patterns/footer-3.php:51 patterns/footer-3.php:59 patterns/footer-3.php:67
 #: patterns/footer-4.php:31 patterns/footer-4.php:39 patterns/footer-4.php:47
-#: patterns/footer-5.php:31 patterns/footer-5.php:39 patterns/footer-5.php:47
-#: patterns/header-1row.php:25 patterns/header-2rows.php:25
-#: patterns/header-simple.php:25 patterns/header-vertical.php:24
+#: patterns/footer-5.php:29 patterns/footer-5.php:37 patterns/footer-5.php:45
+#: patterns/header-1row.php:23 patterns/header-2rows.php:25
+#: patterns/header-simple.php:23 patterns/header-vertical.php:22
 msgid "Home"
 msgstr "ホーム"
 
@@ -320,37 +319,37 @@ msgstr "フッター2"
 
 #: patterns/footer-2.php:23 patterns/footer-3.php:52 patterns/footer-3.php:60
 #: patterns/footer-3.php:68 patterns/footer-4.php:32 patterns/footer-4.php:40
-#: patterns/footer-4.php:48 patterns/footer-5.php:32 patterns/footer-5.php:40
-#: patterns/footer-5.php:48 patterns/header-1row.php:26
-#: patterns/header-2rows.php:26 patterns/header-simple.php:26
-#: patterns/header-vertical.php:25
+#: patterns/footer-4.php:48 patterns/footer-5.php:30 patterns/footer-5.php:38
+#: patterns/footer-5.php:46 patterns/header-1row.php:24
+#: patterns/header-2rows.php:26 patterns/header-simple.php:24
+#: patterns/header-vertical.php:23
 msgid "About"
 msgstr "このサイトについて"
 
 #: patterns/footer-2.php:24 patterns/footer-3.php:53 patterns/footer-3.php:61
 #: patterns/footer-3.php:69 patterns/footer-4.php:33 patterns/footer-4.php:41
-#: patterns/footer-4.php:49 patterns/footer-5.php:33 patterns/footer-5.php:41
-#: patterns/footer-5.php:49 patterns/header-1row.php:27
-#: patterns/header-2rows.php:27 patterns/header-simple.php:27
-#: patterns/header-vertical.php:26
+#: patterns/footer-4.php:49 patterns/footer-5.php:31 patterns/footer-5.php:39
+#: patterns/footer-5.php:47 patterns/header-1row.php:25
+#: patterns/header-2rows.php:27 patterns/header-simple.php:25
+#: patterns/header-vertical.php:24
 msgid "Services"
 msgstr "サービス"
 
 #: patterns/footer-2.php:25 patterns/footer-3.php:54 patterns/footer-3.php:62
 #: patterns/footer-3.php:70 patterns/footer-4.php:34 patterns/footer-4.php:42
-#: patterns/footer-4.php:50 patterns/footer-5.php:34 patterns/footer-5.php:42
-#: patterns/footer-5.php:50 patterns/header-1row.php:32
-#: patterns/header-2rows.php:32 patterns/header-simple.php:32
-#: patterns/header-vertical.php:31 patterns/home-heading.php:9
+#: patterns/footer-4.php:50 patterns/footer-5.php:32 patterns/footer-5.php:40
+#: patterns/footer-5.php:48 patterns/header-1row.php:30
+#: patterns/header-2rows.php:32 patterns/header-simple.php:30
+#: patterns/header-vertical.php:29 patterns/home-heading.php:9
 msgid "Blog"
 msgstr "ブログ"
 
 #: patterns/footer-2.php:26 patterns/footer-3.php:55 patterns/footer-3.php:63
 #: patterns/footer-3.php:71 patterns/footer-4.php:35 patterns/footer-4.php:43
-#: patterns/footer-4.php:51 patterns/footer-5.php:35 patterns/footer-5.php:43
-#: patterns/footer-5.php:51 patterns/header-1row.php:33
-#: patterns/header-2rows.php:33 patterns/header-simple.php:33
-#: patterns/header-vertical.php:32
+#: patterns/footer-4.php:51 patterns/footer-5.php:33 patterns/footer-5.php:41
+#: patterns/footer-5.php:49 patterns/header-1row.php:31
+#: patterns/header-2rows.php:33 patterns/header-simple.php:31
+#: patterns/header-vertical.php:30
 msgid "Contact"
 msgstr "お問い合わせ"
 
@@ -374,18 +373,18 @@ msgctxt "Pattern title"
 msgid "Header (1 row)"
 msgstr "ヘッダー（1行）"
 
-#: patterns/header-1row.php:28 patterns/header-2rows.php:28
-#: patterns/header-simple.php:28 patterns/header-vertical.php:27
+#: patterns/header-1row.php:26 patterns/header-2rows.php:28
+#: patterns/header-simple.php:26 patterns/header-vertical.php:25
 msgid "Service 1"
 msgstr "サービス 1"
 
-#: patterns/header-1row.php:29 patterns/header-2rows.php:29
-#: patterns/header-simple.php:29 patterns/header-vertical.php:28
+#: patterns/header-1row.php:27 patterns/header-2rows.php:29
+#: patterns/header-simple.php:27 patterns/header-vertical.php:26
 msgid "Service 2"
 msgstr "サービス 2"
 
-#: patterns/header-1row.php:30 patterns/header-2rows.php:30
-#: patterns/header-simple.php:30 patterns/header-vertical.php:29
+#: patterns/header-1row.php:28 patterns/header-2rows.php:30
+#: patterns/header-simple.php:28 patterns/header-vertical.php:27
 msgid "Service 3"
 msgstr "サービス 3"
 
@@ -494,8 +493,8 @@ msgstr "質問"
 msgid "Using label of the question"
 msgstr "質問のラベルを使用する"
 
-#: dist/blocks/accordion/index.js:1 dist/blocks/both-sides-content/index.js:1
-#: dist/blocks/cover/index.js:1 dist/blocks/with-sidebar/index.js:1
+#: dist/blocks/accordion/index.js:1 dist/blocks/cover/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
 msgid "Width"
 msgstr "幅"
 
@@ -518,10 +517,6 @@ msgstr "ここに概要を入力"
 #: dist/blocks/accordion/index.js:1
 msgid "A"
 msgstr "A"
-
-#: dist/blocks/both-sides-content/index.js:1 dist/js/editor/editor.js:1
-msgid "Max width"
-msgstr "最大幅"
 
 #: dist/blocks/center/index.js:1
 msgid "Intrinsic centering"
@@ -637,31 +632,6 @@ msgstr "推奨アスペクト比"
 msgid "Switch aspect ratio when portrait"
 msgstr "ポートフォリオのとき比率を切り替える"
 
-#: dist/blocks/layer/index.js:1
-msgid "Align self"
-msgstr "垂直配置"
-
-#: dist/blocks/layer/index.js:1
-msgid "Justify self"
-msgstr "項目の揃え位置"
-
-#: dist/blocks/layer/index.js:1
-msgid "A grid item's size and location within a grid column"
-msgstr "グリッド列の中におけるグリッドアイテムの寸法と位置"
-
-#. translators: %1$s: <code>, %2$s: </code>
-#: dist/blocks/layer/index.js:3 dist/blocks/layer/index.js:5
-msgid ""
-"For example, enter %1$s1 / -2%2$s (fill from the first grid line to the "
-"second-to-last grid line)."
-msgstr ""
-"例えば、%1$s1 / -2%2$s（1番目のグリッド線から、最後から2番目のグリッド線まで"
-"を埋める）のように入力します。"
-
-#: dist/blocks/layer/index.js:3
-msgid "A grid item's size and location within the grid row"
-msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
-
 #: dist/blocks/layers/index.js:1
 msgid "Background image"
 msgstr "背景画像"
@@ -753,6 +723,18 @@ msgstr "コンテンツを右揃え"
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Justify items space-between"
 msgstr "コンテンツを両端揃え"
+
+#: dist/blocks/slider/index.js:1
+msgid "Slide"
+msgstr "スライド"
+
+#: dist/blocks/slider/index.js:1
+msgid "Fade"
+msgstr "フェード"
+
+#: dist/blocks/slider/index.js:1
+msgid "Effect"
+msgstr "エフェクト"
 
 #: dist/blocks/slider/index.js:1
 msgid "Hide parts that extend beyond the canvas"
@@ -875,10 +857,12 @@ msgid "Columns to be treated as sidebars"
 msgstr "サイドバーとして扱うカラム"
 
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Right"
 msgstr "右"
 
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Left"
 msgstr "左"
 
@@ -957,6 +941,10 @@ msgid "Recommended width"
 msgstr "推奨幅"
 
 #: dist/js/editor/editor.js:1
+msgid "Max width"
+msgstr "最大幅"
+
+#: dist/js/editor/editor.js:1
 msgid "Min height"
 msgstr "最小の高さ"
 
@@ -965,43 +953,72 @@ msgid "Auto repeat"
 msgstr "自動反復"
 
 #: dist/js/editor/editor.js:1
+msgid "Layer"
+msgstr "レイヤー"
+
+#: dist/js/editor/editor.js:1
+msgid "Align self"
+msgstr "垂直配置"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify self"
+msgstr "項目の揃え位置"
+
+#: dist/js/editor/editor.js:1
+msgid "A grid item's size and location within a grid column"
+msgstr "グリッド列の中におけるグリッドアイテムの寸法と位置"
+
+#. translators: %1$s: <code>, %2$s: </code>
+#: dist/js/editor/editor.js:3 dist/js/editor/editor.js:5
+msgid ""
+"For example, enter %1$s1 / -2%2$s (fill from the first grid line to the "
+"second-to-last grid line)."
+msgstr ""
+"例えば、%1$s1 / -2%2$s（1番目のグリッド線から、最後から2番目のグリッド線まで"
+"を埋める）のように入力します。"
+
+#: dist/js/editor/editor.js:3
+msgid "A grid item's size and location within the grid row"
+msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
+
+#: dist/js/editor/editor.js:5
 msgid "Fluid typography"
 msgstr "流体タイポグラフィ"
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Half leading"
 msgstr "ハーフリーディング"
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Slash"
 msgstr "スラッシュ"
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Divider"
 msgstr "区切り"
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Type"
 msgstr "種類"
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Position"
 msgstr "位置"
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Top"
 msgstr "上"
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Bottom"
 msgstr "下"
 
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "The stack level"
 msgstr "重ね合わせレベル"
 
 #. translators: %s: template part title.
-#: dist/js/editor/editor.js:2
+#: dist/js/editor/editor.js:6
 msgid "Replace"
 msgstr "置換"
 

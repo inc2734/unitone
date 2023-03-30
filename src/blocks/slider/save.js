@@ -18,21 +18,24 @@ export default function ( { attributes } ) {
 		autoplayDelay,
 		speed,
 		loop,
+		effect,
 	} = attributes;
 
 	const isDisplayArrows = arrows && ! ( autoplay && 0 === autoplayDelay );
 	const isDisplayPagination =
 		pagination && ! ( autoplay && 0 === autoplayDelay );
+	const canMultiSlides = 'slide' === effect;
 
 	return (
 		<div
 			{ ...useBlockProps.save( {
 				className: classnames( 'unitone-slider', {
-					'unitone-slider--hide-outside': hideOutside,
+					'unitone-slider--hide-outside':
+						hideOutside && canMultiSlides,
 					'unitone-slider--has-pagination': pagination,
 				} ),
 				style: {
-					'--unitone--slide-width': slideWidth,
+					'--unitone--slide-width': canMultiSlides && slideWidth,
 				},
 			} ) }
 		>
@@ -60,6 +63,9 @@ export default function ( { attributes } ) {
 						0 < speed ? speed * 1000 : undefined
 					}
 					data-unitone-swiper-loop={ loop ? 'true' : undefined }
+					data-unitone-swiper-effect={
+						'slide' !== effect ? effect : undefined
+					}
 				>
 					<div
 						{ ...useInnerBlocksProps.save( {

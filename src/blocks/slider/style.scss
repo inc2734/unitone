@@ -1,11 +1,12 @@
 @import '../../../node_modules/swiper/swiper.scss';
 @import '../../../node_modules/swiper/modules/autoplay/autoplay.scss';
+@import '../../../node_modules/swiper/modules/effect-fade/effect-fade.scss';
 @import '../../../node_modules/swiper/modules/navigation/navigation.scss';
 @import '../../../node_modules/swiper/modules/pagination/pagination.scss';
 
 .unitone-slider {
 	--unitone--gap: var(--unitone--global--gap);
-	--unitone--slide-width: calc(50% - var(--unitone--gap) / 2);
+	--unitone--slide-width: 100%;
 	--swiper-navigation-size: .5em;
 	--swiper-navigation-color: var(--wp--preset--color--unitone-accent);
 	--swiper-pagination-color: var(--wp--preset--color--unitone-accent);
@@ -131,5 +132,13 @@
 				width: calc(100% + var(--swiper-pagination-bullet-horizontal-gap));
 			}
 		}
+	}
+
+	// For some reason, the slide before the first one is not fully transparent.
+	.swiper-fade .swiper-slide.swiper-slide-visible.swiper-slide-prev {
+		opacity: 0 !important;
+	}
+	.swiper-fade .swiper-slide.swiper-slide-visible.swiper-slide-active {
+		opacity: 1 !important;
 	}
 }

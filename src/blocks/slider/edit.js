@@ -10,6 +10,7 @@ import {
 import {
 	Button,
 	RangeControl,
+	SelectControl,
 	TextControl,
 	ToggleControl,
 	__experimentalToolsPanel as ToolsPanel,
@@ -76,6 +77,17 @@ const justificationOptions = [
 	},
 ];
 
+const effectOptions = [
+	{
+		value: 'slide',
+		label: __( 'Slide', 'unitone' ),
+	},
+	{
+		value: 'fade',
+		label: __( 'Fade', 'unitone' ),
+	},
+];
+
 import metadata from './block.json';
 
 export default function ( {
@@ -97,6 +109,7 @@ export default function ( {
 		autoplayDelay,
 		speed,
 		loop,
+		effect,
 	} = attributes;
 
 	const { selectBlock } = useDispatch( 'core/block-editor' );
@@ -158,14 +171,15 @@ export default function ( {
 	const isDisplayArrows = arrows && ! ( autoplay && 0 === autoplayDelay );
 	const isDisplayPagination =
 		pagination && ! ( autoplay && 0 === autoplayDelay );
+	const canMultiSlides = 'slide' === effect;
 
 	const blockProps = useBlockProps( {
 		className: classnames( 'unitone-slider', {
-			'unitone-slider--hide-outside': hideOutside,
+			'unitone-slider--hide-outside': hideOutside && canMultiSlides,
 			'unitone-slider--has-pagination': pagination,
 		} ),
 		style: {
-			'--unitone--slide-width': slideWidth,
+			'--unitone--slide-width': canMultiSlides && slideWidth,
 		},
 	} );
 
@@ -190,61 +204,96 @@ export default function ( {
 				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
 					<ToolsPanelItem
 						hasValue={ () =>
-							slideWidth !==
-							metadata.attributes.slideWidth.default
+							effect !== metadata.attributes.effect.default
 						}
 						isShownByDefault
-						label={ __( 'Each items width', 'unitone' ) }
+						label={ __( 'Effect', 'unitone' ) }
 						onDeselect={ () =>
 							setAttributes( {
-								slideWidth:
-									metadata.attributes.slideWidth.default,
+								effect: metadata.attributes.effect.default,
 							} )
 						}
 					>
-						<TextControl
-							label={
-								<>
-									{ __( 'Each items width', 'unitone' ) }
-									&nbsp;:&nbsp;
-									<code>width</code>
-								</>
-							}
-							value={ slideWidth }
+						<SelectControl
+							label={ __( 'Effect', 'unitone' ) }
+							value={ effect }
+							options={ effectOptions }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { slideWidth: newAttribute } );
+								setAttributes( { effect: newAttribute } );
 							} }
 						/>
 					</ToolsPanelItem>
 
-					<ToolsPanelItem
-						hasValue={ () =>
-							hideOutside !==
-							metadata.attributes.hideOutside.default
-						}
-						isShownByDefault
-						label={ __(
-							'Hide parts that extend beyond the canvas',
-							'unitone'
-						) }
-						onDeselect={ () =>
-							setAttributes( {
-								hideOutside:
-									metadata.attributes.hideOutside.default,
-							} )
-						}
-					>
-						<ToggleControl
-							label={ __(
-								'Hide parts that extend beyond the canvas',
-								'unitone'
-							) }
-							checked={ hideOutside }
-							onChange={ ( newAttribute ) => {
-								setAttributes( { hideOutside: newAttribute } );
-							} }
-						/>
-					</ToolsPanelItem>
+					{ canMultiSlides && (
+						<>
+							<ToolsPanelItem
+								hasValue={ () =>
+									slideWidth !==
+									metadata.attributes.slideWidth.default
+								}
+								isShownByDefault
+								label={ __( 'Each items width', 'unitone' ) }
+								onDeselect={ () =>
+									setAttributes( {
+										slideWidth:
+											metadata.attributes.slideWidth
+												.default,
+									} )
+								}
+							>
+								<TextControl
+									label={
+										<>
+											{ __(
+												'Each items width',
+												'unitone'
+											) }
+											&nbsp;:&nbsp;
+											<code>width</code>
+										</>
+									}
+									value={ slideWidth }
+									onChange={ ( newAttribute ) => {
+										setAttributes( {
+											slideWidth: newAttribute,
+										} );
+									} }
+								/>
+							</ToolsPanelItem>
+
+							<ToolsPanelItem
+								hasValue={ () =>
+									hideOutside !==
+									metadata.attributes.hideOutside.default
+								}
+								isShownByDefault
+								label={ __(
+									'Hide parts that extend beyond the canvas',
+									'unitone'
+								) }
+								onDeselect={ () =>
+									setAttributes( {
+										hideOutside:
+											metadata.attributes.hideOutside
+												.default,
+									} )
+								}
+							>
+								<ToggleControl
+									label={ __(
+										'Hide parts that extend beyond the canvas',
+										'unitone'
+									) }
+									checked={ hideOutside }
+									onChange={ ( newAttribute ) => {
+										setAttributes( {
+											hideOutside: newAttribute,
+										} );
+									} }
+								/>
+							</ToolsPanelItem>
+						</>
+					) }
 
 					<ToolsPanelItem
 						hasValue={ () =>

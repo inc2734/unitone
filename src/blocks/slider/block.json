@@ -53,6 +53,10 @@
 		"speed": {
 			"type": "number"
 		},
+		"effect": {
+			"type": "string",
+			"default": "slide"
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

@@ -114,7 +114,7 @@ class Manager {
 				if ( isset( $option['clear-remote-patterns-cache'] ) && '1' === $option['clear-remote-patterns-cache'] ) {
 					$transient_name = 'unitone-remote-patterns';
 					$transient      = delete_transient( $transient_name );
-					return $option;
+					return get_option( self::SETTINGS_NAME );
 				}
 
 				if ( isset( $option['reset'] ) && '1' === $option['reset'] ) {

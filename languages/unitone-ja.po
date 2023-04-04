@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-03-30T14:10:27+00:00\n"
-"PO-Revision-Date: 2023-03-30 23:11+0900\n"
+"POT-Creation-Date: 2023-04-04T05:43:02+00:00\n"
+"PO-Revision-Date: 2023-04-04 14:44+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -43,7 +43,11 @@ msgstr "unitone 設定"
 msgid "Reset settings"
 msgstr "設定をリセット"
 
-#: App/Controller/Manager.php:116 dist/blocks/center/index.js:1
+#: App/Controller/Manager.php:87
+msgid "Clear remote patterns caches"
+msgstr "リモートパターンのキャッシュをクリア"
+
+#: App/Controller/Manager.php:133 dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1 dist/blocks/frame/index.js:1
@@ -54,19 +58,19 @@ msgstr "設定をリセット"
 msgid "Settings"
 msgstr "設定"
 
-#: App/Controller/Manager.php:124
+#: App/Controller/Manager.php:141
 msgid "License key"
 msgstr "ライセンスキー"
 
-#: App/Controller/Manager.php:170
+#: App/Controller/Manager.php:187
 msgid "Enable"
 msgstr "有効"
 
-#: App/Controller/Manager.php:175
+#: App/Controller/Manager.php:192
 msgid "Disable"
 msgstr "無効"
 
-#: App/Controller/Manager.php:195
+#: App/Controller/Manager.php:212
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 

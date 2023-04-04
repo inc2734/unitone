@@ -76,6 +76,19 @@ class Manager {
 						);
 						?>
 					</form>
+
+					<hr>
+
+					<form method="post" action="options.php">
+						<input type="hidden" name="<?php echo esc_attr( self::SETTINGS_NAME ); ?>[clear-remote-patterns-cache]" value="1">
+						<?php
+						settings_fields( self::MENU_SLUG );
+						submit_button(
+							esc_html__( 'Clear remote patterns caches', 'unitone' ),
+							'primary'
+						);
+						?>
+					</form>
 				</div>
 				<?php
 			}
@@ -98,15 +111,19 @@ class Manager {
 			self::MENU_SLUG,
 			self::SETTINGS_NAME,
 			function( $option ) {
-				$transient_name = 'unitone-remote-patterns';
-				$transient      = delete_transient( $transient_name );
-
-				$transient_name = 'unitone-license-status';
-				$transient      = delete_transient( $transient_name );
+				if ( isset( $option['clear-remote-patterns-cache'] ) && '1' === $option['clear-remote-patterns-cache'] ) {
+					$transient_name = 'unitone-remote-patterns';
+					$transient      = delete_transient( $transient_name );
+					return $option;
+				}
 
 				if ( isset( $option['reset'] ) && '1' === $option['reset'] ) {
 					return array();
 				}
+
+				$transient_name = 'unitone-license-status';
+				$transient      = delete_transient( $transient_name );
+
 				return $option;
 			}
 		);

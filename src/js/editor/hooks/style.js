@@ -183,6 +183,7 @@ const withChildBlockAttributes = createHigherOrderComponent(
 								justifySelf: true,
 								gridColumn: true,
 								gridRow: true,
+								maxWidth: true,
 							},
 						};
 					}

@@ -17,28 +17,18 @@ export default [
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[
-				'unitone/layer',
-				[
-					[
-						'core/image',
-						{
-							id: 1,
-							url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
-						},
-					],
-				],
+				'core/image',
+				{
+					id: 1,
+					url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+				},
 			],
 			[
-				'unitone/layer',
+				'unitone/decorator',
 				{
-					unitone: { alignSelf: 'end' },
+					textColor: 'white',
+					unitone: { padding: 1, alignSelf: 'end' },
 				},
-				[
-					[
-						'unitone/decorator',
-						{ textColor: 'white', unitone: { padding: 1 } },
-					],
-				],
 			],
 		],
 		example: {
@@ -47,38 +37,25 @@ export default [
 			},
 			innerBlocks: [
 				{
-					name: 'unitone/layer',
-					innerBlocks: [
-						{
-							name: 'core/image',
-							attributes: {
-								id: 1,
-								url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
-							},
-						},
-					],
+					name: 'core/image',
+					attributes: {
+						id: 1,
+						url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+					},
 				},
 				{
-					name: 'unitone/layer',
+					name: 'unitone/decorator',
 					attributes: {
-						unitone: { alignSelf: 'end' },
+						textColor: 'white',
+						unitone: { padding: 1, alignSelf: 'end' },
 					},
 					innerBlocks: [
 						{
-							name: 'unitone/decorator',
+							name: 'core/paragraph',
 							attributes: {
-								textColor: 'white',
-								unitone: { padding: 1 },
+								content:
+									'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 							},
-							innerBlocks: [
-								{
-									name: 'core/paragraph',
-									attributes: {
-										content:
-											'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-									},
-								},
-							],
 						},
 					],
 				},
@@ -91,76 +68,53 @@ export default [
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[
-				'unitone/layer',
+				'unitone/frame',
+				{},
 				[
 					[
-						'unitone/frame',
-						{},
-						[
-							[
-								'core/image',
-								{
-									id: 1,
-									url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
-								},
-							],
-						],
+						'core/image',
+						{
+							id: 1,
+							url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+						},
 					],
 				],
 			],
 			[
-				'unitone/layer',
+				'unitone/decorator',
 				{
-					unitone: { alignSelf: 'end' },
+					textColor: 'white',
+					unitone: { padding: 1, alignSelf: 'end' },
 				},
-				[
-					[
-						'unitone/decorator',
-						{ textColor: 'white', unitone: { padding: 1 } },
-					],
-				],
 			],
 		],
 		example: {
 			innerBlocks: [
 				{
-					name: 'unitone/layer',
+					name: 'unitone/frame',
 					innerBlocks: [
 						{
-							name: 'unitone/frame',
-							innerBlocks: [
-								{
-									name: 'core/image',
-									attributes: {
-										id: 1,
-										url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
-									},
-								},
-							],
+							name: 'core/image',
+							attributes: {
+								id: 1,
+								url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+							},
 						},
 					],
 				},
 				{
-					name: 'unitone/layer',
+					name: 'unitone/decorator',
 					attributes: {
-						unitone: { alignSelf: 'end' },
+						textColor: 'white',
+						unitone: { padding: 1, alignSelf: 'end' },
 					},
 					innerBlocks: [
 						{
-							name: 'unitone/decorator',
+							name: 'core/paragraph',
 							attributes: {
-								textColor: 'white',
-								unitone: { padding: 1 },
+								content:
+									'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 							},
-							innerBlocks: [
-								{
-									name: 'core/paragraph',
-									attributes: {
-										content:
-											'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-									},
-								},
-							],
 						},
 					],
 				},
@@ -188,8 +142,10 @@ export default [
 		},
 		innerBlocks: [
 			{
-				name: 'unitone/layer',
+				name: 'unitone/frame',
 				attributes: {
+					ratio: '16/9',
+					switchRatio: true,
 					unitone: {
 						alignSelf: 'end',
 						gridColumn: '2/-1',
@@ -198,25 +154,16 @@ export default [
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/frame',
+						name: 'core/image',
 						attributes: {
-							ratio: '16/9',
-							switchRatio: true,
+							id: 1,
+							url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
 						},
-						innerBlocks: [
-							{
-								name: 'core/image',
-								attributes: {
-									id: 1,
-									url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
-								},
-							},
-						],
 					},
 				],
 			},
 			{
-				name: 'unitone/layer',
+				name: 'unitone/stack',
 				attributes: {
 					unitone: {
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
@@ -224,20 +171,15 @@ export default [
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/stack',
-						innerBlocks: [
-							{
-								name: 'core/heading',
-								attributes: {
-									fontSize: 'unitone-3xl',
-									content:
-										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-									unitone: {
-										fluidTypography: true,
-									},
-								},
+						name: 'core/heading',
+						attributes: {
+							fontSize: 'unitone-3xl',
+							content:
+								'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+							unitone: {
+								fluidTypography: true,
 							},
-						],
+						},
 					},
 				],
 			},
@@ -258,8 +200,10 @@ export default [
 		},
 		innerBlocks: [
 			{
-				name: 'unitone/layer',
+				name: 'unitone/frame',
 				attributes: {
+					ratio: '16/9',
+					switchRatio: true,
 					unitone: {
 						alignSelf: 'end',
 						gridColumn: '1/-2',
@@ -268,25 +212,16 @@ export default [
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/frame',
+						name: 'core/image',
 						attributes: {
-							ratio: '16/9',
-							switchRatio: true,
+							id: 1,
+							url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
 						},
-						innerBlocks: [
-							{
-								name: 'core/image',
-								attributes: {
-									id: 1,
-									url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
-								},
-							},
-						],
 					},
 				],
 			},
 			{
-				name: 'unitone/layer',
+				name: 'unitone/stack',
 				attributes: {
 					unitone: {
 						justifySelf: 'end',
@@ -295,20 +230,15 @@ export default [
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/stack',
-						innerBlocks: [
-							{
-								name: 'core/heading',
-								attributes: {
-									fontSize: 'unitone-3xl',
-									content:
-										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-									unitone: {
-										fluidTypography: true,
-									},
-								},
+						name: 'core/heading',
+						attributes: {
+							fontSize: 'unitone-3xl',
+							content:
+								'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+							unitone: {
+								fluidTypography: true,
 							},
-						],
+						},
 					},
 				],
 			},
@@ -329,8 +259,10 @@ export default [
 		},
 		innerBlocks: [
 			{
-				name: 'unitone/layer',
+				name: 'unitone/frame',
 				attributes: {
+					ratio: '16/9',
+					switchRatio: true,
 					unitone: {
 						gridColumn: '2/-1',
 						gridRow: '1/-2',
@@ -338,25 +270,16 @@ export default [
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/frame',
+						name: 'core/image',
 						attributes: {
-							ratio: '16/9',
-							switchRatio: true,
+							id: 1,
+							url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
 						},
-						innerBlocks: [
-							{
-								name: 'core/image',
-								attributes: {
-									id: 1,
-									url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
-								},
-							},
-						],
 					},
 				],
 			},
 			{
-				name: 'unitone/layer',
+				name: 'unitone/stack',
 				attributes: {
 					unitone: {
 						alignSelf: 'end',
@@ -365,20 +288,15 @@ export default [
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/stack',
-						innerBlocks: [
-							{
-								name: 'core/heading',
-								attributes: {
-									fontSize: 'unitone-3xl',
-									content:
-										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-									unitone: {
-										fluidTypography: true,
-									},
-								},
+						name: 'core/heading',
+						attributes: {
+							fontSize: 'unitone-3xl',
+							content:
+								'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+							unitone: {
+								fluidTypography: true,
 							},
-						],
+						},
 					},
 				],
 			},
@@ -399,8 +317,10 @@ export default [
 		},
 		innerBlocks: [
 			{
-				name: 'unitone/layer',
+				name: 'unitone/frame',
 				attributes: {
+					ratio: '16/9',
+					switchRatio: true,
 					unitone: {
 						gridColumn: '1/-2',
 						gridRow: '-2/1',
@@ -408,25 +328,16 @@ export default [
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/frame',
+						name: 'core/image',
 						attributes: {
-							ratio: '16/9',
-							switchRatio: true,
+							id: 1,
+							url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
 						},
-						innerBlocks: [
-							{
-								name: 'core/image',
-								attributes: {
-									id: 1,
-									url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
-								},
-							},
-						],
 					},
 				],
 			},
 			{
-				name: 'unitone/layer',
+				name: 'unitone/stack',
 				attributes: {
 					unitone: {
 						alignSelf: 'end',
@@ -436,20 +347,15 @@ export default [
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/stack',
-						innerBlocks: [
-							{
-								name: 'core/heading',
-								attributes: {
-									fontSize: 'unitone-3xl',
-									content:
-										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-									unitone: {
-										fluidTypography: true,
-									},
-								},
+						name: 'core/heading',
+						attributes: {
+							fontSize: 'unitone-3xl',
+							content:
+								'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+							unitone: {
+								fluidTypography: true,
 							},
-						],
+						},
 					},
 				],
 			},
@@ -474,47 +380,36 @@ export default [
 		},
 		innerBlocks: [
 			{
-				name: 'unitone/layer',
+				name: 'core/image',
 				attributes: {
+					id: 1,
+					url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
 					unitone: { gridRow: '1/-2' },
 				},
-				innerBlocks: [
-					{
-						name: 'core/image',
-						attributes: {
-							id: 1,
-							url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
-						},
-					},
-				],
 			},
 			{
-				name: 'unitone/layer',
+				name: 'unitone/container',
 				attributes: {
 					unitone: {
 						alignSelf: 'end',
+						justifySelf: 'start',
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
 					},
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/container',
+						name: 'unitone/stack',
 						innerBlocks: [
 							{
-								name: 'unitone/stack',
-								innerBlocks: [
-									{
-										name: 'core/heading',
-										attributes: {
-											fontSize: 'unitone-3xl',
-											content:
-												'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-											unitone: {
-												fluidTypography: true,
-											},
-										},
+								name: 'core/heading',
+								attributes: {
+									fontSize: 'unitone-3xl',
+									content:
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+									unitone: {
+										fluidTypography: true,
 									},
-								],
+								},
 							},
 						],
 					},
@@ -541,22 +436,15 @@ export default [
 		},
 		innerBlocks: [
 			{
-				name: 'unitone/layer',
+				name: 'core/image',
 				attributes: {
+					id: 1,
+					url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
 					unitone: { gridRow: '1/-2' },
 				},
-				innerBlocks: [
-					{
-						name: 'core/image',
-						attributes: {
-							id: 1,
-							url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
-						},
-					},
-				],
 			},
 			{
-				name: 'unitone/layer',
+				name: 'unitone/container',
 				attributes: {
 					unitone: {
 						alignSelf: 'end',
@@ -566,23 +454,18 @@ export default [
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/container',
+						name: 'unitone/stack',
 						innerBlocks: [
 							{
-								name: 'unitone/stack',
-								innerBlocks: [
-									{
-										name: 'core/heading',
-										attributes: {
-											fontSize: 'unitone-3xl',
-											content:
-												'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-											unitone: {
-												fluidTypography: true,
-											},
-										},
+								name: 'core/heading',
+								attributes: {
+									fontSize: 'unitone-3xl',
+									content:
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+									unitone: {
+										fluidTypography: true,
 									},
-								],
+								},
 							},
 						],
 					},
@@ -610,57 +493,43 @@ export default [
 		},
 		innerBlocks: [
 			{
-				name: 'unitone/layer',
-				innerBlocks: [
-					{
-						name: 'core/image',
-						attributes: {
-							id: 1,
-							url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
-						},
-					},
-				],
+				name: 'core/image',
+				attributes: {
+					id: 1,
+					url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
+				},
 			},
 			{
-				name: 'unitone/layer',
+				name: 'unitone/decorator',
 				attributes: {
 					unitone: {
+						padding: 1,
 						alignSelf: 'end',
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
 					},
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/decorator',
+						name: 'unitone/container',
 						attributes: {
 							unitone: {
-								padding: 1,
+								gutters: 0,
 							},
 						},
 						innerBlocks: [
 							{
-								name: 'unitone/container',
-								attributes: {
-									unitone: {
-										gutters: 0,
-									},
-								},
+								name: 'unitone/stack',
 								innerBlocks: [
 									{
-										name: 'unitone/stack',
-										innerBlocks: [
-											{
-												name: 'core/heading',
-												attributes: {
-													fontSize: 'unitone-3xl',
-													content:
-														'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-													unitone: {
-														fluidTypography: true,
-													},
-												},
+										name: 'core/heading',
+										attributes: {
+											fontSize: 'unitone-3xl',
+											content:
+												'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+											unitone: {
+												fluidTypography: true,
 											},
-										],
+										},
 									},
 								],
 							},
@@ -690,21 +559,17 @@ export default [
 		},
 		innerBlocks: [
 			{
-				name: 'unitone/layer',
-				innerBlocks: [
-					{
-						name: 'core/image',
-						attributes: {
-							id: 1,
-							url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
-						},
-					},
-				],
+				name: 'core/image',
+				attributes: {
+					id: 1,
+					url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
+				},
 			},
 			{
-				name: 'unitone/layer',
+				name: 'unitone/decorator',
 				attributes: {
 					unitone: {
+						padding: 1,
 						alignSelf: 'end',
 						justifySelf: 'end',
 						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
@@ -712,36 +577,26 @@ export default [
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/decorator',
+						name: 'unitone/container',
 						attributes: {
 							unitone: {
-								padding: 1,
+								gutters: 0,
 							},
 						},
 						innerBlocks: [
 							{
-								name: 'unitone/container',
-								attributes: {
-									unitone: {
-										gutters: 0,
-									},
-								},
+								name: 'unitone/stack',
 								innerBlocks: [
 									{
-										name: 'unitone/stack',
-										innerBlocks: [
-											{
-												name: 'core/heading',
-												attributes: {
-													fontSize: 'unitone-3xl',
-													content:
-														'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-													unitone: {
-														fluidTypography: true,
-													},
-												},
+										name: 'core/heading',
+										attributes: {
+											fontSize: 'unitone-3xl',
+											content:
+												'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+											unitone: {
+												fluidTypography: true,
 											},
-										],
+										},
 									},
 								],
 							},

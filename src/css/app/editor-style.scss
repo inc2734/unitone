@@ -46,8 +46,9 @@
 
 	[data-type="core/image"] .components-resizable-box__container {
 		max-width: 100% !important;
-		max-height: none !important;
-		height: auto !important;
+		max-height: 100% !important;
+		height: 100% !important;
+		display: block !important;
 	}
 
 	[data-unitone-layout~="stack"],
@@ -74,7 +75,7 @@
 		> figure {
 			display: block;
 
-			> .components-resizable-box__container,
+			> .components-resizable-box__container,  /////
 			> .components-disabled {
 				> div {
 					display: none; // Remove resizer
@@ -84,6 +85,14 @@
 			> figcaption {
 				display: none;
 			}
+		}
+	}
+
+	[data-unitone-layout~="frame"],
+	[data-unitone-layout~="layers__layer"],
+	[data-unitone-layout~="layers"][data-unitone-layout~="-cover"] > :first-child {
+		.components-resizable-box__handle {
+			display: none;
 		}
 	}
 

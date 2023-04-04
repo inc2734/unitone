@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-04-04T06:47:11+00:00\n"
-"PO-Revision-Date: 2023-04-04 15:47+0900\n"
+"POT-Creation-Date: 2023-04-04T07:47:05+00:00\n"
+"PO-Revision-Date: 2023-04-04 16:48+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -673,6 +673,18 @@ msgstr "下 / 左"
 #: dist/blocks/layers/index.js:17
 msgid "Bottom / Right"
 msgstr "下 / 右"
+
+#: dist/blocks/layers/index.js:17
+msgid "Enable portrait mode"
+msgstr "ポートレートモードを有効にする"
+
+#: dist/blocks/layers/index.js:17
+msgid ""
+"If enabled, the number of vertical and horizontal grid lines is switched "
+"when the viewport is portrait."
+msgstr ""
+"有効な場合、ビューポートがポートレートのときにグリッド線の縦横の本数が切り替"
+"わります。"
 
 #. translators: %d: number of results.
 #: dist/blocks/pattern-inserter/index.js:6

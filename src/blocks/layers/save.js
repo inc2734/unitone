@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function ( { attributes } ) {
-	const { cover } = attributes;
+	const { cover, portrait } = attributes;
 
 	return (
 		<div
@@ -11,6 +11,7 @@ export default function ( { attributes } ) {
 				useBlockProps.save( {
 					'data-unitone-layout': classnames( 'layers', {
 						'-cover': cover,
+						'-portrait': portrait,
 					} ),
 				} )
 			) }

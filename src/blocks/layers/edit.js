@@ -27,7 +27,7 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { name, attributes, setAttributes, clientId } ) {
-	const { cover } = attributes;
+	const { cover, portrait } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -46,6 +46,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		blockProps[ 'data-unitone-layout' ],
 		{
 			'-cover': cover,
+			'-portrait': portrait,
 		}
 	);
 
@@ -97,6 +98,31 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							checked={ cover }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { cover: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							portrait !== metadata.attributes.portrait.default
+						}
+						isShownByDefault
+						label={ __( 'Enable portrait mode', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								cover: metadata.attributes.portrait.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'Enable portrait mode', 'unitone' ) }
+							help={ __(
+								'If enabled, the number of vertical and horizontal grid lines is switched when the viewport is portrait.',
+								'unitone'
+							) }
+							checked={ portrait }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { portrait: newAttribute } );
 							} }
 						/>
 					</ToolsPanelItem>

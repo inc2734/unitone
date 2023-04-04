@@ -60,6 +60,12 @@
 	[data-unitone-layout~="frame"] {
 		.components-placeholder {
 			display: flex;
+
+			.components-placeholder__illustration {
+				position: absolute;
+				height: 100%;
+				width: 100%;
+			}
 		}
 	}
 

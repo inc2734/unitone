@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-04-04T05:43:02+00:00\n"
-"PO-Revision-Date: 2023-04-04 14:44+0900\n"
+"POT-Creation-Date: 2023-04-04T06:47:11+00:00\n"
+"PO-Revision-Date: 2023-04-04 15:47+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -674,6 +674,24 @@ msgstr "下 / 左"
 msgid "Bottom / Right"
 msgstr "下 / 右"
 
+#. translators: %d: number of results.
+#: dist/blocks/pattern-inserter/index.js:6
+msgid "Insert Pattern (Beta)"
+msgstr "パターンを挿入（ベータ版）"
+
+#: dist/blocks/pattern-inserter/index.js:6
+msgid ""
+"Click on the button below to see all available patterns. Click on any "
+"pattern you wish to insert, and that pattern will be inserted into the "
+"article."
+msgstr ""
+"下記のボタンをクリックすると、利用可能なすべてのパターンが表示されます。挿入"
+"したいパターンをクリックすると、そのパターンが記事に挿入されます。"
+
+#: dist/blocks/pattern-inserter/index.js:6
+msgid "Remove this placeholder"
+msgstr "このプレースホルダーを削除"
+
 #: dist/blocks/reel/index.js:1
 msgid "Height"
 msgstr "高さ"
@@ -1238,6 +1256,22 @@ msgstr "レイヤー"
 msgctxt "block description"
 msgid "This block layers the children."
 msgstr "子要素を重ねます。"
+
+#: dist/blocks/pattern-inserter/block.json
+msgctxt "block title"
+msgid "Insert pattern (Beta)"
+msgstr "パターンを挿入（ベータ版）"
+
+#: dist/blocks/pattern-inserter/block.json
+msgctxt "block description"
+msgid ""
+"Insert a pattern (Only root). This block is beta version. This block may be "
+"significantly modified or discontinued in the future. In that case, however, "
+"the inserted patterns will not be affected."
+msgstr ""
+"パターンを挿入します（ルートのみ）。このブロックはベータ版です。今後、このブ"
+"ロックは大幅に変更されたり、廃止されたりする可能性があります。ただし、その場"
+"合でも挿入したパターンには影響がありません。"
 
 #: dist/blocks/reel/block.json
 msgctxt "block title"

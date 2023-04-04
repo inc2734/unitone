@@ -28,6 +28,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/slide' );
 	register_block_type( get_template_directory() . '/dist/blocks/slider' );
 	register_block_type( get_template_directory() . '/dist/blocks/gutters' );
+	register_block_type( get_template_directory() . '/dist/blocks/pattern-inserter' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack-divided' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack-divided-content' );

@@ -9,6 +9,7 @@ module.exports = {
 	},
 	rules: {
 		...defaultConfig.rules,
+		'import/no-extraneous-dependencies': 'off',
 		'@wordpress/no-unsafe-wp-apis': 'off',
 		'eqeqeq': ['error', 'allow-null'],
 	},

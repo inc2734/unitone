@@ -61,7 +61,7 @@
 		"test:lint:php": "wp-env start && wp-env run composer run-script lint",
 		"test:lint": "run-s test:lint:*",
 		"test": "run-s test:*",
-		"zip:pack": "rimraf unitone unitone.zip && rsync -a --exclude='.*' --exclude='*.log' --exclude='error_log' --exclude='todo.md' --exclude='*.config.js' --exclude='/bin' --exclude='/node_modules' --exclude='/vendor' --exclude='/tests' --exclude='/src' --exclude='/unitone.zip' ./ unitone",
+		"zip:pack": "rimraf unitone unitone.zip && rsync -a --exclude='.*' --exclude='*.log' --exclude='wp-cli.yml' --exclude='error_log' --exclude='todo.md' --exclude='*.config.js' --exclude='/bin' --exclude='/node_modules' --exclude='/vendor' --exclude='/tests' --exclude='/src' --exclude='/unitone.zip' ./ unitone",
 		"zip:archive": "zip -9 -qmr unitone.zip unitone",
 		"zip": "npm run zip:pack && wp-env start && wp-env run composer 'install --no-dev -d unitone' && npm run zip:archive",
 		"make-pot": "npm run wp 'i18n make-pot wp-content/themes/unitone wp-content/themes/unitone/languages/unitone.pot --exclude=.*,src'",

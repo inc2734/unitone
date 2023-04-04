@@ -1,10 +1,10 @@
 {
-	"core": "https://wordpress.org/latest.zip",
 	"themes": [ "." ],
 	"config": {
 		"WP_DEBUG": true
 	},
 	"mappings": {
-		".export": "./.export"
+		".export": "./.export",
+		"wp-cli.yml" : "./wp-cli.yml"
 	}
 }

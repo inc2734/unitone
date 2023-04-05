@@ -118,6 +118,8 @@ class Manager {
 				}
 
 				if ( isset( $option['reset'] ) && '1' === $option['reset'] ) {
+					$transient_name = 'unitone-remote-patterns';
+					$transient      = delete_transient( $transient_name );
 					return array();
 				}
 

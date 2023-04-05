@@ -14,11 +14,14 @@ function unitone_get_remote_block_pattens() {
 	global $wp_version;
 
 	$license_key = \Unitone\App\Controller\Manager::get_option( 'license-key' );
-	$response    = wp_remote_get(
-		sprintf(
+	$url         = $license_key
+		? sprintf(
 			'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/patterns/%1$s',
 			esc_attr( $license_key )
-		),
+		)
+		: 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/free-patterns/';
+	$response    = wp_remote_get(
+		$url,
 		array(
 			'user-agent' => 'WordPress/' . $wp_version,
 			'timeout'    => 30,

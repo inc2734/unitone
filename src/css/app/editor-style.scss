@@ -58,7 +58,9 @@
 		}
 	}
 
-	[data-unitone-layout~="frame"] {
+	[data-unitone-layout~="frame"],
+	.wp-block-video:not(.is-selected),
+	.wp-block-image:not(.is-selected) {
 		.components-placeholder {
 			display: flex;
 

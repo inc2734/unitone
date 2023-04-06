@@ -119,14 +119,7 @@ add_filter(
 add_filter(
 	'render_block',
 	function ( $block_content, $block ) {
-		if ( ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
-			require_once( get_template_directory() . '/classes/html-api/class-wp-html-attribute-token.php' );
-			require_once( get_template_directory() . '/classes/html-api/class-wp-html-span.php' );
-			require_once( get_template_directory() . '/classes/html-api/class-wp-html-tag-processor.php' );
-			require_once( get_template_directory() . '/classes/html-api/class-wp-html-text-replacement.php' );
-		}
-
-		$p = new WP_HTML_Tag_Processor( $block_content );
+		$p = new \WP_HTML_Tag_Processor( $block_content );
 		$p->next_tag();
 
 		// -fluid-typography
@@ -446,7 +439,7 @@ add_filter(
 	'render_block_unitone/center',
 	function( $block_content, $block ) {
 		if ( ! isset( $block['attrs']['intrinsic'] ) && false === strpos( $block_content, '-intrinsic' ) ) {
-			$p = new WP_HTML_Tag_Processor( $block_content );
+			$p = new \WP_HTML_Tag_Processor( $block_content );
 			$p->next_tag();
 			$p->set_attribute( 'data-unitone-layout', $p->get_attribute( 'data-unitone-layout' ) . ' ' . '-intrinsic' );
 			$block_content = $p->get_updated_html();

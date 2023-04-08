@@ -25,7 +25,7 @@ function unitone_theme_scripts() {
 		filemtime( get_theme_file_path( 'dist/css/app/app.css' ) )
 	);
 }
-add_action( 'wp_enqueue_scripts', 'unitone_theme_scripts' );
+add_action( 'wp_enqueue_scripts', 'unitone_theme_scripts', 9 );
 
 /**
  * Enqueue theme scripts and styles for the block editor.
@@ -104,7 +104,7 @@ function unitone_enqueue_block_editor_assets() {
 		)
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_assets', 9 );
 
 /**
  * Enqueue theme scripts and styles for the dashboard.

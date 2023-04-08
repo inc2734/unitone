@@ -1,0 +1,24 @@
+.unitone-section {
+	--unitone--gap: var(--unitone--s2);
+	--unitone--gutters: var(--unitone--global--gutters);
+	--unitone--max-width: var(--unitone--container-max-width);
+	--unitone--padding: var(--unitone--s4);
+
+	--unitone--section--gap: var(--unitone--gap);
+	--unitone--section--gutters: var(--unitone--gutters);
+	--unitone--section--max-width: var(--unitone--max-width);
+	--unitone--section--padding: var(--unitone--padding);
+
+	> [data-unitone-layout~="gutters"] {
+		--unitone--padding: var(--unitone--section--padding);
+
+		> [data-unitone-layout~="container"] {
+			--unitone--gutters: var(--unitone--section--gutters);
+			--unitone--max-width: var(--unitone--section--max-width);
+
+			> [data-unitone-layout~="stack"] {
+				--unitone--gap: var(--unitone--section--gap);
+			}
+		}
+	}
+}

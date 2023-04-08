@@ -1,0 +1,79 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/section",
+	"title": "Section",
+	"description": "This block represents a generic standalone section of a document.",
+	"attributes": {
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"link": true,
+			"text": true,
+			"gradients": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"unitone": {
+			"gap": true,
+			"gutters": true,
+			"maxWidth": true,
+			"padding": true,
+			"fluidTypography": true,
+			"lineHeight": true
+		}
+	},
+	"example": {
+		"attributes": {
+			"align": "full"
+		},
+		"innerBlocks": [
+			{
+				"name": "unitone/center",
+				"attributes": {
+					"unitone": {
+						"maxWidth": "100%"
+					}
+				},
+				"innerBlocks": [
+					{
+						"name": "core/heading",
+						"attributes": {
+							"content": "Lorem ipsum dolor sit amet"
+						}
+					}
+				]
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+				}
+			}
+		]
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}

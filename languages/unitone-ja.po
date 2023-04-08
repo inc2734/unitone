@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-04-04T07:47:05+00:00\n"
-"PO-Revision-Date: 2023-04-04 16:48+0900\n"
+"POT-Creation-Date: 2023-04-08T14:44:34+00:00\n"
+"PO-Revision-Date: 2023-04-08 23:46+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -47,30 +47,30 @@ msgstr "設定をリセット"
 msgid "Clear remote patterns caches"
 msgstr "リモートパターンのキャッシュをクリア"
 
-#: App/Controller/Manager.php:133 dist/blocks/center/index.js:1
+#: App/Controller/Manager.php:135 dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/layers/index.js:17 dist/blocks/reel/index.js:1
+#: dist/blocks/layers/index.js:25 dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/slider/index.js:1
 #: dist/blocks/stack-divided/index.js:1 dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1 dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
 msgstr "設定"
 
-#: App/Controller/Manager.php:141
+#: App/Controller/Manager.php:143
 msgid "License key"
 msgstr "ライセンスキー"
 
-#: App/Controller/Manager.php:187
+#: App/Controller/Manager.php:189
 msgid "Enable"
 msgstr "有効"
 
-#: App/Controller/Manager.php:192
+#: App/Controller/Manager.php:194
 msgid "Disable"
 msgstr "無効"
 
-#: App/Controller/Manager.php:212
+#: App/Controller/Manager.php:214
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
@@ -173,7 +173,7 @@ msgstr "ブロックリンク（ボーダー）"
 msgid "Block link (Stripe)"
 msgstr "ブロックリンク（ストライプ）"
 
-#: inc/block-styles.php:93 dist/blocks/layers/index.js:17
+#: inc/block-styles.php:93 dist/blocks/layers/index.js:25
 msgid "Cover"
 msgstr "カバー"
 
@@ -644,7 +644,7 @@ msgstr "背景画像"
 msgid "Background framed image"
 msgstr "背景フレーム画像"
 
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
 msgid "Default"
 msgstr "デフォルト"
 
@@ -674,11 +674,33 @@ msgstr "下 / 左"
 msgid "Bottom / Right"
 msgstr "下 / 右"
 
-#: dist/blocks/layers/index.js:17
+#. translators: %1$s: position
+#: dist/blocks/layers/index.js:19 dist/blocks/layers/index.js:21
+#: dist/blocks/layers/index.js:23 dist/blocks/layers/index.js:25
+msgid "Section (%1$s)"
+msgstr "セクション（%1$s）"
+
+#: dist/blocks/layers/index.js:19
+msgid "Background image / Centered title"
+msgstr "背景画像 / 中央揃えのタイトル"
+
+#: dist/blocks/layers/index.js:21
+msgid "Background image / Centered title / Subtitle"
+msgstr "背景画像 / 中央揃えのタイトル / サブタイトル"
+
+#: dist/blocks/layers/index.js:23
+msgid "Background image / Left title"
+msgstr "背景画像 / 左寄せのタイトル"
+
+#: dist/blocks/layers/index.js:25
+msgid "Background image / Left title / Subtitle"
+msgstr "背景画像 / 左寄せのタイトル / サブタイトル"
+
+#: dist/blocks/layers/index.js:25
 msgid "Enable portrait mode"
 msgstr "ポートレートモードを有効にする"
 
-#: dist/blocks/layers/index.js:17
+#: dist/blocks/layers/index.js:25
 msgid ""
 "If enabled, the number of vertical and horizontal grid lines is switched "
 "when the viewport is portrait."
@@ -729,6 +751,22 @@ msgid ""
 msgstr ""
 "「auto-repeat」が 「auto-fill」の場合、カラムはこのサイズを維持します。"
 "「auto-fit」の場合、空きスペースを埋めるようにカラムが伸長します。"
+
+#: dist/blocks/section/index.js:1
+msgid "Centered title"
+msgstr "中央揃えのタイトル"
+
+#: dist/blocks/section/index.js:1
+msgid "Centered title / Subtitle"
+msgstr "中央揃えのタイトル / サブタイトル"
+
+#: dist/blocks/section/index.js:1
+msgid "Left title"
+msgstr "左寄せのタイトル"
+
+#: dist/blocks/section/index.js:1
+msgid "Left title / Subtitle"
+msgstr "左寄せのタイトル / サブタイトル"
 
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Align items top"
@@ -1304,6 +1342,16 @@ msgstr "レスポンシブグリッド"
 msgctxt "block description"
 msgid "This block generates a simple grid."
 msgstr "シンプルなグリッドを生成します。"
+
+#: dist/blocks/section/block.json
+msgctxt "block title"
+msgid "Section"
+msgstr "セクション"
+
+#: dist/blocks/section/block.json
+msgctxt "block description"
+msgid "This block represents a generic standalone section of a document."
+msgstr ""
 
 #: dist/blocks/slide/block.json
 msgctxt "block title"

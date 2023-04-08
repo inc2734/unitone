@@ -9,7 +9,6 @@
  * Register blocks.
  */
 function unitone_register_blocks() {
-	register_block_type( get_template_directory() . '/dist/blocks/accordion' );
 	register_block_type( get_template_directory() . '/dist/blocks/both-sides' );
 	register_block_type( get_template_directory() . '/dist/blocks/both-sides-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/decorator' );
@@ -37,8 +36,10 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar' );
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar-content' );
 
+	register_block_type( get_template_directory() . '/dist/blocks/accordion' );
 	register_block_type( get_template_directory() . '/dist/blocks/breadcrumbs' );
 	register_block_type( get_template_directory() . '/dist/blocks/child-pages' );
+	register_block_type( get_template_directory() . '/dist/blocks/section' );
 
 	\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes['unitone'] = array( 'type' => 'object' );
 }

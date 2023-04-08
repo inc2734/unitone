@@ -9,27 +9,34 @@ import IconHeroBottomLeftTitleInside from './icon/hero-bottom-left-title-inside'
 import IconHeroBottomRightTitleInside from './icon/hero-bottom-right-title-inside';
 import IconHeroBottomLeftTitleInset from './icon/hero-bottom-left-title-inset';
 import IconHeroBottomRightTitleInset from './icon/hero-bottom-right-title-inset';
+import IconSectionBackgroundImageCenteredTitle from './icon/section-background-image-centered-title';
+import IconSectionBackgroundImageCenteredTitleSubtitle from './icon/section-background-image-centered-title-subtitle';
+import IconSectionBackgroundImageLeftTitle from './icon/section-background-image-left-title';
+import IconSectionBackgroundImageLeftTitleSubtitle from './icon/section-background-image-left-title-subtitle';
 
 export default [
 	{
 		name: 'background-image',
 		title: __( 'Background image', 'unitone' ),
 		scope: [ 'inserter' ],
+		attribuets: {
+			cover: true,
+		},
 		innerBlocks: [
-			[
-				'core/image',
-				{
+			{
+				name: 'core/image',
+				attributes: {
 					id: 1,
 					url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
 				},
-			],
-			[
-				'unitone/decorator',
-				{
+			},
+			{
+				name: 'unitone/decorator',
+				attributes: {
 					textColor: 'white',
 					unitone: { padding: 1, alignSelf: 'end' },
 				},
-			],
+			},
 		],
 		example: {
 			attributes: {
@@ -67,26 +74,25 @@ export default [
 		title: __( 'Background framed image', 'unitone' ),
 		scope: [ 'inserter' ],
 		innerBlocks: [
-			[
-				'unitone/frame',
-				{},
-				[
-					[
-						'core/image',
-						{
+			{
+				name: 'unitone/frame',
+				innerBlocks: [
+					{
+						name: 'core/image',
+						attributes: {
 							id: 1,
 							url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
 						},
-					],
+					},
 				],
-			],
-			[
-				'unitone/decorator',
-				{
+			},
+			{
+				name: 'unitone/decorator',
+				attributes: {
 					textColor: 'white',
 					unitone: { padding: 1, alignSelf: 'end' },
 				},
-			],
+			},
 		],
 		example: {
 			innerBlocks: [
@@ -136,6 +142,7 @@ export default [
 			__( 'Top / Left', 'unitone' )
 		),
 		scope: [ 'block' ],
+		icon: <IconHeroTopLeftTitle />,
 		attributes: {
 			align: 'wide',
 			textColor: 'unitone/text',
@@ -184,7 +191,6 @@ export default [
 				],
 			},
 		],
-		icon: <IconHeroTopLeftTitle />,
 	},
 	{
 		name: 'hero-top-right-title',
@@ -194,6 +200,7 @@ export default [
 			__( 'Top / Right', 'unitone' )
 		),
 		scope: [ 'block' ],
+		icon: <IconHeroTopRightTitle />,
 		attributes: {
 			align: 'wide',
 			textColor: 'unitone/text',
@@ -243,7 +250,6 @@ export default [
 				],
 			},
 		],
-		icon: <IconHeroTopRightTitle />,
 	},
 	{
 		name: 'hero-bottom-left-title',
@@ -253,6 +259,7 @@ export default [
 			__( 'Bottom / Left', 'unitone' )
 		),
 		scope: [ 'block' ],
+		icon: <IconHeroBottomLeftTitle />,
 		attributes: {
 			align: 'wide',
 			textColor: 'unitone/text',
@@ -301,7 +308,6 @@ export default [
 				],
 			},
 		],
-		icon: <IconHeroBottomLeftTitle />,
 	},
 	{
 		name: 'hero-bottom-right-title',
@@ -311,6 +317,7 @@ export default [
 			__( 'Bottom / Right', 'unitone' )
 		),
 		scope: [ 'block' ],
+		icon: <IconHeroBottomRightTitle />,
 		attributes: {
 			align: 'wide',
 			textColor: 'unitone/text',
@@ -360,7 +367,6 @@ export default [
 				],
 			},
 		],
-		icon: <IconHeroBottomRightTitle />,
 	},
 	{
 		name: 'hero-bottom-left-title-inside',
@@ -370,6 +376,7 @@ export default [
 			__( 'Bottom / Left', 'unitone' )
 		),
 		scope: [ 'block' ],
+		icon: <IconHeroBottomLeftTitleInside />,
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -416,7 +423,6 @@ export default [
 				],
 			},
 		],
-		icon: <IconHeroBottomLeftTitleInside />,
 	},
 	{
 		name: 'hero-bottom-right-title-inside',
@@ -426,6 +432,7 @@ export default [
 			__( 'Bottom / Right', 'unitone' )
 		),
 		scope: [ 'block' ],
+		icon: <IconHeroBottomRightTitleInside />,
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -472,7 +479,6 @@ export default [
 				],
 			},
 		],
-		icon: <IconHeroBottomRightTitleInside />,
 	},
 	{
 		name: 'hero-bottom-left-title-inset',
@@ -482,6 +488,7 @@ export default [
 			__( 'Bottom / Left', 'unitone' )
 		),
 		scope: [ 'block' ],
+		icon: <IconHeroBottomLeftTitleInset />,
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -538,7 +545,6 @@ export default [
 				],
 			},
 		],
-		icon: <IconHeroBottomLeftTitleInset />,
 	},
 	{
 		name: 'hero-bottom-right-title-inset',
@@ -548,6 +554,7 @@ export default [
 			__( 'Bottom / Right', 'unitone' )
 		),
 		scope: [ 'block' ],
+		icon: <IconHeroBottomRightTitleInset />,
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -605,6 +612,294 @@ export default [
 				],
 			},
 		],
-		icon: <IconHeroBottomRightTitleInset />,
+	},
+	{
+		name: 'section-background-image-centered-title',
+		title: sprintf(
+			// translators: %1$s: position
+			__( 'Section (%1$s)', 'unitone' ),
+			__( 'Background image / Centered title', 'unitone' )
+		),
+		scope: [ 'block' ],
+		icon: <IconSectionBackgroundImageCenteredTitle />,
+		attributes: {
+			align: 'full',
+			cover: true,
+		},
+		innerBlocks: [
+			{
+				name: 'core/image',
+				attributes: {
+					id: 1,
+					url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+				},
+			},
+			{
+				name: 'unitone/section',
+				attributes: {
+					align: 'full',
+				},
+				innerBlocks: [
+					{
+						name: 'unitone/center',
+						attributes: {
+							unitone: {
+								maxWidth: '100%',
+							},
+						},
+						innerBlocks: [
+							{
+								name: 'core/heading',
+								attributes: {
+									content: 'Lorem ipsum dolor sit amet',
+									fontSize: 'unitone-3xl',
+									unitone: {
+										fluidTypography: true,
+									},
+								},
+							},
+						],
+					},
+					{
+						name: 'unitone/text',
+						attributes: {
+							unitone: {
+								maxWidth: '100%',
+							},
+						},
+						innerBlocks: [
+							{
+								name: 'core/paragraph',
+								attributes: {
+									content:
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill',
+								},
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		name: 'section-background-image-centered-title-subtitle',
+		title: sprintf(
+			// translators: %1$s: position
+			__( 'Section (%1$s)', 'unitone' ),
+			__( 'Background image / Centered title / Subtitle', 'unitone' )
+		),
+		scope: [ 'block' ],
+		icon: <IconSectionBackgroundImageCenteredTitleSubtitle />,
+		attributes: {
+			align: 'full',
+			cover: true,
+		},
+		innerBlocks: [
+			{
+				name: 'core/image',
+				attributes: {
+					id: 1,
+					url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+				},
+			},
+			{
+				name: 'unitone/section',
+				innerBlocks: [
+					{
+						name: 'unitone/stack',
+						attributes: {
+							unitone: {
+								gap: '-2',
+							},
+						},
+						innerBlocks: [
+							{
+								name: 'unitone/center',
+								attributes: {
+									unitone: {
+										maxWidth: '100%',
+									},
+								},
+								innerBlocks: [
+									{
+										name: 'core/paragraph',
+										attributes: {
+											content:
+												'Lorem ipsum dolor sit amet',
+											fontSize: 'unitone-s',
+										},
+									},
+								],
+							},
+							{
+								name: 'unitone/center',
+								attributes: {
+									unitone: {
+										maxWidth: '100%',
+									},
+								},
+								innerBlocks: [
+									{
+										name: 'core/heading',
+										attributes: {
+											content:
+												'Lorem ipsum dolor sit amet',
+											fontSize: 'unitone-3xl',
+											unitone: {
+												fluidTypography: true,
+											},
+										},
+									},
+								],
+							},
+						],
+					},
+					{
+						name: 'unitone/text',
+						attributes: {
+							unitone: {
+								maxWidth: '100%',
+							},
+						},
+						innerBlocks: [
+							{
+								name: 'core/paragraph',
+								attributes: {
+									content:
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill',
+								},
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		name: 'section-background-image-left-title',
+		title: sprintf(
+			// translators: %1$s: position
+			__( 'Section (%1$s)', 'unitone' ),
+			__( 'Background image / Left title', 'unitone' )
+		),
+		scope: [ 'block' ],
+		icon: <IconSectionBackgroundImageLeftTitle />,
+		attributes: {
+			align: 'full',
+			cover: true,
+		},
+		innerBlocks: [
+			{
+				name: 'core/image',
+				attributes: {
+					id: 1,
+					url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+				},
+			},
+			{
+				name: 'unitone/section',
+				innerBlocks: [
+					{
+						name: 'core/heading',
+						attributes: {
+							content: 'Lorem ipsum dolor sit amet',
+							fontSize: 'unitone-3xl',
+							unitone: {
+								fluidTypography: true,
+							},
+						},
+					},
+					{
+						name: 'unitone/text',
+						attributes: {
+							unitone: {
+								maxWidth: '100%',
+							},
+						},
+						innerBlocks: [
+							{
+								name: 'core/paragraph',
+								attributes: {
+									content:
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill',
+								},
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		name: 'section-background-image-left-title-subtitle',
+		title: sprintf(
+			// translators: %1$s: position
+			__( 'Section (%1$s)', 'unitone' ),
+			__( 'Background image / Left title / Subtitle', 'unitone' )
+		),
+		scope: [ 'block' ],
+		icon: <IconSectionBackgroundImageLeftTitleSubtitle />,
+		attributes: {
+			align: 'full',
+			cover: true,
+		},
+		innerBlocks: [
+			{
+				name: 'core/image',
+				attributes: {
+					id: 1,
+					url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+				},
+			},
+			{
+				name: 'unitone/section',
+				innerBlocks: [
+					{
+						name: 'unitone/stack',
+						attributes: {
+							unitone: {
+								gap: '-2',
+							},
+						},
+						innerBlocks: [
+							{
+								name: 'core/paragraph',
+								attributes: {
+									content: 'Lorem ipsum dolor sit amet',
+									fontSize: 'unitone-s',
+								},
+							},
+							{
+								name: 'core/heading',
+								attributes: {
+									content: 'Lorem ipsum dolor sit amet',
+									fontSize: 'unitone-3xl',
+									unitone: {
+										fluidTypography: true,
+									},
+								},
+							},
+						],
+					},
+					{
+						name: 'unitone/text',
+						attributes: {
+							unitone: {
+								maxWidth: '100%',
+							},
+						},
+						innerBlocks: [
+							{
+								name: 'core/paragraph',
+								attributes: {
+									content:
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill',
+								},
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 ];

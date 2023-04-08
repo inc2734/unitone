@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 4.3.4\n"
+"Project-Id-Version: unitone 5.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-04T07:47:05+00:00\n"
+"POT-Creation-Date: 2023-04-08T14:44:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "Clear remote patterns caches"
 msgstr ""
 
-#: App/Controller/Manager.php:133
+#: App/Controller/Manager.php:135
 #: dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/cluster-divided/index.js:1
@@ -56,7 +56,7 @@ msgstr ""
 #: dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1
 #: dist/blocks/frame/index.js:1
-#: dist/blocks/layers/index.js:17
+#: dist/blocks/layers/index.js:25
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/slider/index.js:1
@@ -67,19 +67,19 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: App/Controller/Manager.php:141
+#: App/Controller/Manager.php:143
 msgid "License key"
 msgstr ""
 
-#: App/Controller/Manager.php:187
+#: App/Controller/Manager.php:189
 msgid "Enable"
 msgstr ""
 
-#: App/Controller/Manager.php:192
+#: App/Controller/Manager.php:194
 msgid "Disable"
 msgstr ""
 
-#: App/Controller/Manager.php:212
+#: App/Controller/Manager.php:214
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr ""
 
@@ -188,7 +188,7 @@ msgid "Block link (Stripe)"
 msgstr ""
 
 #: inc/block-styles.php:93
-#: dist/blocks/layers/index.js:17
+#: dist/blocks/layers/index.js:25
 msgid "Cover"
 msgstr ""
 
@@ -709,6 +709,7 @@ msgid "Background framed image"
 msgstr ""
 
 #: dist/blocks/layers/index.js:1
+#: dist/blocks/section/index.js:1
 msgid "Default"
 msgstr ""
 
@@ -744,11 +745,35 @@ msgstr ""
 msgid "Bottom / Right"
 msgstr ""
 
-#: dist/blocks/layers/index.js:17
+#. translators: %1$s: position
+#: dist/blocks/layers/index.js:19
+#: dist/blocks/layers/index.js:21
+#: dist/blocks/layers/index.js:23
+#: dist/blocks/layers/index.js:25
+msgid "Section (%1$s)"
+msgstr ""
+
+#: dist/blocks/layers/index.js:19
+msgid "Background image / Centered title"
+msgstr ""
+
+#: dist/blocks/layers/index.js:21
+msgid "Background image / Centered title / Subtitle"
+msgstr ""
+
+#: dist/blocks/layers/index.js:23
+msgid "Background image / Left title"
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "Background image / Left title / Subtitle"
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
 msgid "Enable portrait mode"
 msgstr ""
 
-#: dist/blocks/layers/index.js:17
+#: dist/blocks/layers/index.js:25
 msgid "If enabled, the number of vertical and horizontal grid lines is switched when the viewport is portrait."
 msgstr ""
 
@@ -784,6 +809,22 @@ msgstr ""
 
 #: dist/blocks/responsive-grid/index.js:3
 msgid "If \"auto-repeat\" is \"auto-fill\" the column will maintain this size.\" auto-fit\", the column will stretch to fill the available space."
+msgstr ""
+
+#: dist/blocks/section/index.js:1
+msgid "Centered title"
+msgstr ""
+
+#: dist/blocks/section/index.js:1
+msgid "Centered title / Subtitle"
+msgstr ""
+
+#: dist/blocks/section/index.js:1
+msgid "Left title"
+msgstr ""
+
+#: dist/blocks/section/index.js:1
+msgid "Left title / Subtitle"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -1353,6 +1394,16 @@ msgstr ""
 #: dist/blocks/responsive-grid/block.json
 msgctxt "block description"
 msgid "This block generates a simple grid."
+msgstr ""
+
+#: dist/blocks/section/block.json
+msgctxt "block title"
+msgid "Section"
+msgstr ""
+
+#: dist/blocks/section/block.json
+msgctxt "block description"
+msgid "This block represents a generic standalone section of a document."
 msgstr ""
 
 #: dist/blocks/slide/block.json

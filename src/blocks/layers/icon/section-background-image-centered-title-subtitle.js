@@ -21,33 +21,40 @@ export default function () {
 					/>
 					<line
 						x1="14"
-						y1="16"
+						y1="18"
 						x2="34"
-						y2="16"
+						y2="18"
+						stroke="#AAAAAA"
+						strokeWidth="2"
+					/>
+					<line
+						x1="18"
+						y1="13.5"
+						x2="30"
+						y2="13.5"
+						stroke="#AAAAAA"
+					/>
+					<line
+						x1="5"
+						y1="25"
+						x2="43"
+						y2="25"
 						stroke="#AAAAAA"
 						strokeWidth="2"
 					/>
 					<line
 						x1="5"
-						y1="23"
+						y1="29"
 						x2="43"
-						y2="23"
+						y2="29"
 						stroke="#AAAAAA"
 						strokeWidth="2"
 					/>
 					<line
 						x1="5"
-						y1="27"
+						y1="33"
 						x2="43"
-						y2="27"
-						stroke="#AAAAAA"
-						strokeWidth="2"
-					/>
-					<line
-						x1="5"
-						y1="31"
-						x2="43"
-						y2="31"
+						y2="33"
 						stroke="#AAAAAA"
 						strokeWidth="2"
 					/>

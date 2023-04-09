@@ -1,4 +1,4 @@
-import { sprintf, __ } from '@wordpress/i18n';
+import { sprintf, __, _x } from '@wordpress/i18n';
 
 import IconUnitone from './icon/default';
 import IconHeroTopLeftTitle from './icon/hero-top-left-title';
@@ -620,7 +620,9 @@ export default [
 			__( 'Section (%1$s)', 'unitone' ),
 			__( 'Background image / Centered title', 'unitone' )
 		),
-		scope: [ 'block' ],
+		keywords: [ _x( 'section', 'block keywords', 'unitone' ) ],
+		scope: [ 'inserter' ],
+		category: 'unitone/section',
 		icon: <IconSectionBackgroundImageCenteredTitle />,
 		attributes: {
 			align: 'full',
@@ -680,6 +682,67 @@ export default [
 				],
 			},
 		],
+		example: {
+			viewportWidth: 1280,
+			attributes: {
+				align: 'full',
+				cover: true,
+			},
+			innerBlocks: [
+				{
+					name: 'core/image',
+					attributes: {
+						id: 1,
+						url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+					},
+				},
+				{
+					name: 'unitone/section',
+					attributes: {
+						align: 'full',
+					},
+					innerBlocks: [
+						{
+							name: 'unitone/center',
+							attributes: {
+								unitone: {
+									maxWidth: '100%',
+								},
+							},
+							innerBlocks: [
+								{
+									name: 'core/heading',
+									attributes: {
+										content: 'Lorem ipsum dolor sit amet',
+										fontSize: 'unitone-3xl',
+										unitone: {
+											fluidTypography: true,
+										},
+									},
+								},
+							],
+						},
+						{
+							name: 'unitone/text',
+							attributes: {
+								unitone: {
+									maxWidth: '100%',
+								},
+							},
+							innerBlocks: [
+								{
+									name: 'core/paragraph',
+									attributes: {
+										content:
+											'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill',
+									},
+								},
+							],
+						},
+					],
+				},
+			],
+		},
 	},
 	{
 		name: 'section-background-image-centered-title-subtitle',
@@ -688,7 +751,9 @@ export default [
 			__( 'Section (%1$s)', 'unitone' ),
 			__( 'Background image / Centered title / Subtitle', 'unitone' )
 		),
-		scope: [ 'block' ],
+		keywords: [ _x( 'section', 'block keywords', 'unitone' ) ],
+		scope: [ 'inserter' ],
+		category: 'unitone/section',
 		icon: <IconSectionBackgroundImageCenteredTitleSubtitle />,
 		attributes: {
 			align: 'full',
@@ -774,6 +839,93 @@ export default [
 				],
 			},
 		],
+		example: {
+			viewportWidth: 1280,
+			attributes: {
+				align: 'full',
+				cover: true,
+			},
+			innerBlocks: [
+				{
+					name: 'core/image',
+					attributes: {
+						id: 1,
+						url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+					},
+				},
+				{
+					name: 'unitone/section',
+					innerBlocks: [
+						{
+							name: 'unitone/stack',
+							attributes: {
+								unitone: {
+									gap: '-2',
+								},
+							},
+							innerBlocks: [
+								{
+									name: 'unitone/center',
+									attributes: {
+										unitone: {
+											maxWidth: '100%',
+										},
+									},
+									innerBlocks: [
+										{
+											name: 'core/paragraph',
+											attributes: {
+												content:
+													'Lorem ipsum dolor sit amet',
+												fontSize: 'unitone-s',
+											},
+										},
+									],
+								},
+								{
+									name: 'unitone/center',
+									attributes: {
+										unitone: {
+											maxWidth: '100%',
+										},
+									},
+									innerBlocks: [
+										{
+											name: 'core/heading',
+											attributes: {
+												content:
+													'Lorem ipsum dolor sit amet',
+												fontSize: 'unitone-3xl',
+												unitone: {
+													fluidTypography: true,
+												},
+											},
+										},
+									],
+								},
+							],
+						},
+						{
+							name: 'unitone/text',
+							attributes: {
+								unitone: {
+									maxWidth: '100%',
+								},
+							},
+							innerBlocks: [
+								{
+									name: 'core/paragraph',
+									attributes: {
+										content:
+											'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill',
+									},
+								},
+							],
+						},
+					],
+				},
+			],
+		},
 	},
 	{
 		name: 'section-background-image-left-title',
@@ -782,7 +934,9 @@ export default [
 			__( 'Section (%1$s)', 'unitone' ),
 			__( 'Background image / Left title', 'unitone' )
 		),
-		scope: [ 'block' ],
+		keywords: [ _x( 'section', 'block keywords', 'unitone' ) ],
+		scope: [ 'inserter' ],
+		category: 'unitone/section',
 		icon: <IconSectionBackgroundImageLeftTitle />,
 		attributes: {
 			align: 'full',
@@ -829,6 +983,54 @@ export default [
 				],
 			},
 		],
+		example: {
+			viewportWidth: 1280,
+			attributes: {
+				align: 'full',
+				cover: true,
+			},
+			innerBlocks: [
+				{
+					name: 'core/image',
+					attributes: {
+						id: 1,
+						url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+					},
+				},
+				{
+					name: 'unitone/section',
+					innerBlocks: [
+						{
+							name: 'core/heading',
+							attributes: {
+								content: 'Lorem ipsum dolor sit amet',
+								fontSize: 'unitone-3xl',
+								unitone: {
+									fluidTypography: true,
+								},
+							},
+						},
+						{
+							name: 'unitone/text',
+							attributes: {
+								unitone: {
+									maxWidth: '100%',
+								},
+							},
+							innerBlocks: [
+								{
+									name: 'core/paragraph',
+									attributes: {
+										content:
+											'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill',
+									},
+								},
+							],
+						},
+					],
+				},
+			],
+		},
 	},
 	{
 		name: 'section-background-image-left-title-subtitle',
@@ -837,7 +1039,9 @@ export default [
 			__( 'Section (%1$s)', 'unitone' ),
 			__( 'Background image / Left title / Subtitle', 'unitone' )
 		),
-		scope: [ 'block' ],
+		keywords: [ _x( 'section', 'block keywords', 'unitone' ) ],
+		scope: [ 'inserter' ],
+		category: 'unitone/section',
 		icon: <IconSectionBackgroundImageLeftTitleSubtitle />,
 		attributes: {
 			align: 'full',
@@ -901,5 +1105,70 @@ export default [
 				],
 			},
 		],
+		example: {
+			viewportWidth: 1280,
+			attributes: {
+				align: 'full',
+				cover: true,
+			},
+			innerBlocks: [
+				{
+					name: 'core/image',
+					attributes: {
+						id: 1,
+						url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+					},
+				},
+				{
+					name: 'unitone/section',
+					innerBlocks: [
+						{
+							name: 'unitone/stack',
+							attributes: {
+								unitone: {
+									gap: '-2',
+								},
+							},
+							innerBlocks: [
+								{
+									name: 'core/paragraph',
+									attributes: {
+										content: 'Lorem ipsum dolor sit amet',
+										fontSize: 'unitone-s',
+									},
+								},
+								{
+									name: 'core/heading',
+									attributes: {
+										content: 'Lorem ipsum dolor sit amet',
+										fontSize: 'unitone-3xl',
+										unitone: {
+											fluidTypography: true,
+										},
+									},
+								},
+							],
+						},
+						{
+							name: 'unitone/text',
+							attributes: {
+								unitone: {
+									maxWidth: '100%',
+								},
+							},
+							innerBlocks: [
+								{
+									name: 'core/paragraph',
+									attributes: {
+										content:
+											'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill',
+									},
+								},
+							],
+						},
+					],
+				},
+			],
+		},
 	},
 ];

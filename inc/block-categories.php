@@ -33,6 +33,17 @@ function unitone_block_categories_all( $categories ) {
 		);
 	}
 
+	if ( ! in_array( 'unitone/section', $slugs, true ) ) {
+		$categories[] = array(
+			'slug'  => 'unitone/section',
+			'title' => '['
+								. __( 'unitone', 'unitone' )
+								. ']'
+								. ' '
+								. __( 'Sections', 'unitone' ),
+		);
+	}
+
 	if ( ! in_array( 'unitone/widget', $slugs, true ) ) {
 		$categories[] = array(
 			'slug'  => 'unitone/widget',

@@ -14,9 +14,11 @@ import {
 } from '@wordpress/blocks';
 
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 
-export default function ( { name, setAttributes, clientId } ) {
+import metadata from './block.json';
+
+export default function ( { name, attributes, setAttributes, clientId } ) {
 	const hasInnerBlocks = useSelect(
 		( select ) =>
 			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
@@ -27,6 +29,23 @@ export default function ( { name, setAttributes, clientId } ) {
 	const [ isShowPlaceholder, setIsShowPlaceholder ] = useState(
 		! hasInnerBlocks
 	);
+
+	useEffect( () => {
+		const defaultAttributes = {};
+		Object.values( metadata.attributes || [] ).forEach(
+			( value, index ) => {
+				defaultAttributes[
+					Object.keys( metadata.attributes )[ index ]
+				] = value.default;
+			}
+		);
+
+		if (
+			JSON.stringify( defaultAttributes ) === JSON.stringify( attributes )
+		) {
+			setIsShowPlaceholder( true );
+		}
+	}, [ attributes ] );
 
 	const blockProps = useBlockProps( { className: 'unitone-section' } );
 

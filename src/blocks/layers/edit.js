@@ -22,7 +22,7 @@ import {
 } from '@wordpress/blocks';
 
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
@@ -36,6 +36,23 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 				?.length,
 		[ clientId ]
 	);
+
+	useEffect( () => {
+		const defaultAttributes = {};
+		Object.values( metadata.attributes || {} ).forEach(
+			( value, index ) => {
+				defaultAttributes[
+					Object.keys( metadata.attributes )[ index ]
+				] = value.default;
+			}
+		);
+
+		if (
+			JSON.stringify( defaultAttributes ) === JSON.stringify( attributes )
+		) {
+			setIsShowPlaceholder( true );
+		}
+	}, [ attributes ] );
 
 	const [ isShowPlaceholder, setIsShowPlaceholder ] = useState(
 		! hasInnerBlocks

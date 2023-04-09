@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-04-08T14:44:34+00:00\n"
-"PO-Revision-Date: 2023-04-08 23:46+0900\n"
+"POT-Creation-Date: 2023-04-09T12:52:18+00:00\n"
+"PO-Revision-Date: 2023-04-09 21:52+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -18,7 +18,8 @@ msgstr ""
 
 #. Theme Name of the theme
 #: inc/block-categories.php:18 inc/block-categories.php:29
-#: inc/block-categories.php:40 inc/block-styles.php:85
+#: inc/block-categories.php:40 inc/block-categories.php:51
+#: inc/block-styles.php:85
 msgid "unitone"
 msgstr "unitone"
 
@@ -94,6 +95,10 @@ msgid "Components"
 msgstr "コンポーネント"
 
 #: inc/block-categories.php:43
+msgid "Sections"
+msgstr "セクション"
+
+#: inc/block-categories.php:54
 msgid "Widgets"
 msgstr "ウィジェット"
 
@@ -677,12 +682,19 @@ msgstr "下 / 右"
 #. translators: %1$s: position
 #: dist/blocks/layers/index.js:19 dist/blocks/layers/index.js:21
 #: dist/blocks/layers/index.js:23 dist/blocks/layers/index.js:25
+#: dist/blocks/section/index.js:3 dist/blocks/section/index.js:5
+#: dist/blocks/section/index.js:7 dist/blocks/section/index.js:9
 msgid "Section (%1$s)"
 msgstr "セクション（%1$s）"
 
 #: dist/blocks/layers/index.js:19
 msgid "Background image / Centered title"
 msgstr "背景画像 / 中央揃えのタイトル"
+
+#: dist/blocks/layers/index.js:19
+msgctxt "block keywords"
+msgid "section"
+msgstr "section"
 
 #: dist/blocks/layers/index.js:21
 msgid "Background image / Centered title / Subtitle"
@@ -752,19 +764,19 @@ msgstr ""
 "「auto-repeat」が 「auto-fill」の場合、カラムはこのサイズを維持します。"
 "「auto-fit」の場合、空きスペースを埋めるようにカラムが伸長します。"
 
-#: dist/blocks/section/index.js:1
+#: dist/blocks/section/index.js:3
 msgid "Centered title"
 msgstr "中央揃えのタイトル"
 
-#: dist/blocks/section/index.js:1
+#: dist/blocks/section/index.js:5
 msgid "Centered title / Subtitle"
 msgstr "中央揃えのタイトル / サブタイトル"
 
-#: dist/blocks/section/index.js:1
+#: dist/blocks/section/index.js:7
 msgid "Left title"
 msgstr "左寄せのタイトル"
 
-#: dist/blocks/section/index.js:1
+#: dist/blocks/section/index.js:9
 msgid "Left title / Subtitle"
 msgstr "左寄せのタイトル / サブタイトル"
 
@@ -1351,7 +1363,7 @@ msgstr "セクション"
 #: dist/blocks/section/block.json
 msgctxt "block description"
 msgid "This block represents a generic standalone section of a document."
-msgstr ""
+msgstr "このブロックはドキュメントの一般的な独立したセクションを表します。"
 
 #: dist/blocks/slide/block.json
 msgctxt "block title"

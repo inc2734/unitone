@@ -4,6 +4,7 @@ import icon from '../icon';
 import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
+import transforms from './transforms';
 import variations from './variations';
 
 registerBlockType( 'unitone/layers', {
@@ -13,5 +14,6 @@ registerBlockType( 'unitone/layers', {
 	edit,
 	save,
 	deprecated,
+	transforms,
 	variations,
 } );

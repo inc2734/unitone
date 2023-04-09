@@ -41,11 +41,13 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		);
 
 		if (
-			JSON.stringify( defaultAttributes ) === JSON.stringify( attributes )
+			JSON.stringify( defaultAttributes ) ===
+				JSON.stringify( attributes ) &&
+			! hasInnerBlocks
 		) {
 			setIsShowPlaceholder( true );
 		}
-	}, [ attributes ] );
+	}, [ attributes, hasInnerBlocks ] );
 
 	const blockProps = useBlockProps( { className: 'unitone-section' } );
 

@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 5.1.0\n"
+"Project-Id-Version: unitone 5.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-09T12:52:18+00:00\n"
+"POT-Creation-Date: 2023-04-10T16:00:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -59,6 +59,7 @@ msgstr ""
 #: dist/blocks/frame/index.js:1
 #: dist/blocks/layers/index.js:25
 #: dist/blocks/reel/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/slider/index.js:1
 #: dist/blocks/stack-divided/index.js:1
@@ -609,12 +610,14 @@ msgid "If not specified, a list of child pages of this page will be displayed."
 msgstr ""
 
 #: dist/blocks/child-pages/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 msgid "Column min width"
 msgstr ""
 
 #. translators: %1$s: <code>, %2$s: </code>
 #: dist/blocks/child-pages/index.js:3
+#: dist/blocks/responsive-grid-divided/index.js:3
 #: dist/blocks/responsive-grid/index.js:3
 msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr ""
@@ -633,6 +636,7 @@ msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/decorator/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/stack-divided/index.js:1
 msgid "HTML element"
 msgstr ""
@@ -767,6 +771,9 @@ msgid "Background image / Centered title"
 msgstr ""
 
 #: dist/blocks/layers/index.js:19
+#: dist/blocks/layers/index.js:21
+#: dist/blocks/layers/index.js:23
+#: dist/blocks/layers/index.js:25
 msgctxt "block keywords"
 msgid "section"
 msgstr ""
@@ -817,10 +824,24 @@ msgstr ""
 msgid "No scrollbar"
 msgstr ""
 
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: stripe)"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: underline)"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: bordered)"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:3
 #: dist/blocks/responsive-grid/index.js:3
 msgid "When the column width is less than this value, it is aligned in a single column."
 msgstr ""
 
+#: dist/blocks/responsive-grid-divided/index.js:3
 #: dist/blocks/responsive-grid/index.js:3
 msgid "If \"auto-repeat\" is \"auto-fill\" the column will maintain this size.\" auto-fit\", the column will stretch to fill the available space."
 msgstr ""
@@ -1400,14 +1421,30 @@ msgctxt "block description"
 msgid "This block displays children scrolling horizontally."
 msgstr ""
 
-#: dist/blocks/responsive-grid/block.json
+#: dist/blocks/responsive-grid-divided-content/block.json
 msgctxt "block title"
-msgid "Responsive grid"
+msgid "Responsive grid (Divided) content"
 msgstr ""
 
+#: dist/blocks/responsive-grid-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the responsive grid (Divided) block."
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/block.json
+msgctxt "block title"
+msgid "Responsive grid (Divided)"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/block.json
 #: dist/blocks/responsive-grid/block.json
 msgctxt "block description"
 msgid "This block generates a simple grid."
+msgstr ""
+
+#: dist/blocks/responsive-grid/block.json
+msgctxt "block title"
+msgid "Responsive grid"
 msgstr ""
 
 #: dist/blocks/section/block.json

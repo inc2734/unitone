@@ -1,0 +1,94 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/responsive-grid-divided",
+	"title": "Responsive grid (Divided)",
+	"description": "This block generates a simple grid.",
+	"attributes": {
+		"tagName": {
+			"type": "string"
+		},
+		"columnMinWidth": {
+			"type": "string",
+			"default": ""
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"providesContext": {
+		"unitone/responsive-grid-divided/tagName": "tagName"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"align": [ "full" ],
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"unitone": {
+			"gap": true,
+			"autoRepeat": true,
+			"fluidTypography": true,
+			"lineHeight": true,
+			"dividerType": [ "stripe", "underline", "bordered" ],
+			"divider": true
+		}
+	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "unitone/responsive-grid-divided-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/responsive-grid-divided-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/responsive-grid-divided-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+						}
+					}
+				]
+			}
+		]
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

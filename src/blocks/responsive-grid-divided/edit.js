@@ -9,20 +9,21 @@ import {
 
 import {
 	SelectControl,
+	TextControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
 import { dividersResizeObserver } from '../../../node_modules/@inc2734/unitone-css/src/app';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { tagName } = attributes;
+	const { tagName, columnMinWidth } = attributes;
 
 	const { hasInnerBlocks, childern } = useSelect(
 		( select ) => {
@@ -35,16 +36,19 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps();
+	const blockProps = useBlockProps( {
+		style: {
+			'--unitone--column-min-width': columnMinWidth || undefined,
+		},
+	} );
 	blockProps[ 'data-unitone-layout' ] = classnames(
-		'cluster',
+		'responsive-grid',
 		blockProps[ 'data-unitone-layout' ]
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		orientation: 'horizontal',
 		templateLock: false,
-		allowedBlocks: [ 'unitone/cluster-divided-content' ],
+		allowedBlocks: [ 'unitone/responsive-grid-divided-content' ],
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,
@@ -86,6 +90,59 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							value={ tagName || 'div' }
 							onChange={ ( newAttribute ) =>
 								setAttributes( { tagName: newAttribute } )
+							}
+						/>
+					</ToolsPanelItem>
+					<ToolsPanelItem
+						hasValue={ () =>
+							columnMinWidth !==
+							metadata.attributes.columnMinWidth.default
+						}
+						isShownByDefault
+						label={ __( 'Column min width', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								columnMinWidth:
+									metadata.attributes.columnMinWidth.default,
+							} )
+						}
+					>
+						<TextControl
+							label={
+								<>
+									{ __( 'Column min width', 'unitone' ) }
+									&nbsp;:&nbsp;
+									<span
+										dangerouslySetInnerHTML={ {
+											__html: sprintf(
+												// translators: %1$s: <code>, %2$s: </code>
+												__(
+													'Inside the %1$sgrid-template-columns%2$s formula',
+													'unitone'
+												),
+												'<code>',
+												'</code>'
+											),
+										} }
+									/>
+								</>
+							}
+							help={
+								__(
+									'When the column width is less than this value, it is aligned in a single column.',
+									'unitone'
+								) +
+								' ' +
+								__(
+									'If "auto-repeat" is "auto-fill" the column will maintain this size." auto-fit", the column will stretch to fill the available space.',
+									'unitone'
+								)
+							}
+							value={ columnMinWidth }
+							onChange={ ( newAttribute ) =>
+								setAttributes( {
+									columnMinWidth: newAttribute,
+								} )
 							}
 						/>
 					</ToolsPanelItem>

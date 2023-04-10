@@ -3,6 +3,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import icon from '../icon';
 import edit from './edit';
 import save from './save';
+import transforms from './transforms';
 import variations from './variations';
 
 import './style.scss';
@@ -14,5 +15,6 @@ registerBlockType( 'unitone/section', {
 	},
 	edit,
 	save,
+	transforms,
 	variations,
 } );

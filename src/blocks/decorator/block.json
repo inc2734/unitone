@@ -8,7 +8,8 @@
 	"keywords": [ "Box" ],
 	"attributes": {
 		"tagName": {
-			"type": "string"
+			"type": "string",
+			"default": "div"
 		},
 		"shadow": {
 			"type": "boolean",

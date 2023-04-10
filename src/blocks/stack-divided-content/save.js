@@ -3,7 +3,7 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 export default function ( { attributes } ) {
 	const { tagName } = attributes;
 
-	const TagName = tagName || 'div';
+	const TagName = tagName;
 
 	return (
 		<TagName

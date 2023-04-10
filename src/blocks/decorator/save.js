@@ -8,7 +8,7 @@ export default function ( { attributes } ) {
 
 	const isHrefSet = !! href;
 
-	const TagName = tagName || 'div';
+	const TagName = tagName;
 
 	const blockProps = useBlockProps.save( {
 		'data-unitone-layout': classnames( 'decorator', {

@@ -62,7 +62,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		}
 	}, [ clientId, childern ] );
 
-	const TagName = tagName || 'div';
+	const TagName = tagName;
 
 	return (
 		<>
@@ -87,7 +87,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								{ label: '<ul>', value: 'ul' },
 								{ label: '<ol>', value: 'ol' },
 							] }
-							value={ tagName || 'div' }
+							value={ tagName }
 							onChange={ ( newAttribute ) =>
 								setAttributes( { tagName: newAttribute } )
 							}

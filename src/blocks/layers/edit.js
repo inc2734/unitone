@@ -37,20 +37,18 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
+	const defaultAttributes = {};
+	Object.values( metadata.attributes || [] ).forEach( ( value, index ) => {
+		defaultAttributes[ Object.keys( metadata.attributes )[ index ] ] =
+			value.default;
+	} );
+
 	const [ isShowPlaceholder, setIsShowPlaceholder ] = useState(
-		! hasInnerBlocks
+		! hasInnerBlocks &&
+			JSON.stringify( defaultAttributes ) === JSON.stringify( attributes )
 	);
 
 	useEffect( () => {
-		const defaultAttributes = {};
-		Object.values( metadata.attributes || {} ).forEach(
-			( value, index ) => {
-				defaultAttributes[
-					Object.keys( metadata.attributes )[ index ]
-				] = value.default;
-			}
-		);
-
 		if (
 			JSON.stringify( defaultAttributes ) ===
 				JSON.stringify( attributes ) &&
@@ -58,7 +56,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		) {
 			setIsShowPlaceholder( true );
 		}
-	}, [ attributes, hasInnerBlocks ] );
+	}, [ attributes, defaultAttributes, hasInnerBlocks ] );
 
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = classnames(

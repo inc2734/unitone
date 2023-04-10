@@ -42,7 +42,7 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 
-	const TagName = tagName || 'div';
+	const TagName = tagName;
 
 	return (
 		<TagName { ...blockProps }>

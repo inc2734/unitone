@@ -6,6 +6,10 @@
 	"title": "Section",
 	"description": "This block represents a generic standalone section of a document.",
 	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "section"
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

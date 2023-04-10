@@ -1,8 +1,12 @@
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
-export default function () {
+export default function ( { attributes } ) {
+	const { tagName } = attributes;
+
+	const TagName = tagName;
+
 	return (
-		<section
+		<TagName
 			{ ...useBlockProps.save( {
 				className: 'unitone-section',
 			} ) }
@@ -16,6 +20,6 @@ export default function () {
 					/>
 				</div>
 			</div>
-		</section>
+		</TagName>
 	);
 }

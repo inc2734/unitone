@@ -111,7 +111,7 @@ export default function ( {
 		}
 	}, [ isSelected ] );
 
-	const TagName = tagName || 'div';
+	const TagName = tagName;
 
 	return (
 		<>
@@ -161,7 +161,7 @@ export default function ( {
 								{ label: '<footer>', value: 'footer' },
 								{ label: '<div>', value: 'div' },
 							] }
-							value={ tagName || 'div' }
+							value={ tagName }
 							onChange={ ( newAttribute ) =>
 								setAttributes( { tagName: newAttribute } )
 							}

@@ -22,7 +22,7 @@ export default [
 
 			const isHrefSet = !! href;
 
-			const TagName = tagName || 'div';
+			const TagName = tagName;
 
 			const blockProps = useBlockProps.save( {
 				'data-unitone-layout': classnames( 'decorator', {
@@ -136,7 +136,7 @@ export default [
 
 			const isHrefSet = !! href;
 
-			const TagName = tagName || 'div';
+			const TagName = tagName;
 
 			const blockProps = useBlockProps.save( {
 				style: {
@@ -218,7 +218,7 @@ export default [
 				zIndex,
 			} = attributes;
 
-			const TagName = tagName || 'div';
+			const TagName = tagName;
 
 			return (
 				<TagName

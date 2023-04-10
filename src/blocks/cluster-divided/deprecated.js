@@ -17,7 +17,7 @@ export default [
 		save( { attributes } ) {
 			const { tagName } = attributes;
 
-			const TagName = tagName || 'div';
+			const TagName = tagName;
 
 			let presetColor;
 			if ( !! attributes?.unitone?.dividerColor ) {

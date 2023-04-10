@@ -7,7 +7,8 @@
 	"description": "This block generates a simple grid.",
 	"attributes": {
 		"tagName": {
-			"type": "string"
+			"type": "string",
+			"default": "div"
 		},
 		"columnMinWidth": {
 			"type": "string",

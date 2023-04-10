@@ -47,7 +47,7 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 		}
 	);
 
-	const TagName = tagName || 'div';
+	const TagName = tagName;
 
 	return (
 		<TagName { ...blockProps }>

@@ -8,7 +8,8 @@
 	"parent": [ "unitone/cluster-divided" ],
 	"attributes": {
 		"tagName": {
-			"type": "string"
+			"type": "string",
+			"default": "div"
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

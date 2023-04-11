@@ -10,17 +10,12 @@ $display_child_pages = function( $parent_id, $current_id ) use ( &$display_child
 	if ( empty( $child_query ) || ! $child_query->have_posts() ) {
 		return;
 	}
-
-	$data_unitone_layout = array( 'stack' );
-	if ( ! empty( $attributes['unitone']['gap'] ) ) {
-		$data_unitone_layout[] = '-gap:' . $attributes['unitone']['gap'];
-	}
 	?>
-	<ul data-unitone-layout="<?php echo esc_attr( implode( ' ', $data_unitone_layout ) ); ?>">
+	<ul data-unitone-layout="stack -gap:-2">
 		<?php while ( $child_query->have_posts() ) : ?>
 			<?php $child_query->the_post(); ?>
 			<li>
-				<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $data_unitone_layout ) ); ?>">
+				<div data-unitone-layout="stack -gap:-2">
 					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 					<?php $display_child_pages( get_the_ID(), $current_id ); ?>
 				</div>
@@ -43,13 +38,7 @@ if ( ! empty( $attributes['unitone']['gap'] ) ) {
 	<?php while ( $wp_query->have_posts() ) : ?>
 		<?php $wp_query->the_post(); ?>
 		<li data-unitone-layout="stack__content">
-			<?php
-			$data_unitone_layout = array( 'stack' );
-			if ( ! empty( $attributes['unitone']['gap'] ) ) {
-				$data_unitone_layout[] = '-gap:' . $attributes['unitone']['gap'];
-			}
-			?>
-			<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $data_unitone_layout ) ); ?>">
+			<div data-unitone-layout="stack -gap:-2">
 				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 				<?php $display_child_pages( get_the_ID(), $current_id ); ?>
 			</div>

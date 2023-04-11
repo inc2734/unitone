@@ -1,38 +1,27 @@
 <?php
+/**
+ * @package unitone
+ * @author inc2734
+ * @license GPL-2.0+
+ */
+
+include_once( __DIR__ . '/lib.php' );
+
 $parent_id      = false;
+$current_id     = get_the_ID();
 $show_top_level = ! empty( $attributes['showTopLevel'] ) ? $attributes['showTopLevel'] : false;
 if ( $show_top_level ) {
-	$ancestors = get_post_ancestors( get_the_ID() );
-	array_unshift( $ancestors, get_the_ID() );
+	$ancestors = get_post_ancestors( $current_id );
+	array_unshift( $ancestors, $current_id );
 	$parent_id = end( $ancestors );
 } else {
-	$parent_id = ! empty( $attributes['parent']['id'] ) ? $attributes['parent']['id'] : get_the_ID();
+	$parent_id = ! empty( $attributes['parent']['id'] ) ? $attributes['parent']['id'] : $current_id;
 }
 if ( ! $parent_id ) {
 	return;
 }
 
-$post_type = get_post_type( $parent_id );
-if ( ! $post_type ) {
-	return;
-}
-
-$post_type_object = get_post_type_object( $post_type );
-if ( ! $post_type_object->hierarchical ) {
-	return;
-}
-
-$args = array(
-	'post_parent'    => $parent_id,
-	'post_type'      => $post_type,
-	'posts_per_page' => 100,
-	'post_status'    => 'publish',
-	'orderby'        => 'menu_order',
-	'order'          => 'ASC',
-);
-$args = apply_filters( 'unitone_child_pages_args', $args );
-
-$wp_query = new WP_Query( $args );
+$wp_query = unitone_get_child_pages_query( $parent_id, $current_id );
 if ( empty( $wp_query ) || ! $wp_query->have_posts() ) {
 	return;
 }

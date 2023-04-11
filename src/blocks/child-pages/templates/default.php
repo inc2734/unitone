@@ -1,7 +1,35 @@
+<?php
+/**
+ * @package unitone
+ * @author inc2734
+ * @license GPL-2.0+
+ */
+
+$display_child_pages = function( $parent_id, $current_id ) use ( &$display_child_pages ) {
+	$child_query = unitone_get_child_pages_query( $parent_id, $current_id );
+	if ( empty( $child_query ) || ! $child_query->have_posts() ) {
+		return;
+	}
+	?>
+	<ul>
+		<?php while ( $child_query->have_posts() ) : ?>
+			<?php $child_query->the_post(); ?>
+			<li>
+				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+				<?php $display_child_pages( get_the_ID(), $current_id ); ?>
+			</li>
+		<?php endwhile; ?>
+	</ul>
+	<?php
+};
+?>
+
 <ul>
 	<?php while ( $wp_query->have_posts() ) : ?>
 		<?php $wp_query->the_post(); ?>
-		<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+		<li>
+			<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+			<?php $display_child_pages( get_the_ID(), $current_id ); ?>
+		</li>
 	<?php endwhile; ?>
-	<?php wp_reset_postdata(); ?>
 </ul>

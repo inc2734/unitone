@@ -1,0 +1,10 @@
+@mixin include() {
+	// @see theme.json:settings.layout
+	.is-layout-constrained:not(.entry-content):not(.wp-block-post-content) {
+		--wp--custom--content-max-width: min(100%, var(--unitone--measure));
+		--wp--style--global--content-size: var(--wp--custom--content-max-width);
+
+		--wp--custom--container-max-width: min(100%, var(--unitone--container-max-width));
+		--wp--style--global--wide-size: var(--wp--custom--container-max-width);
+	}
+}

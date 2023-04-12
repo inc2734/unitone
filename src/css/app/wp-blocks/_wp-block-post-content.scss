@@ -4,7 +4,6 @@
 	.entry-content,
 	.wp-block-post-content {
 		@include text.abstract-text();
-		--unitone--max-width: var(--wp--custom--content-max-width);
 
 		> *:where(:not(.alignright):not(.alignleft)) {
 			margin-right: auto;
@@ -20,10 +19,5 @@
 				font-kerning: normal;
 			}
 		}
-	}
-
-	:where(.entry-content > :not(.alignleft):not(.alignright)),
-	:where(.wp-block-post-content > :not(.alignleft):not(.alignright)) {
-		max-width: var(--unitone--max-width);
 	}
 }

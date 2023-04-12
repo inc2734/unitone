@@ -45,6 +45,8 @@
 	}
 
 	[data-type="core/image"] .components-resizable-box__container {
+		max-height: none !important;
+		height: auto !important;
 		max-width: 100% !important;
 		display: block !important;
 	}

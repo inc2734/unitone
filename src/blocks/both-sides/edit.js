@@ -4,15 +4,17 @@ import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import { useSelect } from '@wordpress/data';
-import { store as editorStore } from '@wordpress/editor';
 
 const MAX_CHILDREN_COUNT = 2;
 
 export default function ( { clientId } ) {
-	const { getBlockOrder } = useSelect( ( select ) => select( editorStore ) );
+	const { getBlockOrder } = useSelect( ( select ) =>
+		select( blockEditorStore )
+	);
 
 	const isMax = MAX_CHILDREN_COUNT <= getBlockOrder( clientId ).length;
 

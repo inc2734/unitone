@@ -85,12 +85,7 @@ export const TemplatePartReplaceToolbar = ( props ) => {
 
 	// The `isSelected` check ensures the `BlockSettingsMenuControls` fill
 	// doesn't render multiple times. The block controls has similar internal check.
-	const canReplace =
-		isSelected &&
-		isEntityAvailable &&
-		hasReplacements &&
-		area !== 'header' &&
-		area !== 'footer';
+	const canReplace = isSelected && isEntityAvailable && hasReplacements;
 
 	return (
 		<>

@@ -11,8 +11,8 @@
 	<!-- wp:post-template -->
 		<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
 		<div data-unitone-layout="stack">
-			<!-- wp:unitone/with-sidebar {"sidebar":"left","sidebarWidth":"6em"} -->
-			<div data-unitone-layout="with-sidebar -sidebar:left" style="--unitone--sidebar-width:6em">
+			<!-- wp:unitone/with-sidebar {"sidebar":"left","sidebarWidth":"7em"} -->
+			<div data-unitone-layout="with-sidebar -sidebar:left" style="--unitone--sidebar-width:7em">
 				<!-- wp:unitone/with-sidebar-content -->
 				<div data-unitone-layout="with-sidebar__content">
 					<!-- wp:post-date {"fontSize":"unitone-xs"} /-->

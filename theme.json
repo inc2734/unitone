@@ -50,22 +50,22 @@
 				},
 				{
 					"slug": "unitone/bright-gray",
-					"color": "rgba(4, 27, 42, .025)",
+					"color": "rgba(4, 27, 62, .025)",
 					"name": "Bright gray"
 				},
 				{
 					"slug": "unitone/light-gray",
-					"color": "rgba(4, 27, 42, .07)",
+					"color": "rgba(4, 27, 62, .07)",
 					"name": "Light gray"
 				},
 				{
 					"slug": "unitone/gray",
-					"color": "rgba(4, 27, 42, .19)",
+					"color": "rgba(4, 27, 62, .19)",
 					"name": "gray"
 				},
 				{
 					"slug": "unitone/dark-gray",
-					"color": "rgba(4, 27, 42, .42)",
+					"color": "rgba(4, 27, 62, .42)",
 					"name": "Dark gray"
 				}
 			]

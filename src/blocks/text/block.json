@@ -17,7 +17,7 @@
 		"layout": {
 			"type": "object",
 			"default": {
-				"inherit": true
+				"type": "constrained"
 			}
 		},
 		"templateLock": {

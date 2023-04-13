@@ -452,3 +452,19 @@ add_filter(
 	10,
 	2
 );
+
+/**
+ * Add .is-layout-constrained to unitone/text.
+ */
+add_filter(
+	'render_block_unitone/text',
+	function( $block_content, $block ) {
+		$p = new \WP_HTML_Tag_Processor( $block_content );
+		$p->next_tag();
+		$p->set_attribute( 'class', $p->get_attribute( 'class' ) . ' ' . 'is-layout-constrained' );
+		$block_content = $p->get_updated_html();
+		return $block_content;
+	},
+	10,
+	2
+);

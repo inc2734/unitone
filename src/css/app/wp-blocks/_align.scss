@@ -7,9 +7,7 @@
 	}
 
 	body .is-layout-constrained > .alignright,
-	[data-unitone-layout~="text"] > .alignright,
-	body .is-layout-constrained > .alignleft,
-	[data-unitone-layout~="text"] > .alignleft {
+	body .is-layout-constrained > .alignleft{
 		max-width: min(50%, var(--wp--custom--content-max-width));
 
 		&:first-child + * {
@@ -17,26 +15,18 @@
 		}
 	}
 
-	body .is-layout-constrained > .alignright.alignright,
-	[data-unitone-layout~="text"] > .alignright {
+	body .is-layout-constrained > .alignright.alignright {
 		float: right;
 		margin-top: 0;
 		margin-bottom: var(--unitone--global--gap);
 		margin-left: var(--unitone--global--gutters);
 	}
-	body .is-layout-constrained > .alignright.alignright {
-		margin-right: var(--unitone--global--gutters);
-	}
 
-	body .is-layout-constrained > .alignleft.alignleft,
-	[data-unitone-layout~="text"] > .alignleft {
+	body .is-layout-constrained > .alignleft.alignleft {
 		float: left;
 		margin-top: 0;
 		margin-right: var(--unitone--global--gutters);
 		margin-bottom: var(--unitone--global--gap);
-	}
-	body .is-layout-constrained > .alignleft.alignleft {
-		margin-left: var(--unitone--global--gutters);
 	}
 
 	.wp-block-image.aligncenter {

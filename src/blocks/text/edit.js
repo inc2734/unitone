@@ -5,7 +5,6 @@ import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
-	useSetting,
 } from '@wordpress/block-editor';
 
 import {
@@ -19,27 +18,22 @@ import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
-export default function ( { attributes, setAttributes, clientId } ) {
+export default function ( {
+	attributes,
+	setAttributes,
+	clientId,
+	__unstableLayoutClassNames: layoutClassNames,
+} ) {
 	const { center, column } = attributes;
 
-	const { hasInnerBlocks, themeSupportsLayout } = useSelect(
-		( select ) => {
-			const { getBlock, getSettings } = select( 'core/block-editor' );
-			const block = getBlock( clientId );
-			return {
-				hasInnerBlocks: !! ( block && block.innerBlocks.length ),
-				themeSupportsLayout: getSettings()?.supportsLayout,
-			};
-		},
+	const hasInnerBlocks = useSelect(
+		( select ) =>
+			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
+				?.length,
 		[ clientId ]
 	);
-	const defaultLayout = useSetting( 'layout' ) || {};
-	const { layout = {} } = attributes;
-	const usedLayout = !! layout && layout.inherit ? defaultLayout : layout;
-	const { type = 'default' } = usedLayout;
-	const layoutSupportEnabled = themeSupportsLayout || type !== 'default';
 
-	const blockProps = useBlockProps();
+	const blockProps = useBlockProps( { className: layoutClassNames } );
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'text',
 		blockProps[ 'data-unitone-layout' ],
@@ -54,7 +48,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,
-		__experimentalLayout: layoutSupportEnabled ? usedLayout : undefined,
 	} );
 
 	return (

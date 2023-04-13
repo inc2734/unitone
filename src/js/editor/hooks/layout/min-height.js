@@ -14,8 +14,14 @@ export function resetMinHeight( { attributes = {}, setAttributes } ) {
 	} );
 }
 
-export function useIsMinHeightDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.minHeight' );
+export function useIsMinHeightDisabled( {
+	name: blockName,
+	attributes: { __unstableUnitoneSupports },
+} = {} ) {
+	return (
+		! hasBlockSupport( blockName, 'unitone.minHeight' ) &&
+		! __unstableUnitoneSupports?.minHeight
+	);
 }
 
 export function MinHeightEdit( props ) {
@@ -49,7 +55,17 @@ export function MinHeightEdit( props ) {
 }
 
 export function saveMinHeightProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.minHeight' ) ) {
+	if (
+		! hasBlockSupport( blockType, 'unitone.minHeight' ) &&
+		! attributes?.__unstableUnitoneSupports?.minHeight
+	) {
+		delete attributes?.unitone?.minHeight;
+		if (
+			!! attributes?.unitone &&
+			! Object.keys( attributes?.unitone ).length
+		) {
+			delete attributes?.unitone;
+		}
 		return extraProps;
 	}
 
@@ -76,10 +92,6 @@ export function saveMinHeightProp( extraProps, blockType, attributes ) {
 }
 
 export function editMinHeightProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.minHeight' ) ) {
-		return settings;
-	}
-
 	const existingGetEditWrapperProps = settings.getEditWrapperProps;
 	settings.getEditWrapperProps = ( attributes ) => {
 		let props = {};

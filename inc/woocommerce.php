@@ -21,3 +21,10 @@ add_action(
 		add_theme_support( 'wc-product-gallery-slider' );
 	}
 );
+
+/**
+ * With WooCommerce 7.6, if true is not returned, the Classic template block will not be displayed in the product details.
+ *
+ * @see https://github.com/woocommerce/woocommerce-blocks/pull/8442
+ */
+add_filter( 'woocommerce_disable_compatibility_layer', '__return_true' );

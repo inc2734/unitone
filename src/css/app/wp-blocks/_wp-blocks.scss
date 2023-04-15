@@ -27,7 +27,6 @@
 @use 'wp-block-site-title';
 @use 'wp-block-social-links';
 @use 'wp-block-table';
-@use 'layout';
 
 @mixin include {
 	@include align.include();
@@ -57,7 +56,6 @@
 	@include wp-block-site-title.include();
 	@include wp-block-social-links.include();
 	@include wp-block-table.include();
-	@include layout.include();
 
 	.required {
 		color: var(--wp--preset--color--vivid-red);

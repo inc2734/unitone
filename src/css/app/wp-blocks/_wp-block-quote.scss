@@ -5,6 +5,7 @@
 		@include text.abstract-text();
 		--unitone--max-width: inherit;
 
+		box-sizing: border-box;
 		padding: 0;
 
 		&:where(:not(.is-style-plain)) {

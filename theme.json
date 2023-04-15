@@ -71,8 +71,8 @@
 			]
 		},
 		"custom": {
-			"container-max-width": "min(100% - var(--unitone--global--gutters) * 2, var(--unitone--container-max-width))",
-			"content-max-width": "min(100% - var(--unitone--global--gutters) * 2, var(--unitone--measure))"
+			"container-max-width": "min(100%, var(--unitone--container-max-width))",
+			"content-max-width": "min(100%, var(--unitone--measure))"
 		},
 		"layout": {
 			"contentSize": "var(--wp--custom--content-max-width)",
@@ -740,11 +740,6 @@
 		{
 			"name": "contents-home",
 			"title": "Home: Contents",
-			"area": "unitone/contents/home"
-		},
-		{
-			"name": "contents-home-blank",
-			"title": "Home: Contents (Blank)",
 			"area": "unitone/contents/home"
 		},
 		{

@@ -5,10 +5,8 @@
 	.wp-block-post-content {
 		@include text.abstract-text();
 
-		> *:where(:not(.alignright):not(.alignleft)) {
-			margin-right: auto;
-			margin-left: auto;
-		}
+		padding-right: var(--unitone--global--gutters);
+		padding-left: var(--unitone--global--gutters);
 
 		&:lang(ja) {
 			font-feature-settings: "palt" 0;
@@ -18,6 +16,14 @@
 				font-feature-settings: "palt" 1;
 				font-kerning: normal;
 			}
+		}
+	}
+
+	[data-unitone-layout~="with-sidebar"] {
+		.entry-content,
+		.wp-block-post-content {
+			padding-right: 0;
+			padding-left: 0;
 		}
 	}
 }

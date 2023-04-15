@@ -49,6 +49,7 @@
 		"unitone": {
 			"blockAlign": true,
 			"gap": true,
+			"gutters": true,
 			"maxWidth": true,
 			"fluidTypography": true,
 			"lineHeight": true

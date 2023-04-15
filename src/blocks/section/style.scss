@@ -9,6 +9,9 @@
 	--unitone--section--max-width: var(--unitone--max-width);
 	--unitone--section--padding: var(--unitone--padding);
 
+	margin-right: auto;
+	margin-left: auto;
+
 	> [data-unitone-layout~="gutters"] {
 		--unitone--padding: var(--unitone--section--padding);
 

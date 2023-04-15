@@ -31,8 +31,7 @@
 		margin-top: 0 !important;
 		margin-bottom: var(--unitone--global--gap);
 		border-bottom: 1px solid #e0e0e0;
-		padding-top: var(--unitone--global--text-gap);
-		padding-bottom: var(--unitone--global--text-gap);
+		padding: var(--unitone--global--text-gap) var(--unitone--global--gutters);
 
 		> * {
 			max-width: var(--wp--custom--container-max-width) !important;

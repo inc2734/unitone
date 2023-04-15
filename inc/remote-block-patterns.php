@@ -48,6 +48,8 @@ function unitone_get_remote_block_pattens() {
 			get_template_directory_uri(),
 			$pattern['content'],
 		);
+
+		$patterns[ $key ]['viewportWidth'] = 1440;
 	}
 
 	return $patterns;

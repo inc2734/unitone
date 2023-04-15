@@ -5,8 +5,10 @@
 	.wp-block-post-content {
 		@include text.abstract-text();
 
-		padding-right: var(--unitone--global--gutters);
-		padding-left: var(--unitone--global--gutters);
+		--unitone--gutters: var(--unitone--global--gutters);
+
+		padding-right: var(--unitone--gutters);
+		padding-left: var(--unitone--gutters);
 
 		&:lang(ja) {
 			font-feature-settings: "palt" 0;
@@ -19,11 +21,22 @@
 		}
 	}
 
-	[data-unitone-layout~="with-sidebar"] {
-		.entry-content,
-		.wp-block-post-content {
-			padding-right: 0;
-			padding-left: 0;
-		}
+	// @todo
+	// Fix for the fact that when this element is a flex item, the width becomes a fit-content.
+	:where(.entry-content),
+	:where(.wp-block-post-content),
+	:where([data-unitone-layout~="text"]),
+	:where(.is-root-container) {
+		width: calc(100% - var(--unitone--gutters) * 2);
+	}
+
+	// @todo
+	// When a template with sidebars is used, unnecessary left and right margins are added to the content in the main column.
+	:where([data-unitone-layout~="with-sidebar__content"]) .entry-content,
+	:where([data-unitone-layout~="with-sidebar__content"]) .wp-block-post-content,
+	:where([data-unitone-layout~="with-sidebar__content"]) [data-unitone-layout~="text"] {
+		padding-right: 0;
+		padding-left: 0;
+		width: 100%;
 	}
 }

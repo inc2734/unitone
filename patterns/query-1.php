@@ -35,5 +35,9 @@
 		</div>
 		<!-- /wp:unitone/stack -->
 	<!-- /wp:post-template -->
+
+	<!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex","justifyContent":"center"}} -->
+		<!-- wp:query-pagination-numbers /-->
+	<!-- /wp:query-pagination -->
 </div>
 <!-- /wp:query -->

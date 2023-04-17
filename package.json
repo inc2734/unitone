@@ -4,7 +4,7 @@
 		"npm": ">=6.9.0 <7"
 	},
 	"devDependencies": {
-		"@inc2734/unitone-css": "^0.40.5",
+		"@inc2734/unitone-css": "^0.40.6",
 		"@wordpress/env": "^5.16.0",
 		"@wordpress/icons": "^9.22.0",
 		"@wordpress/scripts": "^26.2.0",
@@ -20,7 +20,7 @@
 		"prettier": "npm:wp-prettier@2.8.5",
 		"rimraf": "^5.0.0",
 		"sass": "^1.62.0",
-		"swiper": "^9.2.2"
+		"swiper": "^9.2.3"
 	},
 	"scripts": {
 		"export:wp-content:plugins": "npm run cli 'cp -r wp-content/plugins .export/wp-content'",

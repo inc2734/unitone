@@ -96,14 +96,6 @@
 	}
 
 	[data-unitone-layout~="text"] {
-		/**
-		 * @todo
-		 * If commented out, child elements can be made full width/full width,
-		 * ignoring the effect of the parent (e.g., .entry-content).
-		 * However, this is not the case for group blocks, so comment them out to match their behavior.
-		 */
-		// max-width: 100% !important;
-
 		> * {
 			--wp--style--global--content-size: var(--unitone--max-width);
 		}

@@ -7,6 +7,8 @@
 
 		--unitone--gutters: var(--unitone--global--gutters);
 
+		margin-right: 0;
+		margin-left: 0;
 		padding-right: var(--unitone--gutters);
 		padding-left: var(--unitone--gutters);
 
@@ -19,15 +21,6 @@
 				font-kerning: normal;
 			}
 		}
-	}
-
-	// @todo
-	// Fix for the fact that when this element is a flex item, the width becomes a fit-content.
-	:where(.entry-content),
-	:where(.wp-block-post-content),
-	:where([data-unitone-layout~="text"]),
-	:where(.is-root-container) {
-		width: calc(100% - var(--unitone--gutters) * 2);
 	}
 
 	// @todo

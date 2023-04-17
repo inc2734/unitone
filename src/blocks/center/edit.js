@@ -53,7 +53,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							intrinsic !== metadata.attributes.intrinsic.default
 						}
 						isShownByDefault
-						label={ __( 'Intrinsic centering', 'unitone' ) }
+						label={ __(
+							'Centering by intrinsic size of children',
+							'unitone'
+						) }
 						onDeselect={ () =>
 							setAttributes( {
 								intrinsic:
@@ -62,7 +65,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
-							label={ __( 'Intrinsic centering', 'unitone' ) }
+							label={ __(
+								'Centering by intrinsic size of children',
+								'unitone'
+							) }
 							checked={ intrinsic }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { intrinsic: newAttribute } );

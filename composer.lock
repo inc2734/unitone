@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a69a2b3bf6723dd6a0c6f557c9bc7c7f",
+    "content-hash": "d045e218facb1e5e73a25f21ed8303dd",
     "packages": [
         {
             "name": "inc2734/wp-breadcrumbs",
@@ -105,28 +105,24 @@
         },
         {
             "name": "inc2734/wp-oembed-blog-card",
-            "version": "11.1.0",
+            "version": "11.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inc2734/wp-oembed-blog-card.git",
-                "reference": "326da8cd21675c4185d4f092fee11730bcbeadbd"
+                "reference": "d033bbc36c71be3d2b47827085d42d10b18f5f75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inc2734/wp-oembed-blog-card/zipball/326da8cd21675c4185d4f092fee11730bcbeadbd",
-                "reference": "326da8cd21675c4185d4f092fee11730bcbeadbd",
+                "url": "https://api.github.com/repos/inc2734/wp-oembed-blog-card/zipball/d033bbc36c71be3d2b47827085d42d10b18f5f75",
+                "reference": "d033bbc36c71be3d2b47827085d42d10b18f5f75",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-                "phpcompatibility/php-compatibility": "^9.3",
-                "sirbrillig/phpcs-variable-analysis": "^2.11",
-                "squizlabs/php_codesniffer": "^3.6",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "wp-coding-standards/wpcs": "^2.3",
-                "wp-phpunit/wp-phpunit": "^5.8",
                 "yoast/phpunit-polyfills": "^1.0"
             },
             "type": "library",
@@ -148,9 +144,9 @@
             "description": "A library for WordPress oEmbed Blog Card.",
             "support": {
                 "issues": "https://github.com/inc2734/wp-oembed-blog-card/issues",
-                "source": "https://github.com/inc2734/wp-oembed-blog-card/tree/11.1.0"
+                "source": "https://github.com/inc2734/wp-oembed-blog-card/tree/11.1.1"
             },
-            "time": "2022-04-21T06:32:41+00:00"
+            "time": "2022-12-14T05:50:13+00:00"
         }
     ],
     "packages-dev": [
@@ -231,16 +227,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.6.2",
+            "version": "3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "5e4e71592f69da17871dba6e80dd51bce74a351a"
+                "reference": "ed8e00df0a83aa96acf703f8c2979ff33341f879"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5e4e71592f69da17871dba6e80dd51bce74a351a",
-                "reference": "5e4e71592f69da17871dba6e80dd51bce74a351a",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ed8e00df0a83aa96acf703f8c2979ff33341f879",
+                "reference": "ed8e00df0a83aa96acf703f8c2979ff33341f879",
                 "shasum": ""
             },
             "require": {
@@ -276,14 +272,15 @@
             "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
             "keywords": [
                 "phpcs",
-                "standards"
+                "standards",
+                "static analysis"
             ],
             "support": {
                 "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2021-12-12T21:44:58+00:00"
+            "time": "2023-02-22T23:07:41+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
@@ -343,7 +340,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6"
+        "php": ">=7.4"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

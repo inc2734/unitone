@@ -133,6 +133,9 @@ export default [
 		title: __( 'Default', 'unitone' ),
 		scope: [ 'block' ],
 		icon: <IconUnitone />,
+		attributes: {
+			dummy: true,
+		},
 	},
 	{
 		name: 'hero-top-left-title',

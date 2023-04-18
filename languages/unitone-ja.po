@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-04-10T16:00:00+00:00\n"
-"PO-Revision-Date: 2023-04-11 01:00+0900\n"
+"POT-Creation-Date: 2023-04-18T00:44:33+00:00\n"
+"PO-Revision-Date: 2023-04-18 09:46+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -54,9 +54,10 @@ msgstr "リモートパターンのキャッシュをクリア"
 #: dist/blocks/decorator/index.js:1 dist/blocks/frame/index.js:1
 #: dist/blocks/layers/index.js:25 dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
-#: dist/blocks/responsive-grid/index.js:1 dist/blocks/slider/index.js:1
-#: dist/blocks/stack-divided/index.js:1 dist/blocks/switcher/index.js:1
-#: dist/blocks/text/index.js:1 dist/blocks/with-sidebar/index.js:1
+#: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:9
+#: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
+#: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
 msgstr "設定"
 
@@ -76,9 +77,9 @@ msgstr "無効"
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
-#: dist/blocks/child-pages/templates/box.php:31
-#: dist/blocks/child-pages/templates/panel.php:31
-#: dist/blocks/child-pages/templates/rich-media.php:40
+#: dist/blocks/child-pages/templates/box.php:37
+#: dist/blocks/child-pages/templates/panel.php:37
+#: dist/blocks/child-pages/templates/rich-media.php:46
 #: dist/blocks/decorator/index.js:1
 msgid "Learn more"
 msgstr "さらに詳しく"
@@ -528,9 +529,9 @@ msgstr "ここに概要を入力"
 msgid "A"
 msgstr "A"
 
-#: dist/blocks/center/index.js:1
-msgid "Intrinsic centering"
-msgstr "内在的な中央揃え"
+#: dist/blocks/center/index.js:1 dist/blocks/text/index.js:1
+msgid "Centering by intrinsic size of children"
+msgstr "子要素の内在的なサイズによって中央揃えする"
 
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
@@ -575,7 +576,7 @@ msgstr "クラスター（区切り：ボーダー）"
 
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/decorator/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
-#: dist/blocks/stack-divided/index.js:1
+#: dist/blocks/section/index.js:9 dist/blocks/stack-divided/index.js:1
 msgid "HTML element"
 msgstr "HTML 要素"
 
@@ -714,6 +715,29 @@ msgstr "背景画像 / 左寄せのタイトル"
 #: dist/blocks/layers/index.js:25
 msgid "Background image / Left title / Subtitle"
 msgstr "背景画像 / 左寄せのタイトル / サブタイトル"
+
+#: dist/blocks/layers/index.js:25
+msgid "Treat the first child block as a background image/video."
+msgstr "最初の子ブロックを背景画像/動画として扱います。"
+
+#: dist/blocks/layers/index.js:25
+msgid ""
+"The background image/video is enlarged according or reduces to the amount of "
+"content."
+msgstr "コンテンツ量に応じて、背景画像/動画を拡大・縮小表示します。"
+
+#: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Cover)"
+msgstr "背景画像/動画を使用（Cover）"
+
+#: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Fill)"
+msgstr "背景画像/動画を使用（Fill）"
+
+#: dist/blocks/layers/index.js:25
+msgid ""
+"The background image/video is enlarged according to the amount of content."
+msgstr "コンテンツ量に応じて、背景画像/動画を拡大表示します。"
 
 #: dist/blocks/layers/index.js:25
 msgid "Enable portrait mode"
@@ -927,10 +951,6 @@ msgid ""
 "When this block is smaller than this width, the contents are arranged in a "
 "single column."
 msgstr "このブロックがこの幅より小さくなったとき、コンテンツは1列に並びます。"
-
-#: dist/blocks/text/index.js:1
-msgid "Centering by intrinsic size of children"
-msgstr "子要素の内在的なサイズによって中央揃えする"
 
 #: dist/blocks/text/index.js:1
 msgid "Multi columns"
@@ -2114,11 +2134,6 @@ msgstr "ホーム：コンテンツ"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Contents (Blank)"
-msgstr "ホーム：コンテンツ（空）"
-
-#: theme.json
-msgctxt "Template part name"
 msgid "Home: Contents (Page header (Image))"
 msgstr "ホーム：コンテンツ（ページヘッダー（画像））"
 
@@ -2498,6 +2513,27 @@ msgstr "Woocommerce 個別商品：ページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product: Page header (Image)"
 msgstr "WooCommerce 個別商品：ページヘッダー（画像）"
+
+#~ msgid ""
+#~ "Background image/video is sized to maintain its aspect ratio while "
+#~ "filling the element's entire content box. If the object's aspect ratio "
+#~ "does not match the aspect ratio of its box, then the object will be "
+#~ "clipped to fit."
+#~ msgstr ""
+#~ "背景画像/動画は、要素のコンテンツボックス全体を満たしながら、そのアスペク"
+#~ "ト比を維持するようにサイズ調整されます。オブジェクトのアスペクト比がその"
+#~ "ボックスのアスペクト比と一致しない場合、オブジェクトはフィットするように切"
+#~ "り取られます。"
+
+#~ msgid "Fill"
+#~ msgstr "Fill"
+
+#~ msgid "Intrinsic centering"
+#~ msgstr "内在的な中央揃え"
+
+#~ msgctxt "Template part name"
+#~ msgid "Home: Contents (Blank)"
+#~ msgstr "ホーム：コンテンツ（空）"
 
 #~ msgid "Content"
 #~ msgstr "コンテンツ"

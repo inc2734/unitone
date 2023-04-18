@@ -28,7 +28,7 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { name, attributes, setAttributes, clientId } ) {
-	const { cover, portrait } = attributes;
+	const { cover, fill, portrait } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -64,6 +64,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		blockProps[ 'data-unitone-layout' ],
 		{
 			'-cover': cover,
+			'-fill': fill,
 			'-portrait': portrait,
 		}
 	);
@@ -104,7 +105,10 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							cover !== metadata.attributes.cover.default
 						}
 						isShownByDefault
-						label={ __( 'Cover', 'unitone' ) }
+						label={ __(
+							'Use background image/video (Cover)',
+							'unitone'
+						) }
 						onDeselect={ () =>
 							setAttributes( {
 								cover: metadata.attributes.cover.default,
@@ -112,10 +116,66 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
-							label={ __( 'Cover', 'unitone' ) }
+							label={ __(
+								'Use background image/video (Cover)',
+								'unitone'
+							) }
+							help={
+								__(
+									'Treat the first child block as a background image/video.',
+									'unitone'
+								) +
+								__(
+									'The background image/video is enlarged according or reduces to the amount of content.',
+									'unitone'
+								)
+							}
 							checked={ cover }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { cover: newAttribute } );
+								setAttributes( {
+									cover: newAttribute,
+									fill: fill && ! newAttribute,
+								} );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							fill !== metadata.attributes.fill.default
+						}
+						isShownByDefault
+						label={ __(
+							'Use background image/video (Fill)',
+							'unitone'
+						) }
+						onDeselect={ () =>
+							setAttributes( {
+								fill: metadata.attributes.fill.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __(
+								'Use background image/video (Fill)',
+								'unitone'
+							) }
+							help={
+								__(
+									'Treat the first child block as a background image/video.',
+									'unitone'
+								) +
+								__(
+									'The background image/video is enlarged according to the amount of content.',
+									'unitone'
+								)
+							}
+							checked={ fill }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									fill: newAttribute,
+									cover: cover && ! newAttribute,
+								} );
 							} }
 						/>
 					</ToolsPanelItem>

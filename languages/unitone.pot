@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 5.1.1\n"
+"Project-Id-Version: unitone 6.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-10T16:00:00+00:00\n"
+"POT-Creation-Date: 2023-04-18T00:44:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -61,6 +61,7 @@ msgstr ""
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
+#: dist/blocks/section/index.js:9
 #: dist/blocks/slider/index.js:1
 #: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1
@@ -85,9 +86,9 @@ msgstr ""
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr ""
 
-#: dist/blocks/child-pages/templates/box.php:31
-#: dist/blocks/child-pages/templates/panel.php:31
-#: dist/blocks/child-pages/templates/rich-media.php:40
+#: dist/blocks/child-pages/templates/box.php:37
+#: dist/blocks/child-pages/templates/panel.php:37
+#: dist/blocks/child-pages/templates/rich-media.php:46
 #: dist/blocks/decorator/index.js:1
 msgid "Learn more"
 msgstr ""
@@ -590,7 +591,8 @@ msgid "A"
 msgstr ""
 
 #: dist/blocks/center/index.js:1
-msgid "Intrinsic centering"
+#: dist/blocks/text/index.js:1
+msgid "Centering by intrinsic size of children"
 msgstr ""
 
 #: dist/blocks/center/index.js:1
@@ -637,6 +639,7 @@ msgstr ""
 #: dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/decorator/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/section/index.js:9
 #: dist/blocks/stack-divided/index.js:1
 msgid "HTML element"
 msgstr ""
@@ -788,6 +791,26 @@ msgstr ""
 
 #: dist/blocks/layers/index.js:25
 msgid "Background image / Left title / Subtitle"
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "Treat the first child block as a background image/video."
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "The background image/video is enlarged according or reduces to the amount of content."
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Cover)"
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Fill)"
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "The background image/video is enlarged according to the amount of content."
 msgstr ""
 
 #: dist/blocks/layers/index.js:25
@@ -992,10 +1015,6 @@ msgstr ""
 
 #: dist/blocks/switcher/index.js:3
 msgid "When this block is smaller than this width, the contents are arranged in a single column."
-msgstr ""
-
-#: dist/blocks/text/index.js:1
-msgid "Centering by intrinsic size of children"
 msgstr ""
 
 #: dist/blocks/text/index.js:1
@@ -2217,11 +2236,6 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "Home: Contents"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Home: Contents (Blank)"
 msgstr ""
 
 #: theme.json

@@ -24,12 +24,12 @@ import { dividersResizeObserver } from '../../../node_modules/@inc2734/unitone-c
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { tagName } = attributes;
 
-	const { hasInnerBlocks, childern } = useSelect(
+	const { hasInnerBlocks, children } = useSelect(
 		( select ) => {
 			const block = select( 'core/block-editor' ).getBlock( clientId );
 			return {
 				hasInnerBlocks: !! block?.innerBlocks?.length,
-				childern: block?.innerBlocks,
+				children: block?.innerBlocks,
 			};
 		},
 		[ clientId ]
@@ -56,7 +56,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			dividersResizeObserver.unobserve( target );
 			dividersResizeObserver.observe( target );
 		}
-	}, [ clientId, childern ] );
+	}, [ clientId, children ] );
 
 	const TagName = tagName;
 

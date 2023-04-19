@@ -35,6 +35,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/stack-divided-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/switcher' );
 	register_block_type( get_template_directory() . '/dist/blocks/text' );
+	register_block_type( get_template_directory() . '/dist/blocks/vertical-writing' );
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar' );
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar-content' );
 
@@ -258,6 +259,16 @@ add_filter(
 			}
 		}
 
+		// --unitone--max-height
+		if ( isset( $block['attrs']['unitone']['maxHeight'] ) ) {
+			$style    = $p->get_attribute( 'style' );
+			$property = '--unitone--max-height:';
+			if ( false === strpos( $style, $property ) ) {
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['maxHeight'] ) );
+			}
+		}
+
 		// --unitone--min-height
 		if ( isset( $block['attrs']['unitone']['minHeight'] ) ) {
 			$style    = $p->get_attribute( 'style' );
@@ -399,6 +410,15 @@ add_filter(
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
 				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['gridRow'] ) );
+			}
+		}
+
+		// -text-orientation
+		if ( isset( $block['attrs']['unitone']['textOrientation'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-text-orientation:' . $block['attrs']['unitone']['textOrientation'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 

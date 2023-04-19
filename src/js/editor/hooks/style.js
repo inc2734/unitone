@@ -24,6 +24,7 @@ import {
 	editJustifyContentColumnProp,
 	editBlockAlignProp,
 	editMaxWidthProp,
+	editMaxHeightProp,
 	editMinHeightProp,
 	editAutoRepeatProp,
 	editFlexBasisProp,
@@ -69,6 +70,7 @@ function addEditProps( settings ) {
 	settings = editJustifyContentColumnProp( settings );
 	settings = editJustifyContentProp( settings );
 	settings = editMaxWidthProp( settings );
+	settings = editMaxHeightProp( settings );
 	settings = editMinHeightProp( settings );
 	settings = editAutoRepeatProp( settings );
 	settings = editFlexBasisProp( settings );

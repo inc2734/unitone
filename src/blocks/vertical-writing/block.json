@@ -1,0 +1,91 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"textdomain": "unitone",
+	"name": "unitone/vertical-writing",
+	"title": "Vertical writing",
+	"description": "This block is used to place vertically written text.",
+	"attributes": {
+		"textOrientation": {
+			"type": "string",
+			"default": ""
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"unitone": {
+			"gap": true,
+			"maxHeight": true,
+			"fluidTypography": true,
+			"lineHeight": true
+		}
+	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "core/heading",
+				"attributes": {
+					"level": 2,
+					"content": "Lorem ipsum dolor sit amet"
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": " Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+				}
+			},
+			{
+				"name": "core/heading",
+				"attributes": {
+					"level": 3,
+					"content": "Lorem ipsum dolor sit amet"
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": " Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+				}
+			}
+		]
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

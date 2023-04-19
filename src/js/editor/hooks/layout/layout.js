@@ -63,6 +63,14 @@ import {
 } from './max-width';
 
 import {
+	useIsMaxHeightDisabled,
+	hasMaxHeightValue,
+	resetMaxHeight,
+	MaxHeightEdit,
+	editMaxHeightProp,
+} from './max-height';
+
+import {
 	useIsMinHeightDisabled,
 	hasMinHeightValue,
 	resetMinHeight,
@@ -85,6 +93,7 @@ export {
 	editBlockAlignProp,
 	editFlexBasisProp,
 	editMaxWidthProp,
+	editMaxHeightProp,
 	editMinHeightProp,
 	editAutoRepeatProp,
 };
@@ -97,6 +106,7 @@ export function LayoutPanel( props ) {
 	const isBlockAlignDisabled = useIsBlockAlignDisabled( props );
 	const isFlexBasisDisabled = useIsFlexBasisDisabled( props );
 	const isMaxWidthDisabled = useIsMaxWidthDisabled( props );
+	const isMaxHeightDisabled = useIsMaxHeightDisabled( props );
 	const isMinHeightDisabled = useIsMinHeightDisabled( props );
 	const isAutoRepeatDisabled = useIsAutoRepeatDisabled( props );
 
@@ -107,6 +117,7 @@ export function LayoutPanel( props ) {
 		isBlockAlignDisabled &&
 		isFlexBasisDisabled &&
 		isMaxWidthDisabled &&
+		isMaxHeightDisabled &&
 		isMinHeightDisabled &&
 		isAutoRepeatDisabled
 	) {
@@ -140,6 +151,7 @@ export function LayoutPanel( props ) {
 				! isBlockAlignDisabled ||
 				! isFlexBasisDisabled ||
 				! isMaxWidthDisabled ||
+				! isMaxHeightDisabled ||
 				! isMinHeightDisabled ||
 				! isAutoRepeatDisabled ) && (
 				<InspectorControls>
@@ -264,6 +276,25 @@ export function LayoutPanel( props ) {
 										<>
 											{ __( 'Max width', 'unitone' ) }
 											&nbsp;:&nbsp;<code>max-width</code>
+										</>
+									}
+								/>
+							</ToolsPanelItem>
+						) }
+
+						{ ! isMaxHeightDisabled && (
+							<ToolsPanelItem
+								hasValue={ () => hasMaxHeightValue( props ) }
+								label={ __( 'Max height', 'unitone' ) }
+								onDeselect={ () => resetMaxHeight( props ) }
+								isShownByDefault
+							>
+								<MaxHeightEdit
+									{ ...props }
+									label={
+										<>
+											{ __( 'Max height', 'unitone' ) }
+											&nbsp;:&nbsp;<code>max-height</code>
 										</>
 									}
 								/>

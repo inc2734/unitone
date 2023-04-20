@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-04-20T02:35:40+00:00\n"
-"PO-Revision-Date: 2023-04-20 11:36+0900\n"
+"POT-Creation-Date: 2023-04-20T13:21:06+00:00\n"
+"PO-Revision-Date: 2023-04-20 22:21+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1113,6 +1113,10 @@ msgstr ""
 #: dist/js/editor/editor.js:3
 msgid "A grid item's size and location within the grid row"
 msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
+
+#: dist/js/editor/editor.js:5
+msgid "Mix blend mode"
+msgstr "ミックスブレンドモード"
 
 #: dist/js/editor/editor.js:5
 msgid "Fluid typography"

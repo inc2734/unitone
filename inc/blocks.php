@@ -422,6 +422,15 @@ add_filter(
 			}
 		}
 
+		// -mix-blend-mode
+		if ( isset( $block['attrs']['unitone']['mixBlendMode'] ) ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			$attribute      = '-mix-blend-mode:' . $block['attrs']['unitone']['mixBlendMode'];
+			if ( false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
 		$block_content = $p->get_updated_html();
 		return $block_content;
 	},

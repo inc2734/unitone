@@ -36,6 +36,7 @@ import {
 	editJustifySelfProp,
 	editGridColumnProp,
 	editGridRowProp,
+	editMixBlendModeProp,
 } from './layer/layer';
 
 import {
@@ -82,6 +83,7 @@ function addEditProps( settings ) {
 	settings = editJustifySelfProp( settings );
 	settings = editGridColumnProp( settings );
 	settings = editGridRowProp( settings );
+	settings = editMixBlendModeProp( settings );
 
 	return settings;
 }
@@ -187,6 +189,7 @@ const withChildBlockAttributes = createHigherOrderComponent(
 								gridRow: true,
 								maxWidth: true,
 								minHeight: true,
+								mixBlendMode: true,
 							},
 						};
 					}

@@ -41,11 +41,20 @@ import {
 	editGridRowProp,
 } from './grid-row';
 
+import {
+	useIsMixBlendModeDisabled,
+	hasMixBlendModeValue,
+	resetMixBlendMode,
+	MixBlendModeEdit,
+	editMixBlendModeProp,
+} from './mix-blend-mode';
+
 export {
 	editAlignSelfProp,
 	editJustifySelfProp,
 	editGridColumnProp,
 	editGridRowProp,
+	editMixBlendModeProp,
 };
 
 export function LayerPanel( props ) {
@@ -53,12 +62,14 @@ export function LayerPanel( props ) {
 	const isJustifySelfDisabled = useIsJustifySelfDisabled( props );
 	const isGridColumnDisabled = useIsGridColumnDisabled( props );
 	const isGridRowDisabled = useIsGridRowDisabled( props );
+	const isMixBlendModeDisabled = useIsMixBlendModeDisabled( props );
 
 	if (
 		isAlignSelfDisabled &&
 		isJustifySelfDisabled &&
 		isGridColumnDisabled &&
-		isGridRowDisabled
+		isGridRowDisabled &&
+		isMixBlendModeDisabled
 	) {
 		return null;
 	}
@@ -163,10 +174,16 @@ export function LayerPanel( props ) {
 					>
 						<GridRowEdit
 							{ ...props }
-							label={ __(
-								"A grid item's size and location within the grid row",
-								'unitone'
-							) }
+							label={
+								<>
+									{ __(
+										"A grid item's size and location within the grid row",
+										'unitone'
+									) }
+									&nbsp;:&nbsp;
+									<code>grid-row</code>
+								</>
+							}
 							help={
 								<span
 									dangerouslySetInnerHTML={ {
@@ -181,6 +198,27 @@ export function LayerPanel( props ) {
 										),
 									} }
 								/>
+							}
+						/>
+					</ToolsPanelItem>
+				) }
+
+				{ ! isMixBlendModeDisabled && (
+					<ToolsPanelItem
+						hasValue={ () => hasMixBlendModeValue( props ) }
+						label={ __( 'Mix blend mode', 'unitone' ) }
+						onDeselect={ () => resetMixBlendMode( props ) }
+						resetAllFilter={ () => resetMixBlendMode( props ) }
+						isShownByDefault
+					>
+						<MixBlendModeEdit
+							{ ...props }
+							label={
+								<>
+									{ __( 'Mix blend mode', 'unitone' ) }
+									&nbsp;:&nbsp;
+									<code>mix-blend-mode</code>
+								</>
 							}
 						/>
 					</ToolsPanelItem>

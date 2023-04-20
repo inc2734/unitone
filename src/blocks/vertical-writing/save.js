@@ -7,14 +7,18 @@ export default function ( { attributes } ) {
 
 	return (
 		<div
-			{ ...useInnerBlocksProps.save(
-				useBlockProps.save( {
+			{ ...useBlockProps.save( {
+				'data-unitone-layout': 'vertical-writing-wrapper',
+			} ) }
+		>
+			<div
+				{ ...useInnerBlocksProps.save( {
 					'data-unitone-layout': classnames( 'vertical-writing', {
-						[ `text-orientation:${ textOrientation }` ]:
+						[ `-text-orientation:${ textOrientation }` ]:
 							!! textOrientation,
 					} ),
-				} )
-			) }
-		/>
+				} ) }
+			/>
+		</div>
 	);
 }

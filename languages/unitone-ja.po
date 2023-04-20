@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-04-18T00:44:33+00:00\n"
-"PO-Revision-Date: 2023-04-18 09:46+0900\n"
+"POT-Creation-Date: 2023-04-20T02:35:40+00:00\n"
+"PO-Revision-Date: 2023-04-20 11:36+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -57,7 +57,7 @@ msgstr "リモートパターンのキャッシュをクリア"
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:9
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
+#: dist/blocks/vertical-writing/index.js:1 dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
 msgstr "設定"
 
@@ -180,7 +180,7 @@ msgstr "ブロックリンク（ボーダー）"
 msgid "Block link (Stripe)"
 msgstr "ブロックリンク（ストライプ）"
 
-#: inc/block-styles.php:93 dist/blocks/layers/index.js:25
+#: inc/block-styles.php:93
 msgid "Cover"
 msgstr "カバー"
 
@@ -717,6 +717,10 @@ msgid "Background image / Left title / Subtitle"
 msgstr "背景画像 / 左寄せのタイトル / サブタイトル"
 
 #: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Cover)"
+msgstr "背景画像/動画を使用（Cover）"
+
+#: dist/blocks/layers/index.js:25
 msgid "Treat the first child block as a background image/video."
 msgstr "最初の子ブロックを背景画像/動画として扱います。"
 
@@ -725,10 +729,6 @@ msgid ""
 "The background image/video is enlarged according or reduces to the amount of "
 "content."
 msgstr "コンテンツ量に応じて、背景画像/動画を拡大・縮小表示します。"
-
-#: dist/blocks/layers/index.js:25
-msgid "Use background image/video (Cover)"
-msgstr "背景画像/動画を使用（Cover）"
 
 #: dist/blocks/layers/index.js:25
 msgid "Use background image/video (Fill)"
@@ -960,6 +960,10 @@ msgstr "マルチカラム"
 msgid "The \"Max width\" setting is used as the width of each column."
 msgstr "「最大幅」の設定値が各カラムの幅として利用されます。"
 
+#: dist/blocks/vertical-writing/index.js:1
+msgid "Text orientation"
+msgstr "テキストの向き"
+
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Main"
@@ -1068,6 +1072,10 @@ msgstr "推奨幅"
 #: dist/js/editor/editor.js:1
 msgid "Max width"
 msgstr "最大幅"
+
+#: dist/js/editor/editor.js:1
+msgid "Max height"
+msgstr "最大の高さ"
 
 #: dist/js/editor/editor.js:1
 msgid "Min height"
@@ -1481,6 +1489,21 @@ msgstr "テキスト"
 msgctxt "block description"
 msgid "This block is designed to display easy-to-read text."
 msgstr "読みやすいテキストを表示するためにデザインされています。"
+
+#: dist/blocks/vertical-writing/block.json
+msgctxt "block title"
+msgid "Vertical writing (Beta)"
+msgstr "縦書き（ベータ版）"
+
+#: dist/blocks/vertical-writing/block.json
+msgctxt "block description"
+msgid ""
+"This block is used to place vertically written text. This block is a beta "
+"version. In the future, disruptive changes may be made or the block may "
+"become obsolete."
+msgstr ""
+"縦書きの文字を配置するためのブロックです。このブロックはベータ版です。将来、"
+"破壊的な変更が加えられたり、廃止されたりする可能性があります。"
 
 #: dist/blocks/with-sidebar-content/block.json
 msgctxt "block description"

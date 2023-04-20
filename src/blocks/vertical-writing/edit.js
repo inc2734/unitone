@@ -20,15 +20,9 @@ import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
-// import { verticalsResizeObserver } from '../../../node_modules/@inc2734/unitone-css/src/app';
-import { verticalsResizeObserver } from '../../js/app/app';
+import { verticalsResizeObserver } from '../../../node_modules/@inc2734/unitone-css/src/app';
 
-export default function ( {
-	attributes,
-	setAttributes,
-	clientId,
-	isSelected,
-} ) {
+export default function ( { attributes, setAttributes, clientId } ) {
 	const { textOrientation } = attributes;
 
 	const { hasInnerBlocks, children } = useSelect(
@@ -43,18 +37,6 @@ export default function ( {
 		[ clientId ]
 	);
 
-	const hasSelectedInnerBlock = useSelect(
-		( select ) => {
-			return select( blockEditorStore ).hasSelectedInnerBlock(
-				clientId,
-				true
-			);
-		},
-		[ isSelected ]
-	);
-
-	console.log( hasSelectedInnerBlock );
-
 	const ref = useRefEffect(
 		( target ) => {
 			verticalsResizeObserver.unobserve( target );
@@ -63,28 +45,34 @@ export default function ( {
 		[ clientId, attributes, children.length ]
 	);
 
-	const blockProps = useBlockProps( { ref } );
+	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = classnames(
-		'vertical-writing',
-		blockProps[ 'data-unitone-layout' ],
-		{
-			[ `text-orientation:${ textOrientation }` ]: !! textOrientation,
-		}
+		'vertical-writing-wrapper',
+		blockProps[ 'data-unitone-layout' ]
 	);
 
-	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: false,
-		// allowedBlocks: [
-		// 	'core/heading',
-		// 	'core/paragraph',
-		// 	'core/buttons',
-		// 	'core/image',
-		// 	'core/video',
-		// ],
-		renderAppender: hasInnerBlocks
-			? InnerBlocks.DefaultBlockAppender
-			: InnerBlocks.ButtonBlockAppender,
-	} );
+	const innerBlocksProps = useInnerBlocksProps(
+		{
+			ref,
+			'data-unitone-layout': classnames( 'vertical-writing', {
+				[ `-text-orientation:${ textOrientation }` ]:
+					!! textOrientation,
+			} ),
+		},
+		{
+			templateLock: false,
+			allowedBlocks: [
+				'core/heading',
+				'core/paragraph',
+				'core/buttons',
+				'core/image',
+				'core/video',
+			],
+			renderAppender: hasInnerBlocks
+				? InnerBlocks.DefaultBlockAppender
+				: InnerBlocks.ButtonBlockAppender,
+		}
+	);
 
 	return (
 		<>
@@ -123,7 +111,9 @@ export default function ( {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<div { ...innerBlocksProps } />
+			<div { ...blockProps }>
+				<div { ...innerBlocksProps } />
+			</div>
 		</>
 	);
 }

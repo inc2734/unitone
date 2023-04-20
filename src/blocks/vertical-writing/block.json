@@ -3,8 +3,8 @@
 	"apiVersion": 2,
 	"textdomain": "unitone",
 	"name": "unitone/vertical-writing",
-	"title": "Vertical writing",
-	"description": "This block is used to place vertically written text.",
+	"title": "Vertical writing (Beta)",
+	"description": "This block is used to place vertically written text. This block is a beta version. In the future, disruptive changes may be made or the block may become obsolete.",
 	"attributes": {
 		"textOrientation": {
 			"type": "string",

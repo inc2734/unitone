@@ -116,3 +116,8 @@
 		overflow: auto;
 	}
 }
+
+// In writing-mode: vertical-xxx, inline inserter button position fix.
+.block-editor-block-list__empty-block-inserter:not(:root) {
+	inset: auto 0 0 auto;
+}

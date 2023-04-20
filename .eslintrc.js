@@ -5,7 +5,7 @@ module.exports = {
 	globals: {
 		...defaultConfig.globals,
 		unitone: true,
-		Swiper: true,
+		Swiper: true
 	},
 	rules: {
 		...defaultConfig.rules,

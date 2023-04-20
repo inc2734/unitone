@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 6.0.3\n"
+"Project-Id-Version: unitone 6.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-18T00:44:33+00:00\n"
+"POT-Creation-Date: 2023-04-20T02:35:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -66,6 +66,7 @@ msgstr ""
 #: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1
+#: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
 msgstr ""
@@ -195,7 +196,6 @@ msgid "Block link (Stripe)"
 msgstr ""
 
 #: inc/block-styles.php:93
-#: dist/blocks/layers/index.js:25
 msgid "Cover"
 msgstr ""
 
@@ -794,15 +794,15 @@ msgid "Background image / Left title / Subtitle"
 msgstr ""
 
 #: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Cover)"
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
 msgid "Treat the first child block as a background image/video."
 msgstr ""
 
 #: dist/blocks/layers/index.js:25
 msgid "The background image/video is enlarged according or reduces to the amount of content."
-msgstr ""
-
-#: dist/blocks/layers/index.js:25
-msgid "Use background image/video (Cover)"
 msgstr ""
 
 #: dist/blocks/layers/index.js:25
@@ -1025,6 +1025,10 @@ msgstr ""
 msgid "The \"Max width\" setting is used as the width of each column."
 msgstr ""
 
+#: dist/blocks/vertical-writing/index.js:1
+msgid "Text orientation"
+msgstr ""
+
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Main"
@@ -1132,6 +1136,10 @@ msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Max width"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Max height"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -1530,6 +1538,16 @@ msgstr ""
 #: dist/blocks/text/block.json
 msgctxt "block description"
 msgid "This block is designed to display easy-to-read text."
+msgstr ""
+
+#: dist/blocks/vertical-writing/block.json
+msgctxt "block title"
+msgid "Vertical writing (Beta)"
+msgstr ""
+
+#: dist/blocks/vertical-writing/block.json
+msgctxt "block description"
+msgid "This block is used to place vertically written text. This block is a beta version. In the future, disruptive changes may be made or the block may become obsolete."
 msgstr ""
 
 #: dist/blocks/with-sidebar-content/block.json

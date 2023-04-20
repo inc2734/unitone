@@ -173,4 +173,19 @@
 			position: static;
 		}
 	}
+
+	[data-unitone-layout~="vertical-writing"] {
+		&.block-editor-block-list__layout {
+			position: static !important;
+		}
+
+		.block-list-appender {
+			writing-mode: horizontal-tb;
+		}
+
+		> .block-list-appender {
+			inset: auto auto 24px 24px;
+			height: 0;
+		}
+	}
 }

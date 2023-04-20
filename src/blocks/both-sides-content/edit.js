@@ -6,8 +6,8 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
+import { useRefEffect } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
 
 import { dividersResizeObserver } from '../../../node_modules/@inc2734/unitone-css/src/app';
 
@@ -25,7 +25,16 @@ export default function ( { attributes, clientId } ) {
 		[ clientId ]
 	);
 
+	const ref = useRefEffect(
+		( target ) => {
+			dividersResizeObserver.unobserve( target );
+			dividersResizeObserver.observe( target );
+		},
+		[ clientId, attributes, children.length ]
+	);
+
 	const blockProps = useBlockProps( {
+		ref,
 		style: {
 			'--unitone--content-width': contentWidth || undefined,
 			'--unitone--content-max-width': contentMaxWidth || undefined,
@@ -42,14 +51,6 @@ export default function ( { attributes, clientId } ) {
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,
 	} );
-
-	useEffect( () => {
-		const target = document.querySelector( `[data-block="${ clientId }"` );
-		if ( !! target ) {
-			dividersResizeObserver.unobserve( target );
-			dividersResizeObserver.observe( target );
-		}
-	}, [ clientId, children ] );
 
 	return <div { ...innerBlocksProps } />;
 }

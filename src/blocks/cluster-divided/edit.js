@@ -13,8 +13,8 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import { useRefEffect } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
@@ -35,7 +35,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps();
+	const ref = useRefEffect(
+		( target ) => {
+			dividersResizeObserver.unobserve( target );
+			dividersResizeObserver.observe( target );
+		},
+		[ clientId, attributes, children.length ]
+	);
+
+	const blockProps = useBlockProps( { ref } );
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'cluster',
 		blockProps[ 'data-unitone-layout' ]
@@ -49,14 +57,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,
 	} );
-
-	useEffect( () => {
-		const target = document.querySelector( `[data-block="${ clientId }"` );
-		if ( !! target ) {
-			dividersResizeObserver.unobserve( target );
-			dividersResizeObserver.observe( target );
-		}
-	}, [ clientId, children ] );
 
 	const TagName = tagName;
 

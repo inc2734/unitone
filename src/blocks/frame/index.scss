@@ -1,0 +1,16 @@
+[data-unitone-layout~="frame"] {
+	> * {
+		.components-resizable-box__container,
+		.components-disabled {
+			display: contents !important;
+
+			> div {
+				display: none; // Remove resizer
+			}
+		}
+
+		figcaption {
+			display: none;
+		}
+	}
+}

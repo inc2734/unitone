@@ -1,0 +1,18 @@
+[data-unitone-layout~="vertical-writing"] {
+	&.block-editor-block-list__layout {
+		position: static !important;
+	}
+
+	.block-list-appender {
+		writing-mode: horizontal-tb;
+	}
+
+	> .block-list-appender {
+		height: auto;
+		max-height: none;
+	}
+
+	> .block-list-appender:not(:first-child) {
+		inset: auto auto 0 24px;
+	}
+}

@@ -6,6 +6,8 @@ import save from './save';
 import transforms from './transforms';
 import variations from './variations';
 
+import './index.scss';
+
 registerBlockType( 'unitone/responsive-grid-divided', {
 	icon: {
 		src: icon,

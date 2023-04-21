@@ -32,6 +32,17 @@
 	}
 }
 
+.edit-post-visual-editor__post-title-wrapper {
+	margin-top: 0 !important;
+	margin-bottom: var(--unitone--global--gap);
+	border-bottom: 1px solid #e0e0e0;
+	padding: var(--unitone--global--text-gap) var(--unitone--global--gutters);
+
+	> * {
+		max-width: var(--wp--custom--container-max-width) !important;
+	}
+}
+
 .block-editor-block-inspector {
 	> div:not([class]) {
 		display: flex;
@@ -120,4 +131,8 @@
 // In writing-mode: vertical-xxx, inline inserter button position fix.
 .block-editor-block-list__empty-block-inserter:not(:root) {
 	inset: auto 0 0 auto;
+}
+
+.block-editor-block-variation-picker.has-many-variations .components-placeholder__fieldset {
+	max-width: 100%;
 }

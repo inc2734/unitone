@@ -53,5 +53,6 @@
 		}
 	},
 	"category": "unitone/layout",
-	"editorScript": "file:./index.js"
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
 }

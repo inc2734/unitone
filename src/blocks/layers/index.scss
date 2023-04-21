@@ -1,0 +1,26 @@
+[data-unitone-layout~="layers"] {
+	&[data-unitone-layout~="-cover"],
+	&[data-unitone-layout~="-fill"] {
+		> :first-child > [data-type="core/image"],
+		> [data-type="core/image"]:first-child {
+			.components-resizable-box__container {
+				display: contents !important;
+			}
+
+			.components-resizable-box__container,
+			.components-disabled {
+				> div {
+					display: none; // Remove resizer
+				}
+			}
+
+			figcaption {
+				display: none;
+			}
+		}
+	}
+
+	> .block-list-appender {
+		grid-row: auto;
+	}
+}

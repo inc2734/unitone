@@ -1,0 +1,10 @@
+:where([data-unitone-layout~="stack"] > *) {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+[data-unitone-layout~="stack"] {
+	> .block-list-appender:first-child {
+		width: 100%;
+	}
+}

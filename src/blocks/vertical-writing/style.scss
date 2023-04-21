@@ -1,3 +1,6 @@
 [data-unitone-layout~="vertical-writing-wrapper"] {
 	--unitone--vertical-writing--max-height: var(--unitone--max-height, calc(9 * var(--unitone--measure) / 16));
+  --unitone--max-width: min(100%, var(--unitone--container-max-width));
+
+  max-width: var(--unitone--max-width);
 }

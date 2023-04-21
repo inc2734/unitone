@@ -37,8 +37,10 @@
 			}
 		},
 		"unitone": {
+			"blockAlign": true,
 			"gap": true,
 			"maxHeight": true,
+			"maxWidth": true,
 			"fluidTypography": true,
 			"lineHeight": true
 		}

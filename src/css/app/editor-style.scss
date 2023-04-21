@@ -184,8 +184,12 @@
 		}
 
 		> .block-list-appender {
-			inset: auto auto 24px 24px;
-			height: 0;
+			height: auto;
+			max-height: none;
+		}
+
+		> .block-list-appender:not(:first-child) {
+			inset: auto auto 0 24px;
 		}
 	}
 }

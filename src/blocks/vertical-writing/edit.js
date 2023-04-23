@@ -25,14 +25,10 @@ import { verticalsResizeObserve } from '../../../node_modules/@inc2734/unitone-c
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { textOrientation } = attributes;
 
-	const { hasInnerBlocks, children } = useSelect(
+	const hasInnerBlocks = useSelect(
 		( select ) => {
 			const block = select( blockEditorStore ).getBlock( clientId );
-
-			return {
-				hasInnerBlocks: !! block?.innerBlocks?.length,
-				children: block?.innerBlocks,
-			};
+			return !! block?.innerBlocks?.length;
 		},
 		[ clientId ]
 	);

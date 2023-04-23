@@ -37,12 +37,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const ref = useRefEffect(
-		( target ) => {
-			verticalsResizeObserve( target );
-		},
-		[ clientId, attributes, children.length ]
-	);
+	const ref = useRefEffect( ( target ) => {
+		verticalsResizeObserve( target );
+	}, [] );
 
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = classnames(

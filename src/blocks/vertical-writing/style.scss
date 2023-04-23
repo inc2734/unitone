@@ -13,17 +13,20 @@
 		margin-right: auto !important;
 		margin-left: 0 !important;
 		width: fit-content;
+		max-width: 100%;
 	}
 
 	&[data-unitone-layout~="-align\:center"] > * {
 		margin-right: auto !important;
 		margin-left: auto !important;
 		width: fit-content;
+		max-width: 100%;
 	}
 
 	&[data-unitone-layout~="-align\:end"] > * {
 		margin-right: 0 !important;
 		margin-left: auto !important;
 		width: fit-content;
+		max-width: 100%;
 	}
 }

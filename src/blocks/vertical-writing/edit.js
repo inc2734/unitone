@@ -20,7 +20,7 @@ import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
-import { verticalsResizeObserver } from '../../../node_modules/@inc2734/unitone-css/src/app';
+import { verticalsResizeObserve } from '../../../node_modules/@inc2734/unitone-css/src/app';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { textOrientation } = attributes;
@@ -39,8 +39,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const ref = useRefEffect(
 		( target ) => {
-			verticalsResizeObserver.unobserve( target );
-			verticalsResizeObserver.observe( target );
+			verticalsResizeObserve( target );
 		},
 		[ clientId, attributes, children.length ]
 	);

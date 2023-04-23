@@ -2,5 +2,28 @@
 	--unitone--vertical-writing--max-height: var(--unitone--max-height, calc(9 * var(--unitone--measure) / 16));
   --unitone--max-width: min(100%, var(--unitone--container-max-width));
 
-  max-width: var(--unitone--max-width);
+	margin-right: auto;
+	margin-left: auto;
+	display: flex;
+	flex-direction: column;
+	max-width: none;
+  width: var(--unitone--max-width);
+
+	&[data-unitone-layout~="-align\:start"] > * {
+		margin-right: auto !important;
+		margin-left: 0 !important;
+		width: fit-content;
+	}
+
+	&[data-unitone-layout~="-align\:center"] > * {
+		margin-right: auto !important;
+		margin-left: auto !important;
+		width: fit-content;
+	}
+
+	&[data-unitone-layout~="-align\:end"] > * {
+		margin-right: 0 !important;
+		margin-left: auto !important;
+		width: fit-content;
+	}
 }

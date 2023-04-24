@@ -3,10 +3,6 @@
 		position: static !important;
 	}
 
-	.block-list-appender {
-		writing-mode: horizontal-tb;
-	}
-
 	> .block-list-appender {
 		height: auto;
 		max-height: none;
@@ -14,5 +10,11 @@
 
 	> .block-list-appender:not(:first-child) {
 		inset: auto auto 0 24px;
+		height: auto;
+	}
+
+	.block-editor-button-block-appender {
+		width: auto;
+		block-size: 100%;
 	}
 }

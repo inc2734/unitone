@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "POT-Creation-Date: 2023-04-25T01:34:57+00:00\n"
-"PO-Revision-Date: 2023-04-25 10:35+0900\n"
+"PO-Revision-Date: 2023-04-25 10:58+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -646,7 +646,7 @@ msgstr "推奨アスペクト比"
 
 #: dist/blocks/frame/index.js:1
 msgid "Switch aspect ratio when portrait"
-msgstr "ポートフォリオのとき比率を切り替える"
+msgstr "ポートレートのとき比率を切り替える"
 
 #: dist/blocks/layers/index.js:1
 msgid "Background image"
@@ -966,7 +966,7 @@ msgstr "テキストの向き"
 
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Switch writing mode when portrait"
-msgstr "ポートフォリオのときライティングモードを切り替える"
+msgstr "ポートレートのときライティングモードを切り替える"
 
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar/index.js:1

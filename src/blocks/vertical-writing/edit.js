@@ -10,6 +10,7 @@ import {
 
 import {
 	SelectControl,
+	ToggleControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
@@ -23,7 +24,7 @@ import metadata from './block.json';
 import { verticalsResizeObserve } from '../../../node_modules/@inc2734/unitone-css/src/app';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { textOrientation } = attributes;
+	const { textOrientation, switchWritingMode } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) => {
@@ -49,6 +50,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			'data-unitone-layout': classnames( 'vertical-writing', {
 				[ `-text-orientation:${ textOrientation }` ]:
 					!! textOrientation,
+				'-switch': switchWritingMode,
 			} ),
 		},
 		{
@@ -98,6 +100,38 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							onChange={ ( newAttribute ) =>
 								setAttributes( {
 									textOrientation: newAttribute,
+								} )
+							}
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							switchWritingMode !==
+							metadata.attributes.switchWritingMode.default
+						}
+						isShownByDefault
+						label={ __(
+							'Switch writing mode when portrait',
+							'unitone'
+						) }
+						onDeselect={ () =>
+							setAttributes( {
+								switchWritingMode:
+									metadata.attributes.switchWritingMode
+										.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __(
+								'Switch writing mode when portrait',
+								'unitone'
+							) }
+							checked={ switchWritingMode }
+							onChange={ ( newAttribute ) =>
+								setAttributes( {
+									switchWritingMode: newAttribute,
 								} )
 							}
 						/>

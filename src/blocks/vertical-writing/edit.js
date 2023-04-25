@@ -61,7 +61,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				'core/buttons',
 				'core/image',
 				'core/video',
-				'unitone/decorator',
 				'unitone/stack',
 			],
 			renderAppender: hasInnerBlocks

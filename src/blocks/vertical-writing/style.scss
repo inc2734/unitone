@@ -6,8 +6,8 @@
 	margin-left: auto;
 	display: flex;
 	flex-direction: column;
-	max-width: none;
   width: var(--unitone--max-width);
+	max-width: 100%;
 
 	&[data-unitone-layout~="-align\:start"] > * {
 		margin-right: auto !important;

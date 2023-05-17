@@ -111,20 +111,56 @@ class Manager {
 			self::MENU_SLUG,
 			self::SETTINGS_NAME,
 			function( $option ) {
+				if ( isset( $option['license-key'] ) ) {
+					if ( empty( $option['license-key'] ) ) {
+						delete_transient( 'unitone-license-status' );
+						delete_transient( 'unitone-remote-patterns' );
+					} elseif ( static::get_option( 'license-key' ) !== $option['license-key'] ) {
+						global $wp_version;
+
+						$response = wp_remote_get(
+							sprintf(
+								'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/validate/%1$s?repository=unitone',
+								esc_attr( $option['license-key'] )
+							),
+							array(
+								'user-agent' => 'WordPress/' . $wp_version,
+								'timeout'    => 30,
+								'headers'    => array(
+									'Accept-Encoding' => '',
+								),
+							)
+						);
+
+						$status = false;
+						if ( $response && ! is_wp_error( $response ) ) {
+							$response_code = wp_remote_retrieve_response_code( $response );
+							if ( 200 === $response_code ) {
+								$status = wp_remote_retrieve_body( $response );
+							}
+						}
+
+						if ( $status ) {
+							set_transient( 'unitone-license-status', $status, 60 * 10 );
+						} else {
+							delete_transient( 'unitone-license-status' );
+						}
+
+						delete_transient( 'unitone-remote-patterns' );
+					}
+
+					return $option;
+				}
+
 				if ( isset( $option['clear-remote-patterns-cache'] ) && '1' === $option['clear-remote-patterns-cache'] ) {
-					$transient_name = 'unitone-remote-patterns';
-					$transient      = delete_transient( $transient_name );
+					$transient = delete_transient( 'unitone-remote-patterns' );
 					return get_option( self::SETTINGS_NAME );
 				}
 
 				if ( isset( $option['reset'] ) && '1' === $option['reset'] ) {
-					$transient_name = 'unitone-remote-patterns';
-					$transient      = delete_transient( $transient_name );
+					delete_transient( 'unitone-remote-patterns' );
 					return array();
 				}
-
-				$transient_name = 'unitone-license-status';
-				$transient      = delete_transient( $transient_name );
 
 				return $option;
 			}
@@ -141,50 +177,11 @@ class Manager {
 		add_settings_field(
 			'license-key',
 			'<label for="license-key">' . esc_html__( 'License key', 'unitone' ) . '</label>',
-			function() {
-				global $wp_version;
-
-				$status = null;
-
+			function( $args ) {
 				$transient_name = 'unitone-license-status';
 				$transient      = get_transient( $transient_name );
-				if ( false !== $transient ) {
-					$status = $transient;
-				} else {
-					$license_key = static::get_option( 'license-key' );
-					$response    = wp_remote_get(
-						sprintf(
-							'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/validate/%1$s?repository=unitone',
-							esc_attr( $license_key )
-						),
-						array(
-							'user-agent' => 'WordPress/' . $wp_version,
-							'timeout'    => 30,
-							'headers'    => array(
-								'Accept-Encoding' => '',
-							),
-						)
-					);
 
-					if ( ! $response || is_wp_error( $response ) ) {
-						$status = 'error';
-					}
-
-					if ( ! $status ) {
-						$response_code = wp_remote_retrieve_response_code( $response );
-						if ( 200 !== $response_code ) {
-							$status = 'error';
-						}
-					}
-
-					if ( ! $status ) {
-						$status = wp_remote_retrieve_body( $response );
-					}
-
-					set_transient( $transient_name, $status, 60 * 10 );
-				}
-
-				$button = 'true' === $status
+				$button = 'true' === $transient
 					? array(
 						'label'   => __( 'Enable', 'unitone' ),
 						'color'   => '#fff',

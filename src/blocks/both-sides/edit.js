@@ -6,7 +6,16 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-export default function () {
+import { useSelect } from '@wordpress/data';
+
+export default function ( { clientId } ) {
+	const hasInnerBlocks = useSelect(
+		( select ) =>
+			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
+				?.length,
+		[ clientId ]
+	);
+
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'both-sides',
@@ -16,7 +25,9 @@ export default function () {
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		orientation: 'horizontal',
 		templateLock: false,
-		renderAppender: InnerBlocks.ButtonBlockAppender,
+		renderAppender: hasInnerBlocks
+			? InnerBlocks.DefaultBlockAppender
+			: InnerBlocks.ButtonBlockAppender,
 	} );
 
 	return <div { ...innerBlocksProps } />;

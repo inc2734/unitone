@@ -24,7 +24,7 @@
 				<!-- wp:unitone/cluster {"fontSize":"unitone-xs","unitone":{"gap":"-1","alignItems":"center"}} -->
 				<div data-unitone-layout="cluster" class="has-unitone-xs-font-size">
 					<!-- wp:post-date /-->
-					<!-- wp:post-terms {"term":"category","style":{"elements":{"link":{"color":{"text":"var:preset|color|unitone/text-alt"}}}},"className":"is-style-badge"} /-->
+					<!-- wp:post-terms {"term":"category","style":{"elements":{"link":{"color":{"text":"var:preset|color|unitone-text-alt"}}}},"className":"is-style-badge"} /-->
 				</div>
 				<!-- /wp:unitone/cluster -->
 			</div>

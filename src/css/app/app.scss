@@ -11,3 +11,21 @@
 @include blocks.include();
 @include main.include();
 @include block-styles.include();
+
+// Deprecated
+body {
+	--wp--preset--color--unitone\/accent: var(--wp--preset--color--unitone-accent);
+	--wp--preset--color--unitone\/background: var(--wp--preset--color--unitone-background);
+	--wp--preset--color--unitone\/background-alt: var(--wp--preset--color--unitone-background-alt);
+	--wp--preset--color--unitone\/text: var(--wp--preset--color--unitone-text);
+	--wp--preset--color--unitone\/text-alt: var(--wp--preset--color--unitone-text-alt);
+	--wp--preset--color--unitone\/text-black: var(--wp--preset--color--unitone-text-black);
+	--wp--preset--color--unitone\/bright-gray: var(--wp--preset--color--unitone-bright-gray);
+	--wp--preset--color--unitone\/light-gray: var(--wp--preset--color--unitone-light-gray);
+	--wp--preset--color--unitone\/gray: var(--wp--preset--color--unitone-gray);
+	--wp--preset--color--unitone\/dark-gray: var(--wp--preset--color--unitone-dark-gray);
+}
+
+[style*="background-color: var(--wp--preset--color--unitone/text)"] {
+	background-color: var(--wp--preset--color--unitone-text)
+}

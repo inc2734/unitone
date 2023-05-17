@@ -148,7 +148,7 @@ export default [
 		icon: <IconHeroTopLeftTitle />,
 		attributes: {
 			align: 'wide',
-			textColor: 'unitone/text',
+			textColor: 'unitone-text',
 		},
 		innerBlocks: [
 			{
@@ -206,7 +206,7 @@ export default [
 		icon: <IconHeroTopRightTitle />,
 		attributes: {
 			align: 'wide',
-			textColor: 'unitone/text',
+			textColor: 'unitone-text',
 		},
 		innerBlocks: [
 			{
@@ -265,7 +265,7 @@ export default [
 		icon: <IconHeroBottomLeftTitle />,
 		attributes: {
 			align: 'wide',
-			textColor: 'unitone/text',
+			textColor: 'unitone-text',
 		},
 		innerBlocks: [
 			{
@@ -323,7 +323,7 @@ export default [
 		icon: <IconHeroBottomRightTitle />,
 		attributes: {
 			align: 'wide',
-			textColor: 'unitone/text',
+			textColor: 'unitone-text',
 		},
 		innerBlocks: [
 			{
@@ -383,7 +383,7 @@ export default [
 		attributes: {
 			align: 'full',
 			cover: true,
-			textColor: 'unitone/text',
+			textColor: 'unitone-text',
 			unitone: {
 				minHeight: '85vh',
 			},
@@ -439,7 +439,7 @@ export default [
 		attributes: {
 			align: 'full',
 			cover: true,
-			textColor: 'unitone/text',
+			textColor: 'unitone-text',
 			unitone: {
 				minHeight: '85vh',
 			},
@@ -495,7 +495,7 @@ export default [
 		attributes: {
 			align: 'full',
 			cover: true,
-			textColor: 'unitone/text',
+			textColor: 'unitone-text',
 			unitone: {
 				minHeight:
 					'calc(100vh - var(--wp-admin--admin-bar--height, 0px))',
@@ -561,7 +561,7 @@ export default [
 		attributes: {
 			align: 'full',
 			cover: true,
-			textColor: 'unitone/text',
+			textColor: 'unitone-text',
 			unitone: {
 				minHeight:
 					'calc(100vh - var(--wp-admin--admin-bar--height, 0px))',

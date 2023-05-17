@@ -13,52 +13,52 @@
 			],
 			"palette": [
 				{
-					"slug": "unitone/accent",
+					"slug": "unitone-accent",
 					"color": "#f2935c",
 					"name": "Accent"
 				},
 				{
-					"slug": "unitone/background",
+					"slug": "unitone-background",
 					"color": "#101740",
 					"name": "Background"
 				},
 				{
-					"slug": "unitone/background-alt",
+					"slug": "unitone-background-alt",
 					"color": "var(--wp--preset--color--unitone-light-gray)",
 					"name": "Background Alt"
 				},
 				{
-					"slug": "unitone/text",
+					"slug": "unitone-text",
 					"color": "var(--wp--preset--color--white)",
 					"name": "Text"
 				},
 				{
-					"slug": "unitone/text-alt",
+					"slug": "unitone-text-alt",
 					"color": "var(--unitone--color--text)",
 					"name": "Text Alt"
 				},
 				{
-					"slug": "unitone/text-black",
+					"slug": "unitone-text-black",
 					"color": "var(--unitone--color--text)",
 					"name": "Text (Black)"
 				},
 				{
-					"slug": "unitone/bright-gray",
+					"slug": "unitone-bright-gray",
 					"color": "rgba(213, 228, 241, .15)",
 					"name": "Bright gray"
 				},
 				{
-					"slug": "unitone/light-gray",
+					"slug": "unitone-light-gray",
 					"color": "rgba(213, 228, 241, .25)",
 					"name": "Light gray"
 				},
 				{
-					"slug": "unitone/gray",
+					"slug": "unitone-gray",
 					"color": "rgba(213, 228, 241, .35)",
 					"name": "gray"
 				},
 				{
-					"slug": "unitone/dark-gray",
+					"slug": "unitone-dark-gray",
 					"color": "rgba(213, 228, 241, .45)",
 					"name": "Dark gray"
 				}

@@ -23,7 +23,7 @@
 				<div data-unitone-layout="with-sidebar__content">
 					<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
 					<div data-unitone-layout="stack">
-						<!-- wp:post-terms {"term":"category","style":{"elements":{"link":{"color":{"text":"var:preset|color|unitone/accent"}}}},"className":"is-style-default","fontSize":"unitone-xs"} /-->
+						<!-- wp:post-terms {"term":"category","style":{"elements":{"link":{"color":{"text":"var:preset|color|unitone-accent"}}}},"className":"is-style-default","fontSize":"unitone-xs"} /-->
 
 						<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontStyle":"normal","fontWeight":"400"}}} /-->
 					</div>

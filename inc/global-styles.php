@@ -44,3 +44,35 @@ function enqueue_typography_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_typography_styles' );
 add_action( 'enqueue_block_editor_assets', 'enqueue_typography_styles', 11 );
+
+/**
+ * Convert deprecated color names to new color names.
+ */
+add_filter(
+	'wp_theme_json_data_user',
+	function( $theme_json ) {
+		$data = $theme_json->get_data();
+		if ( isset( $data['styles']['color'] ) && is_array( $data['styles']['color'] ) ) {
+			foreach ( $data['styles']['color'] as $key => $value ) {
+				$data['styles']['color'][ $key ] = str_replace( '/', '-', $value );
+			}
+		}
+
+		if ( isset( $data['styles']['blocks'] ) && is_array( $data['styles']['blocks'] ) ) {
+			foreach ( $data['styles']['blocks'] as $block_name => $block_data ) {
+				if (
+					isset( $data['styles']['blocks'][ $block_name ]['color'] )
+					|| is_array( $data['styles']['blocks'][ $block_name ]['color'] )
+				) {
+					foreach ( $data['styles']['blocks'][ $block_name ]['color'] as $key => $value ) {
+						$data['styles']['blocks'][ $block_name ]['color'][ $key ] = str_replace( '/', '-', $value );
+					}
+				}
+			}
+		}
+
+		return $theme_json->update_with( $data );
+		return $theme_json;
+	},
+	9
+);

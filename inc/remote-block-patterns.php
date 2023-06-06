@@ -6,6 +6,49 @@
  */
 
 /**
+ * Get remote block pattern categories.
+ *
+ * @return array
+ */
+function unitone_get_remote_block_patten_categories() {
+	global $wp_version;
+
+	$url = 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/pattern-categories/';
+
+	$response = wp_remote_get(
+		$url,
+		array(
+			'user-agent' => 'WordPress/' . $wp_version,
+			'timeout'    => 30,
+			'headers'    => array(
+				'Accept-Encoding' => '',
+			),
+		)
+	);
+
+	if ( ! $response || is_wp_error( $response ) ) {
+		return array();
+	}
+
+	$response_code = wp_remote_retrieve_response_code( $response );
+	if ( 200 !== $response_code ) {
+		return array();
+	}
+
+	$pattern_categories = json_decode( wp_remote_retrieve_body( $response ), true );
+
+	$new_pattern_categories = array();
+	foreach ( $pattern_categories as $pattern_category ) {
+		$new_pattern_categories[] = array(
+			'name'  => $pattern_category['slug'],
+			'label' => $pattern_category['name'],
+		);
+	}
+
+	return $new_pattern_categories;
+}
+
+/**
  * Get remote block patterns.
  *
  * @return array
@@ -69,8 +112,23 @@ function unitone_register_remote_block_patterns() {
 		}
 	}
 
-	$transient = get_transient( 'unitone-remote-patterns' );
+	$transient = get_transient( 'unitone-remote-pattern-categories' );
+	if ( false !== $transient ) {
+		$remote_block_pattern_categories = $transient;
+	} else {
+		$remote_block_pattern_categories = unitone_get_remote_block_patten_categories();
+		set_transient( 'unitone-remote-pattern-categories', $remote_block_pattern_categories, 60 * 10 );
+	}
+	foreach ( $remote_block_pattern_categories as $remote_block_pattern_category ) {
+		register_block_pattern_category(
+			$remote_block_pattern_category['name'],
+			array(
+				'label' => '[unitone] ' . $remote_block_pattern_category['label'],
+			)
+		);
+	}
 
+	$transient = get_transient( 'unitone-remote-patterns' );
 	if ( false !== $transient ) {
 		$remote_block_patterns = $transient;
 	} else {
@@ -93,4 +151,4 @@ function unitone_register_remote_block_patterns() {
 		}
 	}
 }
-add_action( 'init', 'unitone_register_remote_block_patterns' );
+add_action( 'init', 'unitone_register_remote_block_patterns', 9 );

@@ -2,7 +2,7 @@
 /**
  * Title: full width page
  * Slug: unitone/pages/1
- * Categories: pages
+ * Categories: unitone-pages
  * Block Types: core/post-content
  */
 ?>

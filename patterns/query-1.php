@@ -2,7 +2,7 @@
 /**
  * Title: Query (Underline)
  * Slug: unitone/query/1
- * Categories: query
+ * Categories: unitone-query
  * Block Types: core/query
  */
 ?>

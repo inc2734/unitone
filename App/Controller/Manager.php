@@ -125,11 +125,13 @@ class Manager {
 
 				if ( isset( $option['clear-remote-patterns-cache'] ) && '1' === $option['clear-remote-patterns-cache'] ) {
 					delete_transient( 'unitone-remote-patterns' );
+					delete_transient( 'unitone-remote-pattern-categories' );
 					return get_option( self::SETTINGS_NAME );
 				}
 
 				if ( isset( $option['reset'] ) && '1' === $option['reset'] ) {
 					delete_transient( 'unitone-remote-patterns' );
+					delete_transient( 'unitone-remote-pattern-categories' );
 					return array();
 				}
 

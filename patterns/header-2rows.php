@@ -2,7 +2,7 @@
 /**
  * Title: Header (2 rows)
  * Slug: unitone/header/2row
- * Categories: header
+ * Categories: unitone-headers
  * Block Types: core/template-part/header
  */
 ?>

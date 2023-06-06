@@ -12,17 +12,10 @@
  */
 function unitone_register_block_patterns() {
 	$block_pattern_categories = array(
-		'section' => array( 'label' => __( 'Section', 'unitone' ) ),
-		'hero'    => array( 'label' => __( 'Hero', 'unitone' ) ),
-		'columns' => array( 'label' => __( 'Columns', 'unitone' ) ),
-		'banners' => array( 'label' => __( 'Banners', 'unitone' ) ),
-		'cta'     => array( 'label' => __( 'Call to action', 'unitone' ) ),
-		'faq'     => array( 'label' => __( 'FAQ', 'unitone' ) ),
-		'teams'   => array( 'label' => __( 'Teams', 'unitone' ) ),
-		'query'   => array( 'label' => __( 'Query', 'unitone' ) ),
-		'pages'   => array( 'label' => __( 'Pages', 'unitone' ) ),
-		'header'  => array( 'label' => __( 'Headers', 'unitone' ) ),
-		'footer'  => array( 'label' => __( 'Footers', 'unitone' ) ),
+		'unitone-query'   => array( 'label' => '[unitone] ' . __( 'Query', 'unitone' ) ),
+		'unitone-pages'   => array( 'label' => '[unitone] ' . __( 'Pages', 'unitone' ) ),
+		'unitone-headers' => array( 'label' => '[unitone] ' . __( 'Headers', 'unitone' ) ),
+		'unitone-footers' => array( 'label' => '[unitone] ' . __( 'Footers', 'unitone' ) ),
 	);
 
 	/**

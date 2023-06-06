@@ -2,7 +2,7 @@
 /**
  * Title: Footer 2
  * Slug: unitone/footer/2
- * Categories: footer
+ * Categories: unitone-footers
  * Block Types: core/template-part/footer
  */
 ?>

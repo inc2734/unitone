@@ -2,7 +2,7 @@
 /**
  * Title: Header (Vertical)
  * Slug: unitone/header/vertical
- * Categories: header
+ * Categories: unitone-headers
  */
 ?>
 <!-- wp:unitone/container {"unitone":{"maxWidth":"100%"}} -->

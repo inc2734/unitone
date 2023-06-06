@@ -2,7 +2,7 @@
 /**
  * Title: Query (Rich media / Block link / Bordered)
  * Slug: unitone/query/3
- * Categories: query
+ * Categories: unitone-query
  * Block Types: core/query
  */
 ?>

@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 6.1.6\n"
+"Project-Id-Version: unitone 6.2.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-25T01:34:57+00:00\n"
+"POT-Creation-Date: 2023-06-06T07:30:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Clear remote patterns caches"
 msgstr ""
 
-#: App/Controller/Manager.php:135
+#: App/Controller/Manager.php:144
 #: dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/cluster-divided/index.js:1
@@ -71,19 +71,19 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: App/Controller/Manager.php:143
+#: App/Controller/Manager.php:152
 msgid "License key"
 msgstr ""
 
-#: App/Controller/Manager.php:189
+#: App/Controller/Manager.php:166
 msgid "Enable"
 msgstr ""
 
-#: App/Controller/Manager.php:194
+#: App/Controller/Manager.php:171
 msgid "Disable"
 msgstr ""
 
-#: App/Controller/Manager.php:214
+#: App/Controller/Manager.php:191
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr ""
 
@@ -116,46 +116,18 @@ msgid "Widgets"
 msgstr ""
 
 #: inc/block-patterns.php:15
-msgid "Section"
-msgstr ""
-
-#: inc/block-patterns.php:16
-msgid "Hero"
-msgstr ""
-
-#: inc/block-patterns.php:17
-msgid "Columns"
-msgstr ""
-
-#: inc/block-patterns.php:18
-msgid "Banners"
-msgstr ""
-
-#: inc/block-patterns.php:19
-msgid "Call to action"
-msgstr ""
-
-#: inc/block-patterns.php:20
-msgid "FAQ"
-msgstr ""
-
-#: inc/block-patterns.php:21
-msgid "Teams"
-msgstr ""
-
-#: inc/block-patterns.php:22
 msgid "Query"
 msgstr ""
 
-#: inc/block-patterns.php:23
+#: inc/block-patterns.php:16
 msgid "Pages"
 msgstr ""
 
-#: inc/block-patterns.php:24
+#: inc/block-patterns.php:17
 msgid "Headers"
 msgstr ""
 
-#: inc/block-patterns.php:25
+#: inc/block-patterns.php:18
 msgid "Footers"
 msgstr ""
 

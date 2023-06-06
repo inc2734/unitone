@@ -32,37 +32,6 @@
 		}
 	}
 
-	.wp-oembed-blog-card {
-		background-color: transparent;
-		box-shadow: none;
-		border-radius: 0;
-
-		@media (hover: hover) and (pointer: fine) {
-			&:active,
-			&:focus,
-			&:hover {
-				box-shadow: none;
-			}
-		}
-
-		> a,
-		> span {
-			color: inherit;
-			padding: 0;
-		}
-
-		&__domain {
-			display: flex;
-			align-items: center;
-		}
-
-		&__favicon {
-			top: 0;
-			height: 13px !important;
-			width: auto;
-		}
-	}
-
 	// For iframe on the block editor
 	.rich.wp-block-embed__wrapper .wp-oembed-blog-card {
 		margin: 0 !important;

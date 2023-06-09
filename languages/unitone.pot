@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 6.2.3\n"
+"Project-Id-Version: unitone 6.2.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-06-06T07:30:09+00:00\n"
+"POT-Creation-Date: 2023-06-09T12:37:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -46,10 +46,10 @@ msgid "Reset settings"
 msgstr ""
 
 #: App/Controller/Manager.php:87
-msgid "Clear remote patterns caches"
+msgid "Retrieve patterns from the pattern library"
 msgstr ""
 
-#: App/Controller/Manager.php:144
+#: App/Controller/Manager.php:141
 #: dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/cluster-divided/index.js:1
@@ -71,19 +71,19 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: App/Controller/Manager.php:152
+#: App/Controller/Manager.php:149
 msgid "License key"
 msgstr ""
 
-#: App/Controller/Manager.php:166
+#: App/Controller/Manager.php:155
 msgid "Enable"
 msgstr ""
 
-#: App/Controller/Manager.php:171
+#: App/Controller/Manager.php:160
 msgid "Disable"
 msgstr ""
 
-#: App/Controller/Manager.php:191
+#: App/Controller/Manager.php:180
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr ""
 

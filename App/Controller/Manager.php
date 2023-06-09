@@ -84,7 +84,7 @@ class Manager {
 						<?php
 						settings_fields( self::MENU_SLUG );
 						submit_button(
-							esc_html__( 'Clear remote patterns caches', 'unitone' ),
+							esc_html__( 'Retrieve patterns from the pattern library', 'unitone' ),
 							'primary'
 						);
 						?>
@@ -114,25 +114,22 @@ class Manager {
 			self::MENU_SLUG,
 			self::SETTINGS_NAME,
 			function( $option ) {
-				if ( isset( $option['license-key'] ) && static::get_option( 'license-key' ) !== $option['license-key'] ) {
-					if ( ! empty( $option['license-key'] ) ) {
-						$status = $this->request_license_validate( $option['license-key'] );
-						set_transient( 'unitone-license-status', $status ? $status : 'false', 60 * 10 );
-					} else {
-						set_transient( 'unitone-license-status', 'false', 60 * 10 );
-					}
-				}
+				delete_transient( 'unitone-remote-patterns' );
+				delete_transient( 'unitone-remote-pattern-categories' );
+
+				delete_transient( 'unitone-remote-patterns' );
+				delete_transient( 'unitone-remote-pattern-categories' );
 
 				if ( isset( $option['clear-remote-patterns-cache'] ) && '1' === $option['clear-remote-patterns-cache'] ) {
-					delete_transient( 'unitone-remote-patterns' );
-					delete_transient( 'unitone-remote-pattern-categories' );
 					return get_option( self::SETTINGS_NAME );
 				}
 
 				if ( isset( $option['reset'] ) && '1' === $option['reset'] ) {
-					delete_transient( 'unitone-remote-patterns' );
-					delete_transient( 'unitone-remote-pattern-categories' );
 					return array();
+				}
+
+				if ( isset( $option['license-key'] ) && static::get_option( 'license-key' ) !== $option['license-key'] ) {
+					delete_transient( 'unitone-license-status-' . sha1( $option['license-key'] ) );
 				}
 
 				return $option;
@@ -151,15 +148,7 @@ class Manager {
 			'license-key',
 			'<label for="license-key">' . esc_html__( 'License key', 'unitone' ) . '</label>',
 			function( $args ) {
-				$transient = get_transient( 'unitone-license-status' );
-				if ( ! $transient ) {
-					if ( ! empty( static::get_option( 'license-key' ) ) ) {
-						$transient = $this->request_license_validate( static::get_option( 'license-key' ) );
-						set_transient( 'unitone-license-status', $transient ? $transient : 'false', 60 * 10 );
-					} else {
-						set_transient( 'unitone-license-status', 'false', 60 * 10 );
-					}
-				}
+				$transient = static::get_license_status( static::get_option( 'license-key' ) );
 
 				$button = 'true' === $transient
 					? array(
@@ -198,12 +187,29 @@ class Manager {
 	}
 
 	/**
+	 * Get license status.
+	 *
+	 * @param string $license_key The license key.
+	 * @return boolean
+	 */
+	public static function get_license_status( $license_key ) {
+		$transient = get_transient( 'unitone-license-status-' . sha1( $license_key ) );
+		if ( false !== $transient ) {
+			return $transient;
+		}
+
+		$status = static::_request_license_validate( $license_key );
+		set_transient( 'unitone-license-status-' . sha1( $license_key ), $status ? $status : 'false', 60 * 10 );
+		return $status;
+	}
+
+	/**
 	 * Validate checker.
 	 *
 	 * @param string $license_key The license key.
 	 * @return boolean
 	 */
-	protected function request_license_validate( $license_key ) {
+	protected static function _request_license_validate( $license_key ) {
 		global $wp_version;
 
 		$response = wp_remote_get(

@@ -49,22 +49,64 @@ function unitone_get_remote_block_patten_categories() {
 }
 
 /**
- * Get remote block patterns.
+ * Get free remote block patterns.
  *
  * @return array
  */
-function unitone_get_remote_block_pattens() {
+function unitone_get_free_remote_block_pattens() {
 	global $wp_version;
 
-	$status      = get_transient( 'unitone-license-status' );
+	$url = 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/free-patterns/';
+
+	$response = wp_remote_get(
+		$url,
+		array(
+			'user-agent' => 'WordPress/' . $wp_version,
+			'timeout'    => 30,
+			'headers'    => array(
+				'Accept-Encoding' => '',
+			),
+		)
+	);
+
+	if ( ! $response || is_wp_error( $response ) ) {
+		return array();
+	}
+
+	$response_code = wp_remote_retrieve_response_code( $response );
+	if ( 200 !== $response_code ) {
+		return array();
+	}
+
+	$patterns = json_decode( wp_remote_retrieve_body( $response ), true );
+
+	foreach ( $patterns as $key => $pattern ) {
+		$patterns[ $key ]['content'] = str_replace(
+			'https://unitone.2inc.org/wp-content/themes/unitone',
+			get_template_directory_uri(),
+			$pattern['content'],
+		);
+
+		$patterns[ $key ]['viewportWidth'] = 1440;
+	}
+
+	return $patterns;
+}
+
+/**
+ * Get premium remote block patterns.
+ *
+ * @return array
+ */
+function unitone_get_premium_remote_block_pattens() {
+	global $wp_version;
+
 	$license_key = \Unitone\App\Controller\Manager::get_option( 'license-key' );
 
-	$url = 'true' === $status
-		? sprintf(
-			'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/patterns/%1$s',
-			esc_attr( $license_key )
-		)
-		: 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/free-patterns/';
+	$url = sprintf(
+		'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/patterns/%1$s',
+		esc_attr( $license_key )
+	);
 
 	$response = wp_remote_get(
 		$url,
@@ -132,7 +174,15 @@ function unitone_register_remote_block_patterns() {
 	if ( false !== $transient ) {
 		$remote_block_patterns = $transient;
 	} else {
-		$remote_block_patterns = unitone_get_remote_block_pattens();
+		$license_key = \Unitone\App\Controller\Manager::get_option( 'license-key' );
+		$status      = \Unitone\App\Controller\Manager::get_license_status( $license_key );
+
+		if ( 'true' === $status ) {
+			$remote_block_patterns = unitone_get_premium_remote_block_pattens();
+		} else {
+			$remote_block_patterns = unitone_get_free_remote_block_pattens();
+		}
+
 		set_transient( 'unitone-remote-patterns', $remote_block_patterns, 60 * 10 );
 	}
 

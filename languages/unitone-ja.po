@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-06-06T07:30:09+00:00\n"
-"PO-Revision-Date: 2023-06-06 16:30+0900\n"
+"POT-Creation-Date: 2023-06-09T12:37:02+00:00\n"
+"PO-Revision-Date: 2023-06-09 21:37+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -45,10 +45,10 @@ msgid "Reset settings"
 msgstr "設定をリセット"
 
 #: App/Controller/Manager.php:87
-msgid "Clear remote patterns caches"
-msgstr "リモートパターンのキャッシュをクリア"
+msgid "Retrieve patterns from the pattern library"
+msgstr "パターンライブラリーからパターンを再取得する"
 
-#: App/Controller/Manager.php:144 dist/blocks/center/index.js:1
+#: App/Controller/Manager.php:141 dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1 dist/blocks/frame/index.js:1
@@ -61,19 +61,19 @@ msgstr "リモートパターンのキャッシュをクリア"
 msgid "Settings"
 msgstr "設定"
 
-#: App/Controller/Manager.php:152
+#: App/Controller/Manager.php:149
 msgid "License key"
 msgstr "ライセンスキー"
 
-#: App/Controller/Manager.php:166
+#: App/Controller/Manager.php:155
 msgid "Enable"
 msgstr "有効"
 
-#: App/Controller/Manager.php:171
+#: App/Controller/Manager.php:160
 msgid "Disable"
 msgstr "無効"
 
-#: App/Controller/Manager.php:191
+#: App/Controller/Manager.php:180
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
@@ -2516,6 +2516,9 @@ msgstr "Woocommerce 個別商品：ページヘッダー"
 msgctxt "Template part name"
 msgid "WooCommerce single product: Page header (Image)"
 msgstr "WooCommerce 個別商品：ページヘッダー（画像）"
+
+#~ msgid "Clear remote patterns caches"
+#~ msgstr "リモートパターンのキャッシュをクリア"
 
 #~ msgid "Section"
 #~ msgstr "セクション"

@@ -5,7 +5,7 @@
 /**
  * External dependencies
  */
-import { find, kebabCase } from 'lodash';
+import { paramCase as kebabCase } from 'change-case';
 
 /**
  * WordPress dependencies
@@ -41,7 +41,7 @@ export function useAlternativeTemplateParts( area, excludedId ) {
 				'wp_template_part',
 				query
 			),
-			isLoading: _isResolving( 'getEntityRecords', [
+			isResolving: _isResolving( 'getEntityRecords', [
 				'postType',
 				'wp_template_part',
 				query,
@@ -65,7 +65,7 @@ export function useAlternativeTemplateParts( area, excludedId ) {
 						templatePart.area === area )
 			) || []
 		);
-	}, [ templateParts, area ] );
+	}, [ templateParts, area, excludedId ] );
 
 	return {
 		templateParts: filteredTemplateParts,
@@ -149,8 +149,12 @@ export function useTemplatePartArea( area ) {
 				).__experimentalGetDefaultTemplatePartAreas();
 			/* eslint-enable @wordpress/data-no-store-string-literals */
 
-			const selectedArea = find( definedAreas, { area } );
-			const defaultArea = find( definedAreas, { area: 'uncategorized' } );
+			const selectedArea = definedAreas.find(
+				( definedArea ) => definedArea.area === area
+			);
+			const defaultArea = definedAreas.find(
+				( definedArea ) => definedArea.area === 'uncategorized'
+			);
 
 			return {
 				icon: selectedArea?.icon || defaultArea?.icon,

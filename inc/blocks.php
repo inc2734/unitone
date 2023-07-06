@@ -69,7 +69,7 @@ remove_filter( 'render_block', 'wp_render_layout_support_flag' );
 add_filter(
 	'render_block',
 	function( $block_content, $block ) {
-		if ( 0 === strpos( $block['blockName'], 'unitone/' ) ) {
+		if ( ! empty( $block['blockName'] ) && 0 === strpos( $block['blockName'], 'unitone/' ) ) {
 			$block_content = preg_replace(
 				'|(<[^>]+?data-unitone-layout[^>]+?)wp-container-\d+?([^>]+?>)|ms',
 				'$1$2',
@@ -137,7 +137,7 @@ add_filter(
 
 		// --unitone--half-leading
 		if ( isset( $block['attrs']['unitone']['halfLeading'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--half-leading:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -186,7 +186,7 @@ add_filter(
 			isset( $block['attrs']['unitone']['dividerColor'] ) ||
 			isset( $block['attrs']['unitone']['divider']['color'] )
 		) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--divider-color:';
 
 			$preset_color = ! empty( $block['attrs']['unitone']['dividerColor'] )
@@ -204,7 +204,7 @@ add_filter(
 
 		// --unitone--divider-style
 		if ( isset( $block['attrs']['unitone']['divider']['style'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--divider-style:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -214,7 +214,7 @@ add_filter(
 
 		// --unitone--divider-width
 		if ( isset( $block['attrs']['unitone']['divider']['width'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--divider-width:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -251,7 +251,7 @@ add_filter(
 
 		// --unitone--max-width
 		if ( isset( $block['attrs']['unitone']['maxWidth'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--max-width:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -261,7 +261,7 @@ add_filter(
 
 		// --unitone--max-height
 		if ( isset( $block['attrs']['unitone']['maxHeight'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--max-height:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -271,7 +271,7 @@ add_filter(
 
 		// --unitone--min-height
 		if ( isset( $block['attrs']['unitone']['minHeight'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--min-height:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -317,7 +317,7 @@ add_filter(
 
 		// --unitone--top
 		if ( isset( $block['attrs']['unitone']['position']['top'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--top:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -327,7 +327,7 @@ add_filter(
 
 		// --unitone--right
 		if ( isset( $block['attrs']['unitone']['position']['right'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--right:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -337,7 +337,7 @@ add_filter(
 
 		// --unitone--bottom
 		if ( isset( $block['attrs']['unitone']['position']['bottom'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--bottom:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -347,7 +347,7 @@ add_filter(
 
 		// --unitone--left
 		if ( isset( $block['attrs']['unitone']['position']['left'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--left:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -357,7 +357,7 @@ add_filter(
 
 		// --unitone--z-index
 		if ( isset( $block['attrs']['unitone']['position']['zIndex'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--z-index:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -367,7 +367,7 @@ add_filter(
 
 		// --unitone--flex-basis
 		if ( isset( $block['attrs']['unitone']['flexBasis'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--flex-basis:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -395,7 +395,7 @@ add_filter(
 
 		// --unitone--grid-column
 		if ( isset( $block['attrs']['unitone']['gridColumn'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--grid-column:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
@@ -405,7 +405,7 @@ add_filter(
 
 		// --unitone--grid-row
 		if ( isset( $block['attrs']['unitone']['gridRow'] ) ) {
-			$style    = $p->get_attribute( 'style' );
+			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--grid-row:';
 			if ( false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;

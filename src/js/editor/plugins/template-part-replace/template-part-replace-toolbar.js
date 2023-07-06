@@ -111,10 +111,10 @@ export const TemplatePartReplaceToolbar = ( props ) => {
 						__( 'Choose a %s' ),
 						areaObject.label.toLowerCase()
 					) }
-					closeLabel={ __( 'Cancel' ) }
 					onRequestClose={ () =>
 						setIsTemplatePartSelectionOpen( false )
 					}
+					isFullScreen={ true }
 				>
 					<TemplatePartSelectionModal
 						templatePartId={ templatePartId }

@@ -12,10 +12,10 @@
  */
 function unitone_register_block_patterns() {
 	$block_pattern_categories = array(
-		'unitone-query'   => array( 'label' => '[unitone] ' . __( 'Query', 'unitone' ) ),
-		'unitone-pages'   => array( 'label' => '[unitone] ' . __( 'Pages', 'unitone' ) ),
 		'unitone-headers' => array( 'label' => '[unitone] ' . __( 'Headers', 'unitone' ) ),
 		'unitone-footers' => array( 'label' => '[unitone] ' . __( 'Footers', 'unitone' ) ),
+		'unitone-query'   => array( 'label' => '[unitone] ' . __( 'Query', 'unitone' ) ),
+		'unitone-pages'   => array( 'label' => '[unitone] ' . __( 'Pages', 'unitone' ) ),
 	);
 
 	/**

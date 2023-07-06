@@ -1,5 +1,5 @@
 /**
- * @see https://github.com/WordPress/gutenberg/blob/7f7a58a154084df65c493e58365402ac89fb6950/packages/block-editor/src/components/inserter/block-patterns-explorer/explorer.js
+ * @see https://github.com/WordPress/gutenberg/blob/trunk/packages/block-editor/src/components/inserter/block-patterns-explorer/explorer.js
  */
 
 /**
@@ -42,7 +42,6 @@ function PatternsExplorerModal( { onModalClose, ...restProps } ) {
 	return (
 		<Modal
 			title={ __( 'Patterns' ) }
-			closeLabel={ __( 'Close' ) }
 			onRequestClose={ onModalClose }
 			isFullScreen
 		>

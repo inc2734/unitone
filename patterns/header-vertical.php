@@ -11,7 +11,7 @@
 	<div data-unitone-layout="gutters">
 		<!-- wp:unitone/both-sides {"unitone":{"alignItems":"center","gap":-1}} -->
 		<div data-unitone-layout="both-sides">
-			<!-- wp:unitone/stack {"unitone":{"gap":"0"}} -->
+			<!-- wp:unitone/stack {"unitone":{"gap":"0","flexBasis":"300px"}} -->
 			<div data-unitone-layout="stack">
 				<!-- wp:site-logo /-->
 				<!-- wp:site-title /-->

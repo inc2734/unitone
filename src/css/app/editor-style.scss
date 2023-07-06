@@ -46,4 +46,15 @@
 			}
 		}
 	}
+
+	[data-unitone-layout~="layers"][data-unitone-layout~="-cover"] > :first-child [data-type="core/post-featured-image"] {
+    position: absolute;
+		inset: 0;
+    height: 100%;
+    width: 100%;
+
+		> .has-illustration {
+			height: 100%;
+		}
+	}
 }

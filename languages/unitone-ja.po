@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-06-09T12:37:02+00:00\n"
-"PO-Revision-Date: 2023-06-09 21:37+0900\n"
+"POT-Creation-Date: 2023-07-10T23:37:44+00:00\n"
+"PO-Revision-Date: 2023-07-11 08:49+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
@@ -104,21 +104,547 @@ msgstr "セクション"
 msgid "Widgets"
 msgstr "ウィジェット"
 
+#: inc/block-patterns.php:13
+msgid "Headers"
+msgstr "ヘッダー"
+
+#: inc/block-patterns.php:14
+msgid "Footers"
+msgstr "フッター"
+
 #: inc/block-patterns.php:15
 msgid "Query"
 msgstr "クエリー"
 
-#: inc/block-patterns.php:16
+#: inc/block-patterns.php:16 inc/block-patterns.php:415
+#: inc/template-part-areas.php:27
 msgid "Pages"
 msgstr "ページ"
 
-#: inc/block-patterns.php:17
-msgid "Headers"
-msgstr "ヘッダー"
+#: inc/block-patterns.php:55
+msgid "404: Left Header / Page Header (Image)"
+msgstr "404：左ヘッダー / ページヘッダー（画像）"
 
-#: inc/block-patterns.php:18
-msgid "Footers"
-msgstr "フッター"
+#: inc/block-patterns.php:61
+msgid "404: Left Header"
+msgstr "404：左ヘッダー"
+
+#: inc/block-patterns.php:67
+msgid "404: Page Header (Image)"
+msgstr "404：ページヘッダー（画像）"
+
+#: inc/block-patterns.php:73
+msgid "404: Right Sidebar / Page Header (Image)"
+msgstr "404：右サイドバー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:79
+msgid "404: Right Sidebar"
+msgstr "404：右サイドバー"
+
+#: inc/block-patterns.php:85
+msgid "Main Area (Page Header (Image)) for 404"
+msgstr "404のメインエリア（ページヘッダー（画像））"
+
+#: inc/block-patterns.php:91
+msgid "Main Area (Right Sidebar / Page Header (Image)) for 404"
+msgstr "404のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:97
+msgid "Main Area (Right Sidebar) for 404"
+msgstr "404のメインエリア（右サイドバー）"
+
+#: inc/block-patterns.php:103
+msgid "Main Area for 404"
+msgstr "404 のメインエリア"
+
+#: inc/block-patterns.php:109
+msgid "Page Header (Image) for 404"
+msgstr "404のページヘッダー（画像）"
+
+#: inc/block-patterns.php:115
+msgid "Page Header (Wide) for 404"
+msgstr "404のページヘッダー（幅広）"
+
+#: inc/block-patterns.php:121
+msgid "Page Header for 404"
+msgstr "404のページヘッダー"
+
+#: inc/block-patterns.php:127 inc/template-part-areas.php:48
+msgid "All Archives"
+msgstr "アーカイブ"
+
+#: inc/block-patterns.php:133
+msgid "All Archives: Left Header / Page Header (Image)"
+msgstr "アーカイブ：左ヘッダー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:139
+msgid "All Archives: Left Header"
+msgstr "アーカイブ：左ヘッダー"
+
+#: inc/block-patterns.php:145
+msgid "All Archives: Page Header (Image)"
+msgstr "アーカイブ：ページヘッダー（画像）"
+
+#: inc/block-patterns.php:151
+msgid "All Archives: Right Sidebar / Page Header (Image)"
+msgstr "アーカイブ：右サイドバー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:157
+msgid "All Archives: Right Sidebar"
+msgstr "アーカイブ：右サイドバー"
+
+#: inc/block-patterns.php:163
+msgid "Main Area for All Archives"
+msgstr "アーカイブのメインエリア"
+
+#: inc/block-patterns.php:169
+msgid "Main Area (Page Header (Image)) for All Archives"
+msgstr "アーカイブのメインエリア（ページヘッダー（画像））"
+
+#: inc/block-patterns.php:175
+msgid "Main Area (Right Sidebar / Page Header (Image)) for All Archives"
+msgstr ""
+"アーカイブのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:181
+msgid "Main Area (Right Sidebar) for All Archives"
+msgstr "アーカイブのメインエリア（右サイドバー）"
+
+#: inc/block-patterns.php:187
+msgid "Page Header (Image) for All Archives"
+msgstr "アーカイブのページヘッダー（画像）"
+
+#: inc/block-patterns.php:193
+msgid "Page Header for All Archives"
+msgstr "アーカイブのページヘッダー"
+
+#: inc/block-patterns.php:199 inc/template-part-areas.php:62
+msgid "Product Archives"
+msgstr "商品アーカイブ"
+
+#: inc/block-patterns.php:205
+msgid "Product Archives: Left Header / Page Header (Image)"
+msgstr "商品アーカイブ：左ヘッダー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:211
+msgid "Product Archives: Left Header"
+msgstr "商品アーカイブ：左ヘッダー"
+
+#: inc/block-patterns.php:217
+msgid "Product Archives: Page Header (Image)"
+msgstr "商品アーカイブ：ページヘッダー（画像）"
+
+#: inc/block-patterns.php:223
+msgid "Product Archives: Right Sidebar / Page Header (Image)"
+msgstr "商品アーカイブ：右サイドバー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:229
+msgid "Product Archives: Right Sidebar"
+msgstr "商品アーカイブ：右サイドバー"
+
+#: inc/block-patterns.php:235
+msgid "Main Area for Product Archives"
+msgstr "商品アーカイブのメインエリア"
+
+#: inc/block-patterns.php:241
+msgid "Main Area (Page Header (Image)) for Product Archives"
+msgstr "商品アーカイブのメインエリア（ページヘッダー（画像））"
+
+#: inc/block-patterns.php:247
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Archives"
+msgstr ""
+"商品アーカイブのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
+"像））"
+
+#: inc/block-patterns.php:253
+msgid "Main Area (Right Sidebar) for Product Archives"
+msgstr "商品アーカイブのメインエリア（右サイドバー）"
+
+#: inc/block-patterns.php:259
+msgid "Page Header (Image) for Product Archives"
+msgstr "商品アーカイブのページヘッダー（画像）"
+
+#: inc/block-patterns.php:265
+msgid "Page Header for Product Archives"
+msgstr "商品アーカイブのページヘッダー"
+
+#: inc/block-patterns.php:271 inc/template-part-areas.php:76
+msgid "bbPress"
+msgstr "bbPress"
+
+#: inc/block-patterns.php:277
+msgid "bbPress: Left Header / Page Header (Image)"
+msgstr "bbPress：左ヘッダー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:283
+msgid "bbPress: Left Header"
+msgstr "bbPress：左ヘッダー"
+
+#: inc/block-patterns.php:289
+msgid "bbPress: Page Header (Image)"
+msgstr "bbPress：ページヘッダー（画像）"
+
+#: inc/block-patterns.php:295
+msgid "bbPress: Right Sidebar / Page Header (Image)"
+msgstr "bbPress：右サイドバー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:301
+msgid "bbPress: Right Sidebar"
+msgstr "bbPress：右サイドバー"
+
+#: inc/block-patterns.php:307
+msgid "Main Area for bbPress"
+msgstr "bbPress のメインエリア"
+
+#: inc/block-patterns.php:313
+msgid "Main Area (Page Header (Image)) for bbPress"
+msgstr "bbPress のメインエリア（ページヘッダー（画像））"
+
+#: inc/block-patterns.php:319
+msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
+msgstr ""
+"bbPress のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:325
+msgid "Main Area (Right Sidebar) for bbPress"
+msgstr "bbPress のメインエリア（右サイドバー）"
+
+#: inc/block-patterns.php:331
+msgid "Page Header (Image) for bbPress"
+msgstr "bbPress のページヘッダー（画像）"
+
+#: inc/block-patterns.php:337
+msgid "Page Header for bbPress"
+msgstr "bbPress のページヘッダー"
+
+#: inc/block-patterns.php:343 inc/template-part-areas.php:41
+msgid "Blog Home"
+msgstr "ブログホーム"
+
+#: inc/block-patterns.php:349
+msgid "Blog Home: Left Header / Page Header (Image)"
+msgstr "ブログホーム：左ヘッダー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:355
+msgid "Blog Home: Left Header"
+msgstr "ブログホーム：左ヘッダー"
+
+#: inc/block-patterns.php:361
+msgid "Blog Home: Page Header (Image)"
+msgstr "ブログホーム：ページヘッダー（画像）"
+
+#: inc/block-patterns.php:367
+msgid "Blog Home: Right Sidebar / Page Header (Image)"
+msgstr "ブログホーム：右サイドバー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:373
+msgid "Blog Home: Right Sidebar"
+msgstr "ブログホーム：右サイドバー"
+
+#: inc/block-patterns.php:379
+msgid "Main Area for Blog Home"
+msgstr "ブログホームのメインエリア"
+
+#: inc/block-patterns.php:385
+msgid "Main Area (Page Header (Image)) for Blog Home"
+msgstr "ブログホームのメインエリア（ページヘッダー（画像））"
+
+#: inc/block-patterns.php:391
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Blog Home"
+msgstr ""
+"ブログホームのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
+"像））"
+
+#: inc/block-patterns.php:397
+msgid "Main Area (Right Sidebar) for Blog Home"
+msgstr "ブログホームのメインエリア（右サイドバー）"
+
+#: inc/block-patterns.php:403
+msgid "Page Header (Image) for Blog Home"
+msgstr "ブログホームのページヘッダー（画像）"
+
+#: inc/block-patterns.php:409
+msgid "Page Header for Blog Home"
+msgstr "ブログホームのページヘッダー"
+
+#: inc/block-patterns.php:421
+msgid "Pages: Blank"
+msgstr "固定ページ：空"
+
+#: inc/block-patterns.php:427
+msgid "Pages: Only Header and Footer"
+msgstr "固定ページ：ヘッダー / フッター"
+
+#: inc/block-patterns.php:433
+msgid "Pages: Left Header /Page Header (Featured Image)"
+msgstr "固定ページ：左ヘッダー / ページヘッダー（アイキャッチ画像）"
+
+#: inc/block-patterns.php:439
+msgid "Pages: Left Header /Page Header (Image)"
+msgstr "固定ページ：左ヘッダー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:445
+msgid "Pages: Left Header"
+msgstr "固定ページ：左ヘッダー"
+
+#: inc/block-patterns.php:451
+msgid "Pages: Page Header (Featured Image)"
+msgstr "固定ページ：ページヘッダー（アイキャッチ画像）"
+
+#: inc/block-patterns.php:457
+msgid "Pages: Page Header (Image)"
+msgstr "固定ページ：ページヘッダー（画像）"
+
+#: inc/block-patterns.php:463
+msgid "Pages: Page Header (Slim)"
+msgstr "固定ページ：ページヘッダー（スリム）"
+
+#: inc/block-patterns.php:469
+msgid "Pages: Right Sidebar / Page Header (Featured Image)"
+msgstr "固定ページ：右サイドバー / ページヘッダー（アイキャッチ画像）"
+
+#: inc/block-patterns.php:475
+msgid "Pages: Right Sidebar / Page Header (Image)"
+msgstr "固定ページ：右サイドバー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:481
+msgid "Pages: Right Sidebar"
+msgstr "固定ページ：右サイドバー"
+
+#: inc/block-patterns.php:487
+msgid "Main Area for Pages"
+msgstr "固定ページのメインエリア"
+
+#: inc/block-patterns.php:493
+msgid "Main Area (Blank) for Pages"
+msgstr "固定ページのメインエリア（空）"
+
+#: inc/block-patterns.php:499
+msgid "Main Area (Page Header (Featured Image)) for Pages"
+msgstr "固定ページのメインエリア（ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:505
+msgid "Main Area (Page Header (Image)) for Pages"
+msgstr "固定ページのメインエリア（ページヘッダー（画像））"
+
+#: inc/block-patterns.php:511
+msgid "Main Area (Page Header (Slim)) for Pages"
+msgstr "固定ページのメインエリア（ページヘッダー（スリム））"
+
+#: inc/block-patterns.php:517
+msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
+msgstr ""
+"固定ページのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:523
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Pages"
+msgstr ""
+"固定ページのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:529
+msgid "Main Area (Right Sidebar) for Pages"
+msgstr "固定ページのメインエリア（右サイドバー）"
+
+#: inc/block-patterns.php:535
+msgid "Page Header for Pages"
+msgstr "固定ページのページヘッダー"
+
+#: inc/block-patterns.php:541
+msgid "Page Header (Featured Image) for Pages"
+msgstr "固定ページのページヘッダー（アイキャッチ画像）"
+
+#: inc/block-patterns.php:547
+msgid "Page Header (Image) for Pages"
+msgstr "固定ページのページヘッダー（画像）"
+
+#: inc/block-patterns.php:553
+msgid "Page Header (Slim) for Pages"
+msgstr "固定ページのページヘッダー（スリム）"
+
+#: inc/block-patterns.php:559 inc/template-part-areas.php:55
+msgid "Search Results"
+msgstr "検索結果"
+
+#: inc/block-patterns.php:565
+msgid "Search Results: Left Header / Page Header (Image)"
+msgstr "検索結果：左ヘッダー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:571
+msgid "Search Results: Left Header"
+msgstr "検索結果：左ヘッダー"
+
+#: inc/block-patterns.php:577
+msgid "Search Results: Page Header (Image)"
+msgstr "検索結果：ページヘッダー（画像）"
+
+#: inc/block-patterns.php:583
+msgid "Search Results: Right Sidebar / Page Header (Image)"
+msgstr "検索結果：右サイドバー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:589
+msgid "Search Results: Right Sidebar"
+msgstr "検索結果：右サイドバー"
+
+#: inc/block-patterns.php:595
+msgid "Main Area for Search Results"
+msgstr "検索結果のメインエリア"
+
+#: inc/block-patterns.php:601
+msgid "Main Area (Page Header (Image)) for Search Results"
+msgstr "検索結果のメインエリア（ページヘッダー（画像））"
+
+#: inc/block-patterns.php:607
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
+msgstr ""
+"検索結果のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:613
+msgid "Main Area (Right Sidebar) for Search Results"
+msgstr "検索結果のメインエリア（右サイドバー）"
+
+#: inc/block-patterns.php:619
+msgid "Page Header for Search Results"
+msgstr "検索結果のページヘッダー"
+
+#: inc/block-patterns.php:625
+msgid "Page Header (Image) for Search Results"
+msgstr "検索結果のページヘッダー（画像）"
+
+#: inc/block-patterns.php:631 inc/template-part-areas.php:20
+msgid "Single Posts"
+msgstr "個別投稿"
+
+#: inc/block-patterns.php:637
+msgid "Single Posts: Only Header and Footer"
+msgstr "個別投稿：ヘッダー / フッター"
+
+#: inc/block-patterns.php:643
+msgid "Single Posts: Left Header / Page Header (Featured Image)"
+msgstr "個別投稿：左ヘッダー / ページヘッダー（アイキャッチ画像）"
+
+#: inc/block-patterns.php:649
+msgid "Single Posts: Left Header / Page Header (Image)"
+msgstr "個別投稿：左ヘッダー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:655
+msgid "Single Posts: Left Header"
+msgstr "個別投稿：左ヘッダー"
+
+#: inc/block-patterns.php:661
+msgid "Single Posts: Page Header (Featured Image)"
+msgstr "個別投稿：ページヘッダー（アイキャッチ画像）"
+
+#: inc/block-patterns.php:667
+msgid "Single Posts: Page Header (Image)"
+msgstr "個別投稿：ページヘッダー（画像）"
+
+#: inc/block-patterns.php:673
+msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
+msgstr "個別投稿：右サイドバー / ページヘッダー（アイキャッチ画像）"
+
+#: inc/block-patterns.php:679
+msgid "Single Posts: Right Sidebar / Page Header (Image)"
+msgstr "個別投稿：右サイドバー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:685
+msgid "Single Posts: Right Sidebar"
+msgstr "個別投稿：右サイドバー"
+
+#: inc/block-patterns.php:691
+msgid "Main Area for Single Posts"
+msgstr "個別投稿のメインエリア"
+
+#: inc/block-patterns.php:697
+msgid "Main Area (Blank) for Single Posts"
+msgstr "個別投稿のメインエリア（空）"
+
+#: inc/block-patterns.php:703
+msgid "Main Area (Page Header (Featured Image)) for Single Posts"
+msgstr "固定ページのメインエリア（ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:709
+msgid "Main Area (Page Header (Image)) for Single Posts"
+msgstr "個別投稿のメインエリア（ページヘッダー（画像））"
+
+#: inc/block-patterns.php:715
+msgid ""
+"Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts"
+msgstr ""
+"個別投稿のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:721
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Posts"
+msgstr ""
+"個別投稿のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:727
+msgid "Main Area (Right Sidebar) for Single Posts"
+msgstr "個別投稿のメインエリア（右サイドバー）"
+
+#: inc/block-patterns.php:733
+msgid "Page Header for Single Posts"
+msgstr "個別投稿のページヘッダー"
+
+#: inc/block-patterns.php:739
+msgid "Page Header (Featured Image) for Single Posts"
+msgstr "個別投稿のページヘッダー（アイキャッチ画像）"
+
+#: inc/block-patterns.php:745
+msgid "Page Header (Image) for Single Posts"
+msgstr "個別投稿のページヘッダー（画像）"
+
+#: inc/block-patterns.php:751
+msgid "Page Header (Wide) for Single Posts"
+msgstr "個別投稿のページヘッダー（幅広）"
+
+#: inc/block-patterns.php:757 inc/template-part-areas.php:69
+msgid "Single Products"
+msgstr "個別商品"
+
+#: inc/block-patterns.php:763
+msgid "Single Products: Left Header / Page Header (Image)"
+msgstr "個別商品：左ヘッダー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:769
+msgid "Single Products: Left Header"
+msgstr "個別商品：左ヘッダー"
+
+#: inc/block-patterns.php:775
+msgid "Single Products: Page Header (Image)"
+msgstr "個別商品：ページヘッダー（画像）"
+
+#: inc/block-patterns.php:781
+msgid "Single Products: Right Sidebar / Page Header (Image)"
+msgstr "個別商品：右サイドバー / ページヘッダー（画像）"
+
+#: inc/block-patterns.php:787
+msgid "Single Products: Right Sidebar"
+msgstr "個別商品：右サイドバー"
+
+#: inc/block-patterns.php:793
+msgid "Main Area for Single Products"
+msgstr "個別商品のメインエリア"
+
+#: inc/block-patterns.php:799
+msgid "Main Area (Page Header (Image)) for Single Products"
+msgstr "個別商品のメインエリア（ページヘッダー（画像））"
+
+#: inc/block-patterns.php:805
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
+msgstr ""
+"個別商品のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
+
+#: inc/block-patterns.php:811
+msgid "Main Area (Right Sidebar) for Single Products"
+msgstr "個別商品のメインエリア（右サイドバー）"
+
+#: inc/block-patterns.php:817
+msgid "Page Header for Single Products"
+msgstr "個別投稿のページヘッダー"
+
+#: inc/block-patterns.php:823
+msgid "Page Header (Image) for Single Products"
+msgstr "個別商品のページヘッダー（画像）"
 
 #: inc/block-styles.php:13
 msgid "Badge"
@@ -156,133 +682,17 @@ msgstr "ブロックリンク（ストライプ）"
 msgid "Cover"
 msgstr "カバー"
 
-#: inc/template-part-areas.php:20
-msgid "Single post"
-msgstr "個別投稿"
-
-#: inc/template-part-areas.php:27
-msgid "Single post page header"
-msgstr "個別投稿のページヘッダー"
-
 #: inc/template-part-areas.php:34
-msgid "Single post contents"
-msgstr "個別投稿のコンテンツ"
-
-#: inc/template-part-areas.php:41
-msgid "Page"
-msgstr "固定ページ"
-
-#: inc/template-part-areas.php:48
-msgid "Page page header"
-msgstr "固定ページのページヘッダー"
-
-#: inc/template-part-areas.php:55
-msgid "Page contents"
-msgstr "固定ページのコンテンツ"
-
-#: inc/template-part-areas.php:62
 msgid "404"
 msgstr "404"
 
-#: inc/template-part-areas.php:69
-msgid "404 contents"
-msgstr "404のコンテンツ"
-
-#: inc/template-part-areas.php:76
-msgid "404 page header"
-msgstr "404のページヘッダー"
-
-#: inc/template-part-areas.php:83 patterns/footer-2.php:22
-#: patterns/footer-3.php:51 patterns/footer-3.php:59 patterns/footer-3.php:67
-#: patterns/footer-4.php:31 patterns/footer-4.php:39 patterns/footer-4.php:47
-#: patterns/footer-5.php:29 patterns/footer-5.php:37 patterns/footer-5.php:45
-#: patterns/header-1row.php:23 patterns/header-2rows.php:25
-#: patterns/header-simple.php:23 patterns/header-vertical.php:22
-msgid "Home"
-msgstr "ホーム"
-
-#: inc/template-part-areas.php:90
-msgid "Home page header"
-msgstr "ホームのページヘッダー"
-
-#: inc/template-part-areas.php:97
-msgid "Home contents"
-msgstr "ホーム：コンテンツ"
-
-#: inc/template-part-areas.php:104
-msgid "Archive"
-msgstr "アーカイブ"
-
-#: inc/template-part-areas.php:111
-msgid "Archive contents"
-msgstr "アーカイブのコンテンツ"
-
-#: inc/template-part-areas.php:118
-msgid "Archive page header"
-msgstr "アーカイブのページヘッダー"
-
-#: inc/template-part-areas.php:125 dist/blocks/child-pages/index.js:1
-msgid "Search"
-msgstr "検索"
-
-#: inc/template-part-areas.php:132
-msgid "Search page header"
-msgstr "検索結果のページヘッダー"
-
-#: inc/template-part-areas.php:139
-msgid "Search contents"
-msgstr "検索結果のコンテンツ"
-
-#: inc/template-part-areas.php:146
-msgid "WooCommerce product archive"
-msgstr "WooCommerce 商品アーカイブ"
-
-#: inc/template-part-areas.php:153
-msgid "WooCommerce product archive contents"
-msgstr "WooCommerce 商品アーカイブのコンテンツ"
-
-#: inc/template-part-areas.php:160
-msgid "WooCommerce product archive page header"
-msgstr "WooCommerce 商品アーカイブのページヘッダー"
-
-#: inc/template-part-areas.php:167
-msgid "WooCommerce single product"
-msgstr "WooCommerce 個別商品"
-
-#: inc/template-part-areas.php:174
-msgid "WooCommerce single product page header"
-msgstr "Woocommerce 個別商品のページヘッダー"
-
-#: inc/template-part-areas.php:181
-msgid "WooCommerce single product contents"
-msgstr "WooCommerce 個別商品のコンテンツ"
-
-#: inc/template-part-areas.php:188
-msgid "bbPress"
-msgstr "bbPress"
-
-#: inc/template-part-areas.php:195
-msgid "bbPress page header"
-msgstr "bbPress のページヘッダー"
-
-#: inc/template-part-areas.php:202
-msgid "bbPress contents"
-msgstr "bbPress のコンテンツ"
-
-#: inc/template-part-areas.php:209
+#: inc/template-part-areas.php:83
 msgid "Comments"
 msgstr "コメント"
 
-#: inc/template-part-areas.php:216
-msgid "Footer breadcrumbs"
-msgstr "フッターのパンくずリスト"
-
-#: patterns/404-contents.php
-msgctxt "Pattern title"
-msgid "404 contents"
-msgstr "404のコンテンツ"
-
-#: patterns/404-contents.php:9
+#: patterns/404/main/default.php:12 patterns/404/main/page-header-image.php:12
+#: patterns/404/main/right-sidebar-page-header-image.php:20
+#: patterns/404/main/right-sidebar.php:20
 msgid ""
 "Woops! Page not found. The page you are looking for may be moved or deleted. "
 "Please search this search box."
@@ -299,6 +709,15 @@ msgstr "フッター1"
 msgctxt "Pattern title"
 msgid "Footer 2"
 msgstr "フッター2"
+
+#: patterns/footer-2.php:22 patterns/footer-3.php:51 patterns/footer-3.php:59
+#: patterns/footer-3.php:67 patterns/footer-4.php:31 patterns/footer-4.php:39
+#: patterns/footer-4.php:47 patterns/footer-5.php:29 patterns/footer-5.php:37
+#: patterns/footer-5.php:45 patterns/header-1row.php:23
+#: patterns/header-2rows.php:25 patterns/header-simple.php:23
+#: patterns/header-vertical.php:22
+msgid "Home"
+msgstr "ホーム"
 
 #: patterns/footer-2.php:23 patterns/footer-3.php:52 patterns/footer-3.php:60
 #: patterns/footer-3.php:68 patterns/footer-4.php:32 patterns/footer-4.php:40
@@ -323,7 +742,8 @@ msgstr "サービス"
 #: patterns/footer-4.php:50 patterns/footer-5.php:32 patterns/footer-5.php:40
 #: patterns/footer-5.php:48 patterns/header-1row.php:30
 #: patterns/header-2rows.php:32 patterns/header-simple.php:30
-#: patterns/header-vertical.php:29 patterns/home-heading.php:9
+#: patterns/header-vertical.php:29 patterns/home/page-header/default.php:8
+#: patterns/home/page-header/image.php:22
 msgid "Blog"
 msgstr "ブログ"
 
@@ -386,11 +806,6 @@ msgctxt "Pattern title"
 msgid "Header (Vertical)"
 msgstr "ヘッダー（縦）"
 
-#: patterns/home-heading.php
-msgctxt "Pattern title"
-msgid "Home heading"
-msgstr "ホームの見出し"
-
 #: patterns/image.php
 msgctxt "Pattern title"
 msgid "Image"
@@ -421,12 +836,8 @@ msgctxt "Pattern title"
 msgid "Query (Rich media / Block link / Bordered)"
 msgstr "クエリー（リッチメディア / ブロックリンク / ボーダー）"
 
-#: patterns/search-results-heading.php
-msgctxt "Pattern title"
-msgid "Search results heading"
-msgstr "検索結果の見出し"
-
-#: patterns/search-results-heading.php:9
+#: patterns/search/page-header/default.php:8
+#: patterns/search/page-header/image.php:22
 msgid "Search results"
 msgstr "検索結果"
 
@@ -520,6 +931,10 @@ msgstr "親ページを指定する"
 #: dist/blocks/child-pages/index.js:1
 msgid "If not specified, a list of child pages of this page will be displayed."
 msgstr "実際の画面では、このページが子ページを持っている場合に表示されます。"
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Search"
+msgstr "検索"
 
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
@@ -1688,133 +2103,138 @@ msgstr "5"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Page header (Featured image))"
-msgstr "固定ページ（ページヘッダー（アイキャッチ画像））"
+msgid "Pages: Page Header (Featured Image)"
+msgstr "固定ページ：ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Page header (Image))"
-msgstr "固定ページ（ページヘッダー（画像））"
+msgid "Pages: Page Header (Image)"
+msgstr "固定ページ：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Header / Footer)"
-msgstr "固定ページ（ヘッダー / フッター）"
+msgid "Pages: Only Header and Footer"
+msgstr "固定ページ：ヘッダー / フッター"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Page header (Slim))"
-msgstr "固定ページ（ページヘッダー（スリム））"
+msgid "Pages: Page Header (Slim)"
+msgstr "固定ページ：ページヘッダー（スリム）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Right sidebar)"
-msgstr "固定ページ（右サイドバー）"
+msgid "Pages: Right Sidebar"
+msgstr "固定ページ：右サイドバー"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Right sidebar / Page header (Featured image))"
-msgstr "固定ページ（右サイドバー / ページヘッダー（アイキャッチ画像））"
+msgid "Pages: Right Sidebar / Page Header (Featured Image)"
+msgstr "固定ページ：右サイドバー / ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Right sidebar / Page header (Image))"
-msgstr "固定ページ（右サイドバー / ページヘッダー（画像））"
+msgid "Pages: Right Sidebar / Page Header (Image)"
+msgstr "固定ページ：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Left header)"
-msgstr "固定ページ（左ヘッダー）"
+msgid "Pages: Left Header"
+msgstr "固定ページ：左ヘッダー"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Left header / Page header (Featured image))"
-msgstr "固定ページ（左ヘッダー / ページヘッダー（アイキャッチ画像））"
+msgid "Pages: Left Header / Page Header (Featured Image)"
+msgstr "固定ページ：左ヘッダー / ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Left header / Page header (Image))"
-msgstr "固定ページ（左ヘッダー / ページヘッダー（画像））"
+msgid "Pages: Left Header / Page Header (Image)"
+msgstr "固定ページ：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Page (Blank)"
-msgstr "固定ページ（空）"
+msgid "Pages: Blank"
+msgstr "固定ページ：空"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single post (Page header (Featured image))"
-msgstr "個別投稿（ページヘッダー（アイキャッチ画像））"
+msgid "Single Posts: Page Header (Featured Image)"
+msgstr "個別投稿：ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single post (Page header (Image))"
-msgstr "個別投稿（ページヘッダー（画像））"
+msgid "Single Posts: Page Header (Image)"
+msgstr "個別投稿：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single post (Header / Footer)"
-msgstr "個別投稿（ヘッダー / フッター）"
+msgid "Single Posts: Only Header and Footer"
+msgstr "個別投稿：ヘッダー / フッター"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single post (Right sidebar)"
-msgstr "個別投稿（右サイドバー）"
+msgid "Single Posts: Right Sidebar"
+msgstr "個別投稿：右サイドバー"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single post (Right sidebar / Page header (Featured image))"
-msgstr "個別投稿（右サイドバー / ページヘッダー（アイキャッチ画像））"
+msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
+msgstr "個別投稿：右サイドバー / ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single post (Right sidebar / Page header (Image))"
-msgstr "個別投稿（右サイドバー / ページヘッダー（画像））"
+msgid "Single Posts: Right Sidebar / Page Header (Image)"
+msgstr "個別投稿：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single post (Left header)"
-msgstr "個別投稿（左ヘッダー）"
+msgid "Single Posts: Left Header"
+msgstr "個別投稿：左ヘッダー"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single post (Left header / Page header (Featured image))"
-msgstr "個別投稿（左ヘッダー / ページヘッダー（アイキャッチ画像））"
+msgid "Single Posts: Left Header / Page Header (Featured Image)"
+msgstr "個別投稿：左ヘッダー / ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single post (Left header / Page header (Image))"
-msgstr "個別投稿（左ヘッダー / ページヘッダー（画像））"
+msgid "Single Posts: Left Header / Page Header (Image)"
+msgstr "個別投稿：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single product"
+msgid "Single Products"
 msgstr "個別商品"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single product (Page header (Image))"
-msgstr "WooCommerce 個別商品（ページヘッダー（画像））"
+msgid "Single Products: Page Header (Image)"
+msgstr "個別商品：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single product (Right sidebar)"
-msgstr "WooCommerce 個別商品（右サイドバー）"
+msgid "Single Products: Right Sidebar"
+msgstr "個別商品：右サイドバー"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single product (Right sidebar / Page header (Image))"
-msgstr "WooCommerce 個別商品（右サイドバー / ページヘッダー（画像））"
+msgid "Single Products: Right Sidebar / Page Header (Image)"
+msgstr "個別商品：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single product (Left header)"
-msgstr "Woocommerce 個別商品（左ヘッダー）"
+msgid "Single Products: Left Header"
+msgstr "個別商品：左ヘッダー"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single product (Left header / Page header (Image))"
-msgstr "WooCommerce 個別商品（左ヘッダー / ページヘッダー（画像））"
+msgid "Single Products: Left Header / Page Header (Image)"
+msgstr "個別商品：左ヘッダー / ページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Product Archives"
+msgstr "商品アーカイブ"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -1843,734 +2263,320 @@ msgstr "コメント"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Breadcrumbs"
-msgstr "パンくずリスト"
+msgid "404"
+msgstr "404"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404: Template"
-msgstr "404：テンプレート"
+msgid "404: Right Sidebar"
+msgstr "404：右サイドバー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404: Template (Page header (Image))"
-msgstr "404：テンプレート（ページヘッダー（画像））"
+msgid "404: Right Sidebar / Page Header (Image)"
+msgstr "404：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404: Template (Right sidebar)"
-msgstr "404：テンプレート（右サイドバー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Template (Right sidebar / Page header (Image))"
-msgstr "404：テンプレート（右サイドバー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Template (Left header)"
-msgstr "404：テンプレート（左ヘッダー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Template (Left header / Page header (Image))"
-msgstr "404：テンプレート（左ヘッダー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Contents"
-msgstr "404：コンテンツ"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Contents (Page header (Image))"
-msgstr "404：コンテンツ（ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Contents (Right sidebar)"
-msgstr "404：コンテンツ（右サイドバー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Contents (Right sidebar / Page header (Image))"
-msgstr "404：コンテンツ（右サイドバー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Page header"
-msgstr "404：ページヘッダー"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Page header (Image)"
+msgid "404: Page Header (Image)"
 msgstr "404：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404: Page header (Wide)"
-msgstr "404：ページヘッダー（幅広）"
+msgid "404: Left Header"
+msgstr "404：左ヘッダー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive: Template"
-msgstr "WooCommerce 商品アーカイブ：テンプレート"
+msgid "404: Left Header / Page Header (Image)"
+msgstr "404：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive: Template (Page header (Image))"
-msgstr "WooCommerce 商品アーカイブ：テンプレート（ページヘッダー（画像））"
+msgid "Product Archives"
+msgstr "商品アーカイブ"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive: Template (Right sidebar)"
-msgstr "WooCommerce 商品アーカイブ：テンプレート（右サイドバー）"
+msgid "Product Archives: Right Sidebar"
+msgstr "商品アーカイブ：右サイドバー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid ""
-"WooCommerce product archive: Template (Right sidebar / Page header (Image))"
-msgstr ""
-"WooCommerce 商品アーカイブ：テンプレート（右サイドバー / ページヘッダー（画"
-"像））"
+msgid "Product Archives: Right Sidebar / Page Header (Image)"
+msgstr "商品アーカイブ：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive: Template (Left header)"
-msgstr "WooCommerce 商品アーカイブ：テンプレート（左ヘッダー）"
+msgid "Product Archives: Page Header (Image)"
+msgstr "商品アーカイブ：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid ""
-"WooCommerce product archive: Template (Left header / Page header (Image))"
-msgstr ""
-"WooCommerce 商品アーカイブ：テンプレート（左ヘッダー / ページヘッダー（画"
-"像））"
+msgid "Product Archives: Left Header"
+msgstr "商品アーカイブ：左ヘッダー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive: Contents"
-msgstr "WooCommerce 商品アーカイブ：コンテンツ"
+msgid "Product Archives: Left Header / Page Header (Image)"
+msgstr "商品アーカイブ：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive: Contents (Page header (Image))"
-msgstr "WooCommerce 商品アーカイブ：コンテンツ（ページヘッダー（画像））"
+msgid "All Archives"
+msgstr "アーカイブ"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive: Contents (Right sidebar)"
-msgstr "WooCommerce 商品アーカイブ：コンテンツ（右サイドバー）"
+msgid "All Archives: Right Sidebar"
+msgstr "アーカイブ：右サイドバー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid ""
-"WooCommerce product archive: Contents (Right sidebar / Page header (Image))"
-msgstr ""
-"WooCommerce 商品アーカイブ：コンテンツ（右サイドバー / ページヘッダー（画"
-"像））"
+msgid "All Archives: Right Sidebar / Page Header (Image)"
+msgstr "アーカイブ：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce product archive: Page header"
-msgstr "WooCommerce 商品アーカイブ：ページヘッダー"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "WooCommerce product archive: Page header (Image)"
-msgstr "WooCommerce 商品アーカイブ：ページヘッダー（画像）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Template"
-msgstr "アーカイブ：テンプレート"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Template (Page header (Image))"
-msgstr "アーカイブ：テンプレート（ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Template (Right sidebar)"
-msgstr "アーカイブ：テンプレート（右サイドバー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Template (Right sidebar / Page header (Image))"
-msgstr "アーカイブ：テンプレート（右サイドバー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Template (Left header)"
-msgstr "アーカイブ：テンプレート（左ヘッダー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Template (Left header / Page header (Image))"
-msgstr "アーカイブ：テンプレート（左ヘッダー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Contents"
-msgstr "アーカイブ：コンテンツ"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Contents (Page header (Image))"
-msgstr "アーカイブ：コンテンツ（ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Contents (Right sidebar)"
-msgstr "アーカイブ：コンテンツ（右サイドバー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Contents (Right sidebar / Page header (Image))"
-msgstr "アーカイブ：コンテンツ（右サイドバー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Page header"
-msgstr "アーカイブ：ページヘッダー"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Archive: Page header (Image)"
+msgid "All Archives: Page Header (Image)"
 msgstr "アーカイブ：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress: Template"
-msgstr "bbPress：テンプレート"
+msgid "All Archives: Left Header"
+msgstr "アーカイブ：左ヘッダー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress: Template (Page header (Image))"
-msgstr "bbPress：テンプレート（ページヘッダー（画像））"
+msgid "All Archives: Left Header / Page Header (Image)"
+msgstr "アーカイブ：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress: Template (Right sidebar)"
-msgstr "bbPress：テンプレート（右サイドバー）"
+msgid "bbPress"
+msgstr "bbPress"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress: Template (Right sidebar / Page header (Image))"
-msgstr "bbPress：テンプレート（右サイドバー / ページヘッダー（画像））"
+msgid "bbPress: Right Sidebar"
+msgstr "bbPress：右サイドバー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress: Template (Left header)"
-msgstr "bbPress：テンプレート（左ヘッダー）"
+msgid "bbPress: Right Sidebar / Page Header (Image)"
+msgstr "bbPress：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress: Template (Left header / Page header (Image))"
-msgstr "bbPress：テンプレート（左ヘッダー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress: Contents"
-msgstr "bbPress：コンテンツ"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress: Contents (Page header (Image))"
-msgstr "bbPress：コンテンツ（ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress: Contents (Right sidebar)"
-msgstr "bbPress：コンテンツ（右サイドバー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress: Contents (Right sidebar / Page header (Image))"
-msgstr "bbPress：コンテンツ（右サイドバー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress: Page header"
-msgstr "bbPress：ページヘッダー"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress: Page header (Image)"
+msgid "bbPress: Page Header (Image)"
 msgstr "bbPress：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Template"
-msgstr "ホーム：テンプレート"
+msgid "bbPress: Left Header"
+msgstr "bbPress：左ヘッダー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Template (Page header (Image))"
-msgstr "ホーム：テンプレート（ページヘッダー（画像））"
+msgid "bbPress: Left Header / Page Header (Image)"
+msgstr "bbPress：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Template (Right sidebar)"
-msgstr "ホーム：テンプレート（右サイドバー）"
+msgid "Blog Home"
+msgstr "ブログホーム"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Template (Right sidebar / Page header (Image))"
-msgstr "ホーム：テンプレート（右サイドバー / ページヘッダー（画像））"
+msgid "Blog Home: Right Sidebar"
+msgstr "ブログホーム：右サイドバー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Template (Left header)"
-msgstr "ホーム：テンプレート（左ヘッダー）"
+msgid "Blog Home: Right Sidebar / Page Header (Image)"
+msgstr "ブログホーム：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Template (Left header / Page header (Image))"
-msgstr "ホーム：テンプレート（左ヘッダー / ページヘッダー（画像））"
+msgid "Blog Home: Page Header (Image)"
+msgstr "ブログホーム：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Contents"
-msgstr "ホーム：コンテンツ"
+msgid "Blog Home: Left Header"
+msgstr "ブログホーム：左ヘッダー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Contents (Page header (Image))"
-msgstr "ホーム：コンテンツ（ページヘッダー（画像））"
+msgid "Blog Home: Left Header / Page Header (Image)"
+msgstr "ブログホーム：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Contents (Right sidebar)"
-msgstr "ホーム：コンテンツ（右サイドバー）"
+msgid "Pages: Blank"
+msgstr "固定ページ：空"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Contents (Right sidebar / Page header (Image))"
-msgstr "ホーム：コンテンツ（右サイドバー / ページヘッダー（画像））"
+msgid "Pages: Header / Footer"
+msgstr "固定ページ：ヘッダー / フッター"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Page header"
-msgstr "ホーム：ページヘッダー"
+msgid "Pages: Left Header / Page Header (Featured Image)"
+msgstr "固定ページ：左ヘッダー / ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Home: Page header (Image)"
-msgstr "ホーム：ページヘッダー（画像）"
+msgid "Pages: Left Header / Page Header (Image)"
+msgstr "固定ページ：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page: Template"
-msgstr "固定ページ：テンプレート"
+msgid "Pages: Left Header"
+msgstr "固定ページ：左ヘッダー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page: Template (Page header (Featured image))"
-msgstr "固定ページ：テンプレート（ページヘッダー（アイキャッチ画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Template (Page header (Image))"
-msgstr "固定ページ：テンプレート（ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Template (Header / Footer)"
-msgstr "固定ページ：テンプレート（ヘッダー / フッター）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Template (Page header (Slim))"
-msgstr "固定ページ：テンプレート（ページヘッダー（スリム））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Template (Right sidebar)"
-msgstr "固定ページ：テンプレート（右サイドバー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Template (Right sidebar / Page header (Featured image))"
-msgstr ""
-"固定ページ：テンプレート（右サイドバー / ページヘッダー（アイキャッチ画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Template (Right sidebar / Page header (Image))"
-msgstr "固定ページ：テンプレート（右サイドバー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Template (Left header)"
-msgstr "固定ページ：テンプレート（左ヘッダー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Template (Left header / Page header (Featured image))"
-msgstr ""
-"固定ページ：テンプレート（左ヘッダー / ページヘッダー（アイキャッチ画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Template (Left header / Page header (Image))"
-msgstr "固定ページ：テンプレート（左ヘッダー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Template (Blank)"
-msgstr "固定ページ：テンプレート（空）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Contents"
-msgstr "固定ページ：コンテンツ"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Contents (Page header (Featured image))"
-msgstr "固定ページ：コンテンツ（ページヘッダー（アイキャッチ画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Contents (Page header (Image))"
-msgstr "固定ページ：コンテンツ（ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Contents (Page header (Slim))"
-msgstr "固定ページ：コンテンツ（ページヘッダー（スリム））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Contents (Right sidebar)"
-msgstr "固定ページ：コンテンツ（右サイドバー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Contents (Right sidebar / Page header (Featured image))"
-msgstr ""
-"固定ページ：コンテンツ（右サイドバー / ページヘッダー（アイキャッチ画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Contents (Right sidebar / Page header (Image))"
-msgstr "固定ページ：コンテンツ（右サイドバー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Contents (Blank)"
-msgstr "固定ページ：コンテンツ（空）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Page header"
-msgstr "固定ページ：ページヘッダー"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Page: Page header (Featured image)"
+msgid "Pages: Page Header (Featured Image)"
 msgstr "固定ページ：ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page: Page header (Image)"
+msgid "Pages: Page Header (Image)"
 msgstr "固定ページ：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Page: Page header (Slim)"
+msgid "Pages: Page Header (Slim)"
 msgstr "固定ページ：ページヘッダー（スリム）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search: Template"
-msgstr "検索結果：テンプレート"
+msgid "Pages: Right Sidebar / Page Header (Featured Image)"
+msgstr "固定ページ：右サイドバー / ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search: Template (Page header (Image))"
-msgstr "検索結果：テンプレート（ページヘッダー（画像））"
+msgid "Pages: Right Sidebar / Page Header (Image)"
+msgstr "固定ページ：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search: Template (Right sidebar)"
-msgstr "検索結果：テンプレート（右サイドバー）"
+msgid "Pages: Right Sidebar"
+msgstr "固定ページ：右サイドバー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search: Template (Right sidebar / Page header (Image))"
-msgstr "検索結果：テンプレート（右サイドバー / ページヘッダー（画像））"
+msgid "Pages"
+msgstr "固定ページ"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search: Template (Left header)"
-msgstr "検索結果：テンプレート（左ヘッダー）"
+msgid "Search Results"
+msgstr "検索結果"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search: Template (Left header / Page header (Image))"
-msgstr "検索結果：テンプレート（左ヘッダー / ページヘッダー（画像））"
+msgid "Search Results: Right Sidebar"
+msgstr "検索結果：右サイドバー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search: Contents"
-msgstr "検索結果：コンテンツ"
+msgid "Search Results: Right Sidebar / Page Header (Image)"
+msgstr "検索結果：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search: Contents (Page header (Image))"
-msgstr "検索結果：コンテンツ（ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Search: Contents (Right sidebar)"
-msgstr "検索結果：コンテンツ（右サイドバー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Search: Contents (Right sidebar / Page header (Image))"
-msgstr "検索結果：コンテンツ（右サイドバー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Search: Page header"
-msgstr "検索結果：ページヘッダー"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Search: Page header (Image)"
+msgid "Search Results: Page Header (Image)"
 msgstr "検索結果：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post: Template"
-msgstr "個別投稿：テンプレート"
+msgid "Search Results: Left Header"
+msgstr "検索結果：左ヘッダー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post: Template (Page header (Featured image))"
-msgstr "個別投稿：テンプレート（ページヘッダー（アイキャッチ画像））"
+msgid "Search Results: Left Header / Page Header (Image)"
+msgstr "検索結果：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post: Template (Page header (Image))"
-msgstr "個別投稿：テンプレート（ページヘッダー（画像））"
+msgid "Single Posts: Only Header and Footer"
+msgstr "個別投稿：ヘッダー / フッター"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post: Template (Right sidebar)"
-msgstr "個別投稿：テンプレート（右サイドバー）"
+msgid "Single Posts: Left Header / Page Header (Featured Image)"
+msgstr "個別投稿：左ヘッダー / ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post: Template (Right sidebar / Page header (Featured image))"
-msgstr ""
-"個別投稿：テンプレート（右サイドバー / ページヘッダー（アイキャッチ画像））"
+msgid "Single Posts: Left Header / Page Header (Image)"
+msgstr "個別投稿：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post: Template (Right sidebar / Page header (Image))"
-msgstr "個別投稿：テンプレート（右サイドバー / ページヘッダー（画像））"
+msgid "Single Posts: Left Header"
+msgstr "個別投稿：左ヘッダー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post: Template (Header / Footer)"
-msgstr "個別投稿：テンプレート（ヘッダー / フッター）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Template (Left header)"
-msgstr "個別投稿：テンプレート（左ヘッダー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Template (Left header / Page header (Featured image))"
-msgstr ""
-"個別投稿：テンプレート（左ヘッダー / ページヘッダー（アイキャッチ画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Template (Left header / Page header (Image))"
-msgstr "個別投稿：テンプレート（左ヘッダー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Contents"
-msgstr "個別投稿：コンテンツ"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Contents (Blank)"
-msgstr "個別投稿：コンテンツ（空）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Contents (Page header (Featured image))"
-msgstr "個別投稿：コンテンツ（ページヘッダー（アイキャッチ画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Contents (Page header (Image))"
-msgstr "個別投稿：コンテンツ（ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Contents (Right sidebar)"
-msgstr "個別投稿：コンテンツ（右サイドバー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Contents (Right sidebar / Page header (Featured image))"
-msgstr ""
-"個別投稿：コンテンツ（右サイドバー / ページヘッダー（アイキャッチ画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Contents (Right sidebar / Page header (Image))"
-msgstr "個別投稿：コンテンツ（右サイドバー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Page header"
-msgstr "個別投稿：ページヘッダー"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single post: Page header (Featured image)"
+msgid "Single Posts: Page Header (Featured Image)"
 msgstr "個別投稿：ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post: Page header (Image)"
+msgid "Single Posts: Page Header (Image)"
 msgstr "個別投稿：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Single post: Page header (Wide)"
-msgstr "個別投稿：ページヘッダー（幅広）"
+msgid "Single Posts: Right Sidebar / Page Header (Featured image)"
+msgstr "個別投稿：右サイドバー / ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product: Template"
-msgstr "WooCommerce 個別商品：テンプレート"
+msgid "Single Posts: Right Sidebar / Page Header (Image)"
+msgstr "個別投稿：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product: Template (Page header (Image))"
-msgstr "WooCommerce 個別商品：テンプレート（ページヘッダー（画像））"
+msgid "Single Posts: Right Sidebar"
+msgstr "個別投稿：右サイドバー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product: Template (Right sidebar)"
-msgstr "WooCommerce 個別商品：テンプレート（右サイドバー）"
+msgid "Single Posts"
+msgstr "個別投稿"
 
 #: theme.json
 msgctxt "Template part name"
-msgid ""
-"WooCommerce single product: Template (Right sidebar / Page header (Image))"
-msgstr ""
-"WooCommerce 個別商品：テンプレート（右サイドバー / ページヘッダー（画像））"
+msgid "Single Products: Left Header / Page Header (Image)"
+msgstr "個別商品：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product: Template (Left header)"
-msgstr "Woocommerce 個別商品：テンプレート（左ヘッダー）"
+msgid "Single Products: Left Header"
+msgstr "個別商品：左ヘッダー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid ""
-"WooCommerce single product: Template (Left header / Page header (Image))"
-msgstr ""
-"WooCommerce 個別商品：テンプレート（左ヘッダー / ページヘッダー（画像））"
+msgid "Single Products: Page Header (Image)"
+msgstr "個別商品：ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product: Contents"
-msgstr "WooCommerce 個別商品：コンテンツ"
+msgid "Single Products: Right Sidebar / Page Header (Image)"
+msgstr "個別商品：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product: Contents (Page header (Image))"
-msgstr "WooCommerce 個別投稿：コンテンツ（ページヘッダー（画像））"
+msgid "Single Products: Right Sidebar"
+msgstr "個別商品：右サイドバー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "WooCommerce single product: Contents (Right sidebar)"
-msgstr "WooCommerce 個別商品：コンテンツ（右サイドバー）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid ""
-"WooCommerce single product: Contents (Right sidebar / Page header (Image))"
-msgstr ""
-"WooCommerce 個別商品：コンテンツ（右サイドバー / ページヘッダー（画像））"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "WooCommerce single product: Page header"
-msgstr "Woocommerce 個別商品：ページヘッダー"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "WooCommerce single product: Page header (Image)"
-msgstr "WooCommerce 個別商品：ページヘッダー（画像）"
-
-#~ msgid "Clear remote patterns caches"
-#~ msgstr "リモートパターンのキャッシュをクリア"
-
-#~ msgid "Section"
-#~ msgstr "セクション"
-
-#~ msgid "Hero"
-#~ msgstr "ヒーロー"
-
-#~ msgid "Columns"
-#~ msgstr "カラム"
-
-#~ msgid "Banners"
-#~ msgstr "バナー"
-
-#~ msgid "Call to action"
-#~ msgstr "CTA"
-
-#~ msgid "FAQ"
-#~ msgstr "FAQ"
-
-#~ msgid "Teams"
-#~ msgstr "チーム"
-
-#~ msgid ""
-#~ "Background image/video is sized to maintain its aspect ratio while "
-#~ "filling the element's entire content box. If the object's aspect ratio "
-#~ "does not match the aspect ratio of its box, then the object will be "
-#~ "clipped to fit."
-#~ msgstr ""
-#~ "背景画像/動画は、要素のコンテンツボックス全体を満たしながら、そのアスペク"
-#~ "ト比を維持するようにサイズ調整されます。オブジェクトのアスペクト比がその"
-#~ "ボックスのアスペクト比と一致しない場合、オブジェクトはフィットするように切"
-#~ "り取られます。"
-
-#~ msgid "Fill"
-#~ msgstr "Fill"
-
-#~ msgid "Intrinsic centering"
-#~ msgstr "内在的な中央揃え"
-
-#~ msgctxt "Template part name"
-#~ msgid "Home: Contents (Blank)"
-#~ msgstr "ホーム：コンテンツ（空）"
-
-#~ msgid "Content"
-#~ msgstr "コンテンツ"
-
-#~ msgid "General"
-#~ msgstr "一般"
-
-#~ msgid "Dimensions"
-#~ msgstr "寸法"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Query (Simple / Block link)"
-#~ msgstr "クエリー（シンプル / ブロックリンク）"
+msgid "Single Products"
+msgstr "個別商品"

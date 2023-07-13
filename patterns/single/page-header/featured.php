@@ -10,7 +10,7 @@
 
 		<!-- wp:unitone/layer {"gridRow":"","alignSelf":"center"} -->
 		<div data-unitone-layout="layers__layer -align-self:center">
-			<!-- wp:unitone/cover {"noPadding":true,"unitone":{"minHeight":"50vh"}} -->
+			<!-- wp:unitone/cover {"noPadding":true,"unitone":{"minHeight":"50vmin"}} -->
 			<div data-unitone-layout="cover -no-padding">
 				<!-- wp:unitone/cover-content {"position":"center","unitone":{"position":{"zIndex":"1"}}} -->
 				<div data-unitone-layout="cover__content -valign:center">

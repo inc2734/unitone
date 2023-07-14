@@ -64,7 +64,8 @@
 				padding-bottom: var(--unitone--padding);
 			}
 
-			&.is-flex-container {
+			&.is-flex-container,
+			&.is-layout-grid {
 				column-gap: 0 !important;
 
 				@media (min-width: 600px) {
@@ -92,13 +93,14 @@
 				padding: var(--unitone--padding);
 			}
 
-			&:not(.is-flex-container) {
+			&:not(.is-flex-container):not(.is-layout-grid) {
 				.wp-block-post:not(:first-child) {
 					border-top: none;
 				}
 			}
 
-			&.is-flex-container {
+			&.is-flex-container,
+			&.is-layout-grid {
 				border-left: var(--unitone--divider-width) var(--unitone--divider-style) var(--unitone--divider-color);
 
 				@media not all and (min-width: 600px) {
@@ -147,13 +149,14 @@
 				padding-bottom: var(--unitone--padding);
 			}
 
-			&:not(.is-flex-container) {
+			&:not(.is-flex-container):not(.is-layout-grid) {
 				.wp-block-post:not(:first-child) {
 					border-top: none;
 				}
 			}
 
-			&.is-flex-container {
+			&.is-flex-container,
+			&.is-layout-grid {
 				@media not all and (min-width: 600px) {
 					.wp-block-post:not(:first-child) {
 						border-top: none;

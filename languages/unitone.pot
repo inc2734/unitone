@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-07-10T23:37:44+00:00\n"
+"POT-Creation-Date: 2023-07-14T05:44:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -128,527 +128,292 @@ msgid "Query"
 msgstr ""
 
 #: inc/block-patterns.php:16
-#: inc/block-patterns.php:415
 #: inc/template-part-areas.php:27
+#: inc/template-part-areas.php:127
 msgid "Pages"
 msgstr ""
 
-#: inc/block-patterns.php:55
-msgid "404: Left Header / Page Header (Image)"
+#: inc/block-patterns.php:17
+msgid "Templates"
 msgstr ""
 
-#: inc/block-patterns.php:61
-msgid "404: Left Header"
-msgstr ""
-
-#: inc/block-patterns.php:67
-msgid "404: Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:73
-msgid "404: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:79
-msgid "404: Right Sidebar"
-msgstr ""
-
-#: inc/block-patterns.php:85
+#: inc/block-patterns.php:50
 msgid "Main Area (Page Header (Image)) for 404"
 msgstr ""
 
-#: inc/block-patterns.php:91
+#: inc/block-patterns.php:56
 msgid "Main Area (Right Sidebar / Page Header (Image)) for 404"
 msgstr ""
 
-#: inc/block-patterns.php:97
+#: inc/block-patterns.php:62
 msgid "Main Area (Right Sidebar) for 404"
 msgstr ""
 
-#: inc/block-patterns.php:103
+#: inc/block-patterns.php:68
+#: inc/template-part-areas.php:155
 msgid "Main Area for 404"
 msgstr ""
 
-#: inc/block-patterns.php:109
+#: inc/block-patterns.php:74
 msgid "Page Header (Image) for 404"
 msgstr ""
 
-#: inc/block-patterns.php:115
+#: inc/block-patterns.php:80
 msgid "Page Header (Wide) for 404"
 msgstr ""
 
-#: inc/block-patterns.php:121
+#: inc/block-patterns.php:86
+#: inc/template-part-areas.php:162
 msgid "Page Header for 404"
 msgstr ""
 
-#: inc/block-patterns.php:127
-#: inc/template-part-areas.php:48
-msgid "All Archives"
-msgstr ""
-
-#: inc/block-patterns.php:133
-msgid "All Archives: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:139
-msgid "All Archives: Left Header"
-msgstr ""
-
-#: inc/block-patterns.php:145
-msgid "All Archives: Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:151
-msgid "All Archives: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:157
-msgid "All Archives: Right Sidebar"
-msgstr ""
-
-#: inc/block-patterns.php:163
+#: inc/block-patterns.php:92
+#: inc/template-part-areas.php:197
 msgid "Main Area for All Archives"
 msgstr ""
 
-#: inc/block-patterns.php:169
+#: inc/block-patterns.php:98
 msgid "Main Area (Page Header (Image)) for All Archives"
 msgstr ""
 
-#: inc/block-patterns.php:175
+#: inc/block-patterns.php:104
 msgid "Main Area (Right Sidebar / Page Header (Image)) for All Archives"
 msgstr ""
 
-#: inc/block-patterns.php:181
+#: inc/block-patterns.php:110
 msgid "Main Area (Right Sidebar) for All Archives"
 msgstr ""
 
-#: inc/block-patterns.php:187
+#: inc/block-patterns.php:116
 msgid "Page Header (Image) for All Archives"
 msgstr ""
 
-#: inc/block-patterns.php:193
+#: inc/block-patterns.php:122
+#: inc/template-part-areas.php:204
 msgid "Page Header for All Archives"
 msgstr ""
 
-#: inc/block-patterns.php:199
-#: inc/template-part-areas.php:62
-msgid "Product Archives"
-msgstr ""
-
-#: inc/block-patterns.php:205
-msgid "Product Archives: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:211
-msgid "Product Archives: Left Header"
-msgstr ""
-
-#: inc/block-patterns.php:217
-msgid "Product Archives: Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:223
-msgid "Product Archives: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:229
-msgid "Product Archives: Right Sidebar"
-msgstr ""
-
-#: inc/block-patterns.php:235
+#: inc/block-patterns.php:128
+#: inc/template-part-areas.php:239
 msgid "Main Area for Product Archives"
 msgstr ""
 
-#: inc/block-patterns.php:241
+#: inc/block-patterns.php:134
 msgid "Main Area (Page Header (Image)) for Product Archives"
 msgstr ""
 
-#: inc/block-patterns.php:247
+#: inc/block-patterns.php:140
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Archives"
 msgstr ""
 
-#: inc/block-patterns.php:253
+#: inc/block-patterns.php:146
 msgid "Main Area (Right Sidebar) for Product Archives"
 msgstr ""
 
-#: inc/block-patterns.php:259
+#: inc/block-patterns.php:152
 msgid "Page Header (Image) for Product Archives"
 msgstr ""
 
-#: inc/block-patterns.php:265
+#: inc/block-patterns.php:158
 msgid "Page Header for Product Archives"
 msgstr ""
 
-#: inc/block-patterns.php:271
-#: inc/template-part-areas.php:76
-msgid "bbPress"
-msgstr ""
-
-#: inc/block-patterns.php:277
-msgid "bbPress: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:283
-msgid "bbPress: Left Header"
-msgstr ""
-
-#: inc/block-patterns.php:289
-msgid "bbPress: Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:295
-msgid "bbPress: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:301
-msgid "bbPress: Right Sidebar"
-msgstr ""
-
-#: inc/block-patterns.php:307
+#: inc/block-patterns.php:164
+#: inc/template-part-areas.php:288
 msgid "Main Area for bbPress"
 msgstr ""
 
-#: inc/block-patterns.php:313
+#: inc/block-patterns.php:170
 msgid "Main Area (Page Header (Image)) for bbPress"
 msgstr ""
 
-#: inc/block-patterns.php:319
+#: inc/block-patterns.php:176
 msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
 msgstr ""
 
-#: inc/block-patterns.php:325
+#: inc/block-patterns.php:182
 msgid "Main Area (Right Sidebar) for bbPress"
 msgstr ""
 
-#: inc/block-patterns.php:331
+#: inc/block-patterns.php:188
 msgid "Page Header (Image) for bbPress"
 msgstr ""
 
-#: inc/block-patterns.php:337
+#: inc/block-patterns.php:194
+#: inc/template-part-areas.php:281
 msgid "Page Header for bbPress"
 msgstr ""
 
-#: inc/block-patterns.php:343
-#: inc/template-part-areas.php:41
-msgid "Blog Home"
-msgstr ""
-
-#: inc/block-patterns.php:349
-msgid "Blog Home: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:355
-msgid "Blog Home: Left Header"
-msgstr ""
-
-#: inc/block-patterns.php:361
-msgid "Blog Home: Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:367
-msgid "Blog Home: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:373
-msgid "Blog Home: Right Sidebar"
-msgstr ""
-
-#: inc/block-patterns.php:379
+#: inc/block-patterns.php:200
+#: inc/template-part-areas.php:183
 msgid "Main Area for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:385
+#: inc/block-patterns.php:206
 msgid "Main Area (Page Header (Image)) for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:391
+#: inc/block-patterns.php:212
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:397
+#: inc/block-patterns.php:218
 msgid "Main Area (Right Sidebar) for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:403
+#: inc/block-patterns.php:224
 msgid "Page Header (Image) for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:409
+#: inc/block-patterns.php:230
+#: inc/template-part-areas.php:176
 msgid "Page Header for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:421
-msgid "Pages: Blank"
-msgstr ""
-
-#: inc/block-patterns.php:427
-msgid "Pages: Only Header and Footer"
-msgstr ""
-
-#: inc/block-patterns.php:433
-msgid "Pages: Left Header /Page Header (Featured Image)"
-msgstr ""
-
-#: inc/block-patterns.php:439
-msgid "Pages: Left Header /Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:445
-msgid "Pages: Left Header"
-msgstr ""
-
-#: inc/block-patterns.php:451
-msgid "Pages: Page Header (Featured Image)"
-msgstr ""
-
-#: inc/block-patterns.php:457
-msgid "Pages: Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:463
-msgid "Pages: Page Header (Slim)"
-msgstr ""
-
-#: inc/block-patterns.php:469
-msgid "Pages: Right Sidebar / Page Header (Featured Image)"
-msgstr ""
-
-#: inc/block-patterns.php:475
-msgid "Pages: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:481
-msgid "Pages: Right Sidebar"
-msgstr ""
-
-#: inc/block-patterns.php:487
+#: inc/block-patterns.php:236
+#: inc/template-part-areas.php:141
 msgid "Main Area for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:493
+#: inc/block-patterns.php:242
 msgid "Main Area (Blank) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:499
+#: inc/block-patterns.php:248
 msgid "Main Area (Page Header (Featured Image)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:505
+#: inc/block-patterns.php:254
 msgid "Main Area (Page Header (Image)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:511
+#: inc/block-patterns.php:260
 msgid "Main Area (Page Header (Slim)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:517
+#: inc/block-patterns.php:266
 msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:523
+#: inc/block-patterns.php:272
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:529
+#: inc/block-patterns.php:278
 msgid "Main Area (Right Sidebar) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:535
+#: inc/block-patterns.php:284
+#: inc/template-part-areas.php:134
 msgid "Page Header for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:541
+#: inc/block-patterns.php:290
 msgid "Page Header (Featured Image) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:547
+#: inc/block-patterns.php:296
 msgid "Page Header (Image) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:553
+#: inc/block-patterns.php:302
 msgid "Page Header (Slim) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:559
-#: inc/template-part-areas.php:55
-msgid "Search Results"
-msgstr ""
-
-#: inc/block-patterns.php:565
-msgid "Search Results: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:571
-msgid "Search Results: Left Header"
-msgstr ""
-
-#: inc/block-patterns.php:577
-msgid "Search Results: Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:583
-msgid "Search Results: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:589
-msgid "Search Results: Right Sidebar"
-msgstr ""
-
-#: inc/block-patterns.php:595
+#: inc/block-patterns.php:308
 msgid "Main Area for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:601
+#: inc/block-patterns.php:314
 msgid "Main Area (Page Header (Image)) for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:607
+#: inc/block-patterns.php:320
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:613
+#: inc/block-patterns.php:326
 msgid "Main Area (Right Sidebar) for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:619
+#: inc/block-patterns.php:332
+#: inc/template-part-areas.php:218
 msgid "Page Header for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:625
+#: inc/block-patterns.php:338
 msgid "Page Header (Image) for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:631
-#: inc/template-part-areas.php:20
-msgid "Single Posts"
-msgstr ""
-
-#: inc/block-patterns.php:637
-msgid "Single Posts: Only Header and Footer"
-msgstr ""
-
-#: inc/block-patterns.php:643
-msgid "Single Posts: Left Header / Page Header (Featured Image)"
-msgstr ""
-
-#: inc/block-patterns.php:649
-msgid "Single Posts: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:655
-msgid "Single Posts: Left Header"
-msgstr ""
-
-#: inc/block-patterns.php:661
-msgid "Single Posts: Page Header (Featured Image)"
-msgstr ""
-
-#: inc/block-patterns.php:667
-msgid "Single Posts: Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:673
-msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
-msgstr ""
-
-#: inc/block-patterns.php:679
-msgid "Single Posts: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:685
-msgid "Single Posts: Right Sidebar"
-msgstr ""
-
-#: inc/block-patterns.php:691
+#: inc/block-patterns.php:344
+#: inc/template-part-areas.php:120
 msgid "Main Area for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:697
+#: inc/block-patterns.php:350
 msgid "Main Area (Blank) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:703
+#: inc/block-patterns.php:356
 msgid "Main Area (Page Header (Featured Image)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:709
+#: inc/block-patterns.php:362
 msgid "Main Area (Page Header (Image)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:715
+#: inc/block-patterns.php:368
 msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:721
+#: inc/block-patterns.php:374
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:727
+#: inc/block-patterns.php:380
 msgid "Main Area (Right Sidebar) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:733
+#: inc/block-patterns.php:386
+#: inc/template-part-areas.php:113
 msgid "Page Header for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:739
+#: inc/block-patterns.php:392
 msgid "Page Header (Featured Image) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:745
+#: inc/block-patterns.php:398
 msgid "Page Header (Image) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:751
+#: inc/block-patterns.php:404
 msgid "Page Header (Wide) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:757
-#: inc/template-part-areas.php:69
-msgid "Single Products"
-msgstr ""
-
-#: inc/block-patterns.php:763
-msgid "Single Products: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:769
-msgid "Single Products: Left Header"
-msgstr ""
-
-#: inc/block-patterns.php:775
-msgid "Single Products: Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:781
-msgid "Single Products: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/block-patterns.php:787
-msgid "Single Products: Right Sidebar"
-msgstr ""
-
-#: inc/block-patterns.php:793
+#: inc/block-patterns.php:410
+#: inc/template-part-areas.php:267
 msgid "Main Area for Single Products"
 msgstr ""
 
-#: inc/block-patterns.php:799
+#: inc/block-patterns.php:416
 msgid "Main Area (Page Header (Image)) for Single Products"
 msgstr ""
 
-#: inc/block-patterns.php:805
+#: inc/block-patterns.php:422
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
 msgstr ""
 
-#: inc/block-patterns.php:811
+#: inc/block-patterns.php:428
 msgid "Main Area (Right Sidebar) for Single Products"
 msgstr ""
 
-#: inc/block-patterns.php:817
+#: inc/block-patterns.php:434
+#: inc/template-part-areas.php:260
 msgid "Page Header for Single Products"
 msgstr ""
 
-#: inc/block-patterns.php:823
+#: inc/block-patterns.php:440
 msgid "Page Header (Image) for Single Products"
 msgstr ""
 
@@ -692,19 +457,177 @@ msgstr ""
 msgid "Cover"
 msgstr ""
 
+#: inc/template-part-areas.php:20
+#: inc/template-part-areas.php:106
+msgid "Single Posts"
+msgstr ""
+
 #: inc/template-part-areas.php:34
+#: inc/template-part-areas.php:148
 msgid "404"
 msgstr ""
 
+#: inc/template-part-areas.php:41
+#: inc/template-part-areas.php:169
+msgid "Blog Home"
+msgstr ""
+
+#: inc/template-part-areas.php:48
+#: inc/template-part-areas.php:190
+msgid "All Archives"
+msgstr ""
+
+#: inc/template-part-areas.php:55
+#: inc/template-part-areas.php:211
+msgid "Search Results"
+msgstr ""
+
+#: inc/template-part-areas.php:62
+#: inc/template-part-areas.php:232
+msgid "Product Archives"
+msgstr ""
+
+#: inc/template-part-areas.php:69
+#: inc/template-part-areas.php:253
+msgid "Single Products"
+msgstr ""
+
+#: inc/template-part-areas.php:76
+#: inc/template-part-areas.php:274
+msgid "bbPress"
+msgstr ""
+
 #: inc/template-part-areas.php:83
+#: inc/template-part-areas.php:295
 msgid "Comments"
 msgstr ""
 
-#: patterns/404/main/default.php:12
-#: patterns/404/main/page-header-image.php:12
-#: patterns/404/main/right-sidebar-page-header-image.php:20
-#: patterns/404/main/right-sidebar.php:20
-msgid "Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box."
+#: inc/template-part-areas.php:225
+msgid "Main Area of Search Results"
+msgstr ""
+
+#: inc/template-part-areas.php:246
+msgid "Page Header for Product archives"
+msgstr ""
+
+#: inc/template-part-areas.php:302
+msgid "Footer breadcrumbs"
+msgstr ""
+
+#: patterns/404-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/404-left-header.php
+msgctxt "Pattern title"
+msgid "404: Left Header"
+msgstr ""
+
+#: patterns/404-page-header-image.php
+#: patterns/archive-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Page Header (Image)"
+msgstr ""
+
+#: patterns/404-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/404-right-sidebar.php
+msgctxt "Pattern title"
+msgid "404: Right Sidebar"
+msgstr ""
+
+#: patterns/404.php
+msgctxt "Pattern title"
+msgid "404"
+msgstr ""
+
+#: patterns/archive-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/archive-left-header.php
+msgctxt "Pattern title"
+msgid "All Archives: Left Header"
+msgstr ""
+
+#: patterns/archive-product-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Product Archives: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/archive-product-left-header.php
+msgctxt "Pattern title"
+msgid "Product Archives: Left Header"
+msgstr ""
+
+#: patterns/archive-product-page-header-image.php
+msgctxt "Pattern title"
+msgid "Product Archives: Page Header (Image)"
+msgstr ""
+
+#: patterns/archive-product-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Product Archives: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/archive-product-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Product Archives: Right Sidebar"
+msgstr ""
+
+#: patterns/archive-product.php
+msgctxt "Pattern title"
+msgid "Product Archives"
+msgstr ""
+
+#: patterns/archive-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/archive-right-sidebar.php
+msgctxt "Pattern title"
+msgid "All Archives: Right Sidebar"
+msgstr ""
+
+#: patterns/archive.php
+msgctxt "Pattern title"
+msgid "All Archives"
+msgstr ""
+
+#: patterns/bbpress-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "bbPress: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/bbpress-left-header.php
+msgctxt "Pattern title"
+msgid "bbPress: Left Header"
+msgstr ""
+
+#: patterns/bbpress-page-header-image.php
+msgctxt "Pattern title"
+msgid "bbPress: Page Header (Image)"
+msgstr ""
+
+#: patterns/bbpress-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "bbPress: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/bbpress-right-sidebar.php
+msgctxt "Pattern title"
+msgid "bbPress: Right Sidebar"
+msgstr ""
+
+#: patterns/bbpress.php
+msgctxt "Pattern title"
+msgid "bbPress"
 msgstr ""
 
 #: patterns/footer-1.php
@@ -782,8 +705,8 @@ msgstr ""
 #: patterns/header-2rows.php:32
 #: patterns/header-simple.php:30
 #: patterns/header-vertical.php:29
-#: patterns/home/page-header/default.php:8
-#: patterns/home/page-header/image.php:22
+#: patterns/private/home/page-header/default.php:8
+#: patterns/private/home/page-header/image.php:22
 msgid "Blog"
 msgstr ""
 
@@ -860,9 +783,99 @@ msgctxt "Pattern title"
 msgid "Header (Vertical)"
 msgstr ""
 
+#: patterns/home-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/home-left-header.php
+msgctxt "Pattern title"
+msgid "Blog Home: Left Header"
+msgstr ""
+
+#: patterns/home-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Page Header (Image)"
+msgstr ""
+
+#: patterns/home-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/home-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Blog Home: Right Sidebar"
+msgstr ""
+
+#: patterns/home.php
+msgctxt "Pattern title"
+msgid "Blog Home"
+msgstr ""
+
 #: patterns/image.php
 msgctxt "Pattern title"
 msgid "Image"
+msgstr ""
+
+#: patterns/page-blank.php
+msgctxt "Pattern title"
+msgid "Pages: Blank"
+msgstr ""
+
+#: patterns/page-header-footer.php
+msgctxt "Pattern title"
+msgid "Pages: Only Header and Footer"
+msgstr ""
+
+#: patterns/page-left-header-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/page-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/page-left-header.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header"
+msgstr ""
+
+#: patterns/page-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/page-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Page Header (Image)"
+msgstr ""
+
+#: patterns/page-page-header-slim.php
+msgctxt "Pattern title"
+msgid "Pages: Page Header (Slim)"
+msgstr ""
+
+#: patterns/page-right-sidebar-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/page-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/page-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Pages: Right Sidebar"
+msgstr ""
+
+#: patterns/page.php
+msgctxt "Pattern title"
+msgid "Pages"
 msgstr ""
 
 #: patterns/pages-1.php
@@ -870,9 +883,16 @@ msgctxt "Pattern title"
 msgid "full width page"
 msgstr ""
 
-#: patterns/pages-2.php
-msgctxt "Pattern title"
-msgid "full width page for blank page"
+#: patterns/private/404/main/default.php:12
+#: patterns/private/404/main/page-header-image.php:12
+#: patterns/private/404/main/right-sidebar-page-header-image.php:20
+#: patterns/private/404/main/right-sidebar.php:20
+msgid "Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box."
+msgstr ""
+
+#: patterns/private/search/page-header/default.php:8
+#: patterns/private/search/page-header/image.php:22
+msgid "Search results"
 msgstr ""
 
 #: patterns/query-1.php
@@ -890,9 +910,34 @@ msgctxt "Pattern title"
 msgid "Query (Rich media / Block link / Bordered)"
 msgstr ""
 
-#: patterns/search/page-header/default.php:8
-#: patterns/search/page-header/image.php:22
-msgid "Search results"
+#: patterns/search-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/search-left-header.php
+msgctxt "Pattern title"
+msgid "Search Results: Left Header"
+msgstr ""
+
+#: patterns/search-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Page Header (Image)"
+msgstr ""
+
+#: patterns/search-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/search-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Search Results: Right Sidebar"
+msgstr ""
+
+#: patterns/search.php
+msgctxt "Pattern title"
+msgid "Search Results"
 msgstr ""
 
 #: patterns/sidebar-bbpress.php
@@ -931,6 +976,86 @@ msgstr ""
 
 #: patterns/sidebar.php:33
 msgid "Archives"
+msgstr ""
+
+#: patterns/single-header-footer.php
+msgctxt "Pattern title"
+msgid "Single Posts: Only Header and Footer"
+msgstr ""
+
+#: patterns/single-left-header-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/single-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/single-left-header.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header"
+msgstr ""
+
+#: patterns/single-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/single-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Page Header (Image)"
+msgstr ""
+
+#: patterns/single-product-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Products: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/single-product-left-header.php
+msgctxt "Pattern title"
+msgid "Single Products: Left Header"
+msgstr ""
+
+#: patterns/single-product-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Products: Page Header (Image)"
+msgstr ""
+
+#: patterns/single-product-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Products: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/single-product-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Single Products: Right Sidebar"
+msgstr ""
+
+#: patterns/single-product.php
+msgctxt "Pattern title"
+msgid "Single Products"
+msgstr ""
+
+#: patterns/single-right-sidebar-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/single-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/single-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Single Posts: Right Sidebar"
+msgstr ""
+
+#: patterns/single.php
+msgctxt "Pattern title"
+msgid "Single Posts"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:1
@@ -2372,57 +2497,7 @@ msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404: Right Sidebar"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Left Header"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "404: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
 msgid "Product Archives"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Product Archives: Right Sidebar"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Product Archives: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Product Archives: Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Product Archives: Left Header"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Product Archives: Left Header / Page Header (Image)"
 msgstr ""
 
 #: theme.json
@@ -2432,142 +2507,12 @@ msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "All Archives: Right Sidebar"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "All Archives: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "All Archives: Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "All Archives: Left Header"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "All Archives: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
 msgid "bbPress"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "bbPress: Right Sidebar"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress: Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress: Left Header"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
 msgid "Blog Home"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Blog Home: Right Sidebar"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Blog Home: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Blog Home: Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Blog Home: Left Header"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Blog Home: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Blank"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Header / Footer"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Left Header / Page Header (Featured Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Left Header"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Page Header (Featured Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Page Header (Slim)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Right Sidebar / Page Header (Featured Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages: Right Sidebar"
 msgstr ""
 
 #: theme.json
@@ -2582,102 +2527,7 @@ msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Search Results: Right Sidebar"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Search Results: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Search Results: Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Search Results: Left Header"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Search Results: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Posts: Only Header and Footer"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Posts: Left Header / Page Header (Featured Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Posts: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Posts: Left Header"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Posts: Page Header (Featured Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Posts: Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Posts: Right Sidebar / Page Header (Featured image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Posts: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Posts: Right Sidebar"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
 msgid "Single Posts"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Products: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Products: Left Header"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Products: Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Products: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Products: Right Sidebar"
 msgstr ""
 
 #: theme.json

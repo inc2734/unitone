@@ -13,6 +13,13 @@
 	padding-left: var(--unitone--global--gutters);
 }
 
+.block-editor-block-preview__content-iframe {
+	.is-root-container.block-editor-block-list__layout:not(.wp-site-blocks) {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
 .editor-styles-wrapper .block-editor-block-list__block.alignfull {
 	margin-top: 2px !important;
 	margin-bottom: 2px !important;

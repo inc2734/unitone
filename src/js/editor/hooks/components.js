@@ -64,7 +64,9 @@ export function SpacingSizeControl( {
 	options = ! options ? defaultOptions : options;
 
 	const marks = options.map( ( newValue ) => ( {
-		value: newValue?.value,
+		value: !! newValue?.value
+			? parseInt( newValue?.value )
+			: newValue?.value,
 		label: undefined,
 	} ) );
 
@@ -72,7 +74,7 @@ export function SpacingSizeControl( {
 		<BaseControl
 			id={ label }
 			label={ label }
-			className="component-spacing-sizes-control"
+			className="spacing-sizes-control"
 		>
 			{ allowRoot && (
 				<div style={ { marginTop: '12px' } }>
@@ -89,7 +91,7 @@ export function SpacingSizeControl( {
 			{ 'root' !== value && (
 				<>
 					<RangeControl
-						className="components-spacing-sizes-control__range-control"
+						className="spacing-sizes-control__range-control"
 						value={ parseInt( value ) }
 						allowReset={ true }
 						resetFallbackValue={ undefined }

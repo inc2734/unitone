@@ -54,10 +54,10 @@
 			"fluidTypography": true,
 			"lineHeight": true
 		},
-		"__experimentalLayout": {
+		"layout": {
 			"allowSwitching": false,
 			"allowEditing": false,
-			"allowInheriting": true
+			"allowInheriting": false
 		}
 	},
 	"example": {

@@ -18,7 +18,7 @@ export function PositionPanel( props ) {
 	return (
 		<>
 			{ ! isPositionDisabled && (
-				<InspectorControls>
+				<InspectorControls group="styles">
 					{ ! isPositionDisabled && <PositionEdit { ...props } /> }
 				</InspectorControls>
 			) }

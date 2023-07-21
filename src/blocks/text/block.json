@@ -14,12 +14,6 @@
 			"type": "boolean",
 			"default": false
 		},
-		"layout": {
-			"type": "object",
-			"default": {
-				"type": "constrained"
-			}
-		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
@@ -57,7 +51,10 @@
 		"layout": {
 			"allowSwitching": false,
 			"allowEditing": false,
-			"allowInheriting": false
+			"allowInheriting": false,
+			"default": {
+				"type": "constrained"
+			}
 		}
 	},
 	"example": {

@@ -15,9 +15,11 @@ function unitone_theme_scripts() {
 		get_theme_file_uri( 'dist/js/app/app.js' ),
 		$asset['dependencies'],
 		filemtime( get_theme_file_path( 'dist/js/app/app.js' ) ),
-		false
+		array(
+			'strategy'  => 'defer',
+			'in_footer' => false,
+		)
 	);
-	wp_script_add_data( 'unitone/app', 'strategy', 'defer' );
 
 	wp_enqueue_style(
 		'unitone',
@@ -38,9 +40,11 @@ function unitone_enqueue_block_editor_assets() {
 		get_theme_file_uri( 'dist/js/editor/editor.js' ),
 		$asset['dependencies'],
 		filemtime( get_theme_file_path( 'dist/js/editor/editor.js' ) ),
-		false
+		array(
+			'strategy'  => 'defer',
+			'in_footer' => false,
+		)
 	);
-	wp_script_add_data( 'unitone/editor', 'strategy', 'defer' );
 	wp_set_script_translations( 'unitone/editor', 'unitone', get_template_directory() . '/languages' );
 
 	foreach ( WP_Block_Type_Registry::get_instance()->get_all_registered() as $block_type => $block ) {

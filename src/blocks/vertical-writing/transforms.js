@@ -32,12 +32,6 @@ export default {
 			},
 		},
 	],
-	to: [
-		{
-			type: 'block',
-			blocks: [ '*' ],
-			transform: ( attributes, innerBlocks ) =>
-				innerBlocks.flatMap( ( innerBlock ) => innerBlock ),
-		},
-	],
+	ungroup: ( attributes, innerBlocks ) =>
+		innerBlocks.flatMap( ( innerBlock ) => innerBlock ),
 };

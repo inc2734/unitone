@@ -1,81 +1,73 @@
-@use '../../../node_modules/@inc2734/unitone-css/src/foundation/foundation';
+@use "sass:meta";
 
-@mixin include() {
-	@include foundation.foundation();
+@include meta.load-css("../../../node_modules/@inc2734/unitone-css/src/foundation/foundation");
 
-	:where(*) {
-		position: relative;
+:where(*) {
+	position: relative;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+code,
+kbd {
+	--unitone--font-size: -1;
+
+	display: inline-block;
+	background-color: var(--wp--preset--color--unitone-light-gray);
+	padding: 0 var(--unitone--s-2);
+	border-radius: var(--unitone--global--border-radius);
+}
+
+:where(
+	[type=email],
+	[type=number],
+	[type=password],
+	[type=search],
+	[type=tel],
+	[type=text],
+	[type=url],
+	textarea
+) {
+	border: 1px solid var(--wp--preset--color--unitone-gray);
+	padding: calc(var(--unitone--s-1) / 1.5);
+	border-radius: var(--unitone--global--border-radius);
+	font-family: inherit;
+	max-width: 100%;
+}
+
+:where(select) {
+	border: 1px solid var(--wp--preset--color--unitone-gray);
+	padding: calc(var(--unitone--s-1) / 1.5);
+	border-radius: var(--unitone--global--border-radius);
+	font-family: inherit;
+	max-width: 100%;
+}
+
+:where(
+	[type=button],
+	[type=reset],
+	[type=submit],
+	button
+) {
+	border: 1px solid var(--wp--preset--color--unitone-gray);
+	padding: calc(var(--unitone--s-1) / 1.5) var(--unitone--s-1);
+	border-radius: var(--unitone--global--border-radius);
+	font-family: inherit;
+
+	&:active {
+		border-color: var(--wp--preset--color--unitone-dark-gray);
 	}
+}
 
-	body {
-		overflow-x: hidden;
+fieldset {
+	border: 1px solid var(--wp--preset--color--unitone-light-gray);
+	padding: var(--unitone--s-1);
+	min-width: auto;
+}
 
-		// In WordPress 6.1, the value set in styles.spacing.blockGap is output as is,
-		// so you need to specify it again here.
-		.is-layout-flex.is-layout-flex {
-			gap: var(--wp--style--block-gap);
-		}
-	}
-
-	code,
-	kbd {
-		--unitone--font-size: -1;
-
-		display: inline-block;
-		background-color: var(--wp--preset--color--unitone-light-gray);
-		padding: 0 var(--unitone--s-2);
-		border-radius: var(--unitone--global--border-radius);
-	}
-
-	:where(
-		[type=email],
-		[type=number],
-		[type=password],
-		[type=search],
-		[type=tel],
-		[type=text],
-		[type=url],
-		textarea
-	) {
-		border: 1px solid var(--wp--preset--color--unitone-gray);
-		padding: calc(var(--unitone--s-1) / 1.5);
-		border-radius: var(--unitone--global--border-radius);
-		font-family: inherit;
-		max-width: 100%;
-	}
-
-	:where(select) {
-		border: 1px solid var(--wp--preset--color--unitone-gray);
-		padding: calc(var(--unitone--s-1) / 1.5);
-		border-radius: var(--unitone--global--border-radius);
-		font-family: inherit;
-		max-width: 100%;
-	}
-
-	:where(
-		[type=button],
-		[type=reset],
-		[type=submit],
-		button
-	) {
-		border: 1px solid var(--wp--preset--color--unitone-gray);
-		padding: calc(var(--unitone--s-1) / 1.5) var(--unitone--s-1);
-		border-radius: var(--unitone--global--border-radius);
-		font-family: inherit;
-
-		&:active {
-			border-color: var(--wp--preset--color--unitone-dark-gray);
-		}
-	}
-
-	fieldset {
-		border: 1px solid var(--wp--preset--color--unitone-light-gray);
-		padding: var(--unitone--s-1);
-		min-width: auto;
-	}
-
-	legend {
-		padding-right: var(--unitone--s-2);
-		padding-left: var(--unitone--s-2);
-	}
+legend {
+	padding-right: var(--unitone--s-2);
+	padding-left: var(--unitone--s-2);
 }

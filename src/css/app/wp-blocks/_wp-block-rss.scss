@@ -1,17 +1,15 @@
-@mixin include() {
-	.wp-block-rss {
-		display: flex;
-		flex-direction: column;
-		gap: var(--unitone--s-2);
+.wp-block-rss {
+	display: flex;
+	flex-direction: column;
+	gap: var(--unitone--s-2);
 
-		&__item {
-			margin-left: 0;
-		}
+	&__item {
+		margin-left: 0;
+	}
 
-		&__item-publish-date,
-		&__item-author,
-		&__item-excerpt {
-			font-size: var(--wp--preset--font-size--unitone-xs);
-		}
+	&__item-publish-date,
+	&__item-author,
+	&__item-excerpt {
+		font-size: var(--wp--preset--font-size--unitone-xs);
 	}
 }

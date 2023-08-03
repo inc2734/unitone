@@ -1,58 +1,56 @@
 @use "sass:map";
 @use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
 
-@mixin include() {
-	$font-sizes: (
-		(
-			slug: unitone-xs,
-			size: -2,
-		),
-		(
-			slug: unitone-s,
-			size: -1,
-		),
-		(
-			slug: unitone-m,
-			size: 0,
-		),
-		(
-			slug: unitone-l,
-			size: 1,
-		),
-		(
-			slug: unitone-xl,
-			size: 2,
-		),
-		(
-			slug: unitone-2-xl,
-			size: 3,
-		),
-		(
-			slug: unitone-3-xl,
-			size: 4,
-		),
-		(
-			slug: unitone-4-xl,
-			size: 5,
-		),
-		(
-			slug: unitone-5-xl,
-			size: 6,
-		),
-		(
-			slug: unitone-6-xl,
-			size: 7,
-		),
-	);
+$font-sizes: (
+	(
+		slug: unitone-xs,
+		size: -2,
+	),
+	(
+		slug: unitone-s,
+		size: -1,
+	),
+	(
+		slug: unitone-m,
+		size: 0,
+	),
+	(
+		slug: unitone-l,
+		size: 1,
+	),
+	(
+		slug: unitone-xl,
+		size: 2,
+	),
+	(
+		slug: unitone-2-xl,
+		size: 3,
+	),
+	(
+		slug: unitone-3-xl,
+		size: 4,
+	),
+	(
+		slug: unitone-4-xl,
+		size: 5,
+	),
+	(
+		slug: unitone-5-xl,
+		size: 6,
+	),
+	(
+		slug: unitone-6-xl,
+		size: 7,
+	),
+);
 
-	@each $font-size in $font-sizes {
-		.has-#{ map.get($font-size, slug) }-font-size {
-			--unitone--font-size: #{ map.get($font-size, size) } !important;
-			--wp--preset--font-size--#{ map.get($font-size, slug) }: #{ variables.$font-size } !important;
+@each $font-size in $font-sizes {
+	.has-#{ map.get($font-size, slug) }-font-size {
+		--unitone--font-size: #{ map.get($font-size, size) } !important;
+		--wp--preset--font-size--#{ map.get($font-size, slug) }: #{ variables.$font-size } !important;
 
-			&[data-unitone-layout~="-fluid-typography"] {
-				--wp--preset--font-size--#{ map.get($font-size, slug) }: #{ variables.$fluid-font-size } !important;
-			}
+		&[data-unitone-layout~="-fluid-typography"] {
+			--wp--preset--font-size--#{ map.get($font-size, slug) }: #{ variables.$fluid-font-size } !important;
 		}
 	}
 }

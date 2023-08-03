@@ -1,12 +1,10 @@
-@mixin include() {
-	.wp-block-archives {
-		list-style: none;
-		display: flex;
-		flex-direction: column;
-		padding-left: 0;
+.wp-block-archives {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	padding-left: 0;
 
-		li {
-			margin-left: 0;
-		}
+	li {
+		margin-left: 0;
 	}
 }

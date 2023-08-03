@@ -1,5 +1,3 @@
-@mixin include() {
-	.wp-block-social-links {
-		--wp--style--block-gap: var(--unitone--s-2);
-	}
+.wp-block-social-links {
+	--wp--style--block-gap: var(--unitone--s-2);
 }

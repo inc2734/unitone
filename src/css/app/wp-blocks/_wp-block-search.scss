@@ -1,16 +1,14 @@
-@mixin include() {
-	.wp-block-search {
-		display: flex;
-		flex-direction: column;
-		gap: var(--unitone--s-2);
-	}
+.wp-block-search {
+	display: flex;
+	flex-direction: column;
+	gap: var(--unitone--s-2);
+}
 
-	.wp-block-search__inside-wrapper {
-		display: flex;
-		gap: var(--unitone--s-2);
-	}
+.wp-block-search__inside-wrapper {
+	display: flex;
+	gap: var(--unitone--s-2);
+}
 
-	.wp-block-search__button {
-		margin: 0;
-	}
+.wp-block-search__button {
+	margin: 0;
 }

@@ -242,7 +242,7 @@
 			}
 		},
 		"spacing": {
-			"blockGap": "var(--unitone--global--gap)"
+			"blockGap": "var(--unitone--global--text-gap)"
 		}
 	},
 	"customTemplates": [

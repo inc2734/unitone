@@ -1,16 +1,10 @@
-@mixin include() {
-	.wp-block-buttons {
-		--wp--style--block-gap: var(--unitone--global--text-gap);
-	}
+.wp-element-button:not(.wp-block-button__link),
+.wp-block-button {
+	--unitone--padding: var(--unitone--s-1);
+}
 
-	.wp-element-button:not(.wp-block-button__link),
-	.wp-block-button {
-		--unitone--padding: var(--unitone--s-1);
-	}
-
-	.wp-block-button.is-style-outline > .wp-block-button__link,
-	:where(.wp-block-button__link).is-style-outline {
-		border-width: 1px;
-		padding: calc(var(--unitone--padding) / 1.5) var(--unitone--padding); // @see theme.json
-	}
+.wp-block-button.is-style-outline > .wp-block-button__link,
+:where(.wp-block-button__link).is-style-outline {
+	border-width: 1px;
+	padding: calc(var(--unitone--padding) / 1.5) var(--unitone--padding); // @see theme.json
 }

@@ -44,7 +44,7 @@ if ( ! function_exists( 'unitone_theme_setup' ) ) {
 		);
 
 		// Add support for block styles.
-		add_theme_support( 'wp-block-styles' );
+		// add_theme_support( 'wp-block-styles' );
 
 		// Remove core block patterns.
 		remove_theme_support( 'core-block-patterns' );

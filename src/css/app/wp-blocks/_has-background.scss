@@ -1,22 +1,20 @@
-@mixin include() {
-	p.has-background,
-	.wp-block-preformatted.has-background,
-	.wp-block-template-part.has-background,
-	.wp-block-group.has-background {
-		padding: var(--unitone--global--text-gap);
-	}
+p.has-background,
+.wp-block-preformatted.has-background,
+.wp-block-template-part.has-background,
+.wp-block-group.has-background {
+	padding: var(--unitone--global--text-gap);
+}
 
-	ul.has-background,
-	ol.has-background {
-		padding: var(--unitone--global--text-gap);
-	}
+ul.has-background,
+ol.has-background {
+	padding: var(--unitone--global--text-gap);
+}
 
-	h1.has-background,
-	h2.has-background,
-	h3.has-background,
-	h4.has-background,
-	h5.has-background,
-	h6.has-background {
-		padding: calc(var(--unitone--global--text-gap) / 4) calc(var(--unitone--global--text-gap) / 3)
-	}
+h1.has-background,
+h2.has-background,
+h3.has-background,
+h4.has-background,
+h5.has-background,
+h6.has-background {
+	padding: calc(var(--unitone--global--text-gap) / 4) calc(var(--unitone--global--text-gap) / 3)
 }

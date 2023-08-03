@@ -1,5 +1,5 @@
-@use './app';
+@use "sass:meta";
 
 .editor-styles-wrapper {
-	@include app.include();
+	@include meta.load-css("app");
 }

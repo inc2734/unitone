@@ -6,20 +6,15 @@
  * which should be replaced by .editor-styles-wrapper in PHP.
  */
 
+@use "sass:meta";
 @use '../../../node_modules/@inc2734/unitone-css/src/settings/settings';
 
-@use 'foundation';
-@use 'blocks';
-@use 'wp-blocks/wp-blocks';
-@use 'main';
-@use 'block-styles/block-styles';
-
 .editor-styles-wrapper {
-	@include foundation.include();
-	@include wp-blocks.include();
-	@include blocks.include();
-	@include main.include();
-	@include block-styles.include();
+	@include meta.load-css("foundation");
+	@include meta.load-css("wp-blocks/wp-blocks");
+	@include meta.load-css("blocks");
+	@include meta.load-css("main");
+	@include meta.load-css("block-styles/block-styles");
 
 	.is-root-container.is-outline-mode.is-focus-mode {
 		> [data-unitone-layout~="position"] {

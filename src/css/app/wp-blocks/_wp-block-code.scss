@@ -1,18 +1,17 @@
-@mixin include() {
-	.wp-block-code {
+.wp-block-code {
+	border: none;
+	border-radius: 0;
+	font-family: Menlo, Consolas, monaco, monospace;
+	padding: var(--unitone--global--text-gap);
+	overflow: auto;
+
+	code {
+		background-color: transparent;
 		border: none;
 		border-radius: 0;
-		padding: var(--unitone--global--text-gap);
-		overflow: auto;
-
-		code {
-			background-color: transparent;
-			border: none;
-			border-radius: 0;
-			color: inherit;
-			font-size: inherit;
-			padding: 0;
-			white-space: inherit;
-		}
+		color: inherit;
+		font-size: inherit;
+		padding: 0;
+		white-space: inherit;
 	}
 }

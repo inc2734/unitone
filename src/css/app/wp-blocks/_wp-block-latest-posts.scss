@@ -1,16 +1,14 @@
-@mixin include() {
-	.wp-block-latest-posts {
-		display: flex;
-		flex-direction: column;
-		gap: var(--unitone--s-2);
+.wp-block-latest-posts {
+	display: flex;
+	flex-direction: column;
+	gap: var(--unitone--s-2);
 
-		li {
-			margin-left: 0;
-		}
+	li {
+		margin-left: 0;
+	}
 
-		&__post-author,
-		&__post-date {
-			font-size: var(--wp--preset--font-size--unitone-xs);
-		}
+	&__post-author,
+	&__post-date {
+		font-size: var(--wp--preset--font-size--unitone-xs);
 	}
 }

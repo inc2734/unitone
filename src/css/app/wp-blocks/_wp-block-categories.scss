@@ -1,16 +1,14 @@
-@mixin include() {
-	.wp-block-categories {
+.wp-block-categories {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+
+	.cat-item {
+		margin-left: 0;
+	}
+
+	.children {
 		list-style: none;
-		display: flex;
-		flex-direction: column;
-
-		.cat-item {
-			margin-left: 0;
-		}
-
-		.children {
-			list-style: none;
-			margin-left: 1em;
-		}
+		margin-left: 1em;
 	}
 }

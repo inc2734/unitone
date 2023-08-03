@@ -5,8 +5,6 @@
 }
 
 .is-root-container.block-editor-block-list__layout:not(.wp-site-blocks) {
-	@include text.abstract-text();
-
 	--unitone--gutters: var(--unitone--global--gutters);
 
 	padding-right: var(--unitone--global--gutters);

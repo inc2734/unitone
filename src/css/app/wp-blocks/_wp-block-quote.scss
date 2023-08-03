@@ -1,20 +1,40 @@
 @use '../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
 
-@mixin include() {
-	.wp-block-quote {
-		@include text.abstract-text();
-		--unitone--max-width: inherit;
+.wp-block-quote {
+	@include text.abstract-text();
+	--unitone--max-width: inherit;
 
-		box-sizing: border-box;
-		padding: 0;
+	box-sizing: border-box;
+	font-style: italic;
+	padding: 0;
 
-		&:where(:not(.is-style-plain)) {
-			padding-left: var(--unitone--global--text-gap);
+	&:where(:not(.is-style-plain)) {
+		border-left: 0.25em solid currentColor;
+		padding-left: var(--unitone--global--text-gap);
+
+		&.has-text-align-right {
+			border-left: none;
+			border-right: 0.25em solid currentColor;
+			padding-left: 0;
+			padding-right: var(--unitone--global--text-gap);
 		}
 
-		cite,
-		footer {
-			font-size: var(--wp--preset--font-size--unitone-s);
+		&.has-text-align-center {
+			border: none;
+			padding-left: 0;
 		}
 	}
+
+	cite,
+	footer {
+		display: block;
+		color: currentColor;
+		font-size: var(--wp--preset--font-size--unitone-s);
+		font-style: normal;
+	}
+}
+
+:where(body .wp-block-quote) > * {
+	margin-block-start: var(--unitone--global--text-gap);
+	margin-block-end: 0;
 }

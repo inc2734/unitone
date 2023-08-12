@@ -11,7 +11,6 @@
 function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/both-sides' );
 	register_block_type( get_template_directory() . '/dist/blocks/both-sides-content' );
-	register_block_type( get_template_directory() . '/dist/blocks/decorator' );
 	register_block_type( get_template_directory() . '/dist/blocks/center' );
 	register_block_type( get_template_directory() . '/dist/blocks/cluster' );
 	register_block_type( get_template_directory() . '/dist/blocks/cluster-divided' );
@@ -19,6 +18,8 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/container' );
 	register_block_type( get_template_directory() . '/dist/blocks/cover' );
 	register_block_type( get_template_directory() . '/dist/blocks/cover-content' );
+	register_block_type( get_template_directory() . '/dist/blocks/decorator' );
+	register_block_type( get_template_directory() . '/dist/blocks/flex' );
 	register_block_type( get_template_directory() . '/dist/blocks/frame' );
 	register_block_type( get_template_directory() . '/dist/blocks/layer' );
 	register_block_type( get_template_directory() . '/dist/blocks/layers' );
@@ -60,27 +61,6 @@ add_filter(
 	},
 	10,
 	3
-);
-
-/**
- * Fix .wp-container-* class being added by itself in the query loop block.
- */
-remove_filter( 'render_block', 'wp_render_layout_support_flag' );
-add_filter(
-	'render_block',
-	function( $block_content, $block ) {
-		if ( ! empty( $block['blockName'] ) && 0 === strpos( $block['blockName'], 'unitone/' ) ) {
-			$block_content = preg_replace(
-				'|(<[^>]+?data-unitone-layout[^>]+?)wp-container-\d+?([^>]+?>)|ms',
-				'$1$2',
-				$block_content
-			);
-			return $block_content;
-		}
-		return wp_render_layout_support_flag( $block_content, $block );
-	},
-	10,
-	2
 );
 
 /**
@@ -365,6 +345,26 @@ add_filter(
 			}
 		}
 
+		// --unitone--flex-grow
+		if ( isset( $block['attrs']['unitone']['flexGrow'] ) && '' !== $block['attrs']['unitone']['flexGrow'] ) {
+			$style    = $p->get_attribute( 'style' ) ?? '';
+			$property = '--unitone--flex-grow:';
+			if ( false === strpos( $style, $property ) ) {
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['flexGrow'] ) );
+			}
+		}
+
+		// --unitone--flex-shrink
+		if ( isset( $block['attrs']['unitone']['flexShrink'] ) && '' !== $block['attrs']['unitone']['flexShrink'] ) {
+			$style    = $p->get_attribute( 'style' ) ?? '';
+			$property = '--unitone--flex-shrink:';
+			if ( false === strpos( $style, $property ) ) {
+				$style = $style ? $style . ';' : $style;
+				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['flexShrink'] ) );
+			}
+		}
+
 		// --unitone--flex-basis
 		if ( isset( $block['attrs']['unitone']['flexBasis'] ) && '' !== $block['attrs']['unitone']['flexBasis'] ) {
 			$style    = $p->get_attribute( 'style' ) ?? '';
@@ -476,22 +476,6 @@ add_filter(
 			$p->set_attribute( 'data-unitone-layout', $p->get_attribute( 'data-unitone-layout' ) . ' ' . '-intrinsic' );
 			$block_content = $p->get_updated_html();
 		}
-		return $block_content;
-	},
-	10,
-	2
-);
-
-/**
- * Add .is-layout-constrained to unitone/text.
- */
-add_filter(
-	'render_block_unitone/text',
-	function( $block_content, $block ) {
-		$p = new \WP_HTML_Tag_Processor( $block_content );
-		$p->next_tag();
-		$p->set_attribute( 'class', $p->get_attribute( 'class' ) . ' ' . 'is-layout-constrained' );
-		$block_content = $p->get_updated_html();
 		return $block_content;
 	},
 	10,

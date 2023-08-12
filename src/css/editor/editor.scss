@@ -18,9 +18,8 @@
 	}
 }
 
-.editor-styles-wrapper .block-editor-block-list__block.alignfull {
+.editor-styles-wrapper .alignfull + .alignfull {
 	margin-top: 2px !important;
-	margin-bottom: 2px !important;
 }
 
 .block-editor-block-preview__content-iframe {

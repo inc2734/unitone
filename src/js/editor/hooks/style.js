@@ -5,8 +5,6 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
-import { useSelect } from '@wordpress/data';
-import { store as blockEditorStore } from '@wordpress/block-editor';
 
 import {
 	DimensionsPanel,
@@ -27,6 +25,8 @@ import {
 	editMaxHeightProp,
 	editMinHeightProp,
 	editAutoRepeatProp,
+	editFlexGrowProp,
+	editFlexShrinkProp,
 	editFlexBasisProp,
 } from './layout/layout';
 
@@ -74,6 +74,8 @@ function addEditProps( settings ) {
 	settings = editMaxHeightProp( settings );
 	settings = editMinHeightProp( settings );
 	settings = editAutoRepeatProp( settings );
+	settings = editFlexGrowProp( settings );
+	settings = editFlexShrinkProp( settings );
 	settings = editFlexBasisProp( settings );
 	settings = editNegativeProp( settings );
 	settings = editOverflowProp( settings );
@@ -149,61 +151,4 @@ addFilter(
 	'editor.BlockEdit',
 	'unitone/with-inspector-controls',
 	withInspectorControls
-);
-
-/**
- * Add parent block name prop.
- */
-const withChildBlockAttributes = createHigherOrderComponent(
-	( BlockListBlock ) => {
-		return ( props ) => {
-			const { getBlockParents, getBlock } = useSelect(
-				( select ) => {
-					return select( blockEditorStore );
-				},
-				[ props.clientId ]
-			);
-
-			const newProps = { ...props };
-
-			const blockParents = getBlockParents( props.clientId );
-			if ( 0 < blockParents.length ) {
-				const parentClientId = blockParents[ blockParents.length - 1 ];
-				if ( !! parentClientId ) {
-					const parentBlock = getBlock( parentClientId );
-
-					if ( 'unitone/both-sides' === parentBlock?.name ) {
-						newProps.attributes = {
-							...newProps.attributes,
-							__unstableUnitoneSupports: {
-								flexBasis: true,
-							},
-						};
-					} else if ( 'unitone/layers' === parentBlock?.name ) {
-						newProps.attributes = {
-							...newProps.attributes,
-							__unstableUnitoneSupports: {
-								alignSelf: true,
-								justifySelf: true,
-								gridColumn: true,
-								gridRow: true,
-								maxWidth: true,
-								minHeight: true,
-								mixBlendMode: true,
-							},
-						};
-					}
-				}
-			}
-
-			return <BlockListBlock { ...newProps } />;
-		};
-	},
-	'withClientIdClassName'
-);
-
-addFilter(
-	'editor.BlockListBlock',
-	'unitone/with-child-block-attributes',
-	withChildBlockAttributes
 );

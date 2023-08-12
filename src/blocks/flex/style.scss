@@ -1,0 +1,18 @@
+.unitone-flex {
+	--unitone--gap: var(--unitone--global--text-gap);
+
+	gap: var(--unitone--gap);
+	flex-direction: row;
+	justify-content: start;
+
+	> * {
+		--unitone--flex-grow: initial;
+		--unitone--flex-shrink: initial;
+		--unitone--flex-basis: initial;
+
+		flex-grow: var(--unitone--flex-grow);
+		flex-shrink: var(--unitone--flex-shrink);
+		flex-basis: var(--unitone--flex-basis);
+		min-width: 0;
+	}
+}

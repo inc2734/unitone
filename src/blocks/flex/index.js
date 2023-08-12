@@ -4,24 +4,20 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 
+import './style.scss';
+
 import icon from '../icon';
 import edit from './edit';
 import save from './save';
-import deprecated from './deprecated';
 import transforms from './transforms';
-import variations from './variations';
 
-import './index.scss';
-
-registerBlockType( 'unitone/layers', {
+registerBlockType( 'unitone/flex', {
 	icon: {
 		src: icon,
 	},
 	edit,
 	save,
-	deprecated,
 	transforms,
-	variations,
 } );
 
 const withChildBlockAttributes = createHigherOrderComponent(
@@ -42,17 +38,13 @@ const withChildBlockAttributes = createHigherOrderComponent(
 				if ( !! parentClientId ) {
 					const parentBlock = getBlock( parentClientId );
 
-					if ( 'unitone/layers' === parentBlock?.name ) {
+					if ( 'unitone/flex' === parentBlock?.name ) {
 						newProps.attributes = {
 							...newProps.attributes,
 							__unstableUnitoneSupports: {
-								alignSelf: true,
-								justifySelf: true,
-								gridColumn: true,
-								gridRow: true,
-								maxWidth: true,
-								minHeight: true,
-								mixBlendMode: true,
+								flexGrow: true,
+								flexShrink: true,
+								flexBasis: true,
 							},
 						};
 					}
@@ -67,6 +59,6 @@ const withChildBlockAttributes = createHigherOrderComponent(
 
 addFilter(
 	'editor.BlockListBlock',
-	'unitone/layers/with-child-block-attributes',
+	'unitone/flex/with-child-block-attributes',
 	withChildBlockAttributes
 );

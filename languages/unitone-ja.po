@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-07-14T05:44:40+00:00\n"
-"PO-Revision-Date: 2023-07-14 14:48+0900\n"
+"POT-Creation-Date: 2023-08-11T13:52:59+00:00\n"
+"PO-Revision-Date: 2023-08-11 22:54+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -51,9 +51,9 @@ msgstr "パターンライブラリーからパターンを再取得する"
 #: App/Controller/Manager.php:141 dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/cover/index.js:1
-#: dist/blocks/decorator/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/layers/index.js:25 dist/blocks/reel/index.js:1
-#: dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/decorator/index.js:1 dist/blocks/flex/index.js:1
+#: dist/blocks/frame/index.js:1 dist/blocks/layers/index.js:25
+#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:9
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
@@ -1070,7 +1070,7 @@ msgid "Cluster (Divider: bordered)"
 msgstr "クラスター（区切り：ボーダー）"
 
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/flex/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/section/index.js:9 dist/blocks/stack-divided/index.js:1
 msgid "HTML element"
 msgstr "HTML 要素"
@@ -1565,6 +1565,14 @@ msgid "Block alignment"
 msgstr "ブロックの配置"
 
 #: dist/js/editor/editor.js:1
+msgid "Fill"
+msgstr "塗りつぶし"
+
+#: dist/js/editor/editor.js:1
+msgid "Fit"
+msgstr "フィット"
+
+#: dist/js/editor/editor.js:1
 msgid "Recommended width"
 msgstr "推奨幅"
 
@@ -1826,6 +1834,41 @@ msgstr "装飾用ブロック。色、パディング、位置が設定できま
 msgctxt "block keyword"
 msgid "Box"
 msgstr "ボックス"
+
+#: dist/blocks/flex/block.json
+msgctxt "block title"
+msgid "Flex"
+msgstr "フレックス"
+
+#: dist/blocks/flex/block.json
+msgctxt "block description"
+msgid "Child blocks can be layout in flex box."
+msgstr "子ブロックをフレックスボックス内にレイアウトできます。"
+
+#: dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "flex"
+msgstr "フレックス"
+
+#: dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "flex-box"
+msgstr "flex-box"
+
+#: dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "flexbox"
+msgstr "flexbox"
+
+#: dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "auto-layout"
+msgstr "auto-layout"
+
+#: dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "AutoLayout"
+msgstr "AutoLayout"
 
 #: dist/blocks/frame/block.json
 msgctxt "block title"

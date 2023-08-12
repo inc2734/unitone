@@ -55,6 +55,22 @@ import {
 } from './flex-basis';
 
 import {
+	useIsFlexGrowDisabled,
+	hasFlexGrowValue,
+	resetFlexGrow,
+	FlexGrowEdit,
+	editFlexGrowProp,
+} from './flex-grow';
+
+import {
+	useIsFlexShrinkDisabled,
+	hasFlexShrinkValue,
+	resetFlexShrink,
+	FlexShrinkEdit,
+	editFlexShrinkProp,
+} from './flex-shrink';
+
+import {
 	useIsMaxWidthDisabled,
 	hasMaxWidthValue,
 	resetMaxWidth,
@@ -92,6 +108,8 @@ export {
 	editJustifyContentColumnProp,
 	editBlockAlignProp,
 	editFlexBasisProp,
+	editFlexGrowProp,
+	editFlexShrinkProp,
 	editMaxWidthProp,
 	editMaxHeightProp,
 	editMinHeightProp,
@@ -105,6 +123,8 @@ export function LayoutPanel( props ) {
 	const isAlignItemsDisabled = useIsAlignItemsDisabled( props );
 	const isBlockAlignDisabled = useIsBlockAlignDisabled( props );
 	const isFlexBasisDisabled = useIsFlexBasisDisabled( props );
+	const isFlexGrowDisabled = useIsFlexGrowDisabled( props );
+	const isFlexShrinkDisabled = useIsFlexShrinkDisabled( props );
 	const isMaxWidthDisabled = useIsMaxWidthDisabled( props );
 	const isMaxHeightDisabled = useIsMaxHeightDisabled( props );
 	const isMinHeightDisabled = useIsMinHeightDisabled( props );
@@ -116,6 +136,8 @@ export function LayoutPanel( props ) {
 		isAlignItemsDisabled &&
 		isBlockAlignDisabled &&
 		isFlexBasisDisabled &&
+		isFlexGrowDisabled &&
+		isFlexShrinkDisabled &&
 		isMaxWidthDisabled &&
 		isMaxHeightDisabled &&
 		isMinHeightDisabled &&
@@ -150,6 +172,8 @@ export function LayoutPanel( props ) {
 				! isAlignItemsDisabled ||
 				! isBlockAlignDisabled ||
 				! isFlexBasisDisabled ||
+				! isFlexGrowDisabled ||
+				! isFlexShrinkDisabled ||
 				! isMaxWidthDisabled ||
 				! isMaxHeightDisabled ||
 				! isMinHeightDisabled ||
@@ -237,6 +261,45 @@ export function LayoutPanel( props ) {
 								<BlockAlignEdit
 									{ ...props }
 									label={ __( 'Block alignment', 'unitone' ) }
+								/>
+							</ToolsPanelItem>
+						) }
+
+						{ ! isFlexGrowDisabled && (
+							<ToolsPanelItem
+								hasValue={ () => hasFlexGrowValue( props ) }
+								label={ __( 'Fill', 'unitone' ) }
+								onDeselect={ () => resetFlexGrow( props ) }
+								isShownByDefault
+							>
+								<FlexGrowEdit
+									{ ...props }
+									label={
+										<>
+											{ __( 'Fill', 'unitone' ) }
+											&nbsp;:&nbsp;<code>flex-grow</code>
+										</>
+									}
+								/>
+							</ToolsPanelItem>
+						) }
+
+						{ ! isFlexShrinkDisabled && (
+							<ToolsPanelItem
+								hasValue={ () => hasFlexShrinkValue( props ) }
+								label={ __( 'Fit', 'unitone' ) }
+								onDeselect={ () => resetFlexShrink( props ) }
+								isShownByDefault
+							>
+								<FlexShrinkEdit
+									{ ...props }
+									label={
+										<>
+											{ __( 'Fit', 'unitone' ) }
+											&nbsp;:&nbsp;
+											<code>flex-shrink</code>
+										</>
+									}
 								/>
 							</ToolsPanelItem>
 						) }

@@ -47,8 +47,8 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 		$is_last_item = (int) count( $items ) - 1 === (int) $key;
 
 		/**
-			* @see https://github.com/WordPress/WordPress/blob/5.4-branch/wp-includes/default-filters.php#L168-L170
-			*/
+		 * @see https://github.com/WordPress/WordPress/blob/5.4-branch/wp-includes/default-filters.php#L168-L170
+		 */
 		$_title = wptexturize( $item['title'] );
 		$_title = convert_chars( $_title );
 		$_title = trim( $_title );

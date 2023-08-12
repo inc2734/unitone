@@ -88,11 +88,14 @@ function addEditProps( settings ) {
 }
 
 const addAttribute = ( settings ) => {
-	Object.assign( settings.attributes, {
-		unitone: {
-			type: 'object',
-		},
-	} );
+	// Allow blocks to specify their own attribute definition with default values if needed.
+	if ( ! settings.attributes.unitone ) {
+		Object.assign( settings.attributes, {
+			unitone: {
+				type: 'object',
+			},
+		} );
+	}
 
 	return settings;
 };

@@ -5,9 +5,9 @@
 	},
 	"devDependencies": {
 		"@inc2734/unitone-css": "^0.44.1",
-		"@wordpress/env": "^8.4.0",
-		"@wordpress/icons": "^9.29.0",
-		"@wordpress/scripts": "^26.9.0",
+		"@wordpress/env": "^8.5.0",
+		"@wordpress/icons": "^9.30.0",
+		"@wordpress/scripts": "^26.10.0",
 		"autoprefixer": "^10.4.14",
 		"classnames": "^2.3.2",
 		"cpy-cli": "^4.2.0",
@@ -19,8 +19,8 @@
 		"postcss-import": "^15.1.0",
 		"prettier": "npm:wp-prettier@2.8.5",
 		"rimraf": "^5.0.1",
-		"sass": "^1.64.2",
-		"swiper": "^9"
+		"sass": "^1.65.1",
+		"swiper": "^10"
 	},
 	"scripts": {
 		"export:wp-content:plugins": "npm run cli cp -- -r wp-content/plugins .export/wp-content",
@@ -68,7 +68,7 @@
 		"make-json": "rimraf languages/*.json && wp-env start && npm run wp i18n -- make-json ./languages/unitone-ja.po --no-purge"
 	},
 	"dependencies": {
-		"remove-accents": "^0.4.4",
+		"remove-accents": "^0.5.0",
 		"save-dev": "0.0.1-security"
 	}
 }

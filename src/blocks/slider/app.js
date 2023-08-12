@@ -1,4 +1,5 @@
-import Swiper, { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
+import Swiper from 'swiper';
+import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	const canvases = document.querySelectorAll( '.unitone-slider__canvas' );

@@ -140,3 +140,17 @@
 .block-editor-block-variation-picker.has-many-variations .components-placeholder__fieldset {
 	max-width: 100%;
 }
+
+.unitone-toggle-group-control {
+	border-bottom-right-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+
+	&__body {
+		display: grid;
+		gap: 16px;
+		padding: 16px 8px !important;
+		border: 1px solid rgb(148, 148, 148);
+		border-top: none;
+		border-radius: 0 0 2px 2px;
+	}
+}

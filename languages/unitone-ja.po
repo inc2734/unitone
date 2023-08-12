@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-11T13:52:59+00:00\n"
-"PO-Revision-Date: 2023-08-11 22:54+0900\n"
+"POT-Creation-Date: 2023-08-12T02:59:10+00:00\n"
+"PO-Revision-Date: 2023-08-12 11:59+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -52,8 +52,9 @@ msgstr "パターンライブラリーからパターンを再取得する"
 #: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1 dist/blocks/flex/index.js:1
-#: dist/blocks/frame/index.js:1 dist/blocks/layers/index.js:25
-#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/frame/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/layers/index.js:25 dist/blocks/reel/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:9
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
@@ -1070,7 +1071,8 @@ msgid "Cluster (Divider: bordered)"
 msgstr "クラスター（区切り：ボーダー）"
 
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/flex/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/flex/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/section/index.js:9 dist/blocks/stack-divided/index.js:1
 msgid "HTML element"
 msgstr "HTML 要素"
@@ -1142,6 +1144,26 @@ msgstr "推奨アスペクト比"
 #: dist/blocks/frame/index.js:1
 msgid "Switch aspect ratio when portrait"
 msgstr "ポートレートのとき比率を切り替える"
+
+#: dist/blocks/grid/index.js:1
+msgid "Minimum width"
+msgstr "最小幅"
+
+#: dist/blocks/grid/index.js:1
+msgid "Columns count"
+msgstr "カラム数"
+
+#: dist/blocks/grid/index.js:1
+msgid "Free input"
+msgstr "自由入力"
+
+#: dist/blocks/grid/index.js:1 dist/js/editor/editor.js:1
+msgid "Auto repeat"
+msgstr "自動反復"
+
+#: dist/blocks/grid/index.js:1
+msgid "Rows count"
+msgstr "行数"
 
 #: dist/blocks/layers/index.js:1
 msgid "Background image"
@@ -1589,14 +1611,6 @@ msgid "Min height"
 msgstr "最小の高さ"
 
 #: dist/js/editor/editor.js:1
-msgid "Auto repeat"
-msgstr "自動反復"
-
-#: dist/js/editor/editor.js:1
-msgid "Layer"
-msgstr "レイヤー"
-
-#: dist/js/editor/editor.js:1
 msgid "Align self"
 msgstr "垂直配置"
 
@@ -1620,6 +1634,10 @@ msgstr ""
 #: dist/js/editor/editor.js:3
 msgid "A grid item's size and location within the grid row"
 msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
+
+#: dist/js/editor/editor.js:5
+msgid "Layer"
+msgstr "レイヤー"
 
 #: dist/js/editor/editor.js:5
 msgid "Mix blend mode"
@@ -1860,12 +1878,12 @@ msgctxt "block keyword"
 msgid "flexbox"
 msgstr "flexbox"
 
-#: dist/blocks/flex/block.json
+#: dist/blocks/flex/block.json dist/blocks/grid/block.json
 msgctxt "block keyword"
 msgid "auto-layout"
 msgstr "auto-layout"
 
-#: dist/blocks/flex/block.json
+#: dist/blocks/flex/block.json dist/blocks/grid/block.json
 msgctxt "block keyword"
 msgid "AutoLayout"
 msgstr "AutoLayout"
@@ -1879,6 +1897,16 @@ msgstr "フレーム"
 msgctxt "block description"
 msgid "This block is used to fit the image into a fixed angle of view."
 msgstr "画像を一定の画角に収めるために使用されます。"
+
+#: dist/blocks/grid/block.json
+msgctxt "block title"
+msgid "Grid"
+msgstr "グリッド"
+
+#: dist/blocks/grid/block.json
+msgctxt "block description"
+msgid "Child blocks can be layout in grid."
+msgstr "子ブロックをグリッド内にレイアウトできます。"
 
 #: dist/blocks/gutters/block.json
 msgctxt "block title"
@@ -2456,3 +2484,8 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#, fuzzy
+#~| msgid "unitone settings"
+#~ msgid "Block settings"
+#~ msgstr "ブロック設定"

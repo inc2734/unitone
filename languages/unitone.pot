@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-11T13:52:59+00:00\n"
+"POT-Creation-Date: 2023-08-12T02:59:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -58,6 +58,7 @@ msgstr ""
 #: dist/blocks/decorator/index.js:1
 #: dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1
+#: dist/blocks/grid/index.js:1
 #: dist/blocks/layers/index.js:25
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
@@ -1146,6 +1147,7 @@ msgstr ""
 #: dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/decorator/index.js:1
 #: dist/blocks/flex/index.js:1
+#: dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/section/index.js:9
 #: dist/blocks/stack-divided/index.js:1
@@ -1218,6 +1220,27 @@ msgstr ""
 
 #: dist/blocks/frame/index.js:1
 msgid "Switch aspect ratio when portrait"
+msgstr ""
+
+#: dist/blocks/grid/index.js:1
+msgid "Minimum width"
+msgstr ""
+
+#: dist/blocks/grid/index.js:1
+msgid "Columns count"
+msgstr ""
+
+#: dist/blocks/grid/index.js:1
+msgid "Free input"
+msgstr ""
+
+#: dist/blocks/grid/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Auto repeat"
+msgstr ""
+
+#: dist/blocks/grid/index.js:1
+msgid "Rows count"
 msgstr ""
 
 #: dist/blocks/layers/index.js:1
@@ -1667,14 +1690,6 @@ msgid "Min height"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Auto repeat"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Layer"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
 msgid "Align self"
 msgstr ""
 
@@ -1694,6 +1709,10 @@ msgstr ""
 
 #: dist/js/editor/editor.js:3
 msgid "A grid item's size and location within the grid row"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Layer"
 msgstr ""
 
 #: dist/js/editor/editor.js:5
@@ -1937,11 +1956,13 @@ msgid "flexbox"
 msgstr ""
 
 #: dist/blocks/flex/block.json
+#: dist/blocks/grid/block.json
 msgctxt "block keyword"
 msgid "auto-layout"
 msgstr ""
 
 #: dist/blocks/flex/block.json
+#: dist/blocks/grid/block.json
 msgctxt "block keyword"
 msgid "AutoLayout"
 msgstr ""
@@ -1954,6 +1975,16 @@ msgstr ""
 #: dist/blocks/frame/block.json
 msgctxt "block description"
 msgid "This block is used to fit the image into a fixed angle of view."
+msgstr ""
+
+#: dist/blocks/grid/block.json
+msgctxt "block title"
+msgid "Grid"
+msgstr ""
+
+#: dist/blocks/grid/block.json
+msgctxt "block description"
+msgid "Child blocks can be layout in grid."
 msgstr ""
 
 #: dist/blocks/gutters/block.json

@@ -1,0 +1,54 @@
+
+@function min($values...) {
+	@return unquote('min(#{$values})');
+}
+
+.unitone-grid {
+	--unitone--gap: var(--unitone--global--text-gap);
+
+	--unitone--column-auto-repeat: auto-fit;
+	--unitone--columns: 1;
+	--unitone--column-min-width: 250px;
+	--unitone--grid-template-columns: none;
+
+	--unitone--rows: 1;
+	--unitone--grid-template-rows: none;
+
+	display: grid;
+	gap: var(--unitone--gap);
+
+	> * {
+		--unitone--justify-self: stretch;
+		--unitone--align-self: stretch;
+		--unitone--grid-column: auto;
+		--unitone--grid-row: auto;
+
+		margin-top: 0;
+		margin-bottom: 0;
+		min-width: 0;
+		justify-self: var(--unitone--justify-self);
+		align-self: var(--unitone--align-self);
+		grid-column: var(--unitone--grid-column);
+		grid-row: var(--unitone--grid-row);
+	}
+}
+
+[data-unitone-layout~="-columns\:columns"] {
+	grid-template-columns: repeat(var(--unitone--columns), 1fr);
+}
+
+[data-unitone-layout~="-columns\:min"] {
+	grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(--unitone--column-min-width), 100%), 1fr));
+}
+
+[data-unitone-layout~="-columns\:free"] {
+	grid-template-columns: var(--unitone--grid-template-columns);
+}
+
+[data-unitone-layout~="-rows\:rows"] {
+	grid-template-rows: repeat(var(--unitone--rows), 1fr);
+}
+
+[data-unitone-layout~="-rows\:free"] {
+	grid-template-rows: var(--unitone--grid-template-rows);
+}

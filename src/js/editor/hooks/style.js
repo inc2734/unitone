@@ -28,16 +28,13 @@ import {
 	editFlexGrowProp,
 	editFlexShrinkProp,
 	editFlexBasisProp,
-} from './layout/layout';
-
-import {
-	LayerPanel,
 	editAlignSelfProp,
 	editJustifySelfProp,
 	editGridColumnProp,
 	editGridRowProp,
-	editMixBlendModeProp,
-} from './layer/layer';
+} from './layout/layout';
+
+import { LayerPanel, editMixBlendModeProp } from './layer/layer';
 
 import {
 	TypographyPanel,

@@ -1,0 +1,117 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "unitone",
+	"name": "unitone/grid",
+	"title": "Grid",
+	"description": "Child blocks can be layout in grid.",
+	"keywords": [ "auto-layout", "AutoLayout" ],
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
+		"columnsOption": {
+			"type": "string",
+			"default": "min"
+		},
+		"columns": {
+			"type": "number",
+			"default": 1
+		},
+		"columnMinWidth": {
+			"type": "string",
+			"default": "250px"
+		},
+		"columnAutoRepeat": {
+			"type": "string",
+			"default": "auto-fit"
+		},
+		"gridTemplateColumns": {
+			"type": "string",
+			"default": ""
+		},
+		"rowsOption": {
+			"type": "string",
+			"default": "rows"
+		},
+		"rows": {
+			"type": "number",
+			"default": 1
+		},
+		"gridTemplateRows": {
+			"type": "string",
+			"default": ""
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"align": [ "full", "wide" ],
+		"color": {
+			"background": true,
+			"color": true,
+			"link": true,
+			"gradients": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		},
+		"unitone": {
+			"gap": true,
+			"padding": true,
+			"fluidTypography": true,
+			"lineHeight": true
+		}
+	},
+	"example": {
+		"attributes": {
+			"unitone": {
+				"gap": 1
+			}
+		},
+		"innerBlocks": [
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				}
+			}
+		]
+	},
+	"style": "file:./style-index.css",
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

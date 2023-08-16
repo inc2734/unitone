@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: bbPress: Page Header (Image)
- * Slug: unitone/bbpress-page-header-image
+ * Title: bbPress: One Column / Page Header (Image)
+ * Slug: unitone/bbpress-one-column-page-header-image
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/bbpress
  */
@@ -16,7 +16,7 @@
 
 	<!-- wp:unitone/cover-content {"fill":true,"position":"center"} -->
 	<div data-unitone-layout="cover__content -fill -valign:center">
-		<!-- wp:pattern {"slug":"unitone/bbpress/main/page-header-image"} /-->
+		<!-- wp:pattern {"slug":"unitone/bbpress/main/one-column-page-header-image"} /-->
 	</div>
 	<!-- /wp:unitone/cover-content -->
 

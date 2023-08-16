@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-16T15:22:48+00:00\n"
+"POT-Creation-Date: 2023-08-16T15:46:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -218,12 +218,11 @@ msgid "Page Header for Product Archives"
 msgstr ""
 
 #: inc/block-patterns.php:164
-#: inc/template-part-areas.php:288
-msgid "Main Area for bbPress"
+msgid "Main Area (One Column) for bbPress"
 msgstr ""
 
 #: inc/block-patterns.php:170
-msgid "Main Area (Page Header (Image)) for bbPress"
+msgid "Main Area (One Column / Page Header (Image)) for bbPress"
 msgstr ""
 
 #: inc/block-patterns.php:176
@@ -521,6 +520,10 @@ msgstr ""
 msgid "Page Header for Product archives"
 msgstr ""
 
+#: inc/template-part-areas.php:288
+msgid "Main Area for bbPress"
+msgstr ""
+
 #: inc/template-part-areas.php:302
 msgid "Footer breadcrumbs"
 msgstr ""
@@ -625,9 +628,14 @@ msgctxt "Pattern title"
 msgid "bbPress: Left Header"
 msgstr ""
 
-#: patterns/bbpress-page-header-image.php
+#: patterns/bbpress-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "bbPress: Page Header (Image)"
+msgid "bbPress: One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/bbpress-one-column.php
+msgctxt "Pattern title"
+msgid "bbPress: One Column"
 msgstr ""
 
 #: patterns/bbpress-right-sidebar-page-header-image.php
@@ -638,11 +646,6 @@ msgstr ""
 #: patterns/bbpress-right-sidebar.php
 msgctxt "Pattern title"
 msgid "bbPress: Right Sidebar"
-msgstr ""
-
-#: patterns/bbpress.php
-msgctxt "Pattern title"
-msgid "bbPress"
 msgstr ""
 
 #: patterns/footer-1.php

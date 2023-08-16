@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-16T15:22:48+00:00\n"
-"PO-Revision-Date: 2023-08-17 00:26+0900\n"
+"POT-Creation-Date: 2023-08-16T15:46:52+00:00\n"
+"PO-Revision-Date: 2023-08-17 00:48+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -205,13 +205,13 @@ msgstr "商品アーカイブのページヘッダー（画像）"
 msgid "Page Header for Product Archives"
 msgstr "商品アーカイブのページヘッダー"
 
-#: inc/block-patterns.php:164 inc/template-part-areas.php:288
-msgid "Main Area for bbPress"
-msgstr "bbPress のメインエリア"
+#: inc/block-patterns.php:164
+msgid "Main Area (One Column) for bbPress"
+msgstr "bbPress のメインエリア（1カラム）"
 
 #: inc/block-patterns.php:170
-msgid "Main Area (Page Header (Image)) for bbPress"
-msgstr "bbPress のメインエリア（ページヘッダー（画像））"
+msgid "Main Area (One Column / Page Header (Image)) for bbPress"
+msgstr "bbPress のメインエリア（1カラム / ページヘッダー（画像））"
 
 #: inc/block-patterns.php:176
 msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
@@ -495,6 +495,10 @@ msgstr "商品アーカイブのメインエリア"
 msgid "Page Header for Product archives"
 msgstr "商品アーカイブのページヘッダー"
 
+#: inc/template-part-areas.php:288
+msgid "Main Area for bbPress"
+msgstr "bbPress のメインエリア"
+
 #: inc/template-part-areas.php:302
 msgid "Footer breadcrumbs"
 msgstr "フッターのパンくずリスト"
@@ -599,10 +603,15 @@ msgctxt "Pattern title"
 msgid "bbPress: Left Header"
 msgstr "bbPress：左ヘッダー"
 
-#: patterns/bbpress-page-header-image.php
+#: patterns/bbpress-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "bbPress: Page Header (Image)"
-msgstr "bbPress：ページヘッダー（画像）"
+msgid "bbPress: One Column / Page Header (Image)"
+msgstr "bbPress：1カラム / ページヘッダー（画像）"
+
+#: patterns/bbpress-one-column.php
+msgctxt "Pattern title"
+msgid "bbPress: One Column"
+msgstr "bbPress：1カラム"
 
 #: patterns/bbpress-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
@@ -613,11 +622,6 @@ msgstr "bbPress：右サイドバー / ページヘッダー（画像）"
 msgctxt "Pattern title"
 msgid "bbPress: Right Sidebar"
 msgstr "bbPress：右サイドバー"
-
-#: patterns/bbpress.php
-msgctxt "Pattern title"
-msgid "bbPress"
-msgstr "bbPress"
 
 #: patterns/footer-1.php
 msgctxt "Pattern title"
@@ -2501,6 +2505,17 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#~ msgid "Main Area (Page Header (Image)) for bbPress"
+#~ msgstr "bbPress のメインエリア（ページヘッダー（画像））"
+
+#~ msgctxt "Pattern title"
+#~ msgid "bbPress: Page Header (Image)"
+#~ msgstr "bbPress：ページヘッダー（画像）"
+
+#~ msgctxt "Pattern title"
+#~ msgid "bbPress"
+#~ msgstr "bbPress"
 
 #~ msgid "Main Area (Page Header (Image)) for Product Archives"
 #~ msgstr "商品アーカイブのメインエリア（ページヘッダー（画像））"

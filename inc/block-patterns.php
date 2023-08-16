@@ -305,16 +305,16 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/page/page-header/slim.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area for Search Results', 'unitone' ),
-			'slug'     => 'unitone/search/main/default',
+			'title'    => __( 'Main Area (One Column) for Search Results', 'unitone' ),
+			'slug'     => 'unitone/search/main/one-column',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/search/main/default.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/search/main/one-column.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area (Page Header (Image)) for Search Results', 'unitone' ),
-			'slug'     => 'unitone/search/main/page-header-image',
+			'title'    => __( 'Main Area (One Column / Page Header (Image)) for Search Results', 'unitone' ),
+			'slug'     => 'unitone/search/main/one-column-page-header-image',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/search/main/page-header-image.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/search/main/one-column-page-header-image.php' ),
 		),
 		array(
 			'title'    => __( 'Main Area (Right Sidebar / Page Header (Image)) for Search Results', 'unitone' ),

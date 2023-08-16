@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Search Results
- * Slug: unitone/search
+ * Title: Search Results: One Column
+ * Slug: unitone/search-one-column
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/search
  * Template Types: search
@@ -18,7 +18,7 @@
 
 	<!-- wp:unitone/cover-content {"fill":true,"position":"center"} -->
 	<div data-unitone-layout="cover__content -fill -valign:center">
-		<!-- wp:pattern {"slug":"unitone/search/main/default"} /-->
+		<!-- wp:pattern {"slug":"unitone/search/main/one-column"} /-->
 	</div>
 	<!-- /wp:unitone/cover-content -->
 

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-16T16:10:49+00:00\n"
-"PO-Revision-Date: 2023-08-17 01:11+0900\n"
+"POT-Creation-Date: 2023-08-16T16:22:49+00:00\n"
+"PO-Revision-Date: 2023-08-17 01:24+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -307,12 +307,12 @@ msgid "Page Header (Slim) for Pages"
 msgstr "固定ページのページヘッダー（スリム）"
 
 #: inc/block-patterns.php:308
-msgid "Main Area for Search Results"
-msgstr "検索結果のメインエリア"
+msgid "Main Area (One Column) for Search Results"
+msgstr "検索結果のメインエリア（1カラム）"
 
 #: inc/block-patterns.php:314
-msgid "Main Area (Page Header (Image)) for Search Results"
-msgstr "検索結果のメインエリア（ページヘッダー（画像））"
+msgid "Main Area (One Column / Page Header (Image)) for Search Results"
+msgstr "検索結果のメインエリア（1カラム / ページヘッダー（画像））"
 
 #: inc/block-patterns.php:320
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
@@ -875,10 +875,15 @@ msgctxt "Pattern title"
 msgid "Search Results: Left Header"
 msgstr "検索結果：左ヘッダー"
 
+#: patterns/search-one-column.php
+msgctxt "Pattern title"
+msgid "Search Results: One Column"
+msgstr "検索結果：1カラム"
+
 #: patterns/search-page-header-image.php
 msgctxt "Pattern title"
-msgid "Search Results: Page Header (Image)"
-msgstr "検索結果：ページヘッダー（画像）"
+msgid "Search Results: One Column / Page Header (Image)"
+msgstr "検索結果：1カラム / ページヘッダー（画像）"
 
 #: patterns/search-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
@@ -889,11 +894,6 @@ msgstr "検索結果：右サイドバー / ページヘッダー（画像）"
 msgctxt "Pattern title"
 msgid "Search Results: Right Sidebar"
 msgstr "検索結果：右サイドバー"
-
-#: patterns/search.php
-msgctxt "Pattern title"
-msgid "Search Results"
-msgstr "検索結果"
 
 #: patterns/sidebar-bbpress.php
 msgctxt "Pattern title"
@@ -2509,6 +2509,20 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#~ msgid "Main Area for Search Results"
+#~ msgstr "検索結果のメインエリア"
+
+#~ msgid "Main Area (Page Header (Image)) for Search Results"
+#~ msgstr "検索結果のメインエリア（ページヘッダー（画像））"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Search Results: Page Header (Image)"
+#~ msgstr "検索結果：ページヘッダー（画像）"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Search Results"
+#~ msgstr "検索結果"
 
 #~ msgid "Main Area (Page Header (Image)) for Blog Home"
 #~ msgstr "ブログホームのメインエリア（ページヘッダー（画像））"

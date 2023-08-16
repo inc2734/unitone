@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Search Results: Page Header (Image)
+ * Title: Search Results: One Column / Page Header (Image)
  * Slug: unitone/search-page-header-image
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/search
@@ -17,7 +17,7 @@
 
 	<!-- wp:unitone/cover-content {"fill":true,"position":"center"} -->
 	<div data-unitone-layout="cover__content -fill -valign:center">
-		<!-- wp:pattern {"slug":"unitone/search/main/page-header-image"} /-->
+		<!-- wp:pattern {"slug":"unitone/search/main/one-column-page-header-image"} /-->
 	</div>
 	<!-- /wp:unitone/cover-content -->
 

@@ -5,7 +5,6 @@
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/archive-product
  * Template Types: archive-product
- * Inserter: false
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

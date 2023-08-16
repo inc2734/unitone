@@ -4,7 +4,6 @@
  * Slug: unitone/bbpress-right-sidebar
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/bbpress
- * Inserter: false
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

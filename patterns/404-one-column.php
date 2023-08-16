@@ -5,7 +5,6 @@
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/404
  * Template Types: 404
- * Inserter: false
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

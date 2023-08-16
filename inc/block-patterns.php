@@ -407,16 +407,16 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/single/page-header/wide.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area for Single Products', 'unitone' ),
-			'slug'     => 'unitone/single-product/main/default',
+			'title'    => __( 'Main Area (One Column) for Single Products', 'unitone' ),
+			'slug'     => 'unitone/single-product/main/one-column',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/single-product/main/default.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/single-product/main/one-column.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area (Page Header (Image)) for Single Products', 'unitone' ),
-			'slug'     => 'unitone/single-product/main/page-header-image',
+			'title'    => __( 'Main Area (One Column / Page Header (Image)) for Single Products', 'unitone' ),
+			'slug'     => 'unitone/single-product/main/one-column-page-header-image',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/single-product/main/page-header-image.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/single-product/main/one-column-page-header-image.php' ),
 		),
 		array(
 			'title'    => __( 'Main Area (Right Sidebar / Page Header (Image)) for Single Products', 'unitone' ),

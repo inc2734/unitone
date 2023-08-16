@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-16T17:03:16+00:00\n"
-"PO-Revision-Date: 2023-08-17 02:06+0900\n"
+"POT-Creation-Date: 2023-08-16T17:15:27+00:00\n"
+"PO-Revision-Date: 2023-08-17 02:16+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -379,13 +379,13 @@ msgstr "個別投稿のページヘッダー（画像）"
 msgid "Page Header (Wide) for Single Posts"
 msgstr "個別投稿のページヘッダー（幅広）"
 
-#: inc/block-patterns.php:410 inc/template-part-areas.php:267
-msgid "Main Area for Single Products"
-msgstr "個別商品のメインエリア"
+#: inc/block-patterns.php:410
+msgid "Main Area (One Column) for Single Products"
+msgstr "個別商品のメインエリア（1カラム）"
 
 #: inc/block-patterns.php:416
-msgid "Main Area (Page Header (Image)) for Single Products"
-msgstr "個別商品のメインエリア（ページヘッダー（画像））"
+msgid "Main Area (One Column / Page Header (Image)) for Single Products"
+msgstr "個別商品のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
 #: inc/block-patterns.php:422
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
@@ -507,6 +507,10 @@ msgstr "商品アーカイブのメインエリア"
 #: inc/template-part-areas.php:246
 msgid "Page Header for Product archives"
 msgstr "商品アーカイブのページヘッダー"
+
+#: inc/template-part-areas.php:267
+msgid "Main Area for Single Products"
+msgstr "個別商品のメインエリア"
 
 #: inc/template-part-areas.php:288
 msgid "Main Area for bbPress"
@@ -987,10 +991,15 @@ msgctxt "Pattern title"
 msgid "Single Products: Left Header"
 msgstr "個別商品：左ヘッダー"
 
-#: patterns/single-product-page-header-image.php
+#: patterns/single-product-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "Single Products: Page Header (Image)"
-msgstr "個別商品：ページヘッダー（画像）"
+msgid "Single Products: One Column / Page Header (Image)"
+msgstr "個別商品：1カラム / ページヘッダー（画像）"
+
+#: patterns/single-product-one-column.php
+msgctxt "Pattern title"
+msgid "Single Products: One Column"
+msgstr "個別商品：1カラム"
 
 #: patterns/single-product-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
@@ -1001,11 +1010,6 @@ msgstr "個別商品：右サイドバー / ページヘッダー（画像）"
 msgctxt "Pattern title"
 msgid "Single Products: Right Sidebar"
 msgstr "個別商品：右サイドバー"
-
-#: patterns/single-product.php
-msgctxt "Pattern title"
-msgid "Single Products"
-msgstr "個別商品"
 
 #: patterns/single-right-sidebar-page-header-featured.php
 msgctxt "Pattern title"
@@ -2421,8 +2425,8 @@ msgstr "個別商品"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single Products: Page Header (Image)"
-msgstr "個別商品：ページヘッダー（画像）"
+msgid "Single Products: One Column / Page Header (Image)"
+msgstr "個別商品：1カラム / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -2518,6 +2522,21 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#~ msgid "Main Area (Page Header (Image)) for Single Products"
+#~ msgstr "個別商品のメインエリア（ページヘッダー（画像））"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Single Products: Page Header (Image)"
+#~ msgstr "個別商品：ページヘッダー（画像）"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Single Products"
+#~ msgstr "個別商品"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Single Products: Page Header (Image)"
+#~ msgstr "個別商品：ページヘッダー（画像）"
 
 #~ msgid "Main Area (Page Header (Featured Image)) for Single Posts"
 #~ msgstr "固定ページのメインエリア（ページヘッダー（アイキャッチ画像））"

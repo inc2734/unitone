@@ -394,8 +394,8 @@
 			]
 		},
 		{
-			"name": "single-product-page-header-image",
-			"title": "Single Products: Page Header (Image)",
+			"name": "single-product-one-column-page-header-image",
+			"title": "Single Products: One Column / Page Header (Image)",
 			"postTypes": [
 				"product"
 			]

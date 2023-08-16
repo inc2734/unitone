@@ -1,11 +1,10 @@
 <?php
 /**
- * Title: Single Products
- * Slug: unitone/single-product
+ * Title: Single Products: One Column / Page Header (Image)
+ * Slug: unitone/single-product-one-column-page-header-image
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/single-product
  * Template Types: single-product
- * Inserter: false
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->
@@ -18,7 +17,7 @@
 
 	<!-- wp:unitone/cover-content {"fill":true,"position":"center"} -->
 	<div data-unitone-layout="cover__content -fill -valign:center">
-		<!-- wp:pattern {"slug":"unitone/single-product/main/default"} /-->
+		<!-- wp:pattern {"slug":"unitone/single-product/main/one-column-page-header-image"} /-->
 	</div>
 	<!-- /wp:unitone/cover-content -->
 

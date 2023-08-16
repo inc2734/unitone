@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-16T17:03:16+00:00\n"
+"POT-Creation-Date: 2023-08-16T17:15:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -387,12 +387,11 @@ msgid "Page Header (Wide) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:410
-#: inc/template-part-areas.php:267
-msgid "Main Area for Single Products"
+msgid "Main Area (One Column) for Single Products"
 msgstr ""
 
 #: inc/block-patterns.php:416
-msgid "Main Area (Page Header (Image)) for Single Products"
+msgid "Main Area (One Column / Page Header (Image)) for Single Products"
 msgstr ""
 
 #: inc/block-patterns.php:422
@@ -527,6 +526,10 @@ msgstr ""
 
 #: inc/template-part-areas.php:246
 msgid "Page Header for Product archives"
+msgstr ""
+
+#: inc/template-part-areas.php:267
+msgid "Main Area for Single Products"
 msgstr ""
 
 #: inc/template-part-areas.php:288
@@ -1050,9 +1053,14 @@ msgctxt "Pattern title"
 msgid "Single Products: Left Header"
 msgstr ""
 
-#: patterns/single-product-page-header-image.php
+#: patterns/single-product-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "Single Products: Page Header (Image)"
+msgid "Single Products: One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/single-product-one-column.php
+msgctxt "Pattern title"
+msgid "Single Products: One Column"
 msgstr ""
 
 #: patterns/single-product-right-sidebar-page-header-image.php
@@ -1063,11 +1071,6 @@ msgstr ""
 #: patterns/single-product-right-sidebar.php
 msgctxt "Pattern title"
 msgid "Single Products: Right Sidebar"
-msgstr ""
-
-#: patterns/single-product.php
-msgctxt "Pattern title"
-msgid "Single Products"
 msgstr ""
 
 #: patterns/single-right-sidebar-page-header-featured.php
@@ -2538,7 +2541,7 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single Products: Page Header (Image)"
+msgid "Single Products: One Column / Page Header (Image)"
 msgstr ""
 
 #: theme.json

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-16T16:22:49+00:00\n"
-"PO-Revision-Date: 2023-08-17 01:24+0900\n"
+"POT-Creation-Date: 2023-08-16T16:38:00+00:00\n"
+"PO-Revision-Date: 2023-08-17 01:46+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -256,25 +256,26 @@ msgstr "ブログホームのページヘッダー（画像）"
 msgid "Page Header for Blog Home"
 msgstr "ブログホームのページヘッダー"
 
-#: inc/block-patterns.php:236 inc/template-part-areas.php:141
-msgid "Main Area for Pages"
-msgstr "固定ページのメインエリア"
+#: inc/block-patterns.php:236
+msgid "Main Area (One Column) for Pages"
+msgstr "固定ページのメインエリア（1カラム）"
 
 #: inc/block-patterns.php:242
 msgid "Main Area (Blank) for Pages"
 msgstr "固定ページのメインエリア（空）"
 
 #: inc/block-patterns.php:248
-msgid "Main Area (Page Header (Featured Image)) for Pages"
-msgstr "固定ページのメインエリア（ページヘッダー（アイキャッチ画像））"
+msgid "Main Area (One Column / Page Header (Featured Image)) for Pages"
+msgstr ""
+"固定ページのメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
 #: inc/block-patterns.php:254
-msgid "Main Area (Page Header (Image)) for Pages"
-msgstr "固定ページのメインエリア（ページヘッダー（画像））"
+msgid "Main Area (One Column / Page Header (Image)) for Pages"
+msgstr "固定ページのメインエリア（1カラム / ページヘッダー（画像））"
 
 #: inc/block-patterns.php:260
-msgid "Main Area (Page Header (Slim)) for Pages"
-msgstr "固定ページのメインエリア（ページヘッダー（スリム））"
+msgid "Main Area (One Column / Page Header (Slim)) for Pages"
+msgstr "固定ページのメインエリア（1カラム / ページヘッダー（スリム））"
 
 #: inc/block-patterns.php:266
 msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
@@ -474,6 +475,10 @@ msgstr "bbPress"
 #: inc/template-part-areas.php:83 inc/template-part-areas.php:295
 msgid "Comments"
 msgstr "コメント"
+
+#: inc/template-part-areas.php:141
+msgid "Main Area for Pages"
+msgstr "固定ページのメインエリア"
 
 #: inc/template-part-areas.php:155
 msgid "Main Area for 404"
@@ -794,20 +799,25 @@ msgctxt "Pattern title"
 msgid "Pages: Left Header"
 msgstr "固定ページ：左ヘッダー"
 
-#: patterns/page-page-header-featured.php
+#: patterns/page-one-column-page-header-featured.php
 msgctxt "Pattern title"
-msgid "Pages: Page Header (Featured Image)"
-msgstr "固定ページ：ページヘッダー（アイキャッチ画像）"
+msgid "Pages: One Column / Page Header (Featured Image)"
+msgstr "固定ページ：1カラム / ページヘッダー（アイキャッチ画像）"
 
-#: patterns/page-page-header-image.php
+#: patterns/page-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "Pages: Page Header (Image)"
-msgstr "固定ページ：ページヘッダー（画像）"
+msgid "Pages: One Column / Page Header (Image)"
+msgstr "固定ページ：1カラム / ページヘッダー（画像）"
 
-#: patterns/page-page-header-slim.php
+#: patterns/page-one-column-page-header-slim.php
 msgctxt "Pattern title"
-msgid "Pages: Page Header (Slim)"
-msgstr "固定ページ：ページヘッダー（スリム）"
+msgid "Pages: One Column / Page Header (Slim)"
+msgstr "固定ページ：1カラム / ページヘッダー（スリム）"
+
+#: patterns/page-one-column.php
+msgctxt "Pattern title"
+msgid "Pages: One Column"
+msgstr "固定ページ：1カラム"
 
 #: patterns/page-right-sidebar-page-header-featured.php
 msgctxt "Pattern title"
@@ -823,11 +833,6 @@ msgstr "固定ページ：右サイドバー / ページヘッダー（画像）
 msgctxt "Pattern title"
 msgid "Pages: Right Sidebar"
 msgstr "固定ページ：右サイドバー"
-
-#: patterns/page.php
-msgctxt "Pattern title"
-msgid "Pages"
-msgstr "固定ページ"
 
 #: patterns/pages-1.php
 msgctxt "Pattern title"
@@ -2307,13 +2312,13 @@ msgstr "5"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Pages: Page Header (Featured Image)"
-msgstr "固定ページ：ページヘッダー（アイキャッチ画像）"
+msgid "Pages: One Column / Page Header (Featured Image)"
+msgstr "固定ページ：1カラム / ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Pages: Page Header (Image)"
-msgstr "固定ページ：ページヘッダー（画像）"
+msgid "Pages: One Column / Page Header (Image)"
+msgstr "固定ページ：1カラム / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -2322,8 +2327,8 @@ msgstr "固定ページ：ヘッダー / フッター"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Pages: Page Header (Slim)"
-msgstr "固定ページ：ページヘッダー（スリム）"
+msgid "Pages: One Column / Page Header (Slim)"
+msgstr "固定ページ：1カラム / ページヘッダー（スリム）"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -2509,6 +2514,32 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#~ msgid "Main Area (Page Header (Image)) for Pages"
+#~ msgstr "固定ページのメインエリア（ページヘッダー（画像））"
+
+#~ msgid "Main Area (Page Header (Slim)) for Pages"
+#~ msgstr "固定ページのメインエリア（ページヘッダー（スリム））"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Pages: Page Header (Image)"
+#~ msgstr "固定ページ：ページヘッダー（画像）"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Pages: Page Header (Slim)"
+#~ msgstr "固定ページ：ページヘッダー（スリム）"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Pages"
+#~ msgstr "固定ページ"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Pages: Page Header (Image)"
+#~ msgstr "固定ページ：ページヘッダー（画像）"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Pages: Page Header (Slim)"
+#~ msgstr "固定ページ：ページヘッダー（スリム）"
 
 #~ msgid "Main Area for Search Results"
 #~ msgstr "検索結果のメインエリア"

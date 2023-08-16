@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Pages: Page Header (Image)
- * Slug: unitone/page-page-header-image
+ * Title: Pages: One Column / Page Header (Image)
+ * Slug: unitone/one-column-page-page-header-image
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/page
  * Template Types: page
@@ -17,7 +17,7 @@
 
 	<!-- wp:unitone/cover-content {"fill":true,"position":"center"} -->
 	<div data-unitone-layout="cover__content -fill -valign:center">
-		<!-- wp:pattern {"slug":"unitone/page/main/page-header-image"} /-->
+		<!-- wp:pattern {"slug":"unitone/page/main/one-column-page-header-image"} /-->
 	</div>
 	<!-- /wp:unitone/cover-content -->
 

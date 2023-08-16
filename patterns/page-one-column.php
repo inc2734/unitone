@@ -1,10 +1,11 @@
 <?php
 /**
- * Title: Pages: Page Header (Featured Image)
- * Slug: unitone/page-page-header-featured
+ * Title: Pages: One Column
+ * Slug: unitone/page-one-column
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/page
  * Template Types: page
+ * Inserter: false
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->
@@ -17,7 +18,7 @@
 
 	<!-- wp:unitone/cover-content {"fill":true,"position":"center"} -->
 	<div data-unitone-layout="cover__content -fill -valign:center">
-		<!-- wp:pattern {"slug":"unitone/page/main/page-header-featured"} /-->
+		<!-- wp:pattern {"slug":"unitone/page/main/one-column"} /-->
 	</div>
 	<!-- /wp:unitone/cover-content -->
 

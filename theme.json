@@ -247,15 +247,15 @@
 	},
 	"customTemplates": [
 		{
-			"name": "page-page-header-featured",
-			"title": "Pages: Page Header (Featured Image)",
+			"name": "page-one-column-page-header-featured",
+			"title": "Pages: One Column / Page Header (Featured Image)",
 			"postTypes": [
 				"page"
 			]
 		},
 		{
-			"name": "page-page-header-image",
-			"title": "Pages: Page Header (Image)",
+			"name": "page-one-column-page-header-image",
+			"title": "Pages: One Column / Page Header (Image)",
 			"postTypes": [
 				"page"
 			]
@@ -268,8 +268,8 @@
 			]
 		},
 		{
-			"name": "page-page-header-slim",
-			"title": "Pages: Page Header (Slim)",
+			"name": "page-one-column-page-header-slim",
+			"title": "Pages: One Column / Page Header (Slim)",
 			"postTypes": [
 				"page"
 			]

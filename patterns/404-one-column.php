@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: 404
- * Slug: unitone/404
+ * Title: 404: One Column
+ * Slug: unitone/404-one-column
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/404
  * Template Types: 404
@@ -18,7 +18,7 @@
 
 	<!-- wp:unitone/cover-content {"fill":true,"position":"center"} -->
 	<div data-unitone-layout="cover__content -fill -valign:center">
-		<!-- wp:pattern {"slug":"unitone/404/main/default"} /-->
+		<!-- wp:pattern {"slug":"unitone/404/main/one-column"} /-->
 	</div>
 	<!-- /wp:unitone/cover-content -->
 

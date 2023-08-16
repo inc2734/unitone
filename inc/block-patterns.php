@@ -47,10 +47,10 @@ add_action( 'init', 'unitone_register_block_pattern_categories', 9 );
 function unitone_register_block_patterns() {
 	$patterns = array(
 		array(
-			'title'    => __( 'Main Area (Page Header (Image)) for 404', 'unitone' ),
-			'slug'     => 'unitone/404/main/page-header-image',
+			'title'    => __( 'Main Area (One Column / Page Header (Image)) for 404', 'unitone' ),
+			'slug'     => 'unitone/404/main/one-column-page-header-image',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/404/main/page-header-image.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/404/main/one-column-page-header-image.php' ),
 		),
 		array(
 			'title'    => __( 'Main Area (Right Sidebar / Page Header (Image)) for 404', 'unitone' ),
@@ -65,10 +65,10 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/404/main/right-sidebar.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area for 404', 'unitone' ),
-			'slug'     => 'unitone/404/main/default',
+			'title'    => __( 'Main Area for 404 (One Column)', 'unitone' ),
+			'slug'     => 'unitone/404/main/one-column',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/404/main/default.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/404/main/one-column.php' ),
 		),
 		array(
 			'title'    => __( 'Page Header (Image) for 404', 'unitone' ),

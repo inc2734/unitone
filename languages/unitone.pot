@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-12T02:59:10+00:00\n"
+"POT-Creation-Date: 2023-08-16T08:50:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -140,7 +140,7 @@ msgid "Templates"
 msgstr ""
 
 #: inc/block-patterns.php:50
-msgid "Main Area (Page Header (Image)) for 404"
+msgid "Main Area (One Column / Page Header (Image)) for 404"
 msgstr ""
 
 #: inc/block-patterns.php:56
@@ -152,8 +152,7 @@ msgid "Main Area (Right Sidebar) for 404"
 msgstr ""
 
 #: inc/block-patterns.php:68
-#: inc/template-part-areas.php:155
-msgid "Main Area for 404"
+msgid "Main Area for 404 (One Column)"
 msgstr ""
 
 #: inc/block-patterns.php:74
@@ -504,6 +503,10 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
+#: inc/template-part-areas.php:155
+msgid "Main Area for 404"
+msgstr ""
+
 #: inc/template-part-areas.php:225
 msgid "Main Area of Search Results"
 msgstr ""
@@ -526,10 +529,14 @@ msgctxt "Pattern title"
 msgid "404: Left Header"
 msgstr ""
 
-#: patterns/404-page-header-image.php
-#: patterns/archive-page-header-image.php
+#: patterns/404-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "All Archives: Page Header (Image)"
+msgid "404: One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/404-one-column.php
+msgctxt "Pattern title"
+msgid "404: One Column"
 msgstr ""
 
 #: patterns/404-right-sidebar-page-header-image.php
@@ -542,11 +549,6 @@ msgctxt "Pattern title"
 msgid "404: Right Sidebar"
 msgstr ""
 
-#: patterns/404.php
-msgctxt "Pattern title"
-msgid "404"
-msgstr ""
-
 #: patterns/archive-left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "All Archives: Left Header / Page Header (Image)"
@@ -555,6 +557,11 @@ msgstr ""
 #: patterns/archive-left-header.php
 msgctxt "Pattern title"
 msgid "All Archives: Left Header"
+msgstr ""
+
+#: patterns/archive-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Page Header (Image)"
 msgstr ""
 
 #: patterns/archive-product-left-header-page-header-image.php
@@ -885,8 +892,8 @@ msgctxt "Pattern title"
 msgid "full width page"
 msgstr ""
 
-#: patterns/private/404/main/default.php:12
-#: patterns/private/404/main/page-header-image.php:12
+#: patterns/private/404/main/one-column-page-header-image.php:12
+#: patterns/private/404/main/one-column.php:12
 #: patterns/private/404/main/right-sidebar-page-header-image.php:20
 #: patterns/private/404/main/right-sidebar.php:20
 msgid "Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box."

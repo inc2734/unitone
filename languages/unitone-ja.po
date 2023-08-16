@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-16T16:38:00+00:00\n"
-"PO-Revision-Date: 2023-08-17 01:46+0900\n"
+"POT-Creation-Date: 2023-08-16T17:03:16+00:00\n"
+"PO-Revision-Date: 2023-08-17 02:06+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -332,17 +332,17 @@ msgstr "検索結果のページヘッダー"
 msgid "Page Header (Image) for Search Results"
 msgstr "検索結果のページヘッダー（画像）"
 
-#: inc/block-patterns.php:344 inc/template-part-areas.php:120
-msgid "Main Area for Single Posts"
-msgstr "個別投稿のメインエリア"
+#: inc/block-patterns.php:344
+msgid "Main Area (One Column) for Single Posts"
+msgstr "個別投稿のメインエリア（1カラム）"
 
 #: inc/block-patterns.php:350
 msgid "Main Area (Blank) for Single Posts"
 msgstr "個別投稿のメインエリア（空）"
 
 #: inc/block-patterns.php:356
-msgid "Main Area (Page Header (Featured Image)) for Single Posts"
-msgstr "固定ページのメインエリア（ページヘッダー（アイキャッチ画像））"
+msgid "Main Area (One Column / Page Header (Featured Image)) for Single Posts"
+msgstr "個別投稿のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
 #: inc/block-patterns.php:362
 msgid "Main Area (Page Header (Image)) for Single Posts"
@@ -475,6 +475,10 @@ msgstr "bbPress"
 #: inc/template-part-areas.php:83 inc/template-part-areas.php:295
 msgid "Comments"
 msgstr "コメント"
+
+#: inc/template-part-areas.php:120
+msgid "Main Area for Single Posts"
+msgstr "個別投稿のメインエリア"
 
 #: inc/template-part-areas.php:141
 msgid "Main Area for Pages"
@@ -958,15 +962,20 @@ msgctxt "Pattern title"
 msgid "Single Posts: Left Header"
 msgstr "個別投稿：左ヘッダー"
 
-#: patterns/single-page-header-featured.php
+#: patterns/single-one-column-page-header-featured.php
 msgctxt "Pattern title"
-msgid "Single Posts: Page Header (Featured Image)"
-msgstr "個別投稿：ページヘッダー（アイキャッチ画像）"
+msgid "Single Posts: One Column / Page Header (Featured Image)"
+msgstr "個別投稿：1カラム / ページヘッダー（アイキャッチ画像）"
 
-#: patterns/single-page-header-image.php
+#: patterns/single-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "Single Posts: Page Header (Image)"
-msgstr "個別投稿：ページヘッダー（画像）"
+msgid "Single Posts: One Column / Page Header (Image)"
+msgstr "個別投稿：1カラム / ページヘッダー（画像）"
+
+#: patterns/single-one-column.php
+msgctxt "Pattern title"
+msgid "Single Posts: One Column"
+msgstr "個別投稿：1カラム"
 
 #: patterns/single-product-left-header-page-header-image.php
 msgctxt "Pattern title"
@@ -1012,11 +1021,6 @@ msgstr "個別投稿：右サイドバー / ページヘッダー（画像）"
 msgctxt "Pattern title"
 msgid "Single Posts: Right Sidebar"
 msgstr "個別投稿：右サイドバー"
-
-#: patterns/single.php
-msgctxt "Pattern title"
-msgid "Single Posts"
-msgstr "個別投稿"
 
 #: dist/blocks/accordion/index.js:1
 msgid "Question"
@@ -2367,13 +2371,13 @@ msgstr "固定ページ：空"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single Posts: Page Header (Featured Image)"
-msgstr "個別投稿：ページヘッダー（アイキャッチ画像）"
+msgid "Single Posts: One Column / Page Header (Featured Image)"
+msgstr "個別投稿：1カラム / ページヘッダー（アイキャッチ画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single Posts: Page Header (Image)"
-msgstr "個別投稿：ページヘッダー（画像）"
+msgid "Single Posts: One Column / Page Header (Image)"
+msgstr "個別投稿：1カラム / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -2514,6 +2518,29 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#~ msgid "Main Area (Page Header (Featured Image)) for Single Posts"
+#~ msgstr "固定ページのメインエリア（ページヘッダー（アイキャッチ画像））"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Single Posts: Page Header (Featured Image)"
+#~ msgstr "個別投稿：ページヘッダー（アイキャッチ画像）"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Single Posts: Page Header (Image)"
+#~ msgstr "個別投稿：ページヘッダー（画像）"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Single Posts"
+#~ msgstr "個別投稿"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Single Posts: Page Header (Featured Image)"
+#~ msgstr "個別投稿：ページヘッダー（アイキャッチ画像）"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Single Posts: Page Header (Image)"
+#~ msgstr "個別投稿：ページヘッダー（画像）"
 
 #~ msgid "Main Area (Page Header (Image)) for Pages"
 #~ msgstr "固定ページのメインエリア（ページヘッダー（画像））"

@@ -324,15 +324,15 @@
 			]
 		},
 		{
-			"name": "single-page-header-featured",
-			"title": "Single Posts: Page Header (Featured Image)",
+			"name": "single-one-column-page-header-featured",
+			"title": "Single Posts: One Column / Page Header (Featured Image)",
 			"postTypes": [
 				"post"
 			]
 		},
 		{
-			"name": "single-page-header-image",
-			"title": "Single Posts: Page Header (Image)",
+			"name": "single-one-column-page-header-image",
+			"title": "Single Posts: One Column / Page Header (Image)",
 			"postTypes": [
 				"post"
 			]

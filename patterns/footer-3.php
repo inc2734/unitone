@@ -22,7 +22,7 @@
 				<!-- /wp:unitone/stack -->
 
 				<!-- wp:unitone/with-sidebar {"contentMinWidth":"calc(var(--unitone--measure) / 2)","sidebarWidth":"var(--unitone--pg7)"} -->
-				<div data-unitone-layout="with-sidebar" style="--unitone--content-min-width:calc(var(--unitone--measure) / 2);--unitone--sidebar-width:var(--unitone--pg7)">
+				<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--content-min-width:calc(var(--unitone--measure) / 2);--unitone--sidebar-width:var(--unitone--pg7)">
 					<!-- wp:unitone/with-sidebar-content -->
 					<div data-unitone-layout="with-sidebar__content">
 						<!-- wp:unitone/stack -->

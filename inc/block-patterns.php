@@ -125,16 +125,16 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/archive/page-header/default.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area for Product Archives', 'unitone' ),
-			'slug'     => 'unitone/archive-product/main/default',
+			'title'    => __( 'Main Area (One Column) for Product Archives', 'unitone' ),
+			'slug'     => 'unitone/archive-product/main/one-column',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/archive-product/main/default.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/archive-product/main/one-column.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area (Page Header (Image)) for Product Archives', 'unitone' ),
-			'slug'     => 'unitone/archive-product/main/page-header-image',
+			'title'    => __( 'Main Area (One Column / Page Header (Image)) for Product Archives', 'unitone' ),
+			'slug'     => 'unitone/archive-product/main/one-column-page-header-image',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/archive-product/main/page-header-image.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/archive-product/main/one-column-page-header-image.php' ),
 		),
 		array(
 			'title'    => __( 'Main Area (Right Sidebar / Page Header (Image)) for Product Archives', 'unitone' ),

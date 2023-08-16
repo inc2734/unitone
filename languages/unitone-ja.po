@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-16T09:05:20+00:00\n"
-"PO-Revision-Date: 2023-08-16 18:06+0900\n"
+"POT-Creation-Date: 2023-08-16T15:22:48+00:00\n"
+"PO-Revision-Date: 2023-08-17 00:26+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -179,13 +179,13 @@ msgstr "アーカイブのページヘッダー（画像）"
 msgid "Page Header for All Archives"
 msgstr "アーカイブのページヘッダー"
 
-#: inc/block-patterns.php:128 inc/template-part-areas.php:239
-msgid "Main Area for Product Archives"
-msgstr "商品アーカイブのメインエリア"
+#: inc/block-patterns.php:128
+msgid "Main Area (One Column) for Product Archives"
+msgstr "商品アーカイブのメインエリア（1カラム）"
 
 #: inc/block-patterns.php:134
-msgid "Main Area (Page Header (Image)) for Product Archives"
-msgstr "商品アーカイブのメインエリア（ページヘッダー（画像））"
+msgid "Main Area (One Column / Page Header (Image)) for Product Archives"
+msgstr "商品アーカイブのメインエリア（1カラム / ページヘッダー（画像））"
 
 #: inc/block-patterns.php:140
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Archives"
@@ -487,6 +487,10 @@ msgstr "アーカイブのメインエリア"
 msgid "Main Area of Search Results"
 msgstr "検索結果のメインエリア"
 
+#: inc/template-part-areas.php:239
+msgid "Main Area for Product Archives"
+msgstr "商品アーカイブのメインエリア"
+
 #: inc/template-part-areas.php:246
 msgid "Page Header for Product archives"
 msgstr "商品アーカイブのページヘッダー"
@@ -555,10 +559,15 @@ msgctxt "Pattern title"
 msgid "Product Archives: Left Header"
 msgstr "商品アーカイブ：左ヘッダー"
 
-#: patterns/archive-product-page-header-image.php
+#: patterns/archive-product-one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "Product Archives: Page Header (Image)"
 msgstr "商品アーカイブ：ページヘッダー（画像）"
+
+#: patterns/archive-product-one-column.php
+msgctxt "Pattern title"
+msgid "Product Archives: One Column"
+msgstr "商品アーカイブ：1カラム"
 
 #: patterns/archive-product-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
@@ -569,11 +578,6 @@ msgstr "商品アーカイブ：右サイドバー / ページヘッダー（画
 msgctxt "Pattern title"
 msgid "Product Archives: Right Sidebar"
 msgstr "商品アーカイブ：右サイドバー"
-
-#: patterns/archive-product.php
-msgctxt "Pattern title"
-msgid "Product Archives"
-msgstr "商品アーカイブ"
 
 #: patterns/archive-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
@@ -2497,6 +2501,13 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#~ msgid "Main Area (Page Header (Image)) for Product Archives"
+#~ msgstr "商品アーカイブのメインエリア（ページヘッダー（画像））"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Product Archives"
+#~ msgstr "商品アーカイブ"
 
 #~ msgctxt "Pattern title"
 #~ msgid "All Archives"

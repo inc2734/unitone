@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-16T09:05:20+00:00\n"
+"POT-Creation-Date: 2023-08-16T15:22:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -194,12 +194,11 @@ msgid "Page Header for All Archives"
 msgstr ""
 
 #: inc/block-patterns.php:128
-#: inc/template-part-areas.php:239
-msgid "Main Area for Product Archives"
+msgid "Main Area (One Column) for Product Archives"
 msgstr ""
 
 #: inc/block-patterns.php:134
-msgid "Main Area (Page Header (Image)) for Product Archives"
+msgid "Main Area (One Column / Page Header (Image)) for Product Archives"
 msgstr ""
 
 #: inc/block-patterns.php:140
@@ -514,6 +513,10 @@ msgstr ""
 msgid "Main Area of Search Results"
 msgstr ""
 
+#: inc/template-part-areas.php:239
+msgid "Main Area for Product Archives"
+msgstr ""
+
 #: inc/template-part-areas.php:246
 msgid "Page Header for Product archives"
 msgstr ""
@@ -582,9 +585,14 @@ msgctxt "Pattern title"
 msgid "Product Archives: Left Header"
 msgstr ""
 
-#: patterns/archive-product-page-header-image.php
+#: patterns/archive-product-one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "Product Archives: Page Header (Image)"
+msgstr ""
+
+#: patterns/archive-product-one-column.php
+msgctxt "Pattern title"
+msgid "Product Archives: One Column"
 msgstr ""
 
 #: patterns/archive-product-right-sidebar-page-header-image.php
@@ -595,11 +603,6 @@ msgstr ""
 #: patterns/archive-product-right-sidebar.php
 msgctxt "Pattern title"
 msgid "Product Archives: Right Sidebar"
-msgstr ""
-
-#: patterns/archive-product.php
-msgctxt "Pattern title"
-msgid "Product Archives"
 msgstr ""
 
 #: patterns/archive-right-sidebar-page-header-image.php

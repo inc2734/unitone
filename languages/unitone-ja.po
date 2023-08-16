@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-16T08:50:16+00:00\n"
-"PO-Revision-Date: 2023-08-16 17:51+0900\n"
+"POT-Creation-Date: 2023-08-16T09:05:20+00:00\n"
+"PO-Revision-Date: 2023-08-16 18:06+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -154,13 +154,13 @@ msgstr "404のページヘッダー（幅広）"
 msgid "Page Header for 404"
 msgstr "404のページヘッダー"
 
-#: inc/block-patterns.php:92 inc/template-part-areas.php:197
-msgid "Main Area for All Archives"
-msgstr "アーカイブのメインエリア"
+#: inc/block-patterns.php:92
+msgid "Main Area for All Archives (One Column)"
+msgstr "アーカイブのメインエリア（1カラム）"
 
 #: inc/block-patterns.php:98
-msgid "Main Area (Page Header (Image)) for All Archives"
-msgstr "アーカイブのメインエリア（ページヘッダー（画像））"
+msgid "Main Area (One Column / Page Header (Image)) for All Archives"
+msgstr "アーカイブのメインエリア（1カラム / ページヘッダー（画像））"
 
 #: inc/block-patterns.php:104
 msgid "Main Area (Right Sidebar / Page Header (Image)) for All Archives"
@@ -479,6 +479,10 @@ msgstr "コメント"
 msgid "Main Area for 404"
 msgstr "404 のメインエリア"
 
+#: inc/template-part-areas.php:197
+msgid "Main Area for All Archives"
+msgstr "アーカイブのメインエリア"
+
 #: inc/template-part-areas.php:225
 msgid "Main Area of Search Results"
 msgstr "検索結果のメインエリア"
@@ -531,10 +535,15 @@ msgctxt "Pattern title"
 msgid "All Archives: Left Header"
 msgstr "アーカイブ：左ヘッダー"
 
-#: patterns/archive-page-header-image.php
+#: patterns/archive-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "All Archives: Page Header (Image)"
-msgstr "アーカイブ：ページヘッダー（画像）"
+msgid "All Archives: One Column / Page Header (Image)"
+msgstr "アーカイブ：ページヘッダー（1カラム / 画像）"
+
+#: patterns/archive-one-column.php
+msgctxt "Pattern title"
+msgid "All Archives: One Column"
+msgstr "アーカイブ：1カラム"
 
 #: patterns/archive-product-left-header-page-header-image.php
 msgctxt "Pattern title"
@@ -575,11 +584,6 @@ msgstr "アーカイブ：右サイドバー / ページヘッダー（画像）
 msgctxt "Pattern title"
 msgid "All Archives: Right Sidebar"
 msgstr "アーカイブ：右サイドバー"
-
-#: patterns/archive.php
-msgctxt "Pattern title"
-msgid "All Archives"
-msgstr "アーカイブ"
 
 #: patterns/bbpress-left-header-page-header-image.php
 msgctxt "Pattern title"
@@ -2493,6 +2497,10 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#~ msgctxt "Pattern title"
+#~ msgid "All Archives"
+#~ msgstr "アーカイブ"
 
 #~ msgctxt "Pattern title"
 #~ msgid "404"

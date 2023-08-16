@@ -89,16 +89,16 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/404/page-header/default.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area for All Archives', 'unitone' ),
-			'slug'     => 'unitone/archive/main/default',
+			'title'    => __( 'Main Area for All Archives (One Column)', 'unitone' ),
+			'slug'     => 'unitone/archive/main/one-column',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/archive/main/default.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/archive/main/one-column.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area (Page Header (Image)) for All Archives', 'unitone' ),
-			'slug'     => 'unitone/archive/main/page-header-image',
+			'title'    => __( 'Main Area (One Column / Page Header (Image)) for All Archives', 'unitone' ),
+			'slug'     => 'unitone/archive/main/one-column-page-header-image',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/archive/main/page-header-image.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/archive/main/one-column-page-header-image.php' ),
 		),
 		array(
 			'title'    => __( 'Main Area (Right Sidebar / Page Header (Image)) for All Archives', 'unitone' ),

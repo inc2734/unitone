@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-16T15:46:52+00:00\n"
+"POT-Creation-Date: 2023-08-16T16:10:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -243,12 +243,11 @@ msgid "Page Header for bbPress"
 msgstr ""
 
 #: inc/block-patterns.php:200
-#: inc/template-part-areas.php:183
-msgid "Main Area for Blog Home"
+msgid "Main Area (One Column) for Blog Home"
 msgstr ""
 
 #: inc/block-patterns.php:206
-msgid "Main Area (Page Header (Image)) for Blog Home"
+msgid "Main Area (One Column / Page Header (Image)) for Blog Home"
 msgstr ""
 
 #: inc/block-patterns.php:212
@@ -502,6 +501,10 @@ msgstr ""
 
 #: inc/template-part-areas.php:155
 msgid "Main Area for 404"
+msgstr ""
+
+#: inc/template-part-areas.php:183
+msgid "Main Area for Blog Home"
 msgstr ""
 
 #: inc/template-part-areas.php:197
@@ -811,9 +814,14 @@ msgctxt "Pattern title"
 msgid "Blog Home: Left Header"
 msgstr ""
 
-#: patterns/home-page-header-image.php
+#: patterns/home-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "Blog Home: Page Header (Image)"
+msgid "Blog Home: One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/home-one-column.php
+msgctxt "Pattern title"
+msgid "Blog Home: One Column"
 msgstr ""
 
 #: patterns/home-right-sidebar-page-header-image.php
@@ -824,11 +832,6 @@ msgstr ""
 #: patterns/home-right-sidebar.php
 msgctxt "Pattern title"
 msgid "Blog Home: Right Sidebar"
-msgstr ""
-
-#: patterns/home.php
-msgctxt "Pattern title"
-msgid "Blog Home"
 msgstr ""
 
 #: patterns/image.php

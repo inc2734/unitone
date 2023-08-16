@@ -197,16 +197,16 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/bbpress/page-header/default.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area for Blog Home', 'unitone' ),
-			'slug'     => 'unitone/home/main/default',
+			'title'    => __( 'Main Area (One Column) for Blog Home', 'unitone' ),
+			'slug'     => 'unitone/home/main/one-column',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/home/main/default.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/home/main/one-column.php' ),
 		),
 		array(
-			'title'    => __( 'Main Area (Page Header (Image)) for Blog Home', 'unitone' ),
-			'slug'     => 'unitone/home/main/page-header-image',
+			'title'    => __( 'Main Area (One Column / Page Header (Image)) for Blog Home', 'unitone' ),
+			'slug'     => 'unitone/home/main/one-column-page-header-image',
 			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/home/main/page-header-image.php' ),
+			'path'     => get_theme_file_path( 'patterns/private/home/main/one-column-page-header-image.php' ),
 		),
 		array(
 			'title'    => __( 'Main Area (Right Sidebar / Page Header (Image)) for Blog Home', 'unitone' ),

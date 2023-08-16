@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Blog Home
- * Slug: unitone/home
+ * Title: Blog Home: One Column
+ * Slug: unitone/home-one-column
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/home
  * Template Types: home
@@ -18,7 +18,7 @@
 
 	<!-- wp:unitone/cover-content {"fill":true,"position":"center"} -->
 	<div data-unitone-layout="cover__content -fill -valign:center">
-		<!-- wp:pattern {"slug":"unitone/home/main/default"} /-->
+		<!-- wp:pattern {"slug":"unitone/home/main/one-column"} /-->
 	</div>
 	<!-- /wp:unitone/cover-content -->
 

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-16T17:15:27+00:00\n"
-"PO-Revision-Date: 2023-08-17 02:16+0900\n"
+"POT-Creation-Date: 2023-08-17T12:28:23+00:00\n"
+"PO-Revision-Date: 2023-08-17 21:29+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -520,126 +520,6 @@ msgstr "bbPress のメインエリア"
 msgid "Footer breadcrumbs"
 msgstr "フッターのパンくずリスト"
 
-#: patterns/404-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "404: Left Header / Page Header (Image)"
-msgstr "404：左ヘッダー / ページヘッダー（画像）"
-
-#: patterns/404-left-header.php
-msgctxt "Pattern title"
-msgid "404: Left Header"
-msgstr "404：左ヘッダー"
-
-#: patterns/404-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "404: One Column / Page Header (Image)"
-msgstr "404：1カラム / ページヘッダー（画像）"
-
-#: patterns/404-one-column.php
-msgctxt "Pattern title"
-msgid "404: One Column"
-msgstr "404：1カラム"
-
-#: patterns/404-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "404: Right Sidebar / Page Header (Image)"
-msgstr "404：右サイドバー / ページヘッダー（画像）"
-
-#: patterns/404-right-sidebar.php
-msgctxt "Pattern title"
-msgid "404: Right Sidebar"
-msgstr "404：右サイドバー"
-
-#: patterns/archive-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "All Archives: Left Header / Page Header (Image)"
-msgstr "アーカイブ：左ヘッダー / ページヘッダー（画像）"
-
-#: patterns/archive-left-header.php
-msgctxt "Pattern title"
-msgid "All Archives: Left Header"
-msgstr "アーカイブ：左ヘッダー"
-
-#: patterns/archive-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "All Archives: One Column / Page Header (Image)"
-msgstr "アーカイブ：1カラム / ページヘッダー（画像）"
-
-#: patterns/archive-one-column.php
-msgctxt "Pattern title"
-msgid "All Archives: One Column"
-msgstr "アーカイブ：1カラム"
-
-#: patterns/archive-product-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "Product Archives: Left Header / Page Header (Image)"
-msgstr "商品アーカイブ：左ヘッダー / ページヘッダー（画像）"
-
-#: patterns/archive-product-left-header.php
-msgctxt "Pattern title"
-msgid "Product Archives: Left Header"
-msgstr "商品アーカイブ：左ヘッダー"
-
-#: patterns/archive-product-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "Product Archives: Page Header (Image)"
-msgstr "商品アーカイブ：ページヘッダー（画像）"
-
-#: patterns/archive-product-one-column.php
-msgctxt "Pattern title"
-msgid "Product Archives: One Column"
-msgstr "商品アーカイブ：1カラム"
-
-#: patterns/archive-product-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "Product Archives: Right Sidebar / Page Header (Image)"
-msgstr "商品アーカイブ：右サイドバー / ページヘッダー（画像）"
-
-#: patterns/archive-product-right-sidebar.php
-msgctxt "Pattern title"
-msgid "Product Archives: Right Sidebar"
-msgstr "商品アーカイブ：右サイドバー"
-
-#: patterns/archive-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "All Archives: Right Sidebar / Page Header (Image)"
-msgstr "アーカイブ：右サイドバー / ページヘッダー（画像）"
-
-#: patterns/archive-right-sidebar.php
-msgctxt "Pattern title"
-msgid "All Archives: Right Sidebar"
-msgstr "アーカイブ：右サイドバー"
-
-#: patterns/bbpress-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "bbPress: Left Header / Page Header (Image)"
-msgstr "bbPress：左ヘッダー / ページヘッダー（画像）"
-
-#: patterns/bbpress-left-header.php
-msgctxt "Pattern title"
-msgid "bbPress: Left Header"
-msgstr "bbPress：左ヘッダー"
-
-#: patterns/bbpress-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "bbPress: One Column / Page Header (Image)"
-msgstr "bbPress：1カラム / ページヘッダー（画像）"
-
-#: patterns/bbpress-one-column.php
-msgctxt "Pattern title"
-msgid "bbPress: One Column"
-msgstr "bbPress：1カラム"
-
-#: patterns/bbpress-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "bbPress: Right Sidebar / Page Header (Image)"
-msgstr "bbPress：右サイドバー / ページヘッダー（画像）"
-
-#: patterns/bbpress-right-sidebar.php
-msgctxt "Pattern title"
-msgid "bbPress: Right Sidebar"
-msgstr "bbPress：右サイドバー"
-
 #: patterns/footer-1.php
 msgctxt "Pattern title"
 msgid "Footer 1"
@@ -747,105 +627,15 @@ msgctxt "Pattern title"
 msgid "Header (Vertical)"
 msgstr "ヘッダー（縦）"
 
-#: patterns/home-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "Blog Home: Left Header / Page Header (Image)"
-msgstr "ブログホーム：左ヘッダー / ページヘッダー（画像）"
-
-#: patterns/home-left-header.php
-msgctxt "Pattern title"
-msgid "Blog Home: Left Header"
-msgstr "ブログホーム：左ヘッダー"
-
-#: patterns/home-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "Blog Home: One Column / Page Header (Image)"
-msgstr "ブログホーム：1カラム / ページヘッダー（画像）"
-
-#: patterns/home-one-column.php
-msgctxt "Pattern title"
-msgid "Blog Home: One Column"
-msgstr "ブログホーム：1カラム"
-
-#: patterns/home-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "Blog Home: Right Sidebar / Page Header (Image)"
-msgstr "ブログホーム：右サイドバー / ページヘッダー（画像）"
-
-#: patterns/home-right-sidebar.php
-msgctxt "Pattern title"
-msgid "Blog Home: Right Sidebar"
-msgstr "ブログホーム：右サイドバー"
-
 #: patterns/image.php
 msgctxt "Pattern title"
 msgid "Image"
 msgstr "画像"
 
-#: patterns/page-blank.php
-msgctxt "Pattern title"
-msgid "Pages: Blank"
-msgstr "固定ページ：空"
-
-#: patterns/page-header-footer.php
-msgctxt "Pattern title"
-msgid "Pages: Only Header and Footer"
-msgstr "固定ページ：ヘッダー / フッター"
-
-#: patterns/page-left-header-page-header-featured.php
-msgctxt "Pattern title"
-msgid "Pages: Left Header / Page Header (Featured Image)"
-msgstr "固定ページ：左ヘッダー / ページヘッダー（アイキャッチ画像）"
-
-#: patterns/page-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "Pages: Left Header / Page Header (Image)"
-msgstr "固定ページ：左ヘッダー / ページヘッダー（画像）"
-
-#: patterns/page-left-header.php
-msgctxt "Pattern title"
-msgid "Pages: Left Header"
-msgstr "固定ページ：左ヘッダー"
-
-#: patterns/page-one-column-page-header-featured.php
-msgctxt "Pattern title"
-msgid "Pages: One Column / Page Header (Featured Image)"
-msgstr "固定ページ：1カラム / ページヘッダー（アイキャッチ画像）"
-
-#: patterns/page-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "Pages: One Column / Page Header (Image)"
-msgstr "固定ページ：1カラム / ページヘッダー（画像）"
-
-#: patterns/page-one-column-page-header-slim.php
-msgctxt "Pattern title"
-msgid "Pages: One Column / Page Header (Slim)"
-msgstr "固定ページ：1カラム / ページヘッダー（スリム）"
-
-#: patterns/page-one-column.php
-msgctxt "Pattern title"
-msgid "Pages: One Column"
-msgstr "固定ページ：1カラム"
-
-#: patterns/page-right-sidebar-page-header-featured.php
-msgctxt "Pattern title"
-msgid "Pages: Right Sidebar / Page Header (Featured Image)"
-msgstr "固定ページ：右サイドバー / ページヘッダー（アイキャッチ画像）"
-
-#: patterns/page-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "Pages: Right Sidebar / Page Header (Image)"
-msgstr "固定ページ：右サイドバー / ページヘッダー（画像）"
-
-#: patterns/page-right-sidebar.php
-msgctxt "Pattern title"
-msgid "Pages: Right Sidebar"
-msgstr "固定ページ：右サイドバー"
-
 #: patterns/pages-1.php
 msgctxt "Pattern title"
-msgid "full width page"
-msgstr "全幅ページ"
+msgid "Full Width"
+msgstr "全幅"
 
 #: patterns/private/404/main/one-column-page-header-image.php:12
 #: patterns/private/404/main/one-column.php:12
@@ -878,36 +668,6 @@ msgctxt "Pattern title"
 msgid "Query (Rich media / Block link / Bordered)"
 msgstr "クエリー（リッチメディア / ブロックリンク / ボーダー）"
 
-#: patterns/search-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "Search Results: Left Header / Page Header (Image)"
-msgstr "検索結果：左ヘッダー / ページヘッダー（画像）"
-
-#: patterns/search-left-header.php
-msgctxt "Pattern title"
-msgid "Search Results: Left Header"
-msgstr "検索結果：左ヘッダー"
-
-#: patterns/search-one-column.php
-msgctxt "Pattern title"
-msgid "Search Results: One Column"
-msgstr "検索結果：1カラム"
-
-#: patterns/search-page-header-image.php
-msgctxt "Pattern title"
-msgid "Search Results: One Column / Page Header (Image)"
-msgstr "検索結果：1カラム / ページヘッダー（画像）"
-
-#: patterns/search-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "Search Results: Right Sidebar / Page Header (Image)"
-msgstr "検索結果：右サイドバー / ページヘッダー（画像）"
-
-#: patterns/search-right-sidebar.php
-msgctxt "Pattern title"
-msgid "Search Results: Right Sidebar"
-msgstr "検索結果：右サイドバー"
-
 #: patterns/sidebar-bbpress.php
 msgctxt "Pattern title"
 msgid "Sidebar (for bbPress)"
@@ -929,99 +689,339 @@ msgstr "最近のトピック"
 msgid "Forum Search"
 msgstr "フォーラムを検索"
 
-#: patterns/sidebar.php
+#: patterns/sidebar-blog.php
 msgctxt "Pattern title"
-msgid "Sidebar"
-msgstr "サイドバー"
+msgid "Sidebar (for Blog)"
+msgstr "サイドバー（ブログ用）"
 
-#: patterns/sidebar.php:13
+#: patterns/sidebar-blog.php:13
 msgid "Latest posts"
 msgstr "最新の投稿"
 
-#: patterns/sidebar.php:23
+#: patterns/sidebar-blog.php:23
 msgid "Categories"
 msgstr "カテゴリー"
 
-#: patterns/sidebar.php:33
+#: patterns/sidebar-blog.php:33
 msgid "Archives"
 msgstr "アーカイブ"
 
-#: patterns/single-header-footer.php
+#: patterns/template-404-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: Left Header / Page Header (Image)"
+msgstr "404：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template-404-left-header.php
+msgctxt "Pattern title"
+msgid "404: Left Header"
+msgstr "404：左ヘッダー"
+
+#: patterns/template-404-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: One Column / Page Header (Image)"
+msgstr "404：1カラム / ページヘッダー（画像）"
+
+#: patterns/template-404-one-column.php
+msgctxt "Pattern title"
+msgid "404: One Column"
+msgstr "404：1カラム"
+
+#: patterns/template-404-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: Right Sidebar / Page Header (Image)"
+msgstr "404：右サイドバー / ページヘッダー（画像）"
+
+#: patterns/template-404-right-sidebar.php
+msgctxt "Pattern title"
+msgid "404: Right Sidebar"
+msgstr "404：右サイドバー"
+
+#: patterns/template-archive-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Left Header / Page Header (Image)"
+msgstr "アーカイブ：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template-archive-left-header.php
+msgctxt "Pattern title"
+msgid "All Archives: Left Header"
+msgstr "アーカイブ：左ヘッダー"
+
+#: patterns/template-archive-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: One Column / Page Header (Image)"
+msgstr "アーカイブ：1カラム / ページヘッダー（画像）"
+
+#: patterns/template-archive-one-column.php
+msgctxt "Pattern title"
+msgid "All Archives: One Column"
+msgstr "アーカイブ：1カラム"
+
+#: patterns/template-archive-product-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Product Archives: Left Header / Page Header (Image)"
+msgstr "商品アーカイブ：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template-archive-product-left-header.php
+msgctxt "Pattern title"
+msgid "Product Archives: Left Header"
+msgstr "商品アーカイブ：左ヘッダー"
+
+#: patterns/template-archive-product-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Product Archives: One Column / Page Header (Image)"
+msgstr "商品アーカイブ：1カラム / ページヘッダー（画像）"
+
+#: patterns/template-archive-product-one-column.php
+msgctxt "Pattern title"
+msgid "Product Archives: One Column"
+msgstr "商品アーカイブ：1カラム"
+
+#: patterns/template-archive-product-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Product Archives: Right Sidebar / Page Header (Image)"
+msgstr "商品アーカイブ：右サイドバー / ページヘッダー（画像）"
+
+#: patterns/template-archive-product-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Product Archives: Right Sidebar"
+msgstr "商品アーカイブ：右サイドバー"
+
+#: patterns/template-archive-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Right Sidebar / Page Header (Image)"
+msgstr "アーカイブ：右サイドバー / ページヘッダー（画像）"
+
+#: patterns/template-archive-right-sidebar.php
+msgctxt "Pattern title"
+msgid "All Archives: Right Sidebar"
+msgstr "アーカイブ：右サイドバー"
+
+#: patterns/template-bbpress-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "bbPress: Left Header / Page Header (Image)"
+msgstr "bbPress：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template-bbpress-left-header.php
+msgctxt "Pattern title"
+msgid "bbPress: Left Header"
+msgstr "bbPress：左ヘッダー"
+
+#: patterns/template-bbpress-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "bbPress: One Column / Page Header (Image)"
+msgstr "bbPress：1カラム / ページヘッダー（画像）"
+
+#: patterns/template-bbpress-one-column.php
+msgctxt "Pattern title"
+msgid "bbPress: One Column"
+msgstr "bbPress：1カラム"
+
+#: patterns/template-bbpress-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "bbPress: Right Sidebar / Page Header (Image)"
+msgstr "bbPress：右サイドバー / ページヘッダー（画像）"
+
+#: patterns/template-bbpress-right-sidebar.php
+msgctxt "Pattern title"
+msgid "bbPress: Right Sidebar"
+msgstr "bbPress：右サイドバー"
+
+#: patterns/template-home-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Left Header / Page Header (Image)"
+msgstr "ブログホーム：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template-home-left-header.php
+msgctxt "Pattern title"
+msgid "Blog Home: Left Header"
+msgstr "ブログホーム：左ヘッダー"
+
+#: patterns/template-home-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: One Column / Page Header (Image)"
+msgstr "ブログホーム：1カラム / ページヘッダー（画像）"
+
+#: patterns/template-home-one-column.php
+msgctxt "Pattern title"
+msgid "Blog Home: One Column"
+msgstr "ブログホーム：1カラム"
+
+#: patterns/template-home-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Right Sidebar / Page Header (Image)"
+msgstr "ブログホーム：右サイドバー / ページヘッダー（画像）"
+
+#: patterns/template-home-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Blog Home: Right Sidebar"
+msgstr "ブログホーム：右サイドバー"
+
+#: patterns/template-page-blank.php
+msgctxt "Pattern title"
+msgid "Pages: Blank"
+msgstr "固定ページ：空"
+
+#: patterns/template-page-header-footer.php
+msgctxt "Pattern title"
+msgid "Pages: Only Header and Footer"
+msgstr "固定ページ：ヘッダー / フッター"
+
+#: patterns/template-page-left-header-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header / Page Header (Featured Image)"
+msgstr "固定ページ：左ヘッダー / ページヘッダー（アイキャッチ画像）"
+
+#: patterns/template-page-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header / Page Header (Image)"
+msgstr "固定ページ：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template-page-left-header.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header"
+msgstr "固定ページ：左ヘッダー"
+
+#: patterns/template-page-one-column-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: One Column / Page Header (Featured Image)"
+msgstr "固定ページ：1カラム / ページヘッダー（アイキャッチ画像）"
+
+#: patterns/template-page-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: One Column / Page Header (Image)"
+msgstr "固定ページ：1カラム / ページヘッダー（画像）"
+
+#: patterns/template-page-one-column-page-header-slim.php
+msgctxt "Pattern title"
+msgid "Pages: One Column / Page Header (Slim)"
+msgstr "固定ページ：1カラム / ページヘッダー（スリム）"
+
+#: patterns/template-page-one-column.php
+msgctxt "Pattern title"
+msgid "Pages: One Column"
+msgstr "固定ページ：1カラム"
+
+#: patterns/template-page-right-sidebar-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Right Sidebar / Page Header (Featured Image)"
+msgstr "固定ページ：右サイドバー / ページヘッダー（アイキャッチ画像）"
+
+#: patterns/template-page-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Right Sidebar / Page Header (Image)"
+msgstr "固定ページ：右サイドバー / ページヘッダー（画像）"
+
+#: patterns/template-page-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Pages: Right Sidebar"
+msgstr "固定ページ：右サイドバー"
+
+#: patterns/template-search-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Left Header / Page Header (Image)"
+msgstr "検索結果：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template-search-left-header.php
+msgctxt "Pattern title"
+msgid "Search Results: Left Header"
+msgstr "検索結果：左ヘッダー"
+
+#: patterns/template-search-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: One Column / Page Header (Image)"
+msgstr "検索結果：1カラム / ページヘッダー（画像）"
+
+#: patterns/template-search-one-column.php
+msgctxt "Pattern title"
+msgid "Search Results: One Column"
+msgstr "検索結果：1カラム"
+
+#: patterns/template-search-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Right Sidebar / Page Header (Image)"
+msgstr "検索結果：右サイドバー / ページヘッダー（画像）"
+
+#: patterns/template-search-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Search Results: Right Sidebar"
+msgstr "検索結果：右サイドバー"
+
+#: patterns/template-single-header-footer.php
 msgctxt "Pattern title"
 msgid "Single Posts: Only Header and Footer"
 msgstr "個別投稿：ヘッダー / フッター"
 
-#: patterns/single-left-header-page-header-featured.php
+#: patterns/template-single-left-header-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header / Page Header (Featured Image)"
 msgstr "個別投稿：左ヘッダー / ページヘッダー（アイキャッチ画像）"
 
-#: patterns/single-left-header-page-header-image.php
+#: patterns/template-single-left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header / Page Header (Image)"
 msgstr "個別投稿：左ヘッダー / ページヘッダー（画像）"
 
-#: patterns/single-left-header.php
+#: patterns/template-single-left-header.php
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header"
 msgstr "個別投稿：左ヘッダー"
 
-#: patterns/single-one-column-page-header-featured.php
+#: patterns/template-single-one-column-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column / Page Header (Featured Image)"
 msgstr "個別投稿：1カラム / ページヘッダー（アイキャッチ画像）"
 
-#: patterns/single-one-column-page-header-image.php
+#: patterns/template-single-one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column / Page Header (Image)"
 msgstr "個別投稿：1カラム / ページヘッダー（画像）"
 
-#: patterns/single-one-column.php
+#: patterns/template-single-one-column.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column"
 msgstr "個別投稿：1カラム"
 
-#: patterns/single-product-left-header-page-header-image.php
+#: patterns/template-single-product-left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Products: Left Header / Page Header (Image)"
 msgstr "個別商品：左ヘッダー / ページヘッダー（画像）"
 
-#: patterns/single-product-left-header.php
+#: patterns/template-single-product-left-header.php
 msgctxt "Pattern title"
 msgid "Single Products: Left Header"
 msgstr "個別商品：左ヘッダー"
 
-#: patterns/single-product-one-column-page-header-image.php
+#: patterns/template-single-product-one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Products: One Column / Page Header (Image)"
 msgstr "個別商品：1カラム / ページヘッダー（画像）"
 
-#: patterns/single-product-one-column.php
+#: patterns/template-single-product-one-column.php
 msgctxt "Pattern title"
 msgid "Single Products: One Column"
 msgstr "個別商品：1カラム"
 
-#: patterns/single-product-right-sidebar-page-header-image.php
+#: patterns/template-single-product-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Products: Right Sidebar / Page Header (Image)"
 msgstr "個別商品：右サイドバー / ページヘッダー（画像）"
 
-#: patterns/single-product-right-sidebar.php
+#: patterns/template-single-product-right-sidebar.php
 msgctxt "Pattern title"
 msgid "Single Products: Right Sidebar"
 msgstr "個別商品：右サイドバー"
 
-#: patterns/single-right-sidebar-page-header-featured.php
+#: patterns/template-single-right-sidebar-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
 msgstr "個別投稿：右サイドバー / ページヘッダー（アイキャッチ画像）"
 
-#: patterns/single-right-sidebar-page-header-image.php
+#: patterns/template-single-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Posts: Right Sidebar / Page Header (Image)"
 msgstr "個別投稿：右サイドバー / ページヘッダー（画像）"
 
-#: patterns/single-right-sidebar.php
+#: patterns/template-single-right-sidebar.php
 msgctxt "Pattern title"
 msgid "Single Posts: Right Sidebar"
 msgstr "個別投稿：右サイドバー"
@@ -2522,6 +2522,18 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Product Archives: Page Header (Image)"
+#~ msgstr "商品アーカイブ：ページヘッダー（画像）"
+
+#~ msgctxt "Pattern title"
+#~ msgid "full width page"
+#~ msgstr "全幅ページ"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Sidebar"
+#~ msgstr "サイドバー"
 
 #~ msgid "Main Area (Page Header (Image)) for Single Products"
 #~ msgstr "個別商品のメインエリア（ページヘッダー（画像））"

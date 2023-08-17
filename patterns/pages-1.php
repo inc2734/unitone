@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: full width page
- * Slug: unitone/pages/1
+ * Title: Full Width
+ * Slug: unitone/full-width
  * Categories: unitone-pages
  * Block Types: core/post-content
  */

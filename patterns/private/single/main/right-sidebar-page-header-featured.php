@@ -24,7 +24,7 @@
 
 					<!-- wp:unitone/with-sidebar-content -->
 					<div data-unitone-layout="with-sidebar__content">
-						<!-- wp:pattern {"slug":"unitone/sidebar"} /-->
+						<!-- wp:pattern {"slug":"unitone/sidebar/blog"} /-->
 					</div>
 					<!-- /wp:unitone/with-sidebar-content -->
 				</div>

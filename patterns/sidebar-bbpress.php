@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Sidebar (for bbPress)
- * Slug: unitone/sidebar-bbpress
+ * Slug: unitone/sidebar/bbpress
  * inserter: false
  */
 ?>

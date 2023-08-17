@@ -22,7 +22,7 @@
 
 					<!-- wp:unitone/with-sidebar-content -->
 					<div data-unitone-layout="with-sidebar__content">
-						<!-- wp:pattern {"slug":"unitone/sidebar-bbpress"} /-->
+						<!-- wp:pattern {"slug":"unitone/sidebar/bbpress"} /-->
 					</div>
 					<!-- /wp:unitone/with-sidebar-content -->
 				</div>

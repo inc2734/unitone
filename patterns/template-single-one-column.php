@@ -17,7 +17,7 @@
 
 	<!-- wp:unitone/cover-content {"fill":true,"position":"center"} -->
 	<div data-unitone-layout="cover__content -fill -valign:center">
-		<!-- wp:pattern {"slug":"unitone/single/main/one-column"} /-->
+		<!-- wp:pattern {"slug":"unitone/template/single/main/one-column"} /-->
 	</div>
 	<!-- /wp:unitone/cover-content -->
 

@@ -133,7 +133,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 			</>
 		);
 	};
-}, 'withInspectorControl' );
+}, 'withInspectorControls' );
 
 addFilter(
 	'blocks.registerBlockType',

@@ -6,6 +6,13 @@
 	"title": "Cluster",
 	"description": "This block arranges children horizontally.",
 	"attributes": {
+		"unitone": {
+			"type": "object",
+			"default": {
+				"alignItems": "stretch",
+				"justifyContent": "start"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

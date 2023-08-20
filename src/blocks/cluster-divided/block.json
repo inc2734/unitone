@@ -10,6 +10,19 @@
 			"type": "string",
 			"default": "div"
 		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"alignItems": "stretch",
+				"justifyContent": "start",
+				"dividerType": "stripe",
+				"divider": {
+					"style": "solid",
+					"width": "1px"
+				},
+				"dividerColor": "unitone-gray"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

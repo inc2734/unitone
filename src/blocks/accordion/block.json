@@ -37,6 +37,12 @@
 			"type": "string",
 			"default": ""
 		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"padding": "-2"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

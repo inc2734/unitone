@@ -6,9 +6,6 @@
 	"title": "Stack",
 	"description": "This block is used to arrange children vertically at regular intervals.",
 	"attributes": {
-		"negative": {
-			"type": "boolean"
-		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

@@ -1,8 +1,8 @@
 .editor-styles-wrapper [data-type="unitone/responsive-grid-divided"] {
 	> .block-list-appender {
-		position: absolute;
+		position: absolute !important;
 		border: none;
-		padding: 0;
+		padding: 0 !important;
 		margin: 0;
 
 		&::before {

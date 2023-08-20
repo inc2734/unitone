@@ -1,11 +1,12 @@
 import classnames from 'classnames/dedupe';
 
 import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { Button } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { alignBottom, alignCenter, alignTop } from '../icons';
+import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
 import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const alignItemsOptions = [
@@ -24,15 +25,36 @@ const alignItemsOptions = [
 		icon: alignBottom,
 		label: __( 'Align items bottom', 'unitone' ),
 	},
+	{
+		value: 'stretch',
+		icon: alignStretch,
+		label: __( 'Stretch to fill', 'unitone' ),
+	},
 ];
 
 export function hasAlignItemsValue( props ) {
-	return props.attributes?.unitone?.alignItems !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.alignItems;
+
+	return null != defaultValue
+		? attributes?.unitone?.alignItems !== defaultValue
+		: attributes?.unitone?.alignItems !== undefined;
 }
 
-export function resetAlignItems( { attributes = {}, setAttributes } ) {
+export function resetAlignItems( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.alignItems;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.alignItems;
+
+	if ( null != defaultValue ) {
+		newUnitone.alignItems = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -45,12 +67,19 @@ export function useIsAlignItemsDisabled( { name: blockName } = {} ) {
 
 export function AlignItemsToolbar( props ) {
 	const {
+		name,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.alignItems;
+	}, [] );
+
 	return (
 		<BlockVerticalAlignmentToolbar
+			controls={ [ 'top', 'center', 'bottom', 'stretch' ] }
 			value={ logicalToPhysical( unitone?.alignItems, 'vertical' ) }
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
@@ -58,7 +87,11 @@ export function AlignItemsToolbar( props ) {
 					alignItems: physicalToLogical( newAttribute ),
 				};
 				if ( null == newUnitone.alignItems ) {
-					delete newUnitone.alignItems;
+					if ( null == defaultValue ) {
+						delete newUnitone.alignItems;
+					} else {
+						newUnitone.alignItems = '';
+					}
 				}
 
 				setAttributes( {
@@ -73,10 +106,16 @@ export function AlignItemsToolbar( props ) {
 
 export function AlignItemsEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.alignItems;
+	}, [] );
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
@@ -107,7 +146,11 @@ export function AlignItemsEdit( props ) {
 											: undefined,
 								};
 								if ( null == newUnitone.alignItems ) {
-									delete newUnitone.alignItems;
+									if ( null == defaultValue ) {
+										delete newUnitone.alignItems;
+									} else {
+										newUnitone.alignItems = '';
+									}
 								}
 
 								setAttributes( {

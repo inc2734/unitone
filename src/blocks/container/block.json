@@ -6,6 +6,13 @@
 	"title": "Container",
 	"description": "Keep the content area within a certain width, plus appropriate margins on the left and right.",
 	"attributes": {
+		"unitone": {
+			"type": "object",
+			"default": {
+				"gutters": "root",
+				"blockAlign": "center"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

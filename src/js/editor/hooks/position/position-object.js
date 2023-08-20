@@ -7,7 +7,8 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 export function useIsPositionDisabled( { name: blockName } = {} ) {
@@ -16,22 +17,34 @@ export function useIsPositionDisabled( { name: blockName } = {} ) {
 
 export function PositionEdit( props ) {
 	const {
+		name,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.position;
+	}, [] );
+
 	return (
 		<ToolsPanel label={ __( 'Position', 'unitone' ) }>
 			<ToolsPanelItem
-				hasValue={ () => unitone?.position?.position !== undefined }
+				hasValue={ () =>
+					unitone?.position?.position !== defaultValue?.position
+				}
 				label={ __( 'Position', 'unitone' ) }
 				onDeselect={ () => {
 					delete unitone?.position?.position;
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete unitone?.position;
+					const newUnitone = { ...unitone };
+
+					if ( null != defaultValue?.position ) {
+						newUnitone.position.position = defaultValue?.position;
 					}
 
-					const newUnitone = { ...unitone };
+					if ( ! Object.keys( unitone?.position ).length ) {
+						delete newUnitone?.position;
+					}
 
 					setAttributes( {
 						unitone: !! Object.keys( newUnitone ).length
@@ -78,7 +91,11 @@ export function PositionEdit( props ) {
 							},
 						};
 						if ( null == newUnitone.position.position ) {
-							delete newUnitone.position.position;
+							if ( null == defaultValue ) {
+								delete newUnitone.position.position;
+							} else {
+								newUnitone.position.position = '';
+							}
 						}
 						if ( null == newUnitone.position ) {
 							delete newUnitone.position;
@@ -94,15 +111,19 @@ export function PositionEdit( props ) {
 			</ToolsPanelItem>
 
 			<ToolsPanelItem
-				hasValue={ () => unitone?.position?.top !== undefined }
+				hasValue={ () => unitone?.position?.top !== defaultValue?.top }
 				label={ __( 'Top', 'unitone' ) }
 				onDeselect={ () => {
 					delete unitone?.position?.top;
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete unitone?.position;
+					const newUnitone = { ...unitone };
+
+					if ( null != defaultValue?.position ) {
+						newUnitone.position.top = defaultValue?.top;
 					}
 
-					const newUnitone = { ...unitone };
+					if ( ! Object.keys( unitone?.position ).length ) {
+						delete newUnitone?.position;
+					}
 
 					setAttributes( {
 						unitone: !! Object.keys( newUnitone ).length
@@ -128,7 +149,11 @@ export function PositionEdit( props ) {
 							},
 						};
 						if ( null == newUnitone.position.top ) {
-							delete newUnitone.position.top;
+							if ( null == defaultValue ) {
+								delete newUnitone.position.top;
+							} else {
+								newUnitone.position.top = '';
+							}
 						}
 						if ( null == newUnitone.position ) {
 							delete newUnitone.position;
@@ -144,15 +169,21 @@ export function PositionEdit( props ) {
 			</ToolsPanelItem>
 
 			<ToolsPanelItem
-				hasValue={ () => unitone?.position?.right !== undefined }
+				hasValue={ () =>
+					unitone?.position?.right !== defaultValue?.right
+				}
 				label={ __( 'Right', 'unitone' ) }
 				onDeselect={ () => {
 					delete unitone?.position?.right;
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete unitone?.position;
+					const newUnitone = { ...unitone };
+
+					if ( null != defaultValue?.position ) {
+						newUnitone.position.right = defaultValue?.right;
 					}
 
-					const newUnitone = { ...unitone };
+					if ( ! Object.keys( unitone?.position ).length ) {
+						delete newUnitone?.position;
+					}
 
 					setAttributes( {
 						unitone: !! Object.keys( newUnitone ).length
@@ -178,7 +209,11 @@ export function PositionEdit( props ) {
 							},
 						};
 						if ( null == newUnitone.position.right ) {
-							delete newUnitone.position.right;
+							if ( null == defaultValue ) {
+								delete newUnitone.position.right;
+							} else {
+								newUnitone.position.right = '';
+							}
 						}
 						if ( null == newUnitone.position ) {
 							delete newUnitone.position;
@@ -194,15 +229,21 @@ export function PositionEdit( props ) {
 			</ToolsPanelItem>
 
 			<ToolsPanelItem
-				hasValue={ () => unitone?.position?.bottom !== undefined }
+				hasValue={ () =>
+					unitone?.position?.bottom !== defaultValue?.bottom
+				}
 				label={ __( 'Bottom', 'unitone' ) }
 				onDeselect={ () => {
 					delete unitone?.position?.bottom;
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete unitone?.position;
+					const newUnitone = { ...unitone };
+
+					if ( null != defaultValue?.position ) {
+						newUnitone.position.bottom = defaultValue?.bottom;
 					}
 
-					const newUnitone = { ...unitone };
+					if ( ! Object.keys( unitone?.position ).length ) {
+						delete newUnitone?.position;
+					}
 
 					setAttributes( {
 						unitone: !! Object.keys( newUnitone ).length
@@ -228,7 +269,11 @@ export function PositionEdit( props ) {
 							},
 						};
 						if ( null == newUnitone.position.bottom ) {
-							delete newUnitone.position.bottom;
+							if ( null == defaultValue ) {
+								delete newUnitone.position.bottom;
+							} else {
+								newUnitone.position.bottom = '';
+							}
 						}
 						if ( null == newUnitone.position ) {
 							delete newUnitone.position;
@@ -244,15 +289,21 @@ export function PositionEdit( props ) {
 			</ToolsPanelItem>
 
 			<ToolsPanelItem
-				hasValue={ () => unitone?.position?.left !== undefined }
+				hasValue={ () =>
+					unitone?.position?.left !== defaultValue?.left
+				}
 				label={ __( 'Left', 'unitone' ) }
 				onDeselect={ () => {
 					delete unitone?.position?.left;
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete unitone?.position;
+					const newUnitone = { ...unitone };
+
+					if ( null != defaultValue?.position ) {
+						newUnitone.position.left = defaultValue?.left;
 					}
 
-					const newUnitone = { ...unitone };
+					if ( ! Object.keys( unitone?.position ).length ) {
+						delete newUnitone?.position;
+					}
 
 					setAttributes( {
 						unitone: !! Object.keys( newUnitone ).length
@@ -278,7 +329,11 @@ export function PositionEdit( props ) {
 							},
 						};
 						if ( null == newUnitone.position.left ) {
-							delete newUnitone.position.left;
+							if ( null == defaultValue ) {
+								delete newUnitone.position.left;
+							} else {
+								newUnitone.position.left = '';
+							}
 						}
 						if ( null == newUnitone.position ) {
 							delete newUnitone.position;
@@ -294,15 +349,21 @@ export function PositionEdit( props ) {
 			</ToolsPanelItem>
 
 			<ToolsPanelItem
-				hasValue={ () => unitone?.position?.zIndex !== undefined }
+				hasValue={ () =>
+					unitone?.position?.zIndex !== defaultValue?.zIndex
+				}
 				label={ __( 'The stack level', 'unitone' ) }
 				onDeselect={ () => {
 					delete unitone?.position?.zIndex;
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete unitone?.position;
+					const newUnitone = { ...unitone };
+
+					if ( null != defaultValue?.position ) {
+						newUnitone.position.zIndex = defaultValue?.zIndex;
 					}
 
-					const newUnitone = { ...unitone };
+					if ( ! Object.keys( unitone?.position ).length ) {
+						delete newUnitone?.zIndex;
+					}
 
 					setAttributes( {
 						unitone: !! Object.keys( newUnitone ).length
@@ -329,7 +390,11 @@ export function PositionEdit( props ) {
 							},
 						};
 						if ( null == newUnitone.position.zIndex ) {
-							delete newUnitone.position.zIndex;
+							if ( null == defaultValue ) {
+								delete newUnitone.position.zIndex;
+							} else {
+								newUnitone.position.zIndex = '';
+							}
 						}
 						if ( null == newUnitone.position ) {
 							delete newUnitone.position;

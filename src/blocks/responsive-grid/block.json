@@ -10,6 +10,12 @@
 			"type": "string",
 			"default": ""
 		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"autoRepeat": "auto-fit"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

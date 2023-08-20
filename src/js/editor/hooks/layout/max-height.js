@@ -1,13 +1,30 @@
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 export function hasMaxHeightValue( props ) {
-	return props.attributes?.unitone?.maxHeight !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.maxHeight;
+
+	return null != defaultValue
+		? attributes?.unitone?.maxHeight !== defaultValue
+		: attributes?.unitone?.maxHeight !== undefined;
 }
 
-export function resetMaxHeight( { attributes = {}, setAttributes } ) {
+export function resetMaxHeight( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.maxHeight;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.maxHeight;
+
+	if ( null != defaultValue ) {
+		newUnitone.maxHeight = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -26,10 +43,16 @@ export function useIsMaxHeightDisabled( {
 
 export function MaxHeightEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.maxHeight;
+	}, [] );
 
 	return (
 		<TextControl
@@ -41,7 +64,11 @@ export function MaxHeightEdit( props ) {
 					maxHeight: newValue || undefined,
 				};
 				if ( null == newUnitone.maxHeight ) {
-					delete newUnitone.maxHeight;
+					if ( null == defaultValue ) {
+						delete newUnitone.maxHeight;
+					} else {
+						newUnitone.maxHeight = '';
+					}
 				}
 
 				setAttributes( {

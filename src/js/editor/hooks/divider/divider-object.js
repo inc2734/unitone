@@ -1,6 +1,6 @@
 import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients } from '@wordpress/block-editor';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { __experimentalBorderControl as BorderControl } from '@wordpress/components';
-import { hasBlockSupport } from '@wordpress/blocks';
 
 import { cleanEmptyObject } from '../utils';
 
@@ -77,16 +77,52 @@ const getDivider = (
 };
 
 export function hasDividerValue( props ) {
+	const { name, attributes } = props;
+
+	const dividerDefaultValue = wp.data
+		.select( blocksStore )
+		.getBlockType( name )?.attributes?.unitone?.default?.divider;
+
+	const dividerColorDefaultValue = wp.data
+		.select( blocksStore )
+		.getBlockType( name )?.attributes?.unitone?.default?.dividerColor;
+
+	if ( null != dividerDefaultValue ) {
+		return attributes?.unitone?.divider !== dividerDefaultValue;
+	}
+
+	if ( null != dividerColorDefaultValue ) {
+		return attributes?.unitone?.dividerColor !== dividerColorDefaultValue;
+	}
+
 	return (
 		props.attributes?.unitone?.divider !== undefined ||
 		props.attributes?.unitone?.dividerColor !== undefined
 	);
 }
 
-export function resetDivider( { attributes = {}, setAttributes } ) {
+export function resetDivider( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.divider;
 	delete attributes?.unitone?.dividerColor;
 	const newUnitone = { ...attributes?.unitone };
+
+	const dividerDefaultValue = wp.data
+		.select( blocksStore )
+		.getBlockType( name )?.attributes?.unitone?.default?.divider;
+
+	const dividerColorDefaultValue = wp.data
+		.select( blocksStore )
+		.getBlockType( name )?.attributes?.unitone?.default?.dividerColor;
+
+	if ( null != dividerDefaultValue ) {
+		newUnitone.divider = dividerDefaultValue;
+	}
+
+	if ( null != dividerColorDefaultValue ) {
+		newUnitone.dividerColor = dividerColorDefaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,

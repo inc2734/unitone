@@ -8,11 +8,17 @@
 	"attributes": {
 		"textOrientation": {
 			"type": "string",
-			"default": ""
+			"default": "mixed"
 		},
 		"switchWritingMode": {
 			"type": "boolean",
 			"default": false
+		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"blockAlign": "center"
+			}
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

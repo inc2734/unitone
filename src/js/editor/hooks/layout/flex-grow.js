@@ -1,13 +1,30 @@
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 export function hasFlexGrowValue( props ) {
-	return props.attributes?.unitone?.flexGrow !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.flexGrow;
+
+	return null != defaultValue
+		? attributes?.unitone?.flexGrow !== defaultValue
+		: attributes?.unitone?.flexGrow !== undefined;
 }
 
-export function resetFlexGrow( { attributes = {}, setAttributes } ) {
+export function resetFlexGrow( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.flexGrow;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.flexGrow;
+
+	if ( null != defaultValue ) {
+		newUnitone.flexGrow = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -26,10 +43,16 @@ export function useIsFlexGrowDisabled( {
 
 export function FlexGrowEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.flexGrow;
+	}, [] );
 
 	return (
 		<RangeControl
@@ -50,7 +73,11 @@ export function FlexGrowEdit( props ) {
 					flexGrow: newValue || undefined,
 				};
 				if ( null == newUnitone.flexGrow ) {
-					delete newUnitone.flexGrow;
+					if ( null == defaultValue ) {
+						delete newUnitone.flexGrow;
+					} else {
+						newUnitone.flexGrow = '';
+					}
 				}
 
 				setAttributes( {

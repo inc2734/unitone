@@ -1,7 +1,8 @@
 import classnames from 'classnames';
 
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 const mixBlendModeOptions = [
 	{
@@ -75,12 +76,28 @@ const mixBlendModeOptions = [
 ];
 
 export function hasMixBlendModeValue( props ) {
-	return props.attributes?.unitone?.mixBlendMode !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.mixBlendMode;
+
+	return null != defaultValue
+		? attributes?.unitone?.mixBlendMode !== defaultValue
+		: attributes?.unitone?.mixBlendMode !== undefined;
 }
 
-export function resetMixBlendMode( { attributes = {}, setAttributes } ) {
+export function resetMixBlendMode( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.mixBlendMode;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.mixBlendMode;
+
+	if ( null != defaultValue ) {
+		newUnitone.mixBlendMode = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -99,10 +116,16 @@ export function useIsMixBlendModeDisabled( {
 
 export function MixBlendModeEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.mixBlendMode;
+	}, [] );
 
 	return (
 		<SelectControl
@@ -115,7 +138,11 @@ export function MixBlendModeEdit( props ) {
 					mixBlendMode: newAttribute || undefined,
 				};
 				if ( null == newUnitone.mixBlendMode ) {
-					delete newUnitone.mixBlendMode;
+					if ( null == defaultValue ) {
+						delete newUnitone.mixBlendMode;
+					} else {
+						newUnitone.mixBlendMode = '';
+					}
 				}
 
 				setAttributes( {

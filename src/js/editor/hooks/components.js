@@ -77,7 +77,7 @@ export function SpacingSizeControl( {
 			className="spacing-sizes-control"
 		>
 			{ allowRoot && (
-				<div style={ { marginTop: '12px' } }>
+				<div style={ { marginTop: '12px', marginBottom: '12px' } }>
 					<ToggleControl
 						label={ __( 'Using root padding', 'unitone' ) }
 						checked={ 'root' === value }

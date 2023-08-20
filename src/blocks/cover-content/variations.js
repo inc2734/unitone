@@ -7,6 +7,7 @@ export default [
 		isDefault: false,
 		scope: [ 'block' ],
 		attributes: { position: 'top' },
+		isActive: [ 'position' ],
 	},
 	{
 		name: 'cover-content-center',
@@ -14,6 +15,7 @@ export default [
 		isDefault: true,
 		scope: [ 'block' ],
 		attributes: { position: 'center' },
+		isActive: [ 'position' ],
 	},
 	{
 		name: 'cover-content-bottom',
@@ -21,5 +23,6 @@ export default [
 		isDefault: false,
 		scope: [ 'block' ],
 		attributes: { position: 'bottom' },
+		isActive: [ 'position' ],
 	},
 ];

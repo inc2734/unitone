@@ -1,5 +1,5 @@
 /**
- * @see https://github.com/WordPress/gutenberg/blob/ee18bd78e3e64a84cc2d9c5614df761922ceb5b4/packages/block-editor/src/components/block-vertical-alignment-control/icons.js
+ * @see https://github.com/WordPress/gutenberg/blob/trunk/packages/block-editor/src/components/block-vertical-alignment-control/icons.js
  */
 
 import { Path, SVG } from '@wordpress/components';
@@ -22,11 +22,14 @@ export const alignTop = (
 	</SVG>
 );
 
+export const alignStretch = (
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+		<Path d="M4 4L20 4L20 5.5L4 5.5L4 4ZM10 7L14 7L14 17L10 17L10 7ZM20 18.5L4 18.5L4 20L20 20L20 18.5Z" />
+	</SVG>
+);
+
 export const alignSpaceBetween = (
 	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-		<Path
-			d="M9 15h6V9H9v6zm-5 5h1.5V4H4v16zM18.5 4v16H20V4h-1.5z"
-			transform="matrix(0, 1, -1, 0, 24, 0)"
-		/>
+		<Path d="M7 4H17V8L7 8V4ZM7 16L17 16V20L7 20V16ZM20 11.25H4V12.75H20V11.25Z" />
 	</SVG>
 );

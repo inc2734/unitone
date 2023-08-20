@@ -8,7 +8,7 @@
 	"attributes": {
 		"ratio": {
 			"type": "string",
-			"default": ""
+			"default": "16/9"
 		},
 		"switchRatio": {
 			"type": "boolean",

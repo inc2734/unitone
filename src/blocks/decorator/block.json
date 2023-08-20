@@ -36,6 +36,15 @@
 			"source": "attribute",
 			"selector": "a",
 			"attribute": "target"
+		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"position": {
+					"position": "relative"
+				},
+				"overflow": "visible"
+			}
 		}
 	},
 	"supports": {

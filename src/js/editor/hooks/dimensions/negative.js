@@ -1,15 +1,27 @@
 import classnames from 'classnames/dedupe';
 
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 export function hasNegativeValue( props ) {
-	return props.attributes?.unitone?.negative !== undefined;
+	const { attributes } = props;
+
+	return !! attributes?.unitone?.negative;
 }
 
-export function resetNegative( { attributes = {}, setAttributes } ) {
+export function resetNegative( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.negative;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.negative;
+
+	if ( !! defaultValue ) {
+		newUnitone.negative = !! defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -22,10 +34,16 @@ export function useIsNegativeDisabled( { name: blockName } = {} ) {
 
 export function NegativeEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return !! select( blocksStore ).getBlockType( name )?.attributes
+			?.unitone?.default?.negative;
+	}, [] );
 
 	return (
 		<ToggleControl
@@ -37,7 +55,9 @@ export function NegativeEdit( props ) {
 					negative: newValue || undefined,
 				};
 				if ( null == newUnitone.negative ) {
-					delete newUnitone.negative;
+					if ( ! defaultValue ) {
+						delete newUnitone.negative;
+					}
 				}
 
 				setAttributes( {

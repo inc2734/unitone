@@ -22,6 +22,12 @@
 			"type": "string",
 			"default": "right"
 		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"alignItems": "stretch"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

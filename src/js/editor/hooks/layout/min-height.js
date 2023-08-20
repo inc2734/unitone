@@ -1,13 +1,30 @@
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 export function hasMinHeightValue( props ) {
-	return props.attributes?.unitone?.minHeight !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.minHeight;
+
+	return null != defaultValue
+		? attributes?.unitone?.minHeight !== defaultValue
+		: attributes?.unitone?.minHeight !== undefined;
 }
 
-export function resetMinHeight( { attributes = {}, setAttributes } ) {
+export function resetMinHeight( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.minHeight;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.minHeight;
+
+	if ( null != defaultValue ) {
+		newUnitone.minHeight = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -26,10 +43,16 @@ export function useIsMinHeightDisabled( {
 
 export function MinHeightEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.maxWidth;
+	}, [] );
 
 	return (
 		<TextControl
@@ -41,7 +64,11 @@ export function MinHeightEdit( props ) {
 					minHeight: newValue || undefined,
 				};
 				if ( null == newUnitone.minHeight ) {
-					delete newUnitone.minHeight;
+					if ( null == defaultValue ) {
+						delete newUnitone.minHeight;
+					} else {
+						newUnitone.minHeight = '';
+					}
 				}
 
 				setAttributes( {

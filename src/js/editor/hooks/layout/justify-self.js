@@ -1,7 +1,8 @@
 import classnames from 'classnames';
 
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 const justifySelfOptions = [
 	{
@@ -39,12 +40,28 @@ const justifySelfOptions = [
 ];
 
 export function hasJustifySelfValue( props ) {
-	return props.attributes?.unitone?.justifySelf !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.justifySelf;
+
+	return null != defaultValue
+		? attributes?.unitone?.justifySelf !== defaultValue
+		: attributes?.unitone?.justifySelf !== undefined;
 }
 
-export function resetJustifySelf( { attributes = {}, setAttributes } ) {
+export function resetJustifySelf( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.justifySelf;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.justifySelf;
+
+	if ( null != defaultValue ) {
+		newUnitone.justifySelf = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -63,10 +80,16 @@ export function useIsJustifySelfDisabled( {
 
 export function JustifySelfEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.justifySelf;
+	}, [] );
 
 	return (
 		<SelectControl
@@ -79,7 +102,11 @@ export function JustifySelfEdit( props ) {
 					justifySelf: newAttribute || undefined,
 				};
 				if ( null == newUnitone.justifySelf ) {
-					delete newUnitone.justifySelf;
+					if ( null == defaultValue ) {
+						delete newUnitone.justifySelf;
+					} else {
+						newUnitone.justifySelf = '';
+					}
 				}
 
 				setAttributes( {

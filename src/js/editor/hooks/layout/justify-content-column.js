@@ -1,8 +1,9 @@
 import classnames from 'classnames/dedupe';
 
 import { JustifyToolbar } from '@wordpress/block-editor';
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { Button } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import {
 	alignBottom,
@@ -37,15 +38,28 @@ const justifyContentColumnOptions = [
 ];
 
 export function hasJustifyContentColumnValue( props ) {
-	return props.attributes?.unitone?.justifyContent !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.justifyContent;
+
+	return null != defaultValue
+		? attributes?.unitone?.justifyContent !== defaultValue
+		: attributes?.unitone?.justifyContent !== undefined;
 }
 
-export function resetJustifyContentColumn( {
-	attributes = {},
-	setAttributes,
-} ) {
+export function resetJustifyContentColumn( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.justifyContent;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.justifyContent;
+
+	if ( null != defaultValue ) {
+		newUnitone.justifyContent = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -58,9 +72,15 @@ export function useIsJustifyContentColumnDisabled( { name: blockName } = {} ) {
 
 export function JustifyContentColumnToolbar( props ) {
 	const {
+		name,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.justifyContent;
+	}, [] );
 
 	return (
 		<JustifyToolbar
@@ -74,7 +94,11 @@ export function JustifyContentColumnToolbar( props ) {
 					justifyContent: physicalToLogical( newAttribute ),
 				};
 				if ( null == newUnitone.justifyContent ) {
-					delete newUnitone.justifyContent;
+					if ( null == defaultValue ) {
+						delete newUnitone.justifyContent;
+					} else {
+						newUnitone.justifyContent = '';
+					}
 				}
 
 				setAttributes( {
@@ -89,10 +113,16 @@ export function JustifyContentColumnToolbar( props ) {
 
 export function JustifyContentColumnEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.justifyContent;
+	}, [] );
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
@@ -122,7 +152,11 @@ export function JustifyContentColumnEdit( props ) {
 												: undefined,
 									};
 									if ( null == newUnitone.justifyContent ) {
-										delete newUnitone.justifyContent;
+										if ( null == defaultValue ) {
+											delete newUnitone.justifyContent;
+										} else {
+											newUnitone.justifyContent = '';
+										}
 									}
 
 									setAttributes( {

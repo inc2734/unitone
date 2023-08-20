@@ -1,16 +1,33 @@
 import classnames from 'classnames/dedupe';
 
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import { useSelect } from '@wordpress/data';
 
 import { SpacingSizeControl } from '../components';
 
 export function hasGuttersValue( props ) {
-	return props.attributes?.unitone?.gutters !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.gutters;
+
+	return null != defaultValue
+		? attributes?.unitone?.gutters !== defaultValue
+		: attributes?.unitone?.gutters !== undefined;
 }
 
-export function resetGutters( { attributes = {}, setAttributes } ) {
+export function resetGutters( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.gutters;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.gutters;
+
+	if ( null != defaultValue ) {
+		newUnitone.gutters = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -23,10 +40,16 @@ export function useIsGuttersDisabled( { name: blockName } = {} ) {
 
 export function GuttersEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.gutters;
+	}, [] );
 
 	return (
 		<SpacingSizeControl
@@ -45,7 +68,11 @@ export function GuttersEdit( props ) {
 					gutters: newValue || undefined,
 				};
 				if ( null == newUnitone.gutters ) {
-					delete newUnitone.gutters;
+					if ( null == defaultValue ) {
+						delete newUnitone.gutters;
+					} else {
+						newUnitone.gutters = '';
+					}
 				}
 
 				setAttributes( {

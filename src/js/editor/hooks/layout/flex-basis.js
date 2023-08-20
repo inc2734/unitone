@@ -1,13 +1,30 @@
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 export function hasFlexBasisValue( props ) {
-	return props.attributes?.unitone?.flexBasis !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.flexBasis;
+
+	return null != defaultValue
+		? attributes?.unitone?.flexBasis !== defaultValue
+		: attributes?.unitone?.flexBasis !== undefined;
 }
 
-export function resetFlexBasis( { attributes = {}, setAttributes } ) {
+export function resetFlexBasis( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.flexBasis;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.flexBasis;
+
+	if ( null != defaultValue ) {
+		newUnitone.flexBasis = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -26,10 +43,16 @@ export function useIsFlexBasisDisabled( {
 
 export function FlexBasisEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.flexBasis;
+	}, [] );
 
 	return (
 		<TextControl
@@ -41,7 +64,11 @@ export function FlexBasisEdit( props ) {
 					flexBasis: newValue || undefined,
 				};
 				if ( null == newUnitone.flexBasis ) {
-					delete newUnitone.flexBasis;
+					if ( null == defaultValue ) {
+						delete newUnitone.flexBasis;
+					} else {
+						newUnitone.flexBasis = '';
+					}
 				}
 
 				setAttributes( {

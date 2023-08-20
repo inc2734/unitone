@@ -1,7 +1,8 @@
 import classnames from 'classnames/dedupe';
 
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 const overflowOptions = [
 	{ label: '', value: '' },
@@ -20,12 +21,28 @@ const overflowOptions = [
 ];
 
 export function hasOverflowValue( props ) {
-	return props.attributes?.unitone?.overflow !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.overflow;
+
+	return null != defaultValue
+		? attributes?.unitone?.overflow !== defaultValue
+		: attributes?.unitone?.overflow !== undefined;
 }
 
-export function resetOverflow( { attributes = {}, setAttributes } ) {
+export function resetOverflow( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.overflow;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.overflow;
+
+	if ( null != defaultValue ) {
+		newUnitone.overflow = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -38,10 +55,16 @@ export function useIsOverflowDisabled( { name: blockName } = {} ) {
 
 export function OverflowEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.newValue;
+	}, [] );
 
 	return (
 		<SelectControl
@@ -54,7 +77,11 @@ export function OverflowEdit( props ) {
 					overflow: newValue || undefined,
 				};
 				if ( null == newUnitone.overflow ) {
-					delete newUnitone.overflow;
+					if ( null == defaultValue ) {
+						delete newUnitone.overflow;
+					} else {
+						newUnitone.overflow = '';
+					}
 				}
 
 				setAttributes( {

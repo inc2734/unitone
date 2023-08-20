@@ -1,7 +1,8 @@
 import classnames from 'classnames/dedupe';
 
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
-import { hasBlockSupport } from '@wordpress/blocks';
+import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 const autoRepeatOptions = [
@@ -24,15 +25,28 @@ export function useIsAutoRepeatDisabled( { name: blockName } = {} ) {
 }
 
 export function hasAutoRepeatValue( props ) {
-	return (
-		props.attributes?.unitone?.autoRepeat !== undefined &&
-		props.attributes?.unitone?.autoRepeat !== ''
-	);
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.autoRepeat;
+
+	return null != defaultValue
+		? attributes?.unitone?.autoRepeat !== defaultValue
+		: attributes?.unitone?.autoRepeat !== undefined;
 }
 
-export function resetAutoRepeat( { attributes = {}, setAttributes } ) {
+export function resetAutoRepeat( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.autoRepeat;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.autoRepeat;
+
+	if ( null != defaultValue ) {
+		newUnitone.autoRepeat = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -41,10 +55,16 @@ export function resetAutoRepeat( { attributes = {}, setAttributes } ) {
 
 export function AutoRepeatEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.autoRepeat;
+	}, [] );
 
 	return (
 		<SelectControl
@@ -57,7 +77,11 @@ export function AutoRepeatEdit( props ) {
 					autoRepeat: newValue || undefined,
 				};
 				if ( null == newUnitone.autoRepeat ) {
-					delete newUnitone.autoRepeat;
+					if ( null == defaultValue ) {
+						delete newUnitone.autoRepeat;
+					} else {
+						newUnitone.autoRepeat = '';
+					}
 				}
 
 				setAttributes( {

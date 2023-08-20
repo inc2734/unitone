@@ -1,13 +1,30 @@
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 export function hasGridColumnValue( props ) {
-	return props.attributes?.unitone?.gridColumn !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.gridColumn;
+
+	return null != defaultValue
+		? attributes?.unitone?.gridColumn !== defaultValue
+		: attributes?.unitone?.gridColumn !== undefined;
 }
 
-export function resetGridColumn( { attributes = {}, setAttributes } ) {
+export function resetGridColumn( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.gridColumn;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.gridColumn;
+
+	if ( null != defaultValue ) {
+		newUnitone.gridColumn = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -26,11 +43,17 @@ export function useIsGridColumnDisabled( {
 
 export function GridColumnEdit( props ) {
 	const {
+		name,
 		label,
 		help,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.gridColumn;
+	}, [] );
 
 	return (
 		<TextControl
@@ -43,7 +66,11 @@ export function GridColumnEdit( props ) {
 					gridColumn: newAttribute || undefined,
 				};
 				if ( null == newUnitone.gridColumn ) {
-					delete newUnitone.gridColumn;
+					if ( null == defaultValue ) {
+						delete newUnitone.gridColumn;
+					} else {
+						newUnitone.gridColumn = '';
+					}
 				}
 
 				setAttributes( {

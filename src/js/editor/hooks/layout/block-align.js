@@ -1,8 +1,9 @@
 import classnames from 'classnames/dedupe';
 
 import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { Button } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { justifyLeft, justifyCenter, justifyRight } from '@wordpress/icons';
 
@@ -27,12 +28,28 @@ const blockAlignOptions = [
 ];
 
 export function hasBlockAlignValue( props ) {
-	return props.attributes?.unitone?.blockAlign !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.blockAlign;
+
+	return null != defaultValue
+		? attributes?.unitone?.blockAlign !== defaultValue
+		: attributes?.unitone?.blockAlign !== undefined;
 }
 
-export function resetBlockAlign( { attributes = {}, setAttributes } ) {
+export function resetBlockAlign( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.blockAlign;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.blockAlign;
+
+	if ( null != defaultValue ) {
+		newUnitone.blockAlign = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -45,9 +62,15 @@ export function useIsBlockAlignDisabled( { name: blockName } = {} ) {
 
 export function BlockAlignToolbar( props ) {
 	const {
+		name,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.blockAlign;
+	}, [] );
 
 	return (
 		<BlockControls group="block">
@@ -60,7 +83,11 @@ export function BlockAlignToolbar( props ) {
 						blockAlign: physicalToLogical( newAttribute ),
 					};
 					if ( null == newUnitone.blockAlign ) {
-						delete newUnitone.blockAlign;
+						if ( null == defaultValue ) {
+							delete newUnitone.blockAlign;
+						} else {
+							newUnitone.blockAlign = '';
+						}
 					}
 
 					setAttributes( {
@@ -76,10 +103,16 @@ export function BlockAlignToolbar( props ) {
 
 export function BlockAlignEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.blockAlign;
+	}, [] );
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
@@ -107,7 +140,11 @@ export function BlockAlignEdit( props ) {
 											: undefined,
 								};
 								if ( null == newUnitone.blockAlign ) {
-									delete newUnitone.blockAlign;
+									if ( null == defaultValue ) {
+										delete newUnitone.blockAlign;
+									} else {
+										newUnitone.blockAlign = '';
+									}
 								}
 
 								setAttributes( {

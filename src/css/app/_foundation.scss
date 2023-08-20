@@ -46,10 +46,8 @@ kbd {
 }
 
 :where(
-	[type=button],
 	[type=reset],
-	[type=submit],
-	button
+	[type=submit]
 ) {
 	border: 1px solid var(--wp--preset--color--unitone-gray);
 	padding: calc(var(--unitone--s-1) / 1.5) var(--unitone--s-1);

@@ -9,15 +9,15 @@
 	"attributes": {
 		"alignSelf": {
 			"type": "string",
-			"default": ""
+			"default": "auto"
 		},
 		"justifySelf": {
 			"type": "string",
-			"default": ""
+			"default": "auto"
 		},
 		"gridColumn": {
 			"type": "string",
-			"default": ""
+			"default": "1/-1"
 		},
 		"gridRow": {
 			"type": "string",

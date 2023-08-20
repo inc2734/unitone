@@ -1,7 +1,8 @@
 import classnames from 'classnames';
 
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 const alignSelfOptions = [
 	{
@@ -39,12 +40,28 @@ const alignSelfOptions = [
 ];
 
 export function hasAlignSelfValue( props ) {
-	return props.attributes?.unitone?.alignSelf !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.alignSelf;
+
+	return null != defaultValue
+		? attributes?.unitone?.alignSelf !== defaultValue
+		: attributes?.unitone?.alignSelf !== undefined;
 }
 
-export function resetAlignSelf( { attributes = {}, setAttributes } ) {
+export function resetAlignSelf( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.alignSelf;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.alignSelf;
+
+	if ( null != defaultValue ) {
+		newUnitone.alignSelf = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -63,10 +80,16 @@ export function useIsAlignSelfDisabled( {
 
 export function AlignSelfEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.alignSelf;
+	}, [] );
 
 	return (
 		<SelectControl
@@ -79,7 +102,11 @@ export function AlignSelfEdit( props ) {
 					alignSelf: newAttribute || undefined,
 				};
 				if ( null == newUnitone.alignSelf ) {
-					delete newUnitone.alignSelf;
+					if ( null == defaultValue ) {
+						delete newUnitone.alignSelf;
+					} else {
+						newUnitone.alignSelf = '';
+					}
 				}
 
 				setAttributes( {

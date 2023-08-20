@@ -107,6 +107,10 @@ add_filter(
 		$p = new \WP_HTML_Tag_Processor( $block_content );
 		$p->next_tag();
 
+		$registry            = WP_Block_Type_Registry::get_instance();
+		$metadata            = $registry->get_registered( $block['blockName'] );
+		$metadata_attributes = $metadata ? $metadata->get_attributes() : false;
+
 		// -fluid-typography
 		if ( isset( $block['attrs']['unitone']['fluidTypography'] ) ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
@@ -127,36 +131,60 @@ add_filter(
 		}
 
 		// -align-items
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['alignItems'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['alignItems'] ) && '' !== $block['attrs']['unitone']['alignItems'] ) {
+			$attribute = '-align-items:' . $block['attrs']['unitone']['alignItems'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['alignItems'] ) ) {
+			$attribute = '-align-items:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-align-items:' . $block['attrs']['unitone']['alignItems'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// -auto-repeat
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['autoRepeat'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['autoRepeat'] ) && '' !== $block['attrs']['unitone']['autoRepeat'] ) {
+			$attribute = '-auto-repeat:' . $block['attrs']['unitone']['autoRepeat'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['autoRepeat'] ) ) {
+			$attribute = '-auto-repeat:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-auto-repeat:' . $block['attrs']['unitone']['autoRepeat'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// -align
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['blockAlign'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['blockAlign'] ) && '' !== $block['attrs']['unitone']['blockAlign'] ) {
+			$attribute = '-align:' . $block['attrs']['unitone']['blockAlign'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['blockAlign'] ) ) {
+			$attribute = '-align:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-align:' . $block['attrs']['unitone']['blockAlign'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// -divider
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['dividerType'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['dividerType'] ) && '' !== $block['attrs']['unitone']['dividerType'] ) {
+			$attribute = '-divider:' . $block['attrs']['unitone']['dividerType'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['dividerType'] ) ) {
+			$attribute = '-divider:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-divider:' . $block['attrs']['unitone']['dividerType'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
@@ -204,213 +232,332 @@ add_filter(
 		}
 
 		// -gap
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['gap'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['gap'] ) && '' !== $block['attrs']['unitone']['gap'] ) {
+			$attribute = '-gap:' . $block['attrs']['unitone']['gap'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['gap'] ) ) {
+			$attribute = '-gap:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-gap:' . $block['attrs']['unitone']['gap'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// -gutters
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['gutters'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['gutters'] ) && '' !== $block['attrs']['unitone']['gutters'] ) {
+			$attribute = '-gutters:' . $block['attrs']['unitone']['gutters'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['gutters'] ) ) {
+			$attribute = '-gutters:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-gutters:' . $block['attrs']['unitone']['gutters'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// -justify-content
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['justifyContent'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['justifyContent'] ) && '' !== $block['attrs']['unitone']['justifyContent'] ) {
+			$attribute = '-justify-content:' . $block['attrs']['unitone']['justifyContent'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['justifyContent'] ) ) {
+			$attribute = '-justify-content:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-justify-content:' . $block['attrs']['unitone']['justifyContent'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// --unitone--max-width
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['maxWidth'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['maxWidth'] ) && '' !== $block['attrs']['unitone']['maxWidth'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--max-width:';
+			$property = '--unitone--max-width:' . $block['attrs']['unitone']['maxWidth'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['maxWidth'] ) ) {
+			$property = '--unitone--max-width:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['maxWidth'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// --unitone--max-height
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['maxHeight'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['maxHeight'] ) && '' !== $block['attrs']['unitone']['maxHeight'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--max-height:';
+			$property = '--unitone--max-height:' . $block['attrs']['unitone']['maxHeight'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['maxHeight'] ) ) {
+			$property = '--unitone--max-height:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['maxHeight'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// --unitone--min-height
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['minHeight'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['minHeight'] ) && '' !== $block['attrs']['unitone']['minHeight'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--min-height:';
+			$property = '--unitone--min-height:' . $block['attrs']['unitone']['minHeight'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['minHeight'] ) ) {
+			$property = '--unitone--min-height:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['minHeight'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// -negative
+		$default   = $metadata ? (bool) $metadata->get_attributes()['unitone']['default']['negative'] : false;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['negative'] ) ) {
+			$attribute = '-negative';
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['negative'] ) ) {
+			$attribute = '-negative';
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-negative';
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// -overflow
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['overflow'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['overflow'] ) && '' !== $block['attrs']['unitone']['overflow'] ) {
+			$attribute = '-overflow:' . $block['attrs']['unitone']['overflow'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['overflow'] ) ) {
+			$attribute = '-overflow:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-overflow:' . $block['attrs']['unitone']['overflow'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// -padding
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['padding'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['padding'] ) && '' !== $block['attrs']['unitone']['padding'] ) {
+			$attribute = '-padding:' . $block['attrs']['unitone']['padding'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['padding'] ) ) {
+			$attribute = '-padding:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-padding:' . $block['attrs']['unitone']['padding'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// -position
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['position']['position'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['position']['position'] ) && '' !== $block['attrs']['unitone']['position']['position'] ) {
+			$attribute = '-position:' . $block['attrs']['unitone']['position']['position'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['position']['position'] ) ) {
+			$attribute = '-position:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-position:' . $block['attrs']['unitone']['position']['position'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// --unitone--top
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['position']['top'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['position']['top'] ) && '' !== $block['attrs']['unitone']['position']['top'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--top:';
+			$property = '--unitone--top:' . $block['attrs']['unitone']['position']['top'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['position']['top'] ) ) {
+			$property = '--unitone--top:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['position']['top'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// --unitone--right
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['position']['right'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['position']['right'] ) && '' !== $block['attrs']['unitone']['position']['right'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--right:';
+			$property = '--unitone--right:' . $block['attrs']['unitone']['position']['right'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['position']['right'] ) ) {
+			$property = '--unitone--right:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['position']['right'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// --unitone--bottom
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['position']['bottom'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['position']['bottom'] ) && '' !== $block['attrs']['unitone']['position']['bottom'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--bottom:';
+			$property = '--unitone--bottom:' . $block['attrs']['unitone']['position']['bottom'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['position']['bottom'] ) ) {
+			$property = '--unitone--bottom:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['position']['bottom'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// --unitone--left
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['position']['left'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['position']['left'] ) && '' !== $block['attrs']['unitone']['position']['left'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--left:';
+			$property = '--unitone--left:' . $block['attrs']['unitone']['position']['left'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['position']['left'] ) ) {
+			$property = '--unitone--left:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['position']['left'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// --unitone--z-index
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['position']['zIndex'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['position']['zIndex'] ) && '' !== $block['attrs']['unitone']['position']['zIndex'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--z-index:';
+			$property = '--unitone--z-index:' . $block['attrs']['unitone']['position']['zIndex'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['position']['zIndex'] ) ) {
+			$property = '--unitone--z-index:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['position']['zIndex'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// --unitone--flex-grow
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['flexGrow'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['flexGrow'] ) && '' !== $block['attrs']['unitone']['flexGrow'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--flex-grow:';
+			$property = '--unitone--flex-grow:' . $block['attrs']['unitone']['flexGrow'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['flexGrow'] ) ) {
+			$property = '--unitone--flex-grow:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['flexGrow'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// --unitone--flex-shrink
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['flexShrink'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['flexShrink'] ) && '' !== $block['attrs']['unitone']['flexShrink'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--flex-shrink:';
+			$property = '--unitone--flex-shrink:' . $block['attrs']['unitone']['flexShrink'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['flexShrink'] ) ) {
+			$property = '--unitone--flex-shrink:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['flexShrink'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// --unitone--flex-basis
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['flexBasis'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['flexBasis'] ) && '' !== $block['attrs']['unitone']['flexBasis'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--flex-basis:';
+			$property = '--unitone--flex-basis:' . $block['attrs']['unitone']['flexBasis'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['flexBasis'] ) ) {
+			$property = '--unitone--flex-basis:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['flexBasis'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// -align-self
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['alignSelf'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['alignSelf'] ) && '' !== $block['attrs']['unitone']['alignSelf'] ) {
+			$attribute = '-align-self:' . $block['attrs']['unitone']['alignSelf'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['alignSelf'] ) ) {
+			$attribute = '-align-self:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-align-self:' . $block['attrs']['unitone']['alignSelf'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// -justify-self
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['justifySelf'] ?? null : null;
+		$attribute = false;
 		if ( isset( $block['attrs']['unitone']['justifySelf'] ) && '' !== $block['attrs']['unitone']['justifySelf'] ) {
+			$attribute = '-justify-self:' . $block['attrs']['unitone']['justifySelf'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['justifySelf'] ) ) {
+			$attribute = '-justify-self:' . $default;
+		}
+		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-justify-self:' . $block['attrs']['unitone']['justifySelf'];
 			if ( false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
 
 		// --unitone--grid-column
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['gridColumn'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['gridColumn'] ) && '' !== $block['attrs']['unitone']['gridColumn'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--grid-column:';
+			$property = '--unitone--grid-column:' . $block['attrs']['unitone']['gridColumn'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['gridColumn'] ) ) {
+			$property = '--unitone--grid-column:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['gridColumn'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 
 		// --unitone--grid-row
+		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['gridRow'] ?? null : null;
+		$property = false;
 		if ( isset( $block['attrs']['unitone']['gridRow'] ) && '' !== $block['attrs']['unitone']['gridRow'] ) {
-			$style    = $p->get_attribute( 'style' ) ?? '';
-			$property = '--unitone--grid-row:';
+			$property = '--unitone--grid-row:' . $block['attrs']['unitone']['gridRow'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['gridRow'] ) ) {
+			$property = '--unitone--grid-row:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$style = $style ? $style . ';' : $style;
-				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['gridRow'] ) );
+				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
 			}
 		}
 

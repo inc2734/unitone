@@ -14,6 +14,18 @@
 			"type": "string",
 			"default": ""
 		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"autoRepeat": "auto-fit",
+				"dividerType": "stripe",
+				"divider": {
+					"style": "solid",
+					"width": "1px"
+				},
+				"dividerColor": "unitone-gray"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

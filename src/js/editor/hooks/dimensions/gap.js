@@ -1,16 +1,38 @@
 import classnames from 'classnames/dedupe';
 
-import { hasBlockSupport, getBlockSupport } from '@wordpress/blocks';
+import {
+	hasBlockSupport,
+	getBlockSupport,
+	store as blocksStore,
+} from '@wordpress/blocks';
+
+import { useSelect } from '@wordpress/data';
 
 import { SpacingSizeControl } from '../components';
 
 export function hasGapValue( props ) {
-	return props.attributes?.unitone?.gap !== undefined;
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.gap;
+
+	return null != defaultValue
+		? attributes?.unitone?.gap !== defaultValue
+		: attributes?.unitone?.gap !== undefined;
 }
 
-export function resetGap( { attributes = {}, setAttributes } ) {
+export function resetGap( props ) {
+	const { name, attributes, setAttributes } = props;
+
 	delete attributes?.unitone?.gap;
 	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.gap;
+
+	if ( null != defaultValue ) {
+		newUnitone.gap = defaultValue;
+	}
 
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
@@ -42,10 +64,16 @@ export function useIsGapDisabled( props ) {
 
 export function GapEdit( props ) {
 	const {
+		name,
 		label,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.gap;
+	}, [] );
 
 	return (
 		<SpacingSizeControl
@@ -63,7 +91,11 @@ export function GapEdit( props ) {
 					gap: newValue || undefined,
 				};
 				if ( null == newUnitone.gap ) {
-					delete newUnitone.gap;
+					if ( null == defaultValue ) {
+						delete newUnitone.gap;
+					} else {
+						newUnitone.gap = '';
+					}
 				}
 
 				setAttributes( {

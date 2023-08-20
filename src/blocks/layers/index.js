@@ -62,7 +62,7 @@ const withChildBlockAttributes = createHigherOrderComponent(
 			return <BlockListBlock { ...newProps } />;
 		};
 	},
-	'withClientIdClassName'
+	'withChildBlockAttributes'
 );
 
 addFilter(

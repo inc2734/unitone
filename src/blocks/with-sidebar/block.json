@@ -8,11 +8,11 @@
 	"attributes": {
 		"sidebarWidth": {
 			"type": "string",
-			"default": ""
+			"default": "auto"
 		},
 		"contentMinWidth": {
 			"type": "string",
-			"default": ""
+			"default": "50%"
 		},
 		"revert": {
 			"type": "boolean",

@@ -322,9 +322,9 @@ add_filter(
 		}
 
 		// -negative
-		$default   = $metadata ? (bool) $metadata->get_attributes()['unitone']['default']['negative'] : false;
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['negative'] ?? null : false;
 		$attribute = false;
-		if ( isset( $block['attrs']['unitone']['negative'] ) ) {
+		if ( ! empty( $block['attrs']['unitone']['negative'] ) ) {
 			$attribute = '-negative';
 		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['negative'] ) ) {
 			$attribute = '-negative';

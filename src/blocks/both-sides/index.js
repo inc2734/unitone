@@ -41,10 +41,25 @@ const withChildBlockAttributes = createHigherOrderComponent(
 					const parentBlock = getBlock( parentClientId );
 
 					if ( 'unitone/both-sides' === parentBlock?.name ) {
+						const DEFAULT_VALUES = {
+							flexBasis: 'fit-content',
+						};
+
 						newProps.attributes = {
 							...newProps.attributes,
+							unitone: {
+								...newProps.attributes?.unitone,
+								flexBasis:
+									null !=
+									newProps.attributes?.unitone?.flexBasis
+										? newProps.attributes?.unitone
+												?.flexBasis
+										: DEFAULT_VALUES.flexBasis,
+							},
 							__unstableUnitoneSupports: {
-								flexBasis: true,
+								flexBasis: {
+									default: DEFAULT_VALUES.flexBasis,
+								},
 							},
 						};
 					}

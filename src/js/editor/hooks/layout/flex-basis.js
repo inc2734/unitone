@@ -5,8 +5,11 @@ import { useSelect } from '@wordpress/data';
 export function hasFlexBasisValue( props ) {
 	const { name, attributes } = props;
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.flexBasis;
+	const defaultValue =
+		null != attributes?.__unstableUnitoneSupports?.flexBasis?.default
+			? attributes?.__unstableUnitoneSupports?.flexBasis?.default
+			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+					?.unitone?.default?.flexBasis;
 
 	return null != defaultValue
 		? attributes?.unitone?.flexBasis !== defaultValue
@@ -19,8 +22,11 @@ export function resetFlexBasis( props ) {
 	delete attributes?.unitone?.flexBasis;
 	const newUnitone = { ...attributes?.unitone };
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.flexBasis;
+	const defaultValue =
+		null != attributes?.__unstableUnitoneSupports?.flexBasis?.default
+			? attributes?.__unstableUnitoneSupports?.flexBasis?.default
+			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+					?.unitone?.default?.flexBasis;
 
 	if ( null != defaultValue ) {
 		newUnitone.flexBasis = defaultValue;
@@ -45,14 +51,17 @@ export function FlexBasisEdit( props ) {
 	const {
 		name,
 		label,
-		attributes: { unitone },
+		attributes: { unitone, __unstableUnitoneSupports },
 		setAttributes,
 	} = props;
 
-	const defaultValue = useSelect( ( select ) => {
+	let defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.flexBasis;
 	}, [] );
+	if ( null != __unstableUnitoneSupports?.flexBasis?.default ) {
+		defaultValue = __unstableUnitoneSupports?.flexBasis?.default;
+	}
 
 	return (
 		<TextControl

@@ -8,7 +8,7 @@
 	"attributes": {
 		"threshold": {
 			"type": "string",
-			"default": ""
+			"default": "var(--unitone--measure)"
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

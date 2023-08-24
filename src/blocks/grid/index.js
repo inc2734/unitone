@@ -39,13 +39,54 @@ const withChildBlockAttributes = createHigherOrderComponent(
 					const parentBlock = getBlock( parentClientId );
 
 					if ( 'unitone/grid' === parentBlock?.name ) {
+						const DEFAULT_VALUES = {
+							alignSelf: 'stretch',
+							justifySelf: 'stretch',
+							gridColumn: 'auto',
+							gridRow: 'auto',
+						};
+
 						newProps.attributes = {
 							...newProps.attributes,
+							unitone: {
+								...newProps.attributes?.unitone,
+								alignSelf:
+									null !=
+									newProps.attributes?.unitone?.alignSelf
+										? newProps.attributes?.unitone
+												?.alignSelf
+										: DEFAULT_VALUES.alignSelf,
+								justifySelf:
+									null !=
+									newProps.attributes?.unitone?.justifySelf
+										? newProps.attributes?.unitone
+												?.justifySelf
+										: DEFAULT_VALUES.justifySelf,
+								gridColumn:
+									null !=
+									newProps.attributes?.unitone?.gridColumn
+										? newProps.attributes?.unitone
+												?.gridColumn
+										: DEFAULT_VALUES.gridColumn,
+								gridRow:
+									null !=
+									newProps.attributes?.unitone?.gridRow
+										? newProps.attributes?.unitone?.gridRow
+										: DEFAULT_VALUES.gridRow,
+							},
 							__unstableUnitoneSupports: {
-								alignSelf: true,
-								justifySelf: true,
-								gridColumn: true,
-								gridRow: true,
+								alignSelf: {
+									default: DEFAULT_VALUES.alignSelf,
+								},
+								justifySelf: {
+									default: DEFAULT_VALUES.justifySelf,
+								},
+								gridColumn: {
+									default: DEFAULT_VALUES.gridColumn,
+								},
+								gridRow: {
+									default: DEFAULT_VALUES.gridRow,
+								},
 							},
 						};
 					}

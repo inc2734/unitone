@@ -8,6 +8,43 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			itemWidth: {
+				type: 'string',
+				default: '',
+			},
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const { height, itemWidth, noBar } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							style: {
+								'--unitone--height': height || undefined,
+								'--unitone--item-width': itemWidth || undefined,
+							},
+							'data-unitone-layout': classnames( 'reel', {
+								'-no-bar': noBar,
+							} ),
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+			itemWidth: {
+				type: 'string',
+				default: '',
+			},
 		},
 
 		supports: {

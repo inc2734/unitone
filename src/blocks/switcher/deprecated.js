@@ -8,6 +8,40 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			threshold: {
+				type: 'string',
+				default: '',
+			},
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const { threshold } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							'data-unitone-layout': 'switcher',
+							style: {
+								'--unitone--threshold': threshold || undefined,
+							},
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+			threshold: {
+				type: 'string',
+				default: '',
+			},
 		},
 
 		supports: {
@@ -37,6 +71,10 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			threshold: {
+				type: 'string',
+				default: '',
+			},
 		},
 
 		supports: {

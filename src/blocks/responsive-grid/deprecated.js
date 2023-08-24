@@ -8,6 +8,41 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			columnMinWidth: {
+				type: 'string',
+				default: '',
+			},
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const { columnMinWidth } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							'data-unitone-layout': 'responsive-grid',
+							style: {
+								'--unitone--column-min-width':
+									columnMinWidth || undefined,
+							},
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+			columnMinWidth: {
+				type: 'string',
+				default: '',
+			},
 		},
 
 		supports: {
@@ -43,6 +78,10 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			columnMinWidth: {
+				type: 'string',
+				default: '',
+			},
 		},
 
 		supports: {

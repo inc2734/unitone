@@ -5,8 +5,11 @@ import { useSelect } from '@wordpress/data';
 export function hasGridColumnValue( props ) {
 	const { name, attributes } = props;
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.gridColumn;
+	const defaultValue =
+		null != attributes?.__unstableUnitoneSupports?.gridColumn?.default
+			? attributes?.__unstableUnitoneSupports?.gridColumn?.default
+			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+					?.unitone?.default?.gridColumn;
 
 	return null != defaultValue
 		? attributes?.unitone?.gridColumn !== defaultValue
@@ -19,8 +22,11 @@ export function resetGridColumn( props ) {
 	delete attributes?.unitone?.gridColumn;
 	const newUnitone = { ...attributes?.unitone };
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.gridColumn;
+	const defaultValue =
+		null != attributes?.__unstableUnitoneSupports?.gridColumn?.default
+			? attributes?.__unstableUnitoneSupports?.gridColumn?.default
+			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+					?.unitone?.default?.gridColumn;
 
 	if ( null != defaultValue ) {
 		newUnitone.gridColumn = defaultValue;
@@ -46,14 +52,17 @@ export function GridColumnEdit( props ) {
 		name,
 		label,
 		help,
-		attributes: { unitone },
+		attributes: { unitone, __unstableUnitoneSupports },
 		setAttributes,
 	} = props;
 
-	const defaultValue = useSelect( ( select ) => {
+	let defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.gridColumn;
 	}, [] );
+	if ( null != __unstableUnitoneSupports?.gridColumn?.default ) {
+		defaultValue = __unstableUnitoneSupports?.gridColumn?.default;
+	}
 
 	return (
 		<TextControl

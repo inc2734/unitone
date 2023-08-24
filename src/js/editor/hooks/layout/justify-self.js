@@ -42,8 +42,11 @@ const justifySelfOptions = [
 export function hasJustifySelfValue( props ) {
 	const { name, attributes } = props;
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.justifySelf;
+	const defaultValue =
+		null != attributes?.__unstableUnitoneSupports?.justifySelf?.default
+			? attributes?.__unstableUnitoneSupports?.justifySelf?.default
+			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+					?.unitone?.default?.justifySelf;
 
 	return null != defaultValue
 		? attributes?.unitone?.justifySelf !== defaultValue
@@ -56,8 +59,11 @@ export function resetJustifySelf( props ) {
 	delete attributes?.unitone?.justifySelf;
 	const newUnitone = { ...attributes?.unitone };
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.justifySelf;
+	const defaultValue =
+		null != attributes?.__unstableUnitoneSupports?.justifySelf?.default
+			? attributes?.__unstableUnitoneSupports?.justifySelf?.default
+			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+					?.unitone?.default?.justifySelf;
 
 	if ( null != defaultValue ) {
 		newUnitone.justifySelf = defaultValue;
@@ -82,14 +88,17 @@ export function JustifySelfEdit( props ) {
 	const {
 		name,
 		label,
-		attributes: { unitone },
+		attributes: { unitone, __unstableUnitoneSupports },
 		setAttributes,
 	} = props;
 
-	const defaultValue = useSelect( ( select ) => {
+	let defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifySelf;
 	}, [] );
+	if ( null != __unstableUnitoneSupports?.justifySelf?.default ) {
+		defaultValue = __unstableUnitoneSupports?.justifySelf?.default;
+	}
 
 	return (
 		<SelectControl

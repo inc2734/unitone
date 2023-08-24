@@ -42,8 +42,11 @@ const alignSelfOptions = [
 export function hasAlignSelfValue( props ) {
 	const { name, attributes } = props;
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.alignSelf;
+	const defaultValue =
+		null != attributes?.__unstableUnitoneSupports?.alignSelf?.default
+			? attributes?.__unstableUnitoneSupports?.alignSelf?.default
+			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+					?.unitone?.default?.alignSelf;
 
 	return null != defaultValue
 		? attributes?.unitone?.alignSelf !== defaultValue
@@ -56,8 +59,11 @@ export function resetAlignSelf( props ) {
 	delete attributes?.unitone?.alignSelf;
 	const newUnitone = { ...attributes?.unitone };
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.alignSelf;
+	const defaultValue =
+		null != attributes?.__unstableUnitoneSupports?.alignSelf?.default
+			? attributes?.__unstableUnitoneSupports?.alignSelf?.default
+			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+					?.unitone?.default?.alignSelf;
 
 	if ( null != defaultValue ) {
 		newUnitone.alignSelf = defaultValue;
@@ -82,14 +88,17 @@ export function AlignSelfEdit( props ) {
 	const {
 		name,
 		label,
-		attributes: { unitone },
+		attributes: { unitone, __unstableUnitoneSupports },
 		setAttributes,
 	} = props;
 
-	const defaultValue = useSelect( ( select ) => {
+	let defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.alignSelf;
 	}, [] );
+	if ( null != __unstableUnitoneSupports?.alignSelf?.default ) {
+		defaultValue = __unstableUnitoneSupports?.alignSelf?.default;
+	}
 
 	return (
 		<SelectControl

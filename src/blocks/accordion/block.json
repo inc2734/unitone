@@ -22,7 +22,7 @@
 		},
 		"qWidth": {
 			"type": "string",
-			"default": ""
+			"default": "auto"
 		},
 		"a": {
 			"type": "boolean",
@@ -35,7 +35,7 @@
 		},
 		"aWidth": {
 			"type": "string",
-			"default": ""
+			"default": "auto"
 		},
 		"unitone": {
 			"type": "object",

@@ -39,12 +39,44 @@ const withChildBlockAttributes = createHigherOrderComponent(
 					const parentBlock = getBlock( parentClientId );
 
 					if ( 'unitone/flex' === parentBlock?.name ) {
+						const DEFAULT_VALUES = {
+							flexGrow: '0',
+							flexShrink: '1',
+							flexBasis: 'auto',
+						};
+
 						newProps.attributes = {
 							...newProps.attributes,
+							unitone: {
+								...newProps.attributes?.unitone,
+								flexGrow:
+									null !=
+									newProps.attributes?.unitone?.flexGrow
+										? newProps.attributes?.unitone?.flexGrow
+										: DEFAULT_VALUES.flexGrow,
+								flexShrink:
+									null !=
+									newProps.attributes?.unitone?.flexShrink
+										? newProps.attributes?.unitone
+												?.flexShrink
+										: DEFAULT_VALUES.flexShrink,
+								flexBasis:
+									null !=
+									newProps.attributes?.unitone?.flexBasis
+										? newProps.attributes?.unitone
+												?.flexBasis
+										: DEFAULT_VALUES.flexBasis,
+							},
 							__unstableUnitoneSupports: {
-								flexGrow: true,
-								flexShrink: true,
-								flexBasis: true,
+								flexGrow: {
+									default: DEFAULT_VALUES.flexGrow,
+								},
+								flexShrink: {
+									default: DEFAULT_VALUES.flexShrink,
+								},
+								flexBasis: {
+									default: DEFAULT_VALUES.flexBasis,
+								},
 							},
 						};
 					}

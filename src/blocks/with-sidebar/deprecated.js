@@ -15,6 +15,58 @@ export default [
 			contentMaxWidth: {
 				type: 'string',
 			},
+			sidebarWidth: {
+				type: 'string',
+				default: '',
+			},
+			contentMinWidth: {
+				type: 'string',
+				default: '',
+			},
+		},
+
+		save( { attributes } ) {
+			const { sidebarWidth, contentMinWidth, revert, sidebar } =
+				attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							'data-unitone-layout': classnames( 'with-sidebar', {
+								[ `-sidebar:${ sidebar }` ]: !! sidebar,
+								'-revert': revert,
+							} ),
+							style: {
+								'--unitone--sidebar-width':
+									sidebarWidth || undefined,
+								'--unitone--content-min-width':
+									contentMinWidth || undefined,
+							},
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+			sidebar: {
+				type: 'string',
+				default: '',
+			},
+			contentMaxWidth: {
+				type: 'string',
+			},
+			sidebarWidth: {
+				type: 'string',
+				default: '',
+			},
+			contentMinWidth: {
+				type: 'string',
+				default: '',
+			},
 		},
 
 		migrate( attributes ) {
@@ -69,6 +121,14 @@ export default [
 			contentMaxWidth: {
 				type: 'string',
 			},
+			sidebarWidth: {
+				type: 'string',
+				default: '',
+			},
+			contentMinWidth: {
+				type: 'string',
+				default: '',
+			},
 		},
 
 		supports: {
@@ -120,6 +180,14 @@ export default [
 				type: 'string',
 				default: 'right',
 			},
+			sidebarWidth: {
+				type: 'string',
+				default: '',
+			},
+			contentMinWidth: {
+				type: 'string',
+				default: '',
+			},
 		},
 
 		supports: {
@@ -166,6 +234,14 @@ export default [
 			sidebar: {
 				type: 'string',
 				default: 'right',
+			},
+			sidebarWidth: {
+				type: 'string',
+				default: '',
+			},
+			contentMinWidth: {
+				type: 'string',
+				default: '',
 			},
 		},
 

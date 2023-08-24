@@ -12,7 +12,7 @@
 		},
 		"itemWidth": {
 			"type": "string",
-			"default": ""
+			"default": "calc(var(--unitone--measure) / 2)"
 		},
 		"noBar": {
 			"type": "boolean",

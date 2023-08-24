@@ -5,8 +5,11 @@ import { useSelect } from '@wordpress/data';
 export function hasFlexShrinkValue( props ) {
 	const { name, attributes } = props;
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.flexShrink;
+	const defaultValue =
+		null != attributes?.__unstableUnitoneSupports?.flexShrink?.default
+			? attributes?.__unstableUnitoneSupports?.flexShrink?.default
+			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+					?.unitone?.default?.flexShrink;
 
 	return null != defaultValue
 		? attributes?.unitone?.flexShrink !== defaultValue
@@ -19,8 +22,11 @@ export function resetFlexShrink( props ) {
 	delete attributes?.unitone?.flexShrink;
 	const newUnitone = { ...attributes?.unitone };
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.flexShrink;
+	const defaultValue =
+		null != attributes?.__unstableUnitoneSupports?.flexShrink?.default
+			? attributes?.__unstableUnitoneSupports?.flexShrink?.default
+			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+					?.unitone?.default?.flexShrink;
 
 	if ( null != defaultValue ) {
 		newUnitone.flexShrink = defaultValue;
@@ -45,26 +51,29 @@ export function FlexShrinkEdit( props ) {
 	const {
 		name,
 		label,
-		attributes: { unitone },
+		attributes: { unitone, __unstableUnitoneSupports },
 		setAttributes,
 	} = props;
 
-	const defaultValue = useSelect( ( select ) => {
+	let defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.flexShrink;
 	}, [] );
+	if ( null != __unstableUnitoneSupports?.flexShrink?.default ) {
+		defaultValue = __unstableUnitoneSupports?.flexShrink?.default;
+	}
 
 	return (
 		<RangeControl
 			label={ label }
 			value={
-				null != unitone?.flexShrink
+				null != unitone?.flexShrink && '' !== unitone?.flexShrink
 					? parseInt( unitone?.flexShrink )
 					: ''
 			}
 			allowReset={ true }
 			onChange={ ( newValue ) => {
-				if ( 'undefined' !== typeof newValue ) {
+				if ( null !== newValue ) {
 					// RangeControl returns Int, SelectControl returns String.
 					// So cast Int all values.
 					newValue = String( newValue );

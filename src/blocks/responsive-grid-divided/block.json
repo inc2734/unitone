@@ -12,7 +12,7 @@
 		},
 		"columnMinWidth": {
 			"type": "string",
-			"default": ""
+			"default": "250px"
 		},
 		"unitone": {
 			"type": "object",

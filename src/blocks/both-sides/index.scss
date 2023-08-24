@@ -1,5 +1,7 @@
 [data-type="unitone/both-sides"] {
 	> .block-list-appender {
-		position: static;
+		position: absolute;
+		right: 0;
+		bottom: 0;
 	}
 }

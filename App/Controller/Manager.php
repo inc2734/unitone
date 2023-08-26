@@ -117,9 +117,6 @@ class Manager {
 				delete_transient( 'unitone-remote-patterns' );
 				delete_transient( 'unitone-remote-pattern-categories' );
 
-				delete_transient( 'unitone-remote-patterns' );
-				delete_transient( 'unitone-remote-pattern-categories' );
-
 				if ( isset( $option['clear-remote-patterns-cache'] ) && '1' === $option['clear-remote-patterns-cache'] ) {
 					return get_option( self::SETTINGS_NAME );
 				}
@@ -199,7 +196,7 @@ class Manager {
 		}
 
 		$status = static::_request_license_validate( $license_key );
-		set_transient( 'unitone-license-status-' . sha1( $license_key ), $status ? $status : 'false', 60 * 10 );
+		set_transient( 'unitone-license-status-' . sha1( $license_key ), $status ? $status : 'false', DAY_IN_SECONDS );
 		return $status;
 	}
 

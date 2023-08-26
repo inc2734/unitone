@@ -183,6 +183,9 @@
 			"background": "var(--wp--preset--color--unitone-background)",
 			"text": "var(--wp--preset--color--unitone-text)"
 		},
+		"typography": {
+			"lineHeight": "1.8"
+		},
 		"elements": {
 			"button": {
 				"color": {

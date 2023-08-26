@@ -1,7 +1,7 @@
 {
 	"engines": {
-		"node": ">=14.0.0 <15",
-		"npm": ">=6.9.0 <7"
+		"node": "16.20.2",
+		"npm": "8.19.4"
 	},
 	"devDependencies": {
 		"@inc2734/unitone-css": "^0.44.5",

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-17T12:28:23+00:00\n"
-"PO-Revision-Date: 2023-08-17 21:29+0900\n"
+"POT-Creation-Date: 2023-08-26T08:55:25+00:00\n"
+"PO-Revision-Date: 2023-08-26 17:59+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -563,8 +563,8 @@ msgstr "サービス"
 #: patterns/footer-5.php:48 patterns/header-1row.php:30
 #: patterns/header-2rows.php:32 patterns/header-simple.php:30
 #: patterns/header-vertical.php:29
-#: patterns/private/home/page-header/default.php:8
-#: patterns/private/home/page-header/image.php:22
+#: patterns/private/template/home/page-header/default.php:8
+#: patterns/private/template/home/page-header/image.php:22
 msgid "Blog"
 msgstr "ブログ"
 
@@ -637,10 +637,10 @@ msgctxt "Pattern title"
 msgid "Full Width"
 msgstr "全幅"
 
-#: patterns/private/404/main/one-column-page-header-image.php:12
-#: patterns/private/404/main/one-column.php:12
-#: patterns/private/404/main/right-sidebar-page-header-image.php:20
-#: patterns/private/404/main/right-sidebar.php:20
+#: patterns/private/template/404/main/one-column-page-header-image.php:12
+#: patterns/private/template/404/main/one-column.php:12
+#: patterns/private/template/404/main/right-sidebar-page-header-image.php:20
+#: patterns/private/template/404/main/right-sidebar.php:20
 msgid ""
 "Woops! Page not found. The page you are looking for may be moved or deleted. "
 "Please search this search box."
@@ -648,8 +648,8 @@ msgstr ""
 "ページが見つかりません。お探しのページは移動または削除された可能性がありま"
 "す。下記の検索ボックスで検索してください。"
 
-#: patterns/private/search/page-header/default.php:8
-#: patterns/private/search/page-header/image.php:22
+#: patterns/private/template/search/page-header/default.php:8
+#: patterns/private/template/search/page-header/image.php:22
 msgid "Search results"
 msgstr "検索結果"
 
@@ -1601,6 +1601,10 @@ msgid "Justify items bottom"
 msgstr "コンテンツを下揃え"
 
 #: dist/js/editor/editor.js:1
+msgid "Stretch to fill"
+msgstr "埋めるように拡張"
+
+#: dist/js/editor/editor.js:1
 msgid "Center"
 msgstr "中央"
 
@@ -2420,11 +2424,6 @@ msgstr "個別投稿：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single Products"
-msgstr "個別商品"
-
-#: theme.json
-msgctxt "Custom template name"
 msgid "Single Products: One Column / Page Header (Image)"
 msgstr "個別商品：1カラム / ページヘッダー（画像）"
 
@@ -2447,6 +2446,11 @@ msgstr "個別商品：左ヘッダー"
 msgctxt "Custom template name"
 msgid "Single Products: Left Header / Page Header (Image)"
 msgstr "個別商品：左ヘッダー / ページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Product"
+msgstr "個別商品"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -2522,6 +2526,10 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Single Products"
+#~ msgstr "個別商品"
 
 #~ msgctxt "Pattern title"
 #~ msgid "Product Archives: Page Header (Image)"

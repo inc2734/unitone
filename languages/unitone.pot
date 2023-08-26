@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-17T12:28:23+00:00\n"
+"POT-Creation-Date: 2023-08-26T08:55:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -615,8 +615,8 @@ msgstr ""
 #: patterns/header-2rows.php:32
 #: patterns/header-simple.php:30
 #: patterns/header-vertical.php:29
-#: patterns/private/home/page-header/default.php:8
-#: patterns/private/home/page-header/image.php:22
+#: patterns/private/template/home/page-header/default.php:8
+#: patterns/private/template/home/page-header/image.php:22
 msgid "Blog"
 msgstr ""
 
@@ -703,15 +703,15 @@ msgctxt "Pattern title"
 msgid "Full Width"
 msgstr ""
 
-#: patterns/private/404/main/one-column-page-header-image.php:12
-#: patterns/private/404/main/one-column.php:12
-#: patterns/private/404/main/right-sidebar-page-header-image.php:20
-#: patterns/private/404/main/right-sidebar.php:20
+#: patterns/private/template/404/main/one-column-page-header-image.php:12
+#: patterns/private/template/404/main/one-column.php:12
+#: patterns/private/template/404/main/right-sidebar-page-header-image.php:20
+#: patterns/private/template/404/main/right-sidebar.php:20
 msgid "Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box."
 msgstr ""
 
-#: patterns/private/search/page-header/default.php:8
-#: patterns/private/search/page-header/image.php:22
+#: patterns/private/template/search/page-header/default.php:8
+#: patterns/private/template/search/page-header/image.php:22
 msgid "Search results"
 msgstr ""
 
@@ -1670,6 +1670,10 @@ msgid "Justify items bottom"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
+msgid "Stretch to fill"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
 msgid "Center"
 msgstr ""
 
@@ -2536,11 +2540,6 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Single Products"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
 msgid "Single Products: One Column / Page Header (Image)"
 msgstr ""
 
@@ -2562,6 +2561,11 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Products: Left Header / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Product"
 msgstr ""
 
 #: theme.json

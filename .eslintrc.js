@@ -5,7 +5,8 @@ module.exports = {
 	globals: {
 		...defaultConfig.globals,
 		unitone: true,
-		Swiper: true
+		Swiper: true,
+		'swiper/modules': true
 	},
 	rules: {
 		...defaultConfig.rules,

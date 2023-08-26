@@ -6,8 +6,13 @@ module.exports = {
 		...defaultConfig.globals,
 		unitone: true,
 		Swiper: true,
-		'swiper/modules': true,
-		swiper: true,
+	},
+	settings: {
+		'import/resolver': {
+			node: {
+				extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts', '.mjs'],
+			},
+		},
 	},
 	rules: {
 		...defaultConfig.rules,

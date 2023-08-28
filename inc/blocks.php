@@ -46,15 +46,17 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/child-pages' );
 	register_block_type( get_template_directory() . '/dist/blocks/section' );
 
-	if ( is_null( \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/breadcrumbs' )->attributes ) ) {
-		\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/breadcrumbs' )->attributes = array();
+	if ( ! is_null( \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/breadcrumbs' ) ) ) {
+		\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/breadcrumbs' )->attributes['unitone'] = array(
+			'type' => 'object',
+		);
 	}
-	\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/breadcrumbs' )->attributes['unitone'] = array( 'type' => 'object' );
 
-	if ( is_null( \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes ) ) {
-		\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes = array();
+	if ( ! is_null( \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' ) ) ) {
+		\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes['unitone'] = array(
+			'type' => 'object',
+		);
 	}
-	\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes['unitone'] = array( 'type' => 'object' );
 }
 add_action( 'init', 'unitone_register_blocks' );
 

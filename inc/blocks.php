@@ -326,7 +326,7 @@ add_filter(
 		$attribute = false;
 		if ( ! empty( $block['attrs']['unitone']['negative'] ) ) {
 			$attribute = '-negative';
-		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['negative'] ) ) {
+		} elseif ( $default && ! isset( $block['attrs']['unitone']['negative'] ) ) {
 			$attribute = '-negative';
 		}
 		if ( $attribute ) {

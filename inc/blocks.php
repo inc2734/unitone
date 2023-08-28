@@ -287,7 +287,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -302,7 +302,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -317,7 +317,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -392,7 +392,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -407,7 +407,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -422,7 +422,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -437,7 +437,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -452,7 +452,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -467,7 +467,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -482,7 +482,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -497,7 +497,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -542,7 +542,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 
@@ -557,7 +557,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ' ' . $property ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
 			}
 		}
 

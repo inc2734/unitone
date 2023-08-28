@@ -54,7 +54,7 @@
 		"js:app": "wp-scripts build src/js/app/app.js --output-path=dist/js/app && rimraf dist/js/app/blocks",
 		"js:editor": "wp-scripts build src/js/editor/editor.js --output-path=dist/js/editor && rimraf dist/js/editor/blocks",
 		"js": "run-s js:format && run-p js:editor js:app",
-		"img": "rimraf dist/img && cpy \".\" \"../../dist/img\" --cwd=src/img --parents",
+		"img": "rimraf dist/img && cpy \"src/img/*\" \"dist/img\"",
 		"build": "run-p css blocks js img",
 		"test:lint:blocks": "wp-scripts lint-js src/blocks",
 		"test:lint:js": "wp-scripts lint-js src/js",

@@ -46,6 +46,14 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/child-pages' );
 	register_block_type( get_template_directory() . '/dist/blocks/section' );
 
+	if ( is_null( \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/breadcrumbs' )->attributes ) ) {
+		is_null( \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/breadcrumbs' )->attributes = array();
+	}
+	\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/breadcrumbs' )->attributes['unitone'] = array( 'type' => 'object' );
+
+	if ( is_null( \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes ) ) {
+		is_null( \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes = array();
+	}
 	\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes['unitone'] = array( 'type' => 'object' );
 }
 add_action( 'init', 'unitone_register_blocks' );
@@ -287,7 +295,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -302,7 +310,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -317,7 +325,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -392,7 +400,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -407,7 +415,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -422,7 +430,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -437,7 +445,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -452,7 +460,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -467,7 +475,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -482,7 +490,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -497,7 +505,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -542,7 +550,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 
@@ -557,7 +565,7 @@ add_filter(
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
 			if ( false === strpos( $style, $property ) ) {
-				$p->set_attribute( 'style', trim( $style . ';' . $property, '; \n\r\t\v\x00' ) );
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
 

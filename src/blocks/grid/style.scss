@@ -52,3 +52,7 @@
 [data-unitone-layout~="-rows\:free"] {
 	grid-template-rows: var(--unitone--grid-template-rows);
 }
+
+.editor-styles-wrapper .unitone-grid {
+	gap: var(--unitone--gap);
+}

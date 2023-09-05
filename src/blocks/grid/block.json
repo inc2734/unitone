@@ -85,7 +85,6 @@
 		},
 		"unitone": {
 			"gap": true,
-			"padding": true,
 			"fluidTypography": true,
 			"lineHeight": true
 		}

@@ -65,11 +65,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const blockProps = useBlockProps( {
 		className: 'unitone-grid',
 		style: styles,
-		'data-unitone-layout': classnames( {
+	} );
+	blockProps[ 'data-unitone-layout' ] = classnames(
+		blockProps[ 'data-unitone-layout' ],
+		{
 			[ `-columns:${ columnsOption }` ]: !! columnsOption,
 			[ `-rows:${ rowsOption }` ]: !! rowsOption,
-		} ),
-	} );
+		}
+	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		renderAppender: hasInnerBlocks

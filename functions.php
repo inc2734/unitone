@@ -101,6 +101,9 @@ require get_template_directory() . '/inc/remote-block-patterns.php';
 // Add block styles.
 require get_template_directory() . '/inc/block-styles.php';
 
+// Add formats.
+require get_template_directory() . '/inc/formats.php';
+
 // Add template part areas.
 require get_template_directory() . '/inc/template-part-areas.php';
 

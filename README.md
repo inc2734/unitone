@@ -13,7 +13,11 @@ https://unitone.2inc.org/
 ## Third party resources
 
 ### Swiper
-- https://github.com/nolimits4web/swiper
+- https://swiperjs.com/
+	- License: MIT License
+
+## Feather
+- https://feathericons.com/
 	- License: MIT License
 
 ## Photos

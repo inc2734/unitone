@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-08-26T08:55:25+00:00\n"
-"PO-Revision-Date: 2023-08-26 17:59+0900\n"
+"POT-Creation-Date: 2023-09-06T06:06:15+00:00\n"
+"PO-Revision-Date: 2023-09-06 15:06+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -48,7 +48,7 @@ msgstr "設定をリセット"
 msgid "Retrieve patterns from the pattern library"
 msgstr "パターンライブラリーからパターンを再取得する"
 
-#: App/Controller/Manager.php:141 dist/blocks/center/index.js:1
+#: App/Controller/Manager.php:138 dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/cover/index.js:1
 #: dist/blocks/decorator/index.js:1 dist/blocks/flex/index.js:1
@@ -62,19 +62,19 @@ msgstr "パターンライブラリーからパターンを再取得する"
 msgid "Settings"
 msgstr "設定"
 
-#: App/Controller/Manager.php:149
+#: App/Controller/Manager.php:146
 msgid "License key"
 msgstr "ライセンスキー"
 
-#: App/Controller/Manager.php:155
+#: App/Controller/Manager.php:152
 msgid "Enable"
 msgstr "有効"
 
-#: App/Controller/Manager.php:160
+#: App/Controller/Manager.php:157
 msgid "Disable"
 msgstr "無効"
 
-#: App/Controller/Manager.php:180
+#: App/Controller/Manager.php:177
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
@@ -1567,6 +1567,22 @@ msgstr "最小幅"
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Wrap when content equals this width."
 msgstr "コンテンツがこの幅と等しくなった場合に折り返されます。"
+
+#: dist/formats/formats.js:1
+msgid "Inline icon"
+msgstr "インラインアイコン"
+
+#: dist/formats/formats.js:1
+msgid "Stroke width"
+msgstr "線の太さ"
+
+#: dist/formats/formats.js:1
+msgid "Close"
+msgstr "閉じる"
+
+#: dist/formats/formats.js:1
+msgid "Color"
+msgstr "色"
 
 #: dist/js/editor/editor.js:1
 msgid "Using root padding"

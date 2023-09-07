@@ -67,11 +67,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			swiperOptions.rewind = true;
 		}
 
-		console.log(
-			canvas.getAttribute( 'data-unitone-swiper-autoplay-delay' )
-		);
-		console.log( autoplayDelay );
-		console.log( swiperOptions );
 		new Swiper( canvas, swiperOptions );
 	} );
 } );

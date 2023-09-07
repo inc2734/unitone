@@ -41,6 +41,8 @@
 	}
 
 	&__slide {
+		display: flex;
+		height: auto;
 		width: var(--unitone--slide-width);
 	}
 

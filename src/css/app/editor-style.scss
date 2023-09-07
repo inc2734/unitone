@@ -23,10 +23,10 @@
 	}
 
 	[data-type="core/image"] .components-resizable-box__container {
-		max-height: none !important;
-		height: auto !important;
+		// @todo If these is present, the aspect ratio will not be reflected correctly.
+		// max-height: none !important;
+		// height: auto !important;
 		max-width: 100% !important;
-		display: block !important;
 	}
 
 	.wp-block-video:not(.is-selected),

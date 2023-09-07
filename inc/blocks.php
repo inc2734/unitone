@@ -642,13 +642,14 @@ add_filter(
 
 /**
  * Remove width/height of style attribute at core/image.
+ * For WordPress 6.3.0. Fixed in 6.3.1.
  */
-add_filter(
-	'render_block_core/image',
-	function( $block_content, $block ) {
-		$block_content = preg_replace( '|width:[\d]+px;height:[\d]+px|', '', $block_content );
-		return $block_content;
-	},
-	10,
-	2
-);
+// add_filter(
+// 	'render_block_core/image',
+// 	function( $block_content, $block ) {
+// 		$block_content = preg_replace( '|width:[\d]+px;height:[\d]+px|', '', $block_content );
+// 		return $block_content;
+// 	},
+// 	10,
+// 	2
+// );

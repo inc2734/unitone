@@ -13,9 +13,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			parseInt( canvas.getAttribute( 'data-unitone-swiper-speed' ) ) ||
 			undefined;
 		const autoplayDelay =
-			parseInt(
-				canvas.getAttribute( 'data-unitone-swiper-autoplay-delay' )
-			) || undefined;
+			null != canvas.getAttribute( 'data-unitone-swiper-autoplay-delay' )
+				? parseInt(
+						canvas.getAttribute(
+							'data-unitone-swiper-autoplay-delay'
+						)
+				  )
+				: undefined;
 		const loop =
 			'true' === canvas.getAttribute( 'data-unitone-swiper-loop' );
 		const effect =
@@ -52,6 +56,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			swiperOptions.autoplay = {
 				delay: autoplayDelay,
 			};
+			swiperOptions.loopedSlides = 2;
 			swiperOptions.allowTouchMove = false;
 			swiperOptions.grabCursor = false;
 		}
@@ -62,6 +67,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			swiperOptions.rewind = true;
 		}
 
+		console.log(
+			canvas.getAttribute( 'data-unitone-swiper-autoplay-delay' )
+		);
+		console.log( autoplayDelay );
+		console.log( swiperOptions );
 		new Swiper( canvas, swiperOptions );
 	} );
 } );

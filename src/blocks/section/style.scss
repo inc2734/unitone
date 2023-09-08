@@ -3,6 +3,7 @@
 	--unitone--gutters: var(--unitone--global--gutters);
 	--unitone--max-width: var(--unitone--container-max-width);
 	--unitone--padding: var(--unitone--s4);
+	--unitone--overflow: visible;
 
 	--unitone--section--gap: var(--unitone--gap);
 	--unitone--section--gutters: var(--unitone--gutters);
@@ -10,6 +11,7 @@
 	--unitone--section--padding: var(--unitone--padding);
 
 	max-width: none;
+	overflow: var(--unitone--overflow);
 
 	> [data-unitone-layout~="gutters"] {
 		--unitone--padding: var(--unitone--section--padding);

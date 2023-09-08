@@ -43,6 +43,7 @@
 			"gutters": true,
 			"maxWidth": true,
 			"padding": true,
+			"overflow": true,
 			"fluidTypography": true,
 			"lineHeight": true
 		}

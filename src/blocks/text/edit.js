@@ -24,7 +24,7 @@ export default function ( {
 	clientId,
 	__unstableLayoutClassNames: layoutClassNames,
 } ) {
-	const { center, column } = attributes;
+	const { center, column, unitone } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -40,6 +40,7 @@ export default function ( {
 		{
 			'-center': center,
 			'-column': column,
+			'-gap': null != unitone?.gap,
 		}
 	);
 

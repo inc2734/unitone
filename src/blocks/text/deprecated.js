@@ -24,6 +24,32 @@ export default [
 							'data-unitone-layout': classnames( 'text', {
 								'-center': center,
 								'-column': column,
+							} ),
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const { center, column } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							'data-unitone-layout': classnames( 'text', {
+								'-center': center,
+								'-column': column,
 								[ `-gap:${ attributes?.unitone?.gap }` ]:
 									null != attributes?.unitone?.gap,
 							} ),

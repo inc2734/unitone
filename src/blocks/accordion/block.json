@@ -40,7 +40,7 @@
 		"unitone": {
 			"type": "object",
 			"default": {
-				"padding": "-2"
+				"padding": "-1"
 			}
 		},
 		"templateLock": {

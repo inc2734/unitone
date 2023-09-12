@@ -2,27 +2,15 @@ import classnames from 'classnames';
 import { get } from 'lodash';
 
 import {
-	InspectorControls,
 	useBlockProps,
 	useInnerBlocksProps,
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
 
-import {
-	ToggleControl,
-	__experimentalToolsPanel as ToolsPanel,
-	__experimentalToolsPanelItem as ToolsPanelItem,
-} from '@wordpress/components';
-
 import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { __ } from '@wordpress/i18n';
 
-import metadata from './block.json';
-
-export default function ( { name, attributes, setAttributes, clientId } ) {
-	const { noPadding } = attributes;
-
+export default function ( { name, setAttributes, clientId } ) {
 	const hasInnerBlocks = useSelect(
 		( select ) =>
 			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
@@ -33,10 +21,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'cover',
-		blockProps[ 'data-unitone-layout' ],
-		{
-			'-no-padding': noPadding,
-		}
+		blockProps[ 'data-unitone-layout' ]
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
@@ -47,32 +32,6 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 
 	return (
 		<>
-			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
-					<ToolsPanelItem
-						hasValue={ () =>
-							noPadding !== metadata.attributes.noPadding.default
-						}
-						isShownByDefault
-						label={ __( 'Width', 'unitone' ) }
-						onDeselect={ () =>
-							setAttributes( {
-								noPadding:
-									metadata.attributes.noPadding.default,
-							} )
-						}
-					>
-						<ToggleControl
-							label={ __( 'No padding', 'unitone' ) }
-							checked={ noPadding }
-							onChange={ ( newAttribute ) => {
-								setAttributes( { noPadding: newAttribute } );
-							} }
-						/>
-					</ToolsPanelItem>
-				</ToolsPanel>
-			</InspectorControls>
-
 			{ hasInnerBlocks ? (
 				<div { ...innerBlocksProps } />
 			) : (

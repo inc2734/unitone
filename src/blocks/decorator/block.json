@@ -53,9 +53,9 @@
 		"align": [ "full" ],
 		"color": {
 			"background": true,
+			"gradients": true,
 			"color": true,
-			"link": true,
-			"gradients": true
+			"link": true
 		},
 		"typography": {
 			"fontSize": true,

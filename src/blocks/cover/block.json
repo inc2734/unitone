@@ -6,10 +6,6 @@
 	"title": "Cover",
 	"description": "This block is designed to cover a large area of the screen.",
 	"attributes": {
-		"noPadding": {
-			"type": "boolean",
-			"default": false
-		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
@@ -18,10 +14,12 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"align": [ "full", "wide" ],
 		"color": {
-			"background": false,
-			"link": true,
-			"text": true
+			"background": true,
+			"gradients": true,
+			"color": true,
+			"link": true
 		},
 		"typography": {
 			"fontSize": true,
@@ -39,6 +37,7 @@
 		"unitone": {
 			"gap": true,
 			"minHeight": true,
+			"padding": true,
 			"fluidTypography": true,
 			"lineHeight": true
 		}

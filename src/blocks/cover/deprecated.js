@@ -8,6 +8,49 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			noPadding: {
+				type: 'boolean',
+				default: false,
+			},
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		migrate( attributes ) {
+			const { noPadding } = attributes;
+
+			return {
+				unitone: {
+					padding: noPadding ? '0' : undefined,
+				},
+			};
+		},
+
+		save( { attributes } ) {
+			const { noPadding } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							'data-unitone-layout': classnames( 'cover', {
+								'-no-padding': noPadding,
+							} ),
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+			noPadding: {
+				type: 'boolean',
+				default: false,
+			},
 		},
 
 		supports: {
@@ -39,6 +82,10 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			noPadding: {
+				type: 'boolean',
+				default: false,
+			},
 		},
 
 		supports: {

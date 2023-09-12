@@ -14,6 +14,10 @@
 			"type": "boolean",
 			"default": false
 		},
+		"blur": {
+			"type": "number",
+			"default": 0
+		},
 		"portrait": {
 			"type": "boolean",
 			"default": true
@@ -54,5 +58,6 @@
 	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
 	"editorStyle": "file:./index.css"
 }

@@ -11,6 +11,7 @@ import {
 } from '@wordpress/block-editor';
 
 import {
+	RangeControl,
 	ToggleControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
@@ -28,7 +29,7 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { name, attributes, setAttributes, clientId } ) {
-	const { cover, fill, portrait } = attributes;
+	const { cover, fill, blur, portrait } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -58,13 +59,18 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		}
 	}, [ attributes, defaultAttributes, hasInnerBlocks ] );
 
-	const blockProps = useBlockProps();
+	const blockProps = useBlockProps( {
+		style: {
+			'--unitone--blur': !! blur ? `${ blur }px` : undefined,
+		},
+	} );
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'layers',
 		blockProps[ 'data-unitone-layout' ],
 		{
 			'-cover': cover,
 			'-fill': fill,
+			'-blur': !! blur,
 			'-portrait': portrait,
 		}
 	);
@@ -177,6 +183,40 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 									cover: cover && ! newAttribute,
 								} );
 							} }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							blur !== metadata.attributes.blur.default
+						}
+						isShownByDefault
+						label={ __(
+							'Blur the background image/video',
+							'unitone'
+						) }
+						onDeselect={ () =>
+							setAttributes( {
+								blur: metadata.attributes.blur.default,
+							} )
+						}
+					>
+						<RangeControl
+							label={ __(
+								'Blur the background image/video',
+								'unitone'
+							) }
+							value={ blur }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									blur: !! newAttribute
+										? parseFloat( newAttribute )
+										: undefined,
+								} );
+							} }
+							initialPosition={ metadata.attributes.blur.default }
+							min={ 0 }
+							max={ 100 }
 						/>
 					</ToolsPanelItem>
 

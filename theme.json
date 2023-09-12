@@ -242,6 +242,19 @@
 					"fontSize": "inherit",
 					"lineHeight": "inherit"
 				}
+			},
+			"core/table": {
+				"border": {
+					"width": "0px",
+					"style": "solid",
+					"color": "var(--wp--preset--color--unitone-gray)"
+				},
+				"variations": {
+					"stripes": {
+					},
+					"underline": {
+					}
+				}
 			}
 		},
 		"spacing": {

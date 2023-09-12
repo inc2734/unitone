@@ -68,9 +68,14 @@ function unitone_enqueue_block_editor_assets() {
 			'.editor-styles-wrapper html',
 			'.editor-styles-wrapper body',
 			'html',
-			'body',
+			// 'body', // tbody also disappears.
 		),
 		'.editor-styles-wrapper',
+		$css
+	);
+	$css = preg_replace(
+		'|([^t])body|s',
+		'$1.editor-styles-wrapper',
 		$css
 	);
 	$css = preg_replace( '|([^a-zA-Z]):root|ms', '$1.editor-styles-wrapper', $css );

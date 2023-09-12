@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-09-06T06:06:15+00:00\n"
-"PO-Revision-Date: 2023-09-06 15:06+0900\n"
+"POT-Creation-Date: 2023-09-12T02:22:58+00:00\n"
+"PO-Revision-Date: 2023-09-12 11:25+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Theme Name of the theme
 #: inc/block-categories.php:18 inc/block-categories.php:29
 #: inc/block-categories.php:40 inc/block-categories.php:51
-#: inc/block-styles.php:85
+#: inc/block-styles.php:85 dist/js/editor/editor.js:1
 msgid "unitone"
 msgstr "unitone"
 
@@ -412,7 +412,7 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:29 dist/js/editor/editor.js:5
+#: inc/block-styles.php:29 inc/block-styles.php:101 dist/js/editor/editor.js:5
 msgid "Underline"
 msgstr "アンダーライン"
 
@@ -439,6 +439,14 @@ msgstr "ブロックリンク（ストライプ）"
 #: inc/block-styles.php:93
 msgid "Cover"
 msgstr "カバー"
+
+#: inc/block-styles.php:109
+msgid "Vertical fill"
+msgstr "縦塗りつぶし"
+
+#: inc/block-styles.php:117
+msgid "Vertical line"
+msgstr "縦線"
 
 #: inc/template-part-areas.php:20 inc/template-part-areas.php:106
 msgid "Single Posts"
@@ -632,10 +640,25 @@ msgctxt "Pattern title"
 msgid "Image"
 msgstr "画像"
 
-#: patterns/pages-1.php
+#: patterns/page-about-us.php
+msgctxt "Pattern title"
+msgid "About Us"
+msgstr "私たちについて"
+
+#: patterns/page-full-width.php
 msgctxt "Pattern title"
 msgid "Full Width"
 msgstr "全幅"
+
+#: patterns/page-plans.php
+msgctxt "Pattern title"
+msgid "Plans"
+msgstr "プラン"
+
+#: patterns/page-services.php
+msgctxt "Pattern title"
+msgid "Services"
+msgstr "サービス"
 
 #: patterns/private/template/404/main/one-column-page-header-image.php:12
 #: patterns/private/template/404/main/one-column.php:12
@@ -1583,6 +1606,10 @@ msgstr "閉じる"
 #: dist/formats/formats.js:1
 msgid "Color"
 msgstr "色"
+
+#: dist/js/editor/editor.js:1
+msgid "Cell Min Width"
+msgstr "セルの最小幅"
 
 #: dist/js/editor/editor.js:1
 msgid "Using root padding"

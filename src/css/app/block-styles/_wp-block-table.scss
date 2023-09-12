@@ -1,0 +1,42 @@
+.wp-block-table.is-style-stripes {
+	tbody tr:nth-child(odd) {
+		background-color: var(--wp--preset--color--unitone-light-gray);
+	}
+}
+
+.wp-block-table.is-style-underline {
+	> table {
+		border-top-width: 0 !important;
+    border-right-width: 0 !important;
+		border-bottom-width: 1px;
+    border-left-width: 0 !important;
+	}
+}
+
+.wp-block-table.is-style-vertical-fill {
+	--unitone--gap: var(--unitone--global--text-gap);
+
+	overflow: hidden;
+
+	> table {
+		margin-inline: calc(var(--unitone--gap) * -1);
+		border-collapse: separate;
+		border-spacing: var(--unitone--gap) 0;
+		width: calc(100% + var(--unitone--gap) * 2);
+	}
+
+	tr > * {
+		background-color: var(--wp--preset--color--unitone-light-gray);
+	}
+}
+
+.wp-block-table.is-style-vertical-line {
+	--unitone--padding: var(--unitone--s-1) var(--unitone--s1);
+
+	tr > *:not(:last-child) {
+		border-top-width: 0 !important;
+		border-right-width: 1px;
+		border-bottom-width: 0 !important;
+    border-left-width: 0 !important;
+	}
+}

@@ -589,6 +589,21 @@ add_filter(
 			}
 		}
 
+		// --unitone--cell-min-width
+		$default  = $metadata ? $metadata->get_attributes()['cellMinWidth']['default'] ?? null : null;
+		$property = false;
+		if ( isset( $block['attrs']['cellMinWidth'] ) && '' !== $block['attrs']['cellMinWidth'] ) {
+			$property = '--unitone--cell-min-width:' . $block['attrs']['cellMinWidth'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['cellMinWidth'] ) ) {
+			$property = '--unitone--cell-min-width:' . $default;
+		}
+		if ( $property ) {
+			$style = $p->get_attribute( 'style' );
+			if ( false === strpos( $style, $property ) ) {
+				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
+			}
+		}
+
 		$block_content = $p->get_updated_html();
 		return $block_content;
 	},

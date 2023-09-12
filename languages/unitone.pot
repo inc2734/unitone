@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-06T06:06:15+00:00\n"
+"POT-Creation-Date: 2023-09-12T02:22:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -20,6 +20,7 @@ msgstr ""
 #: inc/block-categories.php:40
 #: inc/block-categories.php:51
 #: inc/block-styles.php:85
+#: dist/js/editor/editor.js:1
 msgid "unitone"
 msgstr ""
 
@@ -420,6 +421,7 @@ msgid "Outline"
 msgstr ""
 
 #: inc/block-styles.php:29
+#: inc/block-styles.php:101
 #: dist/js/editor/editor.js:5
 msgid "Underline"
 msgstr ""
@@ -449,6 +451,14 @@ msgstr ""
 
 #: inc/block-styles.php:93
 msgid "Cover"
+msgstr ""
+
+#: inc/block-styles.php:109
+msgid "Vertical fill"
+msgstr ""
+
+#: inc/block-styles.php:117
+msgid "Vertical line"
 msgstr ""
 
 #: inc/template-part-areas.php:20
@@ -698,9 +708,24 @@ msgctxt "Pattern title"
 msgid "Image"
 msgstr ""
 
-#: patterns/pages-1.php
+#: patterns/page-about-us.php
+msgctxt "Pattern title"
+msgid "About Us"
+msgstr ""
+
+#: patterns/page-full-width.php
 msgctxt "Pattern title"
 msgid "Full Width"
+msgstr ""
+
+#: patterns/page-plans.php
+msgctxt "Pattern title"
+msgid "Plans"
+msgstr ""
+
+#: patterns/page-services.php
+msgctxt "Pattern title"
+msgid "Services"
 msgstr ""
 
 #: patterns/private/template/404/main/one-column-page-header-image.php:12
@@ -1651,6 +1676,10 @@ msgstr ""
 
 #: dist/formats/formats.js:1
 msgid "Color"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Cell Min Width"
 msgstr ""
 
 #: dist/js/editor/editor.js:1

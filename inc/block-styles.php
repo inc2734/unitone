@@ -93,5 +93,29 @@ function unitone_register_block_styles() {
 			'label' => __( 'Cover', 'unitone' ),
 		)
 	);
+
+	register_block_style(
+		'core/table',
+		array(
+			'name'  => 'underline',
+			'label' => __( 'Underline', 'unitone' ),
+		)
+	);
+
+	register_block_style(
+		'core/table',
+		array(
+			'name'  => 'vertical-fill',
+			'label' => __( 'Vertical fill', 'unitone' ),
+		)
+	);
+
+	register_block_style(
+		'core/table',
+		array(
+			'name'  => 'vertical-line',
+			'label' => __( 'Vertical line', 'unitone' ),
+		)
+	);
 }
 add_action( 'init', 'unitone_register_block_styles', 9 );

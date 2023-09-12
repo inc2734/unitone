@@ -50,7 +50,7 @@ const DEFAULT_ICON_OBJECT_SETTINGS = {
 	attributes: {
 		ariaHidden: 'true',
 	},
-	innerHTML: `<a inert></a>`,
+	innerHTML: `<a inert> </a>`,
 };
 
 function Edit( {
@@ -135,13 +135,18 @@ function Edit( {
 			{ isModalOpen && (
 				<Popover
 					placement="bottom"
+					shift={ true }
 					focusOnMount={ false }
 					anchor={ popoverAnchor }
 					className="block-editor-format-toolbar__image-popover"
 					onClose={ closeModal }
 				>
 					<div
-						style={ { width: 'min(90vw, 336px)', padding: '6px' } }
+						style={ {
+							width: 'min(90vw, 336px)',
+							maxHeight: 'min(90vh, 400px)',
+							padding: '6px',
+						} }
 					>
 						<SearchControl
 							value={ searchText }
@@ -215,6 +220,7 @@ function Edit( {
 			{ isObjectActive && (
 				<Popover
 					placement="bottom"
+					shift={ true }
 					focusOnMount={ false }
 					anchor={ popoverAnchor }
 					className="block-editor-format-toolbar__image-popover"

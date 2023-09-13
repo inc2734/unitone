@@ -3,6 +3,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import icon from '../icon';
 import edit from './edit';
 import save from './save';
+import transforms from './transforms';
 import deprecated from './deprecated';
 
 registerBlockType( 'unitone/with-sidebar', {
@@ -11,5 +12,6 @@ registerBlockType( 'unitone/with-sidebar', {
 	},
 	edit,
 	save,
+	transforms,
 	deprecated,
 } );

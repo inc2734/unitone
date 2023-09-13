@@ -22,7 +22,9 @@ export default [
 			const { noPadding } = attributes;
 
 			return {
+				...attributes,
 				unitone: {
+					...attributes?.unitone,
 					padding: noPadding ? '0' : undefined,
 				},
 			};

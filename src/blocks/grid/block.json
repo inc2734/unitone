@@ -23,13 +23,45 @@
 			"type": "string",
 			"default": "250px"
 		},
-		"columnAutoRepeat": {
-			"type": "string",
-			"default": "auto-fit"
-		},
 		"gridTemplateColumns": {
 			"type": "string",
 			"default": ""
+		},
+		"mdColumnsOption": {
+			"type": "string",
+			"default": "min"
+		},
+		"mdColumns": {
+			"type": "number",
+			"default": ""
+		},
+		"mdColumnMinWidth": {
+			"type": "string",
+			"default": ""
+		},
+		"mdGridTemplateColumns": {
+			"type": "string",
+			"default": ""
+		},
+		"smColumnsOption": {
+			"type": "string",
+			"default": "min"
+		},
+		"smColumns": {
+			"type": "number",
+			"default": ""
+		},
+		"smColumnMinWidth": {
+			"type": "string",
+			"default": ""
+		},
+		"smGridTemplateColumns": {
+			"type": "string",
+			"default": ""
+		},
+		"columnAutoRepeat": {
+			"type": "string",
+			"default": "auto-fit"
 		},
 		"rowsOption": {
 			"type": "string",
@@ -40,6 +72,30 @@
 			"default": 1
 		},
 		"gridTemplateRows": {
+			"type": "string",
+			"default": ""
+		},
+		"mdRowsOption": {
+			"type": "string",
+			"default": "rows"
+		},
+		"mdRows": {
+			"type": "number",
+			"default": ""
+		},
+		"mdGridTemplateRows": {
+			"type": "string",
+			"default": ""
+		},
+		"smRowsOption": {
+			"type": "string",
+			"default": "rows"
+		},
+		"smRows": {
+			"type": "number",
+			"default": ""
+		},
+		"smGridTemplateRows": {
 			"type": "string",
 			"default": ""
 		},

@@ -11,8 +11,22 @@
 	--unitone--column-min-width: 250px;
 	--unitone--grid-template-columns: none;
 
+	--unitone--md-columns: var(--unitone--columns);
+	--unitone--md-column-min-width: var(--unitone--column-min-width);
+	--unitone--md-grid-template-columns: var(--unitone--grid-template-columns);
+
+	--unitone--sm-columns: var(--unitone--md-columns);
+	--unitone--sm-column-min-width: var(--unitone--md-column-min-width);
+	--unitone--sm-grid-template-columns: var(--unitone--md-grid-template-columns);
+
 	--unitone--rows: 1;
 	--unitone--grid-template-rows: none;
+
+	--unitone--md-rows: var(--unitone--rows);
+	--unitone--md-grid-template-rows: var(--unitone--grid-template-rows);
+
+	--unitone--sm-rows: var(--unitone--md-rows);
+	--unitone--sm-grid-template-rows: var(--unitone--md-grid-template-rows);
 
 	display: grid;
 	gap: var(--unitone--gap);
@@ -45,6 +59,34 @@
 	grid-template-columns: var(--unitone--grid-template-columns);
 }
 
+@media not all and (min-width: 1024px) {
+	[data-unitone-layout~="-columns\:md\:columns"] {
+		grid-template-columns: repeat(var(--unitone--md-columns), 1fr);
+	}
+
+	[data-unitone-layout~="-columns\:md\:min"] {
+		grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(--unitone--md-column-min-width), 100%), 1fr));
+	}
+
+	[data-unitone-layout~="-columns\:md\:free"] {
+		grid-template-columns: var(--unitone--md-grid-template-columns);
+	}
+}
+
+@media not all and (min-width: 640px) {
+	[data-unitone-layout~="-columns\:sm\:columns"] {
+		grid-template-columns: repeat(var(--unitone--sm-columns), 1fr);
+	}
+
+	[data-unitone-layout~="-columns\:sm\:min"] {
+		grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(--unitone--sm-column-min-width), 100%), 1fr));
+	}
+
+	[data-unitone-layout~="-columns\:sm\:free"] {
+		grid-template-columns: var(--unitone--sm-grid-template-columns);
+	}
+}
+
 [data-unitone-layout~="-rows\:rows"] {
 	grid-template-rows: repeat(var(--unitone--rows), 1fr);
 }
@@ -55,4 +97,24 @@
 
 .editor-styles-wrapper .unitone-grid {
 	gap: var(--unitone--gap);
+}
+
+@media not all and (min-width: 1024px) {
+	[data-unitone-layout~="-rows\:md\:rows"] {
+		grid-template-rows: repeat(var(--unitone--md-rows), 1fr);
+	}
+
+	[data-unitone-layout~="-rows\:md\:free"] {
+		grid-template-rows: var(--unitone--md-grid-template-rows);
+	}
+}
+
+@media not all and (min-width: 640px) {
+	[data-unitone-layout~="-rows\:sm\:rows"] {
+		grid-template-rows: repeat(var(--unitone--sm-rows), 1fr);
+	}
+
+	[data-unitone-layout~="-rows\:sm\:free"] {
+		grid-template-rows: var(--unitone--sm-grid-template-rows);
+	}
 }

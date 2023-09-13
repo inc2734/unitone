@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-09-13T04:33:36+00:00\n"
-"PO-Revision-Date: 2023-09-13 13:34+0900\n"
+"POT-Creation-Date: 2023-09-13T12:07:59+00:00\n"
+"PO-Revision-Date: 2023-09-13 21:08+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1215,6 +1215,14 @@ msgstr "自由入力"
 #: dist/blocks/grid/index.js:1 dist/js/editor/editor.js:1
 msgid "Auto repeat"
 msgstr "自動反復"
+
+#: dist/blocks/grid/index.js:1
+msgid "For tablet / mobile"
+msgstr "タブレット / モバイル用"
+
+#: dist/blocks/grid/index.js:1
+msgid "For mobile"
+msgstr "モバイル用"
 
 #: dist/blocks/grid/index.js:1
 msgid "Rows count"

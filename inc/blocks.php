@@ -658,13 +658,24 @@ add_filter(
 /**
  * Remove width/height of style attribute at core/image.
  * For WordPress 6.3.0. Fixed in 6.3.1.
+ *
+ * @see https://github.com/WordPress/gutenberg/issues/53555
  */
-// add_filter(
-// 	'render_block_core/image',
-// 	function( $block_content, $block ) {
-// 		$block_content = preg_replace( '|width:[\d]+px;height:[\d]+px|', '', $block_content );
-// 		return $block_content;
-// 	},
-// 	10,
-// 	2
-// );
+add_filter(
+	'render_block_core/image',
+	function( $block_content, $block ) {
+		$attrs = $block['attrs'] ?? array();
+		$w     = $attrs['width'] ?? '';
+		$h     = $attrs['height'] ?? '';
+
+		if ( $w && $h ) {
+			$size_style    = "width:{$w}px;height:{$h}px";
+			$ratio         = "{$w}/{$h}";
+			$block_content = str_replace( $size_style, "aspect-ratio:{$ratio}", $block_content );
+		}
+
+		return $block_content;
+	},
+	10,
+	2
+);

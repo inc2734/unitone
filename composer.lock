@@ -8,28 +8,24 @@
     "packages": [
         {
             "name": "inc2734/wp-breadcrumbs",
-            "version": "3.1.8",
+            "version": "3.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inc2734/wp-breadcrumbs.git",
-                "reference": "830c88c333ec2f998e59c5106336964e9fbed024"
+                "reference": "f1f3ee6dbb2b27092ba57830d75d06026411ac42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inc2734/wp-breadcrumbs/zipball/830c88c333ec2f998e59c5106336964e9fbed024",
-                "reference": "830c88c333ec2f998e59c5106336964e9fbed024",
+                "url": "https://api.github.com/repos/inc2734/wp-breadcrumbs/zipball/f1f3ee6dbb2b27092ba57830d75d06026411ac42",
+                "reference": "f1f3ee6dbb2b27092ba57830d75d06026411ac42",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=7.4"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-                "phpcompatibility/php-compatibility": "^9.3",
-                "sirbrillig/phpcs-variable-analysis": "^2.8",
-                "squizlabs/php_codesniffer": "^3.5",
-                "wp-coding-standards/wpcs": "^2.2",
-                "wp-phpunit/wp-phpunit": "^5.5"
+                "wp-coding-standards/wpcs": "^2.3",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -50,9 +46,9 @@
             "description": "A library for WordPress breadcrumbs.",
             "support": {
                 "issues": "https://github.com/inc2734/wp-breadcrumbs/issues",
-                "source": "https://github.com/inc2734/wp-breadcrumbs/tree/3.1.8"
+                "source": "https://github.com/inc2734/wp-breadcrumbs/tree/3.1.9"
             },
-            "time": "2021-11-16T00:58:13+00:00"
+            "time": "2023-08-31T23:29:52+00:00"
         },
         {
             "name": "inc2734/wp-github-theme-updater",
@@ -105,16 +101,16 @@
         },
         {
             "name": "inc2734/wp-oembed-blog-card",
-            "version": "13.0.1",
+            "version": "13.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inc2734/wp-oembed-blog-card.git",
-                "reference": "b2a3e32b99d1a5f02f1281a3a0098412c53a4dbf"
+                "reference": "d35eaffca1b66dfd272032ae0f3c8a06131bd821"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inc2734/wp-oembed-blog-card/zipball/b2a3e32b99d1a5f02f1281a3a0098412c53a4dbf",
-                "reference": "b2a3e32b99d1a5f02f1281a3a0098412c53a4dbf",
+                "url": "https://api.github.com/repos/inc2734/wp-oembed-blog-card/zipball/d35eaffca1b66dfd272032ae0f3c8a06131bd821",
+                "reference": "d35eaffca1b66dfd272032ae0f3c8a06131bd821",
                 "shasum": ""
             },
             "require": {
@@ -144,9 +140,9 @@
             "description": "A library for WordPress oEmbed Blog Card.",
             "support": {
                 "issues": "https://github.com/inc2734/wp-oembed-blog-card/issues",
-                "source": "https://github.com/inc2734/wp-oembed-blog-card/tree/13.0.1"
+                "source": "https://github.com/inc2734/wp-oembed-blog-card/tree/13.0.3"
             },
-            "time": "2023-06-01T16:45:10+00:00"
+            "time": "2023-09-13T02:40:53+00:00"
         }
     ],
     "packages-dev": [

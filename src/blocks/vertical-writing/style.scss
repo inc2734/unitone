@@ -1,12 +1,12 @@
 [data-unitone-layout~="vertical-writing-wrapper"] {
 	--unitone--vertical-writing--max-height: var(--unitone--max-height, calc(9 * var(--unitone--measure) / 16));
-  --unitone--max-width: min(100%, var(--unitone--container-max-width));
+	--unitone--max-width: min(100%, var(--unitone--container-max-width));
 
 	margin-right: auto;
 	margin-left: auto;
 	display: flex;
 	flex-direction: column;
-  width: var(--unitone--max-width);
+	width: var(--unitone--max-width);
 	max-width: 100%;
 
 	&[data-unitone-layout~="-align\:start"] > * {

@@ -4,7 +4,7 @@
 		"npm": "8.19.4"
 	},
 	"devDependencies": {
-		"@inc2734/unitone-css": "^0.45.1",
+		"@inc2734/unitone-css": "^0.45.2",
 		"@wordpress/env": "^8.7.0",
 		"@wordpress/icons": "^9.32.0",
 		"@wordpress/scripts": "^26.12.0",
@@ -20,7 +20,7 @@
 		"postcss-import": "^15.1.0",
 		"prettier": "npm:wp-prettier@2.8.5",
 		"rimraf": "^5.0.1",
-		"sass": "^1.66.1",
+		"sass": "^1.67.0",
 		"swiper": "^10"
 	},
 	"scripts": {

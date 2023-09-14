@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-09-13T12:07:59+00:00\n"
-"PO-Revision-Date: 2023-09-13 21:08+0900\n"
+"POT-Creation-Date: 2023-09-14T04:03:29+00:00\n"
+"PO-Revision-Date: 2023-09-14 13:05+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1295,6 +1295,10 @@ msgstr "背景画像 / 左寄せのタイトル"
 #: dist/blocks/layers/index.js:25
 msgid "Background image / Left title / Subtitle"
 msgstr "背景画像 / 左寄せのタイトル / サブタイトル"
+
+#: dist/blocks/layers/index.js:25
+msgid "Select layered block"
+msgstr "レイヤー化されたブロックを選択"
 
 #: dist/blocks/layers/index.js:25
 msgid "Use background image/video (Cover)"

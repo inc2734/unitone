@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { get } from 'lodash';
 
 import {
+	BlockControls,
 	InspectorControls,
 	InnerBlocks,
 	useBlockProps,
@@ -11,19 +12,22 @@ import {
 } from '@wordpress/block-editor';
 
 import {
-	RangeControl,
-	ToggleControl,
-	__experimentalToolsPanel as ToolsPanel,
-	__experimentalToolsPanelItem as ToolsPanelItem,
-} from '@wordpress/components';
-
-import {
 	createBlocksFromInnerBlocksTemplate,
 	store as blocksStore,
 } from '@wordpress/blocks';
 
+import {
+	RangeControl,
+	ToggleControl,
+	ToolbarGroup,
+	ToolbarDropdownMenu,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
+import { copy } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
@@ -31,12 +35,28 @@ import metadata from './block.json';
 export default function ( { name, attributes, setAttributes, clientId } ) {
 	const { cover, fill, blur, portrait } = attributes;
 
-	const hasInnerBlocks = useSelect(
-		( select ) =>
-			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
-				?.length,
+	const { hasInnerBlocks, innerBlocks } = useSelect(
+		( select ) => {
+			const _innerBlocks =
+				select( blockEditorStore ).getBlock( clientId )?.innerBlocks;
+			return {
+				hasInnerBlocks: !! _innerBlocks?.length,
+				innerBlocks: _innerBlocks.map( ( innerBlock ) => {
+					const blockType = select( blocksStore ).getBlockType(
+						innerBlock.name
+					);
+					return {
+						title: blockType.title,
+						icon: blockType.icon,
+						clientId: innerBlock.clientId,
+					};
+				} ),
+			};
+		},
 		[ clientId ]
 	);
+
+	const { selectBlock } = useDispatch( blockEditorStore );
 
 	const defaultAttributes = {};
 	Object.values( metadata.attributes || [] ).forEach( ( value, index ) => {
@@ -104,6 +124,23 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 
 	return (
 		<>
+			<BlockControls>
+				<ToolbarGroup>
+					<ToolbarDropdownMenu
+						icon={ copy }
+						label={ __( 'Select layered block', 'unitone' ) }
+						controls={ innerBlocks.map( ( innerBlock ) => {
+							return {
+								title: innerBlock.title,
+								icon: innerBlock.icon.src,
+								onClick: () =>
+									selectBlock( innerBlock.clientId ),
+							};
+						} ) }
+					/>
+				</ToolbarGroup>
+			</BlockControls>
+
 			<InspectorControls>
 				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
 					<ToolsPanelItem

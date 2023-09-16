@@ -17,6 +17,22 @@ export default {
 		},
 		{
 			type: 'block',
+			blocks: [ 'unitone/grid' ],
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock(
+					'unitone/responsive-grid',
+					{
+						columnMinWidth: attributes?.columnMinWidth,
+						unitone: {
+							...attributes?.unitone,
+						},
+					},
+					innerBlocks
+				);
+			},
+		},
+		{
+			type: 'block',
 			isMultiBlock: true,
 			blocks: [ '*' ],
 			__experimentalConvert( blocks ) {

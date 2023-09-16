@@ -8,6 +8,40 @@ export default {
 	from: [
 		{
 			type: 'block',
+			blocks: [ 'unitone/responsive-grid' ],
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock(
+					'unitone/grid',
+					{
+						columnMinWidth: attributes?.columnMinWidth,
+						unitone: {
+							...attributes?.unitone,
+						},
+					},
+					innerBlocks
+				);
+			},
+		},
+		{
+			type: 'block',
+			blocks: [ 'unitone/responsive-grid-divided' ],
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock(
+					'unitone/grid',
+					{
+						columnMinWidth: attributes?.columnMinWidth,
+						unitone: {
+							...attributes?.unitone,
+						},
+					},
+					innerBlocks
+						.map( ( innerBlock ) => innerBlock.innerBlocks )
+						.flat()
+				);
+			},
+		},
+		{
+			type: 'block',
 			isMultiBlock: true,
 			blocks: [ '*' ],
 			__experimentalConvert( blocks ) {

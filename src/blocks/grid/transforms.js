@@ -10,16 +10,7 @@ export default {
 			type: 'block',
 			blocks: [ 'unitone/responsive-grid' ],
 			transform: ( attributes, innerBlocks ) => {
-				return createBlock(
-					'unitone/grid',
-					{
-						columnMinWidth: attributes?.columnMinWidth,
-						unitone: {
-							...attributes?.unitone,
-						},
-					},
-					innerBlocks
-				);
+				return createBlock( 'unitone/grid', attributes, innerBlocks );
 			},
 		},
 		{
@@ -28,12 +19,7 @@ export default {
 			transform: ( attributes, innerBlocks ) => {
 				return createBlock(
 					'unitone/grid',
-					{
-						columnMinWidth: attributes?.columnMinWidth,
-						unitone: {
-							...attributes?.unitone,
-						},
-					},
+					attributes,
 					innerBlocks
 						.map( ( innerBlock ) => innerBlock.innerBlocks )
 						.flat()

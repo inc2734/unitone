@@ -109,10 +109,9 @@
 		"anchor": true,
 		"align": [ "full", "wide" ],
 		"color": {
-			"background": true,
-			"color": true,
+			"background": false,
 			"link": true,
-			"gradients": true
+			"text": true
 		},
 		"typography": {
 			"fontSize": true,

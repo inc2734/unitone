@@ -21,12 +21,7 @@ export default {
 			transform: ( attributes, innerBlocks ) => {
 				return createBlock(
 					'unitone/responsive-grid',
-					{
-						columnMinWidth: attributes?.columnMinWidth,
-						unitone: {
-							...attributes?.unitone,
-						},
-					},
+					attributes,
 					innerBlocks
 				);
 			},

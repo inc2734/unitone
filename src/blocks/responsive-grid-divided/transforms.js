@@ -31,13 +31,7 @@ export default {
 			transform: ( attributes, innerBlocks ) => {
 				return createBlock(
 					'unitone/responsive-grid-divided',
-					{
-						columnMinWidth: attributes?.columnMinWidth,
-						unitone: {
-							...attributes?.unitone,
-							dividerType: 'stripe',
-						},
-					},
+					attributes,
 					innerBlocks.map( ( innerBlock ) => {
 						return createBlock(
 							'unitone/responsive-grid-divided-content',

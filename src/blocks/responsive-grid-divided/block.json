@@ -37,7 +37,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
-		"align": [ "full" ],
+		"align": [ "wide", "full" ],
 		"color": {
 			"background": false,
 			"link": true,

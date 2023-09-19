@@ -1,15 +1,23 @@
+import classnames from 'classnames';
+
 import {
 	RichText,
 	useBlockProps,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
+import { ChevronDown, Cross } from './mark';
+
 export default function ( { attributes } ) {
-	const { summary, q, qLabel, qWidth, a, aLabel, aWidth } = attributes;
+	const { summary, mark, q, qLabel, qWidth, a, aLabel, aWidth } = attributes;
 
 	return (
 		<details
-			{ ...useBlockProps.save( { className: 'unitone-accordion' } ) }
+			{ ...useBlockProps.save( {
+				className: classnames( 'unitone-accordion', {
+					[ `unitone-accordion--mark:cross` ]: 'cross' === mark,
+				} ),
+			} ) }
 		>
 			<summary className="unitone-accordion__summary">
 				<span
@@ -41,18 +49,7 @@ export default function ( { attributes } ) {
 					</span>
 
 					<span className="unitone-accordion__icon">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24.71 13.06"
-						>
-							<polyline
-								points="24.35 .35 12.35 12.35 .35 .35"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth="2px"
-								strokeLinecap="round"
-							/>
-						</svg>
+						{ 'cross' === mark ? <Cross /> : <ChevronDown /> }
 					</span>
 				</span>
 			</summary>

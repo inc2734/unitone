@@ -11,6 +11,10 @@
 			"source": "text",
 			"selector": ".unitone-accordion__summary-text"
 		},
+		"mark": {
+			"type": "string",
+			"default": "chevron-down"
+		},
 		"q": {
 			"type": "boolean",
 			"default": false

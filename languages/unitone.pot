@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 7.0.0-beta2\n"
+"Project-Id-Version: unitone 7.0.0-beta3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-14T04:03:29+00:00\n"
+"POT-Creation-Date: 2023-09-19T13:17:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -51,6 +51,7 @@ msgid "Retrieve patterns from the pattern library"
 msgstr ""
 
 #: App/Controller/Manager.php:138
+#: dist/blocks/accordion/index.js:1
 #: dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/cluster-divided/index.js:1
@@ -1110,6 +1111,18 @@ msgstr ""
 #: patterns/template-single-right-sidebar.php
 msgctxt "Pattern title"
 msgid "Single Posts: Right Sidebar"
+msgstr ""
+
+#: dist/blocks/accordion/index.js:1
+msgid "Mark"
+msgstr ""
+
+#: dist/blocks/accordion/index.js:1
+msgid "Chevron down"
+msgstr ""
+
+#: dist/blocks/accordion/index.js:1
+msgid "cross"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:1

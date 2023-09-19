@@ -1,12 +1,16 @@
+import classnames from 'classnames';
+
 import {
 	InspectorControls,
 	InnerBlocks,
 	RichText,
 	useBlockProps,
 	useInnerBlocksProps,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import {
+	Button,
 	TextControl,
 	ToggleControl,
 	__experimentalToolsPanel as ToolsPanel,
@@ -16,20 +20,23 @@ import {
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import { ChevronDown, Cross } from './mark';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { summary, q, qLabel, qWidth, a, aLabel, aWidth } = attributes;
+	const { summary, mark, q, qLabel, qWidth, a, aLabel, aWidth } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
-			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
+			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
 				?.length,
 		[ clientId ]
 	);
 
 	const blockProps = useBlockProps( {
-		className: 'unitone-accordion',
+		className: classnames( 'unitone-accordion', {
+			[ `unitone-accordion--mark:cross` ]: 'cross' === mark,
+		} ),
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps(
@@ -44,9 +51,67 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		}
 	);
 
+	// Check if either the block or the inner blocks are selected.
+	const hasSelection = useSelect(
+		( select ) => {
+			const { isBlockSelected, hasSelectedInnerBlock } =
+				select( blockEditorStore );
+			/* Sets deep to true to also find blocks inside the details content block. */
+			return (
+				hasSelectedInnerBlock( clientId, true ) ||
+				isBlockSelected( clientId )
+			);
+		},
+		[ clientId ]
+	);
+
 	return (
 		<>
 			<InspectorControls>
+				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+					<ToolsPanelItem
+						hasValue={ () =>
+							mark !== metadata.attributes.mark.default
+						}
+						isShownByDefault
+						label={ __( 'Mark', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								mark: metadata.attributes.mark.default,
+							} )
+						}
+					>
+						<fieldset className="block-editor-text-transform-control">
+							<div className="block-editor-text-transform-control__buttons">
+								<Button
+									isPressed={ 'chevron-down' === mark }
+									label={ __( 'Chevron down', 'unitone' ) }
+									icon={ () => (
+										<ChevronDown
+											width={ 16 }
+											height={ 16 }
+										/>
+									) }
+									onClick={ () =>
+										setAttributes( { mark: undefined } )
+									}
+								/>
+
+								<Button
+									isPressed={ 'cross' === mark }
+									label={ __( 'cross', 'unitone' ) }
+									icon={ () => (
+										<Cross width={ 16 } height={ 16 } />
+									) }
+									onClick={ () =>
+										setAttributes( { mark: 'cross' } )
+									}
+								/>
+							</div>
+						</fieldset>
+					</ToolsPanelItem>
+				</ToolsPanel>
+
 				<ToolsPanel label={ __( 'Question', 'unitone' ) }>
 					<ToolsPanelItem
 						hasValue={ () => q !== metadata.attributes.q.default }
@@ -158,8 +223,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<details { ...blockProps }>
-				<summary className="unitone-accordion__summary">
+			<details { ...blockProps } open={ hasSelection }>
+				<summary // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+					className="unitone-accordion__summary"
+					onClick={ ( event ) => event.preventDefault() }
+				>
 					<span
 						className="unitone-accordion__summary-inner"
 						data-unitone-layout="with-sidebar -sidebar:right"
@@ -204,18 +272,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						</span>
 
 						<span className="unitone-accordion__icon">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 24.71 13.06"
-							>
-								<polyline
-									points="24.35 .35 12.35 12.35 .35 .35"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="2px"
-									strokeLinecap="round"
-								/>
-							</svg>
+							{ 'cross' === mark ? <Cross /> : <ChevronDown /> }
 						</span>
 					</span>
 				</summary>

@@ -5,6 +5,10 @@
 		.unitone-accordion__icon {
 			transform: rotate(180deg);
 		}
+
+		&.unitone-accordion--mark\:cross .unitone-accordion__icon {
+			transform: rotate(45deg);
+		}
 	}
 
 	&.is-style-box,

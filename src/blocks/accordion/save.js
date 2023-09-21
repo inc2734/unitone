@@ -9,7 +9,18 @@ import {
 import { ChevronDown, Cross } from './mark';
 
 export default function ( { attributes } ) {
-	const { summary, mark, q, qLabel, qWidth, a, aLabel, aWidth } = attributes;
+	const {
+		summary,
+		mark,
+		q,
+		qLabel,
+		qWidth,
+		a,
+		aLabel,
+		aWidth,
+		borderColor,
+		style,
+	} = attributes;
 
 	return (
 		<details
@@ -17,6 +28,13 @@ export default function ( { attributes } ) {
 				className: classnames( 'unitone-accordion', {
 					[ `unitone-accordion--mark:cross` ]: 'cross' === mark,
 				} ),
+				style: {
+					'--unitone--border-width': style?.border?.width,
+					'--unitone--border-style': style?.border?.style,
+					'--unitone--border-color': !! borderColor
+						? `var(--wp--preset--color--${ borderColor })`
+						: style?.border?.color,
+				},
 			} ) }
 		>
 			<summary className="unitone-accordion__summary">

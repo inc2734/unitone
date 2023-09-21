@@ -24,7 +24,18 @@ import { ChevronDown, Cross } from './mark';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { summary, mark, q, qLabel, qWidth, a, aLabel, aWidth } = attributes;
+	const {
+		summary,
+		mark,
+		q,
+		qLabel,
+		qWidth,
+		a,
+		aLabel,
+		aWidth,
+		borderColor,
+		style,
+	} = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -37,6 +48,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		className: classnames( 'unitone-accordion', {
 			[ `unitone-accordion--mark:cross` ]: 'cross' === mark,
 		} ),
+		style: {
+			'--unitone--border-width': style?.border?.width,
+			'--unitone--border-style': style?.border?.style,
+			'--unitone--border-color': !! borderColor
+				? `var(--wp--preset--color--${ borderColor })`
+				: style?.border?.color,
+		},
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps(

@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 7.0.0-beta3\n"
+"Project-Id-Version: unitone 7.0.0-beta4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-19T13:17:41+00:00\n"
+"POT-Creation-Date: 2023-09-20T10:26:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unitone\n"
@@ -2508,6 +2508,11 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Pages: One Column"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Pages: One Column / Page Header (Featured Image)"
 msgstr ""
 
@@ -2518,12 +2523,12 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Pages: Only Header and Footer"
+msgid "Pages: One Column / Page Header (Slim)"
 msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Pages: One Column / Page Header (Slim)"
+msgid "Pages: Only Header and Footer"
 msgstr ""
 
 #: theme.json
@@ -2559,6 +2564,11 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Pages: Blank"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: One Column"
 msgstr ""
 
 #: theme.json
@@ -2604,6 +2614,11 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Posts: Left Header / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Products: One Column"
 msgstr ""
 
 #: theme.json

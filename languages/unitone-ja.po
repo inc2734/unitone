@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-09-19T13:17:41+00:00\n"
-"PO-Revision-Date: 2023-09-19 22:18+0900\n"
+"POT-Creation-Date: 2023-09-20T10:26:12+00:00\n"
+"PO-Revision-Date: 2023-09-20 19:28+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2390,6 +2390,11 @@ msgstr "5"
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Pages: One Column"
+msgstr "固定ページ：1カラム"
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Pages: One Column / Page Header (Featured Image)"
 msgstr "固定ページ：1カラム / ページヘッダー（アイキャッチ画像）"
 
@@ -2400,13 +2405,13 @@ msgstr "固定ページ：1カラム / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Pages: Only Header and Footer"
-msgstr "固定ページ：ヘッダー / フッター"
+msgid "Pages: One Column / Page Header (Slim)"
+msgstr "固定ページ：1カラム / ページヘッダー（スリム）"
 
 #: theme.json
 msgctxt "Custom template name"
-msgid "Pages: One Column / Page Header (Slim)"
-msgstr "固定ページ：1カラム / ページヘッダー（スリム）"
+msgid "Pages: Only Header and Footer"
+msgstr "固定ページ：ヘッダー / フッター"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -2442,6 +2447,11 @@ msgstr "固定ページ：左ヘッダー / ページヘッダー（画像）"
 msgctxt "Custom template name"
 msgid "Pages: Blank"
 msgstr "固定ページ：空"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: One Column"
+msgstr "個別投稿：1カラム"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -2487,6 +2497,11 @@ msgstr "個別投稿：左ヘッダー / ページヘッダー（アイキャッ
 msgctxt "Custom template name"
 msgid "Single Posts: Left Header / Page Header (Image)"
 msgstr "個別投稿：左ヘッダー / ページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Products: One Column"
+msgstr "個別商品：1カラム"
 
 #: theme.json
 msgctxt "Custom template name"

@@ -131,6 +131,7 @@ function unitone_fallback_deprecated_custom_page_templates( $query_result ) {
 				'page-left-header'                        => 'custom/page/left-header',
 				'page-left-header-page-header-featured'   => 'custom/page/left-header-page-header-featured',
 				'page-left-header-page-header-image'      => 'custom/page/left-header-page-header-image',
+				'page-one-column'                         => 'custom/page/one-column',
 				'page-one-column-page-header-featured'    => 'custom/page/one-column-page-header-featured',
 				'page-one-column-page-header-image'       => 'custom/page/one-column-page-header-image',
 				'page-one-column-page-header-slim'        => 'custom/page/one-column-page-header-slim',
@@ -146,6 +147,7 @@ function unitone_fallback_deprecated_custom_page_templates( $query_result ) {
 				'single-left-header'                        => 'custom/single/left-header',
 				'single-left-header-page-header-featured'   => 'custom/single/left-header-page-header-featured',
 				'single-left-header-page-header-image'      => 'custom/single/left-header-page-header-image',
+				'single-one-column'                         => 'custom/single/one-column',
 				'single-one-column-page-header-featured'    => 'custom/single/one-column-page-header-featured',
 				'single-one-column-page-header-image'       => 'custom/single/one-column-page-header-image',
 				'single-right-sidebar'                      => 'custom/single/right-sidebar',
@@ -158,6 +160,7 @@ function unitone_fallback_deprecated_custom_page_templates( $query_result ) {
 			$templates = array(
 				'single-product-left-header'                     => 'custom/single-product/left-header',
 				'single-product-left-header-page-header-image'   => 'custom/single-product/left-header-page-header-image',
+				'single-product-one-column'                      => 'custom/single-product/one-column',
 				'single-product-one-column-page-header-image'    => 'custom/single-product/one-column-page-header-image',
 				'single-product-right-sidebar'                   => 'custom/single-product/right-sidebar',
 				'single-product-right-sidebar-page-header-image' => 'custom/single-product/right-sidebar-page-header-image',

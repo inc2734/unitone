@@ -263,6 +263,13 @@
 	},
 	"customTemplates": [
 		{
+			"name": "custom/page/one-column",
+			"title": "Pages: One Column",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
 			"name": "custom/page/one-column-page-header-featured",
 			"title": "Pages: One Column / Page Header (Featured Image)",
 			"postTypes": [
@@ -277,15 +284,15 @@
 			]
 		},
 		{
-			"name": "custom/page/header-footer",
-			"title": "Pages: Only Header and Footer",
+			"name": "custom/page/one-column-page-header-slim",
+			"title": "Pages: One Column / Page Header (Slim)",
 			"postTypes": [
 				"page"
 			]
 		},
 		{
-			"name": "custom/page/one-column-page-header-slim",
-			"title": "Pages: One Column / Page Header (Slim)",
+			"name": "custom/page/header-footer",
+			"title": "Pages: Only Header and Footer",
 			"postTypes": [
 				"page"
 			]
@@ -337,6 +344,13 @@
 			"title": "Pages: Blank",
 			"postTypes": [
 				"page"
+			]
+		},
+		{
+			"name": "custom/single/one-column",
+			"title": "Single Posts: One Column",
+			"postTypes": [
+				"post"
 			]
 		},
 		{
@@ -400,6 +414,13 @@
 			"title": "Single Posts: Left Header / Page Header (Image)",
 			"postTypes": [
 				"post"
+			]
+		},
+		{
+			"name": "custom/single-product/one-column",
+			"title": "Single Products: One Column",
+			"postTypes": [
+				"product"
 			]
 		},
 		{

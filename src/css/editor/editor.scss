@@ -154,3 +154,10 @@
 		border-radius: 0 0 2px 2px;
 	}
 }
+
+// @todo Support for the fact that the preview and draft buttons are hidden on the top toolbar, depending on the screen size.
+@media (min-width: 960px) {
+	.is-fullscreen-mode .block-editor-block-contextual-toolbar.is-fixed {
+		width: auto;
+	}
+}

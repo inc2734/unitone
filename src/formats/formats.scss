@@ -16,7 +16,8 @@
 		mask-size: contain;
 	}
 
-	a {
+	a,
+	span {
 		display: inline-block;
 		width: 1em;
 		text-decoration: none !important;

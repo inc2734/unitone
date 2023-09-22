@@ -50,7 +50,7 @@ const DEFAULT_ICON_OBJECT_SETTINGS = {
 	attributes: {
 		ariaHidden: 'true',
 	},
-	innerHTML: `<a inert> </a>`,
+	innerHTML: `<span inert> </span>`,
 };
 
 function Edit( {

@@ -79,6 +79,20 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 				'area_tag'    => 'div',
 			),
 			array(
+				'area'        => 'unitone/cart',
+				'label'       => __( 'Cart', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => '',
+				'area_tag'    => 'div',
+			),
+			array(
+				'area'        => 'unitone/checkout',
+				'label'       => __( 'Checkout', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => '',
+				'area_tag'    => 'div',
+			),
+			array(
 				'area'        => 'unitone/comments',
 				'label'       => __( 'Comments', 'unitone' ),
 				'icon'        => 'layout',

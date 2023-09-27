@@ -522,6 +522,16 @@
 			"area": "unitone/bbpress"
 		},
 		{
+			"name": "cart",
+			"title": "Cart",
+			"area": "unitone/cart"
+		},
+		{
+			"name": "checkout",
+			"title": "Checkout",
+			"area": "unitone/checkout"
+		},
+		{
 			"name": "home",
 			"title": "Blog Home",
 			"area": "unitone/home"

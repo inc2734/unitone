@@ -197,6 +197,18 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/template/bbpress/page-header/default.php' ),
 		),
 		array(
+			'title'    => __( 'Main Area (One Column) for Cart', 'unitone' ),
+			'slug'     => 'unitone/template/cart/main/one-column',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/cart/main/one-column.php' ),
+		),
+		array(
+			'title'    => __( 'Main Area (One Column) for Checkout', 'unitone' ),
+			'slug'     => 'unitone/template/checkout/main/one-column',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/checkout/main/one-column.php' ),
+		),
+		array(
 			'title'    => __( 'Main Area (One Column) for Blog Home', 'unitone' ),
 			'slug'     => 'unitone/template/home/main/one-column',
 			'inserter' => false,

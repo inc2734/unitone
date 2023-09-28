@@ -6,6 +6,18 @@ export default {
 			type: 'block',
 			blocks: [ 'unitone/stack' ],
 			transform: ( attributes, innerBlocks ) => {
+				const newInnerBlocks = innerBlocks.map( ( innerBlock ) => {
+					return createBlock( 'unitone/stack-divided-content', {}, [
+						innerBlock,
+					] );
+				} );
+
+				if ( 1 > newInnerBlocks.length ) {
+					newInnerBlocks.push(
+						createBlock( 'unitone/stack-divided-content', {}, [] )
+					);
+				}
+
 				return createBlock(
 					'unitone/stack-divided',
 					{
@@ -15,13 +27,7 @@ export default {
 							dividerType: 'stripe',
 						},
 					},
-					innerBlocks.map( ( innerBlock ) => {
-						return createBlock(
-							'unitone/stack-divided-content',
-							{},
-							[ innerBlock ]
-						);
-					} )
+					newInnerBlocks
 				);
 			},
 		},

@@ -6,6 +6,24 @@ export default {
 			type: 'block',
 			blocks: [ 'unitone/responsive-grid' ],
 			transform: ( attributes, innerBlocks ) => {
+				const newInnerBlocks = innerBlocks.map( ( innerBlock ) => {
+					return createBlock(
+						'unitone/responsive-grid-divided-content',
+						{},
+						[ innerBlock ]
+					);
+				} );
+
+				if ( 1 > newInnerBlocks.length ) {
+					newInnerBlocks.push(
+						createBlock(
+							'unitone/responsive-grid-divided-content',
+							{},
+							[]
+						)
+					);
+				}
+
 				return createBlock(
 					'unitone/responsive-grid-divided',
 					{
@@ -15,13 +33,7 @@ export default {
 							dividerType: 'stripe',
 						},
 					},
-					innerBlocks.map( ( innerBlock ) => {
-						return createBlock(
-							'unitone/responsive-grid-divided-content',
-							{},
-							[ innerBlock ]
-						);
-					} )
+					newInnerBlocks
 				);
 			},
 		},
@@ -29,16 +41,34 @@ export default {
 			type: 'block',
 			blocks: [ 'unitone/grid' ],
 			transform: ( attributes, innerBlocks ) => {
-				return createBlock(
-					'unitone/responsive-grid-divided',
-					attributes,
-					innerBlocks.map( ( innerBlock ) => {
-						return createBlock(
+				const newInnerBlocks = innerBlocks.map( ( innerBlock ) => {
+					return createBlock(
+						'unitone/responsive-grid-divided-content',
+						{},
+						[ innerBlock ]
+					);
+				} );
+
+				if ( 1 > newInnerBlocks.length ) {
+					newInnerBlocks.push(
+						createBlock(
 							'unitone/responsive-grid-divided-content',
 							{},
-							[ innerBlock ]
-						);
-					} )
+							[]
+						)
+					);
+				}
+
+				return createBlock(
+					'unitone/responsive-grid-divided',
+					{
+						...attributes,
+						unitone: {
+							...attributes?.unitone,
+							dividerType: 'stripe',
+						},
+					},
+					newInnerBlocks
 				);
 			},
 		},

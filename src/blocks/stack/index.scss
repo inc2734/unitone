@@ -4,7 +4,7 @@
 }
 
 [data-unitone-layout~="stack"] {
-	> .block-list-appender:first-child {
-		block-size: 100%;
+	> .block-list-appender:only-child {
+		width: 100%;
 	}
 }

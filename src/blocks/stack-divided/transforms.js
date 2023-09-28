@@ -33,6 +33,40 @@ export default {
 		},
 		{
 			type: 'block',
+			blocks: [ 'unitone/cluster-divided' ],
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock(
+					'unitone/stack-divided',
+					{ ...attributes },
+					innerBlocks.map( ( innerBlock ) => {
+						return createBlock(
+							'unitone/stack-divided-content',
+							{ ...innerBlock.attributes },
+							[ ...innerBlock.innerBlocks ]
+						);
+					} )
+				);
+			},
+		},
+		{
+			type: 'block',
+			blocks: [ 'unitone/responsive-grid-divided' ],
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock(
+					'unitone/stack-divided',
+					{ ...attributes },
+					innerBlocks.map( ( innerBlock ) => {
+						return createBlock(
+							'unitone/stack-divided-content',
+							{ ...innerBlock.attributes },
+							[ ...innerBlock.innerBlocks ]
+						);
+					} )
+				);
+			},
+		},
+		{
+			type: 'block',
 			isMultiBlock: true,
 			blocks: [ '*' ],
 			__experimentalConvert( blocks ) {

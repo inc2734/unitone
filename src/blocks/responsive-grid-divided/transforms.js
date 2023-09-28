@@ -74,6 +74,40 @@ export default {
 		},
 		{
 			type: 'block',
+			blocks: [ 'unitone/cluster-divided' ],
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock(
+					'unitone/responsive-grid-divided',
+					{ ...attributes },
+					innerBlocks.map( ( innerBlock ) => {
+						return createBlock(
+							'unitone/responsive-grid-divided-content',
+							{ ...innerBlock.attributes },
+							[ ...innerBlock.innerBlocks ]
+						);
+					} )
+				);
+			},
+		},
+		{
+			type: 'block',
+			blocks: [ 'unitone/stack-divided' ],
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock(
+					'unitone/responsive-grid-divided',
+					{ ...attributes },
+					innerBlocks.map( ( innerBlock ) => {
+						return createBlock(
+							'unitone/responsive-grid-divided-content',
+							{ ...innerBlock.attributes },
+							[ ...innerBlock.innerBlocks ]
+						);
+					} )
+				);
+			},
+		},
+		{
+			type: 'block',
 			isMultiBlock: true,
 			blocks: [ '*' ],
 			__experimentalConvert( blocks ) {

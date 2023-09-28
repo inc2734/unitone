@@ -125,7 +125,7 @@ add_filter(
 		if ( isset( $block['attrs']['unitone']['fluidTypography'] ) ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
 			$attribute      = '-fluid-typography';
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -134,7 +134,7 @@ add_filter(
 		if ( isset( $block['attrs']['unitone']['halfLeading'] ) && '' !== $block['attrs']['unitone']['halfLeading'] ) {
 			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--half-leading:';
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
 				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['halfLeading'] ) );
 			}
@@ -150,7 +150,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -165,7 +165,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -180,7 +180,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -195,7 +195,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -215,7 +215,7 @@ add_filter(
 				? $block['attrs']['unitone']['divider']['color']
 				: false;
 
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
 				$p->set_attribute( 'style', trim( $style . $property . ( $color ? $color : $preset_color ) ) );
 			}
@@ -225,7 +225,7 @@ add_filter(
 		if ( isset( $block['attrs']['unitone']['divider']['style'] ) && '' !== $block['attrs']['unitone']['divider']['style'] ) {
 			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--divider-style:';
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
 				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['divider']['style'] ) );
 			}
@@ -235,7 +235,7 @@ add_filter(
 		if ( isset( $block['attrs']['unitone']['divider']['width'] ) && '' !== $block['attrs']['unitone']['divider']['width'] ) {
 			$style    = $p->get_attribute( 'style' ) ?? '';
 			$property = '--unitone--divider-width:';
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$style = $style ? $style . ';' : $style;
 				$p->set_attribute( 'style', trim( $style . $property . $block['attrs']['unitone']['divider']['width'] ) );
 			}
@@ -251,7 +251,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -266,7 +266,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -281,7 +281,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -296,7 +296,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -311,7 +311,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -326,7 +326,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -341,7 +341,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -356,7 +356,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -371,7 +371,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -386,7 +386,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -401,7 +401,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -416,7 +416,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -431,7 +431,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -446,7 +446,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -461,7 +461,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -476,7 +476,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -491,7 +491,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -506,7 +506,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -521,7 +521,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -536,7 +536,7 @@ add_filter(
 		}
 		if ( $attribute ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -551,7 +551,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -566,7 +566,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}
@@ -575,7 +575,7 @@ add_filter(
 		if ( isset( $block['attrs']['unitone']['textOrientation'] ) ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
 			$attribute      = '-text-orientation:' . $block['attrs']['unitone']['textOrientation'];
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -584,7 +584,7 @@ add_filter(
 		if ( isset( $block['attrs']['unitone']['mixBlendMode'] ) ) {
 			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
 			$attribute      = '-mix-blend-mode:' . $block['attrs']['unitone']['mixBlendMode'];
-			if ( false === strpos( $unitone_layout, $attribute ) ) {
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
 				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 			}
 		}
@@ -599,7 +599,7 @@ add_filter(
 		}
 		if ( $property ) {
 			$style = $p->get_attribute( 'style' );
-			if ( false === strpos( $style, $property ) ) {
+			if ( ! $style || false === strpos( $style, $property ) ) {
 				$p->set_attribute( 'style', trim( $style . ';' . $property, "; \n\r\t\v\x00" ) );
 			}
 		}

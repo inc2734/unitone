@@ -6,6 +6,23 @@
  */
 
 /**
+ * If the front page is not used, front-page.html should not be used.
+ */
+function unitone_hidden_front_page_template_on_blog( $templates ) {
+	$show_on_front = get_option( 'show_on_front' );
+	$page_on_front = get_option( 'page_on_front' );
+	if ( 'page' !== $show_on_front || ! $page_on_front ) {
+		foreach ( $templates as $index => $template ) {
+			if ( 'front-page' === $template->slug ) {
+				unset( $templates[ $index ] );
+			}
+		}
+	}
+	return $templates;
+}
+add_filter( 'get_block_templates', 'unitone_hidden_front_page_template_on_blog' );
+
+/**
  * Display deprecated parts at the frontend.
  * Note: Not displayed in the Site Editor.
  *

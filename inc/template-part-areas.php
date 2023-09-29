@@ -37,6 +37,13 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 				'area_tag'    => 'div',
 			),
 			array(
+				'area'        => 'unitone/front-page',
+				'label'       => __( 'Front Page', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => '',
+				'area_tag'    => 'div',
+			),
+			array(
 				'area'        => 'unitone/home',
 				'label'       => __( 'Blog Home', 'unitone' ),
 				'icon'        => 'layout',

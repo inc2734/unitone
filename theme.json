@@ -478,6 +478,20 @@
 			"postTypes": [
 				"false"
 			]
+		},
+		{
+			"name": "cart",
+			"title": "Cart",
+			"postTypes": [
+				"false"
+			]
+		},
+		{
+			"name": "checkout",
+			"title": "Checkout",
+			"postTypes": [
+				"false"
+			]
 		}
 	],
 	"templateParts": [
@@ -530,6 +544,11 @@
 			"name": "checkout",
 			"title": "Checkout",
 			"area": "unitone/checkout"
+		},
+		{
+			"name": "front-page",
+			"title": "Front Page",
+			"area": "unitone/front-page"
 		},
 		{
 			"name": "home",

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-27T07:12:50+00:00\n"
+"POT-Creation-Date: 2023-09-29T02:34:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: unitone\n"
@@ -132,7 +132,7 @@ msgstr ""
 
 #: inc/block-patterns.php:16
 #: inc/template-part-areas.php:27
-#: inc/template-part-areas.php:141
+#: inc/template-part-areas.php:148
 msgid "Pages"
 msgstr ""
 
@@ -165,7 +165,7 @@ msgid "Page Header (Wide) for 404"
 msgstr ""
 
 #: inc/block-patterns.php:86
-#: inc/template-part-areas.php:176
+#: inc/template-part-areas.php:183
 msgid "Page Header for 404"
 msgstr ""
 
@@ -190,7 +190,7 @@ msgid "Page Header (Image) for All Archives"
 msgstr ""
 
 #: inc/block-patterns.php:122
-#: inc/template-part-areas.php:218
+#: inc/template-part-areas.php:225
 msgid "Page Header for All Archives"
 msgstr ""
 
@@ -239,7 +239,7 @@ msgid "Page Header (Image) for bbPress"
 msgstr ""
 
 #: inc/block-patterns.php:194
-#: inc/template-part-areas.php:295
+#: inc/template-part-areas.php:302
 msgid "Page Header for bbPress"
 msgstr ""
 
@@ -252,171 +252,175 @@ msgid "Main Area (One Column) for Checkout"
 msgstr ""
 
 #: inc/block-patterns.php:212
-msgid "Main Area (One Column) for Blog Home"
+msgid "Main Area (Blank) for Front Page"
 msgstr ""
 
 #: inc/block-patterns.php:218
-msgid "Main Area (One Column / Page Header (Image)) for Blog Home"
+msgid "Main Area (One Column) for Blog Home"
 msgstr ""
 
 #: inc/block-patterns.php:224
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Blog Home"
+msgid "Main Area (One Column / Page Header (Image)) for Blog Home"
 msgstr ""
 
 #: inc/block-patterns.php:230
-msgid "Main Area (Right Sidebar) for Blog Home"
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Blog Home"
 msgstr ""
 
 #: inc/block-patterns.php:236
-msgid "Page Header (Image) for Blog Home"
+msgid "Main Area (Right Sidebar) for Blog Home"
 msgstr ""
 
 #: inc/block-patterns.php:242
-#: inc/template-part-areas.php:190
-msgid "Page Header for Blog Home"
+msgid "Page Header (Image) for Blog Home"
 msgstr ""
 
 #: inc/block-patterns.php:248
-msgid "Main Area (One Column) for Pages"
+#: inc/template-part-areas.php:197
+msgid "Page Header for Blog Home"
 msgstr ""
 
 #: inc/block-patterns.php:254
-msgid "Main Area (Blank) for Pages"
+msgid "Main Area (One Column) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:260
-msgid "Main Area (One Column / Page Header (Featured Image)) for Pages"
+msgid "Main Area (Blank) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:266
-msgid "Main Area (One Column / Page Header (Image)) for Pages"
+msgid "Main Area (One Column / Page Header (Featured Image)) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:272
-msgid "Main Area (One Column / Page Header (Slim)) for Pages"
+msgid "Main Area (One Column / Page Header (Image)) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:278
-msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
+msgid "Main Area (One Column / Page Header (Slim)) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:284
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Pages"
+msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:290
-msgid "Main Area (Right Sidebar) for Pages"
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:296
-#: inc/template-part-areas.php:148
-msgid "Page Header for Pages"
+msgid "Main Area (Right Sidebar) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:302
-msgid "Page Header (Featured Image) for Pages"
+#: inc/template-part-areas.php:155
+msgid "Page Header for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:308
-msgid "Page Header (Image) for Pages"
+msgid "Page Header (Featured Image) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:314
-msgid "Page Header (Slim) for Pages"
+msgid "Page Header (Image) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:320
-msgid "Main Area (One Column) for Search Results"
+msgid "Page Header (Slim) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:326
-msgid "Main Area (One Column / Page Header (Image)) for Search Results"
+msgid "Main Area (One Column) for Search Results"
 msgstr ""
 
 #: inc/block-patterns.php:332
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
+msgid "Main Area (One Column / Page Header (Image)) for Search Results"
 msgstr ""
 
 #: inc/block-patterns.php:338
-msgid "Main Area (Right Sidebar) for Search Results"
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
 msgstr ""
 
 #: inc/block-patterns.php:344
-#: inc/template-part-areas.php:232
-msgid "Page Header for Search Results"
+msgid "Main Area (Right Sidebar) for Search Results"
 msgstr ""
 
 #: inc/block-patterns.php:350
-msgid "Page Header (Image) for Search Results"
+#: inc/template-part-areas.php:239
+msgid "Page Header for Search Results"
 msgstr ""
 
 #: inc/block-patterns.php:356
-msgid "Main Area (One Column) for Single Posts"
+msgid "Page Header (Image) for Search Results"
 msgstr ""
 
 #: inc/block-patterns.php:362
-msgid "Main Area (Blank) for Single Posts"
+msgid "Main Area (One Column) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:368
-msgid "Main Area (One Column / Page Header (Featured Image)) for Single Posts"
+msgid "Main Area (Blank) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:374
-msgid "Main Area (Page Header (Image)) for Single Posts"
+msgid "Main Area (One Column / Page Header (Featured Image)) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:380
-msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts"
+msgid "Main Area (Page Header (Image)) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:386
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Posts"
+msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:392
-msgid "Main Area (Right Sidebar) for Single Posts"
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:398
-#: inc/template-part-areas.php:127
-msgid "Page Header for Single Posts"
+msgid "Main Area (Right Sidebar) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:404
-msgid "Page Header (Featured Image) for Single Posts"
+#: inc/template-part-areas.php:134
+msgid "Page Header for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:410
-msgid "Page Header (Image) for Single Posts"
+msgid "Page Header (Featured Image) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:416
-msgid "Page Header (Wide) for Single Posts"
+msgid "Page Header (Image) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:422
-msgid "Main Area (One Column) for Single Products"
+msgid "Page Header (Wide) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:428
-msgid "Main Area (One Column / Page Header (Image)) for Single Products"
+msgid "Main Area (One Column) for Single Products"
 msgstr ""
 
 #: inc/block-patterns.php:434
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
+msgid "Main Area (One Column / Page Header (Image)) for Single Products"
 msgstr ""
 
 #: inc/block-patterns.php:440
-msgid "Main Area (Right Sidebar) for Single Products"
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
 msgstr ""
 
 #: inc/block-patterns.php:446
-#: inc/template-part-areas.php:274
-msgid "Page Header for Single Products"
+msgid "Main Area (Right Sidebar) for Single Products"
 msgstr ""
 
 #: inc/block-patterns.php:452
+#: inc/template-part-areas.php:281
+msgid "Page Header for Single Products"
+msgstr ""
+
+#: inc/block-patterns.php:458
 msgid "Page Header (Image) for Single Products"
 msgstr ""
 
@@ -470,99 +474,103 @@ msgid "Vertical line"
 msgstr ""
 
 #: inc/template-part-areas.php:20
-#: inc/template-part-areas.php:120
+#: inc/template-part-areas.php:127
 msgid "Single Posts"
 msgstr ""
 
 #: inc/template-part-areas.php:34
-#: inc/template-part-areas.php:162
+#: inc/template-part-areas.php:169
 msgid "404"
 msgstr ""
 
 #: inc/template-part-areas.php:41
-#: inc/template-part-areas.php:183
-msgid "Blog Home"
+msgid "Front Page"
 msgstr ""
 
 #: inc/template-part-areas.php:48
-#: inc/template-part-areas.php:204
-msgid "All Archives"
+#: inc/template-part-areas.php:190
+msgid "Blog Home"
 msgstr ""
 
 #: inc/template-part-areas.php:55
-#: inc/template-part-areas.php:225
-msgid "Search Results"
+#: inc/template-part-areas.php:211
+msgid "All Archives"
 msgstr ""
 
 #: inc/template-part-areas.php:62
-#: inc/template-part-areas.php:246
-msgid "Product Archives"
+#: inc/template-part-areas.php:232
+msgid "Search Results"
 msgstr ""
 
 #: inc/template-part-areas.php:69
-#: inc/template-part-areas.php:267
-msgid "Single Products"
+#: inc/template-part-areas.php:253
+msgid "Product Archives"
 msgstr ""
 
 #: inc/template-part-areas.php:76
-#: inc/template-part-areas.php:288
-msgid "bbPress"
+#: inc/template-part-areas.php:274
+msgid "Single Products"
 msgstr ""
 
 #: inc/template-part-areas.php:83
-msgid "Cart"
+#: inc/template-part-areas.php:295
+msgid "bbPress"
 msgstr ""
 
 #: inc/template-part-areas.php:90
-msgid "Checkout"
+msgid "Cart"
 msgstr ""
 
 #: inc/template-part-areas.php:97
-#: inc/template-part-areas.php:309
+msgid "Checkout"
+msgstr ""
+
+#: inc/template-part-areas.php:104
+#: inc/template-part-areas.php:316
 msgid "Comments"
 msgstr ""
 
-#: inc/template-part-areas.php:134
+#: inc/template-part-areas.php:141
 msgid "Main Area for Single Posts"
 msgstr ""
 
-#: inc/template-part-areas.php:155
+#: inc/template-part-areas.php:162
 msgid "Main Area for Pages"
 msgstr ""
 
-#: inc/template-part-areas.php:169
+#: inc/template-part-areas.php:176
 msgid "Main Area for 404"
 msgstr ""
 
-#: inc/template-part-areas.php:197
+#: inc/template-part-areas.php:204
 msgid "Main Area for Blog Home"
 msgstr ""
 
-#: inc/template-part-areas.php:211
+#: inc/template-part-areas.php:218
 msgid "Main Area for All Archives"
 msgstr ""
 
-#: inc/template-part-areas.php:239
+#: inc/template-part-areas.php:246
 msgid "Main Area of Search Results"
 msgstr ""
 
-#: inc/template-part-areas.php:253
+#: inc/template-part-areas.php:260
 msgid "Main Area for Product Archives"
 msgstr ""
 
-#: inc/template-part-areas.php:260
+#: inc/template-part-areas.php:267
 msgid "Page Header for Product archives"
 msgstr ""
 
-#: inc/template-part-areas.php:281
+#: inc/template-part-areas.php:288
 msgid "Main Area for Single Products"
 msgstr ""
 
-#: inc/template-part-areas.php:302
+#: inc/template-part-areas.php:309
 msgid "Main Area for bbPress"
 msgstr ""
 
-#: inc/template-part-areas.php:316
+#: inc/template-part-areas.php:323
 msgid "Footer breadcrumbs"
 msgstr ""
 
@@ -937,6 +945,16 @@ msgstr ""
 #: patterns/template-checkout-one-column.php
 msgctxt "Pattern title"
 msgid "Checkout: One Column"
+msgstr ""
+
+#: patterns/template-front-page-header-footer.php
+msgctxt "Pattern title"
+msgid "Front Page: Only Header and Footer"
+msgstr ""
+
+#: patterns/template-front-page-left-header.php
+msgctxt "Pattern title"
+msgid "Front Page: Left Header"
 msgstr ""
 
 #: patterns/template-home-left-header-page-header-image.php
@@ -2688,6 +2706,16 @@ msgid "for bbPress"
 msgstr ""
 
 #: theme.json
+msgctxt "Custom template name"
+msgid "Cart"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Checkout"
+msgstr ""
+
+#: theme.json
 msgctxt "Template part name"
 msgid "Header"
 msgstr ""
@@ -2735,6 +2763,11 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "Checkout"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Front Page"
 msgstr ""
 
 #: theme.json

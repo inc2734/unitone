@@ -209,6 +209,12 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/template/checkout/main/one-column.php' ),
 		),
 		array(
+			'title'    => __( 'Main Area (Blank) for Front Page', 'unitone' ),
+			'slug'     => 'unitone/template/front-page/main/blank',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/front-page/main/blank.php' ),
+		),
+		array(
 			'title'    => __( 'Main Area (One Column) for Blog Home', 'unitone' ),
 			'slug'     => 'unitone/template/home/main/one-column',
 			'inserter' => false,

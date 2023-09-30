@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-09-29T02:34:11+00:00\n"
-"PO-Revision-Date: 2023-09-29 11:36+0900\n"
+"POT-Creation-Date: 2023-09-30T05:57:33+00:00\n"
+"PO-Revision-Date: 2023-09-30 14:58+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1354,10 +1354,6 @@ msgid "Background image / Left title / Subtitle"
 msgstr "背景画像 / 左寄せのタイトル / サブタイトル"
 
 #: dist/blocks/layers/index.js:25
-msgid "Select layered block"
-msgstr "レイヤー化されたブロックを選択"
-
-#: dist/blocks/layers/index.js:25
 msgid "Use background image/video (Cover)"
 msgstr "背景画像/動画を使用（Cover）"
 
@@ -1830,6 +1826,18 @@ msgstr "下"
 #: dist/js/editor/editor.js:5
 msgid "The stack level"
 msgstr "重ね合わせレベル"
+
+#: dist/js/editor/editor.js:5
+msgid "Currently Selected"
+msgstr "現在選択中"
+
+#: dist/js/editor/editor.js:5
+msgid "Select a block of ancestors"
+msgstr "先祖ブロックを選択する"
+
+#: dist/js/editor/editor.js:5
+msgid "Select a child block"
+msgstr "子ブロックを選択"
 
 #. translators: %s: template part title.
 #: dist/js/editor/editor.js:6
@@ -2676,6 +2684,10 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#, fuzzy
+#~ msgid "Current"
+#~ msgstr "現在のページの位置を示します。"
 
 #~ msgid "No padding"
 #~ msgstr "パディング無し"

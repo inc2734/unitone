@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-29T02:34:11+00:00\n"
+"POT-Creation-Date: 2023-09-30T05:57:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: unitone\n"
@@ -1437,10 +1437,6 @@ msgid "Background image / Left title / Subtitle"
 msgstr ""
 
 #: dist/blocks/layers/index.js:25
-msgid "Select layered block"
-msgstr ""
-
-#: dist/blocks/layers/index.js:25
 msgid "Use background image/video (Cover)"
 msgstr ""
 
@@ -1897,6 +1893,18 @@ msgstr ""
 
 #: dist/js/editor/editor.js:5
 msgid "The stack level"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Currently Selected"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Select a block of ancestors"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Select a child block"
 msgstr ""
 
 #. translators: %s: template part title.

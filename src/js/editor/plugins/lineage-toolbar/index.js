@@ -18,48 +18,67 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const { selectBlock } = useDispatch( blockEditorStore );
 
-		const { innerBlocks, parents } = useSelect(
+		const { innerBlocks, parents, current } = useSelect(
 			( select ) => {
 				const { getBlock, getBlockParents } =
 					select( blockEditorStore );
 				const { getBlockType } = select( blocksStore );
-
-				const currentBlockType = getBlockType( props.name );
+				const getVariationTitle = ( blockType, thisAttributes ) =>
+					blockType?.variations.filter(
+						( variation ) =>
+							variation?.isActive &&
+							variation?.isActive(
+								thisAttributes,
+								variation.attributes
+							)
+					)?.[ 0 ]?.title;
 
 				return {
 					innerBlocks: getBlock( clientId )?.innerBlocks.map(
 						( innerBlock ) => {
 							const blockType = getBlockType( innerBlock.name );
+							const variationTitle = getVariationTitle(
+								blockType,
+								innerBlock.attributes
+							);
 							return {
-								title: blockType.title,
+								title: variationTitle || blockType.title,
 								icon: blockType.icon,
 								clientId: innerBlock.clientId,
 							};
 						}
 					),
-					parents: [
-						...getBlockParents( clientId ).map(
-							( parentClientId ) => {
-								const parentBlock = getBlock( parentClientId );
-								const parentBlockType = getBlockType(
-									parentBlock.name
-								);
-								return {
-									title: parentBlockType.title,
-									icon: parentBlockType.icon,
-									clientId: parentClientId,
-								};
-							}
-						),
-						{
-							title: `${ currentBlockType.title } (${ __(
-								'Currently Selected',
-								'unitone'
-							) })`,
+					parents: getBlockParents( clientId ).map(
+						( parentClientId ) => {
+							const parentBlock = getBlock( parentClientId );
+							const parentBlockType = getBlockType(
+								parentBlock.name
+							);
+							const variationTitle = getVariationTitle(
+								parentBlockType,
+								parentBlock.attributes
+							);
+							return {
+								title: variationTitle || parentBlockType.title,
+								icon: parentBlockType.icon,
+								clientId: parentClientId,
+							};
+						}
+					),
+					current: ( () => {
+						const currentBlockType = getBlockType( props.name );
+						const variationTitle = getVariationTitle(
+							currentBlockType,
+							props.attributes
+						);
+						return {
+							title: `${
+								variationTitle || currentBlockType.title
+							} (${ __( 'Currently Selected', 'unitone' ) })`,
 							icon: currentBlockType.icon,
 							clientId,
-						},
-					],
+						};
+					} )(),
 				};
 			},
 			[ clientId ]
@@ -75,7 +94,10 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 								'Select a block of ancestors',
 								'unitone'
 							) }
-							controls={ parents.map( ( innerBlock ) => {
+							controls={ ( 0 < parents.length
+								? [ ...parents, current ]
+								: []
+							).map( ( innerBlock ) => {
 								return {
 									title: innerBlock.title,
 									icon: innerBlock.icon.src,

@@ -9,9 +9,14 @@
  * If the front page is not used, front-page.html should not be used.
  */
 function unitone_hidden_front_page_template_on_blog( $templates ) {
+	if ( ! is_front_page() || ! is_page() ) {
+		return $templates;
+	}
+
 	$show_on_front = get_option( 'show_on_front' );
 	$page_on_front = get_option( 'page_on_front' );
-	if ( 'page' !== $show_on_front || ! $page_on_front ) {
+	$page_template = get_post_meta( get_the_ID(), '_wp_page_template', true );
+	if ( 'page' !== $show_on_front || ! $page_on_front || $page_template ) {
 		foreach ( $templates as $index => $template ) {
 			if ( 'front-page' === $template->slug ) {
 				unset( $templates[ $index ] );

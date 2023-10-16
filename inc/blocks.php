@@ -668,7 +668,9 @@ add_filter(
 		$w     = $attrs['width'] ?? '';
 		$h     = $attrs['height'] ?? '';
 
-		if ( $w && $h ) {
+		if ( $w && preg_match( '@^\d+@ms', $w ) && $h && preg_match( '@^\d+@ms', $h ) ) {
+			$w             = str_replace( 'px', '', $w );
+			$h             = str_replace( 'px', '', $h );
 			$size_style    = "width:{$w}px;height:{$h}px";
 			$ratio         = "{$w}/{$h}";
 			$block_content = str_replace( $size_style, "aspect-ratio:{$ratio}", $block_content );

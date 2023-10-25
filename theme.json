@@ -323,6 +323,13 @@
 			]
 		},
 		{
+			"name": "custom/page/left-header-header-footer",
+			"title": "Pages: Left Header / Only Header and Footer",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
 			"name": "custom/page/left-header-page-header-featured",
 			"title": "Pages: Left Header / Page Header (Featured Image)",
 			"postTypes": [
@@ -400,6 +407,13 @@
 			]
 		},
 		{
+			"name": "custom/single/left-header-header-footer",
+			"title": "Single Posts: Left Header / Only Header and Footer",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
 			"name": "custom/single/left-header-page-header-featured",
 			"title": "Single Posts: Left Header / Page Header (Featured Image)",
 			"postTypes": [
@@ -444,6 +458,13 @@
 		{
 			"name": "custom/single-product/left-header",
 			"title": "Single Products: Left Header",
+			"postTypes": [
+				"product"
+			]
+		},
+		{
+			"name": "custom/single-product/left-header-header-footer",
+			"title": "Single Products: Left Header / Only Header and Footer",
 			"postTypes": [
 				"product"
 			]

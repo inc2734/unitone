@@ -449,12 +449,6 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/template/single-product/main/right-sidebar.php' ),
 		),
 		array(
-			'title'    => __( 'Page Header for Single Products', 'unitone' ),
-			'slug'     => 'unitone/template/single-product/page-header/default',
-			'inserter' => false,
-			'path'     => get_theme_file_path( 'patterns/private/template/single-product/page-header/default.php' ),
-		),
-		array(
 			'title'    => __( 'Page Header (Image) for Single Products', 'unitone' ),
 			'slug'     => 'unitone/template/single-product/page-header/image',
 			'inserter' => false,

@@ -4,8 +4,6 @@
 	<div data-unitone-layout="gutters">
 		<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
 		<div data-unitone-layout="stack">
-			<!-- wp:pattern {"slug":"unitone/template/single-product/page-header/default"} /-->
-
 			<!-- wp:unitone/container -->
 			<div data-unitone-layout="container">
 				<!-- wp:unitone/with-sidebar {"sidebarWidth": "300px","contentMinWidth":"600px","unitone":{"gap":3}} -->

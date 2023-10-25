@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-10-25T07:29:15+00:00\n"
-"PO-Revision-Date: 2023-10-25 16:43+0900\n"
+"POT-Creation-Date: 2023-10-25T08:05:31+00:00\n"
+"PO-Revision-Date: 2023-10-25 17:15+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -398,11 +398,7 @@ msgstr ""
 msgid "Main Area (Right Sidebar) for Single Products"
 msgstr "個別商品のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:452 inc/template-part-areas.php:281
-msgid "Page Header for Single Products"
-msgstr "個別投稿のページヘッダー"
-
-#: inc/block-patterns.php:458
+#: inc/block-patterns.php:452
 msgid "Page Header (Image) for Single Products"
 msgstr "個別商品のページヘッダー（画像）"
 
@@ -532,6 +528,10 @@ msgstr "商品アーカイブのメインエリア"
 #: inc/template-part-areas.php:267
 msgid "Page Header for Product archives"
 msgstr "商品アーカイブのページヘッダー"
+
+#: inc/template-part-areas.php:281
+msgid "Page Header for Single Products"
+msgstr "個別投稿のページヘッダー"
 
 #: inc/template-part-areas.php:288
 msgid "Main Area for Single Products"
@@ -911,6 +911,11 @@ msgctxt "Pattern title"
 msgid "Pages: Only Header and Footer"
 msgstr "固定ページ：ヘッダー・フッター"
 
+#: patterns/template-page-left-header-header-footer.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header / Only Header and Footer"
+msgstr "固定ページ：左ヘッダー / ヘッダー・フッター"
+
 #: patterns/template-page-left-header-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Pages: Left Header / Page Header (Featured Image)"
@@ -996,6 +1001,11 @@ msgctxt "Pattern title"
 msgid "Single Posts: Only Header and Footer"
 msgstr "個別投稿：ヘッダー・フッター"
 
+#: patterns/template-single-left-header-header-footer.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header / Only Header and Footer"
+msgstr "個別投稿：左ヘッダー / ヘッダー・フッター"
+
 #: patterns/template-single-left-header-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header / Page Header (Featured Image)"
@@ -1025,6 +1035,11 @@ msgstr "個別投稿：1カラム / ページヘッダー（画像）"
 msgctxt "Pattern title"
 msgid "Single Posts: One Column"
 msgstr "個別投稿：1カラム"
+
+#: patterns/template-single-product-left-header-header-footer.php
+msgctxt "Pattern title"
+msgid "Single Products: Left Header / Only Header and Footer"
+msgstr "個別商品：左ヘッダー / ヘッダー・フッター"
 
 #: patterns/template-single-product-left-header-page-header-image.php
 msgctxt "Pattern title"
@@ -2994,6 +3009,11 @@ msgstr "固定ページ：左ヘッダー"
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Pages: Left Header / Only Header and Footer"
+msgstr "固定ページ：左ヘッダー / ヘッダー・フッター"
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Pages: Left Header / Page Header (Featured Image)"
 msgstr "固定ページ：左ヘッダー / ページヘッダー（アイキャッチ画像）"
 
@@ -3049,6 +3069,11 @@ msgstr "個別投稿：左ヘッダー"
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Single Posts: Left Header / Only Header and Footer"
+msgstr "個別投稿：左ヘッダー / ヘッダー・フッター"
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Single Posts: Left Header / Page Header (Featured Image)"
 msgstr "個別投稿：左ヘッダー / ページヘッダー（アイキャッチ画像）"
 
@@ -3081,6 +3106,11 @@ msgstr "個別商品：右サイドバー / ページヘッダー（画像）"
 msgctxt "Custom template name"
 msgid "Single Products: Left Header"
 msgstr "個別商品：左ヘッダー"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Products: Left Header / Only Header and Footer"
+msgstr "個別商品：左ヘッダー / ヘッダー・フッター"
 
 #: theme.json
 msgctxt "Custom template name"

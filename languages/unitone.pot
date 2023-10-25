@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-10-25T07:29:15+00:00\n"
+"POT-Creation-Date: 2023-10-25T08:05:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: unitone\n"
@@ -418,11 +418,6 @@ msgid "Main Area (Right Sidebar) for Single Products"
 msgstr ""
 
 #: inc/block-patterns.php:452
-#: inc/template-part-areas.php:281
-msgid "Page Header for Single Products"
-msgstr ""
-
-#: inc/block-patterns.php:458
 msgid "Page Header (Image) for Single Products"
 msgstr ""
 
@@ -565,6 +560,10 @@ msgstr ""
 
 #: inc/template-part-areas.php:267
 msgid "Page Header for Product archives"
+msgstr ""
+
+#: inc/template-part-areas.php:281
+msgid "Page Header for Single Products"
 msgstr ""
 
 #: inc/template-part-areas.php:288
@@ -971,6 +970,11 @@ msgctxt "Pattern title"
 msgid "Pages: Only Header and Footer"
 msgstr ""
 
+#: patterns/template-page-left-header-header-footer.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header / Only Header and Footer"
+msgstr ""
+
 #: patterns/template-page-left-header-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Pages: Left Header / Page Header (Featured Image)"
@@ -1056,6 +1060,11 @@ msgctxt "Pattern title"
 msgid "Single Posts: Only Header and Footer"
 msgstr ""
 
+#: patterns/template-single-left-header-header-footer.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header / Only Header and Footer"
+msgstr ""
+
 #: patterns/template-single-left-header-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header / Page Header (Featured Image)"
@@ -1084,6 +1093,11 @@ msgstr ""
 #: patterns/template-single-one-column.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column"
+msgstr ""
+
+#: patterns/template-single-product-left-header-header-footer.php
+msgctxt "Pattern title"
+msgid "Single Products: Left Header / Only Header and Footer"
 msgstr ""
 
 #: patterns/template-single-product-left-header-page-header-image.php
@@ -3412,6 +3426,11 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Pages: Left Header / Only Header and Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Pages: Left Header / Page Header (Featured Image)"
 msgstr ""
 
@@ -3467,6 +3486,11 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Single Posts: Left Header / Only Header and Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Single Posts: Left Header / Page Header (Featured Image)"
 msgstr ""
 
@@ -3498,6 +3522,11 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Products: Left Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Products: Left Header / Only Header and Footer"
 msgstr ""
 
 #: theme.json

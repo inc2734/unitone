@@ -4,8 +4,6 @@
 	<div data-unitone-layout="gutters">
 		<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
 		<div data-unitone-layout="stack">
-			<!-- wp:pattern {"slug":"unitone/template/single-product/page-header/default"} /-->
-
 			<!-- wp:unitone/text {"unitone":{"maxWidth":"var(--unitone--container-max-width)","gutters":"root"}} -->
 			<div data-unitone-layout="text">
 				<!-- wp:woocommerce/legacy-template {"template":"single-product"} /-->

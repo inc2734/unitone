@@ -5,4 +5,4 @@
  * @license GPL-2.0+
  */
 
-new Unitone\App\Controller\Manager();
+new Unitone\App\Controller\Manager\Manager();

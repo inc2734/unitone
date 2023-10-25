@@ -2,11 +2,6 @@
 
 @include meta.load-css("../../../node_modules/@inc2734/unitone-css/src/foundation/foundation");
 
-:root {
-	--unitone--container-max-width: 1334px;
-	--unitone--measure: 46rem;
-}
-
 :where(*) {
 	position: relative;
 }

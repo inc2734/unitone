@@ -1,0 +1,106 @@
+@use '../../../../../node_modules/@inc2734/unitone-css/src/settings/settings';
+@use '../../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/layout-primitives';
+@use '../../../../../node_modules/@inc2734/unitone-css/src/helper/helper';
+
+#wpadminbar,
+#adminmenumain,
+#wpfooter {
+	display: none;
+}
+
+.edit-site-layout__canvas {
+	margin-top: 60px;
+
+	@media (min-width: 782px) {
+		margin-top: 0;
+	}
+}
+
+.edit-site-layout__sidebar-region {
+	display: none;
+
+	@media (min-width: 782px) {
+		display: block;
+	}
+}
+
+.unitone-settings {
+	background-color: #f7f7f7;
+	height: 100%;
+	overflow: auto;
+	padding: 16px;
+
+	@media (min-width: 782px) {
+		padding: 32px;
+	}
+}
+
+.unitone-settings-preview {
+	display: flex;
+	flex-direction: column;
+	gap: var(--unitone--s-1);
+	text-align: center;
+
+	&__frame {
+		height: 200px;
+		overflow: auto;
+		border: 1px solid #ccc;
+
+		> img {
+			width: 100%;
+		}
+	}
+}
+
+.unitone-settings-or {
+	display: flex;
+	gap: 1em;
+	align-items: center;
+
+	&::before,
+	&::after {
+		content: '';
+		display: block;
+		height: 1px;
+		flex: 1;
+		background-color: black;
+	}
+}
+
+.unitone-settings-colors-settigs-dropdown {
+	border: 1px solid var(--unitone--color--light-gray);
+
+	> :not(:first-child) {
+		border-top: 1px solid var(--unitone--color--light-gray);
+	}
+
+	.components-popover__content {
+		overflow: visible !important;
+	}
+
+	.components-circular-option-picker__option-wrapper:hover {
+		z-index: 1000000;
+	}
+}
+
+.components-font-size-picker {
+	.components-custom-select-control__menu {
+		> :first-child {
+			display: none;
+		}
+	}
+}
+
+.unitone-settings-colors-settigs-preview {
+	a:where(:not(.wp-element-button)) {
+		text-decoration: underline;
+	}
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-top: 0;
+	}
+}

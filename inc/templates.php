@@ -9,7 +9,7 @@
  * If the front page is not used, front-page.html should not be used.
  */
 function unitone_hidden_front_page_template_on_blog( $templates ) {
-	if ( ! is_front_page() || ! is_page() ) {
+	if ( ! is_front_page() && ! is_home() ) {
 		return $templates;
 	}
 

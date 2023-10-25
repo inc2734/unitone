@@ -24,14 +24,24 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 					select( blockEditorStore );
 				const { getBlockType } = select( blocksStore );
 				const getVariationTitle = ( blockType, thisAttributes ) =>
-					blockType?.variations.filter(
-						( variation ) =>
-							variation?.isActive &&
-							variation?.isActive(
-								thisAttributes,
-								variation.attributes
-							)
-					)?.[ 0 ]?.title;
+					blockType?.variations.filter( ( variation ) => {
+						switch ( typeof variation?.isActive ) {
+							case 'object':
+								return variation.isActive.every(
+									( targetAttribute ) =>
+										thisAttributes?.[ targetAttribute ] ===
+										variation.attributes?.[
+											targetAttribute
+										]
+								);
+							case 'function':
+								return variation.isActive(
+									thisAttributes,
+									variation.attributes
+								);
+						}
+						return false;
+					} )?.[ 0 ]?.title;
 
 				return {
 					innerBlocks: getBlock( clientId )?.innerBlocks.map(

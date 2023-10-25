@@ -20,27 +20,32 @@
 /**
  * Common to all block link block styles.
  */
+:where(.wp-block-query.is-style-block-link :where(.wp-block-post, .block-editor-block-preview__live-content)),
 :where(.wp-block-query.is-style-block-link-underline :where(.wp-block-post, .block-editor-block-preview__live-content)),
 :where(.wp-block-query.is-style-block-link-bordered :where(.wp-block-post, .block-editor-block-preview__live-content)),
 :where(.wp-block-query.is-style-block-link-stripe :where(.wp-block-post, .block-editor-block-preview__live-content)) {
 	position: relative;
 }
+:where(.wp-block-query.is-style-block-link :where(.wp-block-post, .block-editor-block-preview__live-content) *),
 :where(.wp-block-query.is-style-block-link-underline :where(.wp-block-post, .block-editor-block-preview__live-content) *),
 :where(.wp-block-query.is-style-block-link-bordered :where(.wp-block-post, .block-editor-block-preview__live-content) *),
 :where(.wp-block-query.is-style-block-link-stripe :where(.wp-block-post, .block-editor-block-preview__live-content) *) {
 	position: static;
 }
+:where(.wp-block-query.is-style-block-link :where(.wp-block-post, .block-editor-block-preview__live-content) a),
 :where(.wp-block-query.is-style-block-link-underline :where(.wp-block-post, .block-editor-block-preview__live-content) a),
 :where(.wp-block-query.is-style-block-link-bordered :where(.wp-block-post, .block-editor-block-preview__live-content) a),
 :where(.wp-block-query.is-style-block-link-stripe :where(.wp-block-post, .block-editor-block-preview__live-content) a) {
 	position: relative;
 }
+:where(.wp-block-query.is-style-block-link .wp-block-post-title a),
 :where(.wp-block-query.is-style-block-link-underline .wp-block-post-title a),
 :where(.wp-block-query.is-style-block-link-bordered .wp-block-post-title a),
 :where(.wp-block-query.is-style-block-link-stripe .wp-block-post-title a) {
 	position: static;
 	z-index: 0;
 }
+:where(.wp-block-query.is-style-block-link .wp-block-post-title) a::after,
 :where(.wp-block-query.is-style-block-link-underline .wp-block-post-title) a::after,
 :where(.wp-block-query.is-style-block-link-bordered .wp-block-post-title) a::after,
 :where(.wp-block-query.is-style-block-link-stripe .wp-block-post-title) a::after {

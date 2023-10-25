@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-10-25T08:05:31+00:00\n"
-"PO-Revision-Date: 2023-10-25 17:15+0900\n"
+"POT-Creation-Date: 2023-10-25T10:26:37+00:00\n"
+"PO-Revision-Date: 2023-10-25 19:27+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Theme Name of the theme
 #: inc/block-categories.php:18 inc/block-categories.php:29
 #: inc/block-categories.php:40 inc/block-categories.php:51
-#: inc/block-styles.php:85 dist/js/editor/editor.js:4996
+#: inc/block-styles.php:93 dist/js/editor/editor.js:4996
 #: dist/js/editor/editor.js:5564
 msgid "unitone"
 msgstr "unitone"
@@ -410,7 +410,7 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:29 inc/block-styles.php:101
+#: inc/block-styles.php:29 inc/block-styles.php:109
 #: dist/js/editor/editor.js:1332 dist/js/editor/editor.js:1308
 msgid "Underline"
 msgstr "アンダーライン"
@@ -426,26 +426,30 @@ msgid "Stripe"
 msgstr "ストライプ"
 
 #: inc/block-styles.php:53
+msgid "Block link"
+msgstr "ブロックリンク"
+
+#: inc/block-styles.php:61
 msgid "Block link (Underline)"
 msgstr "ブロックリンク（アンダーライン）"
 
-#: inc/block-styles.php:61 inc/block-styles.php:77
+#: inc/block-styles.php:69 inc/block-styles.php:85
 msgid "Block link (Bordered)"
 msgstr "ブロックリンク（ボーダー）"
 
-#: inc/block-styles.php:69
+#: inc/block-styles.php:77
 msgid "Block link (Stripe)"
 msgstr "ブロックリンク（ストライプ）"
 
-#: inc/block-styles.php:93
+#: inc/block-styles.php:101
 msgid "Cover"
 msgstr "カバー"
 
-#: inc/block-styles.php:109
+#: inc/block-styles.php:117
 msgid "Vertical fill"
 msgstr "縦塗りつぶし"
 
-#: inc/block-styles.php:117
+#: inc/block-styles.php:125
 msgid "Vertical line"
 msgstr "縦線"
 

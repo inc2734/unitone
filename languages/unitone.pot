@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-10-25T08:05:31+00:00\n"
+"POT-Creation-Date: 2023-10-25T10:26:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: unitone\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: inc/block-categories.php:29
 #: inc/block-categories.php:40
 #: inc/block-categories.php:51
-#: inc/block-styles.php:85
+#: inc/block-styles.php:93
 #: dist/js/editor/editor.js:4996
 #: dist/js/editor/editor.js:5564
 msgid "unitone"
@@ -430,7 +430,7 @@ msgid "Outline"
 msgstr ""
 
 #: inc/block-styles.php:29
-#: inc/block-styles.php:101
+#: inc/block-styles.php:109
 #: dist/js/editor/editor.js:1332
 #: dist/js/editor/editor.js:1308
 msgid "Underline"
@@ -449,27 +449,31 @@ msgid "Stripe"
 msgstr ""
 
 #: inc/block-styles.php:53
-msgid "Block link (Underline)"
+msgid "Block link"
 msgstr ""
 
 #: inc/block-styles.php:61
-#: inc/block-styles.php:77
-msgid "Block link (Bordered)"
+msgid "Block link (Underline)"
 msgstr ""
 
 #: inc/block-styles.php:69
+#: inc/block-styles.php:85
+msgid "Block link (Bordered)"
+msgstr ""
+
+#: inc/block-styles.php:77
 msgid "Block link (Stripe)"
 msgstr ""
 
-#: inc/block-styles.php:93
+#: inc/block-styles.php:101
 msgid "Cover"
 msgstr ""
 
-#: inc/block-styles.php:109
+#: inc/block-styles.php:117
 msgid "Vertical fill"
 msgstr ""
 
-#: inc/block-styles.php:117
+#: inc/block-styles.php:125
 msgid "Vertical line"
 msgstr ""
 

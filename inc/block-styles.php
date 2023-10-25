@@ -49,6 +49,14 @@ function unitone_register_block_styles() {
 	register_block_style(
 		'core/query',
 		array(
+			'name'  => 'block-link',
+			'label' => __( 'Block link', 'unitone' ),
+		)
+	);
+
+	register_block_style(
+		'core/query',
+		array(
 			'name'  => 'block-link-underline',
 			'label' => __( 'Block link (Underline)', 'unitone' ),
 		)

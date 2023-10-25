@@ -33,6 +33,12 @@
 	}
 }
 
+.wp-block-query.is-layout-constrained > .wp-block-post-template,
+.wp-block-post-template.is-layout-constrained > .wp-block-post {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
+
 .wp-block-post-template:not(.is-flex-container),
 .wp-block-query-loop:not(.is-flex-container) {
 	display: grid;

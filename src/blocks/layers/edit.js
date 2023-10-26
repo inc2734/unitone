@@ -29,7 +29,7 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { name, attributes, setAttributes, clientId } ) {
-	const { cover, fill, blur, portrait } = attributes;
+	const { cover, fill, blur, portrait, columns, rows } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -62,6 +62,14 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 	const blockProps = useBlockProps( {
 		style: {
 			'--unitone--blur': !! blur ? `${ blur }px` : undefined,
+			'--unitone--columns':
+				parseInt( columns ) !== metadata.attributes.columns.default
+					? String( columns )
+					: undefined,
+			'--unitone--rows':
+				parseInt( rows ) !== metadata.attributes.rows.default
+					? String( rows )
+					: undefined,
 		},
 	} );
 	blockProps[ 'data-unitone-layout' ] = classnames(
@@ -242,6 +250,64 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							onChange={ ( newAttribute ) => {
 								setAttributes( { portrait: newAttribute } );
 							} }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							columns !== metadata.attributes.columns.default
+						}
+						isShownByDefault
+						label={ __( 'Columns count', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								columns: metadata.attributes.columns.default,
+							} )
+						}
+					>
+						<RangeControl
+							label={ __( 'Columns count', 'unitone' ) }
+							value={ parseInt( columns ) }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									columns: !! newAttribute
+										? parseInt( newAttribute )
+										: undefined,
+								} );
+							} }
+							initialPosition={
+								metadata.attributes.columns.default
+							}
+							min={ 1 }
+							max={ 24 }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							rows !== metadata.attributes.rows.default
+						}
+						isShownByDefault
+						label={ __( 'Rows count', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								rows: metadata.attributes.rows.default,
+							} )
+						}
+					>
+						<RangeControl
+							label={ __( 'Rows count', 'unitone' ) }
+							value={ parseInt( rows ) }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									rows: !! newAttribute
+										? parseInt( newAttribute )
+										: undefined,
+								} );
+							} }
+							initialPosition={ metadata.attributes.rows.default }
+							min={ 1 }
+							max={ 24 }
 						/>
 					</ToolsPanelItem>
 				</ToolsPanel>

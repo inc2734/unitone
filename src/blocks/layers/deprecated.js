@@ -15,6 +15,39 @@ export default [
 		},
 
 		save( { attributes } ) {
+			const { cover, fill, blur, portrait } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							style: {
+								'--unitone--blur': !! blur
+									? `${ blur }px`
+									: undefined,
+							},
+							'data-unitone-layout': classnames( 'layers', {
+								'-cover': cover,
+								'-fill': fill,
+								'-blur': !! blur,
+								'-portrait': portrait,
+							} ),
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
 			const { cover } = attributes;
 
 			return (

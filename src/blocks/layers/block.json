@@ -22,6 +22,14 @@
 			"type": "boolean",
 			"default": true
 		},
+		"columns": {
+			"type": "number",
+			"default": 12
+		},
+		"rows": {
+			"type": "number",
+			"default": 7
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

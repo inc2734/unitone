@@ -176,6 +176,16 @@
 					"size": "var(--unitone--s5)"
 				}
 			]
+		},
+		"blocks": {
+			"core/post-template": {
+				"layout": {
+					"allowEditing": false
+				},
+				"spacing": {
+					"blockGap": false
+				}
+			}
 		}
 	},
 	"styles": {

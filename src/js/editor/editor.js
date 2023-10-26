@@ -1,6 +1,7 @@
 import './hooks/button';
 import './hooks/table';
 import './hooks/embed';
+import './hooks/post-template';
 import './hooks/style';
 
 import './plugins/lineage-toolbar/index';

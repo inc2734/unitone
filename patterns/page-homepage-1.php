@@ -7,8 +7,7 @@
  * Post Types: page
  */
 ?>
-
-<!-- wp:unitone/layers {"cover":true,"lock":{"move":false,"remove":false},"align":"full","unitone":{"minHeight":"max(100vh - var(--wp-admin--admin-bar--height, 0px), 675px)"}} -->
+<!-- wp:unitone/layers {"cover":true,"lock":{"move":false,"remove":false},"align":"full","unitone":{"minHeight":"max(100vmin - var(--wp-admin--admin-bar--height, 0px), 675px)"}} -->
 <div data-unitone-layout="layers -cover -portrait" class="alignfull">
 	<!-- wp:image {"id":1,"width":"1920px","height":"1280px","lock":{"move":false,"remove":false}} -->
 	<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/smartphone-mobile-laptop36.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>

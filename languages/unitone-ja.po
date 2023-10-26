@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-10-26T06:16:50+00:00\n"
-"PO-Revision-Date: 2023-10-26 15:17+0900\n"
+"POT-Creation-Date: 2023-10-26T06:24:42+00:00\n"
+"PO-Revision-Date: 2023-10-26 15:25+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -37,10 +37,10 @@ msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
 #: App/Controller/Manager/Manager.php:67 App/Controller/Manager/Manager.php:68
-#: App/Controller/Manager/dist/js/app.js:3346
-#: App/Controller/Manager/dist/js/app.js:3433
-#: App/Controller/Manager/dist/js/app.js:3116
-#: App/Controller/Manager/dist/js/app.js:3246
+#: App/Controller/Manager/dist/js/app.js:3366
+#: App/Controller/Manager/dist/js/app.js:3453
+#: App/Controller/Manager/dist/js/app.js:3153
+#: App/Controller/Manager/dist/js/app.js:3283
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
@@ -77,8 +77,8 @@ msgstr "さらに詳しく"
 msgid "Primary"
 msgstr ""
 
-#: inc/block-categories.php:21 App/Controller/Manager/dist/js/app.js:2827
-#: dist/js/editor/editor.js:3838 App/Controller/Manager/dist/js/app.js:2426
+#: inc/block-categories.php:21 App/Controller/Manager/dist/js/app.js:2847
+#: dist/js/editor/editor.js:3838 App/Controller/Manager/dist/js/app.js:2463
 #: dist/js/editor/editor.js:4067
 msgid "Layout"
 msgstr "レイアウト"
@@ -1193,28 +1193,28 @@ msgid "Link Color"
 msgstr "リンク色"
 
 #: App/Controller/Manager/dist/js/app.js:2443
-#: App/Controller/Manager/dist/js/app.js:2751
-#: App/Controller/Manager/dist/js/app.js:2867
-#: App/Controller/Manager/dist/js/app.js:2996
-#: App/Controller/Manager/dist/js/app.js:3208
+#: App/Controller/Manager/dist/js/app.js:2771
+#: App/Controller/Manager/dist/js/app.js:2887
+#: App/Controller/Manager/dist/js/app.js:3016
+#: App/Controller/Manager/dist/js/app.js:3228
 #: App/Controller/Manager/dist/js/app.js:1949
-#: App/Controller/Manager/dist/js/app.js:2362
-#: App/Controller/Manager/dist/js/app.js:2475
-#: App/Controller/Manager/dist/js/app.js:2613
-#: App/Controller/Manager/dist/js/app.js:2955
+#: App/Controller/Manager/dist/js/app.js:2399
+#: App/Controller/Manager/dist/js/app.js:2512
+#: App/Controller/Manager/dist/js/app.js:2650
+#: App/Controller/Manager/dist/js/app.js:2992
 msgid "Save Settings"
 msgstr "設定を保存"
 
 #: App/Controller/Manager/dist/js/app.js:2447
-#: App/Controller/Manager/dist/js/app.js:2755
-#: App/Controller/Manager/dist/js/app.js:2871
-#: App/Controller/Manager/dist/js/app.js:3000
-#: App/Controller/Manager/dist/js/app.js:3212
+#: App/Controller/Manager/dist/js/app.js:2775
+#: App/Controller/Manager/dist/js/app.js:2891
+#: App/Controller/Manager/dist/js/app.js:3020
+#: App/Controller/Manager/dist/js/app.js:3232
 #: App/Controller/Manager/dist/js/app.js:1957
-#: App/Controller/Manager/dist/js/app.js:2370
-#: App/Controller/Manager/dist/js/app.js:2483
-#: App/Controller/Manager/dist/js/app.js:2621
-#: App/Controller/Manager/dist/js/app.js:2963
+#: App/Controller/Manager/dist/js/app.js:2407
+#: App/Controller/Manager/dist/js/app.js:2520
+#: App/Controller/Manager/dist/js/app.js:2658
+#: App/Controller/Manager/dist/js/app.js:3000
 msgid "Reset All Settings"
 msgstr "すべての設定をリセット"
 
@@ -1252,142 +1252,149 @@ msgstr "ホームページ"
 msgid "Homepage 1"
 msgstr "ホームページ 1"
 
-#: App/Controller/Manager/dist/js/app.js:2682
-#: App/Controller/Manager/dist/js/app.js:2229
+#: App/Controller/Manager/dist/js/app.js:2668
+#: App/Controller/Manager/dist/js/app.js:2673
+#: App/Controller/Manager/dist/js/app.js:2199
+#: App/Controller/Manager/dist/js/app.js:2212
+msgid "Homepage 2"
+msgstr "ホームページ 2"
+
+#: App/Controller/Manager/dist/js/app.js:2702
+#: App/Controller/Manager/dist/js/app.js:2266
 msgid "Select existing page for the homepage"
 msgstr "既存のページをホームページ用に選択"
 
-#: App/Controller/Manager/dist/js/app.js:2685
-#: App/Controller/Manager/dist/js/app.js:2729
-#: App/Controller/Manager/dist/js/app.js:2237
-#: App/Controller/Manager/dist/js/app.js:2320
+#: App/Controller/Manager/dist/js/app.js:2705
+#: App/Controller/Manager/dist/js/app.js:2749
+#: App/Controller/Manager/dist/js/app.js:2274
+#: App/Controller/Manager/dist/js/app.js:2357
 msgid "— Select —"
 msgstr "— 選択 —"
 
 #. translators: %1$s: Post ID
-#: App/Controller/Manager/dist/js/app.js:2690
-#: App/Controller/Manager/dist/js/app.js:2734
-#: App/Controller/Manager/dist/js/app.js:2250
-#: App/Controller/Manager/dist/js/app.js:2333
+#: App/Controller/Manager/dist/js/app.js:2710
+#: App/Controller/Manager/dist/js/app.js:2754
+#: App/Controller/Manager/dist/js/app.js:2287
+#: App/Controller/Manager/dist/js/app.js:2370
 msgid "#%1$s (No title)"
 msgstr "#%1$s （タイトルなし）"
 
-#: App/Controller/Manager/dist/js/app.js:2708
-#: App/Controller/Manager/dist/js/app.js:2276
+#: App/Controller/Manager/dist/js/app.js:2728
+#: App/Controller/Manager/dist/js/app.js:2313
 msgid "Posts Page"
 msgstr "投稿ページ"
 
-#: App/Controller/Manager/dist/js/app.js:2714
-#: App/Controller/Manager/dist/js/app.js:2288
+#: App/Controller/Manager/dist/js/app.js:2734
+#: App/Controller/Manager/dist/js/app.js:2325
 msgid "Create new page for the posts page"
 msgstr "投稿ページ用の固定ページを生成"
 
-#: App/Controller/Manager/dist/js/app.js:2726
-#: App/Controller/Manager/dist/js/app.js:2312
+#: App/Controller/Manager/dist/js/app.js:2746
+#: App/Controller/Manager/dist/js/app.js:2349
 msgid "Select existing page for the posts page"
 msgstr "既存のページを投稿ページ用に選択"
 
-#: App/Controller/Manager/dist/js/app.js:2839
-#: App/Controller/Manager/dist/js/app.js:2439
+#: App/Controller/Manager/dist/js/app.js:2859
+#: App/Controller/Manager/dist/js/app.js:2476
 msgid "Size"
 msgstr "サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:2842
-#: App/Controller/Manager/dist/js/app.js:2443
+#: App/Controller/Manager/dist/js/app.js:2862
+#: App/Controller/Manager/dist/js/app.js:2480
 msgid "Content Size"
 msgstr "コンテンツサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:2852
-#: App/Controller/Manager/dist/js/app.js:2455
+#: App/Controller/Manager/dist/js/app.js:2872
+#: App/Controller/Manager/dist/js/app.js:2492
 msgid "Wide Size"
 msgstr "幅広サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:2961
-#: App/Controller/Manager/dist/js/app.js:2556
+#: App/Controller/Manager/dist/js/app.js:2981
+#: App/Controller/Manager/dist/js/app.js:2593
 msgid "License"
 msgstr "ライセンス"
 
-#: App/Controller/Manager/dist/js/app.js:2971
-#: App/Controller/Manager/dist/js/app.js:2569
+#: App/Controller/Manager/dist/js/app.js:2991
+#: App/Controller/Manager/dist/js/app.js:2606
 msgid "License Key"
 msgstr "ライセンスキー"
 
-#: App/Controller/Manager/dist/js/app.js:2973
-#: App/Controller/Manager/dist/js/app.js:2573
+#: App/Controller/Manager/dist/js/app.js:2993
+#: App/Controller/Manager/dist/js/app.js:2610
 msgid ""
 "If your license key is valid, you will be able to use unitone more "
 "conveniently."
 msgstr ""
 "ライセンスキーが有効な場合、unitone を更に便利に利用できるようになります。"
 
-#: App/Controller/Manager/dist/js/app.js:2976
-#: App/Controller/Manager/dist/js/app.js:2580
+#: App/Controller/Manager/dist/js/app.js:2996
+#: App/Controller/Manager/dist/js/app.js:2617
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
-#: App/Controller/Manager/dist/js/app.js:3072
-#: App/Controller/Manager/dist/js/app.js:2686
+#: App/Controller/Manager/dist/js/app.js:3092
+#: App/Controller/Manager/dist/js/app.js:2723
 msgid "Typography"
 msgstr "タイポグラフィ"
 
-#: App/Controller/Manager/dist/js/app.js:3133
-#: App/Controller/Manager/dist/js/app.js:2780
+#: App/Controller/Manager/dist/js/app.js:3153
+#: App/Controller/Manager/dist/js/app.js:2817
 msgid "Base Font Size"
 msgstr "基本の文字サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3143
-#: App/Controller/Manager/dist/js/app.js:2796
+#: App/Controller/Manager/dist/js/app.js:3163
+#: App/Controller/Manager/dist/js/app.js:2833
 msgid "Half Leading"
 msgstr "ハーフリーディング"
 
-#: App/Controller/Manager/dist/js/app.js:3154
-#: App/Controller/Manager/dist/js/app.js:2812
+#: App/Controller/Manager/dist/js/app.js:3174
+#: App/Controller/Manager/dist/js/app.js:2849
 msgid "Size of h2"
 msgstr "h2 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3164
-#: App/Controller/Manager/dist/js/app.js:2839
+#: App/Controller/Manager/dist/js/app.js:3184
+#: App/Controller/Manager/dist/js/app.js:2876
 msgid "Size of h3"
 msgstr "h3 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3174
-#: App/Controller/Manager/dist/js/app.js:2866
+#: App/Controller/Manager/dist/js/app.js:3194
+#: App/Controller/Manager/dist/js/app.js:2903
 msgid "Size of h4"
 msgstr "h4 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3184
-#: App/Controller/Manager/dist/js/app.js:2893
+#: App/Controller/Manager/dist/js/app.js:3204
+#: App/Controller/Manager/dist/js/app.js:2930
 msgid "Size of h5"
 msgstr "h5 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3194
-#: App/Controller/Manager/dist/js/app.js:2920
+#: App/Controller/Manager/dist/js/app.js:3214
+#: App/Controller/Manager/dist/js/app.js:2957
 msgid "Size of h6"
 msgstr "h6 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3293
-#: App/Controller/Manager/dist/js/app.js:3337
-#: App/Controller/Manager/dist/js/app.js:3031
-#: App/Controller/Manager/dist/js/app.js:3100
+#: App/Controller/Manager/dist/js/app.js:3313
+#: App/Controller/Manager/dist/js/app.js:3357
+#: App/Controller/Manager/dist/js/app.js:3068
+#: App/Controller/Manager/dist/js/app.js:3137
 msgid "Go to the Dashboard"
 msgstr "ダッシュボードに戻る"
 
-#: App/Controller/Manager/dist/js/app.js:3311
-#: App/Controller/Manager/dist/js/app.js:3312
-#: App/Controller/Manager/dist/js/app.js:3061
-#: App/Controller/Manager/dist/js/app.js:3065
+#: App/Controller/Manager/dist/js/app.js:3331
+#: App/Controller/Manager/dist/js/app.js:3332
+#: App/Controller/Manager/dist/js/app.js:3098
+#: App/Controller/Manager/dist/js/app.js:3102
 msgid "View site (opens in a new tab)"
 msgstr "サイトを表示 (新しいタブで開く)"
 
-#: App/Controller/Manager/dist/js/app.js:3318
-#: App/Controller/Manager/dist/js/app.js:3079
+#: App/Controller/Manager/dist/js/app.js:3338
+#: App/Controller/Manager/dist/js/app.js:3116
 msgid "Navigation"
 msgstr "ナビゲーション"
 
-#: App/Controller/Manager/dist/js/app.js:3383
-#: App/Controller/Manager/dist/js/app.js:3468
-#: App/Controller/Manager/dist/js/app.js:3179
-#: App/Controller/Manager/dist/js/app.js:3297
+#: App/Controller/Manager/dist/js/app.js:3403
+#: App/Controller/Manager/dist/js/app.js:3488
+#: App/Controller/Manager/dist/js/app.js:3216
+#: App/Controller/Manager/dist/js/app.js:3334
 msgid "Retrieve patterns from the pattern library"
 msgstr "パターンライブラリーからパターンを再取得する"
 

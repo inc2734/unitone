@@ -229,6 +229,43 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 												</div>
 
 												<div className="unitone-settings-preview">
+													<div className="unitone-settings-preview__frame">
+														<img
+															src={ `${ settings.templateDirectoryUri }/App/Controller/Manager/dist/img/2.jpg` }
+															alt={ __(
+																'Homepage 2',
+																'unitone'
+															) }
+														/>
+													</div>
+													<RadioControl
+														selected={
+															homepagePattern
+														}
+														options={ [
+															{
+																value: 'unitone/page/homepage-2',
+																label: __(
+																	'Homepage 2',
+																	'unitone'
+																),
+															},
+														] }
+														onChange={ (
+															newSetting
+														) => {
+															setSettings( {
+																...settings,
+																'page-on-front': 0,
+															} );
+															setHomepagePattern(
+																newSetting
+															);
+														} }
+													/>
+												</div>
+
+												<div className="unitone-settings-preview">
 													<div className="unitone-settings-preview__frame"></div>
 													<RadioControl
 														selected={

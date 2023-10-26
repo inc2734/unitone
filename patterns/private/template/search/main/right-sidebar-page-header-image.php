@@ -18,7 +18,7 @@
 							<div data-unitone-layout="text">
 								<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
 
-								<!-- wp:pattern {"slug":"unitone/query/1"} /-->
+								<!-- wp:pattern {"slug":"unitone/query/4"} /-->
 							</div>
 							<!-- /wp:unitone/text -->
 						</div>

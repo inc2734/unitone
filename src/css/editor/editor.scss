@@ -4,6 +4,10 @@
 	z-index: 0;
 }
 
+.wp-block-query .components-placeholder__illustration {
+	position: absolute;
+}
+
 .is-root-container.block-editor-block-list__layout:not(.wp-site-blocks) {
 	--unitone--gutters: var(--unitone--global--gutters);
 
@@ -121,6 +125,14 @@
 
 	&[aria-level="12"] .block-editor-list-view__expander {
 		margin-left: 304px;
+	}
+
+	&[aria-level="13"] .block-editor-list-view__expander {
+		margin-left: 332px;
+	}
+
+	&[aria-level="14"] .block-editor-list-view__expander {
+		margin-left: 360px;
 	}
 }
 

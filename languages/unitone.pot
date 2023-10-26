@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-10-25T10:26:37+00:00\n"
+"POT-Creation-Date: 2023-10-26T06:16:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: unitone\n"
@@ -719,6 +719,11 @@ msgctxt "Pattern title"
 msgid "Homepage 1"
 msgstr ""
 
+#: patterns/page-homepage-2.php
+msgctxt "Pattern title"
+msgid "Homepage 2"
+msgstr ""
+
 #: patterns/page-plans.php
 msgctxt "Pattern title"
 msgid "Plans"
@@ -754,6 +759,16 @@ msgstr ""
 #: patterns/query-3.php
 msgctxt "Pattern title"
 msgid "Query (Rich media / Block link / Bordered)"
+msgstr ""
+
+#: patterns/query-4.php
+msgctxt "Pattern title"
+msgid "Query (Text / 2rows / Underline)"
+msgstr ""
+
+#: patterns/query-5.php
+msgctxt "Pattern title"
+msgid "Query (Text / Underline)"
 msgstr ""
 
 #: patterns/sidebar-bbpress.php
@@ -1433,7 +1448,7 @@ msgstr ""
 #: dist/blocks/flex/index.js:49
 #: dist/blocks/frame/index.js:135
 #: dist/blocks/grid/index.js:116
-#: dist/blocks/layers/index.js:207
+#: dist/blocks/layers/index.js:243
 #: dist/blocks/reel/index.js:171
 #: dist/blocks/responsive-grid-divided/index.js:320
 #: dist/blocks/responsive-grid/index.js:183
@@ -1452,7 +1467,7 @@ msgstr ""
 #: dist/blocks/flex/index.js:44
 #: dist/blocks/frame/index.js:118
 #: dist/blocks/grid/index.js:149
-#: dist/blocks/layers/index.js:213
+#: dist/blocks/layers/index.js:254
 #: dist/blocks/reel/index.js:149
 #: dist/blocks/responsive-grid-divided/index.js:282
 #: dist/blocks/responsive-grid/index.js:176
@@ -1763,6 +1778,8 @@ msgstr ""
 #: dist/blocks/grid/index.js:340
 #: dist/blocks/grid/index.js:347
 #: dist/blocks/grid/index.js:354
+#: dist/blocks/layers/index.js:315
+#: dist/blocks/layers/index.js:320
 #: dist/blocks/grid/index.js:224
 #: dist/blocks/grid/index.js:278
 #: dist/blocks/grid/index.js:355
@@ -1772,6 +1789,8 @@ msgstr ""
 #: dist/blocks/grid/index.js:566
 #: dist/blocks/grid/index.js:578
 #: dist/blocks/grid/index.js:596
+#: dist/blocks/layers/index.js:399
+#: dist/blocks/layers/index.js:407
 msgid "Columns count"
 msgstr ""
 
@@ -1880,6 +1899,8 @@ msgstr ""
 #: dist/blocks/grid/index.js:502
 #: dist/blocks/grid/index.js:509
 #: dist/blocks/grid/index.js:516
+#: dist/blocks/layers/index.js:333
+#: dist/blocks/layers/index.js:338
 #: dist/blocks/grid/index.js:702
 #: dist/blocks/grid/index.js:713
 #: dist/blocks/grid/index.js:779
@@ -1889,137 +1910,139 @@ msgstr ""
 #: dist/blocks/grid/index.js:909
 #: dist/blocks/grid/index.js:921
 #: dist/blocks/grid/index.js:938
+#: dist/blocks/layers/index.js:429
+#: dist/blocks/layers/index.js:437
 msgid "Rows count"
 msgstr ""
 
-#: dist/blocks/layers/index.js:211
-#: dist/blocks/layers/index.js:216
-#: dist/blocks/layers/index.js:219
-#: dist/blocks/layers/index.js:230
+#: dist/blocks/layers/index.js:247
+#: dist/blocks/layers/index.js:252
+#: dist/blocks/layers/index.js:260
+#: dist/blocks/layers/index.js:271
 msgid "Use background image/video (Cover)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:217
-#: dist/blocks/layers/index.js:234
-#: dist/blocks/layers/index.js:235
-#: dist/blocks/layers/index.js:275
+#: dist/blocks/layers/index.js:253
+#: dist/blocks/layers/index.js:270
+#: dist/blocks/layers/index.js:276
+#: dist/blocks/layers/index.js:316
 msgid "Treat the first child block as a background image/video."
 msgstr ""
 
-#: dist/blocks/layers/index.js:217
-#: dist/blocks/layers/index.js:239
+#: dist/blocks/layers/index.js:253
+#: dist/blocks/layers/index.js:280
 msgid "The background image/video is enlarged according or reduces to the amount of content."
 msgstr ""
 
-#: dist/blocks/layers/index.js:228
-#: dist/blocks/layers/index.js:233
-#: dist/blocks/layers/index.js:259
-#: dist/blocks/layers/index.js:270
+#: dist/blocks/layers/index.js:264
+#: dist/blocks/layers/index.js:269
+#: dist/blocks/layers/index.js:300
+#: dist/blocks/layers/index.js:311
 msgid "Use background image/video (Fill)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:234
-#: dist/blocks/layers/index.js:279
+#: dist/blocks/layers/index.js:270
+#: dist/blocks/layers/index.js:320
 msgid "The background image/video is enlarged according to the amount of content."
 msgstr ""
 
-#: dist/blocks/layers/index.js:245
-#: dist/blocks/layers/index.js:250
-#: dist/blocks/layers/index.js:299
-#: dist/blocks/layers/index.js:310
+#: dist/blocks/layers/index.js:281
+#: dist/blocks/layers/index.js:286
+#: dist/blocks/layers/index.js:340
+#: dist/blocks/layers/index.js:351
 msgid "Blur the background image/video"
 msgstr ""
 
-#: dist/blocks/layers/index.js:263
-#: dist/blocks/layers/index.js:268
-#: dist/blocks/layers/index.js:333
-#: dist/blocks/layers/index.js:341
+#: dist/blocks/layers/index.js:299
+#: dist/blocks/layers/index.js:304
+#: dist/blocks/layers/index.js:374
+#: dist/blocks/layers/index.js:382
 msgid "Enable portrait mode"
 msgstr ""
 
-#: dist/blocks/layers/index.js:269
-#: dist/blocks/layers/index.js:342
+#: dist/blocks/layers/index.js:305
+#: dist/blocks/layers/index.js:383
 msgid "If enabled, the number of vertical and horizontal grid lines is switched when the viewport is portrait."
 msgstr ""
 
-#: dist/blocks/layers/index.js:1271
-#: dist/blocks/layers/index.js:1169
+#: dist/blocks/layers/index.js:1349
+#: dist/blocks/layers/index.js:1280
 msgid "Background image"
 msgstr ""
 
-#: dist/blocks/layers/index.js:1321
-#: dist/blocks/layers/index.js:1223
+#: dist/blocks/layers/index.js:1399
+#: dist/blocks/layers/index.js:1334
 msgid "Background framed image"
 msgstr ""
 
-#: dist/blocks/layers/index.js:1372
+#: dist/blocks/layers/index.js:1450
 #: dist/blocks/section/index.js:598
-#: dist/blocks/layers/index.js:1282
+#: dist/blocks/layers/index.js:1393
 #: dist/blocks/section/index.js:513
 msgid "Default"
 msgstr ""
 
 #. translators: %1$s: position
-#: dist/blocks/layers/index.js:1382
-#: dist/blocks/layers/index.js:1429
-#: dist/blocks/layers/index.js:1477
-#: dist/blocks/layers/index.js:1524
-#: dist/blocks/layers/index.js:1572
-#: dist/blocks/layers/index.js:1619
-#: dist/blocks/layers/index.js:1666
-#: dist/blocks/layers/index.js:1718
-#: dist/blocks/layers/index.js:1293
-#: dist/blocks/layers/index.js:1351
-#: dist/blocks/layers/index.js:1410
-#: dist/blocks/layers/index.js:1468
-#: dist/blocks/layers/index.js:1527
-#: dist/blocks/layers/index.js:1583
-#: dist/blocks/layers/index.js:1639
-#: dist/blocks/layers/index.js:1705
+#: dist/blocks/layers/index.js:1460
+#: dist/blocks/layers/index.js:1507
+#: dist/blocks/layers/index.js:1555
+#: dist/blocks/layers/index.js:1602
+#: dist/blocks/layers/index.js:1650
+#: dist/blocks/layers/index.js:1697
+#: dist/blocks/layers/index.js:1744
+#: dist/blocks/layers/index.js:1796
+#: dist/blocks/layers/index.js:1404
+#: dist/blocks/layers/index.js:1462
+#: dist/blocks/layers/index.js:1521
+#: dist/blocks/layers/index.js:1579
+#: dist/blocks/layers/index.js:1638
+#: dist/blocks/layers/index.js:1694
+#: dist/blocks/layers/index.js:1750
+#: dist/blocks/layers/index.js:1816
 msgid "Hero (%1$s)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:1382
-#: dist/blocks/layers/index.js:1294
+#: dist/blocks/layers/index.js:1460
+#: dist/blocks/layers/index.js:1405
 msgid "Top / Left"
 msgstr ""
 
-#: dist/blocks/layers/index.js:1429
-#: dist/blocks/layers/index.js:1352
+#: dist/blocks/layers/index.js:1507
+#: dist/blocks/layers/index.js:1463
 msgid "Top / Right"
 msgstr ""
 
-#: dist/blocks/layers/index.js:1477
-#: dist/blocks/layers/index.js:1572
-#: dist/blocks/layers/index.js:1666
-#: dist/blocks/layers/index.js:1411
-#: dist/blocks/layers/index.js:1528
-#: dist/blocks/layers/index.js:1640
+#: dist/blocks/layers/index.js:1555
+#: dist/blocks/layers/index.js:1650
+#: dist/blocks/layers/index.js:1744
+#: dist/blocks/layers/index.js:1522
+#: dist/blocks/layers/index.js:1639
+#: dist/blocks/layers/index.js:1751
 msgid "Bottom / Left"
 msgstr ""
 
-#: dist/blocks/layers/index.js:1524
-#: dist/blocks/layers/index.js:1619
-#: dist/blocks/layers/index.js:1718
-#: dist/blocks/layers/index.js:1469
-#: dist/blocks/layers/index.js:1584
-#: dist/blocks/layers/index.js:1706
+#: dist/blocks/layers/index.js:1602
+#: dist/blocks/layers/index.js:1697
+#: dist/blocks/layers/index.js:1796
+#: dist/blocks/layers/index.js:1580
+#: dist/blocks/layers/index.js:1695
+#: dist/blocks/layers/index.js:1817
 msgid "Bottom / Right"
 msgstr ""
 
 #. translators: %1$s: position
-#: dist/blocks/layers/index.js:1771
-#: dist/blocks/layers/index.js:1877
-#: dist/blocks/layers/index.js:2021
-#: dist/blocks/layers/index.js:2105
+#: dist/blocks/layers/index.js:1849
+#: dist/blocks/layers/index.js:1955
+#: dist/blocks/layers/index.js:2099
+#: dist/blocks/layers/index.js:2183
 #: dist/blocks/section/index.js:608
 #: dist/blocks/section/index.js:687
 #: dist/blocks/section/index.js:810
 #: dist/blocks/section/index.js:873
-#: dist/blocks/layers/index.js:1772
-#: dist/blocks/layers/index.js:1903
-#: dist/blocks/layers/index.js:2086
-#: dist/blocks/layers/index.js:2191
+#: dist/blocks/layers/index.js:1883
+#: dist/blocks/layers/index.js:2014
+#: dist/blocks/layers/index.js:2197
+#: dist/blocks/layers/index.js:2302
 #: dist/blocks/section/index.js:524
 #: dist/blocks/section/index.js:622
 #: dist/blocks/section/index.js:774
@@ -2027,35 +2050,35 @@ msgstr ""
 msgid "Section (%1$s)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:1771
-#: dist/blocks/layers/index.js:1773
+#: dist/blocks/layers/index.js:1849
+#: dist/blocks/layers/index.js:1884
 msgid "Background image / Centered title"
 msgstr ""
 
-#: dist/blocks/layers/index.js:1772
-#: dist/blocks/layers/index.js:1878
-#: dist/blocks/layers/index.js:2022
-#: dist/blocks/layers/index.js:2106
-#: dist/blocks/layers/index.js:1775
-#: dist/blocks/layers/index.js:1906
-#: dist/blocks/layers/index.js:2089
-#: dist/blocks/layers/index.js:2194
+#: dist/blocks/layers/index.js:1850
+#: dist/blocks/layers/index.js:1956
+#: dist/blocks/layers/index.js:2100
+#: dist/blocks/layers/index.js:2184
+#: dist/blocks/layers/index.js:1886
+#: dist/blocks/layers/index.js:2017
+#: dist/blocks/layers/index.js:2200
+#: dist/blocks/layers/index.js:2305
 msgctxt "block keywords"
 msgid "section"
 msgstr ""
 
-#: dist/blocks/layers/index.js:1877
-#: dist/blocks/layers/index.js:1904
+#: dist/blocks/layers/index.js:1955
+#: dist/blocks/layers/index.js:2015
 msgid "Background image / Centered title / Subtitle"
 msgstr ""
 
-#: dist/blocks/layers/index.js:2021
-#: dist/blocks/layers/index.js:2087
+#: dist/blocks/layers/index.js:2099
+#: dist/blocks/layers/index.js:2198
 msgid "Background image / Left title"
 msgstr ""
 
-#: dist/blocks/layers/index.js:2105
-#: dist/blocks/layers/index.js:2192
+#: dist/blocks/layers/index.js:2183
+#: dist/blocks/layers/index.js:2303
 msgid "Background image / Left title / Subtitle"
 msgstr ""
 

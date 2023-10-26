@@ -40,6 +40,12 @@ https://unitone.2inc.org/
   - https://stocksnap.io/photo/mountain-highland-YDXJ69TOAL
   - License: CC0 https://creativecommons.org/publicdomain/zero/1.0/
 
+**Bango Renders**
+- https://stocksnap.io/author/bango3d
+- stocksnap_ydxj69toal.jpg
+  - https://stocksnap.io/photo/color-ink-DBHIOSA9CB
+  - License: CC0 https://creativecommons.org/publicdomain/zero/1.0/
+
 **Alana**
 - swing-ocean-sea2875.jpg
   - http://alana.io/downloads/swing-ocean-sea/

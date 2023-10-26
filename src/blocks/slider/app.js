@@ -56,7 +56,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			swiperOptions.autoplay = {
 				delay: autoplayDelay,
 			};
-			swiperOptions.loopedSlides = 2;
 			swiperOptions.allowTouchMove = false;
 			swiperOptions.grabCursor = false;
 		}

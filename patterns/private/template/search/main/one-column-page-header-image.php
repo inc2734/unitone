@@ -8,7 +8,11 @@
 		<div data-unitone-layout="stack">
 			<!-- wp:unitone/text {"unitone":{"maxWidth":"var(--unitone--container-max-width)","gutters":"root"}} -->
 			<div data-unitone-layout="text">
-				<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
+				<!-- wp:unitone/container {"unitone":{"gutters":"0","blockAlign":"center","maxWidth":"1024px"}} -->
+				<div data-unitone-layout="container">
+					<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
+				</div>
+				<!-- /wp:unitone/container -->
 
 				<!-- wp:pattern {"slug":"unitone/query/4"} /-->
 			</div>

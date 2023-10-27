@@ -8,11 +8,15 @@
 		<div data-unitone-layout="text">
 			<!-- wp:unitone/container {"unitone":{"gutters":"0","blockAlign":"center","maxWidth":"1024px"}} -->
 			<div data-unitone-layout="container">
-				<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
+				<!-- wp:unitone/stack -->
+				<div data-unitone-layout="stack">
+					<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
+
+					<!-- wp:template-part {"slug":"loop","theme":"unitone"} /-->
+				</div>
+				<!-- /wp:unitone/stack -->
 			</div>
 			<!-- /wp:unitone/container -->
-
-			<!-- wp:pattern {"slug":"unitone/query/4"} /-->
 		</div>
 		<!-- /wp:unitone/text -->
 	</div>

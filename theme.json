@@ -544,6 +544,11 @@
 			"area": "unitone/comments"
 		},
 		{
+			"name": "loop",
+			"title": "Loop",
+			"area": "unitone/loop"
+		},
+		{
 			"name": "404",
 			"title": "404",
 			"area": "unitone/404"

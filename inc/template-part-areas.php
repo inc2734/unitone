@@ -106,6 +106,13 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 				'description' => '',
 				'area_tag'    => 'div',
 			),
+			array(
+				'area'        => 'unitone/loop',
+				'label'       => __( 'Loop', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => '',
+				'area_tag'    => 'div',
+			),
 		)
 	);
 }

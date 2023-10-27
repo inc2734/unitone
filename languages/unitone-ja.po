@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-10-26T06:24:42+00:00\n"
-"PO-Revision-Date: 2023-10-26 15:25+0900\n"
+"POT-Creation-Date: 2023-10-27T01:06:14+00:00\n"
+"PO-Revision-Date: 2023-10-27 10:06+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,8 +19,8 @@ msgstr ""
 #. Theme Name of the theme
 #: inc/block-categories.php:18 inc/block-categories.php:29
 #: inc/block-categories.php:40 inc/block-categories.php:51
-#: inc/block-styles.php:93 dist/js/editor/editor.js:4996
-#: dist/js/editor/editor.js:5564
+#: inc/block-styles.php:93 dist/js/editor/editor.js:5029
+#: dist/js/editor/editor.js:5592
 msgid "unitone"
 msgstr "unitone"
 
@@ -108,7 +108,7 @@ msgid "Query"
 msgstr "クエリー"
 
 #: inc/block-patterns.php:16 inc/template-part-areas.php:27
-#: inc/template-part-areas.php:148
+#: inc/template-part-areas.php:155
 msgid "Pages"
 msgstr "ページ"
 
@@ -140,7 +140,7 @@ msgstr "404のページヘッダー（画像）"
 msgid "Page Header (Wide) for 404"
 msgstr "404のページヘッダー（幅広）"
 
-#: inc/block-patterns.php:86 inc/template-part-areas.php:183
+#: inc/block-patterns.php:86 inc/template-part-areas.php:190
 msgid "Page Header for 404"
 msgstr "404のページヘッダー"
 
@@ -165,7 +165,7 @@ msgstr "アーカイブのメインエリア（右サイドバー）"
 msgid "Page Header (Image) for All Archives"
 msgstr "アーカイブのページヘッダー（画像）"
 
-#: inc/block-patterns.php:122 inc/template-part-areas.php:225
+#: inc/block-patterns.php:122 inc/template-part-areas.php:232
 msgid "Page Header for All Archives"
 msgstr "アーカイブのページヘッダー"
 
@@ -216,7 +216,7 @@ msgstr "bbPress のメインエリア（右サイドバー）"
 msgid "Page Header (Image) for bbPress"
 msgstr "bbPress のページヘッダー（画像）"
 
-#: inc/block-patterns.php:194 inc/template-part-areas.php:302
+#: inc/block-patterns.php:194 inc/template-part-areas.php:309
 msgid "Page Header for bbPress"
 msgstr "bbPress のページヘッダー"
 
@@ -254,7 +254,7 @@ msgstr "ブログホームのメインエリア（右サイドバー）"
 msgid "Page Header (Image) for Blog Home"
 msgstr "ブログホームのページヘッダー（画像）"
 
-#: inc/block-patterns.php:248 inc/template-part-areas.php:197
+#: inc/block-patterns.php:248 inc/template-part-areas.php:204
 msgid "Page Header for Blog Home"
 msgstr "ブログホームのページヘッダー"
 
@@ -293,7 +293,7 @@ msgstr ""
 msgid "Main Area (Right Sidebar) for Pages"
 msgstr "固定ページのメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:302 inc/template-part-areas.php:155
+#: inc/block-patterns.php:302 inc/template-part-areas.php:162
 msgid "Page Header for Pages"
 msgstr "固定ページのページヘッダー"
 
@@ -326,7 +326,7 @@ msgstr ""
 msgid "Main Area (Right Sidebar) for Search Results"
 msgstr "検索結果のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:350 inc/template-part-areas.php:239
+#: inc/block-patterns.php:350 inc/template-part-areas.php:246
 msgid "Page Header for Search Results"
 msgstr "検索結果のページヘッダー"
 
@@ -365,7 +365,7 @@ msgstr ""
 msgid "Main Area (Right Sidebar) for Single Posts"
 msgstr "個別投稿のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:404 inc/template-part-areas.php:134
+#: inc/block-patterns.php:404 inc/template-part-areas.php:141
 msgid "Page Header for Single Posts"
 msgstr "個別投稿のページヘッダー"
 
@@ -453,11 +453,11 @@ msgstr "縦塗りつぶし"
 msgid "Vertical line"
 msgstr "縦線"
 
-#: inc/template-part-areas.php:20 inc/template-part-areas.php:127
+#: inc/template-part-areas.php:20 inc/template-part-areas.php:134
 msgid "Single Posts"
 msgstr "個別投稿"
 
-#: inc/template-part-areas.php:34 inc/template-part-areas.php:169
+#: inc/template-part-areas.php:34 inc/template-part-areas.php:176
 msgid "404"
 msgstr "404"
 
@@ -465,27 +465,27 @@ msgstr "404"
 msgid "Front Page"
 msgstr "フロントページ"
 
-#: inc/template-part-areas.php:48 inc/template-part-areas.php:190
+#: inc/template-part-areas.php:48 inc/template-part-areas.php:197
 msgid "Blog Home"
 msgstr "ブログホーム"
 
-#: inc/template-part-areas.php:55 inc/template-part-areas.php:211
+#: inc/template-part-areas.php:55 inc/template-part-areas.php:218
 msgid "All Archives"
 msgstr "アーカイブ"
 
-#: inc/template-part-areas.php:62 inc/template-part-areas.php:232
+#: inc/template-part-areas.php:62 inc/template-part-areas.php:239
 msgid "Search Results"
 msgstr "検索結果"
 
-#: inc/template-part-areas.php:69 inc/template-part-areas.php:253
+#: inc/template-part-areas.php:69 inc/template-part-areas.php:260
 msgid "Product Archives"
 msgstr "商品アーカイブ"
 
-#: inc/template-part-areas.php:76 inc/template-part-areas.php:274
+#: inc/template-part-areas.php:76 inc/template-part-areas.php:281
 msgid "Single Products"
 msgstr "個別商品"
 
-#: inc/template-part-areas.php:83 inc/template-part-areas.php:295
+#: inc/template-part-areas.php:83 inc/template-part-areas.php:302
 msgid "bbPress"
 msgstr "bbPress"
 
@@ -497,55 +497,61 @@ msgstr "お買い物カゴ"
 msgid "Checkout"
 msgstr "購入手続き"
 
-#: inc/template-part-areas.php:104 inc/template-part-areas.php:316
+#: inc/template-part-areas.php:104 inc/template-part-areas.php:323
 msgid "Comments"
 msgstr "コメント"
 
-#: inc/template-part-areas.php:141
+#: inc/template-part-areas.php:111 dist/blocks/slider/index.js:585
+#: dist/blocks/slider/index.js:590 dist/blocks/slider/index.js:649
+#: dist/blocks/slider/index.js:657
+msgid "Loop"
+msgstr "ループ"
+
+#: inc/template-part-areas.php:148
 msgid "Main Area for Single Posts"
 msgstr "個別投稿のメインエリア"
 
-#: inc/template-part-areas.php:162
+#: inc/template-part-areas.php:169
 msgid "Main Area for Pages"
 msgstr "固定ページのメインエリア"
 
-#: inc/template-part-areas.php:176
+#: inc/template-part-areas.php:183
 msgid "Main Area for 404"
 msgstr "404 のメインエリア"
 
-#: inc/template-part-areas.php:204
+#: inc/template-part-areas.php:211
 msgid "Main Area for Blog Home"
 msgstr "ブログホームのメインエリア"
 
-#: inc/template-part-areas.php:218
+#: inc/template-part-areas.php:225
 msgid "Main Area for All Archives"
 msgstr "アーカイブのメインエリア"
 
-#: inc/template-part-areas.php:246
+#: inc/template-part-areas.php:253
 msgid "Main Area of Search Results"
 msgstr "検索結果のメインエリア"
 
-#: inc/template-part-areas.php:260
+#: inc/template-part-areas.php:267
 msgid "Main Area for Product Archives"
 msgstr "商品アーカイブのメインエリア"
 
-#: inc/template-part-areas.php:267
+#: inc/template-part-areas.php:274
 msgid "Page Header for Product archives"
 msgstr "商品アーカイブのページヘッダー"
 
-#: inc/template-part-areas.php:281
+#: inc/template-part-areas.php:288
 msgid "Page Header for Single Products"
 msgstr "個別投稿のページヘッダー"
 
-#: inc/template-part-areas.php:288
+#: inc/template-part-areas.php:295
 msgid "Main Area for Single Products"
 msgstr "個別商品のメインエリア"
 
-#: inc/template-part-areas.php:309
+#: inc/template-part-areas.php:316
 msgid "Main Area for bbPress"
 msgstr "bbPress のメインエリア"
 
-#: inc/template-part-areas.php:323
+#: inc/template-part-areas.php:330
 msgid "Footer breadcrumbs"
 msgstr "フッターのパンくずリスト"
 
@@ -2005,11 +2011,6 @@ msgstr "キャンバスからはみ出した部分を隠す"
 msgid "Speed (s)"
 msgstr "スピード（秒）"
 
-#: dist/blocks/slider/index.js:585 dist/blocks/slider/index.js:590
-#: dist/blocks/slider/index.js:649 dist/blocks/slider/index.js:657
-msgid "Loop"
-msgstr "ループ"
-
 #: dist/blocks/slider/index.js:598 dist/blocks/slider/index.js:666
 msgid "The prev/next buttons"
 msgstr "前へ/次へボタン"
@@ -2365,34 +2366,34 @@ msgstr "下"
 msgid "The stack level"
 msgstr "重ね合わせレベル"
 
-#: dist/js/editor/editor.js:4999 dist/js/editor/editor.js:5005
-#: dist/js/editor/editor.js:5569 dist/js/editor/editor.js:5578
+#: dist/js/editor/editor.js:5032 dist/js/editor/editor.js:5038
+#: dist/js/editor/editor.js:5597 dist/js/editor/editor.js:5606
 msgid "Cell Min Width"
 msgstr "セルの最小幅"
 
-#: dist/js/editor/editor.js:5270 dist/js/editor/editor.js:5277
-#: dist/js/editor/editor.js:5815 dist/js/editor/editor.js:5823
+#: dist/js/editor/editor.js:5303 dist/js/editor/editor.js:5310
+#: dist/js/editor/editor.js:5843 dist/js/editor/editor.js:5851
 msgid "Fluid typography"
 msgstr "流体タイポグラフィ"
 
-#: dist/js/editor/editor.js:5280 dist/js/editor/editor.js:5287
-#: dist/js/editor/editor.js:5831 dist/js/editor/editor.js:5839
+#: dist/js/editor/editor.js:5313 dist/js/editor/editor.js:5320
+#: dist/js/editor/editor.js:5859 dist/js/editor/editor.js:5867
 msgid "Half leading"
 msgstr "ハーフリーディング"
 
-#: dist/js/editor/editor.js:5556 dist/js/editor/editor.js:6105
+#: dist/js/editor/editor.js:5589 dist/js/editor/editor.js:6133
 msgid "Currently Selected"
 msgstr "現在選択中"
 
-#: dist/js/editor/editor.js:5565 dist/js/editor/editor.js:6121
+#: dist/js/editor/editor.js:5598 dist/js/editor/editor.js:6149
 msgid "Select a block of ancestors"
 msgstr "先祖ブロックを選択する"
 
-#: dist/js/editor/editor.js:5575 dist/js/editor/editor.js:6140
+#: dist/js/editor/editor.js:5608 dist/js/editor/editor.js:6168
 msgid "Select a child block"
 msgstr "子ブロックを選択"
 
-#: dist/js/editor/editor.js:5864 dist/js/editor/editor.js:6421
+#: dist/js/editor/editor.js:5897 dist/js/editor/editor.js:6449
 msgid "Replace"
 msgstr "置換"
 
@@ -3191,6 +3192,11 @@ msgstr "フッター"
 msgctxt "Template part name"
 msgid "Comments"
 msgstr "コメント"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Loop"
+msgstr "ループ"
 
 #: theme.json
 msgctxt "Template part name"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-10-26T06:24:42+00:00\n"
+"POT-Creation-Date: 2023-10-27T01:06:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: unitone\n"
@@ -20,8 +20,8 @@ msgstr ""
 #: inc/block-categories.php:40
 #: inc/block-categories.php:51
 #: inc/block-styles.php:93
-#: dist/js/editor/editor.js:4996
-#: dist/js/editor/editor.js:5564
+#: dist/js/editor/editor.js:5029
+#: dist/js/editor/editor.js:5592
 msgid "unitone"
 msgstr ""
 
@@ -134,7 +134,7 @@ msgstr ""
 
 #: inc/block-patterns.php:16
 #: inc/template-part-areas.php:27
-#: inc/template-part-areas.php:148
+#: inc/template-part-areas.php:155
 msgid "Pages"
 msgstr ""
 
@@ -167,7 +167,7 @@ msgid "Page Header (Wide) for 404"
 msgstr ""
 
 #: inc/block-patterns.php:86
-#: inc/template-part-areas.php:183
+#: inc/template-part-areas.php:190
 msgid "Page Header for 404"
 msgstr ""
 
@@ -192,7 +192,7 @@ msgid "Page Header (Image) for All Archives"
 msgstr ""
 
 #: inc/block-patterns.php:122
-#: inc/template-part-areas.php:225
+#: inc/template-part-areas.php:232
 msgid "Page Header for All Archives"
 msgstr ""
 
@@ -241,7 +241,7 @@ msgid "Page Header (Image) for bbPress"
 msgstr ""
 
 #: inc/block-patterns.php:194
-#: inc/template-part-areas.php:302
+#: inc/template-part-areas.php:309
 msgid "Page Header for bbPress"
 msgstr ""
 
@@ -278,7 +278,7 @@ msgid "Page Header (Image) for Blog Home"
 msgstr ""
 
 #: inc/block-patterns.php:248
-#: inc/template-part-areas.php:197
+#: inc/template-part-areas.php:204
 msgid "Page Header for Blog Home"
 msgstr ""
 
@@ -315,7 +315,7 @@ msgid "Main Area (Right Sidebar) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:302
-#: inc/template-part-areas.php:155
+#: inc/template-part-areas.php:162
 msgid "Page Header for Pages"
 msgstr ""
 
@@ -348,7 +348,7 @@ msgid "Main Area (Right Sidebar) for Search Results"
 msgstr ""
 
 #: inc/block-patterns.php:350
-#: inc/template-part-areas.php:239
+#: inc/template-part-areas.php:246
 msgid "Page Header for Search Results"
 msgstr ""
 
@@ -385,7 +385,7 @@ msgid "Main Area (Right Sidebar) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:404
-#: inc/template-part-areas.php:134
+#: inc/template-part-areas.php:141
 msgid "Page Header for Single Posts"
 msgstr ""
 
@@ -478,12 +478,12 @@ msgid "Vertical line"
 msgstr ""
 
 #: inc/template-part-areas.php:20
-#: inc/template-part-areas.php:127
+#: inc/template-part-areas.php:134
 msgid "Single Posts"
 msgstr ""
 
 #: inc/template-part-areas.php:34
-#: inc/template-part-areas.php:169
+#: inc/template-part-areas.php:176
 msgid "404"
 msgstr ""
 
@@ -492,32 +492,32 @@ msgid "Front Page"
 msgstr ""
 
 #: inc/template-part-areas.php:48
-#: inc/template-part-areas.php:190
+#: inc/template-part-areas.php:197
 msgid "Blog Home"
 msgstr ""
 
 #: inc/template-part-areas.php:55
-#: inc/template-part-areas.php:211
+#: inc/template-part-areas.php:218
 msgid "All Archives"
 msgstr ""
 
 #: inc/template-part-areas.php:62
-#: inc/template-part-areas.php:232
+#: inc/template-part-areas.php:239
 msgid "Search Results"
 msgstr ""
 
 #: inc/template-part-areas.php:69
-#: inc/template-part-areas.php:253
+#: inc/template-part-areas.php:260
 msgid "Product Archives"
 msgstr ""
 
 #: inc/template-part-areas.php:76
-#: inc/template-part-areas.php:274
+#: inc/template-part-areas.php:281
 msgid "Single Products"
 msgstr ""
 
 #: inc/template-part-areas.php:83
-#: inc/template-part-areas.php:295
+#: inc/template-part-areas.php:302
 msgid "bbPress"
 msgstr ""
 
@@ -530,55 +530,63 @@ msgid "Checkout"
 msgstr ""
 
 #: inc/template-part-areas.php:104
-#: inc/template-part-areas.php:316
+#: inc/template-part-areas.php:323
 msgid "Comments"
 msgstr ""
 
-#: inc/template-part-areas.php:141
+#: inc/template-part-areas.php:111
+#: dist/blocks/slider/index.js:585
+#: dist/blocks/slider/index.js:590
+#: dist/blocks/slider/index.js:649
+#: dist/blocks/slider/index.js:657
+msgid "Loop"
+msgstr ""
+
+#: inc/template-part-areas.php:148
 msgid "Main Area for Single Posts"
 msgstr ""
 
-#: inc/template-part-areas.php:162
+#: inc/template-part-areas.php:169
 msgid "Main Area for Pages"
 msgstr ""
 
-#: inc/template-part-areas.php:176
+#: inc/template-part-areas.php:183
 msgid "Main Area for 404"
 msgstr ""
 
-#: inc/template-part-areas.php:204
+#: inc/template-part-areas.php:211
 msgid "Main Area for Blog Home"
 msgstr ""
 
-#: inc/template-part-areas.php:218
+#: inc/template-part-areas.php:225
 msgid "Main Area for All Archives"
 msgstr ""
 
-#: inc/template-part-areas.php:246
+#: inc/template-part-areas.php:253
 msgid "Main Area of Search Results"
 msgstr ""
 
-#: inc/template-part-areas.php:260
+#: inc/template-part-areas.php:267
 msgid "Main Area for Product Archives"
 msgstr ""
 
-#: inc/template-part-areas.php:267
+#: inc/template-part-areas.php:274
 msgid "Page Header for Product archives"
 msgstr ""
 
-#: inc/template-part-areas.php:281
+#: inc/template-part-areas.php:288
 msgid "Page Header for Single Products"
 msgstr ""
 
-#: inc/template-part-areas.php:288
+#: inc/template-part-areas.php:295
 msgid "Main Area for Single Products"
 msgstr ""
 
-#: inc/template-part-areas.php:309
+#: inc/template-part-areas.php:316
 msgid "Main Area for bbPress"
 msgstr ""
 
-#: inc/template-part-areas.php:323
+#: inc/template-part-areas.php:330
 msgid "Footer breadcrumbs"
 msgstr ""
 
@@ -2262,13 +2270,6 @@ msgstr ""
 msgid "Speed (s)"
 msgstr ""
 
-#: dist/blocks/slider/index.js:585
-#: dist/blocks/slider/index.js:590
-#: dist/blocks/slider/index.js:649
-#: dist/blocks/slider/index.js:657
-msgid "Loop"
-msgstr ""
-
 #: dist/blocks/slider/index.js:598
 #: dist/blocks/slider/index.js:666
 msgid "The prev/next buttons"
@@ -2726,44 +2727,44 @@ msgstr ""
 msgid "The stack level"
 msgstr ""
 
-#: dist/js/editor/editor.js:4999
-#: dist/js/editor/editor.js:5005
-#: dist/js/editor/editor.js:5569
-#: dist/js/editor/editor.js:5578
+#: dist/js/editor/editor.js:5032
+#: dist/js/editor/editor.js:5038
+#: dist/js/editor/editor.js:5597
+#: dist/js/editor/editor.js:5606
 msgid "Cell Min Width"
 msgstr ""
 
-#: dist/js/editor/editor.js:5270
-#: dist/js/editor/editor.js:5277
-#: dist/js/editor/editor.js:5815
-#: dist/js/editor/editor.js:5823
+#: dist/js/editor/editor.js:5303
+#: dist/js/editor/editor.js:5310
+#: dist/js/editor/editor.js:5843
+#: dist/js/editor/editor.js:5851
 msgid "Fluid typography"
 msgstr ""
 
-#: dist/js/editor/editor.js:5280
-#: dist/js/editor/editor.js:5287
-#: dist/js/editor/editor.js:5831
-#: dist/js/editor/editor.js:5839
+#: dist/js/editor/editor.js:5313
+#: dist/js/editor/editor.js:5320
+#: dist/js/editor/editor.js:5859
+#: dist/js/editor/editor.js:5867
 msgid "Half leading"
 msgstr ""
 
-#: dist/js/editor/editor.js:5556
-#: dist/js/editor/editor.js:6105
+#: dist/js/editor/editor.js:5589
+#: dist/js/editor/editor.js:6133
 msgid "Currently Selected"
 msgstr ""
 
-#: dist/js/editor/editor.js:5565
-#: dist/js/editor/editor.js:6121
+#: dist/js/editor/editor.js:5598
+#: dist/js/editor/editor.js:6149
 msgid "Select a block of ancestors"
 msgstr ""
 
-#: dist/js/editor/editor.js:5575
-#: dist/js/editor/editor.js:6140
+#: dist/js/editor/editor.js:5608
+#: dist/js/editor/editor.js:6168
 msgid "Select a child block"
 msgstr ""
 
-#: dist/js/editor/editor.js:5864
-#: dist/js/editor/editor.js:6421
+#: dist/js/editor/editor.js:5897
+#: dist/js/editor/editor.js:6449
 msgid "Replace"
 msgstr ""
 
@@ -3611,6 +3612,11 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "Comments"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Loop"
 msgstr ""
 
 #: theme.json

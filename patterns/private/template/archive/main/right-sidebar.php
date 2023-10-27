@@ -16,7 +16,11 @@
 						<div data-unitone-layout="stack">
 							<!-- wp:unitone/text {"unitone":{"maxWidth":"100%"}} -->
 							<div data-unitone-layout="text">
-								<!-- wp:pattern {"slug":"unitone/query/4"} /-->
+								<!-- wp:unitone/container {"unitone":{"gutters":"0","blockAlign":"center","maxWidth":"1024px"}} -->
+								<div data-unitone-layout="container">
+									<!-- wp:template-part {"slug":"loop","theme":"unitone"} /-->
+								</div>
+								<!-- /wp:unitone/container -->
 							</div>
 							<!-- /wp:unitone/text -->
 						</div>

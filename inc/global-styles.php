@@ -26,7 +26,8 @@ function enqueue_typography_styles() {
 
 	$font_family_index = array_search(
 		$font_family,
-		array_column( $global_settings['typography']['fontFamilies']['theme'], 'slug' )
+		array_column( $global_settings['typography']['fontFamilies']['theme'], 'slug' ),
+		true
 	);
 	$font_family       = false !== $font_family_index
 		? $global_settings['typography']['fontFamilies']['theme'][ $font_family_index ]['fontFamily']

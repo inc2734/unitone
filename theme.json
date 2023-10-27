@@ -83,6 +83,81 @@
 			"customFontSize": false,
 			"textTransform": true,
 			"lineHeight": true,
+			"fontFamilies": [
+				{
+					"name": "Sans serif",
+					"slug": "sans-serif",
+					"fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'ヒラギノ角ゴ W3', sans-serif"
+				},
+				{
+					"name": "Noto Sans JP",
+					"slug": "noto-sans-jp",
+					"fontFamily": "'Noto Sans JP', sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Noto Sans JP",
+							"fontWeight": "400",
+							"src": [ "file:./dist/fonts/NotoSansJP-Regular.woff2" ]
+						},
+						{
+							"fontFamily": "Noto Sans JP",
+							"fontWeight": "700",
+							"src": [ "file:./dist/fonts/NotoSansJP-Bold.woff2" ]
+						}
+					]
+				},
+				{
+					"name": "Noto Serif JP",
+					"slug": "noto-serif-jp",
+					"fontFamily": "'Noto Serif JP', serif",
+					"fontFace": [
+						{
+							"fontFamily": "Noto Serif JP",
+							"fontWeight": "400",
+							"src": [ "file:./dist/fonts/NotoSerifJP-Regular.woff2" ]
+						},
+						{
+							"fontFamily": "Noto Serif JP",
+							"fontWeight": "700",
+							"src": [ "file:./dist/fonts/NotoSerifJP-Bold.woff2" ]
+						}
+					]
+				},
+				{
+					"name": "BIZ UDPGothic",
+					"slug": "biz-udpgothic",
+					"fontFamily": "'BIZ UDPGothic', sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "BIZ UDPGothic",
+							"fontWeight": "400",
+							"src": [ "file:./dist/fonts/BIZUDPGothic-Regular.woff2" ]
+						},
+						{
+							"fontFamily": "BIZ UDPGothic",
+							"fontWeight": "700",
+							"src": [ "file:./dist/fonts/BIZUDPGothic-Bold.woff2" ]
+						}
+					]
+				},
+				{
+					"name": "BIZ UDPMincho",
+					"slug": "biz-udpmincho",
+					"fontFamily": "'BIZ UDPMincho', sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "BIZ UDPMincho",
+							"fontWeight": "400",
+							"src": [ "file:./dist/fonts/BIZUDPMincho-Regular.woff2" ]
+						},
+						{
+							"fontFamily": "BIZ UDPMincho",
+							"fontWeight": "700",
+							"src": [ "file:./dist/fonts/BIZUDPMincho-Bold.woff2" ]
+						}
+					]
+				}
+			],
 			"fontSizes": [
 				{
 					"slug": "unitone-xs",

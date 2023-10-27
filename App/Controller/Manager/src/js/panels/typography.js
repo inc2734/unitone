@@ -1,6 +1,11 @@
 import { pick } from 'lodash';
 
-import { Button, FontSizePicker, RangeControl } from '@wordpress/components';
+import {
+	Button,
+	FontSizePicker,
+	RangeControl,
+	SelectControl,
+} from '@wordpress/components';
 
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -8,6 +13,7 @@ import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 
 const SETTINGS_KEYS = [
+	'font-family',
 	'base-font-size',
 	'half-leading',
 	'h2-size',
@@ -49,6 +55,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		} );
 	};
 
+	console.log( settings?.fontFamilies );
+
 	return (
 		<div
 			data-unitone-layout="decorator -padding:2"
@@ -76,6 +84,11 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									'--unitone--base-font-size': String(
 										settings?.[ 'base-font-size' ]
 									),
+									fontFamily: settings?.fontFamilies?.find(
+										( fontFamily ) =>
+											settings?.[ 'font-family' ] ===
+											fontFamily.slug
+									)?.fontFamily,
 								} }
 							>
 								<div
@@ -148,6 +161,23 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							</div>
 						</div>
 						<div data-unitone-layout="stack">
+							<SelectControl
+								label={ __( 'Font', 'unitone' ) }
+								value={ settings?.[ 'font-family' ] }
+								options={ settings?.fontFamilies?.map(
+									( fontFamily ) => ( {
+										label: fontFamily.name,
+										value: fontFamily.slug,
+									} )
+								) }
+								onChange={ ( newSetting ) =>
+									setSettings( {
+										...settings,
+										'font-family': newSetting,
+									} )
+								}
+							/>
+
 							<RangeControl
 								label={ __( 'Base Font Size', 'unitone' ) }
 								value={ parseFloat(

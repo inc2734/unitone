@@ -267,6 +267,11 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									'--unitone--base-font-size': String(
 										settings?.[ 'base-font-size' ]
 									),
+									fontFamily: settings?.fontFamilies?.find(
+										( fontFamily ) =>
+											settings?.[ 'font-family' ] ===
+											fontFamily.slug
+									)?.fontFamily,
 								} }
 							>
 								<div

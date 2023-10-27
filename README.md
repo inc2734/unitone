@@ -65,3 +65,25 @@ https://unitone.2inc.org/
 - building-architecture-sky2096.jpg
   - https://alana.io/downloads/building-architecture-sky/
   - License: CC0 http://alana.io/license/
+
+## Fonts
+
+### Noto Sans Japanese
+* Font License: SIL Open Font License (OFL)
+* Font License URI: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+* Source: https://fonts.google.com/noto/specimen/Noto+Sans+JP
+
+### Noto Serif Japanese
+* Font License: SIL Open Font License (OFL)
+* Font License URI: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+* Source: https://fonts.google.com/noto/specimen/Noto+Serif+JP
+
+### BIZ UDPGothic
+* Font License: SIL Open Font License (OFL)
+* Font License URI: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+* Source: https://fonts.google.com/specimen/BIZ+UDPGothic
+
+### BIZ UDPMincho
+* Font License: SIL Open Font License (OFL)
+* Font License URI: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+* Source: https://fonts.google.com/specimen/BIZ+UDPMincho

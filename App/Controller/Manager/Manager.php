@@ -30,6 +30,7 @@ class Manager {
 	 */
 	const DEFAULT_SETTINGS = array(
 		'license-key'      => '',
+		'font-family'      => 'sans-serif',
 		'base-font-size'   => 16,
 		'half-leading'     => 0.4,
 		'h2-size'          => 3,
@@ -123,7 +124,8 @@ class Manager {
 			wp_enqueue_style( $style );
 		}
 
-		$theme_json_data = \WP_Theme_JSON_Resolver::get_merged_data()->get_raw_data();
+		// $theme_json_data = \WP_Theme_JSON_Resolver::get_merged_data()->get_raw_data();
+		$global_settings = wp_get_global_settings();
 
 		wp_localize_script(
 			'unitone/settings',
@@ -145,7 +147,7 @@ class Manager {
 					'siteIconUrl'          => wp_get_attachment_url( get_option( 'site_icon' ) ),
 					'hasHomepage'          => ! is_null( get_page_by_path( static::_get_homepage_slug(), OBJECT, array( 'page' ) ) ),
 					'hasPostsPage'         => ! is_null( get_page_by_path( static::_get_posts_page_slug(), OBJECT, array( 'page' ) ) ),
-					'palette'              => ( function () use ( $theme_json_data ) {
+					'palette'              => ( function () use ( $global_settings ) {
 						return array_reverse(
 							array_map(
 								function( $palette, $key ) {
@@ -154,12 +156,24 @@ class Manager {
 										'colors' => $palette,
 									);
 								},
-								$theme_json_data['settings']['color']['palette'],
-								array_keys( $theme_json_data['settings']['color']['palette'] )
+								$global_settings['color']['palette'],
+								array_keys( $global_settings['color']['palette'] )
 							)
 						);
 					} )(),
-					'fontSizes'            => ( function () use ( $theme_json_data ) {
+					'fontFamilies'         => ( function () use ( $global_settings ) {
+						return array_map(
+							function( $font_family ) {
+								return array(
+									'name'       => $font_family['name'],
+									'slug'       => $font_family['slug'],
+									'fontFamily' => $font_family['fontFamily'],
+								);
+							},
+							$global_settings['typography']['fontFamilies']['theme']
+						);
+					} )(),
+					'fontSizes'            => ( function () use ( $global_settings ) {
 						$scale = -2;
 						return array_map(
 							function( $font_size ) use ( &$scale ) {
@@ -172,7 +186,7 @@ class Manager {
 								$scale ++;
 								return $new_font_size;
 							},
-							$theme_json_data['settings']['typography']['fontSizes']['theme']
+							$global_settings['typography']['fontSizes']['theme']
 						);
 					} )(),
 				)

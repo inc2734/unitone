@@ -11,6 +11,7 @@ use Unitone\App\Controller\Manager\Manager;
  * Set custom global typography.
  */
 function enqueue_typography_styles() {
+	$font_family    = Manager::get_option( 'font-family' );
 	$base_font_size = Manager::get_option( 'base-font-size' );
 	$half_leading   = Manager::get_option( 'half-leading' );
 	$content_size   = Manager::get_option( 'content-size' );
@@ -21,33 +22,45 @@ function enqueue_typography_styles() {
 	$h5_size        = Manager::get_option( 'h5-size' );
 	$h6_size        = Manager::get_option( 'h6-size' );
 
+	$global_settings = wp_get_global_settings();
+
+	$font_family_index = array_search(
+		$font_family,
+		array_column( $global_settings['typography']['fontFamilies']['theme'], 'slug' )
+	);
+	$font_family = false !== $font_family_index
+		? $global_settings['typography']['fontFamilies']['theme'][  $font_family_index ]['fontFamily']
+		: 'sans-serif';
+
 	$stylesheet = sprintf(
 		':root {
-			--unitone--base-font-size: %1$s;
-			--unitone--half-leading: %2$s;
-			--unitone--measure: %3$s;
-			--unitone--container-max-width: %4$s;
+			--unitone--font-family: %1$s;
+			--unitone--base-font-size: %2$s;
+			--unitone--half-leading: %3$s;
+			--unitone--measure: %4$s;
+			--unitone--container-max-width: %5$s;
 		}
 		[data-unitone-layout~="text"] > h2,
 		[data-unitone-layout~="vertical-writing"] > h2 {
-			--unitone--font-size: %5$s;
+			--unitone--font-size: %6$s;
 		}
 		[data-unitone-layout~="text"] > h3,
 		[data-unitone-layout~="vertical-writing"] > h3 {
-			--unitone--font-size: %6$s;
+			--unitone--font-size: %7$s;
 		}
 		[data-unitone-layout~="text"] > h4,
 		[data-unitone-layout~="vertical-writing"] > h4 {
-			--unitone--font-size: %7$s;
+			--unitone--font-size: %8$s;
 		}
 		[data-unitone-layout~="text"] > h5,
 		[data-unitone-layout~="vertical-writing"] > h5 {
-			--unitone--font-size: %8$s;
+			--unitone--font-size: %9$s;
 		}
 		[data-unitone-layout~="text"] > h6,
 		[data-unitone-layout~="vertical-writing"] > h6 {
-			--unitone--font-size: %9$s;
+			--unitone--font-size: %10$s;
 		}',
+		$font_family,
 		$base_font_size,
 		$half_leading,
 		$content_size,

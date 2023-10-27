@@ -53,6 +53,7 @@ class Manager {
 		add_action( 'admin_menu', array( $this, '_admin_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, '_admin_enqueue_scripts' ) );
 		add_action( 'rest_api_init', array( $this, '_rest_api_init' ) );
+		add_action( 'admin_notices', array( $this, '_welcome_admin_notice' ), 1 );
 
 		register_uninstall_hook(
 			__FILE__,
@@ -137,7 +138,7 @@ class Manager {
 			'unitone/settings',
 			'currentSettings',
 			array_merge(
-				static::get_options(),
+				static::get_settings(),
 				array(
 					'adminUrl'             => admin_url(),
 					'homeUrl'              => home_url(),
@@ -210,7 +211,7 @@ class Manager {
 			array(
 				'methods'             => 'GET',
 				'callback'            => function() {
-					return static::get_license_status( static::get_option( 'license-key' ) );
+					return static::get_license_status( static::get_setting( 'license-key' ) );
 				},
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );
@@ -229,7 +230,7 @@ class Manager {
 			array(
 				'methods'             => 'GET',
 				'callback'            => function( $request ) {
-					return static::get_options( $request->get_params() );
+					return static::get_settings( $request->get_params() );
 				},
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );
@@ -254,22 +255,22 @@ class Manager {
 
 						$new_settings = array();
 
-						// Extract all but the core options.
+						// Extract all but the core settings.
 						foreach ( self::DEFAULT_SETTINGS as $name => $default ) {
 							if ( array_key_exists( $name, $settings ) ) {
 								$new_settings[ $name ] = $settings[ $name ];
 							}
 						}
 
-						// The new options are sent only in difference.
-						// Therefore, there are merged with the stored options and saved as new options.
+						// The new settings are sent only in difference.
+						// Therefore, there are merged with the stored settings and saved as new settings.
 						$new_settings = array_merge(
 							get_option( self::SETTINGS_NAME ) ? get_option( self::SETTINGS_NAME ) : array(),
 							$new_settings
 						);
 
-						// The options to be deleted are sent as null, so the null options are removed.
-						// Also, if the options are the same as the default options, there are not saved.
+						// The settings to be deleted are sent as null, so the null settings are removed.
+						// Also, if the settings are the same as the default settings, there are not saved.
 						$new_settings = array_filter(
 							$new_settings,
 							function( $value, $key ) {
@@ -448,58 +449,94 @@ class Manager {
 	}
 
 	/**
-	 * Return all options.
+	 * Prints admin screen notices.
+	 */
+	public function _welcome_admin_notice() {
+		$screen = get_current_screen();
+		if ( ! $screen || 'themes' !== $screen->base ) {
+			return;
+		}
+
+		$template = get_template();
+		if ( 'unitone' !== $template ) {
+			return;
+		}
+
+		if ( ! empty( array_diff_assoc( self::DEFAULT_SETTINGS, static::get_settings() ) ) ) {
+			return;
+		}
+		?>
+		<div class="notice unitone-welcome-notice" style="border: none; padding: 4rem 2rem; background-color: #121212; color: #fff">
+			<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center">
+				<div style="flex: 1">
+					<div style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.2rem">
+						<?php echo esc_html_e( 'unitone theme has been activated', 'unitone' ); ?>
+					</div>
+					<div style="font-size: 1.2rem">
+						<?php echo esc_html_e( 'Let\'s start with the initial setup on the unitone setup screen.', 'unitone' ); ?>
+					</div>
+				</div>
+				<div>
+					<a class="button button-primary" style="padding: 0.75rem 1.25rem; font-size: 1rem" href="<?php echo esc_url( admin_url( '/themes.php?page=unitone' ) ); ?>"><?php esc_html_e( 'Go to the setup screen', 'unitone' ); ?></a>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Return all settings.
 	 *
-	 * @param array $keys Array of options keys.
+	 * @param array $keys Array of settings keys.
 	 * @return array
 	 */
-	public static function get_options( $keys = array() ) {
-		$options = shortcode_atts( self::DEFAULT_SETTINGS, get_option( self::SETTINGS_NAME ) );
+	public static function get_settings( $keys = array() ) {
+		$settings = shortcode_atts( self::DEFAULT_SETTINGS, get_option( self::SETTINGS_NAME ) );
 
 		$site_logo = get_option( 'site_logo' );
 		if ( $site_logo ) {
-			$options['site-logo'] = $site_logo;
+			$settings['site-logo'] = $site_logo;
 		}
 
 		$site_icon = get_option( 'site_icon' );
 		if ( $site_icon ) {
-			$options['site-icon'] = $site_icon;
+			$settings['site-icon'] = $site_icon;
 		}
 
 		$show_on_front = get_option( 'show_on_front' );
 		if ( $show_on_front ) {
-			$options['show-on-front'] = $show_on_front;
+			$settings['show-on-front'] = $show_on_front;
 		}
 
 		$page_on_front = get_option( 'page_on_front' );
 		if ( $page_on_front ) {
-			$options['page-on-front'] = $page_on_front;
+			$settings['page-on-front'] = $page_on_front;
 		}
 
 		$page_for_posts = get_option( 'page_for_posts' );
 		if ( $page_for_posts ) {
-			$options['page-for-posts'] = $page_for_posts;
+			$settings['page-for-posts'] = $page_for_posts;
 		}
 
 		return $keys
 			? array_filter(
-				$options,
+				$settings,
 				function( $key ) use ( $keys ) {
 					return in_array( $key, $keys, true );
 				},
 				ARRAY_FILTER_USE_KEY
 			)
-			: $options;
+			: $settings;
 	}
 
 	/**
-	 * Return option.
+	 * Return setting.
 	 *
-	 * @param string $key The option key name.
+	 * @param string $key The setting key name.
 	 * @return mixed
 	 */
-	public static function get_option( $key ) {
-		return static::get_options( array( $key ) )[ $key ] ?? false;
+	public static function get_setting( $key ) {
+		return static::get_settings( array( $key ) )[ $key ] ?? false;
 	}
 
 	/**

@@ -55,8 +55,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		} );
 	};
 
-	console.log( settings?.fontFamilies );
-
 	return (
 		<div
 			data-unitone-layout="decorator -padding:2"

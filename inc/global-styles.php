@@ -11,16 +11,16 @@ use Unitone\App\Controller\Manager\Manager;
  * Set custom global typography.
  */
 function enqueue_typography_styles() {
-	$font_family    = Manager::get_option( 'font-family' );
-	$base_font_size = Manager::get_option( 'base-font-size' );
-	$half_leading   = Manager::get_option( 'half-leading' );
-	$content_size   = Manager::get_option( 'content-size' );
-	$wide_size      = Manager::get_option( 'wide-size' );
-	$h2_size        = Manager::get_option( 'h2-size' );
-	$h3_size        = Manager::get_option( 'h3-size' );
-	$h4_size        = Manager::get_option( 'h4-size' );
-	$h5_size        = Manager::get_option( 'h5-size' );
-	$h6_size        = Manager::get_option( 'h6-size' );
+	$font_family    = Manager::get_setting( 'font-family' );
+	$base_font_size = Manager::get_setting( 'base-font-size' );
+	$half_leading   = Manager::get_setting( 'half-leading' );
+	$content_size   = Manager::get_setting( 'content-size' );
+	$wide_size      = Manager::get_setting( 'wide-size' );
+	$h2_size        = Manager::get_setting( 'h2-size' );
+	$h3_size        = Manager::get_setting( 'h3-size' );
+	$h4_size        = Manager::get_setting( 'h4-size' );
+	$h5_size        = Manager::get_setting( 'h5-size' );
+	$h6_size        = Manager::get_setting( 'h6-size' );
 
 	$global_settings = wp_get_global_settings();
 
@@ -28,8 +28,8 @@ function enqueue_typography_styles() {
 		$font_family,
 		array_column( $global_settings['typography']['fontFamilies']['theme'], 'slug' )
 	);
-	$font_family = false !== $font_family_index
-		? $global_settings['typography']['fontFamilies']['theme'][  $font_family_index ]['fontFamily']
+	$font_family       = false !== $font_family_index
+		? $global_settings['typography']['fontFamilies']['theme'][ $font_family_index ]['fontFamily']
 		: 'sans-serif';
 
 	$stylesheet = sprintf(
@@ -83,19 +83,19 @@ add_action( 'enqueue_block_editor_assets', 'enqueue_typography_styles', 11 );
  * @return WP_Theme_JSON_Data
  */
 function unitone_wp_theme_json_data_theme( $theme_json ) {
-	$accent_color     = Manager::get_option( 'accent-color' );
-	$background_color = Manager::get_option( 'background-color' );
-	$text_color       = Manager::get_option( 'text-color' );
-	$link_color       = Manager::get_option( 'link-color' ) ? Manager::get_option( 'link-color' ) : 'var(--wp--preset--color--unitone-accent)';
+	$accent_color     = Manager::get_setting( 'accent-color' );
+	$background_color = Manager::get_setting( 'background-color' );
+	$text_color       = Manager::get_setting( 'text-color' );
+	$link_color       = Manager::get_setting( 'link-color' ) ? Manager::get_setting( 'link-color' ) : 'var(--wp--preset--color--unitone-accent)';
 
 	$theme_palette = $theme_json->get_data()['settings']['color']['palette']['theme'];
 	foreach ( $theme_palette as $index => $color ) {
 		if ( 'unitone-accent' === $color['slug'] ) {
-			$theme_palette[ $index ]['color'] = Manager::get_option( 'accent-color' );
+			$theme_palette[ $index ]['color'] = Manager::get_setting( 'accent-color' );
 		} elseif ( 'unitone-background' === $color['slug'] ) {
-			$theme_palette[ $index ]['color'] = Manager::get_option( 'background-color' );
+			$theme_palette[ $index ]['color'] = Manager::get_setting( 'background-color' );
 		} elseif ( 'unitone-text' === $color['slug'] ) {
-			$theme_palette[ $index ]['color'] = Manager::get_option( 'text-color' );
+			$theme_palette[ $index ]['color'] = Manager::get_setting( 'text-color' );
 		}
 	}
 

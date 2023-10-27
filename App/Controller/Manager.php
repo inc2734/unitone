@@ -13,7 +13,7 @@ use Unitone\App\Controller\Manager\Manager as Base;
 class Manager {
 
 	public static function get_option( $key ) {
-		return Base::get_option( $key );
+		return Base::get_setting( $key );
 	}
 
 	public static function get_license_status( $license_key ) {

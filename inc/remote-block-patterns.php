@@ -5,6 +5,8 @@
  * @license GPL-2.0+
  */
 
+use \Unitone\App\Controller\Manager\Manager;
+
 /**
  * Get remote block pattern categories.
  *
@@ -122,7 +124,7 @@ function unitone_get_free_remote_block_pattens() {
  * @return array
  */
 function unitone_get_premium_remote_block_pattens() {
-	$license_key = \Unitone\App\Controller\Manager::get_option( 'license-key' );
+	$license_key = Manager::get_setting( 'license-key' );
 
 	$url = sprintf(
 		'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/patterns/%1$s',
@@ -163,8 +165,8 @@ function unitone_register_remote_block_patterns() {
 	if ( false !== $transient ) {
 		$remote_block_patterns = $transient;
 	} else {
-		$license_key = \Unitone\App\Controller\Manager::get_option( 'license-key' );
-		$status      = \Unitone\App\Controller\Manager::get_license_status( $license_key );
+		$license_key = Manager::get_setting( 'license-key' );
+		$status      = Manager::get_license_status( $license_key );
 
 		if ( 'true' === $status ) {
 			$remote_block_patterns = unitone_get_premium_remote_block_pattens();

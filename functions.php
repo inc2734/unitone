@@ -35,14 +35,6 @@ if ( ! function_exists( 'unitone_theme_setup' ) ) {
 		// Make theme available for translation.
 		load_theme_textdomain( 'unitone', get_template_directory() . '/languages' );
 
-		// Register Navigation menus.
-		// This is not required but necessary because a Notice error will occur in the customizer if it is not present.
-		register_nav_menus(
-			array(
-				'primary' => esc_html__( 'Primary', 'unitone' ),
-			)
-		);
-
 		// Add support for block styles.
 		// add_theme_support( 'wp-block-styles' );
 

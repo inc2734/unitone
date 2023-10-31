@@ -9,7 +9,18 @@
 @use "sass:meta";
 @use '../../../node_modules/@inc2734/unitone-css/src/settings/settings';
 
-.editor-styles-wrapper {
+/*
+## non iframe
+.editor-styles-wrapper.block-editor-writing-flow
+
+## iframe
+.block-editor-iframe__body.editor-styles-wrapper
+*/
+
+// .editor-styles-wrapper {
+// :where(.editor-styles-wrapper) {
+.editor-styles-wrapper:where(.block-editor-writing-flow),
+:where(.editor-styles-wrapper.block-editor-iframe__body) {
 	@include meta.load-css("foundation");
 	@include meta.load-css("wp-blocks/wp-blocks");
 	@include meta.load-css("blocks");

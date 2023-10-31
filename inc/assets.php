@@ -62,23 +62,36 @@ function unitone_enqueue_block_editor_assets() {
 	);
 
 	$css = file_get_contents( get_template_directory() . '/dist/css/app/editor-style.css' );
+
+	// For non iframe editor and iframe editor.
 	$css = str_replace(
 		array(
-			'.editor-styles-wrapper :root',
-			'.editor-styles-wrapper html',
-			'.editor-styles-wrapper body',
-			'html',
-			// 'body', // tbody also disappears.
+			':where(body)',
 		),
-		'.editor-styles-wrapper',
+		':where(.editor-styles-wrapper)',
 		$css
 	);
-	$css = preg_replace(
-		'|([^t])body|s',
-		'$1.editor-styles-wrapper',
+
+	// For non iframe editor
+	$css = str_replace(
+		array(
+			'.editor-styles-wrapper:where(.block-editor-writing-flow) html',
+			'.editor-styles-wrapper:where(.block-editor-writing-flow) body',
+		),
+		'.editor-styles-wrapper:where(.block-editor-writing-flow)',
 		$css
 	);
-	$css = preg_replace( '|([^a-zA-Z]):root|ms', '$1.editor-styles-wrapper', $css );
+
+	// For iframe editor
+	$css = str_replace(
+		array(
+			':where(.editor-styles-wrapper.block-editor-iframe__body) html',
+			':where(.editor-styles-wrapper.block-editor-iframe__body) body',
+		),
+		':where(.editor-styles-wrapper.block-editor-iframe__body)',
+		$css
+	);
+
 	$css = str_replace( '}:where(.editor-styles-wrapper)', '}html :where(.editor-styles-wrapper)', $css );
 	wp_add_inline_style(
 		'unitone',

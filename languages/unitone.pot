@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 7.1.0\n"
+"Project-Id-Version: unitone 7.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-10-27T05:50:59+00:00\n"
+"POT-Creation-Date: 2023-10-31T15:47:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: unitone\n"
@@ -20,8 +20,8 @@ msgstr ""
 #: inc/block-categories.php:40
 #: inc/block-categories.php:51
 #: inc/block-styles.php:93
-#: dist/js/editor/editor.js:5029
-#: dist/js/editor/editor.js:5592
+#: dist/js/editor/editor.js:5057
+#: dist/js/editor/editor.js:5605
 msgid "unitone"
 msgstr ""
 
@@ -39,10 +39,10 @@ msgstr ""
 
 #: App/Controller/Manager/Manager.php:69
 #: App/Controller/Manager/Manager.php:70
-#: App/Controller/Manager/dist/js/app.js:3384
-#: App/Controller/Manager/dist/js/app.js:3471
-#: App/Controller/Manager/dist/js/app.js:3188
-#: App/Controller/Manager/dist/js/app.js:3318
+#: App/Controller/Manager/dist/js/app.js:3383
+#: App/Controller/Manager/dist/js/app.js:3470
+#: App/Controller/Manager/dist/js/app.js:3186
+#: App/Controller/Manager/dist/js/app.js:3316
 msgid "unitone Setup"
 msgstr ""
 
@@ -110,9 +110,9 @@ msgstr ""
 
 #: inc/block-categories.php:21
 #: App/Controller/Manager/dist/js/app.js:2850
-#: dist/js/editor/editor.js:3838
+#: dist/js/editor/editor.js:3866
 #: App/Controller/Manager/dist/js/app.js:2468
-#: dist/js/editor/editor.js:4067
+#: dist/js/editor/editor.js:4080
 msgid "Layout"
 msgstr ""
 
@@ -439,20 +439,20 @@ msgstr ""
 
 #: inc/block-styles.php:29
 #: inc/block-styles.php:109
-#: dist/js/editor/editor.js:1332
-#: dist/js/editor/editor.js:1308
+#: dist/js/editor/editor.js:1360
+#: dist/js/editor/editor.js:1321
 msgid "Underline"
 msgstr ""
 
 #: inc/block-styles.php:37
-#: dist/js/editor/editor.js:1338
-#: dist/js/editor/editor.js:1316
+#: dist/js/editor/editor.js:1366
+#: dist/js/editor/editor.js:1329
 msgid "Bordered"
 msgstr ""
 
 #: inc/block-styles.php:45
-#: dist/js/editor/editor.js:1329
-#: dist/js/editor/editor.js:1304
+#: dist/js/editor/editor.js:1357
+#: dist/js/editor/editor.js:1317
 msgid "Stripe"
 msgstr ""
 
@@ -1263,12 +1263,12 @@ msgstr ""
 #: App/Controller/Manager/dist/js/app.js:2774
 #: App/Controller/Manager/dist/js/app.js:2890
 #: App/Controller/Manager/dist/js/app.js:3019
-#: App/Controller/Manager/dist/js/app.js:3246
+#: App/Controller/Manager/dist/js/app.js:3245
 #: App/Controller/Manager/dist/js/app.js:1954
 #: App/Controller/Manager/dist/js/app.js:2404
 #: App/Controller/Manager/dist/js/app.js:2517
 #: App/Controller/Manager/dist/js/app.js:2655
-#: App/Controller/Manager/dist/js/app.js:3027
+#: App/Controller/Manager/dist/js/app.js:3025
 msgid "Save Settings"
 msgstr ""
 
@@ -1276,12 +1276,12 @@ msgstr ""
 #: App/Controller/Manager/dist/js/app.js:2778
 #: App/Controller/Manager/dist/js/app.js:2894
 #: App/Controller/Manager/dist/js/app.js:3023
-#: App/Controller/Manager/dist/js/app.js:3250
+#: App/Controller/Manager/dist/js/app.js:3249
 #: App/Controller/Manager/dist/js/app.js:1962
 #: App/Controller/Manager/dist/js/app.js:2412
 #: App/Controller/Manager/dist/js/app.js:2525
 #: App/Controller/Manager/dist/js/app.js:2663
-#: App/Controller/Manager/dist/js/app.js:3035
+#: App/Controller/Manager/dist/js/app.js:3033
 msgid "Reset All Settings"
 msgstr ""
 
@@ -1396,80 +1396,80 @@ msgstr ""
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3098
-#: App/Controller/Manager/dist/js/app.js:2736
+#: App/Controller/Manager/dist/js/app.js:3097
+#: App/Controller/Manager/dist/js/app.js:2734
 msgid "Typography"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3160
-#: App/Controller/Manager/dist/js/app.js:2835
+#: App/Controller/Manager/dist/js/app.js:3159
+#: App/Controller/Manager/dist/js/app.js:2833
 msgid "Font"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3171
-#: App/Controller/Manager/dist/js/app.js:2852
+#: App/Controller/Manager/dist/js/app.js:3170
+#: App/Controller/Manager/dist/js/app.js:2850
 msgid "Base Font Size"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3181
-#: App/Controller/Manager/dist/js/app.js:2868
+#: App/Controller/Manager/dist/js/app.js:3180
+#: App/Controller/Manager/dist/js/app.js:2866
 msgid "Half Leading"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3192
-#: App/Controller/Manager/dist/js/app.js:2884
+#: App/Controller/Manager/dist/js/app.js:3191
+#: App/Controller/Manager/dist/js/app.js:2882
 msgid "Size of h2"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3202
-#: App/Controller/Manager/dist/js/app.js:2911
+#: App/Controller/Manager/dist/js/app.js:3201
+#: App/Controller/Manager/dist/js/app.js:2909
 msgid "Size of h3"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3212
-#: App/Controller/Manager/dist/js/app.js:2938
+#: App/Controller/Manager/dist/js/app.js:3211
+#: App/Controller/Manager/dist/js/app.js:2936
 msgid "Size of h4"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3222
-#: App/Controller/Manager/dist/js/app.js:2965
+#: App/Controller/Manager/dist/js/app.js:3221
+#: App/Controller/Manager/dist/js/app.js:2963
 msgid "Size of h5"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3232
-#: App/Controller/Manager/dist/js/app.js:2992
+#: App/Controller/Manager/dist/js/app.js:3231
+#: App/Controller/Manager/dist/js/app.js:2990
 msgid "Size of h6"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3331
-#: App/Controller/Manager/dist/js/app.js:3375
-#: App/Controller/Manager/dist/js/app.js:3103
-#: App/Controller/Manager/dist/js/app.js:3172
+#: App/Controller/Manager/dist/js/app.js:3330
+#: App/Controller/Manager/dist/js/app.js:3374
+#: App/Controller/Manager/dist/js/app.js:3101
+#: App/Controller/Manager/dist/js/app.js:3170
 msgid "Go to the Dashboard"
 msgstr ""
 
+#: App/Controller/Manager/dist/js/app.js:3348
 #: App/Controller/Manager/dist/js/app.js:3349
-#: App/Controller/Manager/dist/js/app.js:3350
-#: App/Controller/Manager/dist/js/app.js:3133
-#: App/Controller/Manager/dist/js/app.js:3137
+#: App/Controller/Manager/dist/js/app.js:3131
+#: App/Controller/Manager/dist/js/app.js:3135
 msgid "View site (opens in a new tab)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3356
-#: App/Controller/Manager/dist/js/app.js:3151
+#: App/Controller/Manager/dist/js/app.js:3355
+#: App/Controller/Manager/dist/js/app.js:3149
 msgid "Navigation"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:3421
-#: App/Controller/Manager/dist/js/app.js:3506
-#: App/Controller/Manager/dist/js/app.js:3251
-#: App/Controller/Manager/dist/js/app.js:3369
+#: App/Controller/Manager/dist/js/app.js:3420
+#: App/Controller/Manager/dist/js/app.js:3505
+#: App/Controller/Manager/dist/js/app.js:3249
+#: App/Controller/Manager/dist/js/app.js:3367
 msgid "Retrieve patterns from the pattern library"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:319
 #: dist/blocks/center/index.js:119
-#: dist/blocks/child-pages/index.js:49
+#: dist/blocks/child-pages/index.js:138
 #: dist/blocks/cluster-divided/index.js:337
 #: dist/blocks/cover-content/index.js:130
 #: dist/blocks/decorator/index.js:400
@@ -1489,7 +1489,7 @@ msgstr ""
 #: dist/blocks/with-sidebar/index.js:370
 #: dist/blocks/accordion/index.js:364
 #: dist/blocks/center/index.js:109
-#: dist/blocks/child-pages/index.js:36
+#: dist/blocks/child-pages/index.js:95
 #: dist/blocks/cluster-divided/index.js:319
 #: dist/blocks/decorator/index.js:390
 #: dist/blocks/flex/index.js:44
@@ -1595,38 +1595,38 @@ msgstr ""
 msgid "Text is also centered"
 msgstr ""
 
-#: dist/blocks/child-pages/index.js:53
-#: dist/blocks/child-pages/index.js:58
-#: dist/blocks/child-pages/index.js:43
-#: dist/blocks/child-pages/index.js:52
+#: dist/blocks/child-pages/index.js:142
+#: dist/blocks/child-pages/index.js:147
+#: dist/blocks/child-pages/index.js:102
+#: dist/blocks/child-pages/index.js:111
 msgid "Show top-level child pages"
 msgstr ""
 
-#: dist/blocks/child-pages/index.js:68
-#: dist/blocks/child-pages/index.js:73
-#: dist/blocks/child-pages/index.js:69
-#: dist/blocks/child-pages/index.js:77
+#: dist/blocks/child-pages/index.js:157
+#: dist/blocks/child-pages/index.js:162
+#: dist/blocks/child-pages/index.js:128
+#: dist/blocks/child-pages/index.js:136
 msgid "Specify the parent page"
 msgstr ""
 
-#: dist/blocks/child-pages/index.js:74
-#: dist/blocks/child-pages/index.js:81
+#: dist/blocks/child-pages/index.js:163
+#: dist/blocks/child-pages/index.js:140
 msgid "If not specified, a list of child pages of this page will be displayed."
 msgstr ""
 
-#: dist/blocks/child-pages/index.js:83
-#: dist/blocks/child-pages/index.js:93
+#: dist/blocks/child-pages/index.js:179
+#: dist/blocks/child-pages/index.js:166
 msgid "Search"
 msgstr ""
 
-#: dist/blocks/child-pages/index.js:104
-#: dist/blocks/child-pages/index.js:109
+#: dist/blocks/child-pages/index.js:200
+#: dist/blocks/child-pages/index.js:205
 #: dist/blocks/responsive-grid-divided/index.js:347
 #: dist/blocks/responsive-grid-divided/index.js:352
 #: dist/blocks/responsive-grid/index.js:187
 #: dist/blocks/responsive-grid/index.js:192
-#: dist/blocks/child-pages/index.js:131
-#: dist/blocks/child-pages/index.js:143
+#: dist/blocks/child-pages/index.js:204
+#: dist/blocks/child-pages/index.js:216
 #: dist/blocks/responsive-grid-divided/index.js:314
 #: dist/blocks/responsive-grid-divided/index.js:325
 #: dist/blocks/responsive-grid/index.js:183
@@ -1635,10 +1635,10 @@ msgid "Column min width"
 msgstr ""
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: dist/blocks/child-pages/index.js:113
+#: dist/blocks/child-pages/index.js:209
 #: dist/blocks/responsive-grid-divided/index.js:356
 #: dist/blocks/responsive-grid/index.js:196
-#: dist/blocks/child-pages/index.js:149
+#: dist/blocks/child-pages/index.js:222
 #: dist/blocks/responsive-grid-divided/index.js:331
 #: dist/blocks/responsive-grid/index.js:200
 msgid "Inside the %1$sgrid-template-columns%2$s formula"
@@ -1858,11 +1858,11 @@ msgid "Free input"
 msgstr ""
 
 #: dist/blocks/grid/index.js:194
-#: dist/js/editor/editor.js:3921
-#: dist/js/editor/editor.js:3926
+#: dist/js/editor/editor.js:3949
+#: dist/js/editor/editor.js:3954
 #: dist/blocks/grid/index.js:252
-#: dist/js/editor/editor.js:4274
-#: dist/js/editor/editor.js:4282
+#: dist/js/editor/editor.js:4287
+#: dist/js/editor/editor.js:4295
 msgid "Auto repeat"
 msgstr ""
 
@@ -2200,55 +2200,55 @@ msgid "Left title / Subtitle"
 msgstr ""
 
 #: dist/blocks/slider/index.js:409
-#: dist/js/editor/editor.js:1865
+#: dist/js/editor/editor.js:1893
 #: dist/blocks/slider/index.js:362
-#: dist/js/editor/editor.js:1836
+#: dist/js/editor/editor.js:1849
 msgid "Align items top"
 msgstr ""
 
 #: dist/blocks/slider/index.js:413
-#: dist/js/editor/editor.js:1869
+#: dist/js/editor/editor.js:1897
 #: dist/blocks/slider/index.js:367
-#: dist/js/editor/editor.js:1841
+#: dist/js/editor/editor.js:1854
 msgid "Align items center"
 msgstr ""
 
 #: dist/blocks/slider/index.js:417
-#: dist/js/editor/editor.js:1873
+#: dist/js/editor/editor.js:1901
 #: dist/blocks/slider/index.js:372
-#: dist/js/editor/editor.js:1846
+#: dist/js/editor/editor.js:1859
 msgid "Align items bottom"
 msgstr ""
 
 #: dist/blocks/slider/index.js:422
-#: dist/js/editor/editor.js:3426
+#: dist/js/editor/editor.js:3454
 #: dist/blocks/slider/index.js:380
-#: dist/js/editor/editor.js:3472
+#: dist/js/editor/editor.js:3485
 msgid "Justify items left"
 msgstr ""
 
 #: dist/blocks/slider/index.js:426
-#: dist/js/editor/editor.js:3229
-#: dist/js/editor/editor.js:3430
+#: dist/js/editor/editor.js:3257
+#: dist/js/editor/editor.js:3458
 #: dist/blocks/slider/index.js:385
-#: dist/js/editor/editor.js:3254
-#: dist/js/editor/editor.js:3477
+#: dist/js/editor/editor.js:3267
+#: dist/js/editor/editor.js:3490
 msgid "Justify items center"
 msgstr ""
 
 #: dist/blocks/slider/index.js:430
-#: dist/js/editor/editor.js:3434
+#: dist/js/editor/editor.js:3462
 #: dist/blocks/slider/index.js:390
-#: dist/js/editor/editor.js:3482
+#: dist/js/editor/editor.js:3495
 msgid "Justify items right"
 msgstr ""
 
 #: dist/blocks/slider/index.js:434
-#: dist/js/editor/editor.js:3237
-#: dist/js/editor/editor.js:3438
+#: dist/js/editor/editor.js:3265
+#: dist/js/editor/editor.js:3466
 #: dist/blocks/slider/index.js:395
-#: dist/js/editor/editor.js:3264
-#: dist/js/editor/editor.js:3487
+#: dist/js/editor/editor.js:3277
+#: dist/js/editor/editor.js:3500
 msgid "Justify items space-between"
 msgstr ""
 
@@ -2448,24 +2448,24 @@ msgid "Columns to be treated as sidebars"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:399
-#: dist/js/editor/editor.js:2365
-#: dist/js/editor/editor.js:4549
-#: dist/js/editor/editor.js:4567
+#: dist/js/editor/editor.js:2393
+#: dist/js/editor/editor.js:4577
+#: dist/js/editor/editor.js:4595
 #: dist/blocks/with-sidebar/index.js:416
-#: dist/js/editor/editor.js:2357
-#: dist/js/editor/editor.js:5000
-#: dist/js/editor/editor.js:5024
+#: dist/js/editor/editor.js:2370
+#: dist/js/editor/editor.js:5013
+#: dist/js/editor/editor.js:5037
 msgid "Right"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:402
-#: dist/js/editor/editor.js:2357
-#: dist/js/editor/editor.js:4637
-#: dist/js/editor/editor.js:4655
+#: dist/js/editor/editor.js:2385
+#: dist/js/editor/editor.js:4665
+#: dist/js/editor/editor.js:4683
 #: dist/blocks/with-sidebar/index.js:420
-#: dist/js/editor/editor.js:2347
-#: dist/js/editor/editor.js:5120
-#: dist/js/editor/editor.js:5144
+#: dist/js/editor/editor.js:2360
+#: dist/js/editor/editor.js:5133
+#: dist/js/editor/editor.js:5157
 msgid "Left"
 msgstr ""
 
@@ -2506,278 +2506,284 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: dist/js/editor/editor.js:225
-#: dist/js/editor/editor.js:162
+#: dist/js/editor/editor.js:253
+#: dist/js/editor/editor.js:175
 msgid "Using root padding"
 msgstr ""
 
-#: dist/js/editor/editor.js:312
-#: dist/js/editor/editor.js:319
-#: dist/js/editor/editor.js:280
-#: dist/js/editor/editor.js:290
+#: dist/js/editor/editor.js:340
+#: dist/js/editor/editor.js:347
+#: dist/js/editor/editor.js:293
+#: dist/js/editor/editor.js:303
 msgid "Padding"
 msgstr ""
 
-#: dist/js/editor/editor.js:322
-#: dist/js/editor/editor.js:329
-#: dist/js/editor/editor.js:301
-#: dist/js/editor/editor.js:311
+#: dist/js/editor/editor.js:350
+#: dist/js/editor/editor.js:357
+#: dist/js/editor/editor.js:314
+#: dist/js/editor/editor.js:324
 msgid "Gutters"
 msgstr ""
 
-#: dist/js/editor/editor.js:332
-#: dist/js/editor/editor.js:339
-#: dist/js/editor/editor.js:322
+#: dist/js/editor/editor.js:360
+#: dist/js/editor/editor.js:367
+#: dist/js/editor/editor.js:335
+#: dist/js/editor/editor.js:345
 msgid "Gap"
 msgstr ""
 
-#: dist/js/editor/editor.js:342
-#: dist/js/editor/editor.js:349
-#: dist/js/editor/editor.js:343
-#: dist/js/editor/editor.js:351
+#: dist/js/editor/editor.js:370
+#: dist/js/editor/editor.js:377
+#: dist/js/editor/editor.js:356
+#: dist/js/editor/editor.js:364
 msgid "Using negative margin"
 msgstr ""
 
-#: dist/js/editor/editor.js:352
-#: dist/js/editor/editor.js:359
-#: dist/js/editor/editor.js:369
+#: dist/js/editor/editor.js:380
+#: dist/js/editor/editor.js:387
+#: dist/js/editor/editor.js:372
+#: dist/js/editor/editor.js:382
 msgid "Overflow"
 msgstr ""
 
-#: dist/js/editor/editor.js:1335
-#: dist/js/editor/editor.js:1312
+#: dist/js/editor/editor.js:1363
+#: dist/js/editor/editor.js:1325
 msgid "Slash"
 msgstr ""
 
-#: dist/js/editor/editor.js:1475
-#: dist/js/editor/editor.js:1486
-#: dist/js/editor/editor.js:1491
-#: dist/js/editor/editor.js:1472
-#: dist/js/editor/editor.js:1490
-#: dist/js/editor/editor.js:1496
+#: dist/js/editor/editor.js:1503
+#: dist/js/editor/editor.js:1514
+#: dist/js/editor/editor.js:1519
+#: dist/js/editor/editor.js:1485
+#: dist/js/editor/editor.js:1509
 msgid "Divider"
 msgstr ""
 
-#: dist/js/editor/editor.js:1478
-#: dist/js/editor/editor.js:1483
-#: dist/js/editor/editor.js:1476
-#: dist/js/editor/editor.js:1482
+#: dist/js/editor/editor.js:1506
+#: dist/js/editor/editor.js:1511
+#: dist/js/editor/editor.js:1489
+#: dist/js/editor/editor.js:1495
 msgid "Type"
 msgstr ""
 
-#: dist/js/editor/editor.js:1626
-#: dist/js/editor/editor.js:1598
+#: dist/js/editor/editor.js:1654
+#: dist/js/editor/editor.js:1611
 msgid "Layer"
 msgstr ""
 
-#: dist/js/editor/editor.js:1629
-#: dist/js/editor/editor.js:1635
-#: dist/js/editor/editor.js:1602
-#: dist/js/editor/editor.js:1611
+#: dist/js/editor/editor.js:1657
+#: dist/js/editor/editor.js:1663
+#: dist/js/editor/editor.js:1615
+#: dist/js/editor/editor.js:1624
 msgid "Mix blend mode"
 msgstr ""
 
-#: dist/js/editor/editor.js:1877
-#: dist/js/editor/editor.js:1851
+#: dist/js/editor/editor.js:1905
+#: dist/js/editor/editor.js:1864
 msgid "Stretch to fill"
 msgstr ""
 
-#: dist/js/editor/editor.js:2212
-#: dist/js/editor/editor.js:2215
+#: dist/js/editor/editor.js:2240
+#: dist/js/editor/editor.js:2228
 msgid "auto-fill"
 msgstr ""
 
-#: dist/js/editor/editor.js:2215
-#: dist/js/editor/editor.js:2219
+#: dist/js/editor/editor.js:2243
+#: dist/js/editor/editor.js:2232
 msgid "auto-fit"
 msgstr ""
 
-#: dist/js/editor/editor.js:2361
-#: dist/js/editor/editor.js:2352
+#: dist/js/editor/editor.js:2389
+#: dist/js/editor/editor.js:2365
 msgid "Center"
 msgstr ""
 
-#: dist/js/editor/editor.js:3225
-#: dist/js/editor/editor.js:3249
+#: dist/js/editor/editor.js:3253
+#: dist/js/editor/editor.js:3262
 msgid "Justify items top"
 msgstr ""
 
-#: dist/js/editor/editor.js:3233
-#: dist/js/editor/editor.js:3259
+#: dist/js/editor/editor.js:3261
+#: dist/js/editor/editor.js:3272
 msgid "Justify items bottom"
 msgstr ""
 
-#: dist/js/editor/editor.js:3841
-#: dist/js/editor/editor.js:3846
-#: dist/js/editor/editor.js:4073
-#: dist/js/editor/editor.js:4083
+#: dist/js/editor/editor.js:3869
+#: dist/js/editor/editor.js:3874
+#: dist/js/editor/editor.js:4086
+#: dist/js/editor/editor.js:4096
 msgid "Justify content"
 msgstr ""
 
-#: dist/js/editor/editor.js:3849
-#: dist/js/editor/editor.js:3854
-#: dist/js/editor/editor.js:3857
-#: dist/js/editor/editor.js:3862
-#: dist/js/editor/editor.js:4100
-#: dist/js/editor/editor.js:4110
-#: dist/js/editor/editor.js:4122
-#: dist/js/editor/editor.js:4130
+#: dist/js/editor/editor.js:3877
+#: dist/js/editor/editor.js:3882
+#: dist/js/editor/editor.js:3885
+#: dist/js/editor/editor.js:3890
+#: dist/js/editor/editor.js:4113
+#: dist/js/editor/editor.js:4123
+#: dist/js/editor/editor.js:4135
+#: dist/js/editor/editor.js:4143
 msgid "Align items"
 msgstr ""
 
-#: dist/js/editor/editor.js:3865
-#: dist/js/editor/editor.js:3870
-#: dist/js/editor/editor.js:4142
-#: dist/js/editor/editor.js:4148
+#: dist/js/editor/editor.js:3893
+#: dist/js/editor/editor.js:3898
+#: dist/js/editor/editor.js:4155
+#: dist/js/editor/editor.js:4161
 msgid "Block alignment"
 msgstr ""
 
-#: dist/js/editor/editor.js:3873
-#: dist/js/editor/editor.js:3878
-#: dist/js/editor/editor.js:4156
-#: dist/js/editor/editor.js:4164
+#: dist/js/editor/editor.js:3901
+#: dist/js/editor/editor.js:3906
+#: dist/js/editor/editor.js:4169
+#: dist/js/editor/editor.js:4177
 msgid "Fill"
 msgstr ""
 
-#: dist/js/editor/editor.js:3881
-#: dist/js/editor/editor.js:3886
-#: dist/js/editor/editor.js:4175
-#: dist/js/editor/editor.js:4183
+#: dist/js/editor/editor.js:3909
+#: dist/js/editor/editor.js:3914
+#: dist/js/editor/editor.js:4188
+#: dist/js/editor/editor.js:4196
 msgid "Fit"
 msgstr ""
 
-#: dist/js/editor/editor.js:3889
-#: dist/js/editor/editor.js:3894
-#: dist/js/editor/editor.js:4195
-#: dist/js/editor/editor.js:4203
+#: dist/js/editor/editor.js:3917
+#: dist/js/editor/editor.js:3922
+#: dist/js/editor/editor.js:4208
+#: dist/js/editor/editor.js:4216
 msgid "Recommended width"
 msgstr ""
 
-#: dist/js/editor/editor.js:3897
-#: dist/js/editor/editor.js:3902
-#: dist/js/editor/editor.js:4217
-#: dist/js/editor/editor.js:4225
+#: dist/js/editor/editor.js:3925
+#: dist/js/editor/editor.js:3930
+#: dist/js/editor/editor.js:4230
+#: dist/js/editor/editor.js:4238
 msgid "Max width"
 msgstr ""
 
-#: dist/js/editor/editor.js:3905
-#: dist/js/editor/editor.js:3910
-#: dist/js/editor/editor.js:4236
-#: dist/js/editor/editor.js:4244
+#: dist/js/editor/editor.js:3933
+#: dist/js/editor/editor.js:3938
+#: dist/js/editor/editor.js:4249
+#: dist/js/editor/editor.js:4257
 msgid "Max height"
 msgstr ""
 
-#: dist/js/editor/editor.js:3913
-#: dist/js/editor/editor.js:3918
-#: dist/js/editor/editor.js:4255
-#: dist/js/editor/editor.js:4263
+#: dist/js/editor/editor.js:3941
+#: dist/js/editor/editor.js:3946
+#: dist/js/editor/editor.js:4268
+#: dist/js/editor/editor.js:4276
 msgid "Min height"
 msgstr ""
 
-#: dist/js/editor/editor.js:3929
-#: dist/js/editor/editor.js:3935
-#: dist/js/editor/editor.js:4294
-#: dist/js/editor/editor.js:4303
+#: dist/js/editor/editor.js:3957
+#: dist/js/editor/editor.js:3963
+#: dist/js/editor/editor.js:4307
+#: dist/js/editor/editor.js:4316
 msgid "Align self"
 msgstr ""
 
-#: dist/js/editor/editor.js:3938
-#: dist/js/editor/editor.js:3944
-#: dist/js/editor/editor.js:4315
-#: dist/js/editor/editor.js:4326
+#: dist/js/editor/editor.js:3966
+#: dist/js/editor/editor.js:3972
+#: dist/js/editor/editor.js:4328
+#: dist/js/editor/editor.js:4339
 msgid "Justify self"
 msgstr ""
 
-#: dist/js/editor/editor.js:3947
-#: dist/js/editor/editor.js:3953
-#: dist/js/editor/editor.js:4338
-#: dist/js/editor/editor.js:4352
+#: dist/js/editor/editor.js:3975
+#: dist/js/editor/editor.js:3981
+#: dist/js/editor/editor.js:4351
+#: dist/js/editor/editor.js:4365
 msgid "A grid item's size and location within a grid column"
 msgstr ""
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: dist/js/editor/editor.js:3958
-#: dist/js/editor/editor.js:3974
-#: dist/js/editor/editor.js:4365
-#: dist/js/editor/editor.js:4407
+#: dist/js/editor/editor.js:3986
+#: dist/js/editor/editor.js:4002
+#: dist/js/editor/editor.js:4378
+#: dist/js/editor/editor.js:4420
 msgid "For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line)."
 msgstr ""
 
-#: dist/js/editor/editor.js:3963
-#: dist/js/editor/editor.js:3969
-#: dist/js/editor/editor.js:4382
-#: dist/js/editor/editor.js:4394
+#: dist/js/editor/editor.js:3991
+#: dist/js/editor/editor.js:3997
+#: dist/js/editor/editor.js:4395
+#: dist/js/editor/editor.js:4407
 msgid "A grid item's size and location within the grid row"
 msgstr ""
 
-#: dist/js/editor/editor.js:4439
-#: dist/js/editor/editor.js:4442
-#: dist/js/editor/editor.js:4460
-#: dist/js/editor/editor.js:4856
-#: dist/js/editor/editor.js:4861
-#: dist/js/editor/editor.js:4885
+#: dist/js/editor/editor.js:4467
+#: dist/js/editor/editor.js:4470
+#: dist/js/editor/editor.js:4488
+#: dist/js/editor/editor.js:4869
+#: dist/js/editor/editor.js:4874
+#: dist/js/editor/editor.js:4898
 msgid "Position"
 msgstr ""
 
-#: dist/js/editor/editor.js:4505
-#: dist/js/editor/editor.js:4523
-#: dist/js/editor/editor.js:4940
-#: dist/js/editor/editor.js:4964
+#: dist/js/editor/editor.js:4533
+#: dist/js/editor/editor.js:4551
+#: dist/js/editor/editor.js:4953
+#: dist/js/editor/editor.js:4977
 msgid "Top"
 msgstr ""
 
-#: dist/js/editor/editor.js:4593
-#: dist/js/editor/editor.js:4611
-#: dist/js/editor/editor.js:5060
-#: dist/js/editor/editor.js:5084
+#: dist/js/editor/editor.js:4621
+#: dist/js/editor/editor.js:4639
+#: dist/js/editor/editor.js:5073
+#: dist/js/editor/editor.js:5097
 msgid "Bottom"
 msgstr ""
 
-#: dist/js/editor/editor.js:4681
-#: dist/js/editor/editor.js:4699
-#: dist/js/editor/editor.js:5180
-#: dist/js/editor/editor.js:5204
+#: dist/js/editor/editor.js:4709
+#: dist/js/editor/editor.js:4727
+#: dist/js/editor/editor.js:5193
+#: dist/js/editor/editor.js:5217
 msgid "The stack level"
 msgstr ""
 
-#: dist/js/editor/editor.js:5032
-#: dist/js/editor/editor.js:5038
-#: dist/js/editor/editor.js:5597
-#: dist/js/editor/editor.js:5606
+#: dist/js/editor/editor.js:5060
+#: dist/js/editor/editor.js:5066
+#: dist/js/editor/editor.js:5610
+#: dist/js/editor/editor.js:5619
 msgid "Cell Min Width"
 msgstr ""
 
-#: dist/js/editor/editor.js:5303
-#: dist/js/editor/editor.js:5310
-#: dist/js/editor/editor.js:5843
-#: dist/js/editor/editor.js:5851
+#: dist/js/editor/editor.js:5331
+#: dist/js/editor/editor.js:5338
+#: dist/js/editor/editor.js:5856
+#: dist/js/editor/editor.js:5864
 msgid "Fluid typography"
 msgstr ""
 
-#: dist/js/editor/editor.js:5313
-#: dist/js/editor/editor.js:5320
-#: dist/js/editor/editor.js:5859
-#: dist/js/editor/editor.js:5867
+#: dist/js/editor/editor.js:5341
+#: dist/js/editor/editor.js:5348
+#: dist/js/editor/editor.js:5872
+#: dist/js/editor/editor.js:5880
 msgid "Half leading"
 msgstr ""
 
-#: dist/js/editor/editor.js:5589
-#: dist/js/editor/editor.js:6133
+#: dist/js/editor/editor.js:5551
+#: dist/js/editor/editor.js:6077
+msgid "Show block outline"
+msgstr ""
+
+#: dist/js/editor/editor.js:5714
+#: dist/js/editor/editor.js:6244
 msgid "Currently Selected"
 msgstr ""
 
-#: dist/js/editor/editor.js:5598
-#: dist/js/editor/editor.js:6149
+#: dist/js/editor/editor.js:5723
+#: dist/js/editor/editor.js:6261
 msgid "Select a block of ancestors"
 msgstr ""
 
-#: dist/js/editor/editor.js:5608
-#: dist/js/editor/editor.js:6168
+#: dist/js/editor/editor.js:5733
+#: dist/js/editor/editor.js:6280
 msgid "Select a child block"
 msgstr ""
 
-#: dist/js/editor/editor.js:5897
-#: dist/js/editor/editor.js:6449
+#: dist/js/editor/editor.js:6022
+#: dist/js/editor/editor.js:6565
 msgid "Replace"
 msgstr ""
 

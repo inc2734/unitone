@@ -96,41 +96,46 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 
 		return (
 			<>
-				<BlockControls>
-					<ToolbarGroup>
-						<ToolbarDropdownMenu
-							icon={ LevelUp }
-							label={ __(
-								'Select a block of ancestors',
-								'unitone'
-							) }
-							controls={ ( 0 < parents.length
-								? [ ...parents, current ]
-								: []
-							).map( ( innerBlock ) => {
-								return {
-									title: innerBlock.title,
-									icon: innerBlock.icon.src,
-									onClick: () =>
-										selectBlock( innerBlock.clientId ),
-								};
-							} ) }
-						/>
+				{ ( 0 < parents.length || 0 < innerBlocks.length ) && (
+					<BlockControls>
+						<ToolbarGroup>
+							<ToolbarDropdownMenu
+								icon={ LevelUp }
+								label={ __(
+									'Select a block of ancestors',
+									'unitone'
+								) }
+								controls={ ( 0 < parents.length
+									? [ ...parents, current ]
+									: []
+								).map( ( innerBlock ) => {
+									return {
+										title: innerBlock.title,
+										icon: innerBlock.icon.src,
+										onClick: () =>
+											selectBlock( innerBlock.clientId ),
+									};
+								} ) }
+							/>
 
-						<ToolbarDropdownMenu
-							icon={ LevelDown }
-							label={ __( 'Select a child block', 'unitone' ) }
-							controls={ innerBlocks.map( ( innerBlock ) => {
-								return {
-									title: innerBlock.title,
-									icon: innerBlock.icon.src,
-									onClick: () =>
-										selectBlock( innerBlock.clientId ),
-								};
-							} ) }
-						/>
-					</ToolbarGroup>
-				</BlockControls>
+							<ToolbarDropdownMenu
+								icon={ LevelDown }
+								label={ __(
+									'Select a child block',
+									'unitone'
+								) }
+								controls={ innerBlocks.map( ( innerBlock ) => {
+									return {
+										title: innerBlock.title,
+										icon: innerBlock.icon.src,
+										onClick: () =>
+											selectBlock( innerBlock.clientId ),
+									};
+								} ) }
+							/>
+						</ToolbarGroup>
+					</BlockControls>
+				) }
 
 				<BlockEdit { ...props } />
 			</>

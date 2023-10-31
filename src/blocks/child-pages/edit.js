@@ -13,6 +13,8 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import { useEffect } from '@wordpress/element';
+import { Icon, globe } from '@wordpress/icons';
 import { __, sprintf } from '@wordpress/i18n';
 
 import ServerSideRender from '@wordpress/server-side-render';
@@ -28,7 +30,20 @@ const multiIncludes = ( haystack, needles ) => {
 };
 
 export default function ( { attributes, setAttributes } ) {
-	const { showTopLevel, parent, className, columnMinWidth } = attributes;
+	const { showTopLevel, parent, parentTitle, className, columnMinWidth } =
+		attributes;
+
+	// linkcontrol returns value.title if present, so updating parent does not update the title.
+	// In the past, parent.title was saved, so if it is saved, it is removed.
+	useEffect( () => {
+		setAttributes( {
+			parentTitle: parent?.title || parentTitle,
+			parent: {
+				...parent,
+				title: undefined,
+			},
+		} );
+	}, [] );
 
 	return (
 		<>
@@ -85,9 +100,23 @@ export default function ( { attributes, setAttributes } ) {
 								id="unitone/child-pages/search-post-control"
 							>
 								<div className="unitone-search-post-control">
+									{ parentTitle && (
+										<div className="unitone-search-post-control__parent-title">
+											<Icon icon={ globe } />
+											{ parentTitle }
+										</div>
+									) }
 									<LinkControl
 										onRemove={ () =>
-											setAttributes( { parent: {} } )
+											setAttributes( {
+												parent: {
+													...metadata.attributes
+														.parent.default,
+												},
+												parentTitle:
+													metadata.attributes
+														.parentTitle.default,
+											} )
 										}
 										settings={ [] }
 										searchInputPlaceholder={ __(
@@ -99,9 +128,9 @@ export default function ( { attributes, setAttributes } ) {
 											setAttributes( {
 												parent: {
 													id: newAttribute.id,
-													title: newAttribute.title,
 													url: newAttribute.url,
 												},
+												parentTitle: newAttribute.title,
 											} );
 										} }
 										noDirectEntry={ true }

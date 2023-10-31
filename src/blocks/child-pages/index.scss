@@ -1,14 +1,24 @@
 .unitone-search-post-control {
+	&__parent-title {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+
+		> :first-child {
+			flex-shrink: 1;
+		}
+	}
+
 	.block-editor-link-control {
 		min-width: auto;
+
+		> .block-editor-link-control__search-item {
+			padding: 0;
+		}
 	}
 
 	.block-editor-link-control__search-input {
 		margin: 0;
-	}
-
-	.block-editor-link-control__search-item {
-		padding: 0;
 	}
 
 	.block-editor-link-control__search-results-wrapper {
@@ -16,11 +26,20 @@
 	}
 
 	.block-editor-link-control__search-results {
-		padding: 0;
+		padding: 6px 0;
+
+		.block-editor-link-control__search-item {
+			padding-top: 6px;
+			padding-bottom: 6px;
+		}
 	}
 
 	.block-editor-link-control__search-item-header {
 		overflow: hidden;
+
+		> .block-editor-link-control__search-item-icon {
+			display: none;
+		}
 	}
 
 	.block-editor-link-control__search-item-title {

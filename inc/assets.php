@@ -9,6 +9,15 @@
  * Enqueue theme scripts and styles.
  */
 function unitone_theme_scripts() {
+	$asset = include( get_theme_file_path( 'dist/js/app/app.asset.php' ) );
+	wp_enqueue_script(
+		'unitone/app',
+		get_theme_file_uri( 'dist/js/app/app.js' ),
+		$asset['dependencies'],
+		filemtime( get_theme_file_path( 'dist/js/app/app.js' ) ),
+		true
+	);
+
 	wp_enqueue_style(
 		'unitone',
 		get_theme_file_uri( 'dist/css/app/app.css' ),

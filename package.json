@@ -4,7 +4,7 @@
 		"npm": ">=8 <9"
 	},
 	"devDependencies": {
-		"@inc2734/unitone-css": "^0.46.2",
+		"@inc2734/unitone-css": "^0.46.3",
 		"@wordpress/env": "^8.10.0",
 		"@wordpress/icons": "^9.35.0",
 		"@wordpress/interface": "^5.21.0",
@@ -56,6 +56,7 @@
 		"blocks:build": "rimraf dist/blocks && wp-scripts build --output-path=dist",
 		"blocks:php": "cpy \"src/blocks/**/*.php\" \"dist/blocks\"",
 		"blocks": "run-s format:blocks && run-p blocks:*",
+		"js:app": "rimraf dist/js/app && wp-scripts build src/js/app/app.js --output-path=dist/js/app --webpack-src-dir=dist/js/app",
 		"js:editor": "rimraf dist/js/editor && wp-scripts build src/js/editor/editor.js --output-path=dist/js/editor --webpack-src-dir=dist/js/editor",
 		"js": "run-s format:js && run-p js:*",
 		"formats:build": "rimraf dist/formats && wp-scripts build src/formats/formats.js --output-path=dist/formats --webpack-src-dir=dist/formats",

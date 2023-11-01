@@ -6,6 +6,8 @@ import save from './save';
 import deprecated from './deprecated';
 import variations from './variations';
 
+import './style.scss';
+
 registerBlockType( 'unitone/cover', {
 	icon: {
 		src: icon,

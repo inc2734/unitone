@@ -1,3 +1,7 @@
+@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/vertical-writing/vertical-writing';
+
+@include vertical-writing.vertical-writing();
+
 [data-unitone-layout~="vertical-writing-wrapper"] {
 	--unitone--vertical-writing--max-height: var(--unitone--max-height, calc(9 * var(--unitone--measure) / 16));
 	--unitone--max-width: min(100%, var(--unitone--container-max-width));

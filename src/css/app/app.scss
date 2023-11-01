@@ -3,9 +3,7 @@
 
 @include meta.load-css("foundation");
 @include meta.load-css("wp-blocks/wp-blocks");
-@include meta.load-css("blocks");
-@include meta.load-css("main");
-@include meta.load-css("block-styles/block-styles");
+@include meta.load-css("site");
 
 // Deprecated
 body {

@@ -6,6 +6,8 @@ import save from './save';
 import deprecated from './deprecated';
 import transforms from './transforms';
 
+import './style.scss';
+
 registerBlockType( 'unitone/cluster', {
 	icon: {
 		src: icon,

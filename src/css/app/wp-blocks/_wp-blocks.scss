@@ -1,33 +1,11 @@
 @use "sass:meta";
-@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
 
+@include meta.load-css("adminbar");
 @include meta.load-css("align");
 @include meta.load-css("font-sizes");
 @include meta.load-css("has-background");
-@include meta.load-css("wp-block-archives");
-@include meta.load-css("wp-block-buttons");
-@include meta.load-css("wp-block-categories");
-@include meta.load-css("wp-block-code");
-@include meta.load-css("wp-block-comment");
 @include meta.load-css("wp-block-embed");
-@include meta.load-css("wp-block-image");
-@include meta.load-css("wp-block-latest-comments");
-@include meta.load-css("wp-block-latest-posts");
-@include meta.load-css("wp-block-navigation");
-@include meta.load-css("wp-block-post-comments-form");
 @include meta.load-css("wp-block-post-content");
-@include meta.load-css("wp-block-post-featured-image");
-@include meta.load-css("wp-block-post-title");
-@include meta.load-css("wp-block-pullquote");
-@include meta.load-css("wp-block-query");
-@include meta.load-css("wp-block-quote");
-@include meta.load-css("wp-block-rss");
-@include meta.load-css("wp-block-search");
-@include meta.load-css("wp-block-separator");
-@include meta.load-css("wp-block-site-logo");
-@include meta.load-css("wp-block-site-title");
-@include meta.load-css("wp-block-social-links");
-@include meta.load-css("wp-block-table");
 
 .required {
 	color: var(--wp--preset--color--vivid-red);
@@ -44,6 +22,5 @@ figure {
 .wp-block-image figcaption,
 .wp-block-table figcaption,
 .wp-block-video figcaption {
-	font-size: #{ variables.$font-size };
 	text-align: left;
 }

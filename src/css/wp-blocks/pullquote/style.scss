@@ -1,0 +1,22 @@
+.wp-block-pullquote {
+	border-top: 4px solid currentColor;
+	border-bottom: 4px solid currentColor;
+	color: currentColor;
+	font-style: italic;
+	padding: var(--unitone--global--text-gap) 0;
+	max-width: var(--unitone--max-width);
+	width: auto;
+
+	blockquote > * + * {
+		margin-top: var(--unitone--global--text-gap);
+	}
+
+	cite,
+	footer,
+	&__citation {
+		display: block;
+		color: currentColor;
+		font-size: var(--wp--preset--font-size--unitone-s);
+		font-style: normal;
+	}
+}

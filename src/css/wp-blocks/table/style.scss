@@ -1,0 +1,94 @@
+.wp-block-table {
+	--unitone--padding: var(--unitone--s-1);
+	--unitone--cell-min-width: 0px;
+	--unitone--scrollbar-thumb-color: #ddd;
+	--unitone--scrollbar-track-color: transparent;
+
+	overflow-x: auto;
+	scrollbar-color: var(--unitone--scrollbar-thumb-color) var(--unitone--scrollbar-track-color);
+	scrollbar-width: 1rem;
+	width: auto;
+
+	&::-webkit-scrollbar {
+		height: 1rem;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: var(--unitone--scrollbar-track-color);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--unitone--scrollbar-track-color);
+		background-image: linear-gradient(
+			var(--unitone--scrollbar-track-color) 0,
+			var(--unitone--scrollbar-track-color) 0.375rem,
+			var(--unitone--scrollbar-thumb-color) 0.375rem,
+			var(--unitone--scrollbar-thumb-color) 0.625rem,
+			var(--unitone--scrollbar-track-color) 0.625rem
+		);
+	}
+
+	table > *,
+	tr,
+	th,
+	td {
+		border: inherit
+	}
+
+	th,
+	td {
+		padding: var(--unitone--padding);
+		min-width: var(--unitone--cell-min-width);
+	}
+
+	.has-fixed-layout {
+		th,
+		td {
+			width: var(--unitone--cell-min-width);
+		}
+	}
+}
+
+.wp-block-table.is-style-stripes {
+	tbody tr:nth-child(odd) {
+		background-color: var(--wp--preset--color--unitone-light-gray);
+	}
+}
+
+.wp-block-table.is-style-underline {
+	> table {
+		border-top-width: 0 !important;
+		border-right-width: 0 !important;
+		border-bottom-width: 1px;
+		border-left-width: 0 !important;
+	}
+}
+
+.wp-block-table.is-style-vertical-fill {
+	--unitone--gap: var(--unitone--global--text-gap);
+
+	overflow: hidden;
+
+	> table {
+		margin-inline: calc(var(--unitone--gap) * -1);
+		border-collapse: separate;
+		border-spacing: var(--unitone--gap) 0;
+		width: calc(100% + var(--unitone--gap) * 2);
+	}
+
+	tr > * {
+		background-color: var(--wp--preset--color--unitone-light-gray);
+	}
+}
+
+.wp-block-table.is-style-vertical-line {
+	--unitone--padding: var(--unitone--s-1) var(--unitone--s1);
+
+	tr > *:not(:last-child) {
+		border-top-width: 0 !important;
+		border-right-width: 1px;
+		border-bottom-width: 0 !important;
+		border-left-width: 0 !important;
+	}
+}
+

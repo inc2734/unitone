@@ -1,0 +1,13 @@
+.wp-block-archives {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+
+	li {
+		margin-left: 0;
+	}
+}
+
+ul.wp-block-archives {
+	padding-left: 0;
+}

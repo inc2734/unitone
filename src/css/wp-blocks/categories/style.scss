@@ -1,0 +1,22 @@
+.wp-block-categories {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+
+	ul {
+		padding-left: 0;
+
+		ul {
+			margin-top: 0;
+		}
+	}
+
+	.cat-item {
+		margin-left: 0;
+	}
+
+	.children {
+		list-style: none;
+		margin-left: 1em;
+	}
+}

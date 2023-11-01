@@ -9,18 +9,6 @@
  * Enqueue theme scripts and styles.
  */
 function unitone_theme_scripts() {
-	$asset = include( get_theme_file_path( 'dist/js/app/app.asset.php' ) );
-	wp_enqueue_script(
-		'unitone/app',
-		get_theme_file_uri( 'dist/js/app/app.js' ),
-		$asset['dependencies'],
-		filemtime( get_theme_file_path( 'dist/js/app/app.js' ) ),
-		array(
-			'strategy'  => 'defer',
-			'in_footer' => false,
-		)
-	);
-
 	wp_enqueue_style(
 		'unitone',
 		get_theme_file_uri( 'dist/css/app/app.css' ),
@@ -130,15 +118,45 @@ function unitone_enqueue_block_editor_assets() {
 }
 add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_assets', 9 );
 
-/**
- * Enqueue theme scripts and styles for the dashboard.
- */
-function unitone_enqueue_admin_assets() {
-	wp_enqueue_style(
-		'unitone',
-		get_theme_file_uri( 'dist/css/editor/editor.css' ),
-		array(),
-		filemtime( get_theme_file_path( 'dist/css/editor/editor.css' ) )
+function unitone_enqueue_block_styles() {
+	$styled_blocks = array(
+		'core/archives'           => array(),
+		'core/button'             => array(),
+		'core/categories'         => array(),
+		'core/code'               => array(),
+		'core/columns'            => array(),
+		'core/comments'           => array(),
+		'core/image'              => array(),
+		'core/latest-comments'    => array(),
+		'core/latest-posts'       => array(),
+		'core/navigation'         => array(),
+		'core/post-comments-form' => array(),
+		'core/post-terms'         => array(),
+		'core/post-title'         => array(),
+		'core/pullquote'          => array(),
+		'core/query'              => array(),
+		'core/quote'              => array(),
+		'core/rss'                => array(),
+		'core/search'             => array(),
+		'core/separator'          => array(),
+		'core/site-logo'          => array(),
+		'core/site-title'         => array(),
+		'core/social-links'       => array(),
+		'core/table'              => array(),
 	);
+
+	foreach ( $styled_blocks as $block_type => $block_type_args ) {
+		wp_enqueue_block_style(
+			$block_type,
+			array_merge(
+				array(
+					'handle' => 'unitone/' . $block_type,
+					'src'    => get_theme_file_uri( 'dist/css/wp-blocks/' . str_replace( 'core/', '', $block_type ) . '/style.css' ),
+					'path'   => get_theme_file_path( 'dist/css/wp-blocks/' . str_replace( 'core/', '', $block_type ) . '/style.css' ),
+				),
+				$block_type_args
+			)
+		);
+	}
 }
-add_action( 'wp_footer', 'unitone_enqueue_admin_assets', 9 );
+add_action( 'after_setup_theme', 'unitone_enqueue_block_styles' );

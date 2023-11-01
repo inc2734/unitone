@@ -1,3 +1,13 @@
+@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
+
+@include text.text();
+
+[data-unitone-layout~="text"] {
+	> * {
+		--wp--style--global--content-size: var(--unitone--max-width);
+	}
+}
+
 [data-unitone-layout~="text"]:not([data-unitone-layout~="-column"]) {
 	--wp--style--global--content-size: var(--unitone--max-width);
 }

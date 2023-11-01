@@ -1,0 +1,11 @@
+@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/cover/cover';
+
+@include cover.cover();
+
+[data-unitone-layout~="cover"] {
+	--unitone--min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+}
+
+[data-unitone-layout~="cover__content"][data-unitone-layout~="-fill"] {
+	flex-grow: 1;
+}

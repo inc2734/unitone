@@ -1,0 +1,9 @@
+@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/layers/layers';
+
+@include layers.layers();
+
+[data-unitone-layout~="layers"][data-unitone-layout~="-cover"] {
+	[data-unitone-layout~="layers__layer"] {
+		position: relative;
+	}
+}

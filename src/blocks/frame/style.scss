@@ -1,0 +1,9 @@
+@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/frame/frame';
+
+@include frame.frame();
+
+[data-unitone-layout~="frame"] {
+	figcaption {
+		display: none;
+	}
+}

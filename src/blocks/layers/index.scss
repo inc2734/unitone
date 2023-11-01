@@ -20,6 +20,17 @@
 		}
 	}
 
+	&[data-unitone-layout~="-cover"] {
+		> :first-child > [data-type="core/post-featured-image"] {
+			height: 100%;
+			width: 100%;
+
+			> .has-illustration {
+				height: 100%;
+			}
+		}
+	}
+
 	> .block-list-appender {
 		grid-row: auto;
 	}

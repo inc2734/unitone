@@ -9,23 +9,18 @@
 @use "sass:meta";
 @use '../../../node_modules/@inc2734/unitone-css/src/settings/settings';
 
-/*
-## non iframe
-.editor-styles-wrapper.block-editor-writing-flow
-
-## iframe
-.block-editor-iframe__body.editor-styles-wrapper
+/**
+ * ## Non iframe
+ * .editor-styles-wrapper.block-editor-writing-flow
+ *
+ * ## iframe
+ * .block-editor-iframe__body.editor-styles-wrapper
 */
-
-// .editor-styles-wrapper {
-// :where(.editor-styles-wrapper) {
 .editor-styles-wrapper:where(.block-editor-writing-flow),
 :where(.editor-styles-wrapper.block-editor-iframe__body) {
 	@include meta.load-css("foundation");
 	@include meta.load-css("wp-blocks/wp-blocks");
-	@include meta.load-css("blocks");
-	@include meta.load-css("main");
-	@include meta.load-css("block-styles/block-styles");
+	@include meta.load-css("site");
 
 	.is-root-container.is-outline-mode.is-focus-mode {
 		> [data-unitone-layout~="position"] {
@@ -50,17 +45,6 @@
 				height: 100%;
 				width: 100%;
 			}
-		}
-	}
-
-	[data-unitone-layout~="layers"][data-unitone-layout~="-cover"] > :first-child [data-type="core/post-featured-image"] {
-		position: absolute;
-		inset: 0;
-		height: 100%;
-		width: 100%;
-
-		> .has-illustration {
-			height: 100%;
 		}
 	}
 }

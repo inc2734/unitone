@@ -7,6 +7,7 @@ import transforms from './transforms';
 import deprecated from './deprecated';
 import variations from './variations';
 
+import './style.scss';
 import './index.scss';
 
 registerBlockType( 'unitone/frame', {

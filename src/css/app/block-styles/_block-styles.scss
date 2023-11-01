@@ -1,7 +1,0 @@
-@use "sass:meta";
-
-@include meta.load-css("wp-block-image");
-@include meta.load-css("wp-block-navigation");
-@include meta.load-css("wp-block-post-terms");
-@include meta.load-css("wp-block-query");
-@include meta.load-css("wp-block-table");

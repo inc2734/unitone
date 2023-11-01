@@ -10,6 +10,7 @@ import save from './save';
 import deprecated from './deprecated';
 import transforms from './transforms';
 
+import './style.scss';
 import './index.scss';
 
 registerBlockType( 'unitone/both-sides', {

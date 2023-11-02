@@ -1,4 +1,7 @@
 .wp-block-post-terms.is-style-badge {
+	--unitone--border-radius: var(--unitone--global--border-radius);
+	--unitone--padding: calc(var(--unitone--s-1) / 2) var(--unitone--s-1);
+
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -9,8 +12,8 @@
 		--unitone--font-size: -2;
 
 		display: inline-block;
-		border-radius: var(--unitone--global--border-radius);
-		padding: calc(var(--unitone--s-1) / 2) var(--unitone--s-1);
+		border-radius: var(--unitone--border-radius);
+		padding: var(--unitone--padding);
 		text-decoration: none;
 	}
 
@@ -25,6 +28,8 @@
 }
 
 .wp-block-post-terms.is-style-outline {
+	--unitone--padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
+
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -36,7 +41,7 @@
 
 		display: inline-block;
 		border: 1px solid currentColor;
-		padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
+		padding: var(--unitone--padding);
 		text-decoration: none;
 	}
 }

@@ -95,13 +95,6 @@ function unitone_enqueue_block_editor_assets() {
 		$css
 	);
 
-	// Set min size of the pattern explorer thumbnail.
-	$css = '.block-editor-block-preview__content-iframe {min-height: 100vh}';
-	wp_add_inline_style(
-		'unitone',
-		$css
-	);
-
 	// For color picker.
 	$css = file_get_contents( get_template_directory() . '/dist/css/app/editor-style.css' );
 	$css = preg_match_all(
@@ -130,7 +123,6 @@ add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_assets'
 function unitone_enqueue_block_styles() {
 	$styled_blocks = array(
 		'core/archives'           => array(),
-		'core/button'             => array(),
 		'core/categories'         => array(),
 		'core/code'               => array(),
 		'core/columns'            => array(),

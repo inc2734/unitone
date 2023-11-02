@@ -2,12 +2,16 @@ p.has-background,
 .wp-block-preformatted.has-background,
 .wp-block-template-part.has-background,
 .wp-block-group.has-background {
-	padding: var(--unitone--global--text-gap);
+	--unitone--padding: var(--unitone--global--text-gap);
+
+	padding: var(--unitone--padding);
 }
 
 ul.has-background,
 ol.has-background {
-	padding: var(--unitone--global--text-gap);
+	--unitone--padding: var(--unitone--global--text-gap);
+
+	padding: var(--unitone--padding);
 }
 
 h1.has-background,
@@ -16,5 +20,7 @@ h3.has-background,
 h4.has-background,
 h5.has-background,
 h6.has-background {
-	padding: calc(var(--unitone--global--text-gap) / 4) calc(var(--unitone--global--text-gap) / 3)
+	--unitone--padding: calc(var(--unitone--global--text-gap) / 4) calc(var(--unitone--global--text-gap) / 3);
+
+	padding: var(--unitone--padding);
 }

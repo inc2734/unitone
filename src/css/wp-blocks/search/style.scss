@@ -1,4 +1,6 @@
 .wp-block-search {
+	--unitone--border-radius: var(--unitone--global--border-radius);
+
 	display: flex;
 	flex-direction: column;
 	gap: var(--unitone--s-2);
@@ -18,7 +20,7 @@
 
 .wp-block-search__button-inside {
 	.wp-block-search__inside-wrapper {
-		border-radius: var(--unitone--global--border-radius);
+		border-radius: var(---unitone--border-radius);
 	}
 
 	.wp-block-search__input {

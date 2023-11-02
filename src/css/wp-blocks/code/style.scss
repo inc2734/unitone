@@ -1,8 +1,10 @@
 .wp-block-code {
+	--unitone--padding: var(--unitone--global--text-gap);
+
 	border: none;
 	border-radius: 0;
 	font-family: Menlo, Consolas, monaco, monospace;
-	padding: var(--unitone--global--text-gap);
+	padding: var(--unitone--padding);
 	overflow: auto;
 
 	code {

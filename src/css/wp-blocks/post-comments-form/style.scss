@@ -1,9 +1,13 @@
 .wp-block-post-comments-form {
-	gap: var(--unitone--global--text-gap);
+	--unitone--gap: var(--unitone--global--text-gap);
+
+	gap: var(--unitone--gap);
 }
 
 .comment-form {
-	gap: var(--unitone--global--text-gap);
+	--unitone--gap: var(--unitone--global--text-gap);
+
+	gap: var(--unitone--gap);
 
 	> [class*="comment-form-"] {
 		display: flex;

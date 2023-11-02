@@ -30,7 +30,9 @@
 	}
 
 	&.is-style-panel {
-		box-shadow: var(--unitone--global--box-shadow);
+		--unitone--box-shadow: --unitone--global--box-shadow;
+
+		box-shadow: var(--unitone--box-shadow);
 
 		&:not(.has-border-color) > .unitone-accordion__content {
 			border-top: 1px solid var(--wp--preset--color--unitone-light-gray);

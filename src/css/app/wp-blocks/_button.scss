@@ -1,0 +1,5 @@
+.wp-element-button:not(.wp-block-button__link),
+.wp-block-button {
+	--unitone--border-radius: var(--unitone--global--border-radius);
+	--unitone--padding: var(--unitone--s-1);
+}

@@ -14,11 +14,12 @@ body {
 code,
 kbd {
 	--unitone--font-size: -1;
+	--unitone--border-radius: var(--unitone--global--border-radius);
 
 	display: inline-block;
 	background-color: var(--wp--preset--color--unitone-light-gray);
 	padding: 0 var(--unitone--s-2);
-	border-radius: var(--unitone--global--border-radius);
+	border-radius: var(--unitone--border-radius);
 }
 
 :where(
@@ -31,17 +32,23 @@ kbd {
 	[type=url],
 	textarea
 ) {
+	--unitone--border-radius: var(--unitone--global--border-radius);
+	--unitone--padding: calc(var(--unitone--s-1) / 1.5);
+
 	border: 1px solid var(--wp--preset--color--unitone-gray);
-	padding: calc(var(--unitone--s-1) / 1.5);
-	border-radius: var(--unitone--global--border-radius);
+	padding: var(--unitone--padding);
+	border-radius: var(--unitone--border-radius);
 	font-family: inherit;
 	max-width: 100%;
 }
 
 :where(select) {
+	--unitone--border-radius: var(--unitone--global--border-radius);
+	--unitone--padding: calc(var(--unitone--s-1) / 1.5);
+
 	border: 1px solid var(--wp--preset--color--unitone-gray);
-	padding: calc(var(--unitone--s-1) / 1.5);
-	border-radius: var(--unitone--global--border-radius);
+	padding: var(--unitone--padding);
+	border-radius: var(--unitone--border-radius);
 	font-family: inherit;
 	max-width: 100%;
 }
@@ -50,9 +57,12 @@ kbd {
 	[type=reset],
 	[type=submit]
 ) {
+	--unitone--border-radius: var(--unitone--global--border-radius);
+	--unitone--padding: calc(var(--unitone--s-1) / 1.5) var(--unitone--s-1);
+
 	border: 1px solid var(--wp--preset--color--unitone-gray);
-	padding: calc(var(--unitone--s-1) / 1.5) var(--unitone--s-1);
-	border-radius: var(--unitone--global--border-radius);
+	padding: var(--unitone--padding);
+	border-radius: var(--unitone--border-radius);
 	font-family: inherit;
 
 	&:active {

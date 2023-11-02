@@ -1,7 +1,9 @@
 .wp-block-comments {
+	--unitone--gap: var(--unitone--global--text-gap);
+
 	display: flex;
 	flex-direction: column;
-	gap: var(--unitone--global--text-gap);
+	gap: var(--unitone--gap);
 }
 
 .wp-block-comment-template,
@@ -14,21 +16,23 @@
 	flex-direction: column;
 }
 
-.wp-block-comment-template,
-.wp-block-comment-template > li,
-.wp-block-comment-template > li > ol,
-.wp-block-comment-template > li > ol > li {
-	gap: var(--unitone--global--text-gap);
-}
-
 .wp-block-comment-template {
+	--unitone--gap: var(--unitone--global--text-gap);
+
 	.comment,
 	.block-editor-block-list__layout {
 		margin: 0;
 	}
 
 	ol {
-		padding-left: var(--unitone--global--text-gap);
+		padding-left: var(--unitone--gap);
+	}
+
+	&,
+	& > li,
+	& > li > ol,
+	& > li > ol > li {
+		gap: var(--unitone--gap);
 	}
 }
 

@@ -4,12 +4,12 @@
 .is-root-container {
 	@include text.abstract-text();
 
-	--unitone--gutters: var(--unitone--global--gutters);
+	--unitone--gutters: 0px;
 
 	margin-right: 0;
 	margin-left: 0;
-	padding-right: 0;
-	padding-left: 0;
+	padding-right: var(--unitone--gutters);
+	padding-left: var(--unitone--gutters);
 
 	> * {
 		--unitone--global--text-gap: calc(var(--unitone--margin-top, 1) * var(--unitone--s1)); // If you use --unitone--gap, what you set for "gap" will affect the margin as well.
@@ -34,16 +34,5 @@
 
 .wp-block-post-content.is-layout-constrained,
 .is-root-container {
-	padding-right: var(--unitone--gutters);
-	padding-left: var(--unitone--gutters);
-}
-
-// @todo
-// When a template with sidebars is used, unnecessary left and right margins are added to the content in the main column.
-:where([data-unitone-layout~="with-sidebar__content"]) .entry-content,
-:where([data-unitone-layout~="with-sidebar__content"]) .wp-block-post-content,
-:where([data-unitone-layout~="with-sidebar__content"]) [data-unitone-layout~="text"] {
-	padding-right: 0;
-	padding-left: 0;
-	width: 100%;
+	--unitone--gutters: var(--unitone--global--gutters);
 }

@@ -9,9 +9,11 @@
 	--unitone--slide-width: 100%;
 	--swiper-navigation-size: .5em;
 	--swiper-navigation-color: var(--wp--preset--color--unitone-accent);
+	--swiper-buttons-gap: var(--unitone--global--text-gap);
 	--swiper-pagination-color: var(--wp--preset--color--unitone-accent);
+	--swiper-pagination-gap: var(--unitone--global--text-gap);
 	--swiper-pagination-bullet-inactive-color: var(--wp--preset--color--unitone-dark-gray);
-	--swiper-pagination-bullet-horizontal-gap: var(--unitone--global--text-gap);
+	--swiper-pagination-bullet-horizontal-gap: var(--swiper-pagination-gap);
 
 	position: relative;
 
@@ -49,11 +51,11 @@
 	.swiper-buttons {
 		display: flex;
 		flex-wrap: nowrap;
-		gap: var(--unitone--global--text-gap);
+		gap: var(--swiper-buttons-gap);
 		justify-content: center;
 
 		&--alignment\:top {
-			margin-bottom: var(--unitone--global--text-gap);
+			margin-bottom: var(--swiper-buttons-gap);
 		}
 
 		&--alignment\:center {
@@ -66,7 +68,7 @@
 		}
 
 		&--alignment\:bottom {
-			margin-top: var(--unitone--global--text-gap);
+			margin-top: var(--swiper-buttons-gap);
 		}
 
 		&--justification\:left {
@@ -101,11 +103,11 @@
 		justify-content: center;
 
 		&--alignment\:top {
-			margin-bottom: var(--unitone--global--text-gap);
+			margin-bottom: var(--swiper-pagination-gap);
 		}
 
 		&--alignment\:bottom {
-			margin-top: var(--unitone--global--text-gap);
+			margin-top: var(--swiper-pagination-gap);
 		}
 
 		&--justification\:left {

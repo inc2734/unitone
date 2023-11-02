@@ -10,3 +10,15 @@
 		flex-grow: 1;
 	}
 }
+
+// @todo
+// When a template with sidebars is used, unnecessary left and right margins are added to the content in the main column.
+:where([data-unitone-layout~="with-sidebar__content"]) {
+	.entry-content,
+	.wp-block-post-content,
+	[data-unitone-layout~="text"] {
+		padding-right: 0;
+		padding-left: 0;
+		width: 100%;
+	}
+}

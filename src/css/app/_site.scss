@@ -42,19 +42,24 @@
 	--unitone--sidebar-width: clamp(var(--unitone--cg2), 30%, var(--unitone--cg3));
 
 	@media (min-width: 600px) {
+		display: grid;
+		grid-template-rows: 1fr auto;
+		grid-template-columns: var(--unitone--sidebar-width) minmax(0, 1fr);
+
+		> * {
+			margin: 0;
+		}
+
 		> :first-child {
-			position: fixed;
-			z-index: 2;
-			width: var(--unitone--sidebar-width);
+			grid-row: 1 / -1;
+			position: sticky;
 			top: var(--wp-admin--admin-bar--height, 0px);
-			bottom: 0;
-			left: 0;
 			padding-top: calc(var(--unitone--s3) - var(--unitone--s-1));
 			padding-bottom: calc(var(--unitone--s3) - var(--unitone--s-1));
 		}
 
-		> :not(:first-child) {
-			margin-left: var(--unitone--sidebar-width);
+		.site-header {
+			flex-basis: var(--unitone--sidebar-width);
 		}
 	}
 }

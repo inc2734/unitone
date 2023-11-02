@@ -1,5 +1,5 @@
 .wp-block-table {
-	--unitone--padding: var(--unitone--s-1);
+	--unitone--padding: var(--unitone--p-1);
 	--unitone--cell-min-width: 0px;
 	--unitone--scrollbar-thumb-color: #ddd;
 	--unitone--scrollbar-track-color: transparent;
@@ -82,7 +82,7 @@
 }
 
 .wp-block-table.is-style-vertical-line {
-	--unitone--padding: var(--unitone--s-1) var(--unitone--s1);
+	--unitone--padding: var(--unitone--p-1) var(--unitone--p1);
 
 	tr > *:not(:last-child) {
 		border-top-width: 0 !important;

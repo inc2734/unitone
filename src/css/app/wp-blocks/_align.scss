@@ -2,10 +2,16 @@
 [data-unitone-layout~="text"][data-unitone-layout~="-gutters\:root"],
 .is-root-container {
 	> .alignfull {
-		margin-right: calc(var(--unitone--global--gutters) * -1) !important;
-		margin-left: calc(var(--unitone--global--gutters) * -1) !important;
 		max-width: none;
 		width: auto;
+	}
+}
+
+.entry-content.is-layout-constrained,
+.is-root-container {
+	> .alignfull {
+		margin-right: calc(var(--unitone--global--gutters) * -1) !important;
+		margin-left: calc(var(--unitone--global--gutters) * -1) !important;
 	}
 }
 

@@ -14,8 +14,8 @@
 					<div data-unitone-layout="with-sidebar__content">
 						<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
 						<div data-unitone-layout="stack">
-							<!-- wp:unitone/text {"layout":{"type":"default"},"unitone":{"maxWidth":"100%"}} -->
-							<div data-unitone-layout="text">
+							<!-- wp:unitone/text {"className":"entry-content","layout":{"type":"default"},"unitone":{"maxWidth":"100%"}} -->
+							<div data-unitone-layout="text" class="entry-content">
 								<!-- wp:woocommerce/legacy-template {"template":"single-product"} /-->
 							</div>
 							<!-- /wp:unitone/text -->

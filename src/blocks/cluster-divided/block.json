@@ -101,6 +101,6 @@
 	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js",
-	"style": [ "file:./style-index.css", "unitone-cluster" ],
+	"style": [ "file:./style-index.css", "unitone-cluster-style" ],
 	"editorStyle": "file:./index.css"
 }

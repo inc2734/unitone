@@ -82,7 +82,16 @@
 		}
 	],
 	"category": "unitone/component",
-	"style": "file:./style-index.css",
+	"style": [
+		"file:./style-index.css",
+		"unitone-cluster-style",
+		"unitone-cluster-divided-style",
+		"unitone-stack-style",
+		"unitone-stack-divided-style",
+		"unitone-responsive-grid-style",
+		"unitone-responsive-grid-divided-style",
+		"unitone-decorator-style"
+	],
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"render": "file:./render.php"

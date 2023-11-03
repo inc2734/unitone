@@ -82,6 +82,6 @@
 	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js",
-	"style": [ "file:./style-index.css", "unitone-stack" ],
+	"style": [ "file:./style-index.css", "unitone-stack-style" ],
 	"editorStyle": "file:./index.css"
 }

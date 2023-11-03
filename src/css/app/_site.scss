@@ -38,6 +38,12 @@
 	}
 }
 
+.site-container-right-sidebar {
+	.entry-content {
+		--unitone--gutters: 0;
+	}
+}
+
 .site-container-left-header {
 	--unitone--sidebar-width: clamp(var(--unitone--cg2), 30%, var(--unitone--cg3));
 

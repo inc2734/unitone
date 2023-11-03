@@ -4,13 +4,6 @@
 .is-root-container {
 	@include text.abstract-text();
 
-	--unitone--gutters: 0px;
-
-	margin-right: 0;
-	margin-left: 0;
-	padding-right: var(--unitone--gutters);
-	padding-left: var(--unitone--gutters);
-
 	> * {
 		--unitone--global--text-gap: calc(var(--unitone--margin-top, 1) * var(--unitone--s1)); // If you use --unitone--gap, what you set for "gap" will affect the margin as well.
 	}
@@ -32,6 +25,8 @@
 	}
 }
 
-.wp-block-post-content.is-layout-constrained {
+.entry-content.wp-block-post-content,
+.entry-content[data-unitone-layout="text"],
+:where(.is-root-container) {
 	--unitone--gutters: var(--unitone--global--gutters);
 }

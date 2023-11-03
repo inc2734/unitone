@@ -6,8 +6,8 @@
 	<div data-unitone-layout="gutters">
 		<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
 		<div data-unitone-layout="stack">
-			<!-- wp:unitone/text {"unitone":{"gutters":"root"}} -->
-			<div data-unitone-layout="text">
+			<!-- wp:unitone/text {"className":"entry-content","unitone":{"gutters":"root"}} -->
+			<div data-unitone-layout="text" class="entry-content">
 				<!-- wp:paragraph -->
 				<p><?php esc_html_e( 'Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box.', 'unitone' ); ?></p>
 				<!-- /wp:paragraph -->

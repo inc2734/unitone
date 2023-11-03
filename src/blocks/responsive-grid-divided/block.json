@@ -104,6 +104,6 @@
 	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js",
-	"style": [ "file:./style-index.css", "unitone-responsive-grid" ],
+	"style": [ "file:./style-index.css", "unitone-responsive-grid-style" ],
 	"editorStyle": "file:./index.css"
 }

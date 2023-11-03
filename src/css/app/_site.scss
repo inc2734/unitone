@@ -62,6 +62,8 @@
 			top: var(--wp-admin--admin-bar--height, 0px);
 			padding-top: calc(var(--unitone--s3) - var(--unitone--s-1));
 			padding-bottom: calc(var(--unitone--s3) - var(--unitone--s-1));
+			max-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+			overflow: auto;
 		}
 
 		.site-header {

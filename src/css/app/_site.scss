@@ -38,17 +38,6 @@
 	}
 }
 
-.site-container-right-sidebar {
-	.wp-block-post-content.is-layout-constrained {
-		--unitone--gutters: 0;
-
-		> .alignfull {
-			margin-right: 0 !important;
-			margin-left: 0 !important;
-		}
-	}
-}
-
 .site-container-left-header {
 	--unitone--sidebar-width: clamp(var(--unitone--cg2), 30%, var(--unitone--cg3));
 

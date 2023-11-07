@@ -20,7 +20,7 @@ import { __, sprintf } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
-import { dividersResizeObserver } from '../../../node_modules/@inc2734/unitone-css/src/app';
+import { dividersResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { tagName, columnMinWidth } = attributes;

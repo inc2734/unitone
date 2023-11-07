@@ -1,7 +1,7 @@
 import {
 	fluidFontSizeResizeObserver,
 	dividersResizeObserver,
-} from '../../../node_modules/@inc2734/unitone-css/src/app';
+} from '@inc2734/unitone-css/library';
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	const fluidFontSizeElements = document.querySelectorAll(

@@ -9,7 +9,7 @@ import {
 import { useRefEffect } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 
-import { dividersResizeObserver } from '../../../node_modules/@inc2734/unitone-css/src/app';
+import { dividersResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, clientId } ) {
 	const { contentWidth, contentMaxWidth } = attributes;

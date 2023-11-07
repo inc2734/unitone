@@ -1,4 +1,4 @@
-import { verticalsResizeObserve } from '../../../node_modules/@inc2734/unitone-css/src/app';
+import { verticalsResizeObserve } from '@inc2734/unitone-css/library';
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	const verticals = document.querySelectorAll(

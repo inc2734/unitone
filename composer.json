@@ -1,4 +1,5 @@
 {
+	"name": "inc2734/unitone",
 	"require": {
 		"php": ">=7.4",
 		"inc2734/wp-breadcrumbs": "^3.1",

@@ -52,7 +52,7 @@
 	}
 }
 
-.edit-post-visual-editor__post-title-wrapper {
+.editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper {
 	margin-top: 0 !important;
 	margin-bottom: var(--unitone--global--gap);
 	border-bottom: 1px solid #e0e0e0;
@@ -178,6 +178,7 @@
 }
 
 [data-rich-text-placeholder] {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'ヒラギノ角ゴ W3', sans-serif;
 	font-feature-settings: initial;
 }
 

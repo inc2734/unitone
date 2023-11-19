@@ -25,12 +25,12 @@
 				},
 				{
 					"slug": "unitone-background",
-					"color": "var(--wp--preset--color--white)",
+					"color": "var(--unitone--color--background)",
 					"name": "Background"
 				},
 				{
 					"slug": "unitone-background-alt",
-					"color": "var(--wp--preset--color--unitone-light-gray)",
+					"color": "var(--unitone--color--background-alt)",
 					"name": "Background Alt"
 				},
 				{
@@ -40,33 +40,43 @@
 				},
 				{
 					"slug": "unitone-text-alt",
-					"color": "var(--wp--preset--color--white)",
+					"color": "var(--unitone--color--text-alt)",
 					"name": "Text Alt"
 				},
 				{
 					"slug": "unitone-text-black",
-					"color": "var(--unitone--color--text)",
-					"name": "Text (Black)"
+					"color": "var(--unitone--color--text-immutable)",
+					"name": "Text (Black / Immutable)"
+				},
+				{
+					"slug": "unitone-pale-gray",
+					"color": "var(--unitone--color--pale-gray)",
+					"name": "Pale Gray"
 				},
 				{
 					"slug": "unitone-bright-gray",
-					"color": "rgba(4, 27, 62, .025)",
-					"name": "Bright gray"
+					"color": "var(--unitone--color--bright-gray)",
+					"name": "Bright Gray"
 				},
 				{
 					"slug": "unitone-light-gray",
-					"color": "rgba(4, 27, 62, .07)",
-					"name": "Light gray"
+					"color": "var(--unitone--color--light-gray)",
+					"name": "Light Gray"
 				},
 				{
 					"slug": "unitone-gray",
-					"color": "rgba(4, 27, 62, .19)",
-					"name": "gray"
+					"color": "var(--unitone--color--gray)",
+					"name": "Gray"
 				},
 				{
 					"slug": "unitone-dark-gray",
-					"color": "rgba(4, 27, 62, .42)",
-					"name": "Dark gray"
+					"color": "var(--unitone--color--dark-gray)",
+					"name": "Dark Gray"
+				},
+				{
+					"slug": "unitone-heavy-gray",
+					"color": "var(--unitone--color--heavy-gray)",
+					"name": "Heavy Gray"
 				}
 			]
 		},

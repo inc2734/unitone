@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-11-19T15:20:17+00:00\n"
-"PO-Revision-Date: 2023-11-20 00:20+0900\n"
+"POT-Creation-Date: 2023-11-20T07:00:11+00:00\n"
+"PO-Revision-Date: 2023-11-20 16:03+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -107,7 +107,7 @@ msgid "Query"
 msgstr "クエリー"
 
 #: inc/block-patterns.php:16 inc/template-part-areas.php:27
-#: inc/template-part-areas.php:155
+#: inc/template-part-areas.php:162
 msgid "Pages"
 msgstr "ページ"
 
@@ -139,7 +139,7 @@ msgstr "404のページヘッダー（画像）"
 msgid "Page Header (Wide) for 404"
 msgstr "404のページヘッダー（幅広）"
 
-#: inc/block-patterns.php:86 inc/template-part-areas.php:190
+#: inc/block-patterns.php:86 inc/template-part-areas.php:197
 msgid "Page Header for 404"
 msgstr "404のページヘッダー"
 
@@ -164,7 +164,7 @@ msgstr "アーカイブのメインエリア（右サイドバー）"
 msgid "Page Header (Image) for All Archives"
 msgstr "アーカイブのページヘッダー（画像）"
 
-#: inc/block-patterns.php:122 inc/template-part-areas.php:232
+#: inc/block-patterns.php:122 inc/template-part-areas.php:239
 msgid "Page Header for All Archives"
 msgstr "アーカイブのページヘッダー"
 
@@ -215,7 +215,7 @@ msgstr "bbPress のメインエリア（右サイドバー）"
 msgid "Page Header (Image) for bbPress"
 msgstr "bbPress のページヘッダー（画像）"
 
-#: inc/block-patterns.php:194 inc/template-part-areas.php:309
+#: inc/block-patterns.php:194 inc/template-part-areas.php:316
 msgid "Page Header for bbPress"
 msgstr "bbPress のページヘッダー"
 
@@ -224,180 +224,220 @@ msgid "Main Area (One Column) for Cart"
 msgstr "購入手続きのメインエリア（1カラム）"
 
 #: inc/block-patterns.php:206
+msgid "Main Area (One Column / Page Header (Image)) for Cart"
+msgstr "お買い物カゴのメインエリア（1カラム / ページヘッダー（画像））"
+
+#: inc/block-patterns.php:212
+msgid "Page Header (Image) for Cart"
+msgstr "お買い物カゴのページヘッダー（画像）"
+
+#: inc/block-patterns.php:218
+msgid "Page Header for Cart"
+msgstr "お買い物カゴのページヘッダー"
+
+#: inc/block-patterns.php:224
 msgid "Main Area (One Column) for Checkout"
 msgstr "購入手続きのメインエリア（1カラム）"
 
-#: inc/block-patterns.php:212
+#: inc/block-patterns.php:230
+msgid "Main Area (One Column / Page Header (Image)) for Checkout"
+msgstr "購入手続きのメインエリア（1カラム / ページヘッダー（画像））"
+
+#: inc/block-patterns.php:236
+msgid "Page Header (Image) for Checkout"
+msgstr "購入手続きのページヘッダー（画像）"
+
+#: inc/block-patterns.php:242
+msgid "Page Header for Checkout"
+msgstr "購入手続きのページヘッダー"
+
+#: inc/block-patterns.php:248
+msgid "Main Area (One Column) for Order Confirmation"
+msgstr "注文確認のメインエリア（1カラム）"
+
+#: inc/block-patterns.php:254
+msgid "Main Area (One Column / Page Header (Image)) for Order Confirmation"
+msgstr "注文確認のメインエリア（1カラム / ページヘッダー（画像））"
+
+#: inc/block-patterns.php:260
+msgid "Page Header (Image) for Order Confirmation"
+msgstr "注文確認のページヘッダー（画像）"
+
+#: inc/block-patterns.php:266
+msgid "Page Header for Order Confirmation"
+msgstr "注文確認のページヘッダー"
+
+#: inc/block-patterns.php:272
 msgid "Main Area (Blank) for Front Page"
 msgstr "フロントページのメインエリア（空）"
 
-#: inc/block-patterns.php:218
+#: inc/block-patterns.php:278
 msgid "Main Area (One Column) for Blog Home"
 msgstr "ブログホームのメインエリア（1カラム）"
 
-#: inc/block-patterns.php:224
+#: inc/block-patterns.php:284
 msgid "Main Area (One Column / Page Header (Image)) for Blog Home"
 msgstr "ブログホームのメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:230
+#: inc/block-patterns.php:290
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Blog Home"
 msgstr ""
 "ブログホームのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
 "像））"
 
-#: inc/block-patterns.php:236
+#: inc/block-patterns.php:296
 msgid "Main Area (Right Sidebar) for Blog Home"
 msgstr "ブログホームのメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:242
+#: inc/block-patterns.php:302
 msgid "Page Header (Image) for Blog Home"
 msgstr "ブログホームのページヘッダー（画像）"
 
-#: inc/block-patterns.php:248 inc/template-part-areas.php:204
+#: inc/block-patterns.php:308 inc/template-part-areas.php:211
 msgid "Page Header for Blog Home"
 msgstr "ブログホームのページヘッダー"
 
-#: inc/block-patterns.php:254
+#: inc/block-patterns.php:314
 msgid "Main Area (One Column) for Pages"
 msgstr "固定ページのメインエリア（1カラム）"
 
-#: inc/block-patterns.php:260
+#: inc/block-patterns.php:320
 msgid "Main Area (Blank) for Pages"
 msgstr "固定ページのメインエリア（空）"
 
-#: inc/block-patterns.php:266
+#: inc/block-patterns.php:326
 msgid "Main Area (One Column / Page Header (Featured Image)) for Pages"
 msgstr ""
 "固定ページのメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:272
+#: inc/block-patterns.php:332
 msgid "Main Area (One Column / Page Header (Image)) for Pages"
 msgstr "固定ページのメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:278
+#: inc/block-patterns.php:338
 msgid "Main Area (One Column / Page Header (Slim)) for Pages"
 msgstr "固定ページのメインエリア（1カラム / ページヘッダー（スリム））"
 
-#: inc/block-patterns.php:284
+#: inc/block-patterns.php:344
 msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
 msgstr ""
 "固定ページのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:290
+#: inc/block-patterns.php:350
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Pages"
 msgstr ""
 "固定ページのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:296
+#: inc/block-patterns.php:356
 msgid "Main Area (Right Sidebar) for Pages"
 msgstr "固定ページのメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:302 inc/template-part-areas.php:162
+#: inc/block-patterns.php:362 inc/template-part-areas.php:169
 msgid "Page Header for Pages"
 msgstr "固定ページのページヘッダー"
 
-#: inc/block-patterns.php:308
+#: inc/block-patterns.php:368
 msgid "Page Header (Featured Image) for Pages"
 msgstr "固定ページのページヘッダー（アイキャッチ画像）"
 
-#: inc/block-patterns.php:314
+#: inc/block-patterns.php:374
 msgid "Page Header (Image) for Pages"
 msgstr "固定ページのページヘッダー（画像）"
 
-#: inc/block-patterns.php:320
+#: inc/block-patterns.php:380
 msgid "Page Header (Slim) for Pages"
 msgstr "固定ページのページヘッダー（スリム）"
 
-#: inc/block-patterns.php:326
+#: inc/block-patterns.php:386
 msgid "Main Area (One Column) for Search Results"
 msgstr "検索結果のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:332
+#: inc/block-patterns.php:392
 msgid "Main Area (One Column / Page Header (Image)) for Search Results"
 msgstr "検索結果のメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:338
+#: inc/block-patterns.php:398
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
 msgstr ""
 "検索結果のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:344
+#: inc/block-patterns.php:404
 msgid "Main Area (Right Sidebar) for Search Results"
 msgstr "検索結果のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:350 inc/template-part-areas.php:246
+#: inc/block-patterns.php:410 inc/template-part-areas.php:253
 msgid "Page Header for Search Results"
 msgstr "検索結果のページヘッダー"
 
-#: inc/block-patterns.php:356
+#: inc/block-patterns.php:416
 msgid "Page Header (Image) for Search Results"
 msgstr "検索結果のページヘッダー（画像）"
 
-#: inc/block-patterns.php:362
+#: inc/block-patterns.php:422
 msgid "Main Area (One Column) for Single Posts"
 msgstr "個別投稿のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:368
+#: inc/block-patterns.php:428
 msgid "Main Area (Blank) for Single Posts"
 msgstr "個別投稿のメインエリア（空）"
 
-#: inc/block-patterns.php:374
+#: inc/block-patterns.php:434
 msgid "Main Area (One Column / Page Header (Featured Image)) for Single Posts"
 msgstr "個別投稿のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:380
+#: inc/block-patterns.php:440
 msgid "Main Area (Page Header (Image)) for Single Posts"
 msgstr "個別投稿のメインエリア（ページヘッダー（画像））"
 
-#: inc/block-patterns.php:386
+#: inc/block-patterns.php:446
 msgid ""
 "Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts"
 msgstr ""
 "個別投稿のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:392
+#: inc/block-patterns.php:452
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Posts"
 msgstr ""
 "個別投稿のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:398
+#: inc/block-patterns.php:458
 msgid "Main Area (Right Sidebar) for Single Posts"
 msgstr "個別投稿のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:404 inc/template-part-areas.php:141
+#: inc/block-patterns.php:464 inc/template-part-areas.php:148
 msgid "Page Header for Single Posts"
 msgstr "個別投稿のページヘッダー"
 
-#: inc/block-patterns.php:410
+#: inc/block-patterns.php:470
 msgid "Page Header (Featured Image) for Single Posts"
 msgstr "個別投稿のページヘッダー（アイキャッチ画像）"
 
-#: inc/block-patterns.php:416
+#: inc/block-patterns.php:476
 msgid "Page Header (Image) for Single Posts"
 msgstr "個別投稿のページヘッダー（画像）"
 
-#: inc/block-patterns.php:422
+#: inc/block-patterns.php:482
 msgid "Page Header (Wide) for Single Posts"
 msgstr "個別投稿のページヘッダー（幅広）"
 
-#: inc/block-patterns.php:428
+#: inc/block-patterns.php:488
 msgid "Main Area (One Column) for Single Products"
 msgstr "個別商品のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:434
+#: inc/block-patterns.php:494
 msgid "Main Area (One Column / Page Header (Image)) for Single Products"
 msgstr "個別商品のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:440
+#: inc/block-patterns.php:500
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
 msgstr ""
 "個別商品のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:446
+#: inc/block-patterns.php:506
 msgid "Main Area (Right Sidebar) for Single Products"
 msgstr "個別商品のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:452
+#: inc/block-patterns.php:512
 msgid "Page Header (Image) for Single Products"
 msgstr "個別商品のページヘッダー（画像）"
 
@@ -449,370 +489,370 @@ msgstr "縦塗りつぶし"
 msgid "Vertical line"
 msgstr "縦線"
 
-#: inc/global-styles.php:149
+#: inc/global-styles.php:154
 msgctxt "Color name"
 msgid "Pale Red"
 msgstr "ペールレッド"
 
-#: inc/global-styles.php:154
+#: inc/global-styles.php:159
 msgctxt "Color name"
 msgid "Bright Red"
 msgstr "ブライトレッド"
 
-#: inc/global-styles.php:159
+#: inc/global-styles.php:164
 msgctxt "Color name"
 msgid "Light Red"
 msgstr "ライトレッド"
 
-#: inc/global-styles.php:164
+#: inc/global-styles.php:169
 msgctxt "Color name"
 msgid "Red"
 msgstr "レッド"
 
-#: inc/global-styles.php:169
+#: inc/global-styles.php:174
 msgctxt "Color name"
 msgid "Dark Red"
 msgstr "ダークレッド"
 
-#: inc/global-styles.php:174
+#: inc/global-styles.php:179
 msgctxt "Color name"
 msgid "Heavy Red"
 msgstr "ヘビーレッド"
 
-#: inc/global-styles.php:179
+#: inc/global-styles.php:184
 msgctxt "Color name"
 msgid "Pale Orange"
 msgstr "ペールオレンジ"
 
-#: inc/global-styles.php:184
+#: inc/global-styles.php:189
 msgctxt "Color name"
 msgid "Bright Orange"
 msgstr "ブライトオレンジ"
 
-#: inc/global-styles.php:189
+#: inc/global-styles.php:194
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr "ライトオレンジ"
 
-#: inc/global-styles.php:194
+#: inc/global-styles.php:199
 msgctxt "Color name"
 msgid "Orange"
 msgstr "オレンジ"
 
-#: inc/global-styles.php:199
+#: inc/global-styles.php:204
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr "ダークオレンジ"
 
-#: inc/global-styles.php:204
+#: inc/global-styles.php:209
 msgctxt "Color name"
 msgid "Heavy Orange"
 msgstr "ヘビーオレンジ"
 
-#: inc/global-styles.php:209
+#: inc/global-styles.php:214
 msgctxt "Color name"
 msgid "Pale Yellow"
 msgstr "ペールイエロー"
 
-#: inc/global-styles.php:214
+#: inc/global-styles.php:219
 msgctxt "Color name"
 msgid "Bright Yellow"
 msgstr "ブライトイエロー"
 
-#: inc/global-styles.php:219
+#: inc/global-styles.php:224
 msgctxt "Color name"
 msgid "Light Yellow"
 msgstr "ライトイエロー"
 
-#: inc/global-styles.php:224
+#: inc/global-styles.php:229
 msgctxt "Color name"
 msgid "Yellow"
 msgstr "イエロー"
 
-#: inc/global-styles.php:229
+#: inc/global-styles.php:234
 msgctxt "Color name"
 msgid "Dark Yellow"
 msgstr "ダークイエロー"
 
-#: inc/global-styles.php:234
+#: inc/global-styles.php:239
 msgctxt "Color name"
 msgid "Heavy Yellow"
 msgstr "ヘビーイエロー"
 
-#: inc/global-styles.php:239
+#: inc/global-styles.php:244
 msgctxt "Color name"
 msgid "Pale Lime"
 msgstr "ペールライム"
 
-#: inc/global-styles.php:244
+#: inc/global-styles.php:249
 msgctxt "Color name"
 msgid "Bright Lime"
 msgstr "ブライトライム"
 
-#: inc/global-styles.php:249
+#: inc/global-styles.php:254
 msgctxt "Color name"
 msgid "Light Lime"
 msgstr "ライトライム"
 
-#: inc/global-styles.php:254
+#: inc/global-styles.php:259
 msgctxt "Color name"
 msgid "Lime"
 msgstr "ライム"
 
-#: inc/global-styles.php:259
+#: inc/global-styles.php:264
 msgctxt "Color name"
 msgid "Dark Lime"
 msgstr "ダークライム"
 
-#: inc/global-styles.php:264
+#: inc/global-styles.php:269
 msgctxt "Color name"
 msgid "Heavy Lime"
 msgstr "ヘビーライム"
 
-#: inc/global-styles.php:269
+#: inc/global-styles.php:274
 msgctxt "Color name"
 msgid "Pale Green"
 msgstr "ペールグリーン"
 
-#: inc/global-styles.php:274
+#: inc/global-styles.php:279
 msgid "Bright Green"
 msgstr "ブライトグリーン"
 
-#: inc/global-styles.php:279
+#: inc/global-styles.php:284
 msgctxt "Color name"
 msgid "Light Green"
 msgstr "ライトグリーン"
 
-#: inc/global-styles.php:284
+#: inc/global-styles.php:289
 msgctxt "Color name"
 msgid "Green"
 msgstr "グリーン"
 
-#: inc/global-styles.php:289
+#: inc/global-styles.php:294
 msgctxt "Color name"
 msgid "Dark Green"
 msgstr "ダークグリーン"
 
-#: inc/global-styles.php:294
+#: inc/global-styles.php:299
 msgctxt "Color name"
 msgid "Heavy Green"
 msgstr "ヘビーグリーン"
 
-#: inc/global-styles.php:299
+#: inc/global-styles.php:304
 msgctxt "Color name"
 msgid "Pale Teal"
 msgstr "ペールティール"
 
-#: inc/global-styles.php:304
+#: inc/global-styles.php:309
 msgctxt "Color name"
 msgid "Bright Teal"
 msgstr "ブライトティール"
 
-#: inc/global-styles.php:309
+#: inc/global-styles.php:314
 msgctxt "Color name"
 msgid "Light Teal"
 msgstr "ライトティール"
 
-#: inc/global-styles.php:314
+#: inc/global-styles.php:319
 msgctxt "Color name"
 msgid "Teal"
 msgstr "ティール"
 
-#: inc/global-styles.php:319
+#: inc/global-styles.php:324
 msgctxt "Color name"
 msgid "Dark Teal"
 msgstr "ダークティール"
 
-#: inc/global-styles.php:324
+#: inc/global-styles.php:329
 msgctxt "Color name"
 msgid "Heavy Teal"
 msgstr "ヘビーティール"
 
-#: inc/global-styles.php:329
+#: inc/global-styles.php:334
 msgctxt "Color name"
 msgid "Pale Cyan"
 msgstr "ペールシアン"
 
-#: inc/global-styles.php:334
+#: inc/global-styles.php:339
 msgctxt "Color name"
 msgid "Bright Cyan"
 msgstr "ブライトシアン"
 
-#: inc/global-styles.php:339
+#: inc/global-styles.php:344
 msgctxt "Color name"
 msgid "Light Cyan"
 msgstr "シアン"
 
-#: inc/global-styles.php:344
+#: inc/global-styles.php:349
 msgctxt "Color name"
 msgid "Cyan"
 msgstr "シアン"
 
-#: inc/global-styles.php:349
+#: inc/global-styles.php:354
 msgctxt "Color name"
 msgid "Dark Cyan"
 msgstr "ダークシアン"
 
-#: inc/global-styles.php:354
+#: inc/global-styles.php:359
 msgctxt "Color name"
 msgid "Heavy Cyan"
 msgstr "ヘビーシアン"
 
-#: inc/global-styles.php:359
+#: inc/global-styles.php:364
 msgctxt "Color name"
 msgid "Pale Blue"
 msgstr "ペールブルー"
 
-#: inc/global-styles.php:364
+#: inc/global-styles.php:369
 msgctxt "Color name"
 msgid "Bright Blue"
 msgstr "ブライトブルー"
 
-#: inc/global-styles.php:369
+#: inc/global-styles.php:374
 msgctxt "Color name"
 msgid "Light Blue"
 msgstr "ライトブルー"
 
-#: inc/global-styles.php:374
+#: inc/global-styles.php:379
 msgctxt "Color name"
 msgid "Blue"
 msgstr "青"
 
-#: inc/global-styles.php:379
+#: inc/global-styles.php:384
 msgctxt "Color name"
 msgid "Dark Blue"
 msgstr "ダークブルー"
 
-#: inc/global-styles.php:384
+#: inc/global-styles.php:389
 msgctxt "Color name"
 msgid "Heavy Blue"
 msgstr "ヘビーブルー"
 
-#: inc/global-styles.php:389
+#: inc/global-styles.php:394
 msgctxt "Color name"
 msgid "Pale Indigo"
 msgstr "ペールインディゴ"
 
-#: inc/global-styles.php:394
+#: inc/global-styles.php:399
 msgctxt "Color name"
 msgid "Bright Indigo"
 msgstr "ブライトインディゴ"
 
-#: inc/global-styles.php:399
+#: inc/global-styles.php:404
 msgctxt "Color name"
 msgid "Light Indigo"
 msgstr "ライトインディゴ"
 
-#: inc/global-styles.php:404
+#: inc/global-styles.php:409
 msgctxt "Color name"
 msgid "Indigo"
 msgstr "インディゴ"
 
-#: inc/global-styles.php:409
+#: inc/global-styles.php:414
 msgctxt "Color name"
 msgid "Dark Indigo"
 msgstr "ダークインディゴ"
 
-#: inc/global-styles.php:414
+#: inc/global-styles.php:419
 msgctxt "Color name"
 msgid "Heavy Indigo"
 msgstr "ヘビーインディゴ"
 
-#: inc/global-styles.php:419
+#: inc/global-styles.php:424
 msgctxt "Color name"
 msgid "Pale Violet"
 msgstr "ペールバイオレット"
 
-#: inc/global-styles.php:424
+#: inc/global-styles.php:429
 msgctxt "Color name"
 msgid "Bright Violet"
 msgstr "ブライトバイオレット"
 
-#: inc/global-styles.php:429
+#: inc/global-styles.php:434
 msgctxt "Color name"
 msgid "Light Violet"
 msgstr "ライトバイオレット"
 
-#: inc/global-styles.php:434
+#: inc/global-styles.php:439
 msgctxt "Color name"
 msgid "Violet"
 msgstr "バイオレット"
 
-#: inc/global-styles.php:439
+#: inc/global-styles.php:444
 msgctxt "Color name"
 msgid "Dark Violet"
 msgstr "ダークバイオレット"
 
-#: inc/global-styles.php:444
+#: inc/global-styles.php:449
 msgctxt "Color name"
 msgid "Heavy Violet"
 msgstr "ヘビーバイオレット"
 
-#: inc/global-styles.php:449
+#: inc/global-styles.php:454
 msgctxt "Color name"
 msgid "Pale Purple"
 msgstr "ペールパープル"
 
-#: inc/global-styles.php:454
+#: inc/global-styles.php:459
 msgctxt "Color name"
 msgid "Bright Purple"
 msgstr "ブライトパープル"
 
-#: inc/global-styles.php:459
+#: inc/global-styles.php:464
 msgctxt "Color name"
 msgid "Light Purple"
 msgstr "ライトパープル"
 
-#: inc/global-styles.php:464
+#: inc/global-styles.php:469
 msgctxt "Color name"
 msgid "Purple"
 msgstr "パープル"
 
-#: inc/global-styles.php:469
+#: inc/global-styles.php:474
 msgctxt "Color name"
 msgid "Dark Purple"
 msgstr "ダークパープル"
 
-#: inc/global-styles.php:474
+#: inc/global-styles.php:479
 msgctxt "Color name"
 msgid "Heavy Purple"
 msgstr "ヘビーパープル"
 
-#: inc/global-styles.php:479
+#: inc/global-styles.php:484
 msgctxt "Color name"
 msgid "Pale Pink"
 msgstr "ペールピンク"
 
-#: inc/global-styles.php:484
+#: inc/global-styles.php:489
 msgctxt "Color name"
 msgid "Bright Pink"
 msgstr "ブライトピンク"
 
-#: inc/global-styles.php:489
+#: inc/global-styles.php:494
 msgctxt "Color name"
 msgid "Light Pink"
 msgstr "ライトピンク"
 
-#: inc/global-styles.php:494
+#: inc/global-styles.php:499
 msgctxt "Color name"
 msgid "Pink"
 msgstr "ピンク"
 
-#: inc/global-styles.php:499
+#: inc/global-styles.php:504
 msgctxt "Color name"
 msgid "Dark Pink"
 msgstr "ダークピンク"
 
-#: inc/global-styles.php:504
+#: inc/global-styles.php:509
 msgctxt "Color name"
 msgid "Heavy Pink"
 msgstr "ヘビーピンク"
 
-#: inc/template-part-areas.php:20 inc/template-part-areas.php:134
+#: inc/template-part-areas.php:20 inc/template-part-areas.php:141
 msgid "Single Posts"
 msgstr "個別投稿"
 
-#: inc/template-part-areas.php:34 inc/template-part-areas.php:176
+#: inc/template-part-areas.php:34 inc/template-part-areas.php:183
 msgid "404"
 msgstr "404"
 
@@ -820,27 +860,27 @@ msgstr "404"
 msgid "Front Page"
 msgstr "フロントページ"
 
-#: inc/template-part-areas.php:48 inc/template-part-areas.php:197
+#: inc/template-part-areas.php:48 inc/template-part-areas.php:204
 msgid "Blog Home"
 msgstr "ブログホーム"
 
-#: inc/template-part-areas.php:55 inc/template-part-areas.php:218
+#: inc/template-part-areas.php:55 inc/template-part-areas.php:225
 msgid "All Archives"
 msgstr "アーカイブ"
 
-#: inc/template-part-areas.php:62 inc/template-part-areas.php:239
+#: inc/template-part-areas.php:62 inc/template-part-areas.php:246
 msgid "Search Results"
 msgstr "検索結果"
 
-#: inc/template-part-areas.php:69 inc/template-part-areas.php:260
+#: inc/template-part-areas.php:69 inc/template-part-areas.php:267
 msgid "Product Archives"
 msgstr "商品アーカイブ"
 
-#: inc/template-part-areas.php:76 inc/template-part-areas.php:281
+#: inc/template-part-areas.php:76 inc/template-part-areas.php:288
 msgid "Single Products"
 msgstr "個別商品"
 
-#: inc/template-part-areas.php:83 inc/template-part-areas.php:302
+#: inc/template-part-areas.php:83 inc/template-part-areas.php:309
 msgid "bbPress"
 msgstr "bbPress"
 
@@ -852,59 +892,63 @@ msgstr "お買い物カゴ"
 msgid "Checkout"
 msgstr "購入手続き"
 
-#: inc/template-part-areas.php:104 inc/template-part-areas.php:323
+#: inc/template-part-areas.php:104
+msgid "Order Confirmation"
+msgstr "注文確認"
+
+#: inc/template-part-areas.php:111 inc/template-part-areas.php:330
 msgid "Comments"
 msgstr "コメント"
 
-#: inc/template-part-areas.php:111 dist/blocks/slider/index.js:1
+#: inc/template-part-areas.php:118 dist/blocks/slider/index.js:1
 msgid "Loop"
 msgstr "ループ"
 
-#: inc/template-part-areas.php:148
+#: inc/template-part-areas.php:155
 msgid "Main Area for Single Posts"
 msgstr "個別投稿のメインエリア"
 
-#: inc/template-part-areas.php:169
+#: inc/template-part-areas.php:176
 msgid "Main Area for Pages"
 msgstr "固定ページのメインエリア"
 
-#: inc/template-part-areas.php:183
+#: inc/template-part-areas.php:190
 msgid "Main Area for 404"
 msgstr "404 のメインエリア"
 
-#: inc/template-part-areas.php:211
+#: inc/template-part-areas.php:218
 msgid "Main Area for Blog Home"
 msgstr "ブログホームのメインエリア"
 
-#: inc/template-part-areas.php:225
+#: inc/template-part-areas.php:232
 msgid "Main Area for All Archives"
 msgstr "アーカイブのメインエリア"
 
-#: inc/template-part-areas.php:253
+#: inc/template-part-areas.php:260
 msgid "Main Area of Search Results"
 msgstr "検索結果のメインエリア"
 
-#: inc/template-part-areas.php:267
+#: inc/template-part-areas.php:274
 msgid "Main Area for Product Archives"
 msgstr "商品アーカイブのメインエリア"
 
-#: inc/template-part-areas.php:274
+#: inc/template-part-areas.php:281
 msgid "Page Header for Product archives"
 msgstr "商品アーカイブのページヘッダー"
 
-#: inc/template-part-areas.php:288
+#: inc/template-part-areas.php:295
 msgid "Page Header for Single Products"
 msgstr "個別投稿のページヘッダー"
 
-#: inc/template-part-areas.php:295
+#: inc/template-part-areas.php:302
 msgid "Main Area for Single Products"
 msgstr "個別商品のメインエリア"
 
-#: inc/template-part-areas.php:316
+#: inc/template-part-areas.php:323
 msgid "Main Area for bbPress"
 msgstr "bbPress のメインエリア"
 
-#: inc/template-part-areas.php:330
+#: inc/template-part-areas.php:337
 msgid "Footer breadcrumbs"
 msgstr "フッターのパンくずリスト"
 
@@ -1203,10 +1247,40 @@ msgctxt "Pattern title"
 msgid "bbPress: Right Sidebar"
 msgstr "bbPress：右サイドバー"
 
+#: patterns/template-cart-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Cart: Left Header / Page Header (Image)"
+msgstr "お買い物カゴ：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template-cart-left-header.php
+msgctxt "Pattern title"
+msgid "Cart: Left Header"
+msgstr "お買い物カゴ：左ヘッダー"
+
+#: patterns/template-cart-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Cart: One Column / Page Header (Image)"
+msgstr "お買い物カゴ：1カラム / ページヘッダー（画像）"
+
 #: patterns/template-cart-one-column.php
 msgctxt "Pattern title"
 msgid "Cart: One Column"
 msgstr "お買い物カゴ：1カラム"
+
+#: patterns/template-checkout-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Checkout: Left Header / Page Header (Image)"
+msgstr "購入手続き：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template-checkout-left-header.php
+msgctxt "Pattern title"
+msgid "Checkout: Left Header"
+msgstr "購入手続き：左ヘッダー"
+
+#: patterns/template-checkout-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Checkout: One Column / Page Header (Image)"
+msgstr "購入手続き：1カラム / ページヘッダー（画像）"
 
 #: patterns/template-checkout-one-column.php
 msgctxt "Pattern title"
@@ -1252,6 +1326,26 @@ msgstr "ブログホーム：右サイドバー / ページヘッダー（画像
 msgctxt "Pattern title"
 msgid "Blog Home: Right Sidebar"
 msgstr "ブログホーム：右サイドバー"
+
+#: patterns/template-order-confirmation-left-header-page-header-image.php
+msgctxt "Pattern title"
+msgid "Order Confirmation: Left Header / Page Header (Image)"
+msgstr "注文確認：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template-order-confirmation-left-header.php
+msgctxt "Pattern title"
+msgid "Order Confirmation: Left Header"
+msgstr "注文確認：左ヘッダー"
+
+#: patterns/template-order-confirmation-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Order Confirmation: One Column / Page Header (Image)"
+msgstr "注文確認：1カラム / ページヘッダー（画像）"
+
+#: patterns/template-order-confirmation-one-column.php
+msgctxt "Pattern title"
+msgid "Order Confirmation: One Column"
+msgstr "注文確認：1カラム"
 
 #: patterns/template-page-blank.php
 msgctxt "Pattern title"
@@ -3290,16 +3384,6 @@ msgid "for bbPress"
 msgstr "bbPress 用"
 
 #: theme.json
-msgctxt "Custom template name"
-msgid "Cart"
-msgstr "お買い物カゴ"
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Checkout"
-msgstr "購入手続き"
-
-#: theme.json
 msgctxt "Template part name"
 msgid "Header"
 msgstr "ヘッダー"
@@ -3356,6 +3440,11 @@ msgstr "購入手続き"
 
 #: theme.json
 msgctxt "Template part name"
+msgid "Order Confirmatiion"
+msgstr "注文確認"
+
+#: theme.json
+msgctxt "Template part name"
 msgid "Front Page"
 msgstr "フロントページ"
 
@@ -3383,6 +3472,29 @@ msgstr "個別投稿"
 msgctxt "Template part name"
 msgid "Single Products"
 msgstr "個別商品"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contents for Cart"
+msgstr "お買い物カゴのコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contents for Checkout"
+msgstr "購入手続きのコンテンツ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contents for Order Confirmation"
+msgstr "注文確認のコンテンツ"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Cart"
+#~ msgstr "お買い物カゴ"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Checkout"
+#~ msgstr "購入手続き"
 
 #~ msgctxt "Color name"
 #~ msgid "Text (Black)"

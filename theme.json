@@ -635,20 +635,6 @@
 			"postTypes": [
 				"false"
 			]
-		},
-		{
-			"name": "cart",
-			"title": "Cart",
-			"postTypes": [
-				"false"
-			]
-		},
-		{
-			"name": "checkout",
-			"title": "Checkout",
-			"postTypes": [
-				"false"
-			]
 		}
 	],
 	"templateParts": [
@@ -708,6 +694,11 @@
 			"area": "unitone/checkout"
 		},
 		{
+			"name": "order-confirmation",
+			"title": "Order Confirmatiion",
+			"area": "unitone/order-confirmation"
+		},
+		{
 			"name": "front-page",
 			"title": "Front Page",
 			"area": "unitone/front-page"
@@ -736,6 +727,21 @@
 			"name": "single-product",
 			"title": "Single Products",
 			"area": "unitone/single-product"
+		},
+		{
+			"name": "woocommerce/cart",
+			"title": "Contents for Cart",
+			"area": "uncategorized"
+		},
+		{
+			"name": "woocommerce/checkout",
+			"title": "Contents for Checkout",
+			"area": "uncategorized"
+		},
+		{
+			"name": "woocommerce/order-confirmation",
+			"title": "Contents for Order Confirmation",
+			"area": "uncategorized"
 		}
 	]
 }

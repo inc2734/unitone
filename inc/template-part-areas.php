@@ -100,6 +100,13 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 				'area_tag'    => 'div',
 			),
 			array(
+				'area'        => 'unitone/order-confirmation',
+				'label'       => __( 'Order Confirmation', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => '',
+				'area_tag'    => 'div',
+			),
+			array(
 				'area'        => 'unitone/comments',
 				'label'       => __( 'Comments', 'unitone' ),
 				'icon'        => 'layout',

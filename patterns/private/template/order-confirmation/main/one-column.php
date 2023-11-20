@@ -4,11 +4,11 @@
 	<div data-unitone-layout="gutters">
 		<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
 		<div data-unitone-layout="stack">
-			<!-- wp:pattern {"slug":"unitone/template/checkout/page-header/default"} /-->
+			<!-- wp:pattern {"slug":"unitone/template/order-confirmation/page-header/default"} /-->
 
 			<!-- wp:unitone/container -->
 			<div data-unitone-layout="container">
-				<!-- wp:template-part {"slug":"woocommerce/checkout"} /-->
+				<!-- wp:template-part {"slug":"woocommerce/order-confirmation"} /-->
 			</div>
 			<!-- /wp:unitone/container -->
 		</div>

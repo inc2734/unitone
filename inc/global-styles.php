@@ -149,6 +149,36 @@ function unitone_set_color_palette( $theme_json ) {
 		$theme_palette,
 		array(
 			array(
+				'slug'  => 'unitone-twilight-light',
+				'color' => 'var(--unitone--color--twilight-light)',
+				'name'  => _x( 'Twilight (Light)', 'Color name', 'unitone' ),
+			),
+			array(
+				'slug'  => 'unitone-twilight',
+				'color' => 'var(--unitone--color--twilight)',
+				'name'  => _x( 'Twilight', 'Color name', 'unitone' ),
+			),
+			array(
+				'slug'  => 'unitone-twilight-heavy',
+				'color' => 'var(--unitone--color--twilight-heavy)',
+				'name'  => _x( 'Twilight (Heavy)', 'Color name', 'unitone' ),
+			),
+			array(
+				'slug'  => 'unitone-dimmed-light',
+				'color' => 'var(--unitone--color--dimmed-light)',
+				'name'  => _x( 'Dimmed (Light)', 'Color name', 'unitone' ),
+			),
+			array(
+				'slug'  => 'unitone-dimmed',
+				'color' => 'var(--unitone--color--dimmed)',
+				'name'  => _x( 'Dimmed', 'Color name', 'unitone' ),
+			),
+			array(
+				'slug'  => 'unitone-dimmed-heavy',
+				'color' => 'var(--unitone--color--dimmed-heavy)',
+				'name'  => _x( 'Dimmed (Heavy)', 'Color name', 'unitone' ),
+			),
+			array(
 				'slug'  => 'unitone-pale-red',
 				'color' => 'var(--unitone--color--pale-red)',
 				'name'  => _x( 'Pale Red', 'Color name', 'unitone' ),

@@ -23,7 +23,7 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 >
 	<?php while ( $wp_query->have_posts() ) : ?>
 		<?php $wp_query->the_post(); ?>
-		<div data-unitone-layout="decorator -padding:1" class="has-background has-unitone-background-alt-background-color">
+		<div data-unitone-layout="decorator -padding:1" class="has-background has-unitone-light-gray-background-color">
 			<div data-unitone-layout="decorator__inner">
 				<div>
 					<div data-unitone-layout="stack -gap:-1">

@@ -15,16 +15,23 @@
 }
 
 .wp-block-search .wp-block-search__input {
+	border: 1px solid var(--wp--preset--color--unitone-gray);
 	padding: var(--unitone--p-2);
 }
 
 .wp-block-search__button-inside {
 	.wp-block-search__inside-wrapper {
-		border-radius: var(---unitone--border-radius);
+		border: none;
 	}
 
 	.wp-block-search__input {
-		border: none;
+		border-inline-end: none;
+		border-radius: var(--unitone--border-radius) 0 0 var(--unitone--border-radius);
+	}
+
+	.wp-block-search__button {
+		margin-inline-start: 0;
+		border-radius: 0 var(--unitone--border-radius) var(--unitone--border-radius) 0;
 	}
 }
 

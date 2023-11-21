@@ -30,7 +30,7 @@
 	}
 
 	&.is-style-panel {
-		--unitone--box-shadow: --unitone--global--box-shadow;
+		--unitone--box-shadow: var(--unitone--global--box-shadow);
 
 		box-shadow: var(--unitone--box-shadow);
 

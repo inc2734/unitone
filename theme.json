@@ -383,7 +383,7 @@
 				"border": {
 					"width": "0px",
 					"style": "solid",
-					"color": "var(--wp--preset--color--unitone-gray)"
+					"color": "var(--wp--preset--color--unitone-light-gray)"
 				},
 				"variations": {
 					"stripes": {

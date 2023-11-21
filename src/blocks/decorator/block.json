@@ -98,8 +98,8 @@
 					"radius": "6px"
 				}
 			},
-			"borderColor": "unitone-gray",
-			"backgroundColor": "unitone-text-alt",
+			"borderColor": "unitone-light-gray",
+			"backgroundColor": "unitone-bright-gray",
 			"textColor": "unitone-text",
 			"unitone": {
 				"padding": "1"

@@ -77,7 +77,7 @@
 			},
 			"link": {
 				"color": {
-					"text": "var(--wp--preset--color--unitone-background)"
+					"text": "var(--wp--preset--color--unitone-text)"
 				}
 			}
 		}

@@ -8,6 +8,36 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			intrinsic: {
+				type: 'boolean',
+				default: true,
+			},
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const { intrinsic, withText } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							'data-unitone-layout': classnames( 'center', {
+								'-intrinsic': intrinsic,
+								'-with-text': withText,
+							} ),
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
 		},
 
 		supports: {

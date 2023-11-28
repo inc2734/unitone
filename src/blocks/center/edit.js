@@ -19,7 +19,7 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { intrinsic, withText } = attributes;
+	const { withText } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -33,7 +33,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		'center',
 		blockProps[ 'data-unitone-layout' ],
 		{
-			'-intrinsic': intrinsic,
 			'-with-text': withText,
 		}
 	);
@@ -48,34 +47,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		<>
 			<InspectorControls>
 				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
-					<ToolsPanelItem
-						hasValue={ () =>
-							intrinsic !== metadata.attributes.intrinsic.default
-						}
-						isShownByDefault
-						label={ __(
-							'Centering by intrinsic size of children',
-							'unitone'
-						) }
-						onDeselect={ () =>
-							setAttributes( {
-								intrinsic:
-									metadata.attributes.intrinsic.default,
-							} )
-						}
-					>
-						<ToggleControl
-							label={ __(
-								'Centering by intrinsic size of children',
-								'unitone'
-							) }
-							checked={ intrinsic }
-							onChange={ ( newAttribute ) => {
-								setAttributes( { intrinsic: newAttribute } );
-							} }
-						/>
-					</ToolsPanelItem>
-
 					<ToolsPanelItem
 						hasValue={ () =>
 							withText !== metadata.attributes.withText.default

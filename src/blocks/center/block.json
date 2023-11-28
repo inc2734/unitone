@@ -6,10 +6,6 @@
 	"title": "Center",
 	"description": "This block centers the children.",
 	"attributes": {
-		"intrinsic": {
-			"type": "boolean",
-			"default": true
-		},
 		"withText": {
 			"type": "boolean",
 			"default": false

@@ -154,6 +154,7 @@ function unitone_enqueue_block_styles() {
 					'handle' => 'unitone/' . $block_type,
 					'src'    => get_theme_file_uri( 'dist/css/wp-blocks/' . str_replace( 'core/', '', $block_type ) . '/style.css' ),
 					'path'   => get_theme_file_path( 'dist/css/wp-blocks/' . str_replace( 'core/', '', $block_type ) . '/style.css' ),
+					'ver'    => filemtime( get_theme_file_path( 'dist/css/wp-blocks/' . str_replace( 'core/', '', $block_type ) . '/style.css' ) ),
 				),
 				$block_type_args
 			)

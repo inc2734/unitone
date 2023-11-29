@@ -38,10 +38,10 @@ class Manager {
 		'h4-size'          => 1,
 		'h5-size'          => 0,
 		'h6-size'          => 0,
-		'accent-color'     => '#1f1640',
+		'accent-color'     => '#090a0b', // = settings.color.palette > unitone-accent
 		'background-color' => '#fff',
 		'text-color'       => 'var(--unitone--color--text)',
-		'link-color'       => null,
+		'link-color'       => '#003c78', // = styles.elements.link.color.text
 		'content-size'     => '46rem',
 		'wide-size'        => '1334px',
 	);

@@ -13,14 +13,14 @@
 			"gradients": [
 				{
 					"slug":"unitone-accent",
-					"gradient":"linear-gradient(135deg,hsl(276,49%,47%) 0%,hsl(253,49%,17%) 100%)",
+					"gradient":"linear-gradient(135deg, #d4c7d9 0%, #bbcad9 100%)",
 					"name":"Accent gradation"
 				}
 			],
 			"palette": [
 				{
 					"slug": "unitone-accent",
-					"color": "#1f1640",
+					"color": "#090a0b",
 					"name": "Accent"
 				},
 				{
@@ -302,7 +302,7 @@
 			},
 			"link": {
 				"color": {
-					"text": "var(--wp--preset--color--unitone-accent)"
+					"text": "#003c78"
 				}
 			},
 			"caption": {
@@ -351,9 +351,51 @@
 					"text": "var(--wp--preset--color--unitone-text-alt)"
 				}
 			},
+			"core/comment-author-name": {
+				"elements": {
+					"link": {
+						"color": {
+							"text": "inherit"
+						},
+						"typography": {
+							"textDecoration": "none"
+						}
+					}
+				},
+				"typography": {
+					"fontWeight": "bold"
+				}
+			},
+			"core/comment-date": {
+				"elements": {
+					"link": {
+						"color": {
+							"text": "inherit"
+						}
+					}
+				}
+			},
+			"core/comment-edit-link": {
+				"elements": {
+					"link": {
+						"color": {
+							"text": "inherit"
+						}
+					}
+				}
+			},
 			"core/social-links": {
 				"typography": {
 					"fontSize": "inherit"
+				}
+			},
+			"core/post-terms": {
+				"elements": {
+					"link": {
+						"color": {
+							"text": "var(--wp--preset--color--unitone-accent)"
+						}
+					}
 				}
 			},
 			"core/pullquote": {

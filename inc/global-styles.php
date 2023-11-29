@@ -111,7 +111,7 @@ function unitone_wp_theme_json_data_theme( $theme_json ) {
 		),
 		'styles'   => array(
 			'elements' => array(
-				'link'   => array(
+				'link' => array(
 					'color' => array(
 						'text' => $link_color,
 					),

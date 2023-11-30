@@ -12,7 +12,7 @@
 	<div data-unitone-layout="gutters">
 		<div data-unitone-layout="container">
 			<div data-unitone-layout="stack">
-				<!-- wp:unitone/text {"unitone":{"blockAlign":"start","maxWidth":"calc(var(\u002d\u002dunitone\u002d\u002dmeasure) * 1.25)"}} -->
+				<!-- wp:unitone/text {"unitone":{"blockAlign":"start","maxWidth":"calc(var(--unitone--measure) * 1.25)"}} -->
 				<div data-unitone-layout="text">
 					<!-- wp:heading {"fontSize":"unitone-5xl","unitone":{"fluidTypography":true,"halfLeading":0.6}} -->
 					<h2 class="wp-block-heading has-unitone-5-xl-font-size">テクノロジーを駆使して社会にポジティブな変化をもたらす</h2>

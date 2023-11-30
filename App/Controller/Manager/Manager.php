@@ -353,6 +353,7 @@ class Manager {
 							$pattern_properties = \WP_Block_Patterns_Registry::get_instance()->get_registered( $settings['pattern'] );
 							if ( $pattern_properties ) {
 								$post_content = $pattern_properties['content'];
+								$post_content = str_replace( '\\u002d\\u002d', '--', $post_content );
 							}
 						}
 

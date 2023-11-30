@@ -513,7 +513,7 @@
 	<div data-unitone-layout="gutters">
 		<div data-unitone-layout="container">
 			<div data-unitone-layout="stack">
-				<!-- wp:unitone/with-sidebar {"sidebarWidth":"var(\u002d\u002dunitone\u002d\u002dcg3)","contentMinWidth":"var(\u002d\u002dunitone\u002d\u002dpg7)","sidebar":"left","unitone":{"gap":"2","alignItems":"start"},"lock":{"move":false,"remove":false}} -->
+				<!-- wp:unitone/with-sidebar {"sidebarWidth":"var(--unitone--cg3)","contentMinWidth":"var(--unitone--pg7)","sidebar":"left","unitone":{"gap":"2","alignItems":"start"},"lock":{"move":false,"remove":false}} -->
 				<div data-unitone-layout="with-sidebar -sidebar:left" style="--unitone--sidebar-width:var(--unitone--cg3);--unitone--content-min-width:var(--unitone--pg7)">
 					<!-- wp:unitone/with-sidebar-content {"type":"aside","lock":{"move":true,"remove":true}} -->
 					<div data-unitone-layout="with-sidebar__content">

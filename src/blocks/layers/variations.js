@@ -176,7 +176,7 @@ export default [
 				name: 'unitone/stack',
 				attributes: {
 					unitone: {
-						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
+						maxWidth: 'var(--unitone--measure)',
 					},
 				},
 				innerBlocks: [
@@ -235,7 +235,7 @@ export default [
 				attributes: {
 					unitone: {
 						justifySelf: 'end',
-						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
+						maxWidth: 'var(--unitone--measure)',
 					},
 				},
 				innerBlocks: [
@@ -293,7 +293,7 @@ export default [
 				attributes: {
 					unitone: {
 						alignSelf: 'end',
-						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
+						maxWidth: 'var(--unitone--measure)',
 					},
 				},
 				innerBlocks: [
@@ -352,7 +352,7 @@ export default [
 					unitone: {
 						alignSelf: 'end',
 						justifySelf: 'end',
-						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
+						maxWidth: 'var(--unitone--measure)',
 					},
 				},
 				innerBlocks: [
@@ -403,7 +403,7 @@ export default [
 					unitone: {
 						alignSelf: 'end',
 						justifySelf: 'start',
-						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
+						maxWidth: 'var(--unitone--measure)',
 					},
 				},
 				innerBlocks: [
@@ -459,7 +459,7 @@ export default [
 					unitone: {
 						alignSelf: 'end',
 						justifySelf: 'end',
-						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
+						maxWidth: 'var(--unitone--measure)',
 					},
 				},
 				innerBlocks: [
@@ -515,7 +515,7 @@ export default [
 					unitone: {
 						padding: 1,
 						alignSelf: 'end',
-						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
+						maxWidth: 'var(--unitone--measure)',
 					},
 				},
 				innerBlocks: [
@@ -582,7 +582,7 @@ export default [
 						padding: 1,
 						alignSelf: 'end',
 						justifySelf: 'end',
-						maxWidth: 'var(\u002d\u002dunitone\u002d\u002dmeasure)',
+						maxWidth: 'var(--unitone--measure)',
 					},
 				},
 				innerBlocks: [

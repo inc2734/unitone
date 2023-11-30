@@ -4,7 +4,7 @@
  * Slug: unitone/template/archive/left-header-page-header-image
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/archive
- * Template Types: archive
+ * Template Types: archive, category, tag, author, date, taxonomy
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

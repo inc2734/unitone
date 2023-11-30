@@ -3,8 +3,8 @@
  * Title: Front Page: Left Header
  * Slug: unitone/template/front-page/left-header
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/front-page
  * Template Types: front-page
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

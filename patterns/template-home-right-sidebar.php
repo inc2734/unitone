@@ -3,8 +3,8 @@
  * Title: Blog Home: Right Sidebar
  * Slug: unitone/template/home/right-sidebar
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/home
  * Template Types: home
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

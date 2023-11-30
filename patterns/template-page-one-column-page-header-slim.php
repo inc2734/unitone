@@ -3,8 +3,8 @@
  * Title: Pages: One Column / Page Header (Slim)
  * Slug: unitone/template/page/one-column-page-header-slim
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/page
  * Template Types: page
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

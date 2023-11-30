@@ -3,8 +3,8 @@
  * Title: Cart: One Column
  * Slug: unitone/template/cart/one-column
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/cart
  * Template Types: page-cart
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

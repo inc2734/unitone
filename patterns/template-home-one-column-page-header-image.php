@@ -3,8 +3,8 @@
  * Title: Blog Home: One Column / Page Header (Image)
  * Slug: unitone/template/home/one-column-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/home
  * Template Types: home
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

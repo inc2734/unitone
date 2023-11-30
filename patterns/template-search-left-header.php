@@ -3,8 +3,8 @@
  * Title: Search Results: Left Header
  * Slug: unitone/template/search/left-header
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/search
  * Template Types: search
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

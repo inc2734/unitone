@@ -3,8 +3,8 @@
  * Title: Search Results: One Column
  * Slug: unitone/template/search/one-column
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/search
  * Template Types: search
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

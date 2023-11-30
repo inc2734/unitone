@@ -3,8 +3,8 @@
  * Title: Single Posts: Right Sidebar
  * Slug: unitone/template/single/right-sidebar
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/single
  * Template Types: single
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-right-sidebar"} -->

@@ -3,8 +3,8 @@
  * Title: Single Products: One Column
  * Slug: unitone/template/single-product/one-column
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/single-product
  * Template Types: single-product
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

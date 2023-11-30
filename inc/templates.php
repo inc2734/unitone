@@ -79,7 +79,7 @@ function unitone_display_deprecated_parts() {
 						if ( $template_part_post ) {
 							// A published post might already exist if this template part was customized elsewhere
 							// or if it's part of a customized template.
-							$content    = $template_part_post->post_content;
+							$content = $template_part_post->post_content;
 							$content = shortcode_unautop( $content );
 							$content = do_shortcode( $content );
 							$content = do_blocks( $content );

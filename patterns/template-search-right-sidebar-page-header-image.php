@@ -3,8 +3,8 @@
  * Title: Search Results: Right Sidebar / Page Header (Image)
  * Slug: unitone/template/search/right-sidebar-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/search
  * Template Types: search
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

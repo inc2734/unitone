@@ -3,8 +3,8 @@
  * Title: Product Archives: One Column
  * Slug: unitone/template/archive-product/one-column
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/archive-product
  * Template Types: archive-product
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

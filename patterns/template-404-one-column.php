@@ -3,8 +3,8 @@
  * Title: 404: One Column
  * Slug: unitone/template/404/one-column
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/404
  * Template Types: 404
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

@@ -3,8 +3,8 @@
  * Title: Product Archives: Left Header / Page Header (Image)
  * Slug: unitone/template/archive-product/left-header-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/archive-product
  * Template Types: archive-product
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

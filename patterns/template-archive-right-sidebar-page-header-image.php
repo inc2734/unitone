@@ -3,8 +3,8 @@
  * Title: All Archives: Right Sidebar / Page Header (Image)
  * Slug: unitone/template/archive/right-sidebar-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/archive
  * Template Types: archive, category, tag, author, date, taxonomy
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

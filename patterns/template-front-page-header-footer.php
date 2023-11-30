@@ -3,8 +3,8 @@
  * Title: Front Page: Only Header and Footer
  * Slug: unitone/template/front-page/header-footer
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/front-page
  * Template Types: front-page
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

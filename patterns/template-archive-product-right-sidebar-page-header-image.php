@@ -3,8 +3,8 @@
  * Title: Product Archives: Right Sidebar / Page Header (Image)
  * Slug: unitone/template/archive-product/right-sidebar-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/archive-product
  * Template Types: archive-product
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

@@ -3,8 +3,8 @@
  * Title: Order Confirmation: One Column / Page Header (Image)
  * Slug: unitone/template/order-confirmation/one-column-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/order-confirmation
  * Template Types: order-confirmation
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

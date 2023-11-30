@@ -3,8 +3,8 @@
  * Title: Blog Home: Left Header
  * Slug: unitone/template/home/left-header
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/home
  * Template Types: home
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

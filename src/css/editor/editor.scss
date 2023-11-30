@@ -92,8 +92,9 @@
 	pointer-events: none;
 }
 
-.block-editor-block-patterns-list__item {
-	height: auto;
+
+.block-editor-block-patterns-list__list-item {
+	break-inside: avoid;
 }
 
 .block-editor-block-inspector {

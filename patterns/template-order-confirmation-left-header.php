@@ -3,8 +3,8 @@
  * Title: Order Confirmation: Left Header
  * Slug: unitone/template/order-confirmation/left-header
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/order-confirmation
  * Template Types: order-confirmation
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

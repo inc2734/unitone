@@ -3,8 +3,8 @@
  * Title: Checkout: One Column / Page Header (Image)
  * Slug: unitone/template/checkout/one-column-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/checkout
  * Template Types: page-checkout
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

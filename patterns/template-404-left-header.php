@@ -3,8 +3,8 @@
  * Title: 404: Left Header
  * Slug: unitone/template/404/left-header
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/404
  * Template Types: 404
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

@@ -3,8 +3,8 @@
  * Title: Single Posts: Left Header / Page Header (Featured Image)
  * Slug: unitone/template/single/left-header-page-header-featured
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/single
  * Template Types: single
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

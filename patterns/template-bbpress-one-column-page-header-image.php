@@ -3,8 +3,8 @@
  * Title: bbPress: One Column / Page Header (Image)
  * Slug: unitone/template/bbpress/one-column-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/bbpress
  * Template Types: bbpress
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

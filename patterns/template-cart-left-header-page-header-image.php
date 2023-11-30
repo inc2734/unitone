@@ -3,8 +3,8 @@
  * Title: Cart: Left Header / Page Header (Image)
  * Slug: unitone/template/cart/left-header-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/cart
  * Template Types: page-cart
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

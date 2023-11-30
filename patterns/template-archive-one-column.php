@@ -3,8 +3,8 @@
  * Title: All Archives: One Column
  * Slug: unitone/template/archive/one-column
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/archive
  * Template Types: archive, category, tag, author, date, taxonomy
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

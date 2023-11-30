@@ -3,8 +3,8 @@
  * Title: Pages: Left Header / Page Header (Image)
  * Slug: unitone/template/page/left-header-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/page
  * Template Types: page
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

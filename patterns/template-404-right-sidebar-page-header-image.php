@@ -3,8 +3,8 @@
  * Title: 404: Right Sidebar / Page Header (Image)
  * Slug: unitone/template/404/right-sidebar-page-header-image
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/404
  * Template Types: 404
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

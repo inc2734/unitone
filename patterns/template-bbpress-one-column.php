@@ -3,8 +3,8 @@
  * Title: bbPress: One Column
  * Slug: unitone/template/bbpress/one-column
  * Categories: unitone-templates
- * Block Types: core/template-part/unitone/bbpress
  * Template Types: bbpress
+ * Inserter: no
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

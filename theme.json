@@ -726,12 +726,12 @@
 			"area": "unitone/bbpress"
 		},
 		{
-			"name": "cart",
+			"name": "page-cart",
 			"title": "Cart",
 			"area": "unitone/cart"
 		},
 		{
-			"name": "checkout",
+			"name": "page-checkout",
 			"title": "Checkout",
 			"area": "unitone/checkout"
 		},

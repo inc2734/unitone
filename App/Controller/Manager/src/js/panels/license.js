@@ -12,6 +12,7 @@ const SETTINGS_KEYS = [ 'license-key' ];
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 	const [ licenseStatus, setLicenseStatus ] = useState( false );
+	const [ remotePatternsSaving, setRemotePatternsSaving ] = useState( false );
 
 	const loadLicenseStatus = () => {
 		apiFetch( { path: '/unitone/v1/license-status' } ).then(
@@ -19,6 +20,16 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				setLicenseStatus( 'true' === options );
 			}
 		);
+	};
+
+	const resetRemotePattenrsCache = () => {
+		setRemotePatternsSaving( true );
+		apiFetch( {
+			path: '/unitone/v1/remote-block-patterns',
+			method: 'DELETE',
+		} ).then( () => {
+			setRemotePatternsSaving( false );
+		} );
 	};
 
 	const saveSettings = () => {
@@ -31,6 +42,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		} ).then( () => {
 			setSettingsSaving( false );
 			loadLicenseStatus();
+			resetRemotePattenrsCache();
 		} );
 	};
 
@@ -50,6 +62,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			data: newData,
 		} ).then( () => {
 			setSettingsSaving( false );
+			resetRemotePattenrsCache();
 		} );
 	};
 
@@ -118,7 +131,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 					<Button
 						variant="primary"
 						onClick={ saveSettings }
-						disabled={ settingsSaving }
+						disabled={ settingsSaving || remotePatternsSaving }
 					>
 						{ __( 'Save Settings', 'unitone' ) }
 					</Button>
@@ -126,7 +139,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 					<Button
 						variant="secondary"
 						onClick={ resetSettings }
-						disabled={ settingsSaving }
+						disabled={ settingsSaving || remotePatternsSaving }
 					>
 						{ __( 'Reset All Settings', 'unitone' ) }
 					</Button>

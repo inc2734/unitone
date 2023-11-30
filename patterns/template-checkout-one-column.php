@@ -4,6 +4,7 @@
  * Slug: unitone/template/checkout/one-column
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/checkout
+ * Template Types: page-checkout
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

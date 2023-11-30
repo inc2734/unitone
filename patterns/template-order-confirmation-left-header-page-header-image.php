@@ -4,6 +4,7 @@
  * Slug: unitone/template/checkout/order-confirmation-page-header-image
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/order-confirmation
+ * Template Types: order-confirmation
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0},"className":"site-container-left-header"} -->

@@ -27,7 +27,7 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 			<div data-unitone-layout="decorator__inner">
 				<div>
 					<div data-unitone-layout="stack -gap:-1">
-						<div data-unitone-layout="decorator" class="has-background has-unitone-light-gray-background-color">
+						<div data-unitone-layout="decorator" class="has-background has-unitone-bright-gray-background-color">
 							<div data-unitone-layout="frame">
 								<?php if ( has_post_thumbnail() ) : ?>
 									<figure class="wp-block-post-featured-image">

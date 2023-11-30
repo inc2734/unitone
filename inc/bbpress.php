@@ -15,6 +15,24 @@ if ( ! class_exists( 'bbPress' ) ) {
 add_filter(
 	'bbp_template_include',
 	function( $template ) {
+
+		if (
+			bbp_is_forum_archive() ||
+			bbp_is_topic_archive() ||
+			bbp_is_search() ||
+			bbp_is_single_user_edit() ||
+			bbp_is_single_user()
+		) {
+			add_filter(
+				'the_content',
+				function() {
+					global $post;
+
+					return $post->post_content;
+				}
+			);
+		}
+
 		return ABSPATH . WPINC . '/template-canvas.php';
 	}
 );

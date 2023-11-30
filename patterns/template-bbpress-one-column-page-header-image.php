@@ -4,6 +4,7 @@
  * Slug: unitone/template/bbpress/one-column-page-header-image
  * Categories: unitone-templates
  * Block Types: core/template-part/unitone/bbpress
+ * Template Types: bbpress
  */
 ?>
 <!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->

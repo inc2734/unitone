@@ -21,7 +21,7 @@
 		},
 		"columnMinWidth": {
 			"type": "string",
-			"default": "250px"
+			"default": "240px"
 		},
 		"gridTemplateColumns": {
 			"type": "string",

@@ -569,7 +569,7 @@ add_filter(
 			foreach ( $data['styles']['blocks'] as $block_name => $block_data ) {
 				if (
 					isset( $data['styles']['blocks'][ $block_name ]['color'] )
-					|| is_array( $data['styles']['blocks'][ $block_name ]['color'] )
+					&& is_array( $data['styles']['blocks'][ $block_name ]['color'] )
 				) {
 					foreach ( $data['styles']['blocks'][ $block_name ]['color'] as $key => $value ) {
 						$data['styles']['blocks'][ $block_name ]['color'][ $key ] = str_replace( '/', '-', $value );

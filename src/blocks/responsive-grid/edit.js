@@ -13,22 +13,37 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import metadata from './block.json';
-
+import { useRefEffect } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
+
+import metadata from './block.json';
+
+import { stairsResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { columnMinWidth } = attributes;
 
-	const hasInnerBlocks = useSelect(
-		( select ) =>
-			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
-				?.length,
+	const { hasInnerBlocks, children } = useSelect(
+		( select ) => {
+			const block = select( 'core/block-editor' ).getBlock( clientId );
+			return {
+				hasInnerBlocks: !! block?.innerBlocks?.length,
+				children: block?.innerBlocks,
+			};
+		},
 		[ clientId ]
 	);
 
+	const ref = useRefEffect(
+		( target ) => {
+			stairsResizeObserver( target );
+		},
+		[ clientId, attributes, children.length ]
+	);
+
 	const blockProps = useBlockProps( {
+		ref,
 		style: {
 			'--unitone--column-min-width': columnMinWidth || undefined,
 		},

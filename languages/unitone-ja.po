@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-11-21T02:14:45+00:00\n"
-"PO-Revision-Date: 2023-11-21 11:16+0900\n"
+"POT-Creation-Date: 2023-12-06T06:13:40+00:00\n"
+"PO-Revision-Date: 2023-12-06 15:14+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Theme Name of the theme
 #: inc/block-categories.php:18 inc/block-categories.php:29
 #: inc/block-categories.php:40 inc/block-categories.php:51
-#: inc/block-styles.php:93 dist/js/editor/editor.js:5
+#: inc/block-styles.php:93 dist/js/editor/editor.js:1
 msgid "unitone"
 msgstr "unitone"
 
@@ -42,14 +42,14 @@ msgstr "https://2inc.org"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:362 patterns/footer-2.php:22
+#: App/Controller/Manager/Manager.php:363 patterns/footer-2.php:22
 #: patterns/footer-3.php:51 patterns/footer-3.php:59 patterns/footer-3.php:67
 #: patterns/footer-4.php:31 patterns/footer-4.php:39 patterns/footer-4.php:47
 #: patterns/footer-5.php:29 patterns/footer-5.php:37 patterns/footer-5.php:45
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:405 patterns/footer-2.php:25
+#: App/Controller/Manager/Manager.php:406 patterns/footer-2.php:25
 #: patterns/footer-3.php:54 patterns/footer-3.php:62 patterns/footer-3.php:70
 #: patterns/footer-4.php:34 patterns/footer-4.php:42 patterns/footer-4.php:50
 #: patterns/footer-5.php:32 patterns/footer-5.php:40 patterns/footer-5.php:48
@@ -58,15 +58,15 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:473
+#: App/Controller/Manager/Manager.php:474
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:476
+#: App/Controller/Manager/Manager.php:477
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:480
+#: App/Controller/Manager/Manager.php:481
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
@@ -77,7 +77,7 @@ msgstr "セットアップ画面へ"
 msgid "Learn more"
 msgstr "さらに詳しく"
 
-#: inc/block-categories.php:21 App/Controller/Manager/dist/js/app.js:5
+#: inc/block-categories.php:21 App/Controller/Manager/dist/js/app.js:3
 #: dist/js/editor/editor.js:1 App/Controller/Manager/dist/js/app.js:1541
 msgid "Layout"
 msgstr "レイアウト"
@@ -449,15 +449,15 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:29 inc/block-styles.php:109 dist/js/editor/editor.js:1
+#: inc/block-styles.php:29 inc/block-styles.php:109 dist/js/editor/editor.js:5
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: inc/block-styles.php:37 dist/js/editor/editor.js:1
+#: inc/block-styles.php:37 dist/js/editor/editor.js:5
 msgid "Bordered"
 msgstr "ボーダー"
 
-#: inc/block-styles.php:45 dist/js/editor/editor.js:1
+#: inc/block-styles.php:45 dist/js/editor/editor.js:5
 msgid "Stripe"
 msgstr "ストライプ"
 
@@ -489,391 +489,391 @@ msgstr "縦塗りつぶし"
 msgid "Vertical line"
 msgstr "縦線"
 
-#: inc/global-styles.php:154
+#: inc/global-styles.php:149
 msgctxt "Color name"
 msgid "Twilight (Light)"
 msgstr "白透過（ライト）"
 
-#: inc/global-styles.php:159
+#: inc/global-styles.php:154
 msgctxt "Color name"
 msgid "Twilight"
 msgstr "白透過"
 
-#: inc/global-styles.php:164
+#: inc/global-styles.php:159
 msgctxt "Color name"
 msgid "Twilight (Heavy)"
 msgstr "白透過（ヘビー）"
 
-#: inc/global-styles.php:169
+#: inc/global-styles.php:164
 msgctxt "Color name"
 msgid "Dimmed (Light)"
 msgstr "黒透過（ライト）"
 
-#: inc/global-styles.php:174
+#: inc/global-styles.php:169
 msgctxt "Color name"
 msgid "Dimmed"
 msgstr "黒透過"
 
-#: inc/global-styles.php:179
+#: inc/global-styles.php:174
 msgctxt "Color name"
 msgid "Dimmed (Heavy)"
 msgstr "黒透過（ヘビー）"
 
-#: inc/global-styles.php:184
+#: inc/global-styles.php:179
 msgctxt "Color name"
 msgid "Pale Red"
 msgstr "ペールレッド"
 
-#: inc/global-styles.php:189
+#: inc/global-styles.php:184
 msgctxt "Color name"
 msgid "Bright Red"
 msgstr "ブライトレッド"
 
-#: inc/global-styles.php:194
+#: inc/global-styles.php:189
 msgctxt "Color name"
 msgid "Light Red"
 msgstr "ライトレッド"
 
-#: inc/global-styles.php:199
+#: inc/global-styles.php:194
 msgctxt "Color name"
 msgid "Red"
 msgstr "レッド"
 
-#: inc/global-styles.php:204
+#: inc/global-styles.php:199
 msgctxt "Color name"
 msgid "Dark Red"
 msgstr "ダークレッド"
 
-#: inc/global-styles.php:209
+#: inc/global-styles.php:204
 msgctxt "Color name"
 msgid "Heavy Red"
 msgstr "ヘビーレッド"
 
-#: inc/global-styles.php:214
+#: inc/global-styles.php:209
 msgctxt "Color name"
 msgid "Pale Orange"
 msgstr "ペールオレンジ"
 
-#: inc/global-styles.php:219
+#: inc/global-styles.php:214
 msgctxt "Color name"
 msgid "Bright Orange"
 msgstr "ブライトオレンジ"
 
-#: inc/global-styles.php:224
+#: inc/global-styles.php:219
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr "ライトオレンジ"
 
-#: inc/global-styles.php:229
+#: inc/global-styles.php:224
 msgctxt "Color name"
 msgid "Orange"
 msgstr "オレンジ"
 
-#: inc/global-styles.php:234
+#: inc/global-styles.php:229
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr "ダークオレンジ"
 
-#: inc/global-styles.php:239
+#: inc/global-styles.php:234
 msgctxt "Color name"
 msgid "Heavy Orange"
 msgstr "ヘビーオレンジ"
 
-#: inc/global-styles.php:244
+#: inc/global-styles.php:239
 msgctxt "Color name"
 msgid "Pale Yellow"
 msgstr "ペールイエロー"
 
-#: inc/global-styles.php:249
+#: inc/global-styles.php:244
 msgctxt "Color name"
 msgid "Bright Yellow"
 msgstr "ブライトイエロー"
 
-#: inc/global-styles.php:254
+#: inc/global-styles.php:249
 msgctxt "Color name"
 msgid "Light Yellow"
 msgstr "ライトイエロー"
 
-#: inc/global-styles.php:259
+#: inc/global-styles.php:254
 msgctxt "Color name"
 msgid "Yellow"
 msgstr "イエロー"
 
-#: inc/global-styles.php:264
+#: inc/global-styles.php:259
 msgctxt "Color name"
 msgid "Dark Yellow"
 msgstr "ダークイエロー"
 
-#: inc/global-styles.php:269
+#: inc/global-styles.php:264
 msgctxt "Color name"
 msgid "Heavy Yellow"
 msgstr "ヘビーイエロー"
 
-#: inc/global-styles.php:274
+#: inc/global-styles.php:269
 msgctxt "Color name"
 msgid "Pale Lime"
 msgstr "ペールライム"
 
-#: inc/global-styles.php:279
+#: inc/global-styles.php:274
 msgctxt "Color name"
 msgid "Bright Lime"
 msgstr "ブライトライム"
 
-#: inc/global-styles.php:284
+#: inc/global-styles.php:279
 msgctxt "Color name"
 msgid "Light Lime"
 msgstr "ライトライム"
 
-#: inc/global-styles.php:289
+#: inc/global-styles.php:284
 msgctxt "Color name"
 msgid "Lime"
 msgstr "ライム"
 
-#: inc/global-styles.php:294
+#: inc/global-styles.php:289
 msgctxt "Color name"
 msgid "Dark Lime"
 msgstr "ダークライム"
 
-#: inc/global-styles.php:299
+#: inc/global-styles.php:294
 msgctxt "Color name"
 msgid "Heavy Lime"
 msgstr "ヘビーライム"
 
-#: inc/global-styles.php:304
+#: inc/global-styles.php:299
 msgctxt "Color name"
 msgid "Pale Green"
 msgstr "ペールグリーン"
 
-#: inc/global-styles.php:309
+#: inc/global-styles.php:304
 msgid "Bright Green"
 msgstr "ブライトグリーン"
 
-#: inc/global-styles.php:314
+#: inc/global-styles.php:309
 msgctxt "Color name"
 msgid "Light Green"
 msgstr "ライトグリーン"
 
-#: inc/global-styles.php:319
+#: inc/global-styles.php:314
 msgctxt "Color name"
 msgid "Green"
 msgstr "グリーン"
 
-#: inc/global-styles.php:324
+#: inc/global-styles.php:319
 msgctxt "Color name"
 msgid "Dark Green"
 msgstr "ダークグリーン"
 
-#: inc/global-styles.php:329
+#: inc/global-styles.php:324
 msgctxt "Color name"
 msgid "Heavy Green"
 msgstr "ヘビーグリーン"
 
-#: inc/global-styles.php:334
+#: inc/global-styles.php:329
 msgctxt "Color name"
 msgid "Pale Teal"
 msgstr "ペールティール"
 
-#: inc/global-styles.php:339
+#: inc/global-styles.php:334
 msgctxt "Color name"
 msgid "Bright Teal"
 msgstr "ブライトティール"
 
-#: inc/global-styles.php:344
+#: inc/global-styles.php:339
 msgctxt "Color name"
 msgid "Light Teal"
 msgstr "ライトティール"
 
-#: inc/global-styles.php:349
+#: inc/global-styles.php:344
 msgctxt "Color name"
 msgid "Teal"
 msgstr "ティール"
 
-#: inc/global-styles.php:354
+#: inc/global-styles.php:349
 msgctxt "Color name"
 msgid "Dark Teal"
 msgstr "ダークティール"
 
-#: inc/global-styles.php:359
+#: inc/global-styles.php:354
 msgctxt "Color name"
 msgid "Heavy Teal"
 msgstr "ヘビーティール"
 
-#: inc/global-styles.php:364
+#: inc/global-styles.php:359
 msgctxt "Color name"
 msgid "Pale Cyan"
 msgstr "ペールシアン"
 
-#: inc/global-styles.php:369
+#: inc/global-styles.php:364
 msgctxt "Color name"
 msgid "Bright Cyan"
 msgstr "ブライトシアン"
 
-#: inc/global-styles.php:374
+#: inc/global-styles.php:369
 msgctxt "Color name"
 msgid "Light Cyan"
 msgstr "シアン"
 
-#: inc/global-styles.php:379
+#: inc/global-styles.php:374
 msgctxt "Color name"
 msgid "Cyan"
 msgstr "シアン"
 
-#: inc/global-styles.php:384
+#: inc/global-styles.php:379
 msgctxt "Color name"
 msgid "Dark Cyan"
 msgstr "ダークシアン"
 
-#: inc/global-styles.php:389
+#: inc/global-styles.php:384
 msgctxt "Color name"
 msgid "Heavy Cyan"
 msgstr "ヘビーシアン"
 
-#: inc/global-styles.php:394
+#: inc/global-styles.php:389
 msgctxt "Color name"
 msgid "Pale Blue"
 msgstr "ペールブルー"
 
-#: inc/global-styles.php:399
+#: inc/global-styles.php:394
 msgctxt "Color name"
 msgid "Bright Blue"
 msgstr "ブライトブルー"
 
-#: inc/global-styles.php:404
+#: inc/global-styles.php:399
 msgctxt "Color name"
 msgid "Light Blue"
 msgstr "ライトブルー"
 
-#: inc/global-styles.php:409
+#: inc/global-styles.php:404
 msgctxt "Color name"
 msgid "Blue"
 msgstr "青"
 
-#: inc/global-styles.php:414
+#: inc/global-styles.php:409
 msgctxt "Color name"
 msgid "Dark Blue"
 msgstr "ダークブルー"
 
-#: inc/global-styles.php:419
+#: inc/global-styles.php:414
 msgctxt "Color name"
 msgid "Heavy Blue"
 msgstr "ヘビーブルー"
 
-#: inc/global-styles.php:424
+#: inc/global-styles.php:419
 msgctxt "Color name"
 msgid "Pale Indigo"
 msgstr "ペールインディゴ"
 
-#: inc/global-styles.php:429
+#: inc/global-styles.php:424
 msgctxt "Color name"
 msgid "Bright Indigo"
 msgstr "ブライトインディゴ"
 
-#: inc/global-styles.php:434
+#: inc/global-styles.php:429
 msgctxt "Color name"
 msgid "Light Indigo"
 msgstr "ライトインディゴ"
 
-#: inc/global-styles.php:439
+#: inc/global-styles.php:434
 msgctxt "Color name"
 msgid "Indigo"
 msgstr "インディゴ"
 
-#: inc/global-styles.php:444
+#: inc/global-styles.php:439
 msgctxt "Color name"
 msgid "Dark Indigo"
 msgstr "ダークインディゴ"
 
-#: inc/global-styles.php:449
+#: inc/global-styles.php:444
 msgctxt "Color name"
 msgid "Heavy Indigo"
 msgstr "ヘビーインディゴ"
 
-#: inc/global-styles.php:454
+#: inc/global-styles.php:449
 msgctxt "Color name"
 msgid "Pale Violet"
 msgstr "ペールバイオレット"
 
-#: inc/global-styles.php:459
+#: inc/global-styles.php:454
 msgctxt "Color name"
 msgid "Bright Violet"
 msgstr "ブライトバイオレット"
 
-#: inc/global-styles.php:464
+#: inc/global-styles.php:459
 msgctxt "Color name"
 msgid "Light Violet"
 msgstr "ライトバイオレット"
 
-#: inc/global-styles.php:469
+#: inc/global-styles.php:464
 msgctxt "Color name"
 msgid "Violet"
 msgstr "バイオレット"
 
-#: inc/global-styles.php:474
+#: inc/global-styles.php:469
 msgctxt "Color name"
 msgid "Dark Violet"
 msgstr "ダークバイオレット"
 
-#: inc/global-styles.php:479
+#: inc/global-styles.php:474
 msgctxt "Color name"
 msgid "Heavy Violet"
 msgstr "ヘビーバイオレット"
 
-#: inc/global-styles.php:484
+#: inc/global-styles.php:479
 msgctxt "Color name"
 msgid "Pale Purple"
 msgstr "ペールパープル"
 
-#: inc/global-styles.php:489
+#: inc/global-styles.php:484
 msgctxt "Color name"
 msgid "Bright Purple"
 msgstr "ブライトパープル"
 
-#: inc/global-styles.php:494
+#: inc/global-styles.php:489
 msgctxt "Color name"
 msgid "Light Purple"
 msgstr "ライトパープル"
 
-#: inc/global-styles.php:499
+#: inc/global-styles.php:494
 msgctxt "Color name"
 msgid "Purple"
 msgstr "パープル"
 
-#: inc/global-styles.php:504
+#: inc/global-styles.php:499
 msgctxt "Color name"
 msgid "Dark Purple"
 msgstr "ダークパープル"
 
-#: inc/global-styles.php:509
+#: inc/global-styles.php:504
 msgctxt "Color name"
 msgid "Heavy Purple"
 msgstr "ヘビーパープル"
 
-#: inc/global-styles.php:514
+#: inc/global-styles.php:509
 msgctxt "Color name"
 msgid "Pale Pink"
 msgstr "ペールピンク"
 
-#: inc/global-styles.php:519
+#: inc/global-styles.php:514
 msgctxt "Color name"
 msgid "Bright Pink"
 msgstr "ブライトピンク"
 
-#: inc/global-styles.php:524
+#: inc/global-styles.php:519
 msgctxt "Color name"
 msgid "Light Pink"
 msgstr "ライトピンク"
 
-#: inc/global-styles.php:529
+#: inc/global-styles.php:524
 msgctxt "Color name"
 msgid "Pink"
 msgstr "ピンク"
 
-#: inc/global-styles.php:534
+#: inc/global-styles.php:529
 msgctxt "Color name"
 msgid "Dark Pink"
 msgstr "ダークピンク"
 
-#: inc/global-styles.php:539
+#: inc/global-styles.php:534
 msgctxt "Color name"
 msgid "Heavy Pink"
 msgstr "ヘビーピンク"
@@ -1563,6 +1563,51 @@ msgid "Single Posts: Right Sidebar"
 msgstr "個別投稿：右サイドバー"
 
 #: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:1671
+msgid "License"
+msgstr "ライセンス"
+
+#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:1684
+msgid "License Key"
+msgstr "ライセンスキー"
+
+#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:1688
+msgid ""
+"If your license key is valid, you will be able to use unitone more "
+"conveniently."
+msgstr ""
+"ライセンスキーが有効な場合、unitone を更に便利に利用できるようになります。"
+
+#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:1695
+msgid "If the license key entered is valid, the theme can be updated."
+msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
+
+#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:1027
+#: App/Controller/Manager/dist/js/app.js:1477
+#: App/Controller/Manager/dist/js/app.js:1590
+#: App/Controller/Manager/dist/js/app.js:1728
+#: App/Controller/Manager/dist/js/app.js:2098
+msgid "Save Settings"
+msgstr "設定を保存"
+
+#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:1035
+#: App/Controller/Manager/dist/js/app.js:1485
+#: App/Controller/Manager/dist/js/app.js:1598
+#: App/Controller/Manager/dist/js/app.js:1736
+#: App/Controller/Manager/dist/js/app.js:2106
+msgid "Reset All Settings"
+msgstr "すべての設定をリセット"
+
+#: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:675
 msgid "Brand"
 msgstr "ブランド"
@@ -1649,24 +1694,64 @@ msgid "Link Color"
 msgstr "リンク色"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1027
-#: App/Controller/Manager/dist/js/app.js:1477
-#: App/Controller/Manager/dist/js/app.js:1590
-#: App/Controller/Manager/dist/js/app.js:1728
-#: App/Controller/Manager/dist/js/app.js:2098
-msgid "Save Settings"
-msgstr "設定を保存"
+#: App/Controller/Manager/dist/js/app.js:1807
+msgid "Typography"
+msgstr "タイポグラフィ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1035
-#: App/Controller/Manager/dist/js/app.js:1485
-#: App/Controller/Manager/dist/js/app.js:1598
-#: App/Controller/Manager/dist/js/app.js:1736
-#: App/Controller/Manager/dist/js/app.js:2106
-msgid "Reset All Settings"
-msgstr "すべての設定をリセット"
+#: App/Controller/Manager/dist/js/app.js:1906
+msgid "Font"
+msgstr "フォント"
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1923
+msgid "Base Font Size"
+msgstr "基本の文字サイズ"
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1939
+msgid "Half Leading"
+msgstr "ハーフリーディング"
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1955
+msgid "Size of h2"
+msgstr "h2 のサイズ"
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1982
+msgid "Size of h3"
+msgstr "h3 のサイズ"
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:2009
+msgid "Size of h4"
+msgstr "h4 のサイズ"
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:2036
+msgid "Size of h5"
+msgstr "h5 のサイズ"
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:2063
+msgid "Size of h6"
+msgstr "h6 のサイズ"
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1554
+msgid "Size"
+msgstr "サイズ"
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1558
+msgid "Content Size"
+msgstr "コンテンツサイズ"
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1570
+msgid "Wide Size"
+msgstr "幅広サイズ"
 
 #: App/Controller/Manager/dist/js/app.js:3
 #: App/Controller/Manager/dist/js/app.js:1177
@@ -1742,89 +1827,6 @@ msgid "Select existing page for the posts page"
 msgstr "既存のページを投稿ページ用に選択"
 
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1554
-msgid "Size"
-msgstr "サイズ"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1558
-msgid "Content Size"
-msgstr "コンテンツサイズ"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1570
-msgid "Wide Size"
-msgstr "幅広サイズ"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1671
-msgid "License"
-msgstr "ライセンス"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1684
-msgid "License Key"
-msgstr "ライセンスキー"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1688
-msgid ""
-"If your license key is valid, you will be able to use unitone more "
-"conveniently."
-msgstr ""
-"ライセンスキーが有効な場合、unitone を更に便利に利用できるようになります。"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1695
-msgid "If the license key entered is valid, the theme can be updated."
-msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1807
-msgid "Typography"
-msgstr "タイポグラフィ"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1906
-msgid "Font"
-msgstr "フォント"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1923
-msgid "Base Font Size"
-msgstr "基本の文字サイズ"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1939
-msgid "Half Leading"
-msgstr "ハーフリーディング"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1955
-msgid "Size of h2"
-msgstr "h2 のサイズ"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1982
-msgid "Size of h3"
-msgstr "h3 のサイズ"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2009
-msgid "Size of h4"
-msgstr "h4 のサイズ"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2036
-msgid "Size of h5"
-msgstr "h5 のサイズ"
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2063
-msgid "Size of h6"
-msgstr "h6 のサイズ"
-
-#: App/Controller/Manager/dist/js/app.js:5
 #: App/Controller/Manager/dist/js/app.js:2174
 #: App/Controller/Manager/dist/js/app.js:2243
 msgid "Go to the Dashboard"
@@ -1851,9 +1853,9 @@ msgstr "パターンライブラリーからパターンを再取得する"
 #: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/decorator/index.js:1
 #: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:1
+#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
 #: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
-#: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:1
+#: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:9
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
 #: dist/blocks/vertical-writing/index.js:1 dist/blocks/with-sidebar/index.js:1
@@ -1904,10 +1906,6 @@ msgstr "ここに概要を入力"
 msgid "A"
 msgstr "A"
 
-#: dist/blocks/center/index.js:1 dist/blocks/text/index.js:1
-msgid "Centering by intrinsic size of children"
-msgstr "子要素の内在的なサイズによって中央揃えする"
-
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
 msgstr "テキストも一緒に中央揃え"
@@ -1941,13 +1939,6 @@ msgstr "カラムの最小幅"
 msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr "%1$sgrid-template-columns%2$sの計算式の中"
 
-#: dist/blocks/cluster-divided/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/flex/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/responsive-grid-divided/index.js:1
-#: dist/blocks/section/index.js:1 dist/blocks/stack-divided/index.js:1
-msgid "HTML element"
-msgstr "HTML 要素"
-
 #: dist/blocks/cluster-divided/index.js:1
 msgid "Cluster (Divider: stripe)"
 msgstr "クラスター（区切り：ストライプ）"
@@ -1960,9 +1951,12 @@ msgstr "クラスター（区切り：スラッシュ）"
 msgid "Cluster (Divider: bordered)"
 msgstr "クラスター（区切り：ボーダー）"
 
-#: dist/blocks/cover-content/index.js:1
-msgid "Fill a space"
-msgstr "スペースを埋める"
+#: dist/blocks/cluster-divided/index.js:1 dist/blocks/decorator/index.js:1
+#: dist/blocks/flex/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/section/index.js:9 dist/blocks/stack-divided/index.js:1
+msgid "HTML element"
+msgstr "HTML 要素"
 
 #: dist/blocks/cover-content/index.js:1
 msgid "Cover content (Top)"
@@ -1975,6 +1969,10 @@ msgstr "カバーコンテンツ（中央）"
 #: dist/blocks/cover-content/index.js:1
 msgid "Cover content (Bottom)"
 msgstr "カバーコンテンツ（下部）"
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Fill a space"
+msgstr "スペースを埋める"
 
 #: dist/blocks/cover/index.js:1
 msgid "Cover (Top)"
@@ -2009,14 +2007,6 @@ msgid "With shadow"
 msgstr "影付き"
 
 #: dist/blocks/frame/index.js:1
-msgid "Preferred aspect ratio"
-msgstr "推奨アスペクト比"
-
-#: dist/blocks/frame/index.js:1
-msgid "Switch aspect ratio when portrait"
-msgstr "ポートレートのとき比率を切り替える"
-
-#: dist/blocks/frame/index.js:1
 msgid "Framed image"
 msgstr "フレーム画像"
 
@@ -2024,11 +2014,19 @@ msgstr "フレーム画像"
 msgid "Framed video"
 msgstr "フレームビデオ"
 
+#: dist/blocks/frame/index.js:1
+msgid "Preferred aspect ratio"
+msgstr "推奨アスペクト比"
+
+#: dist/blocks/frame/index.js:1
+msgid "Switch aspect ratio when portrait"
+msgstr "ポートレートのとき比率を切り替える"
+
 #: dist/blocks/grid/index.js:1
 msgid "Minimum width"
 msgstr "最小幅"
 
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:1
+#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
 msgid "Columns count"
 msgstr "カラム数"
 
@@ -2048,48 +2046,9 @@ msgstr "タブレット / モバイル用"
 msgid "For mobile"
 msgstr "モバイル用"
 
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:1
+#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
 msgid "Rows count"
 msgstr "行数"
-
-#: dist/blocks/layers/index.js:1
-msgid "Use background image/video (Cover)"
-msgstr "背景画像/動画を使用（Cover）"
-
-#: dist/blocks/layers/index.js:1
-msgid "Treat the first child block as a background image/video."
-msgstr "最初の子ブロックを背景画像/動画として扱います。"
-
-#: dist/blocks/layers/index.js:1
-msgid ""
-"The background image/video is enlarged according or reduces to the amount of "
-"content."
-msgstr "コンテンツ量に応じて、背景画像/動画を拡大・縮小表示します。"
-
-#: dist/blocks/layers/index.js:1
-msgid "Use background image/video (Fill)"
-msgstr "背景画像/動画を使用（Fill）"
-
-#: dist/blocks/layers/index.js:1
-msgid ""
-"The background image/video is enlarged according to the amount of content."
-msgstr "コンテンツ量に応じて、背景画像/動画を拡大表示します。"
-
-#: dist/blocks/layers/index.js:1
-msgid "Blur the background image/video"
-msgstr "背景画像/動画をぼかす"
-
-#: dist/blocks/layers/index.js:1
-msgid "Enable portrait mode"
-msgstr "ポートレートモードを有効にする"
-
-#: dist/blocks/layers/index.js:1
-msgid ""
-"If enabled, the number of vertical and horizontal grid lines is switched "
-"when the viewport is portrait."
-msgstr ""
-"有効な場合、ビューポートがポートレートのときにグリッド線の縦横の本数が切り替"
-"わります。"
 
 #: dist/blocks/layers/index.js:1
 msgid "Background image"
@@ -2159,11 +2118,51 @@ msgstr "背景画像 / 左寄せのタイトル"
 msgid "Background image / Left title / Subtitle"
 msgstr "背景画像 / 左寄せのタイトル / サブタイトル"
 
-#: dist/blocks/pattern-inserter/index.js:1
+#: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Cover)"
+msgstr "背景画像/動画を使用（Cover）"
+
+#: dist/blocks/layers/index.js:25
+msgid "Treat the first child block as a background image/video."
+msgstr "最初の子ブロックを背景画像/動画として扱います。"
+
+#: dist/blocks/layers/index.js:25
+msgid ""
+"The background image/video is enlarged according or reduces to the amount of "
+"content."
+msgstr "コンテンツ量に応じて、背景画像/動画を拡大・縮小表示します。"
+
+#: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Fill)"
+msgstr "背景画像/動画を使用（Fill）"
+
+#: dist/blocks/layers/index.js:25
+msgid ""
+"The background image/video is enlarged according to the amount of content."
+msgstr "コンテンツ量に応じて、背景画像/動画を拡大表示します。"
+
+#: dist/blocks/layers/index.js:25
+msgid "Blur the background image/video"
+msgstr "背景画像/動画をぼかす"
+
+#: dist/blocks/layers/index.js:25
+msgid "Enable portrait mode"
+msgstr "ポートレートモードを有効にする"
+
+#: dist/blocks/layers/index.js:25
+msgid ""
+"If enabled, the number of vertical and horizontal grid lines is switched "
+"when the viewport is portrait."
+msgstr ""
+"有効な場合、ビューポートがポートレートのときにグリッド線の縦横の本数が切り替"
+"わります。"
+
+#. translators: %d: number of results.
+#: dist/blocks/pattern-inserter/index.js:6
 msgid "Insert Pattern (Beta)"
 msgstr "パターンを挿入（ベータ版）"
 
-#: dist/blocks/pattern-inserter/index.js:1
+#: dist/blocks/pattern-inserter/index.js:6
 msgid ""
 "Click on the button below to see all available patterns. Click on any "
 "pattern you wish to insert, and that pattern will be inserted into the "
@@ -2172,7 +2171,7 @@ msgstr ""
 "下記のボタンをクリックすると、利用可能なすべてのパターンが表示されます。挿入"
 "したいパターンをクリックすると、そのパターンが記事に挿入されます。"
 
-#: dist/blocks/pattern-inserter/index.js:1
+#: dist/blocks/pattern-inserter/index.js:6
 msgid "Remove this placeholder"
 msgstr "このプレースホルダーを削除"
 
@@ -2187,6 +2186,18 @@ msgstr "各項目の幅"
 #: dist/blocks/reel/index.js:1
 msgid "No scrollbar"
 msgstr "スクロールバーなし"
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: stripe)"
+msgstr "レスポンシブグリッド（区切り：ストライプ）"
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: underline)"
+msgstr "レスポンシブグリッド（区切り：アンダーライン）"
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: bordered)"
+msgstr "レスポンシブグリッド（区切り：ボーダー）"
 
 #: dist/blocks/responsive-grid-divided/index.js:3
 #: dist/blocks/responsive-grid/index.js:3
@@ -2203,18 +2214,6 @@ msgid ""
 msgstr ""
 "「auto-repeat」が 「auto-fill」の場合、カラムはこのサイズを維持します。"
 "「auto-fit」の場合、空きスペースを埋めるようにカラムが伸長します。"
-
-#: dist/blocks/responsive-grid-divided/index.js:3
-msgid "Responsive grid (Divider: stripe)"
-msgstr "レスポンシブグリッド（区切り：ストライプ）"
-
-#: dist/blocks/responsive-grid-divided/index.js:3
-msgid "Responsive grid (Divider: underline)"
-msgstr "レスポンシブグリッド（区切り：アンダーライン）"
-
-#: dist/blocks/responsive-grid-divided/index.js:3
-msgid "Responsive grid (Divider: bordered)"
-msgstr "レスポンシブグリッド（区切り：ボーダー）"
 
 #: dist/blocks/section/index.js:3
 msgid "Centered title"
@@ -2356,6 +2355,10 @@ msgid ""
 msgstr "このブロックがこの幅より小さくなったとき、コンテンツは1列に並びます。"
 
 #: dist/blocks/text/index.js:1
+msgid "Centering by intrinsic size of children"
+msgstr "子要素の内在的なサイズによって中央揃えする"
+
+#: dist/blocks/text/index.js:1
 msgid "Multi columns"
 msgstr "マルチカラム"
 
@@ -2433,6 +2436,10 @@ msgid "Color"
 msgstr "色"
 
 #: dist/js/editor/editor.js:1
+msgid "Cell Min Width"
+msgstr "セルの最小幅"
+
+#: dist/js/editor/editor.js:1
 msgid "Using root padding"
 msgstr "ルートパディングを使用"
 
@@ -2449,6 +2456,10 @@ msgid "Gap"
 msgstr "間隔"
 
 #: dist/js/editor/editor.js:1
+msgid "Stairs grid"
+msgstr "階段グリッド"
+
+#: dist/js/editor/editor.js:1
 msgid "Using negative margin"
 msgstr "ネガティブマージンを使用する"
 
@@ -2457,28 +2468,20 @@ msgid "Overflow"
 msgstr "オーバーフロー"
 
 #: dist/js/editor/editor.js:1
-msgid "Slash"
-msgstr "スラッシュ"
+msgid "Justify items top"
+msgstr "コンテンツを上揃え"
 
 #: dist/js/editor/editor.js:1
-msgid "Divider"
-msgstr "区切り"
-
-#: dist/js/editor/editor.js:1
-msgid "Type"
-msgstr "種類"
-
-#: dist/js/editor/editor.js:1
-msgid "Layer"
-msgstr "レイヤー"
-
-#: dist/js/editor/editor.js:1
-msgid "Mix blend mode"
-msgstr "ミックスブレンドモード"
+msgid "Justify items bottom"
+msgstr "コンテンツを下揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Stretch to fill"
 msgstr "埋めるように拡張"
+
+#: dist/js/editor/editor.js:1
+msgid "Center"
+msgstr "中央"
 
 #: dist/js/editor/editor.js:1
 msgid "auto-fill"
@@ -2487,18 +2490,6 @@ msgstr "auto-fill"
 #: dist/js/editor/editor.js:1
 msgid "auto-fit"
 msgstr "auto-fit"
-
-#: dist/js/editor/editor.js:1
-msgid "Center"
-msgstr "中央"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items top"
-msgstr "コンテンツを上揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items bottom"
-msgstr "コンテンツを下揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify content"
@@ -2562,6 +2553,34 @@ msgid "A grid item's size and location within the grid row"
 msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
 
 #: dist/js/editor/editor.js:5
+msgid "Layer"
+msgstr "レイヤー"
+
+#: dist/js/editor/editor.js:5
+msgid "Mix blend mode"
+msgstr "ミックスブレンドモード"
+
+#: dist/js/editor/editor.js:5
+msgid "Fluid typography"
+msgstr "流体タイポグラフィ"
+
+#: dist/js/editor/editor.js:5
+msgid "Half leading"
+msgstr "ハーフリーディング"
+
+#: dist/js/editor/editor.js:5
+msgid "Slash"
+msgstr "スラッシュ"
+
+#: dist/js/editor/editor.js:5
+msgid "Divider"
+msgstr "区切り"
+
+#: dist/js/editor/editor.js:5
+msgid "Type"
+msgstr "種類"
+
+#: dist/js/editor/editor.js:5
 msgid "Position"
 msgstr "位置"
 
@@ -2578,22 +2597,6 @@ msgid "The stack level"
 msgstr "重ね合わせレベル"
 
 #: dist/js/editor/editor.js:5
-msgid "Cell Min Width"
-msgstr "セルの最小幅"
-
-#: dist/js/editor/editor.js:5
-msgid "Fluid typography"
-msgstr "流体タイポグラフィ"
-
-#: dist/js/editor/editor.js:5
-msgid "Half leading"
-msgstr "ハーフリーディング"
-
-#: dist/js/editor/editor.js:5
-msgid "Show block outline"
-msgstr "ブロックのアウトラインを表示"
-
-#: dist/js/editor/editor.js:5
 msgid "Currently Selected"
 msgstr "現在選択中"
 
@@ -2604,6 +2607,10 @@ msgstr "先祖ブロックを選択する"
 #: dist/js/editor/editor.js:5
 msgid "Select a child block"
 msgstr "子ブロックを選択"
+
+#: dist/js/editor/editor.js:5
+msgid "Show block outline"
+msgstr "ブロックのアウトラインを表示"
 
 #. translators: %s: template part title.
 #: dist/js/editor/editor.js:6

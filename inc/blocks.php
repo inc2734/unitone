@@ -286,6 +286,21 @@ add_filter(
 			}
 		}
 
+		// -stairs
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['stairs'] ?? null : null;
+		$attribute = false;
+		if ( isset( $block['attrs']['unitone']['stairs'] ) && '' !== $block['attrs']['unitone']['stairs'] ) {
+			$attribute = '-stairs:' . $block['attrs']['unitone']['stairs'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['stairs'] ) ) {
+			$attribute = '-stairs:' . $default;
+		}
+		if ( $attribute ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
 		// --unitone--max-width
 		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['maxWidth'] ?? null : null;
 		$property = false;

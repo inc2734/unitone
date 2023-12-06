@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 8.1.0\n"
+"Project-Id-Version: unitone 9.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-21T02:14:45+00:00\n"
+"POT-Creation-Date: 2023-12-06T06:13:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: inc/block-categories.php:40
 #: inc/block-categories.php:51
 #: inc/block-styles.php:93
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:1
 msgid "unitone"
 msgstr ""
 
@@ -44,7 +44,7 @@ msgstr ""
 msgid "unitone Setup"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:362
+#: App/Controller/Manager/Manager.php:363
 #: patterns/footer-2.php:22
 #: patterns/footer-3.php:51
 #: patterns/footer-3.php:59
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:405
+#: App/Controller/Manager/Manager.php:406
 #: patterns/footer-2.php:25
 #: patterns/footer-3.php:54
 #: patterns/footer-3.php:62
@@ -74,15 +74,15 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:473
+#: App/Controller/Manager/Manager.php:474
 msgid "unitone theme has been activated"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:476
+#: App/Controller/Manager/Manager.php:477
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:480
+#: App/Controller/Manager/Manager.php:481
 msgid "Go to the setup screen"
 msgstr ""
 
@@ -94,7 +94,7 @@ msgid "Learn more"
 msgstr ""
 
 #: inc/block-categories.php:21
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:3
 #: dist/js/editor/editor.js:1
 #: App/Controller/Manager/dist/js/app.js:1541
 msgid "Layout"
@@ -463,17 +463,17 @@ msgstr ""
 
 #: inc/block-styles.php:29
 #: inc/block-styles.php:109
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Underline"
 msgstr ""
 
 #: inc/block-styles.php:37
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Bordered"
 msgstr ""
 
 #: inc/block-styles.php:45
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:5
 msgid "Stripe"
 msgstr ""
 
@@ -506,391 +506,391 @@ msgstr ""
 msgid "Vertical line"
 msgstr ""
 
-#: inc/global-styles.php:154
+#: inc/global-styles.php:149
 msgctxt "Color name"
 msgid "Twilight (Light)"
 msgstr ""
 
-#: inc/global-styles.php:159
+#: inc/global-styles.php:154
 msgctxt "Color name"
 msgid "Twilight"
 msgstr ""
 
-#: inc/global-styles.php:164
+#: inc/global-styles.php:159
 msgctxt "Color name"
 msgid "Twilight (Heavy)"
 msgstr ""
 
-#: inc/global-styles.php:169
+#: inc/global-styles.php:164
 msgctxt "Color name"
 msgid "Dimmed (Light)"
 msgstr ""
 
-#: inc/global-styles.php:174
+#: inc/global-styles.php:169
 msgctxt "Color name"
 msgid "Dimmed"
 msgstr ""
 
-#: inc/global-styles.php:179
+#: inc/global-styles.php:174
 msgctxt "Color name"
 msgid "Dimmed (Heavy)"
 msgstr ""
 
-#: inc/global-styles.php:184
+#: inc/global-styles.php:179
 msgctxt "Color name"
 msgid "Pale Red"
 msgstr ""
 
-#: inc/global-styles.php:189
+#: inc/global-styles.php:184
 msgctxt "Color name"
 msgid "Bright Red"
 msgstr ""
 
-#: inc/global-styles.php:194
+#: inc/global-styles.php:189
 msgctxt "Color name"
 msgid "Light Red"
 msgstr ""
 
-#: inc/global-styles.php:199
+#: inc/global-styles.php:194
 msgctxt "Color name"
 msgid "Red"
 msgstr ""
 
-#: inc/global-styles.php:204
+#: inc/global-styles.php:199
 msgctxt "Color name"
 msgid "Dark Red"
 msgstr ""
 
-#: inc/global-styles.php:209
+#: inc/global-styles.php:204
 msgctxt "Color name"
 msgid "Heavy Red"
 msgstr ""
 
-#: inc/global-styles.php:214
+#: inc/global-styles.php:209
 msgctxt "Color name"
 msgid "Pale Orange"
 msgstr ""
 
-#: inc/global-styles.php:219
+#: inc/global-styles.php:214
 msgctxt "Color name"
 msgid "Bright Orange"
 msgstr ""
 
-#: inc/global-styles.php:224
+#: inc/global-styles.php:219
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr ""
 
-#: inc/global-styles.php:229
+#: inc/global-styles.php:224
 msgctxt "Color name"
 msgid "Orange"
 msgstr ""
 
-#: inc/global-styles.php:234
+#: inc/global-styles.php:229
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr ""
 
-#: inc/global-styles.php:239
+#: inc/global-styles.php:234
 msgctxt "Color name"
 msgid "Heavy Orange"
 msgstr ""
 
-#: inc/global-styles.php:244
+#: inc/global-styles.php:239
 msgctxt "Color name"
 msgid "Pale Yellow"
 msgstr ""
 
-#: inc/global-styles.php:249
+#: inc/global-styles.php:244
 msgctxt "Color name"
 msgid "Bright Yellow"
 msgstr ""
 
-#: inc/global-styles.php:254
+#: inc/global-styles.php:249
 msgctxt "Color name"
 msgid "Light Yellow"
 msgstr ""
 
-#: inc/global-styles.php:259
+#: inc/global-styles.php:254
 msgctxt "Color name"
 msgid "Yellow"
 msgstr ""
 
-#: inc/global-styles.php:264
+#: inc/global-styles.php:259
 msgctxt "Color name"
 msgid "Dark Yellow"
 msgstr ""
 
-#: inc/global-styles.php:269
+#: inc/global-styles.php:264
 msgctxt "Color name"
 msgid "Heavy Yellow"
 msgstr ""
 
-#: inc/global-styles.php:274
+#: inc/global-styles.php:269
 msgctxt "Color name"
 msgid "Pale Lime"
 msgstr ""
 
-#: inc/global-styles.php:279
+#: inc/global-styles.php:274
 msgctxt "Color name"
 msgid "Bright Lime"
 msgstr ""
 
-#: inc/global-styles.php:284
+#: inc/global-styles.php:279
 msgctxt "Color name"
 msgid "Light Lime"
 msgstr ""
 
-#: inc/global-styles.php:289
+#: inc/global-styles.php:284
 msgctxt "Color name"
 msgid "Lime"
 msgstr ""
 
-#: inc/global-styles.php:294
+#: inc/global-styles.php:289
 msgctxt "Color name"
 msgid "Dark Lime"
 msgstr ""
 
-#: inc/global-styles.php:299
+#: inc/global-styles.php:294
 msgctxt "Color name"
 msgid "Heavy Lime"
 msgstr ""
 
-#: inc/global-styles.php:304
+#: inc/global-styles.php:299
 msgctxt "Color name"
 msgid "Pale Green"
 msgstr ""
 
-#: inc/global-styles.php:309
+#: inc/global-styles.php:304
 msgid "Bright Green"
 msgstr ""
 
-#: inc/global-styles.php:314
+#: inc/global-styles.php:309
 msgctxt "Color name"
 msgid "Light Green"
 msgstr ""
 
-#: inc/global-styles.php:319
+#: inc/global-styles.php:314
 msgctxt "Color name"
 msgid "Green"
 msgstr ""
 
-#: inc/global-styles.php:324
+#: inc/global-styles.php:319
 msgctxt "Color name"
 msgid "Dark Green"
 msgstr ""
 
-#: inc/global-styles.php:329
+#: inc/global-styles.php:324
 msgctxt "Color name"
 msgid "Heavy Green"
 msgstr ""
 
-#: inc/global-styles.php:334
+#: inc/global-styles.php:329
 msgctxt "Color name"
 msgid "Pale Teal"
 msgstr ""
 
-#: inc/global-styles.php:339
+#: inc/global-styles.php:334
 msgctxt "Color name"
 msgid "Bright Teal"
 msgstr ""
 
-#: inc/global-styles.php:344
+#: inc/global-styles.php:339
 msgctxt "Color name"
 msgid "Light Teal"
 msgstr ""
 
-#: inc/global-styles.php:349
+#: inc/global-styles.php:344
 msgctxt "Color name"
 msgid "Teal"
 msgstr ""
 
-#: inc/global-styles.php:354
+#: inc/global-styles.php:349
 msgctxt "Color name"
 msgid "Dark Teal"
 msgstr ""
 
-#: inc/global-styles.php:359
+#: inc/global-styles.php:354
 msgctxt "Color name"
 msgid "Heavy Teal"
 msgstr ""
 
-#: inc/global-styles.php:364
+#: inc/global-styles.php:359
 msgctxt "Color name"
 msgid "Pale Cyan"
 msgstr ""
 
-#: inc/global-styles.php:369
+#: inc/global-styles.php:364
 msgctxt "Color name"
 msgid "Bright Cyan"
 msgstr ""
 
-#: inc/global-styles.php:374
+#: inc/global-styles.php:369
 msgctxt "Color name"
 msgid "Light Cyan"
 msgstr ""
 
-#: inc/global-styles.php:379
+#: inc/global-styles.php:374
 msgctxt "Color name"
 msgid "Cyan"
 msgstr ""
 
-#: inc/global-styles.php:384
+#: inc/global-styles.php:379
 msgctxt "Color name"
 msgid "Dark Cyan"
 msgstr ""
 
-#: inc/global-styles.php:389
+#: inc/global-styles.php:384
 msgctxt "Color name"
 msgid "Heavy Cyan"
 msgstr ""
 
-#: inc/global-styles.php:394
+#: inc/global-styles.php:389
 msgctxt "Color name"
 msgid "Pale Blue"
 msgstr ""
 
-#: inc/global-styles.php:399
+#: inc/global-styles.php:394
 msgctxt "Color name"
 msgid "Bright Blue"
 msgstr ""
 
-#: inc/global-styles.php:404
+#: inc/global-styles.php:399
 msgctxt "Color name"
 msgid "Light Blue"
 msgstr ""
 
-#: inc/global-styles.php:409
+#: inc/global-styles.php:404
 msgctxt "Color name"
 msgid "Blue"
 msgstr ""
 
-#: inc/global-styles.php:414
+#: inc/global-styles.php:409
 msgctxt "Color name"
 msgid "Dark Blue"
 msgstr ""
 
-#: inc/global-styles.php:419
+#: inc/global-styles.php:414
 msgctxt "Color name"
 msgid "Heavy Blue"
 msgstr ""
 
-#: inc/global-styles.php:424
+#: inc/global-styles.php:419
 msgctxt "Color name"
 msgid "Pale Indigo"
 msgstr ""
 
-#: inc/global-styles.php:429
+#: inc/global-styles.php:424
 msgctxt "Color name"
 msgid "Bright Indigo"
 msgstr ""
 
-#: inc/global-styles.php:434
+#: inc/global-styles.php:429
 msgctxt "Color name"
 msgid "Light Indigo"
 msgstr ""
 
-#: inc/global-styles.php:439
+#: inc/global-styles.php:434
 msgctxt "Color name"
 msgid "Indigo"
 msgstr ""
 
-#: inc/global-styles.php:444
+#: inc/global-styles.php:439
 msgctxt "Color name"
 msgid "Dark Indigo"
 msgstr ""
 
-#: inc/global-styles.php:449
+#: inc/global-styles.php:444
 msgctxt "Color name"
 msgid "Heavy Indigo"
 msgstr ""
 
-#: inc/global-styles.php:454
+#: inc/global-styles.php:449
 msgctxt "Color name"
 msgid "Pale Violet"
 msgstr ""
 
-#: inc/global-styles.php:459
+#: inc/global-styles.php:454
 msgctxt "Color name"
 msgid "Bright Violet"
 msgstr ""
 
-#: inc/global-styles.php:464
+#: inc/global-styles.php:459
 msgctxt "Color name"
 msgid "Light Violet"
 msgstr ""
 
-#: inc/global-styles.php:469
+#: inc/global-styles.php:464
 msgctxt "Color name"
 msgid "Violet"
 msgstr ""
 
-#: inc/global-styles.php:474
+#: inc/global-styles.php:469
 msgctxt "Color name"
 msgid "Dark Violet"
 msgstr ""
 
-#: inc/global-styles.php:479
+#: inc/global-styles.php:474
 msgctxt "Color name"
 msgid "Heavy Violet"
 msgstr ""
 
-#: inc/global-styles.php:484
+#: inc/global-styles.php:479
 msgctxt "Color name"
 msgid "Pale Purple"
 msgstr ""
 
-#: inc/global-styles.php:489
+#: inc/global-styles.php:484
 msgctxt "Color name"
 msgid "Bright Purple"
 msgstr ""
 
-#: inc/global-styles.php:494
+#: inc/global-styles.php:489
 msgctxt "Color name"
 msgid "Light Purple"
 msgstr ""
 
-#: inc/global-styles.php:499
+#: inc/global-styles.php:494
 msgctxt "Color name"
 msgid "Purple"
 msgstr ""
 
-#: inc/global-styles.php:504
+#: inc/global-styles.php:499
 msgctxt "Color name"
 msgid "Dark Purple"
 msgstr ""
 
-#: inc/global-styles.php:509
+#: inc/global-styles.php:504
 msgctxt "Color name"
 msgid "Heavy Purple"
 msgstr ""
 
-#: inc/global-styles.php:514
+#: inc/global-styles.php:509
 msgctxt "Color name"
 msgid "Pale Pink"
 msgstr ""
 
-#: inc/global-styles.php:519
+#: inc/global-styles.php:514
 msgctxt "Color name"
 msgid "Bright Pink"
 msgstr ""
 
-#: inc/global-styles.php:524
+#: inc/global-styles.php:519
 msgctxt "Color name"
 msgid "Light Pink"
 msgstr ""
 
-#: inc/global-styles.php:529
+#: inc/global-styles.php:524
 msgctxt "Color name"
 msgid "Pink"
 msgstr ""
 
-#: inc/global-styles.php:534
+#: inc/global-styles.php:529
 msgctxt "Color name"
 msgid "Dark Pink"
 msgstr ""
 
-#: inc/global-styles.php:539
+#: inc/global-styles.php:534
 msgctxt "Color name"
 msgid "Heavy Pink"
 msgstr ""
@@ -1604,6 +1604,48 @@ msgid "Single Posts: Right Sidebar"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:1671
+msgid "License"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:1684
+msgid "License Key"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:1688
+msgid "If your license key is valid, you will be able to use unitone more conveniently."
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:1695
+msgid "If the license key entered is valid, the theme can be updated."
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:1027
+#: App/Controller/Manager/dist/js/app.js:1477
+#: App/Controller/Manager/dist/js/app.js:1590
+#: App/Controller/Manager/dist/js/app.js:1728
+#: App/Controller/Manager/dist/js/app.js:2098
+msgid "Save Settings"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:1035
+#: App/Controller/Manager/dist/js/app.js:1485
+#: App/Controller/Manager/dist/js/app.js:1598
+#: App/Controller/Manager/dist/js/app.js:1736
+#: App/Controller/Manager/dist/js/app.js:2106
+msgid "Reset All Settings"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:675
 msgid "Brand"
 msgstr ""
@@ -1682,23 +1724,63 @@ msgid "Link Color"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1027
-#: App/Controller/Manager/dist/js/app.js:1477
-#: App/Controller/Manager/dist/js/app.js:1590
-#: App/Controller/Manager/dist/js/app.js:1728
-#: App/Controller/Manager/dist/js/app.js:2098
-msgid "Save Settings"
+#: App/Controller/Manager/dist/js/app.js:1807
+msgid "Typography"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1035
-#: App/Controller/Manager/dist/js/app.js:1485
-#: App/Controller/Manager/dist/js/app.js:1598
-#: App/Controller/Manager/dist/js/app.js:1736
-#: App/Controller/Manager/dist/js/app.js:2106
-msgid "Reset All Settings"
+#: App/Controller/Manager/dist/js/app.js:1906
+msgid "Font"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1923
+msgid "Base Font Size"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1939
+msgid "Half Leading"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1955
+msgid "Size of h2"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1982
+msgid "Size of h3"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:2009
+msgid "Size of h4"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:2036
+msgid "Size of h5"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:2063
+msgid "Size of h6"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1554
+msgid "Size"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1558
+msgid "Content Size"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:1570
+msgid "Wide Size"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
@@ -1775,86 +1857,6 @@ msgid "Select existing page for the posts page"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1554
-msgid "Size"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1558
-msgid "Content Size"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1570
-msgid "Wide Size"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1671
-msgid "License"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1684
-msgid "License Key"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1688
-msgid "If your license key is valid, you will be able to use unitone more conveniently."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1695
-msgid "If the license key entered is valid, the theme can be updated."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1807
-msgid "Typography"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1906
-msgid "Font"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1923
-msgid "Base Font Size"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1939
-msgid "Half Leading"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1955
-msgid "Size of h2"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1982
-msgid "Size of h3"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2009
-msgid "Size of h4"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2036
-msgid "Size of h5"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2063
-msgid "Size of h6"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:5
 #: App/Controller/Manager/dist/js/app.js:2174
 #: App/Controller/Manager/dist/js/app.js:2243
 msgid "Go to the Dashboard"
@@ -1886,11 +1888,11 @@ msgstr ""
 #: dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:25
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
-#: dist/blocks/section/index.js:1
+#: dist/blocks/section/index.js:9
 #: dist/blocks/slider/index.js:1
 #: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1
@@ -1946,11 +1948,6 @@ msgid "A"
 msgstr ""
 
 #: dist/blocks/center/index.js:1
-#: dist/blocks/text/index.js:1
-msgid "Centering by intrinsic size of children"
-msgstr ""
-
-#: dist/blocks/center/index.js:1
 msgid "Text is also centered"
 msgstr ""
 
@@ -1984,16 +1981,6 @@ msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
-#: dist/blocks/decorator/index.js:1
-#: dist/blocks/flex/index.js:1
-#: dist/blocks/grid/index.js:1
-#: dist/blocks/responsive-grid-divided/index.js:1
-#: dist/blocks/section/index.js:1
-#: dist/blocks/stack-divided/index.js:1
-msgid "HTML element"
-msgstr ""
-
-#: dist/blocks/cluster-divided/index.js:1
 msgid "Cluster (Divider: stripe)"
 msgstr ""
 
@@ -2005,8 +1992,14 @@ msgstr ""
 msgid "Cluster (Divider: bordered)"
 msgstr ""
 
-#: dist/blocks/cover-content/index.js:1
-msgid "Fill a space"
+#: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/decorator/index.js:1
+#: dist/blocks/flex/index.js:1
+#: dist/blocks/grid/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/section/index.js:9
+#: dist/blocks/stack-divided/index.js:1
+msgid "HTML element"
 msgstr ""
 
 #: dist/blocks/cover-content/index.js:1
@@ -2019,6 +2012,10 @@ msgstr ""
 
 #: dist/blocks/cover-content/index.js:1
 msgid "Cover content (Bottom)"
+msgstr ""
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Fill a space"
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
@@ -2054,14 +2051,6 @@ msgid "With shadow"
 msgstr ""
 
 #: dist/blocks/frame/index.js:1
-msgid "Preferred aspect ratio"
-msgstr ""
-
-#: dist/blocks/frame/index.js:1
-msgid "Switch aspect ratio when portrait"
-msgstr ""
-
-#: dist/blocks/frame/index.js:1
 msgid "Framed image"
 msgstr ""
 
@@ -2069,12 +2058,20 @@ msgstr ""
 msgid "Framed video"
 msgstr ""
 
+#: dist/blocks/frame/index.js:1
+msgid "Preferred aspect ratio"
+msgstr ""
+
+#: dist/blocks/frame/index.js:1
+msgid "Switch aspect ratio when portrait"
+msgstr ""
+
 #: dist/blocks/grid/index.js:1
 msgid "Minimum width"
 msgstr ""
 
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:25
 msgid "Columns count"
 msgstr ""
 
@@ -2096,40 +2093,8 @@ msgid "For mobile"
 msgstr ""
 
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:25
 msgid "Rows count"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Use background image/video (Cover)"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Treat the first child block as a background image/video."
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "The background image/video is enlarged according or reduces to the amount of content."
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Use background image/video (Fill)"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "The background image/video is enlarged according to the amount of content."
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Blur the background image/video"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Enable portrait mode"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "If enabled, the number of vertical and horizontal grid lines is switched when the viewport is portrait."
 msgstr ""
 
 #: dist/blocks/layers/index.js:1
@@ -2213,15 +2178,48 @@ msgstr ""
 msgid "Background image / Left title / Subtitle"
 msgstr ""
 
-#: dist/blocks/pattern-inserter/index.js:1
+#: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Cover)"
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "Treat the first child block as a background image/video."
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "The background image/video is enlarged according or reduces to the amount of content."
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Fill)"
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "The background image/video is enlarged according to the amount of content."
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "Blur the background image/video"
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "Enable portrait mode"
+msgstr ""
+
+#: dist/blocks/layers/index.js:25
+msgid "If enabled, the number of vertical and horizontal grid lines is switched when the viewport is portrait."
+msgstr ""
+
+#. translators: %d: number of results.
+#: dist/blocks/pattern-inserter/index.js:6
 msgid "Insert Pattern (Beta)"
 msgstr ""
 
-#: dist/blocks/pattern-inserter/index.js:1
+#: dist/blocks/pattern-inserter/index.js:6
 msgid "Click on the button below to see all available patterns. Click on any pattern you wish to insert, and that pattern will be inserted into the article."
 msgstr ""
 
-#: dist/blocks/pattern-inserter/index.js:1
+#: dist/blocks/pattern-inserter/index.js:6
 msgid "Remove this placeholder"
 msgstr ""
 
@@ -2238,6 +2236,18 @@ msgstr ""
 msgid "No scrollbar"
 msgstr ""
 
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: stripe)"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: underline)"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: bordered)"
+msgstr ""
+
 #: dist/blocks/responsive-grid-divided/index.js:3
 #: dist/blocks/responsive-grid/index.js:3
 msgid "When the column width is less than this value, it is aligned in a single column."
@@ -2246,18 +2256,6 @@ msgstr ""
 #: dist/blocks/responsive-grid-divided/index.js:3
 #: dist/blocks/responsive-grid/index.js:3
 msgid "If \"auto-repeat\" is \"auto-fill\" the column will maintain this size.\" auto-fit\", the column will stretch to fill the available space."
-msgstr ""
-
-#: dist/blocks/responsive-grid-divided/index.js:3
-msgid "Responsive grid (Divider: stripe)"
-msgstr ""
-
-#: dist/blocks/responsive-grid-divided/index.js:3
-msgid "Responsive grid (Divider: underline)"
-msgstr ""
-
-#: dist/blocks/responsive-grid-divided/index.js:3
-msgid "Responsive grid (Divider: bordered)"
 msgstr ""
 
 #: dist/blocks/section/index.js:3
@@ -2405,6 +2403,10 @@ msgid "When this block is smaller than this width, the contents are arranged in 
 msgstr ""
 
 #: dist/blocks/text/index.js:1
+msgid "Centering by intrinsic size of children"
+msgstr ""
+
+#: dist/blocks/text/index.js:1
 msgid "Multi columns"
 msgstr ""
 
@@ -2482,6 +2484,10 @@ msgid "Color"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
+msgid "Cell Min Width"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
 msgid "Using root padding"
 msgstr ""
 
@@ -2498,6 +2504,10 @@ msgid "Gap"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
+msgid "Stairs grid"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
 msgid "Using negative margin"
 msgstr ""
 
@@ -2506,27 +2516,19 @@ msgid "Overflow"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Slash"
+msgid "Justify items top"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Divider"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Type"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Layer"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Mix blend mode"
+msgid "Justify items bottom"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Stretch to fill"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Center"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -2535,18 +2537,6 @@ msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "auto-fit"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Center"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items top"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items bottom"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -2608,6 +2598,34 @@ msgid "A grid item's size and location within the grid row"
 msgstr ""
 
 #: dist/js/editor/editor.js:5
+msgid "Layer"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Mix blend mode"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Fluid typography"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Half leading"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Slash"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Divider"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Type"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
 msgid "Position"
 msgstr ""
 
@@ -2624,22 +2642,6 @@ msgid "The stack level"
 msgstr ""
 
 #: dist/js/editor/editor.js:5
-msgid "Cell Min Width"
-msgstr ""
-
-#: dist/js/editor/editor.js:5
-msgid "Fluid typography"
-msgstr ""
-
-#: dist/js/editor/editor.js:5
-msgid "Half leading"
-msgstr ""
-
-#: dist/js/editor/editor.js:5
-msgid "Show block outline"
-msgstr ""
-
-#: dist/js/editor/editor.js:5
 msgid "Currently Selected"
 msgstr ""
 
@@ -2649,6 +2651,10 @@ msgstr ""
 
 #: dist/js/editor/editor.js:5
 msgid "Select a child block"
+msgstr ""
+
+#: dist/js/editor/editor.js:5
+msgid "Show block outline"
 msgstr ""
 
 #. translators: %s: template part title.

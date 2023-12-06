@@ -11,6 +11,7 @@ import {
 	editPaddingProp,
 	editGuttersProp,
 	editGapProp,
+	editStairsProp,
 	editNegativeProp,
 	editOverflowProp,
 } from './dimensions/dimensions';
@@ -64,6 +65,7 @@ function addEditProps( settings ) {
 	settings = editDividerProp( settings );
 	settings = editDividerTypeProp( settings );
 	settings = editGapProp( settings );
+	settings = editStairsProp( settings );
 	settings = editGuttersProp( settings );
 	settings = editJustifyContentColumnProp( settings );
 	settings = editJustifyContentProp( settings );

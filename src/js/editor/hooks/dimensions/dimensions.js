@@ -31,6 +31,14 @@ import {
 } from './gap';
 
 import {
+	useIsStairsDisabled,
+	hasStairsValue,
+	resetStairs,
+	StairsEdit,
+	editStairsProp,
+} from './stairs';
+
+import {
 	useIsNegativeDisabled,
 	hasNegativeValue,
 	resetNegative,
@@ -50,6 +58,7 @@ export {
 	editPaddingProp,
 	editGuttersProp,
 	editGapProp,
+	editStairsProp,
 	editNegativeProp,
 	editOverflowProp,
 };
@@ -58,6 +67,7 @@ export function DimensionsPanel( props ) {
 	const isPaddingDisabled = useIsPaddingDisabled( props );
 	const isGuttersDisabled = useIsGuttersDisabled( props );
 	const isGapDisabled = useIsGapDisabled( props );
+	const isStairsDisabled = useIsStairsDisabled( props );
 	const isNegativeDisabled = useIsNegativeDisabled( props );
 	const isOverflowDisabled = useIsOverflowDisabled( props );
 
@@ -65,6 +75,7 @@ export function DimensionsPanel( props ) {
 		isPaddingDisabled &&
 		isGuttersDisabled &&
 		isGapDisabled &&
+		isStairsDisabled &&
 		isNegativeDisabled &&
 		isOverflowDisabled
 	) {
@@ -133,6 +144,22 @@ export function DimensionsPanel( props ) {
 									<code>gap</code>
 								</>
 							}
+						/>
+					</ToolsPanelItem>
+				) }
+
+				{ ! isStairsDisabled && (
+					<ToolsPanelItem
+						hasValue={ () => hasStairsValue( props ) }
+						label={ __( 'Stairs grid', 'unitone' ) }
+						onDeselect={ () => resetStairs( props ) }
+						resetAllFilter={ () => resetStairs( props ) }
+						isShownByDefault={ true }
+						panelId={ props.clientId }
+					>
+						<StairsEdit
+							{ ...props }
+							label={ __( 'Stairs grid', 'unitone' ) }
 						/>
 					</ToolsPanelItem>
 				) }

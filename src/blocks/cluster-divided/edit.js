@@ -37,8 +37,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const ref = useRefEffect(
 		( target ) => {
-			dividersResizeObserver.unobserve( target );
-			dividersResizeObserver.observe( target );
+			dividersResizeObserver( target );
 		},
 		[ clientId, attributes, children.length ]
 	);

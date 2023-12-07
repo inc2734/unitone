@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-12-06T06:13:40+00:00\n"
-"PO-Revision-Date: 2023-12-06 15:14+0900\n"
+"POT-Creation-Date: 2023-12-07T14:31:39+00:00\n"
+"PO-Revision-Date: 2023-12-07 23:32+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2339,7 +2339,7 @@ msgstr "スタック（区切り：アンダーライン）"
 msgid "Stack (Divider: bordered)"
 msgstr "スタック（区切り：ボーダー）"
 
-#: dist/blocks/switcher/index.js:1
+#: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
 msgid "Threshold"
 msgstr "閾値"
 
@@ -2369,6 +2369,10 @@ msgstr "「最大幅」の設定値が各カラムの幅として利用されま
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Text orientation"
 msgstr "テキストの向き"
+
+#: dist/blocks/vertical-writing/index.js:1
+msgid "When this block is smaller than this width, switch writing mode."
+msgstr "このブロックがこの幅より小さいときは、書き込みモードを切り替えます。"
 
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Switch writing mode when portrait"

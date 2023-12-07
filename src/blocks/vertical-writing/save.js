@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function ( { attributes } ) {
-	const { textOrientation, switchWritingMode } = attributes;
+	const { textOrientation, switchWritingMode, threshold } = attributes;
 
 	return (
 		<div
@@ -18,6 +18,9 @@ export default function ( { attributes } ) {
 							!! textOrientation,
 						'-switch': switchWritingMode,
 					} ),
+					style: {
+						'--unitone--threshold': threshold || undefined,
+					},
 				} ) }
 			/>
 		</div>

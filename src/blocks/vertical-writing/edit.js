@@ -10,6 +10,7 @@ import {
 
 import {
 	SelectControl,
+	TextControl,
 	ToggleControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
@@ -21,10 +22,10 @@ import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
-import { verticalsResizeObserver } from '../../../node_modules/@inc2734/unitone-css/src/library';
+import { verticalsResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { textOrientation, switchWritingMode } = attributes;
+	const { textOrientation, switchWritingMode, threshold } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) => {
@@ -52,6 +53,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					!! textOrientation,
 				'-switch': switchWritingMode,
 			} ),
+			style: {
+				'--unitone--threshold': threshold || undefined,
+			},
 		},
 		{
 			templateLock: false,
@@ -101,6 +105,34 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									textOrientation: newAttribute,
 								} )
 							}
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							threshold !== metadata.attributes.threshold.default
+						}
+						isShownByDefault
+						label={ __( 'Threshold', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								threshold:
+									metadata.attributes.threshold.default,
+							} )
+						}
+					>
+						<TextControl
+							label={ __( 'Threshold', 'unitone' ) }
+							help={ __(
+								'When this block is smaller than this width, switch writing mode.',
+								'unitone'
+							) }
+							value={ threshold }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									threshold: newAttribute,
+								} );
+							} }
 						/>
 					</ToolsPanelItem>
 

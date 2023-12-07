@@ -21,7 +21,7 @@ import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
-import { verticalsResizeObserve } from '../../../node_modules/@inc2734/unitone-css/src/library';
+import { verticalsResizeObserver } from '../../../node_modules/@inc2734/unitone-css/src/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { textOrientation, switchWritingMode } = attributes;
@@ -35,7 +35,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const ref = useRefEffect( ( target ) => {
-		verticalsResizeObserve( target );
+		verticalsResizeObserver( target );
 	}, [] );
 
 	const blockProps = useBlockProps();

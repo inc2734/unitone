@@ -25,7 +25,7 @@ import {
 } from '@wordpress/icons';
 
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useRef, useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -112,6 +112,12 @@ export default function ( {
 		effect,
 	} = attributes;
 
+	const [ ownerDocument, setOwnerDocument ] = useState( null );
+	const ref = useRef();
+	useEffect( () => {
+		setOwnerDocument( ref.current.ownerDocument );
+	}, [] );
+
 	const { selectBlock } = useDispatch( 'core/block-editor' );
 
 	const { slides, selectedSlides, hasChildSelected } = useSelect(
@@ -134,46 +140,13 @@ export default function ( {
 		[ clientId ]
 	);
 
-	useEffect( () => {
-		if ( 0 < selectedSlides.length ) {
-			const slide = document.querySelector(
-				`.wp-block[data-block="${ selectedSlides[ 0 ].clientId }"]`
-			);
-			const wrapper = slide.parentNode;
-			const slider = document.querySelector(
-				`.wp-block[data-block="${ clientId }"]`
-			);
-			let x =
-				wrapper.getBoundingClientRect().left -
-				slide.getBoundingClientRect().left;
-
-			wrapper.style.transform = `translateX(${ x }px)`;
-
-			const lastSlide = document.querySelector(
-				`.wp-block[data-block="${
-					slides[ slides.length - 1 ].clientId
-				}"]`
-			);
-
-			const lastSlideRight =
-				lastSlide.getBoundingClientRect().left + lastSlide.offsetWidth;
-
-			const sliderRight =
-				slider.getBoundingClientRect().left + slider.offsetWidth;
-
-			if ( lastSlideRight < sliderRight ) {
-				x = x + sliderRight - lastSlideRight;
-				wrapper.style.transform = `translateX(${ x }px)`;
-			}
-		}
-	} );
-
 	const isDisplayArrows = arrows && ! ( autoplay && 0 === autoplayDelay );
 	const isDisplayPagination =
 		pagination && ! ( autoplay && 0 === autoplayDelay );
 	const canMultiSlides = 'slide' === effect;
 
 	const blockProps = useBlockProps( {
+		ref,
 		className: classnames( 'unitone-slider', {
 			'unitone-slider--hide-outside': hideOutside && canMultiSlides,
 			'unitone-slider--has-pagination': pagination,
@@ -733,6 +706,47 @@ export default function ( {
 									className="block-editor-button-block-appender"
 									onClick={ () => {
 										selectBlock( sliderClientId );
+
+										const slideNode =
+											ownerDocument.getElementById(
+												`block-${ sliderClientId }`
+											);
+										const wrapper = slideNode.parentNode;
+										const slider =
+											ownerDocument.getElementById(
+												`block-${ clientId }`
+											);
+										let x =
+											wrapper.getBoundingClientRect()
+												.left -
+											slideNode.getBoundingClientRect()
+												.left;
+
+										wrapper.style.transform = `translateX(${ x }px)`;
+
+										const lastSlide =
+											ownerDocument.querySelector(
+												`.wp-block[data-block="${
+													slides[ slides.length - 1 ]
+														.clientId
+												}"]`
+											);
+
+										const lastSlideRight =
+											lastSlide.getBoundingClientRect()
+												.left + lastSlide.offsetWidth;
+
+										const sliderRight =
+											slider.getBoundingClientRect()
+												.left + slider.offsetWidth;
+
+										if ( lastSlideRight < sliderRight ) {
+											x =
+												x +
+												sliderRight -
+												lastSlideRight;
+											wrapper.style.transform = `translateX(${ x }px)`;
+										}
 									} }
 									key={ index }
 								>

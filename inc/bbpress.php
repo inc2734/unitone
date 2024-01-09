@@ -5,6 +5,29 @@
  * @license GPL-2.0+
  */
 
+/**
+ * If bbPress is not installed, remove templates for bbPress.
+ */
+if ( ! class_exists( 'bbpress' ) ) {
+	add_filter(
+		'get_block_templates',
+		function( $templates ) {
+			$templates_for_woocommere = array(
+				'bbpress',
+				'woocommerce/bbpress',
+			);
+
+			foreach ( $templates as $index => $template ) {
+				if ( in_array( $template->slug, $templates_for_woocommere, true ) ) {
+					unset( $templates[ $index ] );
+				}
+			}
+
+			return $templates;
+		}
+	);
+}
+
 if ( ! class_exists( 'bbPress' ) ) {
 	return;
 }

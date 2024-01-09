@@ -5,6 +5,42 @@
  * @license GPL-2.0+
  */
 
+/**
+ * If WooCommerce is not installed, remove templates for WooCommerce.
+ */
+if ( ! class_exists( 'woocommerce' ) ) {
+	add_filter(
+		'get_block_templates',
+		function( $templates ) {
+			$templates_for_woocommere = array(
+				'archive-product',
+				'order-confirmation',
+				'page-cart',
+				'page-checkout',
+				'single-product',
+				'woocommerce/checkout',
+				'woocommerce/cart',
+				'woocommerce/order-confirmation',
+				'custom/single-product/one-column-page-header-image',
+				'custom/single-product/right-sidebar-page-header-image',
+				'custom/single-product/left-header-page-header-image',
+				'custom/single-product/left-header',
+				'custom/single-product/left-header-header-footer',
+				'custom/single-product/right-sidebar',
+				'custom/single-product/one-column',
+			);
+
+			foreach ( $templates as $index => $template ) {
+				if ( in_array( $template->slug, $templates_for_woocommere, true ) ) {
+					unset( $templates[ $index ] );
+				}
+			}
+
+			return $templates;
+		}
+	);
+}
+
 if ( ! class_exists( 'woocommerce' ) ) {
 	return;
 }

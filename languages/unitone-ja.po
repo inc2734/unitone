@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2023-12-07T14:31:39+00:00\n"
-"PO-Revision-Date: 2023-12-07 23:32+0900\n"
+"POT-Creation-Date: 2024-01-15T05:28:43+00:00\n"
+"PO-Revision-Date: 2024-01-15 14:29+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3451,71 +3451,6 @@ msgstr "ループ"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "404"
-msgstr "404"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Product Archives"
-msgstr "商品アーカイブ"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "All Archives"
-msgstr "アーカイブ"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "bbPress"
-msgstr "bbPress"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Cart"
-msgstr "お買い物カゴ"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Checkout"
-msgstr "購入手続き"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Order Confirmatiion"
-msgstr "注文確認"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Front Page"
-msgstr "フロントページ"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Blog Home"
-msgstr "ブログホーム"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Pages"
-msgstr "固定ページ"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Search Results"
-msgstr "検索結果"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Posts"
-msgstr "個別投稿"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Single Products"
-msgstr "個別商品"
-
-#: theme.json
-msgctxt "Template part name"
 msgid "Contents for Cart"
 msgstr "お買い物カゴのコンテンツ"
 
@@ -3528,6 +3463,58 @@ msgstr "購入手続きのコンテンツ"
 msgctxt "Template part name"
 msgid "Contents for Order Confirmation"
 msgstr "注文確認のコンテンツ"
+
+#~ msgctxt "Template part name"
+#~ msgid "404"
+#~ msgstr "404"
+
+#~ msgctxt "Template part name"
+#~ msgid "Product Archives"
+#~ msgstr "商品アーカイブ"
+
+#~ msgctxt "Template part name"
+#~ msgid "All Archives"
+#~ msgstr "アーカイブ"
+
+#~ msgctxt "Template part name"
+#~ msgid "bbPress"
+#~ msgstr "bbPress"
+
+#~ msgctxt "Template part name"
+#~ msgid "Cart"
+#~ msgstr "お買い物カゴ"
+
+#~ msgctxt "Template part name"
+#~ msgid "Checkout"
+#~ msgstr "購入手続き"
+
+#~ msgctxt "Template part name"
+#~ msgid "Order Confirmatiion"
+#~ msgstr "注文確認"
+
+#~ msgctxt "Template part name"
+#~ msgid "Front Page"
+#~ msgstr "フロントページ"
+
+#~ msgctxt "Template part name"
+#~ msgid "Blog Home"
+#~ msgstr "ブログホーム"
+
+#~ msgctxt "Template part name"
+#~ msgid "Pages"
+#~ msgstr "固定ページ"
+
+#~ msgctxt "Template part name"
+#~ msgid "Search Results"
+#~ msgstr "検索結果"
+
+#~ msgctxt "Template part name"
+#~ msgid "Single Posts"
+#~ msgstr "個別投稿"
+
+#~ msgctxt "Template part name"
+#~ msgid "Single Products"
+#~ msgstr "個別商品"
 
 #~ msgctxt "Custom template name"
 #~ msgid "Cart"

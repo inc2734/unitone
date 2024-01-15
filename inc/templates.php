@@ -47,68 +47,20 @@ function unitone_display_deprecated_parts() {
 				$stylesheet       = get_stylesheet();
 
 				if (
-					'footer-breadcrumbs' === $attributes['slug']
-					|| 0 === strpos( $attributes['slug'], 'contents-' )
-					|| 0 === strpos( $attributes['slug'], 'page-header-' )
-					|| 0 === strpos( $attributes['slug'], 'template-' )
+					isset( $attributes['slug'] ) &&
+					isset( $attributes['theme'] ) &&
+					$stylesheet === $attributes['theme']
 				) {
 					if (
-						isset( $attributes['slug'] ) &&
-						isset( $attributes['theme'] ) &&
-						$stylesheet === $attributes['theme']
+						'footer-breadcrumbs' === $attributes['slug']
+						|| 0 === strpos( $attributes['slug'], 'contents-' )
+						|| 0 === strpos( $attributes['slug'], 'page-header-' )
+						|| 0 === strpos( $attributes['slug'], 'template-' )
 					) {
-						$template_part_id    = $attributes['theme'] . '//' . $attributes['slug'];
-						$template_part_query = new WP_Query(
-							array(
-								'post_type'           => 'wp_template_part',
-								'post_status'         => 'publish',
-								'post_name__in'       => array( $attributes['slug'] ),
-								'tax_query'           => array(
-									array(
-										'taxonomy' => 'wp_theme',
-										'field'    => 'name',
-										'terms'    => $attributes['theme'],
-									),
-								),
-								'posts_per_page'      => 1,
-								'no_found_rows'       => true,
-								'lazy_load_term_meta' => false, // Do not lazy load term meta, as template parts only have one term.
-							)
-						);
-						$template_part_post  = $template_part_query->have_posts() ? $template_part_query->next_post() : null;
-						if ( $template_part_post ) {
-							// A published post might already exist if this template part was customized elsewhere
-							// or if it's part of a customized template.
-							$content = $template_part_post->post_content;
-							$content = shortcode_unautop( $content );
-							$content = do_shortcode( $content );
-							$content = do_blocks( $content );
-							$content = wptexturize( $content );
-							$content = convert_smilies( $content );
-							$content = wp_filter_content_tags( $content, "template_part_{$area}" );
-
-							// Handle embeds for block template parts.
-							global $wp_embed;
-							$content = $wp_embed->autoembed( $content );
-
-							if ( empty( $attributes['tagName'] ) ) {
-								$area_tag = 'div';
-								if ( $area_definition && isset( $area_definition['area_tag'] ) ) {
-									$area_tag = $area_definition['area_tag'];
-								}
-								$html_tag = $area_tag;
-							} else {
-								$html_tag = esc_attr( $attributes['tagName'] );
-							}
-							$wrapper_attributes = get_block_wrapper_attributes();
-
-							return "<$html_tag $wrapper_attributes>" . str_replace( ']]>', ']]&gt;', $content ) . "</$html_tag>";
-						}
+						// Rewrite the slug (= path).
+						// Now the HTML of the file will be output for now, but customization will be skipped.
+						$attributes['slug'] = 'deprecated/' . $attributes['slug'];
 					}
-
-					// Rewrite the slug (= path).
-					// Now the HTML of the file will be output for now, but customization will be skipped.
-					$attributes['slug'] = 'deprecated/' . $attributes['slug'];
 				}
 
 				return render_block_core_template_part( $attributes );
@@ -199,3 +151,34 @@ function unitone_fallback_deprecated_custom_page_templates( $query_result ) {
 		return $query_result;
 }
 add_filter( 'pre_get_block_templates', 'unitone_fallback_deprecated_custom_page_templates' );
+
+/**
+ * Fallback for changes in display due to discontinuation of template parts for templates.
+ * If a template part for a template has been customized, it will be displayed.
+ * However, it is not reflected on the editor.
+ *
+ * @see https://github.com/inc2734/unitone/issues/217
+ */
+function unitone_display_deprecated_parts_for_template( $template ) {
+	global $_wp_current_template_id, $_wp_current_template_content;
+
+	$template_object      = get_block_template( $_wp_current_template_id, 'wp_template' );
+	$template_part_object = get_block_template( $_wp_current_template_id, 'wp_template_part' );
+
+	// When the template is customized
+	if ( $template_object && $template_object->is_custom || $template_object->modified ) {
+		return $template;
+	}
+
+	// When the template part are not customized
+	if ( ! $template_part_object || ! $template_part_object->is_custom ) {
+		return $template;
+	}
+
+	// Output the template part.
+	$template_part_slug           = str_replace( get_stylesheet() . '//', '', $_wp_current_template_id );
+	$_wp_current_template_content = '<!-- wp:template-part {"slug":"' . $template_part_slug . '"} /-->';
+
+	return $template;
+}
+add_filter( 'template_include', 'unitone_display_deprecated_parts_for_template' );

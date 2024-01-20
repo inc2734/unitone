@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-01-15T05:28:43+00:00\n"
-"PO-Revision-Date: 2024-01-15 14:29+0900\n"
+"POT-Creation-Date: 2024-01-20T15:40:21+00:00\n"
+"PO-Revision-Date: 2024-01-21 00:40+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
@@ -2462,6 +2462,10 @@ msgstr "間隔"
 #: dist/js/editor/editor.js:1
 msgid "Stairs grid"
 msgstr "階段グリッド"
+
+#: dist/js/editor/editor.js:1
+msgid "Stairs climbing direction"
+msgstr "階段の上り方向"
 
 #: dist/js/editor/editor.js:1
 msgid "Using negative margin"

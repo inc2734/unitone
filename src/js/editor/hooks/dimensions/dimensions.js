@@ -33,8 +33,11 @@ import {
 import {
 	useIsStairsDisabled,
 	hasStairsValue,
+	hasStairsUpValue,
 	resetStairs,
+	resetStairsUp,
 	StairsEdit,
+	StairsUpEdit,
 	editStairsProp,
 } from './stairs';
 
@@ -149,19 +152,43 @@ export function DimensionsPanel( props ) {
 				) }
 
 				{ ! isStairsDisabled && (
-					<ToolsPanelItem
-						hasValue={ () => hasStairsValue( props ) }
-						label={ __( 'Stairs grid', 'unitone' ) }
-						onDeselect={ () => resetStairs( props ) }
-						resetAllFilter={ () => resetStairs( props ) }
-						isShownByDefault={ true }
-						panelId={ props.clientId }
-					>
-						<StairsEdit
-							{ ...props }
+					<>
+						<ToolsPanelItem
+							hasValue={ () => hasStairsValue( props ) }
 							label={ __( 'Stairs grid', 'unitone' ) }
-						/>
-					</ToolsPanelItem>
+							onDeselect={ () => resetStairs( props ) }
+							resetAllFilter={ () => resetStairs( props ) }
+							isShownByDefault={ true }
+							panelId={ props.clientId }
+						>
+							<StairsEdit
+								{ ...props }
+								label={ __( 'Stairs grid', 'unitone' ) }
+							/>
+						</ToolsPanelItem>
+
+						{ hasStairsValue( props ) && (
+							<ToolsPanelItem
+								hasValue={ () => hasStairsUpValue( props ) }
+								label={ __(
+									'Stairs climbing direction',
+									'unitone'
+								) }
+								onDeselect={ () => resetStairsUp( props ) }
+								resetAllFilter={ () => resetStairsUp( props ) }
+								isShownByDefault={ true }
+								panelId={ props.clientId }
+							>
+								<StairsUpEdit
+									{ ...props }
+									label={ __(
+										'Stairs climbing direction',
+										'unitone'
+									) }
+								/>
+							</ToolsPanelItem>
+						) }
+					</>
 				) }
 
 				{ ! isNegativeDisabled && (

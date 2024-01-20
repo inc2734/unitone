@@ -7,6 +7,7 @@ import deprecated from './deprecated';
 import transforms from './transforms';
 
 import './style.scss';
+import './index.scss';
 
 registerBlockType( 'unitone/responsive-grid', {
 	icon: {

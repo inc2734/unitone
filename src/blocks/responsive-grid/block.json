@@ -14,7 +14,8 @@
 		"unitone": {
 			"type": "object",
 			"default": {
-				"autoRepeat": "auto-fit"
+				"autoRepeat": "auto-fit",
+				"stairsUp": "left"
 			}
 		},
 		"templateLock": {
@@ -77,5 +78,6 @@
 	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js",
-	"style": "file:./style-index.css"
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
 }

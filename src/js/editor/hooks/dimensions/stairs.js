@@ -6,7 +6,13 @@ import {
 	store as blocksStore,
 } from '@wordpress/blocks';
 
+import {
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
+
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
 
@@ -21,6 +27,17 @@ export function hasStairsValue( props ) {
 		: attributes?.unitone?.stairs !== undefined;
 }
 
+export function hasStairsUpValue( props ) {
+	const { name, attributes } = props;
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.stairsUp;
+
+	return null != defaultValue
+		? attributes?.unitone?.stairsUp !== defaultValue
+		: attributes?.unitone?.stairsUp !== undefined;
+}
+
 export function resetStairs( props ) {
 	const { name, attributes, setAttributes } = props;
 
@@ -32,6 +49,24 @@ export function resetStairs( props ) {
 
 	if ( null != defaultValue ) {
 		newUnitone.stairsap = defaultValue;
+	}
+
+	setAttributes( {
+		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+	} );
+}
+
+export function resetStairsUp( props ) {
+	const { name, attributes, setAttributes } = props;
+
+	delete attributes?.unitone?.stairsUp;
+	const newUnitone = { ...attributes?.unitone };
+
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.stairsUp;
+
+	if ( null != defaultValue ) {
+		newUnitone.stairsUp = defaultValue;
 	}
 
 	setAttributes( {
@@ -108,6 +143,58 @@ export function StairsEdit( props ) {
 	);
 }
 
+export function StairsUpEdit( props ) {
+	const {
+		name,
+		label,
+		attributes: { unitone },
+		setAttributes,
+	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.stairsUp;
+	}, [] );
+
+	return (
+		<ToggleGroupControl
+			__nextHasNoMarginBottom
+			isBlock
+			label={ label }
+			value={ unitone?.stairsUp }
+			onChange={ ( newValue ) => {
+				const newUnitone = {
+					...unitone,
+					stairsUp: newValue || undefined,
+				};
+				if ( null == newUnitone.stairsUp ) {
+					if ( null == defaultValue ) {
+						delete newUnitone.stairsUp;
+					} else {
+						newUnitone.stairsUp = '';
+					}
+				}
+
+				setAttributes( {
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
+				} );
+			} }
+		>
+			<ToggleGroupControlOption
+				label={ __( 'Left', 'unitone' ) }
+				value="left"
+			/>
+
+			<ToggleGroupControlOption
+				label={ __( 'Right', 'unitone' ) }
+				value="right"
+			/>
+		</ToggleGroupControl>
+	);
+}
+
 export function saveStairsProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.stairs' ) ) {
 		return extraProps;
@@ -117,18 +204,10 @@ export function saveStairsProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	// Deprecation.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = classnames(
-			extraProps[ 'data-layout' ],
-			`-stairs:${ attributes.unitone?.stairs }`
-		);
-		return extraProps;
-	}
-
 	extraProps[ 'data-unitone-layout' ] = classnames(
 		extraProps[ 'data-unitone-layout' ],
-		`-stairs:${ attributes.unitone?.stairs }`
+		`-stairs:${ attributes.unitone?.stairs }`,
+		`-stairs-up:${ attributes.unitone?.stairsUp }`
 	);
 
 	return extraProps;

@@ -301,6 +301,21 @@ add_filter(
 			}
 		}
 
+		// -stairs-up
+		$default   = $metadata ? $metadata->get_attributes()['unitone']['default']['stairsUp'] ?? null : null;
+		$attribute = false;
+		if ( isset( $block['attrs']['unitone']['stairsUp'] ) && '' !== $block['attrs']['unitone']['stairsUp'] ) {
+			$attribute = '-stairs-up:' . $block['attrs']['unitone']['stairsUp'];
+		} elseif ( ! is_null( $default ) && ! isset( $block['attrs']['unitone']['stairsUp'] ) ) {
+			$attribute = '-stairs-up:' . $default;
+		}
+		if ( $attribute ) {
+			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
+			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
+				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
+			}
+		}
+
 		// --unitone--max-width
 		$default  = $metadata ? $metadata->get_attributes()['unitone']['default']['maxWidth'] ?? null : null;
 		$property = false;

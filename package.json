@@ -56,7 +56,7 @@
 		"css": "run-p css:*",
 		"blocks:build": "rimraf dist/blocks && wp-scripts build --output-path=dist",
 		"blocks:php": "cpy \"src/blocks/**/*.php\" \"dist/blocks\"",
-		"blocks": "run-s format:blocks && run-p blocks:*",
+		"blocks": "run-s format:blocks blocks:build blocks:php",
 		"js:app": "rimraf dist/js/app && wp-scripts build src/js/app/app.js --output-path=dist/js/app --webpack-src-dir=dist/js/app",
 		"js:editor": "rimraf dist/js/editor && wp-scripts build src/js/editor/editor.js --output-path=dist/js/editor --webpack-src-dir=dist/js/editor",
 		"js": "run-s format:js && run-p js:*",

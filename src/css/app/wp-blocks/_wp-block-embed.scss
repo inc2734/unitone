@@ -38,3 +38,9 @@
 		display: block;
 	}
 }
+
+.is-provider-wp-oembed-blog-card {
+	.components-sandbox {
+		pointer-events: none;
+	}
+}

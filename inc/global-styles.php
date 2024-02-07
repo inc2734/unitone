@@ -139,7 +139,7 @@ function unitone_set_color_palette( $theme_json ) {
 		return $theme_json;
 	}
 
-	$theme_palette = $data['settings']['color']['palette']['theme'];
+	$theme_palette = $data['settings']['color']['palette']['theme'] ?? array();
 	$theme_palette = array_merge(
 		$theme_palette,
 		array(

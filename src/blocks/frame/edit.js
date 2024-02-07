@@ -35,7 +35,11 @@ export default function ( { attributes, setAttributes } ) {
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock: 'all',
-		allowedBlocks: [ 'core/image', 'core/video' ],
+		allowedBlocks: [
+			'core/image',
+			'core/video',
+			'core/post-featured-image',
+		],
 		renderAppender: false,
 	} );
 

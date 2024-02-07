@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-01-20T15:40:21+00:00\n"
-"PO-Revision-Date: 2024-01-21 00:40+0900\n"
+"POT-Creation-Date: 2024-02-07T06:26:50+00:00\n"
+"PO-Revision-Date: 2024-02-07 15:28+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2013,6 +2013,10 @@ msgstr "フレーム画像"
 #: dist/blocks/frame/index.js:1
 msgid "Framed video"
 msgstr "フレームビデオ"
+
+#: dist/blocks/frame/index.js:1
+msgid "Framed post featured image"
+msgstr "フレームアイキャッチ画像"
 
 #: dist/blocks/frame/index.js:1
 msgid "Preferred aspect ratio"

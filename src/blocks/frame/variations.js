@@ -52,4 +52,17 @@ export default [
 			],
 		},
 	},
+	{
+		name: 'framed-post-featured-image',
+		title: __( 'Framed post featured image', 'unitone' ),
+		scope: [ 'inserter' ],
+		innerBlocks: [ [ 'core/post-featured-image' ] ],
+		example: {
+			innerBlocks: [
+				{
+					name: 'core/post-featured-image',
+				},
+			],
+		},
+	},
 ];

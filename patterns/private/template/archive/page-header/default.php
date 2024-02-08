@@ -4,7 +4,7 @@
 	<div data-unitone-layout="gutters">
 		<!-- wp:unitone/container -->
 		<div data-unitone-layout="container">
-			<!-- wp:query-title {"type":"archive","fontSize":"unitone-3xl"} /-->
+			<!-- wp:query-title {"type":"archive","showPrefix":false,"fontSize":"unitone-3xl"} /-->
 		</div>
 		<!-- /wp:unitone/container -->
 	</div>

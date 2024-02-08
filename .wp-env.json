@@ -1,7 +1,8 @@
 {
 	"themes": [ "." ],
 	"config": {
-		"WP_DEBUG": true
+		"WP_DEBUG": true,
+		"WP_DEVELOPMENT_MODE": "theme"
 	},
 	"mappings": {
 		".export": "./.export",

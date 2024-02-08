@@ -550,7 +550,6 @@ function unitone_set_color_palette( $theme_json ) {
 	return $theme_json->update_with( $new_data );
 }
 add_filter( 'wp_theme_json_data_theme', 'unitone_set_color_palette' );
-add_filter( 'wp_theme_json_data_user', 'unitone_set_color_palette' );
 
 /**
  * Convert deprecated color names to new color names.
@@ -579,7 +578,6 @@ add_filter(
 		}
 
 		return $theme_json->update_with( $data );
-		return $theme_json;
 	},
 	9
 );

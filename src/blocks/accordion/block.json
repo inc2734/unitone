@@ -8,7 +8,7 @@
 	"attributes": {
 		"summary": {
 			"type": "string",
-			"source": "text",
+			"source": "html",
 			"selector": ".unitone-accordion__summary-text"
 		},
 		"mark": {
@@ -21,7 +21,7 @@
 		},
 		"qLabel": {
 			"type": "string",
-			"source": "text",
+			"source": "html",
 			"selector": ".unitone-accordion__q-text"
 		},
 		"qWidth": {
@@ -34,7 +34,7 @@
 		},
 		"aLabel": {
 			"type": "string",
-			"source": "text",
+			"source": "html",
 			"selector": ".unitone-accordion__a-text"
 		},
 		"aWidth": {

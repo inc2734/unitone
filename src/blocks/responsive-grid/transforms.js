@@ -6,6 +6,10 @@ export default {
 			type: 'block',
 			blocks: [ 'unitone/responsive-grid-divided' ],
 			transform: ( attributes, innerBlocks ) => {
+				delete attributes?.unitone?.dividerType;
+				delete attributes?.unitone?.divider;
+				delete attributes?.unitone?.dividerColor;
+
 				return createBlock(
 					'unitone/responsive-grid',
 					attributes,

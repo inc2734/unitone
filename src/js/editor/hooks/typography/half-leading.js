@@ -15,7 +15,7 @@ export function resetHalfLeading( { attributes = {}, setAttributes } ) {
 }
 
 export function useIsHalfLeadingDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'typography.lineHeight' );
+	return ! hasBlockSupport( blockName, 'unitone.halfLeading' );
 }
 
 export function HalfLeadingEdit( props ) {
@@ -53,7 +53,7 @@ export function HalfLeadingEdit( props ) {
 }
 
 export function saveHalfLeadingProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'typography.lineHeight' ) ) {
+	if ( ! hasBlockSupport( blockType, 'unitone.halfLeading' ) ) {
 		return extraProps;
 	}
 
@@ -71,7 +71,7 @@ export function saveHalfLeadingProp( extraProps, blockType, attributes ) {
 }
 
 export function editHalfLeadingProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'typography.lineHeight' ) ) {
+	if ( ! hasBlockSupport( settings, 'unitone.halfLeading' ) ) {
 		return settings;
 	}
 

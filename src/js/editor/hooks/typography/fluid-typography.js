@@ -17,7 +17,7 @@ export function resetFluidTypography( { attributes = {}, setAttributes } ) {
 }
 
 export function useIsFluidTypographyDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'typography.fontSize' );
+	return ! hasBlockSupport( blockName, 'unitone.fluidTypography' );
 }
 
 export function FluidTypographyEdit( props ) {
@@ -51,7 +51,7 @@ export function FluidTypographyEdit( props ) {
 }
 
 export function saveFluidTypographyProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'typography.fontSize' ) ) {
+	if ( ! hasBlockSupport( blockType, 'unitone.fluidTypography' ) ) {
 		return extraProps;
 	}
 
@@ -68,7 +68,7 @@ export function saveFluidTypographyProp( extraProps, blockType, attributes ) {
 }
 
 export function editFluidTypographyProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'typography.fontSize' ) ) {
+	if ( ! hasBlockSupport( settings, 'unitone.fluidTypography' ) ) {
 		return settings;
 	}
 

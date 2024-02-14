@@ -1,5 +1,5 @@
 import { InspectorControls } from '@wordpress/block-editor';
-import { store as blocksStore } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
@@ -20,7 +20,13 @@ const addAttributes = ( settings, name ) => {
 		...{
 			attributes: {
 				...settings.attributes,
-				...{
+				// @deprecated
+				cellMinWidth: {
+					type: 'string',
+					default: '',
+				},
+				unitone: {
+					...settings.attributes?.unitone,
 					cellMinWidth: {
 						type: 'string',
 						default: '',
@@ -42,13 +48,20 @@ const saveProp = ( extraProps, blockType, attributes ) => {
 		return extraProps;
 	}
 
-	if ( null == attributes?.cellMinWidth || '' === attributes?.cellMinWidth ) {
+	if ( ! hasBlockSupport( blockType, 'unitone.cellMinWidth' ) ) {
+		return extraProps;
+	}
+
+	if (
+		null == attributes?.unitone?.cellMinWidth ||
+		'' === attributes?.unitone?.cellMinWidth
+	) {
 		return extraProps;
 	}
 
 	extraProps.style = {
 		...extraProps.style,
-		'--unitone--cell-min-width': attributes?.cellMinWidth,
+		'--unitone--cell-min-width': attributes?.unitone?.cellMinWidth,
 	};
 
 	return extraProps;
@@ -86,7 +99,8 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const defaultValue = wp.data
 			.select( blocksStore )
-			.getBlockType( props.name )?.attributes?.cellMinWidth?.default;
+			.getBlockType( props.name ).blockType?.attributes?.unitone
+			?.cellMinWidth?.default;
 
 		return (
 			<>
@@ -96,22 +110,47 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 					<ToolsPanel label={ __( 'unitone', 'unitone' ) }>
 						<ToolsPanelItem
 							hasValue={ () =>
-								props.attributes?.cellMinWidth !== defaultValue
+								props.attributes?.unitone?.cellMinWidth !==
+								defaultValue
 							}
 							label={ __( 'Cell Min Width', 'unitone' ) }
-							onDeselect={ () =>
-								props.setAttributes( {
+							onDeselect={ () => {
+								const newUnitone = {
+									...props.attributes?.unitone,
 									cellMinWidth: defaultValue,
-								} )
-							}
+								};
+								props.setAttributes( {
+									unitone: !! Object.keys( newUnitone ).length
+										? newUnitone
+										: undefined,
+								} );
+							} }
 							isShownByDefault
 						>
 							<TextControl
 								label={ __( 'Cell Min Width', 'unitone' ) }
-								value={ props.attributes?.cellMinWidth || '' }
+								value={
+									props.attributes?.unitone?.cellMinWidth ||
+									''
+								}
 								onChange={ ( newValue ) => {
-									props.setAttributes( {
+									const newUnitone = {
+										...unitone,
 										cellMinWidth: newValue,
+									};
+									if ( null == newUnitone.cellMinWidth ) {
+										if ( null == defaultValue ) {
+											delete newUnitone.cellMinWidth;
+										} else {
+											newUnitone.cellMinWidth = '';
+										}
+									}
+
+									props.setAttributes( {
+										unitone: !! Object.keys( newUnitone )
+											.length
+											? newUnitone
+											: undefined,
 									} );
 								} }
 							/>

@@ -192,8 +192,6 @@ add_filter(
 			return $block_content;
 		}
 
-		$metadata_attributes = $metadata ? $metadata->get_attributes() : false;
-
 		/**
 		 * Return true when supported.
 		 *
@@ -461,14 +459,6 @@ add_filter(
 		// -mix-blend-mode
 		if ( $is_supported( 'mixBlendMode' ) || $has_supported_attribute( 'mixBlendMode' ) ) {
 			$add_attribute( '-mix-blend-mode', $get_attribute( 'mixBlendMode' ) );
-		}
-
-		if ( isset( $block['attrs']['unitone']['mixBlendMode'] ) ) {
-			$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
-			$attribute      = '-mix-blend-mode:' . $block['attrs']['unitone']['mixBlendMode'];
-			if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
-				$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
-			}
 		}
 
 		// --unitone--cell-min-width

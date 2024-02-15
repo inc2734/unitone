@@ -233,7 +233,7 @@ add_filter(
 		 * @param string|null $value The CSS custom property value.
 		 */
 		$add_style = function( $property, $value ) use ( $p ) {
-			if ( ! is_null( $value ) ) {
+			if ( ! is_null( $value ) && '' !== $value ) {
 				$style    = $p->get_attribute( 'style' ) ?? '';
 				$property = $property . ':';
 
@@ -251,7 +251,7 @@ add_filter(
 		 * @param string|bool|null $value The unitone attribute value.
 		 */
 		$add_attribute = function( $name, $value ) use ( $p ) {
-			if ( ! is_null( $value ) ) {
+			if ( ! is_null( $value ) && '' !== $value ) {
 				$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
 
 				if ( is_bool( $value ) ) {

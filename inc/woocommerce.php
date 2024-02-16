@@ -18,13 +18,13 @@ if ( ! class_exists( 'woocommerce' ) ) {
 				'page-cart',
 				'page-checkout',
 				'single-product',
-				'temlate-single-product-one-column-page-header-image',
-				'temlate-single-product-right-sidebar-page-header-image',
-				'temlate-single-product-left-header-page-header-image',
-				'temlate-single-product-left-header',
-				'temlate-single-product-left-header-header-footer',
-				'temlate-single-product-right-sidebar',
-				'temlate-single-product-one-column',
+				'template-single-product-one-column-page-header-image',
+				'template-single-product-right-sidebar-page-header-image',
+				'template-single-product-left-header-page-header-image',
+				'template-single-product-left-header',
+				'template-single-product-left-header-header-footer',
+				'template-single-product-right-sidebar',
+				'template-single-product-one-column',
 			);
 
 			foreach ( $templates as $index => $template ) {

@@ -6,7 +6,6 @@ import {
 
 import {
 	RichTextToolbarButton,
-	useCachedTruthy,
 	getColorObjectByColorValue,
 	store as blockEditorStore,
 	__experimentalColorGradientControl as ColorGradientControl,
@@ -81,12 +80,10 @@ function Edit( {
 		return getSettings()?.colors || [];
 	}, [] );
 
-	const popoverAnchor = useCachedTruthy(
-		useAnchor( {
-			editableContentElement: contentRef.current,
-			settings,
-		} )
-	);
+	const popoverAnchor = useAnchor( {
+		editableContentElement: contentRef.current,
+		settings,
+	} );
 
 	function openModal() {
 		setIsModalOpen( true );
@@ -160,7 +157,7 @@ function Edit( {
 							label={ __( 'Stroke width', 'unitone' ) }
 							value={ strokeWidth }
 							allowReset
-							initialPosition={ DEFAULT_STROKE_WIDTH }
+							initialPosition={ strokeWidth }
 							min={ 1 }
 							max={ 2 }
 							step={ 0.1 }

@@ -14,7 +14,6 @@ if ( ! class_exists( 'bbpress' ) ) {
 		function( $templates ) {
 			$templates_for_woocommere = array(
 				'bbpress',
-				'woocommerce/bbpress',
 			);
 
 			foreach ( $templates as $index => $template ) {

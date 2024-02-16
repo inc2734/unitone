@@ -8,7 +8,7 @@
 
 			<!-- wp:unitone/container -->
 			<div data-unitone-layout="container">
-				<!-- wp:template-part {"slug":"woocommerce/checkout"} /-->
+				<!-- wp:pattern {"slug":"unitone/template/checkout/checkout"} /-->
 			</div>
 			<!-- /wp:unitone/container -->
 		</div>

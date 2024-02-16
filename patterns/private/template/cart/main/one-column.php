@@ -8,7 +8,7 @@
 
 			<!-- wp:unitone/container -->
 			<div data-unitone-layout="container">
-				<!-- wp:template-part {"slug":"woocommerce/cart"} /-->
+				<!-- wp:pattern {"slug":"unitone/template/cart/cart"} /-->
 			</div>
 			<!-- /wp:unitone/container -->
 		</div>

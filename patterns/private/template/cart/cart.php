@@ -11,7 +11,13 @@
 			<!-- wp:woocommerce/cart-cross-sells-block -->
 			<div class="wp-block-woocommerce-cart-cross-sells-block">
 				<!-- wp:heading {"fontSize":"unitone-xl"} -->
-				<h2 class="wp-block-heading has-unitone-xl-font-size">こちらの商品はいかがでしょうか...</h2>
+				<h2 class="wp-block-heading has-unitone-xl-font-size">
+					<?php
+					// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+					esc_html_e( 'You may be interested in…', 'woocommerce' );
+					// phpcs:enable
+					?>
+				</h2>
 				<!-- /wp:heading -->
 
 				<!-- wp:woocommerce/cart-cross-sells-products-block -->
@@ -75,7 +81,13 @@
 	<!-- wp:woocommerce/empty-cart-block {"align":"wide"} -->
 	<div class="wp-block-woocommerce-empty-cart-block alignwide">
 		<!-- wp:heading {"textAlign":"center","className":"with-empty-cart-icon wc-block-cart__empty-cart__title"} -->
-		<h2 class="wp-block-heading has-text-align-center with-empty-cart-icon wc-block-cart__empty-cart__title">現在お買い物カゴには何も入っていません。</h2>
+		<h2 class="wp-block-heading has-text-align-center with-empty-cart-icon wc-block-cart__empty-cart__title">
+			<?php
+			// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+			esc_html_e( 'Your cart is currently empty!', 'woocommerce' );
+			// phpcs:enable
+			?>
+		</h2>
 		<!-- /wp:heading -->
 	</div>
 	<!-- /wp:woocommerce/empty-cart-block -->

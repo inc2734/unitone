@@ -197,6 +197,12 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/template/bbpress/page-header/default.php' ),
 		),
 		array(
+			'title'    => __( 'Contents for Cart', 'unitone' ),
+			'slug'     => 'unitone/template/cart/cart',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/cart/cart.php' ),
+		),
+		array(
 			'title'    => __( 'Main Area (One Column) for Cart', 'unitone' ),
 			'slug'     => 'unitone/template/cart/main/one-column',
 			'inserter' => false,
@@ -221,6 +227,12 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/template/cart/page-header/default.php' ),
 		),
 		array(
+			'title'    => __( 'Contents for Checkout', 'unitone' ),
+			'slug'     => 'unitone/template/checkout/checkout',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/checkout/checkout.php' ),
+		),
+		array(
 			'title'    => __( 'Main Area (One Column) for Checkout', 'unitone' ),
 			'slug'     => 'unitone/template/checkout/main/one-column',
 			'inserter' => false,
@@ -243,6 +255,12 @@ function unitone_register_block_patterns() {
 			'slug'     => 'unitone/template/checkout/page-header/default',
 			'inserter' => false,
 			'path'     => get_theme_file_path( 'patterns/private/template/checkout/page-header/default.php' ),
+		),
+		array(
+			'title'    => __( 'Contents for Order Confirmation', 'unitone' ),
+			'slug'     => 'unitone/template/order-confirmation/order-confirmation',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/order-confirmation/order-confirmation.php' ),
 		),
 		array(
 			'title'    => __( 'Main Area (One Column) for Order Confirmation', 'unitone' ),

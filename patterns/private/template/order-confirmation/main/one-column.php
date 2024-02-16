@@ -8,7 +8,7 @@
 
 			<!-- wp:unitone/container -->
 			<div data-unitone-layout="container">
-				<!-- wp:template-part {"slug":"woocommerce/order-confirmation"} /-->
+				<!-- wp:pattern {"slug":"unitone/template/order-confirmation/order-confirmation"} /-->
 			</div>
 			<!-- /wp:unitone/container -->
 		</div>

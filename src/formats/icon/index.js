@@ -143,9 +143,9 @@ function Edit( {
 				>
 					<div
 						style={ {
-							width: 'min(90vw, 336px)',
+							width: 'min(90vw, 320px)',
 							maxHeight: 'min(90vh, 400px)',
-							padding: '6px',
+							padding: '16px',
 						} }
 					>
 						<SearchControl
@@ -227,7 +227,10 @@ function Edit( {
 					onClose={ closeModal }
 				>
 					<div
-						style={ { width: 'min(90vw, 320px)', padding: '6px' } }
+						style={ {
+							width: '260px',
+							padding: '16px',
+						} }
 					>
 						<ColorPicker
 							value={ color }

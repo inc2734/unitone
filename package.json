@@ -62,7 +62,7 @@
 		"js": "run-s format:js && run-p js:*",
 		"formats:build": "rimraf dist/formats && wp-scripts build src/formats/formats.js --output-path=dist/formats --webpack-src-dir=dist/formats",
 		"formats:css": "sass --no-source-map src/formats/formats.scss:dist/formats/formats.css && postcss dist/formats/formats.css -r",
-		"formats": "run-s format:blocks && run-p formats:*",
+		"formats": "run-s format:formats && run-p formats:build formats:css",
 		"settings:build": "rimraf App/Controller/Manager/dist/js/app && wp-scripts build App/Controller/Manager/src/js/app.js --output-path=App/Controller/Manager/dist/js --webpack-src-dir=App/Controller/Manager/dist/js",
 		"settings:css": "sass --no-source-map App/Controller/Manager/src/css/app.scss:App/Controller/Manager/dist/css/app.css && postcss App/Controller/Manager/dist/css/app.css -r",
 		"settings:img": "rimraf App/Controller/Manager/dist/img && cpy \"App/Controller/Manager/src/img/*\" \"App/Controller/Manager/dist/img\"",

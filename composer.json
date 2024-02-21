@@ -11,8 +11,8 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
 	},
 	"scripts": {
-		"lint": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
-		"format": "./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+		"format": "phpcbf --standard=.phpcs.xml.dist --report-summary --report-source",
+		"lint": "phpcs --standard=.phpcs.xml.dist"
 	},
 	"config": {
 		"allow-plugins": {

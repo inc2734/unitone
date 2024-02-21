@@ -9,6 +9,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		const next = slider.querySelector( '.swiper-button-next' );
 		const prev = slider.querySelector( '.swiper-button-prev' );
 
+		const centeredSlides =
+			canvas.getAttribute( 'data-unitone-swiper-centered-slides' ) ||
+			undefined;
 		const speed =
 			parseInt( canvas.getAttribute( 'data-unitone-swiper-speed' ) ) ||
 			undefined;
@@ -41,6 +44,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				prevEl: prev,
 			},
 		};
+
+		if ( centeredSlides ) {
+			swiperOptions.centeredSlides = true;
+		}
 
 		if ( 'fade' === effect ) {
 			swiperOptions.fadeEffect = {

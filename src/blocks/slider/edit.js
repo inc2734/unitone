@@ -109,14 +109,43 @@ export default function ( {
 		autoplayDelay,
 		speed,
 		loop,
+		centeredSlides,
 		effect,
 	} = attributes;
+
+	const isDisplayArrows = arrows && ! ( autoplay && 0 === autoplayDelay );
+	const isDisplayPagination =
+		pagination && ! ( autoplay && 0 === autoplayDelay );
+	const canMultiSlides = 'slide' === effect;
+	const canCenterdSlides = canMultiSlides && centeredSlides;
 
 	const [ ownerDocument, setOwnerDocument ] = useState( null );
 	const ref = useRef();
 	useEffect( () => {
 		setOwnerDocument( ref.current.ownerDocument );
 	}, [] );
+
+	useEffect( () => {
+		const sliderClientId = slides?.[ 0 ]?.clientId;
+		if ( !! sliderClientId ) {
+			const slideNode = ref.current.ownerDocument.getElementById(
+				`block-${ sliderClientId }`
+			);
+			const wrapper = slideNode.parentNode;
+			const canvas = wrapper.parentNode;
+
+			const resizeObserver = new window.ResizeObserver( () => {
+				const x = canCenterdSlides
+					? ( canvas.getBoundingClientRect().width -
+							slideNode.getBoundingClientRect().width ) /
+					  2
+					: undefined;
+
+				wrapper.style.transform = !! x ? `translateX(${ x }px)` : '';
+			} );
+			resizeObserver.observe( wrapper );
+		}
+	}, [ canCenterdSlides, slideWidth ] );
 
 	const { selectBlock } = useDispatch( 'core/block-editor' );
 
@@ -140,15 +169,10 @@ export default function ( {
 		[ clientId ]
 	);
 
-	const isDisplayArrows = arrows && ! ( autoplay && 0 === autoplayDelay );
-	const isDisplayPagination =
-		pagination && ! ( autoplay && 0 === autoplayDelay );
-	const canMultiSlides = 'slide' === effect;
-
 	const blockProps = useBlockProps( {
 		ref,
 		className: classnames( 'unitone-slider', {
-			'unitone-slider--hide-outside': hideOutside && canMultiSlides,
+			'unitone-slider--hide-outside': canMultiSlides && hideOutside,
 			'unitone-slider--has-pagination': pagination,
 		} ),
 		style: {
@@ -237,6 +261,63 @@ export default function ( {
 
 							<ToolsPanelItem
 								hasValue={ () =>
+									loop !== metadata.attributes.loop.default
+								}
+								isShownByDefault
+								label={ __( 'Loop', 'unitone' ) }
+								onDeselect={ () =>
+									setAttributes( {
+										loop: metadata.attributes.loop.default,
+									} )
+								}
+							>
+								<ToggleControl
+									label={ __( 'Loop', 'unitone' ) }
+									checked={ loop }
+									onChange={ ( newAttribute ) => {
+										setAttributes( { loop: newAttribute } );
+									} }
+								/>
+							</ToolsPanelItem>
+
+							<ToolsPanelItem
+								hasValue={ () =>
+									centeredSlides !==
+									metadata.attributes.centeredSlides.default
+								}
+								isShownByDefault
+								label={ __(
+									'Center the active slide',
+									'unitone'
+								) }
+								onDeselect={ () =>
+									setAttributes( {
+										centeredSlides:
+											metadata.attributes.centeredSlides
+												.default,
+									} )
+								}
+							>
+								<ToggleControl
+									label={ __(
+										'Center the active slide',
+										'unitone'
+									) }
+									heop={ __(
+										"The display isn't reflected on the editor.",
+										'unitone'
+									) }
+									checked={ centeredSlides }
+									onChange={ ( newAttribute ) => {
+										setAttributes( {
+											centeredSlides: newAttribute,
+										} );
+									} }
+								/>
+							</ToolsPanelItem>
+
+							<ToolsPanelItem
+								hasValue={ () =>
 									hideOutside !==
 									metadata.attributes.hideOutside.default
 								}
@@ -292,27 +373,6 @@ export default function ( {
 							min={ 0 }
 							max={ 10 }
 							step={ 0.1 }
-						/>
-					</ToolsPanelItem>
-
-					<ToolsPanelItem
-						hasValue={ () =>
-							loop !== metadata.attributes.loop.default
-						}
-						isShownByDefault
-						label={ __( 'Loop', 'unitone' ) }
-						onDeselect={ () =>
-							setAttributes( {
-								loop: metadata.attributes.loop.default,
-							} )
-						}
-					>
-						<ToggleControl
-							label={ __( 'Loop', 'unitone' ) }
-							checked={ loop }
-							onChange={ ( newAttribute ) => {
-								setAttributes( { loop: newAttribute } );
-							} }
 						/>
 					</ToolsPanelItem>
 				</ToolsPanel>
@@ -669,6 +729,10 @@ export default function ( {
 						className={ classnames( 'unitone-slider__canvas', {
 							'swiper-fade': 'fade' === effect,
 						} ) }
+						data-unitone-swiper-centered-slides={
+							canCenterdSlides ? true : undefined
+						}
+						data-unitone-swiper-loop={ loop ? 'true' : undefined }
 					>
 						<div { ...innerBlocksProps } />
 					</div>
@@ -721,6 +785,17 @@ export default function ( {
 												.left -
 											slideNode.getBoundingClientRect()
 												.left;
+
+										if ( canCenterdSlides ) {
+											const canvas = wrapper.parentNode;
+											x =
+												x +
+												( canvas.getBoundingClientRect()
+													.width -
+													slideNode.getBoundingClientRect()
+														.width ) /
+													2;
+										}
 
 										wrapper.style.transform = `translateX(${ x }px)`;
 

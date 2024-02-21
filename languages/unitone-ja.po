@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-02-16T12:34:02+00:00\n"
-"PO-Revision-Date: 2024-02-16 21:35+0900\n"
+"POT-Creation-Date: 2024-02-21T03:26:36+00:00\n"
+"PO-Revision-Date: 2024-02-21 12:27+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2286,6 +2286,14 @@ msgstr "フェード"
 #: dist/blocks/slider/index.js:1
 msgid "Effect"
 msgstr "エフェクト"
+
+#: dist/blocks/slider/index.js:1
+msgid "Center the active slide"
+msgstr "アクティブなスライドを中央に配置"
+
+#: dist/blocks/slider/index.js:1
+msgid "The display isn't reflected on the editor."
+msgstr "エディター上では表示は反映されません。"
 
 #: dist/blocks/slider/index.js:1
 msgid "Hide parts that extend beyond the canvas"

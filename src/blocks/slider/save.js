@@ -18,6 +18,7 @@ export default function ( { attributes } ) {
 		autoplayDelay,
 		speed,
 		loop,
+		centeredSlides,
 		effect,
 	} = attributes;
 
@@ -25,13 +26,14 @@ export default function ( { attributes } ) {
 	const isDisplayPagination =
 		pagination && ! ( autoplay && 0 === autoplayDelay );
 	const canMultiSlides = 'slide' === effect;
+	const canCenterdSlides = canMultiSlides && centeredSlides;
 
 	return (
 		<div
 			{ ...useBlockProps.save( {
 				className: classnames( 'unitone-slider', {
 					'unitone-slider--hide-outside':
-						hideOutside && canMultiSlides,
+						canMultiSlides && hideOutside,
 					'unitone-slider--has-pagination': pagination,
 				} ),
 				style: {
@@ -59,6 +61,9 @@ export default function ( { attributes } ) {
 
 				<div
 					className="unitone-slider__canvas"
+					data-unitone-swiper-centered-slides={
+						canCenterdSlides ? 'true' : undefined
+					}
 					data-unitone-swiper-autoplay-delay={
 						autoplay ? autoplayDelay * 1000 : undefined
 					}

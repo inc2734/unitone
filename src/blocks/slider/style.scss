@@ -46,6 +46,7 @@
 		display: flex;
 		height: auto;
 		width: min(100%, var(--unitone--slide-width));
+		z-index: auto;
 	}
 
 	.swiper-buttons {

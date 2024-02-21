@@ -13,3 +13,15 @@
 		justify-content: center;
 	}
 }
+
+[data-unitone-swiper-centered-slides="true"][data-unitone-swiper-loop="true"] {
+	.unitone-slider__wrapper {
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			inset: 0 calc(100% + var(--unitone--gap)) 0 -200%;
+			background-image: repeating-linear-gradient(-60deg,rgba(255, 255, 255,.25),rgba(0,0,0,.25) 1px,transparent 0,transparent 4px)
+		}
+	}
+}

@@ -37,6 +37,8 @@
 	}
 
 	&__wrapper {
+		z-index: auto;
+
 		> *:not(:last-child) {
 			margin-right: var(--unitone--gap);
 		}
@@ -46,7 +48,6 @@
 		display: flex;
 		height: auto;
 		width: min(100%, var(--unitone--slide-width));
-		z-index: auto;
 	}
 
 	.swiper-buttons {

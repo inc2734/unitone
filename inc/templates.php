@@ -197,7 +197,7 @@ function unitone_display_deprecated_parts_for_template( $template ) {
 	$template_part_object = get_block_template( $_wp_current_template_id, 'wp_template_part' );
 
 	// When the template is customized
-	if ( $template_object && $template_object->is_custom || $template_object->modified ) {
+	if ( $template_object && $template_object->is_custom || ! empty( $template_object->modified ) ) {
 		return $template;
 	}
 

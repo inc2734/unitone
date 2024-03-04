@@ -2,19 +2,21 @@
 	--unitone--color: inherit;
 
 	position: relative;
-	display: inline-flex;
+	display: inline-block;
 	color: var(--unitone--color);
 
 	&::before {
 		content: "";
 		position: absolute;
-		inset: .05em 0 0 0;
+		inset: calc(var(--unitone--half-leading) * 1em) 0 0 0;
 		display: block;
 		background: currentcolor;
 		mask-image: var(--unitone--inline-svg);
 		mask-position: center center;
 		mask-repeat: no-repeat;
 		mask-size: contain;
+		height: 1em;
+		width: 1em;
 	}
 
 	a,

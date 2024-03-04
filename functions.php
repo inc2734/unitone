@@ -51,6 +51,24 @@ if ( ! function_exists( 'unitone_theme_setup' ) ) {
 add_action( 'after_setup_theme', 'unitone_theme_setup' );
 
 /**
+ * Add viewport meta tag.
+ */
+function unitone_block_template_viewport_meta_tag( $template ) {
+	remove_action( 'wp_head', '_block_template_viewport_meta_tag', 0 );
+
+	add_action(
+		'wp_head',
+		function() {
+			echo '<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover" />' . "\n";
+		},
+		0
+	);
+
+	return $template;
+}
+add_filter( 'template_include', 'unitone_block_template_viewport_meta_tag' );
+
+/**
  * Restores the Customizer since we still rely on it.
  */
 if ( wp_get_custom_css() ) {

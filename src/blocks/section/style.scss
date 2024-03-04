@@ -26,9 +26,3 @@
 		}
 	}
 }
-
-@for $i from -2 through 7 {
-	[data-unitone-layout~="-padding\:#{ $i }"].unitone-section {
-		--unitone--padding: var(--unitone--s#{ $i }) !important;
-	}
-}

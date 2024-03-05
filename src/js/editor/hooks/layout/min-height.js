@@ -51,7 +51,7 @@ export function MinHeightEdit( props ) {
 
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.maxWidth;
+			?.default?.minHeight;
 	}, [] );
 
 	return (

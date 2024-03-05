@@ -357,12 +357,12 @@ add_filter(
 		}
 
 		// --unitone--max-width
-		if ( $is_supported( 'maxWidth' ) ) {
+		if ( $is_supported( 'maxWidth' ) || $has_supported_attribute( 'maxWidth' ) ) {
 			$add_style( '--unitone--max-width', $get_attribute( 'maxWidth' ) );
 		}
 
 		// --unitone--max-height
-		if ( $is_supported( 'maxHeight' ) ) {
+		if ( $is_supported( 'maxHeight' ) || $has_supported_attribute( 'minHeight' ) ) {
 			$add_style( '--unitone--max-height', $get_attribute( 'maxHeight' ) );
 		}
 

@@ -13,7 +13,7 @@ export default [
 	},
 	{
 		name: 'aside',
-		title: __( 'Aside', 'unitone' ),
+		title: __( 'Sidebar', 'unitone' ),
 		scope: [ 'block' ],
 		attributes: {
 			type: 'aside',

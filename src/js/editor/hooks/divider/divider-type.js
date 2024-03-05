@@ -6,6 +6,7 @@ import {
 	hasBlockSupport,
 	store as blocksStore,
 } from '@wordpress/blocks';
+
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
@@ -41,7 +42,10 @@ const getDividerTypeOptions = ( { name: blockName } = {} ) => {
 };
 
 export function useIsDividerTypeDisabled( { name: blockName } = {} ) {
-	return ! getBlockSupport( blockName, 'unitone.dividerType' );
+	return (
+		! hasBlockSupport( blockName, 'unitone.divider' ) &&
+		! getBlockSupport( blockName, 'unitone.dividerType' )
+	);
 }
 
 export function hasDividerTypeValue( props ) {
@@ -71,6 +75,16 @@ export function resetDividerType( props ) {
 	setAttributes( {
 		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
 	} );
+}
+
+export function getDividerTypeEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.dividerType?.label || __( 'Type', 'unitone' )
+	);
 }
 
 export function DividerTypeEdit( props ) {

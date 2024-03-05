@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 const justifySelfOptions = [
 	{
@@ -81,6 +82,17 @@ export function useIsJustifySelfDisabled( {
 	return (
 		! hasBlockSupport( blockName, 'unitone.justifySelf' ) &&
 		! __unstableUnitoneSupports?.justifySelf
+	);
+}
+
+export function getJustifySelfEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.justifySelf?.label ||
+		__( 'Justify self', 'unitone' )
 	);
 }
 

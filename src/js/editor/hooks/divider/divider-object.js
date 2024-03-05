@@ -1,6 +1,7 @@
 import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { __experimentalBorderControl as BorderControl } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
@@ -131,6 +132,16 @@ export function resetDivider( props ) {
 
 export function useIsDividerDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.divider' );
+}
+
+export function getDividerEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.divider?.label || __( 'Divider', 'unitone' )
+	);
 }
 
 export function DividerEdit( props ) {

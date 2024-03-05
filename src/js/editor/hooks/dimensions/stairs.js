@@ -97,6 +97,17 @@ export function useIsStairsDisabled( props ) {
 	return true;
 }
 
+export function getStairsEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.stairs?.label ||
+		__( 'Stairs grid', 'unitone' )
+	);
+}
+
 export function StairsEdit( props ) {
 	const {
 		name,
@@ -140,6 +151,17 @@ export function StairsEdit( props ) {
 				} );
 			} }
 		/>
+	);
+}
+
+export function getStairsUpEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.stairsUp?.label ||
+		__( 'Stairs climbing direction', 'unitone' )
 	);
 }
 

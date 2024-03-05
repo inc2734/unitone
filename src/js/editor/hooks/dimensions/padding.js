@@ -5,6 +5,7 @@ import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
 
@@ -39,6 +40,16 @@ export function resetPadding( props ) {
 
 export function useIsPaddingDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.padding' );
+}
+
+export function getPaddingEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.padding?.label || __( 'Padding', 'unitone' )
+	);
 }
 
 export function PaddingEdit( props ) {

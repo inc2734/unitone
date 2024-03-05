@@ -3,6 +3,7 @@ import classnames from 'classnames/dedupe';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 export function hasNegativeValue( props ) {
 	const { attributes } = props;
@@ -30,6 +31,17 @@ export function resetNegative( props ) {
 
 export function useIsNegativeDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.negative' );
+}
+
+export function getNegativeEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.negative?.label ||
+		__( 'Using negative margin', 'unitone' )
+	);
 }
 
 export function NegativeEdit( props ) {

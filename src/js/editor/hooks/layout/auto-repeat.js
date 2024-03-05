@@ -53,6 +53,17 @@ export function resetAutoRepeat( props ) {
 	} );
 }
 
+export function getAutoRepeatEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.autoRepeat?.label ||
+		__( 'Auto repeat', 'unitone' )
+	);
+}
+
 export function AutoRepeatEdit( props ) {
 	const {
 		name,

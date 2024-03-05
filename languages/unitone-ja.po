@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-02-21T03:26:36+00:00\n"
-"PO-Revision-Date: 2024-02-21 12:27+0900\n"
+"POT-Creation-Date: 2024-03-05T15:01:15+00:00\n"
+"PO-Revision-Date: 2024-03-06 00:02+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2066,6 +2066,10 @@ msgstr "モバイル用"
 msgid "Rows count"
 msgstr "行数"
 
+#: dist/blocks/gutters/index.js:1 dist/blocks/section/index.js:9
+msgid "Top and bottom padding"
+msgstr "上下パディング"
+
 #: dist/blocks/layers/index.js:1
 msgid "Background image"
 msgstr "背景画像"
@@ -2246,6 +2250,10 @@ msgstr "左寄せのタイトル"
 #: dist/blocks/section/index.js:9
 msgid "Left title / Subtitle"
 msgstr "左寄せのタイトル / サブタイトル"
+
+#: dist/blocks/section/index.js:9
+msgid "Max width of contents"
+msgstr "コンテンツの最大幅"
 
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Align items top"
@@ -2476,8 +2484,8 @@ msgid "Padding"
 msgstr "パディング"
 
 #: dist/js/editor/editor.js:1
-msgid "Gutters"
-msgstr "ガター"
+msgid "Margins at both ends"
+msgstr "両端の余白"
 
 #: dist/js/editor/editor.js:1
 msgid "Gap"
@@ -2500,12 +2508,20 @@ msgid "Overflow"
 msgstr "オーバーフロー"
 
 #: dist/js/editor/editor.js:1
+msgid "Justify content"
+msgstr "項目の揃え位置"
+
+#: dist/js/editor/editor.js:1
 msgid "Justify items top"
 msgstr "コンテンツを上揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify items bottom"
 msgstr "コンテンツを下揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Align items"
+msgstr "垂直配置"
 
 #: dist/js/editor/editor.js:1
 msgid "Stretch to fill"
@@ -2516,24 +2532,12 @@ msgid "Center"
 msgstr "中央"
 
 #: dist/js/editor/editor.js:1
-msgid "auto-fill"
-msgstr "auto-fill"
-
-#: dist/js/editor/editor.js:1
-msgid "auto-fit"
-msgstr "auto-fit"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify content"
-msgstr "項目の揃え位置"
-
-#: dist/js/editor/editor.js:1
-msgid "Align items"
-msgstr "垂直配置"
-
-#: dist/js/editor/editor.js:1
 msgid "Block alignment"
 msgstr "ブロックの配置"
+
+#: dist/js/editor/editor.js:1
+msgid "Recommended width"
+msgstr "推奨幅"
 
 #: dist/js/editor/editor.js:1
 msgid "Fill"
@@ -2542,10 +2546,6 @@ msgstr "塗りつぶし"
 #: dist/js/editor/editor.js:1
 msgid "Fit"
 msgstr "フィット"
-
-#: dist/js/editor/editor.js:1
-msgid "Recommended width"
-msgstr "推奨幅"
 
 #: dist/js/editor/editor.js:1
 msgid "Max width"
@@ -2560,6 +2560,14 @@ msgid "Min height"
 msgstr "最小の高さ"
 
 #: dist/js/editor/editor.js:1
+msgid "auto-fill"
+msgstr "auto-fill"
+
+#: dist/js/editor/editor.js:1
+msgid "auto-fit"
+msgstr "auto-fit"
+
+#: dist/js/editor/editor.js:1
 msgid "Align self"
 msgstr "垂直配置"
 
@@ -2571,6 +2579,10 @@ msgstr "項目の揃え位置"
 msgid "A grid item's size and location within a grid column"
 msgstr "グリッド列の中におけるグリッドアイテムの寸法と位置"
 
+#: dist/js/editor/editor.js:1
+msgid "A grid item's size and location within the grid row"
+msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
+
 #. translators: %1$s: <code>, %2$s: </code>
 #: dist/js/editor/editor.js:3 dist/js/editor/editor.js:5
 msgid ""
@@ -2579,10 +2591,6 @@ msgid ""
 msgstr ""
 "例えば、%1$s1 / -2%2$s（1番目のグリッド線から、最後から2番目のグリッド線まで"
 "を埋める）のように入力します。"
-
-#: dist/js/editor/editor.js:3
-msgid "A grid item's size and location within the grid row"
-msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
 
 #: dist/js/editor/editor.js:5
 msgid "Layer"
@@ -2605,12 +2613,12 @@ msgid "Slash"
 msgstr "スラッシュ"
 
 #: dist/js/editor/editor.js:5
-msgid "Divider"
-msgstr "区切り"
-
-#: dist/js/editor/editor.js:5
 msgid "Type"
 msgstr "種類"
+
+#: dist/js/editor/editor.js:5
+msgid "Divider"
+msgstr "区切り"
 
 #: dist/js/editor/editor.js:5
 msgid "Position"
@@ -3476,6 +3484,9 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "Gutters"
+#~ msgstr "ガター"
 
 #~ msgctxt "Template part name"
 #~ msgid "404"

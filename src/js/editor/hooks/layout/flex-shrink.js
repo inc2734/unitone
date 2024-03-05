@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 export function hasFlexShrinkValue( props ) {
 	const { name, attributes } = props;
@@ -44,6 +45,16 @@ export function useIsFlexShrinkDisabled( {
 	return (
 		! hasBlockSupport( blockName, 'unitone.flexShrink' ) &&
 		! __unstableUnitoneSupports?.flexShrink
+	);
+}
+
+export function getFlexShrinkEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.flexShrink?.label || __( 'Fit', 'unitone' )
 	);
 }
 

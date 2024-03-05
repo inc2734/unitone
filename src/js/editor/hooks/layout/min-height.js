@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 export function hasMinHeightValue( props ) {
 	const { name, attributes } = props;
@@ -38,6 +39,17 @@ export function useIsMinHeightDisabled( {
 	return (
 		! hasBlockSupport( blockName, 'unitone.minHeight' ) &&
 		! __unstableUnitoneSupports?.minHeight
+	);
+}
+
+export function getMinHeightEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.minHeight?.label ||
+		__( 'Min height', 'unitone' )
 	);
 }
 

@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 export function hasGridColumnValue( props ) {
 	const { name, attributes } = props;
@@ -44,6 +45,17 @@ export function useIsGridColumnDisabled( {
 	return (
 		! hasBlockSupport( blockName, 'unitone.gridColumn' ) &&
 		! __unstableUnitoneSupports?.gridColumn
+	);
+}
+
+export function getGridColumnEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.gridColumn?.label ||
+		__( "A grid item's size and location within a grid column", 'unitone' )
 	);
 }
 

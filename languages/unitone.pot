@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 10.1.4\n"
+"Project-Id-Version: unitone 10.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-02-21T03:26:36+00:00\n"
+"POT-Creation-Date: 2024-03-05T15:01:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -2113,6 +2113,11 @@ msgstr ""
 msgid "Rows count"
 msgstr ""
 
+#: dist/blocks/gutters/index.js:1
+#: dist/blocks/section/index.js:9
+msgid "Top and bottom padding"
+msgstr ""
+
 #: dist/blocks/layers/index.js:1
 msgid "Background image"
 msgstr ""
@@ -2288,6 +2293,10 @@ msgstr ""
 
 #: dist/blocks/section/index.js:9
 msgid "Left title / Subtitle"
+msgstr ""
+
+#: dist/blocks/section/index.js:9
+msgid "Max width of contents"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -2525,7 +2534,7 @@ msgid "Padding"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Gutters"
+msgid "Margins at both ends"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -2549,11 +2558,19 @@ msgid "Overflow"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
+msgid "Justify content"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
 msgid "Justify items top"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Justify items bottom"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align items"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -2565,23 +2582,11 @@ msgid "Center"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "auto-fill"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "auto-fit"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Justify content"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Align items"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
 msgid "Block alignment"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Recommended width"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -2590,10 +2595,6 @@ msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Fit"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Recommended width"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -2609,6 +2610,14 @@ msgid "Min height"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
+msgid "auto-fill"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "auto-fit"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
 msgid "Align self"
 msgstr ""
 
@@ -2620,14 +2629,14 @@ msgstr ""
 msgid "A grid item's size and location within a grid column"
 msgstr ""
 
+#: dist/js/editor/editor.js:1
+msgid "A grid item's size and location within the grid row"
+msgstr ""
+
 #. translators: %1$s: <code>, %2$s: </code>
 #: dist/js/editor/editor.js:3
 #: dist/js/editor/editor.js:5
 msgid "For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line)."
-msgstr ""
-
-#: dist/js/editor/editor.js:3
-msgid "A grid item's size and location within the grid row"
 msgstr ""
 
 #: dist/js/editor/editor.js:5
@@ -2651,11 +2660,11 @@ msgid "Slash"
 msgstr ""
 
 #: dist/js/editor/editor.js:5
-msgid "Divider"
+msgid "Type"
 msgstr ""
 
 #: dist/js/editor/editor.js:5
-msgid "Type"
+msgid "Divider"
 msgstr ""
 
 #: dist/js/editor/editor.js:5

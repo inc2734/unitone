@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 export function hasFlexBasisValue( props ) {
 	const { name, attributes } = props;
@@ -44,6 +45,17 @@ export function useIsFlexBasisDisabled( {
 	return (
 		! hasBlockSupport( blockName, 'unitone.flexBasis' ) &&
 		! __unstableUnitoneSupports?.flexBasis
+	);
+}
+
+export function getFlexBasisEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.flexBasis?.label ||
+		__( 'Recommended width', 'unitone' )
 	);
 }
 

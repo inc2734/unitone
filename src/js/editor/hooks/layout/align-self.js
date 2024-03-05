@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 const alignSelfOptions = [
 	{
@@ -81,6 +82,17 @@ export function useIsAlignSelfDisabled( {
 	return (
 		! hasBlockSupport( blockName, 'unitone.alignSelf' ) &&
 		! __unstableUnitoneSupports?.alignSelf
+	);
+}
+
+export function getAlignSelfEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.alignSelf?.label ||
+		__( 'Align self', 'unitone' )
 	);
 }
 

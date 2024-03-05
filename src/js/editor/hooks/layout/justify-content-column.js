@@ -5,6 +5,7 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { Button } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+
 import {
 	alignBottom,
 	alignCenter,
@@ -108,6 +109,17 @@ export function JustifyContentColumnToolbar( props ) {
 				} );
 			} }
 		/>
+	);
+}
+
+export function getJustifyContentColumnEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.justifyContent?.label ||
+		__( 'Align items', 'unitone' )
 	);
 }
 

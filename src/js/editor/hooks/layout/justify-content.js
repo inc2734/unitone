@@ -5,6 +5,7 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { Button } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+
 import {
 	justifyLeft,
 	justifyCenter,
@@ -108,6 +109,17 @@ export function JustifyContentToolbar( props ) {
 				} );
 			} }
 		/>
+	);
+}
+
+export function getJustifyContentEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.justifyContent?.label ||
+		__( 'Justify content', 'unitone' )
 	);
 }
 

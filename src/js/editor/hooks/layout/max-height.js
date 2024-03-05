@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 export function hasMaxHeightValue( props ) {
 	const { name, attributes } = props;
@@ -38,6 +39,17 @@ export function useIsMaxHeightDisabled( {
 	return (
 		! hasBlockSupport( blockName, 'unitone.maxHeight' ) &&
 		! __unstableUnitoneSupports?.maxHeight
+	);
+}
+
+export function getMaxHeightEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.maxHeight?.label ||
+		__( 'Max height', 'unitone' )
 	);
 }
 

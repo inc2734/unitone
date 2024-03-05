@@ -2,6 +2,7 @@ import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
 
@@ -36,6 +37,17 @@ export function resetGutters( props ) {
 
 export function useIsGuttersDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.gutters' );
+}
+
+export function getGuttersEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.gutters?.label ||
+		__( 'Margins at both ends', 'unitone' )
+	);
 }
 
 export function GuttersEdit( props ) {

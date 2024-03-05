@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 export function hasMaxWidthValue( props ) {
 	const { name, attributes } = props;
@@ -38,6 +39,17 @@ export function useIsMaxWidthDisabled( {
 	return (
 		! hasBlockSupport( blockName, 'unitone.maxWidth' ) &&
 		! __unstableUnitoneSupports?.maxWidth
+	);
+}
+
+export function getMaxWidthEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.maxWidth?.label ||
+		__( 'Max width', 'unitone' )
 	);
 }
 

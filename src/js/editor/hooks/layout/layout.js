@@ -15,6 +15,7 @@ import {
 	hasJustifyContentValue,
 	resetJustifyContent,
 	JustifyContentToolbar,
+	getJustifyContentEditLabel,
 	JustifyContentEdit,
 	editJustifyContentProp,
 } from './justify-content';
@@ -24,6 +25,7 @@ import {
 	hasJustifyContentColumnValue,
 	resetJustifyContentColumn,
 	JustifyContentColumnToolbar,
+	getJustifyContentColumnEditLabel,
 	JustifyContentColumnEdit,
 	editJustifyContentColumnProp,
 } from './justify-content-column';
@@ -33,6 +35,7 @@ import {
 	hasAlignItemsValue,
 	resetAlignItems,
 	AlignItemsToolbar,
+	getAlignItemsEditLabel,
 	AlignItemsEdit,
 	editAlignItemsProp,
 } from './align-items';
@@ -42,6 +45,7 @@ import {
 	hasBlockAlignValue,
 	resetBlockAlign,
 	BlockAlignToolbar,
+	getBlockAlignEditLabel,
 	BlockAlignEdit,
 	editBlockAlignProp,
 } from './block-align';
@@ -50,6 +54,7 @@ import {
 	useIsFlexBasisDisabled,
 	hasFlexBasisValue,
 	resetFlexBasis,
+	getFlexBasisEditLabel,
 	FlexBasisEdit,
 	editFlexBasisProp,
 } from './flex-basis';
@@ -58,6 +63,7 @@ import {
 	useIsFlexGrowDisabled,
 	hasFlexGrowValue,
 	resetFlexGrow,
+	getFlexGrowEditLabel,
 	FlexGrowEdit,
 	editFlexGrowProp,
 } from './flex-grow';
@@ -66,6 +72,7 @@ import {
 	useIsFlexShrinkDisabled,
 	hasFlexShrinkValue,
 	resetFlexShrink,
+	getFlexShrinkEditLabel,
 	FlexShrinkEdit,
 	editFlexShrinkProp,
 } from './flex-shrink';
@@ -74,6 +81,7 @@ import {
 	useIsMaxWidthDisabled,
 	hasMaxWidthValue,
 	resetMaxWidth,
+	getMaxWidthEditLabel,
 	MaxWidthEdit,
 	editMaxWidthProp,
 } from './max-width';
@@ -82,6 +90,7 @@ import {
 	useIsMaxHeightDisabled,
 	hasMaxHeightValue,
 	resetMaxHeight,
+	getMaxHeightEditLabel,
 	MaxHeightEdit,
 	editMaxHeightProp,
 } from './max-height';
@@ -90,6 +99,7 @@ import {
 	useIsMinHeightDisabled,
 	hasMinHeightValue,
 	resetMinHeight,
+	getMinHeightEditLabel,
 	MinHeightEdit,
 	editMinHeightProp,
 } from './min-height';
@@ -98,6 +108,7 @@ import {
 	useIsAutoRepeatDisabled,
 	hasAutoRepeatValue,
 	resetAutoRepeat,
+	getAutoRepeatEditLabel,
 	AutoRepeatEdit,
 	editAutoRepeatProp,
 } from './auto-repeat';
@@ -106,6 +117,7 @@ import {
 	useIsAlignSelfDisabled,
 	hasAlignSelfValue,
 	resetAlignSelf,
+	getAlignSelfEditLabel,
 	AlignSelfEdit,
 	editAlignSelfProp,
 } from './align-self';
@@ -114,6 +126,7 @@ import {
 	useIsJustifySelfDisabled,
 	hasJustifySelfValue,
 	resetJustifySelf,
+	getJustifySelfEditLabel,
 	JustifySelfEdit,
 	editJustifySelfProp,
 } from './justify-self';
@@ -122,6 +135,7 @@ import {
 	useIsGridColumnDisabled,
 	hasGridColumnValue,
 	resetGridColumn,
+	getGridColumnEditLabel,
 	GridColumnEdit,
 	editGridColumnProp,
 } from './grid-column';
@@ -130,6 +144,7 @@ import {
 	useIsGridRowDisabled,
 	hasGridRowValue,
 	resetGridRow,
+	getGridRowEditLabel,
 	GridRowEdit,
 	editGridRowProp,
 } from './grid-row';
@@ -234,7 +249,7 @@ export function LayoutPanel( props ) {
 								hasValue={ () =>
 									hasJustifyContentValue( props )
 								}
-								label={ __( 'Justify content', 'unitone' ) }
+								label={ getJustifyContentEditLabel( props ) }
 								onDeselect={ () =>
 									resetJustifyContent( props )
 								}
@@ -244,9 +259,8 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __(
-												'Justify content',
-												'unitone'
+											{ getJustifyContentEditLabel(
+												props
 											) }
 											&nbsp;:&nbsp;
 											<code>justify-content</code>
@@ -261,7 +275,9 @@ export function LayoutPanel( props ) {
 								hasValue={ () =>
 									hasJustifyContentColumnValue( props )
 								}
-								label={ __( 'Align items', 'unitone' ) }
+								label={ getJustifyContentColumnEditLabel(
+									props
+								) }
 								onDeselect={ () =>
 									resetJustifyContentColumn( props )
 								}
@@ -271,7 +287,9 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __( 'Align items', 'unitone' ) }
+											{ getJustifyContentColumnEditLabel(
+												props
+											) }
 											&nbsp;:&nbsp;
 											<code>justify-content</code>
 										</>
@@ -283,7 +301,7 @@ export function LayoutPanel( props ) {
 						{ ! isAlignItemsDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasAlignItemsValue( props ) }
-								label={ __( 'Align items', 'unitone' ) }
+								label={ getAlignItemsEditLabel( props ) }
 								onDeselect={ () => resetAlignItems( props ) }
 								isShownByDefault
 							>
@@ -291,7 +309,7 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __( 'Align items', 'unitone' ) }
+											{ getAlignItemsEditLabel( props ) }
 											&nbsp;:&nbsp;
 											<code>align-items</code>
 										</>
@@ -303,13 +321,13 @@ export function LayoutPanel( props ) {
 						{ ! isBlockAlignDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasBlockAlignValue( props ) }
-								label={ __( 'Block alignment', 'unitone' ) }
+								label={ getBlockAlignEditLabel( props ) }
 								onDeselect={ () => resetBlockAlign( props ) }
 								isShownByDefault
 							>
 								<BlockAlignEdit
 									{ ...props }
-									label={ __( 'Block alignment', 'unitone' ) }
+									label={ getBlockAlignEditLabel( props ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -317,7 +335,7 @@ export function LayoutPanel( props ) {
 						{ ! isFlexGrowDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasFlexGrowValue( props ) }
-								label={ __( 'Fill', 'unitone' ) }
+								label={ getFlexGrowEditLabel( props ) }
 								onDeselect={ () => resetFlexGrow( props ) }
 								isShownByDefault
 							>
@@ -325,8 +343,9 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __( 'Fill', 'unitone' ) }
-											&nbsp;:&nbsp;<code>flex-grow</code>
+											{ getFlexGrowEditLabel( props ) }
+											&nbsp;:&nbsp;
+											<code>flex-grow</code>
 										</>
 									}
 								/>
@@ -336,7 +355,7 @@ export function LayoutPanel( props ) {
 						{ ! isFlexShrinkDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasFlexShrinkValue( props ) }
-								label={ __( 'Fit', 'unitone' ) }
+								label={ getFlexShrinkEditLabel( props ) }
 								onDeselect={ () => resetFlexShrink( props ) }
 								isShownByDefault
 							>
@@ -344,7 +363,7 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __( 'Fit', 'unitone' ) }
+											{ getFlexShrinkEditLabel( props ) }
 											&nbsp;:&nbsp;
 											<code>flex-shrink</code>
 										</>
@@ -356,7 +375,7 @@ export function LayoutPanel( props ) {
 						{ ! isFlexBasisDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasFlexBasisValue( props ) }
-								label={ __( 'Recommended width', 'unitone' ) }
+								label={ getFlexBasisEditLabel( props ) }
 								onDeselect={ () => resetFlexBasis( props ) }
 								isShownByDefault
 							>
@@ -364,10 +383,7 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __(
-												'Recommended width',
-												'unitone'
-											) }
+											{ getFlexBasisEditLabel( props ) }
 											&nbsp;:&nbsp;<code>flex-basis</code>
 										</>
 									}
@@ -378,7 +394,7 @@ export function LayoutPanel( props ) {
 						{ ! isMaxWidthDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasMaxWidthValue( props ) }
-								label={ __( 'Max width', 'unitone' ) }
+								label={ getMaxWidthEditLabel( props ) }
 								onDeselect={ () => resetMaxWidth( props ) }
 								isShownByDefault
 							>
@@ -386,8 +402,9 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __( 'Max width', 'unitone' ) }
-											&nbsp;:&nbsp;<code>max-width</code>
+											{ getMaxWidthEditLabel( props ) }
+											&nbsp;:&nbsp;
+											<code>max-width</code>
 										</>
 									}
 								/>
@@ -397,7 +414,7 @@ export function LayoutPanel( props ) {
 						{ ! isMaxHeightDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasMaxHeightValue( props ) }
-								label={ __( 'Max height', 'unitone' ) }
+								label={ getMaxHeightEditLabel( props ) }
 								onDeselect={ () => resetMaxHeight( props ) }
 								isShownByDefault
 							>
@@ -405,8 +422,9 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __( 'Max height', 'unitone' ) }
-											&nbsp;:&nbsp;<code>max-height</code>
+											{ getMaxHeightEditLabel( props ) }
+											&nbsp;:&nbsp;
+											<code>max-height</code>
 										</>
 									}
 								/>
@@ -416,7 +434,7 @@ export function LayoutPanel( props ) {
 						{ ! isMinHeightDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasMinHeightValue( props ) }
-								label={ __( 'Min height', 'unitone' ) }
+								label={ getMinHeightEditLabel( props ) }
 								onDeselect={ () => resetMinHeight( props ) }
 								isShownByDefault
 							>
@@ -424,8 +442,9 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __( 'Min height', 'unitone' ) }
-											&nbsp;:&nbsp;<code>min-height</code>
+											{ getMinHeightEditLabel( props ) }
+											&nbsp;:&nbsp;
+											<code>min-height</code>
 										</>
 									}
 								/>
@@ -435,7 +454,7 @@ export function LayoutPanel( props ) {
 						{ ! isAutoRepeatDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasAutoRepeatValue( props ) }
-								label={ __( 'Auto repeat', 'unitone' ) }
+								label={ getAutoRepeatEditLabel( props ) }
 								onDeselect={ () => resetAutoRepeat( props ) }
 								isShownByDefault
 							>
@@ -443,7 +462,7 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __( 'Auto repeat', 'unitone' ) }
+											{ getAutoRepeatEditLabel( props ) }
 											&nbsp;:&nbsp;
 											<code>auto-repeat</code>
 										</>
@@ -455,7 +474,7 @@ export function LayoutPanel( props ) {
 						{ ! isAlignSelfDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasAlignSelfValue( props ) }
-								label={ __( 'Align self', 'unitone' ) }
+								label={ getAlignSelfEditLabel( props ) }
 								onDeselect={ () => resetAlignSelf( props ) }
 								resetAllFilter={ () => resetAlignSelf( props ) }
 								isShownByDefault
@@ -464,7 +483,7 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __( 'Align self', 'unitone' ) }
+											{ getAlignSelfEditLabel( props ) }
 											&nbsp;:&nbsp;
 											<code>align-self</code>
 										</>
@@ -476,7 +495,7 @@ export function LayoutPanel( props ) {
 						{ ! isJustifySelfDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasJustifySelfValue( props ) }
-								label={ __( 'Justify self', 'unitone' ) }
+								label={ getJustifySelfEditLabel( props ) }
 								onDeselect={ () => resetJustifySelf( props ) }
 								resetAllFilter={ () =>
 									resetJustifySelf( props )
@@ -487,7 +506,7 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __( 'Justify self', 'unitone' ) }
+											{ getJustifySelfEditLabel( props ) }
 											&nbsp;:&nbsp;
 											<code>justify-self</code>
 										</>
@@ -499,10 +518,7 @@ export function LayoutPanel( props ) {
 						{ ! isGridColumnDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasGridColumnValue( props ) }
-								label={ __(
-									"A grid item's size and location within a grid column",
-									'unitone'
-								) }
+								label={ getGridColumnEditLabel( props ) }
 								onDeselect={ () => resetGridColumn( props ) }
 								resetAllFilter={ () =>
 									resetGridColumn( props )
@@ -513,10 +529,7 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __(
-												"A grid item's size and location within a grid column",
-												'unitone'
-											) }
+											{ getGridColumnEditLabel( props ) }
 											&nbsp;:&nbsp;
 											<code>grid-column</code>
 										</>
@@ -543,10 +556,7 @@ export function LayoutPanel( props ) {
 						{ ! isGridRowDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasGridRowValue( props ) }
-								label={ __(
-									"A grid item's size and location within the grid row",
-									'unitone'
-								) }
+								label={ getGridRowEditLabel( props ) }
 								onDeselect={ () => resetGridRow( props ) }
 								resetAllFilter={ () => resetGridRow( props ) }
 								isShownByDefault={ true }
@@ -555,10 +565,7 @@ export function LayoutPanel( props ) {
 									{ ...props }
 									label={
 										<>
-											{ __(
-												"A grid item's size and location within the grid row",
-												'unitone'
-											) }
+											{ getGridRowEditLabel( props ) }
 											&nbsp;:&nbsp;
 											<code>grid-row</code>
 										</>

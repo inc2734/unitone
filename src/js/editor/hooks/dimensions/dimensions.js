@@ -4,12 +4,12 @@
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
 
 import {
 	useIsPaddingDisabled,
 	hasPaddingValue,
 	resetPadding,
+	getPaddingEditLabel,
 	PaddingEdit,
 	editPaddingProp,
 } from './padding';
@@ -18,6 +18,7 @@ import {
 	useIsGuttersDisabled,
 	hasGuttersValue,
 	resetGutters,
+	getGuttersEditLabel,
 	GuttersEdit,
 	editGuttersProp,
 } from './gutters';
@@ -26,6 +27,7 @@ import {
 	useIsGapDisabled,
 	hasGapValue,
 	resetGap,
+	getGapEditLabel,
 	GapEdit,
 	editGapProp,
 } from './gap';
@@ -36,7 +38,9 @@ import {
 	hasStairsUpValue,
 	resetStairs,
 	resetStairsUp,
+	getStairsEditLabel,
 	StairsEdit,
+	getStairsUpEditLabel,
 	StairsUpEdit,
 	editStairsProp,
 } from './stairs';
@@ -45,6 +49,7 @@ import {
 	useIsNegativeDisabled,
 	hasNegativeValue,
 	resetNegative,
+	getNegativeEditLabel,
 	NegativeEdit,
 	editNegativeProp,
 } from './negative';
@@ -53,6 +58,7 @@ import {
 	useIsOverflowDisabled,
 	hasOverflowValue,
 	resetOverflow,
+	getOverflowEditLabel,
 	OverflowEdit,
 	editOverflowProp,
 } from './overflow';
@@ -91,7 +97,7 @@ export function DimensionsPanel( props ) {
 				{ ! isPaddingDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasPaddingValue( props ) }
-						label={ __( 'Padding', 'unitone' ) }
+						label={ getPaddingEditLabel( props ) }
 						onDeselect={ () => resetPadding( props ) }
 						resetAllFilter={ () => resetPadding( props ) }
 						isShownByDefault
@@ -101,7 +107,8 @@ export function DimensionsPanel( props ) {
 							{ ...props }
 							label={
 								<>
-									{ __( 'Padding', 'unitone' ) }&nbsp;:&nbsp;
+									{ getPaddingEditLabel( props ) }
+									&nbsp;:&nbsp;
 									<code>padding</code>
 								</>
 							}
@@ -112,7 +119,7 @@ export function DimensionsPanel( props ) {
 				{ ! isGuttersDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasGuttersValue( props ) }
-						label={ __( 'Gutters', 'unitone' ) }
+						label={ getGuttersEditLabel( props ) }
 						onDeselect={ () => resetGutters( props ) }
 						resetAllFilter={ () => resetGutters( props ) }
 						isShownByDefault={ true }
@@ -122,7 +129,8 @@ export function DimensionsPanel( props ) {
 							{ ...props }
 							label={
 								<>
-									{ __( 'Gutters', 'unitone' ) }&nbsp;:&nbsp;
+									{ getGuttersEditLabel( props ) }
+									&nbsp;:&nbsp;
 									<code>padding-right/left</code>
 								</>
 							}
@@ -133,7 +141,7 @@ export function DimensionsPanel( props ) {
 				{ ! isGapDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasGapValue( props ) }
-						label={ __( 'Gap', 'unitone' ) }
+						label={ getGapEditLabel( props ) }
 						onDeselect={ () => resetGap( props ) }
 						resetAllFilter={ () => resetGap( props ) }
 						isShownByDefault={ true }
@@ -143,7 +151,8 @@ export function DimensionsPanel( props ) {
 							{ ...props }
 							label={
 								<>
-									{ __( 'Gap', 'unitone' ) }&nbsp;:&nbsp;
+									{ getGapEditLabel( props ) }
+									&nbsp;:&nbsp;
 									<code>gap</code>
 								</>
 							}
@@ -155,7 +164,7 @@ export function DimensionsPanel( props ) {
 					<>
 						<ToolsPanelItem
 							hasValue={ () => hasStairsValue( props ) }
-							label={ __( 'Stairs grid', 'unitone' ) }
+							label={ getStairsEditLabel( props ) }
 							onDeselect={ () => resetStairs( props ) }
 							resetAllFilter={ () => resetStairs( props ) }
 							isShownByDefault={ true }
@@ -163,17 +172,14 @@ export function DimensionsPanel( props ) {
 						>
 							<StairsEdit
 								{ ...props }
-								label={ __( 'Stairs grid', 'unitone' ) }
+								label={ getStairsEditLabel( props ) }
 							/>
 						</ToolsPanelItem>
 
 						{ hasStairsValue( props ) && (
 							<ToolsPanelItem
 								hasValue={ () => hasStairsUpValue( props ) }
-								label={ __(
-									'Stairs climbing direction',
-									'unitone'
-								) }
+								label={ getStairsUpEditLabel( props ) }
 								onDeselect={ () => resetStairsUp( props ) }
 								resetAllFilter={ () => resetStairsUp( props ) }
 								isShownByDefault={ true }
@@ -181,10 +187,7 @@ export function DimensionsPanel( props ) {
 							>
 								<StairsUpEdit
 									{ ...props }
-									label={ __(
-										'Stairs climbing direction',
-										'unitone'
-									) }
+									label={ getStairsUpEditLabel( props ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -194,7 +197,7 @@ export function DimensionsPanel( props ) {
 				{ ! isNegativeDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasNegativeValue( props ) }
-						label={ __( 'Using negative margin', 'unitone' ) }
+						label={ getNegativeEditLabel( props ) }
 						onDeselect={ () => resetNegative( props ) }
 						resetAllFilter={ () => resetNegative( props ) }
 						isShownByDefault={ true }
@@ -202,7 +205,7 @@ export function DimensionsPanel( props ) {
 					>
 						<NegativeEdit
 							{ ...props }
-							label={ __( 'Using negative margin', 'unitone' ) }
+							label={ getNegativeEditLabel( props ) }
 						/>
 					</ToolsPanelItem>
 				) }
@@ -210,7 +213,7 @@ export function DimensionsPanel( props ) {
 				{ ! isOverflowDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasOverflowValue( props ) }
-						label={ __( 'Overflow', 'unitone' ) }
+						label={ getOverflowEditLabel( props ) }
 						onDeselect={ () => resetOverflow( props ) }
 						resetAllFilter={ () => resetOverflow( props ) }
 						isShownByDefault={ true }
@@ -220,7 +223,8 @@ export function DimensionsPanel( props ) {
 							{ ...props }
 							label={
 								<>
-									{ __( 'Overflow', 'unitone' ) }&nbsp;:&nbsp;
+									{ getOverflowEditLabel( props ) }
+									&nbsp;:&nbsp;
 									<code>overflow</code>
 								</>
 							}

@@ -104,6 +104,17 @@ export function AlignItemsToolbar( props ) {
 	);
 }
 
+export function getAlignItemsEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.alignItems?.label ||
+		__( 'Align items', 'unitone' )
+	);
+}
+
 export function AlignItemsEdit( props ) {
 	const {
 		name,

@@ -12,6 +12,7 @@ import {
 	useIsDividerTypeDisabled,
 	resetDividerType,
 	hasDividerTypeValue,
+	getDividerTypeEditLabel,
 	DividerTypeEdit,
 } from './divider-type';
 
@@ -21,6 +22,7 @@ import {
 	useIsDividerDisabled,
 	resetDivider,
 	hasDividerValue,
+	getDividerEditLabel,
 	DividerEdit,
 } from './divider-object';
 
@@ -40,13 +42,13 @@ export function DividerPanel( props ) {
 				{ ! isDividerTypeDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasDividerTypeValue( props ) }
-						label={ __( 'Type', 'unitone' ) }
+						label={ getDividerTypeEditLabel( props ) }
 						onDeselect={ () => resetDividerType( props ) }
 						isShownByDefault
 					>
 						<DividerTypeEdit
 							{ ...props }
-							label={ __( 'Type', 'unitone' ) }
+							label={ getDividerTypeEditLabel( props ) }
 						/>
 					</ToolsPanelItem>
 				) }
@@ -54,13 +56,13 @@ export function DividerPanel( props ) {
 				{ ! isDividerDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasDividerValue( props ) }
-						label={ __( 'Divider', 'unitone' ) }
+						label={ getDividerEditLabel( props ) }
 						onDeselect={ () => resetDivider( props ) }
 						isShownByDefault
 					>
 						<DividerEdit
 							{ ...props }
-							label={ __( 'Divider', 'unitone' ) }
+							label={ getDividerEditLabel( props ) }
 						/>
 					</ToolsPanelItem>
 				) }

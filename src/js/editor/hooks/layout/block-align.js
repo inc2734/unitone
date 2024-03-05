@@ -101,6 +101,17 @@ export function BlockAlignToolbar( props ) {
 	);
 }
 
+export function getBlockAlignEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.blockAlign?.label ||
+		__( 'Block alignment', 'unitone' )
+	);
+}
+
 export function BlockAlignEdit( props ) {
 	const {
 		name,

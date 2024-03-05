@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 export function hasFlexGrowValue( props ) {
 	const { name, attributes } = props;
@@ -44,6 +45,16 @@ export function useIsFlexGrowDisabled( {
 	return (
 		! hasBlockSupport( blockName, 'unitone.flexGrow' ) &&
 		! __unstableUnitoneSupports?.flexGrow
+	);
+}
+
+export function getFlexGrowEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.flexGrow?.label || __( 'Fill', 'unitone' )
 	);
 }
 

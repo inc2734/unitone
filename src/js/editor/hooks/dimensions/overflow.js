@@ -3,6 +3,7 @@ import classnames from 'classnames/dedupe';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 const overflowOptions = [
 	{ label: '', value: '' },
@@ -61,6 +62,17 @@ export function useIsOverflowDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.overflow' );
 }
 
+export function getOverflowEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return (
+		__unstableUnitoneSupports?.overflow?.label ||
+		__( 'Overflow', 'unitone' )
+	);
+}
+
 export function OverflowEdit( props ) {
 	const {
 		name,
@@ -71,7 +83,7 @@ export function OverflowEdit( props ) {
 
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.newValue;
+			?.default?.overflow;
 	}, [] );
 
 	return (

@@ -7,6 +7,7 @@ import {
 } from '@wordpress/blocks';
 
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
 
@@ -60,6 +61,14 @@ export function useIsGapDisabled( props ) {
 	}
 
 	return true;
+}
+
+export function getGapEditLabel( props ) {
+	const {
+		attributes: { __unstableUnitoneSupports },
+	} = props;
+
+	return __unstableUnitoneSupports?.gap?.label || __( 'Gap', 'unitone' );
 }
 
 export function GapEdit( props ) {

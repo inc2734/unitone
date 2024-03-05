@@ -18,6 +18,14 @@ const overflowOptions = [
 		label: 'scroll',
 		value: 'scroll',
 	},
+	{
+		label: 'auto',
+		value: 'auto',
+	},
+	{
+		label: 'clip',
+		value: 'clip',
+	},
 ];
 
 export function hasOverflowValue( props ) {

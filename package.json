@@ -4,7 +4,7 @@
 		"npm": ">=10.2.3"
 	},
 	"devDependencies": {
-		"@inc2734/unitone-css": "^0.54.2",
+		"@inc2734/unitone-css": "^0.55.0",
 		"@wordpress/env": "^9.4.0",
 		"@wordpress/icons": "^9.43.0",
 		"@wordpress/interface": "^5.29.0",

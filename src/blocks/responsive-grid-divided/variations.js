@@ -9,8 +9,10 @@ export default [
 			unitone: { autoRepeat: 'auto-fit', dividerType: 'stripe' },
 		},
 		isActive: ( blockAttributes, variationAttributes ) =>
+			!! blockAttributes?.unitone?.dividerType &&
+			!! variationAttributes?.unitone?.dividerType &&
 			blockAttributes.unitone.dividerType ===
-			variationAttributes.unitone.dividerType,
+				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/responsive-grid-divided-content' ],
@@ -25,8 +27,10 @@ export default [
 			unitone: { autoRepeat: 'auto-fit', dividerType: 'underline' },
 		},
 		isActive: ( blockAttributes, variationAttributes ) =>
+			!! blockAttributes?.unitone?.dividerType &&
+			!! variationAttributes?.unitone?.dividerType &&
 			blockAttributes.unitone.dividerType ===
-			variationAttributes.unitone.dividerType,
+				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/responsive-grid-divided-content' ],
@@ -41,8 +45,10 @@ export default [
 			unitone: { autoRepeat: 'auto-fit', dividerType: 'bordered' },
 		},
 		isActive: ( blockAttributes, variationAttributes ) =>
+			!! blockAttributes?.unitone?.dividerType &&
+			!! variationAttributes?.unitone?.dividerType &&
 			blockAttributes.unitone.dividerType ===
-			variationAttributes.unitone.dividerType,
+				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/responsive-grid-divided-content' ],

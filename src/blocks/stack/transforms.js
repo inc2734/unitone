@@ -10,13 +10,17 @@ export default {
 			type: 'block',
 			blocks: [ 'unitone/stack-divided' ],
 			transform: ( attributes, innerBlocks ) => {
-				delete attributes?.unitone?.dividerType;
-				delete attributes?.unitone?.divider;
-				delete attributes?.unitone?.dividerColor;
-
 				return createBlock(
 					'unitone/stack',
-					attributes,
+					{
+						...attributes,
+						unitone: {
+							...attributes.unitone,
+							dividerType: undefined,
+							divider: undefined,
+							dividerColor: undefined,
+						},
+					},
 					innerBlocks
 						.map( ( innerBlock ) => innerBlock.innerBlocks )
 						.flat()

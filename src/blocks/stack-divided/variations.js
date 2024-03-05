@@ -7,8 +7,10 @@ export default [
 		isDefault: true,
 		attributes: { unitone: { dividerType: 'stripe' } },
 		isActive: ( blockAttributes, variationAttributes ) =>
+			!! blockAttributes?.unitone?.dividerType &&
+			!! variationAttributes?.unitone?.dividerType &&
 			blockAttributes.unitone.dividerType ===
-			variationAttributes.unitone.dividerType,
+				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/stack-divided-content' ],
@@ -21,8 +23,10 @@ export default [
 		isDefault: false,
 		attributes: { unitone: { dividerType: 'underline' } },
 		isActive: ( blockAttributes, variationAttributes ) =>
+			!! blockAttributes?.unitone?.dividerType &&
+			!! variationAttributes?.unitone?.dividerType &&
 			blockAttributes.unitone.dividerType ===
-			variationAttributes.unitone.dividerType,
+				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/stack-divided-content' ],
@@ -35,8 +39,10 @@ export default [
 		isDefault: false,
 		attributes: { unitone: { dividerType: 'bordered' } },
 		isActive: ( blockAttributes, variationAttributes ) =>
+			!! blockAttributes?.unitone?.dividerType &&
+			!! variationAttributes?.unitone?.dividerType &&
 			blockAttributes.unitone.dividerType ===
-			variationAttributes.unitone.dividerType,
+				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/stack-divided-content' ],

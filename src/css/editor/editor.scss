@@ -178,6 +178,16 @@
 	}
 }
 
+.unitone-width-control {
+	.components-base-control {
+		flex: 1;
+	}
+
+	.components-base-control__label:empty {
+		display: none;
+	}
+}
+
 [data-rich-text-placeholder] {
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'ヒラギノ角ゴ W3', sans-serif;
 	font-feature-settings: initial;

@@ -63,7 +63,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						</div>
 						<div data-unitone-layout="stack">
 							<TextControl
-								label={ __( 'Content Size', 'unitone' ) }
+								label={ __( 'Content Width', 'unitone' ) }
 								value={ settings?.[ 'content-size' ] || '' }
 								style={ { width: '100%' } }
 								onChange={ ( newSetting ) =>
@@ -75,7 +75,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							/>
 
 							<TextControl
-								label={ __( 'Wide Size', 'unitone' ) }
+								label={ __( 'Wide', 'unitone' ) }
 								value={ settings?.[ 'wide-size' ] || '' }
 								style={ { width: '100%' } }
 								onChange={ ( newSetting ) =>

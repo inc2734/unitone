@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-03-05T15:30:47+00:00\n"
-"PO-Revision-Date: 2024-03-06 00:34+0900\n"
+"POT-Creation-Date: 2024-03-06T16:42:55+00:00\n"
+"PO-Revision-Date: 2024-03-07 01:43+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1755,15 +1755,13 @@ msgstr "h6 のサイズ"
 msgid "Size"
 msgstr "サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1558
-msgid "Content Size"
-msgstr "コンテンツサイズ"
+#: App/Controller/Manager/dist/js/app.js:3 dist/js/editor/editor.js:1
+msgid "Content Width"
+msgstr "コンテンツ幅"
 
-#: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1570
-msgid "Wide Size"
-msgstr "幅広サイズ"
+#: App/Controller/Manager/dist/js/app.js:3 dist/js/editor/editor.js:1
+msgid "Wide"
+msgstr "幅広"
 
 #: App/Controller/Manager/dist/js/app.js:3
 #: App/Controller/Manager/dist/js/app.js:1177
@@ -2662,6 +2660,14 @@ msgstr "ブロックのアウトラインを表示"
 #: dist/js/editor/editor.js:6
 msgid "Replace"
 msgstr "置換"
+
+#: App/Controller/Manager/dist/js/app.js:1558
+msgid "Content Size"
+msgstr "コンテンツサイズ"
+
+#: App/Controller/Manager/dist/js/app.js:1570
+msgid "Wide Size"
+msgstr "幅広サイズ"
 
 #: dist/blocks/accordion/block.json
 msgctxt "block title"

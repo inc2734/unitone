@@ -203,12 +203,66 @@ add_filter(
 		};
 
 		/**
+		 * Converts a global style into a custom value.
+		 *
+		 * @param string $value Value to convert.
+		 * @return string CSS var string for given global style value.
+		 */
+		$get_global_style_css_var = function( $value ) {
+			if ( null === $value || '' === $value ) {
+				return $value;
+			}
+
+			preg_match( '/var:style\|global\|(.+)/', $value, $match );
+			if ( ! $match ) {
+				return $value;
+			}
+
+			return 'var(--wp--style--global--' . $match[1] . ')';
+		};
+
+		/**
+		 * Converts a custom value to global style value if one can be found.
+		 *
+		 * Returns value as-is if no match is found.
+		 *
+		 * @param string $value Value to convert
+		 * @return string The global style value if it can be found.
+		 */
+		$get_global_style_value_from_custom_value = function( $value ) {
+			if ( null === $value || '' === $value ) {
+				return $value;
+			}
+
+			preg_match( '/^var\(--wp--style--global--(.+)\)$/', $value, $match );
+			if ( ! $match ) {
+				return $value;
+			}
+
+			return 'var:style|global|' . $match[1];
+		};
+
+		/**
+		 * Checks is given value is a global style.
+		 *
+		 * @param string $value Value to check
+		 * @return boolean Return true if value is string in format var:style|global|.
+		 */
+		$is_value_global_style = function( $value ) {
+			if ( null === $value || '' === $value ) {
+				return false;
+			}
+
+			return 0 === strpos( $value, 'var:style|global|' );
+		};
+
+		/**
 		 * Get supported attribute value.
 		 *
 		 * @param string $support The supported attribute name. Dot-accessible.
 		 * @return string|null
 		 */
-		$get_attribute = function( $support ) use ( $block, $metadata ) {
+		$get_attribute = function( $support ) use ( $block, $metadata, $is_value_global_style, $get_global_style_css_var ) {
 			$array_get = function( array $var, $format ) {
 				foreach ( explode( '.', (string) $format ) as $key ) {
 					if ( ! isset( $var[ $key ] ) ) {
@@ -223,7 +277,10 @@ add_filter(
 			if ( is_null( $attribute ) ) {
 				$attribute = $array_get( $metadata->get_attributes()['unitone']['default'] ?? array(), $support ) ?? null;
 			}
-			return $attribute;
+
+			return $is_value_global_style( $attribute )
+				? $get_global_style_css_var( $attribute )
+				: $attribute;
 		};
 
 		/**

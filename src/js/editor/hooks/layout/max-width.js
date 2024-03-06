@@ -1,7 +1,19 @@
+import {
+	BaseControl,
+	Button,
+	TextControl,
+	__experimentalHStack as HStack,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
+
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
-import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { settings as settingsIcon } from '@wordpress/icons';
+
+import { getGlobalStyleCssVar, isValueGlobalStyle } from '../utils';
 
 export function hasMaxWidthValue( props ) {
 	const { name, attributes } = props;
@@ -66,30 +78,82 @@ export function MaxWidthEdit( props ) {
 			?.default?.maxWidth;
 	}, [] );
 
-	return (
-		<TextControl
-			label={ label }
-			value={ unitone?.maxWidth || '' }
-			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...unitone,
-					maxWidth: newValue || undefined,
-				};
-				if ( null == newUnitone.maxWidth ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.maxWidth;
-					} else {
-						newUnitone.maxWidth = '';
-					}
-				}
+	const [ showCustomValueControl, setShowCustomValueControl ] = useState(
+		! isValueGlobalStyle( unitone?.maxWidth )
+	);
 
-				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
-				} );
-			} }
-		/>
+	const onChangeMaxWidth = ( newValue ) => {
+		const newUnitone = {
+			...unitone,
+			maxWidth: newValue || undefined,
+		};
+		if ( null == newUnitone.maxWidth ) {
+			if ( null == defaultValue ) {
+				delete newUnitone.maxWidth;
+			} else {
+				newUnitone.maxWidth = '';
+			}
+		}
+
+		setAttributes( {
+			unitone: !! Object.keys( newUnitone ).length
+				? newUnitone
+				: undefined,
+		} );
+	};
+
+	return (
+		<BaseControl
+			className="unitone-width-control"
+			label={ label }
+			id="unitone-max-width-control"
+		>
+			<HStack>
+				{ ! showCustomValueControl ? (
+					<ToggleGroupControl
+						value={ unitone?.maxWidth || '' }
+						isBlock
+						onChange={ onChangeMaxWidth }
+					>
+						<ToggleGroupControlOption
+							value="var:style|global|wide-size"
+							label={ __( 'Wide', 'unitone' ) }
+						/>
+						<ToggleGroupControlOption
+							value="var:style|global|content-size"
+							label={ __( 'Content Width', 'unitone' ) }
+						/>
+					</ToggleGroupControl>
+				) : (
+					<TextControl
+						id="unitone-max-width-control"
+						value={ unitone?.maxWidth || '' }
+						onChange={ onChangeMaxWidth }
+					/>
+				) }
+
+				<Button
+					label={
+						showCustomValueControl
+							? __( 'Use size preset' )
+							: __( 'Set custom size' )
+					}
+					icon={ settingsIcon }
+					onClick={ () => {
+						onChangeMaxWidth(
+							! showCustomValueControl
+								? undefined
+								: 'var:style|global|wide-size'
+						);
+
+						setShowCustomValueControl( ! showCustomValueControl );
+					} }
+					isPressed={ showCustomValueControl }
+					size="small"
+					iconSize={ 24 }
+				/>
+			</HStack>
+		</BaseControl>
 	);
 }
 
@@ -124,7 +188,9 @@ export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 
 	extraProps.style = {
 		...extraProps.style,
-		'--unitone--max-width': attributes?.unitone?.maxWidth,
+		'--unitone--max-width': getGlobalStyleCssVar(
+			attributes?.unitone?.maxWidth
+		),
 	};
 
 	return extraProps;

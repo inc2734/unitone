@@ -114,11 +114,13 @@
 						{
 							"fontFamily": "Noto Sans JP",
 							"fontWeight": "400",
+							"fontStyle": "normal",
 							"src": [ "file:./dist/fonts/NotoSansJP-Regular.woff2" ]
 						},
 						{
 							"fontFamily": "Noto Sans JP",
 							"fontWeight": "700",
+							"fontStyle": "normal",
 							"src": [ "file:./dist/fonts/NotoSansJP-Bold.woff2" ]
 						}
 					]
@@ -131,11 +133,13 @@
 						{
 							"fontFamily": "Noto Serif JP",
 							"fontWeight": "400",
+							"fontStyle": "normal",
 							"src": [ "file:./dist/fonts/NotoSerifJP-Regular.woff2" ]
 						},
 						{
 							"fontFamily": "Noto Serif JP",
 							"fontWeight": "700",
+							"fontStyle": "normal",
 							"src": [ "file:./dist/fonts/NotoSerifJP-Bold.woff2" ]
 						}
 					]
@@ -148,11 +152,13 @@
 						{
 							"fontFamily": "BIZ UDPGothic",
 							"fontWeight": "400",
+							"fontStyle": "normal",
 							"src": [ "file:./dist/fonts/BIZUDPGothic-Regular.woff2" ]
 						},
 						{
 							"fontFamily": "BIZ UDPGothic",
 							"fontWeight": "700",
+							"fontStyle": "normal",
 							"src": [ "file:./dist/fonts/BIZUDPGothic-Bold.woff2" ]
 						}
 					]
@@ -165,11 +171,13 @@
 						{
 							"fontFamily": "BIZ UDPMincho",
 							"fontWeight": "400",
+							"fontStyle": "normal",
 							"src": [ "file:./dist/fonts/BIZUDPMincho-Regular.woff2" ]
 						},
 						{
 							"fontFamily": "BIZ UDPMincho",
 							"fontWeight": "700",
+							"fontStyle": "normal",
 							"src": [ "file:./dist/fonts/BIZUDPMincho-Bold.woff2" ]
 						}
 					]

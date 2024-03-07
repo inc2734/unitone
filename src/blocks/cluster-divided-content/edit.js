@@ -10,7 +10,7 @@ import { useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 
 export default function ( { attributes, setAttributes, clientId, context } ) {
-	const { tagName } = attributes;
+	const { tagName, templateLock } = attributes;
 
 	useEffect( () => {
 		setAttributes( {
@@ -40,7 +40,7 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 			'data-unitone-layout': 'cluster__content__content',
 		},
 		{
-			templateLock: false,
+			templateLock,
 			renderAppender: hasInnerBlocks
 				? InnerBlocks.DefaultBlockAppender
 				: InnerBlocks.ButtonBlockAppender,

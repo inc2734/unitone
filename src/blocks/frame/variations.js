@@ -12,6 +12,7 @@ export default [
 				{
 					id: 1,
 					url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+					lock: { move: true, remove: true },
 				},
 			],
 		],
@@ -37,6 +38,7 @@ export default [
 				{
 					id: 1,
 					src: `${ unitone.url }/dist/img/sample.mp4`,
+					lock: { move: true, remove: true },
 				},
 			],
 		],
@@ -56,7 +58,14 @@ export default [
 		name: 'framed-post-featured-image',
 		title: __( 'Framed post featured image', 'unitone' ),
 		scope: [ 'inserter' ],
-		innerBlocks: [ [ 'core/post-featured-image' ] ],
+		innerBlocks: [
+			[
+				'core/post-featured-image',
+				{
+					lock: { move: true, remove: true },
+				},
+			],
+		],
 		example: {
 			innerBlocks: [
 				{

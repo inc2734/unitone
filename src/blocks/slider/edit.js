@@ -111,6 +111,7 @@ export default function ( {
 		loop,
 		centeredSlides,
 		effect,
+		templateLock,
 	} = attributes;
 
 	const isDisplayArrows = arrows && ! ( autoplay && 0 === autoplayDelay );
@@ -189,7 +190,7 @@ export default function ( {
 			),
 		},
 		{
-			templateLock: false,
+			templateLock,
 			allowedBlocks: [ 'unitone/slide' ],
 			template: [ [ 'unitone/slide' ], [ 'unitone/slide' ] ],
 			renderAppender: false,

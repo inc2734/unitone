@@ -17,7 +17,7 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { tagName } = attributes;
+	const { tagName, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -31,6 +31,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+		templateLock,
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,

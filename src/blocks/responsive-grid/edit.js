@@ -22,7 +22,7 @@ import metadata from './block.json';
 import { stairsResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { columnMinWidth } = attributes;
+	const { columnMinWidth, templateLock } = attributes;
 
 	const { hasInnerBlocks, children } = useSelect(
 		( select ) => {
@@ -54,7 +54,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: false,
+		templateLock,
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,

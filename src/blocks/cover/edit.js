@@ -25,7 +25,7 @@ export default function ( { name, setAttributes, clientId } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: 'all',
+		templateLock: false,
 		allowedBlocks: [ 'unitone/cover-content' ],
 		renderAppender: false,
 	} );
@@ -81,7 +81,7 @@ function Placeholder( { clientId, name, setAttributes } ) {
 						);
 					}
 				} }
-				allowSkip
+				allowSkip={ false }
 			/>
 		</div>
 	);

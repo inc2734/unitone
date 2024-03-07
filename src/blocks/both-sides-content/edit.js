@@ -9,7 +9,7 @@ import {
 import { useSelect } from '@wordpress/data';
 
 export default function ( { attributes, clientId } ) {
-	const { contentWidth, contentMaxWidth } = attributes;
+	const { contentWidth, contentMaxWidth, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -30,7 +30,7 @@ export default function ( { attributes, clientId } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: false,
+		templateLock,
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,

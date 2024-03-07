@@ -50,6 +50,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		smRowsOption,
 		smRows,
 		smGridTemplateRows,
+		templateLock,
 	} = attributes;
 
 	const hasInnerBlocks = useSelect(
@@ -138,6 +139,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+		templateLock,
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,

@@ -10,7 +10,7 @@ import { useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 
 export default function ( { attributes, setAttributes, clientId, context } ) {
-	const { tagName } = attributes;
+	const { tagName, templateLock } = attributes;
 
 	useEffect( () => {
 		setAttributes( {
@@ -36,7 +36,7 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: false,
+		templateLock,
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,

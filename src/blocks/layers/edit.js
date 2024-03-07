@@ -29,7 +29,8 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { name, attributes, setAttributes, clientId } ) {
-	const { cover, fill, blur, portrait, columns, rows } = attributes;
+	const { cover, fill, blur, portrait, columns, rows, templateLock } =
+		attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -84,7 +85,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: false,
+		templateLock,
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,

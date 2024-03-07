@@ -22,7 +22,7 @@ import metadata from './block.json';
 import { dividersResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { tagName } = attributes;
+	const { tagName, templateLock } = attributes;
 
 	const { hasInnerBlocks, children } = useSelect(
 		( select ) => {
@@ -50,7 +50,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		orientation: 'horizontal',
-		templateLock: false,
+		templateLock,
 		allowedBlocks: [ 'unitone/cluster-divided-content' ],
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender

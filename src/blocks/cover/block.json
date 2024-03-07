@@ -5,12 +5,6 @@
 	"name": "unitone/cover",
 	"title": "Cover",
 	"description": "This block is designed to cover a large area of the screen.",
-	"attributes": {
-		"templateLock": {
-			"type": [ "string", "boolean" ],
-			"enum": [ "all", "insert", "contentOnly", false ]
-		}
-	},
 	"supports": {
 		"className": false,
 		"anchor": true,

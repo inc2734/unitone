@@ -25,7 +25,8 @@ import metadata from './block.json';
 import { verticalsResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { textOrientation, switchWritingMode, threshold } = attributes;
+	const { textOrientation, switchWritingMode, threshold, templateLock } =
+		attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) => {
@@ -62,7 +63,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			},
 		},
 		{
-			templateLock: false,
+			templateLock,
 			allowedBlocks: [
 				'core/heading',
 				'core/paragraph',

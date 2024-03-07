@@ -7,7 +7,12 @@ export default [
 		title: __( 'Cover (Top)', 'unitone' ),
 		isDefault: false,
 		scope: [ 'block' ],
-		innerBlocks: [ [ 'unitone/cover-content', { position: 'top' } ] ],
+		innerBlocks: [
+			[
+				'unitone/cover-content',
+				{ position: 'top', lock: { move: true } },
+			],
+		],
 		icon: (
 			<SVG
 				width="48"
@@ -28,7 +33,12 @@ export default [
 		title: __( 'Cover (Center)', 'unitone' ),
 		isDefault: true,
 		scope: [ 'block' ],
-		innerBlocks: [ [ 'unitone/cover-content', { position: 'center' } ] ],
+		innerBlocks: [
+			[
+				'unitone/cover-content',
+				{ position: 'center', lock: { move: true } },
+			],
+		],
 		icon: (
 			<SVG
 				width="48"
@@ -49,7 +59,12 @@ export default [
 		title: __( 'Cover (Bottom)', 'unitone' ),
 		isDefault: false,
 		scope: [ 'block' ],
-		innerBlocks: [ [ 'unitone/cover-content', { position: 'bottom' } ] ],
+		innerBlocks: [
+			[
+				'unitone/cover-content',
+				{ position: 'bottom', lock: { move: true } },
+			],
+		],
 		icon: (
 			<SVG
 				width="48"
@@ -71,8 +86,14 @@ export default [
 		isDefault: false,
 		scope: [ 'block' ],
 		innerBlocks: [
-			[ 'unitone/cover-content', { position: 'top' } ],
-			[ 'unitone/cover-content', { position: 'center' } ],
+			[
+				'unitone/cover-content',
+				{ position: 'top', lock: { move: true } },
+			],
+			[
+				'unitone/cover-content',
+				{ position: 'center', lock: { move: true } },
+			],
 		],
 		icon: (
 			<SVG
@@ -99,8 +120,14 @@ export default [
 		isDefault: false,
 		scope: [ 'block' ],
 		innerBlocks: [
-			[ 'unitone/cover-content', { position: 'top' } ],
-			[ 'unitone/cover-content', { position: 'bottom' } ],
+			[
+				'unitone/cover-content',
+				{ position: 'top', lock: { move: true } },
+			],
+			[
+				'unitone/cover-content',
+				{ position: 'bottom', lock: { move: true } },
+			],
 		],
 		icon: (
 			<SVG
@@ -128,8 +155,14 @@ export default [
 		isDefault: false,
 		scope: [ 'block' ],
 		innerBlocks: [
-			[ 'unitone/cover-content', { position: 'center' } ],
-			[ 'unitone/cover-content', { position: 'bottom' } ],
+			[
+				'unitone/cover-content',
+				{ position: 'center', lock: { move: true } },
+			],
+			[
+				'unitone/cover-content',
+				{ position: 'bottom', lock: { move: true } },
+			],
 		],
 		icon: (
 			<SVG
@@ -157,9 +190,18 @@ export default [
 		isDefault: false,
 		scope: [ 'block' ],
 		innerBlocks: [
-			[ 'unitone/cover-content', { position: 'top' } ],
-			[ 'unitone/cover-content', { position: 'center' } ],
-			[ 'unitone/cover-content', { position: 'bottom' } ],
+			[
+				'unitone/cover-content',
+				{ position: 'top', lock: { move: true } },
+			],
+			[
+				'unitone/cover-content',
+				{ position: 'center', lock: { move: true } },
+			],
+			[
+				'unitone/cover-content',
+				{ position: 'bottom', lock: { move: true } },
+			],
 		],
 		icon: (
 			<SVG

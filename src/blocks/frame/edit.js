@@ -18,7 +18,7 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes } ) {
-	const { ratio, switchRatio } = attributes;
+	const { ratio, switchRatio, templateLock } = attributes;
 
 	const blockProps = useBlockProps( {
 		style: {
@@ -34,7 +34,7 @@ export default function ( { attributes, setAttributes } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: 'all',
+		templateLock,
 		allowedBlocks: [
 			'core/image',
 			'core/video',

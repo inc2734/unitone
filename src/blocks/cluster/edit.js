@@ -8,7 +8,9 @@ import {
 
 import { useSelect } from '@wordpress/data';
 
-export default function ( { clientId } ) {
+export default function ( { attributes, clientId } ) {
+	const { templateLock } = attributes;
+
 	const hasInnerBlocks = useSelect(
 		( select ) =>
 			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
@@ -24,7 +26,7 @@ export default function ( { clientId } ) {
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		orientation: 'horizontal',
-		templateLock: false,
+		templateLock,
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,

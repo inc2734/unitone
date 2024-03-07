@@ -24,7 +24,7 @@ export default function ( {
 	clientId,
 	__unstableLayoutClassNames: layoutClassNames,
 } ) {
-	const { center, column, unitone } = attributes;
+	const { center, column, unitone, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -45,7 +45,7 @@ export default function ( {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: false,
+		templateLock,
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender
 			: InnerBlocks.ButtonBlockAppender,

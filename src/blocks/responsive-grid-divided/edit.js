@@ -23,7 +23,7 @@ import metadata from './block.json';
 import { dividersResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { tagName, columnMinWidth } = attributes;
+	const { tagName, columnMinWidth, templateLock } = attributes;
 
 	const { hasInnerBlocks, children } = useSelect(
 		( select ) => {
@@ -55,7 +55,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: false,
+		templateLock,
 		allowedBlocks: [ 'unitone/responsive-grid-divided-content' ],
 		renderAppender: hasInnerBlocks
 			? InnerBlocks.DefaultBlockAppender

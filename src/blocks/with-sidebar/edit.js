@@ -22,7 +22,8 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { sidebarWidth, contentMinWidth, revert, sidebar } = attributes;
+	const { sidebarWidth, contentMinWidth, revert, sidebar, templateLock } =
+		attributes;
 
 	const { updateBlockAttributes } = useDispatch( blockEditorStore );
 	const { getBlockOrder } = useSelect(
@@ -58,10 +59,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: 'all',
+		templateLock,
 		template: [
-			[ 'unitone/with-sidebar-content', { type: 'main' } ],
-			[ 'unitone/with-sidebar-content', { type: 'aside' } ],
+			[
+				'unitone/with-sidebar-content',
+				{ type: 'main', lock: { move: true, remove: true } },
+			],
+			[
+				'unitone/with-sidebar-content',
+				{ type: 'aside', lock: { move: true, remove: true } },
+			],
 		],
 	} );
 

@@ -35,6 +35,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		aWidth,
 		borderColor,
 		style,
+		templateLock,
 	} = attributes;
 
 	const hasInnerBlocks = useSelect(
@@ -62,7 +63,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			className: 'unitone-accordion__detail',
 		},
 		{
-			templateLock: false,
+			templateLock,
 			renderAppender: hasInnerBlocks
 				? InnerBlocks.DefaultBlockAppender
 				: InnerBlocks.ButtonBlockAppender,

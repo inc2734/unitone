@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-03-06T16:42:55+00:00\n"
-"PO-Revision-Date: 2024-03-07 01:43+0900\n"
+"POT-Creation-Date: 2024-03-09T06:02:35+00:00\n"
+"PO-Revision-Date: 2024-03-09 15:02+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2595,6 +2595,10 @@ msgid ""
 msgstr ""
 "例えば、%1$s1 / -2%2$s（1番目のグリッド線から、最後から2番目のグリッド線まで"
 "を埋める）のように入力します。"
+
+#: dist/js/editor/editor.js:5
+msgid "Apply to the block with the upper overlap order."
+msgstr "重なり順が上のブロックに適用します。"
 
 #: dist/js/editor/editor.js:5
 msgid "Layer"

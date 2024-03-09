@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 const mixBlendModeOptions = [
 	{
@@ -130,6 +131,10 @@ export function MixBlendModeEdit( props ) {
 	return (
 		<SelectControl
 			label={ label }
+			help={ __(
+				'Apply to the block with the upper overlap order.',
+				'unitone'
+			) }
 			options={ mixBlendModeOptions }
 			value={ unitone?.mixBlendMode }
 			onChange={ ( newAttribute ) => {

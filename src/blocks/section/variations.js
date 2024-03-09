@@ -1,10 +1,10 @@
 import { sprintf, __ } from '@wordpress/i18n';
 
-import IconUnitone from './icon/default';
-import IconCentedTitle from './icon/centered-title';
-import IconCentedTitleSubtitle from './icon/centered-title-subtitle';
-import IconLeftTitle from './icon/left-title';
-import IconLeftTitleSubtitle from './icon/left-title-subtitle';
+import icon from './icon';
+import iconCentedTitle from './icon/centered-title';
+import iconCentedTitleSubtitle from './icon/centered-title-subtitle';
+import iconLeftTitle from './icon/left-title';
+import iconLeftTitleSubtitle from './icon/left-title-subtitle';
 
 export default [
 	{
@@ -12,7 +12,9 @@ export default [
 		isDefault: true,
 		title: __( 'Default', 'unitone' ),
 		scope: [ 'block' ],
-		icon: <IconUnitone />,
+		icon: {
+			src: icon,
+		},
 		attributes: {
 			align: 'full',
 		},
@@ -26,7 +28,9 @@ export default [
 		),
 		scope: [ 'block', 'inserter' ],
 		category: 'unitone/section',
-		icon: <IconCentedTitle />,
+		icon: {
+			src: iconCentedTitle,
+		},
 		attributes: {
 			align: 'full',
 		},
@@ -124,7 +128,9 @@ export default [
 		),
 		scope: [ 'block', 'inserter' ],
 		category: 'unitone/section',
-		icon: <IconCentedTitleSubtitle />,
+		icon: {
+			src: iconCentedTitleSubtitle,
+		},
 		attributes: {
 			align: 'full',
 		},
@@ -276,7 +282,9 @@ export default [
 		),
 		scope: [ 'block', 'inserter' ],
 		category: 'unitone/section',
-		icon: <IconLeftTitle />,
+		icon: {
+			src: iconLeftTitle,
+		},
 		attributes: {
 			align: 'full',
 		},
@@ -354,7 +362,9 @@ export default [
 		),
 		scope: [ 'block', 'inserter' ],
 		category: 'unitone/section',
-		icon: <IconLeftTitleSubtitle />,
+		icon: {
+			src: iconLeftTitleSubtitle,
+		},
 		attributes: {
 			align: 'full',
 		},

@@ -6,7 +6,7 @@ import { addFilter } from '@wordpress/hooks';
 
 import './style.scss';
 
-import icon from '../icon';
+import icon from './icon';
 import edit from './edit';
 import save from './save';
 import transforms from './transforms';

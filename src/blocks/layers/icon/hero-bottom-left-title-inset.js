@@ -1,58 +1,14 @@
-import { Icon } from '@wordpress/components';
-
-export default function () {
-	return (
-		<Icon
-			height="48px"
-			width="48px"
-			icon={
-				<svg
-					width="48"
-					height="48"
-					viewBox="0 0 48 48"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<rect
-						width="48"
-						height="30"
-						transform="matrix(1 0 0 -1 0 39)"
-						fill="#DDDDDD"
-					/>
-					<line
-						y1="-1"
-						x2="22"
-						y2="-1"
-						transform="matrix(1 0 0 -1 3 34)"
-						stroke="#AAAAAA"
-						strokeWidth="2"
-					/>
-					<line
-						y1="-1"
-						x2="18"
-						y2="-1"
-						transform="matrix(1 0 0 -1 3 30)"
-						stroke="#AAAAAA"
-						strokeWidth="2"
-					/>
-					<line
-						y1="-1"
-						x2="16"
-						y2="-1"
-						transform="matrix(1 0 0 -1 3 26)"
-						stroke="#AAAAAA"
-						strokeWidth="2"
-					/>
-					<line
-						y1="-1"
-						x2="20"
-						y2="-1"
-						transform="matrix(1 0 0 -1 3 22)"
-						stroke="#AAAAAA"
-						strokeWidth="2"
-					/>
-				</svg>
-			}
-		/>
-	);
-}
+export default (
+	<svg
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		aria-hidden="true"
+		focusable="false"
+	>
+		<rect y="3" width="24" height="18" fill="#DDDDDD" />
+		<line x1="3" y1="11.5" x2="15" y2="11.5" stroke="#040000" />
+		<line x1="3" y1="14.5" x2="10.2" y2="14.5" stroke="#040000" />
+		<line x1="3" y1="17.5" x2="12.6" y2="17.5" stroke="#040000" />
+	</svg>
+);

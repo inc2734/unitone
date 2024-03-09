@@ -4,7 +4,7 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 
-import icon from '../icon';
+import icon from './icon';
 import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';

@@ -1,23 +1,28 @@
 import { sprintf, __, _x } from '@wordpress/i18n';
 
-import IconUnitone from './icon/default';
-import IconHeroTopLeftTitle from './icon/hero-top-left-title';
-import IconHeroTopRightTitle from './icon/hero-top-right-title';
-import IconHeroBottomLeftTitle from './icon/hero-bottom-left-title';
-import IconHeroBottomRightTitle from './icon/hero-bottom-right-title';
-import IconHeroBottomLeftTitleInside from './icon/hero-bottom-left-title-inside';
-import IconHeroBottomRightTitleInside from './icon/hero-bottom-right-title-inside';
-import IconHeroBottomLeftTitleInset from './icon/hero-bottom-left-title-inset';
-import IconHeroBottomRightTitleInset from './icon/hero-bottom-right-title-inset';
-import IconSectionBackgroundImageCenteredTitle from './icon/section-background-image-centered-title';
-import IconSectionBackgroundImageCenteredTitleSubtitle from './icon/section-background-image-centered-title-subtitle';
-import IconSectionBackgroundImageLeftTitle from './icon/section-background-image-left-title';
-import IconSectionBackgroundImageLeftTitleSubtitle from './icon/section-background-image-left-title-subtitle';
+import icon from './icon';
+import iconBackgroundImage from './icon/background-image';
+import iconBackgroundFramedImage from './icon/background-framed-image';
+import iconHeroTopLeftTitle from './icon/hero-top-left-title';
+import iconHeroTopRightTitle from './icon/hero-top-right-title';
+import iconHeroBottomLeftTitle from './icon/hero-bottom-left-title';
+import iconHeroBottomRightTitle from './icon/hero-bottom-right-title';
+import iconHeroBottomLeftTitleInside from './icon/hero-bottom-left-title-inside';
+import iconHeroBottomRightTitleInside from './icon/hero-bottom-right-title-inside';
+import iconHeroBottomLeftTitleInset from './icon/hero-bottom-left-title-inset';
+import iconHeroBottomRightTitleInset from './icon/hero-bottom-right-title-inset';
+import iconSectionBackgroundImageCenteredTitle from './icon/section-background-image-centered-title';
+import iconSectionBackgroundImageCenteredTitleSubtitle from './icon/section-background-image-centered-title-subtitle';
+import iconSectionBackgroundImageLeftTitle from './icon/section-background-image-left-title';
+import iconSectionBackgroundImageLeftTitleSubtitle from './icon/section-background-image-left-title-subtitle';
 
 export default [
 	{
 		name: 'background-image',
 		title: __( 'Background image', 'unitone' ),
+		icon: {
+			src: iconBackgroundImage,
+		},
 		scope: [ 'inserter' ],
 		attribuets: {
 			cover: true,
@@ -72,6 +77,9 @@ export default [
 	{
 		name: 'background-framed-image',
 		title: __( 'Background framed image', 'unitone' ),
+		icon: {
+			src: iconBackgroundFramedImage,
+		},
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			{
@@ -132,7 +140,9 @@ export default [
 		isDefault: true,
 		title: __( 'Default', 'unitone' ),
 		scope: [ 'block' ],
-		icon: <IconUnitone />,
+		icon: {
+			src: icon,
+		},
 		attributes: {
 			dummy: true,
 		},
@@ -145,7 +155,9 @@ export default [
 			__( 'Top / Left', 'unitone' )
 		),
 		scope: [ 'block' ],
-		icon: <IconHeroTopLeftTitle />,
+		icon: {
+			src: iconHeroTopLeftTitle,
+		},
 		attributes: {
 			align: 'wide',
 			textColor: 'unitone-text',
@@ -203,7 +215,9 @@ export default [
 			__( 'Top / Right', 'unitone' )
 		),
 		scope: [ 'block' ],
-		icon: <IconHeroTopRightTitle />,
+		icon: {
+			src: iconHeroTopRightTitle,
+		},
 		attributes: {
 			align: 'wide',
 			textColor: 'unitone-text',
@@ -262,7 +276,9 @@ export default [
 			__( 'Bottom / Left', 'unitone' )
 		),
 		scope: [ 'block' ],
-		icon: <IconHeroBottomLeftTitle />,
+		icon: {
+			src: iconHeroBottomLeftTitle,
+		},
 		attributes: {
 			align: 'wide',
 			textColor: 'unitone-text',
@@ -320,7 +336,9 @@ export default [
 			__( 'Bottom / Right', 'unitone' )
 		),
 		scope: [ 'block' ],
-		icon: <IconHeroBottomRightTitle />,
+		icon: {
+			src: iconHeroBottomRightTitle,
+		},
 		attributes: {
 			align: 'wide',
 			textColor: 'unitone-text',
@@ -379,7 +397,9 @@ export default [
 			__( 'Bottom / Left', 'unitone' )
 		),
 		scope: [ 'block' ],
-		icon: <IconHeroBottomLeftTitleInside />,
+		icon: {
+			src: iconHeroBottomLeftTitleInside,
+		},
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -435,7 +455,9 @@ export default [
 			__( 'Bottom / Right', 'unitone' )
 		),
 		scope: [ 'block' ],
-		icon: <IconHeroBottomRightTitleInside />,
+		icon: {
+			src: iconHeroBottomRightTitleInside,
+		},
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -491,7 +513,9 @@ export default [
 			__( 'Bottom / Left', 'unitone' )
 		),
 		scope: [ 'block' ],
-		icon: <IconHeroBottomLeftTitleInset />,
+		icon: {
+			src: iconHeroBottomLeftTitleInset,
+		},
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -557,7 +581,9 @@ export default [
 			__( 'Bottom / Right', 'unitone' )
 		),
 		scope: [ 'block' ],
-		icon: <IconHeroBottomRightTitleInset />,
+		icon: {
+			src: iconHeroBottomRightTitleInset,
+		},
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -626,7 +652,9 @@ export default [
 		keywords: [ _x( 'section', 'block keywords', 'unitone' ) ],
 		scope: [ 'inserter' ],
 		category: 'unitone/section',
-		icon: <IconSectionBackgroundImageCenteredTitle />,
+		icon: {
+			src: iconSectionBackgroundImageCenteredTitle,
+		},
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -757,7 +785,9 @@ export default [
 		keywords: [ _x( 'section', 'block keywords', 'unitone' ) ],
 		scope: [ 'inserter' ],
 		category: 'unitone/section',
-		icon: <IconSectionBackgroundImageCenteredTitleSubtitle />,
+		icon: {
+			src: iconSectionBackgroundImageCenteredTitleSubtitle,
+		},
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -940,7 +970,9 @@ export default [
 		keywords: [ _x( 'section', 'block keywords', 'unitone' ) ],
 		scope: [ 'inserter' ],
 		category: 'unitone/section',
-		icon: <IconSectionBackgroundImageLeftTitle />,
+		icon: {
+			src: iconSectionBackgroundImageLeftTitle,
+		},
 		attributes: {
 			align: 'full',
 			cover: true,
@@ -1045,7 +1077,9 @@ export default [
 		keywords: [ _x( 'section', 'block keywords', 'unitone' ) ],
 		scope: [ 'inserter' ],
 		category: 'unitone/section',
-		icon: <IconSectionBackgroundImageLeftTitleSubtitle />,
+		icon: {
+			src: iconSectionBackgroundImageLeftTitleSubtitle,
+		},
 		attributes: {
 			align: 'full',
 			cover: true,

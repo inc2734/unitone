@@ -84,7 +84,8 @@
 		"zip:archive": "zip -9 -qmr unitone.zip unitone",
 		"zip": "npm run zip:pack && wp-env start && npm run composer install -- --no-dev -d unitone && npm run zip:archive",
 		"make-pot": "wp-env start && npm run wp i18n -- make-pot . ./languages/unitone.pot --exclude=.*,src",
-		"make-json": "rimraf languages/*.json && wp-env start && npm run wp i18n -- make-json ./languages/unitone-ja.po --no-purge"
+		"make-json": "rimraf languages/*.json && wp-env start && npm run wp i18n -- make-json ./languages/unitone-ja.po --no-purge",
+		"make-php": "npm run cli php -- wp-content/themes/unitone/bin/l10n.php"
 	},
 	"dependencies": {
 		"remove-accents": "^0.5.0",

@@ -31,7 +31,7 @@ function enqueue_typography_styles() {
 	);
 	$font_family       = false !== $font_family_index
 		? $global_settings['typography']['fontFamilies']['theme'][ $font_family_index ]['fontFamily']
-		: 'sans-serif';
+		: '"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif';
 
 	$stylesheet = sprintf(
 		':root {

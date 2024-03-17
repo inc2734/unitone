@@ -104,7 +104,7 @@
 				{
 					"name": "Sans serif",
 					"slug": "sans-serif",
-					"fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'ヒラギノ角ゴ W3', sans-serif"
+					"fontFamily": "'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'BIZ UDPGothic', Meiryo, sans-serif"
 				},
 				{
 					"name": "Noto Sans JP",
@@ -281,15 +281,7 @@
 			]
 		},
 		"blocks": {
-			"core/columns": {
-				"layout": {
-					"allowEditing": false
-				}
-			},
 			"core/post-template": {
-				"layout": {
-					"allowEditing": false
-				},
 				"spacing": {
 					"blockGap": false
 				}

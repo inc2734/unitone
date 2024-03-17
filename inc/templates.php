@@ -7,20 +7,23 @@
 
 /**
  * If the front page is not used, front-page.html should not be used.
+ *
+ * @param array $query_result Array of found block templates.
+ * @return array
  */
-function unitone_hidden_front_page_template_on_blog( $templates ) {
+function unitone_hidden_front_page_template_on_blog( $query_result ) {
 	$show_on_front = get_option( 'show_on_front' );
 	$page_on_front = get_option( 'page_on_front' );
 	$page_template = get_post_meta( $page_on_front, '_wp_page_template', true );
 
 	if ( 'page' !== $show_on_front || ! $page_on_front || ( $page_template && 'default' !== $page_template ) ) {
-		foreach ( $templates as $index => $template ) {
+		foreach ( $query_result as $index => $template ) {
 			if ( 'front-page' === $template->slug ) {
-				unset( $templates[ $index ] );
+				unset( $query_result[ $index ] );
 			}
 		}
 	}
-	return $templates;
+	return $query_result;
 }
 add_filter( 'get_block_templates', 'unitone_hidden_front_page_template_on_blog' );
 
@@ -40,7 +43,7 @@ function unitone_display_deprecated_parts() {
 		ABSPATH . WPINC . '/blocks/template-part',
 		array(
 			'variations'      => build_template_part_block_variations(),
-			'render_callback' => function( $attributes ) {
+			'render_callback' => function ( $attributes ) {
 				$template_part_id = null;
 				$content          = null;
 				$area             = WP_TEMPLATE_PART_AREA_UNCATEGORIZED;
@@ -75,7 +78,7 @@ add_action( 'init', 'unitone_display_deprecated_parts' );
  */
 add_filter(
 	'get_block_templates',
-	function( $query_result ) {
+	function ( $query_result ) {
 		$new_query_result = array();
 		foreach ( $query_result as $result ) {
 			if ( 0 === strpos( $result->slug, 'deprecated/' ) ) {
@@ -89,8 +92,11 @@ add_filter(
 
 /**
  * Backward compatibility support by rearranging custom page templates.
+ *
+ * @param array|null $block_templates Return an array of block templates to short-circuit the default query, or null to allow WP to run its normal queries.
+ * @return array
  */
-function unitone_fallback_deprecated_custom_page_templates( $query_result ) {
+function unitone_fallback_deprecated_custom_page_templates( $block_templates ) {
 	if ( is_page() || is_singular( 'post' ) || is_singular( 'product' ) ) {
 		$_wp_page_template = get_post_meta( get_the_ID(), '_wp_page_template', true );
 
@@ -179,7 +185,7 @@ function unitone_fallback_deprecated_custom_page_templates( $query_result ) {
 		}
 	}
 
-		return $query_result;
+	return $block_templates;
 }
 add_filter( 'pre_get_block_templates', 'unitone_fallback_deprecated_custom_page_templates' );
 
@@ -189,6 +195,9 @@ add_filter( 'pre_get_block_templates', 'unitone_fallback_deprecated_custom_page_
  * However, it is not reflected on the editor.
  *
  * @see https://github.com/inc2734/unitone/issues/217
+ *
+ * @param string $template The path of the template to include.
+ * @return string
  */
 function unitone_display_deprecated_parts_for_template( $template ) {
 	global $_wp_current_template_id, $_wp_current_template_content;
@@ -196,12 +205,12 @@ function unitone_display_deprecated_parts_for_template( $template ) {
 	$template_object      = get_block_template( $_wp_current_template_id, 'wp_template' );
 	$template_part_object = get_block_template( $_wp_current_template_id, 'wp_template_part' );
 
-	// When the template is customized
+	// When the template is customized.
 	if ( $template_object && $template_object->is_custom || ! empty( $template_object->modified ) ) {
 		return $template;
 	}
 
-	// When the template part are not customized
+	// When the template part are not customized.
 	if ( ! $template_part_object || ! $template_part_object->is_custom ) {
 		return $template;
 	}

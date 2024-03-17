@@ -556,7 +556,7 @@ add_filter( 'wp_theme_json_data_theme', 'unitone_set_color_palette' );
  */
 add_filter(
 	'wp_theme_json_data_user',
-	function( $theme_json ) {
+	function ( $theme_json ) {
 		$data = $theme_json->get_data();
 		if ( isset( $data['styles']['color'] ) && is_array( $data['styles']['color'] ) ) {
 			foreach ( $data['styles']['color'] as $key => $value ) {

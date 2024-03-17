@@ -5,7 +5,7 @@
  * @license GPL-2.0+
  */
 
-use \Unitone\App\Controller\Manager\Manager;
+use Unitone\App\Controller\Manager\Manager;
 
 /**
  * Get remote block pattern categories.
@@ -89,7 +89,7 @@ function _unitone_get_remote_block_patterns( $url ) {
 		);
 
 		$patterns[ $key ]['content'] = preg_replace_callback(
-			'@' . untrailingslashit( preg_quote( get_template_directory_uri() ) ) . '[^"\']+?\.(?:jpg|jpeg|png|gif|svg)@ims',
+			'@' . preg_quote( untrailingslashit( get_template_directory_uri() ) ) . '[^"\']+?\.(?:jpg|jpeg|png|gif|svg)@ims',
 			function ( $matches ) {
 				$file_url  = $matches[0];
 				$file_path = str_replace( get_template_directory_uri(), get_template_directory(), $file_url );
@@ -139,10 +139,9 @@ function unitone_get_premium_remote_block_pattens() {
  * This requires a valid license key.
  */
 function unitone_register_remote_block_patterns() {
-	if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
-		if ( false !== strpos( $_SERVER['REQUEST_URI'], 'wp-json/unitone-license-manager' ) ) {
-			return;
-		}
+	$request_uri = filter_input( INPUT_SERVER, 'REQUEST_URI' );
+	if ( $request_uri && false !== strpos( $request_uri, 'wp-json/unitone-license-manager' ) ) {
+		return;
 	}
 
 	$transient = get_transient( 'unitone-remote-pattern-categories' );

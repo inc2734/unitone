@@ -11,7 +11,7 @@
 if ( ! class_exists( 'woocommerce' ) ) {
 	add_filter(
 		'get_block_templates',
-		function( $templates ) {
+		function ( $templates ) {
 			$templates_for_woocommere = array(
 				'archive-product',
 				'order-confirmation',
@@ -47,7 +47,7 @@ if ( ! class_exists( 'woocommerce' ) ) {
  */
 add_action(
 	'after_setup_theme',
-	function() {
+	function () {
 		add_theme_support( 'woocommerce' );
 		add_theme_support( 'wc-product-gallery-zoom' );
 		add_theme_support( 'wc-product-gallery-lightbox' );

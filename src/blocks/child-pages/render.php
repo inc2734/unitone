@@ -5,7 +5,7 @@
  * @license GPL-2.0+
  */
 
-include_once( __DIR__ . '/lib.php' );
+require_once __DIR__ . '/lib.php';
 
 $parent_id      = false;
 $current_id     = get_the_ID();
@@ -21,8 +21,8 @@ if ( ! $parent_id ) {
 	return;
 }
 
-$wp_query = unitone_get_child_pages_query( $parent_id, $current_id );
-if ( empty( $wp_query ) || ! $wp_query->have_posts() ) {
+$the_query = unitone_get_child_pages_query( $parent_id, $current_id );
+if ( empty( $the_query ) || ! $the_query->have_posts() ) {
 	return;
 }
 
@@ -40,12 +40,12 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 	)
 );
 ?>
-<div <?php echo $block_wrapper_attributes; ?>>
+<div <?php echo wp_kses_data( $block_wrapper_attributes ); ?>>
 	<?php
 	ob_start();
-	include( $template );
+	require $template;
 	$html = preg_replace( '/[\r\n\t]+/', ' ', ob_get_clean() );
 	$html = str_replace( '> </', '></', $html );
-	echo apply_filters( 'unitone_child_pages', $html, $wp_query, $attributes );
+	echo apply_filters( 'unitone_child_pages', $html, $the_query, $attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	?>
 </div>

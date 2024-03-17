@@ -11,7 +11,7 @@
 if ( ! class_exists( 'bbpress' ) ) {
 	add_filter(
 		'get_block_templates',
-		function( $templates ) {
+		function ( $templates ) {
 			$templates_for_woocommere = array(
 				'bbpress',
 			);
@@ -36,8 +36,7 @@ if ( ! class_exists( 'bbPress' ) ) {
  */
 add_filter(
 	'bbp_template_include',
-	function( $template ) {
-
+	function () {
 		if (
 			bbp_is_forum_archive() ||
 			bbp_is_topic_archive() ||
@@ -47,7 +46,7 @@ add_filter(
 		) {
 			add_filter(
 				'the_content',
-				function() {
+				function () {
 					global $post;
 
 					return $post->post_content;
@@ -69,7 +68,7 @@ add_filter(
  */
 add_filter(
 	'pre_get_block_templates',
-	function( $query_result ) {
+	function ( $query_result ) {
 		if ( is_bbpress() ) {
 			return array(
 				get_block_template( 'unitone//bbpress' ),

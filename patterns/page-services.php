@@ -10,7 +10,7 @@
 <!-- wp:unitone/layers {"cover":true,"align":"full","unitone":{"minHeight":"70vmin"}} -->
 <div data-unitone-layout="layers -cover -portrait" class="alignfull">
 	<!-- wp:image -->
-	<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/building-architecture-sky2096.jpg" alt=""/></figure>
+	<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/building-architecture-sky2096.jpg" alt=""/></figure>
 	<!-- /wp:image -->
 
 	<!-- wp:unitone/decorator {"unitone":{"position":{"position":"relative"},"overflow":"visible","alignSelf":"end","justifySelf":"start","gridColumn":"1 / -1","gridRow":"1 / -1","padding":"1"}} -->
@@ -246,7 +246,7 @@
 														<!-- wp:unitone/with-sidebar-content {"type":"aside"} -->
 														<div data-unitone-layout="with-sidebar__content">
 															<!-- wp:image {"width":48,"aspectRatio":"1","scale":"cover","linkDestination":"none","className":"is-style-rounded"} -->
-															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/person-1.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
+															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/person-1.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
 															<!-- /wp:image -->
 														</div>
 														<!-- /wp:unitone/with-sidebar-content -->
@@ -294,7 +294,7 @@
 														<!-- wp:unitone/with-sidebar-content {"type":"aside"} -->
 														<div data-unitone-layout="with-sidebar__content">
 															<!-- wp:image {"width":48,"aspectRatio":"1","scale":"cover","linkDestination":"none","className":"is-style-rounded"} -->
-															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/person-2.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
+															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/person-2.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
 															<!-- /wp:image -->
 														</div>
 														<!-- /wp:unitone/with-sidebar-content -->
@@ -342,7 +342,7 @@
 														<!-- wp:unitone/with-sidebar-content {"type":"aside"} -->
 														<div data-unitone-layout="with-sidebar__content">
 															<!-- wp:image {"width":48,"aspectRatio":"1","scale":"cover","linkDestination":"none","className":"is-style-rounded"} -->
-															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/person-3.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
+															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/person-3.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
 															<!-- /wp:image -->
 														</div>
 														<!-- /wp:unitone/with-sidebar-content -->
@@ -390,7 +390,7 @@
 														<!-- wp:unitone/with-sidebar-content {"type":"aside"} -->
 														<div data-unitone-layout="with-sidebar__content">
 															<!-- wp:image {"width":48,"aspectRatio":"1","scale":"cover","linkDestination":"none","className":"is-style-rounded"} -->
-															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/person-4.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
+															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/person-4.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
 															<!-- /wp:image -->
 														</div>
 														<!-- /wp:unitone/with-sidebar-content -->
@@ -438,7 +438,7 @@
 														<!-- wp:unitone/with-sidebar-content {"type":"aside"} -->
 														<div data-unitone-layout="with-sidebar__content">
 															<!-- wp:image {"width":48,"aspectRatio":"1","scale":"cover","linkDestination":"none","className":"is-style-rounded"} -->
-															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/person-1.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
+															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/person-1.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
 															<!-- /wp:image -->
 														</div>
 														<!-- /wp:unitone/with-sidebar-content -->
@@ -486,7 +486,7 @@
 														<!-- wp:unitone/with-sidebar-content {"type":"aside"} -->
 														<div data-unitone-layout="with-sidebar__content">
 															<!-- wp:image {"width":48,"aspectRatio":"1","scale":"cover","linkDestination":"none","className":"is-style-rounded"} -->
-															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/person-2.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
+															<figure class="wp-block-image is-resized is-style-rounded"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/person-2.png" alt="" style="aspect-ratio:1;object-fit:cover;width:48px" width="48"/></figure>
 															<!-- /wp:image -->
 														</div>
 														<!-- /wp:unitone/with-sidebar-content -->
@@ -543,35 +543,35 @@
 					<!-- wp:unitone/cluster {"unitone":{"alignItems":"center","justifyContent":"center","gap":"3"}} -->
 					<div data-unitone-layout="cluster">
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-monkey-wrench.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-monkey-wrench.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-monkey-wrench.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-monkey-wrench.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 					</div>
 					<!-- /wp:unitone/cluster -->

@@ -12,7 +12,7 @@
 	<!-- wp:unitone/layers {"cover":true,"rows":12,"align":"full","unitone":{"gap":"0","minHeight":"max(90vmin, 700px)"}} -->
 	<div style="--unitone--rows:12" data-unitone-layout="layers -cover -portrait" class="alignfull">
 		<!-- wp:image {"id":1,"unitone":{"alignSelf":"auto","justifySelf":"auto","gridColumn":"1 / -1","gridRow":"3 / -1"}} -->
-		<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_dbhiosa9cb.jpg" alt="" class="wp-image-1"/></figure>
+		<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/stocksnap_dbhiosa9cb.jpg" alt="" class="wp-image-1"/></figure>
 		<!-- /wp:image -->
 		<!-- wp:unitone/gutters {"unitone":{"alignSelf":"auto","justifySelf":"auto","gridColumn":"1 / -1","gridRow":"1 / -1","padding":"2"}} -->
 		<div data-unitone-layout="gutters">
@@ -70,7 +70,7 @@
 										<!-- wp:unitone/frame -->
 										<div data-unitone-layout="frame" style="--unitone--ratio:16/9">
 											<!-- wp:image {"id":1} -->
-											<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
+											<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
 											<!-- /wp:image -->
 										</div>
 										<!-- /wp:unitone/frame -->
@@ -81,7 +81,7 @@
 										<!-- wp:unitone/frame -->
 										<div data-unitone-layout="frame" style="--unitone--ratio:16/9">
 											<!-- wp:image {"id":1} -->
-											<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_ydxj69toal.jpg" alt="" class="wp-image-1"/></figure>
+											<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/stocksnap_ydxj69toal.jpg" alt="" class="wp-image-1"/></figure>
 											<!-- /wp:image -->
 										</div>
 										<!-- /wp:unitone/frame -->
@@ -92,7 +92,7 @@
 										<!-- wp:unitone/frame -->
 										<div data-unitone-layout="frame" style="--unitone--ratio:16/9">
 											<!-- wp:image {"id":1} -->
-											<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_wrn48fo5mr.jpg" alt="" class="wp-image-1"/></figure>
+											<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/stocksnap_wrn48fo5mr.jpg" alt="" class="wp-image-1"/></figure>
 											<!-- /wp:image -->
 										</div>
 										<!-- /wp:unitone/frame -->
@@ -103,7 +103,7 @@
 										<!-- wp:unitone/frame -->
 										<div data-unitone-layout="frame" style="--unitone--ratio:16/9">
 											<!-- wp:image {"id":1} -->
-											<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" class="wp-image-1"/></figure>
+											<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" class="wp-image-1"/></figure>
 											<!-- /wp:image -->
 										</div>
 										<!-- /wp:unitone/frame -->
@@ -124,7 +124,7 @@
 <!-- wp:unitone/layers {"cover":true,"align":"full","textColor":"unitone-text","unitone":{"minHeight":"50vh"}} -->
 <div data-unitone-layout="layers -cover -portrait" class="alignfull has-unitone-text-color has-text-color">
 	<!-- wp:image {"id":1} -->
-	<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/smartphone-mobile-laptop36.jpg" alt="" class="wp-image-1"/></figure>
+	<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/smartphone-mobile-laptop36.jpg" alt="" class="wp-image-1"/></figure>
 	<!-- /wp:image -->
 	<!-- wp:unitone/cover {"unitone":{"alignSelf":"auto","justifySelf":"auto","gridColumn":"1 / -1","gridRow":"1 / -1","minHeight":"100%"}} -->
 	<div data-unitone-layout="cover">

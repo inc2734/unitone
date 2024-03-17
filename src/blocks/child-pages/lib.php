@@ -5,6 +5,13 @@
  * @license GPL-2.0+
  */
 
+/**
+ * Return WP_Query for child pages.
+ *
+ * @param int $parent_id Parent post ID.
+ * @param int $current_id Post ID.
+ * @return WP_Query|false
+ */
 function unitone_get_child_pages_query( $parent_id, $current_id ) {
 	if ( wp_get_post_parent_id( get_the_ID() ) === $current_id ) {
 		return;

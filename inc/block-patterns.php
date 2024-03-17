@@ -536,7 +536,7 @@ function unitone_register_block_patterns() {
 
 	foreach ( $patterns as $pattern ) {
 		ob_start();
-		include( $pattern['path'] );
+		include $pattern['path'];
 		$pattern['content'] = ob_get_clean();
 		unset( $pattern['path'] );
 		register_block_pattern( $pattern['slug'], $pattern );

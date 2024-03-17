@@ -9,7 +9,7 @@
  * Enqueue theme scripts and styles.
  */
 function unitone_theme_scripts() {
-	$asset = include( get_theme_file_path( 'dist/js/app/app.asset.php' ) );
+	$asset = include get_theme_file_path( 'dist/js/app/app.asset.php' );
 	wp_enqueue_script(
 		'unitone/app',
 		get_theme_file_uri( 'dist/js/app/app.js' ),
@@ -31,7 +31,7 @@ add_action( 'wp_enqueue_scripts', 'unitone_theme_scripts', 9 );
  * Enqueue theme scripts and styles for the block editor.
  */
 function unitone_enqueue_block_editor_assets() {
-	$asset = include( get_theme_file_path( 'dist/js/editor/editor.asset.php' ) );
+	$asset = include get_theme_file_path( 'dist/js/editor/editor.asset.php' );
 	wp_enqueue_script(
 		'unitone/editor',
 		get_theme_file_uri( 'dist/js/editor/editor.js' ),
@@ -69,7 +69,7 @@ function unitone_enqueue_block_editor_assets() {
 		$css
 	);
 
-	// For non iframe editor
+	// For non iframe editor.
 	$css = str_replace(
 		array(
 			'.editor-styles-wrapper:where(.block-editor-writing-flow) html',
@@ -79,7 +79,7 @@ function unitone_enqueue_block_editor_assets() {
 		$css
 	);
 
-	// For iframe editor
+	// For iframe editor.
 	$css = str_replace(
 		array(
 			':where(.editor-styles-wrapper.block-editor-iframe__body) html',
@@ -120,6 +120,9 @@ function unitone_enqueue_block_editor_assets() {
 }
 add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_assets', 9 );
 
+/**
+ * Enqueue block styles.
+ */
 function unitone_enqueue_block_styles() {
 	$styled_blocks = array(
 		'core/archives'           => array(),

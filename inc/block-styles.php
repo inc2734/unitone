@@ -5,6 +5,9 @@
  * @license GPL-2.0+
  */
 
+/**
+ * Register block styles.
+ */
 function unitone_register_block_styles() {
 	register_block_style(
 		'core/post-terms',

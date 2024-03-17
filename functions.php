@@ -8,7 +8,7 @@
 /**
  * Uses composer autoloader
  */
-require_once( get_template_directory() . '/vendor/autoload.php' );
+require_once get_template_directory() . '/vendor/autoload.php';
 
 if ( ! function_exists( 'unitone_theme_setup' ) ) {
 	/**
@@ -23,7 +23,7 @@ if ( ! function_exists( 'unitone_theme_setup' ) ) {
 		// so that it can be read by block editors, it should be adjusted.
 		add_filter(
 			'load_textdomain_mofile',
-			function( $mofile, $domain ) {
+			function ( $mofile, $domain ) {
 				return 'unitone' === $domain
 					? get_template_directory() . '/languages/' . basename( $mofile )
 					: $mofile;
@@ -34,9 +34,6 @@ if ( ! function_exists( 'unitone_theme_setup' ) ) {
 
 		// Make theme available for translation.
 		load_theme_textdomain( 'unitone', get_template_directory() . '/languages' );
-
-		// Add support for block styles.
-		// add_theme_support( 'wp-block-styles' );
 
 		// Remove core block patterns.
 		remove_theme_support( 'core-block-patterns' );
@@ -52,13 +49,16 @@ add_action( 'after_setup_theme', 'unitone_theme_setup' );
 
 /**
  * Add viewport meta tag.
+ *
+ * @param string $template The path of the template to include.
+ * @return string
  */
 function unitone_block_template_viewport_meta_tag( $template ) {
 	remove_action( 'wp_head', '_block_template_viewport_meta_tag', 0 );
 
 	add_action(
 		'wp_head',
-		function() {
+		function () {
 			echo '<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover" />' . "\n";
 		},
 		0
@@ -72,9 +72,11 @@ add_filter( 'template_include', 'unitone_block_template_viewport_meta_tag' );
  * Restores the Customizer since we still rely on it.
  */
 if ( wp_get_custom_css() ) {
-	function unitone_restore_customizer( $wp_customize ) {
-		// There's no need to return anything.
-		// The empty callback will do the trick.
+	/**
+	 * There's no need to return anything.
+	 * The empty callback will do the trick.
+	 */
+	function unitone_restore_customizer() {
 	}
 	add_action( 'customize_register', 'unitone_restore_customizer' );
 }

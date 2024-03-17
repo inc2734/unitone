@@ -22,9 +22,11 @@ new Bootstrap(
  */
 add_action(
 	'admin_init',
-	function() {
-		if ( is_admin() && current_user_can( 'administrator' ) ) {
-			if ( ! empty( $_GET['force-check'] ) ) {
+	function () {
+		if ( is_admin() && current_user_can( 'update_themes' ) ) {
+			$force_check = filter_input( INPUT_GET, 'force-check' );
+
+			if ( $force_check ) {
 				set_site_transient( 'update_themes', null );
 			}
 		}
@@ -40,7 +42,7 @@ add_action(
  */
 add_filter(
 	'inc2734_github_theme_updater_zip_url_inc2734/unitone',
-	function( $url ) {
+	function ( $url ) {
 		if ( 0 !== strpos( $url, 'https://unitone.2inc.org/' ) ) {
 			return false;
 		}
@@ -57,7 +59,7 @@ add_filter(
  */
 add_filter(
 	'inc2734_github_theme_updater_request_url_inc2734/unitone',
-	function() {
+	function () {
 		$license_key = Manager::get_setting( 'license-key' );
 		return sprintf(
 			'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/%1$s?repository=unitone',

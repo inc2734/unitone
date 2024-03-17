@@ -65,8 +65,8 @@ add_action( 'init', 'unitone_register_blocks' );
  */
 add_filter(
 	'plugins_url',
-	function( $url, $path, $plugin ) {
-		return preg_match( '|' . get_template_directory() . '/dist/blocks/[^\/]+/block.json' . '|', $plugin )
+	function ( $url, $path, $plugin ) {
+		return preg_match( '|' . get_template_directory() . '/dist/blocks/[^\/]+/block.json|', $plugin )
 			? get_template_directory_uri() . str_replace( array( get_template_directory(), 'block.json' ), '', $plugin ) . $path
 			: $url;
 	},
@@ -76,6 +76,9 @@ add_filter(
 
 /**
  * Add support "fluidTypography" to core blocks with typography.fontSize.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
  */
 function unitone_add_fluid_typography_support( $metadata ) {
 	if ( false === strpos( $metadata['name'], 'core/' ) ) {
@@ -99,6 +102,9 @@ add_filter( 'block_type_metadata', 'unitone_add_fluid_typography_support' );
 
 /**
  * Add support "halfLeading" to core blocks with typography.fontSize.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
  */
 function unitone_add_half_leading_support( $metadata ) {
 	if ( false === strpos( $metadata['name'], 'core/' ) ) {
@@ -122,6 +128,9 @@ add_filter( 'block_type_metadata', 'unitone_add_half_leading_support' );
 
 /**
  * Add support "cellMinWidth" to core/table.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
  */
 function unitone_add_cell_min_width_support( $metadata ) {
 	if ( 'core/table' !== $metadata['name'] ) {
@@ -148,14 +157,14 @@ add_filter( 'block_type_metadata', 'unitone_add_cell_min_width_support' );
  */
 add_filter(
 	'render_block',
-	function( $block_content, $block ) {
+	function ( $block_content, $block ) {
 		if ( 'core/site-logo' === $block['blockName'] && ! $block_content ) {
 			if ( is_admin() ) {
 				return $block_content;
 			}
 
 			$metadata                = wp_json_file_decode( ABSPATH . WPINC . '/blocks/site-logo/block.json', array( 'associative' => true ) );
-			$set_default_custom_logo = function( $html ) {
+			$set_default_custom_logo = function () {
 				return '<a href="' . get_home_url() . '" rel="home"><img loading="lazy" width="141" height="20" src="' . get_theme_file_uri( 'dist/img/logo.svg' ) . '" class="custom-logo" alt="unitone"></a>';
 			};
 
@@ -198,7 +207,7 @@ add_filter(
 		 * @param string $support The supported attribute name. Dot-accessible.
 		 * @return boolean
 		 */
-		$is_supported = function( $support ) use ( $metadata ) {
+		$is_supported = function ( $support ) use ( $metadata ) {
 			return isset( $metadata->supports['unitone'][ $support ] );
 		};
 
@@ -208,7 +217,7 @@ add_filter(
 		 * @param string $value Value to convert.
 		 * @return string CSS var string for given global style value.
 		 */
-		$get_global_style_css_var = function( $value ) {
+		$get_global_style_css_var = function ( $value ) {
 			if ( null === $value || '' === $value ) {
 				return $value;
 			}
@@ -229,7 +238,7 @@ add_filter(
 		 * @param string $value Value to convert
 		 * @return string The global style value if it can be found.
 		 */
-		$get_global_style_value_from_custom_value = function( $value ) {
+		$get_global_style_value_from_custom_value = function ( $value ) {
 			if ( null === $value || '' === $value ) {
 				return $value;
 			}
@@ -248,7 +257,7 @@ add_filter(
 		 * @param string $value Value to check
 		 * @return boolean Return true if value is string in format var:style|global|.
 		 */
-		$is_value_global_style = function( $value ) {
+		$is_value_global_style = function ( $value ) {
 			if ( null === $value || '' === $value ) {
 				return false;
 			}
@@ -262,15 +271,15 @@ add_filter(
 		 * @param string $support The supported attribute name. Dot-accessible.
 		 * @return string|null
 		 */
-		$get_attribute = function( $support ) use ( $block, $metadata, $is_value_global_style, $get_global_style_css_var ) {
-			$array_get = function( array $var, $format ) {
+		$get_attribute = function ( $support ) use ( $block, $metadata, $is_value_global_style, $get_global_style_css_var ) {
+			$array_get = function ( array $vars, $format ) {
 				foreach ( explode( '.', (string) $format ) as $key ) {
-					if ( ! isset( $var[ $key ] ) ) {
+					if ( ! isset( $vars[ $key ] ) ) {
 						return null;
 					}
-					$var = $var[ $key ];
+					$vars = $vars[ $key ];
 				}
-				return $var;
+				return $vars;
 			};
 
 			$attribute = $array_get( $block['attrs']['unitone'] ?? array(), $support ) ?? null;
@@ -289,7 +298,7 @@ add_filter(
 		 * @param string $property The CSS custom property name.
 		 * @param string|null $value The CSS custom property value.
 		 */
-		$add_style = function( $property, $value ) use ( $p ) {
+		$add_style = function ( $property, $value ) use ( $p ) {
 			if ( ! is_null( $value ) && '' !== $value ) {
 				$style    = $p->get_attribute( 'style' ) ?? '';
 				$property = $property . ':';
@@ -307,7 +316,7 @@ add_filter(
 		 * @param string $name The unitone attribute name.
 		 * @param string|bool|null $value The unitone attribute value.
 		 */
-		$add_attribute = function( $name, $value ) use ( $p ) {
+		$add_attribute = function ( $name, $value ) use ( $p ) {
 			if ( ! is_null( $value ) && '' !== $value ) {
 				$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
 
@@ -329,7 +338,7 @@ add_filter(
 		 * @param string $support The supported attribute name. Dot-accessible.
 		 * @return boolean
 		 */
-		$has_supported_attribute = function( $support ) use ( $block ) {
+		$has_supported_attribute = function ( $support ) use ( $block ) {
 			$value = $block['attrs']['unitone'][ $support ] ?? null;
 			return ! is_null( $value );
 		};
@@ -562,11 +571,11 @@ add_action( 'load-post.php', 'unitone_patch_for_extraprops' );
  */
 add_filter(
 	'render_block_unitone/center',
-	function( $block_content, $block ) {
+	function ( $block_content, $block ) {
 		if ( ! isset( $block['attrs']['intrinsic'] ) && false === strpos( $block_content, '-intrinsic' ) ) {
 			$p = new \WP_HTML_Tag_Processor( $block_content );
 			$p->next_tag();
-			$p->set_attribute( 'data-unitone-layout', $p->get_attribute( 'data-unitone-layout' ) . ' ' . '-intrinsic' );
+			$p->set_attribute( 'data-unitone-layout', $p->get_attribute( 'data-unitone-layout' ) . ' -intrinsic' );
 			$block_content = $p->get_updated_html();
 		}
 		return $block_content;
@@ -583,7 +592,7 @@ add_filter(
  */
 add_filter(
 	'render_block_core/image',
-	function( $block_content, $block ) {
+	function ( $block_content, $block ) {
 		$attrs = $block['attrs'] ?? array();
 		$w     = $attrs['width'] ?? '';
 		$h     = $attrs['height'] ?? '';

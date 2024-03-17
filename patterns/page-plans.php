@@ -468,35 +468,35 @@
 					<!-- wp:unitone/cluster {"unitone":{"alignItems":"center","justifyContent":"center","gap":"3"}} -->
 					<div data-unitone-layout="cluster">
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-monkey-wrench.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-monkey-wrench.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-monkey-wrench.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-monkey-wrench.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-unitone.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 
 						<!-- wp:image {"height":24,"linkDestination":"none"} -->
-						<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
+						<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/logo-snow-monkey.png" alt="" style="height:24px" height="24"/></figure>
 						<!-- /wp:image -->
 					</div>
 					<!-- /wp:unitone/cluster -->

@@ -6,7 +6,9 @@
  */
 
 /**
- * Register block categories
+ * Register block categories.
+ *
+ * @param array $categories Array of categories for block types.
  */
 function unitone_block_categories_all( $categories ) {
 	$slugs = array_column( $categories, 'slug' );

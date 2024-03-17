@@ -10,7 +10,7 @@
 <!-- wp:unitone/layers {"cover":true,"lock":{"move":false,"remove":false},"align":"full","unitone":{"minHeight":"max(100vmin - var(--wp-admin--admin-bar--height, 0px), 675px)"}} -->
 <div data-unitone-layout="layers -cover -portrait" class="alignfull">
 	<!-- wp:image {"id":1,"width":"1920px","height":"1280px","lock":{"move":false,"remove":false}} -->
-	<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/smartphone-mobile-laptop36.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
+	<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/smartphone-mobile-laptop36.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
 	<!-- /wp:image -->
 	<!-- wp:unitone/container {"unitone":{"blockAlign":"end","maxWidth":"var(--unitone--measure)","alignSelf":"center"},"lock":{"move":false,"remove":false}} -->
 	<div data-unitone-layout="container">
@@ -51,7 +51,7 @@
 						<!-- wp:unitone/frame {"ratio":"4/3"} -->
 						<div data-unitone-layout="frame" style="--unitone--ratio:4/3">
 							<!-- wp:image {"id":1,"width":"1920px","height":"1280px"} -->
-							<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
+							<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
 							<!-- /wp:image -->
 						</div>
 						<!-- /wp:unitone/frame -->
@@ -68,7 +68,7 @@
 						<!-- wp:unitone/frame {"ratio":"4/3"} -->
 						<div data-unitone-layout="frame" style="--unitone--ratio:4/3">
 							<!-- wp:image {"id":1,"width":"1920px","height":"1280px"} -->
-							<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_ydxj69toal.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
+							<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/stocksnap_ydxj69toal.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
 							<!-- /wp:image -->
 						</div>
 						<!-- /wp:unitone/frame -->
@@ -85,7 +85,7 @@
 						<!-- wp:unitone/frame {"ratio":"4/3"} -->
 						<div data-unitone-layout="frame" style="--unitone--ratio:4/3">
 							<!-- wp:image {"id":1,"width":"1920px","height":"1280px"} -->
-							<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/swing-ocean-sea2875.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
+							<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/swing-ocean-sea2875.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
 							<!-- /wp:image -->
 						</div>
 						<!-- /wp:unitone/frame -->
@@ -102,7 +102,7 @@
 						<!-- wp:unitone/frame {"ratio":"4/3"} -->
 						<div data-unitone-layout="frame" style="--unitone--ratio:4/3">
 							<!-- wp:image {"id":1,"width":"1920px","height":"1280px"} -->
-							<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/smartphone-mobile-laptop36.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
+							<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/smartphone-mobile-laptop36.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
 							<!-- /wp:image -->
 						</div>
 						<!-- /wp:unitone/frame -->
@@ -166,7 +166,7 @@
 								<!-- wp:unitone/frame {"ratio":"9/16","lock":{"move":false,"remove":false}} -->
 								<div data-unitone-layout="frame" style="--unitone--ratio:9/16">
 									<!-- wp:image {"id":1,"width":"1920px","height":"1280px"} -->
-									<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
+									<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
 									<!-- /wp:image -->
 								</div>
 								<!-- /wp:unitone/frame -->
@@ -177,7 +177,7 @@
 								<!-- wp:unitone/frame {"ratio":"9/16","lock":{"move":false,"remove":false}} -->
 								<div data-unitone-layout="frame" style="--unitone--ratio:9/16">
 									<!-- wp:image {"id":1,"width":"1920px","height":"1280px"} -->
-									<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_ydxj69toal.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
+									<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/stocksnap_ydxj69toal.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
 									<!-- /wp:image -->
 								</div>
 								<!-- /wp:unitone/frame -->
@@ -245,7 +245,7 @@
 <!-- wp:unitone/layers {"cover":true,"lock":{"move":false,"remove":false},"align":"full"} -->
 <div data-unitone-layout="layers -cover -portrait" class="alignfull">
 	<!-- wp:image {"id":1,"lock":{"move":false,"remove":false}} -->
-	<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" class="wp-image-1"/></figure>
+	<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/stocksnap_lgg8nat9jy.jpg" alt="" class="wp-image-1"/></figure>
 	<!-- /wp:image -->
 	<!-- wp:unitone/cover {"unitone":{"minHeight":"50vh","alignSelf":"center","padding":"0"}} -->
 	<div data-unitone-layout="cover">

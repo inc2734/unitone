@@ -9,7 +9,7 @@
  * Register formats.
  */
 function unitone_register_formats() {
-	$asset = include( get_theme_file_path( 'dist/formats/formats.asset.php' ) );
+	$asset = include get_theme_file_path( 'dist/formats/formats.asset.php' );
 	wp_enqueue_script(
 		'unitone/formats',
 		get_theme_file_uri( 'dist/formats/formats.js' ),
@@ -36,4 +36,3 @@ function unitone_enqueue_formats_assets() {
 	);
 }
 add_action( 'enqueue_block_assets', 'unitone_enqueue_formats_assets' );
-

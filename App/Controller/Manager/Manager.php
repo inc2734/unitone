@@ -47,7 +47,7 @@ class Manager {
 	);
 
 	/**
-	 * constructor
+	 * Constructor.
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, '_admin_menu' ) );
@@ -70,7 +70,7 @@ class Manager {
 			__( 'unitone Setup', 'unitone' ),
 			'manage_options',
 			self::MENU_SLUG,
-			function() {
+			function () {
 				?>
 				<div class="edit-site" id="site-editor">
 					<div id="unitone-settings" style="height: 100%"></div>
@@ -89,6 +89,8 @@ class Manager {
 
 	/**
 	 * Fires when enqueuing scripts for all admin pages.
+	 *
+	 * @param string $hook_suffix The current admin page.
 	 */
 	public function _admin_enqueue_scripts( $hook_suffix ) {
 		if ( 'appearance_page_' . self::MENU_SLUG !== $hook_suffix ) {
@@ -111,7 +113,7 @@ class Manager {
 
 		wp_enqueue_media();
 
-		$asset_file = include( get_template_directory() . '/App/Controller/Manager/dist/js/app.asset.php' );
+		$asset_file = include get_template_directory() . '/App/Controller/Manager/dist/js/app.asset.php';
 		wp_enqueue_script(
 			'unitone/settings',
 			get_template_directory_uri() . '/App/Controller/Manager/dist/js/app.js',
@@ -125,7 +127,6 @@ class Manager {
 			wp_enqueue_style( $style );
 		}
 
-		// $theme_json_data = \WP_Theme_JSON_Resolver::get_merged_data()->get_raw_data();
 		$global_settings = wp_get_global_settings();
 
 		wp_localize_script(
@@ -151,7 +152,7 @@ class Manager {
 					'palette'              => ( function () use ( $global_settings ) {
 						return array_reverse(
 							array_map(
-								function( $palette, $key ) {
+								function ( $palette, $key ) {
 									return array(
 										'name'   => $key,
 										'colors' => $palette,
@@ -164,7 +165,7 @@ class Manager {
 					} )(),
 					'fontFamilies'         => ( function () use ( $global_settings ) {
 						return array_map(
-							function( $font_family ) {
+							function ( $font_family ) {
 								return array(
 									'name'       => $font_family['name'],
 									'slug'       => $font_family['slug'],
@@ -177,14 +178,14 @@ class Manager {
 					'fontSizes'            => ( function () use ( $global_settings ) {
 						$scale = -2;
 						return array_map(
-							function( $font_size ) use ( &$scale ) {
+							function ( $font_size ) use ( &$scale ) {
 								$new_font_size = array_merge(
 									$font_size,
 									array(
 										'slug' => $scale,
 									)
 								);
-								$scale ++;
+								$scale++;
 								return $new_font_size;
 							},
 							$global_settings['typography']['fontSizes']['theme']
@@ -210,7 +211,7 @@ class Manager {
 			'/license-status',
 			array(
 				'methods'             => 'GET',
-				'callback'            => function() {
+				'callback'            => function () {
 					return static::get_license_status( static::get_setting( 'license-key' ) );
 				},
 				'permission_callback' => function () {
@@ -229,7 +230,7 @@ class Manager {
 			'/settings',
 			array(
 				'methods'             => 'GET',
-				'callback'            => function( $request ) {
+				'callback'            => function ( $request ) {
 					return static::get_settings( $request->get_params() );
 				},
 				'permission_callback' => function () {
@@ -249,7 +250,7 @@ class Manager {
 			'/settings',
 			array(
 				'methods'             => 'POST',
-				'callback'            => function( $request ) {
+				'callback'            => function ( $request ) {
 					if ( $request->get_params() ) {
 						$settings = $request->get_params();
 
@@ -273,7 +274,7 @@ class Manager {
 						// Also, if the settings are the same as the default settings, there are not saved.
 						$new_settings = array_filter(
 							$new_settings,
-							function( $value, $key ) {
+							function ( $value, $key ) {
 								return ! is_null( $value ) && self::DEFAULT_SETTINGS[ $key ] !== $value;
 							},
 							ARRAY_FILTER_USE_BOTH
@@ -339,7 +340,7 @@ class Manager {
 			'/homepage',
 			array(
 				'methods'             => 'POST',
-				'callback'            => function( $request ) {
+				'callback'            => function ( $request ) {
 					if ( $request->get_params() ) {
 						$settings = $request->get_params();
 
@@ -393,7 +394,7 @@ class Manager {
 			'/posts-page',
 			array(
 				'methods'             => 'POST',
-				'callback'            => function( $request ) {
+				'callback'            => function ( $request ) {
 					if ( $request->get_params() ) {
 						$existing_page = get_page_by_path( static::_get_posts_page_slug(), OBJECT, array( 'page' ) );
 						if ( $existing_page ) {
@@ -434,7 +435,7 @@ class Manager {
 			'/remote-block-patterns',
 			array(
 				'methods'             => 'DELETE',
-				'callback'            => function( $request ) {
+				'callback'            => function ( $request ) {
 					if ( $request->get_params() ) {
 						delete_transient( 'unitone-remote-patterns' );
 						delete_transient( 'unitone-remote-pattern-categories' );
@@ -522,7 +523,7 @@ class Manager {
 		return $keys
 			? array_filter(
 				$settings,
-				function( $key ) use ( $keys ) {
+				function ( $key ) use ( $keys ) {
 					return in_array( $key, $keys, true );
 				},
 				ARRAY_FILTER_USE_KEY
@@ -547,13 +548,13 @@ class Manager {
 	 * @return boolean
 	 */
 	public static function get_license_status( $license_key ) {
-		$transient = get_transient( 'unitone-license-status-' . sha1( $license_key ) );
+		$transient = get_transient( 'unitone-license-status' );
 		if ( false !== $transient ) {
-			// return $transient;
+			return $transient;
 		}
 
 		$status = static::_request_license_validate( $license_key );
-		set_transient( 'unitone-license-status-' . sha1( $license_key ), $status ? $status : 'false', DAY_IN_SECONDS );
+		set_transient( 'unitone-license-status', $status ? $status : 'false', DAY_IN_SECONDS );
 		return $status;
 	}
 
@@ -591,10 +592,20 @@ class Manager {
 		return $status;
 	}
 
+	/**
+	 * Return default homepage slug.
+	 *
+	 * @return string
+	 */
 	protected static function _get_homepage_slug() {
 		return 'home';
 	}
 
+	/**
+	 * Return default posts page slug.
+	 *
+	 * @return string
+	 */
 	protected static function _get_posts_page_slug() {
 		return 'blog';
 	}

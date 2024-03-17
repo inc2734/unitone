@@ -7,7 +7,7 @@
 
 use Inc2734\WP_Breadcrumbs;
 
-$get_breadcrumbs_items = function() {
+$get_breadcrumbs_items = function () {
 	$breadcrumbs_items = array();
 	if ( $breadcrumbs_items ) {
 		return $breadcrumbs_items;
@@ -41,7 +41,7 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 	)
 );
 ?>
-<ol <?php echo $block_wrapper_attributes; ?> itemscope itemtype="http://schema.org/BreadcrumbList">
+<ol <?php echo wp_kses_data( $block_wrapper_attributes ); ?> itemscope itemtype="http://schema.org/BreadcrumbList">
 	<?php foreach ( $items as $key => $item ) : ?>
 		<?php
 		$is_last_item = (int) count( $items ) - 1 === (int) $key;

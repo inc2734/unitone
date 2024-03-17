@@ -5,7 +5,7 @@
  * @license GPL-2.0+
  */
 
-$display_child_pages = function( $parent_id, $current_id ) use ( &$display_child_pages ) {
+$display_child_pages = function ( $parent_id, $current_id ) use ( &$display_child_pages ) {
 	$child_query = unitone_get_child_pages_query( $parent_id, $current_id );
 	if ( empty( $child_query ) || ! $child_query->have_posts() ) {
 		return;

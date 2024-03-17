@@ -61,7 +61,7 @@
 						<!-- wp:unitone/stack {"unitone":{"gap":"-1"}} -->
 						<div data-unitone-layout="stack">
 							<!-- wp:image {"id":1,"sizeSlug":"large","linkDestination":"none"} -->
-							<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
+							<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
 							<!-- /wp:image -->
 
 							<!-- wp:paragraph -->
@@ -251,7 +251,7 @@
 						<!-- wp:unitone/frame {"ratio":"1/1"} -->
 						<div data-unitone-layout="frame" style="--unitone--ratio:1/1">
 							<!-- wp:image {"id":1} -->
-							<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/person-1.png" alt="" class="wp-image-1"/></figure>
+							<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/person-1.png" alt="" class="wp-image-1"/></figure>
 							<!-- /wp:image -->
 						</div>
 						<!-- /wp:unitone/frame -->
@@ -283,7 +283,7 @@
 						<!-- wp:unitone/frame {"ratio":"1/1"} -->
 						<div data-unitone-layout="frame" style="--unitone--ratio:1/1">
 							<!-- wp:image {"id":1} -->
-							<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/person-2.png" alt="" class="wp-image-1"/></figure>
+							<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/person-2.png" alt="" class="wp-image-1"/></figure>
 							<!-- /wp:image -->
 						</div>
 						<!-- /wp:unitone/frame -->
@@ -315,7 +315,7 @@
 						<!-- wp:unitone/frame {"ratio":"1/1"} -->
 						<div data-unitone-layout="frame" style="--unitone--ratio:1/1">
 							<!-- wp:image {"id":1} -->
-							<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/person-3.png" alt="" class="wp-image-1"/></figure>
+							<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/person-3.png" alt="" class="wp-image-1"/></figure>
 							<!-- /wp:image -->
 						</div>
 						<!-- /wp:unitone/frame -->
@@ -347,7 +347,7 @@
 						<!-- wp:unitone/frame {"ratio":"1/1"} -->
 						<div data-unitone-layout="frame" style="--unitone--ratio:1/1">
 							<!-- wp:image {"id":1} -->
-							<figure class="wp-block-image is-resized"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/person-4.png" alt="" class="wp-image-1"/></figure>
+							<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/person-4.png" alt="" class="wp-image-1"/></figure>
 							<!-- /wp:image -->
 						</div>
 						<!-- /wp:unitone/frame -->
@@ -399,7 +399,7 @@
 							<!-- wp:unitone/slide -->
 							<div class="unitone-slider__slide swiper-slide">
 								<!-- wp:image {"id":1} -->
-								<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
+								<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
 								<!-- /wp:image -->
 							</div>
 							<!-- /wp:unitone/slide -->
@@ -407,7 +407,7 @@
 							<!-- wp:unitone/slide -->
 							<div class="unitone-slider__slide swiper-slide">
 								<!-- wp:image {"id":1} -->
-								<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
+								<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
 								<!-- /wp:image -->
 							</div>
 							<!-- /wp:unitone/slide -->
@@ -415,7 +415,7 @@
 							<!-- wp:unitone/slide -->
 							<div class="unitone-slider__slide swiper-slide">
 								<!-- wp:image {"id":1} -->
-								<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
+								<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
 								<!-- /wp:image -->
 							</div>
 							<!-- /wp:unitone/slide -->
@@ -423,7 +423,7 @@
 							<!-- wp:unitone/slide -->
 							<div class="unitone-slider__slide swiper-slide">
 								<!-- wp:image {"id":1} -->
-								<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
+								<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
 								<!-- /wp:image -->
 							</div>
 							<!-- /wp:unitone/slide -->
@@ -431,7 +431,7 @@
 							<!-- wp:unitone/slide -->
 							<div class="unitone-slider__slide swiper-slide">
 								<!-- wp:image {"id":1} -->
-								<figure class="wp-block-image"><img src="<?php echo get_template_directory_uri(); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
+								<figure class="wp-block-image"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/building-architecture-sky2096.jpg" alt="" class="wp-image-1"/></figure>
 								<!-- /wp:image -->
 							</div>
 							<!-- /wp:unitone/slide -->

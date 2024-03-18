@@ -25,8 +25,8 @@ $display_child_pages = function ( $parent_id, $current_id ) use ( &$display_chil
 ?>
 
 <ul>
-	<?php while ( $wp_query->have_posts() ) : ?>
-		<?php $wp_query->the_post(); ?>
+	<?php while ( $the_query->have_posts() ) : ?>
+		<?php $the_query->the_post(); ?>
 		<li>
 			<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 			<?php $display_child_pages( get_the_ID(), $current_id ); ?>

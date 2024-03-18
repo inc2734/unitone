@@ -35,8 +35,8 @@ if ( ! empty( $attributes['unitone']['gap'] ) ) {
 ?>
 
 <ul data-unitone-layout="<?php echo esc_attr( implode( ' ', $data_unitone_layout ) ); ?>">
-	<?php while ( $wp_query->have_posts() ) : ?>
-		<?php $wp_query->the_post(); ?>
+	<?php while ( $the_query->have_posts() ) : ?>
+		<?php $the_query->the_post(); ?>
 		<li data-unitone-layout="stack__content">
 			<div data-unitone-layout="stack -gap:-2">
 				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>

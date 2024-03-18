@@ -21,8 +21,8 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 	data-unitone-layout="<?php echo esc_attr( implode( ' ', $data_unitone_layout ) ); ?>"
 	style="<?php echo esc_attr( implode( ' ', $style ) ); ?>"
 >
-	<?php while ( $wp_query->have_posts() ) : ?>
-		<?php $wp_query->the_post(); ?>
+	<?php while ( $the_query->have_posts() ) : ?>
+		<?php $the_query->the_post(); ?>
 		<div data-unitone-layout="decorator -shadow -padding:1" class="has-background has-white-background-color has-text-color has-unitone-text-black-color">
 			<div data-unitone-layout="decorator__inner">
 				<div>

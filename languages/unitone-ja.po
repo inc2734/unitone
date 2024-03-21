@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-03-09T06:02:35+00:00\n"
-"PO-Revision-Date: 2024-03-09 15:02+0900\n"
+"POT-Creation-Date: 2024-03-21T09:38:34+00:00\n"
+"PO-Revision-Date: 2024-03-21 18:39+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -17,9 +17,9 @@ msgstr ""
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
-#: inc/block-categories.php:18 inc/block-categories.php:29
-#: inc/block-categories.php:40 inc/block-categories.php:51
-#: inc/block-styles.php:93 dist/js/editor/editor.js:1
+#: inc/block-categories.php:20 inc/block-categories.php:31
+#: inc/block-categories.php:42 inc/block-categories.php:53
+#: inc/block-styles.php:96 dist/js/editor/editor.js:1
 msgid "unitone"
 msgstr "unitone"
 
@@ -42,14 +42,14 @@ msgstr "https://2inc.org"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:363 patterns/footer-2.php:22
+#: App/Controller/Manager/Manager.php:364 patterns/footer-2.php:22
 #: patterns/footer-3.php:51 patterns/footer-3.php:59 patterns/footer-3.php:67
 #: patterns/footer-4.php:31 patterns/footer-4.php:39 patterns/footer-4.php:47
 #: patterns/footer-5.php:29 patterns/footer-5.php:37 patterns/footer-5.php:45
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:406 patterns/footer-2.php:25
+#: App/Controller/Manager/Manager.php:407 patterns/footer-2.php:25
 #: patterns/footer-3.php:54 patterns/footer-3.php:62 patterns/footer-3.php:70
 #: patterns/footer-4.php:34 patterns/footer-4.php:42 patterns/footer-4.php:50
 #: patterns/footer-5.php:32 patterns/footer-5.php:40 patterns/footer-5.php:48
@@ -58,15 +58,15 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:474
+#: App/Controller/Manager/Manager.php:475
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:477
+#: App/Controller/Manager/Manager.php:478
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:481
+#: App/Controller/Manager/Manager.php:482
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
@@ -77,20 +77,20 @@ msgstr "セットアップ画面へ"
 msgid "Learn more"
 msgstr "さらに詳しく"
 
-#: inc/block-categories.php:21 App/Controller/Manager/dist/js/app.js:3
+#: inc/block-categories.php:23 App/Controller/Manager/dist/js/app.js:3
 #: dist/js/editor/editor.js:1 App/Controller/Manager/dist/js/app.js:1541
 msgid "Layout"
 msgstr "レイアウト"
 
-#: inc/block-categories.php:32
+#: inc/block-categories.php:34
 msgid "Components"
 msgstr "コンポーネント"
 
-#: inc/block-categories.php:43
+#: inc/block-categories.php:45
 msgid "Sections"
 msgstr "セクション"
 
-#: inc/block-categories.php:54
+#: inc/block-categories.php:56
 msgid "Widgets"
 msgstr "ウィジェット"
 
@@ -453,51 +453,51 @@ msgstr "個別商品のメインエリア（右サイドバー）"
 msgid "Page Header (Image) for Single Products"
 msgstr "個別商品のページヘッダー（画像）"
 
-#: inc/block-styles.php:13
+#: inc/block-styles.php:16
 msgid "Badge"
 msgstr "バッジ"
 
-#: inc/block-styles.php:21
+#: inc/block-styles.php:24
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:29 inc/block-styles.php:109 dist/js/editor/editor.js:5
+#: inc/block-styles.php:32 inc/block-styles.php:112 dist/js/editor/editor.js:5
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: inc/block-styles.php:37 dist/js/editor/editor.js:5
+#: inc/block-styles.php:40 dist/js/editor/editor.js:5
 msgid "Bordered"
 msgstr "ボーダー"
 
-#: inc/block-styles.php:45 dist/js/editor/editor.js:5
+#: inc/block-styles.php:48 dist/js/editor/editor.js:5
 msgid "Stripe"
 msgstr "ストライプ"
 
-#: inc/block-styles.php:53
+#: inc/block-styles.php:56
 msgid "Block link"
 msgstr "ブロックリンク"
 
-#: inc/block-styles.php:61
+#: inc/block-styles.php:64
 msgid "Block link (Underline)"
 msgstr "ブロックリンク（アンダーライン）"
 
-#: inc/block-styles.php:69 inc/block-styles.php:85
+#: inc/block-styles.php:72 inc/block-styles.php:88
 msgid "Block link (Bordered)"
 msgstr "ブロックリンク（ボーダー）"
 
-#: inc/block-styles.php:77
+#: inc/block-styles.php:80
 msgid "Block link (Stripe)"
 msgstr "ブロックリンク（ストライプ）"
 
-#: inc/block-styles.php:101
+#: inc/block-styles.php:104
 msgid "Cover"
 msgstr "カバー"
 
-#: inc/block-styles.php:117
+#: inc/block-styles.php:120
 msgid "Vertical fill"
 msgstr "縦塗りつぶし"
 
-#: inc/block-styles.php:125
+#: inc/block-styles.php:128
 msgid "Vertical line"
 msgstr "縦線"
 
@@ -2460,6 +2460,22 @@ msgid "Wrap when content equals this width."
 msgstr "コンテンツがこの幅と等しくなった場合に折り返されます。"
 
 #: dist/formats/formats.js:1
+msgid "Line break per screen size"
+msgstr "画面サイズ毎の改行"
+
+#: dist/formats/formats.js:1
+msgid "Line breaks when on the desktop"
+msgstr "デスクトップのときに改行"
+
+#: dist/formats/formats.js:1
+msgid "Line breaks when on the tablet"
+msgstr "タブレットのときに改行"
+
+#: dist/formats/formats.js:1
+msgid "Line breaks when on the mobile"
+msgstr "モバイルのときに改行"
+
+#: dist/formats/formats.js:1
 msgid "Inline icon"
 msgstr "インラインアイコン"
 
@@ -3500,6 +3516,9 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "Line break"
+#~ msgstr "改行"
 
 #~ msgid "Aside"
 #~ msgstr "アサイド"

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-03-22T01:37:33+00:00\n"
-"PO-Revision-Date: 2024-03-22 10:38+0900\n"
+"POT-Creation-Date: 2024-03-22T02:47:10+00:00\n"
+"PO-Revision-Date: 2024-03-22 11:49+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2498,6 +2498,10 @@ msgstr "色"
 #: dist/js/editor/editor.js:1
 msgid "Cell Min Width"
 msgstr "セルの最小幅"
+
+#: dist/js/editor/editor.js:1
+msgid "None"
+msgstr "無し"
 
 #: dist/js/editor/editor.js:1
 msgid "Using root padding"

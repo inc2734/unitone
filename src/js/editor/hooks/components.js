@@ -28,7 +28,7 @@ export function SpacingSizeControl( {
 			value: '-1',
 		},
 		{
-			label: '0',
+			label: __( 'None', 'unitone' ),
 			value: '0',
 		},
 		{

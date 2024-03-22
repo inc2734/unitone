@@ -54,77 +54,83 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 		settings,
 	} );
 
-	const onChangeDesktop = useCallback( ( newSetting ) => {
-		setDisableDesktop( ! newSetting );
+	const onChangeDesktop = useCallback(
+		( newSetting ) => {
+			setDisableDesktop( ! newSetting );
 
-		// @todo 全部 disable にしちゃうと完全に見えなくなってしまうので、2つ disable のときは disable にできないようにする
-		const newReplacements = value.replacements.slice();
+			const newReplacements = value.replacements.slice();
 
-		newReplacements[ value.start ] = {
-			...DEFAULT_OBJECT_SETTINGS,
-			attributes: {
-				...activeObjectAttributes,
-				class: classnames( {
-					'unitone-br--disable:desktop': ! newSetting,
-					'unitone-br--disable:tablet': disableTablet,
-					'unitone-br--disable:mobile': disableMobile,
-				} ),
-			},
-		};
+			newReplacements[ value.start ] = {
+				...DEFAULT_OBJECT_SETTINGS,
+				attributes: {
+					...activeObjectAttributes,
+					class: classnames( {
+						'unitone-br--disable:desktop': ! newSetting,
+						'unitone-br--disable:tablet': disableTablet,
+						'unitone-br--disable:mobile': disableMobile,
+					} ),
+				},
+			};
 
-		onChange( {
-			...value,
-			replacements: newReplacements,
-		} );
-	}, [] );
+			onChange( {
+				...value,
+				replacements: newReplacements,
+			} );
+		},
+		[ disableTablet, disableMobile ]
+	);
 
-	const onChangeTablet = useCallback( ( newSetting ) => {
-		setDisableTablet( ! newSetting );
+	const onChangeTablet = useCallback(
+		( newSetting ) => {
+			setDisableTablet( ! newSetting );
 
-		// @todo 全部 disable にしちゃうと完全に見えなくなってしまうので、2つ disable のときは disable にできないようにする
-		const newReplacements = value.replacements.slice();
+			const newReplacements = value.replacements.slice();
 
-		newReplacements[ value.start ] = {
-			...DEFAULT_OBJECT_SETTINGS,
-			attributes: {
-				...activeObjectAttributes,
-				class: classnames( {
-					'unitone-br--disable:desktop': disableDesktop,
-					'unitone-br--disable:tablet': ! newSetting,
-					'unitone-br--disable:mobile': disableMobile,
-				} ),
-			},
-		};
+			newReplacements[ value.start ] = {
+				...DEFAULT_OBJECT_SETTINGS,
+				attributes: {
+					...activeObjectAttributes,
+					class: classnames( {
+						'unitone-br--disable:desktop': disableDesktop,
+						'unitone-br--disable:tablet': ! newSetting,
+						'unitone-br--disable:mobile': disableMobile,
+					} ),
+				},
+			};
 
-		onChange( {
-			...value,
-			replacements: newReplacements,
-		} );
-	}, [] );
+			onChange( {
+				...value,
+				replacements: newReplacements,
+			} );
+		},
+		[ disableDesktop, disableMobile ]
+	);
 
-	const onChangeMobile = useCallback( ( newSetting ) => {
-		setDisableMobile( ! newSetting );
+	const onChangeMobile = useCallback(
+		( newSetting ) => {
+			setDisableMobile( ! newSetting );
 
-		// @todo 全部 disable にしちゃうと完全に見えなくなってしまうので、2つ disable のときは disable にできないようにする
-		const newReplacements = value.replacements.slice();
+			const newReplacements = value.replacements.slice();
 
-		newReplacements[ value.start ] = {
-			...DEFAULT_OBJECT_SETTINGS,
-			attributes: {
-				...activeObjectAttributes,
-				class: classnames( {
-					'unitone-br--disable:desktop': disableDesktop,
-					'unitone-br--disable:tablet': disableTablet,
-					'unitone-br--disable:mobile': ! newSetting,
-				} ),
-			},
-		};
+			newReplacements[ value.start ] = {
+				...DEFAULT_OBJECT_SETTINGS,
+				attributes: {
+					...activeObjectAttributes,
+					class: classnames( {
+						'unitone-br--disable:desktop': disableDesktop,
+						'unitone-br--disable:tablet': disableTablet,
+						'unitone-br--disable:mobile': ! newSetting,
+					} ),
+				},
+			};
 
-		onChange( {
-			...value,
-			replacements: newReplacements,
-		} );
-	}, [] );
+			onChange( {
+				...value,
+				replacements: newReplacements,
+			} );
+		},
+		[ disableDesktop, disableTablet ]
+	);
 
 	return (
 		<Popover
@@ -144,18 +150,21 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 					label={ __( 'Line breaks when on the desktop', 'unitone' ) }
 					checked={ ! disableDesktop }
 					onChange={ onChangeDesktop }
+					disabled={ disableTablet && disableMobile }
 				/>
 
 				<ToggleControl
 					label={ __( 'Line breaks when on the tablet', 'unitone' ) }
 					checked={ ! disableTablet }
 					onChange={ onChangeTablet }
+					disabled={ disableDesktop && disableMobile }
 				/>
 
 				<ToggleControl
 					label={ __( 'Line breaks when on the mobile', 'unitone' ) }
 					checked={ ! disableMobile }
 					onChange={ onChangeMobile }
+					disabled={ disableDesktop && disableTablet }
 					__nextHasNoMarginBottom
 				/>
 			</div>

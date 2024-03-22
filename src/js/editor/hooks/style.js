@@ -39,6 +39,7 @@ import { LayerPanel, editMixBlendModeProp } from './layer/layer';
 
 import {
 	TypographyPanel,
+	editAutoPhraseProp,
 	editFluidTypographyProp,
 	editHalfLeadingProp,
 } from './typography/typography';
@@ -52,6 +53,10 @@ import {
 import { PositionPanel, editPositionProp } from './position/position';
 
 function addEditProps( settings ) {
+	if ( !! settings.supports?.typography?.fontSize ) {
+		settings = editAutoPhraseProp( settings );
+	}
+
 	if ( !! settings.supports?.typography?.fontSize ) {
 		settings = editFluidTypographyProp( settings );
 	}

@@ -7,6 +7,14 @@ import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/compo
 import { __ } from '@wordpress/i18n';
 
 import {
+	useIsAutoPhraseDisabled,
+	hasAutoPhraseValue,
+	resetAutoPhrase,
+	AutoPhraseEdit,
+	editAutoPhraseProp,
+} from './auto-phrase';
+
+import {
 	useIsFluidTypographyDisabled,
 	hasFluidTypographyValue,
 	resetFluidTypography,
@@ -22,13 +30,18 @@ import {
 	editHalfLeadingProp,
 } from './half-leading';
 
-export { editFluidTypographyProp, editHalfLeadingProp };
+export { editAutoPhraseProp, editFluidTypographyProp, editHalfLeadingProp };
 
 export function TypographyPanel( props ) {
+	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( props );
 	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( props );
 	const isHalfLeadingDisabled = useIsHalfLeadingDisabled( props );
 
-	if ( isFluidTypographyDisabled && isHalfLeadingDisabled ) {
+	if (
+		isAutoPhraseDisabled &&
+		isFluidTypographyDisabled &&
+		isHalfLeadingDisabled
+	) {
 		return null;
 	}
 
@@ -63,6 +76,22 @@ export function TypographyPanel( props ) {
 						<HalfLeadingEdit
 							{ ...props }
 							label={ __( 'Half leading', 'unitone' ) }
+						/>
+					</ToolsPanelItem>
+				) }
+
+				{ ! isAutoPhraseDisabled && (
+					<ToolsPanelItem
+						hasValue={ () => hasAutoPhraseValue( props ) }
+						label={ __( 'Auto line breaks', 'unitone' ) }
+						onDeselect={ () => resetAutoPhrase( props ) }
+						isShownByDefault
+						resetAllFilter={ () => resetAutoPhrase( props ) }
+						panelId={ props.clientId }
+					>
+						<AutoPhraseEdit
+							{ ...props }
+							label={ __( 'Auto line breaks', 'unitone' ) }
 						/>
 					</ToolsPanelItem>
 				) }

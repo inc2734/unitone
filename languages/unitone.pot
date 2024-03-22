@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-21T09:38:34+00:00\n"
+"POT-Creation-Date: 2024-03-22T01:37:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -475,17 +475,17 @@ msgstr ""
 
 #: inc/block-styles.php:32
 #: inc/block-styles.php:112
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Underline"
 msgstr ""
 
 #: inc/block-styles.php:40
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Bordered"
 msgstr ""
 
 #: inc/block-styles.php:48
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Stripe"
 msgstr ""
 
@@ -2484,13 +2484,13 @@ msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Right"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Left"
 msgstr ""
 
@@ -2520,6 +2520,10 @@ msgstr ""
 
 #: dist/formats/formats.js:1
 msgid "Line breaks when on the mobile"
+msgstr ""
+
+#: dist/formats/formats.js:1
+msgid "wbr"
 msgstr ""
 
 #: dist/formats/formats.js:1
@@ -2668,60 +2672,69 @@ msgstr ""
 msgid "Mix blend mode"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#. translators: %1$s: <code>overflow-wrap: anywhere + word-break: keep-all</code>, %2$s: <code>wbr</code>
+#: dist/js/editor/editor.js:7
+msgid "Use %1$s for automatic line breaks. Use %2$s to indicate a line break at an arbitrary position."
+msgstr ""
+
+#: dist/js/editor/editor.js:7
 msgid "Fluid typography"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Half leading"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
+msgid "Auto line breaks"
+msgstr ""
+
+#: dist/js/editor/editor.js:7
 msgid "Slash"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Type"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Divider"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Position"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Top"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Bottom"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "The stack level"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Currently Selected"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Select a block of ancestors"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Select a child block"
 msgstr ""
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Show block outline"
 msgstr ""
 
 #. translators: %s: template part title.
-#: dist/js/editor/editor.js:6
+#: dist/js/editor/editor.js:8
 msgid "Replace"
 msgstr ""
 

@@ -75,6 +75,36 @@ add_filter(
 );
 
 /**
+ * Add support "autoPhrase" to core blocks with typography.fontSize.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_auto_phrase_support( $metadata ) {
+	if ( false === strpos( $metadata['name'], 'core/' ) ) {
+		return $metadata;
+	}
+
+	if ( empty( $metadata['supports']['typography']['fontSize'] ) ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'autoPhrase' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_auto_phrase_support' );
+
+/**
  * Add support "fluidTypography" to core blocks with typography.fontSize.
  *
  * @param array $metadata Metadata for registering a block type.
@@ -82,6 +112,10 @@ add_filter(
  */
 function unitone_add_fluid_typography_support( $metadata ) {
 	if ( false === strpos( $metadata['name'], 'core/' ) ) {
+		return $metadata;
+	}
+
+	if ( empty( $metadata['supports']['typography']['fontSize'] ) ) {
 		return $metadata;
 	}
 
@@ -101,13 +135,17 @@ function unitone_add_fluid_typography_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_fluid_typography_support' );
 
 /**
- * Add support "halfLeading" to core blocks with typography.fontSize.
+ * Add support "halfLeading" to core blocks with typography.lineHeight.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
  */
 function unitone_add_half_leading_support( $metadata ) {
 	if ( false === strpos( $metadata['name'], 'core/' ) ) {
+		return $metadata;
+	}
+
+	if ( empty( $metadata['supports']['typography']['lineHeight'] ) ) {
 		return $metadata;
 	}
 
@@ -368,6 +406,11 @@ add_filter(
 			$value = $block['attrs']['unitone'][ $support ] ?? null;
 			return ! is_null( $value );
 		};
+
+		// -auto-phrase
+		if ( $is_supported( 'autoPhrase' ) ) {
+			$add_attribute( '-auto-phrase', $get_attribute( 'autoPhrase' ) );
+		}
 
 		// -fluid-typography
 		if ( $is_supported( 'fluidTypography' ) ) {

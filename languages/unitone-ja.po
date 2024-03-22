@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-03-21T09:38:34+00:00\n"
-"PO-Revision-Date: 2024-03-21 18:39+0900\n"
+"POT-Creation-Date: 2024-03-22T01:37:33+00:00\n"
+"PO-Revision-Date: 2024-03-22 10:38+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -461,15 +461,15 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:32 inc/block-styles.php:112 dist/js/editor/editor.js:5
+#: inc/block-styles.php:32 inc/block-styles.php:112 dist/js/editor/editor.js:7
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: inc/block-styles.php:40 dist/js/editor/editor.js:5
+#: inc/block-styles.php:40 dist/js/editor/editor.js:7
 msgid "Bordered"
 msgstr "ボーダー"
 
-#: inc/block-styles.php:48 dist/js/editor/editor.js:5
+#: inc/block-styles.php:48 dist/js/editor/editor.js:7
 msgid "Stripe"
 msgstr "ストライプ"
 
@@ -2436,12 +2436,12 @@ msgid "Columns to be treated as sidebars"
 msgstr "サイドバーとして扱うカラム"
 
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Right"
 msgstr "右"
 
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Left"
 msgstr "左"
 
@@ -2474,6 +2474,10 @@ msgstr "タブレットのときに改行"
 #: dist/formats/formats.js:1
 msgid "Line breaks when on the mobile"
 msgstr "モバイルのときに改行"
+
+#: dist/formats/formats.js:1
+msgid "wbr"
+msgstr "wbr"
 
 #: dist/formats/formats.js:1
 msgid "Inline icon"
@@ -2624,60 +2628,73 @@ msgstr "レイヤー"
 msgid "Mix blend mode"
 msgstr "ミックスブレンドモード"
 
-#: dist/js/editor/editor.js:5
+#. translators: %1$s: <code>overflow-wrap: anywhere + word-break: keep-all</code>, %2$s: <code>wbr</code>
+#: dist/js/editor/editor.js:7
+msgid ""
+"Use %1$s for automatic line breaks. Use %2$s to indicate a line break at an "
+"arbitrary position."
+msgstr ""
+"%1$s を使い自動改行します。任意の位置で改行を指示したい場合は %2$s を使用して"
+"ください。"
+
+#: dist/js/editor/editor.js:7
 msgid "Fluid typography"
 msgstr "流体タイポグラフィ"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Half leading"
 msgstr "ハーフリーディング"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
+msgid "Auto line breaks"
+msgstr "自動改行"
+
+#: dist/js/editor/editor.js:7
 msgid "Slash"
 msgstr "スラッシュ"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Type"
 msgstr "種類"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Divider"
 msgstr "区切り"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Position"
 msgstr "位置"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Top"
 msgstr "上"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Bottom"
 msgstr "下"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "The stack level"
 msgstr "重ね合わせレベル"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Currently Selected"
 msgstr "現在選択中"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Select a block of ancestors"
 msgstr "先祖ブロックを選択する"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Select a child block"
 msgstr "子ブロックを選択"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Show block outline"
 msgstr "ブロックのアウトラインを表示"
 
 #. translators: %s: template part title.
-#: dist/js/editor/editor.js:6
+#: dist/js/editor/editor.js:8
 msgid "Replace"
 msgstr "置換"
 
@@ -3516,9 +3533,6 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
-
-#~ msgid "Line break"
-#~ msgstr "改行"
 
 #~ msgid "Aside"
 #~ msgstr "アサイド"

@@ -10,39 +10,6 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-const addAttributes = ( settings, name ) => {
-	if ( 'core/table' !== name ) {
-		return settings;
-	}
-
-	return {
-		...settings,
-		...{
-			attributes: {
-				...settings.attributes,
-				// @deprecated
-				cellMinWidth: {
-					type: 'string',
-					default: '',
-				},
-				unitone: {
-					...settings.attributes?.unitone,
-					cellMinWidth: {
-						type: 'string',
-						default: '',
-					},
-				},
-			},
-		},
-	};
-};
-
-addFilter(
-	'blocks.registerBlockType',
-	'unitone/table/addAttributes',
-	addAttributes
-);
-
 const saveProp = ( extraProps, blockType, attributes ) => {
 	if ( 'core/table' !== blockType.name ) {
 		return extraProps;

@@ -153,6 +153,32 @@ function unitone_add_cell_min_width_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_cell_min_width_support' );
 
 /**
+ * Add support "gap" to core/post-template.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_gap_support( $metadata ) {
+	if ( 'core/post-template' !== $metadata['name'] ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'gap' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_gap_support' );
+
+/**
  * If site-logo block is empty, display unitone logo.
  */
 add_filter(

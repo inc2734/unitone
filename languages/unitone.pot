@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-22T02:47:10+00:00\n"
+"POT-Creation-Date: 2024-03-22T02:52:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -2676,9 +2676,9 @@ msgstr ""
 msgid "Mix blend mode"
 msgstr ""
 
-#. translators: %1$s: <code>overflow-wrap: anywhere + word-break: keep-all</code>, %2$s: <code>wbr</code>
+#. translators: %1$s: <code>wbr</code>
 #: dist/js/editor/editor.js:7
-msgid "Use %1$s for automatic line breaks. Use %2$s to indicate a line break at an arbitrary position."
+msgid "Use %1$s to indicate a line break at an arbitrary position."
 msgstr ""
 
 #: dist/js/editor/editor.js:7

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-03-22T02:47:10+00:00\n"
-"PO-Revision-Date: 2024-03-22 11:49+0900\n"
+"POT-Creation-Date: 2024-03-22T02:52:14+00:00\n"
+"PO-Revision-Date: 2024-03-22 11:52+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2632,14 +2632,10 @@ msgstr "レイヤー"
 msgid "Mix blend mode"
 msgstr "ミックスブレンドモード"
 
-#. translators: %1$s: <code>overflow-wrap: anywhere + word-break: keep-all</code>, %2$s: <code>wbr</code>
+#. translators: %1$s: <code>wbr</code>
 #: dist/js/editor/editor.js:7
-msgid ""
-"Use %1$s for automatic line breaks. Use %2$s to indicate a line break at an "
-"arbitrary position."
-msgstr ""
-"%1$s を使い自動改行します。任意の位置で改行を指示したい場合は %2$s を使用して"
-"ください。"
+msgid "Use %1$s to indicate a line break at an arbitrary position."
+msgstr "任意の位置で改行を指示したい場合は %1$s を使用してください。"
 
 #: dist/js/editor/editor.js:7
 msgid "Fluid typography"

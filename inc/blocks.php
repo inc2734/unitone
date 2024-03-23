@@ -75,17 +75,13 @@ add_filter(
 );
 
 /**
- * Add support "autoPhrase" to core blocks with typography.fontSize.
+ * Add support "autoPhrase" to core blocks.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
  */
 function unitone_add_auto_phrase_support( $metadata ) {
-	if ( false === strpos( $metadata['name'], 'core/' ) ) {
-		return $metadata;
-	}
-
-	if ( empty( $metadata['supports']['typography']['fontSize'] ) ) {
+	if ( ! in_array( $metadata['name'], array( 'core/paragraph', 'core/heading', 'core/list-item' ), true ) ) {
 		return $metadata;
 	}
 

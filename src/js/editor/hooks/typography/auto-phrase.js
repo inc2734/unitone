@@ -35,12 +35,11 @@ export function AutoPhraseEdit( props ) {
 				<span
 					dangerouslySetInnerHTML={ {
 						__html: sprintf(
-							// translators: %1$s: <code>overflow-wrap: anywhere + word-break: keep-all</code>, %2$s: <code>wbr</code>
+							// translators: %1$s: <code>wbr</code>
 							__(
-								'Use %1$s for automatic line breaks. Use %2$s to indicate a line break at an arbitrary position.',
+								'Use %1$s to indicate a line break at an arbitrary position.',
 								'unitone'
 							),
-							'<code>overflow-wrap: anywhere + word-break: keep-all</code>',
 							'<code>wbr</code>'
 						),
 					} }

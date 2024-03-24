@@ -5,23 +5,12 @@
 @include meta.load-css("button");
 @include meta.load-css("font-sizes");
 @include meta.load-css("has-background");
+@include meta.load-css("wp-block-audio");
 @include meta.load-css("wp-block-embed");
 @include meta.load-css("wp-block-post-content");
+@include meta.load-css("wp-block-table");
+@include meta.load-css("wp-block-video");
 
 .required {
 	color: var(--wp--preset--color--vivid-red);
-}
-
-figure {
-	margin-bottom: 0;
-}
-
-.wp-element-caption,
-.wp-block-audio figcaption,
-.wp-block-embed figcaption,
-.wp-block-gallery figcaption,
-.wp-block-image figcaption,
-.wp-block-table figcaption,
-.wp-block-video figcaption {
-	text-align: left;
 }

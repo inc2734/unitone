@@ -19,8 +19,9 @@ import {
 	SearchControl,
 } from '@wordpress/components';
 
-import { useSelect } from '@wordpress/data';
-import { useState, useEffect } from '@wordpress/element';
+import { useSelect, dispatch } from '@wordpress/data';
+import { useState, useCallback, useEffect } from '@wordpress/element';
+import { store as preferencesStore } from '@wordpress/preferences';
 import { __ } from '@wordpress/i18n';
 
 import icons from './feather-icons';
@@ -52,22 +53,151 @@ const DEFAULT_ICON_OBJECT_SETTINGS = {
 	innerHTML: `<span inert> </span>`,
 };
 
-function Edit( {
+const PREFERENCE_SCOPE = 'unitone/preferences';
+
+function InlineUI( { value, onChange, onClose, contentRef } ) {
+	dispatch( preferencesStore ).setDefaults( PREFERENCE_SCOPE, {
+		inlineIconStrokeWidth: DEFAULT_STROKE_WIDTH,
+	} );
+
+	const savedStrokeWidth = useSelect(
+		( select ) =>
+			select( preferencesStore ).get(
+				PREFERENCE_SCOPE,
+				'inlineIconStrokeWidth'
+			),
+		[]
+	);
+
+	const popoverAnchor = useAnchor( {
+		editableContentElement: contentRef.current,
+		settings,
+	} );
+
+	const [ searchText, setSearchText ] = useState( '' );
+	const [ strokeWidth, setStrokeWidth ] = useState(
+		! isNaN( savedStrokeWidth ) ? savedStrokeWidth : DEFAULT_STROKE_WIDTH
+	);
+
+	const filteredIcons = Object.values( icons )
+		.filter( ( icon ) => icon.name.includes( searchText ) )
+		.map( ( icon ) => {
+			return {
+				name: icon.name,
+				svg: icon.toSvg( {
+					'stroke-width': strokeWidth || DEFAULT_STROKE_WIDTH,
+				} ),
+			};
+		} );
+
+	return (
+		<Popover
+			placement="bottom"
+			shift={ true }
+			focusOnMount={ false }
+			anchor={ popoverAnchor }
+			className="block-editor-format-toolbar__image-popover"
+			onClose={ onClose }
+		>
+			<div
+				style={ {
+					width: 'min(90vw, 320px)',
+					maxHeight: 'min(90vh, 400px)',
+					padding: '16px',
+				} }
+			>
+				<SearchControl
+					value={ searchText }
+					onChange={ ( newValue ) => setSearchText( newValue ) }
+					onClose={ () => setSearchText( '' ) }
+				/>
+
+				<RangeControl
+					label={ __( 'Stroke width', 'unitone' ) }
+					value={ strokeWidth }
+					allowReset
+					initialPosition={ strokeWidth }
+					min={ 1 }
+					max={ 2 }
+					step={ 0.1 }
+					onChange={ ( newValue ) => setStrokeWidth( newValue ) }
+				/>
+
+				{ filteredIcons.map( ( icon, index ) => {
+					return (
+						<Button
+							key={ index }
+							className="has-icon"
+							onClick={ () => {
+								const newInlineSvg =
+									`url(data:image/svg+xml;charset=UTF-8,${ encodeURIComponent(
+										icon.svg
+									) })`.trim();
+
+								const newValue = insertObject(
+									value,
+									{
+										...DEFAULT_ICON_OBJECT_SETTINGS,
+										attributes: {
+											...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
+											style: `--unitone--inline-svg: ${ newInlineSvg }`,
+										},
+									},
+									value.end,
+									value.end
+								);
+								newValue.start = newValue.end - 1;
+								onChange( newValue );
+
+								if ( strokeWidth !== savedStrokeWidth ) {
+									dispatch( preferencesStore ).set(
+										PREFERENCE_SCOPE,
+										'inlineIconStrokeWidth',
+										strokeWidth
+									);
+								}
+
+								onClose();
+							} }
+						>
+							<span
+								dangerouslySetInnerHTML={ {
+									__html: icon.svg,
+								} }
+							/>
+						</Button>
+					);
+				} ) }
+
+				<div>
+					<Button variant="tertiary" onClick={ onClose }>
+						{ __( 'Close', 'unitone' ) }
+					</Button>
+				</div>
+			</div>
+		</Popover>
+	);
+}
+
+function ColorPicker( { value, onChange } ) {
+	return (
+		<ColorGradientControl
+			label={ __( 'Color', 'unitone' ) }
+			colorValue={ value }
+			onColorChange={ onChange }
+			{ ...useMultipleOriginColorsAndGradients() }
+			__experimentalHasMultipleOrigins={ true }
+			__experimentalIsRenderedInSidebar={ true }
+		/>
+	);
+}
+
+function ColorPickerUI( {
 	value,
 	onChange,
-	onFocus,
-	isObjectActive,
 	activeObjectAttributes,
 	contentRef,
 } ) {
-	const [ isModalOpen, setIsModalOpen ] = useState( false );
-	const [ searchText, setSearchText ] = useState( '' );
-	const [ strokeWidth, setStrokeWidth ] = useState( DEFAULT_STROKE_WIDTH );
-
-	useEffect( () => {
-		closeModal();
-	}, [ value.start ] );
-
 	const { style } = activeObjectAttributes;
 
 	const inlineSvg = style?.match(
@@ -85,24 +215,85 @@ function Edit( {
 		settings,
 	} );
 
-	function openModal() {
+	return (
+		<Popover
+			placement="bottom"
+			shift={ true }
+			focusOnMount={ false }
+			anchor={ popoverAnchor }
+			className="block-editor-format-toolbar__image-popover"
+		>
+			<div
+				style={ {
+					width: '260px',
+					padding: '16px',
+				} }
+			>
+				<ColorPicker
+					value={ color }
+					onChange={ ( newValue ) => {
+						const newReplacements = value.replacements.slice();
+
+						const newStye = [];
+						if ( !! inlineSvg ) {
+							newStye.push(
+								`--unitone--inline-svg: ${ inlineSvg }`
+							);
+						}
+						if ( !! newValue ) {
+							const colorObj = getColorObjectByColorValue(
+								colors,
+								newValue
+							);
+							const cssVarValue =
+								!! colorObj?.slug &&
+								`var(--wp--preset--color--${ colorObj?.slug })`;
+
+							newStye.push(
+								`--unitone--color: ${ cssVarValue || newValue }`
+							);
+						}
+
+						newReplacements[ value.start ] = {
+							...DEFAULT_ICON_OBJECT_SETTINGS,
+							attributes: {
+								...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
+								...activeObjectAttributes,
+								style: newStye.join( ';' ),
+							},
+						};
+
+						onChange( {
+							...value,
+							replacements: newReplacements,
+						} );
+					} }
+				/>
+			</div>
+		</Popover>
+	);
+}
+
+function Edit( {
+	value,
+	onChange,
+	isObjectActive,
+	activeObjectAttributes,
+	contentRef,
+} ) {
+	const [ isModalOpen, setIsModalOpen ] = useState( false );
+
+	const openModal = useCallback( () => {
 		setIsModalOpen( true );
-	}
+	}, [ setIsModalOpen ] );
 
-	function closeModal() {
+	const closeModal = useCallback( () => {
 		setIsModalOpen( false );
-	}
+	}, [ setIsModalOpen ] );
 
-	const filteredIcons = Object.values( icons )
-		.filter( ( icon ) => icon.name.includes( searchText ) )
-		.map( ( icon ) => {
-			return {
-				name: icon.name,
-				svg: icon.toSvg( {
-					'stroke-width': strokeWidth || DEFAULT_STROKE_WIDTH,
-				} ),
-			};
-		} );
+	useEffect( () => {
+		closeModal();
+	}, [ value.start ] );
 
 	return (
 		<>
@@ -130,166 +321,24 @@ function Edit( {
 			/>
 
 			{ isModalOpen && (
-				<Popover
-					placement="bottom"
-					shift={ true }
-					focusOnMount={ false }
-					anchor={ popoverAnchor }
-					className="block-editor-format-toolbar__image-popover"
+				<InlineUI
+					value={ value }
+					onChange={ onChange }
 					onClose={ closeModal }
-				>
-					<div
-						style={ {
-							width: 'min(90vw, 320px)',
-							maxHeight: 'min(90vh, 400px)',
-							padding: '16px',
-						} }
-					>
-						<SearchControl
-							value={ searchText }
-							onChange={ ( newValue ) =>
-								setSearchText( newValue )
-							}
-							onClose={ () => setSearchText( '' ) }
-						/>
-
-						<RangeControl
-							label={ __( 'Stroke width', 'unitone' ) }
-							value={ strokeWidth }
-							allowReset
-							initialPosition={ strokeWidth }
-							min={ 1 }
-							max={ 2 }
-							step={ 0.1 }
-							onChange={ ( newValue ) =>
-								setStrokeWidth( newValue )
-							}
-						/>
-
-						{ filteredIcons.map( ( icon, index ) => {
-							return (
-								<Button
-									key={ index }
-									className="has-icon"
-									onClick={ () => {
-										const newInlineSvg =
-											`url(data:image/svg+xml;charset=UTF-8,${ encodeURIComponent(
-												icon.svg
-											) })`.trim();
-
-										const newValue = insertObject(
-											value,
-											{
-												...DEFAULT_ICON_OBJECT_SETTINGS,
-												attributes: {
-													...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
-													style: `--unitone--inline-svg: ${ newInlineSvg }`,
-												},
-											},
-											value.end,
-											value.end
-										);
-										newValue.start = newValue.end - 1;
-										onChange( newValue );
-
-										onFocus();
-										closeModal();
-									} }
-								>
-									<span
-										dangerouslySetInnerHTML={ {
-											__html: icon.svg,
-										} }
-									/>
-								</Button>
-							);
-						} ) }
-
-						<div>
-							<Button variant="tertiary" onClick={ closeModal }>
-								{ __( 'Close', 'unitone' ) }
-							</Button>
-						</div>
-					</div>
-				</Popover>
+					contentRef={ contentRef }
+				/>
 			) }
 
 			{ isObjectActive && (
-				<Popover
-					placement="bottom"
-					shift={ true }
-					focusOnMount={ false }
-					anchor={ popoverAnchor }
-					className="block-editor-format-toolbar__image-popover"
-					onClose={ closeModal }
-				>
-					<div
-						style={ {
-							width: '260px',
-							padding: '16px',
-						} }
-					>
-						<ColorPicker
-							value={ color }
-							onChange={ ( newValue ) => {
-								const newReplacements =
-									value.replacements.slice();
-
-								const newStye = [];
-								if ( !! inlineSvg ) {
-									newStye.push(
-										`--unitone--inline-svg: ${ inlineSvg }`
-									);
-								}
-								if ( !! newValue ) {
-									const colorObj = getColorObjectByColorValue(
-										colors,
-										newValue
-									);
-									const cssVarValue =
-										!! colorObj?.slug &&
-										`var(--wp--preset--color--${ colorObj?.slug })`;
-
-									newStye.push(
-										`--unitone--color: ${
-											cssVarValue || newValue
-										}`
-									);
-								}
-
-								newReplacements[ value.start ] = {
-									...DEFAULT_ICON_OBJECT_SETTINGS,
-									attributes: {
-										...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
-										...activeObjectAttributes,
-										style: newStye.join( ';' ),
-									},
-								};
-
-								onChange( {
-									...value,
-									replacements: newReplacements,
-								} );
-							} }
-						/>
-					</div>
-				</Popover>
+				<ColorPickerUI
+					value={ value }
+					onChange={ onChange }
+					activeObjectAttributes={ activeObjectAttributes }
+					contentRef={ contentRef }
+				/>
 			) }
 		</>
 	);
 }
 
 registerFormatType( settings.name, settings );
-
-function ColorPicker( { value, onChange } ) {
-	return (
-		<ColorGradientControl
-			label={ __( 'Color', 'unitone' ) }
-			colorValue={ value }
-			onColorChange={ onChange }
-			{ ...useMultipleOriginColorsAndGradients() }
-			__experimentalHasMultipleOrigins={ true }
-			__experimentalIsRenderedInSidebar={ true }
-		/>
-	);
-}

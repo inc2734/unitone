@@ -1,0 +1,7 @@
+.wp-block-gallery {
+	--wp--style--block-gap: var(--unitone--s-1);
+
+	&.has-nested-images figcaption {
+		text-align: left;
+	}
+}

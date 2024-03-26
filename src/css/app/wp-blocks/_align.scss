@@ -19,8 +19,8 @@
 	margin-block-start: 0;
 }
 
-body .is-layout-flow,
-body .is-layout-constrained,
+.is-layout-flow,
+.is-layout-constrained,
 .is-root-container {
 	> .alignright,
 	> .alignleft {
@@ -33,14 +33,12 @@ body .is-layout-constrained,
 
 	> .alignright.alignright {
 		float: right;
-		margin-top: 0;
 		margin-bottom: var(--unitone--global--text-gap);
 		margin-left: var(--unitone--global--text-gap);
 	}
 
 	> .alignleft.alignleft {
 		float: left;
-		margin-top: 0;
 		margin-right: var(--unitone--global--text-gap);
 		margin-bottom: var(--unitone--global--text-gap);
 	}

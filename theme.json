@@ -394,6 +394,17 @@
 					}
 				}
 			},
+			"core/gallery": {
+				"elements": {
+					"caption": {
+						"spacing": {
+							"margin": {
+								"top": "calc(-1 * var(--wp--style--unstable-gallery-gap) + var(--unitone--s-1))"
+							}
+						}
+					}
+				}
+			},
 			"core/social-links": {
 				"typography": {
 					"fontSize": "inherit"

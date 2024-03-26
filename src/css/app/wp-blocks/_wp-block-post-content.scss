@@ -5,23 +5,42 @@
 	@include text.abstract-text();
 
 	> * {
-		--unitone--global--text-gap: calc(var(--unitone--margin-top, 1) * var(--unitone--s1)); // If you use --unitone--gap, what you set for "gap" will affect the margin as well.
+		--unitone--margin-top: 1; // @deprecated
+		--unitone--text-gap-scale: var(--unitone--margin-top);
+		--unitone--text-gap-increment: 0px;
+		--unitone--global--text-gap: calc(var(--unitone--text-gap-scale, 1) * var(--unitone--s1) + var(--unitone--text-gap-increment)); // If you use --unitone--gap, what you set for "gap" will affect the margin as well.
 	}
 
 	> :where(h2, h3, h4, h5, h6) {
-		--unitone--margin-top: 2;
+		--unitone--text-gap-scale: 2;
 
 		& + :where(h2, h3, h4, h5, h6) {
-			--unitone--margin-top: 1;
+			--unitone--text-gap-scale: 1;
 		}
 	}
 
 	> h5 + * {
-		--unitone--margin-top: .5;
+		--unitone--text-gap-scale: .5;
 	}
 
 	> h6 + * {
-		--unitone--margin-top: .5;
+		--unitone--text-gap-scale: .5;
+	}
+
+	> .wp-block-audio,
+	> .wp-block-embed,
+	> .wp-block-image,
+	> .wp-block-table,
+	> .wp-block-video {
+		--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
+
+		&:first-child {
+			margin-block-start: calc(1em * var(--unitone--half-leading));
+		}
+
+		&:not(.alignleft):not(.alignright) + * {
+		--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
+		}
 	}
 }
 

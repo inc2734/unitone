@@ -49,4 +49,15 @@
 			}
 		}
 	}
+
+	.block-editor-block-list__block.wp-block-embed {
+		.wp-block-embed {
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		.is-provider-wp-oembed-blog-card {
+			width: 100%;
+		}
+	}
 }

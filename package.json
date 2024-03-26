@@ -7,7 +7,7 @@
 		"node": "20.11.1"
 	},
 	"devDependencies": {
-		"@inc2734/unitone-css": "^0.56.1",
+		"@inc2734/unitone-css": "^0.56.2",
 		"@wordpress/env": "^9.6.0",
 		"@wordpress/icons": "^9.45.0",
 		"@wordpress/interface": "^5.31.0",
@@ -15,7 +15,7 @@
 		"autoprefixer": "^10.4.19",
 		"classnames": "^2.5.1",
 		"cpy-cli": "^5.0.0",
-		"cssnano": "^6.1.1",
+		"cssnano": "^6.1.2",
 		"eslint-import-resolver-exports": "^1.0.0-beta.5",
 		"feather-icons": "^4.29.1",
 		"lodash": "^4.17.21",

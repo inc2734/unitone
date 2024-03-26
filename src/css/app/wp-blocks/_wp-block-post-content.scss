@@ -31,7 +31,8 @@
 	> .wp-block-embed,
 	> .wp-block-image,
 	> .wp-block-table,
-	> .wp-block-video {
+	> .wp-block-video,
+	> .wp-block-code {
 		--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
 
 		&:first-child {

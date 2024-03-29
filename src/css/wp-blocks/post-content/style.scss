@@ -1,16 +1,18 @@
 @use '../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
 
-:where(
-	.is-layout-constrained,
-	.is-root-container
-) {
+.is-layout-constrained,
+.is-root-container {
 	@include text.abstract-text();
 
-  @for $i from -2 through 7 {
-    &[data-unitone-layout~="-gap\:#{ $i }"] > * {
-      --unitone--text-gap: var(--unitone--s#{ $i }) !important;
-    }
-  }
+	&[data-unitone-layout*="-gap\:"] {
+		--unitone--gap: inherit !important;
+	}
+
+	@for $i from -2 through 7 {
+		&[data-unitone-layout~="-gap\:#{ $i }"] > * {
+			--unitone--text-gap: var(--unitone--s#{ $i }) !important;
+		}
+	}
 
 	> * {
 		--unitone--text-gap-scale: 1;

@@ -187,13 +187,13 @@ function unitone_add_cell_min_width_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_cell_min_width_support' );
 
 /**
- * Add support "gap" to core/post-template.
+ * Add support "gap" to core/post-content and core/post-template.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
  */
 function unitone_add_gap_support( $metadata ) {
-	if ( 'core/post-template' !== $metadata['name'] ) {
+	if ( ! in_array( $metadata['name'], array( 'core/post-content', 'core/post-template' ), true ) ) {
 		return $metadata;
 	}
 

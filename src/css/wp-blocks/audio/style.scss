@@ -1,7 +1,9 @@
 .wp-block-audio {
-	width: 100%;
-
 	audio {
 		vertical-align: top;
 	}
+}
+
+figure.wp-block-audio {
+	width: 100%;
 }

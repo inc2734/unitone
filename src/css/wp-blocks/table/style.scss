@@ -7,7 +7,7 @@
 	overflow-x: auto;
 	scrollbar-color: var(--unitone--scrollbar-thumb-color) var(--unitone--scrollbar-track-color);
 	scrollbar-width: 1rem;
-	width: auto;
+	width: 100%;
 
 	&::-webkit-scrollbar {
 		height: 1rem;

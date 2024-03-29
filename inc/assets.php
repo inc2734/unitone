@@ -126,15 +126,19 @@ add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_assets'
 function unitone_enqueue_block_styles() {
 	$styled_blocks = array(
 		'core/archives'           => array(),
+		'core/audio'              => array(),
 		'core/categories'         => array(),
 		'core/code'               => array(),
 		'core/columns'            => array(),
 		'core/comments'           => array(),
+		'core/embed'              => array(),
+		'core/gallery'            => array(),
 		'core/image'              => array(),
 		'core/latest-comments'    => array(),
 		'core/latest-posts'       => array(),
 		'core/navigation'         => array(),
 		'core/post-comments-form' => array(),
+		'core/post-content'       => array(),
 		'core/post-terms'         => array(),
 		'core/post-title'         => array(),
 		'core/pullquote'          => array(),
@@ -147,6 +151,7 @@ function unitone_enqueue_block_styles() {
 		'core/site-title'         => array(),
 		'core/social-links'       => array(),
 		'core/table'              => array(),
+		'core/video'              => array(),
 	);
 
 	foreach ( $styled_blocks as $block_type => $block_type_args ) {

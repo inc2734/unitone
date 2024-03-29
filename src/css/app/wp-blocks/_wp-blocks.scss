@@ -5,12 +5,6 @@
 @include meta.load-css("button");
 @include meta.load-css("font-sizes");
 @include meta.load-css("has-background");
-@include meta.load-css("wp-block-audio");
-@include meta.load-css("wp-block-embed");
-@include meta.load-css("wp-block-gallery");
-@include meta.load-css("wp-block-post-content");
-@include meta.load-css("wp-block-table");
-@include meta.load-css("wp-block-video");
 
 .required {
 	color: var(--wp--preset--color--vivid-red);

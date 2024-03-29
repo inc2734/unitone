@@ -1,14 +1,22 @@
 @use '../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
 
-.is-layout-constrained,
-.is-root-container {
+:where(
+	.is-layout-constrained,
+	.is-root-container
+) {
 	@include text.abstract-text();
 
+  @for $i from -2 through 7 {
+    &[data-unitone-layout~="-gap\:#{ $i }"] > * {
+      --unitone--text-gap: var(--unitone--s#{ $i }) !important;
+    }
+  }
+
 	> * {
-		--unitone--margin-top: 1; // @deprecated
-		--unitone--text-gap-scale: var(--unitone--margin-top);
+		--unitone--text-gap-scale: 1;
+		--unitone--text-gap: var(--unitone--global--text-gap);
 		--unitone--text-gap-increment: 0px;
-		--unitone--global--text-gap: calc(var(--unitone--text-gap-scale, 1) * var(--unitone--s1) + var(--unitone--text-gap-increment)); // If you use --unitone--gap, what you set for "gap" will affect the margin as well.
+		--unitone--margin-block: calc(var(--unitone--text-gap-scale) * var(--unitone--text-gap) + var(--unitone--text-gap-increment));
 	}
 
 	> :where(h2, h3, h4, h5, h6) {
@@ -35,12 +43,12 @@
 	> .wp-block-code {
 		--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
 
-		&:first-child {
+		&:first-child:first-child {
 			margin-block-start: calc(1em * var(--unitone--half-leading));
 		}
 
 		&:not(.alignleft):not(.alignright) + * {
-		--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
+			--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
 		}
 	}
 }

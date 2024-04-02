@@ -2,18 +2,21 @@ import {
 	SelectControl,
 	RangeControl,
 	BaseControl,
-	ToggleControl,
 } from '@wordpress/components';
 
 import { __ } from '@wordpress/i18n';
+
+import { isNumber } from './utils';
 
 export function SpacingSizeControl( {
 	options,
 	onChange,
 	label,
 	value,
-	allowRoot = false,
+	isMixed = false,
 } ) {
+	value = isMixed ? 'mixed' : value;
+
 	const defaultOptions = [
 		{
 			label: '',
@@ -63,57 +66,70 @@ export function SpacingSizeControl( {
 
 	options = ! options ? defaultOptions : options;
 
-	const marks = options.map( ( newValue ) => ( {
-		value: !! newValue?.value
-			? parseInt( newValue?.value )
-			: newValue?.value,
-		label: undefined,
-	} ) );
+	if ( isMixed ) {
+		options.unshift( {
+			label: __( 'Mixed' ),
+			value: 'mixed',
+			disabled: true,
+		} );
+	}
 
-	return (
-		<BaseControl
-			id={ label }
-			label={ label }
-			className="spacing-sizes-control"
-		>
-			{ allowRoot && (
-				<div style={ { marginTop: '12px', marginBottom: '12px' } }>
-					<ToggleControl
-						label={ __( 'Using root padding', 'unitone' ) }
-						checked={ 'root' === value }
-						onChange={ ( newValue ) => {
-							onChange( newValue ? 'root' : undefined );
-						} }
+	const marks = options
+		.map( ( newValue ) => {
+			return isNumber( newValue?.value )
+				? {
+						value: parseInt( newValue?.value ),
+						label: undefined,
+				  }
+				: undefined;
+		} )
+		.filter( Boolean );
+
+	function Controls() {
+		return (
+			<>
+				<RangeControl
+					className="spacing-sizes-control__range-control"
+					value={ isMixed ? -2 : parseInt( value ) }
+					allowReset
+					resetFallbackValue={ undefined }
+					onChange={ onChange }
+					withInputField={ false }
+					aria-valuenow={ value }
+					aria-valuetext={ value }
+					min={ marks[ 0 ]?.value || marks[ 1 ]?.value }
+					max={ marks[ marks.length - 1 ]?.value }
+					marks={ marks }
+					hideLabelFromVision
+					__nextHasNoMarginBottom
+				/>
+
+				<div style={ { marginTop: '5px' } }>
+					<SelectControl
+						value={ value || '' }
+						options={ options }
+						onChange={ onChange }
 					/>
 				</div>
-			) }
+			</>
+		);
+	}
 
-			{ 'root' !== value && (
-				<>
-					<RangeControl
-						className="spacing-sizes-control__range-control"
-						value={ parseInt( value ) }
-						allowReset={ true }
-						resetFallbackValue={ undefined }
-						onChange={ onChange }
-						withInputField={ false }
-						aria-valuenow={ value }
-						aria-valuetext={ value }
-						min={ options[ 0 ]?.value || options[ 1 ]?.value }
-						max={ options[ options.length - 1 ]?.value }
-						marks={ marks }
-						hideLabelFromVision={ true }
-					/>
-
-					<div style={ { marginTop: '5px' } }>
-						<SelectControl
-							value={ value || '' }
-							options={ options }
-							onChange={ onChange }
-						/>
-					</div>
-				</>
+	return (
+		<>
+			{ !! label ? (
+				<BaseControl
+					id={ label }
+					label={ label }
+					className="spacing-sizes-control"
+				>
+					<Controls />
+				</BaseControl>
+			) : (
+				<div className="spacing-sizes-control">
+					<Controls />
+				</div>
 			) }
-		</BaseControl>
+		</>
 	);
 }

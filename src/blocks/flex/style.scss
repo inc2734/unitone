@@ -1,7 +1,10 @@
 .unitone-flex {
 	--unitone--gap: var(--unitone--global--text-gap);
+	--unitone--column-gap: var(--unitone--gap);
+	--unitone--row-gap: var(--unitone--gap);
 
-	gap: var(--unitone--gap);
+	column-gap: var(--unitone--column-gap);
+	row-gap: var(--unitone--row-gap);
 	flex-direction: row;
 	justify-content: start;
 
@@ -18,5 +21,6 @@
 }
 
 .editor-styles-wrapper .unitone-flex {
-	gap: var(--unitone--gap);
+	column-gap: var(--unitone--column-gap);
+	row-gap: var(--unitone--row-gap);
 }

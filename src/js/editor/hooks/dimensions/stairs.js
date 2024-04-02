@@ -86,14 +86,6 @@ export function useIsStairsDisabled( props ) {
 		return false;
 	}
 
-	const className = props.attributes?.className;
-	if ( !! className ) {
-		return ! className.split( ' ' ).some( ( needle ) => {
-			needle = needle.replace( 'is-style-', '' );
-			return blockSupport.styles?.[ needle ];
-		} );
-	}
-
 	return true;
 }
 

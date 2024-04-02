@@ -1,6 +1,8 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 
+import { isNumber } from '../utils';
+
 export function hasHalfLeadingValue( props ) {
 	return props.attributes?.unitone?.halfLeading !== undefined;
 }
@@ -30,9 +32,7 @@ export function HalfLeadingEdit( props ) {
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
-					halfLeading: ! isNaN( newValue )
-						? parseFloat( newValue )
-						: undefined,
+					halfLeading: isNumber( newValue ) ? newValue : undefined,
 				};
 				if ( null == newUnitone.halfLeading ) {
 					delete newUnitone.halfLeading;

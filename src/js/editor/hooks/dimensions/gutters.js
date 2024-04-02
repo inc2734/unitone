@@ -1,10 +1,12 @@
 import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import { BaseControl, ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
+import { cleanEmptyObject } from '../utils';
 
 export function hasGuttersValue( props ) {
 	const { name, attributes } = props;
@@ -64,36 +66,55 @@ export function GuttersEdit( props ) {
 	}, [] );
 
 	return (
-		<SpacingSizeControl
-			label={ label }
-			value={ unitone?.gutters }
-			allowRoot
-			onChange={ ( newValue ) => {
-				if ( 'undefined' !== typeof newValue ) {
-					// RangeControl returns Int, SelectControl returns String.
-					// So cast Int all values.
-					newValue = String( newValue );
-				}
+		<BaseControl id={ label } label={ label }>
+			<div
+				style={ {
+					marginTop: '12px',
+					marginBottom: '12px',
+				} }
+			>
+				<ToggleControl
+					label={ __( 'Using root padding', 'unitone' ) }
+					checked={ 'root' === unitone?.gutters }
+					onChange={ ( newValue ) => {
+						setAttributes( {
+							unitone: {
+								...unitone,
+								gutters: newValue ? 'root' : undefined,
+							},
+						} );
+					} }
+				/>
+			</div>
 
-				const newUnitone = {
-					...unitone,
-					gutters: newValue || undefined,
-				};
-				if ( null == newUnitone.gutters ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.gutters;
-					} else {
-						newUnitone.gutters = '';
-					}
-				}
+			{ 'root' !== unitone?.gutters && (
+				<SpacingSizeControl
+					value={ unitone?.gutters }
+					onChange={ ( newValue ) => {
+						if ( null == newValue ) {
+							newValue = defaultValue;
+						}
 
-				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
-				} );
-			} }
-		/>
+						if ( null != newValue ) {
+							// RangeControl returns Int, SelectControl returns String.
+							// So cast Int all values.
+							newValue = String( newValue );
+						}
+
+						const newUnitone = cleanEmptyObject( {
+							...unitone,
+							gutters: newValue || undefined,
+						} );
+
+						setAttributes( {
+							unitone: !! Object.keys( newUnitone ).length
+								? newUnitone
+								: undefined,
+						} );
+					} }
+				/>
+			) }
+		</BaseControl>
 	);
 }
 

@@ -318,7 +318,7 @@ add_filter(
 		 * @return boolean Return true if value is string in format var:style|global|.
 		 */
 		$is_value_global_style = function ( $value ) {
-			if ( null === $value || '' === $value ) {
+			if ( null === $value || '' === $value || is_array( $value ) ) {
 				return false;
 			}
 
@@ -382,7 +382,7 @@ add_filter(
 
 				if ( is_bool( $value ) ) {
 					$attribute = $name;
-				} else {
+				} elseif ( ! is_array( $value ) ) {
 					$attribute = $name . ':' . $value;
 				}
 
@@ -462,7 +462,19 @@ add_filter(
 
 		// -gap
 		if ( $is_supported( 'gap' ) ) {
-			$add_attribute( '-gap', $get_attribute( 'gap' ) );
+			$column_gap = $get_attribute( 'gap.column' );
+			if ( ! is_null( $column_gap ) ) {
+				$add_attribute( '-column-gap', $column_gap );
+			}
+
+			$row_gap = $get_attribute( 'gap.row' );
+			if ( ! is_null( $row_gap ) ) {
+				$add_attribute( '-row-gap', $row_gap );
+			}
+
+			if ( is_null( $column_gap ) && is_null( $row_gap ) ) {
+				$add_attribute( '-gap', $get_attribute( 'gap' ) );
+			}
 		}
 
 		// -gutters

@@ -1,6 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
+	"version": "10.9.0",
 	"textdomain": "unitone",
 	"name": "unitone/with-sidebar",
 	"title": "With sidebar",
@@ -55,7 +56,9 @@
 			}
 		},
 		"unitone": {
-			"gap": true,
+			"gap": {
+				"splitOnAxis": true
+			},
 			"alignItems": true,
 			"fluidTypography": true,
 			"lineHeight": true

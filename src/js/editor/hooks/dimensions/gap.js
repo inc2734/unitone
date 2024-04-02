@@ -6,10 +6,22 @@ import {
 	store as blocksStore,
 } from '@wordpress/blocks';
 
+import {
+	BaseControl,
+	Button,
+	Tooltip,
+	Flex,
+	FlexBlock,
+	FlexItem,
+} from '@wordpress/components';
+
 import { useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
+import { link, linkOff } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
+import { cleanEmptyObject, isNumber, isString } from '../utils';
 
 export function hasGapValue( props ) {
 	const { name, attributes } = props;
@@ -48,7 +60,7 @@ export function useIsGapDisabled( props ) {
 	}
 
 	const blockSupport = getBlockSupport( blockName, 'unitone.gap' );
-	if ( true === blockSupport ) {
+	if ( !! blockSupport ) {
 		return false;
 	}
 
@@ -71,6 +83,103 @@ export function getGapEditLabel( props ) {
 	return __unstableUnitoneSupports?.gap?.label || __( 'Gap', 'unitone' );
 }
 
+function LinkedButton( { isLinked, ...props } ) {
+	const label = isLinked ? __( 'Unlink sides' ) : __( 'Link sides' );
+
+	return (
+		<Tooltip text={ label }>
+			<Button
+				{ ...props }
+				className="component-box-control__linked-button"
+				size="small"
+				icon={ isLinked ? link : linkOff }
+				iconSize={ 24 }
+				aria-label={ label }
+			/>
+		</Tooltip>
+	);
+}
+
+function IconAll() {
+	return (
+		<svg
+			width="16"
+			height="16"
+			viewBox="0 0 16 16"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M3 2H13V0H3V2ZM3 16H13V14H3V16Z"
+				fill="currentColor"
+			/>
+
+			<path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M0 3V13H2L2 3H0ZM14 3V13H16V3H14Z"
+				fill="currentColor"
+			/>
+		</svg>
+	);
+}
+
+function IconVertical() {
+	return (
+		<svg
+			width="16"
+			height="16"
+			viewBox="0 0 16 16"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M3 2H13V0H3V2ZM3 16H13V14H3V16Z"
+				fill="currentColor"
+			/>
+
+			<path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M0 3V13H2L2 3H0ZM14 3V13H16V3H14Z"
+				fill="currentColor"
+				opacity={ 0.3 }
+			/>
+		</svg>
+	);
+}
+
+function IconHorizontal() {
+	return (
+		<svg
+			width="16"
+			height="16"
+			viewBox="0 0 16 16"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M3 2H13V0H3V2ZM3 16H13V14H3V16Z"
+				fill="currentColor"
+				opacity={ 0.3 }
+			/>
+
+			<path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M0 3V13H2L2 3H0ZM14 3V13H16V3H14Z"
+				fill="currentColor"
+			/>
+		</svg>
+	);
+}
+
 export function GapEdit( props ) {
 	const {
 		name,
@@ -79,41 +188,190 @@ export function GapEdit( props ) {
 		setAttributes,
 	} = props;
 
+	const splitOnAxis =
+		getBlockSupport( name, 'unitone.gap.splitOnAxis' ) || false;
+	const isMixed = unitone?.gap?.column !== unitone?.gap?.row;
+
+	const [ isLinked, setIsLinked ] = useState( ! isMixed );
+
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.gap;
 	}, [] );
 
+	const onChangeGap = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue;
+		}
+
+		if ( null != newValue ) {
+			// RangeControl returns Int, SelectControl returns String.
+			// So cast Int all values.
+			newValue = String( newValue );
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			gap: newValue,
+		} );
+
+		setAttributes( {
+			unitone: !! Object.keys( newUnitone ).length
+				? newUnitone
+				: undefined,
+		} );
+	};
+
+	const onChangeColumnGap = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.column || defaultValue;
+		}
+
+		if ( null != newValue ) {
+			// RangeControl returns Int, SelectControl returns String.
+			// So cast Int all values.
+			newValue = String( newValue );
+		}
+
+		const newUnitone = cleanEmptyObject(
+			newValue === String( unitone?.gap?.row )
+				? {
+						...unitone,
+						gap: newValue,
+				  }
+				: {
+						...unitone,
+						gap: {
+							column: newValue,
+							row:
+								unitone?.gap?.row ||
+								( ( isNumber( unitone.gap ) ||
+									isString( unitone.gap ) ) &&
+									unitone.gap ) ||
+								undefined,
+						},
+				  }
+		);
+
+		setAttributes( {
+			unitone: !! Object.keys( newUnitone ).length
+				? newUnitone
+				: undefined,
+		} );
+	};
+
+	const onChangeRowGap = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.row || defaultValue;
+		}
+
+		if ( null != newValue ) {
+			// RangeControl returns Int, SelectControl returns String.
+			// So cast Int all values.
+			newValue = String( newValue );
+		}
+
+		const newUnitone = cleanEmptyObject(
+			newValue === String( unitone?.gap?.column )
+				? {
+						...unitone,
+						gap: newValue,
+				  }
+				: {
+						...unitone,
+						gap: {
+							row: newValue,
+							column:
+								unitone?.gap?.column ||
+								( ( isNumber( unitone.gap ) ||
+									isString( unitone.gap ) ) &&
+									unitone.gap ) ||
+								undefined,
+						},
+				  }
+		);
+
+		setAttributes( {
+			unitone: !! Object.keys( newUnitone ).length
+				? newUnitone
+				: undefined,
+		} );
+	};
+
 	return (
-		<SpacingSizeControl
-			label={ label }
-			value={ unitone?.gap }
-			onChange={ ( newValue ) => {
-				if ( 'undefined' !== typeof newValue ) {
-					// RangeControl returns Int, SelectControl returns String.
-					// So cast Int all values.
-					newValue = String( newValue );
-				}
+		<div className="spacing-sizes-control">
+			<Flex>
+				<FlexBlock>
+					<BaseControl.VisualLabel>{ label }</BaseControl.VisualLabel>
+				</FlexBlock>
 
-				const newUnitone = {
-					...unitone,
-					gap: newValue || undefined,
-				};
-				if ( null == newUnitone.gap ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.gap;
-					} else {
-						newUnitone.gap = '';
-					}
-				}
+				{ splitOnAxis && (
+					<FlexItem>
+						<LinkedButton
+							isLinked={ isLinked }
+							onClick={ () => setIsLinked( ! isLinked ) }
+						/>
+					</FlexItem>
+				) }
+			</Flex>
 
-				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
-				} );
-			} }
-		/>
+			{ ! splitOnAxis ? (
+				<SpacingSizeControl
+					value={ unitone?.gap }
+					onChange={ onChangeGap }
+				/>
+			) : (
+				<>
+					{ isLinked ? (
+						<Flex align="start">
+							<FlexItem style={ { marginTop: '11px' } }>
+								<IconAll />
+							</FlexItem>
+
+							<FlexBlock>
+								<SpacingSizeControl
+									value={ ! isMixed && unitone?.gap }
+									isMixed={ isMixed }
+									onChange={ onChangeGap }
+								/>
+							</FlexBlock>
+						</Flex>
+					) : (
+						<>
+							<Flex align="start">
+								<FlexItem style={ { marginTop: '11px' } }>
+									<IconHorizontal />
+								</FlexItem>
+
+								<FlexBlock>
+									<SpacingSizeControl
+										value={
+											unitone?.gap?.column || unitone?.gap
+										}
+										onChange={ onChangeColumnGap }
+									/>
+								</FlexBlock>
+							</Flex>
+
+							<Flex align="start">
+								<FlexItem style={ { marginTop: '11px' } }>
+									<IconVertical />
+								</FlexItem>
+
+								<FlexBlock>
+									<SpacingSizeControl
+										value={
+											unitone?.gap?.row || unitone?.gap
+										}
+										onChange={ onChangeRowGap }
+									/>
+								</FlexBlock>
+							</Flex>
+						</>
+					) }
+				</>
+			) }
+		</div>
 	);
 }
 
@@ -137,7 +395,15 @@ export function saveGapProp( extraProps, blockType, attributes ) {
 
 	extraProps[ 'data-unitone-layout' ] = classnames(
 		extraProps[ 'data-unitone-layout' ],
-		`-gap:${ attributes.unitone?.gap }`
+		{
+			[ `-gap:${ attributes.unitone?.gap }` ]:
+				null == attributes.unitone?.gap?.column &&
+				null == attributes.unitone?.gap?.row,
+			[ `-column-gap:${ attributes.unitone?.gap?.column }` ]:
+				null != attributes.unitone?.gap?.column,
+			[ `-row-gap:${ attributes.unitone?.gap?.row }` ]:
+				null != attributes.unitone?.gap?.row,
+		}
 	);
 
 	return extraProps;

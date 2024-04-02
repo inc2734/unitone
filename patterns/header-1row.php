@@ -10,7 +10,7 @@
 <div data-unitone-layout="container">
 	<!-- wp:unitone/gutters {"unitone":{"padding":"-1"}} -->
 	<div data-unitone-layout="gutters">
-		<!-- wp:unitone/both-sides {"unitone":{"alignItems":"center","gap":-1}} -->
+		<!-- wp:unitone/both-sides {"unitone":{"alignItems":"center","gap":{"column":"-1","row":"-2"}}} -->
 		<div data-unitone-layout="both-sides">
 			<!-- wp:unitone/stack {"unitone":{"gap":"0"}} -->
 			<div data-unitone-layout="stack">

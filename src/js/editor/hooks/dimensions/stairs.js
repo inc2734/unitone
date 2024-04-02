@@ -15,6 +15,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
+import { cleanEmptyObject } from '../utils';
 
 export function hasStairsValue( props ) {
 	const { name, attributes } = props;
@@ -118,23 +119,20 @@ export function StairsEdit( props ) {
 			label={ label }
 			value={ unitone?.stairs }
 			onChange={ ( newValue ) => {
-				if ( 'undefined' !== typeof newValue ) {
+				if ( null == newValue ) {
+					newValue = defaultValue;
+				}
+
+				if ( null != newValue ) {
 					// RangeControl returns Int, SelectControl returns String.
 					// So cast Int all values.
 					newValue = String( newValue );
 				}
 
-				const newUnitone = {
+				const newUnitone = cleanEmptyObject( {
 					...unitone,
 					stairs: newValue || undefined,
-				};
-				if ( null == newUnitone.stairs ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.stairs;
-					} else {
-						newUnitone.stairs = '';
-					}
-				}
+				} );
 
 				setAttributes( {
 					unitone: !! Object.keys( newUnitone ).length

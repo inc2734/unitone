@@ -8,6 +8,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
+import { cleanEmptyObject } from '../utils';
 
 export function hasPaddingValue( props ) {
 	const { name, attributes } = props;
@@ -70,23 +71,20 @@ export function PaddingEdit( props ) {
 			label={ label }
 			value={ unitone?.padding }
 			onChange={ ( newValue ) => {
+				if ( null == newValue ) {
+					newValue = defaultValue;
+				}
+
 				if ( null != newValue ) {
 					// RangeControl returns Int, SelectControl returns String.
 					// So cast Int all values.
 					newValue = String( newValue );
 				}
 
-				const newUnitone = {
+				const newUnitone = cleanEmptyObject( {
 					...unitone,
 					padding: newValue || undefined,
-				};
-				if ( null == newUnitone.padding ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.padding;
-					} else {
-						newUnitone.padding = '';
-					}
-				}
+				} );
 
 				setAttributes( {
 					unitone: !! Object.keys( newUnitone ).length

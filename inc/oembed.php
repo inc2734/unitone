@@ -76,20 +76,3 @@ add_filter(
 		);
 	}
 );
-
-add_filter(
-	'inc2734_wp_oembed_blog_card_block_editor_template',
-	function ( $template ) {
-		wp_enqueue_block_style(
-			'core/embed',
-			array(
-				'handle' => 'unitone/core/embed',
-				'src'    => get_theme_file_uri( 'dist/css/wp-blocks/embed/style.css' ),
-				'path'   => get_theme_file_path( 'dist/css/wp-blocks/embed/style.css' ),
-				'ver'    => filemtime( get_theme_file_path( 'dist/css/wp-blocks/embed/style.css' ) ),
-			)
-		);
-
-		return $template;
-	}
-);

@@ -684,20 +684,6 @@
 			]
 		},
 		{
-			"name": "single-product",
-			"title": "Single Product",
-			"postTypes": [
-				"product"
-			]
-		},
-		{
-			"name": "archive-product",
-			"title": "Product Archives",
-			"postTypes": [
-				"false"
-			]
-		},
-		{
 			"name": "bbpress",
 			"title": "for bbPress",
 			"postTypes": [

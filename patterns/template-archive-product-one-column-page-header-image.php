@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Product Archives: One Column / Page Header (Image)
+ * Title: Product Catalog: One Column / Page Header (Image)
  * Slug: unitone/template/archive-product/one-column-page-header-image
  * Categories: unitone-templates
  * Template Types: archive-product

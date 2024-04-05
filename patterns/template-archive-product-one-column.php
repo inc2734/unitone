@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Product Archives: One Column
+ * Title: Product Catalog: One Column
  * Slug: unitone/template/archive-product/one-column
  * Categories: unitone-templates
  * Template Types: archive-product

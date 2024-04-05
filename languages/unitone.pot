@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 10.5.1\n"
+"Project-Id-Version: unitone 10.9.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-22T02:52:14+00:00\n"
+"POT-Creation-Date: 2024-04-04T13:39:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -189,27 +189,28 @@ msgid "Page Header for All Archives"
 msgstr ""
 
 #: inc/block-patterns.php:128
-msgid "Main Area (One Column) for Product Archives"
+msgid "Main Area (One Column) for Product Catalog"
 msgstr ""
 
 #: inc/block-patterns.php:134
-msgid "Main Area (One Column / Page Header (Image)) for Product Archives"
+msgid "Main Area (One Column / Page Header (Image)) for Product Catalog"
 msgstr ""
 
 #: inc/block-patterns.php:140
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Archives"
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Catalog"
 msgstr ""
 
 #: inc/block-patterns.php:146
-msgid "Main Area (Right Sidebar) for Product Archives"
+msgid "Main Area (Right Sidebar) for Product Catalog"
 msgstr ""
 
 #: inc/block-patterns.php:152
-msgid "Page Header (Image) for Product Archives"
+msgid "Page Header (Image) for Product Catalog"
 msgstr ""
 
 #: inc/block-patterns.php:158
-msgid "Page Header for Product Archives"
+#: inc/template-part-areas.php:281
+msgid "Page Header for Product Catalog"
 msgstr ""
 
 #: inc/block-patterns.php:164
@@ -938,7 +939,7 @@ msgstr ""
 
 #: inc/template-part-areas.php:69
 #: inc/template-part-areas.php:267
-msgid "Product Archives"
+msgid "Product Catalog"
 msgstr ""
 
 #: inc/template-part-areas.php:76
@@ -998,11 +999,7 @@ msgid "Main Area of Search Results"
 msgstr ""
 
 #: inc/template-part-areas.php:274
-msgid "Main Area for Product Archives"
-msgstr ""
-
-#: inc/template-part-areas.php:281
-msgid "Page Header for Product archives"
+msgid "Main Area for Product Catalog"
 msgstr ""
 
 #: inc/template-part-areas.php:295
@@ -1262,32 +1259,32 @@ msgstr ""
 
 #: patterns/template-archive-product-left-header-page-header-image.php
 msgctxt "Pattern title"
-msgid "Product Archives: Left Header / Page Header (Image)"
+msgid "Product Catalog: Left Header / Page Header (Image)"
 msgstr ""
 
 #: patterns/template-archive-product-left-header.php
 msgctxt "Pattern title"
-msgid "Product Archives: Left Header"
+msgid "Product Catalog: Left Header"
 msgstr ""
 
 #: patterns/template-archive-product-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "Product Archives: One Column / Page Header (Image)"
+msgid "Product Catalog: One Column / Page Header (Image)"
 msgstr ""
 
 #: patterns/template-archive-product-one-column.php
 msgctxt "Pattern title"
-msgid "Product Archives: One Column"
+msgid "Product Catalog: One Column"
 msgstr ""
 
 #: patterns/template-archive-product-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
-msgid "Product Archives: Right Sidebar / Page Header (Image)"
+msgid "Product Catalog: Right Sidebar / Page Header (Image)"
 msgstr ""
 
 #: patterns/template-archive-product-right-sidebar.php
 msgctxt "Pattern title"
-msgid "Product Archives: Right Sidebar"
+msgid "Product Catalog: Right Sidebar"
 msgstr ""
 
 #: patterns/template-archive-right-sidebar-page-header-image.php
@@ -2551,15 +2548,15 @@ msgid "None"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Using root padding"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
 msgid "Padding"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Margins at both ends"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Using root padding"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -3598,16 +3595,6 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Products: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Single Product"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Product Archives"
 msgstr ""
 
 #: theme.json

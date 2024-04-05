@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-03-22T02:52:14+00:00\n"
-"PO-Revision-Date: 2024-03-22 11:52+0900\n"
+"POT-Creation-Date: 2024-04-04T13:39:10+00:00\n"
+"PO-Revision-Date: 2024-04-04 22:42+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -169,30 +169,30 @@ msgid "Page Header for All Archives"
 msgstr "アーカイブのページヘッダー"
 
 #: inc/block-patterns.php:128
-msgid "Main Area (One Column) for Product Archives"
-msgstr "商品アーカイブのメインエリア（1カラム）"
+msgid "Main Area (One Column) for Product Catalog"
+msgstr "商品カタログのメインエリア（1カラム）"
 
 #: inc/block-patterns.php:134
-msgid "Main Area (One Column / Page Header (Image)) for Product Archives"
-msgstr "商品アーカイブのメインエリア（1カラム / ページヘッダー（画像））"
+msgid "Main Area (One Column / Page Header (Image)) for Product Catalog"
+msgstr "商品カタログのメインエリア（1カラム / ページヘッダー（画像））"
 
 #: inc/block-patterns.php:140
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Archives"
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Catalog"
 msgstr ""
-"商品アーカイブのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
+"商品カタログのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
 "像））"
 
 #: inc/block-patterns.php:146
-msgid "Main Area (Right Sidebar) for Product Archives"
-msgstr "商品アーカイブのメインエリア（右サイドバー）"
+msgid "Main Area (Right Sidebar) for Product Catalog"
+msgstr "商品カタログのメインエリア（右サイドバー）"
 
 #: inc/block-patterns.php:152
-msgid "Page Header (Image) for Product Archives"
-msgstr "商品アーカイブのページヘッダー（画像）"
+msgid "Page Header (Image) for Product Catalog"
+msgstr "商品カタログのページヘッダー（画像）"
 
-#: inc/block-patterns.php:158
-msgid "Page Header for Product Archives"
-msgstr "商品アーカイブのページヘッダー"
+#: inc/block-patterns.php:158 inc/template-part-areas.php:281
+msgid "Page Header for Product Catalog"
+msgstr "商品カタログのページヘッダー"
 
 #: inc/block-patterns.php:164
 msgid "Main Area (One Column) for bbPress"
@@ -434,24 +434,25 @@ msgstr "個別投稿のページヘッダー（幅広）"
 
 #: inc/block-patterns.php:506
 msgid "Main Area (One Column) for Single Products"
-msgstr "個別商品のメインエリア（1カラム）"
+msgstr "単一の商品のメインエリア（1カラム）"
 
 #: inc/block-patterns.php:512
 msgid "Main Area (One Column / Page Header (Image)) for Single Products"
-msgstr "個別商品のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
+msgstr ""
+"単一の商品のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
 #: inc/block-patterns.php:518
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
 msgstr ""
-"個別商品のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
+"単一の商品のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
 #: inc/block-patterns.php:524
 msgid "Main Area (Right Sidebar) for Single Products"
-msgstr "個別商品のメインエリア（右サイドバー）"
+msgstr "単一の商品のメインエリア（右サイドバー）"
 
 #: inc/block-patterns.php:530
 msgid "Page Header (Image) for Single Products"
-msgstr "個別商品のページヘッダー（画像）"
+msgstr "単一の商品のページヘッダー（画像）"
 
 #: inc/block-styles.php:16
 msgid "Badge"
@@ -915,12 +916,12 @@ msgid "Search Results"
 msgstr "検索結果"
 
 #: inc/template-part-areas.php:69 inc/template-part-areas.php:267
-msgid "Product Archives"
-msgstr "商品アーカイブ"
+msgid "Product Catalog"
+msgstr "商品カタログ"
 
 #: inc/template-part-areas.php:76 inc/template-part-areas.php:288
 msgid "Single Products"
-msgstr "個別商品"
+msgstr "単一の商品"
 
 #: inc/template-part-areas.php:83 inc/template-part-areas.php:309
 msgid "bbPress"
@@ -971,12 +972,8 @@ msgid "Main Area of Search Results"
 msgstr "検索結果のメインエリア"
 
 #: inc/template-part-areas.php:274
-msgid "Main Area for Product Archives"
-msgstr "商品アーカイブのメインエリア"
-
-#: inc/template-part-areas.php:281
-msgid "Page Header for Product archives"
-msgstr "商品アーカイブのページヘッダー"
+msgid "Main Area for Product Catalog"
+msgstr "商品カタログのメインエリア"
 
 #: inc/template-part-areas.php:295
 msgid "Page Header for Single Products"
@@ -984,7 +981,7 @@ msgstr "個別投稿のページヘッダー"
 
 #: inc/template-part-areas.php:302
 msgid "Main Area for Single Products"
-msgstr "個別商品のメインエリア"
+msgstr "単一の商品のメインエリア"
 
 #: inc/template-part-areas.php:323
 msgid "Main Area for bbPress"
@@ -1221,33 +1218,33 @@ msgstr "アーカイブ：1カラム"
 
 #: patterns/template-archive-product-left-header-page-header-image.php
 msgctxt "Pattern title"
-msgid "Product Archives: Left Header / Page Header (Image)"
-msgstr "商品アーカイブ：左ヘッダー / ページヘッダー（画像）"
+msgid "Product Catalog: Left Header / Page Header (Image)"
+msgstr "商品カタログ：左ヘッダー / ページヘッダー（画像）"
 
 #: patterns/template-archive-product-left-header.php
 msgctxt "Pattern title"
-msgid "Product Archives: Left Header"
-msgstr "商品アーカイブ：左ヘッダー"
+msgid "Product Catalog: Left Header"
+msgstr "商品カタログ：左ヘッダー"
 
 #: patterns/template-archive-product-one-column-page-header-image.php
 msgctxt "Pattern title"
-msgid "Product Archives: One Column / Page Header (Image)"
-msgstr "商品アーカイブ：1カラム / ページヘッダー（画像）"
+msgid "Product Catalog: One Column / Page Header (Image)"
+msgstr "商品カタログ：1カラム / ページヘッダー（画像）"
 
 #: patterns/template-archive-product-one-column.php
 msgctxt "Pattern title"
-msgid "Product Archives: One Column"
-msgstr "商品アーカイブ：1カラム"
+msgid "Product Catalog: One Column"
+msgstr "商品カタログ：1カラム"
 
 #: patterns/template-archive-product-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
-msgid "Product Archives: Right Sidebar / Page Header (Image)"
-msgstr "商品アーカイブ：右サイドバー / ページヘッダー（画像）"
+msgid "Product Catalog: Right Sidebar / Page Header (Image)"
+msgstr "商品カタログ：右サイドバー / ページヘッダー（画像）"
 
 #: patterns/template-archive-product-right-sidebar.php
 msgctxt "Pattern title"
-msgid "Product Archives: Right Sidebar"
-msgstr "商品アーカイブ：右サイドバー"
+msgid "Product Catalog: Right Sidebar"
+msgstr "商品カタログ：右サイドバー"
 
 #: patterns/template-archive-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
@@ -1527,37 +1524,37 @@ msgstr "個別投稿：1カラム"
 #: patterns/template-single-product-left-header-header-footer.php
 msgctxt "Pattern title"
 msgid "Single Products: Left Header / Only Header and Footer"
-msgstr "個別商品：左ヘッダー / ヘッダー・フッター"
+msgstr "単一の商品：左ヘッダー / ヘッダー・フッター"
 
 #: patterns/template-single-product-left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Products: Left Header / Page Header (Image)"
-msgstr "個別商品：左ヘッダー / ページヘッダー（画像）"
+msgstr "単一の商品：左ヘッダー / ページヘッダー（画像）"
 
 #: patterns/template-single-product-left-header.php
 msgctxt "Pattern title"
 msgid "Single Products: Left Header"
-msgstr "個別商品：左ヘッダー"
+msgstr "単一の商品：左ヘッダー"
 
 #: patterns/template-single-product-one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Products: One Column / Page Header (Image)"
-msgstr "個別商品：1カラム / ページヘッダー（画像）"
+msgstr "単一の商品：1カラム / ページヘッダー（画像）"
 
 #: patterns/template-single-product-one-column.php
 msgctxt "Pattern title"
 msgid "Single Products: One Column"
-msgstr "個別商品：1カラム"
+msgstr "単一の商品：1カラム"
 
 #: patterns/template-single-product-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Products: Right Sidebar / Page Header (Image)"
-msgstr "個別商品：右サイドバー / ページヘッダー（画像）"
+msgstr "単一の商品：右サイドバー / ページヘッダー（画像）"
 
 #: patterns/template-single-product-right-sidebar.php
 msgctxt "Pattern title"
 msgid "Single Products: Right Sidebar"
-msgstr "個別商品：右サイドバー"
+msgstr "単一の商品：右サイドバー"
 
 #: patterns/template-single-right-sidebar-page-header-featured.php
 msgctxt "Pattern title"
@@ -2504,16 +2501,16 @@ msgid "None"
 msgstr "無し"
 
 #: dist/js/editor/editor.js:1
-msgid "Using root padding"
-msgstr "ルートパディングを使用"
-
-#: dist/js/editor/editor.js:1
 msgid "Padding"
 msgstr "パディング"
 
 #: dist/js/editor/editor.js:1
 msgid "Margins at both ends"
 msgstr "両端の余白"
+
+#: dist/js/editor/editor.js:1
+msgid "Using root padding"
+msgstr "ルートパディングを使用"
 
 #: dist/js/editor/editor.js:1
 msgid "Gap"
@@ -3462,47 +3459,37 @@ msgstr "個別投稿：左ヘッダー / ページヘッダー（画像）"
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Products: One Column"
-msgstr "個別商品：1カラム"
+msgstr "単一の商品：1カラム"
 
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Products: One Column / Page Header (Image)"
-msgstr "個別商品：1カラム / ページヘッダー（画像）"
+msgstr "単一の商品：1カラム / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Products: Right Sidebar"
-msgstr "個別商品：右サイドバー"
+msgstr "単一の商品：右サイドバー"
 
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Products: Right Sidebar / Page Header (Image)"
-msgstr "個別商品：右サイドバー / ページヘッダー（画像）"
+msgstr "単一の商品：右サイドバー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Products: Left Header"
-msgstr "個別商品：左ヘッダー"
+msgstr "単一の商品：左ヘッダー"
 
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Products: Left Header / Only Header and Footer"
-msgstr "個別商品：左ヘッダー / ヘッダー・フッター"
+msgstr "単一の商品：左ヘッダー / ヘッダー・フッター"
 
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Products: Left Header / Page Header (Image)"
-msgstr "個別商品：左ヘッダー / ページヘッダー（画像）"
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Single Product"
-msgstr "個別商品"
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Product Archives"
-msgstr "商品アーカイブ"
+msgstr "単一の商品：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -3533,6 +3520,35 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "Main Area (One Column / Page Header (Image)) for Product Archives"
+#~ msgstr "商品アーカイブのメインエリア（1カラム / ページヘッダー（画像））"
+
+#~ msgid "Page Header for Product Archives"
+#~ msgstr "商品アーカイブのページヘッダー"
+
+#~ msgid "Product Archives"
+#~ msgstr "商品アーカイブ"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Product Archives: Left Header / Page Header (Image)"
+#~ msgstr "商品アーカイブ：左ヘッダー / ページヘッダー（画像）"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Product Archives: Left Header"
+#~ msgstr "商品アーカイブ：左ヘッダー"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Product Archives: One Column / Page Header (Image)"
+#~ msgstr "商品アーカイブ：1カラム / ページヘッダー（画像）"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Single Product"
+#~ msgstr "個別商品"
+
+#~ msgctxt "Custom template name"
+#~ msgid "Product Archives"
+#~ msgstr "商品アーカイブ"
 
 #~ msgid "Aside"
 #~ msgstr "アサイド"

@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Product Archives: Right Sidebar
+ * Title: Product Catalog: Right Sidebar
  * Slug: unitone/template/archive-product/right-sidebar
  * Categories: unitone-templates
  * Template Types: archive-product

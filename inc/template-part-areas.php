@@ -66,7 +66,7 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 			),
 			array(
 				'area'        => 'unitone/archive-product',
-				'label'       => __( 'Product Archives', 'unitone' ),
+				'label'       => __( 'Product Catalog', 'unitone' ),
 				'icon'        => 'layout',
 				'description' => '',
 				'area_tag'    => 'div',
@@ -264,21 +264,21 @@ function unitone_deprecated_default_wp_template_part_areas( $default_area_defini
 			),
 			array(
 				'area'        => 'unitone/template/archive-product',
-				'label'       => __( 'Product Archives', 'unitone' ),
+				'label'       => __( 'Product Catalog', 'unitone' ),
 				'icon'        => 'layout',
 				'description' => '',
 				'area_tag'    => 'div',
 			),
 			array(
 				'area'        => 'unitone/contents/archive-product',
-				'label'       => __( 'Main Area for Product Archives', 'unitone' ),
+				'label'       => __( 'Main Area for Product Catalog', 'unitone' ),
 				'icon'        => 'layout',
 				'description' => '',
 				'area_tag'    => 'main',
 			),
 			array(
 				'area'        => 'unitone/page-header/archive-product',
-				'label'       => __( 'Page Header for Product archives', 'unitone' ),
+				'label'       => __( 'Page Header for Product Catalog', 'unitone' ),
 				'icon'        => 'layout',
 				'description' => '',
 				'area_tag'    => 'header',

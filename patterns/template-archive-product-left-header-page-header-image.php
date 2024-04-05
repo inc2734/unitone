@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Product Archives: Left Header / Page Header (Image)
+ * Title: Product Catalog: Left Header / Page Header (Image)
  * Slug: unitone/template/archive-product/left-header-page-header-image
  * Categories: unitone-templates
  * Template Types: archive-product

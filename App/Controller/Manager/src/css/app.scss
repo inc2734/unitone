@@ -105,3 +105,14 @@
 		margin-top: 0;
 	}
 }
+
+/* HTML: <div class="loader"></div> */
+.unitone-loading-icon {
+	width: 16px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	border: 2px solid lightgray;
+	border-right-color: gray;
+	animation: l2 1s infinite linear;
+}
+@keyframes l2 {to{transform: rotate(1turn)}}

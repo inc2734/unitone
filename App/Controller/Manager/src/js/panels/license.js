@@ -11,7 +11,7 @@ const SETTINGS_KEYS = [ 'license-key' ];
 
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
-	const [ licenseStatus, setLicenseStatus ] = useState( false );
+	const [ licenseStatus, setLicenseStatus ] = useState( undefined );
 	const [ remotePatternsSaving, setRemotePatternsSaving ] = useState( false );
 
 	const loadLicenseStatus = () => {
@@ -34,7 +34,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 	const saveSettings = () => {
 		setSettingsSaving( true );
-		setLicenseStatus( false );
+		setLicenseStatus( undefined );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
@@ -98,7 +98,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									'unitone'
 								) }
 							</p>
-							<div data-unitone-layout="with-sidebar -gap:-2">
+							<div
+								data-unitone-layout="with-sidebar -gap:-2"
+								style={ { '--unitone--sidebar-width': '25px' } }
+							>
 								<TextControl
 									help={ __(
 										'If the license key entered is valid, the theme can be updated.',
@@ -114,14 +117,25 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									}
 								/>
 
-								<Icon
-									style={ {
-										fill: licenseStatus
-											? '#00d084'
-											: '#cf2e2e',
-									} }
-									icon={ licenseStatus ? check : close }
-								/>
+								<div style={ { paddingTop: '4px' } }>
+									{ null == licenseStatus ? (
+										<div
+											className="unitone-loading-icon"
+											style={ { margin: '4px' } }
+										></div>
+									) : (
+										<Icon
+											style={ {
+												fill: licenseStatus
+													? '#00d084'
+													: '#cf2e2e',
+											} }
+											icon={
+												licenseStatus ? check : close
+											}
+										/>
+									) }
+								</div>
 							</div>
 						</div>
 					</div>

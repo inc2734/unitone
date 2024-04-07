@@ -548,13 +548,14 @@ class Manager {
 	 * @return boolean
 	 */
 	public static function get_license_status( $license_key ) {
-		$transient = get_transient( 'unitone-license-status' );
+		$transient_name = 'unitone-license-status-' . $license_key;
+		$transient      = get_transient( $transient_name );
 		if ( false !== $transient ) {
 			return $transient;
 		}
 
 		$status = static::_request_license_validate( $license_key );
-		set_transient( 'unitone-license-status', $status ? $status : 'false', DAY_IN_SECONDS );
+		set_transient( $transient_name, $status ? $status : 'false', DAY_IN_SECONDS );
 		return $status;
 	}
 

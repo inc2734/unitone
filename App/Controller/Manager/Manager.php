@@ -28,22 +28,23 @@ class Manager {
 	 *
 	 * @var array
 	 */
-	const DEFAULT_SETTINGS = array(
-		'license-key'      => '',
-		'font-family'      => 'sans-serif',
-		'base-font-size'   => 16,
-		'half-leading'     => 0.4,
-		'h2-size'          => 3,
-		'h3-size'          => 2,
-		'h4-size'          => 1,
-		'h5-size'          => 0,
-		'h6-size'          => 0,
-		'accent-color'     => '#090a0b', // = settings.color.palette > unitone-accent
-		'background-color' => '#fff',
-		'text-color'       => 'var(--unitone--color--text)',
-		'link-color'       => '#003c78', // = styles.elements.link.color.text
-		'content-size'     => '46rem',
-		'wide-size'        => '1334px',
+	protected static $default_settings = array(
+		'license-key'              => '',
+		'font-family'              => 'sans-serif',
+		'base-font-size'           => 16,
+		'half-leading'             => 0.4,
+		'h2-size'                  => 3,
+		'h3-size'                  => 2,
+		'h4-size'                  => 1,
+		'h5-size'                  => 0,
+		'h6-size'                  => 0,
+		'accent-color'             => '#090a0b', // = settings.color.palette > unitone-accent
+		'background-color'         => '#fff',
+		'text-color'               => 'var(--unitone--color--text)',
+		'link-color'               => '#003c78', // = styles.elements.link.color.text
+		'content-size'             => '46rem',
+		'wide-size'                => '1334px',
+		'enabled-custom-templates' => array(),
 	);
 
 	/**
@@ -127,12 +128,19 @@ class Manager {
 			wp_enqueue_style( $style );
 		}
 
-		$global_settings = wp_get_global_settings();
+		$global_settings  = wp_get_global_settings();
+		$custom_templates = static::_get_custom_templates();
+
+		foreach ( $custom_templates as $custom_template ) {
+			if ( $custom_template['inUse'] ) {
+				static::$default_settings['enabled-custom-templates'][] = $custom_template['name'];
+			}
+		}
 
 		wp_localize_script(
 			'unitone/settings',
 			'defaultSettings',
-			self::DEFAULT_SETTINGS,
+			static::$default_settings,
 		);
 
 		wp_localize_script(
@@ -191,6 +199,7 @@ class Manager {
 							$global_settings['typography']['fontSizes']['theme']
 						);
 					} )(),
+					'customTemplates'      => $custom_templates,
 				)
 			)
 		);
@@ -257,7 +266,7 @@ class Manager {
 						$new_settings = array();
 
 						// Extract all but the core settings.
-						foreach ( self::DEFAULT_SETTINGS as $name => $default ) {
+						foreach ( static::$default_settings as $name => $default ) {
 							if ( array_key_exists( $name, $settings ) ) {
 								$new_settings[ $name ] = $settings[ $name ];
 							}
@@ -275,7 +284,7 @@ class Manager {
 						$new_settings = array_filter(
 							$new_settings,
 							function ( $value, $key ) {
-								return ! is_null( $value ) && self::DEFAULT_SETTINGS[ $key ] !== $value;
+								return ! is_null( $value ) && static::$default_settings[ $key ] !== $value;
 							},
 							ARRAY_FILTER_USE_BOTH
 						);
@@ -464,7 +473,7 @@ class Manager {
 			return;
 		}
 
-		if ( ! empty( array_diff_assoc( self::DEFAULT_SETTINGS, static::get_settings() ) ) ) {
+		if ( ! empty( array_diff_assoc( static::$default_settings, static::get_settings() ) ) ) {
 			return;
 		}
 		?>
@@ -493,7 +502,7 @@ class Manager {
 	 * @return array
 	 */
 	public static function get_settings( $keys = array() ) {
-		$settings = shortcode_atts( self::DEFAULT_SETTINGS, get_option( self::SETTINGS_NAME ) );
+		$settings = shortcode_atts( static::$default_settings, get_option( self::SETTINGS_NAME ) );
 
 		$site_logo = get_option( 'site_logo' );
 		if ( $site_logo ) {
@@ -518,6 +527,16 @@ class Manager {
 		$page_for_posts = get_option( 'page_for_posts' );
 		if ( $page_for_posts ) {
 			$settings['page-for-posts'] = $page_for_posts;
+		}
+
+		if ( empty( $settings['enabled-custom-templates'] ) && ( ! $keys || in_array( 'enabled-custom-templates', $keys, true ) ) ) {
+			$custom_templates = static::_get_custom_templates();
+			foreach ( $custom_templates as $custom_template ) {
+				if ( $custom_template['inUse'] ) {
+					$settings['enabled-custom-templates'][] = $custom_template['name'];
+				}
+			}
+			$settings['enabled-custom-templates'] = array_unique( $settings['enabled-custom-templates'] );
 		}
 
 		return $keys
@@ -609,5 +628,79 @@ class Manager {
 	 */
 	protected static function _get_posts_page_slug() {
 		return 'blog';
+	}
+
+	/**
+	 * Return information about the custom templates provided by unitone.
+	 *
+	 * @return array
+	 */
+	protected static function _get_custom_templates() {
+		$cache_key = 'unitone_get_custom_templates';
+		$cache     = wp_cache_get( $cache_key );
+		if ( false !== $cache ) {
+			return $cache;
+		}
+
+		$_all_templates = \WP_Theme_JSON_Resolver::get_merged_data( 'theme' )->get_custom_templates();
+		$all_templates  = array();
+		foreach ( $_all_templates as $slug => $template ) {
+			if ( $template['postTypes'] && ! in_array( 'false', $template['postTypes'], true ) ) {
+				$all_templates[] = array_merge(
+					$template,
+					array(
+						'slug' => $slug,
+					)
+				);
+			}
+		}
+
+		$using_custom_templates = array();
+		foreach ( $all_templates as $template ) {
+			// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+			$using_custom_templates_query = new \WP_Query(
+				array(
+					'no_found_rows'  => true,
+					'posts_per_page' => 1,
+					'post_type'      => array( 'post', 'page', 'single-product' ),
+					'post_status'    => array( 'publish', 'future', 'private' ),
+					'meta_query'     => array(
+						array(
+							'key'     => '_wp_page_template',
+							'value'   => $template['slug'],
+							'compare' => '=',
+						),
+					),
+				)
+			);
+			// phpcs:enable
+
+			if ( $using_custom_templates_query->post_count ) {
+				$using_custom_templates[] = $template['slug'];
+			}
+		}
+
+		$templates = array_map(
+			function ( $template ) use ( $using_custom_templates ) {
+				return array(
+					'name'      => $template['slug'],
+					'title'     => $template['title'],
+					'postTypes' => $template['postTypes'],
+					'inUse'     => in_array( $template['slug'], $using_custom_templates, true ),
+				);
+			},
+			$all_templates
+		);
+
+		$new_templates = array();
+		foreach ( $templates as $template ) {
+			$new_templates[ $template['name'] ] = $template;
+		}
+
+		ksort( $new_templates );
+		$new_templates = array_values( $new_templates );
+		wp_cache_set( $cache_key, $new_templates );
+
+		return $new_templates;
 	}
 }

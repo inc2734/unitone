@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-04T13:39:10+00:00\n"
+"POT-Creation-Date: 2024-04-08T13:09:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -36,15 +36,15 @@ msgstr ""
 msgid "https://2inc.org"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:69
 #: App/Controller/Manager/Manager.php:70
+#: App/Controller/Manager/Manager.php:71
 #: App/Controller/Manager/dist/js/app.js:5
 #: App/Controller/Manager/dist/js/app.js:2259
 #: App/Controller/Manager/dist/js/app.js:2389
 msgid "unitone Setup"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:364
+#: App/Controller/Manager/Manager.php:427
 #: patterns/footer-2.php:22
 #: patterns/footer-3.php:51
 #: patterns/footer-3.php:59
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:407
+#: App/Controller/Manager/Manager.php:470
 #: patterns/footer-2.php:25
 #: patterns/footer-3.php:54
 #: patterns/footer-3.php:62
@@ -74,15 +74,15 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:475
+#: App/Controller/Manager/Manager.php:538
 msgid "unitone theme has been activated"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:478
+#: App/Controller/Manager/Manager.php:541
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:482
+#: App/Controller/Manager/Manager.php:545
 msgid "Go to the setup screen"
 msgstr ""
 
@@ -127,6 +127,7 @@ msgstr ""
 #: inc/block-patterns.php:16
 #: inc/template-part-areas.php:27
 #: inc/template-part-areas.php:162
+#: App/Controller/Manager/dist/js/app.js:5
 msgid "Pages"
 msgstr ""
 
@@ -1863,6 +1864,22 @@ msgstr ""
 #: App/Controller/Manager/dist/js/app.js:4
 #: App/Controller/Manager/dist/js/app.js:1427
 msgid "Select existing page for the posts page"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:5
+msgid "Posts"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:5
+msgid "Products"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:5
+msgid "Custom Templates"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:5
+msgid "Activate the custom template you wish to use. You cannot deactivate a custom template that is already in use."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:5

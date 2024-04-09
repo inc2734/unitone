@@ -92,7 +92,6 @@
 	pointer-events: none;
 }
 
-
 .block-editor-block-patterns-list__list-item {
 	break-inside: avoid;
 }
@@ -191,6 +190,14 @@
 [data-rich-text-placeholder] {
 	font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
 	font-feature-settings: initial;
+}
+
+// @todo Since unitone has a parent-child block selection toolbar, is there no need for the core parent block selection button?
+.components-popover.block-editor-block-list__block-popover .block-editor-block-contextual-toolbar.has-parent {
+	margin-left: 0;
+}
+.block-editor-block-parent-selector {
+	display: none;
 }
 
 // @todo Support for the fact that the preview and draft buttons are hidden on the top toolbar, depending on the screen size.

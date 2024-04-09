@@ -5,8 +5,13 @@ import {
 
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { store as blocksStore } from '@wordpress/blocks';
-import { ToolbarGroup, ToolbarDropdownMenu } from '@wordpress/components';
+import {
+	ToolbarGroup,
+	ToolbarDropdownMenu,
+	ToolbarButton,
+} from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
+import { useCallback, useMemo } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 
@@ -18,7 +23,7 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const { selectBlock } = useDispatch( blockEditorStore );
 
-		const { innerBlocks, parents, current } = useSelect(
+		const { innerBlocks, parentClientId } = useSelect(
 			( select ) => {
 				const { getBlock, getBlockParents } =
 					select( blockEditorStore );
@@ -58,86 +63,61 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 							};
 						}
 					),
-					parents: getBlockParents( clientId ).map(
-						( parentClientId ) => {
-							const parentBlock = getBlock( parentClientId );
-							const parentBlockType = getBlockType(
-								parentBlock.name
-							);
-							const variationTitle = getVariationTitle(
-								parentBlockType,
-								parentBlock.attributes
-							);
-							return {
-								title: variationTitle || parentBlockType.title,
-								icon: parentBlockType.icon,
-								clientId: parentClientId,
-							};
-						}
-					),
-					current: ( () => {
-						const currentBlockType = getBlockType( props.name );
-						const variationTitle = getVariationTitle(
-							currentBlockType,
-							props.attributes
-						);
-						return {
-							title: `${
-								variationTitle || currentBlockType.title
-							} (${ __( 'Currently Selected', 'unitone' ) })`,
-							icon: currentBlockType.icon,
-							clientId,
-						};
-					} )(),
+					parentClientId: getBlockParents( clientId, true )?.[ 0 ],
 				};
 			},
 			[ clientId ]
 		);
 
+		const onSelectParentBlock = useCallback( () => {
+			selectBlock( parentClientId );
+		}, [ parentClientId ] );
+
+		const onSelectChildBlock = useCallback( () => {
+			selectBlock( innerBlocks[ 0 ].clientId );
+		}, [ innerBlocks?.[ 0 ]?.clientId ] );
+
+		const childrenDropdownMenuControls = useMemo( () => {
+			return innerBlocks.map( ( innerBlock ) => {
+				return {
+					title: innerBlock.title,
+					icon: innerBlock.icon.src,
+					onClick: () => selectBlock( innerBlock.clientId ),
+				};
+			} );
+		}, [ clientId ] );
+
 		return (
 			<>
-				{ ( 0 < parents.length || 0 < innerBlocks.length ) && (
-					<BlockControls>
-						<ToolbarGroup>
-							<ToolbarDropdownMenu
-								icon={ LevelUp }
-								label={ __(
-									'Select a block of ancestors',
-									'unitone'
-								) }
-								controls={ ( 0 < parents.length
-									? [ ...parents, current ]
-									: []
-								).map( ( innerBlock ) => {
-									return {
-										title: innerBlock.title,
-										icon: innerBlock.icon.src,
-										onClick: () =>
-											selectBlock( innerBlock.clientId ),
-									};
-								} ) }
-							/>
+				<BlockControls group="parent">
+					<ToolbarGroup className="unitone-lineage-toolbar">
+						<ToolbarButton
+							icon={ LevelUp }
+							label={ __( 'Select parent block', 'unitone' ) }
+							onClick={ onSelectParentBlock }
+							disabled={ ! parentClientId }
+						/>
 
+						{ 2 > innerBlocks.length && (
+							<ToolbarButton
+								icon={ LevelDown }
+								label={ __( 'Select child block', 'unitone' ) }
+								onClick={ onSelectChildBlock }
+								disabled={ 0 === innerBlocks.length }
+							/>
+						) }
+
+						{ 1 < innerBlocks.length && (
 							<ToolbarDropdownMenu
 								icon={ LevelDown }
-								label={ __(
-									'Select a child block',
-									'unitone'
-								) }
-								controls={ innerBlocks.map( ( innerBlock ) => {
-									return {
-										title: innerBlock.title,
-										icon: innerBlock.icon.src,
-										onClick: () =>
-											selectBlock( innerBlock.clientId ),
-									};
-								} ) }
+								label={ __( 'Select child block', 'unitone' ) }
+								controls={ childrenDropdownMenuControls }
 							/>
-						</ToolbarGroup>
-					</BlockControls>
-				) }
+						) }
+					</ToolbarGroup>
+				</BlockControls>
 
-				<BlockEdit { ...props } />
+				<BlockEdit { ...props } className="hogehogehoge" />
 			</>
 		);
 	};

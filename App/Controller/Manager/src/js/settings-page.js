@@ -1,3 +1,5 @@
+import { pick } from 'lodash';
+
 import {
 	Button,
 	__experimentalNavigatorProvider as NavigatorProvider,
@@ -31,6 +33,7 @@ export default function () {
 		apiFetch( {
 			path: '/unitone/v1/remote-block-patterns',
 			method: 'DELETE',
+			data: pick( settings, 'license-key' ),
 		} ).then( () => {
 			setRemotePatternsSaving( false );
 		} );

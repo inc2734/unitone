@@ -292,6 +292,14 @@ class Manager {
 
 						update_option( self::SETTINGS_NAME, $new_settings );
 
+						if ( array_key_exists( 'license-key', $settings ) ) {
+							$license_key = $settings['license-key'];
+							if ( ! empty( $license_key ) ) {
+								$transient_name = 'unitone-license-status-' . $license_key;
+								delete_transient( $transient_name );
+							}
+						}
+
 						if ( array_key_exists( 'site-logo', $settings ) ) {
 							if ( ! is_null( $settings['site-logo'] ) ) {
 								update_option( 'site_logo', $settings['site-logo'] );
@@ -446,7 +454,14 @@ class Manager {
 			array(
 				'methods'             => 'DELETE',
 				'callback'            => function ( $request ) {
-					if ( $request->get_params() ) {
+					$settings = $request->get_params();
+					if ( $settings ) {
+						$license_key = $settings['license-key'];
+						if ( ! empty( $license_key ) ) {
+							$transient_name = 'unitone-license-status-' . $license_key;
+							delete_transient( $transient_name );
+						}
+
 						delete_transient( 'unitone-remote-patterns' );
 						delete_transient( 'unitone-remote-pattern-categories' );
 						return new \WP_REST_Response( array( 'message' => 'OK' ), 200 );
@@ -568,6 +583,10 @@ class Manager {
 	 * @return boolean
 	 */
 	public static function get_license_status( $license_key ) {
+		if ( empty( $license_key ) ) {
+			return false;
+		}
+
 		$transient_name = 'unitone-license-status-' . $license_key;
 		$transient      = get_transient( $transient_name );
 		if ( false !== $transient ) {
@@ -575,6 +594,7 @@ class Manager {
 		}
 
 		$status = static::_request_license_validate( $license_key );
+		// @todo 失敗の場合はキャッシュ時間を短くする、あるいは、再認証されたときにキャッシュをパージしたい
 		set_transient( $transient_name, $status ? $status : 'false', DAY_IN_SECONDS );
 		return $status;
 	}

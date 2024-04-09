@@ -41,6 +41,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	};
 
 	const customTemplates = settings?.customTemplates ?? [];
+	const usingCustomTemplates = settings?.usingCustomTemplates ?? [];
 	const enabledCustomTemplates =
 		settings?.[ 'enabled-custom-templates' ] ?? [];
 
@@ -146,9 +147,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 													checked={ enabledCustomTemplates.includes(
 														customTemplate.name
 													) }
-													disabled={
-														customTemplate.inUse
-													}
+													disabled={ usingCustomTemplates.includes(
+														customTemplate.name
+													) }
 													onChange={ onChange }
 													style={ {
 														marginBottom: '0px',

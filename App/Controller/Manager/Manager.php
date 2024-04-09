@@ -128,14 +128,14 @@ class Manager {
 			wp_enqueue_style( $style );
 		}
 
-		$global_settings  = wp_get_global_settings();
-		$custom_templates = static::_get_custom_templates();
+		$global_settings        = wp_get_global_settings();
+		$custom_templates       = static::get_custom_templates();
+		$using_custom_templates = static::_get_using_custom_templates();
 
-		foreach ( $custom_templates as $custom_template ) {
-			if ( $custom_template['inUse'] ) {
-				static::$default_settings['enabled-custom-templates'][] = $custom_template['name'];
-			}
-		}
+		static::$default_settings['enabled-custom-templates'] = array_merge(
+			static::$default_settings['enabled-custom-templates'],
+			$using_custom_templates
+		);
 
 		wp_localize_script(
 			'unitone/settings',
@@ -200,6 +200,7 @@ class Manager {
 						);
 					} )(),
 					'customTemplates'      => $custom_templates,
+					'usingCustomTemplates' => $using_custom_templates,
 				)
 			)
 		);
@@ -530,12 +531,12 @@ class Manager {
 		}
 
 		if ( empty( $settings['enabled-custom-templates'] ) && ( ! $keys || in_array( 'enabled-custom-templates', $keys, true ) ) ) {
-			$custom_templates = static::_get_custom_templates();
-			foreach ( $custom_templates as $custom_template ) {
-				if ( $custom_template['inUse'] ) {
-					$settings['enabled-custom-templates'][] = $custom_template['name'];
-				}
-			}
+			$custom_templates                     = static::get_custom_templates();
+			$using_custom_templates               = static::_get_using_custom_templates();
+			$settings['enabled-custom-templates'] = array_merge(
+				$settings['enabled-custom-templates'],
+				$using_custom_templates
+			);
 			$settings['enabled-custom-templates'] = array_unique( $settings['enabled-custom-templates'] );
 		}
 
@@ -633,9 +634,56 @@ class Manager {
 	/**
 	 * Return information about the custom templates provided by unitone.
 	 *
-	 * @return array
+	 * @return array Array of using custom template name.
 	 */
-	protected static function _get_custom_templates() {
+	protected static function _get_using_custom_templates() {
+		$cache_key = 'unitone_get_using_custom_templates';
+		$cache     = wp_cache_get( $cache_key );
+		if ( false !== $cache ) {
+			return $cache;
+		}
+
+		$custom_templates       = static::get_custom_templates();
+		$using_custom_templates = array();
+
+		foreach ( $custom_templates as $template ) {
+			// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+			$using_custom_templates_query = new \WP_Query(
+				array(
+					'no_found_rows'  => true,
+					'posts_per_page' => 1,
+					'post_type'      => array( 'post', 'page', 'single-product' ),
+					'post_status'    => array( 'publish', 'future', 'private' ),
+					'meta_query'     => array(
+						array(
+							'key'     => '_wp_page_template',
+							'value'   => $template['name'],
+							'compare' => '=',
+						),
+					),
+				)
+			);
+			// phpcs:enable
+
+			if ( $using_custom_templates_query->post_count ) {
+				$using_custom_templates[] = $template['name'];
+			}
+		}
+
+		wp_cache_set( $cache_key, $using_custom_templates );
+
+		return $using_custom_templates;
+	}
+
+	/**
+	 * Return information about the custom templates provided by unitone.
+	 *
+	 * @return array
+	 *   @var string name
+	 *   @var string title
+	 *   @var array postTypes
+	 */
+	public static function get_custom_templates() {
 		$cache_key = 'unitone_get_custom_templates';
 		$cache     = wp_cache_get( $cache_key );
 		if ( false !== $cache ) {
@@ -655,52 +703,21 @@ class Manager {
 			}
 		}
 
-		$using_custom_templates = array();
-		foreach ( $all_templates as $template ) {
-			// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-			$using_custom_templates_query = new \WP_Query(
-				array(
-					'no_found_rows'  => true,
-					'posts_per_page' => 1,
-					'post_type'      => array( 'post', 'page', 'single-product' ),
-					'post_status'    => array( 'publish', 'future', 'private' ),
-					'meta_query'     => array(
-						array(
-							'key'     => '_wp_page_template',
-							'value'   => $template['slug'],
-							'compare' => '=',
-						),
-					),
-				)
-			);
-			// phpcs:enable
-
-			if ( $using_custom_templates_query->post_count ) {
-				$using_custom_templates[] = $template['slug'];
-			}
-		}
-
 		$templates = array_map(
-			function ( $template ) use ( $using_custom_templates ) {
+			function ( $template ) {
 				return array(
 					'name'      => $template['slug'],
 					'title'     => $template['title'],
 					'postTypes' => $template['postTypes'],
-					'inUse'     => in_array( $template['slug'], $using_custom_templates, true ),
 				);
 			},
 			$all_templates
 		);
 
-		$new_templates = array();
-		foreach ( $templates as $template ) {
-			$new_templates[ $template['name'] ] = $template;
-		}
+		ksort( $templates );
+		$templates = array_values( $templates );
+		wp_cache_set( $cache_key, $templates );
 
-		ksort( $new_templates );
-		$new_templates = array_values( $new_templates );
-		wp_cache_set( $cache_key, $new_templates );
-
-		return $new_templates;
+		return $templates;
 	}
 }

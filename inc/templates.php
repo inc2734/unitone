@@ -30,36 +30,31 @@ function unitone_hidden_front_page_template_on_blog( $query_result ) {
 add_filter( 'get_block_templates', 'unitone_hidden_front_page_template_on_blog' );
 
 /**
- * Run only on the unitone setup page.
+ * Disable custom templates that have not been activated in the unitone setup.
+ *
+ * @param array $query_result Array of found block templates.
+ * @return array
  */
-add_action(
-	'current_screen',
-	function ( $current_screen ) {
-		$hookname = get_plugin_page_hookname( Manager::MENU_SLUG, 'themes.php' );
-		if ( $current_screen->id === $hookname ) {
-			return;
+function unitone_hidden_custom_templates( $query_result ) {
+	$enabled_custom_templates  = Manager::get_setting( 'enabled-custom-templates' );
+	$custom_templates          = Manager::get_custom_templates();
+	$disabled_custom_templates = array();
+
+	foreach ( $custom_templates as $custom_template ) {
+		if ( ! in_array( $custom_template['name'], $enabled_custom_templates, true ) ) {
+			$disabled_custom_templates[] = $custom_template['name'];
 		}
-
-		/**
-		 * Disable custom templates that have not been activated in the unitone setup.
-		 *
-		 * @param array $query_result Array of found block templates.
-		 * @return array
-		 */
-		function unitone_hidden_custom_templates( $query_result ) {
-			$enabled_custom_templates = Manager::get_setting( 'enabled-custom-templates' );
-
-			foreach ( $query_result as $index => $template ) {
-				if ( ! in_array( $template->slug, $enabled_custom_templates, true ) ) {
-					unset( $query_result[ $index ] );
-				}
-			}
-
-			return $query_result;
-		}
-		add_filter( 'get_block_templates', 'unitone_hidden_custom_templates' );
 	}
-);
+
+	foreach ( $query_result as $index => $template ) {
+		if ( in_array( $template->slug, $disabled_custom_templates, true ) ) {
+			unset( $query_result[ $index ] );
+		}
+	}
+
+	return $query_result;
+}
+add_filter( 'get_block_templates', 'unitone_hidden_custom_templates' );
 
 /**
  * Run only when WooCommerce is not enabled.
@@ -72,23 +67,27 @@ if ( ! class_exists( 'woocommerce' ) ) {
 	 * @return array
 	 */
 	function unitone_hidden_custom_woocommerce_templates( $query_result ) {
-		$templates_for_woocommere = array(
+		$disable_templates = array(
 			'archive-product',
 			'order-confirmation',
 			'page-cart',
 			'page-checkout',
+			'product-search-results',
 			'single-product',
-			'template-single-product-one-column-page-header-image',
-			'template-single-product-right-sidebar-page-header-image',
-			'template-single-product-left-header-page-header-image',
-			'template-single-product-left-header',
-			'template-single-product-left-header-header-footer',
-			'template-single-product-right-sidebar',
-			'template-single-product-one-column',
+			'taxonomy-product_attribute',
+			'taxonomy-product_cat',
+			'taxonomy-product_tag',
 		);
 
+		$custom_templates = Manager::get_custom_templates();
+		foreach ( $custom_templates as $custom_template ) {
+			if ( in_array( 'product', $custom_template['postTypes'], true ) ) {
+				$disable_templates[] = $custom_template['name'];
+			}
+		}
+
 		foreach ( $query_result as $index => $template ) {
-			if ( in_array( $template->slug, $templates_for_woocommere, true ) ) {
+			if ( in_array( $template->slug, $disable_templates, true ) ) {
 				unset( $query_result[ $index ] );
 			}
 		}

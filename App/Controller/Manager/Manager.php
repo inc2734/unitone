@@ -594,7 +594,6 @@ class Manager {
 		}
 
 		$status = static::_request_license_validate( $license_key );
-		// @todo 失敗の場合はキャッシュ時間を短くする、あるいは、再認証されたときにキャッシュをパージしたい
 		set_transient( $transient_name, $status ? $status : 'false', DAY_IN_SECONDS );
 		return $status;
 	}

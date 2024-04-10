@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-04-08T13:09:32+00:00\n"
-"PO-Revision-Date: 2024-04-08 22:10+0900\n"
+"POT-Creation-Date: 2024-04-10T05:23:30+00:00\n"
+"PO-Revision-Date: 2024-04-10 14:27+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -42,14 +42,14 @@ msgstr "https://2inc.org"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:427 patterns/footer-2.php:22
+#: App/Controller/Manager/Manager.php:382 patterns/footer-2.php:22
 #: patterns/footer-3.php:51 patterns/footer-3.php:59 patterns/footer-3.php:67
 #: patterns/footer-4.php:31 patterns/footer-4.php:39 patterns/footer-4.php:47
 #: patterns/footer-5.php:29 patterns/footer-5.php:37 patterns/footer-5.php:45
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:470 patterns/footer-2.php:25
+#: App/Controller/Manager/Manager.php:425 patterns/footer-2.php:25
 #: patterns/footer-3.php:54 patterns/footer-3.php:62 patterns/footer-3.php:70
 #: patterns/footer-4.php:34 patterns/footer-4.php:42 patterns/footer-4.php:50
 #: patterns/footer-5.php:32 patterns/footer-5.php:40 patterns/footer-5.php:48
@@ -58,15 +58,15 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:538
+#: App/Controller/Manager/Manager.php:500
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:541
+#: App/Controller/Manager/Manager.php:503
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:545
+#: App/Controller/Manager/Manager.php:507
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
@@ -2695,15 +2695,11 @@ msgid "The stack level"
 msgstr "重ね合わせレベル"
 
 #: dist/js/editor/editor.js:7
-msgid "Currently Selected"
-msgstr "現在選択中"
+msgid "Select parent block"
+msgstr "親ブロックを選択"
 
 #: dist/js/editor/editor.js:7
-msgid "Select a block of ancestors"
-msgstr "先祖ブロックを選択する"
-
-#: dist/js/editor/editor.js:7
-msgid "Select a child block"
+msgid "Select child block"
 msgstr "子ブロックを選択"
 
 #: dist/js/editor/editor.js:7
@@ -3540,6 +3536,12 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "Currently Selected"
+#~ msgstr "現在選択中"
+
+#~ msgid "Select a block of ancestors"
+#~ msgstr "先祖ブロックを選択する"
 
 #~ msgid "Main Area (One Column / Page Header (Image)) for Product Archives"
 #~ msgstr "商品アーカイブのメインエリア（1カラム / ページヘッダー（画像））"

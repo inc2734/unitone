@@ -5,51 +5,66 @@ import {
 
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
-import { useEffect, useCallback } from '@wordpress/element';
+import { useSelect, useDispatch } from '@wordpress/data';
+import { useCallback } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
 import { seen } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 const withBlockOutlineToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { attributes, setAttributes, clientId, isSelected } = props;
-		const { __unstableUnitoneBlockOutline } = attributes;
+		const { clientId, isSelected } = props;
 
-		const { hasInnerBlocks } = useSelect(
-			( select ) => {
-				const block = select( blockEditorStore ).getBlock( clientId );
+		const { canDisplayed, targetClientId, targetBlockAttributes } =
+			useSelect(
+				( select ) => {
+					if ( ! isSelected ) {
+						return {};
+					}
 
-				return {
-					hasInnerBlocks: 0 < block.innerBlocks.length,
-				};
-			},
-			[ clientId ]
-		);
+					const data = select( blockEditorStore );
+					const block = data.getBlock( clientId );
+					const hasInnerBlocks = 0 < block.innerBlocks.length;
+					const rootClientId = data.getBlockParents(
+						clientId,
+						false
+					)?.[ 0 ];
+					const _targetClientId = rootClientId || clientId;
 
-		useEffect( () => {
-			if ( __unstableUnitoneBlockOutline ) {
-				setAttributes( {
-					__unstableUnitoneBlockOutline: false,
-				} );
-			}
-		}, [ isSelected ] );
+					return {
+						canDisplayed: hasInnerBlocks || rootClientId,
+						targetClientId: _targetClientId,
+						targetBlockAttributes:
+							data.getBlockAttributes( _targetClientId ),
+					};
+				},
+				[ clientId, isSelected ]
+			);
+
+		const { updateBlockAttributes } = useDispatch( blockEditorStore );
 
 		const onClick = useCallback( () => {
-			setAttributes( {
-				__unstableUnitoneBlockOutline: ! __unstableUnitoneBlockOutline,
+			updateBlockAttributes( targetClientId, {
+				__unstableUnitoneBlockOutline:
+					! targetBlockAttributes?.__unstableUnitoneBlockOutline,
 			} );
-		}, [ setAttributes, __unstableUnitoneBlockOutline ] );
+		}, [
+			updateBlockAttributes,
+			targetClientId,
+			targetBlockAttributes?.__unstableUnitoneBlockOutline,
+		] );
 
 		return (
 			<>
-				{ hasInnerBlocks && (
+				{ canDisplayed && (
 					<BlockControls>
 						<ToolbarGroup>
 							<ToolbarButton
 								label={ __( 'Show block outline', 'unitone' ) }
 								icon={ seen }
-								isPressed={ __unstableUnitoneBlockOutline }
+								isPressed={
+									targetBlockAttributes?.__unstableUnitoneBlockOutline
+								}
 								onClick={ onClick }
 							/>
 						</ToolbarGroup>

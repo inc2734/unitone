@@ -117,7 +117,7 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 					</ToolbarGroup>
 				</BlockControls>
 
-				<BlockEdit { ...props } className="hogehogehoge" />
+				<BlockEdit { ...props } />
 			</>
 		);
 	};

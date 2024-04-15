@@ -1,6 +1,7 @@
 @use '../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
 
 .is-layout-constrained,
+.wp-block-post-content.is-layout-flow, // @deprecated
 .is-root-container {
 	@include text.abstract-text();
 
@@ -55,8 +56,8 @@
 	}
 }
 
-.entry-content.wp-block-post-content,
-.entry-content[data-unitone-layout="text"],
+.entry-content,
+.wp-block-post-content,
 :where(.is-root-container) {
 	--unitone--gutters: var(--unitone--global--gutters);
 }

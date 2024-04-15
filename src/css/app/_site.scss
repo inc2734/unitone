@@ -39,7 +39,10 @@
 }
 
 .site-container-right-sidebar {
-	.entry-content {
+	.entry-content,
+	.wp-block-post-content {
+		--wp--style--global--content-size: 100%;
+		--wp--style--global--wide-size: 100%;
 		--unitone--gutters: 0px;
 	}
 }
@@ -52,7 +55,7 @@
 		grid-template-rows: 1fr auto;
 		grid-template-columns: var(--unitone--sidebar-width) minmax(0, 1fr);
 
-		> * {
+		>* {
 			margin: 0;
 		}
 

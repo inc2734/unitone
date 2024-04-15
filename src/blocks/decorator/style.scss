@@ -12,7 +12,7 @@
 }
 
 [data-unitone-layout~="decorator__inner"] {
-	position: relative;
+	position: static !important;
 }
 
 [data-unitone-layout~="decorator__link"] {
@@ -25,9 +25,6 @@
 	&::before {
 		content: '';
 		position: absolute;
-		top: calc(-1 * var(--unitone--padding));
-		right: calc(-1 * var(--unitone--padding));
-		bottom: calc(-1 * var(--unitone--padding));
-		left: calc(-1 * var(--unitone--padding));
+		inset: 0;
 	}
 }

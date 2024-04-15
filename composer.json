@@ -9,7 +9,7 @@
 	"require-dev": {
 		"wp-coding-standards/wpcs": "^3.0",
 		"phpcompatibility/phpcompatibility-wp": "*",
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0"
 	},
 	"scripts": {
 		"format": "phpcbf --standard=.phpcs.xml.dist --report-summary --report-source",

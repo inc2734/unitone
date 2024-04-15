@@ -87,9 +87,7 @@ export function PaddingEdit( props ) {
 				} );
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: newUnitone,
 				} );
 			} }
 		/>

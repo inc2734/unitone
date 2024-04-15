@@ -135,9 +135,7 @@ export function StairsEdit( props ) {
 				} );
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: newUnitone,
 				} );
 			} }
 		/>

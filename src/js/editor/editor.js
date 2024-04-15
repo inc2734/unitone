@@ -1,4 +1,3 @@
-import './hooks/button';
 import './hooks/table';
 import './hooks/embed';
 import './hooks/style';

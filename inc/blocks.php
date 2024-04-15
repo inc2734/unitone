@@ -213,6 +213,32 @@ function unitone_add_gap_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_gap_support' );
 
 /**
+ * Add support "padding" to core/pbutton.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_padding_support( $metadata ) {
+	if ( 'core/button' !== $metadata['name'] ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'padding' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_padding_support' );
+
+/**
  * If site-logo block is empty, display unitone logo.
  */
 add_filter(

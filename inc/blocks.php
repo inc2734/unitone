@@ -193,7 +193,7 @@ add_filter( 'block_type_metadata', 'unitone_add_cell_min_width_support' );
  * @return array
  */
 function unitone_add_gap_support( $metadata ) {
-	if ( ! in_array( $metadata['name'], array( 'core/post-content', 'core/post-template' ), true ) ) {
+	if ( ! in_array( $metadata['name'], array( 'core/navigation', 'core/post-content', 'core/post-template' ), true ) ) {
 		return $metadata;
 	}
 

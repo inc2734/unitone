@@ -1,172 +1,214 @@
-.wp-block-navigation {
-	--wp--style--block-gap: var(--unitone--global--gap);
-
-	.has-child {
-		&:not(.open-on-click):hover > .wp-block-navigation__submenu-container,
-		&:not(.open-on-click):not(.open-on-hover-click):focus-within > .wp-block-navigation__submenu-container,
-		.wp-block-navigation-submenu__toggle[aria-expanded=true] ~ .wp-block-navigation__submenu-container {
-			min-width: 240px;
-		}
-	}
-
-	&:not(.has-background) {
-		.wp-block-navigation__responsive-container {
-
-			// Drawer
-			&.is-menu-open {
-				background-color: var(--wp--preset--color--unitone-background);
-				color: var(--wp--preset--color--unitone-text);
-			}
-		}
-	}
-}
-
-.wp-block-navigation__responsive-container {
-	@media (max-width: 599px) {
-		top: var(--wp-admin--admin-bar--height, 0px);
-	}
-
-	// Drawer
-	&.is-menu-open {
-		padding: var(--unitone--rem1);
-
-		.wp-block-navigation-item {
-			gap: inherit;
-		}
-
-		.wp-block-navigation__responsive-container-content {
-			.has-child {
-				.wp-block-navigation__submenu-container {
-					padding-right: 0;
-					padding-left: var(--unitone--s1);
-				}
-			}
-
-			.wp-block-navigation__submenu-container {
-				gap: inherit;
-				padding-top: 0;
-			}
-		}
-	}
-
-	// Global navigation
-	&:not(.is-menu-open) {
-		.wp-block-navigation__responsive-container-content {
-			> .wp-block-navigation__container,
-			> .wp-block-navigation__container > .wp-block-page-list,
-			> .wp-block-page-list {
-				row-gap: 0 !important;
-
-				> .wp-block-navigation-item {
-					> .wp-block-navigation__submenu-icon {
-						margin-left: var(--unitone--s-2);
-					}
-
-					> .wp-block-navigation-item__content {
-						padding: var(--unitone--s-1) 0;
-					}
-
-					> .wp-block-navigation__submenu-container {
-						.wp-block-navigation-item__content {
-							padding: var(--unitone--s-1) var(--unitone--s1);
-						}
-
-						.wp-block-navigation__submenu-icon {
-							margin-right: var(--unitone--s-2);
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-.wp-block-navigation__responsive-close {
-	max-width: 100%;
-}
-
 .wp-block-navigation-item {
 	margin: 0;
 }
 
-.wp-block-navigation .wp-block-navigation-item__content {
-	text-decoration: none;
+/**
+ * For adminbar.
+ */
+.wp-block-navigation__responsive-container {
+	@media (max-width: 599px) {
+		top: var(--wp-admin--admin-bar--height, 0px);
+	}
 }
 
 .has-modal-open .admin-bar .is-menu-open .wp-block-navigation__responsive-dialog {
 	margin-top: 0;
 }
 
-.wp-block-navigation.is-style-unitone {
-	.wp-block-navigation__submenu-container {
-		.wp-block-navigation-item {
-			background-color: var(--wp--preset--color--unitone-accent);
-			color: var(--wp--preset--color--white);
+/**
+ * @todo When I put wp-page-list in a submenu, it is wrapped in ul on the editor but not on the front.
+ * Because of this, if there is a background color, it needs to be adjusted in the editor.
+ */
+.wp-block-navigation__submenu-container {
+	.wp-block-page-list {
+		background-color: inherit !important;
+		color: inherit !important;
+	}
+}
 
-			.wp-block-navigation__submenu-container,
-			.wp-block-navigation-item {
-				background-color: inherit;
-				color: inherit;
+/**
+ * Style: unitone
+ */
+.wp-block-navigation:where(.is-style-unitone) {
+
+	/**
+	 * General / Desktop
+	 */
+	& {
+		--unitone--gap: var(--unitone--global--text-gap);
+		--unitone--column-gap: var(--unitone--gap);
+		--unitone--row-gap: 0px;
+		--unitone--padding: 0px;
+
+		// Items
+		--unitone--navigation-item--padding-block: var(--unitone--s-1);
+		--unitone--navigation-item--padding-inline: 0px;
+		--unitone--navigation-item--padding: var(--unitone--navigation-item--padding-block) var(--unitone--navigation-item--padding-inline);
+
+		// Submenus
+		--unitone--navigation-submenu--min-width: 240px;
+
+		// Submenu items
+		--unitone--navigation-submenu-item--padding-block: var(--unitone--s-1);
+		--unitone--navigation-submenu-item--padding-inline: var(--unitone--s-1);
+		--unitone--navigation-submenu-item--padding: var(--unitone--navigation-submenu-item--padding-block) var(--unitone--navigation-submenu-item--padding-inline);
+		--unitone--navigation-submenu-item--indent: 0px;
+
+		// Submenu icons
+		--unitone--navigation-submenu-icon--size: .6em;
+	}
+
+	.wp-block-navigation__responsive-container {
+		padding: var(--unitone--padding);
+	}
+
+	.wp-block-navigation__container {
+		row-gap: var(--unitone--row-gap) !important;
+		column-gap: var(--unitone--column-gap) !important;
+	}
+
+	// Menu item.
+	// `.wp-block-navigation__submenu-icon` has `.wp-block-navigation-item__content` in the editor, so it needs to be excluded.
+	.wp-block-navigation__container {
+		> :where(.wp-block-page-list) > :where(.wp-block-pages-list__item),
+		> :where(.wp-block-navigation-item) {
+			> .wp-block-navigation-item__content:not(.wp-block-navigation__submenu-icon) {
+				padding: var(--unitone--navigation-item--padding);
 			}
+		}
+
+		> .wp-block-social-links {
+			padding: var(--unitone--navigation-item--padding);
 		}
 	}
 
-	.wp-block-navigation__submenu-container {
-		border: none;
-	}
-
-	.has-child {
-		.wp-block-navigation__submenu-container {
-			border: none;
-
-			.wp-block-navigation__submenu-container {
-				@media (min-width: 782px) {
-					top: 0;
-				}
-			}
-		}
-	}
-
-	.wp-block-navigation__submenu-icon {
-		background-color: transparent;
-	}
-
-	// Global navigation (Horizontal)
+	// Submenu positions for menu items. For horizontal.
 	&.is-horizontal {
-		.wp-block-navigation__responsive-container:not(.is-menu-open) {
-			.wp-block-navigation__responsive-container-content {
-				> .wp-block-navigation__container,
-				> .wp-block-navigation__container > .wp-block-page-list,
-				> .wp-block-page-list {
-					> .wp-block-navigation-item {
-						> .wp-block-navigation__submenu-container {
-							transform: translateX(-50%);
-							left: 50%;
-						}
+		.wp-block-navigation__container {
+			> :where(.wp-block-page-list) > :where(.wp-block-pages-list__item),
+			> :where(.wp-block-navigation-item) {
+				> .wp-block-navigation__submenu-container {
+					@media (min-width: 600px) {
+						left: 50%;
+						translate: -50%;
 					}
 				}
 			}
 		}
 	}
 
-	// Global navigation (Vertical)
+	// Submenu positions for menu items. For vertical.
 	&.is-vertical {
-		.wp-block-navigation__responsive-container:not(.is-menu-open) {
-			.wp-block-navigation__responsive-container-content {
-				> .wp-block-navigation__container,
-				> .wp-block-navigation__container > .wp-block-page-list,
-				> .wp-block-page-list {
-					> .wp-block-navigation-item {
-						&.has-child {
-							padding-right: 1em;
-						}
-
-						> .wp-block-navigation__submenu-container {
-							left: 100%;
-							top: 0;
-						}
+		.wp-block-navigation__container {
+			> :where(.wp-block-page-list) > :where(.wp-block-pages-list__item),
+			> :where(.wp-block-navigation-item) {
+				> .wp-block-navigation__submenu-container {
+					@media (min-width: 600px) {
+						top: 0;
+						left: 100%;
 					}
 				}
+			}
+		}
+	}
+
+	// Submenu item.
+	.wp-block-navigation__submenu-container {
+		> .wp-block-navigation-item {
+			> .wp-block-navigation-item__content:not(:root) {
+				padding: var(--unitone--navigation-submenu-item--padding);
+			}
+		}
+	}
+	&:not(.has-background) .wp-block-navigation__submenu-container {
+		background-color: var(--wp--preset--color--unitone-accent);
+		color: var(--wp--preset--color--white);
+	}
+
+	// Item padding for the toggle icon.
+	.has-child {
+		position: relative;
+
+		> .wp-block-navigation-item__content:not(.wp-block-navigation__submenu-icon) {
+			@media (min-width: 600px) {
+				padding-right: var(--unitone--s1) !important;
+			}
+		}
+
+		.wp-block-navigation__submenu-container:not(:root):not(:root) {
+			min-width: var(--unitone--navigation-submenu--min-width) !important;
+		}
+	}
+
+	// Toggle icon
+	.wp-block-navigation__submenu-icon {
+		position: absolute;
+		top: calc(50% - var(--unitone--navigation-submenu-icon--size) / 2);
+		right: 0;
+		margin: 0 !important;
+		height: var(--unitone--navigation-submenu-icon--size);
+		width: var(--unitone--navigation-submenu-icon--size);
+
+		svg {
+			margin-top: 0;
+		}
+	}
+	.wp-block-navigation__submenu-container .wp-block-navigation__submenu-icon {
+		right: calc(var(--unitone--s1) / 2 - var(--unitone--navigation-submenu-icon--size) / 2);
+	}
+
+	/**
+	 * Mobile
+	 */
+	@media (max-width: 599px) {
+		& {
+			--navigation-layout-justification-setting: stretch;
+
+			--unitone--gap: 0px;
+			--unitone--column-gap: 0px;
+			--unitone--row-gap: var(--unitone--gap);
+			--unitone--padding: var(--unitone--global--gutters);
+
+			// Items
+			--unitone--navigation-item--padding: calc(var(--unitone--s-1) / 2) 0;
+
+			// Submenu items
+			--unitone--navigation-submenu-item--padding: calc(var(--unitone--s-1) / 2);
+			--unitone--navigation-submenu-item--indent: 1rem;
+		}
+
+		&:where(:not(.has-background)) :where(.wp-block-navigation__responsive-container) {
+			background-color: var(--wp--preset--color--unitone-background);
+			color: var(--wp--preset--color--unitone-text);
+		}
+
+		// Remove core padding-top for submenu items.
+		.wp-block-navigation__responsive-container .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container {
+			padding-top: 0;
+		}
+
+		// Left and Right spacing for submenu items.
+		.wp-block-navigation__responsive-container .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+		// Indent for submenu items.
+		.wp-block-navigation__responsive-container .wp-block-navigation__responsive-container-content {
+			.wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+				padding-left: var(--unitone--navigation-submenu-item--indent);
+			}
+
+			:where(.wp-block-navigation__submenu-container) .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+				padding-left: calc(var(--unitone--navigation-submenu-item--indent) * 2);
+			}
+
+			:where(.wp-block-navigation__submenu-container .wp-block-navigation__submenu-container) .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+				padding-left: calc(var(--unitone--navigation-submenu-item--indent) * 3);
+			}
+
+			:where(.wp-block-navigation__submenu-container .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container) .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+				padding-left: calc(var(--unitone--navigation-submenu-item--indent) * 4);
 			}
 		}
 	}

@@ -281,6 +281,11 @@
 			]
 		},
 		"blocks": {
+			"core/navigation": {
+				"spacing": {
+					"blockGap": false
+				}
+			},
 			"core/post-content": {
 				"spacing": {
 					"blockGap": false
@@ -408,6 +413,11 @@
 							}
 						}
 					}
+				}
+			},
+			"core/navigation": {
+				"spacing": {
+					"blockGap": "0px"
 				}
 			},
 			"core/social-links": {

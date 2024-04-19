@@ -10,8 +10,8 @@
 <div data-unitone-layout="container">
 	<!-- wp:unitone/gutters {"unitone":{"padding":"-1"}} -->
 	<div data-unitone-layout="gutters">
-		<!-- wp:unitone/with-sidebar {"sidebarWidth":"calc(((601px - var(--unitone--gutters) * 2 - 100%) * 999) * -1)","unitone":{"alignItems":"center","gap":{"column":"-1","row":"-2"}}} -->
-		<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--sidebar-width:calc(((601px - var(--unitone--gutters) * 2 - 100%) * 999) * -1)">
+		<!-- wp:unitone/with-sidebar {"sidebarWidth":"max(24px,(((601px - var(--unitone--gutters) * 2 - 100%) * 999) * -1))","unitone":{"alignItems":"center","gap":{"column":"-1","row":"-2"}}} -->
+		<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--sidebar-width:max(24px,(((601px - var(--unitone--gutters) * 2 - 100%) * 999) * -1))">
 			<!-- wp:unitone/with-sidebar-content -->
 			<div data-unitone-layout="with-sidebar__content">
 				<!-- wp:site-logo /-->

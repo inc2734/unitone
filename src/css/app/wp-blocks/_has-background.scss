@@ -7,7 +7,7 @@ p.has-background,
 	padding: var(--unitone--padding);
 }
 
-ul.has-background,
+ul:where(:not(.wp-block-navigation__container):not(.wp-block-navigation__submenu-container):not(.wp-block-page-list)).has-background,
 ol.has-background {
 	--unitone--padding: var(--unitone--global--text-gap);
 

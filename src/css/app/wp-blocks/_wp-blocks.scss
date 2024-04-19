@@ -3,8 +3,10 @@
 @include meta.load-css("adminbar");
 @include meta.load-css("align");
 @include meta.load-css("button");
+@include meta.load-css("embed");
 @include meta.load-css("font-sizes");
 @include meta.load-css("has-background");
+@include meta.load-css("post-content");
 
 .required {
 	color: var(--wp--preset--color--vivid-red);

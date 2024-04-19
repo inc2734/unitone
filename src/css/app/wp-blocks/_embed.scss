@@ -1,0 +1,9 @@
+/**
+ * CSS loaded with wp_enqueue_block_style() will not be loaded without blocks.
+ * CSS must always be loaded, which is inconvenient when a classic editor is required, such as in WooCommerce.
+ */
+
+ .wp-block-embed {
+	margin-bottom: 0;
+	width: 100%;
+}

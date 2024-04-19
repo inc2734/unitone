@@ -10,7 +10,7 @@
 
 			<!-- wp:unitone/container {"unitone":{"maxWidth":"var(--wp--style--global--content-size)"}} -->
 			<div data-unitone-layout="container">
-				<!-- wp:template-part {"slug":"comments","theme":"unitone"} /-->
+				<!-- wp:template-part {"slug":"comments"} /-->
 			</div>
 			<!-- /wp:unitone/container -->
 		</div>

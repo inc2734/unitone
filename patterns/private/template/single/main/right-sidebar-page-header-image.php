@@ -16,7 +16,7 @@
 						<div data-unitone-layout="stack">
 							<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
 
-							<!-- wp:template-part {"slug":"comments","theme":"unitone"} /-->
+							<!-- wp:template-part {"slug":"comments"} /-->
 						</div>
 						<!-- /wp:unitone/stack -->
 					</div>

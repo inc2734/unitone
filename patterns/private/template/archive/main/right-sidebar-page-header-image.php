@@ -18,7 +18,7 @@
 							<div data-unitone-layout="text" class="entry-content">
 								<!-- wp:unitone/container {"unitone":{"gutters":"0","blockAlign":"center","maxWidth":"1024px"}} -->
 								<div data-unitone-layout="container">
-									<!-- wp:template-part {"slug":"loop","theme":"unitone"} /-->
+									<!-- wp:template-part {"slug":"loop"} /-->
 								</div>
 								<!-- /wp:unitone/container -->
 							</div>

@@ -14,7 +14,7 @@
 					<div data-unitone-layout="stack">
 						<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
 
-						<!-- wp:template-part {"slug":"loop","theme":"unitone"} /-->
+						<!-- wp:template-part {"slug":"loop"} /-->
 					</div>
 					<!-- /wp:unitone/stack -->
 				</div>

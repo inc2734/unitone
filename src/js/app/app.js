@@ -68,7 +68,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		setItemsVars( items );
 	} );
 
-	const resizeObserver = new ResizeObserver( ( entries ) => {
+	const resizeObserver = new window.ResizeObserver( () => {
 		if ( window.matchMedia( '(min-width: 600px)' ).matches ) {
 			headerContainer.classList.add( '-submenu-static-position' );
 			setItemsVars( items );

@@ -489,7 +489,7 @@ class Manager {
 			return;
 		}
 
-		if ( ! empty( array_diff_assoc( static::$default_settings, static::get_settings() ) ) ) {
+		if ( ! empty( array_udiff( static::$default_settings, static::get_settings(), fn( $a, $b ) => $a <=> $b ) ) ) {
 			return;
 		}
 		?>

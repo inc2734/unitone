@@ -1,7 +1,7 @@
 .unitone-mega-menu__container {
 	--unitone--font-size: 0;
 
-	background-color: transparent;
+	background-color: var(--wp--preset--color--unitone-background);
 	color: var(--wp--preset--color--unitone-text-black);
 	font-weight: normal;
 

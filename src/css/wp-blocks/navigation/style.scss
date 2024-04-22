@@ -129,7 +129,7 @@
 	}
 
 	// Item padding for the toggle icon.
-	:is(.has-child, .unitone-mega-menu) {
+	:is(.has-child, .unitone-mega-menu):where(:has(.wp-block-navigation__submenu-icon)) {
 		position: relative;
 
 		> .wp-block-navigation-item__content:not(.wp-block-navigation__submenu-icon) {

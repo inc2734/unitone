@@ -34,9 +34,9 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 	<?php echo wp_kses_data( $block_wrapper_attributes ); ?>
 	data-wp-interactive="unitone/mega-menu"
 	data-wp-context='{ "submenuOpenedBy": { "click": false, "hover": false, "focus": false }, "diffx": 0 }'
+	data-wp-init="callbacks.init"
 	data-wp-on--focusout="actions.handleMenuFocusout"
 	<?php if ( ! $open_on_click ) : ?>
-		data-wp-on--mouseenter="actions.openMenuOnHover"
 		data-wp-on--mouseleave="actions.closeMenuOnHover"
 	<?php endif; ?>
 	tabindex="-1"

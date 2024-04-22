@@ -20,10 +20,17 @@ import {
 	ToolbarGroup,
 } from '@wordpress/components';
 
+import {
+	useState,
+	useEffect,
+	useRef,
+	useMemo,
+	useLayoutEffect,
+} from '@wordpress/element';
+
 import { speak } from '@wordpress/a11y';
 import { useMergeRefs } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
-import { useState, useEffect, useRef, useMemo } from '@wordpress/element';
 import { link as linkIcon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import { displayShortcut } from '@wordpress/keycodes';
@@ -55,6 +62,7 @@ export default function ( {
 
 	const [ isLinkOpen, setIsLinkOpen ] = useState( false );
 	const [ isMegaMenuOpen, setIsMegaMenuOpen ] = useState( false );
+	const [ parentWidth, setParentWidth ] = useState( 0 );
 	const [ diffx, setDiffx ] = useState( 0 );
 	// Use internal state instead of a ref to make sure that the component
 	// re-renders when the popover's anchor updates.
@@ -69,6 +77,82 @@ export default function ( {
 		() => ( { url, opensInNewTab, nofollow } ),
 		[ url, opensInNewTab, nofollow ]
 	);
+
+	/**
+	 * Focus the Link label text and select it.
+	 */
+	function selectLabelText() {
+		ref.current.focus();
+		const { ownerDocument } = ref?.current;
+		const { defaultView } = ref?.current?.ownerDocument;
+		const selection = defaultView.getSelection();
+		const range = ownerDocument.createRange();
+		// Get the range of the current ref contents so we can add this range to the selection.
+		range.selectNodeContents( ref.current );
+		selection.removeAllRanges();
+		selection.addRange( range );
+	}
+
+	const hasInnerBlocks = useSelect(
+		( select ) =>
+			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
+				?.length,
+		[ clientId ]
+	);
+
+	// Update props when the viewport is resized or the block is resized.
+	useLayoutEffect( () => {
+		const parent =
+			listItemRef.current.closest( '.site-header' ) ??
+			listItemRef.current.closest( '.wp-block-navigation' );
+
+		let resizeObserver;
+		const defaultView = listItemRef.current?.ownerDocument?.defaultView;
+		if ( defaultView.ResizeObserver ) {
+			resizeObserver = new defaultView.ResizeObserver( ( entries ) =>
+				setParentWidth( entries[ 0 ].contentBoxSize )
+			);
+			resizeObserver.observe( parent );
+		}
+
+		return () => {
+			if ( resizeObserver ) {
+				resizeObserver.disconnect();
+			}
+		};
+	}, [] );
+
+	// Check if either the block or the inner blocks are selected.
+	const hasSelection = useSelect(
+		( select ) => {
+			const { isBlockSelected, hasSelectedInnerBlock } =
+				select( blockEditorStore );
+			/* Sets deep to true to also find blocks inside the details content block. */
+			return (
+				hasSelectedInnerBlock( clientId, true ) ||
+				isBlockSelected( clientId )
+			);
+		},
+		[ clientId ]
+	);
+
+	useEffect( () => {
+		if ( hasSelection ) {
+			const parent =
+				listItemRef.current.closest( '.site-header' ) ??
+				listItemRef.current.closest( '.wp-block-navigation' );
+			setDiffx(
+				`${
+					listItemRef.current.getBoundingClientRect().x -
+					parent.getBoundingClientRect().x
+				}px`
+			);
+			setIsMegaMenuOpen( true );
+		} else {
+			setDiffx( 0 );
+			setIsMegaMenuOpen( false );
+		}
+	}, [ hasSelection, label, hasInnerBlocks, parentWidth ] );
 
 	// Show the LinkControl on mount if the URL is empty
 	// ( When adding a new menu item)
@@ -103,60 +187,6 @@ export default function ( {
 			}
 		}
 	}, [ url ] );
-
-	/**
-	 * Focus the Link label text and select it.
-	 */
-	function selectLabelText() {
-		ref.current.focus();
-		const { ownerDocument } = ref.current;
-		const { defaultView } = ownerDocument;
-		const selection = defaultView.getSelection();
-		const range = ownerDocument.createRange();
-		// Get the range of the current ref contents so we can add this range to the selection.
-		range.selectNodeContents( ref.current );
-		selection.removeAllRanges();
-		selection.addRange( range );
-	}
-
-	const hasInnerBlocks = useSelect(
-		( select ) =>
-			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
-				?.length,
-		[ clientId ]
-	);
-
-	// Check if either the block or the inner blocks are selected.
-	const hasSelection = useSelect(
-		( select ) => {
-			const { isBlockSelected, hasSelectedInnerBlock } =
-				select( blockEditorStore );
-			/* Sets deep to true to also find blocks inside the details content block. */
-			return (
-				hasSelectedInnerBlock( clientId, true ) ||
-				isBlockSelected( clientId )
-			);
-		},
-		[ clientId ]
-	);
-
-	useEffect( () => {
-		if ( hasSelection ) {
-			const parent =
-				listItemRef.current.closest( '.site-header' ) ??
-				listItemRef.current.closest( '.wp-block-navigation' );
-			setDiffx(
-				`${
-					listItemRef.current.getBoundingClientRect().x -
-					parent.getBoundingClientRect().x
-				}px`
-			);
-			setIsMegaMenuOpen( true );
-		} else {
-			setDiffx( 0 );
-			setIsMegaMenuOpen( false );
-		}
-	}, [ hasSelection ] );
 
 	const blockProps = useBlockProps( {
 		ref: useMergeRefs( [ setPopoverAnchor, listItemRef ] ),
@@ -313,6 +343,7 @@ export default function ( {
 								// richTextRef.current?.focus();
 							} }
 							anchor={ popoverAnchor }
+							focusOnMount={ false }
 							shift
 						>
 							<LinkControl
@@ -349,6 +380,7 @@ export default function ( {
 									// richTextRef.current?.focus();
 								} }
 								settings={ LINK_SETTINGS }
+								focus
 							/>
 						</Popover>
 					) }

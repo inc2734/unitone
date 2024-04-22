@@ -11,36 +11,47 @@ const { state, actions } = store( 'unitone/mega-menu', {
 
 			// The menu is opened if either `click`, `hover` or `focus` is true.
 			return (
-				Object.values( context.submenuOpenedBy ).filter( Boolean )
-					.length > 0
+				Object.values( context?.submenuOpenedBy ?? [] ).filter(
+					Boolean
+				).length > 0
 			);
 		},
 		get menuOpenedBy() {
 			const context = getContext();
 
-			return context.submenuOpenedBy;
+			return context?.submenuOpenedBy ?? [];
+		},
+	},
+	callbacks: {
+		init() {
+			const { ref } = getElement();
+
+			const parent =
+				ref.closest( '.site-header' ) ??
+				ref.closest( '.wp-block-navigation' );
+
+			let resizeObserver;
+			const defaultView = ref?.ownerDocument?.defaultView;
+			if ( defaultView.ResizeObserver ) {
+				resizeObserver = new defaultView.ResizeObserver( () => {
+					document.activeElement?.blur();
+				} );
+				resizeObserver.observe( parent );
+			}
 		},
 	},
 	actions: {
+		// closeMenuOnWindowResize() {
+		// 	console.log( 1 );
+		// 	actions.closeMenu( 'hover' );
+		// 	actions.closeMenu( 'click' );
+		// 	actions.closeMenu( 'focus' );
+		// },
 		openMenuOnHover( event ) {
-			const { overlayOpenedBy } = getContext();
-			if (
-				// Only open on hover if the overlay is closed.
-				Object.values( overlayOpenedBy || {} ).filter( Boolean )
-					.length === 0
-			) {
-				actions.openMenu( event, 'hover' );
-			}
+			actions.openMenu( event, 'hover' );
 		},
 		closeMenuOnHover() {
-			const { overlayOpenedBy } = getContext();
-			if (
-				// Only close on hover if the overlay is closed.
-				Object.values( overlayOpenedBy || {} ).filter( Boolean )
-					.length === 0
-			) {
-				actions.closeMenu( 'hover' );
-			}
+			actions.closeMenu( 'hover' );
 		},
 		openMenuOnClick( event ) {
 			const context = getContext();

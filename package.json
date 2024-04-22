@@ -57,7 +57,7 @@
 		"css:snow-monkey-editor:editor": "sass --no-source-map src/css/snow-monkey-editor/editor.scss:dist/css/snow-monkey-editor/editor.css && postcss dist/css/snow-monkey-editor/editor.css -r",
 		"css:snow-monkey-editor": "run-p css:snow-monkey-editor:*",
 		"css": "run-p css:*",
-		"blocks:build": "rimraf dist/blocks && wp-scripts build --output-path=dist",
+		"blocks:build": "rimraf dist/blocks && wp-scripts build --output-path=dist --experimental-modules",
 		"blocks:php": "cpy \"src/blocks/**/*.php\" \"dist/blocks\"",
 		"blocks": "run-s format:blocks blocks:build blocks:php",
 		"js:app": "rimraf dist/js/app && wp-scripts build src/js/app/app.js --output-path=dist/js/app --webpack-src-dir=dist/js/app",

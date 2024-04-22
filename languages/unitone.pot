@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 10.10.0\n"
+"Project-Id-Version: unitone 10.11.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-10T05:23:30+00:00\n"
+"POT-Creation-Date: 2024-04-21T22:35:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -39,8 +39,6 @@ msgstr ""
 #: App/Controller/Manager/Manager.php:70
 #: App/Controller/Manager/Manager.php:71
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2259
-#: App/Controller/Manager/dist/js/app.js:2389
 msgid "unitone Setup"
 msgstr ""
 
@@ -93,10 +91,14 @@ msgstr ""
 msgid "Learn more"
 msgstr ""
 
+#. translators: Accessibility text. %s: Parent page title.
+#: dist/blocks/mega-menu/render.php:9
+msgid "%s mega menu"
+msgstr ""
+
 #: inc/block-categories.php:23
 #: App/Controller/Manager/dist/js/app.js:3
 #: dist/js/editor/editor.js:1
-#: App/Controller/Manager/dist/js/app.js:1541
 msgid "Layout"
 msgstr ""
 
@@ -1614,172 +1616,130 @@ msgid "Single Posts: Right Sidebar"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:1671
 msgid "License"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:1684
 msgid "License Key"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:1688
 msgid "If your license key is valid, you will be able to use unitone more conveniently."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:1695
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:3
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1027
-#: App/Controller/Manager/dist/js/app.js:1477
-#: App/Controller/Manager/dist/js/app.js:1590
-#: App/Controller/Manager/dist/js/app.js:1728
-#: App/Controller/Manager/dist/js/app.js:2098
 msgid "Save Settings"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:3
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1035
-#: App/Controller/Manager/dist/js/app.js:1485
-#: App/Controller/Manager/dist/js/app.js:1598
-#: App/Controller/Manager/dist/js/app.js:1736
-#: App/Controller/Manager/dist/js/app.js:2106
 msgid "Reset All Settings"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:675
 msgid "Brand"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:688
-#: App/Controller/Manager/dist/js/app.js:733
 msgid "Site Logo"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:693
 msgid "Display an image to represent this site."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:725
-#: App/Controller/Manager/dist/js/app.js:815
 msgid "Remove Image"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:751
-#: App/Controller/Manager/dist/js/app.js:841
 msgid "Select Image"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:768
-#: App/Controller/Manager/dist/js/app.js:823
 msgid "Site Icon"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:774
 msgid "Site Icons are what you see in browser tabs, bookmark bars, and within the WordPress mobile apps. Upload one here!"
 msgstr ""
 
 #. translators: %s: Site icon size in pixels.
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:780
 msgid "Site Icons should be square and at least %s pixels."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:858
 msgid "Colors"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:917
 msgid "This setting is the default setting for the theme. The Site Editor setting overrides this setting."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:927
 msgid "Accent Color"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:947
 msgid "Background Color"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:967
 msgid "Text Color"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:987
 msgid "Link Color"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1807
 msgid "Typography"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1906
 msgid "Font"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1923
 msgid "Base Font Size"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1939
 msgid "Half Leading"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1955
 msgid "Size of h2"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1982
 msgid "Size of h3"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:2009
 msgid "Size of h4"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:2036
 msgid "Size of h5"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:2063
 msgid "Size of h6"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1554
 msgid "Size"
 msgstr ""
 
@@ -1794,75 +1754,57 @@ msgid "Wide"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1177
-#: App/Controller/Manager/dist/js/app.js:1194
 msgid "Your Homepage Displays"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1190
 msgid "Homepage Type"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1201
 msgid "Latest Posts"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1205
 msgid "Static Page"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1230
 msgid "Homepage"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1240
-#: App/Controller/Manager/dist/js/app.js:1253
 msgid "Homepage 1"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1277
-#: App/Controller/Manager/dist/js/app.js:1290
 msgid "Homepage 2"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1344
 msgid "Select existing page for the homepage"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:3
 #: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:1352
-#: App/Controller/Manager/dist/js/app.js:1435
 msgid "— Select —"
 msgstr ""
 
 #. translators: %1$s: Post ID
 #: App/Controller/Manager/dist/js/app.js:4
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1365
-#: App/Controller/Manager/dist/js/app.js:1448
 msgid "#%1$s (No title)"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:1391
 msgid "Posts Page"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:1403
 msgid "Create new page for the posts page"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:1427
 msgid "Select existing page for the posts page"
 msgstr ""
 
@@ -1883,25 +1825,18 @@ msgid "Activate the custom template you wish to use. You cannot deactivate a cus
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2174
-#: App/Controller/Manager/dist/js/app.js:2243
 msgid "Go to the Dashboard"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2204
-#: App/Controller/Manager/dist/js/app.js:2208
 msgid "View site (opens in a new tab)"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2222
 msgid "Navigation"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2322
-#: App/Controller/Manager/dist/js/app.js:2440
 msgid "Retrieve patterns from the pattern library"
 msgstr ""
 
@@ -2243,6 +2178,10 @@ msgstr ""
 
 #: dist/blocks/layers/index.js:25
 msgid "If enabled, the number of vertical and horizontal grid lines is switched when the viewport is portrait."
+msgstr ""
+
+#: dist/blocks/mega-menu/index.js:1
+msgid "Mega menu link text"
 msgstr ""
 
 #. translators: %d: number of results.
@@ -2752,14 +2691,6 @@ msgstr ""
 msgid "Replace"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:1558
-msgid "Content Size"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:1570
-msgid "Wide Size"
-msgstr ""
-
 #: dist/blocks/accordion/block.json
 msgctxt "block title"
 msgid "Accordion"
@@ -3015,6 +2946,16 @@ msgstr ""
 #: dist/blocks/layers/block.json
 msgctxt "block description"
 msgid "This block layers the children."
+msgstr ""
+
+#: dist/blocks/mega-menu/block.json
+msgctxt "block title"
+msgid "Mega Menu"
+msgstr ""
+
+#: dist/blocks/mega-menu/block.json
+msgctxt "block description"
+msgid "Add a mega menu to your navigation."
 msgstr ""
 
 #: dist/blocks/pattern-inserter/block.json

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-04-10T05:23:30+00:00\n"
-"PO-Revision-Date: 2024-04-10 14:27+0900\n"
+"POT-Creation-Date: 2024-04-21T22:35:02+00:00\n"
+"PO-Revision-Date: 2024-04-22 07:41+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -37,8 +37,6 @@ msgstr "https://2inc.org"
 
 #: App/Controller/Manager/Manager.php:70 App/Controller/Manager/Manager.php:71
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2259
-#: App/Controller/Manager/dist/js/app.js:2389
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
@@ -77,8 +75,13 @@ msgstr "セットアップ画面へ"
 msgid "Learn more"
 msgstr "さらに詳しく"
 
+#. translators: Accessibility text. %s: Parent page title.
+#: dist/blocks/mega-menu/render.php:9
+msgid "%s mega menu"
+msgstr "%sのメガメニュー"
+
 #: inc/block-categories.php:23 App/Controller/Manager/dist/js/app.js:3
-#: dist/js/editor/editor.js:1 App/Controller/Manager/dist/js/app.js:1541
+#: dist/js/editor/editor.js:1
 msgid "Layout"
 msgstr "レイアウト"
 
@@ -1572,17 +1575,14 @@ msgid "Single Posts: Right Sidebar"
 msgstr "個別投稿：右サイドバー"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:1671
 msgid "License"
 msgstr "ライセンス"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:1684
 msgid "License Key"
 msgstr "ライセンスキー"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:1688
 msgid ""
 "If your license key is valid, you will be able to use unitone more "
 "conveniently."
@@ -1590,71 +1590,49 @@ msgstr ""
 "ライセンスキーが有効な場合、unitone を更に便利に利用できるようになります。"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:1695
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:3
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1027
-#: App/Controller/Manager/dist/js/app.js:1477
-#: App/Controller/Manager/dist/js/app.js:1590
-#: App/Controller/Manager/dist/js/app.js:1728
-#: App/Controller/Manager/dist/js/app.js:2098
 msgid "Save Settings"
 msgstr "設定を保存"
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:3
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1035
-#: App/Controller/Manager/dist/js/app.js:1485
-#: App/Controller/Manager/dist/js/app.js:1598
-#: App/Controller/Manager/dist/js/app.js:1736
-#: App/Controller/Manager/dist/js/app.js:2106
 msgid "Reset All Settings"
 msgstr "すべての設定をリセット"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:675
 msgid "Brand"
 msgstr "ブランド"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:688
-#: App/Controller/Manager/dist/js/app.js:733
 msgid "Site Logo"
 msgstr "サイトロゴ"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:693
 msgid "Display an image to represent this site."
 msgstr "このサイトを表す画像を表示します。"
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:725
-#: App/Controller/Manager/dist/js/app.js:815
 msgid "Remove Image"
 msgstr "画像を削除"
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:751
-#: App/Controller/Manager/dist/js/app.js:841
 msgid "Select Image"
 msgstr "画像を選択"
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:768
-#: App/Controller/Manager/dist/js/app.js:823
 msgid "Site Icon"
 msgstr "サイトアイコン"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:774
 msgid ""
 "Site Icons are what you see in browser tabs, bookmark bars, and within the "
 "WordPress mobile apps. Upload one here!"
@@ -1664,17 +1642,14 @@ msgstr ""
 
 #. translators: %s: Site icon size in pixels.
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:780
 msgid "Site Icons should be square and at least %s pixels."
 msgstr "サイトアイコンは%sピクセル以上の正方形にしてください。"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:858
 msgid "Colors"
 msgstr "色"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:917
 msgid ""
 "This setting is the default setting for the theme. The Site Editor setting "
 "overrides this setting."
@@ -1683,72 +1658,58 @@ msgstr ""
 "きします。"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:927
 msgid "Accent Color"
 msgstr "アクセントカラー"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:947
 msgid "Background Color"
 msgstr "背景色"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:967
 msgid "Text Color"
 msgstr "文字色"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:987
 msgid "Link Color"
 msgstr "リンク色"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1807
 msgid "Typography"
 msgstr "タイポグラフィ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1906
 msgid "Font"
 msgstr "フォント"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1923
 msgid "Base Font Size"
 msgstr "基本の文字サイズ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1939
 msgid "Half Leading"
 msgstr "ハーフリーディング"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1955
 msgid "Size of h2"
 msgstr "h2 のサイズ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1982
 msgid "Size of h3"
 msgstr "h3 のサイズ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:2009
 msgid "Size of h4"
 msgstr "h4 のサイズ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:2036
 msgid "Size of h5"
 msgstr "h5 のサイズ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:2063
 msgid "Size of h6"
 msgstr "h6 のサイズ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1554
 msgid "Size"
 msgstr "サイズ"
 
@@ -1761,75 +1722,57 @@ msgid "Wide"
 msgstr "幅広"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1177
-#: App/Controller/Manager/dist/js/app.js:1194
 msgid "Your Homepage Displays"
 msgstr "ホームページ設定"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1190
 msgid "Homepage Type"
 msgstr "ホームページのタイプ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1201
 msgid "Latest Posts"
 msgstr "最新の投稿"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1205
 msgid "Static Page"
 msgstr "固定ページ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1230
 msgid "Homepage"
 msgstr "ホームページ"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1240
-#: App/Controller/Manager/dist/js/app.js:1253
 msgid "Homepage 1"
 msgstr "ホームページ 1"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1277
-#: App/Controller/Manager/dist/js/app.js:1290
 msgid "Homepage 2"
 msgstr "ホームページ 2"
 
 #: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:1344
 msgid "Select existing page for the homepage"
 msgstr "既存のページをホームページ用に選択"
 
 #: App/Controller/Manager/dist/js/app.js:3
 #: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:1352
-#: App/Controller/Manager/dist/js/app.js:1435
 msgid "— Select —"
 msgstr "— 選択 —"
 
 #. translators: %1$s: Post ID
 #: App/Controller/Manager/dist/js/app.js:4
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:1365
-#: App/Controller/Manager/dist/js/app.js:1448
 msgid "#%1$s (No title)"
 msgstr "#%1$s （タイトルなし）"
 
 #: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:1391
 msgid "Posts Page"
 msgstr "投稿ページ"
 
 #: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:1403
 msgid "Create new page for the posts page"
 msgstr "投稿ページ用の固定ページを生成"
 
 #: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:1427
 msgid "Select existing page for the posts page"
 msgstr "既存のページを投稿ページ用に選択"
 
@@ -1854,25 +1797,18 @@ msgstr ""
 "ムテンプレートは無効化できません。"
 
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2174
-#: App/Controller/Manager/dist/js/app.js:2243
 msgid "Go to the Dashboard"
 msgstr "ダッシュボードに戻る"
 
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2204
-#: App/Controller/Manager/dist/js/app.js:2208
 msgid "View site (opens in a new tab)"
 msgstr "サイトを表示 (新しいタブで開く)"
 
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2222
 msgid "Navigation"
 msgstr "ナビゲーション"
 
 #: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:2322
-#: App/Controller/Manager/dist/js/app.js:2440
 msgid "Retrieve patterns from the pattern library"
 msgstr "パターンライブラリーからパターンを再取得する"
 
@@ -2191,6 +2127,10 @@ msgid ""
 msgstr ""
 "有効な場合、ビューポートがポートレートのときにグリッド線の縦横の本数が切り替"
 "わります。"
+
+#: dist/blocks/mega-menu/index.js:1
+msgid "Mega menu link text"
+msgstr "メガメニューリンクのテキスト"
 
 #. translators: %d: number of results.
 #: dist/blocks/pattern-inserter/index.js:6
@@ -2711,14 +2651,6 @@ msgstr "ブロックのアウトラインを表示"
 msgid "Replace"
 msgstr "置換"
 
-#: App/Controller/Manager/dist/js/app.js:1558
-msgid "Content Size"
-msgstr "コンテンツサイズ"
-
-#: App/Controller/Manager/dist/js/app.js:1570
-msgid "Wide Size"
-msgstr "幅広サイズ"
-
 #: dist/blocks/accordion/block.json
 msgctxt "block title"
 msgid "Accordion"
@@ -2976,6 +2908,16 @@ msgstr "レイヤー"
 msgctxt "block description"
 msgid "This block layers the children."
 msgstr "子要素を重ねます。"
+
+#: dist/blocks/mega-menu/block.json
+msgctxt "block title"
+msgid "Mega Menu"
+msgstr "メガメニュー"
+
+#: dist/blocks/mega-menu/block.json
+msgctxt "block description"
+msgid "Add a mega menu to your navigation."
+msgstr "ナビゲーションにメガメニューを追加します。"
 
 #: dist/blocks/pattern-inserter/block.json
 msgctxt "block title"
@@ -3536,277 +3478,3 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
-
-#~ msgid "Currently Selected"
-#~ msgstr "現在選択中"
-
-#~ msgid "Select a block of ancestors"
-#~ msgstr "先祖ブロックを選択する"
-
-#~ msgid "Main Area (One Column / Page Header (Image)) for Product Archives"
-#~ msgstr "商品アーカイブのメインエリア（1カラム / ページヘッダー（画像））"
-
-#~ msgid "Page Header for Product Archives"
-#~ msgstr "商品アーカイブのページヘッダー"
-
-#~ msgid "Product Archives"
-#~ msgstr "商品アーカイブ"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Product Archives: Left Header / Page Header (Image)"
-#~ msgstr "商品アーカイブ：左ヘッダー / ページヘッダー（画像）"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Product Archives: Left Header"
-#~ msgstr "商品アーカイブ：左ヘッダー"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Product Archives: One Column / Page Header (Image)"
-#~ msgstr "商品アーカイブ：1カラム / ページヘッダー（画像）"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Single Product"
-#~ msgstr "個別商品"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Product Archives"
-#~ msgstr "商品アーカイブ"
-
-#~ msgid "Aside"
-#~ msgstr "アサイド"
-
-#~ msgid "Gutters"
-#~ msgstr "ガター"
-
-#~ msgctxt "Template part name"
-#~ msgid "404"
-#~ msgstr "404"
-
-#~ msgctxt "Template part name"
-#~ msgid "Product Archives"
-#~ msgstr "商品アーカイブ"
-
-#~ msgctxt "Template part name"
-#~ msgid "All Archives"
-#~ msgstr "アーカイブ"
-
-#~ msgctxt "Template part name"
-#~ msgid "bbPress"
-#~ msgstr "bbPress"
-
-#~ msgctxt "Template part name"
-#~ msgid "Cart"
-#~ msgstr "お買い物カゴ"
-
-#~ msgctxt "Template part name"
-#~ msgid "Checkout"
-#~ msgstr "購入手続き"
-
-#~ msgctxt "Template part name"
-#~ msgid "Order Confirmatiion"
-#~ msgstr "注文確認"
-
-#~ msgctxt "Template part name"
-#~ msgid "Front Page"
-#~ msgstr "フロントページ"
-
-#~ msgctxt "Template part name"
-#~ msgid "Blog Home"
-#~ msgstr "ブログホーム"
-
-#~ msgctxt "Template part name"
-#~ msgid "Pages"
-#~ msgstr "固定ページ"
-
-#~ msgctxt "Template part name"
-#~ msgid "Search Results"
-#~ msgstr "検索結果"
-
-#~ msgctxt "Template part name"
-#~ msgid "Single Posts"
-#~ msgstr "個別投稿"
-
-#~ msgctxt "Template part name"
-#~ msgid "Single Products"
-#~ msgstr "個別商品"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Cart"
-#~ msgstr "お買い物カゴ"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Checkout"
-#~ msgstr "購入手続き"
-
-#~ msgctxt "Color name"
-#~ msgid "Text (Black)"
-#~ msgstr "テキスト（黒）"
-
-#~ msgid "Service 1"
-#~ msgstr "サービス 1"
-
-#~ msgid "Service 2"
-#~ msgstr "サービス 2"
-
-#~ msgid "Service 3"
-#~ msgstr "サービス 3"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Full Width"
-#~ msgstr "全幅"
-
-#~ msgctxt "Color name"
-#~ msgid "gray"
-#~ msgstr "グレー"
-
-#~ msgid "unitone settings"
-#~ msgstr "unitone 設定"
-
-#~ msgid "Enable"
-#~ msgstr "有効"
-
-#~ msgid "Disable"
-#~ msgstr "無効"
-
-#, fuzzy
-#~ msgid "Current"
-#~ msgstr "現在のページの位置を示します。"
-
-#~ msgid "No padding"
-#~ msgstr "パディング無し"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Single Products"
-#~ msgstr "個別商品"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Product Archives: Page Header (Image)"
-#~ msgstr "商品アーカイブ：ページヘッダー（画像）"
-
-#~ msgctxt "Pattern title"
-#~ msgid "full width page"
-#~ msgstr "全幅ページ"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Sidebar"
-#~ msgstr "サイドバー"
-
-#~ msgid "Main Area (Page Header (Image)) for Single Products"
-#~ msgstr "個別商品のメインエリア（ページヘッダー（画像））"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Single Products: Page Header (Image)"
-#~ msgstr "個別商品：ページヘッダー（画像）"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Single Products"
-#~ msgstr "個別商品"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Single Products: Page Header (Image)"
-#~ msgstr "個別商品：ページヘッダー（画像）"
-
-#~ msgid "Main Area (Page Header (Featured Image)) for Single Posts"
-#~ msgstr "固定ページのメインエリア（ページヘッダー（アイキャッチ画像））"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Single Posts: Page Header (Featured Image)"
-#~ msgstr "個別投稿：ページヘッダー（アイキャッチ画像）"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Single Posts: Page Header (Image)"
-#~ msgstr "個別投稿：ページヘッダー（画像）"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Single Posts"
-#~ msgstr "個別投稿"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Single Posts: Page Header (Featured Image)"
-#~ msgstr "個別投稿：ページヘッダー（アイキャッチ画像）"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Single Posts: Page Header (Image)"
-#~ msgstr "個別投稿：ページヘッダー（画像）"
-
-#~ msgid "Main Area (Page Header (Image)) for Pages"
-#~ msgstr "固定ページのメインエリア（ページヘッダー（画像））"
-
-#~ msgid "Main Area (Page Header (Slim)) for Pages"
-#~ msgstr "固定ページのメインエリア（ページヘッダー（スリム））"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Pages: Page Header (Image)"
-#~ msgstr "固定ページ：ページヘッダー（画像）"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Pages: Page Header (Slim)"
-#~ msgstr "固定ページ：ページヘッダー（スリム）"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Pages"
-#~ msgstr "固定ページ"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Pages: Page Header (Image)"
-#~ msgstr "固定ページ：ページヘッダー（画像）"
-
-#~ msgctxt "Custom template name"
-#~ msgid "Pages: Page Header (Slim)"
-#~ msgstr "固定ページ：ページヘッダー（スリム）"
-
-#~ msgid "Main Area for Search Results"
-#~ msgstr "検索結果のメインエリア"
-
-#~ msgid "Main Area (Page Header (Image)) for Search Results"
-#~ msgstr "検索結果のメインエリア（ページヘッダー（画像））"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Search Results: Page Header (Image)"
-#~ msgstr "検索結果：ページヘッダー（画像）"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Search Results"
-#~ msgstr "検索結果"
-
-#~ msgid "Main Area (Page Header (Image)) for Blog Home"
-#~ msgstr "ブログホームのメインエリア（ページヘッダー（画像））"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Blog Home: Page Header (Image)"
-#~ msgstr "ブログホーム：ページヘッダー（画像）"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Blog Home"
-#~ msgstr "ブログホーム"
-
-#~ msgid "Main Area (Page Header (Image)) for bbPress"
-#~ msgstr "bbPress のメインエリア（ページヘッダー（画像））"
-
-#~ msgctxt "Pattern title"
-#~ msgid "bbPress: Page Header (Image)"
-#~ msgstr "bbPress：ページヘッダー（画像）"
-
-#~ msgctxt "Pattern title"
-#~ msgid "bbPress"
-#~ msgstr "bbPress"
-
-#~ msgid "Main Area (Page Header (Image)) for Product Archives"
-#~ msgstr "商品アーカイブのメインエリア（ページヘッダー（画像））"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Product Archives"
-#~ msgstr "商品アーカイブ"
-
-#~ msgctxt "Pattern title"
-#~ msgid "All Archives"
-#~ msgstr "アーカイブ"
-
-#~ msgctxt "Pattern title"
-#~ msgid "404"
-#~ msgstr "404"
-
-#, fuzzy
-#~| msgid "unitone settings"
-#~ msgid "Block settings"
-#~ msgstr "ブロック設定"

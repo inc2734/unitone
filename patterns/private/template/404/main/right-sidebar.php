@@ -14,7 +14,7 @@
 					<div data-unitone-layout="with-sidebar__content">
 						<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
 						<div data-unitone-layout="stack">
-							<!-- wp:unitone/text {"className":"entry-content","unitone":{"maxWidth":"100%"}} -->
+							<!-- wp:unitone/text {"className":"entry-content","unitone":{"maxWidth":"100%","gutters":"0"}} -->
 							<div data-unitone-layout="text" class="entry-content">
 								<!-- wp:paragraph -->
 								<p><?php esc_html_e( 'Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box.', 'unitone' ); ?></p>

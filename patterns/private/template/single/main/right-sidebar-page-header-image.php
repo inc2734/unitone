@@ -14,7 +14,7 @@
 					<div data-unitone-layout="with-sidebar__content">
 						<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
 						<div data-unitone-layout="stack">
-							<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+							<!-- wp:post-content {"layout":{"type":"constrained","contentSize":"100%"},"unitone":{"gutters":0}} /-->
 
 							<!-- wp:template-part {"slug":"comments"} /-->
 						</div>

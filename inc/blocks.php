@@ -214,7 +214,33 @@ function unitone_add_gap_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_gap_support' );
 
 /**
- * Add support "padding" to core/pbutton.
+ * Add support "gutters" to core/post-content.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_gutters_support( $metadata ) {
+	if ( ! in_array( $metadata['name'], array( 'core/post-content' ), true ) ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'gutters' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_gutters_support' );
+
+/**
+ * Add support "padding" to core/button.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array

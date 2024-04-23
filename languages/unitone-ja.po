@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-04-21T22:35:02+00:00\n"
-"PO-Revision-Date: 2024-04-22 07:41+0900\n"
+"POT-Creation-Date: 2024-04-23T12:32:21+00:00\n"
+"PO-Revision-Date: 2024-04-23 21:33+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2127,6 +2127,10 @@ msgid ""
 msgstr ""
 "有効な場合、ビューポートがポートレートのときにグリッド線の縦横の本数が切り替"
 "わります。"
+
+#: dist/blocks/mega-menu/index.js:1
+msgid "Mega menu background"
+msgstr "メガメニュー背景"
 
 #: dist/blocks/mega-menu/index.js:1
 msgid "Mega menu link text"

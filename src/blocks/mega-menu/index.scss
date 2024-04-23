@@ -1,5 +1,19 @@
-.unitone-mega-menu__container {
-	> .block-list-appender {
-		background-color: #fff;
+.unitone-mega-menu {
+	.unitone-mega-menu__placement {
+		> .block-list-appender {
+			background-color: #fff;
+
+			.block-editor-button-block-appender {
+				padding: 12px !important;
+			}
+		}
+	}
+}
+
+.unitone-mega-menu.has-child-selected {
+	.unitone-mega-menu__placement {
+		> .block-list-appender {
+			display: none;
+		}
 	}
 }

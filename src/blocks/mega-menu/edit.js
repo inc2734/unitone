@@ -154,7 +154,7 @@ function Edit( {
 
 		listItemRef.current?.ownerDocument.addEventListener(
 			'scroll',
-			closeMegaMenu
+			openMegaMenu
 		);
 
 		return () => {
@@ -164,7 +164,7 @@ function Edit( {
 
 			listItemRef.current?.ownerDocument.removeEventListener(
 				'scroll',
-				closeMegaMenu
+				openMegaMenu
 			);
 		};
 	}, [] );
@@ -256,9 +256,7 @@ function Edit( {
 		},
 		{
 			templateLock,
-			renderAppender: hasInnerBlocks
-				? InnerBlocks.DefaultBlockAppender
-				: InnerBlocks.ButtonBlockAppender,
+			renderAppender: InnerBlocks.ButtonBlockAppender,
 		}
 	);
 

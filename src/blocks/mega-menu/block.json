@@ -26,6 +26,12 @@
 		"title": {
 			"type": "string"
 		},
+		"overlayBackgroundColor": {
+			"type": "string"
+		},
+		"customOverlayBackgroundColor": {
+			"type": "string"
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

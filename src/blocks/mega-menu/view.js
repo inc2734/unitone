@@ -2,9 +2,13 @@ import { store, getContext, getElement } from '@wordpress/interactivity';
 
 const { state, actions } = store( 'unitone/mega-menu', {
 	state: {
-		get diffx() {
+		get top() {
 			const context = getContext();
-			return context.diffx;
+			return context.top;
+		},
+		get left() {
+			const context = getContext();
+			return context.left;
 		},
 		get isMenuOpen() {
 			const context = getContext();
@@ -23,51 +27,39 @@ const { state, actions } = store( 'unitone/mega-menu', {
 		},
 	},
 	callbacks: {
-		init() {
-			const { ref } = getElement();
-
-			const parent =
-				ref.closest( '.site-header' ) ??
-				ref.closest( '.wp-block-navigation' );
-
-			let resizeObserver;
-			const defaultView = ref?.ownerDocument?.defaultView;
-			if ( defaultView.ResizeObserver ) {
-				resizeObserver = new defaultView.ResizeObserver( () => {
-					document.activeElement?.blur();
-				} );
-				resizeObserver.observe( parent );
-			}
+		documentScroll() {
+			actions.closeMenu( 'hover' );
+			actions.closeMenu( 'click' );
+			actions.closeMenu( 'focus' );
+		},
+		windowResize() {
+			actions.closeMenu( 'hover' );
+			actions.closeMenu( 'click' );
+			actions.closeMenu( 'focus' );
 		},
 	},
 	actions: {
-		// closeMenuOnWindowResize() {
-		// 	console.log( 1 );
-		// 	actions.closeMenu( 'hover' );
-		// 	actions.closeMenu( 'click' );
-		// 	actions.closeMenu( 'focus' );
-		// },
-		openMenuOnHover( event ) {
-			actions.openMenu( event, 'hover' );
+		openMenuOnHover() {
+			actions.openMenu( 'hover' );
 		},
 		closeMenuOnHover() {
 			actions.closeMenu( 'hover' );
 		},
-		openMenuOnClick( event ) {
+		openMenuOnClick() {
 			const context = getContext();
 			const { ref } = getElement();
 
 			context.previousFocus = ref;
-			actions.openMenu( event, 'click' );
+			actions.openMenu( 'click' );
 		},
 		closeMenuOnClick() {
 			actions.closeMenu( 'click' );
 			actions.closeMenu( 'focus' );
 		},
-		openMenuOnFocus( event ) {
-			actions.openMenu( event, 'focus' );
+		openMenuOnFocus() {
+			actions.openMenu( 'focus' );
 		},
-		toggleMenuOnClick( event ) {
+		toggleMenuOnClick() {
 			const context = getContext();
 			const { ref } = getElement();
 
@@ -79,10 +71,21 @@ const { state, actions } = store( 'unitone/mega-menu', {
 				actions.closeMenu( 'focus' );
 			} else {
 				context.previousFocus = ref;
-				actions.openMenu( event, 'click' );
+				actions.openMenu( 'click' );
 			}
 		},
 		handleMenuFocusout( event ) {
+			if ( state.isMenuOpen ) {
+				// When the focus is on the mega menu, if the focus is moved by tab to a link in the mega menu, nothing is done.
+				if (
+					event.relatedTarget?.closest(
+						'.unitone-mega-menu__container'
+					)
+				) {
+					return;
+				}
+			}
+
 			// If focus is outside modal, and in the document, close menu
 			// event.target === The element losing focus
 			// event.relatedTarget === The element receiving focus (if any)
@@ -92,26 +95,30 @@ const { state, actions } = store( 'unitone/mega-menu', {
 			// The event.relatedTarget is null when something outside the navigation menu is clicked. This is only necessary for Safari.
 			if (
 				event.relatedTarget === null ||
-				! event.relatedTarget.closest( '.unitone-mega-menu' )
+				event.target !== window.document.activeElement
 			) {
 				actions.closeMenu( 'click' );
 				actions.closeMenu( 'focus' );
 			}
 		},
 
-		openMenu( event, menuOpenedOn = 'click' ) {
+		openMenu( menuOpenedOn = 'click' ) {
 			const context = getContext();
+			const { ref } = getElement();
 
 			state.menuOpenedBy[ menuOpenedOn ] = true;
 
-			const target = event.target.closest( '.unitone-mega-menu' );
-			const parent =
-				event.target.closest( '.site-header' ) ??
-				event.target.closest( '.wp-block-navigation' );
-			context.diffx = `${
-				target.getBoundingClientRect().x -
-				parent.getBoundingClientRect().x
-			}px`;
+			const target = ref.closest( '.unitone-mega-menu' );
+
+			const top =
+				target.getBoundingClientRect().y +
+				target.getBoundingClientRect().height;
+			context.top = `${ top }px`;
+
+			const left =
+				target.getBoundingClientRect().x +
+				target.getBoundingClientRect().width;
+			context.left = `${ left }px`;
 		},
 
 		closeMenu( menuClosedOn = 'click' ) {
@@ -123,7 +130,8 @@ const { state, actions } = store( 'unitone/mega-menu', {
 			if ( ! state.isMenuOpen ) {
 				context.previousFocus?.focus();
 				context.previousFocus = null;
-				context.diffx = 0;
+				context.top = 0;
+				context.left = 0;
 			}
 		},
 	},

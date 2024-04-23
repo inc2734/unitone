@@ -8,7 +8,10 @@ import {
 	store as blockEditorStore,
 	useBlockProps,
 	useInnerBlocksProps,
+	withColors,
 	__experimentalLinkControl as LinkControl,
+	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
+	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 
 import {
@@ -21,6 +24,7 @@ import {
 } from '@wordpress/components';
 
 import {
+	useCallback,
 	useState,
 	useEffect,
 	useRef,
@@ -46,15 +50,25 @@ const LINK_SETTINGS = [
 	},
 ];
 
-export default function ( {
+function Edit( {
 	attributes,
 	setAttributes,
 	isSelected,
 	context,
 	clientId,
+	overlayBackgroundColor,
+	setOverlayBackgroundColor,
 } ) {
-	const { label, url, description, rel, title, opensInNewTab, templateLock } =
-		attributes;
+	const {
+		label,
+		url,
+		description,
+		rel,
+		title,
+		opensInNewTab,
+		customOverlayBackgroundColor,
+		templateLock,
+	} = attributes;
 
 	const { showSubmenuIcon, openSubmenusOnClick } = context;
 
@@ -63,7 +77,8 @@ export default function ( {
 	const [ isLinkOpen, setIsLinkOpen ] = useState( false );
 	const [ isMegaMenuOpen, setIsMegaMenuOpen ] = useState( false );
 	const [ parentWidth, setParentWidth ] = useState( 0 );
-	const [ diffx, setDiffx ] = useState( 0 );
+	const [ top, setTop ] = useState( 0 );
+	const [ left, setLeft ] = useState( 0 );
 	// Use internal state instead of a ref to make sure that the component
 	// re-renders when the popover's anchor updates.
 	const [ popoverAnchor, setPopoverAnchor ] = useState( null );
@@ -77,6 +92,28 @@ export default function ( {
 		() => ( { url, opensInNewTab, nofollow } ),
 		[ url, opensInNewTab, nofollow ]
 	);
+
+	const openMegaMenu = useCallback( () => {
+		setTop(
+			`${
+				listItemRef.current.getBoundingClientRect().y +
+				listItemRef.current.getBoundingClientRect().height
+			}px`
+		);
+		setLeft(
+			`${
+				listItemRef.current.getBoundingClientRect().x +
+				listItemRef.current.getBoundingClientRect().width
+			}px`
+		);
+		setIsMegaMenuOpen( true );
+	}, [ setTop, setLeft, setIsMegaMenuOpen ] );
+
+	const closeMegaMenu = useCallback( () => {
+		setTop( 0 );
+		setLeft( 0 );
+		setIsMegaMenuOpen( false );
+	}, [ setTop, setLeft, setIsMegaMenuOpen ] );
 
 	/**
 	 * Focus the Link label text and select it.
@@ -115,10 +152,20 @@ export default function ( {
 			resizeObserver.observe( parent );
 		}
 
+		listItemRef.current?.ownerDocument.addEventListener(
+			'scroll',
+			closeMegaMenu
+		);
+
 		return () => {
 			if ( resizeObserver ) {
 				resizeObserver.disconnect();
 			}
+
+			listItemRef.current?.ownerDocument.removeEventListener(
+				'scroll',
+				closeMegaMenu
+			);
 		};
 	}, [] );
 
@@ -138,19 +185,9 @@ export default function ( {
 
 	useEffect( () => {
 		if ( hasSelection ) {
-			const parent =
-				listItemRef.current.closest( '.site-header' ) ??
-				listItemRef.current.closest( '.wp-block-navigation' );
-			setDiffx(
-				`${
-					listItemRef.current.getBoundingClientRect().x -
-					parent.getBoundingClientRect().x
-				}px`
-			);
-			setIsMegaMenuOpen( true );
+			openMegaMenu();
 		} else {
-			setDiffx( 0 );
-			setIsMegaMenuOpen( false );
+			closeMegaMenu();
 		}
 	}, [ hasSelection, label, hasInnerBlocks, parentWidth ] );
 
@@ -200,13 +237,21 @@ export default function ( {
 		),
 	} );
 
-	const innerBlocksProps = useInnerBlocksProps(
+	const { children, ...innerBlocksProps } = useInnerBlocksProps(
 		{
 			className: classnames( 'unitone-mega-menu__container', {
 				'open-on-click': openSubmenusOnClick,
+				'has-background':
+					overlayBackgroundColor.slug || customOverlayBackgroundColor,
+				[ `has-${ overlayBackgroundColor.slug }-background-color` ]:
+					overlayBackgroundColor.slug,
 			} ),
 			style: {
-				'--unitone--diffx': diffx,
+				'--unitone--top': top,
+				'--unitone--left': left,
+				backgroundColor: overlayBackgroundColor.slug
+					? `var( --wp--preset--color--${ overlayBackgroundColor.slug } )`
+					: customOverlayBackgroundColor,
 			},
 		},
 		{
@@ -301,6 +346,29 @@ export default function ( {
 				</PanelBody>
 			</InspectorControls>
 
+			<InspectorControls group="color">
+				<ColorGradientSettingsDropdown
+					__experimentalIsRenderedInSidebar
+					settings={ [
+						{
+							label: __( 'Mega menu background', 'unitone' ),
+							colorValue: overlayBackgroundColor.color,
+							onColorChange: ( value ) => {
+								setOverlayBackgroundColor( value );
+
+								setAttributes( {
+									customOverlayBackgroundColor: value,
+								} );
+							},
+						},
+					] }
+					panelId={ clientId }
+					{ ...useMultipleOriginColorsAndGradients() }
+					gradients={ [] }
+					disableCustomGradients
+				/>
+			</InspectorControls>
+
 			<div { ...blockProps }>
 				<ParentElement
 					className="wp-block-navigation-item__content"
@@ -332,6 +400,9 @@ export default function ( {
 								if ( ! openSubmenusOnClick && ! url ) {
 									setIsLinkOpen( true );
 								}
+								if ( ! isMegaMenuOpen ) {
+									openMegaMenu();
+								}
 							} }
 						/>
 					}
@@ -340,7 +411,7 @@ export default function ( {
 							placement="bottom"
 							onClose={ () => {
 								setIsLinkOpen( false );
-								// richTextRef.current?.focus();
+								ref.current.focus();
 							} }
 							anchor={ popoverAnchor }
 							focusOnMount={ false }
@@ -377,7 +448,7 @@ export default function ( {
 								onRemove={ () => {
 									setAttributes( { url: '' } );
 									speak( __( 'Link removed.' ), 'assertive' );
-									// richTextRef.current?.focus();
+									ref.current.focus();
 								} }
 								settings={ LINK_SETTINGS }
 								focus
@@ -390,8 +461,14 @@ export default function ( {
 						<ItemSubmenuIcon />
 					</span>
 				) }
-				<div { ...innerBlocksProps } />
+				<div { ...innerBlocksProps }>
+					<div className="unitone-mega-menu__placement">
+						{ children }
+					</div>
+				</div>
 			</div>
 		</>
 	);
 }
+
+export default withColors( { overlayBackgroundColor: 'color' } )( Edit );

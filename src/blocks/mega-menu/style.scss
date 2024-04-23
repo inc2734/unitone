@@ -1,28 +1,44 @@
 .unitone-mega-menu__container {
+	--unitone--top: 0px;
+
+	position: fixed;
+	height: 0;
+	opacity: 0;
+	transition: opacity .1s linear;
+	visibility: hidden;
+
+	display: grid;
+	place-content: center stretch;
+}
+
+.unitone-mega-menu__placement {
 	--unitone--font-size: 0;
 
 	background-color: var(--wp--preset--color--unitone-background);
 	color: var(--wp--preset--color--unitone-text-black);
 	font-weight: normal;
-
-	position: absolute;
-	inset: 100% 0 auto calc(var(--unitone--diffx, 0px) * -1 + var(--unitone--global--gutters));
-	z-index: 11; // If it is not 10 or higher, the editor will give priority to the hover of the template part on the virtual layer.
-	width: calc(100vw - var(--unitone--global--gutters) * 2);
-	height: 0;
-	opacity: 0;
-	transition: opacity .1s linear;
-	visibility: hidden;
 }
 
-.unitone-mega-menu [aria-expanded=true] ~ .unitone-mega-menu__container,
-.wp-block-navigation__responsive-container.is-menu-open .unitone-mega-menu__container {
+:where(.unitone-mega-menu__container.has-background) > .unitone-mega-menu__placement {
+	background-color: transparent;
+}
+
+:where(.wp-block-navigation__responsive-container:not(.is-menu-open) .unitone-mega-menu [aria-expanded=true]) ~ .unitone-mega-menu__container {
+	inset: var(--unitone--top) 0 auto;
+	z-index: 11; // If it is not 10 or higher, the editor will give priority to the hover of the template part on the virtual layer.
+	max-width: 100%;
+	max-height: calc(100vh - var(--unitone--top));
+	overflow: auto;
+}
+
+:where(.unitone-mega-menu [aria-expanded=true]) ~ .unitone-mega-menu__container,
+:where(.wp-block-navigation__responsive-container.is-menu-open) .unitone-mega-menu__container {
 	height: auto;
 	opacity: 1;
 	visibility: visible;
 }
 
-.wp-block-navigation__responsive-container.is-menu-open .unitone-mega-menu__container {
+:where(.wp-block-navigation__responsive-container.is-menu-open) .unitone-mega-menu__container {
 	position: relative;
 	inset: auto;
 	width: auto;

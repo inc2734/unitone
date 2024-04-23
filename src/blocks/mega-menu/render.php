@@ -33,13 +33,12 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 <li
 	<?php echo wp_kses_data( $block_wrapper_attributes ); ?>
 	data-wp-interactive="unitone/mega-menu"
-	data-wp-context='{ "submenuOpenedBy": { "click": false, "hover": false, "focus": false }, "diffx": 0 }'
-	data-wp-init="callbacks.init"
+	data-wp-context='{ "submenuOpenedBy": { "click": false, "hover": false, "focus": false }, "top": 0, "left": 0 }'
 	data-wp-on--focusout="actions.handleMenuFocusout"
 	<?php if ( ! $open_on_click ) : ?>
+		data-wp-on--mouseenter="actions.openMenuOnHover"
 		data-wp-on--mouseleave="actions.closeMenuOnHover"
 	<?php endif; ?>
-	tabindex="-1"
 >
 	<?php if ( ! $open_on_click ) : ?>
 		<?php
@@ -47,9 +46,6 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 		?>
 		<a
 			class="wp-block-navigation-item__content"
-			data-wp-on--mouseover="actions.openMenuOnHover"
-			data-wp-bind--aria-expanded="state.isMenuOpen"
-			aria-controls="<?php echo esc_attr( $unique_id ); ?>"
 			<?php if ( ! empty( $item_url ) ) : ?>
 				href="<?php echo esc_url( $item_url ); ?>"
 			<?php endif; ?>
@@ -82,6 +78,7 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 			<button
 				class="wp-block-navigation__submenu-icon wp-block-navigation-submenu__toggle"
 				data-wp-on--click="actions.toggleMenuOnClick"
+				aria-controls="<?php echo esc_attr( $unique_id ); ?>"
 				data-wp-bind--aria-expanded="state.isMenuOpen"
 				aria-label="<?php echo esc_html( $aria_label ); ?>"
 			>
@@ -92,13 +89,42 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 		<?php endif; ?>
 	<?php endif; ?>
 
+	<?php
+	$inner_blocks_classes = array( 'unitone-mega-menu__container' );
+	$inner_blocks_styles  = array();
+
+	// Background color.
+	$has_named_background_color  = array_key_exists( 'overlayBackgroundColor', $attributes );
+	$has_custom_background_color = array_key_exists( 'customOverlayBackgroundColor', $attributes );
+
+	// If has background color.
+	if ( $has_custom_background_color || $has_named_background_color ) {
+		// Add has-background class.
+		$inner_blocks_classes[] = 'has-background';
+	}
+
+	if ( $has_named_background_color ) {
+		// Add the background-color class.
+		$inner_blocks_classes[] = sprintf( 'has-%s-background-color', $attributes['overlayBackgroundColor'] );
+	} elseif ( $has_custom_background_color ) {
+		// Add the custom background-color inline style.
+		$inner_blocks_styles[] = sprintf( 'background-color: %s', $attributes['customOverlayBackgroundColor'] );
+	}
+	?>
 	<div
-		class="unitone-mega-menu__container"
-		data-wp-style----unitone--diffx="state.diffx"
-		data-wp-on--focus="actions.openMenuOnFocus"
+		class="<?php echo esc_attr( implode( ' ', $inner_blocks_classes ) ); ?>"
+		style="<?php echo esc_attr( implode( ';', $inner_blocks_styles ) ); ?>"
+		data-wp-on-document--scroll="callbacks.documentScroll"
+		data-wp-on-window--resize="callbacks.windowResize"
+		data-wp-bind--aria-hidden="!state.isMenuOpen"
+		data-wp-style----unitone--top="state.top"
+		data-wp-style----unitone--left="state.left"
 		data-wp-on--focusout="actions.handleMenuFocusout"
 		id="<?php echo esc_attr( $unique_id ); ?>"
+		tabindex="0"
 	>
-		<?php echo wp_kses_post( $content ); ?>
+		<div class="unitone-mega-menu__placement">
+			<?php echo wp_kses_post( $content ); ?>
+		</div>
 	</div>
 </li>

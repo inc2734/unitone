@@ -27,6 +27,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	} );
 } );
 
+/**
+ * For left header
+ */
 document.addEventListener( 'DOMContentLoaded', () => {
 	const headerContainer = document.querySelector(
 		'.site-container-left-header'
@@ -37,45 +40,30 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		return;
 	}
 
-	const setItemsVars = ( items ) => {
-		[].slice.call( items ).forEach( ( item ) => {
-			const rect = item.getBoundingClientRect();
-			const headerRect = header.getBoundingClientRect();
-			item.style.setProperty(
-				'--rect-top',
-				`${ rect.top - headerRect.top }px`
+	const setSubmenusPosition = ( submenus ) => {
+		[].slice.call( submenus ).forEach( ( submenu ) => {
+			const rect = submenu.parentElement.getBoundingClientRect();
+			submenu.style.setProperty( '--unitone--top', `${ rect.y }px` );
+			submenu.style.setProperty(
+				'--unitone--left',
+				`${ rect.x + rect.width }px`
 			);
-			item.style.setProperty( '--rect-right', `${ rect.right }px` );
-			item.style.setProperty( '--rect-height', `${ rect.height }px` );
-			item.style.setProperty( '--rect-width', `${ rect.width }px` );
 		} );
 	};
 
-	const resetItemsVars = ( items ) => {
-		[].slice.call( items ).forEach( ( item ) => {
-			item.style.setProperty( '--rect-top', '' );
-			item.style.setProperty( '--rect-right', '' );
-			item.style.setProperty( '--rect-height', '' );
-			item.style.setProperty( '--rect-width', '' );
-		} );
-	};
-
-	const items = header.querySelectorAll(
-		'.wp-block-navigation__container > .wp-block-page-list > .wp-block-pages-list__item, .wp-block-navigation__container > .wp-block-navigation-item'
+	const submenus = header.querySelectorAll(
+		[
+			'.wp-block-navigation.is-vertical .wp-block-navigation__container > .wp-block-page-list > .wp-block-pages-list__item > .wp-block-navigation__submenu-container',
+			'.wp-block-navigation.is-vertical .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation__submenu-container',
+		].join( ',' )
 	);
 
 	header.addEventListener( 'wheel', () => {
-		setItemsVars( items );
+		setSubmenusPosition( submenus );
 	} );
 
 	const resizeObserver = new window.ResizeObserver( () => {
-		if ( window.matchMedia( '(min-width: 600px)' ).matches ) {
-			headerContainer.classList.add( '-submenu-static-position' );
-			setItemsVars( items );
-		} else {
-			headerContainer.classList.remove( '-submenu-static-position' );
-			resetItemsVars( items );
-		}
+		setSubmenusPosition( submenus );
 	} );
 	resizeObserver.observe( header );
 } );

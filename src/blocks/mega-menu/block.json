@@ -26,6 +26,14 @@
 		"title": {
 			"type": "string"
 		},
+		"showSubmenuIcon": {
+			"type": "boolean",
+			"default": true
+		},
+		"openSubmenusOnClick": {
+			"type": "boolean",
+			"default": false
+		},
 		"overlayBackgroundColor": {
 			"type": "string"
 		},
@@ -37,7 +45,6 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
-	"usesContext": [ "showSubmenuIcon", "openSubmenusOnClick" ],
 	"supports": {
 		"className": false,
 		"color": {

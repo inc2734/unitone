@@ -112,10 +112,14 @@
 	&:not(.has-background) .wp-block-navigation__submenu-container {
 		background-color: var(--wp--preset--color--unitone-accent);
 		color: var(--wp--preset--color--white);
+
+		> .block-list-appender .block-editor-button-block-appender {
+			background-color: #fff;
+		}
 	}
 
 	// Item padding for the toggle icon.
-	:is(.has-child, .unitone-mega-menu):where(:has(.wp-block-navigation__submenu-icon)) {
+	:is(.wp-block-navigation-submenu, .wp-block-pages-list__item, .unitone-mega-menu):where(:has(.wp-block-navigation__submenu-icon)) {
 		position: relative;
 
 		> .wp-block-navigation-item__content:not(.wp-block-navigation__submenu-icon) {

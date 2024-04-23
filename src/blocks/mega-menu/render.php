@@ -12,9 +12,10 @@ $aria_label = sprintf(
 
 $unique_id = wp_unique_id( 'p-' );
 
-$show_submenu_indicators = isset( $block->context['showSubmenuIcon'] ) && $block->context['showSubmenuIcon'];
-$open_on_click           = isset( $block->context['openSubmenusOnClick'] ) && $block->context['openSubmenusOnClick'];
-$open_on_hover_and_click = isset( $block->context['openSubmenusOnClick'] ) && ! $block->context['openSubmenusOnClick'] && $show_submenu_indicators;
+$item_url                = isset( $attributes['url'] ) ? $attributes['url'] : '';
+$show_submenu_indicators = isset( $attributes['showSubmenuIcon'] ) && $attributes['showSubmenuIcon'];
+$open_on_click           = ( isset( $attributes['openSubmenusOnClick'] ) && $attributes['openSubmenusOnClick'] ) || ! $item_url;
+$open_on_hover_and_click = isset( $attributes['openSubmenusOnClick'] ) && ! $attributes['openSubmenusOnClick'] && $show_submenu_indicators;
 
 $classes = array( 'unitone-mega-menu', 'wp-block-navigation-item' );
 if ( $open_on_click ) {

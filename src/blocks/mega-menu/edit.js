@@ -15,10 +15,12 @@ import {
 } from '@wordpress/block-editor';
 
 import {
+	Notice,
 	PanelBody,
 	Popover,
 	TextControl,
 	TextareaControl,
+	ToggleControl,
 	ToolbarButton,
 	ToolbarGroup,
 } from '@wordpress/components';
@@ -54,7 +56,6 @@ function Edit( {
 	attributes,
 	setAttributes,
 	isSelected,
-	context,
 	clientId,
 	overlayBackgroundColor,
 	setOverlayBackgroundColor,
@@ -65,12 +66,12 @@ function Edit( {
 		description,
 		rel,
 		title,
+		showSubmenuIcon,
+		openSubmenusOnClick,
 		opensInNewTab,
 		customOverlayBackgroundColor,
 		templateLock,
 	} = attributes;
-
-	const { showSubmenuIcon, openSubmenusOnClick } = context;
 
 	const nofollow = !! rel?.includes( 'nofollow' );
 
@@ -260,6 +261,13 @@ function Edit( {
 		}
 	);
 
+	const submenuAccessibilityNotice =
+		! showSubmenuIcon && ! openSubmenusOnClick
+			? __(
+					'The current menu options offer reduced accessibility for users and are not recommended. Enabling either "Open on Click" or "Show arrow" offers enhanced accessibility by allowing keyboard users to browse submenus selectively.'
+			  )
+			: '';
+
 	const ParentElement = openSubmenusOnClick ? 'button' : 'a';
 
 	return (
@@ -341,6 +349,46 @@ function Edit( {
 							'The relationship of the linked URL as space-separated link types.'
 						) }
 					/>
+				</PanelBody>
+
+				<PanelBody title={ __( 'Display' ) }>
+					<ToggleControl
+						__nextHasNoMarginBottom
+						checked={ openSubmenusOnClick }
+						onChange={ ( value ) => {
+							setAttributes( {
+								openSubmenusOnClick: value,
+								...( value && {
+									showSubmenuIcon: true,
+								} ), // Make sure arrows are shown when we toggle this on.
+							} );
+						} }
+						label={ __( 'Open on click' ) }
+					/>
+
+					<ToggleControl
+						__nextHasNoMarginBottom
+						checked={ showSubmenuIcon }
+						onChange={ ( value ) => {
+							setAttributes( {
+								showSubmenuIcon: value,
+							} );
+						} }
+						disabled={ attributes.openSubmenusOnClick }
+						label={ __( 'Show arrow' ) }
+					/>
+
+					{ submenuAccessibilityNotice && (
+						<div>
+							<Notice
+								spokenMessage={ null }
+								status="warning"
+								isDismissible={ false }
+							>
+								{ submenuAccessibilityNotice }
+							</Notice>
+						</div>
+					) }
 				</PanelBody>
 			</InspectorControls>
 

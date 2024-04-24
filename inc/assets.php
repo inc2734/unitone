@@ -21,7 +21,7 @@ function unitone_theme_scripts() {
 	wp_enqueue_style(
 		'unitone',
 		get_theme_file_uri( 'dist/css/app/app.css' ),
-		array( 'wp-oembed-blog-card' ),
+		array( 'wp-oembed-blog-card', 'wp-block-library' ),
 		filemtime( get_theme_file_path( 'dist/css/app/app.css' ) )
 	);
 }

@@ -22,6 +22,10 @@ kbd {
 	border-radius: var(--unitone--border-radius);
 }
 
+:where(figure) {
+	margin-bottom: 0;
+}
+
 :where(
 	[type=email],
 	[type=number],

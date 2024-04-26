@@ -18,7 +18,7 @@
 				<p>Proudly powered by <a href="https://wordpress.org/">WordPress</a>.</p>
 				<!-- /wp:paragraph -->
 
-				<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","justifyContent":"center"}} -->
+				<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","justifyContent":"center"},"unitone":{"gap":"var(--unitone--s-1)"}} -->
 					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Home', 'unitone' ); ?>","url":"#"} /-->
 					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'About', 'unitone' ); ?>","url":"#"} /-->
 					<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Services', 'unitone' ); ?>","url":"#"} /-->

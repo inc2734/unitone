@@ -740,3 +740,31 @@ add_filter(
 	10,
 	2
 );
+
+/**
+ * The HTML of the navigation block differs between the front page and the editor.
+ * Match the front HTML to the editor.
+ */
+add_filter(
+	'render_block_core/navigation',
+	function ( $block_content, $block ) {
+		$p = new \WP_HTML_Tag_Processor( $block_content );
+		$p->next_tag(
+			array(
+				'class_name' => 'wp-block-navigation__container',
+			)
+		);
+		$p->remove_class( 'wp-block-navigation' );
+
+		$class_names = ! empty( $block['className'] ) ? explode( ' ', $block['className'] ) : array();
+		foreach ( $class_names as $class_name ) {
+			$p->remove_class( $class_name );
+		}
+
+		$block_content = $p->get_updated_html();
+
+		return $block_content;
+	},
+	10,
+	2
+);

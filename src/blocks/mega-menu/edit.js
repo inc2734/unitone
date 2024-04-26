@@ -94,7 +94,7 @@ function Edit( {
 		[ url, opensInNewTab, nofollow ]
 	);
 
-	const openMegaMenu = useCallback( () => {
+	const setPositionMegaMenu = useCallback( () => {
 		setTop(
 			`${
 				listItemRef.current.getBoundingClientRect().y +
@@ -107,8 +107,12 @@ function Edit( {
 				listItemRef.current.getBoundingClientRect().width
 			}px`
 		);
+	}, [ setTop, setLeft ] );
+
+	const openMegaMenu = useCallback( () => {
+		setPositionMegaMenu();
 		setIsMegaMenuOpen( true );
-	}, [ setTop, setLeft, setIsMegaMenuOpen ] );
+	}, [ setPositionMegaMenu, setIsMegaMenuOpen ] );
 
 	const closeMegaMenu = useCallback( () => {
 		setTop( 0 );
@@ -155,7 +159,7 @@ function Edit( {
 
 		listItemRef.current?.ownerDocument.addEventListener(
 			'scroll',
-			openMegaMenu
+			setPositionMegaMenu
 		);
 
 		return () => {
@@ -165,7 +169,7 @@ function Edit( {
 
 			listItemRef.current?.ownerDocument.removeEventListener(
 				'scroll',
-				openMegaMenu
+				setPositionMegaMenu
 			);
 		};
 	}, [] );

@@ -749,22 +749,27 @@ add_filter(
 	'render_block_core/navigation',
 	function ( $block_content, $block ) {
 		$p = new \WP_HTML_Tag_Processor( $block_content );
-		$p->next_tag(
-			array(
-				'class_name' => 'wp-block-navigation__container',
-			)
-		);
-		$p->remove_class( 'wp-block-navigation' );
 
-		$class_names = ! empty( $block['className'] ) ? explode( ' ', $block['className'] ) : array();
-		foreach ( $class_names as $class_name ) {
-			$p->remove_class( $class_name );
+		while (
+			$p->next_tag(
+				array(
+					'class_name' => 'wp-block-navigation__container',
+				)
+			)
+		) {
+			$p->remove_class( 'wp-block-navigation' );
+			$p->remove_class( 'is-style-default' );
+
+			$class_names = ! empty( $block['className'] ) ? explode( ' ', $block['className'] ) : array();
+			foreach ( $class_names as $class_name ) {
+				$p->remove_class( $class_name );
+			}
 		}
 
 		$block_content = $p->get_updated_html();
 
 		return $block_content;
 	},
-	10,
+	1000,
 	2
 );

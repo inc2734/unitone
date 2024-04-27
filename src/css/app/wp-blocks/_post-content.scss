@@ -61,7 +61,7 @@
 	}
 }
 
-.entry-content,
-.wp-block-post-content {
+.entry-content:where(.is-layout-constrained),
+.wp-block-post-content:where(.is-layout-constrained) {
 	--unitone--gutters: var(--unitone--global--gutters);
 }

@@ -5,44 +5,16 @@
 
 @use '../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
 
-.is-layout-constrained,
+.is-layout-constrained:where(:not([data-unitone-layout~="text"])),
 .wp-block-post-content:where(.is-layout-flow), // @deprecated
 .is-root-container {
 	@include text.abstract-text();
+	@include text.abstract-text--gap();
+}
 
-	&[data-unitone-layout*="-gap\:"] {
-		--unitone--gap: inherit !important;
-	}
-
-	@for $i from -2 through 7 {
-		&[data-unitone-layout~="-gap\:#{ $i }"] > * {
-			--unitone--text-gap: var(--unitone--s#{ $i }) !important;
-		}
-	}
-
-	> * {
-		--unitone--text-gap-scale: 1;
-		--unitone--text-gap: var(--unitone--global--text-gap);
-		--unitone--text-gap-increment: 0px;
-		--unitone--margin-block: calc(var(--unitone--text-gap-scale) * var(--unitone--text-gap) + var(--unitone--text-gap-increment));
-	}
-
-	> :where(h2, h3, h4, h5, h6) {
-		--unitone--text-gap-scale: 2;
-
-		& + :where(h2, h3, h4, h5, h6) {
-			--unitone--text-gap-scale: 1;
-		}
-	}
-
-	> h5 + * {
-		--unitone--text-gap-scale: .5;
-	}
-
-	> h6 + * {
-		--unitone--text-gap-scale: .5;
-	}
-
+.is-layout-constrained,
+.wp-block-post-content:where(.is-layout-flow), // @deprecated
+.is-root-container {
 	> .wp-block-audio,
 	> .wp-block-embed,
 	> .wp-block-image,

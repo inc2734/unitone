@@ -26,6 +26,16 @@ import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
+const parseString = ( value ) => {
+	value = String( value );
+	return null !== value && '' !== value ? value : undefined;
+};
+
+const parseNumber = ( value ) => {
+	value = parseInt( value );
+	return ! isNaN( value ) ? value : undefined;
+};
+
 export default function ( { attributes, setAttributes, clientId } ) {
 	const {
 		tagName,
@@ -77,7 +87,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const styles = {
 		'--unitone--columns':
-			( 'columns' === columnsOption && String( columns ) ) || undefined,
+			( 'columns' === columnsOption && parseString( columns ) ) ||
+			undefined,
 		'--unitone--column-min-width':
 			( 'min' === columnsOption && columnMinWidth ) || undefined,
 		'--unitone--grid-template-columns':
@@ -85,9 +96,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		'--unitone--column-auto-repeat':
 			( 'min' === columnsOption && columnAutoRepeat ) || undefined,
 		'--unitone--md-columns':
-			( 'columns' === mdColumnsOption &&
-				!! mdColumns &&
-				String( mdColumns ) ) ||
+			( 'columns' === mdColumnsOption && parseString( mdColumns ) ) ||
 			undefined,
 		'--unitone--md-column-min-width':
 			( 'min' === mdColumnsOption && mdColumnMinWidth ) || undefined,
@@ -95,9 +104,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			( 'free' === mdColumnsOption && mdGridTemplateColumns ) ||
 			undefined,
 		'--unitone--sm-columns':
-			( 'columns' === smColumnsOption &&
-				!! smColumns &&
-				String( smColumns ) ) ||
+			( 'columns' === smColumnsOption && parseString( smColumns ) ) ||
 			undefined,
 		'--unitone--sm-column-min-width':
 			( 'min' === smColumnsOption && smColumnMinWidth ) || undefined,
@@ -105,15 +112,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			( 'free' === smColumnsOption && smGridTemplateColumns ) ||
 			undefined,
 		'--unitone--rows':
-			( 'rows' === rowsOption && String( rows ) ) || undefined,
+			( 'rows' === rowsOption && parseString( rows ) ) || undefined,
 		'--unitone--grid-template-rows':
 			( 'free' === rowsOption && gridTemplateRows ) || undefined,
 		'--unitone--md-rows':
-			( 'rows' === mdRowsOption && String( mdRows ) ) || undefined,
+			( 'rows' === mdRowsOption && parseString( mdRows ) ) || undefined,
 		'--unitone--md-grid-template-rows':
 			( 'free' === mdRowsOption && mdGridTemplateRows ) || undefined,
 		'--unitone--sm-rows':
-			( 'rows' === smRowsOption && String( smRows ) ) || undefined,
+			( 'rows' === smRowsOption && parseString( smRows ) ) || undefined,
 		'--unitone--sm-grid-template-rows':
 			( 'free' === smRowsOption && smGridTemplateRows ) || undefined,
 	};
@@ -287,10 +294,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 											'Columns count',
 											'unitone'
 										) }
-										value={ parseInt( columns ) }
+										value={ parseNumber( columns ) }
 										onChange={ ( value ) =>
 											setAttributes( {
-												columns: parseInt( value ),
+												columns: parseNumber( value ),
 											} )
 										}
 										min={ 1 }
@@ -405,7 +412,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												'Columns count',
 												'unitone'
 											) }
-											value={ parseInt( columns ) }
+											value={ parseNumber( columns ) }
 											min={ 1 }
 											max={ 12 }
 											step={ 1 }
@@ -420,14 +427,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												'For tablet / mobile',
 												'unitone'
 											) })` }
-											value={
-												!! mdColumns &&
-												parseInt( mdColumns )
-											}
+											value={ parseNumber( mdColumns ) }
 											onChange={ ( value ) =>
 												setAttributes( {
 													mdColumns:
-														parseInt( value ),
+														parseNumber( value ),
 												} )
 											}
 											min={ 1 }
@@ -575,7 +579,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												'Columns count',
 												'unitone'
 											) }
-											value={ parseInt( columns ) }
+											value={ parseNumber( columns ) }
 											min={ 1 }
 											max={ 12 }
 											step={ 1 }
@@ -590,10 +594,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												'For tablet / mobile',
 												'unitone'
 											) })` }
-											value={
-												!! mdColumns &&
-												parseInt( mdColumns )
-											}
+											value={ parseNumber( mdColumns ) }
 											min={ 1 }
 											max={ 12 }
 											step={ 1 }
@@ -608,14 +609,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												'For mobile',
 												'unitone'
 											) })` }
-											value={
-												!! smColumns &&
-												parseInt( smColumns )
-											}
+											value={ parseNumber( smColumns ) }
 											onChange={ ( value ) =>
 												setAttributes( {
 													smColumns:
-														parseInt( value ),
+														parseNumber( value ),
 												} )
 											}
 											min={ 1 }
@@ -719,10 +717,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								{ 'rows' === rowsOption && (
 									<RangeControl
 										label={ __( 'Rows count', 'unitone' ) }
-										value={ parseInt( rows ) }
+										value={ parseNumber( rows ) }
 										onChange={ ( value ) =>
 											setAttributes( {
-												rows: parseInt( value ),
+												rows: parseNumber( value ),
 											} )
 										}
 										min={ 1 }
@@ -800,7 +798,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												'Rows count',
 												'unitone'
 											) }
-											value={ parseInt( rows ) }
+											value={ parseNumber( rows ) }
 											min={ 1 }
 											max={ 12 }
 											step={ 1 }
@@ -815,12 +813,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												'For tablet / mobile',
 												'unitone'
 											) })` }
-											value={
-												!! mdRows && parseInt( mdRows )
-											}
+											value={ parseNumber( mdRows ) }
 											onChange={ ( value ) =>
 												setAttributes( {
-													mdRows: parseInt( value ),
+													mdRows: parseNumber(
+														value
+													),
 												} )
 											}
 											min={ 1 }
@@ -918,7 +916,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												'Rows count',
 												'unitone'
 											) }
-											value={ parseInt( rows ) }
+											value={ parseNumber( rows ) }
 											min={ 1 }
 											max={ 12 }
 											step={ 1 }
@@ -933,9 +931,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												'For tablet / mobile',
 												'unitone'
 											) })` }
-											value={
-												!! mdRows && parseInt( mdRows )
-											}
+											value={ parseNumber( mdRows ) }
 											min={ 1 }
 											max={ 12 }
 											step={ 1 }
@@ -950,12 +946,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												'For mobile',
 												'unitone'
 											) })` }
-											value={
-												!! smRows && parseInt( smRows )
-											}
+											value={ parseNumber( smRows ) }
 											onChange={ ( value ) =>
 												setAttributes( {
-													smRows: parseInt( value ),
+													smRows: parseNumber(
+														value
+													),
 												} )
 											}
 											min={ 1 }

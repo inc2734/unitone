@@ -28,18 +28,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 } );
 
 /**
- * For left header
+ * For vertical navigation
  */
 document.addEventListener( 'DOMContentLoaded', () => {
-	const headerContainer = document.querySelector(
-		'.site-container-left-header'
-	);
-	const header =
-		!! headerContainer && headerContainer.querySelector( '.site-header' );
-	if ( ! header ) {
-		return;
-	}
-
 	const setSubmenusPosition = ( submenus ) => {
 		[].slice.call( submenus ).forEach( ( submenu ) => {
 			const rect = submenu.parentElement.getBoundingClientRect();
@@ -51,19 +42,24 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		} );
 	};
 
-	const submenus = header.querySelectorAll(
-		[
-			'.wp-block-navigation.is-vertical .wp-block-navigation__container > .wp-block-page-list > .wp-block-pages-list__item > .wp-block-navigation__submenu-container',
-			'.wp-block-navigation.is-vertical .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation__submenu-container',
-		].join( ',' )
+	const navigations = document.querySelectorAll(
+		'.wp-block-navigation.is-style-unitone.is-vertical'
 	);
+	[].slice.call( navigations ).forEach( ( navigation ) => {
+		const submenus = navigation.querySelectorAll(
+			[
+				'.wp-block-navigation__container > .wp-block-page-list > .wp-block-pages-list__item > .wp-block-navigation__submenu-container',
+				'.wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation__submenu-container',
+			].join( ',' )
+		);
 
-	header.addEventListener( 'wheel', () => {
-		setSubmenusPosition( submenus );
-	} );
+		navigation.addEventListener( 'wheel', () => {
+			setSubmenusPosition( submenus );
+		} );
 
-	const resizeObserver = new window.ResizeObserver( () => {
-		setSubmenusPosition( submenus );
+		const resizeObserver = new window.ResizeObserver( () => {
+			setSubmenusPosition( submenus );
+		} );
+		resizeObserver.observe( document.body );
 	} );
-	resizeObserver.observe( header );
 } );

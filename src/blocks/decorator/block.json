@@ -87,6 +87,7 @@
 			"padding": true,
 			"position": true,
 			"overflow": true,
+			"maxHeight": true,
 			"fluidTypography": true,
 			"lineHeight": true
 		}

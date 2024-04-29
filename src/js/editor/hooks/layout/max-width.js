@@ -116,11 +116,11 @@ export function MaxWidthEdit( props ) {
 						onChange={ onChangeMaxWidth }
 					>
 						<ToggleGroupControlOption
-							value="var:style|global|wide-size"
+							value="var(--wp--custom--container-max-width)"
 							label={ __( 'Wide', 'unitone' ) }
 						/>
 						<ToggleGroupControlOption
-							value="var:style|global|content-size"
+							value="var(--wp--custom--content-max-width)"
 							label={ __( 'Content Width', 'unitone' ) }
 						/>
 					</ToggleGroupControl>
@@ -143,7 +143,7 @@ export function MaxWidthEdit( props ) {
 						onChangeMaxWidth(
 							! showCustomValueControl
 								? undefined
-								: 'var:style|global|wide-size'
+								: 'var(--wp--custom--container-max-width)'
 						);
 
 						setShowCustomValueControl( ! showCustomValueControl );

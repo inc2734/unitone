@@ -71,13 +71,6 @@
 			--unitone--column-gap: 0px;
 			--unitone--row-gap: var(--unitone--gap);
 		}
-
-		.wp-block-navigation__responsive-container-content,
-		.wp-block-navigation__container {
-			> .wp-block-buttons {
-				margin: var(--unitone--navigation-item--padding);
-			}
-		}
 	}
 }
 
@@ -173,6 +166,13 @@
 	&.is-vertical {
 		--navigation-layout-align: stretch;
 		--navigation-layout-justification-setting: stretch;
+
+		.wp-block-navigation__responsive-container-content,
+		.wp-block-navigation__container {
+			> .wp-block-buttons {
+				margin: var(--unitone--navigation-item--padding);
+			}
+		}
 
 		:where(.wp-block-navigation__container) {
 			> :where(.wp-block-page-list) > :where(.wp-block-pages-list__item),
@@ -282,6 +282,13 @@
 			// Submenu items
 			--unitone--navigation-submenu-item--padding: calc(var(--unitone--s-1) / 2) 0;
 			--unitone--navigation-submenu-item--indent: 1rem;
+		}
+
+		.wp-block-navigation__responsive-container-content,
+		.wp-block-navigation__container {
+			> .wp-block-buttons {
+				margin: var(--unitone--navigation-item--padding);
+			}
 		}
 
 		// Remove core padding for submenu container.

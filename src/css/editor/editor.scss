@@ -171,6 +171,10 @@
 	max-width: 100%;
 }
 
+.components-text-control__input[disabled] {
+	background-color: #f0f0f0;
+}
+
 .unitone-toggle-group-control {
 	border-bottom-right-radius: 0 !important;
 	border-bottom-left-radius: 0 !important;

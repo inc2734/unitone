@@ -243,9 +243,9 @@ export function GapEdit( props ) {
 							column: newValue,
 							row:
 								unitone?.gap?.row ||
-								( ( isNumber( unitone.gap ) ||
-									isString( unitone.gap ) ) &&
-									unitone.gap ) ||
+								( ( isNumber( unitone?.gap ) ||
+									isString( unitone?.gap ) ) &&
+									unitone?.gap ) ||
 								undefined,
 						},
 				  }
@@ -279,9 +279,9 @@ export function GapEdit( props ) {
 							row: newValue,
 							column:
 								unitone?.gap?.column ||
-								( ( isNumber( unitone.gap ) ||
-									isString( unitone.gap ) ) &&
-									unitone.gap ) ||
+								( ( isNumber( unitone?.gap ) ||
+									isString( unitone?.gap ) ) &&
+									unitone?.gap ) ||
 								undefined,
 						},
 				  }

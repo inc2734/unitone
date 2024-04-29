@@ -5,6 +5,8 @@
 
 .unitone-grid {
 	--unitone--gap: var(--unitone--global--text-gap);
+	--unitone--column-gap: var(--unitone--gap);
+	--unitone--row-gap: var(--unitone--gap);
 
 	--unitone--column-auto-repeat: auto-fit;
 	--unitone--columns: 1;
@@ -29,7 +31,8 @@
 	--unitone--sm-grid-template-rows: var(--unitone--md-grid-template-rows);
 
 	display: grid;
-	gap: var(--unitone--gap);
+	column-gap: var(--unitone--column-gap);
+	row-gap: var(--unitone--row-gap);
 
 	> * {
 		--unitone--justify-self: stretch;
@@ -59,7 +62,7 @@
 	grid-template-columns: var(--unitone--grid-template-columns);
 }
 
-@media not all and (min-width: 1024px) {
+@media not all and (min-width: 960px) {
 	[data-unitone-layout~="-columns\:md\:columns"] {
 		grid-template-columns: repeat(var(--unitone--md-columns), 1fr);
 	}
@@ -73,7 +76,7 @@
 	}
 }
 
-@media not all and (min-width: 640px) {
+@media not all and (min-width: 600px) {
 	[data-unitone-layout~="-columns\:sm\:columns"] {
 		grid-template-columns: repeat(var(--unitone--sm-columns), 1fr);
 	}
@@ -96,10 +99,11 @@
 }
 
 .editor-styles-wrapper .unitone-grid {
-	gap: var(--unitone--gap);
+	column-gap: var(--unitone--column-gap);
+	row-gap: var(--unitone--row-gap);
 }
 
-@media not all and (min-width: 1024px) {
+@media not all and (min-width: 960px) {
 	[data-unitone-layout~="-rows\:md\:rows"] {
 		grid-template-rows: repeat(var(--unitone--md-rows), 1fr);
 	}
@@ -109,7 +113,7 @@
 	}
 }
 
-@media not all and (min-width: 640px) {
+@media not all and (min-width: 600px) {
 	[data-unitone-layout~="-rows\:sm\:rows"] {
 		grid-template-rows: repeat(var(--unitone--sm-rows), 1fr);
 	}

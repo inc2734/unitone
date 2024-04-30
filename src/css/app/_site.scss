@@ -1,21 +1,3 @@
-.site-header {
-	// @deprecated
-	&.-header-position\:fixed {
-		position: fixed;
-		right: 0;
-		left: 0;
-		z-index: 1;
-	}
-
-	// @deprecated
-	&.-header-position\:overlay {
-		position: absolute;
-		right: 0;
-		left: 0;
-		z-index: 1;
-	}
-}
-
 .site-footer {
 	.wp-block-navigation-submenu__toggle,
 	.wp-block-navigation__submenu-container {
@@ -34,6 +16,47 @@
 	}
 }
 
+.site-container-left-header:where(.unitone-grid) {
+	@media (min-width: 600px) {
+		.site-header {
+			position: sticky;
+			top: var(--wp-admin--admin-bar--height, 0px);
+			z-index: 2;
+			max-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+			padding-top: var(--unitone--s3);
+			padding-bottom: var(--unitone--s3);
+			overflow: auto;
+
+			&:where(.block-editor-block-list__layout) {
+				overflow: visible;
+			}
+
+			> [data-unitone-layout~="container"] {
+				> [data-unitone-layout~="gutters"] {
+					--unitone--padding: 0 !important;
+				}
+			}
+		}
+	}
+}
+
+// @deprecated
+.site-header {
+	&.-header-position\:fixed {
+		position: fixed;
+		right: 0;
+		left: 0;
+		z-index: 1;
+	}
+
+	&.-header-position\:overlay {
+		position: absolute;
+		right: 0;
+		left: 0;
+		z-index: 1;
+	}
+}
+
 // @deprecated
 .site-container-right-sidebar {
 	.entry-content,
@@ -45,7 +68,7 @@
 }
 
 // @deprecated
-.site-container-left-header {
+.site-container-left-header:where([data-unitone-layout~="cover"]) {
 	--unitone--sidebar-width: clamp(var(--unitone--cg2), 30%, var(--unitone--cg3));
 
 	@media (min-width: 600px) {
@@ -68,6 +91,12 @@
 
 		.site-header {
 			flex-basis: var(--unitone--sidebar-width);
+			overflow: auto;
+			height: 100%;
+
+			&:where(.block-editor-block-list__layout) {
+				overflow: visible;
+			}
 
 			> [data-unitone-layout~="container"] {
 				padding-top: calc(var(--unitone--s3) - var(--unitone--s-1));
@@ -96,25 +125,6 @@
 					}
 				}
 			}
-		}
-	}
-}
-
-// @deprecated
-.site-container-left-header {
-	@media (min-width: 600px) {
-		.site-header {
-			overflow: auto;
-			height: 100%;
-		}
-	}
-}
-
-// @deprecated
-.site-container-left-header:where(.block-editor-block-list__layout) {
-	@media (min-width: 600px) {
-		.site-header {
-			overflow: visible;
 		}
 	}
 }

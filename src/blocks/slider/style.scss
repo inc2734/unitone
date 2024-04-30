@@ -129,10 +129,15 @@
 		gap: var(--swiper-pagination-bullet-horizontal-gap);
 
 		.swiper-pagination-bullet {
+			position: relative;
 			margin: 0;
 
 			&::after {
 				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+		    transform: translate(-50%, -50%);
 				display: block;
 				height: calc(100% + var(--swiper-pagination-bullet-horizontal-gap));
 				width: calc(100% + var(--swiper-pagination-bullet-horizontal-gap));

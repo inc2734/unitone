@@ -5,17 +5,17 @@
 
 @use '../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
 
-.is-layout-constrained:where(:not([data-unitone-layout~="text"])),
-.wp-block-post-content:where(.is-layout-flow), // @deprecated
-.is-root-container {
+:where(.is-layout-constrained:not([data-unitone-layout~="text"])),
+:where(.wp-block-post-content.is-layout-flow), // @deprecated
+:where(.is-root-container) {
 	@include text.abstract-text();
 	@include text.abstract-text--gap();
 	--unitone--max-width: 100%;
 }
 
-.is-layout-constrained,
-.wp-block-post-content:where(.is-layout-flow), // @deprecated
-.is-root-container {
+:where(.is-layout-constrained),
+:where(.wp-block-post-content.is-layout-flow), // @deprecated
+:where(.is-root-container) {
 	> .wp-block-audio,
 	> .wp-block-embed,
 	> .wp-block-image,

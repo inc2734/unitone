@@ -6,12 +6,13 @@
 	--unitone--position: relative;
 }
 
-:where([data-unitone-layout~="decorator"] a) {
-	position: relative;
-}
-
 [data-unitone-layout~="decorator__inner"] {
 	position: static !important;
+}
+
+:where([data-unitone-layout~="decorator__inner"] > :not([data-unitone-layout~="decorator__link"]) a) {
+	position: relative;
+	z-index: 1;
 }
 
 [data-unitone-layout~="decorator__link"] {

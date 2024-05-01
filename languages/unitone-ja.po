@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-04-23T12:32:21+00:00\n"
-"PO-Revision-Date: 2024-04-23 21:33+0900\n"
+"POT-Creation-Date: 2024-05-01T05:29:23+00:00\n"
+"PO-Revision-Date: 2024-05-01 14:29+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -36,7 +36,7 @@ msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
 #: App/Controller/Manager/Manager.php:70 App/Controller/Manager/Manager.php:71
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
@@ -80,7 +80,7 @@ msgstr "さらに詳しく"
 msgid "%s mega menu"
 msgstr "%sのメガメニュー"
 
-#: inc/block-categories.php:23 App/Controller/Manager/dist/js/app.js:3
+#: inc/block-categories.php:23 App/Controller/Manager/dist/js/app.js:4
 #: dist/js/editor/editor.js:1
 msgid "Layout"
 msgstr "レイアウト"
@@ -110,7 +110,7 @@ msgid "Query"
 msgstr "クエリー"
 
 #: inc/block-patterns.php:16 inc/template-part-areas.php:27
-#: inc/template-part-areas.php:162 App/Controller/Manager/dist/js/app.js:5
+#: inc/template-part-areas.php:162 App/Controller/Manager/dist/js/app.js:6
 msgid "Pages"
 msgstr "ページ"
 
@@ -118,342 +118,346 @@ msgstr "ページ"
 msgid "Templates"
 msgstr "テンプレート"
 
-#: inc/block-patterns.php:50
+#: inc/block-patterns.php:18
+msgid "Others"
+msgstr "その他"
+
+#: inc/block-patterns.php:51
 msgid "Main Area (One Column / Page Header (Image)) for 404"
 msgstr "404のメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:56
+#: inc/block-patterns.php:57
 msgid "Main Area (Right Sidebar / Page Header (Image)) for 404"
 msgstr "404のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:62
+#: inc/block-patterns.php:63
 msgid "Main Area (Right Sidebar) for 404"
 msgstr "404のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:68
+#: inc/block-patterns.php:69
 msgid "Main Area for 404 (One Column)"
 msgstr "404 のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:74
+#: inc/block-patterns.php:75
 msgid "Page Header (Image) for 404"
 msgstr "404のページヘッダー（画像）"
 
-#: inc/block-patterns.php:80
+#: inc/block-patterns.php:81
 msgid "Page Header (Wide) for 404"
 msgstr "404のページヘッダー（幅広）"
 
-#: inc/block-patterns.php:86 inc/template-part-areas.php:197
+#: inc/block-patterns.php:87 inc/template-part-areas.php:197
 msgid "Page Header for 404"
 msgstr "404のページヘッダー"
 
-#: inc/block-patterns.php:92
+#: inc/block-patterns.php:93
 msgid "Main Area for All Archives (One Column)"
 msgstr "アーカイブのメインエリア（1カラム）"
 
-#: inc/block-patterns.php:98
+#: inc/block-patterns.php:99
 msgid "Main Area (One Column / Page Header (Image)) for All Archives"
 msgstr "アーカイブのメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:104
+#: inc/block-patterns.php:105
 msgid "Main Area (Right Sidebar / Page Header (Image)) for All Archives"
 msgstr ""
 "アーカイブのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:110
+#: inc/block-patterns.php:111
 msgid "Main Area (Right Sidebar) for All Archives"
 msgstr "アーカイブのメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:116
+#: inc/block-patterns.php:117
 msgid "Page Header (Image) for All Archives"
 msgstr "アーカイブのページヘッダー（画像）"
 
-#: inc/block-patterns.php:122 inc/template-part-areas.php:239
+#: inc/block-patterns.php:123 inc/template-part-areas.php:239
 msgid "Page Header for All Archives"
 msgstr "アーカイブのページヘッダー"
 
-#: inc/block-patterns.php:128
+#: inc/block-patterns.php:129
 msgid "Main Area (One Column) for Product Catalog"
 msgstr "商品カタログのメインエリア（1カラム）"
 
-#: inc/block-patterns.php:134
+#: inc/block-patterns.php:135
 msgid "Main Area (One Column / Page Header (Image)) for Product Catalog"
 msgstr "商品カタログのメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:140
+#: inc/block-patterns.php:141
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Catalog"
 msgstr ""
 "商品カタログのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
 "像））"
 
-#: inc/block-patterns.php:146
+#: inc/block-patterns.php:147
 msgid "Main Area (Right Sidebar) for Product Catalog"
 msgstr "商品カタログのメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:152
+#: inc/block-patterns.php:153
 msgid "Page Header (Image) for Product Catalog"
 msgstr "商品カタログのページヘッダー（画像）"
 
-#: inc/block-patterns.php:158 inc/template-part-areas.php:281
+#: inc/block-patterns.php:159 inc/template-part-areas.php:281
 msgid "Page Header for Product Catalog"
 msgstr "商品カタログのページヘッダー"
 
-#: inc/block-patterns.php:164
+#: inc/block-patterns.php:165
 msgid "Main Area (One Column) for bbPress"
 msgstr "bbPress のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:170
+#: inc/block-patterns.php:171
 msgid "Main Area (One Column / Page Header (Image)) for bbPress"
 msgstr "bbPress のメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:176
+#: inc/block-patterns.php:177
 msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
 msgstr ""
 "bbPress のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:182
+#: inc/block-patterns.php:183
 msgid "Main Area (Right Sidebar) for bbPress"
 msgstr "bbPress のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:188
+#: inc/block-patterns.php:189
 msgid "Page Header (Image) for bbPress"
 msgstr "bbPress のページヘッダー（画像）"
 
-#: inc/block-patterns.php:194 inc/template-part-areas.php:316
+#: inc/block-patterns.php:195 inc/template-part-areas.php:316
 msgid "Page Header for bbPress"
 msgstr "bbPress のページヘッダー"
 
-#: inc/block-patterns.php:200
+#: inc/block-patterns.php:201
 msgid "Contents for Cart"
 msgstr "お買い物カゴのコンテンツ"
 
-#: inc/block-patterns.php:206
+#: inc/block-patterns.php:207
 msgid "Main Area (One Column) for Cart"
 msgstr "購入手続きのメインエリア（1カラム）"
 
-#: inc/block-patterns.php:212
+#: inc/block-patterns.php:213
 msgid "Main Area (One Column / Page Header (Image)) for Cart"
 msgstr "お買い物カゴのメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:218
+#: inc/block-patterns.php:219
 msgid "Page Header (Image) for Cart"
 msgstr "お買い物カゴのページヘッダー（画像）"
 
-#: inc/block-patterns.php:224
+#: inc/block-patterns.php:225
 msgid "Page Header for Cart"
 msgstr "お買い物カゴのページヘッダー"
 
-#: inc/block-patterns.php:230
+#: inc/block-patterns.php:231
 msgid "Contents for Checkout"
 msgstr "購入手続きのコンテンツ"
 
-#: inc/block-patterns.php:236
+#: inc/block-patterns.php:237
 msgid "Main Area (One Column) for Checkout"
 msgstr "購入手続きのメインエリア（1カラム）"
 
-#: inc/block-patterns.php:242
+#: inc/block-patterns.php:243
 msgid "Main Area (One Column / Page Header (Image)) for Checkout"
 msgstr "購入手続きのメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:248
+#: inc/block-patterns.php:249
 msgid "Page Header (Image) for Checkout"
 msgstr "購入手続きのページヘッダー（画像）"
 
-#: inc/block-patterns.php:254
+#: inc/block-patterns.php:255
 msgid "Page Header for Checkout"
 msgstr "購入手続きのページヘッダー"
 
-#: inc/block-patterns.php:260
+#: inc/block-patterns.php:261
 msgid "Contents for Order Confirmation"
 msgstr "注文確認のコンテンツ"
 
-#: inc/block-patterns.php:266
+#: inc/block-patterns.php:267
 msgid "Main Area (One Column) for Order Confirmation"
 msgstr "注文確認のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:272
+#: inc/block-patterns.php:273
 msgid "Main Area (One Column / Page Header (Image)) for Order Confirmation"
 msgstr "注文確認のメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:278
+#: inc/block-patterns.php:279
 msgid "Page Header (Image) for Order Confirmation"
 msgstr "注文確認のページヘッダー（画像）"
 
-#: inc/block-patterns.php:284
+#: inc/block-patterns.php:285
 msgid "Page Header for Order Confirmation"
 msgstr "注文確認のページヘッダー"
 
-#: inc/block-patterns.php:290
+#: inc/block-patterns.php:291
 msgid "Main Area (Blank) for Front Page"
 msgstr "フロントページのメインエリア（空）"
 
-#: inc/block-patterns.php:296
+#: inc/block-patterns.php:297
 msgid "Main Area (One Column) for Blog Home"
 msgstr "ブログホームのメインエリア（1カラム）"
 
-#: inc/block-patterns.php:302
+#: inc/block-patterns.php:303
 msgid "Main Area (One Column / Page Header (Image)) for Blog Home"
 msgstr "ブログホームのメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:308
+#: inc/block-patterns.php:309
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Blog Home"
 msgstr ""
 "ブログホームのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
 "像））"
 
-#: inc/block-patterns.php:314
+#: inc/block-patterns.php:315
 msgid "Main Area (Right Sidebar) for Blog Home"
 msgstr "ブログホームのメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:320
+#: inc/block-patterns.php:321
 msgid "Page Header (Image) for Blog Home"
 msgstr "ブログホームのページヘッダー（画像）"
 
-#: inc/block-patterns.php:326 inc/template-part-areas.php:211
+#: inc/block-patterns.php:327 inc/template-part-areas.php:211
 msgid "Page Header for Blog Home"
 msgstr "ブログホームのページヘッダー"
 
-#: inc/block-patterns.php:332
+#: inc/block-patterns.php:333
 msgid "Main Area (One Column) for Pages"
 msgstr "固定ページのメインエリア（1カラム）"
 
-#: inc/block-patterns.php:338
+#: inc/block-patterns.php:339
 msgid "Main Area (Blank) for Pages"
 msgstr "固定ページのメインエリア（空）"
 
-#: inc/block-patterns.php:344
+#: inc/block-patterns.php:345
 msgid "Main Area (One Column / Page Header (Featured Image)) for Pages"
 msgstr ""
 "固定ページのメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:350
+#: inc/block-patterns.php:351
 msgid "Main Area (One Column / Page Header (Image)) for Pages"
 msgstr "固定ページのメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:356
+#: inc/block-patterns.php:357
 msgid "Main Area (One Column / Page Header (Slim)) for Pages"
 msgstr "固定ページのメインエリア（1カラム / ページヘッダー（スリム））"
 
-#: inc/block-patterns.php:362
+#: inc/block-patterns.php:363
 msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
 msgstr ""
 "固定ページのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:368
+#: inc/block-patterns.php:369
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Pages"
 msgstr ""
 "固定ページのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:374
+#: inc/block-patterns.php:375
 msgid "Main Area (Right Sidebar) for Pages"
 msgstr "固定ページのメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:380 inc/template-part-areas.php:169
+#: inc/block-patterns.php:381 inc/template-part-areas.php:169
 msgid "Page Header for Pages"
 msgstr "固定ページのページヘッダー"
 
-#: inc/block-patterns.php:386
+#: inc/block-patterns.php:387
 msgid "Page Header (Featured Image) for Pages"
 msgstr "固定ページのページヘッダー（アイキャッチ画像）"
 
-#: inc/block-patterns.php:392
+#: inc/block-patterns.php:393
 msgid "Page Header (Image) for Pages"
 msgstr "固定ページのページヘッダー（画像）"
 
-#: inc/block-patterns.php:398
+#: inc/block-patterns.php:399
 msgid "Page Header (Slim) for Pages"
 msgstr "固定ページのページヘッダー（スリム）"
 
-#: inc/block-patterns.php:404
+#: inc/block-patterns.php:405
 msgid "Main Area (One Column) for Search Results"
 msgstr "検索結果のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:410
+#: inc/block-patterns.php:411
 msgid "Main Area (One Column / Page Header (Image)) for Search Results"
 msgstr "検索結果のメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:416
+#: inc/block-patterns.php:417
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
 msgstr ""
 "検索結果のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:422
+#: inc/block-patterns.php:423
 msgid "Main Area (Right Sidebar) for Search Results"
 msgstr "検索結果のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:428 inc/template-part-areas.php:253
+#: inc/block-patterns.php:429 inc/template-part-areas.php:253
 msgid "Page Header for Search Results"
 msgstr "検索結果のページヘッダー"
 
-#: inc/block-patterns.php:434
+#: inc/block-patterns.php:435
 msgid "Page Header (Image) for Search Results"
 msgstr "検索結果のページヘッダー（画像）"
 
-#: inc/block-patterns.php:440
+#: inc/block-patterns.php:441
 msgid "Main Area (One Column) for Single Posts"
 msgstr "個別投稿のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:446
+#: inc/block-patterns.php:447
 msgid "Main Area (Blank) for Single Posts"
 msgstr "個別投稿のメインエリア（空）"
 
-#: inc/block-patterns.php:452
+#: inc/block-patterns.php:453
 msgid "Main Area (One Column / Page Header (Featured Image)) for Single Posts"
 msgstr "個別投稿のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:458
+#: inc/block-patterns.php:459
 msgid "Main Area (Page Header (Image)) for Single Posts"
 msgstr "個別投稿のメインエリア（ページヘッダー（画像））"
 
-#: inc/block-patterns.php:464
+#: inc/block-patterns.php:465
 msgid ""
 "Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts"
 msgstr ""
 "個別投稿のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:470
+#: inc/block-patterns.php:471
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Posts"
 msgstr ""
 "個別投稿のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:476
+#: inc/block-patterns.php:477
 msgid "Main Area (Right Sidebar) for Single Posts"
 msgstr "個別投稿のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:482 inc/template-part-areas.php:148
+#: inc/block-patterns.php:483 inc/template-part-areas.php:148
 msgid "Page Header for Single Posts"
 msgstr "個別投稿のページヘッダー"
 
-#: inc/block-patterns.php:488
+#: inc/block-patterns.php:489
 msgid "Page Header (Featured Image) for Single Posts"
 msgstr "個別投稿のページヘッダー（アイキャッチ画像）"
 
-#: inc/block-patterns.php:494
+#: inc/block-patterns.php:495
 msgid "Page Header (Image) for Single Posts"
 msgstr "個別投稿のページヘッダー（画像）"
 
-#: inc/block-patterns.php:500
+#: inc/block-patterns.php:501
 msgid "Page Header (Wide) for Single Posts"
 msgstr "個別投稿のページヘッダー（幅広）"
 
-#: inc/block-patterns.php:506
+#: inc/block-patterns.php:507
 msgid "Main Area (One Column) for Single Products"
 msgstr "単一の商品のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:512
+#: inc/block-patterns.php:513
 msgid "Main Area (One Column / Page Header (Image)) for Single Products"
 msgstr ""
 "単一の商品のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:518
+#: inc/block-patterns.php:519
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
 msgstr ""
 "単一の商品のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:524
+#: inc/block-patterns.php:525
 msgid "Main Area (Right Sidebar) for Single Products"
 msgstr "単一の商品のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:530
+#: inc/block-patterns.php:531
 msgid "Page Header (Image) for Single Products"
 msgstr "単一の商品のページヘッダー（画像）"
 
@@ -465,15 +469,15 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:32 inc/block-styles.php:112 dist/js/editor/editor.js:7
+#: inc/block-styles.php:32 inc/block-styles.php:112 dist/js/editor/editor.js:10
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: inc/block-styles.php:40 dist/js/editor/editor.js:7
+#: inc/block-styles.php:40 dist/js/editor/editor.js:10
 msgid "Bordered"
 msgstr "ボーダー"
 
-#: inc/block-styles.php:48 dist/js/editor/editor.js:7
+#: inc/block-styles.php:48 dist/js/editor/editor.js:10
 msgid "Stripe"
 msgstr "ストライプ"
 
@@ -994,6 +998,10 @@ msgstr "bbPress のメインエリア"
 msgid "Footer breadcrumbs"
 msgstr "フッターのパンくずリスト"
 
+#: inc/variations.php:36
+msgid "Share Button"
+msgstr "シェアボタン"
+
 #: patterns/footer-1.php
 msgctxt "Pattern title"
 msgid "Footer 1"
@@ -1130,6 +1138,27 @@ msgstr "クエリー（テキスト / 2行 / アンダーライン）"
 msgctxt "Pattern title"
 msgid "Query (Text / Underline)"
 msgstr "クエリー（テキスト / アンダーライン）"
+
+#: patterns/share-buttons.php
+msgctxt "Pattern title"
+msgid "Share buttons"
+msgstr "シェアボタン"
+
+#: patterns/share-buttons.php:11 dist/variations/variations.js:1
+msgid "Post this entry to X"
+msgstr "このエントリーを X にポスト"
+
+#: patterns/share-buttons.php:15 dist/variations/variations.js:1
+msgid "Share this entry to Facebook"
+msgstr "このエントリーを Facebook にシェア"
+
+#: patterns/share-buttons.php:19 dist/variations/variations.js:1
+msgid "Add this entry to Hatena Bookmarks"
+msgstr "このエントリーをはてなブックマークに追加"
+
+#: patterns/share-buttons.php:23 dist/variations/variations.js:1
+msgid "Share this entry to LINE"
+msgstr "このエントリーを LINE にシェア"
 
 #: patterns/sidebar-bbpress.php
 msgctxt "Pattern title"
@@ -1524,11 +1553,6 @@ msgctxt "Pattern title"
 msgid "Single Posts: One Column"
 msgstr "個別投稿：1カラム"
 
-#: patterns/template-single-product-left-header-header-footer.php
-msgctxt "Pattern title"
-msgid "Single Products: Left Header / Only Header and Footer"
-msgstr "単一の商品：左ヘッダー / ヘッダー・フッター"
-
 #: patterns/template-single-product-left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Products: Left Header / Page Header (Image)"
@@ -1594,14 +1618,14 @@ msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "Save Settings"
 msgstr "設定を保存"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:3
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "Reset All Settings"
 msgstr "すべての設定をリセット"
 
@@ -1618,17 +1642,17 @@ msgid "Display an image to represent this site."
 msgstr "このサイトを表す画像を表示します。"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Remove Image"
 msgstr "画像を削除"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Select Image"
 msgstr "画像を選択"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Site Icon"
 msgstr "サイトアイコン"
 
@@ -1641,15 +1665,15 @@ msgstr ""
 "で表示されます。ぜひアップロードしましょう。"
 
 #. translators: %s: Site icon size in pixels.
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Site Icons should be square and at least %s pixels."
 msgstr "サイトアイコンは%sピクセル以上の正方形にしてください。"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Colors"
 msgstr "色"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid ""
 "This setting is the default setting for the theme. The Site Editor setting "
 "overrides this setting."
@@ -1657,138 +1681,138 @@ msgstr ""
 "この設定はテーマのデフォルト設定です。サイトエディターの設定はこの設定を上書"
 "きします。"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Accent Color"
 msgstr "アクセントカラー"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Background Color"
 msgstr "背景色"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Text Color"
 msgstr "文字色"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Link Color"
 msgstr "リンク色"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Typography"
 msgstr "タイポグラフィ"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Font"
 msgstr "フォント"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Base Font Size"
 msgstr "基本の文字サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Half Leading"
 msgstr "ハーフリーディング"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Size of h2"
 msgstr "h2 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Size of h3"
 msgstr "h3 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Size of h4"
 msgstr "h4 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Size of h5"
 msgstr "h5 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Size of h6"
 msgstr "h6 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Size"
 msgstr "サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3 dist/js/editor/editor.js:1
+#: App/Controller/Manager/dist/js/app.js:4 dist/js/editor/editor.js:1
 msgid "Content Width"
 msgstr "コンテンツ幅"
 
-#: App/Controller/Manager/dist/js/app.js:3 dist/js/editor/editor.js:1
+#: App/Controller/Manager/dist/js/app.js:4 dist/js/editor/editor.js:1
 msgid "Wide"
 msgstr "幅広"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Your Homepage Displays"
 msgstr "ホームページ設定"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Homepage Type"
 msgstr "ホームページのタイプ"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Latest Posts"
 msgstr "最新の投稿"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Static Page"
 msgstr "固定ページ"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Homepage"
 msgstr "ホームページ"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Homepage 1"
 msgstr "ホームページ 1"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Homepage 2"
 msgstr "ホームページ 2"
 
-#: App/Controller/Manager/dist/js/app.js:3
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Select existing page for the homepage"
 msgstr "既存のページをホームページ用に選択"
 
-#: App/Controller/Manager/dist/js/app.js:3
 #: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:5
 msgid "— Select —"
 msgstr "— 選択 —"
 
 #. translators: %1$s: Post ID
-#: App/Controller/Manager/dist/js/app.js:4
 #: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "#%1$s (No title)"
 msgstr "#%1$s （タイトルなし）"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:5
 msgid "Posts Page"
 msgstr "投稿ページ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:5
 msgid "Create new page for the posts page"
 msgstr "投稿ページ用の固定ページを生成"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:5
 msgid "Select existing page for the posts page"
 msgstr "既存のページを投稿ページ用に選択"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "Posts"
 msgstr "投稿"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "Products"
 msgstr "商品"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "Custom Templates"
 msgstr "カスタムテンプレート"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:6
 msgid ""
 "Activate the custom template you wish to use. You cannot deactivate a custom "
 "template that is already in use."
@@ -1796,19 +1820,19 @@ msgstr ""
 "使用したいカスタムテンプレートを有効化してください。既に使用されているカスタ"
 "ムテンプレートは無効化できません。"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "Go to the Dashboard"
 msgstr "ダッシュボードに戻る"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "View site (opens in a new tab)"
 msgstr "サイトを表示 (新しいタブで開く)"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "Navigation"
 msgstr "ナビゲーション"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "Retrieve patterns from the pattern library"
 msgstr "パターンライブラリーからパターンを再取得する"
 
@@ -1816,9 +1840,9 @@ msgstr "パターンライブラリーからパターンを再取得する"
 #: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/decorator/index.js:1
 #: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
+#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:37
 #: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
-#: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:9
+#: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
 #: dist/blocks/vertical-writing/index.js:1 dist/blocks/with-sidebar/index.js:1
@@ -1896,9 +1920,9 @@ msgid "Column min width"
 msgstr "カラムの最小幅"
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: dist/blocks/child-pages/index.js:3
-#: dist/blocks/responsive-grid-divided/index.js:3
-#: dist/blocks/responsive-grid/index.js:3
+#: dist/blocks/child-pages/index.js:4
+#: dist/blocks/responsive-grid-divided/index.js:4
+#: dist/blocks/responsive-grid/index.js:4
 msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr "%1$sgrid-template-columns%2$sの計算式の中"
 
@@ -1917,7 +1941,7 @@ msgstr "クラスター（区切り：ボーダー）"
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/decorator/index.js:1
 #: dist/blocks/flex/index.js:1 dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
-#: dist/blocks/section/index.js:9 dist/blocks/stack-divided/index.js:1
+#: dist/blocks/section/index.js:13 dist/blocks/stack-divided/index.js:1
 msgid "HTML element"
 msgstr "HTML 要素"
 
@@ -1993,7 +2017,7 @@ msgstr "ポートレートのとき比率を切り替える"
 msgid "Minimum width"
 msgstr "最小幅"
 
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
+#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:37
 msgid "Columns count"
 msgstr "カラム数"
 
@@ -2013,11 +2037,11 @@ msgstr "タブレット / モバイル用"
 msgid "For mobile"
 msgstr "モバイル用"
 
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
+#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:37
 msgid "Rows count"
 msgstr "行数"
 
-#: dist/blocks/gutters/index.js:1 dist/blocks/section/index.js:9
+#: dist/blocks/gutters/index.js:1 dist/blocks/section/index.js:13
 msgid "Top and bottom padding"
 msgstr "上下パディング"
 
@@ -2034,93 +2058,93 @@ msgid "Default"
 msgstr "デフォルト"
 
 #. translators: %1$s: position
-#: dist/blocks/layers/index.js:3 dist/blocks/layers/index.js:5
-#: dist/blocks/layers/index.js:7 dist/blocks/layers/index.js:9
-#: dist/blocks/layers/index.js:11 dist/blocks/layers/index.js:13
-#: dist/blocks/layers/index.js:15 dist/blocks/layers/index.js:17
+#: dist/blocks/layers/index.js:4 dist/blocks/layers/index.js:7
+#: dist/blocks/layers/index.js:10 dist/blocks/layers/index.js:13
+#: dist/blocks/layers/index.js:16 dist/blocks/layers/index.js:19
+#: dist/blocks/layers/index.js:22 dist/blocks/layers/index.js:25
 msgid "Hero (%1$s)"
 msgstr "ヒーロー（%1$s）"
 
-#: dist/blocks/layers/index.js:3
+#: dist/blocks/layers/index.js:4
 msgid "Top / Left"
 msgstr "上 / 左"
 
-#: dist/blocks/layers/index.js:5
+#: dist/blocks/layers/index.js:7
 msgid "Top / Right"
 msgstr "上 / 右"
 
-#: dist/blocks/layers/index.js:7 dist/blocks/layers/index.js:11
-#: dist/blocks/layers/index.js:15
+#: dist/blocks/layers/index.js:10 dist/blocks/layers/index.js:16
+#: dist/blocks/layers/index.js:22
 msgid "Bottom / Left"
 msgstr "下 / 左"
 
-#: dist/blocks/layers/index.js:9 dist/blocks/layers/index.js:13
-#: dist/blocks/layers/index.js:17
+#: dist/blocks/layers/index.js:13 dist/blocks/layers/index.js:19
+#: dist/blocks/layers/index.js:25
 msgid "Bottom / Right"
 msgstr "下 / 右"
 
 #. translators: %1$s: position
-#: dist/blocks/layers/index.js:19 dist/blocks/layers/index.js:21
-#: dist/blocks/layers/index.js:23 dist/blocks/layers/index.js:25
-#: dist/blocks/section/index.js:3 dist/blocks/section/index.js:5
-#: dist/blocks/section/index.js:7 dist/blocks/section/index.js:9
+#: dist/blocks/layers/index.js:28 dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:34 dist/blocks/layers/index.js:37
+#: dist/blocks/section/index.js:4 dist/blocks/section/index.js:7
+#: dist/blocks/section/index.js:10 dist/blocks/section/index.js:13
 msgid "Section (%1$s)"
 msgstr "セクション（%1$s）"
 
-#: dist/blocks/layers/index.js:19
+#: dist/blocks/layers/index.js:28
 msgid "Background image / Centered title"
 msgstr "背景画像 / 中央揃えのタイトル"
 
-#: dist/blocks/layers/index.js:19 dist/blocks/layers/index.js:21
-#: dist/blocks/layers/index.js:23 dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:28 dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:34 dist/blocks/layers/index.js:37
 msgctxt "block keywords"
 msgid "section"
 msgstr "section"
 
-#: dist/blocks/layers/index.js:21
+#: dist/blocks/layers/index.js:31
 msgid "Background image / Centered title / Subtitle"
 msgstr "背景画像 / 中央揃えのタイトル / サブタイトル"
 
-#: dist/blocks/layers/index.js:23
+#: dist/blocks/layers/index.js:34
 msgid "Background image / Left title"
 msgstr "背景画像 / 左寄せのタイトル"
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:37
 msgid "Background image / Left title / Subtitle"
 msgstr "背景画像 / 左寄せのタイトル / サブタイトル"
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:37
 msgid "Use background image/video (Cover)"
 msgstr "背景画像/動画を使用（Cover）"
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:37
 msgid "Treat the first child block as a background image/video."
 msgstr "最初の子ブロックを背景画像/動画として扱います。"
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:37
 msgid ""
 "The background image/video is enlarged according or reduces to the amount of "
 "content."
 msgstr "コンテンツ量に応じて、背景画像/動画を拡大・縮小表示します。"
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:37
 msgid "Use background image/video (Fill)"
 msgstr "背景画像/動画を使用（Fill）"
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:37
 msgid ""
 "The background image/video is enlarged according to the amount of content."
 msgstr "コンテンツ量に応じて、背景画像/動画を拡大表示します。"
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:37
 msgid "Blur the background image/video"
 msgstr "背景画像/動画をぼかす"
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:37
 msgid "Enable portrait mode"
 msgstr "ポートレートモードを有効にする"
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:37
 msgid ""
 "If enabled, the number of vertical and horizontal grid lines is switched "
 "when the viewport is portrait."
@@ -2137,11 +2161,11 @@ msgid "Mega menu link text"
 msgstr "メガメニューリンクのテキスト"
 
 #. translators: %d: number of results.
-#: dist/blocks/pattern-inserter/index.js:6
+#: dist/blocks/pattern-inserter/index.js:7
 msgid "Insert Pattern (Beta)"
 msgstr "パターンを挿入（ベータ版）"
 
-#: dist/blocks/pattern-inserter/index.js:6
+#: dist/blocks/pattern-inserter/index.js:7
 msgid ""
 "Click on the button below to see all available patterns. Click on any "
 "pattern you wish to insert, and that pattern will be inserted into the "
@@ -2150,7 +2174,7 @@ msgstr ""
 "下記のボタンをクリックすると、利用可能なすべてのパターンが表示されます。挿入"
 "したいパターンをクリックすると、そのパターンが記事に挿入されます。"
 
-#: dist/blocks/pattern-inserter/index.js:6
+#: dist/blocks/pattern-inserter/index.js:7
 msgid "Remove this placeholder"
 msgstr "このプレースホルダーを削除"
 
@@ -2178,15 +2202,15 @@ msgstr "レスポンシブグリッド（区切り：アンダーライン）"
 msgid "Responsive grid (Divider: bordered)"
 msgstr "レスポンシブグリッド（区切り：ボーダー）"
 
-#: dist/blocks/responsive-grid-divided/index.js:3
-#: dist/blocks/responsive-grid/index.js:3
+#: dist/blocks/responsive-grid-divided/index.js:4
+#: dist/blocks/responsive-grid/index.js:4
 msgid ""
 "When the column width is less than this value, it is aligned in a single "
 "column."
 msgstr "カラムがこの幅より小さくなったとき、カラムは1列に並びます。"
 
-#: dist/blocks/responsive-grid-divided/index.js:3
-#: dist/blocks/responsive-grid/index.js:3
+#: dist/blocks/responsive-grid-divided/index.js:4
+#: dist/blocks/responsive-grid/index.js:4
 msgid ""
 "If \"auto-repeat\" is \"auto-fill\" the column will maintain this size.\" "
 "auto-fit\", the column will stretch to fill the available space."
@@ -2194,23 +2218,23 @@ msgstr ""
 "「auto-repeat」が 「auto-fill」の場合、カラムはこのサイズを維持します。"
 "「auto-fit」の場合、空きスペースを埋めるようにカラムが伸長します。"
 
-#: dist/blocks/section/index.js:3
+#: dist/blocks/section/index.js:4
 msgid "Centered title"
 msgstr "中央揃えのタイトル"
 
-#: dist/blocks/section/index.js:5
+#: dist/blocks/section/index.js:7
 msgid "Centered title / Subtitle"
 msgstr "中央揃えのタイトル / サブタイトル"
 
-#: dist/blocks/section/index.js:7
+#: dist/blocks/section/index.js:10
 msgid "Left title"
 msgstr "左寄せのタイトル"
 
-#: dist/blocks/section/index.js:9
+#: dist/blocks/section/index.js:13
 msgid "Left title / Subtitle"
 msgstr "左寄せのタイトル / サブタイトル"
 
-#: dist/blocks/section/index.js:9
+#: dist/blocks/section/index.js:13
 msgid "Max width of contents"
 msgstr "コンテンツの最大幅"
 
@@ -2335,11 +2359,11 @@ msgid "Threshold"
 msgstr "閾値"
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: dist/blocks/switcher/index.js:3
+#: dist/blocks/switcher/index.js:4
 msgid "Inside the %1$sflex-basis%2$s formula"
 msgstr "%1$sflex-basis%2$sの計算式の中"
 
-#: dist/blocks/switcher/index.js:3
+#: dist/blocks/switcher/index.js:4
 msgid ""
 "When this block is smaller than this width, the contents are arranged in a "
 "single column."
@@ -2397,12 +2421,12 @@ msgid "Columns to be treated as sidebars"
 msgstr "サイドバーとして扱うカラム"
 
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Right"
 msgstr "右"
 
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Left"
 msgstr "左"
 
@@ -2573,7 +2597,7 @@ msgid "A grid item's size and location within the grid row"
 msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: dist/js/editor/editor.js:3 dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid ""
 "For example, enter %1$s1 / -2%2$s (fill from the first grid line to the "
 "second-to-last grid line)."
@@ -2581,79 +2605,99 @@ msgstr ""
 "例えば、%1$s1 / -2%2$s（1番目のグリッド線から、最後から2番目のグリッド線まで"
 "を埋める）のように入力します。"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Apply to the block with the upper overlap order."
 msgstr "重なり順が上のブロックに適用します。"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Layer"
 msgstr "レイヤー"
 
-#: dist/js/editor/editor.js:5
+#: dist/js/editor/editor.js:7
 msgid "Mix blend mode"
 msgstr "ミックスブレンドモード"
 
 #. translators: %1$s: <code>wbr</code>
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Use %1$s to indicate a line break at an arbitrary position."
 msgstr "任意の位置で改行を指示したい場合は %1$s を使用してください。"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Fluid typography"
 msgstr "流体タイポグラフィ"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Half leading"
 msgstr "ハーフリーディング"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Auto line breaks"
 msgstr "自動改行"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Slash"
 msgstr "スラッシュ"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Type"
 msgstr "種類"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Divider"
 msgstr "区切り"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Position"
 msgstr "位置"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Top"
 msgstr "上"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Bottom"
 msgstr "下"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "The stack level"
 msgstr "重ね合わせレベル"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Select parent block"
 msgstr "親ブロックを選択"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Select child block"
 msgstr "子ブロックを選択"
 
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
 msgid "Show block outline"
 msgstr "ブロックのアウトラインを表示"
 
 #. translators: %s: template part title.
-#: dist/js/editor/editor.js:8
+#: dist/js/editor/editor.js:11
 msgid "Replace"
 msgstr "置換"
+
+#: dist/variations/variations.js:1
+msgid "Post to X"
+msgstr "X にポスト"
+
+#: dist/variations/variations.js:1
+msgid "Share to Facebook"
+msgstr "Facebook にシェア"
+
+#: dist/variations/variations.js:1
+msgid "Share to LINE"
+msgstr "LINE にシェア"
+
+#: dist/variations/variations.js:1
+msgid "Add to Hatena Bookmarks"
+msgstr "はてなブックマークに追加"
+
+#: dist/variations/variations.js:1
+msgid "B! Bookmark"
+msgstr "B! ブックマーク"
 
 #: dist/blocks/accordion/block.json
 msgctxt "block title"
@@ -3482,3 +3526,7 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgctxt "Pattern title"
+#~ msgid "Single Products: Left Header / Only Header and Footer"
+#~ msgstr "単一の商品：左ヘッダー / ヘッダー・フッター"

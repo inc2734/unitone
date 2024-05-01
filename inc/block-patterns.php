@@ -15,6 +15,7 @@ function unitone_register_block_pattern_categories() {
 		'unitone-query'     => array( 'label' => '[unitone] ' . __( 'Query', 'unitone' ) ),
 		'unitone-pages'     => array( 'label' => '[unitone] ' . __( 'Pages', 'unitone' ) ),
 		'unitone-templates' => array( 'label' => '[unitone] ' . __( 'Templates', 'unitone' ) ),
+		'unitone-others'    => array( 'label' => '[unitone] ' . __( 'Others', 'unitone' ) ),
 	);
 
 	/**

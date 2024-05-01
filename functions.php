@@ -108,6 +108,9 @@ require get_template_directory() . '/inc/block-styles.php';
 // Add formats.
 require get_template_directory() . '/inc/formats.php';
 
+// Add variations.
+require get_template_directory() . '/inc/variations.php';
+
 // Add template part areas.
 require get_template_directory() . '/inc/template-part-areas.php';
 

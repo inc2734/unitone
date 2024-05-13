@@ -98,7 +98,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							label={
 								<>
 									{ __( 'Each items width', 'unitone' ) } :
-									<code>width</code>
+									<code>flex-basis</code>
 								</>
 							}
 							value={ itemWidth }

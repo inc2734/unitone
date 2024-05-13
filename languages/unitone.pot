@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 11.1.0\n"
+"Project-Id-Version: unitone 11.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-01T05:29:23+00:00\n"
+"POT-Creation-Date: 2024-05-13T06:13:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -2438,11 +2438,15 @@ msgid "Text orientation"
 msgstr ""
 
 #: dist/blocks/vertical-writing/index.js:1
-msgid "When this block is smaller than this width, switch writing mode."
+msgid "When this block is smaller than this width, switch to writing horizontally."
 msgstr ""
 
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Switch writing mode when portrait"
+msgstr ""
+
+#: dist/blocks/vertical-writing/index.js:1
+msgid "Switch to writing horizontally when portrait"
 msgstr ""
 
 #: dist/blocks/with-sidebar-content/index.js:1

@@ -88,7 +88,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							metadata.attributes.textOrientation.default
 						}
 						isShownByDefault
-						label={ __( 'Text orientation', 'unitone' ) }
+						label={
+							<>
+								{ __( 'Text orientation', 'unitone' ) }
+								&nbsp;:&nbsp;
+								<code>text-orientation</code>
+							</>
+						}
 						onDeselect={ () =>
 							setAttributes( {
 								textOrientation:
@@ -129,7 +135,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						<TextControl
 							label={ __( 'Threshold', 'unitone' ) }
 							help={ __(
-								'When this block is smaller than this width, switch writing mode.',
+								'When this block is smaller than this width, switch to writing horizontally.',
 								'unitone'
 							) }
 							value={ threshold }
@@ -161,7 +167,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					>
 						<ToggleControl
 							label={ __(
-								'Switch writing mode when portrait',
+								'Switch to writing horizontally when portrait',
 								'unitone'
 							) }
 							checked={ switchWritingMode }

@@ -122,7 +122,7 @@
 		.block-editor-block-preview__live-content {
 			position: relative;
 
-			*:not(a) {
+			*:not(a):not(.block-list-appender) {
 				position: static;
 			}
 
@@ -197,7 +197,10 @@
  */
 .wp-block-query {
 	&.is-style-bordered,
-	&.is-style-block-link-bordered {
+	&.is-style-block-link,
+	&.is-style-block-link-underline,
+	&.is-style-block-link-bordered,
+	&.is-style-block-link-stripe {
 		.wp-block-post-template {
 			.wp-block-post {
 				border: var(--unitone--divider-width) var(--unitone--divider-style) var(--unitone--divider-color);

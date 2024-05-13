@@ -8,6 +8,10 @@
 
 [data-unitone-layout~="decorator__inner"] {
 	position: static !important;
+
+	a[aria-hidden="true"] {
+		pointer-events: none;
+	}
 }
 
 :where([data-unitone-layout~="decorator__inner"] > :not([data-unitone-layout~="decorator__link"]) a) {

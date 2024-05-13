@@ -11,7 +11,7 @@ $display_child_pages = function ( $parent_id, $current_id ) use ( &$display_chil
 		return;
 	}
 	?>
-	<ul data-unitone-layout="stack -gap:-2">
+	<ul data-unitone-layout="stack -gap:-1">
 		<?php while ( $child_query->have_posts() ) : ?>
 			<?php $child_query->the_post(); ?>
 			<li>

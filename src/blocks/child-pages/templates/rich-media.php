@@ -27,20 +27,23 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 			<div data-unitone-layout="decorator__inner">
 				<div>
 					<div data-unitone-layout="stack -gap:-1">
-						<div data-unitone-layout="decorator" class="has-background has-unitone-bright-gray-background-color">
-							<div data-unitone-layout="frame">
-								<?php if ( has_post_thumbnail() ) : ?>
-									<figure class="wp-block-post-featured-image">
-										<?php the_post_thumbnail(); ?>
-									</figure>
-								<?php endif; ?>
-							</div>
+						<div data-unitone-layout="frame">
+							<figure class="wp-block-post-featured-image">
+								<?php the_post_thumbnail(); ?>
+							</figure>
 						</div>
-						<p><strong><?php the_title(); ?></strong></p>
 
-						<?php if ( ! empty( get_post()->post_excerpt ) ) : ?>
-							<p class="has-unitone-xs-font-size"><?php echo wp_kses_post( get_post()->post_excerpt ); ?></p>
-						<?php endif; ?>
+						<div data-unitone-layout="stack -gap:-2">
+							<p><strong><?php the_title(); ?></strong></p>
+
+							<?php if ( ! empty( get_post()->post_excerpt ) ) : ?>
+								<p class="has-unitone-xs-font-size"><?php echo wp_kses_post( get_post()->post_excerpt ); ?></p>
+							<?php endif; ?>
+
+							<p class="has-unitone-xs-font-size has-text-align-right">
+								<a aria-hidden="true"><?php esc_html_e( 'Learn more', 'unitone' ); ?></a>
+							</p>
+						</div>
 					</div>
 				</div>
 				<a data-unitone-layout="decorator__link" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Learn more', 'unitone' ); ?></a>

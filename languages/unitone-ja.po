@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-05-14T02:51:49+00:00\n"
-"PO-Revision-Date: 2024-05-14 11:52+0900\n"
+"POT-Creation-Date: 2024-05-14T04:21:33+00:00\n"
+"PO-Revision-Date: 2024-05-14 13:21+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1848,8 +1848,9 @@ msgstr "パターンライブラリーからパターンを再取得する"
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
-#: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
-#: dist/blocks/vertical-writing/index.js:1 dist/blocks/with-sidebar/index.js:1
+#: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:1
+#: dist/blocks/text/index.js:1 dist/blocks/vertical-writing/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
 msgstr "設定"
 
@@ -1970,6 +1971,7 @@ msgstr "クラスター（区切り：ボーダー）"
 #: dist/blocks/flex/index.js:1 dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/section/index.js:13 dist/blocks/stack-divided/index.js:1
+#: dist/blocks/stack/index.js:1
 msgid "HTML element"
 msgstr "HTML 要素"
 
@@ -2381,6 +2383,10 @@ msgstr "スタック（区切り：アンダーライン）"
 #: dist/blocks/stack-divided/index.js:1
 msgid "Stack (Divider: bordered)"
 msgstr "スタック（区切り：ボーダー）"
+
+#: dist/blocks/stack/index.js:1
+msgid "hgroup"
+msgstr "hgroup"
 
 #: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
 msgid "Threshold"

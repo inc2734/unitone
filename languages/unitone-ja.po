@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-05-13T06:13:19+00:00\n"
-"PO-Revision-Date: 2024-05-13 15:14+0900\n"
+"POT-Creation-Date: 2024-05-14T02:51:49+00:00\n"
+"PO-Revision-Date: 2024-05-14 11:52+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -68,9 +68,12 @@ msgstr "unitone のセットアップ画面で初期設定をはじめましょ�
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
-#: dist/blocks/child-pages/templates/box.php:37
-#: dist/blocks/child-pages/templates/panel.php:37
-#: dist/blocks/child-pages/templates/rich-media.php:46
+#: dist/blocks/child-pages/templates/box.php:61
+#: dist/blocks/child-pages/templates/box.php:65
+#: dist/blocks/child-pages/templates/panel.php:66
+#: dist/blocks/child-pages/templates/panel.php:70
+#: dist/blocks/child-pages/templates/rich-media.php:78
+#: dist/blocks/child-pages/templates/rich-media.php:83
 #: dist/blocks/decorator/index.js:1
 msgid "Learn more"
 msgstr "さらに詳しく"
@@ -1836,12 +1839,13 @@ msgstr "ナビゲーション"
 msgid "Retrieve patterns from the pattern library"
 msgstr "パターンライブラリーからパターンを再取得する"
 
-#: dist/blocks/accordion/index.js:1 dist/blocks/center/index.js:1
-#: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
-#: dist/blocks/cover-content/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:37
-#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/accordion/index.js:1 dist/blocks/breadcrumbs/index.js:1
+#: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
+#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cover-content/index.js:1
+#: dist/blocks/decorator/index.js:1 dist/blocks/flex/index.js:1
+#: dist/blocks/frame/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/layers/index.js:37 dist/blocks/reel/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
@@ -1892,6 +1896,30 @@ msgstr "ここに概要を入力"
 #: dist/blocks/accordion/index.js:1
 msgid "A"
 msgstr "A"
+
+#: dist/blocks/breadcrumbs/index.js:1 dist/js/editor/editor.js:10
+msgid "Divider"
+msgstr "区切り"
+
+#: dist/blocks/breadcrumbs/index.js:1 dist/js/editor/editor.js:10
+msgid "Slash"
+msgstr "スラッシュ"
+
+#: dist/blocks/breadcrumbs/index.js:1
+msgid "Hyphen"
+msgstr "ハイフン"
+
+#: dist/blocks/breadcrumbs/index.js:1
+msgid "Underscore"
+msgstr "アンダースコア"
+
+#: dist/blocks/breadcrumbs/index.js:1
+msgid "Greater than"
+msgstr "大なり"
+
+#: dist/blocks/breadcrumbs/index.js:1
+msgid "Arrow"
+msgstr "矢印"
 
 #: dist/blocks/center/index.js:1
 msgid "Text is also centered"
@@ -2640,16 +2668,8 @@ msgid "Auto line breaks"
 msgstr "自動改行"
 
 #: dist/js/editor/editor.js:10
-msgid "Slash"
-msgstr "スラッシュ"
-
-#: dist/js/editor/editor.js:10
 msgid "Type"
 msgstr "種類"
-
-#: dist/js/editor/editor.js:10
-msgid "Divider"
-msgstr "区切り"
 
 #: dist/js/editor/editor.js:10
 msgid "Position"

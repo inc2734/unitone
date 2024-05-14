@@ -31,6 +31,9 @@ unset( $allowed_html['a'] );
 $classes = array(
 	'unitone-breadcrumbs',
 );
+if ( ! empty( $attributes['divider'] ) ) {
+	$classes[] = 'unitone-breadcrumbs--divider:' . $attributes['divider'];
+}
 if ( ! empty( $attributes['fontSize'] ) ) {
 	$classes[] = 'has-' . $attributes['fontSize'] . '-font-size';
 }

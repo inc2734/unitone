@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-13T06:13:19+00:00\n"
+"POT-Creation-Date: 2024-05-14T02:51:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -84,9 +84,12 @@ msgstr ""
 msgid "Go to the setup screen"
 msgstr ""
 
-#: dist/blocks/child-pages/templates/box.php:37
-#: dist/blocks/child-pages/templates/panel.php:37
-#: dist/blocks/child-pages/templates/rich-media.php:46
+#: dist/blocks/child-pages/templates/box.php:61
+#: dist/blocks/child-pages/templates/box.php:65
+#: dist/blocks/child-pages/templates/panel.php:66
+#: dist/blocks/child-pages/templates/panel.php:70
+#: dist/blocks/child-pages/templates/rich-media.php:78
+#: dist/blocks/child-pages/templates/rich-media.php:83
 #: dist/blocks/decorator/index.js:1
 msgid "Learn more"
 msgstr ""
@@ -1869,6 +1872,7 @@ msgid "Retrieve patterns from the pattern library"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:1
+#: dist/blocks/breadcrumbs/index.js:1
 #: dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/cluster-divided/index.js:1
@@ -1934,6 +1938,32 @@ msgstr ""
 
 #: dist/blocks/accordion/index.js:1
 msgid "A"
+msgstr ""
+
+#: dist/blocks/breadcrumbs/index.js:1
+#: dist/js/editor/editor.js:10
+msgid "Divider"
+msgstr ""
+
+#: dist/blocks/breadcrumbs/index.js:1
+#: dist/js/editor/editor.js:10
+msgid "Slash"
+msgstr ""
+
+#: dist/blocks/breadcrumbs/index.js:1
+msgid "Hyphen"
+msgstr ""
+
+#: dist/blocks/breadcrumbs/index.js:1
+msgid "Underscore"
+msgstr ""
+
+#: dist/blocks/breadcrumbs/index.js:1
+msgid "Greater than"
+msgstr ""
+
+#: dist/blocks/breadcrumbs/index.js:1
+msgid "Arrow"
 msgstr ""
 
 #: dist/blocks/center/index.js:1
@@ -2683,15 +2713,7 @@ msgid "Auto line breaks"
 msgstr ""
 
 #: dist/js/editor/editor.js:10
-msgid "Slash"
-msgstr ""
-
-#: dist/js/editor/editor.js:10
 msgid "Type"
-msgstr ""
-
-#: dist/js/editor/editor.js:10
-msgid "Divider"
 msgstr ""
 
 #: dist/js/editor/editor.js:10

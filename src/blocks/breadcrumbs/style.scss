@@ -13,6 +13,7 @@
 		&:not(:first-child) {
 			&::before {
 				display: inline-block;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 				content: '/';
 			}
 		}
@@ -20,6 +21,26 @@
 
 	a {
 		color: inherit;
+	}
+
+	&--divider\:slash .unitone-breadcrumbs__item:not(:first-child)::before {
+		content: '/';
+	}
+
+	&--divider\:hyphen .unitone-breadcrumbs__item:not(:first-child)::before {
+		content: '-';
+	}
+
+	&--divider\:underscore .unitone-breadcrumbs__item:not(:first-child)::before {
+		content: '_';
+	}
+
+	&--divider\:greater-than .unitone-breadcrumbs__item:not(:first-child)::before {
+		content: '>';
+	}
+
+	&--divider\:arrow .unitone-breadcrumbs__item:not(:first-child)::before {
+		content: '→';
 	}
 }
 

@@ -5,6 +5,12 @@
 	"name": "unitone/breadcrumbs",
 	"title": "Breadcrumbs",
 	"description": "This block indicates the current page location.",
+	"attributes": {
+		"divider": {
+			"type": "string",
+			"default": "slash"
+		}
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,
@@ -35,5 +41,6 @@
 	"category": "unitone/component",
 	"editorScript": "file:./index.js",
 	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css",
 	"render": "file:./render.php"
 }

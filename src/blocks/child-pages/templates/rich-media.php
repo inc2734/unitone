@@ -22,24 +22,58 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 	style="<?php echo esc_attr( implode( ' ', $style ) ); ?>"
 >
 	<?php while ( $the_query->have_posts() ) : ?>
-		<?php $the_query->the_post(); ?>
-		<div data-unitone-layout="decorator">
-			<div data-unitone-layout="decorator__inner">
-				<div>
-					<div data-unitone-layout="stack -gap:-1">
-						<div data-unitone-layout="frame">
-							<figure class="wp-block-post-featured-image">
-								<?php the_post_thumbnail(); ?>
-							</figure>
+		<?php
+		$the_query->the_post();
+
+		$item_class = array();
+		$item_style = array();
+
+		if ( $background_color || $style_background_color ) {
+			$item_class[] = 'has-background';
+		}
+
+		if ( $background_color ) {
+			$item_class[] = 'has-' . $background_color . '-background-color';
+		}
+
+		if ( $style_background_color ) {
+			$item_style[] = 'background-color: ' . $style_background_color;
+		}
+
+		$item_inner_class   = array( 'stack' );
+		$item_inner_class[] = $background_color || $style_background_color ? '-gap:0' : '-gap:-1';
+
+		$item_content_class   = array( 'decorator' );
+		$item_content_class[] = $background_color || $style_background_color ? '-padding:1' : '-padding:0';
+		?>
+		<div
+			data-unitone-layout="decorator"
+			class="<?php echo esc_attr( implode( ' ', $item_class ) ); ?>"
+			style="<?php echo esc_attr( implode( ';', $item_style ) ); ?>"
+		>
+			<div data-unitone-layout="decorator__inner" style="height: 100%">
+				<div data-unitone-layout="cover -gap:-2 -padding:0" style="--unitone--min-height: 100%">
+					<div data-unitone-layout="cover__content -valign:top">
+						<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $item_inner_class ) ); ?>">
+							<div data-unitone-layout="frame">
+								<figure class="wp-block-post-featured-image">
+									<?php the_post_thumbnail(); ?>
+								</figure>
+							</div>
+
+							<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $item_content_class ) ); ?>">
+								<div data-unitone-layout="stack -gap:-2">
+									<p><strong><?php the_title(); ?></strong></p>
+
+									<?php if ( ! empty( get_post()->post_excerpt ) ) : ?>
+										<p class="has-unitone-xs-font-size"><?php echo wp_kses_post( get_post()->post_excerpt ); ?></p>
+									<?php endif; ?>
+								</div>
+							</div>
 						</div>
-
-						<div data-unitone-layout="stack -gap:-2">
-							<p><strong><?php the_title(); ?></strong></p>
-
-							<?php if ( ! empty( get_post()->post_excerpt ) ) : ?>
-								<p class="has-unitone-xs-font-size"><?php echo wp_kses_post( get_post()->post_excerpt ); ?></p>
-							<?php endif; ?>
-
+					</div>
+					<div data-unitone-layout="cover__content -valign:bottom">
+						<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $item_content_class ) ); ?>">
 							<p class="has-unitone-xs-font-size has-text-align-right">
 								<a aria-hidden="true"><?php esc_html_e( 'Learn more', 'unitone' ); ?></a>
 							</p>

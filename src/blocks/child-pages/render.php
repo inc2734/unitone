@@ -39,6 +39,11 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 		'class' => 'unitone-child-pages',
 	)
 );
+
+$background_color       = $attributes['backgroundColor'] ?? null;
+$style_background_color = $attributes['style']['color']['background'] ?? null;
+$text_color             = $attributes['textColor'] ?? null;
+$style_text_color       = $attributes['style']['color']['text'] ?? null;
 ?>
 <div <?php echo wp_kses_data( $block_wrapper_attributes ); ?>>
 	<?php

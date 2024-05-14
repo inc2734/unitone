@@ -22,17 +22,46 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 	style="<?php echo esc_attr( implode( ' ', $style ) ); ?>"
 >
 	<?php while ( $the_query->have_posts() ) : ?>
-		<?php $the_query->the_post(); ?>
-		<div data-unitone-layout="decorator -shadow -padding:1" class="has-background has-white-background-color has-text-color has-unitone-text-black-color">
-			<div data-unitone-layout="decorator__inner">
-				<div>
-					<div data-unitone-layout="stack -gap:-2">
-						<p><strong><?php the_title(); ?></strong></p>
+		<?php
+		$the_query->the_post();
 
-						<?php if ( ! empty( get_post()->post_excerpt ) ) : ?>
-							<p class="has-unitone-xs-font-size"><?php echo wp_kses_post( get_post()->post_excerpt ); ?></p>
-						<?php endif; ?>
+		$item_class = array( 'has-background' );
+		$item_style = array();
 
+		if ( ! $background_color && ! $style_background_color ) {
+			$item_class[] = 'has-white-background-color';
+		}
+
+		if ( $background_color ) {
+			$item_class[] = 'has-' . $background_color . '-background-color';
+		}
+
+		if ( $style_background_color ) {
+			$item_style[] = 'background-color: ' . $style_background_color;
+		}
+
+		if ( ! $text_color && ! $style_text_color ) {
+			$item_class[] = 'has-text-color';
+			$item_class[] = 'has-unitone-text-black-color';
+		}
+		?>
+		<div
+			data-unitone-layout="decorator -shadow -padding:1"
+			class="<?php echo esc_attr( implode( ' ', $item_class ) ); ?>"
+			style="<?php echo esc_attr( implode( ';', $item_style ) ); ?>"
+		>
+			<div data-unitone-layout="decorator__inner" style="height: 100%">
+				<div data-unitone-layout="cover -gap:-2 -padding:0" style="--unitone--min-height: 100%">
+					<div data-unitone-layout="cover__content -valign:top">
+						<div data-unitone-layout="stack -gap:-2">
+							<p><strong><?php the_title(); ?></strong></p>
+
+							<?php if ( ! empty( get_post()->post_excerpt ) ) : ?>
+								<p class="has-unitone-xs-font-size"><?php echo wp_kses_post( get_post()->post_excerpt ); ?></p>
+							<?php endif; ?>
+						</div>
+					</div>
+					<div data-unitone-layout="cover__content -valign:bottom">
 						<p class="has-unitone-xs-font-size has-text-align-right">
 							<a aria-hidden="true"><?php esc_html_e( 'Learn more', 'unitone' ); ?></a>
 						</p>

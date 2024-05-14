@@ -1,5 +1,6 @@
 {
 	"name": "inc2734/unitone",
+	"version": "1.0.0",
 	"require": {
 		"php": ">=7.4",
 		"inc2734/wp-breadcrumbs": "^3.1",
@@ -20,9 +21,9 @@
 			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
-  "autoload": {
-    "psr-4": {
-      "Unitone\\": ""
-    }
-  }
+	"autoload": {
+		"psr-4": {
+			"Unitone\\": ""
+		}
+	}
 }

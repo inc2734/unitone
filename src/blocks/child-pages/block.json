@@ -27,7 +27,7 @@
 		"className": false,
 		"anchor": true,
 		"color": {
-			"background": false,
+			"background": true,
 			"link": true,
 			"text": true
 		},

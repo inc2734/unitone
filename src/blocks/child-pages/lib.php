@@ -9,22 +9,9 @@
  * Return WP_Query for child pages.
  *
  * @param int $parent_id Parent post ID.
- * @param int $current_id Post ID.
  * @return WP_Query|false
  */
-function unitone_get_child_pages_query( $parent_id, $current_id ) {
-	if ( wp_get_post_parent_id( get_the_ID() ) === $current_id ) {
-		return;
-	}
-
-	if (
-		get_the_ID() !== $current_id
-		&& ! in_array( (int) $current_id, get_post_ancestors( get_the_id() ), true )
-		&& ! in_array( (int) get_the_ID(), get_post_ancestors( $current_id ), true )
-	) {
-		return;
-	}
-
+function unitone_get_child_pages_query( $parent_id ) {
 	$post_type = get_post_type( $parent_id );
 	if ( ! $post_type ) {
 		return false;

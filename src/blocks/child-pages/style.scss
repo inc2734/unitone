@@ -13,5 +13,11 @@
 		[data-unitone-layout~="stack"] {
 			--unitone--gap: var(--unitone--s-1);
 		}
+
+		li li a { margin-left: 1em; }
+		li li li a { margin-left: 2em; }
+		li li li li a { margin-left: 3em; }
+		li li li li li a { margin-left: 4em; }
+		li li li li li li a { margin-left: 5em; }
 	}
 }

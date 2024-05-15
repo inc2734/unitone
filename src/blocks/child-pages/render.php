@@ -21,7 +21,7 @@ if ( ! $parent_id ) {
 	return;
 }
 
-$the_query = unitone_get_child_pages_query( $parent_id, $current_id );
+$the_query = unitone_get_child_pages_query( $parent_id );
 if ( empty( $the_query ) || ! $the_query->have_posts() ) {
 	return;
 }

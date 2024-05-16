@@ -114,9 +114,11 @@ export default function ( {
 		templateLock,
 	} = attributes;
 
-	const isDisplayArrows = arrows && ! ( autoplay && 0 === autoplayDelay );
-	const isDisplayPagination =
-		pagination && ! ( autoplay && 0 === autoplayDelay );
+	const isDisplayArrowsSettings = ! autoplay || 0 < autoplayDelay;
+	const isDisplayPaginationSettings = ! autoplay || 0 < autoplayDelay;
+
+	const isDisplayArrows = arrows && isDisplayArrowsSettings;
+	const isDisplayPagination = pagination && isDisplayPaginationSettings;
 	const canMultiSlides = 'slide' === effect;
 	const canCenterdSlides = canMultiSlides && centeredSlides;
 
@@ -378,277 +380,6 @@ export default function ( {
 					</ToolsPanelItem>
 				</ToolsPanel>
 
-				<ToolsPanel label={ __( 'The prev/next buttons', 'unitone' ) }>
-					<ToolsPanelItem
-						hasValue={ () =>
-							arrows !== metadata.attributes.arrows.default
-						}
-						isShownByDefault
-						label={ __( 'Using the prev/next buttons', 'unitone' ) }
-						onDeselect={ () =>
-							setAttributes( {
-								arrows: metadata.attributes.arrows.default,
-							} )
-						}
-					>
-						<ToggleControl
-							label={ __(
-								'Using the prev/next buttons',
-								'unitone'
-							) }
-							checked={ arrows }
-							onChange={ ( newAttribute ) => {
-								setAttributes( { arrows: newAttribute } );
-							} }
-						/>
-					</ToolsPanelItem>
-
-					{ arrows && (
-						<>
-							<ToolsPanelItem
-								hasValue={ () =>
-									arrowsAlignment !==
-									metadata.attributes.arrowsAlignment.default
-								}
-								isShownByDefault
-								label={ __( 'Arrows alignment', 'unitone' ) }
-								onDeselect={ () =>
-									setAttributes( {
-										arrowsAlignment:
-											metadata.attributes.arrowsAlignment
-												.default,
-									} )
-								}
-							>
-								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-									<legend>
-										{ __( 'Arrows alignment', 'unitone' ) }
-									</legend>
-									<div>
-										{ alignmentOptions.map(
-											( { value, icon, label } ) => {
-												return (
-													<Button
-														key={ value }
-														label={ label }
-														icon={ icon }
-														isPressed={
-															arrowsAlignment ===
-															value
-														}
-														onClick={ () => {
-															setAttributes( {
-																arrowsAlignment:
-																	value,
-															} );
-														} }
-													/>
-												);
-											}
-										) }
-									</div>
-								</fieldset>
-							</ToolsPanelItem>
-
-							<ToolsPanelItem
-								hasValue={ () =>
-									arrowsJustification !==
-									metadata.attributes.arrowsJustification
-										.default
-								}
-								isShownByDefault
-								label={ __(
-									'Arrows justification',
-									'unitone'
-								) }
-								onDeselect={ () =>
-									setAttributes( {
-										arrowsJustification:
-											metadata.attributes
-												.arrowsJustification.default,
-									} )
-								}
-							>
-								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-									<legend>
-										{ __(
-											'Arrows justification',
-											'unitone'
-										) }
-									</legend>
-									<div>
-										{ justificationOptions.map(
-											( { value, icon, label } ) => {
-												return (
-													<Button
-														key={ value }
-														label={ label }
-														icon={ icon }
-														isPressed={
-															arrowsJustification ===
-															value
-														}
-														onClick={ () => {
-															setAttributes( {
-																arrowsJustification:
-																	value,
-															} );
-														} }
-													/>
-												);
-											}
-										) }
-									</div>
-								</fieldset>
-							</ToolsPanelItem>
-						</>
-					) }
-				</ToolsPanel>
-
-				<ToolsPanel label={ __( 'The pagination', 'unitone' ) }>
-					<ToolsPanelItem
-						hasValue={ () =>
-							pagination !==
-							metadata.attributes.pagination.default
-						}
-						isShownByDefault
-						label={ __( 'Using the pagination', 'unitone' ) }
-						onDeselect={ () =>
-							setAttributes( {
-								pagination:
-									metadata.attributes.pagination.default,
-							} )
-						}
-					>
-						<ToggleControl
-							label={ __( 'Using the pagination', 'unitone' ) }
-							checked={ pagination }
-							onChange={ ( newAttribute ) => {
-								setAttributes( { pagination: newAttribute } );
-							} }
-						/>
-					</ToolsPanelItem>
-
-					{ pagination && (
-						<>
-							<ToolsPanelItem
-								hasValue={ () =>
-									paginationAlignment !==
-									metadata.attributes.paginationAlignment
-										.default
-								}
-								isShownByDefault
-								label={ __(
-									'Pagination alignment',
-									'unitone'
-								) }
-								onDeselect={ () =>
-									setAttributes( {
-										paginationAlignment:
-											metadata.attributes
-												.paginationAlignment.default,
-									} )
-								}
-							>
-								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-									<legend>
-										{ __(
-											'Pagination alignment',
-											'unitone'
-										) }
-									</legend>
-									<div>
-										{ alignmentOptions
-											.filter(
-												( { value } ) =>
-													'center' !== value
-											)
-											.map(
-												( { value, icon, label } ) => {
-													return (
-														<Button
-															key={ value }
-															label={ label }
-															icon={ icon }
-															isPressed={
-																paginationAlignment ===
-																value
-															}
-															onClick={ () => {
-																setAttributes( {
-																	paginationAlignment:
-																		value,
-																} );
-															} }
-														/>
-													);
-												}
-											) }
-									</div>
-								</fieldset>
-							</ToolsPanelItem>
-
-							<ToolsPanelItem
-								hasValue={ () =>
-									paginationJustification !==
-									metadata.attributes.paginationJustification
-										.default
-								}
-								isShownByDefault
-								label={ __(
-									'Pagination justification',
-									'unitone'
-								) }
-								onDeselect={ () =>
-									setAttributes( {
-										paginationJustification:
-											metadata.attributes
-												.paginationJustification
-												.default,
-									} )
-								}
-							>
-								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-									<legend>
-										{ __(
-											'Pagination justification',
-											'unitone'
-										) }
-									</legend>
-									<div>
-										{ justificationOptions
-											.filter(
-												( { value } ) =>
-													'space-between' !== value
-											)
-											.map(
-												( { value, icon, label } ) => {
-													return (
-														<Button
-															key={ value }
-															label={ label }
-															icon={ icon }
-															isPressed={
-																paginationJustification ===
-																value
-															}
-															onClick={ () => {
-																setAttributes( {
-																	paginationJustification:
-																		value,
-																} );
-															} }
-														/>
-													);
-												}
-											) }
-									</div>
-								</fieldset>
-							</ToolsPanelItem>
-						</>
-					) }
-				</ToolsPanel>
-
 				<ToolsPanel label={ __( 'Autoplay', 'unitone' ) }>
 					<ToolsPanelItem
 						hasValue={ () =>
@@ -707,6 +438,313 @@ export default function ( {
 						</ToolsPanelItem>
 					) }
 				</ToolsPanel>
+
+				{ isDisplayArrowsSettings && (
+					<ToolsPanel
+						label={ __( 'The prev/next buttons', 'unitone' ) }
+					>
+						<ToolsPanelItem
+							hasValue={ () =>
+								arrows !== metadata.attributes.arrows.default
+							}
+							isShownByDefault
+							label={ __(
+								'Using the prev/next buttons',
+								'unitone'
+							) }
+							onDeselect={ () =>
+								setAttributes( {
+									arrows: metadata.attributes.arrows.default,
+								} )
+							}
+						>
+							<ToggleControl
+								label={ __(
+									'Using the prev/next buttons',
+									'unitone'
+								) }
+								checked={ arrows }
+								onChange={ ( newAttribute ) => {
+									setAttributes( { arrows: newAttribute } );
+								} }
+							/>
+						</ToolsPanelItem>
+
+						{ arrows && (
+							<>
+								<ToolsPanelItem
+									hasValue={ () =>
+										arrowsAlignment !==
+										metadata.attributes.arrowsAlignment
+											.default
+									}
+									isShownByDefault
+									label={ __(
+										'Arrows alignment',
+										'unitone'
+									) }
+									onDeselect={ () =>
+										setAttributes( {
+											arrowsAlignment:
+												metadata.attributes
+													.arrowsAlignment.default,
+										} )
+									}
+								>
+									<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+										<legend>
+											{ __(
+												'Arrows alignment',
+												'unitone'
+											) }
+										</legend>
+										<div>
+											{ alignmentOptions.map(
+												( { value, icon, label } ) => {
+													return (
+														<Button
+															key={ value }
+															label={ label }
+															icon={ icon }
+															isPressed={
+																arrowsAlignment ===
+																value
+															}
+															onClick={ () => {
+																setAttributes( {
+																	arrowsAlignment:
+																		value,
+																} );
+															} }
+														/>
+													);
+												}
+											) }
+										</div>
+									</fieldset>
+								</ToolsPanelItem>
+
+								<ToolsPanelItem
+									hasValue={ () =>
+										arrowsJustification !==
+										metadata.attributes.arrowsJustification
+											.default
+									}
+									isShownByDefault
+									label={ __(
+										'Arrows justification',
+										'unitone'
+									) }
+									onDeselect={ () =>
+										setAttributes( {
+											arrowsJustification:
+												metadata.attributes
+													.arrowsJustification
+													.default,
+										} )
+									}
+								>
+									<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+										<legend>
+											{ __(
+												'Arrows justification',
+												'unitone'
+											) }
+										</legend>
+										<div>
+											{ justificationOptions.map(
+												( { value, icon, label } ) => {
+													return (
+														<Button
+															key={ value }
+															label={ label }
+															icon={ icon }
+															isPressed={
+																arrowsJustification ===
+																value
+															}
+															onClick={ () => {
+																setAttributes( {
+																	arrowsJustification:
+																		value,
+																} );
+															} }
+														/>
+													);
+												}
+											) }
+										</div>
+									</fieldset>
+								</ToolsPanelItem>
+							</>
+						) }
+					</ToolsPanel>
+				) }
+
+				{ isDisplayPaginationSettings && (
+					<ToolsPanel label={ __( 'The pagination', 'unitone' ) }>
+						<ToolsPanelItem
+							hasValue={ () =>
+								pagination !==
+								metadata.attributes.pagination.default
+							}
+							isShownByDefault
+							label={ __( 'Using the pagination', 'unitone' ) }
+							onDeselect={ () =>
+								setAttributes( {
+									pagination:
+										metadata.attributes.pagination.default,
+								} )
+							}
+						>
+							<ToggleControl
+								label={ __(
+									'Using the pagination',
+									'unitone'
+								) }
+								checked={ pagination }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										pagination: newAttribute,
+									} );
+								} }
+							/>
+						</ToolsPanelItem>
+
+						{ pagination && (
+							<>
+								<ToolsPanelItem
+									hasValue={ () =>
+										paginationAlignment !==
+										metadata.attributes.paginationAlignment
+											.default
+									}
+									isShownByDefault
+									label={ __(
+										'Pagination alignment',
+										'unitone'
+									) }
+									onDeselect={ () =>
+										setAttributes( {
+											paginationAlignment:
+												metadata.attributes
+													.paginationAlignment
+													.default,
+										} )
+									}
+								>
+									<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+										<legend>
+											{ __(
+												'Pagination alignment',
+												'unitone'
+											) }
+										</legend>
+										<div>
+											{ alignmentOptions
+												.filter(
+													( { value } ) =>
+														'center' !== value
+												)
+												.map(
+													( {
+														value,
+														icon,
+														label,
+													} ) => {
+														return (
+															<Button
+																key={ value }
+																label={ label }
+																icon={ icon }
+																isPressed={
+																	paginationAlignment ===
+																	value
+																}
+																onClick={ () => {
+																	setAttributes(
+																		{
+																			paginationAlignment:
+																				value,
+																		}
+																	);
+																} }
+															/>
+														);
+													}
+												) }
+										</div>
+									</fieldset>
+								</ToolsPanelItem>
+
+								<ToolsPanelItem
+									hasValue={ () =>
+										paginationJustification !==
+										metadata.attributes
+											.paginationJustification.default
+									}
+									isShownByDefault
+									label={ __(
+										'Pagination justification',
+										'unitone'
+									) }
+									onDeselect={ () =>
+										setAttributes( {
+											paginationJustification:
+												metadata.attributes
+													.paginationJustification
+													.default,
+										} )
+									}
+								>
+									<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+										<legend>
+											{ __(
+												'Pagination justification',
+												'unitone'
+											) }
+										</legend>
+										<div>
+											{ justificationOptions
+												.filter(
+													( { value } ) =>
+														'space-between' !==
+														value
+												)
+												.map(
+													( {
+														value,
+														icon,
+														label,
+													} ) => {
+														return (
+															<Button
+																key={ value }
+																label={ label }
+																icon={ icon }
+																isPressed={
+																	paginationJustification ===
+																	value
+																}
+																onClick={ () => {
+																	setAttributes(
+																		{
+																			paginationJustification:
+																				value,
+																		}
+																	);
+																} }
+															/>
+														);
+													}
+												) }
+										</div>
+									</fieldset>
+								</ToolsPanelItem>
+							</>
+						) }
+					</ToolsPanel>
+				) }
 			</InspectorControls>
 
 			<div { ...blockProps }>

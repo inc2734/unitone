@@ -148,8 +148,10 @@ function Edit( {
 			listItemRef.current.closest( '.site-header' ) ??
 			listItemRef.current.closest( '.wp-block-navigation' );
 
+		const ownerDocument = listItemRef.current?.ownerDocument;
+
 		let resizeObserver;
-		const defaultView = listItemRef.current?.ownerDocument?.defaultView;
+		const defaultView = ownerDocument?.defaultView;
 		if ( defaultView.ResizeObserver ) {
 			resizeObserver = new defaultView.ResizeObserver( ( entries ) =>
 				setParentWidth( entries[ 0 ].contentBoxSize )
@@ -157,20 +159,22 @@ function Edit( {
 			resizeObserver.observe( parent );
 		}
 
-		listItemRef.current?.ownerDocument.addEventListener(
-			'scroll',
-			setPositionMegaMenu
-		);
+		const target = ownerDocument?.documentElement?.classList?.contains(
+			'interface-interface-skeleton__html-container'
+		)
+			? ownerDocument.querySelector(
+					'.interface-interface-skeleton__content'
+			  )
+			: ownerDocument;
+
+		target.addEventListener( 'scroll', setPositionMegaMenu );
 
 		return () => {
 			if ( resizeObserver ) {
 				resizeObserver.disconnect();
 			}
 
-			listItemRef.current?.ownerDocument.removeEventListener(
-				'scroll',
-				setPositionMegaMenu
-			);
+			target.removeEventListener( 'scroll', setPositionMegaMenu );
 		};
 	}, [] );
 

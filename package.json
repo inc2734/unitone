@@ -51,6 +51,7 @@
 		"format:js": "wp-scripts format src/js",
 		"format:settings": "wp-scripts format App/Controller/Manager/src/js",
 		"css:wp-blocks": "rimraf dist/css/wp-blocks && sass --no-source-map src/css/wp-blocks:dist/css/wp-blocks && postcss dist/css/wp-blocks -r",
+		"css:wp-oembed-blog-card": "rimraf dist/css/wp-oembed-blog-card && sass --no-source-map src/css/wp-oembed-blog-card:dist/css/wp-oembed-blog-card && postcss dist/css/wp-oembed-blog-card -r",
 		"css:app": "sass --no-source-map src/css/app/app.scss:dist/css/app/app.css && postcss dist/css/app/app.css -r",
 		"css:editor-styles": "sass --no-source-map src/css/app/editor-style.scss:dist/css/app/editor-style.css && postcss dist/css/app/editor-style.css -r",
 		"css:editor": "sass --no-source-map src/css/editor/editor.scss:dist/css/editor/editor.css && postcss dist/css/editor/editor.css -r",

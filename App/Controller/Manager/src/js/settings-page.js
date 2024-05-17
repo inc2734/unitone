@@ -22,6 +22,7 @@ import Typography from './panels/typography';
 import Layout from './panels/layout';
 import Homepage from './panels/homepage';
 import CustomTemplates from './panels/custom-templates';
+import BlogCard from './panels/blog-card';
 
 export default function () {
 	const [ defaultSettings, setDefaultSettings ] = useState( [] );
@@ -195,6 +196,12 @@ export default function () {
 										/>
 
 										<CustomTemplates
+											settings={ settings }
+											defaultSettings={ defaultSettings }
+											setSettings={ setSettings }
+										/>
+
+										<BlogCard
 											settings={ settings }
 											defaultSettings={ defaultSettings }
 											setSettings={ setSettings }

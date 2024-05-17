@@ -4,7 +4,6 @@
 @include meta.load-css("foundation");
 @include meta.load-css("wp-blocks/wp-blocks");
 @include meta.load-css("site");
-@include meta.load-css("wp-oembed-blog-card");
 
 // Deprecated
 body {

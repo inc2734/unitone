@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 11.2.1\n"
+"Project-Id-Version: unitone 11.3.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-14T04:21:33+00:00\n"
+"POT-Creation-Date: 2024-05-17T04:54:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -36,13 +36,13 @@ msgstr ""
 msgid "https://2inc.org"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:70
 #: App/Controller/Manager/Manager.php:71
+#: App/Controller/Manager/Manager.php:72
 #: App/Controller/Manager/dist/js/app.js:6
 msgid "unitone Setup"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:382
+#: App/Controller/Manager/Manager.php:385
 #: patterns/footer-2.php:22
 #: patterns/footer-3.php:51
 #: patterns/footer-3.php:59
@@ -56,7 +56,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:425
+#: App/Controller/Manager/Manager.php:428
 #: patterns/footer-2.php:25
 #: patterns/footer-3.php:54
 #: patterns/footer-3.php:62
@@ -72,15 +72,15 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:500
+#: App/Controller/Manager/Manager.php:503
 msgid "unitone theme has been activated"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:503
+#: App/Controller/Manager/Manager.php:506
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:507
+#: App/Controller/Manager/Manager.php:510
 msgid "Go to the setup screen"
 msgstr ""
 
@@ -1856,6 +1856,40 @@ msgid "Activate the custom template you wish to use. You cannot deactivate a cus
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:6
+msgid "Blog Card"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Style"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:6
+#: dist/blocks/layers/index.js:1
+#: dist/blocks/section/index.js:1
+msgid "Default"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Background color (Accent color)"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Border (Accent color)"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Dark"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Media"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Simple"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "Go to the Dashboard"
 msgstr ""
 
@@ -2135,11 +2169,6 @@ msgstr ""
 msgid "Background framed image"
 msgstr ""
 
-#: dist/blocks/layers/index.js:1
-#: dist/blocks/section/index.js:1
-msgid "Default"
-msgstr ""
-
 #. translators: %1$s: position
 #: dist/blocks/layers/index.js:4
 #: dist/blocks/layers/index.js:7
@@ -2380,6 +2409,22 @@ msgid "Speed (s)"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+msgid "Autoplay"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Using the autoplay"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Delay (s)"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "When 0, the prev/next buttons and the pagination will not be displayed."
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
 msgid "The prev/next buttons"
 msgstr ""
 
@@ -2409,22 +2454,6 @@ msgstr ""
 
 #: dist/blocks/slider/index.js:1
 msgid "Pagination justification"
-msgstr ""
-
-#: dist/blocks/slider/index.js:1
-msgid "Autoplay"
-msgstr ""
-
-#: dist/blocks/slider/index.js:1
-msgid "Using the autoplay"
-msgstr ""
-
-#: dist/blocks/slider/index.js:1
-msgid "Delay (s)"
-msgstr ""
-
-#: dist/blocks/slider/index.js:1
-msgid "When 0, the prev/next buttons and the pagination will not be displayed."
 msgstr ""
 
 #: dist/blocks/stack-divided/index.js:1

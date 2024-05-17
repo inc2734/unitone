@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-05-14T04:21:33+00:00\n"
-"PO-Revision-Date: 2024-05-14 13:21+0900\n"
+"POT-Creation-Date: 2024-05-17T04:54:49+00:00\n"
+"PO-Revision-Date: 2024-05-17 14:08+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -35,19 +35,19 @@ msgstr "Takashi Kitajima"
 msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
-#: App/Controller/Manager/Manager.php:70 App/Controller/Manager/Manager.php:71
+#: App/Controller/Manager/Manager.php:71 App/Controller/Manager/Manager.php:72
 #: App/Controller/Manager/dist/js/app.js:6
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:382 patterns/footer-2.php:22
+#: App/Controller/Manager/Manager.php:385 patterns/footer-2.php:22
 #: patterns/footer-3.php:51 patterns/footer-3.php:59 patterns/footer-3.php:67
 #: patterns/footer-4.php:31 patterns/footer-4.php:39 patterns/footer-4.php:47
 #: patterns/footer-5.php:29 patterns/footer-5.php:37 patterns/footer-5.php:45
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:425 patterns/footer-2.php:25
+#: App/Controller/Manager/Manager.php:428 patterns/footer-2.php:25
 #: patterns/footer-3.php:54 patterns/footer-3.php:62 patterns/footer-3.php:70
 #: patterns/footer-4.php:34 patterns/footer-4.php:42 patterns/footer-4.php:50
 #: patterns/footer-5.php:32 patterns/footer-5.php:40 patterns/footer-5.php:48
@@ -56,15 +56,15 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:500
+#: App/Controller/Manager/Manager.php:503
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:503
+#: App/Controller/Manager/Manager.php:506
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:507
+#: App/Controller/Manager/Manager.php:510
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
@@ -1824,6 +1824,39 @@ msgstr ""
 "ムテンプレートは無効化できません。"
 
 #: App/Controller/Manager/dist/js/app.js:6
+msgid "Blog Card"
+msgstr "ブログカード"
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Style"
+msgstr "スタイル"
+
+#: App/Controller/Manager/dist/js/app.js:6 dist/blocks/layers/index.js:1
+#: dist/blocks/section/index.js:1
+msgid "Default"
+msgstr "デフォルト"
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Background color (Accent color)"
+msgstr "背景色（アクセントカラー）"
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Border (Accent color)"
+msgstr "ボーダー（アクセントカラー）"
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Dark"
+msgstr "ダーク"
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Media"
+msgstr "メディア"
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Simple"
+msgstr "シンプル"
+
+#: App/Controller/Manager/dist/js/app.js:6
 msgid "Go to the Dashboard"
 msgstr "ダッシュボードに戻る"
 
@@ -2083,10 +2116,6 @@ msgstr "背景画像"
 msgid "Background framed image"
 msgstr "背景フレーム画像"
 
-#: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
-msgid "Default"
-msgstr "デフォルト"
-
 #. translators: %1$s: position
 #: dist/blocks/layers/index.js:4 dist/blocks/layers/index.js:7
 #: dist/blocks/layers/index.js:10 dist/blocks/layers/index.js:13
@@ -2325,6 +2354,22 @@ msgid "Speed (s)"
 msgstr "スピード（秒）"
 
 #: dist/blocks/slider/index.js:1
+msgid "Autoplay"
+msgstr "自動再生"
+
+#: dist/blocks/slider/index.js:1
+msgid "Using the autoplay"
+msgstr "自動再生を使用する"
+
+#: dist/blocks/slider/index.js:1
+msgid "Delay (s)"
+msgstr "遅延（秒）"
+
+#: dist/blocks/slider/index.js:1
+msgid "When 0, the prev/next buttons and the pagination will not be displayed."
+msgstr "0の場合、前へ/次へボタンおよびページネーションは表示されません。"
+
+#: dist/blocks/slider/index.js:1
 msgid "The prev/next buttons"
 msgstr "前へ/次へボタン"
 
@@ -2355,22 +2400,6 @@ msgstr "ページネーションの垂直位置"
 #: dist/blocks/slider/index.js:1
 msgid "Pagination justification"
 msgstr "ページネーションの配置"
-
-#: dist/blocks/slider/index.js:1
-msgid "Autoplay"
-msgstr "自動再生"
-
-#: dist/blocks/slider/index.js:1
-msgid "Using the autoplay"
-msgstr "自動再生を使用する"
-
-#: dist/blocks/slider/index.js:1
-msgid "Delay (s)"
-msgstr "遅延（秒）"
-
-#: dist/blocks/slider/index.js:1
-msgid "When 0, the prev/next buttons and the pagination will not be displayed."
-msgstr "0の場合、前へ/次へボタンおよびページネーションは表示されません。"
 
 #: dist/blocks/stack-divided/index.js:1
 msgid "Stack (Divider: stripe)"

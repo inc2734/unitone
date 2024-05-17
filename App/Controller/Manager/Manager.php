@@ -29,22 +29,23 @@ class Manager {
 	 * @var array
 	 */
 	protected static $default_settings = array(
-		'license-key'              => '',
-		'font-family'              => 'sans-serif',
-		'base-font-size'           => 16,
-		'half-leading'             => 0.4,
-		'h2-size'                  => 3,
-		'h3-size'                  => 2,
-		'h4-size'                  => 1,
-		'h5-size'                  => 0,
-		'h6-size'                  => 0,
-		'accent-color'             => '#090a0b', // = settings.color.palette > unitone-accent
-		'background-color'         => '#fff',
-		'text-color'               => 'var(--unitone--color--text)',
-		'link-color'               => '#003c78', // = styles.elements.link.color.text
-		'content-size'             => '46rem',
-		'wide-size'                => '1334px',
-		'enabled-custom-templates' => array(),
+		'license-key'               => '',
+		'font-family'               => 'sans-serif',
+		'base-font-size'            => 16,
+		'half-leading'              => 0.4,
+		'h2-size'                   => 3,
+		'h3-size'                   => 2,
+		'h4-size'                   => 1,
+		'h5-size'                   => 0,
+		'h6-size'                   => 0,
+		'accent-color'              => '#090a0b', // = settings.color.palette > unitone-accent
+		'background-color'          => '#fff',
+		'text-color'                => 'var(--unitone--color--text)',
+		'link-color'                => '#003c78', // = styles.elements.link.color.text
+		'content-size'              => '46rem',
+		'wide-size'                 => '1334px',
+		'enabled-custom-templates'  => array(),
+		'wp-oembed-blog-card-style' => 'default',
 	);
 
 	/**
@@ -127,6 +128,8 @@ class Manager {
 		foreach ( $asset_file['dependencies'] as $style ) {
 			wp_enqueue_style( $style );
 		}
+
+		do_action( 'unitone_setup_enqueue_assets' );
 
 		$global_settings        = wp_get_global_settings();
 		$custom_templates       = static::get_custom_templates();

@@ -1,5 +1,15 @@
 import { store, getContext, getElement } from '@wordpress/interactivity';
 
+const focusableSelectors = [
+	'a[href]',
+	'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
+	'select:not([disabled]):not([aria-hidden])',
+	'textarea:not([disabled]):not([aria-hidden])',
+	'button:not([disabled]):not([aria-hidden])',
+	'[contenteditable]',
+	'[tabindex]:not([tabindex^="-"])',
+];
+
 const { state, actions } = store( 'unitone/mega-menu', {
 	state: {
 		get top() {
@@ -27,6 +37,18 @@ const { state, actions } = store( 'unitone/mega-menu', {
 		},
 	},
 	callbacks: {
+		initMenu() {
+			const context = getContext();
+			const { ref } = getElement();
+			if ( state.isMenuOpen ) {
+				const focusableElements =
+					ref.querySelectorAll( focusableSelectors );
+				context.modal = ref;
+				context.firstFocusableElement = focusableElements[ 0 ];
+				context.lastFocusableElement =
+					focusableElements[ focusableElements.length - 1 ];
+			}
+		},
 		documentScroll() {
 			actions.closeMenu( 'hover' );
 			actions.closeMenu( 'click' );
@@ -75,17 +97,7 @@ const { state, actions } = store( 'unitone/mega-menu', {
 			}
 		},
 		handleMenuFocusout( event ) {
-			if ( state.isMenuOpen ) {
-				// When the focus is on the mega menu, if the focus is moved by tab to a link in the mega menu, nothing is done.
-				if (
-					event.relatedTarget?.closest(
-						'.unitone-mega-menu__container'
-					)
-				) {
-					return;
-				}
-			}
-
+			const { modal } = getContext();
 			// If focus is outside modal, and in the document, close menu
 			// event.target === The element losing focus
 			// event.relatedTarget === The element receiving focus (if any)
@@ -95,7 +107,8 @@ const { state, actions } = store( 'unitone/mega-menu', {
 			// The event.relatedTarget is null when something outside the navigation menu is clicked. This is only necessary for Safari.
 			if (
 				event.relatedTarget === null ||
-				event.target !== window.document.activeElement
+				( ! modal?.contains( event.relatedTarget ) &&
+					event.target !== window.document.activeElement )
 			) {
 				actions.closeMenu( 'click' );
 				actions.closeMenu( 'focus' );
@@ -128,7 +141,12 @@ const { state, actions } = store( 'unitone/mega-menu', {
 
 			// Check if the menu is still open or not.
 			if ( ! state.isMenuOpen ) {
-				context.previousFocus?.focus();
+				if (
+					context.modal?.contains( window.document.activeElement )
+				) {
+					context.previousFocus?.focus();
+				}
+				context.modal = null;
 				context.previousFocus = null;
 				context.top = 0;
 				context.left = 0;

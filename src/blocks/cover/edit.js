@@ -4,19 +4,33 @@ import { get } from 'lodash';
 import {
 	useBlockProps,
 	useInnerBlocksProps,
+	store as blockEditorStore,
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
 
 import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 import { useSelect, useDispatch } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
 
 export default function ( { name, setAttributes, clientId } ) {
-	const hasInnerBlocks = useSelect(
+	const innerBlocks = useSelect(
 		( select ) =>
-			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
-				?.length,
+			select( blockEditorStore ).getBlock( clientId )?.innerBlocks || [],
 		[ clientId ]
 	);
+
+	const hasInnerBlocks = !! innerBlocks.length;
+	const innerBlockTypes = innerBlocks.map(
+		( innerblock ) => innerblock.attributes?.position
+	);
+
+	useEffect( () => {
+		setAttributes( {
+			variation: hasInnerBlocks
+				? `cover-${ innerBlockTypes.join( '-' ) }`
+				: undefined,
+		} );
+	}, [ innerBlockTypes.toString() ] );
 
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = classnames(

@@ -13,7 +13,11 @@ export default [
 		name: 'cover-top',
 		title: __( 'Cover (Top)', 'unitone' ),
 		isDefault: false,
+		isActive: [ 'variation' ],
 		scope: [ 'block' ],
+		attributes: {
+			variation: 'cover-top',
+		},
 		innerBlocks: [
 			[
 				'unitone/cover-content',
@@ -28,7 +32,11 @@ export default [
 		name: 'cover-center',
 		title: __( 'Cover (Center)', 'unitone' ),
 		isDefault: true,
+		isActive: [ 'variation' ],
 		scope: [ 'block' ],
+		attributes: {
+			variation: 'cover-center',
+		},
 		innerBlocks: [
 			[
 				'unitone/cover-content',
@@ -43,7 +51,11 @@ export default [
 		name: 'cover-bottom',
 		title: __( 'Cover (Bottom)', 'unitone' ),
 		isDefault: false,
+		isActive: [ 'variation' ],
 		scope: [ 'block' ],
+		attributes: {
+			variation: 'cover-bottom',
+		},
 		innerBlocks: [
 			[
 				'unitone/cover-content',
@@ -58,7 +70,11 @@ export default [
 		name: 'cover-top-center',
 		title: __( 'Cover (Top / Center)', 'unitone' ),
 		isDefault: false,
+		isActive: [ 'variation' ],
 		scope: [ 'block' ],
+		attributes: {
+			variation: 'cover-top-center',
+		},
 		innerBlocks: [
 			[
 				'unitone/cover-content',
@@ -77,7 +93,11 @@ export default [
 		name: 'cover-top-bottom',
 		title: __( 'Cover (Top / Bottom)', 'unitone' ),
 		isDefault: false,
+		isActive: [ 'variation' ],
 		scope: [ 'block' ],
+		attributes: {
+			variation: 'cover-top-bottom',
+		},
 		innerBlocks: [
 			[
 				'unitone/cover-content',
@@ -96,7 +116,11 @@ export default [
 		name: 'cover-center-bottom',
 		title: __( 'Cover (Center / Bottom)', 'unitone' ),
 		isDefault: false,
+		isActive: [ 'variation' ],
 		scope: [ 'block' ],
+		attributes: {
+			variation: 'cover-center-bottom',
+		},
 		innerBlocks: [
 			[
 				'unitone/cover-content',
@@ -115,7 +139,11 @@ export default [
 		name: 'cover-top-center-bottom',
 		title: __( 'Cover (Top / Center / Bottom)', 'unitone' ),
 		isDefault: false,
+		isActive: [ 'variation' ],
 		scope: [ 'block' ],
+		attributes: {
+			variation: 'cover-top-center-bottom',
+		},
 		innerBlocks: [
 			[
 				'unitone/cover-content',

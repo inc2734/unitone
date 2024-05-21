@@ -4,7 +4,13 @@
 	"textdomain": "unitone",
 	"name": "unitone/cover",
 	"title": "Cover",
-	"description": "This block is designed to cover a large area of the screen.",
+	"description": "This block allows you to specify how the child blocks are placed vertically within a certain height. It is designed primarily to cover a large area of the screen (by default, the minimum height is the same height as the screen).",
+	"attributes": {
+		"variation": {
+			"type": "string",
+			"default": ""
+		}
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

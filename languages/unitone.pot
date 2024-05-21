@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 11.3.3\n"
+"Project-Id-Version: unitone 11.4.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-17T04:54:49+00:00\n"
+"POT-Creation-Date: 2024-05-21T12:36:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -2956,7 +2956,7 @@ msgstr ""
 
 #: dist/blocks/cover/block.json
 msgctxt "block description"
-msgid "This block is designed to cover a large area of the screen."
+msgid "This block allows you to specify how the child blocks are placed vertically within a certain height. It is designed primarily to cover a large area of the screen (by default, the minimum height is the same height as the screen)."
 msgstr ""
 
 #: dist/blocks/decorator/block.json

@@ -65,7 +65,7 @@
 		margin-left: 0;
 	}
 
-	> * + :not([data-unitone-layout~="-linewrap"])::before {
+	> * + :not([data-unitone-layout~="-bol"])::before {
 		content: '';
 		position: absolute;
 		top: 0;

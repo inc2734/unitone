@@ -83,11 +83,9 @@
 
  .unitone-grid[data-unitone-layout~="-divider\:bordered"] {
 	gap: 0;
-	grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(--unitone--column-min-width) + var(--unitone--gap) / 2, 100%), 1fr));
 
 	> * {
 		position: relative;
-		padding: var(--unitone--gap);
 
 		&::before {
 			content: '';
@@ -97,6 +95,10 @@
 			border-width: var(--unitone--divider-width);
 			border-style: var(--unitone--divider-style);
 			border-color: var(--unitone--divider-color);
+		}
+
+		> * {
+			padding: var(--unitone--gap);
 		}
 	}
 

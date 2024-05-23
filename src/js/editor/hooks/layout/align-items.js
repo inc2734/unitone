@@ -1,8 +1,12 @@
 import classnames from 'classnames/dedupe';
 
+import {
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
+} from '@wordpress/components';
+
 import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
-import { Button } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
@@ -130,50 +134,47 @@ export function AlignItemsEdit( props ) {
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-			{ !! label && <legend>{ label }</legend> }
+			<ToggleGroupControl
+				__nextHasNoMarginBottom
+				label={ label }
+				value={ logicalToPhysical( unitone?.alignItems, 'vertical' ) }
+				onChange={ ( value ) => {
+					const newUnitone = {
+						...unitone,
+						alignItems:
+							logicalToPhysical(
+								unitone?.alignItems,
+								'vertical'
+							) !== value
+								? physicalToLogical( value )
+								: undefined,
+					};
+					if ( null == newUnitone.alignItems ) {
+						if ( null == defaultValue ) {
+							delete newUnitone.alignItems;
+						} else {
+							newUnitone.alignItems = '';
+						}
+					}
 
-			<div>
-				{ alignItemsOptions.map( ( { value, icon, iconLabel } ) => {
-					return (
-						<Button
+					setAttributes( {
+						unitone: !! Object.keys( newUnitone ).length
+							? newUnitone
+							: undefined,
+					} );
+				} }
+			>
+				{ alignItemsOptions.map(
+					( { value, icon, label: iconLabel } ) => (
+						<ToggleGroupControlOptionIcon
 							key={ value }
-							label={ iconLabel }
 							icon={ icon }
-							isPressed={
-								logicalToPhysical(
-									unitone?.alignItems,
-									'vertical'
-								) === value
-							}
-							onClick={ () => {
-								const newUnitone = {
-									...unitone,
-									alignItems:
-										logicalToPhysical(
-											unitone?.alignItems,
-											'vertical'
-										) !== value
-											? physicalToLogical( value )
-											: undefined,
-								};
-								if ( null == newUnitone.alignItems ) {
-									if ( null == defaultValue ) {
-										delete newUnitone.alignItems;
-									} else {
-										newUnitone.alignItems = '';
-									}
-								}
-
-								setAttributes( {
-									unitone: !! Object.keys( newUnitone ).length
-										? newUnitone
-										: undefined,
-								} );
-							} }
+							label={ iconLabel }
+							value={ value }
 						/>
-					);
-				} ) }
-			</div>
+					)
+				) }
+			</ToggleGroupControl>
 		</fieldset>
 	);
 }

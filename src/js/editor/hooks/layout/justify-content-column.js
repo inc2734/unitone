@@ -1,8 +1,12 @@
 import classnames from 'classnames/dedupe';
 
+import {
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
+} from '@wordpress/components';
+
 import { JustifyToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
-import { Button } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
@@ -138,51 +142,45 @@ export function JustifyContentColumnEdit( props ) {
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
-			{ !! label && <legend>{ label }</legend> }
-
-			<div>
-				{ justifyContentColumnOptions.map(
-					( { value, icon, iconLabel } ) => {
-						return (
-							<Button
-								key={ value }
-								label={ iconLabel }
-								icon={ icon }
-								isPressed={
-									logicalToPhysical(
-										unitone?.justifyContent
-									) === value
-								}
-								onClick={ () => {
-									const newUnitone = {
-										...unitone,
-										justifyContent:
-											logicalToPhysical(
-												unitone?.justifyContent
-											) !== value
-												? physicalToLogical( value )
-												: undefined,
-									};
-									if ( null == newUnitone.justifyContent ) {
-										if ( null == defaultValue ) {
-											delete newUnitone.justifyContent;
-										} else {
-											newUnitone.justifyContent = '';
-										}
-									}
-
-									setAttributes( {
-										unitone: !! Object.keys( newUnitone )
-											.length
-											? newUnitone
-											: undefined,
-									} );
-								} }
-							/>
-						);
+			<ToggleGroupControl
+				__nextHasNoMarginBottom
+				label={ label }
+				value={ logicalToPhysical( unitone?.justifyContent ) }
+				onChange={ ( value ) => {
+					const newUnitone = {
+						...unitone,
+						justifyContent:
+							logicalToPhysical( unitone?.justifyContent ) !==
+							value
+								? physicalToLogical( value )
+								: undefined,
+					};
+					if ( null == newUnitone.justifyContent ) {
+						if ( null == defaultValue ) {
+							delete newUnitone.justifyContent;
+						} else {
+							newUnitone.justifyContent = '';
+						}
 					}
+
+					setAttributes( {
+						unitone: !! Object.keys( newUnitone ).length
+							? newUnitone
+							: undefined,
+					} );
+				} }
+			>
+				{ justifyContentColumnOptions.map(
+					( { value, icon, label: iconLabel } ) => (
+						<ToggleGroupControlOptionIcon
+							key={ value }
+							icon={ icon }
+							label={ iconLabel }
+							value={ value }
+						/>
+					)
 				) }
-			</div>
+			</ToggleGroupControl>
 		</fieldset>
 	);
 }

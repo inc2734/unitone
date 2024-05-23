@@ -3,6 +3,7 @@ import {
 	InspectorControls,
 	useBlockProps,
 	useInnerBlocksProps,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import {
@@ -21,7 +22,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
-			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
+			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
 				?.length,
 		[ clientId ]
 	);

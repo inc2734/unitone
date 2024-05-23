@@ -28,6 +28,19 @@ export default {
 		},
 		{
 			type: 'block',
+			blocks: [ 'unitone/grid-divided' ],
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock(
+					'unitone/grid',
+					attributes,
+					innerBlocks
+						.map( ( innerBlock ) => innerBlock.innerBlocks )
+						.flat()
+				);
+			},
+		},
+		{
+			type: 'block',
 			isMultiBlock: true,
 			blocks: [ '*' ],
 			__experimentalConvert( blocks ) {

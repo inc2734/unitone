@@ -5,6 +5,7 @@ import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import {
@@ -24,14 +25,10 @@ import { stairsResizeObserver } from '@inc2734/unitone-css/library';
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { columnMinWidth, templateLock } = attributes;
 
-	const { hasInnerBlocks, children } = useSelect(
-		( select ) => {
-			const block = select( 'core/block-editor' ).getBlock( clientId );
-			return {
-				hasInnerBlocks: !! block?.innerBlocks?.length,
-				children: block?.innerBlocks,
-			};
-		},
+	const hasInnerBlocks = useSelect(
+		( select ) =>
+			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
+				?.length,
 		[ clientId ]
 	);
 
@@ -39,7 +36,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		( target ) => {
 			stairsResizeObserver( target );
 		},
-		[ clientId, attributes, children.length ]
+		[ clientId ]
 	);
 
 	const blockProps = useBlockProps( {

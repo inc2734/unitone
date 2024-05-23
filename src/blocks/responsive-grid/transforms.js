@@ -25,6 +25,27 @@ export default {
 		},
 		{
 			type: 'block',
+			blocks: [ 'unitone/grid-divided' ],
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock(
+					'unitone/responsive-grid',
+					{
+						...attributes,
+						unitone: {
+							...attributes.unitone,
+							dividerType: undefined,
+							divider: undefined,
+							dividerColor: undefined,
+						},
+					},
+					innerBlocks
+						.map( ( innerBlock ) => innerBlock.innerBlocks )
+						.flat()
+				);
+			},
+		},
+		{
+			type: 'block',
 			blocks: [ 'unitone/grid' ],
 			transform: ( attributes, innerBlocks ) => {
 				return createBlock(

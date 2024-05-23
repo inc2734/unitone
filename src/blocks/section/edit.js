@@ -5,8 +5,8 @@ import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
-	__experimentalBlockVariationPicker as BlockVariationPicker,
 	store as blockEditorStore,
+	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
 
 import {
@@ -31,7 +31,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
-			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
+			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
 				?.length,
 		[ clientId ]
 	);

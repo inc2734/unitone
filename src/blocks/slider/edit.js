@@ -5,6 +5,7 @@ import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import {
@@ -150,22 +151,22 @@ export default function ( {
 		}
 	}, [ canCenterdSlides, slideWidth ] );
 
-	const { selectBlock } = useDispatch( 'core/block-editor' );
+	const { selectBlock } = useDispatch( blockEditorStore );
 
 	const { slides, selectedSlides, hasChildSelected } = useSelect(
 		( select ) => {
 			const _slides =
-				select( 'core/block-editor' ).getBlock( clientId ).innerBlocks;
+				select( blockEditorStore ).getBlock( clientId ).innerBlocks;
 
 			return {
 				slides: _slides,
 				selectedSlides: _slides.filter(
 					( slide ) =>
 						slide.clientId ===
-						select( 'core/block-editor' ).getSelectedBlockClientId()
+						select( blockEditorStore ).getSelectedBlockClientId()
 				),
 				hasChildSelected: select(
-					'core/block-editor'
+					blockEditorStore
 				).hasSelectedInnerBlock( clientId, true ),
 			};
 		},

@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "unitone",
+	"name": "unitone/grid-divided-content",
+	"title": "Grid (Divided) content",
+	"description": "This block places the content inside the grid (Divided) block.",
+	"parent": [ "unitone/grid-divided" ],
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"usesContext": [ "unitone/grid-divided/tagName" ],
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"unitone": {
+			"fluidTypography": true,
+			"lineHeight": true
+		}
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

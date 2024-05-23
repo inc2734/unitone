@@ -20,8 +20,12 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/cover-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/decorator' );
 	register_block_type( get_template_directory() . '/dist/blocks/flex' );
+	register_block_type( get_template_directory() . '/dist/blocks/flex-divided' );
+	register_block_type( get_template_directory() . '/dist/blocks/flex-divided-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/frame' );
 	register_block_type( get_template_directory() . '/dist/blocks/grid' );
+	register_block_type( get_template_directory() . '/dist/blocks/grid-divided' );
+	register_block_type( get_template_directory() . '/dist/blocks/grid-divided-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/layer' );
 	register_block_type( get_template_directory() . '/dist/blocks/layers' );
 	register_block_type( get_template_directory() . '/dist/blocks/mega-menu' );

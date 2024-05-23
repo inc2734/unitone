@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-05-21T12:36:21+00:00\n"
-"PO-Revision-Date: 2024-05-21 21:37+0900\n"
+"POT-Creation-Date: 2024-05-22T22:57:06+00:00\n"
+"PO-Revision-Date: 2024-05-23 07:58+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1875,8 +1875,9 @@ msgstr "パターンライブラリーからパターンを再取得する"
 #: dist/blocks/accordion/index.js:1 dist/blocks/breadcrumbs/index.js:1
 #: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/cover-content/index.js:1
-#: dist/blocks/decorator/index.js:1 dist/blocks/flex/index.js:1
-#: dist/blocks/frame/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/decorator/index.js:1 dist/blocks/flex-divided/index.js:1
+#: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 #: dist/blocks/layers/index.js:37 dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:13
@@ -2001,7 +2002,8 @@ msgid "Cluster (Divider: bordered)"
 msgstr "クラスター（区切り：ボーダー）"
 
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/flex/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/section/index.js:13 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1
@@ -2056,6 +2058,18 @@ msgstr "カバー（上部 / 中央 / 下部）"
 msgid "With shadow"
 msgstr "影付き"
 
+#: dist/blocks/flex-divided/index.js:1
+msgid "Flex (Divider: stripe)"
+msgstr "フレックス（区切り：ストライプ）"
+
+#: dist/blocks/flex-divided/index.js:1
+msgid "Flex (Divider: slash)"
+msgstr "フレックス（区切り：スラッシュ）"
+
+#: dist/blocks/flex-divided/index.js:1
+msgid "Flex (Divider: bordered)"
+msgstr "フレックス（区切り：ボーダー）"
+
 #: dist/blocks/frame/index.js:1
 msgid "Framed image"
 msgstr "フレーム画像"
@@ -2076,31 +2090,46 @@ msgstr "推奨アスペクト比"
 msgid "Switch aspect ratio when portrait"
 msgstr "ポートレートのとき比率を切り替える"
 
-#: dist/blocks/grid/index.js:1
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: stripe)"
+msgstr "グリッド（区切り：ストライプ）"
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: underline)"
+msgstr "グリッド（区切り：アンダーライン）"
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: bordered)"
+msgstr "グリッド（区切り：ボーダー）"
+
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 msgid "Minimum width"
 msgstr "最小幅"
 
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:37
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/layers/index.js:37
 msgid "Columns count"
 msgstr "カラム数"
 
-#: dist/blocks/grid/index.js:1
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 msgid "Free input"
 msgstr "自由入力"
 
-#: dist/blocks/grid/index.js:1 dist/js/editor/editor.js:1
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+#: dist/js/editor/editor.js:1
 msgid "Auto repeat"
 msgstr "自動反復"
 
-#: dist/blocks/grid/index.js:1
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 msgid "For tablet / mobile"
 msgstr "タブレット / モバイル用"
 
-#: dist/blocks/grid/index.js:1
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 msgid "For mobile"
 msgstr "モバイル用"
 
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:37
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/layers/index.js:37
 msgid "Rows count"
 msgstr "行数"
 
@@ -2934,40 +2963,58 @@ msgctxt "block keyword"
 msgid "Box"
 msgstr "ボックス"
 
-#: dist/blocks/flex/block.json
+#: dist/blocks/flex-divided-content/block.json
 msgctxt "block title"
-msgid "Flex"
-msgstr "フレックス"
+msgid "Flex (Divided) content"
+msgstr "フレックス（区切りあり）のコンテンツ"
 
-#: dist/blocks/flex/block.json
+#: dist/blocks/flex-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the flex (Divided) block."
+msgstr ""
+"このブロックはフレックス（区切りあり）ブロックの中にコンテンツを配置します。"
+
+#: dist/blocks/flex-divided/block.json
+msgctxt "block title"
+msgid "Flex (Divided)"
+msgstr "フレックス（区切りあり）"
+
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
 msgctxt "block description"
 msgid "Child blocks can be layout in flex box."
 msgstr "子ブロックをフレックスボックス内にレイアウトできます。"
 
-#: dist/blocks/flex/block.json
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
 msgctxt "block keyword"
 msgid "flex"
 msgstr "フレックス"
 
-#: dist/blocks/flex/block.json
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
 msgctxt "block keyword"
 msgid "flex-box"
 msgstr "flex-box"
 
-#: dist/blocks/flex/block.json
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
 msgctxt "block keyword"
 msgid "flexbox"
 msgstr "flexbox"
 
-#: dist/blocks/flex/block.json dist/blocks/grid/block.json
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
+#: dist/blocks/grid-divided/block.json dist/blocks/grid/block.json
 msgctxt "block keyword"
 msgid "auto-layout"
 msgstr "auto-layout"
 
-#: dist/blocks/flex/block.json dist/blocks/grid/block.json
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
+#: dist/blocks/grid-divided/block.json dist/blocks/grid/block.json
 msgctxt "block keyword"
 msgid "AutoLayout"
 msgstr "AutoLayout"
+
+#: dist/blocks/flex/block.json
+msgctxt "block title"
+msgid "Flex"
+msgstr "フレックス"
 
 #: dist/blocks/frame/block.json
 msgctxt "block title"
@@ -2979,15 +3026,31 @@ msgctxt "block description"
 msgid "This block is used to fit the image into a fixed angle of view."
 msgstr "画像を一定の画角に収めるために使用されます。"
 
+#: dist/blocks/grid-divided-content/block.json
+msgctxt "block title"
+msgid "Grid (Divided) content"
+msgstr "グリッド（区切りあり）のコンテンツ"
+
+#: dist/blocks/grid-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the grid (Divided) block."
+msgstr ""
+"このブロックはグリッド（区切りあり）ブロックの中にコンテンツを配置します。"
+
+#: dist/blocks/grid-divided/block.json
+msgctxt "block title"
+msgid "Grid (Divided)"
+msgstr "グリッド（区切りあり）"
+
+#: dist/blocks/grid-divided/block.json dist/blocks/grid/block.json
+msgctxt "block description"
+msgid "Child blocks can be layout in grid."
+msgstr "子ブロックをグリッド内にレイアウトできます。"
+
 #: dist/blocks/grid/block.json
 msgctxt "block title"
 msgid "Grid"
 msgstr "グリッド"
-
-#: dist/blocks/grid/block.json
-msgctxt "block description"
-msgid "Child blocks can be layout in grid."
-msgstr "子ブロックをグリッド内にレイアウトできます。"
 
 #: dist/blocks/gutters/block.json
 msgctxt "block title"

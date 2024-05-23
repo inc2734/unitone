@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "unitone",
+	"name": "unitone/flex-divided-content",
+	"title": "Flex (Divided) content",
+	"description": "This block places the content inside the flex (Divided) block.",
+	"parent": [ "unitone/flex-divided" ],
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
+		"verticalAlignment": {
+			"type": "string"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"usesContext": [
+		"unitone/flex-divided/tagName",
+		"unitone/flex-divided/verticalAlignment"
+	],
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"unitone": {
+			"fluidTypography": true,
+			"lineHeight": true
+		}
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

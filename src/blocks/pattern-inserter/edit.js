@@ -2,7 +2,10 @@
  * @see https://github.com/WordPress/gutenberg/blob/7f7a58a154084df65c493e58365402ac89fb6950/packages/block-editor/src/components/inserter/block-patterns-tab.js
  */
 
-import { useBlockProps } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	store as blockEditorStore,
+} from '@wordpress/block-editor';
 import { Button, Placeholder } from '@wordpress/components';
 import { useDispatch } from '@wordpress/data';
 import { useMemo, useCallback, useState } from '@wordpress/element';
@@ -78,7 +81,7 @@ function usePatternsCategories( rootClientId ) {
 export default function ( { clientId } ) {
 	const [ showPatternsExplorer, setShowPatternsExplorer ] = useState( false );
 
-	const { removeBlocks } = useDispatch( 'core/block-editor' );
+	const { removeBlocks } = useDispatch( blockEditorStore );
 
 	const rootClientId = null;
 	const categories = usePatternsCategories( rootClientId );

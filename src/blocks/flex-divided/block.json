@@ -1,0 +1,120 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "11.5.0",
+	"textdomain": "unitone",
+	"name": "unitone/flex-divided",
+	"title": "Flex (Divided)",
+	"description": "Child blocks can be layout in flex box.",
+	"keywords": [ "flex", "flex-box", "flexbox", "auto-layout", "AutoLayout" ],
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
+		"verticalAlignment": {
+			"type": "string"
+		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"dividerType": "stripe",
+				"divider": {
+					"style": "solid",
+					"width": "1px"
+				},
+				"dividerColor": "unitone-light-gray"
+			}
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"providesContext": {
+		"unitone/flex-divided/tagName": "tagName",
+		"unitone/flex-divided/verticalAlignment": "verticalAlignment"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"align": [ "full", "wide" ],
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"layout": {
+			"allowSwitching": false,
+			"allowInheriting": false,
+			"default": {
+				"orientation": "horizontal",
+				"type": "flex",
+				"flexWrap": "wrap"
+			}
+		},
+		"unitone": {
+			"gap": {
+				"splitOnAxis": true
+			},
+			"dividerType": [ "stripe", "slash", "bordered" ],
+			"divider": true,
+			"fluidTypography": true,
+			"lineHeight": true
+		}
+	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "unitone/flex-divided-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Lorem ipsum amet"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/flex-divided-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "dolor sit"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/flex-divided-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "amet"
+						}
+					}
+				]
+			}
+		]
+	},
+	"style": [ "file:./style-index.css", "unitone-flex-style" ],
+	"editorStyle": "file:./index.css",
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

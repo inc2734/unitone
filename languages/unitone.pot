@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-21T12:36:21+00:00\n"
+"POT-Creation-Date: 2024-05-22T22:57:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -1912,8 +1912,10 @@ msgstr ""
 #: dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1
 #: dist/blocks/decorator/index.js:1
+#: dist/blocks/flex-divided/index.js:1
 #: dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1
+#: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/blocks/layers/index.js:37
 #: dist/blocks/reel/index.js:1
@@ -2048,7 +2050,9 @@ msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/decorator/index.js:1
+#: dist/blocks/flex-divided/index.js:1
 #: dist/blocks/flex/index.js:1
+#: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/section/index.js:13
@@ -2105,6 +2109,18 @@ msgstr ""
 msgid "With shadow"
 msgstr ""
 
+#: dist/blocks/flex-divided/index.js:1
+msgid "Flex (Divider: stripe)"
+msgstr ""
+
+#: dist/blocks/flex-divided/index.js:1
+msgid "Flex (Divider: slash)"
+msgstr ""
+
+#: dist/blocks/flex-divided/index.js:1
+msgid "Flex (Divider: bordered)"
+msgstr ""
+
 #: dist/blocks/frame/index.js:1
 msgid "Framed image"
 msgstr ""
@@ -2125,32 +2141,51 @@ msgstr ""
 msgid "Switch aspect ratio when portrait"
 msgstr ""
 
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: stripe)"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: underline)"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: bordered)"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 msgid "Minimum width"
 msgstr ""
 
+#: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/blocks/layers/index.js:37
 msgid "Columns count"
 msgstr ""
 
+#: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 msgid "Free input"
 msgstr ""
 
+#: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Auto repeat"
 msgstr ""
 
+#: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 msgid "For tablet / mobile"
 msgstr ""
 
+#: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 msgid "For mobile"
 msgstr ""
 
+#: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/blocks/layers/index.js:37
 msgid "Rows count"
@@ -2974,41 +3009,64 @@ msgctxt "block keyword"
 msgid "Box"
 msgstr ""
 
-#: dist/blocks/flex/block.json
+#: dist/blocks/flex-divided-content/block.json
 msgctxt "block title"
-msgid "Flex"
+msgid "Flex (Divided) content"
 msgstr ""
 
+#: dist/blocks/flex-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the flex (Divided) block."
+msgstr ""
+
+#: dist/blocks/flex-divided/block.json
+msgctxt "block title"
+msgid "Flex (Divided)"
+msgstr ""
+
+#: dist/blocks/flex-divided/block.json
 #: dist/blocks/flex/block.json
 msgctxt "block description"
 msgid "Child blocks can be layout in flex box."
 msgstr ""
 
+#: dist/blocks/flex-divided/block.json
 #: dist/blocks/flex/block.json
 msgctxt "block keyword"
 msgid "flex"
 msgstr ""
 
+#: dist/blocks/flex-divided/block.json
 #: dist/blocks/flex/block.json
 msgctxt "block keyword"
 msgid "flex-box"
 msgstr ""
 
+#: dist/blocks/flex-divided/block.json
 #: dist/blocks/flex/block.json
 msgctxt "block keyword"
 msgid "flexbox"
 msgstr ""
 
+#: dist/blocks/flex-divided/block.json
 #: dist/blocks/flex/block.json
+#: dist/blocks/grid-divided/block.json
 #: dist/blocks/grid/block.json
 msgctxt "block keyword"
 msgid "auto-layout"
 msgstr ""
 
+#: dist/blocks/flex-divided/block.json
 #: dist/blocks/flex/block.json
+#: dist/blocks/grid-divided/block.json
 #: dist/blocks/grid/block.json
 msgctxt "block keyword"
 msgid "AutoLayout"
+msgstr ""
+
+#: dist/blocks/flex/block.json
+msgctxt "block title"
+msgid "Flex"
 msgstr ""
 
 #: dist/blocks/frame/block.json
@@ -3021,14 +3079,30 @@ msgctxt "block description"
 msgid "This block is used to fit the image into a fixed angle of view."
 msgstr ""
 
-#: dist/blocks/grid/block.json
+#: dist/blocks/grid-divided-content/block.json
 msgctxt "block title"
-msgid "Grid"
+msgid "Grid (Divided) content"
 msgstr ""
 
+#: dist/blocks/grid-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the grid (Divided) block."
+msgstr ""
+
+#: dist/blocks/grid-divided/block.json
+msgctxt "block title"
+msgid "Grid (Divided)"
+msgstr ""
+
+#: dist/blocks/grid-divided/block.json
 #: dist/blocks/grid/block.json
 msgctxt "block description"
 msgid "Child blocks can be layout in grid."
+msgstr ""
+
+#: dist/blocks/grid/block.json
+msgctxt "block title"
+msgid "Grid"
 msgstr ""
 
 #: dist/blocks/gutters/block.json

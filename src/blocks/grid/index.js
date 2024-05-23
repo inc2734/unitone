@@ -4,13 +4,13 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 
-import './style.scss';
-
 import icon from './icon';
 import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import transforms from './transforms';
+
+import './style.scss';
 
 registerBlockType( 'unitone/grid', {
 	icon: {

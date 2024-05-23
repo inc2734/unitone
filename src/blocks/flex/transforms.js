@@ -8,6 +8,27 @@ export default {
 	from: [
 		{
 			type: 'block',
+			blocks: [ 'unitone/flex-divided' ],
+			transform: ( attributes, innerBlocks ) => {
+				return createBlock(
+					'unitone/flex',
+					{
+						...attributes,
+						unitone: {
+							...attributes.unitone,
+							dividerType: undefined,
+							divider: undefined,
+							dividerColor: undefined,
+						},
+					},
+					innerBlocks
+						.map( ( innerBlock ) => innerBlock.innerBlocks )
+						.flat()
+				);
+			},
+		},
+		{
+			type: 'block',
 			isMultiBlock: true,
 			blocks: [ '*' ],
 			__experimentalConvert( blocks ) {

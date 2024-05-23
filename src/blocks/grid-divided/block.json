@@ -1,0 +1,208 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "11.5.0",
+	"textdomain": "unitone",
+	"name": "unitone/grid-divided",
+	"title": "Grid (Divided)",
+	"description": "Child blocks can be layout in grid.",
+	"keywords": [ "auto-layout", "AutoLayout" ],
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
+		"columnsOption": {
+			"type": "string",
+			"default": "min"
+		},
+		"columns": {
+			"type": "number",
+			"default": 1
+		},
+		"columnMinWidth": {
+			"type": "string",
+			"default": "240px"
+		},
+		"gridTemplateColumns": {
+			"type": "string",
+			"default": ""
+		},
+		"mdColumnsOption": {
+			"type": "string",
+			"default": "min"
+		},
+		"mdColumns": {
+			"type": "number",
+			"default": ""
+		},
+		"mdColumnMinWidth": {
+			"type": "string",
+			"default": ""
+		},
+		"mdGridTemplateColumns": {
+			"type": "string",
+			"default": ""
+		},
+		"smColumnsOption": {
+			"type": "string",
+			"default": "min"
+		},
+		"smColumns": {
+			"type": "number",
+			"default": ""
+		},
+		"smColumnMinWidth": {
+			"type": "string",
+			"default": ""
+		},
+		"smGridTemplateColumns": {
+			"type": "string",
+			"default": ""
+		},
+		"columnAutoRepeat": {
+			"type": "string",
+			"default": "auto-fit"
+		},
+		"rowsOption": {
+			"type": "string",
+			"default": "rows"
+		},
+		"rows": {
+			"type": "number",
+			"default": 1
+		},
+		"gridTemplateRows": {
+			"type": "string",
+			"default": ""
+		},
+		"mdRowsOption": {
+			"type": "string",
+			"default": "rows"
+		},
+		"mdRows": {
+			"type": "number",
+			"default": ""
+		},
+		"mdGridTemplateRows": {
+			"type": "string",
+			"default": ""
+		},
+		"smRowsOption": {
+			"type": "string",
+			"default": "rows"
+		},
+		"smRows": {
+			"type": "number",
+			"default": ""
+		},
+		"smGridTemplateRows": {
+			"type": "string",
+			"default": ""
+		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"autoRepeat": "auto-fit",
+				"dividerType": "stripe",
+				"divider": {
+					"style": "solid",
+					"width": "1px"
+				},
+				"dividerColor": "unitone-light-gray"
+			}
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"providesContext": {
+		"unitone/grid-divided/tagName": "tagName"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"align": [ "full", "wide" ],
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		},
+		"unitone": {
+			"gap": {
+				"splitOnAxis": true
+			},
+			"fluidTypography": true,
+			"lineHeight": true,
+			"dividerType": [ "stripe", "underline", "bordered" ],
+			"divider": true
+		}
+	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "unitone/grid-divided-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/grid-divided-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/grid-divided-content",
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+						}
+					}
+				]
+			}
+		]
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js",
+	"style": [ "file:./style-index.css", "unitone-grid-style" ],
+	"editorStyle": "file:./index.css"
+}

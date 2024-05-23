@@ -1,0 +1,109 @@
+.unitone-grid__content {
+	display: grid;
+	align-self: stretch;
+	justify-self: stretch;
+}
+
+.unitone-grid__content__content {
+	align-self: var(--unitone--align-self);
+	justify-self: var(--unitone--justify-self);
+}
+
+.unitone-grid:where([data-unitone-layout*="-divider\:"]) {
+	--unitone--divider-width: 1px;
+	--unitone--divider-style: solid;
+	--unitone--divider-color: var(--wp--preset--color--unitone-light-gray);
+}
+
+.unitone-grid[data-unitone-layout~="-divider\:stripe"] {
+	row-gap: 0;
+
+	> * {
+		position: relative;
+		padding-top: var(--unitone--gap);
+		padding-bottom: var(--unitone--gap);
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: calc(var(--unitone--gap) * -1);
+			border-width: 0 0 var(--unitone--divider-width) 0;
+			border-style: var(--unitone--divider-style);
+			border-color: var(--unitone--divider-color);
+		}
+	}
+
+	> [data-unitone-layout~="-bol"] {
+		&::before {
+			left: 0;
+		}
+	}
+
+	> :not([data-unitone-layout~="-linewrap"]) {
+		&::before {
+			border-top-width: var(--unitone--divider-width);
+		}
+	}
+}
+
+.unitone-grid[data-unitone-layout~="-divider\:underline"] {
+	row-gap: 0;
+
+	> * {
+		position: relative;
+		padding-top: var(--unitone--gap);
+		padding-bottom: var(--unitone--gap);
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: calc(var(--unitone--gap) * -1);
+			border-width: 0 0 var(--unitone--divider-width) 0;
+			border-style: var(--unitone--divider-style);
+			border-color: var(--unitone--divider-color);
+		}
+	}
+
+	> [data-unitone-layout~="-bol"] {
+		&::before {
+			left: 0;
+		}
+	}
+
+	> :not([data-unitone-layout~="-linewrap"]) {
+		padding-top: 0;
+	}
+}
+
+ .unitone-grid[data-unitone-layout~="-divider\:bordered"] {
+	gap: 0;
+
+	> * {
+		position: relative;
+		padding: var(--unitone--gap);
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			user-select: none;
+			border-width: var(--unitone--divider-width);
+			border-style: var(--unitone--divider-style);
+			border-color: var(--unitone--divider-color);
+		}
+	}
+
+	> :not([data-unitone-layout~="-bol"]) {
+		margin-inline-start: calc(var(--unitone--divider-width) * -1);
+	}
+
+	> [data-unitone-layout~="-linewrap"] {
+		margin-top: calc(var(--unitone--divider-width) * -1);
+	}
+}

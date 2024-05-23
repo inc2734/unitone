@@ -6,6 +6,7 @@ import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
+	store as blockEditorStore,
 	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
 
@@ -64,7 +65,7 @@ export default function ( {
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
-			!! select( 'core/block-editor' ).getBlock( clientId )?.innerBlocks
+			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
 				?.length,
 		[ clientId ]
 	);

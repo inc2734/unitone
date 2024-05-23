@@ -50,13 +50,15 @@
 	column-gap: 0;
 	align-items: stretch;
 
-	> * {
+	// Core specificity is 0 2 0.
+	// .editor-styles-wrapper .is-layout-flex > *
+	&.is-layout-flex > * {
 		margin-right: var(--unitone--column-gap);
 		margin-left: var(--unitone--column-gap);
+	}
 
-		> * {
-			min-width: 0;
-		}
+	> * > * {
+		min-width: 0;
 	}
 
 	> [data-unitone-layout~="-bol"] {

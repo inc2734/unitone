@@ -6,6 +6,18 @@ export default {
 			type: 'block',
 			blocks: [ 'unitone/cluster' ],
 			transform: ( attributes, innerBlocks ) => {
+				const newInnerBlocks = innerBlocks.map( ( innerBlock ) => {
+					return createBlock( 'unitone/cluster-divided-content', {}, [
+						innerBlock,
+					] );
+				} );
+
+				if ( 1 > newInnerBlocks.length ) {
+					newInnerBlocks.push(
+						createBlock( 'unitone/cluster-divided-content', {}, [] )
+					);
+				}
+
 				return createBlock(
 					'unitone/cluster-divided',
 					{
@@ -15,13 +27,7 @@ export default {
 							dividerType: 'stripe',
 						},
 					},
-					innerBlocks.map( ( innerBlock ) => {
-						return createBlock(
-							'unitone/cluster-divided-content',
-							{},
-							[ innerBlock ]
-						);
-					} )
+					newInnerBlocks
 				);
 			},
 		},

@@ -6,6 +6,18 @@ export default {
 			type: 'block',
 			blocks: [ 'unitone/flex' ],
 			transform: ( attributes, innerBlocks ) => {
+				const newInnerBlocks = innerBlocks.map( ( innerBlock ) => {
+					return createBlock( 'unitone/flex-divided-content', {}, [
+						innerBlock,
+					] );
+				} );
+
+				if ( 1 > newInnerBlocks.length ) {
+					newInnerBlocks.push(
+						createBlock( 'unitone/flex-divided-content', {}, [] )
+					);
+				}
+
 				return createBlock(
 					'unitone/flex-divided',
 					{
@@ -15,13 +27,7 @@ export default {
 							dividerType: 'stripe',
 						},
 					},
-					innerBlocks.map( ( innerBlock ) => {
-						return createBlock(
-							'unitone/flex-divided-content',
-							{},
-							[ innerBlock ]
-						);
-					} )
+					newInnerBlocks
 				);
 			},
 		},

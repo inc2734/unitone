@@ -10,6 +10,18 @@ export default {
 			type: 'block',
 			blocks: [ 'unitone/grid' ],
 			transform: ( attributes, innerBlocks ) => {
+				const newInnerBlocks = innerBlocks.map( ( innerBlock ) => {
+					return createBlock( 'unitone/grid-divided-content', {}, [
+						innerBlock,
+					] );
+				} );
+
+				if ( 1 > newInnerBlocks.length ) {
+					newInnerBlocks.push(
+						createBlock( 'unitone/grid-divided-content', {}, [] )
+					);
+				}
+
 				return createBlock(
 					'unitone/grid-divided',
 					{
@@ -19,13 +31,7 @@ export default {
 							dividerType: 'stripe',
 						},
 					},
-					innerBlocks.map( ( innerBlock ) => {
-						return createBlock(
-							'unitone/grid-divided-content',
-							{},
-							[ innerBlock ]
-						);
-					} )
+					newInnerBlocks
 				);
 			},
 		},

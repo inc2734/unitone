@@ -22,7 +22,7 @@
 			<!-- /wp:heading -->
 
 			<!-- wp:unitone/text -->
-			<div data-unitone-layout="text">
+			<div data-unitone-layout="text -gap">
 				<!-- wp:paragraph {"textColor":"unitone-background"} -->
 				<p class="has-unitone-background-color has-text-color">弊社は、革新的なソリューションを提供し、お客様のビジネスを成功に導くための幅広いサービスを提供しています。以下は、私たちの主要なサービスについての詳細です。</p>
 				<!-- /wp:paragraph -->
@@ -201,7 +201,7 @@
 				<!-- wp:unitone/stack {"unitone":{"gap":"3"}} -->
 				<div data-unitone-layout="stack">
 					<!-- wp:unitone/text {"unitone":{"blockAlign":"start","maxWidth":"48rem"}} -->
-					<div data-unitone-layout="text">
+					<div data-unitone-layout="text -gap">
 						<!-- wp:unitone/stack {"unitone":{"gap":"-1"}} -->
 						<div data-unitone-layout="stack">
 							<!-- wp:paragraph {"textColor":"unitone-accent"} -->

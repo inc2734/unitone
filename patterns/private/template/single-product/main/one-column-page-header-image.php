@@ -7,7 +7,7 @@
 		<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
 		<div data-unitone-layout="stack">
 			<!-- wp:unitone/text {"className":"entry-content","unitone":{"maxWidth":"var(--unitone--container-max-width)","gutters":"root"}} -->
-			<div data-unitone-layout="text" class="entry-content">
+			<div data-unitone-layout="text -gap" class="entry-content">
 				<!-- wp:woocommerce/legacy-template {"template":"single-product"} /-->
 			</div>
 			<!-- /wp:unitone/text -->

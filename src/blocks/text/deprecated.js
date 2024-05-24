@@ -15,6 +15,33 @@ export default [
 		},
 
 		save( { attributes } ) {
+			const { center, column, unitone } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							'data-unitone-layout': classnames( 'text', {
+								'-center': center,
+								'-column': column,
+								'-gap': null != unitone?.gap,
+							} ),
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
 			const { center, column } = attributes;
 
 			return (

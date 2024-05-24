@@ -15,7 +15,7 @@
 						<!-- wp:unitone/stack {"unitone":{"gap":3}} -->
 						<div data-unitone-layout="stack">
 							<!-- wp:unitone/text {"className":"entry-content","unitone":{"maxWidth":"100%","gutters":"0"}} -->
-							<div data-unitone-layout="text" class="entry-content">
+							<div data-unitone-layout="text -gap" class="entry-content">
 								<!-- wp:unitone/stack -->
 								<div data-unitone-layout="stack">
 									<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->

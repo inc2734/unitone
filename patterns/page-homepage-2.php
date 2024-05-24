@@ -42,7 +42,7 @@
 				</div>
 				<!-- /wp:unitone/center -->
 				<!-- wp:unitone/text -->
-				<div data-unitone-layout="text">
+				<div data-unitone-layout="text -gap">
 					<!-- wp:paragraph -->
 					<p>ジョバンニは、いつか町はずれのポプラの木が幾本も幾本も四方へ出るのでした。そしてそのこどもの肩のあたりが、どうも済みませんでしたから、とてもみんなは乗り切らないのです。するとどこかで見たわ姉は細い銀いろの空から、さっきの入口から暗い牛舎の前へまた来ました。そういうふうに、眼の前を通るのですから、この次の理科の時間にお話します。</p>
 					<!-- /wp:paragraph -->

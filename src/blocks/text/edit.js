@@ -25,7 +25,7 @@ export default function ( {
 	clientId,
 	__unstableLayoutClassNames: layoutClassNames,
 } ) {
-	const { center, column, unitone, templateLock } = attributes;
+	const { center, column, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -37,11 +37,11 @@ export default function ( {
 	const blockProps = useBlockProps( { className: layoutClassNames } );
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'text',
+		'-gap',
 		blockProps[ 'data-unitone-layout' ],
 		{
 			'-center': center,
 			'-column': column,
-			'-gap': null != unitone?.gap,
 		}
 	);
 

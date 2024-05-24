@@ -7,7 +7,7 @@
 			<!-- wp:pattern {"slug":"unitone/template/404/page-header/default"} /-->
 
 			<!-- wp:unitone/text {"className":"entry-content","unitone":{"gutters":"root"}} -->
-			<div data-unitone-layout="text" class="entry-content">
+			<div data-unitone-layout="text -gap" class="entry-content">
 				<!-- wp:paragraph -->
 				<p><?php esc_html_e( 'Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box.', 'unitone' ); ?></p>
 				<!-- /wp:paragraph -->

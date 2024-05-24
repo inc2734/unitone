@@ -13,7 +13,7 @@
 		<div data-unitone-layout="container">
 			<div data-unitone-layout="stack">
 				<!-- wp:unitone/text {"unitone":{"blockAlign":"start","maxWidth":"calc(var(--unitone--measure) * 1.25)"}} -->
-				<div data-unitone-layout="text">
+				<div data-unitone-layout="text -gap">
 					<!-- wp:heading {"fontSize":"unitone-5xl","unitone":{"fluidTypography":true,"halfLeading":0.6}} -->
 					<h2 class="wp-block-heading has-unitone-5-xl-font-size">テクノロジーを駆使して社会にポジティブな変化をもたらす</h2>
 					<!-- /wp:heading -->
@@ -21,7 +21,7 @@
 				<!-- /wp:unitone/text -->
 
 				<!-- wp:unitone/text {"fontSize":"unitone-xl","unitone":{"halfLeading":0.8,"blockAlign":"start"}} -->
-				<div data-unitone-layout="text" class="has-unitone-xl-font-size">
+				<div data-unitone-layout="text -gap" class="has-unitone-xl-font-size">
 					<!-- wp:paragraph -->
 					<p>ジョバンニ株式会社は、新しい未来を築くためのイノベーションを推進し、顧客と共に成長することを使命としています。私たちは常に新しいアイデアを探求し、テクノロジーを駆使して社会にポジティブな変化をもたらすことを目指しています。</p>
 					<!-- /wp:paragraph -->
@@ -237,7 +237,7 @@
 				<!-- /wp:unitone/center -->
 
 				<!-- wp:unitone/text -->
-				<div data-unitone-layout="text">
+				<div data-unitone-layout="text -gap">
 					<!-- wp:paragraph -->
 					<p>私たちのチームは、業界のプロフェッショナルで構成されており、協力と創造性を大切にしています。共に働くことで、より良いソリューションを生み出すための環境を提供します。</p>
 					<!-- /wp:paragraph -->

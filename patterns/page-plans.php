@@ -20,7 +20,7 @@
 				</div>
 				<!-- /wp:unitone/center -->
 				<!-- wp:unitone/text -->
-				<div data-unitone-layout="text">
+				<div data-unitone-layout="text -gap">
 					<!-- wp:unitone/center -->
 					<div data-unitone-layout="center -intrinsic">
 						<!-- wp:paragraph -->
@@ -31,7 +31,7 @@
 				</div>
 				<!-- /wp:unitone/text -->
 				<!-- wp:unitone/text {"unitone":{"maxWidth":"100%"}} -->
-				<div data-unitone-layout="text">
+				<div data-unitone-layout="text -gap">
 					<!-- wp:unitone/responsive-grid {"columnMinWidth":"300px","unitone":{"autoRepeat":"auto-fit","gap":"1"}} -->
 					<div data-unitone-layout="responsive-grid" style="--unitone--column-min-width:300px">
 						<!-- wp:unitone/decorator {"shadow":true,"unitone":{"position":{"position":"relative"},"overflow":"visible","padding":"2"},"backgroundColor":"white","textColor":"unitone-text"} -->
@@ -360,7 +360,7 @@
 				</div>
 				<!-- /wp:unitone/center -->
 				<!-- wp:unitone/text {"unitone":{"maxWidth":"100%"}} -->
-				<div data-unitone-layout="text">
+				<div data-unitone-layout="text -gap">
 					<!-- wp:table {"hasFixedLayout":true,"className":"is-style-vertical-line","cellMinWidth":"160px"} -->
 					<figure class="wp-block-table is-style-vertical-line">
 						<table class="has-fixed-layout">

@@ -140,7 +140,7 @@
 									<h2 class="wp-block-heading has-unitone-3-xl-font-size">するとどこかで見たわ姉は細い銀いろの空から</h2>
 									<!-- /wp:heading -->
 									<!-- wp:unitone/text {"lock":{"move":false,"remove":false}} -->
-									<div data-unitone-layout="text">
+									<div data-unitone-layout="text -gap">
 										<!-- wp:paragraph -->
 										<p>大きなのがいるんだから小さいのもいるんでしょうか女の子がそっとカムパネルラにたずねました。あら、蠍の火だなカムパネルラがまた何気なくしかるように叫びました。</p>
 										<!-- /wp:paragraph -->
@@ -205,7 +205,7 @@
 				<!-- wp:unitone/container {"unitone":{"blockAlign":"start","maxWidth":"var(--unitone--measure)","gutters":"0"}} -->
 				<div data-unitone-layout="container">
 					<!-- wp:unitone/text -->
-					<div data-unitone-layout="text">
+					<div data-unitone-layout="text -gap">
 						<!-- wp:paragraph -->
 						<p>ジョバンニは、いつか町はずれのポプラの木が幾本も幾本も四方へ出るのでした。そしてそのこどもの肩のあたりが、どうも済みませんでしたから、とてもみんなは乗り切らないのです。</p>
 						<!-- /wp:paragraph -->

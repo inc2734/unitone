@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/theme.json",
-	"version": 2,
+	"version": 3,
 	"settings": {
 		"background": {
 			"backgroundImage": true
@@ -444,13 +444,13 @@
 				"border": {
 					"color": "currentColor",
 					"top": {
-						"width": "0"
+						"width": "1px"
 					},
 					"right": {
 						"width": "0"
 					},
 					"bottom": {
-						"width": "1px"
+						"width": "0"
 					},
 					"left": {
 						"width": "0"

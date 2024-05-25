@@ -146,10 +146,9 @@ export function MaxWidthEdit( props ) {
 					icon={ settingsIcon }
 					onClick={ () => {
 						onChangeMaxWidth(
-							'var(--wp--custom--container-max-width)' !==
-								unitone?.maxWidth
-								? unitone?.maxWidth
-								: 'var(--wp--custom--container-max-width)'
+							! isPresetValue
+								? 'var(--wp--custom--container-max-width)'
+								: unitone?.maxWidth
 						);
 
 						setShowCustomValueControl( ! showCustomValueControl );

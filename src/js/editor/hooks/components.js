@@ -8,6 +8,36 @@ import { __ } from '@wordpress/i18n';
 
 import { isNumber } from './utils';
 
+function Controls( { isMixed, value, onChange, marks, options } ) {
+	return (
+		<>
+			<RangeControl
+				className="spacing-sizes-control__range-control"
+				value={ isMixed ? -2 : parseInt( value ) }
+				allowReset
+				resetFallbackValue={ undefined }
+				onChange={ onChange }
+				withInputField={ false }
+				aria-valuenow={ value }
+				aria-valuetext={ value }
+				min={ marks[ 0 ]?.value || marks[ 1 ]?.value }
+				max={ marks[ marks.length - 1 ]?.value }
+				marks={ marks }
+				hideLabelFromVision
+				__nextHasNoMarginBottom
+			/>
+
+			<div style={ { marginTop: '5px' } }>
+				<SelectControl
+					value={ value || '' }
+					options={ options }
+					onChange={ onChange }
+				/>
+			</div>
+		</>
+	);
+}
+
 export function SpacingSizeControl( {
 	options,
 	onChange,
@@ -16,7 +46,6 @@ export function SpacingSizeControl( {
 	isMixed = false,
 } ) {
 	value = isMixed ? 'mixed' : value;
-
 	const defaultOptions = [
 		{
 			label: '',
@@ -85,36 +114,6 @@ export function SpacingSizeControl( {
 		} )
 		.filter( Boolean );
 
-	function Controls() {
-		return (
-			<>
-				<RangeControl
-					className="spacing-sizes-control__range-control"
-					value={ isMixed ? -2 : parseInt( value ) }
-					allowReset
-					resetFallbackValue={ undefined }
-					onChange={ onChange }
-					withInputField={ false }
-					aria-valuenow={ value }
-					aria-valuetext={ value }
-					min={ marks[ 0 ]?.value || marks[ 1 ]?.value }
-					max={ marks[ marks.length - 1 ]?.value }
-					marks={ marks }
-					hideLabelFromVision
-					__nextHasNoMarginBottom
-				/>
-
-				<div style={ { marginTop: '5px' } }>
-					<SelectControl
-						value={ value || '' }
-						options={ options }
-						onChange={ onChange }
-					/>
-				</div>
-			</>
-		);
-	}
-
 	return (
 		<>
 			{ !! label ? (
@@ -123,11 +122,15 @@ export function SpacingSizeControl( {
 					label={ label }
 					className="spacing-sizes-control"
 				>
-					<Controls />
+					<Controls
+						{ ...{ isMixed, value, onChange, marks, options } }
+					/>
 				</BaseControl>
 			) : (
 				<div className="spacing-sizes-control">
-					<Controls />
+					<Controls
+						{ ...{ isMixed, value, onChange, marks, options } }
+					/>
 				</div>
 			) }
 		</>

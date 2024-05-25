@@ -92,6 +92,7 @@
 			position: absolute;
 			inset: 0;
 			user-select: none;
+			pointer-events: none;
 			border-width: var(--unitone--divider-width);
 			border-style: var(--unitone--divider-style);
 			border-color: var(--unitone--divider-color);

@@ -13,7 +13,7 @@ import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { settings as settingsIcon } from '@wordpress/icons';
 
-import { getGlobalStyleCssVar, isValueGlobalStyle } from '../utils';
+// import { getGlobalStyleCssVar, isValueGlobalStyle } from '../utils';
 
 export function hasMaxWidthValue( props ) {
 	const { name, attributes } = props;
@@ -78,8 +78,13 @@ export function MaxWidthEdit( props ) {
 			?.default?.maxWidth;
 	}, [] );
 
+	const isPresetValue = [
+		'var(--wp--custom--container-max-width)',
+		'var(--wp--custom--content-max-width)',
+	].includes( unitone?.maxWidth );
+
 	const [ showCustomValueControl, setShowCustomValueControl ] = useState(
-		! isValueGlobalStyle( unitone?.maxWidth )
+		! isPresetValue
 	);
 
 	const onChangeMaxWidth = ( newValue ) => {
@@ -141,8 +146,9 @@ export function MaxWidthEdit( props ) {
 					icon={ settingsIcon }
 					onClick={ () => {
 						onChangeMaxWidth(
-							! showCustomValueControl
-								? undefined
+							'var(--wp--custom--container-max-width)' !==
+								unitone?.maxWidth
+								? unitone?.maxWidth
 								: 'var(--wp--custom--container-max-width)'
 						);
 
@@ -188,9 +194,7 @@ export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 
 	extraProps.style = {
 		...extraProps.style,
-		'--unitone--max-width': getGlobalStyleCssVar(
-			attributes?.unitone?.maxWidth
-		),
+		'--unitone--max-width': attributes?.unitone?.maxWidth,
 	};
 
 	return extraProps;

@@ -1,42 +1,38 @@
 import classnames from 'classnames';
 
+import {
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
+} from '@wordpress/components';
+
+import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
-import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
+
+import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const alignSelfOptions = [
 	{
-		label: '',
-		value: '',
-	},
-	{
-		label: 'auto',
-		value: 'auto',
-	},
-	{
-		label: 'normal',
-		value: 'normal',
-	},
-	{
-		label: 'start',
 		value: 'start',
+		icon: alignTop,
+		label: __( 'Align self top', 'unitone' ),
 	},
 	{
-		label: 'center',
 		value: 'center',
+		icon: alignCenter,
+		label: __( 'Align self center', 'unitone' ),
 	},
 	{
-		label: 'end',
 		value: 'end',
+		icon: alignBottom,
+		label: __( 'Align self bottom', 'unitone' ),
 	},
 	{
-		label: 'stretch',
 		value: 'stretch',
-	},
-	{
-		label: 'baseline',
-		value: 'baseline',
+		icon: alignStretch,
+		label: __( 'Stretch to fill', 'unitone' ),
 	},
 ];
 
@@ -85,6 +81,45 @@ export function useIsAlignSelfDisabled( {
 	);
 }
 
+export function AlignSelfToolbar( props ) {
+	const {
+		name,
+		attributes: { unitone },
+		setAttributes,
+	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.alignSelf;
+	}, [] );
+
+	return (
+		<BlockVerticalAlignmentToolbar
+			controls={ [ 'top', 'center', 'bottom', 'stretch' ] }
+			value={ logicalToPhysical( unitone?.alignSelf, 'vertical' ) }
+			onChange={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					alignSelf: physicalToLogical( newAttribute ),
+				};
+				if ( null == newUnitone.alignSelf ) {
+					if ( null == defaultValue ) {
+						delete newUnitone.alignSelf;
+					} else {
+						newUnitone.alignSelf = '';
+					}
+				}
+
+				setAttributes( {
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
+				} );
+			} }
+		/>
+	);
+}
+
 export function getAlignSelfEditLabel( props ) {
 	const {
 		attributes: { __unstableUnitoneSupports },
@@ -113,30 +148,43 @@ export function AlignSelfEdit( props ) {
 	}
 
 	return (
-		<SelectControl
-			label={ label }
-			options={ alignSelfOptions }
-			value={ unitone?.alignSelf }
-			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					alignSelf: newAttribute || undefined,
-				};
-				if ( null == newUnitone.alignSelf ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.alignSelf;
-					} else {
-						newUnitone.alignSelf = '';
+		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+			<ToggleGroupControl
+				__nextHasNoMarginBottom
+				label={ label }
+				value={ unitone?.alignSelf }
+				onChange={ ( value ) => {
+					const newUnitone = {
+						...unitone,
+						alignSelf: value || undefined,
+					};
+					if ( null == newUnitone.alignSelf ) {
+						if ( null == defaultValue ) {
+							delete newUnitone.alignSelf;
+						} else {
+							newUnitone.alignSelf = '';
+						}
 					}
-				}
 
-				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
-				} );
-			} }
-		/>
+					setAttributes( {
+						unitone: !! Object.keys( newUnitone ).length
+							? newUnitone
+							: undefined,
+					} );
+				} }
+			>
+				{ alignSelfOptions.map(
+					( { value, icon, label: iconLabel } ) => (
+						<ToggleGroupControlOptionIcon
+							key={ value }
+							icon={ icon }
+							label={ iconLabel }
+							value={ value }
+						/>
+					)
+				) }
+			</ToggleGroupControl>
+		</fieldset>
 	);
 }
 

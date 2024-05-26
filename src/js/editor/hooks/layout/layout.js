@@ -117,6 +117,7 @@ import {
 	useIsAlignSelfDisabled,
 	hasAlignSelfValue,
 	resetAlignSelf,
+	AlignSelfToolbar,
 	getAlignSelfEditLabel,
 	AlignSelfEdit,
 	editAlignSelfProp,
@@ -126,6 +127,7 @@ import {
 	useIsJustifySelfDisabled,
 	hasJustifySelfValue,
 	resetJustifySelf,
+	JustifySelfToolbar,
 	getJustifySelfEditLabel,
 	JustifySelfEdit,
 	editJustifySelfProp,
@@ -209,6 +211,8 @@ export function LayoutPanel( props ) {
 			{ ( ! isJustifyContentDisabled ||
 				! isJustifyContentColumnDisabled ||
 				! isAlignItemsDisabled ||
+				! isJustifySelfDisabled ||
+				! isAlignSelfDisabled ||
 				! isBlockAlignDisabled ) && (
 				<BlockControls group="block">
 					{ ! isJustifyContentDisabled && (
@@ -219,6 +223,12 @@ export function LayoutPanel( props ) {
 					) }
 					{ ! isAlignItemsDisabled && (
 						<AlignItemsToolbar { ...props } />
+					) }
+					{ ! isJustifySelfDisabled && (
+						<JustifySelfToolbar { ...props } />
+					) }
+					{ ! isAlignSelfDisabled && (
+						<AlignSelfToolbar { ...props } />
 					) }
 					{ ! isBlockAlignDisabled && (
 						<BlockAlignToolbar { ...props } />

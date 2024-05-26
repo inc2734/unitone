@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-05-22T22:57:06+00:00\n"
-"PO-Revision-Date: 2024-05-23 07:58+0900\n"
+"POT-Creation-Date: 2024-05-26T08:48:04+00:00\n"
+"PO-Revision-Date: 2024-05-26 17:49+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2678,8 +2678,32 @@ msgid "auto-fit"
 msgstr "auto-fit"
 
 #: dist/js/editor/editor.js:1
+msgid "Align self top"
+msgstr "コンテンツを上揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Align self center"
+msgstr "コンテンツを中央揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Align self bottom"
+msgstr "コンテンツを下揃え"
+
+#: dist/js/editor/editor.js:1
 msgid "Align self"
 msgstr "垂直配置"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify self left"
+msgstr "コンテンツを左揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify self center"
+msgstr "コンテンツを中央揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify self right"
+msgstr "コンテンツを右揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify self"

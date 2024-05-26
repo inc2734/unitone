@@ -45,8 +45,8 @@ const withChildBlockAttributes = createHigherOrderComponent(
 
 					if ( 'unitone/layers' === parentBlock?.name ) {
 						const DEFAULT_VALUES = {
-							alignSelf: 'auto',
-							justifySelf: 'auto',
+							alignSelf: 'stretch',
+							justifySelf: 'stretch',
 							gridColumn: '1 / -1',
 							gridRow: '1 / -1',
 						};

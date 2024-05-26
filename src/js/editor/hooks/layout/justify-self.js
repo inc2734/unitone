@@ -1,42 +1,44 @@
 import classnames from 'classnames';
 
+import {
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
+} from '@wordpress/components';
+
+import {
+	justifyLeft,
+	justifyCenter,
+	justifyRight,
+	justifyStretch,
+} from '@wordpress/icons';
+
+import { JustifyToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
-import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import { physicalToLogical, logicalToPhysical } from '../../../helper';
+
 const justifySelfOptions = [
 	{
-		label: '',
-		value: '',
-	},
-	{
-		label: 'auto',
-		value: 'auto',
-	},
-	{
-		label: 'normal',
-		value: 'normal',
-	},
-	{
-		label: 'start',
 		value: 'start',
+		icon: justifyLeft,
+		label: __( 'Justify self left', 'unitone' ),
 	},
 	{
-		label: 'center',
 		value: 'center',
+		icon: justifyCenter,
+		label: __( 'Justify self center', 'unitone' ),
 	},
 	{
-		label: 'end',
 		value: 'end',
+		icon: justifyRight,
+		label: __( 'Justify self right', 'unitone' ),
 	},
 	{
-		label: 'stretch',
 		value: 'stretch',
-	},
-	{
-		label: 'baseline',
-		value: 'baseline',
+		icon: justifyStretch,
+		label: __( 'Stretch to fill', 'unitone' ),
 	},
 ];
 
@@ -85,6 +87,47 @@ export function useIsJustifySelfDisabled( {
 	);
 }
 
+export function JustifySelfToolbar( props ) {
+	const {
+		name,
+		attributes: { unitone },
+		setAttributes,
+	} = props;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.justifySelf;
+	}, [] );
+
+	return (
+		<JustifyToolbar
+			allowedControls={ justifySelfOptions.map( ( option ) =>
+				logicalToPhysical( option.value )
+			) }
+			value={ logicalToPhysical( unitone?.justifySelf ) }
+			onChange={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					justifySelf: physicalToLogical( newAttribute ),
+				};
+				if ( null == newUnitone.justifySelf ) {
+					if ( null == defaultValue ) {
+						delete newUnitone.justifySelf;
+					} else {
+						newUnitone.justifySelf = '';
+					}
+				}
+
+				setAttributes( {
+					unitone: !! Object.keys( newUnitone ).length
+						? newUnitone
+						: undefined,
+				} );
+			} }
+		/>
+	);
+}
+
 export function getJustifySelfEditLabel( props ) {
 	const {
 		attributes: { __unstableUnitoneSupports },
@@ -113,30 +156,43 @@ export function JustifySelfEdit( props ) {
 	}
 
 	return (
-		<SelectControl
-			label={ label }
-			options={ justifySelfOptions }
-			value={ unitone?.justifySelf }
-			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					justifySelf: newAttribute || undefined,
-				};
-				if ( null == newUnitone.justifySelf ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.justifySelf;
-					} else {
-						newUnitone.justifySelf = '';
+		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+			<ToggleGroupControl
+				__nextHasNoMarginBottom
+				label={ label }
+				value={ unitone?.justifySelf }
+				onChange={ ( value ) => {
+					const newUnitone = {
+						...unitone,
+						justifySelf: value || undefined,
+					};
+					if ( null == newUnitone.justifySelf ) {
+						if ( null == defaultValue ) {
+							delete newUnitone.justifySelf;
+						} else {
+							newUnitone.justifySelf = '';
+						}
 					}
-				}
 
-				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
-				} );
-			} }
-		/>
+					setAttributes( {
+						unitone: !! Object.keys( newUnitone ).length
+							? newUnitone
+							: undefined,
+					} );
+				} }
+			>
+				{ justifySelfOptions.map(
+					( { value, icon, label: iconLabel } ) => (
+						<ToggleGroupControlOptionIcon
+							key={ value }
+							icon={ icon }
+							label={ iconLabel }
+							value={ value }
+						/>
+					)
+				) }
+			</ToggleGroupControl>
+		</fieldset>
 	);
 }
 

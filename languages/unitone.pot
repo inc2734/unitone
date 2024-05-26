@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 11.4.1\n"
+"Project-Id-Version: unitone 11.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-22T22:57:06+00:00\n"
+"POT-Creation-Date: 2024-05-26T08:48:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -2732,7 +2732,31 @@ msgid "auto-fit"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
+msgid "Align self top"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align self center"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align self bottom"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
 msgid "Align self"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Justify self left"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Justify self center"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Justify self right"
 msgstr ""
 
 #: dist/js/editor/editor.js:1

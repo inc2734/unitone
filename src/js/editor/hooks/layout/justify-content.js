@@ -5,17 +5,17 @@ import {
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
 
-import { JustifyToolbar } from '@wordpress/block-editor';
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
-import { useSelect } from '@wordpress/data';
-import { __ } from '@wordpress/i18n';
-
 import {
 	justifyLeft,
 	justifyCenter,
 	justifyRight,
 	justifySpaceBetween,
 } from '@wordpress/icons';
+
+import { JustifyToolbar } from '@wordpress/block-editor';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 import { physicalToLogical, logicalToPhysical } from '../../../helper';
 

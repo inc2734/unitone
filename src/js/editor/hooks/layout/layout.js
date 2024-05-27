@@ -481,27 +481,6 @@ export function LayoutPanel( props ) {
 							</ToolsPanelItem>
 						) }
 
-						{ ! isAlignSelfDisabled && (
-							<ToolsPanelItem
-								hasValue={ () => hasAlignSelfValue( props ) }
-								label={ getAlignSelfEditLabel( props ) }
-								onDeselect={ () => resetAlignSelf( props ) }
-								resetAllFilter={ () => resetAlignSelf( props ) }
-								isShownByDefault
-							>
-								<AlignSelfEdit
-									{ ...props }
-									label={
-										<>
-											{ getAlignSelfEditLabel( props ) }
-											&nbsp;:&nbsp;
-											<code>align-self</code>
-										</>
-									}
-								/>
-							</ToolsPanelItem>
-						) }
-
 						{ ! isJustifySelfDisabled && (
 							<ToolsPanelItem
 								hasValue={ () => hasJustifySelfValue( props ) }
@@ -519,6 +498,27 @@ export function LayoutPanel( props ) {
 											{ getJustifySelfEditLabel( props ) }
 											&nbsp;:&nbsp;
 											<code>justify-self</code>
+										</>
+									}
+								/>
+							</ToolsPanelItem>
+						) }
+
+						{ ! isAlignSelfDisabled && (
+							<ToolsPanelItem
+								hasValue={ () => hasAlignSelfValue( props ) }
+								label={ getAlignSelfEditLabel( props ) }
+								onDeselect={ () => resetAlignSelf( props ) }
+								resetAllFilter={ () => resetAlignSelf( props ) }
+								isShownByDefault
+							>
+								<AlignSelfEdit
+									{ ...props }
+									label={
+										<>
+											{ getAlignSelfEditLabel( props ) }
+											&nbsp;:&nbsp;
+											<code>align-self</code>
 										</>
 									}
 								/>

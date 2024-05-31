@@ -10,6 +10,7 @@ const settings = {
 	title,
 	tagName: 'span',
 	className: 'unitone-wbr',
+	interactive: true,
 	contentEditable: false,
 	edit: Edit,
 };

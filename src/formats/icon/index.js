@@ -39,7 +39,7 @@ const settings = {
 		style: 'style',
 		ariaHidden: 'aria-hidden',
 	},
-	interactive: true,
+	// interactive: true,
 	contentEditable: false,
 	edit: Edit,
 };

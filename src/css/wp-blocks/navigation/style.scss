@@ -26,6 +26,12 @@
 .wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle {
 	padding: .5em 1em;
 }
+.wp-block-navigation__container {
+	gap: inherit !important;
+}
+.wp-block-navigation:where(:not([class*=has-text-decoration])) a:not(.wp-element-button) {
+	text-decoration: none;
+}
 
 .wp-block-navigation {
 
@@ -34,7 +40,7 @@
 	 */
 	& {
 		--unitone--padding: 0px;
-		--unitone--gap: 0px;
+		--unitone--gap: var(--unitone--s-1);
 		--unitone--column-gap: var(--unitone--gap);
 		--unitone--row-gap: 0px;
 

@@ -154,11 +154,11 @@ export default function ( {
 						<SelectControl
 							label={ __( 'HTML element', 'unitone' ) }
 							options={ [
-								{ label: '<header>', value: 'header' },
 								{ label: '<main>', value: 'main' },
 								{ label: '<section>', value: 'section' },
 								{ label: '<article>', value: 'article' },
 								{ label: '<aside>', value: 'aside' },
+								{ label: '<header>', value: 'header' },
 								{ label: '<footer>', value: 'footer' },
 								{ label: '<div>', value: 'div' },
 							] }

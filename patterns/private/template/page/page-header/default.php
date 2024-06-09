@@ -1,13 +1,11 @@
-<!-- wp:unitone/decorator {"tagName":"header"} -->
-<header data-unitone-layout="decorator">
-	<!-- wp:unitone/gutters {"unitone":{"padding":0}} -->
+<!-- wp:unitone/section {"tagName":"header","align":"full","unitone":{"padding":"0","gutters":"0"}} -->
+<header class="alignfull unitone-section">
 	<div data-unitone-layout="gutters">
-		<!-- wp:unitone/container -->
 		<div data-unitone-layout="container">
+			<div data-unitone-layout="stack">
 			<!-- wp:post-title {"level":1,"fontSize":"unitone-3xl"} /-->
+			</div>
 		</div>
-		<!-- /wp:unitone/container -->
 	</div>
-	<!-- /wp:unitone/gutters -->
 </header>
-<!-- /wp:unitone/decorator -->
+<!-- /wp:unitone/section -->

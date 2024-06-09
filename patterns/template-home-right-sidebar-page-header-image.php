@@ -7,7 +7,7 @@
  * Inserter: no
  */
 ?>
-<!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":0}} -->
+<!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":"0"}} -->
 <div data-unitone-layout="cover -no-padding">
 	<!-- wp:unitone/cover-content {"position":"top"} -->
 	<div data-unitone-layout="cover__content -valign:top">

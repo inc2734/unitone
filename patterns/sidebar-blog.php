@@ -7,7 +7,7 @@
 ?>
 <!-- wp:unitone/stack -->
 <div data-unitone-layout="stack">
-	<!-- wp:unitone/stack {"unitone":{"gap":-2}} -->
+	<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
 	<div data-unitone-layout="stack">
 		<!-- wp:heading {"level":3} -->
 		<h3><?php esc_html_e( 'Latest posts', 'unitone' ); ?></h3>
@@ -17,7 +17,7 @@
 	</div>
 	<!-- /wp:unitone/stack -->
 
-	<!-- wp:unitone/stack {"unitone":{"gap":-2}} -->
+	<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
 	<div data-unitone-layout="stack">
 		<!-- wp:heading {"level":3} -->
 		<h3><?php esc_html_e( 'Categories', 'unitone' ); ?></h3>
@@ -27,7 +27,7 @@
 	</div>
 	<!-- /wp:unitone/stack -->
 
-	<!-- wp:unitone/stack {"unitone":{"gap":-2}} -->
+	<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
 	<div data-unitone-layout="stack">
 		<!-- wp:heading {"level":3} -->
 		<h3><?php esc_html_e( 'Archives', 'unitone' ); ?></h3>

@@ -16,8 +16,8 @@
 				<div data-unitone-layout="cover__content -valign:center">
 					<!-- wp:unitone/container -->
 					<div data-unitone-layout="container">
-						<!-- wp:unitone/stack {"textColor":"white","unitone":{"gap":"-2"}} -->
-						<div data-unitone-layout="stack" class="has-white-color has-text-color">
+						<!-- wp:unitone/stack {"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","unitone":{"gap":"-2"}} -->
+						<div data-unitone-layout="stack" class="has-white-color has-text-color has-link-color">
 							<!-- wp:post-title {"level":1,"fontSize":"unitone-3xl"} /-->
 
 							<!-- wp:unitone/cluster {"fontSize":"unitone-xs","unitone":{"gap":"-1"}} -->

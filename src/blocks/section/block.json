@@ -81,9 +81,9 @@
 	"editorScript": "file:./index.js",
 	"style": [
 		"file:./style-index.css",
-		"unitone-gutters",
-		"unitone-container",
-		"unitone-stack"
+		"unitone-gutters-style",
+		"unitone-container-style",
+		"unitone-stack-style"
 	],
 	"editorStyle": "file:./index.css"
 }

@@ -116,6 +116,8 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 								{ label: '<section>', value: 'section' },
 								{ label: '<article>', value: 'article' },
 								{ label: '<aside>', value: 'aside' },
+								{ label: '<header>', value: 'header' },
+								{ label: '<footer>', value: 'footer' },
 								{ label: '<div>', value: 'div' },
 							] }
 							value={ tagName }

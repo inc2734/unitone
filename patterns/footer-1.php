@@ -6,18 +6,16 @@
  * Block Types: core/template-part/footer
  */
 ?>
-<!-- wp:unitone/decorator {"align":"full","fontSize":"unitone-xs"} -->
-<div data-unitone-layout="decorator" class="alignfull has-unitone-xs-font-size">
-	<!-- wp:unitone/gutters {"unitone":{"padding":"-1"}} -->
+<!-- wp:unitone/section {"tagName":"div","align":"full","fontSize":"unitone-xs","unitone":{"padding":"-1"}} -->
+<div class="alignfull has-unitone-xs-font-size unitone-section">
 	<div data-unitone-layout="gutters">
-		<!-- wp:unitone/container -->
 		<div data-unitone-layout="container">
-			<!-- wp:paragraph -->
-			<p>Proudly powered by <a href="https://wordpress.org/">WordPress</a>.</p>
-			<!-- /wp:paragraph -->
+			<div data-unitone-layout="stack">
+				<!-- wp:paragraph -->
+				<p>Proudly powered by <a href="https://wordpress.org/">WordPress</a>.</p>
+				<!-- /wp:paragraph -->
+			</div>
 		</div>
-		<!-- /wp:unitone/container -->
 	</div>
-	<!-- /wp:unitone/gutters -->
 </div>
-<!-- /wp:unitone/decorator -->
+<!-- /wp:unitone/section -->

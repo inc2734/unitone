@@ -12,7 +12,7 @@
 		},
 		"itemWidth": {
 			"type": "string",
-			"default": "calc(var(--unitone--measure) / 2)"
+			"default": "calc(var(--wp--custom--content-max-width) / 2)"
 		},
 		"noBar": {
 			"type": "boolean",

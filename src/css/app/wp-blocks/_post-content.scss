@@ -38,3 +38,15 @@
 .wp-block-post-content:where(.is-layout-constrained) {
 	--unitone--gutters: var(--unitone--global--gutters);
 }
+
+/**
+ * Almost all templates were changed to enclose content in section blocks.
+ * As a result, the left and right margins of the page were determined by section blocks.
+ * Therefore, padding should be 0.
+ */
+:where(.unitone-section > [data-unitone-layout~="gutters"] > [data-unitone-layout~="container"] > [data-unitone-layout~="stack"]) {
+	> .entry-content:where(.is-layout-constrained),
+	> .wp-block-post-content:where(.is-layout-constrained) {
+		--unitone--gutters: 0px;
+	}
+}

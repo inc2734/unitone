@@ -2,7 +2,7 @@
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--unitone--s-1);
+	gap: var(--unitone--s-2) var(--unitone--s-1);
 
 	&__item {
 		margin: 0;

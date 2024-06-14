@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-14T11:10:16+00:00\n"
+"POT-Creation-Date: 2024-06-14T16:21:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -2174,6 +2174,26 @@ msgstr ""
 
 #: dist/blocks/frame/index.js:1
 msgid "Switch aspect ratio when portrait"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+#: dist/blocks/grid/index.js:1
+msgid "Desktop"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+#: dist/blocks/grid/index.js:1
+msgid "Tablet / Mobile"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+#: dist/blocks/grid/index.js:1
+msgid "Mobile"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+#: dist/blocks/grid/index.js:1
+msgid "Switch to settings based on device size"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1

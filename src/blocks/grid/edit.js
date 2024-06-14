@@ -24,6 +24,8 @@ import { store as editorStore } from '@wordpress/editor';
 import { store as editPostStore } from '@wordpress/edit-post';
 import { __ } from '@wordpress/i18n';
 
+import { ResponsiveSettingsContainer } from '../../js/editor/hooks/components';
+
 import metadata from './block.json';
 
 const parseString = ( value ) => {
@@ -192,819 +194,641 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						/>
 					</ToolsPanelItem>
 
-					{ 'Desktop' === deviceType && (
-						<ToolsPanelItem
-							hasValue={ () =>
-								columnsOption !==
-								metadata.attributes.columnsOption.default
-							}
-							isShownByDefault
-							label={ 'grid-template-columns' }
-							onDeselect={ () => {
-								setAttributes( {
-									columnsOption:
-										metadata.attributes.columnsOption
-											.default,
-									columns:
-										metadata.attributes.columns.default,
-									columnMinWidth:
-										metadata.attributes.columnMinWidth
-											.default,
-									columnAutoRepeat:
-										metadata.attributes.columnAutoRepeat
-											.default,
-									gridTemplateColumns:
-										metadata.attributes.gridTemplateColumns
-											.default,
-								} );
-							} }
-						>
-							<ToggleGroupControl
-								label="grid-template-columns"
-								className="unitone-toggle-group-control"
-								value={ columnsOption }
-								onChange={ ( value ) => {
-									setAttributes( {
-										columnsOption: value,
-									} );
-								} }
-								isBlock
-							>
-								<ToggleGroupControlOption
-									value="min"
-									label={ __( 'Minimum width', 'unitone' ) }
-								/>
-								<ToggleGroupControlOption
-									value="columns"
-									label={ __( 'Columns count', 'unitone' ) }
-								/>
-								<ToggleGroupControlOption
-									value="free"
-									label={ __( 'Free input', 'unitone' ) }
-								/>
-							</ToggleGroupControl>
-
-							<div className="unitone-toggle-group-control__body">
-								{ 'min' === columnsOption && (
-									<>
-										<UnitControl
-											label={ __(
-												'Minimum width',
-												'unitone'
-											) }
-											value={ columnMinWidth }
-											onChange={ ( value ) =>
-												setAttributes( {
-													columnMinWidth: value,
-												} )
-											}
-											disabled={
-												'Desktop' !== deviceType
-											}
-										/>
-
-										<ToggleGroupControl
-											label={ __(
-												'Auto repeat',
-												'unitone'
-											) }
-											value={ columnAutoRepeat }
-											onChange={ ( value ) => {
-												setAttributes( {
-													columnAutoRepeat: value,
-												} );
-											} }
-											isBlock
-										>
-											<ToggleGroupControlOption
-												value="auto-fit"
-												label="auto-fit"
-											/>
-											<ToggleGroupControlOption
-												value="auto-fill"
-												label="auto-fill"
-											/>
-										</ToggleGroupControl>
-									</>
-								) }
-
-								{ 'columns' === columnsOption && (
-									<RangeControl
-										label={ __(
-											'Columns count',
-											'unitone'
-										) }
-										value={ parseNumber( columns ) }
-										onChange={ ( value ) =>
-											setAttributes( {
-												columns: parseNumber( value ),
-											} )
-										}
-										min={ 1 }
-										max={ 12 }
-										step={ 1 }
-									/>
-								) }
-
-								{ 'free' === columnsOption && (
-									<TextControl
-										value={ gridTemplateColumns }
-										onChange={ ( value ) =>
-											setAttributes( {
-												gridTemplateColumns: value,
-											} )
-										}
-									/>
-								) }
-							</div>
-						</ToolsPanelItem>
-					) }
-
-					{ 'Tablet' === deviceType && (
-						<ToolsPanelItem
-							hasValue={ () =>
-								mdColumnsOption !==
-								metadata.attributes.mdColumnsOption.default
-							}
-							isShownByDefault
-							label={ `grid-template-columns (${ __(
-								'For tablet / mobile',
-								'unitone'
-							) })` }
-							onDeselect={ () => {
-								setAttributes( {
-									mdColumnsOption:
-										metadata.attributes.mdColumnsOption
-											.default,
-									mdColumns:
-										metadata.attributes.mdColumns.default,
-									mdColumnMinWidth:
-										metadata.attributes.mdColumnMinWidth
-											.default,
-									mdGridTemplateColumns:
-										metadata.attributes
-											.mdGridTemplateColumns.default,
-								} );
-							} }
-						>
-							<ToggleGroupControl
-								label={ `grid-template-columns (${ __(
-									'For tablet / mobile',
-									'unitone'
-								) })` }
-								className="unitone-toggle-group-control"
-								value={ mdColumnsOption }
-								onChange={ ( value ) => {
-									setAttributes( {
-										mdColumnsOption: value,
-									} );
-								} }
-								isBlock
-							>
-								<ToggleGroupControlOption
-									value="min"
-									label={ __( 'Minimum width', 'unitone' ) }
-								/>
-								<ToggleGroupControlOption
-									value="columns"
-									label={ __( 'Columns count', 'unitone' ) }
-								/>
-								<ToggleGroupControlOption
-									value="free"
-									label={ __( 'Free input', 'unitone' ) }
-								/>
-							</ToggleGroupControl>
-
-							<div className="unitone-toggle-group-control__body">
-								{ 'min' === mdColumnsOption && (
-									<>
-										<UnitControl
-											label={ __(
-												'Minimum width',
-												'unitone'
-											) }
-											value={ columnMinWidth }
-											disabled
-										/>
-
-										<UnitControl
-											label={ `${ __(
-												'Minimum width',
-												'unitone'
-											) } (${ __(
-												'For tablet / mobile',
-												'unitone'
-											) })` }
-											value={ mdColumnMinWidth }
-											onChange={ ( value ) =>
-												setAttributes( {
-													mdColumnMinWidth: value,
-												} )
-											}
-										/>
-									</>
-								) }
-
-								{ 'columns' === mdColumnsOption && (
-									<>
-										<RangeControl
-											label={ __(
-												'Columns count',
-												'unitone'
-											) }
-											value={ parseNumber( columns ) }
-											min={ 1 }
-											max={ 12 }
-											step={ 1 }
-											disabled
-										/>
-
-										<RangeControl
-											label={ `${ __(
-												'Columns count',
-												'unitone'
-											) } (${ __(
-												'For tablet / mobile',
-												'unitone'
-											) })` }
-											value={ parseNumber( mdColumns ) }
-											onChange={ ( value ) =>
-												setAttributes( {
-													mdColumns:
-														parseNumber( value ),
-												} )
-											}
-											min={ 1 }
-											max={ 12 }
-											step={ 1 }
-											allowReset
-										/>
-									</>
-								) }
-
-								{ 'free' === mdColumnsOption && (
-									<>
-										<TextControl
-											label={ __(
-												'Free input',
-												'unitone'
-											) }
-											value={ gridTemplateColumns }
-											disabled
-										/>
-
-										<TextControl
-											label={ `${ __(
-												'Free input',
-												'unitone'
-											) } (${ __(
-												'For tablet / mobile',
-												'unitone'
-											) })` }
-											value={ mdGridTemplateColumns }
-											onChange={ ( value ) =>
-												setAttributes( {
-													mdGridTemplateColumns:
-														value,
-												} )
-											}
-										/>
-									</>
-								) }
-							</div>
-						</ToolsPanelItem>
-					) }
-
-					{ 'Mobile' === deviceType && (
-						<ToolsPanelItem
-							hasValue={ () =>
-								smColumnsOption !==
+					<ToolsPanelItem
+						hasValue={ () =>
+							columnsOption !==
+								metadata.attributes.columnsOption.default ||
+							mdColumnsOption !==
+								metadata.attributes.mdColumnsOption.default ||
+							smColumnsOption !==
 								metadata.attributes.smColumnsOption.default
-							}
-							isShownByDefault
-							label={ `grid-template-columns (${ __(
-								'For mobile',
-								'unitone'
-							) })` }
-							onDeselect={ () => {
-								setAttributes( {
-									smColumnsOption:
-										metadata.attributes.smColumnsOption
-											.default,
-									smColumns:
-										metadata.attributes.smColumns.default,
-									smColumnMinWidth:
-										metadata.attributes.smColumnMinWidth
-											.default,
-									smGridTemplateColumns:
-										metadata.attributes
-											.smGridTemplateColumns.default,
-								} );
-							} }
-						>
-							<ToggleGroupControl
-								label={ `grid-template-columns (${ __(
-									'For mobile',
-									'unitone'
-								) })` }
-								className="unitone-toggle-group-control"
-								value={ smColumnsOption }
-								onChange={ ( value ) => {
-									setAttributes( {
-										smColumnsOption: value,
-									} );
-								} }
-								isBlock
-							>
-								<ToggleGroupControlOption
-									value="min"
-									label={ __( 'Minimum width', 'unitone' ) }
-								/>
-								<ToggleGroupControlOption
-									value="columns"
-									label={ __( 'Columns count', 'unitone' ) }
-								/>
-								<ToggleGroupControlOption
-									value="free"
-									label={ __( 'Free input', 'unitone' ) }
-								/>
-							</ToggleGroupControl>
+						}
+						isShownByDefault
+						label={ 'grid-template-columns' }
+						onDeselect={ () => {
+							setAttributes( {
+								columnsOption:
+									metadata.attributes.columnsOption.default,
+								columns: metadata.attributes.columns.default,
+								columnMinWidth:
+									metadata.attributes.columnMinWidth.default,
+								columnAutoRepeat:
+									metadata.attributes.columnAutoRepeat
+										.default,
+								gridTemplateColumns:
+									metadata.attributes.gridTemplateColumns
+										.default,
 
-							<div className="unitone-toggle-group-control__body">
-								{ 'min' === smColumnsOption && (
-									<>
-										<UnitControl
-											label={ __(
-												'Minimum width',
-												'unitone'
-											) }
-											value={ columnMinWidth }
-											disabled
-										/>
+								mdColumnsOption:
+									metadata.attributes.mdColumnsOption.default,
+								mdColumns:
+									metadata.attributes.mdColumns.default,
+								mdColumnMinWidth:
+									metadata.attributes.mdColumnMinWidth
+										.default,
+								mdGridTemplateColumns:
+									metadata.attributes.mdGridTemplateColumns
+										.default,
 
-										<UnitControl
-											label={ `${ __(
-												'Minimum width',
-												'unitone'
-											) } (${ __(
-												'For tablet / mobile',
-												'unitone'
-											) })` }
-											value={ mdColumnMinWidth }
-											disabled
-										/>
-
-										<UnitControl
-											label={ `${ __(
-												'Minimum width',
-												'unitone'
-											) } (${ __(
-												'For mobile',
-												'unitone'
-											) })` }
-											value={ smColumnMinWidth }
-											onChange={ ( value ) =>
-												setAttributes( {
-													smColumnMinWidth: value,
-												} )
-											}
-										/>
-									</>
-								) }
-
-								{ 'columns' === smColumnsOption && (
-									<>
-										<RangeControl
-											label={ __(
-												'Columns count',
-												'unitone'
-											) }
-											value={ parseNumber( columns ) }
-											min={ 1 }
-											max={ 12 }
-											step={ 1 }
-											disabled
-										/>
-
-										<RangeControl
-											label={ `${ __(
-												'Columns count',
-												'unitone'
-											) } (${ __(
-												'For tablet / mobile',
-												'unitone'
-											) })` }
-											value={ parseNumber( mdColumns ) }
-											min={ 1 }
-											max={ 12 }
-											step={ 1 }
-											disabled
-										/>
-
-										<RangeControl
-											label={ `${ __(
-												'Columns count',
-												'unitone'
-											) } (${ __(
-												'For mobile',
-												'unitone'
-											) })` }
-											value={ parseNumber( smColumns ) }
-											onChange={ ( value ) =>
-												setAttributes( {
-													smColumns:
-														parseNumber( value ),
-												} )
-											}
-											min={ 1 }
-											max={ 12 }
-											step={ 1 }
-											allowReset
-										/>
-									</>
-								) }
-
-								{ 'free' === smColumnsOption && (
-									<>
-										<TextControl
-											label={ __(
-												'Free input',
-												'unitone'
-											) }
-											value={ gridTemplateColumns }
-											disabled
-										/>
-
-										<TextControl
-											label={ `${ __(
-												'Free input',
-												'unitone'
-											) } (${ __(
-												'For tablet / mobile',
-												'unitone'
-											) })` }
-											value={ mdGridTemplateColumns }
-											disabled
-										/>
-
-										<TextControl
-											label={ `${ __(
-												'Free input',
-												'unitone'
-											) } (${ __(
-												'For mobile',
-												'unitone'
-											) })` }
-											value={ smGridTemplateColumns }
-											onChange={ ( value ) =>
-												setAttributes( {
-													smGridTemplateColumns:
-														value,
-												} )
-											}
-										/>
-									</>
-								) }
-							</div>
-						</ToolsPanelItem>
-					) }
-
-					{ 'Desktop' === deviceType && (
-						<ToolsPanelItem
-							hasValue={ () =>
-								rowsOption !==
-								metadata.attributes.rowsOption.default
-							}
-							isShownByDefault
-							label={ 'grid-template-rows' }
-							onDeselect={ () =>
-								setAttributes( {
-									rowsOption:
-										metadata.attributes.rowsOption.default,
-									rows: metadata.attributes.rows.default,
-									gridTemplateRows:
-										metadata.attributes.gridTemplateRows
-											.default,
-								} )
-							}
-						>
-							<ToggleGroupControl
-								label="grid-template-rows"
-								className="unitone-toggle-group-control"
-								value={ rowsOption }
-								onChange={ ( value ) => {
-									setAttributes( {
-										rowsOption: value,
-										rows: metadata.attributes.rows.default,
-										gridTemplateRows:
-											metadata.attributes.gridTemplateRows
-												.default,
-									} );
-								} }
-								isBlock
-							>
-								<ToggleGroupControlOption
-									value="rows"
-									label={ __( 'Rows count', 'unitone' ) }
-								/>
-								<ToggleGroupControlOption
-									value="free"
-									label={ __( 'Free input', 'unitone' ) }
-								/>
-							</ToggleGroupControl>
-
-							<div className="unitone-toggle-group-control__body">
-								{ 'rows' === rowsOption && (
-									<RangeControl
-										label={ __( 'Rows count', 'unitone' ) }
-										value={ parseNumber( rows ) }
-										onChange={ ( value ) =>
+								smColumnsOption:
+									metadata.attributes.smColumnsOption.default,
+								smColumns:
+									metadata.attributes.smColumns.default,
+								smColumnMinWidth:
+									metadata.attributes.smColumnMinWidth
+										.default,
+								smGridTemplateColumns:
+									metadata.attributes.smGridTemplateColumns
+										.default,
+							} );
+						} }
+					>
+						<ResponsiveSettingsContainer
+							label={ 'grid-template-columns' }
+							defaultBreakpoint={ deviceType.toLowerCase() }
+							desktopControls={ () => (
+								<>
+									<ToggleGroupControl
+										hideLabelFromVision
+										className="unitone-toggle-group-control"
+										value={ columnsOption }
+										onChange={ ( value ) => {
 											setAttributes( {
-												rows: parseNumber( value ),
-											} )
-										}
-										min={ 1 }
-										max={ 12 }
-										step={ 1 }
-									/>
-								) }
+												columnsOption: value,
+											} );
+										} }
+										isBlock
+									>
+										<ToggleGroupControlOption
+											value="min"
+											label={ __(
+												'Minimum width',
+												'unitone'
+											) }
+										/>
+										<ToggleGroupControlOption
+											value="columns"
+											label={ __(
+												'Columns count',
+												'unitone'
+											) }
+										/>
+										<ToggleGroupControlOption
+											value="free"
+											label={ __(
+												'Free input',
+												'unitone'
+											) }
+										/>
+									</ToggleGroupControl>
 
-								{ 'free' === rowsOption && (
-									<TextControl
-										value={ gridTemplateRows }
-										onChange={ ( value ) =>
+									<div className="unitone-toggle-group-control__body">
+										{ 'min' === columnsOption && (
+											<>
+												<UnitControl
+													label={ __(
+														'Minimum width',
+														'unitone'
+													) }
+													value={ columnMinWidth }
+													onChange={ ( value ) =>
+														setAttributes( {
+															columnMinWidth:
+																value,
+														} )
+													}
+												/>
+
+												<ToggleGroupControl
+													label={ __(
+														'Auto repeat',
+														'unitone'
+													) }
+													value={ columnAutoRepeat }
+													onChange={ ( value ) => {
+														setAttributes( {
+															columnAutoRepeat:
+																value,
+														} );
+													} }
+													isBlock
+												>
+													<ToggleGroupControlOption
+														value="auto-fit"
+														label="auto-fit"
+													/>
+													<ToggleGroupControlOption
+														value="auto-fill"
+														label="auto-fill"
+													/>
+												</ToggleGroupControl>
+											</>
+										) }
+
+										{ 'columns' === columnsOption && (
+											<RangeControl
+												label={ __(
+													'Columns count',
+													'unitone'
+												) }
+												value={ parseNumber( columns ) }
+												onChange={ ( value ) =>
+													setAttributes( {
+														columns:
+															parseNumber(
+																value
+															),
+													} )
+												}
+												min={ 1 }
+												max={ 12 }
+												step={ 1 }
+											/>
+										) }
+
+										{ 'free' === columnsOption && (
+											<TextControl
+												value={ gridTemplateColumns }
+												onChange={ ( value ) =>
+													setAttributes( {
+														gridTemplateColumns:
+															value,
+													} )
+												}
+											/>
+										) }
+									</div>
+								</>
+							) }
+							tabletControls={ () => (
+								<>
+									<ToggleGroupControl
+										hideLabelFromVision
+										className="unitone-toggle-group-control"
+										value={ mdColumnsOption }
+										onChange={ ( value ) => {
 											setAttributes( {
-												gridTemplateRows: value,
-											} )
-										}
-									/>
-								) }
-							</div>
-						</ToolsPanelItem>
-					) }
-
-					{ 'Tablet' === deviceType && (
-						<ToolsPanelItem
-							hasValue={ () =>
-								rowsOption !==
-								metadata.attributes.mdRowsOption.default
-							}
-							isShownByDefault
-							label={ `grid-template-rows (${ __(
-								'For tablet / mobile',
-								'unitone'
-							) })` }
-							onDeselect={ () =>
-								setAttributes( {
-									mdRowsOption:
-										metadata.attributes.mdRowsOption
-											.default,
-									mdRows: metadata.attributes.mdRows.default,
-									mdGridTemplateRows:
-										metadata.attributes.mdGridTemplateRows
-											.default,
-								} )
-							}
-						>
-							<ToggleGroupControl
-								label={ `grid-template-rows (${ __(
-									'For tablet / mobile',
-									'unitone'
-								) })` }
-								className="unitone-toggle-group-control"
-								value={ mdRowsOption }
-								onChange={ ( value ) => {
-									setAttributes( {
-										mdRowsOption: value,
-									} );
-								} }
-								isBlock
-							>
-								<ToggleGroupControlOption
-									value="rows"
-									label={ __( 'Rows count', 'unitone' ) }
-								/>
-								<ToggleGroupControlOption
-									value="free"
-									label={ __( 'Free input', 'unitone' ) }
-								/>
-							</ToggleGroupControl>
-
-							<div className="unitone-toggle-group-control__body">
-								{ 'rows' === mdRowsOption && (
-									<>
-										<RangeControl
+												mdColumnsOption: value,
+											} );
+										} }
+										isBlock
+									>
+										<ToggleGroupControlOption
+											value="min"
 											label={ __(
-												'Rows count',
+												'Minimum width',
 												'unitone'
 											) }
-											value={ parseNumber( rows ) }
-											min={ 1 }
-											max={ 12 }
-											step={ 1 }
-											disabled
 										/>
-
-										<RangeControl
-											label={ `${ __(
-												'Rows count',
+										<ToggleGroupControlOption
+											value="columns"
+											label={ __(
+												'Columns count',
 												'unitone'
-											) } (${ __(
-												'For tablet / mobile',
-												'unitone'
-											) })` }
-											value={ parseNumber( mdRows ) }
-											onChange={ ( value ) =>
-												setAttributes( {
-													mdRows: parseNumber(
-														value
-													),
-												} )
-											}
-											min={ 1 }
-											max={ 12 }
-											step={ 1 }
-											allowReset
+											) }
 										/>
-									</>
-								) }
-
-								{ 'free' === mdRowsOption && (
-									<>
-										<TextControl
+										<ToggleGroupControlOption
+											value="free"
 											label={ __(
 												'Free input',
 												'unitone'
 											) }
-											value={ gridTemplateRows }
-											disabled
 										/>
+									</ToggleGroupControl>
 
-										<TextControl
-											label={ `${ __(
+									<div className="unitone-toggle-group-control__body">
+										{ 'min' === mdColumnsOption && (
+											<UnitControl
+												label={ `${ __(
+													'Minimum width',
+													'unitone'
+												) } (${ __(
+													'For tablet / mobile',
+													'unitone'
+												) })` }
+												value={ mdColumnMinWidth }
+												onChange={ ( value ) =>
+													setAttributes( {
+														mdColumnMinWidth: value,
+													} )
+												}
+											/>
+										) }
+
+										{ 'columns' === mdColumnsOption && (
+											<RangeControl
+												label={ `${ __(
+													'Columns count',
+													'unitone'
+												) } (${ __(
+													'For tablet / mobile',
+													'unitone'
+												) })` }
+												value={ parseNumber(
+													mdColumns
+												) }
+												onChange={ ( value ) =>
+													setAttributes( {
+														mdColumns:
+															parseNumber(
+																value
+															),
+													} )
+												}
+												min={ 1 }
+												max={ 12 }
+												step={ 1 }
+												allowReset
+											/>
+										) }
+
+										{ 'free' === mdColumnsOption && (
+											<TextControl
+												label={ `${ __(
+													'Free input',
+													'unitone'
+												) } (${ __(
+													'For tablet / mobile',
+													'unitone'
+												) })` }
+												value={ mdGridTemplateColumns }
+												onChange={ ( value ) =>
+													setAttributes( {
+														mdGridTemplateColumns:
+															value,
+													} )
+												}
+											/>
+										) }
+									</div>
+								</>
+							) }
+							mobileControls={ () => (
+								<>
+									<ToggleGroupControl
+										hideLabelFromVision
+										className="unitone-toggle-group-control"
+										value={ smColumnsOption }
+										onChange={ ( value ) => {
+											setAttributes( {
+												smColumnsOption: value,
+											} );
+										} }
+										isBlock
+									>
+										<ToggleGroupControlOption
+											value="min"
+											label={ __(
+												'Minimum width',
+												'unitone'
+											) }
+										/>
+										<ToggleGroupControlOption
+											value="columns"
+											label={ __(
+												'Columns count',
+												'unitone'
+											) }
+										/>
+										<ToggleGroupControlOption
+											value="free"
+											label={ __(
 												'Free input',
 												'unitone'
-											) } (${ __(
-												'For tablet / mobile',
-												'unitone'
-											) })` }
-											value={ mdGridTemplateRows }
-											onChange={ ( value ) =>
-												setAttributes( {
-													mdGridTemplateRows: value,
-												} )
-											}
+											) }
 										/>
-									</>
-								) }
-							</div>
-						</ToolsPanelItem>
-					) }
+									</ToggleGroupControl>
 
-					{ 'Mobile' === deviceType && (
-						<ToolsPanelItem
-							hasValue={ () =>
-								rowsOption !==
+									<div className="unitone-toggle-group-control__body">
+										{ 'min' === smColumnsOption && (
+											<UnitControl
+												label={ `${ __(
+													'Minimum width',
+													'unitone'
+												) } (${ __(
+													'For mobile',
+													'unitone'
+												) })` }
+												value={ smColumnMinWidth }
+												onChange={ ( value ) =>
+													setAttributes( {
+														smColumnMinWidth: value,
+													} )
+												}
+											/>
+										) }
+
+										{ 'columns' === smColumnsOption && (
+											<RangeControl
+												label={ `${ __(
+													'Columns count',
+													'unitone'
+												) } (${ __(
+													'For mobile',
+													'unitone'
+												) })` }
+												value={ parseNumber(
+													smColumns
+												) }
+												onChange={ ( value ) =>
+													setAttributes( {
+														smColumns:
+															parseNumber(
+																value
+															),
+													} )
+												}
+												min={ 1 }
+												max={ 12 }
+												step={ 1 }
+												allowReset
+											/>
+										) }
+
+										{ 'free' === smColumnsOption && (
+											<TextControl
+												label={ `${ __(
+													'Free input',
+													'unitone'
+												) } (${ __(
+													'For mobile',
+													'unitone'
+												) })` }
+												value={ smGridTemplateColumns }
+												onChange={ ( value ) =>
+													setAttributes( {
+														smGridTemplateColumns:
+															value,
+													} )
+												}
+											/>
+										) }
+									</div>
+								</>
+							) }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							rowsOption !==
+								metadata.attributes.rowsOption.default ||
+							mdRowsOption !==
+								metadata.attributes.mdRowsOption.default ||
+							smRowsOption !==
 								metadata.attributes.smRowsOption.default
-							}
-							isShownByDefault
-							label={ `grid-template-rows (${ __(
-								'For mobile',
-								'unitone'
-							) })` }
-							onDeselect={ () =>
-								setAttributes( {
-									smRowsOption:
-										metadata.attributes.smRowsOption
-											.default,
-									smRows: metadata.attributes.smRows.default,
-									smGridTemplateRows:
-										metadata.attributes.smGridTemplateRows
-											.default,
-								} )
-							}
-						>
-							<ToggleGroupControl
-								label={ `grid-template-rows (${ __(
-									'For mobile',
-									'unitone'
-								) })` }
-								className="unitone-toggle-group-control"
-								value={ mdRowsOption }
-								onChange={ ( value ) => {
-									setAttributes( {
-										smRowsOption: value,
-									} );
-								} }
-								isBlock
-							>
-								<ToggleGroupControlOption
-									value="rows"
-									label={ __( 'Rows count', 'unitone' ) }
-								/>
-								<ToggleGroupControlOption
-									value="free"
-									label={ __( 'Free input', 'unitone' ) }
-								/>
-							</ToggleGroupControl>
+						}
+						isShownByDefault
+						label={ 'grid-template-rows' }
+						onDeselect={ () =>
+							setAttributes( {
+								rowsOption:
+									metadata.attributes.rowsOption.default,
+								rows: metadata.attributes.rows.default,
+								gridTemplateRows:
+									metadata.attributes.gridTemplateRows
+										.default,
 
-							<div className="unitone-toggle-group-control__body">
-								{ 'rows' === mdRowsOption && (
-									<>
-										<RangeControl
+								mdRowsOption:
+									metadata.attributes.mdRowsOption.default,
+								mdRows: metadata.attributes.mdRows.default,
+								mdGridTemplateRows:
+									metadata.attributes.mdGridTemplateRows
+										.default,
+
+								smRowsOption:
+									metadata.attributes.smRowsOption.default,
+								smRows: metadata.attributes.smRows.default,
+								smGridTemplateRows:
+									metadata.attributes.smGridTemplateRows
+										.default,
+							} )
+						}
+					>
+						<ResponsiveSettingsContainer
+							label={ 'grid-template-rows' }
+							defaultBreakpoint={ deviceType.toLowerCase() }
+							desktopControls={ () => (
+								<>
+									<ToggleGroupControl
+										hideLabelFromVision
+										className="unitone-toggle-group-control"
+										value={ rowsOption }
+										onChange={ ( value ) => {
+											setAttributes( {
+												rowsOption: value,
+												rows: metadata.attributes.rows
+													.default,
+												gridTemplateRows:
+													metadata.attributes
+														.gridTemplateRows
+														.default,
+											} );
+										} }
+										isBlock
+									>
+										<ToggleGroupControlOption
+											value="rows"
 											label={ __(
 												'Rows count',
 												'unitone'
 											) }
-											value={ parseNumber( rows ) }
-											min={ 1 }
-											max={ 12 }
-											step={ 1 }
-											disabled
 										/>
-
-										<RangeControl
-											label={ `${ __(
-												'Rows count',
-												'unitone'
-											) } (${ __(
-												'For tablet / mobile',
-												'unitone'
-											) })` }
-											value={ parseNumber( mdRows ) }
-											min={ 1 }
-											max={ 12 }
-											step={ 1 }
-											disabled
-										/>
-
-										<RangeControl
-											label={ `${ __(
-												'Rows count',
-												'unitone'
-											) } (${ __(
-												'For mobile',
-												'unitone'
-											) })` }
-											value={ parseNumber( smRows ) }
-											onChange={ ( value ) =>
-												setAttributes( {
-													smRows: parseNumber(
-														value
-													),
-												} )
-											}
-											min={ 1 }
-											max={ 12 }
-											step={ 1 }
-											allowReset
-										/>
-									</>
-								) }
-
-								{ 'free' === smRowsOption && (
-									<>
-										<TextControl
+										<ToggleGroupControlOption
+											value="free"
 											label={ __(
 												'Free input',
 												'unitone'
 											) }
-											value={ gridTemplateRows }
-											disabled
 										/>
+									</ToggleGroupControl>
 
-										<TextControl
-											label={ `${ __(
+									<div className="unitone-toggle-group-control__body">
+										{ 'rows' === rowsOption && (
+											<RangeControl
+												label={ __(
+													'Rows count',
+													'unitone'
+												) }
+												value={ parseNumber( rows ) }
+												onChange={ ( value ) =>
+													setAttributes( {
+														rows: parseNumber(
+															value
+														),
+													} )
+												}
+												min={ 1 }
+												max={ 12 }
+												step={ 1 }
+											/>
+										) }
+
+										{ 'free' === rowsOption && (
+											<TextControl
+												value={ gridTemplateRows }
+												onChange={ ( value ) =>
+													setAttributes( {
+														gridTemplateRows: value,
+													} )
+												}
+											/>
+										) }
+									</div>
+								</>
+							) }
+							tabletControls={ () => (
+								<>
+									<ToggleGroupControl
+										hideLabelFromVision
+										className="unitone-toggle-group-control"
+										value={ mdRowsOption }
+										onChange={ ( value ) => {
+											setAttributes( {
+												mdRowsOption: value,
+											} );
+										} }
+										isBlock
+									>
+										<ToggleGroupControlOption
+											value="rows"
+											label={ __(
+												'Rows count',
+												'unitone'
+											) }
+										/>
+										<ToggleGroupControlOption
+											value="free"
+											label={ __(
 												'Free input',
 												'unitone'
-											) } (${ __(
-												'For tablet / mobile',
-												'unitone'
-											) })` }
-											value={ mdGridTemplateRows }
-											disabled
+											) }
 										/>
+									</ToggleGroupControl>
 
-										<TextControl
-											label={ `${ __(
+									<div className="unitone-toggle-group-control__body">
+										{ 'rows' === mdRowsOption && (
+											<RangeControl
+												label={ `${ __(
+													'Rows count',
+													'unitone'
+												) } (${ __(
+													'For tablet / mobile',
+													'unitone'
+												) })` }
+												value={ parseNumber( mdRows ) }
+												onChange={ ( value ) =>
+													setAttributes( {
+														mdRows: parseNumber(
+															value
+														),
+													} )
+												}
+												min={ 1 }
+												max={ 12 }
+												step={ 1 }
+												allowReset
+											/>
+										) }
+
+										{ 'free' === mdRowsOption && (
+											<TextControl
+												label={ `${ __(
+													'Free input',
+													'unitone'
+												) } (${ __(
+													'For tablet / mobile',
+													'unitone'
+												) })` }
+												value={ mdGridTemplateRows }
+												onChange={ ( value ) =>
+													setAttributes( {
+														mdGridTemplateRows:
+															value,
+													} )
+												}
+											/>
+										) }
+									</div>
+								</>
+							) }
+							mobileControls={ () => (
+								<>
+									<ToggleGroupControl
+										hideLabelFromVision
+										className="unitone-toggle-group-control"
+										value={ mdRowsOption }
+										onChange={ ( value ) => {
+											setAttributes( {
+												smRowsOption: value,
+											} );
+										} }
+										isBlock
+									>
+										<ToggleGroupControlOption
+											value="rows"
+											label={ __(
+												'Rows count',
+												'unitone'
+											) }
+										/>
+										<ToggleGroupControlOption
+											value="free"
+											label={ __(
 												'Free input',
 												'unitone'
-											) } (${ __(
-												'For mobile',
-												'unitone'
-											) })` }
-											value={ smGridTemplateRows }
-											onChange={ ( value ) =>
-												setAttributes( {
-													smGridTemplateRows: value,
-												} )
-											}
+											) }
 										/>
-									</>
-								) }
-							</div>
-						</ToolsPanelItem>
-					) }
+									</ToggleGroupControl>
+
+									<div className="unitone-toggle-group-control__body">
+										{ 'rows' === smRowsOption && (
+											<RangeControl
+												label={ `${ __(
+													'Rows count',
+													'unitone'
+												) } (${ __(
+													'For mobile',
+													'unitone'
+												) })` }
+												value={ parseNumber( smRows ) }
+												onChange={ ( value ) =>
+													setAttributes( {
+														smRows: parseNumber(
+															value
+														),
+													} )
+												}
+												min={ 1 }
+												max={ 12 }
+												step={ 1 }
+												allowReset
+											/>
+										) }
+
+										{ 'free' === smRowsOption && (
+											<TextControl
+												label={ `${ __(
+													'Free input',
+													'unitone'
+												) } (${ __(
+													'For mobile',
+													'unitone'
+												) })` }
+												value={ smGridTemplateRows }
+												onChange={ ( value ) =>
+													setAttributes( {
+														smGridTemplateRows:
+															value,
+													} )
+												}
+											/>
+										) }
+									</div>
+								</>
+							) }
+						/>
+					</ToolsPanelItem>
 				</ToolsPanel>
 			</InspectorControls>
 

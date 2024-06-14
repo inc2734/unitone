@@ -199,6 +199,12 @@
 	}
 }
 
+.unitone-responsive-settings-container {
+	.components-base-control__label {
+		margin-bottom: 0 !important;
+	}
+}
+
 [data-rich-text-placeholder] {
 	font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
 	font-feature-settings: initial;

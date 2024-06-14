@@ -1,9 +1,15 @@
 import {
+	BaseControl,
+	DropdownMenu,
+	Flex,
+	FlexBlock,
+	FlexItem,
 	SelectControl,
 	RangeControl,
-	BaseControl,
 } from '@wordpress/components';
 
+import { useState, useMemo, useEffect } from '@wordpress/element';
+import { desktop, tablet, mobile } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { isNumber } from './utils';
@@ -139,6 +145,73 @@ export function SpacingSizeControl( {
 					/>
 				</div>
 			) }
+		</>
+	);
+}
+
+export function ResponsiveSettingsContainer( {
+	label,
+	defaultBreakpoint,
+	desktopControls,
+	tabletControls,
+	mobileControls,
+} ) {
+	const [ breakpoint, setBreakpoint ] = useState( defaultBreakpoint );
+
+	useEffect( () => {
+		setBreakpoint( defaultBreakpoint );
+	}, [ defaultBreakpoint ] );
+
+	const icon = useMemo( () => {
+		if ( 'desktop' === breakpoint ) {
+			return desktop;
+		} else if ( 'tablet' === breakpoint ) {
+			return tablet;
+		} else if ( 'mobile' === breakpoint ) {
+			return mobile;
+		}
+		return desktop;
+	}, [ breakpoint ] );
+
+	return (
+		<>
+			<Flex className="unitone-responsive-settings-container" gap={ 0 }>
+				<FlexItem>
+					<DropdownMenu
+						icon={ icon }
+						controls={ [
+							{
+								icon: desktop,
+								onClick: () => setBreakpoint( 'desktop' ),
+								title: __( 'Desktop', 'unitone' ),
+							},
+							{
+								icon: tablet,
+								onClick: () => setBreakpoint( 'tablet' ),
+								title: __( 'Tablet / Mobile', 'unitone' ),
+							},
+							{
+								icon: mobile,
+								onClick: () => setBreakpoint( 'mobile' ),
+								title: __( 'Mobile', 'unitone' ),
+							},
+						] }
+						label={ __(
+							'Switch to settings based on device size',
+							'unitone'
+						) }
+					/>
+				</FlexItem>
+				<FlexBlock>
+					<BaseControl label={ label } id={ label } />
+				</FlexBlock>
+			</Flex>
+
+			<div>
+				{ 'desktop' === breakpoint && desktopControls() }
+				{ 'tablet' === breakpoint && tabletControls() }
+				{ 'mobile' === breakpoint && mobileControls() }
+			</div>
 		</>
 	);
 }

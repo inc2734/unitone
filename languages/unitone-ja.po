@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-05-31T04:38:41+00:00\n"
-"PO-Revision-Date: 2024-05-31 13:41+0900\n"
+"POT-Creation-Date: 2024-06-14T11:10:16+00:00\n"
+"PO-Revision-Date: 2024-06-14 20:12+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -40,18 +40,18 @@ msgstr "https://2inc.org"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:385 patterns/footer-2.php:22
-#: patterns/footer-3.php:51 patterns/footer-3.php:59 patterns/footer-3.php:67
-#: patterns/footer-4.php:31 patterns/footer-4.php:39 patterns/footer-4.php:47
-#: patterns/footer-5.php:29 patterns/footer-5.php:37 patterns/footer-5.php:45
+#: App/Controller/Manager/Manager.php:385 patterns/footer-2.php:21
+#: patterns/footer-3.php:50 patterns/footer-3.php:58 patterns/footer-3.php:66
+#: patterns/footer-4.php:30 patterns/footer-4.php:38 patterns/footer-4.php:46
+#: patterns/footer-5.php:28 patterns/footer-5.php:36 patterns/footer-5.php:44
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:428 patterns/footer-2.php:25
-#: patterns/footer-3.php:54 patterns/footer-3.php:62 patterns/footer-3.php:70
-#: patterns/footer-4.php:34 patterns/footer-4.php:42 patterns/footer-4.php:50
-#: patterns/footer-5.php:32 patterns/footer-5.php:40 patterns/footer-5.php:48
-#: patterns/private/template/home/page-header/default.php:8
+#: App/Controller/Manager/Manager.php:428 patterns/footer-2.php:24
+#: patterns/footer-3.php:53 patterns/footer-3.php:61 patterns/footer-3.php:69
+#: patterns/footer-4.php:33 patterns/footer-4.php:41 patterns/footer-4.php:49
+#: patterns/footer-5.php:31 patterns/footer-5.php:39 patterns/footer-5.php:47
+#: patterns/private/template/home/page-header/default.php:7
 #: patterns/private/template/home/page-header/image.php:22
 msgid "Blog"
 msgstr "ブログ"
@@ -341,126 +341,146 @@ msgid "Main Area (One Column / Page Header (Slim)) for Pages"
 msgstr "固定ページのメインエリア（1カラム / ページヘッダー（スリム））"
 
 #: inc/block-patterns.php:363
+msgid "Main Area (One Column / Page Header (Wide)) for Pages"
+msgstr "固定ページのメインエリア（1カラム / ページヘッダー（幅広））"
+
+#: inc/block-patterns.php:369
 msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
 msgstr ""
 "固定ページのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:369
+#: inc/block-patterns.php:375
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Pages"
 msgstr ""
 "固定ページのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:375
+#: inc/block-patterns.php:381
 msgid "Main Area (Right Sidebar) for Pages"
 msgstr "固定ページのメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:381 inc/template-part-areas.php:169
+#: inc/block-patterns.php:387 inc/template-part-areas.php:169
 msgid "Page Header for Pages"
 msgstr "固定ページのページヘッダー"
 
-#: inc/block-patterns.php:387
+#: inc/block-patterns.php:393
 msgid "Page Header (Featured Image) for Pages"
 msgstr "固定ページのページヘッダー（アイキャッチ画像）"
 
-#: inc/block-patterns.php:393
+#: inc/block-patterns.php:399
 msgid "Page Header (Image) for Pages"
 msgstr "固定ページのページヘッダー（画像）"
 
-#: inc/block-patterns.php:399
+#: inc/block-patterns.php:405
 msgid "Page Header (Slim) for Pages"
 msgstr "固定ページのページヘッダー（スリム）"
 
-#: inc/block-patterns.php:405
+#: inc/block-patterns.php:411
+msgid "Page Header (Wide) for Pages"
+msgstr "固定ページのページヘッダー（幅広）"
+
+#: inc/block-patterns.php:417
 msgid "Main Area (One Column) for Search Results"
 msgstr "検索結果のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:411
+#: inc/block-patterns.php:423
 msgid "Main Area (One Column / Page Header (Image)) for Search Results"
 msgstr "検索結果のメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/block-patterns.php:417
+#: inc/block-patterns.php:429
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
 msgstr ""
 "検索結果のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:423
+#: inc/block-patterns.php:435
 msgid "Main Area (Right Sidebar) for Search Results"
 msgstr "検索結果のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:429 inc/template-part-areas.php:253
+#: inc/block-patterns.php:441 inc/template-part-areas.php:253
 msgid "Page Header for Search Results"
 msgstr "検索結果のページヘッダー"
 
-#: inc/block-patterns.php:435
+#: inc/block-patterns.php:447
 msgid "Page Header (Image) for Search Results"
 msgstr "検索結果のページヘッダー（画像）"
 
-#: inc/block-patterns.php:441
+#: inc/block-patterns.php:453
 msgid "Main Area (One Column) for Single Posts"
 msgstr "個別投稿のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:447
+#: inc/block-patterns.php:459
 msgid "Main Area (Blank) for Single Posts"
 msgstr "個別投稿のメインエリア（空）"
 
-#: inc/block-patterns.php:453
+#: inc/block-patterns.php:465
 msgid "Main Area (One Column / Page Header (Featured Image)) for Single Posts"
 msgstr "個別投稿のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:459
+#: inc/block-patterns.php:471
 msgid "Main Area (Page Header (Image)) for Single Posts"
 msgstr "個別投稿のメインエリア（ページヘッダー（画像））"
 
-#: inc/block-patterns.php:465
+#: inc/block-patterns.php:477
+msgid "Main Area (Page Header (Slim)) for Single Posts"
+msgstr "個別投稿のメインエリア（ページヘッダー（スリム））"
+
+#: inc/block-patterns.php:483
+msgid "Main Area (Page Header (Wide)) for Single Posts"
+msgstr "個別投稿のメインエリア（ページヘッダー（幅広））"
+
+#: inc/block-patterns.php:489
 msgid ""
 "Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts"
 msgstr ""
 "個別投稿のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:471
+#: inc/block-patterns.php:495
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Posts"
 msgstr ""
 "個別投稿のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:477
+#: inc/block-patterns.php:501
 msgid "Main Area (Right Sidebar) for Single Posts"
 msgstr "個別投稿のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:483 inc/template-part-areas.php:148
+#: inc/block-patterns.php:507 inc/template-part-areas.php:148
 msgid "Page Header for Single Posts"
 msgstr "個別投稿のページヘッダー"
 
-#: inc/block-patterns.php:489
+#: inc/block-patterns.php:513
 msgid "Page Header (Featured Image) for Single Posts"
 msgstr "個別投稿のページヘッダー（アイキャッチ画像）"
 
-#: inc/block-patterns.php:495
+#: inc/block-patterns.php:519
 msgid "Page Header (Image) for Single Posts"
 msgstr "個別投稿のページヘッダー（画像）"
 
-#: inc/block-patterns.php:501
+#: inc/block-patterns.php:525
+msgid "Page Header (Slim) for Single Posts"
+msgstr "個別投稿のページヘッダー（スリム）"
+
+#: inc/block-patterns.php:531
 msgid "Page Header (Wide) for Single Posts"
 msgstr "個別投稿のページヘッダー（幅広）"
 
-#: inc/block-patterns.php:507
+#: inc/block-patterns.php:537
 msgid "Main Area (One Column) for Single Products"
 msgstr "単一の商品のメインエリア（1カラム）"
 
-#: inc/block-patterns.php:513
+#: inc/block-patterns.php:543
 msgid "Main Area (One Column / Page Header (Image)) for Single Products"
 msgstr ""
 "単一の商品のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:519
+#: inc/block-patterns.php:549
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
 msgstr ""
 "単一の商品のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/block-patterns.php:525
+#: inc/block-patterns.php:555
 msgid "Main Area (Right Sidebar) for Single Products"
 msgstr "単一の商品のメインエリア（右サイドバー）"
 
-#: inc/block-patterns.php:531
+#: inc/block-patterns.php:561
 msgid "Page Header (Image) for Single Products"
 msgstr "単一の商品のページヘッダー（画像）"
 
@@ -1015,24 +1035,24 @@ msgctxt "Pattern title"
 msgid "Footer 2"
 msgstr "フッター2"
 
+#: patterns/footer-2.php:22 patterns/footer-3.php:51 patterns/footer-3.php:59
+#: patterns/footer-3.php:67 patterns/footer-4.php:31 patterns/footer-4.php:39
+#: patterns/footer-4.php:47 patterns/footer-5.php:29 patterns/footer-5.php:37
+#: patterns/footer-5.php:45
+msgid "About"
+msgstr "このサイトについて"
+
 #: patterns/footer-2.php:23 patterns/footer-3.php:52 patterns/footer-3.php:60
 #: patterns/footer-3.php:68 patterns/footer-4.php:32 patterns/footer-4.php:40
 #: patterns/footer-4.php:48 patterns/footer-5.php:30 patterns/footer-5.php:38
 #: patterns/footer-5.php:46
-msgid "About"
-msgstr "このサイトについて"
-
-#: patterns/footer-2.php:24 patterns/footer-3.php:53 patterns/footer-3.php:61
-#: patterns/footer-3.php:69 patterns/footer-4.php:33 patterns/footer-4.php:41
-#: patterns/footer-4.php:49 patterns/footer-5.php:31 patterns/footer-5.php:39
-#: patterns/footer-5.php:47
 msgid "Services"
 msgstr "サービス"
 
-#: patterns/footer-2.php:26 patterns/footer-3.php:55 patterns/footer-3.php:63
-#: patterns/footer-3.php:71 patterns/footer-4.php:35 patterns/footer-4.php:43
-#: patterns/footer-4.php:51 patterns/footer-5.php:33 patterns/footer-5.php:41
-#: patterns/footer-5.php:49
+#: patterns/footer-2.php:25 patterns/footer-3.php:54 patterns/footer-3.php:62
+#: patterns/footer-3.php:70 patterns/footer-4.php:34 patterns/footer-4.php:42
+#: patterns/footer-4.php:50 patterns/footer-5.php:32 patterns/footer-5.php:40
+#: patterns/footer-5.php:48
 msgid "Contact"
 msgstr "お問い合わせ"
 
@@ -1101,10 +1121,10 @@ msgctxt "Pattern title"
 msgid "Services"
 msgstr "サービス"
 
-#: patterns/private/template/404/main/one-column-page-header-image.php:12
-#: patterns/private/template/404/main/one-column.php:12
-#: patterns/private/template/404/main/right-sidebar-page-header-image.php:20
-#: patterns/private/template/404/main/right-sidebar.php:20
+#: patterns/private/template/404/main/one-column-page-header-image.php:13
+#: patterns/private/template/404/main/one-column.php:13
+#: patterns/private/template/404/main/right-sidebar-page-header-image.php:19
+#: patterns/private/template/404/main/right-sidebar.php:19
 msgid ""
 "Woops! Page not found. The page you are looking for may be moved or deleted. "
 "Please search this search box."
@@ -1112,7 +1132,7 @@ msgstr ""
 "ページが見つかりません。お探しのページは移動または削除された可能性がありま"
 "す。下記の検索ボックスで検索してください。"
 
-#: patterns/private/template/search/page-header/default.php:8
+#: patterns/private/template/search/page-header/default.php:7
 #: patterns/private/template/search/page-header/image.php:22
 msgid "Search results"
 msgstr "検索結果"
@@ -1466,6 +1486,11 @@ msgctxt "Pattern title"
 msgid "Pages: One Column / Page Header (Slim)"
 msgstr "固定ページ：1カラム / ページヘッダー（スリム）"
 
+#: patterns/template-page-one-column-page-header-wide.php
+msgctxt "Pattern title"
+msgid "Pages: One Column / Page Header (Wide)"
+msgstr "固定ページ：1カラム / ページヘッダー（幅広）"
+
 #: patterns/template-page-one-column.php
 msgctxt "Pattern title"
 msgid "Pages: One Column"
@@ -1550,6 +1575,16 @@ msgstr "個別投稿：1カラム / ページヘッダー（アイキャッチ�
 msgctxt "Pattern title"
 msgid "Single Posts: One Column / Page Header (Image)"
 msgstr "個別投稿：1カラム / ページヘッダー（画像）"
+
+#: patterns/template-single-one-column-page-header-slim.php
+msgctxt "Pattern title"
+msgid "Single Posts: One Column / Page Header (Slim)"
+msgstr "個別投稿：1カラム / ページヘッダー（スリム）"
+
+#: patterns/template-single-one-column-page-header-wide.php
+msgctxt "Pattern title"
+msgid "Single Posts: One Column / Page Header (Wide)"
+msgstr "個別投稿：1カラム / ページヘッダー（幅広）"
 
 #: patterns/template-single-one-column.php
 msgctxt "Pattern title"
@@ -3517,6 +3552,11 @@ msgstr "固定ページ：1カラム / ページヘッダー（スリム）"
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Pages: One Column / Page Header (Wide)"
+msgstr "固定ページ：1カラム / ページヘッダー（幅広）"
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Pages: Only Header and Footer"
 msgstr "固定ページ：ヘッダー・フッター"
 
@@ -3574,6 +3614,16 @@ msgstr "個別投稿：1カラム / ページヘッダー（アイキャッチ�
 msgctxt "Custom template name"
 msgid "Single Posts: One Column / Page Header (Image)"
 msgstr "個別投稿：1カラム / ページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: One Column / Page Header (Slim)"
+msgstr "個別投稿：1カラム / ページヘッダー（スリム）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: One Column / Page Header (Wide)"
+msgstr "個別投稿：1カラム / ページヘッダー（幅広）"
 
 #: theme.json
 msgctxt "Custom template name"

@@ -1,4 +1,4 @@
-<!-- wp:unitone/section {"tagName":"header","align":"full","unitone":{"padding":"0","gutters":"0","maxWidth":"var(--wp--custom--content-max-width)"}} -->
+<!-- wp:unitone/section {"tagName":"header","align":"full","unitone":{"padding":"0","gutters":"0"}} -->
 <header class="alignfull unitone-section">
 	<div data-unitone-layout="gutters">
 		<div data-unitone-layout="container">

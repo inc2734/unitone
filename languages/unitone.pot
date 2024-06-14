@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 11.5.3\n"
+"Project-Id-Version: unitone 11.5.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-31T04:41:39+00:00\n"
+"POT-Creation-Date: 2024-06-14T11:10:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -43,31 +43,31 @@ msgid "unitone Setup"
 msgstr ""
 
 #: App/Controller/Manager/Manager.php:385
-#: patterns/footer-2.php:22
-#: patterns/footer-3.php:51
-#: patterns/footer-3.php:59
-#: patterns/footer-3.php:67
-#: patterns/footer-4.php:31
-#: patterns/footer-4.php:39
-#: patterns/footer-4.php:47
-#: patterns/footer-5.php:29
-#: patterns/footer-5.php:37
-#: patterns/footer-5.php:45
+#: patterns/footer-2.php:21
+#: patterns/footer-3.php:50
+#: patterns/footer-3.php:58
+#: patterns/footer-3.php:66
+#: patterns/footer-4.php:30
+#: patterns/footer-4.php:38
+#: patterns/footer-4.php:46
+#: patterns/footer-5.php:28
+#: patterns/footer-5.php:36
+#: patterns/footer-5.php:44
 msgid "Home"
 msgstr ""
 
 #: App/Controller/Manager/Manager.php:428
-#: patterns/footer-2.php:25
-#: patterns/footer-3.php:54
-#: patterns/footer-3.php:62
-#: patterns/footer-3.php:70
-#: patterns/footer-4.php:34
-#: patterns/footer-4.php:42
-#: patterns/footer-4.php:50
-#: patterns/footer-5.php:32
-#: patterns/footer-5.php:40
-#: patterns/footer-5.php:48
-#: patterns/private/template/home/page-header/default.php:8
+#: patterns/footer-2.php:24
+#: patterns/footer-3.php:53
+#: patterns/footer-3.php:61
+#: patterns/footer-3.php:69
+#: patterns/footer-4.php:33
+#: patterns/footer-4.php:41
+#: patterns/footer-4.php:49
+#: patterns/footer-5.php:31
+#: patterns/footer-5.php:39
+#: patterns/footer-5.php:47
+#: patterns/private/template/home/page-header/default.php:7
 #: patterns/private/template/home/page-header/image.php:22
 msgid "Blog"
 msgstr ""
@@ -358,121 +358,141 @@ msgid "Main Area (One Column / Page Header (Slim)) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:363
-msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
+msgid "Main Area (One Column / Page Header (Wide)) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:369
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Pages"
+msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:375
-msgid "Main Area (Right Sidebar) for Pages"
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:381
+msgid "Main Area (Right Sidebar) for Pages"
+msgstr ""
+
+#: inc/block-patterns.php:387
 #: inc/template-part-areas.php:169
 msgid "Page Header for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:387
+#: inc/block-patterns.php:393
 msgid "Page Header (Featured Image) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:393
+#: inc/block-patterns.php:399
 msgid "Page Header (Image) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:399
+#: inc/block-patterns.php:405
 msgid "Page Header (Slim) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:405
-msgid "Main Area (One Column) for Search Results"
-msgstr ""
-
 #: inc/block-patterns.php:411
-msgid "Main Area (One Column / Page Header (Image)) for Search Results"
+msgid "Page Header (Wide) for Pages"
 msgstr ""
 
 #: inc/block-patterns.php:417
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
+msgid "Main Area (One Column) for Search Results"
 msgstr ""
 
 #: inc/block-patterns.php:423
-msgid "Main Area (Right Sidebar) for Search Results"
+msgid "Main Area (One Column / Page Header (Image)) for Search Results"
 msgstr ""
 
 #: inc/block-patterns.php:429
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
+msgstr ""
+
+#: inc/block-patterns.php:435
+msgid "Main Area (Right Sidebar) for Search Results"
+msgstr ""
+
+#: inc/block-patterns.php:441
 #: inc/template-part-areas.php:253
 msgid "Page Header for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:435
+#: inc/block-patterns.php:447
 msgid "Page Header (Image) for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:441
+#: inc/block-patterns.php:453
 msgid "Main Area (One Column) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:447
+#: inc/block-patterns.php:459
 msgid "Main Area (Blank) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:453
+#: inc/block-patterns.php:465
 msgid "Main Area (One Column / Page Header (Featured Image)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:459
+#: inc/block-patterns.php:471
 msgid "Main Area (Page Header (Image)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:465
-msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts"
-msgstr ""
-
-#: inc/block-patterns.php:471
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Posts"
-msgstr ""
-
 #: inc/block-patterns.php:477
-msgid "Main Area (Right Sidebar) for Single Posts"
+msgid "Main Area (Page Header (Slim)) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:483
+msgid "Main Area (Page Header (Wide)) for Single Posts"
+msgstr ""
+
+#: inc/block-patterns.php:489
+msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts"
+msgstr ""
+
+#: inc/block-patterns.php:495
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Posts"
+msgstr ""
+
+#: inc/block-patterns.php:501
+msgid "Main Area (Right Sidebar) for Single Posts"
+msgstr ""
+
+#: inc/block-patterns.php:507
 #: inc/template-part-areas.php:148
 msgid "Page Header for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:489
+#: inc/block-patterns.php:513
 msgid "Page Header (Featured Image) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:495
+#: inc/block-patterns.php:519
 msgid "Page Header (Image) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:501
-msgid "Page Header (Wide) for Single Posts"
-msgstr ""
-
-#: inc/block-patterns.php:507
-msgid "Main Area (One Column) for Single Products"
-msgstr ""
-
-#: inc/block-patterns.php:513
-msgid "Main Area (One Column / Page Header (Image)) for Single Products"
-msgstr ""
-
-#: inc/block-patterns.php:519
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
-msgstr ""
-
 #: inc/block-patterns.php:525
-msgid "Main Area (Right Sidebar) for Single Products"
+msgid "Page Header (Slim) for Single Posts"
 msgstr ""
 
 #: inc/block-patterns.php:531
+msgid "Page Header (Wide) for Single Posts"
+msgstr ""
+
+#: inc/block-patterns.php:537
+msgid "Main Area (One Column) for Single Products"
+msgstr ""
+
+#: inc/block-patterns.php:543
+msgid "Main Area (One Column / Page Header (Image)) for Single Products"
+msgstr ""
+
+#: inc/block-patterns.php:549
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
+msgstr ""
+
+#: inc/block-patterns.php:555
+msgid "Main Area (Right Sidebar) for Single Products"
+msgstr ""
+
+#: inc/block-patterns.php:561
 msgid "Page Header (Image) for Single Products"
 msgstr ""
 
@@ -1042,6 +1062,19 @@ msgctxt "Pattern title"
 msgid "Footer 2"
 msgstr ""
 
+#: patterns/footer-2.php:22
+#: patterns/footer-3.php:51
+#: patterns/footer-3.php:59
+#: patterns/footer-3.php:67
+#: patterns/footer-4.php:31
+#: patterns/footer-4.php:39
+#: patterns/footer-4.php:47
+#: patterns/footer-5.php:29
+#: patterns/footer-5.php:37
+#: patterns/footer-5.php:45
+msgid "About"
+msgstr ""
+
 #: patterns/footer-2.php:23
 #: patterns/footer-3.php:52
 #: patterns/footer-3.php:60
@@ -1052,32 +1085,19 @@ msgstr ""
 #: patterns/footer-5.php:30
 #: patterns/footer-5.php:38
 #: patterns/footer-5.php:46
-msgid "About"
-msgstr ""
-
-#: patterns/footer-2.php:24
-#: patterns/footer-3.php:53
-#: patterns/footer-3.php:61
-#: patterns/footer-3.php:69
-#: patterns/footer-4.php:33
-#: patterns/footer-4.php:41
-#: patterns/footer-4.php:49
-#: patterns/footer-5.php:31
-#: patterns/footer-5.php:39
-#: patterns/footer-5.php:47
 msgid "Services"
 msgstr ""
 
-#: patterns/footer-2.php:26
-#: patterns/footer-3.php:55
-#: patterns/footer-3.php:63
-#: patterns/footer-3.php:71
-#: patterns/footer-4.php:35
-#: patterns/footer-4.php:43
-#: patterns/footer-4.php:51
-#: patterns/footer-5.php:33
-#: patterns/footer-5.php:41
-#: patterns/footer-5.php:49
+#: patterns/footer-2.php:25
+#: patterns/footer-3.php:54
+#: patterns/footer-3.php:62
+#: patterns/footer-3.php:70
+#: patterns/footer-4.php:34
+#: patterns/footer-4.php:42
+#: patterns/footer-4.php:50
+#: patterns/footer-5.php:32
+#: patterns/footer-5.php:40
+#: patterns/footer-5.php:48
 msgid "Contact"
 msgstr ""
 
@@ -1146,14 +1166,14 @@ msgctxt "Pattern title"
 msgid "Services"
 msgstr ""
 
-#: patterns/private/template/404/main/one-column-page-header-image.php:12
-#: patterns/private/template/404/main/one-column.php:12
-#: patterns/private/template/404/main/right-sidebar-page-header-image.php:20
-#: patterns/private/template/404/main/right-sidebar.php:20
+#: patterns/private/template/404/main/one-column-page-header-image.php:13
+#: patterns/private/template/404/main/one-column.php:13
+#: patterns/private/template/404/main/right-sidebar-page-header-image.php:19
+#: patterns/private/template/404/main/right-sidebar.php:19
 msgid "Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box."
 msgstr ""
 
-#: patterns/private/template/search/page-header/default.php:8
+#: patterns/private/template/search/page-header/default.php:7
 #: patterns/private/template/search/page-header/image.php:22
 msgid "Search results"
 msgstr ""
@@ -1511,6 +1531,11 @@ msgctxt "Pattern title"
 msgid "Pages: One Column / Page Header (Slim)"
 msgstr ""
 
+#: patterns/template-page-one-column-page-header-wide.php
+msgctxt "Pattern title"
+msgid "Pages: One Column / Page Header (Wide)"
+msgstr ""
+
 #: patterns/template-page-one-column.php
 msgctxt "Pattern title"
 msgid "Pages: One Column"
@@ -1594,6 +1619,16 @@ msgstr ""
 #: patterns/template-single-one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template-single-one-column-page-header-slim.php
+msgctxt "Pattern title"
+msgid "Single Posts: One Column / Page Header (Slim)"
+msgstr ""
+
+#: patterns/template-single-one-column-page-header-wide.php
+msgctxt "Pattern title"
+msgid "Single Posts: One Column / Page Header (Wide)"
 msgstr ""
 
 #: patterns/template-single-one-column.php
@@ -3629,6 +3664,11 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Pages: One Column / Page Header (Wide)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Pages: Only Header and Footer"
 msgstr ""
 
@@ -3685,6 +3725,16 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Posts: One Column / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: One Column / Page Header (Slim)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: One Column / Page Header (Wide)"
 msgstr ""
 
 #: theme.json

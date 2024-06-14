@@ -360,6 +360,12 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/template/page/main/one-column-page-header-slim.php' ),
 		),
 		array(
+			'title'    => __( 'Main Area (One Column / Page Header (Wide)) for Pages', 'unitone' ),
+			'slug'     => 'unitone/template/page/main/one-column-page-header-wide',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/page/main/one-column-page-header-wide.php' ),
+		),
+		array(
 			'title'    => __( 'Main Area (Right Sidebar / Page Header (Featured Image)) for Pages', 'unitone' ),
 			'slug'     => 'unitone/template/page/main/right-sidebar/page-header-featured',
 			'inserter' => false,
@@ -400,6 +406,12 @@ function unitone_register_block_patterns() {
 			'slug'     => 'unitone/template/page/page-header/slim',
 			'inserter' => false,
 			'path'     => get_theme_file_path( 'patterns/private/template/page/page-header/slim.php' ),
+		),
+		array(
+			'title'    => __( 'Page Header (Wide) for Pages', 'unitone' ),
+			'slug'     => 'unitone/template/page/page-header/wide',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/page/page-header/wide.php' ),
 		),
 		array(
 			'title'    => __( 'Main Area (One Column) for Search Results', 'unitone' ),
@@ -462,6 +474,18 @@ function unitone_register_block_patterns() {
 			'path'     => get_theme_file_path( 'patterns/private/template/single/main/one-column-page-header-image.php' ),
 		),
 		array(
+			'title'    => __( 'Main Area (Page Header (Slim)) for Single Posts', 'unitone' ),
+			'slug'     => 'unitone/template/single/main/one-column-page-header-slim',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/single/main/one-column-page-header-slim.php' ),
+		),
+		array(
+			'title'    => __( 'Main Area (Page Header (Wide)) for Single Posts', 'unitone' ),
+			'slug'     => 'unitone/template/single/main/one-column-page-header-wide',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/single/main/one-column-page-header-wide.php' ),
+		),
+		array(
 			'title'    => __( 'Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts', 'unitone' ),
 			'slug'     => 'unitone/template/single/main/right-sidebar-page-header-featured',
 			'inserter' => false,
@@ -496,6 +520,12 @@ function unitone_register_block_patterns() {
 			'slug'     => 'unitone/template/single/page-header/image',
 			'inserter' => false,
 			'path'     => get_theme_file_path( 'patterns/private/template/single/page-header/image.php' ),
+		),
+		array(
+			'title'    => __( 'Page Header (Slim) for Single Posts', 'unitone' ),
+			'slug'     => 'unitone/template/single/page-header/slim',
+			'inserter' => false,
+			'path'     => get_theme_file_path( 'patterns/private/template/single/page-header/slim.php' ),
 		),
 		array(
 			'title'    => __( 'Page Header (Wide) for Single Posts', 'unitone' ),

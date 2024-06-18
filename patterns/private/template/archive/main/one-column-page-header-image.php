@@ -9,11 +9,7 @@
 				<div data-unitone-layout="stack">
 					<!-- wp:unitone/text {"className":"entry-content","unitone":{"gutters":"0"}} -->
 					<div data-unitone-layout="text -gap" class="entry-content">
-						<!-- wp:unitone/container {"unitone":{"gutters":"0","blockAlign":"center","maxWidth":"1024px"}} -->
-						<div data-unitone-layout="container">
-							<!-- wp:template-part {"slug":"loop"} /-->
-						</div>
-						<!-- /wp:unitone/container -->
+						<!-- wp:template-part {"slug":"loop"} /-->
 					</div>
 					<!-- /wp:unitone/text -->
 				</div>

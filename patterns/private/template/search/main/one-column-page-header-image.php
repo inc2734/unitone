@@ -9,17 +9,13 @@
 				<div data-unitone-layout="stack">
 					<!-- wp:unitone/text {"className":"entry-content","unitone":{"gutters":"0"}} -->
 					<div data-unitone-layout="text -gap" class="entry-content">
-						<!-- wp:unitone/container {"unitone":{"gutters":"0","blockAlign":"center","maxWidth":"1024px"}} -->
-						<div data-unitone-layout="container">
-							<!-- wp:unitone/stack -->
-							<div data-unitone-layout="stack">
-								<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
+						<!-- wp:unitone/stack -->
+						<div data-unitone-layout="stack">
+							<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
 
-								<!-- wp:template-part {"slug":"loop"} /-->
-							</div>
-							<!-- /wp:unitone/stack -->
+							<!-- wp:template-part {"slug":"loop"} /-->
 						</div>
-						<!-- /wp:unitone/container -->
+						<!-- /wp:unitone/stack -->
 					</div>
 					<!-- /wp:unitone/text -->
 				</div>

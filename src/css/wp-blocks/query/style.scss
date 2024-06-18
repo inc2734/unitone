@@ -14,7 +14,6 @@
 	--unitone--gap: var(--unitone--global--text-gap);
 	--unitone--post--padding: var(--unitone--gap);
 
-	display: grid;
 	gap: var(--unitone--gap) !important;
 
 	> * {
@@ -23,6 +22,22 @@
 
 	&.is-layout-flow > * + * {
 		margin-top: 0;
+	}
+
+	&.is-flex-container.is-flex-container[class*=columns-] > .wp-block-post {
+		width: auto;
+	}
+
+	&.is-flex-container[class*=columns-] {
+		display: grid;
+
+		@media (min-width: 600px) {
+			@for $i from 2 through 6 {
+				&.columns-#{ $i } {
+					grid-template-columns: repeat(#{ $i }, minmax(0, 1fr));
+				}
+			}
+		}
 	}
 
 	.wp-block-post {
@@ -139,7 +154,8 @@
 				padding-bottom: var(--unitone--padding);
 			}
 
-			&.is-layout-grid {
+			&.is-layout-grid,
+			&.is-flex-container:where([class*=columns-]) {
 				.wp-block-post {
 					@media (min-width: 600px) {
 						padding-right: calc(var(--unitone--padding) / 2);
@@ -188,7 +204,8 @@
 				}
 			}
 
-			&.is-layout-grid {
+			&.is-layout-grid,
+			&.is-flex-container:where([class*=columns-]) {
 				@media not all and (min-width: 600px) {
 					.wp-block-post:first-child {
 						padding-top: 0;
@@ -221,13 +238,14 @@
 				padding: var(--unitone--padding);
 			}
 
-			&:not(.is-layout-grid) {
+			&:not(.is-layout-grid):not(.is-flex-container:where([class*=columns-])) {
 				.wp-block-post:not(:first-child) {
 					border-top: none;
 				}
 			}
 
-			&.is-layout-grid {
+			&.is-layout-grid,
+			&.is-flex-container:where([class*=columns-]) {
 				border-left: var(--unitone--divider-width) var(--unitone--divider-style) var(--unitone--divider-color);
 
 				@media not all and (min-width: 600px) {

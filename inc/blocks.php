@@ -66,20 +66,6 @@ function unitone_register_blocks() {
 add_action( 'init', 'unitone_register_blocks' );
 
 /**
- * Correct the path in block.json in the theme, since the file will not be read correctly if editorScript is passed.
- */
-add_filter(
-	'plugins_url',
-	function ( $url, $path, $plugin ) {
-		return preg_match( '|' . get_template_directory() . '/dist/blocks/[^\/]+/block.json|', $plugin )
-			? get_template_directory_uri() . str_replace( array( get_template_directory(), 'block.json' ), '', $plugin ) . $path
-			: $url;
-	},
-	10,
-	3
-);
-
-/**
  * Add support "autoPhrase" to core blocks.
  *
  * @param array $metadata Metadata for registering a block type.

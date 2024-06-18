@@ -38,7 +38,11 @@
 		--unitone--justify-self: stretch;
 		--unitone--align-self: stretch;
 		--unitone--grid-column: auto;
+		--unitone--md-grid-column: var(--unitone--grid-column);
+		--unitone--sm-grid-column: var(--unitone--md-grid-column);
 		--unitone--grid-row: auto;
+		--unitone--md-grid-row: var(--unitone--grid-row);
+		--unitone--sm-grid-row: var(--unitone--md-grid-row);
 
 		margin-top: 0;
 		margin-bottom: 0;
@@ -47,6 +51,16 @@
 		align-self: var(--unitone--align-self);
 		grid-column: var(--unitone--grid-column);
 		grid-row: var(--unitone--grid-row);
+
+		@media not all and (min-width: 960px) {
+			grid-column: var(--unitone--md-grid-column);
+			grid-row: var(--unitone--md-grid-row);
+		}
+
+		@media not all and (min-width: 600px) {
+			grid-column: var(--unitone--sm-grid-column);
+			grid-row: var(--unitone--sm-grid-row);
+		}
 	}
 }
 

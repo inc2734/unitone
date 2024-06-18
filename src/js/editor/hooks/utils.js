@@ -1,3 +1,7 @@
+import { useSelect } from '@wordpress/data';
+import { store as editorStore } from '@wordpress/editor';
+import { store as editPostStore } from '@wordpress/edit-post';
+
 /**
  * Removed falsy values from nested object.
  *
@@ -101,4 +105,21 @@ export function isValueGlobalStyle( value ) {
 	}
 
 	return value.includes( 'var:style|global|' );
+}
+
+/**
+ * Return the device type.
+ *
+ * @return {string} The divice type.
+ */
+export function useDeviceType() {
+	return useSelect( ( select ) => {
+		const { getDeviceType } = select( editorStore );
+		if ( null != getDeviceType ) {
+			return getDeviceType()?.toLowerCase();
+		}
+
+		const { __experimentalGetPreviewDeviceType } = select( editPostStore );
+		return __experimentalGetPreviewDeviceType()?.toLowerCase();
+	}, [] );
 }

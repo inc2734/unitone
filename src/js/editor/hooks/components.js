@@ -12,7 +12,7 @@ import { useState, useMemo, useEffect } from '@wordpress/element';
 import { desktop, tablet, mobile } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
-import { isNumber } from './utils';
+import { isNumber, useDeviceType } from './utils';
 
 function Controls( { isMixed, value, onChange, marks, options } ) {
 	return (
@@ -151,16 +151,17 @@ export function SpacingSizeControl( {
 
 export function ResponsiveSettingsContainer( {
 	label,
-	defaultBreakpoint,
 	desktopControls,
 	tabletControls,
 	mobileControls,
 } ) {
-	const [ breakpoint, setBreakpoint ] = useState( defaultBreakpoint );
+	const deviceType = useDeviceType();
+
+	const [ breakpoint, setBreakpoint ] = useState( deviceType );
 
 	useEffect( () => {
-		setBreakpoint( defaultBreakpoint );
-	}, [ defaultBreakpoint ] );
+		setBreakpoint( deviceType );
+	}, [ deviceType ] );
 
 	const icon = useMemo( () => {
 		if ( 'desktop' === breakpoint ) {
@@ -176,6 +177,9 @@ export function ResponsiveSettingsContainer( {
 	return (
 		<>
 			<Flex className="unitone-responsive-settings-container" gap={ 0 }>
+				<FlexBlock>
+					<BaseControl label={ label } id={ label } />
+				</FlexBlock>
 				<FlexItem>
 					<DropdownMenu
 						icon={ icon }
@@ -202,12 +206,9 @@ export function ResponsiveSettingsContainer( {
 						) }
 					/>
 				</FlexItem>
-				<FlexBlock>
-					<BaseControl label={ label } id={ label } />
-				</FlexBlock>
 			</Flex>
 
-			<div>
+			<div style={ { marginTop: '2px' } }>
 				{ 'desktop' === breakpoint && desktopControls() }
 				{ 'tablet' === breakpoint && tabletControls() }
 				{ 'mobile' === breakpoint && mobileControls() }

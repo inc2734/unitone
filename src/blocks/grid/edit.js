@@ -20,8 +20,6 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { store as editorStore } from '@wordpress/editor';
-import { store as editPostStore } from '@wordpress/edit-post';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../../js/editor/hooks/components';
@@ -74,16 +72,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		},
 		[ clientId ]
 	);
-
-	const deviceType = useSelect( ( select ) => {
-		const { getDeviceType } = select( editorStore );
-		if ( null != getDeviceType ) {
-			return getDeviceType();
-		}
-
-		const { __experimentalGetPreviewDeviceType } = select( editPostStore );
-		return __experimentalGetPreviewDeviceType();
-	}, [] );
 
 	const TagName = tagName;
 
@@ -245,7 +233,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					>
 						<ResponsiveSettingsContainer
 							label={ 'grid-template-columns' }
-							defaultBreakpoint={ deviceType.toLowerCase() }
 							desktopControls={ () => (
 								<>
 									<ToggleGroupControl
@@ -607,7 +594,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					>
 						<ResponsiveSettingsContainer
 							label={ 'grid-template-rows' }
-							defaultBreakpoint={ deviceType.toLowerCase() }
 							desktopControls={ () => (
 								<>
 									<ToggleGroupControl

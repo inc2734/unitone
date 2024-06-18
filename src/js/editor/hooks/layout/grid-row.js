@@ -1,40 +1,73 @@
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import {
+	hasBlockSupport,
+	getBlockSupport,
+	store as blocksStore,
+} from '@wordpress/blocks';
+
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-export function hasGridRowValue( props ) {
+import { ResponsiveSettingsContainer } from '../components';
+import { cleanEmptyObject } from '../utils';
+
+function getDefaultValue( props ) {
 	const { name, attributes } = props;
 
-	const defaultValue =
-		null != attributes?.__unstableUnitoneSupports?.gridRow?.default
-			? attributes?.__unstableUnitoneSupports?.gridRow?.default
-			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-					?.unitone?.default?.gridRow;
+	return null != attributes?.__unstableUnitoneSupports?.gridRow?.default
+		? attributes?.__unstableUnitoneSupports?.gridRow?.default
+		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.gridRow;
+}
+
+function getIsResponsive( props ) {
+	const { name, attributes } = props;
+	const { __unstableUnitoneSupports } = attributes;
+
+	return (
+		getBlockSupport( name, 'unitone.gridRow.responsive' ) ||
+		__unstableUnitoneSupports?.gridRow?.responsive ||
+		false
+	);
+}
+
+function useDefaultValue( props ) {
+	const { name, attributes } = props;
+	const { __unstableUnitoneSupports } = attributes;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.gridRow;
+	}, [] );
+
+	return null != __unstableUnitoneSupports?.gridRow?.default
+		? __unstableUnitoneSupports?.gridRow?.default
+		: defaultValue;
+}
+
+export function hasGridRowValue( props ) {
+	const { attributes } = props;
+
+	const defaultValue = getDefaultValue( props );
 
 	return null != defaultValue
-		? attributes?.unitone?.gridRow !== defaultValue
+		? JSON.stringify( attributes?.unitone?.gridRow ) !==
+				JSON.stringify( defaultValue )
 		: attributes?.unitone?.gridRow !== undefined;
 }
 
 export function resetGridRow( props ) {
-	const { name, attributes, setAttributes } = props;
+	const { attributes, setAttributes } = props;
 
 	delete attributes?.unitone?.gridRow;
-	const newUnitone = { ...attributes?.unitone };
 
-	const defaultValue =
-		null != attributes?.__unstableUnitoneSupports?.gridRow?.default
-			? attributes?.__unstableUnitoneSupports?.gridRow?.default
-			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-					?.unitone?.default?.gridRow;
-
-	if ( null != defaultValue ) {
-		newUnitone.gridRow = defaultValue;
-	}
+	const newUnitone = cleanEmptyObject( {
+		...attributes?.unitone,
+		gridRow: getDefaultValue( props ) || undefined,
+	} );
 
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: newUnitone,
 	} );
 }
 
@@ -61,45 +94,134 @@ export function getGridRowEditLabel( props ) {
 
 export function GridRowEdit( props ) {
 	const {
-		name,
 		label,
 		help,
-		attributes: { unitone, __unstableUnitoneSupports },
+		attributes: { unitone },
 		setAttributes,
 	} = props;
 
-	let defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.gridRow;
-	}, [] );
-	if ( null != __unstableUnitoneSupports?.gridRow?.default ) {
-		defaultValue = __unstableUnitoneSupports?.gridRow?.default;
-	}
+	const isResponsive = getIsResponsive( props );
+	const defaultValue = useDefaultValue( props );
+	const fallbackValue =
+		typeof unitone?.gridRow === 'string' ? unitone?.gridRow : undefined;
 
-	return (
+	const onChangeGridRow = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			gridRow: newValue,
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	const onChangeGridRowLg = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.lg || undefined;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			gridRow: {
+				lg: newValue,
+				md: unitone?.gridRow?.md || undefined,
+				sm: unitone?.gridRow?.sm || undefined,
+			},
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	const onChangeGridRowMd = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.md || undefined;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			gridRow: {
+				lg: unitone?.gridRow?.lg || fallbackValue || undefined,
+				md: newValue,
+				sm: unitone?.gridRow?.sm || undefined,
+			},
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	const onChangeGridRowSm = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.sm || undefined;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			gridRow: {
+				lg: unitone?.gridRow?.lg || fallbackValue || undefined,
+				md: unitone?.gridRow?.md || undefined,
+				sm: newValue,
+			},
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	return isResponsive ? (
+		<ResponsiveSettingsContainer
+			label={ label }
+			desktopControls={ () => (
+				<TextControl
+					hideLabelFromVision
+					help={ help }
+					value={ unitone?.gridRow?.lg || fallbackValue || '' }
+					onChange={ onChangeGridRowLg }
+				/>
+			) }
+			tabletControls={ () => (
+				<TextControl
+					hideLabelFromVision
+					help={ help }
+					value={
+						unitone?.gridRow?.md ||
+						unitone?.gridRow?.lg ||
+						fallbackValue ||
+						''
+					}
+					onChange={ onChangeGridRowMd }
+				/>
+			) }
+			mobileControls={ () => (
+				<TextControl
+					hideLabelFromVision
+					help={ help }
+					value={
+						unitone?.gridRow?.sm ||
+						unitone?.gridRow?.md ||
+						unitone?.gridRow?.lg ||
+						fallbackValue ||
+						''
+					}
+					onChange={ onChangeGridRowSm }
+				/>
+			) }
+		/>
+	) : (
 		<TextControl
 			label={ label }
 			help={ help }
 			value={ unitone?.gridRow || '' }
-			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					gridRow: newAttribute || undefined,
-				};
-				if ( null == newUnitone.gridRow ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.gridRow;
-					} else {
-						newUnitone.gridRow = '';
-					}
-				}
-
-				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
-				} );
-			} }
+			onChange={ onChangeGridRow }
 		/>
 	);
 }

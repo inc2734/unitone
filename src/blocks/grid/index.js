@@ -42,10 +42,18 @@ const withChildBlockAttributes = createHigherOrderComponent(
 
 					if ( 'unitone/grid' === parentBlock?.name ) {
 						const DEFAULT_VALUES = {
-							alignSelf: 'stretch',
-							justifySelf: 'stretch',
-							gridColumn: 'auto',
-							gridRow: 'auto',
+							alignSelf: {
+								lg: 'stretch',
+							},
+							justifySelf: {
+								lg: 'stretch',
+							},
+							gridColumn: {
+								lg: 'auto',
+							},
+							gridRow: {
+								lg: 'auto',
+							},
 						};
 
 						newProps.attributes = {
@@ -78,15 +86,19 @@ const withChildBlockAttributes = createHigherOrderComponent(
 							},
 							__unstableUnitoneSupports: {
 								alignSelf: {
+									responsive: true,
 									default: DEFAULT_VALUES.alignSelf,
 								},
 								justifySelf: {
+									responsive: true,
 									default: DEFAULT_VALUES.justifySelf,
 								},
 								gridColumn: {
+									responsive: true,
 									default: DEFAULT_VALUES.gridColumn,
 								},
 								gridRow: {
+									responsive: true,
 									default: DEFAULT_VALUES.gridRow,
 								},
 							},

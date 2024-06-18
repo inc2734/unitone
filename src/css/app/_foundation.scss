@@ -84,3 +84,81 @@ legend {
 	padding-right: var(--unitone--s-2);
 	padding-left: var(--unitone--s-2);
 }
+
+$justify-self-values: (
+	start: start,
+	end: end,
+	center: center,
+	stretch: stretch,
+);
+
+@media not all and (min-width: 960px) {
+	@each $key, $value in $justify-self-values {
+		[data-unitone-layout~="-justify-self\:md\:#{ $key }"] {
+			--unitone--justify-self: #{ $value } !important;
+		}
+	}
+
+	[data-unitone-layout~="-justify-self\:md\:start"] {
+		margin-left: 0;
+	}
+
+	[data-unitone-layout~="-justify-self\:md\:end"] {
+		margin-right: 0;
+	}
+}
+
+@media not all and (min-width: 600px) {
+	@each $key, $value in $justify-self-values {
+		[data-unitone-layout~="-justify-self\:sm\:#{ $key }"] {
+			--unitone--justify-self: #{ $value } !important;
+		}
+	}
+
+	[data-unitone-layout~="-justify-self\:sm\:start"] {
+		margin-left: 0;
+	}
+
+	[data-unitone-layout~="-justify-self\:sm\:end"] {
+		margin-right: 0;
+	}
+}
+
+$align-self-values: (
+	start: start,
+	end: end,
+	center: center,
+	stretch: stretch,
+);
+
+@media not all and (min-width: 960px) {
+	@each $key, $value in $align-self-values {
+		[data-unitone-layout~="-align-self\:md\:#{ $key }"] {
+			--unitone--align-self: #{ $value } !important;
+		}
+	}
+
+	[data-unitone-layout~="-align-self\:md\:start"] {
+		margin-top: 0;
+	}
+
+	[data-unitone-layout~="-align-self\:md\:end"] {
+		margin-bottom: 0;
+	}
+}
+
+@media not all and (min-width: 600px) {
+	@each $key, $value in $align-self-values {
+		[data-unitone-layout~="-align-self\:sm\:#{ $key }"] {
+			--unitone--align-self: #{ $value } !important;
+		}
+	}
+
+	[data-unitone-layout~="-align-self\:sm\:start"] {
+		margin-top: 0;
+	}
+
+	[data-unitone-layout~="-align-self\:sm\:end"] {
+		margin-bottom: 0;
+	}
+}

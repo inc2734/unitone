@@ -633,22 +633,90 @@ add_filter(
 
 		// -align-self
 		if ( $is_supported( 'alignSelf' ) || $has_supported_attribute( 'alignSelf' ) ) {
-			$add_attribute( '-align-self', $get_attribute( 'alignSelf' ) );
+			$align_self_lg = $get_attribute( 'alignSelf.lg' );
+			if ( ! is_null( $align_self_lg ) ) {
+				$add_attribute( '-align-self', $align_self_lg );
+			}
+
+			$align_self_md = $get_attribute( 'alignSelf.md' );
+			if ( ! is_null( $align_self_md ) ) {
+				$add_attribute( '-align-self:md', $align_self_md );
+			}
+
+			$align_self_sm = $get_attribute( 'alignSelf.sm' );
+			if ( ! is_null( $align_self_sm ) ) {
+				$add_attribute( '-align-self:sm', $align_self_sm );
+			}
+
+			if ( is_null( $align_self_lg ) && is_null( $align_self_md ) && is_null( $align_self_sm ) ) {
+				$add_attribute( '-align-self', $get_attribute( 'alignSelf' ) );
+			}
 		}
 
 		// -justify-self
 		if ( $is_supported( 'justifySelf' ) || $has_supported_attribute( 'justifySelf' ) ) {
-			$add_attribute( '-justify-self', $get_attribute( 'justifySelf' ) );
+			$justify_self_lg = $get_attribute( 'justifySelf.lg' );
+			if ( ! is_null( $justify_self_lg ) ) {
+				$add_attribute( '-justify-self', $justify_self_lg );
+			}
+
+			$justify_self_md = $get_attribute( 'justifySelf.md' );
+			if ( ! is_null( $justify_self_md ) ) {
+				$add_attribute( '-justify-self:md', $justify_self_md );
+			}
+
+			$justify_self_sm = $get_attribute( 'justifySelf.sm' );
+			if ( ! is_null( $justify_self_sm ) ) {
+				$add_attribute( '-justify-self:sm', $justify_self_sm );
+			}
+
+			if ( is_null( $justify_self_lg ) && is_null( $justify_self_md ) && is_null( $justify_self_sm ) ) {
+				$add_attribute( '-justify-self', $get_attribute( 'justifySelf' ) );
+			}
 		}
 
 		// --unitone--grid-column
 		if ( $is_supported( 'gridColumn' ) || $has_supported_attribute( 'gridColumn' ) ) {
-			$add_style( '--unitone--grid-column', $get_attribute( 'gridColumn' ) );
+			$grid_column_lg = $get_attribute( 'gridColumn.lg' );
+			if ( ! is_null( $grid_column_lg ) ) {
+				$add_style( '--unitone--grid-column', $grid_column_lg );
+			}
+
+			$grid_column_md = $get_attribute( 'gridColumn.md' );
+			if ( ! is_null( $grid_column_md ) ) {
+				$add_style( '--unitone--md-grid-column', $grid_column_md );
+			}
+
+			$grid_column_sm = $get_attribute( 'gridColumn.sm' );
+			if ( ! is_null( $grid_column_sm ) ) {
+				$add_style( '--unitone--sm-grid-column', $grid_column_sm );
+			}
+
+			if ( is_null( $grid_column_lg ) && is_null( $grid_column_md ) && is_null( $grid_column_sm ) ) {
+				$add_style( '--unitone--grid-column', $get_attribute( 'gridColumn' ) );
+			}
 		}
 
 		// --unitone--grid-row
 		if ( $is_supported( 'gridRow' ) || $has_supported_attribute( 'gridRow' ) ) {
-			$add_style( '--unitone--grid-row', $get_attribute( 'gridRow' ) );
+			$grid_row_lg = $get_attribute( 'gridRow.lg' );
+			if ( ! is_null( $grid_row_lg ) ) {
+				$add_style( '--unitone--grid-row', $grid_row_lg );
+			}
+
+			$grid_row_md = $get_attribute( 'gridRow.md' );
+			if ( ! is_null( $grid_row_md ) ) {
+				$add_style( '--unitone--md-grid-row', $grid_row_md );
+			}
+
+			$grid_row_sm = $get_attribute( 'gridRow.sm' );
+			if ( ! is_null( $grid_row_sm ) ) {
+				$add_style( '--unitone--sm-grid-row', $grid_row_sm );
+			}
+
+			if ( is_null( $grid_row_lg ) && is_null( $grid_row_md ) && is_null( $grid_row_sm ) ) {
+				$add_style( '--unitone--grid-row', $get_attribute( 'gridRow' ) );
+			}
 		}
 
 		// -text-orientation

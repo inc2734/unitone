@@ -1,16 +1,23 @@
 import classnames from 'classnames';
 
 import {
+	hasBlockSupport,
+	getBlockSupport,
+	store as blocksStore,
+} from '@wordpress/blocks';
+
+import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
 
 import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
 
+import { ResponsiveSettingsContainer } from '../components';
+import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
+import { cleanEmptyObject, useDeviceType } from '../utils';
 import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const alignSelfOptions = [
@@ -36,38 +43,63 @@ const alignSelfOptions = [
 	},
 ];
 
-export function hasAlignSelfValue( props ) {
+function getDefaultValue( props ) {
 	const { name, attributes } = props;
 
-	const defaultValue =
-		null != attributes?.__unstableUnitoneSupports?.alignSelf?.default
-			? attributes?.__unstableUnitoneSupports?.alignSelf?.default
-			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-					?.unitone?.default?.alignSelf;
+	return null != attributes?.__unstableUnitoneSupports?.alignSelf?.default
+		? attributes?.__unstableUnitoneSupports?.alignSelf?.default
+		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.alignSelf;
+}
+
+function getIsResponsive( props ) {
+	const { name, attributes } = props;
+	const { __unstableUnitoneSupports } = attributes;
+
+	return (
+		getBlockSupport( name, 'unitone.alignSelf.responsive' ) ||
+		__unstableUnitoneSupports?.alignSelf?.responsive ||
+		false
+	);
+}
+
+function useDefaultValue( props ) {
+	const { name, attributes } = props;
+	const { __unstableUnitoneSupports } = attributes;
+
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.alignSelf;
+	}, [] );
+
+	return null != __unstableUnitoneSupports?.alignSelf?.default
+		? __unstableUnitoneSupports?.alignSelf?.default
+		: defaultValue;
+}
+
+export function hasAlignSelfValue( props ) {
+	const { attributes } = props;
+
+	const defaultValue = getDefaultValue( props );
 
 	return null != defaultValue
-		? attributes?.unitone?.alignSelf !== defaultValue
+		? JSON.stringify( attributes?.unitone?.alignSelf ) !==
+				JSON.stringify( defaultValue )
 		: attributes?.unitone?.alignSelf !== undefined;
 }
 
 export function resetAlignSelf( props ) {
-	const { name, attributes, setAttributes } = props;
+	const { attributes, setAttributes } = props;
 
 	delete attributes?.unitone?.alignSelf;
-	const newUnitone = { ...attributes?.unitone };
 
-	const defaultValue =
-		null != attributes?.__unstableUnitoneSupports?.alignSelf?.default
-			? attributes?.__unstableUnitoneSupports?.alignSelf?.default
-			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-					?.unitone?.default?.alignSelf;
-
-	if ( null != defaultValue ) {
-		newUnitone.alignSelf = defaultValue;
-	}
+	const newUnitone = cleanEmptyObject( {
+		...attributes?.unitone,
+		alignSelf: getDefaultValue( props ) || undefined,
+	} );
 
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: newUnitone,
 	} );
 }
 
@@ -83,39 +115,107 @@ export function useIsAlignSelfDisabled( {
 
 export function AlignSelfToolbar( props ) {
 	const {
-		name,
 		attributes: { unitone },
 		setAttributes,
 	} = props;
 
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.alignSelf;
-	}, [] );
+	const deviceType = useDeviceType();
+	const isResponsive = getIsResponsive( props );
+	const defaultValue = useDefaultValue( props );
+
+	const onChangeAlignSelf = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			alignSelf: physicalToLogical( newValue ),
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	const onChangeAlignSelfLg = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.lg || undefined;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			alignSelf: {
+				lg: physicalToLogical( newValue ),
+				md: unitone?.alignSelf?.md || undefined,
+				sm: unitone?.alignSelf?.sm || undefined,
+			},
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	const onChangeAlignSelfMd = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.md || undefined;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			alignSelf: {
+				lg: unitone?.alignSelf?.lg || undefined,
+				md: physicalToLogical( newValue ),
+				sm: unitone?.alignSelf?.sm || undefined,
+			},
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	const onChangeAlignSelfSm = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.sm || undefined;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			alignSelf: {
+				lg: unitone?.alignSelf?.lg || undefined,
+				md: unitone?.alignSelf?.md || undefined,
+				sm: physicalToLogical( newValue ),
+			},
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	let value = unitone?.alignSelf;
+	let onChange = onChangeAlignSelf;
+	if ( isResponsive ) {
+		const fallbackValue = typeof value === 'string' ? value : undefined;
+		if ( 'desktop' === deviceType ) {
+			value = value?.lg || fallbackValue;
+			onChange = onChangeAlignSelfLg;
+		} else if ( 'tablet' === deviceType ) {
+			value = value?.md || value?.lg || fallbackValue;
+			onChange = onChangeAlignSelfMd;
+		} else if ( 'mobile' === deviceType ) {
+			value = value?.sm || value?.md || value?.lg || fallbackValue;
+			onChange = onChangeAlignSelfSm;
+		}
+	}
 
 	return (
 		<BlockVerticalAlignmentToolbar
 			controls={ [ 'top', 'center', 'bottom', 'stretch' ] }
-			value={ logicalToPhysical( unitone?.alignSelf, 'vertical' ) }
-			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					alignSelf: physicalToLogical( newAttribute ),
-				};
-				if ( null == newUnitone.alignSelf ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.alignSelf;
-					} else {
-						newUnitone.alignSelf = '';
-					}
-				}
-
-				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
-				} );
-			} }
+			value={ logicalToPhysical( value, 'vertical' ) }
+			onChange={ onChange }
 		/>
 	);
 }
@@ -133,45 +233,171 @@ export function getAlignSelfEditLabel( props ) {
 
 export function AlignSelfEdit( props ) {
 	const {
-		name,
 		label,
-		attributes: { unitone, __unstableUnitoneSupports },
+		attributes: { unitone },
 		setAttributes,
 	} = props;
 
-	let defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.alignSelf;
-	}, [] );
-	if ( null != __unstableUnitoneSupports?.alignSelf?.default ) {
-		defaultValue = __unstableUnitoneSupports?.alignSelf?.default;
-	}
+	const isResponsive = getIsResponsive( props );
+	const defaultValue = useDefaultValue( props );
+	const fallbackValue =
+		typeof unitone?.alignSelf === 'string' ? unitone?.alignSelf : undefined;
 
-	return (
+	const onChangeAlignSelf = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			alignSelf: newValue,
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	const onChangeAlignSelfLg = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.lg || undefined;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			alignSelf: {
+				lg: newValue,
+				md: unitone?.alignSelf?.md || undefined,
+				sm: unitone?.alignSelf?.sm || undefined,
+			},
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	const onChangeAlignSelfMd = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.md || undefined;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			alignSelf: {
+				lg: unitone?.alignSelf?.lg || fallbackValue || undefined,
+				md: newValue,
+				sm: unitone?.alignSelf?.sm || undefined,
+			},
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	const onChangeAlignSelfSm = ( newValue ) => {
+		if ( null == newValue ) {
+			newValue = defaultValue?.sm || undefined;
+		}
+
+		const newUnitone = cleanEmptyObject( {
+			...unitone,
+			alignSelf: {
+				lg: unitone?.alignSelf?.lg || fallbackValue || undefined,
+				md: unitone?.alignSelf?.md || undefined,
+				sm: newValue,
+			},
+		} );
+
+		setAttributes( {
+			unitone: newUnitone,
+		} );
+	};
+
+	return isResponsive ? (
+		<ResponsiveSettingsContainer
+			label={ label }
+			desktopControls={ () => (
+				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+					<ToggleGroupControl
+						__nextHasNoMarginBottom
+						hideLabelFromVision
+						value={ unitone?.alignSelf?.lg || fallbackValue }
+						onChange={ onChangeAlignSelfLg }
+					>
+						{ alignSelfOptions.map(
+							( { value, icon, label: iconLabel } ) => (
+								<ToggleGroupControlOptionIcon
+									key={ value }
+									icon={ icon }
+									label={ iconLabel }
+									value={ value }
+								/>
+							)
+						) }
+					</ToggleGroupControl>
+				</fieldset>
+			) }
+			tabletControls={ () => (
+				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+					<ToggleGroupControl
+						__nextHasNoMarginBottom
+						hideLabelFromVision
+						value={
+							unitone?.alignSelf?.md ||
+							unitone?.alignSelf?.lg ||
+							fallbackValue
+						}
+						onChange={ onChangeAlignSelfMd }
+					>
+						{ alignSelfOptions.map(
+							( { value, icon, label: iconLabel } ) => (
+								<ToggleGroupControlOptionIcon
+									key={ value }
+									icon={ icon }
+									label={ iconLabel }
+									value={ value }
+								/>
+							)
+						) }
+					</ToggleGroupControl>
+				</fieldset>
+			) }
+			mobileControls={ () => (
+				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+					<ToggleGroupControl
+						__nextHasNoMarginBottom
+						hideLabelFromVision
+						value={
+							unitone?.alignSelf?.sm ||
+							unitone?.alignSelf?.md ||
+							unitone?.alignSelf?.lg ||
+							fallbackValue
+						}
+						onChange={ onChangeAlignSelfSm }
+					>
+						{ alignSelfOptions.map(
+							( { value, icon, label: iconLabel } ) => (
+								<ToggleGroupControlOptionIcon
+									key={ value }
+									icon={ icon }
+									label={ iconLabel }
+									value={ value }
+								/>
+							)
+						) }
+					</ToggleGroupControl>
+				</fieldset>
+			) }
+		/>
+	) : (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
 			<ToggleGroupControl
 				__nextHasNoMarginBottom
 				label={ label }
 				value={ unitone?.alignSelf }
-				onChange={ ( value ) => {
-					const newUnitone = {
-						...unitone,
-						alignSelf: value || undefined,
-					};
-					if ( null == newUnitone.alignSelf ) {
-						if ( null == defaultValue ) {
-							delete newUnitone.alignSelf;
-						} else {
-							newUnitone.alignSelf = '';
-						}
-					}
-
-					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
-					} );
-				} }
+				onChange={ onChangeAlignSelf }
 			>
 				{ alignSelfOptions.map(
 					( { value, icon, label: iconLabel } ) => (
@@ -209,7 +435,16 @@ export function saveAlignSelfProp( extraProps, blockType, attributes ) {
 
 	extraProps[ 'data-unitone-layout' ] = classnames(
 		extraProps[ 'data-unitone-layout' ],
-		`-align-self:${ attributes.unitone?.alignSelf }`
+		{
+			[ `-align-self:${ attributes.unitone?.alignSelf }` ]:
+				typeof attributes.unitone?.alignSelf === 'string',
+			[ `-align-self:${ attributes.unitone?.alignSelf.lg }` ]:
+				null != attributes.unitone?.alignSelf?.lg,
+			[ `-align-self:md:${ attributes.unitone?.alignSelf?.md }` ]:
+				null != attributes.unitone?.alignSelf?.md,
+			[ `-align-self:sm:${ attributes.unitone?.alignSelf?.sm }` ]:
+				null != attributes.unitone?.alignSelf?.sm,
+		}
 	);
 
 	return extraProps;

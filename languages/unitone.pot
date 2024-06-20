@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 11.5.4\n"
+"Project-Id-Version: unitone 11.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-14T16:21:25+00:00\n"
+"POT-Creation-Date: 2024-06-20T15:24:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -2178,21 +2178,25 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
+#: dist/js/editor/editor.js:1
 msgid "Desktop"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
+#: dist/js/editor/editor.js:1
 msgid "Tablet / Mobile"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
+#: dist/js/editor/editor.js:1
 msgid "Mobile"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
+#: dist/js/editor/editor.js:1
 msgid "Switch to settings based on device size"
 msgstr ""
 
@@ -2684,6 +2688,22 @@ msgstr ""
 
 #: dist/formats/formats.js:1
 msgid "Color"
+msgstr ""
+
+#: dist/formats/formats.js:1
+msgid "Text shadow"
+msgstr ""
+
+#: dist/formats/formats.js:1
+msgid "X"
+msgstr ""
+
+#: dist/formats/formats.js:1
+msgid "Y"
+msgstr ""
+
+#: dist/formats/formats.js:1
+msgid "Blur"
 msgstr ""
 
 #: dist/js/editor/editor.js:1

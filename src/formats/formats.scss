@@ -75,3 +75,12 @@
 		top: calc(50% - 6px);
 	}
 }
+
+.unitone-text-shadow {
+	--unitone--offset-x: 0px;
+	--unitone--offset-y: 0px;
+	--unitone--blur-radius: 0px;
+	--unitone--color: currentColor;
+
+	text-shadow: var(--unitone--offset-x) var(--unitone--offset-y) var(--unitone--blur-radius) var(--unitone--color);
+}

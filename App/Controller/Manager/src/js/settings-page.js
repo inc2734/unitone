@@ -171,6 +171,29 @@ export default function () {
 											setSettings={ setSettings }
 										/>
 
+										<div
+											data-unitone-layout="decorator -padding:2"
+											style={ {
+												'--unitone--background-color':
+													'white',
+											} }
+										>
+											<Button
+												variant="primary"
+												onClick={
+													resetRemotePattenrsCache
+												}
+												disabled={
+													remotePatternsSaving
+												}
+											>
+												{ __(
+													'Retrieve patterns from the pattern library',
+													'unitone'
+												) }
+											</Button>
+										</div>
+
 										<Brand
 											settings={ settings }
 											defaultSettings={ defaultSettings }
@@ -206,29 +229,6 @@ export default function () {
 											defaultSettings={ defaultSettings }
 											setSettings={ setSettings }
 										/>
-
-										<div
-											data-unitone-layout="decorator -padding:2"
-											style={ {
-												'--unitone--background-color':
-													'white',
-											} }
-										>
-											<Button
-												variant="primary"
-												onClick={
-													resetRemotePattenrsCache
-												}
-												disabled={
-													remotePatternsSaving
-												}
-											>
-												{ __(
-													'Retrieve patterns from the pattern library',
-													'unitone'
-												) }
-											</Button>
-										</div>
 									</div>
 								</div>
 							</div>

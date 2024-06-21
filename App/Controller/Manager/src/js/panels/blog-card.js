@@ -43,7 +43,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 	const BlogCard = ( { value } ) => (
 		<>
-			{ 'default' !== value && (
+			{ 'default' !== value && null != value && (
 				<link
 					rel="stylesheet"
 					href={ `${ window.currentSettings.templateDirectoryUri }/dist/css/wp-oembed-blog-card/${ value }.css` }

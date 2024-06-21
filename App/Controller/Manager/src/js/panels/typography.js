@@ -205,7 +205,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								}
 								min={ 0.1 }
 								step={ 0.1 }
-								max={ 0.6 }
+								max={ 1 }
 							/>
 
 							<div data-unitone-layout="with-sidebar -sidebar:left">

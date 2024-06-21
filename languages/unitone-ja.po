@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-06-20T15:24:22+00:00\n"
-"PO-Revision-Date: 2024-06-21 00:25+0900\n"
+"POT-Creation-Date: 2024-06-21T07:36:30+00:00\n"
+"PO-Revision-Date: 2024-06-21 16:36+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2829,6 +2829,10 @@ msgstr "自動改行"
 #: dist/js/editor/editor.js:10
 msgid "Type"
 msgstr "種類"
+
+#: dist/js/editor/editor.js:10
+msgid "Filter"
+msgstr "フィルター"
 
 #: dist/js/editor/editor.js:10
 msgid "Position"

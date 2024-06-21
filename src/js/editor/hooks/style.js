@@ -50,6 +50,8 @@ import {
 	editDividerTypeProp,
 } from './divider/divider';
 
+import { DropShadowPanel, editDropShadowProp } from './border/border';
+
 import { PositionPanel, editPositionProp } from './position/position';
 
 function addEditProps( settings ) {
@@ -90,6 +92,7 @@ function addEditProps( settings ) {
 	settings = editGridColumnProp( settings );
 	settings = editGridRowProp( settings );
 	settings = editMixBlendModeProp( settings );
+	settings = editDropShadowProp( settings );
 
 	return settings;
 }
@@ -135,6 +138,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						<DividerPanel { ...props } />
 						<PositionPanel { ...props } />
 						<LayerPanel { ...props } />
+						<DropShadowPanel { ...props } />
 					</>
 				) }
 			</>

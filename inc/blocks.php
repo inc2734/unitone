@@ -256,6 +256,32 @@ function unitone_add_padding_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_padding_support' );
 
 /**
+ * Add support "filter:drop-shadow" to core/image.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_drop_shadow_support( $metadata ) {
+	if ( 'core/image' !== $metadata['name'] ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'dropShadow' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_drop_shadow_support' );
+
+/**
  * If site-logo block is empty, display unitone logo.
  */
 add_filter(
@@ -369,12 +395,54 @@ add_filter(
 		};
 
 		/**
+		 * Converts a preset into a custom value.
+		 *
+		 * @param string $value Value to convert.
+		 * @return string CSS var string for given preset value.
+		 */
+		$get_preset_css_var = function ( $value ) {
+			if ( null === $value || '' === $value ) {
+				return $value;
+			}
+
+			preg_match( '/var:preset\|([^\|]+)\|(.+)/', $value, $match );
+			if ( ! $match ) {
+				return $value;
+			}
+
+			return 'var(--wp--preset--' . $match[1] . '--' . $match[2] . ')';
+		};
+
+		/**
+		 * Checks is given value is a preset.
+		 *
+		 * @param string $value Value to check
+		 * @return boolean Return true if value is string in format var:preset|.
+		 */
+		$is_value_preset = function ( $value ) {
+			if ( null === $value || '' === $value || is_array( $value ) ) {
+				return false;
+			}
+
+			return 0 === strpos( $value, 'var:preset|' );
+		};
+
+		/**
 		 * Get supported attribute value.
 		 *
 		 * @param string $support The supported attribute name. Dot-accessible.
 		 * @return string|null
 		 */
-		$get_attribute = function ( $support ) use ( $block, $metadata, $is_value_global_style, $get_global_style_css_var ) {
+		$get_attribute = function (
+			$support
+		) use (
+			$block,
+			$metadata,
+			$is_value_global_style,
+			$get_global_style_css_var,
+			$is_value_preset,
+			$get_preset_css_var
+		) {
 			$array_get = function ( array $vars, $format ) {
 				foreach ( explode( '.', (string) $format ) as $key ) {
 					if ( ! isset( $vars[ $key ] ) ) {
@@ -390,9 +458,15 @@ add_filter(
 				$attribute = $array_get( $metadata->get_attributes()['unitone']['default'] ?? array(), $support ) ?? null;
 			}
 
-			return $is_value_global_style( $attribute )
-				? $get_global_style_css_var( $attribute )
-				: $attribute;
+			if ( $is_value_global_style( $attribute ) ) {
+				return $get_global_style_css_var( $attribute );
+			}
+
+			if ( $is_value_preset( $attribute ) ) {
+				return $get_preset_css_var( $attribute );
+			}
+
+			return $attribute;
 		};
 
 		/**
@@ -501,6 +575,11 @@ add_filter(
 		// --unitone--divider-width
 		if ( $is_supported( 'divider' ) ) {
 			$add_style( '--unitone--divider-width', $get_attribute( 'divider.width' ) );
+		}
+
+		// --unitone--drop-shadow
+		if ( $is_supported( 'dropShadow' ) ) {
+			$add_style( '--unitone--drop-shadow', $get_attribute( 'dropShadow' ) );
 		}
 
 		// -gap

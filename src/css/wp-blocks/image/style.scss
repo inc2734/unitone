@@ -1,3 +1,11 @@
+.wp-block-image {
+	--unitone--drop-shadow: none;
+
+	img {
+		filter:drop-shadow(var(--unitone--drop-shadow));
+	}
+}
+
 .wp-block-image.is-style-cover {
 	height: 100%;
 	width: 100%;

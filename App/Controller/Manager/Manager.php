@@ -370,7 +370,7 @@ class Manager {
 							return \WP_REST_Response( array( 'message' => 'Could not create homepage' ), 400 );
 						}
 
-						$post_content = null;
+						$post_content = '';
 						if ( $settings['pattern'] && 'blank' !== $settings['pattern'] ) {
 							$pattern_properties = \WP_Block_Patterns_Registry::get_instance()->get_registered( $settings['pattern'] );
 							if ( $pattern_properties ) {

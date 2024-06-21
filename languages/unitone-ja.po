@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-06-21T07:36:30+00:00\n"
-"PO-Revision-Date: 2024-06-21 16:36+0900\n"
+"POT-Creation-Date: 2024-06-21T13:17:55+00:00\n"
+"PO-Revision-Date: 2024-06-21 22:18+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1810,6 +1810,10 @@ msgstr "ホームページ 1"
 #: App/Controller/Manager/dist/js/app.js:4
 msgid "Homepage 2"
 msgstr "ホームページ 2"
+
+#: App/Controller/Manager/dist/js/app.js:4
+msgid "Blank"
+msgstr "空"
 
 #: App/Controller/Manager/dist/js/app.js:4
 msgid "Select existing page for the homepage"

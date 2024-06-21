@@ -274,7 +274,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 														options={ [
 															{
 																value: 'blank',
-																label: 'Blank',
+																label: __(
+																	'Blank',
+																	'unitone'
+																),
 															},
 														] }
 														onChange={ (

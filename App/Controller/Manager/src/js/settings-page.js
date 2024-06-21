@@ -1,5 +1,3 @@
-import { pick } from 'lodash';
-
 import {
 	Button,
 	__experimentalNavigatorProvider as NavigatorProvider,
@@ -14,9 +12,8 @@ import { chevronLeft, wordpress, external, Icon } from '@wordpress/icons';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import apiFetch from '@wordpress/api-fetch';
-
 import License from './panels/license';
+import PatternLibrary from './panels/pattern-library';
 import Brand from './panels/brand';
 import Typography from './panels/typography';
 import Layout from './panels/layout';
@@ -27,18 +24,6 @@ import BlogCard from './panels/blog-card';
 export default function () {
 	const [ defaultSettings, setDefaultSettings ] = useState( [] );
 	const [ settings, setSettings ] = useState( [] );
-	const [ remotePatternsSaving, setRemotePatternsSaving ] = useState( false );
-
-	const resetRemotePattenrsCache = () => {
-		setRemotePatternsSaving( true );
-		apiFetch( {
-			path: '/unitone/v1/remote-block-patterns',
-			method: 'DELETE',
-			data: pick( settings, 'license-key' ),
-		} ).then( () => {
-			setRemotePatternsSaving( false );
-		} );
-	};
 
 	useEffect( () => {
 		setDefaultSettings( window.defaultSettings );
@@ -171,28 +156,7 @@ export default function () {
 											setSettings={ setSettings }
 										/>
 
-										<div
-											data-unitone-layout="decorator -padding:2"
-											style={ {
-												'--unitone--background-color':
-													'white',
-											} }
-										>
-											<Button
-												variant="primary"
-												onClick={
-													resetRemotePattenrsCache
-												}
-												disabled={
-													remotePatternsSaving
-												}
-											>
-												{ __(
-													'Retrieve patterns from the pattern library',
-													'unitone'
-												) }
-											</Button>
-										</div>
+										<PatternLibrary settings={ settings } />
 
 										<Brand
 											settings={ settings }

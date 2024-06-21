@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-06-21T14:47:38+00:00\n"
-"PO-Revision-Date: 2024-06-21 23:50+0900\n"
+"POT-Creation-Date: 2024-06-21T13:17:55+00:00\n"
+"PO-Revision-Date: 2024-06-21 22:18+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1668,42 +1668,6 @@ msgid "Reset All Settings"
 msgstr "すべての設定をリセット"
 
 #: App/Controller/Manager/dist/js/app.js:1
-msgid "Pattern Library"
-msgstr "パターンライブラリー"
-
-#: App/Controller/Manager/dist/js/app.js:1
-msgid "Cache"
-msgstr "キャッシュ"
-
-#: App/Controller/Manager/dist/js/app.js:1
-msgid ""
-"If the license key is valid, patterns from %1$sthe pattern library%2$s can "
-"be used."
-msgstr ""
-"ライセンスキーが有効であれば、%1$sパターンライブラリ%2$sのパターンを使用でき"
-"ます。"
-
-#: App/Controller/Manager/dist/js/app.js:1
-msgid ""
-"Pattern data retrieved from the pattern library is cached for a certain "
-"period of time to speed up operation, so new patterns may not be reflected "
-"immediately."
-msgstr ""
-"パターンライブラリから取得したパターンデータは、動作を高速化するために一定期"
-"間キャッシュされるため、新しいパターンがすぐに反映されないことがあります。"
-
-#: App/Controller/Manager/dist/js/app.js:1
-msgid ""
-"To force reacquisition of the latest pattern data, click the button below."
-msgstr ""
-"最新のパターンデータを強制的に再取得したいときは、以下のボタンをクリックして"
-"ください。"
-
-#: App/Controller/Manager/dist/js/app.js:1
-msgid "Retrieve patterns from the pattern library"
-msgstr "パターンライブラリーからパターンを再取得する"
-
-#: App/Controller/Manager/dist/js/app.js:1
 msgid "Brand"
 msgstr "ブランド"
 
@@ -1942,6 +1906,10 @@ msgstr "サイトを表示 (新しいタブで開く)"
 #: App/Controller/Manager/dist/js/app.js:6
 msgid "Navigation"
 msgstr "ナビゲーション"
+
+#: App/Controller/Manager/dist/js/app.js:6
+msgid "Retrieve patterns from the pattern library"
+msgstr "パターンライブラリーからパターンを再取得する"
 
 #: dist/blocks/accordion/index.js:1 dist/blocks/breadcrumbs/index.js:1
 #: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1

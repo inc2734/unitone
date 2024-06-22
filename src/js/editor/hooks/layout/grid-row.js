@@ -247,7 +247,18 @@ export function saveGridRowProp( extraProps, blockType, attributes ) {
 
 	extraProps.style = {
 		...extraProps.style,
-		'--unitone--grid-row': attributes?.unitone?.gridRow,
+		'--unitone--grid-row':
+			typeof attributes.unitone?.gridRow === 'string'
+				? attributes.unitone?.gridRow || undefined
+				: attributes?.unitone?.gridRow?.lg || undefined,
+		'--unitone--md-grid-row':
+			null != attributes?.unitone?.gridRow?.md
+				? attributes?.unitone?.gridRow?.md
+				: undefined,
+		'--unitone--sm-grid-row':
+			null != attributes.unitone?.gridRow?.sm
+				? attributes?.unitone?.gridRow?.sm
+				: undefined,
 	};
 
 	return extraProps;

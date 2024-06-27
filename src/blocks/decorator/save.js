@@ -1,19 +1,15 @@
-import classnames from 'classnames';
-
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
 export default function ( { attributes } ) {
-	const { tagName, shadow, rel, href, linkTarget } = attributes;
+	const { tagName, rel, href, linkTarget } = attributes;
 
 	const isHrefSet = !! href;
 
 	const TagName = tagName;
 
 	const blockProps = useBlockProps.save( {
-		'data-unitone-layout': classnames( 'decorator', {
-			'-shadow': shadow,
-		} ),
+		'data-unitone-layout': 'decorator',
 	} );
 
 	return (

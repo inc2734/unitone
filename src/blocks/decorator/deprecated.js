@@ -11,6 +11,77 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			shadow: {
+				type: 'boolean',
+				default: false,
+			},
+		},
+
+		migrate( attributes ) {
+			const { shadow } = attributes;
+
+			if ( ! shadow ) {
+				return attributes;
+			}
+
+			return {
+				...attributes,
+				style: {
+					...attributes?.style,
+					shadow: 'var:preset|shadow|unitone-natural',
+				},
+			};
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const { tagName, shadow, rel, href, linkTarget } = attributes;
+
+			const isHrefSet = !! href;
+
+			const TagName = tagName;
+
+			const blockProps = useBlockProps.save( {
+				'data-unitone-layout': classnames( 'decorator', {
+					'-shadow': shadow,
+				} ),
+			} );
+
+			return (
+				<>
+					{ isHrefSet ? (
+						<TagName { ...blockProps }>
+							<div data-unitone-layout="decorator__inner">
+								<div { ...useInnerBlocksProps.save() } />
+								<a
+									data-unitone-layout="decorator__link"
+									href={ href }
+									target={ linkTarget }
+									rel={ rel }
+								>
+									{ __( 'Learn more', 'unitone' ) }
+								</a>
+							</div>
+						</TagName>
+					) : (
+						<TagName
+							{ ...useInnerBlocksProps.save( { ...blockProps } ) }
+						/>
+					) }
+				</>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+			shadow: {
+				type: 'boolean',
+				default: false,
+			},
 		},
 
 		supports: {
@@ -71,6 +142,10 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			shadow: {
+				type: 'boolean',
+				default: false,
+			},
 			position: {
 				type: 'string',
 			},
@@ -182,6 +257,10 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			shadow: {
+				type: 'boolean',
+				default: false,
+			},
 			position: {
 				type: 'string',
 			},

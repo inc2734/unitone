@@ -94,6 +94,15 @@
 			"contentSize": "var(--wp--custom--content-max-width)",
 			"wideSize": "var(--wp--custom--container-max-width)"
 		},
+		"shadow": {
+			"presets": [
+				{
+					"name": "[unitone] Natural",
+					"shadow": "var(--unitone--global--box-shadow)",
+					"slug": "unitone-natural"
+				}
+			]
+		},
 		"typography": {
 			"dropCap": true,
 			"customFontSize": false,

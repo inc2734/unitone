@@ -12,10 +12,6 @@
 			"type": "string",
 			"default": "div"
 		},
-		"shadow": {
-			"type": "boolean",
-			"default": false
-		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
@@ -69,6 +65,11 @@
 			"__experimentalTextTransform": true,
 			"__experimentalDefaultControls": {
 				"fontSize": true
+			}
+		},
+		"shadow": {
+			"__experimentalDefaultControls": {
+				"shadow": true
 			}
 		},
 		"__experimentalBorder": {

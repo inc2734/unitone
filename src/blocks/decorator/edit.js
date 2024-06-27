@@ -14,7 +14,6 @@ import {
 	Popover,
 	SelectControl,
 	TextControl,
-	ToggleControl,
 	ToolbarButton,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
@@ -36,7 +35,7 @@ export default function ( {
 	isSelected,
 	clientId,
 } ) {
-	const { tagName, shadow, templateLock, rel, href, linkTarget } = attributes;
+	const { tagName, templateLock, rel, href, linkTarget } = attributes;
 
 	const onSetLinkRel = useCallback(
 		( value ) => {
@@ -75,10 +74,7 @@ export default function ( {
 	} );
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'decorator',
-		blockProps[ 'data-unitone-layout' ],
-		{
-			'-shadow': shadow,
-		}
+		blockProps[ 'data-unitone-layout' ]
 	);
 
 	const innerBlocksPropsArgs = {
@@ -118,27 +114,6 @@ export default function ( {
 		<>
 			<InspectorControls>
 				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
-					<ToolsPanelItem
-						hasValue={ () =>
-							shadow !== metadata.attributes.shadow.default
-						}
-						isShownByDefault
-						label={ __( 'With shadow', 'unitone' ) }
-						onDeselect={ () =>
-							setAttributes( {
-								shadow: metadata.attributes.shadow.default,
-							} )
-						}
-					>
-						<ToggleControl
-							label={ __( 'With shadow', 'unitone' ) }
-							checked={ shadow }
-							onChange={ ( newAttribute ) => {
-								setAttributes( { shadow: newAttribute } );
-							} }
-						/>
-					</ToolsPanelItem>
-
 					<ToolsPanelItem
 						hasValue={ () =>
 							tagName !== metadata.attributes.tagName.default

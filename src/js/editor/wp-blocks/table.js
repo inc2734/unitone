@@ -131,6 +131,6 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 addFilter(
 	'editor.BlockEdit',
-	'unitone/with-inspector-controls',
+	'unitone/core/table/with-inspector-controls',
 	withInspectorControls
 );

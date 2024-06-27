@@ -49,7 +49,12 @@
 }
 
 figure.wp-block-table {
+	display: block;
 	width: 100%;
+
+	figcaption {
+		display: block;
+	}
 }
 
 .wp-block-table.is-style-stripes {

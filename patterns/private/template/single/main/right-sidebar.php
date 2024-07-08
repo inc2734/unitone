@@ -8,7 +8,7 @@
 					<!-- wp:pattern {"slug":"unitone/template/single/page-header/wide"} /-->
 
 					<!-- wp:unitone/with-sidebar {"sidebarWidth": "300px","contentMinWidth":"600px","unitone":{"gap":"3"}} -->
-					<div data-unitone-layout="with-sidebar" style="--unitone--sidebar-width:300px;--unitone--content-min-width:600px">
+					<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--sidebar-width:300px;--unitone--content-min-width:600px">
 						<!-- wp:unitone/with-sidebar-content -->
 						<div data-unitone-layout="with-sidebar__content">
 							<!-- wp:unitone/stack {"unitone":{"gap":"3"}} -->

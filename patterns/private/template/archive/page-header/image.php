@@ -1,17 +1,17 @@
 <!-- wp:unitone/decorator {"tagName":"header"} -->
 <header data-unitone-layout="decorator">
 	<!-- wp:unitone/layers {"cover":true} -->
-	<div data-unitone-layout="layers -cover">
-		<!-- wp:unitone/layer {"gridRow":""} -->
+	<div data-unitone-layout="layers -cover -portrait">
+		<!-- wp:unitone/layer -->
 		<div data-unitone-layout="layers__layer">
 			<!-- wp:pattern {"slug":"unitone/image"} /-->
 		</div>
 		<!-- /wp:unitone/layer -->
 
-		<!-- wp:unitone/layer {"gridRow":"","alignSelf":"center"} -->
-		<div data-unitone-layout="layers__layer -align-self:center">
-			<!-- wp:unitone/cover {"noPadding":true,"unitone":{"minHeight":"50vmin"}} -->
-			<div data-unitone-layout="cover -no-padding">
+		<!-- wp:unitone/layer {"unitone":{"alignSelf":"center"}} -->
+		<div data-unitone-layout="layers__layer">
+			<!-- wp:unitone/cover {"unitone":{"minHeight":"50vmin","padding":"0"}} -->
+			<div data-unitone-layout="cover">
 				<!-- wp:unitone/cover-content {"position":"center"} -->
 				<div data-unitone-layout="cover__content -valign:center">
 					<!-- wp:unitone/container -->

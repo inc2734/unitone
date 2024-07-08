@@ -58,8 +58,8 @@
 		padding-bottom: var(--unitone--padding);
 	}
 
-	&__summary-content[data-unitone-layout~="with-sidebar"],
-	&__content[data-unitone-layout~="with-sidebar"] {
+	&__summary-content[data-unitone-layout~="with-sidebar -sidebar:right"],
+	&__content[data-unitone-layout~="with-sidebar -sidebar:right"] {
 		--unitone--gap: var(--unitone--global--text-gap);
 	}
 

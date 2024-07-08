@@ -7,8 +7,8 @@
  * Inserter: no
  */
 ?>
-<!-- wp:unitone/cover {"noPadding":true,"unitone":{"gap":"0"}} -->
-<div data-unitone-layout="cover -no-padding">
+<!-- wp:unitone/cover {"unitone":{"gap":"0","padding":"0"}} -->
+<div data-unitone-layout="cover">
 	<!-- wp:unitone/cover-content {"position":"top"} -->
 	<div data-unitone-layout="cover__content -valign:top">
 		<!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->

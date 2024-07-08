@@ -229,8 +229,8 @@
 									<div class="unitone-slider__slide swiper-slide">
 										<!-- wp:unitone/decorator {"unitone":{"position":{"position":"relative"},"overflow":"visible","padding":"1"},"backgroundColor":"unitone-accent","textColor":"white"} -->
 										<div data-unitone-layout="decorator" class="has-white-color has-unitone-accent-background-color has-text-color has-background">
-											<!-- wp:unitone/cover {"noPadding":true,"unitone":{"minHeight":"100%"}} -->
-											<div data-unitone-layout="cover -no-padding">
+											<!-- wp:unitone/cover {"unitone":{"minHeight":"100%","padding":"0"}} -->
+											<div data-unitone-layout="cover">
 												<!-- wp:unitone/cover-content {"position":"top"} -->
 												<div data-unitone-layout="cover__content -valign:top">
 													<!-- wp:paragraph {"fontSize":"unitone-2xl"} -->
@@ -277,8 +277,8 @@
 									<div class="unitone-slider__slide swiper-slide">
 										<!-- wp:unitone/decorator {"unitone":{"position":{"position":"relative"},"overflow":"visible","padding":"1"},"backgroundColor":"unitone-accent","textColor":"white"} -->
 										<div data-unitone-layout="decorator" class="has-white-color has-unitone-accent-background-color has-text-color has-background">
-											<!-- wp:unitone/cover {"noPadding":true,"unitone":{"minHeight":"100%"}} -->
-											<div data-unitone-layout="cover -no-padding">
+											<!-- wp:unitone/cover {"unitone":{"minHeight":"100%","padding":"0"}} -->
+											<div data-unitone-layout="cover">
 												<!-- wp:unitone/cover-content {"position":"top"} -->
 												<div data-unitone-layout="cover__content -valign:top">
 													<!-- wp:paragraph {"fontSize":"unitone-2xl"} -->
@@ -325,8 +325,8 @@
 									<div class="unitone-slider__slide swiper-slide">
 										<!-- wp:unitone/decorator {"unitone":{"position":{"position":"relative"},"overflow":"visible","padding":"1"},"backgroundColor":"unitone-accent","textColor":"white"} -->
 										<div data-unitone-layout="decorator" class="has-white-color has-unitone-accent-background-color has-text-color has-background">
-											<!-- wp:unitone/cover {"noPadding":true,"unitone":{"minHeight":"100%"}} -->
-											<div data-unitone-layout="cover -no-padding">
+											<!-- wp:unitone/cover {"unitone":{"minHeight":"100%","padding":"0"}} -->
+											<div data-unitone-layout="cover">
 												<!-- wp:unitone/cover-content {"position":"top"} -->
 												<div data-unitone-layout="cover__content -valign:top">
 													<!-- wp:paragraph {"fontSize":"unitone-2xl"} -->
@@ -373,8 +373,8 @@
 									<div class="unitone-slider__slide swiper-slide">
 										<!-- wp:unitone/decorator {"unitone":{"position":{"position":"relative"},"overflow":"visible","padding":"1"},"backgroundColor":"unitone-accent","textColor":"white"} -->
 										<div data-unitone-layout="decorator" class="has-white-color has-unitone-accent-background-color has-text-color has-background">
-											<!-- wp:unitone/cover {"noPadding":true,"unitone":{"minHeight":"100%"}} -->
-											<div data-unitone-layout="cover -no-padding">
+											<!-- wp:unitone/cover {"unitone":{"minHeight":"100%","padding":"0"}} -->
+											<div data-unitone-layout="cover">
 												<!-- wp:unitone/cover-content {"position":"top"} -->
 												<div data-unitone-layout="cover__content -valign:top">
 													<!-- wp:paragraph {"fontSize":"unitone-2xl"} -->
@@ -421,8 +421,8 @@
 									<div class="unitone-slider__slide swiper-slide">
 										<!-- wp:unitone/decorator {"unitone":{"position":{"position":"relative"},"overflow":"visible","padding":"1"},"backgroundColor":"unitone-accent","textColor":"white"} -->
 										<div data-unitone-layout="decorator" class="has-white-color has-unitone-accent-background-color has-text-color has-background">
-											<!-- wp:unitone/cover {"noPadding":true,"unitone":{"minHeight":"100%"}} -->
-											<div data-unitone-layout="cover -no-padding">
+											<!-- wp:unitone/cover {"unitone":{"minHeight":"100%","padding":"0"}} -->
+											<div data-unitone-layout="cover">
 												<!-- wp:unitone/cover-content {"position":"top"} -->
 												<div data-unitone-layout="cover__content -valign:top">
 													<!-- wp:paragraph {"fontSize":"unitone-2xl"} -->
@@ -469,8 +469,8 @@
 									<div class="unitone-slider__slide swiper-slide">
 										<!-- wp:unitone/decorator {"unitone":{"position":{"position":"relative"},"overflow":"visible","padding":"1"},"backgroundColor":"unitone-accent","textColor":"white"} -->
 										<div data-unitone-layout="decorator" class="has-white-color has-unitone-accent-background-color has-text-color has-background">
-											<!-- wp:unitone/cover {"noPadding":true,"unitone":{"minHeight":"100%"}} -->
-											<div data-unitone-layout="cover -no-padding">
+											<!-- wp:unitone/cover {"unitone":{"minHeight":"100%","padding":"0"}} -->
+											<div data-unitone-layout="cover">
 												<!-- wp:unitone/cover-content {"position":"top"} -->
 												<div data-unitone-layout="cover__content -valign:top">
 													<!-- wp:paragraph {"fontSize":"unitone-2xl"} -->

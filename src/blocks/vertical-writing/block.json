@@ -24,6 +24,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=vertical-writing-wrapper]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

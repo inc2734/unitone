@@ -18,6 +18,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=both-sides]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

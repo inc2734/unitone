@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"textdomain": "unitone",
 	"name": "unitone/both-sides-content",
-	"title": "Content",
+	"title": "Both sides content",
 	"description": "The content of the both-sides block.",
 	"parent": [ "unitone/both-sides" ],
 	"attributes": {

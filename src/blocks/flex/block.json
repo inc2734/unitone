@@ -17,6 +17,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": ".unitone-flex"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

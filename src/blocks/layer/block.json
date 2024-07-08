@@ -28,6 +28,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=layers__layer]"
+	},
 	"supports": {
 		"inserter": false,
 		"className": false,

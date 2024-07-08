@@ -105,6 +105,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": ".unitone-grid"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

@@ -12,12 +12,15 @@
 			"default": "slash"
 		}
 	},
+	"selectors": {
+		"root": ".unitone-breadcrumbs"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,
 		"color": {
 			"background": false,
-			"link": true,
+			"link": false,
 			"text": true
 		},
 		"typography": {
@@ -42,6 +45,5 @@
 	"category": "unitone/component",
 	"editorScript": "file:./index.js",
 	"style": "file:./style-index.css",
-	"editorStyle": "file:./index.css",
 	"render": "file:./render.php"
 }

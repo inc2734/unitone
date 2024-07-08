@@ -24,6 +24,9 @@
 			"default": ""
 		}
 	},
+	"selectors": {
+		"root": ".unitone-child-pages, .unitone-child-pages .unitone-child-pages__item"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

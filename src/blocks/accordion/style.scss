@@ -16,8 +16,8 @@
 		}
 	}
 
-	&.is-style-box,
-	&.is-style-panel {
+	&:where(.is-style-box),
+	&:where(.is-style-panel) {
 		--unitone--padding: var(--unitone--global--text-gap);
 
 		background-color: var(--wp--preset--color--white);
@@ -29,7 +29,7 @@
 		}
 	}
 
-	&.is-style-panel {
+	&:where(.is-style-panel) {
 		--unitone--box-shadow: var(--unitone--global--box-shadow);
 
 		box-shadow: var(--unitone--box-shadow);

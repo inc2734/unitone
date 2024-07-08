@@ -23,6 +23,9 @@
 		"unitone/flex-divided/tagName",
 		"unitone/flex-divided/verticalAlignment"
 	],
+	"selectors": {
+		"root": ".unitone-flex__content"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

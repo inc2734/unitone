@@ -19,6 +19,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=cluster]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

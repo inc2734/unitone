@@ -11,6 +11,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": ".unitone-slider__slide"
+	},
 	"supports": {
 		"className": false,
 		"color": {

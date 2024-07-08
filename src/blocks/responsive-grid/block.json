@@ -23,6 +23,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=responsive-grid]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

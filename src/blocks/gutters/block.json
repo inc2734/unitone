@@ -11,6 +11,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=gutters]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

@@ -25,12 +25,8 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 		<?php
 		$the_query->the_post();
 
-		$item_class = array( 'has-background' );
+		$item_class = array( 'unitone-child-pages__item', 'has-background' );
 		$item_style = array();
-
-		if ( ! $background_color && ! $style_background_color ) {
-			$item_class[] = 'has-unitone-bright-gray-background-color';
-		}
 
 		if ( $background_color ) {
 			$item_class[] = 'has-' . $background_color . '-background-color';

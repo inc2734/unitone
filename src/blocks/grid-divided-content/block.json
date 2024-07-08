@@ -17,6 +17,9 @@
 		}
 	},
 	"usesContext": [ "unitone/grid-divided/tagName" ],
+	"selectors": {
+		"root": ".unitone-grid__content"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

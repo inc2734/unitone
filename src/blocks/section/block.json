@@ -15,6 +15,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": ".unitone-section"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

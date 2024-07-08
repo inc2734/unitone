@@ -1,15 +1,3 @@
-.editor-styles-wrapper [data-type="unitone/child-pages"] {
-	&.is-style-box,
-	&.is-style-panel,
-	&.is-style-rich-media {
-		background-color: transparent !important;
-
-		.unitone-child-pages {
-			background-color: transparent !important;
-		}
-	}
-}
-
 .unitone-search-post-control {
 	&__parent-title {
 		display: flex;

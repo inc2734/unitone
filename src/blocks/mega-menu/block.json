@@ -46,6 +46,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": ".unitone-mega-menu"
+	},
 	"supports": {
 		"className": false,
 		"color": {

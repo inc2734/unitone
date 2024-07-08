@@ -11,6 +11,9 @@
 			"default": ""
 		}
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=cover]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

@@ -25,7 +25,7 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 		<?php
 		$the_query->the_post();
 
-		$item_class = array();
+		$item_class = array( 'unitone-child-pages__item' );
 		$item_style = array();
 
 		if ( $background_color || $style_background_color ) {

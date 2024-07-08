@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"textdomain": "unitone",
 	"name": "unitone/with-sidebar-content",
-	"title": "Content",
+	"title": "With sidebar content",
 	"description": "The content of the with sidebar block.",
 	"parent": [ "unitone/with-sidebar" ],
 	"attributes": {

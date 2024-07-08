@@ -26,6 +26,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=text]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

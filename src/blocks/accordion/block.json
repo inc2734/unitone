@@ -52,6 +52,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": ".unitone-accordion"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

@@ -9,6 +9,14 @@
 		}
 	}
 
+	&:where(.is-style-box > [data-unitone-layout~="responsive-grid"] > [data-unitone-layout~="decorator"]) {
+		background-color: var(--wp--preset--color--unitone-bright-gray);
+	}
+
+	&:where(.is-style-panel > [data-unitone-layout~="responsive-grid"] > [data-unitone-layout~="decorator"]) {
+		background-color: white;
+	}
+
 	&.is-style-stack-divided-stripe {
 		[data-unitone-layout~="stack"] {
 			--unitone--gap: var(--unitone--s-1);

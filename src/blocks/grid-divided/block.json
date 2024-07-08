@@ -120,6 +120,9 @@
 	"providesContext": {
 		"unitone/grid-divided/tagName": "tagName"
 	},
+	"selectors": {
+		"root": ".unitone-grid[data-unitone-layout*=-divider:]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

@@ -29,6 +29,9 @@
 	"providesContext": {
 		"unitone/stack-divided/tagName": "tagName"
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=stack][data-unitone-layout*=-divider:]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

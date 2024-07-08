@@ -44,6 +44,9 @@
 			}
 		}
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=decorator]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true,

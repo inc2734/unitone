@@ -19,6 +19,9 @@
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
+	"selectors": {
+		"root": "[data-unitone-layout~=frame]"
+	},
 	"supports": {
 		"className": false,
 		"anchor": true

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-06-21T14:47:38+00:00\n"
-"PO-Revision-Date: 2024-06-21 23:50+0900\n"
+"POT-Creation-Date: 2024-07-08T16:33:25+00:00\n"
+"PO-Revision-Date: 2024-07-09 01:36+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Theme Name of the theme
 #: inc/block-categories.php:20 inc/block-categories.php:31
 #: inc/block-categories.php:42 inc/block-categories.php:53
-#: inc/block-styles.php:96 dist/js/editor/editor.js:1
+#: inc/block-styles.php:96 dist/js/editor/editor.js:10
 msgid "unitone"
 msgstr "unitone"
 
@@ -36,7 +36,7 @@ msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
 #: App/Controller/Manager/Manager.php:71 App/Controller/Manager/Manager.php:72
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
@@ -68,10 +68,10 @@ msgstr "unitone のセットアップ画面で初期設定をはじめましょ�
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
+#: dist/blocks/child-pages/templates/box.php:57
 #: dist/blocks/child-pages/templates/box.php:61
-#: dist/blocks/child-pages/templates/box.php:65
-#: dist/blocks/child-pages/templates/panel.php:66
-#: dist/blocks/child-pages/templates/panel.php:70
+#: dist/blocks/child-pages/templates/panel.php:57
+#: dist/blocks/child-pages/templates/panel.php:61
 #: dist/blocks/child-pages/templates/rich-media.php:78
 #: dist/blocks/child-pages/templates/rich-media.php:83
 #: dist/blocks/decorator/index.js:1
@@ -83,7 +83,7 @@ msgstr "さらに詳しく"
 msgid "%s mega menu"
 msgstr "%sのメガメニュー"
 
-#: inc/block-categories.php:23 App/Controller/Manager/dist/js/app.js:4
+#: inc/block-categories.php:23 App/Controller/Manager/dist/js/app.js:7
 #: dist/js/editor/editor.js:1
 msgid "Layout"
 msgstr "レイアウト"
@@ -113,7 +113,7 @@ msgid "Query"
 msgstr "クエリー"
 
 #: inc/block-patterns.php:16 inc/template-part-areas.php:27
-#: inc/template-part-areas.php:162 App/Controller/Manager/dist/js/app.js:6
+#: inc/template-part-areas.php:162 App/Controller/Manager/dist/js/app.js:9
 msgid "Pages"
 msgstr "ページ"
 
@@ -1656,14 +1656,14 @@ msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Save Settings"
 msgstr "設定を保存"
 
 #: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Reset All Settings"
 msgstr "すべての設定をリセット"
 
@@ -1675,7 +1675,8 @@ msgstr "パターンライブラリー"
 msgid "Cache"
 msgstr "キャッシュ"
 
-#: App/Controller/Manager/dist/js/app.js:1
+#. translators: %1$s: <a>, %2$s: </a>
+#: App/Controller/Manager/dist/js/app.js:4
 msgid ""
 "If the license key is valid, patterns from %1$sthe pattern library%2$s can "
 "be used."
@@ -1683,7 +1684,7 @@ msgstr ""
 "ライセンスキーが有効であれば、%1$sパターンライブラリ%2$sのパターンを使用でき"
 "ます。"
 
-#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:4
 msgid ""
 "Pattern data retrieved from the pattern library is cached for a certain "
 "period of time to speed up operation, so new patterns may not be reflected "
@@ -1692,45 +1693,45 @@ msgstr ""
 "パターンライブラリから取得したパターンデータは、動作を高速化するために一定期"
 "間キャッシュされるため、新しいパターンがすぐに反映されないことがあります。"
 
-#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:4
 msgid ""
 "To force reacquisition of the latest pattern data, click the button below."
 msgstr ""
 "最新のパターンデータを強制的に再取得したいときは、以下のボタンをクリックして"
 "ください。"
 
-#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Retrieve patterns from the pattern library"
 msgstr "パターンライブラリーからパターンを再取得する"
 
-#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Brand"
 msgstr "ブランド"
 
-#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Site Logo"
 msgstr "サイトロゴ"
 
-#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Display an image to represent this site."
 msgstr "このサイトを表す画像を表示します。"
 
-#: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Remove Image"
 msgstr "画像を削除"
 
-#: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Select Image"
 msgstr "画像を選択"
 
-#: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Site Icon"
 msgstr "サイトアイコン"
 
-#: App/Controller/Manager/dist/js/app.js:1
+#: App/Controller/Manager/dist/js/app.js:4
 msgid ""
 "Site Icons are what you see in browser tabs, bookmark bars, and within the "
 "WordPress mobile apps. Upload one here!"
@@ -1739,15 +1740,15 @@ msgstr ""
 "で表示されます。ぜひアップロードしましょう。"
 
 #. translators: %s: Site icon size in pixels.
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Site Icons should be square and at least %s pixels."
 msgstr "サイトアイコンは%sピクセル以上の正方形にしてください。"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Colors"
 msgstr "色"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid ""
 "This setting is the default setting for the theme. The Site Editor setting "
 "overrides this setting."
@@ -1755,142 +1756,142 @@ msgstr ""
 "この設定はテーマのデフォルト設定です。サイトエディターの設定はこの設定を上書"
 "きします。"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Accent Color"
 msgstr "アクセントカラー"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Background Color"
 msgstr "背景色"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Text Color"
 msgstr "文字色"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Link Color"
 msgstr "リンク色"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Typography"
 msgstr "タイポグラフィ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Font"
 msgstr "フォント"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Base Font Size"
 msgstr "基本の文字サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Half Leading"
 msgstr "ハーフレディング"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h2"
 msgstr "h2 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h3"
 msgstr "h3 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h4"
 msgstr "h4 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h5"
 msgstr "h5 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h6"
 msgstr "h6 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size"
 msgstr "サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:4 dist/js/editor/editor.js:1
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:1
 msgid "Content Width"
 msgstr "コンテンツ幅"
 
-#: App/Controller/Manager/dist/js/app.js:4 dist/js/editor/editor.js:1
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:1
 msgid "Wide"
 msgstr "幅広"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Your Homepage Displays"
 msgstr "ホームページ設定"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Homepage Type"
 msgstr "ホームページのタイプ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Latest Posts"
 msgstr "最新の投稿"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Static Page"
 msgstr "固定ページ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Homepage"
 msgstr "ホームページ"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Homepage 1"
 msgstr "ホームページ 1"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Homepage 2"
 msgstr "ホームページ 2"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Blank"
 msgstr "空"
 
-#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Select existing page for the homepage"
 msgstr "既存のページをホームページ用に選択"
 
-#: App/Controller/Manager/dist/js/app.js:4
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:8
 msgid "— Select —"
 msgstr "— 選択 —"
 
 #. translators: %1$s: Post ID
-#: App/Controller/Manager/dist/js/app.js:5
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:8
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "#%1$s (No title)"
 msgstr "#%1$s （タイトルなし）"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:8
 msgid "Posts Page"
 msgstr "投稿ページ"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:8
 msgid "Create new page for the posts page"
 msgstr "投稿ページ用の固定ページを生成"
 
-#: App/Controller/Manager/dist/js/app.js:5
+#: App/Controller/Manager/dist/js/app.js:8
 msgid "Select existing page for the posts page"
 msgstr "既存のページを投稿ページ用に選択"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Posts"
 msgstr "投稿"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Products"
 msgstr "商品"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Custom Templates"
 msgstr "カスタムテンプレート"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid ""
 "Activate the custom template you wish to use. You cannot deactivate a custom "
 "template that is already in use."
@@ -1898,48 +1899,48 @@ msgstr ""
 "使用したいカスタムテンプレートを有効化してください。既に使用されているカスタ"
 "ムテンプレートは無効化できません。"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Blog Card"
 msgstr "ブログカード"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Style"
 msgstr "スタイル"
 
-#: App/Controller/Manager/dist/js/app.js:6 dist/blocks/layers/index.js:1
+#: App/Controller/Manager/dist/js/app.js:9 dist/blocks/layers/index.js:1
 #: dist/blocks/section/index.js:1
 msgid "Default"
 msgstr "デフォルト"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Background color (Accent color)"
 msgstr "背景色（アクセントカラー）"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Border (Accent color)"
 msgstr "ボーダー（アクセントカラー）"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Dark"
 msgstr "ダーク"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Media"
 msgstr "メディア"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Simple"
 msgstr "シンプル"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Go to the Dashboard"
 msgstr "ダッシュボードに戻る"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "View site (opens in a new tab)"
 msgstr "サイトを表示 (新しいタブで開く)"
 
-#: App/Controller/Manager/dist/js/app.js:6
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Navigation"
 msgstr "ナビゲーション"
 
@@ -2124,10 +2125,6 @@ msgstr "カバー（中央 / 下部）"
 #: dist/blocks/cover/index.js:1
 msgid "Cover (Top / Center / Bottom)"
 msgstr "カバー（上部 / 中央 / 下部）"
-
-#: dist/blocks/decorator/index.js:1
-msgid "With shadow"
-msgstr "影付き"
 
 #: dist/blocks/flex-divided/index.js:1
 msgid "Flex (Divider: stripe)"
@@ -2685,10 +2682,6 @@ msgid "Blur"
 msgstr "ぼかし"
 
 #: dist/js/editor/editor.js:1
-msgid "Cell Min Width"
-msgstr "セルの最小幅"
-
-#: dist/js/editor/editor.js:1
 msgid "None"
 msgstr "無し"
 
@@ -2887,6 +2880,10 @@ msgid "The stack level"
 msgstr "重ね合わせレベル"
 
 #: dist/js/editor/editor.js:10
+msgid "Cell Min Width"
+msgstr "セルの最小幅"
+
+#: dist/js/editor/editor.js:10
 msgid "Select parent block"
 msgstr "親ブロックを選択"
 
@@ -2949,10 +2946,9 @@ msgid "Panel"
 msgstr "パネル"
 
 #: dist/blocks/both-sides-content/block.json
-#: dist/blocks/with-sidebar-content/block.json
 msgctxt "block title"
-msgid "Content"
-msgstr "コンテンツ"
+msgid "Both sides content"
+msgstr "両端のコンテンツ"
 
 #: dist/blocks/both-sides-content/block.json
 msgctxt "block description"
@@ -3369,6 +3365,11 @@ msgstr ""
 "破壊的な変更が加えられたり、廃止されたりする可能性があります。"
 
 #: dist/blocks/with-sidebar-content/block.json
+msgctxt "block title"
+msgid "With sidebar content"
+msgstr "サイドバーのコンテンツ"
+
+#: dist/blocks/with-sidebar-content/block.json
 msgctxt "block description"
 msgid "The content of the with sidebar block."
 msgstr "サイドバーブロックのコンテンツです。"
@@ -3573,38 +3574,38 @@ msgstr "6XL"
 
 #: theme.json
 msgctxt "Space size name"
-msgid "-2"
-msgstr "-2"
+msgid "XS"
+msgstr "XS"
 
 #: theme.json
 msgctxt "Space size name"
-msgid "-1"
-msgstr "-1"
+msgid "S"
+msgstr "S"
 
 #: theme.json
 msgctxt "Space size name"
-msgid "1"
-msgstr "1"
+msgid "M"
+msgstr "M"
 
 #: theme.json
 msgctxt "Space size name"
-msgid "2"
-msgstr "2"
+msgid "L"
+msgstr "L"
 
 #: theme.json
 msgctxt "Space size name"
-msgid "3"
-msgstr "3"
+msgid "XL"
+msgstr "XL"
 
 #: theme.json
 msgctxt "Space size name"
-msgid "4"
-msgstr "4"
+msgid "2XL"
+msgstr "2XL"
 
 #: theme.json
 msgctxt "Space size name"
-msgid "5"
-msgstr "5"
+msgid "3XL"
+msgstr "3XL"
 
 #: theme.json
 msgctxt "Custom template name"
@@ -3805,6 +3806,41 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "With shadow"
+#~ msgstr "影付き"
+
+#~ msgctxt "block title"
+#~ msgid "Content"
+#~ msgstr "コンテンツ"
+
+#~ msgctxt "Space size name"
+#~ msgid "-2"
+#~ msgstr "-2"
+
+#~ msgctxt "Space size name"
+#~ msgid "-1"
+#~ msgstr "-1"
+
+#~ msgctxt "Space size name"
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgctxt "Space size name"
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgctxt "Space size name"
+#~ msgid "3"
+#~ msgstr "3"
+
+#~ msgctxt "Space size name"
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgctxt "Space size name"
+#~ msgid "5"
+#~ msgstr "5"
 
 #~ msgctxt "block description"
 #~ msgid "This block is designed to cover a large area of the screen."

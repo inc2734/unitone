@@ -198,7 +198,7 @@ export default function ( { attributes, setAttributes } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<div { ...useBlockProps() }>
+			<div { ...useBlockProps( { className: 'unitone-child-pages' } ) }>
 				<Disabled>
 					<ServerSideRender
 						block="unitone/child-pages"

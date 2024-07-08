@@ -9,6 +9,11 @@ import apiFetch from '@wordpress/api-fetch';
 
 const SETTINGS_KEYS = [ 'license-key' ];
 
+/**
+ * If a value is stored in License key, use this value instead, since it is secret.
+ */
+const SAVED_VALUE = 'THIS_IS_DUMMY_SAVED_VALUE_BECAUSE_THIS_VALUE_IS_SECRET';
+
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 	const [ licenseStatus, setLicenseStatus ] = useState( undefined );
@@ -107,7 +112,23 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										'If the license key entered is valid, the theme can be updated.',
 										'unitone'
 									) }
-									value={ settings?.[ 'license-key' ] || '' }
+									type="password"
+									value={ ( () => {
+										if ( !! settings?.[ 'license-key' ] ) {
+											if (
+												settings?.[ 'license-key' ] !==
+												window.currentSettings?.[
+													'license-key'
+												]
+											) {
+												return settings?.[
+													'license-key'
+												];
+											}
+											return SAVED_VALUE;
+										}
+										return '';
+									} )() }
 									style={ { width: '100%' } }
 									onChange={ ( newSetting ) =>
 										setSettings( {

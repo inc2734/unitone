@@ -3,7 +3,9 @@
 	&[data-unitone-layout~="-fill"] {
 		> :first-child > [data-type="core/image"],
 		> [data-type="core/image"]:first-child {
-			.components-resizable-box__container {
+			.components-resizable-box__container,
+			.components-disabled,
+			div:not([class]) {
 				display: contents !important;
 			}
 

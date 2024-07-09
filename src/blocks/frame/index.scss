@@ -1,7 +1,8 @@
 [data-unitone-layout~="frame"] {
 	> * {
 		.components-resizable-box__container,
-		.components-disabled {
+		.components-disabled,
+		div:not([class]) {
 			display: contents !important;
 
 			> div {

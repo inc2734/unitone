@@ -138,6 +138,7 @@ export default [
 			{
 				name: 'unitone/stack',
 				attributes: {
+					tagName: 'hgroup',
 					unitone: {
 						gap: '-2',
 					},
@@ -209,6 +210,7 @@ export default [
 				{
 					name: 'unitone/stack',
 					attributes: {
+						tagName: 'hgroup',
 						unitone: {
 							gap: '-2',
 						},
@@ -372,6 +374,7 @@ export default [
 			{
 				name: 'unitone/stack',
 				attributes: {
+					tagName: 'hgroup',
 					unitone: {
 						gap: '-2',
 					},
@@ -423,6 +426,7 @@ export default [
 				{
 					name: 'unitone/stack',
 					attributes: {
+						tagName: 'hgroup',
 						unitone: {
 							gap: '-2',
 						},

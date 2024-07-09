@@ -21,8 +21,10 @@ import {
 } from '@wordpress/components';
 
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
+import { cleanEmptyObject } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -36,26 +38,39 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const defaultAttributes = {};
-	Object.values( metadata.attributes || [] ).forEach( ( value, index ) => {
-		defaultAttributes[ Object.keys( metadata.attributes )[ index ] ] =
-			value.default;
-	} );
+	const defaultAttributes = useMemo( () => {
+		const _object = {};
+		Object.values( metadata.attributes || [] ).forEach(
+			( value, index ) => {
+				_object[ Object.keys( metadata.attributes )[ index ] ] =
+					value.default;
+			}
+		);
+		return cleanEmptyObject( _object );
+	}, [ metadata ] );
+
+	const comparativeAttributes = useMemo( () => {
+		return cleanEmptyObject( {
+			...attributes,
+			__unstableUnitoneSupports: undefined,
+		} );
+	}, [ JSON.stringify( attributes ) ] );
 
 	const [ isShowPlaceholder, setIsShowPlaceholder ] = useState(
 		! hasInnerBlocks &&
-			JSON.stringify( defaultAttributes ) === JSON.stringify( attributes )
+			JSON.stringify( defaultAttributes ) ===
+				JSON.stringify( comparativeAttributes )
 	);
 
 	useEffect( () => {
 		if (
 			JSON.stringify( defaultAttributes ) ===
-				JSON.stringify( attributes ) &&
+				JSON.stringify( comparativeAttributes ) &&
 			! hasInnerBlocks
 		) {
 			setIsShowPlaceholder( true );
 		}
-	}, [ attributes, defaultAttributes, hasInnerBlocks ] );
+	}, [ comparativeAttributes, defaultAttributes, hasInnerBlocks ] );
 
 	const blockProps = useBlockProps( { className: 'unitone-section' } );
 

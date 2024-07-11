@@ -1,6 +1,6 @@
 {
-	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/theme.json",
-	"version": 2,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
 	"title": "Dark",
 	"settings": {
 		"color": {
@@ -66,6 +66,8 @@
 					"name": "Heavy Gray"
 				}
 			]
+		},
+		"typography": {
 		}
 	},
 	"styles": {

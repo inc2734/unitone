@@ -101,7 +101,7 @@ function unitone_wp_theme_json_data_theme( $theme_json ) {
 	}
 
 	$new_data = array(
-		'version'  => 2,
+		'version'  => 3,
 		'settings' => array(
 			'color' => array(
 				'palette' => array(
@@ -537,7 +537,7 @@ function unitone_set_color_palette( $theme_json ) {
 	);
 
 	$new_data = array(
-		'version'  => 2,
+		'version'  => 3,
 		'settings' => array(
 			'color' => array(
 				'palette' => array(

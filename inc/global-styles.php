@@ -84,11 +84,6 @@ add_action( 'enqueue_block_editor_assets', 'enqueue_typography_styles', 11 );
  * @return WP_Theme_JSON_Data
  */
 function unitone_wp_theme_json_data_theme( $theme_json ) {
-	$accent_color     = Manager::get_setting( 'accent-color' );
-	$background_color = Manager::get_setting( 'background-color' );
-	$text_color       = Manager::get_setting( 'text-color' );
-	$link_color       = Manager::get_setting( 'link-color' ) ? Manager::get_setting( 'link-color' ) : 'var(--wp--preset--color--unitone-accent)';
-
 	$theme_palette = $theme_json->get_data()['settings']['color']['palette']['theme'];
 	foreach ( $theme_palette as $index => $color ) {
 		if ( 'unitone-accent' === $color['slug'] ) {
@@ -106,15 +101,6 @@ function unitone_wp_theme_json_data_theme( $theme_json ) {
 			'color' => array(
 				'palette' => array(
 					'theme' => $theme_palette,
-				),
-			),
-		),
-		'styles'   => array(
-			'elements' => array(
-				'link' => array(
-					'color' => array(
-						'text' => $link_color,
-					),
 				),
 			),
 		),
@@ -560,7 +546,9 @@ add_filter(
 		$data = $theme_json->get_data();
 		if ( isset( $data['styles']['color'] ) && is_array( $data['styles']['color'] ) ) {
 			foreach ( $data['styles']['color'] as $key => $value ) {
-				$data['styles']['color'][ $key ] = str_replace( '/', '-', $value );
+				if ( $value ) {
+					$data['styles']['color'][ $key ] = str_replace( '/', '-', $value );
+				}
 			}
 		}
 

@@ -38,12 +38,17 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	};
 
 	const saveSettings = () => {
+		const newData = {};
+		SETTINGS_KEYS.forEach(
+			( key ) => ( newData[ key ] = settings?.[ key ] ?? null )
+		);
+
 		setSettingsSaving( true );
 		setLicenseStatus( undefined );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: pick( settings, SETTINGS_KEYS ),
+			data: newData,
 		} ).then( () => {
 			setSettingsSaving( false );
 			loadLicenseStatus();

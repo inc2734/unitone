@@ -88,10 +88,15 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			} );
 		}
 
+		const newData = {};
+		SETTINGS_KEYS.forEach(
+			( key ) => ( newData[ key ] = newSettings?.[ key ] ?? null )
+		);
+
 		await apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: pick( newSettings, SETTINGS_KEYS ),
+			data: newData,
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );

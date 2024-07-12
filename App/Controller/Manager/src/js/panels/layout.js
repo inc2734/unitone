@@ -1,6 +1,9 @@
 import { pick } from 'lodash';
 
-import { Button, TextControl } from '@wordpress/components';
+import {
+	Button,
+	__experimentalUnitControl as UnitControl,
+} from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -12,11 +15,16 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 
 	const saveSettings = () => {
+		const newData = {};
+		SETTINGS_KEYS.forEach(
+			( key ) => ( newData[ key ] = settings?.[ key ] ?? null )
+		);
+
 		setSettingsSaving( true );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: pick( settings, SETTINGS_KEYS ),
+			data: newData,
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );
@@ -62,7 +70,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							<h3>{ __( 'Size', 'unitone' ) }</h3>
 						</div>
 						<div data-unitone-layout="stack">
-							<TextControl
+							<UnitControl
 								label={ __( 'Content Width', 'unitone' ) }
 								value={ settings?.[ 'content-size' ] || '' }
 								style={ { width: '100%' } }
@@ -74,7 +82,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								}
 							/>
 
-							<TextControl
+							<UnitControl
 								label={ __( 'Wide', 'unitone' ) }
 								value={ settings?.[ 'wide-size' ] || '' }
 								style={ { width: '100%' } }

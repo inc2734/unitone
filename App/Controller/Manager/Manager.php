@@ -7,6 +7,8 @@
 
 namespace Unitone\App\Controller\Manager;
 
+use Unitone\App\Controller\Manager\Model\Settings;
+
 class Manager {
 
 	/**
@@ -15,38 +17,6 @@ class Manager {
 	 * @var string
 	 */
 	const MENU_SLUG = 'unitone';
-
-	/**
-	 * Available settings name.
-	 *
-	 * @var string
-	 */
-	const SETTINGS_NAME = 'unitone-settings';
-
-	/**
-	 * Default settings.
-	 *
-	 * @var array
-	 */
-	protected static $default_settings = array(
-		'license-key'               => '',
-		'font-family'               => 'sans-serif',
-		'base-font-size'            => 16,
-		'half-leading'              => 0.4,
-		'h2-size'                   => 3,
-		'h3-size'                   => 2,
-		'h4-size'                   => 1,
-		'h5-size'                   => 0,
-		'h6-size'                   => 0,
-		'accent-color'              => '#090a0b', // = settings.color.palette > unitone-accent
-		'background-color'          => '#fff',
-		'text-color'                => 'var(--unitone--color--text)',
-		'link-color'                => '#003c78', // = styles.elements.link.color.text
-		'content-size'              => '46rem',
-		'wide-size'                 => '1334px',
-		'enabled-custom-templates'  => array(),
-		'wp-oembed-blog-card-style' => 'default',
-	);
 
 	/**
 	 * Constructor.
@@ -86,7 +56,7 @@ class Manager {
 	 * Uninstall
 	 */
 	public static function _uninstall() {
-		delete_option( self::SETTINGS_NAME );
+		Settings::purge();
 	}
 
 	/**
@@ -132,25 +102,20 @@ class Manager {
 		do_action( 'unitone_setup_enqueue_assets' );
 
 		$global_settings        = wp_get_global_settings();
-		$custom_templates       = static::get_custom_templates();
-		$using_custom_templates = static::_get_using_custom_templates();
-
-		static::$default_settings['enabled-custom-templates'] = array_merge(
-			static::$default_settings['enabled-custom-templates'],
-			$using_custom_templates
-		);
+		$custom_templates       = Settings::get_custom_templates();
+		$using_custom_templates = Settings::get_using_custom_templates();
 
 		wp_localize_script(
 			'unitone/settings',
 			'defaultSettings',
-			static::$default_settings,
+			Settings::get_default_settings(),
 		);
 
 		wp_localize_script(
 			'unitone/settings',
 			'currentSettings',
 			array_merge(
-				static::get_settings(),
+				Settings::get_merged_settings(),
 				array(
 					'adminUrl'             => admin_url(),
 					'homeUrl'              => home_url(),
@@ -225,7 +190,7 @@ class Manager {
 			array(
 				'methods'             => 'GET',
 				'callback'            => function () {
-					return static::get_license_status( static::get_setting( 'license-key' ) );
+					return static::get_license_status( Settings::get_setting( 'license-key' ) );
 				},
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );
@@ -244,7 +209,7 @@ class Manager {
 			array(
 				'methods'             => 'GET',
 				'callback'            => function ( $request ) {
-					return static::get_settings( $request->get_params() );
+					return Settings::get_merged_settings( $request->get_params() );
 				},
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );
@@ -267,76 +232,62 @@ class Manager {
 					if ( $request->get_params() ) {
 						$settings = $request->get_params();
 
-						$new_settings = array();
+						$default_settings = Settings::get_default_settings();
+						$saved_settings   = Settings::get_settings();
+						$new_settings     = array();
+
+						$default_options = Settings::get_default_options();
+						$saved_options   = Settings::get_options();
+						$new_options     = array();
 
 						// Extract all but the core settings.
-						foreach ( static::$default_settings as $name => $default ) {
-							if ( array_key_exists( $name, $settings ) ) {
-								$new_settings[ $name ] = $settings[ $name ];
-							}
-						}
-
 						// The new settings are sent only in difference.
 						// Therefore, there are merged with the stored settings and saved as new settings.
-						$new_settings = array_merge(
-							get_option( self::SETTINGS_NAME ) ? get_option( self::SETTINGS_NAME ) : array(),
-							$new_settings
-						);
+						foreach ( $default_settings as $name => $default ) {
+							if ( array_key_exists( $name, $settings ) ) {
+								$new_settings[ $name ] = $settings[ $name ];
+							} elseif ( array_key_exists( $name, $saved_settings ) ) {
+								$new_settings[ $name ] = $saved_settings[ $name ];
+							} else {
+								$new_settings[ $name ] = $default;
+							}
+						}
+						foreach ( $default_options as $name => $default ) {
+							if ( array_key_exists( $name, $settings ) ) {
+								$new_options[ $name ] = $settings[ $name ];
+							} elseif ( array_key_exists( $name, $saved_options ) ) {
+								$new_options[ $name ] = $saved_options[ $name ];
+							} else {
+								$new_options[ $name ] = $default;
+							}
+						}
 
 						// The settings to be deleted are sent as null, so the null settings are removed.
 						// Also, if the settings are the same as the default settings, there are not saved.
 						$new_settings = array_filter(
 							$new_settings,
-							function ( $value, $key ) {
-								return ! is_null( $value ) && static::$default_settings[ $key ] !== $value;
+							function ( $value, $key ) use ( $default_settings ) {
+								return ! is_null( $value ) && $default_settings[ $key ] !== $value;
+							},
+							ARRAY_FILTER_USE_BOTH
+						);
+						$new_options = array_filter(
+							$new_options,
+							function ( $value, $key ) use ( $default_options ) {
+								return ! is_null( $value ) && $default_options[ $key ] !== $value;
 							},
 							ARRAY_FILTER_USE_BOTH
 						);
 
-						update_option( self::SETTINGS_NAME, $new_settings );
+						Settings::update_settings( $new_settings );
+						Settings::update_global_styles( $new_settings );
+						Settings::update_options( $new_options );
 
 						if ( array_key_exists( 'license-key', $settings ) ) {
 							$license_key = $settings['license-key'];
 							if ( ! empty( $license_key ) ) {
 								$transient_name = 'unitone-license-status-' . $license_key;
 								delete_transient( $transient_name );
-							}
-						}
-
-						if ( array_key_exists( 'site-logo', $settings ) ) {
-							if ( ! is_null( $settings['site-logo'] ) ) {
-								update_option( 'site_logo', $settings['site-logo'] );
-							} else {
-								delete_option( 'site_logo' );
-							}
-						}
-
-						if ( array_key_exists( 'site-icon', $settings ) ) {
-							if ( ! is_null( $settings['site-icon'] ) ) {
-								update_option( 'site_icon', $settings['site-icon'] );
-							} else {
-								delete_option( 'site_icon' );
-							}
-						}
-
-						if ( array_key_exists( 'show-on-front', $settings ) ) {
-							switch ( $settings['show-on-front'] ) {
-								case 'posts':
-									update_option( 'show_on_front', $settings['show-on-front'] );
-									break;
-								case 'page':
-									update_option( 'show_on_front', $settings['show-on-front'] );
-									if ( isset( $settings['page-on-front'] ) ) {
-										update_option( 'page_on_front', $settings['page-on-front'] );
-									}
-									if ( isset( $settings['page-for-posts'] ) ) {
-										update_option( 'page_for_posts', $settings['page-for-posts'] );
-									}
-									break;
-								default:
-									update_option( 'show_on_front', 'posts' );
-									delete_option( 'page_on_front' );
-									delete_option( 'page_for_posts' );
 							}
 						}
 
@@ -492,7 +443,9 @@ class Manager {
 			return;
 		}
 
-		if ( ! empty( array_udiff( static::$default_settings, static::get_settings(), fn( $a, $b ) => $a <=> $b ) ) ) {
+		$diff     = array_udiff( Settings::get_default_settings(), Settings::get_merged_settings(), fn( $a, $b ) => $a <=> $b );
+		$saved_by = ! empty( $diff );
+		if ( $saved_by ) {
 			return;
 		}
 		?>
@@ -515,68 +468,13 @@ class Manager {
 	}
 
 	/**
-	 * Return all settings.
-	 *
-	 * @param array $keys Array of settings keys.
-	 * @return array
-	 */
-	public static function get_settings( $keys = array() ) {
-		$settings = shortcode_atts( static::$default_settings, get_option( self::SETTINGS_NAME ) );
-
-		$site_logo = get_option( 'site_logo' );
-		if ( $site_logo ) {
-			$settings['site-logo'] = $site_logo;
-		}
-
-		$site_icon = get_option( 'site_icon' );
-		if ( $site_icon ) {
-			$settings['site-icon'] = $site_icon;
-		}
-
-		$show_on_front = get_option( 'show_on_front' );
-		if ( $show_on_front ) {
-			$settings['show-on-front'] = $show_on_front;
-		}
-
-		$page_on_front = get_option( 'page_on_front' );
-		if ( $page_on_front ) {
-			$settings['page-on-front'] = $page_on_front;
-		}
-
-		$page_for_posts = get_option( 'page_for_posts' );
-		if ( $page_for_posts ) {
-			$settings['page-for-posts'] = $page_for_posts;
-		}
-
-		if ( empty( $settings['enabled-custom-templates'] ) && ( ! $keys || in_array( 'enabled-custom-templates', $keys, true ) ) ) {
-			$custom_templates                     = static::get_custom_templates();
-			$using_custom_templates               = static::_get_using_custom_templates();
-			$settings['enabled-custom-templates'] = array_merge(
-				$settings['enabled-custom-templates'],
-				$using_custom_templates
-			);
-			$settings['enabled-custom-templates'] = array_unique( $settings['enabled-custom-templates'] );
-		}
-
-		return $keys
-			? array_filter(
-				$settings,
-				function ( $key ) use ( $keys ) {
-					return in_array( $key, $keys, true );
-				},
-				ARRAY_FILTER_USE_KEY
-			)
-			: $settings;
-	}
-
-	/**
 	 * Return setting.
 	 *
 	 * @param string $key The setting key name.
 	 * @return mixed
 	 */
 	public static function get_setting( $key ) {
-		return static::get_settings( array( $key ) )[ $key ] ?? false;
+		return Settings::get_setting( $key );
 	}
 
 	/**
@@ -656,90 +554,12 @@ class Manager {
 	/**
 	 * Return information about the custom templates provided by unitone.
 	 *
-	 * @return array Array of using custom template name.
-	 */
-	protected static function _get_using_custom_templates() {
-		$cache_key = 'unitone_get_using_custom_templates';
-		$cache     = wp_cache_get( $cache_key );
-		if ( false !== $cache ) {
-			return $cache;
-		}
-
-		$custom_templates       = static::get_custom_templates();
-		$using_custom_templates = array();
-
-		foreach ( $custom_templates as $template ) {
-			// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-			$using_custom_templates_query = new \WP_Query(
-				array(
-					'no_found_rows'  => true,
-					'posts_per_page' => 1,
-					'post_type'      => array( 'post', 'page', 'single-product' ),
-					'post_status'    => array( 'publish', 'future', 'private' ),
-					'meta_query'     => array(
-						array(
-							'key'     => '_wp_page_template',
-							'value'   => $template['name'],
-							'compare' => '=',
-						),
-					),
-				)
-			);
-			// phpcs:enable
-
-			if ( $using_custom_templates_query->post_count ) {
-				$using_custom_templates[] = $template['name'];
-			}
-		}
-
-		wp_cache_set( $cache_key, $using_custom_templates );
-
-		return $using_custom_templates;
-	}
-
-	/**
-	 * Return information about the custom templates provided by unitone.
-	 *
 	 * @return array
 	 *   @var string name
 	 *   @var string title
 	 *   @var array postTypes
 	 */
 	public static function get_custom_templates() {
-		$cache_key = 'unitone_get_custom_templates';
-		$cache     = wp_cache_get( $cache_key );
-		if ( false !== $cache ) {
-			return $cache;
-		}
-
-		$_all_templates = \WP_Theme_JSON_Resolver::get_merged_data( 'theme' )->get_custom_templates();
-		$all_templates  = array();
-		foreach ( $_all_templates as $slug => $template ) {
-			if ( $template['postTypes'] && ! in_array( 'false', $template['postTypes'], true ) ) {
-				$all_templates[] = array_merge(
-					$template,
-					array(
-						'slug' => $slug,
-					)
-				);
-			}
-		}
-
-		$templates = array_map(
-			function ( $template ) {
-				return array(
-					'name'      => $template['slug'],
-					'title'     => $template['title'],
-					'postTypes' => $template['postTypes'],
-				);
-			},
-			$all_templates
-		);
-
-		ksort( $templates );
-		$templates = array_values( $templates );
-		wp_cache_set( $cache_key, $templates );
-
-		return $templates;
+		return Settings::get_custom_templates();
 	}
 }

@@ -1,10 +1,15 @@
 .wp-block-site-logo {
-	a {
+	.custom-logo-link {
+		display: inline-flex;
 		padding-top: var(--unitone--s-2);
 		padding-bottom: var(--unitone--s-2);
 	}
 
 	img {
 		display: table;
+	}
+
+	.components-resizable-box__container {
+		height: auto !important;
 	}
 }

@@ -3,7 +3,7 @@
  * Title: Pages: One Column / Page Header (Featured Image)
  * Slug: unitone/template/page/one-column-page-header-featured
  * Categories: unitone-templates
- * Template Types: page
+ * Template Types: page, wp-custom-template
  * Inserter: no
  */
 ?>

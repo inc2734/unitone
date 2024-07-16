@@ -3,7 +3,7 @@
  * Title: Pages: Right Sidebar / Page Header (Featured Image)
  * Slug: unitone/template/page/right-sidebar-page-header-featured
  * Categories: unitone-templates
- * Template Types: page
+ * Template Types: page, wp-custom-template
  * Inserter: no
  */
 ?>

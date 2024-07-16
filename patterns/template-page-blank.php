@@ -3,7 +3,7 @@
  * Title: Pages: Blank
  * Slug: unitone/template/page/blank
  * Categories: unitone-templates
- * Template Types: page
+ * Template Types: page, wp-custom-template
  * Inserter: no
  */
 ?>

@@ -3,7 +3,7 @@
  * Title: Pages: Right Sidebar
  * Slug: unitone/template/page/right-sidebar
  * Categories: unitone-templates
- * Template Types: page
+ * Template Types: page, wp-custom-template
  * Inserter: no
  */
 ?>

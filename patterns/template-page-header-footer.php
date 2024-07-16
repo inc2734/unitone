@@ -3,7 +3,7 @@
  * Title: Pages: Only Header and Footer
  * Slug: unitone/template/page/header-footer
  * Categories: unitone-templates
- * Template Types: page
+ * Template Types: page, wp-custom-template
  * Inserter: no
  */
 ?>

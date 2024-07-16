@@ -3,7 +3,7 @@
  * Title: Pages: One Column
  * Slug: unitone/template/page/one-column
  * Categories: unitone-templates
- * Template Types: page
+ * Template Types: page, wp-custom-template
  * Inserter: no
  */
 ?>

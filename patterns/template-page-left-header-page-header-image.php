@@ -3,7 +3,7 @@
  * Title: Pages: Left Header / Page Header (Image)
  * Slug: unitone/template/page/left-header-page-header-image
  * Categories: unitone-templates
- * Template Types: page
+ * Template Types: page, wp-custom-template
  * Inserter: no
  */
 ?>

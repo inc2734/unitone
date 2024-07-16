@@ -3,7 +3,7 @@
  * Title: Pages: Left Header / Only Header and Footer
  * Slug: unitone/template/page/left-header-header-footer
  * Categories: unitone-templates
- * Template Types: page
+ * Template Types: page, wp-custom-template
  * Inserter: no
  */
 ?>

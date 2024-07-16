@@ -21,6 +21,8 @@ const SETTINGS_KEYS = [
 	'background-color',
 	'text-color',
 	'link-color',
+	'link-hover-color',
+	'link-focus-color',
 ];
 
 export default function ( { settings, defaultSettings, setSettings } ) {
@@ -72,6 +74,19 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		setSiteLogoUrl( window.currentSettings.siteLogoUrl );
 		setSiteIconUrl( window.currentSettings.siteIconUrl );
 	}, [] );
+
+	const linkColor =
+		settings?.[ 'link-color' ] ||
+		settings?.[ 'accent-color' ] ||
+		defaultSettings?.[ 'accent-color' ];
+	const linkHoverColor =
+		'inherit' === settings?.[ 'link-hover-color' ]
+			? undefined
+			: settings?.[ 'link-hover-color' ];
+	const linkFocusColor =
+		'inherit' === settings?.[ 'link-focus-color' ]
+			? undefined
+			: settings?.[ 'link-focus-color' ];
 
 	return (
 		<div
@@ -295,132 +310,135 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									} }
 								>
 									<div data-unitone-layout="stack">
-										<div>
-											<a
-												href="#_"
-												style={ {
-													color:
-														settings?.[
-															'link-color'
-														] ||
-														settings?.[
-															'accent-color'
-														] ||
-														defaultSettings?.[
-															'accent-color'
-														],
-												} }
-											>
-												するとどこかで見たわ姉は
-											</a>
-											細い銀いろの空から、さっきの入口から暗い牛舎の前へまた来ました。そういうふうに、眼の前を通るのですから、この次の理科の時間にお話します。
-										</div>
+										<Preview
+											linkColor={ linkColor }
+											linkFocusColor={
+												linkFocusColor || linkColor
+											}
+											linkHoverColor={
+												linkHoverColor || linkColor
+											}
+										/>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div data-unitone-layout="stack">
-							<BaseControl
-								help={ __(
-									'This setting is the default setting for the theme. The Site Editor setting overrides this setting.',
-									'unitone'
-								) }
-								id="unitone-settings-colors-settigs-dropdown"
-							>
-								<ItemGroup className="unitone-settings-colors-settigs-dropdown">
-									<ColorGradientSettingsDropdown
-										settings={ [
-											{
-												label: __(
-													'Accent Color',
-													'unitone'
-												),
-												colorValue:
-													settings?.[
-														'accent-color'
-													] ||
-													defaultSettings?.[
-														'accent-color'
-													],
-												onColorChange: ( newSetting ) =>
-													setSettings( {
-														...settings,
-														'accent-color':
-															newSetting,
-													} ),
-												clearable: true,
-											},
-											{
-												label: __(
-													'Background Color',
-													'unitone'
-												),
-												colorValue:
-													settings?.[
-														'background-color'
-													] ||
-													defaultSettings?.[
-														'background-color'
-													],
-												onColorChange: ( newSetting ) =>
-													setSettings( {
-														...settings,
-														'background-color':
-															newSetting,
-													} ),
-												clearable: true,
-											},
-											{
-												label: __(
-													'Text Color',
-													'unitone'
-												),
-												colorValue:
-													settings?.[
-														'text-color'
-													] ||
-													defaultSettings?.[
-														'text-color'
-													],
-												onColorChange: ( newSetting ) =>
-													setSettings( {
-														...settings,
-														'text-color':
-															newSetting,
-													} ),
-												clearable: true,
-											},
-											{
-												label: __(
-													'Link Color',
-													'unitone'
-												),
-												colorValue:
-													settings?.[
-														'link-color'
-													] ||
-													settings?.[
-														'accent-color'
-													] ||
-													defaultSettings?.[
-														'link-color'
-													],
-												onColorChange: ( newSetting ) =>
-													setSettings( {
-														...settings,
-														'link-color':
-															newSetting ||
-															defaultSettings?.[
-																'link-color'
-															],
-													} ),
-												clearable: true,
-											},
-										] }
-										colors={ settings.palette }
-									/>
-								</ItemGroup>
-							</BaseControl>
+							<ItemGroup className="unitone-settings-colors-settigs-dropdown">
+								<ColorGradientSettingsDropdown
+									settings={ [
+										{
+											label: __(
+												'Accent Color',
+												'unitone'
+											),
+											colorValue:
+												settings?.[ 'accent-color' ] ||
+												defaultSettings?.[
+													'accent-color'
+												],
+											onColorChange: ( newSetting ) =>
+												setSettings( {
+													...settings,
+													'accent-color': newSetting,
+												} ),
+											clearable: true,
+										},
+										{
+											label: __(
+												'Background Color',
+												'unitone'
+											),
+											colorValue:
+												settings?.[
+													'background-color'
+												] ||
+												defaultSettings?.[
+													'background-color'
+												],
+											onColorChange: ( newSetting ) =>
+												setSettings( {
+													...settings,
+													'background-color':
+														newSetting,
+												} ),
+											clearable: true,
+										},
+										{
+											label: __(
+												'Text Color',
+												'unitone'
+											),
+											colorValue:
+												settings?.[ 'text-color' ] ||
+												defaultSettings?.[
+													'text-color'
+												],
+											onColorChange: ( newSetting ) =>
+												setSettings( {
+													...settings,
+													'text-color': newSetting,
+												} ),
+											clearable: true,
+										},
+										{
+											label: __(
+												'Link Color',
+												'unitone'
+											),
+											colorValue: linkColor,
+											onColorChange: ( newSetting ) =>
+												setSettings( {
+													...settings,
+													'link-color':
+														newSetting ||
+														settings?.[
+															'accent-color'
+														] ||
+														defaultSettings?.[
+															'link-color'
+														],
+												} ),
+											clearable: true,
+										},
+										{
+											label: __(
+												'Link Color (:hover)',
+												'unitone'
+											),
+											colorValue: linkHoverColor,
+											onColorChange: ( newSetting ) =>
+												setSettings( {
+													...settings,
+													'link-hover-color':
+														newSetting ||
+														defaultSettings?.[
+															'link-hover-color'
+														],
+												} ),
+											clearable: true,
+										},
+										{
+											label: __(
+												'Link Color (:focus)',
+												'unitone'
+											),
+											colorValue: linkFocusColor,
+											onColorChange: ( newSetting ) =>
+												setSettings( {
+													...settings,
+													'link-focus-color':
+														newSetting ||
+														defaultSettings?.[
+															'link-focus-color'
+														],
+												} ),
+											clearable: true,
+										},
+									] }
+									colors={ settings.palette }
+								/>
+							</ItemGroup>
 						</div>
 					</div>
 				</div>
@@ -446,3 +464,34 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		</div>
 	);
 }
+
+const Preview = ( props ) => {
+	const { linkColor, linkFocusColor, linkHoverColor } = props;
+	const [ isFocus, setIsFocus ] = useState( false );
+	const [ isHover, setIsHover ] = useState( false );
+
+	let finalLinkColor = linkColor;
+	if ( isHover ) {
+		finalLinkColor = linkHoverColor;
+	} else if ( isFocus ) {
+		finalLinkColor = linkFocusColor;
+	}
+
+	return (
+		<div>
+			<a
+				href="#_"
+				onFocus={ () => setIsFocus( true ) }
+				onBlur={ () => setIsFocus( false ) }
+				onMouseOver={ () => setIsHover( true ) }
+				onMouseLeave={ () => setIsHover( false ) }
+				style={ {
+					color: finalLinkColor,
+				} }
+			>
+				するとどこかで見たわ姉は
+			</a>
+			細い銀いろの空から、さっきの入口から暗い牛舎の前へまた来ました。そういうふうに、眼の前を通るのですから、この次の理科の時間にお話します。
+		</div>
+	);
+};

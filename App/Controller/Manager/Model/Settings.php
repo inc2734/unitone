@@ -35,6 +35,8 @@ class Settings {
 		'background-color'          => '#fff',
 		'text-color'                => 'var(--unitone--color--text)',
 		'link-color'                => '#003c78', // = styles.elements.link.color.text
+		'link-focus-color'          => null, // = styles.elements.link.:focus.color.text
+		'link-hover-color'          => null, // = styles.elements.link.:hover.color.text
 		'content-size'              => '46rem',
 		'wide-size'                 => '1334px',
 		'enabled-custom-templates'  => array(),
@@ -187,8 +189,18 @@ class Settings {
 					),
 					'elements'   => array(
 						'link' => array(
-							'color' => array(
+							'color'  => array(
 								'text' => $settings['link-color'] ?? null,
+							),
+							':hover' => array(
+								'color' => array(
+									'text' => $settings['link-hover-color'] ?? null,
+								),
+							),
+							':focus' => array(
+								'color' => array(
+									'text' => $settings['link-focus-color'] ?? null,
+								),
 							),
 						),
 					),
@@ -278,6 +290,8 @@ class Settings {
 				'background-color' => $user_data['styles']['color']['background'] ?? $settings['background-color'],
 				'text-color'       => $user_data['styles']['color']['text'] ?? $settings['text-color'],
 				'link-color'       => $user_data['styles']['elements']['link']['color']['text'] ?? $settings['link-color'],
+				'link-hover-color' => $user_data['styles']['elements']['link'][':hover']['color']['text'] ?? $settings['link-hover-color'],
+				'link-focus-color' => $user_data['styles']['elements']['link'][':focus']['color']['text'] ?? $settings['link-focus-color'],
 				'content-size'     => $user_data['settings']['layout']['contentSize'] ?? $settings['content-size'],
 				'wide-size'        => $user_data['settings']['layout']['wideSize'] ?? $settings['wide-size'],
 			),

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-07-16T15:09:58+00:00\n"
-"PO-Revision-Date: 2024-07-17 00:12+0900\n"
+"POT-Creation-Date: 2024-07-16T16:17:50+00:00\n"
+"PO-Revision-Date: 2024-07-17 01:18+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1749,14 +1749,6 @@ msgid "Colors"
 msgstr "色"
 
 #: App/Controller/Manager/dist/js/app.js:7
-msgid ""
-"This setting is the default setting for the theme. The Site Editor setting "
-"overrides this setting."
-msgstr ""
-"この設定はテーマのデフォルト設定です。サイトエディターの設定はこの設定を上書"
-"きします。"
-
-#: App/Controller/Manager/dist/js/app.js:7
 msgid "Accent Color"
 msgstr "アクセントカラー"
 
@@ -1771,6 +1763,14 @@ msgstr "文字色"
 #: App/Controller/Manager/dist/js/app.js:7
 msgid "Link Color"
 msgstr "リンク色"
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgid "Link Color (:hover)"
+msgstr "リンク色（:hover）"
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgid "Link Color (:focus)"
+msgstr "リンク色（:focus）"
 
 #: App/Controller/Manager/dist/js/app.js:7
 msgid "Typography"
@@ -3816,6 +3816,13 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid ""
+#~ "This setting is the default setting for the theme. The Site Editor "
+#~ "setting overrides this setting."
+#~ msgstr ""
+#~ "この設定はテーマのデフォルト設定です。サイトエディターの設定はこの設定を上"
+#~ "書きします。"
 
 #~ msgid "With shadow"
 #~ msgstr "影付き"

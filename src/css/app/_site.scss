@@ -31,10 +31,9 @@
 				overflow: visible;
 			}
 
-			> [data-unitone-layout~="container"] {
-				> [data-unitone-layout~="gutters"] {
-					--unitone--padding: 0 !important;
-				}
+			> .unitone-section > [data-unitone-layout~="gutters"],
+			> [data-unitone-layout~="container"] > [data-unitone-layout~="gutters"] {
+				--unitone--padding: 0 !important;
 			}
 		}
 	}

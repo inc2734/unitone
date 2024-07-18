@@ -12,7 +12,7 @@
 	<!-- wp:image {"id":1,"width":"1920px","height":"1280px","lock":{"move":false,"remove":false}} -->
 	<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/img/smartphone-mobile-laptop36.jpg" alt="" class="wp-image-1" style="width:1920px;height:1280px"/></figure>
 	<!-- /wp:image -->
-	<!-- wp:unitone/container {"unitone":{"blockAlign":"end","maxWidth":"var(--wp--custom--content-max-width)","alignSelf":"center"},"lock":{"move":false,"remove":false}} -->
+	<!-- wp:unitone/container {"unitone":{"blockAlign":"end","maxWidth":"var(--wp--style--global--content-size)","alignSelf":"center"},"lock":{"move":false,"remove":false}} -->
 	<div data-unitone-layout="container">
 		<!-- wp:unitone/gutters -->
 		<div data-unitone-layout="gutters">
@@ -132,7 +132,7 @@
 					<div data-unitone-layout="with-sidebar__content">
 						<!-- wp:unitone/decorator {"unitone":{"padding":"2"},"lock":{"move":false,"remove":false}} -->
 						<div data-unitone-layout="decorator">
-							<!-- wp:unitone/container {"unitone":{"maxWidth":"var(--wp--custom--content-max-width)","gutters":"0"},"lock":{"move":false,"remove":false}} -->
+							<!-- wp:unitone/container {"unitone":{"maxWidth":"var(--wp--style--global--content-size)","gutters":"0"},"lock":{"move":false,"remove":false}} -->
 							<div data-unitone-layout="container">
 								<!-- wp:unitone/stack {"lock":{"move":false,"remove":false},"unitone":{"gap":"2"}} -->
 								<div data-unitone-layout="stack">
@@ -202,7 +202,7 @@
 				<!-- wp:heading {"fontSize":"unitone-3xl","unitone":{"fluidTypography":true}} -->
 				<h2 class="wp-block-heading has-unitone-3-xl-font-size">お知らせ</h2>
 				<!-- /wp:heading -->
-				<!-- wp:unitone/container {"unitone":{"blockAlign":"start","maxWidth":"var(--wp--custom--content-max-width)","gutters":"0"}} -->
+				<!-- wp:unitone/container {"unitone":{"blockAlign":"start","maxWidth":"var(--wp--style--global--content-size)","gutters":"0"}} -->
 				<div data-unitone-layout="container">
 					<!-- wp:unitone/text -->
 					<div data-unitone-layout="text -gap">

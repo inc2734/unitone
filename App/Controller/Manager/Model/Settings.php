@@ -141,7 +141,9 @@ class Settings {
 	 * @return mixed
 	 */
 	public static function get_setting( $key ) {
-		return static::get_merged_settings( array( $key ) )[ $key ] ?? false;
+		$settings = static::get_merged_settings();
+
+		return $settings[ $key ] ?? false;
 	}
 
 	/**
@@ -150,6 +152,8 @@ class Settings {
 	 * @param array $settings Array of settings.
 	 */
 	public static function update_settings( $settings ) {
+		wp_cache_delete( self::SETTINGS_NAME );
+
 		$new_settings = array();
 
 		foreach ( static::$default_settings as $name => $default ) {
@@ -169,6 +173,8 @@ class Settings {
 	 * @param array $settings Array of settings.
 	 */
 	public static function update_global_styles( $settings ) {
+		wp_cache_delete( self::SETTINGS_NAME );
+
 		// Create wp_global_styles for unitone.
 		\WP_Theme_JSON_Resolver::get_user_global_styles_post_id();
 
@@ -232,6 +238,8 @@ class Settings {
 	 * @param array $settings Array of settings.
 	 */
 	public static function update_options( $settings ) {
+		wp_cache_delete( self::SETTINGS_NAME );
+
 		$new_options = array();
 
 		foreach ( static::$default_options as $name => $default ) {
@@ -272,10 +280,14 @@ class Settings {
 	/**
 	 * All the various settings are merged and returned.
 	 *
-	 * @param array $keys Array of settings keys.
 	 * @return array
 	 */
-	public static function get_merged_settings( $keys = array() ) {
+	public static function get_merged_settings() {
+		$cache = wp_cache_get( self::SETTINGS_NAME );
+		if ( false !== $cache ) {
+			return $cache;
+		}
+
 		$settings = shortcode_atts( static::$default_settings, static::get_settings() );
 
 		$user_data = \WP_Theme_JSON_Resolver::get_user_data()->get_raw_data();
@@ -298,19 +310,13 @@ class Settings {
 			static::get_options()
 		);
 
-		if ( empty( $settings['enabled-custom-templates'] ) && ( ! $keys || in_array( 'enabled-custom-templates', $keys, true ) ) ) {
+		if ( empty( $settings['enabled-custom-templates'] ) ) {
 			$settings['enabled-custom-templates'] = static::get_using_custom_templates();
 		}
 
-		return $keys
-			? array_filter(
-				$settings,
-				function ( $key ) use ( $keys ) {
-					return in_array( $key, $keys, true );
-				},
-				ARRAY_FILTER_USE_KEY
-			)
-			: $settings;
+		wp_cache_set( self::SETTINGS_NAME, $settings );
+
+		return $settings;
 	}
 
 	/**

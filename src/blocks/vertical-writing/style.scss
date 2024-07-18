@@ -3,8 +3,8 @@
 @include vertical-writing.vertical-writing();
 
 [data-unitone-layout~="vertical-writing-wrapper"] {
-	--unitone--max-width: min(100%, var(--unitone--container-max-width));
-	--unitone--max-height: calc(9 * var(--unitone--measure) / 16);
+	--unitone--max-width: min(100%, var(--wp--style--global--wide-size));
+	--unitone--max-height: calc(9 * var(--wp--style--global--content-size) / 16);
 	--unitone--vertical-writing--max-height: var(--unitone--max-height);
 
 	margin-right: auto;

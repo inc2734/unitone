@@ -16,7 +16,7 @@
 		<!-- /wp:image -->
 		<!-- wp:unitone/gutters {"unitone":{"alignSelf":"auto","justifySelf":"auto","gridColumn":"1 / -1","gridRow":"1 / -1","padding":"2"}} -->
 		<div data-unitone-layout="gutters">
-			<!-- wp:unitone/container {"unitone":{"gutters":"root","blockAlign":"start","maxWidth":"var(--wp--custom--content-max-width)"}} -->
+			<!-- wp:unitone/container {"unitone":{"gutters":"root","blockAlign":"start","maxWidth":"var(--wp--style--global--content-size)"}} -->
 			<div data-unitone-layout="container">
 				<!-- wp:paragraph {"style":{"typography":{"textTransform":"uppercase"}},"fontSize":"unitone-5xl","unitone":{"halfLeading":0.2,"fluidTypography":true}} -->
 				<p class="has-unitone-5-xl-font-size" style="text-transform:uppercase"><strong>Lorem ipsum</strong><br><strong>dolor sit</strong><br><strong>amet</strong></p>

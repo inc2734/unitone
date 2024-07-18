@@ -9,7 +9,7 @@
 	"attributes": {
 		"threshold": {
 			"type": "string",
-			"default": "var(--wp--custom--content-max-width)"
+			"default": "var(--wp--style--global--content-size)"
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

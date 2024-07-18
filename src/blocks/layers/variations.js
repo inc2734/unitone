@@ -188,7 +188,7 @@ export default [
 				name: 'unitone/stack',
 				attributes: {
 					unitone: {
-						maxWidth: 'var(--unitone--measure)',
+						maxWidth: 'var(--wp--style--global--content-size)',
 					},
 				},
 				innerBlocks: [
@@ -249,7 +249,7 @@ export default [
 				attributes: {
 					unitone: {
 						justifySelf: 'end',
-						maxWidth: 'var(--unitone--measure)',
+						maxWidth: 'var(--wp--style--global--content-size)',
 					},
 				},
 				innerBlocks: [
@@ -309,7 +309,7 @@ export default [
 				attributes: {
 					unitone: {
 						alignSelf: 'end',
-						maxWidth: 'var(--unitone--measure)',
+						maxWidth: 'var(--wp--style--global--content-size)',
 					},
 				},
 				innerBlocks: [
@@ -370,7 +370,7 @@ export default [
 					unitone: {
 						alignSelf: 'end',
 						justifySelf: 'end',
-						maxWidth: 'var(--unitone--measure)',
+						maxWidth: 'var(--wp--style--global--content-size)',
 					},
 				},
 				innerBlocks: [
@@ -423,7 +423,7 @@ export default [
 					unitone: {
 						alignSelf: 'end',
 						justifySelf: 'start',
-						maxWidth: 'var(--unitone--measure)',
+						maxWidth: 'var(--wp--style--global--content-size)',
 					},
 				},
 				innerBlocks: [
@@ -481,7 +481,7 @@ export default [
 					unitone: {
 						alignSelf: 'end',
 						justifySelf: 'end',
-						maxWidth: 'var(--unitone--measure)',
+						maxWidth: 'var(--wp--style--global--content-size)',
 					},
 				},
 				innerBlocks: [
@@ -539,7 +539,7 @@ export default [
 					unitone: {
 						padding: 1,
 						alignSelf: 'end',
-						maxWidth: 'var(--unitone--measure)',
+						maxWidth: 'var(--wp--style--global--content-size)',
 					},
 				},
 				innerBlocks: [
@@ -608,7 +608,7 @@ export default [
 						padding: 1,
 						alignSelf: 'end',
 						justifySelf: 'end',
-						maxWidth: 'var(--unitone--measure)',
+						maxWidth: 'var(--wp--style--global--content-size)',
 					},
 				},
 				innerBlocks: [

@@ -20,8 +20,8 @@
 					</div>
 					<!-- /wp:unitone/stack -->
 
-					<!-- wp:unitone/with-sidebar {"contentMinWidth":"calc(var(--wp--custom--content-max-width) / 2)","sidebarWidth":"var(--unitone--pg7)"} -->
-					<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--content-min-width:calc(var(--wp--custom--content-max-width) / 2);--unitone--sidebar-width:var(--unitone--pg7)">
+					<!-- wp:unitone/with-sidebar {"contentMinWidth":"calc(var(--wp--style--global--content-size) / 2)","sidebarWidth":"var(--unitone--pg7)"} -->
+					<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--content-min-width:calc(var(--wp--style--global--content-size) / 2);--unitone--sidebar-width:var(--unitone--pg7)">
 						<!-- wp:unitone/with-sidebar-content -->
 						<div data-unitone-layout="with-sidebar__content">
 							<!-- wp:unitone/stack -->

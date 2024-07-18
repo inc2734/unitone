@@ -79,8 +79,8 @@ export function MaxWidthEdit( props ) {
 	}, [] );
 
 	const isPresetValue = [
-		'var(--wp--custom--container-max-width)',
-		'var(--wp--custom--content-max-width)',
+		'var(--wp--style--global--wide-size)',
+		'var(--wp--style--global--content-size)',
 	].includes( unitone?.maxWidth );
 
 	const [ showCustomValueControl, setShowCustomValueControl ] = useState(
@@ -121,11 +121,11 @@ export function MaxWidthEdit( props ) {
 						onChange={ onChangeMaxWidth }
 					>
 						<ToggleGroupControlOption
-							value="var(--wp--custom--container-max-width)"
+							value="var(--wp--style--global--wide-size)"
 							label={ __( 'Wide', 'unitone' ) }
 						/>
 						<ToggleGroupControlOption
-							value="var(--wp--custom--content-max-width)"
+							value="var(--wp--style--global--content-size)"
 							label={ __( 'Content Width', 'unitone' ) }
 						/>
 					</ToggleGroupControl>
@@ -147,7 +147,7 @@ export function MaxWidthEdit( props ) {
 					onClick={ () => {
 						onChangeMaxWidth(
 							! isPresetValue
-								? 'var(--wp--custom--container-max-width)'
+								? 'var(--wp--style--global--wide-size)'
 								: unitone?.maxWidth
 						);
 

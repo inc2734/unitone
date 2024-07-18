@@ -7,7 +7,7 @@
 				<div data-unitone-layout="stack">
 					<!-- wp:pattern {"slug":"unitone/template/home/page-header/default"} /-->
 
-					<!-- wp:unitone/text {"className":"entry-content","unitone":{"gutters":"0","maxWidth":"var(--wp--custom--container-max-width)"}} -->
+					<!-- wp:unitone/text {"className":"entry-content","unitone":{"gutters":"0","maxWidth":"var(--wp--style--global--wide-size)"}} -->
 					<div data-unitone-layout="text -gap" class="entry-content">
 						<!-- wp:template-part {"slug":"loop"} /-->
 					</div>

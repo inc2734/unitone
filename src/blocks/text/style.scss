@@ -3,19 +3,17 @@
 @include text.text();
 
 [data-unitone-layout~="text"] {
-	> * {
-		--wp--style--global--content-size: var(--unitone--max-width);
-	}
+	--unitone--max-width: var(--wp--style--global--content-size);
 }
 
-[data-unitone-layout~="text"]:not([data-unitone-layout~="-column"]) {
-	--wp--style--global--content-size: var(--unitone--max-width);
+[data-unitone-layout~="text"][data-unitone-layout~="-gap"]:not([data-unitone-layout~=-column]) > * {
+	max-width: min(100%, var(--unitone--max-width));
 }
 
-[data-unitone-layout~="text"][data-unitone-layout~="-column"]:not(:root) {
-	max-width: var(--wp--style--global--content-size);
+[data-unitone-layout~="text"][data-unitone-layout~="-column"] {
+	max-width: none;
 
 	> * {
-		max-width: none !important;
+		max-width: min(100%, var(--unitone--max-width));
 	}
 }

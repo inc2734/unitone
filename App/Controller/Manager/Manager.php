@@ -209,7 +209,16 @@ class Manager {
 			array(
 				'methods'             => 'GET',
 				'callback'            => function ( $request ) {
-					return Settings::get_merged_settings( $request->get_params() );
+					$params   = $request->get_params();
+					$settings = Settings::get_merged_settings();
+
+					return array_filter(
+						$settings,
+						function ( $key ) use ( $params ) {
+							return in_array( $key, $params, true );
+						},
+						ARRAY_FILTER_USE_KEY
+					);
 				},
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );

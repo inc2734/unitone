@@ -425,6 +425,13 @@
 					}
 				}
 			},
+			"core/image": {
+				"variations": {
+					"sme-shadowed": {
+						"shadow": "var:preset|shadow|unitone-natural"
+					}
+				}
+			},
 			"core/navigation": {
 				"spacing": {
 					"blockGap": "0px"
@@ -442,6 +449,10 @@
 							"text": "var(--wp--preset--color--unitone-accent)"
 						}
 					}
+				},
+				"variations": {
+					"badge": {},
+					"outline": {}
 				}
 			},
 			"core/pullquote": {

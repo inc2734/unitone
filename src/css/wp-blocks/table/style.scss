@@ -57,14 +57,14 @@ figure.wp-block-table {
 	}
 }
 
-.wp-block-table.is-style-stripes {
-	tbody tr:nth-child(odd) {
+:root :where(.wp-block-table.is-style-stripes) {
+	:where(tbody tr:nth-child(odd)) {
 		background-color: var(--wp--preset--color--unitone-bright-gray);
 	}
 }
 
-.wp-block-table.is-style-underline {
-	> table {
+:root :where(.wp-block-table.is-style-underline) {
+	:where(table) {
 		border-top-width: 0 !important;
 		border-right-width: 0 !important;
 		border-bottom-width: 1px !important;
@@ -72,31 +72,30 @@ figure.wp-block-table {
 	}
 }
 
-.wp-block-table.is-style-vertical-fill {
+:root :where(.wp-block-table.is-style-vertical-fill) {
 	--unitone--gap: var(--unitone--global--text-gap);
 
 	overflow: hidden;
 
-	> table {
+	:where(table) {
 		margin-inline: calc(var(--unitone--gap) * -1);
-		border-collapse: separate;
+		border-collapse: separate !important;
 		border-spacing: var(--unitone--gap) 0;
-		width: calc(100% + var(--unitone--gap) * 2);
+		width: calc(100% + var(--unitone--gap) * 2) !important;
 	}
 
-	tr > * {
+	:where(tr) > * {
 		background-color: var(--wp--preset--color--unitone-bright-gray);
 	}
 }
 
-.wp-block-table.is-style-vertical-line {
+:root :where(.wp-block-table.is-style-vertical-line) {
 	--unitone--padding: var(--unitone--p-1) var(--unitone--p1);
 
-	tr > *:not(:last-child) {
+	:where(tr) > :where(:not(:last-child)) {
 		border-top-width: 0 !important;
-		border-right-width: 1px;
+		border-right-width: 1px !important;
 		border-bottom-width: 0 !important;
 		border-left-width: 0 !important;
 	}
 }
-

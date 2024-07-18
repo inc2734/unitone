@@ -1,31 +1,43 @@
-.unitone-child-pages {
-	&.is-style-box,
-	&.is-style-panel,
-	&.is-style-rich-media {
-		background-color: transparent !important;
+.unitone-child-pages.is-style-box,
+.unitone-child-pages.is-style-panel,
+.unitone-child-pages.is-style-rich-media {
+	background-color: transparent !important;
+}
 
-		[data-unitone-layout~="responsive-grid"] {
-			--unitone--column-min-width: min(max(375px, (100% - var(--unitone--gap) * 2) / 3), 100%);
+:root :where(
+	.unitone-child-pages.is-style-box,
+	.unitone-child-pages.is-style-panel,
+	.unitone-child-pages.is-style-rich-media
+) {
+	:where([data-unitone-layout~="responsive-grid"]) {
+		--unitone--column-min-width: 280px;
+	}
+}
+
+:root :where(.unitone-child-pages.is-style-box) {
+	> :where([data-unitone-layout~="responsive-grid"]) {
+		> :where([data-unitone-layout~="decorator"]) {
+			background-color: var(--wp--preset--color--unitone-bright-gray);
 		}
 	}
+}
 
-	&:where(.is-style-box > [data-unitone-layout~="responsive-grid"] > [data-unitone-layout~="decorator"]) {
-		background-color: var(--wp--preset--color--unitone-bright-gray);
-	}
-
-	&:where(.is-style-panel > [data-unitone-layout~="responsive-grid"] > [data-unitone-layout~="decorator"]) {
-		background-color: white;
-	}
-
-	&.is-style-stack-divided-stripe {
-		[data-unitone-layout~="stack"] {
-			--unitone--gap: var(--unitone--s-1);
+:root :where(.unitone-child-pages.is-style-panel) {
+	> :where([data-unitone-layout~="responsive-grid"]) {
+		> :where([data-unitone-layout~="decorator"]) {
+			background-color: var(--wp--preset--color--white);
 		}
-
-		li li a { margin-left: 1em; }
-		li li li a { margin-left: 2em; }
-		li li li li a { margin-left: 3em; }
-		li li li li li a { margin-left: 4em; }
-		li li li li li li a { margin-left: 5em; }
 	}
+}
+
+:root :where(.unitone-child-pages.is-style-stack-divided-stripe) {
+	:where([data-unitone-layout~="stack"]) {
+		--unitone--gap: var(--unitone--s-1);
+	}
+
+	:where(li li a) { margin-left: 1em; }
+	:where(li li li a) { margin-left: 2em; }
+	:where(li li li li a) { margin-left: 3em; }
+	:where(li li li li li a) { margin-left: 4em; }
+	:where(li li li li li li a) { margin-left: 5em; }
 }

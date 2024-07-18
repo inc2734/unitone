@@ -9,23 +9,6 @@
 	font-style: italic;
 	padding: 0;
 
-	&:where(:not(.is-style-plain)) {
-		border-left: 0.25em solid currentColor;
-		padding-left: var(--unitone--global--text-gap);
-
-		&.has-text-align-right {
-			border-left: none;
-			border-right: 0.25em solid currentColor;
-			padding-left: 0;
-			padding-right: var(--unitone--global--text-gap);
-		}
-
-		&.has-text-align-center {
-			border: none;
-			padding-left: 0;
-		}
-	}
-
 	cite,
 	footer {
 		display: block;
@@ -38,4 +21,24 @@
 :where(body .wp-block-quote) > * {
 	margin-block-start: var(--unitone--global--text-gap);
 	margin-block-end: 0;
+}
+
+:root :where(
+	.wp-block-quote.is-style-default,
+	.wp-block-quote:not([class*="is-style-"])
+) {
+	border-left: 0.25em solid currentColor;
+	padding-left: var(--unitone--global--text-gap);
+
+	&:where(.has-text-align-right) {
+		border-left: none;
+		border-right: 0.25em solid currentColor;
+		padding-left: 0;
+		padding-right: var(--unitone--global--text-gap);
+	}
+
+	&:where(.has-text-align-center) {
+		border: none;
+		padding-left: 0;
+	}
 }

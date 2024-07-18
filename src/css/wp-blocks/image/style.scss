@@ -6,18 +6,18 @@
 	}
 }
 
-.wp-block-image.is-style-cover {
-	height: 100%;
-	width: 100%;
+:root :where(.wp-block-image.is-style-cover) {
+	height: 100% !important;
+	width: 100% !important;
 
-	img {
-		height: 100%;
-		width: 100%;
-		object-fit: cover;
+	:where(img) {
+		height: 100% !important;
+		width: 100% !important;
+		object-fit: cover !important;
 	}
 
-	figcaption {
-		display: none;
+	:where(figcaption) {
+		display: none !important;
 	}
 
 	.components-resizable-box__container {

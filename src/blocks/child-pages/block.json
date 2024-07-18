@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "11.3.1",
+	"version": "12.0.0",
 	"textdomain": "unitone",
 	"name": "unitone/child-pages",
 	"title": "Child pages",
@@ -87,14 +87,15 @@
 	],
 	"category": "unitone/component",
 	"style": [
-		"file:./style-index.css",
 		"unitone-cluster-style",
 		"unitone-cluster-divided-style",
 		"unitone-stack-style",
 		"unitone-stack-divided-style",
 		"unitone-responsive-grid-style",
 		"unitone-responsive-grid-divided-style",
-		"unitone-decorator-style"
+		"unitone-decorator-style",
+		"unitone-frame-style",
+		"file:./style-index.css"
 	],
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",

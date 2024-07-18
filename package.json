@@ -55,8 +55,6 @@
 		"css:app": "sass --no-source-map src/css/app/app.scss:dist/css/app/app.css && postcss dist/css/app/app.css -r",
 		"css:editor-styles": "sass --no-source-map src/css/app/editor-style.scss:dist/css/app/editor-style.css && postcss dist/css/app/editor-style.css -r",
 		"css:editor": "sass --no-source-map src/css/editor/editor.scss:dist/css/editor/editor.css && postcss dist/css/editor/editor.css -r",
-		"css:snow-monkey-editor:app": "sass --no-source-map src/css/snow-monkey-editor/app.scss:dist/css/snow-monkey-editor/app.css && postcss dist/css/snow-monkey-editor/app.css -r",
-		"css:snow-monkey-editor": "run-p css:snow-monkey-editor:*",
 		"css": "run-p css:*",
 		"blocks:build": "rimraf dist/blocks && wp-scripts build --output-path=dist --experimental-modules",
 		"blocks:php": "cpy \"src/blocks/**/*.php\" \"dist/blocks\"",

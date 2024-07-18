@@ -1,6 +1,3 @@
-/**
- * @see https://github.com/WordPress/gutenberg/tree/trunk/packages/block-library/src/separator/theme.scss
- */
 .wp-block-separator {
 	margin-left: auto;
 	margin-right: auto;
@@ -8,9 +5,11 @@
 	&.has-alpha-channel-opacity {
 		opacity: initial;
 	}
+}
 
-	// Default, thin style
-	&:not(.is-style-wide):not(.is-style-dots) {
-		width: 100px;
-	}
+:where(
+	.wp-block-separator.is-style-default,
+	.wp-block-separator:not([class*="is-style-"])
+) {
+	width: 100px;
 }

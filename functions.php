@@ -129,9 +129,6 @@ require get_template_directory() . '/inc/thumbnail.php';
 // Templates integration.
 require get_template_directory() . '/inc/templates.php';
 
-// Snow Monkey Editor integration.
-require get_template_directory() . '/inc/snow-monkey-editor.php';
-
 // WooCommerce integration.
 require get_template_directory() . '/inc/woocommerce.php';
 

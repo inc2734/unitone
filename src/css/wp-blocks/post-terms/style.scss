@@ -1,19 +1,11 @@
-.wp-block-post-terms.is-style-badge {
-	--unitone--border-radius: var(--unitone--global--border-radius);
-	--unitone--padding: calc(var(--unitone--p-1) / 2) var(--unitone--p-1);
-
+.wp-block-post-terms.is-style-badge,
+.wp-block-post-terms.is-style-outline {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: var(--unitone--s-2);
 	background-color: transparent !important;
 
-	a {
-		--unitone--font-size: -2;
-
-		display: inline-block;
-		border-radius: var(--unitone--border-radius);
-		padding: var(--unitone--padding);
+	a:where(:not(.wp-element-button)) {
 		text-decoration: none;
 	}
 
@@ -22,26 +14,34 @@
 	}
 }
 
-.wp-block-post-terms.is-style-badge a:not(.element-button) {
-	background-color: var(--wp--preset--color--unitone-accent);
-	color: var(--wp--preset--color--white);
+:root :where(.wp-block-post-terms.is-style-badge) {
+	--unitone--font-size: -2;
+	--unitone--border-radius: var(--unitone--global--border-radius);
+	--unitone--padding: calc(var(--unitone--p-1) / 2) var(--unitone--p-1);
+
+	gap: var(--unitone--s-2);
+
+	a:where(:not(.wp-element-button)),
+	span:where(:not([class]):not([data-rich-text-placeholder])) {
+		background-color: var(--wp--preset--color--unitone-accent);
+		color: var(--wp--preset--color--white);
+		display: inline-block;
+		border-radius: var(--unitone--border-radius);
+		padding: var(--unitone--padding);
+	}
 }
 
-.wp-block-post-terms.is-style-outline {
-	--unitone--padding: calc(var(--unitone--s-2) / 2) var(--unitone--s-2);
+:root :where(.wp-block-post-terms.is-style-outline) {
+	--unitone--font-size: -2;
+	--unitone--padding: calc(var(--unitone--p-2) / 2) var(--unitone--p-2);
 
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
 	gap: var(--unitone--s-2);
-	background-color: transparent !important;
 
-	a {
-		--unitone--font-size: -2;
-
+	a:where(:not(.wp-element-button)),
+	span:where(:not([class]):not([data-rich-text-placeholder])) {
+		color: var(--wp--preset--color--unitone-accent);
 		display: inline-block;
 		border: 1px solid currentColor;
 		padding: var(--unitone--padding);
-		text-decoration: none;
 	}
 }

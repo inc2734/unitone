@@ -3,11 +3,14 @@
 .wp-block-quote {
 	@include text.abstract-text();
 	@include text.abstract-text--gap();
-	--unitone--max-width: inherit;
 
-	box-sizing: border-box;
-	font-style: italic;
-	padding: 0;
+	& {
+		--unitone--max-width: inherit;
+
+		box-sizing: border-box;
+		font-style: italic;
+		padding: 0;
+	}
 
 	cite,
 	footer {

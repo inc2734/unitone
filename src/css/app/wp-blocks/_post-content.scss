@@ -10,7 +10,10 @@
 :where(.is-root-container) {
 	@include text.abstract-text();
 	@include text.abstract-text--gap();
-	--unitone--max-width: 100%;
+
+	& {
+		--unitone--max-width: 100%;
+	}
 }
 
 :where(.is-layout-constrained),

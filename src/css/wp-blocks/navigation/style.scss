@@ -46,6 +46,9 @@
 
 		--unitone--navigation-buttons--gap: var(--unitone--s-1);
 
+		row-gap: var(--unitone--row-gap) !important;
+		column-gap: var(--unitone--column-gap) !important;
+
 		&:where(.is-horizontal:not(.wp-block-navigation__container)) {
 			--unitone--column-gap: var(--unitone--gap);
 			--unitone--row-gap: 0px;
@@ -55,9 +58,6 @@
 			--unitone--column-gap: 0px;
 			--unitone--row-gap: var(--unitone--gap);
 		}
-
-		row-gap: var(--unitone--row-gap) !important;
-		column-gap: var(--unitone--column-gap) !important;
 	}
 
 	.wp-block-navigation__responsive-container {

@@ -10,32 +10,12 @@ export default (
 			width="24"
 			height="20"
 			transform="matrix(1 0 0 -1 0 22)"
-			fill="#DDDDDD"
+			fillOpacity="0.1"
 		/>
-		<line
-			x1="8"
-			y1="7.25"
-			x2="14"
-			y2="7.25"
-			stroke="#040000"
-			strokeWidth="1.5"
-		/>
-		<line
-			x1="4"
-			y1="7.25"
-			x2="6"
-			y2="7.25"
-			stroke="#040000"
-			strokeWidth="1.5"
-		/>
-		<line x1="4" y1="15" x2="11" y2="15" stroke="#040000" strokeWidth="5" />
-		<line
-			x1="13"
-			y1="15"
-			x2="20"
-			y2="15"
-			stroke="#040000"
-			strokeWidth="5"
+		<path
+			fillRule="evenodd"
+			clipRule="evenodd"
+			d="M4 8H6V6.5H4V8ZM8 8H14V6.5H8V8ZM11 17.5H4V12.5H11V17.5ZM13 17.5H20V12.5H13V17.5Z"
 		/>
 	</svg>
 );

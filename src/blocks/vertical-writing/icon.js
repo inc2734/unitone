@@ -6,37 +6,10 @@ export default (
 		aria-hidden="true"
 		focusable="false"
 	>
-		<line
-			x1="6.75"
-			y1="6"
-			x2="6.75"
-			y2="14"
-			stroke="#040000"
-			strokeWidth="1.5"
-		/>
-		<line
-			x1="10.25"
-			y1="6"
-			x2="10.25"
-			y2="16"
-			stroke="#040000"
-			strokeWidth="1.5"
-		/>
-		<line
-			x1="13.75"
-			y1="6"
-			x2="13.75"
-			y2="14"
-			stroke="#040000"
-			strokeWidth="1.5"
-		/>
-		<line
-			x1="17.25"
-			y1="6"
-			x2="17.25"
-			y2="18"
-			stroke="#040000"
-			strokeWidth="1.5"
+		<path
+			fillRule="evenodd"
+			clipRule="evenodd"
+			d="M6 6V14H7.5V6H6ZM9.5 6V16H11V6H9.5ZM13 14V6H14.5V14H13ZM16.5 6V18H18V6H16.5Z"
 		/>
 	</svg>
 );

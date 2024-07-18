@@ -167,6 +167,7 @@
 	inset: auto 0 0 auto;
 }
 
+// Variaton picker.
 .block-editor-block-variation-picker {
 	&.has-many-variations {
 		.components-placeholder__fieldset {
@@ -192,6 +193,13 @@
 	&__variation-label {
 		font-size: 12px;
 	}
+}
+
+// Variaton picker icons color.
+.block-editor-block-variation-picker__skip svg,
+.block-editor-block-variation-picker__variations svg,
+.wp-block-group-placeholder__variations svg {
+	fill: #1e1e1e !important;
 }
 
 .components-text-control__input[disabled] {

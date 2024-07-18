@@ -6,9 +6,11 @@ export default (
 		aria-hidden="true"
 		focusable="false"
 	>
-		<rect x="4" y="8" width="20" height="12" fill="#DDDDDD" />
-		<line y1="5" x2="12" y2="5" stroke="#040000" />
-		<line y1="8" x2="7.2" y2="8" stroke="#040000" />
-		<line y1="11" x2="9.6" y2="11" stroke="#040000" />
+		<rect x="4" y="8" width="20" height="12" fillOpacity="0.1" />
+		<path
+			fillRule="evenodd"
+			clipRule="evenodd"
+			d="M12 5.5H0V4.5H12V5.5ZM7.2 8.5H0V7.5H7.2V8.5ZM0 11.5H9.6V10.5H0V11.5Z"
+		/>
 	</svg>
 );

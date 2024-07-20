@@ -33,7 +33,7 @@ class Settings {
 		'h6-size'                   => '0',
 		'accent-color'              => '#090a0b', // = settings.color.palette > unitone-accent
 		'background-color'          => '#fff',
-		'text-color'                => 'var(--unitone--color--text)',
+		'text-color'                => '#222',
 		'link-color'                => '#003c78', // = styles.elements.link.color.text
 		'link-focus-color'          => null, // = styles.elements.link.:focus.color.text
 		'link-hover-color'          => null, // = styles.elements.link.:hover.color.text

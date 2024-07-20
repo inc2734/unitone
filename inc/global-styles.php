@@ -8,19 +8,22 @@
 use Unitone\App\Controller\Manager\Manager;
 
 /**
- * Set custom global typography.
+ * Apply CSS Vars from settings.
  */
-function enqueue_typography_styles() {
-	$font_family    = Manager::get_setting( 'font-family' );
-	$base_font_size = Manager::get_setting( 'base-font-size' );
-	$half_leading   = Manager::get_setting( 'half-leading' );
-	$content_size   = Manager::get_setting( 'content-size' );
-	$wide_size      = Manager::get_setting( 'wide-size' );
-	$h2_size        = Manager::get_setting( 'h2-size' );
-	$h3_size        = Manager::get_setting( 'h3-size' );
-	$h4_size        = Manager::get_setting( 'h4-size' );
-	$h5_size        = Manager::get_setting( 'h5-size' );
-	$h6_size        = Manager::get_setting( 'h6-size' );
+function apply_css_vars_from_settings() {
+	$font_family      = Manager::get_setting( 'font-family' );
+	$base_font_size   = Manager::get_setting( 'base-font-size' );
+	$half_leading     = Manager::get_setting( 'half-leading' );
+	$content_size     = Manager::get_setting( 'content-size' );
+	$wide_size        = Manager::get_setting( 'wide-size' );
+	$accent_color     = Manager::get_setting( 'accent-color' );
+	$background_color = Manager::get_setting( 'background-color' );
+	$text_color       = Manager::get_setting( 'text-color' );
+	$h2_size          = Manager::get_setting( 'h2-size' );
+	$h3_size          = Manager::get_setting( 'h3-size' );
+	$h4_size          = Manager::get_setting( 'h4-size' );
+	$h5_size          = Manager::get_setting( 'h5-size' );
+	$h6_size          = Manager::get_setting( 'h6-size' );
 
 	$global_settings = wp_get_global_settings();
 
@@ -40,32 +43,38 @@ function enqueue_typography_styles() {
 			--unitone--half-leading: %3$s;
 			--unitone--measure: %4$s;
 			--unitone--container-max-width: %5$s;
+			--unitone--color--accent: %6$s;
+			--unitone--color--background: %7$s;
+			--unitone--color--text: %8$s;
 		}
 		[data-unitone-layout~="text"] > h2,
 		[data-unitone-layout~="vertical-writing"] > h2 {
-			--unitone--font-size: %6$s;
+			--unitone--font-size: %9$s;
 		}
 		[data-unitone-layout~="text"] > h3,
 		[data-unitone-layout~="vertical-writing"] > h3 {
-			--unitone--font-size: %7$s;
+			--unitone--font-size: %10$s;
 		}
 		[data-unitone-layout~="text"] > h4,
 		[data-unitone-layout~="vertical-writing"] > h4 {
-			--unitone--font-size: %8$s;
+			--unitone--font-size: %11$s;
 		}
 		[data-unitone-layout~="text"] > h5,
 		[data-unitone-layout~="vertical-writing"] > h5 {
-			--unitone--font-size: %9$s;
+			--unitone--font-size: %12$s;
 		}
 		[data-unitone-layout~="text"] > h6,
 		[data-unitone-layout~="vertical-writing"] > h6 {
-			--unitone--font-size: %10$s;
+			--unitone--font-size: %13$s;
 		}',
 		$font_family,
 		$base_font_size,
 		$half_leading,
 		$content_size,
 		$wide_size,
+		$accent_color,
+		$background_color,
+		$text_color,
 		$h2_size,
 		$h3_size,
 		$h4_size,
@@ -74,41 +83,8 @@ function enqueue_typography_styles() {
 	);
 	wp_add_inline_style( get_stylesheet(), $stylesheet );
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_typography_styles' );
-add_action( 'enqueue_block_editor_assets', 'enqueue_typography_styles', 11 );
-
-/**
- * Set colors.
- *
- * @param WP_Theme_JSON_Data $theme_json Class to access and update the underlying data.
- * @return WP_Theme_JSON_Data
- */
-function unitone_wp_theme_json_data_theme( $theme_json ) {
-	$theme_palette = $theme_json->get_data()['settings']['color']['palette']['theme'];
-	foreach ( $theme_palette as $index => $color ) {
-		if ( 'unitone-accent' === $color['slug'] ) {
-			$theme_palette[ $index ]['color'] = Manager::get_setting( 'accent-color' );
-		} elseif ( 'unitone-background' === $color['slug'] ) {
-			$theme_palette[ $index ]['color'] = Manager::get_setting( 'background-color' );
-		} elseif ( 'unitone-text' === $color['slug'] ) {
-			$theme_palette[ $index ]['color'] = Manager::get_setting( 'text-color' );
-		}
-	}
-
-	$new_data = array(
-		'version'  => 3,
-		'settings' => array(
-			'color' => array(
-				'palette' => array(
-					'theme' => $theme_palette,
-				),
-			),
-		),
-	);
-
-	return $theme_json->update_with( $new_data );
-}
-add_filter( 'wp_theme_json_data_theme', 'unitone_wp_theme_json_data_theme' );
+add_action( 'wp_enqueue_scripts', 'apply_css_vars_from_settings' );
+add_action( 'enqueue_block_editor_assets', 'apply_css_vars_from_settings', 11 );
 
 /**
  * Set color palette.

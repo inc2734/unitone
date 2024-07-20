@@ -3,6 +3,10 @@
 @include meta.load-css("../../../node_modules/@inc2734/unitone-css/src/foundation/foundation");
 @include meta.load-css("../../../node_modules/@inc2734/unitone-css/src/helper/helper");
 
+:root {
+	--unitone--accent--color: #090a0b;
+}
+
 :where(*) {
 	position: relative;
 }

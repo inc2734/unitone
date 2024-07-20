@@ -23,7 +23,7 @@
 			"palette": [
 				{
 					"slug": "unitone-accent",
-					"color": "#090a0b",
+					"color": "var(--unitone--color--accent)",
 					"name": "Accent"
 				},
 				{

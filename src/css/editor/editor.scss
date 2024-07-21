@@ -93,7 +93,7 @@
 }
 
 .block-editor-block-list__layout .block-editor-block-list__block.rich-text.is-highlighted:after {
-  inset: 0 !important;
+  inset: -1px !important;
 }
 
 .is-outline-mode .block-editor-block-list__block:not(.remove-outline).is-selected:after {

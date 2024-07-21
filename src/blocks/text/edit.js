@@ -9,6 +9,7 @@ import {
 } from '@wordpress/block-editor';
 
 import {
+	TextControl,
 	ToggleControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
@@ -25,7 +26,7 @@ export default function ( {
 	clientId,
 	__unstableLayoutClassNames: layoutClassNames,
 } ) {
-	const { center, column, templateLock } = attributes;
+	const { center, column, columnWidth, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -34,7 +35,12 @@ export default function ( {
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps( { className: layoutClassNames } );
+	const blockProps = useBlockProps( {
+		className: layoutClassNames,
+		style: {
+			'--unitone--column-width': ( column && columnWidth ) || undefined,
+		},
+	} );
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'text',
 		'-gap',
@@ -97,16 +103,45 @@ export default function ( {
 					>
 						<ToggleControl
 							label={ __( 'Multi columns', 'unitone' ) }
-							help={ __(
-								'The "Max width" setting is used as the width of each column.',
-								'unitone'
-							) }
 							checked={ column }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { column: newAttribute } );
 							} }
 						/>
 					</ToolsPanelItem>
+
+					{ column && (
+						<ToolsPanelItem
+							hasValue={ () =>
+								columnWidth !==
+								metadata.attributes.columnWidth.default
+							}
+							isShownByDefault
+							label={ __( 'Column width', 'unitone' ) }
+							onDeselect={ () =>
+								setAttributes( {
+									columnWidth:
+										metadata.attributes.columnWidth.default,
+								} )
+							}
+						>
+							<TextControl
+								label={
+									<>
+										{ __( 'Column width', 'unitone' ) }
+										&nbsp;:&nbsp;
+										<code>colum-width</code>
+									</>
+								}
+								value={ columnWidth || '' }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										columnWidth: newAttribute,
+									} );
+								} }
+							/>
+						</ToolsPanelItem>
+					) }
 				</ToolsPanel>
 			</InspectorControls>
 

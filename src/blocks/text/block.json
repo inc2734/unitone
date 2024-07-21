@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "11.0.4",
+	"version": "12.0.3",
 	"textdomain": "unitone",
 	"name": "unitone/text",
 	"title": "Text",
@@ -15,11 +15,9 @@
 			"type": "boolean",
 			"default": false
 		},
-		"layout": {
-			"type": "object",
-			"default": {
-				"type": "constrained"
-			}
+		"columnWidth": {
+			"type": "string",
+			"default": ""
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

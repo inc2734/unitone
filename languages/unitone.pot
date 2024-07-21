@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 11.7.0\n"
+"Project-Id-Version: unitone 12.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-16T16:17:50+00:00\n"
+"POT-Creation-Date: 2024-07-21T17:05:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "unitone Setup"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:336
+#: App/Controller/Manager/Manager.php:345
 #: patterns/footer-2.php:21
 #: patterns/footer-3.php:50
 #: patterns/footer-3.php:58
@@ -56,7 +56,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:379
+#: App/Controller/Manager/Manager.php:388
 #: patterns/footer-2.php:24
 #: patterns/footer-3.php:53
 #: patterns/footer-3.php:61
@@ -72,15 +72,15 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:456
+#: App/Controller/Manager/Manager.php:465
 msgid "unitone theme has been activated"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:459
+#: App/Controller/Manager/Manager.php:468
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:463
+#: App/Controller/Manager/Manager.php:472
 msgid "Go to the setup screen"
 msgstr ""
 
@@ -549,391 +549,391 @@ msgstr ""
 msgid "Vertical line"
 msgstr ""
 
-#: inc/global-styles.php:135
+#: inc/global-styles.php:111
 msgctxt "Color name"
 msgid "Twilight (Light)"
 msgstr ""
 
-#: inc/global-styles.php:140
+#: inc/global-styles.php:116
 msgctxt "Color name"
 msgid "Twilight"
 msgstr ""
 
-#: inc/global-styles.php:145
+#: inc/global-styles.php:121
 msgctxt "Color name"
 msgid "Twilight (Heavy)"
 msgstr ""
 
-#: inc/global-styles.php:150
+#: inc/global-styles.php:126
 msgctxt "Color name"
 msgid "Dimmed (Light)"
 msgstr ""
 
-#: inc/global-styles.php:155
+#: inc/global-styles.php:131
 msgctxt "Color name"
 msgid "Dimmed"
 msgstr ""
 
-#: inc/global-styles.php:160
+#: inc/global-styles.php:136
 msgctxt "Color name"
 msgid "Dimmed (Heavy)"
 msgstr ""
 
-#: inc/global-styles.php:165
+#: inc/global-styles.php:141
 msgctxt "Color name"
 msgid "Pale Red"
 msgstr ""
 
-#: inc/global-styles.php:170
+#: inc/global-styles.php:146
 msgctxt "Color name"
 msgid "Bright Red"
 msgstr ""
 
-#: inc/global-styles.php:175
+#: inc/global-styles.php:151
 msgctxt "Color name"
 msgid "Light Red"
 msgstr ""
 
-#: inc/global-styles.php:180
+#: inc/global-styles.php:156
 msgctxt "Color name"
 msgid "Red"
 msgstr ""
 
-#: inc/global-styles.php:185
+#: inc/global-styles.php:161
 msgctxt "Color name"
 msgid "Dark Red"
 msgstr ""
 
-#: inc/global-styles.php:190
+#: inc/global-styles.php:166
 msgctxt "Color name"
 msgid "Heavy Red"
 msgstr ""
 
-#: inc/global-styles.php:195
+#: inc/global-styles.php:171
 msgctxt "Color name"
 msgid "Pale Orange"
 msgstr ""
 
-#: inc/global-styles.php:200
+#: inc/global-styles.php:176
 msgctxt "Color name"
 msgid "Bright Orange"
 msgstr ""
 
-#: inc/global-styles.php:205
+#: inc/global-styles.php:181
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr ""
 
-#: inc/global-styles.php:210
+#: inc/global-styles.php:186
 msgctxt "Color name"
 msgid "Orange"
 msgstr ""
 
-#: inc/global-styles.php:215
+#: inc/global-styles.php:191
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr ""
 
-#: inc/global-styles.php:220
+#: inc/global-styles.php:196
 msgctxt "Color name"
 msgid "Heavy Orange"
 msgstr ""
 
-#: inc/global-styles.php:225
+#: inc/global-styles.php:201
 msgctxt "Color name"
 msgid "Pale Yellow"
 msgstr ""
 
-#: inc/global-styles.php:230
+#: inc/global-styles.php:206
 msgctxt "Color name"
 msgid "Bright Yellow"
 msgstr ""
 
-#: inc/global-styles.php:235
+#: inc/global-styles.php:211
 msgctxt "Color name"
 msgid "Light Yellow"
 msgstr ""
 
-#: inc/global-styles.php:240
+#: inc/global-styles.php:216
 msgctxt "Color name"
 msgid "Yellow"
 msgstr ""
 
-#: inc/global-styles.php:245
+#: inc/global-styles.php:221
 msgctxt "Color name"
 msgid "Dark Yellow"
 msgstr ""
 
-#: inc/global-styles.php:250
+#: inc/global-styles.php:226
 msgctxt "Color name"
 msgid "Heavy Yellow"
 msgstr ""
 
-#: inc/global-styles.php:255
+#: inc/global-styles.php:231
 msgctxt "Color name"
 msgid "Pale Lime"
 msgstr ""
 
-#: inc/global-styles.php:260
+#: inc/global-styles.php:236
 msgctxt "Color name"
 msgid "Bright Lime"
 msgstr ""
 
-#: inc/global-styles.php:265
+#: inc/global-styles.php:241
 msgctxt "Color name"
 msgid "Light Lime"
 msgstr ""
 
-#: inc/global-styles.php:270
+#: inc/global-styles.php:246
 msgctxt "Color name"
 msgid "Lime"
 msgstr ""
 
-#: inc/global-styles.php:275
+#: inc/global-styles.php:251
 msgctxt "Color name"
 msgid "Dark Lime"
 msgstr ""
 
-#: inc/global-styles.php:280
+#: inc/global-styles.php:256
 msgctxt "Color name"
 msgid "Heavy Lime"
 msgstr ""
 
-#: inc/global-styles.php:285
+#: inc/global-styles.php:261
 msgctxt "Color name"
 msgid "Pale Green"
 msgstr ""
 
-#: inc/global-styles.php:290
+#: inc/global-styles.php:266
 msgid "Bright Green"
 msgstr ""
 
-#: inc/global-styles.php:295
+#: inc/global-styles.php:271
 msgctxt "Color name"
 msgid "Light Green"
 msgstr ""
 
-#: inc/global-styles.php:300
+#: inc/global-styles.php:276
 msgctxt "Color name"
 msgid "Green"
 msgstr ""
 
-#: inc/global-styles.php:305
+#: inc/global-styles.php:281
 msgctxt "Color name"
 msgid "Dark Green"
 msgstr ""
 
-#: inc/global-styles.php:310
+#: inc/global-styles.php:286
 msgctxt "Color name"
 msgid "Heavy Green"
 msgstr ""
 
-#: inc/global-styles.php:315
+#: inc/global-styles.php:291
 msgctxt "Color name"
 msgid "Pale Teal"
 msgstr ""
 
-#: inc/global-styles.php:320
+#: inc/global-styles.php:296
 msgctxt "Color name"
 msgid "Bright Teal"
 msgstr ""
 
-#: inc/global-styles.php:325
+#: inc/global-styles.php:301
 msgctxt "Color name"
 msgid "Light Teal"
 msgstr ""
 
-#: inc/global-styles.php:330
+#: inc/global-styles.php:306
 msgctxt "Color name"
 msgid "Teal"
 msgstr ""
 
-#: inc/global-styles.php:335
+#: inc/global-styles.php:311
 msgctxt "Color name"
 msgid "Dark Teal"
 msgstr ""
 
-#: inc/global-styles.php:340
+#: inc/global-styles.php:316
 msgctxt "Color name"
 msgid "Heavy Teal"
 msgstr ""
 
-#: inc/global-styles.php:345
+#: inc/global-styles.php:321
 msgctxt "Color name"
 msgid "Pale Cyan"
 msgstr ""
 
-#: inc/global-styles.php:350
+#: inc/global-styles.php:326
 msgctxt "Color name"
 msgid "Bright Cyan"
 msgstr ""
 
-#: inc/global-styles.php:355
+#: inc/global-styles.php:331
 msgctxt "Color name"
 msgid "Light Cyan"
 msgstr ""
 
-#: inc/global-styles.php:360
+#: inc/global-styles.php:336
 msgctxt "Color name"
 msgid "Cyan"
 msgstr ""
 
-#: inc/global-styles.php:365
+#: inc/global-styles.php:341
 msgctxt "Color name"
 msgid "Dark Cyan"
 msgstr ""
 
-#: inc/global-styles.php:370
+#: inc/global-styles.php:346
 msgctxt "Color name"
 msgid "Heavy Cyan"
 msgstr ""
 
-#: inc/global-styles.php:375
+#: inc/global-styles.php:351
 msgctxt "Color name"
 msgid "Pale Blue"
 msgstr ""
 
-#: inc/global-styles.php:380
+#: inc/global-styles.php:356
 msgctxt "Color name"
 msgid "Bright Blue"
 msgstr ""
 
-#: inc/global-styles.php:385
+#: inc/global-styles.php:361
 msgctxt "Color name"
 msgid "Light Blue"
 msgstr ""
 
-#: inc/global-styles.php:390
+#: inc/global-styles.php:366
 msgctxt "Color name"
 msgid "Blue"
 msgstr ""
 
-#: inc/global-styles.php:395
+#: inc/global-styles.php:371
 msgctxt "Color name"
 msgid "Dark Blue"
 msgstr ""
 
-#: inc/global-styles.php:400
+#: inc/global-styles.php:376
 msgctxt "Color name"
 msgid "Heavy Blue"
 msgstr ""
 
-#: inc/global-styles.php:405
+#: inc/global-styles.php:381
 msgctxt "Color name"
 msgid "Pale Indigo"
 msgstr ""
 
-#: inc/global-styles.php:410
+#: inc/global-styles.php:386
 msgctxt "Color name"
 msgid "Bright Indigo"
 msgstr ""
 
-#: inc/global-styles.php:415
+#: inc/global-styles.php:391
 msgctxt "Color name"
 msgid "Light Indigo"
 msgstr ""
 
-#: inc/global-styles.php:420
+#: inc/global-styles.php:396
 msgctxt "Color name"
 msgid "Indigo"
 msgstr ""
 
-#: inc/global-styles.php:425
+#: inc/global-styles.php:401
 msgctxt "Color name"
 msgid "Dark Indigo"
 msgstr ""
 
-#: inc/global-styles.php:430
+#: inc/global-styles.php:406
 msgctxt "Color name"
 msgid "Heavy Indigo"
 msgstr ""
 
-#: inc/global-styles.php:435
+#: inc/global-styles.php:411
 msgctxt "Color name"
 msgid "Pale Violet"
 msgstr ""
 
-#: inc/global-styles.php:440
+#: inc/global-styles.php:416
 msgctxt "Color name"
 msgid "Bright Violet"
 msgstr ""
 
-#: inc/global-styles.php:445
+#: inc/global-styles.php:421
 msgctxt "Color name"
 msgid "Light Violet"
 msgstr ""
 
-#: inc/global-styles.php:450
+#: inc/global-styles.php:426
 msgctxt "Color name"
 msgid "Violet"
 msgstr ""
 
-#: inc/global-styles.php:455
+#: inc/global-styles.php:431
 msgctxt "Color name"
 msgid "Dark Violet"
 msgstr ""
 
-#: inc/global-styles.php:460
+#: inc/global-styles.php:436
 msgctxt "Color name"
 msgid "Heavy Violet"
 msgstr ""
 
-#: inc/global-styles.php:465
+#: inc/global-styles.php:441
 msgctxt "Color name"
 msgid "Pale Purple"
 msgstr ""
 
-#: inc/global-styles.php:470
+#: inc/global-styles.php:446
 msgctxt "Color name"
 msgid "Bright Purple"
 msgstr ""
 
-#: inc/global-styles.php:475
+#: inc/global-styles.php:451
 msgctxt "Color name"
 msgid "Light Purple"
 msgstr ""
 
-#: inc/global-styles.php:480
+#: inc/global-styles.php:456
 msgctxt "Color name"
 msgid "Purple"
 msgstr ""
 
-#: inc/global-styles.php:485
+#: inc/global-styles.php:461
 msgctxt "Color name"
 msgid "Dark Purple"
 msgstr ""
 
-#: inc/global-styles.php:490
+#: inc/global-styles.php:466
 msgctxt "Color name"
 msgid "Heavy Purple"
 msgstr ""
 
-#: inc/global-styles.php:495
+#: inc/global-styles.php:471
 msgctxt "Color name"
 msgid "Pale Pink"
 msgstr ""
 
-#: inc/global-styles.php:500
+#: inc/global-styles.php:476
 msgctxt "Color name"
 msgid "Bright Pink"
 msgstr ""
 
-#: inc/global-styles.php:505
+#: inc/global-styles.php:481
 msgctxt "Color name"
 msgid "Light Pink"
 msgstr ""
 
-#: inc/global-styles.php:510
+#: inc/global-styles.php:486
 msgctxt "Color name"
 msgid "Pink"
 msgstr ""
 
-#: inc/global-styles.php:515
+#: inc/global-styles.php:491
 msgctxt "Color name"
 msgid "Dark Pink"
 msgstr ""
 
-#: inc/global-styles.php:520
+#: inc/global-styles.php:496
 msgctxt "Color name"
 msgid "Heavy Pink"
 msgstr ""
@@ -2614,7 +2614,7 @@ msgid "Multi columns"
 msgstr ""
 
 #: dist/blocks/text/index.js:1
-msgid "The \"Max width\" setting is used as the width of each column."
+msgid "Column width"
 msgstr ""
 
 #: dist/blocks/vertical-writing/index.js:1

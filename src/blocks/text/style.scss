@@ -1,9 +1,12 @@
 @use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
 
 [data-unitone-layout~="text"].is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-	margin-right: auto;
-	margin-left: auto;
-	max-width: min(100%, var(--unitone--max-width));
+	&,
+	.editor-styles-wrapper:where(.block-editor-writing-flow) & {
+		margin-right: auto;
+		margin-left: auto;
+		max-width: min(100%, var(--unitone--max-width));
+	}
 }
 
 @include text.text();
@@ -11,15 +14,3 @@
 [data-unitone-layout~="text"] {
 	--unitone--max-width: var(--wp--style--global--content-size);
 }
-
-// [data-unitone-layout~="text"][data-unitone-layout~="-gap"]:not([data-unitone-layout~=-column]) > * {
-// 	max-width: min(100%, var(--unitone--max-width));
-// }
-
-// [data-unitone-layout~="text"][data-unitone-layout~="-column"] {
-// 	max-width: none;
-
-// 	> * {
-// 		max-width: min(100%, var(--unitone--max-width));
-// 	}
-// }

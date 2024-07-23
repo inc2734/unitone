@@ -599,7 +599,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ResponsiveSettingsContainer
-							label={ 'grid-template-columns' }
+							label={ 'grid-template-rows' }
 							desktopControls={ () => (
 								<>
 									<ToggleGroupControl

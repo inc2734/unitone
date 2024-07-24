@@ -34,3 +34,7 @@
 		max-width: 100%;
 	}
 }
+
+[data-unitone-layout~="vertical-writing"] {
+	--unitone--max-height: inherit;
+}

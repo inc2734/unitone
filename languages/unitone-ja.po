@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-07-21T17:05:39+00:00\n"
-"PO-Revision-Date: 2024-07-22 02:07+0900\n"
+"POT-Creation-Date: 2024-07-25T07:47:10+00:00\n"
+"PO-Revision-Date: 2024-07-25 16:52+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -24,8 +24,8 @@ msgid "unitone"
 msgstr "unitone"
 
 #. Theme URI of the theme
-msgid "https://snow-monkey.2inc.org"
-msgstr "https://snow-monkey.2inc.org"
+msgid "https://unitone.2inc.org"
+msgstr "https://unitone.2inc.org"
 
 #. Author of the theme
 msgid "Takashi Kitajima"
@@ -3816,56 +3816,3 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
-
-#~ msgid "The \"Max width\" setting is used as the width of each column."
-#~ msgstr "「最大幅」の設定値が各カラムの幅として利用されます。"
-
-#~ msgid ""
-#~ "This setting is the default setting for the theme. The Site Editor "
-#~ "setting overrides this setting."
-#~ msgstr ""
-#~ "この設定はテーマのデフォルト設定です。サイトエディターの設定はこの設定を上"
-#~ "書きします。"
-
-#~ msgid "With shadow"
-#~ msgstr "影付き"
-
-#~ msgctxt "block title"
-#~ msgid "Content"
-#~ msgstr "コンテンツ"
-
-#~ msgctxt "Space size name"
-#~ msgid "-2"
-#~ msgstr "-2"
-
-#~ msgctxt "Space size name"
-#~ msgid "-1"
-#~ msgstr "-1"
-
-#~ msgctxt "Space size name"
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgctxt "Space size name"
-#~ msgid "2"
-#~ msgstr "2"
-
-#~ msgctxt "Space size name"
-#~ msgid "3"
-#~ msgstr "3"
-
-#~ msgctxt "Space size name"
-#~ msgid "4"
-#~ msgstr "4"
-
-#~ msgctxt "Space size name"
-#~ msgid "5"
-#~ msgstr "5"
-
-#~ msgctxt "block description"
-#~ msgid "This block is designed to cover a large area of the screen."
-#~ msgstr "画面の広い範囲をカバーするようにデザインされています。"
-
-#~ msgctxt "Pattern title"
-#~ msgid "Single Products: Left Header / Only Header and Footer"
-#~ msgstr "単一の商品：左ヘッダー / ヘッダー・フッター"

@@ -104,6 +104,7 @@
 			]
 		},
 		"typography": {
+			"defaultFontSizes": false,
 			"dropCap": true,
 			"customFontSize": false,
 			"textTransform": true,

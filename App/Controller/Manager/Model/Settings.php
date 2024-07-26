@@ -278,14 +278,17 @@ class Settings {
 			return $cache;
 		}
 
-		$settings = shortcode_atts( static::$default_settings, static::get_settings() );
+		$settings      = static::_array_override_recursive( static::$default_settings, static::get_settings() );
+		$options       = static::_array_override_recursive( static::$default_options, static::get_options() );
+		$global_styles = static::_array_override_recursive( static::$default_global_styles, static::get_global_styles() );
 
-		$global_styles = static::get_global_styles();
-
-		$settings = array_merge(
+		$settings = array_replace_recursive(
+			static::$default_settings,
 			$settings,
+			static::$default_global_styles,
 			$global_styles,
-			static::get_options()
+			static::$default_options,
+			$options
 		);
 
 		if ( empty( $settings['enabled-custom-templates'] ) ) {

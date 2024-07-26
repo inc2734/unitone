@@ -1,5 +1,3 @@
-import { pick } from 'lodash';
-
 import {
 	BaseControl,
 	Button,
@@ -14,49 +12,95 @@ import apiFetch from '@wordpress/api-fetch';
 
 import ColorGradientSettingsDropdown from '../color-gradient-settings-dropdown';
 
-const SETTINGS_KEYS = [
-	'site-logo',
-	'site-icon',
-	'accent-color',
-	'background-color',
-	'text-color',
-	'link-color',
-	'link-hover-color',
-	'link-focus-color',
-];
-
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 	const [ siteLogoUrl, setSiteLogoUrl ] = useState( undefined );
 	const [ siteIconUrl, setSiteIconUrl ] = useState( undefined );
 
 	const saveSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach(
-			( key ) => ( newData[ key ] = settings?.[ key ] ?? null )
-		);
-
 		setSettingsSaving( true );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				'site-logo': settings?.[ 'site-logo' ] ?? null,
+				'site-icon': settings?.[ 'site-icon' ] ?? null,
+				'accent-color': settings?.[ 'accent-color' ] ?? null,
+				'background-color': settings?.[ 'background-color' ] ?? null, // Deprecated.
+				'text-color': settings?.[ 'text-color' ] ?? null, // Deprecated.
+				styles: {
+					color: {
+						background: settings?.styles?.color?.background ?? null,
+						text: settings?.styles?.color?.text ?? null,
+					},
+					elements: {
+						link: {
+							color: {
+								text:
+									settings?.styles?.elements?.link?.color
+										?.text ?? null,
+							},
+							':hover': {
+								color: {
+									text:
+										settings?.styles?.elements?.link?.[
+											':hover'
+										]?.color?.text ?? null,
+								},
+							},
+							':focus': {
+								color: {
+									text:
+										settings?.styles?.elements?.link?.[
+											':focus'
+										]?.color?.text ?? null,
+								},
+							},
+						},
+					},
+				},
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach( ( key ) => ( newData[ key ] = null ) );
-
 		setSettingsSaving( true );
 		setSettings( {
 			...settings,
-			...pick( defaultSettings, SETTINGS_KEYS ),
-			...{
-				'site-logo': undefined,
-				'site-icon': undefined,
+			'site-logo': undefined,
+			'site-icon': undefined,
+			'accent-color': defaultSettings[ 'accent-color' ],
+			'background-color': defaultSettings[ 'background-color' ], // Deprecated.
+			'text-color': defaultSettings[ 'text-color' ], // Deprecated.
+			styles: {
+				color: {
+					background: defaultSettings.styles.color.background,
+					text: defaultSettings.styles.color.text,
+				},
+				elements: {
+					link: {
+						color: {
+							text: defaultSettings.styles.elements.link.color
+								.text,
+						},
+						':hover': {
+							color: {
+								text: defaultSettings.styles.elements.link[
+									':hover'
+								].color.text,
+							},
+						},
+						':focus': {
+							color: {
+								text: defaultSettings.styles.elements.link[
+									':focus'
+								].color.text,
+							},
+						},
+					},
+				},
 			},
 		} );
 		setSiteLogoUrl( undefined );
@@ -64,7 +108,36 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				'site-logo': null,
+				'site-icon': null,
+				'accent-color': null,
+				'background-color': null, // Deprecated.
+				'text-color': null, // Deprecated.
+				styles: {
+					color: {
+						background: null,
+						text: null,
+					},
+					elements: {
+						link: {
+							color: {
+								text: null,
+							},
+							':hover': {
+								color: {
+									text: null,
+								},
+							},
+							':focus': {
+								color: {
+									text: null,
+								},
+							},
+						},
+					},
+				},
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );
@@ -75,18 +148,80 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		setSiteIconUrl( window.currentSettings.siteIconUrl );
 	}, [] );
 
+	const paletteColors = [
+		...window.currentSettings.palette?.[ 0 ]?.colors,
+		...window.currentSettings.palette?.[ 1 ]?.colors,
+	];
+
+	const backgroundColor =
+		paletteColors.find(
+			( color ) =>
+				color.slug ===
+				settings?.styles?.color?.background?.replace(
+					'var:preset|color|',
+					''
+				)
+		)?.color ||
+		settings?.styles?.color?.background ||
+		defaultSettings?.styles?.color?.background;
+
+	const deprecatedBackgroundColor =
+		settings?.[ 'background-color' ] ||
+		defaultSettings?.[ 'background-color' ];
+
+	const textColor =
+		paletteColors.find(
+			( color ) =>
+				color.slug ===
+				settings?.styles?.color?.text?.replace(
+					'var:preset|color|',
+					''
+				)
+		)?.color ||
+		settings?.styles?.color?.text ||
+		defaultSettings?.styles?.color?.text;
+
+	const deprecatedTextColor =
+		settings?.[ 'text-color' ] || defaultSettings?.[ 'text-color' ];
+
 	const linkColor =
-		settings?.[ 'link-color' ] ||
+		paletteColors.find(
+			( color ) =>
+				color.slug ===
+				settings?.styles?.elements?.link?.color?.text?.replace(
+					'var:preset|color|',
+					''
+				)
+		)?.color ||
+		settings?.styles?.elements?.link?.color?.text ||
 		settings?.[ 'accent-color' ] ||
-		defaultSettings?.[ 'accent-color' ];
+		defaultSettings?.styles?.elements?.link?.color?.text;
+
 	const linkHoverColor =
-		'inherit' === settings?.[ 'link-hover-color' ]
+		'inherit' ===
+		settings?.styles?.elements?.link?.[ ':hover' ]?.color?.text
 			? undefined
-			: settings?.[ 'link-hover-color' ];
+			: paletteColors.find(
+					( color ) =>
+						color.slug ===
+						settings?.styles?.elements?.link?.[
+							':hover'
+						]?.color?.text?.replace( 'var:preset|color|', '' )
+			  )?.color ||
+			  settings?.styles?.elements?.link?.[ ':hover' ]?.color?.text;
+
 	const linkFocusColor =
-		'inherit' === settings?.[ 'link-focus-color' ]
+		'inherit' ===
+		settings?.styles?.elements?.link?.[ ':focus' ]?.color?.text
 			? undefined
-			: settings?.[ 'link-focus-color' ];
+			: paletteColors.find(
+					( color ) =>
+						color.slug ===
+						settings?.styles?.elements?.link?.[
+							':focus'
+						]?.color?.text?.replace( 'var:preset|color|', '' )
+			  )?.color ||
+			  settings?.styles?.elements?.link?.[ ':focus' ]?.color?.text;
 
 	return (
 		<div
@@ -289,8 +424,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									),
 									fontFamily: settings?.fontFamilies?.find(
 										( fontFamily ) =>
-											settings?.[ 'font-family' ] ===
-											fontFamily.slug
+											settings?.styles?.typography?.fontFamily?.replace(
+												'var:preset|font-family|',
+												''
+											) === fontFamily.slug
 									)?.fontFamily,
 								} }
 							>
@@ -298,9 +435,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									data-unitone-layout="decorator -padding:1 -typography:em"
 									style={ {
 										'--unitone--background-color':
-											settings?.[ 'background-color' ],
+											backgroundColor ||
+											deprecatedBackgroundColor,
 										'--unitone--color':
-											settings?.[ 'text-color' ],
+											textColor || deprecatedTextColor,
 										'--unitone--border-color':
 											'var(--unitone--color--light-gray)',
 										'--unitone--border-width': '1px',
@@ -350,17 +488,22 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 												'unitone'
 											),
 											colorValue:
-												settings?.[
-													'background-color'
-												] ||
-												defaultSettings?.[
-													'background-color'
-												],
+												backgroundColor ||
+												deprecatedBackgroundColor,
 											onColorChange: ( newSetting ) =>
 												setSettings( {
 													...settings,
 													'background-color':
-														newSetting,
+														newSetting, // Deprecated.
+													styles: {
+														...settings?.styles,
+														color: {
+															...settings?.styles
+																?.color,
+															background:
+																newSetting,
+														},
+													},
 												} ),
 											clearable: true,
 										},
@@ -370,14 +513,20 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 												'unitone'
 											),
 											colorValue:
-												settings?.[ 'text-color' ] ||
-												defaultSettings?.[
-													'text-color'
-												],
+												textColor ||
+												deprecatedTextColor,
 											onColorChange: ( newSetting ) =>
 												setSettings( {
 													...settings,
-													'text-color': newSetting,
+													'text-color': newSetting, // Deprecated.
+													styles: {
+														...settings?.styles,
+														color: {
+															...settings?.styles
+																?.color,
+															text: newSetting,
+														},
+													},
 												} ),
 											clearable: true,
 										},
@@ -390,14 +539,27 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											onColorChange: ( newSetting ) =>
 												setSettings( {
 													...settings,
-													'link-color':
-														newSetting ||
-														settings?.[
-															'accent-color'
-														] ||
-														defaultSettings?.[
-															'link-color'
-														],
+													styles: {
+														...settings?.styles,
+														elements: {
+															...settings?.styles
+																?.elements,
+															link: {
+																...settings
+																	?.styles
+																	?.elements
+																	?.link,
+																color: {
+																	...settings
+																		?.styles
+																		?.elements
+																		?.link
+																		?.color,
+																	text: newSetting,
+																},
+															},
+														},
+													},
 												} ),
 											clearable: true,
 										},
@@ -410,11 +572,37 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											onColorChange: ( newSetting ) =>
 												setSettings( {
 													...settings,
-													'link-hover-color':
-														newSetting ||
-														defaultSettings?.[
-															'link-hover-color'
-														],
+													styles: {
+														...settings?.styles,
+														elements: {
+															...settings?.styles
+																?.elements,
+															link: {
+																...settings
+																	?.styles
+																	?.elements
+																	?.link,
+																':hover': {
+																	...settings
+																		?.styles
+																		?.elements
+																		?.link?.[
+																		':hover'
+																	],
+																	color: {
+																		...settings
+																			?.styles
+																			?.elements
+																			?.link?.[
+																			':hover'
+																		]
+																			?.color,
+																		text: newSetting,
+																	},
+																},
+															},
+														},
+													},
 												} ),
 											clearable: true,
 										},
@@ -427,11 +615,37 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											onColorChange: ( newSetting ) =>
 												setSettings( {
 													...settings,
-													'link-focus-color':
-														newSetting ||
-														defaultSettings?.[
-															'link-focus-color'
-														],
+													styles: {
+														...settings?.styles,
+														elements: {
+															...settings?.styles
+																?.elements,
+															link: {
+																...settings
+																	?.styles
+																	?.elements
+																	?.link,
+																':focus': {
+																	...settings
+																		?.styles
+																		?.elements
+																		?.link?.[
+																		':focus'
+																	],
+																	color: {
+																		...settings
+																			?.styles
+																			?.elements
+																			?.link?.[
+																			':focus'
+																		]
+																			?.color,
+																		text: newSetting,
+																	},
+																},
+															},
+														},
+													},
 												} ),
 											clearable: true,
 										},

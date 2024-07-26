@@ -1,5 +1,3 @@
-import { pick } from 'lodash';
-
 import { Button, RadioControl } from '@wordpress/components';
 
 import { useState } from '@wordpress/element';
@@ -7,40 +5,36 @@ import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
-const SETTINGS_KEYS = [ 'wp-oembed-blog-card-style' ];
-
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 
 	const saveSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach(
-			( key ) => ( newData[ key ] = settings?.[ key ] ?? null )
-		);
-
 		setSettingsSaving( true );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				'wp-oembed-blog-card-style':
+					settings?.[ 'wp-oembed-blog-card-style' ] ?? null,
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach( ( key ) => ( newData[ key ] = null ) );
-
 		setSettingsSaving( true );
 		setSettings( {
 			...settings,
-			...pick( defaultSettings, SETTINGS_KEYS ),
+			'wp-oembed-blog-card-style':
+				defaultSettings[ 'wp-oembed-blog-card-style' ],
 		} );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				'wp-oembed-blog-card-style': null,
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );
@@ -63,8 +57,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							'--wp--preset--color--unitone-accent':
 								settings?.[ 'accent-color' ],
 							'--wp--preset--color--unitone-text':
-								settings?.[ 'text-color' ],
-							'--wp--preset--color--unitone-text-alt': '#fff',
+								settings?.styles?.color?.text,
+							'--wp--preset--color--unitone-text-alt':
+								settings?.styles?.color?.background,
 						} }
 					>
 						<span>

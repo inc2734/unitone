@@ -23,7 +23,6 @@ class Settings {
 	 */
 	protected static $default_settings = array(
 		'license-key'               => '',
-		'font-family'               => 'sans-serif',
 		'base-font-size'            => '16',
 		'half-leading'              => '0.4',
 		'h2-size'                   => '3',
@@ -32,13 +31,8 @@ class Settings {
 		'h5-size'                   => '0',
 		'h6-size'                   => '0',
 		'accent-color'              => '#090a0b', // = settings.color.palette > unitone-accent
-		'background-color'          => '#fff',
-		'text-color'                => '#222',
-		'link-color'                => '#003c78', // = styles.elements.link.color.text
-		'link-focus-color'          => null, // = styles.elements.link.:focus.color.text
-		'link-hover-color'          => null, // = styles.elements.link.:hover.color.text
-		'content-size'              => '46rem',
-		'wide-size'                 => '1334px',
+		'background-color'          => '#fff',    // = Deprecated. settings.color.palette > unitone-background, unitone-text-alt
+		'text-color'                => '#222',    // = Deprecated. settings.color.palette > unitone-text, unitone-background-alt
 		'enabled-custom-templates'  => array(),
 		'wp-oembed-blog-card-style' => 'default',
 	);
@@ -64,27 +58,46 @@ class Settings {
 	protected static $default_global_styles = array(
 		'styles'   => array(
 			'color'      => array(
-				'background' => null,
-				'text'       => null,
+				'background' => '#fff',
+				'text'       => '#222',
 			),
 			'elements'   => array(
 				'link' => array(
-					'color' => array(
-						'text' => null,
+					'color'  => array(
+						'text' => '#003c78',
+					),
+					':hover' => array(
+						'color' => array(
+							'text' => null,
+						),
+					),
+					':focus' => array(
+						'color' => array(
+							'text' => null,
+						),
 					),
 				),
 			),
 			'typography' => array(
-				'fontFamily' => null,
+				'fontFamily' => 'var:preset|font-family|sans-serif',
 			),
 		),
 		'settings' => array(
 			'layout' => array(
-				'contentSize' => null,
-				'wideSize'    => null,
+				'contentSize' => '46rem',
+				'wideSize'    => '1334px',
 			),
 		),
 	);
+
+	/**
+	 * Return default global styles.
+	 *
+	 * @return array
+	 */
+	public static function get_default_global_styles() {
+		return static::$default_global_styles;
+	}
 
 	/**
 	 * Return default settings.
@@ -115,6 +128,17 @@ class Settings {
 		return is_array( $settings )
 			? $settings
 			: array();
+	}
+
+	/**
+	 * Return all global styles.
+	 *
+	 * @return array
+	 */
+	public static function get_global_styles() {
+		$global_styles = \WP_Theme_JSON_Resolver::get_user_data()->get_raw_data();
+
+		return static::_remove_nulls( $global_styles );
 	}
 
 	/**
@@ -154,17 +178,13 @@ class Settings {
 	public static function update_settings( $settings ) {
 		wp_cache_delete( self::SETTINGS_NAME );
 
-		$new_settings = array();
-
-		foreach ( static::$default_settings as $name => $default ) {
-			if ( array_key_exists( $name, $settings ) ) {
-				$new_settings[ $name ] = $settings[ $name ];
-			} else {
-				$new_settings[ $name ] = $default;
-			}
-		}
-
-		update_option( self::SETTINGS_NAME, $new_settings );
+		update_option(
+			self::SETTINGS_NAME,
+			static::_array_override_recursive(
+				static::$default_settings,
+				$settings
+			)
+		);
 	}
 
 	/**
@@ -181,53 +201,23 @@ class Settings {
 		$user_cpt           = \WP_Theme_JSON_Resolver::get_user_data_from_wp_global_styles( wp_get_theme() );
 		$json_global_styles = $user_cpt['post_content'];
 		$global_styles      = json_decode( $json_global_styles, true ) ?? array();
-		$new_global_styles  = array_replace_recursive(
+
+		$new_global_styles = array_replace_recursive(
 			array(
 				'version'                     => 3,
 				'isGlobalStylesUserThemeJSON' => true,
 			),
 			$global_styles,
-			array(
-				'styles'   => array(
-					'color'      => array(
-						'background' => $settings['background-color'] ?? null,
-						'text'       => $settings['text-color'] ?? null,
-					),
-					'elements'   => array(
-						'link' => array(
-							'color'  => array(
-								'text' => $settings['link-color'] ?? null,
-							),
-							':hover' => array(
-								'color' => array(
-									'text' => $settings['link-hover-color'] ?? null,
-								),
-							),
-							':focus' => array(
-								'color' => array(
-									'text' => $settings['link-focus-color'] ?? null,
-								),
-							),
-						),
-					),
-					'typography' => array(
-						'fontFamily' => ! empty( $settings['font-family'] ) ? 'var:preset|font-family|' . $settings['font-family'] : null,
-					),
-				),
-				'settings' => array(
-					'layout' => array(
-						'contentSize' => $settings['content-size'] ?? null,
-						'wideSize'    => $settings['wide-size'] ?? null,
-					),
-				),
-			)
+			static::_array_override_recursive(
+				static::$default_global_styles,
+				$settings
+			),
 		);
-		$new_global_styles  = static::_remove_nulls( $new_global_styles );
 
 		wp_update_post(
 			array(
 				'ID'           => $user_cpt['ID'],
-				'post_content' => wp_json_encode( $new_global_styles ),
+				'post_content' => wp_slash( wp_json_encode( $new_global_styles ) ),
 			)
 		);
 	}
@@ -290,23 +280,11 @@ class Settings {
 
 		$settings = shortcode_atts( static::$default_settings, static::get_settings() );
 
-		$user_data = \WP_Theme_JSON_Resolver::get_user_data()->get_raw_data();
-		$user_data = array_replace_recursive(
-			static::$default_global_styles,
-			$user_data
-		);
+		$global_styles = static::get_global_styles();
 
 		$settings = array_merge(
 			$settings,
-			array(
-				'background-color' => $user_data['styles']['color']['background'] ?? $settings['background-color'],
-				'text-color'       => $user_data['styles']['color']['text'] ?? $settings['text-color'],
-				'link-color'       => $user_data['styles']['elements']['link']['color']['text'] ?? $settings['link-color'],
-				'link-hover-color' => $user_data['styles']['elements']['link'][':hover']['color']['text'] ?? $settings['link-hover-color'],
-				'link-focus-color' => $user_data['styles']['elements']['link'][':focus']['color']['text'] ?? $settings['link-focus-color'],
-				'content-size'     => $user_data['settings']['layout']['contentSize'] ?? $settings['content-size'],
-				'wide-size'        => $user_data['settings']['layout']['wideSize'] ?? $settings['wide-size'],
-			),
+			$global_styles,
 			static::get_options()
 		);
 
@@ -428,6 +406,29 @@ class Settings {
 				}
 			} elseif ( ! is_null( $value ) ) {
 					$result[ $key ] = $value;
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Only permitted keys and their values remain.
+	 *
+	 * @param array $array_1 Array with permitted keys.
+	 * @param array $array_2 Array with values to replae.
+	 * @return array
+	 */
+	protected static function _array_override_recursive( array $array_1, array $array_2 ) {
+		$result = array();
+
+		foreach ( $array_1 as $key => $value ) {
+			if ( array_key_exists( $key, $array_2 ) ) {
+				if ( is_array( $value ) && is_array( $array_2[ $key ] ) ) {
+					$result[ $key ] = static::_array_override_recursive( $value, $array_2[ $key ] );
+				} else {
+					$result[ $key ] = $array_2[ $key ];
+				}
 			}
 		}
 

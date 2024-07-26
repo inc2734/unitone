@@ -1,5 +1,3 @@
-import { pick } from 'lodash';
-
 import { Button, RadioControl, SelectControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
@@ -7,9 +5,7 @@ import { sprintf, __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
-const SETTINGS_KEYS = [ 'show-on-front', 'page-on-front', 'page-for-posts' ];
-
-export default function ( { settings, defaultSettings, setSettings } ) {
+export default function ( { settings, setSettings } ) {
 	const [ pages, setPages ] = useState( [] );
 	const [ isCreatedHomepage, setIsCreatedHomepage ] = useState( false );
 	const [ isCreatedPostsPage, setIsCreatedPostsPage ] = useState( false );
@@ -88,38 +84,35 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			} );
 		}
 
-		const newData = {};
-		SETTINGS_KEYS.forEach(
-			( key ) => ( newData[ key ] = newSettings?.[ key ] ?? null )
-		);
-
 		await apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				'show-on-front': settings?.[ 'show-on-front' ] ?? null,
+				'page-on-front': settings?.[ 'page-on-front' ] ?? null,
+				'page-for-posts': settings?.[ 'page-for-posts' ] ?? null,
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );
 	}
 
 	const resetSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach( ( key ) => ( newData[ key ] = null ) );
-
 		setSettingsSaving( true );
 		setSettings( {
 			...settings,
-			...pick( defaultSettings, SETTINGS_KEYS ),
-			...{
-				'show-on-front': 'posts',
-				'page-on-front': undefined,
-				'page-for-posts': undefined,
-			},
+			'show-on-front': 'posts',
+			'page-on-front': undefined,
+			'page-for-posts': undefined,
 		} );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				'show-on-front': null,
+				'page-on-front': null,
+				'page-for-posts': null,
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );

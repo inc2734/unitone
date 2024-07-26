@@ -1,5 +1,3 @@
-import { pick } from 'lodash';
-
 import {
 	Button,
 	__experimentalUnitControl as UnitControl,
@@ -9,40 +7,52 @@ import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
-const SETTINGS_KEYS = [ 'content-size', 'wide-size' ];
-
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 
 	const saveSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach(
-			( key ) => ( newData[ key ] = settings?.[ key ] ?? null )
-		);
-
 		setSettingsSaving( true );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				settings: {
+					layout: {
+						contentSize:
+							settings?.settings?.layout?.contentSize ?? null,
+						wideSize: settings?.settings?.layout?.wideSize ?? null,
+					},
+				},
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach( ( key ) => ( newData[ key ] = null ) );
-
 		setSettingsSaving( true );
 		setSettings( {
 			...settings,
-			...pick( defaultSettings, SETTINGS_KEYS ),
+			settings: {
+				...settings?.settings,
+				layout: {
+					...settings?.settings?.layout,
+					contentSize: defaultSettings.settings.layout.contentSize,
+					wideSize: defaultSettings.settings.layout.wideSize,
+				},
+			},
 		} );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				settings: {
+					layout: {
+						contentSize: null,
+						wideSize: null,
+					},
+				},
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );
@@ -72,24 +82,41 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						<div data-unitone-layout="stack">
 							<UnitControl
 								label={ __( 'Content Width', 'unitone' ) }
-								value={ settings?.[ 'content-size' ] || '' }
+								value={
+									settings?.settings?.layout?.contentSize ||
+									''
+								}
 								style={ { width: '100%' } }
 								onChange={ ( newSetting ) =>
 									setSettings( {
 										...settings,
-										'content-size': newSetting,
+										settings: {
+											...settings?.settings,
+											layout: {
+												...settings?.settings?.layout,
+												contentSize: newSetting,
+											},
+										},
 									} )
 								}
 							/>
 
 							<UnitControl
 								label={ __( 'Wide', 'unitone' ) }
-								value={ settings?.[ 'wide-size' ] || '' }
+								value={
+									settings?.settings?.layout?.wideSize || ''
+								}
 								style={ { width: '100%' } }
 								onChange={ ( newSetting ) =>
 									setSettings( {
 										...settings,
-										'wide-size': newSetting,
+										settings: {
+											...settings?.settings,
+											layout: {
+												...settings?.settings?.layout,
+												wideSize: newSetting,
+											},
+										},
 									} )
 								}
 							/>

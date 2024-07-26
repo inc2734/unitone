@@ -1,13 +1,9 @@
-import { pick } from 'lodash';
-
 import { Button, TextControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { Icon, check, close } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
-
-const SETTINGS_KEYS = [ 'license-key' ];
 
 /**
  * If a value is stored in License key, use this value instead, since it is secret.
@@ -38,17 +34,14 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	};
 
 	const saveSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach(
-			( key ) => ( newData[ key ] = settings?.[ key ] ?? null )
-		);
-
 		setSettingsSaving( true );
 		setLicenseStatus( undefined );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				'license-key': settings?.[ 'license-key' ] ?? null,
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 			loadLicenseStatus();
@@ -57,19 +50,18 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	};
 
 	const resetSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach( ( key ) => ( newData[ key ] = null ) );
-
 		setSettingsSaving( true );
 		setSettings( {
 			...settings,
-			...pick( defaultSettings, SETTINGS_KEYS ),
+			'license-key': defaultSettings[ 'license-key' ],
 		} );
 		setLicenseStatus( false );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				'license-key': null,
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 			resetRemotePattenrsCache();

@@ -1,5 +1,3 @@
-import { pick } from 'lodash';
-
 import {
 	Button,
 	FontSizePicker,
@@ -12,49 +10,68 @@ import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
-const SETTINGS_KEYS = [
-	'font-family',
-	'base-font-size',
-	'half-leading',
-	'h2-size',
-	'h3-size',
-	'h4-size',
-	'h5-size',
-	'h6-size',
-];
-
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 
 	const saveSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach(
-			( key ) => ( newData[ key ] = settings?.[ key ] ?? null )
-		);
-
 		setSettingsSaving( true );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				'base-font-size': settings?.[ 'base-font-size' ] ?? null,
+				'half-leading': settings?.[ 'half-leading' ] ?? null,
+				'h2-size': settings?.[ 'h2-size' ] ?? null,
+				'h3-size': settings?.[ 'h3-size' ] ?? null,
+				'h4-size': settings?.[ 'h4-size' ] ?? null,
+				'h5-size': settings?.[ 'h5-size' ] ?? null,
+				'h6-size': settings?.[ 'h6-size' ] ?? null,
+				styles: {
+					typography: {
+						fontFamily:
+							settings?.styles?.typography?.fontFamily ?? null,
+					},
+				},
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		const newData = {};
-		SETTINGS_KEYS.forEach( ( key ) => ( newData[ key ] = null ) );
-
 		setSettingsSaving( true );
 		setSettings( {
 			...settings,
-			...pick( defaultSettings, SETTINGS_KEYS ),
+			'base-font-size': defaultSettings[ 'base-font-size' ],
+			'half-leading': defaultSettings[ 'half-leading' ],
+			'h2-size': defaultSettings[ 'h2-size' ],
+			'h3-size': defaultSettings[ 'h3-size' ],
+			'h4-size': defaultSettings[ 'h4-size' ],
+			'h5-size': defaultSettings[ 'h5-size' ],
+			'h6-size': defaultSettings[ 'h6-size' ],
+			styles: {
+				typography: {
+					fontFamily: defaultSettings.styles.typography.fontFamily,
+				},
+			},
 		} );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
-			data: newData,
+			data: {
+				'base-font-size': null,
+				'half-leading': null,
+				'h2-size': null,
+				'h3-size': null,
+				'h4-size': null,
+				'h5-size': null,
+				'h6-size': null,
+				styles: {
+					typography: {
+						fontFamily: null,
+					},
+				},
+			},
 		} ).then( () => {
 			setSettingsSaving( false );
 		} );
@@ -89,8 +106,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									),
 									fontFamily: settings?.fontFamilies?.find(
 										( fontFamily ) =>
-											settings?.[ 'font-family' ] ===
-											fontFamily.slug
+											settings?.styles?.typography?.fontFamily?.replace(
+												'var:preset|font-family|',
+												''
+											) === fontFamily.slug
 									)?.fontFamily,
 								} }
 							>
@@ -166,7 +185,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						<div data-unitone-layout="stack">
 							<SelectControl
 								label={ __( 'Font', 'unitone' ) }
-								value={ settings?.[ 'font-family' ] }
+								value={ settings?.styles?.typography?.fontFamily?.replace(
+									'var:preset|font-family|',
+									''
+								) }
 								options={ settings?.fontFamilies?.map(
 									( fontFamily ) => ( {
 										label: fontFamily.name,
@@ -176,7 +198,13 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								onChange={ ( newSetting ) =>
 									setSettings( {
 										...settings,
-										'font-family': newSetting,
+										styles: {
+											...settings?.styles,
+											typography: {
+												...settings?.styles?.typography,
+												fontFamily: `var:preset|font-family|${ newSetting }`,
+											},
+										},
 									} )
 								}
 							/>

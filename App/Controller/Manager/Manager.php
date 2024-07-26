@@ -108,14 +108,17 @@ class Manager {
 		wp_localize_script(
 			'unitone/settings',
 			'defaultSettings',
-			Settings::get_default_settings(),
+			array_merge(
+				Settings::get_default_settings(),
+				Settings::get_default_global_styles()
+			),
 		);
 
 		wp_localize_script(
 			'unitone/settings',
 			'currentSettings',
 			array_merge(
-				Settings::get_merged_settings(),
+				static::_convert_preset_value( Settings::get_merged_settings() ),
 				array(
 					'adminUrl'             => admin_url(),
 					'homeUrl'              => home_url(),
@@ -145,10 +148,13 @@ class Manager {
 								return array(
 									'name'       => $font_family['name'],
 									'slug'       => $font_family['slug'],
-									'fontFamily' => $font_family['fontFamily'],
+									'fontFamily' => str_replace( '"', "'", $font_family['fontFamily'] ),
 								);
 							},
-							$global_settings['typography']['fontFamilies']['theme']
+							array_merge(
+								$global_settings['typography']['fontFamilies']['theme'] ?? array(),
+								$global_settings['typography']['fontFamilies']['custom'] ?? array()
+							)
 						);
 					} )(),
 					'fontSizes'            => ( function () use ( $global_settings ) {
@@ -243,53 +249,65 @@ class Manager {
 
 						$default_settings = Settings::get_default_settings();
 						$saved_settings   = Settings::get_settings();
-						$new_settings     = array();
+
+						$default_global_styles = Settings::get_default_global_styles();
+						$saved_global_styles   = Settings::get_global_styles();
 
 						$default_options = Settings::get_default_options();
 						$saved_options   = Settings::get_options();
-						$new_options     = array();
 
 						// Extract all but the core settings.
 						// The new settings are sent only in difference.
 						// Therefore, there are merged with the stored settings and saved as new settings.
-						foreach ( $default_settings as $name => $default ) {
-							if ( array_key_exists( $name, $settings ) ) {
-								$new_settings[ $name ] = $settings[ $name ];
-							} elseif ( array_key_exists( $name, $saved_settings ) ) {
-								$new_settings[ $name ] = $saved_settings[ $name ];
-							} else {
-								$new_settings[ $name ] = $default;
-							}
-						}
-						foreach ( $default_options as $name => $default ) {
-							if ( array_key_exists( $name, $settings ) ) {
-								$new_options[ $name ] = $settings[ $name ];
-							} elseif ( array_key_exists( $name, $saved_options ) ) {
-								$new_options[ $name ] = $saved_options[ $name ];
-							} else {
-								$new_options[ $name ] = $default;
-							}
-						}
 
-						// The settings to be deleted are sent as null, so the null settings are removed.
-						// Also, if the settings are the same as the default settings, there are not saved.
-						$new_settings = array_filter(
-							$new_settings,
-							function ( $value, $key ) use ( $default_settings ) {
-								return ! is_null( $value ) && $default_settings[ $key ] !== $value;
-							},
-							ARRAY_FILTER_USE_BOTH
+						$new_settings = static::_remove_nulls(
+							array_replace_recursive(
+								$saved_settings,
+								array_filter(
+									$settings,
+									function ( $key ) {
+										return ! in_array( $key, array( 'styles', 'settings' ), true );
+									},
+									ARRAY_FILTER_USE_KEY
+								),
+							)
 						);
-						$new_options = array_filter(
-							$new_options,
-							function ( $value, $key ) use ( $default_options ) {
-								return ! is_null( $value ) && $default_options[ $key ] !== $value;
-							},
-							ARRAY_FILTER_USE_BOTH
+						$new_settings = static::_remove_nulls(
+							array_replace_recursive(
+								$default_settings,
+								$new_settings
+							)
 						);
 
-						Settings::update_settings( $new_settings );
-						Settings::update_global_styles( $new_settings );
+						$new_global_styles = static::_remove_nulls(
+							array_replace_recursive(
+								$saved_global_styles,
+								array( 'styles' => $settings['styles'] ?? array() ),
+								array( 'settings' => $settings['settings'] ?? array() )
+							)
+						);
+						$new_global_styles = static::_remove_nulls(
+							array_replace_recursive(
+								$default_global_styles,
+								$new_global_styles
+							)
+						);
+
+						$new_options = static::_remove_nulls(
+							array_replace_recursive(
+								$saved_options,
+								$settings,
+							)
+						);
+						$new_options = static::_remove_nulls(
+							array_replace_recursive(
+								$default_options,
+								$new_options
+							)
+						);
+
+						Settings::update_settings( static::_convert_preset_value( $new_settings ) );
+						Settings::update_global_styles( static::_convert_preset_value( $new_global_styles ) );
 						Settings::update_options( $new_options );
 
 						if ( array_key_exists( 'license-key', $settings ) ) {
@@ -570,5 +588,72 @@ class Manager {
 	 */
 	public static function get_custom_templates() {
 		return Settings::get_custom_templates();
+	}
+
+	/**
+	 * Removes arrays from multidimensional arrays from null and so on.
+	 *
+	 * @param array $source Array.
+	 * @return array
+	 */
+	protected static function _remove_nulls( array $source ) {
+		$result = array();
+
+		foreach ( $source as $key => $value ) {
+			if ( is_array( $value ) ) {
+				$filtered_array = static::_remove_nulls( $value );
+				if ( $filtered_array ) {
+					$result[ $key ] = $filtered_array;
+				}
+			} elseif ( ! is_null( $value ) ) {
+				$result[ $key ] = $value;
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Converts a custom value to preset style value if one can be found.
+	 *
+	 * Returns value as-is if no match is found.
+	 *
+	 * @param string $value Value to convert.
+	 * @return string The preset style value if it can be found.
+	 */
+	protected static function _get_preset_value_from_custom_value( $value ) {
+		if ( null === $value || '' === $value ) {
+			return $value;
+		}
+
+		preg_match( '/^var\(--wp--preset--(.+?)--(.+)\)$/', $value, $match );
+		if ( ! $match ) {
+			return $value;
+		}
+
+		return 'var:preset|' . strtolower( preg_replace( '/[A-Z]/', '-\0', $match[1] ) ) . '|' . $match[2];
+	}
+
+	/**
+	 * Converts custom values to preset style value if one can be found.
+	 *
+	 * @param array $values Array of values to convert.
+	 * @return array
+	 */
+	protected static function _convert_preset_value( array $values ) {
+		$result = array();
+
+		foreach ( $values as $key => $value ) {
+			if ( is_array( $value ) ) {
+				$filtered_array = static::_convert_preset_value( $value );
+				if ( $filtered_array ) {
+					$result[ $key ] = $filtered_array;
+				}
+			} else {
+				$result[ $key ] = static::_get_preset_value_from_custom_value( $value );
+			}
+		}
+
+		return $result;
 	}
 }

@@ -11,30 +11,41 @@ use Unitone\App\Controller\Manager\Manager;
  * Apply CSS Vars from settings.
  */
 function apply_css_vars_from_settings() {
-	$font_family      = Manager::get_setting( 'font-family' );
+	/**
+	 * Converts a preset style into a custom value.
+	 *
+	 * @param string $value Value to convert.
+	 * @return string CSS var string for given preset style value.
+	 */
+	$get_preset_style_css_var = function ( $value ) {
+		if ( null === $value || '' === $value ) {
+			return $value;
+		}
+
+		preg_match( '/var:preset\|(.+)\|(.+)/', $value, $match );
+		if ( ! $match ) {
+			return $value;
+		}
+
+		return 'var(--wp--preset--' . $match[1] . '--' . $match[2] . ')';
+	};
+
+	$deprecated_background_color = Manager::get_setting( 'background-color' );
+	$deprecated_text_color       = Manager::get_setting( 'text-color' );
+
+	$font_family      = Manager::get_setting( 'styles' )['typography']['fontFamily'] ?? null;
 	$base_font_size   = Manager::get_setting( 'base-font-size' );
 	$half_leading     = Manager::get_setting( 'half-leading' );
-	$content_size     = Manager::get_setting( 'content-size' );
-	$wide_size        = Manager::get_setting( 'wide-size' );
+	$content_size     = Manager::get_setting( 'settings' )['layout']['contentSize'] ?? null;
+	$wide_size        = Manager::get_setting( 'settings' )['layout']['wideSize'] ?? null;
 	$accent_color     = Manager::get_setting( 'accent-color' );
-	$background_color = Manager::get_setting( 'background-color' );
-	$text_color       = Manager::get_setting( 'text-color' );
+	$background_color = $get_preset_style_css_var( Manager::get_setting( 'styles' )['color']['background'] ?? $deprecated_background_color ?? null );
+	$text_color       = $get_preset_style_css_var( Manager::get_setting( 'styles' )['color']['text'] ?? $deprecated_text_color ?? null );
 	$h2_size          = Manager::get_setting( 'h2-size' );
 	$h3_size          = Manager::get_setting( 'h3-size' );
 	$h4_size          = Manager::get_setting( 'h4-size' );
 	$h5_size          = Manager::get_setting( 'h5-size' );
 	$h6_size          = Manager::get_setting( 'h6-size' );
-
-	$global_settings = wp_get_global_settings();
-
-	$font_family_index = array_search(
-		$font_family,
-		array_column( $global_settings['typography']['fontFamilies']['theme'], 'slug' ),
-		true
-	);
-	$font_family       = false !== $font_family_index
-		? $global_settings['typography']['fontFamilies']['theme'][ $font_family_index ]['fontFamily']
-		: '"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif';
 
 	$stylesheet = sprintf(
 		':root {
@@ -45,7 +56,9 @@ function apply_css_vars_from_settings() {
 			--unitone--container-max-width: %5$s;
 			--unitone--color--accent: %6$s;
 			--unitone--color--background: %7$s;
+			--unitone--color--background-alt: %8$s;
 			--unitone--color--text: %8$s;
+			--unitone--color--text-alt: %7$s;
 		}
 		[data-unitone-layout~="text"] > h2,
 		[data-unitone-layout~="vertical-writing"] > h2 {
@@ -82,8 +95,10 @@ function apply_css_vars_from_settings() {
 		$h6_size
 	);
 	wp_add_inline_style( get_stylesheet(), $stylesheet );
+	wp_add_inline_style( get_stylesheet() . '/settings', $stylesheet );
 }
 add_action( 'wp_enqueue_scripts', 'apply_css_vars_from_settings' );
+add_action( 'admin_enqueue_scripts', 'apply_css_vars_from_settings' );
 add_action( 'enqueue_block_editor_assets', 'apply_css_vars_from_settings', 11 );
 
 /**

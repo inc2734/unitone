@@ -26,6 +26,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				'h4-size': settings?.[ 'h4-size' ] ?? null,
 				'h5-size': settings?.[ 'h5-size' ] ?? null,
 				'h6-size': settings?.[ 'h6-size' ] ?? null,
+				'font-family': null, // Deprecated.
 				styles: {
 					typography: {
 						fontFamily:
@@ -49,6 +50,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			'h4-size': defaultSettings[ 'h4-size' ],
 			'h5-size': defaultSettings[ 'h5-size' ],
 			'h6-size': defaultSettings[ 'h6-size' ],
+			'font-family': null, // Deprecated.
 			styles: {
 				typography: {
 					fontFamily: defaultSettings.styles.typography.fontFamily,
@@ -66,6 +68,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				'h4-size': null,
 				'h5-size': null,
 				'h6-size': null,
+				'font-family': null, // Deprecated.
 				styles: {
 					typography: {
 						fontFamily: null,

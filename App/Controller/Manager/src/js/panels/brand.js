@@ -26,8 +26,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				'site-logo': settings?.[ 'site-logo' ] ?? null,
 				'site-icon': settings?.[ 'site-icon' ] ?? null,
 				'accent-color': settings?.[ 'accent-color' ] ?? null,
-				'background-color': settings?.[ 'background-color' ] ?? null, // Deprecated.
-				'text-color': settings?.[ 'text-color' ] ?? null, // Deprecated.
+				'background-color': null, // Deprecated.
+				'text-color': null, // Deprecated.
 				styles: {
 					color: {
 						background: settings?.styles?.color?.background ?? null,
@@ -72,8 +72,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			'site-logo': undefined,
 			'site-icon': undefined,
 			'accent-color': defaultSettings[ 'accent-color' ],
-			'background-color': defaultSettings[ 'background-color' ], // Deprecated.
-			'text-color': defaultSettings[ 'text-color' ], // Deprecated.
+			'background-color': null, // Deprecated.
+			'text-color': null, // Deprecated.
 			styles: {
 				color: {
 					background: defaultSettings.styles.color.background,
@@ -165,10 +165,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		settings?.styles?.color?.background ||
 		defaultSettings?.styles?.color?.background;
 
-	const deprecatedBackgroundColor =
-		settings?.[ 'background-color' ] ||
-		defaultSettings?.[ 'background-color' ];
-
 	const textColor =
 		paletteColors.find(
 			( color ) =>
@@ -180,9 +176,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		)?.color ||
 		settings?.styles?.color?.text ||
 		defaultSettings?.styles?.color?.text;
-
-	const deprecatedTextColor =
-		settings?.[ 'text-color' ] || defaultSettings?.[ 'text-color' ];
 
 	const linkColor =
 		paletteColors.find(
@@ -435,10 +428,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									data-unitone-layout="decorator -padding:1 -typography:em"
 									style={ {
 										'--unitone--background-color':
-											backgroundColor ||
-											deprecatedBackgroundColor,
-										'--unitone--color':
-											textColor || deprecatedTextColor,
+											backgroundColor,
+										'--unitone--color': textColor,
 										'--unitone--border-color':
 											'var(--unitone--color--light-gray)',
 										'--unitone--border-width': '1px',
@@ -487,14 +478,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 												'Background Color',
 												'unitone'
 											),
-											colorValue:
-												backgroundColor ||
-												deprecatedBackgroundColor,
+											colorValue: backgroundColor,
 											onColorChange: ( newSetting ) =>
 												setSettings( {
 													...settings,
-													'background-color':
-														newSetting, // Deprecated.
 													styles: {
 														...settings?.styles,
 														color: {
@@ -512,13 +499,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 												'Text Color',
 												'unitone'
 											),
-											colorValue:
-												textColor ||
-												deprecatedTextColor,
+											colorValue: textColor,
 											onColorChange: ( newSetting ) =>
 												setSettings( {
 													...settings,
-													'text-color': newSetting, // Deprecated.
 													styles: {
 														...settings?.styles,
 														color: {

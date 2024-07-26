@@ -260,50 +260,39 @@ class Manager {
 						// The new settings are sent only in difference.
 						// Therefore, there are merged with the stored settings and saved as new settings.
 
-						$new_settings = static::_remove_nulls(
-							array_replace_recursive(
-								$saved_settings,
-								array_filter(
-									$settings,
-									function ( $key ) {
-										return ! in_array( $key, array( 'styles', 'settings' ), true );
-									},
-									ARRAY_FILTER_USE_KEY
-								),
-							)
+						$new_settings = array_replace_recursive(
+							$saved_settings,
+							array_filter(
+								$settings,
+								function ( $key ) {
+									return ! in_array( $key, array( 'styles', 'settings' ), true );
+								},
+								ARRAY_FILTER_USE_KEY
+							),
 						);
-						$new_settings = static::_remove_nulls(
+						$new_settings =
 							array_replace_recursive(
 								$default_settings,
 								$new_settings
-							)
+							);
+
+						$new_global_styles = array_replace_recursive(
+							$saved_global_styles,
+							array( 'styles' => $settings['styles'] ?? array() ),
+							array( 'settings' => $settings['settings'] ?? array() )
+						);
+						$new_global_styles = array_replace_recursive(
+							$default_global_styles,
+							$new_global_styles
 						);
 
-						$new_global_styles = static::_remove_nulls(
-							array_replace_recursive(
-								$saved_global_styles,
-								array( 'styles' => $settings['styles'] ?? array() ),
-								array( 'settings' => $settings['settings'] ?? array() )
-							)
+						$new_options = array_replace_recursive(
+							$saved_options,
+							$settings,
 						);
-						$new_global_styles = static::_remove_nulls(
-							array_replace_recursive(
-								$default_global_styles,
-								$new_global_styles
-							)
-						);
-
-						$new_options = static::_remove_nulls(
-							array_replace_recursive(
-								$saved_options,
-								$settings,
-							)
-						);
-						$new_options = static::_remove_nulls(
-							array_replace_recursive(
-								$default_options,
-								$new_options
-							)
+						$new_options = array_replace_recursive(
+							$default_options,
+							$new_options
 						);
 
 						Settings::update_settings( static::_convert_preset_value( $new_settings ) );
@@ -588,29 +577,6 @@ class Manager {
 	 */
 	public static function get_custom_templates() {
 		return Settings::get_custom_templates();
-	}
-
-	/**
-	 * Removes arrays from multidimensional arrays from null and so on.
-	 *
-	 * @param array $source Array.
-	 * @return array
-	 */
-	protected static function _remove_nulls( array $source ) {
-		$result = array();
-
-		foreach ( $source as $key => $value ) {
-			if ( is_array( $value ) ) {
-				$filtered_array = static::_remove_nulls( $value );
-				if ( $filtered_array ) {
-					$result[ $key ] = $filtered_array;
-				}
-			} elseif ( ! is_null( $value ) ) {
-				$result[ $key ] = $value;
-			}
-		}
-
-		return $result;
 	}
 
 	/**

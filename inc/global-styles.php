@@ -30,17 +30,28 @@ function apply_css_vars_from_settings() {
 		return 'var(--wp--preset--' . $match[1] . '--' . $match[2] . ')';
 	};
 
-	$deprecated_background_color = Manager::get_setting( 'background-color' );
-	$deprecated_text_color       = Manager::get_setting( 'text-color' );
+	$deprecated_font_family      = Manager::get_setting( 'font-family' );
+	$deprecated_font_family      = $deprecated_font_family && $get_preset_style_css_var( $deprecated_font_family ) === $deprecated_font_family
+		? 'var(--wp--preset--font-family--' . $deprecated_font_family . ')'
+		: $deprecated_font_family;
+	$deprecated_content_size     = Manager::get_setting( 'content-size' );
+	$deprecated_wide_size        = Manager::get_setting( 'wide-size' );
+	$deprecated_background_color = $get_preset_style_css_var( Manager::get_setting( 'background-color' ) );
+	$deprecated_text_color       = $get_preset_style_css_var( Manager::get_setting( 'text-color' ) );
 
-	$font_family      = Manager::get_setting( 'styles' )['typography']['fontFamily'] ?? null;
+	$font_family      = $get_preset_style_css_var( Manager::get_setting( 'styles' )['typography']['fontFamily'] );
+	$font_family      = $deprecated_font_family ? $deprecated_font_family : $font_family; // Deprecated.
 	$base_font_size   = Manager::get_setting( 'base-font-size' );
 	$half_leading     = Manager::get_setting( 'half-leading' );
-	$content_size     = Manager::get_setting( 'settings' )['layout']['contentSize'] ?? null;
-	$wide_size        = Manager::get_setting( 'settings' )['layout']['wideSize'] ?? null;
+	$content_size     = Manager::get_setting( 'settings' )['layout']['contentSize'];
+	$content_size     = $deprecated_content_size ? $deprecated_content_size : $content_size; // Deprecated.
+	$wide_size        = Manager::get_setting( 'settings' )['layout']['wideSize'];
+	$wide_size        = $deprecated_wide_size ? $deprecated_wide_size : $wide_size; // Deprecated.
 	$accent_color     = Manager::get_setting( 'accent-color' );
-	$background_color = $get_preset_style_css_var( Manager::get_setting( 'styles' )['color']['background'] ?? $deprecated_background_color ?? null );
-	$text_color       = $get_preset_style_css_var( Manager::get_setting( 'styles' )['color']['text'] ?? $deprecated_text_color ?? null );
+	$background_color = $get_preset_style_css_var( Manager::get_setting( 'styles' )['color']['background'] );
+	$background_color = $deprecated_background_color ? $deprecated_background_color : $background_color; // Deprecated.
+	$text_color       = $get_preset_style_css_var( Manager::get_setting( 'styles' )['color']['text'] );
+	$text_color       = $deprecated_text_color ? $deprecated_text_color : $text_color; // Deprecated.
 	$h2_size          = Manager::get_setting( 'h2-size' );
 	$h3_size          = Manager::get_setting( 'h3-size' );
 	$h4_size          = Manager::get_setting( 'h4-size' );

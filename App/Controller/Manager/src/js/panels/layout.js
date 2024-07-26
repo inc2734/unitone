@@ -16,6 +16,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			path: '/unitone/v1/settings',
 			method: 'POST',
 			data: {
+				'content-size': null, // Deprecated.
+				'wide-size': null, // Deprecated.
 				settings: {
 					layout: {
 						contentSize:
@@ -33,6 +35,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		setSettingsSaving( true );
 		setSettings( {
 			...settings,
+			'content-size': null, // Deprecated.
+			'wide-size': null, // Deprecated.
 			settings: {
 				...settings?.settings,
 				layout: {
@@ -46,6 +50,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			path: '/unitone/v1/settings',
 			method: 'POST',
 			data: {
+				'content-size': null, // Deprecated.
+				'wide-size': null, // Deprecated.
 				settings: {
 					layout: {
 						contentSize: null,

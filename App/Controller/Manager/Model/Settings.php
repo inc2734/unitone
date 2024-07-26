@@ -30,11 +30,14 @@ class Settings {
 		'h4-size'                   => '1',
 		'h5-size'                   => '0',
 		'h6-size'                   => '0',
-		'accent-color'              => '#090a0b', // = settings.color.palette > unitone-accent
-		'background-color'          => '#fff',    // = Deprecated. settings.color.palette > unitone-background, unitone-text-alt
-		'text-color'                => '#222',    // = Deprecated. settings.color.palette > unitone-text, unitone-background-alt
+		'accent-color'              => '#090a0b', // settings.color.palette > unitone-accent.
 		'enabled-custom-templates'  => array(),
 		'wp-oembed-blog-card-style' => 'default',
+		'font-family'               => null, // Deprecated.
+		'background-color'          => null, // Deprecated.
+		'text-color'                => null, // Deprecated.
+		'content-size'              => null, // Deprecated.
+		'wide-size'                 => null, // Deprecated.
 	);
 
 	/**
@@ -126,7 +129,7 @@ class Settings {
 		$settings = get_option( self::SETTINGS_NAME );
 
 		return is_array( $settings )
-			? $settings
+			? static::_remove_nulls( $settings )
 			: array();
 	}
 
@@ -180,9 +183,11 @@ class Settings {
 
 		update_option(
 			self::SETTINGS_NAME,
-			static::_array_override_recursive(
-				static::$default_settings,
-				$settings
+			static::_remove_nulls(
+				static::_array_override_recursive(
+					static::$default_settings,
+					$settings
+				)
 			)
 		);
 	}
@@ -202,16 +207,18 @@ class Settings {
 		$json_global_styles = $user_cpt['post_content'];
 		$global_styles      = json_decode( $json_global_styles, true ) ?? array();
 
-		$new_global_styles = array_replace_recursive(
-			array(
-				'version'                     => 3,
-				'isGlobalStylesUserThemeJSON' => true,
-			),
-			$global_styles,
-			static::_array_override_recursive(
-				static::$default_global_styles,
-				$settings
-			),
+		$new_global_styles = static::_remove_nulls(
+			array_replace_recursive(
+				array(
+					'version'                     => 3,
+					'isGlobalStylesUserThemeJSON' => true,
+				),
+				$global_styles,
+				static::_array_override_recursive(
+					static::$default_global_styles,
+					$settings
+				),
+			)
 		);
 
 		wp_update_post(

@@ -9,19 +9,14 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 export function useIsPositionDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.position' );
 }
 
-export function PositionEdit( props ) {
-	const {
-		name,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function PositionEditPure( { name, attributes: { unitone }, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.position;
@@ -411,6 +406,8 @@ export function PositionEdit( props ) {
 		</ToolsPanel>
 	);
 }
+
+export const PositionEdit = memo( PositionEditPure );
 
 export function savePositionProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.position' ) ) {

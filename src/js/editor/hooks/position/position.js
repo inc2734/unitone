@@ -1,4 +1,5 @@
 import { InspectorControls } from '@wordpress/block-editor';
+import { memo } from '@wordpress/element';
 
 import {
 	useIsPositionDisabled,
@@ -8,8 +9,8 @@ import {
 
 export { editPositionProp };
 
-export function PositionPanel( props ) {
-	const isPositionDisabled = useIsPositionDisabled( props );
+function PositionPanelPure( props ) {
+	const isPositionDisabled = useIsPositionDisabled( { ...props } );
 
 	if ( isPositionDisabled ) {
 		return null;
@@ -25,3 +26,5 @@ export function PositionPanel( props ) {
 		</>
 	);
 }
+
+export const PositionPanel = memo( PositionPanelPure );

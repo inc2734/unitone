@@ -1,11 +1,10 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-export function hasFlexBasisValue( props ) {
-	const { name, attributes } = props;
-
+export function hasFlexBasisValue( { name, attributes } ) {
 	const defaultValue =
 		null != attributes?.__unstableUnitoneSupports?.flexBasis?.default
 			? attributes?.__unstableUnitoneSupports?.flexBasis?.default
@@ -17,9 +16,7 @@ export function hasFlexBasisValue( props ) {
 		: attributes?.unitone?.flexBasis !== undefined;
 }
 
-export function resetFlexBasis( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetFlexBasis( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.flexBasis;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -48,25 +45,21 @@ export function useIsFlexBasisDisabled( {
 	);
 }
 
-export function getFlexBasisEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getFlexBasisEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.flexBasis?.label ||
 		__( 'Recommended width', 'unitone' )
 	);
 }
 
-export function FlexBasisEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone, __unstableUnitoneSupports },
-		setAttributes,
-	} = props;
-
+function FlexBasisEditPure( {
+	name,
+	label,
+	attributes: { unitone, __unstableUnitoneSupports },
+	setAttributes,
+} ) {
 	let defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.flexBasis;
@@ -101,6 +94,8 @@ export function FlexBasisEdit( props ) {
 		/>
 	);
 }
+
+export const FlexBasisEdit = memo( FlexBasisEditPure );
 
 export function saveFlexBasisProp( extraProps, blockType, attributes ) {
 	if (

@@ -13,6 +13,7 @@ import {
 
 import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
@@ -43,19 +44,22 @@ const alignSelfOptions = [
 	},
 ];
 
-function getDefaultValue( props ) {
-	const { name, attributes } = props;
+function getDefaultValue( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.alignSelf;
 
-	return null != attributes?.__unstableUnitoneSupports?.alignSelf?.default
-		? attributes?.__unstableUnitoneSupports?.alignSelf?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.alignSelf;
+	return null != __unstableUnitoneSupports?.alignSelf?.default
+		? __unstableUnitoneSupports?.alignSelf?.default
+		: defaultValue;
 }
 
-function getIsResponsive( props ) {
-	const { name, attributes } = props;
-	const { __unstableUnitoneSupports } = attributes;
-
+function getIsResponsive( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		getBlockSupport( name, 'unitone.alignSelf.responsive' ) ||
 		__unstableUnitoneSupports?.alignSelf?.responsive ||
@@ -63,10 +67,10 @@ function getIsResponsive( props ) {
 	);
 }
 
-function useDefaultValue( props ) {
-	const { name, attributes } = props;
-	const { __unstableUnitoneSupports } = attributes;
-
+function useDefaultValue( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.alignSelf;
@@ -77,10 +81,8 @@ function useDefaultValue( props ) {
 		: defaultValue;
 }
 
-export function hasAlignSelfValue( props ) {
-	const { attributes } = props;
-
-	const defaultValue = getDefaultValue( props );
+export function hasAlignSelfValue( { name, attributes } ) {
+	const defaultValue = getDefaultValue( { name, attributes } );
 
 	return null != defaultValue
 		? JSON.stringify( attributes?.unitone?.alignSelf ) !==
@@ -88,14 +90,12 @@ export function hasAlignSelfValue( props ) {
 		: attributes?.unitone?.alignSelf !== undefined;
 }
 
-export function resetAlignSelf( props ) {
-	const { attributes, setAttributes } = props;
-
+export function resetAlignSelf( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.alignSelf;
 
 	const newUnitone = cleanEmptyObject( {
 		...attributes?.unitone,
-		alignSelf: getDefaultValue( props ) || undefined,
+		alignSelf: getDefaultValue( { name, attributes } ) || undefined,
 	} );
 
 	setAttributes( {
@@ -113,15 +113,20 @@ export function useIsAlignSelfDisabled( {
 	);
 }
 
-export function AlignSelfToolbar( props ) {
-	const {
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function AlignSelfToolbar( {
+	name,
+	attributes: { unitone, __unstableUnitoneSupports },
+	setAttributes,
+} ) {
 	const deviceType = useDeviceType();
-	const isResponsive = getIsResponsive( props );
-	const defaultValue = useDefaultValue( props );
+	const isResponsive = getIsResponsive( {
+		name,
+		attributes: { __unstableUnitoneSupports },
+	} );
+	const defaultValue = useDefaultValue( {
+		name,
+		attributes: { __unstableUnitoneSupports },
+	} );
 
 	const onChangeAlignSelf = ( newValue ) => {
 		if ( null == newValue ) {
@@ -220,26 +225,29 @@ export function AlignSelfToolbar( props ) {
 	);
 }
 
-export function getAlignSelfEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getAlignSelfEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.alignSelf?.label ||
 		__( 'Align self', 'unitone' )
 	);
 }
 
-export function AlignSelfEdit( props ) {
-	const {
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
-	const isResponsive = getIsResponsive( props );
-	const defaultValue = useDefaultValue( props );
+function AlignSelfEditPure( {
+	name,
+	label,
+	attributes: { unitone, __unstableUnitoneSupports },
+	setAttributes,
+} ) {
+	const isResponsive = getIsResponsive( {
+		name,
+		attributes: { __unstableUnitoneSupports },
+	} );
+	const defaultValue = useDefaultValue( {
+		name,
+		attributes: { __unstableUnitoneSupports },
+	} );
 	const fallbackValue =
 		typeof unitone?.alignSelf === 'string' ? unitone?.alignSelf : undefined;
 
@@ -413,6 +421,8 @@ export function AlignSelfEdit( props ) {
 		</fieldset>
 	);
 }
+
+export const AlignSelfEdit = memo( AlignSelfEditPure );
 
 export function saveAlignSelfProp( extraProps, blockType, attributes ) {
 	if (

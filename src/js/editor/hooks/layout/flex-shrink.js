@@ -1,11 +1,10 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-export function hasFlexShrinkValue( props ) {
-	const { name, attributes } = props;
-
+export function hasFlexShrinkValue( { name, attributes } ) {
 	const defaultValue =
 		null != attributes?.__unstableUnitoneSupports?.flexShrink?.default
 			? attributes?.__unstableUnitoneSupports?.flexShrink?.default
@@ -17,9 +16,7 @@ export function hasFlexShrinkValue( props ) {
 		: attributes?.unitone?.flexShrink !== undefined;
 }
 
-export function resetFlexShrink( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetFlexShrink( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.flexShrink;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -48,24 +45,20 @@ export function useIsFlexShrinkDisabled( {
 	);
 }
 
-export function getFlexShrinkEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getFlexShrinkEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.flexShrink?.label || __( 'Fit', 'unitone' )
 	);
 }
 
-export function FlexShrinkEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone, __unstableUnitoneSupports },
-		setAttributes,
-	} = props;
-
+function FlexShrinkEditPure( {
+	name,
+	label,
+	attributes: { unitone, __unstableUnitoneSupports },
+	setAttributes,
+} ) {
 	let defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.flexShrink;
@@ -114,6 +107,8 @@ export function FlexShrinkEdit( props ) {
 		/>
 	);
 }
+
+export const FlexShrinkEdit = memo( FlexShrinkEditPure );
 
 export function saveFlexShrinkProp( extraProps, blockType, attributes ) {
 	if (

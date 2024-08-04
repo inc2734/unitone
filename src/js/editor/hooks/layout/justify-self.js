@@ -20,6 +20,7 @@ import {
 
 import { JustifyToolbar } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
@@ -49,19 +50,22 @@ const justifySelfOptions = [
 	},
 ];
 
-function getDefaultValue( props ) {
-	const { name, attributes } = props;
+function getDefaultValue( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.justifySelf;
 
-	return null != attributes?.__unstableUnitoneSupports?.justifySelf?.default
-		? attributes?.__unstableUnitoneSupports?.justifySelf?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.justifySelf;
+	return null != __unstableUnitoneSupports?.justifySelf?.default
+		? __unstableUnitoneSupports?.justifySelf?.default
+		: defaultValue;
 }
 
-function getIsResponsive( props ) {
-	const { name, attributes } = props;
-	const { __unstableUnitoneSupports } = attributes;
-
+function getIsResponsive( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		getBlockSupport( name, 'unitone.justifySelf.responsive' ) ||
 		__unstableUnitoneSupports?.justifySelf?.responsive ||
@@ -69,10 +73,10 @@ function getIsResponsive( props ) {
 	);
 }
 
-function useDefaultValue( props ) {
-	const { name, attributes } = props;
-	const { __unstableUnitoneSupports } = attributes;
-
+function useDefaultValue( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifySelf;
@@ -83,10 +87,8 @@ function useDefaultValue( props ) {
 		: defaultValue;
 }
 
-export function hasJustifySelfValue( props ) {
-	const { attributes } = props;
-
-	const defaultValue = getDefaultValue( props );
+export function hasJustifySelfValue( { name, attributes } ) {
+	const defaultValue = getDefaultValue( { name, attributes } );
 
 	return null != defaultValue
 		? JSON.stringify( attributes?.unitone?.justifySelf ) !==
@@ -94,14 +96,12 @@ export function hasJustifySelfValue( props ) {
 		: attributes?.unitone?.justifySelf !== undefined;
 }
 
-export function resetJustifySelf( props ) {
-	const { attributes, setAttributes } = props;
-
+export function resetJustifySelf( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.justifySelf;
 
 	const newUnitone = cleanEmptyObject( {
 		...attributes?.unitone,
-		justifySelf: getDefaultValue( props ) || undefined,
+		justifySelf: getDefaultValue( { name, attributes } ) || undefined,
 	} );
 
 	setAttributes( {
@@ -119,15 +119,20 @@ export function useIsJustifySelfDisabled( {
 	);
 }
 
-export function JustifySelfToolbar( props ) {
-	const {
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function JustifySelfToolbar( {
+	name,
+	attributes: { unitone, __unstableUnitoneSupports },
+	setAttributes,
+} ) {
 	const deviceType = useDeviceType();
-	const isResponsive = getIsResponsive( props );
-	const defaultValue = useDefaultValue( props );
+	const isResponsive = getIsResponsive( {
+		name,
+		attributes: { __unstableUnitoneSupports },
+	} );
+	const defaultValue = useDefaultValue( {
+		name,
+		attributes: { __unstableUnitoneSupports },
+	} );
 
 	const onChangeJustifySelf = ( newValue ) => {
 		if ( null == newValue ) {
@@ -228,26 +233,29 @@ export function JustifySelfToolbar( props ) {
 	);
 }
 
-export function getJustifySelfEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getJustifySelfEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.justifySelf?.label ||
 		__( 'Justify self', 'unitone' )
 	);
 }
 
-export function JustifySelfEdit( props ) {
-	const {
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
-	const isResponsive = getIsResponsive( props );
-	const defaultValue = useDefaultValue( props );
+function JustifySelfEditPure( {
+	name,
+	label,
+	attributes: { unitone, __unstableUnitoneSupports },
+	setAttributes,
+} ) {
+	const isResponsive = getIsResponsive( {
+		name,
+		attributes: { __unstableUnitoneSupports },
+	} );
+	const defaultValue = useDefaultValue( {
+		name,
+		attributes: { __unstableUnitoneSupports },
+	} );
 	const fallbackValue =
 		typeof unitone?.justifySelf === 'string'
 			? unitone?.justifySelf
@@ -423,6 +431,8 @@ export function JustifySelfEdit( props ) {
 		</fieldset>
 	);
 }
+
+export const JustifySelfEdit = memo( JustifySelfEditPure );
 
 export function saveJustifySelfProp( extraProps, blockType, attributes ) {
 	if (

@@ -8,6 +8,7 @@ import {
 import { JustifyToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -42,9 +43,7 @@ const justifyContentColumnOptions = [
 	},
 ];
 
-export function hasJustifyContentColumnValue( props ) {
-	const { name, attributes } = props;
-
+export function hasJustifyContentColumnValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.justifyContent;
 
@@ -53,9 +52,11 @@ export function hasJustifyContentColumnValue( props ) {
 		: attributes?.unitone?.justifyContent !== undefined;
 }
 
-export function resetJustifyContentColumn( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetJustifyContentColumn( {
+	name,
+	attributes,
+	setAttributes,
+} ) {
 	delete attributes?.unitone?.justifyContent;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -75,13 +76,11 @@ export function useIsJustifyContentColumnDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.justifyContentColumn' );
 }
 
-export function JustifyContentColumnToolbar( props ) {
-	const {
-		name,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function JustifyContentColumnToolbar( {
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifyContent;
@@ -116,25 +115,21 @@ export function JustifyContentColumnToolbar( props ) {
 	);
 }
 
-export function getJustifyContentColumnEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getJustifyContentColumnEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.justifyContent?.label ||
 		__( 'Align items', 'unitone' )
 	);
 }
 
-export function JustifyContentColumnEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function JustifyContentColumnEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifyContent;
@@ -184,6 +179,8 @@ export function JustifyContentColumnEdit( props ) {
 		</fieldset>
 	);
 }
+
+export const JustifyContentColumnEdit = memo( JustifyContentColumnEditPure );
 
 export function saveJustifyContentColumnProp(
 	extraProps,

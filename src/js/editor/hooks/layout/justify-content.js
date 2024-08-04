@@ -15,6 +15,7 @@ import {
 import { JustifyToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { physicalToLogical, logicalToPhysical } from '../../../helper';
@@ -42,9 +43,7 @@ const justifyContentOptions = [
 	},
 ];
 
-export function hasJustifyContentValue( props ) {
-	const { name, attributes } = props;
-
+export function hasJustifyContentValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.justifyContent;
 
@@ -53,9 +52,7 @@ export function hasJustifyContentValue( props ) {
 		: attributes?.unitone?.justifyContent !== undefined;
 }
 
-export function resetJustifyContent( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetJustifyContent( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.justifyContent;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -75,13 +72,11 @@ export function useIsJustifyContentDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.justifyContent' );
 }
 
-export function JustifyContentToolbar( props ) {
-	const {
-		name,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function JustifyContentToolbar( {
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifyContent;
@@ -127,14 +122,12 @@ export function getJustifyContentEditLabel( props ) {
 	);
 }
 
-export function JustifyContentEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function JustifyContentEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifyContent;
@@ -184,6 +177,8 @@ export function JustifyContentEdit( props ) {
 		</fieldset>
 	);
 }
+
+export const JustifyContentEdit = memo( JustifyContentEditPure );
 
 export function saveJustifyContentProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.justifyContent' ) ) {

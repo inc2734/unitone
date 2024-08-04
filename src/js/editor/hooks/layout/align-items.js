@@ -8,6 +8,7 @@ import {
 import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
@@ -36,9 +37,7 @@ const alignItemsOptions = [
 	},
 ];
 
-export function hasAlignItemsValue( props ) {
-	const { name, attributes } = props;
-
+export function hasAlignItemsValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.alignItems;
 
@@ -47,9 +46,7 @@ export function hasAlignItemsValue( props ) {
 		: attributes?.unitone?.alignItems !== undefined;
 }
 
-export function resetAlignItems( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetAlignItems( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.alignItems;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -69,13 +66,11 @@ export function useIsAlignItemsDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.alignItems' );
 }
 
-export function AlignItemsToolbar( props ) {
-	const {
-		name,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function AlignItemsToolbar( {
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.alignItems;
@@ -108,25 +103,21 @@ export function AlignItemsToolbar( props ) {
 	);
 }
 
-export function getAlignItemsEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getAlignItemsEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.alignItems?.label ||
 		__( 'Align items', 'unitone' )
 	);
 }
 
-export function AlignItemsEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function AlignItemsEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.alignItems;
@@ -178,6 +169,8 @@ export function AlignItemsEdit( props ) {
 		</fieldset>
 	);
 }
+
+export const AlignItemsEdit = memo( AlignItemsEditPure );
 
 export function saveAlignItemsProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.alignItems' ) ) {

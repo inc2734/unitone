@@ -6,24 +6,28 @@ import {
 
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-function getDefaultValue( props ) {
-	const { name, attributes } = props;
+function getDefaultValue( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.gridRow;
 
-	return null != attributes?.__unstableUnitoneSupports?.gridRow?.default
-		? attributes?.__unstableUnitoneSupports?.gridRow?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.gridRow;
+	return null != __unstableUnitoneSupports?.gridRow?.default
+		? __unstableUnitoneSupports?.gridRow?.default
+		: defaultValue;
 }
 
-function getIsResponsive( props ) {
-	const { name, attributes } = props;
-	const { __unstableUnitoneSupports } = attributes;
-
+function getIsResponsive( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		getBlockSupport( name, 'unitone.gridRow.responsive' ) ||
 		__unstableUnitoneSupports?.gridRow?.responsive ||
@@ -31,10 +35,10 @@ function getIsResponsive( props ) {
 	);
 }
 
-function useDefaultValue( props ) {
-	const { name, attributes } = props;
-	const { __unstableUnitoneSupports } = attributes;
-
+function useDefaultValue( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.gridRow;
@@ -45,10 +49,8 @@ function useDefaultValue( props ) {
 		: defaultValue;
 }
 
-export function hasGridRowValue( props ) {
-	const { attributes } = props;
-
-	const defaultValue = getDefaultValue( props );
+export function hasGridRowValue( { name, attributes } ) {
+	const defaultValue = getDefaultValue( { name, attributes } );
 
 	return null != defaultValue
 		? JSON.stringify( attributes?.unitone?.gridRow ) !==
@@ -56,14 +58,12 @@ export function hasGridRowValue( props ) {
 		: attributes?.unitone?.gridRow !== undefined;
 }
 
-export function resetGridRow( props ) {
-	const { attributes, setAttributes } = props;
-
+export function resetGridRow( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.gridRow;
 
 	const newUnitone = cleanEmptyObject( {
 		...attributes?.unitone,
-		gridRow: getDefaultValue( props ) || undefined,
+		gridRow: getDefaultValue( { name, attributes } ) || undefined,
 	} );
 
 	setAttributes( {
@@ -81,27 +81,30 @@ export function useIsGridRowDisabled( {
 	);
 }
 
-export function getGridRowEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getGridRowEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.gridRow?.label ||
 		__( "A grid item's size and location within the grid row", 'unitone' )
 	);
 }
 
-export function GridRowEdit( props ) {
-	const {
-		label,
-		help,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
-	const isResponsive = getIsResponsive( props );
-	const defaultValue = useDefaultValue( props );
+function GridRowEditPure( {
+	name,
+	label,
+	help,
+	attributes: { unitone, __unstableUnitoneSupports },
+	setAttributes,
+} ) {
+	const isResponsive = getIsResponsive( {
+		name,
+		attributes: { __unstableUnitoneSupports },
+	} );
+	const defaultValue = useDefaultValue( {
+		name,
+		attributes: { __unstableUnitoneSupports },
+	} );
 	const fallbackValue =
 		typeof unitone?.gridRow === 'string' ? unitone?.gridRow : undefined;
 
@@ -225,6 +228,8 @@ export function GridRowEdit( props ) {
 		/>
 	);
 }
+
+export const GridRowEdit = memo( GridRowEditPure );
 
 export function saveGridRowProp( extraProps, blockType, attributes ) {
 	if (

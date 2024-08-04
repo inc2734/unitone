@@ -1,11 +1,10 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-export function hasMinHeightValue( props ) {
-	const { name, attributes } = props;
-
+export function hasMinHeightValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.minHeight;
 
@@ -14,9 +13,7 @@ export function hasMinHeightValue( props ) {
 		: attributes?.unitone?.minHeight !== undefined;
 }
 
-export function resetMinHeight( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetMinHeight( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.minHeight;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -53,14 +50,12 @@ export function getMinHeightEditLabel( props ) {
 	);
 }
 
-export function MinHeightEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function MinHeightEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.minHeight;
@@ -92,6 +87,8 @@ export function MinHeightEdit( props ) {
 		/>
 	);
 }
+
+export const MinHeightEdit = memo( MinHeightEditPure );
 
 export function saveMinHeightProp( extraProps, blockType, attributes ) {
 	if (

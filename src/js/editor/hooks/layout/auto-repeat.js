@@ -3,6 +3,7 @@ import classnames from 'classnames/dedupe';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const autoRepeatOptions = [
@@ -24,9 +25,7 @@ export function useIsAutoRepeatDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.autoRepeat' );
 }
 
-export function hasAutoRepeatValue( props ) {
-	const { name, attributes } = props;
-
+export function hasAutoRepeatValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.autoRepeat;
 
@@ -35,9 +34,7 @@ export function hasAutoRepeatValue( props ) {
 		: attributes?.unitone?.autoRepeat !== undefined;
 }
 
-export function resetAutoRepeat( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetAutoRepeat( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.autoRepeat;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -53,25 +50,21 @@ export function resetAutoRepeat( props ) {
 	} );
 }
 
-export function getAutoRepeatEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getAutoRepeatEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.autoRepeat?.label ||
 		__( 'Auto repeat', 'unitone' )
 	);
 }
 
-export function AutoRepeatEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function AutoRepeatEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.autoRepeat;
@@ -104,6 +97,8 @@ export function AutoRepeatEdit( props ) {
 		/>
 	);
 }
+
+export const AutoRepeatEdit = memo( AutoRepeatEditPure );
 
 export function saveAutoRepeatProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.autoRepeat' ) ) {

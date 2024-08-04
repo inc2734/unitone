@@ -9,15 +9,13 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { memo, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { settings as settingsIcon } from '@wordpress/icons';
 
 // import { getGlobalStyleCssVar, isValueGlobalStyle } from '../utils';
 
-export function hasMaxWidthValue( props ) {
-	const { name, attributes } = props;
-
+export function hasMaxWidthValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.maxWidth;
 
@@ -26,9 +24,7 @@ export function hasMaxWidthValue( props ) {
 		: attributes?.unitone?.maxWidth !== undefined;
 }
 
-export function resetMaxWidth( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetMaxWidth( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.maxWidth;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -54,25 +50,21 @@ export function useIsMaxWidthDisabled( {
 	);
 }
 
-export function getMaxWidthEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getMaxWidthEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.maxWidth?.label ||
 		__( 'Max width', 'unitone' )
 	);
 }
 
-export function MaxWidthEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function MaxWidthEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.maxWidth;
@@ -161,6 +153,8 @@ export function MaxWidthEdit( props ) {
 		</BaseControl>
 	);
 }
+
+export const MaxWidthEdit = memo( MaxWidthEditPure );
 
 export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 	if (

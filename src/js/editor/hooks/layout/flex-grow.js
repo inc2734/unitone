@@ -1,11 +1,10 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-export function hasFlexGrowValue( props ) {
-	const { name, attributes } = props;
-
+export function hasFlexGrowValue( { name, attributes } ) {
 	const defaultValue =
 		null != attributes?.__unstableUnitoneSupports?.flexGrow?.default
 			? attributes?.__unstableUnitoneSupports?.flexGrow?.default
@@ -17,9 +16,7 @@ export function hasFlexGrowValue( props ) {
 		: attributes?.unitone?.flexGrow !== undefined;
 }
 
-export function resetFlexGrow( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetFlexGrow( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.flexGrow;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -48,24 +45,20 @@ export function useIsFlexGrowDisabled( {
 	);
 }
 
-export function getFlexGrowEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getFlexGrowEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.flexGrow?.label || __( 'Fill', 'unitone' )
 	);
 }
 
-export function FlexGrowEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone, __unstableUnitoneSupports },
-		setAttributes,
-	} = props;
-
+function FlexGrowEditPure( {
+	name,
+	label,
+	attributes: { unitone, __unstableUnitoneSupports },
+	setAttributes,
+} ) {
 	let defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.flexGrow;
@@ -114,6 +107,8 @@ export function FlexGrowEdit( props ) {
 		/>
 	);
 }
+
+export const FlexGrowEdit = memo( FlexGrowEditPure );
 
 export function saveFlexGrowProp( extraProps, blockType, attributes ) {
 	if (

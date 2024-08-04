@@ -12,14 +12,13 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
+import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-export function hasStairsValue( props ) {
-	const { name, attributes } = props;
-
+export function hasStairsValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.stairs;
 
@@ -28,9 +27,7 @@ export function hasStairsValue( props ) {
 		: attributes?.unitone?.stairs !== undefined;
 }
 
-export function hasStairsUpValue( props ) {
-	const { name, attributes } = props;
-
+export function hasStairsUpValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.stairsUp;
 
@@ -39,9 +36,7 @@ export function hasStairsUpValue( props ) {
 		: attributes?.unitone?.stairsUp !== undefined;
 }
 
-export function resetStairs( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetStairs( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.stairs;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -57,9 +52,7 @@ export function resetStairs( props ) {
 	} );
 }
 
-export function resetStairsUp( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetStairsUp( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.stairsUp;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -75,9 +68,7 @@ export function resetStairsUp( props ) {
 	} );
 }
 
-export function useIsStairsDisabled( props ) {
-	const { name: blockName } = props;
-
+export function useIsStairsDisabled( { name: blockName } = {} ) {
 	if ( ! hasBlockSupport( blockName, 'unitone.stairs' ) ) {
 		return true;
 	}
@@ -90,77 +81,74 @@ export function useIsStairsDisabled( props ) {
 	return true;
 }
 
-export function getStairsEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getStairsEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.stairs?.label ||
 		__( 'Stairs grid', 'unitone' )
 	);
 }
 
-export function StairsEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function StairsEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.stairs;
 	}, [] );
 
+	const onChange = useCallback(
+		( newValue ) => {
+			if ( null == newValue ) {
+				newValue = defaultValue;
+			}
+
+			if ( null != newValue ) {
+				// RangeControl returns Int, SelectControl returns String.
+				// So cast Int all values.
+				newValue = String( newValue );
+			}
+
+			const newUnitone = cleanEmptyObject( {
+				...unitone,
+				stairs: newValue || undefined,
+			} );
+
+			setAttributes( {
+				unitone: newUnitone,
+			} );
+		},
+		[ defaultValue ]
+	);
+
 	return (
 		<SpacingSizeControl
 			label={ label }
 			value={ unitone?.stairs }
-			onChange={ ( newValue ) => {
-				if ( null == newValue ) {
-					newValue = defaultValue;
-				}
-
-				if ( null != newValue ) {
-					// RangeControl returns Int, SelectControl returns String.
-					// So cast Int all values.
-					newValue = String( newValue );
-				}
-
-				const newUnitone = cleanEmptyObject( {
-					...unitone,
-					stairs: newValue || undefined,
-				} );
-
-				setAttributes( {
-					unitone: newUnitone,
-				} );
-			} }
+			onChange={ onChange }
 		/>
 	);
 }
 
-export function getStairsUpEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getStairsUpEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.stairsUp?.label ||
 		__( 'Stairs climbing direction', 'unitone' )
 	);
 }
 
-export function StairsUpEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function StairsUpEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.stairsUp;
@@ -204,6 +192,8 @@ export function StairsUpEdit( props ) {
 		</ToggleGroupControl>
 	);
 }
+
+export const StairsEdit = memo( StairsEditPure );
 
 export function saveStairsProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.stairs' ) ) {

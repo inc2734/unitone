@@ -16,16 +16,14 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { memo, useCallback, useState } from '@wordpress/element';
 import { link, linkOff } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject, isNumber, isString } from '../utils';
 
-export function hasGapValue( props ) {
-	const { name, attributes } = props;
-
+export function hasGapValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.gap;
 
@@ -34,9 +32,7 @@ export function hasGapValue( props ) {
 		: attributes?.unitone?.gap !== undefined;
 }
 
-export function resetGap( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetGap( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.gap;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -52,9 +48,7 @@ export function resetGap( props ) {
 	} );
 }
 
-export function useIsGapDisabled( props ) {
-	const { name: blockName } = props;
-
+export function useIsGapDisabled( { name: blockName, attributes } = {} ) {
 	if ( ! hasBlockSupport( blockName, 'unitone.gap' ) ) {
 		return true;
 	}
@@ -64,7 +58,7 @@ export function useIsGapDisabled( props ) {
 		return false;
 	}
 
-	const className = props.attributes?.className;
+	const className = attributes?.className;
 	if ( !! className ) {
 		return ! className.split( ' ' ).some( ( needle ) => {
 			needle = needle.replace( 'is-style-', '' );
@@ -75,11 +69,9 @@ export function useIsGapDisabled( props ) {
 	return true;
 }
 
-export function getGapEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getGapEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return __unstableUnitoneSupports?.gap?.label || __( 'Gap', 'unitone' );
 }
 
@@ -180,14 +172,12 @@ function IconHorizontal() {
 	);
 }
 
-export function GapEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function GapEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const splitOnAxis =
 		getBlockSupport( name, 'unitone.gap.splitOnAxis' ) || false;
 	const isMixed = unitone?.gap?.column !== unitone?.gap?.row;
@@ -199,98 +189,107 @@ export function GapEdit( props ) {
 			?.default?.gap;
 	}, [] );
 
-	const onChangeGap = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue;
-		}
+	const onChangeGap = useCallback(
+		( newValue ) => {
+			if ( null == newValue ) {
+				newValue = defaultValue;
+			}
 
-		if ( null != newValue ) {
-			// RangeControl returns Int, SelectControl returns String.
-			// So cast Int all values.
-			newValue = String( newValue );
-		}
+			if ( null != newValue ) {
+				// RangeControl returns Int, SelectControl returns String.
+				// So cast Int all values.
+				newValue = String( newValue );
+			}
 
-		const newUnitone = cleanEmptyObject( {
-			...unitone,
-			gap: newValue,
-		} );
+			const newUnitone = cleanEmptyObject( {
+				...unitone,
+				gap: newValue,
+			} );
 
-		setAttributes( {
-			unitone: newUnitone,
-		} );
-	};
+			setAttributes( {
+				unitone: newUnitone,
+			} );
+		},
+		[ defaultValue ]
+	);
 
-	const onChangeColumnGap = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.column || defaultValue;
-		}
+	const onChangeColumnGap = useCallback(
+		( newValue ) => {
+			if ( null == newValue ) {
+				newValue = defaultValue?.column || defaultValue;
+			}
 
-		if ( null != newValue ) {
-			// RangeControl returns Int, SelectControl returns String.
-			// So cast Int all values.
-			newValue = String( newValue );
-		}
+			if ( null != newValue ) {
+				// RangeControl returns Int, SelectControl returns String.
+				// So cast Int all values.
+				newValue = String( newValue );
+			}
 
-		const newUnitone = cleanEmptyObject(
-			newValue === String( unitone?.gap?.row )
-				? {
-						...unitone,
-						gap: newValue,
-				  }
-				: {
-						...unitone,
-						gap: {
-							column: newValue,
-							row:
-								unitone?.gap?.row ||
-								( ( isNumber( unitone?.gap ) ||
-									isString( unitone?.gap ) ) &&
-									unitone?.gap ) ||
-								undefined,
-						},
-				  }
-		);
+			const newUnitone = cleanEmptyObject(
+				newValue === String( unitone?.gap?.row )
+					? {
+							...unitone,
+							gap: newValue,
+					  }
+					: {
+							...unitone,
+							gap: {
+								column: newValue,
+								row:
+									unitone?.gap?.row ||
+									( ( isNumber( unitone?.gap ) ||
+										isString( unitone?.gap ) ) &&
+										unitone?.gap ) ||
+									undefined,
+							},
+					  }
+			);
 
-		setAttributes( {
-			unitone: newUnitone,
-		} );
-	};
+			setAttributes( {
+				unitone: newUnitone,
+			} );
+		},
+		[ defaultValue ]
+	);
 
-	const onChangeRowGap = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.row || defaultValue;
-		}
+	const onChangeRowGap = useCallback(
+		( newValue ) => {
+			if ( null == newValue ) {
+				newValue = defaultValue?.row || defaultValue;
+			}
 
-		if ( null != newValue ) {
-			// RangeControl returns Int, SelectControl returns String.
-			// So cast Int all values.
-			newValue = String( newValue );
-		}
+			if ( null != newValue ) {
+				// RangeControl returns Int, SelectControl returns String.
+				// So cast Int all values.
+				newValue = String( newValue );
+			}
 
-		const newUnitone = cleanEmptyObject(
-			newValue === String( unitone?.gap?.column )
-				? {
-						...unitone,
-						gap: newValue,
-				  }
-				: {
-						...unitone,
-						gap: {
-							row: newValue,
-							column:
-								unitone?.gap?.column ||
-								( ( isNumber( unitone?.gap ) ||
-									isString( unitone?.gap ) ) &&
-									unitone?.gap ) ||
-								undefined,
-						},
-				  }
-		);
+			const newUnitone = cleanEmptyObject(
+				newValue === String( unitone?.gap?.column )
+					? {
+							...unitone,
+							gap: newValue,
+					  }
+					: {
+							...unitone,
+							gap: {
+								row: newValue,
+								column:
+									unitone?.gap?.column ||
+									( ( isNumber( unitone?.gap ) ||
+										isString( unitone?.gap ) ) &&
+										unitone?.gap ) ||
+									undefined,
+							},
+					  }
+			);
 
-		setAttributes( {
-			unitone: newUnitone,
-		} );
-	};
+			setAttributes( {
+				unitone: newUnitone,
+			} );
+		},
+		[ defaultValue ]
+	);
 
 	return (
 		<div className="spacing-sizes-control">
@@ -368,6 +367,8 @@ export function GapEdit( props ) {
 		</div>
 	);
 }
+
+export const GapEdit = memo( GapEditPure );
 
 export function saveGapProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.gap' ) ) {

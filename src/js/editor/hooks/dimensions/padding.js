@@ -5,14 +5,13 @@ import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-export function hasPaddingValue( props ) {
-	const { name, attributes } = props;
-
+export function hasPaddingValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.padding;
 
@@ -21,9 +20,7 @@ export function hasPaddingValue( props ) {
 		: attributes?.unitone?.padding !== undefined;
 }
 
-export function resetPadding( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetPadding( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.padding;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -43,56 +40,59 @@ export function useIsPaddingDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.padding' );
 }
 
-export function getPaddingEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getPaddingEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.padding?.label || __( 'Padding', 'unitone' )
 	);
 }
 
-export function PaddingEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function PaddingEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.padding;
 	}, [] );
 
+	const onChange = useCallback(
+		( newValue ) => {
+			if ( null == newValue ) {
+				newValue = defaultValue;
+			}
+
+			if ( null != newValue ) {
+				// RangeControl returns Int, SelectControl returns String.
+				// So cast Int all values.
+				newValue = String( newValue );
+			}
+
+			const newUnitone = cleanEmptyObject( {
+				...unitone,
+				padding: newValue || undefined,
+			} );
+
+			setAttributes( {
+				unitone: newUnitone,
+			} );
+		},
+		[ defaultValue ]
+	);
+
 	return (
 		<SpacingSizeControl
 			label={ label }
 			value={ unitone?.padding }
-			onChange={ ( newValue ) => {
-				if ( null == newValue ) {
-					newValue = defaultValue;
-				}
-
-				if ( null != newValue ) {
-					// RangeControl returns Int, SelectControl returns String.
-					// So cast Int all values.
-					newValue = String( newValue );
-				}
-
-				const newUnitone = cleanEmptyObject( {
-					...unitone,
-					padding: newValue || undefined,
-				} );
-
-				setAttributes( {
-					unitone: newUnitone,
-				} );
-			} }
+			onChange={ onChange }
 		/>
 	);
 }
+
+export const PaddingEdit = memo( PaddingEditPure );
 
 export function savePaddingProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.padding' ) ) {

@@ -3,14 +3,13 @@ import classnames from 'classnames/dedupe';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { BaseControl, ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-export function hasGuttersValue( props ) {
-	const { name, attributes } = props;
-
+export function hasGuttersValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.gutters;
 
@@ -19,9 +18,7 @@ export function hasGuttersValue( props ) {
 		: attributes?.unitone?.gutters !== undefined;
 }
 
-export function resetGutters( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetGutters( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.gutters;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -41,29 +38,49 @@ export function useIsGuttersDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.gutters' );
 }
 
-export function getGuttersEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getGuttersEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.gutters?.label ||
 		__( 'Margins at both ends', 'unitone' )
 	);
 }
 
-export function GuttersEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function GuttersEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.gutters;
 	}, [] );
+
+	const onChange = useCallback(
+		( newValue ) => {
+			if ( null == newValue ) {
+				newValue = defaultValue;
+			}
+
+			if ( null != newValue ) {
+				// RangeControl returns Int, SelectControl returns String.
+				// So cast Int all values.
+				newValue = String( newValue );
+			}
+
+			const newUnitone = cleanEmptyObject( {
+				...unitone,
+				gutters: newValue || undefined,
+			} );
+
+			setAttributes( {
+				unitone: newUnitone,
+			} );
+		},
+		[ defaultValue ]
+	);
 
 	return (
 		<BaseControl id={ label } label={ label }>
@@ -90,31 +107,14 @@ export function GuttersEdit( props ) {
 			{ 'root' !== unitone?.gutters && (
 				<SpacingSizeControl
 					value={ unitone?.gutters }
-					onChange={ ( newValue ) => {
-						if ( null == newValue ) {
-							newValue = defaultValue;
-						}
-
-						if ( null != newValue ) {
-							// RangeControl returns Int, SelectControl returns String.
-							// So cast Int all values.
-							newValue = String( newValue );
-						}
-
-						const newUnitone = cleanEmptyObject( {
-							...unitone,
-							gutters: newValue || undefined,
-						} );
-
-						setAttributes( {
-							unitone: newUnitone,
-						} );
-					} }
+					onChange={ onChange }
 				/>
 			) }
 		</BaseControl>
 	);
 }
+
+export const GuttersEdit = memo( GuttersEditPure );
 
 export function saveGuttersProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.gutters' ) ) {

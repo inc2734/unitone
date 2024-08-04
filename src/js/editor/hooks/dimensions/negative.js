@@ -3,17 +3,14 @@ import classnames from 'classnames/dedupe';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-export function hasNegativeValue( props ) {
-	const { attributes } = props;
-
+export function hasNegativeValue( { attributes } ) {
 	return !! attributes?.unitone?.negative;
 }
 
-export function resetNegative( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetNegative( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.negative;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -33,25 +30,21 @@ export function useIsNegativeDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.negative' );
 }
 
-export function getNegativeEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getNegativeEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.negative?.label ||
 		__( 'Using negative margin', 'unitone' )
 	);
 }
 
-export function NegativeEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function NegativeEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return !! select( blocksStore ).getBlockType( name )?.attributes
 			?.unitone?.default?.negative;
@@ -81,6 +74,8 @@ export function NegativeEdit( props ) {
 		/>
 	);
 }
+
+export const NegativeEdit = memo( NegativeEditPure );
 
 export function saveNegativeProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.negative' ) ) {

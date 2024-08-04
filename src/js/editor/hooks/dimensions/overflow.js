@@ -3,6 +3,7 @@ import classnames from 'classnames/dedupe';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const overflowOptions = [
@@ -29,9 +30,7 @@ const overflowOptions = [
 	},
 ];
 
-export function hasOverflowValue( props ) {
-	const { name, attributes } = props;
-
+export function hasOverflowValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.overflow;
 
@@ -40,9 +39,7 @@ export function hasOverflowValue( props ) {
 		: attributes?.unitone?.overflow !== undefined;
 }
 
-export function resetOverflow( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetOverflow( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.overflow;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -62,25 +59,21 @@ export function useIsOverflowDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.overflow' );
 }
 
-export function getOverflowEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getOverflowEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.overflow?.label ||
 		__( 'Overflow', 'unitone' )
 	);
 }
 
-export function OverflowEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function OverflowEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.overflow;
@@ -113,6 +106,8 @@ export function OverflowEdit( props ) {
 		/>
 	);
 }
+
+export const OverflowEdit = memo( OverflowEditPure );
 
 export function saveOverflowProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.overflow' ) ) {

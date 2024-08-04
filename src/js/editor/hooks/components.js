@@ -8,7 +8,7 @@ import {
 	RangeControl,
 } from '@wordpress/components';
 
-import { useState, useMemo, useEffect } from '@wordpress/element';
+import { memo, useState, useMemo, useEffect } from '@wordpress/element';
 import { desktop, tablet, mobile } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
@@ -50,7 +50,7 @@ function Controls( { isMixed, value, onChange, marks, options } ) {
 	);
 }
 
-export function SpacingSizeControl( {
+function SpacingSizeControlPure( {
 	options,
 	onChange,
 	label,
@@ -148,6 +148,8 @@ export function SpacingSizeControl( {
 		</>
 	);
 }
+
+export const SpacingSizeControl = memo( SpacingSizeControlPure );
 
 export function ResponsiveSettingsContainer( {
 	label,

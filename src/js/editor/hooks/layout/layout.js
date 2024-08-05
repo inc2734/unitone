@@ -692,4 +692,9 @@ function LayoutPanelPure( props ) {
 	);
 }
 
-export const LayoutPanel = memo( LayoutPanelPure );
+export const LayoutPanel = memo( LayoutPanelPure, ( prevProps, nextProps ) => {
+	return (
+		prevProps.name === nextProps.name &&
+		prevProps.attributes === nextProps.attributes
+	);
+} );

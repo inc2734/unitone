@@ -245,4 +245,12 @@ function DimensionsPanelPure( props ) {
 	);
 }
 
-export const DimensionsPanel = memo( DimensionsPanelPure );
+export const DimensionsPanel = memo(
+	DimensionsPanelPure,
+	( prevProps, nextProps ) => {
+		return (
+			prevProps.name === nextProps.name &&
+			prevProps.attributes === nextProps.attributes
+		);
+	}
+);

@@ -27,4 +27,12 @@ function PositionPanelPure( props ) {
 	);
 }
 
-export const PositionPanel = memo( PositionPanelPure );
+export const PositionPanel = memo(
+	PositionPanelPure,
+	( prevProps, nextProps ) => {
+		return (
+			prevProps.name === nextProps.name &&
+			prevProps.attributes === nextProps.attributes
+		);
+	}
+);

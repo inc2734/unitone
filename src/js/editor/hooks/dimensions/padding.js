@@ -10,7 +10,6 @@ import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject } from '../utils';
-import { next } from '@wordpress/icons';
 
 export function hasPaddingValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )

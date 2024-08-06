@@ -1,5 +1,6 @@
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
+import { memo } from '@wordpress/element';
 
 import {
 	useIsDropShadowDisabled,
@@ -12,7 +13,7 @@ import {
 
 export { editDropShadowProp };
 
-export function DropShadowPanel( props ) {
+function DropShadowPanelPure( props ) {
 	const isDropShadowDisabled = useIsDropShadowDisabled( props );
 
 	if ( isDropShadowDisabled ) {
@@ -47,3 +48,5 @@ export function DropShadowPanel( props ) {
 		</>
 	);
 }
+
+export const DropShadowPanel = memo( DropShadowPanelPure );

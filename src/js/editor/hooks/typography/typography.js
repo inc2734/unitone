@@ -4,6 +4,7 @@
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -32,7 +33,7 @@ import {
 
 export { editAutoPhraseProp, editFluidTypographyProp, editHalfLeadingProp };
 
-export function TypographyPanel( props ) {
+function TypographyPanelPure( props ) {
 	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( props );
 	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( props );
 	const isHalfLeadingDisabled = useIsHalfLeadingDisabled( props );
@@ -99,3 +100,13 @@ export function TypographyPanel( props ) {
 		</>
 	);
 }
+
+export const TypographyPanel = memo(
+	TypographyPanelPure,
+	( prevProps, nextProps ) => {
+		return (
+			prevProps.name === nextProps.name &&
+			prevProps.attributes === nextProps.attributes
+		);
+	}
+);

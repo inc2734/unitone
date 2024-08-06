@@ -1,5 +1,6 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
+import { memo } from '@wordpress/element';
 
 import { isNumber } from '../utils';
 
@@ -20,11 +21,11 @@ export function useIsHalfLeadingDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.halfLeading' );
 }
 
-export function HalfLeadingEdit( props ) {
-	const { label, attributes, setAttributes } = props;
-
-	const { unitone } = attributes;
-
+function HalfLeadingEditPure( {
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	return (
 		<RangeControl
 			label={ label }
@@ -51,6 +52,8 @@ export function HalfLeadingEdit( props ) {
 		/>
 	);
 }
+
+export const HalfLeadingEdit = memo( HalfLeadingEditPure );
 
 export function saveHalfLeadingProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.halfLeading' ) ) {

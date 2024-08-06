@@ -1,6 +1,7 @@
 import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { __experimentalBorderControl as BorderControl } from '@wordpress/components';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -68,9 +69,7 @@ const getDivider = (
 	return divider;
 };
 
-export function hasDividerValue( props ) {
-	const { name, attributes } = props;
-
+export function hasDividerValue( { name, attributes } ) {
 	const dividerDefaultValue = wp.data
 		.select( blocksStore )
 		.getBlockType( name )?.attributes?.unitone?.default?.divider;
@@ -88,14 +87,12 @@ export function hasDividerValue( props ) {
 	}
 
 	return (
-		props.attributes?.unitone?.divider !== undefined ||
-		props.attributes?.unitone?.dividerColor !== undefined
+		attributes?.unitone?.divider !== undefined ||
+		attributes?.unitone?.dividerColor !== undefined
 	);
 }
 
-export function resetDivider( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetDivider( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.divider;
 	delete attributes?.unitone?.dividerColor;
 	const newUnitone = { ...attributes?.unitone };
@@ -125,23 +122,15 @@ export function useIsDividerDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.divider' );
 }
 
-export function getDividerEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getDividerEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.divider?.label || __( 'Divider', 'unitone' )
 	);
 }
 
-export function DividerEdit( props ) {
-	const {
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function DividerEditPure( { label, attributes: { unitone }, setAttributes } ) {
 	const { colors } = useMultipleOriginColorsAndGradients();
 
 	// @see https://github.com/WordPress/gutenberg/blob/trunk/packages/block-editor/src/hooks/border.js
@@ -197,6 +186,8 @@ export function DividerEdit( props ) {
 		/>
 	);
 }
+
+export const DividerEdit = memo( DividerEditPure );
 
 export function saveDividerProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.divider' ) ) {

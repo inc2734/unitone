@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const mixBlendModeOptions = [
@@ -76,9 +77,7 @@ const mixBlendModeOptions = [
 	},
 ];
 
-export function hasMixBlendModeValue( props ) {
-	const { name, attributes } = props;
-
+export function hasMixBlendModeValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.mixBlendMode;
 
@@ -87,9 +86,7 @@ export function hasMixBlendModeValue( props ) {
 		: attributes?.unitone?.mixBlendMode !== undefined;
 }
 
-export function resetMixBlendMode( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetMixBlendMode( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.mixBlendMode;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -115,14 +112,12 @@ export function useIsMixBlendModeDisabled( {
 	);
 }
 
-export function MixBlendModeEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function MixBlendModeEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.mixBlendMode;
@@ -159,6 +154,8 @@ export function MixBlendModeEdit( props ) {
 		/>
 	);
 }
+
+export const MixBlendModeEdit = memo( MixBlendModeEditPure );
 
 export function saveMixBlendModeProp( extraProps, blockType, attributes ) {
 	if (

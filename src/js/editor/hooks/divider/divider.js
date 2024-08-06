@@ -5,6 +5,7 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -28,7 +29,7 @@ import {
 
 export { editDividerTypeProp, saveDividerProp, editDividerProp };
 
-export function DividerPanel( props ) {
+function DividerPanelPure( props ) {
 	const isDividerTypeDisabled = useIsDividerTypeDisabled( props );
 	const isDividerDisabled = useIsDividerDisabled( props );
 
@@ -70,3 +71,5 @@ export function DividerPanel( props ) {
 		</InspectorControls>
 	);
 }
+
+export const DividerPanel = memo( DividerPanelPure );

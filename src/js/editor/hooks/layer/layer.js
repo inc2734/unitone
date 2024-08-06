@@ -7,6 +7,8 @@ import {
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
+
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -19,7 +21,7 @@ import {
 
 export { editMixBlendModeProp };
 
-export function LayerPanel( props ) {
+function LayerPanelPure( props ) {
 	const isMixBlendModeDisabled = useIsMixBlendModeDisabled( props );
 
 	if ( isMixBlendModeDisabled ) {
@@ -53,3 +55,5 @@ export function LayerPanel( props ) {
 		</InspectorControls>
 	);
 }
+
+export const LayerPanel = memo( LayerPanelPure );

@@ -2,6 +2,7 @@ import classnames from 'classnames';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
+import { memo } from '@wordpress/element';
 
 export function hasFluidTypographyValue( props ) {
 	return props.attributes?.unitone?.fluidTypography !== undefined;
@@ -20,13 +21,11 @@ export function useIsFluidTypographyDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.fluidTypography' );
 }
 
-export function FluidTypographyEdit( props ) {
-	const {
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function FluidTypographyEditPure( {
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	return (
 		<ToggleControl
 			label={ label }
@@ -49,6 +48,8 @@ export function FluidTypographyEdit( props ) {
 		/>
 	);
 }
+
+export const FluidTypographyEdit = memo( FluidTypographyEditPure );
 
 export function saveFluidTypographyProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.fluidTypography' ) ) {

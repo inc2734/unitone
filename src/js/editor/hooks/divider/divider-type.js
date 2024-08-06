@@ -8,6 +8,7 @@ import {
 } from '@wordpress/blocks';
 
 import { useSelect } from '@wordpress/data';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const getDividerTypeOptions = ( { name: blockName } = {} ) => {
@@ -48,9 +49,7 @@ export function useIsDividerTypeDisabled( { name: blockName } = {} ) {
 	);
 }
 
-export function hasDividerTypeValue( props ) {
-	const { name, attributes } = props;
-
+export function hasDividerTypeValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.dividerType;
 
@@ -59,9 +58,7 @@ export function hasDividerTypeValue( props ) {
 		: attributes?.unitone?.dividerType !== undefined;
 }
 
-export function resetDividerType( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetDividerType( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.dividerType;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -77,24 +74,20 @@ export function resetDividerType( props ) {
 	} );
 }
 
-export function getDividerTypeEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getDividerTypeEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.dividerType?.label || __( 'Type', 'unitone' )
 	);
 }
 
-export function DividerTypeEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function DividerTypeEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.dividerType;
@@ -104,7 +97,7 @@ export function DividerTypeEdit( props ) {
 		<SelectControl
 			label={ label }
 			value={ unitone?.dividerType || '' }
-			options={ getDividerTypeOptions( props ) }
+			options={ getDividerTypeOptions( name ) }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
@@ -127,6 +120,8 @@ export function DividerTypeEdit( props ) {
 		/>
 	);
 }
+
+export const DividerTypeEdit = memo( DividerTypeEditPure );
 
 export function saveDividerTypeProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.dividerType' ) ) {

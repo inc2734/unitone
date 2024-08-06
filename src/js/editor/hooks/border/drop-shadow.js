@@ -15,15 +15,13 @@ import {
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSettings } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
+import { memo, useMemo } from '@wordpress/element';
 import { shadow as shadowIcon, Icon, check } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
-export function hasDropShadowValue( props ) {
-	const { name, attributes } = props;
-
+export function hasDropShadowValue( { name, attributes } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.dropShadow;
 
@@ -32,9 +30,7 @@ export function hasDropShadowValue( props ) {
 		: attributes?.unitone?.dropShadow !== undefined;
 }
 
-export function resetDropShadow( props ) {
-	const { name, attributes, setAttributes } = props;
-
+export function resetDropShadow( { name, attributes, setAttributes } ) {
 	delete attributes?.unitone?.dropShadow;
 	const newUnitone = { ...attributes?.unitone };
 
@@ -54,11 +50,9 @@ export function useIsDropShadowDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.dropShadow' );
 }
 
-export function getDropShadowEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getDropShadowEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return __unstableUnitoneSupports?.dropShadow?.label || __( 'Drop shadow' );
 }
 
@@ -227,14 +221,12 @@ function renderShadowToggle() {
 	};
 }
 
-export function DropShadowEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function DropShadowEditPure( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const [ settings ] = useSettings( 'shadow' );
 
 	const defaultValue = useSelect( ( select ) => {
@@ -290,6 +282,8 @@ export function DropShadowEdit( props ) {
 		</>
 	);
 }
+
+export const DropShadowEdit = memo( DropShadowEditPure );
 
 export function saveDropShadowProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.dropShadow' ) ) {

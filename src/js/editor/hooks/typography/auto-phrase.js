@@ -2,6 +2,7 @@ import classnames from 'classnames';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
+import { memo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 export function hasAutoPhraseValue( props ) {
@@ -21,13 +22,11 @@ export function useIsAutoPhraseDisabled( { name: blockName } = {} ) {
 	return ! hasBlockSupport( blockName, 'unitone.autoPhrase' );
 }
 
-export function AutoPhraseEdit( props ) {
-	const {
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+function AutoPhraseEditPure( {
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	return (
 		<ToggleControl
 			label={ label }
@@ -64,6 +63,8 @@ export function AutoPhraseEdit( props ) {
 		/>
 	);
 }
+
+export const AutoPhraseEdit = memo( AutoPhraseEditPure );
 
 export function saveAutoPhraseProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.autoPhrase' ) ) {

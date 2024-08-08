@@ -80,7 +80,7 @@ export default function ( {
 	const innerBlocksPropsArgs = {
 		templateLock,
 		renderAppender: hasInnerBlocks
-			? InnerBlocks.DefaultBlockAppender
+			? undefined
 			: InnerBlocks.ButtonBlockAppender,
 	};
 

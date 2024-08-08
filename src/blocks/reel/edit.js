@@ -48,7 +48,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		orientation: 'horizontal',
 		templateLock,
 		renderAppender: hasInnerBlocks
-			? InnerBlocks.DefaultBlockAppender
+			? undefined
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 

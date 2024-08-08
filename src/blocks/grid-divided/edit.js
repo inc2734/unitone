@@ -154,7 +154,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		templateLock,
 		allowedBlocks: [ 'unitone/grid-divided-content' ],
 		renderAppender: hasInnerBlocks
-			? InnerBlocks.DefaultBlockAppender
+			? undefined
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 

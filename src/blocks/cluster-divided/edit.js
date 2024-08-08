@@ -50,7 +50,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		templateLock,
 		allowedBlocks: [ 'unitone/cluster-divided-content' ],
 		renderAppender: hasInnerBlocks
-			? InnerBlocks.DefaultBlockAppender
+			? undefined
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 

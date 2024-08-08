@@ -73,7 +73,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				'unitone/stack',
 			],
 			renderAppender: hasInnerBlocks
-				? InnerBlocks.DefaultBlockAppender
+				? undefined
 				: InnerBlocks.ButtonBlockAppender,
 		}
 	);

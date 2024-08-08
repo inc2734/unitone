@@ -43,7 +43,7 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 		{
 			templateLock,
 			renderAppender: hasInnerBlocks
-				? InnerBlocks.DefaultBlockAppender
+				? undefined
 				: InnerBlocks.ButtonBlockAppender,
 		}
 	);

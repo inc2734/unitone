@@ -54,7 +54,7 @@ export default function ( {
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock,
 		renderAppender: hasInnerBlocks
-			? InnerBlocks.DefaultBlockAppender
+			? undefined
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 

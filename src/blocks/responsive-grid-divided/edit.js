@@ -55,7 +55,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		templateLock,
 		allowedBlocks: [ 'unitone/responsive-grid-divided-content' ],
 		renderAppender: hasInnerBlocks
-			? InnerBlocks.DefaultBlockAppender
+			? undefined
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 

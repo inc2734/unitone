@@ -39,7 +39,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		templateLock,
 		allowedBlocks: [ 'unitone/stack-divided-content' ],
 		renderAppender: hasInnerBlocks
-			? InnerBlocks.DefaultBlockAppender
+			? undefined
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 

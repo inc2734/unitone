@@ -4,6 +4,7 @@
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { createHigherOrderComponent } from '@wordpress/compose';
+import { useMemo } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
 
 import {
@@ -116,12 +117,26 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 			return <BlockEdit { ...props } />;
 		}
 
-		if (
-			! hasBlockSupport( props.name, 'typography.fontSize' ) &&
-			! hasBlockSupport( props.name, 'typography.lineHeight' ) &&
-			! hasBlockSupport( props.name, 'unitone' ) &&
-			! props.attributes?.__unstableUnitoneSupports
-		) {
+		const hasTypographySupports = useMemo(
+			() =>
+				hasBlockSupport( props.name, 'typography.fontSize' ) ||
+				hasBlockSupport( props.name, 'typography.lineHeight' ),
+			[ props.name ]
+		);
+
+		const hasUnitoneSupports = useMemo(
+			() =>
+				hasBlockSupport( props.name, 'unitone' ) ||
+				!! props.attributes?.__unstableUnitoneSupports,
+			[ props.name, props.attributes?.__unstableUnitoneSupports ]
+		);
+
+		const hasSupports = useMemo(
+			() => hasTypographySupports || hasUnitoneSupports,
+			[ props.name, hasTypographySupports, hasUnitoneSupports ]
+		);
+
+		if ( ! hasSupports ) {
 			return <BlockEdit { ...props } />;
 		}
 
@@ -129,13 +144,9 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 			<>
 				<BlockEdit { ...props } />
 
-				{ hasBlockSupport( props.name, 'typography.fontSize' ) &&
-					hasBlockSupport( props.name, 'typography.lineHeight' ) && (
-						<TypographyPanel { ...props } />
-					) }
+				{ hasTypographySupports && <TypographyPanel { ...props } /> }
 
-				{ ( hasBlockSupport( props.name, 'unitone' ) ||
-					!! props.attributes?.__unstableUnitoneSupports ) && (
+				{ hasUnitoneSupports && (
 					<>
 						<DimensionsPanel { ...props } />
 						<LayoutPanel { ...props } />

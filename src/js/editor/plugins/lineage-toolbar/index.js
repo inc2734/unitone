@@ -17,65 +17,58 @@ import { __ } from '@wordpress/i18n';
 
 import { LevelUp, LevelDown } from './icons';
 
+const getVariationTitle = ( blockType, thisAttributes ) =>
+	blockType?.variations.filter( ( variation ) => {
+		switch ( typeof variation?.isActive ) {
+			case 'object':
+				return variation.isActive.every(
+					( targetAttribute ) =>
+						thisAttributes?.[ targetAttribute ] ===
+						variation.attributes?.[ targetAttribute ]
+				);
+			case 'function':
+				return variation.isActive(
+					thisAttributes,
+					variation.attributes
+				);
+		}
+		return false;
+	} )?.[ 0 ]?.title;
+
 const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { clientId } = props;
 
 		const { selectBlock } = useDispatch( blockEditorStore );
+		const { getBlock, getBlockParents } = useSelect( blockEditorStore );
+		const { getBlockType } = useSelect( blocksStore );
 
-		const { innerBlocks, parentClientId } = useSelect(
-			( select ) => {
-				const { getBlock, getBlockParents } =
-					select( blockEditorStore );
-				const { getBlockType } = select( blocksStore );
-				const getVariationTitle = ( blockType, thisAttributes ) =>
-					blockType?.variations.filter( ( variation ) => {
-						switch ( typeof variation?.isActive ) {
-							case 'object':
-								return variation.isActive.every(
-									( targetAttribute ) =>
-										thisAttributes?.[ targetAttribute ] ===
-										variation.attributes?.[
-											targetAttribute
-										]
-								);
-							case 'function':
-								return variation.isActive(
-									thisAttributes,
-									variation.attributes
-								);
-						}
-						return false;
-					} )?.[ 0 ]?.title;
-
+		const innerBlocks = getBlock( clientId )?.innerBlocks.map(
+			( innerBlock ) => {
+				const blockType = getBlockType( innerBlock.name );
+				const variationTitle = getVariationTitle(
+					blockType,
+					innerBlock.attributes
+				);
 				return {
-					innerBlocks: getBlock( clientId )?.innerBlocks.map(
-						( innerBlock ) => {
-							const blockType = getBlockType( innerBlock.name );
-							const variationTitle = getVariationTitle(
-								blockType,
-								innerBlock.attributes
-							);
-							return {
-								title: variationTitle || blockType.title,
-								icon: blockType.icon,
-								clientId: innerBlock.clientId,
-							};
-						}
-					),
-					parentClientId: getBlockParents( clientId, true )?.[ 0 ],
+					title: variationTitle || blockType.title,
+					icon: blockType.icon,
+					clientId: innerBlock.clientId,
 				};
-			},
-			[ clientId ]
+			}
 		);
 
+		const parentClientId = getBlockParents( clientId, true )?.[ 0 ];
 		const onSelectParentBlock = useCallback( () => {
 			selectBlock( parentClientId );
-		}, [ parentClientId ] );
+		}, [ parentClientId, selectBlock ] );
 
+		const firstInnerBlockId = innerBlocks?.[ 0 ]?.clientId;
 		const onSelectChildBlock = useCallback( () => {
-			selectBlock( innerBlocks[ 0 ].clientId );
-		}, [ innerBlocks?.[ 0 ]?.clientId ] );
+			if ( firstInnerBlockId ) {
+				selectBlock( firstInnerBlockId );
+			}
+		}, [ firstInnerBlockId, selectBlock ] );
 
 		const childrenDropdownMenuControls = useMemo( () => {
 			return innerBlocks.map( ( innerBlock ) => {
@@ -85,7 +78,7 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 					onClick: () => selectBlock( innerBlock.clientId ),
 				};
 			} );
-		}, [ clientId ] );
+		}, [ innerBlocks, selectBlock ] );
 
 		return (
 			<>

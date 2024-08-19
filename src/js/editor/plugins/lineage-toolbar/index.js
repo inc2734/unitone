@@ -40,7 +40,6 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 		const { clientId } = props;
 
 		const { selectBlock } = useDispatch( blockEditorStore );
-
 		const { getBlock, getBlockParents } = useSelect( blockEditorStore );
 		const { getBlockType } = useSelect( blocksStore );
 
@@ -60,14 +59,16 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 		);
 
 		const parentClientId = getBlockParents( clientId, true )?.[ 0 ];
-
 		const onSelectParentBlock = useCallback( () => {
 			selectBlock( parentClientId );
-		}, [ parentClientId ] );
+		}, [ parentClientId, selectBlock ] );
 
+		const firstInnerBlockId = innerBlocks?.[ 0 ]?.clientId;
 		const onSelectChildBlock = useCallback( () => {
-			selectBlock( innerBlocks[ 0 ].clientId );
-		}, [ innerBlocks?.[ 0 ]?.clientId ] );
+			if ( firstInnerBlockId ) {
+				selectBlock( firstInnerBlockId );
+			}
+		}, [ firstInnerBlockId, selectBlock ] );
 
 		const childrenDropdownMenuControls = useMemo( () => {
 			return innerBlocks.map( ( innerBlock ) => {
@@ -77,7 +78,7 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 					onClick: () => selectBlock( innerBlock.clientId ),
 				};
 			} );
-		}, [ clientId ] );
+		}, [ innerBlocks, selectBlock ] );
 
 		return (
 			<>

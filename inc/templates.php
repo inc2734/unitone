@@ -303,4 +303,4 @@ function unitone_display_deprecated_parts() {
 		)
 	);
 }
-add_action( 'init', 'unitone_display_deprecated_parts' );
+add_action( 'init', 'unitone_display_deprecated_parts', 21 );

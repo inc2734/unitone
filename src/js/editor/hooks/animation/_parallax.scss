@@ -1,0 +1,11 @@
+[data-unitone-parallax] {
+  will-change: transform, object-position;
+}
+
+[data-unitone-parallax=disable] {
+	visibility: hidden;
+}
+
+[data-unitone-parallax=enable] {
+	visibility: visible;
+}

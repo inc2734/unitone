@@ -93,7 +93,8 @@
 			"overflow": true,
 			"maxHeight": true,
 			"fluidTypography": true,
-			"lineHeight": true
+			"lineHeight": true,
+			"parallax": true
 		}
 	},
 	"example": {

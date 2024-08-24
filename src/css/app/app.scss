@@ -5,6 +5,8 @@
 @include meta.load-css("wp-blocks/wp-blocks");
 @include meta.load-css("site");
 
+@include meta.load-css("../../js/editor/hooks/animation/parallax");
+
 // Deprecated
 body {
 	--wp--preset--color--unitone\/accent: var(--wp--preset--color--unitone-accent);

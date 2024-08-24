@@ -6,6 +6,7 @@ module.exports = {
 		...defaultConfig.globals,
 		unitone: true,
 		Swiper: true,
+		IntersectionObserver: true,
 	},
 	settings: {
 		'import/resolver': {

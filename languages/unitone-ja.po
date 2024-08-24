@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-07-25T07:47:10+00:00\n"
-"PO-Revision-Date: 2024-07-25 16:52+0900\n"
+"POT-Creation-Date: 2024-08-23T05:19:16+00:00\n"
+"PO-Revision-Date: 2024-08-23 14:20+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -40,14 +40,14 @@ msgstr "https://2inc.org"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:345 patterns/footer-2.php:21
+#: App/Controller/Manager/Manager.php:352 patterns/footer-2.php:21
 #: patterns/footer-3.php:50 patterns/footer-3.php:58 patterns/footer-3.php:66
 #: patterns/footer-4.php:30 patterns/footer-4.php:38 patterns/footer-4.php:46
 #: patterns/footer-5.php:28 patterns/footer-5.php:36 patterns/footer-5.php:44
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:388 patterns/footer-2.php:24
+#: App/Controller/Manager/Manager.php:395 patterns/footer-2.php:24
 #: patterns/footer-3.php:53 patterns/footer-3.php:61 patterns/footer-3.php:69
 #: patterns/footer-4.php:33 patterns/footer-4.php:41 patterns/footer-4.php:49
 #: patterns/footer-5.php:31 patterns/footer-5.php:39 patterns/footer-5.php:47
@@ -56,15 +56,15 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:465
+#: App/Controller/Manager/Manager.php:472
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:468
+#: App/Controller/Manager/Manager.php:475
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:472
+#: App/Controller/Manager/Manager.php:479
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
@@ -532,391 +532,391 @@ msgstr "縦塗りつぶし"
 msgid "Vertical line"
 msgstr "縦線"
 
-#: inc/global-styles.php:111
+#: inc/global-styles.php:137
 msgctxt "Color name"
 msgid "Twilight (Light)"
 msgstr "白透過（ライト）"
 
-#: inc/global-styles.php:116
+#: inc/global-styles.php:142
 msgctxt "Color name"
 msgid "Twilight"
 msgstr "白透過"
 
-#: inc/global-styles.php:121
+#: inc/global-styles.php:147
 msgctxt "Color name"
 msgid "Twilight (Heavy)"
 msgstr "白透過（ヘビー）"
 
-#: inc/global-styles.php:126
+#: inc/global-styles.php:152
 msgctxt "Color name"
 msgid "Dimmed (Light)"
 msgstr "黒透過（ライト）"
 
-#: inc/global-styles.php:131
+#: inc/global-styles.php:157
 msgctxt "Color name"
 msgid "Dimmed"
 msgstr "黒透過"
 
-#: inc/global-styles.php:136
+#: inc/global-styles.php:162
 msgctxt "Color name"
 msgid "Dimmed (Heavy)"
 msgstr "黒透過（ヘビー）"
 
-#: inc/global-styles.php:141
+#: inc/global-styles.php:167
 msgctxt "Color name"
 msgid "Pale Red"
 msgstr "ペールレッド"
 
-#: inc/global-styles.php:146
+#: inc/global-styles.php:172
 msgctxt "Color name"
 msgid "Bright Red"
 msgstr "ブライトレッド"
 
-#: inc/global-styles.php:151
+#: inc/global-styles.php:177
 msgctxt "Color name"
 msgid "Light Red"
 msgstr "ライトレッド"
 
-#: inc/global-styles.php:156
+#: inc/global-styles.php:182
 msgctxt "Color name"
 msgid "Red"
 msgstr "レッド"
 
-#: inc/global-styles.php:161
+#: inc/global-styles.php:187
 msgctxt "Color name"
 msgid "Dark Red"
 msgstr "ダークレッド"
 
-#: inc/global-styles.php:166
+#: inc/global-styles.php:192
 msgctxt "Color name"
 msgid "Heavy Red"
 msgstr "ヘビーレッド"
 
-#: inc/global-styles.php:171
+#: inc/global-styles.php:197
 msgctxt "Color name"
 msgid "Pale Orange"
 msgstr "ペールオレンジ"
 
-#: inc/global-styles.php:176
+#: inc/global-styles.php:202
 msgctxt "Color name"
 msgid "Bright Orange"
 msgstr "ブライトオレンジ"
 
-#: inc/global-styles.php:181
+#: inc/global-styles.php:207
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr "ライトオレンジ"
 
-#: inc/global-styles.php:186
+#: inc/global-styles.php:212
 msgctxt "Color name"
 msgid "Orange"
 msgstr "オレンジ"
 
-#: inc/global-styles.php:191
+#: inc/global-styles.php:217
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr "ダークオレンジ"
 
-#: inc/global-styles.php:196
+#: inc/global-styles.php:222
 msgctxt "Color name"
 msgid "Heavy Orange"
 msgstr "ヘビーオレンジ"
 
-#: inc/global-styles.php:201
+#: inc/global-styles.php:227
 msgctxt "Color name"
 msgid "Pale Yellow"
 msgstr "ペールイエロー"
 
-#: inc/global-styles.php:206
+#: inc/global-styles.php:232
 msgctxt "Color name"
 msgid "Bright Yellow"
 msgstr "ブライトイエロー"
 
-#: inc/global-styles.php:211
+#: inc/global-styles.php:237
 msgctxt "Color name"
 msgid "Light Yellow"
 msgstr "ライトイエロー"
 
-#: inc/global-styles.php:216
+#: inc/global-styles.php:242
 msgctxt "Color name"
 msgid "Yellow"
 msgstr "イエロー"
 
-#: inc/global-styles.php:221
+#: inc/global-styles.php:247
 msgctxt "Color name"
 msgid "Dark Yellow"
 msgstr "ダークイエロー"
 
-#: inc/global-styles.php:226
+#: inc/global-styles.php:252
 msgctxt "Color name"
 msgid "Heavy Yellow"
 msgstr "ヘビーイエロー"
 
-#: inc/global-styles.php:231
+#: inc/global-styles.php:257
 msgctxt "Color name"
 msgid "Pale Lime"
 msgstr "ペールライム"
 
-#: inc/global-styles.php:236
+#: inc/global-styles.php:262
 msgctxt "Color name"
 msgid "Bright Lime"
 msgstr "ブライトライム"
 
-#: inc/global-styles.php:241
+#: inc/global-styles.php:267
 msgctxt "Color name"
 msgid "Light Lime"
 msgstr "ライトライム"
 
-#: inc/global-styles.php:246
+#: inc/global-styles.php:272
 msgctxt "Color name"
 msgid "Lime"
 msgstr "ライム"
 
-#: inc/global-styles.php:251
+#: inc/global-styles.php:277
 msgctxt "Color name"
 msgid "Dark Lime"
 msgstr "ダークライム"
 
-#: inc/global-styles.php:256
+#: inc/global-styles.php:282
 msgctxt "Color name"
 msgid "Heavy Lime"
 msgstr "ヘビーライム"
 
-#: inc/global-styles.php:261
+#: inc/global-styles.php:287
 msgctxt "Color name"
 msgid "Pale Green"
 msgstr "ペールグリーン"
 
-#: inc/global-styles.php:266
+#: inc/global-styles.php:292
 msgid "Bright Green"
 msgstr "ブライトグリーン"
 
-#: inc/global-styles.php:271
+#: inc/global-styles.php:297
 msgctxt "Color name"
 msgid "Light Green"
 msgstr "ライトグリーン"
 
-#: inc/global-styles.php:276
+#: inc/global-styles.php:302
 msgctxt "Color name"
 msgid "Green"
 msgstr "グリーン"
 
-#: inc/global-styles.php:281
+#: inc/global-styles.php:307
 msgctxt "Color name"
 msgid "Dark Green"
 msgstr "ダークグリーン"
 
-#: inc/global-styles.php:286
+#: inc/global-styles.php:312
 msgctxt "Color name"
 msgid "Heavy Green"
 msgstr "ヘビーグリーン"
 
-#: inc/global-styles.php:291
+#: inc/global-styles.php:317
 msgctxt "Color name"
 msgid "Pale Teal"
 msgstr "ペールティール"
 
-#: inc/global-styles.php:296
+#: inc/global-styles.php:322
 msgctxt "Color name"
 msgid "Bright Teal"
 msgstr "ブライトティール"
 
-#: inc/global-styles.php:301
+#: inc/global-styles.php:327
 msgctxt "Color name"
 msgid "Light Teal"
 msgstr "ライトティール"
 
-#: inc/global-styles.php:306
+#: inc/global-styles.php:332
 msgctxt "Color name"
 msgid "Teal"
 msgstr "ティール"
 
-#: inc/global-styles.php:311
+#: inc/global-styles.php:337
 msgctxt "Color name"
 msgid "Dark Teal"
 msgstr "ダークティール"
 
-#: inc/global-styles.php:316
+#: inc/global-styles.php:342
 msgctxt "Color name"
 msgid "Heavy Teal"
 msgstr "ヘビーティール"
 
-#: inc/global-styles.php:321
+#: inc/global-styles.php:347
 msgctxt "Color name"
 msgid "Pale Cyan"
 msgstr "ペールシアン"
 
-#: inc/global-styles.php:326
+#: inc/global-styles.php:352
 msgctxt "Color name"
 msgid "Bright Cyan"
 msgstr "ブライトシアン"
 
-#: inc/global-styles.php:331
+#: inc/global-styles.php:357
 msgctxt "Color name"
 msgid "Light Cyan"
 msgstr "シアン"
 
-#: inc/global-styles.php:336
+#: inc/global-styles.php:362
 msgctxt "Color name"
 msgid "Cyan"
 msgstr "シアン"
 
-#: inc/global-styles.php:341
+#: inc/global-styles.php:367
 msgctxt "Color name"
 msgid "Dark Cyan"
 msgstr "ダークシアン"
 
-#: inc/global-styles.php:346
+#: inc/global-styles.php:372
 msgctxt "Color name"
 msgid "Heavy Cyan"
 msgstr "ヘビーシアン"
 
-#: inc/global-styles.php:351
+#: inc/global-styles.php:377
 msgctxt "Color name"
 msgid "Pale Blue"
 msgstr "ペールブルー"
 
-#: inc/global-styles.php:356
+#: inc/global-styles.php:382
 msgctxt "Color name"
 msgid "Bright Blue"
 msgstr "ブライトブルー"
 
-#: inc/global-styles.php:361
+#: inc/global-styles.php:387
 msgctxt "Color name"
 msgid "Light Blue"
 msgstr "ライトブルー"
 
-#: inc/global-styles.php:366
+#: inc/global-styles.php:392
 msgctxt "Color name"
 msgid "Blue"
 msgstr "青"
 
-#: inc/global-styles.php:371
+#: inc/global-styles.php:397
 msgctxt "Color name"
 msgid "Dark Blue"
 msgstr "ダークブルー"
 
-#: inc/global-styles.php:376
+#: inc/global-styles.php:402
 msgctxt "Color name"
 msgid "Heavy Blue"
 msgstr "ヘビーブルー"
 
-#: inc/global-styles.php:381
+#: inc/global-styles.php:407
 msgctxt "Color name"
 msgid "Pale Indigo"
 msgstr "ペールインディゴ"
 
-#: inc/global-styles.php:386
+#: inc/global-styles.php:412
 msgctxt "Color name"
 msgid "Bright Indigo"
 msgstr "ブライトインディゴ"
 
-#: inc/global-styles.php:391
+#: inc/global-styles.php:417
 msgctxt "Color name"
 msgid "Light Indigo"
 msgstr "ライトインディゴ"
 
-#: inc/global-styles.php:396
+#: inc/global-styles.php:422
 msgctxt "Color name"
 msgid "Indigo"
 msgstr "インディゴ"
 
-#: inc/global-styles.php:401
+#: inc/global-styles.php:427
 msgctxt "Color name"
 msgid "Dark Indigo"
 msgstr "ダークインディゴ"
 
-#: inc/global-styles.php:406
+#: inc/global-styles.php:432
 msgctxt "Color name"
 msgid "Heavy Indigo"
 msgstr "ヘビーインディゴ"
 
-#: inc/global-styles.php:411
+#: inc/global-styles.php:437
 msgctxt "Color name"
 msgid "Pale Violet"
 msgstr "ペールバイオレット"
 
-#: inc/global-styles.php:416
+#: inc/global-styles.php:442
 msgctxt "Color name"
 msgid "Bright Violet"
 msgstr "ブライトバイオレット"
 
-#: inc/global-styles.php:421
+#: inc/global-styles.php:447
 msgctxt "Color name"
 msgid "Light Violet"
 msgstr "ライトバイオレット"
 
-#: inc/global-styles.php:426
+#: inc/global-styles.php:452
 msgctxt "Color name"
 msgid "Violet"
 msgstr "バイオレット"
 
-#: inc/global-styles.php:431
+#: inc/global-styles.php:457
 msgctxt "Color name"
 msgid "Dark Violet"
 msgstr "ダークバイオレット"
 
-#: inc/global-styles.php:436
+#: inc/global-styles.php:462
 msgctxt "Color name"
 msgid "Heavy Violet"
 msgstr "ヘビーバイオレット"
 
-#: inc/global-styles.php:441
+#: inc/global-styles.php:467
 msgctxt "Color name"
 msgid "Pale Purple"
 msgstr "ペールパープル"
 
-#: inc/global-styles.php:446
+#: inc/global-styles.php:472
 msgctxt "Color name"
 msgid "Bright Purple"
 msgstr "ブライトパープル"
 
-#: inc/global-styles.php:451
+#: inc/global-styles.php:477
 msgctxt "Color name"
 msgid "Light Purple"
 msgstr "ライトパープル"
 
-#: inc/global-styles.php:456
+#: inc/global-styles.php:482
 msgctxt "Color name"
 msgid "Purple"
 msgstr "パープル"
 
-#: inc/global-styles.php:461
+#: inc/global-styles.php:487
 msgctxt "Color name"
 msgid "Dark Purple"
 msgstr "ダークパープル"
 
-#: inc/global-styles.php:466
+#: inc/global-styles.php:492
 msgctxt "Color name"
 msgid "Heavy Purple"
 msgstr "ヘビーパープル"
 
-#: inc/global-styles.php:471
+#: inc/global-styles.php:497
 msgctxt "Color name"
 msgid "Pale Pink"
 msgstr "ペールピンク"
 
-#: inc/global-styles.php:476
+#: inc/global-styles.php:502
 msgctxt "Color name"
 msgid "Bright Pink"
 msgstr "ブライトピンク"
 
-#: inc/global-styles.php:481
+#: inc/global-styles.php:507
 msgctxt "Color name"
 msgid "Light Pink"
 msgstr "ライトピンク"
 
-#: inc/global-styles.php:486
+#: inc/global-styles.php:512
 msgctxt "Color name"
 msgid "Pink"
 msgstr "ピンク"
 
-#: inc/global-styles.php:491
+#: inc/global-styles.php:517
 msgctxt "Color name"
 msgid "Dark Pink"
 msgstr "ダークピンク"
 
-#: inc/global-styles.php:496
+#: inc/global-styles.php:522
 msgctxt "Color name"
 msgid "Heavy Pink"
 msgstr "ヘビーピンク"
@@ -2838,6 +2838,18 @@ msgstr "レイヤー"
 msgid "Mix blend mode"
 msgstr "ミックスブレンドモード"
 
+#: dist/js/editor/editor.js:7
+msgid "Parallax"
+msgstr "パララックス"
+
+#: dist/js/editor/editor.js:7
+msgid "Speed"
+msgstr "スピード"
+
+#: dist/js/editor/editor.js:7
+msgid "Animation"
+msgstr "アニメーション"
+
 #. translators: %1$s: <code>wbr</code>
 #: dist/js/editor/editor.js:10
 msgid "Use %1$s to indicate a line break at an arbitrary position."
@@ -2894,11 +2906,6 @@ msgstr "子ブロックを選択"
 #: dist/js/editor/editor.js:10
 msgid "Show block outline"
 msgstr "ブロックのアウトラインを表示"
-
-#. translators: %s: template part title.
-#: dist/js/editor/editor.js:11
-msgid "Replace"
-msgstr "置換"
 
 #: dist/variations/variations.js:1
 msgid "Post to X"
@@ -3816,3 +3823,6 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "Replace"
+#~ msgstr "置換"

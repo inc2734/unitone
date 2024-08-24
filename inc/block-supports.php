@@ -220,3 +220,29 @@ function unitone_add_drop_shadow_support( $metadata ) {
 	return $metadata;
 }
 add_filter( 'block_type_metadata', 'unitone_add_drop_shadow_support' );
+
+/**
+ * Add support "Parallax" to core/image.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_parallax_support( $metadata ) {
+	if ( 'core/image' !== $metadata['name'] ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'parallax' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_parallax_support' );

@@ -63,3 +63,87 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		resizeObserver.observe( document.body );
 	} );
 } );
+
+/**
+ * Parallax.
+ */
+document.addEventListener( 'DOMContentLoaded', () => {
+	const targets = document.querySelectorAll( '[data-unitone-parallax]' );
+
+	const isCoverElement = ( target ) =>
+		'cover' ===
+		window.getComputedStyle( target ).getPropertyValue( 'object-fit' );
+
+	const updatePosition = ( target ) => {
+		const viewPortHeight = Math.max(
+			document.documentElement.clientHeight,
+			window.innerHeight || 0
+		);
+
+		const speed = parseInt(
+			target.getAttribute( 'data-unitone-parallax-speed' ) || 0
+		);
+
+		const rect = target.getBoundingClientRect();
+		const speedFactor = 0.1 * ( speed * 0.5 );
+		const targetMidpoint = rect.top + rect.height / 2;
+		const distanceFromCenter = targetMidpoint - viewPortHeight / 2;
+		const translateY = distanceFromCenter * speedFactor;
+
+		const isCoveredImageBlock =
+			1 === target.children.length &&
+			isCoverElement( target.children[ 0 ] );
+
+		if ( isCoveredImageBlock ) {
+			target.children[ 0 ].style.objectPosition = `50% calc(50% + ${ translateY }px)`;
+		} else {
+			target.style.transform = `translate3d(0, ${ translateY }px, 0)`;
+		}
+	};
+
+	const enabled = ( target ) =>
+		'enable' === target.getAttribute( 'data-unitone-parallax' );
+
+	const onScroll = () => {
+		targets.forEach( ( target ) => {
+			if ( enabled( target ) ) {
+				updatePosition( target );
+			}
+		} );
+	};
+
+	let onscreenTargets = 0;
+
+	const observerCallback = ( entries ) => {
+		entries.forEach( ( entry ) => {
+			const target = entry.target;
+
+			if ( entry.isIntersecting ) {
+				target.setAttribute( 'data-unitone-parallax', 'enable' );
+				onscreenTargets += 1;
+			} else {
+				if ( enabled( target ) ) {
+					onscreenTargets -= 1;
+				}
+				target.setAttribute( 'data-unitone-parallax', 'disable' );
+			}
+		} );
+
+		if ( 0 < onscreenTargets ) {
+			window.addEventListener( 'scroll', onScroll );
+			document.addEventListener( 'touchmove', onScroll );
+		} else {
+			window.removeEventListener( 'scroll', onScroll );
+			document.removeEventListener( 'touchmove', onScroll );
+		}
+	};
+
+	const observer = new IntersectionObserver( observerCallback, {
+		rootMargin: '200px 0px',
+	} );
+
+	[].slice.call( targets ).forEach( ( target ) => {
+		observer.observe( target );
+		updatePosition( target );
+	} );
+} );

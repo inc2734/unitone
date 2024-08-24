@@ -294,6 +294,18 @@ add_filter(
 		};
 
 		/**
+		 * Add data attribute.
+		 *
+		 * @param string $name The data attribute name.
+		 * @param string|null $value The data attribute value.
+		 */
+		$add_data_attribute = function ( $name, $value ) use ( $p ) {
+			if ( ! is_null( $value ) && '' !== $value ) {
+				$p->set_attribute( $name, $value );
+			}
+		};
+
+		/**
 		 * Returns true when attributes has a support value.
 		 *
 		 * @param string $support The supported attribute name. Dot-accessible.
@@ -582,6 +594,15 @@ add_filter(
 		if ( $is_supported( 'cellMinWidth' ) ) {
 			$deprecated_attribute = $block['attrs']['cellMinWidth'] ?? null;
 			$add_style( '--unitone--cell-min-width', $get_attribute( 'cellMinWidth' ) ?? $deprecated_attribute );
+		}
+
+		// Parallax.
+		if ( $is_supported( 'parallax' ) ) {
+			$parallax_speed = $get_attribute( 'parallax.speed' );
+			if ( $parallax_speed ) {
+				$add_data_attribute( 'data-unitone-parallax', 'disable' );
+				$add_data_attribute( 'data-unitone-parallax-speed', $parallax_speed );
+			}
 		}
 
 		$block_content = $p->get_updated_html();

@@ -37,6 +37,8 @@ import {
 
 import { LayerPanel, editMixBlendModeProp } from './layer/layer';
 
+import { AnimationPanel, editParallaxProp } from './animation/animation';
+
 import {
 	TypographyPanel,
 	editAutoPhraseProp,
@@ -93,6 +95,7 @@ function addEditProps( settings ) {
 	settings = editGridRowProp( settings );
 	settings = editMixBlendModeProp( settings );
 	settings = editDropShadowProp( settings );
+	settings = editParallaxProp( settings );
 
 	return settings;
 }
@@ -139,6 +142,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						<PositionPanel { ...props } />
 						<LayerPanel { ...props } />
 						<DropShadowPanel { ...props } />
+						<AnimationPanel { ...props } />
 					</>
 				) }
 			</>

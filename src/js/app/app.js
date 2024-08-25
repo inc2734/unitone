@@ -85,7 +85,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		);
 
 		const rect = target.getBoundingClientRect();
-		const speedFactor = 0.1 * ( speed * 0.5 );
+		const speedFactor = 0.125 * ( speed * 0.5 );
 		const targetMidpoint = rect.top + rect.height / 2;
 		const distanceFromCenter = targetMidpoint - viewPortHeight / 2;
 		const translateY = distanceFromCenter * speedFactor;
@@ -105,7 +105,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		'enable' === target.getAttribute( 'data-unitone-parallax' );
 
 	const onScroll = () => {
-		targets.forEach( ( target ) => {
+		[].slice.call( targets ).forEach( ( target ) => {
 			if ( enabled( target ) ) {
 				updatePosition( target );
 			}
@@ -119,13 +119,14 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			const target = entry.target;
 
 			if ( entry.isIntersecting ) {
-				target.setAttribute( 'data-unitone-parallax', 'enable' );
 				onscreenTargets += 1;
+				target.setAttribute( 'data-unitone-parallax', 'enable' );
 			} else {
 				if ( enabled( target ) ) {
 					onscreenTargets -= 1;
 				}
 				target.setAttribute( 'data-unitone-parallax', 'disable' );
+				target.style.transform = '';
 			}
 		} );
 
@@ -144,6 +145,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 	[].slice.call( targets ).forEach( ( target ) => {
 		observer.observe( target );
+		updatePosition( target );
+
+		// @todo Shifting by consecutive scrolling means shifting based on the shifted position,
+		// so the first time it must be executed twice to start at the intended position.
 		updatePosition( target );
 	} );
 } );

@@ -163,7 +163,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 	const observerCallback = ( entries ) => {
 		entries.forEach( ( entry ) => {
-			console.log( entry );
 			if ( ! entry.isIntersecting ) {
 				return;
 			}

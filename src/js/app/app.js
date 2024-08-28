@@ -152,3 +152,43 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		updatePosition( target );
 	} );
 } );
+
+/**
+ * Scroll animation.
+ */
+document.addEventListener( 'DOMContentLoaded', () => {
+	const targets = document.querySelectorAll(
+		'[data-unitone-scroll-animation]'
+	);
+
+	const observerCallback = ( entries ) => {
+		entries.forEach( ( entry ) => {
+			console.log( entry );
+			if ( ! entry.isIntersecting ) {
+				return;
+			}
+
+			const target = entry.target;
+			const type = target.getAttribute( 'data-unitone-scroll-animation' );
+
+			target.setAttribute(
+				'data-unitone-scroll-animation',
+				`${ type } -fired`
+			);
+
+			observer.unobserve( target );
+		} );
+	};
+
+	const observer = new IntersectionObserver( observerCallback, {
+		rootMargin: '-25% 0px',
+	} );
+
+	[].slice.call( targets ).forEach( ( target ) => {
+		observer.observe( target );
+
+		// target.addEventListener( 'animationend', () => {
+		// 	target.removeAttribute( 'data-unitone-scroll-animation' );
+		// } );
+	} );
+} );

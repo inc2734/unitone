@@ -13,3 +13,19 @@ export const parallax = (
 		/>
 	</svg>
 );
+
+export const scroll = (
+	<svg
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		aria-hidden="true"
+		focusable="false"
+	>
+		<path
+			fillRule="evenodd"
+			clipRule="evenodd"
+			d="M10 5.5H14C15.3807 5.5 16.5 6.61929 16.5 8V16C16.5 17.3807 15.3807 18.5 14 18.5H10C8.61929 18.5 7.5 17.3807 7.5 16V8C7.5 6.61929 8.61929 5.5 10 5.5ZM6 8C6 5.79086 7.79086 4 10 4H14C16.2091 4 18 5.79086 18 8V16C18 18.2091 16.2091 20 14 20H10C7.79086 20 6 18.2091 6 16V8ZM11.25 7.25V10.25H12.75V7.25H11.25Z"
+		/>
+	</svg>
+);

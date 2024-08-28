@@ -94,7 +94,8 @@
 			"maxHeight": true,
 			"fluidTypography": true,
 			"lineHeight": true,
-			"parallax": true
+			"parallax": true,
+			"scrollAnimation": true
 		}
 	},
 	"example": {

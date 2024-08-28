@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-23T05:19:16+00:00\n"
+"POT-Creation-Date: 2024-08-28T13:17:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -2894,6 +2894,23 @@ msgid "Speed"
 msgstr ""
 
 #: dist/js/editor/editor.js:7
+msgid "Scroll"
+msgstr ""
+
+#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:10
+msgid "Type"
+msgstr ""
+
+#: dist/js/editor/editor.js:7
+msgid "Delay"
+msgstr ""
+
+#: dist/js/editor/editor.js:7
+msgid "Easing"
+msgstr ""
+
+#: dist/js/editor/editor.js:7
 msgid "Animation"
 msgstr ""
 
@@ -2912,10 +2929,6 @@ msgstr ""
 
 #: dist/js/editor/editor.js:10
 msgid "Auto line breaks"
-msgstr ""
-
-#: dist/js/editor/editor.js:10
-msgid "Type"
 msgstr ""
 
 #: dist/js/editor/editor.js:10

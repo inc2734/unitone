@@ -6,6 +6,7 @@
 @include meta.load-css("site");
 
 @include meta.load-css("../../js/editor/hooks/animation/parallax");
+@include meta.load-css("../../js/editor/hooks/animation/scroll-animation");
 
 // Deprecated
 body {

@@ -48,7 +48,8 @@
 			"padding": true,
 			"overflow": true,
 			"fluidTypography": true,
-			"lineHeight": true
+			"lineHeight": true,
+			"scrollAnimation": true
 		}
 	},
 	"example": {

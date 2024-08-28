@@ -64,7 +64,8 @@
 			"gap": true,
 			"minHeight": true,
 			"fluidTypography": true,
-			"lineHeight": true
+			"lineHeight": true,
+			"scrollAnimation": true
 		}
 	},
 	"category": "unitone/layout",

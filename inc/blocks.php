@@ -301,7 +301,11 @@ add_filter(
 		 */
 		$add_data_attribute = function ( $name, $value ) use ( $p ) {
 			if ( ! is_null( $value ) && '' !== $value ) {
-				$p->set_attribute( $name, $value );
+				$data_attribute = $p->get_attribute( $name );
+
+				if ( ! $data_attribute || false === strpos( $data_attribute, $value ) ) {
+					$p->set_attribute( $name, trim( $data_attribute . ' ' . $value ) );
+				}
 			}
 		};
 
@@ -602,6 +606,27 @@ add_filter(
 			if ( $parallax_speed ) {
 				$add_data_attribute( 'data-unitone-parallax', 'disable' );
 				$add_data_attribute( 'data-unitone-parallax-speed', $parallax_speed );
+			}
+		}
+
+		// Scroll animation.
+		if ( $is_supported( 'scrollAnimation' ) ) {
+			$scroll_animation_type  = $get_attribute( 'scrollAnimation.type' );
+			$scroll_animation_speed = $get_attribute( 'scrollAnimation.speed' );
+
+			if ( $scroll_animation_type && 0 !== $scroll_animation_speed ) {
+				$add_data_attribute( 'data-unitone-scroll-animation', $scroll_animation_type );
+				$add_style( '--unitone--animation-duration', $scroll_animation_speed ? $scroll_animation_speed . 's' : null );
+
+				$scroll_animation_delay = $get_attribute( 'scrollAnimation.delay' );
+				if ( $scroll_animation_delay ) {
+					$add_style( '--unitone--animation-delay', $scroll_animation_delay . 's' );
+				}
+
+				$easing = $get_attribute( 'scrollAnimation.easing' );
+				if ( $easing ) {
+					$add_data_attribute( 'data-unitone-scroll-animation', '-animation-timing-function:' . $easing );
+				}
 			}
 		}
 

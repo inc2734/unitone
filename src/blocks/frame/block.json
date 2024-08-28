@@ -24,7 +24,11 @@
 	},
 	"supports": {
 		"className": false,
-		"anchor": true
+		"anchor": true,
+		"unitone": {
+			"parallax": true,
+			"scrollAnimation": true
+		}
 	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js",

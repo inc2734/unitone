@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-08-23T05:19:16+00:00\n"
-"PO-Revision-Date: 2024-08-23 14:20+0900\n"
+"POT-Creation-Date: 2024-08-28T13:17:23+00:00\n"
+"PO-Revision-Date: 2024-08-28 22:18+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2847,6 +2847,22 @@ msgid "Speed"
 msgstr "スピード"
 
 #: dist/js/editor/editor.js:7
+msgid "Scroll"
+msgstr "スクロール"
+
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:10
+msgid "Type"
+msgstr "種類"
+
+#: dist/js/editor/editor.js:7
+msgid "Delay"
+msgstr "遅延"
+
+#: dist/js/editor/editor.js:7
+msgid "Easing"
+msgstr "イージング"
+
+#: dist/js/editor/editor.js:7
 msgid "Animation"
 msgstr "アニメーション"
 
@@ -2866,10 +2882,6 @@ msgstr "ハーフレディング"
 #: dist/js/editor/editor.js:10
 msgid "Auto line breaks"
 msgstr "自動改行"
-
-#: dist/js/editor/editor.js:10
-msgid "Type"
-msgstr "種類"
 
 #: dist/js/editor/editor.js:10
 msgid "Filter"

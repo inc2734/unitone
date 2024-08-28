@@ -6,7 +6,6 @@ import {
 	__experimentalHStack as HStack,
 	__experimentalItemGroup as ItemGroup,
 	__experimentalDropdownContentWrapper as DropdownContentWrapper,
-	BaseControl,
 	Button,
 	FlexItem,
 	Dropdown,
@@ -19,7 +18,6 @@ import { Icon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { parallax as iconParallax } from './icons';
-
 import { cleanEmptyObject } from '../utils';
 
 export function hasParallaxValue( props ) {
@@ -129,34 +127,28 @@ export function ParallaxEdit( props ) {
 	}, [] );
 
 	return (
-		<>
-			<BaseControl.VisualLabel as="legend">
-				{ __( 'Parallax', 'unitone' ) }
-			</BaseControl.VisualLabel>
+		<ItemGroup isBordered isSeparated>
+			<ParallaxPopover
+				speed={ parseFloat( unitone?.parallax?.speed ) }
+				onChangeSpeed={ ( newAttribute ) => {
+					if ( null == newAttribute ) {
+						newAttribute = defaultValue?.speed;
+					}
 
-			<ItemGroup isBordered isSeparated>
-				<ParallaxPopover
-					speed={ parseFloat( unitone?.parallax?.speed ) }
-					onChangeSpeed={ ( newAttribute ) => {
-						if ( null == newAttribute ) {
-							newAttribute = defaultValue;
-						}
+					const newUnitone = cleanEmptyObject( {
+						...unitone,
+						parallax: {
+							...unitone?.parallax,
+							speed: newAttribute || undefined,
+						},
+					} );
 
-						const newUnitone = cleanEmptyObject( {
-							...unitone,
-							parallax: {
-								...unitone?.parallax,
-								speed: newAttribute || undefined,
-							},
-						} );
-
-						setAttributes( {
-							unitone: newUnitone,
-						} );
-					} }
-				/>
-			</ItemGroup>
-		</>
+					setAttributes( {
+						unitone: newUnitone,
+					} );
+				} }
+			/>
+		</ItemGroup>
 	);
 }
 

@@ -246,3 +246,29 @@ function unitone_add_parallax_support( $metadata ) {
 	return $metadata;
 }
 add_filter( 'block_type_metadata', 'unitone_add_parallax_support' );
+
+/**
+ * Add support "Scroll animation" to core/image.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_scroll_animation_support( $metadata ) {
+	if ( 'core/image' !== $metadata['name'] ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'scrollAnimation' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_scroll_animation_support' );

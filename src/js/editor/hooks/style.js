@@ -37,7 +37,11 @@ import {
 
 import { LayerPanel, editMixBlendModeProp } from './layer/layer';
 
-import { AnimationPanel, editParallaxProp } from './animation/animation';
+import {
+	AnimationPanel,
+	editParallaxProp,
+	editScrollAnimationProp,
+} from './animation/animation';
 
 import {
 	TypographyPanel,
@@ -96,6 +100,7 @@ function addEditProps( settings ) {
 	settings = editMixBlendModeProp( settings );
 	settings = editDropShadowProp( settings );
 	settings = editParallaxProp( settings );
+	settings = editScrollAnimationProp( settings );
 
 	return settings;
 }

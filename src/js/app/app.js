@@ -185,9 +185,5 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 	[].slice.call( targets ).forEach( ( target ) => {
 		observer.observe( target );
-
-		// target.addEventListener( 'animationend', () => {
-		// 	target.removeAttribute( 'data-unitone-scroll-animation' );
-		// } );
 	} );
 } );

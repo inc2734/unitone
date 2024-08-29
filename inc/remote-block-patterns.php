@@ -149,7 +149,9 @@ function unitone_register_remote_block_patterns() {
 		$remote_block_pattern_categories = $transient;
 	} else {
 		$remote_block_pattern_categories = unitone_get_remote_block_patten_categories();
-		set_transient( 'unitone-remote-pattern-categories', $remote_block_pattern_categories, DAY_IN_SECONDS );
+		if ( $remote_block_pattern_categories && is_array( $remote_block_pattern_categories ) ) {
+			set_transient( 'unitone-remote-pattern-categories', $remote_block_pattern_categories, DAY_IN_SECONDS );
+		}
 	}
 	foreach ( $remote_block_pattern_categories as $remote_block_pattern_category ) {
 		register_block_pattern_category(
@@ -167,13 +169,13 @@ function unitone_register_remote_block_patterns() {
 		$license_key = Manager::get_setting( 'license-key' );
 		$status      = Manager::get_license_status( $license_key );
 
-		if ( 'true' === $status ) {
-			$remote_block_patterns = unitone_get_premium_remote_block_pattens();
-		} else {
-			$remote_block_patterns = unitone_get_free_remote_block_pattens();
-		}
+		$remote_block_patterns = 'true' === $status
+			? unitone_get_premium_remote_block_pattens()
+			: unitone_get_free_remote_block_pattens();
 
-		set_transient( 'unitone-remote-patterns', $remote_block_patterns, DAY_IN_SECONDS );
+		if ( $remote_block_patterns && is_array( $remote_block_patterns ) ) {
+			set_transient( 'unitone-remote-patterns', $remote_block_patterns, DAY_IN_SECONDS );
+		}
 	}
 
 	$registry = WP_Block_Patterns_Registry::get_instance();

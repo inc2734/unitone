@@ -3,13 +3,14 @@ import {
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { store as blocksStore } from '@wordpress/blocks';
 import {
 	ToolbarGroup,
 	ToolbarDropdownMenu,
 	ToolbarButton,
 } from '@wordpress/components';
+
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { store as blocksStore } from '@wordpress/blocks';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useCallback, useMemo } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';

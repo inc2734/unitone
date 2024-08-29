@@ -26,62 +26,59 @@ registerBlockType( 'unitone/grid-divided', {
 const withChildBlockAttributes = createHigherOrderComponent(
 	( BlockListBlock ) => {
 		return ( props ) => {
-			const { getBlockParents, getBlock } = useSelect(
-				( select ) => {
-					return select( blockEditorStore );
-				},
-				[ props.clientId ]
-			);
-
-			const newProps = { ...props };
+			const { getBlockParents, getBlock } = useSelect( blockEditorStore );
 
 			const blockParents = getBlockParents( props.clientId );
-			if ( 0 < blockParents.length ) {
-				const parentClientId = blockParents[ blockParents.length - 1 ];
-				if ( !! parentClientId ) {
-					const parentBlock = getBlock( parentClientId );
-
-					if ( 'unitone/grid-divided' === parentBlock?.name ) {
-						const DEFAULT_VALUES = {
-							alignSelf: {
-								lg: 'stretch',
-							},
-							justifySelf: {
-								lg: 'stretch',
-							},
-						};
-
-						newProps.attributes = {
-							...newProps.attributes,
-							unitone: {
-								...newProps.attributes?.unitone,
-								alignSelf:
-									null !=
-									newProps.attributes?.unitone?.alignSelf
-										? newProps.attributes?.unitone
-												?.alignSelf
-										: DEFAULT_VALUES.alignSelf,
-								justifySelf:
-									null !=
-									newProps.attributes?.unitone?.justifySelf
-										? newProps.attributes?.unitone
-												?.justifySelf
-										: DEFAULT_VALUES.justifySelf,
-							},
-							__unstableUnitoneSupports: {
-								alignSelf: {
-									responsive: true,
-									default: DEFAULT_VALUES.alignSelf,
-								},
-								justifySelf: {
-									responsive: true,
-									default: DEFAULT_VALUES.justifySelf,
-								},
-							},
-						};
-					}
-				}
+			if ( 1 > blockParents.length ) {
+				return <BlockListBlock { ...props } />;
 			}
+
+			const parentClientId = blockParents[ blockParents.length - 1 ];
+			if ( ! parentClientId ) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			const parentBlock = getBlock( parentClientId );
+			if ( 'unitone/grid-divided' !== parentBlock?.name ) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			const DEFAULT_VALUES = {
+				alignSelf: {
+					lg: 'stretch',
+				},
+				justifySelf: {
+					lg: 'stretch',
+				},
+			};
+
+			const newProps = {
+				...props,
+				attributes: {
+					...props?.attributes,
+					unitone: {
+						...props?.attributes?.unitone,
+						alignSelf:
+							null != props?.attributes?.unitone?.alignSelf
+								? props?.attributes?.unitone?.alignSelf
+								: DEFAULT_VALUES.alignSelf,
+						justifySelf:
+							null != props?.attributes?.unitone?.justifySelf
+								? props?.attributes?.unitone?.justifySelf
+								: DEFAULT_VALUES.justifySelf,
+					},
+					__unstableUnitoneSupports: {
+						alignSelf: {
+							responsive: true,
+							default: DEFAULT_VALUES.alignSelf,
+						},
+						justifySelf: {
+							responsive: true,
+							default: DEFAULT_VALUES.justifySelf,
+						},
+					},
+				},
+			};
 
 			return <BlockListBlock { ...newProps } />;
 		};

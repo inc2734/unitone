@@ -28,78 +28,72 @@ registerBlockType( 'unitone/layers', {
 const withChildBlockAttributes = createHigherOrderComponent(
 	( BlockListBlock ) => {
 		return ( props ) => {
-			const { getBlockParents, getBlock } = useSelect(
-				( select ) => {
-					return select( blockEditorStore );
-				},
-				[ props.clientId ]
-			);
-
-			const newProps = { ...props };
+			const { getBlockParents, getBlock } = useSelect( blockEditorStore );
 
 			const blockParents = getBlockParents( props.clientId );
-			if ( 0 < blockParents.length ) {
-				const parentClientId = blockParents[ blockParents.length - 1 ];
-				if ( !! parentClientId ) {
-					const parentBlock = getBlock( parentClientId );
-
-					if ( 'unitone/layers' === parentBlock?.name ) {
-						const DEFAULT_VALUES = {
-							alignSelf: 'stretch',
-							justifySelf: 'stretch',
-							gridColumn: '1 / -1',
-							gridRow: '1 / -1',
-						};
-
-						newProps.attributes = {
-							...newProps.attributes,
-							unitone: {
-								...newProps.attributes?.unitone,
-								alignSelf:
-									null !=
-									newProps.attributes?.unitone?.alignSelf
-										? newProps.attributes?.unitone
-												?.alignSelf
-										: DEFAULT_VALUES.alignSelf,
-								justifySelf:
-									null !=
-									newProps.attributes?.unitone?.justifySelf
-										? newProps.attributes?.unitone
-												?.justifySelf
-										: DEFAULT_VALUES.justifySelf,
-								gridColumn:
-									null !=
-									newProps.attributes?.unitone?.gridColumn
-										? newProps.attributes?.unitone
-												?.gridColumn
-										: DEFAULT_VALUES.gridColumn,
-								gridRow:
-									null !=
-									newProps.attributes?.unitone?.gridRow
-										? newProps.attributes?.unitone?.gridRow
-										: DEFAULT_VALUES.gridRow,
-							},
-							__unstableUnitoneSupports: {
-								alignSelf: {
-									default: DEFAULT_VALUES.alignSelf,
-								},
-								justifySelf: {
-									default: DEFAULT_VALUES.justifySelf,
-								},
-								gridColumn: {
-									default: DEFAULT_VALUES.gridColumn,
-								},
-								gridRow: {
-									default: DEFAULT_VALUES.gridRow,
-								},
-								maxWidth: true,
-								minHeight: true,
-								mixBlendMode: true,
-							},
-						};
-					}
-				}
+			if ( 1 > blockParents.length ) {
+				return <BlockListBlock { ...props } />;
 			}
+
+			const parentClientId = blockParents[ blockParents.length - 1 ];
+			if ( ! parentClientId ) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			const parentBlock = getBlock( parentClientId );
+			if ( 'unitone/layers' !== parentBlock?.name ) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			const DEFAULT_VALUES = {
+				alignSelf: 'stretch',
+				justifySelf: 'stretch',
+				gridColumn: '1 / -1',
+				gridRow: '1 / -1',
+			};
+
+			const newProps = {
+				...props,
+				attributes: {
+					...props?.attributes,
+					unitone: {
+						...props?.attributes?.unitone,
+						alignSelf:
+							null != props?.attributes?.unitone?.alignSelf
+								? props?.attributes?.unitone?.alignSelf
+								: DEFAULT_VALUES.alignSelf,
+						justifySelf:
+							null != props?.attributes?.unitone?.justifySelf
+								? props?.attributes?.unitone?.justifySelf
+								: DEFAULT_VALUES.justifySelf,
+						gridColumn:
+							null != props?.attributes?.unitone?.gridColumn
+								? props?.attributes?.unitone?.gridColumn
+								: DEFAULT_VALUES.gridColumn,
+						gridRow:
+							null != props?.attributes?.unitone?.gridRow
+								? props?.attributes?.unitone?.gridRow
+								: DEFAULT_VALUES.gridRow,
+					},
+					__unstableUnitoneSupports: {
+						alignSelf: {
+							default: DEFAULT_VALUES.alignSelf,
+						},
+						justifySelf: {
+							default: DEFAULT_VALUES.justifySelf,
+						},
+						gridColumn: {
+							default: DEFAULT_VALUES.gridColumn,
+						},
+						gridRow: {
+							default: DEFAULT_VALUES.gridRow,
+						},
+						maxWidth: true,
+						minHeight: true,
+						mixBlendMode: true,
+					},
+				},
+			};
 
 			return <BlockListBlock { ...newProps } />;
 		};

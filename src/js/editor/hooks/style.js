@@ -120,6 +120,10 @@ const addAttribute = ( settings ) => {
 
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
+		if ( ! props.isSelected ) {
+			return <BlockEdit { ...props } />;
+		}
+
 		if (
 			! hasBlockSupport( props.name, 'typography.fontSize' ) &&
 			! hasBlockSupport( props.name, 'typography.lineHeight' ) &&

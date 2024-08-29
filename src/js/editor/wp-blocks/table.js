@@ -60,7 +60,7 @@ addFilter(
 
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		if ( 'core/table' !== props.name ) {
+		if ( ! props.isSelected || 'core/table' !== props.name ) {
 			return <BlockEdit { ...props } />;
 		}
 

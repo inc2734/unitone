@@ -26,46 +26,45 @@ registerBlockType( 'unitone/both-sides', {
 const withChildBlockAttributes = createHigherOrderComponent(
 	( BlockListBlock ) => {
 		return ( props ) => {
-			const { getBlockParents, getBlock } = useSelect(
-				( select ) => {
-					return select( blockEditorStore );
-				},
-				[ props.clientId ]
-			);
-
-			const newProps = { ...props };
+			const { getBlockParents, getBlock } = useSelect( blockEditorStore );
 
 			const blockParents = getBlockParents( props.clientId );
-			if ( 0 < blockParents.length ) {
-				const parentClientId = blockParents[ blockParents.length - 1 ];
-				if ( !! parentClientId ) {
-					const parentBlock = getBlock( parentClientId );
-
-					if ( 'unitone/both-sides' === parentBlock?.name ) {
-						const DEFAULT_VALUES = {
-							flexBasis: 'fit-content',
-						};
-
-						newProps.attributes = {
-							...newProps.attributes,
-							unitone: {
-								...newProps.attributes?.unitone,
-								flexBasis:
-									null !=
-									newProps.attributes?.unitone?.flexBasis
-										? newProps.attributes?.unitone
-												?.flexBasis
-										: DEFAULT_VALUES.flexBasis,
-							},
-							__unstableUnitoneSupports: {
-								flexBasis: {
-									default: DEFAULT_VALUES.flexBasis,
-								},
-							},
-						};
-					}
-				}
+			if ( 1 > blockParents.length ) {
+				return <BlockListBlock { ...props } />;
 			}
+
+			const parentClientId = blockParents[ blockParents.length - 1 ];
+			if ( ! parentClientId ) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			const parentBlock = getBlock( parentClientId );
+			if ( 'unitone/both-sides' !== parentBlock?.name ) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			const DEFAULT_VALUES = {
+				flexBasis: 'fit-content',
+			};
+
+			const newProps = {
+				...props,
+				attributes: {
+					...props?.attributes,
+					unitone: {
+						...props?.attributes?.unitone,
+						flexBasis:
+							null != props?.attributes?.unitone?.flexBasis
+								? props?.attributes?.unitone?.flexBasis
+								: DEFAULT_VALUES.flexBasis,
+					},
+					__unstableUnitoneSupports: {
+						flexBasis: {
+							default: DEFAULT_VALUES.flexBasis,
+						},
+					},
+				},
+			};
 
 			return <BlockListBlock { ...newProps } />;
 		};

@@ -25,25 +25,26 @@ registerBlockType( 'unitone/section', {
 const changeUnitoneSupportsLabels = createHigherOrderComponent(
 	( BlockListBlock ) => {
 		return ( props ) => {
-			if ( 'unitone/section' !== props.name ) {
+			if ( ! props.isSelected || 'unitone/section' !== props.name ) {
 				return <BlockListBlock { ...props } />;
 			}
 
-			const newProps = { ...props };
-
-			newProps.attributes = {
-				...newProps.attributes,
-				__unstableUnitoneSupports: {
-					...newProps.attributes?.__unstableUnitoneSupports,
-					maxWidth: {
-						...newProps.attributes?.__unstableUnitoneSupports
-							?.maxWidth,
-						label: __( 'Max width of contents', 'unitone' ),
-					},
-					padding: {
-						...newProps.attributes?.__unstableUnitoneSupports
-							?.padding,
-						label: __( 'Top and bottom padding', 'unitone' ),
+			const newProps = {
+				...props,
+				attributes: {
+					...props?.attributes,
+					__unstableUnitoneSupports: {
+						...props?.attributes?.__unstableUnitoneSupports,
+						maxWidth: {
+							...props?.attributes?.__unstableUnitoneSupports
+								?.maxWidth,
+							label: __( 'Max width of contents', 'unitone' ),
+						},
+						padding: {
+							...props?.attributes?.__unstableUnitoneSupports
+								?.padding,
+							label: __( 'Top and bottom padding', 'unitone' ),
+						},
 					},
 				},
 			};

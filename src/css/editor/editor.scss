@@ -131,7 +131,7 @@
 
 // Remove the bottom margin of the element before one of the block list appender.
 // Since there is no the block list appender at the front.
-.editor-styles-wrapper .block-editor-block-list__layout:not(.is-root-container):not([data-unitone-layout~="cover"]) > .wp-block:nth-last-child(2) {
+.editor-styles-wrapper .block-editor-block-list__layout:not(.is-root-container):not([data-unitone-layout~="cover"]):has(> .block-list-appender) > .wp-block:nth-last-child(2) {
 	margin-block-end: 0;
 }
 

@@ -13,35 +13,18 @@ import { __ } from '@wordpress/i18n';
 
 const withBlockOutlineToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { clientId, isSelected } = props;
+		const { clientId } = props;
 
-		const { canDisplayed, targetClientId, targetBlockAttributes } =
-			useSelect(
-				( select ) => {
-					if ( ! isSelected ) {
-						return {};
-					}
-
-					const data = select( blockEditorStore );
-					const block = data.getBlock( clientId );
-					const hasInnerBlocks = 0 < block.innerBlocks.length;
-					const rootClientId = data.getBlockParents(
-						clientId,
-						false
-					)?.[ 0 ];
-					const _targetClientId = rootClientId || clientId;
-
-					return {
-						canDisplayed: hasInnerBlocks || rootClientId,
-						targetClientId: _targetClientId,
-						targetBlockAttributes:
-							data.getBlockAttributes( _targetClientId ),
-					};
-				},
-				[ clientId, isSelected ]
-			);
-
+		const { getBlock, getBlockParents, getBlockAttributes } =
+			useSelect( blockEditorStore );
 		const { updateBlockAttributes } = useDispatch( blockEditorStore );
+
+		const innerBlocks = getBlock( clientId ).innerBlocks;
+		const hasInnerBlocks = 0 < innerBlocks.length;
+		const rootClientId = getBlockParents( clientId, false )?.[ 0 ];
+		const targetClientId = rootClientId || clientId;
+		const canDisplayed = hasInnerBlocks || rootClientId;
+		const targetBlockAttributes = getBlockAttributes( targetClientId );
 
 		const onClick = useCallback( () => {
 			updateBlockAttributes( targetClientId, {

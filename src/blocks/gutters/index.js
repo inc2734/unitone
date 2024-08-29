@@ -24,20 +24,21 @@ registerBlockType( 'unitone/gutters', {
 const changeUnitoneSupportsLabels = createHigherOrderComponent(
 	( BlockListBlock ) => {
 		return ( props ) => {
-			if ( 'unitone/gutters' !== props.name ) {
+			if ( ! props.isSelected || 'unitone/gutters' !== props.name ) {
 				return <BlockListBlock { ...props } />;
 			}
 
-			const newProps = { ...props };
-
-			newProps.attributes = {
-				...newProps.attributes,
-				__unstableUnitoneSupports: {
-					...newProps.attributes?.__unstableUnitoneSupports,
-					padding: {
-						...newProps.attributes?.__unstableUnitoneSupports
-							?.padding,
-						label: __( 'Top and bottom padding', 'unitone' ),
+			const newProps = {
+				...props,
+				attributes: {
+					...props?.attributes,
+					__unstableUnitoneSupports: {
+						...props?.attributes?.__unstableUnitoneSupports,
+						padding: {
+							...props?.attributes?.__unstableUnitoneSupports
+								?.padding,
+							label: __( 'Top and bottom padding', 'unitone' ),
+						},
 					},
 				},
 			};

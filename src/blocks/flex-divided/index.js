@@ -26,65 +26,61 @@ registerBlockType( 'unitone/flex-divided', {
 const withChildBlockAttributes = createHigherOrderComponent(
 	( BlockListBlock ) => {
 		return ( props ) => {
-			const { getBlockParents, getBlock } = useSelect(
-				( select ) => {
-					return select( blockEditorStore );
-				},
-				[ props.clientId ]
-			);
-
-			const newProps = { ...props };
+			const { getBlockParents, getBlock } = useSelect( blockEditorStore );
 
 			const blockParents = getBlockParents( props.clientId );
-			if ( 0 < blockParents.length ) {
-				const parentClientId = blockParents[ blockParents.length - 1 ];
-				if ( !! parentClientId ) {
-					const parentBlock = getBlock( parentClientId );
-
-					if ( 'unitone/flex-divided' === parentBlock?.name ) {
-						const DEFAULT_VALUES = {
-							flexGrow: '0',
-							flexShrink: '1',
-							flexBasis: 'auto',
-						};
-
-						newProps.attributes = {
-							...newProps.attributes,
-							unitone: {
-								...newProps.attributes?.unitone,
-								flexGrow:
-									null !=
-									newProps.attributes?.unitone?.flexGrow
-										? newProps.attributes?.unitone?.flexGrow
-										: DEFAULT_VALUES.flexGrow,
-								flexShrink:
-									null !=
-									newProps.attributes?.unitone?.flexShrink
-										? newProps.attributes?.unitone
-												?.flexShrink
-										: DEFAULT_VALUES.flexShrink,
-								flexBasis:
-									null !=
-									newProps.attributes?.unitone?.flexBasis
-										? newProps.attributes?.unitone
-												?.flexBasis
-										: DEFAULT_VALUES.flexBasis,
-							},
-							__unstableUnitoneSupports: {
-								flexGrow: {
-									default: DEFAULT_VALUES.flexGrow,
-								},
-								flexShrink: {
-									default: DEFAULT_VALUES.flexShrink,
-								},
-								flexBasis: {
-									default: DEFAULT_VALUES.flexBasis,
-								},
-							},
-						};
-					}
-				}
+			if ( 1 > blockParents.length ) {
+				return <BlockListBlock { ...props } />;
 			}
+
+			const parentClientId = blockParents[ blockParents.length - 1 ];
+			if ( ! parentClientId ) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			const parentBlock = getBlock( parentClientId );
+			if ( 'unitone/flex-divided' !== parentBlock?.name ) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			const DEFAULT_VALUES = {
+				flexGrow: '0',
+				flexShrink: '1',
+				flexBasis: 'auto',
+			};
+
+			const newProps = {
+				...props,
+				attributes: {
+					...props?.attributes,
+					unitone: {
+						...props?.attributes?.unitone,
+						flexGrow:
+							null != props?.attributes?.unitone?.flexGrow
+								? props?.attributes?.unitone?.flexGrow
+								: DEFAULT_VALUES.flexGrow,
+						flexShrink:
+							null != props?.attributes?.unitone?.flexShrink
+								? props?.attributes?.unitone?.flexShrink
+								: DEFAULT_VALUES.flexShrink,
+						flexBasis:
+							null != props?.attributes?.unitone?.flexBasis
+								? props?.attributes?.unitone?.flexBasis
+								: DEFAULT_VALUES.flexBasis,
+					},
+					__unstableUnitoneSupports: {
+						flexGrow: {
+							default: DEFAULT_VALUES.flexGrow,
+						},
+						flexShrink: {
+							default: DEFAULT_VALUES.flexShrink,
+						},
+						flexBasis: {
+							default: DEFAULT_VALUES.flexBasis,
+						},
+					},
+				},
+			};
 
 			return <BlockListBlock { ...newProps } />;
 		};

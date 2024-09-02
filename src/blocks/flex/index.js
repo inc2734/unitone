@@ -24,19 +24,13 @@ registerBlockType( 'unitone/flex', {
 const withChildBlockAttributes = createHigherOrderComponent(
 	( BlockListBlock ) => {
 		return ( props ) => {
-			const { getBlockParents, getBlock } = useSelect( blockEditorStore );
+			const { getBlock } = useSelect( blockEditorStore );
 
-			const blockParents = getBlockParents( props.clientId );
-			if ( 1 > blockParents.length ) {
+			if ( ! props.rootClientId ) {
 				return <BlockListBlock { ...props } />;
 			}
 
-			const parentClientId = blockParents[ blockParents.length - 1 ];
-			if ( ! parentClientId ) {
-				return <BlockListBlock { ...props } />;
-			}
-
-			const parentBlock = getBlock( parentClientId );
+			const parentBlock = getBlock( props.rootClientId );
 			if ( 'unitone/flex' !== parentBlock?.name ) {
 				return <BlockListBlock { ...props } />;
 			}
@@ -67,6 +61,7 @@ const withChildBlockAttributes = createHigherOrderComponent(
 								: DEFAULT_VALUES.flexBasis,
 					},
 					__unstableUnitoneSupports: {
+						...props?.attributes?.__unstableUnitoneSupports,
 						flexGrow: {
 							default: DEFAULT_VALUES.flexGrow,
 						},
@@ -89,5 +84,6 @@ const withChildBlockAttributes = createHigherOrderComponent(
 addFilter(
 	'editor.BlockListBlock',
 	'unitone/flex/with-child-block-attributes',
-	withChildBlockAttributes
+	withChildBlockAttributes,
+	11
 );

@@ -229,19 +229,14 @@ export function saveDividerProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editDividerProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.divider' ) ) {
-		return settings;
-	}
+export function useDividerBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveDividerProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveDividerProp( wrapperProps, name, attributes ),
+		},
 	};
-
-	return settings;
 }

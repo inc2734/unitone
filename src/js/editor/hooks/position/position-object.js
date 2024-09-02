@@ -441,19 +441,14 @@ export function savePositionProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editPositionProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.position' ) ) {
-		return settings;
-	}
+export function usePositionBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return savePositionProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...savePositionProp( wrapperProps, name, attributes ),
+		},
 	};
-
-	return settings;
 }

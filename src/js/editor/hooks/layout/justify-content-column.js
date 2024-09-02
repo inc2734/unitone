@@ -215,18 +215,14 @@ export function saveJustifyContentColumnProp(
 	return extraProps;
 }
 
-export function editJustifyContentColumnProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.justifyContentColumn' ) ) {
-		return settings;
-	}
+export function useJustifyContentColumnBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveJustifyContentColumnProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveJustifyContentColumnProp( wrapperProps, name, attributes ),
+		},
 	};
-	return settings;
 }

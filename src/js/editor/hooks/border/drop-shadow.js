@@ -314,18 +314,14 @@ export function saveDropShadowProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editDropShadowProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.dropShadow' ) ) {
-		return settings;
-	}
+export function useDropShadowBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveDropShadowProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveDropShadowProp( wrapperProps, name, attributes ),
+		},
 	};
-	return settings;
 }

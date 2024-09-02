@@ -2,108 +2,105 @@
  * @see https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/style.js
  */
 
-import { hasBlockSupport } from '@wordpress/blocks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 
 import {
 	DimensionsPanel,
-	editPaddingProp,
-	editGuttersProp,
-	editGapProp,
-	editStairsProp,
-	editNegativeProp,
-	editOverflowProp,
+	useGapBlockProps,
+	useGuttersBlockProps,
+	useNegativeBlockProps,
+	useOverflowBlockProps,
+	usePaddingBlockProps,
+	useStairsBlockProps,
 } from './dimensions/dimensions';
 
 import {
 	LayoutPanel,
-	editAlignItemsProp,
-	editJustifyContentProp,
-	editJustifyContentColumnProp,
-	editBlockAlignProp,
-	editMaxWidthProp,
-	editMaxHeightProp,
-	editMinHeightProp,
-	editAutoRepeatProp,
-	editFlexGrowProp,
-	editFlexShrinkProp,
-	editFlexBasisProp,
-	editAlignSelfProp,
-	editJustifySelfProp,
-	editGridColumnProp,
-	editGridRowProp,
+	useAlignItemsBlockProps,
+	useJustifyContentBlockProps,
+	useJustifyContentColumnBlockProps,
+	useBlockAlignBlockProps,
+	useMaxWidthBlockProps,
+	useMaxHeightBlockProps,
+	useMinHeightBlockProps,
+	useAutoRepeatBlockProps,
+	useFlexGrowBlockProps,
+	useFlexShrinkBlockProps,
+	useFlexBasisBlockProps,
+	useAlignSelfBlockProps,
+	useJustifySelfBlockProps,
+	useGridColumnBlockProps,
+	useGridRowBlockProps,
 } from './layout/layout';
 
-import { LayerPanel, editMixBlendModeProp } from './layer/layer';
+import { LayerPanel, useMixBlendModeBlockProps } from './layer/layer';
 
 import {
 	AnimationPanel,
-	editParallaxProp,
-	editScrollAnimationProp,
+	useParallaxBlockProps,
+	useScrollAnimationBlockProps,
 } from './animation/animation';
 
 import {
 	TypographyPanel,
-	editAutoPhraseProp,
-	editFluidTypographyProp,
-	editHalfLeadingProp,
+	useAutoPhraseBlockProps,
+	useFluidTypographyBlockProps,
+	useHalfLeadingBlockProps,
 } from './typography/typography';
 
 import {
 	DividerPanel,
-	editDividerProp,
-	editDividerTypeProp,
+	useDividerBlockProps,
+	useDividerTypeBlockProps,
 } from './divider/divider';
 
-import { DropShadowPanel, editDropShadowProp } from './border/border';
+import { DropShadowPanel, useDropShadowBlockProps } from './border/border';
+import { PositionPanel, usePositionBlockProps } from './position/position';
 
-import { PositionPanel, editPositionProp } from './position/position';
+const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
+	return ( props ) => {
+		props = useAutoPhraseBlockProps( props );
+		props = useFluidTypographyBlockProps( props );
+		props = useHalfLeadingBlockProps( props );
 
-function addEditProps( settings ) {
-	if ( !! settings.supports?.typography?.fontSize ) {
-		settings = editAutoPhraseProp( settings );
-	}
+		props = useAlignItemsBlockProps( props );
+		props = useAlignSelfBlockProps( props );
+		props = useAutoRepeatBlockProps( props );
+		props = useBlockAlignBlockProps( props );
+		props = useFlexBasisBlockProps( props );
+		props = useFlexGrowBlockProps( props );
+		props = useFlexShrinkBlockProps( props );
+		props = useGridColumnBlockProps( props );
+		props = useGridRowBlockProps( props );
+		props = useJustifyContentColumnBlockProps( props );
+		props = useJustifyContentBlockProps( props );
+		props = useJustifySelfBlockProps( props );
+		props = useMaxHeightBlockProps( props );
+		props = useMaxWidthBlockProps( props );
+		props = useMinHeightBlockProps( props );
+		props = usePositionBlockProps( props );
 
-	if ( !! settings.supports?.typography?.fontSize ) {
-		settings = editFluidTypographyProp( settings );
-	}
+		props = useGapBlockProps( props );
+		props = useGuttersBlockProps( props );
+		props = useNegativeBlockProps( props );
+		props = useOverflowBlockProps( props );
+		props = usePaddingBlockProps( props );
+		props = useStairsBlockProps( props );
 
-	if ( !! settings.supports?.typography?.lineHeight ) {
-		settings = editHalfLeadingProp( settings );
-	}
+		props = useDividerBlockProps( props );
+		props = useDividerTypeBlockProps( props );
 
-	settings = editAlignItemsProp( settings );
-	settings = editBlockAlignProp( settings );
-	settings = editDividerProp( settings );
-	settings = editDividerTypeProp( settings );
-	settings = editGapProp( settings );
-	settings = editStairsProp( settings );
-	settings = editGuttersProp( settings );
-	settings = editJustifyContentColumnProp( settings );
-	settings = editJustifyContentProp( settings );
-	settings = editMaxWidthProp( settings );
-	settings = editMaxHeightProp( settings );
-	settings = editMinHeightProp( settings );
-	settings = editAutoRepeatProp( settings );
-	settings = editFlexGrowProp( settings );
-	settings = editFlexShrinkProp( settings );
-	settings = editFlexBasisProp( settings );
-	settings = editNegativeProp( settings );
-	settings = editOverflowProp( settings );
-	settings = editPaddingProp( settings );
-	settings = editPositionProp( settings );
-	settings = editAlignSelfProp( settings );
-	settings = editJustifySelfProp( settings );
-	settings = editGridColumnProp( settings );
-	settings = editGridRowProp( settings );
-	settings = editMixBlendModeProp( settings );
-	settings = editDropShadowProp( settings );
-	settings = editParallaxProp( settings );
-	settings = editScrollAnimationProp( settings );
+		props = useMixBlendModeBlockProps( props );
 
-	return settings;
-}
+		props = useDropShadowBlockProps( props );
+
+		props = useParallaxBlockProps( props );
+		props = useScrollAnimationBlockProps( props );
+
+		return <BlockListBlock { ...props } />;
+	};
+}, 'useBlockProps' );
 
 const addAttribute = ( settings ) => {
 	// Allow blocks to specify their own attribute definition with default values if needed.
@@ -124,36 +121,18 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 			return <BlockEdit { ...props } />;
 		}
 
-		if (
-			! hasBlockSupport( props.name, 'typography.fontSize' ) &&
-			! hasBlockSupport( props.name, 'typography.lineHeight' ) &&
-			! hasBlockSupport( props.name, 'unitone' ) &&
-			! props.attributes?.__unstableUnitoneSupports
-		) {
-			return <BlockEdit { ...props } />;
-		}
-
 		return (
 			<>
 				<BlockEdit { ...props } />
 
-				{ hasBlockSupport( props.name, 'typography.fontSize' ) &&
-					hasBlockSupport( props.name, 'typography.lineHeight' ) && (
-						<TypographyPanel { ...props } />
-					) }
-
-				{ ( hasBlockSupport( props.name, 'unitone' ) ||
-					!! props.attributes?.__unstableUnitoneSupports ) && (
-					<>
-						<DimensionsPanel { ...props } />
-						<LayoutPanel { ...props } />
-						<DividerPanel { ...props } />
-						<PositionPanel { ...props } />
-						<LayerPanel { ...props } />
-						<DropShadowPanel { ...props } />
-						<AnimationPanel { ...props } />
-					</>
-				) }
+				<TypographyPanel { ...props } />
+				<DimensionsPanel { ...props } />
+				<LayoutPanel { ...props } />
+				<DividerPanel { ...props } />
+				<PositionPanel { ...props } />
+				<LayerPanel { ...props } />
+				<DropShadowPanel { ...props } />
+				<AnimationPanel { ...props } />
 			</>
 		);
 	};
@@ -166,9 +145,9 @@ addFilter(
 );
 
 addFilter(
-	'blocks.registerBlockType',
-	'unitone/style/addEditProps',
-	addEditProps
+	'editor.BlockListBlock',
+	'unitone/style/useBlockProps',
+	useBlockProps
 );
 
 addFilter(

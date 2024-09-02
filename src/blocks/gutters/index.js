@@ -35,8 +35,6 @@ const changeUnitoneSupportsLabels = createHigherOrderComponent(
 					__unstableUnitoneSupports: {
 						...props?.attributes?.__unstableUnitoneSupports,
 						padding: {
-							...props?.attributes?.__unstableUnitoneSupports
-								?.padding,
 							label: __( 'Top and bottom padding', 'unitone' ),
 						},
 					},
@@ -52,5 +50,6 @@ const changeUnitoneSupportsLabels = createHigherOrderComponent(
 addFilter(
 	'editor.BlockListBlock',
 	'unitone/gutters/change-unitone-supports-labels',
-	changeUnitoneSupportsLabels
+	changeUnitoneSupportsLabels,
+	11
 );

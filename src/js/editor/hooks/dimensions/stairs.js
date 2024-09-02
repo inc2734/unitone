@@ -223,18 +223,14 @@ export function saveStairsProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editStairsProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.stairs' ) ) {
-		return settings;
-	}
+export function useStairsBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveStairsProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveStairsProp( wrapperProps, name, attributes ),
+		},
 	};
-	return settings;
 }

@@ -3,10 +3,10 @@ import { InspectorControls } from '@wordpress/block-editor';
 import {
 	useIsPositionDisabled,
 	PositionEdit,
-	editPositionProp,
+	usePositionBlockProps,
 } from './position-object';
 
-export { editPositionProp };
+export { usePositionBlockProps };
 
 export function PositionPanel( props ) {
 	const isPositionDisabled = useIsPositionDisabled( props );

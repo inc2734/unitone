@@ -67,19 +67,14 @@ export function saveFluidTypographyProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editFluidTypographyProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.fluidTypography' ) ) {
-		return settings;
-	}
+export function useFluidTypographyBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveFluidTypographyProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveFluidTypographyProp( wrapperProps, name, attributes ),
+		},
 	};
-
-	return settings;
 }

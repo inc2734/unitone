@@ -7,10 +7,10 @@ import {
 	resetDropShadow,
 	getDropShadowEditLabel,
 	DropShadowEdit,
-	editDropShadowProp,
+	useDropShadowBlockProps,
 } from './drop-shadow';
 
-export { editDropShadowProp };
+export { useDropShadowBlockProps };
 
 export function DropShadowPanel( props ) {
 	const isDropShadowDisabled = useIsDropShadowDisabled( props );

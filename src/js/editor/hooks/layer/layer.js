@@ -14,10 +14,10 @@ import {
 	hasMixBlendModeValue,
 	resetMixBlendMode,
 	MixBlendModeEdit,
-	editMixBlendModeProp,
+	useMixBlendModeBlockProps,
 } from './mix-blend-mode';
 
-export { editMixBlendModeProp };
+export { useMixBlendModeBlockProps };
 
 export function LayerPanel( props ) {
 	const isMixBlendModeDisabled = useIsMixBlendModeDisabled( props );

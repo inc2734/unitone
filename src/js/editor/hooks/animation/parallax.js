@@ -167,15 +167,14 @@ export function saveParallaxProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editParallaxProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveParallaxProp( props, settings, attributes );
-	};
+export function useParallaxBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveParallaxProp( wrapperProps, name, attributes ),
+		},
+	};
 }

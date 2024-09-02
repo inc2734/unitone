@@ -103,18 +103,18 @@ export function FlexBasisEdit( props ) {
 }
 
 export function saveFlexBasisProp( extraProps, blockType, attributes ) {
-	if (
-		! hasBlockSupport( blockType, 'unitone.flexBasis' ) &&
-		! attributes?.__unstableUnitoneSupports?.flexBasis
-	) {
-		delete attributes?.unitone?.flexBasis;
-		if (
-			!! attributes?.unitone &&
-			! Object.keys( attributes?.unitone ).length
-		) {
-			delete attributes?.unitone;
+	if ( ! hasBlockSupport( blockType, 'unitone.flexBasis' ) ) {
+		const { __unstableUnitoneSupports } = attributes;
+
+		if ( ! __unstableUnitoneSupports?.flexBasis ) {
+			delete attributes?.unitone?.flexBasis;
+
+			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
+				delete attributes?.unitone;
+			}
+
+			return extraProps;
 		}
-		return extraProps;
 	}
 
 	if ( undefined === attributes?.unitone?.flexBasis ) {
@@ -129,15 +129,14 @@ export function saveFlexBasisProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editFlexBasisProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveFlexBasisProp( props, settings, attributes );
-	};
+export function useFlexBasisBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveFlexBasisProp( wrapperProps, name, attributes ),
+		},
+	};
 }

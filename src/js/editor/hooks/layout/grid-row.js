@@ -227,18 +227,18 @@ export function GridRowEdit( props ) {
 }
 
 export function saveGridRowProp( extraProps, blockType, attributes ) {
-	if (
-		! hasBlockSupport( blockType, 'unitone.gridRow' ) &&
-		! attributes?.__unstableUnitoneSupports?.gridRow
-	) {
-		delete attributes?.unitone?.gridRow;
-		if (
-			!! attributes?.unitone &&
-			! Object.keys( attributes?.unitone ).length
-		) {
-			delete attributes?.unitone;
+	if ( ! hasBlockSupport( blockType, 'unitone.gridRow' ) ) {
+		const { __unstableUnitoneSupports } = attributes;
+
+		if ( ! __unstableUnitoneSupports?.gridRow ) {
+			delete attributes?.unitone?.gridRow;
+
+			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
+				delete attributes?.unitone;
+			}
+
+			return extraProps;
 		}
-		return extraProps;
 	}
 
 	if ( undefined === attributes?.unitone?.gridRow ) {
@@ -264,15 +264,14 @@ export function saveGridRowProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editGridRowProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveGridRowProp( props, settings, attributes );
-	};
+export function useGridRowBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveGridRowProp( wrapperProps, name, attributes ),
+		},
+	};
 }

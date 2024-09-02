@@ -415,18 +415,18 @@ export function AlignSelfEdit( props ) {
 }
 
 export function saveAlignSelfProp( extraProps, blockType, attributes ) {
-	if (
-		! hasBlockSupport( blockType, 'unitone.alignSelf' ) &&
-		! attributes?.__unstableUnitoneSupports?.alignSelf
-	) {
-		delete attributes?.unitone?.alignSelf;
-		if (
-			!! attributes?.unitone &&
-			! Object.keys( attributes?.unitone ).length
-		) {
-			delete attributes?.unitone;
+	if ( ! hasBlockSupport( blockType, 'unitone.alignSelf' ) ) {
+		const { __unstableUnitoneSupports } = attributes;
+
+		if ( ! __unstableUnitoneSupports?.alignSelf ) {
+			delete attributes?.unitone?.alignSelf;
+
+			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
+				delete attributes?.unitone;
+			}
+
+			return extraProps;
 		}
-		return extraProps;
 	}
 
 	if ( undefined === attributes?.unitone?.alignSelf ) {
@@ -450,15 +450,14 @@ export function saveAlignSelfProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editAlignSelfProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveAlignSelfProp( props, settings, attributes );
-	};
+export function useAlignSelfBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveAlignSelfProp( wrapperProps, name, attributes ),
+		},
+	};
 }

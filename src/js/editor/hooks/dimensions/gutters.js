@@ -142,19 +142,14 @@ export function saveGuttersProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editGuttersProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.gutters' ) ) {
-		return settings;
-	}
+export function useGuttersBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveGuttersProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveGuttersProp( wrapperProps, name, attributes ),
+		},
 	};
-
-	return settings;
 }

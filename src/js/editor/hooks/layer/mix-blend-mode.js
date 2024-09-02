@@ -161,18 +161,18 @@ export function MixBlendModeEdit( props ) {
 }
 
 export function saveMixBlendModeProp( extraProps, blockType, attributes ) {
-	if (
-		! hasBlockSupport( blockType, 'unitone.mixBlendMode' ) &&
-		! attributes?.__unstableUnitoneSupports?.mixBlendMode
-	) {
-		delete attributes?.unitone?.mixBlendMode;
-		if (
-			!! attributes?.unitone &&
-			! Object.keys( attributes?.unitone ).length
-		) {
-			delete attributes?.unitone;
+	if ( ! hasBlockSupport( blockType, 'unitone.mixBlendMode' ) ) {
+		const { __unstableUnitoneSupports } = attributes;
+
+		if ( ! __unstableUnitoneSupports?.mixBlendMode ) {
+			delete attributes?.unitone?.mixBlendMode;
+
+			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
+				delete attributes?.unitone;
+			}
+
+			return extraProps;
 		}
-		return extraProps;
 	}
 
 	if ( undefined === attributes?.unitone?.mixBlendMode ) {
@@ -187,15 +187,14 @@ export function saveMixBlendModeProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editMixBlendModeProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveMixBlendModeProp( props, settings, attributes );
-	};
+export function useMixBlendModeBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveMixBlendModeProp( wrapperProps, name, attributes ),
+		},
+	};
 }

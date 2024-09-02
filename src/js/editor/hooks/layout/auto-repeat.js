@@ -122,19 +122,14 @@ export function saveAutoRepeatProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editAutoRepeatProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.autoRepeat' ) ) {
-		return settings;
-	}
+export function useAutoRepeatBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveAutoRepeatProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveAutoRepeatProp( wrapperProps, name, attributes ),
+		},
 	};
-
-	return settings;
 }

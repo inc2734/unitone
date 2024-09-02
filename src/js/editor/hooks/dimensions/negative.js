@@ -108,19 +108,14 @@ export function saveNegativeProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editNegativeProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.negative' ) ) {
-		return settings;
-	}
+export function useNegativeBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveNegativeProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveNegativeProp( wrapperProps, name, attributes ),
+		},
 	};
-
-	return settings;
 }

@@ -15,7 +15,7 @@ import {
 	hasParallaxValue,
 	resetParallax,
 	ParallaxEdit,
-	editParallaxProp,
+	useParallaxBlockProps,
 } from './parallax';
 
 import {
@@ -23,10 +23,10 @@ import {
 	hasScrollAnimationValue,
 	resetScrollAnimation,
 	ScrollAnimationEdit,
-	editScrollAnimationProp,
+	useScrollAnimationBlockProps,
 } from './scroll-animation';
 
-export { editParallaxProp, editScrollAnimationProp };
+export { useParallaxBlockProps, useScrollAnimationBlockProps };
 
 export function AnimationPanel( props ) {
 	const isParallaxDisabled = useIsParallaxDisabled( props );

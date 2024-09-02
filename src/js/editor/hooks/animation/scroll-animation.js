@@ -433,15 +433,14 @@ export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editScrollAnimationProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveScrollAnimationProp( props, settings, attributes );
-	};
+export function useScrollAnimationBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveScrollAnimationProp( wrapperProps, name, attributes ),
+		},
+	};
 }

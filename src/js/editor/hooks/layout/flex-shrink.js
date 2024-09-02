@@ -116,18 +116,18 @@ export function FlexShrinkEdit( props ) {
 }
 
 export function saveFlexShrinkProp( extraProps, blockType, attributes ) {
-	if (
-		! hasBlockSupport( blockType, 'unitone.flexShrink' ) &&
-		! attributes?.__unstableUnitoneSupports?.flexShrink
-	) {
-		delete attributes?.unitone?.flexShrink;
-		if (
-			!! attributes?.unitone &&
-			! Object.keys( attributes?.unitone ).length
-		) {
-			delete attributes?.unitone;
+	if ( ! hasBlockSupport( blockType, 'unitone.flexShrink' ) ) {
+		const { __unstableUnitoneSupports } = attributes;
+
+		if ( ! __unstableUnitoneSupports?.flexShrink ) {
+			delete attributes?.unitone?.flexShrink;
+
+			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
+				delete attributes?.unitone;
+			}
+
+			return extraProps;
 		}
-		return extraProps;
 	}
 
 	if ( undefined === attributes?.unitone?.flexShrink ) {
@@ -142,15 +142,14 @@ export function saveFlexShrinkProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editFlexShrinkProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveFlexShrinkProp( props, settings, attributes );
-	};
+export function useFlexShrinkBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveFlexShrinkProp( wrapperProps, name, attributes ),
+		},
+	};
 }

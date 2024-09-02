@@ -17,7 +17,7 @@ import {
 	JustifyContentToolbar,
 	getJustifyContentEditLabel,
 	JustifyContentEdit,
-	editJustifyContentProp,
+	useJustifyContentBlockProps,
 } from './justify-content';
 
 import {
@@ -27,7 +27,7 @@ import {
 	JustifyContentColumnToolbar,
 	getJustifyContentColumnEditLabel,
 	JustifyContentColumnEdit,
-	editJustifyContentColumnProp,
+	useJustifyContentColumnBlockProps,
 } from './justify-content-column';
 
 import {
@@ -37,7 +37,7 @@ import {
 	AlignItemsToolbar,
 	getAlignItemsEditLabel,
 	AlignItemsEdit,
-	editAlignItemsProp,
+	useAlignItemsBlockProps,
 } from './align-items';
 
 import {
@@ -47,7 +47,7 @@ import {
 	BlockAlignToolbar,
 	getBlockAlignEditLabel,
 	BlockAlignEdit,
-	editBlockAlignProp,
+	useBlockAlignBlockProps,
 } from './block-align';
 
 import {
@@ -56,7 +56,7 @@ import {
 	resetFlexBasis,
 	getFlexBasisEditLabel,
 	FlexBasisEdit,
-	editFlexBasisProp,
+	useFlexBasisBlockProps,
 } from './flex-basis';
 
 import {
@@ -65,7 +65,7 @@ import {
 	resetFlexGrow,
 	getFlexGrowEditLabel,
 	FlexGrowEdit,
-	editFlexGrowProp,
+	useFlexGrowBlockProps,
 } from './flex-grow';
 
 import {
@@ -74,7 +74,7 @@ import {
 	resetFlexShrink,
 	getFlexShrinkEditLabel,
 	FlexShrinkEdit,
-	editFlexShrinkProp,
+	useFlexShrinkBlockProps,
 } from './flex-shrink';
 
 import {
@@ -83,7 +83,7 @@ import {
 	resetMaxWidth,
 	getMaxWidthEditLabel,
 	MaxWidthEdit,
-	editMaxWidthProp,
+	useMaxWidthBlockProps,
 } from './max-width';
 
 import {
@@ -92,7 +92,7 @@ import {
 	resetMaxHeight,
 	getMaxHeightEditLabel,
 	MaxHeightEdit,
-	editMaxHeightProp,
+	useMaxHeightBlockProps,
 } from './max-height';
 
 import {
@@ -101,7 +101,7 @@ import {
 	resetMinHeight,
 	getMinHeightEditLabel,
 	MinHeightEdit,
-	editMinHeightProp,
+	useMinHeightBlockProps,
 } from './min-height';
 
 import {
@@ -110,7 +110,7 @@ import {
 	resetAutoRepeat,
 	getAutoRepeatEditLabel,
 	AutoRepeatEdit,
-	editAutoRepeatProp,
+	useAutoRepeatBlockProps,
 } from './auto-repeat';
 
 import {
@@ -120,7 +120,7 @@ import {
 	AlignSelfToolbar,
 	getAlignSelfEditLabel,
 	AlignSelfEdit,
-	editAlignSelfProp,
+	useAlignSelfBlockProps,
 } from './align-self';
 
 import {
@@ -130,7 +130,7 @@ import {
 	JustifySelfToolbar,
 	getJustifySelfEditLabel,
 	JustifySelfEdit,
-	editJustifySelfProp,
+	useJustifySelfBlockProps,
 } from './justify-self';
 
 import {
@@ -139,7 +139,7 @@ import {
 	resetGridColumn,
 	getGridColumnEditLabel,
 	GridColumnEdit,
-	editGridColumnProp,
+	useGridColumnBlockProps,
 } from './grid-column';
 
 import {
@@ -148,25 +148,25 @@ import {
 	resetGridRow,
 	getGridRowEditLabel,
 	GridRowEdit,
-	editGridRowProp,
+	useGridRowBlockProps,
 } from './grid-row';
 
 export {
-	editAlignItemsProp,
-	editJustifyContentProp,
-	editJustifyContentColumnProp,
-	editBlockAlignProp,
-	editFlexBasisProp,
-	editFlexGrowProp,
-	editFlexShrinkProp,
-	editMaxWidthProp,
-	editMaxHeightProp,
-	editMinHeightProp,
-	editAutoRepeatProp,
-	editAlignSelfProp,
-	editJustifySelfProp,
-	editGridColumnProp,
-	editGridRowProp,
+	useAlignItemsBlockProps,
+	useJustifyContentBlockProps,
+	useJustifyContentColumnBlockProps,
+	useBlockAlignBlockProps,
+	useFlexBasisBlockProps,
+	useFlexGrowBlockProps,
+	useFlexShrinkBlockProps,
+	useMaxWidthBlockProps,
+	useMaxHeightBlockProps,
+	useMinHeightBlockProps,
+	useAutoRepeatBlockProps,
+	useAlignSelfBlockProps,
+	useJustifySelfBlockProps,
+	useGridColumnBlockProps,
+	useGridRowBlockProps,
 };
 
 export function LayoutPanel( props ) {

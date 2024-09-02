@@ -199,18 +199,14 @@ export function saveBlockAlignProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editBlockAlignProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.blockAlign' ) ) {
-		return settings;
-	}
+export function useBlockAlignBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveBlockAlignProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveBlockAlignProp( wrapperProps, name, attributes ),
+		},
 	};
-	return settings;
 }

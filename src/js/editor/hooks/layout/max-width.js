@@ -163,18 +163,18 @@ export function MaxWidthEdit( props ) {
 }
 
 export function saveMaxWidthProp( extraProps, blockType, attributes ) {
-	if (
-		! hasBlockSupport( blockType, 'unitone.maxWidth' ) &&
-		! attributes?.__unstableUnitoneSupports?.maxWidth
-	) {
-		delete attributes?.unitone?.maxWidth;
-		if (
-			!! attributes?.unitone &&
-			! Object.keys( attributes?.unitone ).length
-		) {
-			delete attributes?.unitone;
+	if ( ! hasBlockSupport( blockType, 'unitone.maxWidth' ) ) {
+		const { __unstableUnitoneSupports } = attributes;
+
+		if ( ! __unstableUnitoneSupports?.maxWidth ) {
+			delete attributes?.unitone?.maxWidth;
+
+			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
+				delete attributes?.unitone;
+			}
+
+			return extraProps;
 		}
-		return extraProps;
 	}
 
 	if ( undefined === attributes?.unitone?.maxWidth ) {
@@ -199,15 +199,14 @@ export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editMaxWidthProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveMaxWidthProp( props, settings, attributes );
-	};
+export function useMaxWidthBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveMaxWidthProp( wrapperProps, name, attributes ),
+		},
+	};
 }

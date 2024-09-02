@@ -211,18 +211,14 @@ export function saveJustifyContentProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editJustifyContentProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.justifyContent' ) ) {
-		return settings;
-	}
+export function useJustifyContentBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveJustifyContentProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveJustifyContentProp( wrapperProps, name, attributes ),
+		},
 	};
-	return settings;
 }

@@ -229,18 +229,18 @@ export function GridColumnEdit( props ) {
 }
 
 export function saveGridColumnProp( extraProps, blockType, attributes ) {
-	if (
-		! hasBlockSupport( blockType, 'unitone.gridColumn' ) &&
-		! attributes?.__unstableUnitoneSupports?.gridColumn
-	) {
-		delete attributes?.unitone?.gridColumn;
-		if (
-			!! attributes?.unitone &&
-			! Object.keys( attributes?.unitone ).length
-		) {
-			delete attributes?.unitone;
+	if ( ! hasBlockSupport( blockType, 'unitone.gridColumn' ) ) {
+		const { __unstableUnitoneSupports } = attributes;
+
+		if ( ! __unstableUnitoneSupports?.gridColumn ) {
+			delete attributes?.unitone?.gridColumn;
+
+			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
+				delete attributes?.unitone;
+			}
+
+			return extraProps;
 		}
-		return extraProps;
 	}
 
 	if ( undefined === attributes?.unitone?.gridColumn ) {
@@ -266,15 +266,14 @@ export function saveGridColumnProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editGridColumnProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveGridColumnProp( props, settings, attributes );
-	};
+export function useGridColumnBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveGridColumnProp( wrapperProps, name, attributes ),
+		},
+	};
 }

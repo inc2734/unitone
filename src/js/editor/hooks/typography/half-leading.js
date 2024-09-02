@@ -70,19 +70,14 @@ export function saveHalfLeadingProp( extraProps, blockType, attributes ) {
 	};
 }
 
-export function editHalfLeadingProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.halfLeading' ) ) {
-		return settings;
-	}
+export function useHalfLeadingBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveHalfLeadingProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveHalfLeadingProp( wrapperProps, name, attributes ),
+		},
 	};
-
-	return settings;
 }

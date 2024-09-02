@@ -120,18 +120,14 @@ export function savePaddingProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editPaddingProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.padding' ) ) {
-		return settings;
-	}
+export function usePaddingBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return savePaddingProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...savePaddingProp( wrapperProps, name, attributes ),
+		},
 	};
-	return settings;
 }

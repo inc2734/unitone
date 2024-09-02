@@ -205,18 +205,14 @@ export function saveAlignItemsProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editAlignItemsProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.alignItems' ) ) {
-		return settings;
-	}
+export function useAlignItemsBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveAlignItemsProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveAlignItemsProp( wrapperProps, name, attributes ),
+		},
 	};
-	return settings;
 }

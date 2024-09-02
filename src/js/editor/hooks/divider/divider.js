@@ -8,7 +8,7 @@ import {
 import { __ } from '@wordpress/i18n';
 
 import {
-	editDividerTypeProp,
+	useDividerTypeBlockProps,
 	useIsDividerTypeDisabled,
 	resetDividerType,
 	hasDividerTypeValue,
@@ -17,8 +17,7 @@ import {
 } from './divider-type';
 
 import {
-	saveDividerProp,
-	editDividerProp,
+	useDividerBlockProps,
 	useIsDividerDisabled,
 	resetDivider,
 	hasDividerValue,
@@ -26,7 +25,7 @@ import {
 	DividerEdit,
 } from './divider-object';
 
-export { editDividerTypeProp, saveDividerProp, editDividerProp };
+export { useDividerTypeBlockProps, useDividerBlockProps };
 
 export function DividerPanel( props ) {
 	const isDividerTypeDisabled = useIsDividerTypeDisabled( props );

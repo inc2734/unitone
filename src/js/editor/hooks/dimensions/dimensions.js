@@ -11,7 +11,7 @@ import {
 	resetPadding,
 	getPaddingEditLabel,
 	PaddingEdit,
-	editPaddingProp,
+	usePaddingBlockProps,
 } from './padding';
 
 import {
@@ -20,7 +20,7 @@ import {
 	resetGutters,
 	getGuttersEditLabel,
 	GuttersEdit,
-	editGuttersProp,
+	useGuttersBlockProps,
 } from './gutters';
 
 import {
@@ -29,7 +29,7 @@ import {
 	resetGap,
 	getGapEditLabel,
 	GapEdit,
-	editGapProp,
+	useGapBlockProps,
 } from './gap';
 
 import {
@@ -42,7 +42,7 @@ import {
 	StairsEdit,
 	getStairsUpEditLabel,
 	StairsUpEdit,
-	editStairsProp,
+	useStairsBlockProps,
 } from './stairs';
 
 import {
@@ -51,7 +51,7 @@ import {
 	resetNegative,
 	getNegativeEditLabel,
 	NegativeEdit,
-	editNegativeProp,
+	useNegativeBlockProps,
 } from './negative';
 
 import {
@@ -60,16 +60,16 @@ import {
 	resetOverflow,
 	getOverflowEditLabel,
 	OverflowEdit,
-	editOverflowProp,
+	useOverflowBlockProps,
 } from './overflow';
 
 export {
-	editPaddingProp,
-	editGuttersProp,
-	editGapProp,
-	editStairsProp,
-	editNegativeProp,
-	editOverflowProp,
+	useGapBlockProps,
+	useGuttersBlockProps,
+	useNegativeBlockProps,
+	useOverflowBlockProps,
+	usePaddingBlockProps,
+	useStairsBlockProps,
 };
 
 export function DimensionsPanel( props ) {

@@ -116,18 +116,18 @@ export function FlexGrowEdit( props ) {
 }
 
 export function saveFlexGrowProp( extraProps, blockType, attributes ) {
-	if (
-		! hasBlockSupport( blockType, 'unitone.flexGrow' ) &&
-		! attributes?.__unstableUnitoneSupports?.flexGrow
-	) {
-		delete attributes?.unitone?.flexGrow;
-		if (
-			!! attributes?.unitone &&
-			! Object.keys( attributes?.unitone ).length
-		) {
-			delete attributes?.unitone;
+	if ( ! hasBlockSupport( blockType, 'unitone.flexGrow' ) ) {
+		const { __unstableUnitoneSupports } = attributes;
+
+		if ( ! __unstableUnitoneSupports?.flexGrow ) {
+			delete attributes?.unitone?.flexGrow;
+
+			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
+				delete attributes?.unitone;
+			}
+
+			return extraProps;
 		}
-		return extraProps;
 	}
 
 	if ( undefined === attributes?.unitone?.flexGrow ) {
@@ -142,15 +142,14 @@ export function saveFlexGrowProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editFlexGrowProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveFlexGrowProp( props, settings, attributes );
-	};
+export function useFlexGrowBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveFlexGrowProp( wrapperProps, name, attributes ),
+		},
+	};
 }

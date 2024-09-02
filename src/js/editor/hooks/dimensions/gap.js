@@ -403,18 +403,14 @@ export function saveGapProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editGapProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.gap' ) ) {
-		return settings;
-	}
+export function useGapBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveGapProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveGapProp( wrapperProps, name, attributes ),
+		},
 	};
-	return settings;
 }

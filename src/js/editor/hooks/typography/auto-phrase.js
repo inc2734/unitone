@@ -82,19 +82,14 @@ export function saveAutoPhraseProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editAutoPhraseProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.autoPhrase' ) ) {
-		return settings;
-	}
+export function useAutoPhraseBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveAutoPhraseProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveAutoPhraseProp( wrapperProps, name, attributes ),
+		},
 	};
-
-	return settings;
 }

@@ -11,7 +11,7 @@ import {
 	hasAutoPhraseValue,
 	resetAutoPhrase,
 	AutoPhraseEdit,
-	editAutoPhraseProp,
+	useAutoPhraseBlockProps,
 } from './auto-phrase';
 
 import {
@@ -19,7 +19,7 @@ import {
 	hasFluidTypographyValue,
 	resetFluidTypography,
 	FluidTypographyEdit,
-	editFluidTypographyProp,
+	useFluidTypographyBlockProps,
 } from './fluid-typography';
 
 import {
@@ -27,10 +27,14 @@ import {
 	hasHalfLeadingValue,
 	resetHalfLeading,
 	HalfLeadingEdit,
-	editHalfLeadingProp,
+	useHalfLeadingBlockProps,
 } from './half-leading';
 
-export { editAutoPhraseProp, editFluidTypographyProp, editHalfLeadingProp };
+export {
+	useAutoPhraseBlockProps,
+	useFluidTypographyBlockProps,
+	useHalfLeadingBlockProps,
+};
 
 export function TypographyPanel( props ) {
 	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( props );

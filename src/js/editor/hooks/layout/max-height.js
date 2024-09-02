@@ -94,18 +94,18 @@ export function MaxHeightEdit( props ) {
 }
 
 export function saveMaxHeightProp( extraProps, blockType, attributes ) {
-	if (
-		! hasBlockSupport( blockType, 'unitone.maxHeight' ) &&
-		! attributes?.__unstableUnitoneSupports?.maxHeight
-	) {
-		delete attributes?.unitone?.maxHeight;
-		if (
-			!! attributes?.unitone &&
-			! Object.keys( attributes?.unitone ).length
-		) {
-			delete attributes?.unitone;
+	if ( ! hasBlockSupport( blockType, 'unitone.maxHeight' ) ) {
+		const { __unstableUnitoneSupports } = attributes;
+
+		if ( ! __unstableUnitoneSupports?.maxHeight ) {
+			delete attributes?.unitone?.maxHeight;
+
+			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
+				delete attributes?.unitone;
+			}
+
+			return extraProps;
 		}
-		return extraProps;
 	}
 
 	if ( undefined === attributes?.unitone?.maxHeight ) {
@@ -130,15 +130,14 @@ export function saveMaxHeightProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editMaxHeightProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveMaxHeightProp( props, settings, attributes );
-	};
+export function useMaxHeightBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveMaxHeightProp( wrapperProps, name, attributes ),
+		},
+	};
 }

@@ -425,18 +425,18 @@ export function JustifySelfEdit( props ) {
 }
 
 export function saveJustifySelfProp( extraProps, blockType, attributes ) {
-	if (
-		! hasBlockSupport( blockType, 'unitone.justifySelf' ) &&
-		! attributes?.__unstableUnitoneSupports?.justifySelf
-	) {
-		delete attributes?.unitone?.justifySelf;
-		if (
-			!! attributes?.unitone &&
-			! Object.keys( attributes?.unitone ).length
-		) {
-			delete attributes?.unitone;
+	if ( ! hasBlockSupport( blockType, 'unitone.justifySelf' ) ) {
+		const { __unstableUnitoneSupports } = attributes;
+
+		if ( ! __unstableUnitoneSupports?.justifySelf ) {
+			delete attributes?.unitone?.justifySelf;
+
+			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
+				delete attributes?.unitone;
+			}
+
+			return extraProps;
 		}
-		return extraProps;
 	}
 
 	if ( undefined === attributes?.unitone?.justifySelf ) {
@@ -460,15 +460,14 @@ export function saveJustifySelfProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editJustifySelfProp( settings ) {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveJustifySelfProp( props, settings, attributes );
-	};
+export function useJustifySelfBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	return settings;
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveJustifySelfProp( wrapperProps, name, attributes ),
+		},
+	};
 }

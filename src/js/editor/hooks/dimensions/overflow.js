@@ -131,18 +131,14 @@ export function saveOverflowProp( extraProps, blockType, attributes ) {
 	return extraProps;
 }
 
-export function editOverflowProp( settings ) {
-	if ( ! hasBlockSupport( settings, 'unitone.overflow' ) ) {
-		return settings;
-	}
+export function useOverflowBlockProps( settings ) {
+	const { attributes, name, wrapperProps } = settings;
 
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveOverflowProp( props, settings, attributes );
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			...saveOverflowProp( wrapperProps, name, attributes ),
+		},
 	};
-	return settings;
 }

@@ -36,13 +36,9 @@ const changeUnitoneSupportsLabels = createHigherOrderComponent(
 					__unstableUnitoneSupports: {
 						...props?.attributes?.__unstableUnitoneSupports,
 						maxWidth: {
-							...props?.attributes?.__unstableUnitoneSupports
-								?.maxWidth,
 							label: __( 'Max width of contents', 'unitone' ),
 						},
 						padding: {
-							...props?.attributes?.__unstableUnitoneSupports
-								?.padding,
 							label: __( 'Top and bottom padding', 'unitone' ),
 						},
 					},
@@ -58,5 +54,6 @@ const changeUnitoneSupportsLabels = createHigherOrderComponent(
 addFilter(
 	'editor.BlockListBlock',
 	'unitone/gutters/change-unitone-supports-labels',
-	changeUnitoneSupportsLabels
+	changeUnitoneSupportsLabels,
+	11
 );

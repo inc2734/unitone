@@ -140,6 +140,9 @@ function unitone_get_premium_remote_block_pattens() {
  */
 function unitone_register_remote_block_patterns() {
 	$request_uri = filter_input( INPUT_SERVER, 'REQUEST_URI' );
+	if ( ! $request_uri ) {
+		$request_uri = esc_html( wp_unslash( $_SERVER['REQUEST_URI'] ?? '' ) ); // @phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
 	if ( $request_uri && false !== strpos( $request_uri, 'wp-json/unitone-license-manager' ) ) {
 		return;
 	}

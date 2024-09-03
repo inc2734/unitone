@@ -98,16 +98,16 @@
         },
         {
             "name": "inc2734/wp-oembed-blog-card",
-            "version": "13.0.8",
+            "version": "13.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inc2734/wp-oembed-blog-card.git",
-                "reference": "e9b6a1be7447f58edfe1e75bbdcbb8cdad374e89"
+                "reference": "294ee7cca2a33d3d20c2a7631195ea70b12d7533"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inc2734/wp-oembed-blog-card/zipball/e9b6a1be7447f58edfe1e75bbdcbb8cdad374e89",
-                "reference": "e9b6a1be7447f58edfe1e75bbdcbb8cdad374e89",
+                "url": "https://api.github.com/repos/inc2734/wp-oembed-blog-card/zipball/294ee7cca2a33d3d20c2a7631195ea70b12d7533",
+                "reference": "294ee7cca2a33d3d20c2a7631195ea70b12d7533",
                 "shasum": ""
             },
             "require": {
@@ -138,9 +138,9 @@
             "description": "A library for WordPress oEmbed Blog Card.",
             "support": {
                 "issues": "https://github.com/inc2734/wp-oembed-blog-card/issues",
-                "source": "https://github.com/inc2734/wp-oembed-blog-card/tree/13.0.8"
+                "source": "https://github.com/inc2734/wp-oembed-blog-card/tree/13.0.10"
             },
-            "time": "2024-05-17T04:41:26+00:00"
+            "time": "2024-09-02T23:41:32+00:00"
         }
     ],
     "packages-dev": [
@@ -594,16 +594,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.10.1",
+            "version": "3.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "8f90f7a53ce271935282967f53d0894f8f1ff877"
+                "reference": "86e5f5dd9a840c46810ebe5ff1885581c42a3017"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/8f90f7a53ce271935282967f53d0894f8f1ff877",
-                "reference": "8f90f7a53ce271935282967f53d0894f8f1ff877",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/86e5f5dd9a840c46810ebe5ff1885581c42a3017",
+                "reference": "86e5f5dd9a840c46810ebe5ff1885581c42a3017",
                 "shasum": ""
             },
             "require": {
@@ -670,7 +670,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-05-22T21:24:41+00:00"
+            "time": "2024-07-21T23:26:44+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",

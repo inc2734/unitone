@@ -44,39 +44,35 @@ export default function ( {
 		[ setAttributes ]
 	);
 
-	function onToggleOpenInNewTab( value ) {
-		const newLinkTarget = value ? '_blank' : undefined;
+	const onToggleOpenInNewTab = useCallback(
+		( value ) => {
+			const newLinkTarget = value ? '_blank' : undefined;
 
-		let updatedRel = rel;
-		if ( newLinkTarget && ! rel ) {
-			updatedRel = NEW_TAB_REL;
-		} else if ( ! newLinkTarget && rel === NEW_TAB_REL ) {
-			updatedRel = undefined;
-		}
+			let updatedRel = rel;
+			if ( newLinkTarget && ! rel ) {
+				updatedRel = NEW_TAB_REL;
+			} else if ( ! newLinkTarget && rel === NEW_TAB_REL ) {
+				updatedRel = undefined;
+			}
 
-		setAttributes( {
-			linkTarget: newLinkTarget,
-			rel: updatedRel,
-		} );
-	}
-
-	const ref = useRef();
-
-	const hasInnerBlocks = useSelect(
-		( select ) =>
-			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
-				?.length,
-		[ clientId ]
+			setAttributes( {
+				linkTarget: newLinkTarget,
+				rel: updatedRel,
+			} );
+		},
+		[ rel, setAttributes ]
 	);
 
-	const blockProps = useBlockProps( {
-		ref,
-	} );
+	const ref = useRef();
+	const blockProps = useBlockProps( { ref } );
+
 	blockProps[ 'data-unitone-layout' ] = classnames(
 		'decorator',
 		blockProps[ 'data-unitone-layout' ]
 	);
 
+	const { getBlock } = useSelect( blockEditorStore );
+	const hasInnerBlocks = !! getBlock( clientId )?.innerBlocks?.length;
 	const innerBlocksPropsArgs = {
 		templateLock,
 		renderAppender: hasInnerBlocks
@@ -88,25 +84,28 @@ export default function ( {
 	const isHrefSet = !! href;
 	const opensInNewTab = linkTarget === '_blank';
 
-	function startEditing( event ) {
-		event.preventDefault();
-		setIsEditingHref( true );
-	}
+	const startEditing = useCallback(
+		( event ) => {
+			event.preventDefault();
+			setIsEditingHref( true );
+		},
+		[ setIsEditingHref ]
+	);
 
-	function unlink() {
+	const unlink = useCallback( () => {
 		setAttributes( {
 			href: undefined,
 			linkTarget: undefined,
 			rel: undefined,
 		} );
 		setIsEditingHref( false );
-	}
+	}, [ setAttributes, setIsEditingHref ] );
 
 	useEffect( () => {
 		if ( ! isSelected ) {
 			setIsEditingHref( false );
 		}
-	}, [ isSelected ] );
+	}, [ isSelected, setIsEditingHref ] );
 
 	const TagName = tagName;
 
@@ -190,9 +189,7 @@ export default function ( {
 								onToggleOpenInNewTab( newOpensInNewTab );
 							}
 						} }
-						onRemove={ () => {
-							unlink();
-						} }
+						onRemove={ unlink }
 						forceIsEditingLink={ isEditingHref }
 					/>
 				</Popover>

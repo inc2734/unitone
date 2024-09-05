@@ -4,54 +4,42 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import { cleanEmptyObject } from '../utils';
 
-export function hasNegativeValue( props ) {
-	const { attributes } = props;
-
-	return !! attributes?.unitone?.negative;
+export function hasNegativeValue( { unitone } ) {
+	return !! unitone?.negative;
 }
 
-export function resetNegative( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetNegativeFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			negative: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.negative;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.negative;
-
-	if ( !! defaultValue ) {
-		newUnitone.negative = !! defaultValue;
-	}
-
+export function resetNegative( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetNegativeFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsNegativeDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.negative' );
+export function useIsNegativeDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.negative' );
 }
 
-export function getNegativeEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getNegativeEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.negative?.label ||
 		__( 'Using negative margin', 'unitone' )
 	);
 }
 
-export function NegativeEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function NegativeEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return !! select( blocksStore ).getBlockType( name )?.attributes
 			?.unitone?.default?.negative;
@@ -60,22 +48,15 @@ export function NegativeEdit( props ) {
 	return (
 		<ToggleControl
 			label={ label }
-			checked={ !! unitone?.negative }
+			checked={ !! ( unitone?.negative ?? defaultValue ) }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
 					negative: newValue || undefined,
 				};
-				if ( null == newUnitone.negative ) {
-					if ( ! defaultValue ) {
-						delete newUnitone.negative;
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
@@ -83,12 +64,25 @@ export function NegativeEdit( props ) {
 }
 
 export function saveNegativeProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.negative;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.negative' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.negative ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.negative ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				negative: defaultValue,
+			},
+		};
 	}
 
 	// Deprecation.

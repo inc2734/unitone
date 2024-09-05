@@ -3,30 +3,35 @@ import classnames from 'classnames';
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 
-export function hasFluidTypographyValue( props ) {
-	return props.attributes?.unitone?.fluidTypography !== undefined;
+import { cleanEmptyObject } from '../utils';
+
+export function hasFluidTypographyValue( { unitone } ) {
+	return unitone?.fluidTypography !== undefined;
 }
 
-export function resetFluidTypography( { attributes = {}, setAttributes } ) {
-	delete attributes?.unitone?.fluidTypography;
-	const newUnitone = { ...attributes?.unitone };
+export function resetFluidTypographyFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			fluidTypography: undefined,
+		},
+	};
+}
 
+export function resetFluidTypography( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetFluidTypographyFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsFluidTypographyDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.fluidTypography' );
+export function useIsFluidTypographyDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.fluidTypography' );
 }
 
-export function FluidTypographyEdit( props ) {
-	const {
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function FluidTypographyEdit( { label, unitone, setAttributes } ) {
 	return (
 		<ToggleControl
 			label={ label }
@@ -36,14 +41,9 @@ export function FluidTypographyEdit( props ) {
 					...unitone,
 					fluidTypography: newValue || undefined,
 				};
-				if ( null == newUnitone.fluidTypography ) {
-					delete newUnitone.fluidTypography;
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>

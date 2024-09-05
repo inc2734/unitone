@@ -21,44 +21,39 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
-export function hasDropShadowValue( props ) {
-	const { name, attributes } = props;
-
+export function hasDropShadowValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.dropShadow;
 
-	return null != defaultValue
-		? attributes?.unitone?.dropShadow !== defaultValue
-		: attributes?.unitone?.dropShadow !== undefined;
+	return (
+		defaultValue !== unitone?.dropShadow &&
+		undefined !== unitone?.dropShadow
+	);
 }
 
-export function resetDropShadow( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetDropShadowFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			dropShadow: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.dropShadow;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.dropShadow;
-
-	if ( null != defaultValue ) {
-		newUnitone.dropShadow = defaultValue;
-	}
-
+export function resetDropShadow( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetDropShadowFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsDropShadowDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.dropShadow' );
+export function useIsDropShadowDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.dropShadow' );
 }
 
-export function getDropShadowEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getDropShadowEditLabel( __unstableUnitoneSupports ) {
 	return __unstableUnitoneSupports?.dropShadow?.label || __( 'Drop shadow' );
 }
 
@@ -227,14 +222,7 @@ function renderShadowToggle() {
 	};
 }
 
-export function DropShadowEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function DropShadowEdit( { name, label, unitone, setAttributes } ) {
 	const [ settings ] = useSettings( 'shadow' );
 
 	const defaultValue = useSelect( ( select ) => {
@@ -249,6 +237,10 @@ export function DropShadowEdit( props ) {
 		shadowPresets.default ??
 		[];
 
+	const defaultShadow = mergedShadowPresets?.find( ( { slug } ) => {
+		return `var:preset|shadow|${ slug }` === defaultValue;
+	} )?.shadow;
+
 	const shadow = mergedShadowPresets?.find( ( { slug } ) => {
 		return `var:preset|shadow|${ slug }` === unitone?.dropShadow;
 	} )?.shadow;
@@ -262,27 +254,23 @@ export function DropShadowEdit( props ) {
 			<ItemGroup isBordered isSeparated>
 				<ShadowPopover
 					label={ label }
-					shadow={ shadow }
+					shadow={ shadow ?? defaultShadow }
 					settings={ settings }
 					onShadowChange={ ( newValue ) => {
-						if ( null == newValue ) {
-							newValue = defaultValue;
-						}
-
 						const slug = mergedShadowPresets?.find(
 							( { shadow: shadowName } ) =>
 								shadowName === newValue
 						)?.slug;
 
-						const newUnitone = cleanEmptyObject( {
+						const newUnitone = {
 							...unitone,
 							dropShadow: slug
 								? `var:preset|shadow|${ slug }`
 								: newValue || undefined,
-						} );
+						};
 
 						setAttributes( {
-							unitone: newUnitone,
+							unitone: cleanEmptyObject( newUnitone ),
 						} );
 					} }
 				/>
@@ -292,12 +280,25 @@ export function DropShadowEdit( props ) {
 }
 
 export function saveDropShadowProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.dropShadow;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.dropShadow' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.dropShadow ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.dropShadow ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				dropShadow: defaultValue,
+			},
+		};
 	}
 
 	const slug = attributes?.unitone?.dropShadow?.match(

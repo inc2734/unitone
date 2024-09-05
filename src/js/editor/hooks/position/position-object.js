@@ -1,424 +1,400 @@
 import classnames from 'classnames';
 
-import {
-	SelectControl,
-	TextControl,
-	__experimentalToolsPanel as ToolsPanel,
-	__experimentalToolsPanelItem as ToolsPanelItem,
-} from '@wordpress/components';
-
+import { SelectControl, TextControl } from '@wordpress/components';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { __ } from '@wordpress/i18n';
 
-export function useIsPositionDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.position' );
+import { cleanEmptyObject } from '../utils';
+
+export function hasPositionValue( { name, unitone } ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.position;
+
+	return (
+		defaultValue?.position !== unitone?.position?.position &&
+		undefined !== unitone?.position?.position
+	);
 }
 
-export function PositionEdit( props ) {
-	const {
-		name,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
+export function resetPositionFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			position: {
+				...attributes?.unitone?.position,
+				position: undefined,
+			},
+		},
+	};
+}
 
+export function resetPosition( { unitone, setAttributes } ) {
+	setAttributes( {
+		unitone: cleanEmptyObject(
+			resetPositionFilter( { unitone } )?.unitone
+		),
+	} );
+}
+
+export function useIsPositionDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.position' );
+}
+
+export function PositionEdit( { label, name, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.position;
 	}, [] );
 
 	return (
-		<ToolsPanel label={ __( 'Position', 'unitone' ) }>
-			<ToolsPanelItem
-				hasValue={ () =>
-					unitone?.position?.position !== defaultValue?.position
-				}
-				label={ __( 'Position', 'unitone' ) }
-				onDeselect={ () => {
-					delete unitone?.position?.position;
-					const newUnitone = { ...unitone };
+		<SelectControl
+			label={ label }
+			options={ [
+				{ label: '', value: '' },
+				{
+					label: 'static',
+					value: 'static',
+				},
+				{
+					label: 'relative',
+					value: 'relative',
+				},
+				{
+					label: 'absolute',
+					value: 'absolute',
+				},
+				{ label: 'fixed', value: 'fixed' },
+				{
+					label: 'sticky',
+					value: 'sticky',
+				},
+			] }
+			value={ unitone?.position?.position ?? defaultValue.position ?? '' }
+			onChange={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					position: {
+						...unitone?.position,
+						position: newAttribute || undefined,
+					},
+				};
 
-					if ( null != defaultValue?.position ) {
-						newUnitone.position.position = defaultValue?.position;
-					}
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+				} );
+			} }
+		/>
+	);
+}
 
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete newUnitone?.position;
-					}
+export function hasTopValue( { name, unitone } ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.position;
 
-					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
-					} );
-				} }
-				isShownByDefault
-			>
-				<SelectControl
-					label={
-						<>
-							{ __( 'Position', 'unitone' ) } :
-							<code>position</code>
-						</>
-					}
-					options={ [
-						{ label: '', value: '' },
-						{
-							label: 'static',
-							value: 'static',
-						},
-						{
-							label: 'relative',
-							value: 'relative',
-						},
-						{
-							label: 'absolute',
-							value: 'absolute',
-						},
-						{ label: 'fixed', value: 'fixed' },
-						{
-							label: 'sticky',
-							value: 'sticky',
-						},
-					] }
-					value={ unitone?.position?.position || undefined }
-					onChange={ ( newValue ) => {
-						const newUnitone = {
-							...unitone,
-							position: {
-								...unitone?.position,
-								position: newValue || undefined,
-							},
-						};
-						if ( null == newUnitone.position.position ) {
-							if ( null == defaultValue ) {
-								delete newUnitone.position.position;
-							} else {
-								newUnitone.position.position = '';
-							}
-						}
-						if ( null == newUnitone.position ) {
-							delete newUnitone.position;
-						}
+	return (
+		defaultValue?.top !== unitone?.position?.top &&
+		undefined !== unitone?.position?.top
+	);
+}
 
-						setAttributes( {
-							unitone: !! Object.keys( newUnitone ).length
-								? newUnitone
-								: undefined,
-						} );
-					} }
-				/>
-			</ToolsPanelItem>
+export function resetTopFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			position: {
+				...attributes?.unitone?.position,
+				top: undefined,
+			},
+		},
+	};
+}
 
-			<ToolsPanelItem
-				hasValue={ () => unitone?.position?.top !== defaultValue?.top }
-				label={ __( 'Top', 'unitone' ) }
-				onDeselect={ () => {
-					delete unitone?.position?.top;
-					const newUnitone = { ...unitone };
+export function resetTop( { unitone, setAttributes } ) {
+	setAttributes( {
+		unitone: cleanEmptyObject( resetTopFilter( { unitone } )?.unitone ),
+	} );
+}
 
-					if ( null != defaultValue?.position ) {
-						newUnitone.position.top = defaultValue?.top;
-					}
+export function TopEdit( { label, name, unitone, setAttributes } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.position;
+	}, [] );
 
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete newUnitone?.position;
-					}
+	return (
+		<TextControl
+			label={ label }
+			value={ unitone?.position?.top ?? defaultValue?.top ?? '' }
+			onChange={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					position: {
+						...unitone?.position,
+						top: newAttribute || undefined,
+					},
+				};
 
-					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
-					} );
-				} }
-				isShownByDefault
-			>
-				<TextControl
-					label={
-						<>
-							{ __( 'Top', 'unitone' ) } : <code>top</code>
-						</>
-					}
-					value={ unitone?.position?.top || '' }
-					onChange={ ( newValue ) => {
-						const newUnitone = {
-							...unitone,
-							position: {
-								...unitone?.position,
-								top: newValue || undefined,
-							},
-						};
-						if ( null == newUnitone.position.top ) {
-							if ( null == defaultValue ) {
-								delete newUnitone.position.top;
-							} else {
-								newUnitone.position.top = '';
-							}
-						}
-						if ( null == newUnitone.position ) {
-							delete newUnitone.position;
-						}
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+				} );
+			} }
+		/>
+	);
+}
 
-						setAttributes( {
-							unitone: !! Object.keys( newUnitone ).length
-								? newUnitone
-								: undefined,
-						} );
-					} }
-				/>
-			</ToolsPanelItem>
+export function hasRightValue( { name, unitone } ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.position;
 
-			<ToolsPanelItem
-				hasValue={ () =>
-					unitone?.position?.right !== defaultValue?.right
-				}
-				label={ __( 'Right', 'unitone' ) }
-				onDeselect={ () => {
-					delete unitone?.position?.right;
-					const newUnitone = { ...unitone };
+	return (
+		defaultValue?.right !== unitone?.position?.right &&
+		undefined !== unitone?.position?.right
+	);
+}
 
-					if ( null != defaultValue?.position ) {
-						newUnitone.position.right = defaultValue?.right;
-					}
+export function resetRightFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			position: {
+				...attributes?.unitone?.position,
+				right: undefined,
+			},
+		},
+	};
+}
 
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete newUnitone?.position;
-					}
+export function resetRight( { unitone, setAttributes } ) {
+	setAttributes( {
+		unitone: cleanEmptyObject( resetRightFilter( { unitone } )?.unitone ),
+	} );
+}
 
-					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
-					} );
-				} }
-				isShownByDefault
-			>
-				<TextControl
-					label={
-						<>
-							{ __( 'Right', 'unitone' ) } : <code>right</code>
-						</>
-					}
-					value={ unitone?.position?.right || '' }
-					onChange={ ( newValue ) => {
-						const newUnitone = {
-							...unitone,
-							position: {
-								...unitone?.position,
-								right: newValue || undefined,
-							},
-						};
-						if ( null == newUnitone.position.right ) {
-							if ( null == defaultValue ) {
-								delete newUnitone.position.right;
-							} else {
-								newUnitone.position.right = '';
-							}
-						}
-						if ( null == newUnitone.position ) {
-							delete newUnitone.position;
-						}
+export function RightEdit( { label, name, unitone, setAttributes } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.position;
+	}, [] );
 
-						setAttributes( {
-							unitone: !! Object.keys( newUnitone ).length
-								? newUnitone
-								: undefined,
-						} );
-					} }
-				/>
-			</ToolsPanelItem>
+	return (
+		<TextControl
+			label={ label }
+			value={
+				unitone?.position?.right ?? defaultValue?.position?.right ?? ''
+			}
+			onChange={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					position: {
+						...unitone?.position,
+						right: newAttribute || undefined,
+					},
+				};
 
-			<ToolsPanelItem
-				hasValue={ () =>
-					unitone?.position?.bottom !== defaultValue?.bottom
-				}
-				label={ __( 'Bottom', 'unitone' ) }
-				onDeselect={ () => {
-					delete unitone?.position?.bottom;
-					const newUnitone = { ...unitone };
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+				} );
+			} }
+		/>
+	);
+}
 
-					if ( null != defaultValue?.position ) {
-						newUnitone.position.bottom = defaultValue?.bottom;
-					}
+export function hasBottomValue( { name, unitone } ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.position;
 
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete newUnitone?.position;
-					}
+	return (
+		defaultValue?.bottom !== unitone?.position?.bottom &&
+		undefined !== unitone?.position?.bottom
+	);
+}
 
-					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
-					} );
-				} }
-				isShownByDefault
-			>
-				<TextControl
-					label={
-						<>
-							{ __( 'Bottom', 'unitone' ) } : <code>bottom</code>
-						</>
-					}
-					value={ unitone?.position?.bottom || '' }
-					onChange={ ( newValue ) => {
-						const newUnitone = {
-							...unitone,
-							position: {
-								...unitone?.position,
-								bottom: newValue || undefined,
-							},
-						};
-						if ( null == newUnitone.position.bottom ) {
-							if ( null == defaultValue ) {
-								delete newUnitone.position.bottom;
-							} else {
-								newUnitone.position.bottom = '';
-							}
-						}
-						if ( null == newUnitone.position ) {
-							delete newUnitone.position;
-						}
+export function resetBottomFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			position: {
+				...attributes?.unitone?.position,
+				bottom: undefined,
+			},
+		},
+	};
+}
 
-						setAttributes( {
-							unitone: !! Object.keys( newUnitone ).length
-								? newUnitone
-								: undefined,
-						} );
-					} }
-				/>
-			</ToolsPanelItem>
+export function resetBottom( { unitone, setAttributes } ) {
+	setAttributes( {
+		unitone: cleanEmptyObject( resetBottomFilter( { unitone } )?.unitone ),
+	} );
+}
 
-			<ToolsPanelItem
-				hasValue={ () =>
-					unitone?.position?.left !== defaultValue?.left
-				}
-				label={ __( 'Left', 'unitone' ) }
-				onDeselect={ () => {
-					delete unitone?.position?.left;
-					const newUnitone = { ...unitone };
+export function BottomEdit( { label, name, unitone, setAttributes } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.position;
+	}, [] );
 
-					if ( null != defaultValue?.position ) {
-						newUnitone.position.left = defaultValue?.left;
-					}
+	return (
+		<TextControl
+			label={ label }
+			value={ unitone?.position?.bottom ?? defaultValue.bottom ?? '' }
+			onChange={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					position: {
+						...unitone?.position,
+						bottom: newAttribute || undefined,
+					},
+				};
 
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete newUnitone?.position;
-					}
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+				} );
+			} }
+		/>
+	);
+}
 
-					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
-					} );
-				} }
-				isShownByDefault
-			>
-				<TextControl
-					label={
-						<>
-							{ __( 'Left', 'unitone' ) } : <code>left</code>
-						</>
-					}
-					value={ unitone?.position?.left || '' }
-					onChange={ ( newValue ) => {
-						const newUnitone = {
-							...unitone,
-							position: {
-								...unitone?.position,
-								left: newValue || undefined,
-							},
-						};
-						if ( null == newUnitone.position.left ) {
-							if ( null == defaultValue ) {
-								delete newUnitone.position.left;
-							} else {
-								newUnitone.position.left = '';
-							}
-						}
-						if ( null == newUnitone.position ) {
-							delete newUnitone.position;
-						}
+export function hasLeftValue( { name, unitone } ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.position;
 
-						setAttributes( {
-							unitone: !! Object.keys( newUnitone ).length
-								? newUnitone
-								: undefined,
-						} );
-					} }
-				/>
-			</ToolsPanelItem>
+	return (
+		defaultValue?.left !== unitone?.position?.left &&
+		undefined !== unitone?.position?.left
+	);
+}
 
-			<ToolsPanelItem
-				hasValue={ () =>
-					unitone?.position?.zIndex !== defaultValue?.zIndex
-				}
-				label={ __( 'The stack level', 'unitone' ) }
-				onDeselect={ () => {
-					delete unitone?.position?.zIndex;
-					const newUnitone = { ...unitone };
+export function resetLeftValueFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			position: {
+				...attributes?.unitone?.position,
+				left: undefined,
+			},
+		},
+	};
+}
 
-					if ( null != defaultValue?.position ) {
-						newUnitone.position.zIndex = defaultValue?.zIndex;
-					}
+export function resetLeft( { unitone, setAttributes } ) {
+	setAttributes( {
+		unitone: cleanEmptyObject(
+			resetLeftValueFilter( { unitone } )?.unitone
+		),
+	} );
+}
 
-					if ( ! Object.keys( unitone?.position ).length ) {
-						delete newUnitone?.zIndex;
-					}
+export function LeftEdit( { label, name, unitone, setAttributes } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.position;
+	}, [] );
 
-					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
-					} );
-				} }
-				isShownByDefault
-			>
-				<TextControl
-					label={
-						<>
-							{ __( 'The stack level', 'unitone' ) }&nbsp;:&nbsp;
-							<code>z-index</code>
-						</>
-					}
-					value={ unitone?.position?.zIndex || '' }
-					onChange={ ( newValue ) => {
-						const newUnitone = {
-							...unitone,
-							position: {
-								...unitone?.position,
-								zIndex: newValue || undefined,
-							},
-						};
-						if ( null == newUnitone.position.zIndex ) {
-							if ( null == defaultValue ) {
-								delete newUnitone.position.zIndex;
-							} else {
-								newUnitone.position.zIndex = '';
-							}
-						}
-						if ( null == newUnitone.position ) {
-							delete newUnitone.position;
-						}
+	return (
+		<TextControl
+			label={ label }
+			value={ unitone?.position?.left ?? defaultValue?.left ?? '' }
+			onChange={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					position: {
+						...unitone?.position,
+						left: newAttribute || undefined,
+					},
+				};
 
-						setAttributes( {
-							unitone: !! Object.keys( newUnitone ).length
-								? newUnitone
-								: undefined,
-						} );
-					} }
-				/>
-			</ToolsPanelItem>
-		</ToolsPanel>
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+				} );
+			} }
+		/>
+	);
+}
+
+export function hasZIndexValue( { name, unitone } ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.position;
+
+	return (
+		defaultValue?.zIndex !== unitone?.position?.zIndex &&
+		undefined !== unitone?.position?.zIndex
+	);
+}
+
+export function resetZIndexFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			position: {
+				...attributes?.unitone?.position,
+				zIndex: undefined,
+			},
+		},
+	};
+}
+
+export function resetZIndex( { unitone, setAttributes } ) {
+	setAttributes( {
+		unitone: cleanEmptyObject( resetZIndexFilter( { unitone } )?.unitone ),
+	} );
+}
+
+export function ZIndexEdit( { label, name, unitone, setAttributes } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.position;
+	}, [] );
+
+	return (
+		<TextControl
+			label={ label }
+			value={ unitone?.position?.zIndex ?? defaultValue?.zIndex ?? '' }
+			onChange={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					position: {
+						...unitone?.position,
+						zIndex: newAttribute || undefined,
+					},
+				};
+
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+				} );
+			} }
+		/>
 	);
 }
 
 export function savePositionProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.position;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.position' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.position ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.position ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				position: {
+					...attributes?.unitone?.position,
+					...defaultValue,
+				},
+			},
+		};
 	}
 
 	extraProps.style = {

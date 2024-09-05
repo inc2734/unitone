@@ -1,9 +1,13 @@
+import fastDeepEqual from 'fast-deep-equal/es6';
+
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
+import { memo, useCallback } from '@wordpress/element';
 
 import {
 	useIsDropShadowDisabled,
 	hasDropShadowValue,
+	resetDropShadowFilter,
 	resetDropShadow,
 	getDropShadowEditLabel,
 	DropShadowEdit,
@@ -12,8 +16,27 @@ import {
 
 export { useDropShadowBlockProps };
 
-export function DropShadowPanel( props ) {
-	const isDropShadowDisabled = useIsDropShadowDisabled( props );
+function DropShadowPanelPure( {
+	clientId,
+	name,
+	unitone,
+	__unstableUnitoneSupports,
+	setAttributes,
+} ) {
+	const props = {
+		name,
+		unitone,
+		__unstableUnitoneSupports,
+		setAttributes,
+	};
+
+	const resetAllFilter = useCallback( ( attributes ) => {
+		attributes = resetDropShadowFilter( attributes );
+
+		return attributes;
+	}, [] );
+
+	const isDropShadowDisabled = useIsDropShadowDisabled( { name } );
 
 	if ( isDropShadowDisabled ) {
 		return null;
@@ -21,21 +44,20 @@ export function DropShadowPanel( props ) {
 
 	return (
 		<>
-			<InspectorControls group="border">
+			<InspectorControls group="border" resetAllFilter={ resetAllFilter }>
 				{ ! isDropShadowDisabled && (
 					<ToolsPanelItem
-						hasValue={ () => hasDropShadowValue( props ) }
-						label={ getDropShadowEditLabel( props ) }
-						onDeselect={ () => resetDropShadow( props ) }
-						resetAllFilter={ () => resetDropShadow( props ) }
+						hasValue={ () => hasDropShadowValue( { ...props } ) }
+						label={ getDropShadowEditLabel( { ...props } ) }
+						onDeselect={ () => resetDropShadow( { ...props } ) }
 						isShownByDefault
-						panelId={ props.clientId }
+						panelId={ clientId }
 					>
 						<DropShadowEdit
 							{ ...props }
 							label={
 								<>
-									{ getDropShadowEditLabel( props ) }
+									{ getDropShadowEditLabel( { ...props } ) }
 									&nbsp;:&nbsp;
 									<code>filter:drop-shadow</code>
 								</>
@@ -47,3 +69,8 @@ export function DropShadowPanel( props ) {
 		</>
 	);
 }
+
+export const DropShadowPanel = memo(
+	DropShadowPanelPure,
+	( oldProps, newProps ) => fastDeepEqual( oldProps, newProps )
+);

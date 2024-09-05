@@ -23,48 +23,39 @@ import { __ } from '@wordpress/i18n';
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject, isNumber, isString } from '../utils';
 
-export function hasGapValue( props ) {
-	const { name, attributes } = props;
-
+export function hasGapValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.gap;
 
-	return null != defaultValue
-		? attributes?.unitone?.gap !== defaultValue
-		: attributes?.unitone?.gap !== undefined;
+	return defaultValue !== unitone?.gap && undefined !== unitone?.gap;
 }
 
-export function resetGap( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetGapFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			gap: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.gap;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.gap;
-
-	if ( null != defaultValue ) {
-		newUnitone.gap = defaultValue;
-	}
-
+export function resetGap( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject( resetGapFilter( { unitone } )?.unitone ),
 	} );
 }
 
-export function useIsGapDisabled( props ) {
-	const { name: blockName } = props;
-
-	if ( ! hasBlockSupport( blockName, 'unitone.gap' ) ) {
+export function useIsGapDisabled( { name, className } ) {
+	if ( ! hasBlockSupport( name, 'unitone.gap' ) ) {
 		return true;
 	}
 
-	const blockSupport = getBlockSupport( blockName, 'unitone.gap' );
+	const blockSupport = getBlockSupport( name, 'unitone.gap' );
 	if ( !! blockSupport ) {
 		return false;
 	}
 
-	const className = props.attributes?.className;
 	if ( !! className ) {
 		return ! className.split( ' ' ).some( ( needle ) => {
 			needle = needle.replace( 'is-style-', '' );
@@ -75,11 +66,7 @@ export function useIsGapDisabled( props ) {
 	return true;
 }
 
-export function getGapEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getGapEditLabel( { __unstableUnitoneSupports } ) {
 	return __unstableUnitoneSupports?.gap?.label || __( 'Gap', 'unitone' );
 }
 
@@ -180,58 +167,47 @@ function IconHorizontal() {
 	);
 }
 
-export function GapEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
-	const splitOnAxis =
-		getBlockSupport( name, 'unitone.gap.splitOnAxis' ) || false;
-	const isMixed = unitone?.gap?.column !== unitone?.gap?.row;
-
-	const [ isLinked, setIsLinked ] = useState( ! isMixed );
-
+export function GapEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.gap;
 	}, [] );
 
-	const onChangeGap = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue;
-		}
+	const splitOnAxis =
+		getBlockSupport( name, 'unitone.gap.splitOnAxis' ) || false;
 
+	const isMixed =
+		null != unitone?.gap
+			? unitone?.gap?.column !== unitone?.gap?.row
+			: defaultValue?.column !== defaultValue?.row;
+
+	const [ isLinked, setIsLinked ] = useState( ! isMixed );
+
+	const onChangeGap = ( newValue ) => {
 		if ( null != newValue ) {
 			// RangeControl returns Int, SelectControl returns String.
 			// So cast Int all values.
 			newValue = String( newValue );
 		}
 
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
-			gap: newValue,
-		} );
+			gap: newValue || undefined,
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeColumnGap = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.column || defaultValue;
-		}
-
 		if ( null != newValue ) {
 			// RangeControl returns Int, SelectControl returns String.
 			// So cast Int all values.
 			newValue = String( newValue );
 		}
 
-		const newUnitone = cleanEmptyObject(
+		const newUnitone =
 			newValue === String( unitone?.gap?.row )
 				? {
 						...unitone,
@@ -240,7 +216,7 @@ export function GapEdit( props ) {
 				: {
 						...unitone,
 						gap: {
-							column: newValue,
+							column: newValue || undefined,
 							row:
 								unitone?.gap?.row ||
 								( ( isNumber( unitone?.gap ) ||
@@ -248,35 +224,29 @@ export function GapEdit( props ) {
 									unitone?.gap ) ||
 								undefined,
 						},
-				  }
-		);
-
+				  };
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeRowGap = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.row || defaultValue;
-		}
-
 		if ( null != newValue ) {
 			// RangeControl returns Int, SelectControl returns String.
 			// So cast Int all values.
 			newValue = String( newValue );
 		}
 
-		const newUnitone = cleanEmptyObject(
+		const newUnitone =
 			newValue === String( unitone?.gap?.column )
 				? {
 						...unitone,
-						gap: newValue,
+						gap: newValue || undefined,
 				  }
 				: {
 						...unitone,
 						gap: {
-							row: newValue,
+							row: newValue || undefined,
 							column:
 								unitone?.gap?.column ||
 								( ( isNumber( unitone?.gap ) ||
@@ -284,11 +254,9 @@ export function GapEdit( props ) {
 									unitone?.gap ) ||
 								undefined,
 						},
-				  }
-		);
-
+				  };
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
@@ -311,7 +279,7 @@ export function GapEdit( props ) {
 
 			{ ! splitOnAxis ? (
 				<SpacingSizeControl
-					value={ unitone?.gap }
+					value={ unitone?.gap ?? defaultValue }
 					onChange={ onChangeGap }
 				/>
 			) : (
@@ -324,7 +292,10 @@ export function GapEdit( props ) {
 
 							<FlexBlock>
 								<SpacingSizeControl
-									value={ ! isMixed && unitone?.gap }
+									value={
+										! isMixed &&
+										( unitone?.gap ?? defaultValue )
+									}
 									isMixed={ isMixed }
 									onChange={ onChangeGap }
 								/>
@@ -340,7 +311,10 @@ export function GapEdit( props ) {
 								<FlexBlock>
 									<SpacingSizeControl
 										value={
-											unitone?.gap?.column || unitone?.gap
+											unitone?.gap?.column ??
+											unitone?.gap ??
+											defaultValue?.column ??
+											defaultValue
 										}
 										onChange={ onChangeColumnGap }
 									/>
@@ -355,7 +329,10 @@ export function GapEdit( props ) {
 								<FlexBlock>
 									<SpacingSizeControl
 										value={
-											unitone?.gap?.row || unitone?.gap
+											unitone?.gap?.row ??
+											unitone?.gap ??
+											defaultValue?.row ??
+											defaultValue
 										}
 										onChange={ onChangeRowGap }
 									/>
@@ -370,12 +347,28 @@ export function GapEdit( props ) {
 }
 
 export function saveGapProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.gap;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.gap' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.gap ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.gap ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				gap: {
+					...attributes?.unitone?.gap,
+					...defaultValue,
+				},
+			},
+		};
 	}
 
 	// Deprecation.

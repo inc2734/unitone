@@ -2,16 +2,23 @@
  *@see https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/dimensions.js
  */
 
-import { InspectorControls } from '@wordpress/block-editor';
+import fastDeepEqual from 'fast-deep-equal/es6';
+
 import {
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
+
+import { InspectorControls } from '@wordpress/block-editor';
+import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
+import { cleanEmptyObject } from '../utils';
 
 import {
 	useIsMixBlendModeDisabled,
 	hasMixBlendModeValue,
+	resetMixBlendModeFilter,
 	resetMixBlendMode,
 	MixBlendModeEdit,
 	useMixBlendModeBlockProps,
@@ -19,8 +26,34 @@ import {
 
 export { useMixBlendModeBlockProps };
 
-export function LayerPanel( props ) {
-	const isMixBlendModeDisabled = useIsMixBlendModeDisabled( props );
+function LayerPanelPure( {
+	clientId,
+	name,
+	unitone,
+	__unstableUnitoneSupports,
+	setAttributes,
+} ) {
+	const props = {
+		clientId,
+		name,
+		unitone,
+		__unstableUnitoneSupports,
+		setAttributes,
+	};
+
+	const resetAll = useCallback( ( filters ) => {
+		const newUnitone = filters.reduce(
+			( accumulator, filter ) =>
+				filter( { unitone: accumulator } )?.unitone,
+			unitone
+		);
+
+		setAttributes( {
+			unitone: cleanEmptyObject( newUnitone ),
+		} );
+	}, [] );
+
+	const isMixBlendModeDisabled = useIsMixBlendModeDisabled( { ...props } );
 
 	if ( isMixBlendModeDisabled ) {
 		return null;
@@ -28,14 +61,19 @@ export function LayerPanel( props ) {
 
 	return (
 		<InspectorControls>
-			<ToolsPanel label={ __( 'Layer', 'unitone' ) }>
+			<ToolsPanel
+				label={ __( 'Layer', 'unitone' ) }
+				resetAll={ resetAll }
+				panelId={ clientId }
+			>
 				{ ! isMixBlendModeDisabled && (
 					<ToolsPanelItem
-						hasValue={ () => hasMixBlendModeValue( props ) }
+						hasValue={ () => hasMixBlendModeValue( { ...props } ) }
 						label={ __( 'Mix blend mode', 'unitone' ) }
-						onDeselect={ () => resetMixBlendMode( props ) }
-						resetAllFilter={ () => resetMixBlendMode( props ) }
+						onDeselect={ () => resetMixBlendMode( { ...props } ) }
+						resetAllFilter={ resetMixBlendModeFilter }
 						isShownByDefault
+						panelId={ clientId }
 					>
 						<MixBlendModeEdit
 							{ ...props }
@@ -53,3 +91,7 @@ export function LayerPanel( props ) {
 		</InspectorControls>
 	);
 }
+
+export const LayerPanel = memo( LayerPanelPure, ( oldProps, newProps ) =>
+	fastDeepEqual( oldProps, newProps )
+);

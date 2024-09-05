@@ -4,6 +4,7 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import { cleanEmptyObject } from '../utils';
 
 const autoRepeatOptions = [
 	{
@@ -20,58 +21,46 @@ const autoRepeatOptions = [
 	},
 ];
 
-export function useIsAutoRepeatDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.autoRepeat' );
+export function useIsAutoRepeatDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.autoRepeat' );
 }
 
-export function hasAutoRepeatValue( props ) {
-	const { name, attributes } = props;
-
+export function hasAutoRepeatValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.autoRepeat;
 
-	return null != defaultValue
-		? attributes?.unitone?.autoRepeat !== defaultValue
-		: attributes?.unitone?.autoRepeat !== undefined;
+	return (
+		defaultValue !== unitone?.autoRepeat &&
+		undefined !== unitone?.autoRepeat
+	);
 }
 
-export function resetAutoRepeat( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetAutoRepeatFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			autoRepeat: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.autoRepeat;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.autoRepeat;
-
-	if ( null != defaultValue ) {
-		newUnitone.autoRepeat = defaultValue;
-	}
-
+export function resetAutoRepeat( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetAutoRepeatFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function getAutoRepeatEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getAutoRepeatEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.autoRepeat?.label ||
 		__( 'Auto repeat', 'unitone' )
 	);
 }
 
-export function AutoRepeatEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function AutoRepeatEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.autoRepeat;
@@ -80,25 +69,16 @@ export function AutoRepeatEdit( props ) {
 	return (
 		<SelectControl
 			label={ label }
-			value={ unitone?.autoRepeat || '' }
+			value={ unitone?.autoRepeat ?? defaultValue ?? '' }
 			options={ autoRepeatOptions }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
 					autoRepeat: newValue || undefined,
 				};
-				if ( null == newUnitone.autoRepeat ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.autoRepeat;
-					} else {
-						newUnitone.autoRepeat = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
@@ -106,12 +86,25 @@ export function AutoRepeatEdit( props ) {
 }
 
 export function saveAutoRepeatProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.autoRepeat;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.autoRepeat' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.autoRepeat ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.autoRepeat ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				autoRepeat: defaultValue,
+			},
+		};
 	}
 
 	extraProps[ 'data-unitone-layout' ] = classnames(

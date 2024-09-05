@@ -4,30 +4,35 @@ import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { sprintf, __ } from '@wordpress/i18n';
 
-export function hasAutoPhraseValue( props ) {
-	return props.attributes?.unitone?.autoPhrase !== undefined;
+import { cleanEmptyObject } from '../utils';
+
+export function hasAutoPhraseValue( { unitone } ) {
+	return unitone?.autoPhrase !== undefined;
 }
 
-export function resetAutoPhrase( { attributes = {}, setAttributes } ) {
-	delete attributes?.unitone?.autoPhrase;
-	const newUnitone = { ...attributes?.unitone };
+export function resetAutoPhraseFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			autoPhrase: undefined,
+		},
+	};
+}
 
+export function resetAutoPhrase( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetAutoPhraseFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsAutoPhraseDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.autoPhrase' );
+export function useIsAutoPhraseDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.autoPhrase' );
 }
 
-export function AutoPhraseEdit( props ) {
-	const {
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function AutoPhraseEdit( { label, unitone, setAttributes } ) {
 	return (
 		<ToggleControl
 			label={ label }
@@ -51,14 +56,9 @@ export function AutoPhraseEdit( props ) {
 					...unitone,
 					autoPhrase: newValue || undefined,
 				};
-				if ( null == newUnitone.autoPhrase ) {
-					delete newUnitone.autoPhrase;
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>

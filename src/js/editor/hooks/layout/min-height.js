@@ -2,65 +2,50 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import { cleanEmptyObject } from '../utils';
 
-export function hasMinHeightValue( props ) {
-	const { name, attributes } = props;
-
+export function hasMinHeightValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.minHeight;
 
-	return null != defaultValue
-		? attributes?.unitone?.minHeight !== defaultValue
-		: attributes?.unitone?.minHeight !== undefined;
+	return (
+		defaultValue !== unitone?.minHeight && undefined !== unitone?.minHeight
+	);
 }
 
-export function resetMinHeight( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetMinHeightFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			minHeight: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.minHeight;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.minHeight;
-
-	if ( null != defaultValue ) {
-		newUnitone.minHeight = defaultValue;
-	}
-
+export function resetMinHeight( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetMinHeightFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsMinHeightDisabled( {
-	name: blockName,
-	attributes: { __unstableUnitoneSupports },
-} = {} ) {
+export function useIsMinHeightDisabled( { name, __unstableUnitoneSupports } ) {
 	return (
-		! hasBlockSupport( blockName, 'unitone.minHeight' ) &&
+		! hasBlockSupport( name, 'unitone.minHeight' ) &&
 		! __unstableUnitoneSupports?.minHeight
 	);
 }
 
-export function getMinHeightEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getMinHeightEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.minHeight?.label ||
 		__( 'Min height', 'unitone' )
 	);
 }
 
-export function MinHeightEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function MinHeightEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.minHeight;
@@ -69,24 +54,15 @@ export function MinHeightEdit( props ) {
 	return (
 		<TextControl
 			label={ label }
-			value={ unitone?.minHeight || '' }
+			value={ unitone?.minHeight ?? defaultValue ?? '' }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
 					minHeight: newValue || undefined,
 				};
-				if ( null == newUnitone.minHeight ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.minHeight;
-					} else {
-						newUnitone.minHeight = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
@@ -94,22 +70,29 @@ export function MinHeightEdit( props ) {
 }
 
 export function saveMinHeightProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.minHeight;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.minHeight' ) ) {
 		const { __unstableUnitoneSupports } = attributes;
 
 		if ( ! __unstableUnitoneSupports?.minHeight ) {
-			delete attributes?.unitone?.minHeight;
-
-			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
-				delete attributes?.unitone;
-			}
-
 			return extraProps;
 		}
 	}
 
-	if ( undefined === attributes?.unitone?.minHeight ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.minHeight ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				minHeight: defaultValue,
+			},
+		};
 	}
 
 	// Deprecation.

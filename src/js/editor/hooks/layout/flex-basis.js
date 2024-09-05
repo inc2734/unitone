@@ -2,71 +2,66 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import { cleanEmptyObject } from '../utils';
 
-export function hasFlexBasisValue( props ) {
-	const { name, attributes } = props;
-
-	const defaultValue =
-		null != attributes?.__unstableUnitoneSupports?.flexBasis?.default
-			? attributes?.__unstableUnitoneSupports?.flexBasis?.default
-			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-					?.unitone?.default?.flexBasis;
-
-	return null != defaultValue
-		? attributes?.unitone?.flexBasis !== defaultValue
-		: attributes?.unitone?.flexBasis !== undefined;
+function getDefaultValue( { name, __unstableUnitoneSupports } ) {
+	return null != __unstableUnitoneSupports?.flexBasis?.default
+		? __unstableUnitoneSupports?.flexBasis?.default
+		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.flexBasis;
 }
 
-export function resetFlexBasis( props ) {
-	const { name, attributes, setAttributes } = props;
+export function hasFlexBasisValue( {
+	name,
+	unitone,
+	__unstableUnitoneSupports,
+} ) {
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
-	delete attributes?.unitone?.flexBasis;
-	const newUnitone = { ...attributes?.unitone };
+	return (
+		defaultValue !== unitone?.flexBasis && undefined !== unitone?.flexBasis
+	);
+}
 
-	const defaultValue =
-		null != attributes?.__unstableUnitoneSupports?.flexBasis?.default
-			? attributes?.__unstableUnitoneSupports?.flexBasis?.default
-			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-					?.unitone?.default?.flexBasis;
+export function resetFlexBasisFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			flexBasis: undefined,
+		},
+	};
+}
 
-	if ( null != defaultValue ) {
-		newUnitone.flexBasis = defaultValue;
-	}
-
+export function resetFlexBasis( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetFlexBasisFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsFlexBasisDisabled( {
-	name: blockName,
-	attributes: { __unstableUnitoneSupports },
-} = {} ) {
+export function useIsFlexBasisDisabled( { name, __unstableUnitoneSupports } ) {
 	return (
-		! hasBlockSupport( blockName, 'unitone.flexBasis' ) &&
+		! hasBlockSupport( name, 'unitone.flexBasis' ) &&
 		! __unstableUnitoneSupports?.flexBasis
 	);
 }
 
-export function getFlexBasisEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getFlexBasisEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.flexBasis?.label ||
 		__( 'Recommended width', 'unitone' )
 	);
 }
 
-export function FlexBasisEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone, __unstableUnitoneSupports },
-		setAttributes,
-	} = props;
-
+export function FlexBasisEdit( {
+	name,
+	label,
+	unitone,
+	__unstableUnitoneSupports,
+	setAttributes,
+} ) {
 	let defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.flexBasis;
@@ -78,24 +73,15 @@ export function FlexBasisEdit( props ) {
 	return (
 		<TextControl
 			label={ label }
-			value={ unitone?.flexBasis || '' }
+			value={ unitone?.flexBasis ?? defaultValue ?? '' }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
 					flexBasis: newValue || undefined,
 				};
-				if ( null == newUnitone.flexBasis ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.flexBasis;
-					} else {
-						newUnitone.flexBasis = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
@@ -107,18 +93,27 @@ export function saveFlexBasisProp( extraProps, blockType, attributes ) {
 		const { __unstableUnitoneSupports } = attributes;
 
 		if ( ! __unstableUnitoneSupports?.flexBasis ) {
-			delete attributes?.unitone?.flexBasis;
-
-			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
-				delete attributes?.unitone;
-			}
-
 			return extraProps;
 		}
 	}
 
-	if ( undefined === attributes?.unitone?.flexBasis ) {
-		return extraProps;
+	const defaultValue = getDefaultValue( {
+		name: blockType,
+		__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
+	} );
+
+	if ( null == attributes?.unitone?.flexBasis ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				flexBasis: defaultValue,
+			},
+		};
 	}
 
 	extraProps.style = {

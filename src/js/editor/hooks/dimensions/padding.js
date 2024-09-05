@@ -10,57 +10,40 @@ import { __ } from '@wordpress/i18n';
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-export function hasPaddingValue( props ) {
-	const { name, attributes } = props;
-
+export function hasPaddingValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.padding;
 
-	return null != defaultValue
-		? attributes?.unitone?.padding !== defaultValue
-		: attributes?.unitone?.padding !== undefined;
+	return defaultValue !== unitone?.padding && undefined !== unitone?.padding;
 }
 
-export function resetPadding( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetPaddingFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			padding: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.padding;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.padding;
-
-	if ( null != defaultValue ) {
-		newUnitone.padding = defaultValue;
-	}
-
+export function resetPadding( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject( resetPaddingFilter( { unitone } )?.unitone ),
 	} );
 }
 
-export function useIsPaddingDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.padding' );
+export function useIsPaddingDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.padding' );
 }
 
-export function getPaddingEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getPaddingEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.padding?.label || __( 'Padding', 'unitone' )
 	);
 }
 
-export function PaddingEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function PaddingEdit( { label, name, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.padding;
@@ -69,25 +52,21 @@ export function PaddingEdit( props ) {
 	return (
 		<SpacingSizeControl
 			label={ label }
-			value={ unitone?.padding }
+			value={ unitone?.padding ?? defaultValue }
 			onChange={ ( newValue ) => {
-				if ( null == newValue ) {
-					newValue = defaultValue;
-				}
-
 				if ( null != newValue ) {
 					// RangeControl returns Int, SelectControl returns String.
 					// So cast Int all values.
 					newValue = String( newValue );
 				}
 
-				const newUnitone = cleanEmptyObject( {
+				const newUnitone = {
 					...unitone,
 					padding: newValue || undefined,
-				} );
+				};
 
 				setAttributes( {
-					unitone: newUnitone,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
@@ -95,12 +74,25 @@ export function PaddingEdit( props ) {
 }
 
 export function savePaddingProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.padding;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.padding' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.padding ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.padding ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				padding: defaultValue,
+			},
+		};
 	}
 
 	// Deprecation.

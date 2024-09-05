@@ -2,65 +2,50 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import { cleanEmptyObject } from '../utils';
 
-export function hasMaxHeightValue( props ) {
-	const { name, attributes } = props;
-
+export function hasMaxHeightValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.maxHeight;
 
-	return null != defaultValue
-		? attributes?.unitone?.maxHeight !== defaultValue
-		: attributes?.unitone?.maxHeight !== undefined;
+	return (
+		defaultValue !== unitone?.maxHeight && undefined !== unitone?.maxHeight
+	);
 }
 
-export function resetMaxHeight( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetMaxHeightFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			maxHeight: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.maxHeight;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.maxHeight;
-
-	if ( null != defaultValue ) {
-		newUnitone.maxHeight = defaultValue;
-	}
-
+export function resetMaxHeight( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetMaxHeightFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsMaxHeightDisabled( {
-	name: blockName,
-	attributes: { __unstableUnitoneSupports },
-} = {} ) {
+export function useIsMaxHeightDisabled( { name, __unstableUnitoneSupports } ) {
 	return (
-		! hasBlockSupport( blockName, 'unitone.maxHeight' ) &&
+		! hasBlockSupport( name, 'unitone.maxHeight' ) &&
 		! __unstableUnitoneSupports?.maxHeight
 	);
 }
 
-export function getMaxHeightEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getMaxHeightEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.maxHeight?.label ||
 		__( 'Max height', 'unitone' )
 	);
 }
 
-export function MaxHeightEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function MaxHeightEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.maxHeight;
@@ -69,24 +54,15 @@ export function MaxHeightEdit( props ) {
 	return (
 		<TextControl
 			label={ label }
-			value={ unitone?.maxHeight || '' }
+			value={ unitone?.maxHeight ?? defaultValue ?? '' }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
 					maxHeight: newValue || undefined,
 				};
-				if ( null == newUnitone.maxHeight ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.maxHeight;
-					} else {
-						newUnitone.maxHeight = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
@@ -94,22 +70,29 @@ export function MaxHeightEdit( props ) {
 }
 
 export function saveMaxHeightProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.maxHeight;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.maxHeight' ) ) {
 		const { __unstableUnitoneSupports } = attributes;
 
 		if ( ! __unstableUnitoneSupports?.maxHeight ) {
-			delete attributes?.unitone?.maxHeight;
-
-			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
-				delete attributes?.unitone;
-			}
-
 			return extraProps;
 		}
 	}
 
-	if ( undefined === attributes?.unitone?.maxHeight ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.maxHeight ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				maxHeight: defaultValue,
+			},
+		};
 	}
 
 	// Deprecation.

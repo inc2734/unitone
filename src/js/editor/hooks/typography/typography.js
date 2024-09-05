@@ -2,13 +2,17 @@
  * https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/typography.js
  */
 
+import fastDeepEqual from 'fast-deep-equal/es6';
+
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
+import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
 	useIsAutoPhraseDisabled,
 	hasAutoPhraseValue,
+	resetAutoPhraseFilter,
 	resetAutoPhrase,
 	AutoPhraseEdit,
 	useAutoPhraseBlockProps,
@@ -17,6 +21,7 @@ import {
 import {
 	useIsFluidTypographyDisabled,
 	hasFluidTypographyValue,
+	resetFluidTypographyFilter,
 	resetFluidTypography,
 	FluidTypographyEdit,
 	useFluidTypographyBlockProps,
@@ -25,6 +30,7 @@ import {
 import {
 	useIsHalfLeadingDisabled,
 	hasHalfLeadingValue,
+	resetHalfLeadingFilter,
 	resetHalfLeading,
 	HalfLeadingEdit,
 	useHalfLeadingBlockProps,
@@ -36,10 +42,25 @@ export {
 	useHalfLeadingBlockProps,
 };
 
-export function TypographyPanel( props ) {
-	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( props );
-	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( props );
-	const isHalfLeadingDisabled = useIsHalfLeadingDisabled( props );
+function TypographyPanelPure( { clientId, name, unitone, setAttributes } ) {
+	const props = {
+		clientId,
+		name,
+		unitone,
+		setAttributes,
+	};
+
+	const resetAllFilter = useCallback( ( attributes ) => {
+		attributes = resetAutoPhraseFilter( attributes );
+		attributes = resetFluidTypographyFilter( attributes );
+		attributes = resetHalfLeadingFilter( attributes );
+
+		return attributes;
+	}, [] );
+
+	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( { name } );
+	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( { name } );
+	const isHalfLeadingDisabled = useIsHalfLeadingDisabled( { name } );
 
 	if (
 		isAutoPhraseDisabled &&
@@ -51,15 +72,21 @@ export function TypographyPanel( props ) {
 
 	return (
 		<>
-			<InspectorControls group="typography">
+			<InspectorControls
+				group="typography"
+				resetAllFilter={ resetAllFilter }
+			>
 				{ ! isFluidTypographyDisabled && (
 					<ToolsPanelItem
-						hasValue={ () => hasFluidTypographyValue( props ) }
+						hasValue={ () =>
+							hasFluidTypographyValue( { ...props } )
+						}
 						label={ __( 'Fluid typography', 'unitone' ) }
-						onDeselect={ () => resetFluidTypography( props ) }
+						onDeselect={ () =>
+							resetFluidTypography( { ...props } )
+						}
 						isShownByDefault
-						resetAllFilter={ () => resetFluidTypography( props ) }
-						panelId={ props.clientId }
+						panelId={ clientId }
 					>
 						<FluidTypographyEdit
 							{ ...props }
@@ -70,12 +97,11 @@ export function TypographyPanel( props ) {
 
 				{ ! isHalfLeadingDisabled && (
 					<ToolsPanelItem
-						hasValue={ () => hasHalfLeadingValue( props ) }
+						hasValue={ () => hasHalfLeadingValue( { ...props } ) }
 						label={ __( 'Half leading', 'unitone' ) }
-						onDeselect={ () => resetHalfLeading( props ) }
+						onDeselect={ () => resetHalfLeading( { ...props } ) }
 						isShownByDefault
-						resetAllFilter={ () => resetHalfLeading( props ) }
-						panelId={ props.clientId }
+						panelId={ clientId }
 					>
 						<HalfLeadingEdit
 							{ ...props }
@@ -86,12 +112,11 @@ export function TypographyPanel( props ) {
 
 				{ ! isAutoPhraseDisabled && (
 					<ToolsPanelItem
-						hasValue={ () => hasAutoPhraseValue( props ) }
+						hasValue={ () => hasAutoPhraseValue( { ...props } ) }
 						label={ __( 'Auto line breaks', 'unitone' ) }
-						onDeselect={ () => resetAutoPhrase( props ) }
+						onDeselect={ () => resetAutoPhrase( { ...props } ) }
 						isShownByDefault
-						resetAllFilter={ () => resetAutoPhrase( props ) }
-						panelId={ props.clientId }
+						panelId={ clientId }
 					>
 						<AutoPhraseEdit
 							{ ...props }
@@ -103,3 +128,8 @@ export function TypographyPanel( props ) {
 		</>
 	);
 }
+
+export const TypographyPanel = memo(
+	TypographyPanelPure,
+	( oldProps, newProps ) => fastDeepEqual( oldProps, newProps )
+);

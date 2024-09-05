@@ -9,70 +9,52 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { settings as settingsIcon } from '@wordpress/icons';
+import { cleanEmptyObject } from '../utils';
 
-// import { getGlobalStyleCssVar, isValueGlobalStyle } from '../utils';
-
-export function hasMaxWidthValue( props ) {
-	const { name, attributes } = props;
-
+export function hasMaxWidthValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.maxWidth;
 
-	return null != defaultValue
-		? attributes?.unitone?.maxWidth !== defaultValue
-		: attributes?.unitone?.maxWidth !== undefined;
+	return (
+		defaultValue !== unitone?.maxWidth && undefined !== unitone?.maxWidth
+	);
 }
 
-export function resetMaxWidth( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetMaxWidthFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			maxWidth: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.maxWidth;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.maxWidth;
-
-	if ( null != defaultValue ) {
-		newUnitone.maxWidth = defaultValue;
-	}
-
+export function resetMaxWidth( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetMaxWidthFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsMaxWidthDisabled( {
-	name: blockName,
-	attributes: { __unstableUnitoneSupports },
-} = {} ) {
+export function useIsMaxWidthDisabled( { name, __unstableUnitoneSupports } ) {
 	return (
-		! hasBlockSupport( blockName, 'unitone.maxWidth' ) &&
+		! hasBlockSupport( name, 'unitone.maxWidth' ) &&
 		! __unstableUnitoneSupports?.maxWidth
 	);
 }
 
-export function getMaxWidthEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getMaxWidthEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.maxWidth?.label ||
 		__( 'Max width', 'unitone' )
 	);
 }
 
-export function MaxWidthEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function MaxWidthEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.maxWidth;
@@ -83,27 +65,14 @@ export function MaxWidthEdit( props ) {
 		'var(--wp--style--global--content-size)',
 	].includes( unitone?.maxWidth );
 
-	const [ showCustomValueControl, setShowCustomValueControl ] = useState(
-		! isPresetValue
-	);
-
 	const onChangeMaxWidth = ( newValue ) => {
 		const newUnitone = {
 			...unitone,
 			maxWidth: newValue || undefined,
 		};
-		if ( null == newUnitone.maxWidth ) {
-			if ( null == defaultValue ) {
-				delete newUnitone.maxWidth;
-			} else {
-				newUnitone.maxWidth = '';
-			}
-		}
 
 		setAttributes( {
-			unitone: !! Object.keys( newUnitone ).length
-				? newUnitone
-				: undefined,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
@@ -114,9 +83,9 @@ export function MaxWidthEdit( props ) {
 			id="unitone-max-width-control"
 		>
 			<HStack>
-				{ ! showCustomValueControl ? (
+				{ isPresetValue ? (
 					<ToggleGroupControl
-						value={ unitone?.maxWidth || '' }
+						value={ unitone?.maxWidth ?? defaultValue ?? '' }
 						isBlock
 						onChange={ onChangeMaxWidth }
 					>
@@ -132,14 +101,14 @@ export function MaxWidthEdit( props ) {
 				) : (
 					<TextControl
 						id="unitone-max-width-control"
-						value={ unitone?.maxWidth || '' }
+						value={ unitone?.maxWidth ?? defaultValue ?? '' }
 						onChange={ onChangeMaxWidth }
 					/>
 				) }
 
 				<Button
 					label={
-						showCustomValueControl
+						! isPresetValue
 							? __( 'Use size preset' )
 							: __( 'Set custom size' )
 					}
@@ -148,12 +117,10 @@ export function MaxWidthEdit( props ) {
 						onChangeMaxWidth(
 							! isPresetValue
 								? 'var(--wp--style--global--wide-size)'
-								: unitone?.maxWidth
+								: ''
 						);
-
-						setShowCustomValueControl( ! showCustomValueControl );
 					} }
-					isPressed={ showCustomValueControl }
+					isPressed={ ! isPresetValue }
 					size="small"
 					iconSize={ 24 }
 				/>
@@ -163,22 +130,29 @@ export function MaxWidthEdit( props ) {
 }
 
 export function saveMaxWidthProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.maxWidth;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.maxWidth' ) ) {
 		const { __unstableUnitoneSupports } = attributes;
 
 		if ( ! __unstableUnitoneSupports?.maxWidth ) {
-			delete attributes?.unitone?.maxWidth;
-
-			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
-				delete attributes?.unitone;
-			}
-
 			return extraProps;
 		}
 	}
 
-	if ( undefined === attributes?.unitone?.maxWidth ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.maxWidth ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				maxWidth: defaultValue,
+			},
+		};
 	}
 
 	// Deprecation.

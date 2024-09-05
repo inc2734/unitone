@@ -5,7 +5,15 @@ export default [
 		name: 'cluster-divided-stripe',
 		title: __( 'Cluster (Divider: stripe)', 'unitone' ),
 		isDefault: true,
-		attributes: { unitone: { dividerType: 'stripe' } },
+		attributes: {
+			unitone: {
+				dividerType: 'stripe',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+				alignItems: 'stretch',
+				justifyContent: 'start',
+			},
+		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
 			!! variationAttributes?.unitone?.dividerType &&
@@ -21,7 +29,15 @@ export default [
 		name: 'cluster-divided-slash',
 		title: __( 'Cluster (Divider: slash)', 'unitone' ),
 		isDefault: false,
-		attributes: { unitone: { dividerType: 'slash' } },
+		attributes: {
+			unitone: {
+				dividerType: 'slash',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+				alignItems: 'stretch',
+				justifyContent: 'start',
+			},
+		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
 			!! variationAttributes?.unitone?.dividerType &&
@@ -37,7 +53,15 @@ export default [
 		name: 'cluster-divided-bordered',
 		title: __( 'Cluster (Divider: bordered)', 'unitone' ),
 		isDefault: false,
-		attributes: { unitone: { dividerType: 'bordered' } },
+		attributes: {
+			unitone: {
+				dividerType: 'bordered',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+				alignItems: 'stretch',
+				justifyContent: 'start',
+			},
+		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
 			!! variationAttributes?.unitone?.dividerType &&

@@ -49,19 +49,7 @@ const justifySelfOptions = [
 	},
 ];
 
-function getDefaultValue( props ) {
-	const { name, attributes } = props;
-
-	return null != attributes?.__unstableUnitoneSupports?.justifySelf?.default
-		? attributes?.__unstableUnitoneSupports?.justifySelf?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.justifySelf;
-}
-
-function getIsResponsive( props ) {
-	const { name, attributes } = props;
-	const { __unstableUnitoneSupports } = attributes;
-
+function getIsResponsive( { name, __unstableUnitoneSupports } ) {
 	return (
 		getBlockSupport( name, 'unitone.justifySelf.responsive' ) ||
 		__unstableUnitoneSupports?.justifySelf?.responsive ||
@@ -69,10 +57,14 @@ function getIsResponsive( props ) {
 	);
 }
 
-function useDefaultValue( props ) {
-	const { name, attributes } = props;
-	const { __unstableUnitoneSupports } = attributes;
+function getDefaultValue( { name, __unstableUnitoneSupports } ) {
+	return null != __unstableUnitoneSupports?.justifySelf?.default
+		? __unstableUnitoneSupports?.justifySelf?.default
+		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.justifySelf;
+}
 
+function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifySelf;
@@ -83,121 +75,111 @@ function useDefaultValue( props ) {
 		: defaultValue;
 }
 
-export function hasJustifySelfValue( props ) {
-	const { attributes } = props;
+export function hasJustifySelfValue( {
+	name,
+	unitone,
+	__unstableUnitoneSupports,
+} ) {
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
-	const defaultValue = getDefaultValue( props );
-
-	return null != defaultValue
-		? JSON.stringify( attributes?.unitone?.justifySelf ) !==
-				JSON.stringify( defaultValue )
-		: attributes?.unitone?.justifySelf !== undefined;
+	return (
+		JSON.stringify( defaultValue ) !==
+			JSON.stringify( unitone?.justifySelf ) &&
+		undefined !== unitone?.justifySelf
+	);
 }
 
-export function resetJustifySelf( props ) {
-	const { attributes, setAttributes } = props;
+export function resetJustifySelfFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			justifySelf: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.justifySelf;
-
-	const newUnitone = cleanEmptyObject( {
-		...attributes?.unitone,
-		justifySelf: getDefaultValue( props ) || undefined,
-	} );
-
+export function resetJustifySelf( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: newUnitone,
+		unitone: cleanEmptyObject(
+			resetJustifySelfFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
 export function useIsJustifySelfDisabled( {
-	name: blockName,
-	attributes: { __unstableUnitoneSupports },
-} = {} ) {
+	name,
+	__unstableUnitoneSupports,
+} ) {
 	return (
-		! hasBlockSupport( blockName, 'unitone.justifySelf' ) &&
+		! hasBlockSupport( name, 'unitone.justifySelf' ) &&
 		! __unstableUnitoneSupports?.justifySelf
 	);
 }
 
-export function JustifySelfToolbar( props ) {
-	const {
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function JustifySelfToolbar( {
+	name,
+	unitone,
+	__unstableUnitoneSupports,
+	setAttributes,
+} ) {
 	const deviceType = useDeviceType();
-	const isResponsive = getIsResponsive( props );
-	const defaultValue = useDefaultValue( props );
+	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );
+	let defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
 	const onChangeJustifySelf = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
-			justifySelf: physicalToLogical( newValue ),
-		} );
+			justifySelf: physicalToLogical( newValue || undefined ),
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeJustifySelfLg = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.lg || undefined;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: physicalToLogical( newValue ),
+				lg: physicalToLogical( newValue || undefined ),
 				md: unitone?.justifySelf?.md || undefined,
 				sm: unitone?.justifySelf?.sm || undefined,
 			},
-		} );
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeJustifySelfMd = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.md || undefined;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
 			justifySelf: {
 				lg: unitone?.justifySelf?.lg || undefined,
-				md: physicalToLogical( newValue ),
+				md: physicalToLogical( newValue || undefined ),
 				sm: unitone?.justifySelf?.sm || undefined,
 			},
-		} );
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeJustifySelfSm = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.sm || undefined;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
 			justifySelf: {
 				lg: unitone?.justifySelf?.lg || undefined,
 				md: unitone?.justifySelf?.md || undefined,
-				sm: physicalToLogical( newValue ),
+				sm: physicalToLogical( newValue || undefined ),
 			},
-		} );
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
@@ -207,12 +189,16 @@ export function JustifySelfToolbar( props ) {
 		const fallbackValue = typeof value === 'string' ? value : undefined;
 		if ( 'desktop' === deviceType ) {
 			value = value?.lg || fallbackValue;
+			defaultValue = defaultValue?.lg;
 			onChange = onChangeJustifySelfLg;
 		} else if ( 'tablet' === deviceType ) {
 			value = value?.md || value?.lg || fallbackValue;
+			defaultValue = defaultValue?.md || defaultValue?.lg;
 			onChange = onChangeJustifySelfMd;
 		} else if ( 'mobile' === deviceType ) {
 			value = value?.sm || value?.md || value?.lg || fallbackValue;
+			defaultValue =
+				defaultValue?.sm || defaultValue?.md || defaultValue?.lg;
 			onChange = onChangeJustifySelfSm;
 		}
 	}
@@ -222,106 +208,86 @@ export function JustifySelfToolbar( props ) {
 			allowedControls={ justifySelfOptions.map( ( option ) =>
 				logicalToPhysical( option.value )
 			) }
-			value={ logicalToPhysical( value ) }
+			value={ logicalToPhysical( value ?? defaultValue ) }
 			onChange={ onChange }
 		/>
 	);
 }
 
-export function getJustifySelfEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getJustifySelfEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.justifySelf?.label ||
 		__( 'Justify self', 'unitone' )
 	);
 }
 
-export function JustifySelfEdit( props ) {
-	const {
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
-	const isResponsive = getIsResponsive( props );
-	const defaultValue = useDefaultValue( props );
+export function JustifySelfEdit( {
+	label,
+	name,
+	unitone,
+	__unstableUnitoneSupports,
+	setAttributes,
+} ) {
+	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );
+	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 	const fallbackValue =
 		typeof unitone?.justifySelf === 'string'
 			? unitone?.justifySelf
 			: undefined;
 
 	const onChangeJustifySelf = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
-			justifySelf: newValue,
-		} );
+			justifySelf: newValue || undefined,
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeJustifySelfLg = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.lg || undefined;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: newValue,
+				lg: newValue || undefined,
 				md: unitone?.justifySelf?.md || undefined,
 				sm: unitone?.justifySelf?.sm || undefined,
 			},
-		} );
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeJustifySelfMd = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.md || undefined;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
 			justifySelf: {
 				lg: unitone?.justifySelf?.lg || fallbackValue || undefined,
-				md: newValue,
+				md: newValue || undefined,
 				sm: unitone?.justifySelf?.sm || undefined,
 			},
-		} );
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeJustifySelfSm = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.sm || undefined;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
 			justifySelf: {
 				lg: unitone?.justifySelf?.lg || fallbackValue || undefined,
 				md: unitone?.justifySelf?.md || undefined,
-				sm: newValue,
+				sm: newValue || undefined,
 			},
-		} );
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
@@ -333,7 +299,10 @@ export function JustifySelfEdit( props ) {
 					<ToggleGroupControl
 						__nextHasNoMarginBottom
 						hideLabelFromVision
-						value={ unitone?.justifySelf?.lg || fallbackValue }
+						value={
+							( unitone?.justifySelf?.lg || fallbackValue ) ??
+							defaultValue?.lg
+						}
 						onChange={ onChangeJustifySelfLg }
 					>
 						{ justifySelfOptions.map(
@@ -355,9 +324,10 @@ export function JustifySelfEdit( props ) {
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={
-							unitone?.justifySelf?.md ||
-							unitone?.justifySelf?.lg ||
-							fallbackValue
+							( unitone?.justifySelf?.md ||
+								unitone?.justifySelf?.lg ||
+								fallbackValue ) ??
+							( defaultValue?.md || defaultValue?.lg )
 						}
 						onChange={ onChangeJustifySelfMd }
 					>
@@ -380,10 +350,13 @@ export function JustifySelfEdit( props ) {
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={
-							unitone?.justifySelf?.sm ||
-							unitone?.justifySelf?.md ||
-							unitone?.justifySelf?.lg ||
-							fallbackValue
+							( unitone?.justifySelf?.sm ||
+								unitone?.justifySelf?.md ||
+								unitone?.justifySelf?.lg ||
+								fallbackValue ) ??
+							( defaultValue?.sm ||
+								defaultValue?.md ||
+								defaultValue?.lg )
 						}
 						onChange={ onChangeJustifySelfSm }
 					>
@@ -429,18 +402,27 @@ export function saveJustifySelfProp( extraProps, blockType, attributes ) {
 		const { __unstableUnitoneSupports } = attributes;
 
 		if ( ! __unstableUnitoneSupports?.justifySelf ) {
-			delete attributes?.unitone?.justifySelf;
-
-			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
-				delete attributes?.unitone;
-			}
-
 			return extraProps;
 		}
 	}
 
-	if ( undefined === attributes?.unitone?.justifySelf ) {
-		return extraProps;
+	const defaultValue = getDefaultValue( {
+		name: blockType,
+		__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
+	} );
+
+	if ( null == attributes?.unitone?.justifySelf ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				justifySelf: defaultValue,
+			},
+		};
 	}
 
 	extraProps[ 'data-unitone-layout' ] = classnames(

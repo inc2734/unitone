@@ -5,6 +5,8 @@ import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import { cleanEmptyObject } from '../utils';
+
 const mixBlendModeOptions = [
 	{
 		label: '',
@@ -76,53 +78,45 @@ const mixBlendModeOptions = [
 	},
 ];
 
-export function hasMixBlendModeValue( props ) {
-	const { name, attributes } = props;
-
+export function hasMixBlendModeValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.mixBlendMode;
 
-	return null != defaultValue
-		? attributes?.unitone?.mixBlendMode !== defaultValue
-		: attributes?.unitone?.mixBlendMode !== undefined;
+	return (
+		defaultValue !== unitone?.mixBlendMode &&
+		undefined !== unitone?.mixBlendMode
+	);
 }
 
-export function resetMixBlendMode( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetMixBlendModeFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			mixBlendMode: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.mixBlendMode;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.mixBlendMode;
-
-	if ( null != defaultValue ) {
-		newUnitone.mixBlendMode = defaultValue;
-	}
-
+export function resetMixBlendMode( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetMixBlendModeFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
 export function useIsMixBlendModeDisabled( {
-	name: blockName,
-	attributes: { __unstableUnitoneSupports },
+	name,
+	__unstableUnitoneSupports,
 } = {} ) {
 	return (
-		! hasBlockSupport( blockName, 'unitone.mixBlendMode' ) &&
+		! hasBlockSupport( name, 'unitone.mixBlendMode' ) &&
 		! __unstableUnitoneSupports?.mixBlendMode
 	);
 }
 
-export function MixBlendModeEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function MixBlendModeEdit( { label, name, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.mixBlendMode;
@@ -136,24 +130,15 @@ export function MixBlendModeEdit( props ) {
 				'unitone'
 			) }
 			options={ mixBlendModeOptions }
-			value={ unitone?.mixBlendMode }
+			value={ unitone?.mixBlendMode ?? defaultValue ?? '' }
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,
 					mixBlendMode: newAttribute || undefined,
 				};
-				if ( null == newUnitone.mixBlendMode ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.mixBlendMode;
-					} else {
-						newUnitone.mixBlendMode = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
@@ -161,22 +146,29 @@ export function MixBlendModeEdit( props ) {
 }
 
 export function saveMixBlendModeProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.mixBlendMode;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.mixBlendMode' ) ) {
 		const { __unstableUnitoneSupports } = attributes;
 
 		if ( ! __unstableUnitoneSupports?.mixBlendMode ) {
-			delete attributes?.unitone?.mixBlendMode;
-
-			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
-				delete attributes?.unitone;
-			}
-
 			return extraProps;
 		}
 	}
 
-	if ( undefined === attributes?.unitone?.mixBlendMode ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.mixBlendMode ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				mixBlendMode: defaultValue,
+			},
+		};
 	}
 
 	extraProps[ 'data-unitone-layout' ] = classnames(

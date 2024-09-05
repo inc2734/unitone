@@ -19,40 +19,38 @@ import { Icon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { scroll as iconScrollAnimation } from './icons';
-
 import { cleanEmptyObject } from '../utils';
 
-export function hasScrollAnimationValue( props ) {
-	const { name, attributes } = props;
-
+export function hasScrollAnimationValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.scrollAnimation;
 
-	return null != defaultValue
-		? attributes?.unitone?.scrollAnimation !== defaultValue
-		: attributes?.unitone?.scrollAnimation !== undefined;
+	return (
+		defaultValue !== unitone?.scrollAnimation &&
+		undefined !== unitone?.scrollAnimation
+	);
 }
 
-export function resetScrollAnimation( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetScrollAnimationFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			scrollAnimation: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.scrollAnimation;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.scrollAnimation;
-
-	if ( null != defaultValue ) {
-		newUnitone.scrollAnimation = defaultValue;
-	}
-
+export function resetScrollAnimation( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetScrollAnimationFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsScrollAnimationDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.scrollAnimation' );
+export function useIsScrollAnimationDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.scrollAnimation' );
 }
 
 function renderShadowToggle() {
@@ -109,9 +107,9 @@ function ScrollAnimationPopover( {
 
 							<SelectControl
 								label={ __( 'Type', 'unitone' ) }
-								value={ type || undefined }
+								value={ type || '' }
 								options={ [
-									{ label: '', value: undefined },
+									{ label: '', value: '' },
 									{
 										label: 'fade-in',
 										value: 'fade-in',
@@ -172,7 +170,7 @@ function ScrollAnimationPopover( {
 
 							<SelectControl
 								label={ __( 'Easing', 'unitone' ) }
-								value={ easing || undefined }
+								value={ easing || '' }
 								disabled={ ! type }
 								options={ [
 									{ label: '', value: undefined },
@@ -303,93 +301,75 @@ function ScrollAnimationPopover( {
 	);
 }
 
-export function ScrollAnimationEdit( props ) {
-	const {
-		name,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function ScrollAnimationEdit( { name, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.scrollAnimation;
 	}, [] );
 
-	const speed = unitone?.scrollAnimation?.speed;
-	const delay = unitone?.scrollAnimation?.delay;
+	const speed = unitone?.scrollAnimation?.speed ?? defaultValue?.speed;
+	const delay = unitone?.scrollAnimation?.delay ?? defaultValue?.delay;
+	const easing = unitone?.scrollAnimation?.easing ?? defaultValue?.easing;
 
 	return (
 		<ItemGroup isBordered isSeparated>
 			<ScrollAnimationPopover
-				type={ unitone?.scrollAnimation?.type }
+				type={
+					unitone?.scrollAnimation?.type ?? defaultValue?.type ?? ''
+				}
 				speed={ null != speed ? parseFloat( speed ) : undefined }
 				delay={ null != delay ? parseFloat( delay ) : undefined }
-				easing={ unitone?.scrollAnimation?.easing }
+				easing={ easing ?? '' }
 				onChangeType={ ( newAttribute ) => {
-					if ( null == newAttribute ) {
-						newAttribute = defaultValue?.type;
-					}
-					const newUnitone = cleanEmptyObject( {
+					const newUnitone = {
 						...unitone,
 						scrollAnimation: {
 							...unitone?.scrollAnimation,
 							type: newAttribute || undefined,
 						},
-					} );
+					};
 
 					setAttributes( {
-						unitone: newUnitone,
+						unitone: cleanEmptyObject( newUnitone ),
 					} );
 				} }
 				onChangeSpeed={ ( newAttribute ) => {
-					if ( null == newAttribute ) {
-						newAttribute = defaultValue?.speed;
-					}
-
-					const newUnitone = cleanEmptyObject( {
+					const newUnitone = {
 						...unitone,
 						scrollAnimation: {
 							...unitone?.scrollAnimation,
 							speed: newAttribute || undefined,
 						},
-					} );
+					};
 
 					setAttributes( {
-						unitone: newUnitone,
+						unitone: cleanEmptyObject( newUnitone ),
 					} );
 				} }
 				onChangeDelay={ ( newAttribute ) => {
-					if ( null == newAttribute ) {
-						newAttribute = defaultValue?.delay;
-					}
-
-					const newUnitone = cleanEmptyObject( {
+					const newUnitone = {
 						...unitone,
 						scrollAnimation: {
 							...unitone?.scrollAnimation,
 							delay: newAttribute || undefined,
 						},
-					} );
+					};
 
 					setAttributes( {
-						unitone: newUnitone,
+						unitone: cleanEmptyObject( newUnitone ),
 					} );
 				} }
 				onChangeEasing={ ( newAttribute ) => {
-					if ( null == newAttribute ) {
-						newAttribute = defaultValue?.easing;
-					}
-
-					const newUnitone = cleanEmptyObject( {
+					const newUnitone = {
 						...unitone,
 						scrollAnimation: {
 							...unitone?.scrollAnimation,
 							easing: newAttribute || undefined,
 						},
-					} );
+					};
 
 					setAttributes( {
-						unitone: newUnitone,
+						unitone: cleanEmptyObject( newUnitone ),
 					} );
 				} }
 			/>
@@ -402,8 +382,24 @@ export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.scrollAnimation ) {
-		return extraProps;
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.scrollAnimation;
+
+	if ( null == attributes?.unitone?.scrollAnimation ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				scrollAnimation: {
+					...attributes?.unitone?.scrollAnimation,
+					...defaultValue,
+				},
+			},
+		};
 	}
 
 	extraProps[ 'data-unitone-scroll-animation' ] =

@@ -5,7 +5,13 @@ export default [
 		name: 'flex-divided-stripe',
 		title: __( 'Flex (Divider: stripe)', 'unitone' ),
 		isDefault: true,
-		attributes: { unitone: { dividerType: 'stripe' } },
+		attributes: {
+			unitone: {
+				dividerType: 'stripe',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+			},
+		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
 			!! variationAttributes?.unitone?.dividerType &&
@@ -21,7 +27,13 @@ export default [
 		name: 'flex-divided-slash',
 		title: __( 'Flex (Divider: slash)', 'unitone' ),
 		isDefault: false,
-		attributes: { unitone: { dividerType: 'slash' } },
+		attributes: {
+			unitone: {
+				dividerType: 'slash',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+			},
+		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
 			!! variationAttributes?.unitone?.dividerType &&
@@ -37,7 +49,13 @@ export default [
 		name: 'flex-divided-bordered',
 		title: __( 'Flex (Divider: bordered)', 'unitone' ),
 		isDefault: false,
-		attributes: { unitone: { dividerType: 'bordered' } },
+		attributes: {
+			unitone: {
+				dividerType: 'bordered',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+			},
+		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
 			!! variationAttributes?.unitone?.dividerType &&

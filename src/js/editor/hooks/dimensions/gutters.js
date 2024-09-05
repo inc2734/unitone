@@ -8,58 +8,41 @@ import { __ } from '@wordpress/i18n';
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-export function hasGuttersValue( props ) {
-	const { name, attributes } = props;
-
+export function hasGuttersValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.gutters;
 
-	return null != defaultValue
-		? attributes?.unitone?.gutters !== defaultValue
-		: attributes?.unitone?.gutters !== undefined;
+	return defaultValue !== unitone?.gutters && undefined !== unitone?.gutters;
 }
 
-export function resetGutters( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetGuttersFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			gutters: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.gutters;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.gutters;
-
-	if ( null != defaultValue ) {
-		newUnitone.gutters = defaultValue;
-	}
-
+export function resetGutters( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject( resetGuttersFilter( { unitone } )?.unitone ),
 	} );
 }
 
-export function useIsGuttersDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.gutters' );
+export function useIsGuttersDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.gutters' );
 }
 
-export function getGuttersEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getGuttersEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.gutters?.label ||
 		__( 'Margins at both ends', 'unitone' )
 	);
 }
 
-export function GuttersEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function GuttersEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.gutters;
@@ -75,39 +58,35 @@ export function GuttersEdit( props ) {
 			>
 				<ToggleControl
 					label={ __( 'Using root padding', 'unitone' ) }
-					checked={ 'root' === unitone?.gutters }
+					checked={ 'root' === ( unitone?.gutters ?? defaultValue ) }
 					onChange={ ( newValue ) => {
 						setAttributes( {
-							unitone: {
+							unitone: cleanEmptyObject( {
 								...unitone,
-								gutters: newValue ? 'root' : undefined,
-							},
+								gutters: newValue ? 'root' : '0',
+							} ),
 						} );
 					} }
 				/>
 			</div>
 
-			{ 'root' !== unitone?.gutters && (
+			{ 'root' !== ( unitone?.gutters ?? defaultValue ) && (
 				<SpacingSizeControl
-					value={ unitone?.gutters }
+					value={ unitone?.gutters ?? defaultValue }
 					onChange={ ( newValue ) => {
-						if ( null == newValue ) {
-							newValue = defaultValue;
-						}
-
 						if ( null != newValue ) {
 							// RangeControl returns Int, SelectControl returns String.
 							// So cast Int all values.
 							newValue = String( newValue );
 						}
 
-						const newUnitone = cleanEmptyObject( {
+						const newUnitone = {
 							...unitone,
 							gutters: newValue || undefined,
-						} );
+						};
 
 						setAttributes( {
-							unitone: newUnitone,
+							unitone: cleanEmptyObject( newUnitone ),
 						} );
 					} }
 				/>
@@ -117,12 +96,25 @@ export function GuttersEdit( props ) {
 }
 
 export function saveGuttersProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.gutters;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.gutters' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.gutters ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.gutters ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				gutters: defaultValue,
+			},
+		};
 	}
 
 	// Deprecation.

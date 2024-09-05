@@ -15,11 +15,12 @@ import { __ } from '@wordpress/i18n';
 import { isNumber, useDeviceType } from './utils';
 
 function Controls( { isMixed, value, onChange, marks, options } ) {
+	value = isNumber( value ) ? parseInt( value ) : undefined;
 	return (
 		<>
 			<RangeControl
 				className="spacing-sizes-control__range-control"
-				value={ isMixed ? -2 : parseInt( value ) }
+				value={ isMixed ? -2 : value }
 				allowReset
 				resetFallbackValue={ undefined }
 				onChange={ onChange }
@@ -41,7 +42,7 @@ function Controls( { isMixed, value, onChange, marks, options } ) {
 
 			<div style={ { marginTop: '5px' } }>
 				<SelectControl
-					value={ value || '' }
+					value={ value ?? '' }
 					options={ options }
 					onChange={ onChange }
 				/>
@@ -58,6 +59,7 @@ export function SpacingSizeControl( {
 	isMixed = false,
 } ) {
 	value = isMixed ? 'mixed' : value;
+
 	const defaultOptions = [
 		{
 			label: '',

@@ -37,7 +37,7 @@ export const cleanEmptyObject = ( object ) => {
  * @return {boolean} Return true if the value is number.
  */
 export function isNumber( value ) {
-	return ! isNaN( value );
+	return ! isNaN( value ) && '' !== value;
 }
 
 /**

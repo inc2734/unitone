@@ -10,6 +10,7 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import { cleanEmptyObject } from '../utils';
 import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
 import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
@@ -36,46 +37,39 @@ const alignItemsOptions = [
 	},
 ];
 
-export function hasAlignItemsValue( props ) {
-	const { name, attributes } = props;
-
+export function hasAlignItemsValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.alignItems;
 
-	return null != defaultValue
-		? attributes?.unitone?.alignItems !== defaultValue
-		: attributes?.unitone?.alignItems !== undefined;
+	return (
+		defaultValue !== unitone?.alignItems &&
+		undefined !== unitone?.alignItems
+	);
 }
 
-export function resetAlignItems( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetAlignItemsFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			alignItems: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.alignItems;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.alignItems;
-
-	if ( null != defaultValue ) {
-		newUnitone.alignItems = defaultValue;
-	}
-
+export function resetAlignItems( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetAlignItemsFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsAlignItemsDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.alignItems' );
+export function useIsAlignItemsDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.alignItems' );
 }
 
-export function AlignItemsToolbar( props ) {
-	const {
-		name,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function AlignItemsToolbar( { name, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.alignItems;
@@ -84,49 +78,32 @@ export function AlignItemsToolbar( props ) {
 	return (
 		<BlockVerticalAlignmentToolbar
 			controls={ [ 'top', 'center', 'bottom', 'stretch' ] }
-			value={ logicalToPhysical( unitone?.alignItems, 'vertical' ) }
+			value={ logicalToPhysical(
+				unitone?.alignItems ?? defaultValue,
+				'vertical'
+			) }
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,
-					alignItems: physicalToLogical( newAttribute ),
+					alignItems: physicalToLogical( newAttribute || undefined ),
 				};
-				if ( null == newUnitone.alignItems ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.alignItems;
-					} else {
-						newUnitone.alignItems = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
 	);
 }
 
-export function getAlignItemsEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getAlignItemsEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.alignItems?.label ||
 		__( 'Align items', 'unitone' )
 	);
 }
 
-export function AlignItemsEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function AlignItemsEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.alignItems;
@@ -137,30 +114,24 @@ export function AlignItemsEdit( props ) {
 			<ToggleGroupControl
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ logicalToPhysical( unitone?.alignItems, 'vertical' ) }
-				onChange={ ( value ) => {
+				value={ logicalToPhysical(
+					unitone?.alignItems ?? defaultValue,
+					'vertical'
+				) }
+				onChange={ ( newValue ) => {
 					const newUnitone = {
 						...unitone,
 						alignItems:
 							logicalToPhysical(
 								unitone?.alignItems,
 								'vertical'
-							) !== value
-								? physicalToLogical( value )
+							) !== newValue
+								? physicalToLogical( newValue )
 								: undefined,
 					};
-					if ( null == newUnitone.alignItems ) {
-						if ( null == defaultValue ) {
-							delete newUnitone.alignItems;
-						} else {
-							newUnitone.alignItems = '';
-						}
-					}
 
 					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
+						unitone: cleanEmptyObject( newUnitone ),
 					} );
 				} }
 			>
@@ -180,12 +151,25 @@ export function AlignItemsEdit( props ) {
 }
 
 export function saveAlignItemsProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.alignItems;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.alignItems' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.alignItems ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.alignItems ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				alignItems: defaultValue,
+			},
+		};
 	}
 
 	// Deprecation.

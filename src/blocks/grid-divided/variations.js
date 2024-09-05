@@ -6,7 +6,12 @@ export default [
 		title: __( 'Grid (Divider: stripe)', 'unitone' ),
 		isDefault: true,
 		attributes: {
-			unitone: { dividerType: 'stripe' },
+			unitone: {
+				dividerType: 'stripe',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+				autoRepeat: 'auto-fit',
+			},
 		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
@@ -24,7 +29,12 @@ export default [
 		title: __( 'Grid (Divider: underline)', 'unitone' ),
 		isDefault: false,
 		attributes: {
-			unitone: { dividerType: 'underline' },
+			unitone: {
+				dividerType: 'underline',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+				autoRepeat: 'auto-fit',
+			},
 		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
@@ -42,7 +52,12 @@ export default [
 		title: __( 'Grid (Divider: bordered)', 'unitone' ),
 		isDefault: false,
 		attributes: {
-			unitone: { dividerType: 'bordered' },
+			unitone: {
+				dividerType: 'bordered',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+				autoRepeat: 'auto-fit',
+			},
 		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&

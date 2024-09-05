@@ -11,19 +11,7 @@ import { __ } from '@wordpress/i18n';
 import { ResponsiveSettingsContainer } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-function getDefaultValue( props ) {
-	const { name, attributes } = props;
-
-	return null != attributes?.__unstableUnitoneSupports?.gridColumn?.default
-		? attributes?.__unstableUnitoneSupports?.gridColumn?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.gridColumn;
-}
-
-function getIsResponsive( props ) {
-	const { name, attributes } = props;
-	const { __unstableUnitoneSupports } = attributes;
-
+function getIsResponsive( { name, __unstableUnitoneSupports } ) {
 	return (
 		getBlockSupport( name, 'unitone.gridColumn.responsive' ) ||
 		__unstableUnitoneSupports?.gridColumn?.responsive ||
@@ -31,10 +19,14 @@ function getIsResponsive( props ) {
 	);
 }
 
-function useDefaultValue( props ) {
-	const { name, attributes } = props;
-	const { __unstableUnitoneSupports } = attributes;
+function getDefaultValue( { name, __unstableUnitoneSupports } ) {
+	return null != __unstableUnitoneSupports?.gridColumn?.default
+		? __unstableUnitoneSupports?.gridColumn?.default
+		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.gridColumn;
+}
 
+function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.gridColumn;
@@ -45,137 +37,120 @@ function useDefaultValue( props ) {
 		: defaultValue;
 }
 
-export function hasGridColumnValue( props ) {
-	const { attributes } = props;
+export function hasGridColumnValue( {
+	name,
+	unitone,
+	__unstableUnitoneSupports,
+} ) {
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
-	const defaultValue = getDefaultValue( props );
-
-	return null != defaultValue
-		? JSON.stringify( attributes?.unitone?.gridColumn ) !==
-				JSON.stringify( defaultValue )
-		: attributes?.unitone?.gridColumn !== undefined;
-}
-
-export function resetGridColumn( props ) {
-	const { attributes, setAttributes } = props;
-
-	delete attributes?.unitone?.gridColumn;
-
-	const newUnitone = cleanEmptyObject( {
-		...attributes?.unitone,
-		gridColumn: getDefaultValue( props ) || undefined,
-	} );
-
-	setAttributes( {
-		unitone: newUnitone,
-	} );
-}
-
-export function useIsGridColumnDisabled( {
-	name: blockName,
-	attributes: { __unstableUnitoneSupports },
-} = {} ) {
 	return (
-		! hasBlockSupport( blockName, 'unitone.gridColumn' ) &&
+		JSON.stringify( defaultValue ) !==
+			JSON.stringify( unitone?.gridColumn ) &&
+		undefined !== unitone?.gridColumn
+	);
+}
+
+export function resetGridColumnFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			gridColumn: undefined,
+		},
+	};
+}
+
+export function resetGridColumn( { unitone, setAttributes } ) {
+	setAttributes( {
+		unitone: cleanEmptyObject(
+			resetGridColumnFilter( { unitone } )?.unitone
+		),
+	} );
+}
+
+export function useIsGridColumnDisabled( { name, __unstableUnitoneSupports } ) {
+	return (
+		! hasBlockSupport( name, 'unitone.gridColumn' ) &&
 		! __unstableUnitoneSupports?.gridColumn
 	);
 }
 
-export function getGridColumnEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getGridColumnEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.gridColumn?.label ||
 		__( "A grid item's size and location within a grid column", 'unitone' )
 	);
 }
 
-export function GridColumnEdit( props ) {
-	const {
-		label,
-		help,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
-	const isResponsive = getIsResponsive( props );
-	const defaultValue = useDefaultValue( props );
+export function GridColumnEdit( {
+	label,
+	name,
+	help,
+	unitone,
+	__unstableUnitoneSupports,
+	setAttributes,
+} ) {
+	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );
+	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 	const fallbackValue =
 		typeof unitone?.gridColumn === 'string'
 			? unitone?.gridColumn
 			: undefined;
 
 	const onChangeGridColumn = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
-			gridColumn: newValue,
-		} );
+			gridColumn: newValue || undefined,
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeGridColumnLg = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.lg || undefined;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
 			gridColumn: {
-				lg: newValue,
+				lg: newValue || undefined,
 				md: unitone?.gridColumn?.md || undefined,
 				sm: unitone?.gridColumn?.sm || undefined,
 			},
-		} );
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeGridColumnMd = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.md || undefined;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
 			gridColumn: {
 				lg: unitone?.gridColumn?.lg || fallbackValue || undefined,
-				md: newValue,
+				md: newValue || undefined,
 				sm: unitone?.gridColumn?.sm || undefined,
 			},
-		} );
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
 	const onChangeGridColumnSm = ( newValue ) => {
-		if ( null == newValue ) {
-			newValue = defaultValue?.sm || undefined;
-		}
-
-		const newUnitone = cleanEmptyObject( {
+		const newUnitone = {
 			...unitone,
 			gridColumn: {
 				lg: unitone?.gridColumn?.lg || fallbackValue || undefined,
 				md: unitone?.gridColumn?.md || undefined,
-				sm: newValue,
+				sm: newValue || undefined,
 			},
-		} );
+		};
 
 		setAttributes( {
-			unitone: newUnitone,
+			unitone: cleanEmptyObject( newUnitone ),
 		} );
 	};
 
@@ -186,7 +161,11 @@ export function GridColumnEdit( props ) {
 				<TextControl
 					hideLabelFromVision
 					help={ help }
-					value={ unitone?.gridColumn?.lg || fallbackValue || '' }
+					value={
+						( unitone?.gridColumn?.lg || fallbackValue ) ??
+						defaultValue?.lg ??
+						''
+					}
 					onChange={ onChangeGridColumnLg }
 				/>
 			) }
@@ -195,9 +174,10 @@ export function GridColumnEdit( props ) {
 					hideLabelFromVision
 					help={ help }
 					value={
-						unitone?.gridColumn?.md ||
-						unitone?.gridColumn?.lg ||
-						fallbackValue ||
+						( unitone?.gridColumn?.md ||
+							unitone?.gridColumn?.lg ||
+							fallbackValue ) ??
+						( defaultValue?.md || defaultValue?.lg ) ??
 						''
 					}
 					onChange={ onChangeGridColumnMd }
@@ -208,10 +188,13 @@ export function GridColumnEdit( props ) {
 					hideLabelFromVision
 					help={ help }
 					value={
-						unitone?.gridColumn?.sm ||
-						unitone?.gridColumn?.md ||
-						unitone?.gridColumn?.lg ||
-						fallbackValue ||
+						( unitone?.gridColumn?.sm ||
+							unitone?.gridColumn?.md ||
+							unitone?.gridColumn?.lg ||
+							fallbackValue ) ??
+						( defaultValue?.sm ||
+							defaultValue?.md ||
+							defaultValue?.lg ) ??
 						''
 					}
 					onChange={ onChangeGridColumnSm }
@@ -222,7 +205,7 @@ export function GridColumnEdit( props ) {
 		<TextControl
 			label={ label }
 			help={ help }
-			value={ unitone?.gridColumn || '' }
+			value={ unitone?.gridColumn ?? defaultValue ?? '' }
 			onChange={ onChangeGridColumn }
 		/>
 	);
@@ -233,18 +216,27 @@ export function saveGridColumnProp( extraProps, blockType, attributes ) {
 		const { __unstableUnitoneSupports } = attributes;
 
 		if ( ! __unstableUnitoneSupports?.gridColumn ) {
-			delete attributes?.unitone?.gridColumn;
-
-			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
-				delete attributes?.unitone;
-			}
-
 			return extraProps;
 		}
 	}
 
-	if ( undefined === attributes?.unitone?.gridColumn ) {
-		return extraProps;
+	const defaultValue = getDefaultValue( {
+		name: blockType,
+		__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
+	} );
+
+	if ( null == attributes?.unitone?.gridColumn ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				gridColumn: defaultValue,
+			},
+		};
 	}
 
 	extraProps.style = {

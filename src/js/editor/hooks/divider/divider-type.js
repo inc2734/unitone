@@ -1,17 +1,19 @@
 import classnames from 'classnames/dedupe';
 
-import { SelectControl } from '@wordpress/components';
 import {
 	getBlockSupport,
 	hasBlockSupport,
 	store as blocksStore,
 } from '@wordpress/blocks';
 
+import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-const getDividerTypeOptions = ( { name: blockName } = {} ) => {
-	const options = getBlockSupport( blockName, 'unitone.dividerType' );
+import { cleanEmptyObject } from '../utils';
+
+const getDividerTypeOptions = ( { name } ) => {
+	const options = getBlockSupport( name, 'unitone.dividerType' );
 
 	const list = [
 		{
@@ -41,60 +43,48 @@ const getDividerTypeOptions = ( { name: blockName } = {} ) => {
 	} );
 };
 
-export function useIsDividerTypeDisabled( { name: blockName } = {} ) {
+export function useIsDividerTypeDisabled( { name } ) {
 	return (
-		! hasBlockSupport( blockName, 'unitone.divider' ) &&
-		! getBlockSupport( blockName, 'unitone.dividerType' )
+		! hasBlockSupport( name, 'unitone.divider' ) &&
+		! getBlockSupport( name, 'unitone.dividerType' )
 	);
 }
 
-export function hasDividerTypeValue( props ) {
-	const { name, attributes } = props;
-
+export function hasDividerTypeValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.dividerType;
 
-	return null != defaultValue
-		? attributes?.unitone?.dividerType !== defaultValue
-		: attributes?.unitone?.dividerType !== undefined;
+	return (
+		defaultValue !== unitone?.dividerType &&
+		undefined !== unitone?.dividerType
+	);
 }
 
-export function resetDividerType( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetDividerTypeFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			dividerType: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.dividerType;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.dividerType;
-
-	if ( null != defaultValue ) {
-		newUnitone.dividerType = defaultValue;
-	}
-
+export function resetDividerType( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetDividerTypeFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function getDividerTypeEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getDividerTypeEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.dividerType?.label || __( 'Type', 'unitone' )
 	);
 }
 
-export function DividerTypeEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function DividerTypeEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.dividerType;
@@ -103,25 +93,16 @@ export function DividerTypeEdit( props ) {
 	return (
 		<SelectControl
 			label={ label }
-			value={ unitone?.dividerType || '' }
-			options={ getDividerTypeOptions( props ) }
-			onChange={ ( newValue ) => {
+			value={ unitone?.dividerType ?? defaultValue ?? '' }
+			options={ getDividerTypeOptions( { name } ) }
+			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,
-					dividerType: newValue || undefined,
+					dividerType: newAttribute || undefined,
 				};
-				if ( null == newUnitone.dividerType ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.dividerType;
-					} else {
-						newUnitone.dividerType = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
@@ -129,12 +110,25 @@ export function DividerTypeEdit( props ) {
 }
 
 export function saveDividerTypeProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.dividerType;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.dividerType' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.dividerType ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.dividerType ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				dividerType: defaultValue,
+			},
+		};
 	}
 
 	extraProps[ 'data-unitone-layout' ] = classnames(

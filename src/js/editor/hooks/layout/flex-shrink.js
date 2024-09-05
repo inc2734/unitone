@@ -2,70 +2,66 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import { cleanEmptyObject } from '../utils';
 
-export function hasFlexShrinkValue( props ) {
-	const { name, attributes } = props;
-
-	const defaultValue =
-		null != attributes?.__unstableUnitoneSupports?.flexShrink?.default
-			? attributes?.__unstableUnitoneSupports?.flexShrink?.default
-			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-					?.unitone?.default?.flexShrink;
-
-	return null != defaultValue
-		? attributes?.unitone?.flexShrink !== defaultValue
-		: attributes?.unitone?.flexShrink !== undefined;
+function getDefaultValue( { name, __unstableUnitoneSupports } ) {
+	return null != __unstableUnitoneSupports?.flexShrink?.default
+		? __unstableUnitoneSupports?.flexShrink?.default
+		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.flexShrink;
 }
 
-export function resetFlexShrink( props ) {
-	const { name, attributes, setAttributes } = props;
+export function hasFlexShrinkValue( {
+	name,
+	unitone,
+	__unstableUnitoneSupports,
+} ) {
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
-	delete attributes?.unitone?.flexShrink;
-	const newUnitone = { ...attributes?.unitone };
+	return (
+		defaultValue !== unitone?.flexShrink &&
+		undefined !== unitone?.flexShrink
+	);
+}
 
-	const defaultValue =
-		null != attributes?.__unstableUnitoneSupports?.flexShrink?.default
-			? attributes?.__unstableUnitoneSupports?.flexShrink?.default
-			: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-					?.unitone?.default?.flexShrink;
+export function resetFlexShrinkFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			flexShrink: undefined,
+		},
+	};
+}
 
-	if ( null != defaultValue ) {
-		newUnitone.flexShrink = defaultValue;
-	}
-
+export function resetFlexShrink( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetFlexShrinkFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsFlexShrinkDisabled( {
-	name: blockName,
-	attributes: { __unstableUnitoneSupports },
-} = {} ) {
+export function useIsFlexShrinkDisabled( { name, __unstableUnitoneSupports } ) {
 	return (
-		! hasBlockSupport( blockName, 'unitone.flexShrink' ) &&
+		! hasBlockSupport( name, 'unitone.flexShrink' ) &&
 		! __unstableUnitoneSupports?.flexShrink
 	);
 }
 
-export function getFlexShrinkEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getFlexShrinkEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.flexShrink?.label || __( 'Fit', 'unitone' )
 	);
 }
 
-export function FlexShrinkEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone, __unstableUnitoneSupports },
-		setAttributes,
-	} = props;
-
+export function FlexShrinkEdit( {
+	name,
+	label,
+	unitone,
+	__unstableUnitoneSupports,
+	setAttributes,
+} ) {
 	let defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.flexShrink;
@@ -78,13 +74,13 @@ export function FlexShrinkEdit( props ) {
 		<RangeControl
 			label={ label }
 			value={
-				null != unitone?.flexShrink && '' !== unitone?.flexShrink
+				null != unitone?.flexShrink
 					? parseInt( unitone?.flexShrink )
-					: ''
+					: defaultValue
 			}
 			allowReset={ true }
 			onChange={ ( newValue ) => {
-				if ( null !== newValue ) {
+				if ( null != newValue ) {
 					// RangeControl returns Int, SelectControl returns String.
 					// So cast Int all values.
 					newValue = String( newValue );
@@ -94,18 +90,9 @@ export function FlexShrinkEdit( props ) {
 					...unitone,
 					flexShrink: newValue || undefined,
 				};
-				if ( null == newUnitone.flexShrink ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.flexShrink;
-					} else {
-						newUnitone.flexShrink = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 			min={ 0 }
@@ -120,18 +107,27 @@ export function saveFlexShrinkProp( extraProps, blockType, attributes ) {
 		const { __unstableUnitoneSupports } = attributes;
 
 		if ( ! __unstableUnitoneSupports?.flexShrink ) {
-			delete attributes?.unitone?.flexShrink;
-
-			if ( ! Object.keys( attributes?.unitone ?? {} ).length ) {
-				delete attributes?.unitone;
-			}
-
 			return extraProps;
 		}
 	}
 
-	if ( undefined === attributes?.unitone?.flexShrink ) {
-		return extraProps;
+	const defaultValue = getDefaultValue( {
+		name: blockType,
+		__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
+	} );
+
+	if ( null == attributes?.unitone?.flexShrink ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				flexShrink: defaultValue,
+			},
+		};
 	}
 
 	extraProps.style = {

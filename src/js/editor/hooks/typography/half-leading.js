@@ -1,30 +1,35 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 
-import { isNumber } from '../utils';
+import { cleanEmptyObject, isNumber } from '../utils';
 
-export function hasHalfLeadingValue( props ) {
-	return props.attributes?.unitone?.halfLeading !== undefined;
+export function hasHalfLeadingValue( { unitone } ) {
+	return unitone?.halfLeading !== undefined;
 }
 
-export function resetHalfLeading( { attributes = {}, setAttributes } ) {
-	delete attributes?.unitone?.halfLeading;
-	const newUnitone = { ...attributes?.unitone };
+export function resetHalfLeadingFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			halfLeading: undefined,
+		},
+	};
+}
 
+export function resetHalfLeading( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetHalfLeadingFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsHalfLeadingDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.halfLeading' );
+export function useIsHalfLeadingDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.halfLeading' );
 }
 
-export function HalfLeadingEdit( props ) {
-	const { label, attributes, setAttributes } = props;
-
-	const { unitone } = attributes;
-
+export function HalfLeadingEdit( { label, unitone, setAttributes } ) {
 	return (
 		<RangeControl
 			label={ label }
@@ -34,14 +39,9 @@ export function HalfLeadingEdit( props ) {
 					...unitone,
 					halfLeading: isNumber( newValue ) ? newValue : undefined,
 				};
-				if ( null == newUnitone.halfLeading ) {
-					delete newUnitone.halfLeading;
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 			allowReset={ true }

@@ -4,6 +4,7 @@
 
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
+import { cleanEmptyObject } from './utils';
 
 import {
 	DimensionsPanel,
@@ -117,22 +118,37 @@ const addAttribute = ( settings ) => {
 
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		if ( ! props.isSelected ) {
+		const { clientId, name, attributes, setAttributes, isSelected } = props;
+
+		if ( ! isSelected ) {
 			return <BlockEdit { ...props } />;
 		}
+
+		const passedProps = {
+			clientId,
+			name,
+			unitone: cleanEmptyObject( {
+				...attributes.unitone,
+			} ),
+			__unstableUnitoneSupports: cleanEmptyObject( {
+				...attributes.__unstableUnitoneSupports,
+			} ),
+			setAttributes,
+			className: attributes.className,
+		};
 
 		return (
 			<>
 				<BlockEdit { ...props } />
 
-				<TypographyPanel { ...props } />
-				<DimensionsPanel { ...props } />
-				<LayoutPanel { ...props } />
-				<DividerPanel { ...props } />
-				<PositionPanel { ...props } />
-				<LayerPanel { ...props } />
-				<DropShadowPanel { ...props } />
-				<AnimationPanel { ...props } />
+				<TypographyPanel { ...passedProps } />
+				<DimensionsPanel { ...passedProps } />
+				<LayoutPanel { ...passedProps } />
+				<DividerPanel { ...passedProps } />
+				<PositionPanel { ...passedProps } />
+				<LayerPanel { ...passedProps } />
+				<DropShadowPanel { ...passedProps } />
+				<AnimationPanel { ...passedProps } />
 			</>
 		);
 	};

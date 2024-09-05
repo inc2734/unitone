@@ -5,7 +5,13 @@ export default [
 		name: 'stack-divided-stripe',
 		title: __( 'Stack (Divider: stripe)', 'unitone' ),
 		isDefault: true,
-		attributes: { unitone: { dividerType: 'stripe' } },
+		attributes: {
+			unitone: {
+				dividerType: 'stripe',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+			},
+		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
 			!! variationAttributes?.unitone?.dividerType &&
@@ -21,7 +27,13 @@ export default [
 		name: 'stack-divided-underline',
 		title: __( 'Stack (Divider: underline)', 'unitone' ),
 		isDefault: false,
-		attributes: { unitone: { dividerType: 'underline' } },
+		attributes: {
+			unitone: {
+				dividerType: 'underline',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+			},
+		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
 			!! variationAttributes?.unitone?.dividerType &&
@@ -37,7 +49,13 @@ export default [
 		name: 'stack-divided-bordered',
 		title: __( 'Stack (Divider: bordered)', 'unitone' ),
 		isDefault: false,
-		attributes: { unitone: { dividerType: 'bordered' } },
+		attributes: {
+			unitone: {
+				dividerType: 'bordered',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+			},
+		},
 		isActive: ( blockAttributes, variationAttributes ) =>
 			!! blockAttributes?.unitone?.dividerType &&
 			!! variationAttributes?.unitone?.dividerType &&

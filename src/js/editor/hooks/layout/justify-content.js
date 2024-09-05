@@ -17,6 +17,7 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import { cleanEmptyObject } from '../utils';
 import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const justifyContentOptions = [
@@ -42,46 +43,39 @@ const justifyContentOptions = [
 	},
 ];
 
-export function hasJustifyContentValue( props ) {
-	const { name, attributes } = props;
-
+export function hasJustifyContentValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.justifyContent;
 
-	return null != defaultValue
-		? attributes?.unitone?.justifyContent !== defaultValue
-		: attributes?.unitone?.justifyContent !== undefined;
+	return (
+		defaultValue !== unitone?.justifyContent &&
+		undefined !== unitone?.justifyContent
+	);
 }
 
-export function resetJustifyContent( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetJustifyContentFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			justifyContent: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.justifyContent;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.justifyContent;
-
-	if ( null != defaultValue ) {
-		newUnitone.justifyContent = defaultValue;
-	}
-
+export function resetJustifyContent( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetJustifyContentFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsJustifyContentDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.justifyContent' );
+export function useIsJustifyContentDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.justifyContent' );
 }
 
-export function JustifyContentToolbar( props ) {
-	const {
-		name,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function JustifyContentToolbar( { name, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifyContent;
@@ -92,49 +86,33 @@ export function JustifyContentToolbar( props ) {
 			allowedControls={ justifyContentOptions.map(
 				( option ) => option.value
 			) }
-			value={ logicalToPhysical( unitone?.justifyContent ) }
+			value={ logicalToPhysical(
+				unitone?.justifyContent ?? defaultValue
+			) }
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,
-					justifyContent: physicalToLogical( newAttribute ),
+					justifyContent: physicalToLogical(
+						newAttribute || undefined
+					),
 				};
-				if ( null == newUnitone.justifyContent ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.justifyContent;
-					} else {
-						newUnitone.justifyContent = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
 	);
 }
 
-export function getJustifyContentEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getJustifyContentEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.justifyContent?.label ||
 		__( 'Justify content', 'unitone' )
 	);
 }
 
-export function JustifyContentEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function JustifyContentEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifyContent;
@@ -145,28 +123,21 @@ export function JustifyContentEdit( props ) {
 			<ToggleGroupControl
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ logicalToPhysical( unitone?.justifyContent ) }
-				onChange={ ( value ) => {
+				value={ logicalToPhysical(
+					unitone?.justifyContent ?? defaultValue
+				) }
+				onChange={ ( newValue ) => {
 					const newUnitone = {
 						...unitone,
 						justifyContent:
 							logicalToPhysical( unitone?.justifyContent ) !==
-							value
-								? physicalToLogical( value )
+							newValue
+								? physicalToLogical( newValue )
 								: undefined,
 					};
-					if ( null == newUnitone.justifyContent ) {
-						if ( null == defaultValue ) {
-							delete newUnitone.justifyContent;
-						} else {
-							newUnitone.justifyContent = '';
-						}
-					}
 
 					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
+						unitone: cleanEmptyObject( newUnitone ),
 					} );
 				} }
 			>
@@ -186,12 +157,25 @@ export function JustifyContentEdit( props ) {
 }
 
 export function saveJustifyContentProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.justifyContent;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.justifyContent' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.justifyContent ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.justifyContent ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				justifyContent: defaultValue,
+			},
+		};
 	}
 
 	// Deprecation.

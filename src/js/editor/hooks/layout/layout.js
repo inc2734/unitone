@@ -1,6 +1,8 @@
 /*
- *@see https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/dimensions.js
+ * @see https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/dimensions.js
  */
+
+import fastDeepEqual from 'fast-deep-equal/es6';
 
 import {
 	__experimentalToolsPanel as ToolsPanel,
@@ -8,11 +10,15 @@ import {
 } from '@wordpress/components';
 
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
+import { memo, useCallback } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
+
+import { cleanEmptyObject } from '../utils';
 
 import {
 	useIsJustifyContentDisabled,
 	hasJustifyContentValue,
+	resetJustifyContentFilter,
 	resetJustifyContent,
 	JustifyContentToolbar,
 	getJustifyContentEditLabel,
@@ -23,6 +29,7 @@ import {
 import {
 	useIsJustifyContentColumnDisabled,
 	hasJustifyContentColumnValue,
+	resetJustifyContentColumnFilter,
 	resetJustifyContentColumn,
 	JustifyContentColumnToolbar,
 	getJustifyContentColumnEditLabel,
@@ -33,6 +40,7 @@ import {
 import {
 	useIsAlignItemsDisabled,
 	hasAlignItemsValue,
+	resetAlignItemsFilter,
 	resetAlignItems,
 	AlignItemsToolbar,
 	getAlignItemsEditLabel,
@@ -43,6 +51,7 @@ import {
 import {
 	useIsBlockAlignDisabled,
 	hasBlockAlignValue,
+	resetBlockAlignFilter,
 	resetBlockAlign,
 	BlockAlignToolbar,
 	getBlockAlignEditLabel,
@@ -53,6 +62,7 @@ import {
 import {
 	useIsFlexBasisDisabled,
 	hasFlexBasisValue,
+	resetFlexBasisFilter,
 	resetFlexBasis,
 	getFlexBasisEditLabel,
 	FlexBasisEdit,
@@ -62,6 +72,7 @@ import {
 import {
 	useIsFlexGrowDisabled,
 	hasFlexGrowValue,
+	resetFlexGrowFilter,
 	resetFlexGrow,
 	getFlexGrowEditLabel,
 	FlexGrowEdit,
@@ -71,6 +82,7 @@ import {
 import {
 	useIsFlexShrinkDisabled,
 	hasFlexShrinkValue,
+	resetFlexShrinkFilter,
 	resetFlexShrink,
 	getFlexShrinkEditLabel,
 	FlexShrinkEdit,
@@ -80,6 +92,7 @@ import {
 import {
 	useIsMaxWidthDisabled,
 	hasMaxWidthValue,
+	resetMaxWidthFilter,
 	resetMaxWidth,
 	getMaxWidthEditLabel,
 	MaxWidthEdit,
@@ -89,6 +102,7 @@ import {
 import {
 	useIsMaxHeightDisabled,
 	hasMaxHeightValue,
+	resetMaxHeightFilter,
 	resetMaxHeight,
 	getMaxHeightEditLabel,
 	MaxHeightEdit,
@@ -98,6 +112,7 @@ import {
 import {
 	useIsMinHeightDisabled,
 	hasMinHeightValue,
+	resetMinHeightFilter,
 	resetMinHeight,
 	getMinHeightEditLabel,
 	MinHeightEdit,
@@ -107,6 +122,7 @@ import {
 import {
 	useIsAutoRepeatDisabled,
 	hasAutoRepeatValue,
+	resetAutoRepeatFilter,
 	resetAutoRepeat,
 	getAutoRepeatEditLabel,
 	AutoRepeatEdit,
@@ -116,6 +132,7 @@ import {
 import {
 	useIsAlignSelfDisabled,
 	hasAlignSelfValue,
+	resetAlignSelfFilter,
 	resetAlignSelf,
 	AlignSelfToolbar,
 	getAlignSelfEditLabel,
@@ -126,6 +143,7 @@ import {
 import {
 	useIsJustifySelfDisabled,
 	hasJustifySelfValue,
+	resetJustifySelfFilter,
 	resetJustifySelf,
 	JustifySelfToolbar,
 	getJustifySelfEditLabel,
@@ -136,6 +154,7 @@ import {
 import {
 	useIsGridColumnDisabled,
 	hasGridColumnValue,
+	resetGridColumnFilter,
 	resetGridColumn,
 	getGridColumnEditLabel,
 	GridColumnEdit,
@@ -145,6 +164,7 @@ import {
 import {
 	useIsGridRowDisabled,
 	hasGridRowValue,
+	resetGridRowFilter,
 	resetGridRow,
 	getGridRowEditLabel,
 	GridRowEdit,
@@ -169,23 +189,80 @@ export {
 	useGridRowBlockProps,
 };
 
-export function LayoutPanel( props ) {
-	const isJustifyContentDisabled = useIsJustifyContentDisabled( props );
-	const isJustifyContentColumnDisabled =
-		useIsJustifyContentColumnDisabled( props );
-	const isAlignItemsDisabled = useIsAlignItemsDisabled( props );
-	const isBlockAlignDisabled = useIsBlockAlignDisabled( props );
-	const isFlexBasisDisabled = useIsFlexBasisDisabled( props );
-	const isFlexGrowDisabled = useIsFlexGrowDisabled( props );
-	const isFlexShrinkDisabled = useIsFlexShrinkDisabled( props );
-	const isMaxWidthDisabled = useIsMaxWidthDisabled( props );
-	const isMaxHeightDisabled = useIsMaxHeightDisabled( props );
-	const isMinHeightDisabled = useIsMinHeightDisabled( props );
-	const isAutoRepeatDisabled = useIsAutoRepeatDisabled( props );
-	const isAlignSelfDisabled = useIsAlignSelfDisabled( props );
-	const isJustifySelfDisabled = useIsJustifySelfDisabled( props );
-	const isGridColumnDisabled = useIsGridColumnDisabled( props );
-	const isGridRowDisabled = useIsGridRowDisabled( props );
+function LayoutPanelPure( {
+	clientId,
+	name,
+	unitone,
+	__unstableUnitoneSupports,
+	setAttributes,
+} ) {
+	const props = {
+		clientId,
+		name,
+		unitone,
+		__unstableUnitoneSupports,
+		setAttributes,
+	};
+
+	const resetAll = useCallback( ( filters ) => {
+		const newUnitone = filters.reduce(
+			( accumulator, filter ) =>
+				filter( { unitone: accumulator } )?.unitone,
+			unitone
+		);
+
+		setAttributes( {
+			unitone: cleanEmptyObject( newUnitone ),
+		} );
+	}, [] );
+
+	const isJustifyContentDisabled = useIsJustifyContentDisabled( { name } );
+	const isJustifyContentColumnDisabled = useIsJustifyContentColumnDisabled( {
+		name,
+	} );
+	const isAlignItemsDisabled = useIsAlignItemsDisabled( { name } );
+	const isBlockAlignDisabled = useIsBlockAlignDisabled( { name } );
+	const isFlexBasisDisabled = useIsFlexBasisDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+	const isFlexGrowDisabled = useIsFlexGrowDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+	const isFlexShrinkDisabled = useIsFlexShrinkDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+	const isMaxWidthDisabled = useIsMaxWidthDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+	const isMaxHeightDisabled = useIsMaxHeightDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+	const isMinHeightDisabled = useIsMinHeightDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+	const isAutoRepeatDisabled = useIsAutoRepeatDisabled( { name } );
+	const isAlignSelfDisabled = useIsAlignSelfDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+	const isJustifySelfDisabled = useIsJustifySelfDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+	const isGridColumnDisabled = useIsGridColumnDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+	const isGridRowDisabled = useIsGridRowDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
 
 	if (
 		isJustifyContentDisabled &&
@@ -206,6 +283,7 @@ export function LayoutPanel( props ) {
 	) {
 		return null;
 	}
+
 	return (
 		<>
 			{ ( ! isJustifyContentDisabled ||
@@ -253,25 +331,33 @@ export function LayoutPanel( props ) {
 				! isGridColumnDisabled ||
 				! isGridRowDisabled ) && (
 				<InspectorControls>
-					<ToolsPanel label={ __( 'Layout', 'unitone' ) }>
+					<ToolsPanel
+						label={ __( 'Layout', 'unitone' ) }
+						resetAll={ resetAll }
+						panelId={ clientId }
+					>
 						{ ! isJustifyContentDisabled && (
 							<ToolsPanelItem
 								hasValue={ () =>
-									hasJustifyContentValue( props )
+									hasJustifyContentValue( { ...props } )
 								}
-								label={ getJustifyContentEditLabel( props ) }
+								label={ getJustifyContentEditLabel( {
+									...props,
+								} ) }
 								onDeselect={ () =>
-									resetJustifyContent( props )
+									resetJustifyContent( { ...props } )
 								}
+								resetAllFilter={ resetJustifyContentFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<JustifyContentEdit
 									{ ...props }
 									label={
 										<>
-											{ getJustifyContentEditLabel(
-												props
-											) }
+											{ getJustifyContentEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>justify-content</code>
 										</>
@@ -279,26 +365,29 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isJustifyContentColumnDisabled && (
 							<ToolsPanelItem
 								hasValue={ () =>
-									hasJustifyContentColumnValue( props )
+									hasJustifyContentColumnValue( { ...props } )
 								}
-								label={ getJustifyContentColumnEditLabel(
-									props
-								) }
+								label={ getJustifyContentColumnEditLabel( {
+									...props,
+								} ) }
 								onDeselect={ () =>
-									resetJustifyContentColumn( props )
+									resetJustifyContentColumn( { ...props } )
+								}
+								resetAllFilter={
+									resetJustifyContentColumnFilter
 								}
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<JustifyContentColumnEdit
 									{ ...props }
 									label={
 										<>
 											{ getJustifyContentColumnEditLabel(
-												props
+												{ ...props }
 											) }
 											&nbsp;:&nbsp;
 											<code>justify-content</code>
@@ -307,19 +396,26 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isAlignItemsDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasAlignItemsValue( props ) }
-								label={ getAlignItemsEditLabel( props ) }
-								onDeselect={ () => resetAlignItems( props ) }
+								hasValue={ () =>
+									hasAlignItemsValue( { ...props } )
+								}
+								label={ getAlignItemsEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetAlignItems( { ...props } )
+								}
+								resetAllFilter={ resetAlignItemsFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<AlignItemsEdit
 									{ ...props }
 									label={
 										<>
-											{ getAlignItemsEditLabel( props ) }
+											{ getAlignItemsEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>align-items</code>
 										</>
@@ -327,33 +423,47 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isBlockAlignDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasBlockAlignValue( props ) }
-								label={ getBlockAlignEditLabel( props ) }
-								onDeselect={ () => resetBlockAlign( props ) }
+								hasValue={ () =>
+									hasBlockAlignValue( { ...props } )
+								}
+								label={ getBlockAlignEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetBlockAlign( { ...props } )
+								}
+								resetAllFilter={ resetBlockAlignFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<BlockAlignEdit
 									{ ...props }
-									label={ getBlockAlignEditLabel( props ) }
+									label={ getBlockAlignEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isFlexGrowDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasFlexGrowValue( props ) }
-								label={ getFlexGrowEditLabel( props ) }
-								onDeselect={ () => resetFlexGrow( props ) }
+								hasValue={ () =>
+									hasFlexGrowValue( { ...props } )
+								}
+								label={ getFlexGrowEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetFlexGrow( { ...props } )
+								}
+								resetAllFilter={ resetFlexGrowFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<FlexGrowEdit
 									{ ...props }
 									label={
 										<>
-											{ getFlexGrowEditLabel( props ) }
+											{ getFlexGrowEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>flex-grow</code>
 										</>
@@ -361,19 +471,26 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isFlexShrinkDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasFlexShrinkValue( props ) }
-								label={ getFlexShrinkEditLabel( props ) }
-								onDeselect={ () => resetFlexShrink( props ) }
+								hasValue={ () =>
+									hasFlexShrinkValue( { ...props } )
+								}
+								label={ getFlexShrinkEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetFlexShrink( { ...props } )
+								}
+								resetAllFilter={ resetFlexShrinkFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<FlexShrinkEdit
 									{ ...props }
 									label={
 										<>
-											{ getFlexShrinkEditLabel( props ) }
+											{ getFlexShrinkEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>flex-shrink</code>
 										</>
@@ -381,38 +498,52 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isFlexBasisDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasFlexBasisValue( props ) }
-								label={ getFlexBasisEditLabel( props ) }
-								onDeselect={ () => resetFlexBasis( props ) }
+								hasValue={ () =>
+									hasFlexBasisValue( { ...props } )
+								}
+								label={ getFlexBasisEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetFlexBasis( { ...props } )
+								}
+								resetAllFilter={ resetFlexBasisFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<FlexBasisEdit
 									{ ...props }
 									label={
 										<>
-											{ getFlexBasisEditLabel( props ) }
+											{ getFlexBasisEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;<code>flex-basis</code>
 										</>
 									}
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isMaxWidthDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasMaxWidthValue( props ) }
-								label={ getMaxWidthEditLabel( props ) }
-								onDeselect={ () => resetMaxWidth( props ) }
+								hasValue={ () =>
+									hasMaxWidthValue( { ...props } )
+								}
+								label={ getMaxWidthEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetMaxWidth( { ...props } )
+								}
+								resetAllFilter={ resetMaxWidthFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<MaxWidthEdit
 									{ ...props }
 									label={
 										<>
-											{ getMaxWidthEditLabel( props ) }
+											{ getMaxWidthEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>max-width</code>
 										</>
@@ -420,19 +551,26 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isMaxHeightDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasMaxHeightValue( props ) }
-								label={ getMaxHeightEditLabel( props ) }
-								onDeselect={ () => resetMaxHeight( props ) }
+								hasValue={ () =>
+									hasMaxHeightValue( { ...props } )
+								}
+								label={ getMaxHeightEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetMaxHeight( { ...props } )
+								}
+								resetAllFilter={ resetMaxHeightFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<MaxHeightEdit
 									{ ...props }
 									label={
 										<>
-											{ getMaxHeightEditLabel( props ) }
+											{ getMaxHeightEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>max-height</code>
 										</>
@@ -440,19 +578,26 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isMinHeightDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasMinHeightValue( props ) }
-								label={ getMinHeightEditLabel( props ) }
-								onDeselect={ () => resetMinHeight( props ) }
+								hasValue={ () =>
+									hasMinHeightValue( { ...props } )
+								}
+								label={ getMinHeightEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetMinHeight( { ...props } )
+								}
+								resetAllFilter={ resetMinHeightFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<MinHeightEdit
 									{ ...props }
 									label={
 										<>
-											{ getMinHeightEditLabel( props ) }
+											{ getMinHeightEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>min-height</code>
 										</>
@@ -460,19 +605,26 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isAutoRepeatDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasAutoRepeatValue( props ) }
-								label={ getAutoRepeatEditLabel( props ) }
-								onDeselect={ () => resetAutoRepeat( props ) }
+								hasValue={ () =>
+									hasAutoRepeatValue( { ...props } )
+								}
+								label={ getAutoRepeatEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetAutoRepeat( { ...props } )
+								}
+								resetAllFilter={ resetAutoRepeatFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<AutoRepeatEdit
 									{ ...props }
 									label={
 										<>
-											{ getAutoRepeatEditLabel( props ) }
+											{ getAutoRepeatEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>auto-repeat</code>
 										</>
@@ -480,22 +632,28 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isJustifySelfDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasJustifySelfValue( props ) }
-								label={ getJustifySelfEditLabel( props ) }
-								onDeselect={ () => resetJustifySelf( props ) }
-								resetAllFilter={ () =>
-									resetJustifySelf( props )
+								hasValue={ () =>
+									hasJustifySelfValue( { ...props } )
 								}
-								isShownByDefault={ true }
+								label={ getJustifySelfEditLabel( {
+									...props,
+								} ) }
+								onDeselect={ () =>
+									resetJustifySelf( { ...props } )
+								}
+								resetAllFilter={ resetJustifySelfFilter }
+								isShownByDefault
+								panelId={ clientId }
 							>
 								<JustifySelfEdit
 									{ ...props }
 									label={
 										<>
-											{ getJustifySelfEditLabel( props ) }
+											{ getJustifySelfEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>justify-self</code>
 										</>
@@ -503,20 +661,26 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isAlignSelfDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasAlignSelfValue( props ) }
-								label={ getAlignSelfEditLabel( props ) }
-								onDeselect={ () => resetAlignSelf( props ) }
-								resetAllFilter={ () => resetAlignSelf( props ) }
+								hasValue={ () =>
+									hasAlignSelfValue( { ...props } )
+								}
+								label={ getAlignSelfEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetAlignSelf( { ...props } )
+								}
+								resetAllFilter={ resetAlignSelfFilter }
 								isShownByDefault
+								panelId={ clientId }
 							>
 								<AlignSelfEdit
 									{ ...props }
 									label={
 										<>
-											{ getAlignSelfEditLabel( props ) }
+											{ getAlignSelfEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>align-self</code>
 										</>
@@ -524,22 +688,26 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isGridColumnDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasGridColumnValue( props ) }
-								label={ getGridColumnEditLabel( props ) }
-								onDeselect={ () => resetGridColumn( props ) }
-								resetAllFilter={ () =>
-									resetGridColumn( props )
+								hasValue={ () =>
+									hasGridColumnValue( { ...props } )
 								}
-								isShownByDefault={ true }
+								label={ getGridColumnEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetGridColumn( { ...props } )
+								}
+								resetAllFilter={ resetGridColumnFilter }
+								isShownByDefault
+								panelId={ clientId }
 							>
 								<GridColumnEdit
 									{ ...props }
 									label={
 										<>
-											{ getGridColumnEditLabel( props ) }
+											{ getGridColumnEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>grid-column</code>
 										</>
@@ -562,20 +730,26 @@ export function LayoutPanel( props ) {
 								/>
 							</ToolsPanelItem>
 						) }
-
 						{ ! isGridRowDisabled && (
 							<ToolsPanelItem
-								hasValue={ () => hasGridRowValue( props ) }
-								label={ getGridRowEditLabel( props ) }
-								onDeselect={ () => resetGridRow( props ) }
-								resetAllFilter={ () => resetGridRow( props ) }
-								isShownByDefault={ true }
+								hasValue={ () =>
+									hasGridRowValue( { ...props } )
+								}
+								label={ getGridRowEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetGridRow( { ...props } )
+								}
+								resetAllFilter={ resetGridRowFilter }
+								isShownByDefault
+								panelId={ clientId }
 							>
 								<GridRowEdit
 									{ ...props }
 									label={
 										<>
-											{ getGridRowEditLabel( props ) }
+											{ getGridRowEditLabel( {
+												...props,
+											} ) }
 											&nbsp;:&nbsp;
 											<code>grid-row</code>
 										</>
@@ -604,3 +778,7 @@ export function LayoutPanel( props ) {
 		</>
 	);
 }
+
+export const LayoutPanel = memo( LayoutPanelPure, ( oldProps, newProps ) =>
+	fastDeepEqual( oldProps, newProps )
+);

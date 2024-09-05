@@ -11,6 +11,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { justifyLeft, justifyCenter, justifyRight } from '@wordpress/icons';
 
+import { cleanEmptyObject } from '../utils';
 import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const blockAlignOptions = [
@@ -31,46 +32,39 @@ const blockAlignOptions = [
 	},
 ];
 
-export function hasBlockAlignValue( props ) {
-	const { name, attributes } = props;
-
+export function hasBlockAlignValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.blockAlign;
 
-	return null != defaultValue
-		? attributes?.unitone?.blockAlign !== defaultValue
-		: attributes?.unitone?.blockAlign !== undefined;
+	return (
+		defaultValue !== unitone?.blockAlign &&
+		undefined !== unitone?.blockAlign
+	);
 }
 
-export function resetBlockAlign( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetBlockAlignFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			blockAlign: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.blockAlign;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.blockAlign;
-
-	if ( null != defaultValue ) {
-		newUnitone.blockAlign = defaultValue;
-	}
-
+export function resetBlockAlign( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetBlockAlignFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsBlockAlignDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.blockAlign' );
+export function useIsBlockAlignDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.blockAlign' );
 }
 
-export function BlockAlignToolbar( props ) {
-	const {
-		name,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function BlockAlignToolbar( { name, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.blockAlign;
@@ -80,24 +74,19 @@ export function BlockAlignToolbar( props ) {
 		<BlockControls group="block">
 			<BlockAlignmentToolbar
 				controls={ blockAlignOptions.map( ( option ) => option.value ) }
-				value={ logicalToPhysical( unitone?.blockAlign ) }
+				value={ logicalToPhysical(
+					unitone?.blockAlign ?? defaultValue
+				) }
 				onChange={ ( newAttribute ) => {
 					const newUnitone = {
 						...unitone,
-						blockAlign: physicalToLogical( newAttribute ),
+						blockAlign: physicalToLogical(
+							newAttribute || undefined
+						),
 					};
-					if ( null == newUnitone.blockAlign ) {
-						if ( null == defaultValue ) {
-							delete newUnitone.blockAlign;
-						} else {
-							newUnitone.blockAlign = '';
-						}
-					}
 
 					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
+						unitone: cleanEmptyObject( newUnitone ),
 					} );
 				} }
 			/>
@@ -105,25 +94,14 @@ export function BlockAlignToolbar( props ) {
 	);
 }
 
-export function getBlockAlignEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getBlockAlignEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.blockAlign?.label ||
 		__( 'Block alignment', 'unitone' )
 	);
 }
 
-export function BlockAlignEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function BlockAlignEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.blockAlign;
@@ -134,7 +112,9 @@ export function BlockAlignEdit( props ) {
 			<ToggleGroupControl
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ logicalToPhysical( unitone?.blockAlign ) }
+				value={ logicalToPhysical(
+					unitone?.blockAlign ?? defaultValue
+				) }
 				onChange={ ( value ) => {
 					const newUnitone = {
 						...unitone,
@@ -143,18 +123,9 @@ export function BlockAlignEdit( props ) {
 								? physicalToLogical( value )
 								: undefined,
 					};
-					if ( null == newUnitone.blockAlign ) {
-						if ( null == defaultValue ) {
-							delete newUnitone.blockAlign;
-						} else {
-							newUnitone.blockAlign = '';
-						}
-					}
 
 					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
+						unitone: cleanEmptyObject( newUnitone ),
 					} );
 				} }
 			>
@@ -174,12 +145,25 @@ export function BlockAlignEdit( props ) {
 }
 
 export function saveBlockAlignProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.blockAlign;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.blockAlign' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.blockAlign ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.blockAlign ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				blockAlign: defaultValue,
+			},
+		};
 	}
 
 	// Deprecation.

@@ -17,6 +17,7 @@ import {
 	alignSpaceBetween,
 } from '../icons';
 
+import { cleanEmptyObject } from '../utils';
 import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const justifyContentColumnOptions = [
@@ -42,46 +43,43 @@ const justifyContentColumnOptions = [
 	},
 ];
 
-export function hasJustifyContentColumnValue( props ) {
-	const { name, attributes } = props;
-
+export function hasJustifyContentColumnValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.justifyContent;
 
-	return null != defaultValue
-		? attributes?.unitone?.justifyContent !== defaultValue
-		: attributes?.unitone?.justifyContent !== undefined;
+	return (
+		defaultValue !== unitone?.justifyContent &&
+		undefined !== unitone?.justifyContent
+	);
 }
 
-export function resetJustifyContentColumn( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetJustifyContentColumnFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			justifyContent: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.justifyContent;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.justifyContent;
-
-	if ( null != defaultValue ) {
-		newUnitone.justifyContent = defaultValue;
-	}
-
+export function resetJustifyContentColumn( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetJustifyContentColumnFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsJustifyContentColumnDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.justifyContentColumn' );
+export function useIsJustifyContentColumnDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.justifyContentColumn' );
 }
 
-export function JustifyContentColumnToolbar( props ) {
-	const {
-		name,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function JustifyContentColumnToolbar( {
+	name,
+	unitone,
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifyContent;
@@ -92,49 +90,40 @@ export function JustifyContentColumnToolbar( props ) {
 			allowedControls={ justifyContentColumnOptions.map(
 				( option ) => option.value
 			) }
-			value={ logicalToPhysical( unitone?.justifyContent ) }
+			value={ logicalToPhysical(
+				unitone?.justifyContent ?? defaultValue
+			) }
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,
-					justifyContent: physicalToLogical( newAttribute ),
+					justifyContent: physicalToLogical(
+						newAttribute || undefined
+					),
 				};
-				if ( null == newUnitone.justifyContent ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.justifyContent;
-					} else {
-						newUnitone.justifyContent = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
 	);
 }
 
-export function getJustifyContentColumnEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getJustifyContentColumnEditLabel( {
+	__unstableUnitoneSupports,
+} ) {
 	return (
 		__unstableUnitoneSupports?.justifyContent?.label ||
 		__( 'Align items', 'unitone' )
 	);
 }
 
-export function JustifyContentColumnEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function JustifyContentColumnEdit( {
+	name,
+	label,
+	unitone,
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifyContent;
@@ -145,28 +134,21 @@ export function JustifyContentColumnEdit( props ) {
 			<ToggleGroupControl
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ logicalToPhysical( unitone?.justifyContent ) }
-				onChange={ ( value ) => {
+				value={ logicalToPhysical(
+					unitone?.justifyContent ?? defaultValue
+				) }
+				onChange={ ( newValue ) => {
 					const newUnitone = {
 						...unitone,
 						justifyContent:
 							logicalToPhysical( unitone?.justifyContent ) !==
-							value
-								? physicalToLogical( value )
+							newValue
+								? physicalToLogical( newValue )
 								: undefined,
 					};
-					if ( null == newUnitone.justifyContent ) {
-						if ( null == defaultValue ) {
-							delete newUnitone.justifyContent;
-						} else {
-							newUnitone.justifyContent = '';
-						}
-					}
 
 					setAttributes( {
-						unitone: !! Object.keys( newUnitone ).length
-							? newUnitone
-							: undefined,
+						unitone: cleanEmptyObject( newUnitone ),
 					} );
 				} }
 			>
@@ -190,12 +172,25 @@ export function saveJustifyContentColumnProp(
 	blockType,
 	attributes
 ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.justifyContent;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.justifyContentColumn' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.justifyContent ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.justifyContent ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				justifyContent: defaultValue,
+			},
+		};
 	}
 
 	// Deprecation.

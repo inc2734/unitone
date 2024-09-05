@@ -17,72 +17,62 @@ import { __ } from '@wordpress/i18n';
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-export function hasStairsValue( props ) {
-	const { name, attributes } = props;
-
+export function hasStairsValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.stairs;
 
-	return null != defaultValue
-		? attributes?.unitone?.stairs !== defaultValue
-		: attributes?.unitone?.stairs !== undefined;
+	return defaultValue !== unitone?.stairs && undefined !== unitone?.stairs;
 }
 
-export function hasStairsUpValue( props ) {
-	const { name, attributes } = props;
-
+export function hasStairsUpValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.stairsUp;
 
-	return null != defaultValue
-		? attributes?.unitone?.stairsUp !== defaultValue
-		: attributes?.unitone?.stairsUp !== undefined;
+	return (
+		defaultValue !== unitone?.stairsUp && undefined !== unitone?.stairsUp
+	);
 }
 
-export function resetStairs( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetStairsFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			stairs: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.stairs;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.stairs;
-
-	if ( null != defaultValue ) {
-		newUnitone.stairsap = defaultValue;
-	}
-
+export function resetStairs( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject( resetStairsFilter( { unitone } )?.unitone ),
 	} );
 }
 
-export function resetStairsUp( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetStairsUpFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			stairsUp: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.stairsUp;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.stairsUp;
-
-	if ( null != defaultValue ) {
-		newUnitone.stairsUp = defaultValue;
-	}
-
+export function resetStairsUp( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetStairsUpFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsStairsDisabled( props ) {
-	const { name: blockName } = props;
-
-	if ( ! hasBlockSupport( blockName, 'unitone.stairs' ) ) {
+export function useIsStairsDisabled( { name } ) {
+	if ( ! hasBlockSupport( name, 'unitone.stairs' ) ) {
 		return true;
 	}
 
-	const blockSupport = getBlockSupport( blockName, 'unitone.stairs' );
+	const blockSupport = getBlockSupport( name, 'unitone.stairs' );
 	if ( true === blockSupport ) {
 		return false;
 	}
@@ -90,25 +80,14 @@ export function useIsStairsDisabled( props ) {
 	return true;
 }
 
-export function getStairsEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getStairsEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.stairs?.label ||
 		__( 'Stairs grid', 'unitone' )
 	);
 }
 
-export function StairsEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function StairsEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.stairs;
@@ -117,50 +96,35 @@ export function StairsEdit( props ) {
 	return (
 		<SpacingSizeControl
 			label={ label }
-			value={ unitone?.stairs }
+			value={ unitone?.stairs ?? defaultValue }
 			onChange={ ( newValue ) => {
-				if ( null == newValue ) {
-					newValue = defaultValue;
-				}
-
 				if ( null != newValue ) {
 					// RangeControl returns Int, SelectControl returns String.
 					// So cast Int all values.
 					newValue = String( newValue );
 				}
 
-				const newUnitone = cleanEmptyObject( {
+				const newUnitone = {
 					...unitone,
 					stairs: newValue || undefined,
-				} );
+				};
 
 				setAttributes( {
-					unitone: newUnitone,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
 	);
 }
 
-export function getStairsUpEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getStairsUpEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.stairsUp?.label ||
 		__( 'Stairs climbing direction', 'unitone' )
 	);
 }
 
-export function StairsUpEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function StairsUpEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.stairsUp;
@@ -171,24 +135,15 @@ export function StairsUpEdit( props ) {
 			__nextHasNoMarginBottom
 			isBlock
 			label={ label }
-			value={ unitone?.stairsUp }
+			value={ unitone?.stairsUp ?? defaultValue }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
 					stairsUp: newValue || undefined,
 				};
-				if ( null == newUnitone.stairsUp ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.stairsUp;
-					} else {
-						newUnitone.stairsUp = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		>
@@ -206,12 +161,38 @@ export function StairsUpEdit( props ) {
 }
 
 export function saveStairsProp( extraProps, blockType, attributes ) {
+	const blockTypeAttributes = wp.data
+		.select( blocksStore )
+		.getBlockType( blockType )?.attributes;
+	const defaultStairs = blockTypeAttributes?.unitone?.default?.stairs;
+	const defaultStairsUp = blockTypeAttributes?.unitone?.default?.stairsUp;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.stairs' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.stairs ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.stairs ) {
+		if ( null != defaultStairs ) {
+			attributes = {
+				...attributes,
+				unitone: {
+					...attributes?.unitone,
+					stairs: defaultStairs,
+				},
+			};
+		}
+	}
+
+	if ( null == attributes?.unitone?.stairsUp ) {
+		if ( null != defaultStairsUp ) {
+			attributes = {
+				...attributes,
+				unitone: {
+					...attributes?.unitone,
+					stairsUp: defaultStairsUp,
+				},
+			};
+		}
 	}
 
 	extraProps[ 'data-unitone-layout' ] = classnames(

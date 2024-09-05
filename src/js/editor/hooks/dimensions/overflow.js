@@ -5,6 +5,8 @@ import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import { cleanEmptyObject } from '../utils';
+
 const overflowOptions = [
 	{ label: '', value: '' },
 	{
@@ -29,58 +31,45 @@ const overflowOptions = [
 	},
 ];
 
-export function hasOverflowValue( props ) {
-	const { name, attributes } = props;
-
+export function hasOverflowValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.overflow;
 
-	return null != defaultValue
-		? attributes?.unitone?.overflow !== defaultValue
-		: attributes?.unitone?.overflow !== undefined;
+	return (
+		defaultValue !== unitone?.overflow && undefined !== unitone?.overflow
+	);
 }
 
-export function resetOverflow( props ) {
-	const { name, attributes, setAttributes } = props;
+export function resetOverflowFilter( attributes ) {
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			overflow: undefined,
+		},
+	};
+}
 
-	delete attributes?.unitone?.overflow;
-	const newUnitone = { ...attributes?.unitone };
-
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.overflow;
-
-	if ( null != defaultValue ) {
-		newUnitone.overflow = defaultValue;
-	}
-
+export function resetOverflow( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: !! Object.keys( newUnitone ).length ? newUnitone : undefined,
+		unitone: cleanEmptyObject(
+			resetOverflowFilter( { unitone } )?.unitone
+		),
 	} );
 }
 
-export function useIsOverflowDisabled( { name: blockName } = {} ) {
-	return ! hasBlockSupport( blockName, 'unitone.overflow' );
+export function useIsOverflowDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.overflow' );
 }
 
-export function getOverflowEditLabel( props ) {
-	const {
-		attributes: { __unstableUnitoneSupports },
-	} = props;
-
+export function getOverflowEditLabel( { __unstableUnitoneSupports } ) {
 	return (
 		__unstableUnitoneSupports?.overflow?.label ||
 		__( 'Overflow', 'unitone' )
 	);
 }
 
-export function OverflowEdit( props ) {
-	const {
-		name,
-		label,
-		attributes: { unitone },
-		setAttributes,
-	} = props;
-
+export function OverflowEdit( { label, name, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.overflow;
@@ -90,24 +79,15 @@ export function OverflowEdit( props ) {
 		<SelectControl
 			label={ label }
 			options={ overflowOptions }
-			value={ unitone?.overflow || '' }
+			value={ unitone?.overflow ?? defaultValue ?? '' }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,
 					overflow: newValue || undefined,
 				};
-				if ( null == newUnitone.overflow ) {
-					if ( null == defaultValue ) {
-						delete newUnitone.overflow;
-					} else {
-						newUnitone.overflow = '';
-					}
-				}
 
 				setAttributes( {
-					unitone: !! Object.keys( newUnitone ).length
-						? newUnitone
-						: undefined,
+					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
 		/>
@@ -115,12 +95,25 @@ export function OverflowEdit( props ) {
 }
 
 export function saveOverflowProp( extraProps, blockType, attributes ) {
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+		?.attributes?.unitone?.default?.overflow;
+
 	if ( ! hasBlockSupport( blockType, 'unitone.overflow' ) ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.overflow ) {
-		return extraProps;
+	if ( null == attributes?.unitone?.parallax ) {
+		if ( null == defaultValue ) {
+			return extraProps;
+		}
+
+		attributes = {
+			...attributes,
+			unitone: {
+				...attributes?.unitone,
+				overflow: defaultValue,
+			},
+		};
 	}
 
 	extraProps[ 'data-unitone-layout' ] = classnames(

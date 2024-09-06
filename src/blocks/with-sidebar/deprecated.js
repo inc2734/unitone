@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -33,7 +33,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'with-sidebar', {
+							'data-unitone-layout': clsx( 'with-sidebar', {
 								[ `-sidebar:${ sidebar }` ]: !! sidebar,
 								'-revert': revert,
 							} ),
@@ -93,7 +93,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'with-sidebar', {
+							'data-unitone-layout': clsx( 'with-sidebar', {
 								[ `-sidebar:${ sidebar }` ]: !! sidebar,
 								'-revert': revert,
 							} ),
@@ -148,7 +148,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'with-sidebar', {
+							'data-unitone-layout': clsx( 'with-sidebar', {
 								[ `-sidebar:${ sidebar }` ]: !! sidebar,
 								'-revert': revert,
 								[ `-align-items:${ attributes?.unitone?.alignItems }` ]:
@@ -207,7 +207,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'with-sidebar', {
+							'data-unitone-layout': clsx( 'with-sidebar', {
 								[ `-sidebar:${ sidebar }` ]: !! sidebar,
 								'-revert': revert,
 							} ),
@@ -262,7 +262,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-layout': classnames( 'with-sidebar', {
+							'data-layout': clsx( 'with-sidebar', {
 								[ `-sidebar:${ sidebar }` ]: !! sidebar,
 								'-revert': revert,
 							} ),

@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { SelectControl, TextControl } from '@wordpress/components';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
@@ -406,7 +406,7 @@ export function savePositionProp( extraProps, blockType, attributes ) {
 		'--unitone--z-index': attributes?.unitone?.position?.zIndex,
 	};
 
-	extraProps[ 'data-unitone-layout' ] = classnames(
+	extraProps[ 'data-unitone-layout' ] = clsx(
 		extraProps[ 'data-unitone-layout' ],
 		{
 			[ `-position:${ attributes?.unitone?.position?.position }` ]:

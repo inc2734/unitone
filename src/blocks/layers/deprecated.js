@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -26,7 +26,7 @@ export default [
 									? `${ blur }px`
 									: undefined,
 							},
-							'data-unitone-layout': classnames( 'layers', {
+							'data-unitone-layout': clsx( 'layers', {
 								'-cover': cover,
 								'-fill': fill,
 								'-blur': !! blur,
@@ -54,7 +54,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'layers', {
+							'data-unitone-layout': clsx( 'layers', {
 								'-cover': cover,
 							} ),
 						} )
@@ -79,7 +79,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'layers', {
+							'data-unitone-layout': clsx( 'layers', {
 								'-cover': cover,
 								[ `-gap:${ attributes?.unitone?.gap }` ]:
 									null != attributes?.unitone?.gap,
@@ -110,7 +110,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-layout': classnames( 'layers', {
+							'data-layout': clsx( 'layers', {
 								'-cover': cover,
 							} ),
 						} )

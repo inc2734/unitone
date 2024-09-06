@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InnerBlocks,
@@ -20,7 +20,7 @@ export default function ( { attributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps();
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'both-sides',
 		blockProps[ 'data-unitone-layout' ]
 	);

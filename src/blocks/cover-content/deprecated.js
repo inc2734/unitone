@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -21,17 +21,13 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames(
-								'cover__content',
-								{
-									'-fill': fill,
-									[ `-valign:${ position }` ]:
-										null != position,
-									[ `-position:${ attributes?.unitone?.position?.position }` ]:
-										null !=
-										attributes?.unitone?.position?.position,
-								}
-							),
+							'data-unitone-layout': clsx( 'cover__content', {
+								'-fill': fill,
+								[ `-valign:${ position }` ]: null != position,
+								[ `-position:${ attributes?.unitone?.position?.position }` ]:
+									null !=
+									attributes?.unitone?.position?.position,
+							} ),
 							style: {
 								'--unitone--top':
 									attributes?.unitone?.position?.top,
@@ -66,7 +62,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-layout': classnames( 'cover__content', {
+							'data-layout': clsx( 'cover__content', {
 								[ `-position:${ position }` ]: !! position,
 							} ),
 						} )

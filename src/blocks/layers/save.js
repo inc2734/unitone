@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -24,7 +24,7 @@ export default function ( { attributes } ) {
 								? String( rows )
 								: undefined,
 					},
-					'data-unitone-layout': classnames( 'layers', {
+					'data-unitone-layout': clsx( 'layers', {
 						'-cover': cover,
 						'-fill': fill,
 						'-blur': !! blur,

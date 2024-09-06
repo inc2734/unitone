@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -7,10 +7,7 @@ export default function () {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					className: classnames(
-						'unitone-slider__slide',
-						'swiper-slide'
-					),
+					className: clsx( 'unitone-slider__slide', 'swiper-slide' ),
 				} )
 			) }
 		/>

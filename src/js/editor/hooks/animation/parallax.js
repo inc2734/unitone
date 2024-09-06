@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	__experimentalVStack as VStack,
@@ -55,7 +55,7 @@ function renderShadowToggle() {
 	return ( { onToggle, isOpen } ) => {
 		const toggleProps = {
 			onClick: onToggle,
-			className: classnames( { 'is-open': isOpen } ),
+			className: clsx( { 'is-open': isOpen } ),
 			'aria-expanded': isOpen,
 		};
 

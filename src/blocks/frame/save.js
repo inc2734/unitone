@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -9,7 +9,7 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-unitone-layout': classnames( 'frame', {
+					'data-unitone-layout': clsx( 'frame', {
 						'-switch': switchRatio,
 					} ),
 					style: {

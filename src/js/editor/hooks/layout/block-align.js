@@ -1,4 +1,4 @@
-import classnames from 'classnames/dedupe';
+import clsx from 'clsx';
 
 import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
@@ -168,14 +168,14 @@ export function saveBlockAlignProp( extraProps, blockType, attributes ) {
 
 	// Deprecation.
 	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = classnames(
+		extraProps[ 'data-layout' ] = clsx(
 			extraProps[ 'data-layout' ],
 			`-align:${ attributes.unitone?.blockAlign }`
 		);
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = classnames(
+	extraProps[ 'data-unitone-layout' ] = clsx(
 		extraProps[ 'data-unitone-layout' ],
 		`-align:${ attributes.unitone?.blockAlign }`
 	);

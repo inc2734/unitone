@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -29,14 +29,11 @@ export default [
 				>
 					<div
 						{ ...useInnerBlocksProps.save( {
-							'data-unitone-layout': classnames(
-								'vertical-writing',
-								{
-									[ `-text-orientation:${ textOrientation }` ]:
-										!! textOrientation,
-									'-switch': switchWritingMode,
-								}
-							),
+							'data-unitone-layout': clsx( 'vertical-writing', {
+								[ `-text-orientation:${ textOrientation }` ]:
+									!! textOrientation,
+								'-switch': switchWritingMode,
+							} ),
 						} ) }
 					/>
 				</div>

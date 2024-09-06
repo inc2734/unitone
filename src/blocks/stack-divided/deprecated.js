@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -31,7 +31,7 @@ export default [
 				<TagName
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'stack', {
+							'data-unitone-layout': clsx( 'stack', {
 								[ `-align-items:${ attributes?.unitone?.alignItems }` ]:
 									null != attributes?.unitone?.alignItems,
 								[ `-divider:${ attributes?.unitone?.dividerType }` ]:
@@ -81,7 +81,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'stack', {
+							'data-unitone-layout': clsx( 'stack', {
 								[ `-divider:${ divider }` ]: !! divider,
 							} ),
 						} )

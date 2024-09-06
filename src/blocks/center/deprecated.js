@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -25,7 +25,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'center', {
+							'data-unitone-layout': clsx( 'center', {
 								'-intrinsic': intrinsic,
 								'-with-text': withText,
 							} ),
@@ -51,7 +51,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'center', {
+							'data-unitone-layout': clsx( 'center', {
 								'-with-text': withText,
 							} ),
 						} )
@@ -76,7 +76,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-layout': classnames( 'center', {
+							'data-layout': clsx( 'center', {
 								'-with-text': withText,
 							} ),
 						} )

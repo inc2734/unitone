@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	__experimentalVStack as VStack,
@@ -57,7 +57,7 @@ function renderShadowToggle() {
 	return ( { onToggle, isOpen } ) => {
 		const toggleProps = {
 			onClick: onToggle,
-			className: classnames( { 'is-open': isOpen } ),
+			className: clsx( { 'is-open': isOpen } ),
 			'aria-expanded': isOpen,
 		};
 
@@ -410,7 +410,7 @@ export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
 		const delay = attributes.unitone?.scrollAnimation?.delay;
 		const easing = attributes.unitone?.scrollAnimation?.easing;
 
-		extraProps[ 'data-unitone-scroll-animation' ] = classnames(
+		extraProps[ 'data-unitone-scroll-animation' ] = clsx(
 			extraProps[ 'data-unitone-scroll-animation' ],
 			{
 				[ `-animation-timing-function:${ easing }` ]: easing,

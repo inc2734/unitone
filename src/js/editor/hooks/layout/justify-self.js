@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	hasBlockSupport,
@@ -425,7 +425,7 @@ export function saveJustifySelfProp( extraProps, blockType, attributes ) {
 		};
 	}
 
-	extraProps[ 'data-unitone-layout' ] = classnames(
+	extraProps[ 'data-unitone-layout' ] = clsx(
 		extraProps[ 'data-unitone-layout' ],
 		{
 			[ `-justify-self:${ attributes.unitone?.justifySelf }` ]:

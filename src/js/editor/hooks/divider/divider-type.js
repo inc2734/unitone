@@ -1,4 +1,4 @@
-import classnames from 'classnames/dedupe';
+import clsx from 'clsx';
 
 import {
 	getBlockSupport,
@@ -131,7 +131,7 @@ export function saveDividerTypeProp( extraProps, blockType, attributes ) {
 		};
 	}
 
-	extraProps[ 'data-unitone-layout' ] = classnames(
+	extraProps[ 'data-unitone-layout' ] = clsx(
 		extraProps[ 'data-unitone-layout' ],
 		`-divider:${ attributes.unitone?.dividerType }`
 	);

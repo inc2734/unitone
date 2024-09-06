@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InnerBlocks,
@@ -119,7 +119,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		className: 'unitone-grid',
 		style: styles,
 	} );
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		blockProps[ 'data-unitone-layout' ],
 		{
 			[ `-columns:${ columnsOption }` ]: !! columnsOption,

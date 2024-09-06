@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	BlockControls,
@@ -236,19 +236,15 @@ function Edit( {
 
 	const blockProps = useBlockProps( {
 		ref: useMergeRefs( [ setPopoverAnchor, listItemRef ] ),
-		className: classnames(
-			'unitone-mega-menu',
-			'wp-block-navigation-item',
-			{
-				'has-link': !! url,
-				'open-on-click': openSubmenusOnClick,
-			}
-		),
+		className: clsx( 'unitone-mega-menu', 'wp-block-navigation-item', {
+			'has-link': !! url,
+			'open-on-click': openSubmenusOnClick,
+		} ),
 	} );
 
 	const { children, ...innerBlocksProps } = useInnerBlocksProps(
 		{
-			className: classnames( 'unitone-mega-menu__container', {
+			className: clsx( 'unitone-mega-menu__container', {
 				'open-on-click': openSubmenusOnClick,
 				'has-background':
 					overlayBackgroundColor.slug || customOverlayBackgroundColor,

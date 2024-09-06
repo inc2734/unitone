@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
@@ -59,7 +59,7 @@ export function saveFluidTypographyProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = classnames(
+	extraProps[ 'data-unitone-layout' ] = clsx(
 		extraProps[ 'data-unitone-layout' ],
 		'-fluid-typography'
 	);

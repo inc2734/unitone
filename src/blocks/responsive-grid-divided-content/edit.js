@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InnerBlocks,
@@ -31,7 +31,7 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 	);
 
 	const blockProps = useBlockProps();
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'responsive-grid__content',
 		blockProps[ 'data-unitone-layout' ]
 	);

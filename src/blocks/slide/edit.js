@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InnerBlocks,
@@ -20,7 +20,7 @@ export default function ( { attributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps( {
-		className: classnames( 'unitone-slider__slide', 'swiper-slide' ),
+		className: clsx( 'unitone-slider__slide', 'swiper-slide' ),
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {

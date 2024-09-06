@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InspectorControls,
@@ -40,7 +40,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps( { ref } );
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'cluster',
 		blockProps[ 'data-unitone-layout' ]
 	);

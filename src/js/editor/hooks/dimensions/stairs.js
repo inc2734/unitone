@@ -1,4 +1,4 @@
-import classnames from 'classnames/dedupe';
+import clsx from 'clsx';
 
 import {
 	hasBlockSupport,
@@ -195,7 +195,7 @@ export function saveStairsProp( extraProps, blockType, attributes ) {
 		}
 	}
 
-	extraProps[ 'data-unitone-layout' ] = classnames(
+	extraProps[ 'data-unitone-layout' ] = clsx(
 		extraProps[ 'data-unitone-layout' ],
 		`-stairs:${ attributes.unitone?.stairs }`,
 		`-stairs-up:${ attributes.unitone?.stairsUp }`

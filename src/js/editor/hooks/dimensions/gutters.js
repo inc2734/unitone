@@ -1,4 +1,4 @@
-import classnames from 'classnames/dedupe';
+import clsx from 'clsx';
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { BaseControl, ToggleControl } from '@wordpress/components';
@@ -119,14 +119,14 @@ export function saveGuttersProp( extraProps, blockType, attributes ) {
 
 	// Deprecation.
 	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = classnames(
+		extraProps[ 'data-layout' ] = clsx(
 			extraProps[ 'data-layout' ],
 			`-gutters:${ attributes.unitone?.gutters }`
 		);
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = classnames(
+	extraProps[ 'data-unitone-layout' ] = clsx(
 		extraProps[ 'data-unitone-layout' ],
 		`-gutters:${ attributes.unitone?.gutters }`
 	);

@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	RichText,
@@ -135,7 +135,7 @@ export default [
 				<details
 					{ ...useBlockProps.save( {
 						className: 'unitone-accordion',
-						'data-unitone-layout': classnames( {
+						'data-unitone-layout': clsx( {
 							[ `-padding:${ attributes?.unitone?.padding }` ]:
 								null != attributes?.unitone?.padding,
 						} ),

@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -19,7 +19,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'container', {
+							'data-unitone-layout': clsx( 'container', {
 								[ `-align:${ attributes?.unitone?.blockAlign }` ]:
 									null != attributes?.unitone?.blockAlign,
 								[ `-gutters:${ attributes?.unitone?.gutters }` ]:

@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -21,7 +21,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'text', {
+							'data-unitone-layout': clsx( 'text', {
 								'-center': center,
 								'-column': column,
 								'-gap': null != unitone?.gap,
@@ -48,7 +48,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'text', {
+							'data-unitone-layout': clsx( 'text', {
 								'-center': center,
 								'-column': column,
 							} ),
@@ -74,7 +74,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'text', {
+							'data-unitone-layout': clsx( 'text', {
 								'-center': center,
 								'-column': column,
 								[ `-gap:${ attributes?.unitone?.gap }` ]:
@@ -106,7 +106,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-layout': classnames( 'text', {
+							'data-layout': clsx( 'text', {
 								'-center': center,
 							} ),
 						} )

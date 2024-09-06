@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -37,7 +37,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'cover', {
+							'data-unitone-layout': clsx( 'cover', {
 								'-no-padding': noPadding,
 							} ),
 						} )
@@ -66,7 +66,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'cover', {
+							'data-unitone-layout': clsx( 'cover', {
 								'-no-padding': noPadding,
 								[ `-gap:${ attributes?.unitone?.gap }` ]:
 									null != attributes?.unitone?.gap,
@@ -101,7 +101,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-layout': classnames( 'cover', {
+							'data-layout': clsx( 'cover', {
 								'-no-padding': noPadding,
 							} ),
 						} )

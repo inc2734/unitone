@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	__experimentalVStack as VStack,
@@ -149,15 +149,12 @@ function ShadowIndicator( { type, label, isActive, onSelect, shadow } ) {
 			role="option"
 			aria-label={ label }
 			aria-selected={ isActive }
-			className={ classnames(
-				'block-editor-global-styles__shadow__item',
-				{
-					'is-active': isActive,
-				}
-			) }
+			className={ clsx( 'block-editor-global-styles__shadow__item', {
+				'is-active': isActive,
+			} ) }
 		>
 			<Button
-				className={ classnames(
+				className={ clsx(
 					'block-editor-global-styles__shadow-indicator',
 					{
 						unset: type === 'unset',
@@ -203,7 +200,7 @@ function renderShadowToggle() {
 	return ( { onToggle, isOpen } ) => {
 		const toggleProps = {
 			onClick: onToggle,
-			className: classnames( { 'is-open': isOpen } ),
+			className: clsx( { 'is-open': isOpen } ),
 			'aria-expanded': isOpen,
 		};
 

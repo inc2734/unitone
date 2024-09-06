@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	RichText,
@@ -25,7 +25,7 @@ export default function ( { attributes } ) {
 	return (
 		<details
 			{ ...useBlockProps.save( {
-				className: classnames( 'unitone-accordion', {
+				className: clsx( 'unitone-accordion', {
 					[ `unitone-accordion--mark:cross` ]: 'cross' === mark,
 				} ),
 				style: {

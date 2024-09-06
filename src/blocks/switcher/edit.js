@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InnerBlocks,
@@ -34,7 +34,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			'--unitone--threshold': threshold || undefined,
 		},
 	} );
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'switcher',
 		blockProps[ 'data-unitone-layout' ]
 	);

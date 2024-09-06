@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -13,7 +13,7 @@ export default function ( { attributes } ) {
 						'--unitone--height': height || undefined,
 						'--unitone--item-width': itemWidth || undefined,
 					},
-					'data-unitone-layout': classnames( 'reel', {
+					'data-unitone-layout': clsx( 'reel', {
 						'-no-bar': noBar,
 					} ),
 				} )

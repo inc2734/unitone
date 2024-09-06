@@ -1,4 +1,4 @@
-import classnames from 'classnames/dedupe';
+import clsx from 'clsx';
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
@@ -107,7 +107,7 @@ export function saveAutoRepeatProp( extraProps, blockType, attributes ) {
 		};
 	}
 
-	extraProps[ 'data-unitone-layout' ] = classnames(
+	extraProps[ 'data-unitone-layout' ] = clsx(
 		extraProps[ 'data-unitone-layout' ],
 		`-auto-repeat:${ attributes.unitone?.autoRepeat }`
 	);

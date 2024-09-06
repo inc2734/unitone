@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InspectorControls,
@@ -41,7 +41,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	}, [] );
 
 	const blockProps = useBlockProps();
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'vertical-writing-wrapper',
 		blockProps[ 'data-unitone-layout' ]
 	);
@@ -49,15 +49,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const innerBlocksProps = useInnerBlocksProps(
 		{
 			ref,
-			'data-unitone-layout': classnames(
-				'vertical-writing',
-				'-initialized',
-				{
-					[ `-text-orientation:${ textOrientation }` ]:
-						!! textOrientation,
-					'-switch': switchWritingMode,
-				}
-			),
+			'data-unitone-layout': clsx( 'vertical-writing', '-initialized', {
+				[ `-text-orientation:${ textOrientation }` ]:
+					!! textOrientation,
+				'-switch': switchWritingMode,
+			} ),
 			style: {
 				'--unitone--threshold': threshold || undefined,
 			},

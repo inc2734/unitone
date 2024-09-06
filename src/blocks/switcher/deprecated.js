@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -55,7 +55,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'switcher', {
+							'data-unitone-layout': clsx( 'switcher', {
 								[ `-gap:${ attributes?.unitone?.gap }` ]:
 									null != attributes?.unitone?.gap,
 							} ),

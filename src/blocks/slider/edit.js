@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InspectorControls,
@@ -175,7 +175,7 @@ export default function ( {
 
 	const blockProps = useBlockProps( {
 		ref,
-		className: classnames( 'unitone-slider', {
+		className: clsx( 'unitone-slider', {
 			'unitone-slider--hide-outside': canMultiSlides && hideOutside,
 			'unitone-slider--has-pagination': pagination,
 		} ),
@@ -187,10 +187,7 @@ export default function ( {
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{
-			className: classnames(
-				'unitone-slider__wrapper',
-				'swiper-wrapper'
-			),
+			className: clsx( 'unitone-slider__wrapper', 'swiper-wrapper' ),
 		},
 		{
 			templateLock,
@@ -766,7 +763,7 @@ export default function ( {
 					) }
 
 					<div
-						className={ classnames( 'unitone-slider__canvas', {
+						className={ clsx( 'unitone-slider__canvas', {
 							'swiper-fade': 'fade' === effect,
 						} ) }
 						data-unitone-swiper-centered-slides={

@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -79,15 +79,11 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames(
-								'layers__layer',
-								{
-									[ `-align-self:${ alignSelf }` ]:
-										!! alignSelf,
-									[ `-justify-self:${ justifySelf }` ]:
-										!! justifySelf,
-								}
-							),
+							'data-unitone-layout': clsx( 'layers__layer', {
+								[ `-align-self:${ alignSelf }` ]: !! alignSelf,
+								[ `-justify-self:${ justifySelf }` ]:
+									!! justifySelf,
+							} ),
 							style: {
 								'--unitone--grid-column':
 									gridColumn || undefined,
@@ -115,7 +111,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-layout': classnames( 'layers__layer', {
+							'data-layout': clsx( 'layers__layer', {
 								[ `-align-self:${ alignSelf }` ]: !! alignSelf,
 								[ `-justify-self:${ justifySelf }` ]:
 									!! justifySelf,

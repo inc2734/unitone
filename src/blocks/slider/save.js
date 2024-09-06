@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -31,7 +31,7 @@ export default function ( { attributes } ) {
 	return (
 		<div
 			{ ...useBlockProps.save( {
-				className: classnames( 'unitone-slider', {
+				className: clsx( 'unitone-slider', {
 					'unitone-slider--hide-outside':
 						canMultiSlides && hideOutside,
 					'unitone-slider--has-pagination': pagination,
@@ -77,7 +77,7 @@ export default function ( { attributes } ) {
 				>
 					<div
 						{ ...useInnerBlocksProps.save( {
-							className: classnames(
+							className: clsx(
 								'unitone-slider__wrapper',
 								'swiper-wrapper'
 							),

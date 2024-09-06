@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -19,7 +19,7 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames( 'both-sides', {
+							'data-unitone-layout': clsx( 'both-sides', {
 								[ `-align-items:${ attributes?.unitone?.alignItems }` ]:
 									null != attributes?.unitone?.alignItems,
 								[ `-gap:${ attributes?.unitone?.gap }` ]:
@@ -44,7 +44,7 @@ export default [
 			<div
 				{ ...useInnerBlocksProps.save(
 					useBlockProps.save( {
-						'data-layout': classnames( 'both-sides' ),
+						'data-layout': clsx( 'both-sides' ),
 					} )
 				) }
 			/>;

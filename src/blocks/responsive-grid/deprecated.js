@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -56,15 +56,12 @@ export default [
 				<div
 					{ ...useInnerBlocksProps.save(
 						useBlockProps.save( {
-							'data-unitone-layout': classnames(
-								'responsive-grid',
-								{
-									[ `-gap:${ attributes?.unitone?.gap }` ]:
-										null != attributes?.unitone?.gap,
-									[ `-auto-repeat:${ attributes?.unitone?.autoRepeat }` ]:
-										null != attributes?.unitone?.autoRepeat,
-								}
-							),
+							'data-unitone-layout': clsx( 'responsive-grid', {
+								[ `-gap:${ attributes?.unitone?.gap }` ]:
+									null != attributes?.unitone?.gap,
+								[ `-auto-repeat:${ attributes?.unitone?.autoRepeat }` ]:
+									null != attributes?.unitone?.autoRepeat,
+							} ),
 							style: {
 								'--unitone--column-min-width':
 									columnMinWidth || undefined,

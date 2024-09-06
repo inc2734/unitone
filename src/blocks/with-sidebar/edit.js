@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InspectorControls,
@@ -49,7 +49,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			'--unitone--content-min-width': contentMinWidth || undefined,
 		},
 	} );
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'with-sidebar',
 		blockProps[ 'data-unitone-layout' ],
 		{

@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InspectorControls,
@@ -46,7 +46,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps( {
-		className: classnames( 'unitone-accordion', {
+		className: clsx( 'unitone-accordion', {
 			[ `unitone-accordion--mark:cross` ]: 'cross' === mark,
 		} ),
 		style: {

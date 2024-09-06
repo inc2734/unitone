@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	registerFormatType,
@@ -64,7 +64,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				...DEFAULT_OBJECT_SETTINGS,
 				attributes: {
 					...activeObjectAttributes,
-					class: classnames( {
+					class: clsx( {
 						'unitone-br--disable:desktop': ! newSetting,
 						'unitone-br--disable:tablet': disableTablet,
 						'unitone-br--disable:mobile': disableMobile,
@@ -90,7 +90,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				...DEFAULT_OBJECT_SETTINGS,
 				attributes: {
 					...activeObjectAttributes,
-					class: classnames( {
+					class: clsx( {
 						'unitone-br--disable:desktop': disableDesktop,
 						'unitone-br--disable:tablet': ! newSetting,
 						'unitone-br--disable:mobile': disableMobile,
@@ -116,7 +116,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				...DEFAULT_OBJECT_SETTINGS,
 				attributes: {
 					...activeObjectAttributes,
-					class: classnames( {
+					class: clsx( {
 						'unitone-br--disable:desktop': disableDesktop,
 						'unitone-br--disable:tablet': disableTablet,
 						'unitone-br--disable:mobile': ! newSetting,

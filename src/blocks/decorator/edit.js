@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	BlockControls,
@@ -72,7 +72,7 @@ export default function ( {
 	const blockProps = useBlockProps( {
 		ref,
 	} );
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'decorator',
 		blockProps[ 'data-unitone-layout' ]
 	);

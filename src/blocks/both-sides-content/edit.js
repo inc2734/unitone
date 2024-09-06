@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InnerBlocks,
@@ -25,7 +25,7 @@ export default function ( { attributes, clientId } ) {
 			'--unitone--content-max-width': contentMaxWidth || undefined,
 		},
 	} );
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'both-sides__content',
 		blockProps[ 'data-unitone-layout' ]
 	);

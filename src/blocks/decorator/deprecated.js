@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
@@ -45,7 +45,7 @@ export default [
 			const TagName = tagName;
 
 			const blockProps = useBlockProps.save( {
-				'data-unitone-layout': classnames( 'decorator', {
+				'data-unitone-layout': clsx( 'decorator', {
 					'-shadow': shadow,
 				} ),
 			} );
@@ -96,7 +96,7 @@ export default [
 			const TagName = tagName;
 
 			const blockProps = useBlockProps.save( {
-				'data-unitone-layout': classnames( 'decorator', {
+				'data-unitone-layout': clsx( 'decorator', {
 					'-shadow': shadow,
 					[ `-overflow:${ attributes?.unitone?.overflow }` ]:
 						null != attributes?.unitone?.overflow,
@@ -221,7 +221,7 @@ export default [
 					'--unitone--left': left || undefined,
 					'--unitone--z-index': zIndex || undefined,
 				},
-				'data-unitone-layout': classnames( 'decorator', {
+				'data-unitone-layout': clsx( 'decorator', {
 					[ `-position:${ position }` ]: position,
 					'-shadow': shadow,
 				} ),
@@ -310,7 +310,7 @@ export default [
 								'--left': left || undefined,
 								'--z-index': zIndex || undefined,
 							},
-							'data-layout': classnames( 'decorator', {
+							'data-layout': clsx( 'decorator', {
 								[ `-position:${ position }` ]: position,
 								'-shadow': shadow,
 							} ),

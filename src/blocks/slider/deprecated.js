@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -40,11 +40,11 @@ export default [
 			return (
 				<div
 					{ ...useBlockProps.save( {
-						className: classnames( 'unitone-slider', {
+						className: clsx( 'unitone-slider', {
 							'unitone-slider--hide-outside': hideOutSide,
 							'unitone-slider--has-pagination': pagination,
 						} ),
-						'data-unitone-layout': classnames( {
+						'data-unitone-layout': clsx( {
 							[ `-gap:${ attributes?.unitone?.gap }` ]:
 								null != attributes?.unitone?.gap,
 						} ),
@@ -82,7 +82,7 @@ export default [
 						>
 							<div
 								{ ...useInnerBlocksProps.save( {
-									className: classnames(
+									className: clsx(
 										'unitone-slider__wrapper',
 										'swiper-wrapper'
 									),
@@ -126,7 +126,7 @@ export default [
 			return (
 				<div
 					{ ...useBlockProps.save( {
-						className: classnames( 'unitone-slider', {
+						className: clsx( 'unitone-slider', {
 							'unitone-slider--hide-outside': hideOutSide,
 							'unitone-slider--has-pagination': pagination,
 						} ),
@@ -139,7 +139,7 @@ export default [
 						<div className="unitone-slider__canvas">
 							<div
 								{ ...useInnerBlocksProps.save( {
-									className: classnames(
+									className: clsx(
 										'unitone-slider__wrapper',
 										'swiper-wrapper'
 									),
@@ -175,7 +175,7 @@ export default [
 			return (
 				<div
 					{ ...useBlockProps.save( {
-						className: classnames( 'unitone-slider', {
+						className: clsx( 'unitone-slider', {
 							'unitone-slider--hide-outside': hideOutSide,
 							'unitone-slider--has-pagination': pagination,
 						} ),
@@ -187,7 +187,7 @@ export default [
 					<div className="unitone-slider__canvas">
 						<div
 							{ ...useInnerBlocksProps.save( {
-								className: classnames(
+								className: clsx(
 									'unitone-slider__wrapper',
 									'swiper-wrapper'
 								),

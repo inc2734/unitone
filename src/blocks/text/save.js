@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -13,7 +13,7 @@ export default function ( { attributes } ) {
 						'--unitone--column-width':
 							( column && columnWidth ) || undefined,
 					},
-					'data-unitone-layout': classnames( 'text', '-gap', {
+					'data-unitone-layout': clsx( 'text', '-gap', {
 						'-center': center,
 						'-column': column,
 					} ),

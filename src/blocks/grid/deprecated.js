@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
@@ -101,7 +101,7 @@ export default [
 						...useBlockProps.save( {
 							className: 'unitone-grid',
 							style: styles,
-							'data-unitone-layout': classnames( {
+							'data-unitone-layout': clsx( {
 								[ `-columns:${ columnsOption }` ]:
 									!! columnsOption,
 								[ `-columns:md:${ mdColumnsOption }` ]:

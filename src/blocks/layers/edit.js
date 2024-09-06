@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 import { get } from 'lodash';
 
 import {
@@ -73,7 +73,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 					: undefined,
 		},
 	} );
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'layers',
 		blockProps[ 'data-unitone-layout' ],
 		{

@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	hasBlockSupport,
@@ -412,7 +412,7 @@ export function saveAlignSelfProp( extraProps, blockType, attributes ) {
 		};
 	}
 
-	extraProps[ 'data-unitone-layout' ] = classnames(
+	extraProps[ 'data-unitone-layout' ] = clsx(
 		extraProps[ 'data-unitone-layout' ],
 		{
 			[ `-align-self:${ attributes.unitone?.alignSelf }` ]:

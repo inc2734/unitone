@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
 	InspectorControls,
@@ -45,7 +45,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			'--unitone--column-min-width': columnMinWidth || undefined,
 		},
 	} );
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'responsive-grid',
 		blockProps[ 'data-unitone-layout' ]
 	);

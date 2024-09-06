@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 import { get } from 'lodash';
 
 import {
@@ -33,7 +33,7 @@ export default function ( { name, setAttributes, clientId } ) {
 	}, [ innerBlockTypes.toString() ] );
 
 	const blockProps = useBlockProps();
-	blockProps[ 'data-unitone-layout' ] = classnames(
+	blockProps[ 'data-unitone-layout' ] = clsx(
 		'cover',
 		blockProps[ 'data-unitone-layout' ]
 	);

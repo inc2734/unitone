@@ -1,7 +1,7 @@
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 export const Arrows = ( { alignment, justification } ) => {
-	const className = classnames( 'swiper-buttons', {
+	const className = clsx( 'swiper-buttons', {
 		[ `swiper-buttons--alignment:${ alignment }` ]: !! alignment,
 		[ `swiper-buttons--justification:${ justification }` ]:
 			!! justification,
@@ -15,7 +15,7 @@ export const Arrows = ( { alignment, justification } ) => {
 };
 
 export const Pagination = ( { slides = [], alignment, justification } ) => {
-	const className = classnames(
+	const className = clsx(
 		'swiper-pagination',
 		'swiper-pagination-bullets',
 		'swiper-pagination-horizontal',

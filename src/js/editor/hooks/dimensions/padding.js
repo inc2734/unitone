@@ -1,7 +1,8 @@
 /*
- *@see https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/padding.js
+ * @see https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/padding.js
  */
-import classnames from 'classnames/dedupe';
+
+import clsx from 'clsx';
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
@@ -97,14 +98,14 @@ export function savePaddingProp( extraProps, blockType, attributes ) {
 
 	// Deprecation.
 	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = classnames(
+		extraProps[ 'data-layout' ] = clsx(
 			extraProps[ 'data-layout' ],
 			`-padding:${ attributes.unitone?.padding }`
 		);
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = classnames(
+	extraProps[ 'data-unitone-layout' ] = clsx(
 		extraProps[ 'data-unitone-layout' ],
 		`-padding:${ attributes.unitone?.padding }`
 	);

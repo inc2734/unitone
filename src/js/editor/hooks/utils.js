@@ -21,10 +21,7 @@ export const cleanEmptyObject = ( object ) => {
 
 	const cleanedNestedObjects = Object.entries( object )
 		.map( ( [ key, value ] ) => [ key, cleanEmptyObject( value ) ] )
-		.filter(
-			( [ , value ] ) =>
-				value !== undefined && value !== null && value !== ''
-		);
+		.filter( ( [ , value ] ) => value !== undefined && value !== null );
 	return ! cleanedNestedObjects.length
 		? undefined
 		: Object.fromEntries( cleanedNestedObjects );

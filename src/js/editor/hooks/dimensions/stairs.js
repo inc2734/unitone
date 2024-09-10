@@ -106,7 +106,8 @@ export function StairsEdit( { name, label, unitone, setAttributes } ) {
 
 				const newUnitone = {
 					...unitone,
-					stairs: newValue || undefined,
+					stairs:
+						newValue || ( null == defaultValue ? undefined : '' ),
 				};
 
 				setAttributes( {

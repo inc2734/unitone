@@ -82,7 +82,9 @@ export function GuttersEdit( { name, label, unitone, setAttributes } ) {
 
 						const newUnitone = {
 							...unitone,
-							gutters: newValue || undefined,
+							gutters:
+								newValue ||
+								( null != defaultValue ? undefined : '' ),
 						};
 
 						setAttributes( {

@@ -21,7 +21,7 @@ import { link, linkOff } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
-import { cleanEmptyObject, isNumber, isString } from '../utils';
+import { cleanEmptyObject, isString } from '../utils';
 
 export function hasGapValue( { name, unitone } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
@@ -192,7 +192,12 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 
 		const newUnitone = {
 			...unitone,
-			gap: newValue || undefined,
+			gap:
+				newValue ||
+				( null ==
+				( defaultValue?.column ?? defaultValue?.row ?? defaultValue )
+					? undefined
+					: '' ),
 		};
 
 		setAttributes( {
@@ -207,24 +212,87 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 			newValue = String( newValue );
 		}
 
-		const newUnitone =
-			newValue === String( unitone?.gap?.row )
-				? {
-						...unitone,
-						gap: newValue,
-				  }
-				: {
-						...unitone,
-						gap: {
-							column: newValue || undefined,
-							row:
-								unitone?.gap?.row ||
-								( ( isNumber( unitone?.gap ) ||
-									isString( unitone?.gap ) ) &&
-									unitone?.gap ) ||
-								undefined,
-						},
-				  };
+		const compactDefault =
+			! isString( defaultValue ) &&
+			defaultValue?.column === defaultValue?.row
+				? defaultValue?.column
+				: defaultValue;
+
+		const fullDefault = isString( compactDefault )
+			? {
+					column: compactDefault,
+					row: compactDefault,
+			  }
+			: {
+					column: compactDefault?.column,
+					row: compactDefault?.row,
+			  };
+
+		const preNewGap = isString( unitone?.gap )
+			? {
+					column: unitone?.gap,
+					row: unitone?.gap,
+			  }
+			: {
+					column: unitone?.gap?.column,
+					row: unitone?.gap?.row,
+			  };
+
+		let newGap = {
+			column:
+				newValue ||
+				( null == fullDefault?.column ||
+				newValue === fullDefault?.column
+					? undefined
+					: '' ),
+			row: preNewGap?.row ?? fullDefault?.row,
+		};
+
+		// current が undefined で default が数値のときは row に default が入る
+		// 分割値の場合、PHP 側で default.row は参照するけど、default は参照しないため
+		if ( null == unitone?.gap && isString( defaultValue ) ) {
+			newGap.row = defaultValue;
+		}
+
+		// current.column が数値で current.row がなく、
+		if ( null != unitone?.gap?.column && null == unitone?.gap?.row ) {
+			if ( isString( defaultValue?.row ) ) {
+				// default.row が数値のときは row に default.row が入る
+				newGap.row = defaultValue?.row;
+			} else if ( isString( defaultValue ) ) {
+				// default が数値のときは row に '' が入る
+				newGap.row = '';
+			}
+		}
+
+		if ( newGap.column === newGap.row ) {
+			// column と row の値が同じ時は単一化する
+			newGap = newGap.column;
+		} else {
+			// column と default.column が同じときは undefined
+			if ( newGap?.column === defaultValue?.column ) {
+				newGap.column = undefined;
+			}
+
+			// row と default.row が同じときは undefined
+			if ( newGap?.row === defaultValue?.row ) {
+				newGap.row = undefined;
+			}
+		}
+
+		// gap と default が同じときは undefined
+		if (
+			JSON.stringify( newGap ) === JSON.stringify( defaultValue ) ||
+			JSON.stringify( newGap ) === JSON.stringify( compactDefault )
+		) {
+			newGap = undefined;
+		}
+
+		const newUnitone = {
+			...unitone,
+			gap: newGap,
+		};
+
 		setAttributes( {
 			unitone: cleanEmptyObject( newUnitone ),
 		} );
@@ -237,24 +305,86 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 			newValue = String( newValue );
 		}
 
-		const newUnitone =
-			newValue === String( unitone?.gap?.column )
-				? {
-						...unitone,
-						gap: newValue || undefined,
-				  }
-				: {
-						...unitone,
-						gap: {
-							row: newValue || undefined,
-							column:
-								unitone?.gap?.column ||
-								( ( isNumber( unitone?.gap ) ||
-									isString( unitone?.gap ) ) &&
-									unitone?.gap ) ||
-								undefined,
-						},
-				  };
+		const compactDefault =
+			! isString( defaultValue ) &&
+			defaultValue?.column === defaultValue?.row
+				? defaultValue?.row
+				: defaultValue;
+
+		const fullDefault = isString( compactDefault )
+			? {
+					column: compactDefault,
+					row: compactDefault,
+			  }
+			: {
+					column: compactDefault?.column,
+					row: compactDefault?.row,
+			  };
+
+		const preNewGap = isString( unitone?.gap )
+			? {
+					column: unitone?.gap,
+					row: unitone?.gap,
+			  }
+			: {
+					column: unitone?.gap?.column,
+					row: unitone?.gap?.row,
+			  };
+
+		let newGap = {
+			row:
+				newValue ||
+				( null == fullDefault?.row || newValue === fullDefault?.row
+					? undefined
+					: '' ),
+			column: preNewGap?.column ?? fullDefault?.column,
+		};
+
+		// current が undefined で default が数値のときは column に default が入る
+		// 分割値の場合、PHP 側で default.column は参照するけど、default は参照しないため
+		if ( null == unitone?.gap && isString( defaultValue ) ) {
+			newGap.column = defaultValue;
+		}
+
+		// current.row が数値で current.column がなく、
+		if ( null != unitone?.gap?.row && null == unitone?.gap?.column ) {
+			if ( isString( defaultValue?.column ) ) {
+				// default.column が数値のときは column に default.column が入る
+				newGap.column = defaultValue?.column;
+			} else if ( isString( defaultValue ) ) {
+				// default が数値のときは column に '' が入る
+				newGap.column = '';
+			}
+		}
+
+		if ( newGap.column === newGap.row ) {
+			// column と row の値が同じ時は単一化する
+			newGap = newGap.column;
+		} else {
+			// row と default.row が同じときは undefined
+			if ( newGap?.row === defaultValue?.row ) {
+				newGap.row = undefined;
+			}
+
+			// column と default.column が同じときは undefined
+			if ( newGap?.column === defaultValue?.column ) {
+				newGap.column = undefined;
+			}
+		}
+
+		// gap と default が同じときは undefined
+		if (
+			JSON.stringify( newGap ) === JSON.stringify( defaultValue ) ||
+			JSON.stringify( newGap ) === JSON.stringify( compactDefault )
+		) {
+			newGap = undefined;
+		}
+
+		const newUnitone = {
+			...unitone,
+			gap: newGap,
+		};
+
 		setAttributes( {
 			unitone: cleanEmptyObject( newUnitone ),
 		} );

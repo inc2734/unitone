@@ -63,7 +63,8 @@ export function PaddingEdit( { label, name, unitone, setAttributes } ) {
 
 				const newUnitone = {
 					...unitone,
-					padding: newValue || undefined,
+					padding:
+						newValue || ( null == defaultValue ? undefined : '' ),
 				};
 
 				setAttributes( {

@@ -268,7 +268,7 @@ export function hasLeftValue( { name, unitone } ) {
 	);
 }
 
-export function resetLeftValueFilter( attributes ) {
+export function resetLeftFilter( attributes ) {
 	return {
 		...attributes,
 		unitone: {
@@ -283,9 +283,7 @@ export function resetLeftValueFilter( attributes ) {
 
 export function resetLeft( { unitone, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject(
-			resetLeftValueFilter( { unitone } )?.unitone
-		),
+		unitone: cleanEmptyObject( resetLeftFilter( { unitone } )?.unitone ),
 	} );
 }
 

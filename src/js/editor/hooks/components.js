@@ -63,7 +63,7 @@ export function SpacingSizeControl( {
 	const defaultOptions = [
 		{
 			label: '',
-			value: undefined,
+			value: '',
 		},
 		{
 			label: 'XS',

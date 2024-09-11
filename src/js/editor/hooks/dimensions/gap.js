@@ -167,6 +167,46 @@ function IconHorizontal() {
 	);
 }
 
+function compacting( attribute, defaultValue = undefined ) {
+	const compactedAttribute =
+		! isString( attribute ) && attribute?.column === attribute?.row
+			? attribute?.column
+			: attribute;
+
+	if ( ! isString( compactedAttribute ) && null != defaultValue ) {
+		if ( compactedAttribute?.column === defaultValue?.column ) {
+			compactedAttribute.column = undefined;
+		}
+
+		if ( compactedAttribute?.row === defaultValue?.row ) {
+			compactedAttribute.row = undefined;
+		}
+	}
+
+	if (
+		JSON.stringify( compactedAttribute ) ===
+			JSON.stringify( defaultValue ) ||
+		JSON.stringify( compactedAttribute ) ===
+			JSON.stringify( compacting( defaultValue ) )
+	) {
+		return undefined;
+	}
+
+	return compactedAttribute;
+}
+
+function expand( attribute ) {
+	return isString( attribute )
+		? {
+				column: attribute,
+				row: attribute,
+		  }
+		: {
+				column: attribute?.column,
+				row: attribute?.row,
+		  };
+}
+
 export function GapEdit( { name, label, unitone, setAttributes } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
@@ -212,33 +252,11 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 			newValue = String( newValue );
 		}
 
-		const compactDefault =
-			! isString( defaultValue ) &&
-			defaultValue?.column === defaultValue?.row
-				? defaultValue?.column
-				: defaultValue;
+		const compactDefault = compacting( defaultValue );
+		const fullDefault = expand( compactDefault );
+		const preNewGap = expand( unitone?.gap );
 
-		const fullDefault = isString( compactDefault )
-			? {
-					column: compactDefault,
-					row: compactDefault,
-			  }
-			: {
-					column: compactDefault?.column,
-					row: compactDefault?.row,
-			  };
-
-		const preNewGap = isString( unitone?.gap )
-			? {
-					column: unitone?.gap,
-					row: unitone?.gap,
-			  }
-			: {
-					column: unitone?.gap?.column,
-					row: unitone?.gap?.row,
-			  };
-
-		let newGap = {
+		const newGap = {
 			column:
 				newValue ||
 				( null == fullDefault?.column ||
@@ -265,32 +283,9 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 			}
 		}
 
-		if ( newGap.column === newGap.row ) {
-			// column と row の値が同じ時は単一化する
-			newGap = newGap.column;
-		} else {
-			// column と default.column が同じときは undefined
-			if ( newGap?.column === defaultValue?.column ) {
-				newGap.column = undefined;
-			}
-
-			// row と default.row が同じときは undefined
-			if ( newGap?.row === defaultValue?.row ) {
-				newGap.row = undefined;
-			}
-		}
-
-		// gap と default が同じときは undefined
-		if (
-			JSON.stringify( newGap ) === JSON.stringify( defaultValue ) ||
-			JSON.stringify( newGap ) === JSON.stringify( compactDefault )
-		) {
-			newGap = undefined;
-		}
-
 		const newUnitone = {
 			...unitone,
-			gap: newGap,
+			gap: compacting( newGap, defaultValue ),
 		};
 
 		setAttributes( {
@@ -305,33 +300,11 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 			newValue = String( newValue );
 		}
 
-		const compactDefault =
-			! isString( defaultValue ) &&
-			defaultValue?.column === defaultValue?.row
-				? defaultValue?.row
-				: defaultValue;
+		const compactDefault = compacting( defaultValue );
+		const fullDefault = expand( compactDefault );
+		const preNewGap = expand( unitone?.gap );
 
-		const fullDefault = isString( compactDefault )
-			? {
-					column: compactDefault,
-					row: compactDefault,
-			  }
-			: {
-					column: compactDefault?.column,
-					row: compactDefault?.row,
-			  };
-
-		const preNewGap = isString( unitone?.gap )
-			? {
-					column: unitone?.gap,
-					row: unitone?.gap,
-			  }
-			: {
-					column: unitone?.gap?.column,
-					row: unitone?.gap?.row,
-			  };
-
-		let newGap = {
+		const newGap = {
 			row:
 				newValue ||
 				( null == fullDefault?.row || newValue === fullDefault?.row
@@ -357,32 +330,9 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 			}
 		}
 
-		if ( newGap.column === newGap.row ) {
-			// column と row の値が同じ時は単一化する
-			newGap = newGap.column;
-		} else {
-			// row と default.row が同じときは undefined
-			if ( newGap?.row === defaultValue?.row ) {
-				newGap.row = undefined;
-			}
-
-			// column と default.column が同じときは undefined
-			if ( newGap?.column === defaultValue?.column ) {
-				newGap.column = undefined;
-			}
-		}
-
-		// gap と default が同じときは undefined
-		if (
-			JSON.stringify( newGap ) === JSON.stringify( defaultValue ) ||
-			JSON.stringify( newGap ) === JSON.stringify( compactDefault )
-		) {
-			newGap = undefined;
-		}
-
 		const newUnitone = {
 			...unitone,
-			gap: newGap,
+			gap: compacting( newGap, defaultValue ),
 		};
 
 		setAttributes( {

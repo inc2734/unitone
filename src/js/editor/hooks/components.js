@@ -15,7 +15,10 @@ import { __ } from '@wordpress/i18n';
 import { isNumber, useDeviceType } from './utils';
 
 function Controls( { isMixed, value, onChange, marks, options } ) {
-	value = isNumber( value ) ? parseInt( value ) : undefined;
+	if ( ! isMixed ) {
+		value = isNumber( value ) ? parseInt( value ) : undefined;
+	}
+
 	return (
 		<>
 			<RangeControl

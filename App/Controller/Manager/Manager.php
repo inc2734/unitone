@@ -426,7 +426,7 @@ class Manager {
 				'callback'            => function ( $request ) {
 					$settings = $request->get_params();
 					if ( $settings ) {
-						$license_key = $settings['license-key'];
+						$license_key = $settings['license-key'] ?? null;
 						if ( ! empty( $license_key ) ) {
 							$transient_name = 'unitone-license-status-' . $license_key;
 							delete_transient( $transient_name );

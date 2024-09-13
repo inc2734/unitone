@@ -85,6 +85,8 @@ function ScrollAnimationPopover( {
 	onChangeDelay,
 	easing,
 	onChangeEasing,
+	initial,
+	onChangeInitial,
 } ) {
 	const popoverProps = {
 		placement: 'left-start',
@@ -293,6 +295,111 @@ function ScrollAnimationPopover( {
 								] }
 								onChange={ onChangeEasing }
 							/>
+
+							{ 'fade-in-down' === type && (
+								<RangeControl
+									label={ __(
+										'Initial position (Y)',
+										'unitone'
+									) }
+									value={ initial }
+									step={ 1 }
+									min={ -200 }
+									max={ 1 }
+									onChange={ onChangeInitial }
+									allowReset
+								/>
+							) }
+
+							{ 'fade-in-up' === type && (
+								<RangeControl
+									label={ __(
+										'Initial position (Y)',
+										'unitone'
+									) }
+									value={ initial }
+									step={ 1 }
+									min={ 1 }
+									max={ 200 }
+									onChange={ onChangeInitial }
+									allowReset
+								/>
+							) }
+
+							{ 'fade-in-left' === type && (
+								<RangeControl
+									label={ __(
+										'Initial position (X)',
+										'unitone'
+									) }
+									value={ initial }
+									step={ 1 }
+									min={ 1 }
+									max={ 200 }
+									onChange={ onChangeInitial }
+									allowReset
+								/>
+							) }
+
+							{ 'fade-in-right' === type && (
+								<RangeControl
+									label={ __(
+										'Initial position (X)',
+										'unitone'
+									) }
+									value={ initial }
+									step={ 1 }
+									min={ -200 }
+									max={ -1 }
+									onChange={ onChangeInitial }
+									allowReset
+								/>
+							) }
+
+							{ 'zoom-in' === type && (
+								<RangeControl
+									label={ __(
+										'Initial shrinkage rate',
+										'unitone'
+									) }
+									value={ initial }
+									step={ 0.1 }
+									min={ 0.1 }
+									max={ 0.9 }
+									onChange={ onChangeInitial }
+									allowReset
+								/>
+							) }
+
+							{ 'shake-horizontal' === type && (
+								<RangeControl
+									label={ __(
+										'Initial position (X)',
+										'unitone'
+									) }
+									value={ initial }
+									step={ 1 }
+									min={ -50 }
+									max={ -1 }
+									onChange={ onChangeInitial }
+									allowReset
+								/>
+							) }
+
+							{ 'shake-vertical' === type && (
+								<RangeControl
+									label={ __(
+										'Initial position (X)',
+										'unitone'
+									) }
+									value={ initial }
+									step={ 1 }
+									min={ -50 }
+									max={ -1 }
+									onChange={ onChangeInitial }
+									allowReset
+								/>
+							) }
 						</VStack>
 					</div>
 				</DropdownContentWrapper>
@@ -307,25 +414,27 @@ export function ScrollAnimationEdit( { name, unitone, setAttributes } ) {
 			?.default?.scrollAnimation;
 	}, [] );
 
+	const type = unitone?.scrollAnimation?.type ?? defaultValue?.type;
 	const speed = unitone?.scrollAnimation?.speed ?? defaultValue?.speed;
 	const delay = unitone?.scrollAnimation?.delay ?? defaultValue?.delay;
 	const easing = unitone?.scrollAnimation?.easing ?? defaultValue?.easing;
+	const initial = unitone?.scrollAnimation?.initial;
 
 	return (
 		<ItemGroup isBordered isSeparated>
 			<ScrollAnimationPopover
-				type={
-					unitone?.scrollAnimation?.type ?? defaultValue?.type ?? ''
-				}
+				type={ type ?? '' }
 				speed={ null != speed ? parseFloat( speed ) : undefined }
 				delay={ null != delay ? parseFloat( delay ) : undefined }
 				easing={ easing ?? '' }
+				initial={ null != initial ? parseFloat( initial ) : undefined }
 				onChangeType={ ( newAttribute ) => {
 					const newUnitone = {
 						...unitone,
 						scrollAnimation: {
 							...unitone?.scrollAnimation,
 							type: newAttribute || undefined,
+							initial: undefined,
 						},
 					};
 
@@ -372,6 +481,25 @@ export function ScrollAnimationEdit( { name, unitone, setAttributes } ) {
 						unitone: cleanEmptyObject( newUnitone ),
 					} );
 				} }
+				onChangeInitial={ ( newAttribute ) => {
+					if ( null != newAttribute ) {
+						// RangeControl returns Int, SelectControl returns String.
+						// So cast Int all values.
+						newAttribute = String( newAttribute );
+					}
+
+					const newUnitone = {
+						...unitone,
+						scrollAnimation: {
+							...unitone?.scrollAnimation,
+							initial: newAttribute || undefined,
+						},
+					};
+
+					setAttributes( {
+						unitone: cleanEmptyObject( newUnitone ),
+					} );
+				} }
 			/>
 		</ItemGroup>
 	);
@@ -402,13 +530,30 @@ export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
 		};
 	}
 
-	extraProps[ 'data-unitone-scroll-animation' ] =
-		attributes.unitone?.scrollAnimation?.type || undefined;
+	const type = attributes.unitone?.scrollAnimation?.type;
+
+	extraProps[ 'data-unitone-scroll-animation' ] = type || undefined;
 
 	if ( extraProps[ 'data-unitone-scroll-animation' ] ) {
 		const speed = attributes.unitone?.scrollAnimation?.speed;
 		const delay = attributes.unitone?.scrollAnimation?.delay;
 		const easing = attributes.unitone?.scrollAnimation?.easing;
+
+		let initial = attributes.unitone?.scrollAnimation?.initial;
+		if ( null != initial ) {
+			if (
+				[
+					'fade-in-down',
+					'fade-in-up',
+					'fade-in-left',
+					'fade-in-right',
+					'shake-horizontal',
+					'shake-vertical',
+				].includes( type )
+			) {
+				initial = `${ initial }px`;
+			}
+		}
 
 		extraProps[ 'data-unitone-scroll-animation' ] = clsx(
 			extraProps[ 'data-unitone-scroll-animation' ],
@@ -423,6 +568,7 @@ export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
 				null != speed ? `${ speed }s` : undefined,
 			'--unitone--animation-delay':
 				null != delay ? `${ delay }s` : undefined,
+			'--unitone--animation-initial': initial ?? undefined,
 		};
 	}
 

@@ -623,9 +623,17 @@ add_filter(
 					$add_style( '--unitone--animation-delay', $scroll_animation_delay . 's' );
 				}
 
-				$easing = $get_attribute( 'scrollAnimation.easing' );
-				if ( $easing ) {
-					$add_data_attribute( 'data-unitone-scroll-animation', '-animation-timing-function:' . $easing );
+				$scroll_animation_easing = $get_attribute( 'scrollAnimation.easing' );
+				if ( $scroll_animation_easing ) {
+					$add_data_attribute( 'data-unitone-scroll-animation', '-animation-timing-function:' . $scroll_animation_easing );
+				}
+
+				$scroll_animation_initial = $get_attribute( 'scrollAnimation.initial' );
+				if ( $scroll_animation_initial ) {
+					if ( in_array( $scroll_animation_type, array( 'fade-in-down', 'fade-in-up', 'fade-in-left', 'fade-in-right', 'shake-horizontal', 'shake-vertical' ), true ) ) {
+						$scroll_animation_initial = $scroll_animation_initial . 'px';
+					}
+					$add_style( '--unitone--animation-initial', $scroll_animation_initial );
 				}
 			}
 		}

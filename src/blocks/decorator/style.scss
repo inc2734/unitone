@@ -12,11 +12,16 @@
 	a[aria-hidden="true"] {
 		pointer-events: none;
 	}
+
+	// @see wp-includes/blocks/cover/style.css
+	:is(.wp-block-cover .wp-block-cover__inner-container, .wp-block-cover-image .wp-block-cover__inner-container) {
+		z-index: 2;
+	}
 }
 
 :where([data-unitone-layout~="decorator__inner"] > :not([data-unitone-layout~="decorator__link"]) a) {
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 }
 
 [data-unitone-layout~="decorator__link"] {
@@ -30,5 +35,6 @@
 		content: '';
 		position: absolute;
 		inset: 0;
+		z-index: 1;
 	}
 }

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-08-28T13:17:23+00:00\n"
-"PO-Revision-Date: 2024-08-28 22:18+0900\n"
+"POT-Creation-Date: 2024-09-14T01:21:42+00:00\n"
+"PO-Revision-Date: 2024-09-14 10:22+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2861,6 +2861,18 @@ msgstr "遅延"
 #: dist/js/editor/editor.js:7
 msgid "Easing"
 msgstr "イージング"
+
+#: dist/js/editor/editor.js:7
+msgid "Initial position (Y)"
+msgstr "初期位置（Y）"
+
+#: dist/js/editor/editor.js:7
+msgid "Initial position (X)"
+msgstr "初期位置（X）"
+
+#: dist/js/editor/editor.js:7
+msgid "Initial shrinkage rate"
+msgstr "初期収縮率"
 
 #: dist/js/editor/editor.js:7
 msgid "Animation"

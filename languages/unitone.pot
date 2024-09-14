@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 12.0.11\n"
+"Project-Id-Version: unitone 13.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-28T13:17:23+00:00\n"
+"POT-Creation-Date: 2024-09-14T01:21:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -2908,6 +2908,18 @@ msgstr ""
 
 #: dist/js/editor/editor.js:7
 msgid "Easing"
+msgstr ""
+
+#: dist/js/editor/editor.js:7
+msgid "Initial position (Y)"
+msgstr ""
+
+#: dist/js/editor/editor.js:7
+msgid "Initial position (X)"
+msgstr ""
+
+#: dist/js/editor/editor.js:7
+msgid "Initial shrinkage rate"
 msgstr ""
 
 #: dist/js/editor/editor.js:7

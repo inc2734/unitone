@@ -365,14 +365,14 @@ export default function ( {
 					>
 						<RangeControl
 							label={ __( 'Speed (s)', 'unitone' ) }
-							value={ speed || 0.3 }
+							value={ speed ?? 0.3 }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
 									speed: parseFloat( newAttribute ),
 								} );
 							} }
-							min={ 0 }
-							max={ 10 }
+							min={ 0.1 }
+							max={ 20 }
 							step={ 0.1 }
 						/>
 					</ToolsPanelItem>

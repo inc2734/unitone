@@ -98,7 +98,7 @@
 			"presets": [
 				{
 					"name": "[unitone] Natural",
-					"shadow": "var(--unitone--global--box-shadow)",
+					"shadow": "0 5px 20px -5px rgba(0, 0, 0, .2)",
 					"slug": "unitone-natural"
 				}
 			]

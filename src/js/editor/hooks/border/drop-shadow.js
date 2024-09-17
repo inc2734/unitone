@@ -71,6 +71,7 @@ function useShadowPresets( settings ) {
 			theme: themeShadows,
 			custom: customShadows,
 		} = settings?.presets ?? {};
+
 		const unsetShadow = {
 			name: __( 'Unset' ),
 			slug: 'unset',
@@ -86,12 +87,16 @@ function useShadowPresets( settings ) {
 			shadowPresets.unshift( unsetShadow );
 		}
 
-		return shadowPresets.filter(
-			( preset ) =>
-				! preset?.shadow
-					?.replace( /\(.*?\)/, 'dummyColor' )
-					?.match( ',' )
-		);
+		return shadowPresets.filter( ( preset ) => {
+			const shadow = preset?.shadow?.replace( /\(.*?\)/, 'dummyColor' );
+			if ( shadow?.match( ',' ) ) {
+				return false;
+			}
+			if ( shadow?.match( /(\S+?\s){4}/ ) ) {
+				return false;
+			}
+			return true;
+		} );
 	}, [ settings ] );
 }
 
@@ -306,7 +311,7 @@ export function saveDropShadowProp( extraProps, blockType, attributes ) {
 		...extraProps.style,
 		'--unitone--drop-shadow': !! slug
 			? `var(--wp--preset--shadow--${ slug })`
-			: undefined,
+			: attributes?.unitone?.dropShadow || undefined,
 	};
 
 	return extraProps;

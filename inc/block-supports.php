@@ -209,6 +209,14 @@ function unitone_add_drop_shadow_support( $metadata ) {
 	$metadata['supports'] = array_merge(
 		$metadata['supports'],
 		array(
+			'shadow' => array(
+				'__experimentalSkipSerialization' => true,
+				'__experimentalDefaultControls' => array(
+					'shadow' => true,
+				),
+			),
+		),
+		array(
 			'unitone' => array_merge(
 				$metadata['supports']['unitone'] ?? array(),
 				array(

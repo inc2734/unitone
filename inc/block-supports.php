@@ -211,7 +211,7 @@ function unitone_add_drop_shadow_support( $metadata ) {
 		array(
 			'shadow' => array(
 				'__experimentalSkipSerialization' => true,
-				'__experimentalDefaultControls' => array(
+				'__experimentalDefaultControls'   => array(
 					'shadow' => true,
 				),
 			),

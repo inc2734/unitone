@@ -113,8 +113,9 @@ function unitone_enqueue_block_editor_assets() {
 		'wp-block-editor',
 		'unitone',
 		array(
-			'path' => get_template_directory(),
-			'url'  => get_template_directory_uri(),
+			'uploadBaseUrl' => wp_upload_dir()['baseurl'],
+			'path'          => get_template_directory(),
+			'url'           => get_template_directory_uri(),
 		)
 	);
 }

@@ -82,25 +82,6 @@ function _unitone_get_remote_block_patterns( $url ) {
 	$patterns = json_decode( wp_remote_retrieve_body( $response ), true );
 
 	foreach ( $patterns as $key => $pattern ) {
-		$patterns[ $key ]['content'] = str_replace(
-			'https://unitone.2inc.org/wp-content/themes/unitone',
-			get_template_directory_uri(),
-			$pattern['content'],
-		);
-
-		$patterns[ $key ]['content'] = preg_replace_callback(
-			'@' . preg_quote( untrailingslashit( get_template_directory_uri() ) ) . '[^"\']+?\.(?:jpg|jpeg|png|gif|svg)@ims',
-			function ( $matches ) {
-				$file_url  = $matches[0];
-				$file_path = str_replace( get_template_directory_uri(), get_template_directory(), $file_url );
-				if ( ! file_exists( $file_path ) ) {
-					return get_theme_file_uri( 'dist/img/dummy.jpg' );
-				}
-				return $file_url;
-			},
-			$patterns[ $key ]['content']
-		);
-
 		$patterns[ $key ]['viewportWidth'] = 1440;
 	}
 

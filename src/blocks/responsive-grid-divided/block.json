@@ -60,7 +60,9 @@
 			}
 		},
 		"unitone": {
-			"gap": true,
+			"gap": {
+				"splitOnAxis": true
+			},
 			"autoRepeat": true,
 			"fluidTypography": true,
 			"lineHeight": true,

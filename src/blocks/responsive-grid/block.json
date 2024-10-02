@@ -49,7 +49,9 @@
 			}
 		},
 		"unitone": {
-			"gap": true,
+			"gap": {
+				"splitOnAxis": true
+			},
 			"autoRepeat": true,
 			"stairs": true,
 			"fluidTypography": true,

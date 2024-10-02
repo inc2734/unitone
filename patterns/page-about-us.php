@@ -4,7 +4,6 @@
  * Slug: unitone/page/about-us
  * Categories: unitone-pages
  * Block Types: core/post-content
- * Post Types: page
  */
 ?>
 <!-- wp:unitone/section {"align":"full","unitone":{"gap":"3"}} -->

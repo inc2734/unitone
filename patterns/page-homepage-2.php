@@ -4,7 +4,6 @@
  * Slug: unitone/page/homepage-2
  * Categories: unitone-pages
  * Block Types: core/post-content
- * Post Types: page
  */
 ?>
 <!-- wp:unitone/decorator {"align":"full"} -->

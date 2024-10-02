@@ -4,7 +4,6 @@
  * Slug: unitone/page/services
  * Categories: unitone-pages
  * Block Types: core/post-content
- * Post Types: page
  */
 ?>
 <!-- wp:unitone/layers {"cover":true,"align":"full","unitone":{"minHeight":"70vmin"}} -->

@@ -4,7 +4,6 @@
  * Slug: unitone/page/homepage-1
  * Categories: unitone-pages
  * Block Types: core/post-content
- * Post Types: page
  */
 ?>
 <!-- wp:unitone/layers {"cover":true,"lock":{"move":false,"remove":false},"align":"full","unitone":{"minHeight":"max(100vmin - var(--wp-admin--admin-bar--height, 0px), 675px)"}} -->

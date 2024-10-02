@@ -4,7 +4,6 @@
  * Slug: unitone/page/plans
  * Categories: unitone-pages
  * Block Types: core/post-content
- * Post Types: page
  */
 ?>
 <!-- wp:unitone/section {"align":"full","backgroundColor":"unitone-bright-gray"} -->

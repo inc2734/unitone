@@ -60,10 +60,16 @@ add_filter(
 add_filter(
 	'inc2734_github_theme_updater_request_url_inc2734/unitone',
 	function () {
-		$license_key = Manager::get_setting( 'license-key' );
-		return sprintf(
-			'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/%1$s?repository=unitone',
-			esc_attr( $license_key )
-		);
+		$license_key    = Manager::get_setting( 'license-key' );
+		$license_status = Manager::get_license_status( $license_key );
+
+		if ( 'true' === $license_status ) {
+			return sprintf(
+				'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/%1$s?repository=unitone',
+				esc_attr( $license_key )
+			);
+		}
+
+		return '';
 	}
 );

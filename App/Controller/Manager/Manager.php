@@ -533,7 +533,9 @@ class Manager {
 				'user-agent' => 'WordPress/' . $wp_version,
 				'timeout'    => 30,
 				'headers'    => array(
-					'Accept-Encoding' => '',
+					'Accept-Encoding'   => '',
+					'X-Unitone-Version' => wp_get_theme()->get( 'Version' ),
+					'X-Unitone-URL'     => home_url(),
 				),
 			)
 		);

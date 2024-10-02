@@ -29,11 +29,12 @@ const replaceUnitonePatternImages = createHigherOrderComponent(
 				! canRemove &&
 				! isSelectionEnabled &&
 				! isSelected;
-			if ( maybePreview ) {
-				return <BlockListBlock { ...props } />;
-			}
 
 			if ( 'core/image' === name ) {
+				if ( maybePreview ) {
+					return <BlockListBlock { ...props } />;
+				}
+
 				const fileUrl = attributes.url;
 
 				const regExpUploads = new RegExp(
@@ -44,8 +45,12 @@ const replaceUnitonePatternImages = createHigherOrderComponent(
 					'https://unitone.2inc.org/wp-content/themes/unitone'
 				);
 
-				const isFileInUploads = fileUrl.match( regExpUploads );
-				const isFileInTheme = fileUrl.match( regExpTheme );
+				if ( window.unitone.url.match( regExpTheme ) ) {
+					return <BlockListBlock { ...props } />;
+				}
+
+				const isFileInUploads = fileUrl?.match( regExpUploads );
+				const isFileInTheme = fileUrl?.match( regExpTheme );
 
 				if ( ! isFileInUploads && ! isFileInTheme ) {
 					return <BlockListBlock { ...props } />;
@@ -54,14 +59,9 @@ const replaceUnitonePatternImages = createHigherOrderComponent(
 				attributes.url = `${ window.unitone.url }/dist/img/dummy.jpg`;
 				block.attributes.url = attributes.url;
 
-				if ( isFileInUploads ) {
-					attributes.url = fileUrl.replace(
-						regExpUploads,
-						window.unitone.uploadBaseUrl
-					);
-				} else if ( isFileInTheme ) {
+				if ( isFileInTheme ) {
 					const newFileUrl = fileUrl.replace(
-						isFileInTheme,
+						regExpTheme,
 						window.unitone.url
 					);
 					fileExist( newFileUrl ).then( ( isExist ) => {

@@ -50,7 +50,10 @@
 		},
 		"unitone": {
 			"blockAlign": true,
-			"gap": true,
+			"gap": {
+				"splitOnAxis": true,
+				"vertical": true
+			},
 			"maxHeight": true,
 			"maxWidth": true,
 			"fluidTypography": true,

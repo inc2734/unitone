@@ -215,6 +215,7 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 
 	const splitOnAxis =
 		getBlockSupport( name, 'unitone.gap.splitOnAxis' ) || false;
+	const isVertical = getBlockSupport( name, 'unitone.gap.vertical' ) || false;
 
 	const isMixed =
 		null != unitone?.gap
@@ -385,7 +386,11 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 						<>
 							<Flex align="start">
 								<FlexItem style={ { marginTop: '11px' } }>
-									<IconHorizontal />
+									{ ! isVertical ? (
+										<IconHorizontal />
+									) : (
+										<IconVertical />
+									) }
 								</FlexItem>
 
 								<FlexBlock>
@@ -403,7 +408,11 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 
 							<Flex align="start">
 								<FlexItem style={ { marginTop: '11px' } }>
-									<IconVertical />
+									{ ! isVertical ? (
+										<IconVertical />
+									) : (
+										<IconHorizontal />
+									) }
 								</FlexItem>
 
 								<FlexBlock>

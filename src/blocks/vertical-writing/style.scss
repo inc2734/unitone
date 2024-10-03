@@ -3,6 +3,9 @@
 @include vertical-writing.vertical-writing();
 
 [data-unitone-layout~="vertical-writing-wrapper"] {
+  --unitone--gap: var(--unitone--global--text-gap);
+  --unitone--column-gap: var(--unitone--global--gap);
+  --unitone--row-gap: var(--unitone--gap);
 	--unitone--max-width: min(100%, var(--wp--style--global--wide-size));
 	--unitone--max-height: calc(9 * var(--wp--style--global--content-size) / 16);
 
@@ -36,5 +39,8 @@
 }
 
 [data-unitone-layout~="vertical-writing"] {
+	--unitone--gap: inherit;
+  --unitone--column-gap: inherit;
+  --unitone--row-gap: inherit;
 	--unitone--max-height: inherit;
 }

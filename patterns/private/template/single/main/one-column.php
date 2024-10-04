@@ -9,7 +9,7 @@
 
 					<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
 
-					<!-- wp:unitone/container {"unitone":{"maxWidth":"var(--wp--style--global--content-size)"}} -->
+					<!-- wp:unitone/container {"unitone":{"gutters":"0","maxWidth":"var(--wp--style--global--content-size)"}} -->
 					<div data-unitone-layout="container">
 						<!-- wp:template-part {"slug":"comments"} /-->
 					</div>

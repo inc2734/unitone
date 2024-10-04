@@ -432,6 +432,10 @@ class Settings {
 	protected static function _array_override_recursive( array $array_1, array $array_2 ) {
 		$result = array();
 
+		if ( empty( $array_1 ) && ! empty( $array_2 ) ) {
+			return $array_2;
+		}
+
 		foreach ( $array_1 as $key => $value ) {
 			if ( array_key_exists( $key, $array_2 ) ) {
 				if ( is_array( $value ) && is_array( $array_2[ $key ] ) ) {

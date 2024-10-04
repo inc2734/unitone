@@ -37,9 +37,10 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 	data-wp-context='{ "submenuOpenedBy": { "click": false, "hover": false, "focus": false }, "top": 0, "left": 0 }'
 	data-wp-watch="callbacks.initMenu"
 	data-wp-on--focusout="actions.handleMenuFocusout"
+	data-wp-on--keydown="actions.handleMenuKeydown"
 	<?php if ( ! $open_on_click ) : ?>
-		data-wp-on--mouseenter="actions.openMenuOnHover"
-		data-wp-on--mouseleave="actions.closeMenuOnHover"
+		data-wp-on-async--mouseenter="actions.openMenuOnHover"
+		data-wp-on-async--mouseleave="actions.closeMenuOnHover"
 	<?php endif; ?>
 	tabindex="-1"
 >
@@ -67,7 +68,7 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 	<?php else : ?>
 		<button
 			class="wp-block-navigation-item__content wp-block-navigation-submenu__toggle"
-			data-wp-on--click="actions.toggleMenuOnClick"
+			data-wp-on-async--click="actions.toggleMenuOnClick"
 			data-wp-bind--aria-expanded="state.isMenuOpen"
 			aria-controls="<?php echo esc_attr( $unique_id ); ?>"
 			aria-label="<?php echo esc_html( $aria_label ); ?>"
@@ -80,9 +81,9 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 		<?php if ( ! $open_on_click ) : ?>
 			<button
 				class="wp-block-navigation__submenu-icon wp-block-navigation-submenu__toggle"
-				data-wp-on--click="actions.toggleMenuOnClick"
-				aria-controls="<?php echo esc_attr( $unique_id ); ?>"
+				data-wp-on-async--click="actions.toggleMenuOnClick"
 				data-wp-bind--aria-expanded="state.isMenuOpen"
+				aria-controls="<?php echo esc_attr( $unique_id ); ?>"
 				aria-label="<?php echo esc_html( $aria_label ); ?>"
 			>
 				<?php echo block_core_navigation_submenu_render_submenu_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -123,7 +124,7 @@ $block_wrapper_attributes = get_block_wrapper_attributes(
 		data-wp-style----unitone--top="state.top"
 		data-wp-style----unitone--left="state.left"
 		data-wp-watch="callbacks.initMenu"
-		data-wp-on--focusout="actions.handleMenuFocusout"
+		data-wp-on-async--focus="actions.openMenuOnFocus"
 		id="<?php echo esc_attr( $unique_id ); ?>"
 		tabindex="0"
 	>

@@ -31,8 +31,7 @@
 	overflow: auto;
 }
 
-:where(.unitone-mega-menu [aria-expanded=true]) ~ .unitone-mega-menu__container,
-:where(.wp-block-navigation__responsive-container.is-menu-open) .unitone-mega-menu__container {
+:where(.unitone-mega-menu [aria-expanded=true]) ~ .unitone-mega-menu__container {
 	height: auto;
 	opacity: 1;
 	visibility: visible;
@@ -41,5 +40,7 @@
 :where(.wp-block-navigation__responsive-container.is-menu-open) .unitone-mega-menu__container {
 	position: relative;
 	inset: auto;
+	max-height: none;
 	width: auto;
+	overflow: visible;
 }

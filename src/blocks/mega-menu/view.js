@@ -1,5 +1,17 @@
 import { store, getContext, getElement } from '@wordpress/interactivity';
 
+[].slice
+	.call(
+		document.querySelectorAll(
+			'.wp-block-navigation-submenu__toggle + span.wp-block-navigation__submenu-icon'
+		)
+	)
+	.forEach( ( node ) => {
+		node.addEventListener( 'click', () => {
+			node.previousElementSibling.click();
+		} );
+	} );
+
 const focusableSelectors = [
 	'a[href]',
 	'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
@@ -21,43 +33,15 @@ const { state, actions } = store( 'unitone/mega-menu', {
 			return context.left;
 		},
 		get isMenuOpen() {
-			const context = getContext();
-
 			// The menu is opened if either `click`, `hover` or `focus` is true.
 			return (
-				Object.values( context?.submenuOpenedBy ?? [] ).filter(
-					Boolean
-				).length > 0
+				Object.values( state.menuOpenedBy ).filter( Boolean ).length > 0
 			);
 		},
 		get menuOpenedBy() {
 			const context = getContext();
 
 			return context?.submenuOpenedBy ?? [];
-		},
-	},
-	callbacks: {
-		initMenu() {
-			const context = getContext();
-			const { ref } = getElement();
-			if ( state.isMenuOpen ) {
-				const focusableElements =
-					ref.querySelectorAll( focusableSelectors );
-				context.modal = ref;
-				context.firstFocusableElement = focusableElements[ 0 ];
-				context.lastFocusableElement =
-					focusableElements[ focusableElements.length - 1 ];
-			}
-		},
-		documentScroll() {
-			actions.closeMenu( 'hover' );
-			actions.closeMenu( 'click' );
-			actions.closeMenu( 'focus' );
-		},
-		windowResize() {
-			actions.closeMenu( 'hover' );
-			actions.closeMenu( 'click' );
-			actions.closeMenu( 'focus' );
 		},
 	},
 	actions: {
@@ -91,12 +75,23 @@ const { state, actions } = store( 'unitone/mega-menu', {
 			}
 
 			const { menuOpenedBy } = state;
+
 			if ( menuOpenedBy.click || menuOpenedBy.focus ) {
 				actions.closeMenu( 'click' );
+				actions.closeMenu( 'hover' );
 				actions.closeMenu( 'focus' );
 			} else {
 				context.previousFocus = ref;
 				actions.openMenu( 'click' );
+			}
+		},
+		handleMenuKeydown( event ) {
+			if ( state.menuOpenedBy.click ) {
+				// If Escape close the menu.
+				if ( event?.key === 'Escape' ) {
+					actions.closeMenu( 'click' );
+					actions.closeMenu( 'focus' );
+				}
 			}
 		},
 		handleMenuFocusout( event ) {
@@ -154,6 +149,30 @@ const { state, actions } = store( 'unitone/mega-menu', {
 				context.top = 0;
 				context.left = 0;
 			}
+		},
+	},
+	callbacks: {
+		initMenu() {
+			const context = getContext();
+			const { ref } = getElement();
+			if ( state.isMenuOpen ) {
+				const focusableElements =
+					ref.querySelectorAll( focusableSelectors );
+				context.modal = ref;
+				context.firstFocusableElement = focusableElements[ 0 ];
+				context.lastFocusableElement =
+					focusableElements[ focusableElements.length - 1 ];
+			}
+		},
+		documentScroll() {
+			actions.closeMenu( 'hover' );
+			actions.closeMenu( 'click' );
+			actions.closeMenu( 'focus' );
+		},
+		windowResize() {
+			actions.closeMenu( 'hover' );
+			actions.closeMenu( 'click' );
+			actions.closeMenu( 'focus' );
 		},
 	},
 } );

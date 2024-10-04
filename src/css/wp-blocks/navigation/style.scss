@@ -94,7 +94,6 @@
 		align-self: stretch;
 		height: auto;
 		width: auto;
-		padding-left: var(--unitone--s-1) !important;
 
 		&:not(:root):not(:root) {
 			display: flex;
@@ -102,9 +101,11 @@
 
 		svg {
 			margin: 0;
-			height: var(--unitone--navigation-submenu-icon--size);
-			width: var(--unitone--navigation-submenu-icon--size);
 		}
+	}
+
+	&.open-on-click .wp-block-navigation-submenu__toggle {
+		padding: 0;
 	}
 
 	&.open-on-click .wp-block-navigation-submenu__toggle + .wp-block-navigation__submenu-icon {
@@ -163,16 +164,24 @@
 		}
 	}
 
+	// Submenu icons
+	.wp-block-navigation__submenu-icon {
+		padding-left: var(--unitone--s-1);
+
+		svg {
+			height: var(--unitone--navigation-submenu-icon--size);
+			width: var(--unitone--navigation-submenu-icon--size);
+		}
+	}
+
 	// Menu item.
 	// `.wp-block-navigation__submenu-icon` has `.wp-block-navigation-item__content` in the editor, so it needs to be excluded.
 	.wp-block-navigation__container {
 		> :where(.wp-block-page-list) > :where(.wp-block-pages-list__item),
 		> :where(.wp-block-navigation-item) {
-			padding: var(--unitone--navigation-item--padding);
-
 			> .wp-block-navigation-item__content:not(.wp-block-navigation__submenu-icon) {
 				flex-grow: 1;
-				padding: 0;
+				padding: var(--unitone--navigation-item--padding);
 			}
 		}
 
@@ -242,10 +251,12 @@
 	.wp-block-navigation__submenu-container {
 		> :where(.wp-block-page-list) > .wp-block-pages-list__item, // For editor.
 		> .wp-block-navigation-item {
-			padding: var(--unitone--navigation-submenu-item--padding);
-
 			.wp-block-navigation-item__content:not(.wp-block-page-list__submenu-icon) {
-				padding: 0;
+				padding: var(--unitone--navigation-submenu-item--padding);
+			}
+
+			.wp-block-navigation__submenu-icon {
+				padding-right: calc(var(--unitone--navigation-submenu-item--padding-inline) / 2);
 			}
 		}
 	}

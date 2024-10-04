@@ -23,9 +23,6 @@
 }
 
 // Fix core CSS bug.
-.wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle {
-	padding: .5em 1em;
-}
 .wp-block-navigation__container {
 	gap: inherit !important;
 }
@@ -97,7 +94,7 @@
 		align-self: stretch;
 		height: auto;
 		width: auto;
-		padding-left: var(--unitone--s1) !important;
+		padding-left: var(--unitone--s-1) !important;
 
 		&:not(:root):not(:root) {
 			display: flex;
@@ -171,9 +168,11 @@
 	.wp-block-navigation__container {
 		> :where(.wp-block-page-list) > :where(.wp-block-pages-list__item),
 		> :where(.wp-block-navigation-item) {
-			> .wp-block-navigation-item__content:not(.wp-block-navigation__submenu-icon):not(:root) {
-				padding: var(--unitone--navigation-item--padding);
+			padding: var(--unitone--navigation-item--padding);
+
+			> .wp-block-navigation-item__content:not(.wp-block-navigation__submenu-icon) {
 				flex-grow: 1;
+				padding: 0;
 			}
 		}
 
@@ -243,8 +242,10 @@
 	.wp-block-navigation__submenu-container {
 		> :where(.wp-block-page-list) > .wp-block-pages-list__item, // For editor.
 		> .wp-block-navigation-item {
+			padding: var(--unitone--navigation-submenu-item--padding);
+
 			.wp-block-navigation-item__content:not(.wp-block-page-list__submenu-icon) {
-				padding: var(--unitone--navigation-submenu-item--padding);
+				padding: 0;
 			}
 		}
 	}

@@ -98,6 +98,14 @@ function unitone_register_block_styles() {
 	);
 
 	register_block_style(
+		'core/navigation',
+		array(
+			'name'  => 'unitone-accordion',
+			'label' => __( 'unitone (Accordion)', 'unitone' ),
+		)
+	);
+
+	register_block_style(
 		'core/image',
 		array(
 			'name'  => 'cover',

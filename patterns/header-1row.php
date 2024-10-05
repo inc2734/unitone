@@ -20,7 +20,7 @@
 					</div>
 					<!-- /wp:unitone/stack -->
 
-					<!-- wp:navigation {"layout":{"type":"flex","orientation":"horizontal"},"style":{"typography":{"fontWeight":"600"}},"fontSize":"unitone-s","className":"is-style-unitone"} -->
+					<!-- wp:navigation {"layout":{"type":"flex","orientation":"horizontal"},"style":{"typography":{"fontWeight":"600"}},"fontSize":"unitone-s","className":"is-style-unitone-accordion"} -->
 						<!-- wp:page-list /-->
 					<!-- /wp:navigation -->
 				</div>

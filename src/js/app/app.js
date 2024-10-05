@@ -43,7 +43,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	};
 
 	const navigations = document.querySelectorAll(
-		'.wp-block-navigation.is-style-unitone.is-vertical'
+		'.wp-block-navigation:is(.is-style-unitone, .is-style-unitone-accordion).is-vertical'
 	);
 	[].slice.call( navigations ).forEach( ( navigation ) => {
 		const submenus = navigation.querySelectorAll(

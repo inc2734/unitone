@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-09-14T01:21:42+00:00\n"
-"PO-Revision-Date: 2024-09-14 10:22+0900\n"
+"POT-Creation-Date: 2024-10-05T07:22:02+00:00\n"
+"PO-Revision-Date: 2024-10-05 16:22+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
@@ -67,16 +67,6 @@ msgstr "unitone のセットアップ画面で初期設定をはじめましょ�
 #: App/Controller/Manager/Manager.php:479
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
-
-#: dist/blocks/child-pages/templates/box.php:57
-#: dist/blocks/child-pages/templates/box.php:61
-#: dist/blocks/child-pages/templates/panel.php:57
-#: dist/blocks/child-pages/templates/panel.php:61
-#: dist/blocks/child-pages/templates/rich-media.php:78
-#: dist/blocks/child-pages/templates/rich-media.php:83
-#: dist/blocks/decorator/index.js:1
-msgid "Learn more"
-msgstr "さらに詳しく"
 
 #. translators: Accessibility text. %s: Parent page title.
 #: dist/blocks/mega-menu/render.php:9
@@ -492,7 +482,7 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:32 inc/block-styles.php:112 dist/js/editor/editor.js:10
+#: inc/block-styles.php:32 inc/block-styles.php:120 dist/js/editor/editor.js:10
 msgid "Underline"
 msgstr "アンダーライン"
 
@@ -521,14 +511,18 @@ msgid "Block link (Stripe)"
 msgstr "ブロックリンク（ストライプ）"
 
 #: inc/block-styles.php:104
+msgid "unitone (Accordion)"
+msgstr "unitone（アコーディオン）"
+
+#: inc/block-styles.php:112
 msgid "Cover"
 msgstr "カバー"
 
-#: inc/block-styles.php:120
+#: inc/block-styles.php:128
 msgid "Vertical fill"
 msgstr "縦塗りつぶし"
 
-#: inc/block-styles.php:128
+#: inc/block-styles.php:136
 msgid "Vertical line"
 msgstr "縦線"
 
@@ -2125,6 +2119,10 @@ msgstr "カバー（中央 / 下部）"
 #: dist/blocks/cover/index.js:1
 msgid "Cover (Top / Center / Bottom)"
 msgstr "カバー（上部 / 中央 / 下部）"
+
+#: dist/blocks/decorator/index.js:1
+msgid "Learn more"
+msgstr "さらに詳しく"
 
 #: dist/blocks/flex-divided/index.js:1
 msgid "Flex (Divider: stripe)"

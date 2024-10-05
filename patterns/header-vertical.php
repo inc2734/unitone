@@ -19,7 +19,7 @@
 					</div>
 					<!-- /wp:unitone/stack -->
 
-					<!-- wp:navigation {"layout":{"type":"flex","orientation":"vertical"},"style":{"typography":{"fontWeight":"600"}},"fontSize":"unitone-s","className":"is-style-unitone","unitone":{"alignSelf":"center"}} -->
+					<!-- wp:navigation {"layout":{"type":"flex","orientation":"vertical"},"style":{"typography":{"fontWeight":"600"}},"fontSize":"unitone-s","className":"is-style-unitone-accordion","unitone":{"alignSelf":"center"}} -->
 						<!-- wp:page-list /-->
 					<!-- /wp:navigation -->
 				</div>

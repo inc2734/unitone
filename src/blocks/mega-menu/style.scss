@@ -48,10 +48,12 @@
 		position: relative;
 		inset: auto;
 		max-height: none;
-		// width: auto;
 	}
 }
-.wp-block-navigation:where(.is-style-unitone) {
+
+// Style: unitone (Accordion)
+.wp-block-navigation:where(.is-style-unitone-accordion) {
+	// Overlay
 	:where(.wp-block-navigation__responsive-container.is-menu-open) {
 		[aria-expanded=false] ~ .unitone-mega-menu__container {
 			height: 0;

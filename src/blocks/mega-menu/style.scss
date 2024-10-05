@@ -1,11 +1,13 @@
 .unitone-mega-menu__container {
 	--unitone--top: 0px;
 
-	position: fixed;
 	height: 0;
 	opacity: 0;
-	transition: opacity .1s linear;
 	visibility: hidden;
+
+	position: fixed;
+	transition: opacity .1s linear;
+	overflow: hidden;
 
 	display: grid;
 	place-items: center stretch;
@@ -24,23 +26,37 @@
 }
 
 :where(.unitone-mega-menu [aria-expanded=true]) ~ .unitone-mega-menu__container {
-	inset: var(--unitone--top) 0 auto;
 	z-index: 11; // If it is not 10 or higher, the editor will give priority to the hover of the template part on the virtual layer.
+
+	height: auto;
+	opacity: 1;
+	visibility: visible;
+
+	inset: var(--unitone--top) 0 auto;
 	max-width: 100%;
 	max-height: calc(100vh - var(--unitone--top));
 	overflow: auto;
 }
 
-:where(.unitone-mega-menu [aria-expanded=true]) ~ .unitone-mega-menu__container {
-	height: auto;
-	opacity: 1;
-	visibility: visible;
-}
+// Overlay.
+:where(.wp-block-navigation__responsive-container.is-menu-open){
+	.unitone-mega-menu__container {
+		height: auto;
+		opacity: 1;
+		visibility: visible;
 
-:where(.wp-block-navigation__responsive-container.is-menu-open) .unitone-mega-menu__container {
-	position: relative;
-	inset: auto;
-	max-height: none;
-	width: auto;
-	overflow: visible;
+		position: relative;
+		inset: auto;
+		max-height: none;
+		// width: auto;
+	}
+}
+.wp-block-navigation:where(.is-style-unitone) {
+	:where(.wp-block-navigation__responsive-container.is-menu-open) {
+		[aria-expanded=false] ~ .unitone-mega-menu__container {
+			height: 0;
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
 }

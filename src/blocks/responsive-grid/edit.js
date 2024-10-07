@@ -23,7 +23,7 @@ import metadata from './block.json';
 import { stairsResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { columnMinWidth, templateLock } = attributes;
+	const { columnMinWidth, unitone, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -36,7 +36,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		( target ) => {
 			stairsResizeObserver( target );
 		},
-		[ clientId ]
+		[
+			clientId,
+			columnMinWidth,
+			unitone?.gap,
+			unitone?.stairs,
+			unitone?.stairsUp,
+		]
 	);
 
 	const blockProps = useBlockProps( {

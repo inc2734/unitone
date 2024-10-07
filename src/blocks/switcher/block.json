@@ -1,12 +1,16 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "10.9.0",
+	"version": "14.1.0",
 	"textdomain": "unitone",
 	"name": "unitone/switcher",
 	"title": "Switcher",
 	"description": "This block switches the direction of contents flow depending on its contents.",
 	"attributes": {
+		"revert": {
+			"type": "boolean",
+			"default": false
+		},
 		"threshold": {
 			"type": "string",
 			"default": "var(--wp--style--global--content-size)"
@@ -41,6 +45,7 @@
 			}
 		},
 		"unitone": {
+			"alignItems": true,
 			"gap": {
 				"splitOnAxis": true
 			},

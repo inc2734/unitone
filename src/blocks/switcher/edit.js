@@ -10,6 +10,7 @@ import {
 
 import {
 	TextControl,
+	ToggleControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
@@ -20,7 +21,7 @@ import { __, sprintf } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { threshold, templateLock } = attributes;
+	const { revert, threshold, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -36,7 +37,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'switcher',
-		blockProps[ 'data-unitone-layout' ]
+		blockProps[ 'data-unitone-layout' ],
+		{
+			'-revert': revert,
+		}
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
@@ -92,6 +96,31 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								setAttributes( {
 									threshold: newAttribute,
 								} );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							revert !== metadata.attributes.revert.default
+						}
+						isShownByDefault
+						label={ __( 'Revert', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								revert: metadata.attributes.revert.default,
+							} )
+						}
+					>
+						<ToggleControl
+							label={ __( 'Revert', 'unitone' ) }
+							help={ __(
+								'In single-column display, by default, the elements on the left side of the two-column display are displayed on top, but when enabled, the elements on the right side of the two-column display are displayed on top.',
+								'unitone'
+							) }
+							checked={ revert }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { revert: newAttribute } );
 							} }
 						/>
 					</ToolsPanelItem>

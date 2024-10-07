@@ -41,7 +41,7 @@
 		}
 	}
 
-	@media not all and (min-width: 960px) and (min-width: 600px) {
+	@media (max-width: 959px) and (min-width: 600px) {
 		&--disable\:tablet br {
 			display: none;
 		}

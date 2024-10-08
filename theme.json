@@ -117,6 +117,11 @@
 					"fontFamily": "'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'BIZ UDPGothic', Meiryo, sans-serif"
 				},
 				{
+					"name": "Serif",
+					"slug": "serif",
+					"fontFamily": "'Times New Roman', 'Hiragino Mincho ProN', 'BIZ UDPMincho', 'MS PMincho', serif"
+				},
+				{
 					"name": "Noto Sans JP",
 					"slug": "noto-sans-jp",
 					"fontFamily": "'Noto Sans JP', sans-serif",

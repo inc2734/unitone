@@ -152,7 +152,7 @@
 	// Menu & Submenu labels.
 	.wp-block-navigation-item__content:not(.wp-block-navigation__submenu-icon) {
 		flex-grow: 1;
-		flex-basis: 50%;
+		flex-basis: 0%;
 	}
 
 	// Toggle icons
@@ -183,7 +183,6 @@
 		> :where(.wp-block-page-list) > :where(.wp-block-pages-list__item),
 		> :where(.wp-block-navigation-item) {
 			> .wp-block-navigation-item__content:not(.wp-block-navigation__submenu-icon):not(:root) {
-				flex-grow: 1;
 				padding: var(--unitone--navigation-item--padding);
 			}
 		}

@@ -1,7 +1,8 @@
 .wp-block-social-links {
 	--unitone--gap: var(--unitone--s-2);
 
-	.wp-social-link {
+	.wp-social-link,
+	.wp-block-social-link-anchor {
 		font-size: inherit;
 		line-height: inherit;
 	}

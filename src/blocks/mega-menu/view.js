@@ -1,17 +1,5 @@
 import { store, getContext, getElement } from '@wordpress/interactivity';
 
-[].slice
-	.call(
-		document.querySelectorAll(
-			'.wp-block-navigation-submenu__toggle + span.wp-block-navigation__submenu-icon'
-		)
-	)
-	.forEach( ( node ) => {
-		node.addEventListener( 'click', () => {
-			node.previousElementSibling.click();
-		} );
-	} );
-
 const focusableSelectors = [
 	'a[href]',
 	'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',

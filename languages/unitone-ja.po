@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-10-08T01:17:25+00:00\n"
-"PO-Revision-Date: 2024-10-08 10:17+0900\n"
+"POT-Creation-Date: 2024-10-16T10:01:08+00:00\n"
+"PO-Revision-Date: 2024-10-16 19:03+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2920,6 +2920,22 @@ msgid "The stack level"
 msgstr "重ね合わせレベル"
 
 #: dist/js/editor/editor.js:10
+msgid "Add your own CSS to customize the appearance of this block."
+msgstr "独自の CSS を追加して、このブロックの外観をカスタマイズできます。"
+
+#: dist/js/editor/editor.js:10
+msgid ""
+"Using \"&\" as a selector acts as a unique selector that applies only to "
+"this block."
+msgstr ""
+"セレクターとして \"&\" を使用すると、このブロックのみに適用されるユニークなセ"
+"レクターとして機能します。"
+
+#: dist/js/editor/editor.js:10
+msgid "Selectors and CSS beginning with anything other than \"&\" are ignored."
+msgstr "\"&\" 以外から始まるセレクターおよび CSS は無視されます。"
+
+#: dist/js/editor/editor.js:10
 msgid "Cell Min Width"
 msgstr "セルの最小幅"
 
@@ -3128,6 +3144,16 @@ msgstr "装飾用ブロック。色、パディング、位置が設定できま
 msgctxt "block keyword"
 msgid "Box"
 msgstr "ボックス"
+
+#: dist/blocks/div/block.json
+msgctxt "block title"
+msgid "div"
+msgstr "div"
+
+#: dist/blocks/div/block.json
+msgctxt "block description"
+msgid "A simple div element without any decoration."
+msgstr "装飾されていないシンプルな div要素です。"
 
 #: dist/blocks/flex-divided-content/block.json
 msgctxt "block title"
@@ -3856,6 +3882,3 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
-
-#~ msgid "Replace"
-#~ msgstr "置換"

@@ -59,6 +59,12 @@ import {
 import { DropShadowPanel, useDropShadowBlockProps } from './border/border';
 import { PositionPanel, usePositionBlockProps } from './position/position';
 
+import {
+	AdvancedPanel,
+	useStyleBlockProps,
+	StyleTag,
+} from './advanced/advanced';
+
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		props = useAutoPhraseBlockProps( props );
@@ -99,7 +105,14 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		props = useParallaxBlockProps( props );
 		props = useScrollAnimationBlockProps( props );
 
-		return <BlockListBlock { ...props } />;
+		props = useStyleBlockProps( props );
+
+		return (
+			<>
+				<BlockListBlock { ...props } />
+				<StyleTag { ...{ unitone: props?.attributes?.unitone } } />
+			</>
+		);
 	};
 }, 'useBlockProps' );
 
@@ -149,6 +162,8 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<LayerPanel { ...passedProps } />
 				<DropShadowPanel { ...passedProps } />
 				<AnimationPanel { ...passedProps } />
+
+				<AdvancedPanel { ...passedProps } />
 			</>
 		);
 	};

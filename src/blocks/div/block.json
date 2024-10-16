@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "unitone",
+	"name": "unitone/div",
+	"title": "div",
+	"description": "A simple div element without any decoration.",
+	"attributes": {
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": ".unitone-div"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"unitone": {
+			"style": true
+		}
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js"
+}

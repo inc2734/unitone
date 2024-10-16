@@ -19,6 +19,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/cover' );
 	register_block_type( get_template_directory() . '/dist/blocks/cover-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/decorator' );
+	register_block_type( get_template_directory() . '/dist/blocks/div' );
 	register_block_type( get_template_directory() . '/dist/blocks/flex' );
 	register_block_type( get_template_directory() . '/dist/blocks/flex-divided' );
 	register_block_type( get_template_directory() . '/dist/blocks/flex-divided-content' );
@@ -635,6 +636,46 @@ add_filter(
 					}
 					$add_style( '--unitone--animation-initial', $scroll_animation_initial );
 				}
+			}
+		}
+
+		// Additional style.
+		if ( $is_supported( 'style' ) ) {
+			$instance_id = $get_attribute( 'instanceId' );
+			$custom_css  = $get_attribute( 'style' );
+
+			if ( $custom_css ) {
+				$custom_css = wp_strip_all_tags( $custom_css );
+				$custom_css = preg_replace( '/\r?\n\s*/', ' ', $custom_css );
+				$custom_css = preg_replace( '/\s*{\s*/', ' { ', $custom_css );
+				$custom_css = preg_replace( '/\s*;\s*/', '; ', $custom_css );
+				$custom_css = preg_replace( '/\s*}\s*/', ' }', $custom_css );
+				$custom_css = preg_replace( '/}\s*/', "}\n", $custom_css );
+				$custom_css = trim( $custom_css );
+
+				$custom_css_array = explode( "\n", $custom_css );
+				$custom_css       = implode(
+					"\n",
+					array_filter(
+						$custom_css_array,
+						function ( $line ) {
+							return 0 === strpos( $line, '&' );
+						}
+					)
+				);
+
+				$custom_css = preg_replace( '|(&)(?=[^{]*\{)|', '[data-unitone-instance-id="' . $instance_id . '"]', $custom_css );
+			}
+
+			if ( $instance_id && $custom_css ) {
+				$add_data_attribute( 'data-unitone-instance-id', $instance_id );
+
+				add_action(
+					'wp_enqueue_scripts',
+					function () use ( $custom_css ) {
+						wp_add_inline_style( 'global-styles', $custom_css );
+					}
+				);
 			}
 		}
 

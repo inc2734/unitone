@@ -52,16 +52,16 @@
         },
         {
             "name": "inc2734/wp-github-theme-updater",
-            "version": "3.1.9",
+            "version": "3.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inc2734/wp-github-theme-updater.git",
-                "reference": "d50372cba7be0f21938431dadbff92a5dfd88ddd"
+                "reference": "8a8914728b9c81c88e11ee6bf095fece894093fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inc2734/wp-github-theme-updater/zipball/d50372cba7be0f21938431dadbff92a5dfd88ddd",
-                "reference": "d50372cba7be0f21938431dadbff92a5dfd88ddd",
+                "url": "https://api.github.com/repos/inc2734/wp-github-theme-updater/zipball/8a8914728b9c81c88e11ee6bf095fece894093fb",
+                "reference": "8a8914728b9c81c88e11ee6bf095fece894093fb",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "description": "A library for WordPress that automatic theme updater with GitHub API.",
             "support": {
                 "issues": "https://github.com/inc2734/wp-github-theme-updater/issues",
-                "source": "https://github.com/inc2734/wp-github-theme-updater/tree/3.1.9"
+                "source": "https://github.com/inc2734/wp-github-theme-updater/tree/3.1.10"
             },
-            "time": "2024-09-24T01:38:37+00:00"
+            "time": "2024-10-18T07:32:28+00:00"
         },
         {
             "name": "inc2734/wp-oembed-blog-card",

@@ -38,6 +38,9 @@ function unitone_get_remote_block_patten_categories() {
 	}
 
 	$pattern_categories = json_decode( wp_remote_retrieve_body( $response ), true );
+	if ( ! is_array( $pattern_categories ) ) {
+		return array();
+	}
 
 	$new_pattern_categories = array();
 	foreach ( $pattern_categories as $pattern_category ) {
@@ -80,6 +83,9 @@ function _unitone_get_remote_block_patterns( $url ) {
 	}
 
 	$patterns = json_decode( wp_remote_retrieve_body( $response ), true );
+	if ( ! is_array( $patterns ) ) {
+		return array();
+	}
 
 	foreach ( $patterns as $key => $pattern ) {
 		$patterns[ $key ]['viewportWidth'] = 1440;
@@ -133,10 +139,16 @@ function unitone_register_remote_block_patterns() {
 		$remote_block_pattern_categories = $transient;
 	} else {
 		$remote_block_pattern_categories = unitone_get_remote_block_patten_categories();
+
 		if ( $remote_block_pattern_categories && is_array( $remote_block_pattern_categories ) ) {
 			set_transient( 'unitone-remote-pattern-categories', $remote_block_pattern_categories, DAY_IN_SECONDS );
 		}
 	}
+
+	if ( ! is_array( $remote_block_pattern_categories ) ) {
+		$remote_block_pattern_categories = array();
+	}
+
 	foreach ( $remote_block_pattern_categories as $remote_block_pattern_category ) {
 		register_block_pattern_category(
 			$remote_block_pattern_category['name'],
@@ -160,6 +172,10 @@ function unitone_register_remote_block_patterns() {
 		if ( $remote_block_patterns && is_array( $remote_block_patterns ) ) {
 			set_transient( 'unitone-remote-patterns', $remote_block_patterns, DAY_IN_SECONDS );
 		}
+	}
+
+	if ( ! is_array( $remote_block_patterns ) ) {
+		$remote_block_patterns = array();
 	}
 
 	$registry = WP_Block_Patterns_Registry::get_instance();

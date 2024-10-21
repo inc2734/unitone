@@ -1,6 +1,10 @@
 @use "sass:meta";
 @use '../../../node_modules/@inc2734/unitone-css/src/settings/settings';
 
+:where(*) {
+	position: relative;
+}
+
 @include meta.load-css("foundation");
 @include meta.load-css("wp-blocks/wp-blocks");
 @include meta.load-css("site");

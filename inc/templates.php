@@ -16,9 +16,8 @@ use Unitone\App\Controller\Manager\Manager;
 function unitone_hidden_front_page_template_on_blog( $query_result ) {
 	$show_on_front = get_option( 'show_on_front' );
 	$page_on_front = get_option( 'page_on_front' );
-	$page_template = get_post_meta( $page_on_front, '_wp_page_template', true );
 
-	if ( 'page' !== $show_on_front || ! $page_on_front || ( $page_template && 'default' !== $page_template ) ) {
+	if ( 'page' !== $show_on_front || ! $page_on_front ) {
 		foreach ( $query_result as $index => $template ) {
 			if ( 'front-page' === $template->slug ) {
 				unset( $query_result[ $index ] );

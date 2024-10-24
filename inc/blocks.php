@@ -601,6 +601,21 @@ add_filter(
 			$add_style( '--unitone--cell-min-width', $get_attribute( 'cellMinWidth' ) ?? $deprecated_attribute );
 		}
 
+		// -overlay
+		if ( $is_supported( 'overlay' ) ) {
+			$color     = $get_attribute( 'overlay.color' );
+			$gradient  = $get_attribute( 'overlay.gradient' );
+			$dim_ratio = $get_attribute( 'overlay.dimRatio' );
+			$opacity   = ! is_null( $dim_ratio ) ? $dim_ratio * 0.01 : null;
+
+			if ( $color || $gradient ) {
+				$add_attribute( '-overlay', true );
+				$add_style( '--unitone--overlay-color', $get_attribute( 'overlay.color' ) );
+				$add_style( '--unitone--overlay-gradient', $get_attribute( 'overlay.gradient' ) );
+				$add_style( '--unitone--overlay-opacity', $opacity );
+			}
+		}
+
 		// Parallax.
 		if ( $is_supported( 'parallax' ) ) {
 			$parallax_speed = $get_attribute( 'parallax.speed' );

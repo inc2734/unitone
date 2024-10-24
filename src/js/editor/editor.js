@@ -1,6 +1,7 @@
 import './hooks/embed';
 import './hooks/style';
 
+import './wp-blocks/image';
 import './wp-blocks/table';
 
 import './plugins/lineage-toolbar/index';

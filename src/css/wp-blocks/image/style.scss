@@ -1,8 +1,25 @@
 .wp-block-image {
 	--unitone--drop-shadow: none;
+	--unitone--overlay-color: transparent;
+	--unitone--overlay-gradient: none;
+	--unitone--overlay-opacity: .6;
+
+	&[data-unitone-layout~="-overlay"] {
+		display: grid;
+
+		&::after {
+			grid-row: 1 / 2;
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-image: var(--unitone--overlay-gradient);
+			background-color: var(--unitone--overlay-color);
+			opacity: var(--unitone--overlay-opacity);
+		}
+	}
 
 	img {
-		filter:drop-shadow(var(--unitone--drop-shadow));
+		filter: drop-shadow(var(--unitone--drop-shadow));
 	}
 }
 

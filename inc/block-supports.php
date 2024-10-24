@@ -196,6 +196,32 @@ function unitone_add_padding_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_padding_support' );
 
 /**
+ * Add support "overlay" to core/image.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_overlay_support( $metadata ) {
+	if ( 'core/image' !== $metadata['name'] ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'overlay' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_overlay_support' );
+
+/**
  * Add support "filter:drop-shadow" to core/image.
  *
  * @param array $metadata Metadata for registering a block type.

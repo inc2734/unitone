@@ -395,8 +395,8 @@ class Settings {
 		// Disable WooCommerce templates if WooCommerce is not enabled.
 		$templates = array_filter(
 			$templates,
-			function( $template ) {
-				if ( ! in_array( 'product', $template['postTypes'] ) ) {
+			function ( $template ) {
+				if ( ! in_array( 'product', $template['postTypes'] ), true ) {
 					return true;
 				}
 
@@ -412,7 +412,6 @@ class Settings {
 		$templates = array_values( $templates );
 		wp_cache_set( $cache_key, $templates );
 
-		error_log( print_r( $templates, true ) . "\n", 3, __DIR__ . '/error_log' );
 		return $templates;
 	}
 

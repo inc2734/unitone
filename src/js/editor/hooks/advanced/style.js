@@ -92,7 +92,8 @@ export function StyleEdit( { unitone, setAttributes, clientId } ) {
 	function handleOnBlur( event ) {
 		let customCSS = event?.target?.value?.trim();
 		if ( !! customCSS ) {
-			customCSS = customCSS.replace( / *?([^{}\s]*?) *?\{/g, '$1 {' );
+			customCSS = customCSS.replace( / +/g, ' ' );
+			customCSS = customCSS.replace( /\n &/g, '\n&' );
 		}
 
 		setAttributes( {

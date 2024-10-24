@@ -396,7 +396,7 @@ class Settings {
 		$templates = array_filter(
 			$templates,
 			function ( $template ) {
-				if ( ! in_array( 'product', $template['postTypes'] ), true ) {
+				if ( ! in_array( 'product', $template['postTypes'], true ) ) {
 					return true;
 				}
 

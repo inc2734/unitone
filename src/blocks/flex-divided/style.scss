@@ -27,7 +27,7 @@
 	align-items: stretch;
 
 	> * {
-		padding-right: var(--unitone--column-gap);
+		padding-right: calc(var(--unitone--column-gap) + var(--unitone--divider-width));
 		padding-left: var(--unitone--column-gap);
 
 		&::before {
@@ -41,6 +41,8 @@
 	}
 
 	> [data-unitone-layout~="-bol"] {
+		padding-left: calc(var(--unitone--column-gap) + var(--unitone--divider-width));
+
 		&::before {
 			border-left: var(--unitone--divider-width) var(--unitone--divider-style) var(--unitone--divider-color);
 		}
@@ -54,8 +56,8 @@
 	// Core specificity is 0 2 0.
 	// .editor-styles-wrapper .is-layout-flex > *
 	&.is-layout-flex > * {
-		margin-right: var(--unitone--column-gap);
-		margin-left: var(--unitone--column-gap);
+		padding-right: calc(var(--unitone--column-gap) + var(--unitone--divider-width) * 2);
+		padding-left: calc(var(--unitone--column-gap) + var(--unitone--divider-width) * 2);
 	}
 
 	> * > * {
@@ -63,7 +65,7 @@
 	}
 
 	> [data-unitone-layout~="-bol"] {
-		margin-left: 0;
+		padding-left: 0;
 	}
 
 	> * + :not([data-unitone-layout~="-bol"])::before {
@@ -72,7 +74,7 @@
 		top: 0;
 		right: auto;
 		bottom: 0;
-		left: calc(var(--unitone--column-gap) * -1);
+		left: calc(var(--unitone--divider-width) / 2 * -1);
 		border-left: var(--unitone--divider-width) var(--unitone--divider-style) color-mix(in oklab, var(--unitone--divider-color) 97%, #000);
 		transform: rotate(22.5deg) scale(.8);
 	}
@@ -83,7 +85,8 @@
 	align-items: stretch;
 
 	> * {
-		padding: var(--unitone--row-gap) var(--unitone--column-gap);
+		padding: calc(var(--unitone--row-gap) + var(--unitone--divider-width)) calc(var(--unitone--column-gap) + var(--unitone--divider-width));
+		padding-left: var(--unitone--column-gap);
 
 		&::before {
 			content: '';
@@ -91,14 +94,18 @@
 			inset: 0;
 			user-select: none;
 			pointer-events: none;
-			border-width: var(--unitone--divider-width);
+			border-width: var(--unitone--divider-width) var(--unitone--divider-width) var(--unitone--divider-width) 0;
 			border-style: var(--unitone--divider-style);
 			border-color: var(--unitone--divider-color);
 		}
 	}
 
-	> :not([data-unitone-layout~="-bol"]) {
-		margin-inline-start: calc(var(--unitone--divider-width) * -1);
+	> [data-unitone-layout~="-bol"] {
+		padding-left: calc(var(--unitone--column-gap) + var(--unitone--divider-width));
+
+		&::before {
+			border-left-width: var(--unitone--divider-width);
+		}
 	}
 
 	> [data-unitone-layout~="-linewrap"] {

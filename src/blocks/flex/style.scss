@@ -3,10 +3,13 @@
 	--unitone--column-gap: var(--unitone--gap);
 	--unitone--row-gap: var(--unitone--gap);
 
-	column-gap: var(--unitone--column-gap);
-	row-gap: var(--unitone--row-gap);
 	flex-direction: row;
 	justify-content: start;
+
+	&.is-layout-flex {
+		column-gap: var(--unitone--column-gap);
+		row-gap: var(--unitone--row-gap);
+	}
 
 	> * {
 		--unitone--flex-grow: initial;
@@ -18,9 +21,4 @@
 		flex-basis: var(--unitone--flex-basis);
 		min-width: 0;
 	}
-}
-
-.editor-styles-wrapper .unitone-flex {
-	column-gap: var(--unitone--column-gap);
-	row-gap: var(--unitone--row-gap);
 }

@@ -20,8 +20,8 @@
 
 	> * {
 		position: relative;
-		padding-top: var(--unitone--gap);
-		padding-bottom: var(--unitone--gap);
+		padding-top: calc(var(--unitone--gap) + var(--unitone--divider-width));
+		padding-bottom: calc(var(--unitone--gap) + var(--unitone--divider-width));
 
 		&::before {
 			content: '';
@@ -30,7 +30,7 @@
 			bottom: 0;
 			right: 0;
 			left: calc(var(--unitone--gap) * -1);
-			border-width: 0 0 var(--unitone--divider-width) 0;
+			border-width: var(--unitone--divider-width) 0;
 			border-style: var(--unitone--divider-style);
 			border-color: var(--unitone--divider-color);
 		}
@@ -42,9 +42,11 @@
 		}
 	}
 
-	> :not([data-unitone-layout~="-linewrap"]) {
+	> [data-unitone-layout~="-linewrap"] {
+		padding-top: var(--unitone--column-gap);
+
 		&::before {
-			border-top-width: var(--unitone--divider-width);
+			border-top-width: 0;
 		}
 	}
 }
@@ -54,8 +56,8 @@
 
 	> * {
 		position: relative;
-		padding-top: var(--unitone--gap);
-		padding-bottom: var(--unitone--gap);
+		padding-top: 0;
+		padding-bottom: calc(var(--unitone--gap) + var(--unitone--divider-width));
 
 		&::before {
 			content: '';
@@ -76,8 +78,8 @@
 		}
 	}
 
-	> :not([data-unitone-layout~="-linewrap"]) {
-		padding-top: 0;
+	> [data-unitone-layout~="-linewrap"] {
+		padding-top: var(--unitone--gap);
 	}
 }
 
@@ -86,6 +88,8 @@
 
 	> * {
 		position: relative;
+		padding: calc(var(--unitone--row-gap) + var(--unitone--divider-width)) calc(var(--unitone--column-gap) + var(--unitone--divider-width));
+		padding-left: var(--unitone--column-gap);
 
 		&::before {
 			content: '';
@@ -93,21 +97,25 @@
 			inset: 0;
 			user-select: none;
 			pointer-events: none;
-			border-width: var(--unitone--divider-width);
+			border-width: var(--unitone--divider-width) var(--unitone--divider-width) var(--unitone--divider-width) 0;
 			border-style: var(--unitone--divider-style);
 			border-color: var(--unitone--divider-color);
 		}
+	}
 
-		> * {
-			padding: var(--unitone--gap);
+	> [data-unitone-layout~="-bol"] {
+		padding-left: calc(var(--unitone--column-gap) + var(--unitone--divider-width));
+
+		&::before {
+			border-left-width: var(--unitone--divider-width);
 		}
 	}
 
-	> :not([data-unitone-layout~="-bol"]) {
-		margin-inline-start: calc(var(--unitone--divider-width) * -1);
-	}
-
 	> [data-unitone-layout~="-linewrap"] {
-		margin-top: calc(var(--unitone--divider-width) * -1);
+		padding-top: var(--unitone--column-gap);
+
+		&::before {
+			border-top-width: 0;
+		}
 	}
 }

@@ -27,7 +27,10 @@ import { ResponsiveSettingsContainer } from '../../js/editor/hooks/components';
 
 import metadata from './block.json';
 
-import { dividersResizeObserver } from '@inc2734/unitone-css/library';
+import {
+	dividersResizeObserver,
+	setDividerLinewrap,
+} from '@inc2734/unitone-css/library';
 
 const parseString = ( value ) => {
 	value = String( value );
@@ -74,12 +77,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const ref = useRefEffect(
-		( target ) => {
-			dividersResizeObserver( target );
-		},
-		[ clientId ]
-	);
+	const ref = useRefEffect( ( target ) => {
+		dividersResizeObserver( target );
+
+		setTimeout( () => {
+			setDividerLinewrap( target );
+		}, 100 );
+	}, [] );
 
 	const TagName = tagName;
 

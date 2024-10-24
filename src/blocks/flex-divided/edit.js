@@ -21,7 +21,10 @@ import { physicalToLogical } from '../../js/helper';
 
 import metadata from './block.json';
 
-import { dividersResizeObserver } from '@inc2734/unitone-css/library';
+import {
+	dividersResizeObserver,
+	setDividerLinewrap,
+} from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { tagName, layout, templateLock } = attributes;
@@ -44,12 +47,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		} );
 	}, [ layout?.verticalAlignment, layout?.orientation ] );
 
-	const ref = useRefEffect(
-		( target ) => {
-			dividersResizeObserver( target );
-		},
-		[ clientId ]
-	);
+	const ref = useRefEffect( ( target ) => {
+		dividersResizeObserver( target );
+
+		setTimeout( () => {
+			setDividerLinewrap( target );
+		}, 100 );
+	}, [] );
 
 	const blockProps = useBlockProps( {
 		ref,

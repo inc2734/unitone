@@ -392,10 +392,27 @@ class Settings {
 			$all_templates
 		);
 
+		// Disable WooCommerce templates if WooCommerce is not enabled.
+		$templates = array_filter(
+			$templates,
+			function( $template ) {
+				if ( ! in_array( 'product', $template['postTypes'] ) ) {
+					return true;
+				}
+
+				if ( class_exists( '\woocommerce' ) ) {
+					return true;
+				}
+
+				return false;
+			}
+		);
+
 		ksort( $templates );
 		$templates = array_values( $templates );
 		wp_cache_set( $cache_key, $templates );
 
+		error_log( print_r( $templates, true ) . "\n", 3, __DIR__ . '/error_log' );
 		return $templates;
 	}
 

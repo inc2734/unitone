@@ -11,7 +11,7 @@ import {
 } from '@wordpress/components';
 
 const saveProp = ( extraProps, blockType, attributes ) => {
-	if ( 'core/table' !== blockType.name ) {
+	if ( 'core/table' !== blockType ) {
 		return extraProps;
 	}
 
@@ -34,28 +34,26 @@ const saveProp = ( extraProps, blockType, attributes ) => {
 	return extraProps;
 };
 
-const editProp = ( settings ) => {
-	const existingGetEditWrapperProps = settings.getEditWrapperProps;
-	settings.getEditWrapperProps = ( attributes ) => {
-		let props = {};
-		if ( existingGetEditWrapperProps ) {
-			props = existingGetEditWrapperProps( attributes );
-		}
-		return saveProp( props, settings, attributes );
+const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
+	return ( props ) => {
+		const { attributes, name, wrapperProps } = props;
+
+		props = {
+			...props,
+			wrapperProps: {
+				...props.wrapperProps,
+				...saveProp( wrapperProps, name, attributes ),
+			},
+		};
+
+		return <BlockListBlock { ...props } />;
 	};
-
-	return settings;
-};
-
-const addEditProps = ( settings ) => {
-	settings = editProp( settings );
-	return settings;
-};
+} );
 
 addFilter(
-	'blocks.registerBlockType',
-	'unitone/table/addEditProps',
-	addEditProps
+	'editor.BlockListBlock',
+	'unitone/table/useBlockProps',
+	useBlockProps
 );
 
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {

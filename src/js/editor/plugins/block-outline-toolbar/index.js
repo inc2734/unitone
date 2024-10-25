@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 
 const withBlockOutlineToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { clientId } = props;
+		const { clientId, isSelected } = props;
 
 		const { getBlock, getBlockParents, getBlockAttributes } =
 			useSelect( blockEditorStore );
@@ -39,7 +39,7 @@ const withBlockOutlineToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 
 		return (
 			<>
-				{ canDisplayed && (
+				{ isSelected && canDisplayed && (
 					<BlockControls>
 						<ToolbarGroup>
 							<ToolbarButton

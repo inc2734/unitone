@@ -80,103 +80,99 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 			return <BlockEdit { ...props } />;
 		}
 
-		const { attributes, setAttributes, clientId, isSelected } = props;
+		const { attributes, setAttributes, clientId } = props;
 		const { unitone = {} } = attributes;
 
 		return (
 			<>
 				<BlockEdit { ...props } />
 
-				{ isSelected && (
-					<InspectorControls group="color">
-						<ColorGradientSettingsDropdown
-							panelId={ clientId }
-							__experimentalIsRenderedInSidebar
-							settings={ [
-								{
-									colorValue: unitone?.overlay?.color,
-									gradientValue: unitone?.overlay?.gradient,
-									label: __( 'Overlay', 'unitone' ),
-									onColorChange: ( newAttribute ) => {
-										unitone.overlay ??= {};
-										unitone.overlay.color = newAttribute;
+				<InspectorControls group="color">
+					<ColorGradientSettingsDropdown
+						panelId={ clientId }
+						__experimentalIsRenderedInSidebar
+						settings={ [
+							{
+								colorValue: unitone?.overlay?.color,
+								gradientValue: unitone?.overlay?.gradient,
+								label: __( 'Overlay', 'unitone' ),
+								onColorChange: ( newAttribute ) => {
+									unitone.overlay ??= {};
+									unitone.overlay.color = newAttribute;
 
-										setAttributes( {
-											unitone:
-												cleanEmptyObject( unitone ),
-										} );
-									},
-									onGradientChange: ( newAttribute ) => {
-										unitone.overlay ??= {};
-										unitone.overlay.gradient = newAttribute;
-
-										setAttributes( {
-											unitone:
-												cleanEmptyObject( unitone ),
-										} );
-									},
-									isShownByDefault: true,
-									resetAllFilter: () => ( {
-										...attributes,
-										unitone: {
-											...attributes?.unitone,
-											overlay: {
-												...attributes?.unitone?.overlay,
-												color: undefined,
-												gradient: undefined,
-											},
-										},
-									} ),
+									setAttributes( {
+										unitone: cleanEmptyObject( unitone ),
+									} );
 								},
-							] }
-							{ ...colorGradientSettings }
-						/>
+								onGradientChange: ( newAttribute ) => {
+									unitone.overlay ??= {};
+									unitone.overlay.gradient = newAttribute;
 
-						<ToolsPanelItem
-							hasValue={ () => null != unitone?.dimRatio }
+									setAttributes( {
+										unitone: cleanEmptyObject( unitone ),
+									} );
+								},
+								isShownByDefault: true,
+								resetAllFilter: () => ( {
+									...attributes,
+									unitone: {
+										...attributes?.unitone,
+										overlay: {
+											...attributes?.unitone?.overlay,
+											color: undefined,
+											gradient: undefined,
+										},
+									},
+								} ),
+							},
+						] }
+						{ ...colorGradientSettings }
+					/>
+
+					<ToolsPanelItem
+						hasValue={ () => null != unitone?.dimRatio }
+						label={ __( 'Overlay opacity', 'unitone' ) }
+						onDeselect={ () => {
+							unitone.overlay ??= {};
+							unitone.overlay.dimRatio = undefined;
+
+							setAttributes( {
+								unitone: cleanEmptyObject( unitone ),
+							} );
+						} }
+						resetAllFilter={ () => ( {
+							...attributes,
+							unitone: {
+								...attributes?.unitone,
+								overlay: {
+									...attributes?.unitone?.overlay,
+									dimRatio: undefined,
+								},
+							},
+						} ) }
+						isShownByDefault
+						panelId={ clientId }
+					>
+						<RangeControl
+							__nextHasNoMarginBottom
 							label={ __( 'Overlay opacity', 'unitone' ) }
-							onDeselect={ () => {
+							value={ attributes?.unitone?.overlay?.dimRatio }
+							onChange={ ( newAttribute ) => {
 								unitone.overlay ??= {};
-								unitone.overlay.dimRatio = undefined;
+								unitone.overlay.dimRatio = newAttribute;
 
 								setAttributes( {
 									unitone: cleanEmptyObject( unitone ),
 								} );
 							} }
-							resetAllFilter={ () => ( {
-								...attributes,
-								unitone: {
-									...attributes?.unitone,
-									overlay: {
-										...attributes?.unitone?.overlay,
-										dimRatio: undefined,
-									},
-								},
-							} ) }
-							isShownByDefault
-							panelId={ clientId }
-						>
-							<RangeControl
-								__nextHasNoMarginBottom
-								label={ __( 'Overlay opacity', 'unitone' ) }
-								value={ attributes?.unitone?.overlay?.dimRatio }
-								onChange={ ( newAttribute ) => {
-									unitone.overlay ??= {};
-									unitone.overlay.dimRatio = newAttribute;
-
-									setAttributes( {
-										unitone: cleanEmptyObject( unitone ),
-									} );
-								} }
-								min={ 0 }
-								max={ 100 }
-								step={ 10 }
-								required
-								__next40pxDefaultSize
-							/>
-						</ToolsPanelItem>
-					</InspectorControls>
-				) }
+							min={ 0 }
+							max={ 100 }
+							step={ 10 }
+							required
+							__next40pxDefaultSize
+						/>
+					</ToolsPanelItem>
+				</InspectorControls>
 			</>
 		);
 	};

@@ -38,7 +38,7 @@ const getVariationTitle = ( blockType, thisAttributes ) =>
 
 const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { clientId } = props;
+		const { clientId, isSelected } = props;
 
 		const { selectBlock } = useDispatch( blockEditorStore );
 		const { getBlock, getBlockParents } = useSelect( blockEditorStore );
@@ -83,33 +83,41 @@ const withLineageToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 
 		return (
 			<>
-				<BlockControls group="parent">
-					<ToolbarGroup className="unitone-lineage-toolbar">
-						<ToolbarButton
-							icon={ LevelUp }
-							label={ __( 'Select parent block', 'unitone' ) }
-							onClick={ onSelectParentBlock }
-							disabled={ ! parentClientId }
-						/>
-
-						{ 2 > innerBlocks.length && (
+				{ isSelected && (
+					<BlockControls group="parent">
+						<ToolbarGroup className="unitone-lineage-toolbar">
 							<ToolbarButton
-								icon={ LevelDown }
-								label={ __( 'Select child block', 'unitone' ) }
-								onClick={ onSelectChildBlock }
-								disabled={ 0 === innerBlocks.length }
+								icon={ LevelUp }
+								label={ __( 'Select parent block', 'unitone' ) }
+								onClick={ onSelectParentBlock }
+								disabled={ ! parentClientId }
 							/>
-						) }
 
-						{ 1 < innerBlocks.length && (
-							<ToolbarDropdownMenu
-								icon={ LevelDown }
-								label={ __( 'Select child block', 'unitone' ) }
-								controls={ childrenDropdownMenuControls }
-							/>
-						) }
-					</ToolbarGroup>
-				</BlockControls>
+							{ 2 > innerBlocks.length && (
+								<ToolbarButton
+									icon={ LevelDown }
+									label={ __(
+										'Select child block',
+										'unitone'
+									) }
+									onClick={ onSelectChildBlock }
+									disabled={ 0 === innerBlocks.length }
+								/>
+							) }
+
+							{ 1 < innerBlocks.length && (
+								<ToolbarDropdownMenu
+									icon={ LevelDown }
+									label={ __(
+										'Select child block',
+										'unitone'
+									) }
+									controls={ childrenDropdownMenuControls }
+								/>
+							) }
+						</ToolbarGroup>
+					</BlockControls>
+				) }
 
 				<BlockEdit { ...props } />
 			</>

@@ -44,6 +44,7 @@ const saveProp = ( extraProps, blockType, attributes ) => {
 			null != attributes?.unitone?.overlay?.dimRatio
 				? attributes.unitone.overlay.dimRatio * 0.01
 				: undefined,
+		'--unitone--overlay-radius': attributes?.style?.border?.radius,
 	};
 
 	return extraProps;

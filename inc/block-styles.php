@@ -136,5 +136,13 @@ function unitone_register_block_styles() {
 			'label' => __( 'Vertical line', 'unitone' ),
 		)
 	);
+
+	register_block_style(
+		'core/table',
+		array(
+			'name'  => 'bordered',
+			'label' => __( 'Bordered', 'unitone' ),
+		)
+	);
 }
 add_action( 'init', 'unitone_register_block_styles', 9 );

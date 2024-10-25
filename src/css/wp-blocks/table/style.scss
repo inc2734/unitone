@@ -99,3 +99,7 @@ figure.wp-block-table {
 		border-left-width: 0 !important;
 	}
 }
+
+:root :where(.wp-block-table.is-style-bordered) > table {
+	border-width: 1px;
+}

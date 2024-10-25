@@ -3,6 +3,7 @@
 	--unitone--overlay-color: transparent;
 	--unitone--overlay-gradient: none;
 	--unitone--overlay-opacity: .6;
+	--unitone--overlay-radius: 0px;
 
 	&[data-unitone-layout~="-overlay"] {
 		display: grid;
@@ -14,13 +15,19 @@
 			inset: 0;
 			background-image: var(--unitone--overlay-gradient);
 			background-color: var(--unitone--overlay-color);
+			border-radius: var(--unitone--overlay-radius);
 			opacity: var(--unitone--overlay-opacity);
+			pointer-events: none;
 		}
 	}
 
 	img {
 		filter: drop-shadow(var(--unitone--drop-shadow));
 	}
+}
+
+.wp-block-image.is-style-rounded[data-unitone-layout~="-overlay"]::after {
+	border-radius: 9999px;
 }
 
 :root :where(.wp-block-image.is-style-cover) {

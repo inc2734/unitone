@@ -609,10 +609,13 @@ add_filter(
 			$opacity   = ! is_null( $dim_ratio ) ? $dim_ratio * 0.01 : null;
 
 			if ( $color || $gradient ) {
+				$radius = $block['attrs']['style']['border']['radius'] ?? null;
+
 				$add_attribute( '-overlay', true );
 				$add_style( '--unitone--overlay-color', $get_attribute( 'overlay.color' ) );
 				$add_style( '--unitone--overlay-gradient', $get_attribute( 'overlay.gradient' ) );
 				$add_style( '--unitone--overlay-opacity', $opacity );
+				$add_style( '--unitone--overlay-radius', $radius );
 			}
 		}
 

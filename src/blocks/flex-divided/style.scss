@@ -11,7 +11,6 @@
 .unitone-flex__content {
 	--unitone--align-items: center;
 
-	position: relative;
 	display: flex;
 	flex-direction: column;
 }
@@ -27,6 +26,7 @@
 	align-items: stretch;
 
 	> * {
+		position: relative;
 		padding-right: calc(var(--unitone--column-gap) + var(--unitone--divider-width));
 		padding-left: var(--unitone--column-gap);
 

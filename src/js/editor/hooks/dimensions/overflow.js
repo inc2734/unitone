@@ -77,6 +77,7 @@ export function OverflowEdit( { label, name, unitone, setAttributes } ) {
 
 	return (
 		<SelectControl
+			__nextHasNoMarginBottom
 			label={ label }
 			options={ overflowOptions }
 			value={ unitone?.overflow ?? defaultValue ?? '' }

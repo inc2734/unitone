@@ -53,6 +53,7 @@ export function MaxHeightEdit( { name, label, unitone, setAttributes } ) {
 
 	return (
 		<TextControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.maxHeight ?? defaultValue ?? '' }
 			onChange={ ( newValue ) => {

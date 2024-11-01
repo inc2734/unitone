@@ -68,6 +68,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<TextControl
+							__nextHasNoMarginBottom
 							label={
 								<>
 									{ __( 'Threshold', 'unitone' ) }
@@ -113,6 +114,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __( 'Revert', 'unitone' ) }
 							help={ __(
 								'In single-column display, by default, the elements on the left side of the two-column display are displayed on top, but when enabled, the elements on the right side of the two-column display are displayed on top.',

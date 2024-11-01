@@ -71,6 +71,7 @@ export function FlexGrowEdit( {
 
 	return (
 		<RangeControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={
 				null != unitone?.flexGrow

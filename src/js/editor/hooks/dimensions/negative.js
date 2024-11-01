@@ -47,6 +47,7 @@ export function NegativeEdit( { name, label, unitone, setAttributes } ) {
 
 	return (
 		<ToggleControl
+			__nextHasNoMarginBottom
 			label={ label }
 			checked={ !! ( unitone?.negative ?? defaultValue ) }
 			onChange={ ( newValue ) => {

@@ -60,6 +60,7 @@ export default function ( { attributes, setAttributes } ) {
 						}
 					>
 						<TextControl
+							__nextHasNoMarginBottom
 							label={
 								<>
 									{ __(
@@ -95,6 +96,7 @@ export default function ( { attributes, setAttributes } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __(
 								'Switch aspect ratio when portrait',
 								'unitone'

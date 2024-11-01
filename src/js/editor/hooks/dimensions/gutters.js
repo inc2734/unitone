@@ -49,7 +49,7 @@ export function GuttersEdit( { name, label, unitone, setAttributes } ) {
 	}, [] );
 
 	return (
-		<BaseControl id={ label } label={ label }>
+		<BaseControl __nextHasNoMarginBottom id={ label } label={ label }>
 			<div
 				style={ {
 					marginTop: '12px',
@@ -57,6 +57,7 @@ export function GuttersEdit( { name, label, unitone, setAttributes } ) {
 				} }
 			>
 				<ToggleControl
+					__nextHasNoMarginBottom
 					label={ __( 'Using root padding', 'unitone' ) }
 					checked={ 'root' === ( unitone?.gutters ?? defaultValue ) }
 					onChange={ ( newValue ) => {

@@ -64,6 +64,7 @@ export default function ( { attributes, setAttributes } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __(
 								'Show top-level child pages',
 								'unitone'
@@ -89,6 +90,7 @@ export default function ( { attributes, setAttributes } ) {
 							}
 						>
 							<BaseControl
+								__nextHasNoMarginBottom
 								label={ __(
 									'Specify the parent page',
 									'unitone'
@@ -167,6 +169,7 @@ export default function ( { attributes, setAttributes } ) {
 							}
 						>
 							<TextControl
+								__nextHasNoMarginBottom
 								label={
 									<>
 										{ __( 'Column min width', 'unitone' ) }

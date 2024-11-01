@@ -143,6 +143,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __(
 								'Using label of the question',
 								'unitone'
@@ -168,6 +169,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							}
 						>
 							<TextControl
+								__nextHasNoMarginBottom
 								label={
 									<>
 										{ __( 'Width', 'unitone' ) }
@@ -198,6 +200,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __(
 								'Using labe of the answer',
 								'unitone'
@@ -223,6 +226,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							}
 						>
 							<TextControl
+								__nextHasNoMarginBottom
 								label={
 									<>
 										{ __( 'Width', 'unitone' ) }

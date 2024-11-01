@@ -107,12 +107,14 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 				} }
 			>
 				<SearchControl
+					SearchControl
 					value={ searchText }
 					onChange={ ( newValue ) => setSearchText( newValue ) }
 					onClose={ () => setSearchText( '' ) }
 				/>
 
 				<RangeControl
+					__nextHasNoMarginBottom
 					label={ __( 'Stroke width', 'unitone' ) }
 					value={ strokeWidth }
 					allowReset

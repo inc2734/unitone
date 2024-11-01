@@ -300,6 +300,7 @@ export default function ( { settings, setSettings } ) {
 									) }
 
 									<SelectControl
+										__nextHasNoMarginBottom
 										label={ __(
 											'Select existing page for the homepage',
 											'unitone'
@@ -383,6 +384,7 @@ export default function ( { settings, setSettings } ) {
 									) }
 
 									<SelectControl
+										__nextHasNoMarginBottom
 										label={ __(
 											'Select existing page for the posts page',
 											'unitone'

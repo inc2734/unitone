@@ -72,6 +72,7 @@ export function FlexBasisEdit( {
 
 	return (
 		<TextControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.flexBasis ?? defaultValue ?? '' }
 			onChange={ ( newValue ) => {

@@ -63,6 +63,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __( 'Fill a space', 'unitone' ) }
 							checked={ fill }
 							onChange={ ( newAttribute ) => {

@@ -92,6 +92,7 @@ export function DividerTypeEdit( { name, label, unitone, setAttributes } ) {
 
 	return (
 		<SelectControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.dividerType ?? defaultValue ?? '' }
 			options={ getDividerTypeOptions( { name } ) }

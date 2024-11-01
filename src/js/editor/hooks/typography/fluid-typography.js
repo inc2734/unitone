@@ -34,6 +34,7 @@ export function useIsFluidTypographyDisabled( { name } ) {
 export function FluidTypographyEdit( { label, unitone, setAttributes } ) {
 	return (
 		<ToggleControl
+			__nextHasNoMarginBottom
 			label={ label }
 			checked={ !! unitone?.fluidTypography }
 			onChange={ ( newValue ) => {

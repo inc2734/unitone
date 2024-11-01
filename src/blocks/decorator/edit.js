@@ -127,6 +127,7 @@ export default function ( {
 						}
 					>
 						<SelectControl
+							__nextHasNoMarginBottom
 							label={ __( 'HTML element', 'unitone' ) }
 							options={ [
 								{ label: '<main>', value: 'main' },
@@ -200,6 +201,7 @@ export default function ( {
 
 			<InspectorControls group="advanced">
 				<TextControl
+					__nextHasNoMarginBottom
 					label={ __( 'Link rel' ) }
 					value={ rel }
 					onChange={ onSetLinkRel }

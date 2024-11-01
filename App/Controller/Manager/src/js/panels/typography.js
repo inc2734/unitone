@@ -187,6 +187,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						</div>
 						<div data-unitone-layout="stack">
 							<SelectControl
+								__nextHasNoMarginBottom
 								label={ __( 'Font', 'unitone' ) }
 								value={ settings?.styles?.typography?.fontFamily?.replace(
 									'var:preset|font-family|',
@@ -213,6 +214,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							/>
 
 							<RangeControl
+								__nextHasNoMarginBottom
 								label={ __( 'Base Font Size', 'unitone' ) }
 								value={ parseFloat(
 									settings?.[ 'base-font-size' ]
@@ -229,6 +231,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							/>
 
 							<RangeControl
+								__nextHasNoMarginBottom
 								label={ __( 'Half Leading', 'unitone' ) }
 								value={ parseFloat(
 									settings?.[ 'half-leading' ]

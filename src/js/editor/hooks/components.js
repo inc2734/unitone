@@ -22,6 +22,7 @@ function Controls( { isMixed, value, onChange, marks, options } ) {
 	return (
 		<>
 			<RangeControl
+				__nextHasNoMarginBottom
 				className="spacing-sizes-control__range-control"
 				value={ isMixed ? -2 : value }
 				allowReset
@@ -40,11 +41,11 @@ function Controls( { isMixed, value, onChange, marks, options } ) {
 					)?.[ 0 ]?.label ?? _value
 				}
 				hideLabelFromVision
-				__nextHasNoMarginBottom
 			/>
 
 			<div style={ { marginTop: '5px' } }>
 				<SelectControl
+					__nextHasNoMarginBottom
 					value={ value ?? '' }
 					options={ options }
 					onChange={ onChange }
@@ -135,6 +136,7 @@ export function SpacingSizeControl( {
 		<>
 			{ !! label ? (
 				<BaseControl
+					__nextHasNoMarginBottom
 					id={ label }
 					label={ label }
 					className="spacing-sizes-control"
@@ -183,7 +185,11 @@ export function ResponsiveSettingsContainer( {
 		<>
 			<Flex className="unitone-responsive-settings-container" gap={ 0 }>
 				<FlexBlock>
-					<BaseControl label={ label } id={ label } />
+					<BaseControl
+						__nextHasNoMarginBottom
+						label={ label }
+						id={ label }
+					/>
 				</FlexBlock>
 				<FlexItem>
 					<DropdownMenu

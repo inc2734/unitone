@@ -133,6 +133,7 @@ export function StyleEdit( { unitone, setAttributes, clientId } ) {
 			) }
 
 			<TextareaControl
+				__nextHasNoMarginBottom
 				label={ __( 'Additional CSS' ) }
 				help={ `${ __(
 					'Add your own CSS to customize the appearance of this block.',
@@ -144,7 +145,6 @@ export function StyleEdit( { unitone, setAttributes, clientId } ) {
 					'Selectors and CSS beginning with anything other than "&" are ignored.',
 					'unitone'
 				) }` }
-				__nextHasNoMarginBottom
 				value={ unitone?.style ?? undefined }
 				onChange={ handleOnChange }
 				onBlur={ handleOnBlur }

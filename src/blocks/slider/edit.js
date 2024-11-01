@@ -214,6 +214,7 @@ export default function ( {
 						}
 					>
 						<SelectControl
+							__nextHasNoMarginBottom
 							label={ __( 'Effect', 'unitone' ) }
 							value={ effect }
 							options={ effectOptions }
@@ -241,6 +242,7 @@ export default function ( {
 								}
 							>
 								<TextControl
+									__nextHasNoMarginBottom
 									label={
 										<>
 											{ __(
@@ -273,6 +275,7 @@ export default function ( {
 								}
 							>
 								<ToggleControl
+									__nextHasNoMarginBottom
 									label={ __( 'Loop', 'unitone' ) }
 									checked={ loop }
 									onChange={ ( newAttribute ) => {
@@ -300,6 +303,7 @@ export default function ( {
 								}
 							>
 								<ToggleControl
+									__nextHasNoMarginBottom
 									label={ __(
 										'Center the active slide',
 										'unitone'
@@ -336,6 +340,7 @@ export default function ( {
 								}
 							>
 								<ToggleControl
+									__nextHasNoMarginBottom
 									label={ __(
 										'Hide parts that extend beyond the canvas',
 										'unitone'
@@ -364,6 +369,7 @@ export default function ( {
 						}
 					>
 						<RangeControl
+							__nextHasNoMarginBottom
 							label={ __( 'Speed (s)', 'unitone' ) }
 							value={ speed ?? 0.3 }
 							onChange={ ( newAttribute ) => {
@@ -392,6 +398,7 @@ export default function ( {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __( 'Using the autoplay', 'unitone' ) }
 							checked={ autoplay }
 							onChange={ ( newAttribute ) => {
@@ -417,6 +424,7 @@ export default function ( {
 							}
 						>
 							<RangeControl
+								__nextHasNoMarginBottom
 								label={ __( 'Delay (s)', 'unitone' ) }
 								value={ autoplayDelay }
 								help={ __(
@@ -457,6 +465,7 @@ export default function ( {
 							}
 						>
 							<ToggleControl
+								__nextHasNoMarginBottom
 								label={ __(
 									'Using the prev/next buttons',
 									'unitone'
@@ -596,6 +605,7 @@ export default function ( {
 							}
 						>
 							<ToggleControl
+								__nextHasNoMarginBottom
 								label={ __(
 									'Using the pagination',
 									'unitone'

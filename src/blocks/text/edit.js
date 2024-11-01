@@ -78,6 +78,7 @@ export default function ( {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __(
 								'Centering by intrinsic size of children',
 								'unitone'
@@ -102,6 +103,7 @@ export default function ( {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __( 'Multi columns', 'unitone' ) }
 							checked={ column }
 							onChange={ ( newAttribute ) => {
@@ -126,6 +128,7 @@ export default function ( {
 							}
 						>
 							<TextControl
+								__nextHasNoMarginBottom
 								label={
 									<>
 										{ __( 'Column width', 'unitone' ) }

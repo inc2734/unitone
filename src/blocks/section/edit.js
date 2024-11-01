@@ -125,6 +125,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<SelectControl
+							__nextHasNoMarginBottom
 							label={ __( 'HTML element', 'unitone' ) }
 							options={ [
 								{ label: '<main>', value: 'main' },

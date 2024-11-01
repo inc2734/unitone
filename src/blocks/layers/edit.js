@@ -131,6 +131,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __(
 								'Use background image/video (Cover)',
 								'unitone'
@@ -171,6 +172,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __(
 								'Use background image/video (Fill)',
 								'unitone'
@@ -211,6 +213,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<RangeControl
+							__nextHasNoMarginBottom
 							label={ __(
 								'Blur the background image/video',
 								'unitone'
@@ -242,6 +245,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __( 'Enable portrait mode', 'unitone' ) }
 							help={ __(
 								'If enabled, the number of vertical and horizontal grid lines is switched when the viewport is portrait.',
@@ -267,6 +271,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<RangeControl
+							__nextHasNoMarginBottom
 							label={ __( 'Columns count', 'unitone' ) }
 							value={ parseInt( columns ) }
 							onChange={ ( newAttribute ) => {
@@ -297,6 +302,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<RangeControl
+							__nextHasNoMarginBottom
 							label={ __( 'Rows count', 'unitone' ) }
 							value={ parseInt( rows ) }
 							onChange={ ( newAttribute ) => {

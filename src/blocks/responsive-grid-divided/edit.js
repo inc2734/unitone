@@ -82,6 +82,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<SelectControl
+							__nextHasNoMarginBottom
 							label={ __( 'HTML element', 'unitone' ) }
 							options={ [
 								{ label: '<div>', value: 'div' },
@@ -109,6 +110,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<TextControl
+							__nextHasNoMarginBottom
 							label={
 								<>
 									{ __( 'Column min width', 'unitone' ) }

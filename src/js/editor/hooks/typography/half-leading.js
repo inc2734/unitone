@@ -32,6 +32,7 @@ export function useIsHalfLeadingDisabled( { name } ) {
 export function HalfLeadingEdit( { label, unitone, setAttributes } ) {
 	return (
 		<RangeControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.halfLeading }
 			onChange={ ( newValue ) => {

@@ -95,6 +95,7 @@ function ParallaxPopover( { speed, onChangeSpeed } ) {
 							</Heading>
 
 							<RangeControl
+								__nextHasNoMarginBottom
 								label={ __( 'Speed', 'unitone' ) }
 								value={ speed }
 								initialPosition={ 0 }

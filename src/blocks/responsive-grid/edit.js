@@ -82,6 +82,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<TextControl
+							__nextHasNoMarginBottom
 							label={
 								<>
 									{ __( 'Column min width', 'unitone' ) }

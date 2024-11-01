@@ -35,6 +35,7 @@ export function useIsAutoPhraseDisabled( { name } ) {
 export function AutoPhraseEdit( { label, unitone, setAttributes } ) {
 	return (
 		<ToggleControl
+			__nextHasNoMarginBottom
 			label={ label }
 			help={
 				<span

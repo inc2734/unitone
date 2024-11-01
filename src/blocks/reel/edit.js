@@ -69,6 +69,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<TextControl
+							__nextHasNoMarginBottom
 							label={
 								<>
 									{ __( 'Height', 'unitone' ) }&nbsp;:&nbsp;
@@ -96,6 +97,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<TextControl
+							__nextHasNoMarginBottom
 							label={
 								<>
 									{ __( 'Each items width', 'unitone' ) } :
@@ -122,6 +124,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __( 'No scrollbar', 'unitone' ) }
 							checked={ noBar }
 							onChange={ ( newAttribute ) => {

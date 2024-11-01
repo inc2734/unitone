@@ -149,6 +149,7 @@ function InlineUI( {
 				} }
 			>
 				<RangeControl
+					__nextHasNoMarginBottom
 					label={ __( 'X', 'unitone' ) }
 					value={ offsetX }
 					min={ 0 }
@@ -174,6 +175,7 @@ function InlineUI( {
 				/>
 
 				<RangeControl
+					__nextHasNoMarginBottom
 					label={ __( 'Y', 'unitone' ) }
 					value={ offsetY }
 					min={ 0 }
@@ -199,6 +201,7 @@ function InlineUI( {
 				/>
 
 				<RangeControl
+					__nextHasNoMarginBottom
 					label={ __( 'Blur', 'unitone' ) }
 					value={ blurRadius }
 					min={ 0 }

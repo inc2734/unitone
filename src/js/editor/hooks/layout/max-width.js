@@ -78,6 +78,7 @@ export function MaxWidthEdit( { name, label, unitone, setAttributes } ) {
 
 	return (
 		<BaseControl
+			__nextHasNoMarginBottom
 			className="unitone-width-control"
 			label={ label }
 			id="unitone-max-width-control"
@@ -85,6 +86,7 @@ export function MaxWidthEdit( { name, label, unitone, setAttributes } ) {
 			<HStack>
 				{ isPresetValue ? (
 					<ToggleGroupControl
+						__nextHasNoMarginBottom
 						value={ unitone?.maxWidth ?? defaultValue ?? '' }
 						isBlock
 						onChange={ onChangeMaxWidth }
@@ -100,6 +102,7 @@ export function MaxWidthEdit( { name, label, unitone, setAttributes } ) {
 					</ToggleGroupControl>
 				) : (
 					<TextControl
+						__nextHasNoMarginBottom
 						id="unitone-max-width-control"
 						value={ unitone?.maxWidth ?? defaultValue ?? '' }
 						onChange={ onChangeMaxWidth }

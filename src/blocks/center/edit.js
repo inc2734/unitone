@@ -62,6 +62,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __( 'Text is also centered', 'unitone' ) }
 							checked={ withText }
 							onChange={ ( newAttribute ) => {

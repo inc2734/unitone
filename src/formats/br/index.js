@@ -147,6 +147,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				} }
 			>
 				<ToggleControl
+					__nextHasNoMarginBottom
 					label={ __( 'Line breaks when on the desktop', 'unitone' ) }
 					checked={ ! disableDesktop }
 					onChange={ onChangeDesktop }
@@ -154,6 +155,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				/>
 
 				<ToggleControl
+					__nextHasNoMarginBottom
 					label={ __( 'Line breaks when on the tablet', 'unitone' ) }
 					checked={ ! disableTablet }
 					onChange={ onChangeTablet }
@@ -161,11 +163,11 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				/>
 
 				<ToggleControl
+					__nextHasNoMarginBottom
 					label={ __( 'Line breaks when on the mobile', 'unitone' ) }
 					checked={ ! disableMobile }
 					onChange={ onChangeMobile }
 					disabled={ disableDesktop && disableTablet }
-					__nextHasNoMarginBottom
 				/>
 			</div>
 		</Popover>

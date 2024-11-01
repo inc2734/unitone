@@ -154,6 +154,7 @@ export function GridRowEdit( {
 			label={ label }
 			desktopControls={ () => (
 				<TextControl
+					__nextHasNoMarginBottom
 					hideLabelFromVision
 					help={ help }
 					value={
@@ -166,6 +167,7 @@ export function GridRowEdit( {
 			) }
 			tabletControls={ () => (
 				<TextControl
+					__nextHasNoMarginBottom
 					hideLabelFromVision
 					help={ help }
 					value={
@@ -180,6 +182,7 @@ export function GridRowEdit( {
 			) }
 			mobileControls={ () => (
 				<TextControl
+					__nextHasNoMarginBottom
 					hideLabelFromVision
 					help={ help }
 					value={
@@ -198,6 +201,7 @@ export function GridRowEdit( {
 		/>
 	) : (
 		<TextControl
+			__nextHasNoMarginBottom
 			label={ label }
 			help={ help }
 			value={ unitone?.gridRow ?? defaultValue ?? '' }

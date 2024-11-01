@@ -108,6 +108,7 @@ function ScrollAnimationPopover( {
 							</Heading>
 
 							<SelectControl
+								__nextHasNoMarginBottom
 								label={ __( 'Type', 'unitone' ) }
 								value={ type || '' }
 								options={ [
@@ -149,6 +150,7 @@ function ScrollAnimationPopover( {
 							/>
 
 							<RangeControl
+								__nextHasNoMarginBottom
 								label={ __( 'Speed', 'unitone' ) }
 								value={ speed }
 								disabled={ ! type }
@@ -160,6 +162,7 @@ function ScrollAnimationPopover( {
 							/>
 
 							<RangeControl
+								__nextHasNoMarginBottom
 								label={ __( 'Delay', 'unitone' ) }
 								value={ delay }
 								disabled={ ! type }
@@ -171,6 +174,7 @@ function ScrollAnimationPopover( {
 							/>
 
 							<SelectControl
+								__nextHasNoMarginBottom
 								label={ __( 'Easing', 'unitone' ) }
 								value={ easing || '' }
 								disabled={ ! type }
@@ -298,6 +302,7 @@ function ScrollAnimationPopover( {
 
 							{ 'fade-in-down' === type && (
 								<RangeControl
+									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (Y)',
 										'unitone'
@@ -313,6 +318,7 @@ function ScrollAnimationPopover( {
 
 							{ 'fade-in-up' === type && (
 								<RangeControl
+									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (Y)',
 										'unitone'
@@ -328,6 +334,7 @@ function ScrollAnimationPopover( {
 
 							{ 'fade-in-left' === type && (
 								<RangeControl
+									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (X)',
 										'unitone'
@@ -343,6 +350,7 @@ function ScrollAnimationPopover( {
 
 							{ 'fade-in-right' === type && (
 								<RangeControl
+									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (X)',
 										'unitone'
@@ -358,6 +366,7 @@ function ScrollAnimationPopover( {
 
 							{ 'zoom-in' === type && (
 								<RangeControl
+									__nextHasNoMarginBottom
 									label={ __(
 										'Initial shrinkage rate',
 										'unitone'
@@ -373,6 +382,7 @@ function ScrollAnimationPopover( {
 
 							{ 'shake-horizontal' === type && (
 								<RangeControl
+									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (X)',
 										'unitone'
@@ -388,6 +398,7 @@ function ScrollAnimationPopover( {
 
 							{ 'shake-vertical' === type && (
 								<RangeControl
+									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (X)',
 										'unitone'

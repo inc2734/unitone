@@ -72,6 +72,7 @@ export function FlexShrinkEdit( {
 
 	return (
 		<RangeControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={
 				null != unitone?.flexShrink

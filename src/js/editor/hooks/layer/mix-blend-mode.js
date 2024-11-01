@@ -124,6 +124,7 @@ export function MixBlendModeEdit( { label, name, unitone, setAttributes } ) {
 
 	return (
 		<SelectControl
+			__nextHasNoMarginBottom
 			label={ label }
 			help={ __(
 				'Apply to the block with the upper overlap order.',

@@ -49,6 +49,7 @@ export function PositionEdit( { label, name, unitone, setAttributes } ) {
 
 	return (
 		<SelectControl
+			__nextHasNoMarginBottom
 			label={ label }
 			options={ [
 				{ label: '', value: '' },
@@ -125,6 +126,7 @@ export function TopEdit( { label, name, unitone, setAttributes } ) {
 
 	return (
 		<TextControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.position?.top ?? defaultValue?.top ?? '' }
 			onChange={ ( newAttribute ) => {
@@ -181,6 +183,7 @@ export function RightEdit( { label, name, unitone, setAttributes } ) {
 
 	return (
 		<TextControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={
 				unitone?.position?.right ?? defaultValue?.position?.right ?? ''
@@ -239,6 +242,7 @@ export function BottomEdit( { label, name, unitone, setAttributes } ) {
 
 	return (
 		<TextControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.position?.bottom ?? defaultValue.bottom ?? '' }
 			onChange={ ( newAttribute ) => {
@@ -295,6 +299,7 @@ export function LeftEdit( { label, name, unitone, setAttributes } ) {
 
 	return (
 		<TextControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.position?.left ?? defaultValue?.left ?? '' }
 			onChange={ ( newAttribute ) => {
@@ -351,6 +356,7 @@ export function ZIndexEdit( { label, name, unitone, setAttributes } ) {
 
 	return (
 		<TextControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.position?.zIndex ?? defaultValue?.zIndex ?? '' }
 			onChange={ ( newAttribute ) => {

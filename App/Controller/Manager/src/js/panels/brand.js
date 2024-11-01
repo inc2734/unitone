@@ -239,6 +239,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						</div>
 						<div>
 							<BaseControl
+								__nextHasNoMarginBottom
 								id="unitone-settings-site-logo"
 								help={ __(
 									'Display an image to represent this site.',
@@ -319,6 +320,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						</div>
 						<div>
 							<BaseControl
+								__nextHasNoMarginBottom
 								id="unitone-settings-site-icon"
 								help={
 									__(

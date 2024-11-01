@@ -99,6 +99,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<SelectControl
+							__nextHasNoMarginBottom
 							label={ __( 'Text orientation', 'unitone' ) }
 							options={ [
 								{ label: '', value: '' },
@@ -129,6 +130,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<TextControl
+							__nextHasNoMarginBottom
 							label={ __( 'Threshold', 'unitone' ) }
 							help={ __(
 								'When this block is smaller than this width, switch to writing horizontally.',
@@ -162,6 +164,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __(
 								'Switch to writing horizontally when portrait',
 								'unitone'

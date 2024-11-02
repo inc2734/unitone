@@ -6,8 +6,13 @@ import {
 	useAnchor,
 } from '@wordpress/rich-text';
 
+import {
+	Popover,
+	ToggleControl,
+	__experimentalVStack as VStack,
+} from '@wordpress/components';
+
 import { RichTextToolbarButton } from '@wordpress/block-editor';
-import { Popover, ToggleControl } from '@wordpress/components';
 import { useState, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -146,29 +151,40 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 					padding: '16px',
 				} }
 			>
-				<ToggleControl
-					__nextHasNoMarginBottom
-					label={ __( 'Line breaks when on the desktop', 'unitone' ) }
-					checked={ ! disableDesktop }
-					onChange={ onChangeDesktop }
-					disabled={ disableTablet && disableMobile }
-				/>
+				<VStack>
+					<ToggleControl
+						__nextHasNoMarginBottom
+						label={ __(
+							'Line breaks when on the desktop',
+							'unitone'
+						) }
+						checked={ ! disableDesktop }
+						onChange={ onChangeDesktop }
+						disabled={ disableTablet && disableMobile }
+					/>
 
-				<ToggleControl
-					__nextHasNoMarginBottom
-					label={ __( 'Line breaks when on the tablet', 'unitone' ) }
-					checked={ ! disableTablet }
-					onChange={ onChangeTablet }
-					disabled={ disableDesktop && disableMobile }
-				/>
+					<ToggleControl
+						__nextHasNoMarginBottom
+						label={ __(
+							'Line breaks when on the tablet',
+							'unitone'
+						) }
+						checked={ ! disableTablet }
+						onChange={ onChangeTablet }
+						disabled={ disableDesktop && disableMobile }
+					/>
 
-				<ToggleControl
-					__nextHasNoMarginBottom
-					label={ __( 'Line breaks when on the mobile', 'unitone' ) }
-					checked={ ! disableMobile }
-					onChange={ onChangeMobile }
-					disabled={ disableDesktop && disableTablet }
-				/>
+					<ToggleControl
+						__nextHasNoMarginBottom
+						label={ __(
+							'Line breaks when on the mobile',
+							'unitone'
+						) }
+						checked={ ! disableMobile }
+						onChange={ onChangeMobile }
+						disabled={ disableDesktop && disableTablet }
+					/>
+				</VStack>
 			</div>
 		</Popover>
 	);

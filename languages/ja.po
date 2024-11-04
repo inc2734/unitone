@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-11-04T07:59:21+00:00\n"
-"PO-Revision-Date: 2024-11-04 17:09+0900\n"
+"POT-Creation-Date: 2024-11-04T13:27:14+00:00\n"
+"PO-Revision-Date: 2024-11-04 22:28+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -82,59 +82,6 @@ msgstr "さらに詳しく"
 #: dist/blocks/mega-menu/render.php:9
 msgid "%s mega menu"
 msgstr "%sのメガメニュー"
-
-#: inc/bbpress.php:21
-msgid "for bbPress"
-msgstr "bbPress 用"
-
-#: inc/bbpress.php:46
-msgid "Main Area (One Column) for bbPress"
-msgstr "bbPress のメインエリア（1カラム）"
-
-#: inc/bbpress.php:52
-msgid "Main Area (One Column / Page Header (Image)) for bbPress"
-msgstr "bbPress のメインエリア（1カラム / ページヘッダー（画像））"
-
-#: inc/bbpress.php:58
-msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
-msgstr ""
-"bbPress のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
-
-#: inc/bbpress.php:64
-msgid "Main Area (Right Sidebar) for bbPress"
-msgstr "bbPress のメインエリア（右サイドバー）"
-
-#: inc/bbpress.php:70
-msgid "Page Header (Image) for bbPress"
-msgstr "bbPress のページヘッダー（画像）"
-
-#: inc/bbpress.php:76 inc/template-part-areas.php:316
-msgid "Page Header for bbPress"
-msgstr "bbPress のページヘッダー"
-
-#: inc/bbpress.php:83
-msgid "bbPress: Left Header / Page Header (Image)"
-msgstr "bbPress：左ヘッダー / ページヘッダー（画像）"
-
-#: inc/bbpress.php:91
-msgid "bbPress: Left Header"
-msgstr "bbPress：左ヘッダー"
-
-#: inc/bbpress.php:99
-msgid "bbPress: One Column / Page Header (Image)"
-msgstr "bbPress：1カラム / ページヘッダー（画像）"
-
-#: inc/bbpress.php:107
-msgid "bbPress: One Column"
-msgstr "bbPress：1カラム"
-
-#: inc/bbpress.php:115
-msgid "bbPress: Right Sidebar / Page Header (Image)"
-msgstr "bbPress：右サイドバー / ページヘッダー（画像）"
-
-#: inc/bbpress.php:123
-msgid "bbPress: Right Sidebar"
-msgstr "bbPress：右サイドバー"
 
 #: inc/block-categories.php:23 App/Controller/Manager/dist/js/app.js:7
 #: dist/js/editor/editor.js:1
@@ -940,6 +887,10 @@ msgstr "個別投稿のページヘッダー"
 #: inc/template-part-areas.php:302
 msgid "Main Area for Single Products"
 msgstr "単一の商品のメインエリア"
+
+#: inc/template-part-areas.php:316
+msgid "Page Header for bbPress"
+msgstr "bbPress のページヘッダー"
 
 #: inc/template-part-areas.php:323
 msgid "Main Area for bbPress"
@@ -3609,6 +3560,44 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "for bbPress"
+#~ msgstr "bbPress 用"
+
+#~ msgid "Main Area (One Column) for bbPress"
+#~ msgstr "bbPress のメインエリア（1カラム）"
+
+#~ msgid "Main Area (One Column / Page Header (Image)) for bbPress"
+#~ msgstr "bbPress のメインエリア（1カラム / ページヘッダー（画像））"
+
+#~ msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
+#~ msgstr ""
+#~ "bbPress のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
+#~ "像））"
+
+#~ msgid "Main Area (Right Sidebar) for bbPress"
+#~ msgstr "bbPress のメインエリア（右サイドバー）"
+
+#~ msgid "Page Header (Image) for bbPress"
+#~ msgstr "bbPress のページヘッダー（画像）"
+
+#~ msgid "bbPress: Left Header / Page Header (Image)"
+#~ msgstr "bbPress：左ヘッダー / ページヘッダー（画像）"
+
+#~ msgid "bbPress: Left Header"
+#~ msgstr "bbPress：左ヘッダー"
+
+#~ msgid "bbPress: One Column / Page Header (Image)"
+#~ msgstr "bbPress：1カラム / ページヘッダー（画像）"
+
+#~ msgid "bbPress: One Column"
+#~ msgstr "bbPress：1カラム"
+
+#~ msgid "bbPress: Right Sidebar / Page Header (Image)"
+#~ msgstr "bbPress：右サイドバー / ページヘッダー（画像）"
+
+#~ msgid "bbPress: Right Sidebar"
+#~ msgstr "bbPress：右サイドバー"
 
 #~ msgid "Page: Cart"
 #~ msgstr "ページ：お買い物カゴ"

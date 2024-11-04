@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-04T07:59:21+00:00\n"
+"POT-Creation-Date: 2024-11-04T13:27:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -97,59 +97,6 @@ msgstr ""
 #. translators: Accessibility text. %s: Parent page title.
 #: dist/blocks/mega-menu/render.php:9
 msgid "%s mega menu"
-msgstr ""
-
-#: inc/bbpress.php:21
-msgid "for bbPress"
-msgstr ""
-
-#: inc/bbpress.php:46
-msgid "Main Area (One Column) for bbPress"
-msgstr ""
-
-#: inc/bbpress.php:52
-msgid "Main Area (One Column / Page Header (Image)) for bbPress"
-msgstr ""
-
-#: inc/bbpress.php:58
-msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
-msgstr ""
-
-#: inc/bbpress.php:64
-msgid "Main Area (Right Sidebar) for bbPress"
-msgstr ""
-
-#: inc/bbpress.php:70
-msgid "Page Header (Image) for bbPress"
-msgstr ""
-
-#: inc/bbpress.php:76
-#: inc/template-part-areas.php:316
-msgid "Page Header for bbPress"
-msgstr ""
-
-#: inc/bbpress.php:83
-msgid "bbPress: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/bbpress.php:91
-msgid "bbPress: Left Header"
-msgstr ""
-
-#: inc/bbpress.php:99
-msgid "bbPress: One Column / Page Header (Image)"
-msgstr ""
-
-#: inc/bbpress.php:107
-msgid "bbPress: One Column"
-msgstr ""
-
-#: inc/bbpress.php:115
-msgid "bbPress: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/bbpress.php:123
-msgid "bbPress: Right Sidebar"
 msgstr ""
 
 #: inc/block-categories.php:23
@@ -970,6 +917,10 @@ msgstr ""
 
 #: inc/template-part-areas.php:302
 msgid "Main Area for Single Products"
+msgstr ""
+
+#: inc/template-part-areas.php:316
+msgid "Page Header for bbPress"
 msgstr ""
 
 #: inc/template-part-areas.php:323

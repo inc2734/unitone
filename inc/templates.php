@@ -56,52 +56,6 @@ function unitone_hidden_custom_templates( $query_result ) {
 add_filter( 'get_block_templates', 'unitone_hidden_custom_templates' );
 
 /**
- * Run only when WooCommerce is not enabled.
- */
-if ( ! class_exists( 'woocommerce' ) ) {
-	/**
-	 * If WooCommerce is not installed, remove templates for WooCommerce.
-	 *
-	 * @param array $query_result Array of found block templates.
-	 * @return array
-	 */
-	function unitone_hidden_custom_woocommerce_templates( $query_result ) {
-		$disable_templates = array(
-			'archive-product',
-			'order-confirmation',
-			'page-cart',
-			'page-checkout',
-			'product-search-results',
-			'single-product',
-			'taxonomy-product_attribute',
-			'taxonomy-product_cat',
-			'taxonomy-product_tag',
-		);
-
-		$custom_templates = Manager::get_custom_templates();
-		foreach ( $custom_templates as $custom_template ) {
-			if ( in_array( 'product', $custom_template['postTypes'], true ) ) {
-				$disable_templates[] = $custom_template['name'];
-			}
-		}
-
-		foreach ( $query_result as $index => $template ) {
-			if ( in_array( $template->slug, $disable_templates, true ) ) {
-				unset( $query_result[ $index ] );
-			}
-		}
-
-		return $query_result;
-	}
-	add_filter( 'get_block_templates', 'unitone_hidden_custom_woocommerce_templates' );
-}
-
-
-
-
-
-
-/**
  * Avoid deprecated parts in the Site Editor > Library.
  */
 add_filter(
@@ -203,7 +157,6 @@ function unitone_fallback_deprecated_custom_page_templates( $block_templates ) {
 			'single-product-right-sidebar-page-header-image'        => 'template-single-product-right-sidebar-page-header-image',
 			'custom/single-product/left-header'                     => 'template-single-product-left-header',
 			'custom/single-product/left-header-page-header-image'   => 'template-single-product-left-header-page-header-image',
-			'custom/single-product/left-header-header-footer'       => 'template-single-product-left-header-header-footer',
 			'custom/single-product/one-column'                      => 'template-single-product-one-column',
 			'custom/single-product/one-column-page-header-image'    => 'template-single-product-one-column-page-header-image',
 			'custom/single-product/right-sidebar'                   => 'template-single-product-right-sidebar',

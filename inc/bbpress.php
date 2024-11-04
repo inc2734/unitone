@@ -5,31 +5,140 @@
  * @license GPL-2.0+
  */
 
-/**
- * If bbPress is not installed, remove templates for bbPress.
- */
-if ( ! class_exists( 'bbpress' ) ) {
-	add_filter(
-		'get_block_templates',
-		function ( $templates ) {
-			$templates_for_woocommere = array(
-				'bbpress',
-			);
-
-			foreach ( $templates as $index => $template ) {
-				if ( in_array( $template->slug, $templates_for_woocommere, true ) ) {
-					unset( $templates[ $index ] );
-				}
-			}
-
-			return $templates;
-		}
-	);
-}
-
 if ( ! class_exists( 'bbPress' ) ) {
 	return;
 }
+
+/**
+ * Add templates.
+ */
+add_action(
+	'init',
+	function () {
+		$block_templates = array(
+			array(
+				'slug'    => 'unitone//bbpress',
+				'title'   => __( 'for bbPress', 'unitone' ),
+				'content' => file_get_contents( get_theme_file_path( 'templates.ext/bbpress/bbpress.html' ) ),
+			),
+		);
+
+		foreach ( $block_templates as $block_template ) {
+			$slug = $block_template['slug'];
+			unset( $block_template['slug'] );
+
+			register_block_template(
+				$slug,
+				$block_template
+			);
+		}
+	}
+);
+
+/**
+ * Add patterns.
+ */
+add_action(
+	'init',
+	function () {
+		$patterns = array(
+			array(
+				'title'    => __( 'Main Area (One Column) for bbPress', 'unitone' ),
+				'slug'     => 'unitone/template/bbpress/main/one-column',
+				'inserter' => false,
+				'path'     => get_theme_file_path( 'patterns.ext/bbpress/private/bbpress/main/one-column.php' ),
+			),
+			array(
+				'title'    => __( 'Main Area (One Column / Page Header (Image)) for bbPress', 'unitone' ),
+				'slug'     => 'unitone/template/bbpress/main/one-column-page-header-image',
+				'inserter' => false,
+				'path'     => get_theme_file_path( 'patterns.ext/bbpress/private/bbpress/main/one-column-page-header-image.php' ),
+			),
+			array(
+				'title'    => __( 'Main Area (Right Sidebar / Page Header (Image)) for bbPress', 'unitone' ),
+				'slug'     => 'unitone/template/bbpress/main/right-sidebar-page-header-image',
+				'inserter' => false,
+				'path'     => get_theme_file_path( 'patterns.ext/bbpress/private/bbpress/main/right-sidebar-page-header-image.php' ),
+			),
+			array(
+				'title'    => __( 'Main Area (Right Sidebar) for bbPress', 'unitone' ),
+				'slug'     => 'unitone/template/bbpress/main/right-sidebar',
+				'inserter' => false,
+				'path'     => get_theme_file_path( 'patterns.ext/bbpress/private/bbpress/main/right-sidebar.php' ),
+			),
+			array(
+				'title'    => __( 'Page Header (Image) for bbPress', 'unitone' ),
+				'slug'     => 'unitone/template/bbpress/page-header/image',
+				'inserter' => false,
+				'path'     => get_theme_file_path( 'patterns.ext/bbpress/private/bbpress/page-header/image.php' ),
+			),
+			array(
+				'title'    => __( 'Page Header for bbPress', 'unitone' ),
+				'slug'     => 'unitone/template/bbpress/page-header/default',
+				'inserter' => false,
+				'path'     => get_theme_file_path( 'patterns.ext/bbpress/private/bbpress/page-header/default.php' ),
+			),
+
+			array(
+				'title'         => __( 'bbPress: Left Header / Page Header (Image)', 'unitone' ),
+				'slug'          => 'unitone/template/bbpress/left-header-page-header-image',
+				'categories'    => array( 'unitone-templates' ),
+				'templateTypes' => array( 'bbpress' ),
+				'inserter'      => false,
+				'path'          => get_theme_file_path( 'patterns.ext/bbpress/template-bbpress-left-header-page-header-image.php' ),
+			),
+			array(
+				'title'         => __( 'bbPress: Left Header', 'unitone' ),
+				'slug'          => 'unitone/template/bbpress/left-header',
+				'categories'    => array( 'unitone-templates' ),
+				'templateTypes' => array( 'bbpress' ),
+				'inserter'      => false,
+				'path'          => get_theme_file_path( 'patterns.ext/bbpress/template-bbpress-left-header.php' ),
+			),
+			array(
+				'title'         => __( 'bbPress: One Column / Page Header (Image)', 'unitone' ),
+				'slug'          => 'unitone/template/bbpress/one-column-page-header-image',
+				'categories'    => array( 'unitone-templates' ),
+				'templateTypes' => array( 'bbpress' ),
+				'inserter'      => false,
+				'path'          => get_theme_file_path( 'patterns.ext/bbpress/template-bbpress-one-column-page-header-image.php' ),
+			),
+			array(
+				'title'         => __( 'bbPress: One Column', 'unitone' ),
+				'slug'          => 'unitone/template/bbpress/one-column',
+				'categories'    => array( 'unitone-templates' ),
+				'templateTypes' => array( 'bbpress' ),
+				'inserter'      => false,
+				'path'          => get_theme_file_path( 'patterns.ext/bbpress/template-bbpress-one-column.php' ),
+			),
+			array(
+				'title'         => __( 'bbPress: Right Sidebar / Page Header (Image)', 'unitone' ),
+				'slug'          => 'unitone/template/bbpress/right-sidebar-page-header-image',
+				'categories'    => array( 'unitone-templates' ),
+				'templateTypes' => array( 'bbpress' ),
+				'inserter'      => false,
+				'path'          => get_theme_file_path( 'patterns.ext/bbpress/template-bbpress-right-sidebar-page-header-image.php' ),
+			),
+			array(
+				'title'         => __( 'bbPress: Right Sidebar', 'unitone' ),
+				'slug'          => 'unitone/template/bbpress/right-sidebar',
+				'categories'    => array( 'unitone-templates' ),
+				'templateTypes' => array( 'bbpress' ),
+				'inserter'      => false,
+				'path'          => get_theme_file_path( 'patterns.ext/bbpress/template-bbpress-right-sidebar.php' ),
+			),
+		);
+
+		foreach ( $patterns as $pattern ) {
+			ob_start();
+			include $pattern['path'];
+			$pattern['content'] = ob_get_clean();
+			unset( $pattern['path'] );
+			register_block_pattern( $pattern['slug'], $pattern );
+		}
+	},
+	9
+);
 
 /**
  * Using block templates.

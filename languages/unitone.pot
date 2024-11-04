@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 14.3.0\n"
+"Project-Id-Version: unitone 14.4.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-24T13:54:47+00:00\n"
+"POT-Creation-Date: 2024-11-04T02:33:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -97,6 +97,59 @@ msgstr ""
 #. translators: Accessibility text. %s: Parent page title.
 #: dist/blocks/mega-menu/render.php:9
 msgid "%s mega menu"
+msgstr ""
+
+#: inc/bbpress.php:21
+msgid "for bbPress"
+msgstr ""
+
+#: inc/bbpress.php:82
+msgid "Main Area (One Column) for bbPress"
+msgstr ""
+
+#: inc/bbpress.php:88
+msgid "Main Area (One Column / Page Header (Image)) for bbPress"
+msgstr ""
+
+#: inc/bbpress.php:94
+msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
+msgstr ""
+
+#: inc/bbpress.php:100
+msgid "Main Area (Right Sidebar) for bbPress"
+msgstr ""
+
+#: inc/bbpress.php:106
+msgid "Page Header (Image) for bbPress"
+msgstr ""
+
+#: inc/bbpress.php:112
+#: inc/template-part-areas.php:316
+msgid "Page Header for bbPress"
+msgstr ""
+
+#: inc/bbpress.php:119
+msgid "bbPress: Left Header / Page Header (Image)"
+msgstr ""
+
+#: inc/bbpress.php:127
+msgid "bbPress: Left Header"
+msgstr ""
+
+#: inc/bbpress.php:135
+msgid "bbPress: One Column / Page Header (Image)"
+msgstr ""
+
+#: inc/bbpress.php:143
+msgid "bbPress: One Column"
+msgstr ""
+
+#: inc/bbpress.php:151
+msgid "bbPress: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: inc/bbpress.php:159
+msgid "bbPress: Right Sidebar"
 msgstr ""
 
 #: inc/block-categories.php:23
@@ -199,301 +252,171 @@ msgid "Page Header for All Archives"
 msgstr ""
 
 #: inc/block-patterns.php:129
-msgid "Main Area (One Column) for Product Catalog"
-msgstr ""
-
-#: inc/block-patterns.php:135
-msgid "Main Area (One Column / Page Header (Image)) for Product Catalog"
-msgstr ""
-
-#: inc/block-patterns.php:141
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Catalog"
-msgstr ""
-
-#: inc/block-patterns.php:147
-msgid "Main Area (Right Sidebar) for Product Catalog"
-msgstr ""
-
-#: inc/block-patterns.php:153
-msgid "Page Header (Image) for Product Catalog"
-msgstr ""
-
-#: inc/block-patterns.php:159
-#: inc/template-part-areas.php:281
-msgid "Page Header for Product Catalog"
-msgstr ""
-
-#: inc/block-patterns.php:165
-msgid "Main Area (One Column) for bbPress"
-msgstr ""
-
-#: inc/block-patterns.php:171
-msgid "Main Area (One Column / Page Header (Image)) for bbPress"
-msgstr ""
-
-#: inc/block-patterns.php:177
-msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
-msgstr ""
-
-#: inc/block-patterns.php:183
-msgid "Main Area (Right Sidebar) for bbPress"
-msgstr ""
-
-#: inc/block-patterns.php:189
-msgid "Page Header (Image) for bbPress"
-msgstr ""
-
-#: inc/block-patterns.php:195
-#: inc/template-part-areas.php:316
-msgid "Page Header for bbPress"
-msgstr ""
-
-#: inc/block-patterns.php:201
-msgid "Contents for Cart"
-msgstr ""
-
-#: inc/block-patterns.php:207
-msgid "Main Area (One Column) for Cart"
-msgstr ""
-
-#: inc/block-patterns.php:213
-msgid "Main Area (One Column / Page Header (Image)) for Cart"
-msgstr ""
-
-#: inc/block-patterns.php:219
-msgid "Page Header (Image) for Cart"
-msgstr ""
-
-#: inc/block-patterns.php:225
-msgid "Page Header for Cart"
-msgstr ""
-
-#: inc/block-patterns.php:231
-msgid "Contents for Checkout"
-msgstr ""
-
-#: inc/block-patterns.php:237
-msgid "Main Area (One Column) for Checkout"
-msgstr ""
-
-#: inc/block-patterns.php:243
-msgid "Main Area (One Column / Page Header (Image)) for Checkout"
-msgstr ""
-
-#: inc/block-patterns.php:249
-msgid "Page Header (Image) for Checkout"
-msgstr ""
-
-#: inc/block-patterns.php:255
-msgid "Page Header for Checkout"
-msgstr ""
-
-#: inc/block-patterns.php:261
-msgid "Contents for Order Confirmation"
-msgstr ""
-
-#: inc/block-patterns.php:267
-msgid "Main Area (One Column) for Order Confirmation"
-msgstr ""
-
-#: inc/block-patterns.php:273
-msgid "Main Area (One Column / Page Header (Image)) for Order Confirmation"
-msgstr ""
-
-#: inc/block-patterns.php:279
-msgid "Page Header (Image) for Order Confirmation"
-msgstr ""
-
-#: inc/block-patterns.php:285
-msgid "Page Header for Order Confirmation"
-msgstr ""
-
-#: inc/block-patterns.php:291
 msgid "Main Area (Blank) for Front Page"
 msgstr ""
 
-#: inc/block-patterns.php:297
+#: inc/block-patterns.php:135
 msgid "Main Area (One Column) for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:303
+#: inc/block-patterns.php:141
 msgid "Main Area (One Column / Page Header (Image)) for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:309
+#: inc/block-patterns.php:147
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:315
+#: inc/block-patterns.php:153
 msgid "Main Area (Right Sidebar) for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:321
+#: inc/block-patterns.php:159
 msgid "Page Header (Image) for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:327
+#: inc/block-patterns.php:165
 #: inc/template-part-areas.php:211
 msgid "Page Header for Blog Home"
 msgstr ""
 
-#: inc/block-patterns.php:333
+#: inc/block-patterns.php:171
 msgid "Main Area (One Column) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:339
+#: inc/block-patterns.php:177
 msgid "Main Area (Blank) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:345
+#: inc/block-patterns.php:183
 msgid "Main Area (One Column / Page Header (Featured Image)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:351
+#: inc/block-patterns.php:189
 msgid "Main Area (One Column / Page Header (Image)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:357
+#: inc/block-patterns.php:195
 msgid "Main Area (One Column / Page Header (Slim)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:363
+#: inc/block-patterns.php:201
 msgid "Main Area (One Column / Page Header (Wide)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:369
+#: inc/block-patterns.php:207
 msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:375
+#: inc/block-patterns.php:213
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:381
+#: inc/block-patterns.php:219
 msgid "Main Area (Right Sidebar) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:387
+#: inc/block-patterns.php:225
 #: inc/template-part-areas.php:169
 msgid "Page Header for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:393
+#: inc/block-patterns.php:231
 msgid "Page Header (Featured Image) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:399
+#: inc/block-patterns.php:237
 msgid "Page Header (Image) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:405
+#: inc/block-patterns.php:243
 msgid "Page Header (Slim) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:411
+#: inc/block-patterns.php:249
 msgid "Page Header (Wide) for Pages"
 msgstr ""
 
-#: inc/block-patterns.php:417
+#: inc/block-patterns.php:255
 msgid "Main Area (One Column) for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:423
+#: inc/block-patterns.php:261
 msgid "Main Area (One Column / Page Header (Image)) for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:429
+#: inc/block-patterns.php:267
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:435
+#: inc/block-patterns.php:273
 msgid "Main Area (Right Sidebar) for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:441
+#: inc/block-patterns.php:279
 #: inc/template-part-areas.php:253
 msgid "Page Header for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:447
+#: inc/block-patterns.php:285
 msgid "Page Header (Image) for Search Results"
 msgstr ""
 
-#: inc/block-patterns.php:453
+#: inc/block-patterns.php:291
 msgid "Main Area (One Column) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:459
+#: inc/block-patterns.php:297
 msgid "Main Area (Blank) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:465
+#: inc/block-patterns.php:303
 msgid "Main Area (One Column / Page Header (Featured Image)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:471
+#: inc/block-patterns.php:309
 msgid "Main Area (Page Header (Image)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:477
+#: inc/block-patterns.php:315
 msgid "Main Area (Page Header (Slim)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:483
+#: inc/block-patterns.php:321
 msgid "Main Area (Page Header (Wide)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:489
+#: inc/block-patterns.php:327
 msgid "Main Area (Right Sidebar / Page Header (Featured Image)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:495
+#: inc/block-patterns.php:333
 msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:501
+#: inc/block-patterns.php:339
 msgid "Main Area (Right Sidebar) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:507
+#: inc/block-patterns.php:345
 #: inc/template-part-areas.php:148
 msgid "Page Header for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:513
+#: inc/block-patterns.php:351
 msgid "Page Header (Featured Image) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:519
+#: inc/block-patterns.php:357
 msgid "Page Header (Image) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:525
+#: inc/block-patterns.php:363
 msgid "Page Header (Slim) for Single Posts"
 msgstr ""
 
-#: inc/block-patterns.php:531
+#: inc/block-patterns.php:369
 msgid "Page Header (Wide) for Single Posts"
-msgstr ""
-
-#: inc/block-patterns.php:537
-msgid "Main Area (One Column) for Single Products"
-msgstr ""
-
-#: inc/block-patterns.php:543
-msgid "Main Area (One Column / Page Header (Image)) for Single Products"
-msgstr ""
-
-#: inc/block-patterns.php:549
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
-msgstr ""
-
-#: inc/block-patterns.php:555
-msgid "Main Area (Right Sidebar) for Single Products"
-msgstr ""
-
-#: inc/block-patterns.php:561
-msgid "Page Header (Image) for Single Products"
 msgstr ""
 
 #: inc/block-styles.php:16
@@ -511,6 +434,7 @@ msgid "Underline"
 msgstr ""
 
 #: inc/block-styles.php:40
+#: inc/block-styles.php:144
 #: dist/js/editor/editor.js:10
 msgid "Bordered"
 msgstr ""
@@ -973,6 +897,7 @@ msgstr ""
 
 #: inc/template-part-areas.php:69
 #: inc/template-part-areas.php:267
+#: inc/woocommerce.php:44
 msgid "Product Catalog"
 msgstr ""
 
@@ -995,6 +920,7 @@ msgid "Checkout"
 msgstr ""
 
 #: inc/template-part-areas.php:104
+#: inc/woocommerce.php:49
 msgid "Order Confirmation"
 msgstr ""
 
@@ -1036,6 +962,11 @@ msgstr ""
 msgid "Main Area for Product Catalog"
 msgstr ""
 
+#: inc/template-part-areas.php:281
+#: inc/woocommerce.php:191
+msgid "Page Header for Product Catalog"
+msgstr ""
+
 #: inc/template-part-areas.php:295
 msgid "Page Header for Single Products"
 msgstr ""
@@ -1054,6 +985,232 @@ msgstr ""
 
 #: inc/variations.php:36
 msgid "Share Button"
+msgstr ""
+
+#: inc/woocommerce.php:54
+msgid "Page: Cart"
+msgstr ""
+
+#: inc/woocommerce.php:59
+msgid "Page: Checkout"
+msgstr ""
+
+#: inc/woocommerce.php:64
+msgid "Single Product"
+msgstr ""
+
+#: inc/woocommerce.php:69
+#: inc/woocommerce.php:490
+msgid "Single Products: One Column"
+msgstr ""
+
+#: inc/woocommerce.php:75
+#: inc/woocommerce.php:482
+msgid "Single Products: One Column / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:81
+#: inc/woocommerce.php:506
+msgid "Single Products: Right Sidebar"
+msgstr ""
+
+#: inc/woocommerce.php:87
+#: inc/woocommerce.php:498
+msgid "Single Products: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:93
+#: inc/woocommerce.php:474
+msgid "Single Products: Left Header"
+msgstr ""
+
+#: inc/woocommerce.php:99
+#: inc/woocommerce.php:466
+msgid "Single Products: Left Header / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:161
+msgid "Main Area (One Column) for Product Catalog"
+msgstr ""
+
+#: inc/woocommerce.php:167
+msgid "Main Area (One Column / Page Header (Image)) for Product Catalog"
+msgstr ""
+
+#: inc/woocommerce.php:173
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Catalog"
+msgstr ""
+
+#: inc/woocommerce.php:179
+msgid "Main Area (Right Sidebar) for Product Catalog"
+msgstr ""
+
+#: inc/woocommerce.php:185
+msgid "Page Header (Image) for Product Catalog"
+msgstr ""
+
+#: inc/woocommerce.php:198
+msgid "Contents for Cart"
+msgstr ""
+
+#: inc/woocommerce.php:204
+msgid "Main Area (One Column) for Cart"
+msgstr ""
+
+#: inc/woocommerce.php:210
+msgid "Main Area (One Column / Page Header (Image)) for Cart"
+msgstr ""
+
+#: inc/woocommerce.php:216
+msgid "Page Header (Image) for Cart"
+msgstr ""
+
+#: inc/woocommerce.php:222
+msgid "Page Header for Cart"
+msgstr ""
+
+#: inc/woocommerce.php:229
+msgid "Contents for Checkout"
+msgstr ""
+
+#: inc/woocommerce.php:235
+msgid "Main Area (One Column) for Checkout"
+msgstr ""
+
+#: inc/woocommerce.php:241
+msgid "Main Area (One Column / Page Header (Image)) for Checkout"
+msgstr ""
+
+#: inc/woocommerce.php:247
+msgid "Page Header (Image) for Checkout"
+msgstr ""
+
+#: inc/woocommerce.php:253
+msgid "Page Header for Checkout"
+msgstr ""
+
+#: inc/woocommerce.php:260
+msgid "Contents for Order Confirmation"
+msgstr ""
+
+#: inc/woocommerce.php:266
+msgid "Main Area (One Column) for Order Confirmation"
+msgstr ""
+
+#: inc/woocommerce.php:272
+msgid "Main Area (One Column / Page Header (Image)) for Order Confirmation"
+msgstr ""
+
+#: inc/woocommerce.php:278
+msgid "Page Header (Image) for Order Confirmation"
+msgstr ""
+
+#: inc/woocommerce.php:284
+msgid "Page Header for Order Confirmation"
+msgstr ""
+
+#: inc/woocommerce.php:291
+msgid "Main Area (One Column) for Single Products"
+msgstr ""
+
+#: inc/woocommerce.php:297
+msgid "Main Area (One Column / Page Header (Image)) for Single Products"
+msgstr ""
+
+#: inc/woocommerce.php:303
+msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
+msgstr ""
+
+#: inc/woocommerce.php:309
+msgid "Main Area (Right Sidebar) for Single Products"
+msgstr ""
+
+#: inc/woocommerce.php:315
+msgid "Page Header (Image) for Single Products"
+msgstr ""
+
+#: inc/woocommerce.php:322
+msgid "Product Catalog: Left Header / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:330
+msgid "Product Catalog: Left Header"
+msgstr ""
+
+#: inc/woocommerce.php:338
+msgid "Product Catalog: One Column / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:346
+msgid "Product Catalog: One Column"
+msgstr ""
+
+#: inc/woocommerce.php:354
+msgid "Product Catalog: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:362
+msgid "Product Catalog: Right Sidebar"
+msgstr ""
+
+#: inc/woocommerce.php:370
+msgid "Cart: Left Header / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:378
+msgid "Cart: Left Header"
+msgstr ""
+
+#: inc/woocommerce.php:386
+msgid "Cart: One Column / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:394
+msgid "Cart: One Column"
+msgstr ""
+
+#: inc/woocommerce.php:402
+msgid "Checkout: Left Header / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:410
+msgid "Checkout: Left Header"
+msgstr ""
+
+#: inc/woocommerce.php:418
+msgid "Checkout: One Column / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:426
+msgid "Checkout: One Column"
+msgstr ""
+
+#: inc/woocommerce.php:434
+msgid "Order Confirmation: Left Header / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:442
+msgid "Order Confirmation: Left Header"
+msgstr ""
+
+#: inc/woocommerce.php:450
+msgid "Order Confirmation: One Column / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:458
+msgid "Order Confirmation: One Column"
+msgstr ""
+
+#: inc/woocommerce.php:514
+msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: inc/woocommerce.php:522
+msgid "Single Posts: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: inc/woocommerce.php:530
+msgid "Single Posts: Right Sidebar"
 msgstr ""
 
 #: patterns/footer-1.php
@@ -1320,36 +1477,6 @@ msgctxt "Pattern title"
 msgid "All Archives: One Column"
 msgstr ""
 
-#: patterns/template-archive-product-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "Product Catalog: Left Header / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-archive-product-left-header.php
-msgctxt "Pattern title"
-msgid "Product Catalog: Left Header"
-msgstr ""
-
-#: patterns/template-archive-product-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "Product Catalog: One Column / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-archive-product-one-column.php
-msgctxt "Pattern title"
-msgid "Product Catalog: One Column"
-msgstr ""
-
-#: patterns/template-archive-product-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "Product Catalog: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-archive-product-right-sidebar.php
-msgctxt "Pattern title"
-msgid "Product Catalog: Right Sidebar"
-msgstr ""
-
 #: patterns/template-archive-right-sidebar-page-header-image.php
 msgctxt "Pattern title"
 msgid "All Archives: Right Sidebar / Page Header (Image)"
@@ -1358,76 +1485,6 @@ msgstr ""
 #: patterns/template-archive-right-sidebar.php
 msgctxt "Pattern title"
 msgid "All Archives: Right Sidebar"
-msgstr ""
-
-#: patterns/template-bbpress-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "bbPress: Left Header / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-bbpress-left-header.php
-msgctxt "Pattern title"
-msgid "bbPress: Left Header"
-msgstr ""
-
-#: patterns/template-bbpress-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "bbPress: One Column / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-bbpress-one-column.php
-msgctxt "Pattern title"
-msgid "bbPress: One Column"
-msgstr ""
-
-#: patterns/template-bbpress-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "bbPress: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-bbpress-right-sidebar.php
-msgctxt "Pattern title"
-msgid "bbPress: Right Sidebar"
-msgstr ""
-
-#: patterns/template-cart-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "Cart: Left Header / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-cart-left-header.php
-msgctxt "Pattern title"
-msgid "Cart: Left Header"
-msgstr ""
-
-#: patterns/template-cart-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "Cart: One Column / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-cart-one-column.php
-msgctxt "Pattern title"
-msgid "Cart: One Column"
-msgstr ""
-
-#: patterns/template-checkout-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "Checkout: Left Header / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-checkout-left-header.php
-msgctxt "Pattern title"
-msgid "Checkout: Left Header"
-msgstr ""
-
-#: patterns/template-checkout-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "Checkout: One Column / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-checkout-one-column.php
-msgctxt "Pattern title"
-msgid "Checkout: One Column"
 msgstr ""
 
 #: patterns/template-front-page-header-footer.php
@@ -1468,26 +1525,6 @@ msgstr ""
 #: patterns/template-home-right-sidebar.php
 msgctxt "Pattern title"
 msgid "Blog Home: Right Sidebar"
-msgstr ""
-
-#: patterns/template-order-confirmation-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "Order Confirmation: Left Header / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-order-confirmation-left-header.php
-msgctxt "Pattern title"
-msgid "Order Confirmation: Left Header"
-msgstr ""
-
-#: patterns/template-order-confirmation-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "Order Confirmation: One Column / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-order-confirmation-one-column.php
-msgctxt "Pattern title"
-msgid "Order Confirmation: One Column"
 msgstr ""
 
 #: patterns/template-page-blank.php
@@ -1638,51 +1675,6 @@ msgstr ""
 #: patterns/template-single-one-column.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column"
-msgstr ""
-
-#: patterns/template-single-product-left-header-page-header-image.php
-msgctxt "Pattern title"
-msgid "Single Products: Left Header / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-single-product-left-header.php
-msgctxt "Pattern title"
-msgid "Single Products: Left Header"
-msgstr ""
-
-#: patterns/template-single-product-one-column-page-header-image.php
-msgctxt "Pattern title"
-msgid "Single Products: One Column / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-single-product-one-column.php
-msgctxt "Pattern title"
-msgid "Single Products: One Column"
-msgstr ""
-
-#: patterns/template-single-product-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "Single Products: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-single-product-right-sidebar.php
-msgctxt "Pattern title"
-msgid "Single Products: Right Sidebar"
-msgstr ""
-
-#: patterns/template-single-right-sidebar-page-header-featured.php
-msgctxt "Pattern title"
-msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
-msgstr ""
-
-#: patterns/template-single-right-sidebar-page-header-image.php
-msgctxt "Pattern title"
-msgid "Single Posts: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: patterns/template-single-right-sidebar.php
-msgctxt "Pattern title"
-msgid "Single Posts: Right Sidebar"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
@@ -3932,46 +3924,6 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Posts: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Single Products: One Column"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Single Products: One Column / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Single Products: Right Sidebar"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Single Products: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Single Products: Left Header"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Single Products: Left Header / Only Header and Footer"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "Single Products: Left Header / Page Header (Image)"
-msgstr ""
-
-#: theme.json
-msgctxt "Custom template name"
-msgid "for bbPress"
 msgstr ""
 
 #: theme.json

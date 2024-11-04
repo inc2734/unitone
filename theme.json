@@ -691,62 +691,6 @@
 			"postTypes": [
 				"post"
 			]
-		},
-		{
-			"name": "template-single-product-one-column",
-			"title": "Single Products: One Column",
-			"postTypes": [
-				"product"
-			]
-		},
-		{
-			"name": "template-single-product-one-column-page-header-image",
-			"title": "Single Products: One Column / Page Header (Image)",
-			"postTypes": [
-				"product"
-			]
-		},
-		{
-			"name": "template-single-product-right-sidebar",
-			"title": "Single Products: Right Sidebar",
-			"postTypes": [
-				"product"
-			]
-		},
-		{
-			"name": "template-single-product-right-sidebar-page-header-image",
-			"title": "Single Products: Right Sidebar / Page Header (Image)",
-			"postTypes": [
-				"product"
-			]
-		},
-		{
-			"name": "template-single-product-left-header",
-			"title": "Single Products: Left Header",
-			"postTypes": [
-				"product"
-			]
-		},
-		{
-			"name": "template-single-product-left-header-header-footer",
-			"title": "Single Products: Left Header / Only Header and Footer",
-			"postTypes": [
-				"product"
-			]
-		},
-		{
-			"name": "template-single-product-left-header-page-header-image",
-			"title": "Single Products: Left Header / Page Header (Image)",
-			"postTypes": [
-				"product"
-			]
-		},
-		{
-			"name": "bbpress",
-			"title": "for bbPress",
-			"postTypes": [
-				"false"
-			]
 		}
 	],
 	"templateParts": [

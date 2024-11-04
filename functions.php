@@ -19,19 +19,6 @@ if ( ! function_exists( 'unitone_theme_setup' ) ) {
 	 * support for post thumbnails.
 	 */
 	function unitone_theme_setup() {
-		// Originally, mofile was {locale}.mo, but since unitone-{locale}.mo is generated
-		// so that it can be read by block editors, it should be adjusted.
-		add_filter(
-			'load_textdomain_mofile',
-			function ( $mofile, $domain ) {
-				return 'unitone' === $domain
-					? get_template_directory() . '/languages/' . basename( $mofile )
-					: $mofile;
-			},
-			10,
-			2
-		);
-
 		// Make theme available for translation.
 		load_theme_textdomain( 'unitone', get_template_directory() . '/languages' );
 

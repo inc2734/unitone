@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-11-04T02:33:56+00:00\n"
-"PO-Revision-Date: 2024-11-04 11:40+0900\n"
+"POT-Creation-Date: 2024-11-04T07:59:21+00:00\n"
+"PO-Revision-Date: 2024-11-04 17:09+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -87,52 +87,52 @@ msgstr "%sのメガメニュー"
 msgid "for bbPress"
 msgstr "bbPress 用"
 
-#: inc/bbpress.php:82
+#: inc/bbpress.php:46
 msgid "Main Area (One Column) for bbPress"
 msgstr "bbPress のメインエリア（1カラム）"
 
-#: inc/bbpress.php:88
+#: inc/bbpress.php:52
 msgid "Main Area (One Column / Page Header (Image)) for bbPress"
 msgstr "bbPress のメインエリア（1カラム / ページヘッダー（画像））"
 
-#: inc/bbpress.php:94
+#: inc/bbpress.php:58
 msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
 msgstr ""
 "bbPress のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
 
-#: inc/bbpress.php:100
+#: inc/bbpress.php:64
 msgid "Main Area (Right Sidebar) for bbPress"
 msgstr "bbPress のメインエリア（右サイドバー）"
 
-#: inc/bbpress.php:106
+#: inc/bbpress.php:70
 msgid "Page Header (Image) for bbPress"
 msgstr "bbPress のページヘッダー（画像）"
 
-#: inc/bbpress.php:112 inc/template-part-areas.php:316
+#: inc/bbpress.php:76 inc/template-part-areas.php:316
 msgid "Page Header for bbPress"
 msgstr "bbPress のページヘッダー"
 
-#: inc/bbpress.php:119
+#: inc/bbpress.php:83
 msgid "bbPress: Left Header / Page Header (Image)"
 msgstr "bbPress：左ヘッダー / ページヘッダー（画像）"
 
-#: inc/bbpress.php:127
+#: inc/bbpress.php:91
 msgid "bbPress: Left Header"
 msgstr "bbPress：左ヘッダー"
 
-#: inc/bbpress.php:135
+#: inc/bbpress.php:99
 msgid "bbPress: One Column / Page Header (Image)"
 msgstr "bbPress：1カラム / ページヘッダー（画像）"
 
-#: inc/bbpress.php:143
+#: inc/bbpress.php:107
 msgid "bbPress: One Column"
 msgstr "bbPress：1カラム"
 
-#: inc/bbpress.php:151
+#: inc/bbpress.php:115
 msgid "bbPress: Right Sidebar / Page Header (Image)"
 msgstr "bbPress：右サイドバー / ページヘッダー（画像）"
 
-#: inc/bbpress.php:159
+#: inc/bbpress.php:123
 msgid "bbPress: Right Sidebar"
 msgstr "bbPress：右サイドバー"
 
@@ -870,7 +870,6 @@ msgid "Search Results"
 msgstr "検索結果"
 
 #: inc/template-part-areas.php:69 inc/template-part-areas.php:267
-#: inc/woocommerce.php:44
 msgid "Product Catalog"
 msgstr "商品カタログ"
 
@@ -890,7 +889,7 @@ msgstr "お買い物カゴ"
 msgid "Checkout"
 msgstr "購入手続き"
 
-#: inc/template-part-areas.php:104 inc/woocommerce.php:49
+#: inc/template-part-areas.php:104
 msgid "Order Confirmation"
 msgstr "注文確認"
 
@@ -930,7 +929,7 @@ msgstr "検索結果のメインエリア"
 msgid "Main Area for Product Catalog"
 msgstr "商品カタログのメインエリア"
 
-#: inc/template-part-areas.php:281 inc/woocommerce.php:191
+#: inc/template-part-areas.php:281
 msgid "Page Header for Product Catalog"
 msgstr "商品カタログのページヘッダー"
 
@@ -953,230 +952,6 @@ msgstr "フッターのパンくずリスト"
 #: inc/variations.php:36
 msgid "Share Button"
 msgstr "シェアボタン"
-
-#: inc/woocommerce.php:54
-msgid "Page: Cart"
-msgstr "ページ：お買い物カゴ"
-
-#: inc/woocommerce.php:59
-msgid "Page: Checkout"
-msgstr "購入手続き"
-
-#: inc/woocommerce.php:64
-msgid "Single Product"
-msgstr "個別商品"
-
-#: inc/woocommerce.php:69 inc/woocommerce.php:490
-msgid "Single Products: One Column"
-msgstr "単一の商品：1カラム"
-
-#: inc/woocommerce.php:75 inc/woocommerce.php:482
-msgid "Single Products: One Column / Page Header (Image)"
-msgstr "単一の商品：1カラム / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:81 inc/woocommerce.php:506
-msgid "Single Products: Right Sidebar"
-msgstr "単一の商品：右サイドバー"
-
-#: inc/woocommerce.php:87 inc/woocommerce.php:498
-msgid "Single Products: Right Sidebar / Page Header (Image)"
-msgstr "単一の商品：右サイドバー / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:93 inc/woocommerce.php:474
-msgid "Single Products: Left Header"
-msgstr "単一の商品：左ヘッダー"
-
-#: inc/woocommerce.php:99 inc/woocommerce.php:466
-msgid "Single Products: Left Header / Page Header (Image)"
-msgstr "単一の商品：左ヘッダー / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:161
-msgid "Main Area (One Column) for Product Catalog"
-msgstr "商品カタログのメインエリア（1カラム）"
-
-#: inc/woocommerce.php:167
-msgid "Main Area (One Column / Page Header (Image)) for Product Catalog"
-msgstr "商品カタログのメインエリア（1カラム / ページヘッダー（画像））"
-
-#: inc/woocommerce.php:173
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Catalog"
-msgstr ""
-"商品カタログのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
-"像））"
-
-#: inc/woocommerce.php:179
-msgid "Main Area (Right Sidebar) for Product Catalog"
-msgstr "商品カタログのメインエリア（右サイドバー）"
-
-#: inc/woocommerce.php:185
-msgid "Page Header (Image) for Product Catalog"
-msgstr "商品カタログのページヘッダー（画像）"
-
-#: inc/woocommerce.php:198
-msgid "Contents for Cart"
-msgstr "お買い物カゴのコンテンツ"
-
-#: inc/woocommerce.php:204
-msgid "Main Area (One Column) for Cart"
-msgstr "購入手続きのメインエリア（1カラム）"
-
-#: inc/woocommerce.php:210
-msgid "Main Area (One Column / Page Header (Image)) for Cart"
-msgstr "お買い物カゴのメインエリア（1カラム / ページヘッダー（画像））"
-
-#: inc/woocommerce.php:216
-msgid "Page Header (Image) for Cart"
-msgstr "お買い物カゴのページヘッダー（画像）"
-
-#: inc/woocommerce.php:222
-msgid "Page Header for Cart"
-msgstr "お買い物カゴのページヘッダー"
-
-#: inc/woocommerce.php:229
-msgid "Contents for Checkout"
-msgstr "購入手続きのコンテンツ"
-
-#: inc/woocommerce.php:235
-msgid "Main Area (One Column) for Checkout"
-msgstr "購入手続きのメインエリア（1カラム）"
-
-#: inc/woocommerce.php:241
-msgid "Main Area (One Column / Page Header (Image)) for Checkout"
-msgstr "購入手続きのメインエリア（1カラム / ページヘッダー（画像））"
-
-#: inc/woocommerce.php:247
-msgid "Page Header (Image) for Checkout"
-msgstr "購入手続きのページヘッダー（画像）"
-
-#: inc/woocommerce.php:253
-msgid "Page Header for Checkout"
-msgstr "購入手続きのページヘッダー"
-
-#: inc/woocommerce.php:260
-msgid "Contents for Order Confirmation"
-msgstr "注文確認のコンテンツ"
-
-#: inc/woocommerce.php:266
-msgid "Main Area (One Column) for Order Confirmation"
-msgstr "注文確認のメインエリア（1カラム）"
-
-#: inc/woocommerce.php:272
-msgid "Main Area (One Column / Page Header (Image)) for Order Confirmation"
-msgstr "注文確認のメインエリア（1カラム / ページヘッダー（画像））"
-
-#: inc/woocommerce.php:278
-msgid "Page Header (Image) for Order Confirmation"
-msgstr "注文確認のページヘッダー（画像）"
-
-#: inc/woocommerce.php:284
-msgid "Page Header for Order Confirmation"
-msgstr "注文確認のページヘッダー"
-
-#: inc/woocommerce.php:291
-msgid "Main Area (One Column) for Single Products"
-msgstr "単一の商品のメインエリア（1カラム）"
-
-#: inc/woocommerce.php:297
-msgid "Main Area (One Column / Page Header (Image)) for Single Products"
-msgstr ""
-"単一の商品のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
-
-#: inc/woocommerce.php:303
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
-msgstr ""
-"単一の商品のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画像））"
-
-#: inc/woocommerce.php:309
-msgid "Main Area (Right Sidebar) for Single Products"
-msgstr "単一の商品のメインエリア（右サイドバー）"
-
-#: inc/woocommerce.php:315
-msgid "Page Header (Image) for Single Products"
-msgstr "単一の商品のページヘッダー（画像）"
-
-#: inc/woocommerce.php:322
-msgid "Product Catalog: Left Header / Page Header (Image)"
-msgstr "商品カタログ：左ヘッダー / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:330
-msgid "Product Catalog: Left Header"
-msgstr "商品カタログ：左ヘッダー"
-
-#: inc/woocommerce.php:338
-msgid "Product Catalog: One Column / Page Header (Image)"
-msgstr "商品カタログ：1カラム / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:346
-msgid "Product Catalog: One Column"
-msgstr "商品カタログ：1カラム"
-
-#: inc/woocommerce.php:354
-msgid "Product Catalog: Right Sidebar / Page Header (Image)"
-msgstr "商品カタログ：右サイドバー / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:362
-msgid "Product Catalog: Right Sidebar"
-msgstr "商品カタログ：右サイドバー"
-
-#: inc/woocommerce.php:370
-msgid "Cart: Left Header / Page Header (Image)"
-msgstr "お買い物カゴ：左ヘッダー / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:378
-msgid "Cart: Left Header"
-msgstr "お買い物カゴ：左ヘッダー"
-
-#: inc/woocommerce.php:386
-msgid "Cart: One Column / Page Header (Image)"
-msgstr "お買い物カゴ：1カラム / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:394
-msgid "Cart: One Column"
-msgstr "お買い物カゴ：1カラム"
-
-#: inc/woocommerce.php:402
-msgid "Checkout: Left Header / Page Header (Image)"
-msgstr "購入手続き：左ヘッダー / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:410
-msgid "Checkout: Left Header"
-msgstr "購入手続き：左ヘッダー"
-
-#: inc/woocommerce.php:418
-msgid "Checkout: One Column / Page Header (Image)"
-msgstr "購入手続き：1カラム / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:426
-msgid "Checkout: One Column"
-msgstr "購入手続き：1カラム"
-
-#: inc/woocommerce.php:434
-msgid "Order Confirmation: Left Header / Page Header (Image)"
-msgstr "注文確認：左ヘッダー / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:442
-msgid "Order Confirmation: Left Header"
-msgstr "注文確認：左ヘッダー"
-
-#: inc/woocommerce.php:450
-msgid "Order Confirmation: One Column / Page Header (Image)"
-msgstr "注文確認：1カラム / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:458
-msgid "Order Confirmation: One Column"
-msgstr "注文確認：1カラム"
-
-#: inc/woocommerce.php:514
-msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
-msgstr "個別投稿：右サイドバー / ページヘッダー（アイキャッチ画像）"
-
-#: inc/woocommerce.php:522
-msgid "Single Posts: Right Sidebar / Page Header (Image)"
-msgstr "個別投稿：右サイドバー / ページヘッダー（画像）"
-
-#: inc/woocommerce.php:530
-msgid "Single Posts: Right Sidebar"
-msgstr "個別投稿：右サイドバー"
 
 #: patterns/footer-1.php
 msgctxt "Pattern title"
@@ -3834,6 +3609,176 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "Page: Cart"
+#~ msgstr "ページ：お買い物カゴ"
+
+#~ msgid "Page: Checkout"
+#~ msgstr "購入手続き"
+
+#~ msgid "Single Product"
+#~ msgstr "個別商品"
+
+#~ msgid "Single Products: One Column"
+#~ msgstr "単一の商品：1カラム"
+
+#~ msgid "Single Products: One Column / Page Header (Image)"
+#~ msgstr "単一の商品：1カラム / ページヘッダー（画像）"
+
+#~ msgid "Single Products: Right Sidebar"
+#~ msgstr "単一の商品：右サイドバー"
+
+#~ msgid "Single Products: Right Sidebar / Page Header (Image)"
+#~ msgstr "単一の商品：右サイドバー / ページヘッダー（画像）"
+
+#~ msgid "Single Products: Left Header"
+#~ msgstr "単一の商品：左ヘッダー"
+
+#~ msgid "Single Products: Left Header / Page Header (Image)"
+#~ msgstr "単一の商品：左ヘッダー / ページヘッダー（画像）"
+
+#~ msgid "Main Area (One Column) for Product Catalog"
+#~ msgstr "商品カタログのメインエリア（1カラム）"
+
+#~ msgid "Main Area (One Column / Page Header (Image)) for Product Catalog"
+#~ msgstr "商品カタログのメインエリア（1カラム / ページヘッダー（画像））"
+
+#~ msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Catalog"
+#~ msgstr ""
+#~ "商品カタログのメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
+#~ "像））"
+
+#~ msgid "Main Area (Right Sidebar) for Product Catalog"
+#~ msgstr "商品カタログのメインエリア（右サイドバー）"
+
+#~ msgid "Page Header (Image) for Product Catalog"
+#~ msgstr "商品カタログのページヘッダー（画像）"
+
+#~ msgid "Contents for Cart"
+#~ msgstr "お買い物カゴのコンテンツ"
+
+#~ msgid "Main Area (One Column) for Cart"
+#~ msgstr "購入手続きのメインエリア（1カラム）"
+
+#~ msgid "Main Area (One Column / Page Header (Image)) for Cart"
+#~ msgstr "お買い物カゴのメインエリア（1カラム / ページヘッダー（画像））"
+
+#~ msgid "Page Header (Image) for Cart"
+#~ msgstr "お買い物カゴのページヘッダー（画像）"
+
+#~ msgid "Page Header for Cart"
+#~ msgstr "お買い物カゴのページヘッダー"
+
+#~ msgid "Contents for Checkout"
+#~ msgstr "購入手続きのコンテンツ"
+
+#~ msgid "Main Area (One Column) for Checkout"
+#~ msgstr "購入手続きのメインエリア（1カラム）"
+
+#~ msgid "Main Area (One Column / Page Header (Image)) for Checkout"
+#~ msgstr "購入手続きのメインエリア（1カラム / ページヘッダー（画像））"
+
+#~ msgid "Page Header (Image) for Checkout"
+#~ msgstr "購入手続きのページヘッダー（画像）"
+
+#~ msgid "Page Header for Checkout"
+#~ msgstr "購入手続きのページヘッダー"
+
+#~ msgid "Contents for Order Confirmation"
+#~ msgstr "注文確認のコンテンツ"
+
+#~ msgid "Main Area (One Column) for Order Confirmation"
+#~ msgstr "注文確認のメインエリア（1カラム）"
+
+#~ msgid "Main Area (One Column / Page Header (Image)) for Order Confirmation"
+#~ msgstr "注文確認のメインエリア（1カラム / ページヘッダー（画像））"
+
+#~ msgid "Page Header (Image) for Order Confirmation"
+#~ msgstr "注文確認のページヘッダー（画像）"
+
+#~ msgid "Page Header for Order Confirmation"
+#~ msgstr "注文確認のページヘッダー"
+
+#~ msgid "Main Area (One Column) for Single Products"
+#~ msgstr "単一の商品のメインエリア（1カラム）"
+
+#~ msgid "Main Area (One Column / Page Header (Image)) for Single Products"
+#~ msgstr ""
+#~ "単一の商品のメインエリア（1カラム / ページヘッダー（アイキャッチ画像））"
+
+#~ msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
+#~ msgstr ""
+#~ "単一の商品のメインエリア（右サイドバー / ページヘッダー（アイキャッチ画"
+#~ "像））"
+
+#~ msgid "Main Area (Right Sidebar) for Single Products"
+#~ msgstr "単一の商品のメインエリア（右サイドバー）"
+
+#~ msgid "Page Header (Image) for Single Products"
+#~ msgstr "単一の商品のページヘッダー（画像）"
+
+#~ msgid "Product Catalog: Left Header / Page Header (Image)"
+#~ msgstr "商品カタログ：左ヘッダー / ページヘッダー（画像）"
+
+#~ msgid "Product Catalog: Left Header"
+#~ msgstr "商品カタログ：左ヘッダー"
+
+#~ msgid "Product Catalog: One Column / Page Header (Image)"
+#~ msgstr "商品カタログ：1カラム / ページヘッダー（画像）"
+
+#~ msgid "Product Catalog: One Column"
+#~ msgstr "商品カタログ：1カラム"
+
+#~ msgid "Product Catalog: Right Sidebar / Page Header (Image)"
+#~ msgstr "商品カタログ：右サイドバー / ページヘッダー（画像）"
+
+#~ msgid "Product Catalog: Right Sidebar"
+#~ msgstr "商品カタログ：右サイドバー"
+
+#~ msgid "Cart: Left Header / Page Header (Image)"
+#~ msgstr "お買い物カゴ：左ヘッダー / ページヘッダー（画像）"
+
+#~ msgid "Cart: Left Header"
+#~ msgstr "お買い物カゴ：左ヘッダー"
+
+#~ msgid "Cart: One Column / Page Header (Image)"
+#~ msgstr "お買い物カゴ：1カラム / ページヘッダー（画像）"
+
+#~ msgid "Cart: One Column"
+#~ msgstr "お買い物カゴ：1カラム"
+
+#~ msgid "Checkout: Left Header / Page Header (Image)"
+#~ msgstr "購入手続き：左ヘッダー / ページヘッダー（画像）"
+
+#~ msgid "Checkout: Left Header"
+#~ msgstr "購入手続き：左ヘッダー"
+
+#~ msgid "Checkout: One Column / Page Header (Image)"
+#~ msgstr "購入手続き：1カラム / ページヘッダー（画像）"
+
+#~ msgid "Checkout: One Column"
+#~ msgstr "購入手続き：1カラム"
+
+#~ msgid "Order Confirmation: Left Header / Page Header (Image)"
+#~ msgstr "注文確認：左ヘッダー / ページヘッダー（画像）"
+
+#~ msgid "Order Confirmation: Left Header"
+#~ msgstr "注文確認：左ヘッダー"
+
+#~ msgid "Order Confirmation: One Column / Page Header (Image)"
+#~ msgstr "注文確認：1カラム / ページヘッダー（画像）"
+
+#~ msgid "Order Confirmation: One Column"
+#~ msgstr "注文確認：1カラム"
+
+#~ msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
+#~ msgstr "個別投稿：右サイドバー / ページヘッダー（アイキャッチ画像）"
+
+#~ msgid "Single Posts: Right Sidebar / Page Header (Image)"
+#~ msgstr "個別投稿：右サイドバー / ページヘッダー（画像）"
+
+#~ msgid "Single Posts: Right Sidebar"
+#~ msgstr "個別投稿：右サイドバー"
 
 #~ msgctxt "Custom template name"
 #~ msgid "Single Products: One Column"

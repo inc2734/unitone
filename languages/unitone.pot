@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 14.4.1\n"
+"Project-Id-Version: unitone 15.0.0-beta1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-04T02:33:56+00:00\n"
+"POT-Creation-Date: 2024-11-04T07:59:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -103,52 +103,52 @@ msgstr ""
 msgid "for bbPress"
 msgstr ""
 
-#: inc/bbpress.php:82
+#: inc/bbpress.php:46
 msgid "Main Area (One Column) for bbPress"
 msgstr ""
 
-#: inc/bbpress.php:88
+#: inc/bbpress.php:52
 msgid "Main Area (One Column / Page Header (Image)) for bbPress"
 msgstr ""
 
-#: inc/bbpress.php:94
+#: inc/bbpress.php:58
 msgid "Main Area (Right Sidebar / Page Header (Image)) for bbPress"
 msgstr ""
 
-#: inc/bbpress.php:100
+#: inc/bbpress.php:64
 msgid "Main Area (Right Sidebar) for bbPress"
 msgstr ""
 
-#: inc/bbpress.php:106
+#: inc/bbpress.php:70
 msgid "Page Header (Image) for bbPress"
 msgstr ""
 
-#: inc/bbpress.php:112
+#: inc/bbpress.php:76
 #: inc/template-part-areas.php:316
 msgid "Page Header for bbPress"
 msgstr ""
 
-#: inc/bbpress.php:119
+#: inc/bbpress.php:83
 msgid "bbPress: Left Header / Page Header (Image)"
 msgstr ""
 
-#: inc/bbpress.php:127
+#: inc/bbpress.php:91
 msgid "bbPress: Left Header"
 msgstr ""
 
-#: inc/bbpress.php:135
+#: inc/bbpress.php:99
 msgid "bbPress: One Column / Page Header (Image)"
 msgstr ""
 
-#: inc/bbpress.php:143
+#: inc/bbpress.php:107
 msgid "bbPress: One Column"
 msgstr ""
 
-#: inc/bbpress.php:151
+#: inc/bbpress.php:115
 msgid "bbPress: Right Sidebar / Page Header (Image)"
 msgstr ""
 
-#: inc/bbpress.php:159
+#: inc/bbpress.php:123
 msgid "bbPress: Right Sidebar"
 msgstr ""
 
@@ -897,7 +897,6 @@ msgstr ""
 
 #: inc/template-part-areas.php:69
 #: inc/template-part-areas.php:267
-#: inc/woocommerce.php:44
 msgid "Product Catalog"
 msgstr ""
 
@@ -920,7 +919,6 @@ msgid "Checkout"
 msgstr ""
 
 #: inc/template-part-areas.php:104
-#: inc/woocommerce.php:49
 msgid "Order Confirmation"
 msgstr ""
 
@@ -963,7 +961,6 @@ msgid "Main Area for Product Catalog"
 msgstr ""
 
 #: inc/template-part-areas.php:281
-#: inc/woocommerce.php:191
 msgid "Page Header for Product Catalog"
 msgstr ""
 
@@ -985,232 +982,6 @@ msgstr ""
 
 #: inc/variations.php:36
 msgid "Share Button"
-msgstr ""
-
-#: inc/woocommerce.php:54
-msgid "Page: Cart"
-msgstr ""
-
-#: inc/woocommerce.php:59
-msgid "Page: Checkout"
-msgstr ""
-
-#: inc/woocommerce.php:64
-msgid "Single Product"
-msgstr ""
-
-#: inc/woocommerce.php:69
-#: inc/woocommerce.php:490
-msgid "Single Products: One Column"
-msgstr ""
-
-#: inc/woocommerce.php:75
-#: inc/woocommerce.php:482
-msgid "Single Products: One Column / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:81
-#: inc/woocommerce.php:506
-msgid "Single Products: Right Sidebar"
-msgstr ""
-
-#: inc/woocommerce.php:87
-#: inc/woocommerce.php:498
-msgid "Single Products: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:93
-#: inc/woocommerce.php:474
-msgid "Single Products: Left Header"
-msgstr ""
-
-#: inc/woocommerce.php:99
-#: inc/woocommerce.php:466
-msgid "Single Products: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:161
-msgid "Main Area (One Column) for Product Catalog"
-msgstr ""
-
-#: inc/woocommerce.php:167
-msgid "Main Area (One Column / Page Header (Image)) for Product Catalog"
-msgstr ""
-
-#: inc/woocommerce.php:173
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Product Catalog"
-msgstr ""
-
-#: inc/woocommerce.php:179
-msgid "Main Area (Right Sidebar) for Product Catalog"
-msgstr ""
-
-#: inc/woocommerce.php:185
-msgid "Page Header (Image) for Product Catalog"
-msgstr ""
-
-#: inc/woocommerce.php:198
-msgid "Contents for Cart"
-msgstr ""
-
-#: inc/woocommerce.php:204
-msgid "Main Area (One Column) for Cart"
-msgstr ""
-
-#: inc/woocommerce.php:210
-msgid "Main Area (One Column / Page Header (Image)) for Cart"
-msgstr ""
-
-#: inc/woocommerce.php:216
-msgid "Page Header (Image) for Cart"
-msgstr ""
-
-#: inc/woocommerce.php:222
-msgid "Page Header for Cart"
-msgstr ""
-
-#: inc/woocommerce.php:229
-msgid "Contents for Checkout"
-msgstr ""
-
-#: inc/woocommerce.php:235
-msgid "Main Area (One Column) for Checkout"
-msgstr ""
-
-#: inc/woocommerce.php:241
-msgid "Main Area (One Column / Page Header (Image)) for Checkout"
-msgstr ""
-
-#: inc/woocommerce.php:247
-msgid "Page Header (Image) for Checkout"
-msgstr ""
-
-#: inc/woocommerce.php:253
-msgid "Page Header for Checkout"
-msgstr ""
-
-#: inc/woocommerce.php:260
-msgid "Contents for Order Confirmation"
-msgstr ""
-
-#: inc/woocommerce.php:266
-msgid "Main Area (One Column) for Order Confirmation"
-msgstr ""
-
-#: inc/woocommerce.php:272
-msgid "Main Area (One Column / Page Header (Image)) for Order Confirmation"
-msgstr ""
-
-#: inc/woocommerce.php:278
-msgid "Page Header (Image) for Order Confirmation"
-msgstr ""
-
-#: inc/woocommerce.php:284
-msgid "Page Header for Order Confirmation"
-msgstr ""
-
-#: inc/woocommerce.php:291
-msgid "Main Area (One Column) for Single Products"
-msgstr ""
-
-#: inc/woocommerce.php:297
-msgid "Main Area (One Column / Page Header (Image)) for Single Products"
-msgstr ""
-
-#: inc/woocommerce.php:303
-msgid "Main Area (Right Sidebar / Page Header (Image)) for Single Products"
-msgstr ""
-
-#: inc/woocommerce.php:309
-msgid "Main Area (Right Sidebar) for Single Products"
-msgstr ""
-
-#: inc/woocommerce.php:315
-msgid "Page Header (Image) for Single Products"
-msgstr ""
-
-#: inc/woocommerce.php:322
-msgid "Product Catalog: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:330
-msgid "Product Catalog: Left Header"
-msgstr ""
-
-#: inc/woocommerce.php:338
-msgid "Product Catalog: One Column / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:346
-msgid "Product Catalog: One Column"
-msgstr ""
-
-#: inc/woocommerce.php:354
-msgid "Product Catalog: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:362
-msgid "Product Catalog: Right Sidebar"
-msgstr ""
-
-#: inc/woocommerce.php:370
-msgid "Cart: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:378
-msgid "Cart: Left Header"
-msgstr ""
-
-#: inc/woocommerce.php:386
-msgid "Cart: One Column / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:394
-msgid "Cart: One Column"
-msgstr ""
-
-#: inc/woocommerce.php:402
-msgid "Checkout: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:410
-msgid "Checkout: Left Header"
-msgstr ""
-
-#: inc/woocommerce.php:418
-msgid "Checkout: One Column / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:426
-msgid "Checkout: One Column"
-msgstr ""
-
-#: inc/woocommerce.php:434
-msgid "Order Confirmation: Left Header / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:442
-msgid "Order Confirmation: Left Header"
-msgstr ""
-
-#: inc/woocommerce.php:450
-msgid "Order Confirmation: One Column / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:458
-msgid "Order Confirmation: One Column"
-msgstr ""
-
-#: inc/woocommerce.php:514
-msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
-msgstr ""
-
-#: inc/woocommerce.php:522
-msgid "Single Posts: Right Sidebar / Page Header (Image)"
-msgstr ""
-
-#: inc/woocommerce.php:530
-msgid "Single Posts: Right Sidebar"
 msgstr ""
 
 #: patterns/footer-1.php

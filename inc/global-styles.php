@@ -110,7 +110,18 @@ function apply_css_vars_from_settings() {
 }
 add_action( 'wp_enqueue_scripts', 'apply_css_vars_from_settings' );
 add_action( 'admin_enqueue_scripts', 'apply_css_vars_from_settings' );
-add_action( 'enqueue_block_editor_assets', 'apply_css_vars_from_settings', 11 );
+
+/**
+ * Apply CSS Vars from settings for editor.
+ */
+function apply_css_vars_from_settings_for_editor() {
+	if ( ! is_admin() ) {
+		return;
+	}
+
+	apply_css_vars_from_settings();
+}
+add_action( 'enqueue_block_assets', 'apply_css_vars_from_settings_for_editor' );
 
 /**
  * Set color palette.

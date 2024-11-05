@@ -31,6 +31,10 @@ add_action( 'wp_enqueue_scripts', 'unitone_theme_scripts', 9 );
  * Enqueue theme scripts and styles for the block editor.
  */
 function unitone_enqueue_block_editor_assets() {
+	if ( ! is_admin() ) {
+		return;
+	}
+
 	$asset = include get_theme_file_path( 'dist/js/editor/editor.asset.php' );
 	wp_enqueue_script(
 		'unitone/editor',
@@ -119,7 +123,7 @@ function unitone_enqueue_block_editor_assets() {
 		)
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_assets', 9 );
+add_action( 'enqueue_block_assets', 'unitone_enqueue_block_editor_assets', 9 );
 
 /**
  * Enqueue block styles.

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-04T13:27:14+00:00\n"
+"POT-Creation-Date: 2024-11-04T14:35:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -1397,6 +1397,21 @@ msgstr ""
 #: patterns/template-single-one-column.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column"
+msgstr ""
+
+#: patterns/template-single-right-sidebar-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template-single-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template-single-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Single Posts: Right Sidebar"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1

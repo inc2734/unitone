@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-11-04T13:27:14+00:00\n"
-"PO-Revision-Date: 2024-11-04 22:28+0900\n"
+"POT-Creation-Date: 2024-11-04T14:35:36+00:00\n"
+"PO-Revision-Date: 2024-11-04 23:36+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1349,6 +1349,21 @@ msgstr "個別投稿：1カラム / ページヘッダー（幅広）"
 msgctxt "Pattern title"
 msgid "Single Posts: One Column"
 msgstr "個別投稿：1カラム"
+
+#: patterns/template-single-right-sidebar-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
+msgstr "個別投稿：右サイドバー / ページヘッダー（アイキャッチ画像）"
+
+#: patterns/template-single-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Right Sidebar / Page Header (Image)"
+msgstr "個別投稿：右サイドバー / ページヘッダー（画像）"
+
+#: patterns/template-single-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Single Posts: Right Sidebar"
+msgstr "個別投稿：右サイドバー"
 
 #: App/Controller/Manager/dist/js/app.js:1
 msgid "License"
@@ -3759,15 +3774,6 @@ msgstr "ループ"
 
 #~ msgid "Order Confirmation: One Column"
 #~ msgstr "注文確認：1カラム"
-
-#~ msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
-#~ msgstr "個別投稿：右サイドバー / ページヘッダー（アイキャッチ画像）"
-
-#~ msgid "Single Posts: Right Sidebar / Page Header (Image)"
-#~ msgstr "個別投稿：右サイドバー / ページヘッダー（画像）"
-
-#~ msgid "Single Posts: Right Sidebar"
-#~ msgstr "個別投稿：右サイドバー"
 
 #~ msgctxt "Custom template name"
 #~ msgid "Single Products: One Column"

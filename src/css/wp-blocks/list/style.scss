@@ -1,0 +1,7 @@
+.wp-block-list {
+	padding-inline-start: 0;
+
+	:where(li) {
+		margin-inline-start: 1.5rem;
+	}
+}

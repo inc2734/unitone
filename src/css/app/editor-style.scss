@@ -18,7 +18,7 @@
  * .editor-styles-wrapper.block-editor-iframe__body
  *  .is-root-container.wp-block-post-content.block-editor-block-list__layout
 */
-.editor-styles-wrapper:where(.block-editor-writing-flow),
+div:where(.editor-styles-wrapper.block-editor-writing-flow),
 :where(.editor-styles-wrapper.block-editor-iframe__body) {
 	@include meta.load-css("foundation");
 	@include meta.load-css("wp-blocks/wp-blocks");

@@ -15,7 +15,10 @@ function unitone_theme_scripts() {
 		get_theme_file_uri( 'dist/js/app/app.js' ),
 		$asset['dependencies'],
 		filemtime( get_theme_file_path( 'dist/js/app/app.js' ) ),
-		true
+		array(
+			'strategy'  => 'defer',
+			'in_footer' => false,
+		)
 	);
 
 	wp_enqueue_style(
@@ -76,10 +79,10 @@ function unitone_enqueue_block_editor_assets() {
 	// For non iframe editor.
 	$css = str_replace(
 		array(
-			'.editor-styles-wrapper:where(.block-editor-writing-flow) html',
-			'.editor-styles-wrapper:where(.block-editor-writing-flow) body',
+			'div:where(.editor-styles-wrapper.block-editor-writing-flow) html',
+			'div:where(.editor-styles-wrapper.block-editor-writing-flow) body',
 		),
-		'.editor-styles-wrapper:where(.block-editor-writing-flow)',
+		'div:where(.editor-styles-wrapper.block-editor-writing-flow)',
 		$css
 	);
 
@@ -140,6 +143,7 @@ function unitone_enqueue_block_styles() {
 		'core/image'               => array(),
 		'core/latest-comments'     => array(),
 		'core/latest-posts'        => array(),
+		'core/list'                => array(),
 		'core/navigation'          => array(),
 		'core/post-comments-form'  => array(),
 		'core/post-featured-image' => array(),

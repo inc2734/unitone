@@ -37,7 +37,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const ref = useRefEffect( ( target ) => {
-		dividersResizeObserver( target );
+		dividersResizeObserver( target, {
+			ignore: {
+				className: [
+					'is-selected',
+					'has-child-selected',
+					'is-hovered',
+					'is-highlighted',
+				],
+			},
+		} );
 
 		setTimeout( () => {
 			setDividerLinewrap( target );

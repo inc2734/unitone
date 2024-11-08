@@ -21,7 +21,7 @@
 	}
 
 	&.is-layout-flow > * + * {
-		margin-top: 0;
+		margin-top: var(--unitone--gap);
 	}
 
 	&.is-flex-container.is-flex-container[class*=columns-] > .wp-block-post {

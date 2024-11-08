@@ -93,74 +93,86 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 					} }
 				>
 					{ postTypesWithCustomTemplates.map(
-						( postTypeWithCustomTemplates ) => (
-							<div
-								key={ postTypeWithCustomTemplates.label }
-								data-unitone-layout="with-sidebar -sidebar:left"
-								style={ { '--unitone--sidebar-width': '20em' } }
-							>
-								<div data-unitone-layout="stack">
-									<h3>
-										{ postTypeWithCustomTemplates.label }
-									</h3>
-								</div>
+						( postTypeWithCustomTemplates ) =>
+							!! postTypeWithCustomTemplates?.customTemplates &&
+							0 <
+								postTypeWithCustomTemplates?.customTemplates
+									?.length && (
 								<div
-									data-unitone-layout="responsive-grid -gap:-1"
+									key={ postTypeWithCustomTemplates.label }
+									data-unitone-layout="with-sidebar -sidebar:left"
 									style={ {
-										'--unitone--column-min-width': '400px',
+										'--unitone--sidebar-width': '20em',
 									} }
 								>
-									{ postTypeWithCustomTemplates.customTemplates.map(
-										( customTemplate ) => {
-											const onChange = ( enable ) => {
-												let newEnabledCustomTemplates =
-													enable
-														? [
-																...enabledCustomTemplates,
-																customTemplate.name,
-														  ]
-														: enabledCustomTemplates.filter(
-																( v ) =>
-																	v !==
-																	customTemplate.name
-														  );
-												newEnabledCustomTemplates = [
-													...new Set(
-														newEnabledCustomTemplates
-													),
-												];
+									<div data-unitone-layout="stack">
+										<h3>
+											{
+												postTypeWithCustomTemplates.label
+											}
+										</h3>
+									</div>
+									<div
+										data-unitone-layout="responsive-grid -gap:-1"
+										style={ {
+											'--unitone--column-min-width':
+												'400px',
+										} }
+									>
+										{ postTypeWithCustomTemplates.customTemplates.map(
+											( customTemplate ) => {
+												const onChange = ( enable ) => {
+													let newEnabledCustomTemplates =
+														enable
+															? [
+																	...enabledCustomTemplates,
+																	customTemplate.name,
+															  ]
+															: enabledCustomTemplates.filter(
+																	( v ) =>
+																		v !==
+																		customTemplate.name
+															  );
+													newEnabledCustomTemplates =
+														[
+															...new Set(
+																newEnabledCustomTemplates
+															),
+														];
 
-												setSettings( {
-													...settings,
-													'enabled-custom-templates':
-														newEnabledCustomTemplates,
-												} );
-											};
+													setSettings( {
+														...settings,
+														'enabled-custom-templates':
+															newEnabledCustomTemplates,
+													} );
+												};
 
-											return (
-												<ToggleControl
-													__nextHasNoMarginBottom
-													key={ customTemplate.name }
-													label={
-														customTemplate.title
-													}
-													checked={ enabledCustomTemplates.includes(
-														customTemplate.name
-													) }
-													disabled={ usingCustomTemplates.includes(
-														customTemplate.name
-													) }
-													onChange={ onChange }
-													style={ {
-														marginBottom: '0px',
-													} }
-												/>
-											);
-										}
-									) }
+												return (
+													<ToggleControl
+														__nextHasNoMarginBottom
+														key={
+															customTemplate.name
+														}
+														label={
+															customTemplate.title
+														}
+														checked={ enabledCustomTemplates.includes(
+															customTemplate.name
+														) }
+														disabled={ usingCustomTemplates.includes(
+															customTemplate.name
+														) }
+														onChange={ onChange }
+														style={ {
+															marginBottom: '0px',
+														} }
+													/>
+												);
+											}
+										) }
+									</div>
 								</div>
-							</div>
-						)
+							)
 					) }
 				</div>
 				<div data-unitone-layout="cluster">

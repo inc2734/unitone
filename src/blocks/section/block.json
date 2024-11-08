@@ -10,6 +10,12 @@
 			"type": "string",
 			"default": "section"
 		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"gutters": "root"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

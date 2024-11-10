@@ -2,6 +2,7 @@ import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginC
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { __experimentalBorderControl as BorderControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -166,11 +167,13 @@ export function DividerEdit( { name, label, unitone, setAttributes } ) {
 		} );
 	};
 
+	const newDivider = unitone?.divider ?? defaultDivider;
+	const newDividerColor = unitone?.dividerColor ?? defaultDividerColor;
 	const hydratedDivider = getDivider(
 		{
 			...unitone,
-			divider: unitone?.divider ?? defaultDivider,
-			dividerColor: unitone?.dividerColor ?? defaultDividerColor,
+			divider: newDivider,
+			dividerColor: newDivider?.color ?? newDividerColor,
 		},
 		colors
 	);
@@ -187,40 +190,9 @@ export function DividerEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveDividerProp( extraProps, blockType, attributes ) {
-	const blockTypeAttributes = wp.data
-		.select( blocksStore )
-		.getBlockType( blockType )?.attributes;
-	const defaultDivider = blockTypeAttributes?.unitone?.default?.divider;
-	const defaultDividerColor =
-		blockTypeAttributes?.unitone?.default?.dividerColor;
-
+function saveDividerProp( extraProps, blockType, attributes ) {
 	if ( ! hasBlockSupport( blockType, 'unitone.divider' ) ) {
 		return extraProps;
-	}
-
-	if ( null == attributes?.unitone?.divider ) {
-		if ( null != defaultDivider ) {
-			attributes = {
-				...attributes,
-				unitone: {
-					...attributes?.unitone,
-					divider: defaultDivider,
-				},
-			};
-		}
-	}
-
-	if ( null == attributes?.unitone?.dividerColor ) {
-		if ( null != defaultDividerColor ) {
-			attributes = {
-				...attributes,
-				unitone: {
-					...attributes?.unitone,
-					dividerColor: defaultDividerColor,
-				},
-			};
-		}
 	}
 
 	if (
@@ -252,11 +224,39 @@ export function saveDividerProp( extraProps, blockType, attributes ) {
 export function useDividerBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const { defaultDivider, defaultDividerColor } = useSelect(
+		( select ) => {
+			const blockTypeAttributes =
+				select( blocksStore ).getBlockType( name )?.attributes;
+			return {
+				defaultDivider: blockTypeAttributes?.unitone?.default?.divider,
+				defaultDividerColor:
+					blockTypeAttributes?.unitone?.default?.dividerColor,
+			};
+		},
+		[ name ]
+	);
+
+	const newDividerProp = useMemo( () => {
+		return saveDividerProp( wrapperProps, name, {
+			unitone: {
+				divider: {
+					...( attributes?.unitone?.divider ?? defaultDivider ),
+				},
+				dividerColor:
+					attributes?.unitone?.dividerColor ?? defaultDividerColor,
+			},
+		} );
+	}, [
+		JSON.stringify( attributes?.unitone?.divider ),
+		attributes?.unitone?.dividerColor,
+	] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveDividerProp( wrapperProps, name, attributes ),
+			...newDividerProp,
 		},
 	};
 }

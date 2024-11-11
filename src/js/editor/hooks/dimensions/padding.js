@@ -6,6 +6,7 @@ import clsx from 'clsx';
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
@@ -76,25 +77,12 @@ export function PaddingEdit( { label, name, unitone, setAttributes } ) {
 }
 
 export function savePaddingProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.padding;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.padding' ) ) {
 		return extraProps;
 	}
 
 	if ( null == attributes?.unitone?.padding ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				padding: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	// Deprecation.
@@ -117,11 +105,27 @@ export function savePaddingProp( extraProps, blockType, attributes ) {
 export function usePaddingBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.padding;
+		},
+		[ name ]
+	);
+
+	const newPaddingProp = useMemo( () => {
+		return savePaddingProp( wrapperProps, name, {
+			unitone: {
+				padding: attributes?.unitone?.padding ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...savePaddingProp( wrapperProps, name, attributes ),
+			...newPaddingProp,
 		},
 	};
 }

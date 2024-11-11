@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
@@ -9,6 +10,17 @@ function getDefaultValue( { name, __unstableUnitoneSupports } ) {
 		? __unstableUnitoneSupports?.flexBasis?.default
 		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
 				?.unitone?.default?.flexBasis;
+}
+
+function useDefaultValue( { name, __unstableUnitoneSupports } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.flexBasis;
+	}, [] );
+
+	return null != __unstableUnitoneSupports?.flexBasis?.default
+		? __unstableUnitoneSupports?.flexBasis?.default
+		: defaultValue;
 }
 
 export function hasFlexBasisValue( {
@@ -62,13 +74,7 @@ export function FlexBasisEdit( {
 	__unstableUnitoneSupports,
 	setAttributes,
 } ) {
-	let defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.flexBasis;
-	}, [] );
-	if ( null != __unstableUnitoneSupports?.flexBasis?.default ) {
-		defaultValue = __unstableUnitoneSupports?.flexBasis?.default;
-	}
+	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
 	return (
 		<TextControl
@@ -98,23 +104,8 @@ export function saveFlexBasisProp( extraProps, blockType, attributes ) {
 		}
 	}
 
-	const defaultValue = getDefaultValue( {
-		name: blockType,
-		__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
-	} );
-
 	if ( null == attributes?.unitone?.flexBasis ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				flexBasis: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	extraProps.style = {
@@ -127,12 +118,27 @@ export function saveFlexBasisProp( extraProps, blockType, attributes ) {
 
 export function useFlexBasisBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+	const { __unstableUnitoneSupports } = attributes;
+
+	const defaultValue = useDefaultValue( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+
+	const newFlexBasisProp = useMemo( () => {
+		return saveFlexBasisProp( wrapperProps, name, {
+			__unstableUnitoneSupports,
+			unitone: {
+				flexBasis: attributes?.unitone?.flexBasis ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveFlexBasisProp( wrapperProps, name, attributes ),
+			...newFlexBasisProp,
 		},
 	};
 }

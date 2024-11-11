@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { BaseControl, ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
@@ -99,25 +100,12 @@ export function GuttersEdit( { name, label, unitone, setAttributes } ) {
 }
 
 export function saveGuttersProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.gutters;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.gutters' ) ) {
 		return extraProps;
 	}
 
 	if ( null == attributes?.unitone?.gutters ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				gutters: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	// Deprecation.
@@ -140,11 +128,27 @@ export function saveGuttersProp( extraProps, blockType, attributes ) {
 export function useGuttersBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.gutters;
+		},
+		[ name ]
+	);
+
+	const newGuttersProp = useMemo( () => {
+		return saveGuttersProp( wrapperProps, name, {
+			unitone: {
+				gutters: attributes?.unitone?.gutters ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveGuttersProp( wrapperProps, name, attributes ),
+			...newGuttersProp,
 		},
 	};
 }

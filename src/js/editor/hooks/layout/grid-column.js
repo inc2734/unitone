@@ -6,6 +6,7 @@ import {
 
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
@@ -224,23 +225,8 @@ export function saveGridColumnProp( extraProps, blockType, attributes ) {
 		}
 	}
 
-	const defaultValue = getDefaultValue( {
-		name: blockType,
-		__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
-	} );
-
 	if ( null == attributes?.unitone?.gridColumn ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				gridColumn: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	extraProps.style = {
@@ -264,12 +250,27 @@ export function saveGridColumnProp( extraProps, blockType, attributes ) {
 
 export function useGridColumnBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+	const { __unstableUnitoneSupports } = attributes;
+
+	const defaultValue = useDefaultValue( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+
+	const newGridColumnProp = useMemo( () => {
+		return saveGridColumnProp( wrapperProps, name, {
+			__unstableUnitoneSupports,
+			unitone: {
+				gridColumn: attributes?.unitone?.gridColumn ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveGridColumnProp( wrapperProps, name, attributes ),
+			...newGridColumnProp,
 		},
 	};
 }

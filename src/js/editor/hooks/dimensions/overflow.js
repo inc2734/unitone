@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -96,25 +97,12 @@ export function OverflowEdit( { label, name, unitone, setAttributes } ) {
 }
 
 export function saveOverflowProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.overflow;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.overflow' ) ) {
 		return extraProps;
 	}
 
-	if ( null == attributes?.unitone?.parallax ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				overflow: defaultValue,
-			},
-		};
+	if ( null == attributes?.unitone?.overflow ) {
+		return extraProps;
 	}
 
 	extraProps[ 'data-unitone-layout' ] = clsx(
@@ -128,11 +116,27 @@ export function saveOverflowProp( extraProps, blockType, attributes ) {
 export function useOverflowBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.overflow;
+		},
+		[ name ]
+	);
+
+	const newOverflowProp = useMemo( () => {
+		return saveOverflowProp( wrapperProps, name, {
+			unitone: {
+				overflow: attributes?.unitone?.overflow ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveOverflowProp( wrapperProps, name, attributes ),
+			...newOverflowProp,
 		},
 	};
 }

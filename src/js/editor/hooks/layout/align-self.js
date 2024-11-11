@@ -13,6 +13,7 @@ import {
 
 import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
@@ -393,23 +394,8 @@ export function saveAlignSelfProp( extraProps, blockType, attributes ) {
 		}
 	}
 
-	const defaultValue = getDefaultValue( {
-		name: blockType,
-		__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
-	} );
-
 	if ( null == attributes?.unitone?.alignSelf ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				alignSelf: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	extraProps[ 'data-unitone-layout' ] = clsx(
@@ -431,12 +417,24 @@ export function saveAlignSelfProp( extraProps, blockType, attributes ) {
 
 export function useAlignSelfBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+	const { __unstableUnitoneSupports } = attributes;
+
+	const defaultValue = useDefaultValue( name, __unstableUnitoneSupports );
+
+	const newAlignSelfProp = useMemo( () => {
+		return saveAlignSelfProp( wrapperProps, name, {
+			__unstableUnitoneSupports,
+			unitone: {
+				alignSelf: attributes?.unitone?.alignSelf ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveAlignSelfProp( wrapperProps, name, attributes ),
+			...newAlignSelfProp,
 		},
 	};
 }

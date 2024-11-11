@@ -247,10 +247,7 @@ export function useDividerBlockProps( settings ) {
 					attributes?.unitone?.dividerColor ?? defaultDividerColor,
 			},
 		} );
-	}, [
-		JSON.stringify( attributes?.unitone?.divider ),
-		attributes?.unitone?.dividerColor,
-	] );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
 
 	return {
 		...settings,

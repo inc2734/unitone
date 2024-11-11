@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
@@ -9,6 +10,17 @@ function getDefaultValue( { name, __unstableUnitoneSupports } ) {
 		? __unstableUnitoneSupports?.flexShrink?.default
 		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
 				?.unitone?.default?.flexShrink;
+}
+
+function useDefaultValue( { name, __unstableUnitoneSupports } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.flexShrink;
+	}, [] );
+
+	return null != __unstableUnitoneSupports?.flexShrink?.default
+		? __unstableUnitoneSupports?.flexShrink?.default
+		: defaultValue;
 }
 
 export function hasFlexShrinkValue( {
@@ -62,13 +74,7 @@ export function FlexShrinkEdit( {
 	__unstableUnitoneSupports,
 	setAttributes,
 } ) {
-	let defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.flexShrink;
-	}, [] );
-	if ( null != __unstableUnitoneSupports?.flexShrink?.default ) {
-		defaultValue = __unstableUnitoneSupports?.flexShrink?.default;
-	}
+	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
 	return (
 		<RangeControl
@@ -112,23 +118,8 @@ export function saveFlexShrinkProp( extraProps, blockType, attributes ) {
 		}
 	}
 
-	const defaultValue = getDefaultValue( {
-		name: blockType,
-		__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
-	} );
-
 	if ( null == attributes?.unitone?.flexShrink ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				flexShrink: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	extraProps.style = {
@@ -141,12 +132,24 @@ export function saveFlexShrinkProp( extraProps, blockType, attributes ) {
 
 export function useFlexShrinkBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+	const { __unstableUnitoneSupports } = attributes;
+
+	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
+
+	const newFlexShrinkProp = useMemo( () => {
+		return saveFlexShrinkProp( wrapperProps, name, {
+			__unstableUnitoneSupports,
+			unitone: {
+				flexShrink: attributes?.unitone?.flexShrink ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveFlexShrinkProp( wrapperProps, name, attributes ),
+			...newFlexShrinkProp,
 		},
 	};
 }

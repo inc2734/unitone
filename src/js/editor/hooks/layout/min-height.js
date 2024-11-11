@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
@@ -53,6 +54,7 @@ export function MinHeightEdit( { name, label, unitone, setAttributes } ) {
 
 	return (
 		<TextControl
+			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.minHeight ?? defaultValue ?? '' }
 			onChange={ ( newValue ) => {
@@ -70,9 +72,6 @@ export function MinHeightEdit( { name, label, unitone, setAttributes } ) {
 }
 
 export function saveMinHeightProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.minHeight;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.minHeight' ) ) {
 		const { __unstableUnitoneSupports } = attributes;
 
@@ -82,17 +81,7 @@ export function saveMinHeightProp( extraProps, blockType, attributes ) {
 	}
 
 	if ( null == attributes?.unitone?.minHeight ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				minHeight: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	// Deprecation.
@@ -115,12 +104,30 @@ export function saveMinHeightProp( extraProps, blockType, attributes ) {
 
 export function useMinHeightBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+	const { __unstableUnitoneSupports } = attributes;
+
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.minHeight;
+		},
+		[ name ]
+	);
+
+	const newMinHeightProp = useMemo( () => {
+		return saveMinHeightProp( wrapperProps, name, {
+			__unstableUnitoneSupports,
+			unitone: {
+				minHeight: attributes?.unitone?.minHeight ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveMinHeightProp( wrapperProps, name, attributes ),
+			...newMinHeightProp,
 		},
 	};
 }

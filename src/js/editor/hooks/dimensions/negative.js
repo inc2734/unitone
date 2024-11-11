@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
@@ -65,25 +66,12 @@ export function NegativeEdit( { name, label, unitone, setAttributes } ) {
 }
 
 export function saveNegativeProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.negative;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.negative' ) ) {
 		return extraProps;
 	}
 
 	if ( null == attributes?.unitone?.negative ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				negative: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	// Deprecation.
@@ -106,11 +94,27 @@ export function saveNegativeProp( extraProps, blockType, attributes ) {
 export function useNegativeBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.negative;
+		},
+		[ name ]
+	);
+
+	const newNegativeProp = useMemo( () => {
+		return saveNegativeProp( wrapperProps, name, {
+			unitone: {
+				negative: attributes?.unitone?.negative ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveNegativeProp( wrapperProps, name, attributes ),
+			...newNegativeProp,
 		},
 	};
 }

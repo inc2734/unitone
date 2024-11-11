@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
@@ -87,25 +88,12 @@ export function AutoRepeatEdit( { name, label, unitone, setAttributes } ) {
 }
 
 export function saveAutoRepeatProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.autoRepeat;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.autoRepeat' ) ) {
 		return extraProps;
 	}
 
 	if ( null == attributes?.unitone?.autoRepeat ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				autoRepeat: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	extraProps[ 'data-unitone-layout' ] = clsx(
@@ -119,11 +107,27 @@ export function saveAutoRepeatProp( extraProps, blockType, attributes ) {
 export function useAutoRepeatBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.autoRepeat;
+		},
+		[ name ]
+	);
+
+	const newAutoRepeatProp = useMemo( () => {
+		return saveAutoRepeatProp( wrapperProps, name, {
+			unitone: {
+				autoRepeat: attributes?.unitone?.autoRepeat ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveAutoRepeatProp( wrapperProps, name, attributes ),
+			...newAutoRepeatProp,
 		},
 	};
 }

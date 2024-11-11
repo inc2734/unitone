@@ -9,6 +9,7 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { settings as settingsIcon } from '@wordpress/icons';
 import { cleanEmptyObject } from '../utils';
@@ -133,9 +134,6 @@ export function MaxWidthEdit( { name, label, unitone, setAttributes } ) {
 }
 
 export function saveMaxWidthProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.maxWidth;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.maxWidth' ) ) {
 		const { __unstableUnitoneSupports } = attributes;
 
@@ -145,17 +143,7 @@ export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 	}
 
 	if ( null == attributes?.unitone?.maxWidth ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				maxWidth: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	// Deprecation.
@@ -179,11 +167,27 @@ export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 export function useMaxWidthBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.maxWidth;
+		},
+		[ name ]
+	);
+
+	const newMaxWidthProp = useMemo( () => {
+		return saveMaxWidthProp( wrapperProps, name, {
+			unitone: {
+				maxWidth: attributes?.unitone?.maxWidth ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveMaxWidthProp( wrapperProps, name, attributes ),
+			...newMaxWidthProp,
 		},
 	};
 }

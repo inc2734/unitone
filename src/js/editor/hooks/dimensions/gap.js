@@ -16,7 +16,7 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { useState, useMemo } from '@wordpress/element';
 import { link, linkOff } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
@@ -436,28 +436,12 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 }
 
 export function saveGapProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.gap;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.gap' ) ) {
 		return extraProps;
 	}
 
 	if ( null == attributes?.unitone?.gap ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				gap: {
-					...attributes?.unitone?.gap,
-					...defaultValue,
-				},
-			},
-		};
+		return extraProps;
 	}
 
 	// Deprecation.
@@ -488,11 +472,27 @@ export function saveGapProp( extraProps, blockType, attributes ) {
 export function useGapBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.gap;
+		},
+		[ name ]
+	);
+
+	const newGapProp = useMemo( () => {
+		return saveGapProp( wrapperProps, name, {
+			unitone: {
+				gap: compacting( attributes.unitone?.gap ?? defaultValue ),
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveGapProp( wrapperProps, name, attributes ),
+			...newGapProp,
 		},
 	};
 }

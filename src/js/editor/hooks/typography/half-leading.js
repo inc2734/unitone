@@ -1,5 +1,6 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
+import { useMemo } from '@wordpress/element';
 
 import { cleanEmptyObject, isNumber } from '../utils';
 
@@ -74,11 +75,19 @@ export function saveHalfLeadingProp( extraProps, blockType, attributes ) {
 export function useHalfLeadingBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const newHalfLeadingProp = useMemo( () => {
+		return saveHalfLeadingProp( wrapperProps, name, {
+			unitone: {
+				halfLeading: attributes?.unitone?.halfLeading ?? undefined,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveHalfLeadingProp( wrapperProps, name, attributes ),
+			...newHalfLeadingProp,
 		},
 	};
 }

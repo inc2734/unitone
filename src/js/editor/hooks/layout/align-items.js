@@ -8,6 +8,7 @@ import {
 import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -151,25 +152,12 @@ export function AlignItemsEdit( { name, label, unitone, setAttributes } ) {
 }
 
 export function saveAlignItemsProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.alignItems;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.alignItems' ) ) {
 		return extraProps;
 	}
 
 	if ( null == attributes?.unitone?.alignItems ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				alignItems: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	// Deprecation.
@@ -192,11 +180,27 @@ export function saveAlignItemsProp( extraProps, blockType, attributes ) {
 export function useAlignItemsBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.alignItems;
+		},
+		[ name ]
+	);
+
+	const newAlignItemsProp = useMemo( () => {
+		return saveAlignItemsProp( wrapperProps, name, {
+			unitone: {
+				alignItems: attributes?.unitone?.alignItems ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveAlignItemsProp( wrapperProps, name, attributes ),
+			...newAlignItemsProp,
 		},
 	};
 }

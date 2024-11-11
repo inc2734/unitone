@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { SelectControl, TextControl } from '@wordpress/components';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 
 import { cleanEmptyObject } from '../utils';
 
@@ -377,28 +378,15 @@ export function ZIndexEdit( { label, name, unitone, setAttributes } ) {
 }
 
 export function savePositionProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.position;
+	// const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
+	// 	?.attributes?.unitone?.default?.position;
 
 	if ( ! hasBlockSupport( blockType, 'unitone.position' ) ) {
 		return extraProps;
 	}
 
 	if ( null == attributes?.unitone?.position ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				position: {
-					...attributes?.unitone?.position,
-					...defaultValue,
-				},
-			},
-		};
+		return extraProps;
 	}
 
 	extraProps.style = {
@@ -424,11 +412,27 @@ export function savePositionProp( extraProps, blockType, attributes ) {
 export function usePositionBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.position;
+		},
+		[ name ]
+	);
+
+	const newPositionProp = useMemo( () => {
+		return savePositionProp( wrapperProps, name, {
+			unitone: {
+				position: attributes?.unitone?.position ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...savePositionProp( wrapperProps, name, attributes ),
+			...newPositionProp,
 		},
 	};
 }

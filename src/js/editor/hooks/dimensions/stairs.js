@@ -12,6 +12,7 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
@@ -162,38 +163,15 @@ export function StairsUpEdit( { name, label, unitone, setAttributes } ) {
 }
 
 export function saveStairsProp( extraProps, blockType, attributes ) {
-	const blockTypeAttributes = wp.data
-		.select( blocksStore )
-		.getBlockType( blockType )?.attributes;
-	const defaultStairs = blockTypeAttributes?.unitone?.default?.stairs;
-	const defaultStairsUp = blockTypeAttributes?.unitone?.default?.stairsUp;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.stairs' ) ) {
 		return extraProps;
 	}
 
-	if ( null == attributes?.unitone?.stairs ) {
-		if ( null != defaultStairs ) {
-			attributes = {
-				...attributes,
-				unitone: {
-					...attributes?.unitone,
-					stairs: defaultStairs,
-				},
-			};
-		}
-	}
-
-	if ( null == attributes?.unitone?.stairsUp ) {
-		if ( null != defaultStairsUp ) {
-			attributes = {
-				...attributes,
-				unitone: {
-					...attributes?.unitone,
-					stairsUp: defaultStairsUp,
-				},
-			};
-		}
+	if (
+		null == attributes?.unitone?.stairs &&
+		null == attributes?.unitone?.stairsUp
+	) {
+		return extraProps;
 	}
 
 	extraProps[ 'data-unitone-layout' ] = clsx(
@@ -208,11 +186,33 @@ export function saveStairsProp( extraProps, blockType, attributes ) {
 export function useStairsBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const { defaultStairs, defaultStairsUp } = useSelect(
+		( select ) => {
+			const blockTypeAttributes =
+				select( blocksStore ).getBlockType( name )?.attributes;
+			return {
+				defaultStairs: blockTypeAttributes?.unitone?.default?.stairs,
+				defaultStairsUp:
+					blockTypeAttributes?.unitone?.default?.stairsUp,
+			};
+		},
+		[ name ]
+	);
+
+	const newStairsProp = useMemo( () => {
+		return saveStairsProp( wrapperProps, name, {
+			unitone: {
+				stairs: attributes?.unitone?.stairs ?? defaultStairs,
+				stairsUp: attributes?.unitone?.stairsUp ?? defaultStairsUp,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveStairsProp( wrapperProps, name, attributes ),
+			...newStairsProp,
 		},
 	};
 }

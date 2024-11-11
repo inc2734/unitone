@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
@@ -71,9 +72,6 @@ export function MaxHeightEdit( { name, label, unitone, setAttributes } ) {
 }
 
 export function saveMaxHeightProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.maxHeight;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.maxHeight' ) ) {
 		const { __unstableUnitoneSupports } = attributes;
 
@@ -83,17 +81,7 @@ export function saveMaxHeightProp( extraProps, blockType, attributes ) {
 	}
 
 	if ( null == attributes?.unitone?.maxHeight ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				maxHeight: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	// Deprecation.
@@ -117,11 +105,27 @@ export function saveMaxHeightProp( extraProps, blockType, attributes ) {
 export function useMaxHeightBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.maxHeight;
+		},
+		[ name ]
+	);
+
+	const newMaxHeightProp = useMemo( () => {
+		return saveMaxHeightProp( wrapperProps, name, {
+			unitone: {
+				maxHeight: attributes?.unitone?.maxHeight ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveMaxHeightProp( wrapperProps, name, attributes ),
+			...newMaxHeightProp,
 		},
 	};
 }

@@ -6,6 +6,7 @@ import {
 
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
@@ -219,23 +220,8 @@ export function saveGridRowProp( extraProps, blockType, attributes ) {
 		}
 	}
 
-	const defaultValue = getDefaultValue( {
-		name: blockType,
-		__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
-	} );
-
 	if ( null == attributes?.unitone?.gridRow ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				gridRow: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	extraProps.style = {
@@ -259,12 +245,24 @@ export function saveGridRowProp( extraProps, blockType, attributes ) {
 
 export function useGridRowBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+	const { __unstableUnitoneSupports } = attributes;
+
+	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
+
+	const newGridRowProp = useMemo( () => {
+		return saveGridRowProp( wrapperProps, name, {
+			__unstableUnitoneSupports,
+			unitone: {
+				gridRow: attributes?.unitone?.gridRow ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveGridRowProp( wrapperProps, name, attributes ),
+			...newGridRowProp,
 		},
 	};
 }

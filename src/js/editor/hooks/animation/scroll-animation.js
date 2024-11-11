@@ -15,6 +15,7 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { Icon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
@@ -521,24 +522,8 @@ export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.scrollAnimation;
-
 	if ( null == attributes?.unitone?.scrollAnimation ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				scrollAnimation: {
-					...attributes?.unitone?.scrollAnimation,
-					...defaultValue,
-				},
-			},
-		};
+		return extraProps;
 	}
 
 	const type = attributes.unitone?.scrollAnimation?.type;
@@ -589,11 +574,30 @@ export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
 export function useScrollAnimationBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.scrollAnimation;
+		},
+		[ name ]
+	);
+
+	const newScrollAnimationProp = useMemo( () => {
+		return saveScrollAnimationProp( wrapperProps, name, {
+			unitone: {
+				scrollAnimation: {
+					...defaultValue,
+					...attributes?.unitone?.scrollAnimation,
+				},
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveScrollAnimationProp( wrapperProps, name, attributes ),
+			...newScrollAnimationProp,
 		},
 	};
 }

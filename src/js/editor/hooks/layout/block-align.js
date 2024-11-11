@@ -8,6 +8,7 @@ import {
 import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { justifyLeft, justifyCenter, justifyRight } from '@wordpress/icons';
 
@@ -145,25 +146,12 @@ export function BlockAlignEdit( { name, label, unitone, setAttributes } ) {
 }
 
 export function saveBlockAlignProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.blockAlign;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.blockAlign' ) ) {
 		return extraProps;
 	}
 
 	if ( null == attributes?.unitone?.blockAlign ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				blockAlign: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	// Deprecation.
@@ -186,11 +174,27 @@ export function saveBlockAlignProp( extraProps, blockType, attributes ) {
 export function useBlockAlignBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.blockAlign;
+		},
+		[ name ]
+	);
+
+	const newBlockAlignProp = useMemo( () => {
+		return saveBlockAlignProp( wrapperProps, name, {
+			unitone: {
+				blockAlign: attributes?.unitone?.blockAlign ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveBlockAlignProp( wrapperProps, name, attributes ),
+			...newBlockAlignProp,
 		},
 	};
 }

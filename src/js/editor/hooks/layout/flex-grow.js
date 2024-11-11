@@ -1,6 +1,7 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
@@ -9,6 +10,17 @@ function getDefaultValue( { name, __unstableUnitoneSupports } ) {
 		? __unstableUnitoneSupports?.flexGrow?.default
 		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
 				?.unitone?.default?.flexGrow;
+}
+
+function useDefaultValue( { name, __unstableUnitoneSupports } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.flexGrow;
+	}, [] );
+
+	return null != __unstableUnitoneSupports?.flexBasis?.default
+		? __unstableUnitoneSupports?.flexBasis?.default
+		: defaultValue;
 }
 
 export function hasFlexGrowValue( {
@@ -61,13 +73,7 @@ export function FlexGrowEdit( {
 	__unstableUnitoneSupports,
 	setAttributes,
 } ) {
-	let defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.flexGrow;
-	}, [] );
-	if ( null != __unstableUnitoneSupports?.flexGrow?.default ) {
-		defaultValue = __unstableUnitoneSupports?.flexGrow?.default;
-	}
+	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
 	return (
 		<RangeControl
@@ -111,23 +117,8 @@ export function saveFlexGrowProp( extraProps, blockType, attributes ) {
 		}
 	}
 
-	const defaultValue = getDefaultValue( {
-		name: blockType,
-		__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
-	} );
-
 	if ( null == attributes?.unitone?.flexGrow ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				flexGrow: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	extraProps.style = {
@@ -140,12 +131,27 @@ export function saveFlexGrowProp( extraProps, blockType, attributes ) {
 
 export function useFlexGrowBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+	const { __unstableUnitoneSupports } = attributes;
+
+	const defaultValue = useDefaultValue( {
+		name,
+		__unstableUnitoneSupports,
+	} );
+
+	const newFlexGrowProp = useMemo( () => {
+		return saveFlexGrowProp( wrapperProps, name, {
+			__unstableUnitoneSupports,
+			unitone: {
+				flexGrow: attributes?.unitone?.flexGrow ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveFlexGrowProp( wrapperProps, name, attributes ),
+			...newFlexGrowProp,
 		},
 	};
 }

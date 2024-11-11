@@ -2,6 +2,7 @@ import clsx from 'clsx';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
+import { useMemo } from '@wordpress/element';
 
 import { cleanEmptyObject } from '../utils';
 
@@ -56,7 +57,7 @@ export function saveFluidTypographyProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.fluidTypography ) {
+	if ( null == attributes?.unitone?.fluidTypography ) {
 		return extraProps;
 	}
 
@@ -71,11 +72,20 @@ export function saveFluidTypographyProp( extraProps, blockType, attributes ) {
 export function useFluidTypographyBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const newFluidTypographyProp = useMemo( () => {
+		return saveFluidTypographyProp( wrapperProps, name, {
+			unitone: {
+				fluidTypography:
+					attributes?.unitone?.fluidTypography ?? undefined,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveFluidTypographyProp( wrapperProps, name, attributes ),
+			...newFluidTypographyProp,
 		},
 	};
 }

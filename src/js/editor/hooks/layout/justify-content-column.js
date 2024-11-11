@@ -8,6 +8,7 @@ import {
 import { JustifyToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -172,25 +173,12 @@ export function saveJustifyContentColumnProp(
 	blockType,
 	attributes
 ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.justifyContent;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.justifyContentColumn' ) ) {
 		return extraProps;
 	}
 
 	if ( null == attributes?.unitone?.justifyContent ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				justifyContent: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	// Deprecation.
@@ -213,11 +201,28 @@ export function saveJustifyContentColumnProp(
 export function useJustifyContentColumnBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.justifyContent;
+		},
+		[ name ]
+	);
+
+	const newJustifyContentColumnProp = useMemo( () => {
+		return saveJustifyContentColumnProp( wrapperProps, name, {
+			unitone: {
+				justifyContent:
+					attributes?.unitone?.justifyContent ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveJustifyContentColumnProp( wrapperProps, name, attributes ),
+			...newJustifyContentColumnProp,
 		},
 	};
 }

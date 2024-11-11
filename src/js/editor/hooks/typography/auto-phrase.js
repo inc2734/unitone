@@ -2,6 +2,7 @@ import clsx from 'clsx';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
+import { useMemo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -71,7 +72,7 @@ export function saveAutoPhraseProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	if ( undefined === attributes?.unitone?.autoPhrase ) {
+	if ( null == attributes?.unitone?.autoPhrase ) {
 		return extraProps;
 	}
 
@@ -86,11 +87,19 @@ export function saveAutoPhraseProp( extraProps, blockType, attributes ) {
 export function useAutoPhraseBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
+	const newAutoPhraseProp = useMemo( () => {
+		return saveAutoPhraseProp( wrapperProps, name, {
+			unitone: {
+				autoPhrase: attributes?.unitone?.autoPhrase ?? undefined,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveAutoPhraseProp( wrapperProps, name, attributes ),
+			...newAutoPhraseProp,
 		},
 	};
 }

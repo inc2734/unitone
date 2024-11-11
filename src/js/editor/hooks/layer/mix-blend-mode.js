@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -147,9 +148,6 @@ export function MixBlendModeEdit( { label, name, unitone, setAttributes } ) {
 }
 
 export function saveMixBlendModeProp( extraProps, blockType, attributes ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-		?.attributes?.unitone?.default?.mixBlendMode;
-
 	if ( ! hasBlockSupport( blockType, 'unitone.mixBlendMode' ) ) {
 		const { __unstableUnitoneSupports } = attributes;
 
@@ -159,17 +157,7 @@ export function saveMixBlendModeProp( extraProps, blockType, attributes ) {
 	}
 
 	if ( null == attributes?.unitone?.mixBlendMode ) {
-		if ( null == defaultValue ) {
-			return extraProps;
-		}
-
-		attributes = {
-			...attributes,
-			unitone: {
-				...attributes?.unitone,
-				mixBlendMode: defaultValue,
-			},
-		};
+		return extraProps;
 	}
 
 	extraProps[ 'data-unitone-layout' ] = clsx(
@@ -182,12 +170,30 @@ export function saveMixBlendModeProp( extraProps, blockType, attributes ) {
 
 export function useMixBlendModeBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+	const { __unstableUnitoneSupports } = attributes;
+
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.mixBlendMode;
+		},
+		[ name ]
+	);
+
+	const newMixBlendModeProp = useMemo( () => {
+		return saveMixBlendModeProp( wrapperProps, name, {
+			__unstableUnitoneSupports,
+			unitone: {
+				mixBlendMode: attributes?.unitone?.mixBlendMode ?? defaultValue,
+			},
+		} );
+	}, [ JSON.stringify( attributes?.unitone ) ] );
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveMixBlendModeProp( wrapperProps, name, attributes ),
+			...newMixBlendModeProp,
 		},
 	};
 }

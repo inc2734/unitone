@@ -169,8 +169,6 @@ export function saveStyleProp( extraProps, blockType, attributes ) {
 export function useStyleBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
-	// useStyleOverride( { css: attributes?.unitone?.style } );
-
 	return {
 		...settings,
 		wrapperProps: {

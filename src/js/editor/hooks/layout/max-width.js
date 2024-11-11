@@ -161,11 +161,6 @@ export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 		'--unitone--max-width': attributes?.unitone?.maxWidth,
 	};
 
-	console.log( '---' );
-	console.log( attributes?.__unstableUnitoneSupports );
-	console.log( attributes?.unitone?.maxWidth );
-	console.log( extraProps.style );
-
 	return extraProps;
 }
 

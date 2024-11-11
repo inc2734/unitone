@@ -10,6 +10,7 @@ import {
 
 import {
 	SelectControl,
+	ToggleControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
@@ -20,7 +21,7 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { tagName, templateLock } = attributes;
+	const { tagName, revert, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -32,7 +33,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'stack',
-		blockProps[ 'data-unitone-layout' ]
+		blockProps[ 'data-unitone-layout' ],
+		{
+			'-revert': revert,
+		}
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
@@ -71,6 +75,28 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							onChange={ ( newAttribute ) =>
 								setAttributes( { tagName: newAttribute } )
 							}
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							revert !== metadata.attributes.revert.default
+						}
+						isShownByDefault
+						label={ __( 'Revert', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								revert: metadata.attributes.revert.default,
+							} )
+						}
+					>
+						<ToggleControl
+							__nextHasNoMarginBottom
+							label={ __( 'Revert', 'unitone' ) }
+							checked={ revert }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { revert: newAttribute } );
+							} }
 						/>
 					</ToolsPanelItem>
 				</ToolsPanel>

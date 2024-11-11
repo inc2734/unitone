@@ -11,6 +11,10 @@
 			"type": "string",
 			"default": "div"
 		},
+		"revert": {
+			"type": "boolean",
+			"default": false
+		},
 		"unitone": {
 			"type": "object",
 			"default": {

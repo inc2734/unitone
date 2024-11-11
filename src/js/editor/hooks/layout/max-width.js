@@ -161,11 +161,17 @@ export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 		'--unitone--max-width': attributes?.unitone?.maxWidth,
 	};
 
+	console.log( '---' );
+	console.log( attributes?.__unstableUnitoneSupports );
+	console.log( attributes?.unitone?.maxWidth );
+	console.log( extraProps.style );
+
 	return extraProps;
 }
 
 export function useMaxWidthBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -177,6 +183,7 @@ export function useMaxWidthBlockProps( settings ) {
 
 	const newMaxWidthProp = useMemo( () => {
 		return saveMaxWidthProp( wrapperProps, name, {
+			__unstableUnitoneSupports,
 			unitone: {
 				maxWidth: attributes?.unitone?.maxWidth ?? defaultValue,
 			},

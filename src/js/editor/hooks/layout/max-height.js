@@ -104,6 +104,7 @@ export function saveMaxHeightProp( extraProps, blockType, attributes ) {
 
 export function useMaxHeightBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -115,6 +116,7 @@ export function useMaxHeightBlockProps( settings ) {
 
 	const newMaxHeightProp = useMemo( () => {
 		return saveMaxHeightProp( wrapperProps, name, {
+			__unstableUnitoneSupports,
 			unitone: {
 				maxHeight: attributes?.unitone?.maxHeight ?? defaultValue,
 			},

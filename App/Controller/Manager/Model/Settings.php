@@ -249,10 +249,10 @@ class Settings {
 
 		if ( 'page' === $settings['show-on-front'] ) {
 			if ( isset( $settings['page-on-front'] ) ) {
-				$new_options['page_on_front'] = $settings['page-on-front'];
+				$new_options['page-on-front'] = $settings['page-on-front'];
 			}
 			if ( isset( $settings['page-for-posts'] ) ) {
-				$new_options['page_for_posts'] = $settings['page-for-posts'];
+				$new_options['page-for-posts'] = $settings['page-for-posts'];
 			}
 		}
 

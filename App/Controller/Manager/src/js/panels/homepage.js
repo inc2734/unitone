@@ -88,9 +88,9 @@ export default function ( { settings, setSettings } ) {
 			path: '/unitone/v1/settings',
 			method: 'POST',
 			data: {
-				'show-on-front': settings?.[ 'show-on-front' ] ?? null,
-				'page-on-front': settings?.[ 'page-on-front' ] ?? null,
-				'page-for-posts': settings?.[ 'page-for-posts' ] ?? null,
+				'show-on-front': newSettings?.[ 'show-on-front' ] ?? null,
+				'page-on-front': newSettings?.[ 'page-on-front' ] ?? null,
+				'page-for-posts': newSettings?.[ 'page-for-posts' ] ?? null,
 			},
 		} ).then( () => {
 			setSettingsSaving( false );
@@ -109,7 +109,7 @@ export default function ( { settings, setSettings } ) {
 			path: '/unitone/v1/settings',
 			method: 'POST',
 			data: {
-				'show-on-front': null,
+				'show-on-front': 'posts',
 				'page-on-front': null,
 				'page-for-posts': null,
 			},
@@ -194,7 +194,7 @@ export default function ( { settings, setSettings } ) {
 														<img
 															src={ `${ settings.templateDirectoryUri }/App/Controller/Manager/dist/img/1.jpg` }
 															alt={ __(
-																'Homepage 1',
+																'Sample 1',
 																'unitone'
 															) }
 														/>
@@ -207,7 +207,7 @@ export default function ( { settings, setSettings } ) {
 															{
 																value: 'unitone/page/homepage-1',
 																label: __(
-																	'Homepage 1',
+																	'Sample 1',
 																	'unitone'
 																),
 															},
@@ -231,7 +231,7 @@ export default function ( { settings, setSettings } ) {
 														<img
 															src={ `${ settings.templateDirectoryUri }/App/Controller/Manager/dist/img/2.jpg` }
 															alt={ __(
-																'Homepage 2',
+																'Sample 2',
 																'unitone'
 															) }
 														/>
@@ -244,7 +244,7 @@ export default function ( { settings, setSettings } ) {
 															{
 																value: 'unitone/page/homepage-2',
 																label: __(
-																	'Homepage 2',
+																	'Sample 2',
 																	'unitone'
 																),
 															},

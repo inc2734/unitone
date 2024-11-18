@@ -129,6 +129,26 @@ export default function ( {
 		setOwnerDocument( ref.current.ownerDocument );
 	}, [] );
 
+	const { slides, selectedSlides, hasChildSelected } = useSelect(
+		( select ) => {
+			const _slides =
+				select( blockEditorStore ).getBlock( clientId ).innerBlocks;
+
+			return {
+				slides: _slides,
+				selectedSlides: _slides.filter(
+					( slide ) =>
+						slide.clientId ===
+						select( blockEditorStore ).getSelectedBlockClientId()
+				),
+				hasChildSelected: select(
+					blockEditorStore
+				).hasSelectedInnerBlock( clientId, true ),
+			};
+		},
+		[ clientId ]
+	);
+
 	useEffect( () => {
 		const sliderClientId = slides?.[ 0 ]?.clientId;
 		if ( !! sliderClientId ) {
@@ -151,27 +171,53 @@ export default function ( {
 		}
 	}, [ canCenterdSlides, slideWidth ] );
 
+	useEffect( () => {
+		if ( 0 < selectedSlides.length ) {
+			const selectedLastSlideClientId =
+				selectedSlides[ selectedSlides.length - 1 ].clientId;
+
+			const slideNode = ownerDocument.getElementById(
+				`block-${ selectedLastSlideClientId }`
+			);
+			const wrapper = slideNode.parentNode;
+			const slider = ownerDocument.getElementById(
+				`block-${ clientId }`
+			);
+			let x =
+				wrapper.getBoundingClientRect().left -
+				slideNode.getBoundingClientRect().left;
+
+			if ( canCenterdSlides ) {
+				const canvas = wrapper.parentNode;
+				x =
+					x +
+					( canvas.getBoundingClientRect().width -
+						slideNode.getBoundingClientRect().width ) /
+						2;
+			}
+
+			wrapper.style.transform = `translateX(${ x }px)`;
+
+			const lastSlide = ownerDocument.querySelector(
+				`.wp-block[data-block="${
+					slides[ slides.length - 1 ].clientId
+				}"]`
+			);
+
+			const lastSlideRight =
+				lastSlide.getBoundingClientRect().left + lastSlide.offsetWidth;
+
+			const sliderRight =
+				slider.getBoundingClientRect().left + slider.offsetWidth;
+
+			if ( lastSlideRight < sliderRight ) {
+				x = x + sliderRight - lastSlideRight;
+				wrapper.style.transform = `translateX(${ x }px)`;
+			}
+		}
+	}, [ selectedSlides ] );
+
 	const { selectBlock } = useDispatch( blockEditorStore );
-
-	const { slides, selectedSlides, hasChildSelected } = useSelect(
-		( select ) => {
-			const _slides =
-				select( blockEditorStore ).getBlock( clientId ).innerBlocks;
-
-			return {
-				slides: _slides,
-				selectedSlides: _slides.filter(
-					( slide ) =>
-						slide.clientId ===
-						select( blockEditorStore ).getSelectedBlockClientId()
-				),
-				hasChildSelected: select(
-					blockEditorStore
-				).hasSelectedInnerBlock( clientId, true ),
-			};
-		},
-		[ clientId ]
-	);
 
 	const blockProps = useBlockProps( {
 		ref,
@@ -812,63 +858,12 @@ export default function ( {
 
 							return (
 								<Button
-									isPrimary={ isActive }
-									isSecondary={ ! isActive }
+									variant={
+										isActive ? 'primary' : 'secondary'
+									}
 									className="block-editor-button-block-appender"
 									onClick={ () => {
 										selectBlock( sliderClientId );
-
-										const slideNode =
-											ownerDocument.getElementById(
-												`block-${ sliderClientId }`
-											);
-										const wrapper = slideNode.parentNode;
-										const slider =
-											ownerDocument.getElementById(
-												`block-${ clientId }`
-											);
-										let x =
-											wrapper.getBoundingClientRect()
-												.left -
-											slideNode.getBoundingClientRect()
-												.left;
-
-										if ( canCenterdSlides ) {
-											const canvas = wrapper.parentNode;
-											x =
-												x +
-												( canvas.getBoundingClientRect()
-													.width -
-													slideNode.getBoundingClientRect()
-														.width ) /
-													2;
-										}
-
-										wrapper.style.transform = `translateX(${ x }px)`;
-
-										const lastSlide =
-											ownerDocument.querySelector(
-												`.wp-block[data-block="${
-													slides[ slides.length - 1 ]
-														.clientId
-												}"]`
-											);
-
-										const lastSlideRight =
-											lastSlide.getBoundingClientRect()
-												.left + lastSlide.offsetWidth;
-
-										const sliderRight =
-											slider.getBoundingClientRect()
-												.left + slider.offsetWidth;
-
-										if ( lastSlideRight < sliderRight ) {
-											x =
-												x +
-												sliderRight -
-												lastSlideRight;
-											wrapper.style.transform = `translateX(${ x }px)`;
-										}
 									} }
 									key={ index }
 								>

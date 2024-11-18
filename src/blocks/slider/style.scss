@@ -46,6 +46,7 @@
 
 	&__slide {
 		display: flex;
+		flex-direction: column;
 		height: auto;
 		width: min(100%, var(--unitone--slide-width));
 	}

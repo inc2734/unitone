@@ -321,7 +321,10 @@ export function useDropShadowBlockProps( settings ) {
 				dropShadow: attributes?.unitone?.dropShadow ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

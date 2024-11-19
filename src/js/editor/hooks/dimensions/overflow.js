@@ -130,7 +130,10 @@ export function useOverflowBlockProps( settings ) {
 				overflow: attributes?.unitone?.overflow ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

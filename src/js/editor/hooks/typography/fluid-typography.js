@@ -79,7 +79,10 @@ export function useFluidTypographyBlockProps( settings ) {
 					attributes?.unitone?.fluidTypography ?? undefined,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

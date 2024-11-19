@@ -108,7 +108,10 @@ export function useNegativeBlockProps( settings ) {
 				negative: attributes?.unitone?.negative ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

@@ -143,7 +143,10 @@ export function useFlexShrinkBlockProps( settings ) {
 				flexShrink: attributes?.unitone?.flexShrink ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

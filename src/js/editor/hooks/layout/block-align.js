@@ -188,7 +188,10 @@ export function useBlockAlignBlockProps( settings ) {
 				blockAlign: attributes?.unitone?.blockAlign ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

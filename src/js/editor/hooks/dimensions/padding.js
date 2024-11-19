@@ -119,7 +119,10 @@ export function usePaddingBlockProps( settings ) {
 				padding: attributes?.unitone?.padding ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

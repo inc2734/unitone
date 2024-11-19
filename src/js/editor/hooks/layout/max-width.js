@@ -183,7 +183,10 @@ export function useMaxWidthBlockProps( settings ) {
 				maxWidth: attributes?.unitone?.maxWidth ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

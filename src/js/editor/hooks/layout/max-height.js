@@ -121,7 +121,10 @@ export function useMaxHeightBlockProps( settings ) {
 				maxHeight: attributes?.unitone?.maxHeight ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

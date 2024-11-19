@@ -446,7 +446,10 @@ export function useJustifySelfBlockProps( settings ) {
 				justifySelf: attributes?.unitone?.justifySelf ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

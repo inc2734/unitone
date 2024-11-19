@@ -121,7 +121,10 @@ export function useAutoRepeatBlockProps( settings ) {
 				autoRepeat: attributes?.unitone?.autoRepeat ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

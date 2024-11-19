@@ -132,7 +132,10 @@ export function useFlexBasisBlockProps( settings ) {
 				flexBasis: attributes?.unitone?.flexBasis ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

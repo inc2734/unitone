@@ -264,7 +264,10 @@ export function useGridColumnBlockProps( settings ) {
 				gridColumn: attributes?.unitone?.gridColumn ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

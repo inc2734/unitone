@@ -187,7 +187,10 @@ export function useMixBlendModeBlockProps( settings ) {
 				mixBlendMode: attributes?.unitone?.mixBlendMode ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

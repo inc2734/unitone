@@ -206,7 +206,10 @@ export function useStairsBlockProps( settings ) {
 				stairsUp: attributes?.unitone?.stairsUp ?? defaultStairsUp,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

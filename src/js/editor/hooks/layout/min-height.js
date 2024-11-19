@@ -121,7 +121,10 @@ export function useMinHeightBlockProps( settings ) {
 				minHeight: attributes?.unitone?.minHeight ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

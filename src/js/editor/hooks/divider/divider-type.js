@@ -145,7 +145,10 @@ export function useDividerTypeBlockProps( settings ) {
 				dividerType: attributes?.unitone?.dividerType ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

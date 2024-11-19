@@ -145,7 +145,10 @@ export function useFlexGrowBlockProps( settings ) {
 				flexGrow: attributes?.unitone?.flexGrow ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

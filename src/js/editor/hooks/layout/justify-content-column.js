@@ -216,7 +216,10 @@ export function useJustifyContentColumnBlockProps( settings ) {
 					attributes?.unitone?.justifyContent ?? defaultValue,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

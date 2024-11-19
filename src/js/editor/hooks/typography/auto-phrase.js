@@ -93,7 +93,10 @@ export function useAutoPhraseBlockProps( settings ) {
 				autoPhrase: attributes?.unitone?.autoPhrase ?? undefined,
 			},
 		} );
-	}, [ JSON.stringify( attributes?.unitone ) ] );
+	}, [
+		JSON.stringify( attributes?.unitone ),
+		attributes?.__unstableUnitoneBlockOutline,
+	] );
 
 	return {
 		...settings,

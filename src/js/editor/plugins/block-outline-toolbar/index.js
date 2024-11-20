@@ -5,37 +5,24 @@ import {
 
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
-import { useSelect, useDispatch } from '@wordpress/data';
-import { useCallback } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
 import { seen } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 const withBlockOutlineToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { clientId, isSelected } = props;
+		const { setAttributes, clientId, isSelected } = props;
 
-		const { getBlock, getBlockParents, getBlockAttributes } =
-			useSelect( blockEditorStore );
-		const { updateBlockAttributes } = useDispatch( blockEditorStore );
+		const [ isPressed, setIsPressed ] = useState( false );
 
-		const innerBlocks = getBlock( clientId ).innerBlocks;
-		const hasInnerBlocks = 0 < innerBlocks.length;
-		const rootClientId = getBlockParents( clientId, false )?.[ 0 ];
-		const targetClientId = rootClientId || clientId;
-		const canDisplayed = hasInnerBlocks || rootClientId;
-		const targetBlockAttributes = getBlockAttributes( targetClientId );
-
-		const onClick = useCallback( () => {
-			updateBlockAttributes( targetClientId, {
-				__unstableUnitoneBlockOutline:
-					! targetBlockAttributes?.__unstableUnitoneBlockOutline,
-			} );
-		}, [
-			updateBlockAttributes,
-			targetClientId,
-			targetBlockAttributes?.__unstableUnitoneBlockOutline,
-		] );
+		const hasInnerBlocks = useSelect(
+			( select ) =>
+				select( blockEditorStore ).getBlock( clientId ).innerBlocks
+					.length
+		);
+		const canDisplayed = hasInnerBlocks;
 
 		return (
 			<>
@@ -45,10 +32,15 @@ const withBlockOutlineToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 							<ToolbarButton
 								label={ __( 'Show block outline', 'unitone' ) }
 								icon={ seen }
-								isPressed={
-									targetBlockAttributes?.__unstableUnitoneBlockOutline
-								}
-								onClick={ onClick }
+								isPressed={ isPressed }
+								onClick={ () => {
+									const newIsPressed = ! isPressed;
+									setIsPressed( newIsPressed );
+									setAttributes( {
+										__unstableUnitoneBlockOutline:
+											newIsPressed,
+									} );
+								} }
 							/>
 						</ToolbarGroup>
 					</BlockControls>

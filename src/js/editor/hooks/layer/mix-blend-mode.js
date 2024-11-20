@@ -160,12 +160,13 @@ export function saveMixBlendModeProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-mix-blend-mode:${ attributes.unitone?.mixBlendMode }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-mix-blend-mode:${ attributes.unitone?.mixBlendMode }`
+		),
+	};
 }
 
 export function useMixBlendModeBlockProps( settings ) {

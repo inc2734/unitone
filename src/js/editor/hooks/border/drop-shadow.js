@@ -53,8 +53,24 @@ export function useIsDropShadowDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.dropShadow' );
 }
 
-export function getDropShadowEditLabel( __unstableUnitoneSupports ) {
-	return __unstableUnitoneSupports?.dropShadow?.label || __( 'Drop shadow' );
+export function getDropShadowEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Drop shadow' );
+	const defaultCode = <code>filter:drop-shadow</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.dropShadow?.label || defaultLabel;
+	}
+
+	return (
+		<>
+			{ __unstableUnitoneSupports?.dropShadow?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.dropShadow?.code || defaultCode }
+		</>
+	);
 }
 
 const EMPTY_ARRAY = [];
@@ -294,14 +310,15 @@ export function saveDropShadowProp( extraProps, blockType, attributes ) {
 		/var:preset\|shadow\|(.+)/
 	)?.[ 1 ];
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--drop-shadow': !! slug
-			? `var(--wp--preset--shadow--${ slug })`
-			: attributes?.unitone?.dropShadow || undefined,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--drop-shadow': !! slug
+				? `var(--wp--preset--shadow--${ slug })`
+				: attributes?.unitone?.dropShadow,
+		},
 	};
-
-	return extraProps;
 }
 
 export function useDropShadowBlockProps( settings ) {

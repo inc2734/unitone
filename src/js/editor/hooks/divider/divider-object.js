@@ -210,15 +210,16 @@ function saveDividerProp( extraProps, blockType, attributes ) {
 		) })`;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--divider-color':
-			attributes?.unitone?.divider?.color || presetColor,
-		'--unitone--divider-style': attributes?.unitone?.divider?.style,
-		'--unitone--divider-width': attributes?.unitone?.divider?.width,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--divider-color':
+				attributes?.unitone?.divider?.color || presetColor,
+			'--unitone--divider-style': attributes?.unitone?.divider?.style,
+			'--unitone--divider-width': attributes?.unitone?.divider?.width,
+		},
 	};
-
-	return extraProps;
 }
 
 export function useDividerBlockProps( settings ) {

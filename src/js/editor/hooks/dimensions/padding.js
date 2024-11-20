@@ -39,9 +39,23 @@ export function useIsPaddingDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.padding' );
 }
 
-export function getPaddingEditLabel( { __unstableUnitoneSupports } ) {
+export function getPaddingEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Padding', 'unitone' );
+	const defaultCode = <code>padding</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.padding?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.padding?.label || __( 'Padding', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.padding?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.padding?.code || defaultCode }
+		</>
 	);
 }
 
@@ -94,12 +108,13 @@ export function savePaddingProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-padding:${ attributes.unitone?.padding }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-padding:${ attributes.unitone?.padding }`
+		),
+	};
 }
 
 export function usePaddingBlockProps( settings ) {

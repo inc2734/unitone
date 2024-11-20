@@ -76,12 +76,13 @@ export function saveAutoPhraseProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		'-auto-phrase'
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			'-auto-phrase'
+		),
+	};
 }
 
 export function useAutoPhraseBlockProps( settings ) {

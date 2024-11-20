@@ -74,10 +74,26 @@ export function useIsGridRowDisabled( { name, __unstableUnitoneSupports } ) {
 	);
 }
 
-export function getGridRowEditLabel( { __unstableUnitoneSupports } ) {
+export function getGridRowEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __(
+		"A grid item's size and location within the grid row",
+		'unitone'
+	);
+	const defaultCode = <code>grid-row</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.gridRow?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.gridRow?.label ||
-		__( "A grid item's size and location within the grid row", 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.gridRow?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.gridRow?.code || defaultCode }
+		</>
 	);
 }
 
@@ -224,23 +240,24 @@ export function saveGridRowProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--grid-row':
-			typeof attributes.unitone?.gridRow === 'string'
-				? attributes.unitone?.gridRow || undefined
-				: attributes?.unitone?.gridRow?.lg || undefined,
-		'--unitone--md-grid-row':
-			null != attributes?.unitone?.gridRow?.md
-				? attributes?.unitone?.gridRow?.md
-				: undefined,
-		'--unitone--sm-grid-row':
-			null != attributes.unitone?.gridRow?.sm
-				? attributes?.unitone?.gridRow?.sm
-				: undefined,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--grid-row':
+				typeof attributes.unitone?.gridRow === 'string'
+					? attributes.unitone?.gridRow || undefined
+					: attributes?.unitone?.gridRow?.lg || undefined,
+			'--unitone--md-grid-row':
+				null != attributes?.unitone?.gridRow?.md
+					? attributes?.unitone?.gridRow?.md
+					: undefined,
+			'--unitone--sm-grid-row':
+				null != attributes.unitone?.gridRow?.sm
+					? attributes?.unitone?.gridRow?.sm
+					: undefined,
+		},
 	};
-
-	return extraProps;
 }
 
 export function useGridRowBlockProps( settings ) {

@@ -163,12 +163,13 @@ export function saveBlockAlignProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-align:${ attributes.unitone?.blockAlign }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-align:${ attributes.unitone?.blockAlign }`
+		),
+	};
 }
 
 export function useBlockAlignBlockProps( settings ) {

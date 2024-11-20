@@ -61,9 +61,23 @@ export function useIsFlexShrinkDisabled( { name, __unstableUnitoneSupports } ) {
 	);
 }
 
-export function getFlexShrinkEditLabel( { __unstableUnitoneSupports } ) {
+export function getFlexShrinkEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Fit', 'unitone' );
+	const defaultCode = <code>flex-shrink</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.flexShrink?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.flexShrink?.label || __( 'Fit', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.flexShrink?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.flexShrink?.code || defaultCode }
+		</>
 	);
 }
 
@@ -122,12 +136,13 @@ export function saveFlexShrinkProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--flex-shrink': attributes?.unitone?.flexShrink,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--flex-shrink': attributes?.unitone?.flexShrink,
+		},
 	};
-
-	return extraProps;
 }
 
 export function useFlexShrinkBlockProps( settings ) {

@@ -36,10 +36,23 @@ export function useIsGuttersDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.gutters' );
 }
 
-export function getGuttersEditLabel( { __unstableUnitoneSupports } ) {
+export function getGuttersEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Margins at both ends', 'unitone' );
+	const defaultCode = <code>padding-right/left</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.gutters?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.gutters?.label ||
-		__( 'Margins at both ends', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.gutters?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.gutters?.code || defaultCode }
+		</>
 	);
 }
 
@@ -117,12 +130,13 @@ export function saveGuttersProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-gutters:${ attributes.unitone?.gutters }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-gutters:${ attributes.unitone?.gutters }`
+		),
+	};
 }
 
 export function useGuttersBlockProps( settings ) {

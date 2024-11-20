@@ -353,15 +353,9 @@ function LayoutPanelPure( {
 							>
 								<JustifyContentEdit
 									{ ...props }
-									label={
-										<>
-											{ getJustifyContentEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>justify-content</code>
-										</>
-									}
+									label={ getJustifyContentEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -384,15 +378,9 @@ function LayoutPanelPure( {
 							>
 								<JustifyContentColumnEdit
 									{ ...props }
-									label={
-										<>
-											{ getJustifyContentColumnEditLabel(
-												{ ...props }
-											) }
-											&nbsp;:&nbsp;
-											<code>justify-content</code>
-										</>
-									}
+									label={ getJustifyContentColumnEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -411,15 +399,9 @@ function LayoutPanelPure( {
 							>
 								<AlignItemsEdit
 									{ ...props }
-									label={
-										<>
-											{ getAlignItemsEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>align-items</code>
-										</>
-									}
+									label={ getAlignItemsEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -459,15 +441,9 @@ function LayoutPanelPure( {
 							>
 								<FlexGrowEdit
 									{ ...props }
-									label={
-										<>
-											{ getFlexGrowEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>flex-grow</code>
-										</>
-									}
+									label={ getFlexGrowEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -486,15 +462,9 @@ function LayoutPanelPure( {
 							>
 								<FlexShrinkEdit
 									{ ...props }
-									label={
-										<>
-											{ getFlexShrinkEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>flex-shrink</code>
-										</>
-									}
+									label={ getFlexShrinkEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -513,14 +483,9 @@ function LayoutPanelPure( {
 							>
 								<FlexBasisEdit
 									{ ...props }
-									label={
-										<>
-											{ getFlexBasisEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;<code>flex-basis</code>
-										</>
-									}
+									label={ getFlexBasisEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -539,15 +504,9 @@ function LayoutPanelPure( {
 							>
 								<MaxWidthEdit
 									{ ...props }
-									label={
-										<>
-											{ getMaxWidthEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>max-width</code>
-										</>
-									}
+									label={ getMaxWidthEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -566,15 +525,9 @@ function LayoutPanelPure( {
 							>
 								<MaxHeightEdit
 									{ ...props }
-									label={
-										<>
-											{ getMaxHeightEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>max-height</code>
-										</>
-									}
+									label={ getMaxHeightEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -593,15 +546,9 @@ function LayoutPanelPure( {
 							>
 								<MinHeightEdit
 									{ ...props }
-									label={
-										<>
-											{ getMinHeightEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>min-height</code>
-										</>
-									}
+									label={ getMinHeightEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -620,15 +567,9 @@ function LayoutPanelPure( {
 							>
 								<AutoRepeatEdit
 									{ ...props }
-									label={
-										<>
-											{ getAutoRepeatEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>auto-repeat</code>
-										</>
-									}
+									label={ getAutoRepeatEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -649,15 +590,9 @@ function LayoutPanelPure( {
 							>
 								<JustifySelfEdit
 									{ ...props }
-									label={
-										<>
-											{ getJustifySelfEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>justify-self</code>
-										</>
-									}
+									label={ getJustifySelfEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -676,15 +611,9 @@ function LayoutPanelPure( {
 							>
 								<AlignSelfEdit
 									{ ...props }
-									label={
-										<>
-											{ getAlignSelfEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>align-self</code>
-										</>
-									}
+									label={ getAlignSelfEditLabel( {
+										...props,
+									} ) }
 								/>
 							</ToolsPanelItem>
 						) }
@@ -703,15 +632,9 @@ function LayoutPanelPure( {
 							>
 								<GridColumnEdit
 									{ ...props }
-									label={
-										<>
-											{ getGridColumnEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>grid-column</code>
-										</>
-									}
+									label={ getGridColumnEditLabel( {
+										...props,
+									} ) }
 									help={
 										<span
 											dangerouslySetInnerHTML={ {
@@ -745,15 +668,9 @@ function LayoutPanelPure( {
 							>
 								<GridRowEdit
 									{ ...props }
-									label={
-										<>
-											{ getGridRowEditLabel( {
-												...props,
-											} ) }
-											&nbsp;:&nbsp;
-											<code>grid-row</code>
-										</>
-									}
+									label={ getGridRowEditLabel( {
+										...props,
+									} ) }
 									help={
 										<span
 											dangerouslySetInnerHTML={ {

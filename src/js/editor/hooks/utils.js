@@ -16,7 +16,8 @@ export const cleanEmptyObject = ( object ) => {
 	if (
 		object === null ||
 		typeof object !== 'object' ||
-		Array.isArray( object )
+		Array.isArray( object ) ||
+		( object.$$typeof && typeof object.$$typeof === 'symbol' )
 	) {
 		return object;
 	}

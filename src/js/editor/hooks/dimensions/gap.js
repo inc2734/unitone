@@ -66,8 +66,24 @@ export function useIsGapDisabled( { name, className } ) {
 	return true;
 }
 
-export function getGapEditLabel( { __unstableUnitoneSupports } ) {
-	return __unstableUnitoneSupports?.gap?.label || __( 'Gap', 'unitone' );
+export function getGapEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Gap', 'unitone' );
+	const defaultCode = <code>gap</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.gap?.label || defaultLabel;
+	}
+
+	return (
+		<>
+			{ __unstableUnitoneSupports?.gap?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.gap?.code || defaultCode }
+		</>
+	);
 }
 
 function LinkedButton( { isLinked, ...props } ) {
@@ -453,9 +469,9 @@ export function saveGapProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		{
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx( extraProps?.[ 'data-unitone-layout' ], {
 			[ `-gap:${ attributes.unitone?.gap }` ]:
 				null == attributes.unitone?.gap?.column &&
 				null == attributes.unitone?.gap?.row,
@@ -463,10 +479,8 @@ export function saveGapProp( extraProps, blockType, attributes ) {
 				null != attributes.unitone?.gap?.column,
 			[ `-row-gap:${ attributes.unitone?.gap?.row }` ]:
 				null != attributes.unitone?.gap?.row,
-		}
-	);
-
-	return extraProps;
+		} ),
+	};
 }
 
 export function useGapBlockProps( settings ) {

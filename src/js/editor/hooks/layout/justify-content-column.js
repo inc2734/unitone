@@ -112,10 +112,21 @@ export function JustifyContentColumnToolbar( {
 
 export function getJustifyContentColumnEditLabel( {
 	__unstableUnitoneSupports,
+	__withCode = false,
 } ) {
+	const defaultLabel = __( 'Align items', 'unitone' );
+	const defaultCode = <code>justify-content</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.justifyContent?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.justifyContent?.label ||
-		__( 'Align items', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.justifyContent?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.justifyContent?.code || defaultCode }
+		</>
 	);
 }
 
@@ -190,12 +201,13 @@ export function saveJustifyContentColumnProp(
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-justify-content:${ attributes.unitone?.justifyContent }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-justify-content:${ attributes.unitone?.justifyContent }`
+		),
+	};
 }
 
 export function useJustifyContentColumnBlockProps( settings ) {

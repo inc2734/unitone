@@ -26,12 +26,13 @@ const saveProp = ( extraProps, blockType, attributes ) => {
 		return extraProps;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--cell-min-width': attributes?.unitone?.cellMinWidth,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--cell-min-width': attributes?.unitone?.cellMinWidth,
+		},
 	};
-
-	return extraProps;
 };
 
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {

@@ -120,12 +120,13 @@ export function saveDividerTypeProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-divider:${ attributes.unitone?.dividerType }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-divider:${ attributes.unitone?.dividerType }`
+		),
+	};
 }
 
 export function useDividerTypeBlockProps( settings ) {

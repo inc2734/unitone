@@ -66,7 +66,7 @@ export function saveHalfLeadingProp( extraProps, blockType, attributes ) {
 	return {
 		...extraProps,
 		style: {
-			...extraProps.style,
+			...extraProps?.style,
 			'--unitone--half-leading': attributes?.unitone?.halfLeading,
 		},
 	};

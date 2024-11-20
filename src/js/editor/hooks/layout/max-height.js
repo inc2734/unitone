@@ -39,10 +39,23 @@ export function useIsMaxHeightDisabled( { name, __unstableUnitoneSupports } ) {
 	);
 }
 
-export function getMaxHeightEditLabel( { __unstableUnitoneSupports } ) {
+export function getMaxHeightEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Max height', 'unitone' );
+	const defaultCode = <code>max-height</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.maxHeight?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.maxHeight?.label ||
-		__( 'Max height', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.maxHeight?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.maxHeight?.code || defaultCode }
+		</>
 	);
 }
 
@@ -94,12 +107,13 @@ export function saveMaxHeightProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--max-height': attributes?.unitone?.maxHeight,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--max-height': attributes?.unitone?.maxHeight,
+		},
 	};
-
-	return extraProps;
 }
 
 export function useMaxHeightBlockProps( settings ) {

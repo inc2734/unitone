@@ -528,9 +528,10 @@ export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
 
 	const type = attributes.unitone?.scrollAnimation?.type;
 
+	extraProps = extraProps ?? {};
 	extraProps[ 'data-unitone-scroll-animation' ] = type || undefined;
 
-	if ( extraProps[ 'data-unitone-scroll-animation' ] ) {
+	if ( !! extraProps?.[ 'data-unitone-scroll-animation' ] ) {
 		const speed = attributes.unitone?.scrollAnimation?.speed;
 		const delay = attributes.unitone?.scrollAnimation?.delay;
 		const easing = attributes.unitone?.scrollAnimation?.easing;
@@ -552,14 +553,14 @@ export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
 		}
 
 		extraProps[ 'data-unitone-scroll-animation' ] = clsx(
-			extraProps[ 'data-unitone-scroll-animation' ],
+			extraProps?.[ 'data-unitone-scroll-animation' ],
 			{
 				[ `-animation-timing-function:${ easing }` ]: easing,
 			}
 		);
 
 		extraProps.style = {
-			...extraProps.style,
+			...extraProps?.style,
 			'--unitone--animation-duration':
 				null != speed ? `${ speed }s` : undefined,
 			'--unitone--animation-delay':

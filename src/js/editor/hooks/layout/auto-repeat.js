@@ -54,10 +54,23 @@ export function resetAutoRepeat( { unitone, setAttributes } ) {
 	} );
 }
 
-export function getAutoRepeatEditLabel( { __unstableUnitoneSupports } ) {
+export function getAutoRepeatEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Auto repeat', 'unitone' );
+	const defaultCode = <code>auto-repeat</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.autoRepeat?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.autoRepeat?.label ||
-		__( 'Auto repeat', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.autoRepeat?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.autoRepeat?.code || defaultCode }
+		</>
 	);
 }
 
@@ -96,12 +109,13 @@ export function saveAutoRepeatProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-auto-repeat:${ attributes.unitone?.autoRepeat }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-auto-repeat:${ attributes.unitone?.autoRepeat }`
+		),
+	};
 }
 
 export function useAutoRepeatBlockProps( settings ) {

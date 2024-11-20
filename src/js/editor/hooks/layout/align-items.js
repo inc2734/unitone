@@ -97,10 +97,23 @@ export function AlignItemsToolbar( { name, unitone, setAttributes } ) {
 	);
 }
 
-export function getAlignItemsEditLabel( { __unstableUnitoneSupports } ) {
+export function getAlignItemsEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Align items', 'unitone' );
+	const defaultCode = <code>align-items</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.alignItems?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.alignItems?.label ||
-		__( 'Align items', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.alignItems?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.alignItems?.code || defaultCode }
+		</>
 	);
 }
 
@@ -169,12 +182,13 @@ export function saveAlignItemsProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-align-items:${ attributes.unitone?.alignItems }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-align-items:${ attributes.unitone?.alignItems }`
+		),
+	};
 }
 
 export function useAlignItemsBlockProps( settings ) {

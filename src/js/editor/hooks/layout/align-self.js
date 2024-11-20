@@ -204,10 +204,23 @@ export function AlignSelfToolbar( {
 	);
 }
 
-export function getAlignSelfEditLabel( { __unstableUnitoneSupports } ) {
+export function getAlignSelfEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Align self', 'unitone' );
+	const defaultCode = <code>align-self</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.alignSelf?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.alignSelf?.label ||
-		__( 'Align self', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.alignSelf?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.alignSelf?.code || defaultCode }
+		</>
 	);
 }
 
@@ -398,9 +411,9 @@ export function saveAlignSelfProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		{
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx( extraProps?.[ 'data-unitone-layout' ], {
 			[ `-align-self:${ attributes.unitone?.alignSelf }` ]:
 				typeof attributes.unitone?.alignSelf === 'string',
 			[ `-align-self:${ attributes.unitone?.alignSelf.lg }` ]:
@@ -409,10 +422,8 @@ export function saveAlignSelfProp( extraProps, blockType, attributes ) {
 				null != attributes.unitone?.alignSelf?.md,
 			[ `-align-self:sm:${ attributes.unitone?.alignSelf?.sm }` ]:
 				null != attributes.unitone?.alignSelf?.sm,
-		}
-	);
-
-	return extraProps;
+		} ),
+	};
 }
 
 export function useAlignSelfBlockProps( settings ) {

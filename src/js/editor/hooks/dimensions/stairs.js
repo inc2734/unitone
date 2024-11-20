@@ -174,13 +174,14 @@ export function saveStairsProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-stairs:${ attributes.unitone?.stairs }`,
-		`-stairs-up:${ attributes.unitone?.stairsUp }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-stairs:${ attributes.unitone?.stairs }`,
+			`-stairs-up:${ attributes.unitone?.stairsUp }`
+		),
+	};
 }
 
 export function useStairsBlockProps( settings ) {

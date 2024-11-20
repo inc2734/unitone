@@ -389,24 +389,21 @@ export function savePositionProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--top': attributes?.unitone?.position?.top,
-		'--unitone--right': attributes?.unitone?.position?.right,
-		'--unitone--bottom': attributes?.unitone?.position?.bottom,
-		'--unitone--left': attributes?.unitone?.position?.left,
-		'--unitone--z-index': attributes?.unitone?.position?.zIndex,
-	};
-
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		{
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--top': attributes?.unitone?.position?.top,
+			'--unitone--right': attributes?.unitone?.position?.right,
+			'--unitone--bottom': attributes?.unitone?.position?.bottom,
+			'--unitone--left': attributes?.unitone?.position?.left,
+			'--unitone--z-index': attributes?.unitone?.position?.zIndex,
+		},
+		'data-unitone-layout': clsx( extraProps?.[ 'data-unitone-layout' ], {
 			[ `-position:${ attributes?.unitone?.position?.position }` ]:
 				!! attributes?.unitone?.position?.position,
-		}
-	);
-
-	return extraProps;
+		} ),
+	};
 }
 
 export function usePositionBlockProps( settings ) {

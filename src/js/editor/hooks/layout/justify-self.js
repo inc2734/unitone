@@ -215,10 +215,23 @@ export function JustifySelfToolbar( {
 	);
 }
 
-export function getJustifySelfEditLabel( { __unstableUnitoneSupports } ) {
+export function getJustifySelfEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Justify self', 'unitone' );
+	const defaultCode = <code>justify-self</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.justifySelf?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.justifySelf?.label ||
-		__( 'Justify self', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.justifySelf?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.justifySelf?.code || defaultCode }
+		</>
 	);
 }
 
@@ -407,18 +420,13 @@ export function saveJustifySelfProp( extraProps, blockType, attributes ) {
 		}
 	}
 
-	// const defaultValue = getDefaultValue( {
-	// 	name: blockType,
-	// 	__unstableUnitoneSupports: attributes?.__unstableUnitoneSupports,
-	// } );
-
 	if ( null == attributes?.unitone?.justifySelf ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		{
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx( extraProps?.[ 'data-unitone-layout' ], {
 			[ `-justify-self:${ attributes.unitone?.justifySelf }` ]:
 				typeof attributes.unitone?.justifySelf === 'string',
 			[ `-justify-self:${ attributes.unitone?.justifySelf.lg }` ]:
@@ -427,10 +435,8 @@ export function saveJustifySelfProp( extraProps, blockType, attributes ) {
 				null != attributes.unitone?.justifySelf?.md,
 			[ `-justify-self:sm:${ attributes.unitone?.justifySelf?.sm }` ]:
 				null != attributes.unitone?.justifySelf?.sm,
-		}
-	);
-
-	return extraProps;
+		} ),
+	};
 }
 
 export function useJustifySelfBlockProps( settings ) {

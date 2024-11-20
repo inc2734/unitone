@@ -61,12 +61,13 @@ export function saveFluidTypographyProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		'-fluid-typography'
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			'-fluid-typography'
+		),
+	};
 }
 
 export function useFluidTypographyBlockProps( settings ) {

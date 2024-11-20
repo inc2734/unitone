@@ -60,9 +60,23 @@ export function useIsFlexGrowDisabled( { name, __unstableUnitoneSupports } ) {
 	);
 }
 
-export function getFlexGrowEditLabel( { __unstableUnitoneSupports } ) {
+export function getFlexGrowEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Fill', 'unitone' );
+	const defaultCode = <code>flex-grow</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.flexGrow?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.flexGrow?.label || __( 'Fill', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.flexGrow?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.flexGrow?.code || defaultCode }
+		</>
 	);
 }
 
@@ -121,12 +135,13 @@ export function saveFlexGrowProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--flex-grow': attributes?.unitone?.flexGrow,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--flex-grow': attributes?.unitone?.flexGrow,
+		},
 	};
-
-	return extraProps;
 }
 
 export function useFlexGrowBlockProps( settings ) {

@@ -83,12 +83,13 @@ export function saveNegativeProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		'-negative'
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			'-negative'
+		),
+	};
 }
 
 export function useNegativeBlockProps( settings ) {

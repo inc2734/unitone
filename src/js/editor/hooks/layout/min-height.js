@@ -39,10 +39,23 @@ export function useIsMinHeightDisabled( { name, __unstableUnitoneSupports } ) {
 	);
 }
 
-export function getMinHeightEditLabel( { __unstableUnitoneSupports } ) {
+export function getMinHeightEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Min height', 'unitone' );
+	const defaultCode = <code>min-height</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.minHeight?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.minHeight?.label ||
-		__( 'Min height', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.minHeight?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.minHeight?.code || defaultCode }
+		</>
 	);
 }
 
@@ -94,12 +107,13 @@ export function saveMinHeightProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--min-height': attributes?.unitone?.minHeight,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--min-height': attributes?.unitone?.minHeight,
+		},
 	};
-
-	return extraProps;
 }
 
 export function useMinHeightBlockProps( settings ) {

@@ -55,13 +55,10 @@ function DropShadowPanelPure( {
 					>
 						<DropShadowEdit
 							{ ...props }
-							label={
-								<>
-									{ getDropShadowEditLabel( { ...props } ) }
-									&nbsp;:&nbsp;
-									<code>filter:drop-shadow</code>
-								</>
-							}
+							label={ getDropShadowEditLabel( {
+								...props,
+								__withCode: true,
+							} ) }
 						/>
 					</ToolsPanelItem>
 				) }

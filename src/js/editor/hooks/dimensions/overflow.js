@@ -63,10 +63,23 @@ export function useIsOverflowDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.overflow' );
 }
 
-export function getOverflowEditLabel( { __unstableUnitoneSupports } ) {
+export function getOverflowEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Overflow', 'unitone' );
+	const defaultCode = <code>overflow</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.overflow?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.overflow?.label ||
-		__( 'Overflow', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.overflow?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.overflow?.code || defaultCode }
+		</>
 	);
 }
 
@@ -105,12 +118,13 @@ export function saveOverflowProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-overflow:${ attributes.unitone?.overflow }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-overflow:${ attributes.unitone?.overflow }`
+		),
+	};
 }
 
 export function useOverflowBlockProps( settings ) {

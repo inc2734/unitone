@@ -77,10 +77,26 @@ export function useIsGridColumnDisabled( { name, __unstableUnitoneSupports } ) {
 	);
 }
 
-export function getGridColumnEditLabel( { __unstableUnitoneSupports } ) {
+export function getGridColumnEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __(
+		"A grid item's size and location within a grid column",
+		'unitone'
+	);
+	const defaultCode = <code>grid-column</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.gridColumn?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.gridColumn?.label ||
-		__( "A grid item's size and location within a grid column", 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.gridColumn?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.gridColumn?.code || defaultCode }
+		</>
 	);
 }
 
@@ -229,23 +245,24 @@ export function saveGridColumnProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--grid-column':
-			typeof attributes.unitone?.gridColumn === 'string'
-				? attributes.unitone?.gridColumn || undefined
-				: attributes?.unitone?.gridColumn?.lg || undefined,
-		'--unitone--md-grid-column':
-			null != attributes?.unitone?.gridColumn?.md
-				? attributes?.unitone?.gridColumn?.md
-				: undefined,
-		'--unitone--sm-grid-column':
-			null != attributes.unitone?.gridColumn?.sm
-				? attributes?.unitone?.gridColumn?.sm
-				: undefined,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--grid-column':
+				typeof attributes.unitone?.gridColumn === 'string'
+					? attributes.unitone?.gridColumn || undefined
+					: attributes?.unitone?.gridColumn?.lg || undefined,
+			'--unitone--md-grid-column':
+				null != attributes?.unitone?.gridColumn?.md
+					? attributes?.unitone?.gridColumn?.md
+					: undefined,
+			'--unitone--sm-grid-column':
+				null != attributes.unitone?.gridColumn?.sm
+					? attributes?.unitone?.gridColumn?.sm
+					: undefined,
+		},
 	};
-
-	return extraProps;
 }
 
 export function useGridColumnBlockProps( settings ) {

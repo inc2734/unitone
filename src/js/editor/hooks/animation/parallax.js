@@ -153,10 +153,10 @@ export function saveParallaxProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-parallax-speed' ] =
-		attributes.unitone?.parallax?.speed || undefined;
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-parallax-speed': attributes.unitone?.parallax?.speed,
+	};
 }
 
 export function useParallaxBlockProps( settings ) {

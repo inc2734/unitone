@@ -60,10 +60,23 @@ export function useIsFlexBasisDisabled( { name, __unstableUnitoneSupports } ) {
 	);
 }
 
-export function getFlexBasisEditLabel( { __unstableUnitoneSupports } ) {
+export function getFlexBasisEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Recommended width', 'unitone' );
+	const defaultCode = <code>flex-basis</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.flexBasis?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.flexBasis?.label ||
-		__( 'Recommended width', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.flexBasis?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.flexBasis?.code || defaultCode }
+		</>
 	);
 }
 
@@ -108,12 +121,13 @@ export function saveFlexBasisProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--flex-basis': attributes?.unitone?.flexBasis,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--flex-basis': attributes?.unitone?.flexBasis,
+		},
 	};
-
-	return extraProps;
 }
 
 export function useFlexBasisBlockProps( settings ) {

@@ -106,10 +106,23 @@ export function JustifyContentToolbar( { name, unitone, setAttributes } ) {
 	);
 }
 
-export function getJustifyContentEditLabel( { __unstableUnitoneSupports } ) {
+export function getJustifyContentEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Justify content', 'unitone' );
+	const defaultCode = <code>justify-content</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.justifyContent?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.justifyContent?.label ||
-		__( 'Justify content', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.justifyContent?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.justifyContent?.code || defaultCode }
+		</>
 	);
 }
 
@@ -175,12 +188,13 @@ export function saveJustifyContentProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		`-justify-content:${ attributes.unitone?.justifyContent }`
-	);
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-layout': clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-justify-content:${ attributes.unitone?.justifyContent }`
+		),
+	};
 }
 
 export function useJustifyContentBlockProps( settings ) {

@@ -48,10 +48,23 @@ export function useIsMaxWidthDisabled( { name, __unstableUnitoneSupports } ) {
 	);
 }
 
-export function getMaxWidthEditLabel( { __unstableUnitoneSupports } ) {
+export function getMaxWidthEditLabel( {
+	__unstableUnitoneSupports,
+	__withCode = false,
+} ) {
+	const defaultLabel = __( 'Max width', 'unitone' );
+	const defaultCode = <code>max-width</code>;
+
+	if ( ! __withCode ) {
+		return __unstableUnitoneSupports?.maxWidth?.label || defaultLabel;
+	}
+
 	return (
-		__unstableUnitoneSupports?.maxWidth?.label ||
-		__( 'Max width', 'unitone' )
+		<>
+			{ __unstableUnitoneSupports?.maxWidth?.label || defaultLabel }
+			&nbsp;:&nbsp;
+			{ __unstableUnitoneSupports?.maxWidth?.code || defaultCode }
+		</>
 	);
 }
 
@@ -156,12 +169,13 @@ export function saveMaxWidthProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--max-width': attributes?.unitone?.maxWidth,
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--max-width': attributes?.unitone?.maxWidth,
+		},
 	};
-
-	return extraProps;
 }
 
 export function useMaxWidthBlockProps( settings ) {

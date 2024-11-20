@@ -161,9 +161,10 @@ export function saveStyleProp( extraProps, blockType, attributes ) {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-instance-id' ] = attributes?.unitone?.instanceId;
-
-	return extraProps;
+	return {
+		...extraProps,
+		'data-unitone-instance-id': attributes?.unitone?.instanceId,
+	};
 }
 
 export function useStyleBlockProps( settings ) {

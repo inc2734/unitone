@@ -145,13 +145,10 @@ function DimensionsPanelPure( {
 					>
 						<PaddingEdit
 							{ ...props }
-							label={
-								<>
-									{ getPaddingEditLabel( { ...props } ) }
-									&nbsp;:&nbsp;
-									<code>padding</code>
-								</>
-							}
+							label={ getPaddingEditLabel( {
+								...props,
+								__withCode: true,
+							} ) }
 						/>
 					</ToolsPanelItem>
 				) }
@@ -166,13 +163,10 @@ function DimensionsPanelPure( {
 					>
 						<GuttersEdit
 							{ ...props }
-							label={
-								<>
-									{ getGuttersEditLabel( { ...props } ) }
-									&nbsp;:&nbsp;
-									<code>padding-right/left</code>
-								</>
-							}
+							label={ getGuttersEditLabel( {
+								...props,
+								__withCode: true,
+							} ) }
 						/>
 					</ToolsPanelItem>
 				) }
@@ -187,13 +181,10 @@ function DimensionsPanelPure( {
 					>
 						<GapEdit
 							{ ...props }
-							label={
-								<>
-									{ getGapEditLabel( { ...props } ) }
-									&nbsp;:&nbsp;
-									<code>gap</code>
-								</>
-							}
+							label={ getGapEditLabel( {
+								...props,
+								__withCode: true,
+							} ) }
 						/>
 					</ToolsPanelItem>
 				) }
@@ -209,7 +200,10 @@ function DimensionsPanelPure( {
 						>
 							<StairsEdit
 								{ ...props }
-								label={ getStairsEditLabel( { ...props } ) }
+								label={ getStairsEditLabel( {
+									...props,
+									__withCode: true,
+								} ) }
 							/>
 						</ToolsPanelItem>
 
@@ -229,6 +223,7 @@ function DimensionsPanelPure( {
 									{ ...props }
 									label={ getStairsUpEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -246,7 +241,10 @@ function DimensionsPanelPure( {
 					>
 						<NegativeEdit
 							{ ...props }
-							label={ getNegativeEditLabel( { ...props } ) }
+							label={ getNegativeEditLabel( {
+								...props,
+								__withCode: true,
+							} ) }
 						/>
 					</ToolsPanelItem>
 				) }
@@ -261,13 +259,10 @@ function DimensionsPanelPure( {
 					>
 						<OverflowEdit
 							{ ...props }
-							label={
-								<>
-									{ getOverflowEditLabel( { ...props } ) }
-									&nbsp;:&nbsp;
-									<code>overflow</code>
-								</>
-							}
+							label={ getOverflowEditLabel( {
+								...props,
+								__withCode: true,
+							} ) }
 						/>
 					</ToolsPanelItem>
 				) }

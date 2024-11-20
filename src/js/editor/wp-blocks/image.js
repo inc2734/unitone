@@ -27,27 +27,25 @@ const saveProp = ( extraProps, blockType, attributes ) => {
 		return extraProps;
 	}
 
-	extraProps[ 'data-unitone-layout' ] = clsx(
-		extraProps[ 'data-unitone-layout' ],
-		{
+	return {
+		...extraProps,
+		style: {
+			...extraProps?.style,
+			'--unitone--overlay-color': attributes?.unitone?.overlay?.color,
+			'--unitone--overlay-gradient':
+				attributes?.unitone?.overlay?.gradient,
+			'--unitone--overlay-opacity':
+				null != attributes?.unitone?.overlay?.dimRatio
+					? attributes.unitone.overlay.dimRatio * 0.01
+					: undefined,
+			'--unitone--overlay-radius': attributes?.style?.border?.radius,
+		},
+		'data-unitone-layout': clsx( extraProps?.[ 'data-unitone-layout' ], {
 			'-overlay':
 				!! attributes?.unitone?.overlay?.color ||
 				!! attributes?.unitone?.overlay?.gradient,
-		}
-	);
-
-	extraProps.style = {
-		...extraProps.style,
-		'--unitone--overlay-color': attributes?.unitone?.overlay?.color,
-		'--unitone--overlay-gradient': attributes?.unitone?.overlay?.gradient,
-		'--unitone--overlay-opacity':
-			null != attributes?.unitone?.overlay?.dimRatio
-				? attributes.unitone.overlay.dimRatio * 0.01
-				: undefined,
-		'--unitone--overlay-radius': attributes?.style?.border?.radius,
+		} ),
 	};
-
-	return extraProps;
 };
 
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {

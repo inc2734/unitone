@@ -20,23 +20,38 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
+import { useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { useResponsiveGridVisualizer } from '../../js/editor/hooks/utils';
 import { ResponsiveSettingsContainer } from '../../js/editor/hooks/components';
 
 import metadata from './block.json';
 
 const parseString = ( value ) => {
+	if ( null == value ) {
+		return undefined;
+	}
+
 	value = String( value );
 	return null !== value && '' !== value ? value : undefined;
 };
 
 const parseNumber = ( value ) => {
+	if ( null == value ) {
+		return undefined;
+	}
+
 	value = parseInt( value );
 	return ! isNaN( value ) ? value : undefined;
 };
 
-export default function ( { attributes, setAttributes, clientId } ) {
+export default function ( {
+	attributes,
+	setAttributes,
+	isSelected,
+	clientId,
+} ) {
 	const {
 		tagName,
 		columnsOption,
@@ -68,7 +83,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		( select ) => {
 			const { getBlock } = select( blockEditorStore );
 			const block = getBlock( clientId );
-			return !! ( block && block.innerBlocks.length );
+			return !! block?.innerBlocks?.length;
 		},
 		[ clientId ]
 	);
@@ -115,7 +130,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			( 'free' === smRowsOption && smGridTemplateRows ) || undefined,
 	};
 
+	const ref = useRef();
+
 	const blockProps = useBlockProps( {
+		ref,
 		className: 'unitone-grid',
 		style: styles,
 	} );
@@ -146,6 +164,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		renderAppender: hasInnerBlocks
 			? undefined
 			: InnerBlocks.ButtonBlockAppender,
+	} );
+
+	useResponsiveGridVisualizer( {
+		ref,
+		attributes,
+		styles,
+		unitoneLayout: blockProps[ 'data-unitone-layout' ],
+		clientId,
+		isSelected,
 	} );
 
 	return (

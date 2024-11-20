@@ -1,6 +1,8 @@
+import { store as blockEditorStore } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { store as editorStore } from '@wordpress/editor';
 import { store as editPostStore } from '@wordpress/edit-post';
+import { useEffect, useMemo, useState } from '@wordpress/element';
 
 /**
  * Removed falsy values from nested object.
@@ -119,4 +121,281 @@ export function useDeviceType() {
 		const { __experimentalGetPreviewDeviceType } = select( editPostStore );
 		return __experimentalGetPreviewDeviceType()?.toLowerCase();
 	}, [] );
+}
+
+/**
+ * Display Grid (responsive supported) Visualizer.
+ *
+ * @param {Object}  props               options.
+ * @param {Object}  props.ref           The target ref.
+ * @param {Object}  props.attributes    Attributes of the target block.
+ * @param {Object}  props.styles        Styles of the target block.
+ * @param {string}  props.unitoneLayout `data-unitone-layout` attribute.
+ * @param {string}  props.clientId      clientId of the target block.
+ * @param {boolean} props.isSelected    isSelected of the target block.
+ */
+export function useResponsiveGridVisualizer( {
+	ref,
+	attributes,
+	styles,
+	unitoneLayout,
+	clientId,
+	isSelected,
+} ) {
+	const {
+		__unstableUnitoneBlockOutline,
+		columnsOption,
+		columns,
+		mdColumnsOption,
+		mdColumns,
+		smColumnsOption,
+		smColumns,
+		rowsOption,
+		rows,
+		mdRowsOption,
+		mdRows,
+		smRowsOption,
+		smRows,
+	} = attributes;
+
+	const [ documentWidth, setDocumentWidth ] = useState( null );
+
+	const innerBlocksCount = useSelect(
+		( select ) =>
+			select( blockEditorStore ).getBlock( clientId )?.innerBlocks
+				?.length,
+		[ clientId ]
+	);
+
+	const { currentColumns, currentRows } = useMemo( () => {
+		const isTablet = !! documentWidth && 960 > documentWidth;
+		const isMobile = !! documentWidth && 600 > documentWidth;
+
+		let newCurrentColumns =
+			'columns' === columnsOption ? columns : undefined;
+		let newCurrentRows = 'rows' === rowsOption ? rows : undefined;
+
+		if ( isTablet ) {
+			if ( unitoneLayout.match( '-columns:md:' ) ) {
+				if ( 'columns' === mdColumnsOption ) {
+					if ( '' !== mdColumns ) {
+						newCurrentColumns = mdColumns;
+					}
+				} else {
+					newCurrentColumns = undefined;
+				}
+			}
+
+			if ( unitoneLayout.match( '-rows:md:' ) ) {
+				if ( 'rows' === mdRowsOption ) {
+					if ( '' !== mdRows ) {
+						newCurrentRows = mdRows;
+					}
+				} else {
+					newCurrentRows = undefined;
+				}
+			}
+		}
+
+		if ( isMobile ) {
+			if ( unitoneLayout.match( '-columns:sm:' ) ) {
+				if ( 'columns' === smColumnsOption ) {
+					if ( '' !== smColumns ) {
+						newCurrentColumns = smColumns;
+					}
+				} else {
+					newCurrentColumns = undefined;
+				}
+			}
+
+			if ( unitoneLayout.match( '-rows:sm:' ) ) {
+				if ( 'rows' === smRowsOption ) {
+					if ( '' !== smRows ) {
+						newCurrentRows = smRows;
+					}
+				} else {
+					newCurrentRows = undefined;
+				}
+			}
+		}
+
+		return {
+			currentColumns: newCurrentColumns,
+			currentRows: newCurrentRows,
+		};
+	}, [
+		documentWidth,
+		columnsOption,
+		columns,
+		rowsOption,
+		rows,
+		unitoneLayout,
+		mdColumnsOption,
+		mdColumns,
+		mdRowsOption,
+		mdRows,
+		smColumnsOption,
+		smColumns,
+		smRowsOption,
+		smRows,
+	] );
+
+	const gridCells = useMemo( () => {
+		const ownerDocument = ref?.current?.ownerDocument;
+		if ( ! ownerDocument ) {
+			return null;
+		}
+
+		const newGridCells = ownerDocument.createElement( 'div' );
+
+		newGridCells.classList.add( 'unitone-grid-cells' );
+		Object.keys( styles ).forEach( ( property ) => {
+			if ( null != styles[ property ] ) {
+				newGridCells.style.setProperty( property, styles[ property ] );
+			}
+		} );
+
+		for ( let ri = 1; ri <= currentRows; ri++ ) {
+			for ( let ci = 1; ci <= currentColumns; ci++ ) {
+				const gridCell = ownerDocument.createElement( 'div' );
+				gridCell.classList.add( 'unitone-grid-cell' );
+				gridCell.style.setProperty( '--unitone--grid-column', ci );
+				gridCell.style.setProperty( '--unitone--grid-row', ri );
+				newGridCells.append( gridCell );
+			}
+		}
+
+		return newGridCells;
+	}, [
+		ref?.current?.ownerDocument,
+		JSON.stringify( styles ),
+		currentRows,
+		currentColumns,
+	] );
+
+	useEffect( () => {
+		const ownerDocument = ref.current.ownerDocument;
+		const defaultView = ownerDocument.defaultView;
+
+		const resizeObserver = new defaultView.ResizeObserver( ( entries ) => {
+			const width = entries[ 0 ]?.borderBoxSize?.[ 0 ]?.inlineSize;
+			if ( width !== documentWidth ) {
+				setDocumentWidth( width );
+			}
+		} );
+		resizeObserver.observe( ownerDocument.body, { box: 'border-box' } );
+
+		return () => {
+			if ( !! resizeObserver ) {
+				resizeObserver.disconnect();
+			}
+		};
+	}, [] );
+
+	useEffect( () => {
+		if ( 0 < innerBlocksCount || isSelected ) {
+			ref.current
+				.querySelector( ':scope > .unitone-grid-cells' )
+				?.remove();
+		}
+
+		if ( ! __unstableUnitoneBlockOutline ) {
+			return;
+		}
+
+		if ( null != currentColumns && null != currentRows ) {
+			ref.current.append( gridCells );
+		}
+	}, [
+		__unstableUnitoneBlockOutline,
+		currentColumns,
+		currentRows,
+		gridCells,
+		innerBlocksCount,
+		isSelected,
+	] );
+}
+
+/**
+ * Display Grid Visualizer.
+ *
+ * @param {Object}  props            options.
+ * @param {Object}  props.ref        The target ref.
+ * @param {Object}  props.attributes Attributes of the target block.
+ * @param {Object}  props.styles     Styles of the target block.
+ * @param {string}  props.clientId   clientId of the target block.
+ * @param {boolean} props.isSelected isSelected of the target block.
+ */
+export function useGridVisualizer( {
+	ref,
+	attributes,
+	styles,
+	clientId,
+	isSelected,
+} ) {
+	const { __unstableUnitoneBlockOutline, columns, rows } = attributes;
+
+	const innerBlocksCount = useSelect(
+		( select ) =>
+			select( blockEditorStore ).getBlock( clientId )?.innerBlocks
+				?.length,
+		[ clientId ]
+	);
+
+	const gridCells = useMemo( () => {
+		const ownerDocument = ref?.current?.ownerDocument;
+		if ( ! ownerDocument ) {
+			return null;
+		}
+
+		const newGridCells = ownerDocument.createElement( 'div' );
+
+		newGridCells.classList.add( 'unitone-grid-cells' );
+		Object.keys( styles ).forEach( ( property ) => {
+			if ( null != styles[ property ] ) {
+				newGridCells.style.setProperty( property, styles[ property ] );
+			}
+		} );
+
+		for ( let ri = 1; ri <= rows; ri++ ) {
+			for ( let ci = 1; ci <= columns; ci++ ) {
+				const gridCell =
+					ref.current.ownerDocument.createElement( 'div' );
+				gridCell.classList.add( 'unitone-grid-cell' );
+				gridCell.style.setProperty( '--unitone--grid-column', ci );
+				gridCell.style.setProperty( '--unitone--grid-row', ri );
+				newGridCells.append( gridCell );
+			}
+		}
+
+		return newGridCells;
+	}, [
+		ref?.current?.ownerDocument,
+		JSON.stringify( styles ),
+		rows,
+		columns,
+	] );
+
+	useEffect( () => {
+		if ( 0 < innerBlocksCount || isSelected ) {
+			ref.current
+				.querySelector( ':scope > .unitone-grid-cells' )
+				?.remove();
+		}
+
+		if ( ! __unstableUnitoneBlockOutline ) {
+			return;
+		}
+
+		if ( null != columns && null != rows ) {
+			ref.current.append( gridCells );
+		}
+	}, [
+		__unstableUnitoneBlockOutline,
+		columns,
+		rows,
+		gridCells,
+		innerBlocksCount,
+		isSelected,
+	] );
 }

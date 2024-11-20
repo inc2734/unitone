@@ -23,12 +23,20 @@ import {
 } from '@wordpress/components';
 
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
+import { useGridVisualizer } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
-export default function ( { name, attributes, setAttributes, clientId } ) {
+export default function ( {
+	name,
+	attributes,
+	setAttributes,
+	isSelected,
+	clientId,
+} ) {
 	const { cover, fill, blur, portrait, columns, rows, templateLock } =
 		attributes;
 
@@ -60,18 +68,23 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		}
 	}, [ attributes, defaultAttributes, hasInnerBlocks ] );
 
+	const styles = {
+		'--unitone--blur': !! blur ? `${ blur }px` : undefined,
+		'--unitone--columns':
+			parseInt( columns ) !== metadata.attributes.columns.default
+				? String( columns )
+				: undefined,
+		'--unitone--rows':
+			parseInt( rows ) !== metadata.attributes.rows.default
+				? String( rows )
+				: undefined,
+	};
+
+	const ref = useRef();
+
 	const blockProps = useBlockProps( {
-		style: {
-			'--unitone--blur': !! blur ? `${ blur }px` : undefined,
-			'--unitone--columns':
-				parseInt( columns ) !== metadata.attributes.columns.default
-					? String( columns )
-					: undefined,
-			'--unitone--rows':
-				parseInt( rows ) !== metadata.attributes.rows.default
-					? String( rows )
-					: undefined,
-		},
+		ref,
+		style: styles,
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'layers',
@@ -89,6 +102,14 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		renderAppender: hasInnerBlocks
 			? undefined
 			: InnerBlocks.ButtonBlockAppender,
+	} );
+
+	useGridVisualizer( {
+		ref,
+		attributes,
+		styles,
+		clientId,
+		isSelected,
 	} );
 
 	const { replaceInnerBlocks } = useDispatch( blockEditorStore );

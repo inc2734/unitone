@@ -52,14 +52,8 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/child-pages' );
 	register_block_type( get_template_directory() . '/dist/blocks/section' );
 
-	if ( ! is_null( \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/breadcrumbs' ) ) ) {
-		\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/breadcrumbs' )->attributes['unitone'] = array(
-			'type' => 'object',
-		);
-	}
-
-	if ( ! is_null( \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' ) ) ) {
-		\WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/child-pages' )->attributes['unitone'] = array(
+	foreach ( \WP_Block_Type_Registry::get_instance()->get_all_registered() as $block_type ) {
+		$block_type->attributes['unitone'] = array(
 			'type' => 'object',
 		);
 	}

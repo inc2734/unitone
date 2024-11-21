@@ -72,7 +72,9 @@ export function PositionEdit( { label, name, unitone, setAttributes } ) {
 					value: 'sticky',
 				},
 			] }
-			value={ unitone?.position?.position ?? defaultValue.position ?? '' }
+			value={
+				unitone?.position?.position ?? defaultValue?.position ?? ''
+			}
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,

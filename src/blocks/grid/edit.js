@@ -23,7 +23,7 @@ import { useSelect } from '@wordpress/data';
 import { useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useResponsiveGridVisualizer } from '../../js/editor/hooks/utils';
+import { GridVisualizer } from '../../js/editor/hooks/utils';
 import { ResponsiveSettingsContainer } from '../../js/editor/hooks/components';
 
 import metadata from './block.json';
@@ -46,12 +46,7 @@ const parseNumber = ( value ) => {
 	return ! isNaN( value ) ? value : undefined;
 };
 
-export default function ( {
-	attributes,
-	setAttributes,
-	isSelected,
-	clientId,
-} ) {
+export default function ( { attributes, setAttributes, clientId } ) {
 	const {
 		tagName,
 		columnsOption,
@@ -77,6 +72,7 @@ export default function ( {
 		smRows,
 		smGridTemplateRows,
 		templateLock,
+		__unstableUnitoneBlockOutline,
 	} = attributes;
 
 	const hasInnerBlocks = useSelect(
@@ -164,15 +160,6 @@ export default function ( {
 		renderAppender: hasInnerBlocks
 			? undefined
 			: InnerBlocks.ButtonBlockAppender,
-	} );
-
-	useResponsiveGridVisualizer( {
-		ref,
-		attributes,
-		styles,
-		unitoneLayout: blockProps[ 'data-unitone-layout' ],
-		clientId,
-		isSelected,
 	} );
 
 	return (
@@ -865,6 +852,9 @@ export default function ( {
 				</ToolsPanel>
 			</InspectorControls>
 
+			{ __unstableUnitoneBlockOutline && (
+				<GridVisualizer ref={ ref } attributes={ attributes } />
+			) }
 			<TagName { ...innerBlocksProps } />
 		</>
 	);

@@ -19,10 +19,12 @@ import {
 	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components';
 
-import { useRefEffect } from '@wordpress/compose';
+import { useRefEffect, useMergeRefs } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
+import { useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { GridVisualizer } from '../../js/editor/hooks/utils';
 import { ResponsiveSettingsContainer } from '../../js/editor/hooks/components';
 
 import metadata from './block.json';
@@ -68,6 +70,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		smRows,
 		smGridTemplateRows,
 		templateLock,
+		__unstableUnitoneBlockOutline,
 	} = attributes;
 
 	const hasInnerBlocks = useSelect(
@@ -77,7 +80,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const ref = useRefEffect( ( target ) => {
+	const effect = useRefEffect( ( target ) => {
 		dividersResizeObserver( target, {
 			ignore: {
 				className: [
@@ -136,8 +139,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			( 'free' === smRowsOption && smGridTemplateRows ) || undefined,
 	};
 
+	const ref = useRef();
+	const refs = useMergeRefs( [ ref, effect ] );
+
 	const blockProps = useBlockProps( {
-		ref,
+		ref: refs,
 		className: 'unitone-grid',
 		style: styles,
 	} );
@@ -860,6 +866,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
+			{ __unstableUnitoneBlockOutline && (
+				<GridVisualizer ref={ ref } attributes={ attributes } />
+			) }
 			<TagName { ...innerBlocksProps } />
 		</>
 	);

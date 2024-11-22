@@ -14,16 +14,24 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { useRefEffect } from '@wordpress/compose';
+import { useRefEffect, useMergeRefs } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
+import { useRef } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
+
+import { GridVisualizer } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
 import { stairsResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { columnMinWidth, unitone, templateLock } = attributes;
+	const {
+		columnMinWidth,
+		unitone,
+		templateLock,
+		__unstableUnitoneBlockOutline,
+	} = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -32,7 +40,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const ref = useRefEffect(
+	const effect = useRefEffect(
 		( target ) => {
 			stairsResizeObserver( target );
 		},
@@ -45,8 +53,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		]
 	);
 
+	const ref = useRef();
+	const refs = useMergeRefs( [ ref, effect ] );
+
 	const blockProps = useBlockProps( {
-		ref,
+		ref: refs,
 		style: {
 			'--unitone--column-min-width': columnMinWidth || undefined,
 		},
@@ -124,6 +135,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
+			{ __unstableUnitoneBlockOutline && (
+				<GridVisualizer ref={ ref } attributes={ attributes } />
+			) }
 			<div { ...innerBlocksProps } />
 		</>
 	);

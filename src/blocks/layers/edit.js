@@ -26,19 +26,21 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect, useState, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useGridVisualizer } from '../../js/editor/hooks/utils';
+import { GridVisualizer } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
-export default function ( {
-	name,
-	attributes,
-	setAttributes,
-	isSelected,
-	clientId,
-} ) {
-	const { cover, fill, blur, portrait, columns, rows, templateLock } =
-		attributes;
+export default function ( { name, attributes, setAttributes, clientId } ) {
+	const {
+		cover,
+		fill,
+		blur,
+		portrait,
+		columns,
+		rows,
+		templateLock,
+		__unstableUnitoneBlockOutline,
+	} = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -102,14 +104,6 @@ export default function ( {
 		renderAppender: hasInnerBlocks
 			? undefined
 			: InnerBlocks.ButtonBlockAppender,
-	} );
-
-	useGridVisualizer( {
-		ref,
-		attributes,
-		styles,
-		clientId,
-		isSelected,
 	} );
 
 	const { replaceInnerBlocks } = useDispatch( blockEditorStore );
@@ -346,7 +340,12 @@ export default function ( {
 					<Placeholder { ...{ name, onSelect } } />
 				</div>
 			) : (
-				<div { ...innerBlocksProps } />
+				<>
+					{ __unstableUnitoneBlockOutline && (
+						<GridVisualizer ref={ ref } attributes={ attributes } />
+					) }
+					<div { ...innerBlocksProps } />
+				</>
 			) }
 		</>
 	);

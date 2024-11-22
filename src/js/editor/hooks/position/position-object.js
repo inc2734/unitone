@@ -247,7 +247,7 @@ export function BottomEdit( { label, name, unitone, setAttributes } ) {
 		<TextControl
 			__nextHasNoMarginBottom
 			label={ label }
-			value={ unitone?.position?.bottom ?? defaultValue.bottom ?? '' }
+			value={ unitone?.position?.bottom ?? defaultValue?.bottom ?? '' }
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,

@@ -65,6 +65,19 @@ import {
 	StyleTag,
 } from './advanced/advanced';
 
+const addAttribute = ( settings ) => {
+	// Allow blocks to specify their own attribute definition with default values if needed.
+	if ( ! settings.attributes.unitone ) {
+		Object.assign( settings.attributes, {
+			unitone: {
+				type: 'object',
+			},
+		} );
+	}
+
+	return settings;
+};
+
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		props = useAutoPhraseBlockProps( props );
@@ -115,19 +128,6 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		);
 	};
 }, 'useBlockProps' );
-
-const addAttribute = ( settings ) => {
-	// Allow blocks to specify their own attribute definition with default values if needed.
-	if ( ! settings.attributes.unitone ) {
-		Object.assign( settings.attributes, {
-			unitone: {
-				type: 'object',
-			},
-		} );
-	}
-
-	return settings;
-};
 
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {

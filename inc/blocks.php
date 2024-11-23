@@ -53,9 +53,11 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/section' );
 
 	foreach ( \WP_Block_Type_Registry::get_instance()->get_all_registered() as $block_type ) {
-		$block_type->attributes['unitone'] = array(
-			'type' => 'object',
-		);
+		if ( ! isset( $block_type->attributes['unitone'] ) ) {
+			$block_type->attributes['unitone'] = array(
+				'type' => 'object',
+			);
+		}
 	}
 }
 add_action( 'init', 'unitone_register_blocks' );

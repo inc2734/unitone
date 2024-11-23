@@ -47,14 +47,16 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 			}
 		);
 		return cleanEmptyObject( _object );
-	}, [ metadata ] );
+	}, [] );
+
+	const preComparativeAttributes = {
+		...attributes,
+		__unstableUnitoneSupports: undefined,
+	};
 
 	const comparativeAttributes = useMemo( () => {
-		return cleanEmptyObject( {
-			...attributes,
-			__unstableUnitoneSupports: undefined,
-		} );
-	}, [ JSON.stringify( attributes ) ] );
+		return cleanEmptyObject( preComparativeAttributes );
+	}, [ JSON.stringify( preComparativeAttributes ) ] );
 
 	const [ isShowPlaceholder, setIsShowPlaceholder ] = useState(
 		! hasInnerBlocks &&

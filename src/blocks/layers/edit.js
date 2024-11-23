@@ -23,10 +23,10 @@ import {
 } from '@wordpress/components';
 
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useEffect, useState, useRef } from '@wordpress/element';
+import { useEffect, useState, useRef, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { GridVisualizer } from '../../js/editor/hooks/utils';
+import { GridVisualizer, cleanEmptyObject } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -49,15 +49,30 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const defaultAttributes = {};
-	Object.values( metadata.attributes || [] ).forEach( ( value, index ) => {
-		defaultAttributes[ Object.keys( metadata.attributes )[ index ] ] =
-			value.default;
-	} );
+	const defaultAttributes = useMemo( () => {
+		const _object = {};
+		Object.values( metadata.attributes || [] ).forEach(
+			( value, index ) => {
+				_object[ Object.keys( metadata.attributes )[ index ] ] =
+					value.default;
+			}
+		);
+		return cleanEmptyObject( _object );
+	}, [] );
+
+	const preComparativeAttributes = {
+		...attributes,
+		__unstableUnitoneSupports: undefined,
+	};
+
+	const comparativeAttributes = useMemo( () => {
+		return cleanEmptyObject( preComparativeAttributes );
+	}, [ JSON.stringify( preComparativeAttributes ) ] );
 
 	const [ isShowPlaceholder, setIsShowPlaceholder ] = useState(
 		! hasInnerBlocks &&
-			JSON.stringify( defaultAttributes ) === JSON.stringify( attributes )
+			JSON.stringify( defaultAttributes ) ===
+				JSON.stringify( comparativeAttributes )
 	);
 
 	useEffect( () => {
@@ -68,7 +83,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		) {
 			setIsShowPlaceholder( true );
 		}
-	}, [ attributes, defaultAttributes, hasInnerBlocks ] );
+	}, [ comparativeAttributes, defaultAttributes, hasInnerBlocks ] );
 
 	const styles = {
 		'--unitone--blur': !! blur ? `${ blur }px` : undefined,

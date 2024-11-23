@@ -24,8 +24,8 @@ msgid "unitone"
 msgstr "unitone"
 
 #. Theme URI of the theme
-msgid "https://snow-monkey.2inc.org"
-msgstr "https://snow-monkey.2inc.org"
+msgid "https://unitone.2inc.org"
+msgstr "https://unitone.2inc.org"
 
 #. Author of the theme
 msgid "Takashi Kitajima"

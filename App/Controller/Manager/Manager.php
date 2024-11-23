@@ -26,6 +26,7 @@ class Manager {
 		add_action( 'admin_enqueue_scripts', array( $this, '_admin_enqueue_scripts' ) );
 		add_action( 'rest_api_init', array( $this, '_rest_api_init' ) );
 		add_action( 'admin_notices', array( $this, '_welcome_admin_notice' ), 1 );
+		add_action( 'admin_notices', array( $this, '_activate_admin_notice' ), 2 );
 
 		register_uninstall_hook(
 			__FILE__,
@@ -446,7 +447,7 @@ class Manager {
 	}
 
 	/**
-	 * Prints admin screen notices.
+	 * Prints admin screen notices for setup.
 	 */
 	public function _welcome_admin_notice() {
 		$screen = get_current_screen();
@@ -470,7 +471,7 @@ class Manager {
 		$diff = array();
 		foreach ( $default_settings as $default_setting_key => $default_setting_value ) {
 			if ( isset( $merged_settings[ $default_setting_key ] ) ) {
-				if ( serialize( $merged_settings[ $default_setting_key ] ) !== serialize( $default_setting_value ) ) {
+				if ( wp_json_encode( $merged_settings[ $default_setting_key ] ) !== wp_json_encode( $default_setting_value ) ) {
 					$diff[ $default_setting_key ] = $merged_settings[ $default_setting_key ];
 				}
 			}
@@ -497,6 +498,40 @@ class Manager {
 			</div>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Prints admin screen notices for activate.
+	 */
+	public function _activate_admin_notice() {
+		$screen = get_current_screen();
+		if ( ! $screen || 'post' === $screen->id ) {
+			return;
+		}
+
+		$license_status = static::get_license_status( static::get_setting( 'license-key' ) );
+		if ( 'true' === $license_status ) {
+			return;
+		}
+
+		$message = sprintf(
+			// translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
+			__( 'You have not set a valid license key. Setting a license key will allow you to use patterns registered in %3$sthe pattern library%4$s. It will also enable theme updates. A license key is issued when you subscribe to %1$sunitone license key subscription%2$s. The license key is set %5$shere%6$s.', 'unitone' ),
+			'<a href="https://unitone.2inc.org/product/unitone-license-key/" target="_blank" rel="noreferrer">',
+			'</a>',
+			'<a href="https://unitone.2inc.org/unitone-patterns/" target="_blank" rel="noreferrer">',
+			'</a>',
+			'<a href="' . admin_url( 'themes.php?page=unitone' ) . '">',
+			'</a>',
+		);
+
+		wp_admin_notice(
+			$message,
+			array(
+				'type'        => 'error',
+				'dismissible' => false,
+			)
+		);
 	}
 
 	/**

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-11-18T01:23:55+00:00\n"
-"PO-Revision-Date: 2024-11-18 10:24+0900\n"
+"POT-Creation-Date: 2024-11-23T01:33:47+00:00\n"
+"PO-Revision-Date: 2024-11-23 10:35+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -35,19 +35,19 @@ msgstr "Takashi Kitajima"
 msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
-#: App/Controller/Manager/Manager.php:41 App/Controller/Manager/Manager.php:42
+#: App/Controller/Manager/Manager.php:42 App/Controller/Manager/Manager.php:43
 #: App/Controller/Manager/dist/js/app.js:9
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:352 patterns/footer-2.php:21
+#: App/Controller/Manager/Manager.php:353 patterns/footer-2.php:21
 #: patterns/footer-3.php:50 patterns/footer-3.php:58 patterns/footer-3.php:66
 #: patterns/footer-4.php:30 patterns/footer-4.php:38 patterns/footer-4.php:46
 #: patterns/footer-5.php:28 patterns/footer-5.php:36 patterns/footer-5.php:44
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:395 patterns/footer-2.php:24
+#: App/Controller/Manager/Manager.php:396 patterns/footer-2.php:24
 #: patterns/footer-3.php:53 patterns/footer-3.php:61 patterns/footer-3.php:69
 #: patterns/footer-4.php:33 patterns/footer-4.php:41 patterns/footer-4.php:49
 #: patterns/footer-5.php:31 patterns/footer-5.php:39 patterns/footer-5.php:47
@@ -56,17 +56,32 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:472
+#: App/Controller/Manager/Manager.php:489
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:475
+#: App/Controller/Manager/Manager.php:492
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:479
+#: App/Controller/Manager/Manager.php:496
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
+
+#. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
+#: App/Controller/Manager/Manager.php:519
+msgid ""
+"You have not set a valid license key. Setting a license key will allow you "
+"to use patterns registered in %3$sthe pattern library%4$s. It will also "
+"enable theme updates. A license key is issued when you subscribe to "
+"%1$sunitone license key subscription%2$s. The license key is set "
+"%5$shere%6$s."
+msgstr ""
+"有効なライセンスキーが設定されていません。ライセンスキーを設定することで%3$s"
+"パターンライブラリ%4$sに登録されているパターンを使用できるようになります。ま"
+"た、テーマのアップデートも可能になります。ライセンスキーは、%1$sunitoneライセ"
+"ンスキーサブスクリプション%2$sを契約すると発行されます。ライセンスキーは%5$s"
+"ここで設定します%6$s。"
 
 #: dist/blocks/child-pages/templates/box.php:57
 #: dist/blocks/child-pages/templates/box.php:61

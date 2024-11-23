@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 15.0.0\n"
+"Project-Id-Version: unitone 15.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-18T01:23:55+00:00\n"
+"POT-Creation-Date: 2024-11-23T01:33:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -36,13 +36,13 @@ msgstr ""
 msgid "https://2inc.org"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:41
 #: App/Controller/Manager/Manager.php:42
+#: App/Controller/Manager/Manager.php:43
 #: App/Controller/Manager/dist/js/app.js:9
 msgid "unitone Setup"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:352
+#: App/Controller/Manager/Manager.php:353
 #: patterns/footer-2.php:21
 #: patterns/footer-3.php:50
 #: patterns/footer-3.php:58
@@ -56,7 +56,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:395
+#: App/Controller/Manager/Manager.php:396
 #: patterns/footer-2.php:24
 #: patterns/footer-3.php:53
 #: patterns/footer-3.php:61
@@ -72,16 +72,21 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:472
+#: App/Controller/Manager/Manager.php:489
 msgid "unitone theme has been activated"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:475
+#: App/Controller/Manager/Manager.php:492
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:479
+#: App/Controller/Manager/Manager.php:496
 msgid "Go to the setup screen"
+msgstr ""
+
+#. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
+#: App/Controller/Manager/Manager.php:519
+msgid "You have not set a valid license key. Setting a license key will allow you to use patterns registered in %3$sthe pattern library%4$s. It will also enable theme updates. A license key is issued when you subscribe to %1$sunitone license key subscription%2$s. The license key is set %5$shere%6$s."
 msgstr ""
 
 #: dist/blocks/child-pages/templates/box.php:57

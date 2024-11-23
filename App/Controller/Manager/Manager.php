@@ -459,7 +459,23 @@ class Manager {
 			return;
 		}
 
-		$diff     = array_udiff( Settings::get_default_settings(), Settings::get_merged_settings(), fn( $a, $b ) => $a <=> $b );
+		$default_settings = array_replace_recursive(
+			Settings::get_default_settings(),
+			Settings::get_default_global_styles(),
+			Settings::get_default_options()
+		);
+
+		$merged_settings = Settings::get_merged_settings();
+
+		$diff = array();
+		foreach ( $default_settings as $default_setting_key => $default_setting_value ) {
+			if ( isset( $merged_settings[ $default_setting_key ] ) ) {
+				if ( serialize( $merged_settings[ $default_setting_key ] ) !== serialize( $default_setting_value ) ) {
+					$diff[ $default_setting_key ] = $merged_settings[ $default_setting_key ];
+				}
+			}
+		}
+
 		$saved_by = ! empty( $diff );
 		if ( $saved_by ) {
 			return;

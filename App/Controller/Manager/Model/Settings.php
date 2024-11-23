@@ -47,10 +47,10 @@ class Settings {
 	 */
 	protected static $default_options = array(
 		'site-logo'      => false,
-		'site-icon'      => false,
+		'site-icon'      => '0',
 		'show-on-front'  => 'posts',
-		'page-on-front'  => false,
-		'page-for-posts' => false,
+		'page-on-front'  => '0',
+		'page-for-posts' => '0',
 	);
 
 	/**

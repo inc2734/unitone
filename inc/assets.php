@@ -139,6 +139,7 @@ function unitone_enqueue_block_styles() {
 		'core/code'                => array(),
 		'core/columns'             => array(),
 		'core/comments'            => array(),
+		'core/button'              => array(),
 		'core/gallery'             => array(),
 		'core/image'               => array(),
 		'core/latest-comments'     => array(),

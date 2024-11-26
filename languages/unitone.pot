@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 15.1.2\n"
+"Project-Id-Version: unitone 15.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-23T01:33:47+00:00\n"
+"POT-Creation-Date: 2024-11-26T08:03:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: inc/block-categories.php:31
 #: inc/block-categories.php:42
 #: inc/block-categories.php:53
-#: inc/block-styles.php:96
+#: inc/block-styles.php:104
 #: dist/js/editor/editor.js:10
 msgid "unitone"
 msgstr ""
@@ -372,60 +372,64 @@ msgid "Page Header (Wide) for Single Posts"
 msgstr ""
 
 #: inc/block-styles.php:16
-msgid "Badge"
+msgid "Text"
 msgstr ""
 
 #: inc/block-styles.php:24
-msgid "Outline"
+msgid "Badge"
 msgstr ""
 
 #: inc/block-styles.php:32
-#: inc/block-styles.php:120
+msgid "Outline"
+msgstr ""
+
+#: inc/block-styles.php:40
+#: inc/block-styles.php:128
 #: dist/js/editor/editor.js:10
 msgid "Underline"
 msgstr ""
 
-#: inc/block-styles.php:40
-#: inc/block-styles.php:144
+#: inc/block-styles.php:48
+#: inc/block-styles.php:152
 #: dist/js/editor/editor.js:10
 msgid "Bordered"
 msgstr ""
 
-#: inc/block-styles.php:48
+#: inc/block-styles.php:56
 #: dist/js/editor/editor.js:10
 msgid "Stripe"
 msgstr ""
 
-#: inc/block-styles.php:56
+#: inc/block-styles.php:64
 msgid "Block link"
 msgstr ""
 
-#: inc/block-styles.php:64
+#: inc/block-styles.php:72
 msgid "Block link (Underline)"
 msgstr ""
 
-#: inc/block-styles.php:72
-#: inc/block-styles.php:88
+#: inc/block-styles.php:80
+#: inc/block-styles.php:96
 msgid "Block link (Bordered)"
 msgstr ""
 
-#: inc/block-styles.php:80
+#: inc/block-styles.php:88
 msgid "Block link (Stripe)"
 msgstr ""
 
-#: inc/block-styles.php:104
+#: inc/block-styles.php:112
 msgid "unitone (Accordion)"
 msgstr ""
 
-#: inc/block-styles.php:112
+#: inc/block-styles.php:120
 msgid "Cover"
 msgstr ""
 
-#: inc/block-styles.php:128
+#: inc/block-styles.php:136
 msgid "Vertical fill"
 msgstr ""
 
-#: inc/block-styles.php:136
+#: inc/block-styles.php:144
 msgid "Vertical line"
 msgstr ""
 

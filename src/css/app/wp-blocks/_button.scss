@@ -1,5 +1,4 @@
-.wp-block-button,
-.wp-element-button {
+:where(.wp-block-button, .wp-element-button) {
 	--unitone--border-radius: var(--unitone--global--border-radius);
 	--unitone--padding: var(--unitone--p-1);
 

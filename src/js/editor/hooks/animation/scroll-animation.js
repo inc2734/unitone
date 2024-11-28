@@ -517,21 +517,34 @@ export function ScrollAnimationEdit( { name, unitone, setAttributes } ) {
 	);
 }
 
-export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.scrollAnimation' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const newExtraProps = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.scrollAnimation' ) ) {
+			return {
+				style: extraProps?.style,
+				'data-unitone-scroll-animation':
+					extraProps?.[ 'data-unitone-scroll-animation' ],
+			};
+		}
 
-	if ( null == attributes?.unitone?.scrollAnimation ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.scrollAnimation ) {
+			return {
+				style: extraProps?.style,
+				'data-unitone-scroll-animation':
+					extraProps?.[ 'data-unitone-scroll-animation' ],
+			};
+		}
 
-	const type = attributes.unitone?.scrollAnimation?.type;
+		const type = attributes.unitone?.scrollAnimation?.type;
 
-	extraProps = extraProps ?? {};
-	extraProps[ 'data-unitone-scroll-animation' ] = type || undefined;
+		if ( null == type ) {
+			return {
+				style: extraProps?.style,
+				'data-unitone-scroll-animation':
+					extraProps?.[ 'data-unitone-scroll-animation' ],
+			};
+		}
 
-	if ( !! extraProps?.[ 'data-unitone-scroll-animation' ] ) {
 		const speed = attributes.unitone?.scrollAnimation?.speed;
 		const delay = attributes.unitone?.scrollAnimation?.delay;
 		const easing = attributes.unitone?.scrollAnimation?.easing;
@@ -552,24 +565,36 @@ export function saveScrollAnimationProp( extraProps, blockType, attributes ) {
 			}
 		}
 
-		extraProps[ 'data-unitone-scroll-animation' ] = clsx(
-			extraProps?.[ 'data-unitone-scroll-animation' ],
-			{
+		return {
+			style: {
+				...extraProps?.style,
+				'--unitone--animation-duration':
+					null != speed ? `${ speed }s` : undefined,
+				'--unitone--animation-delay':
+					null != delay ? `${ delay }s` : undefined,
+				'--unitone--animation-initial': initial ?? undefined,
+			},
+			'data-unitone-scroll-animation': clsx( type, {
 				[ `-animation-timing-function:${ easing }` ]: easing,
-			}
-		);
-
-		extraProps.style = {
-			...extraProps?.style,
-			'--unitone--animation-duration':
-				null != speed ? `${ speed }s` : undefined,
-			'--unitone--animation-delay':
-				null != delay ? `${ delay }s` : undefined,
-			'--unitone--animation-initial': initial ?? undefined,
+			} ),
 		};
-	}
+	}, [
+		blockType,
+		extraProps?.style,
+		extraProps?.[ 'data-unitone-scroll-animation' ],
+		attributes?.unitone?.scrollAnimation?.type,
+		attributes?.unitone?.scrollAnimation?.speed,
+		attributes?.unitone?.scrollAnimation?.delay,
+		attributes?.unitone?.scrollAnimation?.easing,
+		attributes?.unitone?.scrollAnimation?.initial,
+	] );
 
-	return extraProps;
+	return {
+		...extraProps,
+		style: newExtraProps?.style,
+		'data-unitone-scroll-animation':
+			newExtraProps?.[ 'data-unitone-scroll-animation' ],
+	};
 }
 
 export function useScrollAnimationBlockProps( settings ) {
@@ -583,19 +608,14 @@ export function useScrollAnimationBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newScrollAnimationProp = useMemo( () => {
-		return saveScrollAnimationProp( wrapperProps, name, {
-			unitone: {
-				scrollAnimation: {
-					...defaultValue,
-					...attributes?.unitone?.scrollAnimation,
-				},
+	const newScrollAnimationProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			scrollAnimation: {
+				...defaultValue,
+				...attributes?.unitone?.scrollAnimation,
 			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+		},
+	} );
 
 	return {
 		...settings,

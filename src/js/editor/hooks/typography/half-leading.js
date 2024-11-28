@@ -54,37 +54,36 @@ export function HalfLeadingEdit( { label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveHalfLeadingProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.halfLeading' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const style = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.halfLeading' ) ) {
+			return extraProps?.style;
+		}
 
-	if ( undefined === attributes?.unitone?.halfLeading ) {
-		return extraProps;
-	}
+		if ( undefined === attributes?.unitone?.halfLeading ) {
+			return extraProps?.style;
+		}
+
+		return {
+			...extraProps?.style,
+			'--unitone--half-leading': attributes?.unitone?.halfLeading,
+		};
+	}, [ blockType, extraProps?.style, attributes?.unitone?.halfLeading ] );
 
 	return {
 		...extraProps,
-		style: {
-			...extraProps?.style,
-			'--unitone--half-leading': attributes?.unitone?.halfLeading,
-		},
+		style,
 	};
 }
 
 export function useHalfLeadingBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
-	const newHalfLeadingProp = useMemo( () => {
-		return saveHalfLeadingProp( wrapperProps, name, {
-			unitone: {
-				halfLeading: attributes?.unitone?.halfLeading ?? undefined,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newHalfLeadingProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			halfLeading: attributes?.unitone?.halfLeading ?? undefined,
+		},
+	} );
 
 	return {
 		...settings,

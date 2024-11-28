@@ -355,6 +355,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getJustifyContentEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -380,6 +381,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getJustifyContentColumnEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -401,6 +403,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getAlignItemsEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -443,6 +446,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getFlexGrowEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -464,6 +468,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getFlexShrinkEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -485,6 +490,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getFlexBasisEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -506,6 +512,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getMaxWidthEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -527,6 +534,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getMaxHeightEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -548,6 +556,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getMinHeightEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -569,6 +578,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getAutoRepeatEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -592,6 +602,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getJustifySelfEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -613,6 +624,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getAlignSelfEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -634,6 +646,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getGridColumnEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 									help={
 										<span
@@ -670,6 +683,7 @@ function LayoutPanelPure( {
 									{ ...props }
 									label={ getGridRowEditLabel( {
 										...props,
+										__withCode: true,
 									} ) }
 									help={
 										<span

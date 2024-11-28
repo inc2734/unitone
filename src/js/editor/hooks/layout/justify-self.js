@@ -411,22 +411,19 @@ export function JustifySelfEdit( {
 	);
 }
 
-export function saveJustifySelfProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.justifySelf' ) ) {
-		const { __unstableUnitoneSupports } = attributes;
-
-		if ( ! __unstableUnitoneSupports?.justifySelf ) {
-			return extraProps;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.justifySelf' ) ) {
+			if ( ! attributes?.__unstableUnitoneSupports?.justifySelf ) {
+				return extraProps?.[ 'data-unitone-layout' ];
+			}
 		}
-	}
 
-	if ( null == attributes?.unitone?.justifySelf ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.justifySelf ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	return {
-		...extraProps,
-		'data-unitone-layout': clsx( extraProps?.[ 'data-unitone-layout' ], {
+		return clsx( extraProps?.[ 'data-unitone-layout' ], {
 			[ `-justify-self:${ attributes.unitone?.justifySelf }` ]:
 				typeof attributes.unitone?.justifySelf === 'string',
 			[ `-justify-self:${ attributes.unitone?.justifySelf.lg }` ]:
@@ -435,7 +432,17 @@ export function saveJustifySelfProp( extraProps, blockType, attributes ) {
 				null != attributes.unitone?.justifySelf?.md,
 			[ `-justify-self:sm:${ attributes.unitone?.justifySelf?.sm }` ]:
 				null != attributes.unitone?.justifySelf?.sm,
-		} ),
+		} );
+	}, [
+		blockType,
+		attributes?.__unstableUnitoneSupports?.justifySelf,
+		extraProps?.[ 'data-unitone-layout' ],
+		JSON.stringify( attributes?.unitone?.justifySelf ),
+	] );
+
+	return {
+		...extraProps,
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -445,17 +452,12 @@ export function useJustifySelfBlockProps( settings ) {
 
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
-	const newJustifySelfProp = useMemo( () => {
-		return saveJustifySelfProp( wrapperProps, name, {
-			__unstableUnitoneSupports,
-			unitone: {
-				justifySelf: attributes?.unitone?.justifySelf ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newJustifySelfProp = useBlockProps( wrapperProps, name, {
+		__unstableUnitoneSupports,
+		unitone: {
+			justifySelf: attributes?.unitone?.justifySelf ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

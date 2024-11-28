@@ -108,25 +108,32 @@ export function FlexBasisEdit( {
 	);
 }
 
-export function saveFlexBasisProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.flexBasis' ) ) {
-		const { __unstableUnitoneSupports } = attributes;
-
-		if ( ! __unstableUnitoneSupports?.flexBasis ) {
-			return extraProps;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const style = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.flexBasis' ) ) {
+			if ( ! attributes?.__unstableUnitoneSupports?.flexBasis ) {
+				return extraProps?.style;
+			}
 		}
-	}
 
-	if ( null == attributes?.unitone?.flexBasis ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.flexBasis ) {
+			return extraProps?.style;
+		}
+
+		return {
+			...extraProps?.style,
+			'--unitone--flex-basis': attributes?.unitone?.flexBasis,
+		};
+	}, [
+		blockType,
+		attributes?.__unstableUnitoneSupports?.flexBasis,
+		extraProps?.style,
+		attributes?.unitone?.flexBasis,
+	] );
 
 	return {
 		...extraProps,
-		style: {
-			...extraProps?.style,
-			'--unitone--flex-basis': attributes?.unitone?.flexBasis,
-		},
+		style,
 	};
 }
 
@@ -139,17 +146,12 @@ export function useFlexBasisBlockProps( settings ) {
 		__unstableUnitoneSupports,
 	} );
 
-	const newFlexBasisProp = useMemo( () => {
-		return saveFlexBasisProp( wrapperProps, name, {
-			__unstableUnitoneSupports,
-			unitone: {
-				flexBasis: attributes?.unitone?.flexBasis ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newFlexBasisProp = useBlockProps( wrapperProps, name, {
+		__unstableUnitoneSupports,
+		unitone: {
+			flexBasis: attributes?.unitone?.flexBasis ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

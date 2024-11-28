@@ -11,35 +11,16 @@ use Unitone\App\Controller\Manager\Manager;
  * Apply CSS Vars from settings.
  */
 function apply_css_vars_from_settings() {
-	/**
-	 * Converts a preset style into a custom value.
-	 *
-	 * @param string $value Value to convert.
-	 * @return string CSS var string for given preset style value.
-	 */
-	$get_preset_style_css_var = function ( $value ) {
-		if ( null === $value || '' === $value ) {
-			return $value;
-		}
-
-		preg_match( '/var:preset\|(.+)\|(.+)/', $value, $match );
-		if ( ! $match ) {
-			return $value;
-		}
-
-		return 'var(--wp--preset--' . $match[1] . '--' . $match[2] . ')';
-	};
-
 	$deprecated_font_family      = Manager::get_setting( 'font-family' );
-	$deprecated_font_family      = $deprecated_font_family && $get_preset_style_css_var( $deprecated_font_family ) === $deprecated_font_family
+	$deprecated_font_family      = $deprecated_font_family && unitone_get_preset_css_var( $deprecated_font_family ) === $deprecated_font_family
 		? 'var(--wp--preset--font-family--' . $deprecated_font_family . ')'
 		: $deprecated_font_family;
 	$deprecated_content_size     = Manager::get_setting( 'content-size' );
 	$deprecated_wide_size        = Manager::get_setting( 'wide-size' );
-	$deprecated_background_color = $get_preset_style_css_var( Manager::get_setting( 'background-color' ) );
-	$deprecated_text_color       = $get_preset_style_css_var( Manager::get_setting( 'text-color' ) );
+	$deprecated_background_color = unitone_get_preset_css_var( Manager::get_setting( 'background-color' ) );
+	$deprecated_text_color       = unitone_get_preset_css_var( Manager::get_setting( 'text-color' ) );
 
-	$font_family      = $get_preset_style_css_var( Manager::get_setting( 'styles' )['typography']['fontFamily'] );
+	$font_family      = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['typography']['fontFamily'] );
 	$font_family      = $deprecated_font_family ? $deprecated_font_family : $font_family; // Deprecated.
 	$base_font_size   = Manager::get_setting( 'base-font-size' );
 	$half_leading     = Manager::get_setting( 'half-leading' );
@@ -48,9 +29,9 @@ function apply_css_vars_from_settings() {
 	$wide_size        = Manager::get_setting( 'settings' )['layout']['wideSize'];
 	$wide_size        = $deprecated_wide_size ? $deprecated_wide_size : $wide_size; // Deprecated.
 	$accent_color     = Manager::get_setting( 'accent-color' );
-	$background_color = $get_preset_style_css_var( Manager::get_setting( 'styles' )['color']['background'] );
+	$background_color = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['background'] );
 	$background_color = $deprecated_background_color ? $deprecated_background_color : $background_color; // Deprecated.
-	$text_color       = $get_preset_style_css_var( Manager::get_setting( 'styles' )['color']['text'] );
+	$text_color       = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['text'] );
 	$text_color       = $deprecated_text_color ? $deprecated_text_color : $text_color; // Deprecated.
 	$h2_size          = Manager::get_setting( 'h2-size' );
 	$h3_size          = Manager::get_setting( 'h3-size' );

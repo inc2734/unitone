@@ -49,7 +49,7 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 
 		return <BlockListBlock { ...props } />;
 	};
-} );
+}, 'useBlockProps' );
 
 addFilter(
 	'editor.BlockListBlock',

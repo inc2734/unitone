@@ -62,10 +62,12 @@ kbd {
 	[type=submit]:not(.wp-element-button)
 ) {
 	--unitone--border-radius: var(--unitone--global--border-radius);
-	--unitone--padding: calc(var(--unitone--p-1) / 1.5) var(--unitone--p-1);
+	--unitone--padding: var(--unitone--p-1);
+	--unitone--padding-block: calc(var(--unitone--padding) / 1.5);
+	--unitone--padding-inline: var(--unitone--padding);
 
 	border: 1px solid var(--wp--preset--color--unitone-gray);
-	padding: var(--unitone--padding);
+	padding: var(--unitone--padding-block) var(--unitone--padding-inline);
 	border-radius: var(--unitone--border-radius);
 	font-family: inherit;
 

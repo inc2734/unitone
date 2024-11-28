@@ -145,30 +145,39 @@ export function BlockAlignEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveBlockAlignProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.blockAlign' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.blockAlign' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.blockAlign ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.blockAlign ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	// Deprecation.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = clsx(
-			extraProps[ 'data-layout' ],
+		// Deprecation.
+		if ( !! extraProps?.[ 'data-layout' ] ) {
+			extraProps[ 'data-layout' ] = clsx(
+				extraProps[ 'data-layout' ],
+				`-align:${ attributes.unitone?.blockAlign }`
+			);
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx(
+			extraProps?.[ 'data-unitone-layout' ],
 			`-align:${ attributes.unitone?.blockAlign }`
 		);
-		return extraProps;
-	}
+	}, [
+		blockType,
+		extraProps?.[ 'data-layout' ],
+		extraProps?.[ 'data-unitone-layout' ],
+		attributes.unitone?.blockAlign,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-align:${ attributes.unitone?.blockAlign }`
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -183,16 +192,11 @@ export function useBlockAlignBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newBlockAlignProp = useMemo( () => {
-		return saveBlockAlignProp( wrapperProps, name, {
-			unitone: {
-				blockAlign: attributes?.unitone?.blockAlign ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newBlockAlignProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			blockAlign: attributes?.unitone?.blockAlign ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

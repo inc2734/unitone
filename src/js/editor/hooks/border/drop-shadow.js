@@ -297,27 +297,31 @@ export function DropShadowEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveDropShadowProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.dropShadow' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const style = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.dropShadow' ) ) {
+			return extraProps?.style;
+		}
 
-	if ( null == attributes?.unitone?.dropShadow ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.dropShadow ) {
+			return extraProps?.style;
+		}
 
-	const slug = attributes?.unitone?.dropShadow?.match(
-		/var:preset\|shadow\|(.+)/
-	)?.[ 1 ];
+		const slug = attributes?.unitone?.dropShadow?.match(
+			/var:preset\|shadow\|(.+)/
+		)?.[ 1 ];
 
-	return {
-		...extraProps,
-		style: {
+		return {
 			...extraProps?.style,
 			'--unitone--drop-shadow': !! slug
 				? `var(--wp--preset--shadow--${ slug })`
 				: attributes?.unitone?.dropShadow,
-		},
+		};
+	}, [ blockType, extraProps?.style, attributes?.unitone?.dropShadow ] );
+
+	return {
+		...extraProps,
+		style,
 	};
 }
 
@@ -332,16 +336,11 @@ export function useDropShadowBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newDropShadowProp = useMemo( () => {
-		return saveDropShadowProp( wrapperProps, name, {
-			unitone: {
-				dropShadow: attributes?.unitone?.dropShadow ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newDropShadowProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			dropShadow: attributes?.unitone?.dropShadow ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

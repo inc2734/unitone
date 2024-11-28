@@ -12,6 +12,7 @@
 		"@wordpress/icons": "^10.11.0",
 		"@wordpress/interface": "^8.0.0",
 		"@wordpress/scripts": "^30.4.0",
+		"@wordpress/style-engine": "^2.13.0",
 		"autoprefixer": "^10.4.20",
 		"clsx": "^2.1.1",
 		"cpy-cli": "^5.0.0",

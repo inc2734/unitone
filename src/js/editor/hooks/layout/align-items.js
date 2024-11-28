@@ -164,30 +164,39 @@ export function AlignItemsEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveAlignItemsProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.alignItems' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.alignItems' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.alignItems ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.alignItems ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	// Deprecation.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = clsx(
-			extraProps[ 'data-layout' ],
+		// Deprecation.
+		if ( !! extraProps?.[ 'data-layout' ] ) {
+			extraProps[ 'data-layout' ] = clsx(
+				extraProps[ 'data-layout' ],
+				`-align-items:${ attributes.unitone?.alignItems }`
+			);
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx(
+			extraProps?.[ 'data-unitone-layout' ],
 			`-align-items:${ attributes.unitone?.alignItems }`
 		);
-		return extraProps;
-	}
+	}, [
+		blockType,
+		extraProps?.[ 'data-layout' ],
+		extraProps?.[ 'data-unitone-layout' ],
+		attributes.unitone?.alignItems,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-align-items:${ attributes.unitone?.alignItems }`
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -202,16 +211,11 @@ export function useAlignItemsBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newAlignItemsProp = useMemo( () => {
-		return saveAlignItemsProp( wrapperProps, name, {
-			unitone: {
-				alignItems: attributes?.unitone?.alignItems ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newAlignItemsProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			alignItems: attributes?.unitone?.alignItems ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

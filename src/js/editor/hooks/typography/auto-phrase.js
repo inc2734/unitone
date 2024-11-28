@@ -67,37 +67,37 @@ export function AutoPhraseEdit( { label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveAutoPhraseProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.autoPhrase' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.autoPhrase' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.autoPhrase ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.autoPhrase ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx( extraProps?.[ 'data-unitone-layout' ], '-auto-phrase' );
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		attributes?.unitone?.autoPhrase,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			'-auto-phrase'
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
 export function useAutoPhraseBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
-	const newAutoPhraseProp = useMemo( () => {
-		return saveAutoPhraseProp( wrapperProps, name, {
-			unitone: {
-				autoPhrase: attributes?.unitone?.autoPhrase ?? undefined,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newAutoPhraseProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			autoPhrase: attributes?.unitone?.autoPhrase,
+		},
+	} );
 
 	return {
 		...settings,

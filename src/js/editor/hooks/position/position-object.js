@@ -379,32 +379,54 @@ export function ZIndexEdit( { label, name, unitone, setAttributes } ) {
 	);
 }
 
-export function savePositionProp( extraProps, blockType, attributes ) {
-	// const defaultValue = wp.data.select( blocksStore ).getBlockType( blockType )
-	// 	?.attributes?.unitone?.default?.position;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const newExtraProps = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.position' ) ) {
+			return {
+				style: { ...extraProps?.style },
+				'data-unitone-layout': extraProps?.[ 'data-unitone-layout' ],
+			};
+		}
 
-	if ( ! hasBlockSupport( blockType, 'unitone.position' ) ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.position ) {
+			return {
+				style: { ...extraProps?.style },
+				'data-unitone-layout': extraProps?.[ 'data-unitone-layout' ],
+			};
+		}
 
-	if ( null == attributes?.unitone?.position ) {
-		return extraProps;
-	}
+		return {
+			style: {
+				...extraProps?.style,
+				'--unitone--top': attributes?.unitone?.position?.top,
+				'--unitone--right': attributes?.unitone?.position?.right,
+				'--unitone--bottom': attributes?.unitone?.position?.bottom,
+				'--unitone--left': attributes?.unitone?.position?.left,
+				'--unitone--z-index': attributes?.unitone?.position?.zIndex,
+			},
+			'data-unitone-layout': clsx(
+				extraProps?.[ 'data-unitone-layout' ],
+				{
+					[ `-position:${ attributes?.unitone?.position?.position }` ]:
+						!! attributes?.unitone?.position?.position,
+				}
+			),
+		};
+	}, [
+		blockType,
+		extraProps?.style,
+		extraProps?.[ 'data-unitone-layout' ],
+		attributes?.unitone?.position?.top,
+		attributes?.unitone?.position?.right,
+		attributes?.unitone?.position?.bottom,
+		attributes?.unitone?.position?.left,
+		attributes?.unitone?.position?.zIndex,
+		attributes?.unitone?.position?.position,
+	] );
 
 	return {
 		...extraProps,
-		style: {
-			...extraProps?.style,
-			'--unitone--top': attributes?.unitone?.position?.top,
-			'--unitone--right': attributes?.unitone?.position?.right,
-			'--unitone--bottom': attributes?.unitone?.position?.bottom,
-			'--unitone--left': attributes?.unitone?.position?.left,
-			'--unitone--z-index': attributes?.unitone?.position?.zIndex,
-		},
-		'data-unitone-layout': clsx( extraProps?.[ 'data-unitone-layout' ], {
-			[ `-position:${ attributes?.unitone?.position?.position }` ]:
-				!! attributes?.unitone?.position?.position,
-		} ),
+		...newExtraProps,
 	};
 }
 
@@ -419,16 +441,11 @@ export function usePositionBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newPositionProp = useMemo( () => {
-		return savePositionProp( wrapperProps, name, {
-			unitone: {
-				position: attributes?.unitone?.position ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newPositionProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			position: attributes?.unitone?.position ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

@@ -112,30 +112,39 @@ export function GuttersEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveGuttersProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.gutters' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.gutters' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.gutters ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.gutters ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	// Deprecation.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = clsx(
-			extraProps[ 'data-layout' ],
+		// Deprecation.
+		if ( !! extraProps?.[ 'data-layout' ] ) {
+			extraProps[ 'data-layout' ] = clsx(
+				extraProps[ 'data-layout' ],
+				`-gutters:${ attributes.unitone?.gutters }`
+			);
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx(
+			extraProps?.[ 'data-unitone-layout' ],
 			`-gutters:${ attributes.unitone?.gutters }`
 		);
-		return extraProps;
-	}
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		extraProps?.[ 'data-layout' ],
+		attributes?.unitone?.gutters,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-gutters:${ attributes.unitone?.gutters }`
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -150,16 +159,11 @@ export function useGuttersBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newGuttersProp = useMemo( () => {
-		return saveGuttersProp( wrapperProps, name, {
-			unitone: {
-				gutters: attributes?.unitone?.gutters ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newGuttersProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			gutters: attributes?.unitone?.gutters ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

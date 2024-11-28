@@ -20,7 +20,9 @@ h3.has-background,
 h4.has-background,
 h5.has-background,
 h6.has-background {
-	--unitone--padding: calc(var(--unitone--global--text-gap) / 4) calc(var(--unitone--global--text-gap) / 3);
+	--unitone--padding: var(--unitone--p-2);
+	--unitone--padding-block: calc(var(--unitone--padding) / 1.5);
+	--unitone--padding-inline: var(--unitone--padding);
 
-	padding: var(--unitone--padding);
+	padding: var(--unitone--padding-block) var(--unitone--padding-inline);
 }

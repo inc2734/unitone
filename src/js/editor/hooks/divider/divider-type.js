@@ -111,21 +111,29 @@ export function DividerTypeEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveDividerTypeProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.dividerType' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.dividerType' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.dividerType ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.dividerType ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-divider:${ attributes.unitone?.dividerType }`
+		);
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		attributes?.unitone?.dividerType,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-divider:${ attributes.unitone?.dividerType }`
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -140,16 +148,11 @@ export function useDividerTypeBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newDividerTypeProp = useMemo( () => {
-		return saveDividerTypeProp( wrapperProps, name, {
-			unitone: {
-				dividerType: attributes?.unitone?.dividerType ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newDividerTypeProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			dividerType: attributes?.unitone?.dividerType ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

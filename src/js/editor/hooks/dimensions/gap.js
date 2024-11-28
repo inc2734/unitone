@@ -451,27 +451,26 @@ export function GapEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveGapProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.gap' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.gap' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.gap ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.gap ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	// Deprecation.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = clsx(
-			extraProps[ 'data-layout' ],
-			`-gap:${ attributes.unitone?.gap }`
-		);
-		return extraProps;
-	}
+		// Deprecation.
+		if ( !! extraProps?.[ 'data-layout' ] ) {
+			extraProps[ 'data-layout' ] = clsx(
+				extraProps[ 'data-layout' ],
+				`-gap:${ attributes.unitone?.gap }`
+			);
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	return {
-		...extraProps,
-		'data-unitone-layout': clsx( extraProps?.[ 'data-unitone-layout' ], {
+		return clsx( extraProps?.[ 'data-unitone-layout' ], {
 			[ `-gap:${ attributes.unitone?.gap }` ]:
 				null == attributes.unitone?.gap?.column &&
 				null == attributes.unitone?.gap?.row,
@@ -479,7 +478,17 @@ export function saveGapProp( extraProps, blockType, attributes ) {
 				null != attributes.unitone?.gap?.column,
 			[ `-row-gap:${ attributes.unitone?.gap?.row }` ]:
 				null != attributes.unitone?.gap?.row,
-		} ),
+		} );
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		extraProps?.[ 'data-layout' ],
+		JSON.stringify( attributes?.unitone?.gap ),
+	] );
+
+	return {
+		...extraProps,
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -494,16 +503,11 @@ export function useGapBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newGapProp = useMemo( () => {
-		return saveGapProp( wrapperProps, name, {
-			unitone: {
-				gap: compacting( attributes.unitone?.gap ?? defaultValue ),
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newGapProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			gap: compacting( attributes.unitone?.gap ?? defaultValue ),
+		},
+	} );
 
 	return {
 		...settings,

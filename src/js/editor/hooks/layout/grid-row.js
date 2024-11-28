@@ -227,22 +227,19 @@ export function GridRowEdit( {
 	);
 }
 
-export function saveGridRowProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.gridRow' ) ) {
-		const { __unstableUnitoneSupports } = attributes;
-
-		if ( ! __unstableUnitoneSupports?.gridRow ) {
-			return extraProps;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const style = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.gridRow' ) ) {
+			if ( ! attributes?.__unstableUnitoneSupports?.gridRow ) {
+				return extraProps?.style;
+			}
 		}
-	}
 
-	if ( null == attributes?.unitone?.gridRow ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.gridRow ) {
+			return extraProps?.style;
+		}
 
-	return {
-		...extraProps,
-		style: {
+		return {
 			...extraProps?.style,
 			'--unitone--grid-row':
 				typeof attributes.unitone?.gridRow === 'string'
@@ -256,7 +253,17 @@ export function saveGridRowProp( extraProps, blockType, attributes ) {
 				null != attributes.unitone?.gridRow?.sm
 					? attributes?.unitone?.gridRow?.sm
 					: undefined,
-		},
+		};
+	}, [
+		blockType,
+		attributes?.__unstableUnitoneSupports?.gridRow,
+		extraProps?.style,
+		attributes?.unitone?.gridRow,
+	] );
+
+	return {
+		...extraProps,
+		style,
 	};
 }
 
@@ -266,17 +273,12 @@ export function useGridRowBlockProps( settings ) {
 
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
-	const newGridRowProp = useMemo( () => {
-		return saveGridRowProp( wrapperProps, name, {
-			__unstableUnitoneSupports,
-			unitone: {
-				gridRow: attributes?.unitone?.gridRow ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newGridRowProp = useBlockProps( wrapperProps, name, {
+		__unstableUnitoneSupports,
+		unitone: {
+			gridRow: attributes?.unitone?.gridRow ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

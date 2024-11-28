@@ -100,21 +100,29 @@ export function AutoRepeatEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveAutoRepeatProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.autoRepeat' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.autoRepeat' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.autoRepeat ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.autoRepeat ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-auto-repeat:${ attributes.unitone?.autoRepeat }`
+		);
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		attributes?.unitone?.autoRepeat,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-auto-repeat:${ attributes.unitone?.autoRepeat }`
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -129,16 +137,11 @@ export function useAutoRepeatBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newAutoRepeatProp = useMemo( () => {
-		return saveAutoRepeatProp( wrapperProps, name, {
-			unitone: {
-				autoRepeat: attributes?.unitone?.autoRepeat ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newAutoRepeatProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			autoRepeat: attributes?.unitone?.autoRepeat ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

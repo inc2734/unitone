@@ -144,18 +144,26 @@ export function ParallaxEdit( { name, unitone, setAttributes } ) {
 	);
 }
 
-export function saveParallaxProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.parallax' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneParallaxSpeed = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.parallax' ) ) {
+			return undefined;
+		}
 
-	if ( null == attributes?.unitone?.parallax ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.parallax ) {
+			return undefined;
+		}
+
+		return attributes.unitone?.parallax?.speed;
+	}, [
+		blockType,
+		attributes?.unitone?.parallax,
+		attributes.unitone?.parallax?.speed,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-parallax-speed': attributes.unitone?.parallax?.speed,
+		'data-unitone-parallax-speed': unitoneParallaxSpeed,
 	};
 }
 
@@ -170,16 +178,11 @@ export function useParallaxBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newParallaxProp = useMemo( () => {
-		return saveParallaxProp( wrapperProps, name, {
-			unitone: {
-				parallax: attributes?.unitone?.parallax ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newParallaxProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			parallax: attributes?.unitone?.parallax ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

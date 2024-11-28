@@ -90,30 +90,39 @@ export function PaddingEdit( { label, name, unitone, setAttributes } ) {
 	);
 }
 
-export function savePaddingProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.padding' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.padding' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.padding ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.padding ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	// Deprecation.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = clsx(
-			extraProps[ 'data-layout' ],
+		// Deprecation.
+		if ( !! extraProps?.[ 'data-layout' ] ) {
+			extraProps[ 'data-layout' ] = clsx(
+				extraProps[ 'data-layout' ],
+				`-padding:${ attributes.unitone?.padding }`
+			);
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx(
+			extraProps?.[ 'data-unitone-layout' ],
 			`-padding:${ attributes.unitone?.padding }`
 		);
-		return extraProps;
-	}
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		extraProps?.[ 'data-layout' ],
+		attributes?.unitone?.padding,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-padding:${ attributes.unitone?.padding }`
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -128,16 +137,11 @@ export function usePaddingBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newPaddingProp = useMemo( () => {
-		return savePaddingProp( wrapperProps, name, {
-			unitone: {
-				padding: attributes?.unitone?.padding ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newPaddingProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			padding: attributes?.unitone?.padding ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

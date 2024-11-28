@@ -84,35 +84,43 @@ export function MaxHeightEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveMaxHeightProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.maxHeight' ) ) {
-		const { __unstableUnitoneSupports } = attributes;
-
-		if ( ! __unstableUnitoneSupports?.maxHeight ) {
-			return extraProps;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const style = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.maxHeight' ) ) {
+			if ( ! attributes?.__unstableUnitoneSupports?.maxHeight ) {
+				return extraProps?.style;
+			}
 		}
-	}
 
-	if ( null == attributes?.unitone?.maxHeight ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.maxHeight ) {
+			return extraProps?.style;
+		}
 
-	// Deprecation.
-	// Blocks with data-layout have no prefix in the CSS custom property.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps.style = {
-			...extraProps.style,
-			'--max-height': attributes?.unitone?.maxHeight,
+		// Deprecation.
+		// Blocks with data-layout have no prefix in the CSS custom property.
+		if ( !! extraProps?.[ 'data-layout' ] ) {
+			extraProps.style = {
+				...extraProps.style,
+				'--max-height': attributes?.unitone?.maxHeight,
+			};
+			return extraProps?.style;
+		}
+
+		return {
+			...extraProps?.style,
+			'--unitone--max-height': attributes?.unitone?.maxHeight,
 		};
-		return extraProps;
-	}
+	}, [
+		blockType,
+		attributes?.__unstableUnitoneSupports?.maxHeight,
+		attributes?.unitone?.maxHeight,
+		extraProps?.style,
+		extraProps?.[ 'data-layout' ],
+	] );
 
 	return {
 		...extraProps,
-		style: {
-			...extraProps?.style,
-			'--unitone--max-height': attributes?.unitone?.maxHeight,
-		},
+		style,
 	};
 }
 
@@ -128,17 +136,12 @@ export function useMaxHeightBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newMaxHeightProp = useMemo( () => {
-		return saveMaxHeightProp( wrapperProps, name, {
-			__unstableUnitoneSupports,
-			unitone: {
-				maxHeight: attributes?.unitone?.maxHeight ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newMaxHeightProp = useBlockProps( wrapperProps, name, {
+		__unstableUnitoneSupports,
+		unitone: {
+			maxHeight: attributes?.unitone?.maxHeight ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

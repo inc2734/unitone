@@ -68,6 +68,9 @@ if ( wp_get_custom_css() ) {
 	add_action( 'customize_register', 'unitone_restore_customizer' );
 }
 
+// function library.
+require get_template_directory() . '/inc/lib.php';
+
 // Updater.
 require get_template_directory() . '/inc/updater.php';
 

@@ -190,35 +190,44 @@ export function DividerEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-function saveDividerProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.divider' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const style = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.divider' ) ) {
+			return extraProps?.style;
+		}
 
-	if (
-		null == attributes?.unitone?.divider &&
-		null == attributes?.unitone?.dividerColor
-	) {
-		return extraProps;
-	}
+		if (
+			null == attributes?.unitone?.divider &&
+			null == attributes?.unitone?.dividerColor
+		) {
+			return extraProps?.style;
+		}
 
-	let presetColor;
-	if ( !! attributes?.unitone?.dividerColor ) {
-		presetColor = `var(--wp--preset--color--${ attributes?.unitone?.dividerColor.replace(
-			'/',
-			'-'
-		) })`;
-	}
+		let presetColor;
+		if ( !! attributes?.unitone?.dividerColor ) {
+			presetColor = `var(--wp--preset--color--${ attributes?.unitone?.dividerColor.replace(
+				'/',
+				'-'
+			) })`;
+		}
 
-	return {
-		...extraProps,
-		style: {
+		return {
 			...extraProps?.style,
 			'--unitone--divider-color':
 				attributes?.unitone?.divider?.color || presetColor,
 			'--unitone--divider-style': attributes?.unitone?.divider?.style,
 			'--unitone--divider-width': attributes?.unitone?.divider?.width,
-		},
+		};
+	}, [
+		blockType,
+		attributes?.unitone?.divider,
+		attributes?.unitone?.dividerColor,
+		extraProps?.style,
+	] );
+
+	return {
+		...extraProps,
+		style,
 	};
 }
 
@@ -238,20 +247,15 @@ export function useDividerBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newDividerProp = useMemo( () => {
-		return saveDividerProp( wrapperProps, name, {
-			unitone: {
-				divider: {
-					...( attributes?.unitone?.divider ?? defaultDivider ),
-				},
-				dividerColor:
-					attributes?.unitone?.dividerColor ?? defaultDividerColor,
+	const newDividerProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			divider: {
+				...( attributes?.unitone?.divider ?? defaultDivider ),
 			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+			dividerColor:
+				attributes?.unitone?.dividerColor ?? defaultDividerColor,
+		},
+	} );
 
 	return {
 		...settings,

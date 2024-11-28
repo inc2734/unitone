@@ -65,30 +65,36 @@ export function NegativeEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveNegativeProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.negative' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.negative' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.negative ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.negative ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	// Deprecation.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = clsx(
-			extraProps[ 'data-layout' ],
-			'-negative'
-		);
-		return extraProps;
-	}
+		// Deprecation.
+		if ( !! extraProps?.[ 'data-layout' ] ) {
+			extraProps[ 'data-layout' ] = clsx(
+				extraProps[ 'data-layout' ],
+				'-negative'
+			);
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx( extraProps?.[ 'data-unitone-layout' ], '-negative' );
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		extraProps?.[ 'data-layout' ],
+		attributes?.unitone?.negative,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			'-negative'
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -103,16 +109,11 @@ export function useNegativeBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newNegativeProp = useMemo( () => {
-		return saveNegativeProp( wrapperProps, name, {
-			unitone: {
-				negative: attributes?.unitone?.negative ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newNegativeProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			negative: attributes?.unitone?.negative ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

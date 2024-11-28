@@ -162,25 +162,34 @@ export function StairsUpEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveStairsProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.stairs' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.stairs' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if (
-		null == attributes?.unitone?.stairs &&
-		null == attributes?.unitone?.stairsUp
-	) {
-		return extraProps;
-	}
+		if (
+			null == attributes?.unitone?.stairs &&
+			null == attributes?.unitone?.stairsUp
+		) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	return {
-		...extraProps,
-		'data-unitone-layout': clsx(
+		return clsx(
 			extraProps?.[ 'data-unitone-layout' ],
 			`-stairs:${ attributes.unitone?.stairs }`,
 			`-stairs-up:${ attributes.unitone?.stairsUp }`
-		),
+		);
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		attributes?.unitone?.stairs,
+		attributes?.unitone?.stairsUp,
+	] );
+
+	return {
+		...extraProps,
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -200,17 +209,12 @@ export function useStairsBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newStairsProp = useMemo( () => {
-		return saveStairsProp( wrapperProps, name, {
-			unitone: {
-				stairs: attributes?.unitone?.stairs ?? defaultStairs,
-				stairsUp: attributes?.unitone?.stairsUp ?? defaultStairsUp,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newStairsProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			stairs: attributes?.unitone?.stairs ?? defaultStairs,
+			stairsUp: attributes?.unitone?.stairsUp ?? defaultStairsUp,
+		},
+	} );
 
 	return {
 		...settings,

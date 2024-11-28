@@ -109,21 +109,29 @@ export function OverflowEdit( { label, name, unitone, setAttributes } ) {
 	);
 }
 
-export function saveOverflowProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.overflow' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.overflow' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.overflow ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.overflow ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-overflow:${ attributes.unitone?.overflow }`
+		);
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		attributes?.unitone?.overflow,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-overflow:${ attributes.unitone?.overflow }`
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -138,16 +146,11 @@ export function useOverflowBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newOverflowProp = useMemo( () => {
-		return saveOverflowProp( wrapperProps, name, {
-			unitone: {
-				overflow: attributes?.unitone?.overflow ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newOverflowProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			overflow: attributes?.unitone?.overflow ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

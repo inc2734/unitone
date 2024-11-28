@@ -1,5 +1,7 @@
 .wp-block-table {
 	--unitone--padding: var(--unitone--p-1);
+	--unitone--padding-block: var(--unitone--padding);
+	--unitone--padding-inline: var(--unitone--padding);
 	--unitone--cell-min-width: 0px;
 	--unitone--scrollbar-thumb-color: #ddd;
 	--unitone--scrollbar-track-color: transparent;
@@ -36,7 +38,7 @@
 
 	th,
 	td {
-		padding: var(--unitone--padding);
+		padding: var(--unitone--padding-block) var(--unitone--padding-inline);
 		min-width: var(--unitone--cell-min-width);
 	}
 
@@ -90,7 +92,9 @@ figure.wp-block-table {
 }
 
 :root :where(.wp-block-table.is-style-vertical-line) {
-	--unitone--padding: var(--unitone--p-1) var(--unitone--p1);
+	--unitone--padding: var(--unitone--p1);
+	--unitone--padding-block: calc(var(--unitone--padding) / 1.5);
+	--unitone--padding-inline: var(--unitone--padding);
 
 	:where(tr) > :where(:not(:last-child)) {
 		border-top-width: 0 !important;

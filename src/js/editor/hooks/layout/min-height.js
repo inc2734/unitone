@@ -84,35 +84,43 @@ export function MinHeightEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveMinHeightProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.minHeight' ) ) {
-		const { __unstableUnitoneSupports } = attributes;
-
-		if ( ! __unstableUnitoneSupports?.minHeight ) {
-			return extraProps;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const style = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.minHeight' ) ) {
+			if ( ! attributes?.__unstableUnitoneSupports?.minHeight ) {
+				return extraProps?.style;
+			}
 		}
-	}
 
-	if ( null == attributes?.unitone?.minHeight ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.minHeight ) {
+			return extraProps?.style;
+		}
 
-	// Deprecation.
-	// Blocks with data-layout have no prefix in the CSS custom property.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps.style = {
-			...extraProps.style,
-			'--min-height': attributes?.unitone?.minHeight,
+		// Deprecation.
+		// Blocks with data-layout have no prefix in the CSS custom property.
+		if ( !! extraProps?.[ 'data-layout' ] ) {
+			extraProps.style = {
+				...extraProps.style,
+				'--min-height': attributes?.unitone?.minHeight,
+			};
+			return extraProps?.style;
+		}
+
+		return {
+			...extraProps?.style,
+			'--unitone--min-height': attributes?.unitone?.minHeight,
 		};
-		return extraProps;
-	}
+	}, [
+		blockType,
+		attributes?.__unstableUnitoneSupports?.minHeight,
+		attributes?.unitone?.minHeight,
+		extraProps?.style,
+		extraProps?.[ 'data-layout' ],
+	] );
 
 	return {
 		...extraProps,
-		style: {
-			...extraProps?.style,
-			'--unitone--min-height': attributes?.unitone?.minHeight,
-		},
+		style,
 	};
 }
 
@@ -128,17 +136,12 @@ export function useMinHeightBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newMinHeightProp = useMemo( () => {
-		return saveMinHeightProp( wrapperProps, name, {
-			__unstableUnitoneSupports,
-			unitone: {
-				minHeight: attributes?.unitone?.minHeight ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newMinHeightProp = useBlockProps( wrapperProps, name, {
+		__unstableUnitoneSupports,
+		unitone: {
+			minHeight: attributes?.unitone?.minHeight ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

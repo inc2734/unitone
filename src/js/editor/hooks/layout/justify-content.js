@@ -170,30 +170,39 @@ export function JustifyContentEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveJustifyContentProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.justifyContent' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.justifyContent' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.justifyContent ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.justifyContent ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	// Deprecation.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps[ 'data-layout' ] = clsx(
-			extraProps[ 'data-layout' ],
+		// Deprecation.
+		if ( !! extraProps?.[ 'data-layout' ] ) {
+			extraProps[ 'data-layout' ] = clsx(
+				extraProps[ 'data-layout' ],
+				`-justify-content:${ attributes.unitone?.justifyContent }`
+			);
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx(
+			extraProps?.[ 'data-unitone-layout' ],
 			`-justify-content:${ attributes.unitone?.justifyContent }`
 		);
-		return extraProps;
-	}
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		extraProps?.[ 'data-layout' ],
+		attributes?.unitone?.justifyContent,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-justify-content:${ attributes.unitone?.justifyContent }`
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -208,17 +217,11 @@ export function useJustifyContentBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newJustifyContentProp = useMemo( () => {
-		return saveJustifyContentProp( wrapperProps, name, {
-			unitone: {
-				justifyContent:
-					attributes?.unitone?.justifyContent ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newJustifyContentProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			justifyContent: attributes?.unitone?.justifyContent ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

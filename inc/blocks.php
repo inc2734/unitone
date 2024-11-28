@@ -176,25 +176,6 @@ add_filter(
 		};
 
 		/**
-		 * Converts a preset into a custom value.
-		 *
-		 * @param string $value Value to convert.
-		 * @return string CSS var string for given preset value.
-		 */
-		$get_preset_css_var = function ( $value ) {
-			if ( null === $value || '' === $value ) {
-				return $value;
-			}
-
-			preg_match( '/var:preset\|([^\|]+)\|(.+)/', $value, $match );
-			if ( ! $match ) {
-				return $value;
-			}
-
-			return 'var(--wp--preset--' . $match[1] . '--' . $match[2] . ')';
-		};
-
-		/**
 		 * Checks is given value is a preset.
 		 *
 		 * @param string $value Value to check
@@ -221,8 +202,7 @@ add_filter(
 			$metadata,
 			$is_value_global_style,
 			$get_global_style_css_var,
-			$is_value_preset,
-			$get_preset_css_var
+			$is_value_preset
 		) {
 			$array_get = function ( array $vars, $format ) {
 				foreach ( explode( '.', (string) $format ) as $key ) {
@@ -244,7 +224,7 @@ add_filter(
 			}
 
 			if ( $is_value_preset( $attribute ) ) {
-				return $get_preset_css_var( $attribute );
+				return unitone_get_preset_css_var( $attribute );
 			}
 
 			return $attribute;
@@ -801,5 +781,103 @@ add_filter(
 		return $block_content;
 	},
 	1000,
+	2
+);
+
+/**
+ * Add CSS vars to core/post-terms.
+ */
+add_filter(
+	'render_block_core/post-terms',
+	function ( $block_content, $block ) {
+		$attrs      = $block['attrs'] ?? array();
+		$class_name = $attrs['className'] ?? false;
+		if (
+			! $class_name ||
+			( false === strpos( $class_name, 'is-style-badge' ) && false === strpos( $class_name, 'is-style-outline' ) )
+		) {
+			return $block_content;
+		}
+
+		$background_color       = $attrs['backgroundColor'] ?? false;
+		$style_color_background = $attrs['style']['color']['background'] ?? false;
+
+		$border_color              = $attrs['borderColor'] ?? false;
+		$style_border_color        = $attrs['style']['border']['color'] ?? false;
+		$style_border_top_color    = unitone_get_preset_css_var( $attrs['style']['border']['top']['color'] ?? false );
+		$style_border_right_color  = unitone_get_preset_css_var( $attrs['style']['border']['right']['color'] ?? false );
+		$style_border_bottom_color = unitone_get_preset_css_var( $attrs['style']['border']['bottom']['color'] ?? false );
+		$style_border_left_color   = unitone_get_preset_css_var( $attrs['style']['border']['left']['color'] ?? false );
+
+		$style_border_style        = $attrs['style']['border']['style'] ?? false;
+		$style_border_top_style    = $attrs['style']['border']['top']['style'] ?? false;
+		$style_border_right_style  = $attrs['style']['border']['right']['style'] ?? false;
+		$style_border_bottom_style = $attrs['style']['border']['bottom']['style'] ?? false;
+		$style_border_left_style   = $attrs['style']['border']['left']['style'] ?? false;
+
+		$style_border_width        = $attrs['style']['border']['width'] ?? false;
+		$style_border_top_width    = $attrs['style']['border']['top']['width'] ?? false;
+		$style_border_right_width  = $attrs['style']['border']['right']['width'] ?? false;
+		$style_border_bottom_width = $attrs['style']['border']['bottom']['width'] ?? false;
+		$style_border_left_width   = $attrs['style']['border']['left']['width'] ?? false;
+
+		$style_border_radius              = isset( $attrs['style']['border']['radius'] ) && ! is_array( $attrs['style']['border']['radius'] )
+			? $attrs['style']['border']['radius']
+			: false;
+		$style_border_top_left_radius     = $attrs['style']['border']['radius']['topLeft'] ?? false;
+		$style_border_top_right_radius    = $attrs['style']['border']['radius']['topRight'] ?? false;
+		$style_border_bottom_left_radius  = $attrs['style']['border']['radius']['bottomLeft'] ?? false;
+		$style_border_bottom_right_radius = $attrs['style']['border']['radius']['bottomRight'] ?? false;
+
+		$p = new \WP_HTML_Tag_Processor( $block_content );
+
+		if ( $p->next_tag() ) {
+			$style = explode( ';', $p->get_attribute( 'style' ) ?? '' );
+
+			$new_styles = array(
+				'--unitone--post-term--background-color'   => (bool) $background_color
+					? 'var(--wp--preset--color--' . $background_color . ')'
+					: $style_color_background,
+				'--unitone--post-term--border-color'       => (bool) $border_color
+					? 'var(--wp--preset--color--' . $border_color . ')'
+					: $style_border_color,
+				'--unitone--post-term--border-top-color'   => $style_border_top_color,
+				'--unitone--post-term--border-right-color' => $style_border_right_color,
+				'--unitone--post-term--border-bottom-color' => $style_border_bottom_color,
+				'--unitone--post-term--border-left-color'  => $style_border_left_color,
+				'--unitone--post-term--border-style'       => $style_border_style,
+				'--unitone--post-term--border-top-style'   => $style_border_top_style,
+				'--unitone--post-term--border-right-style' => $style_border_right_style,
+				'--unitone--post-term--border-bottom-style' => $style_border_bottom_style,
+				'--unitone--post-term--border-left-style'  => $style_border_left_style,
+				'--unitone--post-term--border-width'       => $style_border_width,
+				'--unitone--post-term--border-top-width'   => $style_border_top_width,
+				'--unitone--post-term--border-right-width' => $style_border_right_width,
+				'--unitone--post-term--border-bottom-width' => $style_border_bottom_width,
+				'--unitone--post-term--border-left-width'  => $style_border_left_width,
+				'--unitone--post-term--border-radius'      => $style_border_radius,
+				'--unitone--post-term--border-top-left-radius' => $style_border_top_left_radius,
+				'--unitone--post-term--border-top-right-radius' => $style_border_top_right_radius,
+				'--unitone--post-term--border-bottom-left-radius' => $style_border_bottom_left_radius,
+				'--unitone--post-term--border-bottom-right-radius' => $style_border_bottom_right_radius,
+			);
+
+			$new_styles = array_filter(
+				$new_styles,
+				function ( $value ) {
+					return false !== $value && ! is_null( $value ) && '' !== $value;
+				}
+			);
+
+			foreach ( $new_styles as $new_style_key => $new_style_value ) {
+				$style[] = sprintf( '%1$s: %2$s', $new_style_key, $new_style_value );
+			}
+
+			$p->set_attribute( 'style', trim( implode( ';', $style ) ) );
+		}
+
+		return $p->get_updated_html();
+	},
+	10,
 	2
 );

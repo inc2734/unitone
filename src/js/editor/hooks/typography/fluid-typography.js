@@ -52,38 +52,40 @@ export function FluidTypographyEdit( { label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveFluidTypographyProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.fluidTypography' ) ) {
-		return extraProps;
-	}
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.fluidTypography' ) ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	if ( null == attributes?.unitone?.fluidTypography ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.fluidTypography ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			'-fluid-typography'
+		);
+	}, [
+		blockType,
+		extraProps?.[ 'data-unitone-layout' ],
+		attributes?.unitone?.fluidTypography,
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			'-fluid-typography'
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
 export function useFluidTypographyBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
-	const newFluidTypographyProp = useMemo( () => {
-		return saveFluidTypographyProp( wrapperProps, name, {
-			unitone: {
-				fluidTypography:
-					attributes?.unitone?.fluidTypography ?? undefined,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newFluidTypographyProp = useBlockProps( wrapperProps, name, {
+		unitone: {
+			fluidTypography: attributes?.unitone?.fluidTypography,
+		},
+	} );
 
 	return {
 		...settings,

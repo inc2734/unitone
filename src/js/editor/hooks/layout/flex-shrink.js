@@ -123,25 +123,32 @@ export function FlexShrinkEdit( {
 	);
 }
 
-export function saveFlexShrinkProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.flexShrink' ) ) {
-		const { __unstableUnitoneSupports } = attributes;
-
-		if ( ! __unstableUnitoneSupports?.flexShrink ) {
-			return extraProps;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const style = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.flexShrink' ) ) {
+			if ( ! attributes?.__unstableUnitoneSupports?.flexShrink ) {
+				return extraProps?.style;
+			}
 		}
-	}
 
-	if ( null == attributes?.unitone?.flexShrink ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.flexShrink ) {
+			return extraProps?.style;
+		}
+
+		return {
+			...extraProps?.style,
+			'--unitone--flex-shrink': attributes?.unitone?.flexShrink,
+		};
+	}, [
+		blockType,
+		attributes?.__unstableUnitoneSupports?.flexShrink,
+		extraProps?.style,
+		attributes?.unitone?.flexShrink,
+	] );
 
 	return {
 		...extraProps,
-		style: {
-			...extraProps?.style,
-			'--unitone--flex-shrink': attributes?.unitone?.flexShrink,
-		},
+		style,
 	};
 }
 
@@ -151,17 +158,12 @@ export function useFlexShrinkBlockProps( settings ) {
 
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
-	const newFlexShrinkProp = useMemo( () => {
-		return saveFlexShrinkProp( wrapperProps, name, {
-			__unstableUnitoneSupports,
-			unitone: {
-				flexShrink: attributes?.unitone?.flexShrink ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newFlexShrinkProp = useBlockProps( wrapperProps, name, {
+		__unstableUnitoneSupports,
+		unitone: {
+			flexShrink: attributes?.unitone?.flexShrink ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

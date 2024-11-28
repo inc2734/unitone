@@ -398,22 +398,19 @@ export function AlignSelfEdit( {
 	);
 }
 
-export function saveAlignSelfProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.alignSelf' ) ) {
-		const { __unstableUnitoneSupports } = attributes;
-
-		if ( ! __unstableUnitoneSupports?.alignSelf ) {
-			return extraProps;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.alignSelf' ) ) {
+			if ( ! attributes?.__unstableUnitoneSupports?.alignSelf ) {
+				return extraProps?.[ 'data-unitone-layout' ];
+			}
 		}
-	}
 
-	if ( null == attributes?.unitone?.alignSelf ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.alignSelf ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
 
-	return {
-		...extraProps,
-		'data-unitone-layout': clsx( extraProps?.[ 'data-unitone-layout' ], {
+		return clsx( extraProps?.[ 'data-unitone-layout' ], {
 			[ `-align-self:${ attributes.unitone?.alignSelf }` ]:
 				typeof attributes.unitone?.alignSelf === 'string',
 			[ `-align-self:${ attributes.unitone?.alignSelf.lg }` ]:
@@ -422,7 +419,17 @@ export function saveAlignSelfProp( extraProps, blockType, attributes ) {
 				null != attributes.unitone?.alignSelf?.md,
 			[ `-align-self:sm:${ attributes.unitone?.alignSelf?.sm }` ]:
 				null != attributes.unitone?.alignSelf?.sm,
-		} ),
+		} );
+	}, [
+		blockType,
+		attributes?.__unstableUnitoneSupports?.alignSelf,
+		extraProps?.[ 'data-unitone-layout' ],
+		JSON.stringify( attributes?.unitone?.alignSelf ),
+	] );
+
+	return {
+		...extraProps,
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -432,17 +439,12 @@ export function useAlignSelfBlockProps( settings ) {
 
 	const defaultValue = useDefaultValue( name, __unstableUnitoneSupports );
 
-	const newAlignSelfProp = useMemo( () => {
-		return saveAlignSelfProp( wrapperProps, name, {
-			__unstableUnitoneSupports,
-			unitone: {
-				alignSelf: attributes?.unitone?.alignSelf ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newAlignSelfProp = useBlockProps( wrapperProps, name, {
+		__unstableUnitoneSupports,
+		unitone: {
+			alignSelf: attributes?.unitone?.alignSelf ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

@@ -146,35 +146,43 @@ export function MaxWidthEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-export function saveMaxWidthProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.maxWidth' ) ) {
-		const { __unstableUnitoneSupports } = attributes;
-
-		if ( ! __unstableUnitoneSupports?.maxWidth ) {
-			return extraProps;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const style = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.maxWidth' ) ) {
+			if ( ! attributes?.__unstableUnitoneSupports?.maxWidth ) {
+				return extraProps?.style;
+			}
 		}
-	}
 
-	if ( null == attributes?.unitone?.maxWidth ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.maxWidth ) {
+			return extraProps?.style;
+		}
 
-	// Deprecation.
-	// Blocks with data-layout have no prefix in the CSS custom property.
-	if ( !! extraProps?.[ 'data-layout' ] ) {
-		extraProps.style = {
-			...extraProps.style,
-			'--max-width': attributes?.unitone?.maxWidth,
+		// Deprecation.
+		// Blocks with data-layout have no prefix in the CSS custom property.
+		if ( !! extraProps?.[ 'data-layout' ] ) {
+			extraProps.style = {
+				...extraProps.style,
+				'--max-width': attributes?.unitone?.maxWidth,
+			};
+			return extraProps?.style;
+		}
+
+		return {
+			...extraProps?.style,
+			'--unitone--max-width': attributes?.unitone?.maxWidth,
 		};
-		return extraProps;
-	}
+	}, [
+		blockType,
+		attributes?.__unstableUnitoneSupports?.maxWidth,
+		attributes?.unitone?.maxWidth,
+		extraProps?.style,
+		extraProps?.[ 'data-layout' ],
+	] );
 
 	return {
 		...extraProps,
-		style: {
-			...extraProps?.style,
-			'--unitone--max-width': attributes?.unitone?.maxWidth,
-		},
+		style,
 	};
 }
 
@@ -190,17 +198,12 @@ export function useMaxWidthBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newMaxWidthProp = useMemo( () => {
-		return saveMaxWidthProp( wrapperProps, name, {
-			__unstableUnitoneSupports,
-			unitone: {
-				maxWidth: attributes?.unitone?.maxWidth ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newMaxWidthProp = useBlockProps( wrapperProps, name, {
+		__unstableUnitoneSupports,
+		unitone: {
+			maxWidth: attributes?.unitone?.maxWidth ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

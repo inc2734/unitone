@@ -122,25 +122,32 @@ export function FlexGrowEdit( {
 	);
 }
 
-export function saveFlexGrowProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.flexGrow' ) ) {
-		const { __unstableUnitoneSupports } = attributes;
-
-		if ( ! __unstableUnitoneSupports?.flexGrow ) {
-			return extraProps;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const style = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.flexGrow' ) ) {
+			if ( ! attributes?.__unstableUnitoneSupports?.flexGrow ) {
+				return extraProps?.style;
+			}
 		}
-	}
 
-	if ( null == attributes?.unitone?.flexGrow ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.flexGrow ) {
+			return extraProps?.style;
+		}
+
+		return {
+			...extraProps?.style,
+			'--unitone--flex-grow': attributes?.unitone?.flexGrow,
+		};
+	}, [
+		blockType,
+		extraProps?.style,
+		attributes?.__unstableUnitoneSupports?.flexGrow,
+		attributes?.unitone?.flexGrow,
+	] );
 
 	return {
 		...extraProps,
-		style: {
-			...extraProps?.style,
-			'--unitone--flex-grow': attributes?.unitone?.flexGrow,
-		},
+		style,
 	};
 }
 
@@ -153,17 +160,12 @@ export function useFlexGrowBlockProps( settings ) {
 		__unstableUnitoneSupports,
 	} );
 
-	const newFlexGrowProp = useMemo( () => {
-		return saveFlexGrowProp( wrapperProps, name, {
-			__unstableUnitoneSupports,
-			unitone: {
-				flexGrow: attributes?.unitone?.flexGrow ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newFlexGrowProp = useBlockProps( wrapperProps, name, {
+		__unstableUnitoneSupports,
+		unitone: {
+			flexGrow: attributes?.unitone?.flexGrow ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

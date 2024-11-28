@@ -147,25 +147,32 @@ export function MixBlendModeEdit( { label, name, unitone, setAttributes } ) {
 	);
 }
 
-export function saveMixBlendModeProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.mixBlendMode' ) ) {
-		const { __unstableUnitoneSupports } = attributes;
-
-		if ( ! __unstableUnitoneSupports?.mixBlendMode ) {
-			return extraProps;
+function useBlockProps( extraProps, blockType, attributes ) {
+	const unitoneLayout = useMemo( () => {
+		if ( ! hasBlockSupport( blockType, 'unitone.mixBlendMode' ) ) {
+			if ( ! attributes?.__unstableUnitoneSupports?.mixBlendMode ) {
+				return extraProps?.[ 'data-unitone-layout' ];
+			}
 		}
-	}
 
-	if ( null == attributes?.unitone?.mixBlendMode ) {
-		return extraProps;
-	}
+		if ( null == attributes?.unitone?.mixBlendMode ) {
+			return extraProps?.[ 'data-unitone-layout' ];
+		}
+
+		return clsx(
+			extraProps?.[ 'data-unitone-layout' ],
+			`-mix-blend-mode:${ attributes.unitone?.mixBlendMode }`
+		);
+	}, [
+		blockType,
+		attributes?.__unstableUnitoneSupports?.mixBlendMode,
+		attributes?.unitone?.mixBlendMode,
+		extraProps?.[ 'data-unitone-layout' ],
+	] );
 
 	return {
 		...extraProps,
-		'data-unitone-layout': clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-mix-blend-mode:${ attributes.unitone?.mixBlendMode }`
-		),
+		'data-unitone-layout': unitoneLayout,
 	};
 }
 
@@ -181,17 +188,12 @@ export function useMixBlendModeBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newMixBlendModeProp = useMemo( () => {
-		return saveMixBlendModeProp( wrapperProps, name, {
-			__unstableUnitoneSupports,
-			unitone: {
-				mixBlendMode: attributes?.unitone?.mixBlendMode ?? defaultValue,
-			},
-		} );
-	}, [
-		JSON.stringify( attributes?.unitone ),
-		attributes?.__unstableUnitoneBlockOutline,
-	] );
+	const newMixBlendModeProp = useBlockProps( wrapperProps, name, {
+		__unstableUnitoneSupports,
+		unitone: {
+			mixBlendMode: attributes?.unitone?.mixBlendMode ?? defaultValue,
+		},
+	} );
 
 	return {
 		...settings,

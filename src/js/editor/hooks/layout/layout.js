@@ -100,6 +100,16 @@ import {
 } from './max-width';
 
 import {
+	useIsMinWidthDisabled,
+	hasMinWidthValue,
+	resetMinWidthFilter,
+	resetMinWidth,
+	getMinWidthEditLabel,
+	MinWidthEdit,
+	useMinWidthBlockProps,
+} from './min-width';
+
+import {
 	useIsMaxHeightDisabled,
 	hasMaxHeightValue,
 	resetMaxHeightFilter,
@@ -180,6 +190,7 @@ export {
 	useFlexGrowBlockProps,
 	useFlexShrinkBlockProps,
 	useMaxWidthBlockProps,
+	useMinWidthBlockProps,
 	useMaxHeightBlockProps,
 	useMinHeightBlockProps,
 	useAutoRepeatBlockProps,
@@ -238,6 +249,10 @@ function LayoutPanelPure( {
 		name,
 		__unstableUnitoneSupports,
 	} );
+	const isMinWidthDisabled = useIsMinWidthDisabled( {
+		name,
+		__unstableUnitoneSupports,
+	} );
 	const isMaxHeightDisabled = useIsMaxHeightDisabled( {
 		name,
 		__unstableUnitoneSupports,
@@ -273,6 +288,7 @@ function LayoutPanelPure( {
 		isFlexGrowDisabled &&
 		isFlexShrinkDisabled &&
 		isMaxWidthDisabled &&
+		isMinWidthDisabled &&
 		isMaxHeightDisabled &&
 		isMinHeightDisabled &&
 		isAutoRepeatDisabled &&
@@ -322,6 +338,7 @@ function LayoutPanelPure( {
 				! isFlexGrowDisabled ||
 				! isFlexShrinkDisabled ||
 				! isMaxWidthDisabled ||
+				! isMinWidthDisabled ||
 				! isMaxHeightDisabled ||
 				! isMinHeightDisabled ||
 				! isAutoRepeatDisabled ||
@@ -511,6 +528,28 @@ function LayoutPanelPure( {
 								<MaxWidthEdit
 									{ ...props }
 									label={ getMaxWidthEditLabel( {
+										...props,
+										__withCode: true,
+									} ) }
+								/>
+							</ToolsPanelItem>
+						) }
+						{ ! isMinWidthDisabled && (
+							<ToolsPanelItem
+								hasValue={ () =>
+									hasMinWidthValue( { ...props } )
+								}
+								label={ getMinWidthEditLabel( { ...props } ) }
+								onDeselect={ () =>
+									resetMinWidth( { ...props } )
+								}
+								resetAllFilter={ resetMinWidthFilter }
+								isShownByDefault
+								panelId={ clientId }
+							>
+								<MinWidthEdit
+									{ ...props }
+									label={ getMinWidthEditLabel( {
 										...props,
 										__withCode: true,
 									} ) }

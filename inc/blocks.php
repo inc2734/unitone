@@ -403,6 +403,11 @@ add_filter(
 			$add_style( '--unitone--max-width', $get_attribute( 'maxWidth' ) );
 		}
 
+		// --unitone--min-width
+		if ( $is_supported( 'minWidth' ) ) {
+			$add_style( '--unitone--min-width', $get_attribute( 'minWidth' ) );
+		}
+
 		// --unitone--max-height
 		if ( $is_supported( 'maxHeight' ) || $has_supported_attribute( 'minHeight' ) ) {
 			$add_style( '--unitone--max-height', $get_attribute( 'maxHeight' ) );

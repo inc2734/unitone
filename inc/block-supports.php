@@ -92,32 +92,6 @@ function unitone_add_half_leading_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_half_leading_support' );
 
 /**
- * Add support "cellMinWidth" to core/table.
- *
- * @param array $metadata Metadata for registering a block type.
- * @return array
- */
-function unitone_add_cell_min_width_support( $metadata ) {
-	if ( 'core/table' !== $metadata['name'] ) {
-		return $metadata;
-	}
-
-	$metadata['supports'] = array_merge(
-		$metadata['supports'],
-		array(
-			'unitone' => array_merge(
-				$metadata['supports']['unitone'] ?? array(),
-				array(
-					'cellMinWidth' => true,
-				)
-			),
-		)
-	);
-	return $metadata;
-}
-add_filter( 'block_type_metadata', 'unitone_add_cell_min_width_support' );
-
-/**
  * Add support "gap" to core/post-content and core/post-template.
  *
  * @param array $metadata Metadata for registering a block type.
@@ -144,12 +118,38 @@ function unitone_add_gap_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_gap_support' );
 
 /**
- * Add support "gutters" to core/post-content.
+ * Add supports to core/table.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
  */
-function unitone_add_gutters_support( $metadata ) {
+function unitone_add_supports_to_core_table( $metadata ) {
+	if ( 'core/table' !== $metadata['name'] ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'cellMinWidth' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_supports_to_core_table' );
+
+/**
+ * Add supports to core/post-content.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_supports_to_core_post_content( $metadata ) {
 	if ( ! in_array( $metadata['name'], array( 'core/post-content' ), true ) ) {
 		return $metadata;
 	}
@@ -167,15 +167,15 @@ function unitone_add_gutters_support( $metadata ) {
 	);
 	return $metadata;
 }
-add_filter( 'block_type_metadata', 'unitone_add_gutters_support' );
+add_filter( 'block_type_metadata', 'unitone_add_supports_to_core_post_content' );
 
 /**
- * Add support "padding" to core/button.
+ * Add supports to core/button.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
  */
-function unitone_add_padding_support( $metadata ) {
+function unitone_add_supports_to_core_button( $metadata ) {
 	if ( 'core/button' !== $metadata['name'] ) {
 		return $metadata;
 	}
@@ -186,48 +186,23 @@ function unitone_add_padding_support( $metadata ) {
 			'unitone' => array_merge(
 				$metadata['supports']['unitone'] ?? array(),
 				array(
-					'padding' => true,
+					'padding'  => true,
+					'minWidth' => true,
 				)
 			),
 		)
 	);
 	return $metadata;
 }
-add_filter( 'block_type_metadata', 'unitone_add_padding_support' );
+add_filter( 'block_type_metadata', 'unitone_add_supports_to_core_button' );
 
 /**
- * Add support "overlay" to core/image.
+ * Add supports to core/image.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
  */
-function unitone_add_overlay_support( $metadata ) {
-	if ( 'core/image' !== $metadata['name'] ) {
-		return $metadata;
-	}
-
-	$metadata['supports'] = array_merge(
-		$metadata['supports'],
-		array(
-			'unitone' => array_merge(
-				$metadata['supports']['unitone'] ?? array(),
-				array(
-					'overlay' => true,
-				)
-			),
-		)
-	);
-	return $metadata;
-}
-add_filter( 'block_type_metadata', 'unitone_add_overlay_support' );
-
-/**
- * Add support "filter:drop-shadow" to core/image.
- *
- * @param array $metadata Metadata for registering a block type.
- * @return array
- */
-function unitone_add_drop_shadow_support( $metadata ) {
+function unitone_add_supports_to_core_image( $metadata ) {
 	if ( 'core/image' !== $metadata['name'] ) {
 		return $metadata;
 	}
@@ -246,63 +221,15 @@ function unitone_add_drop_shadow_support( $metadata ) {
 			'unitone' => array_merge(
 				$metadata['supports']['unitone'] ?? array(),
 				array(
-					'dropShadow' => true,
-				)
-			),
-		)
-	);
-	return $metadata;
-}
-add_filter( 'block_type_metadata', 'unitone_add_drop_shadow_support' );
-
-/**
- * Add support "Parallax" to core/image.
- *
- * @param array $metadata Metadata for registering a block type.
- * @return array
- */
-function unitone_add_parallax_support( $metadata ) {
-	if ( 'core/image' !== $metadata['name'] ) {
-		return $metadata;
-	}
-
-	$metadata['supports'] = array_merge(
-		$metadata['supports'],
-		array(
-			'unitone' => array_merge(
-				$metadata['supports']['unitone'] ?? array(),
-				array(
-					'parallax' => true,
-				)
-			),
-		)
-	);
-	return $metadata;
-}
-add_filter( 'block_type_metadata', 'unitone_add_parallax_support' );
-
-/**
- * Add support "Scroll animation" to core/image.
- *
- * @param array $metadata Metadata for registering a block type.
- * @return array
- */
-function unitone_add_scroll_animation_support( $metadata ) {
-	if ( 'core/image' !== $metadata['name'] ) {
-		return $metadata;
-	}
-
-	$metadata['supports'] = array_merge(
-		$metadata['supports'],
-		array(
-			'unitone' => array_merge(
-				$metadata['supports']['unitone'] ?? array(),
-				array(
+					'overlay'         => true,
+					'dropShadow'      => true,
+					'parallax'        => true,
 					'scrollAnimation' => true,
 				)
 			),
 		)
 	);
+
 	return $metadata;
 }
-add_filter( 'block_type_metadata', 'unitone_add_scroll_animation_support' );
+add_filter( 'block_type_metadata', 'unitone_add_supports_to_core_image' );

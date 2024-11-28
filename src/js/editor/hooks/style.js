@@ -23,6 +23,7 @@ import {
 	useJustifyContentColumnBlockProps,
 	useBlockAlignBlockProps,
 	useMaxWidthBlockProps,
+	useMinWidthBlockProps,
 	useMaxHeightBlockProps,
 	useMinHeightBlockProps,
 	useAutoRepeatBlockProps,
@@ -98,6 +99,7 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		props = useJustifySelfBlockProps( props );
 		props = useMaxHeightBlockProps( props );
 		props = useMaxWidthBlockProps( props );
+		props = useMinWidthBlockProps( props );
 		props = useMinHeightBlockProps( props );
 		props = usePositionBlockProps( props );
 

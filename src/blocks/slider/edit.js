@@ -89,6 +89,46 @@ const effectOptions = [
 	},
 ];
 
+const moveToCurrentSlide = ( slide ) => {
+	if ( ! slide ) {
+		return;
+	}
+
+	const canvas = slide.closest( '.unitone-slider__canvas' );
+	const wrapper = slide.closest( '.unitone-slider__wrapper' );
+	const slider = wrapper.closest( '.unitone-slider' );
+	const lastSlide = slide.parentNode.lastChild;
+	const canCenterdSlides =
+		'true' === canvas.getAttribute( 'data-unitone-swiper-centered-slides' );
+
+	let x =
+		wrapper.getBoundingClientRect().left -
+		slide.getBoundingClientRect().left;
+
+	if ( canCenterdSlides ) {
+		x =
+			x +
+			( canvas.getBoundingClientRect().width -
+				slide.getBoundingClientRect().width ) /
+				2;
+	}
+
+	wrapper.style.transform = `translateX(${ x }px)`;
+
+	if ( ! canCenterdSlides ) {
+		const lastSlideRight =
+			lastSlide.getBoundingClientRect().left + lastSlide.offsetWidth;
+
+		const sliderRight =
+			slider.getBoundingClientRect().left + slider.offsetWidth;
+
+		if ( lastSlideRight < sliderRight ) {
+			x = x + sliderRight - lastSlideRight;
+			wrapper.style.transform = `translateX(${ x }px)`;
+		}
+	}
+};
+
 import metadata from './block.json';
 
 export default function ( {
@@ -126,72 +166,35 @@ export default function ( {
 	const [ canvasWidth, setCanvasWidth ] = useState( 0 );
 	const ref = useRef();
 
-	const { slides, selectedSlideClientIds, hasChildSelected } = useSelect(
-		( select ) => {
-			const _slides =
-				select( blockEditorStore ).getBlock( clientId ).innerBlocks;
-			const selectedBlockClientId =
-				select( blockEditorStore ).getSelectedBlockClientId();
-			const parents = select( blockEditorStore ).getBlockParents(
-				selectedBlockClientId
-			);
+	const { getSelectedBlockClientId, getBlockParents, hasSelectedInnerBlock } =
+		useSelect( blockEditorStore );
 
+	const { slides, selectedBlockClientId } = useSelect(
+		( select ) => {
 			return {
-				slides: _slides,
-				selectedSlideClientIds: _slides
-					.filter( ( slide ) => {
-						return (
-							slide.clientId === selectedBlockClientId ||
-							parents.some(
-								( parentClientId ) =>
-									slide.clientId === parentClientId
-							)
-						);
-					} )
-					.map( ( v ) => v.clientId ),
-				hasChildSelected: select(
-					blockEditorStore
-				).hasSelectedInnerBlock( clientId, true ),
+				slides: select( blockEditorStore ).getBlock( clientId )
+					.innerBlocks,
+				selectedBlockClientId: getSelectedBlockClientId(),
 			};
 		},
 		[ clientId ]
 	);
 
+	const hasChildSelected = hasSelectedInnerBlock( clientId, true );
+	const selectedSlideClientId = slides
+		.filter(
+			( slide ) =>
+				slide.clientId === selectedBlockClientId ||
+				getBlockParents( selectedBlockClientId ).some(
+					( ansestorClientId ) => slide.clientId === ansestorClientId
+				)
+		)
+		.map( ( v ) => v.clientId )?.[ 0 ];
+
 	const { selectBlock } = useDispatch( blockEditorStore );
 
-	const centeringSlides = () => {
-		if ( ! canCenterdSlides ) {
-			return;
-		}
-
-		const sliderClientId = slides?.[ 0 ]?.clientId;
-		if ( ! sliderClientId ) {
-			return;
-		}
-
-		const wrapper = ref.current;
-		const canvas = wrapper.parentNode;
-
-		const slideNode =
-			0 < selectedSlideClientIds.length
-				? ref.current.ownerDocument.getElementById(
-						`block-${ selectedSlideClientIds[ 0 ] }`
-				  )
-				: ref.current.ownerDocument.getElementById(
-						`block-${ sliderClientId }`
-				  );
-
-		setTimeout( () => {
-			const x =
-				( canvas.getBoundingClientRect().width -
-					slideNode.getBoundingClientRect().width ) /
-				2;
-			wrapper.style.transform = `translateX(${ x }px)`;
-		}, 500 );
-	};
-
 	/**
-	 * Set resizeObserver.
+	 * Set ResizeObserver.
 	 */
 	useEffect( () => {
 		const wrapper = ref.current;
@@ -210,79 +213,48 @@ export default function ( {
 	}, [] );
 
 	/**
-	 * If canvas width changed, select 1st slide.
+	 * Reset position.
 	 */
 	useEffect( () => {
 		const wrapper = ref.current;
-		const canvas = wrapper.parentNode;
-		const currentCanvasWidth = canvas.getBoundingClientRect().width;
 
-		if ( canvasWidth !== currentCanvasWidth ) {
-			selectBlock( slides?.[ 0 ]?.clientId );
-			centeringSlides();
+		if ( ! canMultiSlides ) {
+			wrapper.style.transform = '';
+			return;
 		}
-	}, [ canvasWidth ] );
+
+		const currentSlideClientId =
+			selectedSlideClientId || slides?.[ 0 ]?.clientId;
+
+		if ( !! currentSlideClientId ) {
+			moveToCurrentSlide(
+				wrapper.ownerDocument.getElementById(
+					`block-${ currentSlideClientId }`
+				)
+			);
+		} else {
+			wrapper.style.transform = '';
+		}
+	}, [ canvasWidth, centeredSlides, slideWidth, effect ] );
 
 	/**
 	 * Slide with each slides selected.
 	 */
 	useEffect( () => {
-		if ( 1 > selectedSlideClientIds.length ) {
+		if ( ! canMultiSlides ) {
 			return;
 		}
 
-		const selectedLastSlideClientId =
-			selectedSlideClientIds[ selectedSlideClientIds.length - 1 ];
-
-		const slideNode = ref.current.ownerDocument.getElementById(
-			`block-${ selectedLastSlideClientId }`
-		);
-		const wrapper = ref.current;
-		const slider = ref.current.ownerDocument.getElementById(
-			`block-${ clientId }`
-		);
-		let x =
-			wrapper.getBoundingClientRect().left -
-			slideNode.getBoundingClientRect().left;
-
-		if ( canCenterdSlides ) {
-			const canvas = wrapper.parentNode;
-			x =
-				x +
-				( canvas.getBoundingClientRect().width -
-					slideNode.getBoundingClientRect().width ) /
-					2;
+		if ( ! selectedSlideClientId ) {
+			return;
 		}
 
-		wrapper.style.transform = `translateX(${ x }px)`;
+		const ownerDocument = ref.current.ownerDocument;
 
-		const lastSlide = ref.current.ownerDocument.querySelector(
-			`.wp-block[data-block="${ slides[ slides.length - 1 ].clientId }"]`
+		moveToCurrentSlide(
+			ownerDocument.getElementById( `block-${ selectedSlideClientId }` )
 		);
-
-		const lastSlideRight =
-			lastSlide.getBoundingClientRect().left + lastSlide.offsetWidth;
-
-		const sliderRight =
-			slider.getBoundingClientRect().left + slider.offsetWidth;
-
-		if ( lastSlideRight < sliderRight ) {
-			x = x + sliderRight - lastSlideRight;
-			wrapper.style.transform = `translateX(${ x }px)`;
-		}
-	}, [ JSON.stringify( selectedSlideClientIds ) ] );
-
-	/**
-	 * If set centedSlides or slideWidth, set slide position 0.
-	 */
-	useEffect( () => {
-		const wrapper = ref.current;
-		wrapper.style.transform = '';
-
-		if ( canMultiSlides ) {
-			centeringSlides();
-		}
-	}, [ centeredSlides, slideWidth, effect ] );
+	}, [ selectedSlideClientId, JSON.stringify( slides ) ] );
 
 	const blockProps = useBlockProps( {
 		className: clsx( 'unitone-slider', {
@@ -918,7 +890,7 @@ export default function ( {
 						{ slides.map( ( slide, index ) => {
 							const sliderClientId = slide.clientId;
 							const isActive =
-								sliderClientId === selectedSlideClientIds[ 0 ];
+								sliderClientId === selectedSlideClientId;
 
 							return (
 								<Button

@@ -98,6 +98,19 @@
 		font-weight: bold;
 		height: auto;
 		padding: calc(1rem - var(--swiper-navigation-size) / 2) 1rem;
+
+		&:has(svg) {
+			padding: 0;
+			width: auto;
+
+			> span {
+				display: flex;
+			}
+
+			&::after {
+				display: none;
+			}
+		}
 	}
 
 	.swiper-pagination {

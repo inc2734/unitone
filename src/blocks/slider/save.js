@@ -2,13 +2,16 @@ import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
-import { Arrows, Pagination } from './components';
+import { arrowsIconTypes, Arrows, Pagination } from './components';
 
 export default function ( { attributes } ) {
 	const {
 		arrows,
 		arrowsAlignment,
 		arrowsJustification,
+		arrowsIcon,
+		arrowsIconColor,
+		customArrowsIconColor,
 		hideOutside,
 		pagination,
 		paginationAlignment,
@@ -54,6 +57,16 @@ export default function ( { attributes } ) {
 			<div className="unitone-slider__canvas-wrapper">
 				{ isDisplayArrows && 'top' === arrowsAlignment && (
 					<Arrows
+						icons={
+							arrowsIconTypes.filter(
+								( arrowsIconType ) =>
+									arrowsIconType.name === arrowsIcon?.type
+							)?.[ 0 ]?.icons
+						}
+						iconStroke={ arrowsIcon?.stroke }
+						iconSize={ arrowsIcon?.size }
+						iconColor={ arrowsIconColor }
+						iconCustomColor={ customArrowsIconColor }
 						alignment={ arrowsAlignment }
 						justification={ arrowsJustification }
 					/>
@@ -89,6 +102,16 @@ export default function ( { attributes } ) {
 					( 'bottom' === arrowsAlignment ||
 						'center' === arrowsAlignment ) && (
 						<Arrows
+							icons={
+								arrowsIconTypes.filter(
+									( arrowsIconType ) =>
+										arrowsIconType.name === arrowsIcon?.type
+								)?.[ 0 ]?.icons
+							}
+							iconStroke={ arrowsIcon?.stroke }
+							iconSize={ arrowsIcon?.size }
+							iconColor={ arrowsIconColor }
+							iconCustomColor={ customArrowsIconColor }
 							alignment={ arrowsAlignment }
 							justification={ arrowsJustification }
 						/>

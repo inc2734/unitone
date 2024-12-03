@@ -19,15 +19,83 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { useCallback, useEffect, useState, useRef } from '@wordpress/element';
+import {
+	useCallback,
+	useEffect,
+	useState,
+	useRef,
+	useMemo,
+} from '@wordpress/element';
+
 import { useSelect } from '@wordpress/data';
 import { link, linkOff } from '@wordpress/icons';
 import { displayShortcut } from '@wordpress/keycodes';
+import { prependHTTP } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 
 const NEW_TAB_REL = 'noreferrer noopener';
+const NEW_TAB_TARGET = '_blank';
+const NOFOLLOW_REL = 'nofollow';
+
+const LINK_SETTINGS = [
+	...LinkControl.DEFAULT_LINK_SETTINGS,
+	{
+		id: 'nofollow',
+		title: __( 'Mark as nofollow' ),
+	},
+];
 
 import metadata from './block.json';
+
+/**
+ * Updates the link attributes.
+ *
+ * @see https://github.com/WordPress/gutenberg/blob/trunk/packages/block-library/src/button/get-updated-link-attributes.js
+ *
+ * @param {Object}  attributes               The current block attributes.
+ * @param {string}  attributes.rel           The current link rel attribute.
+ * @param {string}  attributes.url           The current link url.
+ * @param {string}  attributes.title         The current link text.
+ * @param {boolean} attributes.opensInNewTab Whether the link should open in a new window.
+ * @param {boolean} attributes.nofollow      Whether the link should be marked as nofollow.
+ */
+export function getUpdatedLinkAttributes( {
+	rel = '',
+	url = '',
+	title,
+	opensInNewTab,
+	nofollow,
+} ) {
+	let newLinkTarget;
+	// Since `rel` is editable attribute, we need to check for existing values and proceed accordingly.
+	let updatedRel = rel;
+
+	if ( opensInNewTab ) {
+		newLinkTarget = NEW_TAB_TARGET;
+		updatedRel = updatedRel?.includes( NEW_TAB_REL )
+			? updatedRel
+			: updatedRel + ` ${ NEW_TAB_REL }`;
+	} else {
+		const relRegex = new RegExp( `\\b${ NEW_TAB_REL }\\s*`, 'g' );
+		updatedRel = updatedRel?.replace( relRegex, '' ).trim();
+	}
+
+	if ( nofollow ) {
+		updatedRel = updatedRel?.includes( NOFOLLOW_REL )
+			? updatedRel
+			: ( updatedRel + ` ${ NOFOLLOW_REL }` ).trim();
+	} else {
+		const relRegex = new RegExp( `\\b${ NOFOLLOW_REL }\\s*`, 'g' );
+		updatedRel = updatedRel?.replace( relRegex, '' ).trim();
+	}
+
+	return {
+		href: prependHTTP( url ),
+		linkText: title,
+		linkTarget: newLinkTarget,
+		rel: updatedRel || undefined,
+	};
+}
 
 export default function ( {
 	attributes,
@@ -35,7 +103,8 @@ export default function ( {
 	isSelected,
 	clientId,
 } ) {
-	const { tagName, templateLock, rel, href, linkTarget } = attributes;
+	const { tagName, templateLock, rel, href, linkText, linkTarget } =
+		attributes;
 
 	const onSetLinkRel = useCallback(
 		( value ) => {
@@ -43,22 +112,6 @@ export default function ( {
 		},
 		[ setAttributes ]
 	);
-
-	function onToggleOpenInNewTab( value ) {
-		const newLinkTarget = value ? '_blank' : undefined;
-
-		let updatedRel = rel;
-		if ( newLinkTarget && ! rel ) {
-			updatedRel = NEW_TAB_REL;
-		} else if ( ! newLinkTarget && rel === NEW_TAB_REL ) {
-			updatedRel = undefined;
-		}
-
-		setAttributes( {
-			linkTarget: newLinkTarget,
-			rel: updatedRel,
-		} );
-	}
 
 	const ref = useRef();
 
@@ -69,24 +122,10 @@ export default function ( {
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps( {
-		ref,
-	} );
-	blockProps[ 'data-unitone-layout' ] = clsx(
-		'decorator',
-		blockProps[ 'data-unitone-layout' ]
-	);
-
-	const innerBlocksPropsArgs = {
-		templateLock,
-		renderAppender: hasInnerBlocks
-			? undefined
-			: InnerBlocks.ButtonBlockAppender,
-	};
-
 	const [ isEditingHref, setIsEditingHref ] = useState( false );
 	const isHrefSet = !! href;
-	const opensInNewTab = linkTarget === '_blank';
+	const opensInNewTab = linkTarget === NEW_TAB_TARGET;
+	const nofollow = !! rel?.includes( NOFOLLOW_REL );
 
 	function startEditing( event ) {
 		event.preventDefault();
@@ -102,11 +141,34 @@ export default function ( {
 		setIsEditingHref( false );
 	}
 
+	const blockProps = useBlockProps( {
+		ref,
+	} );
+	blockProps[ 'data-unitone-layout' ] = clsx(
+		'decorator',
+		blockProps[ 'data-unitone-layout' ],
+		{ '-has-link': isHrefSet }
+	);
+
+	const innerBlocksPropsArgs = {
+		templateLock,
+		renderAppender: hasInnerBlocks
+			? undefined
+			: InnerBlocks.ButtonBlockAppender,
+	};
+
 	useEffect( () => {
 		if ( ! isSelected ) {
 			setIsEditingHref( false );
 		}
 	}, [ isSelected ] );
+
+	// Memoize link value to avoid overriding the LinkControl's internal state.
+	// This is a temporary fix. See https://github.com/WordPress/gutenberg/issues/51256.
+	const linkValue = useMemo(
+		() => ( { url: href, title: linkText, opensInNewTab, nofollow } ),
+		[ href, linkText, opensInNewTab, nofollow ]
+	);
 
 	const TagName = tagName;
 
@@ -180,21 +242,39 @@ export default function ( {
 				>
 					<LinkControl
 						className="wp-block-navigation-link__inline-link-input"
-						value={ { url: href, opensInNewTab } }
+						value={ linkValue }
 						onChange={ ( {
 							url: newHref = '',
+							title: newLinkText,
 							opensInNewTab: newOpensInNewTab,
+							nofollow: newNofollow,
 						} ) => {
-							setAttributes( { href: newHref } );
-
-							if ( opensInNewTab !== newOpensInNewTab ) {
-								onToggleOpenInNewTab( newOpensInNewTab );
-							}
+							setAttributes(
+								getUpdatedLinkAttributes( {
+									rel,
+									url: newHref,
+									title: newLinkText,
+									opensInNewTab: newOpensInNewTab,
+									nofollow: newNofollow,
+								} )
+							);
 						} }
 						onRemove={ () => {
 							unlink();
 						} }
 						forceIsEditingLink={ isEditingHref }
+						hasRichPreviews
+						hasTextControl
+						settings={ LINK_SETTINGS }
+						showInitialSuggestions
+						suggestionsQuery={ {
+							// always show Pages as initial suggestions
+							initialSuggestionsSearchOptions: {
+								type: 'post',
+								subtype: 'page',
+								perPage: 20,
+							},
+						} }
 					/>
 				</Popover>
 			) }

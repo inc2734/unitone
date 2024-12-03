@@ -11,6 +11,51 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const { tagName, rel, href, linkTarget } = attributes;
+
+			const isHrefSet = !! href;
+
+			const TagName = tagName;
+
+			const blockProps = useBlockProps.save( {
+				'data-unitone-layout': 'decorator',
+			} );
+
+			return (
+				<>
+					{ isHrefSet ? (
+						<TagName { ...blockProps }>
+							<div data-unitone-layout="decorator__inner">
+								<div { ...useInnerBlocksProps.save() } />
+								<a
+									data-unitone-layout="decorator__link"
+									href={ href }
+									target={ linkTarget }
+									rel={ rel }
+								>
+									{ __( 'Learn more', 'unitone' ) }
+								</a>
+							</div>
+						</TagName>
+					) : (
+						<TagName
+							{ ...useInnerBlocksProps.save( { ...blockProps } ) }
+						/>
+					) }
+				</>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
 			shadow: {
 				type: 'boolean',
 				default: false,

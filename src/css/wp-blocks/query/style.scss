@@ -122,23 +122,12 @@
 	.wp-block-query.is-style-block-link-bordered,
 	.wp-block-query.is-style-block-link-stripe
 ) {
-	.wp-block-post,
-	.block-editor-block-preview__live-content {
-		position: relative;
+	.wp-block-post:has(.wp-block-post-title > a) {
+		cursor: pointer;
 
-		:where(:not(a):not([data-unitone-layout~="frame"]):not([data-unitone-layout~="frame"] *):not(.block-list-appender)) {
-			position: static;
-		}
-	}
-
-	.wp-block-post-title a {
-		position: static;
-		z-index: 0;
-
-		&::after {
-			content: '';
-			position: absolute;
-			inset: 0;
+		&:has(:focus-visible) {
+			outline: auto;
+			outline: auto -webkit-focus-ring-color; /* for Chrome */
 		}
 	}
 }

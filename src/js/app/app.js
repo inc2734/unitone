@@ -204,3 +204,43 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			} );
 		} );
 } );
+
+/**
+ * Block link with Query block.
+ */
+document.addEventListener( 'DOMContentLoaded', () => {
+	const blockPosts = document.querySelectorAll(
+		'.wp-block-query[class*="is-style-block-link-"] .wp-block-post'
+	);
+
+	[].slice.call( blockPosts ).forEach( ( blockPost ) => {
+		let down, up;
+		const link = blockPost.querySelector(
+			':scope .wp-block-post-title > a'
+		);
+
+		if ( !! link ) {
+			blockPost.addEventListener( 'mousedown', ( event ) => {
+				event.stopPropagation();
+				down = +new Date();
+			} );
+
+			blockPost.addEventListener( 'mouseup', ( event ) => {
+				event.stopPropagation();
+
+				if (
+					[ 'A', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA' ].includes(
+						event.target?.tagName
+					)
+				) {
+					return false;
+				}
+
+				up = +new Date();
+				if ( up - down < 200 ) {
+					link.click();
+				}
+			} );
+		}
+	} );
+} );

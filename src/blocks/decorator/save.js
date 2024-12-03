@@ -1,15 +1,17 @@
+import clsx from 'clsx';
+
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
 export default function ( { attributes } ) {
-	const { tagName, rel, href, linkTarget } = attributes;
+	const { tagName, rel, href, linkTarget, linkText } = attributes;
 
 	const isHrefSet = !! href;
 
 	const TagName = tagName;
 
 	const blockProps = useBlockProps.save( {
-		'data-unitone-layout': 'decorator',
+		'data-unitone-layout': clsx( 'decorator', { '-has-link': isHrefSet } ),
 	} );
 
 	return (
@@ -24,7 +26,7 @@ export default function ( { attributes } ) {
 							target={ linkTarget }
 							rel={ rel }
 						>
-							{ __( 'Learn more', 'unitone' ) }
+							{ linkText ?? __( 'Learn more', 'unitone' ) }
 						</a>
 					</div>
 				</TagName>

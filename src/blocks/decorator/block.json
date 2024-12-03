@@ -16,6 +16,12 @@
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
 		},
+		"linkText": {
+			"type": "string",
+			"source": "html",
+			"selector": "a",
+			"role": "content"
+		},
 		"href": {
 			"type": "string",
 			"source": "attribute",
@@ -125,5 +131,6 @@
 	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js",
-	"style": "file:./style-index.css"
+	"style": "file:./style-index.css",
+	"viewScript": "file:./app.js"
 }

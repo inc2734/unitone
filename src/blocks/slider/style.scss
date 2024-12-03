@@ -93,6 +93,20 @@
 		&--justification\:space-between {
 			justify-content: space-between;
 		}
+
+		&--justification\:space-between-expanded {
+			justify-content: space-between;
+
+			@media (min-width: 960px) {
+				.swiper-button-prev {
+					translate: calc(-100% - var(--unitone--s-2)) 0;
+				}
+
+				.swiper-button-next {
+					translate: calc(100% + var(--unitone--s-2)) 0;
+				}
+			}
+		}
 	}
 
 	.swiper-button {

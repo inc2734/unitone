@@ -273,7 +273,9 @@ function Edit( props ) {
 						}
 						data-unitone-swiper-loop={ loop ? 'true' : undefined }
 						data-unitone-swiper-pagination-type={
-							paginationIcon?.type
+							pagination && 'bullets' !== paginationIcon?.type
+								? paginationIcon?.type
+								: undefined
 						}
 					>
 						<div { ...innerBlocksProps } />

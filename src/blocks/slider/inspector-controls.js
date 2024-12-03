@@ -22,6 +22,7 @@ import {
 	justifyCenter,
 	justifyRight,
 	justifySpaceBetween,
+	justifyStretch,
 } from '@wordpress/icons';
 
 import { __ } from '@wordpress/i18n';
@@ -74,6 +75,11 @@ const justificationOptions = [
 		value: 'space-between',
 		icon: justifySpaceBetween,
 		label: __( 'Justify items space-between', 'unitone' ),
+	},
+	{
+		value: 'space-between-expanded',
+		icon: justifyStretch,
+		label: __( 'Justify items space-between (Expanded)', 'unitone' ),
 	},
 ];
 
@@ -839,7 +845,9 @@ export const SettingsInspectorControls = ( {
 										{ justificationOptions
 											.filter(
 												( { value } ) =>
-													'space-between' !== value
+													'space-between' !== value &&
+													'space-between-expanded' !==
+														value
 											)
 											.map(
 												( { value, icon, label } ) => (

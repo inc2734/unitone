@@ -41,7 +41,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			pagination: {
 				el: pagination,
 				clickable: true,
-				type: paginationType ?? undefined,
+				type: paginationType || 'bullets',
 			},
 			navigation: {
 				nextEl: next,

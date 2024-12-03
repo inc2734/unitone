@@ -100,7 +100,11 @@ export default function ( { attributes } ) {
 						0 < speed ? speed * 1000 : undefined
 					}
 					data-unitone-swiper-loop={ loop ? 'true' : undefined }
-					data-unitone-swiper-pagination-type={ paginationIcon?.type }
+					data-unitone-swiper-pagination-type={
+						pagination && 'bullets' !== paginationIcon?.type
+							? paginationIcon?.type
+							: undefined
+					}
 					data-unitone-swiper-effect={
 						'slide' !== effect ? effect : undefined
 					}

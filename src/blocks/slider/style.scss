@@ -12,8 +12,12 @@
 	--swiper-buttons-gap: var(--unitone--global--text-gap);
 	--swiper-pagination-color: var(--wp--preset--color--unitone-accent);
 	--swiper-pagination-gap: var(--unitone--global--text-gap);
-	--swiper-pagination-bullet-inactive-color: var(--wp--preset--color--unitone-dark-gray);
+	--swiper-pagination-bullet-inactive-opacity: 1;
+	--swiper-pagination-bullet-active-color: currentColor;
+	--swiper-pagination-bullet-inactive-color: rgba(0 0 0 / .2);
 	--swiper-pagination-bullet-horizontal-gap: var(--swiper-pagination-gap);
+	--swiper-pagination-progressbar-active-color: currentColor;
+	--swiper-pagination-progressbar-inactive-color: rgba(0 0 0 / .2);
 
 	position: relative;
 
@@ -145,18 +149,34 @@
 		.swiper-pagination-bullet {
 			position: relative;
 			margin: 0;
-
-			&::after {
-				content: '';
-				position: absolute;
-				top: 50%;
-				left: 50%;
-		    transform: translate(-50%, -50%);
-				display: block;
-				height: calc(100% + var(--swiper-pagination-bullet-horizontal-gap));
-				width: calc(100% + var(--swiper-pagination-bullet-horizontal-gap));
-			}
 		}
+	}
+
+	.swiper-pagination-bullet {
+		background-color: var(--swiper-pagination-bullet-inactive-color);
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			display: block;
+			height: calc(100% + var(--swiper-pagination-bullet-horizontal-gap));
+			width: calc(100% + var(--swiper-pagination-bullet-horizontal-gap));
+		}
+
+		&.swiper-pagination-bullet-active {
+			background-color: var(--swiper-pagination-bullet-active-color);
+		}
+	}
+
+	.swiper-pagination-progressbar {
+		background-color: var(--swiper-pagination-progressbar-inactive-color);
+	}
+
+	.swiper-pagination-progressbar-fill {
+		background-color: var(--swiper-pagination-progressbar-active-color);
 	}
 
 	.swiper-fade {

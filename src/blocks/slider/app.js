@@ -25,6 +25,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				: undefined;
 		const loop =
 			'true' === canvas.getAttribute( 'data-unitone-swiper-loop' );
+		const paginationType = canvas.getAttribute(
+			'data-unitone-swiper-pagination-type'
+		);
 		const effect =
 			canvas.getAttribute( 'data-unitone-swiper-effect' ) || 'slide';
 
@@ -38,6 +41,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			pagination: {
 				el: pagination,
 				clickable: true,
+				type: paginationType ?? undefined,
 			},
 			navigation: {
 				nextEl: next,

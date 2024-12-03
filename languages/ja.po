@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-12-03T03:59:45+00:00\n"
-"PO-Revision-Date: 2024-12-03 13:02+0900\n"
+"POT-Creation-Date: 2024-12-03T07:27:27+00:00\n"
+"PO-Revision-Date: 2024-12-03 16:28+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2174,6 +2174,14 @@ msgstr "シェブロン"
 msgid "Chevrons"
 msgstr "シェブロン（二重）"
 
+#: dist/blocks/slider/index.js:1
+msgid "Bullets"
+msgstr "バレット"
+
+#: dist/blocks/slider/index.js:1
+msgid "Progress bar"
+msgstr "プログレスバー"
+
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Align items top"
 msgstr "コンテンツを上揃え"
@@ -2283,6 +2291,10 @@ msgid "Using the pagination"
 msgstr "ページネーションを使用する"
 
 #: dist/blocks/slider/index.js:1
+msgid "Pagination icon"
+msgstr "ページネーションのアイコン"
+
+#: dist/blocks/slider/index.js:1
 msgid "Pagination alignment"
 msgstr "ページネーションの垂直位置"
 
@@ -2293,6 +2305,10 @@ msgstr "ページネーションの配置"
 #: dist/blocks/slider/index.js:1
 msgid "Arrows icon color"
 msgstr "矢印のアイコンの色"
+
+#: dist/blocks/slider/index.js:1
+msgid "Pagination icon color"
+msgstr "ページネーションのアイコンの色"
 
 #: dist/blocks/stack-divided/index.js:1
 msgid "Stack (Divider: stripe)"

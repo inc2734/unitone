@@ -12,7 +12,12 @@ import { Button } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useRef, useEffect, useState } from '@wordpress/element';
 
-import { arrowsIconTypes, Arrows, Pagination } from './components';
+import {
+	arrowsIconTypes,
+	paginationIconTypes,
+	Arrows,
+	Pagination,
+} from './components';
 
 import {
 	SettingsInspectorControls,
@@ -60,7 +65,13 @@ const moveToCurrentSlide = ( slide ) => {
 };
 
 function Edit( props ) {
-	const { attributes, isSelected, clientId, arrowsIconColor } = props;
+	const {
+		attributes,
+		isSelected,
+		clientId,
+		arrowsIconColor,
+		paginationIconColor,
+	} = props;
 
 	const {
 		arrows,
@@ -71,6 +82,7 @@ function Edit( props ) {
 		pagination,
 		paginationAlignment,
 		paginationJustification,
+		paginationIcon,
 		slideWidth,
 		autoplay,
 		autoplayDelay,
@@ -220,6 +232,15 @@ function Edit( props ) {
 				{ isDisplayPagination && 'top' === paginationAlignment && (
 					<Pagination
 						slides={ slides }
+						icon={
+							paginationIconTypes.filter(
+								( paginationIconType ) =>
+									paginationIconType.name ===
+									paginationIcon?.type
+							)?.[ 0 ]?.name
+						}
+						iconColor={ paginationIconColor?.slug }
+						iconCustomColor={ paginationIconColor?.color }
 						alignment={ paginationAlignment }
 						justification={ paginationJustification }
 					/>
@@ -251,6 +272,9 @@ function Edit( props ) {
 							canCenterdSlides ? true : undefined
 						}
 						data-unitone-swiper-loop={ loop ? 'true' : undefined }
+						data-unitone-swiper-pagination-type={
+							paginationIcon?.type
+						}
 					>
 						<div { ...innerBlocksProps } />
 					</div>
@@ -279,6 +303,15 @@ function Edit( props ) {
 				{ isDisplayPagination && 'bottom' === paginationAlignment && (
 					<Pagination
 						slides={ slides }
+						icon={
+							paginationIconTypes.filter(
+								( paginationIconType ) =>
+									paginationIconType.name ===
+									paginationIcon?.type
+							)?.[ 0 ]?.name
+						}
+						iconColor={ paginationIconColor?.slug }
+						iconCustomColor={ paginationIconColor?.color }
 						alignment={ paginationAlignment }
 						justification={ paginationJustification }
 					/>
@@ -315,4 +348,7 @@ function Edit( props ) {
 	);
 }
 
-export default withColors( { arrowsIconColor: 'color' } )( Edit );
+export default withColors( {
+	arrowsIconColor: 'color',
+	paginationIconColor: 'color',
+} )( Edit );

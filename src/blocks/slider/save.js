@@ -2,7 +2,12 @@ import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
-import { arrowsIconTypes, Arrows, Pagination } from './components';
+import {
+	arrowsIconTypes,
+	paginationIconTypes,
+	Arrows,
+	Pagination,
+} from './components';
 
 export default function ( { attributes } ) {
 	const {
@@ -16,6 +21,9 @@ export default function ( { attributes } ) {
 		pagination,
 		paginationAlignment,
 		paginationJustification,
+		paginationIcon,
+		paginationIconColor,
+		customPaginationIconColor,
 		slideWidth,
 		autoplay,
 		autoplayDelay,
@@ -49,6 +57,14 @@ export default function ( { attributes } ) {
 		>
 			{ isDisplayPagination && 'top' === paginationAlignment && (
 				<Pagination
+					icon={
+						paginationIconTypes.filter(
+							( paginationIconType ) =>
+								paginationIconType.name === paginationIcon?.type
+						)?.[ 0 ]?.name
+					}
+					iconColor={ paginationIconColor }
+					iconCustomColor={ customPaginationIconColor }
 					alignment={ paginationAlignment }
 					justification={ paginationJustification }
 				/>
@@ -84,6 +100,7 @@ export default function ( { attributes } ) {
 						0 < speed ? speed * 1000 : undefined
 					}
 					data-unitone-swiper-loop={ loop ? 'true' : undefined }
+					data-unitone-swiper-pagination-type={ paginationIcon?.type }
 					data-unitone-swiper-effect={
 						'slide' !== effect ? effect : undefined
 					}
@@ -120,6 +137,14 @@ export default function ( { attributes } ) {
 
 			{ isDisplayPagination && 'bottom' === paginationAlignment && (
 				<Pagination
+					icon={
+						paginationIconTypes.filter(
+							( paginationIconType ) =>
+								paginationIconType.name === paginationIcon?.type
+						)?.[ 0 ]?.name
+					}
+					iconColor={ paginationIconColor }
+					iconCustomColor={ customPaginationIconColor }
 					alignment={ paginationAlignment }
 					justification={ paginationJustification }
 				/>

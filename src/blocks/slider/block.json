@@ -49,6 +49,18 @@
 			"type": "string",
 			"default": "center"
 		},
+		"paginationIcon": {
+			"type": "object",
+			"default": {
+				"type": "bullets"
+			}
+		},
+		"paginationIconColor": {
+			"type": "string"
+		},
+		"customPaginationIconColor": {
+			"type": "string"
+		},
 		"slideWidth": {
 			"type": "string",
 			"default": ""

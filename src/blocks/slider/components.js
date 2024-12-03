@@ -38,6 +38,19 @@ export const arrowsIconTypes = [
 	},
 ];
 
+export const paginationIconTypes = [
+	{
+		name: 'bullets',
+		label: __( 'Bullets', 'unitone' ),
+		icon: 'circle',
+	},
+	{
+		name: 'progressbar',
+		label: __( 'Progress bar', 'unitone' ),
+		icon: 'minus',
+	},
+];
+
 export const Arrows = ( {
 	icons,
 	iconStroke,
@@ -95,10 +108,17 @@ export const Arrows = ( {
 	);
 };
 
-export const Pagination = ( { slides = [], alignment, justification } ) => {
+export const Pagination = ( {
+	slides = [],
+	icon,
+	iconColor,
+	iconCustomColor,
+	alignment,
+	justification,
+} ) => {
 	const className = clsx(
 		'swiper-pagination',
-		'swiper-pagination-bullets',
+		`swiper-pagination-${ icon }`,
 		'swiper-pagination-horizontal',
 		{
 			[ `swiper-pagination--alignment:${ alignment }` ]: !! alignment,
@@ -107,14 +127,50 @@ export const Pagination = ( { slides = [], alignment, justification } ) => {
 		}
 	);
 
+	const styles = {};
+	if ( !! iconColor ) {
+		if ( icon === 'progressbar' ) {
+			styles[
+				`--swiper-pagination-progressbar-active-color`
+			] = `var(--wp--preset--color--${ iconColor })`;
+		} else {
+			styles[
+				`--swiper-pagination-bullet-active-color`
+			] = `var(--wp--preset--color--${ iconColor })`;
+		}
+	} else if ( !! iconCustomColor ) {
+		if ( icon === 'progressbar' ) {
+			styles[ `--swiper-pagination-progressbar-fill-active-color` ] =
+				iconCustomColor;
+		} else {
+			styles[ `--swiper-pagination-bullet-active-color` ] =
+				iconCustomColor;
+		}
+	}
+
 	return (
-		<div className={ className }>
+		<div className={ className } style={ styles }>
 			{ slides.length > 0 &&
+				'bullets' === icon &&
 				slides.map( ( slide, index ) => (
 					<span
-						className="swiper-pagination-bullet"
+						className={ clsx( 'swiper-pagination-bullet', {
+							'swiper-pagination-bullet-active': 0 === index,
+						} ) }
 						key={ index }
-					></span>
+					/>
+				) ) }
+
+			{ slides.length > 0 &&
+				'progressbar' === icon &&
+				slides.map( ( slide, index ) => (
+					<span
+						className="swiper-pagination-progressbar-fill"
+						style={ {
+							transform: `scaleX(${ 1 / slides.length })`,
+						} }
+						key={ index }
+					/>
 				) ) }
 		</div>
 	);

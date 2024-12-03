@@ -32,7 +32,7 @@ import {
 	alignTop,
 } from '../../js/editor/hooks/icons';
 
-import { arrowsIconTypes } from './components';
+import { arrowsIconTypes, paginationIconTypes } from './components';
 
 import metadata from './block.json';
 
@@ -104,6 +104,7 @@ export const SettingsInspectorControls = ( {
 		pagination,
 		paginationAlignment,
 		paginationJustification,
+		paginationIcon,
 		slideWidth,
 		autoplay,
 		autoplayDelay,
@@ -676,6 +677,84 @@ export const SettingsInspectorControls = ( {
 						<>
 							<ToolsPanelItem
 								hasValue={ () =>
+									paginationIcon?.type !==
+									metadata.attributes.paginationIcon.default
+										.type
+								}
+								isShownByDefault
+								label={ __( 'Pagination icon', 'unitone' ) }
+								onDeselect={ () =>
+									setAttributes( {
+										paginationIcon: {
+											...paginationIcon,
+											type: metadata.attributes
+												.paginationIcon.default?.type,
+										},
+									} )
+								}
+							>
+								<BaseControl
+									__nextHasNoMarginBottom
+									label={ __( 'Pagination icon', 'unitone' ) }
+									id="unitone/slider/paginationIcon"
+								>
+									<fieldset className="block-editor-text-transform-control">
+										<div className="block-editor-text-transform-control__buttons">
+											{ paginationIconTypes.map(
+												(
+													paginationIconType,
+													index
+												) => (
+													<Button
+														key={ index }
+														className="has-icon"
+														label={
+															paginationIconType.label
+														}
+														isPressed={
+															paginationIconType.name ===
+															paginationIcon?.type
+														}
+														onClick={ () =>
+															setAttributes( {
+																paginationIcon:
+																	{
+																		...paginationIcon,
+																		type:
+																			paginationIconType.name ===
+																			paginationIcon?.type
+																				? ''
+																				: paginationIconType.name,
+																	},
+															} )
+														}
+													>
+														<span
+															style={ {
+																lineHeight: 0,
+															} }
+															dangerouslySetInnerHTML={ {
+																__html: feather.icons[
+																	paginationIconType
+																		.icon
+																].toSvg( {
+																	'stroke-width':
+																		paginationIcon?.stroke,
+																	width: '16px',
+																	height: '16px',
+																} ),
+															} }
+														/>
+													</Button>
+												)
+											) }
+										</div>
+									</fieldset>
+								</BaseControl>
+							</ToolsPanelItem>
+
+							<ToolsPanelItem
+								hasValue={ () =>
 									paginationAlignment !==
 									metadata.attributes.paginationAlignment
 										.default
@@ -796,6 +875,8 @@ export const ColorsInspectorControls = ( {
 	clientId,
 	arrowsIconColor,
 	setArrowsIconColor,
+	paginationIconColor,
+	setPaginationIconColor,
 } ) => {
 	return (
 		<InspectorControls group="color">
@@ -806,6 +887,11 @@ export const ColorsInspectorControls = ( {
 						label: __( 'Arrows icon color', 'unitone' ),
 						colorValue: arrowsIconColor.color,
 						onColorChange: setArrowsIconColor,
+					},
+					{
+						label: __( 'Pagination icon color', 'unitone' ),
+						colorValue: paginationIconColor.color,
+						onColorChange: setPaginationIconColor,
 					},
 				] }
 				panelId={ clientId }

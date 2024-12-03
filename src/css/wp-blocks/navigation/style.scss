@@ -163,7 +163,7 @@
 		margin: 0 !important;
 		height: auto;
 		width: auto;
-		padding-left: var(--unitone--s-1);
+		padding-left: var(--unitone--s-2);
 
 		svg {
 			margin: 0;
@@ -254,7 +254,7 @@
 				padding: var(--unitone--navigation-submenu-item--padding);
 			}
 
-			&:where(.has-child) .wp-block-navigation-item__content:not(.wp-block-page-list__submenu-icon) {
+			&:where(.has-child) > .wp-block-navigation-item__content:not(.wp-block-page-list__submenu-icon) {
 				padding-right: 0;
 			}
 

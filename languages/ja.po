@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-12-03T07:27:27+00:00\n"
-"PO-Revision-Date: 2024-12-03 16:28+0900\n"
+"POT-Creation-Date: 2024-12-04T08:29:07+00:00\n"
+"PO-Revision-Date: 2024-12-04 17:59+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2209,6 +2209,10 @@ msgstr "コンテンツを右揃え"
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Justify items space-between"
 msgstr "コンテンツを両端揃え"
+
+#: dist/blocks/slider/index.js:1
+msgid "Justify items space-between (Expanded)"
+msgstr "コンテンツを両端揃え（拡張）"
 
 #: dist/blocks/slider/index.js:1
 msgid "Slide"

@@ -210,7 +210,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
  */
 document.addEventListener( 'DOMContentLoaded', () => {
 	const blockPosts = document.querySelectorAll(
-		'.wp-block-query[class*="is-style-block-link-"] .wp-block-post'
+		'.wp-block-query[class*="is-style-block-link"] .wp-block-post'
 	);
 
 	[].slice.call( blockPosts ).forEach( ( blockPost ) => {

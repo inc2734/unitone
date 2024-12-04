@@ -207,10 +207,10 @@ function ColorPickerUI( {
 	)?.[ 1 ];
 	const color = style?.match( /--unitone--color: ?([^;]+);?/ )?.[ 1 ];
 
-	const colors = useSelect( ( select ) => {
-		const { getSettings } = select( blockEditorStore );
-		return getSettings()?.colors || [];
-	}, [] );
+	const colors = useSelect(
+		( select ) => select( blockEditorStore ).getSettings()?.colors ?? [],
+		[]
+	);
 
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,

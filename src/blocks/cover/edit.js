@@ -10,7 +10,7 @@ import {
 
 import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 
 export default function ( { name, setAttributes, clientId } ) {
 	const innerBlocks = useSelect(
@@ -19,10 +19,15 @@ export default function ( { name, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const hasInnerBlocks = !! innerBlocks.length;
-	const innerBlockTypes = innerBlocks.map(
-		( innerblock ) => innerblock.attributes?.position
+	const innerBlockTypes = useMemo(
+		() =>
+			innerBlocks.map(
+				( innerblock ) => innerblock.attributes?.position
+			),
+		[ innerBlocks.length ]
 	);
+
+	const hasInnerBlocks = !! innerBlocks.length;
 
 	useEffect( () => {
 		setAttributes( {

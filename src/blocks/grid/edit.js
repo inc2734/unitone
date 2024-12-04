@@ -76,11 +76,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	} = attributes;
 
 	const hasInnerBlocks = useSelect(
-		( select ) => {
-			const { getBlock } = select( blockEditorStore );
-			const block = getBlock( clientId );
-			return !! block?.innerBlocks?.length;
-		},
+		( select ) =>
+			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
+				?.length,
 		[ clientId ]
 	);
 

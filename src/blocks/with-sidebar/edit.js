@@ -26,14 +26,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		attributes;
 
 	const { updateBlockAttributes } = useDispatch( blockEditorStore );
-	const { getBlockOrder } = useSelect(
-		( select ) => select( blockEditorStore ),
-		[]
+	const blocks = useSelect(
+		( select ) => select( blockEditorStore ).getBlockOrder( clientId ),
+		[ clientId ]
 	);
 
 	useEffect( () => {
-		const blocks = getBlockOrder( clientId );
-
 		if ( ! revert === ( 'left' === sidebar ) ) {
 			updateBlockAttributes( blocks[ 0 ], { type: 'aside' } );
 			updateBlockAttributes( blocks[ 1 ], { type: 'main' } );

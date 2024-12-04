@@ -10,7 +10,7 @@ import {
 
 import { Button } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useRef, useEffect, useState } from '@wordpress/element';
+import { useRef, useEffect, useState, useMemo } from '@wordpress/element';
 
 import {
 	arrowsIconTypes,
@@ -103,30 +103,41 @@ function Edit( props ) {
 	const [ canvasWidth, setCanvasWidth ] = useState( 0 );
 	const ref = useRef();
 
-	const { getSelectedBlockClientId, getBlockParents, hasSelectedInnerBlock } =
-		useSelect( blockEditorStore );
-
-	const { slides, selectedBlockClientId } = useSelect(
+	const {
+		getBlockParents,
+		hasSelectedInnerBlock,
+		slides,
+		selectedBlockClientId,
+	} = useSelect(
 		( select ) => {
+			const selector = select( blockEditorStore );
+
 			return {
-				slides: select( blockEditorStore ).getBlock( clientId )
-					.innerBlocks,
-				selectedBlockClientId: getSelectedBlockClientId(),
+				getBlockParents: selector.getBlockParents,
+				hasSelectedInnerBlock: selector.hasSelectedInnerBlock,
+				slides: selector.getBlock( clientId ).innerBlocks,
+				selectedBlockClientId: selector.getSelectedBlockClientId(),
 			};
 		},
 		[ clientId ]
 	);
 
 	const hasChildSelected = hasSelectedInnerBlock( clientId, true );
-	const selectedSlideClientId = slides
-		.filter(
-			( slide ) =>
-				slide.clientId === selectedBlockClientId ||
-				getBlockParents( selectedBlockClientId ).some(
-					( ansestorClientId ) => slide.clientId === ansestorClientId
+
+	const selectedSlideClientId = useMemo(
+		() =>
+			slides
+				.filter(
+					( slide ) =>
+						slide.clientId === selectedBlockClientId ||
+						getBlockParents( selectedBlockClientId ).some(
+							( ansestorClientId ) =>
+								slide.clientId === ansestorClientId
+						)
 				)
-		)
-		.map( ( v ) => v.clientId )?.[ 0 ];
+				.map( ( v ) => v.clientId )?.[ 0 ],
+		[ slides, selectedBlockClientId ]
+	);
 
 	const { selectBlock } = useDispatch( blockEditorStore );
 

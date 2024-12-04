@@ -367,15 +367,13 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 }
 
 function Placeholder( { name, onSelect } ) {
-	const { blockType, variations } = useSelect(
-		( select ) => {
-			const { getBlockVariations, getBlockType } = select( blocksStore );
+	const { getBlockVariations, getBlockType } = useSelect( blocksStore );
 
-			return {
-				blockType: getBlockType( name ),
-				variations: getBlockVariations( name, 'block' ),
-			};
-		},
+	const { blockType, variations } = useMemo(
+		() => ( {
+			blockType: getBlockType( name ),
+			variations: getBlockVariations( name, 'block' ),
+		} ),
 		[ name ]
 	);
 

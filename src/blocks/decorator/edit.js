@@ -27,6 +27,7 @@ import {
 	useMemo,
 } from '@wordpress/element';
 
+import { useMergeRefs } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { link, linkOff } from '@wordpress/icons';
 import { displayShortcut } from '@wordpress/keycodes';
@@ -115,6 +116,10 @@ export default function ( {
 
 	const ref = useRef();
 
+	// Use internal state instead of a ref to make sure that the component
+	// re-renders when the popover's anchor updates.
+	const [ popoverAnchor, setPopoverAnchor ] = useState( null );
+
 	const hasInnerBlocks = useSelect(
 		( select ) =>
 			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
@@ -142,7 +147,7 @@ export default function ( {
 	}
 
 	const blockProps = useBlockProps( {
-		ref,
+		ref: useMergeRefs( [ setPopoverAnchor, ref ] ),
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'decorator',
@@ -237,7 +242,7 @@ export default function ( {
 					onClose={ () => {
 						setIsEditingHref( false );
 					} }
-					anchorRef={ ref?.current }
+					anchor={ popoverAnchor }
 					focusOnMount={ isEditingHref ? 'firstElement' : false }
 				>
 					<LinkControl

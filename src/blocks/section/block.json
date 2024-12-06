@@ -13,7 +13,11 @@
 		"unitone": {
 			"type": "object",
 			"default": {
-				"gutters": "root"
+				"gutters": "root",
+				"position": {
+					"position": "relative"
+				},
+				"overflow": "visible"
 			}
 		},
 		"templateLock": {

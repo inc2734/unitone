@@ -64,6 +64,9 @@ $_values: (
 
 	opacity: 0;
 }
+[data-unitone-scroll-animation~=fade-in-down].wp-block {
+	opacity: 1;
+}
 
 /**
  * Fade in up
@@ -80,6 +83,9 @@ $_values: (
 	--unitone--animation-initial: 100px;
 
 	opacity: 0;
+}
+[data-unitone-scroll-animation~=fade-in-up].wp-block {
+	opacity: 1;
 }
 
 /**
@@ -98,6 +104,9 @@ $_values: (
 
 	opacity: 0;
 }
+[data-unitone-scroll-animation~=fade-in-left].wp-block {
+	opacity: 1;
+}
 
 /**
  * Fade in right
@@ -115,6 +124,9 @@ $_values: (
 
 	opacity: 0;
 }
+[data-unitone-scroll-animation~=fade-in-right].wp-block {
+	opacity: 1;
+}
 
 /**
  * Fade in
@@ -130,6 +142,9 @@ $_values: (
 	--unitone--animation-duration: 1s;
 
 	opacity: 0;
+}
+[data-unitone-scroll-animation~=fade-in].wp-block {
+	opacity: 1;
 }
 
 /**
@@ -147,6 +162,9 @@ $_values: (
 	--unitone--animation-initial: .6;
 
 	opacity: 0;
+}
+[data-unitone-scroll-animation~=zoom-in].wp-block {
+	opacity: 1;
 }
 
 /**

@@ -9,6 +9,8 @@
 @use "sass:meta";
 @use '../../../node_modules/@inc2734/unitone-css/src/settings/settings';
 
+@include meta.load-css("../../js/editor/hooks/animation/scroll-animation");
+
 /**
  * ## Non iframe
  * .editor-styles-wrapper.block-editor-writing-flow

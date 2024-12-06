@@ -35,12 +35,19 @@ import {
 
 export { useParallaxBlockProps, useScrollAnimationBlockProps };
 
-function AnimationPanelPure( { clientId, name, unitone, setAttributes } ) {
+function AnimationPanelPure( {
+	clientId,
+	name,
+	unitone,
+	setAttributes,
+	__unitoneStates,
+} ) {
 	const props = {
 		clientId,
 		name,
 		unitone,
 		setAttributes,
+		__unitoneStates,
 	};
 
 	const resetAll = useCallback( ( filters ) => {

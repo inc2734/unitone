@@ -73,6 +73,14 @@ const addAttribute = ( settings ) => {
 			unitone: {
 				type: 'object',
 			},
+			__unstableUnitoneSupports: {
+				type: 'object',
+				role: 'local',
+			},
+			__unitoneStates: {
+				type: 'object',
+				role: 'local',
+			},
 		} );
 	}
 
@@ -147,6 +155,9 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 			} ),
 			__unstableUnitoneSupports: cleanEmptyObject( {
 				...attributes.__unstableUnitoneSupports,
+			} ),
+			__unitoneStates: cleanEmptyObject( {
+				...attributes.__unitoneStates,
 			} ),
 			setAttributes,
 			className: attributes.className,

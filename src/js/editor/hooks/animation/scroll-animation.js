@@ -88,6 +88,8 @@ function ScrollAnimationPopover( {
 	onChangeEasing,
 	initial,
 	onChangeInitial,
+	onMouseDownCheckBehavior,
+	onClickCheckBehavior,
 } ) {
 	const popoverProps = {
 		placement: 'left-start',
@@ -412,6 +414,16 @@ function ScrollAnimationPopover( {
 									allowReset
 								/>
 							) }
+
+							<Button
+								variant="secondary"
+								onMouseDown={ onMouseDownCheckBehavior }
+								onClick={ onClickCheckBehavior }
+								disabled={ ! type }
+								style={ { width: 'fit-content' } }
+							>
+								{ __( 'Check behavior', 'unitone' ) }
+							</Button>
 						</VStack>
 					</div>
 				</DropdownContentWrapper>
@@ -420,7 +432,12 @@ function ScrollAnimationPopover( {
 	);
 }
 
-export function ScrollAnimationEdit( { name, unitone, setAttributes } ) {
+export function ScrollAnimationEdit( {
+	name,
+	unitone,
+	setAttributes,
+	__unitoneStates,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.scrollAnimation;
@@ -452,6 +469,10 @@ export function ScrollAnimationEdit( { name, unitone, setAttributes } ) {
 
 					setAttributes( {
 						unitone: cleanEmptyObject( newUnitone ),
+						__unitoneStates: {
+							...__unitoneStates,
+							scrollAnimationFired: false,
+						},
 					} );
 				} }
 				onChangeSpeed={ ( newAttribute ) => {
@@ -465,6 +486,10 @@ export function ScrollAnimationEdit( { name, unitone, setAttributes } ) {
 
 					setAttributes( {
 						unitone: cleanEmptyObject( newUnitone ),
+						__unitoneStates: {
+							...__unitoneStates,
+							scrollAnimationFired: false,
+						},
 					} );
 				} }
 				onChangeDelay={ ( newAttribute ) => {
@@ -478,6 +503,10 @@ export function ScrollAnimationEdit( { name, unitone, setAttributes } ) {
 
 					setAttributes( {
 						unitone: cleanEmptyObject( newUnitone ),
+						__unitoneStates: {
+							...__unitoneStates,
+							scrollAnimationFired: false,
+						},
 					} );
 				} }
 				onChangeEasing={ ( newAttribute ) => {
@@ -491,6 +520,10 @@ export function ScrollAnimationEdit( { name, unitone, setAttributes } ) {
 
 					setAttributes( {
 						unitone: cleanEmptyObject( newUnitone ),
+						__unitoneStates: {
+							...__unitoneStates,
+							scrollAnimationFired: false,
+						},
 					} );
 				} }
 				onChangeInitial={ ( newAttribute ) => {
@@ -510,7 +543,31 @@ export function ScrollAnimationEdit( { name, unitone, setAttributes } ) {
 
 					setAttributes( {
 						unitone: cleanEmptyObject( newUnitone ),
+						__unitoneStates: {
+							...__unitoneStates,
+							scrollAnimationFired: false,
+						},
 					} );
+				} }
+				onMouseDownCheckBehavior={ () => {
+					if ( __unitoneStates?.scrollAnimationFired ) {
+						setAttributes( {
+							__unitoneStates: {
+								...__unitoneStates,
+								scrollAnimationFired: false,
+							},
+						} );
+					}
+				} }
+				onClickCheckBehavior={ () => {
+					if ( ! __unitoneStates?.scrollAnimationFired ) {
+						setAttributes( {
+							__unitoneStates: {
+								...__unitoneStates,
+								scrollAnimationFired: true,
+							},
+						} );
+					}
 				} }
 			/>
 		</ItemGroup>
@@ -592,8 +649,14 @@ function useBlockProps( extraProps, blockType, attributes ) {
 	return {
 		...extraProps,
 		style: newExtraProps?.style,
-		'data-unitone-scroll-animation':
+		'data-unitone-scroll-animation': clsx(
 			newExtraProps?.[ 'data-unitone-scroll-animation' ],
+			{
+				'-fired':
+					!! newExtraProps?.[ 'data-unitone-scroll-animation' ] &&
+					attributes?.__unitoneStates?.scrollAnimationFired,
+			}
+		),
 	};
 }
 
@@ -614,6 +677,9 @@ export function useScrollAnimationBlockProps( settings ) {
 				...defaultValue,
 				...attributes?.unitone?.scrollAnimation,
 			},
+		},
+		__unitoneStates: {
+			...attributes?.__unitoneStates,
 		},
 	} );
 

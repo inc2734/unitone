@@ -55,6 +55,7 @@
 			"overflow": true,
 			"fluidTypography": true,
 			"lineHeight": true,
+			"position": true,
 			"scrollAnimation": true
 		}
 	},

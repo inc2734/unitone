@@ -4,6 +4,12 @@
 	--unitone--max-width: var(--wp--style--global--wide-size);
 	--unitone--padding: var(--unitone--s4);
 	--unitone--overflow: visible;
+	--unitone--position: relative;
+	--unitone--top: auto;
+	--unitone--right: auto;
+	--unitone--bottom: auto;
+	--unitone--left: auto;
+	--unitone--z-index: auto;
 
 	--unitone--section--gap: var(--unitone--gap);
 	--unitone--section--gutters: var(--unitone--gutters);
@@ -12,6 +18,12 @@
 
 	max-width: none;
 	overflow: var(--unitone--overflow);
+	position: var(--unitone--position);
+	top: var(--unitone--top);
+	right: var(--unitone--right);
+	bottom: var(--unitone--bottom);
+	left: var(--unitone--left);
+	z-index: var(--unitone--z-index);
 
 	> [data-unitone-layout~="gutters"] {
 		--unitone--padding: var(--unitone--section--padding);

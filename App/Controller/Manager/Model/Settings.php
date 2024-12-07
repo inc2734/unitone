@@ -25,6 +25,7 @@ class Settings {
 		'license-key'               => '',
 		'base-font-size'            => '16',
 		'half-leading'              => '0.4',
+		'min-half-leading'          => '0.1',
 		'h2-size'                   => '3',
 		'h3-size'                   => '2',
 		'h4-size'                   => '1',

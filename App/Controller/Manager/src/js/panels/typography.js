@@ -21,6 +21,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			data: {
 				'base-font-size': settings?.[ 'base-font-size' ] ?? null,
 				'half-leading': settings?.[ 'half-leading' ] ?? null,
+				'min-half-leading': settings?.[ 'min-half-leading' ] ?? null,
 				'h2-size': settings?.[ 'h2-size' ] ?? null,
 				'h3-size': settings?.[ 'h3-size' ] ?? null,
 				'h4-size': settings?.[ 'h4-size' ] ?? null,
@@ -45,6 +46,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			...settings,
 			'base-font-size': defaultSettings[ 'base-font-size' ],
 			'half-leading': defaultSettings[ 'half-leading' ],
+			'min-half-leading': defaultSettings[ 'min-half-leading' ],
 			'h2-size': defaultSettings[ 'h2-size' ],
 			'h3-size': defaultSettings[ 'h3-size' ],
 			'h4-size': defaultSettings[ 'h4-size' ],
@@ -63,6 +65,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			data: {
 				'base-font-size': null,
 				'half-leading': null,
+				'min-half-leading': null,
 				'h2-size': null,
 				'h3-size': null,
 				'h4-size': null,
@@ -124,6 +127,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										'--unitone--border-width': '1px',
 										'--unitone--half-leading': String(
 											settings?.[ 'half-leading' ]
+										),
+										'--unitone--min-half-leading': String(
+											settings?.[ 'min-half-leading' ]
 										),
 									} }
 								>
@@ -232,7 +238,26 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 							<RangeControl
 								__nextHasNoMarginBottom
-								label={ __( 'Half Leading', 'unitone' ) }
+								label={
+									<>
+										{ __( 'Half Leading', 'unitone' ) }
+										&nbsp;(
+										<code
+											style={ {
+												fontSize: 'inherit',
+												textTransform: 'lowercase',
+											} }
+										>
+											line-height:&nbsp;
+											{ 1 +
+												parseFloat(
+													settings?.[ 'half-leading' ]
+												) *
+													2 }
+										</code>
+										)
+									</>
+								}
 								value={ parseFloat(
 									settings?.[ 'half-leading' ]
 								) }
@@ -245,6 +270,50 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								min={ 0.1 }
 								step={ 0.1 }
 								max={ 1 }
+							/>
+
+							<RangeControl
+								__nextHasNoMarginBottom
+								label={
+									<>
+										{ __(
+											'Minimum half Leading',
+											'unitone'
+										) }
+										&nbsp;(
+										<code
+											style={ {
+												fontSize: 'inherit',
+												textTransform: 'lowercase',
+											} }
+										>
+											line-height:&nbsp;
+											{ 1 +
+												parseFloat(
+													settings?.[
+														'min-half-leading'
+													]
+												) *
+													2 }
+										</code>
+										)
+									</>
+								}
+								value={ parseFloat(
+									settings?.[ 'min-half-leading' ]
+								) }
+								onChange={ ( newSetting ) =>
+									setSettings( {
+										...settings,
+										'min-half-leading': newSetting,
+									} )
+								}
+								min={ 0.0 }
+								step={ 0.05 }
+								max={
+									parseFloat( settings?.[ 'half-leading' ] ) /
+									2
+								}
 							/>
 
 							<div data-unitone-layout="with-sidebar -sidebar:left">

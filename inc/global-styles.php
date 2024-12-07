@@ -24,6 +24,7 @@ function apply_css_vars_from_settings() {
 	$font_family      = $deprecated_font_family ? $deprecated_font_family : $font_family; // Deprecated.
 	$base_font_size   = Manager::get_setting( 'base-font-size' );
 	$half_leading     = Manager::get_setting( 'half-leading' );
+	$min_half_leading = Manager::get_setting( 'min-half-leading' );
 	$content_size     = Manager::get_setting( 'settings' )['layout']['contentSize'];
 	$content_size     = $deprecated_content_size ? $deprecated_content_size : $content_size; // Deprecated.
 	$wide_size        = Manager::get_setting( 'settings' )['layout']['wideSize'];
@@ -44,37 +45,39 @@ function apply_css_vars_from_settings() {
 			--unitone--font-family: %1$s;
 			--unitone--base-font-size: %2$s;
 			--unitone--half-leading: %3$s;
-			--unitone--measure: %4$s;
-			--unitone--container-max-width: %5$s;
-			--unitone--color--accent: %6$s;
-			--unitone--color--background: %7$s;
-			--unitone--color--background-alt: %8$s;
-			--unitone--color--text: %8$s;
-			--unitone--color--text-alt: %7$s;
+			--unitone--min-half-leading: %4$s;
+			--unitone--measure: %5$s;
+			--unitone--container-max-width: %6$s;
+			--unitone--color--accent: %7$s;
+			--unitone--color--background: %8$s;
+			--unitone--color--background-alt: %9$s;
+			--unitone--color--text: %9$s;
+			--unitone--color--text-alt: %8$s;
 		}
 		[data-unitone-layout~="text"] > h2,
 		[data-unitone-layout~="vertical-writing"] > h2 {
-			--unitone--font-size: %9$s;
+			--unitone--font-size: %10$s;
 		}
 		[data-unitone-layout~="text"] > h3,
 		[data-unitone-layout~="vertical-writing"] > h3 {
-			--unitone--font-size: %10$s;
+			--unitone--font-size: %11$s;
 		}
 		[data-unitone-layout~="text"] > h4,
 		[data-unitone-layout~="vertical-writing"] > h4 {
-			--unitone--font-size: %11$s;
+			--unitone--font-size: %12$s;
 		}
 		[data-unitone-layout~="text"] > h5,
 		[data-unitone-layout~="vertical-writing"] > h5 {
-			--unitone--font-size: %12$s;
+			--unitone--font-size: %13$s;
 		}
 		[data-unitone-layout~="text"] > h6,
 		[data-unitone-layout~="vertical-writing"] > h6 {
-			--unitone--font-size: %13$s;
+			--unitone--font-size: %14$s;
 		}',
 		$font_family,
 		$base_font_size,
 		$half_leading,
+		$min_half_leading,
 		$content_size,
 		$wide_size,
 		$accent_color,

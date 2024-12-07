@@ -438,6 +438,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										'--unitone--half-leading': String(
 											settings?.[ 'half-leading' ]
 										),
+										'--unitone--min-half-leading': String(
+											settings?.[ 'min-half-leading' ]
+										),
 									} }
 								>
 									<div data-unitone-layout="stack">

@@ -9,6 +9,8 @@ import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/compo
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { cleanEmptyObject } from '../utils';
+
 import {
 	useIsAutoPhraseDisabled,
 	hasAutoPhraseValue,
@@ -45,12 +47,25 @@ export {
 function TypographyPanelPure( props ) {
 	const { clientId, name, attributes } = props;
 
-	const resetAllFilter = useCallback( ( _attributes ) => {
-		_attributes = resetAutoPhraseFilter( _attributes );
-		_attributes = resetFluidTypographyFilter( _attributes );
-		_attributes = resetHalfLeadingFilter( _attributes );
+	const resetAllFilters = [
+		resetAutoPhraseFilter,
+		resetFluidTypographyFilter,
+		resetHalfLeadingFilter,
+	];
 
-		return _attributes;
+	const resetAllFilter = useCallback( ( _attributes ) => {
+		// Because the ToolsPanel popover display does't update when "Reset All" is clicked.
+		attributes.unitone = cleanEmptyObject(
+			resetAllFilters.reduce(
+				( accumulator, filter ) => filter( accumulator ),
+				_attributes
+			)?.unitone
+		);
+
+		return {
+			..._attributes,
+			unitone: attributes.unitone,
+		};
 	}, [] );
 
 	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( { name } );

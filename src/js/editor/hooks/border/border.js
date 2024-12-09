@@ -4,6 +4,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
 import { memo, useCallback } from '@wordpress/element';
 
+import { cleanEmptyObject } from '../utils';
+
 import {
 	useIsDropShadowDisabled,
 	hasDropShadowValue,
@@ -17,12 +19,23 @@ import {
 export { useDropShadowBlockProps };
 
 function DropShadowPanelPure( props ) {
-	const { name, clientId } = props;
+	const { name, attributes, clientId } = props;
+
+	const resetAllFilters = [ resetDropShadowFilter ];
 
 	const resetAllFilter = useCallback( ( _attributes ) => {
-		_attributes = resetDropShadowFilter( _attributes );
+		// Because the ToolsPanel popover display does't update when "Reset All" is clicked.
+		attributes.unitone = cleanEmptyObject(
+			resetAllFilters.reduce(
+				( accumulator, filter ) => filter( accumulator ),
+				_attributes
+			)?.unitone
+		);
 
-		return _attributes;
+		return {
+			..._attributes,
+			unitone: attributes.unitone,
+		};
 	}, [] );
 
 	const isDropShadowDisabled = useIsDropShadowDisabled( { name } );

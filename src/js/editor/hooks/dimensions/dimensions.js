@@ -8,6 +8,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
 import { memo, useCallback } from '@wordpress/element';
 
+import { cleanEmptyObject } from '../utils';
+
 import {
 	useIsPaddingDisabled,
 	hasPaddingValue,
@@ -83,18 +85,31 @@ export {
 };
 
 function DimensionsPanelPure( props ) {
-	const { name, clientId, className } = props;
+	const { name, clientId, attributes, className } = props;
+
+	const resetAllFilters = [
+		resetPaddingFilter,
+		resetGuttersFilter,
+		resetGapFilter,
+		resetStairsFilter,
+		resetStairsUpFilter,
+		resetNegativeFilter,
+		resetOverflowFilter,
+	];
 
 	const resetAllFilter = useCallback( ( _attributes ) => {
-		_attributes = resetPaddingFilter( _attributes );
-		_attributes = resetGuttersFilter( _attributes );
-		_attributes = resetGapFilter( _attributes );
-		_attributes = resetStairsFilter( _attributes );
-		_attributes = resetStairsUpFilter( _attributes );
-		_attributes = resetNegativeFilter( _attributes );
-		_attributes = resetOverflowFilter( _attributes );
+		// Because the ToolsPanel popover display does't update when "Reset All" is clicked.
+		attributes.unitone = cleanEmptyObject(
+			resetAllFilters.reduce(
+				( accumulator, filter ) => filter( accumulator ),
+				_attributes
+			)?.unitone
+		);
 
-		return _attributes;
+		return {
+			..._attributes,
+			unitone: attributes.unitone,
+		};
 	}, [] );
 
 	const isPaddingDisabled = useIsPaddingDisabled( { name } );

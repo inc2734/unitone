@@ -5,7 +5,7 @@ import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
-export function hasMinHeightValue( { name, unitone } ) {
+export function hasMinHeightValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.minHeight;
 
@@ -24,7 +24,7 @@ export function resetMinHeightFilter( attributes ) {
 	};
 }
 
-export function resetMinHeight( { unitone, setAttributes } ) {
+export function resetMinHeight( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetMinHeightFilter( { unitone } )?.unitone
@@ -40,7 +40,7 @@ export function useIsMinHeightDisabled( { name, __unstableUnitoneSupports } ) {
 }
 
 export function getMinHeightEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Min height', 'unitone' );
@@ -59,7 +59,12 @@ export function getMinHeightEditLabel( {
 	);
 }
 
-export function MinHeightEdit( { name, label, unitone, setAttributes } ) {
+export function MinHeightEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.minHeight;

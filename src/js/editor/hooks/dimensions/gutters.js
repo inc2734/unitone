@@ -9,7 +9,7 @@ import { __ } from '@wordpress/i18n';
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-export function hasGuttersValue( { name, unitone } ) {
+export function hasGuttersValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.gutters;
 
@@ -26,7 +26,7 @@ export function resetGuttersFilter( attributes ) {
 	};
 }
 
-export function resetGutters( { unitone, setAttributes } ) {
+export function resetGutters( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject( resetGuttersFilter( { unitone } )?.unitone ),
 	} );
@@ -37,7 +37,7 @@ export function useIsGuttersDisabled( { name } ) {
 }
 
 export function getGuttersEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Margins at both ends', 'unitone' );
@@ -56,7 +56,12 @@ export function getGuttersEditLabel( {
 	);
 }
 
-export function GuttersEdit( { name, label, unitone, setAttributes } ) {
+export function GuttersEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.gutters;

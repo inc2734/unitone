@@ -42,24 +42,22 @@ export {
 	useHalfLeadingBlockProps,
 };
 
-function TypographyPanelPure( { clientId, name, unitone, setAttributes } ) {
-	const props = {
-		clientId,
-		name,
-		unitone,
-		setAttributes,
-	};
+function TypographyPanelPure( props ) {
+	const { clientId, name, attributes } = props;
 
-	const resetAllFilter = useCallback( ( attributes ) => {
-		attributes = resetAutoPhraseFilter( attributes );
-		attributes = resetFluidTypographyFilter( attributes );
-		attributes = resetHalfLeadingFilter( attributes );
+	const resetAllFilter = useCallback( ( _attributes ) => {
+		_attributes = resetAutoPhraseFilter( _attributes );
+		_attributes = resetFluidTypographyFilter( _attributes );
+		_attributes = resetHalfLeadingFilter( _attributes );
 
-		return attributes;
+		return _attributes;
 	}, [] );
 
 	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( { name } );
-	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( { name } );
+	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( {
+		name,
+		fontSize: attributes?.style?.typography?.fontSize,
+	} );
 	const isHalfLeadingDisabled = useIsHalfLeadingDisabled( { name } );
 
 	if (
@@ -106,6 +104,14 @@ function TypographyPanelPure( { clientId, name, unitone, setAttributes } ) {
 						<HalfLeadingEdit
 							{ ...props }
 							label={ __( 'Half leading', 'unitone' ) }
+							help={
+								null != attributes?.style?.typography?.fontSize
+									? __(
+											'When custom font sizes are enabled, it is recommended that half-reading be specified since line heights are not automatically optimized.',
+											'unitone'
+									  )
+									: undefined
+							}
 						/>
 					</ToolsPanelItem>
 				) }

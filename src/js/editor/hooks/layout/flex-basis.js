@@ -25,8 +25,7 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 
 export function hasFlexBasisValue( {
 	name,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 } ) {
 	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
@@ -45,7 +44,7 @@ export function resetFlexBasisFilter( attributes ) {
 	};
 }
 
-export function resetFlexBasis( { unitone, setAttributes } ) {
+export function resetFlexBasis( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetFlexBasisFilter( { unitone } )?.unitone
@@ -61,7 +60,7 @@ export function useIsFlexBasisDisabled( { name, __unstableUnitoneSupports } ) {
 }
 
 export function getFlexBasisEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Recommended width', 'unitone' );
@@ -83,8 +82,7 @@ export function getFlexBasisEditLabel( {
 export function FlexBasisEdit( {
 	name,
 	label,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );

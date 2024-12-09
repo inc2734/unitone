@@ -23,7 +23,7 @@ import { __ } from '@wordpress/i18n';
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject, isString } from '../utils';
 
-export function hasGapValue( { name, unitone } ) {
+export function hasGapValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.gap;
 
@@ -40,7 +40,7 @@ export function resetGapFilter( attributes ) {
 	};
 }
 
-export function resetGap( { unitone, setAttributes } ) {
+export function resetGap( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject( resetGapFilter( { unitone } )?.unitone ),
 	} );
@@ -67,7 +67,7 @@ export function useIsGapDisabled( { name, className } ) {
 }
 
 export function getGapEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Gap', 'unitone' );
@@ -223,7 +223,12 @@ function expand( attribute ) {
 		  };
 }
 
-export function GapEdit( { name, label, unitone, setAttributes } ) {
+export function GapEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.gap;

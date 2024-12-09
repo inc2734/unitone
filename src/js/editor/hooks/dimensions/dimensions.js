@@ -82,33 +82,19 @@ export {
 	useStairsBlockProps,
 };
 
-function DimensionsPanelPure( {
-	clientId,
-	name,
-	unitone,
-	__unstableUnitoneSupports,
-	setAttributes,
-	className,
-} ) {
-	const props = {
-		clientId,
-		name,
-		unitone,
-		__unstableUnitoneSupports,
-		setAttributes,
-		className,
-	};
+function DimensionsPanelPure( props ) {
+	const { name, clientId, className } = props;
 
-	const resetAllFilter = useCallback( ( attributes ) => {
-		attributes = resetPaddingFilter( attributes );
-		attributes = resetGuttersFilter( attributes );
-		attributes = resetGapFilter( attributes );
-		attributes = resetStairsFilter( attributes );
-		attributes = resetStairsUpFilter( attributes );
-		attributes = resetNegativeFilter( attributes );
-		attributes = resetOverflowFilter( attributes );
+	const resetAllFilter = useCallback( ( _attributes ) => {
+		_attributes = resetPaddingFilter( _attributes );
+		_attributes = resetGuttersFilter( _attributes );
+		_attributes = resetGapFilter( _attributes );
+		_attributes = resetStairsFilter( _attributes );
+		_attributes = resetStairsUpFilter( _attributes );
+		_attributes = resetNegativeFilter( _attributes );
+		_attributes = resetOverflowFilter( _attributes );
 
-		return attributes;
+		return _attributes;
 	}, [] );
 
 	const isPaddingDisabled = useIsPaddingDisabled( { name } );
@@ -202,7 +188,6 @@ function DimensionsPanelPure( {
 								{ ...props }
 								label={ getStairsEditLabel( {
 									...props,
-									__withCode: true,
 								} ) }
 							/>
 						</ToolsPanelItem>
@@ -223,7 +208,6 @@ function DimensionsPanelPure( {
 									{ ...props }
 									label={ getStairsUpEditLabel( {
 										...props,
-										__withCode: true,
 									} ) }
 								/>
 							</ToolsPanelItem>
@@ -243,7 +227,6 @@ function DimensionsPanelPure( {
 							{ ...props }
 							label={ getNegativeEditLabel( {
 								...props,
-								__withCode: true,
 							} ) }
 						/>
 					</ToolsPanelItem>

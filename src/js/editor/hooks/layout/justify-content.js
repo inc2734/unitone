@@ -44,7 +44,7 @@ const justifyContentOptions = [
 	},
 ];
 
-export function hasJustifyContentValue( { name, unitone } ) {
+export function hasJustifyContentValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.justifyContent;
 
@@ -64,7 +64,10 @@ export function resetJustifyContentFilter( attributes ) {
 	};
 }
 
-export function resetJustifyContent( { unitone, setAttributes } ) {
+export function resetJustifyContent( {
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetJustifyContentFilter( { unitone } )?.unitone
@@ -76,7 +79,11 @@ export function useIsJustifyContentDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.justifyContent' );
 }
 
-export function JustifyContentToolbar( { name, unitone, setAttributes } ) {
+export function JustifyContentToolbar( {
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifyContent;
@@ -107,7 +114,7 @@ export function JustifyContentToolbar( { name, unitone, setAttributes } ) {
 }
 
 export function getJustifyContentEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Justify content', 'unitone' );
@@ -126,7 +133,12 @@ export function getJustifyContentEditLabel( {
 	);
 }
 
-export function JustifyContentEdit( { name, label, unitone, setAttributes } ) {
+export function JustifyContentEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifyContent;

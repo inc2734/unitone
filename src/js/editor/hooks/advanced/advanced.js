@@ -12,13 +12,8 @@ import {
 
 export { useStyleBlockProps, StyleTag };
 
-function AdvancedPanelPure( { clientId, name, unitone, setAttributes } ) {
-	const props = {
-		clientId,
-		name,
-		unitone,
-		setAttributes,
-	};
+function AdvancedPanelPure( props ) {
+	const { name } = props;
 
 	const isStyleDisabled = useIsStyleDisabled( { name } );
 

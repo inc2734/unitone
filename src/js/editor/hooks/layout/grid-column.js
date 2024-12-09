@@ -40,8 +40,7 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 
 export function hasGridColumnValue( {
 	name,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 } ) {
 	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
@@ -62,7 +61,7 @@ export function resetGridColumnFilter( attributes ) {
 	};
 }
 
-export function resetGridColumn( { unitone, setAttributes } ) {
+export function resetGridColumn( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetGridColumnFilter( { unitone } )?.unitone
@@ -78,7 +77,7 @@ export function useIsGridColumnDisabled( { name, __unstableUnitoneSupports } ) {
 }
 
 export function getGridColumnEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __(
@@ -104,8 +103,7 @@ export function GridColumnEdit( {
 	label,
 	name,
 	help,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
 	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );

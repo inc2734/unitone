@@ -26,7 +26,7 @@ export function useIsAutoRepeatDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.autoRepeat' );
 }
 
-export function hasAutoRepeatValue( { name, unitone } ) {
+export function hasAutoRepeatValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.autoRepeat;
 
@@ -46,7 +46,7 @@ export function resetAutoRepeatFilter( attributes ) {
 	};
 }
 
-export function resetAutoRepeat( { unitone, setAttributes } ) {
+export function resetAutoRepeat( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetAutoRepeatFilter( { unitone } )?.unitone
@@ -55,7 +55,7 @@ export function resetAutoRepeat( { unitone, setAttributes } ) {
 }
 
 export function getAutoRepeatEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Auto repeat', 'unitone' );

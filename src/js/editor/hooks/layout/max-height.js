@@ -5,7 +5,7 @@ import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
-export function hasMaxHeightValue( { name, unitone } ) {
+export function hasMaxHeightValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.maxHeight;
 
@@ -24,7 +24,7 @@ export function resetMaxHeightFilter( attributes ) {
 	};
 }
 
-export function resetMaxHeight( { unitone, setAttributes } ) {
+export function resetMaxHeight( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetMaxHeightFilter( { unitone } )?.unitone
@@ -40,7 +40,7 @@ export function useIsMaxHeightDisabled( { name, __unstableUnitoneSupports } ) {
 }
 
 export function getMaxHeightEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Max height', 'unitone' );
@@ -59,7 +59,12 @@ export function getMaxHeightEditLabel( {
 	);
 }
 
-export function MaxHeightEdit( { name, label, unitone, setAttributes } ) {
+export function MaxHeightEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.maxHeight;

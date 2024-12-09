@@ -38,7 +38,7 @@ const alignItemsOptions = [
 	},
 ];
 
-export function hasAlignItemsValue( { name, unitone } ) {
+export function hasAlignItemsValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.alignItems;
 
@@ -58,7 +58,7 @@ export function resetAlignItemsFilter( attributes ) {
 	};
 }
 
-export function resetAlignItems( { unitone, setAttributes } ) {
+export function resetAlignItems( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetAlignItemsFilter( { unitone } )?.unitone
@@ -70,7 +70,11 @@ export function useIsAlignItemsDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.alignItems' );
 }
 
-export function AlignItemsToolbar( { name, unitone, setAttributes } ) {
+export function AlignItemsToolbar( {
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.alignItems;
@@ -98,7 +102,7 @@ export function AlignItemsToolbar( { name, unitone, setAttributes } ) {
 }
 
 export function getAlignItemsEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Align items', 'unitone' );
@@ -117,7 +121,12 @@ export function getAlignItemsEditLabel( {
 	);
 }
 
-export function AlignItemsEdit( { name, label, unitone, setAttributes } ) {
+export function AlignItemsEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.alignItems;

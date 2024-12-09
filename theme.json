@@ -106,7 +106,7 @@
 		"typography": {
 			"defaultFontSizes": false,
 			"dropCap": true,
-			"customFontSize": false,
+			"customFontSize": true,
 			"textTransform": true,
 			"lineHeight": false,
 			"writingMode": true,
@@ -257,7 +257,7 @@
 			"margin": false,
 			"padding": false,
 			"defaultSpacingSizes": false,
-			"units": ["%", "px", "em", "rem", "vh", "vw", "vmin", "vmax"],
+			"units": ["%", "px", "em", "rem", "vh", "vw", "vmin", "vmax", "cqi"],
 			"spacingSizes": [
 				{
 					"name": "XS",

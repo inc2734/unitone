@@ -14,7 +14,7 @@ import { __ } from '@wordpress/i18n';
 import { settings as settingsIcon } from '@wordpress/icons';
 import { cleanEmptyObject } from '../utils';
 
-export function hasMaxWidthValue( { name, unitone } ) {
+export function hasMaxWidthValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.maxWidth;
 
@@ -33,7 +33,7 @@ export function resetMaxWidthFilter( attributes ) {
 	};
 }
 
-export function resetMaxWidth( { unitone, setAttributes } ) {
+export function resetMaxWidth( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetMaxWidthFilter( { unitone } )?.unitone
@@ -49,7 +49,7 @@ export function useIsMaxWidthDisabled( { name, __unstableUnitoneSupports } ) {
 }
 
 export function getMaxWidthEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Max width', 'unitone' );
@@ -68,7 +68,12 @@ export function getMaxWidthEditLabel( {
 	);
 }
 
-export function MaxWidthEdit( { name, label, unitone, setAttributes } ) {
+export function MaxWidthEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.maxWidth;

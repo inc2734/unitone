@@ -7,7 +7,7 @@ import { useMemo } from '@wordpress/element';
 
 import { cleanEmptyObject } from '../utils';
 
-export function hasPositionValue( { name, unitone } ) {
+export function hasPositionValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.position;
 
@@ -30,7 +30,7 @@ export function resetPositionFilter( attributes ) {
 	};
 }
 
-export function resetPosition( { unitone, setAttributes } ) {
+export function resetPosition( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetPositionFilter( { unitone } )?.unitone
@@ -42,7 +42,12 @@ export function useIsPositionDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.position' );
 }
 
-export function PositionEdit( { label, name, unitone, setAttributes } ) {
+export function PositionEdit( {
+	label,
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.position;
@@ -92,7 +97,7 @@ export function PositionEdit( { label, name, unitone, setAttributes } ) {
 	);
 }
 
-export function hasTopValue( { name, unitone } ) {
+export function hasTopValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.position;
 
@@ -115,13 +120,18 @@ export function resetTopFilter( attributes ) {
 	};
 }
 
-export function resetTop( { unitone, setAttributes } ) {
+export function resetTop( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject( resetTopFilter( { unitone } )?.unitone ),
 	} );
 }
 
-export function TopEdit( { label, name, unitone, setAttributes } ) {
+export function TopEdit( {
+	label,
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.position;
@@ -149,7 +159,7 @@ export function TopEdit( { label, name, unitone, setAttributes } ) {
 	);
 }
 
-export function hasRightValue( { name, unitone } ) {
+export function hasRightValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.position;
 
@@ -172,13 +182,18 @@ export function resetRightFilter( attributes ) {
 	};
 }
 
-export function resetRight( { unitone, setAttributes } ) {
+export function resetRight( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject( resetRightFilter( { unitone } )?.unitone ),
 	} );
 }
 
-export function RightEdit( { label, name, unitone, setAttributes } ) {
+export function RightEdit( {
+	label,
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.position;
@@ -208,7 +223,7 @@ export function RightEdit( { label, name, unitone, setAttributes } ) {
 	);
 }
 
-export function hasBottomValue( { name, unitone } ) {
+export function hasBottomValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.position;
 
@@ -231,13 +246,18 @@ export function resetBottomFilter( attributes ) {
 	};
 }
 
-export function resetBottom( { unitone, setAttributes } ) {
+export function resetBottom( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject( resetBottomFilter( { unitone } )?.unitone ),
 	} );
 }
 
-export function BottomEdit( { label, name, unitone, setAttributes } ) {
+export function BottomEdit( {
+	label,
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.position;
@@ -265,7 +285,7 @@ export function BottomEdit( { label, name, unitone, setAttributes } ) {
 	);
 }
 
-export function hasLeftValue( { name, unitone } ) {
+export function hasLeftValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.position;
 
@@ -288,13 +308,18 @@ export function resetLeftFilter( attributes ) {
 	};
 }
 
-export function resetLeft( { unitone, setAttributes } ) {
+export function resetLeft( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject( resetLeftFilter( { unitone } )?.unitone ),
 	} );
 }
 
-export function LeftEdit( { label, name, unitone, setAttributes } ) {
+export function LeftEdit( {
+	label,
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.position;
@@ -322,7 +347,7 @@ export function LeftEdit( { label, name, unitone, setAttributes } ) {
 	);
 }
 
-export function hasZIndexValue( { name, unitone } ) {
+export function hasZIndexValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.position;
 
@@ -345,13 +370,18 @@ export function resetZIndexFilter( attributes ) {
 	};
 }
 
-export function resetZIndex( { unitone, setAttributes } ) {
+export function resetZIndex( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject( resetZIndexFilter( { unitone } )?.unitone ),
 	} );
 }
 
-export function ZIndexEdit( { label, name, unitone, setAttributes } ) {
+export function ZIndexEdit( {
+	label,
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.position;

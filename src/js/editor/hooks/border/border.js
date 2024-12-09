@@ -16,24 +16,13 @@ import {
 
 export { useDropShadowBlockProps };
 
-function DropShadowPanelPure( {
-	clientId,
-	name,
-	unitone,
-	__unstableUnitoneSupports,
-	setAttributes,
-} ) {
-	const props = {
-		name,
-		unitone,
-		__unstableUnitoneSupports,
-		setAttributes,
-	};
+function DropShadowPanelPure( props ) {
+	const { name, clientId } = props;
 
-	const resetAllFilter = useCallback( ( attributes ) => {
-		attributes = resetDropShadowFilter( attributes );
+	const resetAllFilter = useCallback( ( _attributes ) => {
+		_attributes = resetDropShadowFilter( _attributes );
 
-		return attributes;
+		return _attributes;
 	}, [] );
 
 	const isDropShadowDisabled = useIsDropShadowDisabled( { name } );

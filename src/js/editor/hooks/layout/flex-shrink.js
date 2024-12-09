@@ -25,8 +25,7 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 
 export function hasFlexShrinkValue( {
 	name,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 } ) {
 	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
@@ -46,7 +45,7 @@ export function resetFlexShrinkFilter( attributes ) {
 	};
 }
 
-export function resetFlexShrink( { unitone, setAttributes } ) {
+export function resetFlexShrink( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetFlexShrinkFilter( { unitone } )?.unitone
@@ -62,7 +61,7 @@ export function useIsFlexShrinkDisabled( { name, __unstableUnitoneSupports } ) {
 }
 
 export function getFlexShrinkEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Fit', 'unitone' );
@@ -84,8 +83,7 @@ export function getFlexShrinkEditLabel( {
 export function FlexShrinkEdit( {
 	name,
 	label,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );

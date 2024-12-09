@@ -5,6 +5,8 @@
  * @license GPL-2.0+
  */
 
+use Unitone\App\Controller\Manager\Manager;
+
 /**
  * Register blocks.
  */
@@ -309,7 +311,26 @@ add_filter(
 
 		// --unitone--half-leading
 		if ( $is_supported( 'halfLeading' ) ) {
-			$add_style( '--unitone--half-leading', $get_attribute( 'halfLeading' ) );
+			$new_half_leading = $get_attribute( 'halfLeading' );
+			if ( ! is_null( $new_half_leading ) ) {
+				$add_style( '--unitone--half-leading', $new_half_leading );
+
+				$base_half_leading     = Manager::get_setting( 'half-leading' );
+				$base_min_half_leading = Manager::get_setting( 'min-half-leading' );
+
+				$diff = $new_half_leading > $base_half_leading || $new_half_leading < $base_min_half_leading
+					? round( $new_half_leading - $base_half_leading, 2 )
+					: false;
+
+				if ( false !== $diff ) {
+					$new_min_half_leading = round( $base_min_half_leading + $diff, 2 );
+					if ( 0 > $new_min_half_leading ) {
+						$new_min_half_leading = 0;
+					}
+
+					$add_style( '--unitone--min-half-leading', $new_min_half_leading );
+				}
+			}
 		}
 
 		// -align-items

@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-export function hasPaddingValue( { name, unitone } ) {
+export function hasPaddingValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.padding;
 
@@ -29,7 +29,7 @@ export function resetPaddingFilter( attributes ) {
 	};
 }
 
-export function resetPadding( { unitone, setAttributes } ) {
+export function resetPadding( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject( resetPaddingFilter( { unitone } )?.unitone ),
 	} );
@@ -40,7 +40,7 @@ export function useIsPaddingDisabled( { name } ) {
 }
 
 export function getPaddingEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Padding', 'unitone' );
@@ -59,7 +59,12 @@ export function getPaddingEditLabel( {
 	);
 }
 
-export function PaddingEdit( { label, name, unitone, setAttributes } ) {
+export function PaddingEdit( {
+	label,
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.padding;

@@ -217,18 +217,29 @@ class Manager {
 				'methods'             => 'GET',
 				'callback'            => function ( $request ) {
 					$params   = $request->get_params();
-					$settings = Settings::get_merged_settings();
+					$keys     = $params['keys'] ?? array();
+					$settings = current_user_can( 'manage_options' )
+						? Settings::get_merged_settings()
+						: Settings::get_settings();
+
+					if ( ! current_user_can( 'manage_options' ) ) {
+						unset( $settings['license-key'] );
+					}
+
+					if ( ! $keys ) {
+						return $settings;
+					}
 
 					return array_filter(
 						$settings,
-						function ( $key ) use ( $params ) {
-							return in_array( $key, $params, true );
+						function ( $key ) use ( $keys ) {
+							return in_array( $key, $keys, true );
 						},
 						ARRAY_FILTER_USE_KEY
 					);
 				},
 				'permission_callback' => function () {
-					return current_user_can( 'manage_options' );
+					return current_user_can( 'edit_posts' );
 				},
 			)
 		);

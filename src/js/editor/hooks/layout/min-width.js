@@ -5,7 +5,7 @@ import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
-export function hasMinWidthValue( { name, unitone } ) {
+export function hasMinWidthValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.minWidth;
 
@@ -24,7 +24,7 @@ export function resetMinWidthFilter( attributes ) {
 	};
 }
 
-export function resetMinWidth( { unitone, setAttributes } ) {
+export function resetMinWidth( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetMinWidthFilter( { unitone } )?.unitone
@@ -40,7 +40,7 @@ export function useIsMinWidthDisabled( { name, __unstableUnitoneSupports } ) {
 }
 
 export function getMinWidthEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Min width', 'unitone' );
@@ -59,7 +59,12 @@ export function getMinWidthEditLabel( {
 	);
 }
 
-export function MinWidthEdit( { name, label, unitone, setAttributes } ) {
+export function MinWidthEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.minWidth;

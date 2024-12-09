@@ -46,7 +46,11 @@ export function StyleTag( { unitone } ) {
 }
 
 // @see https://github.com/WordPress/gutenberg/blob/a55c62c5c810c84258afcdac7da1a7019a69b332/packages/block-editor/src/components/global-styles/advanced-panel.js
-export function StyleEdit( { unitone, setAttributes, clientId } ) {
+export function StyleEdit( {
+	attributes: { unitone },
+	setAttributes,
+	clientId,
+} ) {
 	const [ cssError, setCSSError ] = useState( null );
 	const [ instanceId, setInstanceId ] = useState( clientId );
 

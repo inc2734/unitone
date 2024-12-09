@@ -22,7 +22,7 @@ import { __ } from '@wordpress/i18n';
 import { scroll as iconScrollAnimation } from './icons';
 import { cleanEmptyObject } from '../utils';
 
-export function hasScrollAnimationValue( { name, unitone } ) {
+export function hasScrollAnimationValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.scrollAnimation;
 
@@ -42,7 +42,10 @@ export function resetScrollAnimationFilter( attributes ) {
 	};
 }
 
-export function resetScrollAnimation( { unitone, setAttributes } ) {
+export function resetScrollAnimation( {
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetScrollAnimationFilter( { unitone } )?.unitone
@@ -434,9 +437,8 @@ function ScrollAnimationPopover( {
 
 export function ScrollAnimationEdit( {
 	name,
-	unitone,
+	attributes: { unitone, __unitoneStates },
 	setAttributes,
-	__unitoneStates,
 } ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone

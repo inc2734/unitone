@@ -200,20 +200,9 @@ export {
 	useGridRowBlockProps,
 };
 
-function LayoutPanelPure( {
-	clientId,
-	name,
-	unitone,
-	__unstableUnitoneSupports,
-	setAttributes,
-} ) {
-	const props = {
-		clientId,
-		name,
-		unitone,
-		__unstableUnitoneSupports,
-		setAttributes,
-	};
+function LayoutPanelPure( props ) {
+	const { name, attributes, setAttributes, clientId } = props;
+	const { unitone, __unstableUnitoneSupports } = attributes;
 
 	const resetAll = useCallback( ( filters ) => {
 		const newUnitone = filters.reduce(

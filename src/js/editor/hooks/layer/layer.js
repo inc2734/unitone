@@ -26,20 +26,9 @@ import {
 
 export { useMixBlendModeBlockProps };
 
-function LayerPanelPure( {
-	clientId,
-	name,
-	unitone,
-	__unstableUnitoneSupports,
-	setAttributes,
-} ) {
-	const props = {
-		clientId,
-		name,
-		unitone,
-		__unstableUnitoneSupports,
-		setAttributes,
-	};
+function LayerPanelPure( props ) {
+	const { attributes, setAttributes, clientId } = props;
+	const { unitone } = attributes;
 
 	const resetAll = useCallback( ( filters ) => {
 		const newUnitone = filters.reduce(

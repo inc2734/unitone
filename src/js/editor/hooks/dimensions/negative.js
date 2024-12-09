@@ -7,7 +7,7 @@ import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
-export function hasNegativeValue( { unitone } ) {
+export function hasNegativeValue( { attributes: { unitone } } ) {
 	return !! unitone?.negative;
 }
 
@@ -21,7 +21,7 @@ export function resetNegativeFilter( attributes ) {
 	};
 }
 
-export function resetNegative( { unitone, setAttributes } ) {
+export function resetNegative( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetNegativeFilter( { unitone } )?.unitone
@@ -33,14 +33,23 @@ export function useIsNegativeDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.negative' );
 }
 
-export function getNegativeEditLabel( { __unstableUnitoneSupports } ) {
+export function getNegativeEditLabel( {
+	attributes: {
+		unitone: { __unstableUnitoneSupports },
+	},
+} ) {
 	return (
 		__unstableUnitoneSupports?.negative?.label ||
 		__( 'Using negative margin', 'unitone' )
 	);
 }
 
-export function NegativeEdit( { name, label, unitone, setAttributes } ) {
+export function NegativeEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return !! select( blocksStore ).getBlockType( name )?.attributes
 			?.unitone?.default?.negative;

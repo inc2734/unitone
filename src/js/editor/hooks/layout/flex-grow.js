@@ -25,8 +25,7 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 
 export function hasFlexGrowValue( {
 	name,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 } ) {
 	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
@@ -45,7 +44,7 @@ export function resetFlexGrowFilter( attributes ) {
 	};
 }
 
-export function resetFlexGrow( { unitone, setAttributes } ) {
+export function resetFlexGrow( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetFlexGrowFilter( { unitone } )?.unitone
@@ -61,7 +60,7 @@ export function useIsFlexGrowDisabled( { name, __unstableUnitoneSupports } ) {
 }
 
 export function getFlexGrowEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Fill', 'unitone' );
@@ -83,8 +82,7 @@ export function getFlexGrowEditLabel( {
 export function FlexGrowEdit( {
 	name,
 	label,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );

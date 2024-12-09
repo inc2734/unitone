@@ -33,20 +33,9 @@ import {
 
 export { useDividerTypeBlockProps, useDividerBlockProps };
 
-export function DividerPanelPure( {
-	clientId,
-	name,
-	unitone,
-	__unstableUnitoneSupports,
-	setAttributes,
-} ) {
-	const props = {
-		clientId,
-		name,
-		unitone,
-		__unstableUnitoneSupports,
-		setAttributes,
-	};
+export function DividerPanelPure( props ) {
+	const { name, attributes, setAttributes, clientId } = props;
+	const { unitone } = attributes;
 
 	const resetAll = useCallback( ( filters ) => {
 		const newUnitone = filters.reduce(

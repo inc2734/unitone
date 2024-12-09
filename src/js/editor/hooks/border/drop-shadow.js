@@ -21,7 +21,7 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
-export function hasDropShadowValue( { name, unitone } ) {
+export function hasDropShadowValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.dropShadow;
 
@@ -41,7 +41,7 @@ export function resetDropShadowFilter( attributes ) {
 	};
 }
 
-export function resetDropShadow( { unitone, setAttributes } ) {
+export function resetDropShadow( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetDropShadowFilter( { unitone } )?.unitone
@@ -54,7 +54,7 @@ export function useIsDropShadowDisabled( { name } ) {
 }
 
 export function getDropShadowEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Drop shadow' );
@@ -240,7 +240,12 @@ function renderShadowToggle() {
 	};
 }
 
-export function DropShadowEdit( { name, label, unitone, setAttributes } ) {
+export function DropShadowEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const [ settings ] = useSettings( 'shadow' );
 
 	const defaultValue = useSelect( ( select ) => {

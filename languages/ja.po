@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-12-07T05:22:28+00:00\n"
-"PO-Revision-Date: 2024-12-07 14:23+0900\n"
+"POT-Creation-Date: 2024-12-08T13:39:58+00:00\n"
+"PO-Revision-Date: 2024-12-08 22:42+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2689,12 +2689,27 @@ msgid "Use %1$s to indicate a line break at an arbitrary position."
 msgstr "任意の位置で改行を指示したい場合は %1$s を使用してください。"
 
 #: dist/js/editor/editor.js:10
+msgid ""
+"When enabled, the font size and line-height will change fluidly with screen "
+"width."
+msgstr ""
+"有効にすると、文字サイズと line-height が画面幅に応じて流動的に変化します。"
+
+#: dist/js/editor/editor.js:10
 msgid "Fluid typography"
 msgstr "流体タイポグラフィ"
 
 #: dist/js/editor/editor.js:10
 msgid "Half leading"
 msgstr "ハーフレディング"
+
+#: dist/js/editor/editor.js:10
+msgid ""
+"When custom font sizes are enabled, it is recommended that half-reading be "
+"specified since line heights are not automatically optimized."
+msgstr ""
+"カスタムフォントサイズが有効な場合、line-height が自動的に最適化されないた"
+"め、ハーフレディングを指定することを推奨します。"
 
 #: dist/js/editor/editor.js:10
 msgid "Auto line breaks"

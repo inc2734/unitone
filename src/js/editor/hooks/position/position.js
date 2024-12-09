@@ -42,13 +42,10 @@ import {
 
 export { usePositionBlockProps };
 
-function PositionPanelPure( { clientId, name, unitone, setAttributes } ) {
-	const props = {
-		clientId,
-		name,
-		unitone,
-		setAttributes,
-	};
+function PositionPanelPure( props ) {
+	const { name, attributes, setAttributes, clientId } = props;
+
+	const { unitone } = attributes;
 
 	const resetAll = useCallback( ( filters ) => {
 		const newUnitone = filters.reduce(

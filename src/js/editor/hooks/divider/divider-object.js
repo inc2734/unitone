@@ -70,7 +70,7 @@ const getDivider = (
 	return divider;
 };
 
-export function hasDividerValue( { name, unitone } ) {
+export function hasDividerValue( { name, attributes: { unitone } } ) {
 	const blockType = wp.data.select( blocksStore ).getBlockType( name );
 	const defaultDivider = blockType?.attributes?.unitone?.default?.divider;
 	const defaultDividerColor =
@@ -96,7 +96,7 @@ export function resetDividerFilter( attributes ) {
 	};
 }
 
-export function resetDivider( { unitone, setAttributes } ) {
+export function resetDivider( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject( resetDividerFilter( { unitone } )?.unitone ),
 	} );
@@ -106,13 +106,20 @@ export function useIsDividerDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.divider' );
 }
 
-export function getDividerEditLabel( { __unstableUnitoneSupports } ) {
+export function getDividerEditLabel( {
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		__unstableUnitoneSupports?.divider?.label || __( 'Divider', 'unitone' )
 	);
 }
 
-export function DividerEdit( { name, label, unitone, setAttributes } ) {
+export function DividerEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const { defaultDivider, defaultDividerColor } = useSelect(
 		( select ) => {
 			const blockType = select( blocksStore ).getBlockType( name );

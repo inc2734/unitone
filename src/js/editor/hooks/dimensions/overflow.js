@@ -32,7 +32,7 @@ const overflowOptions = [
 	},
 ];
 
-export function hasOverflowValue( { name, unitone } ) {
+export function hasOverflowValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.overflow;
 
@@ -51,7 +51,7 @@ export function resetOverflowFilter( attributes ) {
 	};
 }
 
-export function resetOverflow( { unitone, setAttributes } ) {
+export function resetOverflow( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetOverflowFilter( { unitone } )?.unitone
@@ -64,7 +64,7 @@ export function useIsOverflowDisabled( { name } ) {
 }
 
 export function getOverflowEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Overflow', 'unitone' );
@@ -83,7 +83,12 @@ export function getOverflowEditLabel( {
 	);
 }
 
-export function OverflowEdit( { label, name, unitone, setAttributes } ) {
+export function OverflowEdit( {
+	label,
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.overflow;

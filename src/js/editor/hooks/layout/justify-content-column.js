@@ -44,7 +44,10 @@ const justifyContentColumnOptions = [
 	},
 ];
 
-export function hasJustifyContentColumnValue( { name, unitone } ) {
+export function hasJustifyContentColumnValue( {
+	name,
+	attributes: { unitone },
+} ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.justifyContent;
 
@@ -64,7 +67,10 @@ export function resetJustifyContentColumnFilter( attributes ) {
 	};
 }
 
-export function resetJustifyContentColumn( { unitone, setAttributes } ) {
+export function resetJustifyContentColumn( {
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetJustifyContentColumnFilter( { unitone } )?.unitone
@@ -78,7 +84,7 @@ export function useIsJustifyContentColumnDisabled( { name } ) {
 
 export function JustifyContentColumnToolbar( {
 	name,
-	unitone,
+	attributes: { unitone },
 	setAttributes,
 } ) {
 	const defaultValue = useSelect( ( select ) => {
@@ -111,7 +117,7 @@ export function JustifyContentColumnToolbar( {
 }
 
 export function getJustifyContentColumnEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Align items', 'unitone' );
@@ -133,7 +139,7 @@ export function getJustifyContentColumnEditLabel( {
 export function JustifyContentColumnEdit( {
 	name,
 	label,
-	unitone,
+	attributes: { unitone },
 	setAttributes,
 } ) {
 	const defaultValue = useSelect( ( select ) => {

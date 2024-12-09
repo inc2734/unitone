@@ -7,7 +7,7 @@ import { sprintf, __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
-export function hasAutoPhraseValue( { unitone } ) {
+export function hasAutoPhraseValue( { attributes: unitone } ) {
 	return unitone?.autoPhrase !== undefined;
 }
 
@@ -21,7 +21,7 @@ export function resetAutoPhraseFilter( attributes ) {
 	};
 }
 
-export function resetAutoPhrase( { unitone, setAttributes } ) {
+export function resetAutoPhrase( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetAutoPhraseFilter( { unitone } )?.unitone
@@ -33,7 +33,11 @@ export function useIsAutoPhraseDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.autoPhrase' );
 }
 
-export function AutoPhraseEdit( { label, unitone, setAttributes } ) {
+export function AutoPhraseEdit( {
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	return (
 		<ToggleControl
 			__nextHasNoMarginBottom

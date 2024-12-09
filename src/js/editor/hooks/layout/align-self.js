@@ -72,8 +72,7 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 
 export function hasAlignSelfValue( {
 	name,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 } ) {
 	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
@@ -94,7 +93,7 @@ export function resetAlignSelfFilter( attributes ) {
 	};
 }
 
-export function resetAlignSelf( { unitone, setAttributes } ) {
+export function resetAlignSelf( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetAlignSelfFilter( { unitone } )?.unitone
@@ -111,8 +110,7 @@ export function useIsAlignSelfDisabled( { name, __unstableUnitoneSupports } ) {
 
 export function AlignSelfToolbar( {
 	name,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
 	const deviceType = useDeviceType();
@@ -205,7 +203,7 @@ export function AlignSelfToolbar( {
 }
 
 export function getAlignSelfEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Align self', 'unitone' );
@@ -227,8 +225,7 @@ export function getAlignSelfEditLabel( {
 export function AlignSelfEdit( {
 	label,
 	name,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
 	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );

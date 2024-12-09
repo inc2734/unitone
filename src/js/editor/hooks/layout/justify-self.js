@@ -78,8 +78,7 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 
 export function hasJustifySelfValue( {
 	name,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 } ) {
 	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
@@ -100,7 +99,7 @@ export function resetJustifySelfFilter( attributes ) {
 	};
 }
 
-export function resetJustifySelf( { unitone, setAttributes } ) {
+export function resetJustifySelf( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetJustifySelfFilter( { unitone } )?.unitone
@@ -120,8 +119,7 @@ export function useIsJustifySelfDisabled( {
 
 export function JustifySelfToolbar( {
 	name,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
 	const deviceType = useDeviceType();
@@ -216,7 +214,7 @@ export function JustifySelfToolbar( {
 }
 
 export function getJustifySelfEditLabel( {
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Justify self', 'unitone' );
@@ -238,8 +236,7 @@ export function getJustifySelfEditLabel( {
 export function JustifySelfEdit( {
 	label,
 	name,
-	unitone,
-	__unstableUnitoneSupports,
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
 	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );

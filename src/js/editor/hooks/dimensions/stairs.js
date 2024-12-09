@@ -18,14 +18,14 @@ import { __ } from '@wordpress/i18n';
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject } from '../utils';
 
-export function hasStairsValue( { name, unitone } ) {
+export function hasStairsValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.stairs;
 
 	return defaultValue !== unitone?.stairs && undefined !== unitone?.stairs;
 }
 
-export function hasStairsUpValue( { name, unitone } ) {
+export function hasStairsUpValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.stairsUp;
 
@@ -44,7 +44,7 @@ export function resetStairsFilter( attributes ) {
 	};
 }
 
-export function resetStairs( { unitone, setAttributes } ) {
+export function resetStairs( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject( resetStairsFilter( { unitone } )?.unitone ),
 	} );
@@ -60,7 +60,7 @@ export function resetStairsUpFilter( attributes ) {
 	};
 }
 
-export function resetStairsUp( { unitone, setAttributes } ) {
+export function resetStairsUp( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetStairsUpFilter( { unitone } )?.unitone
@@ -81,14 +81,23 @@ export function useIsStairsDisabled( { name } ) {
 	return true;
 }
 
-export function getStairsEditLabel( { __unstableUnitoneSupports } ) {
+export function getStairsEditLabel( {
+	attributes: {
+		unitone: { __unstableUnitoneSupports },
+	},
+} ) {
 	return (
 		__unstableUnitoneSupports?.stairs?.label ||
 		__( 'Stairs grid', 'unitone' )
 	);
 }
 
-export function StairsEdit( { name, label, unitone, setAttributes } ) {
+export function StairsEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.stairs;
@@ -126,7 +135,12 @@ export function getStairsUpEditLabel( { __unstableUnitoneSupports } ) {
 	);
 }
 
-export function StairsUpEdit( { name, label, unitone, setAttributes } ) {
+export function StairsUpEdit( {
+	name,
+	label,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.stairsUp;

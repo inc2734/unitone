@@ -21,7 +21,7 @@ import { __ } from '@wordpress/i18n';
 import { parallax as iconParallax } from './icons';
 import { cleanEmptyObject } from '../utils';
 
-export function hasParallaxValue( { name, unitone } ) {
+export function hasParallaxValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.parallax;
 
@@ -40,7 +40,7 @@ export function resetParallaxFilter( attributes ) {
 	};
 }
 
-export function resetParallax( { unitone, setAttributes } ) {
+export function resetParallax( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
 			resetParallaxFilter( { unitone } )?.unitone
@@ -114,7 +114,11 @@ function ParallaxPopover( { speed, onChangeSpeed } ) {
 	);
 }
 
-export function ParallaxEdit( { name, unitone, setAttributes } ) {
+export function ParallaxEdit( {
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.parallax;

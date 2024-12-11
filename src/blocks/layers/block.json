@@ -49,7 +49,6 @@
 		},
 		"typography": {
 			"fontSize": true,
-			"lineHeight": true,
 			"__experimentalFontFamily": true,
 			"__experimentalTextDecoration": true,
 			"__experimentalFontStyle": true,
@@ -64,7 +63,7 @@
 			"gap": true,
 			"minHeight": true,
 			"fluidTypography": true,
-			"lineHeight": true,
+			"halfLeading": true,
 			"scrollAnimation": true
 		}
 	},

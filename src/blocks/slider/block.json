@@ -106,7 +106,6 @@
 		},
 		"typography": {
 			"fontSize": true,
-			"lineHeight": true,
 			"__experimentalFontFamily": true,
 			"__experimentalTextDecoration": true,
 			"__experimentalFontStyle": true,
@@ -120,7 +119,7 @@
 		"unitone": {
 			"gap": true,
 			"fluidTypography": true,
-			"lineHeight": true
+			"halfLeading": true
 		}
 	},
 	"category": "unitone/component",

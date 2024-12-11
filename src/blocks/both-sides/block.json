@@ -31,7 +31,6 @@
 		},
 		"typography": {
 			"fontSize": true,
-			"lineHeight": true,
 			"__experimentalFontFamily": true,
 			"__experimentalTextDecoration": true,
 			"__experimentalFontStyle": true,
@@ -48,7 +47,7 @@
 			},
 			"alignItems": true,
 			"fluidTypography": true,
-			"lineHeight": true
+			"halfLeading": true
 		}
 	},
 	"example": {

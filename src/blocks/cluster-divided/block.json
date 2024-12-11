@@ -45,7 +45,6 @@
 		},
 		"typography": {
 			"fontSize": true,
-			"lineHeight": true,
 			"__experimentalFontFamily": true,
 			"__experimentalTextDecoration": true,
 			"__experimentalFontStyle": true,
@@ -65,7 +64,7 @@
 			"dividerType": [ "stripe", "slash", "bordered" ],
 			"divider": true,
 			"fluidTypography": true,
-			"lineHeight": true
+			"halfLeading": true
 		}
 	},
 	"example": {

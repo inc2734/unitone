@@ -134,7 +134,6 @@
 		},
 		"typography": {
 			"fontSize": true,
-			"lineHeight": true,
 			"__experimentalFontFamily": true,
 			"__experimentalTextDecoration": true,
 			"__experimentalFontStyle": true,
@@ -150,7 +149,7 @@
 				"splitOnAxis": true
 			},
 			"fluidTypography": true,
-			"lineHeight": true,
+			"halfLeading": true,
 			"dividerType": [ "stripe", "underline", "bordered" ],
 			"divider": true
 		}

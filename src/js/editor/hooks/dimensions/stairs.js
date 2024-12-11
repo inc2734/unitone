@@ -82,9 +82,7 @@ export function useIsStairsDisabled( { name } ) {
 }
 
 export function getStairsEditLabel( {
-	attributes: {
-		unitone: { __unstableUnitoneSupports },
-	},
+	attributes: { __unstableUnitoneSupports },
 } ) {
 	return (
 		__unstableUnitoneSupports?.stairs?.label ||

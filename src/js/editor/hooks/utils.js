@@ -54,7 +54,6 @@ export function isString( value ) {
  * Converts a global style into a custom value.
  *
  * @param {string} value Value to convert.
- *
  * @return {string | undefined} CSS var string for given global style value.
  */
 export function getGlobalStyleCssVar( value ) {
@@ -76,7 +75,6 @@ export function getGlobalStyleCssVar( value ) {
  * Returns value as-is if no match is found.
  *
  * @param {string} value Value to convert
- *
  * @return {string} The global style value if it can be found.
  */
 export function getGlobalStyleValueFromCustomValue( value ) {
@@ -96,7 +94,6 @@ export function getGlobalStyleValueFromCustomValue( value ) {
  * Checks is given value is a global style.
  *
  * @param {string} value Value to check
- *
  * @return {boolean} Return true if value is string in format var:style|global|.
  */
 export function isValueGlobalStyle( value ) {
@@ -105,6 +102,24 @@ export function isValueGlobalStyle( value ) {
 	}
 
 	return value.includes( 'var:style|global|' );
+}
+
+/**
+ * Creates a throttled function that only invokes func at most once per every wait milliseconds.
+ *
+ * @param {Function} fn    The function to throttle.
+ * @param {number}   delay The number of milliseconds to throttle invocations to.
+ * @return {Function} Returns the new throttled function.
+ */
+export function throttle( fn, delay ) {
+	let runTime = Date.now() - delay;
+
+	return ( ...args ) => {
+		if ( runTime + delay < Date.now() ) {
+			runTime = Date.now();
+			fn.apply( this, args );
+		}
+	};
 }
 
 /**
@@ -158,6 +173,11 @@ const GridCells = memo(
 	}
 );
 
+/**
+ * Display grid visualizer.
+ *
+ * @return {JSX.Element}
+ */
 export const GridVisualizer = forwardRef( ( { attributes }, ref ) => {
 	const [ gridInfo, setGridInfo ] = useState( {} );
 

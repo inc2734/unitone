@@ -201,52 +201,52 @@
 			"fontSizes": [
 				{
 					"slug": "unitone-xs",
-					"size": "0.8rem",
+					"size": "var(--wp--preset--font-size--unitone-xs)",
 					"name": "XS"
 				},
 				{
 					"slug": "unitone-s",
-					"size": "0.88rem",
+					"size": "var(--wp--preset--font-size--unitone-s)",
 					"name": "S"
 				},
 				{
 					"slug": "unitone-m",
-					"size": "1rem",
+					"size": "var(--wp--preset--font-size--unitone-m)",
 					"name": "M"
 				},
 				{
 					"slug": "unitone-l",
-					"size": "1.14rem",
+					"size": "var(--wp--preset--font-size--unitone-l)",
 					"name": "L"
 				},
 				{
 					"slug": "unitone-xl",
-					"size": "1.33rem",
+					"size": "var(--wp--preset--font-size--unitone-xl)",
 					"name": "XL"
 				},
 				{
 					"slug": "unitone-2xl",
-					"size": "1.6rem",
+					"size": "var(--wp--preset--font-size--unitone-2-xl)",
 					"name": "2XL"
 				},
 				{
 					"slug": "unitone-3xl",
-					"size": "2rem",
+					"size": "var(--wp--preset--font-size--unitone-3-xl)",
 					"name": "3XL"
 				},
 				{
 					"slug": "unitone-4xl",
-					"size": "2.66rem",
+					"size": "var(--wp--preset--font-size--unitone-4-xl)",
 					"name": "4XL"
 				},
 				{
 					"slug": "unitone-5xl",
-					"size": "4rem",
+					"size": "var(--wp--preset--font-size--unitone-5-xl)",
 					"name": "5XL"
 				},
 				{
 					"slug": "unitone-6xl",
-					"size": "8rem",
+					"size": "var(--wp--preset--font-size--unitone-6-xl)",
 					"name": "6XL"
 				}
 			]

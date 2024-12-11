@@ -260,13 +260,14 @@ add_filter(
 			if ( ! is_null( $value ) && '' !== $value ) {
 				$unitone_layout = $p->get_attribute( 'data-unitone-layout' );
 
-				if ( is_bool( $value ) ) {
+				$attribute = false;
+				if ( true === $value ) {
 					$attribute = $name;
 				} elseif ( ! is_array( $value ) ) {
 					$attribute = $name . ':' . $value;
 				}
 
-				if ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) {
+				if ( $attribute && ( ! $unitone_layout || false === strpos( $unitone_layout, $attribute ) ) ) {
 					$p->set_attribute( 'data-unitone-layout', trim( $unitone_layout . ' ' . $attribute ) );
 				}
 			}

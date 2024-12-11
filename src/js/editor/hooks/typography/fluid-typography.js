@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
+import { useMemo } from '@wordpress/element';
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -32,22 +32,38 @@ export function resetFluidTypography( {
 	} );
 }
 
-export function useIsFluidTypographyDisabled( { name, fontSize } ) {
-	return (
-		null != fontSize || ! hasBlockSupport( name, 'unitone.fluidTypography' )
-	);
+export function useIsFluidTypographyDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.fluidTypography' );
 }
 
 export function FluidTypographyEdit( { label, attributes, setAttributes } ) {
+	const fontSizeStatus = getFontSizeStatus(
+		attributes?.style?.typography?.fontSize
+	);
+
+	let help = __(
+		'When enabled, font size and line-height will change fluidly with screen width.',
+		'unitone'
+	);
+	if ( fontSizeStatus.fluid ) {
+		help = __(
+			'When enabled, line-height will change fluidly with screen width.',
+			'unitone'
+		);
+	} else if ( fontSizeStatus.fixed ) {
+		help = __(
+			"Custom font size isn't fluid and can't be enabled.",
+			'unitone'
+		);
+	}
+
 	return (
 		<ToggleControl
 			__nextHasNoMarginBottom
 			label={ label }
-			help={ __(
-				'When enabled, the font size and line-height will change fluidly with screen width.',
-				'unitone'
-			) }
-			checked={ !! attributes?.unitone?.fluidTypography }
+			help={ help }
+			disabled={ fontSizeStatus.fixed }
+			checked={ attributes?.unitone?.fluidTypography }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...attributes?.unitone,
@@ -80,6 +96,7 @@ function useBlockProps( extraProps, blockType, attributes ) {
 		blockType,
 		extraProps?.[ 'data-unitone-layout' ],
 		attributes?.unitone?.fluidTypography,
+		attributes?.style?.typography?.fontSize,
 	] );
 
 	return {
@@ -92,10 +109,13 @@ export function useFluidTypographyBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
 	const newFluidTypographyProp = useBlockProps( wrapperProps, name, {
+		style: {
+			typography: {
+				fontSize: attributes?.style?.typography?.fontSize,
+			},
+		},
 		unitone: {
-			fluidTypography:
-				null == attributes?.style?.typography?.fontSize &&
-				attributes?.unitone?.fluidTypography,
+			fluidTypography: attributes?.unitone?.fluidTypography,
 		},
 	} );
 
@@ -106,4 +126,16 @@ export function useFluidTypographyBlockProps( settings ) {
 			...newFluidTypographyProp,
 		},
 	};
+}
+
+export function getFontSizeStatus( customFontSize ) {
+	const fluidFontSizeUnits = [ 'vw', 'vh' ];
+
+	const enabled = null != customFontSize;
+	const fluid = fluidFontSizeUnits.some( ( unit ) =>
+		customFontSize?.match( new RegExp( `${ unit }$` ) )
+	);
+	const fixed = enabled && ! fluid;
+
+	return { enabled, fluid, fixed };
 }

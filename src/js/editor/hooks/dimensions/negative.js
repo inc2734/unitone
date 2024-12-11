@@ -34,9 +34,7 @@ export function useIsNegativeDisabled( { name } ) {
 }
 
 export function getNegativeEditLabel( {
-	attributes: {
-		unitone: { __unstableUnitoneSupports },
-	},
+	attributes: { __unstableUnitoneSupports },
 } ) {
 	return (
 		__unstableUnitoneSupports?.negative?.label ||

@@ -38,6 +38,8 @@ import {
 	useHalfLeadingBlockProps,
 } from './half-leading';
 
+import './fluid-font-size-magnification';
+
 export {
 	useAutoPhraseBlockProps,
 	useFluidTypographyBlockProps,
@@ -69,10 +71,7 @@ function TypographyPanelPure( props ) {
 	}, [] );
 
 	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( { name } );
-	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( {
-		name,
-		fontSize: attributes?.style?.typography?.fontSize,
-	} );
+	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( { name } );
 	const isHalfLeadingDisabled = useIsHalfLeadingDisabled( { name } );
 
 	if (
@@ -120,9 +119,10 @@ function TypographyPanelPure( props ) {
 							{ ...props }
 							label={ __( 'Half leading', 'unitone' ) }
 							help={
+								! attributes?.unitone?.fluidTypography &&
 								null != attributes?.style?.typography?.fontSize
 									? __(
-											'When custom font sizes are enabled, it is recommended that half-reading be specified since line heights are not automatically optimized.',
+											"If custom font sizes are enabled and fluid typography isn't enabled, it is recommended that half-reading be specified.",
 											'unitone'
 									  )
 									: undefined

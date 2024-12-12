@@ -50,6 +50,17 @@
 				"fontSize": true
 			}
 		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": false,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"style": true,
+				"width": true
+			}
+		},
 		"unitone": {
 			"gap": true,
 			"gutters": true,

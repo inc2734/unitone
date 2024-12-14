@@ -70,6 +70,10 @@ export function SectionDividerBottomTypeEdit( {
 					label: __( 'Wave', 'unitone' ),
 					value: 'wave',
 				},
+				{
+					label: __( 'Scattering Wave', 'unitone' ),
+					value: 'scattering-wave',
+				},
 			] }
 			value={
 				unitone?.sectionDivider?.bottom?.type ?? defaultValue ?? ''

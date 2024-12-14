@@ -70,6 +70,10 @@ export function SectionDividerTopTypeEdit( {
 					label: __( 'Wave', 'unitone' ),
 					value: 'wave',
 				},
+				{
+					label: __( 'Scattering Wave', 'unitone' ),
+					value: 'scattering-wave',
+				},
 			] }
 			value={ unitone?.sectionDivider?.top?.type ?? defaultValue ?? '' }
 			onChange={ ( newAttribute ) => {

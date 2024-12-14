@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-12-13T15:46:07+00:00\n"
-"PO-Revision-Date: 2024-12-14 00:46+0900\n"
+"POT-Creation-Date: 2024-12-14T07:48:18+00:00\n"
+"PO-Revision-Date: 2024-12-14 16:48+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2706,6 +2706,10 @@ msgstr "三角"
 #: dist/js/editor/editor.js:10
 msgid "Wave"
 msgstr "波"
+
+#: dist/js/editor/editor.js:10
+msgid "Scattering Wave"
+msgstr "散乱波"
 
 #: dist/js/editor/editor.js:10
 msgid "Section divider (Top)"

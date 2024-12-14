@@ -56,10 +56,19 @@ export function SectionDividerBottomTypeEdit( {
 			?.default?.sectionDivider?.bottom?.type;
 	}, [] );
 
+	const value = unitone?.sectionDivider?.bottom?.type ?? defaultValue ?? '';
+
 	return (
 		<SelectControl
 			__nextHasNoMarginBottom
 			label={ label }
+			help={
+				!! value &&
+				__(
+					'Background color or background image must be set.',
+					'unitone'
+				)
+			}
 			options={ [
 				{ label: '', value: '' },
 				{
@@ -75,9 +84,7 @@ export function SectionDividerBottomTypeEdit( {
 					value: 'scattering-wave',
 				},
 			] }
-			value={
-				unitone?.sectionDivider?.bottom?.type ?? defaultValue ?? ''
-			}
+			value={ value }
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,

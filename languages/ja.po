@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-12-14T07:48:18+00:00\n"
-"PO-Revision-Date: 2024-12-14 16:48+0900\n"
+"POT-Creation-Date: 2024-12-14T08:07:53+00:00\n"
+"PO-Revision-Date: 2024-12-14 17:08+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2698,6 +2698,10 @@ msgstr ""
 #: dist/js/editor/editor.js:10
 msgid "Auto line breaks"
 msgstr "自動改行"
+
+#: dist/js/editor/editor.js:10
+msgid "Background color or background image must be set."
+msgstr "背景色または背景画像を設定する必要があります。"
 
 #: dist/js/editor/editor.js:10
 msgid "Triangle"

@@ -44,3 +44,7 @@
 		--unitone--padding: var(--unitone--s#{ $i }) !important;
 	}
 }
+
+[data-unitone-layout*="-section-divider-"] {
+	--unitone--section-divider-max-height: var(--unitone--padding);
+}

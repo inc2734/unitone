@@ -6,7 +6,6 @@ import clsx from 'clsx';
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
@@ -95,44 +94,8 @@ export function PaddingEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.padding' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.padding ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		// Deprecation.
-		if ( !! extraProps?.[ 'data-layout' ] ) {
-			extraProps[ 'data-layout' ] = clsx(
-				extraProps[ 'data-layout' ],
-				`-padding:${ attributes.unitone?.padding }`
-			);
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-padding:${ attributes.unitone?.padding }`
-		);
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		extraProps?.[ 'data-layout' ],
-		attributes?.unitone?.padding,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function usePaddingBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -142,17 +105,24 @@ export function usePaddingBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newPaddingProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			padding: attributes?.unitone?.padding ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.padding' ) ) {
+		return settings;
+	}
+
+	const newPadding = attributes?.unitone?.padding ?? defaultValue;
+
+	if ( null == newPadding ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newPaddingProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				`-padding:${ newPadding }`
+			),
 		},
 	};
 }

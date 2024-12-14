@@ -13,7 +13,6 @@ import {
 
 import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
@@ -395,59 +394,41 @@ export function AlignSelfEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.alignSelf' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.alignSelf ) {
-				return extraProps?.[ 'data-unitone-layout' ];
-			}
-		}
-
-		if ( null == attributes?.unitone?.alignSelf ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx( extraProps?.[ 'data-unitone-layout' ], {
-			[ `-align-self:${ attributes.unitone?.alignSelf }` ]:
-				typeof attributes.unitone?.alignSelf === 'string',
-			[ `-align-self:${ attributes.unitone?.alignSelf.lg }` ]:
-				null != attributes.unitone?.alignSelf?.lg,
-			[ `-align-self:md:${ attributes.unitone?.alignSelf?.md }` ]:
-				null != attributes.unitone?.alignSelf?.md,
-			[ `-align-self:sm:${ attributes.unitone?.alignSelf?.sm }` ]:
-				null != attributes.unitone?.alignSelf?.sm,
-		} );
-	}, [
-		blockType,
-		attributes?.__unstableUnitoneSupports?.alignSelf,
-		extraProps?.[ 'data-unitone-layout' ],
-		JSON.stringify( attributes?.unitone?.alignSelf ),
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useAlignSelfBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useDefaultValue( name, __unstableUnitoneSupports );
 
-	const newAlignSelfProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			alignSelf: attributes?.unitone?.alignSelf ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.alignSelf' ) ) {
+		if ( ! attributes?.__unstableUnitoneSupports?.alignSelf ) {
+			return settings;
+		}
+	}
+
+	const newAlignSelf = attributes?.unitone?.alignSelf ?? defaultValue;
+
+	if ( null == newAlignSelf ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newAlignSelfProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				{
+					[ `-align-self:${ newAlignSelf }` ]:
+						typeof newAlignSelf === 'string',
+					[ `-align-self:${ newAlignSelf.lg }` ]:
+						null != newAlignSelf?.lg,
+					[ `-align-self:md:${ newAlignSelf?.md }` ]:
+						null != newAlignSelf?.md,
+					[ `-align-self:sm:${ newAlignSelf?.sm }` ]:
+						null != newAlignSelf?.sm,
+				}
+			),
 		},
 	};
 }

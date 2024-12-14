@@ -10,7 +10,7 @@ import {
 } from '@wordpress/components';
 
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { memo, useCallback } from '@wordpress/element';
+import { memo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -204,7 +204,7 @@ function LayoutPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 	const { unitone, __unstableUnitoneSupports } = attributes;
 
-	const resetAll = useCallback( ( filters ) => {
+	const resetAll = ( filters ) => {
 		const newUnitone = filters.reduce(
 			( accumulator, filter ) =>
 				filter( { unitone: accumulator } )?.unitone,
@@ -214,7 +214,7 @@ function LayoutPanelPure( props ) {
 		setAttributes( {
 			unitone: cleanEmptyObject( newUnitone ),
 		} );
-	}, [] );
+	};
 
 	const isJustifyContentDisabled = useIsJustifyContentDisabled( { name } );
 	const isJustifyContentColumnDisabled = useIsJustifyContentColumnDisabled( {

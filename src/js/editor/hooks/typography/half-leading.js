@@ -1,6 +1,6 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
-import { useMemo, useState, useEffect } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 
 import apiFetch from '@wordpress/api-fetch';
@@ -63,27 +63,31 @@ export function HalfLeadingEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
+export function useHalfLeadingBlockProps( settings ) {
+	const { attributes, name } = settings;
+
 	const [ baseHalfLeading, setBaseHalfLeading ] = useState();
 	const [ baseMinHalfLeading, setBaseMinHalfLeading ] = useState();
 
+	const newHalfLeading = attributes?.unitone?.halfLeading;
+
 	useEffect( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.halfLeading' ) ) {
+		if ( ! hasBlockSupport( name, 'unitone.halfLeading' ) ) {
 			return;
 		}
 
-		if ( null != attributes?.unitone?.halfLeading ) {
+		if ( null != newHalfLeading ) {
 			( async () => {
 				await apiFetch( {
 					path: addQueryArgs( '/unitone/v1/settings', {
 						keys: [ 'half-leading', 'min-half-leading' ],
 					} ),
-				} ).then( ( settings ) => {
+				} ).then( ( themeSettings ) => {
 					setBaseHalfLeading(
-						parseFloat( settings?.[ 'half-leading' ] )
+						parseFloat( themeSettings?.[ 'half-leading' ] )
 					);
 					setBaseMinHalfLeading(
-						parseFloat( settings?.[ 'min-half-leading' ] )
+						parseFloat( themeSettings?.[ 'min-half-leading' ] )
 					);
 				} );
 			} )();
@@ -91,9 +95,16 @@ function useBlockProps( extraProps, blockType, attributes ) {
 			setBaseHalfLeading( undefined );
 			setBaseMinHalfLeading( undefined );
 		}
-	}, [ attributes?.unitone?.halfLeading ] );
+	}, [ newHalfLeading ] );
 
-	const newHalfLeading = attributes?.unitone?.halfLeading;
+	if ( ! hasBlockSupport( name, 'unitone.halfLeading' ) ) {
+		return settings;
+	}
+
+	if ( undefined === newHalfLeading ) {
+		return settings;
+	}
+
 	const diff =
 		null != newHalfLeading &&
 		null != baseHalfLeading &&
@@ -102,6 +113,7 @@ function useBlockProps( extraProps, blockType, attributes ) {
 			newHalfLeading < baseMinHalfLeading )
 			? parseFloat( ( newHalfLeading - baseHalfLeading ).toFixed( 2 ) )
 			: undefined;
+
 	let newMinHalfLeading;
 	if ( null != baseMinHalfLeading && null != diff ) {
 		newMinHalfLeading = parseFloat(
@@ -112,47 +124,15 @@ function useBlockProps( extraProps, blockType, attributes ) {
 		}
 	}
 
-	const style = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.halfLeading' ) ) {
-			return extraProps?.style;
-		}
-
-		if ( undefined === attributes?.unitone?.halfLeading ) {
-			return extraProps?.style;
-		}
-
-		return {
-			...extraProps?.style,
-			'--unitone--half-leading': attributes?.unitone?.halfLeading,
-			'--unitone--min-half-leading': newMinHalfLeading,
-		};
-	}, [
-		blockType,
-		extraProps?.style,
-		attributes?.unitone?.halfLeading,
-		newMinHalfLeading,
-	] );
-
-	return {
-		...extraProps,
-		style,
-	};
-}
-
-export function useHalfLeadingBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
-
-	const newHalfLeadingProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			halfLeading: attributes?.unitone?.halfLeading,
-		},
-	} );
-
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newHalfLeadingProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--half-leading': newHalfLeading,
+				'--unitone--min-half-leading': newMinHalfLeading,
+			},
 		},
 	};
 }

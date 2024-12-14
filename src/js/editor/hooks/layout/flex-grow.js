@@ -1,8 +1,8 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
 import { cleanEmptyObject } from '../utils';
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
@@ -120,37 +120,8 @@ export function FlexGrowEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const style = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.flexGrow' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.flexGrow ) {
-				return extraProps?.style;
-			}
-		}
-
-		if ( null == attributes?.unitone?.flexGrow ) {
-			return extraProps?.style;
-		}
-
-		return {
-			...extraProps?.style,
-			'--unitone--flex-grow': attributes?.unitone?.flexGrow,
-		};
-	}, [
-		blockType,
-		extraProps?.style,
-		attributes?.__unstableUnitoneSupports?.flexGrow,
-		attributes?.unitone?.flexGrow,
-	] );
-
-	return {
-		...extraProps,
-		style,
-	};
-}
-
 export function useFlexGrowBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useDefaultValue( {
@@ -158,18 +129,26 @@ export function useFlexGrowBlockProps( settings ) {
 		__unstableUnitoneSupports,
 	} );
 
-	const newFlexGrowProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			flexGrow: attributes?.unitone?.flexGrow ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.flexGrow' ) ) {
+		if ( ! attributes?.__unstableUnitoneSupports?.flexGrow ) {
+			return settings;
+		}
+	}
+
+	const newFlexGrow = attributes?.unitone?.flexGrow ?? defaultValue;
+
+	if ( null == newFlexGrow ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newFlexGrowProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--flex-grow': newFlexGrow,
+			},
 		},
 	};
 }

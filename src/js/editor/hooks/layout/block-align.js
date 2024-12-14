@@ -8,7 +8,6 @@ import {
 import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { justifyLeft, justifyCenter, justifyRight } from '@wordpress/icons';
 
@@ -156,44 +155,8 @@ export function BlockAlignEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.blockAlign' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.blockAlign ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		// Deprecation.
-		if ( !! extraProps?.[ 'data-layout' ] ) {
-			extraProps[ 'data-layout' ] = clsx(
-				extraProps[ 'data-layout' ],
-				`-align:${ attributes.unitone?.blockAlign }`
-			);
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-align:${ attributes.unitone?.blockAlign }`
-		);
-	}, [
-		blockType,
-		extraProps?.[ 'data-layout' ],
-		extraProps?.[ 'data-unitone-layout' ],
-		attributes.unitone?.blockAlign,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useBlockAlignBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -203,17 +166,24 @@ export function useBlockAlignBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newBlockAlignProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			blockAlign: attributes?.unitone?.blockAlign ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.blockAlign' ) ) {
+		return settings;
+	}
+
+	const newBlockAlign = attributes?.unitone?.blockAlign ?? defaultValue;
+
+	if ( null == newBlockAlign ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newBlockAlignProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				`-align:${ newBlockAlign }`
+			),
 		},
 	};
 }

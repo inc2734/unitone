@@ -12,7 +12,6 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
@@ -174,44 +173,14 @@ export function StairsUpEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.stairs' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if (
-			null == attributes?.unitone?.stairs &&
-			null == attributes?.unitone?.stairsUp
-		) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-stairs:${ attributes.unitone?.stairs }`,
-			`-stairs-up:${ attributes.unitone?.stairsUp }`
-		);
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		attributes?.unitone?.stairs,
-		attributes?.unitone?.stairsUp,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useStairsBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const { defaultStairs, defaultStairsUp } = useSelect(
 		( select ) => {
 			const blockTypeAttributes =
 				select( blocksStore ).getBlockType( name )?.attributes;
+
 			return {
 				defaultStairs: blockTypeAttributes?.unitone?.default?.stairs,
 				defaultStairsUp:
@@ -221,18 +190,28 @@ export function useStairsBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newStairsProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			stairs: attributes?.unitone?.stairs ?? defaultStairs,
-			stairsUp: attributes?.unitone?.stairsUp ?? defaultStairsUp,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.stairs' ) ) {
+		return settings;
+	}
+
+	const newStairs = {
+		stairs: attributes?.unitone?.stairs ?? defaultStairs,
+		stairsUp: attributes?.unitone?.stairsUp ?? defaultStairsUp,
+	};
+
+	if ( null == newStairs?.stairs && null == newStairs?.stairsUp ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newStairsProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				`-stairs:${ newStairs?.stairs }`,
+				`-stairs-up:${ newStairs?.stairsUp }`
+			),
 		},
 	};
 }

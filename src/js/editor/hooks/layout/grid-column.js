@@ -6,7 +6,6 @@ import {
 
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
@@ -230,48 +229,8 @@ export function GridColumnEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const style = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.gridColumn' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.gridColumn ) {
-				return extraProps?.style;
-			}
-		}
-
-		if ( null == attributes?.unitone?.gridColumn ) {
-			return extraProps?.style;
-		}
-
-		return {
-			...extraProps?.style,
-			'--unitone--grid-column':
-				typeof attributes.unitone?.gridColumn === 'string'
-					? attributes.unitone?.gridColumn || undefined
-					: attributes?.unitone?.gridColumn?.lg || undefined,
-			'--unitone--md-grid-column':
-				null != attributes?.unitone?.gridColumn?.md
-					? attributes?.unitone?.gridColumn?.md
-					: undefined,
-			'--unitone--sm-grid-column':
-				null != attributes.unitone?.gridColumn?.sm
-					? attributes?.unitone?.gridColumn?.sm
-					: undefined,
-		};
-	}, [
-		blockType,
-		attributes?.__unstableUnitoneSupports?.gridColumn,
-		extraProps?.style,
-		attributes?.unitone?.gridColumn,
-	] );
-
-	return {
-		...extraProps,
-		style,
-	};
-}
-
 export function useGridColumnBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useDefaultValue( {
@@ -279,18 +238,33 @@ export function useGridColumnBlockProps( settings ) {
 		__unstableUnitoneSupports,
 	} );
 
-	const newGridColumnProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			gridColumn: attributes?.unitone?.gridColumn ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.gridColumn' ) ) {
+		if ( ! attributes?.__unstableUnitoneSupports?.gridColumn ) {
+			return settings;
+		}
+	}
+
+	const newGridColumn = attributes?.unitone?.gridColumn ?? defaultValue;
+
+	if ( null == newGridColumn ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newGridColumnProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--grid-column':
+					typeof newGridColumn === 'string'
+						? newGridColumn || undefined
+						: newGridColumn?.lg || undefined,
+				'--unitone--md-grid-column':
+					null != newGridColumn?.md ? newGridColumn?.md : undefined,
+				'--unitone--sm-grid-column':
+					null != newGridColumn?.sm ? newGridColumn?.sm : undefined,
+			},
 		},
 	};
 }

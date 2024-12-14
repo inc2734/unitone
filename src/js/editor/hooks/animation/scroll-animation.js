@@ -15,7 +15,6 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { Icon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
@@ -576,94 +575,8 @@ export function ScrollAnimationEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const newExtraProps = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.scrollAnimation' ) ) {
-			return {
-				style: extraProps?.style,
-				'data-unitone-scroll-animation':
-					extraProps?.[ 'data-unitone-scroll-animation' ],
-			};
-		}
-
-		if ( null == attributes?.unitone?.scrollAnimation ) {
-			return {
-				style: extraProps?.style,
-				'data-unitone-scroll-animation':
-					extraProps?.[ 'data-unitone-scroll-animation' ],
-			};
-		}
-
-		const type = attributes.unitone?.scrollAnimation?.type;
-
-		if ( null == type ) {
-			return {
-				style: extraProps?.style,
-				'data-unitone-scroll-animation':
-					extraProps?.[ 'data-unitone-scroll-animation' ],
-			};
-		}
-
-		const speed = attributes.unitone?.scrollAnimation?.speed;
-		const delay = attributes.unitone?.scrollAnimation?.delay;
-		const easing = attributes.unitone?.scrollAnimation?.easing;
-
-		let initial = attributes.unitone?.scrollAnimation?.initial;
-		if ( null != initial ) {
-			if (
-				[
-					'fade-in-down',
-					'fade-in-up',
-					'fade-in-left',
-					'fade-in-right',
-					'shake-horizontal',
-					'shake-vertical',
-				].includes( type )
-			) {
-				initial = `${ initial }px`;
-			}
-		}
-
-		return {
-			style: {
-				...extraProps?.style,
-				'--unitone--animation-duration':
-					null != speed ? `${ speed }s` : undefined,
-				'--unitone--animation-delay':
-					null != delay ? `${ delay }s` : undefined,
-				'--unitone--animation-initial': initial ?? undefined,
-			},
-			'data-unitone-scroll-animation': clsx( type, {
-				[ `-animation-timing-function:${ easing }` ]: easing,
-			} ),
-		};
-	}, [
-		blockType,
-		extraProps?.style,
-		extraProps?.[ 'data-unitone-scroll-animation' ],
-		attributes?.unitone?.scrollAnimation?.type,
-		attributes?.unitone?.scrollAnimation?.speed,
-		attributes?.unitone?.scrollAnimation?.delay,
-		attributes?.unitone?.scrollAnimation?.easing,
-		attributes?.unitone?.scrollAnimation?.initial,
-	] );
-
-	return {
-		...extraProps,
-		style: newExtraProps?.style,
-		'data-unitone-scroll-animation': clsx(
-			newExtraProps?.[ 'data-unitone-scroll-animation' ],
-			{
-				'-fired':
-					!! newExtraProps?.[ 'data-unitone-scroll-animation' ] &&
-					attributes?.__unitoneStates?.scrollAnimationFired,
-			}
-		),
-	};
-}
-
 export function useScrollAnimationBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -673,23 +586,66 @@ export function useScrollAnimationBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newScrollAnimationProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			scrollAnimation: {
-				...defaultValue,
-				...attributes?.unitone?.scrollAnimation,
-			},
-		},
-		__unitoneStates: {
-			...attributes?.__unitoneStates,
-		},
+	if ( ! hasBlockSupport( name, 'unitone.scrollAnimation' ) ) {
+		return settings;
+	}
+
+	const newScrollAnimation = {
+		...defaultValue,
+		...attributes?.unitone?.scrollAnimation,
+	};
+
+	if ( null == newScrollAnimation ) {
+		return settings;
+	}
+
+	const type = newScrollAnimation?.type;
+
+	if ( null == type ) {
+		return settings;
+	}
+
+	const speed = newScrollAnimation?.speed;
+	const delay = newScrollAnimation?.delay;
+	const easing = newScrollAnimation?.easing;
+
+	let initial = newScrollAnimation?.initial;
+	if ( null != initial ) {
+		if (
+			[
+				'fade-in-down',
+				'fade-in-up',
+				'fade-in-left',
+				'fade-in-right',
+				'shake-horizontal',
+				'shake-vertical',
+			].includes( type )
+		) {
+			initial = `${ initial }px`;
+		}
+	}
+
+	const dataScrollAnimation = clsx( type, {
+		[ `-animation-timing-function:${ easing }` ]: easing,
 	} );
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newScrollAnimationProp,
+			'data-unitone-scroll-animation': clsx( dataScrollAnimation, {
+				'-fired':
+					!! dataScrollAnimation &&
+					attributes?.__unitoneStates?.scrollAnimationFired,
+			} ),
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--animation-duration':
+					null != speed ? `${ speed }s` : undefined,
+				'--unitone--animation-delay':
+					null != delay ? `${ delay }s` : undefined,
+				'--unitone--animation-initial': initial ?? undefined,
+			},
 		},
 	};
 }

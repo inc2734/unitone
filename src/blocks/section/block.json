@@ -17,7 +17,19 @@
 				"position": {
 					"position": "relative"
 				},
-				"overflow": "visible"
+				"overflow": "visible",
+				"sectionDivider": {
+					"top": {
+						"level": 25,
+						"size": 50,
+						"x": 50
+					},
+					"bottom": {
+						"level": 25,
+						"size": 50,
+						"x": 50
+					}
+				}
 			}
 		},
 		"templateLock": {
@@ -32,6 +44,10 @@
 		"className": false,
 		"anchor": true,
 		"align": [ "wide", "full" ],
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true
+		},
 		"color": {
 			"background": true,
 			"link": true,
@@ -67,6 +83,7 @@
 			"maxWidth": true,
 			"padding": true,
 			"overflow": true,
+			"sectionDivider": true,
 			"fluidTypography": true,
 			"halfLeading": true,
 			"position": true,

@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
 import { cleanEmptyObject } from '../utils';
 
 const autoRepeatOptions = [
@@ -100,34 +100,8 @@ export function AutoRepeatEdit( { name, label, unitone, setAttributes } ) {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.autoRepeat' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.autoRepeat ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-auto-repeat:${ attributes.unitone?.autoRepeat }`
-		);
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		attributes?.unitone?.autoRepeat,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useAutoRepeatBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -137,17 +111,24 @@ export function useAutoRepeatBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newAutoRepeatProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			autoRepeat: attributes?.unitone?.autoRepeat ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.autoRepeat' ) ) {
+		return settings;
+	}
+
+	const newAutoRepeat = attributes?.unitone?.autoRepeat ?? defaultValue;
+
+	if ( null == newAutoRepeat ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newAutoRepeatProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				`-auto-repeat:${ newAutoRepeat }`
+			),
 		},
 	};
 }

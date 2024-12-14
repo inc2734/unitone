@@ -20,7 +20,6 @@ import {
 
 import { JustifyToolbar } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
@@ -408,59 +407,41 @@ export function JustifySelfEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.justifySelf' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.justifySelf ) {
-				return extraProps?.[ 'data-unitone-layout' ];
-			}
-		}
-
-		if ( null == attributes?.unitone?.justifySelf ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx( extraProps?.[ 'data-unitone-layout' ], {
-			[ `-justify-self:${ attributes.unitone?.justifySelf }` ]:
-				typeof attributes.unitone?.justifySelf === 'string',
-			[ `-justify-self:${ attributes.unitone?.justifySelf.lg }` ]:
-				null != attributes.unitone?.justifySelf?.lg,
-			[ `-justify-self:md:${ attributes.unitone?.justifySelf?.md }` ]:
-				null != attributes.unitone?.justifySelf?.md,
-			[ `-justify-self:sm:${ attributes.unitone?.justifySelf?.sm }` ]:
-				null != attributes.unitone?.justifySelf?.sm,
-		} );
-	}, [
-		blockType,
-		attributes?.__unstableUnitoneSupports?.justifySelf,
-		extraProps?.[ 'data-unitone-layout' ],
-		JSON.stringify( attributes?.unitone?.justifySelf ),
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useJustifySelfBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
-	const newJustifySelfProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			justifySelf: attributes?.unitone?.justifySelf ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.justifySelf' ) ) {
+		if ( ! attributes?.__unstableUnitoneSupports?.justifySelf ) {
+			return settings;
+		}
+	}
+
+	const newJustifySelf = attributes?.unitone?.justifySelf ?? defaultValue;
+
+	if ( null == newJustifySelf ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newJustifySelfProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				{
+					[ `-justify-self:${ newJustifySelf }` ]:
+						typeof newJustifySelf === 'string',
+					[ `-justify-self:${ newJustifySelf.lg }` ]:
+						null != newJustifySelf?.lg,
+					[ `-justify-self:md:${ newJustifySelf?.md }` ]:
+						null != newJustifySelf?.md,
+					[ `-justify-self:sm:${ newJustifySelf?.sm }` ]:
+						null != newJustifySelf?.sm,
+				}
+			),
 		},
 	};
 }

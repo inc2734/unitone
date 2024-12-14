@@ -1,8 +1,8 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
 import { cleanEmptyObject } from '../utils';
 
 export function hasMinWidthValue( { name, attributes: { unitone } } ) {
@@ -89,38 +89,8 @@ export function MinWidthEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const style = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.minWidth' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.minWidth ) {
-				return extraProps?.style;
-			}
-		}
-
-		if ( null == attributes?.unitone?.minWidth ) {
-			return extraProps?.style;
-		}
-
-		return {
-			...extraProps?.style,
-			'--unitone--min-width': attributes?.unitone?.minWidth,
-		};
-	}, [
-		blockType,
-		attributes?.__unstableUnitoneSupports?.minWidth,
-		attributes?.unitone?.minWidth,
-		extraProps?.style,
-		extraProps?.[ 'data-layout' ],
-	] );
-
-	return {
-		...extraProps,
-		style,
-	};
-}
-
 export function useMinWidthBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useSelect(
@@ -131,18 +101,26 @@ export function useMinWidthBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newMinWidthProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			minWidth: attributes?.unitone?.minWidth ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.minWidth' ) ) {
+		if ( ! __unstableUnitoneSupports?.minWidth ) {
+			return settings;
+		}
+	}
+
+	const newMinWidth = attributes?.unitone?.minWidth ?? defaultValue;
+
+	if ( null == newMinWidth ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newMinWidthProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--min-width': newMinWidth,
+			},
 		},
 	};
 }

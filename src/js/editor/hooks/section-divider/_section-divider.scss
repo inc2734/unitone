@@ -1,0 +1,65 @@
+[data-unitone-layout*="-section-divider-"] {
+	--unitone--section-divider-max-height: var(--unitone--s4);
+
+	clip-path: polygon(
+		var(--unitone--top-section-divider-path, 0 0, 100% 0),
+		var(--unitone--bottom-section-divider-path, 100% 100%, 0 100%)
+	);
+	mask-image:
+		var(--unitone--section-divider-top-mask-image, url('')),
+		url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><rect x="0" y="0" height="1" width="1"/></svg>'),
+		var(--unitone--section-divider-bottom-mask-image, url(''));
+	mask-composite: exclude, subtract;
+	mask-position:
+		calc(var(--unitone--section-divider-top-x, 0) * 10px) 0,
+		0 calc(var(--unitone--section-divider-top-level, 0) / 100 * var(--unitone--section-divider-max-height)),
+		calc(var(--unitone--section-divider-bottom-x, 0) * 10px) 100%;
+	mask-size:
+		calc(var(--unitone--section-divider-top-size, 0) * 1%) calc(var(--unitone--section-divider-top-level, 0) / 100 * var(--unitone--section-divider-max-height)),
+		auto,
+		calc(var(--unitone--section-divider-bottom-size, 0) * 1%) calc(var(--unitone--section-divider-bottom-level, 0) / 100 * var(--unitone--section-divider-max-height));
+	mask-repeat:
+		repeat-x,
+		repeat,
+		repeat-x;
+}
+
+[data-unitone-layout~="-section-divider-top\:triangle"] {
+	$x2: calc(50% - var(--unitone--section-divider-top-size) * 1% / 2);
+	$x3: calc(var(--unitone--section-divider-top-x) * 1%);
+	$y3: calc(var(--unitone--section-divider-top-level) / 100 * var(--unitone--section-divider-max-height));
+	$x4: calc(50% + var(--unitone--section-divider-top-size) * 1% / 2);
+
+	--unitone--top-section-divider-path:
+		0 0,
+		#{ $x2 } 0,
+		clamp(#{ $x2 }, #{ $x3 }, #{ $x4 }) #{ $y3 },
+		#{ $x4 } 0,
+		100% 0;
+}
+
+[data-unitone-layout~="-section-divider-bottom\:triangle"] {
+	$x6: calc(50% + var(--unitone--section-divider-bottom-size) * 1% / 2);
+	$x7: calc(var(--unitone--section-divider-bottom-x) * 1%);
+	$y7: calc(100% - var(--unitone--section-divider-bottom-level) / 100 * var(--unitone--section-divider-max-height));
+	$x8: calc(50% - var(--unitone--section-divider-bottom-size) * 1% / 2);
+
+	--unitone--bottom-section-divider-path:
+		100% 100%,
+		#{ $x6 } 100%,
+		clamp(#{ $x8 }, #{ $x7 }, #{ $x6 }) #{ $y7 },
+		#{ $x8 } 100%,
+		0% 100%;
+}
+
+[data-unitone-layout~="-section-divider-top\:wave"] {
+	--unitone--section-divider-top-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 15" preserveAspectRatio="none"><path d="M0,15V0h40c-6.67,0-13.33,2.5-20,7.5C13.33,12.5,6.67,15,0,15Z"/><path d="M60,7.5C53.33,2.5,46.67,0,40,0h40v15c-6.67,0-13.33-2.5-20-7.5Z"/></svg>');
+}
+
+[data-unitone-layout~="-section-divider-bottom\:wave"] {
+	--unitone--section-divider-bottom-mask-image: url('data:image/svg+xml,<svg viewBox="0 0 80 15" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0 0V15H40C33.33 15 26.67 12.5 20 7.5C13.33 2.5 6.67 0 0 0Z"/><path d="M60 7.5C53.33 12.5 46.67 15 40 15H80V0C73.33 0 66.67 2.5 60 7.5Z"/></svg>');
+}
+
+[data-unitone-layout~="-section-overlap\:top"] {
+	margin-top: calc(var(--unitone--section-divider-max-height) * var(--unitone--section-divider-top-level) / -100) !important;
+}

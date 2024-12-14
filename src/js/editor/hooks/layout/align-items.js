@@ -8,7 +8,6 @@ import {
 import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -173,44 +172,8 @@ export function AlignItemsEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.alignItems' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.alignItems ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		// Deprecation.
-		if ( !! extraProps?.[ 'data-layout' ] ) {
-			extraProps[ 'data-layout' ] = clsx(
-				extraProps[ 'data-layout' ],
-				`-align-items:${ attributes.unitone?.alignItems }`
-			);
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-align-items:${ attributes.unitone?.alignItems }`
-		);
-	}, [
-		blockType,
-		extraProps?.[ 'data-layout' ],
-		extraProps?.[ 'data-unitone-layout' ],
-		attributes.unitone?.alignItems,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useAlignItemsBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -220,17 +183,24 @@ export function useAlignItemsBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newAlignItemsProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			alignItems: attributes?.unitone?.alignItems ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.alignItems' ) ) {
+		return settings;
+	}
+
+	const newAlignItems = attributes?.unitone?.alignItems ?? defaultValue;
+
+	if ( null == newAlignItems ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newAlignItemsProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				`-align-items:${ newAlignItems }`
+			),
 		},
 	};
 }

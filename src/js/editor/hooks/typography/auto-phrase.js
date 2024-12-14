@@ -2,7 +2,6 @@ import clsx from 'clsx';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
-import { useMemo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -71,43 +70,27 @@ export function AutoPhraseEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.autoPhrase' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.autoPhrase ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx( extraProps?.[ 'data-unitone-layout' ], '-auto-phrase' );
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		attributes?.unitone?.autoPhrase,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useAutoPhraseBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
-	const newAutoPhraseProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			autoPhrase: attributes?.unitone?.autoPhrase,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.autoPhrase' ) ) {
+		return settings;
+	}
+
+	const newAutoPhrase = attributes?.unitone?.autoPhrase;
+
+	if ( null == newAutoPhrase ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newAutoPhraseProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				'-auto-phrase'
+			),
 		},
 	};
 }

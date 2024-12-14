@@ -6,7 +6,7 @@ import {
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
-import { memo, useCallback } from '@wordpress/element';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -37,7 +37,7 @@ export function DividerPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 	const { unitone } = attributes;
 
-	const resetAll = useCallback( ( filters ) => {
+	const resetAll = ( filters ) => {
 		const newUnitone = filters.reduce(
 			( accumulator, filter ) =>
 				filter( { unitone: accumulator } )?.unitone,
@@ -47,7 +47,7 @@ export function DividerPanelPure( props ) {
 		setAttributes( {
 			unitone: cleanEmptyObject( newUnitone ),
 		} );
-	}, [] );
+	};
 
 	const isDividerTypeDisabled = useIsDividerTypeDisabled( { name } );
 	const isDividerDisabled = useIsDividerDisabled( { name } );

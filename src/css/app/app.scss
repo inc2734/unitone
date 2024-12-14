@@ -9,6 +9,7 @@
 @include meta.load-css("wp-blocks/wp-blocks");
 @include meta.load-css("site");
 
+@include meta.load-css("../../js/editor/hooks/section-divider/section-divider");
 @include meta.load-css("../../js/editor/hooks/animation/parallax");
 @include meta.load-css("../../js/editor/hooks/animation/scroll-animation");
 

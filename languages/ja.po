@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-12-10T23:53:21+00:00\n"
-"PO-Revision-Date: 2024-12-11 08:58+0900\n"
+"POT-Creation-Date: 2024-12-13T15:46:07+00:00\n"
+"PO-Revision-Date: 2024-12-14 00:46+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1560,7 +1560,7 @@ msgstr "h5 のサイズ"
 msgid "Size of h6"
 msgstr "h6 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:10
 msgid "Size"
 msgstr "サイズ"
 
@@ -1702,7 +1702,7 @@ msgstr "ナビゲーション"
 #: dist/blocks/decorator/index.js:1 dist/blocks/flex-divided/index.js:1
 #: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:37 dist/blocks/reel/index.js:1
+#: dist/blocks/layers/index.js:25 dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
@@ -1947,7 +1947,7 @@ msgid "Minimum width"
 msgstr "最小幅"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Columns count"
 msgstr "カラム数"
 
@@ -1969,7 +1969,7 @@ msgid "For mobile"
 msgstr "モバイル用"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Rows count"
 msgstr "行数"
 
@@ -2011,68 +2011,38 @@ msgstr "下 / 左"
 msgid "Bottom / Right"
 msgstr "下 / 右"
 
-#. translators: %1$s: position
-#: dist/blocks/layers/index.js:28 dist/blocks/layers/index.js:31
-#: dist/blocks/layers/index.js:34 dist/blocks/layers/index.js:37
-#: dist/blocks/section/index.js:4 dist/blocks/section/index.js:7
-#: dist/blocks/section/index.js:10 dist/blocks/section/index.js:13
-msgid "Section (%1$s)"
-msgstr "セクション（%1$s）"
-
-#: dist/blocks/layers/index.js:28
-msgid "Background image / Centered title"
-msgstr "背景画像 / 中央揃えのタイトル"
-
-#: dist/blocks/layers/index.js:28 dist/blocks/layers/index.js:31
-#: dist/blocks/layers/index.js:34 dist/blocks/layers/index.js:37
-msgctxt "block keywords"
-msgid "section"
-msgstr "section"
-
-#: dist/blocks/layers/index.js:31
-msgid "Background image / Centered title / Subtitle"
-msgstr "背景画像 / 中央揃えのタイトル / サブタイトル"
-
-#: dist/blocks/layers/index.js:34
-msgid "Background image / Left title"
-msgstr "背景画像 / 左寄せのタイトル"
-
-#: dist/blocks/layers/index.js:37
-msgid "Background image / Left title / Subtitle"
-msgstr "背景画像 / 左寄せのタイトル / サブタイトル"
-
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Use background image/video (Cover)"
 msgstr "背景画像/動画を使用（Cover）"
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Treat the first child block as a background image/video."
 msgstr "最初の子ブロックを背景画像/動画として扱います。"
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid ""
 "The background image/video is enlarged according or reduces to the amount of "
 "content."
 msgstr "コンテンツ量に応じて、背景画像/動画を拡大・縮小表示します。"
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Use background image/video (Fill)"
 msgstr "背景画像/動画を使用（Fill）"
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid ""
 "The background image/video is enlarged according to the amount of content."
 msgstr "コンテンツ量に応じて、背景画像/動画を拡大表示します。"
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Blur the background image/video"
 msgstr "背景画像/動画をぼかす"
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Enable portrait mode"
 msgstr "ポートレートモードを有効にする"
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid ""
 "If enabled, the number of vertical and horizontal grid lines is switched "
 "when the viewport is portrait."
@@ -2145,6 +2115,12 @@ msgid ""
 msgstr ""
 "「auto-repeat」が 「auto-fill」の場合、カラムはこのサイズを維持します。"
 "「auto-fit」の場合、空きスペースを埋めるようにカラムが伸長します。"
+
+#. translators: %1$s: position
+#: dist/blocks/section/index.js:4 dist/blocks/section/index.js:7
+#: dist/blocks/section/index.js:10 dist/blocks/section/index.js:13
+msgid "Section (%1$s)"
+msgstr "セクション（%1$s）"
 
 #: dist/blocks/section/index.js:4
 msgid "Centered title"
@@ -2722,6 +2698,34 @@ msgstr ""
 #: dist/js/editor/editor.js:10
 msgid "Auto line breaks"
 msgstr "自動改行"
+
+#: dist/js/editor/editor.js:10
+msgid "Triangle"
+msgstr "三角"
+
+#: dist/js/editor/editor.js:10
+msgid "Wave"
+msgstr "波"
+
+#: dist/js/editor/editor.js:10
+msgid "Section divider (Top)"
+msgstr "セクション区切り（上部）"
+
+#: dist/js/editor/editor.js:10
+msgid "Level"
+msgstr "レベル"
+
+#: dist/js/editor/editor.js:10
+msgid "Horizontal position"
+msgstr "水平位置"
+
+#: dist/js/editor/editor.js:10
+msgid "Overlap the previous block"
+msgstr "前のブロックに重ねる"
+
+#: dist/js/editor/editor.js:10
+msgid "Section divider (Bottom)"
+msgstr "セクション区切り（下部）"
 
 #: dist/js/editor/editor.js:10
 msgid "Filter"

@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { SelectControl, TextControl } from '@wordpress/components';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 
 import { cleanEmptyObject } from '../utils';
 
@@ -409,59 +408,8 @@ export function ZIndexEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const newExtraProps = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.position' ) ) {
-			return {
-				style: { ...extraProps?.style },
-				'data-unitone-layout': extraProps?.[ 'data-unitone-layout' ],
-			};
-		}
-
-		if ( null == attributes?.unitone?.position ) {
-			return {
-				style: { ...extraProps?.style },
-				'data-unitone-layout': extraProps?.[ 'data-unitone-layout' ],
-			};
-		}
-
-		return {
-			style: {
-				...extraProps?.style,
-				'--unitone--top': attributes?.unitone?.position?.top,
-				'--unitone--right': attributes?.unitone?.position?.right,
-				'--unitone--bottom': attributes?.unitone?.position?.bottom,
-				'--unitone--left': attributes?.unitone?.position?.left,
-				'--unitone--z-index': attributes?.unitone?.position?.zIndex,
-			},
-			'data-unitone-layout': clsx(
-				extraProps?.[ 'data-unitone-layout' ],
-				{
-					[ `-position:${ attributes?.unitone?.position?.position }` ]:
-						!! attributes?.unitone?.position?.position,
-				}
-			),
-		};
-	}, [
-		blockType,
-		extraProps?.style,
-		extraProps?.[ 'data-unitone-layout' ],
-		attributes?.unitone?.position?.top,
-		attributes?.unitone?.position?.right,
-		attributes?.unitone?.position?.bottom,
-		attributes?.unitone?.position?.left,
-		attributes?.unitone?.position?.zIndex,
-		attributes?.unitone?.position?.position,
-	] );
-
-	return {
-		...extraProps,
-		...newExtraProps,
-	};
-}
-
 export function usePositionBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -471,17 +419,35 @@ export function usePositionBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newPositionProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			position: attributes?.unitone?.position ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.position' ) ) {
+		return settings;
+	}
+
+	const newPosition = attributes?.unitone?.position ?? defaultValue;
+
+	if ( null == newPosition ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newPositionProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--top': newPosition?.top,
+				'--unitone--right': newPosition?.right,
+				'--unitone--bottom': newPosition?.bottom,
+				'--unitone--left': newPosition?.left,
+				'--unitone--z-index': newPosition?.zIndex,
+			},
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				{
+					[ `-position:${ newPosition?.position }` ]:
+						!! newPosition?.position,
+				}
+			),
 		},
 	};
 }

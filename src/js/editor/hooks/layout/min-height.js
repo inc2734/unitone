@@ -1,8 +1,8 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
 import { cleanEmptyObject } from '../utils';
 
 export function hasMinHeightValue( { name, attributes: { unitone } } ) {
@@ -89,48 +89,8 @@ export function MinHeightEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const style = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.minHeight' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.minHeight ) {
-				return extraProps?.style;
-			}
-		}
-
-		if ( null == attributes?.unitone?.minHeight ) {
-			return extraProps?.style;
-		}
-
-		// Deprecation.
-		// Blocks with data-layout have no prefix in the CSS custom property.
-		if ( !! extraProps?.[ 'data-layout' ] ) {
-			extraProps.style = {
-				...extraProps.style,
-				'--min-height': attributes?.unitone?.minHeight,
-			};
-			return extraProps?.style;
-		}
-
-		return {
-			...extraProps?.style,
-			'--unitone--min-height': attributes?.unitone?.minHeight,
-		};
-	}, [
-		blockType,
-		attributes?.__unstableUnitoneSupports?.minHeight,
-		attributes?.unitone?.minHeight,
-		extraProps?.style,
-		extraProps?.[ 'data-layout' ],
-	] );
-
-	return {
-		...extraProps,
-		style,
-	};
-}
-
 export function useMinHeightBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useSelect(
@@ -141,18 +101,26 @@ export function useMinHeightBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newMinHeightProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			minHeight: attributes?.unitone?.minHeight ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.minHeight' ) ) {
+		if ( ! __unstableUnitoneSupports?.minHeight ) {
+			return settings;
+		}
+	}
+
+	const newMinHeight = attributes?.unitone?.minHeight ?? defaultValue;
+
+	if ( null == newMinHeight ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newMinHeightProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--min-height': newMinHeight,
+			},
 		},
 	};
 }

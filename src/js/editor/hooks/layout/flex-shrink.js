@@ -1,8 +1,8 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
 import { cleanEmptyObject } from '../utils';
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
@@ -121,53 +121,32 @@ export function FlexShrinkEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const style = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.flexShrink' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.flexShrink ) {
-				return extraProps?.style;
-			}
-		}
-
-		if ( null == attributes?.unitone?.flexShrink ) {
-			return extraProps?.style;
-		}
-
-		return {
-			...extraProps?.style,
-			'--unitone--flex-shrink': attributes?.unitone?.flexShrink,
-		};
-	}, [
-		blockType,
-		attributes?.__unstableUnitoneSupports?.flexShrink,
-		extraProps?.style,
-		attributes?.unitone?.flexShrink,
-	] );
-
-	return {
-		...extraProps,
-		style,
-	};
-}
-
 export function useFlexShrinkBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
-	const newFlexShrinkProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			flexShrink: attributes?.unitone?.flexShrink ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.flexShrink' ) ) {
+		if ( ! attributes?.__unstableUnitoneSupports?.flexShrink ) {
+			return settings;
+		}
+	}
+
+	const newFlexShrink = attributes?.unitone?.flexShrink ?? defaultValue;
+
+	if ( null == newFlexShrink ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newFlexShrinkProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--flex-shrink': newFlexShrink,
+			},
 		},
 	};
 }

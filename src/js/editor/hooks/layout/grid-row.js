@@ -6,7 +6,6 @@ import {
 
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
@@ -225,64 +224,39 @@ export function GridRowEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const style = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.gridRow' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.gridRow ) {
-				return extraProps?.style;
-			}
-		}
-
-		if ( null == attributes?.unitone?.gridRow ) {
-			return extraProps?.style;
-		}
-
-		return {
-			...extraProps?.style,
-			'--unitone--grid-row':
-				typeof attributes.unitone?.gridRow === 'string'
-					? attributes.unitone?.gridRow || undefined
-					: attributes?.unitone?.gridRow?.lg || undefined,
-			'--unitone--md-grid-row':
-				null != attributes?.unitone?.gridRow?.md
-					? attributes?.unitone?.gridRow?.md
-					: undefined,
-			'--unitone--sm-grid-row':
-				null != attributes.unitone?.gridRow?.sm
-					? attributes?.unitone?.gridRow?.sm
-					: undefined,
-		};
-	}, [
-		blockType,
-		attributes?.__unstableUnitoneSupports?.gridRow,
-		extraProps?.style,
-		attributes?.unitone?.gridRow,
-	] );
-
-	return {
-		...extraProps,
-		style,
-	};
-}
-
 export function useGridRowBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
-	const newGridRowProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			gridRow: attributes?.unitone?.gridRow ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.gridRow' ) ) {
+		if ( ! attributes?.__unstableUnitoneSupports?.gridRow ) {
+			return settings;
+		}
+	}
+
+	const newGridRow = attributes?.unitone?.gridRow ?? defaultValue;
+
+	if ( null == newGridRow ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newGridRowProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--grid-row':
+					typeof newGridRow === 'string'
+						? newGridRow || undefined
+						: newGridRow?.lg || undefined,
+				'--unitone--md-grid-row':
+					null != newGridRow?.md ? newGridRow?.md : undefined,
+				'--unitone--sm-grid-row':
+					null != newGridRow?.sm ? newGridRow?.sm : undefined,
+			},
 		},
 	};
 }

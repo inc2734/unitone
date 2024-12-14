@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 
-import { useMemo } from '@wordpress/element';
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
@@ -63,7 +62,7 @@ export function FluidTypographyEdit( { label, attributes, setAttributes } ) {
 			label={ label }
 			help={ help }
 			disabled={ fontSizeStatus.fixed }
-			checked={ attributes?.unitone?.fluidTypography }
+			checked={ attributes?.unitone?.fluidTypography ?? false }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...attributes?.unitone,
@@ -78,52 +77,27 @@ export function FluidTypographyEdit( { label, attributes, setAttributes } ) {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.fluidTypography' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.fluidTypography ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			'-fluid-typography'
-		);
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		attributes?.unitone?.fluidTypography,
-		attributes?.style?.typography?.fontSize,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useFluidTypographyBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
-	const newFluidTypographyProp = useBlockProps( wrapperProps, name, {
-		style: {
-			typography: {
-				fontSize: attributes?.style?.typography?.fontSize,
-			},
-		},
-		unitone: {
-			fluidTypography: attributes?.unitone?.fluidTypography,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.fluidTypography' ) ) {
+		return settings;
+	}
+
+	const newFluidTypography = attributes?.unitone?.fluidTypography;
+
+	if ( null == newFluidTypography ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newFluidTypographyProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				'-fluid-typography'
+			),
 		},
 	};
 }

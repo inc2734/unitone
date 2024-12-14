@@ -16,7 +16,7 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { useState, useMemo } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import { link, linkOff } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
@@ -456,49 +456,8 @@ export function GapEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.gap' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.gap ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		// Deprecation.
-		if ( !! extraProps?.[ 'data-layout' ] ) {
-			extraProps[ 'data-layout' ] = clsx(
-				extraProps[ 'data-layout' ],
-				`-gap:${ attributes.unitone?.gap }`
-			);
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx( extraProps?.[ 'data-unitone-layout' ], {
-			[ `-gap:${ attributes.unitone?.gap }` ]:
-				null == attributes.unitone?.gap?.column &&
-				null == attributes.unitone?.gap?.row,
-			[ `-column-gap:${ attributes.unitone?.gap?.column }` ]:
-				null != attributes.unitone?.gap?.column,
-			[ `-row-gap:${ attributes.unitone?.gap?.row }` ]:
-				null != attributes.unitone?.gap?.row,
-		} );
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		extraProps?.[ 'data-layout' ],
-		JSON.stringify( attributes?.unitone?.gap ),
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useGapBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -508,17 +467,30 @@ export function useGapBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newGapProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			gap: compacting( attributes.unitone?.gap ?? defaultValue ),
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.gap' ) ) {
+		return settings;
+	}
+
+	const newGap = compacting( attributes.unitone?.gap ?? defaultValue );
+
+	if ( null == newGap ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newGapProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				{
+					[ `-gap:${ newGap }` ]:
+						null == newGap?.column && null == newGap?.row,
+					[ `-column-gap:${ newGap?.column }` ]:
+						null != newGap?.column,
+					[ `-row-gap:${ newGap?.row }` ]: null != newGap?.row,
+				}
+			),
 		},
 	};
 }

@@ -10,7 +10,7 @@ import {
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
-import { memo, useCallback } from '@wordpress/element';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -30,7 +30,7 @@ function LayerPanelPure( props ) {
 	const { attributes, setAttributes, clientId } = props;
 	const { unitone } = attributes;
 
-	const resetAll = useCallback( ( filters ) => {
+	const resetAll = ( filters ) => {
 		const newUnitone = filters.reduce(
 			( accumulator, filter ) =>
 				filter( { unitone: accumulator } )?.unitone,
@@ -40,7 +40,7 @@ function LayerPanelPure( props ) {
 		setAttributes( {
 			unitone: cleanEmptyObject( newUnitone ),
 		} );
-	}, [] );
+	};
 
 	const isMixBlendModeDisabled = useIsMixBlendModeDisabled( { ...props } );
 

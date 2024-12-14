@@ -8,7 +8,6 @@ import {
 import { JustifyToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -185,44 +184,8 @@ export function JustifyContentColumnEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.justifyContentColumn' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.justifyContent ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		// Deprecation.
-		if ( !! extraProps?.[ 'data-layout' ] ) {
-			extraProps[ 'data-layout' ] = clsx(
-				extraProps[ 'data-layout' ],
-				`-justify-content:${ attributes.unitone?.justifyContent }`
-			);
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-justify-content:${ attributes.unitone?.justifyContent }`
-		);
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		extraProps?.[ 'data-layout' ],
-		attributes?.unitone?.justifyContent,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useJustifyContentColumnBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -232,17 +195,25 @@ export function useJustifyContentColumnBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newJustifyContentColumnProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			justifyContent: attributes?.unitone?.justifyContent ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.justifyContentColumn' ) ) {
+		return settings;
+	}
+
+	const newJustifyContentColumn =
+		attributes?.unitone?.justifyContent ?? defaultValue;
+
+	if ( null == newJustifyContentColumn ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newJustifyContentColumnProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				`-justify-content:${ newJustifyContentColumn }`
+			),
 		},
 	};
 }

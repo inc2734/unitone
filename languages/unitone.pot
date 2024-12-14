@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 15.5.0\n"
+"Project-Id-Version: unitone 15.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-10T23:53:21+00:00\n"
+"POT-Creation-Date: 2024-12-13T15:46:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -1581,6 +1581,7 @@ msgid "Size of h6"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
+#: dist/js/editor/editor.js:10
 msgid "Size"
 msgstr ""
 
@@ -1727,7 +1728,7 @@ msgstr ""
 #: dist/blocks/frame/index.js:1
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
@@ -1991,7 +1992,7 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Columns count"
 msgstr ""
 
@@ -2018,7 +2019,7 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Rows count"
 msgstr ""
 
@@ -2067,71 +2068,35 @@ msgstr ""
 msgid "Bottom / Right"
 msgstr ""
 
-#. translators: %1$s: position
-#: dist/blocks/layers/index.js:28
-#: dist/blocks/layers/index.js:31
-#: dist/blocks/layers/index.js:34
-#: dist/blocks/layers/index.js:37
-#: dist/blocks/section/index.js:4
-#: dist/blocks/section/index.js:7
-#: dist/blocks/section/index.js:10
-#: dist/blocks/section/index.js:13
-msgid "Section (%1$s)"
-msgstr ""
-
-#: dist/blocks/layers/index.js:28
-msgid "Background image / Centered title"
-msgstr ""
-
-#: dist/blocks/layers/index.js:28
-#: dist/blocks/layers/index.js:31
-#: dist/blocks/layers/index.js:34
-#: dist/blocks/layers/index.js:37
-msgctxt "block keywords"
-msgid "section"
-msgstr ""
-
-#: dist/blocks/layers/index.js:31
-msgid "Background image / Centered title / Subtitle"
-msgstr ""
-
-#: dist/blocks/layers/index.js:34
-msgid "Background image / Left title"
-msgstr ""
-
-#: dist/blocks/layers/index.js:37
-msgid "Background image / Left title / Subtitle"
-msgstr ""
-
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Use background image/video (Cover)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Treat the first child block as a background image/video."
 msgstr ""
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "The background image/video is enlarged according or reduces to the amount of content."
 msgstr ""
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Use background image/video (Fill)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "The background image/video is enlarged according to the amount of content."
 msgstr ""
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Blur the background image/video"
 msgstr ""
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "Enable portrait mode"
 msgstr ""
 
-#: dist/blocks/layers/index.js:37
+#: dist/blocks/layers/index.js:25
 msgid "If enabled, the number of vertical and horizontal grid lines is switched when the viewport is portrait."
 msgstr ""
 
@@ -2189,6 +2154,14 @@ msgstr ""
 #: dist/blocks/responsive-grid-divided/index.js:4
 #: dist/blocks/responsive-grid/index.js:4
 msgid "If \"auto-repeat\" is \"auto-fill\" the column will maintain this size.\" auto-fit\", the column will stretch to fill the available space."
+msgstr ""
+
+#. translators: %1$s: position
+#: dist/blocks/section/index.js:4
+#: dist/blocks/section/index.js:7
+#: dist/blocks/section/index.js:10
+#: dist/blocks/section/index.js:13
+msgid "Section (%1$s)"
 msgstr ""
 
 #: dist/blocks/section/index.js:4
@@ -2761,6 +2734,34 @@ msgstr ""
 
 #: dist/js/editor/editor.js:10
 msgid "Auto line breaks"
+msgstr ""
+
+#: dist/js/editor/editor.js:10
+msgid "Triangle"
+msgstr ""
+
+#: dist/js/editor/editor.js:10
+msgid "Wave"
+msgstr ""
+
+#: dist/js/editor/editor.js:10
+msgid "Section divider (Top)"
+msgstr ""
+
+#: dist/js/editor/editor.js:10
+msgid "Level"
+msgstr ""
+
+#: dist/js/editor/editor.js:10
+msgid "Horizontal position"
+msgstr ""
+
+#: dist/js/editor/editor.js:10
+msgid "Overlap the previous block"
+msgstr ""
+
+#: dist/js/editor/editor.js:10
+msgid "Section divider (Bottom)"
 msgstr ""
 
 #: dist/js/editor/editor.js:10

@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -114,34 +113,8 @@ export function OverflowEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.overflow' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.overflow ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-overflow:${ attributes.unitone?.overflow }`
-		);
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		attributes?.unitone?.overflow,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useOverflowBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -151,17 +124,24 @@ export function useOverflowBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newOverflowProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			overflow: attributes?.unitone?.overflow ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.overflow' ) ) {
+		return settings;
+	}
+
+	const newOverflow = attributes?.unitone?.overflow ?? defaultValue;
+
+	if ( null == newOverflow ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newOverflowProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				`-overflow:${ newOverflow }`
+			),
 		},
 	};
 }

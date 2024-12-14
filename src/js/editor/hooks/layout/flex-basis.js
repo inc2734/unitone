@@ -1,8 +1,8 @@
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
 import { cleanEmptyObject } from '../utils';
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
@@ -106,37 +106,8 @@ export function FlexBasisEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const style = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.flexBasis' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.flexBasis ) {
-				return extraProps?.style;
-			}
-		}
-
-		if ( null == attributes?.unitone?.flexBasis ) {
-			return extraProps?.style;
-		}
-
-		return {
-			...extraProps?.style,
-			'--unitone--flex-basis': attributes?.unitone?.flexBasis,
-		};
-	}, [
-		blockType,
-		attributes?.__unstableUnitoneSupports?.flexBasis,
-		extraProps?.style,
-		attributes?.unitone?.flexBasis,
-	] );
-
-	return {
-		...extraProps,
-		style,
-	};
-}
-
 export function useFlexBasisBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useDefaultValue( {
@@ -144,18 +115,26 @@ export function useFlexBasisBlockProps( settings ) {
 		__unstableUnitoneSupports,
 	} );
 
-	const newFlexBasisProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			flexBasis: attributes?.unitone?.flexBasis ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.flexBasis' ) ) {
+		if ( ! attributes?.__unstableUnitoneSupports?.flexBasis ) {
+			return settings;
+		}
+	}
+
+	const newFlexBasis = attributes?.unitone?.flexBasis ?? defaultValue;
+
+	if ( null == newFlexBasis ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newFlexBasisProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--flex-basis': newFlexBasis,
+			},
 		},
 	};
 }

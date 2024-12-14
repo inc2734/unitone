@@ -8,7 +8,6 @@ import {
 
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -118,34 +117,8 @@ export function DividerTypeEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.dividerType' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.dividerType ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-divider:${ attributes.unitone?.dividerType }`
-		);
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		attributes?.unitone?.dividerType,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useDividerTypeBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -155,17 +128,24 @@ export function useDividerTypeBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newDividerTypeProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			dividerType: attributes?.unitone?.dividerType ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.dividerType' ) ) {
+		return settings;
+	}
+
+	const newDividerType = attributes?.unitone?.dividerType ?? defaultValue;
+
+	if ( null == newDividerType ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newDividerTypeProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				`-divider:${ newDividerType }`
+			),
 		},
 	};
 }

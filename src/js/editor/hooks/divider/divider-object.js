@@ -2,7 +2,6 @@ import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginC
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { __experimentalBorderControl as BorderControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -197,49 +196,8 @@ export function DividerEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const style = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.divider' ) ) {
-			return extraProps?.style;
-		}
-
-		if (
-			null == attributes?.unitone?.divider &&
-			null == attributes?.unitone?.dividerColor
-		) {
-			return extraProps?.style;
-		}
-
-		let presetColor;
-		if ( !! attributes?.unitone?.dividerColor ) {
-			presetColor = `var(--wp--preset--color--${ attributes?.unitone?.dividerColor.replace(
-				'/',
-				'-'
-			) })`;
-		}
-
-		return {
-			...extraProps?.style,
-			'--unitone--divider-color':
-				attributes?.unitone?.divider?.color || presetColor,
-			'--unitone--divider-style': attributes?.unitone?.divider?.style,
-			'--unitone--divider-width': attributes?.unitone?.divider?.width,
-		};
-	}, [
-		blockType,
-		attributes?.unitone?.divider,
-		attributes?.unitone?.dividerColor,
-		extraProps?.style,
-	] );
-
-	return {
-		...extraProps,
-		style,
-	};
-}
-
 export function useDividerBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const { defaultDivider, defaultDividerColor } = useSelect(
 		( select ) => {
@@ -254,21 +212,40 @@ export function useDividerBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newDividerProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			divider: {
-				...( attributes?.unitone?.divider ?? defaultDivider ),
-			},
-			dividerColor:
-				attributes?.unitone?.dividerColor ?? defaultDividerColor,
+	if ( ! hasBlockSupport( name, 'unitone.divider' ) ) {
+		return settings;
+	}
+
+	const newDivider = {
+		divider: {
+			...( attributes?.unitone?.divider ?? defaultDivider ),
 		},
-	} );
+		dividerColor: attributes?.unitone?.dividerColor ?? defaultDividerColor,
+	};
+
+	if ( null == newDivider?.divider && null == newDivider?.dividerColor ) {
+		return settings;
+	}
+
+	let presetColor;
+	if ( !! newDivider?.dividerColor ) {
+		presetColor = `var(--wp--preset--color--${ newDivider?.dividerColor.replace(
+			'/',
+			'-'
+		) })`;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newDividerProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--divider-color':
+					newDivider?.divider?.color || presetColor,
+				'--unitone--divider-style': newDivider?.divider?.style,
+				'--unitone--divider-width': newDivider?.divider?.width,
+			},
 		},
 	};
 }

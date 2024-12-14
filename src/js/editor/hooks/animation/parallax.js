@@ -14,7 +14,6 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { Icon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
@@ -148,31 +147,8 @@ export function ParallaxEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneParallaxSpeed = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.parallax' ) ) {
-			return undefined;
-		}
-
-		if ( null == attributes?.unitone?.parallax ) {
-			return undefined;
-		}
-
-		return attributes.unitone?.parallax?.speed;
-	}, [
-		blockType,
-		attributes?.unitone?.parallax,
-		attributes.unitone?.parallax?.speed,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-parallax-speed': unitoneParallaxSpeed,
-	};
-}
-
 export function useParallaxBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -182,17 +158,24 @@ export function useParallaxBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newParallaxProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			parallax: attributes?.unitone?.parallax ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.parallax' ) ) {
+		return settings;
+	}
+
+	const newParallax = {
+		...defaultValue,
+		...attributes?.unitone?.parallax,
+	};
+
+	if ( null == newParallax ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newParallaxProp,
+			'data-unitone-parallax-speed': newParallax?.speed,
 		},
 	};
 }

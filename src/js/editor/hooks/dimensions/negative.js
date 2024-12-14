@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
 import { cleanEmptyObject } from '../utils';
 
 export function hasNegativeValue( { attributes: { unitone } } ) {
@@ -72,41 +72,8 @@ export function NegativeEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.negative' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.negative ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		// Deprecation.
-		if ( !! extraProps?.[ 'data-layout' ] ) {
-			extraProps[ 'data-layout' ] = clsx(
-				extraProps[ 'data-layout' ],
-				'-negative'
-			);
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx( extraProps?.[ 'data-unitone-layout' ], '-negative' );
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		extraProps?.[ 'data-layout' ],
-		attributes?.unitone?.negative,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useNegativeBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -116,17 +83,24 @@ export function useNegativeBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newNegativeProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			negative: attributes?.unitone?.negative ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.negative' ) ) {
+		return settings;
+	}
+
+	const newNegative = attributes?.unitone?.negative ?? defaultValue;
+
+	if ( null == newNegative ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newNegativeProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				'-negative'
+			),
 		},
 	};
 }

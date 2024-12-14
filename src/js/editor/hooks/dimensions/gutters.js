@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { BaseControl, ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
@@ -117,44 +116,8 @@ export function GuttersEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.gutters' ) ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		if ( null == attributes?.unitone?.gutters ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		// Deprecation.
-		if ( !! extraProps?.[ 'data-layout' ] ) {
-			extraProps[ 'data-layout' ] = clsx(
-				extraProps[ 'data-layout' ],
-				`-gutters:${ attributes.unitone?.gutters }`
-			);
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-gutters:${ attributes.unitone?.gutters }`
-		);
-	}, [
-		blockType,
-		extraProps?.[ 'data-unitone-layout' ],
-		extraProps?.[ 'data-layout' ],
-		attributes?.unitone?.gutters,
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useGuttersBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 
 	const defaultValue = useSelect(
 		( select ) => {
@@ -164,17 +127,24 @@ export function useGuttersBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newGuttersProp = useBlockProps( wrapperProps, name, {
-		unitone: {
-			gutters: attributes?.unitone?.gutters ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.gutters' ) ) {
+		return settings;
+	}
+
+	const newGutters = attributes?.unitone?.gutters ?? defaultValue;
+
+	if ( null == newGutters ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newGuttersProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				`-gutters:${ newGutters }`
+			),
 		},
 	};
 }

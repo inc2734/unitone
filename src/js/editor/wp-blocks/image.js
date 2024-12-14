@@ -18,45 +18,39 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../hooks/utils';
 
-const saveProp = ( extraProps, blockType, attributes ) => {
-	if ( 'core/image' !== blockType ) {
-		return extraProps;
-	}
-
-	if ( ! hasBlockSupport( blockType, 'unitone.overlay' ) ) {
-		return extraProps;
-	}
-
-	return {
-		...extraProps,
-		style: {
-			...extraProps?.style,
-			'--unitone--overlay-color': attributes?.unitone?.overlay?.color,
-			'--unitone--overlay-gradient':
-				attributes?.unitone?.overlay?.gradient,
-			'--unitone--overlay-opacity':
-				null != attributes?.unitone?.overlay?.dimRatio
-					? attributes.unitone.overlay.dimRatio * 0.01
-					: undefined,
-			'--unitone--overlay-radius': attributes?.style?.border?.radius,
-		},
-		'data-unitone-layout': clsx( extraProps?.[ 'data-unitone-layout' ], {
-			'-overlay':
-				!! attributes?.unitone?.overlay?.color ||
-				!! attributes?.unitone?.overlay?.gradient,
-		} ),
-	};
-};
-
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const { attributes, name, wrapperProps } = props;
 
+		if ( ! hasBlockSupport( name, 'unitone.overlay' ) ) {
+			return <BlockListBlock { ...props } />;
+		}
+
 		props = {
 			...props,
 			wrapperProps: {
-				...props.wrapperProps,
-				...saveProp( wrapperProps, name, attributes ),
+				...wrapperProps,
+				style: {
+					...wrapperProps?.style,
+					'--unitone--overlay-color':
+						attributes?.unitone?.overlay?.color,
+					'--unitone--overlay-gradient':
+						attributes?.unitone?.overlay?.gradient,
+					'--unitone--overlay-opacity':
+						null != attributes?.unitone?.overlay?.dimRatio
+							? attributes.unitone.overlay.dimRatio * 0.01
+							: undefined,
+					'--unitone--overlay-radius':
+						attributes?.style?.border?.radius,
+				},
+				'data-unitone-layout': clsx(
+					wrapperProps?.[ 'data-unitone-layout' ],
+					{
+						'-overlay':
+							!! attributes?.unitone?.overlay?.color ||
+							!! attributes?.unitone?.overlay?.gradient,
+					}
+				),
 			},
 		};
 

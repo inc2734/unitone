@@ -9,9 +9,9 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { settings as settingsIcon } from '@wordpress/icons';
+
 import { cleanEmptyObject } from '../utils';
 
 export function hasMaxWidthValue( { name, attributes: { unitone } } ) {
@@ -151,48 +151,8 @@ export function MaxWidthEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const style = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.maxWidth' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.maxWidth ) {
-				return extraProps?.style;
-			}
-		}
-
-		if ( null == attributes?.unitone?.maxWidth ) {
-			return extraProps?.style;
-		}
-
-		// Deprecation.
-		// Blocks with data-layout have no prefix in the CSS custom property.
-		if ( !! extraProps?.[ 'data-layout' ] ) {
-			extraProps.style = {
-				...extraProps.style,
-				'--max-width': attributes?.unitone?.maxWidth,
-			};
-			return extraProps?.style;
-		}
-
-		return {
-			...extraProps?.style,
-			'--unitone--max-width': attributes?.unitone?.maxWidth,
-		};
-	}, [
-		blockType,
-		attributes?.__unstableUnitoneSupports?.maxWidth,
-		attributes?.unitone?.maxWidth,
-		extraProps?.style,
-		extraProps?.[ 'data-layout' ],
-	] );
-
-	return {
-		...extraProps,
-		style,
-	};
-}
-
 export function useMaxWidthBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useSelect(
@@ -203,18 +163,26 @@ export function useMaxWidthBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newMaxWidthProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			maxWidth: attributes?.unitone?.maxWidth ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.maxWidth' ) ) {
+		if ( ! __unstableUnitoneSupports?.maxWidth ) {
+			return settings;
+		}
+	}
+
+	const newMaxWidth = attributes?.unitone?.maxWidth ?? defaultValue;
+
+	if ( null == newMaxWidth ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newMaxWidthProp,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--max-width': newMaxWidth,
+			},
 		},
 	};
 }

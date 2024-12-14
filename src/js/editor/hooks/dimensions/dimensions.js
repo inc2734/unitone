@@ -6,7 +6,7 @@ import fastDeepEqual from 'fast-deep-equal/es6';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
-import { memo, useCallback } from '@wordpress/element';
+import { memo } from '@wordpress/element';
 
 import { cleanEmptyObject } from '../utils';
 
@@ -97,7 +97,7 @@ function DimensionsPanelPure( props ) {
 		resetOverflowFilter,
 	];
 
-	const resetAllFilter = useCallback( ( _attributes ) => {
+	const resetAllFilter = ( _attributes ) => {
 		// Because the ToolsPanel popover display does't update when "Reset All" is clicked.
 		attributes.unitone = cleanEmptyObject(
 			resetAllFilters.reduce(
@@ -110,7 +110,7 @@ function DimensionsPanelPure( props ) {
 			..._attributes,
 			unitone: attributes.unitone,
 		};
-	}, [] );
+	};
 
 	const isPaddingDisabled = useIsPaddingDisabled( { name } );
 	const isGuttersDisabled = useIsGuttersDisabled( { name } );

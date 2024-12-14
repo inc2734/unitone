@@ -3,7 +3,8 @@
 	"version": 3,
 	"settings": {
 		"background": {
-			"backgroundImage": true
+			"backgroundImage": true,
+			"backgroundSize": true
 		},
 		"border": {
 			"color": true,

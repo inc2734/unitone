@@ -6,7 +6,7 @@ import fastDeepEqual from 'fast-deep-equal/es6';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
-import { memo, useCallback } from '@wordpress/element';
+import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -55,7 +55,7 @@ function TypographyPanelPure( props ) {
 		resetHalfLeadingFilter,
 	];
 
-	const resetAllFilter = useCallback( ( _attributes ) => {
+	const resetAllFilter = ( _attributes ) => {
 		// Because the ToolsPanel popover display does't update when "Reset All" is clicked.
 		attributes.unitone = cleanEmptyObject(
 			resetAllFilters.reduce(
@@ -68,7 +68,7 @@ function TypographyPanelPure( props ) {
 			..._attributes,
 			unitone: attributes.unitone,
 		};
-	}, [] );
+	};
 
 	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( { name } );
 	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( { name } );

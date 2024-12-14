@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -155,37 +154,8 @@ export function MixBlendModeEdit( {
 	);
 }
 
-function useBlockProps( extraProps, blockType, attributes ) {
-	const unitoneLayout = useMemo( () => {
-		if ( ! hasBlockSupport( blockType, 'unitone.mixBlendMode' ) ) {
-			if ( ! attributes?.__unstableUnitoneSupports?.mixBlendMode ) {
-				return extraProps?.[ 'data-unitone-layout' ];
-			}
-		}
-
-		if ( null == attributes?.unitone?.mixBlendMode ) {
-			return extraProps?.[ 'data-unitone-layout' ];
-		}
-
-		return clsx(
-			extraProps?.[ 'data-unitone-layout' ],
-			`-mix-blend-mode:${ attributes.unitone?.mixBlendMode }`
-		);
-	}, [
-		blockType,
-		attributes?.__unstableUnitoneSupports?.mixBlendMode,
-		attributes?.unitone?.mixBlendMode,
-		extraProps?.[ 'data-unitone-layout' ],
-	] );
-
-	return {
-		...extraProps,
-		'data-unitone-layout': unitoneLayout,
-	};
-}
-
 export function useMixBlendModeBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
 	const defaultValue = useSelect(
@@ -196,18 +166,26 @@ export function useMixBlendModeBlockProps( settings ) {
 		[ name ]
 	);
 
-	const newMixBlendModeProp = useBlockProps( wrapperProps, name, {
-		__unstableUnitoneSupports,
-		unitone: {
-			mixBlendMode: attributes?.unitone?.mixBlendMode ?? defaultValue,
-		},
-	} );
+	if ( ! hasBlockSupport( name, 'unitone.mixBlendMode' ) ) {
+		if ( ! __unstableUnitoneSupports?.mixBlendMode ) {
+			return settings;
+		}
+	}
+
+	const newMixBlendMode = attributes?.unitone?.mixBlendMode ?? defaultValue;
+
+	if ( null == newMixBlendMode ) {
+		return settings;
+	}
 
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...newMixBlendModeProp,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				`-mix-blend-mode:${ newMixBlendMode }`
+			),
 		},
 	};
 }

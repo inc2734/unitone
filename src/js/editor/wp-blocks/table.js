@@ -10,40 +10,30 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-const saveProp = ( extraProps, blockType, attributes ) => {
-	if ( 'core/table' !== blockType ) {
-		return extraProps;
-	}
-
-	if ( ! hasBlockSupport( blockType, 'unitone.cellMinWidth' ) ) {
-		return extraProps;
-	}
-
-	if (
-		null == attributes?.unitone?.cellMinWidth ||
-		'' === attributes?.unitone?.cellMinWidth
-	) {
-		return extraProps;
-	}
-
-	return {
-		...extraProps,
-		style: {
-			...extraProps?.style,
-			'--unitone--cell-min-width': attributes?.unitone?.cellMinWidth,
-		},
-	};
-};
-
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const { attributes, name, wrapperProps } = props;
 
+		if ( ! hasBlockSupport( name, 'unitone.cellMinWidth' ) ) {
+			return <BlockListBlock { ...props } />;
+		}
+
+		if (
+			null == attributes?.unitone?.cellMinWidth ||
+			'' === attributes?.unitone?.cellMinWidth
+		) {
+			return <BlockListBlock { ...props } />;
+		}
+
 		props = {
 			...props,
 			wrapperProps: {
-				...props.wrapperProps,
-				...saveProp( wrapperProps, name, attributes ),
+				...wrapperProps,
+				style: {
+					...wrapperProps?.style,
+					'--unitone--cell-min-width':
+						attributes?.unitone?.cellMinWidth,
+				},
 			},
 		};
 

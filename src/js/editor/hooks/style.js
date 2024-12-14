@@ -56,6 +56,11 @@ import {
 	useDividerTypeBlockProps,
 } from './divider/divider';
 
+import {
+	SectionDividerPanel,
+	useSectionDividerBlockProps,
+} from './section-divider/section-divider';
+
 import { DropShadowPanel, useDropShadowBlockProps } from './border/border';
 import { PositionPanel, usePositionBlockProps } from './position/position';
 
@@ -120,6 +125,8 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		props = useDividerBlockProps( props );
 		props = useDividerTypeBlockProps( props );
 
+		props = useSectionDividerBlockProps( props );
+
 		props = useMixBlendModeBlockProps( props );
 
 		props = useDropShadowBlockProps( props );
@@ -162,6 +169,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<DimensionsPanel { ...passedProps } />
 				<LayoutPanel { ...passedProps } />
 				<DividerPanel { ...passedProps } />
+				<SectionDividerPanel { ...passedProps } />
 				<PositionPanel { ...passedProps } />
 				<LayerPanel { ...passedProps } />
 				<DropShadowPanel { ...passedProps } />

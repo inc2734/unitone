@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-12-14T08:07:53+00:00\n"
-"PO-Revision-Date: 2024-12-14 17:08+0900\n"
+"POT-Creation-Date: 2024-12-15T03:36:23+00:00\n"
+"PO-Revision-Date: 2024-12-15 12:36+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2726,6 +2726,10 @@ msgstr "レベル"
 #: dist/js/editor/editor.js:10
 msgid "Horizontal position"
 msgstr "水平位置"
+
+#: dist/js/editor/editor.js:10
+msgid "Amount of content trimming"
+msgstr "コンテンツのトリミング量"
 
 #: dist/js/editor/editor.js:10
 msgid "Overlap the previous block"

@@ -384,6 +384,7 @@ add_filter(
 				$add_style( '--unitone--section-divider-top-level', $get_attribute( 'sectionDivider.top.level' ) );
 				$add_style( '--unitone--section-divider-top-size', $get_attribute( 'sectionDivider.top.size' ) );
 				$add_style( '--unitone--section-divider-top-x', $get_attribute( 'sectionDivider.top.x' ) );
+				$add_style( '--unitone--section-divider-top-trim', $get_attribute( 'sectionDivider.top.trim' ) );
 				$add_attribute( '-section-overlap:top', $get_attribute( 'sectionDivider.top.overlap' ) );
 			}
 
@@ -393,6 +394,7 @@ add_filter(
 				$add_style( '--unitone--section-divider-bottom-level', $get_attribute( 'sectionDivider.bottom.level' ) );
 				$add_style( '--unitone--section-divider-bottom-size', $get_attribute( 'sectionDivider.bottom.size' ) );
 				$add_style( '--unitone--section-divider-bottom-x', $get_attribute( 'sectionDivider.bottom.x' ) );
+				$add_style( '--unitone--section-divider-bottom-trim', $get_attribute( 'sectionDivider.bottom.trim' ) );
 			}
 		}
 

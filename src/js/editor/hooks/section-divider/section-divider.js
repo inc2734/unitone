@@ -43,6 +43,13 @@ import {
 } from './top-x';
 
 import {
+	resetSectionDividerTopTrimFilter,
+	resetSectionDividerTopTrim,
+	hasSectionDividerTopTrimValue,
+	SectionDividerTopTrimEdit,
+} from './top-trim';
+
+import {
 	resetSectionDividerTopOverlapFilter,
 	resetSectionDividerTopOverlap,
 	hasSectionDividerTopOverlapValue,
@@ -76,6 +83,13 @@ import {
 	hasSectionDividerBottomXValue,
 	SectionDividerBottomXEdit,
 } from './bottom-x';
+
+import {
+	resetSectionDividerBottomTrimFilter,
+	resetSectionDividerBottomTrim,
+	hasSectionDividerBottomTrimValue,
+	SectionDividerBottomTrimEdit,
+} from './bottom-trim';
 
 export function useSectionDividerBlockProps( settings ) {
 	const { attributes, name } = settings;
@@ -129,6 +143,8 @@ export function useSectionDividerBlockProps( settings ) {
 					!! sectionDivider?.top?.type && sectionDivider?.top?.size,
 				'--unitone--section-divider-top-x':
 					!! sectionDivider?.top?.type && sectionDivider?.top?.x,
+				'--unitone--section-divider-top-trim':
+					!! sectionDivider?.top?.type && sectionDivider?.top?.trim,
 				'--unitone--section-divider-bottom-level':
 					!! sectionDivider?.bottom?.type &&
 					sectionDivider?.bottom?.level,
@@ -138,6 +154,9 @@ export function useSectionDividerBlockProps( settings ) {
 				'--unitone--section-divider-bottom-x':
 					!! sectionDivider?.bottom?.type &&
 					sectionDivider?.bottom?.x,
+				'--unitone--section-divider-bottom-trim':
+					!! sectionDivider?.bottom?.type &&
+					sectionDivider?.bottom?.trim,
 			},
 		},
 	};
@@ -257,6 +276,30 @@ export function SectionDividerPanelPure( props ) {
 
 						<ToolsPanelItem
 							hasValue={ () =>
+								hasSectionDividerTopTrimValue( { ...props } )
+							}
+							label={ __(
+								'Amount of content trimming',
+								'unitone'
+							) }
+							onDeselect={ () =>
+								resetSectionDividerTopTrim( { ...props } )
+							}
+							resetAllFilter={ resetSectionDividerTopTrimFilter }
+							isShownByDefault
+							panelId={ clientId }
+						>
+							<SectionDividerTopTrimEdit
+								{ ...props }
+								label={ __(
+									'Amount of content trimming',
+									'unitone'
+								) }
+							/>
+						</ToolsPanelItem>
+
+						<ToolsPanelItem
+							hasValue={ () =>
 								hasSectionDividerTopOverlapValue( {
 									...props,
 								} )
@@ -366,6 +409,32 @@ export function SectionDividerPanelPure( props ) {
 							<SectionDividerBottomXEdit
 								{ ...props }
 								label={ __( 'Horizontal position', 'unitone' ) }
+							/>
+						</ToolsPanelItem>
+
+						<ToolsPanelItem
+							hasValue={ () =>
+								hasSectionDividerBottomTrimValue( { ...props } )
+							}
+							label={ __(
+								'Amount of content trimming',
+								'unitone'
+							) }
+							onDeselect={ () =>
+								resetSectionDividerBottomTrim( { ...props } )
+							}
+							resetAllFilter={
+								resetSectionDividerBottomTrimFilter
+							}
+							isShownByDefault
+							panelId={ clientId }
+						>
+							<SectionDividerBottomTrimEdit
+								{ ...props }
+								label={ __(
+									'Amount of content trimming',
+									'unitone'
+								) }
 							/>
 						</ToolsPanelItem>
 					</>

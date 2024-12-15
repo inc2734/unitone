@@ -1,23 +1,36 @@
 [data-unitone-layout*="-section-divider-"] {
 	--unitone--section-divider-max-height: var(--unitone--s4);
 
+	--unitone--section-divider-top-mask-image: url('data:image/svg+xml,<svg/>');
+	--unitone--section-divider-top-level: 0;
+	--unitone--section-divider-top-size: 0;
+	--unitone--section-divider-top-x: 0;
+
+	--unitone--section-divider-bottom-mask-image: url('data:image/svg+xml,<svg/>');
+	--unitone--section-divider-bottom-level: 0;
+	--unitone--section-divider-bottom-size: 0
+	--unitone--section-divider-bottom-x: 0;
+
+	padding-top: calc(var(--unitone--section-divider-max-height) * (var(--unitone--section-divider-top-level) / 100) * (1 - (var(--unitone--section-divider-top-trim) / 100)));
+	padding-bottom: calc(var(--unitone--section-divider-max-height) * (var(--unitone--section-divider-bottom-level) / 100) * (1 - (var(--unitone--section-divider-bottom-trim) / 100)));
+
 	clip-path: polygon(
 		var(--unitone--top-section-divider-path, 0 0, 100% 0),
 		var(--unitone--bottom-section-divider-path, 100% 100%, 0 100%)
 	);
 	mask-image:
-		var(--unitone--section-divider-top-mask-image, url('data:image/svg+xml,<svg/>')),
+		var(--unitone--section-divider-top-mask-image),
 		url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><rect x="0" y="0" height="1" width="1"/></svg>'),
-		var(--unitone--section-divider-bottom-mask-image, url('data:image/svg+xml,<svg/>'));
+		var(--unitone--section-divider-bottom-mask-image);
 	mask-composite: exclude, subtract;
 	mask-position:
-		calc(var(--unitone--section-divider-top-x, 0) * 10px) 0,
-		0 calc(var(--unitone--section-divider-top-level, 0) / 100 * var(--unitone--section-divider-max-height)),
-		calc(var(--unitone--section-divider-bottom-x, 0) * 10px) 100%;
+		calc(var(--unitone--section-divider-top-x) * 10px) 0,
+		0 calc(var(--unitone--section-divider-top-level) / 100 * var(--unitone--section-divider-max-height)),
+		calc(var(--unitone--section-divider-bottom-x) * 10px) 100%;
 	mask-size:
-		calc(var(--unitone--section-divider-top-size, 0) * 1%) calc(var(--unitone--section-divider-top-level, 0) / 100 * var(--unitone--section-divider-max-height)),
+		calc(var(--unitone--section-divider-top-size) * 1%) calc(var(--unitone--section-divider-top-level) / 100 * var(--unitone--section-divider-max-height)),
 		auto,
-		calc(var(--unitone--section-divider-bottom-size, 0) * 1%) calc(var(--unitone--section-divider-bottom-level, 0) / 100 * var(--unitone--section-divider-max-height));
+		calc(var(--unitone--section-divider-bottom-size) * 1%) calc(var(--unitone--section-divider-bottom-level) / 100 * var(--unitone--section-divider-max-height));
 	mask-repeat:
 		repeat-x,
 		repeat,

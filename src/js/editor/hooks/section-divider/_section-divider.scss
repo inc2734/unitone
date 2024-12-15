@@ -6,9 +6,9 @@
 		var(--unitone--bottom-section-divider-path, 100% 100%, 0 100%)
 	);
 	mask-image:
-		var(--unitone--section-divider-top-mask-image, url('data:image/svg+xml')),
+		var(--unitone--section-divider-top-mask-image, url('data:image/svg+xml,<svg/>')),
 		url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><rect x="0" y="0" height="1" width="1"/></svg>'),
-		var(--unitone--section-divider-bottom-mask-image, url('data:image/svg+xml'));
+		var(--unitone--section-divider-bottom-mask-image, url('data:image/svg+xml,<svg/>'));
 	mask-composite: exclude, subtract;
 	mask-position:
 		calc(var(--unitone--section-divider-top-x, 0) * 10px) 0,

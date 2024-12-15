@@ -45,6 +45,6 @@
 	}
 }
 
-[data-unitone-layout*="-section-divider-"] {
-	--unitone--section-divider-max-height: var(--unitone--padding);
+.unitone-section[data-unitone-layout*="-section-divider-"] {
+	--unitone--section-divider-max-height: var(--unitone--section--padding);
 }

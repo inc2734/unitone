@@ -378,15 +378,22 @@ add_filter(
 
 		// -section-divider
 		if ( $is_supported( 'sectionDivider' ) ) {
-			$add_attribute( '-section-divider-top', $get_attribute( 'sectionDivider.top.type' ) );
-			$add_style( '--unitone--section-divider-top-level', $get_attribute( 'sectionDivider.top.level' ) );
-			$add_style( '--unitone--section-divider-top-size', $get_attribute( 'sectionDivider.top.size' ) );
-			$add_style( '--unitone--section-divider-top-x', $get_attribute( 'sectionDivider.top.x' ) );
-			$add_attribute( '-section-overlap:top', $get_attribute( 'sectionDivider.top.overlap' ) );
-			$add_attribute( '-section-divider-bottom', $get_attribute( 'sectionDivider.bottom.type' ) );
-			$add_style( '--unitone--section-divider-bottom-level', $get_attribute( 'sectionDivider.bottom.level' ) );
-			$add_style( '--unitone--section-divider-bottom-size', $get_attribute( 'sectionDivider.bottom.size' ) );
-			$add_style( '--unitone--section-divider-bottom-x', $get_attribute( 'sectionDivider.bottom.x' ) );
+			$top_divider_type = $get_attribute( 'sectionDivider.top.type' );
+			if ( $top_divider_type ) {
+				$add_attribute( '-section-divider-top', $top_divider_type );
+				$add_style( '--unitone--section-divider-top-level', $get_attribute( 'sectionDivider.top.level' ) );
+				$add_style( '--unitone--section-divider-top-size', $get_attribute( 'sectionDivider.top.size' ) );
+				$add_style( '--unitone--section-divider-top-x', $get_attribute( 'sectionDivider.top.x' ) );
+				$add_attribute( '-section-overlap:top', $get_attribute( 'sectionDivider.top.overlap' ) );
+			}
+
+			$bottom_divider_type = $get_attribute( 'sectionDivider.bottom.type' );
+			if ( $bottom_divider_type ) {
+				$add_attribute( '-section-divider-bottom', $bottom_divider_type );
+				$add_style( '--unitone--section-divider-bottom-level', $get_attribute( 'sectionDivider.bottom.level' ) );
+				$add_style( '--unitone--section-divider-bottom-size', $get_attribute( 'sectionDivider.bottom.size' ) );
+				$add_style( '--unitone--section-divider-bottom-x', $get_attribute( 'sectionDivider.bottom.x' ) );
+			}
 		}
 
 		// --unitone--drop-shadow

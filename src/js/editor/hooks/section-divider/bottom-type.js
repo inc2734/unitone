@@ -1,7 +1,7 @@
 import { store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
@@ -57,18 +57,28 @@ export function SectionDividerBottomTypeEdit( {
 	}, [] );
 
 	const value = unitone?.sectionDivider?.bottom?.type ?? defaultValue ?? '';
+	const isBottomExpand = isSectionDividerBottomExpand( {
+		attributes: { unitone: { ...unitone } },
+	} );
+
+	const help = isBottomExpand
+		? sprintf(
+				// translators: %1$s: Overlap the previous block, %2$s: Level, %3$s: Amount of content trimming
+				__(
+					'If “%1$s” is enabled in the next block, the balance can be aligned by setting the “%2$s” and “%3$s” to the same values as in the next block.',
+					'unitone'
+				),
+				__( 'Overlap the previous block', 'unitone' ),
+				__( 'Level', 'unitone' ),
+				__( 'Amount of content trimming', 'unitone' )
+		  )
+		: __( 'Background color or background image must be set.', 'unitone' );
 
 	return (
 		<SelectControl
 			__nextHasNoMarginBottom
 			label={ label }
-			help={
-				!! value &&
-				__(
-					'Background color or background image must be set.',
-					'unitone'
-				)
-			}
+			help={ !! value && help }
 			options={ [
 				{ label: '', value: '' },
 				{
@@ -82,6 +92,10 @@ export function SectionDividerBottomTypeEdit( {
 				{
 					label: __( 'Scattering Wave', 'unitone' ),
 					value: 'scattering-wave',
+				},
+				{
+					label: __( 'Expand space', 'unitone' ),
+					value: 'expand',
 				},
 			] }
 			value={ value }
@@ -103,4 +117,8 @@ export function SectionDividerBottomTypeEdit( {
 			} }
 		/>
 	);
+}
+
+export function isSectionDividerBottomExpand( { attributes: { unitone } } ) {
+	return 'expand' === unitone?.sectionDivider?.bottom?.type;
 }

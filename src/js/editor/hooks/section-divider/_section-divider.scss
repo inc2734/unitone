@@ -10,6 +10,7 @@
 	--unitone--section-divider-bottom-level: 0;
 	--unitone--section-divider-bottom-size: 0
 	--unitone--section-divider-bottom-x: 0;
+	--unitone--section-divider-bottom-trim: 100;
 
 	padding-top: calc(var(--unitone--section-divider-max-height) * (var(--unitone--section-divider-top-level) / 100) * (1 - (var(--unitone--section-divider-top-trim) / 100)));
 	padding-bottom: calc(var(--unitone--section-divider-max-height) * (var(--unitone--section-divider-bottom-level) / 100) * (1 - (var(--unitone--section-divider-bottom-trim) / 100)));

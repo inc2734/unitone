@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-15T03:36:23+00:00\n"
+"POT-Creation-Date: 2024-12-15T07:10:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: unitone\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: inc/block-categories.php:42
 #: inc/block-categories.php:53
 #: inc/block-styles.php:104
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "unitone"
 msgstr ""
 
@@ -1581,7 +1581,7 @@ msgid "Size of h6"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Size"
 msgstr ""
 
@@ -2429,13 +2429,13 @@ msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Right"
 msgstr ""
 
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Left"
 msgstr ""
 
@@ -2672,6 +2672,7 @@ msgstr ""
 
 #: dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Type"
 msgstr ""
 
@@ -2737,98 +2738,111 @@ msgid "Auto line breaks"
 msgstr ""
 
 #: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Background color or background image must be set."
 msgstr ""
 
 #: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Triangle"
 msgstr ""
 
 #: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Wave"
 msgstr ""
 
 #: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Scattering Wave"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
-msgid "Section divider (Top)"
+#. translators: %1$s: Overlap the previous block, %2$s: Level, %3$s: Amount of content trimming
+#: dist/js/editor/editor.js:13
+msgid "If “%1$s” is enabled in the next block, the balance can be aligned by setting the “%2$s” and “%3$s” to the same values as in the next block."
 msgstr ""
 
-#: dist/js/editor/editor.js:10
-msgid "Level"
-msgstr ""
-
-#: dist/js/editor/editor.js:10
-msgid "Horizontal position"
-msgstr ""
-
-#: dist/js/editor/editor.js:10
-msgid "Amount of content trimming"
-msgstr ""
-
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Overlap the previous block"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
+msgid "Level"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Amount of content trimming"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Expand space"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Section divider (Top)"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Horizontal position"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
 msgid "Section divider (Bottom)"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Filter"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Position"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Top"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Bottom"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "The stack level"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Add your own CSS to customize the appearance of this block."
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Using \"&\" as a selector acts as a unique selector that applies only to this block."
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Selectors and CSS beginning with anything other than \"&\" are ignored."
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Overlay"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Overlay opacity"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Cell Min Width"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Select parent block"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Select child block"
 msgstr ""
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Show block outline"
 msgstr ""
 

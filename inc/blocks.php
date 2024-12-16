@@ -392,8 +392,13 @@ add_filter(
 			if ( $bottom_divider_type ) {
 				$add_attribute( '-section-divider-bottom', $bottom_divider_type );
 				$add_style( '--unitone--section-divider-bottom-level', $get_attribute( 'sectionDivider.bottom.level' ) );
-				$add_style( '--unitone--section-divider-bottom-size', $get_attribute( 'sectionDivider.bottom.size' ) );
-				$add_style( '--unitone--section-divider-bottom-x', $get_attribute( 'sectionDivider.bottom.x' ) );
+
+				$is_bottom_divider_expand = 'expand' === $bottom_divider_type;
+				if ( ! $is_bottom_divider_expand ) {
+					$add_style( '--unitone--section-divider-bottom-size', $get_attribute( 'sectionDivider.bottom.size' ) );
+					$add_style( '--unitone--section-divider-bottom-x', $get_attribute( 'sectionDivider.bottom.x' ) );
+				}
+
 				$add_style( '--unitone--section-divider-bottom-trim', $get_attribute( 'sectionDivider.bottom.trim' ) );
 			}
 		}

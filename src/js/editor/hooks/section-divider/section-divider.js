@@ -61,6 +61,7 @@ import {
 	resetSectionDividerBottomType,
 	hasSectionDividerBottomTypeValue,
 	SectionDividerBottomTypeEdit,
+	isSectionDividerBottomExpand,
 } from './bottom-type';
 
 import {
@@ -121,6 +122,8 @@ export function useSectionDividerBlockProps( settings ) {
 		return settings;
 	}
 
+	const isBottomExpand = isSectionDividerBottomExpand( { ...settings } );
+
 	return {
 		...settings,
 		wrapperProps: {
@@ -150,9 +153,11 @@ export function useSectionDividerBlockProps( settings ) {
 					sectionDivider?.bottom?.level,
 				'--unitone--section-divider-bottom-size':
 					!! sectionDivider?.bottom?.type &&
+					! isBottomExpand &&
 					sectionDivider?.bottom?.size,
 				'--unitone--section-divider-bottom-x':
 					!! sectionDivider?.bottom?.type &&
+					! isBottomExpand &&
 					sectionDivider?.bottom?.x,
 				'--unitone--section-divider-bottom-trim':
 					!! sectionDivider?.bottom?.type &&
@@ -194,6 +199,8 @@ export function SectionDividerPanelPure( props ) {
 	const hasSectionDividerBottomType = hasSectionDividerBottomTypeValue( {
 		...props,
 	} );
+
+	const isBottomExpand = isSectionDividerBottomExpand( { ...props } );
 
 	return (
 		<InspectorControls>
@@ -374,54 +381,78 @@ export function SectionDividerPanelPure( props ) {
 							/>
 						</ToolsPanelItem>
 
-						<ToolsPanelItem
-							hasValue={ () =>
-								hasSectionDividerBottomSizeValue( { ...props } )
-							}
-							label={ __( 'Size', 'unitone' ) }
-							onDeselect={ () =>
-								resetSectionDividerBottomSize( { ...props } )
-							}
-							resetAllFilter={
-								resetSectionDividerBottomSizeFilter
-							}
-							isShownByDefault
-							panelId={ clientId }
-						>
-							<SectionDividerBottomSizeEdit
-								{ ...props }
-								label={ __( 'Size', 'unitone' ) }
-							/>
-						</ToolsPanelItem>
+						{ ! isBottomExpand && (
+							<>
+								<ToolsPanelItem
+									hasValue={ () =>
+										hasSectionDividerBottomSizeValue( {
+											...props,
+										} )
+									}
+									label={ __( 'Size', 'unitone' ) }
+									onDeselect={ () =>
+										resetSectionDividerBottomSize( {
+											...props,
+										} )
+									}
+									resetAllFilter={
+										resetSectionDividerBottomSizeFilter
+									}
+									isShownByDefault
+									panelId={ clientId }
+								>
+									<SectionDividerBottomSizeEdit
+										{ ...props }
+										label={ __( 'Size', 'unitone' ) }
+									/>
+								</ToolsPanelItem>
+
+								<ToolsPanelItem
+									hasValue={ () =>
+										hasSectionDividerBottomXValue( {
+											...props,
+										} )
+									}
+									label={ __(
+										'Horizontal position',
+										'unitone'
+									) }
+									onDeselect={ () =>
+										resetSectionDividerBottomX( {
+											...props,
+										} )
+									}
+									resetAllFilter={
+										resetSectionDividerBottomXFilter
+									}
+									isShownByDefault
+									panelId={ clientId }
+								>
+									<SectionDividerBottomXEdit
+										{ ...props }
+										label={ __(
+											'Horizontal position',
+											'unitone'
+										) }
+									/>
+								</ToolsPanelItem>
+							</>
+						) }
 
 						<ToolsPanelItem
 							hasValue={ () =>
-								hasSectionDividerBottomXValue( { ...props } )
-							}
-							label={ __( 'Horizontal position', 'unitone' ) }
-							onDeselect={ () =>
-								resetSectionDividerBottomX( { ...props } )
-							}
-							resetAllFilter={ resetSectionDividerBottomXFilter }
-							isShownByDefault
-							panelId={ clientId }
-						>
-							<SectionDividerBottomXEdit
-								{ ...props }
-								label={ __( 'Horizontal position', 'unitone' ) }
-							/>
-						</ToolsPanelItem>
-
-						<ToolsPanelItem
-							hasValue={ () =>
-								hasSectionDividerBottomTrimValue( { ...props } )
+								hasSectionDividerBottomTrimValue( {
+									...props,
+								} )
 							}
 							label={ __(
 								'Amount of content trimming',
 								'unitone'
 							) }
 							onDeselect={ () =>
-								resetSectionDividerBottomTrim( { ...props } )
+								resetSectionDividerBottomTrim( {
+									...props,
+								} )
 							}
 							resetAllFilter={
 								resetSectionDividerBottomTrimFilter

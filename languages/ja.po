@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-12-15T03:36:23+00:00\n"
-"PO-Revision-Date: 2024-12-15 12:36+0900\n"
+"POT-Creation-Date: 2024-12-15T07:10:43+00:00\n"
+"PO-Revision-Date: 2024-12-15 16:11+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Theme Name of the theme
 #: inc/block-categories.php:20 inc/block-categories.php:31
 #: inc/block-categories.php:42 inc/block-categories.php:53
-#: inc/block-styles.php:104 dist/js/editor/editor.js:10
+#: inc/block-styles.php:104 dist/js/editor/editor.js:13
 msgid "unitone"
 msgstr "unitone"
 
@@ -1560,7 +1560,7 @@ msgstr "h5 のサイズ"
 msgid "Size of h6"
 msgstr "h6 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:10
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:13
 msgid "Size"
 msgstr "サイズ"
 
@@ -2383,12 +2383,12 @@ msgid "Columns to be treated as sidebars"
 msgstr "サイドバーとして扱うカラム"
 
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Right"
 msgstr "右"
 
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Left"
 msgstr "左"
 
@@ -2628,6 +2628,7 @@ msgid "Scroll"
 msgstr "スクロール"
 
 #: dist/js/editor/editor.js:7 dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Type"
 msgstr "種類"
 
@@ -2699,71 +2700,84 @@ msgstr ""
 msgid "Auto line breaks"
 msgstr "自動改行"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
 msgid "Background color or background image must be set."
 msgstr "背景色または背景画像を設定する必要があります。"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
 msgid "Triangle"
 msgstr "三角"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
 msgid "Wave"
 msgstr "波"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
 msgid "Scattering Wave"
 msgstr "散乱波"
 
-#: dist/js/editor/editor.js:10
-msgid "Section divider (Top)"
-msgstr "セクション区切り（上部）"
+#. translators: %1$s: Overlap the previous block, %2$s: Level, %3$s: Amount of content trimming
+#: dist/js/editor/editor.js:13
+msgid ""
+"If “%1$s” is enabled in the next block, the balance can be aligned by "
+"setting the “%2$s” and “%3$s” to the same values as in the next block."
+msgstr ""
+"後続のブロックで「%1$s」が有効になっている場合、「%2$s」と「%3$s」を後続のブ"
+"ロックと同じ値に設定することで、バランスを揃えることができます。"
 
-#: dist/js/editor/editor.js:10
-msgid "Level"
-msgstr "レベル"
-
-#: dist/js/editor/editor.js:10
-msgid "Horizontal position"
-msgstr "水平位置"
-
-#: dist/js/editor/editor.js:10
-msgid "Amount of content trimming"
-msgstr "コンテンツのトリミング量"
-
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Overlap the previous block"
 msgstr "前のブロックに重ねる"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
+msgid "Level"
+msgstr "レベル"
+
+#: dist/js/editor/editor.js:13
+msgid "Amount of content trimming"
+msgstr "コンテンツのトリミング量"
+
+#: dist/js/editor/editor.js:13
+msgid "Expand space"
+msgstr "スペースを拡張"
+
+#: dist/js/editor/editor.js:13
+msgid "Section divider (Top)"
+msgstr "セクション区切り（上部）"
+
+#: dist/js/editor/editor.js:13
+msgid "Horizontal position"
+msgstr "水平位置"
+
+#: dist/js/editor/editor.js:13
 msgid "Section divider (Bottom)"
 msgstr "セクション区切り（下部）"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Filter"
 msgstr "フィルター"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Position"
 msgstr "位置"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Top"
 msgstr "上"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Bottom"
 msgstr "下"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "The stack level"
 msgstr "重ね合わせレベル"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Add your own CSS to customize the appearance of this block."
 msgstr "独自の CSS を追加して、このブロックの外観をカスタマイズできます。"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid ""
 "Using \"&\" as a selector acts as a unique selector that applies only to "
 "this block."
@@ -2771,31 +2785,31 @@ msgstr ""
 "セレクターとして \"&\" を使用すると、このブロックのみに適用されるユニークなセ"
 "レクターとして機能します。"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Selectors and CSS beginning with anything other than \"&\" are ignored."
 msgstr "\"&\" 以外から始まるセレクターおよび CSS は無視されます。"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Overlay"
 msgstr "オーバレイ"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Overlay opacity"
 msgstr "オーバーレイの不透明度"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Cell Min Width"
 msgstr "セルの最小幅"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Select parent block"
 msgstr "親ブロックを選択"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Select child block"
 msgstr "子ブロックを選択"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
 msgid "Show block outline"
 msgstr "ブロックのアウトラインを表示"
 
@@ -3690,3 +3704,6 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "Expand for overlap of next block"
+#~ msgstr "後続のブロックを重ねたときのために拡張する"

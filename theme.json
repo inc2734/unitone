@@ -16,9 +16,9 @@
 			"link": true,
 			"gradients": [
 				{
-					"slug":"unitone-accent",
-					"gradient":"linear-gradient(135deg, #d4c7d9 0%, #bbcad9 100%)",
-					"name":"Accent gradation"
+					"slug": "unitone-accent",
+					"gradient": "linear-gradient(135deg, #d4c7d9 0%, #bbcad9 100%)",
+					"name": "Accent gradation"
 				}
 			],
 			"palette": [
@@ -28,14 +28,14 @@
 					"name": "Accent"
 				},
 				{
+					"slug": "unitone-text-black",
+					"color": "var(--unitone--color--text-immutable)",
+					"name": "Text (Black / Immutable)"
+				},
+				{
 					"slug": "unitone-background",
 					"color": "var(--unitone--color--background)",
 					"name": "Background"
-				},
-				{
-					"slug": "unitone-background-alt",
-					"color": "var(--unitone--color--background-alt)",
-					"name": "Background Alt"
 				},
 				{
 					"slug": "unitone-text",
@@ -43,14 +43,14 @@
 					"name": "Text"
 				},
 				{
+					"slug": "unitone-background-alt",
+					"color": "var(--unitone--color--background-alt)",
+					"name": "Background Alt"
+				},
+				{
 					"slug": "unitone-text-alt",
 					"color": "var(--unitone--color--text-alt)",
 					"name": "Text Alt"
-				},
-				{
-					"slug": "unitone-text-black",
-					"color": "var(--unitone--color--text-immutable)",
-					"name": "Text (Black / Immutable)"
 				},
 				{
 					"slug": "unitone-pale-gray",
@@ -128,13 +128,17 @@
 							"fontFamily": "'Noto Sans JP'",
 							"fontWeight": "400",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/noto-sans-jp/NotoSansJP-Regular.woff2" ]
+							"src": [
+								"file:./dist/fonts/noto-sans-jp/NotoSansJP-Regular.woff2"
+							]
 						},
 						{
 							"fontFamily": "'Noto Sans JP'",
 							"fontWeight": "700",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/noto-sans-jp/NotoSansJP-Bold.woff2" ]
+							"src": [
+								"file:./dist/fonts/noto-sans-jp/NotoSansJP-Bold.woff2"
+							]
 						}
 					]
 				},
@@ -147,13 +151,17 @@
 							"fontFamily": "'Noto Serif JP'",
 							"fontWeight": "400",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/noto-serif-jp/NotoSerifJP-Regular.woff2" ]
+							"src": [
+								"file:./dist/fonts/noto-serif-jp/NotoSerifJP-Regular.woff2"
+							]
 						},
 						{
 							"fontFamily": "'Noto Serif JP'",
 							"fontWeight": "700",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/noto-serif-jp/NotoSerifJP-Bold.woff2" ]
+							"src": [
+								"file:./dist/fonts/noto-serif-jp/NotoSerifJP-Bold.woff2"
+							]
 						}
 					]
 				},
@@ -166,13 +174,17 @@
 							"fontFamily": "'BIZ UDPGothic'",
 							"fontWeight": "400",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/biz-udpgothic/BIZUDPGothic-Regular.woff2" ]
+							"src": [
+								"file:./dist/fonts/biz-udpgothic/BIZUDPGothic-Regular.woff2"
+							]
 						},
 						{
 							"fontFamily": "'BIZ UDPGothic'",
 							"fontWeight": "700",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/biz-udpgothic/BIZUDPGothic-Bold.woff2" ]
+							"src": [
+								"file:./dist/fonts/biz-udpgothic/BIZUDPGothic-Bold.woff2"
+							]
 						}
 					]
 				},
@@ -185,13 +197,17 @@
 							"fontFamily": "'BIZ UDPMincho'",
 							"fontWeight": "400",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/biz-udpmincho/BIZUDPMincho-Regular.woff2" ]
+							"src": [
+								"file:./dist/fonts/biz-udpmincho/BIZUDPMincho-Regular.woff2"
+							]
 						},
 						{
 							"fontFamily": "'BIZ UDPMincho'",
 							"fontWeight": "700",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/biz-udpmincho/BIZUDPMincho-Bold.woff2" ]
+							"src": [
+								"file:./dist/fonts/biz-udpmincho/BIZUDPMincho-Bold.woff2"
+							]
 						}
 					]
 				},
@@ -204,31 +220,41 @@
 							"fontFamily": "'Cormorant Garamond'",
 							"fontWeight": "300",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/cormorant-garamond/CormorantGaramond-Light.ttf" ]
+							"src": [
+								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Light.ttf"
+							]
 						},
 						{
 							"fontFamily": "'Cormorant Garamond'",
 							"fontWeight": "300",
 							"fontStyle": "italic",
-							"src": [ "file:./dist/fonts/cormorant-garamond/CormorantGaramond-LightItalic.ttf" ]
+							"src": [
+								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-LightItalic.ttf"
+							]
 						},
 						{
 							"fontFamily": "'Cormorant Garamond'",
 							"fontWeight": "400",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/cormorant-garamond/CormorantGaramond-Regular.ttf" ]
+							"src": [
+								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Regular.ttf"
+							]
 						},
 						{
 							"fontFamily": "'Cormorant Garamond'",
 							"fontWeight": "400",
 							"fontStyle": "italic",
-							"src": [ "file:./dist/fonts/cormorant-garamond/CormorantGaramond-Italic.ttf" ]
+							"src": [
+								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Italic.ttf"
+							]
 						},
 						{
 							"fontFamily": "'Cormorant Garamond'",
 							"fontWeight": "700",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/cormorant-garamond/CormorantGaramond-Bold.ttf" ]
+							"src": [
+								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Bold.ttf"
+							]
 						}
 					]
 				}
@@ -292,7 +318,17 @@
 			"margin": false,
 			"padding": false,
 			"defaultSpacingSizes": false,
-			"units": ["%", "px", "em", "rem", "vh", "vw", "vmin", "vmax", "cqi"],
+			"units": [
+				"%",
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw",
+				"vmin",
+				"vmax",
+				"cqi"
+			],
 			"spacingSizes": [
 				{
 					"name": "XS",
@@ -357,7 +393,8 @@
 		"elements": {
 			"button": {
 				"color": {
-					"background": "var(--wp--preset--color--unitone-accent)"
+					"background": "var(--wp--preset--color--unitone-accent)",
+					"text": "var(--wp--preset--color--unitone-background)"
 				},
 				"border": {
 					"radius": "var(--unitone--border-radius)"
@@ -526,10 +563,8 @@
 					"color": "var(--wp--preset--color--unitone-light-gray)"
 				},
 				"variations": {
-					"stripes": {
-					},
-					"underline": {
-					}
+					"stripes": {},
+					"underline": {}
 				}
 			}
 		},

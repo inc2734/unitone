@@ -80,7 +80,7 @@
 
 	a:where(:not(.wp-element-button)),
 	span:where(:not([class]):not([data-rich-text-placeholder])) {
-		color: var(--wp--preset--color--white);
+		color: var(--wp--preset--color--unitone-background);
 	}
 }
 

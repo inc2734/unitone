@@ -25,7 +25,7 @@
 :root :where(.unitone-child-pages.is-style-panel) {
 	> :where([data-unitone-layout~="responsive-grid"]) {
 		> :where([data-unitone-layout~="decorator"]) {
-			background-color: var(--wp--preset--color--white);
+			background-color: var(--wp--preset--color--unitone-background);
 		}
 	}
 }

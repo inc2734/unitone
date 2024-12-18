@@ -1,13 +1,13 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
-	"title": "Dark",
+	"title": "Light: Red base",
 	"settings": {
 		"color": {
 			"palette": [
 				{
 					"slug": "unitone-accent",
-					"color": "#fefefe",
+					"color": "color-mix(in srgb, var(--unitone--color--accent) 98%, #f00)",
 					"name": "Accent"
 				},
 				{
@@ -17,64 +17,55 @@
 				},
 				{
 					"slug": "unitone-background",
-					"color": "var(--unitone--color--background-alt)",
+					"color": "var(--unitone--color--background)",
 					"name": "Background"
 				},
 				{
 					"slug": "unitone-text",
-					"color": "var(--unitone--color--text-alt)",
+					"color": "var(--unitone--color--text)",
 					"name": "Text"
 				},
 				{
 					"slug": "unitone-background-alt",
-					"color": "var(--unitone--color--background)",
+					"color": "var(--unitone--color--background-alt)",
 					"name": "Background Alt"
 				},
 				{
 					"slug": "unitone-text-alt",
-					"color": "var(--unitone--color--text)",
+					"color": "var(--unitone--color--text-alt)",
 					"name": "Text Alt"
 				},
 				{
 					"slug": "unitone-pale-gray",
-					"color": "#272727",
+					"color": "color-mix(in srgb, #fafafa 98%, #f00)",
 					"name": "Pale Gray"
 				},
 				{
 					"slug": "unitone-bright-gray",
-					"color": "#2f2f2f",
+					"color": "color-mix(in srgb, #f4f4f4 98%, #f00)",
 					"name": "Bright Gray"
 				},
 				{
 					"slug": "unitone-light-gray",
-					"color": "#3d3d3d",
+					"color": "color-mix(in srgb, #e8e8e8 98%, #f00)",
 					"name": "Light Gray"
 				},
 				{
 					"slug": "unitone-gray",
-					"color": "#575757",
+					"color": "color-mix(in srgb, #a5a5a5 98%, #f00)",
 					"name": "Gray"
 				},
 				{
 					"slug": "unitone-dark-gray",
-					"color": "#7b7b7b",
+					"color": "color-mix(in srgb, #434343 98%, #f00)",
 					"name": "Dark Gray"
 				},
 				{
 					"slug": "unitone-heavy-gray",
-					"color": "#a7a7a7",
+					"color": "color-mix(in srgb, #090909 98%, #f00)",
 					"name": "Heavy Gray"
 				}
 			]
-		}
-	},
-	"styles": {
-		"elements": {
-			"link": {
-				"color": {
-					"text": "#fff"
-				}
-			}
 		}
 	}
 }

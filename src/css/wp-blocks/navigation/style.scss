@@ -265,7 +265,7 @@
 	}
 	&:not(.has-background) .wp-block-navigation__submenu-container {
 		background-color: var(--wp--preset--color--unitone-accent);
-		color: var(--wp--preset--color--white);
+		color: var(--wp--preset--color--unitone-background);
 
 		> .block-list-appender .block-editor-button-block-appender {
 			background-color: #fff;

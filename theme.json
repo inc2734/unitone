@@ -125,16 +125,16 @@
 					"fontFamily": "'Noto Sans JP', sans-serif",
 					"fontFace": [
 						{
-							"fontFamily": "Noto Sans JP",
+							"fontFamily": "'Noto Sans JP'",
 							"fontWeight": "400",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/NotoSansJP-Regular.woff2" ]
+							"src": [ "file:./dist/fonts/noto-sans-jp/NotoSansJP-Regular.woff2" ]
 						},
 						{
-							"fontFamily": "Noto Sans JP",
+							"fontFamily": "'Noto Sans JP'",
 							"fontWeight": "700",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/NotoSansJP-Bold.woff2" ]
+							"src": [ "file:./dist/fonts/noto-sans-jp/NotoSansJP-Bold.woff2" ]
 						}
 					]
 				},
@@ -144,16 +144,16 @@
 					"fontFamily": "'Noto Serif JP', serif",
 					"fontFace": [
 						{
-							"fontFamily": "Noto Serif JP",
+							"fontFamily": "'Noto Serif JP'",
 							"fontWeight": "400",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/NotoSerifJP-Regular.woff2" ]
+							"src": [ "file:./dist/fonts/noto-serif-jp/NotoSerifJP-Regular.woff2" ]
 						},
 						{
-							"fontFamily": "Noto Serif JP",
+							"fontFamily": "'Noto Serif JP'",
 							"fontWeight": "700",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/NotoSerifJP-Bold.woff2" ]
+							"src": [ "file:./dist/fonts/noto-serif-jp/NotoSerifJP-Bold.woff2" ]
 						}
 					]
 				},
@@ -163,16 +163,16 @@
 					"fontFamily": "'BIZ UDPGothic', sans-serif",
 					"fontFace": [
 						{
-							"fontFamily": "BIZ UDPGothic",
+							"fontFamily": "'BIZ UDPGothic'",
 							"fontWeight": "400",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/BIZUDPGothic-Regular.woff2" ]
+							"src": [ "file:./dist/fonts/biz-udpgothic/BIZUDPGothic-Regular.woff2" ]
 						},
 						{
-							"fontFamily": "BIZ UDPGothic",
+							"fontFamily": "'BIZ UDPGothic'",
 							"fontWeight": "700",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/BIZUDPGothic-Bold.woff2" ]
+							"src": [ "file:./dist/fonts/biz-udpgothic/BIZUDPGothic-Bold.woff2" ]
 						}
 					]
 				},
@@ -182,16 +182,53 @@
 					"fontFamily": "'BIZ UDPMincho', sans-serif",
 					"fontFace": [
 						{
-							"fontFamily": "BIZ UDPMincho",
+							"fontFamily": "'BIZ UDPMincho'",
 							"fontWeight": "400",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/BIZUDPMincho-Regular.woff2" ]
+							"src": [ "file:./dist/fonts/biz-udpmincho/BIZUDPMincho-Regular.woff2" ]
 						},
 						{
-							"fontFamily": "BIZ UDPMincho",
+							"fontFamily": "'BIZ UDPMincho'",
 							"fontWeight": "700",
 							"fontStyle": "normal",
-							"src": [ "file:./dist/fonts/BIZUDPMincho-Bold.woff2" ]
+							"src": [ "file:./dist/fonts/biz-udpmincho/BIZUDPMincho-Bold.woff2" ]
+						}
+					]
+				},
+				{
+					"name": "Cormorant Garamond",
+					"slug": "cormorant-garamond",
+					"fontFamily": "'Cormorant Garamond', 'Noto Serif JP', serif",
+					"fontFace": [
+						{
+							"fontFamily": "'Cormorant Garamond'",
+							"fontWeight": "300",
+							"fontStyle": "normal",
+							"src": [ "file:./dist/fonts/cormorant-garamond/CormorantGaramond-Light.ttf" ]
+						},
+						{
+							"fontFamily": "'Cormorant Garamond'",
+							"fontWeight": "300",
+							"fontStyle": "italic",
+							"src": [ "file:./dist/fonts/cormorant-garamond/CormorantGaramond-LightItalic.ttf" ]
+						},
+						{
+							"fontFamily": "'Cormorant Garamond'",
+							"fontWeight": "400",
+							"fontStyle": "normal",
+							"src": [ "file:./dist/fonts/cormorant-garamond/CormorantGaramond-Regular.ttf" ]
+						},
+						{
+							"fontFamily": "'Cormorant Garamond'",
+							"fontWeight": "400",
+							"fontStyle": "italic",
+							"src": [ "file:./dist/fonts/cormorant-garamond/CormorantGaramond-Italic.ttf" ]
+						},
+						{
+							"fontFamily": "'Cormorant Garamond'",
+							"fontWeight": "700",
+							"fontStyle": "normal",
+							"src": [ "file:./dist/fonts/cormorant-garamond/CormorantGaramond-Bold.ttf" ]
 						}
 					]
 				}

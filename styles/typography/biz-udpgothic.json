@@ -1,0 +1,11 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "BIZ UDPGothic",
+	"slug": "biz-udpgothic",
+	"styles": {
+		"typography": {
+			"fontFamily": "var:preset|font-family|biz-udpgothic"
+		}
+	}
+}

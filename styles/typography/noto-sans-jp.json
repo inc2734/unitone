@@ -1,0 +1,11 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "Noto Sans JP",
+	"slug": "noto-sans-jp",
+	"styles": {
+		"typography": {
+			"fontFamily": "var:preset|font-family|noto-sans-jp"
+		}
+	}
+}

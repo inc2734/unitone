@@ -209,8 +209,11 @@ export function useStairsBlockProps( settings ) {
 			...settings.wrapperProps,
 			'data-unitone-layout': clsx(
 				settings.wrapperProps?.[ 'data-unitone-layout' ],
-				`-stairs:${ newStairs?.stairs }`,
-				`-stairs-up:${ newStairs?.stairsUp }`
+				{
+					[ `-stairs:${ newStairs?.stairs }` ]: !! newStairs?.stairs,
+					[ `-stairs-up:${ newStairs?.stairsUp }` ]:
+						!! newStairs?.stairsUp,
+				}
 			),
 		},
 	};

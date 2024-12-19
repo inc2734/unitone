@@ -90,23 +90,23 @@ export function SpacingSizeControl( {
 			value: 2,
 		},
 		{
-			label: '2XL',
+			label: 'XL',
 			value: 3,
 		},
 		{
-			label: '3XL',
+			label: '2XL',
 			value: 4,
 		},
 		{
-			label: '4XL',
+			label: '3XL',
 			value: 5,
 		},
 		{
-			label: '5XL',
+			label: '4XL',
 			value: 6,
 		},
 		{
-			label: '6XL',
+			label: '5XL',
 			value: 7,
 		},
 	];

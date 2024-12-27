@@ -14,16 +14,18 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { useRefEffect, useMergeRefs } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
-import { useRef } from '@wordpress/element';
+import { useRef, useEffect } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 
 import { GridVisualizer } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
-import { stairsResizeObserver } from '@inc2734/unitone-css/library';
+import {
+	stairsResizeObserver,
+	setStairsStep,
+} from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const {
@@ -33,31 +35,32 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		__unstableUnitoneBlockOutline,
 	} = attributes;
 
-	const hasInnerBlocks = useSelect(
+	const innerBlocksLength = useSelect(
 		( select ) =>
-			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
+			select( blockEditorStore ).getBlock( clientId )?.innerBlocks
 				?.length,
 		[ clientId ]
 	);
+	const hasInnerBlocks = !! innerBlocksLength;
 
-	const effect = useRefEffect(
-		( target ) => {
-			stairsResizeObserver( target );
-		},
-		[
-			clientId,
-			columnMinWidth,
-			unitone?.gap,
-			unitone?.stairs,
-			unitone?.stairsUp,
-		]
-	);
+	const ref = useRef( null );
 
-	const ref = useRef();
-	const refs = useMergeRefs( [ ref, effect ] );
+	useEffect( () => {
+		stairsResizeObserver( ref.current );
+	}, [
+		clientId,
+		columnMinWidth,
+		unitone?.gap,
+		unitone?.stairs,
+		unitone?.stairsUp,
+	] );
+
+	useEffect( () => {
+		setStairsStep( ref.current );
+	}, [ innerBlocksLength ] );
 
 	const blockProps = useBlockProps( {
-		ref: refs,
+		ref,
 		style: {
 			'--unitone--column-min-width': columnMinWidth || undefined,
 		},

@@ -6,14 +6,10 @@ import {
 } from '@wordpress/block-editor';
 
 import { useSelect } from '@wordpress/data';
-import { useEffect, useLayoutEffect, useRef } from '@wordpress/element';
-
-import { setDividerLinewrap } from '@inc2734/unitone-css/library';
+import { useEffect } from '@wordpress/element';
 
 export default function ( { attributes, setAttributes, clientId, context } ) {
 	const { tagName, templateLock } = attributes;
-
-	const ref = useRef();
 
 	useEffect( () => {
 		setAttributes( {
@@ -25,13 +21,6 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 		} );
 	}, [ context ] );
 
-	useLayoutEffect( () => {
-		const target = ref?.current?.parentElement;
-		if ( !! target ) {
-			setDividerLinewrap( target );
-		}
-	}, [ JSON.stringify( attributes?.unitone ) ] );
-
 	const hasInnerBlocks = useSelect(
 		( select ) =>
 			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
@@ -40,7 +29,6 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 	);
 
 	const blockProps = useBlockProps( {
-		ref,
 		className: 'unitone-grid__content',
 	} );
 

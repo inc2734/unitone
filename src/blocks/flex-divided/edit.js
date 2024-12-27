@@ -12,9 +12,8 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { useRefEffect } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useRef, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { physicalToLogical } from '../../js/helper';
@@ -29,12 +28,13 @@ import {
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { tagName, layout, templateLock } = attributes;
 
-	const hasInnerBlocks = useSelect(
+	const innerBlocksLength = useSelect(
 		( select ) =>
-			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
+			select( blockEditorStore ).getBlock( clientId )?.innerBlocks
 				?.length,
 		[ clientId ]
 	);
+	const hasInnerBlocks = !! innerBlocksLength;
 
 	useEffect( () => {
 		const newVerticalAlignment =
@@ -47,8 +47,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		} );
 	}, [ layout?.verticalAlignment, layout?.orientation ] );
 
-	const ref = useRefEffect( ( target ) => {
-		dividersResizeObserver( target, {
+	const ref = useRef( null );
+
+	useEffect( () => {
+		dividersResizeObserver( ref.current, {
 			ignore: {
 				className: [
 					'is-selected',
@@ -60,9 +62,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		} );
 
 		setTimeout( () => {
-			setDividerLinewrap( target );
+			setDividerLinewrap( ref.current );
 		}, 100 );
 	}, [] );
+
+	useEffect( () => {
+		setDividerLinewrap( ref.current );
+	}, [ innerBlocksLength ] );
 
 	const blockProps = useBlockProps( {
 		ref,

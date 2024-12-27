@@ -22,7 +22,7 @@
 }
 
 .unitone-flex[data-unitone-layout~="-divider\:stripe"] {
-	column-gap: 0;
+	column-gap: 0 !important;
 	align-items: stretch;
 
 	> * {
@@ -50,7 +50,7 @@
 }
 
 .unitone-flex[data-unitone-layout~="-divider\:slash"] {
-	column-gap: 0;
+	column-gap: 0 !important;
 	align-items: stretch;
 
 	// Core specificity is 0 2 0.
@@ -81,7 +81,7 @@
 }
 
 .unitone-flex[data-unitone-layout~="-divider\:bordered"] {
-	gap: 0;
+	gap: 0 !important;
 	align-items: stretch;
 
 	> * {

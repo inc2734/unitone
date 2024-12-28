@@ -326,6 +326,10 @@ function LayoutPanelPure( props ) {
 			} );
 		}
 	}, [
+		isMaxHeightDisabled,
+		isMaxWidthDisabled,
+		isMinHeightDisabled,
+		isMinWidthDisabled,
 		isFlexBasisDisabled,
 		isFlexGrowDisabled,
 		isFlexShrinkDisabled,

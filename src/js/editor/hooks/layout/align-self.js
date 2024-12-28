@@ -421,7 +421,7 @@ export function useAlignSelfBlockProps( settings ) {
 				{
 					[ `-align-self:${ newAlignSelf }` ]:
 						typeof newAlignSelf === 'string',
-					[ `-align-self:${ newAlignSelf.lg }` ]:
+					[ `-align-self:${ newAlignSelf?.lg }` ]:
 						null != newAlignSelf?.lg,
 					[ `-align-self:md:${ newAlignSelf?.md }` ]:
 						null != newAlignSelf?.md,

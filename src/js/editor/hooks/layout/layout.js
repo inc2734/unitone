@@ -10,7 +10,7 @@ import {
 } from '@wordpress/components';
 
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { memo } from '@wordpress/element';
+import { memo, useEffect } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -267,6 +267,73 @@ function LayoutPanelPure( props ) {
 		name,
 		__unstableUnitoneSupports,
 	} );
+
+	// In the case of block support for adding an attribute to a child element,
+	// the attribute must be removed when it leaves the parent.
+	useEffect( () => {
+		let newAttributes = { ...attributes };
+
+		if ( isMaxHeightDisabled && null != unitone?.maxHeight ) {
+			newAttributes = resetMaxHeightFilter( newAttributes );
+		}
+
+		if ( isMaxWidthDisabled && null != unitone?.maxWidth ) {
+			newAttributes = resetMaxWidthFilter( newAttributes );
+		}
+
+		if ( isMinHeightDisabled && null != unitone?.minHeight ) {
+			newAttributes = resetMinHeightFilter( newAttributes );
+		}
+
+		if ( isMinWidthDisabled && null != unitone?.minWidth ) {
+			newAttributes = resetMinWidthFilter( newAttributes );
+		}
+
+		if ( isFlexBasisDisabled && null != unitone?.flexBasis ) {
+			newAttributes = resetFlexBasisFilter( newAttributes );
+		}
+
+		if ( isFlexGrowDisabled && null != unitone?.flexGrow ) {
+			newAttributes = resetFlexGrowFilter( newAttributes );
+		}
+
+		if ( isFlexShrinkDisabled && null != unitone?.flexShrink ) {
+			newAttributes = resetFlexShrinkFilter( newAttributes );
+		}
+
+		if ( isAlignSelfDisabled && null != unitone?.alignSelf ) {
+			newAttributes = resetAlignSelfFilter( newAttributes );
+		}
+
+		if ( isJustifySelfDisabled && null != unitone?.justifySelf ) {
+			newAttributes = resetJustifySelfFilter( newAttributes );
+		}
+
+		if ( isGridColumnDisabled && null != unitone?.gridColumn ) {
+			newAttributes = resetGridColumnFilter( newAttributes );
+		}
+
+		if ( isGridRowDisabled && null != unitone?.gridRow ) {
+			newAttributes = resetGridRowFilter( newAttributes );
+		}
+
+		if (
+			JSON.stringify( unitone ) !==
+			JSON.stringify( newAttributes?.unitone )
+		) {
+			setAttributes( {
+				unitone: cleanEmptyObject( newAttributes?.unitone ),
+			} );
+		}
+	}, [
+		isFlexBasisDisabled,
+		isFlexGrowDisabled,
+		isFlexShrinkDisabled,
+		isAlignSelfDisabled,
+		isJustifySelfDisabled,
+		isGridColumnDisabled,
+		isGridRowDisabled,
+	] );
 
 	if (
 		isJustifyContentDisabled &&

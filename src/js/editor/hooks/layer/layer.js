@@ -10,7 +10,7 @@ import {
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
-import { memo } from '@wordpress/element';
+import { memo, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -43,6 +43,25 @@ function LayerPanelPure( props ) {
 	};
 
 	const isMixBlendModeDisabled = useIsMixBlendModeDisabled( { ...props } );
+
+	// In the case of block support for adding an attribute to a child element,
+	// the attribute must be removed when it leaves the parent.
+	useEffect( () => {
+		let newAttributes = { ...attributes };
+
+		if ( isMixBlendModeDisabled && null != unitone?.mixBlendMode ) {
+			newAttributes = resetMixBlendModeFilter( newAttributes );
+		}
+
+		if (
+			JSON.stringify( unitone ) !==
+			JSON.stringify( newAttributes?.unitone )
+		) {
+			setAttributes( {
+				unitone: cleanEmptyObject( newAttributes?.unitone ),
+			} );
+		}
+	}, [ isMixBlendModeDisabled ] );
 
 	if ( isMixBlendModeDisabled ) {
 		return null;

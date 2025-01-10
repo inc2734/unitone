@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2024-12-18T05:57:34+00:00\n"
-"PO-Revision-Date: 2024-12-18 15:00+0900\n"
+"POT-Creation-Date: 2025-01-10T09:01:30+00:00\n"
+"PO-Revision-Date: 2025-01-10 18:01+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -17,21 +17,24 @@ msgstr ""
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
-#: inc/block-categories.php:20 inc/block-categories.php:31
+#: style.css inc/block-categories.php:20 inc/block-categories.php:31
 #: inc/block-categories.php:42 inc/block-categories.php:53
 #: inc/block-styles.php:104 dist/js/editor/editor.js:13
 msgid "unitone"
 msgstr "unitone"
 
 #. Theme URI of the theme
+#: style.css
 msgid "https://unitone.2inc.org"
 msgstr "https://unitone.2inc.org"
 
 #. Author of the theme
+#: style.css
 msgid "Takashi Kitajima"
 msgstr "Takashi Kitajima"
 
 #. Author URI of the theme
+#: style.css
 msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
@@ -56,20 +59,20 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:500
+#: App/Controller/Manager/Manager.php:503
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:503
+#: App/Controller/Manager/Manager.php:506
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:507
+#: App/Controller/Manager/Manager.php:510
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
-#: App/Controller/Manager/Manager.php:530
+#: App/Controller/Manager/Manager.php:533
 msgid ""
 "You have not set a valid license key. Setting a license key will allow you "
 "to use patterns registered in %3$sthe pattern library%4$s. It will also "
@@ -1416,30 +1419,31 @@ msgid "Reset All Settings"
 msgstr "すべての設定をリセット"
 
 #: App/Controller/Manager/dist/js/app.js:1
-msgid "Pattern Library"
-msgstr "パターンライブラリー"
+msgid "Patterns / Styles Library"
+msgstr "パターン / スタイルライブラリー"
 
 #: App/Controller/Manager/dist/js/app.js:1
 msgid "Cache"
 msgstr "キャッシュ"
 
-#. translators: %1$s: <a>, %2$s: </a>
+#. translators: %1$s: <a>, %2$s: </a>, %3$s: <a>, %4$s: </a>
 #: App/Controller/Manager/dist/js/app.js:4
 msgid ""
-"If the license key is valid, patterns from %1$sthe pattern library%2$s can "
-"be used."
+"If the license key is valid, patterns from %1$sthe patterns library%2$s and "
+"styles from %3$sthe styles library%4$s can be used."
 msgstr ""
-"ライセンスキーが有効であれば、%1$sパターンライブラリ%2$sのパターンを使用でき"
-"ます。"
+"ライセンスキーが有効であれば、%1$sパターンライブラリ%2$sのパターンと、%3$sス"
+"タイルライブラリ%4$sのスタイルが使用できます。"
 
 #: App/Controller/Manager/dist/js/app.js:4
 msgid ""
-"Pattern data retrieved from the pattern library is cached for a certain "
-"period of time to speed up operation, so new patterns may not be reflected "
-"immediately."
+"Patterns data retrieved from the patterns library and styles data retrieved "
+"from the styles library is cached for a certain period of time to speed up "
+"operation, so new patterns and styles may not be reflected immediately."
 msgstr ""
-"パターンライブラリから取得したパターンデータは、動作を高速化するために一定期"
-"間キャッシュされるため、新しいパターンがすぐに反映されないことがあります。"
+"パターンライブラリから取得したパターンデータとスタイルライブラリーから取得し"
+"たスタイルデータは、動作を高速化するために一定期間キャッシュされるため、新し"
+"いパターンとスタイルがすぐに反映されないことがあります。"
 
 #: App/Controller/Manager/dist/js/app.js:4
 msgid ""
@@ -1449,8 +1453,8 @@ msgstr ""
 "ください。"
 
 #: App/Controller/Manager/dist/js/app.js:4
-msgid "Retrieve patterns from the pattern library"
-msgstr "パターンライブラリーからパターンを再取得する"
+msgid "Retrieve data from the pattern / style library"
+msgstr "パターン / スタイルライブラリーからデータを再取得する"
 
 #: App/Controller/Manager/dist/js/app.js:4
 msgid "Brand"
@@ -1485,7 +1489,7 @@ msgid ""
 "WordPress mobile apps. Upload one here!"
 msgstr ""
 "サイトアイコンはブラウザーのタブやブックマークバー、WordPress モバイルアプリ"
-"で表示されます。ぜひアップロードしましょう。"
+"で表示されます。ぜひアップロードしましょう！"
 
 #. translators: %s: Site icon size in pixels.
 #: App/Controller/Manager/dist/js/app.js:7
@@ -3533,6 +3537,11 @@ msgstr "Noto Serif JP"
 msgctxt "Gradient name"
 msgid "Accent gradation"
 msgstr "アクセントグラデーション"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "[unitone] Natural"
+msgstr "[unitone] Natural"
 
 #: theme.json
 msgctxt "Font family name"

@@ -95,6 +95,9 @@ require get_template_directory() . '/inc/remote-block-patterns.php';
 // Add block styles.
 require get_template_directory() . '/inc/block-styles.php';
 
+// Add remote block styles.
+require get_template_directory() . '/inc/remote-block-styles.php';
+
 // Add block supports.
 require get_template_directory() . '/inc/block-supports.php';
 

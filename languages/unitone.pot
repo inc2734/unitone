@@ -1,20 +1,21 @@
-# Copyright (C) 2024 Takashi Kitajima
+# Copyright (C) 2025 Takashi Kitajima
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 15.7.1\n"
+"Project-Id-Version: unitone 15.8.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-18T05:57:34+00:00\n"
+"POT-Creation-Date: 2025-01-10T09:01:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
+#: style.css
 #: inc/block-categories.php:20
 #: inc/block-categories.php:31
 #: inc/block-categories.php:42
@@ -25,14 +26,17 @@ msgid "unitone"
 msgstr ""
 
 #. Theme URI of the theme
+#: style.css
 msgid "https://unitone.2inc.org"
 msgstr ""
 
 #. Author of the theme
+#: style.css
 msgid "Takashi Kitajima"
 msgstr ""
 
 #. Author URI of the theme
+#: style.css
 msgid "https://2inc.org"
 msgstr ""
 
@@ -72,20 +76,20 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:500
+#: App/Controller/Manager/Manager.php:503
 msgid "unitone theme has been activated"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:503
+#: App/Controller/Manager/Manager.php:506
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:507
+#: App/Controller/Manager/Manager.php:510
 msgid "Go to the setup screen"
 msgstr ""
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
-#: App/Controller/Manager/Manager.php:530
+#: App/Controller/Manager/Manager.php:533
 msgid "You have not set a valid license key. Setting a license key will allow you to use patterns registered in %3$sthe pattern library%4$s. It will also enable theme updates. A license key is issued when you subscribe to %1$sunitone license key subscription%2$s. The license key is set %5$shere%6$s."
 msgstr ""
 
@@ -1452,20 +1456,20 @@ msgid "Reset All Settings"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
-msgid "Pattern Library"
+msgid "Patterns / Styles Library"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
 msgid "Cache"
 msgstr ""
 
-#. translators: %1$s: <a>, %2$s: </a>
+#. translators: %1$s: <a>, %2$s: </a>, %3$s: <a>, %4$s: </a>
 #: App/Controller/Manager/dist/js/app.js:4
-msgid "If the license key is valid, patterns from %1$sthe pattern library%2$s can be used."
+msgid "If the license key is valid, patterns from %1$sthe patterns library%2$s and styles from %3$sthe styles library%4$s can be used."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:4
-msgid "Pattern data retrieved from the pattern library is cached for a certain period of time to speed up operation, so new patterns may not be reflected immediately."
+msgid "Patterns data retrieved from the patterns library and styles data retrieved from the styles library is cached for a certain period of time to speed up operation, so new patterns and styles may not be reflected immediately."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:4
@@ -1473,7 +1477,7 @@ msgid "To force reacquisition of the latest pattern data, click the button below
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:4
-msgid "Retrieve patterns from the pattern library"
+msgid "Retrieve data from the pattern / style library"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:4
@@ -3622,6 +3626,11 @@ msgstr ""
 #: theme.json
 msgctxt "Gradient name"
 msgid "Accent gradation"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "[unitone] Natural"
 msgstr ""
 
 #: theme.json

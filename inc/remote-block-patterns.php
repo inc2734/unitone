@@ -99,7 +99,7 @@ function _unitone_get_remote_block_patterns( $url ) {
  *
  * @return array
  */
-function unitone_get_free_remote_block_pattens() {
+function unitone_get_free_remote_block_patterns() {
 	$url = 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/free-patterns/';
 
 	return _unitone_get_remote_block_patterns( $url );
@@ -110,7 +110,7 @@ function unitone_get_free_remote_block_pattens() {
  *
  * @return array
  */
-function unitone_get_premium_remote_block_pattens() {
+function unitone_get_premium_remote_block_patterns() {
 	$license_key = Manager::get_setting( 'license-key' );
 
 	$url = sprintf(
@@ -166,8 +166,8 @@ function unitone_register_remote_block_patterns() {
 		$status      = Manager::get_license_status( $license_key );
 
 		$remote_block_patterns = 'true' === $status
-			? unitone_get_premium_remote_block_pattens()
-			: unitone_get_free_remote_block_pattens();
+			? unitone_get_premium_remote_block_patterns()
+			: unitone_get_free_remote_block_patterns();
 
 		if ( $remote_block_patterns && is_array( $remote_block_patterns ) ) {
 			set_transient( 'unitone-remote-patterns', $remote_block_patterns, DAY_IN_SECONDS );
@@ -187,7 +187,7 @@ function unitone_register_remote_block_patterns() {
 
 		$pattern_name = esc_html( $pattern['slug'] );
 		// Some patterns might be already registered as core patterns with the `core` prefix.
-		$is_registered = $registry->is_registered( $pattern_name ) || $registry->is_registered( $pattern_name );
+		$is_registered = $registry->is_registered( $pattern_name );
 		if ( ! $is_registered ) {
 			register_block_pattern( $pattern_name, (array) $pattern );
 		}

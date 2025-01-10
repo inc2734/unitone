@@ -28,7 +28,7 @@ export default function ( { settings } ) {
 			} }
 		>
 			<div data-unitone-layout="stack -gap:2">
-				<h2>{ __( 'Pattern Library', 'unitone' ) }</h2>
+				<h2>{ __( 'Patterns / Styles Library', 'unitone' ) }</h2>
 				<div
 					data-unitone-layout="stack -divider:stripe -gap:2"
 					style={ {
@@ -50,18 +50,20 @@ export default function ( { settings } ) {
 								<span
 									dangerouslySetInnerHTML={ {
 										__html: sprintf(
-											// translators: %1$s: <a>, %2$s: </a>
+											// translators: %1$s: <a>, %2$s: </a>, %3$s: <a>, %4$s: </a>
 											__(
-												'If the license key is valid, patterns from %1$sthe pattern library%2$s can be used.',
+												'If the license key is valid, patterns from %1$sthe patterns library%2$s and styles from %3$sthe styles library%4$s can be used.',
 												'unitone'
 											),
 											'<a href="https://unitone.2inc.org/unitone-patterns/" target="_blank">',
+											'</a>',
+											'<a href="https://unitone.2inc.org/unitone-styles/" target="_blank">',
 											'</a>'
 										),
 									} }
 								/>
 								{ __(
-									'Pattern data retrieved from the pattern library is cached for a certain period of time to speed up operation, so new patterns may not be reflected immediately.',
+									'Patterns data retrieved from the patterns library and styles data retrieved from the styles library is cached for a certain period of time to speed up operation, so new patterns and styles may not be reflected immediately.',
 									'unitone'
 								) }
 								{ __(
@@ -77,7 +79,7 @@ export default function ( { settings } ) {
 									disabled={ remotePatternsSaving }
 								>
 									{ __(
-										'Retrieve patterns from the pattern library',
+										'Retrieve data from the pattern / style library',
 										'unitone'
 									) }
 								</Button>

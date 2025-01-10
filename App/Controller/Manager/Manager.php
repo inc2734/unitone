@@ -446,6 +446,9 @@ class Manager {
 
 						delete_transient( 'unitone-remote-patterns' );
 						delete_transient( 'unitone-remote-pattern-categories' );
+
+						delete_transient( 'unitone-remote-styles' );
+
 						return new \WP_REST_Response( array( 'message' => 'OK' ), 200 );
 					}
 					return new \WP_REST_Response( array( 'message' => 'Could not save settings' ), 400 );

@@ -590,17 +590,15 @@ class Manager {
 		global $wp_version;
 
 		$response = wp_remote_get(
-			sprintf(
-				'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/validate/%1$s?repository=unitone',
-				$license_key
-			),
+			'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/validate/?repository=unitone',
 			array(
 				'user-agent' => 'WordPress/' . $wp_version,
 				'timeout'    => 30,
 				'headers'    => array(
-					'Accept-Encoding'   => '',
-					'X-Unitone-Version' => wp_get_theme()->get( 'Version' ),
-					'X-Unitone-URL'     => home_url(),
+					'Accept-Encoding'       => '',
+					'X-Unitone-License-key' => $license_key,
+					'X-Unitone-Version'     => wp_get_theme()->get( 'Version' ),
+					'X-Unitone-URL'         => home_url(),
 				),
 			)
 		);

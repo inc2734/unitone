@@ -57,9 +57,10 @@ function unitone_get_remote_block_patten_categories() {
  * Get remote block patterns.
  *
  * @param string $url A URL of the remote patterns API.
+ * @param array $args An array of request arguments.
  * @return array
  */
-function _unitone_get_remote_block_patterns( $url ) {
+function _unitone_get_remote_block_patterns( $url, array $args = array() ) {
 	global $wp_version;
 
 	$response = wp_remote_get(
@@ -67,8 +68,11 @@ function _unitone_get_remote_block_patterns( $url ) {
 		array(
 			'user-agent' => 'WordPress/' . $wp_version,
 			'timeout'    => 30,
-			'headers'    => array(
-				'Accept-Encoding' => '',
+			'headers'    => array_merge(
+				$args,
+				array(
+					'Accept-Encoding' => '',
+				)
 			),
 		)
 	);
@@ -102,7 +106,12 @@ function _unitone_get_remote_block_patterns( $url ) {
 function unitone_get_free_remote_block_patterns() {
 	$url = 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/free-patterns/';
 
-	return _unitone_get_remote_block_patterns( $url );
+	return _unitone_get_remote_block_patterns(
+		$url,
+		array(
+			'X-Unitone-Locale' => get_locale(),
+		)
+	);
 }
 
 /**
@@ -111,14 +120,15 @@ function unitone_get_free_remote_block_patterns() {
  * @return array
  */
 function unitone_get_premium_remote_block_patterns() {
-	$license_key = Manager::get_setting( 'license-key' );
+	$url = 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/patterns/';
 
-	$url = sprintf(
-		'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/patterns/%1$s',
-		esc_attr( $license_key )
+	return _unitone_get_remote_block_patterns(
+		$url,
+		array(
+			'X-Unitone-License-key' => Manager::get_setting( 'license-key' ),
+			'X-Unitone-Locale'      => get_locale(),
+		)
 	);
-
-	return _unitone_get_remote_block_patterns( $url );
 }
 
 /**

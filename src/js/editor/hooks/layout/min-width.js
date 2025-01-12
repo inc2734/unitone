@@ -74,6 +74,10 @@ export function MinWidthEdit( {
 		<TextControl
 			__nextHasNoMarginBottom
 			label={ label }
+			help={ __(
+				"If the specified width exceeds the parent's width, it will be internally adjusted to ensure it does not exceed the parent's width.",
+				'unitone'
+			) }
 			value={ unitone?.minWidth ?? defaultValue ?? '' }
 			onChange={ ( newValue ) => {
 				const newUnitone = {

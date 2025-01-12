@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-11T15:07:32+00:00\n"
+"POT-Creation-Date: 2025-01-12T00:56:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -2586,6 +2586,10 @@ msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Max width"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "If the specified width exceeds the parent's width, it will be internally adjusted to ensure it does not exceed the parent's width."
 msgstr ""
 
 #: dist/js/editor/editor.js:1

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-01-11T15:07:32+00:00\n"
-"PO-Revision-Date: 2025-01-12 00:08+0900\n"
+"POT-Creation-Date: 2025-01-12T00:56:21+00:00\n"
+"PO-Revision-Date: 2025-01-12 09:57+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2541,6 +2541,13 @@ msgstr "フィット"
 #: dist/js/editor/editor.js:1
 msgid "Max width"
 msgstr "最大幅"
+
+#: dist/js/editor/editor.js:1
+msgid ""
+"If the specified width exceeds the parent's width, it will be internally "
+"adjusted to ensure it does not exceed the parent's width."
+msgstr ""
+"指定した幅が親の幅を超えた場合、親の幅は超えないよう内部的に調整されます。"
 
 #: dist/js/editor/editor.js:1
 msgid "Max height"

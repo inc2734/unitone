@@ -2,6 +2,8 @@
 	--unitone--border-radius: var(--unitone--global--border-radius);
 	--unitone--padding: var(--unitone--p-1);
 
+	display: inline-flex;
+
 	.wp-block-button__link {
 		--unitone--padding: inherit;
 	}

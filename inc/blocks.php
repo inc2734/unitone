@@ -935,3 +935,82 @@ add_filter(
 	10,
 	2
 );
+
+/**
+ * Add "Outer block link" support to core/query.
+ */
+add_filter(
+	'render_block_core/query',
+	function ( $block_content, $block ) {
+		$attrs      = $block['attrs'] ?? array();
+		$class_name = $attrs['className'] ?? false;
+		if ( ! $class_name || ( false === strpos( $class_name, 'is-style-block-link' ) ) ) {
+			return $block_content;
+		}
+
+		$is_outer_link = apply_filters( 'unitone_is_outer_block_link', false, $block_content, $block );
+		if ( ! $is_outer_link ) {
+			return $block_content;
+		}
+
+		$p = new \WP_HTML_Tag_Processor( $block_content );
+		if ( $p->next_tag() ) {
+			$p->set_attribute(
+				'data-unitone-layout',
+				implode(
+					' ',
+					array_filter(
+						array(
+							$p->get_attribute( 'data-unitone-layout' ),
+							'-has-outer-block-link',
+						)
+					)
+				)
+			);
+		}
+
+		return str_replace( array( '<a ', '</a>' ), array( '<span ', '</span>' ), $p->get_updated_html() );
+	},
+	10,
+	2
+);
+
+/**
+ * Add "Outer block link" support to unitone/decorator.
+ */
+add_filter(
+	'render_block_unitone/decorator',
+	function ( $block_content, $block ) {
+		$p = new \WP_HTML_Tag_Processor( $block_content );
+		if ( ! $p->next_tag() ) {
+			return $block_content;
+		}
+
+		$layout = $p->get_attribute( 'data-unitone-layout' );
+		if ( false === strpos( $layout, '-has-link' ) ) {
+			return $block_content;
+		}
+
+		$is_outer_link = apply_filters( 'unitone_is_outer_block_link', false, $block_content, $block );
+		if ( ! $is_outer_link ) {
+			return $block_content;
+		}
+
+		$p->set_attribute(
+			'data-unitone-layout',
+			implode(
+				' ',
+				array_filter(
+					array(
+						$p->get_attribute( 'data-unitone-layout' ),
+						'-has-outer-block-link',
+					)
+				)
+			)
+		);
+
+		return str_replace( array( '<a ', '</a>' ), array( '<span ', '</span>' ), $p->get_updated_html() );
+	},
+	10,
+	2
+);

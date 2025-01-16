@@ -32,7 +32,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
  */
 document.addEventListener( 'DOMContentLoaded', () => {
 	const setSubmenusPosition = ( submenus ) => {
-		[].slice.call( submenus ).forEach( ( submenu ) => {
+		Array.from( submenus ).forEach( ( submenu ) => {
 			const rect = submenu.parentElement.getBoundingClientRect();
 			submenu.style.setProperty( '--unitone--top', `${ rect.y }px` );
 			submenu.style.setProperty(
@@ -45,7 +45,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	const navigations = document.querySelectorAll(
 		'.wp-block-navigation:is(.is-style-unitone, .is-style-unitone-accordion).is-vertical'
 	);
-	[].slice.call( navigations ).forEach( ( navigation ) => {
+	Array.from( navigations ).forEach( ( navigation ) => {
 		const submenus = navigation.querySelectorAll(
 			[
 				'.wp-block-navigation__container > .wp-block-page-list > .wp-block-pages-list__item > .wp-block-navigation__submenu-container',
@@ -105,7 +105,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		'enable' === target.getAttribute( 'data-unitone-parallax' );
 
 	const onScroll = () => {
-		[].slice.call( targets ).forEach( ( target ) => {
+		Array.from( targets ).forEach( ( target ) => {
 			if ( enabled( target ) ) {
 				updatePosition( target );
 			}
@@ -143,7 +143,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		rootMargin: '200px 0px',
 	} );
 
-	[].slice.call( targets ).forEach( ( target ) => {
+	Array.from( targets ).forEach( ( target ) => {
 		observer.observe( target );
 		updatePosition( target );
 
@@ -183,7 +183,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		rootMargin: '-25% 0px',
 	} );
 
-	[].slice.call( targets ).forEach( ( target ) => {
+	Array.from( targets ).forEach( ( target ) => {
 		observer.observe( target );
 	} );
 } );
@@ -213,20 +213,24 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		'.wp-block-query[class*="is-style-block-link"] .wp-block-post'
 	);
 
-	[].slice.call( blockPosts ).forEach( ( blockPost ) => {
+	Array.from( blockPosts ).forEach( ( blockPost ) => {
 		let down, up;
 		const link = blockPost.querySelector(
 			':scope .wp-block-post-title > a'
 		);
 
 		if ( !! link ) {
-			blockPost.addEventListener( 'mousedown', ( event ) => {
+			blockPost.addEventListener( 'pointerdown', ( event ) => {
 				event.stopPropagation();
 				down = +new Date();
 			} );
 
-			blockPost.addEventListener( 'mouseup', ( event ) => {
+			blockPost.addEventListener( 'pointerup', ( event ) => {
 				event.stopPropagation();
+
+				if ( 0 !== event.button ) {
+					return false;
+				}
 
 				if (
 					[ 'A', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA' ].includes(
@@ -255,6 +259,42 @@ document.addEventListener( 'DOMContentLoaded', () => {
 					}
 				}
 			} );
+		}
+	} );
+} );
+
+/**
+ * Outer block link with Query block.
+ */
+document.addEventListener( 'DOMContentLoaded', () => {
+	const blockPosts = document.querySelectorAll(
+		'.wp-block-query[class*="is-style-block-link"][data-unitone-layout~="-has-outer-block-link"] .wp-block-post'
+	);
+
+	Array.from( blockPosts ).forEach( ( blockPost ) => {
+		const link = blockPost.querySelector(
+			':scope .wp-block-post-title > span'
+		);
+
+		if ( !! link ) {
+			const outerLink = document.createElement( 'a' );
+			outerLink.setAttribute(
+				'data-unitone-layout',
+				'-outer-block-link'
+			);
+
+			Array.from( link.attributes ).forEach( ( attribute ) => {
+				const { nodeName, nodeValue } = attribute;
+				if ( [ 'href', 'target', 'rel' ].includes( nodeName ) ) {
+					outerLink.setAttribute( nodeName, nodeValue ?? '' );
+				}
+			} );
+
+			Array.from( blockPost.children ).forEach( ( element ) => {
+				outerLink.appendChild( element );
+			} );
+
+			blockPost.insertBefore( outerLink, blockPost.children[ 0 ] );
 		}
 	} );
 } );

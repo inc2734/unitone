@@ -4,6 +4,17 @@
 
 [data-unitone-layout~="decorator"] {
 	--unitone--position: relative;
+
+	&:has(> [data-unitone-layout~="-outer-block-link"]) {
+		padding: 0;
+
+		> [data-unitone-layout~="-outer-block-link"] {
+			display: block;
+			color: inherit;
+			text-decoration: none;
+			padding: var(--unitone--padding);
+		}
+	}
 }
 
 [data-unitone-layout~="decorator"][data-unitone-layout~="-has-link"],

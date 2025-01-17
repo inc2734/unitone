@@ -12,13 +12,11 @@ export function hasHalfLeadingValue( { attributes: { unitone } } ) {
 }
 
 export function resetHalfLeadingFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			halfLeading: undefined,
-		},
-	};
+	if ( null != attributes?.unitone?.halfLeading ) {
+		attributes.unitone.halfLeading = undefined;
+	}
+
+	return cleanEmptyObject( attributes );
 }
 
 export function resetHalfLeading( { attributes: { unitone }, setAttributes } ) {

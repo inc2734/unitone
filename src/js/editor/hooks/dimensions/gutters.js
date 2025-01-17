@@ -16,13 +16,11 @@ export function hasGuttersValue( { name, attributes: { unitone } } ) {
 }
 
 export function resetGuttersFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			gutters: undefined,
-		},
-	};
+	if ( null != attributes?.unitone?.gutters ) {
+		attributes.unitone.gutters = undefined;
+	}
+
+	return cleanEmptyObject( attributes );
 }
 
 export function resetGutters( { attributes: { unitone }, setAttributes } ) {

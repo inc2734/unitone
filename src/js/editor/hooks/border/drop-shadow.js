@@ -32,13 +32,11 @@ export function hasDropShadowValue( { name, attributes: { unitone } } ) {
 }
 
 export function resetDropShadowFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			dropShadow: undefined,
-		},
-	};
+	if ( null != attributes?.unitone?.dropShadow ) {
+		attributes.unitone.dropShadow = undefined;
+	}
+
+	return cleanEmptyObject( attributes );
 }
 
 export function resetDropShadow( { attributes: { unitone }, setAttributes } ) {

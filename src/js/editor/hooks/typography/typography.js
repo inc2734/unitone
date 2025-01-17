@@ -9,8 +9,6 @@ import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/compo
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
-
 import {
 	useIsAutoPhraseDisabled,
 	hasAutoPhraseValue,
@@ -49,27 +47,6 @@ export {
 function TypographyPanelPure( props ) {
 	const { clientId, name, attributes } = props;
 
-	const resetAllFilters = [
-		resetAutoPhraseFilter,
-		resetFluidTypographyFilter,
-		resetHalfLeadingFilter,
-	];
-
-	const resetAllFilter = ( _attributes ) => {
-		// Because the ToolsPanel popover display does't update when "Reset All" is clicked.
-		attributes.unitone = cleanEmptyObject(
-			resetAllFilters.reduce(
-				( accumulator, filter ) => filter( accumulator ),
-				_attributes
-			)?.unitone
-		);
-
-		return {
-			..._attributes,
-			unitone: attributes.unitone,
-		};
-	};
-
 	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( { name } );
 	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( { name } );
 	const isHalfLeadingDisabled = useIsHalfLeadingDisabled( { name } );
@@ -84,10 +61,7 @@ function TypographyPanelPure( props ) {
 
 	return (
 		<>
-			<InspectorControls
-				group="typography"
-				resetAllFilter={ resetAllFilter }
-			>
+			<InspectorControls group="typography">
 				{ ! isFluidTypographyDisabled && (
 					<ToolsPanelItem
 						hasValue={ () =>
@@ -96,6 +70,9 @@ function TypographyPanelPure( props ) {
 						label={ __( 'Fluid typography', 'unitone' ) }
 						onDeselect={ () =>
 							resetFluidTypography( { ...props } )
+						}
+						resetAllFilter={ () =>
+							resetFluidTypographyFilter( attributes )
 						}
 						isShownByDefault
 						panelId={ clientId }
@@ -112,6 +89,9 @@ function TypographyPanelPure( props ) {
 						hasValue={ () => hasHalfLeadingValue( { ...props } ) }
 						label={ __( 'Half leading', 'unitone' ) }
 						onDeselect={ () => resetHalfLeading( { ...props } ) }
+						resetAllFilter={ () =>
+							resetHalfLeadingFilter( attributes )
+						}
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -136,6 +116,9 @@ function TypographyPanelPure( props ) {
 						hasValue={ () => hasAutoPhraseValue( { ...props } ) }
 						label={ __( 'Auto line breaks', 'unitone' ) }
 						onDeselect={ () => resetAutoPhrase( { ...props } ) }
+						resetAllFilter={ () =>
+							resetAutoPhraseFilter( attributes )
+						}
 						isShownByDefault
 						panelId={ clientId }
 					>

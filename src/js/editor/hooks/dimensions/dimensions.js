@@ -8,8 +8,6 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
 import { memo } from '@wordpress/element';
 
-import { cleanEmptyObject } from '../utils';
-
 import {
 	useIsPaddingDisabled,
 	hasPaddingValue,
@@ -87,31 +85,6 @@ export {
 function DimensionsPanelPure( props ) {
 	const { name, clientId, attributes, className } = props;
 
-	const resetAllFilters = [
-		resetPaddingFilter,
-		resetGuttersFilter,
-		resetGapFilter,
-		resetStairsFilter,
-		resetStairsUpFilter,
-		resetNegativeFilter,
-		resetOverflowFilter,
-	];
-
-	const resetAllFilter = ( _attributes ) => {
-		// Because the ToolsPanel popover display does't update when "Reset All" is clicked.
-		attributes.unitone = cleanEmptyObject(
-			resetAllFilters.reduce(
-				( accumulator, filter ) => filter( accumulator ),
-				_attributes
-			)?.unitone
-		);
-
-		return {
-			..._attributes,
-			unitone: attributes.unitone,
-		};
-	};
-
 	const isPaddingDisabled = useIsPaddingDisabled( { name } );
 	const isGuttersDisabled = useIsGuttersDisabled( { name } );
 	const isGapDisabled = useIsGapDisabled( { name, className } );
@@ -132,15 +105,15 @@ function DimensionsPanelPure( props ) {
 
 	return (
 		<>
-			<InspectorControls
-				group="dimensions"
-				resetAllFilter={ resetAllFilter }
-			>
+			<InspectorControls group="dimensions">
 				{ ! isPaddingDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasPaddingValue( { ...props } ) }
 						label={ getPaddingEditLabel( { ...props } ) }
 						onDeselect={ () => resetPadding( { ...props } ) }
+						resetAllFilter={ () =>
+							resetPaddingFilter( attributes )
+						}
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -159,6 +132,9 @@ function DimensionsPanelPure( props ) {
 						hasValue={ () => hasGuttersValue( { ...props } ) }
 						label={ getGuttersEditLabel( { ...props } ) }
 						onDeselect={ () => resetGutters( { ...props } ) }
+						resetAllFilter={ () =>
+							resetGuttersFilter( attributes )
+						}
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -177,6 +153,7 @@ function DimensionsPanelPure( props ) {
 						hasValue={ () => hasGapValue( { ...props } ) }
 						label={ getGapEditLabel( { ...props } ) }
 						onDeselect={ () => resetGap( { ...props } ) }
+						resetAllFilter={ () => resetGapFilter( attributes ) }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -196,6 +173,9 @@ function DimensionsPanelPure( props ) {
 							hasValue={ () => hasStairsValue( { ...props } ) }
 							label={ getStairsEditLabel( { ...props } ) }
 							onDeselect={ () => resetStairs( { ...props } ) }
+							resetAllFilter={ () =>
+								resetStairsFilter( attributes )
+							}
 							isShownByDefault
 							panelId={ clientId }
 						>
@@ -216,6 +196,9 @@ function DimensionsPanelPure( props ) {
 									...props,
 								} ) }
 								onDeselect={ () => resetStairsUp( props ) }
+								resetAllFilter={ () =>
+									resetStairsUpFilter( attributes )
+								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -235,6 +218,9 @@ function DimensionsPanelPure( props ) {
 						hasValue={ () => hasNegativeValue( { ...props } ) }
 						label={ getNegativeEditLabel( { ...props } ) }
 						onDeselect={ () => resetNegative( { ...props } ) }
+						resetAllFilter={ () =>
+							resetNegativeFilter( attributes )
+						}
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -252,6 +238,9 @@ function DimensionsPanelPure( props ) {
 						hasValue={ () => hasOverflowValue( { ...props } ) }
 						label={ getOverflowEditLabel( { ...props } ) }
 						onDeselect={ () => resetOverflow( { ...props } ) }
+						resetAllFilter={ () =>
+							resetOverflowFilter( attributes )
+						}
 						isShownByDefault
 						panelId={ clientId }
 					>

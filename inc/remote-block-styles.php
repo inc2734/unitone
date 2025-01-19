@@ -119,13 +119,7 @@ function unitone_register_remote_block_styles() {
 			)
 		);
 
-		foreach ( $block_types as $block_type ) {
-			// Some styles might be already registered as core styles with the `core` prefix.
-			$is_registered = $registry->is_registered( $block_type, $style['name'] );
-			if ( ! $is_registered ) {
-				register_block_style( $block_type, (array) $style );
-			}
-		}
+		register_block_style( $block_types, (array) $style );
 	}
 }
 add_action( 'init', 'unitone_register_remote_block_styles', 9 );

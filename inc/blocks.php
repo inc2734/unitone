@@ -694,11 +694,12 @@ add_filter(
 
 			if ( $custom_css ) {
 				$custom_css = wp_strip_all_tags( $custom_css );
-				$custom_css = preg_replace( '/\r?\n\s*/', ' ', $custom_css );
+				$custom_css = preg_replace( '/\r?\n/', ' ', $custom_css );
 				$custom_css = preg_replace( '/\s*{\s*/', ' { ', $custom_css );
 				$custom_css = preg_replace( '/\s*;\s*/', '; ', $custom_css );
 				$custom_css = preg_replace( '/\s*}\s*/', ' }', $custom_css );
 				$custom_css = preg_replace( '/}\s*/', "}\n", $custom_css );
+				$custom_css = preg_replace( '/\s+/', ' ', $custom_css );
 				$custom_css = trim( $custom_css );
 
 				$custom_css_array = explode( "\n", $custom_css );

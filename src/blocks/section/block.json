@@ -1,6 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
+	"version": "15.10.0",
 	"textdomain": "unitone",
 	"name": "unitone/section",
 	"title": "Section",
@@ -89,6 +90,7 @@
 			"fluidTypography": true,
 			"halfLeading": true,
 			"position": true,
+			"backdropFilter": true,
 			"scrollAnimation": true
 		}
 	},

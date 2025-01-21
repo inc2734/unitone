@@ -38,12 +38,6 @@ import {
 import { LayerPanel, useMixBlendModeBlockProps } from './layer/layer';
 
 import {
-	AnimationPanel,
-	useParallaxBlockProps,
-	useScrollAnimationBlockProps,
-} from './animation/animation';
-
-import {
 	TypographyPanel,
 	useAutoPhraseBlockProps,
 	useFluidTypographyBlockProps,
@@ -63,6 +57,24 @@ import {
 
 import { DropShadowPanel, useDropShadowBlockProps } from './border/border';
 import { PositionPanel, usePositionBlockProps } from './position/position';
+
+import {
+	BackdropPanel,
+	useBlurBlockProps,
+	useBrightnessBlockProps,
+	useContrastBlockProps,
+	useGrayscaleBlockProps,
+	useHueRotateBlockProps,
+	useInvertBlockProps,
+	useSaturateBlockProps,
+	useSepiaBlockProps,
+} from './backdrop-filter/backdrop-filter';
+
+import {
+	AnimationPanel,
+	useParallaxBlockProps,
+	useScrollAnimationBlockProps,
+} from './animation/animation';
 
 import {
 	AdvancedPanel,
@@ -131,6 +143,15 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 
 		props = useDropShadowBlockProps( props );
 
+		props = useBlurBlockProps( props );
+		props = useBrightnessBlockProps( props );
+		props = useContrastBlockProps( props );
+		props = useGrayscaleBlockProps( props );
+		props = useHueRotateBlockProps( props );
+		props = useInvertBlockProps( props );
+		props = useSaturateBlockProps( props );
+		props = useSepiaBlockProps( props );
+
 		props = useParallaxBlockProps( props );
 		props = useScrollAnimationBlockProps( props );
 
@@ -173,6 +194,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<PositionPanel { ...passedProps } />
 				<LayerPanel { ...passedProps } />
 				<DropShadowPanel { ...passedProps } />
+				<BackdropPanel { ...passedProps } />
 				<AnimationPanel { ...passedProps } />
 
 				<AdvancedPanel { ...passedProps } />

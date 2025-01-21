@@ -10,6 +10,14 @@
 	--unitone--bottom: auto;
 	--unitone--left: auto;
 	--unitone--z-index: auto;
+  --unitone--backdrop-filter-blur: 0px;
+  --unitone--backdrop-filter-brightness: 100%;
+  --unitone--backdrop-filter-contrast: 100%;
+  --unitone--backdrop-filter-grayscale: 0%;
+  --unitone--backdrop-filter-hue-rotate: 0deg;
+  --unitone--backdrop-filter-invert: 0%;
+  --unitone--backdrop-filter-saturate: 100%;
+  --unitone--backdrop-filter-sepia: 0%;
 
 	--unitone--section--gap: var(--unitone--gap);
 	--unitone--section--gutters: var(--unitone--gutters);
@@ -24,6 +32,15 @@
 	bottom: var(--unitone--bottom);
 	left: var(--unitone--left);
 	z-index: var(--unitone--z-index);
+
+  backdrop-filter: blur(var(--unitone--backdrop-filter-blur))
+                   brightness(var(--unitone--backdrop-filter-brightness))
+                   contrast(var(--unitone--backdrop-filter-contrast))
+                   grayscale(var(--unitone--backdrop-filter-grayscale))
+                   hue-rotate(var(--unitone--backdrop-filter-hue-rotate))
+                   invert(var(--unitone--backdrop-filter-invert))
+                   sepia(var(--unitone--backdrop-filter-sepia))
+                   saturate(var(--unitone--backdrop-filter-saturate));
 
 	> [data-unitone-layout~="gutters"] {
 		--unitone--padding: var(--unitone--section--padding);

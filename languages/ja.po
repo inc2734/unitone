@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-01-12T00:56:21+00:00\n"
-"PO-Revision-Date: 2025-01-12 09:57+0900\n"
+"POT-Creation-Date: 2025-01-21T07:03:16+00:00\n"
+"PO-Revision-Date: 2025-01-21 16:09+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2458,7 +2458,7 @@ msgstr "X"
 msgid "Y"
 msgstr "Y"
 
-#: dist/formats/formats.js:1
+#: dist/formats/formats.js:1 dist/js/editor/editor.js:13
 msgid "Blur"
 msgstr "ぼかし"
 
@@ -2626,51 +2626,6 @@ msgstr "レイヤー"
 msgid "Mix blend mode"
 msgstr "ミックスブレンドモード"
 
-#: dist/js/editor/editor.js:7
-msgid "Parallax"
-msgstr "パララックス"
-
-#: dist/js/editor/editor.js:7
-msgid "Speed"
-msgstr "スピード"
-
-#: dist/js/editor/editor.js:7
-msgid "Scroll"
-msgstr "スクロール"
-
-#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:10
-#: dist/js/editor/editor.js:13
-msgid "Type"
-msgstr "種類"
-
-#: dist/js/editor/editor.js:7
-msgid "Delay"
-msgstr "遅延"
-
-#: dist/js/editor/editor.js:7
-msgid "Easing"
-msgstr "イージング"
-
-#: dist/js/editor/editor.js:7
-msgid "Initial position (Y)"
-msgstr "初期位置（Y）"
-
-#: dist/js/editor/editor.js:7
-msgid "Initial position (X)"
-msgstr "初期位置（X）"
-
-#: dist/js/editor/editor.js:7
-msgid "Initial shrinkage rate"
-msgstr "初期収縮率"
-
-#: dist/js/editor/editor.js:7
-msgid "Check behavior"
-msgstr "動作を確認する"
-
-#: dist/js/editor/editor.js:7
-msgid "Animation"
-msgstr "アニメーション"
-
 #. translators: %1$s: <code>wbr</code>
 #: dist/js/editor/editor.js:10
 msgid "Use %1$s to indicate a line break at an arbitrary position."
@@ -2710,6 +2665,10 @@ msgstr ""
 #: dist/js/editor/editor.js:10
 msgid "Auto line breaks"
 msgstr "自動改行"
+
+#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
+msgid "Type"
+msgstr "種類"
 
 #: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
 msgid "Background color or background image must be set."
@@ -2783,6 +2742,78 @@ msgstr "下"
 #: dist/js/editor/editor.js:13
 msgid "The stack level"
 msgstr "重ね合わせレベル"
+
+#: dist/js/editor/editor.js:13
+msgid "Brightness"
+msgstr "明るさ"
+
+#: dist/js/editor/editor.js:13
+msgid "Contrast"
+msgstr "コントラスト"
+
+#: dist/js/editor/editor.js:13
+msgid "Grayscale"
+msgstr "グレースケール"
+
+#: dist/js/editor/editor.js:13
+msgid "Hue Rotate"
+msgstr "色相回転"
+
+#: dist/js/editor/editor.js:13
+msgid "Invert"
+msgstr "色反転"
+
+#: dist/js/editor/editor.js:13
+msgid "Saturate"
+msgstr "彩度"
+
+#: dist/js/editor/editor.js:13
+msgid "Sepia"
+msgstr "セピア"
+
+#: dist/js/editor/editor.js:13
+msgid "Backdrop Filter"
+msgstr "背景フィルター"
+
+#: dist/js/editor/editor.js:13
+msgid "Parallax"
+msgstr "パララックス"
+
+#: dist/js/editor/editor.js:13
+msgid "Speed"
+msgstr "スピード"
+
+#: dist/js/editor/editor.js:13
+msgid "Scroll"
+msgstr "スクロール"
+
+#: dist/js/editor/editor.js:13
+msgid "Delay"
+msgstr "遅延"
+
+#: dist/js/editor/editor.js:13
+msgid "Easing"
+msgstr "イージング"
+
+#: dist/js/editor/editor.js:13
+msgid "Initial position (Y)"
+msgstr "初期位置（Y）"
+
+#: dist/js/editor/editor.js:13
+msgid "Initial position (X)"
+msgstr "初期位置（X）"
+
+#: dist/js/editor/editor.js:13
+msgid "Initial shrinkage rate"
+msgstr "初期収縮率"
+
+#: dist/js/editor/editor.js:13
+msgid "Check behavior"
+msgstr "動作を確認する"
+
+#: dist/js/editor/editor.js:13
+msgid "Animation"
+msgstr "アニメーション"
 
 #: dist/js/editor/editor.js:13
 msgid "Add your own CSS to customize the appearance of this block."

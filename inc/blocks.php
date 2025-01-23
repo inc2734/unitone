@@ -120,14 +120,7 @@ add_filter(
 		 * @return boolean
 		 */
 		$is_supported = function ( $support ) use ( $metadata, $block ) {
-			$array = $metadata->supports['unitone'] ?? array();
-			foreach ( explode( '.', (string) $support ) as $key ) {
-				if ( ! isset( $array[ $key ] ) ) {
-					return false;
-				}
-				$array = $array[ $key ];
-			}
-			return isset( $array );
+			return true === unitone_array_get( $metadata->supports['unitone'] ?? array(), $support );
 		};
 
 		/**
@@ -213,19 +206,9 @@ add_filter(
 			$get_global_style_css_var,
 			$is_value_preset
 		) {
-			$array_get = function ( array $vars, $format ) {
-				foreach ( explode( '.', (string) $format ) as $key ) {
-					if ( ! isset( $vars[ $key ] ) ) {
-						return null;
-					}
-					$vars = $vars[ $key ];
-				}
-				return $vars;
-			};
-
-			$attribute = $array_get( $block['attrs']['unitone'] ?? array(), $support ) ?? null;
+			$attribute = unitone_array_get( $block['attrs']['unitone'] ?? array(), $support ) ?? null;
 			if ( is_null( $attribute ) ) {
-				$attribute = $array_get( $metadata->get_attributes()['unitone']['default'] ?? array(), $support ) ?? null;
+				$attribute = unitone_array_get( $metadata->get_attributes()['unitone']['default'] ?? array(), $support ) ?? null;
 			}
 
 			if ( $is_value_global_style( $attribute ) ) {
@@ -657,73 +640,73 @@ add_filter(
 		}
 
 		// --unitone--backdrop-filter-blur
-		if ( $is_supported( 'backdropFilter.blur' ) || $is_supported( 'backdropFilter.blur' ) ) {
+		if ( $is_supported( 'backdropFilter.blur' ) || $is_supported( 'backdropFilter' ) ) {
 			$blur = $get_attribute( 'backdropFilter.blur' );
 
-			if ( $blur ) {
+			if ( ! is_null( $blur ) ) {
 				$add_style( '--unitone--backdrop-filter-blur', $blur . 'px' );
 			}
 		}
 
 		// --unitone--backdrop-filter-brightness
-		if ( $is_supported( 'backdropFilter.brightness' ) || $is_supported( 'backdropFilter.brightness' ) ) {
+		if ( $is_supported( 'backdropFilter.brightness' ) || $is_supported( 'backdropFilter' ) ) {
 			$brightness = $get_attribute( 'backdropFilter.brightness' );
 
-			if ( $brightness ) {
+			if ( ! is_null( $brightness ) ) {
 				$add_style( '--unitone--backdrop-filter-brightness', $brightness . '%' );
 			}
 		}
 
 		// --unitone--backdrop-filter-contrast
-		if ( $is_supported( 'backdropFilter.contrast' ) || $is_supported( 'backdropFilter.contrast' ) ) {
+		if ( $is_supported( 'backdropFilter.contrast' ) || $is_supported( 'backdropFilter' ) ) {
 			$contrast = $get_attribute( 'backdropFilter.contrast' );
 
-			if ( $contrast ) {
+			if ( ! is_null( $contrast ) ) {
 				$add_style( '--unitone--backdrop-filter-contrast', $contrast . '%' );
 			}
 		}
 
 		// --unitone--backdrop-filter-grayscale
-		if ( $is_supported( 'backdropFilter.grayscale' ) || $is_supported( 'backdropFilter.grayscale' ) ) {
+		if ( $is_supported( 'backdropFilter.grayscale' ) || $is_supported( 'backdropFilter' ) ) {
 			$grayscale = $get_attribute( 'backdropFilter.grayscale' );
 
-			if ( $grayscale ) {
+			if ( ! is_null( $grayscale ) ) {
 				$add_style( '--unitone--backdrop-filter-grayscale', $grayscale . '%' );
 			}
 		}
 
 		// --unitone--backdrop-filter-hue-rotate
-		if ( $is_supported( 'backdropFilter.hueRotate' ) || $is_supported( 'backdropFilter.hueRotate' ) ) {
+		if ( $is_supported( 'backdropFilter.hueRotate' ) || $is_supported( 'backdropFilter' ) ) {
 			$hue_rotate = $get_attribute( 'backdropFilter.hueRotate' );
 
-			if ( $hue_rotate ) {
+			if ( ! is_null( $hue_rotate ) ) {
 				$add_style( '--unitone--backdrop-filter-hue-rotate', $hue_rotate . 'deg' );
 			}
 		}
 
 		// --unitone--backdrop-filter-invert
-		if ( $is_supported( 'backdropFilter.invert' ) || $is_supported( 'backdropFilter.invert' ) ) {
+		if ( $is_supported( 'backdropFilter.invert' ) || $is_supported( 'backdropFilter' ) ) {
 			$invert = $get_attribute( 'backdropFilter.invert' );
 
-			if ( $invert ) {
+			if ( ! is_null( $invert ) ) {
 				$add_style( '--unitone--backdrop-filter-invert', $invert . '%' );
 			}
 		}
 
 		// --unitone--backdrop-filter-saturate
-		if ( $is_supported( 'backdropFilter.saturate' ) || $is_supported( 'backdropFilter.saturate' ) ) {
+		if ( $is_supported( 'backdropFilter.saturate' ) || $is_supported( 'backdropFilter' ) ) {
 			$saturate = $get_attribute( 'backdropFilter.saturate' );
 
-			if ( $saturate ) {
+			if ( ! is_null( $saturate ) ) {
 				$add_style( '--unitone--backdrop-filter-saturate', $saturate . '%' );
 			}
 		}
 
 		// --unitone--backdrop-filter-sepia
-		if ( $is_supported( 'backdropFilter.sepia' ) || $is_supported( 'backdropFilter.sepia' ) ) {
+		if ( $is_supported( 'backdropFilter.sepia' ) || $is_supported( 'backdropFilter' ) ) {
 			$sepia = $get_attribute( 'backdropFilter.sepia' );
 
-			if ( $sepia ) {
+			if ( ! is_null( $sepia ) ) {
 				$add_style( '--unitone--backdrop-filter-sepia', $sepia . '%' );
 			}
 		}

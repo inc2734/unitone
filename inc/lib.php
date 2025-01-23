@@ -23,3 +23,20 @@ function unitone_get_preset_css_var( $value ) {
 
 	return 'var(--wp--preset--' . $match[1] . '--' . $match[2] . ')';
 }
+
+/**
+ * Get the value of a nested array.
+ *
+ * @param array $vars Array to search.
+ * @param string $format Dot-separated format string.
+ * @return mixed Value of the nested array.
+ */
+function unitone_array_get( array $vars, $format ) {
+	foreach ( explode( '.', (string) $format ) as $key ) {
+		if ( ! isset( $vars[ $key ] ) ) {
+			return null;
+		}
+		$vars = $vars[ $key ];
+	}
+	return $vars;
+}

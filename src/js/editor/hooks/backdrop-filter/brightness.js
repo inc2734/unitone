@@ -1,4 +1,9 @@
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import {
+	getBlockSupport,
+	hasBlockSupport,
+	store as blocksStore,
+} from '@wordpress/blocks';
+
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
@@ -63,8 +68,8 @@ export function getBrightnessEditLabel( {
 
 export function useIsBrightnessDisabled( { name } = {} ) {
 	return (
-		! hasBlockSupport( name, 'unitone.backdropFilter' ) &&
-		! hasBlockSupport( name, 'unitone.backdropFilter.brightness' )
+		! hasBlockSupport( name, 'unitone.backdropFilter.brightness' ) &&
+		true !== getBlockSupport( name, 'unitone.backdropFilter' )
 	);
 }
 
@@ -118,8 +123,8 @@ export function useBrightnessBlockProps( settings ) {
 	);
 
 	if (
-		! hasBlockSupport( name, 'unitone.backdropFilter' ) &&
-		! hasBlockSupport( name, 'unitone.backdropFilter.brightness' )
+		! hasBlockSupport( name, 'unitone.backdropFilter.brightness' ) &&
+		true !== getBlockSupport( name, 'unitone.backdropFilter' )
 	) {
 		return settings;
 	}

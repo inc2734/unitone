@@ -1,4 +1,9 @@
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import {
+	getBlockSupport,
+	hasBlockSupport,
+	store as blocksStore,
+} from '@wordpress/blocks';
+
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
@@ -61,8 +66,8 @@ export function getInvertEditLabel( {
 
 export function useIsInvertDisabled( { name } = {} ) {
 	return (
-		! hasBlockSupport( name, 'unitone.backdropFilter' ) &&
-		! hasBlockSupport( name, 'unitone.backdropFilter.invert' )
+		! hasBlockSupport( name, 'unitone.backdropFilter.invert' ) &&
+		true !== getBlockSupport( name, 'unitone.backdropFilter' )
 	);
 }
 
@@ -116,8 +121,8 @@ export function useInvertBlockProps( settings ) {
 	);
 
 	if (
-		! hasBlockSupport( name, 'unitone.backdropFilter' ) &&
-		! hasBlockSupport( name, 'unitone.backdropFilter.invert' )
+		! hasBlockSupport( name, 'unitone.backdropFilter.invert' ) &&
+		true !== getBlockSupport( name, 'unitone.backdropFilter' )
 	) {
 		return settings;
 	}

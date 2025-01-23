@@ -1,4 +1,9 @@
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import {
+	getBlockSupport,
+	hasBlockSupport,
+	store as blocksStore,
+} from '@wordpress/blocks';
+
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
@@ -63,8 +68,8 @@ export function getContrastEditLabel( {
 
 export function useIsContrastDisabled( { name } = {} ) {
 	return (
-		! hasBlockSupport( name, 'unitone.backdropFilter' ) &&
-		! hasBlockSupport( name, 'unitone.backdropFilter.contrast' )
+		! hasBlockSupport( name, 'unitone.backdropFilter.contrast' ) &&
+		true !== getBlockSupport( name, 'unitone.backdropFilter' )
 	);
 }
 
@@ -118,8 +123,8 @@ export function useContrastBlockProps( settings ) {
 	);
 
 	if (
-		! hasBlockSupport( name, 'unitone.backdropFilter' ) &&
-		! hasBlockSupport( name, 'unitone.backdropFilter.contrast' )
+		! hasBlockSupport( name, 'unitone.backdropFilter.contrast' ) &&
+		true !== getBlockSupport( name, 'unitone.backdropFilter' )
 	) {
 		return settings;
 	}

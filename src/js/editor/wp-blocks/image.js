@@ -22,9 +22,31 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const { attributes, name, wrapperProps } = props;
 
+		const colorGradientSettings = useMultipleOriginColorsAndGradients();
+		const colors = colorGradientSettings.colors.flatMap(
+			( palette ) => palette.colors
+		);
+		const gradients = colorGradientSettings.gradients.flatMap(
+			( palette ) => palette.gradients
+		);
+
 		if ( ! hasBlockSupport( name, 'unitone.overlay' ) ) {
 			return <BlockListBlock { ...props } />;
 		}
+
+		const customColor = attributes?.unitone?.overlay?.customColor;
+		const customGradient = attributes?.unitone?.overlay?.customGradient;
+
+		// Backward compatibility.
+		const color =
+			colors.filter(
+				( c ) => attributes?.unitone?.overlay?.color === c.color
+			)?.[ 0 ]?.slug ?? attributes?.unitone?.overlay?.color;
+
+		const gradient =
+			gradients.filter(
+				( c ) => attributes?.unitone?.overlay?.gradient === c.gradient
+			)?.[ 0 ]?.slug ?? attributes?.unitone?.overlay?.gradient;
 
 		props = {
 			...props,
@@ -32,10 +54,12 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 				...wrapperProps,
 				style: {
 					...wrapperProps?.style,
-					'--unitone--overlay-color':
-						attributes?.unitone?.overlay?.color,
-					'--unitone--overlay-gradient':
-						attributes?.unitone?.overlay?.gradient,
+					'--unitone--overlay-color': !! color
+						? `var(--wp--preset--color--${ color })`
+						: customColor,
+					'--unitone--overlay-gradient': !! gradient
+						? `var(--wp--preset--gradient--${ gradient })`
+						: customGradient,
 					'--unitone--overlay-opacity':
 						null != attributes?.unitone?.overlay?.dimRatio
 							? attributes.unitone.overlay.dimRatio * 0.01
@@ -47,8 +71,10 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 					wrapperProps?.[ 'data-unitone-layout' ],
 					{
 						'-overlay':
-							!! attributes?.unitone?.overlay?.color ||
-							!! attributes?.unitone?.overlay?.gradient,
+							!! color ||
+							!! gradient ||
+							!! customColor ||
+							!! customGradient,
 					}
 				),
 			},
@@ -67,6 +93,12 @@ addFilter(
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const colorGradientSettings = useMultipleOriginColorsAndGradients();
+		const colors = colorGradientSettings.colors.flatMap(
+			( palette ) => palette.colors
+		);
+		const gradients = colorGradientSettings.gradients.flatMap(
+			( palette ) => palette.gradients
+		);
 
 		if ( ! props.isSelected || 'core/image' !== props.name ) {
 			return <BlockEdit { ...props } />;
@@ -85,20 +117,43 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						__experimentalIsRenderedInSidebar
 						settings={ [
 							{
-								colorValue: unitone?.overlay?.color,
-								gradientValue: unitone?.overlay?.gradient,
+								colorValue:
+									unitone?.overlay?.customColor ??
+									unitone?.overlay?.color, // Actually, just customColor is OK, but color is also referenced for compatibility.
+								gradientValue:
+									unitone?.overlay?.customGradient ??
+									unitone?.overlay?.gradient, // Actually, just customGradient is OK, but gradient is also referenced for compatibility.
 								label: __( 'Overlay', 'unitone' ),
 								onColorChange: ( newAttribute ) => {
+									const colorObject = colors.filter(
+										( c ) => newAttribute === c.color
+									)?.[ 0 ];
+									const newColor = colorObject?.slug;
+									const newCustomColor =
+										colorObject?.color || newAttribute;
+
 									unitone.overlay ??= {};
-									unitone.overlay.color = newAttribute;
+									unitone.overlay.color = newColor;
+									unitone.overlay.customColor =
+										newCustomColor;
 
 									setAttributes( {
 										unitone: cleanEmptyObject( unitone ),
 									} );
 								},
 								onGradientChange: ( newAttribute ) => {
+									const gradientObject = gradients.filter(
+										( c ) => newAttribute === c.gradient
+									)?.[ 0 ];
+									const newGradient = gradientObject?.slug;
+									const newCustomGradient =
+										gradientObject?.gradient ||
+										newAttribute;
+
 									unitone.overlay ??= {};
-									unitone.overlay.gradient = newAttribute;
+									unitone.overlay.gradient = newGradient;
+									unitone.overlay.customGradient =
+										newCustomGradient;
 
 									setAttributes( {
 										unitone: cleanEmptyObject( unitone ),
@@ -112,7 +167,9 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 										overlay: {
 											...attributes?.unitone?.overlay,
 											color: undefined,
+											customColor: undefined,
 											gradient: undefined,
+											customGradient: undefined,
 										},
 									},
 								} ),

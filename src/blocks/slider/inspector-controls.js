@@ -106,11 +106,15 @@ export const SettingsInspectorControls = ( {
 		arrowsAlignment,
 		arrowsJustification,
 		arrowsIcon,
+		arrowsIconColor,
+		customArrowsIconColor,
 		hideOutside,
 		pagination,
 		paginationAlignment,
 		paginationJustification,
 		paginationIcon,
+		paginationIconColor,
+		customPaginationIconColor,
 		slideWidth,
 		autoplay,
 		autoplayDelay,
@@ -119,6 +123,11 @@ export const SettingsInspectorControls = ( {
 		centeredSlides,
 		effect,
 	} = attributes;
+
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+	const colors = colorGradientSettings.colors.flatMap(
+		( palette ) => palette.colors
+	);
 
 	return (
 		<InspectorControls>
@@ -464,6 +473,80 @@ export const SettingsInspectorControls = ( {
 								<>
 									<ToolsPanelItem
 										hasValue={ () =>
+											arrowsIconColor !==
+												metadata.attributes
+													.arrowsIconColor.default ||
+											customArrowsIconColor !==
+												metadata.attributes
+													.customArrowsIconColor
+													.default
+										}
+										isShownByDefault
+										label={ __(
+											'Arrows icon color',
+											'unitone'
+										) }
+										onDeselect={ () =>
+											setAttributes( {
+												arrowsIconColor:
+													metadata.attributes
+														.arrowsIconColor
+														.default,
+												customArrowsIconColor:
+													metadata.attributes
+														.customArrowsIconColor
+														.default,
+											} )
+										}
+									>
+										<ColorGradientSettingsDropdown
+											style={ { marginTop: 0 } }
+											__experimentalIsRenderedInSidebar
+											settings={ [
+												{
+													label: __(
+														'Arrows icon color',
+														'unitone'
+													),
+													colorValue:
+														customArrowsIconColor ||
+														colors.filter(
+															( c ) =>
+																arrowsIconColor ===
+																c.slug
+														)?.[ 0 ]?.color,
+													onColorChange: (
+														newAttribute
+													) => {
+														const colorObject =
+															colors.filter(
+																( c ) =>
+																	newAttribute ===
+																	c.color
+															)?.[ 0 ];
+														const newColor =
+															colorObject?.slug;
+														const newCustomColor =
+															colorObject?.color ||
+															newAttribute;
+
+														setAttributes( {
+															arrowsIconColor:
+																newColor,
+															customArrowsIconColor:
+																newCustomColor,
+														} );
+													},
+												},
+											] }
+											{ ...colorGradientSettings }
+											gradients={ [] }
+											disableCustomGradients
+										/>
+									</ToolsPanelItem>
+
+									<ToolsPanelItem
+										hasValue={ () =>
 											arrowsIcon?.stroke !==
 											metadata.attributes.arrowsIcon
 												.default.stroke
@@ -761,6 +844,76 @@ export const SettingsInspectorControls = ( {
 
 							<ToolsPanelItem
 								hasValue={ () =>
+									paginationIconColor !==
+										metadata.attributes.paginationIconColor
+											.default ||
+									customPaginationIconColor !==
+										metadata.attributes
+											.customPaginationIconColor.default
+								}
+								isShownByDefault
+								label={ __(
+									'Pagination icon color',
+									'unitone'
+								) }
+								onDeselect={ () =>
+									setAttributes( {
+										paginationIconColor:
+											metadata.attributes
+												.paginationIconColor.default,
+										customPaginationIconColor:
+											metadata.attributes
+												.customPaginationIconColor
+												.default,
+									} )
+								}
+							>
+								<ColorGradientSettingsDropdown
+									style={ { marginTop: 0 } }
+									__experimentalIsRenderedInSidebar
+									settings={ [
+										{
+											label: __(
+												'Pagination icon color',
+												'unitone'
+											),
+											colorValue:
+												customPaginationIconColor ||
+												colors.filter(
+													( c ) =>
+														paginationIconColor ===
+														c.slug
+												)?.[ 0 ]?.color,
+											onColorChange: ( newAttribute ) => {
+												const colorObject =
+													colors.filter(
+														( c ) =>
+															newAttribute ===
+															c.color
+													)?.[ 0 ];
+												const newColor =
+													colorObject?.slug;
+												const newCustomColor =
+													colorObject?.color ||
+													newAttribute;
+
+												setAttributes( {
+													paginationIconColor:
+														newColor,
+													customPaginationIconColor:
+														newCustomColor,
+												} );
+											},
+										},
+									] }
+									{ ...colorGradientSettings }
+									gradients={ [] }
+									disableCustomGradients
+								/>
+							</ToolsPanelItem>
+
+							<ToolsPanelItem
+								hasValue={ () =>
 									paginationAlignment !==
 									metadata.attributes.paginationAlignment
 										.default
@@ -875,38 +1028,6 @@ export const SettingsInspectorControls = ( {
 					) }
 				</ToolsPanel>
 			) }
-		</InspectorControls>
-	);
-};
-
-export const ColorsInspectorControls = ( {
-	clientId,
-	arrowsIconColor,
-	setArrowsIconColor,
-	paginationIconColor,
-	setPaginationIconColor,
-} ) => {
-	return (
-		<InspectorControls group="color">
-			<ColorGradientSettingsDropdown
-				__experimentalIsRenderedInSidebar
-				settings={ [
-					{
-						label: __( 'Arrows icon color', 'unitone' ),
-						colorValue: arrowsIconColor.color,
-						onColorChange: setArrowsIconColor,
-					},
-					{
-						label: __( 'Pagination icon color', 'unitone' ),
-						colorValue: paginationIconColor.color,
-						onColorChange: setPaginationIconColor,
-					},
-				] }
-				panelId={ clientId }
-				{ ...useMultipleOriginColorsAndGradients() }
-				gradients={ [] }
-				disableCustomGradients
-			/>
 		</InspectorControls>
 	);
 };

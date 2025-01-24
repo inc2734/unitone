@@ -13,8 +13,10 @@
 			"default": "dots"
 		},
 		"color": {
-			"type": "string",
-			"default": ""
+			"type": "string"
+		},
+		"customColor": {
+			"type": "string"
 		},
 		"gap": {
 			"type": "number",

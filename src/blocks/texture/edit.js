@@ -23,7 +23,12 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { type, color, gap, size, templateLock } = attributes;
+	const { type, color, customColor, gap, size, templateLock } = attributes;
+
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+	const colors = colorGradientSettings.colors.flatMap(
+		( palette ) => palette.colors
+	);
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -34,7 +39,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const blockProps = useBlockProps( {
 		style: {
-			'--unitone--texture-color': color || undefined,
+			'--unitone--texture-color': !! color
+				? `var(--wp--preset--color--${ color })`
+				: customColor,
 			'--unitone--texture-gap': !! gap ? `${ gap }px` : undefined,
 			'--unitone--texture-size': !! size ? `${ size }px` : undefined,
 		},
@@ -124,16 +131,25 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							settings={ [
 								{
 									label: __( 'Color', 'unitone' ),
-									colorValue: color,
-									onColorChange: ( newAttribute ) =>
+									colorValue: customColor,
+									onColorChange: ( newAttribute ) => {
+										const colorObject = colors.filter(
+											( c ) => newAttribute === c.color
+										)?.[ 0 ];
+										const newColor = colorObject?.slug;
+										const newCustomColor =
+											colorObject?.color || newAttribute;
+
 										setAttributes( {
-											color: newAttribute,
-										} ),
+											color: newColor,
+											customColor: newCustomColor,
+										} );
+									},
 									enableAlpha: true,
 									clearable: true,
 								},
 							] }
-							{ ...useMultipleOriginColorsAndGradients() }
+							{ ...colorGradientSettings }
 							gradients={ [] }
 							disableCustomGradients
 						/>

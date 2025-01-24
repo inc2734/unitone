@@ -624,17 +624,29 @@ add_filter(
 
 		// -overlay
 		if ( $is_supported( 'overlay' ) ) {
-			$color     = $get_attribute( 'overlay.color' );
-			$gradient  = $get_attribute( 'overlay.gradient' );
-			$dim_ratio = $get_attribute( 'overlay.dimRatio' );
-			$opacity   = ! is_null( $dim_ratio ) ? $dim_ratio * 0.01 : null;
+			$color           = $get_attribute( 'overlay.color' );
+			$custom_color    = $get_attribute( 'overlay.customColor' );
+			$gradient        = $get_attribute( 'overlay.gradient' );
+			$custom_gradient = $get_attribute( 'overlay.customGradient' );
+			$dim_ratio       = $get_attribute( 'overlay.dimRatio' );
+			$opacity         = ! is_null( $dim_ratio ) ? $dim_ratio * 0.01 : null;
 
-			if ( $color || $gradient ) {
+			// Backward compatibility.
+			if ( ! is_null( $color ) && false !== strpos( $color, '(' ) ) {
+				$custom_color = $color;
+				$color        = null;
+			}
+			if ( ! is_null( $gradient ) && false !== strpos( $gradient, '(' ) ) {
+				$custom_gradient = $gradient;
+				$gradient        = null;
+			}
+
+			if ( $color || $gradient || $custom_color || $custom_gradient ) {
 				$radius = $block['attrs']['style']['border']['radius'] ?? null;
 
 				$add_attribute( '-overlay', true );
-				$add_style( '--unitone--overlay-color', $get_attribute( 'overlay.color' ) );
-				$add_style( '--unitone--overlay-gradient', $get_attribute( 'overlay.gradient' ) );
+				$add_style( '--unitone--overlay-color', $color ? 'var(--wp--preset--color--' . $color . ')' : $custom_color );
+				$add_style( '--unitone--overlay-gradient', $gradient ? 'var(--wp--preset--gradient--' . $gradient . ')' : $custom_gradient );
 				$add_style( '--unitone--overlay-opacity', $opacity );
 				$add_style( '--unitone--overlay-radius', $radius );
 			}

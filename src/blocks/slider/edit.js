@@ -4,7 +4,6 @@ import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
-	withColors,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
@@ -19,10 +18,7 @@ import {
 	Pagination,
 } from './components';
 
-import {
-	SettingsInspectorControls,
-	ColorsInspectorControls,
-} from './inspector-controls';
+import { SettingsInspectorControls } from './inspector-controls';
 
 const moveToCurrentSlide = ( slide ) => {
 	if ( ! slide ) {
@@ -64,25 +60,23 @@ const moveToCurrentSlide = ( slide ) => {
 	}
 };
 
-function Edit( props ) {
-	const {
-		attributes,
-		isSelected,
-		clientId,
-		arrowsIconColor,
-		paginationIconColor,
-	} = props;
+export default function ( props ) {
+	const { attributes, isSelected, clientId } = props;
 
 	const {
 		arrows,
 		arrowsAlignment,
 		arrowsJustification,
 		arrowsIcon,
+		arrowsIconColor,
+		customArrowsIconColor,
 		hideOutside,
 		pagination,
 		paginationAlignment,
 		paginationJustification,
 		paginationIcon,
+		paginationIconColor,
+		customPaginationIconColor,
 		slideWidth,
 		autoplay,
 		autoplayDelay,
@@ -237,8 +231,6 @@ function Edit( props ) {
 				canMultiSlides={ canMultiSlides }
 			/>
 
-			<ColorsInspectorControls { ...props } />
-
 			<div { ...blockProps }>
 				{ isDisplayPagination && 'top' === paginationAlignment && (
 					<Pagination
@@ -250,8 +242,8 @@ function Edit( props ) {
 									paginationIcon?.type
 							)?.[ 0 ]?.name
 						}
-						iconColor={ paginationIconColor?.slug }
-						iconCustomColor={ paginationIconColor?.color }
+						iconColor={ paginationIconColor }
+						iconCustomColor={ customPaginationIconColor }
 						alignment={ paginationAlignment }
 						justification={ paginationJustification }
 					/>
@@ -268,8 +260,8 @@ function Edit( props ) {
 							}
 							iconStroke={ arrowsIcon?.stroke }
 							iconSize={ arrowsIcon?.size }
-							iconColor={ arrowsIconColor?.slug }
-							iconCustomColor={ arrowsIconColor?.color }
+							iconColor={ arrowsIconColor }
+							iconCustomColor={ customArrowsIconColor }
 							alignment={ arrowsAlignment }
 							justification={ arrowsJustification }
 						/>
@@ -305,8 +297,8 @@ function Edit( props ) {
 								}
 								iconStroke={ arrowsIcon?.stroke }
 								iconSize={ arrowsIcon?.size }
-								iconColor={ arrowsIconColor?.slug }
-								iconCustomColor={ arrowsIconColor?.color }
+								iconColor={ arrowsIconColor }
+								iconCustomColor={ customArrowsIconColor }
 								alignment={ arrowsAlignment }
 								justification={ arrowsJustification }
 							/>
@@ -323,8 +315,8 @@ function Edit( props ) {
 									paginationIcon?.type
 							)?.[ 0 ]?.name
 						}
-						iconColor={ paginationIconColor?.slug }
-						iconCustomColor={ paginationIconColor?.color }
+						iconColor={ paginationIconColor }
+						iconCustomColor={ customPaginationIconColor }
 						alignment={ paginationAlignment }
 						justification={ paginationJustification }
 					/>
@@ -360,8 +352,3 @@ function Edit( props ) {
 		</>
 	);
 }
-
-export default withColors( {
-	arrowsIconColor: 'color',
-	paginationIconColor: 'color',
-} )( Edit );

@@ -410,6 +410,8 @@ function Edit( {
 									customOverlayBackgroundColor: value,
 								} );
 							},
+							enableAlpha: true,
+							clearable: true,
 						},
 					] }
 					panelId={ clientId }

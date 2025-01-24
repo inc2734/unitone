@@ -106,7 +106,7 @@ export {
 	useSepiaBlockProps,
 };
 
-function BackdropPanelPure( props ) {
+function BackdropFilterPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 	const { unitone } = attributes;
 
@@ -324,6 +324,7 @@ function BackdropPanelPure( props ) {
 	);
 }
 
-export const BackdropPanel = memo( BackdropPanelPure, ( oldProps, newProps ) =>
-	fastDeepEqual( oldProps, newProps )
+export const BackdropFilterPanel = memo(
+	BackdropFilterPanelPure,
+	( oldProps, newProps ) => fastDeepEqual( oldProps, newProps )
 );

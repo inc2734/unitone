@@ -45,6 +45,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/stack-divided-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/switcher' );
 	register_block_type( get_template_directory() . '/dist/blocks/text' );
+	register_block_type( get_template_directory() . '/dist/blocks/texture' );
 	register_block_type( get_template_directory() . '/dist/blocks/vertical-writing' );
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar' );
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar-content' );
@@ -1054,7 +1055,7 @@ add_filter(
 			return $block_content;
 		}
 
-		$is_outer_link = apply_filters( 'unitone_is_outer_block_link', false, $block_content, $block );
+		$is_outer_link = apply_filters( 'unitone_is_outer_block_link', true, $block_content, $block );
 		if ( ! $is_outer_link ) {
 			return $block_content;
 		}

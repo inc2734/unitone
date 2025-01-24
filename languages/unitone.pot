@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-21T07:03:16+00:00\n"
+"POT-Creation-Date: 2025-01-24T07:58:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -1742,6 +1742,7 @@ msgstr ""
 #: dist/blocks/stack/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1
+#: dist/blocks/texture/index.js:1
 #: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
@@ -2401,6 +2402,46 @@ msgstr ""
 msgid "Column width"
 msgstr ""
 
+#: dist/blocks/texture/index.js:1
+#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
+msgid "Type"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Dots"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Offset dots"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Grid"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Horizontal stripe"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Vertical stripe"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Checker pattern"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+#: dist/formats/formats.js:1
+msgid "Color"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Gap"
+msgstr ""
+
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Text orientation"
 msgstr ""
@@ -2489,10 +2530,6 @@ msgid "Close"
 msgstr ""
 
 #: dist/formats/formats.js:1
-msgid "Color"
-msgstr ""
-
-#: dist/formats/formats.js:1
 msgid "Text shadow"
 msgstr ""
 
@@ -2523,10 +2560,6 @@ msgstr ""
 
 #: dist/js/editor/editor.js:1
 msgid "Using root padding"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Gap"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -2698,11 +2731,6 @@ msgstr ""
 
 #: dist/js/editor/editor.js:10
 msgid "Auto line breaks"
-msgstr ""
-
-#: dist/js/editor/editor.js:10
-#: dist/js/editor/editor.js:13
-msgid "Type"
 msgstr ""
 
 #: dist/js/editor/editor.js:10
@@ -3332,6 +3360,21 @@ msgstr ""
 #: dist/blocks/text/block.json
 msgctxt "block description"
 msgid "This block is designed to display easy-to-read text."
+msgstr ""
+
+#: dist/blocks/texture/block.json
+msgctxt "block title"
+msgid "Texture"
+msgstr ""
+
+#: dist/blocks/texture/block.json
+msgctxt "block description"
+msgid "Display texture."
+msgstr ""
+
+#: dist/blocks/texture/block.json
+msgctxt "block keyword"
+msgid "Texture"
 msgstr ""
 
 #: dist/blocks/vertical-writing/block.json

@@ -11,7 +11,9 @@ export default function ( { attributes } ) {
 	const TagName = tagName;
 
 	const blockProps = useBlockProps.save( {
-		'data-unitone-layout': clsx( 'decorator', { '-has-link': isHrefSet } ),
+		'data-unitone-layout': clsx( 'decorator', {
+			'-has-link': isHrefSet,
+		} ),
 	} );
 
 	return (

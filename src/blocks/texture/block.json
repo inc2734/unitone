@@ -1,0 +1,68 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "15.10.0",
+	"textdomain": "unitone",
+	"name": "unitone/texture",
+	"title": "Texture",
+	"description": "Display texture.",
+	"keywords": [ "Texture" ],
+	"attributes": {
+		"type": {
+			"type": "string",
+			"default": "dots"
+		},
+		"color": {
+			"type": "string",
+			"default": ""
+		},
+		"gap": {
+			"type": "number",
+			"default": 50
+		},
+		"size": {
+			"type": "number",
+			"default": 1
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": "[data-unitone-layout~=texture]"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"align": [ "full", "wide" ],
+		"color": {
+			"background": true,
+			"color": true,
+			"link": true
+		}
+	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "unitone/decorator",
+				"attributes": {
+					"unitone": {
+						"padding": "1"
+					}
+				},
+				"innerBlocks": [
+					{
+						"name": "core/paragraph",
+						"attributes": {
+							"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+						}
+					}
+				]
+			}
+		]
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

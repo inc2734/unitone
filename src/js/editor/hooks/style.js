@@ -59,7 +59,7 @@ import { DropShadowPanel, useDropShadowBlockProps } from './border/border';
 import { PositionPanel, usePositionBlockProps } from './position/position';
 
 import {
-	BackdropPanel,
+	BackdropFilterPanel,
 	useBlurBlockProps,
 	useBrightnessBlockProps,
 	useContrastBlockProps,
@@ -194,7 +194,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<PositionPanel { ...passedProps } />
 				<LayerPanel { ...passedProps } />
 				<DropShadowPanel { ...passedProps } />
-				<BackdropPanel { ...passedProps } />
+				<BackdropFilterPanel { ...passedProps } />
 				<AnimationPanel { ...passedProps } />
 
 				<AdvancedPanel { ...passedProps } />

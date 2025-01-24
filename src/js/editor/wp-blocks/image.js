@@ -116,6 +116,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 										},
 									},
 								} ),
+								clearable: true,
 							},
 						] }
 						{ ...colorGradientSettings }

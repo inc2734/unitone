@@ -152,7 +152,9 @@ export default function ( {
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'decorator',
 		blockProps[ 'data-unitone-layout' ],
-		{ '-has-link': isHrefSet }
+		{
+			'-has-link': isHrefSet,
+		}
 	);
 
 	const innerBlocksPropsArgs = {

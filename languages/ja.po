@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-01-21T07:03:16+00:00\n"
-"PO-Revision-Date: 2025-01-21 16:09+0900\n"
+"POT-Creation-Date: 2025-01-24T07:58:22+00:00\n"
+"PO-Revision-Date: 2025-01-24 16:59+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1711,8 +1711,8 @@ msgstr "ナビゲーション"
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:1
-#: dist/blocks/text/index.js:1 dist/blocks/vertical-writing/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
+#: dist/blocks/text/index.js:1 dist/blocks/texture/index.js:1
+#: dist/blocks/vertical-writing/index.js:1 dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
 msgstr "設定"
 
@@ -2355,6 +2355,43 @@ msgstr "マルチカラム"
 msgid "Column width"
 msgstr "カラム幅"
 
+#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:13
+msgid "Type"
+msgstr "種類"
+
+#: dist/blocks/texture/index.js:1
+msgid "Dots"
+msgstr "ドット"
+
+#: dist/blocks/texture/index.js:1
+msgid "Offset dots"
+msgstr "オフセットドット"
+
+#: dist/blocks/texture/index.js:1
+msgid "Grid"
+msgstr "グリッド"
+
+#: dist/blocks/texture/index.js:1
+msgid "Horizontal stripe"
+msgstr "横縞"
+
+#: dist/blocks/texture/index.js:1
+msgid "Vertical stripe"
+msgstr "縦縞"
+
+#: dist/blocks/texture/index.js:1
+msgid "Checker pattern"
+msgstr "市松模様"
+
+#: dist/blocks/texture/index.js:1 dist/formats/formats.js:1
+msgid "Color"
+msgstr "色"
+
+#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:1
+msgid "Gap"
+msgstr "間隔"
+
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Text orientation"
 msgstr "テキストの向き"
@@ -2443,10 +2480,6 @@ msgid "Close"
 msgstr "閉じる"
 
 #: dist/formats/formats.js:1
-msgid "Color"
-msgstr "色"
-
-#: dist/formats/formats.js:1
 msgid "Text shadow"
 msgstr "テキストシャドウ"
 
@@ -2477,10 +2510,6 @@ msgstr "両端の余白"
 #: dist/js/editor/editor.js:1
 msgid "Using root padding"
 msgstr "ルートパディングを使用"
-
-#: dist/js/editor/editor.js:1
-msgid "Gap"
-msgstr "間隔"
 
 #: dist/js/editor/editor.js:1
 msgid "Stairs grid"
@@ -2665,10 +2694,6 @@ msgstr ""
 #: dist/js/editor/editor.js:10
 msgid "Auto line breaks"
 msgstr "自動改行"
-
-#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
-msgid "Type"
-msgstr "種類"
 
 #: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
 msgid "Background color or background image must be set."
@@ -3313,6 +3338,21 @@ msgstr "テキスト"
 msgctxt "block description"
 msgid "This block is designed to display easy-to-read text."
 msgstr "読みやすいテキストを表示するためにデザインされています。"
+
+#: dist/blocks/texture/block.json
+msgctxt "block title"
+msgid "Texture"
+msgstr "テクスチャー"
+
+#: dist/blocks/texture/block.json
+msgctxt "block description"
+msgid "Display texture."
+msgstr "テクスチャーを表示"
+
+#: dist/blocks/texture/block.json
+msgctxt "block keyword"
+msgid "Texture"
+msgstr "テクスチャー"
 
 #: dist/blocks/vertical-writing/block.json
 msgctxt "block title"

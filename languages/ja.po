@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-01-24T07:58:22+00:00\n"
-"PO-Revision-Date: 2025-01-24 16:59+0900\n"
+"POT-Creation-Date: 2025-01-26T00:53:23+00:00\n"
+"PO-Revision-Date: 2025-01-26 09:54+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1564,7 +1564,8 @@ msgstr "h5 のサイズ"
 msgid "Size of h6"
 msgstr "h6 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:13
+#: App/Controller/Manager/dist/js/app.js:7 dist/blocks/texture/index.js:1
+#: dist/js/editor/editor.js:13
 msgid "Size"
 msgstr "サイズ"
 
@@ -1764,7 +1765,8 @@ msgstr "A"
 msgid "Divider"
 msgstr "区切り"
 
-#: dist/blocks/breadcrumbs/index.js:1 dist/js/editor/editor.js:10
+#: dist/blocks/breadcrumbs/index.js:1 dist/blocks/texture/index.js:1
+#: dist/js/editor/editor.js:10
 msgid "Slash"
 msgstr "スラッシュ"
 
@@ -2255,6 +2257,10 @@ msgid "Arrows icon"
 msgstr "矢印のアイコン"
 
 #: dist/blocks/slider/index.js:1
+msgid "Arrows icon color"
+msgstr "矢印のアイコンの色"
+
+#: dist/blocks/slider/index.js:1
 msgid "Arrows icon line thickness"
 msgstr "矢印のアイコンの太さ"
 
@@ -2283,20 +2289,16 @@ msgid "Pagination icon"
 msgstr "ページネーションのアイコン"
 
 #: dist/blocks/slider/index.js:1
+msgid "Pagination icon color"
+msgstr "ページネーションのアイコンの色"
+
+#: dist/blocks/slider/index.js:1
 msgid "Pagination alignment"
 msgstr "ページネーションの垂直位置"
 
 #: dist/blocks/slider/index.js:1
 msgid "Pagination justification"
 msgstr "ページネーションの配置"
-
-#: dist/blocks/slider/index.js:1
-msgid "Arrows icon color"
-msgstr "矢印のアイコンの色"
-
-#: dist/blocks/slider/index.js:1
-msgid "Pagination icon color"
-msgstr "ページネーションのアイコンの色"
 
 #: dist/blocks/stack-divided/index.js:1
 msgid "Stack (Divider: stripe)"
@@ -2383,6 +2385,14 @@ msgstr "縦縞"
 #: dist/blocks/texture/index.js:1
 msgid "Checker pattern"
 msgstr "市松模様"
+
+#: dist/blocks/texture/index.js:1
+msgid "Graph paper"
+msgstr "方眼紙"
+
+#: dist/blocks/texture/index.js:1
+msgid "Backslash"
+msgstr "バックスラッシュ"
 
 #: dist/blocks/texture/index.js:1 dist/formats/formats.js:1
 msgid "Color"

@@ -105,6 +105,18 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									label: __( 'Checker pattern', 'unitone' ),
 									value: 'checker-pattern',
 								},
+								{
+									label: __( 'Graph paper', 'unitone' ),
+									value: 'graph-paper',
+								},
+								{
+									label: __( 'Slash', 'unitone' ),
+									value: 'slash',
+								},
+								{
+									label: __( 'Backslash', 'unitone' ),
+									value: 'backslash',
+								},
 							] }
 							value={ type }
 							onChange={ ( newAttribute ) =>

@@ -120,8 +120,18 @@ add_filter(
 		 * @param string $support The supported attribute name. Dot-accessible.
 		 * @return boolean
 		 */
-		$is_supported = function ( $support ) use ( $metadata, $block ) {
-			return true === unitone_array_get( $metadata->supports['unitone'] ?? array(), $support );
+		$has_support = function ( $support ) use ( $metadata, $block ) {
+			return null !== unitone_array_get( $metadata->supports['unitone'] ?? array(), $support );
+		};
+
+		/**
+		 * Return supported value.
+		 *
+		 * @param string $support The supported attribute name. Dot-accessible.
+		 * @return mixed
+		 */
+		$get_support = function ( $support ) use ( $metadata, $block ) {
+			return unitone_array_get( $metadata->supports['unitone'] ?? array(), $support );
 		};
 
 		/**
@@ -292,17 +302,17 @@ add_filter(
 		};
 
 		// -auto-phrase
-		if ( $is_supported( 'autoPhrase' ) ) {
+		if ( $has_support( 'autoPhrase' ) ) {
 			$add_attribute( '-auto-phrase', $get_attribute( 'autoPhrase' ) );
 		}
 
 		// -fluid-typography
-		if ( $is_supported( 'fluidTypography' ) ) {
+		if ( $has_support( 'fluidTypography' ) ) {
 			$add_attribute( '-fluid-typography', $get_attribute( 'fluidTypography' ) );
 		}
 
 		// --unitone--half-leading
-		if ( $is_supported( 'halfLeading' ) ) {
+		if ( $has_support( 'halfLeading' ) ) {
 			$new_half_leading = $get_attribute( 'halfLeading' );
 			if ( ! is_null( $new_half_leading ) ) {
 				$add_style( '--unitone--half-leading', $new_half_leading );
@@ -326,27 +336,27 @@ add_filter(
 		}
 
 		// -align-items
-		if ( $is_supported( 'alignItems' ) ) {
+		if ( $has_support( 'alignItems' ) ) {
 			$add_attribute( '-align-items', $get_attribute( 'alignItems' ) );
 		}
 
 		// -auto-repeat
-		if ( $is_supported( 'autoRepeat' ) ) {
+		if ( $has_support( 'autoRepeat' ) ) {
 			$add_attribute( '-auto-repeat', $get_attribute( 'autoRepeat' ) );
 		}
 
 		// -align
-		if ( $is_supported( 'blockAlign' ) ) {
+		if ( $has_support( 'blockAlign' ) ) {
 			$add_attribute( '-align', $get_attribute( 'blockAlign' ) );
 		}
 
 		// -divider
-		if ( $is_supported( 'divider' ) ) {
+		if ( $has_support( 'divider' ) ) {
 			$add_attribute( '-divider', $get_attribute( 'dividerType' ) );
 		}
 
 		// --unitone--divier-color
-		if ( $is_supported( 'divider' ) ) {
+		if ( $has_support( 'divider' ) ) {
 			$divider_color        = $get_attribute( 'divider.color' );
 			$divider_preset_color = $get_attribute( 'dividerColor' );
 
@@ -358,17 +368,17 @@ add_filter(
 		}
 
 		// --unitone--divider-style
-		if ( $is_supported( 'divider' ) ) {
+		if ( $has_support( 'divider' ) ) {
 			$add_style( '--unitone--divider-style', $get_attribute( 'divider.style' ) );
 		}
 
 		// --unitone--divider-width
-		if ( $is_supported( 'divider' ) ) {
+		if ( $has_support( 'divider' ) ) {
 			$add_style( '--unitone--divider-width', $get_attribute( 'divider.width' ) );
 		}
 
 		// -section-divider
-		if ( $is_supported( 'sectionDivider' ) ) {
+		if ( $has_support( 'sectionDivider' ) ) {
 			$top_divider_type = $get_attribute( 'sectionDivider.top.type' );
 			if ( $top_divider_type ) {
 				$add_attribute( '-section-divider-top', $top_divider_type );
@@ -395,12 +405,12 @@ add_filter(
 		}
 
 		// --unitone--drop-shadow
-		if ( $is_supported( 'dropShadow' ) ) {
+		if ( $has_support( 'dropShadow' ) ) {
 			$add_style( '--unitone--drop-shadow', $get_attribute( 'dropShadow' ) );
 		}
 
 		// -gap
-		if ( $is_supported( 'gap' ) ) {
+		if ( $has_support( 'gap' ) ) {
 			$column_gap = $get_attribute( 'gap.column' );
 			if ( ! is_null( $column_gap ) ) {
 				$add_attribute( '-column-gap', $column_gap );
@@ -417,109 +427,109 @@ add_filter(
 		}
 
 		// -gutters
-		if ( $is_supported( 'gutters' ) ) {
+		if ( $has_support( 'gutters' ) ) {
 			$add_attribute( '-gutters', $get_attribute( 'gutters' ) );
 		}
 
 		// -justify-content
-		if ( $is_supported( 'justifyContent' ) ) {
+		if ( $has_support( 'justifyContent' ) ) {
 			$add_attribute( '-justify-content', $get_attribute( 'justifyContent' ) );
 		}
 
 		// -stairs
-		if ( $is_supported( 'stairs' ) ) {
+		if ( $has_support( 'stairs' ) ) {
 			$add_attribute( '-stairs', $get_attribute( 'stairs' ) );
 		}
 
 		// -stairs-up
-		if ( $is_supported( 'stairs' ) ) {
+		if ( $has_support( 'stairs' ) ) {
 			if ( $get_attribute( 'stairs' ) ) {
 				$add_attribute( '-stairs-up', $get_attribute( 'stairsUp' ) );
 			}
 		}
 
 		// --unitone--max-width
-		if ( $is_supported( 'maxWidth' ) || $has_supported_attribute( 'maxWidth' ) ) {
+		if ( $has_support( 'maxWidth' ) || $has_supported_attribute( 'maxWidth' ) ) {
 			$add_style( '--unitone--max-width', $get_attribute( 'maxWidth' ) );
 		}
 
 		// --unitone--min-width
-		if ( $is_supported( 'minWidth' ) ) {
+		if ( $has_support( 'minWidth' ) ) {
 			$add_style( '--unitone--min-width', $get_attribute( 'minWidth' ) );
 		}
 
 		// --unitone--max-height
-		if ( $is_supported( 'maxHeight' ) || $has_supported_attribute( 'minHeight' ) ) {
+		if ( $has_support( 'maxHeight' ) || $has_supported_attribute( 'minHeight' ) ) {
 			$add_style( '--unitone--max-height', $get_attribute( 'maxHeight' ) );
 		}
 
 		// --unitone--min-height
-		if ( $is_supported( 'minHeight' ) ) {
+		if ( $has_support( 'minHeight' ) ) {
 			$add_style( '--unitone--min-height', $get_attribute( 'minHeight' ) );
 		}
 
 		// -negative
-		if ( $is_supported( 'negative' ) ) {
+		if ( $has_support( 'negative' ) ) {
 			$add_attribute( '-negative', $get_attribute( 'negative' ) );
 		}
 
 		// -overflow
-		if ( $is_supported( 'overflow' ) ) {
+		if ( $has_support( 'overflow' ) ) {
 			$add_attribute( '-overflow', $get_attribute( 'overflow' ) );
 		}
 
 		// -padding
-		if ( $is_supported( 'padding' ) ) {
+		if ( $has_support( 'padding' ) ) {
 			$add_attribute( '-padding', $get_attribute( 'padding' ) );
 		}
 
 		// -position
-		if ( $is_supported( 'position' ) ) {
+		if ( $has_support( 'position' ) ) {
 			$add_attribute( '-position', $get_attribute( 'position.position' ) );
 		}
 
 		// --unitone--top
-		if ( $is_supported( 'position' ) ) {
+		if ( $has_support( 'position' ) ) {
 			$add_style( '--unitone--top', $get_attribute( 'position.top' ) );
 		}
 
 		// --unitone--right
-		if ( $is_supported( 'position' ) ) {
+		if ( $has_support( 'position' ) ) {
 			$add_style( '--unitone--right', $get_attribute( 'position.right' ) );
 		}
 
 		// --unitone--bottom
-		if ( $is_supported( 'position' ) ) {
+		if ( $has_support( 'position' ) ) {
 			$add_style( '--unitone--bottom', $get_attribute( 'position.bottom' ) );
 		}
 
 		// --unitone--left
-		if ( $is_supported( 'position' ) ) {
+		if ( $has_support( 'position' ) ) {
 			$add_style( '--unitone--left', $get_attribute( 'position.left' ) );
 		}
 
 		// --unitone--z-index
-		if ( $is_supported( 'position' ) ) {
+		if ( $has_support( 'position' ) ) {
 			$add_style( '--unitone--z-index', $get_attribute( 'position.zIndex' ) );
 		}
 
 		// --unitone--flex-grow
-		if ( $is_supported( 'flexGrow' ) || $has_supported_attribute( 'flexGrow' ) ) {
+		if ( $has_support( 'flexGrow' ) || $has_supported_attribute( 'flexGrow' ) ) {
 			$add_style( '--unitone--flex-grow', $get_attribute( 'flexGrow' ) );
 		}
 
 		// --unitone--flex-shrink
-		if ( $is_supported( 'flexShrink' ) || $has_supported_attribute( 'flexShrink' ) ) {
+		if ( $has_support( 'flexShrink' ) || $has_supported_attribute( 'flexShrink' ) ) {
 			$add_style( '--unitone--flex-shrink', $get_attribute( 'flexShrink' ) );
 		}
 
 		// --unitone--flex-basis
-		if ( $is_supported( 'flexBasis' ) || $has_supported_attribute( 'flexBasis' ) ) {
+		if ( $has_support( 'flexBasis' ) || $has_supported_attribute( 'flexBasis' ) ) {
 			$add_style( '--unitone--flex-basis', $get_attribute( 'flexBasis' ) );
 		}
 
 		// -align-self
-		if ( $is_supported( 'alignSelf' ) || $has_supported_attribute( 'alignSelf' ) ) {
+		if ( $has_support( 'alignSelf' ) || $has_supported_attribute( 'alignSelf' ) ) {
 			$align_self_lg = $get_attribute( 'alignSelf.lg' );
 			if ( ! is_null( $align_self_lg ) ) {
 				$add_attribute( '-align-self', $align_self_lg );
@@ -541,7 +551,7 @@ add_filter(
 		}
 
 		// -justify-self
-		if ( $is_supported( 'justifySelf' ) || $has_supported_attribute( 'justifySelf' ) ) {
+		if ( $has_support( 'justifySelf' ) || $has_supported_attribute( 'justifySelf' ) ) {
 			$justify_self_lg = $get_attribute( 'justifySelf.lg' );
 			if ( ! is_null( $justify_self_lg ) ) {
 				$add_attribute( '-justify-self', $justify_self_lg );
@@ -563,7 +573,7 @@ add_filter(
 		}
 
 		// --unitone--grid-column
-		if ( $is_supported( 'gridColumn' ) || $has_supported_attribute( 'gridColumn' ) ) {
+		if ( $has_support( 'gridColumn' ) || $has_supported_attribute( 'gridColumn' ) ) {
 			$grid_column_lg = $get_attribute( 'gridColumn.lg' );
 			if ( ! is_null( $grid_column_lg ) ) {
 				$add_style( '--unitone--grid-column', $grid_column_lg );
@@ -585,7 +595,7 @@ add_filter(
 		}
 
 		// --unitone--grid-row
-		if ( $is_supported( 'gridRow' ) || $has_supported_attribute( 'gridRow' ) ) {
+		if ( $has_support( 'gridRow' ) || $has_supported_attribute( 'gridRow' ) ) {
 			$grid_row_lg = $get_attribute( 'gridRow.lg' );
 			if ( ! is_null( $grid_row_lg ) ) {
 				$add_style( '--unitone--grid-row', $grid_row_lg );
@@ -607,23 +617,23 @@ add_filter(
 		}
 
 		// -text-orientation
-		if ( $is_supported( 'textOrientation' ) ) {
+		if ( $has_support( 'textOrientation' ) ) {
 			$add_attribute( '-text-orientation', $get_attribute( 'textOrientation' ) );
 		}
 
 		// -mix-blend-mode
-		if ( $is_supported( 'mixBlendMode' ) || $has_supported_attribute( 'mixBlendMode' ) ) {
+		if ( $has_support( 'mixBlendMode' ) || $has_supported_attribute( 'mixBlendMode' ) ) {
 			$add_attribute( '-mix-blend-mode', $get_attribute( 'mixBlendMode' ) );
 		}
 
 		// --unitone--cell-min-width
-		if ( $is_supported( 'cellMinWidth' ) ) {
+		if ( $has_support( 'cellMinWidth' ) ) {
 			$deprecated_attribute = $block['attrs']['cellMinWidth'] ?? null;
 			$add_style( '--unitone--cell-min-width', $get_attribute( 'cellMinWidth' ) ?? $deprecated_attribute );
 		}
 
 		// -overlay
-		if ( $is_supported( 'overlay' ) ) {
+		if ( $has_support( 'overlay' ) ) {
 			$color           = $get_attribute( 'overlay.color' );
 			$custom_color    = $get_attribute( 'overlay.customColor' );
 			$gradient        = $get_attribute( 'overlay.gradient' );
@@ -653,7 +663,7 @@ add_filter(
 		}
 
 		// --unitone--backdrop-filter-blur
-		if ( $is_supported( 'backdropFilter.blur' ) || $is_supported( 'backdropFilter' ) ) {
+		if ( $has_support( 'backdropFilter.blur' ) || true === $get_support( 'backdropFilter' ) ) {
 			$blur = $get_attribute( 'backdropFilter.blur' );
 
 			if ( ! is_null( $blur ) ) {
@@ -662,7 +672,7 @@ add_filter(
 		}
 
 		// --unitone--backdrop-filter-brightness
-		if ( $is_supported( 'backdropFilter.brightness' ) || $is_supported( 'backdropFilter' ) ) {
+		if ( $has_support( 'backdropFilter.brightness' ) || true === $get_support( 'backdropFilter' ) ) {
 			$brightness = $get_attribute( 'backdropFilter.brightness' );
 
 			if ( ! is_null( $brightness ) ) {
@@ -671,7 +681,7 @@ add_filter(
 		}
 
 		// --unitone--backdrop-filter-contrast
-		if ( $is_supported( 'backdropFilter.contrast' ) || $is_supported( 'backdropFilter' ) ) {
+		if ( $has_support( 'backdropFilter.contrast' ) || true === $get_support( 'backdropFilter' ) ) {
 			$contrast = $get_attribute( 'backdropFilter.contrast' );
 
 			if ( ! is_null( $contrast ) ) {
@@ -680,7 +690,7 @@ add_filter(
 		}
 
 		// --unitone--backdrop-filter-grayscale
-		if ( $is_supported( 'backdropFilter.grayscale' ) || $is_supported( 'backdropFilter' ) ) {
+		if ( $has_support( 'backdropFilter.grayscale' ) || true === $get_support( 'backdropFilter' ) ) {
 			$grayscale = $get_attribute( 'backdropFilter.grayscale' );
 
 			if ( ! is_null( $grayscale ) ) {
@@ -689,7 +699,7 @@ add_filter(
 		}
 
 		// --unitone--backdrop-filter-hue-rotate
-		if ( $is_supported( 'backdropFilter.hueRotate' ) || $is_supported( 'backdropFilter' ) ) {
+		if ( $has_support( 'backdropFilter.hueRotate' ) || true === $get_support( 'backdropFilter' ) ) {
 			$hue_rotate = $get_attribute( 'backdropFilter.hueRotate' );
 
 			if ( ! is_null( $hue_rotate ) ) {
@@ -698,7 +708,7 @@ add_filter(
 		}
 
 		// --unitone--backdrop-filter-invert
-		if ( $is_supported( 'backdropFilter.invert' ) || $is_supported( 'backdropFilter' ) ) {
+		if ( $has_support( 'backdropFilter.invert' ) || true === $get_support( 'backdropFilter' ) ) {
 			$invert = $get_attribute( 'backdropFilter.invert' );
 
 			if ( ! is_null( $invert ) ) {
@@ -707,7 +717,7 @@ add_filter(
 		}
 
 		// --unitone--backdrop-filter-saturate
-		if ( $is_supported( 'backdropFilter.saturate' ) || $is_supported( 'backdropFilter' ) ) {
+		if ( $has_support( 'backdropFilter.saturate' ) || true === $get_support( 'backdropFilter' ) ) {
 			$saturate = $get_attribute( 'backdropFilter.saturate' );
 
 			if ( ! is_null( $saturate ) ) {
@@ -716,7 +726,7 @@ add_filter(
 		}
 
 		// --unitone--backdrop-filter-sepia
-		if ( $is_supported( 'backdropFilter.sepia' ) || $is_supported( 'backdropFilter' ) ) {
+		if ( $has_support( 'backdropFilter.sepia' ) || true === $get_support( 'backdropFilter' ) ) {
 			$sepia = $get_attribute( 'backdropFilter.sepia' );
 
 			if ( ! is_null( $sepia ) ) {
@@ -725,7 +735,7 @@ add_filter(
 		}
 
 		// Parallax.
-		if ( $is_supported( 'parallax' ) ) {
+		if ( $has_support( 'parallax' ) ) {
 			$parallax_speed = $get_attribute( 'parallax.speed' );
 			if ( $parallax_speed ) {
 				$add_data_attribute( 'data-unitone-parallax', 'disable' );
@@ -734,7 +744,7 @@ add_filter(
 		}
 
 		// Scroll animation.
-		if ( $is_supported( 'scrollAnimation' ) ) {
+		if ( $has_support( 'scrollAnimation' ) ) {
 			$scroll_animation_type  = $get_attribute( 'scrollAnimation.type' );
 			$scroll_animation_speed = $get_attribute( 'scrollAnimation.speed' );
 
@@ -763,7 +773,7 @@ add_filter(
 		}
 
 		// Additional style.
-		if ( $is_supported( 'style' ) ) {
+		if ( $has_support( 'style' ) ) {
 			$instance_id = $get_attribute( 'instanceId' );
 			$custom_css  = $get_attribute( 'style' );
 
@@ -1067,7 +1077,7 @@ add_filter(
 			return $block_content;
 		}
 
-		$is_outer_link = apply_filters( 'unitone_is_outer_block_link', true, $block_content, $block );
+		$is_outer_link = apply_filters( 'unitone_is_outer_block_link', false, $block_content, $block );
 		if ( ! $is_outer_link ) {
 			return $block_content;
 		}

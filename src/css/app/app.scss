@@ -1,7 +1,10 @@
 @use "sass:meta";
 @use '../../../node_modules/@inc2734/unitone-css/src/settings/settings';
 
-:where(*) {
+:where(
+	[data-unitone-block-list~="layout"],
+	[data-unitone-block-list~="layout"] [data-unitone-block-list~="block"]
+) {
 	position: relative;
 }
 

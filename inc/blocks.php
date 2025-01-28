@@ -105,6 +105,10 @@ add_filter(
 add_filter(
 	'render_block',
 	function ( $block_content, $block ) {
+		if ( ! $block['blockName'] ) {
+			return $block_content;
+		}
+
 		$p = new \WP_HTML_Tag_Processor( $block_content );
 		$p->next_tag();
 
@@ -300,6 +304,14 @@ add_filter(
 			$value = $block['attrs']['unitone'][ $support ] ?? null;
 			return ! is_null( $value );
 		};
+
+		// In the editor, InnerBlocks and its descendant blocks have `position: relative`.
+		// Match the front as well.
+		// @see /wp-includes/css/dist/block-editor/content.css.
+		$add_data_attribute( 'data-unitone-block-list', 'block' );
+		if ( $block['innerBlocks'] ) {
+			$add_data_attribute( 'data-unitone-block-list', 'layout' );
+		}
 
 		// -auto-phrase
 		if ( $has_support( 'autoPhrase' ) ) {

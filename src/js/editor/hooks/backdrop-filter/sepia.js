@@ -108,39 +108,3 @@ export function SepiaEdit( {
 		/>
 	);
 }
-
-export function useSepiaBlockProps( settings ) {
-	const { attributes, name } = settings;
-
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.backdropFilter?.sepia;
-		},
-		[ name ]
-	);
-
-	if (
-		! hasBlockSupport( name, 'unitone.backdropFilter.sepia' ) &&
-		true !== getBlockSupport( name, 'unitone.backdropFilter' )
-	) {
-		return settings;
-	}
-
-	const newSepia = attributes?.unitone?.backdropFilter?.sepia ?? defaultValue;
-
-	if ( null == newSepia ) {
-		return settings;
-	}
-
-	return {
-		...settings,
-		wrapperProps: {
-			...settings.wrapperProps,
-			style: {
-				...settings.wrapperProps?.style,
-				'--unitone--backdrop-filter-sepia': `${ newSepia }%`,
-			},
-		},
-	};
-}

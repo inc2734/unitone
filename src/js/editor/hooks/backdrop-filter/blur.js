@@ -108,39 +108,3 @@ export function BlurEdit( {
 		/>
 	);
 }
-
-export function useBlurBlockProps( settings ) {
-	const { attributes, name } = settings;
-
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.backdropFilter?.blur;
-		},
-		[ name ]
-	);
-
-	if (
-		! hasBlockSupport( name, 'unitone.backdropFilter.blur' ) &&
-		true !== getBlockSupport( name, 'unitone.backdropFilter' )
-	) {
-		return settings;
-	}
-
-	const newBlur = attributes?.unitone?.backdropFilter?.blur ?? defaultValue;
-
-	if ( null == newBlur ) {
-		return settings;
-	}
-
-	return {
-		...settings,
-		wrapperProps: {
-			...settings.wrapperProps,
-			style: {
-				...settings.wrapperProps?.style,
-				'--unitone--backdrop-filter-blur': `${ newBlur }px`,
-			},
-		},
-	};
-}

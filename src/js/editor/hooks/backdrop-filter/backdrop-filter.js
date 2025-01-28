@@ -5,11 +5,18 @@
 import fastDeepEqual from 'fast-deep-equal/es6';
 
 import {
+	getBlockSupport,
+	hasBlockSupport,
+	store as blocksStore,
+} from '@wordpress/blocks';
+
+import {
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -22,7 +29,6 @@ import {
 	resetBlur,
 	getBlurEditLabel,
 	BlurEdit,
-	useBlurBlockProps,
 } from './blur';
 
 import {
@@ -32,7 +38,6 @@ import {
 	resetBrightness,
 	getBrightnessEditLabel,
 	BrightnessEdit,
-	useBrightnessBlockProps,
 } from './brightness';
 
 import {
@@ -42,7 +47,6 @@ import {
 	resetContrast,
 	getContrastEditLabel,
 	ContrastEdit,
-	useContrastBlockProps,
 } from './contrast';
 
 import {
@@ -52,7 +56,6 @@ import {
 	resetGrayscale,
 	getGrayscaleEditLabel,
 	GrayscaleEdit,
-	useGrayscaleBlockProps,
 } from './grayscale';
 
 import {
@@ -62,7 +65,6 @@ import {
 	resetHueRotate,
 	getHueRotateEditLabel,
 	HueRotateEdit,
-	useHueRotateBlockProps,
 } from './hue-rotate';
 
 import {
@@ -72,7 +74,6 @@ import {
 	resetInvert,
 	getInvertEditLabel,
 	InvertEdit,
-	useInvertBlockProps,
 } from './invert';
 
 import {
@@ -82,7 +83,6 @@ import {
 	resetSaturate,
 	getSaturateEditLabel,
 	SaturateEdit,
-	useSaturateBlockProps,
 } from './saturate';
 
 import {
@@ -92,19 +92,147 @@ import {
 	resetSepia,
 	getSepiaEditLabel,
 	SepiaEdit,
-	useSepiaBlockProps,
 } from './sepia';
 
-export {
-	useBlurBlockProps,
-	useBrightnessBlockProps,
-	useContrastBlockProps,
-	useGrayscaleBlockProps,
-	useHueRotateBlockProps,
-	useInvertBlockProps,
-	useSaturateBlockProps,
-	useSepiaBlockProps,
-};
+export function useBackdropFilterBlockProps( settings ) {
+	const {
+		attributes: { unitone },
+		name,
+	} = settings;
+
+	const backdropFilter = unitone?.backdropFilter;
+
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.backdropFilter;
+		},
+		[ name ]
+	);
+
+	const backdropFilterProps = [];
+	const hasBackdropFilterSupport =
+		true === getBlockSupport( name, 'unitone.backdropFilter' );
+
+	if (
+		hasBlockSupport( name, 'unitone.backdropFilter.blur' ) ||
+		hasBackdropFilterSupport
+	) {
+		const blur = backdropFilter?.blur ?? defaultValue?.blur;
+		if ( null != blur ) {
+			backdropFilterProps.push( {
+				blur: `${ blur }px`,
+			} );
+		}
+	}
+
+	if (
+		hasBlockSupport( name, 'unitone.backdropFilter.brightness' ) ||
+		hasBackdropFilterSupport
+	) {
+		const brightness =
+			backdropFilter?.brightness ?? defaultValue?.brightness;
+		if ( null != brightness ) {
+			backdropFilterProps.push( {
+				brightness: `${ brightness }%`,
+			} );
+		}
+	}
+
+	if (
+		hasBlockSupport( name, 'unitone.backdropFilter.contrast' ) ||
+		hasBackdropFilterSupport
+	) {
+		const contrast = backdropFilter?.contrast ?? defaultValue?.contrast;
+		if ( null != contrast ) {
+			backdropFilterProps.push( {
+				contrast: `${ contrast }%`,
+			} );
+		}
+	}
+
+	if (
+		hasBlockSupport( name, 'unitone.backdropFilter.grayscale' ) ||
+		hasBackdropFilterSupport
+	) {
+		const grayscale = backdropFilter?.grayscale ?? defaultValue?.grayscale;
+		if ( null != grayscale ) {
+			backdropFilterProps.push( {
+				grayscale: `${ grayscale }%`,
+			} );
+		}
+	}
+
+	if (
+		hasBlockSupport( name, 'unitone.backdropFilter.hueRotate' ) ||
+		hasBackdropFilterSupport
+	) {
+		const hueRotate = backdropFilter?.hueRotate ?? defaultValue?.hueRotate;
+		if ( null != hueRotate ) {
+			backdropFilterProps.push( {
+				hueRotate: `${ hueRotate }deg`,
+			} );
+		}
+	}
+
+	if (
+		hasBlockSupport( name, 'unitone.backdropFilter.invert' ) ||
+		hasBackdropFilterSupport
+	) {
+		const invert = backdropFilter?.invert ?? defaultValue?.invert;
+		if ( null != invert ) {
+			backdropFilterProps.push( {
+				invert: `${ invert }%`,
+			} );
+		}
+	}
+
+	if (
+		hasBlockSupport( name, 'unitone.backdropFilter.saturate' ) ||
+		hasBackdropFilterSupport
+	) {
+		const saturate = backdropFilter?.saturate ?? defaultValue?.saturate;
+		if ( null != saturate ) {
+			backdropFilterProps.push( {
+				saturate: `${ saturate }%`,
+			} );
+		}
+	}
+
+	if (
+		hasBlockSupport( name, 'unitone.backdropFilter.sepia' ) ||
+		hasBackdropFilterSupport
+	) {
+		const sepia = backdropFilter?.sepia ?? defaultValue?.sepia;
+		if ( null != sepia ) {
+			backdropFilterProps.push( {
+				sepia: `${ sepia }%`,
+			} );
+		}
+	}
+
+	if ( 1 > backdropFilterProps.length ) {
+		return settings;
+	}
+
+	return {
+		...settings,
+		wrapperProps: {
+			...settings.wrapperProps,
+			style: {
+				...settings.wrapperProps?.style,
+				'--unitone--backdrop-filter': backdropFilterProps
+					.map(
+						( v ) =>
+							`${ Object.keys( v )[ 0 ] }(${
+								Object.values( v )[ 0 ]
+							})`
+					)
+					.join( ' ' ),
+			},
+		},
+	};
+}
 
 function BackdropFilterPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;

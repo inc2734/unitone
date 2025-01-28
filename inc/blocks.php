@@ -323,6 +323,11 @@ add_filter(
 			$add_attribute( '-fluid-typography', $get_attribute( 'fluidTypography' ) );
 		}
 
+		// -background-clip
+		if ( $has_support( 'backgroundClip' ) ) {
+			$add_attribute( '-background-clip', $get_attribute( 'backgroundClip' ) );
+		}
+
 		// --unitone--half-leading
 		if ( $has_support( 'halfLeading' ) ) {
 			$new_half_leading = $get_attribute( 'halfLeading' );
@@ -678,75 +683,75 @@ add_filter(
 		$backdrop_filter_props = ( function () use ( $get_support, $has_support, $get_attribute ) {
 			$backdrop_filter_props = array();
 
-			// Blur
+			// Blur.
 			$has_backdrop_filter_support = true === $get_support( 'backdropFilter' );
 			if ( $has_support( 'backdropFilter.blur' ) || $has_backdrop_filter_support ) {
-			$blur = $get_attribute( 'backdropFilter.blur' );
+				$blur = $get_attribute( 'backdropFilter.blur' );
 
-			if ( ! is_null( $blur ) ) {
+				if ( ! is_null( $blur ) ) {
 					$backdrop_filter_props[] = array( 'blur' => $blur . 'px' );
+				}
 			}
-		}
 
-			// Brightness
-		if ( $has_support( 'backdropFilter.brightness' ) || true === $get_support( 'backdropFilter' ) ) {
-			$brightness = $get_attribute( 'backdropFilter.brightness' );
+			// Brightness.
+			if ( $has_support( 'backdropFilter.brightness' ) || true === $get_support( 'backdropFilter' ) ) {
+				$brightness = $get_attribute( 'backdropFilter.brightness' );
 
-			if ( ! is_null( $brightness ) ) {
+				if ( ! is_null( $brightness ) ) {
 					$backdrop_filter_props[] = array( 'brightness' => $brightness . '%' );
+				}
 			}
-		}
 
-			// Contrast
-		if ( $has_support( 'backdropFilter.contrast' ) || true === $get_support( 'backdropFilter' ) ) {
-			$contrast = $get_attribute( 'backdropFilter.contrast' );
+			// Contrast.
+			if ( $has_support( 'backdropFilter.contrast' ) || true === $get_support( 'backdropFilter' ) ) {
+				$contrast = $get_attribute( 'backdropFilter.contrast' );
 
-			if ( ! is_null( $contrast ) ) {
+				if ( ! is_null( $contrast ) ) {
 					$backdrop_filter_props[] = array( 'contrast' => $contrast . '%' );
+				}
 			}
-		}
 
-			// Grayscale
-		if ( $has_support( 'backdropFilter.grayscale' ) || true === $get_support( 'backdropFilter' ) ) {
-			$grayscale = $get_attribute( 'backdropFilter.grayscale' );
+			// Grayscale.
+			if ( $has_support( 'backdropFilter.grayscale' ) || true === $get_support( 'backdropFilter' ) ) {
+				$grayscale = $get_attribute( 'backdropFilter.grayscale' );
 
-			if ( ! is_null( $grayscale ) ) {
+				if ( ! is_null( $grayscale ) ) {
 					$backdrop_filter_props[] = array( 'grayscale' => $grayscale . '%' );
+				}
 			}
-		}
 
-			// Hue Rotate
-		if ( $has_support( 'backdropFilter.hueRotate' ) || true === $get_support( 'backdropFilter' ) ) {
-			$hue_rotate = $get_attribute( 'backdropFilter.hueRotate' );
+			// Hue Rotate.
+			if ( $has_support( 'backdropFilter.hueRotate' ) || true === $get_support( 'backdropFilter' ) ) {
+				$hue_rotate = $get_attribute( 'backdropFilter.hueRotate' );
 
-			if ( ! is_null( $hue_rotate ) ) {
+				if ( ! is_null( $hue_rotate ) ) {
 					$backdrop_filter_props[] = array( 'hueRotate' => $hue_rotate . 'deg' );
+				}
 			}
-		}
 
-			// Invert
-		if ( $has_support( 'backdropFilter.invert' ) || true === $get_support( 'backdropFilter' ) ) {
-			$invert = $get_attribute( 'backdropFilter.invert' );
+			// Invert.
+			if ( $has_support( 'backdropFilter.invert' ) || true === $get_support( 'backdropFilter' ) ) {
+				$invert = $get_attribute( 'backdropFilter.invert' );
 
-			if ( ! is_null( $invert ) ) {
+				if ( ! is_null( $invert ) ) {
 					$backdrop_filter_props[] = array( 'invert' => $invert . '%' );
+				}
 			}
-		}
 
-			// Saturate
-		if ( $has_support( 'backdropFilter.saturate' ) || true === $get_support( 'backdropFilter' ) ) {
-			$saturate = $get_attribute( 'backdropFilter.saturate' );
+			// Saturate.
+			if ( $has_support( 'backdropFilter.saturate' ) || true === $get_support( 'backdropFilter' ) ) {
+				$saturate = $get_attribute( 'backdropFilter.saturate' );
 
-			if ( ! is_null( $saturate ) ) {
+				if ( ! is_null( $saturate ) ) {
 					$backdrop_filter_props[] = array( 'saturate' => $saturate . '%' );
+				}
 			}
-		}
 
-			// Sepia
-		if ( $has_support( 'backdropFilter.sepia' ) || true === $get_support( 'backdropFilter' ) ) {
-			$sepia = $get_attribute( 'backdropFilter.sepia' );
+			// Sepia.
+			if ( $has_support( 'backdropFilter.sepia' ) || true === $get_support( 'backdropFilter' ) ) {
+				$sepia = $get_attribute( 'backdropFilter.sepia' );
 
-			if ( ! is_null( $sepia ) ) {
+				if ( ! is_null( $sepia ) ) {
 					$backdrop_filter_props[] = array( 'sepia' => $sepia . '%' );
 				}
 			}

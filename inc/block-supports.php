@@ -92,6 +92,39 @@ function unitone_add_half_leading_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_half_leading_support' );
 
 /**
+ * Add support "backgroundclip" to core blocks with color.gradients and background.backgroundImage.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_background_clip_support( $metadata ) {
+	if ( false === strpos( $metadata['name'], 'core/' ) ) {
+		return $metadata;
+	}
+
+	if (
+		empty( $metadata['supports']['color']['gradients'] ) &&
+		empty( $metadata['supports']['background']['backgroundImage'] )
+	) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'backgroundClip' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_background_clip_support' );
+
+/**
  * Add support "gap" to core/post-content and core/post-template.
  *
  * @param array $metadata Metadata for registering a block type.

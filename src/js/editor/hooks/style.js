@@ -42,6 +42,7 @@ import {
 	useAutoPhraseBlockProps,
 	useFluidTypographyBlockProps,
 	useHalfLeadingBlockProps,
+	useBackgroundClipBlockProps,
 } from './typography/typography';
 
 import {
@@ -101,6 +102,7 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		props = useAutoPhraseBlockProps( props );
 		props = useFluidTypographyBlockProps( props );
 		props = useHalfLeadingBlockProps( props );
+		props = useBackgroundClipBlockProps( props );
 
 		props = useAlignItemsBlockProps( props );
 		props = useAlignSelfBlockProps( props );

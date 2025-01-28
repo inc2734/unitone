@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-01-26T00:53:23+00:00\n"
-"PO-Revision-Date: 2025-01-26 09:54+0900\n"
+"POT-Creation-Date: 2025-01-28T07:03:31+00:00\n"
+"PO-Revision-Date: 2025-01-28 16:04+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2686,8 +2686,8 @@ msgid "Custom font size isn't fluid and can't be enabled."
 msgstr "カスタムフォントサイズが流動的でないため有効化できません。"
 
 #: dist/js/editor/editor.js:10
-msgid "Fluid typography"
-msgstr "流体タイポグラフィ"
+msgid "Cut the background with text"
+msgstr "テキストで背景を切り取る"
 
 #: dist/js/editor/editor.js:10
 msgid "Half leading"
@@ -2702,8 +2702,20 @@ msgstr ""
 "フレディングを指定することを推奨します。"
 
 #: dist/js/editor/editor.js:10
+msgid "Fluid typography"
+msgstr "流体タイポグラフィ"
+
+#: dist/js/editor/editor.js:10
 msgid "Auto line breaks"
 msgstr "自動改行"
+
+#: dist/js/editor/editor.js:10
+msgid ""
+"This can be set when a background image or background gradient is set for "
+"this block."
+msgstr ""
+"このブロックに背景画像または背景グラデーションが設定されている場合に設定でき"
+"ます。"
 
 #: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
 msgid "Background color or background image must be set."

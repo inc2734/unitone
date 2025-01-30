@@ -90,7 +90,6 @@
 			"fluidTypography": true,
 			"halfLeading": true,
 			"position": true,
-			"backdropFilter": true,
 			"scrollAnimation": true
 		}
 	},

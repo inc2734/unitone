@@ -89,6 +89,7 @@
 			"sectionDivider": true,
 			"fluidTypography": true,
 			"halfLeading": true,
+			"backdropFilter": true,
 			"backgroundClip": true,
 			"position": true,
 			"scrollAnimation": true

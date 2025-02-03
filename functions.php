@@ -83,7 +83,7 @@ require get_template_directory() . '/inc/assets.php';
 // Add block categories.
 require get_template_directory() . '/inc/block-categories.php';
 
-// Add blocks.
+// Customize blocks.
 require get_template_directory() . '/inc/blocks.php';
 
 // Add block patterns.
@@ -118,6 +118,12 @@ require get_template_directory() . '/inc/oembed.php';
 
 // Thumbnail settings.
 require get_template_directory() . '/inc/thumbnail.php';
+
+// Add unitone blocks.
+require get_template_directory() . '/inc/unitone-blocks.php';
+
+// Add unitone block supports.
+require get_template_directory() . '/inc/unitone-block-supports.php';
 
 // Templates integration.
 require get_template_directory() . '/inc/templates.php';

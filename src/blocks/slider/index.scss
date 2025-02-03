@@ -1,3 +1,7 @@
+.swiper-buttons {
+	pointer-events: none;
+}
+
 .unitone-slider-pagination {
 	position: relative;
 	z-index: 3;
@@ -5,6 +9,7 @@
 	flex-wrap: wrap;
 	gap: var(--unitone--s-2);
 	margin-top: var(--unitone--global--text-gap) !important;
+	pointer-events: none;
 
 	> * {
 		flex: 0 1 auto;

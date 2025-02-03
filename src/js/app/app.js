@@ -272,10 +272,31 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	);
 
 	Array.from( blockPosts ).forEach( ( blockPost ) => {
+		/**
+		 * Replace `a` to `span`.
+		 */
+		const links = blockPost.querySelectorAll( 'a' );
+		Array.from( links ).forEach( ( link ) => {
+			const span = document.createElement( 'span' );
+
+			for ( let i = 0; i < link.attributes.length; i++ ) {
+				const attr = link.attributes[ i ];
+				span.setAttribute( attr.name, attr.value );
+			}
+
+			while ( link.firstChild ) {
+				span.appendChild( link.firstChild );
+			}
+
+			link.parentNode.replaceChild( span, link );
+		} );
+
+		/**
+		 * Wrap it with a link to the article.
+		 */
 		const link = blockPost.querySelector(
 			':scope .wp-block-post-title > span'
 		);
-
 		if ( !! link ) {
 			const outerLink = document.createElement( 'a' );
 			outerLink.setAttribute(

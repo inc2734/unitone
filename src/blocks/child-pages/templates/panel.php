@@ -37,7 +37,7 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 		}
 		?>
 		<div
-			data-unitone-layout="decorator -shadow -padding:1"
+			data-unitone-layout="decorator -shadow -padding:1 -has-link"
 			class="<?php echo esc_attr( implode( ' ', $item_class ) ); ?>"
 			style="<?php echo esc_attr( implode( ';', $item_style ) ); ?>"
 		>
@@ -54,7 +54,7 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 					</div>
 					<div data-unitone-layout="cover__content -valign:bottom">
 						<p class="has-unitone-xs-font-size has-text-align-right">
-							<a aria-hidden="true"><?php esc_html_e( 'Learn more', 'unitone' ); ?></a>
+							<a aria-hidden="true" style="pointer-events: none"><?php esc_html_e( 'Learn more', 'unitone' ); ?></a>
 						</p>
 					</div>
 				</div>

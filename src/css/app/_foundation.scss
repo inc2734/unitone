@@ -165,3 +165,10 @@ $align-self-values: (
 		margin-bottom: 0;
 	}
 }
+
+:where([data-unitone-layout~="-background-clip"] [data-unitone-block-list~="block"]),
+[data-unitone-layout~="-background-clip"] :is(.block-editor-block-list__layout, .block-editor-block-list__block) {
+	@supports (background-clip: text) {
+		position: static;
+	}
+}

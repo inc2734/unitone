@@ -38,10 +38,21 @@ import {
 
 import './fluid-font-size-magnification';
 
+import {
+	useIsBackgroundClipDisabled,
+	getBackgroundClipEditLabel,
+	hasBackgroundClipValue,
+	resetBackgroundClipFilter,
+	resetBackgroundClip,
+	BackgroundClipEdit,
+	useBackgroundClipBlockProps,
+} from './background-clip';
+
 export {
 	useAutoPhraseBlockProps,
 	useFluidTypographyBlockProps,
 	useHalfLeadingBlockProps,
+	useBackgroundClipBlockProps,
 };
 
 function TypographyPanelPure( props ) {
@@ -50,11 +61,13 @@ function TypographyPanelPure( props ) {
 	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( { name } );
 	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( { name } );
 	const isHalfLeadingDisabled = useIsHalfLeadingDisabled( { name } );
+	const isBackgroundClipDisabled = useIsBackgroundClipDisabled( { name } );
 
 	if (
 		isAutoPhraseDisabled &&
 		isFluidTypographyDisabled &&
-		isHalfLeadingDisabled
+		isHalfLeadingDisabled &&
+		isBackgroundClipDisabled
 	) {
 		return null;
 	}
@@ -62,28 +75,6 @@ function TypographyPanelPure( props ) {
 	return (
 		<>
 			<InspectorControls group="typography">
-				{ ! isFluidTypographyDisabled && (
-					<ToolsPanelItem
-						hasValue={ () =>
-							hasFluidTypographyValue( { ...props } )
-						}
-						label={ __( 'Fluid typography', 'unitone' ) }
-						onDeselect={ () =>
-							resetFluidTypography( { ...props } )
-						}
-						resetAllFilter={ () =>
-							resetFluidTypographyFilter( attributes )
-						}
-						isShownByDefault
-						panelId={ clientId }
-					>
-						<FluidTypographyEdit
-							{ ...props }
-							label={ __( 'Fluid typography', 'unitone' ) }
-						/>
-					</ToolsPanelItem>
-				) }
-
 				{ ! isHalfLeadingDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasHalfLeadingValue( { ...props } ) }
@@ -111,6 +102,28 @@ function TypographyPanelPure( props ) {
 					</ToolsPanelItem>
 				) }
 
+				{ ! isFluidTypographyDisabled && (
+					<ToolsPanelItem
+						hasValue={ () =>
+							hasFluidTypographyValue( { ...props } )
+						}
+						label={ __( 'Fluid typography', 'unitone' ) }
+						onDeselect={ () =>
+							resetFluidTypography( { ...props } )
+						}
+						resetAllFilter={ () =>
+							resetFluidTypographyFilter( attributes )
+						}
+						isShownByDefault
+						panelId={ clientId }
+					>
+						<FluidTypographyEdit
+							{ ...props }
+							label={ __( 'Fluid typography', 'unitone' ) }
+						/>
+					</ToolsPanelItem>
+				) }
+
 				{ ! isAutoPhraseDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasAutoPhraseValue( { ...props } ) }
@@ -125,6 +138,33 @@ function TypographyPanelPure( props ) {
 						<AutoPhraseEdit
 							{ ...props }
 							label={ __( 'Auto line breaks', 'unitone' ) }
+						/>
+					</ToolsPanelItem>
+				) }
+
+				{ ! isBackgroundClipDisabled && (
+					<ToolsPanelItem
+						hasValue={ () =>
+							hasBackgroundClipValue( { ...props } )
+						}
+						label={ getBackgroundClipEditLabel( { ...props } ) }
+						onDeselect={ () => resetBackgroundClip( { ...props } ) }
+						resetAllFilter={ () =>
+							resetBackgroundClipFilter( attributes )
+						}
+						isShownByDefault
+						panelId={ clientId }
+					>
+						<BackgroundClipEdit
+							{ ...props }
+							label={ getBackgroundClipEditLabel( {
+								...props,
+								__withCode: true,
+							} ) }
+							help={ __(
+								'This can be set when a background image or background gradient is set for this block.',
+								'unitone'
+							) }
 						/>
 					</ToolsPanelItem>
 				) }

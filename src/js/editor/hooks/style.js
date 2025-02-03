@@ -42,6 +42,7 @@ import {
 	useAutoPhraseBlockProps,
 	useFluidTypographyBlockProps,
 	useHalfLeadingBlockProps,
+	useBackgroundClipBlockProps,
 } from './typography/typography';
 
 import {
@@ -60,14 +61,7 @@ import { PositionPanel, usePositionBlockProps } from './position/position';
 
 import {
 	BackdropFilterPanel,
-	useBlurBlockProps,
-	useBrightnessBlockProps,
-	useContrastBlockProps,
-	useGrayscaleBlockProps,
-	useHueRotateBlockProps,
-	useInvertBlockProps,
-	useSaturateBlockProps,
-	useSepiaBlockProps,
+	useBackdropFilterBlockProps,
 } from './backdrop-filter/backdrop-filter';
 
 import {
@@ -108,6 +102,7 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		props = useAutoPhraseBlockProps( props );
 		props = useFluidTypographyBlockProps( props );
 		props = useHalfLeadingBlockProps( props );
+		props = useBackgroundClipBlockProps( props );
 
 		props = useAlignItemsBlockProps( props );
 		props = useAlignSelfBlockProps( props );
@@ -143,14 +138,7 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 
 		props = useDropShadowBlockProps( props );
 
-		props = useBlurBlockProps( props );
-		props = useBrightnessBlockProps( props );
-		props = useContrastBlockProps( props );
-		props = useGrayscaleBlockProps( props );
-		props = useHueRotateBlockProps( props );
-		props = useInvertBlockProps( props );
-		props = useSaturateBlockProps( props );
-		props = useSepiaBlockProps( props );
+		props = useBackdropFilterBlockProps( props );
 
 		props = useParallaxBlockProps( props );
 		props = useScrollAnimationBlockProps( props );

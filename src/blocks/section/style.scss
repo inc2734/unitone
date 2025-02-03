@@ -4,6 +4,7 @@
 	--unitone--max-width: var(--wp--style--global--wide-size);
 	--unitone--padding: var(--unitone--s4);
 	--unitone--overflow: visible;
+	--unitone--backdrop-filter: none;
 	--unitone--position: relative;
 	--unitone--top: auto;
 	--unitone--right: auto;
@@ -18,6 +19,7 @@
 
 	max-width: none;
 	overflow: var(--unitone--overflow);
+  backdrop-filter: var(--unitone--backdrop-filter);
 	position: var(--unitone--position);
 	top: var(--unitone--top);
 	right: var(--unitone--right);

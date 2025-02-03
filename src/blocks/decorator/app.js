@@ -8,7 +8,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	Array.from( decorators ).forEach( ( decorator ) => {
 		let down, up;
 		const link = decorator.querySelector(
-			':scope > [data-unitone-layout~="decorator__inner"] > a[data-unitone-layout~="decorator__link"]'
+			':scope > [data-unitone-layout~="decorator__inner"] > [data-unitone-layout~="decorator__link"]'
 		);
 
 		if ( !! link ) {

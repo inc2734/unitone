@@ -1,4 +1,5 @@
-.swiper-buttons {
+.swiper-buttons,
+.swiper-pagination {
 	pointer-events: none;
 }
 
@@ -9,7 +10,6 @@
 	flex-wrap: wrap;
 	gap: var(--unitone--s-2);
 	margin-top: var(--unitone--global--text-gap) !important;
-	pointer-events: none;
 
 	> * {
 		flex: 0 1 auto;

@@ -216,9 +216,16 @@ add_filter(
 		// In the editor, InnerBlocks and its descendant blocks have `position: relative`.
 		// Match the front as well.
 		// @see /wp-includes/css/dist/block-editor/content.css.
-		$add_data_attribute( 'data-unitone-block-list', 'block' );
-		if ( $block['innerBlocks'] ) {
-			$add_data_attribute( 'data-unitone-block-list', 'layout' );
+		$block_types_allowed_to_add_block_list_data = apply_filters(
+			'unitone_block_types_allowed_to_add_block_list_data',
+			array( 'core', 'unitone' ),
+			$block['blockName']
+		);
+		if ( in_array( explode( '/', $block['blockName'] )[0] ?? '', $block_types_allowed_to_add_block_list_data, true ) ) {
+			$add_data_attribute( 'data-unitone-block-list', 'block' );
+			if ( $block['innerBlocks'] ) {
+				$add_data_attribute( 'data-unitone-block-list', 'layout' );
+			}
 		}
 
 		// -auto-phrase

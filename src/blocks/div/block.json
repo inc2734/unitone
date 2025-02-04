@@ -17,6 +17,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"align": [ "full", "wide" ],
 		"unitone": {
 			"style": true
 		}

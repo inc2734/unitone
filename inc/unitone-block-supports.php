@@ -218,10 +218,10 @@ add_filter(
 		// @see /wp-includes/css/dist/block-editor/content.css.
 		$block_types_allowed_to_add_block_list_data = apply_filters(
 			'unitone_block_types_allowed_to_add_block_list_data',
-			array( 'core', 'unitone' ),
+			in_array( explode( '/', $block['blockName'] )[0] ?? '', array( 'core', 'unitone' ), true ),
 			$block['blockName']
 		);
-		if ( in_array( explode( '/', $block['blockName'] )[0] ?? '', $block_types_allowed_to_add_block_list_data, true ) ) {
+		if ( $block_types_allowed_to_add_block_list_data ) {
 			$add_data_attribute( 'data-unitone-block-list', 'block' );
 			if ( $block['innerBlocks'] ) {
 				$add_data_attribute( 'data-unitone-block-list', 'layout' );

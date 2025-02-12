@@ -170,7 +170,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		const hueRotate = backdropFilter?.hueRotate ?? defaultValue?.hueRotate;
 		if ( null != hueRotate ) {
 			backdropFilterProps.push( {
-				hueRotate: `${ hueRotate }deg`,
+				'hue-rotate': `${ hueRotate }deg`,
 			} );
 		}
 	}

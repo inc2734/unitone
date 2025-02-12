@@ -640,7 +640,7 @@ add_filter(
 				$hue_rotate = $get_attribute( 'backdropFilter.hueRotate' );
 
 				if ( ! is_null( $hue_rotate ) ) {
-					$backdrop_filter_props[] = array( 'hueRotate' => $hue_rotate . 'deg' );
+					$backdrop_filter_props[] = array( 'hue-rotate' => $hue_rotate . 'deg' );
 				}
 			}
 

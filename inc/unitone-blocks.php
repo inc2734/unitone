@@ -42,6 +42,8 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/stack-divided' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack-divided-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/switcher' );
+	register_block_type( get_template_directory() . '/dist/blocks/tabs' );
+	register_block_type( get_template_directory() . '/dist/blocks/tab-panel' );
 	register_block_type( get_template_directory() . '/dist/blocks/text' );
 	register_block_type( get_template_directory() . '/dist/blocks/texture' );
 	register_block_type( get_template_directory() . '/dist/blocks/vertical-writing' );

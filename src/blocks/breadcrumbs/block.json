@@ -10,6 +10,10 @@
 		"divider": {
 			"type": "string",
 			"default": "slash"
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"selectors": {

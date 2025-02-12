@@ -41,6 +41,7 @@ if ( ! empty( $attributes['fontSize'] ) ) {
 $block_wrapper_attributes = get_block_wrapper_attributes(
 	array(
 		'class' => implode( ' ', $classes ),
+		'id'    => ! empty( $attributes['anchor'] ) ? $attributes['anchor'] : false,
 	)
 );
 ?>

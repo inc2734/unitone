@@ -22,6 +22,10 @@
 		"columnMinWidth": {
 			"type": "string",
 			"default": ""
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"selectors": {

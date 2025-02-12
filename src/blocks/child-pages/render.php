@@ -37,6 +37,7 @@ if ( ! file_exists( $template ) ) {
 $block_wrapper_attributes = get_block_wrapper_attributes(
 	array(
 		'class' => 'unitone-child-pages',
+		'id'    => ! empty( $attributes['anchor'] ) ? $attributes['anchor'] : false,
 	)
 );
 

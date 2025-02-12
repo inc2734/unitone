@@ -1,0 +1,23 @@
+.unitone-tab-panel {
+	--unitone--border-width: initial;
+	--unitone--border-style: initial;
+	--unitone--border-color: initial;
+
+	--unitone--background-color: initial;
+	--unitone--color: initial;
+	--unitone--padding: initial;
+
+	background-color: var(--unitone--background-color);
+	color: var(--unitone--color);
+	border: var(--unitone--border-width) var(--unitone--border-style) var(--unitone--border-color);
+	padding: var(--unitone--padding);
+
+	&[aria-hidden="true"] {
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	&.has-background {
+		--unitone--padding: var(--unitone--p1);
+	}
+}

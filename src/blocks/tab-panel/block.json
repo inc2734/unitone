@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "unitone",
+	"name": "unitone/tab-panel",
+	"title": "Tab panel",
+	"description": "This block displays tab panel.",
+	"attributes": {
+		"tabLabel": {
+			"type": "string",
+			"default": ""
+		},
+		"clientId": {
+			"type": "string",
+			"default": ""
+		},
+		"ariaHidden": {
+			"type": "boolean",
+			"default": true,
+			"role": "local"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		},
+		"anchor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"selectors": {
+		"root": ".unitone-tab-panel"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"inserter": false,
+		"reusable": false,
+		"color": {
+			"background": true,
+			"link": true,
+			"text": true
+		}
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}

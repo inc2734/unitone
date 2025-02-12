@@ -8,8 +8,6 @@ if ( defaultConfig?.plugins ) {
 
 	module.exports = {
 		...defaultConfig,
-		// devtool: false,
-		// mode: process.env.NODE_ENV,
 		plugins,
 	};
 } else {

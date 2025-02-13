@@ -48,21 +48,12 @@
 		}
 	],
 	"example": {
-		"attributes": {
-			"tabs": [
-				{
-					"label": "Tab 1",
-					"anchor": "tab-1"
-				},
-				{
-					"label": "Tab 2",
-					"anchor": "tab-2"
-				}
-			]
-		},
 		"innerBlocks": [
 			{
 				"name": "unitone/tab-panel",
+				"attributes": {
+					"tabLabel": "Tab 1"
+				},
 				"innerBlocks": [
 					{
 						"name": "core/paragraph",
@@ -74,6 +65,9 @@
 			},
 			{
 				"name": "unitone/tab-panel",
+				"attributes": {
+					"tabLabel": "Tab 2"
+				},
 				"innerBlocks": [
 					{
 						"name": "core/paragraph",

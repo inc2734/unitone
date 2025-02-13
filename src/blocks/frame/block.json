@@ -25,6 +25,11 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"shadow": {
+			"__experimentalDefaultControls": {
+				"shadow": true
+			}
+		},
 		"unitone": {
 			"parallax": true,
 			"scrollAnimation": true

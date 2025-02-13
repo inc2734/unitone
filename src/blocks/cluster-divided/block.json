@@ -32,6 +32,7 @@
 	"providesContext": {
 		"unitone/cluster-divided/tagName": "tagName"
 	},
+	"allowedBlocks": [ "unitone/cluster-divided-content" ],
 	"selectors": {
 		"root": "[data-unitone-layout~=cluster][data-unitone-layout*=-divider:]"
 	},

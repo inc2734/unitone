@@ -25,8 +25,13 @@ import metadata from './block.json';
 import { verticalsResizeObserver } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { textOrientation, switchWritingMode, threshold, templateLock } =
-		attributes;
+	const {
+		textOrientation,
+		switchWritingMode,
+		threshold,
+		allowedBlocks,
+		templateLock,
+	} = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -59,14 +64,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		},
 		{
 			templateLock,
-			allowedBlocks: [
-				'core/heading',
-				'core/paragraph',
-				'core/buttons',
-				'core/image',
-				'core/video',
-				'unitone/stack',
-			],
+			allowedBlocks,
 			renderAppender: hasInnerBlocks
 				? undefined
 				: InnerBlocks.ButtonBlockAppender,

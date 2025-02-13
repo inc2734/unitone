@@ -83,6 +83,7 @@ export default function ( props ) {
 		loop,
 		centeredSlides,
 		effect,
+		allowedBlocks,
 		templateLock,
 	} = attributes;
 
@@ -216,7 +217,7 @@ export default function ( props ) {
 		},
 		{
 			templateLock,
-			allowedBlocks: [ 'unitone/slide' ],
+			allowedBlocks,
 			template: [ [ 'unitone/slide' ], [ 'unitone/slide' ] ],
 			renderAppender: false,
 		}

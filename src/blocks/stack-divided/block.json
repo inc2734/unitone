@@ -37,6 +37,7 @@
 	"selectors": {
 		"root": "[data-unitone-layout~=stack][data-unitone-layout*=-divider:]"
 	},
+	"allowedBlocks": [ "unitone/stack-divided-content" ],
 	"supports": {
 		"className": false,
 		"anchor": true,

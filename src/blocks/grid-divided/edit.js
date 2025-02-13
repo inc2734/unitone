@@ -68,6 +68,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		smRowsOption,
 		smRows,
 		smGridTemplateRows,
+		allowedBlocks,
 		templateLock,
 		__unstableUnitoneBlockOutline,
 	} = attributes;
@@ -174,7 +175,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock,
-		allowedBlocks: [ 'unitone/grid-divided-content' ],
+		allowedBlocks,
 		renderAppender: hasInnerBlocks
 			? undefined
 			: InnerBlocks.ButtonBlockAppender,

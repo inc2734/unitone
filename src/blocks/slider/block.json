@@ -96,6 +96,7 @@
 	"selectors": {
 		"root": ".unitone-slider"
 	},
+	"allowedBlocks": [ "unitone/slide" ],
 	"supports": {
 		"className": false,
 		"anchor": true,

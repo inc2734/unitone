@@ -38,6 +38,7 @@
 	"selectors": {
 		"root": ".unitone-flex[data-unitone-layout*=-divider:]"
 	},
+	"allowedBlocks": [ "unitone/flex-divided-content" ],
 	"supports": {
 		"className": false,
 		"anchor": true,

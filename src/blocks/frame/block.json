@@ -22,6 +22,7 @@
 	"selectors": {
 		"root": "[data-unitone-layout~=frame]"
 	},
+	"allowedBlocks": [ "core/image", "core/video", "core/post-featured-image" ],
 	"supports": {
 		"className": false,
 		"anchor": true,

@@ -123,6 +123,7 @@
 	"selectors": {
 		"root": ".unitone-grid[data-unitone-layout*=-divider:]"
 	},
+	"allowedBlocks": [ "unitone/grid-divided-content" ],
 	"supports": {
 		"className": false,
 		"anchor": true,

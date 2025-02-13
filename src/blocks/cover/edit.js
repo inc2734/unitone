@@ -12,7 +12,9 @@ import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect, useMemo } from '@wordpress/element';
 
-export default function ( { name, setAttributes, clientId } ) {
+export default function ( { name, attributes, setAttributes, clientId } ) {
+	const { allowedBlocks } = attributes;
+
 	const innerBlocks = useSelect(
 		( select ) =>
 			select( blockEditorStore ).getBlock( clientId )?.innerBlocks || [],
@@ -45,7 +47,7 @@ export default function ( { name, setAttributes, clientId } ) {
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock: false,
-		allowedBlocks: [ 'unitone/cover-content' ],
+		allowedBlocks,
 		renderAppender: false,
 	} );
 

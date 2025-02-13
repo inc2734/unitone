@@ -15,6 +15,7 @@
 	"selectors": {
 		"root": "[data-unitone-layout~=cover]"
 	},
+	"allowedBlocks": [ "unitone/cover-content" ],
 	"supports": {
 		"className": false,
 		"anchor": true,

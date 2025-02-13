@@ -26,7 +26,7 @@ import {
 } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { tagName, templateLock } = attributes;
+	const { tagName, allowedBlocks, templateLock } = attributes;
 
 	const innerBlocksLength = useSelect(
 		( select ) =>
@@ -68,7 +68,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		orientation: 'horizontal',
 		templateLock,
-		allowedBlocks: [ 'unitone/cluster-divided-content' ],
+		allowedBlocks,
 		renderAppender: hasInnerBlocks
 			? undefined
 			: InnerBlocks.ButtonBlockAppender,

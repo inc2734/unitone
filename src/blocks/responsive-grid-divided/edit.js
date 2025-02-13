@@ -32,6 +32,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const {
 		tagName,
 		columnMinWidth,
+		allowedBlocks,
 		templateLock,
 		__unstableUnitoneBlockOutline,
 	} = attributes;
@@ -80,7 +81,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock,
-		allowedBlocks: [ 'unitone/responsive-grid-divided-content' ],
+		allowedBlocks,
 		renderAppender: hasInnerBlocks
 			? undefined
 			: InnerBlocks.ButtonBlockAppender,

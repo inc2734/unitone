@@ -35,6 +35,7 @@
 	"providesContext": {
 		"unitone/responsive-grid-divided/tagName": "tagName"
 	},
+	"allowedBlocks": [ "unitone/responsive-grid-divided-content" ],
 	"selectors": {
 		"root": "[data-unitone-layout~=responsive-grid][data-unitone-layout*=-divider:]"
 	},

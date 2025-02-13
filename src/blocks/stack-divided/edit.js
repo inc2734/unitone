@@ -21,7 +21,7 @@ import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { tagName, revert, templateLock } = attributes;
+	const { tagName, revert, allowedBlocks, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -41,7 +41,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock,
-		allowedBlocks: [ 'unitone/stack-divided-content' ],
+		allowedBlocks,
 		renderAppender: hasInnerBlocks
 			? undefined
 			: InnerBlocks.ButtonBlockAppender,

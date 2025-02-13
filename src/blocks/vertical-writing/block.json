@@ -27,6 +27,14 @@
 	"selectors": {
 		"root": "[data-unitone-layout~=vertical-writing-wrapper]"
 	},
+	"allowedBlocks": [
+		"core/heading",
+		"core/paragraph",
+		"core/buttons",
+		"core/image",
+		"core/video",
+		"unitone/stack"
+	],
 	"supports": {
 		"className": false,
 		"anchor": true,

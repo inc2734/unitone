@@ -2,8 +2,8 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"textdomain": "unitone",
-	"name": "unitone/abstract-frame",
-	"title": "Abstract frame",
+	"name": "unitone/abstract-background",
+	"title": "Abstract background",
 	"description": "Displays a frame using an abstract background image.",
 	"attributes": {
 		"src": {
@@ -16,7 +16,7 @@
 		}
 	},
 	"selectors": {
-		"root": ".unitone-abstract-frame"
+		"root": ".unitone-abstract-background"
 	},
 	"allowedBlocks": [
 		"core/image",

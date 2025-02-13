@@ -50,7 +50,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar' );
 	register_block_type( get_template_directory() . '/dist/blocks/with-sidebar-content' );
 
-	register_block_type( get_template_directory() . '/dist/blocks/abstract-frame' );
+	register_block_type( get_template_directory() . '/dist/blocks/abstract-background' );
 	register_block_type( get_template_directory() . '/dist/blocks/accordion' );
 	register_block_type( get_template_directory() . '/dist/blocks/breadcrumbs' );
 	register_block_type( get_template_directory() . '/dist/blocks/child-pages' );

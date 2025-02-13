@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-02-13T02:51:58+00:00\n"
-"PO-Revision-Date: 2025-02-13 11:53+0900\n"
+"POT-Creation-Date: 2025-02-13T15:22:05+00:00\n"
+"PO-Revision-Date: 2025-02-14 01:04+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3560,8 +3560,8 @@ msgstr "サイドバー付きのコンポーネントを組み立てます。"
 
 #: dist/blocks/abstract-frame/block.json
 msgctxt "block title"
-msgid "Abstract frame"
-msgstr "アブストラクトフレーム"
+msgid "Abstract background"
+msgstr "アブストラクト背景"
 
 #: dist/blocks/abstract-frame/block.json
 msgctxt "block description"

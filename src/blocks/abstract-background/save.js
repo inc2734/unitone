@@ -6,18 +6,18 @@ export default function ( { attributes } ) {
 	const { src } = attributes;
 
 	const blockProps = useBlockProps.save( {
-		className: clsx( 'unitone-abstract-frame', {
-			[ `unitone-abstract-frame--src:${ src }` ]: !! src,
+		className: clsx( 'unitone-abstract-background', {
+			[ `unitone-abstract-background--src:${ src }` ]: !! src,
 		} ),
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps.save( {
-		className: 'unitone-abstract-frame__body',
+		className: 'unitone-abstract-background__body',
 	} );
 
 	return (
 		<div { ...blockProps }>
-			<div className="unitone-abstract-frame__filter"></div>
+			<div className="unitone-abstract-background__filter"></div>
 			<div { ...innerBlocksProps } />
 		</div>
 	);

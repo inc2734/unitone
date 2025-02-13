@@ -7,7 +7,7 @@ import variations from './variations';
 
 import './style.scss';
 
-registerBlockType( 'unitone/abstract-frame', {
+registerBlockType( 'unitone/abstract-background', {
 	icon: {
 		src: icon,
 	},

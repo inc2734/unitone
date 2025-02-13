@@ -23,52 +23,52 @@ import metadata from './block.json';
 
 const BACKGROUNDS = [
 	{
-		src: `${ unitone.url }/dist/blocks/abstract-frame/img/mountain-1.svg`,
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/mountain-1.svg`,
 		value: 'mountain-1',
 		label: 'Mountain 1',
 	},
 	{
-		src: `${ unitone.url }/dist/blocks/abstract-frame/img/mountain-2.svg`,
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/mountain-2.svg`,
 		value: 'mountain-2',
 		label: 'Mountain 2',
 	},
 	{
-		src: `${ unitone.url }/dist/blocks/abstract-frame/img/mountain-3.svg`,
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/mountain-3.svg`,
 		value: 'mountain-3',
 		label: 'Mountain 3',
 	},
 	{
-		src: `${ unitone.url }/dist/blocks/abstract-frame/img/curve-1.svg`,
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/curve-1.svg`,
 		value: 'curve-1',
 		label: 'Curve 1',
 	},
 	{
-		src: `${ unitone.url }/dist/blocks/abstract-frame/img/blob-1.svg`,
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/blob-1.svg`,
 		value: 'blob-1',
 		label: 'Blob 1',
 	},
 	{
-		src: `${ unitone.url }/dist/blocks/abstract-frame/img/blob-2.svg`,
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/blob-2.svg`,
 		value: 'blob-2',
 		label: 'Blob 2',
 	},
 	{
-		src: `${ unitone.url }/dist/blocks/abstract-frame/img/seaweed-1.svg`,
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/seaweed-1.svg`,
 		value: 'seaweed-1',
 		label: 'Seaweed 1',
 	},
 	{
-		src: `${ unitone.url }/dist/blocks/abstract-frame/img/mesh-1.svg`,
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/mesh-1.svg`,
 		value: 'mesh-1',
 		label: 'Mesh 1',
 	},
 	{
-		src: `${ unitone.url }/dist/blocks/abstract-frame/img/mesh-2.svg`,
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/mesh-2.svg`,
 		value: 'mesh-2',
 		label: 'Mesh 2',
 	},
 	{
-		src: `${ unitone.url }/dist/blocks/abstract-frame/img/mesh-3.svg`,
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/mesh-3.svg`,
 		value: 'mesh-3',
 		label: 'Mesh 3',
 	},
@@ -85,14 +85,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps( {
-		className: clsx( 'unitone-abstract-frame', {
-			[ `unitone-abstract-frame--src:${ src }` ]: !! src,
+		className: clsx( 'unitone-abstract-background', {
+			[ `unitone-abstract-background--src:${ src }` ]: !! src,
 		} ),
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{
-			className: 'unitone-abstract-frame__body',
+			className: 'unitone-abstract-background__body',
 		},
 		{
 			templateLock,
@@ -151,7 +151,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			</InspectorControls>
 
 			<div { ...blockProps }>
-				<div className="unitone-abstract-frame__filter"></div>
+				<div className="unitone-abstract-background__filter"></div>
 				<div { ...innerBlocksProps } />
 			</div>
 		</>

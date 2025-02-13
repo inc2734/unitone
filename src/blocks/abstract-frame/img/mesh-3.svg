@@ -1,0 +1,50 @@
+<svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+	<rect width="100%" height="100%" fill="url(#unitone-abstract-background-mesh-3__background)"/>
+	<g filter="url(#unitone-abstract-background-mesh-3__filter-1)">
+		<path d="M426.634 0C370.749 44.0028 317.758 102.748 307 168C291.092 264.486 586.736 541.59 797.325 720H-0.00012207V0H426.634Z" fill="url(#unitone-abstract-background-mesh-3__1)"/>
+	</g>
+	<path d="M1217.33 720H946.564L1280 227.786V425.764L1217.33 720Z" fill="url(#unitone-abstract-background-mesh-3__2)"/>
+	<g filter="url(#unitone-abstract-background-mesh-3__filter-2)">
+		<path d="M986.501 0C1095.42 66.9941 1241 182.106 1241 365.5C1241 521.192 1163.7 632.083 1073.95 720H1280V0H986.501Z" fill="url(#unitone-abstract-background-mesh-3__3)"/>
+	</g>
+	<g filter="url(#unitone-abstract-background-mesh-3__filter-3)">
+		<path d="M1280 100.165C1280 100.11 1280 100.055 1280 100C1280 99.945 1280 99.89 1280 99.8351C1279.95 64.4592 1263.05 30.7359 1232.48 0H87.5171C56.9048 30.7837 40 64.564 40 100C40 243.594 317.583 360 660 360C1002.29 360 1279.79 243.683 1280 100.165Z" fill="url(#unitone-abstract-background-mesh-3__4)"/>
+	</g>
+	<defs>
+		<filter id="unitone-abstract-background-mesh-3__filter-1" x="-40.0001" y="-40" width="877.325" height="800" filterUnits="userSpaceOnUse">
+			<feFlood flood-opacity="0"/>
+			<feBlend mode="normal" in="SourceGraphic"/>
+			<feGaussianBlur stdDeviation="20"/>
+		</filter>
+		<filter id="unitone-abstract-background-mesh-3__filter-2" x="946.501" y="-40" width="373.499" height="800" filterUnits="userSpaceOnUse">
+			<feFlood flood-opacity="0"/>
+			<feBlend mode="normal" in="SourceGraphic"/>
+			<feGaussianBlur stdDeviation="20"/>
+		</filter>
+		<filter id="unitone-abstract-background-mesh-3__filter-3" x="-160" y="-200" width="1640" height="760" filterUnits="userSpaceOnUse">
+			<feFlood flood-opacity="0"/>
+			<feBlend mode="normal" in="SourceGraphic"/>
+			<feGaussianBlur stdDeviation="100"/>
+		</filter>
+		<linearGradient id="unitone-abstract-background-mesh-3__background" x1="260.5" y1="160.5" x2="1128.5" y2="668" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#d8d068"/>
+			<stop offset="1" stop-color="#9d7881"/>
+		</linearGradient>
+		<linearGradient id="unitone-abstract-background-mesh-3__1" x1="398.662" y1="55" x2="398.662" y2="655.417" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#e1da72"/>
+			<stop offset="1" stop-color="#bfb64d"/>
+		</linearGradient>
+		<linearGradient id="unitone-abstract-background-mesh-3__2" x1="1239.07" y1="342.812" x2="1025.95" y2="637.788" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#a27c85" stop-opacity="0"/>
+			<stop offset="1" stop-color="#9c7e6f"/>
+		</linearGradient>
+		<linearGradient id="unitone-abstract-background-mesh-3__3" x1="1133.59" y1="41.3081" x2="1133.59" y2="620.861" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#7d4497"/>
+			<stop offset="1" stop-color="#816070"/>
+		</linearGradient>
+		<linearGradient id="unitone-abstract-background-mesh-3__4" x1="319.137" y1="204.231" x2="1309.5" y2="204.231" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#c9b578"/>
+			<stop offset="1" stop-color="#9050a8"/>
+		</linearGradient>
+	</defs>
+</svg>

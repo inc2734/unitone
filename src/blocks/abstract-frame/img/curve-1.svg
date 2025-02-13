@@ -1,0 +1,24 @@
+<svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+	<rect width="100%" height="100%" fill="url(#unitone-abstract-background-curve-1__background)"/>
+	<path d="M352.379 720L191.837 627.311L0 516.554V0H426.219C451.767 28.2354 478.285 56.7373 505.207 84.5385C622.941 206.117 748.412 314.295 912.569 355.466C980.968 372.621 1056.08 378.142 1131.2 383.664C1181.47 387.359 1231.74 391.055 1280 398.238V720H352.379Z" fill="url(#unitone-abstract-background-curve-1__left-top)"/>
+	<path d="M1280 288.301V720H0V441.016C111.857 462.606 253.866 481.737 396.75 473.724C549.257 465.171 700.766 423.7 852.674 382.119C917.839 364.282 983.078 346.425 1048.5 331.138C1125.86 312.337 1202.97 296.874 1280 288.301Z" fill="url(#unitone-abstract-background-curve-1__right-bottom)"/>
+	<path d="M445.078 720H0V260.037C42.3364 275.033 84.3997 294.317 125.419 318C295.065 415.945 408.495 566.964 445.078 720Z" fill="url(#unitone-abstract-background-curve-1__left-bottom)"/>
+	<defs>
+		<linearGradient id="unitone-abstract-background-curve-1__background" x1="421" y1="360" x2="1280" y2="360" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#c84e89"/>
+			<stop offset="1" stop-color="#f15f79"/>
+		</linearGradient>
+		<linearGradient id="unitone-abstract-background-curve-1__left-top" x1="159.86" y1="147.094" x2="811.009" y2="555.362" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#e65c00"/>
+			<stop offset="1" stop-color="#f9d423"/>
+		</linearGradient>
+		<linearGradient id="unitone-abstract-background-curve-1__right-bottom" x1="223.399" y1="524.438" x2="1298.11" y2="532.966" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#f7941e"/>
+			<stop offset="1" stop-color="#00a651"/>
+		</linearGradient>
+		<linearGradient id="unitone-abstract-background-curve-1__left-bottom" x1="269.5" y1="426.5" x2="40.6637" y2="748.866" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#77a1d3"/>
+			<stop offset="1" stop-color="#e684ae"/>
+		</linearGradient>
+	</defs>
+</svg>

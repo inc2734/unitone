@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-02-12T08:16:03+00:00\n"
-"PO-Revision-Date: 2025-02-12 17:16+0900\n"
+"POT-Creation-Date: 2025-02-13T02:51:58+00:00\n"
+"PO-Revision-Date: 2025-02-13 11:53+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1702,14 +1702,26 @@ msgstr "サイトを表示 (新しいタブで開く)"
 msgid "Navigation"
 msgstr "ナビゲーション"
 
-#: dist/blocks/accordion/index.js:1 dist/blocks/breadcrumbs/index.js:1
-#: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
-#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cover-content/index.js:1
-#: dist/blocks/decorator/index.js:1 dist/blocks/flex-divided/index.js:1
-#: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:25 dist/blocks/reel/index.js:1
-#: dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/abstract-frame/index.js:1
+msgid "Abstract background image"
+msgstr "アブストラクト背景画像"
+
+#: dist/blocks/abstract-frame/index.js:1
+msgid "Abstract background video"
+msgstr "アブストラクト背景動画"
+
+#: dist/blocks/abstract-frame/index.js:1
+msgid "Abstract background"
+msgstr "アブストラクト背景"
+
+#: dist/blocks/abstract-frame/index.js:1 dist/blocks/accordion/index.js:1
+#: dist/blocks/breadcrumbs/index.js:1 dist/blocks/center/index.js:1
+#: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/cover-content/index.js:1 dist/blocks/decorator/index.js:1
+#: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
+#: dist/blocks/frame/index.js:1 dist/blocks/grid-divided/index.js:1
+#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
+#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:1
@@ -1718,6 +1730,10 @@ msgstr "ナビゲーション"
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
 msgstr "設定"
+
+#: dist/blocks/abstract-frame/index.js:1
+msgid "Background"
+msgstr "背景"
 
 #: dist/blocks/accordion/index.js:1
 msgid "Mark"
@@ -3542,6 +3558,16 @@ msgctxt "block description"
 msgid "This block is used to assemble components with sidebars."
 msgstr "サイドバー付きのコンポーネントを組み立てます。"
 
+#: dist/blocks/abstract-frame/block.json
+msgctxt "block title"
+msgid "Abstract frame"
+msgstr "アブストラクトフレーム"
+
+#: dist/blocks/abstract-frame/block.json
+msgctxt "block description"
+msgid "Displays a frame using an abstract background image."
+msgstr "抽象的な背景画像を使用したフレームを表示します。"
+
 #: dist/blocks/tab-panel/block.json
 msgctxt "block title"
 msgid "Tab panel"
@@ -3803,6 +3829,11 @@ msgstr "アクセントグラデーション"
 msgctxt "Shadow name"
 msgid "[unitone] Natural"
 msgstr "[unitone] Natural"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "[unitone] Dark"
+msgstr "[unitone] Dark"
 
 #: theme.json
 msgctxt "Font family name"

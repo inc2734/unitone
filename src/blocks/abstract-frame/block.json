@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "unitone",
+	"name": "unitone/abstract-frame",
+	"title": "Abstract frame",
+	"description": "Displays a frame using an abstract background image.",
+	"attributes": {
+		"src": {
+			"type": "string",
+			"default": "mountain-1"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": ".unitone-abstract-frame"
+	},
+	"allowedBlocks": [
+		"core/image",
+		"core/video",
+		"unitone/decorator",
+		"unitone/frame"
+	],
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"align": [ "full", "wide" ],
+		"unitone": {
+			"padding": true,
+			"backdropFilter": true
+		}
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

@@ -603,7 +603,7 @@ add_filter(
 			if ( $has_support( 'backdropFilter.blur' ) || $has_backdrop_filter_support ) {
 				$blur = $get_attribute( 'backdropFilter.blur' );
 
-				if ( ! is_null( $blur ) ) {
+				if ( ! is_null( $blur ) && 0 !== $blur ) {
 					$backdrop_filter_props[] = array( 'blur' => $blur . 'px' );
 				}
 			}
@@ -612,7 +612,7 @@ add_filter(
 			if ( $has_support( 'backdropFilter.brightness' ) || true === $get_support( 'backdropFilter' ) ) {
 				$brightness = $get_attribute( 'backdropFilter.brightness' );
 
-				if ( ! is_null( $brightness ) ) {
+				if ( ! is_null( $brightness ) && 100 !== $brightness ) {
 					$backdrop_filter_props[] = array( 'brightness' => $brightness . '%' );
 				}
 			}
@@ -621,7 +621,7 @@ add_filter(
 			if ( $has_support( 'backdropFilter.contrast' ) || true === $get_support( 'backdropFilter' ) ) {
 				$contrast = $get_attribute( 'backdropFilter.contrast' );
 
-				if ( ! is_null( $contrast ) ) {
+				if ( ! is_null( $contrast ) && 0 !== $contrast ) {
 					$backdrop_filter_props[] = array( 'contrast' => $contrast . '%' );
 				}
 			}
@@ -630,7 +630,7 @@ add_filter(
 			if ( $has_support( 'backdropFilter.grayscale' ) || true === $get_support( 'backdropFilter' ) ) {
 				$grayscale = $get_attribute( 'backdropFilter.grayscale' );
 
-				if ( ! is_null( $grayscale ) ) {
+				if ( ! is_null( $grayscale ) && 0 !== $grayscale ) {
 					$backdrop_filter_props[] = array( 'grayscale' => $grayscale . '%' );
 				}
 			}
@@ -639,7 +639,7 @@ add_filter(
 			if ( $has_support( 'backdropFilter.hueRotate' ) || true === $get_support( 'backdropFilter' ) ) {
 				$hue_rotate = $get_attribute( 'backdropFilter.hueRotate' );
 
-				if ( ! is_null( $hue_rotate ) ) {
+				if ( ! is_null( $hue_rotate ) && 0 !== $hue_rotate ) {
 					$backdrop_filter_props[] = array( 'hue-rotate' => $hue_rotate . 'deg' );
 				}
 			}
@@ -648,7 +648,7 @@ add_filter(
 			if ( $has_support( 'backdropFilter.invert' ) || true === $get_support( 'backdropFilter' ) ) {
 				$invert = $get_attribute( 'backdropFilter.invert' );
 
-				if ( ! is_null( $invert ) ) {
+				if ( ! is_null( $invert ) && 0 !== $invert ) {
 					$backdrop_filter_props[] = array( 'invert' => $invert . '%' );
 				}
 			}
@@ -657,7 +657,7 @@ add_filter(
 			if ( $has_support( 'backdropFilter.saturate' ) || true === $get_support( 'backdropFilter' ) ) {
 				$saturate = $get_attribute( 'backdropFilter.saturate' );
 
-				if ( ! is_null( $saturate ) ) {
+				if ( ! is_null( $saturate ) && 100 !== $saturate ) {
 					$backdrop_filter_props[] = array( 'saturate' => $saturate . '%' );
 				}
 			}
@@ -666,7 +666,7 @@ add_filter(
 			if ( $has_support( 'backdropFilter.sepia' ) || true === $get_support( 'backdropFilter' ) ) {
 				$sepia = $get_attribute( 'backdropFilter.sepia' );
 
-				if ( ! is_null( $sepia ) ) {
+				if ( ! is_null( $sepia ) && 0 !== $sepia ) {
 					$backdrop_filter_props[] = array( 'sepia' => $sepia . '%' );
 				}
 			}

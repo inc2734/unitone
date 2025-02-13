@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-12T08:16:03+00:00\n"
+"POT-Creation-Date: 2025-02-13T02:51:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -1722,6 +1722,19 @@ msgstr ""
 msgid "Navigation"
 msgstr ""
 
+#: dist/blocks/abstract-frame/index.js:1
+msgid "Abstract background image"
+msgstr ""
+
+#: dist/blocks/abstract-frame/index.js:1
+msgid "Abstract background video"
+msgstr ""
+
+#: dist/blocks/abstract-frame/index.js:1
+msgid "Abstract background"
+msgstr ""
+
+#: dist/blocks/abstract-frame/index.js:1
 #: dist/blocks/accordion/index.js:1
 #: dist/blocks/breadcrumbs/index.js:1
 #: dist/blocks/center/index.js:1
@@ -1749,6 +1762,10 @@ msgstr ""
 #: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
+msgstr ""
+
+#: dist/blocks/abstract-frame/index.js:1
+msgid "Background"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:1
@@ -3557,6 +3574,16 @@ msgctxt "block description"
 msgid "This block is used to assemble components with sidebars."
 msgstr ""
 
+#: dist/blocks/abstract-frame/block.json
+msgctxt "block title"
+msgid "Abstract frame"
+msgstr ""
+
+#: dist/blocks/abstract-frame/block.json
+msgctxt "block description"
+msgid "Displays a frame using an abstract background image."
+msgstr ""
+
 #: dist/blocks/tab-panel/block.json
 msgctxt "block title"
 msgid "Tab panel"
@@ -3890,6 +3917,11 @@ msgstr ""
 #: theme.json
 msgctxt "Shadow name"
 msgid "[unitone] Natural"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "[unitone] Dark"
 msgstr ""
 
 #: theme.json

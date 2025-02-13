@@ -1,0 +1,30 @@
+<svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+	<rect width="100%" height="100%" fill="url(#unitone-abstract-background-mesh-2__background)"/>
+	<path d="M1280 500.132V720H-0.00012207V637.762C128.539 558.579 288.178 463.495 341 443.5C429.5 410 786.5 326.5 985.5 373C1088.28 397.017 1197.43 451.226 1280 500.132Z" fill="url(#unitone-abstract-background-mesh-2__1)"/>
+	<path d="M352.465 720H-0.00012207V229.793C37.7052 272.505 81.6117 323.416 104 353C132.269 390.356 164.616 443.568 191.587 487.937C204.687 509.488 216.519 528.952 226 543.5C241.61 567.453 299.44 647.373 352.465 720Z" fill="url(#unitone-abstract-background-mesh-2__2)"/>
+	<path d="M262.644 0C205.96 25.5205 138.413 68.4151 97.5 131.5C52.2602 201.257 19.1774 336.662 -0.00012207 442.649V0H262.644Z" fill="url(#unitone-abstract-background-mesh-2__3)"/>
+	<path d="M579.549 0C666.642 86.9395 815.415 226.909 912.5 288.5C1003.29 346.101 1168.64 411.579 1280 451.492V0H579.549Z" fill="url(#unitone-abstract-background-mesh-2__4)"/>
+	<defs>
+	<linearGradient id="unitone-abstract-background-mesh-2__background" x1="110.5" y1="274.5" x2="1280" y2="435" gradientUnits="userSpaceOnUse">
+		<stop stop-color="#58b7ce"/>
+		<stop offset="1" stop-color="#0d67ab"/>
+	</linearGradient>
+	<linearGradient id="unitone-abstract-background-mesh-2__1" x1="345.255" y1="539.339" x2="1280" y2="539.693" gradientUnits="userSpaceOnUse">
+		<stop stop-color="#52b6c9"/>
+		<stop offset="1" stop-color="#0d66ab"/>
+	</linearGradient>
+	<linearGradient id="unitone-abstract-background-mesh-2__2" x1="17.5" y1="457.5" x2="327.68" y2="713.107" gradientUnits="userSpaceOnUse">
+		<stop stop-color="#55b8cb"/>
+		<stop offset="0.5" stop-color="#67bfd0"/>
+		<stop offset="1" stop-color="#52b6c9"/>
+	</linearGradient>
+	<linearGradient id="unitone-abstract-background-mesh-2__3" x1="4.68623e-06" y1="406" x2="160.422" y2="51.6878" gradientUnits="userSpaceOnUse">
+		<stop stop-color="#52b4ca"/>
+		<stop offset="1" stop-color="#5fbcd3"/>
+	</linearGradient>
+	<linearGradient id="unitone-abstract-background-mesh-2__4" x1="1283.44" y1="-37" x2="967.642" y2="318.687" gradientUnits="userSpaceOnUse">
+		<stop stop-color="#0567bd"/>
+		<stop offset="1" stop-color="#3d91bd"/>
+	</linearGradient>
+	</defs>
+</svg>

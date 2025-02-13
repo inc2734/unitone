@@ -1,0 +1,76 @@
+.unitone-abstract-frame {
+	--unitone--backdrop-filter: none;
+	--unitone--padding: var(--unitone--p1);
+
+	display: grid;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	&--src\:mountain-1 {
+		background-image: url(./img/mountain-1.svg);
+	}
+
+	&--src\:mountain-2 {
+		background-image: url(./img/mountain-2.svg);
+	}
+
+	&--src\:mountain-3 {
+		background-image: url(./img/mountain-3.svg);
+	}
+
+	&--src\:curve-1 {
+		background-image: url(./img/curve-1.svg);
+	}
+
+	&--src\:blob-1 {
+		background-image: url(./img/blob-1.svg);
+	}
+
+	&--src\:blob-2 {
+		background-image: url(./img/blob-2.svg);
+	}
+
+	&--src\:seaweed-1 {
+		background-image: url(./img/seaweed-1.svg);
+	}
+
+	&--src\:mesh-1 {
+		background-image: url(./img/mesh-1.svg);
+	}
+
+	&--src\:mesh-2 {
+		background-image: url(./img/mesh-2.svg);
+	}
+
+	&--src\:mesh-3 {
+		background-image: url(./img/mesh-3.svg);
+	}
+
+	&__filter,
+	&__body {
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+	}
+
+	&__filter {
+		backdrop-filter: var(--unitone--backdrop-filter);
+	}
+
+	&__body {
+		--unitone--gap: var(--unitone--s1);
+		--unitone--children-max-width: min(100%, var(--wp--style--global--wide-size));
+
+		padding: var(--unitone--padding);
+
+		> * {
+			margin-right: auto;
+			margin-left: auto;
+			max-width: var(--unitone--children-max-width);
+		}
+
+		> * + * {
+			margin-top: var(--unitone--gap);
+		}
+	}
+}

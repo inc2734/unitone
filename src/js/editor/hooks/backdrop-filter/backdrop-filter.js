@@ -119,7 +119,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBackdropFilterSupport
 	) {
 		const blur = backdropFilter?.blur ?? defaultValue?.blur;
-		if ( null != blur ) {
+		if ( null != blur && 0 !== blur ) {
 			backdropFilterProps.push( {
 				blur: `${ blur }px`,
 			} );
@@ -132,7 +132,7 @@ export function useBackdropFilterBlockProps( settings ) {
 	) {
 		const brightness =
 			backdropFilter?.brightness ?? defaultValue?.brightness;
-		if ( null != brightness ) {
+		if ( null != brightness && 100 !== brightness ) {
 			backdropFilterProps.push( {
 				brightness: `${ brightness }%`,
 			} );
@@ -144,7 +144,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBackdropFilterSupport
 	) {
 		const contrast = backdropFilter?.contrast ?? defaultValue?.contrast;
-		if ( null != contrast ) {
+		if ( null != contrast && 100 !== contrast ) {
 			backdropFilterProps.push( {
 				contrast: `${ contrast }%`,
 			} );
@@ -156,7 +156,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBackdropFilterSupport
 	) {
 		const grayscale = backdropFilter?.grayscale ?? defaultValue?.grayscale;
-		if ( null != grayscale ) {
+		if ( null != grayscale && 0 !== grayscale ) {
 			backdropFilterProps.push( {
 				grayscale: `${ grayscale }%`,
 			} );
@@ -168,7 +168,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBackdropFilterSupport
 	) {
 		const hueRotate = backdropFilter?.hueRotate ?? defaultValue?.hueRotate;
-		if ( null != hueRotate ) {
+		if ( null != hueRotate && 0 !== hueRotate ) {
 			backdropFilterProps.push( {
 				'hue-rotate': `${ hueRotate }deg`,
 			} );
@@ -180,7 +180,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBackdropFilterSupport
 	) {
 		const invert = backdropFilter?.invert ?? defaultValue?.invert;
-		if ( null != invert ) {
+		if ( null != invert && 0 !== invert ) {
 			backdropFilterProps.push( {
 				invert: `${ invert }%`,
 			} );
@@ -192,7 +192,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBackdropFilterSupport
 	) {
 		const saturate = backdropFilter?.saturate ?? defaultValue?.saturate;
-		if ( null != saturate ) {
+		if ( null != saturate && 100 !== saturate ) {
 			backdropFilterProps.push( {
 				saturate: `${ saturate }%`,
 			} );
@@ -204,7 +204,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBackdropFilterSupport
 	) {
 		const sepia = backdropFilter?.sepia ?? defaultValue?.sepia;
-		if ( null != sepia ) {
+		if ( null != sepia && 0 !== sepia ) {
 			backdropFilterProps.push( {
 				sepia: `${ sepia }%`,
 			} );

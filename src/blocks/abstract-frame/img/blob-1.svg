@@ -1,0 +1,25 @@
+<svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+	<rect width="100%" height="100%" fill="black"/>
+	<path d="M472.978 429.515C546.18 378.573 602.691 312.701 642.513 231.897C679.725 156.387 683.954 79.0885 655.198 0H0V324.435C3.54704 327.313 7.19035 330.135 10.93 332.902C82.9603 386.185 159.676 428.344 241.076 459.377C322.476 490.411 399.777 480.457 472.978 429.515Z" fill="url(#unitone-abstract-background-blob-1__1)"/>
+	<path d="M834.346 0H1280V345.137C1247.07 359.452 1207.25 363.427 1160.56 357.06C1047.71 341.672 952.812 288.951 875.866 198.898C818.262 131.481 804.421 65.1814 834.346 0Z" fill="url(#unitone-abstract-background-blob-1__2)"/>
+	<path d="M541.149 701C616.802 701 648.587 663.7 636.504 589.099C624.42 514.498 607.871 453.819 586.856 407.062C565.841 360.305 536.946 306.456 500.17 245.515C463.393 184.573 405.865 156.204 327.585 160.407C249.304 164.61 182.582 197.707 127.418 259.699C72.2537 321.692 57.5433 389.725 83.2866 463.801C109.03 537.876 146.331 593.302 195.191 630.077C244.051 666.852 295.012 687.866 348.074 693.12C401.137 698.373 465.495 701 541.149 701Z" fill="url(#unitone-abstract-background-blob-1__3)"/>
+	<path d="M1259.24 720H336.243C344.469 642.382 368.345 570.373 407.872 503.973C490.447 365.258 627.052 268.362 817.688 213.284C1008.32 158.206 1139.83 227.564 1212.21 421.356C1250.92 524.988 1266.59 624.535 1259.24 720Z" fill="url(#unitone-abstract-background-blob-1__4)"/>
+	<defs>
+		<linearGradient id="unitone-abstract-background-blob-1__1" x1="674" y1="461.062" x2="76.6041" y2="-70.2016" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#e02500"/>
+			<stop offset="1" stop-color="#9b1852"/>
+		</linearGradient>
+		<linearGradient id="unitone-abstract-background-blob-1__2" x1="968.288" y1="112.251" x2="1166.93" y2="350.374" gradientUnits="userSpaceOnUse">
+			<stop offset="0.0123239" stop-color="#f52800"/>
+			<stop offset="1" stop-color="#dd2476"/>
+		</linearGradient>
+		<linearGradient id="unitone-abstract-background-blob-1__3" x1="71" y1="210.118" x2="639" y2="650.882" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#fa2900"/>
+			<stop offset="1" stop-color="#b11b5e"/>
+		</linearGradient>
+		<linearGradient id="unitone-abstract-background-blob-1__4" x1="551.986" y1="278" x2="994.259" y2="722.753" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#ff6547"/>
+			<stop offset="1" stop-color="#dd2476"/>
+		</linearGradient>
+	</defs>
+</svg>

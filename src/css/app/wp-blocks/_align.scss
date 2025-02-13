@@ -15,6 +15,14 @@
 	}
 }
 
+figure.alignfull {
+	display: block;
+
+	figcaption {
+		display: block;
+	}
+}
+
 .alignfull + .alignfull {
 	margin-block-start: 0;
 }

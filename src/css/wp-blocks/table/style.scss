@@ -50,15 +50,6 @@
 	}
 }
 
-figure.wp-block-table {
-	display: block;
-	width: 100%;
-
-	figcaption {
-		display: block;
-	}
-}
-
 :root :where(.wp-block-table.is-style-stripes) {
 	:where(tbody tr:nth-child(odd)) {
 		background-color: var(--wp--preset--color--unitone-bright-gray);

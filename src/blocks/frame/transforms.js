@@ -9,7 +9,7 @@ export default {
 		{
 			type: 'block',
 			isMultiBlock: false,
-			blocks: [ 'core/image', 'core/video' ],
+			blocks: [ 'core/image', 'core/video', 'core/post-featured-image' ],
 			__experimentalConvert( block ) {
 				const newAttributes = { ...block.attributes };
 				delete newAttributes?.align;

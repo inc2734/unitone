@@ -46,7 +46,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const ref = useRef( null );
 
 	useEffect( () => {
-		stairsResizeObserver( ref.current );
+		const target = ref.current;
+
+		const observer = stairsResizeObserver( target );
+
+		return () => {
+			if ( !! target ) {
+				observer.unobserve( target );
+			}
+		};
 	}, [
 		clientId,
 		columnMinWidth,

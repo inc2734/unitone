@@ -41,7 +41,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const ref = useRefEffect( ( target ) => {
-		verticalsResizeObserver( target );
+		const observers = verticalsResizeObserver( target );
+
+		return () => {
+			if ( !! target ) {
+				observers.resizeObserver.unobserve( target );
+			}
+			observers.mutationObserver.disconnect();
+		};
 	}, [] );
 
 	const blockProps = useBlockProps();

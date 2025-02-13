@@ -39,7 +39,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const ref = useRef( null );
 
 	useEffect( () => {
-		dividersResizeObserver( ref.current, {
+		const target = ref.current;
+
+		setTimeout( () => {
+			setDividerLinewrap( target );
+		}, 100 );
+
+		const observers = dividersResizeObserver( target, {
 			ignore: {
 				className: [
 					'is-selected',
@@ -50,9 +56,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			},
 		} );
 
-		setTimeout( () => {
-			setDividerLinewrap( ref.current );
-		}, 100 );
+		return () => {
+			if ( !! target ) {
+				observers.resizeObserver.unobserve( target );
+			}
+			observers.mutationObserver.disconnect();
+		};
 	}, [] );
 
 	useEffect( () => {

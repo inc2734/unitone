@@ -154,7 +154,9 @@ function Edit( {
 		const defaultView = ownerDocument?.defaultView;
 		if ( defaultView.ResizeObserver ) {
 			resizeObserver = new defaultView.ResizeObserver( ( entries ) =>
-				setParentWidth( entries[ 0 ].contentBoxSize )
+				defaultView.requestAnimationFrame( () =>
+					setParentWidth( entries[ 0 ].contentBoxSize )
+				)
 			);
 			resizeObserver.observe( parent );
 		}
@@ -171,7 +173,7 @@ function Edit( {
 
 		return () => {
 			if ( resizeObserver ) {
-				resizeObserver.disconnect();
+				resizeObserver.unobserve( parent );
 			}
 
 			target.removeEventListener( 'scroll', setPositionMegaMenu );

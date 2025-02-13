@@ -104,9 +104,11 @@ export function getFontSizeStatus( customFontSize ) {
 	const fluidFontSizeUnits = [ 'vw', 'vh' ];
 
 	const enabled = null != customFontSize;
-	const fluid = fluidFontSizeUnits.some( ( unit ) =>
-		customFontSize?.match( new RegExp( `${ unit }$` ) )
-	);
+	const fluid =
+		!! customFontSize &&
+		fluidFontSizeUnits.some( ( unit ) =>
+			customFontSize?.match( new RegExp( `${ unit }$` ) )
+		);
 	const fixed = enabled && ! fluid;
 
 	return { enabled, fluid, fixed };

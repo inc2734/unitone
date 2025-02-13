@@ -101,6 +101,11 @@
 					"name": "[unitone] Natural",
 					"shadow": "0 5px 20px -5px rgba(0, 0, 0, .2)",
 					"slug": "unitone-natural"
+				},
+				{
+					"name": "[unitone] Dark",
+					"shadow": "0 5px 20px -5px rgba(0, 0, 0, .5)",
+					"slug": "unitone-dark"
 				}
 			]
 		},

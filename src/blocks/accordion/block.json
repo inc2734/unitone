@@ -92,8 +92,7 @@
 		"unitone": {
 			"padding": true,
 			"fluidTypography": true,
-			"halfLeading": true,
-			"backgroundClip": true
+			"halfLeading": true
 		}
 	},
 	"styles": [

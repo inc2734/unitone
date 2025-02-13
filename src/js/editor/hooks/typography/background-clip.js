@@ -2,6 +2,7 @@ import clsx from 'clsx';
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -59,14 +60,31 @@ export function BackgroundClipEdit( {
 	attributes,
 	setAttributes,
 } ) {
+	useEffect( () => {
+		// @todo I would actually like to enable it when using gradients as well,
+		// but for some reason the core uses `background` instead of `background-image` so I can't enable it.
+		if ( ! attributes?.style?.background?.backgroundImage ) {
+			const newUnitone = {
+				...attributes?.unitone,
+				backgroundClip: undefined,
+			};
+
+			setAttributes( {
+				unitone: cleanEmptyObject( newUnitone ),
+			} );
+		}
+	}, [ attributes?.style?.background?.backgroundImage ] );
+
 	return (
 		<ToggleControl
 			__nextHasNoMarginBottom
 			label={ label }
 			help={ help }
 			disabled={
-				! attributes?.gradient &&
-				! attributes?.style?.color?.gradient &&
+				// @todo I would actually like to enable it when using gradients as well,
+				// but for some reason the core uses `background` instead of `background-image` so I can't enable it.
+				// ! attributes?.gradient &&
+				// ! attributes?.style?.color?.gradient &&
 				! attributes?.style?.background?.backgroundImage
 			}
 			checked={ attributes?.unitone?.backgroundClip ?? false }

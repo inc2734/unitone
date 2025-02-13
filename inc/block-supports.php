@@ -94,6 +94,10 @@ add_filter( 'block_type_metadata', 'unitone_add_half_leading_support' );
 /**
  * Add support "backgroundclip" to core blocks with color.gradients and background.backgroundImage.
  *
+ * @todo I would actually like to enable it when using gradients as well,
+ * but for some reason the core uses `background` instead of `background-image` so I can't enable it.
+ * $metadata['supports']['color']['gradients']
+ *
  * @param array $metadata Metadata for registering a block type.
  * @return array
  */
@@ -102,10 +106,7 @@ function unitone_add_background_clip_support( $metadata ) {
 		return $metadata;
 	}
 
-	if (
-		empty( $metadata['supports']['color']['gradients'] ) &&
-		empty( $metadata['supports']['background']['backgroundImage'] )
-	) {
+	if ( empty( $metadata['supports']['background']['backgroundImage'] ) ) {
 		return $metadata;
 	}
 

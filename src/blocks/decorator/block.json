@@ -99,7 +99,6 @@
 			"maxHeight": true,
 			"fluidTypography": true,
 			"halfLeading": true,
-			"backgroundClip": true,
 			"backdropFilter": true,
 			"parallax": true,
 			"scrollAnimation": true,

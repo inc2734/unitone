@@ -100,6 +100,7 @@
 			"fluidTypography": true,
 			"halfLeading": true,
 			"backdropFilter": true,
+			"backgroundClip": true,
 			"parallax": true,
 			"scrollAnimation": true,
 			"style": true

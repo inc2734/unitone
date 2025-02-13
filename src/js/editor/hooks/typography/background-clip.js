@@ -61,9 +61,11 @@ export function BackgroundClipEdit( {
 	setAttributes,
 } ) {
 	useEffect( () => {
-		// @todo I would actually like to enable it when using gradients as well,
-		// but for some reason the core uses `background` instead of `background-image` so I can't enable it.
-		if ( ! attributes?.style?.background?.backgroundImage ) {
+		if (
+			! attributes?.gradient &&
+			! attributes?.style?.color?.gradient &&
+			! attributes?.style?.background?.backgroundImage
+		) {
 			const newUnitone = {
 				...attributes?.unitone,
 				backgroundClip: undefined,
@@ -73,7 +75,11 @@ export function BackgroundClipEdit( {
 				unitone: cleanEmptyObject( newUnitone ),
 			} );
 		}
-	}, [ attributes?.style?.background?.backgroundImage ] );
+	}, [
+		attributes?.gradient,
+		attributes?.style?.color?.gradient,
+		attributes?.style?.background?.backgroundImage,
+	] );
 
 	return (
 		<ToggleControl
@@ -81,10 +87,8 @@ export function BackgroundClipEdit( {
 			label={ label }
 			help={ help }
 			disabled={
-				// @todo I would actually like to enable it when using gradients as well,
-				// but for some reason the core uses `background` instead of `background-image` so I can't enable it.
-				// ! attributes?.gradient &&
-				// ! attributes?.style?.color?.gradient &&
+				! attributes?.gradient &&
+				! attributes?.style?.color?.gradient &&
 				! attributes?.style?.background?.backgroundImage
 			}
 			checked={ attributes?.unitone?.backgroundClip ?? false }

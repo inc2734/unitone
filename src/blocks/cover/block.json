@@ -43,7 +43,8 @@
 			"minHeight": true,
 			"padding": true,
 			"fluidTypography": true,
-			"halfLeading": true
+			"halfLeading": true,
+			"backgroundClip": true
 		}
 	},
 	"example": {

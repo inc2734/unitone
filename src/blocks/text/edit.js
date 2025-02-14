@@ -5,6 +5,7 @@ import {
 	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
+	useSettings,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
@@ -26,7 +27,7 @@ export default function ( {
 	clientId,
 	__unstableLayoutClassNames: layoutClassNames,
 } ) {
-	const { center, column, columnWidth, templateLock } = attributes;
+	const { center, column, columnWidth, layout, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -34,6 +35,11 @@ export default function ( {
 				?.length,
 		[ clientId ]
 	);
+
+	const [ layoutSettings ] = useSettings( 'layout' );
+	const usedLayout = ! layout?.type
+		? { ...layoutSettings, ...layout, type: 'constrained' }
+		: { ...layoutSettings, ...layout };
 
 	const blockProps = useBlockProps( {
 		className: layoutClassNames,
@@ -52,6 +58,7 @@ export default function ( {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+		layout: usedLayout,
 		templateLock,
 		renderAppender: hasInnerBlocks
 			? undefined

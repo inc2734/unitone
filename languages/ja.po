@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-02-13T15:22:05+00:00\n"
-"PO-Revision-Date: 2025-02-14 01:04+0900\n"
+"POT-Creation-Date: 2025-02-13T16:18:09+00:00\n"
+"PO-Revision-Date: 2025-02-14 01:18+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1702,19 +1702,19 @@ msgstr "サイトを表示 (新しいタブで開く)"
 msgid "Navigation"
 msgstr "ナビゲーション"
 
-#: dist/blocks/abstract-frame/index.js:1
+#: dist/blocks/abstract-background/index.js:1
 msgid "Abstract background image"
 msgstr "アブストラクト背景画像"
 
-#: dist/blocks/abstract-frame/index.js:1
+#: dist/blocks/abstract-background/index.js:1
 msgid "Abstract background video"
 msgstr "アブストラクト背景動画"
 
-#: dist/blocks/abstract-frame/index.js:1
+#: dist/blocks/abstract-background/index.js:1
 msgid "Abstract background"
 msgstr "アブストラクト背景"
 
-#: dist/blocks/abstract-frame/index.js:1 dist/blocks/accordion/index.js:1
+#: dist/blocks/abstract-background/index.js:1 dist/blocks/accordion/index.js:1
 #: dist/blocks/breadcrumbs/index.js:1 dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/decorator/index.js:1
@@ -1731,7 +1731,7 @@ msgstr "アブストラクト背景"
 msgid "Settings"
 msgstr "設定"
 
-#: dist/blocks/abstract-frame/index.js:1
+#: dist/blocks/abstract-background/index.js:1
 msgid "Background"
 msgstr "背景"
 
@@ -3558,12 +3558,12 @@ msgctxt "block description"
 msgid "This block is used to assemble components with sidebars."
 msgstr "サイドバー付きのコンポーネントを組み立てます。"
 
-#: dist/blocks/abstract-frame/block.json
+#: dist/blocks/abstract-background/block.json
 msgctxt "block title"
 msgid "Abstract background"
 msgstr "アブストラクト背景"
 
-#: dist/blocks/abstract-frame/block.json
+#: dist/blocks/abstract-background/block.json
 msgctxt "block description"
 msgid "Displays a frame using an abstract background image."
 msgstr "抽象的な背景画像を使用したフレームを表示します。"

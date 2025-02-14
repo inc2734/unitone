@@ -121,7 +121,18 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		},
 		{
 			allowedBlocks,
-			template: [ [ 'unitone/tab-panel', {}, [ [ 'core/paragraph' ] ] ] ],
+			template: [
+				[
+					'unitone/tab-panel',
+					{},
+					[
+						[
+							'unitone/text',
+							{ unitone: { maxWidth: '100%', gap: '-1' } },
+						],
+					],
+				],
+			],
 			templateLock,
 			renderAppender: false,
 		}

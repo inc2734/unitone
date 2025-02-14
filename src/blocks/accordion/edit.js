@@ -64,6 +64,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		},
 		{
 			templateLock,
+			template: [
+				[
+					'unitone/text',
+					{ unitone: { maxWidth: '100%', gap: '-1' } },
+				],
+			],
 			renderAppender: hasInnerBlocks
 				? undefined
 				: InnerBlocks.ButtonBlockAppender,

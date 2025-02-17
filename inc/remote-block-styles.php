@@ -82,30 +82,34 @@ function unitone_register_remote_block_styles() {
 		return;
 	}
 
-	$transient = get_transient( 'unitone-remote-styles' );
-
-	if ( false !== $transient ) {
-		$remote_block_styles = $transient;
-	} else {
-		$license_key = Manager::get_setting( 'license-key' );
-		$status      = Manager::get_license_status( $license_key );
-
-		$remote_block_styles = 'true' === $status
-			? unitone_get_premium_remote_block_styles()
-			: false;
-
-		if ( $remote_block_styles && is_array( $remote_block_styles ) ) {
-			set_transient( 'unitone-remote-styles', $remote_block_styles, DAY_IN_SECONDS );
-		}
+	$license_key = Manager::get_setting( 'license-key' );
+	if ( ! $license_key ) {
+		return;
 	}
 
-	if ( ! is_array( $remote_block_styles ) ) {
-		$remote_block_styles = array();
+	$status = Manager::get_license_status( $license_key );
+	if ( 'false' === $status ) {
+		return;
+	}
+
+	$transient_name = 'unitone-remote-styles';
+	$block_styles   = get_transient( $transient_name );
+
+	if ( 'true' === $status ) {
+		if ( false === $block_styles || ! is_array( $block_styles ) ) {
+			$new_block_styles = unitone_get_premium_remote_block_styles();
+			if ( ! is_array( $new_block_styles ) ) {
+				$new_block_styles = array();
+			}
+
+			set_transient( $transient_name, $new_block_styles, WEEK_IN_SECONDS );
+			$block_styles = $new_block_styles;
+		}
 	}
 
 	$registry = WP_Block_Styles_Registry::get_instance();
 
-	foreach ( $remote_block_styles as $style ) {
+	foreach ( $block_styles as $style ) {
 		if ( ! $style['name'] || ! $style['label'] || ! $style['blockTypes'] ) {
 			continue;
 		}

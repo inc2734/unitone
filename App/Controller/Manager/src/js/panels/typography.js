@@ -311,8 +311,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								min={ 0.0 }
 								step={ 0.05 }
 								max={
-									parseFloat( settings?.[ 'half-leading' ] ) /
-									2
+									parseFloat(
+										settings?.[ 'half-leading' ] ?? 0
+									) / 2
 								}
 							/>
 

@@ -189,7 +189,7 @@ class Manager {
 		/**
 		 * The license status getter.
 		 *
-		 * @return string 'true' or 'false'.
+		 * @return string 'true'|'false'|'50x'.
 		 */
 		register_rest_route(
 			'unitone/v1',
@@ -197,7 +197,7 @@ class Manager {
 			array(
 				'methods'             => 'GET',
 				'callback'            => function () {
-					return static::get_license_status( Settings::get_setting( 'license-key' ) );
+					return static::get_license_status( static::get_setting( 'license-key' ) );
 				},
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );
@@ -256,72 +256,87 @@ class Manager {
 			array(
 				'methods'             => 'POST',
 				'callback'            => function ( $request ) {
-					if ( $request->get_params() ) {
-						$settings = $request->get_params();
+					$settings = $request->get_params();
+					if ( ! $settings ) {
+						return new \WP_REST_Response( array( 'message' => 'Could not save settings' ), 400 );
+					}
 
-						$default_settings = Settings::get_default_settings();
-						$saved_settings   = Settings::get_settings();
+					$default_settings = Settings::get_default_settings();
+					$saved_settings   = Settings::get_settings();
 
-						$default_global_styles = Settings::get_default_global_styles();
-						$saved_global_styles   = Settings::get_global_styles();
+					$default_global_styles = Settings::get_default_global_styles();
+					$saved_global_styles   = Settings::get_global_styles();
 
-						$default_options = Settings::get_default_options();
-						$saved_options   = Settings::get_options();
+					$default_options = Settings::get_default_options();
+					$saved_options   = Settings::get_options();
 
-						// Extract all but the core settings.
-						// The new settings are sent only in difference.
-						// Therefore, there are merged with the stored settings and saved as new settings.
+					// Extract all but the core settings.
+					// The new settings are sent only in difference.
+					// Therefore, there are merged with the stored settings and saved as new settings.
 
-						$new_settings = array_replace_recursive(
-							$saved_settings,
-							array_filter(
-								$settings,
-								function ( $key ) {
-									return ! in_array( $key, array( 'styles', 'settings' ), true );
-								},
-								ARRAY_FILTER_USE_KEY
-							),
-						);
-						$new_settings =
-							array_replace_recursive(
-								$default_settings,
-								$new_settings
-							);
-
-						$new_global_styles = array_replace_recursive(
-							$saved_global_styles,
-							array( 'styles' => $settings['styles'] ?? array() ),
-							array( 'settings' => $settings['settings'] ?? array() )
-						);
-						$new_global_styles = array_replace_recursive(
-							$default_global_styles,
-							$new_global_styles
-						);
-
-						$new_options = array_replace_recursive(
-							$saved_options,
+					$new_settings = array_replace_recursive(
+						$saved_settings,
+						array_filter(
 							$settings,
-						);
-						$new_options = array_replace_recursive(
-							$default_options,
-							$new_options
+							function ( $key ) {
+								return ! in_array( $key, array( 'styles', 'settings' ), true );
+							},
+							ARRAY_FILTER_USE_KEY
+						),
+					);
+					$new_settings =
+						array_replace_recursive(
+							$default_settings,
+							$new_settings
 						);
 
-						Settings::update_settings( static::_convert_preset_value( $new_settings ) );
-						Settings::update_global_styles( static::_convert_preset_value( $new_global_styles ) );
-						Settings::update_options( $new_options );
+					$new_global_styles = array_replace_recursive(
+						$saved_global_styles,
+						array( 'styles' => $settings['styles'] ?? array() ),
+						array( 'settings' => $settings['settings'] ?? array() )
+					);
+					$new_global_styles = array_replace_recursive(
+						$default_global_styles,
+						$new_global_styles
+					);
 
-						if ( array_key_exists( 'license-key', $settings ) ) {
-							$license_key = $settings['license-key'];
-							if ( ! empty( $license_key ) ) {
-								$transient_name = 'unitone-license-status-' . $license_key;
-								delete_transient( $transient_name );
-							}
+					$new_options = array_replace_recursive(
+						$saved_options,
+						$settings,
+					);
+					$new_options = array_replace_recursive(
+						$default_options,
+						$new_options
+					);
+
+					Settings::update_settings( static::_convert_preset_value( $new_settings ) );
+					Settings::update_global_styles( static::_convert_preset_value( $new_global_styles ) );
+					Settings::update_options( $new_options );
+
+					if ( array_key_exists( 'license-key', $settings ) ) {
+						$old_license_key = static::get_setting( 'license-key' );
+						$old_status      = $license_key
+							? static::get_license_status( $old_license_key )
+							: 'false';
+
+						// If server error, Do nothing.
+						if ( ! in_array( $old_status, array( 'true', 'false' ), true ) ) {
+							return new \WP_REST_Response( array( 'message' => 'License activation could not be performed' ), 400 );
 						}
 
-						return new \WP_REST_Response( array( 'message' => 'OK' ), 200 );
+						if ( ! empty( $license_key ) ) {
+							$transient_name = 'unitone-license-status-' . $license_key;
+							delete_transient( $transient_name );
+						}
+
+						$license_key = $settings['license-key'];
+						if ( ! empty( $license_key ) ) {
+							$transient_name = 'unitone-license-status-' . $license_key;
+							delete_transient( $transient_name );
+						}
 					}
-					return new \WP_REST_Response( array( 'message' => 'Could not save settings' ), 400 );
+
+					return new \WP_REST_Response( array( 'message' => 'OK' ), 200 );
 				},
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );
@@ -437,21 +452,28 @@ class Manager {
 				'methods'             => 'DELETE',
 				'callback'            => function ( $request ) {
 					$settings = $request->get_params();
-					if ( $settings ) {
-						$license_key = $settings['license-key'] ?? null;
-						if ( ! empty( $license_key ) ) {
-							$transient_name = 'unitone-license-status-' . $license_key;
-							delete_transient( $transient_name );
-						}
-
-						delete_transient( 'unitone-remote-patterns' );
-						delete_transient( 'unitone-remote-pattern-categories' );
-
-						delete_transient( 'unitone-remote-styles' );
-
-						return new \WP_REST_Response( array( 'message' => 'OK' ), 200 );
+					if ( ! $settings ) {
+						return new \WP_REST_Response( array( 'message' => 'Unable to get patterns.' ), 400 );
 					}
-					return new \WP_REST_Response( array( 'message' => 'Could not save settings' ), 400 );
+
+					$license_key = static::get_setting( 'license-key' );
+					$status      = static::get_license_status( $license_key );
+
+					// If server error, Do nothing.
+					if ( ! in_array( $status, array( 'true', 'false' ), true ) ) {
+						return new \WP_REST_Response( array( 'message' => 'License activation could not be performedd' ), 400 );
+					}
+
+					delete_transient( 'unitone-remote-pattern-categories' );
+					delete_transient( 'unitone-remote-patterns' ); // Backward compatibility.
+					delete_transient( 'unitone-premium-remote-patterns' );
+					delete_transient( 'unitone-free-remote-patterns' );
+					delete_transient( 'unitone-remote-styles' );
+
+					unitone_register_remote_block_patterns();
+					unitone_register_remote_block_styles();
+
+					return new \WP_REST_Response( array( 'message' => 'OK' ), 200 );
 				},
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );
@@ -562,11 +584,11 @@ class Manager {
 	 * Get license status.
 	 *
 	 * @param string $license_key The license key.
-	 * @return boolean
+	 * @return string 'true'|'false'|'50x'
 	 */
 	public static function get_license_status( $license_key ) {
 		if ( empty( $license_key ) ) {
-			return false;
+			return 'false';
 		}
 
 		$transient_name = 'unitone-license-status-' . $license_key;
@@ -576,7 +598,15 @@ class Manager {
 		}
 
 		$status = static::_request_license_validate( $license_key );
-		set_transient( $transient_name, $status ? $status : 'false', DAY_IN_SECONDS );
+		if ( true === $status ) {
+			$status = 'true';
+		} elseif ( false === $status ) {
+			$status = 'false';
+		} else {
+			$status = (string) $status;
+		}
+
+		set_transient( $transient_name, $status, DAY_IN_SECONDS );
 		return $status;
 	}
 
@@ -584,7 +614,7 @@ class Manager {
 	 * Validate checker.
 	 *
 	 * @param string $license_key The license key.
-	 * @return boolean
+	 * @return mixed false|true|50x
 	 */
 	protected static function _request_license_validate( $license_key ) {
 		global $wp_version;
@@ -608,6 +638,13 @@ class Manager {
 			$response_code = wp_remote_retrieve_response_code( $response );
 			if ( 200 === $response_code ) {
 				$status = wp_remote_retrieve_body( $response );
+				if ( 'true' === $status ) {
+					$status = true;
+				} elseif ( 'false' === $status ) {
+					$status = false;
+				}
+			} elseif ( 5 === (int) substr( $response_code, 0, 1 ) ) {
+				$status = $response_code;
 			}
 		}
 

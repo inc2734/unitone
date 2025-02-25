@@ -1,3 +1,5 @@
+@use '../../js/editor/plugins/wireframe-generator/index';
+
 .block-editor-iframe__html {
 	overflow-x: clip;
 }
@@ -110,6 +112,15 @@
 
 .block-editor-block-patterns-list__list-item {
 	break-inside: avoid;
+
+	// Fixed an issue where the iframe would be crushed when using vh in the preview.
+	.block-editor-block-preview__container {
+		.block-editor-block-preview__content {
+			.block-editor-iframe__scale-container > iframe {
+				min-height: 100vh !important;
+			}
+		}
+	}
 }
 
 .block-editor-block-inspector {

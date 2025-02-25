@@ -173,6 +173,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 										},
 									},
 								} ),
+								enableAlpha: true,
 								clearable: true,
 							},
 						] }

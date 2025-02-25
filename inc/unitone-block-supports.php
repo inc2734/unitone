@@ -223,7 +223,7 @@ add_filter(
 		);
 		if ( $block_types_allowed_to_add_block_list_data ) {
 			$add_data_attribute( 'data-unitone-block-list', 'block' );
-			if ( $block['innerBlocks'] ) {
+			if ( $block['innerBlocks'] ?? array() ) {
 				$add_data_attribute( 'data-unitone-block-list', 'layout' );
 			}
 		}

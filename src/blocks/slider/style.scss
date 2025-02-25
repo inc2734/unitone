@@ -97,12 +97,18 @@
 		&--justification\:space-between-expanded {
 			justify-content: space-between;
 
-			@media (min-width: 960px) {
-				.swiper-button-prev {
+			.swiper-button-prev {
+				translate: -100% 0;
+
+				@media (min-width: 960px) {
 					translate: calc(-100% - var(--unitone--s-2)) 0;
 				}
+			}
 
-				.swiper-button-next {
+			.swiper-button-next {
+				translate: 100% 0;
+
+				@media (min-width: 960px) {
 					translate: calc(100% + var(--unitone--s-2)) 0;
 				}
 			}

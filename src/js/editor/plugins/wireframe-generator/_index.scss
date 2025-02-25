@@ -1,0 +1,48 @@
+.unitone-wireframe-generator-modal {
+	.components-modal__header + div {
+		height: 100%;
+		display: grid;
+		grid-template-rows: auto auto 1fr;
+	}
+}
+
+.unitone-wireframe-generator-preview-canvas {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	background-color: #000;
+	border: var(--unitone--s1) solid #000;
+}
+
+.unitone-wireframe-generator-preview {
+	--unitone--preview-max-width: 1334px;
+
+	background-color: var(--wp--preset--color--unitone-background);
+	margin-right: auto;
+	margin-left: auto;
+	width: min(var(--unitone--preview-max-width), 100% );
+	zoom: .8;
+
+	&--tablet {
+		--unitone--preview-max-width: 780px;
+	}
+
+	&--mobile {
+		--unitone--preview-max-width: 360px;
+	}
+
+	.block-editor-block-preview__content {
+		transform: initial !important;
+		aspect-ratio: initial !important;
+	}
+
+	.block-editor-iframe__scale-container {
+		display: flex;
+		justify-content: center;
+	}
+
+	iframe {
+		position: static !important;
+	}
+}

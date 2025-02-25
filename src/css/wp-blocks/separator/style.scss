@@ -13,3 +13,7 @@
 ) {
 	width: 100px;
 }
+
+:where(.wp-block-separator.is-style-wide) {
+	width: 100%;
+}

@@ -44,7 +44,8 @@
 		display: none !important;
 	}
 
-	.components-resizable-box__container {
+	.components-resizable-box__container,
+	> div:not([class]) {
 		height: 100% !important;
 		width: 100% !important;
 		max-height: 100% !important;

@@ -155,10 +155,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							metadata.attributes.switchWritingMode.default
 						}
 						isShownByDefault
-						label={ __(
-							'Switch writing mode when portrait',
-							'unitone'
-						) }
+						label={ __( 'Switch writing mode', 'unitone' ) }
 						onDeselect={ () =>
 							setAttributes( {
 								switchWritingMode:
@@ -169,8 +166,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					>
 						<ToggleControl
 							__nextHasNoMarginBottom
-							label={ __(
-								'Switch to writing horizontally when portrait',
+							label={ __( 'Switch writing mode', 'unitone' ) }
+							help={ __(
+								'Switch writing mode when portrait and mobile width.',
 								'unitone'
 							) }
 							checked={ switchWritingMode }

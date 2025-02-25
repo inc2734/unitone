@@ -80,10 +80,7 @@ export default function ( { attributes, setAttributes } ) {
 							metadata.attributes.switchRatio.default
 						}
 						isShownByDefault
-						label={ __(
-							'Switch aspect ratio when portrait',
-							'unitone'
-						) }
+						label={ __( 'Switch aspect', 'unitone' ) }
 						onDeselect={ () =>
 							setAttributes( {
 								switchRatio:
@@ -93,8 +90,9 @@ export default function ( { attributes, setAttributes } ) {
 					>
 						<ToggleControl
 							__nextHasNoMarginBottom
-							label={ __(
-								'Switch aspect ratio when portrait',
+							label={ __( 'Switch aspect ratio', 'unitone' ) }
+							help={ __(
+								'Switch aspect ratio when portrait and mobile width.',
 								'unitone'
 							) }
 							checked={ switchRatio }

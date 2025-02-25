@@ -267,7 +267,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							portrait !== metadata.attributes.portrait.default
 						}
 						isShownByDefault
-						label={ __( 'Enable portrait mode', 'unitone' ) }
+						label={ __( 'Switch grid lines direction', 'unitone' ) }
 						onDeselect={ () =>
 							setAttributes( {
 								cover: metadata.attributes.portrait.default,
@@ -276,9 +276,12 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 					>
 						<ToggleControl
 							__nextHasNoMarginBottom
-							label={ __( 'Enable portrait mode', 'unitone' ) }
+							label={ __(
+								'Switch grid lines direction',
+								'unitone'
+							) }
 							help={ __(
-								'If enabled, the number of vertical and horizontal grid lines is switched when the viewport is portrait.',
+								'Switch vertical and horizontal grid lines direction when portrait and mobile width.',
 								'unitone'
 							) }
 							checked={ portrait }

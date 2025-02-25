@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-02-13T16:18:09+00:00\n"
-"PO-Revision-Date: 2025-02-14 01:18+0900\n"
+"POT-Creation-Date: 2025-02-25T15:41:43+00:00\n"
+"PO-Revision-Date: 2025-02-26 00:46+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -49,14 +49,14 @@ msgstr "%sのメガメニュー"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:364 patterns/footer-2.php:21
+#: App/Controller/Manager/Manager.php:379 patterns/footer-2.php:21
 #: patterns/footer-3.php:50 patterns/footer-3.php:58 patterns/footer-3.php:66
 #: patterns/footer-4.php:30 patterns/footer-4.php:38 patterns/footer-4.php:46
 #: patterns/footer-5.php:28 patterns/footer-5.php:36 patterns/footer-5.php:44
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:407 patterns/footer-2.php:24
+#: App/Controller/Manager/Manager.php:422 patterns/footer-2.php:24
 #: patterns/footer-3.php:53 patterns/footer-3.php:61 patterns/footer-3.php:69
 #: patterns/footer-4.php:33 patterns/footer-4.php:41 patterns/footer-4.php:49
 #: patterns/footer-5.php:31 patterns/footer-5.php:39 patterns/footer-5.php:47
@@ -65,20 +65,20 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:503
+#: App/Controller/Manager/Manager.php:525
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:506
+#: App/Controller/Manager/Manager.php:528
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:510
+#: App/Controller/Manager/Manager.php:532
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
-#: App/Controller/Manager/Manager.php:533
+#: App/Controller/Manager/Manager.php:555
 msgid ""
 "You have not set a valid license key. Setting a license key will allow you "
 "to use patterns registered in %3$sthe pattern library%4$s. It will also "
@@ -1931,11 +1931,15 @@ msgid "Preferred aspect ratio"
 msgstr "推奨アスペクト比"
 
 #: dist/blocks/frame/index.js:1
-msgid "Switch aspect ratio when portrait"
-msgstr "ポートレートのとき比率を切り替える"
+msgid "Switch aspect ratio"
+msgstr "アスペクト比の切り替え"
+
+#: dist/blocks/frame/index.js:1
+msgid "Switch aspect ratio when portrait and mobile width."
+msgstr "ポートレートかつモバイル幅のときアスペクト比を切り替える。"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:14
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -1945,7 +1949,7 @@ msgid "Tablet / Mobile"
 msgstr "タブレット / モバイル"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:14
 msgid "Mobile"
 msgstr "モバイル"
 
@@ -2063,16 +2067,14 @@ msgid "Blur the background image/video"
 msgstr "背景画像/動画をぼかす"
 
 #: dist/blocks/layers/index.js:25
-msgid "Enable portrait mode"
-msgstr "ポートレートモードを有効にする"
+msgid "Switch grid lines direction"
+msgstr "グリッド線の方向の切り替え"
 
 #: dist/blocks/layers/index.js:25
 msgid ""
-"If enabled, the number of vertical and horizontal grid lines is switched "
-"when the viewport is portrait."
-msgstr ""
-"有効な場合、ビューポートがポートレートのときにグリッド線の縦横の本数が切り替"
-"わります。"
+"Switch vertical and horizontal grid lines direction when portrait and mobile "
+"width."
+msgstr "ポートレートかつモバイル幅のとき、縦横のグリッド線の向きを切り替える。"
 
 #: dist/blocks/mega-menu/index.js:1
 msgid "Mega menu background"
@@ -2453,12 +2455,12 @@ msgid ""
 msgstr "このブロックがこの幅より小さいときは、横書きに切り替えます。"
 
 #: dist/blocks/vertical-writing/index.js:1
-msgid "Switch writing mode when portrait"
-msgstr "ポートレートのときライティングモードを切り替える"
+msgid "Switch writing mode"
+msgstr "ライティングモードの切り替え"
 
 #: dist/blocks/vertical-writing/index.js:1
-msgid "Switch to writing horizontally when portrait"
-msgstr "ポートレートのときは横書きに切り替える"
+msgid "Switch writing mode when portrait and mobile width."
+msgstr "ポートレートかつモバイル幅のとライティンググモードを切り替える。"
 
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
@@ -2938,6 +2940,23 @@ msgstr "子ブロックを選択"
 #: dist/js/editor/editor.js:13
 msgid "Show block outline"
 msgstr "ブロックのアウトラインを表示"
+
+#. translators: %s: block pattern title.
+#: dist/js/editor/editor.js:14
+msgid "Wireframe Generator"
+msgstr "ワイヤーフレームジェネレーター"
+
+#: dist/js/editor/editor.js:14
+msgid "Generate wireframe"
+msgstr "ワイヤーフレームを生成"
+
+#: dist/js/editor/editor.js:14
+msgid "Tablet"
+msgstr "タブレット"
+
+#: dist/js/editor/editor.js:14
+msgid "Insert wireframe"
+msgstr "ワイヤーフレームを挿入"
 
 #: dist/variations/variations.js:1
 msgid "Post to X"

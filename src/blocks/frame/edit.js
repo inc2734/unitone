@@ -80,7 +80,7 @@ export default function ( { attributes, setAttributes } ) {
 							metadata.attributes.switchRatio.default
 						}
 						isShownByDefault
-						label={ __( 'Switch aspect', 'unitone' ) }
+						label={ __( 'Switch aspect ratio', 'unitone' ) }
 						onDeselect={ () =>
 							setAttributes( {
 								switchRatio:

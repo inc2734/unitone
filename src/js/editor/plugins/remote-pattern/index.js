@@ -30,53 +30,59 @@ const replaceUnitonePatternImages = createHigherOrderComponent(
 				! isSelectionEnabled &&
 				! isSelected;
 
-			if ( 'core/image' === name ) {
-				if ( maybePreview ) {
-					return <BlockListBlock { ...props } />;
-				}
+			if ( 'core/image' !== name ) {
+				return <BlockListBlock { ...props } />;
+			}
 
-				const fileUrl = attributes.url;
+			if ( maybePreview ) {
+				return <BlockListBlock { ...props } />;
+			}
 
-				const regExpUploads = new RegExp(
-					'https://unitone.2inc.org/wp-content/uploads'
-				);
+			const fileUrl = attributes.url;
 
-				const regExpTheme = new RegExp(
-					'https://unitone.2inc.org/wp-content/themes/unitone'
-				);
+			const regExpTheme = new RegExp(
+				'https://unitone.2inc.org/wp-content/themes/unitone'
+			);
 
-				if ( window.unitone.url.match( regExpTheme ) ) {
-					return <BlockListBlock { ...props } />;
-				}
+			const regExpUnitone = new RegExp( 'https://unitone.2inc.org' );
 
-				const isFileInUploads = fileUrl?.match( regExpUploads );
-				const isFileInTheme = fileUrl?.match( regExpTheme );
+			if ( window.unitone.url.match( regExpTheme ) ) {
+				return <BlockListBlock { ...props } />;
+			}
 
-				if ( ! isFileInUploads && ! isFileInTheme ) {
-					return <BlockListBlock { ...props } />;
-				}
+			const isFileInTheme = fileUrl?.match( regExpTheme );
+			const isFileInUnitone = fileUrl?.match( regExpUnitone );
 
+			if ( ! isFileInTheme && ! isFileInUnitone ) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			if ( isFileInUnitone && ! isFileInTheme ) {
 				attributes.url = `${ window.unitone.url }/dist/img/dummy.jpg`;
 				block.attributes.url = attributes.url;
 
-				if ( isFileInTheme ) {
-					const newFileUrl = fileUrl.replace(
-						regExpTheme,
-						window.unitone.url
-					);
-					fileExist( newFileUrl ).then( ( isExist ) => {
-						if ( isExist ) {
-							attributes.url = newFileUrl;
-							block.attributes.url = attributes.url;
-						}
+				return (
+					<BlockListBlock { ...{ ...props, block, attributes } } />
+				);
+			}
 
-						return (
-							<BlockListBlock
-								{ ...{ ...props, block, attributes } }
-							/>
-						);
-					} );
-				}
+			if ( isFileInTheme ) {
+				const newFileUrl = fileUrl.replace(
+					regExpTheme,
+					window.unitone.url
+				);
+				fileExist( newFileUrl ).then( ( isExist ) => {
+					if ( isExist ) {
+						attributes.url = newFileUrl;
+						block.attributes.url = attributes.url;
+					}
+
+					return (
+						<BlockListBlock
+							{ ...{ ...props, block, attributes } }
+						/>
+					);
+				} );
 			}
 
 			return <BlockListBlock { ...props } />;

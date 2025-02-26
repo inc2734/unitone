@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-02-25T15:41:43+00:00\n"
-"PO-Revision-Date: 2025-02-26 00:46+0900\n"
+"POT-Creation-Date: 2025-02-26T02:51:10+00:00\n"
+"PO-Revision-Date: 2025-02-26 13:19+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2942,9 +2942,17 @@ msgid "Show block outline"
 msgstr "ブロックのアウトラインを表示"
 
 #. translators: %s: block pattern title.
-#: dist/js/editor/editor.js:14
+#: dist/js/editor/editor.js:13 dist/js/editor/editor.js:14
 msgid "Wireframe Generator"
 msgstr "ワイヤーフレームジェネレーター"
+
+#: dist/js/editor/editor.js:14
+msgid ""
+"Generates a wireframe using the unitone pattern. When inserted, the image is "
+"replaced with a dummy image."
+msgstr ""
+"unitoneのパターンを使ったワイヤーフレームを生成します。挿入すると画像はダミー"
+"画像に置き換わります。"
 
 #: dist/js/editor/editor.js:14
 msgid "Generate wireframe"

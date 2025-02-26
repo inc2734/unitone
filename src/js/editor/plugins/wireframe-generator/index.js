@@ -15,9 +15,10 @@ import {
 import { registerPlugin } from '@wordpress/plugins';
 import { Button, Modal } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { Icon, bellUnread, desktop, tablet, mobile } from '@wordpress/icons';
+import { Icon, desktop, tablet, mobile } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
+import icon from './icon';
 import usePatternsState from '../../../../blocks/pattern-inserter/inserter/hooks/use-patterns-state';
 
 const PluginSidebarExample = () => {
@@ -34,8 +35,11 @@ const PluginSidebarExample = () => {
 	}, [ previewPatterns ] );
 
 	const WireFrameGeneratorButton = () => (
-		<Button onClick={ () => setIsOpen( ! isOpen ) }>
-			<Icon icon={ bellUnread } />
+		<Button
+			label={ __( 'Wireframe Generator', 'unitone' ) }
+			onClick={ () => setIsOpen( ! isOpen ) }
+		>
+			<Icon icon={ icon } />
 		</Button>
 	);
 
@@ -197,6 +201,13 @@ const PluginSidebarExample = () => {
 					isFullScreen
 					className="unitone-wireframe-generator-modal"
 				>
+					<p>
+						{ __(
+							'Generates a wireframe using the unitone patterns. When inserted, images are replaced with dummy images.',
+							'unitone'
+						) }
+					</p>
+
 					<div>
 						<Button variant="primary" onClick={ onClickGenerate }>
 							{ __( 'Generate wireframe', 'unitone' ) }

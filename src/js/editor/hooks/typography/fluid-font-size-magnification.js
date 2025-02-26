@@ -140,7 +140,11 @@ const withFluidTypography = createHigherOrderComponent( ( BlockListBlock ) => {
 				/>
 
 				{ enableFluidTypography && (
-					<div ref={ ref } style={ { display: 'none' } } />
+					<div
+						ref={ ref }
+						className="unitone-fluild-typography-ref"
+						style={ { display: 'none' } }
+					/>
 				) }
 			</>
 		);

@@ -17,4 +17,8 @@
 		width: auto;
 		block-size: 100%;
 	}
+
+	> :has(+ .unitone-fluild-typography-ref) {
+		margin-block-end: 0;
+	}
 }

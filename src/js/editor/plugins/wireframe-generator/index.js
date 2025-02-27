@@ -151,8 +151,8 @@ const PluginSidebarExample = () => {
 		}
 
 		const loopCount = heroPattern.categories.includes( 'unitone-query' )
-			? 3
-			: 2;
+			? 4
+			: 3;
 
 		for ( let i = 0; i < loopCount; i++ ) {
 			shuffledSectionPatterns.push( [
@@ -187,10 +187,22 @@ const PluginSidebarExample = () => {
 		] );
 	}, [ sectionPatterns, sectionColoredPatterns, queryPatterns ] );
 
-	const onClickInsert = useCallback( () => {
-		insertBlocks(
-			previewPatterns.map( ( pattern ) => pattern.blocks ).flat()
+	const cloneBlockWithNewClientId = ( block ) => {
+		return wp.blocks.createBlock(
+			block.name,
+			block.attributes,
+			block.innerBlocks?.map( cloneBlockWithNewClientId ) || []
 		);
+	};
+
+	const onClickInsert = useCallback( () => {
+		const newBlocks = previewPatterns
+			.map( ( pattern ) =>
+				pattern.blocks.map( cloneBlockWithNewClientId )
+			)
+			.flat();
+
+		insertBlocks( newBlocks );
 
 		setPreviewPatterns( [] );
 		setPreviewMode( 'desktop' );
@@ -289,24 +301,36 @@ const PluginSidebarExample = () => {
 									>
 										{ previewPatterns.map(
 											( pattern, i ) => {
-												const newBlocks =
-													pattern.blocks.map(
-														( block ) => {
-															if (
-																!! block
+												const newBlocks = [
+													...pattern.blocks,
+												].map( ( block ) => {
+													if (
+														null ==
+														block.attributes
+															?.unitone?.minHeight
+													) {
+														return block;
+													}
+
+													const newMinHeight =
+														block.attributes.unitone.minHeight.replace(
+															/([\d]+)[sld]?vh/,
+															'840px * $1 / 100'
+														);
+													return {
+														...block,
+														attributes: {
+															...block.attributes,
+															unitone: {
+																...block
 																	.attributes
-																	?.unitone
-																	?.minHeight
-															) {
-																block.attributes.unitone.minHeight =
-																	block.attributes.unitone.minHeight.replace(
-																		/([\d]+)[sld]?vh/,
-																		'840px * $1 / 100'
-																	);
-															}
-															return block;
-														}
-													);
+																	.unitone,
+																minHeight:
+																	newMinHeight,
+															},
+														},
+													};
+												} );
 
 												return (
 													<BlockPreview

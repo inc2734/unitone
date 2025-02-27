@@ -300,8 +300,8 @@ const PluginSidebarExample = () => {
 															) {
 																block.attributes.unitone.minHeight =
 																	block.attributes.unitone.minHeight.replace(
-																		'min(',
-																		'max('
+																		/([\d]+)[sld]?vh/,
+																		'840px * $1 / 100'
 																	);
 															}
 															return block;
@@ -311,9 +311,7 @@ const PluginSidebarExample = () => {
 												return (
 													<BlockPreview
 														key={ i }
-														blocks={
-															pattern.blocks
-														}
+														blocks={ newBlocks }
 														viewportWidth={ 1334 }
 													/>
 												);

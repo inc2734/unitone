@@ -35,6 +35,7 @@
 	.block-editor-block-preview__content {
 		transform: initial !important;
 		aspect-ratio: initial !important;
+		max-height: none !important;
 	}
 
 	.block-editor-iframe__scale-container {
@@ -44,5 +45,6 @@
 
 	iframe {
 		position: static !important;
+		max-height: none !important;
 	}
 }

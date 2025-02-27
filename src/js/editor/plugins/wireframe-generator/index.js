@@ -32,7 +32,7 @@ const PluginSidebarExample = () => {
 		if ( canvasRef.current !== null ) {
 			canvasRef.current.scrollTop = 0;
 		}
-	}, [ previewPatterns ] );
+	}, [ previewPatterns, previewMode ] );
 
 	const WireFrameGeneratorButton = () => (
 		<Button
@@ -95,7 +95,6 @@ const PluginSidebarExample = () => {
 		return shownPatterns.filter(
 			( pattern ) =>
 				! pattern.categories.includes( 'unitone-query' ) &&
-				! pattern.categories.includes( 'unitone-cta' ) &&
 				pattern.categories.includes( 'unitone-sections' )
 		);
 	}, [ shownPatterns ] );
@@ -104,7 +103,6 @@ const PluginSidebarExample = () => {
 		return shownPatterns.filter(
 			( pattern ) =>
 				! pattern.categories.includes( 'unitone-query' ) &&
-				! pattern.categories.includes( 'unitone-cta' ) &&
 				! pattern.categories.includes( 'unitone-sections-colored' ) &&
 				pattern.categories.includes( 'unitone-sections' )
 		);
@@ -125,9 +123,11 @@ const PluginSidebarExample = () => {
 
 		const shuffledSectionPatterns = [];
 
+		// At first, display one randomly from Hero Patterns.
 		const heroPattern =
 			heroPatterns[ Math.floor( Math.random() * heroPatterns.length ) ];
 
+		// If the hero pattern does not include a query, add the query pattern in a subsequent section.
 		if ( ! heroPattern.categories.includes( 'unitone-query' ) ) {
 			const queryPattern =
 				queryPatterns[
@@ -167,12 +167,23 @@ const PluginSidebarExample = () => {
 			] );
 		}
 
+		// Finally, choose one randomly from ctaPatterns or shuffledSectionPatterns.
+		const lastPattern =
+			Math.random() < 0.5
+				? ctaPatterns[
+						Math.floor( Math.random() * ctaPatterns.length )
+				  ]
+				: shuffledSectionPatterns.flat()[
+						Math.floor(
+							Math.random() *
+								shuffledSectionPatterns.flat().length
+						)
+				  ];
+
 		setPreviewPatterns( [
 			...[ heroPattern ],
 			...shuffledSectionPatterns.flat().slice( 0, -1 ),
-			...[
-				ctaPatterns[ Math.floor( Math.random() * ctaPatterns.length ) ],
-			],
+			...[ lastPattern ],
 		] );
 	}, [ sectionPatterns, sectionColoredPatterns, queryPatterns ] );
 
@@ -208,10 +219,26 @@ const PluginSidebarExample = () => {
 						) }
 					</p>
 
-					<div>
+					<div
+						style={ {
+							marginTop: 'var(--unitone--s-2)',
+							display: 'flex',
+							gap: 'var(--unitone--s-1)',
+						} }
+					>
 						<Button variant="primary" onClick={ onClickGenerate }>
 							{ __( 'Generate wireframe', 'unitone' ) }
 						</Button>
+
+						{ Array.isArray( previewPatterns ) &&
+							previewPatterns.length > 0 && (
+								<Button
+									variant="primary"
+									onClick={ onClickInsert }
+								>
+									{ __( 'Insert wireframe', 'unitone' ) }
+								</Button>
+							) }
 					</div>
 
 					{ Array.isArray( previewPatterns ) &&
@@ -261,41 +288,38 @@ const PluginSidebarExample = () => {
 										className={ `unitone-wireframe-generator-preview unitone-wireframe-generator-preview--${ previewMode }` }
 									>
 										{ previewPatterns.map(
-											( pattern, i ) => (
-												<BlockPreview
-													key={ i }
-													blocks={ pattern.blocks }
-													viewportWidth={ 1334 }
-													additionalStyles={
-														pattern.content.match(
-															/"minHeight":"min\([\d]+?[sdl]?vh/
-														)
-															? [
-																	{
-																		css: 'body { aspect-ratio: 16 / 9; }',
-																	},
-															  ]
-															: undefined
-													}
-												/>
-											)
+											( pattern, i ) => {
+												const newBlocks =
+													pattern.blocks.map(
+														( block ) => {
+															if (
+																!! block
+																	.attributes
+																	?.unitone
+																	?.minHeight
+															) {
+																block.attributes.unitone.minHeight =
+																	block.attributes.unitone.minHeight.replace(
+																		'min(',
+																		'max('
+																	);
+															}
+															return block;
+														}
+													);
+
+												return (
+													<BlockPreview
+														key={ i }
+														blocks={
+															pattern.blocks
+														}
+														viewportWidth={ 1334 }
+													/>
+												);
+											}
 										) }
 									</div>
-								</div>
-
-								<div
-									style={ {
-										marginTop: 'var(--unitone--s-2)',
-										display: 'flex',
-										justifyContent: 'end',
-									} }
-								>
-									<Button
-										variant="primary"
-										onClick={ onClickInsert }
-									>
-										{ __( 'Insert wireframe', 'unitone' ) }
-									</Button>
 								</div>
 							</>
 						) }

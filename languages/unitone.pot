@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-26T02:51:10+00:00\n"
+"POT-Creation-Date: 2025-02-26T06:31:55+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -2984,7 +2984,7 @@ msgid "Wireframe Generator"
 msgstr ""
 
 #: dist/js/editor/editor.js:14
-msgid "Generates a wireframe using the unitone pattern. When inserted, the image is replaced with a dummy image."
+msgid "Generates a wireframe using the unitone patterns. When inserted, images are replaced with dummy images."
 msgstr ""
 
 #: dist/js/editor/editor.js:14

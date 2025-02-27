@@ -99,3 +99,11 @@
 		color: var(--wp--preset--color--unitone-accent);
 	}
 }
+
+:root :where(.wp-block-post-terms.is-style-text) {
+	a:where(:not(.wp-element-button)),
+	span:where(:not([class]):not([data-rich-text-placeholder])) {
+		color: inherit;
+		text-decoration: none;
+	}
+}

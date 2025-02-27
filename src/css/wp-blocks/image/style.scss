@@ -13,6 +13,7 @@
 			content: '';
 			position: absolute;
 			inset: 0;
+			z-index: auto !important;
 			background-image: var(--unitone--overlay-gradient);
 			background-color: var(--unitone--overlay-color);
 			border-radius: var(--unitone--overlay-radius);

@@ -6,10 +6,7 @@
 	--unitone--overlay-radius: 0px;
 
 	&[data-unitone-layout~="-overlay"] {
-		display: grid;
-
 		&::after {
-			grid-row: 1 / 2;
 			content: '';
 			position: absolute;
 			inset: 0;

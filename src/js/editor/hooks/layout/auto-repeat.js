@@ -74,7 +74,12 @@ export function getAutoRepeatEditLabel( {
 	);
 }
 
-export function AutoRepeatEdit( { name, label, unitone, setAttributes } ) {
+export function AutoRepeatEdit( {
+	label,
+	name,
+	attributes: { unitone },
+	setAttributes,
+} ) {
 	const defaultValue = useSelect( ( select ) => {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.autoRepeat;

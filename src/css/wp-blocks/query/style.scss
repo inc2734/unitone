@@ -31,10 +31,28 @@
 	&.is-flex-container[class*=columns-] {
 		display: grid;
 
-		@media (min-width: 600px) {
+		@media (min-width: 782px) {
 			@for $i from 2 through 6 {
 				&.columns-#{ $i } {
 					grid-template-columns: repeat(#{ $i }, minmax(0, 1fr));
+				}
+			}
+		}
+
+		@media (min-width: 601px) and (max-width: 781px) {
+			@for $i from 3 through 6 {
+				&.columns-#{ $i } {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+		}
+	}
+
+	&.is-layout-grid[class*=columns-] {
+		@media (min-width: 601px) and (max-width: 781px) {
+			@for $i from 3 through 6 {
+				&.columns-#{ $i } {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
 				}
 			}
 		}

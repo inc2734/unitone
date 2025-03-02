@@ -29,6 +29,7 @@
 }
 
 :root :where(.wp-block-image.is-style-cover) {
+	display: block;
 	height: 100% !important;
 	width: 100% !important;
 

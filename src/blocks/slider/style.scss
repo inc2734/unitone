@@ -60,9 +60,16 @@
 		flex-wrap: nowrap;
 		gap: var(--swiper-buttons-gap);
 		justify-content: center;
+		pointer-events: none;
 
 		&--alignment\:top {
 			margin-bottom: var(--swiper-buttons-gap);
+		}
+
+		&--alignment\:top-inside {
+			position: absolute;
+			inset: 0 0 auto;
+			z-index: 1;
 		}
 
 		&--alignment\:center {
@@ -72,6 +79,12 @@
 			left: 0;
 			z-index: 1;
 			transform: translateY(-50%);
+		}
+
+		&--alignment\:bottom-inside {
+			position: absolute;
+			inset: auto 0 0;
+			z-index: 1;
 		}
 
 		&--alignment\:bottom {
@@ -122,6 +135,7 @@
 		font-weight: bold;
 		height: auto;
 		padding: calc(1rem - var(--swiper-navigation-size) / 2) 1rem;
+		pointer-events: auto;
 
 		&:has(svg) {
 			padding: 0;
@@ -141,13 +155,26 @@
 		position: static;
 		display: flex;
 		justify-content: center;
+		pointer-events: none;
 
 		&--alignment\:top {
 			margin-bottom: var(--swiper-pagination-gap);
 		}
 
+		&--alignment\:top-inside {
+			position: absolute;
+			inset: 0 0 auto;
+			z-index: 1;
+		}
+
 		&--alignment\:bottom {
 			margin-top: var(--swiper-pagination-gap);
+		}
+
+		&--alignment\:bottom-inside {
+			position: absolute;
+			inset: auto 0 0;
+			z-index: 1;
 		}
 
 		&--justification\:left {
@@ -168,12 +195,13 @@
 
 		.swiper-pagination-bullet {
 			position: relative;
-			margin: 0;
+			margin: var(--unitone--s-2) 0;
 		}
 	}
 
 	.swiper-pagination-bullet {
 		background-color: var(--swiper-pagination-bullet-inactive-color);
+		pointer-events: auto;
 
 		&::after {
 			content: '';

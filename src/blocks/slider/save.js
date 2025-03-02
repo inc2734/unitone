@@ -55,38 +55,43 @@ export default function ( { attributes } ) {
 				},
 			} ) }
 		>
-			{ isDisplayPagination && 'top' === paginationAlignment && (
-				<Pagination
-					icon={
-						paginationIconTypes.filter(
-							( paginationIconType ) =>
-								paginationIconType.name === paginationIcon?.type
-						)?.[ 0 ]?.name
-					}
-					iconColor={ paginationIconColor }
-					iconCustomColor={ customPaginationIconColor }
-					alignment={ paginationAlignment }
-					justification={ paginationJustification }
-				/>
-			) }
-
-			<div className="unitone-slider__canvas-wrapper">
-				{ isDisplayArrows && 'top' === arrowsAlignment && (
-					<Arrows
-						icons={
-							arrowsIconTypes.filter(
-								( arrowsIconType ) =>
-									arrowsIconType.name === arrowsIcon?.type
-							)?.[ 0 ]?.icons
+			{ isDisplayPagination &&
+				( 'top' === paginationAlignment ||
+					'top-inside' === paginationAlignment ) && (
+					<Pagination
+						icon={
+							paginationIconTypes.filter(
+								( paginationIconType ) =>
+									paginationIconType.name ===
+									paginationIcon?.type
+							)?.[ 0 ]?.name
 						}
-						iconStroke={ arrowsIcon?.stroke }
-						iconSize={ arrowsIcon?.size }
-						iconColor={ arrowsIconColor }
-						iconCustomColor={ customArrowsIconColor }
-						alignment={ arrowsAlignment }
-						justification={ arrowsJustification }
+						iconColor={ paginationIconColor }
+						iconCustomColor={ customPaginationIconColor }
+						alignment={ paginationAlignment }
+						justification={ paginationJustification }
 					/>
 				) }
+
+			<div className="unitone-slider__canvas-wrapper">
+				{ isDisplayArrows &&
+					( 'top' === arrowsAlignment ||
+						'top-inside' === arrowsAlignment ) && (
+						<Arrows
+							icons={
+								arrowsIconTypes.filter(
+									( arrowsIconType ) =>
+										arrowsIconType.name === arrowsIcon?.type
+								)?.[ 0 ]?.icons
+							}
+							iconStroke={ arrowsIcon?.stroke }
+							iconSize={ arrowsIcon?.size }
+							iconColor={ arrowsIconColor }
+							iconCustomColor={ customArrowsIconColor }
+							alignment={ arrowsAlignment }
+							justification={ arrowsJustification }
+						/>
+					) }
 
 				<div
 					className="unitone-slider__canvas"
@@ -121,6 +126,7 @@ export default function ( { attributes } ) {
 
 				{ isDisplayArrows &&
 					( 'bottom' === arrowsAlignment ||
+						'bottom-inside' === arrowsAlignment ||
 						'center' === arrowsAlignment ) && (
 						<Arrows
 							icons={
@@ -139,20 +145,23 @@ export default function ( { attributes } ) {
 					) }
 			</div>
 
-			{ isDisplayPagination && 'bottom' === paginationAlignment && (
-				<Pagination
-					icon={
-						paginationIconTypes.filter(
-							( paginationIconType ) =>
-								paginationIconType.name === paginationIcon?.type
-						)?.[ 0 ]?.name
-					}
-					iconColor={ paginationIconColor }
-					iconCustomColor={ customPaginationIconColor }
-					alignment={ paginationAlignment }
-					justification={ paginationJustification }
-				/>
-			) }
+			{ isDisplayPagination &&
+				( 'bottom' === paginationAlignment ||
+					'bottom-inside' === paginationAlignment ) && (
+					<Pagination
+						icon={
+							paginationIconTypes.filter(
+								( paginationIconType ) =>
+									paginationIconType.name ===
+									paginationIcon?.type
+							)?.[ 0 ]?.name
+						}
+						iconColor={ paginationIconColor }
+						iconCustomColor={ customPaginationIconColor }
+						alignment={ paginationAlignment }
+						justification={ paginationJustification }
+					/>
+				) }
 		</div>
 	);
 }

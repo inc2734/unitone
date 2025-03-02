@@ -29,8 +29,10 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	alignBottom,
+	alignBottomExpanded,
 	alignCenter,
 	alignTop,
+	alignTopExpanded,
 } from '../../js/editor/hooks/icons';
 
 import { arrowsIconTypes, paginationIconTypes } from './components';
@@ -40,8 +42,13 @@ import metadata from './block.json';
 const alignmentOptions = [
 	{
 		value: 'top',
-		icon: alignTop,
+		icon: alignTopExpanded,
 		label: __( 'Align items top', 'unitone' ),
+	},
+	{
+		value: 'top-inside',
+		icon: alignTop,
+		label: __( 'Align items top (Inside)', 'unitone' ),
 	},
 	{
 		value: 'center',
@@ -49,8 +56,13 @@ const alignmentOptions = [
 		label: __( 'Align items center', 'unitone' ),
 	},
 	{
-		value: 'bottom',
+		value: 'bottom-inside',
 		icon: alignBottom,
+		label: __( 'Align items bottom (Inside)', 'unitone' ),
+	},
+	{
+		value: 'bottom',
+		icon: alignBottomExpanded,
 		label: __( 'Align items bottom', 'unitone' ),
 	},
 ];
@@ -407,7 +419,7 @@ export const SettingsInspectorControls = ( {
 										metadata.attributes.arrowsIcon.default?.type;
 
 									setAttributes( {
-										arrowsIcon,
+										arrowsIcon: { ...arrowsIcon },
 									} );
 								} }
 							>
@@ -556,7 +568,7 @@ export const SettingsInspectorControls = ( {
 												metadata.attributes.arrowsIcon.default.stroke;
 
 											setAttributes( {
-												arrowsIcon,
+												arrowsIcon: { ...arrowsIcon },
 											} );
 										} }
 									>
@@ -599,7 +611,7 @@ export const SettingsInspectorControls = ( {
 												metadata.attributes.arrowsIcon.default.size;
 
 											setAttributes( {
-												arrowsIcon,
+												arrowsIcon: { ...arrowsIcon },
 											} );
 										} }
 									>

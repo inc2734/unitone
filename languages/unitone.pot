@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 17.0.1\n"
+"Project-Id-Version: unitone 18.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-26T06:31:55+00:00\n"
+"POT-Creation-Date: 2025-03-02T11:04:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: inc/block-categories.php:31
 #: inc/block-categories.php:42
 #: inc/block-categories.php:53
-#: inc/block-styles.php:104
+#: inc/block-styles.php:112
 #: dist/js/editor/editor.js:13
 msgid "unitone"
 msgstr ""
@@ -377,6 +377,7 @@ msgid "Page Header (Wide) for Single Posts"
 msgstr ""
 
 #: inc/block-styles.php:16
+#: inc/block-styles.php:40
 msgid "Text"
 msgstr ""
 
@@ -388,53 +389,53 @@ msgstr ""
 msgid "Outline"
 msgstr ""
 
-#: inc/block-styles.php:40
-#: inc/block-styles.php:128
+#: inc/block-styles.php:48
+#: inc/block-styles.php:136
 #: dist/js/editor/editor.js:10
 msgid "Underline"
 msgstr ""
 
-#: inc/block-styles.php:48
-#: inc/block-styles.php:152
+#: inc/block-styles.php:56
+#: inc/block-styles.php:160
 #: dist/js/editor/editor.js:10
 msgid "Bordered"
 msgstr ""
 
-#: inc/block-styles.php:56
+#: inc/block-styles.php:64
 #: dist/js/editor/editor.js:10
 msgid "Stripe"
 msgstr ""
 
-#: inc/block-styles.php:64
+#: inc/block-styles.php:72
 msgid "Block link"
 msgstr ""
 
-#: inc/block-styles.php:72
+#: inc/block-styles.php:80
 msgid "Block link (Underline)"
 msgstr ""
 
-#: inc/block-styles.php:80
-#: inc/block-styles.php:96
+#: inc/block-styles.php:88
+#: inc/block-styles.php:104
 msgid "Block link (Bordered)"
 msgstr ""
 
-#: inc/block-styles.php:88
+#: inc/block-styles.php:96
 msgid "Block link (Stripe)"
 msgstr ""
 
-#: inc/block-styles.php:112
+#: inc/block-styles.php:120
 msgid "unitone (Accordion)"
 msgstr ""
 
-#: inc/block-styles.php:120
+#: inc/block-styles.php:128
 msgid "Cover"
 msgstr ""
 
-#: inc/block-styles.php:136
+#: inc/block-styles.php:144
 msgid "Vertical fill"
 msgstr ""
 
-#: inc/block-styles.php:144
+#: inc/block-styles.php:152
 msgid "Vertical line"
 msgstr ""
 
@@ -2242,8 +2243,16 @@ msgid "Align items top"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+msgid "Align items top (Inside)"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Align items center"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Align items bottom (Inside)"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -2992,11 +3001,11 @@ msgid "Generate wireframe"
 msgstr ""
 
 #: dist/js/editor/editor.js:14
-msgid "Tablet"
+msgid "Insert wireframe"
 msgstr ""
 
 #: dist/js/editor/editor.js:14
-msgid "Insert wireframe"
+msgid "Tablet"
 msgstr ""
 
 #: dist/variations/variations.js:1

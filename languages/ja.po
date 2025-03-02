@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-02-26T06:31:55+00:00\n"
-"PO-Revision-Date: 2025-02-26 15:32+0900\n"
+"POT-Creation-Date: 2025-03-02T11:04:01+00:00\n"
+"PO-Revision-Date: 2025-03-02 20:05+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css inc/block-categories.php:20 inc/block-categories.php:31
 #: inc/block-categories.php:42 inc/block-categories.php:53
-#: inc/block-styles.php:104 dist/js/editor/editor.js:13
+#: inc/block-styles.php:112 dist/js/editor/editor.js:13
 msgid "unitone"
 msgstr "unitone"
 
@@ -370,7 +370,7 @@ msgstr "個別投稿のページヘッダー（スリム）"
 msgid "Page Header (Wide) for Single Posts"
 msgstr "個別投稿のページヘッダー（幅広）"
 
-#: inc/block-styles.php:16
+#: inc/block-styles.php:16 inc/block-styles.php:40
 msgid "Text"
 msgstr "テキスト"
 
@@ -382,47 +382,47 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:40 inc/block-styles.php:128 dist/js/editor/editor.js:10
+#: inc/block-styles.php:48 inc/block-styles.php:136 dist/js/editor/editor.js:10
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: inc/block-styles.php:48 inc/block-styles.php:152 dist/js/editor/editor.js:10
+#: inc/block-styles.php:56 inc/block-styles.php:160 dist/js/editor/editor.js:10
 msgid "Bordered"
 msgstr "ボーダー"
 
-#: inc/block-styles.php:56 dist/js/editor/editor.js:10
+#: inc/block-styles.php:64 dist/js/editor/editor.js:10
 msgid "Stripe"
 msgstr "ストライプ"
 
-#: inc/block-styles.php:64
+#: inc/block-styles.php:72
 msgid "Block link"
 msgstr "ブロックリンク"
 
-#: inc/block-styles.php:72
+#: inc/block-styles.php:80
 msgid "Block link (Underline)"
 msgstr "ブロックリンク（アンダーライン）"
 
-#: inc/block-styles.php:80 inc/block-styles.php:96
+#: inc/block-styles.php:88 inc/block-styles.php:104
 msgid "Block link (Bordered)"
 msgstr "ブロックリンク（ボーダー）"
 
-#: inc/block-styles.php:88
+#: inc/block-styles.php:96
 msgid "Block link (Stripe)"
 msgstr "ブロックリンク（ストライプ）"
 
-#: inc/block-styles.php:112
+#: inc/block-styles.php:120
 msgid "unitone (Accordion)"
 msgstr "unitone（アコーディオン）"
 
-#: inc/block-styles.php:120
+#: inc/block-styles.php:128
 msgid "Cover"
 msgstr "カバー"
 
-#: inc/block-styles.php:136
+#: inc/block-styles.php:144
 msgid "Vertical fill"
 msgstr "縦塗りつぶし"
 
-#: inc/block-styles.php:144
+#: inc/block-styles.php:152
 msgid "Vertical line"
 msgstr "縦線"
 
@@ -2192,9 +2192,17 @@ msgstr "プログレスバー"
 msgid "Align items top"
 msgstr "コンテンツを上揃え"
 
+#: dist/blocks/slider/index.js:1
+msgid "Align items top (Inside)"
+msgstr "コンテンツを上揃え（内側）"
+
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Align items center"
 msgstr "コンテンツを中央揃え"
+
+#: dist/blocks/slider/index.js:1
+msgid "Align items bottom (Inside)"
+msgstr "コンテンツを下揃え（内側）"
 
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Align items bottom"
@@ -2959,12 +2967,12 @@ msgid "Generate wireframe"
 msgstr "ワイヤーフレームを生成"
 
 #: dist/js/editor/editor.js:14
-msgid "Tablet"
-msgstr "タブレット"
-
-#: dist/js/editor/editor.js:14
 msgid "Insert wireframe"
 msgstr "ワイヤーフレームを挿入"
+
+#: dist/js/editor/editor.js:14
+msgid "Tablet"
+msgstr "タブレット"
 
 #: dist/variations/variations.js:1
 msgid "Post to X"

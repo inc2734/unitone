@@ -402,15 +402,14 @@ export const SettingsInspectorControls = ( {
 								}
 								isShownByDefault
 								label={ __( 'Arrows icon', 'unitone' ) }
-								onDeselect={ () =>
+								onDeselect={ () => {
+									arrowsIcon.type =
+										metadata.attributes.arrowsIcon.default?.type;
+
 									setAttributes( {
-										arrowsIcon: {
-											...arrowsIcon,
-											type: metadata.attributes.arrowsIcon
-												.default?.type,
-										},
-									} )
-								}
+										arrowsIcon,
+									} );
+								} }
 							>
 								<BaseControl
 									__nextHasNoMarginBottom
@@ -435,11 +434,7 @@ export const SettingsInspectorControls = ( {
 															setAttributes( {
 																arrowsIcon: {
 																	...arrowsIcon,
-																	type:
-																		arrowsIconType.name ===
-																		arrowsIcon?.type
-																			? ''
-																			: arrowsIconType.name,
+																	type: arrowsIconType.name,
 																},
 															} )
 														}
@@ -469,7 +464,7 @@ export const SettingsInspectorControls = ( {
 								</BaseControl>
 							</ToolsPanelItem>
 
-							{ arrowsIcon && (
+							{ !! arrowsIcon?.type && (
 								<>
 									<ToolsPanelItem
 										hasValue={ () =>
@@ -556,16 +551,14 @@ export const SettingsInspectorControls = ( {
 											'Arrows icon line thickness',
 											'unitone'
 										) }
-										onDeselect={ () =>
+										onDeselect={ () => {
+											arrowsIcon.stroke =
+												metadata.attributes.arrowsIcon.default.stroke;
+
 											setAttributes( {
-												arrowsIcon: {
-													...arrowsIcon,
-													stroke: metadata.attributes
-														.arrowsIcon.default
-														.stroke,
-												},
-											} )
-										}
+												arrowsIcon,
+											} );
+										} }
 									>
 										<RangeControl
 											__nextHasNoMarginBottom
@@ -601,16 +594,14 @@ export const SettingsInspectorControls = ( {
 											'Arrows icon size',
 											'unitone'
 										) }
-										onDeselect={ () =>
+										onDeselect={ () => {
+											arrowsIcon.size =
+												metadata.attributes.arrowsIcon.default.size;
+
 											setAttributes( {
-												arrowsIcon: {
-													...arrowsIcon,
-													size: metadata.attributes
-														.arrowsIcon.default
-														.size,
-												},
-											} )
-										}
+												arrowsIcon,
+											} );
+										} }
 									>
 										<RangeControl
 											__nextHasNoMarginBottom

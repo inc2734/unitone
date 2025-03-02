@@ -22,7 +22,7 @@
 		"arrowsIcon": {
 			"type": "object",
 			"default": {
-				"type": "",
+				"type": "chevron",
 				"stroke": 1.5,
 				"size": 16
 			}

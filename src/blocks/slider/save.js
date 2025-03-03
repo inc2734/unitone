@@ -15,15 +15,11 @@ export default function ( { attributes } ) {
 		arrowsAlignment,
 		arrowsJustification,
 		arrowsIcon,
-		arrowsIconColor,
-		customArrowsIconColor,
 		hideOutside,
 		pagination,
 		paginationAlignment,
 		paginationJustification,
 		paginationIcon,
-		paginationIconColor,
-		customPaginationIconColor,
 		slideWidth,
 		autoplay,
 		autoplayDelay,
@@ -66,8 +62,8 @@ export default function ( { attributes } ) {
 									paginationIcon?.type
 							)?.[ 0 ]?.name
 						}
-						iconColor={ paginationIconColor }
-						iconCustomColor={ customPaginationIconColor }
+						iconColor={ paginationIcon?.color }
+						iconCustomColor={ paginationIcon?.customColor }
 						alignment={ paginationAlignment }
 						justification={ paginationJustification }
 					/>
@@ -86,8 +82,12 @@ export default function ( { attributes } ) {
 							}
 							iconStroke={ arrowsIcon?.stroke }
 							iconSize={ arrowsIcon?.size }
-							iconColor={ arrowsIconColor }
-							iconCustomColor={ customArrowsIconColor }
+							iconColor={ arrowsIcon?.color }
+							iconCustomColor={ arrowsIcon?.customColor }
+							iconBackgroundColor={ arrowsIcon?.backgroundColor }
+							iconCustomBackgroundColor={
+								arrowsIcon?.customBackgroundColor
+							}
 							alignment={ arrowsAlignment }
 							justification={ arrowsJustification }
 						/>
@@ -137,8 +137,12 @@ export default function ( { attributes } ) {
 							}
 							iconStroke={ arrowsIcon?.stroke }
 							iconSize={ arrowsIcon?.size }
-							iconColor={ arrowsIconColor }
-							iconCustomColor={ customArrowsIconColor }
+							iconColor={ arrowsIcon?.color }
+							iconCustomColor={ arrowsIcon?.customColor }
+							iconBackgroundColor={ arrowsIcon?.backgroundColor }
+							iconCustomBackgroundColor={
+								arrowsIcon?.customBackgroundColor
+							}
 							alignment={ arrowsAlignment }
 							justification={ arrowsJustification }
 						/>
@@ -156,8 +160,8 @@ export default function ( { attributes } ) {
 									paginationIcon?.type
 							)?.[ 0 ]?.name
 						}
-						iconColor={ paginationIconColor }
-						iconCustomColor={ customPaginationIconColor }
+						iconColor={ paginationIcon?.color }
+						iconCustomColor={ paginationIcon?.customColor }
 						alignment={ paginationAlignment }
 						justification={ paginationJustification }
 					/>

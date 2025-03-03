@@ -22,6 +22,18 @@ export default [
 					type: '',
 				},
 			},
+			arrowsIconColor: {
+				type: 'string',
+			},
+			customArrowsIconColor: {
+				type: 'string',
+			},
+			paginationIconColor: {
+				type: 'string',
+			},
+			customPaginationIconColor: {
+				type: 'string',
+			},
 		},
 
 		supports: {
@@ -36,6 +48,13 @@ export default [
 						arrowsIcon: {
 							...attributes.arrowsIcon,
 							type: attributes?.arrowsIcon?.type || 'chevron',
+							color: attributes?.arrowsIconColor,
+							customColor: attributes?.customArrowsIconColor,
+						},
+						paginationIcon: {
+							...attributes.paginationIcon,
+							color: attributes?.paginationIconColor,
+							customColor: attributes?.customPaginationIconColor,
 						},
 					},
 					innerBlocks,
@@ -209,6 +228,18 @@ export default [
 					type: '',
 				},
 			},
+			arrowsIconColor: {
+				type: 'string',
+			},
+			customArrowsIconColor: {
+				type: 'string',
+			},
+			paginationIconColor: {
+				type: 'string',
+			},
+			customPaginationIconColor: {
+				type: 'string',
+			},
 		},
 
 		supports: {
@@ -223,6 +254,13 @@ export default [
 						arrowsIcon: {
 							...attributes.arrowsIcon,
 							type: attributes?.arrowsIcon?.type || 'chevron',
+							color: attributes?.arrowsIconColor,
+							customColor: attributes?.customArrowsIconColor,
+						},
+						paginationIcon: {
+							...attributes.paginationIcon,
+							color: attributes?.paginationIconColor,
+							customColor: attributes?.customPaginationIconColor,
 						},
 					},
 					innerBlocks,
@@ -335,6 +373,18 @@ export default [
 					type: '',
 				},
 			},
+			arrowsIconColor: {
+				type: 'string',
+			},
+			customArrowsIconColor: {
+				type: 'string',
+			},
+			paginationIconColor: {
+				type: 'string',
+			},
+			customPaginationIconColor: {
+				type: 'string',
+			},
 		},
 
 		supports: {
@@ -349,6 +399,13 @@ export default [
 						arrowsIcon: {
 							...attributes.arrowsIcon,
 							type: attributes?.arrowsIcon?.type || 'chevron',
+							color: attributes?.arrowsIconColor,
+							customColor: attributes?.customArrowsIconColor,
+						},
+						paginationIcon: {
+							...attributes.paginationIcon,
+							color: attributes?.paginationIconColor,
+							customColor: attributes?.customPaginationIconColor,
 						},
 					},
 					innerBlocks,
@@ -406,6 +463,18 @@ export default [
 					type: '',
 				},
 			},
+			arrowsIconColor: {
+				type: 'string',
+			},
+			customArrowsIconColor: {
+				type: 'string',
+			},
+			paginationIconColor: {
+				type: 'string',
+			},
+			customPaginationIconColor: {
+				type: 'string',
+			},
 		},
 
 		supports: {
@@ -420,6 +489,13 @@ export default [
 						arrowsIcon: {
 							...attributes.arrowsIcon,
 							type: attributes?.arrowsIcon?.type || 'chevron',
+							color: attributes?.arrowsIconColor,
+							customColor: attributes?.customArrowsIconColor,
+						},
+						paginationIcon: {
+							...attributes.paginationIcon,
+							color: attributes?.paginationIconColor,
+							customColor: attributes?.customPaginationIconColor,
 						},
 					},
 					innerBlocks,

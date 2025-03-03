@@ -57,6 +57,8 @@ export const Arrows = ( {
 	iconSize,
 	iconColor,
 	iconCustomColor,
+	iconBackgroundColor,
+	iconCustomBackgroundColor,
 	alignment,
 	justification,
 } ) => {
@@ -64,6 +66,8 @@ export const Arrows = ( {
 		[ `swiper-buttons--alignment:${ alignment }` ]: !! alignment,
 		[ `swiper-buttons--justification:${ justification }` ]:
 			!! justification,
+		'has-background-color':
+			!! iconBackgroundColor || !! iconCustomBackgroundColor,
 	} );
 
 	const styles = {};
@@ -73,6 +77,14 @@ export const Arrows = ( {
 		] = `var(--wp--preset--color--${ iconColor })`;
 	} else if ( !! iconCustomColor ) {
 		styles[ '--swiper-navigation-color' ] = iconCustomColor;
+	}
+	if ( !! iconBackgroundColor ) {
+		styles[
+			'--swiper-navigation-background-color'
+		] = `var(--wp--preset--color--${ iconBackgroundColor })`;
+	} else if ( !! iconCustomBackgroundColor ) {
+		styles[ '--swiper-navigation-background-color' ] =
+			iconCustomBackgroundColor;
 	}
 
 	return (

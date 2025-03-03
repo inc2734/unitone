@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"textdomain": "unitone",
-	"version": "18.0.0",
+	"version": "18.1.0",
 	"name": "unitone/slider",
 	"title": "Slider",
 	"description": "This block displays children scrolling horizontally.",
@@ -27,12 +27,6 @@
 				"size": 16
 			}
 		},
-		"arrowsIconColor": {
-			"type": "string"
-		},
-		"customArrowsIconColor": {
-			"type": "string"
-		},
 		"hideOutside": {
 			"type": "boolean",
 			"default": false
@@ -54,12 +48,6 @@
 			"default": {
 				"type": "bullets"
 			}
-		},
-		"paginationIconColor": {
-			"type": "string"
-		},
-		"customPaginationIconColor": {
-			"type": "string"
 		},
 		"slideWidth": {
 			"type": "string",

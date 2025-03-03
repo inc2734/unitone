@@ -68,15 +68,11 @@ export default function ( props ) {
 		arrowsAlignment,
 		arrowsJustification,
 		arrowsIcon,
-		arrowsIconColor,
-		customArrowsIconColor,
 		hideOutside,
 		pagination,
 		paginationAlignment,
 		paginationJustification,
 		paginationIcon,
-		paginationIconColor,
-		customPaginationIconColor,
 		slideWidth,
 		autoplay,
 		autoplayDelay,
@@ -245,8 +241,8 @@ export default function ( props ) {
 										paginationIcon?.type
 								)?.[ 0 ]?.name
 							}
-							iconColor={ paginationIconColor }
-							iconCustomColor={ customPaginationIconColor }
+							iconColor={ paginationIcon?.color }
+							iconCustomColor={ paginationIcon?.customColor }
 							alignment={ paginationAlignment }
 							justification={ paginationJustification }
 						/>
@@ -266,8 +262,14 @@ export default function ( props ) {
 								}
 								iconStroke={ arrowsIcon?.stroke }
 								iconSize={ arrowsIcon?.size }
-								iconColor={ arrowsIconColor }
-								iconCustomColor={ customArrowsIconColor }
+								iconColor={ arrowsIcon?.color }
+								iconCustomColor={ arrowsIcon?.customColor }
+								iconBackgroundColor={
+									arrowsIcon?.backgroundColor
+								}
+								iconCustomBackgroundColor={
+									arrowsIcon?.customBackgroundColor
+								}
 								alignment={ arrowsAlignment }
 								justification={ arrowsJustification }
 							/>
@@ -304,8 +306,14 @@ export default function ( props ) {
 								}
 								iconStroke={ arrowsIcon?.stroke }
 								iconSize={ arrowsIcon?.size }
-								iconColor={ arrowsIconColor }
-								iconCustomColor={ customArrowsIconColor }
+								iconColor={ arrowsIcon?.color }
+								iconCustomColor={ arrowsIcon?.customColor }
+								iconBackgroundColor={
+									arrowsIcon?.backgroundColor
+								}
+								iconCustomBackgroundColor={
+									arrowsIcon?.customBackgroundColor
+								}
 								alignment={ arrowsAlignment }
 								justification={ arrowsJustification }
 							/>
@@ -324,8 +332,8 @@ export default function ( props ) {
 										paginationIcon?.type
 								)?.[ 0 ]?.name
 							}
-							iconColor={ paginationIconColor }
-							iconCustomColor={ customPaginationIconColor }
+							iconColor={ paginationIcon?.color }
+							iconCustomColor={ paginationIcon?.customColor }
 							alignment={ paginationAlignment }
 							justification={ paginationJustification }
 						/>

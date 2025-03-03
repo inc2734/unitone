@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-03-02T11:04:01+00:00\n"
-"PO-Revision-Date: 2025-03-02 20:05+0900\n"
+"POT-Creation-Date: 2025-03-03T07:01:36+00:00\n"
+"PO-Revision-Date: 2025-03-03 16:05+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2290,6 +2290,10 @@ msgstr "矢印のアイコン"
 #: dist/blocks/slider/index.js:1
 msgid "Arrows icon color"
 msgstr "矢印のアイコンの色"
+
+#: dist/blocks/slider/index.js:1
+msgid "Arrows icon background color"
+msgstr "矢印のアイコンの背景色"
 
 #: dist/blocks/slider/index.js:1
 msgid "Arrows icon line thickness"

@@ -1,3 +1,5 @@
+@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
+
 .wp-block-latest-posts {
 	display: flex;
 	flex-direction: column;
@@ -9,6 +11,8 @@
 
 	&__post-author,
 	&__post-date {
-		font-size: var(--wp--preset--font-size--unitone-xs);
+		--unitone--font-size: -2;
+
+		@include variables.typography();
 	}
 }

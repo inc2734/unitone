@@ -1,3 +1,5 @@
+@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
+
 .wp-block-rss {
 	display: flex;
 	flex-direction: column;
@@ -10,6 +12,8 @@
 	&__item-publish-date,
 	&__item-author,
 	&__item-excerpt {
-		font-size: var(--wp--preset--font-size--unitone-xs);
+		--unitone--font-size: -2;
+
+		@include variables.typography();
 	}
 }

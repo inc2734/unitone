@@ -1,4 +1,5 @@
 @use '../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
+@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
 
 .wp-block-quote {
 	@include text.abstract-text();
@@ -14,9 +15,11 @@
 
 	cite,
 	footer {
+		--unitone--font-size: -1;
+
+		@include variables.typography();
 		display: block;
 		color: currentColor;
-		font-size: var(--wp--preset--font-size--unitone-s);
 		font-style: normal;
 	}
 }

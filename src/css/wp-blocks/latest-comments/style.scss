@@ -1,3 +1,5 @@
+@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
+
 .wp-block-latest-comments {
 	list-style: none;
 	display: flex;
@@ -25,7 +27,9 @@
 
 	&__comment-date,
 	&__comment-excerpt {
-		font-size: var(--wp--preset--font-size--unitone-xs);
+		--unitone--font-size: -2;
+
+		@include variables.typography();
 	}
 
 	&__comment-excerpt p {

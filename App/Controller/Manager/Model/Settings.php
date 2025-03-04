@@ -343,7 +343,7 @@ class Settings {
 			}
 		}
 
-		$using_custom_templates = array_unique( $using_custom_templates );
+		$using_custom_templates = array_values( array_unique( $using_custom_templates ) );
 
 		wp_cache_set( $cache_key, $using_custom_templates );
 

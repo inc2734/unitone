@@ -1,4 +1,6 @@
 @use "sass:map";
+@use "sass:string";
+@use "sass:list";
 @use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
 
 $font-sizes: (
@@ -45,12 +47,33 @@ $font-sizes: (
 );
 
 @each $font-size in $font-sizes {
-	.has-#{ map.get($font-size, slug) }-font-size {
-		--unitone--font-size: #{ map.get($font-size, size) } !important;
-		--wp--preset--font-size--#{ map.get($font-size, slug) }: #{ variables.$font-size } !important;
+	$size: map.get($font-size, size);
+	$slug: map.get($font-size, slug);
+	$splited-slug: list.join(string.split(map.get($font-size, slug), '-'), '');
+	$non-hyphen-slug: #{ list.nth($splited-slug, 1) }-#{ list.nth($splited-slug, 2) }#{ list.nth($splited-slug, 3) };
+
+
+	.has-#{ $slug }-font-size {
+		--unitone--font-size: #{ $size } !important;
+		--wp--preset--font-size--#{ $slug }: #{ variables.$font-size } !important;
 
 		&[data-unitone-layout~="-fluid-typography"] {
-			--wp--preset--font-size--#{ map.get($font-size, slug) }: #{ variables.$fluid-font-size } !important;
+			--wp--preset--font-size--#{ $slug }: #{ variables.$fluid-font-size } !important;
 		}
+	}
+
+	// For WooCommerce
+	// @todo At WooCommerce 9.7, a hyphen isn't added after the number in the class/CSS vars for font size.
+	// @todo At WooCommerce 9.7, setting typography in product-price block does not give .has-{slug}-font-size.
+	.has-#{ $non-hyphen-slug }-font-size {
+		--unitone--font-size: #{ $size } !important;
+		--wp--preset--font-size--#{ $non-hyphen-slug }: #{ variables.$font-size } !important;
+
+		&[data-unitone-layout~="-fluid-typography"] {
+			--wp--preset--font-size--#{ $non-hyphen-slug }: #{ variables.$fluid-font-size } !important;
+		}
+	}
+	.wc-block-components-product-price {
+		--wp--preset--font-size--#{ $non-hyphen-slug }: calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - #{ $size }) * 1rem) !important;
 	}
 }

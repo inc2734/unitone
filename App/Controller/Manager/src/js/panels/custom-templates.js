@@ -7,6 +7,11 @@ import apiFetch from '@wordpress/api-fetch';
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 
+	const customTemplates = settings?.customTemplates ?? [];
+	const usingCustomTemplates = settings?.usingCustomTemplates ?? [];
+	const enabledCustomTemplates =
+		settings?.[ 'enabled-custom-templates' ] ?? [];
+
 	const saveSettings = () => {
 		setSettingsSaving( true );
 		apiFetch( {
@@ -38,11 +43,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			setSettingsSaving( false );
 		} );
 	};
-
-	const customTemplates = settings?.customTemplates ?? [];
-	const usingCustomTemplates = settings?.usingCustomTemplates ?? [];
-	const enabledCustomTemplates =
-		settings?.[ 'enabled-custom-templates' ] ?? [];
 
 	// @todo Wouldn't it be better to get the post type information and generate the array dynamically?
 	const customTemplatesForPosts = customTemplates.filter(
@@ -156,9 +156,14 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 														label={
 															customTemplate.title
 														}
-														checked={ enabledCustomTemplates.includes(
-															customTemplate.name
-														) }
+														checked={
+															enabledCustomTemplates.includes(
+																customTemplate.name
+															) ||
+															usingCustomTemplates.includes(
+																customTemplate.name
+															)
+														}
 														disabled={ usingCustomTemplates.includes(
 															customTemplate.name
 														) }

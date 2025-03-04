@@ -35,7 +35,13 @@ add_filter( 'get_block_templates', 'unitone_hidden_front_page_template_on_blog' 
  * @return array
  */
 function unitone_hidden_custom_templates( $query_result ) {
-	$enabled_custom_templates  = Manager::get_setting( 'enabled-custom-templates' );
+	$enabled_custom_templates = array_unique(
+		array_merge(
+			Manager::get_setting( 'enabled-custom-templates' ),
+			Manager::get_using_custom_templates()
+		)
+	);
+
 	$custom_templates          = Manager::get_custom_templates();
 	$disabled_custom_templates = array();
 

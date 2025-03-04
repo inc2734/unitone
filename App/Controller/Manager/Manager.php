@@ -682,6 +682,15 @@ class Manager {
 	}
 
 	/**
+	 * Return information about the custom templates provided by unitone.
+	 *
+	 * @return array Array of using custom template name.
+	 */
+	public static function get_using_custom_templates() {
+		return Settings::get_using_custom_templates();
+	}
+
+	/**
 	 * Converts a custom value to preset style value if one can be found.
 	 *
 	 * Returns value as-is if no match is found.

@@ -5,7 +5,7 @@
 		<div data-unitone-layout="gutters">
 			<div data-unitone-layout="container">
 				<div data-unitone-layout="stack">
-					<!-- wp:pattern {"slug":"unitone/template/page/page-header/default"} /-->
+					<!-- wp:pattern {"slug":"unitone/template/page/page-header/wide"} /-->
 
 					<!-- wp:unitone/with-sidebar {"sidebarWidth": "300px","contentMinWidth":"600px","unitone":{"gap":"3"}} -->
 					<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--sidebar-width:300px;--unitone--content-min-width:600px">

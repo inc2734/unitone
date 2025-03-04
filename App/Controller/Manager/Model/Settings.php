@@ -32,7 +32,7 @@ class Settings {
 		'h5-size'                   => '0',
 		'h6-size'                   => '0',
 		'accent-color'              => '#090a0b', // settings.color.palette > unitone-accent.
-		'enabled-custom-templates'  => array(),
+		'enabled-custom-templates'  => array( 'template-page-header-footer' ),
 		'wp-oembed-blog-card-style' => 'default',
 		'font-family'               => null, // Deprecated.
 		'background-color'          => null, // Deprecated.
@@ -299,10 +299,6 @@ class Settings {
 			$options
 		);
 
-		if ( empty( $settings['enabled-custom-templates'] ) ) {
-			$settings['enabled-custom-templates'] = static::get_using_custom_templates();
-		}
-
 		wp_cache_set( self::SETTINGS_NAME, $settings );
 
 		return $settings;
@@ -321,7 +317,7 @@ class Settings {
 		}
 
 		$custom_templates       = static::get_custom_templates();
-		$using_custom_templates = array();
+		$using_custom_templates = static::get_default_settings()['enabled-custom-templates'];
 
 		foreach ( $custom_templates as $template ) {
 			// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_query
@@ -329,7 +325,7 @@ class Settings {
 				array(
 					'no_found_rows'  => true,
 					'posts_per_page' => 1,
-					'post_type'      => array( 'post', 'page', 'single-product' ),
+					'post_type'      => array( 'post', 'page', 'product' ),
 					'post_status'    => array( 'publish', 'future', 'private' ),
 					'meta_query'     => array(
 						array(
@@ -433,17 +429,19 @@ class Settings {
 	protected static function _array_override_recursive( array $array_1, array $array_2 ) {
 		$result = array();
 
-		if ( empty( $array_1 ) && ! empty( $array_2 ) ) {
-			return $array_2;
-		}
-
 		foreach ( $array_1 as $key => $value ) {
 			if ( array_key_exists( $key, $array_2 ) ) {
 				if ( is_array( $value ) && is_array( $array_2[ $key ] ) ) {
-					$result[ $key ] = static::_array_override_recursive( $value, $array_2[ $key ] );
+					if ( array_keys( $value ) === range( 0, count( $value ) - 1 ) ) {
+						$result[ $key ] = array_values( array_unique( array_merge( $value, $array_2[ $key ] ) ) );
+					} else {
+						$result[ $key ] = static::_array_override_recursive( $value, $array_2[ $key ] );
+					}
 				} else {
 					$result[ $key ] = $array_2[ $key ];
 				}
+			} else {
+				$result[ $key ] = $value;
 			}
 		}
 

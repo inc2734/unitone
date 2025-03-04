@@ -1,4 +1,10 @@
 .unitone-wireframe-generator-modal {
+	.components-modal__header-heading {
+		display: flex;
+		gap: var(--unitone--s-2);
+		align-items: center;
+	}
+
 	.components-modal__header + div {
 		height: 100%;
 		display: grid;
@@ -46,5 +52,17 @@
 	iframe {
 		position: static !important;
 		max-height: none !important;
+	}
+}
+
+.unitone-wireframe-generator-help-popover {
+	&__content {
+		> :first-child {
+			margin-top: 0;
+		}
+
+		> :last-child {
+			margin-bottom: 0;
+		}
 	}
 }

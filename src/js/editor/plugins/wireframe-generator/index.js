@@ -13,9 +13,9 @@ import {
 } from '@wordpress/element';
 
 import { registerPlugin } from '@wordpress/plugins';
-import { Button, Modal } from '@wordpress/components';
+import { Button, Modal, Popover } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { Icon, desktop, tablet, mobile } from '@wordpress/icons';
+import { Icon, desktop, tablet, mobile, help } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import icon from './icon';
@@ -23,6 +23,7 @@ import usePatternsState from '../../../../blocks/pattern-inserter/inserter/hooks
 
 const PluginSidebarExample = () => {
 	const [ isOpen, setIsOpen ] = useState( false );
+	const [ isOpenHelpPopover, setIsOpenHelpPopover ] = useState( false );
 	const [ previewPatterns, setPreviewPatterns ] = useState( [] );
 	const [ previewMode, setPreviewMode ] = useState( 'desktop' );
 
@@ -74,6 +75,12 @@ const PluginSidebarExample = () => {
 	const heroPatterns = useMemo( () => {
 		return shownPatterns.filter( ( pattern ) =>
 			pattern.categories.includes( 'unitone-heros' )
+		);
+	}, [ shownPatterns ] );
+
+	const pageHeaderPatterns = useMemo( () => {
+		return shownPatterns.filter( ( pattern ) =>
+			pattern.categories.includes( 'unitone-page-headers' )
 		);
 	}, [ shownPatterns ] );
 
@@ -185,7 +192,59 @@ const PluginSidebarExample = () => {
 			...shuffledSectionPatterns.flat().slice( 0, -1 ),
 			...[ lastPattern ],
 		] );
-	}, [ sectionPatterns, sectionColoredPatterns, queryPatterns ] );
+	}, [
+		heroPatterns,
+		sectionPatterns,
+		sectionColoredPatterns,
+		queryPatterns,
+	] );
+
+	const onClickGenerateForLowerLevel = useCallback( () => {
+		setPreviewPatterns( [] );
+		setPreviewMode( 'desktop' );
+
+		const shuffledSectionPatterns = [];
+
+		// At first, display one randomly from Page Header Patterns.
+		const pageHeaderPattern =
+			pageHeaderPatterns[
+				Math.floor( Math.random() * pageHeaderPatterns.length )
+			];
+
+		const loopCount = 3;
+
+		for ( let i = 0; i < loopCount; i++ ) {
+			shuffledSectionPatterns.push( [
+				sectionNoColoredPatterns[
+					Math.floor(
+						Math.random() * sectionNoColoredPatterns.length
+					)
+				],
+				sectionPatterns[
+					Math.floor( Math.random() * sectionPatterns.length )
+				],
+			] );
+		}
+
+		// Finally, choose one randomly from ctaPatterns or shuffledSectionPatterns.
+		const lastPattern =
+			Math.random() < 0.5
+				? ctaPatterns[
+						Math.floor( Math.random() * ctaPatterns.length )
+				  ]
+				: shuffledSectionPatterns.flat()[
+						Math.floor(
+							Math.random() *
+								shuffledSectionPatterns.flat().length
+						)
+				  ];
+
+		setPreviewPatterns( [
+			...[ pageHeaderPattern ],
+			...shuffledSectionPatterns.flat().slice( 0, -1 ),
+			...[ lastPattern ],
+		] );
+	}, [ pageHeaderPatterns, sectionPatterns, sectionColoredPatterns ] );
 
 	const cloneBlockWithNewClientId = ( block ) => {
 		return wp.blocks.createBlock(
@@ -207,6 +266,7 @@ const PluginSidebarExample = () => {
 		setPreviewPatterns( [] );
 		setPreviewMode( 'desktop' );
 		setIsOpen( false );
+		setIsOpenHelpPopover( false );
 	}, [ previewPatterns ] );
 
 	return (
@@ -215,31 +275,70 @@ const PluginSidebarExample = () => {
 
 			{ isOpen && (
 				<Modal
-					title={ __( 'Wireframe Generator', 'unitone' ) }
+					title={
+						<>
+							{ __( 'Wireframe Generator', 'unitone' ) }
+							<Button
+								icon={ help }
+								label={ __( 'Help' ) }
+								onClick={ () =>
+									setIsOpenHelpPopover( ! isOpenHelpPopover )
+								}
+							>
+								{ isOpenHelpPopover && (
+									<Popover
+										className="unitone-wireframe-generator-help-popover"
+										onClose={ () =>
+											setIsOpenHelpPopover( false )
+										}
+									>
+										<div
+											className="unitone-wireframe-generator-help-popover__content"
+											tabIndex="0"
+											style={ {
+												padding: '8px',
+												minWidth: '260px',
+											} }
+										>
+											<p>
+												{ __(
+													'Generates a wireframe using the unitone patterns. When inserted, images are replaced with dummy images.',
+													'unitone'
+												) }
+											</p>
+										</div>
+									</Popover>
+								) }
+							</Button>
+						</>
+					}
 					onRequestClose={ () => {
 						setPreviewPatterns( [] );
 						setPreviewMode( 'desktop' );
 						setIsOpen( false );
+						setIsOpenHelpPopover( false );
 					} }
 					isFullScreen
 					className="unitone-wireframe-generator-modal"
 				>
-					<p>
-						{ __(
-							'Generates a wireframe using the unitone patterns. When inserted, images are replaced with dummy images.',
-							'unitone'
-						) }
-					</p>
-
 					<div
 						style={ {
-							marginTop: 'var(--unitone--s-2)',
 							display: 'flex',
 							gap: 'var(--unitone--s-1)',
 						} }
 					>
-						<Button variant="primary" onClick={ onClickGenerate }>
-							{ __( 'Generate wireframe', 'unitone' ) }
+						<Button variant="secondary" onClick={ onClickGenerate }>
+							{ __( 'Generate for homepage', 'unitone' ) }
+						</Button>
+
+						<Button
+							variant="secondary"
+							onClick={ onClickGenerateForLowerLevel }
+						>
+							{ __(
+								'Generate for lower-level pages',
+								'unitone'
+							) }
 						</Button>
 
 						{ Array.isArray( previewPatterns ) &&
@@ -261,6 +360,7 @@ const PluginSidebarExample = () => {
 										display: 'flex',
 										justifyContent: 'center',
 										gap: 'var(--unitone--s-2)',
+										marginTop: 'var(--unitone--s-2)',
 										marginBottom: 'var(--unitone--s-2)',
 									} }
 								>

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-03-03T07:01:36+00:00\n"
-"PO-Revision-Date: 2025-03-03 16:05+0900\n"
+"POT-Creation-Date: 2025-03-04T02:19:18+00:00\n"
+"PO-Revision-Date: 2025-03-04 11:20+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2967,8 +2967,12 @@ msgstr ""
 "画像に置き換わります。"
 
 #: dist/js/editor/editor.js:14
-msgid "Generate wireframe"
-msgstr "ワイヤーフレームを生成"
+msgid "Generate for homepage"
+msgstr "ホームページ用を生成"
+
+#: dist/js/editor/editor.js:14
+msgid "Generate for lower-level pages"
+msgstr "下層ページ用を生成"
 
 #: dist/js/editor/editor.js:14
 msgid "Insert wireframe"

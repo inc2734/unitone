@@ -187,11 +187,13 @@ const PluginSidebarExample = () => {
 						)
 				  ];
 
-		setPreviewPatterns( [
-			...[ heroPattern ],
-			...shuffledSectionPatterns.flat().slice( 0, -1 ),
-			...[ lastPattern ],
-		] );
+		setPreviewPatterns(
+			[
+				...[ heroPattern ],
+				...shuffledSectionPatterns.flat().slice( 0, -1 ),
+				...[ lastPattern ],
+			].filter( Boolean )
+		);
 	}, [
 		heroPatterns,
 		sectionPatterns,
@@ -239,11 +241,13 @@ const PluginSidebarExample = () => {
 						)
 				  ];
 
-		setPreviewPatterns( [
-			...[ pageHeaderPattern ],
-			...shuffledSectionPatterns.flat().slice( 0, -1 ),
-			...[ lastPattern ],
-		] );
+		setPreviewPatterns(
+			[
+				...[ pageHeaderPattern ],
+				...shuffledSectionPatterns.flat().slice( 0, -1 ),
+				...[ lastPattern ],
+			].filter( Boolean )
+		);
 	}, [ pageHeaderPatterns, sectionPatterns, sectionColoredPatterns ] );
 
 	const cloneBlockWithNewClientId = ( block ) => {

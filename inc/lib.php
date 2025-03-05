@@ -40,3 +40,39 @@ function unitone_array_get( array $vars, $format ) {
 	}
 	return $vars;
 }
+
+/**
+ * Recursively replaces values in an array with values from multiple arrays.
+ *
+ * - If multiple arrays contain the same key:
+ *   - If the values are associative arrays, they are merged recursively.
+ *   - If the values are indexed arrays (lists), the last array's list fully replaces earlier lists.
+ *   - Otherwise, the last non-array value overrides earlier values.
+ * - Keys that exist only in earlier arrays are **removed**.
+ *
+ * @param array ...$arrays The arrays to be processed.
+ * @return array The modified array where later arrays fully replace earlier ones.
+ */
+function unitone_array_override_replace_recursive( array ...$arrays ) {
+	$result = array_shift( $arrays ) ?? array();
+
+	foreach ( $arrays as $array ) {
+		foreach ( $array as $key => $value ) {
+			if ( array_key_exists( $key, $result ) ) {
+				if ( is_array( $result[ $key ] ) && is_array( $value ) ) {
+					if ( array_keys( $result[ $key ] ) === range( 0, count( $result[ $key ] ) - 1 ) ) {
+						$result[ $key ] = $value;
+					} else {
+						$result[ $key ] = unitone_array_override_replace_recursive( $result[ $key ], $value );
+					}
+				} else {
+					$result[ $key ] = $value;
+				}
+			} else {
+				$result[ $key ] = $value;
+			}
+		}
+	}
+
+	return $result;
+}

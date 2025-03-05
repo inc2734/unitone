@@ -28,16 +28,24 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 	const resetSettings = () => {
 		setSettingsSaving( true );
+
+		const newEnabledCustomTemplates = [
+			...new Set( [
+				...defaultSettings[ 'enabled-custom-templates' ],
+				...usingCustomTemplates,
+			] ),
+		];
+
 		setSettings( {
 			...settings,
-			'enabled-custom-templates':
-				defaultSettings[ 'enabled-custom-templates' ],
+			'enabled-custom-templates': newEnabledCustomTemplates,
 		} );
+
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
 			data: {
-				'enabled-custom-templates': null,
+				'enabled-custom-templates': newEnabledCustomTemplates,
 			},
 		} ).then( () => {
 			setSettingsSaving( false );
@@ -73,7 +81,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	return (
 		<div
 			data-unitone-layout="decorator -padding:2"
-			style={ { '--unitone--background-color': 'white' } }
+			style={ {
+				'--unitone--background-color': 'white',
+				'--unitone--color': '#111',
+			} }
 		>
 			<div data-unitone-layout="stack -gap:2">
 				<div data-unitone-layout="stack -gap:-1">
@@ -156,14 +167,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 														label={
 															customTemplate.title
 														}
-														checked={
-															enabledCustomTemplates.includes(
-																customTemplate.name
-															) ||
-															usingCustomTemplates.includes(
-																customTemplate.name
-															)
-														}
+														checked={ enabledCustomTemplates.includes(
+															customTemplate.name
+														) }
 														disabled={ usingCustomTemplates.includes(
 															customTemplate.name
 														) }

@@ -67,7 +67,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	return (
 		<div
 			data-unitone-layout="decorator -padding:2"
-			style={ { '--unitone--background-color': 'white' } }
+			style={ {
+				'--unitone--background-color': 'white',
+				'--unitone--color': '#111',
+			} }
 		>
 			<div data-unitone-layout="stack -gap:2">
 				<h2>{ __( 'Layout', 'unitone' ) }</h2>

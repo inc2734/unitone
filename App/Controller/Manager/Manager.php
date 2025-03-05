@@ -274,39 +274,30 @@ class Manager {
 					// The new settings are sent only in difference.
 					// Therefore, there are merged with the stored settings and saved as new settings.
 
-					$new_settings = array_replace_recursive(
-						$saved_settings,
-						array_filter(
-							$settings,
-							function ( $key ) {
-								return ! in_array( $key, array( 'styles', 'settings' ), true );
-							},
-							ARRAY_FILTER_USE_KEY
-						),
-					);
 					$new_settings =
-						array_replace_recursive(
+						unitone_array_override_replace_recursive(
 							$default_settings,
-							$new_settings
+							$saved_settings,
+							array_filter(
+								$settings,
+								function ( $key ) {
+									return ! in_array( $key, array( 'styles', 'settings' ), true );
+								},
+								ARRAY_FILTER_USE_KEY
+							)
 						);
 
-					$new_global_styles = array_replace_recursive(
+					$new_global_styles = unitone_array_override_replace_recursive(
+						$default_global_styles,
 						$saved_global_styles,
 						array( 'styles' => $settings['styles'] ?? array() ),
 						array( 'settings' => $settings['settings'] ?? array() )
 					);
-					$new_global_styles = array_replace_recursive(
-						$default_global_styles,
-						$new_global_styles
-					);
 
-					$new_options = array_replace_recursive(
-						$saved_options,
-						$settings,
-					);
-					$new_options = array_replace_recursive(
+					$new_options = unitone_array_override_replace_recursive(
 						$default_options,
-						$new_options
+						$saved_options,
+						$settings
 					);
 
 					Settings::update_settings( static::_convert_preset_value( $new_settings ) );
@@ -496,7 +487,7 @@ class Manager {
 			return;
 		}
 
-		$default_settings = array_replace_recursive(
+		$default_settings = unitone_array_override_replace_recursive(
 			Settings::get_default_settings(),
 			Settings::get_default_global_styles(),
 			Settings::get_default_options()

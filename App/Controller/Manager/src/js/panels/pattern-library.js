@@ -25,6 +25,7 @@ export default function ( { settings } ) {
 			data-unitone-layout="decorator -padding:2"
 			style={ {
 				'--unitone--background-color': 'white',
+				'--unitone--color': '#111',
 			} }
 		>
 			<div data-unitone-layout="stack -gap:2">

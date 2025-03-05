@@ -185,7 +185,7 @@ class Settings {
 		update_option(
 			self::SETTINGS_NAME,
 			static::_remove_nulls(
-				static::_array_override_recursive(
+				unitone_array_override_replace_recursive(
 					static::$default_settings,
 					$settings
 				)
@@ -209,16 +209,14 @@ class Settings {
 		$global_styles      = json_decode( $json_global_styles, true ) ?? array();
 
 		$new_global_styles = static::_remove_nulls(
-			array_replace_recursive(
+			unitone_array_override_replace_recursive(
 				array(
 					'version'                     => 3,
 					'isGlobalStylesUserThemeJSON' => true,
 				),
 				$global_styles,
-				static::_array_override_recursive(
-					static::$default_global_styles,
-					$settings
-				),
+				static::$default_global_styles,
+				$settings
 			)
 		);
 
@@ -286,17 +284,13 @@ class Settings {
 			return $cache;
 		}
 
-		$settings      = static::_array_override_recursive( static::$default_settings, static::get_settings() );
-		$options       = static::_array_override_recursive( static::$default_options, static::get_options() );
-		$global_styles = static::_array_override_recursive( static::$default_global_styles, static::get_global_styles() );
-
-		$settings = array_replace_recursive(
+		$settings = unitone_array_override_replace_recursive(
 			static::$default_settings,
-			$settings,
+			static::get_settings(),
 			static::$default_global_styles,
-			$global_styles,
+			static::get_global_styles(),
 			static::$default_options,
-			$options
+			static::get_options()
 		);
 
 		wp_cache_set( self::SETTINGS_NAME, $settings );
@@ -316,34 +310,32 @@ class Settings {
 			return $cache;
 		}
 
-		$custom_templates       = static::get_custom_templates();
-		$using_custom_templates = static::get_default_settings()['enabled-custom-templates'];
+		$custom_templates = array_map(
+			function ( $template ) {
+				return $template['name'];
+			},
+			static::get_custom_templates()
+		);
 
-		foreach ( $custom_templates as $template ) {
-			// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-			$using_custom_templates_query = new \WP_Query(
-				array(
-					'no_found_rows'  => true,
-					'posts_per_page' => 1,
-					'post_type'      => array( 'post', 'page', 'product' ),
-					'post_status'    => array( 'publish', 'future', 'private' ),
-					'meta_query'     => array(
-						array(
-							'key'     => '_wp_page_template',
-							'value'   => $template['name'],
-							'compare' => '=',
-						),
-					),
-				)
-			);
-			// phpcs:enable
+		$default_using_custom_templates = static::get_default_settings()['enabled-custom-templates'];
+		$using_custom_templates         = $default_using_custom_templates;
 
-			if ( $using_custom_templates_query->post_count ) {
-				$using_custom_templates[] = $template['name'];
+		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.NotPrepared
+		global $wpdb;
+		$placeholders = implode( ',', array_fill( 0, count( $custom_templates ), '%s' ) );
+		$sql          = $wpdb->prepare(
+			"SELECT meta_value FROM {$wpdb->postmeta} WHERE meta_key = %s AND meta_value IN ($placeholders) GROUP BY meta_value",
+			array_merge( array( '_wp_page_template' ), $custom_templates )
+		);
+		$results      = $wpdb->get_results( $sql, 'OBJECT' ) ?? array();
+		// phpcs:enable
+
+		foreach ( $results as $row ) {
+			$template_name = $row->meta_value;
+			if ( ! in_array( $template_name, $using_custom_templates, true ) ) {
+				$using_custom_templates[] = $template_name;
 			}
 		}
-
-		$using_custom_templates = array_values( array_unique( $using_custom_templates ) );
 
 		wp_cache_set( $cache_key, $using_custom_templates );
 
@@ -413,35 +405,6 @@ class Settings {
 				}
 			} elseif ( ! is_null( $value ) ) {
 					$result[ $key ] = $value;
-			}
-		}
-
-		return $result;
-	}
-
-	/**
-	 * Only permitted keys and their values remain.
-	 *
-	 * @param array $array_1 Array with permitted keys.
-	 * @param array $array_2 Array with values to replae.
-	 * @return array
-	 */
-	protected static function _array_override_recursive( array $array_1, array $array_2 ) {
-		$result = array();
-
-		foreach ( $array_1 as $key => $value ) {
-			if ( array_key_exists( $key, $array_2 ) ) {
-				if ( is_array( $value ) && is_array( $array_2[ $key ] ) ) {
-					if ( array_keys( $value ) === range( 0, count( $value ) - 1 ) ) {
-						$result[ $key ] = array_values( array_unique( array_merge( $value, $array_2[ $key ] ) ) );
-					} else {
-						$result[ $key ] = static::_array_override_recursive( $value, $array_2[ $key ] );
-					}
-				} else {
-					$result[ $key ] = $array_2[ $key ];
-				}
-			} else {
-				$result[ $key ] = $value;
 			}
 		}
 

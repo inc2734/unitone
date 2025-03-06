@@ -182,6 +182,10 @@ function IconHorizontal() {
 }
 
 function compacting( attribute, defaultValue = undefined ) {
+	if ( 0 === attribute ) {
+		return 0;
+	}
+
 	const compactedAttribute =
 		! isString( attribute ) && attribute?.column === attribute?.row
 			? attribute?.column
@@ -469,7 +473,9 @@ export function useGapBlockProps( settings ) {
 		return settings;
 	}
 
+	console.log( attributes.unitone?.gap );
 	const newGap = compacting( attributes.unitone?.gap ?? defaultValue );
+	console.log( newGap );
 
 	if ( null == newGap ) {
 		return settings;

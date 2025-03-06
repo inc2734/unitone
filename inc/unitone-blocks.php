@@ -29,7 +29,6 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/grid-divided-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/layer' );
 	register_block_type( get_template_directory() . '/dist/blocks/layers' );
-	register_block_type( get_template_directory() . '/dist/blocks/mega-menu' );
 	register_block_type( get_template_directory() . '/dist/blocks/reel' );
 	register_block_type( get_template_directory() . '/dist/blocks/responsive-grid' );
 	register_block_type( get_template_directory() . '/dist/blocks/responsive-grid-divided' );
@@ -42,8 +41,6 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/stack-divided' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack-divided-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/switcher' );
-	register_block_type( get_template_directory() . '/dist/blocks/tabs' );
-	register_block_type( get_template_directory() . '/dist/blocks/tab-panel' );
 	register_block_type( get_template_directory() . '/dist/blocks/text' );
 	register_block_type( get_template_directory() . '/dist/blocks/texture' );
 	register_block_type( get_template_directory() . '/dist/blocks/vertical-writing' );
@@ -52,9 +49,13 @@ function unitone_register_blocks() {
 
 	register_block_type( get_template_directory() . '/dist/blocks/abstract-background' );
 	register_block_type( get_template_directory() . '/dist/blocks/accordion' );
-	register_block_type( get_template_directory() . '/dist/blocks/breadcrumbs' );
-	register_block_type( get_template_directory() . '/dist/blocks/child-pages' );
 	register_block_type( get_template_directory() . '/dist/blocks/section' );
+
+	require_once get_template_directory() . '/dist/blocks/mega-menu/index.php';
+	require_once get_template_directory() . '/dist/blocks/breadcrumbs/index.php';
+	require_once get_template_directory() . '/dist/blocks/child-pages/index.php';
+	require_once get_template_directory() . '/dist/blocks/tab-panel/index.php';
+	require_once get_template_directory() . '/dist/blocks/tabs/index.php';
 
 	foreach ( \WP_Block_Type_Registry::get_instance()->get_all_registered() as $block_type ) {
 		if ( ! isset( $block_type->attributes['unitone'] ) ) {

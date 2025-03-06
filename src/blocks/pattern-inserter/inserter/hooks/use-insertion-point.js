@@ -7,6 +7,7 @@
 /**
  * WordPress dependencies
  */
+import { isUnmodifiedDefaultBlock } from '@wordpress/blocks';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { _n, sprintf } from '@wordpress/i18n';
 import { speak } from '@wordpress/a11y';
@@ -44,6 +45,7 @@ function useInsertionPoint( {
 	isAppender,
 	onSelect,
 	shouldFocusBlock = true,
+	selectBlockOnInsert = true,
 } ) {
 	const { getSelectedBlock } = useSelect( blockEditorStore );
 	const { destinationRootClientId, destinationIndex } = useSelect(
@@ -96,14 +98,28 @@ function useInsertionPoint( {
 		( blocks, meta, shouldForceFocusBlock = false ) => {
 			const selectedBlock = getSelectedBlock();
 
-			replaceBlocks(
-				selectedBlock.clientId,
-				blocks,
-				null,
-				shouldFocusBlock || shouldForceFocusBlock ? 0 : null,
-				meta
-			);
-
+			if (
+				! isAppender &&
+				selectedBlock &&
+				isUnmodifiedDefaultBlock( selectedBlock )
+			) {
+				replaceBlocks(
+					selectedBlock.clientId,
+					blocks,
+					null,
+					shouldFocusBlock || shouldForceFocusBlock ? 0 : null,
+					meta
+				);
+			} else {
+				insertBlocks(
+					blocks,
+					destinationIndex,
+					destinationRootClientId,
+					selectBlockOnInsert,
+					shouldFocusBlock || shouldForceFocusBlock ? 0 : null,
+					meta
+				);
+			}
 			const blockLength = Array.isArray( blocks ) ? blocks.length : 1;
 			const message = sprintf(
 				// translators: %d: the name of the block that has been added

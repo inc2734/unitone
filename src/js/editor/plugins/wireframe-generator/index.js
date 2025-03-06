@@ -1,9 +1,4 @@
 import {
-	BlockPreview,
-	store as blockEditorStore,
-} from '@wordpress/block-editor';
-
-import {
 	useCallback,
 	useRef,
 	useEffect,
@@ -12,16 +7,17 @@ import {
 	createPortal,
 } from '@wordpress/element';
 
+import { BlockPreview } from '@wordpress/block-editor';
 import { registerPlugin } from '@wordpress/plugins';
 import { Button, Modal, Popover } from '@wordpress/components';
-import { useSelect, useDispatch } from '@wordpress/data';
 import { Icon, desktop, tablet, mobile, help } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import icon from './icon';
 import usePatternsState from '../../../../blocks/pattern-inserter/inserter/hooks/use-patterns-state';
+import useInsertionPoint from '../../../../blocks/pattern-inserter/inserter/hooks/use-insertion-point';
 
-const PluginSidebarExample = () => {
+const PluginSidebarWireFrameGenerator = () => {
 	const [ isOpen, setIsOpen ] = useState( false );
 	const [ isOpenHelpPopover, setIsOpenHelpPopover ] = useState( false );
 	const [ previewPatterns, setPreviewPatterns ] = useState( [] );
@@ -46,21 +42,14 @@ const PluginSidebarExample = () => {
 
 	const toolbar = document.querySelector( '.editor-header__toolbar' );
 
-	const { destinationRootClientId } = useSelect( ( select ) => {
-		const { getSelectedBlockClientId, getBlockRootClientId } =
-			select( blockEditorStore );
-		const selectedBlockClientId = getSelectedBlockClientId();
-		return selectedBlockClientId
-			? getBlockRootClientId( selectedBlockClientId )
-			: 0;
+	const [ destinationRootClientId, onInsertBlocks ] = useInsertionPoint( {
+		shouldFocusBlock: true,
 	} );
 
-	const [ allPatterns ] = usePatternsState(
-		() => {},
+	const [ allPatterns, , onSelectBlockPattern ] = usePatternsState(
+		onInsertBlocks,
 		destinationRootClientId
 	);
-
-	const { insertBlocks } = useDispatch( blockEditorStore );
 
 	const shownPatterns = useMemo( () => {
 		return allPatterns.filter(
@@ -265,7 +254,12 @@ const PluginSidebarExample = () => {
 			)
 			.flat();
 
-		insertBlocks( newBlocks );
+		const newPattern = {
+			title: __( 'Wireframe', 'unitone' ),
+			blocks: newBlocks,
+		};
+
+		onSelectBlockPattern( newPattern, newBlocks );
 
 		setPreviewPatterns( [] );
 		setPreviewMode( 'desktop' );
@@ -456,5 +450,5 @@ const PluginSidebarExample = () => {
 };
 
 registerPlugin( 'unitone-wireframe-generator', {
-	render: PluginSidebarExample,
+	render: PluginSidebarWireFrameGenerator,
 } );

@@ -17,7 +17,7 @@ import {
 
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
+import { __, _x } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
@@ -101,14 +101,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					</ToolsPanelItem>
 				</ToolsPanel>
 
-				<ToolsPanel label={ __( 'Sidebar', 'unitone' ) }>
+				<ToolsPanel
+					label={ _x( 'Secondary', 'with-sidebar', 'unitone' ) }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							sidebar !== metadata.attributes.sidebar.default
 						}
 						isShownByDefault
 						label={ __(
-							'Columns to be treated as sidebars',
+							'A column to be treated as secondary',
 							'unitone'
 						) }
 						onDeselect={ () =>
@@ -120,7 +122,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						<SelectControl
 							__nextHasNoMarginBottom
 							label={ __(
-								'Columns to be treated as sidebars',
+								'A column to be treated as secondary',
 								'unitone'
 							) }
 							value={ sidebar }
@@ -165,7 +167,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								</>
 							}
 							help={ __(
-								'If unspecified, the width of the sidebar is calculated from the width of the child elements.',
+								'If unspecified, the width of the secondary column is calculated from the width of the child elements.',
 								'unitone'
 							) }
 							value={ sidebarWidth }

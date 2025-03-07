@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+import { __, _x } from '@wordpress/i18n';
 
 import { iconMain, iconAside } from './icon';
 
@@ -18,7 +18,7 @@ export default [
 	},
 	{
 		name: 'aside',
-		title: __( 'Sidebar', 'unitone' ),
+		title: _x( 'Secondary', 'with-sidebar', 'unitone' ),
 		icon: {
 			src: iconAside,
 		},

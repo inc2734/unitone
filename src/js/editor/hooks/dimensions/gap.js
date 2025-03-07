@@ -473,9 +473,7 @@ export function useGapBlockProps( settings ) {
 		return settings;
 	}
 
-	console.log( attributes.unitone?.gap );
 	const newGap = compacting( attributes.unitone?.gap ?? defaultValue );
-	console.log( newGap );
 
 	if ( null == newGap ) {
 		return settings;

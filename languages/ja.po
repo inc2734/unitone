@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-03-04T02:19:18+00:00\n"
-"PO-Revision-Date: 2025-03-04 11:20+0900\n"
+"POT-Creation-Date: 2025-03-07T00:03:58+00:00\n"
+"PO-Revision-Date: 2025-03-07 09:06+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -40,7 +40,7 @@ msgstr "https://2inc.org"
 
 #. translators: Accessibility text. %s: Parent page title.
 #: App/Controller/Manager/dist/js/blocks/mega-menu/render.php:9
-#: dist/blocks/mega-menu/render.php:9
+#: dist/blocks/mega-menu/index.php:30
 msgid "%s mega menu"
 msgstr "%sのメガメニュー"
 
@@ -49,14 +49,14 @@ msgstr "%sのメガメニュー"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:379 patterns/footer-2.php:21
+#: App/Controller/Manager/Manager.php:370 patterns/footer-2.php:21
 #: patterns/footer-3.php:50 patterns/footer-3.php:58 patterns/footer-3.php:66
 #: patterns/footer-4.php:30 patterns/footer-4.php:38 patterns/footer-4.php:46
 #: patterns/footer-5.php:28 patterns/footer-5.php:36 patterns/footer-5.php:44
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:422 patterns/footer-2.php:24
+#: App/Controller/Manager/Manager.php:413 patterns/footer-2.php:24
 #: patterns/footer-3.php:53 patterns/footer-3.php:61 patterns/footer-3.php:69
 #: patterns/footer-4.php:33 patterns/footer-4.php:41 patterns/footer-4.php:49
 #: patterns/footer-5.php:31 patterns/footer-5.php:39 patterns/footer-5.php:47
@@ -65,20 +65,20 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:525
+#: App/Controller/Manager/Manager.php:516
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:528
+#: App/Controller/Manager/Manager.php:519
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:532
+#: App/Controller/Manager/Manager.php:523
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
-#: App/Controller/Manager/Manager.php:555
+#: App/Controller/Manager/Manager.php:546
 msgid ""
 "You have not set a valid license key. Setting a license key will allow you "
 "to use patterns registered in %3$sthe pattern library%4$s. It will also "
@@ -1939,7 +1939,7 @@ msgid "Switch aspect ratio when portrait and mobile width."
 msgstr "ポートレートかつモバイル幅のときアスペクト比を切り替える。"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:14
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:17
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -1949,7 +1949,7 @@ msgid "Tablet / Mobile"
 msgstr "タブレット / モバイル"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:14
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:17
 msgid "Mobile"
 msgstr "モバイル"
 
@@ -2481,12 +2481,13 @@ msgstr "メイン"
 
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
-msgid "Sidebar"
-msgstr "サイドバー"
+msgctxt "with-sidebar"
+msgid "Secondary"
+msgstr "サブ"
 
 #: dist/blocks/with-sidebar/index.js:1
-msgid "Columns to be treated as sidebars"
-msgstr "サイドバーとして扱うカラム"
+msgid "A column to be treated as secondary"
+msgstr "サブとして扱うカラム"
 
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
 #: dist/js/editor/editor.js:13
@@ -2500,9 +2501,9 @@ msgstr "左"
 
 #: dist/blocks/with-sidebar/index.js:1
 msgid ""
-"If unspecified, the width of the sidebar is calculated from the width of the "
-"child elements."
-msgstr "未指定の場合、サイドバーの幅は子要素の幅から算出されます。"
+"If unspecified, the width of the secondary column is calculated from the "
+"width of the child elements."
+msgstr "未指定の場合、サブカラムの幅は子要素の幅から算出されます。"
 
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
 msgid "Min width"
@@ -2953,12 +2954,16 @@ msgstr "子ブロックを選択"
 msgid "Show block outline"
 msgstr "ブロックのアウトラインを表示"
 
-#. translators: %s: block pattern title.
-#: dist/js/editor/editor.js:13 dist/js/editor/editor.js:14
+#: dist/js/editor/editor.js:13 dist/js/editor/editor.js:17
 msgid "Wireframe Generator"
 msgstr "ワイヤーフレームジェネレーター"
 
-#: dist/js/editor/editor.js:14
+#. translators: %s: block pattern title.
+#: dist/js/editor/editor.js:17
+msgid "Wireframe"
+msgstr "ワイヤーフレーム"
+
+#: dist/js/editor/editor.js:17
 msgid ""
 "Generates a wireframe using the unitone patterns. When inserted, images are "
 "replaced with dummy images."
@@ -2966,19 +2971,19 @@ msgstr ""
 "unitoneのパターンを使ったワイヤーフレームを生成します。挿入すると画像はダミー"
 "画像に置き換わります。"
 
-#: dist/js/editor/editor.js:14
+#: dist/js/editor/editor.js:17
 msgid "Generate for homepage"
 msgstr "ホームページ用を生成"
 
-#: dist/js/editor/editor.js:14
+#: dist/js/editor/editor.js:17
 msgid "Generate for lower-level pages"
 msgstr "下層ページ用を生成"
 
-#: dist/js/editor/editor.js:14
+#: dist/js/editor/editor.js:17
 msgid "Insert wireframe"
 msgstr "ワイヤーフレームを挿入"
 
-#: dist/js/editor/editor.js:14
+#: dist/js/editor/editor.js:17
 msgid "Tablet"
 msgstr "タブレット"
 
@@ -4157,3 +4162,6 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "Sidebar"
+#~ msgstr "サイドバー"

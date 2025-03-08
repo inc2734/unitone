@@ -103,9 +103,6 @@ function DimensionsPanelPure( props ) {
 		return null;
 	}
 
-	console.log( '---' );
-	console.log( attributes );
-
 	return (
 		<>
 			<InspectorControls group="dimensions">

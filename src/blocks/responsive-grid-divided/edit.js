@@ -56,12 +56,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 		const observers = dividersResizeObserver( target, {
 			ignore: {
-				className: [
-					'is-selected',
-					'has-child-selected',
-					'is-hovered',
-					'is-highlighted',
-				],
+				className: [ 'is-hovered', 'is-highlighted' ],
 			},
 		} );
 

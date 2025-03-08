@@ -60,11 +60,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const innerBlocksProps = useInnerBlocksProps(
 		{
 			ref,
-			'data-unitone-layout': clsx( 'vertical-writing', '-initialized', {
-				[ `-text-orientation:${ textOrientation }` ]:
-					!! textOrientation,
-				'-switch': switchWritingMode,
-			} ),
+			'data-unitone-layout': clsx(
+				'vertical-writing',
+				'vertical-writing:initialized',
+				{
+					[ `-text-orientation:${ textOrientation }` ]:
+						!! textOrientation,
+					'-switch': switchWritingMode,
+				}
+			),
 			style: {
 				'--unitone--threshold': threshold || undefined,
 			},

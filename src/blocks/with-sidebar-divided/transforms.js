@@ -8,17 +8,15 @@ export default {
 	from: [
 		{
 			type: 'block',
-			blocks: [ 'unitone/with-sidebar-divided' ],
+			blocks: [ 'unitone/with-sidebar' ],
 			transform: ( attributes, innerBlocks ) => {
 				return createBlock(
-					'unitone/with-sidebar',
+					'unitone/with-sidebar-divided',
 					{
 						...attributes,
 						unitone: {
-							...attributes.unitone,
-							dividerType: undefined,
-							divider: undefined,
-							dividerColor: undefined,
+							...attributes?.unitone,
+							dividerType: 'stripe',
 						},
 					},
 					innerBlocks
@@ -52,7 +50,7 @@ export default {
 						? groupInnerBlocks.slice( -1 )
 						: [];
 
-				return createBlock( 'unitone/with-sidebar', {}, [
+				return createBlock( 'unitone/with-sidebar-divided', {}, [
 					createBlock(
 						'unitone/with-sidebar-content',
 						{ type: 'main' },

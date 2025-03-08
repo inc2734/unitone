@@ -1,12 +1,3 @@
 @use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/with-sidebar/with-sidebar';
 
 @include with-sidebar.with-sidebar();
-
-[data-unitone-layout~="with-sidebar__content"] {
-	display: flex;
-	flex-direction: column;
-
-	> * {
-		flex-grow: 1;
-	}
-}

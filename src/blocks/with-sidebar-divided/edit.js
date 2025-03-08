@@ -16,10 +16,15 @@ import {
 } from '@wordpress/components';
 
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useRef } from '@wordpress/element';
 import { __, _x } from '@wordpress/i18n';
 
 import metadata from './block.json';
+
+import {
+	dividersResizeObserver,
+	setDividerLinewrap,
+} from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const {
@@ -46,8 +51,31 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			updateBlockAttributes( blocks[ 1 ], { type: 'aside' } );
 		}
 	}, [ sidebar, revert ] );
+	const ref = useRef( null );
+
+	useEffect( () => {
+		const target = ref.current;
+
+		setTimeout( () => {
+			setDividerLinewrap( target );
+		}, 100 );
+
+		const observers = dividersResizeObserver( target, {
+			ignore: {
+				className: [ 'is-hovered', 'is-highlighted' ],
+			},
+		} );
+
+		return () => {
+			if ( !! target ) {
+				observers.resizeObserver.unobserve( target );
+			}
+			observers.mutationObserver.disconnect();
+		};
+	}, [] );
 
 	const blockProps = useBlockProps( {
+		ref,
 		style: {
 			'--unitone--sidebar-width': sidebarWidth || undefined,
 			'--unitone--content-min-width': contentMinWidth || undefined,

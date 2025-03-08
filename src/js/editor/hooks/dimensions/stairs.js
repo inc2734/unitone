@@ -34,11 +34,13 @@ export function hasStairsUpValue( { name, attributes: { unitone } } ) {
 }
 
 export function resetStairsFilter( attributes ) {
-	if ( null != attributes?.unitone?.stairs ) {
-		attributes.unitone.stairs = undefined;
-	}
-
-	return cleanEmptyObject( attributes );
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			stairs: undefined,
+		},
+	};
 }
 
 export function resetStairs( { attributes: { unitone }, setAttributes } ) {
@@ -48,11 +50,13 @@ export function resetStairs( { attributes: { unitone }, setAttributes } ) {
 }
 
 export function resetStairsUpFilter( attributes ) {
-	if ( null != attributes?.unitone?.stairsUp ) {
-		attributes.unitone.stairsUp = undefined;
-	}
-
-	return cleanEmptyObject( attributes );
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			stairsUp: undefined,
+		},
+	};
 }
 
 export function resetStairsUp( { attributes: { unitone }, setAttributes } ) {

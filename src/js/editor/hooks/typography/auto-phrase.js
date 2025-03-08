@@ -11,11 +11,13 @@ export function hasAutoPhraseValue( { attributes: unitone } ) {
 }
 
 export function resetAutoPhraseFilter( attributes ) {
-	if ( null != attributes?.unitone?.autoPhrase ) {
-		attributes.unitone.autoPhrase = undefined;
-	}
-
-	return cleanEmptyObject( attributes );
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			autoPhrase: undefined,
+		},
+	};
 }
 
 export function resetAutoPhrase( { attributes: { unitone }, setAttributes } ) {

@@ -11,11 +11,13 @@ export function hasFluidTypographyValue( { attributes: { unitone } } ) {
 }
 
 export function resetFluidTypographyFilter( attributes ) {
-	if ( null != attributes?.unitone?.fluidTypography ) {
-		attributes.unitone.fluidTypography = undefined;
-	}
-
-	return cleanEmptyObject( attributes );
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			fluidTypography: undefined,
+		},
+	};
 }
 
 export function resetFluidTypography( {

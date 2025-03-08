@@ -41,11 +41,13 @@ export function hasOverflowValue( { name, attributes: { unitone } } ) {
 }
 
 export function resetOverflowFilter( attributes ) {
-	if ( null != attributes?.unitone?.overflow ) {
-		attributes.unitone.overflow = undefined;
-	}
-
-	return cleanEmptyObject( attributes );
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			overflow: undefined,
+		},
+	};
 }
 
 export function resetOverflow( { attributes: { unitone }, setAttributes } ) {

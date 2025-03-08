@@ -19,11 +19,13 @@ export function hasPaddingValue( { name, attributes: { unitone } } ) {
 }
 
 export function resetPaddingFilter( attributes ) {
-	if ( null != attributes?.unitone?.padding ) {
-		attributes.unitone.padding = undefined;
-	}
-
-	return cleanEmptyObject( attributes );
+	return {
+		...attributes,
+		unitone: {
+			...attributes?.unitone,
+			padding: undefined,
+		},
+	};
 }
 
 export function resetPadding( { attributes: { unitone }, setAttributes } ) {

@@ -1,0 +1,173 @@
+.unitone-timeline-dots {
+	--unitone--align-items: start;
+	--unitone--gap: var(--unitone--global--text-gap);
+	--unitone--column-gap: var(--unitone--gap);
+	--unitone--row-gap: var(--unitone--gap);
+	--unitone--dot-size: .75em;
+	--unitone--dot-color: var(--wp--preset--color--unitone-accent);
+	--unitone--line-width: calc(var(--unitone--dot-size) / 3);
+	--unitone--line-color: var(--wp--preset--color--unitone-bright-gray);
+	--unitone--timeline-dots-rows: 0;
+
+	display: grid;
+	grid-template-columns: auto auto 1fr;
+	column-gap: var(--unitone--column-gap);
+	row-gap: var(--unitone--row-gap);
+	align-items: var(--unitone--align-items);
+
+	&--column-layout\:sub-dot-main {
+		> .unitone-timeline-dots-row {
+			.unitone-timeline-dots-column:first-child {
+				order: -1;
+			}
+		}
+	}
+
+	&--column-layout\:dot-main {
+		grid-template-columns: auto 1fr;
+	}
+}
+
+.unitone-timeline-dots-row {
+	display: grid;
+	grid-template-columns: subgrid;
+	grid-column: 1 / -1;
+	align-items: inherit;
+
+	&__dot {
+		--unitone--top: calc(var(--unitone--half-leading) * 1em + 1em / 2 - var(--unitone--dot-size) / 2);
+
+		position: relative;
+		top: var(--unitone--top);
+		display: grid;
+		align-items: inherit;
+		justify-content: center;
+		align-self: stretch;
+
+		// Line
+		&::before {
+			--unitone--top: calc(var(--unitone--dot-size) / 2);
+			--unitone--bottom: calc(var(--unitone--row-gap) * -1 - var(--unitone--dot-size) / 2);
+
+			content: '';
+			position: absolute;
+			inset:
+				var(--unitone--top)
+				auto
+				var(--unitone--bottom)
+				calc(50% - var(--unitone--line-width) / 2);
+			display: block;
+			background-color: var(--unitone--line-color);
+			width: var(--unitone--line-width);
+			mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='%23000'/%3E%3C/svg%3E");
+			mask-size: contain;
+			mask-repeat: repeat-y;
+		}
+
+		// Dot
+		&::after {
+			--unitone--top: auto;
+
+			content: '';
+			position: relative;
+			top: var(--unitone--top);
+			display: block;
+			width: var(--unitone--dot-size);
+			height: var(--unitone--dot-size);
+			background-color: var(--unitone--dot-color);
+			mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='10' fill='#000'/%3E%3C/svg%3E");
+			mask-size: contain;
+		}
+	}
+
+	&__columns {
+		display: contents;
+	}
+}
+
+.unitone-timeline-dots:not([data-unitone-layout*="-align-items\:"]),
+.unitone-timeline-dots[data-unitone-layout~="-align-items\:start"] {
+	> .unitone-timeline-dots-row:not(:has(~ .unitone-timeline-dots-row)) {
+		> .unitone-timeline-dots-row__dot {
+			&::before {
+				--unitone--bottom: auto;
+			}
+		}
+	}
+}
+
+.unitone-timeline-dots[data-unitone-layout~="-align-items\:center"] {
+	> .unitone-timeline-dots-row {
+		> .unitone-timeline-dots-row__dot {
+			--unitone--top: 0px;
+
+			&::before {
+				--unitone--top: 50%;
+			}
+		}
+	}
+
+	> .unitone-timeline-dots-row + .unitone-timeline-dots-row {
+		> .unitone-timeline-dots-row__dot {
+			&::before {
+				--unitone--top: 0px;
+			}
+		}
+	}
+
+	> .unitone-timeline-dots-row:not(:has(~ .unitone-timeline-dots-row)) {
+		> .unitone-timeline-dots-row__dot {
+			&::before {
+				--unitone--bottom: 50%;
+			}
+		}
+	}
+}
+
+.unitone-timeline-dots[data-unitone-layout~="-align-items\:end"] {
+	> .unitone-timeline-dots-row {
+		> .unitone-timeline-dots-row__dot {
+			--unitone--top: auto;
+
+			&::before {
+				--unitone--top: 0px;
+			}
+
+			&::after {
+				--unitone--top: calc(var(--unitone--half-leading) * -1em - 1em / 2 + var(--unitone--dot-size) / 2);
+			}
+		}
+	}
+
+	> .unitone-timeline-dots-row:first-child {
+		> .unitone-timeline-dots-row__dot {
+			&::before {
+				--unitone--top: calc(100% - var(--unitone--half-leading) * 1em - 1em / 2);
+			}
+		}
+	}
+
+	> .unitone-timeline-dots-row:not(:has(~ .unitone-timeline-dots-row)) {
+		> .unitone-timeline-dots-row__dot {
+			&::before {
+				--unitone--bottom: calc(var(--unitone--half-leading) * 1em + 1em / 2);
+			}
+		}
+	}
+}
+
+.unitone-timeline-dots[data-unitone-layout~="-align-items\:stretch"] {
+	> .unitone-timeline-dots-row:not(:has(~ .unitone-timeline-dots-row)) {
+		> .unitone-timeline-dots-row__dot {
+			&::before {
+				--unitone--bottom: 0px;
+			}
+		}
+	}
+}
+
+.unitone-timeline-dots-column {
+	&--nonentity {
+		display: none !important;
+	}
+}

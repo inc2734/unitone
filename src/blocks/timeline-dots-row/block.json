@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "unitone",
+	"name": "unitone/timeline-dots-row",
+	"title": "Timeline item",
+	"description": "This block displays a item of the timeline.",
+	"attributes": {
+		"dotColor": {
+			"type": "string"
+		},
+		"customDotColor": {
+			"type": "string"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"usesContext": [ "unitone/column-layout" ],
+	"selectors": {
+		"root": ".unitone-timeline-dots"
+	},
+	"parent": [ "unitone/timeline-dots" ],
+	"allowedBlocks": [ "unitone/timeline-dots-column" ],
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"color": {
+			"background": false,
+			"color": true,
+			"link": true
+		},
+		"typography": {
+			"fontSize": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"unitone": {
+			"gap": {
+				"splitOnAxis": true
+			},
+			"fluidTypography": true,
+			"halfLeading": true
+		}
+	},
+	"example": {},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js"
+}

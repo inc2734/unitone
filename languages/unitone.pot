@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-07T08:17:44+00:00\n"
+"POT-Creation-Date: 2025-03-10T13:50:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -1760,6 +1760,7 @@ msgstr ""
 #: dist/blocks/tabs/index.js:1
 #: dist/blocks/text/index.js:1
 #: dist/blocks/texture/index.js:1
+#: dist/blocks/timeline-dots/index.js:1
 #: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
@@ -2518,6 +2519,46 @@ msgstr ""
 msgid "Gap"
 msgstr ""
 
+#: dist/blocks/timeline-dots-column/index.js:1
+#: dist/blocks/with-sidebar-content/index.js:1
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Main"
+msgstr ""
+
+#: dist/blocks/timeline-dots-column/index.js:1
+#: dist/blocks/with-sidebar-content/index.js:1
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgctxt "with-sidebar"
+msgid "Secondary"
+msgstr ""
+
+#: dist/blocks/timeline-dots-row/index.js:1
+#: dist/blocks/timeline-dots/index.js:1
+msgid "Dot color"
+msgstr ""
+
+#: dist/blocks/timeline-dots/index.js:1
+msgid "Column layout"
+msgstr ""
+
+#: dist/blocks/timeline-dots/index.js:1
+msgid "Dot - Sub - Main"
+msgstr ""
+
+#: dist/blocks/timeline-dots/index.js:1
+msgid "Sub - Dot - Main"
+msgstr ""
+
+#: dist/blocks/timeline-dots/index.js:1
+msgid "Dot - Main"
+msgstr ""
+
+#: dist/blocks/timeline-dots/index.js:1
+msgid "Line color"
+msgstr ""
+
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Text orientation"
 msgstr ""
@@ -2532,19 +2573,6 @@ msgstr ""
 
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Switch writing mode when portrait and mobile width."
-msgstr ""
-
-#: dist/blocks/with-sidebar-content/index.js:1
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Main"
-msgstr ""
-
-#: dist/blocks/with-sidebar-content/index.js:1
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgctxt "with-sidebar"
-msgid "Secondary"
 msgstr ""
 
 #: dist/blocks/with-sidebar-divided/index.js:1
@@ -3675,6 +3703,36 @@ msgstr ""
 #: dist/blocks/tabs/block.json
 msgctxt "block style label"
 msgid "Bar"
+msgstr ""
+
+#: dist/blocks/timeline-dots-column/block.json
+msgctxt "block title"
+msgid "Content"
+msgstr ""
+
+#: dist/blocks/timeline-dots-column/block.json
+msgctxt "block description"
+msgid "This block displays a content of the timeline item."
+msgstr ""
+
+#: dist/blocks/timeline-dots-row/block.json
+msgctxt "block title"
+msgid "Timeline item"
+msgstr ""
+
+#: dist/blocks/timeline-dots-row/block.json
+msgctxt "block description"
+msgid "This block displays a item of the timeline."
+msgstr ""
+
+#: dist/blocks/timeline-dots/block.json
+msgctxt "block title"
+msgid "Timeline dots"
+msgstr ""
+
+#: dist/blocks/timeline-dots/block.json
+msgctxt "block description"
+msgid "This block can display a timeline."
 msgstr ""
 
 #: dist/blocks/with-sidebar-divided/block.json

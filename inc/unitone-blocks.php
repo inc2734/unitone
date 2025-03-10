@@ -51,6 +51,9 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/abstract-background' );
 	register_block_type( get_template_directory() . '/dist/blocks/accordion' );
 	register_block_type( get_template_directory() . '/dist/blocks/section' );
+	register_block_type( get_template_directory() . '/dist/blocks/timeline-dots' );
+	register_block_type( get_template_directory() . '/dist/blocks/timeline-dots-row' );
+	register_block_type( get_template_directory() . '/dist/blocks/timeline-dots-column' );
 
 	require_once get_template_directory() . '/dist/blocks/mega-menu/index.php';
 	require_once get_template_directory() . '/dist/blocks/breadcrumbs/index.php';
@@ -125,3 +128,18 @@ function unitone_apply_block_link_to_decorator( $block_content, $block ) {
 	return str_replace( array( '<a ', '</a>' ), array( '<span ', '</span>' ), $p->get_updated_html() );
 }
 add_filter( 'render_block_unitone/decorator', 'unitone_apply_block_link_to_decorator', 10, 2 );
+
+/**
+ * Remove .unitone-timeline-dots-column--nonentity
+ *
+ * @param string $block_content The block content.
+ * @param array $block The full block, including name and attributes.
+ * @return string
+ */
+function unitone_remove_timeline_dots_column_nonentity( $block_content, $block ) {
+	if ( $block['attrs']['nonentity'] ?? false ) {
+		return '';
+	}
+	return $block_content;
+}
+add_filter( 'render_block_unitone/timeline-dots-column', 'unitone_remove_timeline_dots_column_nonentity', 10, 2 );

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"textdomain": "unitone",
 	"name": "unitone/cluster-divided-content",
-	"title": "Cluster (Divided) content",
+	"title": "Content",
 	"description": "This block places the content inside the cluster (Divided) block.",
 	"parent": [ "unitone/cluster-divided" ],
 	"attributes": {

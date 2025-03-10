@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-03-10T13:50:06+00:00\n"
-"PO-Revision-Date: 2025-03-10 22:50+0900\n"
+"POT-Creation-Date: 2025-03-10T13:55:48+00:00\n"
+"PO-Revision-Date: 2025-03-10 22:56+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1862,16 +1862,19 @@ msgid "HTML element"
 msgstr "HTML 要素"
 
 #: dist/blocks/cover-content/index.js:1
-msgid "Cover content (Top)"
-msgstr "カバーコンテンツ（上部）"
+msgctxt "cover"
+msgid "Top"
+msgstr "上部"
 
 #: dist/blocks/cover-content/index.js:1
-msgid "Cover content (Center)"
-msgstr "カバーコンテンツ（中央）"
+msgctxt "cover"
+msgid "Center"
+msgstr "中央"
 
 #: dist/blocks/cover-content/index.js:1
-msgid "Cover content (Bottom)"
-msgstr "カバーコンテンツ（下部）"
+msgctxt "cover"
+msgid "Bottom"
+msgstr "下部"
 
 #: dist/blocks/cover-content/index.js:1
 msgid "Fill a space"
@@ -3082,7 +3085,6 @@ msgid "Panel"
 msgstr "パネル"
 
 #: App/Controller/Manager/dist/js/blocks/both-sides-content/block.json
-#: dist/blocks/both-sides-content/block.json
 msgctxt "block title"
 msgid "Both sides content"
 msgstr "両端のコンテンツ"
@@ -3166,7 +3168,6 @@ msgid "Rich media"
 msgstr "リッチメディア"
 
 #: App/Controller/Manager/dist/js/blocks/cluster-divided-content/block.json
-#: dist/blocks/cluster-divided-content/block.json
 msgctxt "block title"
 msgid "Cluster (Divided) content"
 msgstr "クラスター（区切りあり）のコンテンツ"
@@ -3212,7 +3213,6 @@ msgid ""
 msgstr "コンテンツ領域を一定の幅に収め、さらに左右に適切な余白を確保します。"
 
 #: App/Controller/Manager/dist/js/blocks/cover-content/block.json
-#: dist/blocks/cover-content/block.json
 msgctxt "block title"
 msgid "Cover content"
 msgstr "カバーコンテンツ"
@@ -3272,7 +3272,6 @@ msgid "A simple div element without any decoration."
 msgstr "装飾されていないシンプルな div要素です。"
 
 #: App/Controller/Manager/dist/js/blocks/flex-divided-content/block.json
-#: dist/blocks/flex-divided-content/block.json
 msgctxt "block title"
 msgid "Flex (Divided) content"
 msgstr "フレックス（区切りあり）のコンテンツ"
@@ -3357,7 +3356,6 @@ msgid "This block is used to fit the image into a fixed angle of view."
 msgstr "画像を一定の画角に収めるために使用されます。"
 
 #: App/Controller/Manager/dist/js/blocks/grid-divided-content/block.json
-#: dist/blocks/grid-divided-content/block.json
 msgctxt "block title"
 msgid "Grid (Divided) content"
 msgstr "グリッド（区切りあり）のコンテンツ"
@@ -3472,7 +3470,6 @@ msgid "This block displays children scrolling horizontally."
 msgstr "子要素を水平スクロールして表示します。"
 
 #: App/Controller/Manager/dist/js/blocks/responsive-grid-divided-content/block.json
-#: dist/blocks/responsive-grid-divided-content/block.json
 msgctxt "block title"
 msgid "Responsive grid (Divided) content"
 msgstr "レスポンシブグリッド（区切りあり）のコンテンツ"
@@ -3531,7 +3528,6 @@ msgid "Slider"
 msgstr "スライダー"
 
 #: App/Controller/Manager/dist/js/blocks/stack-divided-content/block.json
-#: dist/blocks/stack-divided-content/block.json
 msgctxt "block title"
 msgid "Stack (Divided) content"
 msgstr "スタック（区切りあり）のコンテンツ"
@@ -3623,7 +3619,6 @@ msgstr ""
 "破壊的な変更が加えられたり、廃止されたりする可能性があります。"
 
 #: App/Controller/Manager/dist/js/blocks/with-sidebar-content/block.json
-#: dist/blocks/with-sidebar-content/block.json
 msgctxt "block title"
 msgid "With sidebar content"
 msgstr "サイドバーのコンテンツ"
@@ -3657,6 +3652,19 @@ msgctxt "block description"
 msgid "Displays a frame using an abstract background image."
 msgstr "抽象的な背景画像を使用したフレームを表示します。"
 
+#: dist/blocks/both-sides-content/block.json
+#: dist/blocks/cluster-divided-content/block.json
+#: dist/blocks/cover-content/block.json
+#: dist/blocks/flex-divided-content/block.json
+#: dist/blocks/grid-divided-content/block.json
+#: dist/blocks/responsive-grid-divided-content/block.json
+#: dist/blocks/stack-divided-content/block.json
+#: dist/blocks/timeline-dots-column/block.json
+#: dist/blocks/with-sidebar-content/block.json
+msgctxt "block title"
+msgid "Content"
+msgstr "コンテンツ"
+
 #: dist/blocks/tab-panel/block.json
 msgctxt "block title"
 msgid "Tab panel"
@@ -3686,11 +3694,6 @@ msgstr "シンプル"
 msgctxt "block style label"
 msgid "Bar"
 msgstr "バー"
-
-#: dist/blocks/timeline-dots-column/block.json
-msgctxt "block title"
-msgid "Content"
-msgstr "コンテンツ"
 
 #: dist/blocks/timeline-dots-column/block.json
 msgctxt "block description"
@@ -4238,3 +4241,12 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "Cover content (Top)"
+#~ msgstr "カバーコンテンツ（上部）"
+
+#~ msgid "Cover content (Center)"
+#~ msgstr "カバーコンテンツ（中央）"
+
+#~ msgid "Cover content (Bottom)"
+#~ msgstr "カバーコンテンツ（下部）"

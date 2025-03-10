@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"textdomain": "unitone",
 	"name": "unitone/grid-divided-content",
-	"title": "Grid (Divided) content",
+	"title": "Content",
 	"description": "This block places the content inside the grid (Divided) block.",
 	"parent": [ "unitone/grid-divided" ],
 	"attributes": {

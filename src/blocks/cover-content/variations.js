@@ -1,9 +1,9 @@
-import { __ } from '@wordpress/i18n';
+import { _x } from '@wordpress/i18n';
 
 export default [
 	{
 		name: 'cover-content-top',
-		title: __( 'Cover content (Top)', 'unitone' ),
+		title: _x( 'Top', 'cover', 'unitone' ),
 		isDefault: false,
 		scope: [ 'block' ],
 		attributes: { position: 'top' },
@@ -11,7 +11,7 @@ export default [
 	},
 	{
 		name: 'cover-content-center',
-		title: __( 'Cover content (Center)', 'unitone' ),
+		title: _x( 'Center', 'cover', 'unitone' ),
 		isDefault: true,
 		scope: [ 'block' ],
 		attributes: { position: 'center' },
@@ -19,7 +19,7 @@ export default [
 	},
 	{
 		name: 'cover-content-bottom',
-		title: __( 'Cover content (Bottom)', 'unitone' ),
+		title: _x( 'Bottom', 'cover', 'unitone' ),
 		isDefault: false,
 		scope: [ 'block' ],
 		attributes: { position: 'bottom' },

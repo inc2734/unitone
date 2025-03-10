@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"textdomain": "unitone",
 	"name": "unitone/stack-divided-content",
-	"title": "Stack (Divided) content",
+	"title": "Content",
 	"description": "This block places the content inside the stack (Divided) block.",
 	"parent": [ "unitone/stack-divided" ],
 	"attributes": {

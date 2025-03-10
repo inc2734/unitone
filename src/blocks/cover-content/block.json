@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"textdomain": "unitone",
 	"name": "unitone/cover-content",
-	"title": "Cover content",
+	"title": "Content",
 	"description": "This block places the content inside the cover block.",
 	"parent": [ "unitone/cover" ],
 	"attributes": {

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"textdomain": "unitone",
 	"name": "unitone/responsive-grid-divided-content",
-	"title": "Responsive grid (Divided) content",
+	"title": "Content",
 	"description": "This block places the content inside the responsive grid (Divided) block.",
 	"parent": [ "unitone/responsive-grid-divided" ],
 	"attributes": {

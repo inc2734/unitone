@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"textdomain": "unitone",
 	"name": "unitone/flex-divided-content",
-	"title": "Flex (Divided) content",
+	"title": "Content",
 	"description": "This block places the content inside the flex (Divided) block.",
 	"parent": [ "unitone/flex-divided" ],
 	"attributes": {

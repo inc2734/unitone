@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-10T13:50:06+00:00\n"
+"POT-Creation-Date: 2025-03-10T13:55:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -1904,15 +1904,18 @@ msgid "HTML element"
 msgstr ""
 
 #: dist/blocks/cover-content/index.js:1
-msgid "Cover content (Top)"
+msgctxt "cover"
+msgid "Top"
 msgstr ""
 
 #: dist/blocks/cover-content/index.js:1
-msgid "Cover content (Center)"
+msgctxt "cover"
+msgid "Center"
 msgstr ""
 
 #: dist/blocks/cover-content/index.js:1
-msgid "Cover content (Bottom)"
+msgctxt "cover"
+msgid "Bottom"
 msgstr ""
 
 #: dist/blocks/cover-content/index.js:1
@@ -3119,7 +3122,6 @@ msgid "Panel"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/blocks/both-sides-content/block.json
-#: dist/blocks/both-sides-content/block.json
 msgctxt "block title"
 msgid "Both sides content"
 msgstr ""
@@ -3203,7 +3205,6 @@ msgid "Rich media"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/blocks/cluster-divided-content/block.json
-#: dist/blocks/cluster-divided-content/block.json
 msgctxt "block title"
 msgid "Cluster (Divided) content"
 msgstr ""
@@ -3247,7 +3248,6 @@ msgid "Keep the content area within a certain width, plus appropriate margins on
 msgstr ""
 
 #: App/Controller/Manager/dist/js/blocks/cover-content/block.json
-#: dist/blocks/cover-content/block.json
 msgctxt "block title"
 msgid "Cover content"
 msgstr ""
@@ -3301,7 +3301,6 @@ msgid "A simple div element without any decoration."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/blocks/flex-divided-content/block.json
-#: dist/blocks/flex-divided-content/block.json
 msgctxt "block title"
 msgid "Flex (Divided) content"
 msgstr ""
@@ -3393,7 +3392,6 @@ msgid "This block is used to fit the image into a fixed angle of view."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/blocks/grid-divided-content/block.json
-#: dist/blocks/grid-divided-content/block.json
 msgctxt "block title"
 msgid "Grid (Divided) content"
 msgstr ""
@@ -3499,7 +3497,6 @@ msgid "This block displays children scrolling horizontally."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/blocks/responsive-grid-divided-content/block.json
-#: dist/blocks/responsive-grid-divided-content/block.json
 msgctxt "block title"
 msgid "Responsive grid (Divided) content"
 msgstr ""
@@ -3555,7 +3552,6 @@ msgid "Slider"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/blocks/stack-divided-content/block.json
-#: dist/blocks/stack-divided-content/block.json
 msgctxt "block title"
 msgid "Stack (Divided) content"
 msgstr ""
@@ -3641,7 +3637,6 @@ msgid "This block is used to place vertically written text. This block is a beta
 msgstr ""
 
 #: App/Controller/Manager/dist/js/blocks/with-sidebar-content/block.json
-#: dist/blocks/with-sidebar-content/block.json
 msgctxt "block title"
 msgid "With sidebar content"
 msgstr ""
@@ -3675,6 +3670,19 @@ msgctxt "block description"
 msgid "Displays a frame using an abstract background image."
 msgstr ""
 
+#: dist/blocks/both-sides-content/block.json
+#: dist/blocks/cluster-divided-content/block.json
+#: dist/blocks/cover-content/block.json
+#: dist/blocks/flex-divided-content/block.json
+#: dist/blocks/grid-divided-content/block.json
+#: dist/blocks/responsive-grid-divided-content/block.json
+#: dist/blocks/stack-divided-content/block.json
+#: dist/blocks/timeline-dots-column/block.json
+#: dist/blocks/with-sidebar-content/block.json
+msgctxt "block title"
+msgid "Content"
+msgstr ""
+
 #: dist/blocks/tab-panel/block.json
 msgctxt "block title"
 msgid "Tab panel"
@@ -3703,11 +3711,6 @@ msgstr ""
 #: dist/blocks/tabs/block.json
 msgctxt "block style label"
 msgid "Bar"
-msgstr ""
-
-#: dist/blocks/timeline-dots-column/block.json
-msgctxt "block title"
-msgid "Content"
 msgstr ""
 
 #: dist/blocks/timeline-dots-column/block.json

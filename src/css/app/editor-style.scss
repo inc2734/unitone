@@ -63,4 +63,8 @@ div:where(.editor-styles-wrapper.block-editor-writing-flow),
 			width: 100%;
 		}
 	}
+
+	.wp-block-table:not(:has(> table)) {
+		display: block;
+	}
 }

@@ -6,27 +6,29 @@
 	--unitone--scrollbar-thumb-color: #ddd;
 	--unitone--scrollbar-track-color: transparent;
 
-	overflow-x: auto;
-	scrollbar-color: var(--unitone--scrollbar-thumb-color) var(--unitone--scrollbar-track-color);
-	scrollbar-width: 1rem;
+	&:where(:has(> table)) {
+		overflow-x: auto;
+		scrollbar-color: var(--unitone--scrollbar-thumb-color) var(--unitone--scrollbar-track-color);
+		scrollbar-width: 1rem;
 
-	&::-webkit-scrollbar {
-		height: 1rem;
-	}
+		&::-webkit-scrollbar {
+			height: 1rem;
+		}
 
-	&::-webkit-scrollbar-track {
-		background-color: var(--unitone--scrollbar-track-color);
-	}
+		&::-webkit-scrollbar-track {
+			background-color: var(--unitone--scrollbar-track-color);
+		}
 
-	&::-webkit-scrollbar-thumb {
-		background-color: var(--unitone--scrollbar-track-color);
-		background-image: linear-gradient(
-			var(--unitone--scrollbar-track-color) 0,
-			var(--unitone--scrollbar-track-color) 0.375rem,
-			var(--unitone--scrollbar-thumb-color) 0.375rem,
-			var(--unitone--scrollbar-thumb-color) 0.625rem,
-			var(--unitone--scrollbar-track-color) 0.625rem
-		);
+		&::-webkit-scrollbar-thumb {
+			background-color: var(--unitone--scrollbar-track-color);
+			background-image: linear-gradient(
+				var(--unitone--scrollbar-track-color) 0,
+				var(--unitone--scrollbar-track-color) 0.375rem,
+				var(--unitone--scrollbar-thumb-color) 0.375rem,
+				var(--unitone--scrollbar-thumb-color) 0.625rem,
+				var(--unitone--scrollbar-track-color) 0.625rem
+			);
+		}
 	}
 
 	table > *,

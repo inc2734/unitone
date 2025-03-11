@@ -147,7 +147,6 @@ function unitone_enqueue_block_styles() {
 		'core/list'                => array(),
 		'core/navigation'          => array(),
 		'core/post-comments-form'  => array(),
-		'core/post-featured-image' => array(),
 		'core/post-terms'          => array(),
 		'core/post-title'          => array(),
 		'core/pullquote'           => array(),

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-03-10T13:55:48+00:00\n"
-"PO-Revision-Date: 2025-03-10 22:56+0900\n"
+"POT-Creation-Date: 2025-03-11T05:35:40+00:00\n"
+"PO-Revision-Date: 2025-03-11 14:36+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2811,6 +2811,10 @@ msgid ""
 msgstr ""
 "このブロックに背景画像または背景グラデーションが設定されている場合に設定でき"
 "ます。"
+
+#: dist/js/editor/editor.js:10
+msgid "Divide"
+msgstr "分割"
 
 #: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
 msgid "Background color or background image must be set."

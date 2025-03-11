@@ -69,7 +69,7 @@
 				"splitOnAxis": true
 			},
 			"alignItems": true,
-			"dividerType": [ "stripe", "slash", "bordered" ],
+			"dividerType": [ "stripe", "divide", "slash", "bordered" ],
 			"divider": true,
 			"fluidTypography": true,
 			"halfLeading": true

@@ -62,6 +62,7 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 	if ( ! $open_on_click ) {
 		$html .= ' data-wp-on-async--mouseenter="actions.openMenuOnHover"';
 		$html .= ' data-wp-on-async--mouseleave="actions.closeMenuOnHover"';
+		$html .= '>';
 
 		$item_url = isset( $attributes['url'] ) ? $attributes['url'] : '';
 
@@ -80,6 +81,7 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 		}
 		$html .= '>' . esc_html( $label ) . '</a>';
 	} else {
+		$html .= '>';
 		$html .= '<button class="wp-block-navigation-item__content wp-block-navigation-submenu__toggle"';
 		$html .= ' data-wp-on-async--click="actions.toggleMenuOnClick"';
 		$html .= ' data-wp-bind--aria-expanded="state.isMenuOpen"';
@@ -137,7 +139,7 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 	$html .= ' data-wp-watch="callbacks.initMenu"';
 	$html .= ' data-wp-on-async--focus="actions.openMenuOnFocus"';
 	$html .= ' id="' . esc_attr( $unique_id ) . '"';
-	$html .= ' tabindex="0"';
+	$html .= ' tabindex="0">';
 	$html .= '<div class="unitone-mega-menu__placement">' . $content . '</div>';
 	$html .= '</div>';
 

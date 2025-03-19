@@ -142,6 +142,7 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 	$html .= ' tabindex="0">';
 	$html .= '<div class="unitone-mega-menu__placement">' . $content . '</div>';
 	$html .= '</div>';
+	$html .= '</li>';
 
 	return $html;
 }

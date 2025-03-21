@@ -186,7 +186,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							)
 					) }
 				</div>
-				<div data-unitone-layout="cluster">
+				<div data-unitone-layout="cluster -gap:-1">
 					<Button
 						variant="primary"
 						onClick={ saveSettings }

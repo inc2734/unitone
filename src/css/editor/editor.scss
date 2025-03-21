@@ -1,4 +1,5 @@
-@use '../../js/editor/plugins/wireframe-generator/index';
+@use '../../js/editor/plugins/wireframe-generator';
+@use '../../js/editor/plugins/featured-image-generator';
 
 .block-editor-iframe__html {
 	overflow-x: clip;
@@ -138,6 +139,11 @@
 
 .components-color-palette__custom-color[style*="background: var(--unitone--color--"] .components-color-palette__custom-color-value {
 	display: none;
+}
+
+// Featured image placeholder
+.editor-post-featured-image__preview .editor-post-featured-image__preview-image {
+	aspect-ratio: initial !important;
 }
 
 // For WordPress 6.0

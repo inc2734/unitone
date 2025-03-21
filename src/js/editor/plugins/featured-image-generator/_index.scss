@@ -1,0 +1,12 @@
+.unitone-featured-image-generator-popover {
+	.block-editor-inspector-popover-header {
+		margin-bottom: 0 !important;
+	}
+
+	.components-popover__content {
+		display: grid;
+		gap: 1rem;
+		min-width: 320px;
+		padding: 8px;
+	}
+}

@@ -121,15 +121,16 @@ class Manager {
 			array_merge(
 				static::_convert_preset_value( Settings::get_merged_settings() ),
 				array(
-					'adminUrl'             => admin_url(),
-					'homeUrl'              => home_url(),
-					'templateDirectoryUri' => get_template_directory_uri(),
-					'siteTitle'            => get_option( 'blogname' ),
-					'siteLogoUrl'          => wp_get_attachment_url( get_option( 'site_logo' ) ),
-					'siteIconUrl'          => wp_get_attachment_url( get_option( 'site_icon' ) ),
-					'hasHomepage'          => ! is_null( get_page_by_path( static::_get_homepage_slug(), OBJECT, array( 'page' ) ) ),
-					'hasPostsPage'         => ! is_null( get_page_by_path( static::_get_posts_page_slug(), OBJECT, array( 'page' ) ) ),
-					'palette'              => ( function () use ( $global_settings ) {
+					'adminUrl'                => admin_url(),
+					'homeUrl'                 => home_url(),
+					'templateDirectoryUri'    => get_template_directory_uri(),
+					'siteTitle'               => get_option( 'blogname' ),
+					'siteLogoUrl'             => wp_get_attachment_url( get_option( 'site_logo' ) ),
+					'siteIconUrl'             => wp_get_attachment_url( get_option( 'site_icon' ) ),
+					'defaultFeaturedImageUrl' => wp_get_attachment_url( static::get_setting( 'default-featured-image' ) ),
+					'hasHomepage'             => ! is_null( get_page_by_path( static::_get_homepage_slug(), OBJECT, array( 'page' ) ) ),
+					'hasPostsPage'            => ! is_null( get_page_by_path( static::_get_posts_page_slug(), OBJECT, array( 'page' ) ) ),
+					'palette'                 => ( function () use ( $global_settings ) {
 						return array_reverse(
 							array_map(
 								function ( $palette, $key ) {
@@ -143,7 +144,7 @@ class Manager {
 							)
 						);
 					} )(),
-					'fontFamilies'         => ( function () use ( $global_settings ) {
+					'fontFamilies'            => ( function () use ( $global_settings ) {
 						return array_map(
 							function ( $font_family ) {
 								return array(
@@ -158,7 +159,7 @@ class Manager {
 							)
 						);
 					} )(),
-					'fontSizes'            => ( function () use ( $global_settings ) {
+					'fontSizes'               => ( function () use ( $global_settings ) {
 						$scale = -2;
 						return array_map(
 							function ( $font_size ) use ( &$scale ) {
@@ -174,8 +175,8 @@ class Manager {
 							$global_settings['typography']['fontSizes']['theme']
 						);
 					} )(),
-					'customTemplates'      => $custom_templates,
-					'usingCustomTemplates' => $using_custom_templates,
+					'customTemplates'         => $custom_templates,
+					'usingCustomTemplates'    => $using_custom_templates,
 				)
 			)
 		);

@@ -119,6 +119,9 @@ require get_template_directory() . '/inc/oembed.php';
 // Thumbnail settings.
 require get_template_directory() . '/inc/thumbnail.php';
 
+// OGP settings.
+require get_template_directory() . '/inc/ogp.php';
+
 // Add unitone blocks.
 require get_template_directory() . '/inc/unitone-blocks.php';
 

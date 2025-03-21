@@ -116,6 +116,14 @@ function unitone_enqueue_block_editor_assets() {
 		);
 	}
 
+	do_action( 'unitone_enqueue_block_editor_assets' );
+}
+add_action( 'enqueue_block_assets', 'unitone_enqueue_block_editor_assets', 9 );
+
+/**
+ * Add global variables for block editor.
+ */
+foreach ( array( 'unitone_enqueue_block_editor_assets', 'unitone_setup_enqueue_assets' ) as $hook ) {
 	wp_localize_script(
 		'wp-block-editor',
 		'unitone',
@@ -126,7 +134,6 @@ function unitone_enqueue_block_editor_assets() {
 		)
 	);
 }
-add_action( 'enqueue_block_assets', 'unitone_enqueue_block_editor_assets', 9 );
 
 /**
  * Enqueue block styles.

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-03-11T05:35:40+00:00\n"
-"PO-Revision-Date: 2025-03-11 14:36+0900\n"
+"POT-Creation-Date: 2025-03-19T15:24:28+00:00\n"
+"PO-Revision-Date: 2025-03-20 00:27+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -49,14 +49,14 @@ msgstr "%sのメガメニュー"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:370 patterns/footer-2.php:21
+#: App/Controller/Manager/Manager.php:371 patterns/footer-2.php:21
 #: patterns/footer-3.php:50 patterns/footer-3.php:58 patterns/footer-3.php:66
 #: patterns/footer-4.php:30 patterns/footer-4.php:38 patterns/footer-4.php:46
 #: patterns/footer-5.php:28 patterns/footer-5.php:36 patterns/footer-5.php:44
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:413 patterns/footer-2.php:24
+#: App/Controller/Manager/Manager.php:414 patterns/footer-2.php:24
 #: patterns/footer-3.php:53 patterns/footer-3.php:61 patterns/footer-3.php:69
 #: patterns/footer-4.php:33 patterns/footer-4.php:41 patterns/footer-4.php:49
 #: patterns/footer-5.php:31 patterns/footer-5.php:39 patterns/footer-5.php:47
@@ -65,20 +65,20 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:516
+#: App/Controller/Manager/Manager.php:517
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:519
+#: App/Controller/Manager/Manager.php:520
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:523
+#: App/Controller/Manager/Manager.php:524
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
-#: App/Controller/Manager/Manager.php:546
+#: App/Controller/Manager/Manager.php:547
 msgid ""
 "You have not set a valid license key. Setting a license key will allow you "
 "to use patterns registered in %3$sthe pattern library%4$s. It will also "
@@ -1498,6 +1498,17 @@ msgid "Site Icons should be square and at least %s pixels."
 msgstr "サイトアイコンは%sピクセル以上の正方形にしてください。"
 
 #: App/Controller/Manager/dist/js/app.js:7
+msgid "Default Featured Image"
+msgstr "デフォルトアイキャッチ画像"
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgid ""
+"This is the image that will be used as a fallback if no featured image is "
+"set."
+msgstr ""
+"アイキャッチ画像が設定されていない場合にフォールバックとして使用されます。"
+
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Colors"
 msgstr "色"
 
@@ -1666,7 +1677,7 @@ msgid "Style"
 msgstr "スタイル"
 
 #: App/Controller/Manager/dist/js/app.js:9 dist/blocks/layers/index.js:1
-#: dist/blocks/section/index.js:1
+#: dist/blocks/section/index.js:1 dist/js/editor/editor.js:13
 msgid "Default"
 msgstr "デフォルト"
 
@@ -1689,6 +1700,51 @@ msgstr "メディア"
 #: App/Controller/Manager/dist/js/app.js:9
 msgid "Simple"
 msgstr "シンプル"
+
+#: App/Controller/Manager/dist/js/app.js:9 dist/js/editor/editor.js:13
+msgid "OGP"
+msgstr "OGP"
+
+#: App/Controller/Manager/dist/js/app.js:9
+msgid "OGP Tags"
+msgstr "OGP タグ"
+
+#: App/Controller/Manager/dist/js/app.js:9
+msgid "Output"
+msgstr "出力"
+
+#: App/Controller/Manager/dist/js/app.js:9
+msgid "Twitter Cards"
+msgstr "Twitter Cards"
+
+#: App/Controller/Manager/dist/js/app.js:9
+msgid "twitter:site"
+msgstr "twitter:site"
+
+#: App/Controller/Manager/dist/js/app.js:9
+msgid "@username for the website used in the card footer."
+msgstr "カードフッターで使用されるウェブサイトの@ユーザー名。"
+
+#: App/Controller/Manager/dist/js/app.js:9
+msgid "Generated Thumbnail"
+msgstr "生成サムネイル"
+
+#: App/Controller/Manager/dist/js/app.js:9
+msgid "Featured Image"
+msgstr "アイキャッチ画像"
+
+#: App/Controller/Manager/dist/js/app.js:9
+msgid "Aspect Ratio"
+msgstr "アスペクト比"
+
+#: App/Controller/Manager/dist/js/app.js:9
+msgid "The aspect ratio for featured images generated based on post title."
+msgstr "投稿タイトルに基づいて生成されるアイキャッチ画像のアスペクト比。"
+
+#: App/Controller/Manager/dist/js/app.js:9
+#: dist/blocks/abstract-background/index.js:1 dist/js/editor/editor.js:13
+msgid "Background"
+msgstr "背景"
 
 #: App/Controller/Manager/dist/js/app.js:9
 msgid "Go to the Dashboard"
@@ -1732,10 +1788,6 @@ msgstr "アブストラクト背景"
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Settings"
 msgstr "設定"
-
-#: dist/blocks/abstract-background/index.js:1
-msgid "Background"
-msgstr "背景"
 
 #: dist/blocks/accordion/index.js:1
 msgid "Mark"
@@ -2990,6 +3042,22 @@ msgid "Cell Min Width"
 msgstr "セルの最小幅"
 
 #: dist/js/editor/editor.js:13
+msgid "Show block outline"
+msgstr "ブロックのアウトラインを表示"
+
+#: dist/js/editor/editor.js:13
+msgid "Featured image generator settings"
+msgstr "アイキャッチ画像ジェネレーター設定"
+
+#: dist/js/editor/editor.js:13
+msgid "Generate featured image"
+msgstr "アイキャッチ画像を生成"
+
+#: dist/js/editor/editor.js:13
+msgid "Aspect ratio"
+msgstr "アスペクト比"
+
+#: dist/js/editor/editor.js:13
 msgid "Select parent block"
 msgstr "親ブロックを選択"
 
@@ -2998,8 +3066,31 @@ msgid "Select child block"
 msgstr "子ブロックを選択"
 
 #: dist/js/editor/editor.js:13
-msgid "Show block outline"
-msgstr "ブロックのアウトラインを表示"
+msgid "OGP image generator settings"
+msgstr "OGP 画像ジェネレーター設定"
+
+#: dist/js/editor/editor.js:13
+msgid "Could not retrieve the OGP image data."
+msgstr "OGP 画像データを取得できませんでした。"
+
+#: dist/js/editor/editor.js:13
+msgid "Edit or replace the OGP image"
+msgstr "OGP 画像の編集または置換"
+
+#: dist/js/editor/editor.js:13
+msgid "OGP image"
+msgstr "OGP 画像"
+
+#: dist/js/editor/editor.js:13
+msgid "Generate OGP image"
+msgstr "OGP 画像を生成"
+
+#: dist/js/editor/editor.js:13
+msgid ""
+"If no OGP image is set, the featured image will be used as the og:image."
+msgstr ""
+"OGP画像が設定されていない場合、アイキャッチ画像が og:image として使用されま"
+"す。"
 
 #: dist/js/editor/editor.js:13 dist/js/editor/editor.js:17
 msgid "Wireframe Generator"
@@ -4245,12 +4336,3 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
-
-#~ msgid "Cover content (Top)"
-#~ msgstr "カバーコンテンツ（上部）"
-
-#~ msgid "Cover content (Center)"
-#~ msgstr "カバーコンテンツ（中央）"
-
-#~ msgid "Cover content (Bottom)"
-#~ msgstr "カバーコンテンツ（下部）"

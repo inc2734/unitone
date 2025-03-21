@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12bbdcc91e99b5912eac84272e3c7443",
+    "content-hash": "a682e5bec9da3441c600e3d24615e31f",
     "packages": [
         {
             "name": "inc2734/wp-breadcrumbs",
@@ -141,6 +141,51 @@
                 "source": "https://github.com/inc2734/wp-oembed-blog-card/tree/14.0.1"
             },
             "time": "2025-01-28T15:17:53+00:00"
+        },
+        {
+            "name": "inc2734/wp-ogp",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inc2734/wp-ogp.git",
+                "reference": "45eecd38662770f2ce4d53f097f23bbcc62a25f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inc2734/wp-ogp/zipball/45eecd38662770f2ce4d53f097f23bbcc62a25f2",
+                "reference": "45eecd38662770f2ce4d53f097f23bbcc62a25f2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "wp-coding-standards/wpcs": "^2.3",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Inc2734\\WP_OGP\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Takashi Kitajima",
+                    "email": "inc@2inc.org"
+                }
+            ],
+            "description": "A library for WordPress OGP.",
+            "support": {
+                "issues": "https://github.com/inc2734/wp-ogp/issues",
+                "source": "https://github.com/inc2734/wp-ogp/tree/2.0.3"
+            },
+            "time": "2023-05-26T00:46:19+00:00"
         }
     ],
     "packages-dev": [

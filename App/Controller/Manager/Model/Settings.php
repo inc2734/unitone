@@ -22,23 +22,28 @@ class Settings {
 	 * @var array
 	 */
 	protected static $default_settings = array(
-		'license-key'               => '',
-		'base-font-size'            => '16',
-		'half-leading'              => '0.4',
-		'min-half-leading'          => '0.1',
-		'h2-size'                   => '3',
-		'h3-size'                   => '2',
-		'h4-size'                   => '1',
-		'h5-size'                   => '0',
-		'h6-size'                   => '0',
-		'accent-color'              => '#090a0b', // settings.color.palette > unitone-accent.
-		'enabled-custom-templates'  => array( 'template-page-header-footer' ),
-		'wp-oembed-blog-card-style' => 'default',
-		'font-family'               => null, // Deprecated.
-		'background-color'          => null, // Deprecated.
-		'text-color'                => null, // Deprecated.
-		'content-size'              => null, // Deprecated.
-		'wide-size'                 => null, // Deprecated.
+		'license-key'                           => '',
+		'default-featured-image'                => false,
+		'generated-featured-image-aspect-ratio' => '4:3',
+		'base-font-size'                        => '16',
+		'half-leading'                          => '0.4',
+		'min-half-leading'                      => '0.1',
+		'h2-size'                               => '3',
+		'h3-size'                               => '2',
+		'h4-size'                               => '1',
+		'h5-size'                               => '0',
+		'h6-size'                               => '0',
+		'accent-color'                          => '#090a0b', // settings.color.palette > unitone-accent.
+		'enabled-custom-templates'              => array( 'template-page-header-footer' ),
+		'wp-oembed-blog-card-style'             => 'default',
+		'output-ogp-tags'                       => false,
+		'twitter-site'                          => '',
+		'generated-thumbnail-background'        => '',
+		'font-family'                           => null, // Deprecated.
+		'background-color'                      => null, // Deprecated.
+		'text-color'                            => null, // Deprecated.
+		'content-size'                          => null, // Deprecated.
+		'wide-size'                             => null, // Deprecated.
 	);
 
 	/**

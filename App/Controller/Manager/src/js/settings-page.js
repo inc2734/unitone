@@ -20,6 +20,8 @@ import Layout from './panels/layout';
 import Homepage from './panels/homepage';
 import CustomTemplates from './panels/custom-templates';
 import BlogCard from './panels/blog-card';
+import OGP from './panels/ogp';
+import GeneratedThumbnail from './panels/generated-thumbnail';
 
 export default function () {
 	const [ defaultSettings, setDefaultSettings ] = useState( [] );
@@ -189,6 +191,18 @@ export default function () {
 										/>
 
 										<BlogCard
+											settings={ settings }
+											defaultSettings={ defaultSettings }
+											setSettings={ setSettings }
+										/>
+
+										<OGP
+											settings={ settings }
+											defaultSettings={ defaultSettings }
+											setSettings={ setSettings }
+										/>
+
+										<GeneratedThumbnail
 											settings={ settings }
 											defaultSettings={ defaultSettings }
 											setSettings={ setSettings }

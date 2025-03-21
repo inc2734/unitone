@@ -16,6 +16,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 	const [ siteLogoUrl, setSiteLogoUrl ] = useState( undefined );
 	const [ siteIconUrl, setSiteIconUrl ] = useState( undefined );
+	const [ defaultFeaturedImageUrl, setDefaultFeaturedImageUrl ] =
+		useState( undefined );
 
 	const saveSettings = () => {
 		setSettingsSaving( true );
@@ -25,6 +27,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			data: {
 				'site-logo': settings?.[ 'site-logo' ] ?? null,
 				'site-icon': settings?.[ 'site-icon' ] ?? null,
+				'default-featured-image':
+					settings?.[ 'default-featured-image' ] ?? null,
 				'accent-color': settings?.[ 'accent-color' ] ?? null,
 				'background-color': null, // Deprecated.
 				'text-color': null, // Deprecated.
@@ -71,6 +75,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			...settings,
 			'site-logo': undefined,
 			'site-icon': undefined,
+			'default-featured-image': undefined,
 			'accent-color': defaultSettings[ 'accent-color' ],
 			'background-color': null, // Deprecated.
 			'text-color': null, // Deprecated.
@@ -105,12 +110,14 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		} );
 		setSiteLogoUrl( undefined );
 		setSiteIconUrl( undefined );
+		setDefaultFeaturedImageUrl( undefined );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
 			data: {
 				'site-logo': null,
 				'site-icon': null,
+				'default-featured-image': null,
 				'accent-color': null,
 				'background-color': null, // Deprecated.
 				'text-color': null, // Deprecated.
@@ -146,6 +153,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	useEffect( () => {
 		setSiteLogoUrl( window.currentSettings.siteLogoUrl );
 		setSiteIconUrl( window.currentSettings.siteIconUrl );
+		setDefaultFeaturedImageUrl(
+			window.currentSettings.defaultFeaturedImageUrl
+		);
 	}, [] );
 
 	const paletteColors = [
@@ -381,6 +391,93 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 														) }
 														style={ {
 															maxWidth: '120px',
+															height: 'auto',
+														} }
+													/>
+												</div>
+											);
+										}
+
+										return (
+											<Button
+												variant="secondary"
+												onClick={ open }
+											>
+												{ __(
+													'Select Image',
+													'unitone'
+												) }
+											</Button>
+										);
+									} }
+								/>
+							</BaseControl>
+						</div>
+					</div>
+
+					<div
+						data-unitone-layout="with-sidebar -sidebar:left"
+						style={ { '--unitone--sidebar-width': '20em' } }
+					>
+						<div data-unitone-layout="stack">
+							<h3>
+								{ __( 'Default Featured Image', 'unitone' ) }
+							</h3>
+						</div>
+						<div>
+							<BaseControl
+								__nextHasNoMarginBottom
+								id="unitone-settings-default-featured-image"
+								help={ __(
+									'This is the image that will be used as a fallback if no featured image is set.',
+									'unitone'
+								) }
+							>
+								<MediaUpload
+									onSelect={ ( media ) => {
+										setSettings( {
+											...settings,
+											'default-featured-image': media.id,
+										} );
+										setDefaultFeaturedImageUrl( media.url );
+									} }
+									type="image"
+									value={
+										settings?.[ 'default-featured-image' ]
+									}
+									render={ ( { open } ) => {
+										if ( defaultFeaturedImageUrl ) {
+											return (
+												<div data-unitone-layout="cluster -gap:-1 -align-items:center">
+													<Button
+														variant="secondary"
+														onClick={ () => {
+															setSettings( {
+																...settings,
+																'default-featured-image':
+																	null,
+															} );
+															setDefaultFeaturedImageUrl(
+																undefined
+															);
+														} }
+													>
+														{ __(
+															'Remove Image',
+															'unitone'
+														) }
+													</Button>
+
+													<img
+														src={
+															defaultFeaturedImageUrl
+														}
+														alt={ __(
+															'Default Featured Image',
+															'unitone'
+														) }
+														style={ {
+															maxWidth: '480px',
 															height: 'auto',
 														} }
 													/>
@@ -649,7 +746,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 					</div>
 				</div>
 
-				<div data-unitone-layout="cluster">
+				<div data-unitone-layout="cluster -gap:-1">
 					<Button
 						variant="primary"
 						onClick={ saveSettings }

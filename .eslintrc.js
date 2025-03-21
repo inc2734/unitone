@@ -7,6 +7,9 @@ module.exports = {
 		unitone: true,
 		Swiper: true,
 		IntersectionObserver: true,
+		DOMParser: true,
+		TextEncoder: true,
+		Image: true,
 	},
 	settings: {
 		'import/resolver': {

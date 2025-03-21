@@ -156,13 +156,14 @@
 	}
 
 	// Toggle icons
-	.wp-block-navigation__submenu-icon {
+	.wp-block-navigation__submenu-icon:not(:root) {
 		flex: 0;
 		align-items: center;
 		align-self: stretch;
 		margin: 0 !important;
 		height: auto;
 		width: auto;
+		padding-right: 0;
 		padding-left: var(--unitone--s-2);
 
 		svg {

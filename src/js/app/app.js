@@ -189,23 +189,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 } );
 
 /**
- * When “Open on click”, the submenu dropdown opens and closes when the toggle button is clicked.
- */
-document.addEventListener( 'DOMContentLoaded', () => {
-	[].slice
-		.call(
-			document.querySelectorAll(
-				'.wp-block-navigation-submenu__toggle + span.wp-block-navigation__submenu-icon'
-			)
-		)
-		.forEach( ( node ) => {
-			node.addEventListener( 'click', () => {
-				node.previousElementSibling.click();
-			} );
-		} );
-} );
-
-/**
  * Block link with Query block.
  */
 document.addEventListener( 'DOMContentLoaded', () => {

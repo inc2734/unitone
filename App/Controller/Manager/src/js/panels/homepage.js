@@ -22,13 +22,13 @@ export default function ( { settings, setSettings } ) {
 		} );
 	};
 
-	async function saveSettings() {
+	function saveSettings() {
 		setSettingsSaving( true );
 
 		const newSettings = { ...settings };
 
 		if ( !! homepagePattern && ! isCreatedHomepage ) {
-			await apiFetch( {
+			apiFetch( {
 				path: '/unitone/v1/homepage',
 				method: 'POST',
 				data: { pattern: homepagePattern },
@@ -57,7 +57,7 @@ export default function ( { settings, setSettings } ) {
 		}
 
 		if ( shouldCreatePostsPage && ! isCreatedPostsPage ) {
-			await apiFetch( {
+			apiFetch( {
 				path: '/unitone/v1/posts-page',
 				method: 'POST',
 			} ).then( ( response ) => {
@@ -84,7 +84,7 @@ export default function ( { settings, setSettings } ) {
 			} );
 		}
 
-		await apiFetch( {
+		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
 			data: {

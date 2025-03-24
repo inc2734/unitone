@@ -14,7 +14,10 @@ import { store as editorStore } from '@wordpress/editor';
 import { useState, useMemo, useRef } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
 import { settings, published, Icon } from '@wordpress/icons';
+import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
+
+import apiFetch from '@wordpress/api-fetch';
 
 import { BACKGROUNDS } from '../../../../blocks/abstract-background/constant';
 
@@ -24,28 +27,25 @@ export const fetchSVGData = async ( {
 	aspectRatio,
 	background,
 } ) => {
-	const params = new URLSearchParams( {
-		post_id: postId,
-		text: postTitle,
-		'aspect-ratio': aspectRatio,
-		background,
-	} );
+	try {
+		const response = await apiFetch( {
+			path: addQueryArgs( '/unitone/v1/thumbnail', {
+				post_id: postId,
+				text: postTitle,
+				'aspect-ratio': aspectRatio,
+				background,
+			} ),
+			parse: false,
+		} );
 
-	const response = await fetch(
-		`/wp-json/unitone/v1/thumbnail?${ params.toString() }`,
-		{
-			method: 'GET',
-			headers: {
-				'X-WP-Nonce': window.unitoneFeaturedImageGenerator.nonce,
-			},
+		if ( ! response.ok ) {
+			throw new Error( 'Failed to upload media.' );
 		}
-	);
 
-	if ( ! response.ok ) {
-		throw new Error( `SVG fetch failed: ${ response.status }` );
+		return response.text();
+	} catch ( error ) {
+		console.error( error ); // eslint-disable-line no-console
 	}
-
-	return await response.text();
 };
 
 export const convertSVGToPNGBlob = ( svgData ) => {
@@ -98,19 +98,17 @@ export const uploadMedia = async ( { blob, postId, filename } ) => {
 	formData.append( 'file', blob, filename );
 	formData.append( 'post', postId );
 
-	const response = await fetch( '/wp-json/wp/v2/media', {
-		method: 'POST',
-		headers: {
-			'X-WP-Nonce': window.unitoneFeaturedImageGenerator.nonce,
-		},
-		body: formData,
-	} );
+	try {
+		const media = await apiFetch( {
+			path: '/wp/v2/media',
+			method: 'POST',
+			body: formData,
+		} );
 
-	if ( ! response.ok ) {
-		throw new Error( 'Failed to upload media.' );
+		return media; // media object
+	} catch ( error ) {
+		console.error( error ); // eslint-disable-line no-console
 	}
-
-	return await response.json(); // media object
 };
 
 export const BackgroundControl = ( { background, setBackground } ) => {
@@ -231,17 +229,14 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 		const { editPost } = useDispatch( editorStore );
 
 		const setFeaturedImage = async ( mediaId ) => {
-			const response = await fetch( `/wp-json/wp/v2/posts/${ postId }`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					'X-WP-Nonce': window.unitoneFeaturedImageGenerator.nonce,
-				},
-				body: JSON.stringify( { featured_media: mediaId } ),
-			} );
-
-			if ( ! response.ok ) {
-				throw new Error( 'Failed to set featured image.' );
+			try {
+				await apiFetch( {
+					path: `/wp/v2/posts/${ postId }`,
+					method: 'POST',
+					body: { featured_media: mediaId },
+				} );
+			} catch ( error ) {
+				console.error( error ); // eslint-disable-line no-console
 			}
 		};
 

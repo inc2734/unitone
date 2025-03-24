@@ -77,20 +77,18 @@ export function useHalfLeadingBlockProps( settings ) {
 		}
 
 		if ( null != newHalfLeading ) {
-			( async () => {
-				await apiFetch( {
-					path: addQueryArgs( '/unitone/v1/settings', {
-						keys: [ 'half-leading', 'min-half-leading' ],
-					} ),
-				} ).then( ( themeSettings ) => {
-					setBaseHalfLeading(
-						parseFloat( themeSettings?.[ 'half-leading' ] )
-					);
-					setBaseMinHalfLeading(
-						parseFloat( themeSettings?.[ 'min-half-leading' ] )
-					);
-				} );
-			} )();
+			apiFetch( {
+				path: addQueryArgs( '/unitone/v1/settings', {
+					keys: [ 'half-leading', 'min-half-leading' ],
+				} ),
+			} ).then( ( themeSettings ) => {
+				setBaseHalfLeading(
+					parseFloat( themeSettings?.[ 'half-leading' ] )
+				);
+				setBaseMinHalfLeading(
+					parseFloat( themeSettings?.[ 'min-half-leading' ] )
+				);
+			} );
 		} else {
 			setBaseHalfLeading( undefined );
 			setBaseMinHalfLeading( undefined );

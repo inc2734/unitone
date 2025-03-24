@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 18.2.3\n"
+"Project-Id-Version: unitone 18.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-19T15:24:28+00:00\n"
+"POT-Creation-Date: 2025-03-24T10:46:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -1730,7 +1730,7 @@ msgid "OGP Tags"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:9
-msgid "Output"
+msgid "Output tags"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:9

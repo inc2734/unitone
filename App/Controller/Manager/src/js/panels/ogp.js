@@ -68,7 +68,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							<div data-unitone-layout="stack -gap:-2">
 								<ToggleControl
 									__nextHasNoMarginBottom
-									label={ __( 'Output', 'unitone' ) }
+									label={ __( 'Output tags', 'unitone' ) }
 									checked={
 										settings?.[ 'output-ogp-tags' ] ?? false
 									}

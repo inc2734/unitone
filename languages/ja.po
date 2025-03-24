@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-03-19T15:24:28+00:00\n"
-"PO-Revision-Date: 2025-03-20 00:27+0900\n"
+"POT-Creation-Date: 2025-03-24T10:46:40+00:00\n"
+"PO-Revision-Date: 2025-03-24 19:47+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1710,8 +1710,8 @@ msgid "OGP Tags"
 msgstr "OGP タグ"
 
 #: App/Controller/Manager/dist/js/app.js:9
-msgid "Output"
-msgstr "出力"
+msgid "Output tags"
+msgstr "タグを出力する"
 
 #: App/Controller/Manager/dist/js/app.js:9
 msgid "Twitter Cards"

@@ -102,7 +102,9 @@ add_action(
 
 					$convert_path_to_base64 = function ( $path ) {
 						$body   = file_get_contents( $path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-						$type   = mime_content_type( $path );
+						$finfo  = finfo_open( FILEINFO_MIME_TYPE );
+						$type   = finfo_file( $finfo, $path );
+						finfo_close( $finfo );
 						$base64 = 'data:' . $type . ';base64,' . base64_encode( $body ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 						return $base64;
 					};

@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
 	<rect width="100%" height="100%" fill="url(#unitone-abstract-background-curve-1__background)"/>
 	<path d="M352.379 720L191.837 627.311L0 516.554V0H426.219C451.767 28.2354 478.285 56.7373 505.207 84.5385C622.941 206.117 748.412 314.295 912.569 355.466C980.968 372.621 1056.08 378.142 1131.2 383.664C1181.47 387.359 1231.74 391.055 1280 398.238V720H352.379Z" fill="url(#unitone-abstract-background-curve-1__left-top)"/>

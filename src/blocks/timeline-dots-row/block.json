@@ -44,9 +44,6 @@
 			}
 		},
 		"unitone": {
-			"gap": {
-				"splitOnAxis": true
-			},
 			"fluidTypography": true,
 			"halfLeading": true
 		}

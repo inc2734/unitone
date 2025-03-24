@@ -233,6 +233,25 @@
 	background-color: #f0f0f0;
 }
 
+.unitone-button-group {
+	display: flex;
+
+	> * {
+		box-shadow: inset 0 0 0 1px #ccc;
+	}
+
+	> :not(:last-child) {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	> :not(:first-child) {
+		margin-left: -1px;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+}
+
 .unitone-toggle-group-control {
 	border-bottom-right-radius: 0 !important;
 	border-bottom-left-radius: 0 !important;

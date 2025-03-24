@@ -304,14 +304,9 @@ const OGPPanel = () => {
 						setSettingsPopoverAnchor,
 						popoverRef,
 					] ) }
-					style={ {
-						display: 'flex',
-						alignItems: 'center',
-						gap: '8px',
-					} }
+					className="unitone-button-group"
 				>
 					<Button
-						variant="primary"
 						onClick={ handleGenerate }
 						disabled={ isGenerating }
 						style={ { width: '100%', justifyContent: 'center' } }
@@ -329,7 +324,6 @@ const OGPPanel = () => {
 							'unitone'
 						) }
 						id="unitone-ogp-image-generator-button"
-						size="small"
 						icon={ settings }
 						onClick={ () =>
 							setIsOpenSettingsPopover( ( state ) => ! state )

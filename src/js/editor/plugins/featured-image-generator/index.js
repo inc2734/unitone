@@ -276,14 +276,9 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 						setSettingsPopoverAnchor,
 						popoverRef,
 					] ) }
-					style={ {
-						display: 'flex',
-						alignItems: 'center',
-						gap: '8px',
-					} }
+					className="unitone-button-group"
 				>
 					<Button
-						variant="primary"
 						onClick={ handleGenerate }
 						disabled={ isGenerating }
 						style={ {
@@ -305,7 +300,6 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 							'unitone'
 						) }
 						id="unitone-featured-image-generator-button"
-						size="small"
 						icon={ settings }
 						onClick={ () =>
 							setIsOpenSettingsPopover( ( state ) => ! state )

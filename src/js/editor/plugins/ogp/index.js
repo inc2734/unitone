@@ -319,10 +319,7 @@ const OGPPanel = () => {
 					</Button>
 
 					<Button
-						label={ __(
-							'OGP image generator settings',
-							'unitone'
-						) }
+						label={ __( 'Settings', 'unitone' ) }
 						id="unitone-ogp-image-generator-button"
 						icon={ settings }
 						onMouseDown={ ( event ) => {

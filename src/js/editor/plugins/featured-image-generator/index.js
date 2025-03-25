@@ -296,10 +296,7 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 					</Button>
 
 					<Button
-						label={ __(
-							'Featured image generator settings',
-							'unitone'
-						) }
+						label={ __( 'Settings', 'unitone' ) }
 						id="unitone-featured-image-generator-button"
 						icon={ settings }
 						onMouseDown={ ( event ) => {

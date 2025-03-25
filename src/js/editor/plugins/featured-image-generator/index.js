@@ -145,6 +145,7 @@ export const BackgroundControl = ( { background, setBackground } ) => {
 							<img
 								src={ _background.src }
 								alt={ _background.label }
+								style={ { maxWidth: '100%' } }
 							/>
 						) : (
 							<div
@@ -301,6 +302,9 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 						) }
 						id="unitone-featured-image-generator-button"
 						icon={ settings }
+						onMouseDown={ ( event ) => {
+							event.preventDefault();
+						} }
 						onClick={ () =>
 							setIsOpenSettingsPopover( ( state ) => ! state )
 						}
@@ -310,16 +314,7 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 				{ isOpenSettingsPopover && (
 					<Popover
 						className="unitone-featured-image-generator-popover"
-						onClose={ () => {
-							if (
-								'unitone-featured-image-generator-button' ===
-								popoverRef?.current?.ownerDocument
-									?.activeElement?.id
-							) {
-								return;
-							}
-							setIsOpenSettingsPopover( false );
-						} }
+						onClose={ () => setIsOpenSettingsPopover( false ) }
 						focusOnMount
 						{ ...settingsPopoverProps }
 					>

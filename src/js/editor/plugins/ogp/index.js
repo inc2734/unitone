@@ -325,6 +325,9 @@ const OGPPanel = () => {
 						) }
 						id="unitone-ogp-image-generator-button"
 						icon={ settings }
+						onMouseDown={ ( event ) => {
+							event.preventDefault();
+						} }
 						onClick={ () =>
 							setIsOpenSettingsPopover( ( state ) => ! state )
 						}
@@ -334,16 +337,7 @@ const OGPPanel = () => {
 				{ isOpenSettingsPopover && (
 					<Popover
 						className="unitone-featured-image-generator-popover"
-						onClose={ () => {
-							if (
-								'unitone-ogp-image-generator-button' ===
-								popoverRef?.current?.ownerDocument
-									?.activeElement?.id
-							) {
-								return;
-							}
-							setIsOpenSettingsPopover( false );
-						} }
+						onClose={ () => setIsOpenSettingsPopover( false ) }
 						focusOnMount
 						{ ...settingsPopoverProps }
 					>

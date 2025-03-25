@@ -144,6 +144,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 												<img
 													src={ background.src }
 													alt={ background.label }
+													style={ {
+														maxWidth: '100%',
+													} }
 												/>
 											) : (
 												<div

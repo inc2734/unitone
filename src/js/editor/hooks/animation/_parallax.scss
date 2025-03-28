@@ -1,5 +1,11 @@
 [data-unitone-parallax] {
-  will-change: transform, object-position;
+	will-change: transform;
+	backface-visibility: hidden;
+}
+
+[data-unitone-parallax] > img {
+	will-change: object-position;
+	backface-visibility: hidden;
 }
 
 [data-unitone-parallax=disable] {

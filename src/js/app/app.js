@@ -302,3 +302,44 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 	} );
 } );
+
+/**
+ * Page scroll checker.
+ */
+( () => {
+	let previousScrollState = null;
+
+	function updateScrollState() {
+		const isScrolled = window.scrollY > 0;
+
+		if ( isScrolled === previousScrollState ) {
+			return;
+		}
+
+		previousScrollState = isScrolled;
+
+		document.body.classList.remove(
+			'unitone-page-scrolled:true',
+			'unitone-page-scrolled:false'
+		);
+		document.body.classList.add(
+			isScrolled
+				? 'unitone-page-scrolled:true'
+				: 'unitone-page-scrolled:false'
+		);
+	}
+
+	updateScrollState();
+
+	window.addEventListener(
+		'scroll',
+		() => {
+			window.requestAnimationFrame( updateScrollState );
+		},
+		{ passive: true }
+	);
+
+	window.addEventListener( 'resize', () => {
+		window.requestAnimationFrame( updateScrollState );
+	} );
+} )();

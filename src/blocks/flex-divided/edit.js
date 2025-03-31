@@ -54,7 +54,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 		setTimeout( () => {
 			setDividerLinewrap( target );
-		}, 100 );
+		}, 250 );
 
 		const observers = dividersResizeObserver( target, {
 			ignore: {

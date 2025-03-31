@@ -517,6 +517,7 @@ export const SettingsInspectorControls = ( {
 															},
 														} );
 													},
+													clearable: true,
 												},
 												{
 													label: __(
@@ -556,6 +557,8 @@ export const SettingsInspectorControls = ( {
 															},
 														} );
 													},
+													enableAlpha: true,
+													clearable: true,
 												},
 											] }
 											{ ...colorGradientSettings }
@@ -897,6 +900,7 @@ export const SettingsInspectorControls = ( {
 													},
 												} );
 											},
+											clearable: true,
 										},
 									] }
 									{ ...colorGradientSettings }

@@ -53,6 +53,7 @@ function Edit( { attributes, clientId, context, dotColor, setDotColor } ) {
 							label: __( 'Dot color', 'unitone' ),
 							colorValue: dotColor.color,
 							onColorChange: setDotColor,
+							clearable: true,
 						},
 					] }
 					panelId={ clientId }

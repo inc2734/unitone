@@ -152,11 +152,13 @@ function Edit( {
 							label: __( 'Dot color', 'unitone' ),
 							colorValue: dotColor.color,
 							onColorChange: setDotColor,
+							clearable: true,
 						},
 						{
 							label: __( 'Line color', 'unitone' ),
 							colorValue: lineColor.color,
 							onColorChange: setLineColor,
+							clearable: true,
 						},
 					] }
 					panelId={ clientId }

@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Main Area (One Column) for Search Results
+ * Slug: unitone/template/search/main/one-column
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/decorator {"tagName":"main","className":"site-contents"} -->
 <main data-unitone-layout="decorator" class="site-contents">
 	<!-- wp:unitone/section {"tagName":"div","align":"full","unitone":{"padding":"3","maxWidth":"100%","gap":"3"}} -->

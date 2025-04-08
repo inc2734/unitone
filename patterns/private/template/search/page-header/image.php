@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Page Header (Image) for Search Results
+ * Slug: unitone/template/search/page-header/image
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/decorator {"tagName":"header"} -->
 <header data-unitone-layout="decorator">
 	<!-- wp:unitone/layers {"cover":true} -->

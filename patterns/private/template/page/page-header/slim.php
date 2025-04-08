@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Page Header (Slim) for Pages
+ * Slug: unitone/template/page/page-header/slim
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/section {"tagName":"header","align":"full","unitone":{"padding":"0","gutters":"0","maxWidth":"var(--wp--style--global--content-size)"}} -->
 <header class="alignfull unitone-section">
 	<div data-unitone-layout="gutters">

@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Main Area (One Column / Page Header (Featured Image)) for Single Posts
+ * Slug: unitone/template/single/main/one-column-page-header-featured
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/decorator {"tagName":"main","className":"site-contents"} -->
 <main data-unitone-layout="decorator" class="site-contents">
 	<!-- wp:pattern {"slug":"unitone/template/single/page-header/featured"} /-->

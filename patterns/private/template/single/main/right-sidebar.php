@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Main Area (Right Sidebar) for Single Posts
+ * Slug: unitone/template/single/main/right-sidebar
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/decorator {"tagName":"main","className":"site-contents"} -->
 <main data-unitone-layout="decorator" class="site-contents">
 	<!-- wp:unitone/section {"tagName":"div","align":"full","unitone":{"padding":"3","gap":"3"}} -->

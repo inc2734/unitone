@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Page Header for Single Posts
+ * Slug: unitone/template/single/page-header/default
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/section {"tagName":"header","align":"full","unitone":{"padding":"0","gutters":"0","maxWidth":"var(--wp--style--global--content-size)","gap":"-2"}} -->
 <header class="alignfull unitone-section">
 	<div data-unitone-layout="gutters">

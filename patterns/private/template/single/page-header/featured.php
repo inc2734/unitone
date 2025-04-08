@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Page Header (Featured Image) for Single Posts
+ * Slug: unitone/template/single/page-header/featured
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/decorator {"tagName":"header"} -->
 <header data-unitone-layout="decorator">
 	<!-- wp:unitone/layers {"cover":true} -->

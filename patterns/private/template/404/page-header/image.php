@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Page Header (Image) for 404
+ * Slug: unitone/template/404/page-header/image
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/decorator {"tagName":"header"} -->
 <header data-unitone-layout="decorator">
 	<!-- wp:unitone/layers {"cover":true} -->

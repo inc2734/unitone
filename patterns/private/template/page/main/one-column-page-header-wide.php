@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Main Area (One Column / Page Header (Wide)) for Pages
+ * Slug: unitone/template/page/main/one-column-page-header-wide
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/decorator {"tagName":"main","className":"site-contents"} -->
 <main data-unitone-layout="decorator" class="site-contents">
 

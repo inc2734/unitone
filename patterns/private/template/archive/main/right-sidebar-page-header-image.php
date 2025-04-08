@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Main Area (Right Sidebar / Page Header (Image)) for All Archives
+ * Slug: unitone/template/archive/main/right-sidebar-page-header-image
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/decorator {"tagName":"main","className":"site-contents"} -->
 <main data-unitone-layout="decorator" class="site-contents">
 	<!-- wp:pattern {"slug":"unitone/template/archive/page-header/image"} /-->

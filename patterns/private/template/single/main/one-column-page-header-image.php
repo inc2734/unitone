@@ -1,3 +1,10 @@
+<?php
+/**
+ * Title: Main Area (Page Header (Image)) for Single Posts
+ * Slug: unitone/template/single/main/one-column-page-header-image
+ * Inserter: false
+ */
+?>
 <!-- wp:unitone/decorator {"tagName":"main","className":"site-contents"} -->
 <main data-unitone-layout="decorator" class="site-contents">
 	<!-- wp:pattern {"slug":"unitone/template/single/page-header/image"} /-->

@@ -193,7 +193,7 @@ function unitone_enqueue_block_assets() {
 	$link_color = \WP_Theme_JSON_Resolver::get_merged_data( 'theme' )->get_data()['styles']['elements']['link']['color']['text'] ?? '';
 	wp_add_inline_style(
 		'unitone-mega-menu-style',
-		'.unitone-mega-menu__container a:not(.wp-element-button), .editor-styles-wrapper .unitone-mega-menu__container a:not(.wp-element-button) {color: ' . esc_html( $link_color ) . '}'
+		'.unitone-mega-menu__container :where(a:not(.wp-element-button)), .editor-styles-wrapper .unitone-mega-menu__container :where(a:not(.wp-element-button)) {color: ' . esc_html( $link_color ) . '}'
 	);
 }
 add_action( 'enqueue_block_assets', 'unitone_enqueue_block_assets', 11 );

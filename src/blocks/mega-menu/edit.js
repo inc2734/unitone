@@ -9,7 +9,7 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 	withColors,
-	__experimentalLinkControl as LinkControl,
+	LinkControl,
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';

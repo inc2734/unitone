@@ -7,7 +7,7 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
-	__experimentalLinkControl as LinkControl,
+	LinkControl,
 } from '@wordpress/block-editor';
 
 import {

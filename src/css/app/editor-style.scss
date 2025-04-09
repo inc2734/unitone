@@ -65,6 +65,6 @@ div:where(.editor-styles-wrapper.block-editor-writing-flow),
 	}
 
 	.wp-block-table:not(:has(> table)) {
-		display: block;
+		width: auto;
 	}
 }

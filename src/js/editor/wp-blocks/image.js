@@ -205,6 +205,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						panelId={ clientId }
 					>
 						<RangeControl
+							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Overlay opacity', 'unitone' ) }
 							value={ attributes?.unitone?.overlay?.dimRatio }
@@ -220,7 +221,6 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 							max={ 100 }
 							step={ 10 }
 							required
-							__next40pxDefaultSize
 						/>
 					</ToolsPanelItem>
 				</InspectorControls>

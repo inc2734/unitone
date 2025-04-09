@@ -72,6 +72,7 @@ export function MinHeightEdit( {
 
 	return (
 		<TextControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.minHeight ?? defaultValue ?? '' }

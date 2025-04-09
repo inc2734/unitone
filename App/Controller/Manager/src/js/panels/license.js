@@ -108,6 +108,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								style={ { '--unitone--sidebar-width': '25px' } }
 							>
 								<TextControl
+									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									help={ __(
 										'If the license key entered is valid, the theme can be updated.',

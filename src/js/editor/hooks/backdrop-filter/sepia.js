@@ -84,6 +84,7 @@ export function SepiaEdit( {
 
 	return (
 		<RangeControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ parseInt(

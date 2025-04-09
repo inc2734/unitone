@@ -90,6 +90,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						</div>
 						<div data-unitone-layout="stack">
 							<UnitControl
+								__next40pxDefaultSize
 								label={ __( 'Content Width', 'unitone' ) }
 								value={
 									settings?.settings?.layout?.contentSize ||
@@ -111,6 +112,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							/>
 
 							<UnitControl
+								__next40pxDefaultSize
 								label={ __( 'Wide', 'unitone' ) }
 								value={
 									settings?.settings?.layout?.wideSize || ''

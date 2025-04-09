@@ -72,6 +72,7 @@ export function MaxHeightEdit( {
 
 	return (
 		<TextControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.maxHeight ?? defaultValue ?? '' }

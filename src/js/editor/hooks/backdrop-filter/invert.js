@@ -84,6 +84,7 @@ export function InvertEdit( {
 
 	return (
 		<RangeControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ parseInt(

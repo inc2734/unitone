@@ -84,6 +84,7 @@ export function BlurEdit( {
 
 	return (
 		<RangeControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ parseInt(

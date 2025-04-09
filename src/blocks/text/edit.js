@@ -135,6 +135,7 @@ export default function ( {
 							}
 						>
 							<TextControl
+								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={
 									<>

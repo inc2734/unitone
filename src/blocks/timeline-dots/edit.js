@@ -116,6 +116,7 @@ function Edit( {
 						}
 					>
 						<ToggleGroupControl
+							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Column layout', 'unitone' ) }
 							value={ columnLayout }

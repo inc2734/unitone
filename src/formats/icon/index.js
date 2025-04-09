@@ -114,6 +114,7 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 				/>
 
 				<RangeControl
+					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					label={ __( 'Stroke width', 'unitone' ) }
 					value={ strokeWidth }

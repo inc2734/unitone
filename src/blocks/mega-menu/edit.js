@@ -297,8 +297,8 @@ function Edit( {
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings' ) }>
 					<TextControl
-						__nextHasNoMarginBottom
 						__next40pxDefaultSize
+						__nextHasNoMarginBottom
 						value={ label || '' }
 						onChange={ ( labelValue ) => {
 							setAttributes( { label: labelValue } );
@@ -307,8 +307,8 @@ function Edit( {
 						autoComplete="off"
 					/>
 					<TextControl
-						__nextHasNoMarginBottom
 						__next40pxDefaultSize
+						__nextHasNoMarginBottom
 						value={ url || '' }
 						onChange={ ( urlValue ) => {
 							setAttributes( { url: urlValue } );
@@ -330,8 +330,8 @@ function Edit( {
 						) }
 					/>
 					<TextControl
-						__nextHasNoMarginBottom
 						__next40pxDefaultSize
+						__nextHasNoMarginBottom
 						value={ title || '' }
 						onChange={ ( titleValue ) => {
 							setAttributes( { title: titleValue } );
@@ -343,8 +343,8 @@ function Edit( {
 						) }
 					/>
 					<TextControl
-						__nextHasNoMarginBottom
 						__next40pxDefaultSize
+						__nextHasNoMarginBottom
 						value={ rel || '' }
 						onChange={ ( relValue ) => {
 							setAttributes( { rel: relValue } );

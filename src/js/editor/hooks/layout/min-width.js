@@ -72,6 +72,7 @@ export function MinWidthEdit( {
 
 	return (
 		<TextControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			help={ __(

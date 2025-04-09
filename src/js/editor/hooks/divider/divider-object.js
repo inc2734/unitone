@@ -185,6 +185,7 @@ export function DividerEdit( {
 	);
 	return (
 		<BorderControl
+			__next40pxDefaultSize
 			label={ label }
 			value={ hydratedDivider }
 			withSlider={ true }

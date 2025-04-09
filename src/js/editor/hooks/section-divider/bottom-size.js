@@ -57,6 +57,7 @@ export function SectionDividerBottomSizeEdit( {
 
 	return (
 		<RangeControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ parseInt(

@@ -243,6 +243,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<RangeControl
+							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __(
 								'Blur the background image/video',
@@ -304,6 +305,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<RangeControl
+							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Columns count', 'unitone' ) }
 							value={ parseInt( columns ) }
@@ -335,6 +337,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<RangeControl
+							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Rows count', 'unitone' ) }
 							value={ parseInt( rows ) }

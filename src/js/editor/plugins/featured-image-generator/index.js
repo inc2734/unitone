@@ -324,6 +324,7 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 						/>
 
 						<SelectControl
+							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Aspect ratio', 'unitone' ) }
 							value={ aspectRatio }

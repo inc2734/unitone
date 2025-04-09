@@ -22,6 +22,7 @@ function Controls( { isMixed, value, onChange, marks, options } ) {
 	return (
 		<>
 			<RangeControl
+				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				className="spacing-sizes-control__range-control"
 				value={ isMixed ? -2 : value }
@@ -45,6 +46,7 @@ function Controls( { isMixed, value, onChange, marks, options } ) {
 
 			<div style={ { marginTop: '5px' } }>
 				<SelectControl
+					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					value={ value ?? '' }
 					options={ options }

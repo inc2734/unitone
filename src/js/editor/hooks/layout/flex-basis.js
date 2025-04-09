@@ -89,6 +89,7 @@ export function FlexBasisEdit( {
 
 	return (
 		<TextControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.flexBasis ?? defaultValue ?? '' }

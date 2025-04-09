@@ -153,6 +153,7 @@ export const SettingsInspectorControls = ( {
 					}
 				>
 					<SelectControl
+						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Effect', 'unitone' ) }
 						value={ effect }
@@ -180,6 +181,7 @@ export const SettingsInspectorControls = ( {
 							} }
 						>
 							<TextControl
+								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={
 									<>
@@ -300,6 +302,7 @@ export const SettingsInspectorControls = ( {
 					}
 				>
 					<RangeControl
+						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Speed (s)', 'unitone' ) }
 						value={ speed ?? 0.3 }
@@ -354,6 +357,7 @@ export const SettingsInspectorControls = ( {
 						}
 					>
 						<RangeControl
+							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Delay (s)', 'unitone' ) }
 							value={ autoplayDelay }
@@ -588,6 +592,7 @@ export const SettingsInspectorControls = ( {
 										} }
 									>
 										<RangeControl
+											__next40pxDefaultSize
 											__nextHasNoMarginBottom
 											label={ __(
 												'Arrows icon line thickness',
@@ -631,6 +636,7 @@ export const SettingsInspectorControls = ( {
 										} }
 									>
 										<RangeControl
+											__next40pxDefaultSize
 											__nextHasNoMarginBottom
 											label={ __(
 												'Arrows icon size',

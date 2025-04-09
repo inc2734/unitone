@@ -105,6 +105,7 @@ export function MaxWidthEdit( {
 			<HStack>
 				{ isPresetValue ? (
 					<ToggleGroupControl
+						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						value={ unitone?.maxWidth ?? defaultValue ?? '' }
 						isBlock
@@ -121,6 +122,7 @@ export function MaxWidthEdit( {
 					</ToggleGroupControl>
 				) : (
 					<TextControl
+						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						id="unitone-max-width-control"
 						value={ unitone?.maxWidth ?? defaultValue ?? '' }

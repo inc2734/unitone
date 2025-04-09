@@ -177,6 +177,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<SelectControl
+							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'HTML element', 'unitone' ) }
 							options={ [
@@ -249,6 +250,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							desktopControls={ () => (
 								<>
 									<ToggleGroupControl
+										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
@@ -287,6 +289,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										{ 'min' === columnsOption && (
 											<>
 												<UnitControl
+													__next40pxDefaultSize
 													label={ __(
 														'Minimum width',
 														'unitone'
@@ -301,6 +304,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												/>
 
 												<ToggleGroupControl
+													__next40pxDefaultSize
 													__nextHasNoMarginBottom
 													label={ __(
 														'Auto repeat',
@@ -329,6 +333,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 										{ 'columns' === columnsOption && (
 											<RangeControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												label={ __(
 													'Columns count',
@@ -351,6 +356,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 										{ 'free' === columnsOption && (
 											<TextControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												value={ gridTemplateColumns }
 												onChange={ ( value ) =>
@@ -367,6 +373,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							tabletControls={ () => (
 								<>
 									<ToggleGroupControl
+										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
@@ -404,6 +411,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<div className="unitone-toggle-group-control__body">
 										{ 'min' === mdColumnsOption && (
 											<UnitControl
+												__next40pxDefaultSize
 												label={ `${ __(
 													'Minimum width',
 													'unitone'
@@ -422,6 +430,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 										{ 'columns' === mdColumnsOption && (
 											<RangeControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												label={ `${ __(
 													'Columns count',
@@ -450,6 +459,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 										{ 'free' === mdColumnsOption && (
 											<TextControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												label={ `${ __(
 													'Free input',
@@ -473,6 +483,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							mobileControls={ () => (
 								<>
 									<ToggleGroupControl
+										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
@@ -510,6 +521,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<div className="unitone-toggle-group-control__body">
 										{ 'min' === smColumnsOption && (
 											<UnitControl
+												__next40pxDefaultSize
 												label={ `${ __(
 													'Minimum width',
 													'unitone'
@@ -528,6 +540,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 										{ 'columns' === smColumnsOption && (
 											<RangeControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												label={ `${ __(
 													'Columns count',
@@ -556,6 +569,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 										{ 'free' === smColumnsOption && (
 											<TextControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												label={ `${ __(
 													'Free input',
@@ -620,6 +634,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							desktopControls={ () => (
 								<>
 									<ToggleGroupControl
+										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
@@ -656,6 +671,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<div className="unitone-toggle-group-control__body">
 										{ 'rows' === rowsOption && (
 											<RangeControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												label={ __(
 													'Rows count',
@@ -677,6 +693,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 										{ 'free' === rowsOption && (
 											<TextControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												value={ gridTemplateRows }
 												onChange={ ( value ) =>
@@ -692,6 +709,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							tabletControls={ () => (
 								<>
 									<ToggleGroupControl
+										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
@@ -722,6 +740,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<div className="unitone-toggle-group-control__body">
 										{ 'rows' === mdRowsOption && (
 											<RangeControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												label={ `${ __(
 													'Rows count',
@@ -747,6 +766,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 										{ 'free' === mdRowsOption && (
 											<TextControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												label={ `${ __(
 													'Free input',
@@ -770,6 +790,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							mobileControls={ () => (
 								<>
 									<ToggleGroupControl
+										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
@@ -800,6 +821,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<div className="unitone-toggle-group-control__body">
 										{ 'rows' === smRowsOption && (
 											<RangeControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												label={ `${ __(
 													'Rows count',
@@ -825,6 +847,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 										{ 'free' === smRowsOption && (
 											<TextControl
+												__next40pxDefaultSize
 												__nextHasNoMarginBottom
 												label={ `${ __(
 													'Free input',

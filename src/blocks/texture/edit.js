@@ -78,6 +78,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<SelectControl
+							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Type', 'unitone' ) }
 							options={ [
@@ -180,6 +181,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<RangeControl
+							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Gap', 'unitone' ) }
 							value={ gap }
@@ -208,6 +210,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							}
 						>
 							<RangeControl
+								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Size', 'unitone' ) }
 								value={ size }

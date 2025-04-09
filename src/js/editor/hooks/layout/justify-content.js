@@ -146,6 +146,7 @@ export function JustifyContentEdit( {
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
 			<ToggleGroupControl
+				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
 				value={ logicalToPhysical(

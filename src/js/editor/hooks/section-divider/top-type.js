@@ -60,6 +60,7 @@ export function SectionDividerTopTypeEdit( {
 
 	return (
 		<SelectControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			help={

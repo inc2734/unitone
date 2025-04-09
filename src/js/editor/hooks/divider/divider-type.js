@@ -103,6 +103,7 @@ export function DividerTypeEdit( {
 
 	return (
 		<SelectControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.dividerType ?? defaultValue ?? '' }

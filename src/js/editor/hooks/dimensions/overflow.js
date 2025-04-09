@@ -95,6 +95,7 @@ export function OverflowEdit( {
 
 	return (
 		<SelectControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			options={ overflowOptions }

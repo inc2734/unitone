@@ -294,6 +294,7 @@ export function AlignSelfEdit( {
 			desktopControls={ () => (
 				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
 					<ToggleGroupControl
+						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={
@@ -318,6 +319,7 @@ export function AlignSelfEdit( {
 			tabletControls={ () => (
 				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
 					<ToggleGroupControl
+						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={
@@ -344,6 +346,7 @@ export function AlignSelfEdit( {
 			mobileControls={ () => (
 				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
 					<ToggleGroupControl
+						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={
@@ -374,6 +377,7 @@ export function AlignSelfEdit( {
 	) : (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
 			<ToggleGroupControl
+				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
 				value={ unitone?.alignSelf ?? defaultValue }

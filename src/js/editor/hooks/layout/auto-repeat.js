@@ -87,6 +87,7 @@ export function AutoRepeatEdit( {
 
 	return (
 		<SelectControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.autoRepeat ?? defaultValue ?? '' }

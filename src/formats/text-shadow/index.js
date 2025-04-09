@@ -149,6 +149,7 @@ function InlineUI( {
 				} }
 			>
 				<RangeControl
+					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					label={ __( 'X', 'unitone' ) }
 					value={ offsetX }
@@ -175,6 +176,7 @@ function InlineUI( {
 				/>
 
 				<RangeControl
+					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					label={ __( 'Y', 'unitone' ) }
 					value={ offsetY }
@@ -201,6 +203,7 @@ function InlineUI( {
 				/>
 
 				<RangeControl
+					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					label={ __( 'Blur', 'unitone' ) }
 					value={ blurRadius }

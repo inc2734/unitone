@@ -168,6 +168,7 @@ export function GridRowEdit( {
 			label={ label }
 			desktopControls={ () => (
 				<TextControl
+					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					hideLabelFromVision
 					help={ help }
@@ -181,6 +182,7 @@ export function GridRowEdit( {
 			) }
 			tabletControls={ () => (
 				<TextControl
+					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					hideLabelFromVision
 					help={ help }
@@ -196,6 +198,7 @@ export function GridRowEdit( {
 			) }
 			mobileControls={ () => (
 				<TextControl
+					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					hideLabelFromVision
 					help={ help }
@@ -215,6 +218,7 @@ export function GridRowEdit( {
 		/>
 	) : (
 		<TextControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			help={ help }

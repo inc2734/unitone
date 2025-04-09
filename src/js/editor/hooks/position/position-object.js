@@ -54,6 +54,7 @@ export function PositionEdit( {
 
 	return (
 		<SelectControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			options={ [
@@ -138,6 +139,7 @@ export function TopEdit( {
 
 	return (
 		<TextControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.position?.top ?? defaultValue?.top ?? '' }
@@ -200,6 +202,7 @@ export function RightEdit( {
 
 	return (
 		<TextControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={
@@ -264,6 +267,7 @@ export function BottomEdit( {
 
 	return (
 		<TextControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.position?.bottom ?? defaultValue?.bottom ?? '' }
@@ -326,6 +330,7 @@ export function LeftEdit( {
 
 	return (
 		<TextControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.position?.left ?? defaultValue?.left ?? '' }
@@ -388,6 +393,7 @@ export function ZIndexEdit( {
 
 	return (
 		<TextControl
+			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.position?.zIndex ?? defaultValue?.zIndex ?? '' }

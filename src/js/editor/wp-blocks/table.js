@@ -84,6 +84,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 							isShownByDefault
 						>
 							<TextControl
+								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Cell Min Width', 'unitone' ) }
 								value={

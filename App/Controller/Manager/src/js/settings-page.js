@@ -1,7 +1,6 @@
 import {
 	Button,
-	__experimentalNavigatorProvider as NavigatorProvider,
-	__experimentalNavigatorScreen as NavigatorScreen,
+	Navigator,
 	__experimentalHeading as Heading,
 	__experimentalHStack as HStack,
 	__experimentalVStack as VStack,
@@ -102,11 +101,11 @@ export default function () {
 						className="edit-site-layout__sidebar-region"
 					>
 						<div className="edit-site-layout__sidebar">
-							<NavigatorProvider
+							<Navigator
 								className="edit-site-sidebar__content"
 								initialPath="/"
 							>
-								<NavigatorScreen path="/">
+								<Navigator.Screen path="/">
 									<VStack
 										className="edit-site-sidebar-navigation-screen__main"
 										spacing={ 0 }
@@ -142,8 +141,8 @@ export default function () {
 											</Heading>
 										</HStack>
 									</VStack>
-								</NavigatorScreen>
-							</NavigatorProvider>
+								</Navigator.Screen>
+							</Navigator>
 						</div>
 					</NavigableRegion>
 

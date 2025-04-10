@@ -47,6 +47,12 @@
 	}
 }
 
+@for $i from 2 through 7 {
+	.unitone-section[data-unitone-layout~="-padding\:#{ $i }m"] {
+		--unitone--padding: var(--unitone--s#{ $i }m) !important;
+	}
+}
+
 .unitone-section[data-unitone-layout*="-section-divider-"] {
 	--unitone--section-divider-max-height: var(--unitone--section--padding);
 }

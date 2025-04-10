@@ -5,55 +5,23 @@ import {
 	FlexBlock,
 	FlexItem,
 	SelectControl,
-	RangeControl,
 } from '@wordpress/components';
 
 import { useState, useMemo, useEffect } from '@wordpress/element';
 import { desktop, tablet, mobile } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
-import { isNumber, useDeviceType } from './utils';
+import { useDeviceType } from './utils';
 
-function Controls( { isMixed, value, onChange, marks, options } ) {
-	if ( ! isMixed ) {
-		value = isNumber( value ) ? parseInt( value ) : undefined;
-	}
-
+function Controls( { value, onChange, options } ) {
 	return (
-		<>
-			<RangeControl
-				__next40pxDefaultSize
-				__nextHasNoMarginBottom
-				className="spacing-sizes-control__range-control"
-				value={ isMixed ? -2 : value }
-				allowReset
-				resetFallbackValue={ undefined }
-				onChange={ onChange }
-				withInputField={ false }
-				aria-valuenow={ value }
-				aria-valuetext={ value }
-				min={ marks[ 0 ]?.value || marks[ 1 ]?.value }
-				max={ marks[ marks.length - 1 ]?.value }
-				marks={ marks }
-				renderTooltipContent={ ( _value ) =>
-					options.filter(
-						( option ) =>
-							parseInt( option.value ) === parseInt( _value )
-					)?.[ 0 ]?.label ?? _value
-				}
-				hideLabelFromVision
-			/>
-
-			<div style={ { marginTop: '5px' } }>
-				<SelectControl
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-					value={ value ?? '' }
-					options={ options }
-					onChange={ onChange }
-				/>
-			</div>
-		</>
+		<SelectControl
+			__next40pxDefaultSize
+			__nextHasNoMarginBottom
+			value={ value ?? '' }
+			onChange={ onChange }
+			options={ options }
+		/>
 	);
 }
 
@@ -70,6 +38,11 @@ export function SpacingSizeControl( {
 		{
 			label: '',
 			value: '',
+		},
+		{
+			label: '----------',
+			value: undefined,
+			disabled: true,
 		},
 		{
 			label: 'XS',
@@ -111,6 +84,35 @@ export function SpacingSizeControl( {
 			label: '5XL',
 			value: 7,
 		},
+		{
+			label: '----------',
+			value: undefined,
+			disabled: true,
+		},
+		{
+			label: `L - M ${ __( '(Mobile: M)', 'unitone' ) }`,
+			value: '2m',
+		},
+		{
+			label: `XL - M ${ __( '(Mobile: M)', 'unitone' ) }`,
+			value: '3m',
+		},
+		{
+			label: `2XL - M ${ __( '(Mobile: M)', 'unitone' ) }`,
+			value: '4m',
+		},
+		{
+			label: `3XL - M ${ __( '(Mobile: M)', 'unitone' ) }`,
+			value: '5m',
+		},
+		{
+			label: `4XL - M ${ __( '(Mobile: M)', 'unitone' ) }`,
+			value: '6m',
+		},
+		{
+			label: `5XL - M ${ __( '(Mobile: M)', 'unitone' ) }`,
+			value: '7m',
+		},
 	];
 
 	options = ! options ? defaultOptions : options;
@@ -123,17 +125,6 @@ export function SpacingSizeControl( {
 		} );
 	}
 
-	const marks = options
-		.map( ( newValue ) => {
-			return isNumber( newValue?.value )
-				? {
-						value: parseInt( newValue?.value ),
-						label: undefined,
-				  }
-				: undefined;
-		} )
-		.filter( Boolean );
-
 	return (
 		<>
 			{ !! label ? (
@@ -143,15 +134,11 @@ export function SpacingSizeControl( {
 					label={ label }
 					className="spacing-sizes-control"
 				>
-					<Controls
-						{ ...{ isMixed, value, onChange, marks, options } }
-					/>
+					<Controls { ...{ value, onChange, options } } />
 				</BaseControl>
 			) : (
 				<div className="spacing-sizes-control">
-					<Controls
-						{ ...{ isMixed, value, onChange, marks, options } }
-					/>
+					<Controls { ...{ value, onChange, options } } />
 				</div>
 			) }
 		</>

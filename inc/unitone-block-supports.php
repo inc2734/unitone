@@ -740,16 +740,18 @@ add_filter(
 				$custom_css = preg_replace( '/\s+/', ' ', $custom_css );
 				$custom_css = trim( $custom_css );
 
-				$custom_css_array = explode( "\n", $custom_css );
-				$custom_css       = implode(
-					"\n",
-					array_filter(
-						$custom_css_array,
-						function ( $line ) {
-							return 0 === strpos( $line, '&' );
+				preg_match_all( '/(@[^{]+\{(?:[^{}]*\{[^{}]*\}[^{}]*)*\})|(&[^{]+\{[^{}]*\})/s', $custom_css, $matches );
+				$filtered_blocks = array();
+				foreach ( $matches[0] as $block ) {
+					if ( preg_match( '/@/', $block ) ) {
+						if ( preg_match( '/\{\s*&[^{]+\{[^}]*\}\s*\}/s', $block ) ) {
+							$filtered_blocks[] = $block;
 						}
-					)
-				);
+					} elseif ( preg_match( '/^\s*&[^{]+\{[^}]*\}/s', $block ) ) {
+						$filtered_blocks[] = $block;
+					}
+				}
+				$custom_css = implode( ' ', $filtered_blocks );
 
 				$custom_css = preg_replace( '|(&)(?=[^{]*\{)|', '[data-unitone-instance-id="' . $instance_id . '"]', $custom_css );
 			}

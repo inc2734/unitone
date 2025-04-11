@@ -22,7 +22,7 @@ export function StyleTag( { unitone } ) {
 		return null;
 	}
 
-	let customCSS = unitone.style
+	const rawCSS = unitone.style
 		.replace( /\r?\n\s*/g, ' ' )
 		.replace( /\s*\{\s*/g, ' { ' )
 		.replace( /\s*;\s*/g, '; ' )
@@ -30,19 +30,26 @@ export function StyleTag( { unitone } ) {
 		.replace( /\}\s*/g, '}\n' )
 		.trim();
 
-	const customCSSArray = customCSS.split( '\n' );
-	customCSS = customCSSArray
-		.filter( ( line ) => {
-			return line.startsWith( '&' );
-		} )
-		.join( '\n' );
+	const blockRegex =
+		/(@[^{]+\{(?:[^{}]*\{[^{}]*\}[^{}]*)*\})|(&[^{]+\{[^}]*\})/gs;
+	const matches = [ ...rawCSS.matchAll( blockRegex ) ];
 
-	customCSS = customCSS.replace(
+	let filteredCSS = matches
+		.map( ( match ) => match[ 0 ] )
+		.filter( ( block ) => {
+			if ( block.startsWith( '@' ) ) {
+				return /{[^{}]*&[^{]+\{[^}]*\}/s.test( block );
+			}
+			return block.trim().startsWith( '&' );
+		} )
+		.join( ' ' );
+
+	filteredCSS = filteredCSS.replace(
 		/(&)(?=[^{]*\{)/g,
 		`[data-unitone-instance-id="${ unitone.instanceId }"]`
 	);
 
-	return <style>{ customCSS }</style>;
+	return <style>{ filteredCSS }</style>;
 }
 
 // @see https://github.com/WordPress/gutenberg/blob/a55c62c5c810c84258afcdac7da1a7019a69b332/packages/block-editor/src/components/global-styles/advanced-panel.js
@@ -93,12 +100,94 @@ export function StyleEdit( {
 		}
 	}
 
-	function handleOnBlur( event ) {
-		let customCSS = event?.target?.value?.trim();
-		if ( !! customCSS ) {
-			customCSS = customCSS.replace( / +/g, ' ' );
-			customCSS = customCSS.replace( /\n &/g, '\n&' );
+	function formatCSS( input ) {
+		const lines = [];
+		let indentLevel = 0;
+		const indentStr = '  ';
+		let buffer = '';
+		const blockStack = [];
+
+		const pushLine = ( line ) => {
+			const trimmed = line.trim();
+			if ( trimmed !== '' ) {
+				lines.push( indentStr.repeat( indentLevel ) + trimmed );
+			}
+		};
+
+		for ( let i = 0; i < input.length; i++ ) {
+			const char = input[ i ];
+
+			if ( char === '{' ) {
+				const trimmed = buffer.trim();
+				const isAtRule = /^@/.test( trimmed );
+				blockStack.push( isAtRule );
+				pushLine( trimmed + ' {' );
+				buffer = '';
+				indentLevel++;
+			} else if ( char === '}' ) {
+				pushLine( buffer );
+				buffer = '';
+				indentLevel--;
+				pushLine( '}' );
+				blockStack.pop();
+			} else if ( char === ';' ) {
+				pushLine( buffer.trim() + ';' );
+				buffer = '';
+			} else if ( char === '\n' || char === '\r' ) {
+				continue;
+			} else {
+				buffer += char;
+			}
 		}
+
+		if ( buffer.trim() ) {
+			pushLine( buffer );
+		}
+
+		let formatted = lines.join( '\n' );
+
+		// Remove space before colon and enforce one space after
+		formatted = formatted.replace( /\s+:/g, ':' ).replace( /:\s*/g, ': ' );
+
+		// Add one space before !important
+		formatted = formatted.replace( /\s*!important/g, ' !important' );
+
+		// Format @rules like @media or @supports
+		formatted = formatted.replace(
+			/@([a-z\-]+)(\s*)\(([^)]+?)\)/gi,
+			( _, atRule, space, conditions ) => {
+				const cleanConditions = conditions
+					.split( /\s+and\s+/i )
+					.map( ( cond ) => cond.replace( /\s*:\s*/g, ': ' ).trim() )
+					.join( ' and ' );
+				return `@${ atRule }${ space }(${ cleanConditions })`;
+			}
+		);
+
+		// Insert blank line before top-level selectors or at-rules, if preceded by a block
+		const formattedLines = formatted.split( '\n' );
+		const resultLines = [];
+
+		for ( let i = 0; i < formattedLines.length; i++ ) {
+			const current = formattedLines[ i ].trim();
+			const previous = formattedLines[ i - 1 ]?.trim() || '';
+
+			const isSelector = /^[.#&a-zA-Z]/.test( current );
+			const isAtRule = /^@/.test( current );
+			const prevIsBrace = previous === '}';
+
+			if ( i > 0 && prevIsBrace && ( isSelector || isAtRule ) ) {
+				resultLines.push( '' );
+			}
+
+			resultLines.push( formattedLines[ i ] );
+		}
+
+		return resultLines.join( '\n' ).trimEnd();
+	}
+
+	function handleOnBlur( event ) {
+		const customCSS = formatCSS( event?.target?.value );
 
 		setAttributes( {
 			unitone: cleanEmptyObject( {

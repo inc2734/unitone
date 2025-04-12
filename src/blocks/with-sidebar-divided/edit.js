@@ -250,7 +250,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							value={ contentMinWidth }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									contentMinWidth: newAttribute,
+									contentMinWidth: newAttribute || undefined,
 								} );
 							} }
 						/>

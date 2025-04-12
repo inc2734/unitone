@@ -26,7 +26,7 @@
 						<!-- wp:unitone/stack {"textColor":"white","unitone":{"gap":"-2"}} -->
 						<div data-unitone-layout="stack" class="has-white-color has-text-color">
 							<!-- wp:heading {"level":1,"fontSize":"unitone-3xl"} -->
-							<h1 class="has-unitone-3-xl-font-size">404</h1>
+							<h1 class="wp-block-heading has-unitone-3-xl-font-size">404</h1>
 							<!-- /wp:heading -->
 						</div>
 						<!-- /wp:unitone/stack -->

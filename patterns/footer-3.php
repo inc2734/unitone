@@ -22,7 +22,7 @@
 
 					<!-- wp:unitone/with-sidebar {"contentMinWidth":"calc(var(--wp--style--global--content-size) / 2)","sidebarWidth":"var(--unitone--pg7)"} -->
 					<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--content-min-width:calc(var(--wp--style--global--content-size) / 2);--unitone--sidebar-width:var(--unitone--pg7)">
-						<!-- wp:unitone/with-sidebar-content -->
+						<!-- wp:unitone/with-sidebar-content {"type":"main"} -->
 						<div data-unitone-layout="with-sidebar__content">
 							<!-- wp:unitone/stack -->
 							<div data-unitone-layout="stack">
@@ -42,7 +42,7 @@
 						</div>
 						<!-- /wp:unitone/with-sidebar-content -->
 
-						<!-- wp:unitone/with-sidebar-content -->
+						<!-- wp:unitone/with-sidebar-content {"type":"aside"} -->
 						<div data-unitone-layout="with-sidebar__content">
 							<!-- wp:unitone/responsive-grid {"columnMinWidth":"150px"} -->
 							<div data-unitone-layout="responsive-grid" style="--unitone--column-min-width:150px">

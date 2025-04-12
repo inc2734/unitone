@@ -5,8 +5,8 @@
  * Inserter: false
  */
 ?>
-<!-- wp:unitone/decorator {"tagName":"main","className":"site-contents"} -->
-<main data-unitone-layout="decorator" class="site-contents">
+<!-- wp:unitone/decorator {"className":"site-contents"} -->
+<div data-unitone-layout="decorator" class="site-contents">
 	<!-- wp:pattern {"slug":"unitone/template/page/page-header/image"} /-->
 
 	<!-- wp:unitone/section {"tagName":"div","align":"full","unitone":{"padding":"3","gap":"3"}} -->
@@ -16,20 +16,20 @@
 				<div data-unitone-layout="stack">
 					<!-- wp:unitone/with-sidebar {"sidebarWidth": "300px","contentMinWidth":"600px","unitone":{"gap":"3"}} -->
 					<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--sidebar-width:300px;--unitone--content-min-width:600px">
-						<!-- wp:unitone/with-sidebar-content -->
-						<div data-unitone-layout="with-sidebar__content">
+						<!-- wp:unitone/with-sidebar-content {"type":"main","tagName":"main"} -->
+						<main data-unitone-layout="with-sidebar__content">
 							<!-- wp:unitone/stack {"unitone":{"gap":"3"}} -->
 							<div data-unitone-layout="stack">
 								<!-- wp:post-content {"layout":{"type":"constrained","contentSize":"100%"},"unitone":{"gutters":"0"}} /-->
 							</div>
 							<!-- /wp:unitone/stack -->
-						</div>
+						</main>
 						<!-- /wp:unitone/with-sidebar-content -->
 
-						<!-- wp:unitone/with-sidebar-content -->
-						<div data-unitone-layout="with-sidebar__content">
+						<!-- wp:unitone/with-sidebar-content {"type":"aside","tagName":"aside"} -->
+						<aside data-unitone-layout="with-sidebar__content">
 							<!-- wp:pattern {"slug":"unitone/sidebar/blog"} /-->
-						</div>
+						</aside>
 						<!-- /wp:unitone/with-sidebar-content -->
 					</div>
 					<!-- /wp:unitone/with-sidebar -->
@@ -38,5 +38,5 @@
 		</div>
 	</div>
 	<!-- /wp:unitone/section -->
-</main>
+</div>
 <!-- /wp:unitone/decorator -->

@@ -11,7 +11,7 @@
 		<div data-unitone-layout="container">
 			<div data-unitone-layout="stack">
 				<!-- wp:heading {"level":1,"fontSize":"unitone-3xl"} -->
-				<h1 class="has-unitone-3-xl-font-size"><?php esc_html_e( 'Search results', 'unitone' ); ?></h1>
+				<h1 class="wp-block-heading has-unitone-3-xl-font-size"><?php esc_html_e( 'Search results', 'unitone' ); ?></h1>
 				<!-- /wp:heading -->
 			</div>
 		</div>

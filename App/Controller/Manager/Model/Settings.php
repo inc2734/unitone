@@ -34,7 +34,7 @@ class Settings {
 		'h5-size'                               => '0',
 		'h6-size'                               => '0',
 		'accent-color'                          => '#090a0b', // settings.color.palette > unitone-accent.
-		'enabled-custom-templates'              => array( 'template-page-header-footer' ),
+		'enabled-custom-templates'              => array( 'template-page-header-footer', 'template-page-blank' ),
 		'wp-oembed-blog-card-style'             => 'default',
 		'output-ogp-tags'                       => false,
 		'twitter-site'                          => '',
@@ -134,9 +134,16 @@ class Settings {
 	public static function get_settings() {
 		$settings = get_option( self::SETTINGS_NAME );
 
-		return is_array( $settings )
+		$settings = is_array( $settings )
 			? static::_remove_nulls( $settings )
 			: array();
+
+		$settings['enabled-custom-templates'] = array_merge(
+			static::$default_settings['enabled-custom-templates'],
+			$settings['enabled-custom-templates']
+		);
+
+		return $settings;
 	}
 
 	/**

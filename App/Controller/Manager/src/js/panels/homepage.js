@@ -22,25 +22,29 @@ export default function ( { settings, setSettings } ) {
 		} );
 	};
 
-	function saveSettings() {
+	async function saveSettings() {
 		setSettingsSaving( true );
 
 		const newSettings = { ...settings };
 
 		if ( !! homepagePattern && ! isCreatedHomepage ) {
-			apiFetch( {
-				path: '/unitone/v1/homepage',
-				method: 'POST',
-				data: { pattern: homepagePattern },
-			} ).then( ( response ) => {
-				if ( !! response?.ID ) {
+			try {
+				const responseHomepage = await apiFetch( {
+					path: '/unitone/v1/homepage',
+					method: 'POST',
+					data: { pattern: homepagePattern },
+				} );
+
+				if ( !! responseHomepage?.ID ) {
 					setIsCreatedHomepage( true );
 
 					setPages( [
 						...[
 							{
-								id: response.ID,
-								title: { rendered: response.post_title },
+								id: responseHomepage.ID,
+								title: {
+									rendered: responseHomepage.post_title,
+								},
 							},
 						],
 						...pages,
@@ -48,27 +52,33 @@ export default function ( { settings, setSettings } ) {
 
 					setSettings( {
 						...settings,
-						'page-on-front': response.ID,
+						'page-on-front': responseHomepage.ID,
 					} );
 
-					newSettings[ 'page-on-front' ] = response.ID;
+					newSettings[ 'page-on-front' ] = responseHomepage.ID;
 				}
-			} );
+			} catch ( error ) {
+				console.error( error ); // eslint-disable-line no-console
+			}
 		}
 
 		if ( shouldCreatePostsPage && ! isCreatedPostsPage ) {
-			apiFetch( {
-				path: '/unitone/v1/posts-page',
-				method: 'POST',
-			} ).then( ( response ) => {
-				if ( !! response?.ID ) {
+			try {
+				const responsePostsPage = await apiFetch( {
+					path: '/unitone/v1/posts-page',
+					method: 'POST',
+				} );
+
+				if ( !! responsePostsPage?.ID ) {
 					setIsCreatedPostsPage( true );
 
 					setPages( [
 						...[
 							{
-								id: response.ID,
-								title: { rendered: response.post_title },
+								id: responsePostsPage.ID,
+								title: {
+									rendered: responsePostsPage.post_title,
+								},
 							},
 						],
 						...pages,
@@ -76,12 +86,14 @@ export default function ( { settings, setSettings } ) {
 
 					setSettings( {
 						...settings,
-						'page-for-posts': response.ID,
+						'page-for-posts': responsePostsPage.ID,
 					} );
 
-					newSettings[ 'page-for-posts' ] = response.ID;
+					newSettings[ 'page-for-posts' ] = responsePostsPage.ID;
 				}
-			} );
+			} catch ( error ) {
+				console.error( error ); // eslint-disable-line no-console
+			}
 		}
 
 		apiFetch( {
@@ -191,110 +203,27 @@ export default function ( { settings, setSettings } ) {
 								<div data-unitone-layout="stack">
 									{ ! isCreatedHomepage && (
 										<>
-											<div data-unitone-layout="responsive-grid -gap:1">
-												<div className="unitone-settings-preview">
-													<div className="unitone-settings-preview__frame">
-														<img
-															src={ `${ settings.templateDirectoryUri }/App/Controller/Manager/dist/img/1.jpg` }
-															alt={ __(
-																'Sample 1',
-																'unitone'
-															) }
-														/>
-													</div>
-													<RadioControl
-														selected={
-															homepagePattern
-														}
-														options={ [
-															{
-																value: 'unitone/page/homepage-1',
-																label: __(
-																	'Sample 1',
-																	'unitone'
-																),
-															},
-														] }
-														onChange={ (
-															newSetting
-														) => {
-															setSettings( {
-																...settings,
-																'page-on-front': 0,
-															} );
-															setHomepagePattern(
-																newSetting
-															);
-														} }
-													/>
-												</div>
-
-												<div className="unitone-settings-preview">
-													<div className="unitone-settings-preview__frame">
-														<img
-															src={ `${ settings.templateDirectoryUri }/App/Controller/Manager/dist/img/2.jpg` }
-															alt={ __(
-																'Sample 2',
-																'unitone'
-															) }
-														/>
-													</div>
-													<RadioControl
-														selected={
-															homepagePattern
-														}
-														options={ [
-															{
-																value: 'unitone/page/homepage-2',
-																label: __(
-																	'Sample 2',
-																	'unitone'
-																),
-															},
-														] }
-														onChange={ (
-															newSetting
-														) => {
-															setSettings( {
-																...settings,
-																'page-on-front': 0,
-															} );
-															setHomepagePattern(
-																newSetting
-															);
-														} }
-													/>
-												</div>
-
-												<div className="unitone-settings-preview">
-													<div className="unitone-settings-preview__frame"></div>
-													<RadioControl
-														selected={
-															homepagePattern
-														}
-														options={ [
-															{
-																value: 'blank',
-																label: __(
-																	'Blank',
-																	'unitone'
-																),
-															},
-														] }
-														onChange={ (
-															newSetting
-														) => {
-															setSettings( {
-																...settings,
-																'page-on-front': 0,
-															} );
-															setHomepagePattern(
-																newSetting
-															);
-														} }
-													/>
-												</div>
-											</div>
+											<RadioControl
+												selected={ homepagePattern }
+												options={ [
+													{
+														value: 'blank',
+														label: __(
+															'Create a new blank page',
+															'unitone'
+														),
+													},
+												] }
+												onChange={ ( newSetting ) => {
+													setSettings( {
+														...settings,
+														'page-on-front': 0,
+													} );
+													setHomepagePattern(
+														newSetting
+													);
+												} }
+											/>
 
 											<div className="unitone-settings-or">
 												or

@@ -275,27 +275,20 @@ class Manager {
 					// The new settings are sent only in difference.
 					// Therefore, there are merged with the stored settings and saved as new settings.
 
-					$new_settings =
-						unitone_array_override_replace_recursive(
-							$default_settings,
-							$saved_settings,
-							array_filter(
-								$settings,
-								function ( $key ) {
-									return ! in_array( $key, array( 'styles', 'settings' ), true );
-								},
-								ARRAY_FILTER_USE_KEY
-							)
-						);
+					$new_settings = unitone_array_filter_override_replace_recursive(
+						$default_settings,
+						$saved_settings,
+						$settings
+					);
 
-					$new_global_styles = unitone_array_override_replace_recursive(
+					$new_global_styles = unitone_array_filter_override_replace_recursive(
 						$default_global_styles,
 						$saved_global_styles,
 						array( 'styles' => $settings['styles'] ?? array() ),
 						array( 'settings' => $settings['settings'] ?? array() )
 					);
 
-					$new_options = unitone_array_override_replace_recursive(
+					$new_options = unitone_array_filter_override_replace_recursive(
 						$default_options,
 						$saved_options,
 						$settings

@@ -36,23 +36,6 @@
 	}
 }
 
-.unitone-settings-preview {
-	display: flex;
-	flex-direction: column;
-	gap: var(--unitone--s-1);
-
-	&__frame {
-		height: 200px;
-		overflow: auto;
-		border: 1px solid #ccc;
-
-		> img {
-			display: table;
-			width: 100%;
-		}
-	}
-}
-
 .unitone-settings-or {
 	display: flex;
 	gap: 1em;

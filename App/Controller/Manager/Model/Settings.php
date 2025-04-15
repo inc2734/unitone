@@ -138,9 +138,13 @@ class Settings {
 			? static::_remove_nulls( $settings )
 			: array();
 
-		$settings['enabled-custom-templates'] = array_merge(
-			static::$default_settings['enabled-custom-templates'],
-			$settings['enabled-custom-templates']
+		$settings['enabled-custom-templates'] = array_values(
+			array_unique(
+				array_merge(
+					static::$default_settings['enabled-custom-templates'],
+					$settings['enabled-custom-templates']
+				)
+			)
 		);
 
 		return $settings;
@@ -197,7 +201,7 @@ class Settings {
 		update_option(
 			self::SETTINGS_NAME,
 			static::_remove_nulls(
-				unitone_array_override_replace_recursive(
+				unitone_array_filter_override_replace_recursive(
 					static::$default_settings,
 					$settings
 				)
@@ -255,15 +259,6 @@ class Settings {
 				$new_options[ $name ] = $settings[ $name ];
 			} else {
 				$new_options[ $name ] = $default;
-			}
-		}
-
-		if ( 'page' === $settings['show-on-front'] ) {
-			if ( isset( $settings['page-on-front'] ) ) {
-				$new_options['page-on-front'] = $settings['page-on-front'];
-			}
-			if ( isset( $settings['page-for-posts'] ) ) {
-				$new_options['page-for-posts'] = $settings['page-for-posts'];
 			}
 		}
 

@@ -391,12 +391,12 @@ add_filter(
 		}
 
 		// --unitone--max-height
-		if ( $has_support( 'maxHeight' ) || $has_supported_attribute( 'minHeight' ) ) {
+		if ( $has_support( 'maxHeight' ) ) {
 			$add_style( '--unitone--max-height', $get_attribute( 'maxHeight' ) );
 		}
 
 		// --unitone--min-height
-		if ( $has_support( 'minHeight' ) ) {
+		if ( $has_support( 'minHeight' ) || $has_supported_attribute( 'minHeight' ) ) {
 			$add_style( '--unitone--min-height', $get_attribute( 'minHeight' ) );
 		}
 

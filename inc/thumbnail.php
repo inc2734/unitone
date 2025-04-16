@@ -90,8 +90,8 @@ add_action(
 							$height                 = 1050;
 							$text_length            = 140;
 							$text_size              = 64;
-							$custom_logo_max_width  = 420;
-							$custom_logo_max_height = 96;
+							$custom_logo_max_width  = 360;
+							$custom_logo_max_height = 72;
 							$blog_name_size         = 42;
 							$padding                = 24 * 3;
 							break;
@@ -110,7 +110,7 @@ add_action(
 							$width                  = 1200;
 							$height                 = 630;
 							$text_length            = 80;
-							$text_size              = 48;
+							$text_size              = 52;
 							$custom_logo_max_width  = 210;
 							$custom_logo_max_height = 48;
 							$blog_name_size         = 36;
@@ -150,7 +150,7 @@ add_action(
 
 					if ( ! $custom_logo ) {
 						$blog_name = sprintf(
-							'<div style="justify-self: end; align-self: end; font-size: %1$dpx; font-family: \'Noto Sans JP\', sans-serif; padding: 0 %2$dpx %2$dpx">
+							'<div style="font-size: %1$dpx; font-family: \'Helvetica Neue\', Arial, \'Hiragino Kaku Gothic ProN\', \'Hiragino Sans\', Meiryo, sans-serif; padding: 0 %2$dpx %2$dpx">
 								%3$s
 							</div>',
 							esc_html( $blog_name_size ),
@@ -186,15 +186,18 @@ add_action(
 									</filter>
 								</defs>
 								%13$s
-								<rect x="%3$d" y="%4$d" width="%5$d" height="%6$d" rx="16" fill="#fff" filter="url(#shadow)" />
+								<rect x="%3$d" y="%4$d" width="%5$d" height="%6$d" rx="24" fill="#fff" filter="url(#shadow)" />
 								<foreignObject x="%3$d" y="%4$d" width="%7$d" height="%8$d">
-									<html xmlns="http://www.w3.org/1999/xhtml" style="width: 100%%; height: 100%%; display: grid; grid-template-rows: 1fr auto">
+									<html xmlns="http://www.w3.org/1999/xhtml" style="width: 100%%; height: 100%%; display: grid; grid-template-rows: repeat(3, 1fr)">
+										<div></div>
 										<div style="display: grid; place-content: center">
-											<div style="font-size: %9$dpx; line-height: 1.6; font-family: \'Noto Sans JP\', sans-serif; padding: %3$dpx">
+											<div style="font-size: %9$dpx; line-height: 1.6; font-family: \'Helvetica Neue\', Arial, \'Hiragino Kaku Gothic ProN\', \'Hiragino Sans\', Meiryo, sans-serif; font-weight: bold; padding: %3$dpx">
 												%10$s
 											</div>
 										</div>
-										%11$s
+										<div style="justify-self: end; align-self: end">
+											%11$s
+										</div>
 									</html>
 								</foreignObject>
 								%12$s

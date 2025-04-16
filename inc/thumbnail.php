@@ -86,17 +86,35 @@ add_action(
 
 					switch ( $aspect_ratio ) {
 						case '4:3':
-							$width  = 1400;
-							$height = 1050;
+							$width                  = 1400;
+							$height                 = 1050;
+							$text_length            = 140;
+							$text_size              = 64;
+							$custom_logo_max_width  = 420;
+							$custom_logo_max_height = 96;
+							$blog_name_size         = 42;
+							$padding                = 24 * 3;
 							break;
 						case '16:9':
-							$width  = 1920;
-							$height = 1080;
+							$width                  = 1920;
+							$height                 = 1080;
+							$text_length            = 120;
+							$text_size              = 72;
+							$custom_logo_max_width  = 420;
+							$custom_logo_max_height = 96;
+							$blog_name_size         = 48;
+							$padding                = 24 * 3;
 							break;
 						case '1.91:1':
 						default:
-							$width  = 1200;
-							$height = 630;
+							$width                  = 1200;
+							$height                 = 630;
+							$text_length            = 80;
+							$text_size              = 48;
+							$custom_logo_max_width  = 210;
+							$custom_logo_max_height = 48;
+							$blog_name_size         = 36;
+							$padding                = 24 * 2;
 							break;
 					}
 
@@ -115,21 +133,28 @@ add_action(
 					if ( has_custom_logo() ) {
 						$custom_logo_id   = get_theme_mod( 'custom_logo' );
 						$custom_logo_path = get_attached_file( $custom_logo_id );
+						$custom_logo_src  = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 
 						if ( $custom_logo_path ) {
 							$base64      = $convert_path_to_base64( $custom_logo_path );
 							$custom_logo = sprintf(
-								'<image href="%1$s" xlink:href="%1$s" width="300" height="24" preserveAspectRatio="xMaxYMid meet" x="%2$d" y="%3$d" />',
+								'<image href="%1$s" xlink:href="%1$s" width="%2$d" height="%3$d" preserveAspectRatio="xMaxYMid meet" x="%4$d" y="%5$d" />',
 								esc_attr( $base64 ),
-								esc_attr( $width - 24 * 3 - 300 ),
-								esc_attr( $height - 24 * 3 - 24 )
+								esc_attr( min( $custom_logo_max_width, $custom_logo_src[0] ) ),
+								esc_attr( min( $custom_logo_max_height, $custom_logo_src[1] ) ),
+								esc_attr( $width - $custom_logo_max_width - $padding * 1.5 ),
+								esc_attr( $height - $custom_logo_max_height - $padding * 1.5 )
 							);
 						}
 					}
 
 					if ( ! $custom_logo ) {
 						$blog_name = sprintf(
-							'<div style="position: absolute; right: 0; bottom: 24px; font-size:24px; font-family: \'Noto Sans JP\'">%s</div>',
+							'<div style="justify-self: end; align-self: end; font-size: %1$dpx; font-family: \'Noto Sans JP\', sans-serif; padding: 0 %2$dpx %2$dpx">
+								%3$s
+							</div>',
+							esc_html( $blog_name_size ),
+							esc_attr( $padding * .5 ),
 							esc_html( get_bloginfo( 'name' ) )
 						);
 					}
@@ -160,27 +185,30 @@ add_action(
 										<feDropShadow dx="0" dy="0" stdDeviation="16" flood-opacity="0.1" />
 									</filter>
 								</defs>
-								%11$s
-								<rect x="48" y="48" width="%3$d" height="%4$d" rx="16" fill="#fff" filter="url(#shadow)" />
-								<foreignObject x="72" y="48" width="%5$d" height="%6$d">
-									<html xmlns="http://www.w3.org/1999/xhtml" style="position: relative; width: 100%%; height: 100%%; display: grid">
-										<style>@font-face{font-family:"Noto Sans JP";font-style:normal;font-weight:400;font-display:fallback;src:url(\'%7$s/dist/fonts/noto-sans-jp/NotoSansJP-Regular.woff2\') format(\'woff2\');}</style>
-										<div style="display: grid; place-items: center; padding: 24px">
-											<div style="font-size: 48px; line-height: 1.6; font-family: \'Noto Sans JP\', sans-serif">%8$s</div>
+								%13$s
+								<rect x="%3$d" y="%4$d" width="%5$d" height="%6$d" rx="16" fill="#fff" filter="url(#shadow)" />
+								<foreignObject x="%3$d" y="%4$d" width="%7$d" height="%8$d">
+									<html xmlns="http://www.w3.org/1999/xhtml" style="width: 100%%; height: 100%%; display: grid; grid-template-rows: 1fr auto">
+										<div style="display: grid; place-content: center">
+											<div style="font-size: %9$dpx; line-height: 1.6; font-family: \'Noto Sans JP\', sans-serif; padding: %3$dpx">
+												%10$s
+											</div>
 										</div>
-										%9$s
+										%11$s
 									</html>
 								</foreignObject>
-								%10$s
+								%12$s
 							</svg>',
-							esc_attr( $width ),
-							esc_attr( $height ),
-							esc_attr( $width - 48 * 2 ),
-							esc_attr( $height - 48 * 2 ),
-							esc_attr( $width - 48 * 3 ),
-							esc_attr( $height - 48 * 2 ),
-							esc_url( get_template_directory_uri() ),
-							esc_html( wp_trim_words( $text, '4:3' === $aspect_ratio ? 140 : 80, '...' ) ),
+							esc_attr( $width ),                 // 1. SVG and the background width.
+							esc_attr( $height ),                // 2. SVG and the background height.
+							esc_attr( $padding ),               // 3. The content area x.
+							esc_attr( $padding ),               // 4. The content area y.
+							esc_attr( $width - $padding * 2 ),  // 5. The content area width.
+							esc_attr( $height - $padding * 2 ), // 6. The content area height.
+							esc_attr( $width - $padding * 2 ),  // 7. The text area width.
+							esc_attr( $height - $padding * 2 ), // 8. The text area height.
+							esc_attr( $text_size ),             // 9. Text size.
+							esc_html( wp_trim_words( $text, $text_length, '...' ) ),
 							wp_kses_post( $blog_name ),
 							$custom_logo,
 							$background_image

@@ -97,20 +97,25 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 			focusOnMount={ false }
 			anchor={ popoverAnchor }
 			className="block-editor-format-toolbar__image-popover"
-			onClose={ onClose }
+			onClose={ () => {
+				setSearchText( '' );
+				onClose();
+			} }
 		>
 			<div
 				style={ {
 					width: 'min(90vw, 320px)',
 					maxHeight: 'min(90vh, 400px)',
 					padding: '16px',
+					display: 'grid',
+					gap: '8px',
 				} }
 			>
 				<SearchControl
+					__nextHasNoMarginBottom
 					SearchControl
 					value={ searchText }
 					onChange={ ( newValue ) => setSearchText( newValue ) }
-					onClose={ () => setSearchText( '' ) }
 				/>
 
 				<RangeControl
@@ -126,51 +131,53 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 					onChange={ ( newValue ) => setStrokeWidth( newValue ) }
 				/>
 
-				{ filteredIcons.map( ( icon, index ) => {
-					return (
-						<Button
-							key={ index }
-							className="has-icon"
-							onClick={ () => {
-								const newInlineSvg =
-									`url(data:image/svg+xml;charset=UTF-8,${ encodeURIComponent(
-										icon.svg
-									) })`.trim();
+				<div>
+					{ filteredIcons.map( ( icon, index ) => {
+						return (
+							<Button
+								key={ index }
+								className="has-icon"
+								onClick={ () => {
+									const newInlineSvg =
+										`url(data:image/svg+xml;charset=UTF-8,${ encodeURIComponent(
+											icon.svg
+										) })`.trim();
 
-								const newValue = insertObject(
-									value,
-									{
-										...DEFAULT_ICON_OBJECT_SETTINGS,
-										attributes: {
-											...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
-											style: `--unitone--inline-svg: ${ newInlineSvg }`,
+									const newValue = insertObject(
+										value,
+										{
+											...DEFAULT_ICON_OBJECT_SETTINGS,
+											attributes: {
+												...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
+												style: `--unitone--inline-svg: ${ newInlineSvg }`,
+											},
 										},
-									},
-									value.end,
-									value.end
-								);
-								newValue.start = newValue.end - 1;
-								onChange( newValue );
-
-								if ( strokeWidth !== savedStrokeWidth ) {
-									dispatch( preferencesStore ).set(
-										PREFERENCE_SCOPE,
-										'inlineIconStrokeWidth',
-										strokeWidth
+										value.end,
+										value.end
 									);
-								}
+									newValue.start = newValue.end - 1;
+									onChange( newValue );
 
-								onClose();
-							} }
-						>
-							<span
-								dangerouslySetInnerHTML={ {
-									__html: icon.svg,
+									if ( strokeWidth !== savedStrokeWidth ) {
+										dispatch( preferencesStore ).set(
+											PREFERENCE_SCOPE,
+											'inlineIconStrokeWidth',
+											strokeWidth
+										);
+									}
+
+									onClose();
 								} }
-							/>
-						</Button>
-					);
-				} ) }
+							>
+								<span
+									dangerouslySetInnerHTML={ {
+										__html: icon.svg,
+									} }
+								/>
+							</Button>
+						);
+					} ) }
+				</div>
 
 				<div>
 					<Button variant="tertiary" onClick={ onClose }>

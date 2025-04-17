@@ -391,8 +391,8 @@ export function GapEdit( {
 			) : (
 				<>
 					{ isLinked ? (
-						<Flex align="start">
-							<FlexItem style={ { marginTop: '11px' } }>
+						<Flex align="center">
+							<FlexItem>
 								<IconAll />
 							</FlexItem>
 
@@ -409,8 +409,8 @@ export function GapEdit( {
 						</Flex>
 					) : (
 						<>
-							<Flex align="start">
-								<FlexItem style={ { marginTop: '11px' } }>
+							<Flex align="center">
+								<FlexItem>
 									{ ! isVertical ? (
 										<IconHorizontal />
 									) : (
@@ -431,8 +431,11 @@ export function GapEdit( {
 								</FlexBlock>
 							</Flex>
 
-							<Flex align="start">
-								<FlexItem style={ { marginTop: '11px' } }>
+							<Flex
+								align="center"
+								style={ { marginTop: '11px' } }
+							>
+								<FlexItem>
 									{ ! isVertical ? (
 										<IconVertical />
 									) : (

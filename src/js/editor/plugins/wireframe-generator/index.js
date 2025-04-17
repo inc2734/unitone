@@ -431,11 +431,16 @@ const PluginSidebarWireFrameGenerator = () => {
 												} );
 
 												return (
-													<BlockPreview
+													<BlockPreview.Async
 														key={ i }
-														blocks={ newBlocks }
-														viewportWidth={ 1334 }
-													/>
+													>
+														<BlockPreview
+															blocks={ newBlocks }
+															viewportWidth={
+																1334
+															}
+														/>
+													</BlockPreview.Async>
 												);
 											}
 										) }

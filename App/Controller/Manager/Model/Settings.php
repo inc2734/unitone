@@ -142,7 +142,7 @@ class Settings {
 			array_unique(
 				array_merge(
 					static::$default_settings['enabled-custom-templates'],
-					$settings['enabled-custom-templates']
+					$settings['enabled-custom-templates'] ?? array()
 				)
 			)
 		);

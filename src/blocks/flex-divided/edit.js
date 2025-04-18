@@ -16,6 +16,8 @@ import { useSelect } from '@wordpress/data';
 import { useRef, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 import { physicalToLogical } from '../../js/helper';
 
 import metadata from './block.json';
@@ -87,12 +89,17 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	const TagName = tagName;
 
 	return (
 		<>
 			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							tagName !== metadata.attributes.tagName.default

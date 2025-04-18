@@ -35,6 +35,8 @@ import {
 	alignTopExpanded,
 } from '../../js/editor/hooks/icons';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 import { arrowsIconTypes, paginationIconTypes } from './components';
 
 import metadata from './block.json';
@@ -137,9 +139,14 @@ export const SettingsInspectorControls = ( {
 		( palette ) => palette.colors
 	);
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	return (
 		<InspectorControls>
-			<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+			<ToolsPanel
+				label={ __( 'Settings', 'unitone' ) }
+				dropdownMenuProps={ dropdownMenuProps }
+			>
 				<ToolsPanelItem
 					hasValue={ () =>
 						effect !== metadata.attributes.effect.default
@@ -318,7 +325,10 @@ export const SettingsInspectorControls = ( {
 				</ToolsPanelItem>
 			</ToolsPanel>
 
-			<ToolsPanel label={ __( 'Autoplay', 'unitone' ) }>
+			<ToolsPanel
+				label={ __( 'Autoplay', 'unitone' ) }
+				dropdownMenuProps={ dropdownMenuProps }
+			>
 				<ToolsPanelItem
 					hasValue={ () =>
 						autoplay !== metadata.attributes.autoplay.default
@@ -379,7 +389,10 @@ export const SettingsInspectorControls = ( {
 			</ToolsPanel>
 
 			{ isDisplayArrowsSettings && (
-				<ToolsPanel label={ __( 'The prev/next buttons', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'The prev/next buttons', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							arrows !== metadata.attributes.arrows.default
@@ -759,7 +772,10 @@ export const SettingsInspectorControls = ( {
 			) }
 
 			{ isDisplayPaginationSettings && (
-				<ToolsPanel label={ __( 'The pagination', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'The pagination', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							pagination !==

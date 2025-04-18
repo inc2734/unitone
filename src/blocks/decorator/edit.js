@@ -34,6 +34,8 @@ import { displayShortcut } from '@wordpress/keycodes';
 import { prependHTTP } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 const NEW_TAB_REL = 'noreferrer noopener';
 const NEW_TAB_TARGET = '_blank';
 const NOFOLLOW_REL = 'nofollow';
@@ -177,12 +179,17 @@ export default function ( {
 		[ href, linkText, opensInNewTab, nofollow ]
 	);
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	const TagName = tagName;
 
 	return (
 		<>
 			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							tagName !== metadata.attributes.tagName.default

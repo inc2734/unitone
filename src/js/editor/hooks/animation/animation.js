@@ -13,6 +13,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../utils';
+
 import {
 	useIsParallaxDisabled,
 	hasParallaxValue,
@@ -38,6 +40,7 @@ function AnimationPanelPure( props ) {
 		filters.forEach( ( filter ) => filter() );
 	};
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const isParallaxDisabled = useIsParallaxDisabled( { name } );
 	const isScrollAnimationDisabled = useIsScrollAnimationDisabled( { name } );
 
@@ -51,6 +54,7 @@ function AnimationPanelPure( props ) {
 				label={ __( 'Animation', 'unitone' ) }
 				resetAll={ resetAll }
 				panelId={ clientId }
+				dropdownMenuProps={ dropdownMenuProps }
 			>
 				{ ( ! isParallaxDisabled || ! isScrollAnimationDisabled ) && (
 					<div className="unitone-animation-tools-panel">

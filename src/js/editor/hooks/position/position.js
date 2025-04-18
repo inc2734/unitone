@@ -9,6 +9,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../utils';
+
 import {
 	hasPositionValue,
 	resetPosition,
@@ -41,6 +43,7 @@ function PositionPanelPure( props ) {
 		filters.forEach( ( filter ) => filter() );
 	};
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const isPositionDisabled = useIsPositionDisabled( { name } );
 
 	if ( isPositionDisabled ) {
@@ -54,6 +57,7 @@ function PositionPanelPure( props ) {
 					label={ __( 'Position', 'unitone' ) }
 					resetAll={ resetAll }
 					panelId={ clientId }
+					dropdownMenuProps={ dropdownMenuProps }
 				>
 					<ToolsPanelItem
 						hasValue={ () => hasPositionValue( { ...props } ) }

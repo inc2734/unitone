@@ -10,6 +10,8 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import { useToolsPanelDropdownMenuProps } from '../hooks/utils';
+
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const { attributes, name, wrapperProps } = props;
@@ -49,6 +51,8 @@ addFilter(
 
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 		if ( ! props.isSelected || 'core/table' !== props.name ) {
 			return <BlockEdit { ...props } />;
 		}
@@ -63,7 +67,10 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<BlockEdit { ...props } />
 
 				<InspectorControls>
-					<ToolsPanel label={ __( 'unitone', 'unitone' ) }>
+					<ToolsPanel
+						label={ __( 'unitone', 'unitone' ) }
+						dropdownMenuProps={ dropdownMenuProps }
+					>
 						<ToolsPanelItem
 							hasValue={ () =>
 								props.attributes?.unitone?.cellMinWidth !==

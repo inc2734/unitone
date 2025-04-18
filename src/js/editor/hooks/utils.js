@@ -1,4 +1,5 @@
 import { Popover } from '@wordpress/components';
+import { useViewportMatch } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { store as editorStore } from '@wordpress/editor';
 import { store as editPostStore } from '@wordpress/edit-post';
@@ -263,3 +264,19 @@ export const GridVisualizer = forwardRef( ( { attributes }, ref ) => {
 		</Popover>
 	);
 } );
+
+/**
+ * @see https://github.com/WordPress/gutenberg/blob/9122cc34fb1d972cdfc59614bf6f140a9b6f7d94/packages/block-library/src/utils/hooks.js
+ */
+export function useToolsPanelDropdownMenuProps() {
+	const isMobile = useViewportMatch( 'medium', '<' );
+	return ! isMobile
+		? {
+				popoverProps: {
+					placement: 'left-start',
+					// For non-mobile, inner sidebar width (248px) - button width (24px) - border (1px) + padding (16px) + spacing (20px)
+					offset: 259,
+				},
+		  }
+		: {};
+}

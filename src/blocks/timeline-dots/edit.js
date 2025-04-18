@@ -22,6 +22,8 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 import iconDotMain from './icons/dot-main';
 import iconDotSubMain from './icons/dot-sub-main';
 import iconSubDotMain from './icons/sub-dot-main';
@@ -97,10 +99,15 @@ function Edit( {
 		],
 	} );
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	return (
 		<>
 			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							columnLayout !==

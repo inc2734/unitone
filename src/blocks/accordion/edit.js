@@ -20,6 +20,8 @@ import {
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 import { ChevronDown, Cross } from './mark';
 import metadata from './block.json';
 
@@ -90,10 +92,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	return (
 		<>
 			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							mark !== metadata.attributes.mark.default
@@ -137,7 +144,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					</ToolsPanelItem>
 				</ToolsPanel>
 
-				<ToolsPanel label={ __( 'Question', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Question', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () => q !== metadata.attributes.q.default }
 						isShownByDefault
@@ -195,7 +205,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					) }
 				</ToolsPanel>
 
-				<ToolsPanel label={ __( 'Answer', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Answer', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () => a !== metadata.attributes.a.default }
 						isShownByDefault

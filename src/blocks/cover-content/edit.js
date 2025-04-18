@@ -17,6 +17,8 @@ import {
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
@@ -46,10 +48,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			: InnerBlocks.ButtonBlockAppender,
 	} );
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	return (
 		<>
 			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							fill !== metadata.attributes.fill.default

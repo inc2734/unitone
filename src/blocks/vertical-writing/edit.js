@@ -20,6 +20,8 @@ import { useRefEffect } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 import metadata from './block.json';
 
 import { verticalsResizeObserver } from '@inc2734/unitone-css/library';
@@ -82,10 +84,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		}
 	);
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	return (
 		<>
 			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							textOrientation !==

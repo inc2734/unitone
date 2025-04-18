@@ -26,7 +26,11 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect, useState, useRef, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { GridVisualizer, cleanEmptyObject } from '../../js/editor/hooks/utils';
+import {
+	GridVisualizer,
+	cleanEmptyObject,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -141,10 +145,15 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		}
 	};
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	return (
 		<>
 			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							cover !== metadata.attributes.cover.default

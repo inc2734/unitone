@@ -2,6 +2,7 @@ import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginC
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { BorderControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -184,6 +185,16 @@ export function DividerEdit( {
 		},
 		colors
 	);
+
+	// Memoize popoverProps to avoid returning a new object every time.
+	const popoverProps = useMemo(
+		() => ( {
+			placement: 'left-start',
+			offset: 40,
+		} ),
+		[]
+	);
+
 	return (
 		<BorderControl
 			__next40pxDefaultSize
@@ -193,6 +204,7 @@ export function DividerEdit( {
 			onChange={ onChangeDivider }
 			colors={ colors }
 			__experimentalIsRenderedInSidebar={ true }
+			__unstablePopoverProps={ popoverProps }
 		/>
 	);
 }

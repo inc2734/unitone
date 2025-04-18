@@ -19,6 +19,8 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 import { __, _x } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
@@ -78,10 +80,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		],
 	} );
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	return (
 		<>
 			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							revert !== metadata.attributes.revert.default
@@ -111,6 +118,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 				<ToolsPanel
 					label={ _x( 'Secondary', 'with-sidebar', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
 				>
 					<ToolsPanelItem
 						hasValue={ () =>
@@ -190,7 +198,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					</ToolsPanelItem>
 				</ToolsPanel>
 
-				<ToolsPanel label={ __( 'Main', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Main', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							contentMinWidth !==

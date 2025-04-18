@@ -9,6 +9,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../utils';
+
 import {
 	useDividerTypeBlockProps,
 	useIsDividerTypeDisabled,
@@ -36,6 +38,7 @@ export function DividerPanelPure( props ) {
 		filters.forEach( ( filter ) => filter() );
 	};
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const isDividerTypeDisabled = useIsDividerTypeDisabled( { name } );
 	const isDividerDisabled = useIsDividerDisabled( { name } );
 
@@ -49,6 +52,7 @@ export function DividerPanelPure( props ) {
 				label={ __( 'Divider', 'unitone' ) }
 				resetAll={ resetAll }
 				panelId={ clientId }
+				dropdownMenuProps={ dropdownMenuProps }
 			>
 				{ ! isDividerTypeDisabled && (
 					<ToolsPanelItem

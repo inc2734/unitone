@@ -20,6 +20,8 @@ import { useSelect } from '@wordpress/data';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../utils';
+
 import {
 	useIsBlurDisabled,
 	hasBlurValue,
@@ -231,6 +233,8 @@ function BackdropFilterPanelPure( props ) {
 		filters.forEach( ( filter ) => filter() );
 	};
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	const isBlurDisabled = useIsBlurDisabled( { name } );
 	const isBrightnessDisabled = useIsBrightnessDisabled( { name } );
 	const isContrastDisabled = useIsContrastDisabled( { name } );
@@ -259,6 +263,7 @@ function BackdropFilterPanelPure( props ) {
 				label={ __( 'Backdrop Filter', 'unitone' ) }
 				resetAll={ resetAll }
 				panelId={ clientId }
+				dropdownMenuProps={ dropdownMenuProps }
 			>
 				{ ! isBlurDisabled && (
 					<ToolsPanelItem

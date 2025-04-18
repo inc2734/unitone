@@ -16,7 +16,10 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../hooks/utils';
+import {
+	cleanEmptyObject,
+	useToolsPanelDropdownMenuProps,
+} from '../hooks/utils';
 
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
@@ -92,6 +95,8 @@ addFilter(
 
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 		const colorGradientSettings = useMultipleOriginColorsAndGradients();
 		const colors = colorGradientSettings.colors.flatMap(
 			( palette ) => palette.colors
@@ -203,6 +208,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						} ) }
 						isShownByDefault
 						panelId={ clientId }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
 						<RangeControl
 							__next40pxDefaultSize

@@ -13,6 +13,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../utils';
+
 import {
 	useIsMixBlendModeDisabled,
 	hasMixBlendModeValue,
@@ -30,6 +32,7 @@ function LayerPanelPure( props ) {
 		filters.forEach( ( filter ) => filter() );
 	};
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const isMixBlendModeDisabled = useIsMixBlendModeDisabled( { ...props } );
 
 	if ( isMixBlendModeDisabled ) {
@@ -42,6 +45,7 @@ function LayerPanelPure( props ) {
 				label={ __( 'Layer', 'unitone' ) }
 				resetAll={ resetAll }
 				panelId={ clientId }
+				dropdownMenuProps={ dropdownMenuProps }
 			>
 				{ ! isMixBlendModeDisabled && (
 					<ToolsPanelItem

@@ -13,6 +13,8 @@ import { BlockControls, InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
+import { useToolsPanelDropdownMenuProps } from '../utils';
+
 import {
 	useIsJustifyContentDisabled,
 	hasJustifyContentValue,
@@ -190,6 +192,8 @@ function LayoutPanelPure( props ) {
 		filters.forEach( ( filter ) => filter() );
 	};
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	const isJustifyContentDisabled = useIsJustifyContentDisabled( { name } );
 	const isJustifyContentColumnDisabled = useIsJustifyContentColumnDisabled( {
 		name,
@@ -315,6 +319,7 @@ function LayoutPanelPure( props ) {
 						label={ __( 'Layout', 'unitone' ) }
 						resetAll={ resetAll }
 						panelId={ clientId }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
 						{ ! isJustifyContentDisabled && (
 							<ToolsPanelItem

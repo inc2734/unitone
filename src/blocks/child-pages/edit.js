@@ -19,6 +19,8 @@ import { __, sprintf } from '@wordpress/i18n';
 
 import ServerSideRender from '@wordpress/server-side-render';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 import metadata from './block.json';
 
 const multiIncludes = ( haystack, needles ) => {
@@ -45,10 +47,15 @@ export default function ( { attributes, setAttributes } ) {
 		} );
 	}, [] );
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	return (
 		<>
 			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							showTopLevel !==

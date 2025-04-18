@@ -10,15 +10,22 @@ import { __ } from '@wordpress/i18n';
 
 import ServerSideRender from '@wordpress/server-side-render';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes } ) {
 	const { divider } = attributes;
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	return (
 		<>
 			<InspectorControls>
-				<ToolsPanel label={ __( 'Settings', 'unitone' ) }>
+				<ToolsPanel
+					label={ __( 'Settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					<ToolsPanelItem
 						hasValue={ () =>
 							divider !== metadata.attributes.divider.default

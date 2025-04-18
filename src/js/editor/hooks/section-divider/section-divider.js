@@ -12,7 +12,7 @@ import { useSelect } from '@wordpress/data';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
 	resetSectionDividerTopType,
@@ -167,6 +167,8 @@ export function SectionDividerPanelPure( props ) {
 		filters.forEach( ( filter ) => filter() );
 	};
 
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	const isSectionDividerDisabled = useIsSectionDividerDisabled( { name } );
 
 	if ( isSectionDividerDisabled ) {
@@ -188,6 +190,7 @@ export function SectionDividerPanelPure( props ) {
 				label={ __( 'Section divider (Top)', 'unitone' ) }
 				resetAll={ resetAll }
 				panelId={ clientId }
+				dropdownMenuProps={ dropdownMenuProps }
 			>
 				<ToolsPanelItem
 					hasValue={ () => hasSectionDividerTopType }
@@ -330,6 +333,7 @@ export function SectionDividerPanelPure( props ) {
 				label={ __( 'Section divider (Bottom)', 'unitone' ) }
 				resetAll={ resetAll }
 				panelId={ clientId }
+				dropdownMenuProps={ dropdownMenuProps }
 			>
 				<ToolsPanelItem
 					hasValue={ () => hasSectionDividerBottomType }

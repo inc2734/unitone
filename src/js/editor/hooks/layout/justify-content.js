@@ -53,14 +53,12 @@ export function hasJustifyContentValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetJustifyContentFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			justifyContent: undefined,
-		},
-	};
+function resetJustifyContentFilter( attributes ) {
+	if ( null != attributes?.unitone?.justifyContent ) {
+		attributes.unitone.justifyContent = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetJustifyContent( {

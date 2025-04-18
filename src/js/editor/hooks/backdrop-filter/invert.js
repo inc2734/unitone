@@ -20,17 +20,12 @@ export function hasInvertValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetInvertFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			backdropFilter: {
-				...attributes?.unitone?.backdropFilter,
-				invert: undefined,
-			},
-		},
-	};
+function resetInvertFilter( attributes ) {
+	if ( null != attributes?.unitone?.backdropFilter?.invert ) {
+		attributes.unitone.backdropFilter.invert = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetInvert( { attributes: { unitone }, setAttributes } ) {

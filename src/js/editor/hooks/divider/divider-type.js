@@ -64,14 +64,12 @@ export function hasDividerTypeValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetDividerTypeFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			dividerType: undefined,
-		},
-	};
+function resetDividerTypeFilter( attributes ) {
+	if ( null != attributes?.unitone?.dividerType ) {
+		attributes.unitone.dividerType = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetDividerType( { attributes: { unitone }, setAttributes } ) {

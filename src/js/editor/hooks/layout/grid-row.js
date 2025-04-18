@@ -49,14 +49,12 @@ export function hasGridRowValue( {
 	);
 }
 
-export function resetGridRowFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			gridRow: undefined,
-		},
-	};
+function resetGridRowFilter( attributes ) {
+	if ( null != attributes?.unitone?.gridRow ) {
+		attributes.unitone.gridRow = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetGridRow( { attributes: { unitone }, setAttributes } ) {

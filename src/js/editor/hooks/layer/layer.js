@@ -13,12 +13,9 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
-
 import {
 	useIsMixBlendModeDisabled,
 	hasMixBlendModeValue,
-	resetMixBlendModeFilter,
 	resetMixBlendMode,
 	MixBlendModeEdit,
 	useMixBlendModeBlockProps,
@@ -27,19 +24,10 @@ import {
 export { useMixBlendModeBlockProps };
 
 function LayerPanelPure( props ) {
-	const { attributes, setAttributes, clientId } = props;
-	const { unitone } = attributes;
+	const { clientId } = props;
 
 	const resetAll = ( filters ) => {
-		const newUnitone = filters.reduce(
-			( accumulator, filter ) =>
-				filter( { unitone: accumulator } )?.unitone,
-			unitone
-		);
-
-		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
-		} );
+		filters.forEach( ( filter ) => filter() );
 	};
 
 	const isMixBlendModeDisabled = useIsMixBlendModeDisabled( { ...props } );
@@ -60,7 +48,9 @@ function LayerPanelPure( props ) {
 						hasValue={ () => hasMixBlendModeValue( { ...props } ) }
 						label={ __( 'Mix blend mode', 'unitone' ) }
 						onDeselect={ () => resetMixBlendMode( { ...props } ) }
-						resetAllFilter={ resetMixBlendModeFilter }
+						resetAllFilter={ () =>
+							resetMixBlendMode( { ...props } )
+						}
 						isShownByDefault
 						panelId={ clientId }
 					>

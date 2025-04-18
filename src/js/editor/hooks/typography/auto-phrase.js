@@ -10,14 +10,12 @@ export function hasAutoPhraseValue( { attributes: unitone } ) {
 	return unitone?.autoPhrase !== undefined;
 }
 
-export function resetAutoPhraseFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			autoPhrase: undefined,
-		},
-	};
+function resetAutoPhraseFilter( attributes ) {
+	if ( null != attributes?.unitone?.autoPhrase ) {
+		attributes.unitone.autoPhrase = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetAutoPhrase( { attributes: { unitone }, setAttributes } ) {

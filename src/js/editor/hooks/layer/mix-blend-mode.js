@@ -88,14 +88,12 @@ export function hasMixBlendModeValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetMixBlendModeFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			mixBlendMode: undefined,
-		},
-	};
+function resetMixBlendModeFilter( attributes ) {
+	if ( null != attributes?.unitone?.mixBlendMode ) {
+		attributes.unitone.mixBlendMode = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetMixBlendMode( {

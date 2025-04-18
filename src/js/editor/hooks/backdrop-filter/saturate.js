@@ -20,17 +20,12 @@ export function hasSaturateValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetSaturateFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			backdropFilter: {
-				...attributes?.unitone?.backdropFilter,
-				saturate: undefined,
-			},
-		},
-	};
+function resetSaturateFilter( attributes ) {
+	if ( null != attributes?.unitone?.backdropFilter?.saturate ) {
+		attributes.unitone.backdropFilter.saturate = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetSaturate( { attributes: { unitone }, setAttributes } ) {

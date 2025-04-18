@@ -17,20 +17,12 @@ export function hasSectionDividerTopOverlapValue( {
 	);
 }
 
-export function resetSectionDividerTopOverlapFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			sectionDivider: {
-				...attributes?.unitone?.sectionDivider,
-				top: {
-					...attributes?.unitone?.sectionDivider?.top,
-					overlap: undefined,
-				},
-			},
-		},
-	};
+function resetSectionDividerTopOverlapFilter( attributes ) {
+	if ( null != attributes?.unitone?.sectionDivider?.top?.overlap ) {
+		attributes.unitone.sectionDivider.top.overlap = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetSectionDividerTopOverlap( {

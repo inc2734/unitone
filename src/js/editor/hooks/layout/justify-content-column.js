@@ -56,14 +56,12 @@ export function hasJustifyContentColumnValue( {
 	);
 }
 
-export function resetJustifyContentColumnFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			justifyContent: undefined,
-		},
-	};
+function resetJustifyContentColumnFilter( attributes ) {
+	if ( null != attributes?.unitone?.justifyContent ) {
+		attributes.unitone.justifyContent = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetJustifyContentColumn( {

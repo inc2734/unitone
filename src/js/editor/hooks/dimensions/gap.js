@@ -30,14 +30,12 @@ export function hasGapValue( { name, attributes: { unitone } } ) {
 	return defaultValue !== unitone?.gap && undefined !== unitone?.gap;
 }
 
-export function resetGapFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			gap: undefined,
-		},
-	};
+function resetGapFilter( attributes ) {
+	if ( null != attributes?.unitone?.gap ) {
+		attributes.unitone.gap = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetGap( { attributes: { unitone }, setAttributes } ) {

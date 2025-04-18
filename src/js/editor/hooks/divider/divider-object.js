@@ -84,15 +84,16 @@ export function hasDividerValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetDividerFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			divider: undefined,
-			dividerColor: undefined,
-		},
-	};
+function resetDividerFilter( attributes ) {
+	if ( null != attributes?.unitone?.divider ) {
+		attributes.unitone.divider = undefined;
+	}
+
+	if ( null != attributes?.unitone?.dividerColor ) {
+		attributes.unitone.dividerColor = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetDivider( { attributes: { unitone }, setAttributes } ) {
@@ -191,7 +192,6 @@ export function DividerEdit( {
 			withSlider={ true }
 			onChange={ onChangeDivider }
 			colors={ colors }
-			__experimentalHasMultipleOrigins={ true }
 			__experimentalIsRenderedInSidebar={ true }
 		/>
 	);

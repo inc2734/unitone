@@ -18,20 +18,12 @@ export function hasSectionDividerBottomTypeValue( {
 	);
 }
 
-export function resetSectionDividerBottomTypeFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			sectionDivider: {
-				...attributes?.unitone?.sectionDivider,
-				bottom: {
-					...attributes?.unitone?.sectionDivider?.bottom,
-					type: undefined,
-				},
-			},
-		},
-	};
+function resetSectionDividerBottomTypeFilter( attributes ) {
+	if ( null != attributes?.unitone?.sectionDivider?.bottom?.type ) {
+		attributes.unitone.sectionDivider.bottom.type = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetSectionDividerBottomType( {

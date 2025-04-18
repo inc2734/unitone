@@ -47,14 +47,12 @@ export function hasAlignItemsValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetAlignItemsFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			alignItems: undefined,
-		},
-	};
+function resetAlignItemsFilter( attributes ) {
+	if ( null != attributes?.unitone?.alignItems ) {
+		attributes.unitone.alignItems = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetAlignItems( { attributes: { unitone }, setAttributes } ) {

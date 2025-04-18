@@ -11,7 +11,6 @@ import { memo } from '@wordpress/element';
 import {
 	useIsPaddingDisabled,
 	hasPaddingValue,
-	resetPaddingFilter,
 	resetPadding,
 	getPaddingEditLabel,
 	PaddingEdit,
@@ -21,7 +20,6 @@ import {
 import {
 	useIsGuttersDisabled,
 	hasGuttersValue,
-	resetGuttersFilter,
 	resetGutters,
 	getGuttersEditLabel,
 	GuttersEdit,
@@ -31,7 +29,6 @@ import {
 import {
 	useIsGapDisabled,
 	hasGapValue,
-	resetGapFilter,
 	resetGap,
 	getGapEditLabel,
 	GapEdit,
@@ -42,9 +39,7 @@ import {
 	useIsStairsDisabled,
 	hasStairsValue,
 	hasStairsUpValue,
-	resetStairsFilter,
 	resetStairs,
-	resetStairsUpFilter,
 	resetStairsUp,
 	getStairsEditLabel,
 	StairsEdit,
@@ -56,7 +51,6 @@ import {
 import {
 	useIsNegativeDisabled,
 	hasNegativeValue,
-	resetNegativeFilter,
 	resetNegative,
 	getNegativeEditLabel,
 	NegativeEdit,
@@ -66,7 +60,6 @@ import {
 import {
 	useIsOverflowDisabled,
 	hasOverflowValue,
-	resetOverflowFilter,
 	resetOverflow,
 	getOverflowEditLabel,
 	OverflowEdit,
@@ -83,7 +76,7 @@ export {
 };
 
 function DimensionsPanelPure( props ) {
-	const { name, clientId, attributes, className } = props;
+	const { name, clientId, className } = props;
 
 	const isPaddingDisabled = useIsPaddingDisabled( { name } );
 	const isGuttersDisabled = useIsGuttersDisabled( { name } );
@@ -111,9 +104,7 @@ function DimensionsPanelPure( props ) {
 						hasValue={ () => hasPaddingValue( { ...props } ) }
 						label={ getPaddingEditLabel( { ...props } ) }
 						onDeselect={ () => resetPadding( { ...props } ) }
-						resetAllFilter={ () =>
-							resetPaddingFilter( attributes )
-						}
+						resetAllFilter={ () => resetPadding( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -132,9 +123,7 @@ function DimensionsPanelPure( props ) {
 						hasValue={ () => hasGuttersValue( { ...props } ) }
 						label={ getGuttersEditLabel( { ...props } ) }
 						onDeselect={ () => resetGutters( { ...props } ) }
-						resetAllFilter={ () =>
-							resetGuttersFilter( attributes )
-						}
+						resetAllFilter={ () => resetGutters( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -153,7 +142,7 @@ function DimensionsPanelPure( props ) {
 						hasValue={ () => hasGapValue( { ...props } ) }
 						label={ getGapEditLabel( { ...props } ) }
 						onDeselect={ () => resetGap( { ...props } ) }
-						resetAllFilter={ () => resetGapFilter( attributes ) }
+						resetAllFilter={ () => resetGap( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -173,9 +162,7 @@ function DimensionsPanelPure( props ) {
 							hasValue={ () => hasStairsValue( { ...props } ) }
 							label={ getStairsEditLabel( { ...props } ) }
 							onDeselect={ () => resetStairs( { ...props } ) }
-							resetAllFilter={ () =>
-								resetStairsFilter( attributes )
-							}
+							resetAllFilter={ () => resetStairs( { ...props } ) }
 							isShownByDefault
 							panelId={ clientId }
 						>
@@ -195,9 +182,11 @@ function DimensionsPanelPure( props ) {
 								label={ getStairsUpEditLabel( {
 									...props,
 								} ) }
-								onDeselect={ () => resetStairsUp( props ) }
+								onDeselect={ () =>
+									resetStairsUp( { ...props } )
+								}
 								resetAllFilter={ () =>
-									resetStairsUpFilter( attributes )
+									resetStairsUp( { ...props } )
 								}
 								isShownByDefault
 								panelId={ clientId }
@@ -218,9 +207,7 @@ function DimensionsPanelPure( props ) {
 						hasValue={ () => hasNegativeValue( { ...props } ) }
 						label={ getNegativeEditLabel( { ...props } ) }
 						onDeselect={ () => resetNegative( { ...props } ) }
-						resetAllFilter={ () =>
-							resetNegativeFilter( attributes )
-						}
+						resetAllFilter={ () => resetNegative( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -238,9 +225,7 @@ function DimensionsPanelPure( props ) {
 						hasValue={ () => hasOverflowValue( { ...props } ) }
 						label={ getOverflowEditLabel( { ...props } ) }
 						onDeselect={ () => resetOverflow( { ...props } ) }
-						resetAllFilter={ () =>
-							resetOverflowFilter( attributes )
-						}
+						resetAllFilter={ () => resetOverflow( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>

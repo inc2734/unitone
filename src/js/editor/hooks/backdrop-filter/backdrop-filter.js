@@ -20,12 +20,9 @@ import { useSelect } from '@wordpress/data';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
-
 import {
 	useIsBlurDisabled,
 	hasBlurValue,
-	resetBlurFilter,
 	resetBlur,
 	getBlurEditLabel,
 	BlurEdit,
@@ -34,7 +31,6 @@ import {
 import {
 	useIsBrightnessDisabled,
 	hasBrightnessValue,
-	resetBrightnessFilter,
 	resetBrightness,
 	getBrightnessEditLabel,
 	BrightnessEdit,
@@ -43,7 +39,6 @@ import {
 import {
 	useIsContrastDisabled,
 	hasContrastValue,
-	resetContrastFilter,
 	resetContrast,
 	getContrastEditLabel,
 	ContrastEdit,
@@ -52,7 +47,6 @@ import {
 import {
 	useIsGrayscaleDisabled,
 	hasGrayscaleValue,
-	resetGrayscaleFilter,
 	resetGrayscale,
 	getGrayscaleEditLabel,
 	GrayscaleEdit,
@@ -61,7 +55,6 @@ import {
 import {
 	useIsHueRotateDisabled,
 	hasHueRotateValue,
-	resetHueRotateFilter,
 	resetHueRotate,
 	getHueRotateEditLabel,
 	HueRotateEdit,
@@ -70,7 +63,6 @@ import {
 import {
 	useIsInvertDisabled,
 	hasInvertValue,
-	resetInvertFilter,
 	resetInvert,
 	getInvertEditLabel,
 	InvertEdit,
@@ -79,7 +71,6 @@ import {
 import {
 	useIsSaturateDisabled,
 	hasSaturateValue,
-	resetSaturateFilter,
 	resetSaturate,
 	getSaturateEditLabel,
 	SaturateEdit,
@@ -88,7 +79,6 @@ import {
 import {
 	useIsSepiaDisabled,
 	hasSepiaValue,
-	resetSepiaFilter,
 	resetSepia,
 	getSepiaEditLabel,
 	SepiaEdit,
@@ -235,19 +225,10 @@ export function useBackdropFilterBlockProps( settings ) {
 }
 
 function BackdropFilterPanelPure( props ) {
-	const { name, attributes, setAttributes, clientId } = props;
-	const { unitone } = attributes;
+	const { name, clientId } = props;
 
 	const resetAll = ( filters ) => {
-		const newUnitone = filters.reduce(
-			( accumulator, filter ) =>
-				filter( { unitone: accumulator } )?.unitone,
-			unitone
-		);
-
-		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
-		} );
+		filters.forEach( ( filter ) => filter() );
 	};
 
 	const isBlurDisabled = useIsBlurDisabled( { name } );
@@ -286,7 +267,9 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetBlur( { ...props } ) }
-						resetAllFilter={ resetBlurFilter }
+						resetAllFilter={ () => {
+							resetBlur( { ...props } );
+						} }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -307,7 +290,7 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetBrightness( { ...props } ) }
-						resetAllFilter={ resetBrightnessFilter }
+						resetAllFilter={ () => resetBrightness( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 						show
@@ -329,7 +312,7 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetContrast( { ...props } ) }
-						resetAllFilter={ resetContrastFilter }
+						resetAllFilter={ () => resetContrast( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -350,7 +333,7 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetGrayscale( { ...props } ) }
-						resetAllFilter={ resetGrayscaleFilter }
+						resetAllFilter={ () => resetGrayscale( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -371,7 +354,7 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetHueRotate( { ...props } ) }
-						resetAllFilter={ resetHueRotateFilter }
+						resetAllFilter={ () => resetHueRotate( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -392,7 +375,7 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetInvert( { ...props } ) }
-						resetAllFilter={ resetInvertFilter }
+						resetAllFilter={ () => resetInvert( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -413,7 +396,7 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetSaturate( { ...props } ) }
-						resetAllFilter={ resetSaturateFilter }
+						resetAllFilter={ () => resetSaturate( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -434,7 +417,7 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetSepia( { ...props } ) }
-						resetAllFilter={ resetSepiaFilter }
+						resetAllFilter={ () => resetSepia( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>

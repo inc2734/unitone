@@ -14,14 +14,12 @@ export function hasMinHeightValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetMinHeightFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			minHeight: undefined,
-		},
-	};
+function resetMinHeightFilter( attributes ) {
+	if ( null != attributes?.unitone?.minHeight ) {
+		attributes.unitone.minHeight = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetMinHeight( { attributes: { unitone }, setAttributes } ) {

@@ -20,17 +20,12 @@ export function hasGrayscaleValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetGrayscaleFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			backdropFilter: {
-				...attributes?.unitone?.backdropFilter,
-				grayscale: undefined,
-			},
-		},
-	};
+function resetGrayscaleFilter( attributes ) {
+	if ( null != attributes?.unitone?.backdropFilter?.grayscale ) {
+		attributes.unitone.backdropFilter.grayscale = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetGrayscale( { attributes: { unitone }, setAttributes } ) {

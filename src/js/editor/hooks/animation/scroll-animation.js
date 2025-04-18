@@ -31,14 +31,12 @@ export function hasScrollAnimationValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetScrollAnimationFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			scrollAnimation: undefined,
-		},
-	};
+function resetScrollAnimationFilter( attributes ) {
+	if ( null != attributes?.unitone?.scrollAnimation ) {
+		attributes.unitone.scrollAnimation = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetScrollAnimation( {

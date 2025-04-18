@@ -12,7 +12,6 @@ import { __ } from '@wordpress/i18n';
 import {
 	useIsAutoPhraseDisabled,
 	hasAutoPhraseValue,
-	resetAutoPhraseFilter,
 	resetAutoPhrase,
 	AutoPhraseEdit,
 	useAutoPhraseBlockProps,
@@ -21,7 +20,6 @@ import {
 import {
 	useIsFluidTypographyDisabled,
 	hasFluidTypographyValue,
-	resetFluidTypographyFilter,
 	resetFluidTypography,
 	FluidTypographyEdit,
 	useFluidTypographyBlockProps,
@@ -30,7 +28,6 @@ import {
 import {
 	useIsHalfLeadingDisabled,
 	hasHalfLeadingValue,
-	resetHalfLeadingFilter,
 	resetHalfLeading,
 	HalfLeadingEdit,
 	useHalfLeadingBlockProps,
@@ -42,7 +39,6 @@ import {
 	useIsBackgroundClipDisabled,
 	getBackgroundClipEditLabel,
 	hasBackgroundClipValue,
-	resetBackgroundClipFilter,
 	resetBackgroundClip,
 	BackgroundClipEdit,
 	useBackgroundClipBlockProps,
@@ -81,7 +77,7 @@ function TypographyPanelPure( props ) {
 						label={ __( 'Half leading', 'unitone' ) }
 						onDeselect={ () => resetHalfLeading( { ...props } ) }
 						resetAllFilter={ () =>
-							resetHalfLeadingFilter( attributes )
+							resetHalfLeading( { ...props } )
 						}
 						isShownByDefault
 						panelId={ clientId }
@@ -112,7 +108,7 @@ function TypographyPanelPure( props ) {
 							resetFluidTypography( { ...props } )
 						}
 						resetAllFilter={ () =>
-							resetFluidTypographyFilter( attributes )
+							resetFluidTypography( { ...props } )
 						}
 						isShownByDefault
 						panelId={ clientId }
@@ -129,9 +125,7 @@ function TypographyPanelPure( props ) {
 						hasValue={ () => hasAutoPhraseValue( { ...props } ) }
 						label={ __( 'Auto line breaks', 'unitone' ) }
 						onDeselect={ () => resetAutoPhrase( { ...props } ) }
-						resetAllFilter={ () =>
-							resetAutoPhraseFilter( attributes )
-						}
+						resetAllFilter={ () => resetAutoPhrase( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -150,7 +144,7 @@ function TypographyPanelPure( props ) {
 						label={ getBackgroundClipEditLabel( { ...props } ) }
 						onDeselect={ () => resetBackgroundClip( { ...props } ) }
 						resetAllFilter={ () =>
-							resetBackgroundClipFilter( attributes )
+							resetBackgroundClip( { ...props } )
 						}
 						isShownByDefault
 						panelId={ clientId }

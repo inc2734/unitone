@@ -10,14 +10,12 @@ export function hasFluidTypographyValue( { attributes: { unitone } } ) {
 	return unitone?.fluidTypography !== undefined;
 }
 
-export function resetFluidTypographyFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			fluidTypography: undefined,
-		},
-	};
+function resetFluidTypographyFilter( attributes ) {
+	if ( null != attributes?.unitone?.fluidTypography ) {
+		attributes.unitone.fluidTypography = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetFluidTypography( {

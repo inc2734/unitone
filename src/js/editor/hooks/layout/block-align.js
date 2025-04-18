@@ -42,14 +42,12 @@ export function hasBlockAlignValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetBlockAlignFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			blockAlign: undefined,
-		},
-	};
+function resetBlockAlignFilter( attributes ) {
+	if ( null != attributes?.unitone?.blockAlign ) {
+		attributes.unitone.blockAlign = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetBlockAlign( { attributes: { unitone }, setAttributes } ) {

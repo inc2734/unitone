@@ -14,14 +14,12 @@ export function hasMaxHeightValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetMaxHeightFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			maxHeight: undefined,
-		},
-	};
+function resetMaxHeightFilter( attributes ) {
+	if ( null != attributes?.unitone?.maxHeight ) {
+		attributes.unitone.maxHeight = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetMaxHeight( { attributes: { unitone }, setAttributes } ) {

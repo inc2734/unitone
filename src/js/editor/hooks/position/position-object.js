@@ -16,17 +16,12 @@ export function hasPositionValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetPositionFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			position: {
-				...attributes?.unitone?.position,
-				position: undefined,
-			},
-		},
-	};
+function resetPositionFilter( attributes ) {
+	if ( null != attributes?.unitone?.position?.position ) {
+		attributes.unitone.position.position = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetPosition( { attributes: { unitone }, setAttributes } ) {
@@ -107,17 +102,12 @@ export function hasTopValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetTopFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			position: {
-				...attributes?.unitone?.position,
-				top: undefined,
-			},
-		},
-	};
+function resetTopFilter( attributes ) {
+	if ( null != attributes?.unitone?.position?.top ) {
+		attributes.unitone.position.top = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetTop( { attributes: { unitone }, setAttributes } ) {
@@ -170,17 +160,12 @@ export function hasRightValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetRightFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			position: {
-				...attributes?.unitone?.position,
-				right: undefined,
-			},
-		},
-	};
+function resetRightFilter( attributes ) {
+	if ( null != attributes?.unitone?.position?.right ) {
+		attributes.unitone.position.right = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetRight( { attributes: { unitone }, setAttributes } ) {
@@ -235,17 +220,12 @@ export function hasBottomValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetBottomFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			position: {
-				...attributes?.unitone?.position,
-				bottom: undefined,
-			},
-		},
-	};
+function resetBottomFilter( attributes ) {
+	if ( null != attributes?.unitone?.position?.bottom ) {
+		attributes.unitone.position.bottom = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetBottom( { attributes: { unitone }, setAttributes } ) {
@@ -298,17 +278,12 @@ export function hasLeftValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetLeftFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			position: {
-				...attributes?.unitone?.position,
-				left: undefined,
-			},
-		},
-	};
+function resetLeftFilter( attributes ) {
+	if ( null != attributes?.unitone?.position?.left ) {
+		attributes.unitone.position.left = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetLeft( { attributes: { unitone }, setAttributes } ) {
@@ -361,17 +336,12 @@ export function hasZIndexValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetZIndexFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			position: {
-				...attributes?.unitone?.position,
-				zIndex: undefined,
-			},
-		},
-	};
+function resetZIndexFilter( attributes ) {
+	if ( null != attributes?.unitone?.position?.zIndex ) {
+		attributes.unitone.position.zIndex = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetZIndex( { attributes: { unitone }, setAttributes } ) {

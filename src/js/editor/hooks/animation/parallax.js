@@ -29,14 +29,12 @@ export function hasParallaxValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetParallaxFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			parallax: undefined,
-		},
-	};
+function resetParallaxFilter( attributes ) {
+	if ( null != attributes?.unitone?.parallax ) {
+		attributes.unitone.parallax = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetParallax( { attributes: { unitone }, setAttributes } ) {

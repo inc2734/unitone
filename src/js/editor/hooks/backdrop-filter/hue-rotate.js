@@ -20,17 +20,12 @@ export function hasHueRotateValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetHueRotateFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			backdropFilter: {
-				...attributes?.unitone?.backdropFilter,
-				hueRotate: undefined,
-			},
-		},
-	};
+function resetHueRotateFilter( attributes ) {
+	if ( null != attributes?.unitone?.backdropFilter?.hueRotate ) {
+		attributes.unitone.backdropFilter.hueRotate = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetHueRotate( { attributes: { unitone }, setAttributes } ) {

@@ -20,17 +20,12 @@ export function hasBlurValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetBlurFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			backdropFilter: {
-				...attributes?.unitone?.backdropFilter,
-				blur: undefined,
-			},
-		},
-	};
+function resetBlurFilter( attributes ) {
+	if ( null != attributes?.unitone?.backdropFilter?.blur ) {
+		attributes.unitone.backdropFilter.blur = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetBlur( { attributes: { unitone }, setAttributes } ) {

@@ -82,14 +82,12 @@ export function hasAlignSelfValue( {
 	);
 }
 
-export function resetAlignSelfFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			alignSelf: undefined,
-		},
-	};
+function resetAlignSelfFilter( attributes ) {
+	if ( null != attributes?.unitone?.alignSelf ) {
+		attributes.unitone.alignSelf = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetAlignSelf( { attributes: { unitone }, setAttributes } ) {

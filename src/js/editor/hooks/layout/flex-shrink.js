@@ -35,14 +35,12 @@ export function hasFlexShrinkValue( {
 	);
 }
 
-export function resetFlexShrinkFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			flexShrink: undefined,
-		},
-	};
+function resetFlexShrinkFilter( attributes ) {
+	if ( null != attributes?.unitone?.flexShrink ) {
+		attributes.unitone.flexShrink = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetFlexShrink( { attributes: { unitone }, setAttributes } ) {

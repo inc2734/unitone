@@ -17,20 +17,12 @@ export function hasSectionDividerTopLevelValue( {
 	);
 }
 
-export function resetSectionDividerTopLevelFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			sectionDivider: {
-				...attributes?.unitone?.sectionDivider,
-				top: {
-					...attributes?.unitone?.sectionDivider?.top,
-					level: undefined,
-				},
-			},
-		},
-	};
+function resetSectionDividerTopLevelFilter( attributes ) {
+	if ( null != attributes?.unitone?.sectionDivider?.top?.level ) {
+		attributes.unitone.sectionDivider.top.level = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetSectionDividerTopLevel( {

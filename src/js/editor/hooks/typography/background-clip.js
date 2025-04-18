@@ -11,14 +11,12 @@ export function hasBackgroundClipValue( { attributes: { unitone } } ) {
 	return unitone?.backgroundClip !== undefined;
 }
 
-export function resetBackgroundClipFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			backgroundClip: undefined,
-		},
-	};
+function resetBackgroundClipFilter( attributes ) {
+	if ( null != attributes?.unitone?.backgroundClip ) {
+		attributes.unitone.backgroundClip = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetBackgroundClip( {

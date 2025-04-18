@@ -88,14 +88,12 @@ export function hasJustifySelfValue( {
 	);
 }
 
-export function resetJustifySelfFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			justifySelf: undefined,
-		},
-	};
+function resetJustifySelfFilter( attributes ) {
+	if ( null != attributes?.unitone?.justifySelf ) {
+		attributes.unitone.justifySelf = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetJustifySelf( { attributes: { unitone }, setAttributes } ) {

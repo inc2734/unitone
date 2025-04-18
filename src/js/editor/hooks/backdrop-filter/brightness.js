@@ -20,17 +20,12 @@ export function hasBrightnessValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetBrightnessFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			backdropFilter: {
-				...attributes?.unitone?.backdropFilter,
-				brightness: undefined,
-			},
-		},
-	};
+function resetBrightnessFilter( attributes ) {
+	if ( null != attributes?.unitone?.backdropFilter?.brightness ) {
+		attributes.unitone.backdropFilter.brightness = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetBrightness( { attributes: { unitone }, setAttributes } ) {

@@ -20,17 +20,12 @@ export function hasSepiaValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-export function resetSepiaFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			backdropFilter: {
-				...attributes?.unitone?.backdropFilter,
-				sepia: undefined,
-			},
-		},
-	};
+function resetSepiaFilter( attributes ) {
+	if ( null != attributes?.unitone?.backdropFilter?.sepia ) {
+		attributes.unitone.backdropFilter.sepia = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetSepia( { attributes: { unitone }, setAttributes } ) {

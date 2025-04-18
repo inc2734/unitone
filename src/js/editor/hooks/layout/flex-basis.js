@@ -34,14 +34,12 @@ export function hasFlexBasisValue( {
 	);
 }
 
-export function resetFlexBasisFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			flexBasis: undefined,
-		},
-	};
+function resetFlexBasisFilter( attributes ) {
+	if ( null != attributes?.unitone?.flexBasis ) {
+		attributes.unitone.flexBasis = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetFlexBasis( { attributes: { unitone }, setAttributes } ) {

@@ -18,20 +18,12 @@ export function hasSectionDividerTopTypeValue( {
 	);
 }
 
-export function resetSectionDividerTopTypeFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			sectionDivider: {
-				...attributes?.unitone?.sectionDivider,
-				top: {
-					...attributes?.unitone?.sectionDivider?.top,
-					type: undefined,
-				},
-			},
-		},
-	};
+function resetSectionDividerTopTypeFilter( attributes ) {
+	if ( null != attributes?.unitone?.sectionDivider?.top?.type ) {
+		attributes.unitone.sectionDivider.top.type = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetSectionDividerTopType( {

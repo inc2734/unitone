@@ -9,12 +9,9 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
-
 import {
 	useDividerTypeBlockProps,
 	useIsDividerTypeDisabled,
-	resetDividerTypeFilter,
 	resetDividerType,
 	hasDividerTypeValue,
 	getDividerTypeEditLabel,
@@ -24,7 +21,6 @@ import {
 import {
 	useDividerBlockProps,
 	useIsDividerDisabled,
-	resetDividerFilter,
 	resetDivider,
 	hasDividerValue,
 	getDividerEditLabel,
@@ -34,19 +30,10 @@ import {
 export { useDividerTypeBlockProps, useDividerBlockProps };
 
 export function DividerPanelPure( props ) {
-	const { name, attributes, setAttributes, clientId } = props;
-	const { unitone } = attributes;
+	const { name, clientId } = props;
 
 	const resetAll = ( filters ) => {
-		const newUnitone = filters.reduce(
-			( accumulator, filter ) =>
-				filter( { unitone: accumulator } )?.unitone,
-			unitone
-		);
-
-		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
-		} );
+		filters.forEach( ( filter ) => filter() );
 	};
 
 	const isDividerTypeDisabled = useIsDividerTypeDisabled( { name } );
@@ -68,7 +55,9 @@ export function DividerPanelPure( props ) {
 						hasValue={ () => hasDividerTypeValue( { ...props } ) }
 						label={ getDividerTypeEditLabel( { ...props } ) }
 						onDeselect={ () => resetDividerType( { ...props } ) }
-						resetAllFilter={ resetDividerTypeFilter }
+						resetAllFilter={ () =>
+							resetDividerType( { ...props } )
+						}
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -84,7 +73,7 @@ export function DividerPanelPure( props ) {
 						hasValue={ () => hasDividerValue( { ...props } ) }
 						label={ getDividerEditLabel( { ...props } ) }
 						onDeselect={ () => resetDivider( { ...props } ) }
-						resetAllFilter={ resetDividerFilter }
+						resetAllFilter={ () => resetDivider( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>

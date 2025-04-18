@@ -9,32 +9,24 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
-
 import {
 	hasPositionValue,
-	resetPositionFilter,
 	resetPosition,
 	useIsPositionDisabled,
 	PositionEdit,
 	hasTopValue,
-	resetTopFilter,
 	resetTop,
 	TopEdit,
 	hasRightValue,
-	resetRightFilter,
 	resetRight,
 	RightEdit,
 	hasBottomValue,
-	resetBottomFilter,
 	resetBottom,
 	BottomEdit,
 	hasLeftValue,
-	resetLeftFilter,
 	resetLeft,
 	LeftEdit,
 	hasZIndexValue,
-	resetZIndexFilter,
 	resetZIndex,
 	ZIndexEdit,
 	usePositionBlockProps,
@@ -43,19 +35,10 @@ import {
 export { usePositionBlockProps };
 
 function PositionPanelPure( props ) {
-	const { name, attributes, setAttributes, clientId } = props;
-	const { unitone } = attributes;
+	const { name, clientId } = props;
 
 	const resetAll = ( filters ) => {
-		const newUnitone = filters.reduce(
-			( accumulator, filter ) =>
-				filter( { unitone: accumulator } )?.unitone,
-			unitone
-		);
-
-		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
-		} );
+		filters.forEach( ( filter ) => filter() );
 	};
 
 	const isPositionDisabled = useIsPositionDisabled( { name } );
@@ -76,7 +59,7 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasPositionValue( { ...props } ) }
 						label={ __( 'Position', 'unitone' ) }
 						onDeselect={ () => resetPosition( { ...props } ) }
-						resetAllFilter={ resetPositionFilter }
+						resetAllFilter={ () => resetPosition( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -95,7 +78,7 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasTopValue( { ...props } ) }
 						label={ __( 'Top', 'unitone' ) }
 						onDeselect={ () => resetTop( { ...props } ) }
-						resetAllFilter={ resetTopFilter }
+						resetAllFilter={ () => resetTop( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -114,7 +97,7 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasRightValue( { ...props } ) }
 						label={ __( 'Right', 'unitone' ) }
 						onDeselect={ () => resetRight( { ...props } ) }
-						resetAllFilter={ resetRightFilter }
+						resetAllFilter={ () => resetRight( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -133,7 +116,7 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasBottomValue( { ...props } ) }
 						label={ __( 'Bottom', 'unitone' ) }
 						onDeselect={ () => resetBottom( { ...props } ) }
-						resetAllFilter={ resetBottomFilter }
+						resetAllFilter={ () => resetBottom( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -152,7 +135,7 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasLeftValue( { ...props } ) }
 						label={ __( 'Left', 'unitone' ) }
 						onDeselect={ () => resetLeft( { ...props } ) }
-						resetAllFilter={ resetLeftFilter }
+						resetAllFilter={ () => resetLeft( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -171,7 +154,7 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasZIndexValue( { ...props } ) }
 						label={ __( 'The stack level', 'unitone' ) }
 						onDeselect={ () => resetZIndex( { ...props } ) }
-						resetAllFilter={ resetZIndexFilter }
+						resetAllFilter={ () => resetZIndex( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>

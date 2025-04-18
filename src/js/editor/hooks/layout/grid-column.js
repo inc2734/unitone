@@ -50,14 +50,12 @@ export function hasGridColumnValue( {
 	);
 }
 
-export function resetGridColumnFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			gridColumn: undefined,
-		},
-	};
+function resetGridColumnFilter( attributes ) {
+	if ( null != attributes?.unitone?.gridColumn ) {
+		attributes.unitone.gridColumn = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetGridColumn( { attributes: { unitone }, setAttributes } ) {

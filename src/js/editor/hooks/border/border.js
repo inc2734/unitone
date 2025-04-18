@@ -7,7 +7,6 @@ import { memo } from '@wordpress/element';
 import {
 	useIsDropShadowDisabled,
 	hasDropShadowValue,
-	resetDropShadowFilter,
 	resetDropShadow,
 	getDropShadowEditLabel,
 	DropShadowEdit,
@@ -17,7 +16,7 @@ import {
 export { useDropShadowBlockProps };
 
 function DropShadowPanelPure( props ) {
-	const { name, attributes, clientId } = props;
+	const { name, clientId } = props;
 
 	const isDropShadowDisabled = useIsDropShadowDisabled( { name } );
 
@@ -33,9 +32,7 @@ function DropShadowPanelPure( props ) {
 						hasValue={ () => hasDropShadowValue( { ...props } ) }
 						label={ getDropShadowEditLabel( { ...props } ) }
 						onDeselect={ () => resetDropShadow( { ...props } ) }
-						resetAllFilter={ () =>
-							resetDropShadowFilter( attributes )
-						}
+						resetAllFilter={ () => resetDropShadow( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>

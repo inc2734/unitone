@@ -34,14 +34,12 @@ export function hasFlexGrowValue( {
 	);
 }
 
-export function resetFlexGrowFilter( attributes ) {
-	return {
-		...attributes,
-		unitone: {
-			...attributes?.unitone,
-			flexGrow: undefined,
-		},
-	};
+function resetFlexGrowFilter( attributes ) {
+	if ( null != attributes?.unitone?.flexGrow ) {
+		attributes.unitone.flexGrow = undefined;
+	}
+
+	return attributes;
 }
 
 export function resetFlexGrow( { attributes: { unitone }, setAttributes } ) {

@@ -19,7 +19,7 @@
 
 // Non iframe post editor
 :not(.block-editor-iframe__body):not(.block-editor-block-preview__content-iframe) {
-	> .is-root-container {
+	> .is-root-container:where(:not(.wp-site-blocks)) {
 		--unitone--gutters: var(--unitone--global--gutters);
 	}
 }

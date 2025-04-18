@@ -203,6 +203,7 @@ export function DividerEdit( {
 			withSlider={ true }
 			onChange={ onChangeDivider }
 			colors={ colors }
+			width={ 116 }
 			__experimentalIsRenderedInSidebar={ true }
 			__unstablePopoverProps={ popoverProps }
 		/>

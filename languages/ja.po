@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-04-15T14:47:01+00:00\n"
-"PO-Revision-Date: 2025-04-15 23:48+0900\n"
+"POT-Creation-Date: 2025-04-22T15:44:58+00:00\n"
+"PO-Revision-Date: 2025-04-23 00:46+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -17,8 +17,8 @@ msgstr ""
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
-#: style.css inc/block-categories.php:20 inc/block-categories.php:31
-#: inc/block-categories.php:42 inc/block-categories.php:53
+#: style.css inc/block-categories.php:22 inc/block-categories.php:33
+#: inc/block-categories.php:44 inc/block-categories.php:55
 #: inc/block-styles.php:112 dist/js/editor/editor.js:13
 msgid "unitone"
 msgstr "unitone"
@@ -49,17 +49,21 @@ msgstr "%sのメガメニュー"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:364 patterns/footer-2.php:21
-#: patterns/footer-3.php:50 patterns/footer-3.php:58 patterns/footer-3.php:66
-#: patterns/footer-4.php:30 patterns/footer-4.php:38 patterns/footer-4.php:46
-#: patterns/footer-5.php:28 patterns/footer-5.php:36 patterns/footer-5.php:44
+#: App/Controller/Manager/Manager.php:364 patterns/footer/footer-2.php:21
+#: patterns/footer/footer-3.php:50 patterns/footer/footer-3.php:58
+#: patterns/footer/footer-3.php:66 patterns/footer/footer-4.php:30
+#: patterns/footer/footer-4.php:38 patterns/footer/footer-4.php:46
+#: patterns/footer/footer-5.php:28 patterns/footer/footer-5.php:36
+#: patterns/footer/footer-5.php:44
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:407 patterns/footer-2.php:24
-#: patterns/footer-3.php:53 patterns/footer-3.php:61 patterns/footer-3.php:69
-#: patterns/footer-4.php:33 patterns/footer-4.php:41 patterns/footer-4.php:49
-#: patterns/footer-5.php:31 patterns/footer-5.php:39 patterns/footer-5.php:47
+#: App/Controller/Manager/Manager.php:407 patterns/footer/footer-2.php:24
+#: patterns/footer/footer-3.php:53 patterns/footer/footer-3.php:61
+#: patterns/footer/footer-3.php:69 patterns/footer/footer-4.php:33
+#: patterns/footer/footer-4.php:41 patterns/footer/footer-4.php:49
+#: patterns/footer/footer-5.php:31 patterns/footer/footer-5.php:39
+#: patterns/footer/footer-5.php:47
 #: patterns/private/template/home/page-header/default.php:14
 #: patterns/private/template/home/page-header/image.php:29
 msgid "Blog"
@@ -102,20 +106,20 @@ msgstr ""
 msgid "Learn more"
 msgstr "さらに詳しく"
 
-#: inc/block-categories.php:23 App/Controller/Manager/dist/js/app.js:7
+#: inc/block-categories.php:25 App/Controller/Manager/dist/js/app.js:7
 #: dist/js/editor/editor.js:1
 msgid "Layout"
 msgstr "レイアウト"
 
-#: inc/block-categories.php:34
+#: inc/block-categories.php:36
 msgid "Components"
 msgstr "コンポーネント"
 
-#: inc/block-categories.php:45
+#: inc/block-categories.php:47
 msgid "Sections"
 msgstr "セクション"
 
-#: inc/block-categories.php:56
+#: inc/block-categories.php:58
 msgid "Widgets"
 msgstr "ウィジェット"
 
@@ -725,68 +729,71 @@ msgstr "フッターのパンくずリスト"
 msgid "Share Button"
 msgstr "シェアボタン"
 
-#: patterns/footer-1.php
+#: patterns/footer/footer-1.php
 msgctxt "Pattern title"
 msgid "Footer 1"
 msgstr "フッター1"
 
-#: patterns/footer-2.php
+#: patterns/footer/footer-2.php
 msgctxt "Pattern title"
 msgid "Footer 2"
 msgstr "フッター2"
 
-#: patterns/footer-2.php:22 patterns/footer-3.php:51 patterns/footer-3.php:59
-#: patterns/footer-3.php:67 patterns/footer-4.php:31 patterns/footer-4.php:39
-#: patterns/footer-4.php:47 patterns/footer-5.php:29 patterns/footer-5.php:37
-#: patterns/footer-5.php:45
+#: patterns/footer/footer-2.php:22 patterns/footer/footer-3.php:51
+#: patterns/footer/footer-3.php:59 patterns/footer/footer-3.php:67
+#: patterns/footer/footer-4.php:31 patterns/footer/footer-4.php:39
+#: patterns/footer/footer-4.php:47 patterns/footer/footer-5.php:29
+#: patterns/footer/footer-5.php:37 patterns/footer/footer-5.php:45
 msgid "About"
 msgstr "このサイトについて"
 
-#: patterns/footer-2.php:23 patterns/footer-3.php:52 patterns/footer-3.php:60
-#: patterns/footer-3.php:68 patterns/footer-4.php:32 patterns/footer-4.php:40
-#: patterns/footer-4.php:48 patterns/footer-5.php:30 patterns/footer-5.php:38
-#: patterns/footer-5.php:46
+#: patterns/footer/footer-2.php:23 patterns/footer/footer-3.php:52
+#: patterns/footer/footer-3.php:60 patterns/footer/footer-3.php:68
+#: patterns/footer/footer-4.php:32 patterns/footer/footer-4.php:40
+#: patterns/footer/footer-4.php:48 patterns/footer/footer-5.php:30
+#: patterns/footer/footer-5.php:38 patterns/footer/footer-5.php:46
 msgid "Services"
 msgstr "サービス"
 
-#: patterns/footer-2.php:25 patterns/footer-3.php:54 patterns/footer-3.php:62
-#: patterns/footer-3.php:70 patterns/footer-4.php:34 patterns/footer-4.php:42
-#: patterns/footer-4.php:50 patterns/footer-5.php:32 patterns/footer-5.php:40
-#: patterns/footer-5.php:48
+#: patterns/footer/footer-2.php:25 patterns/footer/footer-3.php:54
+#: patterns/footer/footer-3.php:62 patterns/footer/footer-3.php:70
+#: patterns/footer/footer-4.php:34 patterns/footer/footer-4.php:42
+#: patterns/footer/footer-4.php:50 patterns/footer/footer-5.php:32
+#: patterns/footer/footer-5.php:40 patterns/footer/footer-5.php:48
 msgid "Contact"
 msgstr "お問い合わせ"
 
-#: patterns/footer-3.php
+#: patterns/footer/footer-3.php
 msgctxt "Pattern title"
 msgid "Footer 3"
 msgstr "フッター3"
 
-#: patterns/footer-4.php
+#: patterns/footer/footer-4.php
 msgctxt "Pattern title"
 msgid "Footer 4"
 msgstr "フッター4"
 
-#: patterns/footer-5.php
+#: patterns/footer/footer-5.php
 msgctxt "Pattern title"
 msgid "Footer 5"
 msgstr "フッター5"
 
-#: patterns/header-1row.php
+#: patterns/header/header-1row.php
 msgctxt "Pattern title"
 msgid "Header (1 row)"
 msgstr "ヘッダー（1行）"
 
-#: patterns/header-2rows.php
+#: patterns/header/header-2rows.php
 msgctxt "Pattern title"
 msgid "Header (2 rows)"
 msgstr "ヘッダー（2行）"
 
-#: patterns/header-simple.php
+#: patterns/header/header-simple.php
 msgctxt "Pattern title"
 msgid "Header (Simple)"
 msgstr "ヘッダー（シンプル）"
 
-#: patterns/header-vertical.php
+#: patterns/header/header-vertical.php
 msgctxt "Pattern title"
 msgid "Header (Vertical)"
 msgstr "ヘッダー（縦）"
@@ -1086,27 +1093,27 @@ msgctxt "Pattern title"
 msgid "Page Header (Wide) for Single Posts"
 msgstr "個別投稿のページヘッダー（幅広）"
 
-#: patterns/query-1.php
+#: patterns/query/query-1.php
 msgctxt "Pattern title"
 msgid "Query (Underline)"
 msgstr "クエリー（アンダーライン）"
 
-#: patterns/query-2.php
+#: patterns/query/query-2.php
 msgctxt "Pattern title"
 msgid "Query (Rich media / Block link)"
 msgstr "クエリー（リッチメディア / ブロックリンク）"
 
-#: patterns/query-3.php
+#: patterns/query/query-3.php
 msgctxt "Pattern title"
 msgid "Query (Rich media / Block link / Bordered)"
 msgstr "クエリー（リッチメディア / ブロックリンク / ボーダー）"
 
-#: patterns/query-4.php
+#: patterns/query/query-4.php
 msgctxt "Pattern title"
 msgid "Query (Text / 2rows / Underline)"
 msgstr "クエリー（テキスト / 2行 / アンダーライン）"
 
-#: patterns/query-5.php
+#: patterns/query/query-5.php
 msgctxt "Pattern title"
 msgid "Query (Text / Underline)"
 msgstr "クエリー（テキスト / アンダーライン）"
@@ -1132,41 +1139,41 @@ msgstr "このエントリーをはてなブックマークに追加"
 msgid "Share this entry to LINE"
 msgstr "このエントリーを LINE にシェア"
 
-#: patterns/sidebar-bbpress.php
+#: patterns/sidebar/sidebar-bbpress.php
 msgctxt "Pattern title"
 msgid "Sidebar (for bbPress)"
 msgstr "サイドバー（bbPress 用）"
 
-#: patterns/sidebar-bbpress.php:10
+#: patterns/sidebar/sidebar-bbpress.php:10
 msgid "Login"
 msgstr "ログイン"
 
-#: patterns/sidebar-bbpress.php:11
+#: patterns/sidebar/sidebar-bbpress.php:11
 msgid "Statistics"
 msgstr "統計情報"
 
-#: patterns/sidebar-bbpress.php:12
+#: patterns/sidebar/sidebar-bbpress.php:12
 msgid "Recent Topics"
 msgstr "最近のトピック"
 
-#: patterns/sidebar-bbpress.php:13
+#: patterns/sidebar/sidebar-bbpress.php:13
 msgid "Forum Search"
 msgstr "フォーラムを検索"
 
-#: patterns/sidebar-blog.php
+#: patterns/sidebar/sidebar-blog.php
 msgctxt "Pattern title"
 msgid "Sidebar (for Blog)"
 msgstr "サイドバー（ブログ用）"
 
-#: patterns/sidebar-blog.php:13
+#: patterns/sidebar/sidebar-blog.php:13
 msgid "Latest posts"
 msgstr "最新の投稿"
 
-#: patterns/sidebar-blog.php:23
+#: patterns/sidebar/sidebar-blog.php:23
 msgid "Categories"
 msgstr "カテゴリー"
 
-#: patterns/sidebar-blog.php:33
+#: patterns/sidebar/sidebar-blog.php:33
 msgid "Archives"
 msgstr "アーカイブ"
 
@@ -1816,7 +1823,8 @@ msgstr "アブストラクト背景"
 #: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1 dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
-#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/masonry/index.js:1 dist/blocks/reel/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:1
@@ -2174,6 +2182,10 @@ msgid ""
 "width."
 msgstr "ポートレートかつモバイル幅のとき、縦横のグリッド線の向きを切り替える。"
 
+#: dist/blocks/masonry/index.js:1 dist/blocks/text/index.js:1
+msgid "Column width"
+msgstr "カラム幅"
+
 #: dist/blocks/mega-menu/index.js:1
 msgid "Mega menu background"
 msgstr "メガメニュー背景"
@@ -2507,10 +2519,6 @@ msgstr "子要素の内在的なサイズによって中央揃えする"
 #: dist/blocks/text/index.js:1
 msgid "Multi columns"
 msgstr "マルチカラム"
-
-#: dist/blocks/text/index.js:1
-msgid "Column width"
-msgstr "カラム幅"
 
 #: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:10
 #: dist/js/editor/editor.js:13
@@ -3803,6 +3811,16 @@ msgstr "抽象的な背景画像を使用したフレームを表示します。
 msgctxt "block title"
 msgid "Content"
 msgstr "コンテンツ"
+
+#: dist/blocks/masonry/block.json
+msgctxt "block title"
+msgid "Masonry"
+msgstr "メイソンリー"
+
+#: dist/blocks/masonry/block.json
+msgctxt "block description"
+msgid "Elements of different sizes are laid out without gaps."
+msgstr "異なるサイズの要素が隙間なくレイアウトされます。"
 
 #: dist/blocks/tab-panel/block.json
 msgctxt "block title"

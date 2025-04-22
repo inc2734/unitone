@@ -1,0 +1,11 @@
+export default (
+	<svg
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		aria-hidden="true"
+		focusable="false"
+	>
+		<path d="M8 20.25H3V11.25H8V20.25ZM14.5 20.25H9.5V15.75H14.5V20.25ZM21 20.25H16V14.25H21V20.25ZM14.5 14.25H9.5V9.25H14.5V14.25ZM21 12.75H16V3.75H21V12.75ZM8 9.75H3V3.75H8V9.75ZM14.5 7.75H9.5V3.75H14.5V7.75Z" />
+	</svg>
+);

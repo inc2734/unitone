@@ -1,0 +1,193 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "unitone",
+	"name": "unitone/masonry",
+	"title": "Masonry",
+	"description": "Elements of different sizes are laid out without gaps.",
+	"attributes": {
+		"columnWidth": {
+			"type": "string",
+			"default": "calc(var(--wp--style--global--content-size) / 3)"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": "[data-unitone-layout~=masonry]"
+	},
+	"allowedBlocks": [ "core/image", "core/video", "unitone/frame" ],
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"align": [ "full", "wide" ],
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": false,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": false,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontFamily": true
+			}
+		},
+		"unitone": {
+			"gap": true,
+			"halfLeading": true
+		}
+	},
+	"example": {
+		"attributes": {
+			"columnWidth": "120px"
+		},
+		"innerBlocks": [
+			{
+				"name": "unitone/frame",
+				"attributes": {
+					"ratio": "16/9"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/image",
+						"attributes": {
+							"id": 1,
+							"url": "https://unitone.2inc.org/wp-content/uploads/random?v=1"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/frame",
+				"attributes": {
+					"ratio": "9/16"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/image",
+						"attributes": {
+							"id": 1,
+							"url": "https://unitone.2inc.org/wp-content/uploads/random?v=2"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/frame",
+				"attributes": {
+					"ratio": "4/3"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/image",
+						"attributes": {
+							"id": 1,
+							"url": "https://unitone.2inc.org/wp-content/uploads/random?v=3"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/frame",
+				"attributes": {
+					"ratio": "3/4"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/image",
+						"attributes": {
+							"id": 1,
+							"url": "https://unitone.2inc.org/wp-content/uploads/random?v=4"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/frame",
+				"attributes": {
+					"ratio": "16/9"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/image",
+						"attributes": {
+							"id": 1,
+							"url": "https://unitone.2inc.org/wp-content/uploads/random?v=5"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/frame",
+				"attributes": {
+					"ratio": "3/4"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/image",
+						"attributes": {
+							"id": 1,
+							"url": "https://unitone.2inc.org/wp-content/uploads/random?v=6"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/frame",
+				"attributes": {
+					"ratio": "4/3"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/image",
+						"attributes": {
+							"id": 1,
+							"url": "https://unitone.2inc.org/wp-content/uploads/random?v=7"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/frame",
+				"attributes": {
+					"ratio": "3/4"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/image",
+						"attributes": {
+							"id": 1,
+							"url": "https://unitone.2inc.org/wp-content/uploads/random?v=8"
+						}
+					}
+				]
+			},
+			{
+				"name": "unitone/frame",
+				"attributes": {
+					"ratio": "4/3"
+				},
+				"innerBlocks": [
+					{
+						"name": "core/image",
+						"attributes": {
+							"id": 1,
+							"url": "https://unitone.2inc.org/wp-content/uploads/random?v=9"
+						}
+					}
+				]
+			}
+		]
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

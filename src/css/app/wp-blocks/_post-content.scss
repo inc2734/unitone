@@ -24,12 +24,10 @@
 	> .wp-block-image,
 	> .wp-block-table,
 	> .wp-block-video,
-	> .wp-block-code {
+	> .wp-block-code,
+	> .wp-block-separator,
+	> .wp-block-gallery {
 		--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
-
-		&:first-child:first-child {
-			margin-block-start: calc(1em * var(--unitone--half-leading));
-		}
 
 		&:not(.alignleft):not(.alignright) + * {
 			--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));

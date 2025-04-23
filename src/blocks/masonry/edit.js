@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
 import {
+	BlockControls,
 	InspectorControls,
 	InnerBlocks,
 	useBlockProps,
@@ -10,12 +11,14 @@ import {
 } from '@wordpress/block-editor';
 
 import {
+	ToolbarButton,
 	TextControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { useSelect } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { shuffle } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
@@ -26,12 +29,19 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const { columnWidth, childrenBorder, allowedBlocks, templateLock } =
 		attributes;
 
-	const hasInnerBlocks = useSelect(
-		( select ) =>
-			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
-				?.length,
+	const { hasInnerBlocks, innerBlockClientIds } = useSelect(
+		( select ) => {
+			const { getBlock, getBlockOrder } = select( blockEditorStore );
+
+			return {
+				hasInnerBlocks: !! getBlock( clientId )?.innerBlocks?.length,
+				innerBlockClientIds: getBlockOrder( clientId ),
+			};
+		},
 		[ clientId ]
 	);
+
+	const { moveBlockToPosition } = useDispatch( blockEditorStore );
 
 	const blockProps = useBlockProps( {
 		style: {
@@ -66,8 +76,32 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
+	const shuffleInnerBlocks = () => {
+		if ( innerBlockClientIds?.length < 2 ) return;
+
+		const shuffled = [ ...innerBlockClientIds ];
+		console.log( shuffled );
+		for ( let i = shuffled.length - 1; i > 0; i-- ) {
+			const j = Math.floor( Math.random() * ( i + 1 ) );
+			[ shuffled[ i ], shuffled[ j ] ] = [ shuffled[ j ], shuffled[ i ] ];
+		}
+		console.log( shuffled );
+
+		shuffled.forEach( ( childClientId, index ) => {
+			moveBlockToPosition( childClientId, clientId, clientId, index );
+		} );
+	};
+
 	return (
 		<>
+			<BlockControls>
+				<ToolbarButton
+					icon={ shuffle }
+					label={ __( 'Shuffle child blocks', 'unitone' ) }
+					onClick={ shuffleInnerBlocks }
+				/>
+			</BlockControls>
+
 			<InspectorControls>
 				<ToolsPanel
 					label={ __( 'Settings', 'unitone' ) }

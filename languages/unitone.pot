@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 19.0.3\n"
+"Project-Id-Version: unitone 19.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-22T15:44:58+00:00\n"
+"POT-Creation-Date: 2025-04-23T11:54:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -2235,8 +2235,16 @@ msgid "Switch vertical and horizontal grid lines direction when portrait and mob
 msgstr ""
 
 #: dist/blocks/masonry/index.js:1
+msgid "Shuffle child blocks"
+msgstr ""
+
+#: dist/blocks/masonry/index.js:1
 #: dist/blocks/text/index.js:1
 msgid "Column width"
+msgstr ""
+
+#: dist/blocks/masonry/index.js:1
+msgid "Child blocks settings"
 msgstr ""
 
 #: dist/blocks/mega-menu/index.js:1

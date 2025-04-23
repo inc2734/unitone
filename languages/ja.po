@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-04-22T15:44:58+00:00\n"
-"PO-Revision-Date: 2025-04-23 00:46+0900\n"
+"POT-Creation-Date: 2025-04-23T11:54:01+00:00\n"
+"PO-Revision-Date: 2025-04-23 20:55+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2182,9 +2182,17 @@ msgid ""
 "width."
 msgstr "ポートレートかつモバイル幅のとき、縦横のグリッド線の向きを切り替える。"
 
+#: dist/blocks/masonry/index.js:1
+msgid "Shuffle child blocks"
+msgstr "子ブロックをシャッフル"
+
 #: dist/blocks/masonry/index.js:1 dist/blocks/text/index.js:1
 msgid "Column width"
 msgstr "カラム幅"
+
+#: dist/blocks/masonry/index.js:1
+msgid "Child blocks settings"
+msgstr "子ブロックの設定"
 
 #: dist/blocks/mega-menu/index.js:1
 msgid "Mega menu background"

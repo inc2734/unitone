@@ -80,12 +80,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		if ( innerBlockClientIds?.length < 2 ) return;
 
 		const shuffled = [ ...innerBlockClientIds ];
-		console.log( shuffled );
 		for ( let i = shuffled.length - 1; i > 0; i-- ) {
 			const j = Math.floor( Math.random() * ( i + 1 ) );
 			[ shuffled[ i ], shuffled[ j ] ] = [ shuffled[ j ], shuffled[ i ] ];
 		}
-		console.log( shuffled );
 
 		shuffled.forEach( ( childClientId, index ) => {
 			moveBlockToPosition( childClientId, clientId, clientId, index );

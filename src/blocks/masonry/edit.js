@@ -77,7 +77,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 	const shuffleInnerBlocks = () => {
-		if ( innerBlockClientIds?.length < 2 ) return;
+		if ( innerBlockClientIds?.length < 2 ) {
+			return;
+		}
 
 		const shuffled = [ ...innerBlockClientIds ];
 		for ( let i = shuffled.length - 1; i > 0; i-- ) {

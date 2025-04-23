@@ -48,7 +48,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			'--unitone--children--border-bottom-left-radius':
 				childrenBorder?.radius?.bottomLeft,
 			'--unitone--children--border-bottom-right-radius':
-				childrenBorder?.radius?.bottomRright,
+				childrenBorder?.radius?.bottomRight,
 		},
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(

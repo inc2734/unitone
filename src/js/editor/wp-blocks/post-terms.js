@@ -81,7 +81,7 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 					'--unitone--post-term--border-bottom-left-radius':
 						attributes?.style?.border?.radius?.bottomLeft,
 					'--unitone--post-term--border-bottom-right-radius':
-						attributes?.style?.border?.radius?.bottomRright,
+						attributes?.style?.border?.radius?.bottomRight,
 				},
 			},
 		};

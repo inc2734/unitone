@@ -6,6 +6,7 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
+	__experimentalBorderRadiusControl as BorderRadiusControl,
 } from '@wordpress/block-editor';
 
 import {
@@ -22,7 +23,8 @@ import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { columnWidth, allowedBlocks, templateLock } = attributes;
+	const { columnWidth, childrenBorder, allowedBlocks, templateLock } =
+		attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -34,6 +36,19 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const blockProps = useBlockProps( {
 		style: {
 			'--unitone--column-width': columnWidth || undefined,
+			'--unitone--children--border-radius':
+				null != childrenBorder?.radius &&
+				'object' !== typeof childrenBorder?.radius
+					? childrenBorder?.radius
+					: undefined,
+			'--unitone--children--border-top-left-radius':
+				childrenBorder?.radius?.topLeft,
+			'--unitone--children--border-top-right-radius':
+				childrenBorder?.radius?.topRight,
+			'--unitone--children--border-bottom-left-radius':
+				childrenBorder?.radius?.bottomLeft,
+			'--unitone--children--border-bottom-right-radius':
+				childrenBorder?.radius?.bottomRright,
 		},
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
@@ -84,6 +99,45 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							value={ columnWidth }
 							onChange={ ( newAttribute ) => {
 								setAttributes( { columnWidth: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
+
+				<ToolsPanel
+					label={ __( 'Child blocks settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
+					<ToolsPanelItem
+						hasValue={ () =>
+							JSON.stringify( childrenBorder?.radius ) !==
+							JSON.stringify(
+								metadata.attributes.childrenBorder.default
+									?.radius
+							)
+						}
+						isShownByDefault
+						label={ __( 'Radius' ) }
+						onDeselect={ () => {
+							childrenBorder.radius =
+								metadata.attributes.childrenBorder.default?.radius;
+
+							setAttributes( {
+								childrenBorder: {
+									...childrenBorder,
+								},
+							} );
+						} }
+					>
+						<BorderRadiusControl
+							values={ childrenBorder?.radius }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									childrenBorder: {
+										...childrenBorder,
+										radius: newAttribute,
+									},
+								} );
 							} }
 						/>
 					</ToolsPanelItem>

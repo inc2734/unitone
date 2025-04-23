@@ -10,6 +10,9 @@
 			"type": "string",
 			"default": "calc(var(--wp--style--global--content-size) / 3)"
 		},
+		"childrenBorder": {
+			"type": "object"
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

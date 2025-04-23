@@ -1,3 +1,20 @@
 @use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/masonry/masonry';
 
 @include masonry.masonry();
+
+[data-unitone-layout~="masonry"] {
+  --unitone--children--border-radius: 0px;
+  --unitone--children--border-top-left-radius: var(--unitone--children--border-radius);
+  --unitone--children--border-top-right-radius: var(--unitone--children--border-radius);
+  --unitone--children--border-bottom-right-radius: var(--unitone--children--border-radius);
+  --unitone--children--border-bottom-left-radius: var(--unitone--children--border-radius);
+}
+
+// The image block applies border to the img,
+// not to the figure, so the grandchild selector cannot be used.
+:where([data-unitone-layout~="masonry"] .wp-block-image img) {
+	border-top-left-radius: var(--unitone--children--border-top-left-radius);
+	border-top-right-radius: var(--unitone--children--border-top-right-radius);
+	border-bottom-right-radius: var(--unitone--children--border-bottom-right-radius);
+	border-bottom-left-radius: var(--unitone--children--border-bottom-left-radius);
+}

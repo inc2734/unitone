@@ -146,8 +146,24 @@ export function StyleEdit( {
 
 		let formatted = lines.join( '\n' );
 
-		// Remove space before colon and enforce one space after
-		formatted = formatted.replace( /\s+:/g, ':' ).replace( /:\s*/g, ': ' );
+		// Format only declaration lines (avoid affecting selectors like &:hover)
+		formatted = formatted
+			.split( '\n' )
+			.map( ( line ) => {
+				const trimmed = line.trim();
+				// Skip selector lines or block starts
+				if ( trimmed.endsWith( '{' ) || trimmed.startsWith( '@' ) ) {
+					return line;
+				}
+				// Apply colon formatting to property declarations only
+				if ( trimmed.includes( ':' ) && trimmed.endsWith( ';' ) ) {
+					return line
+						.replace( /\s+:/g, ':' )
+						.replace( /:\s*/g, ': ' );
+				}
+				return line;
+			} )
+			.join( '\n' );
 
 		// Add one space before !important
 		formatted = formatted.replace( /\s*!important/g, ' !important' );
@@ -164,7 +180,7 @@ export function StyleEdit( {
 			}
 		);
 
-		// Insert blank line before top-level selectors or at-rules, if preceded by a block
+		// Insert blank lines before top-level selectors or at-rules
 		const formattedLines = formatted.split( '\n' );
 		const resultLines = [];
 

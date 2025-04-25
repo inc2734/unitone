@@ -412,7 +412,29 @@ add_filter(
 
 		// -padding
 		if ( $has_support( 'padding' ) ) {
-			$add_attribute( '-padding', $get_attribute( 'padding' ) );
+			$padding_top = $get_attribute( 'padding.top' );
+			if ( ! is_null( $padding_top ) ) {
+				$add_attribute( '-padding-top', $padding_top );
+			}
+
+			$padding_right = $get_attribute( 'padding.right' );
+			if ( ! is_null( $padding_right ) ) {
+				$add_attribute( '-padding-right', $padding_right );
+			}
+
+			$padding_bottom = $get_attribute( 'padding.bottom' );
+			if ( ! is_null( $padding_bottom ) ) {
+				$add_attribute( '-padding-bottom', $padding_bottom );
+			}
+
+			$padding_left = $get_attribute( 'padding.left' );
+			if ( ! is_null( $padding_left ) ) {
+				$add_attribute( '-padding-left', $padding_left );
+			}
+
+			if ( is_null( $padding_top ) && is_null( $padding_right ) && is_null( $padding_bottom ) && is_null( $padding_left ) ) {
+				$add_attribute( '-padding', $get_attribute( 'padding' ) );
+			}
 		}
 
 		// -position

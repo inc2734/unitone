@@ -2,7 +2,7 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/packages/block-editor/src/components/block-vertical-alignment-control/icons.js
  */
 
-import { Path, SVG } from '@wordpress/components';
+import { Path, SVG, Line } from '@wordpress/components';
 
 export const alignBottom = (
 	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -43,5 +43,106 @@ export const alignStretch = (
 export const alignSpaceBetween = (
 	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 		<Path d="M7 4H17V8L7 8V4ZM7 16L17 16V20L7 20V16ZM20 11.25H4V12.75H20V11.25Z" />
+	</SVG>
+);
+
+export const allSides = (
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+		<Path d="M3 2H13V0H3V2ZM3 16H13V14H3V16Z" fill="currentColor" />
+		<Path d="M0 3V13H2L2 3H0ZM14 3V13H16V3H14Z" fill="currentColor" />
+	</SVG>
+);
+
+export const verticalSides = (
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+		<Path d="M3 2H13V0H3V2ZM3 16H13V14H3V16Z" fill="currentColor" />
+		<Path
+			d="M0 3V13H2L2 3H0ZM14 3V13H16V3H14Z"
+			fill="currentColor"
+			opacity={ 0.3 }
+		/>
+	</SVG>
+);
+
+export const horizontalSides = (
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+		<Path
+			d="M3 2H13V0H3V2ZM3 16H13V14H3V16Z"
+			fill="currentColor"
+			opacity={ 0.3 }
+		/>
+		<Path d="M0 3V13H2L2 3H0ZM14 3V13H16V3H14Z" fill="currentColor" />
+	</SVG>
+);
+
+export const topSides = (
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+		<Path
+			d="M13 16H3V14H13V16ZM2 13H0V3H2V13ZM16 13H14V3H16V13Z"
+			fill="currentColor"
+			fillOpacity="0.3"
+		/>
+		<Line
+			x1="3"
+			y1="1"
+			x2="13"
+			y2="1"
+			stroke="currentColor"
+			strokeWidth="2"
+		/>
+	</SVG>
+);
+
+export const rightSides = (
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+		<Line
+			x1="15"
+			y1="3"
+			x2="15"
+			y2="13"
+			stroke="currentColor"
+			strokeWidth="2"
+		/>
+		<Path
+			d="M13 16H3V14H13V16ZM2 13H0V3H2V13ZM13 2H3V0H13V2Z"
+			fill="currentColor"
+			fillOpacity="0.3"
+		/>
+	</SVG>
+);
+
+export const bottomSides = (
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+		<Line
+			x1="3"
+			y1="15"
+			x2="13"
+			y2="15"
+			stroke="currentColor"
+			strokeWidth="2"
+		/>
+		<Path
+			d="M2 13H0V3H2V13ZM16 13H14V3H16V13ZM13 2H3V0H13V2Z"
+			fill="currentColor"
+			fillOpacity="0.3"
+		/>
+	</SVG>
+);
+
+export const leftSides = (
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+		<Line
+			x1="1"
+			y1="3"
+			x2="1"
+			y2="13"
+			stroke="currentColor"
+			strokeWidth="2"
+		/>
+		<Path
+			d="M13 16H3V14H13V16ZM16 13H14V3H16V13ZM13 2H3V0H13V2Z"
+			fill="currentColor"
+			fillOpacity="0.3"
+		/>
 	</SVG>
 );

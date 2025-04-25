@@ -45,9 +45,7 @@
 	.unitone-section[data-unitone-layout~="-padding\:#{ $i }"] {
 		--unitone--padding: var(--unitone--s#{ $i }) !important;
 	}
-}
 
-@for $i from 2 through 7 {
 	.unitone-section[data-unitone-layout~="-padding\:#{ $i }m"] {
 		--unitone--padding: var(--unitone--s#{ $i }m) !important;
 	}

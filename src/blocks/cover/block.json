@@ -41,7 +41,9 @@
 		"unitone": {
 			"gap": true,
 			"minHeight": true,
-			"padding": true,
+			"padding": {
+				"split": true
+			},
 			"fluidTypography": true,
 			"halfLeading": true,
 			"backgroundClip": true

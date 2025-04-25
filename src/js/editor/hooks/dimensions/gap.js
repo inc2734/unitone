@@ -9,6 +9,7 @@ import {
 import {
 	BaseControl,
 	Button,
+	Icon,
 	Tooltip,
 	Flex,
 	FlexBlock,
@@ -22,6 +23,7 @@ import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject, isString } from '../utils';
+import { allSides, verticalSides, horizontalSides } from '../icons';
 
 export function hasGapValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
@@ -101,95 +103,20 @@ function LinkedButton( { isLinked, ...props } ) {
 	);
 }
 
-function IconAll() {
-	return (
-		<svg
-			width="16"
-			height="16"
-			viewBox="0 0 16 16"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path
-				fillRule="evenodd"
-				clipRule="evenodd"
-				d="M3 2H13V0H3V2ZM3 16H13V14H3V16Z"
-				fill="currentColor"
-			/>
-
-			<path
-				fillRule="evenodd"
-				clipRule="evenodd"
-				d="M0 3V13H2L2 3H0ZM14 3V13H16V3H14Z"
-				fill="currentColor"
-			/>
-		</svg>
-	);
-}
-
-function IconVertical() {
-	return (
-		<svg
-			width="16"
-			height="16"
-			viewBox="0 0 16 16"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path
-				fillRule="evenodd"
-				clipRule="evenodd"
-				d="M3 2H13V0H3V2ZM3 16H13V14H3V16Z"
-				fill="currentColor"
-			/>
-
-			<path
-				fillRule="evenodd"
-				clipRule="evenodd"
-				d="M0 3V13H2L2 3H0ZM14 3V13H16V3H14Z"
-				fill="currentColor"
-				opacity={ 0.3 }
-			/>
-		</svg>
-	);
-}
-
-function IconHorizontal() {
-	return (
-		<svg
-			width="16"
-			height="16"
-			viewBox="0 0 16 16"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path
-				fillRule="evenodd"
-				clipRule="evenodd"
-				d="M3 2H13V0H3V2ZM3 16H13V14H3V16Z"
-				fill="currentColor"
-				opacity={ 0.3 }
-			/>
-
-			<path
-				fillRule="evenodd"
-				clipRule="evenodd"
-				d="M0 3V13H2L2 3H0ZM14 3V13H16V3H14Z"
-				fill="currentColor"
-			/>
-		</svg>
-	);
-}
-
 function compacting( attribute, defaultValue = undefined ) {
 	if ( 0 === attribute ) {
 		return 0;
 	}
 
-	const compactedAttribute =
-		! isString( attribute ) && attribute?.column === attribute?.row
-			? attribute?.column
-			: attribute;
+	if ( null == attribute ) {
+		return undefined;
+	}
+
+	const values = Object.values( attribute );
+	const allEqual =
+		2 === values.length && values.every( ( v ) => v === values[ 0 ] );
+
+	const compactedAttribute = allEqual ? values[ 0 ] : attribute;
 
 	if ( ! isString( compactedAttribute ) && null != defaultValue ) {
 		if ( compactedAttribute?.column === defaultValue?.column ) {
@@ -242,8 +169,8 @@ export function GapEdit( {
 
 	const isMixed =
 		null != unitone?.gap
-			? unitone?.gap?.column !== unitone?.gap?.row
-			: defaultValue?.column !== defaultValue?.row;
+			? ! isString( compacting( unitone?.gap, defaultValue ) )
+			: ! isString( compacting( defaultValue ) );
 
 	const [ isLinked, setIsLinked ] = useState( ! isMixed );
 
@@ -269,98 +196,24 @@ export function GapEdit( {
 		} );
 	};
 
-	const onChangeColumnGap = ( newValue ) => {
+	const onChangeGapSide = ( side, newValue ) => {
 		if ( null != newValue ) {
 			// RangeControl returns Int, SelectControl returns String.
 			// So cast Int all values.
 			newValue = String( newValue );
 		}
 
-		const compactDefault = compacting( defaultValue );
-		const fullDefault = expand( compactDefault );
-		const preNewGap = expand( unitone?.gap );
+		const compactedDefault = compacting( defaultValue );
+		const expandedDefault = expand( compactedDefault );
+		const newGap = expand( unitone?.gap );
 
-		const newGap = {
-			column:
-				newValue ||
-				( null == fullDefault?.column ||
-				newValue === fullDefault?.column
-					? undefined
-					: '' ),
-			row: preNewGap?.row ?? fullDefault?.row,
-		};
-
-		// current が undefined で default が数値のときは row に default が入る
-		// 分割値の場合、PHP 側で default.row は参照するけど、default は参照しないため
-		if ( null == unitone?.gap && isString( defaultValue ) ) {
-			newGap.row = defaultValue;
-		}
-
-		// current.column が数値で current.row がなく、
-		if ( null != unitone?.gap?.column && null == unitone?.gap?.row ) {
-			if ( isString( defaultValue?.row ) ) {
-				// default.row が数値のときは row に default.row が入る
-				newGap.row = defaultValue?.row;
-			} else if ( isString( defaultValue ) ) {
-				// default が数値のときは row に '' が入る
-				newGap.row = '';
-			}
-		}
-
-		const newUnitone = {
-			...unitone,
-			gap: compacting( newGap, defaultValue ),
-		};
+		newGap[ side ] = newValue || expandedDefault?.[ side ];
 
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
-		} );
-	};
-
-	const onChangeRowGap = ( newValue ) => {
-		if ( null != newValue ) {
-			// RangeControl returns Int, SelectControl returns String.
-			// So cast Int all values.
-			newValue = String( newValue );
-		}
-
-		const compactDefault = compacting( defaultValue );
-		const fullDefault = expand( compactDefault );
-		const preNewGap = expand( unitone?.gap );
-
-		const newGap = {
-			row:
-				newValue ||
-				( null == fullDefault?.row || newValue === fullDefault?.row
-					? undefined
-					: '' ),
-			column: preNewGap?.column ?? fullDefault?.column,
-		};
-
-		// current が undefined で default が数値のときは column に default が入る
-		// 分割値の場合、PHP 側で default.column は参照するけど、default は参照しないため
-		if ( null == unitone?.gap && isString( defaultValue ) ) {
-			newGap.column = defaultValue;
-		}
-
-		// current.row が数値で current.column がなく、
-		if ( null != unitone?.gap?.row && null == unitone?.gap?.column ) {
-			if ( isString( defaultValue?.column ) ) {
-				// default.column が数値のときは column に default.column が入る
-				newGap.column = defaultValue?.column;
-			} else if ( isString( defaultValue ) ) {
-				// default が数値のときは column に '' が入る
-				newGap.column = '';
-			}
-		}
-
-		const newUnitone = {
-			...unitone,
-			gap: compacting( newGap, defaultValue ),
-		};
-
-		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				gap: compacting( newGap, defaultValue ),
+			} ),
 		} );
 	};
 
@@ -391,7 +244,7 @@ export function GapEdit( {
 					{ isLinked ? (
 						<Flex align="center">
 							<FlexItem>
-								<IconAll />
+								<Icon icon={ allSides } size={ 16 } />
 							</FlexItem>
 
 							<FlexBlock>
@@ -406,38 +259,25 @@ export function GapEdit( {
 							</FlexBlock>
 						</Flex>
 					) : (
-						<>
+						<div
+							style={ {
+								display: 'grid',
+								gridTemplateColumns: 'repeat(2, 1fr)',
+								gap: '8px',
+							} }
+						>
 							<Flex align="center">
 								<FlexItem>
 									{ ! isVertical ? (
-										<IconHorizontal />
+										<Icon
+											icon={ verticalSides }
+											size={ 16 }
+										/>
 									) : (
-										<IconVertical />
-									) }
-								</FlexItem>
-
-								<FlexBlock>
-									<SpacingSizeControl
-										value={
-											unitone?.gap?.column ??
-											unitone?.gap ??
-											defaultValue?.column ??
-											defaultValue
-										}
-										onChange={ onChangeColumnGap }
-									/>
-								</FlexBlock>
-							</Flex>
-
-							<Flex
-								align="center"
-								style={ { marginTop: '11px' } }
-							>
-								<FlexItem>
-									{ ! isVertical ? (
-										<IconVertical />
-									) : (
-										<IconHorizontal />
+										<Icon
+											icon={ horizontalSides }
+											size={ 16 }
+										/>
 									) }
 								</FlexItem>
 
@@ -449,11 +289,46 @@ export function GapEdit( {
 											defaultValue?.row ??
 											defaultValue
 										}
-										onChange={ onChangeRowGap }
+										onChange={ ( newValue ) =>
+											onChangeGapSide( 'row', newValue )
+										}
 									/>
 								</FlexBlock>
 							</Flex>
-						</>
+
+							<Flex align="center">
+								<FlexItem>
+									{ ! isVertical ? (
+										<Icon
+											icon={ horizontalSides }
+											size={ 16 }
+										/>
+									) : (
+										<Icon
+											icon={ verticalSides }
+											size={ 16 }
+										/>
+									) }
+								</FlexItem>
+
+								<FlexBlock>
+									<SpacingSizeControl
+										value={
+											unitone?.gap?.column ??
+											unitone?.gap ??
+											defaultValue?.column ??
+											defaultValue
+										}
+										onChange={ ( newValue ) =>
+											onChangeGapSide(
+												'column',
+												newValue
+											)
+										}
+									/>
+								</FlexBlock>
+							</Flex>
+						</div>
 					) }
 				</>
 			) }
@@ -489,8 +364,7 @@ export function useGapBlockProps( settings ) {
 			'data-unitone-layout': clsx(
 				settings.wrapperProps?.[ 'data-unitone-layout' ],
 				{
-					[ `-gap:${ newGap }` ]:
-						null == newGap?.column && null == newGap?.row,
+					[ `-gap:${ newGap }` ]: isString( newGap ),
 					[ `-column-gap:${ newGap?.column }` ]:
 						null != newGap?.column,
 					[ `-row-gap:${ newGap?.row }` ]: null != newGap?.row,

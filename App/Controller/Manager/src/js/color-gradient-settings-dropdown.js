@@ -58,9 +58,17 @@ export default function ( {
 	enableAlpha,
 	gradients,
 	settings,
+	__experimentalIsRenderedInSidebar,
 	...props
 } ) {
 	let popoverProps;
+	if ( __experimentalIsRenderedInSidebar ) {
+		popoverProps = {
+			placement: 'left-start',
+			offset: 36,
+			shift: true,
+		};
+	}
 
 	return (
 		<>
@@ -78,6 +86,7 @@ export default function ( {
 					onColorChange: setting.onColorChange,
 					onGradientChange: setting.onGradientChange,
 					showTitle: false,
+					__experimentalIsRenderedInSidebar,
 					...setting,
 				};
 				const toggleSettings = {

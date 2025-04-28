@@ -168,9 +168,9 @@ export function GapEdit( {
 	const isVertical = getBlockSupport( name, 'unitone.gap.vertical' ) || false;
 
 	const isMixed =
-		null != unitone?.gap
-			? ! isNumber( compacting( unitone?.gap, defaultValue ) )
-			: ! isNumber( compacting( defaultValue ) );
+		( null != unitone?.gap &&
+			! isNumber( compacting( unitone?.gap, defaultValue ) ) ) ||
+		( null != defaultValue && ! isNumber( compacting( defaultValue ) ) );
 
 	const [ isLinked, setIsLinked ] = useState( ! isMixed );
 

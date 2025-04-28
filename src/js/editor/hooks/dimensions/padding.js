@@ -173,9 +173,9 @@ export function PaddingEdit( {
 	const split = getBlockSupport( name, 'unitone.padding.split' ) || false;
 
 	const isMixed =
-		null != unitone?.padding
-			? ! isNumber( compacting( unitone?.padding, defaultValue ) )
-			: ! isNumber( compacting( defaultValue ) );
+		( null != unitone?.padding &&
+			! isNumber( compacting( unitone?.padding, defaultValue ) ) ) ||
+		( null != defaultValue && ! isNumber( compacting( defaultValue ) ) );
 
 	const [ isLinked, setIsLinked ] = useState( ! isMixed );
 

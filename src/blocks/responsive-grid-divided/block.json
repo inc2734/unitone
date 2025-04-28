@@ -67,7 +67,13 @@
 			"autoRepeat": true,
 			"fluidTypography": true,
 			"halfLeading": true,
-			"dividerType": [ "stripe", "underline", "bordered" ],
+			"dividerType": [
+				"stripe",
+				"stripe-vertical",
+				"divide-vertical",
+				"underline",
+				"bordered"
+			],
 			"divider": true
 		}
 	},

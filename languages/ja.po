@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-04-23T11:54:01+00:00\n"
-"PO-Revision-Date: 2025-04-23 20:55+0900\n"
+"POT-Creation-Date: 2025-04-28T05:13:12+00:00\n"
+"PO-Revision-Date: 2025-04-28 14:18+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2925,8 +2925,16 @@ msgstr ""
 "ます。"
 
 #: dist/js/editor/editor.js:10
+msgid "Stripe (Vertical)"
+msgstr "ストライプ（縦）"
+
+#: dist/js/editor/editor.js:10
 msgid "Divide"
 msgstr "分割"
+
+#: dist/js/editor/editor.js:10
+msgid "Divide (Vertical)"
+msgstr "分割（縦）"
 
 #: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
 msgid "Background color or background image must be set."

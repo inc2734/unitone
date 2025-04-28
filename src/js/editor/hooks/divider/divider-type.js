@@ -25,8 +25,16 @@ const getDividerTypeOptions = ( { name } ) => {
 			value: 'stripe',
 		},
 		{
+			label: __( 'Stripe (Vertical)', 'unitone' ),
+			value: 'stripe-vertical',
+		},
+		{
 			label: __( 'Divide', 'unitone' ),
 			value: 'divide',
+		},
+		{
+			label: __( 'Divide (Vertical)', 'unitone' ),
+			value: 'divide-vertical',
 		},
 		{
 			label: __( 'Underline', 'unitone' ),

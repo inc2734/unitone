@@ -6,7 +6,7 @@ export default [
 		title: __( 'hgroup', 'unitone' ),
 		attributes: {
 			tagName: 'hgroup',
-			unitone: { gap: 0 },
+			unitone: { gap: '0' },
 		},
 		isActive: [ 'tagName' ],
 		innerBlocks: [

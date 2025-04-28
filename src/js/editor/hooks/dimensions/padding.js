@@ -34,7 +34,7 @@ import {
 } from '../icons';
 
 import { SpacingSizeControl } from '../components';
-import { cleanEmptyObject, isString } from '../utils';
+import { cleanEmptyObject, isNumber } from '../utils';
 
 export function hasPaddingValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
@@ -113,7 +113,7 @@ function compacting( attribute, defaultValue = undefined ) {
 
 	const compactedAttribute = allEqual ? values[ 0 ] : attribute;
 
-	if ( ! isString( compactedAttribute ) && null != defaultValue ) {
+	if ( ! isNumber( compactedAttribute ) && null != defaultValue ) {
 		if ( compactedAttribute?.top === defaultValue?.top ) {
 			compactedAttribute.top = undefined;
 		}
@@ -144,7 +144,7 @@ function compacting( attribute, defaultValue = undefined ) {
 }
 
 function expand( attribute ) {
-	return isString( attribute )
+	return isNumber( attribute )
 		? {
 				top: attribute,
 				right: attribute,
@@ -174,8 +174,8 @@ export function PaddingEdit( {
 
 	const isMixed =
 		null != unitone?.padding
-			? ! isString( compacting( unitone?.padding, defaultValue ) )
-			: ! isString( compacting( defaultValue ) );
+			? ! isNumber( compacting( unitone?.padding, defaultValue ) )
+			: ! isNumber( compacting( defaultValue ) );
 
 	const [ isLinked, setIsLinked ] = useState( ! isMixed );
 
@@ -395,7 +395,7 @@ export function usePaddingBlockProps( settings ) {
 			'data-unitone-layout': clsx(
 				settings.wrapperProps?.[ 'data-unitone-layout' ],
 				{
-					[ `-padding:${ newPadding }` ]: isString( newPadding ),
+					[ `-padding:${ newPadding }` ]: isNumber( newPadding ),
 					[ `-padding-top:${ newPadding?.top }` ]:
 						null != newPadding?.top,
 					[ `-padding-right:${ newPadding?.right }` ]:

@@ -32,13 +32,20 @@ export const cleanEmptyObject = ( object ) => {
 };
 
 /**
- * Check if the value is number.
+ * Check if the value is number or string type number.
  *
  * @param {*} value The value to check.
  * @return {boolean} Return true if the value is number.
  */
 export function isNumber( value ) {
-	return ! isNaN( value ) && '' !== value;
+	if ( typeof value === 'number' ) {
+		return ! isNaN( value );
+	}
+	if ( typeof value === 'string' ) {
+		const trimmed = value.trim();
+		return trimmed !== '' && ! isNaN( trimmed );
+	}
+	return false;
 }
 
 /**

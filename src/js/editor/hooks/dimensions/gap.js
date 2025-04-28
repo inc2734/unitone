@@ -22,7 +22,7 @@ import { link, linkOff } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
-import { cleanEmptyObject, isString } from '../utils';
+import { cleanEmptyObject, isNumber } from '../utils';
 import { allSides, verticalSides, horizontalSides } from '../icons';
 
 export function hasGapValue( { name, attributes: { unitone } } ) {
@@ -118,7 +118,7 @@ function compacting( attribute, defaultValue = undefined ) {
 
 	const compactedAttribute = allEqual ? values[ 0 ] : attribute;
 
-	if ( ! isString( compactedAttribute ) && null != defaultValue ) {
+	if ( ! isNumber( compactedAttribute ) && null != defaultValue ) {
 		if ( compactedAttribute?.column === defaultValue?.column ) {
 			compactedAttribute.column = undefined;
 		}
@@ -141,7 +141,7 @@ function compacting( attribute, defaultValue = undefined ) {
 }
 
 function expand( attribute ) {
-	return isString( attribute )
+	return isNumber( attribute )
 		? {
 				column: attribute,
 				row: attribute,
@@ -169,8 +169,8 @@ export function GapEdit( {
 
 	const isMixed =
 		null != unitone?.gap
-			? ! isString( compacting( unitone?.gap, defaultValue ) )
-			: ! isString( compacting( defaultValue ) );
+			? ! isNumber( compacting( unitone?.gap, defaultValue ) )
+			: ! isNumber( compacting( defaultValue ) );
 
 	const [ isLinked, setIsLinked ] = useState( ! isMixed );
 
@@ -364,7 +364,7 @@ export function useGapBlockProps( settings ) {
 			'data-unitone-layout': clsx(
 				settings.wrapperProps?.[ 'data-unitone-layout' ],
 				{
-					[ `-gap:${ newGap }` ]: isString( newGap ),
+					[ `-gap:${ newGap }` ]: isNumber( newGap ),
 					[ `-column-gap:${ newGap?.column }` ]:
 						null != newGap?.column,
 					[ `-row-gap:${ newGap?.row }` ]: null != newGap?.row,

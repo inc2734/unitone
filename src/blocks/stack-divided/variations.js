@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 export default [
 	{
 		name: 'stack-divided-stripe',
-		title: __( 'Stack (Divider: stripe)', 'unitone' ),
+		title: __( 'Stack (Divider: Stripe)', 'unitone' ),
 		isDefault: true,
 		attributes: {
 			unitone: {
@@ -25,7 +25,7 @@ export default [
 	},
 	{
 		name: 'stack-divided-underline',
-		title: __( 'Stack (Divider: underline)', 'unitone' ),
+		title: __( 'Stack (Divider: Underline)', 'unitone' ),
 		isDefault: false,
 		attributes: {
 			unitone: {
@@ -47,7 +47,7 @@ export default [
 	},
 	{
 		name: 'stack-divided-bordered',
-		title: __( 'Stack (Divider: bordered)', 'unitone' ),
+		title: __( 'Stack (Divider: Bordered)', 'unitone' ),
 		isDefault: false,
 		attributes: {
 			unitone: {

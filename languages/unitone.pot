@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 19.2.1\n"
+"Project-Id-Version: unitone 19.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-28T05:13:12+00:00\n"
+"POT-Creation-Date: 2025-04-28T06:30:55+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -1973,15 +1973,15 @@ msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: stripe)"
+msgid "Cluster (Divider: Stripe)"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: slash)"
+msgid "Cluster (Divider: Slash)"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: bordered)"
+msgid "Cluster (Divider: Bordered)"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
@@ -2046,15 +2046,15 @@ msgid "Cover (Top / Center / Bottom)"
 msgstr ""
 
 #: dist/blocks/flex-divided/index.js:1
-msgid "Flex (Divider: stripe)"
+msgid "Flex (Divider: Stripe)"
 msgstr ""
 
 #: dist/blocks/flex-divided/index.js:1
-msgid "Flex (Divider: slash)"
+msgid "Flex (Divider: Slash)"
 msgstr ""
 
 #: dist/blocks/flex-divided/index.js:1
-msgid "Flex (Divider: bordered)"
+msgid "Flex (Divider: Bordered)"
 msgstr ""
 
 #: dist/blocks/frame/index.js:1
@@ -2108,15 +2108,23 @@ msgid "Switch to settings based on device size"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: stripe)"
+msgid "Grid (Divider: Stripe)"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: underline)"
+msgid "Grid (Divider: Stripe (Vertical))"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: bordered)"
+msgid "Grid (Divider: Divide (Vertical))"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Underline)"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Bordered)"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
@@ -2282,15 +2290,23 @@ msgid "No scrollbar"
 msgstr ""
 
 #: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: stripe)"
+msgid "Responsive grid (Divider: Stripe)"
 msgstr ""
 
 #: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: underline)"
+msgid "Responsive grid (Divider: Stripe (Vertical))"
 msgstr ""
 
 #: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: bordered)"
+msgid "Responsive grid (Divider: Divide (Vertical))"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: Underline)"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: Bordered)"
 msgstr ""
 
 #: dist/blocks/responsive-grid-divided/index.js:4
@@ -2506,15 +2522,15 @@ msgid "Pagination justification"
 msgstr ""
 
 #: dist/blocks/stack-divided/index.js:1
-msgid "Stack (Divider: stripe)"
+msgid "Stack (Divider: Stripe)"
 msgstr ""
 
 #: dist/blocks/stack-divided/index.js:1
-msgid "Stack (Divider: underline)"
+msgid "Stack (Divider: Underline)"
 msgstr ""
 
 #: dist/blocks/stack-divided/index.js:1
-msgid "Stack (Divider: bordered)"
+msgid "Stack (Divider: Bordered)"
 msgstr ""
 
 #: dist/blocks/stack-divided/index.js:1

@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 export default [
 	{
 		name: 'flex-divided-stripe',
-		title: __( 'Flex (Divider: stripe)', 'unitone' ),
+		title: __( 'Flex (Divider: Stripe)', 'unitone' ),
 		isDefault: true,
 		attributes: {
 			unitone: {
@@ -25,7 +25,7 @@ export default [
 	},
 	{
 		name: 'flex-divided-slash',
-		title: __( 'Flex (Divider: slash)', 'unitone' ),
+		title: __( 'Flex (Divider: Slash)', 'unitone' ),
 		isDefault: false,
 		attributes: {
 			unitone: {
@@ -47,7 +47,7 @@ export default [
 	},
 	{
 		name: 'flex-divided-bordered',
-		title: __( 'Flex (Divider: bordered)', 'unitone' ),
+		title: __( 'Flex (Divider: Bordered)', 'unitone' ),
 		isDefault: false,
 		attributes: {
 			unitone: {

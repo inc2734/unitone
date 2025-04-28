@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-04-28T05:13:12+00:00\n"
-"PO-Revision-Date: 2025-04-28 14:18+0900\n"
+"POT-Creation-Date: 2025-04-28T06:30:55+00:00\n"
+"PO-Revision-Date: 2025-04-28 15:36+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1941,15 +1941,15 @@ msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr "%1$sgrid-template-columns%2$sの計算式の中"
 
 #: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: stripe)"
+msgid "Cluster (Divider: Stripe)"
 msgstr "クラスター（区切り：ストライプ）"
 
 #: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: slash)"
+msgid "Cluster (Divider: Slash)"
 msgstr "クラスター（区切り：スラッシュ）"
 
 #: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: bordered)"
+msgid "Cluster (Divider: Bordered)"
 msgstr "クラスター（区切り：ボーダー）"
 
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/decorator/index.js:1
@@ -2009,15 +2009,15 @@ msgid "Cover (Top / Center / Bottom)"
 msgstr "カバー（上部 / 中央 / 下部）"
 
 #: dist/blocks/flex-divided/index.js:1
-msgid "Flex (Divider: stripe)"
+msgid "Flex (Divider: Stripe)"
 msgstr "フレックス（区切り：ストライプ）"
 
 #: dist/blocks/flex-divided/index.js:1
-msgid "Flex (Divider: slash)"
+msgid "Flex (Divider: Slash)"
 msgstr "フレックス（区切り：スラッシュ）"
 
 #: dist/blocks/flex-divided/index.js:1
-msgid "Flex (Divider: bordered)"
+msgid "Flex (Divider: Bordered)"
 msgstr "フレックス（区切り：ボーダー）"
 
 #: dist/blocks/frame/index.js:1
@@ -2065,15 +2065,23 @@ msgid "Switch to settings based on device size"
 msgstr "デバイスサイズに応じた設定に切り替え"
 
 #: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: stripe)"
+msgid "Grid (Divider: Stripe)"
 msgstr "グリッド（区切り：ストライプ）"
 
 #: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: underline)"
+msgid "Grid (Divider: Stripe (Vertical))"
+msgstr "グリッド（区切り：ストライプ（縦））"
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Divide (Vertical))"
+msgstr "グリッド（区切り：分割（縦））"
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Underline)"
 msgstr "グリッド（区切り：アンダーライン）"
 
 #: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: bordered)"
+msgid "Grid (Divider: Bordered)"
 msgstr "グリッド（区切り：ボーダー）"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
@@ -2233,15 +2241,23 @@ msgid "No scrollbar"
 msgstr "スクロールバーなし"
 
 #: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: stripe)"
+msgid "Responsive grid (Divider: Stripe)"
 msgstr "レスポンシブグリッド（区切り：ストライプ）"
 
 #: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: underline)"
+msgid "Responsive grid (Divider: Stripe (Vertical))"
+msgstr "レスポンシブグリッド（区切り：ストライプ（縦））"
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: Divide (Vertical))"
+msgstr "レスポンシブグリッド（区切り：分割（縦））"
+
+#: dist/blocks/responsive-grid-divided/index.js:1
+msgid "Responsive grid (Divider: Underline)"
 msgstr "レスポンシブグリッド（区切り：アンダーライン）"
 
 #: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: bordered)"
+msgid "Responsive grid (Divider: Bordered)"
 msgstr "レスポンシブグリッド（区切り：ボーダー）"
 
 #: dist/blocks/responsive-grid-divided/index.js:4
@@ -2454,15 +2470,15 @@ msgid "Pagination justification"
 msgstr "ページネーションの配置"
 
 #: dist/blocks/stack-divided/index.js:1
-msgid "Stack (Divider: stripe)"
+msgid "Stack (Divider: Stripe)"
 msgstr "スタック（区切り：ストライプ）"
 
 #: dist/blocks/stack-divided/index.js:1
-msgid "Stack (Divider: underline)"
+msgid "Stack (Divider: Underline)"
 msgstr "スタック（区切り：アンダーライン）"
 
 #: dist/blocks/stack-divided/index.js:1
-msgid "Stack (Divider: bordered)"
+msgid "Stack (Divider: Bordered)"
 msgstr "スタック（区切り：ボーダー）"
 
 #: dist/blocks/stack-divided/index.js:1 dist/blocks/stack/index.js:1

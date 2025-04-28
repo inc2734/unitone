@@ -108,6 +108,9 @@
 	&[data-unitone-layout~="-stack"] {
 		row-gap: 0;
 
+		// Without this, -stack will be added but there will be times when it does not become one column.
+		column-gap: calc(var(--unitone--column-gap) * 2 + var(--unitone--divider-width));
+
 		> :not(:last-child) {
 			padding-bottom: var(--unitone--row-gap);
 		}

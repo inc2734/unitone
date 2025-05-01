@@ -34,7 +34,7 @@ import {
 } from '../icons';
 
 import { SpacingSizeControl } from '../components';
-import { cleanEmptyObject, isNumber } from '../utils';
+import { cleanEmptyObject, isNumber, isString } from '../utils';
 
 export function hasPaddingValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
@@ -113,7 +113,11 @@ function compacting( attribute, defaultValue = undefined ) {
 
 	const compactedAttribute = allEqual ? values[ 0 ] : attribute;
 
-	if ( ! isNumber( compactedAttribute ) && null != defaultValue ) {
+	if (
+		! isNumber( compactedAttribute ) &&
+		! isString( compactedAttribute ) &&
+		null != defaultValue
+	) {
 		if ( compactedAttribute?.top === defaultValue?.top ) {
 			compactedAttribute.top = undefined;
 		}
@@ -144,7 +148,7 @@ function compacting( attribute, defaultValue = undefined ) {
 }
 
 function expand( attribute ) {
-	return isNumber( attribute )
+	return isNumber( attribute ) || isString( attribute )
 		? {
 				top: attribute,
 				right: attribute,
@@ -172,10 +176,16 @@ export function PaddingEdit( {
 
 	const split = getBlockSupport( name, 'unitone.padding.split' ) || false;
 
+	const conpactedValue = compacting( unitone?.padding, defaultValue );
+	const conpactedDefaultValue = compacting( defaultValue );
+
 	const isMixed =
 		( null != unitone?.padding &&
-			! isNumber( compacting( unitone?.padding, defaultValue ) ) ) ||
-		( null != defaultValue && ! isNumber( compacting( defaultValue ) ) );
+			! isNumber( conpactedValue ) &&
+			! isString( conpactedValue ) ) ||
+		( null != defaultValue &&
+			! isNumber( conpactedDefaultValue ) &&
+			! isString( conpactedDefaultValue ) );
 
 	const [ isLinked, setIsLinked ] = useState( ! isMixed );
 
@@ -395,7 +405,8 @@ export function usePaddingBlockProps( settings ) {
 			'data-unitone-layout': clsx(
 				settings.wrapperProps?.[ 'data-unitone-layout' ],
 				{
-					[ `-padding:${ newPadding }` ]: isNumber( newPadding ),
+					[ `-padding:${ newPadding }` ]:
+						isNumber( newPadding ) || isString( newPadding ),
 					[ `-padding-top:${ newPadding?.top }` ]:
 						null != newPadding?.top,
 					[ `-padding-right:${ newPadding?.right }` ]:

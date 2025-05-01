@@ -22,7 +22,7 @@ import { link, linkOff } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
-import { cleanEmptyObject, isNumber } from '../utils';
+import { cleanEmptyObject, isNumber, isString } from '../utils';
 import { allSides, verticalSides, horizontalSides } from '../icons';
 
 export function hasGapValue( { name, attributes: { unitone } } ) {
@@ -118,7 +118,11 @@ function compacting( attribute, defaultValue = undefined ) {
 
 	const compactedAttribute = allEqual ? values[ 0 ] : attribute;
 
-	if ( ! isNumber( compactedAttribute ) && null != defaultValue ) {
+	if (
+		! isNumber( compactedAttribute ) &&
+		! isString( compactedAttribute ) &&
+		null != defaultValue
+	) {
 		if ( compactedAttribute?.column === defaultValue?.column ) {
 			compactedAttribute.column = undefined;
 		}
@@ -141,7 +145,7 @@ function compacting( attribute, defaultValue = undefined ) {
 }
 
 function expand( attribute ) {
-	return isNumber( attribute )
+	return isNumber( attribute ) || isString( attribute )
 		? {
 				column: attribute,
 				row: attribute,
@@ -167,10 +171,16 @@ export function GapEdit( {
 		getBlockSupport( name, 'unitone.gap.splitOnAxis' ) || false;
 	const isVertical = getBlockSupport( name, 'unitone.gap.vertical' ) || false;
 
+	const conpactedValue = compacting( unitone?.gap, defaultValue );
+	const conpactedDefaultValue = compacting( defaultValue );
+
 	const isMixed =
 		( null != unitone?.gap &&
-			! isNumber( compacting( unitone?.gap, defaultValue ) ) ) ||
-		( null != defaultValue && ! isNumber( compacting( defaultValue ) ) );
+			! isNumber( conpactedValue ) &&
+			! isString( conpactedValue ) ) ||
+		( null != defaultValue &&
+			! isNumber( conpactedDefaultValue ) &&
+			! isString( conpactedDefaultValue ) );
 
 	const [ isLinked, setIsLinked ] = useState( ! isMixed );
 
@@ -364,7 +374,8 @@ export function useGapBlockProps( settings ) {
 			'data-unitone-layout': clsx(
 				settings.wrapperProps?.[ 'data-unitone-layout' ],
 				{
-					[ `-gap:${ newGap }` ]: isNumber( newGap ),
+					[ `-gap:${ newGap }` ]:
+						isNumber( newGap ) || isString( newGap ),
 					[ `-column-gap:${ newGap?.column }` ]:
 						null != newGap?.column,
 					[ `-row-gap:${ newGap?.row }` ]: null != newGap?.row,

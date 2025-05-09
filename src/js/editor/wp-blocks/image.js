@@ -224,7 +224,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 								} }
 								min={ 0 }
 								max={ 100 }
-								step={ 10 }
+								step={ 1 }
 								required
 							/>
 						</ToolsPanelItem>

@@ -16,23 +16,49 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
+import { useRef, useEffect } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
+import {
+	stairsResizeObserver,
+	setStairsStep,
+} from '@inc2734/unitone-css/library';
+
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { revert, threshold, templateLock } = attributes;
 
-	const hasInnerBlocks = useSelect(
+	const innerBlocksLength = useSelect(
 		( select ) =>
-			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
+			select( blockEditorStore ).getBlock( clientId )?.innerBlocks
 				?.length,
 		[ clientId ]
 	);
+	const hasInnerBlocks = !! innerBlocksLength;
+
+	const ref = useRef( null );
+
+	useEffect( () => {
+		const target = ref.current;
+
+		const observer = stairsResizeObserver( target );
+
+		return () => {
+			if ( !! target ) {
+				observer.unobserve( target );
+			}
+		};
+	}, [] );
+
+	useEffect( () => {
+		setStairsStep( ref.current );
+	}, [ innerBlocksLength, attributes?.unitone?.alignItems ] );
 
 	const blockProps = useBlockProps( {
+		ref,
 		style: {
 			'--unitone--threshold': threshold || undefined,
 		},

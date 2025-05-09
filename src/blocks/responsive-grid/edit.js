@@ -31,12 +31,8 @@ import {
 } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const {
-		columnMinWidth,
-		unitone,
-		templateLock,
-		__unstableUnitoneBlockOutline,
-	} = attributes;
+	const { columnMinWidth, templateLock, __unstableUnitoneBlockOutline } =
+		attributes;
 
 	const innerBlocksLength = useSelect(
 		( select ) =>
@@ -58,13 +54,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				observer.unobserve( target );
 			}
 		};
-	}, [
-		clientId,
-		columnMinWidth,
-		unitone?.gap,
-		unitone?.stairs,
-		unitone?.stairsUp,
-	] );
+	}, [] );
 
 	useEffect( () => {
 		setStairsStep( ref.current );

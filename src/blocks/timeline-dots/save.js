@@ -6,6 +6,8 @@ export default function ( { attributes } ) {
 	const {
 		rows,
 		columnLayout,
+		dotSize,
+		lineWidth,
 		dotColor,
 		customDotColor,
 		lineColor,
@@ -22,6 +24,8 @@ export default function ( { attributes } ) {
 					} ),
 					style: {
 						'--unitone--timeline-dots-rows': rows,
+						'--unitone--dot-size': dotSize || undefined,
+						'--unitone--line-width': lineWidth || undefined,
 						'--unitone--dot-color': !! dotColor
 							? `var(--wp--preset--color--${ dotColor } )`
 							: customDotColor,

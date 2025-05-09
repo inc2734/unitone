@@ -5,7 +5,7 @@
 	--unitone--row-gap: var(--unitone--gap);
 	--unitone--dot-size: .75em;
 	--unitone--dot-color: var(--wp--preset--color--unitone-accent);
-	--unitone--line-width: calc(var(--unitone--dot-size) / 3);
+	--unitone--line-width: .25em;
 	--unitone--line-color: var(--wp--preset--color--unitone-bright-gray);
 	--unitone--timeline-dots-rows: 0;
 
@@ -78,10 +78,10 @@
 				var(--unitone--top)
 				auto
 				var(--unitone--bottom)
-				calc(50% - var(--unitone--line-width) / 2);
+				calc(50% - min(var(--unitone--line-width), var(--unitone--dot-size)) / 2);
 			display: block;
 			background-color: var(--unitone--line-color);
-			width: var(--unitone--line-width);
+			width: min(var(--unitone--line-width), var(--unitone--dot-size));
 			mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='100%25' height='100%25' fill='%23000'/%3E%3C/svg%3E");
 			mask-size: contain;
 			mask-repeat: repeat-y;

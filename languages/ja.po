@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-05-09T00:49:37+00:00\n"
-"PO-Revision-Date: 2025-05-09 09:50+0900\n"
+"POT-Creation-Date: 2025-05-09T08:14:25+00:00\n"
+"PO-Revision-Date: 2025-05-09 17:15+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2624,6 +2624,14 @@ msgstr "サブ - ドット - メイン"
 #: dist/blocks/timeline-dots/index.js:1
 msgid "Dot - Main"
 msgstr "ドット - メイン"
+
+#: dist/blocks/timeline-dots/index.js:1
+msgid "Dot size"
+msgstr "ドットの大きさ"
+
+#: dist/blocks/timeline-dots/index.js:1
+msgid "Line width"
+msgstr "ラインの幅"
 
 #: dist/blocks/timeline-dots/index.js:1
 msgid "Line color"

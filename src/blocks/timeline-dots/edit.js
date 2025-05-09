@@ -16,6 +16,8 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
+	__experimentalUnitControl as UnitControl,
+	__experimentalUseCustomUnits as useCustomUnits,
 } from '@wordpress/components';
 
 import { useSelect, useDispatch } from '@wordpress/data';
@@ -39,7 +41,14 @@ function Edit( {
 	lineColor,
 	setLineColor,
 } ) {
-	const { rows, columnLayout, allowedBlocks, templateLock } = attributes;
+	const {
+		rows,
+		columnLayout,
+		dotSize,
+		lineWidth,
+		allowedBlocks,
+		templateLock,
+	} = attributes;
 
 	const innerBlocks = useSelect(
 		( select ) =>
@@ -72,6 +81,8 @@ function Edit( {
 		} ),
 		style: {
 			'--unitone--timeline-dots-rows': rows,
+			'--unitone--dot-size': dotSize || undefined,
+			'--unitone--line-width': lineWidth || undefined,
 			'--unitone--dot-color': dotColor?.slug
 				? `var(--wp--preset--color--${ dotColor?.slug } )`
 				: dotColor?.color,
@@ -100,6 +111,10 @@ function Edit( {
 	} );
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
+	const units = useCustomUnits( {
+		availableUnits: [ 'px', 'em', 'rem' ],
+	} );
 
 	return (
 		<>
@@ -148,6 +163,57 @@ function Edit( {
 								icon={ iconDotMain }
 							/>
 						</ToggleGroupControl>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							dotSize !== metadata.attributes.dotSize.default
+						}
+						isShownByDefault
+						label={ __( 'Dot size', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								dotSize: metadata.attributes.dotSize.default,
+							} )
+						}
+					>
+						<UnitControl
+							__next40pxDefaultSize
+							label={ __( 'Dot size', 'unitone' ) }
+							value={ dotSize || '' }
+							units={ units }
+							onChange={ ( value ) =>
+								setAttributes( {
+									dotSize: value,
+								} )
+							}
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							lineWidth !== metadata.attributes.lineWidth.default
+						}
+						isShownByDefault
+						label={ __( 'Line width', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								lineWidth:
+									metadata.attributes.lineWidth.default,
+							} )
+						}
+					>
+						<UnitControl
+							__next40pxDefaultSize
+							label={ __( 'Line width', 'unitone' ) }
+							value={ lineWidth || '' }
+							units={ units }
+							onChange={ ( value ) =>
+								setAttributes( {
+									lineWidth: value,
+								} )
+							}
+						/>
 					</ToolsPanelItem>
 				</ToolsPanel>
 			</InspectorControls>

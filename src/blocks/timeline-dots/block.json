@@ -15,6 +15,14 @@
 			"type": "string",
 			"default": "dot-sub-main"
 		},
+		"dotSize": {
+			"type": "string",
+			"default": ""
+		},
+		"lineWidth": {
+			"type": "string",
+			"default": ""
+		},
 		"dotColor": {
 			"type": "string"
 		},

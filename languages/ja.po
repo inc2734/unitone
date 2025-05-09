@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-04-28T06:30:55+00:00\n"
-"PO-Revision-Date: 2025-04-28 15:36+0900\n"
+"POT-Creation-Date: 2025-05-09T00:49:37+00:00\n"
+"PO-Revision-Date: 2025-05-09 09:50+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3115,7 +3115,7 @@ msgstr "\"&\" 以外から始まるセレクターおよび CSS は無視され�
 
 #: dist/js/editor/editor.js:13
 msgid "Overlay"
-msgstr "オーバレイ"
+msgstr "オーバーレイ"
 
 #: dist/js/editor/editor.js:13
 msgid "Overlay opacity"

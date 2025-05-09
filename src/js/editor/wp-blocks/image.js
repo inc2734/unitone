@@ -8,6 +8,7 @@ import {
 
 import {
 	RangeControl,
+	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
@@ -112,123 +113,122 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 		const { attributes, setAttributes, clientId } = props;
 		const { unitone = {} } = attributes;
 
+		const resetAll = () => {
+			setAttributes( {
+				unitone: cleanEmptyObject( {
+					...unitone,
+					overlay: undefined,
+				} ),
+			} );
+		};
+
 		return (
 			<>
 				<BlockEdit { ...props } />
 
-				<InspectorControls group="color">
-					<ColorGradientSettingsDropdown
-						panelId={ clientId }
-						__experimentalIsRenderedInSidebar
-						settings={ [
-							{
-								colorValue:
-									unitone?.overlay?.customColor ??
-									unitone?.overlay?.color, // Actually, just customColor is OK, but color is also referenced for compatibility.
-								gradientValue:
-									unitone?.overlay?.customGradient ??
-									unitone?.overlay?.gradient, // Actually, just customGradient is OK, but gradient is also referenced for compatibility.
-								label: __( 'Overlay', 'unitone' ),
-								onColorChange: ( newAttribute ) => {
-									const colorObject = colors.filter(
-										( c ) => newAttribute === c.color
-									)?.[ 0 ];
-									const newColor = colorObject?.slug;
-									const newCustomColor =
-										colorObject?.color || newAttribute;
-
-									unitone.overlay ??= {};
-									unitone.overlay.color = newColor;
-									unitone.overlay.customColor =
-										newCustomColor;
-
-									setAttributes( {
-										unitone: cleanEmptyObject( unitone ),
-									} );
-								},
-								onGradientChange: ( newAttribute ) => {
-									const gradientObject = gradients.filter(
-										( c ) => newAttribute === c.gradient
-									)?.[ 0 ];
-									const newGradient = gradientObject?.slug;
-									const newCustomGradient =
-										gradientObject?.gradient ||
-										newAttribute;
-
-									unitone.overlay ??= {};
-									unitone.overlay.gradient = newGradient;
-									unitone.overlay.customGradient =
-										newCustomGradient;
-
-									setAttributes( {
-										unitone: cleanEmptyObject( unitone ),
-									} );
-								},
-								isShownByDefault: true,
-								resetAllFilter: () => ( {
-									...attributes,
-									unitone: {
-										...attributes?.unitone,
-										overlay: {
-											...attributes?.unitone?.overlay,
-											color: undefined,
-											customColor: undefined,
-											gradient: undefined,
-											customGradient: undefined,
-										},
-									},
-								} ),
-								enableAlpha: true,
-								clearable: true,
-							},
-						] }
-						{ ...colorGradientSettings }
-					/>
-
-					<ToolsPanelItem
-						hasValue={ () => null != unitone?.dimRatio }
-						label={ __( 'Overlay opacity', 'unitone' ) }
-						onDeselect={ () => {
-							unitone.overlay ??= {};
-							unitone.overlay.dimRatio = undefined;
-
-							setAttributes( {
-								unitone: cleanEmptyObject( unitone ),
-							} );
-						} }
-						resetAllFilter={ () => ( {
-							...attributes,
-							unitone: {
-								...attributes?.unitone,
-								overlay: {
-									...attributes?.unitone?.overlay,
-									dimRatio: undefined,
-								},
-							},
-						} ) }
-						isShownByDefault
+				<InspectorControls group="styles">
+					<ToolsPanel
+						label={ __( 'Overlay', 'unitone' ) }
+						resetAll={ resetAll }
 						panelId={ clientId }
 						dropdownMenuProps={ dropdownMenuProps }
 					>
-						<RangeControl
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
+						<ColorGradientSettingsDropdown
+							style={ { marginTop: 0 } }
+							panelId={ clientId }
+							__experimentalIsRenderedInSidebar
+							settings={ [
+								{
+									colorValue:
+										unitone?.overlay?.customColor ??
+										unitone?.overlay?.color, // Actually, just customColor is OK, but color is also referenced for compatibility.
+									gradientValue:
+										unitone?.overlay?.customGradient ??
+										unitone?.overlay?.gradient, // Actually, just customGradient is OK, but gradient is also referenced for compatibility.
+									label: __( 'Overlay', 'unitone' ),
+									onColorChange: ( newAttribute ) => {
+										const colorObject = colors.filter(
+											( c ) => newAttribute === c.color
+										)?.[ 0 ];
+										const newColor = colorObject?.slug;
+										const newCustomColor =
+											colorObject?.color || newAttribute;
+
+										unitone.overlay ??= {};
+										unitone.overlay.color = newColor;
+										unitone.overlay.customColor =
+											newCustomColor;
+
+										setAttributes( {
+											unitone:
+												cleanEmptyObject( unitone ),
+										} );
+									},
+									onGradientChange: ( newAttribute ) => {
+										const gradientObject = gradients.filter(
+											( c ) => newAttribute === c.gradient
+										)?.[ 0 ];
+										const newGradient =
+											gradientObject?.slug;
+										const newCustomGradient =
+											gradientObject?.gradient ||
+											newAttribute;
+
+										unitone.overlay ??= {};
+										unitone.overlay.gradient = newGradient;
+										unitone.overlay.customGradient =
+											newCustomGradient;
+
+										setAttributes( {
+											unitone:
+												cleanEmptyObject( unitone ),
+										} );
+									},
+									isShownByDefault: true,
+									enableAlpha: true,
+									clearable: true,
+								},
+							] }
+							{ ...colorGradientSettings }
+						/>
+
+						<ToolsPanelItem
+							hasValue={ () =>
+								null != unitone?.overlay?.dimRatio
+							}
 							label={ __( 'Overlay opacity', 'unitone' ) }
-							value={ attributes?.unitone?.overlay?.dimRatio }
-							onChange={ ( newAttribute ) => {
+							onDeselect={ () => {
 								unitone.overlay ??= {};
-								unitone.overlay.dimRatio = newAttribute;
+								unitone.overlay.dimRatio = undefined;
 
 								setAttributes( {
 									unitone: cleanEmptyObject( unitone ),
 								} );
 							} }
-							min={ 0 }
-							max={ 100 }
-							step={ 10 }
-							required
-						/>
-					</ToolsPanelItem>
+							isShownByDefault
+							panelId={ clientId }
+							dropdownMenuProps={ dropdownMenuProps }
+						>
+							<RangeControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={ __( 'Overlay opacity', 'unitone' ) }
+								value={ attributes?.unitone?.overlay?.dimRatio }
+								onChange={ ( newAttribute ) => {
+									unitone.overlay ??= {};
+									unitone.overlay.dimRatio = newAttribute;
+
+									setAttributes( {
+										unitone: cleanEmptyObject( unitone ),
+									} );
+								} }
+								min={ 0 }
+								max={ 100 }
+								step={ 10 }
+								required
+							/>
+						</ToolsPanelItem>
+					</ToolsPanel>
 				</InspectorControls>
 			</>
 		);

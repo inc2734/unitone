@@ -115,7 +115,6 @@ const PluginSidebarWireFrameGenerator = () => {
 					queryPatterns[
 						Math.floor( Math.random() * queryPatterns.length )
 					];
-				console.log( queryPattern );
 
 				const fallbackSection = queryPattern.categories.includes(
 					'unitone-sections-colored'
@@ -132,18 +131,15 @@ const PluginSidebarWireFrameGenerator = () => {
 									sectionColoredPatternsForHomepage.length
 							)
 					  ];
-				console.log( fallbackSection );
 
 				shuffledSectionPatterns.push(
 					...[ queryPattern, fallbackSection ]
 				);
-				console.log( shuffledSectionPatterns );
 			}
 
 			const loopCount = heroPattern.categories.includes( 'unitone-query' )
 				? 3
 				: 2;
-			console.log( loopCount );
 
 			const sectionCandidates = selectUniqueByCategory(
 				sectionPatternsForHomepage,
@@ -193,8 +189,6 @@ const PluginSidebarWireFrameGenerator = () => {
 					]
 				);
 			}
-
-			console.log( shuffledSectionPatterns );
 
 			setPreviewPatterns(
 				[ heroPattern, ...shuffledSectionPatterns ].filter( Boolean )

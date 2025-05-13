@@ -12,7 +12,7 @@ const TARGET_BLOCKS = [
 
 const hasIsDecorationClass = ( block ) => {
 	const className = block.attributes?.className || '';
-	return className.split( ' ' ).includes( 'is-decoration' );
+	return className.split( ' ' ).includes( 'unitone-is-decoration' );
 };
 
 const injectGeneratedText = async (

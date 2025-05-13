@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 19.3.5\n"
+"Project-Id-Version: unitone 19.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-09T08:14:25+00:00\n"
+"POT-Creation-Date: 2025-05-13T07:41:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -1807,6 +1807,14 @@ msgid "Background"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:9
+msgid "OpenAI"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:9
+msgid "API Key"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "Go to the Dashboard"
 msgstr ""
 
@@ -2084,7 +2092,7 @@ msgstr ""
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:17
+#: dist/js/editor/editor.js:13
 msgid "Desktop"
 msgstr ""
 
@@ -2097,7 +2105,7 @@ msgstr ""
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:17
+#: dist/js/editor/editor.js:13
 msgid "Mobile"
 msgstr ""
 
@@ -3215,8 +3223,55 @@ msgid "If no OGP image is set, the featured image will be used as the og:image."
 msgstr ""
 
 #: dist/js/editor/editor.js:13
-#: dist/js/editor/editor.js:17
 msgid "Wireframe Generator"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Generates a wireframe using the unitone patterns. When inserted, images are replaced with dummy images."
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Now generating…"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Generate for homepage"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Generate for lower-level pages"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Generate text to be reflected in the wireframe with ChatGPT"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "To use this function, you must set an OpenAI API key on the unitone setup"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "The wireframe generator will send the generated wireframe information to ChatGPT. Enter any instructions you have so that the wireframe reflects your intended text. Note that the function is supported only for Japanese."
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "The text you want to generate"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Reflect the generated text in the wireframe and insert"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Now inserting…"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Insert wireframe"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Tablet"
 msgstr ""
 
 #. translators: %s: block pattern title.
@@ -3225,23 +3280,7 @@ msgid "Wireframe"
 msgstr ""
 
 #: dist/js/editor/editor.js:17
-msgid "Generates a wireframe using the unitone patterns. When inserted, images are replaced with dummy images."
-msgstr ""
-
-#: dist/js/editor/editor.js:17
-msgid "Generate for homepage"
-msgstr ""
-
-#: dist/js/editor/editor.js:17
-msgid "Generate for lower-level pages"
-msgstr ""
-
-#: dist/js/editor/editor.js:17
-msgid "Insert wireframe"
-msgstr ""
-
-#: dist/js/editor/editor.js:17
-msgid "Tablet"
+msgid "An error occurred during text generation."
 msgstr ""
 
 #: dist/variations/variations.js:1

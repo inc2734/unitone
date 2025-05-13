@@ -1,4 +1,6 @@
 .unitone-wireframe-generator-modal {
+	container-type: inline-size;
+
 	.components-modal__header-heading {
 		display: flex;
 		gap: var(--unitone--s-2);
@@ -6,14 +8,72 @@
 	}
 
 	.components-modal__header + div {
+		padding-top: var(--unitone--s-1);
 		height: 100%;
+	}
+}
+
+.unitone-wireframe-generator-settings {
+	display: grid;
+	gap: var(--unitone--s2);
+
+	@container (min-width: 1180px) {
+		grid-auto-flow: column;
+		grid-template-columns: 400px auto;
+		height: 100%;
+	}
+
+	&__generate-buttons {
+		display: flex;
+		gap: var(--unitone--s-1);
+
+		> * {
+			flex-grow: 1;
+		}
+	}
+
+	&__main {
 		display: grid;
-		grid-template-rows: auto auto 1fr;
+		grid-template-rows: auto 1fr;
+		overflow: hidden;
+	}
+
+	> * {
+		min-width: 0;
+	}
+
+	hr {
+		margin: 0;
+		display: block;
+		appearance: none;
+		background-color: #eee;
+		border: none;
+		height: 1px;
+	}
+
+	.components-button {
+		gap: 1em;
+		justify-content: center;
+
+		.components-spinner {
+			margin: 0;
+		}
+	}
+}
+
+.unitone-wireframe-generator-preview-switcher {
+	display: flex;
+	justify-content: center;
+	gap: var(--unitone--s-2);
+	margin-top: var(--unitone--s-2);
+	margin-bottom: var(--unitone--s-2);
+
+	@container (max-width: 780px) {
+		display: none;
 	}
 }
 
 .unitone-wireframe-generator-preview-canvas {
-	height: 100%;
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
@@ -27,8 +87,8 @@
 	background-color: var(--wp--preset--color--unitone-background);
 	margin-right: auto;
 	margin-left: auto;
-	width: min(var(--unitone--preview-max-width), 100% );
-	zoom: .8;
+	width: min(var(--unitone--preview-max-width), 100%);
+	zoom: .5;
 
 	&--tablet {
 		--unitone--preview-max-width: 780px;

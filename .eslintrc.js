@@ -10,6 +10,7 @@ module.exports = {
 		DOMParser: true,
 		TextEncoder: true,
 		Image: true,
+		alert: true,
 	},
 	settings: {
 		'import/resolver': {

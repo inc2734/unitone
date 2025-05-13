@@ -136,6 +136,9 @@ require get_template_directory() . '/inc/thumbnail.php';
 // OGP settings.
 require get_template_directory() . '/inc/ogp.php';
 
+// OpenAI.
+require get_template_directory() . '/inc/openai.php';
+
 // Add unitone blocks.
 require get_template_directory() . '/inc/unitone-blocks.php';
 

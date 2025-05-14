@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-05-13T07:41:21+00:00\n"
-"PO-Revision-Date: 2025-05-13 16:42+0900\n"
+"POT-Creation-Date: 2025-05-14T12:30:09+00:00\n"
+"PO-Revision-Date: 2025-05-14 22:53+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2332,46 +2332,44 @@ msgstr "プログレスバー"
 
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Align items top"
-msgstr "コンテンツを上揃え"
+msgstr "項目を上揃え"
 
 #: dist/blocks/slider/index.js:1
 msgid "Align items top (Inside)"
-msgstr "コンテンツを上揃え（内側）"
+msgstr "項目を上揃え（内側）"
 
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Align items center"
-msgstr "コンテンツを中央揃え"
+msgstr "項目を中央揃え"
 
 #: dist/blocks/slider/index.js:1
 msgid "Align items bottom (Inside)"
-msgstr "コンテンツを下揃え（内側）"
+msgstr "項目を下揃え（内側）"
 
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Align items bottom"
-msgstr "コンテンツを下揃え"
+msgstr "項目を下揃え"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
 msgid "Justify items left"
-msgstr "コンテンツを左揃え"
+msgstr "項目を左揃え"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Justify items center"
-msgstr "コンテンツを中央揃え"
+msgstr "項目を中央揃え"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
 msgid "Justify items right"
-msgstr "コンテンツを右揃え"
+msgstr "項目を右揃え"
 
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
 msgid "Justify items space-between"
-msgstr "コンテンツを両端揃え"
+msgstr "項目を両端揃え"
 
 #: dist/blocks/slider/index.js:1
 msgid "Justify items space-between (Expanded)"
-msgstr "コンテンツを両端揃え（拡張）"
+msgstr "項目を両端揃え（拡張）"
 
 #: dist/blocks/slider/index.js:1
 msgid "Slide"
@@ -2781,24 +2779,80 @@ msgid "Overflow"
 msgstr "オーバーフロー"
 
 #: dist/js/editor/editor.js:1
+msgid "Justify content left"
+msgstr "コンテンツを左揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content center"
+msgstr "コンテンツを中央揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content right"
+msgstr "コンテンツを右揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content space-between"
+msgstr "コンテンツを両端揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content space-around"
+msgstr "コンテンツを均等配置（space-around）"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content space-evenly"
+msgstr "コンテンツを均等配置（space-evenly）"
+
+#: dist/js/editor/editor.js:1
 msgid "Justify content"
 msgstr "項目の揃え位置"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify items top"
-msgstr "コンテンツを上揃え"
+msgstr "項目を上揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify items bottom"
-msgstr "コンテンツを下揃え"
+msgstr "項目を下揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Stretch to fill"
+msgstr "埋めるように拡張"
+
+#: dist/js/editor/editor.js:1
+msgid "Justify items"
+msgstr "水平配置"
 
 #: dist/js/editor/editor.js:1
 msgid "Align items"
 msgstr "垂直配置"
 
 #: dist/js/editor/editor.js:1
-msgid "Stretch to fill"
-msgstr "埋めるように拡張"
+msgid "Align content top"
+msgstr "コンテンツを上揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Align content center"
+msgstr "コンテンツを中央揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Align content bottom"
+msgstr "コンテンツを下揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Align content space-between"
+msgstr "コンテンツを両端揃え"
+
+#: dist/js/editor/editor.js:1
+msgid "Align content space-around"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align content space-evenly"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align content"
+msgstr "コンテンツの揃え位置"
 
 #: dist/js/editor/editor.js:1
 msgid "Center"
@@ -3225,7 +3279,7 @@ msgid ""
 "To use this function, you must set an OpenAI API key on the unitone setup"
 msgstr ""
 "この機能を使用するには、unitoneのセットアップで OpenAI の API キーを設定する"
-"必要があります。"
+"必要があります"
 
 #: dist/js/editor/editor.js:13
 msgid ""
@@ -3242,16 +3296,16 @@ msgid "The text you want to generate"
 msgstr "生成したいテキスト"
 
 #: dist/js/editor/editor.js:13
-msgid "Reflect the generated text in the wireframe and insert"
-msgstr "生成されたテキストをワイヤーフレームに反映し、挿入"
+msgid "Insert wireframe"
+msgstr "ワイヤーフレームを挿入"
 
 #: dist/js/editor/editor.js:13
 msgid "Now inserting…"
 msgstr "挿入しています…"
 
 #: dist/js/editor/editor.js:13
-msgid "Insert wireframe"
-msgstr "ワイヤーフレームを挿入"
+msgid "Reflect the generated text in the wireframe and insert"
+msgstr "生成されたテキストをワイヤーフレームに反映し、挿入"
 
 #: dist/js/editor/editor.js:13
 msgid "Tablet"

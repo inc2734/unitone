@@ -44,7 +44,7 @@
 		},
 		"unitone": {
 			"alignItems": true,
-			"justifyContent": true,
+			"justifyContent": [ "left", "center", "right" ],
 			"gap": {
 				"splitOnAxis": true
 			},

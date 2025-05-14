@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-13T07:41:21+00:00\n"
+"POT-Creation-Date: 2025-05-14T12:30:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -2400,7 +2400,6 @@ msgstr ""
 
 #: dist/blocks/slider/index.js:1
 #: dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
 msgid "Justify items left"
 msgstr ""
 
@@ -2412,7 +2411,6 @@ msgstr ""
 
 #: dist/blocks/slider/index.js:1
 #: dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
 msgid "Justify items right"
 msgstr ""
 
@@ -2835,6 +2833,30 @@ msgid "Overflow"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
+msgid "Justify content left"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content center"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content right"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content space-between"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content space-around"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Justify content space-evenly"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
 msgid "Justify content"
 msgstr ""
 
@@ -2847,11 +2869,43 @@ msgid "Justify items bottom"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
+msgid "Stretch to fill"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Justify items"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
 msgid "Align items"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
-msgid "Stretch to fill"
+msgid "Align content top"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align content center"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align content bottom"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align content space-between"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align content space-around"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align content space-evenly"
+msgstr ""
+
+#: dist/js/editor/editor.js:1
+msgid "Align content"
 msgstr ""
 
 #: dist/js/editor/editor.js:1
@@ -3259,7 +3313,7 @@ msgid "The text you want to generate"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
-msgid "Reflect the generated text in the wireframe and insert"
+msgid "Insert wireframe"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
@@ -3267,7 +3321,7 @@ msgid "Now inserting…"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
-msgid "Insert wireframe"
+msgid "Reflect the generated text in the wireframe and insert"
 msgstr ""
 
 #: dist/js/editor/editor.js:13

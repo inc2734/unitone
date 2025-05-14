@@ -26,6 +26,16 @@ import {
 } from './justify-content';
 
 import {
+	useIsJustifyItemsDisabled,
+	hasJustifyItemsValue,
+	resetJustifyItems,
+	JustifyItemsToolbar,
+	getJustifyItemsEditLabel,
+	JustifyItemsEdit,
+	useJustifyItemsBlockProps,
+} from './justify-items';
+
+import {
 	useIsJustifyContentColumnDisabled,
 	hasJustifyContentColumnValue,
 	resetJustifyContentColumn,
@@ -34,6 +44,16 @@ import {
 	JustifyContentColumnEdit,
 	useJustifyContentColumnBlockProps,
 } from './justify-content-column';
+
+import {
+	useIsAlignContentDisabled,
+	hasAlignContentValue,
+	resetAlignContent,
+	AlignContentToolbar,
+	getAlignContentEditLabel,
+	AlignContentEdit,
+	useAlignContentBlockProps,
+} from './align-content';
 
 import {
 	useIsAlignItemsDisabled,
@@ -166,9 +186,11 @@ import {
 } from './grid-row';
 
 export {
+	useAlignContentBlockProps,
 	useAlignItemsBlockProps,
 	useJustifyContentBlockProps,
 	useJustifyContentColumnBlockProps,
+	useJustifyItemsBlockProps,
 	useBlockAlignBlockProps,
 	useFlexBasisBlockProps,
 	useFlexGrowBlockProps,
@@ -198,6 +220,8 @@ function LayoutPanelPure( props ) {
 	const isJustifyContentColumnDisabled = useIsJustifyContentColumnDisabled( {
 		name,
 	} );
+	const isJustifyItemsDisabled = useIsJustifyItemsDisabled( { name } );
+	const isAlignContentDisabled = useIsAlignContentDisabled( { name } );
 	const isAlignItemsDisabled = useIsAlignItemsDisabled( { name } );
 	const isBlockAlignDisabled = useIsBlockAlignDisabled( { name } );
 	const isFlexBasisDisabled = useIsFlexBasisDisabled( {
@@ -249,6 +273,8 @@ function LayoutPanelPure( props ) {
 	if (
 		isJustifyContentDisabled &&
 		isJustifyContentColumnDisabled &&
+		isJustifyItemsDisabled &&
+		isAlignContentDisabled &&
 		isAlignItemsDisabled &&
 		isBlockAlignDisabled &&
 		isFlexBasisDisabled &&
@@ -271,6 +297,8 @@ function LayoutPanelPure( props ) {
 		<>
 			{ ( ! isJustifyContentDisabled ||
 				! isJustifyContentColumnDisabled ||
+				! isJustifyItemsDisabled ||
+				! isAlignContentDisabled ||
 				! isAlignItemsDisabled ||
 				! isJustifySelfDisabled ||
 				! isAlignSelfDisabled ||
@@ -281,6 +309,12 @@ function LayoutPanelPure( props ) {
 					) }
 					{ ! isJustifyContentColumnDisabled && (
 						<JustifyContentColumnToolbar { ...props } />
+					) }
+					{ ! isJustifyItemsDisabled && (
+						<JustifyItemsToolbar { ...props } />
+					) }
+					{ ! isAlignContentDisabled && (
+						<AlignContentToolbar { ...props } />
 					) }
 					{ ! isAlignItemsDisabled && (
 						<AlignItemsToolbar { ...props } />
@@ -299,6 +333,8 @@ function LayoutPanelPure( props ) {
 
 			{ ( ! isJustifyContentDisabled ||
 				! isJustifyContentColumnDisabled ||
+				! isJustifyItemsDisabled ||
+				! isAlignContentDisabled ||
 				! isAlignItemsDisabled ||
 				! isBlockAlignDisabled ||
 				! isFlexBasisDisabled ||
@@ -367,6 +403,58 @@ function LayoutPanelPure( props ) {
 								<JustifyContentColumnEdit
 									{ ...props }
 									label={ getJustifyContentColumnEditLabel( {
+										...props,
+										__withCode: true,
+									} ) }
+								/>
+							</ToolsPanelItem>
+						) }
+						{ ! isJustifyItemsDisabled && (
+							<ToolsPanelItem
+								hasValue={ () =>
+									hasJustifyItemsValue( { ...props } )
+								}
+								label={ getJustifyItemsEditLabel( {
+									...props,
+								} ) }
+								onDeselect={ () =>
+									resetJustifyItems( { ...props } )
+								}
+								resetAllFilter={ () =>
+									resetJustifyItems( { ...props } )
+								}
+								isShownByDefault
+								panelId={ clientId }
+							>
+								<JustifyItemsEdit
+									{ ...props }
+									label={ getJustifyItemsEditLabel( {
+										...props,
+										__withCode: true,
+									} ) }
+								/>
+							</ToolsPanelItem>
+						) }
+						{ ! isAlignContentDisabled && (
+							<ToolsPanelItem
+								hasValue={ () =>
+									hasAlignContentValue( { ...props } )
+								}
+								label={ getAlignContentEditLabel( {
+									...props,
+								} ) }
+								onDeselect={ () =>
+									resetAlignContent( { ...props } )
+								}
+								resetAllFilter={ () =>
+									resetAlignContent( { ...props } )
+								}
+								isShownByDefault
+								panelId={ clientId }
+							>
+								<AlignContentEdit
+									{ ...props }
+									label={ getAlignContentEditLabel( {
 										...props,
 										__withCode: true,
 									} ) }

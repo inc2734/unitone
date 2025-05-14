@@ -17,9 +17,11 @@ import {
 
 import {
 	LayoutPanel,
+	useAlignContentBlockProps,
 	useAlignItemsBlockProps,
 	useJustifyContentBlockProps,
 	useJustifyContentColumnBlockProps,
+	useJustifyItemsBlockProps,
 	useBlockAlignBlockProps,
 	useMaxWidthBlockProps,
 	useMinWidthBlockProps,
@@ -104,6 +106,7 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		props = useHalfLeadingBlockProps( props );
 		props = useBackgroundClipBlockProps( props );
 
+		props = useAlignContentBlockProps( props );
 		props = useAlignItemsBlockProps( props );
 		props = useAlignSelfBlockProps( props );
 		props = useAutoRepeatBlockProps( props );
@@ -113,8 +116,9 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		props = useFlexShrinkBlockProps( props );
 		props = useGridColumnBlockProps( props );
 		props = useGridRowBlockProps( props );
-		props = useJustifyContentColumnBlockProps( props );
 		props = useJustifyContentBlockProps( props );
+		props = useJustifyContentColumnBlockProps( props );
+		props = useJustifyItemsBlockProps( props );
 		props = useJustifySelfBlockProps( props );
 		props = useMaxHeightBlockProps( props );
 		props = useMaxWidthBlockProps( props );

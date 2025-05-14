@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
 import {
+	ToolbarDropdownMenu,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
@@ -12,8 +13,11 @@ import {
 	justifySpaceBetween,
 } from '@wordpress/icons';
 
-import { JustifyToolbar } from '@wordpress/block-editor';
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import {
+	getBlockSupport,
+	hasBlockSupport,
+	store as blocksStore,
+} from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
@@ -24,22 +28,32 @@ const justifyContentOptions = [
 	{
 		value: 'left',
 		icon: justifyLeft,
-		label: __( 'Justify items left', 'unitone' ),
+		label: __( 'Justify content left', 'unitone' ),
 	},
 	{
 		value: 'center',
 		icon: justifyCenter,
-		label: __( 'Justify items center', 'unitone' ),
+		label: __( 'Justify content center', 'unitone' ),
 	},
 	{
 		value: 'right',
 		icon: justifyRight,
-		label: __( 'Justify items right', 'unitone' ),
+		label: __( 'Justify content right', 'unitone' ),
 	},
 	{
 		value: 'space-between',
 		icon: justifySpaceBetween,
-		label: __( 'Justify items space-between', 'unitone' ),
+		label: __( 'Justify content space-between', 'unitone' ),
+	},
+	{
+		value: 'space-around',
+		icon: justifySpaceBetween,
+		label: __( 'Justify content space-around', 'unitone' ),
+	},
+	{
+		value: 'space-evenly',
+		icon: justifySpaceBetween,
+		label: __( 'Justify content space-evenly', 'unitone' ),
 	},
 ];
 
@@ -86,26 +100,50 @@ export function JustifyContentToolbar( {
 			?.default?.justifyContent;
 	}, [] );
 
-	return (
-		<JustifyToolbar
-			allowedControls={ justifyContentOptions.map(
-				( option ) => option.value
-			) }
-			value={ logicalToPhysical(
-				unitone?.justifyContent ?? defaultValue
-			) }
-			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					justifyContent: physicalToLogical(
-						newAttribute || undefined
-					),
-				};
+	const support = getBlockSupport( name, 'unitone.justifyContent' );
+	const filteredOptions = Array.isArray( support )
+		? justifyContentOptions.filter( ( option ) =>
+				support.includes( option.value )
+		  )
+		: justifyContentOptions;
 
-				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
-				} );
-			} }
+	return (
+		<ToolbarDropdownMenu
+			label={ __( 'Justify content', 'unitone' ) }
+			icon={
+				filteredOptions.filter(
+					( option ) =>
+						option.value ===
+						logicalToPhysical(
+							unitone?.justifyContent ?? defaultValue
+						)
+				)?.[ 0 ]?.icon ?? filteredOptions[ 0 ]?.icon
+			}
+			controls={ filteredOptions.map( ( option ) => ( {
+				...option,
+				title: option.label,
+				isActive:
+					option.value ===
+					logicalToPhysical(
+						unitone?.justifyContent ?? defaultValue
+					),
+				onClick: () => {
+					const newUnitone = {
+						...unitone,
+						justifyContent:
+							option.value !==
+							logicalToPhysical(
+								unitone?.justifyContent ?? defaultValue
+							)
+								? physicalToLogical( option.value || undefined )
+								: undefined,
+					};
+
+					setAttributes( {
+						unitone: cleanEmptyObject( newUnitone ),
+					} );
+				},
+			} ) ) }
 		/>
 	);
 }
@@ -141,22 +179,27 @@ export function JustifyContentEdit( {
 			?.default?.justifyContent;
 	}, [] );
 
+	const support = getBlockSupport( name, 'unitone.justifyContent' );
+	const filteredOptions = Array.isArray( support )
+		? justifyContentOptions.filter( ( option ) =>
+				support.includes( option.value )
+		  )
+		: justifyContentOptions;
+
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
 			<ToggleGroupControl
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ logicalToPhysical(
-					unitone?.justifyContent ?? defaultValue
-				) }
+				value={ unitone?.justifyContent ?? defaultValue }
+				isDeselectable={ ! defaultValue }
 				onChange={ ( newValue ) => {
 					const newUnitone = {
 						...unitone,
 						justifyContent:
-							logicalToPhysical( unitone?.justifyContent ) !==
-							newValue
-								? physicalToLogical( newValue )
+							unitone?.justifyContent !== newValue
+								? newValue
 								: undefined,
 					};
 
@@ -165,13 +208,13 @@ export function JustifyContentEdit( {
 					} );
 				} }
 			>
-				{ justifyContentOptions.map(
+				{ filteredOptions.map(
 					( { value, icon, label: iconLabel } ) => (
 						<ToggleGroupControlOptionIcon
 							key={ value }
 							icon={ icon }
 							label={ iconLabel }
-							value={ value }
+							value={ physicalToLogical( value ) }
 						/>
 					)
 				) }

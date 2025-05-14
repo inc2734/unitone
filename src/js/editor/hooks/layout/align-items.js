@@ -135,19 +135,14 @@ export function AlignItemsEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ logicalToPhysical(
-					unitone?.alignItems ?? defaultValue,
-					'vertical'
-				) }
+				value={ unitone?.alignItems ?? defaultValue }
+				isDeselectable={ ! defaultValue }
 				onChange={ ( newValue ) => {
 					const newUnitone = {
 						...unitone,
 						alignItems:
-							logicalToPhysical(
-								unitone?.alignItems,
-								'vertical'
-							) !== newValue
-								? physicalToLogical( newValue )
+							unitone?.alignItems !== newValue
+								? newValue
 								: undefined,
 					};
 
@@ -162,7 +157,7 @@ export function AlignItemsEdit( {
 							key={ value }
 							icon={ icon }
 							label={ iconLabel }
-							value={ value }
+							value={ physicalToLogical( value ) }
 						/>
 					)
 				) }

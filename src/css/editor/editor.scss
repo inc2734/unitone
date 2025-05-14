@@ -160,32 +160,10 @@
 
 // Expands hierarchy of list view
 .block-editor-list-view-leaf {
-	&[aria-level="10"] .block-editor-list-view__expander {
-		margin-left: 248px;
-	}
-
-	&[aria-level="11"] .block-editor-list-view__expander {
-		margin-left: 276px;
-	}
-
-	&[aria-level="12"] .block-editor-list-view__expander {
-		margin-left: 304px;
-	}
-
-	&[aria-level="13"] .block-editor-list-view__expander {
-		margin-left: 332px;
-	}
-
-	&[aria-level="14"] .block-editor-list-view__expander {
-		margin-left: 360px;
-	}
-}
-
-// Scroll list view
-@media (min-width: 782px) {
-	.interface-interface-skeleton__secondary-sidebar .edit-post-editor__list-view-panel-content {
-		max-width: 447px;
-		overflow: auto;
+	@for $i from 2 through 14 {
+		&[aria-level="#{ $i }"] .block-editor-list-view__expander {
+			margin-left: 16px * ($i - 1);
+		}
 	}
 }
 

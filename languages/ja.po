@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "POT-Creation-Date: 2025-05-15T04:26:23+00:00\n"
-"PO-Revision-Date: 2025-05-15 13:28+0900\n"
+"PO-Revision-Date: 2025-05-15 17:36+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2804,7 +2804,7 @@ msgstr "コンテンツを均等配置（space-evenly）"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify content"
-msgstr "項目の揃え位置"
+msgstr "コンテンツの水平配置"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify items top"
@@ -2820,11 +2820,11 @@ msgstr "埋めるように拡張"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify items"
-msgstr "水平配置"
+msgstr "項目の水平配置"
 
 #: dist/js/editor/editor.js:1
 msgid "Align items"
-msgstr "垂直配置"
+msgstr "項目の垂直配置"
 
 #: dist/js/editor/editor.js:1
 msgid "Align content top"
@@ -2844,15 +2844,15 @@ msgstr "コンテンツを両端揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Align content space-around"
-msgstr ""
+msgstr "コンテンツを均等配置（space-around）"
 
 #: dist/js/editor/editor.js:1
 msgid "Align content space-evenly"
-msgstr ""
+msgstr "コンテンツを均等配置（space-evenly）"
 
 #: dist/js/editor/editor.js:1
 msgid "Align content"
-msgstr "コンテンツの揃え位置"
+msgstr "コンテンツの垂直配置"
 
 #: dist/js/editor/editor.js:1
 msgid "Center"
@@ -2899,35 +2899,35 @@ msgstr "auto-fit"
 
 #: dist/js/editor/editor.js:1
 msgid "Align self top"
-msgstr "コンテンツを上揃え"
+msgstr "このブロックを上揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Align self center"
-msgstr "コンテンツを中央揃え"
+msgstr "このブロックを中央揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Align self bottom"
-msgstr "コンテンツを下揃え"
+msgstr "このブロックを下揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Align self"
-msgstr "垂直配置"
+msgstr "このブロックの垂直配置"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify self left"
-msgstr "コンテンツを左揃え"
+msgstr "このブロックを左揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify self center"
-msgstr "コンテンツを中央揃え"
+msgstr "このブロックを中央揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify self right"
-msgstr "コンテンツを右揃え"
+msgstr "このブロックを右揃え"
 
 #: dist/js/editor/editor.js:1
 msgid "Justify self"
-msgstr "項目の揃え位置"
+msgstr "このブロックの水平配置"
 
 #: dist/js/editor/editor.js:1
 msgid "A grid item's size and location within a grid column"

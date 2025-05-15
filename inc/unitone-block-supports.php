@@ -616,7 +616,7 @@ add_filter(
 			}
 		}
 
-		// --unitone--backdrop
+		// --unitone--backdrop-filter
 		$backdrop_filter_props = ( function () use ( $get_support, $has_support, $get_attribute ) {
 			$backdrop_filter_props = array();
 
@@ -707,6 +707,27 @@ add_filter(
 			);
 
 			$add_style( '--unitone--backdrop-filter', $backdrop_filter );
+		}
+
+		// --unitone--progressive-backdrop-filter
+		$has_backdrop_filter_support = true === $get_support( 'backdropFilter' );
+		if ( $has_support( 'backdropFilter.progressive' ) || $has_backdrop_filter_support ) {
+			$angle = $get_attribute( 'backdropFilter.progressive.angle' );
+			$start = $get_attribute( 'backdropFilter.progressive.start' );
+
+			if ( 0 < $start ) {
+				$add_attribute( '-progressive-backdrop-filter', true );
+
+				$add_style(
+					'--unitone--progressive-backdrop-filter-angle',
+					$angle ? $angle . 'deg' : null
+				);
+
+				$add_style(
+					'--unitone--progressive-backdrop-filter-start',
+					$start ? $start . '%' : null
+				);
+			}
 		}
 
 		// Parallax.

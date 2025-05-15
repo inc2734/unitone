@@ -2,6 +2,7 @@
  * @see https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/dimensions.js
  */
 
+import clsx from 'clsx';
 import fastDeepEqual from 'fast-deep-equal/es6';
 
 import {
@@ -85,6 +86,14 @@ import {
 	getSepiaEditLabel,
 	SepiaEdit,
 } from './sepia';
+
+import {
+	useIsProgressiveDisabled,
+	hasProgressiveValue,
+	resetProgressive,
+	getProgressiveEditLabel,
+	ProgressiveEdit,
+} from './progressive';
 
 export function useBackdropFilterBlockProps( settings ) {
 	const {
@@ -203,7 +212,17 @@ export function useBackdropFilterBlockProps( settings ) {
 		}
 	}
 
-	if ( 1 > backdropFilterProps.length ) {
+	const progressiveAngle =
+		backdropFilter?.progressive?.angle ?? defaultValue?.progressive?.angle;
+	const progressiveStart =
+		backdropFilter?.progressive?.start ?? defaultValue?.progressive?.start;
+	const hasProgressiveSupport =
+		( hasBlockSupport( name, 'unitone.backdropFilter.progressive' ) ||
+			hasBackdropFilterSupport ) &&
+		null != progressiveStart &&
+		0 < progressiveStart;
+
+	if ( 1 > backdropFilterProps.length && ! hasProgressiveSupport ) {
 		return settings;
 	}
 
@@ -211,16 +230,33 @@ export function useBackdropFilterBlockProps( settings ) {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				{
+					'-progressive-backdrop-filter': hasProgressiveSupport,
+				}
+			),
 			style: {
 				...settings.wrapperProps?.style,
-				'--unitone--backdrop-filter': backdropFilterProps
-					.map(
-						( v ) =>
-							`${ Object.keys( v )[ 0 ] }(${
-								Object.values( v )[ 0 ]
-							})`
-					)
-					.join( ' ' ),
+				'--unitone--backdrop-filter':
+					0 < backdropFilterProps.length
+						? backdropFilterProps
+								.map(
+									( v ) =>
+										`${ Object.keys( v )[ 0 ] }(${
+											Object.values( v )[ 0 ]
+										})`
+								)
+								.join( ' ' )
+						: undefined,
+				'--unitone--progressive-backdrop-filter-angle':
+					hasProgressiveSupport && progressiveAngle
+						? `${ progressiveAngle }deg`
+						: undefined,
+				'--unitone--progressive-backdrop-filter-start':
+					hasProgressiveSupport
+						? `${ progressiveStart }%`
+						: undefined,
 			},
 		},
 	};
@@ -243,6 +279,7 @@ function BackdropFilterPanelPure( props ) {
 	const isInvertDisabled = useIsInvertDisabled( { name } );
 	const isSaturateDisabled = useIsSaturateDisabled( { name } );
 	const isSepiaDisabled = useIsSepiaDisabled( { name } );
+	const isProgressiveDisabled = useIsProgressiveDisabled( { name } );
 
 	if (
 		isBlurDisabled &&
@@ -252,7 +289,8 @@ function BackdropFilterPanelPure( props ) {
 		isHueRotateDisabled &&
 		isInvertDisabled &&
 		isSaturateDisabled &&
-		isSepiaDisabled
+		isSepiaDisabled &&
+		isProgressiveDisabled
 	) {
 		return null;
 	}
@@ -431,6 +469,28 @@ function BackdropFilterPanelPure( props ) {
 							label={ getSepiaEditLabel( {
 								...props,
 								__withCode: true,
+							} ) }
+						/>
+					</ToolsPanelItem>
+				) }
+
+				{ ! isProgressiveDisabled && (
+					<ToolsPanelItem
+						hasValue={ () => hasProgressiveValue( { ...props } ) }
+						label={ getProgressiveEditLabel( {
+							...props,
+						} ) }
+						onDeselect={ () => resetProgressive( { ...props } ) }
+						resetAllFilter={ () => {
+							resetProgressive( { ...props } );
+						} }
+						isShownByDefault={ false }
+						panelId={ clientId }
+					>
+						<ProgressiveEdit
+							{ ...props }
+							label={ getProgressiveEditLabel( {
+								...props,
 							} ) }
 						/>
 					</ToolsPanelItem>

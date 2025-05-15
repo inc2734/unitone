@@ -254,6 +254,14 @@
 	}
 }
 
+.unitone-backdrop-filter-progressive-control {
+	.components-angle-picker-control {
+		.components-number-control {
+			display: none;
+		}
+	}
+}
+
 .unitone-responsive-settings-container {
 	.components-base-control__label {
 		margin-bottom: 0 !important;

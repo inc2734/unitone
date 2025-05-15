@@ -204,6 +204,9 @@ const PluginSidebarWireFrameGenerator = () => {
 		sectionPatternsForHomepage,
 		sectionNoColoredPatternsForHomepage,
 		sectionColoredPatternsForHomepage,
+		setIsGeneratingHomepage,
+		setPreviewMode,
+		setPreviewPatterns,
 	] );
 
 	/**
@@ -267,10 +270,13 @@ const PluginSidebarWireFrameGenerator = () => {
 			setIsGeneratingLowerLevel( false );
 		}, 2000 );
 	}, [
-		pageHeaderPatterns,
-		sectionPatterns,
-		sectionNoColoredPatterns,
 		ctaPatterns,
+		pageHeaderPatterns,
+		sectionNoColoredPatterns,
+		sectionPatterns,
+		setIsGeneratingLowerLevel,
+		setPreviewMode,
+		setPreviewPatterns,
 	] );
 
 	const onClickInsert = useCallback( async () => {
@@ -307,7 +313,15 @@ const PluginSidebarWireFrameGenerator = () => {
 				customPrompt,
 			} );
 		}
-	}, [ previewPatterns, onSelectBlockPattern, customPrompt ] );
+	}, [
+		customPrompt,
+		onSelectBlockPattern,
+		previewPatterns,
+		customPromptPlaceholder,
+		setIsLoading,
+		setIsOpen,
+		usingChatGPT,
+	] );
 
 	return (
 		<>

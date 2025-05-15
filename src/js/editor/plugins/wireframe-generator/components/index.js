@@ -9,6 +9,7 @@ import {
 
 import { useEntityProp } from '@wordpress/core-data';
 import { BlockPreview } from '@wordpress/block-editor';
+import { memo } from '@wordpress/element';
 import { Icon, desktop, tablet, mobile, help } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
@@ -23,7 +24,7 @@ export const WireFrameGeneratorButton = ( { isOpen, setIsOpen } ) => (
 	</Button>
 );
 
-export const WireframeGeneratorModal = ( {
+const WireframeGeneratorModalPure = ( {
 	isOpenHelpPopover,
 	setIsOpen,
 	setIsOpenHelpPopover,
@@ -311,3 +312,5 @@ export const WireframeGeneratorModal = ( {
 		</Modal>
 	);
 };
+
+export const WireframeGeneratorModal = memo( WireframeGeneratorModalPure );

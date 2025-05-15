@@ -267,6 +267,11 @@ add_filter(
 			}
 		}
 
+		// -align-content
+		if ( $has_support( 'alignContent' ) ) {
+			$add_attribute( '-align-content', $get_attribute( 'alignContent' ) );
+		}
+
 		// -align-items
 		if ( $has_support( 'alignItems' ) ) {
 			$add_attribute( '-align-items', $get_attribute( 'alignItems' ) );
@@ -366,6 +371,11 @@ add_filter(
 		// -justify-content
 		if ( $has_support( 'justifyContent' ) ) {
 			$add_attribute( '-justify-content', $get_attribute( 'justifyContent' ) );
+		}
+
+		// -justify-items
+		if ( $has_support( 'justifyItems' ) ) {
+			$add_attribute( '-justify-items', $get_attribute( 'justifyItems' ) );
 		}
 
 		// -stairs

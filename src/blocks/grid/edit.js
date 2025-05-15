@@ -211,7 +211,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							mdColumnsOption !==
 								metadata.attributes.mdColumnsOption.default ||
 							smColumnsOption !==
-								metadata.attributes.smColumnsOption.default
+								metadata.attributes.smColumnsOption.default ||
+							columnMinWidth !==
+								metadata.attributes.columnMinWidth.default ||
+							mdColumnMinWidth !==
+								metadata.attributes.mdColumnMinWidth.default ||
+							smColumnMinWidth !==
+								metadata.attributes.smColumnMinWidth.default
 						}
 						isShownByDefault
 						label={ 'grid-template-columns' }
@@ -608,7 +614,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							mdRowsOption !==
 								metadata.attributes.mdRowsOption.default ||
 							smRowsOption !==
-								metadata.attributes.smRowsOption.default
+								metadata.attributes.smRowsOption.default ||
+							rows !== metadata.attributes.rows.default ||
+							mdRows !== metadata.attributes.mdRows.default ||
+							smRows !== metadata.attributes.smRows.default
 						}
 						isShownByDefault
 						label={ 'grid-template-rows' }

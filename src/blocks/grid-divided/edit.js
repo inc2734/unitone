@@ -629,7 +629,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							mdRowsOption !==
 								metadata.attributes.mdRowsOption.default ||
 							smRowsOption !==
-								metadata.attributes.smRowsOption.default
+								metadata.attributes.smRowsOption.default ||
+							rows !== metadata.attributes.rows.default ||
+							mdRows !== metadata.attributes.mdRows.default ||
+							smRows !== metadata.attributes.smRows.default
 						}
 						isShownByDefault
 						label={ 'grid-template-rows' }

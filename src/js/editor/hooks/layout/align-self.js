@@ -7,18 +7,17 @@ import {
 } from '@wordpress/blocks';
 
 import {
+	ToolbarDropdownMenu,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
 
-import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
 import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
 import { cleanEmptyObject, useDeviceType } from '../utils';
-import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const alignSelfOptions = [
 	{
@@ -117,7 +116,7 @@ export function AlignSelfToolbar( {
 	const onChangeAlignSelf = ( newValue ) => {
 		const newUnitone = {
 			...unitone,
-			alignSelf: physicalToLogical( newValue || undefined ),
+			alignSelf: newValue || undefined,
 		};
 
 		setAttributes( {
@@ -129,7 +128,7 @@ export function AlignSelfToolbar( {
 		const newUnitone = {
 			...unitone,
 			alignSelf: {
-				lg: physicalToLogical( newValue || undefined ),
+				lg: newValue || undefined,
 				md: unitone?.alignSelf?.md || undefined,
 				sm: unitone?.alignSelf?.sm || undefined,
 			},
@@ -145,7 +144,7 @@ export function AlignSelfToolbar( {
 			...unitone,
 			alignSelf: {
 				lg: unitone?.alignSelf?.lg || undefined,
-				md: physicalToLogical( newValue || undefined ),
+				md: newValue || undefined,
 				sm: unitone?.alignSelf?.sm || undefined,
 			},
 		};
@@ -161,7 +160,7 @@ export function AlignSelfToolbar( {
 			alignSelf: {
 				lg: unitone?.alignSelf?.lg || undefined,
 				md: unitone?.alignSelf?.md || undefined,
-				sm: physicalToLogical( newValue || undefined ),
+				sm: newValue || undefined,
 			},
 		};
 
@@ -191,10 +190,19 @@ export function AlignSelfToolbar( {
 	}
 
 	return (
-		<BlockVerticalAlignmentToolbar
-			controls={ [ 'top', 'center', 'bottom', 'stretch' ] }
-			value={ logicalToPhysical( value ?? defaultValue, 'vertical' ) }
-			onChange={ onChange }
+		<ToolbarDropdownMenu
+			label={ __( 'Align self', 'unitone' ) }
+			icon={
+				alignSelfOptions.filter(
+					( option ) => option.value === value ?? defaultValue
+				)?.[ 0 ]?.icon ?? alignSelfOptions[ 0 ]?.icon
+			}
+			controls={ alignSelfOptions.map( ( option ) => ( {
+				...option,
+				title: option.label,
+				isActive: option.value === value ?? defaultValue,
+				onClick: () => onChange( option.value ),
+			} ) ) }
 		/>
 	);
 }

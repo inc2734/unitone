@@ -18,11 +18,11 @@ import {
 	hasBlockSupport,
 	store as blocksStore,
 } from '@wordpress/blocks';
+
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
-import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const justifyContentOptions = [
 	{
@@ -113,29 +113,21 @@ export function JustifyContentToolbar( {
 			icon={
 				filteredOptions.filter(
 					( option ) =>
-						option.value ===
-						logicalToPhysical(
-							unitone?.justifyContent ?? defaultValue
-						)
+						option.value === unitone?.justifyContent ?? defaultValue
 				)?.[ 0 ]?.icon ?? filteredOptions[ 0 ]?.icon
 			}
 			controls={ filteredOptions.map( ( option ) => ( {
 				...option,
 				title: option.label,
 				isActive:
-					option.value ===
-					logicalToPhysical(
-						unitone?.justifyContent ?? defaultValue
-					),
+					option.value === unitone?.justifyContent ?? defaultValue,
 				onClick: () => {
 					const newUnitone = {
 						...unitone,
 						justifyContent:
-							option.value !==
-							logicalToPhysical(
-								unitone?.justifyContent ?? defaultValue
-							)
-								? physicalToLogical( option.value || undefined )
+							option.value !== unitone?.justifyContent ??
+							defaultValue
+								? option.value || undefined
 								: undefined,
 					};
 
@@ -214,7 +206,7 @@ export function JustifyContentEdit( {
 							key={ value }
 							icon={ icon }
 							label={ iconLabel }
-							value={ physicalToLogical( value ) }
+							value={ value }
 						/>
 					)
 				) }

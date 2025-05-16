@@ -13,11 +13,10 @@ import { __ } from '@wordpress/i18n';
 
 import { alignBottom, alignCenter, alignTop } from '../icons';
 import { cleanEmptyObject } from '../utils';
-import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const alignContentOptions = [
 	{
-		value: 'top',
+		value: 'start',
 		icon: alignTop,
 		label: __( 'Align content top', 'unitone' ),
 	},
@@ -27,7 +26,7 @@ const alignContentOptions = [
 		label: __( 'Align content center', 'unitone' ),
 	},
 	{
-		value: 'bottom',
+		value: 'end',
 		icon: alignBottom,
 		label: __( 'Align content bottom', 'unitone' ),
 	},
@@ -97,27 +96,21 @@ export function AlignContentToolbar( {
 			icon={
 				alignContentOptions.filter(
 					( option ) =>
-						option.value ===
-						logicalToPhysical(
-							unitone?.justifyContent ?? defaultValue
-						)
+						option.value === unitone?.alignContent ?? defaultValue
 				)?.[ 0 ]?.icon ?? alignContentOptions[ 0 ]?.icon
 			}
 			controls={ alignContentOptions.map( ( option ) => ( {
 				...option,
 				title: option.label,
 				isActive:
-					option.value ===
-					logicalToPhysical( unitone?.alignContent ?? defaultValue ),
+					option.value === unitone?.alignContent ?? defaultValue,
 				onClick: () => {
 					const newUnitone = {
 						...unitone,
 						alignContent:
-							option.value !==
-							logicalToPhysical(
-								unitone?.alignContent ?? defaultValue
-							)
-								? physicalToLogical( option.value || undefined )
+							option.value !== unitone?.alignContent ??
+							defaultValue
+								? option.value || undefined
 								: undefined,
 					};
 
@@ -189,7 +182,7 @@ export function AlignContentEdit( {
 							key={ value }
 							icon={ icon }
 							label={ iconLabel }
-							value={ physicalToLogical( value ) }
+							value={ value }
 						/>
 					)
 				) }

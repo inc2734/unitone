@@ -1,22 +1,21 @@
 import clsx from 'clsx';
 
 import {
+	ToolbarDropdownMenu,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
 
-import { BlockVerticalAlignmentToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
-import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const alignItemsOptions = [
 	{
-		value: 'top',
+		value: 'start',
 		icon: alignTop,
 		label: __( 'Align items top', 'unitone' ),
 	},
@@ -26,7 +25,7 @@ const alignItemsOptions = [
 		label: __( 'Align items center', 'unitone' ),
 	},
 	{
-		value: 'bottom',
+		value: 'end',
 		icon: alignBottom,
 		label: __( 'Align items bottom', 'unitone' ),
 	},
@@ -78,22 +77,32 @@ export function AlignItemsToolbar( {
 	}, [] );
 
 	return (
-		<BlockVerticalAlignmentToolbar
-			controls={ [ 'top', 'center', 'bottom', 'stretch' ] }
-			value={ logicalToPhysical(
-				unitone?.alignItems ?? defaultValue,
-				'vertical'
-			) }
-			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					alignItems: physicalToLogical( newAttribute || undefined ),
-				};
+		<ToolbarDropdownMenu
+			label={ __( 'Align items', 'unitone' ) }
+			icon={
+				alignItemsOptions.filter(
+					( option ) =>
+						option.value === unitone?.alignItems ?? defaultValue
+				)?.[ 0 ]?.icon ?? alignItemsOptions[ 0 ]?.icon
+			}
+			controls={ alignItemsOptions.map( ( option ) => ( {
+				...option,
+				title: option.label,
+				isActive: option.value === unitone?.alignItems ?? defaultValue,
+				onClick: () => {
+					const newUnitone = {
+						...unitone,
+						alignItems:
+							option.value !== unitone?.alignItems ?? defaultValue
+								? option.value || undefined
+								: undefined,
+					};
 
-				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
-				} );
-			} }
+					setAttributes( {
+						unitone: cleanEmptyObject( newUnitone ),
+					} );
+				},
+			} ) ) }
 		/>
 	);
 }
@@ -157,7 +166,7 @@ export function AlignItemsEdit( {
 							key={ value }
 							icon={ icon }
 							label={ iconLabel }
-							value={ physicalToLogical( value ) }
+							value={ value }
 						/>
 					)
 				) }

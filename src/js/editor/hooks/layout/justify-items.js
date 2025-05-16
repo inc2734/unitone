@@ -18,11 +18,10 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
-import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const justifyItemsOptions = [
 	{
-		value: 'top',
+		value: 'start',
 		icon: justifyLeft,
 		label: __( 'Justify items top', 'unitone' ),
 	},
@@ -32,7 +31,7 @@ const justifyItemsOptions = [
 		label: __( 'Justify items center', 'unitone' ),
 	},
 	{
-		value: 'bottom',
+		value: 'end',
 		icon: justifyRight,
 		label: __( 'Justify items bottom', 'unitone' ),
 	},
@@ -92,27 +91,21 @@ export function JustifyItemsToolbar( {
 			icon={
 				justifyItemsOptions.filter(
 					( option ) =>
-						option.value ===
-						logicalToPhysical(
-							unitone?.justifyItems ?? defaultValue
-						)
+						option.value === unitone?.justifyItems ?? defaultValue
 				)?.[ 0 ]?.icon ?? justifyItemsOptions[ 0 ]?.icon
 			}
 			controls={ justifyItemsOptions.map( ( option ) => ( {
 				...option,
 				title: option.label,
 				isActive:
-					option.value ===
-					logicalToPhysical( unitone?.justifyItems ?? defaultValue ),
+					option.value === unitone?.justifyItems ?? defaultValue,
 				onClick: () => {
 					const newUnitone = {
 						...unitone,
 						justifyItems:
-							option.value !==
-							logicalToPhysical(
-								unitone?.justifyItems ?? defaultValue
-							)
-								? physicalToLogical( option.value || undefined )
+							option.value !== unitone?.justifyItems ??
+							defaultValue
+								? option.value || undefined
 								: undefined,
 					};
 
@@ -162,20 +155,14 @@ export function JustifyItemsEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ logicalToPhysical(
-					unitone?.justifyItems ?? defaultValue,
-					'vertical'
-				) }
+				value={ unitone?.justifyItems ?? defaultValue }
 				isDeselectable={ ! defaultValue }
 				onChange={ ( newValue ) => {
 					const newUnitone = {
 						...unitone,
 						justifyItems:
-							logicalToPhysical(
-								unitone?.justifyItems,
-								'vertical'
-							) !== newValue
-								? physicalToLogical( newValue )
+							unitone?.justifyItems !== newValue
+								? newValue
 								: undefined,
 					};
 

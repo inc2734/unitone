@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 
 import {
+	ToolbarDropdownMenu,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
 
-import { JustifyToolbar } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
@@ -18,11 +18,10 @@ import {
 } from '../icons';
 
 import { cleanEmptyObject } from '../utils';
-import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const justifyContentColumnOptions = [
 	{
-		value: 'left',
+		value: 'start',
 		icon: alignTop,
 		label: __( 'Justify items top', 'unitone' ),
 	},
@@ -32,7 +31,7 @@ const justifyContentColumnOptions = [
 		label: __( 'Justify items center', 'unitone' ),
 	},
 	{
-		value: 'right',
+		value: 'end',
 		icon: alignBottom,
 		label: __( 'Justify items bottom', 'unitone' ),
 	},
@@ -90,25 +89,34 @@ export function JustifyContentColumnToolbar( {
 	}, [] );
 
 	return (
-		<JustifyToolbar
-			allowedControls={ justifyContentColumnOptions.map(
-				( option ) => option.value
-			) }
-			value={ logicalToPhysical(
-				unitone?.justifyContent ?? defaultValue
-			) }
-			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					justifyContent: physicalToLogical(
-						newAttribute || undefined
-					),
-				};
+		<ToolbarDropdownMenu
+			label={ __( 'Align items', 'unitone' ) }
+			icon={
+				justifyContentColumnOptions.filter(
+					( option ) =>
+						option.value === unitone?.justifyContent ?? defaultValue
+				)?.[ 0 ]?.icon ?? justifyContentColumnOptions[ 0 ]?.icon
+			}
+			controls={ justifyContentColumnOptions.map( ( option ) => ( {
+				...option,
+				title: option.label,
+				isActive:
+					option.value === unitone?.justifyContent ?? defaultValue,
+				onClick: () => {
+					const newUnitone = {
+						...unitone,
+						justifyContent:
+							option.value !== unitone?.justifyContent ??
+							defaultValue
+								? option.value || undefined
+								: undefined,
+					};
 
-				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
-				} );
-			} }
+					setAttributes( {
+						unitone: cleanEmptyObject( newUnitone ),
+					} );
+				},
+			} ) ) }
 		/>
 	);
 }
@@ -150,16 +158,13 @@ export function JustifyContentColumnEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ logicalToPhysical(
-					unitone?.justifyContent ?? defaultValue
-				) }
+				value={ unitone?.justifyContent ?? defaultValue }
 				onChange={ ( newValue ) => {
 					const newUnitone = {
 						...unitone,
 						justifyContent:
-							logicalToPhysical( unitone?.justifyContent ) !==
-							newValue
-								? physicalToLogical( newValue )
+							unitone?.justifyContent !== newValue
+								? newValue
 								: undefined,
 					};
 

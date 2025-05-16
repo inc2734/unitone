@@ -7,6 +7,7 @@ import {
 } from '@wordpress/blocks';
 
 import {
+	ToolbarDropdownMenu,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
@@ -18,13 +19,11 @@ import {
 	justifyStretch,
 } from '@wordpress/icons';
 
-import { JustifyToolbar } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
 import { cleanEmptyObject, useDeviceType } from '../utils';
-import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const justifySelfOptions = [
 	{
@@ -126,7 +125,7 @@ export function JustifySelfToolbar( {
 	const onChangeJustifySelf = ( newValue ) => {
 		const newUnitone = {
 			...unitone,
-			justifySelf: physicalToLogical( newValue || undefined ),
+			justifySelf: newValue || undefined,
 		};
 
 		setAttributes( {
@@ -138,7 +137,7 @@ export function JustifySelfToolbar( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: physicalToLogical( newValue || undefined ),
+				lg: newValue || undefined,
 				md: unitone?.justifySelf?.md || undefined,
 				sm: unitone?.justifySelf?.sm || undefined,
 			},
@@ -154,7 +153,7 @@ export function JustifySelfToolbar( {
 			...unitone,
 			justifySelf: {
 				lg: unitone?.justifySelf?.lg || undefined,
-				md: physicalToLogical( newValue || undefined ),
+				md: newValue || undefined,
 				sm: unitone?.justifySelf?.sm || undefined,
 			},
 		};
@@ -170,7 +169,7 @@ export function JustifySelfToolbar( {
 			justifySelf: {
 				lg: unitone?.justifySelf?.lg || undefined,
 				md: unitone?.justifySelf?.md || undefined,
-				sm: physicalToLogical( newValue || undefined ),
+				sm: newValue || undefined,
 			},
 		};
 
@@ -200,12 +199,19 @@ export function JustifySelfToolbar( {
 	}
 
 	return (
-		<JustifyToolbar
-			allowedControls={ justifySelfOptions.map( ( option ) =>
-				logicalToPhysical( option.value )
-			) }
-			value={ logicalToPhysical( value ?? defaultValue ) }
-			onChange={ onChange }
+		<ToolbarDropdownMenu
+			label={ __( 'Justify self', 'unitone' ) }
+			icon={
+				justifySelfOptions.filter(
+					( option ) => option.value === value ?? defaultValue
+				)?.[ 0 ]?.icon ?? justifySelfOptions[ 0 ]?.icon
+			}
+			controls={ justifySelfOptions.map( ( option ) => ( {
+				...option,
+				title: option.label,
+				isActive: option.value === value ?? defaultValue,
+				onClick: () => onChange( option.value ),
+			} ) ) }
 		/>
 	);
 }

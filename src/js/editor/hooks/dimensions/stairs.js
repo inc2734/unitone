@@ -33,32 +33,30 @@ export function hasStairsUpValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetStairsFilter( attributes ) {
-	if ( null != attributes?.unitone?.stairs ) {
-		attributes.unitone.stairs = undefined;
-	}
-
-	return attributes;
+export function resetStairsFilter() {
+	return {
+		stairs: undefined,
+	};
 }
 
 export function resetStairs( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetStairsFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject(
+			Object.assign( { ...unitone }, resetStairsFilter() )
+		),
 	} );
 }
 
-function resetStairsUpFilter( attributes ) {
-	if ( null != attributes?.unitone?.stairsUp ) {
-		attributes.unitone.stairsUp = undefined;
-	}
-
-	return attributes;
+export function resetStairsUpFilter() {
+	return {
+		stairsUp: undefined,
+	};
 }
 
 export function resetStairsUp( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetStairsUpFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetStairsUpFilter() )
 		),
 	} );
 }

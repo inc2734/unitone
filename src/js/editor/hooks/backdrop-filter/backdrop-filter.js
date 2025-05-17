@@ -3,6 +3,7 @@
  */
 
 import clsx from 'clsx';
+import deepmerge from 'deepmerge';
 import fastDeepEqual from 'fast-deep-equal/es6';
 
 import {
@@ -21,11 +22,12 @@ import { useSelect } from '@wordpress/data';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../utils';
+import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
 	useIsBlurDisabled,
 	hasBlurValue,
+	resetBlurFilter,
 	resetBlur,
 	getBlurEditLabel,
 	BlurEdit,
@@ -34,6 +36,7 @@ import {
 import {
 	useIsBrightnessDisabled,
 	hasBrightnessValue,
+	resetBrightnessFilter,
 	resetBrightness,
 	getBrightnessEditLabel,
 	BrightnessEdit,
@@ -42,6 +45,7 @@ import {
 import {
 	useIsContrastDisabled,
 	hasContrastValue,
+	resetContrastFilter,
 	resetContrast,
 	getContrastEditLabel,
 	ContrastEdit,
@@ -50,6 +54,7 @@ import {
 import {
 	useIsGrayscaleDisabled,
 	hasGrayscaleValue,
+	resetGrayscaleFilter,
 	resetGrayscale,
 	getGrayscaleEditLabel,
 	GrayscaleEdit,
@@ -58,6 +63,7 @@ import {
 import {
 	useIsHueRotateDisabled,
 	hasHueRotateValue,
+	resetHueRotateFilter,
 	resetHueRotate,
 	getHueRotateEditLabel,
 	HueRotateEdit,
@@ -66,6 +72,7 @@ import {
 import {
 	useIsInvertDisabled,
 	hasInvertValue,
+	resetInvertFilter,
 	resetInvert,
 	getInvertEditLabel,
 	InvertEdit,
@@ -74,6 +81,7 @@ import {
 import {
 	useIsSaturateDisabled,
 	hasSaturateValue,
+	resetSaturateFilter,
 	resetSaturate,
 	getSaturateEditLabel,
 	SaturateEdit,
@@ -82,6 +90,7 @@ import {
 import {
 	useIsSepiaDisabled,
 	hasSepiaValue,
+	resetSepiaFilter,
 	resetSepia,
 	getSepiaEditLabel,
 	SepiaEdit,
@@ -90,6 +99,7 @@ import {
 import {
 	useIsProgressiveDisabled,
 	hasProgressiveValue,
+	resetProgressiveFilter,
 	resetProgressive,
 	getProgressiveEditLabel,
 	ProgressiveEdit,
@@ -263,10 +273,25 @@ export function useBackdropFilterBlockProps( settings ) {
 }
 
 function BackdropFilterPanelPure( props ) {
-	const { name, clientId } = props;
+	const { name, attributes, setAttributes, clientId } = props;
 
-	const resetAll = ( filters ) => {
-		filters.forEach( ( filter ) => filter() );
+	const resetAll = () => {
+		setAttributes( {
+			unitone: cleanEmptyObject(
+				deepmerge.all( [
+					{ ...attributes?.unitone },
+					resetBlurFilter(),
+					resetBrightnessFilter(),
+					resetContrastFilter(),
+					resetGrayscaleFilter(),
+					resetHueRotateFilter(),
+					resetInvertFilter(),
+					resetSaturateFilter(),
+					resetSepiaFilter(),
+					resetProgressiveFilter(),
+				] )
+			),
+		} );
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
@@ -310,9 +335,6 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetBlur( { ...props } ) }
-						resetAllFilter={ () => {
-							resetBlur( { ...props } );
-						} }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -333,7 +355,6 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetBrightness( { ...props } ) }
-						resetAllFilter={ () => resetBrightness( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 						show
@@ -355,7 +376,6 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetContrast( { ...props } ) }
-						resetAllFilter={ () => resetContrast( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -376,7 +396,6 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetGrayscale( { ...props } ) }
-						resetAllFilter={ () => resetGrayscale( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -397,7 +416,6 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetHueRotate( { ...props } ) }
-						resetAllFilter={ () => resetHueRotate( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -418,7 +436,6 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetInvert( { ...props } ) }
-						resetAllFilter={ () => resetInvert( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -439,7 +456,6 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetSaturate( { ...props } ) }
-						resetAllFilter={ () => resetSaturate( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -460,7 +476,6 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetSepia( { ...props } ) }
-						resetAllFilter={ () => resetSepia( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -481,9 +496,6 @@ function BackdropFilterPanelPure( props ) {
 							...props,
 						} ) }
 						onDeselect={ () => resetProgressive( { ...props } ) }
-						resetAllFilter={ () => {
-							resetProgressive( { ...props } );
-						} }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>

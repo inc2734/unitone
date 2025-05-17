@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 import {
 	getBlockSupport,
 	hasBlockSupport,
@@ -20,18 +22,18 @@ export function hasSaturateValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetSaturateFilter( attributes ) {
-	if ( null != attributes?.unitone?.backdropFilter?.saturate ) {
-		attributes.unitone.backdropFilter.saturate = undefined;
-	}
-
-	return attributes;
+export function resetSaturateFilter() {
+	return {
+		backdropFilter: {
+			saturate: undefined,
+		},
+	};
 }
 
 export function resetSaturate( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetSaturateFilter( { unitone } )?.unitone
+			deepmerge( unitone, resetSaturateFilter() )
 		),
 	} );
 }

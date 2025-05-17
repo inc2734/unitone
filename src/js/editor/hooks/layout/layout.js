@@ -13,11 +13,12 @@ import { BlockControls, InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../utils';
+import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
 	useIsJustifyContentDisabled,
 	hasJustifyContentValue,
+	resetJustifyContentFilter,
 	resetJustifyContent,
 	JustifyContentToolbar,
 	getJustifyContentEditLabel,
@@ -28,6 +29,7 @@ import {
 import {
 	useIsJustifyItemsDisabled,
 	hasJustifyItemsValue,
+	resetJustifyItemsFilter,
 	resetJustifyItems,
 	JustifyItemsToolbar,
 	getJustifyItemsEditLabel,
@@ -38,6 +40,7 @@ import {
 import {
 	useIsJustifyContentColumnDisabled,
 	hasJustifyContentColumnValue,
+	resetJustifyContentColumnFilter,
 	resetJustifyContentColumn,
 	JustifyContentColumnToolbar,
 	getJustifyContentColumnEditLabel,
@@ -48,6 +51,7 @@ import {
 import {
 	useIsAlignContentDisabled,
 	hasAlignContentValue,
+	resetAlignContentFilter,
 	resetAlignContent,
 	AlignContentToolbar,
 	getAlignContentEditLabel,
@@ -58,6 +62,7 @@ import {
 import {
 	useIsAlignItemsDisabled,
 	hasAlignItemsValue,
+	resetAlignItemsFilter,
 	resetAlignItems,
 	AlignItemsToolbar,
 	getAlignItemsEditLabel,
@@ -68,6 +73,7 @@ import {
 import {
 	useIsBlockAlignDisabled,
 	hasBlockAlignValue,
+	resetBlockAlignFilter,
 	resetBlockAlign,
 	BlockAlignToolbar,
 	getBlockAlignEditLabel,
@@ -78,6 +84,7 @@ import {
 import {
 	useIsFlexBasisDisabled,
 	hasFlexBasisValue,
+	resetFlexBasisFilter,
 	resetFlexBasis,
 	getFlexBasisEditLabel,
 	FlexBasisEdit,
@@ -87,6 +94,7 @@ import {
 import {
 	useIsFlexGrowDisabled,
 	hasFlexGrowValue,
+	resetFlexGrowFilter,
 	resetFlexGrow,
 	getFlexGrowEditLabel,
 	FlexGrowEdit,
@@ -96,6 +104,7 @@ import {
 import {
 	useIsFlexShrinkDisabled,
 	hasFlexShrinkValue,
+	resetFlexShrinkFilter,
 	resetFlexShrink,
 	getFlexShrinkEditLabel,
 	FlexShrinkEdit,
@@ -105,6 +114,7 @@ import {
 import {
 	useIsMaxWidthDisabled,
 	hasMaxWidthValue,
+	resetMaxWidthFilter,
 	resetMaxWidth,
 	getMaxWidthEditLabel,
 	MaxWidthEdit,
@@ -114,6 +124,7 @@ import {
 import {
 	useIsMinWidthDisabled,
 	hasMinWidthValue,
+	resetMinWidthFilter,
 	resetMinWidth,
 	getMinWidthEditLabel,
 	MinWidthEdit,
@@ -123,6 +134,7 @@ import {
 import {
 	useIsMaxHeightDisabled,
 	hasMaxHeightValue,
+	resetMaxHeightFilter,
 	resetMaxHeight,
 	getMaxHeightEditLabel,
 	MaxHeightEdit,
@@ -132,6 +144,7 @@ import {
 import {
 	useIsMinHeightDisabled,
 	hasMinHeightValue,
+	resetMinHeightFilter,
 	resetMinHeight,
 	getMinHeightEditLabel,
 	MinHeightEdit,
@@ -141,6 +154,7 @@ import {
 import {
 	useIsAutoRepeatDisabled,
 	hasAutoRepeatValue,
+	resetAutoRepeatFilter,
 	resetAutoRepeat,
 	getAutoRepeatEditLabel,
 	AutoRepeatEdit,
@@ -150,6 +164,7 @@ import {
 import {
 	useIsAlignSelfDisabled,
 	hasAlignSelfValue,
+	resetAlignSelfFilter,
 	resetAlignSelf,
 	AlignSelfToolbar,
 	getAlignSelfEditLabel,
@@ -160,6 +175,7 @@ import {
 import {
 	useIsJustifySelfDisabled,
 	hasJustifySelfValue,
+	resetJustifySelfFilter,
 	resetJustifySelf,
 	JustifySelfToolbar,
 	getJustifySelfEditLabel,
@@ -170,6 +186,7 @@ import {
 import {
 	useIsGridColumnDisabled,
 	hasGridColumnValue,
+	resetGridColumnFilter,
 	resetGridColumn,
 	getGridColumnEditLabel,
 	GridColumnEdit,
@@ -179,6 +196,7 @@ import {
 import {
 	useIsGridRowDisabled,
 	hasGridRowValue,
+	resetGridRowFilter,
 	resetGridRow,
 	getGridRowEditLabel,
 	GridRowEdit,
@@ -207,11 +225,35 @@ export {
 };
 
 function LayoutPanelPure( props ) {
-	const { name, attributes, clientId } = props;
+	const { name, attributes, setAttributes, clientId } = props;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const resetAll = ( filters ) => {
-		filters.forEach( ( filter ) => filter() );
+	const resetAll = () => {
+		setAttributes( {
+			unitone: cleanEmptyObject(
+				Object.assign(
+					{ ...attributes?.unitone },
+					resetJustifyContentFilter(),
+					resetJustifyContentColumnFilter(),
+					resetJustifyItemsFilter(),
+					resetAlignContentFilter(),
+					resetAlignItemsFilter(),
+					resetBlockAlignFilter(),
+					resetFlexBasisFilter(),
+					resetFlexGrowFilter(),
+					resetFlexShrinkFilter(),
+					resetMaxWidthFilter(),
+					resetMinWidthFilter(),
+					resetMaxHeightFilter(),
+					resetMinHeightFilter(),
+					resetAutoRepeatFilter(),
+					resetAlignSelfFilter(),
+					resetJustifySelfFilter(),
+					resetGridColumnFilter(),
+					resetGridRowFilter()
+				)
+			),
+		} );
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
@@ -368,9 +410,6 @@ function LayoutPanelPure( props ) {
 								onDeselect={ () =>
 									resetJustifyContent( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetJustifyContent( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -392,9 +431,6 @@ function LayoutPanelPure( props ) {
 									...props,
 								} ) }
 								onDeselect={ () =>
-									resetJustifyContentColumn( { ...props } )
-								}
-								resetAllFilter={ () =>
 									resetJustifyContentColumn( { ...props } )
 								}
 								isShownByDefault
@@ -420,9 +456,6 @@ function LayoutPanelPure( props ) {
 								onDeselect={ () =>
 									resetJustifyItems( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetJustifyItems( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -446,9 +479,6 @@ function LayoutPanelPure( props ) {
 								onDeselect={ () =>
 									resetAlignContent( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetAlignContent( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -468,9 +498,6 @@ function LayoutPanelPure( props ) {
 								}
 								label={ getAlignItemsEditLabel( { ...props } ) }
 								onDeselect={ () =>
-									resetAlignItems( { ...props } )
-								}
-								resetAllFilter={ () =>
 									resetAlignItems( { ...props } )
 								}
 								isShownByDefault
@@ -494,9 +521,6 @@ function LayoutPanelPure( props ) {
 								onDeselect={ () =>
 									resetBlockAlign( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetBlockAlign( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -515,9 +539,6 @@ function LayoutPanelPure( props ) {
 								}
 								label={ getFlexGrowEditLabel( { ...props } ) }
 								onDeselect={ () =>
-									resetFlexGrow( { ...props } )
-								}
-								resetAllFilter={ () =>
 									resetFlexGrow( { ...props } )
 								}
 								isShownByDefault
@@ -541,9 +562,6 @@ function LayoutPanelPure( props ) {
 								onDeselect={ () =>
 									resetFlexShrink( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetFlexShrink( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -563,9 +581,6 @@ function LayoutPanelPure( props ) {
 								}
 								label={ getFlexBasisEditLabel( { ...props } ) }
 								onDeselect={ () =>
-									resetFlexBasis( { ...props } )
-								}
-								resetAllFilter={ () =>
 									resetFlexBasis( { ...props } )
 								}
 								isShownByDefault
@@ -589,9 +604,6 @@ function LayoutPanelPure( props ) {
 								onDeselect={ () =>
 									resetMaxWidth( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetMaxWidth( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -611,9 +623,6 @@ function LayoutPanelPure( props ) {
 								}
 								label={ getMinWidthEditLabel( { ...props } ) }
 								onDeselect={ () =>
-									resetMinWidth( { ...props } )
-								}
-								resetAllFilter={ () =>
 									resetMinWidth( { ...props } )
 								}
 								isShownByDefault
@@ -637,9 +646,6 @@ function LayoutPanelPure( props ) {
 								onDeselect={ () =>
 									resetMaxHeight( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetMaxHeight( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -661,9 +667,6 @@ function LayoutPanelPure( props ) {
 								onDeselect={ () =>
 									resetMinHeight( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetMinHeight( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -683,9 +686,6 @@ function LayoutPanelPure( props ) {
 								}
 								label={ getAutoRepeatEditLabel( { ...props } ) }
 								onDeselect={ () =>
-									resetAutoRepeat( { ...props } )
-								}
-								resetAllFilter={ () =>
 									resetAutoRepeat( { ...props } )
 								}
 								isShownByDefault
@@ -711,9 +711,6 @@ function LayoutPanelPure( props ) {
 								onDeselect={ () =>
 									resetJustifySelf( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetJustifySelf( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -735,9 +732,6 @@ function LayoutPanelPure( props ) {
 								onDeselect={ () =>
 									resetAlignSelf( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetAlignSelf( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -757,9 +751,6 @@ function LayoutPanelPure( props ) {
 								}
 								label={ getGridColumnEditLabel( { ...props } ) }
 								onDeselect={ () =>
-									resetGridColumn( { ...props } )
-								}
-								resetAllFilter={ () =>
 									resetGridColumn( { ...props } )
 								}
 								isShownByDefault
@@ -796,9 +787,6 @@ function LayoutPanelPure( props ) {
 								}
 								label={ getGridRowEditLabel( { ...props } ) }
 								onDeselect={ () =>
-									resetGridRow( { ...props } )
-								}
-								resetAllFilter={ () =>
 									resetGridRow( { ...props } )
 								}
 								isShownByDefault

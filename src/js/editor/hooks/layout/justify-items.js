@@ -52,12 +52,10 @@ export function hasJustifyItemsValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetJustifyItemsFilter( attributes ) {
-	if ( null != attributes?.unitone?.justifyItems ) {
-		attributes.unitone.justifyItems = undefined;
-	}
-
-	return attributes;
+export function resetJustifyItemsFilter() {
+	return {
+		justifyItems: undefined,
+	};
 }
 
 export function resetJustifyItems( {
@@ -66,7 +64,7 @@ export function resetJustifyItems( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetJustifyItemsFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetJustifyItemsFilter() )
 		),
 	} );
 }

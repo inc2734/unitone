@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 import {
 	getBlockSupport,
 	hasBlockSupport,
@@ -20,17 +22,17 @@ export function hasInvertValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetInvertFilter( attributes ) {
-	if ( null != attributes?.unitone?.backdropFilter?.invert ) {
-		attributes.unitone.backdropFilter.invert = undefined;
-	}
-
-	return attributes;
+export function resetInvertFilter() {
+	return {
+		backdropFilter: {
+			invert: undefined,
+		},
+	};
 }
 
 export function resetInvert( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetInvertFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject( deepmerge( unitone, resetInvertFilter() ) ),
 	} );
 }
 

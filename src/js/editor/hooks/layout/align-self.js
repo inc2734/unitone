@@ -81,18 +81,16 @@ export function hasAlignSelfValue( {
 	);
 }
 
-function resetAlignSelfFilter( attributes ) {
-	if ( null != attributes?.unitone?.alignSelf ) {
-		attributes.unitone.alignSelf = undefined;
-	}
-
-	return attributes;
+export function resetAlignSelfFilter() {
+	return {
+		alignSelf: undefined,
+	};
 }
 
 export function resetAlignSelf( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetAlignSelfFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetAlignSelfFilter() )
 		),
 	} );
 }

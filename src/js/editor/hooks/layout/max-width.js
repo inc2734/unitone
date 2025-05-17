@@ -23,18 +23,16 @@ export function hasMaxWidthValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetMaxWidthFilter( attributes ) {
-	if ( null != attributes?.unitone?.maxWidth ) {
-		attributes.unitone.maxWidth = undefined;
-	}
-
-	return attributes;
+export function resetMaxWidthFilter() {
+	return {
+		maxWidth: undefined,
+	};
 }
 
 export function resetMaxWidth( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetMaxWidthFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetMaxWidthFilter() )
 		),
 	} );
 }

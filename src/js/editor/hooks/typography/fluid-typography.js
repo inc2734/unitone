@@ -10,12 +10,10 @@ export function hasFluidTypographyValue( { attributes: { unitone } } ) {
 	return unitone?.fluidTypography !== undefined;
 }
 
-function resetFluidTypographyFilter( attributes ) {
-	if ( null != attributes?.unitone?.fluidTypography ) {
-		attributes.unitone.fluidTypography = undefined;
-	}
-
-	return attributes;
+export function resetFluidTypographyFilter() {
+	return {
+		fluidTypography: undefined,
+	};
 }
 
 export function resetFluidTypography( {
@@ -24,7 +22,7 @@ export function resetFluidTypography( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetFluidTypographyFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetFluidTypographyFilter() )
 		),
 	} );
 }

@@ -67,12 +67,10 @@ export function hasJustifyContentValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetJustifyContentFilter( attributes ) {
-	if ( null != attributes?.unitone?.justifyContent ) {
-		attributes.unitone.justifyContent = undefined;
-	}
-
-	return attributes;
+export function resetJustifyContentFilter() {
+	return {
+		justifyContent: undefined,
+	};
 }
 
 export function resetJustifyContent( {
@@ -81,7 +79,7 @@ export function resetJustifyContent( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetJustifyContentFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetJustifyContentFilter() )
 		),
 	} );
 }

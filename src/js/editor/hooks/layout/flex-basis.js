@@ -34,18 +34,16 @@ export function hasFlexBasisValue( {
 	);
 }
 
-function resetFlexBasisFilter( attributes ) {
-	if ( null != attributes?.unitone?.flexBasis ) {
-		attributes.unitone.flexBasis = undefined;
-	}
-
-	return attributes;
+export function resetFlexBasisFilter() {
+	return {
+		flexBasis: undefined,
+	};
 }
 
 export function resetFlexBasis( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetFlexBasisFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetFlexBasisFilter() )
 		),
 	} );
 }

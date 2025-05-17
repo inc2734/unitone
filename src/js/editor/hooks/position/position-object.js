@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import deepmerge from 'deepmerge';
 
 import { SelectControl, TextControl } from '@wordpress/components';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
@@ -16,18 +17,18 @@ export function hasPositionValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetPositionFilter( attributes ) {
-	if ( null != attributes?.unitone?.position?.position ) {
-		attributes.unitone.position.position = undefined;
-	}
-
-	return attributes;
+export function resetPositionFilter() {
+	return {
+		position: {
+			position: undefined,
+		},
+	};
 }
 
 export function resetPosition( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetPositionFilter( { unitone } )?.unitone
+			deepmerge( unitone, resetPositionFilter() )
 		),
 	} );
 }
@@ -102,17 +103,17 @@ export function hasTopValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetTopFilter( attributes ) {
-	if ( null != attributes?.unitone?.position?.top ) {
-		attributes.unitone.position.top = undefined;
-	}
-
-	return attributes;
+export function resetTopFilter() {
+	return {
+		position: {
+			top: undefined,
+		},
+	};
 }
 
 export function resetTop( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetTopFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject( deepmerge( unitone, resetTopFilter() ) ),
 	} );
 }
 
@@ -160,17 +161,17 @@ export function hasRightValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetRightFilter( attributes ) {
-	if ( null != attributes?.unitone?.position?.right ) {
-		attributes.unitone.position.right = undefined;
-	}
-
-	return attributes;
+export function resetRightFilter() {
+	return {
+		position: {
+			right: undefined,
+		},
+	};
 }
 
 export function resetRight( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetRightFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject( deepmerge( unitone, resetRightFilter() ) ),
 	} );
 }
 
@@ -220,17 +221,17 @@ export function hasBottomValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetBottomFilter( attributes ) {
-	if ( null != attributes?.unitone?.position?.bottom ) {
-		attributes.unitone.position.bottom = undefined;
-	}
-
-	return attributes;
+export function resetBottomFilter() {
+	return {
+		position: {
+			bottom: undefined,
+		},
+	};
 }
 
 export function resetBottom( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetBottomFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject( deepmerge( unitone, resetBottomFilter() ) ),
 	} );
 }
 
@@ -278,17 +279,17 @@ export function hasLeftValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetLeftFilter( attributes ) {
-	if ( null != attributes?.unitone?.position?.left ) {
-		attributes.unitone.position.left = undefined;
-	}
-
-	return attributes;
+export function resetLeftFilter() {
+	return {
+		position: {
+			left: undefined,
+		},
+	};
 }
 
 export function resetLeft( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetLeftFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject( deepmerge( unitone, resetLeftFilter() ) ),
 	} );
 }
 
@@ -336,17 +337,17 @@ export function hasZIndexValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetZIndexFilter( attributes ) {
-	if ( null != attributes?.unitone?.position?.zIndex ) {
-		attributes.unitone.position.zIndex = undefined;
-	}
-
-	return attributes;
+export function resetZIndexFilter() {
+	return {
+		position: {
+			zIndex: undefined,
+		},
+	};
 }
 
 export function resetZIndex( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetZIndexFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject( deepmerge( unitone, resetZIndexFilter() ) ),
 	} );
 }
 

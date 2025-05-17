@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge';
 import fastDeepEqual from 'fast-deep-equal/es6';
 
 import {
@@ -9,26 +10,32 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../utils';
+import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
 	hasPositionValue,
+	resetPositionFilter,
 	resetPosition,
 	useIsPositionDisabled,
 	PositionEdit,
 	hasTopValue,
+	resetTopFilter,
 	resetTop,
 	TopEdit,
 	hasRightValue,
+	resetRightFilter,
 	resetRight,
 	RightEdit,
 	hasBottomValue,
+	resetBottomFilter,
 	resetBottom,
 	BottomEdit,
 	hasLeftValue,
+	resetLeftFilter,
 	resetLeft,
 	LeftEdit,
 	hasZIndexValue,
+	resetZIndexFilter,
 	resetZIndex,
 	ZIndexEdit,
 	usePositionBlockProps,
@@ -37,10 +44,22 @@ import {
 export { usePositionBlockProps };
 
 function PositionPanelPure( props ) {
-	const { name, clientId } = props;
+	const { name, attributes, setAttributes, clientId } = props;
 
-	const resetAll = ( filters ) => {
-		filters.forEach( ( filter ) => filter() );
+	const resetAll = () => {
+		setAttributes( {
+			unitone: cleanEmptyObject(
+				deepmerge.all( [
+					{ ...attributes?.unitone },
+					resetPositionFilter(),
+					resetTopFilter(),
+					resetRightFilter(),
+					resetBottomFilter(),
+					resetLeftFilter(),
+					resetZIndexFilter(),
+				] )
+			),
+		} );
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
@@ -63,7 +82,6 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasPositionValue( { ...props } ) }
 						label={ __( 'Position', 'unitone' ) }
 						onDeselect={ () => resetPosition( { ...props } ) }
-						resetAllFilter={ () => resetPosition( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -82,7 +100,6 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasTopValue( { ...props } ) }
 						label={ __( 'Top', 'unitone' ) }
 						onDeselect={ () => resetTop( { ...props } ) }
-						resetAllFilter={ () => resetTop( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -101,7 +118,6 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasRightValue( { ...props } ) }
 						label={ __( 'Right', 'unitone' ) }
 						onDeselect={ () => resetRight( { ...props } ) }
-						resetAllFilter={ () => resetRight( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -120,7 +136,6 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasBottomValue( { ...props } ) }
 						label={ __( 'Bottom', 'unitone' ) }
 						onDeselect={ () => resetBottom( { ...props } ) }
-						resetAllFilter={ () => resetBottom( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -139,7 +154,6 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasLeftValue( { ...props } ) }
 						label={ __( 'Left', 'unitone' ) }
 						onDeselect={ () => resetLeft( { ...props } ) }
-						resetAllFilter={ () => resetLeft( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>
@@ -158,7 +172,6 @@ function PositionPanelPure( props ) {
 						hasValue={ () => hasZIndexValue( { ...props } ) }
 						label={ __( 'The stack level', 'unitone' ) }
 						onDeselect={ () => resetZIndex( { ...props } ) }
-						resetAllFilter={ () => resetZIndex( { ...props } ) }
 						isShownByDefault={ false }
 						panelId={ clientId }
 					>

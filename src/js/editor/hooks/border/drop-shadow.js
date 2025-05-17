@@ -15,8 +15,8 @@ import {
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSettings } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
-import { shadow as shadowIcon, Icon, check } from '@wordpress/icons';
+import { useMemo, useRef } from '@wordpress/element';
+import { shadow as shadowIcon, Icon, check, reset } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -31,18 +31,16 @@ export function hasDropShadowValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetDropShadowFilter( attributes ) {
-	if ( null != attributes?.unitone?.dropShadow ) {
-		attributes.unitone.dropShadow = undefined;
-	}
-
-	return attributes;
+export function resetDropShadowFilter() {
+	return {
+		dropShadow: undefined,
+	};
 }
 
 export function resetDropShadow( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetDropShadowFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetDropShadowFilter() )
 		),
 	} );
 }
@@ -190,7 +188,66 @@ function ShadowIndicator( { type, label, isActive, onSelect, shadow } ) {
 	);
 }
 
-function ShadowPopover( { shadow, onShadowChange, settings } ) {
+function renderToggle( { hasValue, resetValue } ) {
+	return ( { onToggle, isOpen } ) => {
+		const ref = useRef( undefined );
+
+		const toggleProps = {
+			onClick: onToggle,
+			className: clsx( { 'is-open': isOpen } ),
+			'aria-expanded': isOpen,
+			ref,
+		};
+
+		const removeButtonProps = {
+			onClick: () => {
+				if ( isOpen ) {
+					onToggle();
+				}
+				resetValue();
+				// Return focus to parent button.
+				ref.current?.focus();
+			},
+			className: clsx(
+				'block-editor-global-styles__shadow-editor__remove-button',
+				{ 'is-open': isOpen }
+			),
+			label: __( 'Remove' ),
+		};
+
+		return (
+			<>
+				<Button { ...toggleProps }>
+					<HStack justify="flex-start">
+						<Icon
+							className="block-editor-global-styles__toggle-icon"
+							icon={ shadowIcon }
+							size={ 24 }
+						/>
+						<FlexItem>{ __( 'Drop shadow' ) }</FlexItem>
+					</HStack>
+				</Button>
+
+				{ !! hasValue && (
+					<Button
+						__next40pxDefaultSize
+						size="small"
+						icon={ reset }
+						{ ...removeButtonProps }
+					/>
+				) }
+			</>
+		);
+	};
+}
+
+function ShadowPopover( {
+	hasValue,
+	resetValue,
+	shadow,
+	onShadowChange,
+	settings,
+} ) {
 	const popoverProps = {
 		placement: 'left-start',
 		offset: 36,
@@ -201,7 +258,7 @@ function ShadowPopover( { shadow, onShadowChange, settings } ) {
 		<Dropdown
 			popoverProps={ popoverProps }
 			className="block-editor-global-styles__shadow-dropdown"
-			renderToggle={ renderShadowToggle() }
+			renderToggle={ renderToggle( { hasValue, resetValue } ) }
 			renderContent={ () => (
 				<DropdownContentWrapper paddingSize="medium">
 					<ShadowPopoverContainer
@@ -213,29 +270,6 @@ function ShadowPopover( { shadow, onShadowChange, settings } ) {
 			) }
 		/>
 	);
-}
-
-function renderShadowToggle() {
-	return ( { onToggle, isOpen } ) => {
-		const toggleProps = {
-			onClick: onToggle,
-			className: clsx( { 'is-open': isOpen } ),
-			'aria-expanded': isOpen,
-		};
-
-		return (
-			<Button { ...toggleProps }>
-				<HStack justify="flex-start">
-					<Icon
-						className="block-editor-global-styles__toggle-icon"
-						icon={ shadowIcon }
-						size={ 24 }
-					/>
-					<FlexItem>{ __( 'Drop shadow' ) }</FlexItem>
-				</HStack>
-			</Button>
-		);
-	};
 }
 
 export function DropShadowEdit( {
@@ -251,12 +285,7 @@ export function DropShadowEdit( {
 			?.default?.dropShadow;
 	}, [] );
 
-	const shadowPresets = settings?.presets ?? {};
-	const mergedShadowPresets =
-		shadowPresets.custom ??
-		shadowPresets.theme ??
-		shadowPresets.default ??
-		[];
+	const mergedShadowPresets = useShadowPresets( settings ) ?? [];
 
 	const defaultShadow = mergedShadowPresets?.find( ( { slug } ) => {
 		return `var:preset|shadow|${ slug }` === defaultValue;
@@ -275,6 +304,16 @@ export function DropShadowEdit( {
 			<ItemGroup isBordered isSeparated>
 				<ShadowPopover
 					label={ label }
+					hasValue={ hasDropShadowValue( {
+						name,
+						attributes: { unitone },
+					} ) }
+					resetValue={ () => {
+						resetDropShadow( {
+							attributes: { unitone },
+							setAttributes,
+						} );
+					} }
 					shadow={ shadow ?? defaultShadow }
 					settings={ settings }
 					onShadowChange={ ( newValue ) => {

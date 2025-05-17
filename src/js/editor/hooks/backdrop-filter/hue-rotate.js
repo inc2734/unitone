@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 import {
 	getBlockSupport,
 	hasBlockSupport,
@@ -20,18 +22,18 @@ export function hasHueRotateValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetHueRotateFilter( attributes ) {
-	if ( null != attributes?.unitone?.backdropFilter?.hueRotate ) {
-		attributes.unitone.backdropFilter.hueRotate = undefined;
-	}
-
-	return attributes;
+export function resetHueRotateFilter() {
+	return {
+		backdropFilter: {
+			hueRotate: undefined,
+		},
+	};
 }
 
 export function resetHueRotate( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetHueRotateFilter( { unitone } )?.unitone
+			deepmerge( unitone, resetHueRotateFilter() )
 		),
 	} );
 }

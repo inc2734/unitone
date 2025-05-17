@@ -6,22 +6,20 @@ import { sprintf, __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
-export function hasAutoPhraseValue( { attributes: unitone } ) {
+export function hasAutoPhraseValue( { attributes: { unitone } } ) {
 	return unitone?.autoPhrase !== undefined;
 }
 
-function resetAutoPhraseFilter( attributes ) {
-	if ( null != attributes?.unitone?.autoPhrase ) {
-		attributes.unitone.autoPhrase = undefined;
-	}
-
-	return attributes;
+export function resetAutoPhraseFilter() {
+	return {
+		autoPhrase: undefined,
+	};
 }
 
 export function resetAutoPhrase( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetAutoPhraseFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetAutoPhraseFilter() )
 		),
 	} );
 }
@@ -53,7 +51,7 @@ export function AutoPhraseEdit( {
 					} }
 				/>
 			}
-			checked={ !! unitone?.autoPhrase }
+			checked={ unitone?.autoPhrase ?? false }
 			onChange={ ( newValue ) => {
 				const newUnitone = {
 					...unitone,

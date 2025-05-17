@@ -55,12 +55,10 @@ export function hasJustifyContentColumnValue( {
 	);
 }
 
-function resetJustifyContentColumnFilter( attributes ) {
-	if ( null != attributes?.unitone?.justifyContent ) {
-		attributes.unitone.justifyContent = undefined;
-	}
-
-	return attributes;
+export function resetJustifyContentColumnFilter() {
+	return {
+		justifyContent: undefined,
+	};
 }
 
 export function resetJustifyContentColumn( {
@@ -69,7 +67,7 @@ export function resetJustifyContentColumn( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetJustifyContentColumnFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetJustifyContentColumnFilter() )
 		),
 	} );
 }

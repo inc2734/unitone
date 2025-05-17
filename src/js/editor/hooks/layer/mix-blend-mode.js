@@ -88,12 +88,10 @@ export function hasMixBlendModeValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetMixBlendModeFilter( attributes ) {
-	if ( null != attributes?.unitone?.mixBlendMode ) {
-		attributes.unitone.mixBlendMode = undefined;
-	}
-
-	return attributes;
+export function resetMixBlendModeFilter() {
+	return {
+		mixBlendMode: undefined,
+	};
 }
 
 export function resetMixBlendMode( {
@@ -102,7 +100,7 @@ export function resetMixBlendMode( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetMixBlendModeFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetMixBlendModeFilter() )
 		),
 	} );
 }

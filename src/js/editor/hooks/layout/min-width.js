@@ -14,18 +14,16 @@ export function hasMinWidthValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetMinWidthFilter( attributes ) {
-	if ( null != attributes?.unitone?.minWidth ) {
-		attributes.unitone.minWidth = undefined;
-	}
-
-	return attributes;
+export function resetMinWidthFilter() {
+	return {
+		minWidth: undefined,
+	};
 }
 
 export function resetMinWidth( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetMinWidthFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetMinWidthFilter() )
 		),
 	} );
 }

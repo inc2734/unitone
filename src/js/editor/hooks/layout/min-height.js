@@ -14,18 +14,16 @@ export function hasMinHeightValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetMinHeightFilter( attributes ) {
-	if ( null != attributes?.unitone?.minHeight ) {
-		attributes.unitone.minHeight = undefined;
-	}
-
-	return attributes;
+export function resetMinHeightFilter() {
+	return {
+		minHeight: undefined,
+	};
 }
 
 export function resetMinHeight( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetMinHeightFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetMinHeightFilter() )
 		),
 	} );
 }

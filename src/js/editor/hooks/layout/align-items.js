@@ -46,18 +46,16 @@ export function hasAlignItemsValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetAlignItemsFilter( attributes ) {
-	if ( null != attributes?.unitone?.alignItems ) {
-		attributes.unitone.alignItems = undefined;
-	}
-
-	return attributes;
+export function resetAlignItemsFilter() {
+	return {
+		alignItems: undefined,
+	};
 }
 
 export function resetAlignItems( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetAlignItemsFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetAlignItemsFilter() )
 		),
 	} );
 }

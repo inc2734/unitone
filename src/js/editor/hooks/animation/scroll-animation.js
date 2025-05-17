@@ -15,7 +15,8 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { Icon } from '@wordpress/icons';
+import { useRef } from '@wordpress/element';
+import { Icon, reset } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { scroll as iconScrollAnimation } from './icons';
@@ -31,12 +32,10 @@ export function hasScrollAnimationValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetScrollAnimationFilter( attributes ) {
-	if ( null != attributes?.unitone?.scrollAnimation ) {
-		attributes.unitone.scrollAnimation = undefined;
-	}
-
-	return attributes;
+export function resetScrollAnimationFilter() {
+	return {
+		scrollAnimation: undefined,
+	};
 }
 
 export function resetScrollAnimation( {
@@ -45,7 +44,7 @@ export function resetScrollAnimation( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetScrollAnimationFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetScrollAnimationFilter() )
 		),
 	} );
 }
@@ -54,30 +53,62 @@ export function useIsScrollAnimationDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.scrollAnimation' );
 }
 
-function renderShadowToggle() {
+function renderToggle( { hasValue, resetValue } ) {
 	return ( { onToggle, isOpen } ) => {
+		const ref = useRef( undefined );
+
 		const toggleProps = {
 			onClick: onToggle,
 			className: clsx( { 'is-open': isOpen } ),
 			'aria-expanded': isOpen,
+			ref,
+		};
+
+		const removeButtonProps = {
+			onClick: () => {
+				if ( isOpen ) {
+					onToggle();
+				}
+				resetValue();
+				// Return focus to parent button.
+				ref.current?.focus();
+			},
+			className: clsx(
+				'block-editor-global-styles__shadow-editor__remove-button',
+				{ 'is-open': isOpen }
+			),
+			label: __( 'Remove' ),
 		};
 
 		return (
-			<Button { ...toggleProps }>
-				<HStack justify="flex-start">
-					<Icon
-						className="block-editor-global-styles__toggle-icon"
-						icon={ iconScrollAnimation }
-						size={ 24 }
+			<>
+				<Button { ...toggleProps }>
+					<HStack justify="flex-start">
+						<Icon
+							className="block-editor-global-styles__toggle-icon"
+							icon={ iconScrollAnimation }
+							size={ 24 }
+						/>
+						<FlexItem>{ __( 'Scroll', 'unitone' ) }</FlexItem>
+					</HStack>
+				</Button>
+
+				{ hasValue && (
+					<Button
+						__next40pxDefaultSize
+						size="small"
+						icon={ reset }
+						{ ...removeButtonProps }
 					/>
-					<FlexItem>{ __( 'Scroll', 'unitone' ) }</FlexItem>
-				</HStack>
-			</Button>
+				) }
+			</>
 		);
 	};
 }
 
 function ScrollAnimationPopover( {
+	hasValue,
+	resetValue,
 	type,
 	onChangeType,
 	speed,
@@ -101,7 +132,10 @@ function ScrollAnimationPopover( {
 		<Dropdown
 			popoverProps={ popoverProps }
 			className="block-editor-global-styles__shadow-dropdown"
-			renderToggle={ renderShadowToggle() }
+			renderToggle={ renderToggle( {
+				hasValue,
+				resetValue,
+			} ) }
 			renderContent={ () => (
 				<DropdownContentWrapper paddingSize="medium">
 					<div className="block-editor-global-styles__shadow-popover-container">
@@ -462,6 +496,16 @@ export function ScrollAnimationEdit( {
 	return (
 		<ItemGroup isBordered isSeparated>
 			<ScrollAnimationPopover
+				hasValue={ hasScrollAnimationValue( {
+					name,
+					attributes: { unitone },
+				} ) }
+				resetValue={ () => {
+					resetScrollAnimation( {
+						attributes: { unitone },
+						setAttributes,
+					} );
+				} }
 				type={ type ?? '' }
 				speed={ null != speed ? parseFloat( speed ) : undefined }
 				delay={ null != delay ? parseFloat( delay ) : undefined }

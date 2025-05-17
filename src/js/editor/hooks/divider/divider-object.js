@@ -85,21 +85,18 @@ export function hasDividerValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetDividerFilter( attributes ) {
-	if ( null != attributes?.unitone?.divider ) {
-		attributes.unitone.divider = undefined;
-	}
-
-	if ( null != attributes?.unitone?.dividerColor ) {
-		attributes.unitone.dividerColor = undefined;
-	}
-
-	return attributes;
+export function resetDividerFilter() {
+	return {
+		divider: undefined,
+		dividerColor: undefined,
+	};
 }
 
 export function resetDivider( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetDividerFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject(
+			Object.assign( { ...unitone }, resetDividerFilter() )
+		),
 	} );
 }
 

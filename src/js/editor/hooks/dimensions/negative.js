@@ -11,18 +11,16 @@ export function hasNegativeValue( { attributes: { unitone } } ) {
 	return !! unitone?.negative;
 }
 
-function resetNegativeFilter( attributes ) {
-	if ( null != attributes?.unitone?.negative ) {
-		attributes.unitone.negative = undefined;
-	}
-
-	return attributes;
+export function resetNegativeFilter() {
+	return {
+		negative: undefined,
+	};
 }
 
 export function resetNegative( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetNegativeFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetNegativeFilter() )
 		),
 	} );
 }

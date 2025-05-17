@@ -36,18 +36,16 @@ export function hasAutoRepeatValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetAutoRepeatFilter( attributes ) {
-	if ( null != attributes?.unitone?.autoRepeat ) {
-		attributes.unitone.autoRepeat = undefined;
-	}
-
-	return attributes;
+export function resetAutoRepeatFilter() {
+	return {
+		autoRepeat: undefined,
+	};
 }
 
 export function resetAutoRepeat( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetAutoRepeatFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetAutoRepeatFilter() )
 		),
 	} );
 }

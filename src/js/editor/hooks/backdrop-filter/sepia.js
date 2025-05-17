@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 import {
 	getBlockSupport,
 	hasBlockSupport,
@@ -20,17 +22,17 @@ export function hasSepiaValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetSepiaFilter( attributes ) {
-	if ( null != attributes?.unitone?.backdropFilter?.sepia ) {
-		attributes.unitone.backdropFilter.sepia = undefined;
-	}
-
-	return attributes;
+export function resetSepiaFilter() {
+	return {
+		backdropFilter: {
+			sepia: undefined,
+		},
+	};
 }
 
 export function resetSepia( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetSepiaFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject( deepmerge( unitone, resetSepiaFilter() ) ),
 	} );
 }
 

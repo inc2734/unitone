@@ -14,7 +14,8 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { Icon } from '@wordpress/icons';
+import { useRef } from '@wordpress/element';
+import { Icon, reset } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { parallax as iconParallax } from './icons';
@@ -29,18 +30,16 @@ export function hasParallaxValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetParallaxFilter( attributes ) {
-	if ( null != attributes?.unitone?.parallax ) {
-		attributes.unitone.parallax = undefined;
-	}
-
-	return attributes;
+export function resetParallaxFilter() {
+	return {
+		parallax: undefined,
+	};
 }
 
 export function resetParallax( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetParallaxFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetParallaxFilter() )
 		),
 	} );
 }
@@ -49,30 +48,60 @@ export function useIsParallaxDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.parallax' );
 }
 
-function renderShadowToggle() {
+function renderToggle( { hasValue, resetValue } ) {
 	return ( { onToggle, isOpen } ) => {
+		const ref = useRef( undefined );
+
 		const toggleProps = {
 			onClick: onToggle,
 			className: clsx( { 'is-open': isOpen } ),
 			'aria-expanded': isOpen,
+			ref,
+		};
+
+		const removeButtonProps = {
+			onClick: () => {
+				if ( isOpen ) {
+					onToggle();
+				}
+				resetValue();
+				// Return focus to parent button.
+				ref.current?.focus();
+			},
+			className: clsx(
+				'block-editor-global-styles__shadow-editor__remove-button',
+				{ 'is-open': isOpen }
+			),
+			label: __( 'Remove' ),
 		};
 
 		return (
-			<Button { ...toggleProps }>
-				<HStack justify="flex-start">
-					<Icon
-						className="block-editor-global-styles__toggle-icon"
-						icon={ iconParallax }
-						size={ 24 }
+			<>
+				<Button { ...toggleProps }>
+					<HStack justify="flex-start">
+						<Icon
+							className="block-editor-global-styles__toggle-icon"
+							icon={ iconParallax }
+							size={ 24 }
+						/>
+						<FlexItem>{ __( 'Parallax', 'unitone' ) }</FlexItem>
+					</HStack>
+				</Button>
+
+				{ !! hasValue && (
+					<Button
+						__next40pxDefaultSize
+						size="small"
+						icon={ reset }
+						{ ...removeButtonProps }
 					/>
-					<FlexItem>{ __( 'Parallax', 'unitone' ) }</FlexItem>
-				</HStack>
-			</Button>
+				) }
+			</>
 		);
 	};
 }
 
-function ParallaxPopover( { speed, onChangeSpeed } ) {
+function ParallaxPopover( { hasValue, resetValue, speed, onChangeSpeed } ) {
 	const popoverProps = {
 		placement: 'left-start',
 		offset: 36,
@@ -83,7 +112,10 @@ function ParallaxPopover( { speed, onChangeSpeed } ) {
 		<Dropdown
 			popoverProps={ popoverProps }
 			className="block-editor-global-styles__shadow-dropdown"
-			renderToggle={ renderShadowToggle() }
+			renderToggle={ renderToggle( {
+				hasValue,
+				resetValue,
+			} ) }
 			renderContent={ () => (
 				<DropdownContentWrapper paddingSize="medium">
 					<div className="block-editor-global-styles__shadow-popover-container">
@@ -125,6 +157,16 @@ export function ParallaxEdit( {
 	return (
 		<ItemGroup isBordered isSeparated>
 			<ParallaxPopover
+				hasValue={ hasParallaxValue( {
+					name,
+					attributes: { unitone },
+				} ) }
+				resetValue={ () => {
+					resetParallax( {
+						attributes: { unitone },
+						setAttributes,
+					} );
+				} }
 				speed={ parseFloat(
 					unitone?.parallax?.speed ?? defaultValue ?? 0
 				) }

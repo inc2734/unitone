@@ -57,12 +57,10 @@ export function hasAlignContentValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetAlignContentFilter( attributes ) {
-	if ( null != attributes?.unitone?.alignContent ) {
-		attributes.unitone.alignContent = undefined;
-	}
-
-	return attributes;
+export function resetAlignContentFilter() {
+	return {
+		alignContent: undefined,
+	};
 }
 
 export function resetAlignContent( {
@@ -71,7 +69,7 @@ export function resetAlignContent( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetAlignContentFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetAlignContentFilter() )
 		),
 	} );
 }

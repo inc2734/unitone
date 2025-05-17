@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 import { store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
@@ -17,12 +19,14 @@ export function hasSectionDividerBottomXValue( {
 	);
 }
 
-function resetSectionDividerBottomXFilter( attributes ) {
-	if ( null != attributes?.unitone?.sectionDivider?.bottom?.x ) {
-		attributes.unitone.sectionDivider.bottom.x = undefined;
-	}
-
-	return attributes;
+export function resetSectionDividerBottomXFilter() {
+	return {
+		sectionDivider: {
+			bottom: {
+				x: undefined,
+			},
+		},
+	};
 }
 
 export function resetSectionDividerBottomX( {
@@ -31,7 +35,7 @@ export function resetSectionDividerBottomX( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetSectionDividerBottomXFilter( { unitone } )?.unitone
+			deepmerge( unitone, resetSectionDividerBottomXFilter() )
 		),
 	} );
 }

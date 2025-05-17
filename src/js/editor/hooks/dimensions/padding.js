@@ -43,17 +43,17 @@ export function hasPaddingValue( { name, attributes: { unitone } } ) {
 	return defaultValue !== unitone?.padding && undefined !== unitone?.padding;
 }
 
-function resetPaddingFilter( attributes ) {
-	if ( null != attributes?.unitone?.padding ) {
-		attributes.unitone.padding = undefined;
-	}
-
-	return attributes;
+export function resetPaddingFilter() {
+	return {
+		padding: undefined,
+	};
 }
 
 export function resetPadding( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetPaddingFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject(
+			Object.assign( { ...unitone }, resetPaddingFilter() )
+		),
 	} );
 }
 

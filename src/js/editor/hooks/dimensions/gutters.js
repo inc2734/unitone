@@ -15,17 +15,17 @@ export function hasGuttersValue( { name, attributes: { unitone } } ) {
 	return defaultValue !== unitone?.gutters && undefined !== unitone?.gutters;
 }
 
-function resetGuttersFilter( attributes ) {
-	if ( null != attributes?.unitone?.gutters ) {
-		attributes.unitone.gutters = undefined;
-	}
-
-	return attributes;
+export function resetGuttersFilter() {
+	return {
+		gutters: undefined,
+	};
 }
 
 export function resetGutters( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetGuttersFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject(
+			Object.assign( { ...unitone }, resetGuttersFilter() )
+		),
 	} );
 }
 

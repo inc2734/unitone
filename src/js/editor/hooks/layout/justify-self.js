@@ -87,18 +87,16 @@ export function hasJustifySelfValue( {
 	);
 }
 
-function resetJustifySelfFilter( attributes ) {
-	if ( null != attributes?.unitone?.justifySelf ) {
-		attributes.unitone.justifySelf = undefined;
-	}
-
-	return attributes;
+export function resetJustifySelfFilter() {
+	return {
+		justifySelf: undefined,
+	};
 }
 
 export function resetJustifySelf( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetJustifySelfFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetJustifySelfFilter() )
 		),
 	} );
 }

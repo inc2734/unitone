@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import deepmerge from 'deepmerge';
 import fastDeepEqual from 'fast-deep-equal/es6';
 
 import {
@@ -15,42 +16,49 @@ import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
+	resetSectionDividerTopTypeFilter,
 	resetSectionDividerTopType,
 	hasSectionDividerTopTypeValue,
 	SectionDividerTopTypeEdit,
 } from './top-type';
 
 import {
+	resetSectionDividerTopLevelFilter,
 	resetSectionDividerTopLevel,
 	hasSectionDividerTopLevelValue,
 	SectionDividerTopLevelEdit,
 } from './top-level';
 
 import {
+	resetSectionDividerTopSizeFilter,
 	resetSectionDividerTopSize,
 	hasSectionDividerTopSizeValue,
 	SectionDividerTopSizeEdit,
 } from './top-size';
 
 import {
+	resetSectionDividerTopXFilter,
 	resetSectionDividerTopX,
 	hasSectionDividerTopXValue,
 	SectionDividerTopXEdit,
 } from './top-x';
 
 import {
+	resetSectionDividerTopTrimFilter,
 	resetSectionDividerTopTrim,
 	hasSectionDividerTopTrimValue,
 	SectionDividerTopTrimEdit,
 } from './top-trim';
 
 import {
+	resetSectionDividerTopOverlapFilter,
 	resetSectionDividerTopOverlap,
 	hasSectionDividerTopOverlapValue,
 	SectionDividerTopOverlapEdit,
 } from './top-overlap';
 
 import {
+	resetSectionDividerBottomTypeFilter,
 	resetSectionDividerBottomType,
 	hasSectionDividerBottomTypeValue,
 	SectionDividerBottomTypeEdit,
@@ -58,24 +66,28 @@ import {
 } from './bottom-type';
 
 import {
+	resetSectionDividerBottomLevelFilter,
 	resetSectionDividerBottomLevel,
 	hasSectionDividerBottomLevelValue,
 	SectionDividerBottomLevelEdit,
 } from './bottom-level';
 
 import {
+	resetSectionDividerBottomSizeFilter,
 	resetSectionDividerBottomSize,
 	hasSectionDividerBottomSizeValue,
 	SectionDividerBottomSizeEdit,
 } from './bottom-size';
 
 import {
+	resetSectionDividerBottomXFilter,
 	resetSectionDividerBottomX,
 	hasSectionDividerBottomXValue,
 	SectionDividerBottomXEdit,
 } from './bottom-x';
 
 import {
+	resetSectionDividerBottomTrimFilter,
 	resetSectionDividerBottomTrim,
 	hasSectionDividerBottomTrimValue,
 	SectionDividerBottomTrimEdit,
@@ -161,10 +173,37 @@ function useIsSectionDividerDisabled( { name } ) {
 }
 
 export function SectionDividerPanelPure( props ) {
-	const { name, clientId } = props;
+	const { name, attributes, setAttributes, clientId } = props;
 
-	const resetAll = ( filters ) => {
-		filters.forEach( ( filter ) => filter() );
+	const resetAllTop = () => {
+		setAttributes( {
+			unitone: cleanEmptyObject(
+				deepmerge.all( [
+					{ ...attributes?.unitone },
+					resetSectionDividerTopTypeFilter(),
+					resetSectionDividerTopLevelFilter(),
+					resetSectionDividerTopSizeFilter(),
+					resetSectionDividerTopXFilter(),
+					resetSectionDividerTopTrimFilter(),
+					resetSectionDividerTopOverlapFilter(),
+				] )
+			),
+		} );
+	};
+
+	const resetAllBottom = () => {
+		setAttributes( {
+			unitone: cleanEmptyObject(
+				deepmerge.all( [
+					{ ...attributes?.unitone },
+					resetSectionDividerBottomTypeFilter(),
+					resetSectionDividerBottomLevelFilter(),
+					resetSectionDividerBottomSizeFilter(),
+					resetSectionDividerBottomXFilter(),
+					resetSectionDividerBottomTrimFilter(),
+				] )
+			),
+		} );
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
@@ -188,7 +227,7 @@ export function SectionDividerPanelPure( props ) {
 		<InspectorControls>
 			<ToolsPanel
 				label={ __( 'Section divider (Top)', 'unitone' ) }
-				resetAll={ resetAll }
+				resetAll={ resetAllTop }
 				panelId={ clientId }
 				dropdownMenuProps={ dropdownMenuProps }
 			>
@@ -196,9 +235,6 @@ export function SectionDividerPanelPure( props ) {
 					hasValue={ () => hasSectionDividerTopType }
 					label={ __( 'Type', 'unitone' ) }
 					onDeselect={ () =>
-						resetSectionDividerTopType( { ...props } )
-					}
-					resetAllFilter={ () =>
 						resetSectionDividerTopType( { ...props } )
 					}
 					isShownByDefault
@@ -220,9 +256,6 @@ export function SectionDividerPanelPure( props ) {
 							onDeselect={ () =>
 								resetSectionDividerTopLevel( { ...props } )
 							}
-							resetAllFilter={ () =>
-								resetSectionDividerTopLevel( { ...props } )
-							}
 							isShownByDefault
 							panelId={ clientId }
 						>
@@ -240,9 +273,6 @@ export function SectionDividerPanelPure( props ) {
 							onDeselect={ () =>
 								resetSectionDividerTopSize( { ...props } )
 							}
-							resetAllFilter={ () =>
-								resetSectionDividerTopSize( { ...props } )
-							}
 							isShownByDefault
 							panelId={ clientId }
 						>
@@ -258,9 +288,6 @@ export function SectionDividerPanelPure( props ) {
 							}
 							label={ __( 'Horizontal position', 'unitone' ) }
 							onDeselect={ () =>
-								resetSectionDividerTopX( { ...props } )
-							}
-							resetAllFilter={ () =>
 								resetSectionDividerTopX( { ...props } )
 							}
 							isShownByDefault
@@ -281,9 +308,6 @@ export function SectionDividerPanelPure( props ) {
 								'unitone'
 							) }
 							onDeselect={ () =>
-								resetSectionDividerTopTrim( { ...props } )
-							}
-							resetAllFilter={ () =>
 								resetSectionDividerTopTrim( { ...props } )
 							}
 							isShownByDefault
@@ -311,9 +335,6 @@ export function SectionDividerPanelPure( props ) {
 							onDeselect={ () =>
 								resetSectionDividerTopOverlap( { ...props } )
 							}
-							resetAllFilter={ () =>
-								resetSectionDividerTopOverlap( { ...props } )
-							}
 							isShownByDefault
 							panelId={ clientId }
 						>
@@ -331,7 +352,7 @@ export function SectionDividerPanelPure( props ) {
 
 			<ToolsPanel
 				label={ __( 'Section divider (Bottom)', 'unitone' ) }
-				resetAll={ resetAll }
+				resetAll={ resetAllBottom }
 				panelId={ clientId }
 				dropdownMenuProps={ dropdownMenuProps }
 			>
@@ -339,9 +360,6 @@ export function SectionDividerPanelPure( props ) {
 					hasValue={ () => hasSectionDividerBottomType }
 					label={ __( 'Type', 'unitone' ) }
 					onDeselect={ () =>
-						resetSectionDividerBottomType( { ...props } )
-					}
-					resetAllFilter={ () =>
 						resetSectionDividerBottomType( { ...props } )
 					}
 					isShownByDefault
@@ -363,9 +381,6 @@ export function SectionDividerPanelPure( props ) {
 							}
 							label={ __( 'Level', 'unitone' ) }
 							onDeselect={ () =>
-								resetSectionDividerBottomLevel( { ...props } )
-							}
-							resetAllFilter={ () =>
 								resetSectionDividerBottomLevel( { ...props } )
 							}
 							isShownByDefault
@@ -391,11 +406,6 @@ export function SectionDividerPanelPure( props ) {
 											...props,
 										} )
 									}
-									resetAllFilter={ () =>
-										resetSectionDividerBottomSize( {
-											...props,
-										} )
-									}
 									isShownByDefault
 									panelId={ clientId }
 								>
@@ -416,11 +426,6 @@ export function SectionDividerPanelPure( props ) {
 										'unitone'
 									) }
 									onDeselect={ () =>
-										resetSectionDividerBottomX( {
-											...props,
-										} )
-									}
-									resetAllFilter={ () =>
 										resetSectionDividerBottomX( {
 											...props,
 										} )
@@ -450,11 +455,6 @@ export function SectionDividerPanelPure( props ) {
 								'unitone'
 							) }
 							onDeselect={ () =>
-								resetSectionDividerBottomTrim( {
-									...props,
-								} )
-							}
-							resetAllFilter={ () =>
 								resetSectionDividerBottomTrim( {
 									...props,
 								} )

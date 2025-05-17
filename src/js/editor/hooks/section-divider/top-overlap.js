@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 import { store as blocksStore } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
@@ -17,12 +19,14 @@ export function hasSectionDividerTopOverlapValue( {
 	);
 }
 
-function resetSectionDividerTopOverlapFilter( attributes ) {
-	if ( null != attributes?.unitone?.sectionDivider?.top?.overlap ) {
-		attributes.unitone.sectionDivider.top.overlap = undefined;
-	}
-
-	return attributes;
+export function resetSectionDividerTopOverlapFilter() {
+	return {
+		sectionDivider: {
+			top: {
+				overlap: undefined,
+			},
+		},
+	};
 }
 
 export function resetSectionDividerTopOverlap( {
@@ -31,7 +35,7 @@ export function resetSectionDividerTopOverlap( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetSectionDividerTopOverlapFilter( { unitone } )?.unitone
+			deepmerge( unitone, resetSectionDividerTopOverlapFilter() )
 		),
 	} );
 }

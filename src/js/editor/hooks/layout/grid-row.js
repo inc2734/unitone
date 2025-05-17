@@ -49,17 +49,17 @@ export function hasGridRowValue( {
 	);
 }
 
-function resetGridRowFilter( attributes ) {
-	if ( null != attributes?.unitone?.gridRow ) {
-		attributes.unitone.gridRow = undefined;
-	}
-
-	return attributes;
+export function resetGridRowFilter() {
+	return {
+		gridRow: undefined,
+	};
 }
 
 export function resetGridRow( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetGridRowFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject(
+			Object.assign( { ...unitone }, resetGridRowFilter() )
+		),
 	} );
 }
 

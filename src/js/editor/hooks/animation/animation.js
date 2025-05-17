@@ -13,11 +13,12 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../utils';
+import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
 	useIsParallaxDisabled,
 	hasParallaxValue,
+	resetParallaxFilter,
 	resetParallax,
 	ParallaxEdit,
 	useParallaxBlockProps,
@@ -26,6 +27,7 @@ import {
 import {
 	useIsScrollAnimationDisabled,
 	hasScrollAnimationValue,
+	resetScrollAnimationFilter,
 	resetScrollAnimation,
 	ScrollAnimationEdit,
 	useScrollAnimationBlockProps,
@@ -34,10 +36,18 @@ import {
 export { useParallaxBlockProps, useScrollAnimationBlockProps };
 
 function AnimationPanelPure( props ) {
-	const { name, clientId } = props;
+	const { name, attributes, setAttributes, clientId } = props;
 
-	const resetAll = ( filters ) => {
-		filters.forEach( ( filter ) => filter() );
+	const resetAll = () => {
+		setAttributes( {
+			unitone: cleanEmptyObject(
+				Object.assign(
+					{ ...attributes?.unitone },
+					resetParallaxFilter(),
+					resetScrollAnimationFilter()
+				)
+			),
+		} );
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
@@ -67,9 +77,6 @@ function AnimationPanelPure( props ) {
 								onDeselect={ () =>
 									resetParallax( { ...props } )
 								}
-								resetAllFilter={ () =>
-									resetParallax( { ...props } )
-								}
 								isShownByDefault
 								panelId={ clientId }
 							>
@@ -84,9 +91,6 @@ function AnimationPanelPure( props ) {
 								}
 								label={ __( 'Scroll', 'unitone' ) }
 								onDeselect={ () =>
-									resetScrollAnimation( { ...props } )
-								}
-								resetAllFilter={ () =>
 									resetScrollAnimation( { ...props } )
 								}
 								isShownByDefault

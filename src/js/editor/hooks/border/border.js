@@ -7,16 +7,19 @@ import { memo } from '@wordpress/element';
 import {
 	useIsDropShadowDisabled,
 	hasDropShadowValue,
+	resetDropShadowFilter,
 	resetDropShadow,
 	getDropShadowEditLabel,
 	DropShadowEdit,
 	useDropShadowBlockProps,
 } from './drop-shadow';
 
+import { cleanEmptyObject } from '../utils';
+
 export { useDropShadowBlockProps };
 
 function DropShadowPanelPure( props ) {
-	const { name, clientId } = props;
+	const { name, attributes, setAttributes, clientId } = props;
 
 	const isDropShadowDisabled = useIsDropShadowDisabled( { name } );
 
@@ -26,13 +29,24 @@ function DropShadowPanelPure( props ) {
 
 	return (
 		<>
-			<InspectorControls group="border">
+			<InspectorControls
+				group="border"
+				resetAllFilter={ () => {
+					setAttributes( {
+						unitone: cleanEmptyObject(
+							Object.assign(
+								{ ...attributes?.unitone },
+								resetDropShadowFilter()
+							)
+						),
+					} );
+				} }
+			>
 				{ ! isDropShadowDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasDropShadowValue( { ...props } ) }
 						label={ getDropShadowEditLabel( { ...props } ) }
 						onDeselect={ () => resetDropShadow( { ...props } ) }
-						resetAllFilter={ () => resetDropShadow( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>

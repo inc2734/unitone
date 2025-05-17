@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 import { store as blocksStore } from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
@@ -18,12 +20,14 @@ export function hasSectionDividerBottomTypeValue( {
 	);
 }
 
-function resetSectionDividerBottomTypeFilter( attributes ) {
-	if ( null != attributes?.unitone?.sectionDivider?.bottom?.type ) {
-		attributes.unitone.sectionDivider.bottom.type = undefined;
-	}
-
-	return attributes;
+export function resetSectionDividerBottomTypeFilter() {
+	return {
+		sectionDivider: {
+			bottom: {
+				type: undefined,
+			},
+		},
+	};
 }
 
 export function resetSectionDividerBottomType( {
@@ -32,7 +36,7 @@ export function resetSectionDividerBottomType( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetSectionDividerBottomTypeFilter( { unitone } )?.unitone
+			deepmerge( unitone, resetSectionDividerBottomTypeFilter() )
 		),
 	} );
 }

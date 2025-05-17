@@ -9,9 +9,12 @@ import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/compo
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { cleanEmptyObject } from '../utils';
+
 import {
 	useIsAutoPhraseDisabled,
 	hasAutoPhraseValue,
+	resetAutoPhraseFilter,
 	resetAutoPhrase,
 	AutoPhraseEdit,
 	useAutoPhraseBlockProps,
@@ -20,6 +23,7 @@ import {
 import {
 	useIsFluidTypographyDisabled,
 	hasFluidTypographyValue,
+	resetFluidTypographyFilter,
 	resetFluidTypography,
 	FluidTypographyEdit,
 	useFluidTypographyBlockProps,
@@ -28,6 +32,7 @@ import {
 import {
 	useIsHalfLeadingDisabled,
 	hasHalfLeadingValue,
+	resetHalfLeadingFilter,
 	resetHalfLeading,
 	HalfLeadingEdit,
 	useHalfLeadingBlockProps,
@@ -39,6 +44,7 @@ import {
 	useIsBackgroundClipDisabled,
 	getBackgroundClipEditLabel,
 	hasBackgroundClipValue,
+	resetBackgroundClipFilter,
 	resetBackgroundClip,
 	BackgroundClipEdit,
 	useBackgroundClipBlockProps,
@@ -52,7 +58,7 @@ export {
 };
 
 function TypographyPanelPure( props ) {
-	const { clientId, name, attributes } = props;
+	const { name, attributes, setAttributes, clientId } = props;
 
 	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( { name } );
 	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( { name } );
@@ -70,15 +76,27 @@ function TypographyPanelPure( props ) {
 
 	return (
 		<>
-			<InspectorControls group="typography">
+			<InspectorControls
+				group="typography"
+				resetAllFilter={ () => {
+					setAttributes( {
+						unitone: cleanEmptyObject(
+							Object.assign(
+								{ ...attributes?.unitone },
+								resetAutoPhraseFilter(),
+								resetFluidTypographyFilter(),
+								resetHalfLeadingFilter(),
+								resetBackgroundClipFilter()
+							)
+						),
+					} );
+				} }
+			>
 				{ ! isHalfLeadingDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasHalfLeadingValue( { ...props } ) }
 						label={ __( 'Half leading', 'unitone' ) }
 						onDeselect={ () => resetHalfLeading( { ...props } ) }
-						resetAllFilter={ () =>
-							resetHalfLeading( { ...props } )
-						}
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -107,9 +125,6 @@ function TypographyPanelPure( props ) {
 						onDeselect={ () =>
 							resetFluidTypography( { ...props } )
 						}
-						resetAllFilter={ () =>
-							resetFluidTypography( { ...props } )
-						}
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -125,7 +140,6 @@ function TypographyPanelPure( props ) {
 						hasValue={ () => hasAutoPhraseValue( { ...props } ) }
 						label={ __( 'Auto line breaks', 'unitone' ) }
 						onDeselect={ () => resetAutoPhrase( { ...props } ) }
-						resetAllFilter={ () => resetAutoPhrase( { ...props } ) }
 						isShownByDefault
 						panelId={ clientId }
 					>
@@ -143,9 +157,6 @@ function TypographyPanelPure( props ) {
 						}
 						label={ getBackgroundClipEditLabel( { ...props } ) }
 						onDeselect={ () => resetBackgroundClip( { ...props } ) }
-						resetAllFilter={ () =>
-							resetBackgroundClip( { ...props } )
-						}
 						isShownByDefault
 						panelId={ clientId }
 					>

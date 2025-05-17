@@ -72,18 +72,16 @@ export function hasDividerTypeValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetDividerTypeFilter( attributes ) {
-	if ( null != attributes?.unitone?.dividerType ) {
-		attributes.unitone.dividerType = undefined;
-	}
-
-	return attributes;
+export function resetDividerTypeFilter() {
+	return {
+		dividerType: undefined,
+	};
 }
 
 export function resetDividerType( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetDividerTypeFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetDividerTypeFilter() )
 		),
 	} );
 }

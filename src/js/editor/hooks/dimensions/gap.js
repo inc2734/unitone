@@ -32,17 +32,17 @@ export function hasGapValue( { name, attributes: { unitone } } ) {
 	return defaultValue !== unitone?.gap && undefined !== unitone?.gap;
 }
 
-function resetGapFilter( attributes ) {
-	if ( null != attributes?.unitone?.gap ) {
-		attributes.unitone.gap = undefined;
-	}
-
-	return attributes;
+export function resetGapFilter() {
+	return {
+		gap: undefined,
+	};
 }
 
 export function resetGap( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
-		unitone: cleanEmptyObject( resetGapFilter( { unitone } )?.unitone ),
+		unitone: cleanEmptyObject(
+			Object.assign( { ...unitone }, resetGapFilter() )
+		),
 	} );
 }
 

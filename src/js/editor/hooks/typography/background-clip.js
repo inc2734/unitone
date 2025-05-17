@@ -11,12 +11,10 @@ export function hasBackgroundClipValue( { attributes: { unitone } } ) {
 	return unitone?.backgroundClip !== undefined;
 }
 
-function resetBackgroundClipFilter( attributes ) {
-	if ( null != attributes?.unitone?.backgroundClip ) {
-		attributes.unitone.backgroundClip = undefined;
-	}
-
-	return attributes;
+export function resetBackgroundClipFilter() {
+	return {
+		backgroundClip: undefined,
+	};
 }
 
 export function resetBackgroundClip( {
@@ -25,7 +23,7 @@ export function resetBackgroundClip( {
 } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetBackgroundClipFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetBackgroundClipFilter() )
 		),
 	} );
 }

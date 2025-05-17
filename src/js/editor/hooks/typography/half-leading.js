@@ -11,18 +11,16 @@ export function hasHalfLeadingValue( { attributes: { unitone } } ) {
 	return unitone?.halfLeading !== undefined;
 }
 
-function resetHalfLeadingFilter( attributes ) {
-	if ( null != attributes?.unitone?.halfLeading ) {
-		attributes.unitone.halfLeading = undefined;
-	}
-
-	return attributes;
+export function resetHalfLeadingFilter() {
+	return {
+		halfLeading: undefined,
+	};
 }
 
 export function resetHalfLeading( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetHalfLeadingFilter( { unitone } )?.unitone
+			Object.assign( { ...unitone }, resetHalfLeadingFilter() )
 		),
 	} );
 }

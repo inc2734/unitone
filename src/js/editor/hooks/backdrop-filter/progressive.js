@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 import {
 	getBlockSupport,
 	hasBlockSupport,
@@ -28,22 +30,18 @@ export function hasProgressiveValue( { name, attributes: { unitone } } ) {
 	);
 }
 
-function resetProgressiveFilter( attributes ) {
-	if ( null != attributes?.unitone?.backdropFilter?.progressive?.angle ) {
-		attributes.unitone.backdropFilter.progressive.angle = undefined;
-	}
-
-	if ( null != attributes?.unitone?.backdropFilter?.progressive?.start ) {
-		attributes.unitone.backdropFilter.progressive.start = undefined;
-	}
-
-	return attributes;
+export function resetProgressiveFilter() {
+	return {
+		backdropFilter: {
+			progressive: undefined,
+		},
+	};
 }
 
 export function resetProgressive( { attributes: { unitone }, setAttributes } ) {
 	setAttributes( {
 		unitone: cleanEmptyObject(
-			resetProgressiveFilter( { unitone } )?.unitone
+			deepmerge( unitone, resetProgressiveFilter() )
 		),
 	} );
 }

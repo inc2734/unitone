@@ -90,6 +90,39 @@ export function SpacingSizeControl( {
 			disabled: true,
 		},
 		{
+			label: `M - S ${ __( '(Mobile: S)', 'unitone' ) }`,
+			value: '1s',
+		},
+		{
+			label: `L - S ${ __( '(Mobile: S)', 'unitone' ) }`,
+			value: '2s',
+		},
+		{
+			label: `XL - S ${ __( '(Mobile: S)', 'unitone' ) }`,
+			value: '3s',
+		},
+		{
+			label: `2XL - S ${ __( '(Mobile: S)', 'unitone' ) }`,
+			value: '4s',
+		},
+		{
+			label: `3XL - S ${ __( '(Mobile: S)', 'unitone' ) }`,
+			value: '5s',
+		},
+		{
+			label: `4XL - S ${ __( '(Mobile: S)', 'unitone' ) }`,
+			value: '6s',
+		},
+		{
+			label: `5XL - S ${ __( '(Mobile: S)', 'unitone' ) }`,
+			value: '7s',
+		},
+		{
+			label: '----------',
+			value: undefined,
+			disabled: true,
+		},
+		{
 			label: `L - M ${ __( '(Mobile: M)', 'unitone' ) }`,
 			value: '2m',
 		},

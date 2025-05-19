@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-05-15T04:26:23+00:00\n"
-"PO-Revision-Date: 2025-05-15 17:36+0900\n"
+"POT-Creation-Date: 2025-05-19T05:43:50+00:00\n"
+"PO-Revision-Date: 2025-05-19 14:44+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2745,6 +2745,10 @@ msgstr "ぼかし"
 #: dist/js/editor/editor.js:1
 msgid "None"
 msgstr "無し"
+
+#: dist/js/editor/editor.js:1
+msgid "(Mobile: S)"
+msgstr "（モバイル時：S）"
 
 #: dist/js/editor/editor.js:1
 msgid "(Mobile: M)"

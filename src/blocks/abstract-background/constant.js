@@ -49,4 +49,14 @@ export const BACKGROUNDS = [
 		value: 'mesh-3',
 		label: 'Mesh 3',
 	},
+	{
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/mesh-4.svg`,
+		value: 'mesh-4',
+		label: 'Mesh 4',
+	},
+	{
+		src: `${ unitone.url }/dist/blocks/abstract-background/img/mesh-5.svg`,
+		value: 'mesh-5',
+		label: 'Mesh 5',
+	},
 ];

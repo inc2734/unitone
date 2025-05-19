@@ -47,6 +47,14 @@
 		background-image: url(./img/mesh-3.svg);
 	}
 
+	&--src\:mesh-4 {
+		background-image: url(./img/mesh-4.svg);
+	}
+
+	&--src\:mesh-5 {
+		background-image: url(./img/mesh-5.svg);
+	}
+
 	&__filter,
 	&__body {
 		grid-column: 1 / -1;

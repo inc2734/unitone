@@ -10,7 +10,10 @@
 	padding: 0;
 
 	> [data-unitone-layout~="decorator__inner"] {
-		padding: var(--unitone--padding);
+		padding-top: var(--unitone--padding-top);
+		padding-right: var(--unitone--padding-right);
+		padding-bottom: var(--unitone--padding-bottom);
+		padding-left: var(--unitone--padding-left);
 	}
 }
 
@@ -41,7 +44,10 @@
 		text-decoration: none;
 
 		> [data-unitone-layout~="decorator__inner"] {
-			padding: var(--unitone--padding);
+			padding-top: var(--unitone--padding-top);
+			padding-right: var(--unitone--padding-right);
+			padding-bottom: var(--unitone--padding-bottom);
+			padding-left: var(--unitone--padding-left);
 		}
 	}
 }

@@ -105,7 +105,7 @@ export function getFontSizeStatus( customFontSize ) {
 	const fluid =
 		!! customFontSize &&
 		fluidFontSizeUnits.some( ( unit ) =>
-			customFontSize?.match( new RegExp( `${ unit }$` ) )
+			customFontSize?.toString()?.match( new RegExp( `${ unit }$` ) )
 		);
 	const fixed = enabled && ! fluid;
 

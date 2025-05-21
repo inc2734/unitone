@@ -205,46 +205,48 @@ export function ResponsiveSettingsContainer( {
 
 	return (
 		<>
-			<Flex className="unitone-responsive-settings-container" gap={ 0 }>
-				<FlexBlock>
-					<BaseControl
-						__nextHasNoMarginBottom
-						label={ label }
-						id={ label }
-					/>
-				</FlexBlock>
-				<FlexItem>
-					<DropdownMenu
-						icon={ icon }
-						controls={ [
-							{
-								icon: desktop,
-								onClick: () => setBreakpoint( 'desktop' ),
-								title: __( 'Desktop', 'unitone' ),
-							},
-							{
-								icon: tablet,
-								onClick: () => setBreakpoint( 'tablet' ),
-								title: __( 'Tablet / Mobile', 'unitone' ),
-							},
-							{
-								icon: mobile,
-								onClick: () => setBreakpoint( 'mobile' ),
-								title: __( 'Mobile', 'unitone' ),
-							},
-						] }
-						label={ __(
-							'Switch to settings based on device size',
-							'unitone'
-						) }
-					/>
-				</FlexItem>
-			</Flex>
+			<div className="unitone-responsive-settings-container">
+				<Flex gap={ 0 }>
+					<FlexBlock>
+						<BaseControl
+							__nextHasNoMarginBottom
+							label={ label }
+							id={ label }
+						/>
+					</FlexBlock>
+					<FlexItem>
+						<DropdownMenu
+							icon={ icon }
+							controls={ [
+								{
+									icon: desktop,
+									onClick: () => setBreakpoint( 'desktop' ),
+									title: __( 'Desktop', 'unitone' ),
+								},
+								{
+									icon: tablet,
+									onClick: () => setBreakpoint( 'tablet' ),
+									title: __( 'Tablet / Mobile', 'unitone' ),
+								},
+								{
+									icon: mobile,
+									onClick: () => setBreakpoint( 'mobile' ),
+									title: __( 'Mobile', 'unitone' ),
+								},
+							] }
+							label={ __(
+								'Switch to settings based on device size',
+								'unitone'
+							) }
+						/>
+					</FlexItem>
+				</Flex>
 
-			<div style={ { marginTop: '2px' } }>
-				{ 'desktop' === breakpoint && desktopControls() }
-				{ 'tablet' === breakpoint && tabletControls() }
-				{ 'mobile' === breakpoint && mobileControls() }
+				<div style={ { marginTop: '2px' } }>
+					{ 'desktop' === breakpoint && desktopControls() }
+					{ 'tablet' === breakpoint && tabletControls() }
+					{ 'mobile' === breakpoint && mobileControls() }
+				</div>
 			</div>
 		</>
 	);

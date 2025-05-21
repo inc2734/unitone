@@ -11,7 +11,7 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { alignBottom, alignCenter, alignTop } from '../icons';
+import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
 import { cleanEmptyObject } from '../utils';
 
 const alignContentOptions = [
@@ -44,6 +44,11 @@ const alignContentOptions = [
 		value: 'space-evenly',
 		icon: justifySpaceBetweenVertical,
 		label: __( 'Align content space-evenly', 'unitone' ),
+	},
+	{
+		value: 'stretch',
+		icon: alignStretch,
+		label: __( 'Stretch to fill', 'unitone' ),
 	},
 ];
 

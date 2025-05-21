@@ -179,7 +179,8 @@ add_filter(
 		$p = new \WP_HTML_Tag_Processor( $block_content );
 
 		if ( $p->next_tag() ) {
-			$style = explode( ';', $p->get_attribute( 'style' ) ?? '' );
+			$style = $p->get_attribute( 'style' );
+			$style = $style ? explode( ';', $style ) : array();
 
 			$new_styles = array(
 				'--unitone--post-term--background-color'   => (bool) $background_color

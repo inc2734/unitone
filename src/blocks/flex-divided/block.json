@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "18.2.0",
+	"version": "19.7.0",
 	"textdomain": "unitone",
 	"name": "unitone/flex-divided",
 	"title": "Flex (Divided)",
@@ -11,9 +11,6 @@
 		"tagName": {
 			"type": "string",
 			"default": "div"
-		},
-		"verticalAlignment": {
-			"type": "string"
 		},
 		"unitone": {
 			"type": "object",
@@ -32,8 +29,7 @@
 		}
 	},
 	"providesContext": {
-		"unitone/flex-divided/tagName": "tagName",
-		"unitone/flex-divided/verticalAlignment": "verticalAlignment"
+		"unitone/flex-divided/tagName": "tagName"
 	},
 	"selectors": {
 		"root": ".unitone-flex[data-unitone-layout*=-divider:]"
@@ -63,6 +59,7 @@
 		"layout": {
 			"allowSwitching": false,
 			"allowInheriting": false,
+			"allowVerticalAlignment": false,
 			"default": {
 				"orientation": "horizontal",
 				"type": "flex",

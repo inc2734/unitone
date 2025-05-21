@@ -1,18 +1,28 @@
-.unitone-flex[data-unitone-layout*="-divider:"] {
-	&.is-horizontal {
-		align-items: stretch !important;
+.unitone-flex:where([data-unitone-layout*="-divider:"]) {
+	> .unitone-flex__content {
+		--unitone--background-color: transparent;
+		--unitone--background-image: none;
+		--unitone--padding: 0px;
+		--unitone--padding-top: var(--unitone--padding);
+		--unitone--padding-right: var(--unitone--padding);
+		--unitone--padding-bottom: var(--unitone--padding);
+		--unitone--padding-left: var(--unitone--padding);
 
-		> .unitone-flex__content {
-			justify-content: var(--unitone--align-items);
+		&:not(:root) {
+			background-color: transparent !important;
+			background-image: none !important;
+		}
+
+		> .unitone-flex__content__content {
+			background-color: var(--unitone--background-color);
+			background-image: var(--unitone--background-image);
+			min-height: 100%;
+			padding-top: var(--unitone--padding-top);
+			padding-right: var(--unitone--padding-right);
+			padding-bottom: var(--unitone--padding-bottom);
+			padding-left: var(--unitone--padding-left);
 		}
 	}
-}
-
-.unitone-flex__content {
-	--unitone--align-items: center;
-
-	display: flex;
-	flex-direction: column;
 }
 
 .unitone-flex:where([data-unitone-layout*="-divider\:"]) {
@@ -30,7 +40,6 @@
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		justify-content: var(--unitone--align-items);
 	}
 
 	> ::before {
@@ -70,19 +79,13 @@
 	column-gap: calc(var(--unitone--column-gap) * 2 + var(--unitone--divider-width)) !important;
 	align-items: stretch;
 
-	// Core specificity is 0 2 0.
-	// .editor-styles-wrapper .is-layout-flex > *
-	// &.is-layout-flex > * {
-	// 	padding-right: calc(var(--unitone--column-gap) * 2 + var(--unitone--divider-width));
-	// }
-
 	> * + :not([data-unitone-layout~="-bol"])::before {
 		right: auto;
 		left: calc(var(--unitone--column-gap) * -1 - var(--unitone--divider-width));
 		border-left-width: var(--unitone--divider-width);
 		border-color: color-mix(in oklab, var(--unitone--divider-color) 97%, #000);
 		transform: rotate(22.5deg) scale(.8);
-}
+	}
 }
 
 .unitone-flex[data-unitone-layout~="-divider\:bordered"] {

@@ -30,6 +30,14 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 
 	const blockProps = useBlockProps( {
 		className: 'unitone-grid__content',
+		style: {
+			'--unitone--background-color': !! attributes?.backgroundColor
+				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
+				: attributes?.style?.color?.background,
+			'--unitone--background-image': !! attributes?.gradient
+				? `var(--wp--preset--gradient--${ attributes?.gradient })`
+				: attributes?.style?.color?.gradient,
+		},
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps(

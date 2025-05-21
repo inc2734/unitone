@@ -11,18 +11,12 @@
 			"type": "string",
 			"default": "div"
 		},
-		"verticalAlignment": {
-			"type": "string"
-		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
-	"usesContext": [
-		"unitone/flex-divided/tagName",
-		"unitone/flex-divided/verticalAlignment"
-	],
+	"usesContext": [ "unitone/flex-divided/tagName" ],
 	"selectors": {
 		"root": ".unitone-flex__content"
 	},
@@ -30,7 +24,8 @@
 		"className": false,
 		"anchor": true,
 		"color": {
-			"background": false,
+			"background": true,
+			"gradients": true,
 			"link": true,
 			"text": true
 		},
@@ -47,6 +42,9 @@
 			}
 		},
 		"unitone": {
+			"padding": {
+				"split": true
+			},
 			"fluidTypography": true,
 			"halfLeading": true
 		}

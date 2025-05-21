@@ -18,8 +18,6 @@ import { __ } from '@wordpress/i18n';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
-import { physicalToLogical } from '../../js/helper';
-
 import metadata from './block.json';
 
 import {
@@ -28,7 +26,7 @@ import {
 } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { tagName, layout, allowedBlocks, templateLock } = attributes;
+	const { tagName, allowedBlocks, templateLock } = attributes;
 
 	const innerBlocksLength = useSelect(
 		( select ) =>
@@ -37,17 +35,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 	const hasInnerBlocks = !! innerBlocksLength;
-
-	useEffect( () => {
-		const newVerticalAlignment =
-			'vertical' !== layout?.orientation
-				? physicalToLogical( layout?.verticalAlignment )
-				: undefined;
-
-		setAttributes( {
-			verticalAlignment: newVerticalAlignment,
-		} );
-	}, [ layout?.verticalAlignment, layout?.orientation ] );
 
 	const ref = useRef( null );
 

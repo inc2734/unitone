@@ -9,7 +9,7 @@ import { useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 
 export default function ( { attributes, setAttributes, clientId, context } ) {
-	const { tagName, verticalAlignment, templateLock } = attributes;
+	const { tagName, templateLock } = attributes;
 
 	useEffect( () => {
 		setAttributes( {
@@ -21,15 +21,6 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 		} );
 	}, [ context[ 'unitone/flex-divided/tagName' ] ] );
 
-	useEffect(
-		() =>
-			setAttributes( {
-				verticalAlignment:
-					context[ 'unitone/flex-divided/verticalAlignment' ],
-			} ),
-		[ context[ 'unitone/flex-divided/verticalAlignment' ] ]
-	);
-
 	const hasInnerBlocks = useSelect(
 		( select ) =>
 			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
@@ -40,7 +31,12 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 	const blockProps = useBlockProps( {
 		className: 'unitone-flex__content',
 		style: {
-			'--unitone--align-items': verticalAlignment,
+			'--unitone--background-color': !! attributes?.backgroundColor
+				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
+				: attributes?.style?.color?.background,
+			'--unitone--background-image': !! attributes?.gradient
+				? `var(--wp--preset--gradient--${ attributes?.gradient })`
+				: attributes?.style?.color?.gradient,
 		},
 	} );
 

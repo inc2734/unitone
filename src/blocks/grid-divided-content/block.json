@@ -24,7 +24,8 @@
 		"className": false,
 		"anchor": true,
 		"color": {
-			"background": false,
+			"background": true,
+			"gradients": true,
 			"link": true,
 			"text": true
 		},
@@ -41,6 +42,10 @@
 			}
 		},
 		"unitone": {
+			"alignContent": true,
+			"padding": {
+				"split": true
+			},
 			"fluidTypography": true,
 			"halfLeading": true
 		}

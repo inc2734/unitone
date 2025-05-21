@@ -31,18 +31,32 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps();
+	const blockProps = useBlockProps( {
+		style: {
+			'--unitone--background-color': !! attributes?.backgroundColor
+				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
+				: attributes?.style?.color?.background,
+			'--unitone--background-image': !! attributes?.gradient
+				? `var(--wp--preset--gradient--${ attributes?.gradient })`
+				: attributes?.style?.color?.gradient,
+		},
+	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'with-sidebar__content',
 		blockProps[ 'data-unitone-layout' ]
 	);
 
-	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock,
-		renderAppender: hasInnerBlocks
-			? undefined
-			: InnerBlocks.ButtonBlockAppender,
-	} );
+	const innerBlocksProps = useInnerBlocksProps(
+		{
+			'data-unitone-layout': 'with-sidebar__content__content',
+		},
+		{
+			templateLock,
+			renderAppender: hasInnerBlocks
+				? undefined
+				: InnerBlocks.ButtonBlockAppender,
+		}
+	);
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
@@ -85,7 +99,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<TagName { ...innerBlocksProps } />
+			<TagName { ...blockProps }>
+				<div { ...innerBlocksProps } />
+			</TagName>
 		</>
 	);
 }

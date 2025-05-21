@@ -30,7 +30,16 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps();
+	const blockProps = useBlockProps( {
+		style: {
+			'--unitone--background-color': !! attributes?.backgroundColor
+				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
+				: attributes?.style?.color?.background,
+			'--unitone--background-image': !! attributes?.gradient
+				? `var(--wp--preset--gradient--${ attributes?.gradient })`
+				: attributes?.style?.color?.gradient,
+		},
+	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'cluster__content',
 		blockProps[ 'data-unitone-layout' ]

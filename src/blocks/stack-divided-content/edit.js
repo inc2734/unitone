@@ -30,18 +30,32 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps();
+	const blockProps = useBlockProps( {
+		style: {
+			'--unitone--background-color': !! attributes?.backgroundColor
+				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
+				: attributes?.style?.color?.background,
+			'--unitone--background-image': !! attributes?.gradient
+				? `var(--wp--preset--gradient--${ attributes?.gradient })`
+				: attributes?.style?.color?.gradient,
+		},
+	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'stack__content',
 		blockProps[ 'data-unitone-layout' ]
 	);
 
-	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock,
-		renderAppender: hasInnerBlocks
-			? undefined
-			: InnerBlocks.ButtonBlockAppender,
-	} );
+	const innerBlocksProps = useInnerBlocksProps(
+		{
+			'data-unitone-layout': 'stack__content__content',
+		},
+		{
+			templateLock,
+			renderAppender: hasInnerBlocks
+				? undefined
+				: InnerBlocks.ButtonBlockAppender,
+		}
+	);
 
 	const TagName = tagName;
 

@@ -5,17 +5,25 @@ export default function ( { attributes } ) {
 
 	const TagName = tagName;
 
+	const blockProps = useBlockProps.save( {
+		style: {
+			'--unitone--background-color': !! attributes?.backgroundColor
+				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
+				: attributes?.style?.color?.background,
+			'--unitone--background-image': !! attributes?.gradient
+				? `var(--wp--preset--gradient--${ attributes?.gradient })`
+				: attributes?.style?.color?.gradient,
+		},
+		'data-unitone-layout': 'responsive-grid__content',
+	} );
+
+	const innerBlocksProps = useInnerBlocksProps.save( {
+		'data-unitone-layout': 'responsive-grid__content__content',
+	} );
+
 	return (
-		<TagName
-			{ ...useBlockProps.save( {
-				'data-unitone-layout': 'responsive-grid__content',
-			} ) }
-		>
-			<div
-				{ ...useInnerBlocksProps.save( {
-					'data-unitone-layout': 'responsive-grid__content__content',
-				} ) }
-			/>
+		<TagName { ...blockProps }>
+			<div { ...innerBlocksProps } />
 		</TagName>
 	);
 }

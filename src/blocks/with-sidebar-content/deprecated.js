@@ -15,6 +15,31 @@ export default [
 		},
 
 		save( { attributes } ) {
+			const { tagName } = attributes;
+
+			const TagName = tagName;
+
+			return (
+				<TagName
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							'data-unitone-layout': 'with-sidebar__content',
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
 			return (
 				<div
 					{ ...useInnerBlocksProps.save(

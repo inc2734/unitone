@@ -91,6 +91,53 @@ add_filter(
 );
 
 /**
+ * Patch for unitone/with-sidebar-content old structure.
+ */
+add_filter(
+	'render_block_unitone/with-sidebar-content',
+	function ( $block_content, $block ) {
+		if ( false !== strpos( $block_content, 'with-sidebar__content__content' ) ) {
+			return $block_content;
+		}
+
+		$tag_name = $block['attrs']['tagName'] ?? 'div';
+
+		$block_content = preg_replace(
+			'|^(<' . $tag_name . '[^>]+?>)(.+?)(</' . $tag_name . '>)$|s',
+			'$1<div data-unitone-layout="with-sidebar__content__content">$2</div>$3',
+			$block_content,
+			1
+		);
+
+		return $block_content;
+	},
+	10,
+	2
+);
+
+/**
+ * Patch for unitone/stack-divided-content old structure.
+ */
+add_filter(
+	'render_block_unitone/stack-divided-content',
+	function ( $block_content ) {
+		if ( false !== strpos( $block_content, 'stack__content__content' ) ) {
+			return $block_content;
+		}
+
+		$tag_name = $block['attrs']['tagName'] ?? 'div';
+
+		$block_content = preg_replace(
+			'|^(<' . $tag_name . '[^>]+?>)(.+?)(</' . $tag_name . '>)$|s',
+			'$1<div data-unitone-layout="stack__content__content">$2</div>$3',
+			$block_content
+		);
+
+		return $block_content;
+	}
+);
+
+/**
  * Add "Outer block link" support to unitone/decorator.
  *
  * @param string $block_content The block content.

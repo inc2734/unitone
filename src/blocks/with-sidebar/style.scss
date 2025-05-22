@@ -12,7 +12,7 @@
 	--unitone--padding-bottom: var(--unitone--padding);
 	--unitone--padding-left: var(--unitone--padding);
 
-	&:not(:root) {
+	&:has(> [data-unitone-layout~="with-sidebar__content__content"]) {
 		background-color: transparent !important;
 		background-image: none !important;
 	}
@@ -22,7 +22,7 @@
 	align-content: var(--unitone--align-content);
 	background-color: var(--unitone--background-color);
 	background-image: var(--unitone--background-image);
-	min-height: 100%;
+	height: 100%;
 	padding-top: var(--unitone--padding-top);
 	padding-right: var(--unitone--padding-right);
 	padding-bottom: var(--unitone--padding-bottom);

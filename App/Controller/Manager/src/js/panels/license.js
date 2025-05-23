@@ -1,6 +1,7 @@
 import { Button, TextControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { Icon, check, close } from '@wordpress/icons';
+import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
@@ -15,12 +16,14 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ licenseStatus, setLicenseStatus ] = useState( undefined );
 	const [ remotePatternsSaving, setRemotePatternsSaving ] = useState( false );
 
-	const loadLicenseStatus = () => {
-		apiFetch( { path: '/unitone/v1/license-status' } ).then(
-			( options ) => {
-				setLicenseStatus( 'true' === options );
-			}
-		);
+	const loadLicenseStatus = ( { force } ) => {
+		apiFetch( {
+			path: addQueryArgs( '/unitone/v1/license-status', {
+				force: Number( force ),
+			} ),
+		} ).then( ( options ) => {
+			setLicenseStatus( 'true' === options );
+		} );
 	};
 
 	const resetRemotePattenrsCache = () => {
@@ -44,7 +47,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			},
 		} ).then( () => {
 			setSettingsSaving( false );
-			loadLicenseStatus();
+			loadLicenseStatus( { force: true } );
 			resetRemotePattenrsCache();
 		} );
 	};
@@ -69,7 +72,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	};
 
 	useEffect( () => {
-		loadLicenseStatus();
+		loadLicenseStatus( { force: false } );
 	}, [] );
 
 	return (

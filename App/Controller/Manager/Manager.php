@@ -197,12 +197,21 @@ class Manager {
 			'/license-status',
 			array(
 				'methods'             => 'GET',
-				'callback'            => function () {
-					return static::get_license_status( static::get_setting( 'license-key' ) );
+				'callback'            => function ( $request ) {
+					$force = (bool) $request->get_param( 'force' );
+
+					return static::get_license_status( static::get_setting( 'license-key' ), $force );
 				},
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );
 				},
+				'args'                => array(
+					'force' => array(
+						'required' => false,
+						'default'  => 0,
+						'type'     => 'integer',
+					),
+				),
 			)
 		);
 
@@ -569,20 +578,24 @@ class Manager {
 	 * Get license status.
 	 *
 	 * @param string $license_key The license key.
+	 * @param boolean $force Whether to request without going through cache.
 	 * @return string 'true'|'false'|'50x'
 	 */
-	public static function get_license_status( $license_key ) {
+	public static function get_license_status( $license_key, $force = false ) {
 		if ( empty( $license_key ) ) {
 			return 'false';
 		}
 
 		$transient_name = 'unitone-license-status-' . $license_key;
-		$transient      = get_transient( $transient_name );
-		if ( false !== $transient ) {
-			return $transient;
+
+		if ( ! $force ) {
+			$transient = get_transient( $transient_name );
+			if ( false !== $transient ) {
+				return $transient;
+			}
 		}
 
-		$status = static::_request_license_validate( $license_key );
+		$status = static::_request_license_validate( $license_key, $force );
 		if ( true === $status ) {
 			$status = 'true';
 		} elseif ( false === $status ) {
@@ -599,13 +612,14 @@ class Manager {
 	 * Validate checker.
 	 *
 	 * @param string $license_key The license key.
+	 * @param boolean $force Whether to request without going through cache.
 	 * @return mixed false|true|50x
 	 */
-	protected static function _request_license_validate( $license_key ) {
+	protected static function _request_license_validate( $license_key, $force = false ) {
 		global $wp_version;
 
 		$response = wp_remote_get(
-			'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/validate/?repository=unitone',
+			'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/validate/?repository=unitone&force=' . (int) $force,
 			array(
 				'user-agent' => 'WordPress/' . $wp_version,
 				'timeout'    => 30,

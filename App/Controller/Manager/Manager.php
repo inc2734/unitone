@@ -309,7 +309,7 @@ class Manager {
 
 					if ( array_key_exists( 'license-key', $settings ) ) {
 						$old_license_key = static::get_setting( 'license-key' );
-						$old_status      = $license_key
+						$old_status      = $old_license_key
 							? static::get_license_status( $old_license_key )
 							: 'false';
 
@@ -318,8 +318,8 @@ class Manager {
 							return new \WP_REST_Response( array( 'message' => 'License activation could not be performed' ), 400 );
 						}
 
-						if ( ! empty( $license_key ) ) {
-							$transient_name = 'unitone-license-status-' . $license_key;
+						if ( ! empty( $old_license_key ) ) {
+							$transient_name = 'unitone-license-status-' . $old_license_key;
 							delete_transient( $transient_name );
 						}
 

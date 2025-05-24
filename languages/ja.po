@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-05-19T05:43:50+00:00\n"
-"PO-Revision-Date: 2025-05-19 14:44+0900\n"
+"POT-Creation-Date: 2025-05-24T12:37:42+00:00\n"
+"PO-Revision-Date: 2025-05-24 21:38+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -49,7 +49,7 @@ msgstr "%sのメガメニュー"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:364 patterns/footer/footer-2.php:21
+#: App/Controller/Manager/Manager.php:373 patterns/footer/footer-2.php:21
 #: patterns/footer/footer-3.php:50 patterns/footer/footer-3.php:58
 #: patterns/footer/footer-3.php:66 patterns/footer/footer-4.php:30
 #: patterns/footer/footer-4.php:38 patterns/footer/footer-4.php:46
@@ -58,7 +58,7 @@ msgstr "unitone セットアップ"
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:407 patterns/footer/footer-2.php:24
+#: App/Controller/Manager/Manager.php:416 patterns/footer/footer-2.php:24
 #: patterns/footer/footer-3.php:53 patterns/footer/footer-3.php:61
 #: patterns/footer/footer-3.php:69 patterns/footer/footer-4.php:33
 #: patterns/footer/footer-4.php:41 patterns/footer/footer-4.php:49
@@ -69,20 +69,20 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:510
+#: App/Controller/Manager/Manager.php:519
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:513
+#: App/Controller/Manager/Manager.php:522
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:517
+#: App/Controller/Manager/Manager.php:526
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
-#: App/Controller/Manager/Manager.php:540
+#: App/Controller/Manager/Manager.php:549
 msgid ""
 "You have not set a valid license key. Setting a license key will allow you "
 "to use patterns registered in %3$sthe pattern library%4$s. It will also "
@@ -3331,6 +3331,11 @@ msgstr "ワイヤーフレーム"
 #: dist/js/editor/editor.js:17
 msgid "An error occurred during text generation."
 msgstr "テキスト生成中にエラーが発生しました。"
+
+#. Translators: The number of the blocks.
+#: dist/js/editor/editor.js:23
+msgid "Paste styles"
+msgstr "スタイルの貼り付け"
 
 #: dist/variations/variations.js:1
 msgid "Post to X"

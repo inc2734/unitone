@@ -1,5 +1,6 @@
 @use '../../js/editor/plugins/wireframe-generator';
 @use '../../js/editor/plugins/featured-image-generator';
+@use '../../js/editor/plugins/paste-styles';
 
 .block-editor-iframe__html {
 	overflow-x: clip;

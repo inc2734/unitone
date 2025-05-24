@@ -1,0 +1,23 @@
+.block-editor-block-settings-menu__popover {
+	.components-menu-group {
+		[role=group] {
+			&:has([data-icon-name=unitone-icon-svg]) {
+				display: grid;
+			}
+
+			.components-menu-item__button:has([data-icon-name=unitone-icon-svg]) {
+				order: -1;
+				position: relative;
+				margin-bottom: 16px;
+
+				&::before {
+					position: absolute;
+					inset: auto -8px -8px;
+					content: '';
+					display: block;
+					border-bottom: 1px solid #ccc;
+				}
+			}
+		}
+	}
+}

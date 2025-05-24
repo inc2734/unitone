@@ -17,12 +17,11 @@ const withBlockOutlineToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const [ isPressed, setIsPressed ] = useState( false );
 
-		const hasInnerBlocks = useSelect(
-			( select ) =>
-				!! select( blockEditorStore ).getBlock( clientId ).innerBlocks
-					.length
+		const allowedBlocks = useSelect( ( select ) =>
+			select( blockEditorStore ).getAllowedBlocks( clientId )
 		);
-		const canDisplayed = hasInnerBlocks;
+
+		const canDisplayed = 0 < allowedBlocks.length;
 
 		return (
 			<>

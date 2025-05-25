@@ -10,6 +10,7 @@ import {
 } from '@wordpress/components';
 
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
+import { compose } from '@wordpress/compose';
 import { memo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
@@ -203,26 +204,26 @@ import {
 	useGridRowBlockProps,
 } from './grid-row';
 
-export {
+export const useLayoutBlockProps = compose(
 	useAlignContentBlockProps,
 	useAlignItemsBlockProps,
-	useJustifyContentBlockProps,
-	useJustifyContentColumnBlockProps,
-	useJustifyItemsBlockProps,
+	useAlignSelfBlockProps,
+	useAutoRepeatBlockProps,
 	useBlockAlignBlockProps,
 	useFlexBasisBlockProps,
 	useFlexGrowBlockProps,
 	useFlexShrinkBlockProps,
-	useMaxWidthBlockProps,
-	useMinWidthBlockProps,
-	useMaxHeightBlockProps,
-	useMinHeightBlockProps,
-	useAutoRepeatBlockProps,
-	useAlignSelfBlockProps,
-	useJustifySelfBlockProps,
 	useGridColumnBlockProps,
 	useGridRowBlockProps,
-};
+	useJustifyContentBlockProps,
+	useJustifyContentColumnBlockProps,
+	useJustifyItemsBlockProps,
+	useJustifySelfBlockProps,
+	useMaxHeightBlockProps,
+	useMaxWidthBlockProps,
+	useMinHeightBlockProps,
+	useMinWidthBlockProps
+);
 
 function LayoutPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;

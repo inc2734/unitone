@@ -10,6 +10,7 @@ import {
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
+import { compose } from '@wordpress/compose';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -33,7 +34,10 @@ import {
 	useScrollAnimationBlockProps,
 } from './scroll-animation';
 
-export { useParallaxBlockProps, useScrollAnimationBlockProps };
+export const useAnimationProps = compose(
+	useParallaxBlockProps,
+	useScrollAnimationBlockProps
+);
 
 function AnimationPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;

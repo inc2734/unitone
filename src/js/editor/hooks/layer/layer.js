@@ -24,7 +24,7 @@ import {
 	useMixBlendModeBlockProps,
 } from './mix-blend-mode';
 
-export { useMixBlendModeBlockProps };
+export const useLayerBlockProps = useMixBlendModeBlockProps;
 
 function LayerPanelPure( props ) {
 	const { attributes, setAttributes, clientId } = props;

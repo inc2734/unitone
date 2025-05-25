@@ -7,59 +7,23 @@ import { addFilter } from '@wordpress/hooks';
 
 import {
 	DimensionsPanel,
-	useGapBlockProps,
-	useGuttersBlockProps,
-	useNegativeBlockProps,
-	useOverflowBlockProps,
-	usePaddingBlockProps,
-	useStairsBlockProps,
+	useDimensionsBlockProps,
 } from './dimensions/dimensions';
 
 import {
-	LayoutPanel,
-	useAlignContentBlockProps,
-	useAlignItemsBlockProps,
-	useJustifyContentBlockProps,
-	useJustifyContentColumnBlockProps,
-	useJustifyItemsBlockProps,
-	useBlockAlignBlockProps,
-	useMaxWidthBlockProps,
-	useMinWidthBlockProps,
-	useMaxHeightBlockProps,
-	useMinHeightBlockProps,
-	useAutoRepeatBlockProps,
-	useFlexGrowBlockProps,
-	useFlexShrinkBlockProps,
-	useFlexBasisBlockProps,
-	useAlignSelfBlockProps,
-	useJustifySelfBlockProps,
-	useGridColumnBlockProps,
-	useGridRowBlockProps,
-} from './layout/layout';
-
-import { LayerPanel, useMixBlendModeBlockProps } from './layer/layer';
-
-import {
 	TypographyPanel,
-	useAutoPhraseBlockProps,
-	useFluidTypographyBlockProps,
-	useHalfLeadingBlockProps,
-	useBackgroundClipBlockProps,
+	useTypographyBlockProps,
 } from './typography/typography';
 
 import {
-	DividerPanel,
-	useDividerBlockProps,
-	useDividerTypeBlockProps,
-} from './divider/divider';
+	DividerLinePanel,
+	useDividerLineBlockProps,
+} from './divider-line/divider-line';
 
 import {
 	SectionDividerPanel,
 	useSectionDividerBlockProps,
 } from './section-divider/section-divider';
-
-import { DropShadowPanel, useDropShadowBlockProps } from './border/border';
-import { PositionPanel, usePositionBlockProps } from './position/position';
 
 import {
 	BackdropFilterPanel,
@@ -67,16 +31,16 @@ import {
 } from './backdrop-filter/backdrop-filter';
 
 import {
-	AnimationPanel,
-	useParallaxBlockProps,
-	useScrollAnimationBlockProps,
-} from './animation/animation';
-
-import {
 	AdvancedPanel,
-	useStyleBlockProps,
+	useAdvancedBlockProps,
 	StyleTag,
 } from './advanced/advanced';
+
+import { LayoutPanel, useLayoutBlockProps } from './layout/layout';
+import { LayerPanel, useLayerBlockProps } from './layer/layer';
+import { BorderPanel, useBorderBlockProps } from './border/border';
+import { PositionPanel, usePositionBlockProps } from './position/position';
+import { AnimationPanel, useAnimationProps } from './animation/animation';
 
 const addAttribute = ( settings ) => {
 	// Allow blocks to specify their own attribute definition with default values if needed.
@@ -101,53 +65,17 @@ const addAttribute = ( settings ) => {
 
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
-		props = useAutoPhraseBlockProps( props );
-		props = useFluidTypographyBlockProps( props );
-		props = useHalfLeadingBlockProps( props );
-		props = useBackgroundClipBlockProps( props );
-
-		props = useAlignContentBlockProps( props );
-		props = useAlignItemsBlockProps( props );
-		props = useAlignSelfBlockProps( props );
-		props = useAutoRepeatBlockProps( props );
-		props = useBlockAlignBlockProps( props );
-		props = useFlexBasisBlockProps( props );
-		props = useFlexGrowBlockProps( props );
-		props = useFlexShrinkBlockProps( props );
-		props = useGridColumnBlockProps( props );
-		props = useGridRowBlockProps( props );
-		props = useJustifyContentBlockProps( props );
-		props = useJustifyContentColumnBlockProps( props );
-		props = useJustifyItemsBlockProps( props );
-		props = useJustifySelfBlockProps( props );
-		props = useMaxHeightBlockProps( props );
-		props = useMaxWidthBlockProps( props );
-		props = useMinWidthBlockProps( props );
-		props = useMinHeightBlockProps( props );
+		props = useTypographyBlockProps( props );
+		props = useLayoutBlockProps( props );
+		props = useDimensionsBlockProps( props );
 		props = usePositionBlockProps( props );
-
-		props = useGapBlockProps( props );
-		props = useGuttersBlockProps( props );
-		props = useNegativeBlockProps( props );
-		props = useOverflowBlockProps( props );
-		props = usePaddingBlockProps( props );
-		props = useStairsBlockProps( props );
-
-		props = useDividerBlockProps( props );
-		props = useDividerTypeBlockProps( props );
-
+		props = useDividerLineBlockProps( props );
 		props = useSectionDividerBlockProps( props );
-
-		props = useMixBlendModeBlockProps( props );
-
-		props = useDropShadowBlockProps( props );
-
+		props = useLayerBlockProps( props );
+		props = useBorderBlockProps( props );
 		props = useBackdropFilterBlockProps( props );
-
-		props = useParallaxBlockProps( props );
-		props = useScrollAnimationBlockProps( props );
-
-		props = useStyleBlockProps( props );
+		props = useAnimationProps( props );
+		props = useAdvancedBlockProps( props );
 
 		return (
 			<>
@@ -181,11 +109,11 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<TypographyPanel { ...passedProps } />
 				<DimensionsPanel { ...passedProps } />
 				<LayoutPanel { ...passedProps } />
-				<DividerPanel { ...passedProps } />
+				<DividerLinePanel { ...passedProps } />
 				<SectionDividerPanel { ...passedProps } />
 				<PositionPanel { ...passedProps } />
 				<LayerPanel { ...passedProps } />
-				<DropShadowPanel { ...passedProps } />
+				<BorderPanel { ...passedProps } />
 				<BackdropFilterPanel { ...passedProps } />
 				<AnimationPanel { ...passedProps } />
 

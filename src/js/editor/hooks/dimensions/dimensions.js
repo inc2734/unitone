@@ -6,6 +6,7 @@ import fastDeepEqual from 'fast-deep-equal/es6';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
+import { compose } from '@wordpress/compose';
 import { memo } from '@wordpress/element';
 
 import { cleanEmptyObject } from '../utils';
@@ -75,14 +76,14 @@ import {
 	useOverflowBlockProps,
 } from './overflow';
 
-export {
+export const useDimensionsBlockProps = compose(
 	useGapBlockProps,
 	useGuttersBlockProps,
 	useNegativeBlockProps,
 	useOverflowBlockProps,
 	usePaddingBlockProps,
-	useStairsBlockProps,
-};
+	useStairsBlockProps
+);
 
 function DimensionsPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId, className } = props;

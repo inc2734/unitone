@@ -6,6 +6,7 @@ import {
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
+import { compose } from '@wordpress/compose';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -29,11 +30,14 @@ import {
 	hasDividerValue,
 	getDividerEditLabel,
 	DividerEdit,
-} from './divider-object';
+} from './divider';
 
-export { useDividerTypeBlockProps, useDividerBlockProps };
+export const useDividerLineBlockProps = compose(
+	useDividerTypeBlockProps,
+	useDividerBlockProps
+);
 
-export function DividerPanelPure( props ) {
+export function DividerLinePanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 
 	const resetAll = () => {
@@ -98,6 +102,7 @@ export function DividerPanelPure( props ) {
 	);
 }
 
-export const DividerPanel = memo( DividerPanelPure, ( oldProps, newProps ) =>
-	fastDeepEqual( oldProps, newProps )
+export const DividerLinePanel = memo(
+	DividerLinePanelPure,
+	( oldProps, newProps ) => fastDeepEqual( oldProps, newProps )
 );

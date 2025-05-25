@@ -5,6 +5,7 @@
 import fastDeepEqual from 'fast-deep-equal/es6';
 
 import { InspectorControls } from '@wordpress/block-editor';
+import { compose } from '@wordpress/compose';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -50,12 +51,12 @@ import {
 	useBackgroundClipBlockProps,
 } from './background-clip';
 
-export {
+export const useTypographyBlockProps = compose(
 	useAutoPhraseBlockProps,
 	useFluidTypographyBlockProps,
 	useHalfLeadingBlockProps,
-	useBackgroundClipBlockProps,
-};
+	useBackgroundClipBlockProps
+);
 
 function TypographyPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;

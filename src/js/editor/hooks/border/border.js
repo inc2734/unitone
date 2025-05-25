@@ -16,9 +16,9 @@ import {
 
 import { cleanEmptyObject } from '../utils';
 
-export { useDropShadowBlockProps };
+export const useBorderBlockProps = useDropShadowBlockProps;
 
-function DropShadowPanelPure( props ) {
+function BorderPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 
 	const isDropShadowDisabled = useIsDropShadowDisabled( { name } );
@@ -64,7 +64,6 @@ function DropShadowPanelPure( props ) {
 	);
 }
 
-export const DropShadowPanel = memo(
-	DropShadowPanelPure,
-	( oldProps, newProps ) => fastDeepEqual( oldProps, newProps )
+export const BorderPanel = memo( BorderPanelPure, ( oldProps, newProps ) =>
+	fastDeepEqual( oldProps, newProps )
 );

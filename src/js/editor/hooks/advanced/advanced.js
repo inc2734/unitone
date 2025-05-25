@@ -10,7 +10,9 @@ import {
 	useStyleBlockProps,
 } from './style';
 
-export { useStyleBlockProps, StyleTag };
+export { StyleTag };
+
+export const useAdvancedBlockProps = useStyleBlockProps;
 
 function AdvancedPanelPure( props ) {
 	const { name } = props;

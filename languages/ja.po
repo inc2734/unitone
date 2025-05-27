@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "POT-Creation-Date: 2025-05-24T12:37:42+00:00\n"
-"PO-Revision-Date: 2025-05-24 21:38+0900\n"
+"PO-Revision-Date: 2025-05-27 15:37+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3335,7 +3335,7 @@ msgstr "テキスト生成中にエラーが発生しました。"
 #. Translators: The number of the blocks.
 #: dist/js/editor/editor.js:23
 msgid "Paste styles"
-msgstr "スタイルの貼り付け"
+msgstr "スタイルを貼り付け"
 
 #: dist/variations/variations.js:1
 msgid "Post to X"

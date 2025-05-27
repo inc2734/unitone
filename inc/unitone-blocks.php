@@ -68,6 +68,20 @@ function unitone_register_blocks() {
 				'type' => 'object',
 			);
 		}
+
+		if ( ! isset( $block_type->attributes['__unstableUnitoneSupports'] ) ) {
+			$block_type->attributes['__unstableUnitoneSupports'] = array(
+				'type' => 'object',
+				'role' => 'local',
+			);
+		}
+
+		if ( ! isset( $block_type->attributes['__unitoneStates'] ) ) {
+			$block_type->attributes['__unitoneStates'] = array(
+				'type' => 'object',
+				'role' => 'local',
+			);
+		}
 	}
 }
 add_action( 'init', 'unitone_register_blocks' );

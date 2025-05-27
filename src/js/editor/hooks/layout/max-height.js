@@ -28,7 +28,10 @@ export function resetMaxHeight( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsMaxHeightDisabled( { name, __unstableUnitoneSupports } ) {
+export function useIsMaxHeightDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.maxHeight' ) &&
 		! __unstableUnitoneSupports?.maxHeight
@@ -90,21 +93,13 @@ export function useMaxHeightBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.maxHeight;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.maxHeight' ) ) {
 		if ( ! __unstableUnitoneSupports?.maxHeight ) {
 			return settings;
 		}
 	}
 
-	const newMaxHeight = attributes?.unitone?.maxHeight ?? defaultValue;
+	const newMaxHeight = attributes?.unitone?.maxHeight;
 
 	if ( null == newMaxHeight ) {
 		return settings;

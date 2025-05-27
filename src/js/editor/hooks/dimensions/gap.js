@@ -349,19 +349,11 @@ export function GapEdit( {
 export function useGapBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.gap;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.gap' ) ) {
 		return settings;
 	}
 
-	const newGap = compacting( attributes.unitone?.gap ?? defaultValue );
+	const newGap = compacting( attributes.unitone?.gap );
 
 	if ( null == newGap ) {
 		return settings;

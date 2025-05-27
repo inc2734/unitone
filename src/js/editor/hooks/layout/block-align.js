@@ -155,19 +155,11 @@ export function BlockAlignEdit( {
 export function useBlockAlignBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.blockAlign;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.blockAlign' ) ) {
 		return settings;
 	}
 
-	const newBlockAlign = attributes?.unitone?.blockAlign ?? defaultValue;
+	const newBlockAlign = attributes?.unitone?.blockAlign;
 
 	if ( null == newBlockAlign ) {
 		return settings;

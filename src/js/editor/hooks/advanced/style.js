@@ -15,6 +15,13 @@ export function useIsStyleDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.style' );
 }
 
+export function resetStyleFilter() {
+	return {
+		style: undefined,
+		instanceId: undefined,
+	};
+}
+
 // @see https://github.com/WordPress/gutenberg/pull/63656
 // When useStyleOverride() becomes available, replace it with it.
 export function StyleTag( { unitone } ) {
@@ -63,7 +70,7 @@ export function StyleEdit( {
 
 	useEffect( () => {
 		setInstanceId( clientId );
-	}, [ clientId ] );
+	}, [ clientId, unitone?.style ] );
 
 	function handleOnChange( newValue ) {
 		let customCSS = newValue ?? undefined;

@@ -10,6 +10,8 @@ import save from './save';
 import transforms from './transforms';
 import variations from './variations';
 
+import { applyGridDividedChildStyles } from './utils';
+
 import './style.scss';
 import './index.scss';
 
@@ -33,49 +35,16 @@ const withChildBlockAttributes = createHigherOrderComponent(
 			}
 
 			const parentBlock = getBlock( props.rootClientId );
-			if ( 'unitone/grid-divided' !== parentBlock?.name ) {
-				return <BlockListBlock { ...props } />;
-			}
 
-			const DEFAULT_VALUES = {
-				alignSelf: {
-					lg: 'stretch',
-				},
-				justifySelf: {
-					lg: 'stretch',
-				},
-			};
-
-			const newProps = {
-				...props,
-				attributes: {
-					...props?.attributes,
-					unitone: {
-						...props?.attributes?.unitone,
-						alignSelf:
-							null != props?.attributes?.unitone?.alignSelf
-								? props?.attributes?.unitone?.alignSelf
-								: DEFAULT_VALUES.alignSelf,
-						justifySelf:
-							null != props?.attributes?.unitone?.justifySelf
-								? props?.attributes?.unitone?.justifySelf
-								: DEFAULT_VALUES.justifySelf,
-					},
-					__unstableUnitoneSupports: {
-						...props?.attributes?.__unstableUnitoneSupports,
-						alignSelf: {
-							responsive: true,
-							default: DEFAULT_VALUES.alignSelf,
-						},
-						justifySelf: {
-							responsive: true,
-							default: DEFAULT_VALUES.justifySelf,
-						},
-					},
-				},
-			};
-
-			return <BlockListBlock { ...newProps } />;
+			return (
+				<BlockListBlock
+					{ ...props }
+					attributes={ applyGridDividedChildStyles(
+						props.attributes,
+						parentBlock
+					) }
+				/>
+			);
 		};
 	},
 	'withChildBlockAttributes'

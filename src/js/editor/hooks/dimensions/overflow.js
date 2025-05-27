@@ -113,19 +113,11 @@ export function OverflowEdit( {
 export function useOverflowBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.overflow;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.overflow' ) ) {
 		return settings;
 	}
 
-	const newOverflow = attributes?.unitone?.overflow ?? defaultValue;
+	const newOverflow = attributes?.unitone?.overflow;
 
 	if ( null == newOverflow ) {
 		return settings;

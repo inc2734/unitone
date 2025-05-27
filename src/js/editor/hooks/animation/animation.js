@@ -39,6 +39,24 @@ export const useAnimationProps = compose(
 	useScrollAnimationBlockProps
 );
 
+export const useResetAnimation = ( props ) => {
+	const filters = [
+		[ useIsParallaxDisabled, resetParallaxFilter ],
+		[ useIsScrollAnimationDisabled, resetScrollAnimationFilter ],
+	];
+
+	const unitone = filters.reduce(
+		( accumulator, [ isDisabled, resetFilter ] ) => {
+			return isDisabled( { ...props } )
+				? { ...accumulator, ...resetFilter() }
+				: accumulator;
+		},
+		{ ...props.attributes?.unitone }
+	);
+
+	return { ...props, attributes: { ...props.attributes, unitone } };
+};
+
 function AnimationPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 

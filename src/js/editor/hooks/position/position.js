@@ -43,6 +43,28 @@ import {
 
 export { usePositionBlockProps };
 
+export const useResetPosition = ( props ) => {
+	if ( ! useIsPositionDisabled( { ...props } ) ) {
+		return props;
+	}
+
+	return {
+		...props,
+		attributes: {
+			...props.attributes,
+			unitone: deepmerge.all( [
+				{ ...props.attributes?.unitone },
+				resetPositionFilter,
+				resetTopFilter,
+				resetRightFilter,
+				resetBottomFilter,
+				resetLeftFilter,
+				resetZIndexFilter,
+			] ),
+		},
+	};
+};
+
 function PositionPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 

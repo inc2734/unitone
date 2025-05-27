@@ -37,6 +37,24 @@ export const useDividerLineBlockProps = compose(
 	useDividerBlockProps
 );
 
+export const useResetDividerLine = ( props ) => {
+	const filters = [
+		[ useIsDividerTypeDisabled, resetDividerTypeFilter ],
+		[ useIsDividerDisabled, resetDividerFilter ],
+	];
+
+	const unitone = filters.reduce(
+		( accumulator, [ isDisabled, resetFilter ] ) => {
+			return isDisabled( { ...props } )
+				? { ...accumulator, ...resetFilter() }
+				: accumulator;
+		},
+		{ ...props.attributes?.unitone }
+	);
+
+	return { ...props, attributes: { ...props.attributes, unitone } };
+};
+
 export function DividerLinePanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 

@@ -3,11 +3,19 @@
 import { useCallback } from '@wordpress/element';
 import { parse, getBlockType } from '@wordpress/blocks';
 import { store as blockEditorStore } from '@wordpress/block-editor';
-import { useRegistry, useDispatch } from '@wordpress/data';
+import { useRegistry, useDispatch, useSelect } from '@wordpress/data';
 import { store as noticesStore } from '@wordpress/notices';
 import { __, sprintf } from '@wordpress/i18n';
 
+import { resetUnitoneStyles } from '../../../hooks/style';
 import { cleanEmptyObject } from '../../../hooks/utils';
+
+import { applyBothSidesChildStyles } from '../../../../../blocks/both-sides/utils';
+import { applyFlexChildStyles } from '../../../../../blocks/flex/utils';
+import { applyFlexDividedChildStyles } from '../../../../../blocks/flex-divided/utils';
+import { applyGridChildStyles } from '../../../../../blocks/grid/utils';
+import { applyGridDividedChildStyles } from '../../../../../blocks/grid-divided/utils';
+import { applyLayersChildStyles } from '../../../../../blocks/layers/utils';
 
 import {
 	hasAlignSupport,
@@ -76,16 +84,27 @@ const STYLE_ATTRIBUTES = {
  * @return {Object} the filtered attributes object.
  */
 function getStyleAttributes( sourceBlock, targetBlock ) {
-	const sourceBlockAttributes = sourceBlock?.attributes ?? {};
-	const blockType = getBlockType( targetBlock.name );
-
-	const unitoneAttributes = cleanEmptyObject(
-		Object.fromEntries(
-			Object.entries( sourceBlockAttributes?.unitone ?? {} ).filter(
-				( [ key ] ) => blockType?.supports?.unitone?.[ key ]
-			)
-		)
+	targetBlock.attributes = [
+		applyBothSidesChildStyles,
+		applyFlexChildStyles,
+		applyFlexDividedChildStyles,
+		applyGridChildStyles,
+		applyGridDividedChildStyles,
+		applyLayersChildStyles,
+	].reduce(
+		( attrs, apply ) => apply( attrs, targetBlock.parentBlock ),
+		targetBlock.attributes
 	);
+
+	const newProps = resetUnitoneStyles( {
+		name: targetBlock.name,
+		attributes: {
+			...targetBlock.attributes,
+			unitone: {
+				...sourceBlock.attributes?.unitone,
+			},
+		},
+	} );
 
 	const coreAttributes = Object.entries( STYLE_ATTRIBUTES ).reduce(
 		( attributes, [ attributeKey, hasSupport ] ) => {
@@ -103,14 +122,14 @@ function getStyleAttributes( sourceBlock, targetBlock ) {
 		{}
 	);
 
-	return cleanEmptyObject( {
+	return {
 		...{
-			unitone: {
-				...unitoneAttributes,
-			},
+			unitone: cleanEmptyObject( {
+				...newProps.attributes?.unitone,
+			} ),
 		},
 		...coreAttributes,
-	} );
+	};
 }
 
 /**
@@ -136,7 +155,10 @@ function recursivelyUpdateBlockAttributes(
 		);
 
 		recursivelyUpdateBlockAttributes(
-			targetBlocks[ index ].innerBlocks,
+			targetBlocks[ index ].innerBlocks.map( ( innerBlock ) => {
+				innerBlock.parentBlock = targetBlocks[ index ];
+				return innerBlock;
+			} ),
 			sourceBlocks[ index ].innerBlocks,
 			updateBlockAttributes
 		);
@@ -153,6 +175,11 @@ export default function usePasteUnitoneAndCoreStyles() {
 	const { updateBlockAttributes } = useDispatch( blockEditorStore );
 	const { createSuccessNotice, createWarningNotice, createErrorNotice } =
 		useDispatch( noticesStore );
+
+	const { getBlock, getBlockRootClientId } = useSelect(
+		( select ) => select( blockEditorStore ),
+		[]
+	);
 
 	return useCallback(
 		async ( targetBlocks ) => {
@@ -203,7 +230,12 @@ export default function usePasteUnitoneAndCoreStyles() {
 				// Apply styles of the block to all the target blocks.
 				registry.batch( () => {
 					recursivelyUpdateBlockAttributes(
-						targetBlocks,
+						targetBlocks.map( ( targetBlock ) => {
+							targetBlock.parentBlock = getBlock(
+								getBlockRootClientId( targetBlock.clientId )
+							);
+							return targetBlock;
+						} ),
 						targetBlocks.map( () => copiedBlocks[ 0 ] ),
 						updateBlockAttributes
 					);
@@ -211,7 +243,12 @@ export default function usePasteUnitoneAndCoreStyles() {
 			} else {
 				registry.batch( () => {
 					recursivelyUpdateBlockAttributes(
-						targetBlocks,
+						targetBlocks.map( ( targetBlock ) => {
+							targetBlock.parentBlock = getBlock(
+								getBlockRootClientId( targetBlock.clientId )
+							);
+							return targetBlock;
+						} ),
 						copiedBlocks,
 						updateBlockAttributes
 					);

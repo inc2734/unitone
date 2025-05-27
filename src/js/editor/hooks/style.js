@@ -2,66 +2,71 @@
  * @see https://github.com/WordPress/gutenberg/blob/42a5611fa7649186190fd4411425f6e5e9deb01a/packages/block-editor/src/hooks/style.js
  */
 
-import { createHigherOrderComponent } from '@wordpress/compose';
+import { createHigherOrderComponent, compose } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 
 import {
 	DimensionsPanel,
 	useDimensionsBlockProps,
+	useResetDimensions,
 } from './dimensions/dimensions';
 
 import {
 	TypographyPanel,
 	useTypographyBlockProps,
+	useResetTypography,
 } from './typography/typography';
 
 import {
 	DividerLinePanel,
 	useDividerLineBlockProps,
+	useResetDividerLine,
 } from './divider-line/divider-line';
 
 import {
 	SectionDividerPanel,
 	useSectionDividerBlockProps,
+	useResetSectionDivider,
 } from './section-divider/section-divider';
 
 import {
 	BackdropFilterPanel,
 	useBackdropFilterBlockProps,
+	useResetBackdropFilter,
 } from './backdrop-filter/backdrop-filter';
 
 import {
 	AdvancedPanel,
 	useAdvancedBlockProps,
 	StyleTag,
+	useResetAdvanced,
 } from './advanced/advanced';
 
-import { LayoutPanel, useLayoutBlockProps } from './layout/layout';
-import { LayerPanel, useLayerBlockProps } from './layer/layer';
-import { BorderPanel, useBorderBlockProps } from './border/border';
-import { PositionPanel, usePositionBlockProps } from './position/position';
-import { AnimationPanel, useAnimationProps } from './animation/animation';
+import {
+	LayoutPanel,
+	useLayoutBlockProps,
+	useResetLayout,
+} from './layout/layout';
 
-const addAttribute = ( settings ) => {
-	// Allow blocks to specify their own attribute definition with default values if needed.
-	if ( ! settings.attributes.unitone ) {
-		Object.assign( settings.attributes, {
-			unitone: {
-				type: 'object',
-			},
-			__unstableUnitoneSupports: {
-				type: 'object',
-				role: 'local',
-			},
-			__unitoneStates: {
-				type: 'object',
-				role: 'local',
-			},
-		} );
-	}
+import {
+	BorderPanel,
+	useBorderBlockProps,
+	useResetBorder,
+} from './border/border';
 
-	return settings;
-};
+import {
+	PositionPanel,
+	usePositionBlockProps,
+	useResetPosition,
+} from './position/position';
+
+import {
+	AnimationPanel,
+	useAnimationProps,
+	useResetAnimation,
+} from './animation/animation';
+
+import { LayerPanel, useLayerBlockProps, useResetLayer } from './layer/layer';
 
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
@@ -124,12 +129,6 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 }, 'withInspectorControls' );
 
 addFilter(
-	'blocks.registerBlockType',
-	'unitone/style/addAttribute',
-	addAttribute
-);
-
-addFilter(
 	'editor.BlockListBlock',
 	'unitone/style/useBlockProps',
 	useBlockProps
@@ -140,3 +139,21 @@ addFilter(
 	'unitone/with-inspector-controls',
 	withInspectorControls
 );
+
+export const resetUnitoneStyles = ( props ) => {
+	const newProps = compose( [
+		useResetTypography,
+		useResetDimensions,
+		useResetLayout,
+		useResetDividerLine,
+		useResetSectionDivider,
+		useResetPosition,
+		useResetLayer,
+		useResetBorder,
+		useResetBackdropFilter,
+		useResetAnimation,
+		useResetAdvanced,
+	] )( props );
+
+	return newProps;
+};

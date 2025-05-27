@@ -71,19 +71,11 @@ export function NegativeEdit( {
 export function useNegativeBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.negative;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.negative' ) ) {
 		return settings;
 	}
 
-	const newNegative = attributes?.unitone?.negative ?? defaultValue;
+	const newNegative = attributes?.unitone?.negative;
 
 	if ( null == newNegative ) {
 		return settings;

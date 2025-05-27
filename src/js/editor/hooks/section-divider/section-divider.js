@@ -93,6 +93,37 @@ import {
 	SectionDividerBottomTrimEdit,
 } from './bottom-trim';
 
+function useIsSectionDividerDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.sectionDivider' );
+}
+
+export const useResetSectionDivider = ( props ) => {
+	if ( ! useIsSectionDividerDisabled( { ...props } ) ) {
+		return props;
+	}
+
+	return {
+		...props,
+		attributes: {
+			...props.attributes,
+			unitone: deepmerge.all( [
+				{ ...props.attributes?.unitone },
+				resetSectionDividerTopTypeFilter,
+				resetSectionDividerTopLevelFilter,
+				resetSectionDividerTopSizeFilter,
+				resetSectionDividerTopXFilter,
+				resetSectionDividerTopTrimFilter,
+				resetSectionDividerTopOverlapFilter,
+				resetSectionDividerBottomTypeFilter,
+				resetSectionDividerBottomLevelFilter,
+				resetSectionDividerBottomSizeFilter,
+				resetSectionDividerBottomXFilter,
+				resetSectionDividerBottomTrimFilter,
+			] ),
+		},
+	};
+};
+
 export function useSectionDividerBlockProps( settings ) {
 	const { attributes, name } = settings;
 
@@ -166,10 +197,6 @@ export function useSectionDividerBlockProps( settings ) {
 			},
 		},
 	};
-}
-
-function useIsSectionDividerDisabled( { name } ) {
-	return ! hasBlockSupport( name, 'unitone.sectionDivider' );
 }
 
 export function SectionDividerPanelPure( props ) {

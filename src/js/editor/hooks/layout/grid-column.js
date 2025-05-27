@@ -64,7 +64,10 @@ export function resetGridColumn( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsGridColumnDisabled( { name, __unstableUnitoneSupports } ) {
+export function useIsGridColumnDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.gridColumn' ) &&
 		! __unstableUnitoneSupports?.gridColumn
@@ -233,18 +236,13 @@ export function useGridColumnBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useDefaultValue( {
-		name,
-		__unstableUnitoneSupports,
-	} );
-
 	if ( ! hasBlockSupport( name, 'unitone.gridColumn' ) ) {
-		if ( ! attributes?.__unstableUnitoneSupports?.gridColumn ) {
+		if ( ! __unstableUnitoneSupports?.gridColumn ) {
 			return settings;
 		}
 	}
 
-	const newGridColumn = attributes?.unitone?.gridColumn ?? defaultValue;
+	const newGridColumn = attributes?.unitone?.gridColumn;
 
 	if ( null == newGridColumn ) {
 		return settings;

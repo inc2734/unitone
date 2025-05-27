@@ -155,21 +155,13 @@ export function useMixBlendModeBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.mixBlendMode;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.mixBlendMode' ) ) {
 		if ( ! __unstableUnitoneSupports?.mixBlendMode ) {
 			return settings;
 		}
 	}
 
-	const newMixBlendMode = attributes?.unitone?.mixBlendMode ?? defaultValue;
+	const newMixBlendMode = attributes?.unitone?.mixBlendMode;
 
 	if ( null == newMixBlendMode ) {
 		return settings;

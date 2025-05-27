@@ -28,7 +28,10 @@ export function resetMinWidth( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsMinWidthDisabled( { name, __unstableUnitoneSupports } ) {
+export function useIsMinWidthDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.minWidth' ) &&
 		! __unstableUnitoneSupports?.minWidth
@@ -94,21 +97,13 @@ export function useMinWidthBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.minWidth;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.minWidth' ) ) {
 		if ( ! __unstableUnitoneSupports?.minWidth ) {
 			return settings;
 		}
 	}
 
-	const newMinWidth = attributes?.unitone?.minWidth ?? defaultValue;
+	const newMinWidth = attributes?.unitone?.minWidth;
 
 	if ( null == newMinWidth ) {
 		return settings;

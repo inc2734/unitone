@@ -105,6 +105,31 @@ import {
 	ProgressiveEdit,
 } from './progressive';
 
+export const useResetBackdropFilter = ( props ) => {
+	const filters = [
+		[ useIsBlurDisabled, resetBlurFilter ],
+		[ useIsBrightnessDisabled, resetBrightnessFilter ],
+		[ useIsContrastDisabled, resetContrastFilter ],
+		[ useIsGrayscaleDisabled, resetGrayscaleFilter ],
+		[ useIsHueRotateDisabled, resetHueRotateFilter ],
+		[ useIsInvertDisabled, resetInvertFilter ],
+		[ useIsSaturateDisabled, resetSaturateFilter ],
+		[ useIsSepiaDisabled, resetSepiaFilter ],
+		[ useIsProgressiveDisabled, resetProgressiveFilter ],
+	];
+
+	const unitone = filters.reduce(
+		( accumulator, [ isDisabled, resetFilter ] ) => {
+			return isDisabled( { ...props } )
+				? deepmerge( accumulator, resetFilter() )
+				: accumulator;
+		},
+		{ ...props.attributes?.unitone }
+	);
+
+	return { ...props, attributes: { ...props.attributes, unitone } };
+};
+
 export function useBackdropFilterBlockProps( settings ) {
 	const {
 		attributes: { unitone },

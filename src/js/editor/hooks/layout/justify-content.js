@@ -111,21 +111,22 @@ export function JustifyContentToolbar( {
 			icon={
 				filteredOptions.filter(
 					( option ) =>
-						option.value === unitone?.justifyContent ?? defaultValue
+						option.value ===
+						( unitone?.justifyContent ?? defaultValue )
 				)?.[ 0 ]?.icon ?? filteredOptions[ 0 ]?.icon
 			}
 			controls={ filteredOptions.map( ( option ) => ( {
 				...option,
 				title: option.label,
 				isActive:
-					option.value === unitone?.justifyContent ?? defaultValue,
+					option.value ===
+					( unitone?.justifyContent ?? defaultValue ),
 				onClick: () => {
 					const newUnitone = {
 						...unitone,
 						justifyContent:
-							option.value !== unitone?.justifyContent ??
-							defaultValue
-								? option.value || undefined
+							option.value !== unitone?.justifyContent
+								? option.value
 								: undefined,
 					};
 
@@ -216,20 +217,11 @@ export function JustifyContentEdit( {
 export function useJustifyContentBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.justifyContent;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.justifyContent' ) ) {
 		return settings;
 	}
 
-	const newJustifyContent =
-		attributes?.unitone?.justifyContent ?? defaultValue;
+	const newJustifyContent = attributes?.unitone?.justifyContent;
 
 	if ( null == newJustifyContent ) {
 		return settings;

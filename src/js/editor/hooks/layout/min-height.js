@@ -28,7 +28,10 @@ export function resetMinHeight( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsMinHeightDisabled( { name, __unstableUnitoneSupports } ) {
+export function useIsMinHeightDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.minHeight' ) &&
 		! __unstableUnitoneSupports?.minHeight
@@ -90,21 +93,13 @@ export function useMinHeightBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.minHeight;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.minHeight' ) ) {
 		if ( ! __unstableUnitoneSupports?.minHeight ) {
 			return settings;
 		}
 	}
 
-	const newMinHeight = attributes?.unitone?.minHeight ?? defaultValue;
+	const newMinHeight = attributes?.unitone?.minHeight;
 
 	if ( null == newMinHeight ) {
 		return settings;

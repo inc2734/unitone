@@ -10,6 +10,8 @@ import save from './save';
 import deprecated from './deprecated';
 import transforms from './transforms';
 
+import { applyBothSidesChildStyles } from './utils';
+
 import './style.scss';
 import './index.scss';
 
@@ -33,35 +35,16 @@ const withChildBlockAttributes = createHigherOrderComponent(
 			}
 
 			const parentBlock = getBlock( props.rootClientId );
-			if ( 'unitone/both-sides' !== parentBlock?.name ) {
-				return <BlockListBlock { ...props } />;
-			}
 
-			const DEFAULT_VALUES = {
-				flexBasis: 'fit-content',
-			};
-
-			const newProps = {
-				...props,
-				attributes: {
-					...props?.attributes,
-					unitone: {
-						...props?.attributes?.unitone,
-						flexBasis:
-							null != props?.attributes?.unitone?.flexBasis
-								? props?.attributes?.unitone?.flexBasis
-								: DEFAULT_VALUES.flexBasis,
-					},
-					__unstableUnitoneSupports: {
-						...props?.attributes?.__unstableUnitoneSupports,
-						flexBasis: {
-							default: DEFAULT_VALUES.flexBasis,
-						},
-					},
-				},
-			};
-
-			return <BlockListBlock { ...newProps } />;
+			return (
+				<BlockListBlock
+					{ ...props }
+					attributes={ applyBothSidesChildStyles(
+						props.attributes,
+						parentBlock
+					) }
+				/>
+			);
 		};
 	},
 	'withChildBlockAttributes'

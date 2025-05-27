@@ -105,19 +105,11 @@ export function AutoRepeatEdit( {
 export function useAutoRepeatBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.autoRepeat;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.autoRepeat' ) ) {
 		return settings;
 	}
 
-	const newAutoRepeat = attributes?.unitone?.autoRepeat ?? defaultValue;
+	const newAutoRepeat = attributes?.unitone?.autoRepeat;
 
 	if ( null == newAutoRepeat ) {
 		return settings;

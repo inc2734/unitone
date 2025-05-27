@@ -95,7 +95,10 @@ export function resetAlignSelf( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsAlignSelfDisabled( { name, __unstableUnitoneSupports } ) {
+export function useIsAlignSelfDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.alignSelf' ) &&
 		! __unstableUnitoneSupports?.alignSelf
@@ -192,13 +195,13 @@ export function AlignSelfToolbar( {
 			label={ __( 'Align self', 'unitone' ) }
 			icon={
 				alignSelfOptions.filter(
-					( option ) => option.value === value ?? defaultValue
+					( option ) => option.value === ( value ?? defaultValue )
 				)?.[ 0 ]?.icon ?? alignSelfOptions[ 0 ]?.icon
 			}
 			controls={ alignSelfOptions.map( ( option ) => ( {
 				...option,
 				title: option.label,
-				isActive: option.value === value ?? defaultValue,
+				isActive: option.value === ( value ?? defaultValue ),
 				onClick: () => onChange( option.value ),
 			} ) ) }
 		/>
@@ -406,15 +409,13 @@ export function useAlignSelfBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useDefaultValue( name, __unstableUnitoneSupports );
-
 	if ( ! hasBlockSupport( name, 'unitone.alignSelf' ) ) {
-		if ( ! attributes?.__unstableUnitoneSupports?.alignSelf ) {
+		if ( ! __unstableUnitoneSupports?.alignSelf ) {
 			return settings;
 		}
 	}
 
-	const newAlignSelf = attributes?.unitone?.alignSelf ?? defaultValue;
+	const newAlignSelf = attributes?.unitone?.alignSelf;
 
 	if ( null == newAlignSelf ) {
 		return settings;

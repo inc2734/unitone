@@ -92,21 +92,22 @@ export function JustifyContentColumnToolbar( {
 			icon={
 				justifyContentColumnOptions.filter(
 					( option ) =>
-						option.value === unitone?.justifyContent ?? defaultValue
+						option.value ===
+						( unitone?.justifyContent ?? defaultValue )
 				)?.[ 0 ]?.icon ?? justifyContentColumnOptions[ 0 ]?.icon
 			}
 			controls={ justifyContentColumnOptions.map( ( option ) => ( {
 				...option,
 				title: option.label,
 				isActive:
-					option.value === unitone?.justifyContent ?? defaultValue,
+					option.value ===
+					( unitone?.justifyContent ?? defaultValue ),
 				onClick: () => {
 					const newUnitone = {
 						...unitone,
 						justifyContent:
-							option.value !== unitone?.justifyContent ??
-							defaultValue
-								? option.value || undefined
+							option.value !== unitone?.justifyContent
+								? option.value
 								: undefined,
 					};
 
@@ -189,20 +190,11 @@ export function JustifyContentColumnEdit( {
 export function useJustifyContentColumnBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.justifyContent;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.justifyContentColumn' ) ) {
 		return settings;
 	}
 
-	const newJustifyContentColumn =
-		attributes?.unitone?.justifyContent ?? defaultValue;
+	const newJustifyContentColumn = attributes?.unitone?.justifyContent;
 
 	if ( null == newJustifyContentColumn ) {
 		return settings;

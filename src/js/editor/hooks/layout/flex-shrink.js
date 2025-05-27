@@ -49,7 +49,10 @@ export function resetFlexShrink( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsFlexShrinkDisabled( { name, __unstableUnitoneSupports } ) {
+export function useIsFlexShrinkDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.flexShrink' ) &&
 		! __unstableUnitoneSupports?.flexShrink
@@ -90,9 +93,9 @@ export function FlexShrinkEdit( {
 			__nextHasNoMarginBottom
 			label={ label }
 			value={
-				null != unitone?.flexShrink
-					? parseInt( unitone?.flexShrink )
-					: defaultValue
+				null != ( unitone?.flexShrink || defaultValue )
+					? parseInt( unitone?.flexShrink || defaultValue )
+					: ''
 			}
 			allowReset={ true }
 			onChange={ ( newValue ) => {
@@ -122,15 +125,13 @@ export function useFlexShrinkBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
-
 	if ( ! hasBlockSupport( name, 'unitone.flexShrink' ) ) {
-		if ( ! attributes?.__unstableUnitoneSupports?.flexShrink ) {
+		if ( ! __unstableUnitoneSupports?.flexShrink ) {
 			return settings;
 		}
 	}
 
-	const newFlexShrink = attributes?.unitone?.flexShrink ?? defaultValue;
+	const newFlexShrink = attributes?.unitone?.flexShrink;
 
 	if ( null == newFlexShrink ) {
 		return settings;

@@ -39,8 +39,6 @@ import {
 	useHalfLeadingBlockProps,
 } from './half-leading';
 
-import './fluid-font-size-magnification';
-
 import {
 	useIsBackgroundClipDisabled,
 	getBackgroundClipEditLabel,
@@ -51,12 +49,34 @@ import {
 	useBackgroundClipBlockProps,
 } from './background-clip';
 
+import './fluid-font-size-magnification';
+
 export const useTypographyBlockProps = compose(
 	useAutoPhraseBlockProps,
 	useFluidTypographyBlockProps,
 	useHalfLeadingBlockProps,
 	useBackgroundClipBlockProps
 );
+
+export const useResetTypography = ( props ) => {
+	const filters = [
+		[ useIsAutoPhraseDisabled, resetAutoPhraseFilter ],
+		[ useIsBackgroundClipDisabled, resetBackgroundClipFilter ],
+		[ useIsFluidTypographyDisabled, resetFluidTypographyFilter ],
+		[ useIsHalfLeadingDisabled, resetHalfLeadingFilter ],
+	];
+
+	const unitone = filters.reduce(
+		( accumulator, [ isDisabled, resetFilter ] ) => {
+			return isDisabled( { ...props } )
+				? { ...accumulator, ...resetFilter() }
+				: accumulator;
+		},
+		{ ...props.attributes?.unitone }
+	);
+
+	return { ...props, attributes: { ...props.attributes, unitone } };
+};
 
 function TypographyPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;

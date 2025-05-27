@@ -89,21 +89,21 @@ export function JustifyItemsToolbar( {
 			icon={
 				justifyItemsOptions.filter(
 					( option ) =>
-						option.value === unitone?.justifyItems ?? defaultValue
+						option.value ===
+						( unitone?.justifyItems ?? defaultValue )
 				)?.[ 0 ]?.icon ?? justifyItemsOptions[ 0 ]?.icon
 			}
 			controls={ justifyItemsOptions.map( ( option ) => ( {
 				...option,
 				title: option.label,
 				isActive:
-					option.value === unitone?.justifyItems ?? defaultValue,
+					option.value === ( unitone?.justifyItems ?? defaultValue ),
 				onClick: () => {
 					const newUnitone = {
 						...unitone,
 						justifyItems:
-							option.value !== unitone?.justifyItems ??
-							defaultValue
-								? option.value || undefined
+							option.value !== unitone?.justifyItems
+								? option.value
 								: undefined,
 					};
 
@@ -187,19 +187,11 @@ export function JustifyItemsEdit( {
 export function useJustifyItemsBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.justifyItems;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.justifyItems' ) ) {
 		return settings;
 	}
 
-	const newJustifyItems = attributes?.unitone?.justifyItems ?? defaultValue;
+	const newJustifyItems = attributes?.unitone?.justifyItems;
 
 	if ( null == newJustifyItems ) {
 		return settings;

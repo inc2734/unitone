@@ -388,19 +388,11 @@ export function ZIndexEdit( {
 export function usePositionBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.position;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.position' ) ) {
 		return settings;
 	}
 
-	const newPosition = attributes?.unitone?.position ?? defaultValue;
+	const newPosition = attributes?.unitone?.position;
 
 	if ( null == newPosition ) {
 		return settings;

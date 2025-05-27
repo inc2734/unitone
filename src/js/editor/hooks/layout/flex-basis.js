@@ -48,7 +48,10 @@ export function resetFlexBasis( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsFlexBasisDisabled( { name, __unstableUnitoneSupports } ) {
+export function useIsFlexBasisDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.flexBasis' ) &&
 		! __unstableUnitoneSupports?.flexBasis
@@ -107,18 +110,13 @@ export function useFlexBasisBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useDefaultValue( {
-		name,
-		__unstableUnitoneSupports,
-	} );
-
 	if ( ! hasBlockSupport( name, 'unitone.flexBasis' ) ) {
-		if ( ! attributes?.__unstableUnitoneSupports?.flexBasis ) {
+		if ( ! __unstableUnitoneSupports?.flexBasis ) {
 			return settings;
 		}
 	}
 
-	const newFlexBasis = attributes?.unitone?.flexBasis ?? defaultValue;
+	const newFlexBasis = attributes?.unitone?.flexBasis;
 
 	if ( null == newFlexBasis ) {
 		return settings;

@@ -99,21 +99,21 @@ export function AlignContentToolbar( {
 			icon={
 				alignContentOptions.filter(
 					( option ) =>
-						option.value === unitone?.alignContent ?? defaultValue
+						option.value ===
+						( unitone?.alignContent ?? defaultValue )
 				)?.[ 0 ]?.icon ?? alignContentOptions[ 0 ]?.icon
 			}
 			controls={ alignContentOptions.map( ( option ) => ( {
 				...option,
 				title: option.label,
 				isActive:
-					option.value === unitone?.alignContent ?? defaultValue,
+					option.value === ( unitone?.alignContent ?? defaultValue ),
 				onClick: () => {
 					const newUnitone = {
 						...unitone,
 						alignContent:
-							option.value !== unitone?.alignContent ??
-							defaultValue
-								? option.value || undefined
+							option.value !== unitone?.alignContent
+								? option.value
 								: undefined,
 					};
 
@@ -197,19 +197,11 @@ export function AlignContentEdit( {
 export function useAlignContentBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.alignContent;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.alignContent' ) ) {
 		return settings;
 	}
 
-	const newAlignContent = attributes?.unitone?.alignContent ?? defaultValue;
+	const newAlignContent = attributes?.unitone?.alignContent;
 
 	if ( null == newAlignContent ) {
 		return settings;

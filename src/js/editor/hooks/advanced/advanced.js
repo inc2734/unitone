@@ -5,6 +5,7 @@ import { memo } from '@wordpress/element';
 
 import {
 	useIsStyleDisabled,
+	resetStyleFilter,
 	StyleTag,
 	StyleEdit,
 	useStyleBlockProps,
@@ -13,6 +14,21 @@ import {
 export { StyleTag };
 
 export const useAdvancedBlockProps = useStyleBlockProps;
+
+export const useResetAdvanced = ( props ) => {
+	const filters = [ [ useIsStyleDisabled, resetStyleFilter ] ];
+
+	const unitone = filters.reduce(
+		( accumulator, [ isDisabled, resetFilter ] ) => {
+			return isDisabled( { ...props } )
+				? { ...accumulator, ...resetFilter() }
+				: accumulator;
+		},
+		{ ...props.attributes?.unitone }
+	);
+
+	return { ...props, attributes: { ...props.attributes, unitone } };
+};
 
 function AdvancedPanelPure( props ) {
 	const { name } = props;

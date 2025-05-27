@@ -26,6 +26,21 @@ import {
 
 export const useLayerBlockProps = useMixBlendModeBlockProps;
 
+export const useResetLayer = ( props ) => {
+	const filters = [ [ useIsMixBlendModeDisabled, resetMixBlendModeFilter ] ];
+
+	const unitone = filters.reduce(
+		( accumulator, [ isDisabled, resetFilter ] ) => {
+			return isDisabled( { ...props } )
+				? { ...accumulator, ...resetFilter() }
+				: accumulator;
+		},
+		{ ...props.attributes?.unitone }
+	);
+
+	return { ...props, attributes: { ...props.attributes, unitone } };
+};
+
 function LayerPanelPure( props ) {
 	const { attributes, setAttributes, clientId } = props;
 

@@ -103,7 +103,7 @@ export function resetJustifySelf( { attributes: { unitone }, setAttributes } ) {
 
 export function useIsJustifySelfDisabled( {
 	name,
-	__unstableUnitoneSupports,
+	attributes: { __unstableUnitoneSupports },
 } ) {
 	return (
 		! hasBlockSupport( name, 'unitone.justifySelf' ) &&
@@ -201,13 +201,13 @@ export function JustifySelfToolbar( {
 			label={ __( 'Justify self', 'unitone' ) }
 			icon={
 				justifySelfOptions.filter(
-					( option ) => option.value === value ?? defaultValue
+					( option ) => option.value === ( value ?? defaultValue )
 				)?.[ 0 ]?.icon ?? justifySelfOptions[ 0 ]?.icon
 			}
 			controls={ justifySelfOptions.map( ( option ) => ( {
 				...option,
 				title: option.label,
-				isActive: option.value === value ?? defaultValue,
+				isActive: option.value === ( value ?? defaultValue ),
 				onClick: () => onChange( option.value ),
 			} ) ) }
 		/>
@@ -395,7 +395,7 @@ export function JustifySelfEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.justifySelf }
+				value={ unitone?.justifySelf ?? defaultValue }
 				onChange={ onChangeJustifySelf }
 			>
 				{ justifySelfOptions.map(
@@ -417,15 +417,13 @@ export function useJustifySelfBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
-
 	if ( ! hasBlockSupport( name, 'unitone.justifySelf' ) ) {
-		if ( ! attributes?.__unstableUnitoneSupports?.justifySelf ) {
+		if ( ! __unstableUnitoneSupports?.justifySelf ) {
 			return settings;
 		}
 	}
 
-	const newJustifySelf = attributes?.unitone?.justifySelf ?? defaultValue;
+	const newJustifySelf = attributes?.unitone?.justifySelf;
 
 	if ( null == newJustifySelf ) {
 		return settings;

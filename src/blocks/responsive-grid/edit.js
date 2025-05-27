@@ -58,7 +58,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	useEffect( () => {
 		setStairsStep( ref.current );
-	}, [ innerBlocksLength ] );
+	}, [
+		innerBlocksLength,
+		attributes?.unitone?.stairs,
+		attributes?.unitone?.stairsUp,
+	] );
 
 	const blockProps = useBlockProps( {
 		ref,

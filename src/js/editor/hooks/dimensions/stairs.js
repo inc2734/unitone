@@ -171,27 +171,13 @@ export function StairsUpEdit( {
 export function useStairsBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const { defaultStairs, defaultStairsUp } = useSelect(
-		( select ) => {
-			const blockTypeAttributes =
-				select( blocksStore ).getBlockType( name )?.attributes;
-
-			return {
-				defaultStairs: blockTypeAttributes?.unitone?.default?.stairs,
-				defaultStairsUp:
-					blockTypeAttributes?.unitone?.default?.stairsUp,
-			};
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.stairs' ) ) {
 		return settings;
 	}
 
 	const newStairs = {
-		stairs: attributes?.unitone?.stairs ?? defaultStairs,
-		stairsUp: attributes?.unitone?.stairsUp ?? defaultStairsUp,
+		stairs: attributes?.unitone?.stairs,
+		stairsUp: attributes?.unitone?.stairsUp,
 	};
 
 	if ( null == newStairs?.stairs && null == newStairs?.stairsUp ) {
@@ -207,7 +193,7 @@ export function useStairsBlockProps( settings ) {
 				{
 					[ `-stairs:${ newStairs?.stairs }` ]: !! newStairs?.stairs,
 					[ `-stairs-up:${ newStairs?.stairsUp }` ]:
-						!! newStairs?.stairsUp,
+						!! newStairs?.stairsUp && !! newStairs?.stairs,
 				}
 			),
 		},

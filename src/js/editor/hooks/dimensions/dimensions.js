@@ -85,6 +85,28 @@ export const useDimensionsBlockProps = compose(
 	useStairsBlockProps
 );
 
+export const useResetDimensions = ( props ) => {
+	const filters = [
+		[ useIsPaddingDisabled, resetPaddingFilter ],
+		[ useIsGuttersDisabled, resetGuttersFilter ],
+		[ useIsGapDisabled, resetGapFilter ],
+		[ useIsStairsDisabled, resetStairsFilter ],
+		[ useIsNegativeDisabled, resetNegativeFilter ],
+		[ useIsOverflowDisabled, resetOverflowFilter ],
+	];
+
+	const unitone = filters.reduce(
+		( accumulator, [ isDisabled, resetFilter ] ) => {
+			return isDisabled( { ...props } )
+				? { ...accumulator, ...resetFilter() }
+				: accumulator;
+		},
+		{ ...props.attributes?.unitone }
+	);
+
+	return { ...props, attributes: { ...props.attributes, unitone } };
+};
+
 function DimensionsPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId, className } = props;
 

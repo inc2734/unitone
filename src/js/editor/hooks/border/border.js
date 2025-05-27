@@ -18,6 +18,21 @@ import { cleanEmptyObject } from '../utils';
 
 export const useBorderBlockProps = useDropShadowBlockProps;
 
+export const useResetBorder = ( props ) => {
+	const filters = [ [ useIsDropShadowDisabled, resetDropShadowFilter ] ];
+
+	const unitone = filters.reduce(
+		( accumulator, [ isDisabled, resetFilter ] ) => {
+			return isDisabled( { ...props } )
+				? { ...accumulator, ...resetFilter() }
+				: accumulator;
+		},
+		{ ...props.attributes?.unitone }
+	);
+
+	return { ...props, attributes: { ...props.attributes, unitone } };
+};
+
 function BorderPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 

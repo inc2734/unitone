@@ -129,19 +129,11 @@ export function DividerTypeEdit( {
 export function useDividerTypeBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.dividerType;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.dividerType' ) ) {
 		return settings;
 	}
 
-	const newDividerType = attributes?.unitone?.dividerType ?? defaultValue;
+	const newDividerType = attributes?.unitone?.dividerType;
 
 	if ( null == newDividerType ) {
 		return settings;

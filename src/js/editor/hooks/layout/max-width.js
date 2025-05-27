@@ -37,7 +37,10 @@ export function resetMaxWidth( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsMaxWidthDisabled( { name, __unstableUnitoneSupports } ) {
+export function useIsMaxWidthDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.maxWidth' ) &&
 		! __unstableUnitoneSupports?.maxWidth
@@ -153,21 +156,13 @@ export function useMaxWidthBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.maxWidth;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.maxWidth' ) ) {
 		if ( ! __unstableUnitoneSupports?.maxWidth ) {
 			return settings;
 		}
 	}
 
-	const newMaxWidth = attributes?.unitone?.maxWidth ?? defaultValue;
+	const newMaxWidth = attributes?.unitone?.maxWidth;
 
 	if ( null == newMaxWidth ) {
 		return settings;

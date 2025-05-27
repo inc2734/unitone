@@ -13,6 +13,8 @@ import save from './save';
 import transforms from './transforms';
 import variations from './variations';
 
+import { applyFlexDividedChildStyles } from './utils';
+
 registerBlockType( 'unitone/flex-divided', {
 	icon: {
 		src: icon,
@@ -33,51 +35,16 @@ const withChildBlockAttributes = createHigherOrderComponent(
 			}
 
 			const parentBlock = getBlock( props.rootClientId );
-			if ( 'unitone/flex-divided' !== parentBlock?.name ) {
-				return <BlockListBlock { ...props } />;
-			}
 
-			const DEFAULT_VALUES = {
-				flexGrow: '0',
-				flexShrink: '1',
-				flexBasis: 'auto',
-			};
-
-			const newProps = {
-				...props,
-				attributes: {
-					...props?.attributes,
-					unitone: {
-						...props?.attributes?.unitone,
-						flexGrow:
-							null != props?.attributes?.unitone?.flexGrow
-								? props?.attributes?.unitone?.flexGrow
-								: DEFAULT_VALUES.flexGrow,
-						flexShrink:
-							null != props?.attributes?.unitone?.flexShrink
-								? props?.attributes?.unitone?.flexShrink
-								: DEFAULT_VALUES.flexShrink,
-						flexBasis:
-							null != props?.attributes?.unitone?.flexBasis
-								? props?.attributes?.unitone?.flexBasis
-								: DEFAULT_VALUES.flexBasis,
-					},
-					__unstableUnitoneSupports: {
-						...props?.attributes?.__unstableUnitoneSupports,
-						flexGrow: {
-							default: DEFAULT_VALUES.flexGrow,
-						},
-						flexShrink: {
-							default: DEFAULT_VALUES.flexShrink,
-						},
-						flexBasis: {
-							default: DEFAULT_VALUES.flexBasis,
-						},
-					},
-				},
-			};
-
-			return <BlockListBlock { ...newProps } />;
+			return (
+				<BlockListBlock
+					{ ...props }
+					attributes={ applyFlexDividedChildStyles(
+						props.attributes,
+						parentBlock
+					) }
+				/>
+			);
 		};
 	},
 	'withChildBlockAttributes'

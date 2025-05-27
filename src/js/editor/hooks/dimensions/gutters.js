@@ -117,19 +117,11 @@ export function GuttersEdit( {
 export function useGuttersBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.gutters;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.gutters' ) ) {
 		return settings;
 	}
 
-	const newGutters = attributes?.unitone?.gutters ?? defaultValue;
+	const newGutters = attributes?.unitone?.gutters;
 
 	if ( null == newGutters ) {
 		return settings;

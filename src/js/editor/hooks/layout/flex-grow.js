@@ -18,8 +18,8 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 			?.default?.flexGrow;
 	}, [] );
 
-	return null != __unstableUnitoneSupports?.flexBasis?.default
-		? __unstableUnitoneSupports?.flexBasis?.default
+	return null != __unstableUnitoneSupports?.flexGrow?.default
+		? __unstableUnitoneSupports?.flexGrow?.default
 		: defaultValue;
 }
 
@@ -48,7 +48,10 @@ export function resetFlexGrow( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsFlexGrowDisabled( { name, __unstableUnitoneSupports } ) {
+export function useIsFlexGrowDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.flexGrow' ) &&
 		! __unstableUnitoneSupports?.flexGrow
@@ -89,9 +92,9 @@ export function FlexGrowEdit( {
 			__nextHasNoMarginBottom
 			label={ label }
 			value={
-				null != unitone?.flexGrow
-					? parseInt( unitone?.flexGrow )
-					: defaultValue
+				null != ( unitone?.flexGrow || defaultValue )
+					? parseInt( unitone?.flexGrow || defaultValue )
+					: ''
 			}
 			allowReset={ true }
 			onChange={ ( newValue ) => {
@@ -121,18 +124,13 @@ export function useFlexGrowBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useDefaultValue( {
-		name,
-		__unstableUnitoneSupports,
-	} );
-
 	if ( ! hasBlockSupport( name, 'unitone.flexGrow' ) ) {
-		if ( ! attributes?.__unstableUnitoneSupports?.flexGrow ) {
+		if ( ! __unstableUnitoneSupports?.flexGrow ) {
 			return settings;
 		}
 	}
 
-	const newFlexGrow = attributes?.unitone?.flexGrow ?? defaultValue;
+	const newFlexGrow = attributes?.unitone?.flexGrow;
 
 	if ( null == newFlexGrow ) {
 		return settings;

@@ -63,7 +63,10 @@ export function resetGridRow( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsGridRowDisabled( { name, __unstableUnitoneSupports } ) {
+export function useIsGridRowDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.gridRow' ) &&
 		! __unstableUnitoneSupports?.gridRow
@@ -230,15 +233,13 @@ export function useGridRowBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
-
 	if ( ! hasBlockSupport( name, 'unitone.gridRow' ) ) {
-		if ( ! attributes?.__unstableUnitoneSupports?.gridRow ) {
+		if ( ! __unstableUnitoneSupports?.gridRow ) {
 			return settings;
 		}
 	}
 
-	const newGridRow = attributes?.unitone?.gridRow ?? defaultValue;
+	const newGridRow = attributes?.unitone?.gridRow;
 
 	if ( null == newGridRow ) {
 		return settings;

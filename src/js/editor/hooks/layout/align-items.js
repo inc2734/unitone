@@ -80,19 +80,20 @@ export function AlignItemsToolbar( {
 			icon={
 				alignItemsOptions.filter(
 					( option ) =>
-						option.value === unitone?.alignItems ?? defaultValue
+						option.value === ( unitone?.alignItems ?? defaultValue )
 				)?.[ 0 ]?.icon ?? alignItemsOptions[ 0 ]?.icon
 			}
 			controls={ alignItemsOptions.map( ( option ) => ( {
 				...option,
 				title: option.label,
-				isActive: option.value === unitone?.alignItems ?? defaultValue,
+				isActive:
+					option.value === ( unitone?.alignItems ?? defaultValue ),
 				onClick: () => {
 					const newUnitone = {
 						...unitone,
 						alignItems:
-							option.value !== unitone?.alignItems ?? defaultValue
-								? option.value || undefined
+							option.value !== unitone?.alignItems
+								? option.value
 								: undefined,
 					};
 
@@ -176,19 +177,11 @@ export function AlignItemsEdit( {
 export function useAlignItemsBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.alignItems;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.alignItems' ) ) {
 		return settings;
 	}
 
-	const newAlignItems = attributes?.unitone?.alignItems ?? defaultValue;
+	const newAlignItems = attributes?.unitone?.alignItems;
 
 	if ( null == newAlignItems ) {
 		return settings;

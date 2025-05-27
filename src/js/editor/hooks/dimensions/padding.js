@@ -378,21 +378,11 @@ export function PaddingEdit( {
 export function usePaddingBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.padding;
-		},
-		[ name ]
-	);
-
 	if ( ! hasBlockSupport( name, 'unitone.padding' ) ) {
 		return settings;
 	}
 
-	const newPadding = compacting(
-		attributes.unitone?.padding ?? defaultValue
-	);
+	const newPadding = compacting( attributes.unitone?.padding );
 
 	if ( null == newPadding ) {
 		return settings;

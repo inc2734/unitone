@@ -1,4 +1,10 @@
 .block-editor-block-settings-menu__popover {
+	--unitone--paste-styles-menu-item--divider-color: #ccc;
+
+	&.is-alternate {
+		--unitone--paste-styles-menu-item--divider-color: #1e1e1e;
+	}
+
 	.components-menu-group {
 		[role=group] {
 			&:has([data-icon-name=unitone-icon-svg]) {
@@ -15,7 +21,7 @@
 					inset: auto -8px -8px;
 					content: '';
 					display: block;
-					border-bottom: 1px solid #ccc;
+					border-bottom: 1px solid var(--unitone--paste-styles-menu-item--divider-color);
 				}
 			}
 		}

@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "unitone",
+	"name": "unitone/responsive-switcher",
+	"title": "Responsive switcher",
+	"description": "Switch between desktop and mobile contents.",
+	"attributes": {
+		"breakpoint": {
+			"type": "string",
+			"default": "600px"
+		},
+		"clientId": {
+			"type": "string",
+			"default": ""
+		},
+		"templateLock": {
+			"type": [ "string" ],
+			"enum": [ "all", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": ".responsive-switcher"
+	},
+	"allowedBlocks": [ "unitone/responsive-switcher-container" ],
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"align": [ "full", "wide" ]
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js"
+}

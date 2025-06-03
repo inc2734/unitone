@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-05-24T12:37:42+00:00\n"
-"PO-Revision-Date: 2025-05-27 15:37+0900\n"
+"POT-Creation-Date: 2025-06-02T09:03:10+00:00\n"
+"PO-Revision-Date: 2025-06-02 18:04+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -107,7 +107,7 @@ msgid "Learn more"
 msgstr "さらに詳しく"
 
 #: inc/block-categories.php:25 App/Controller/Manager/dist/js/app.js:7
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:7
 msgid "Layout"
 msgstr "レイアウト"
 
@@ -160,15 +160,15 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:48 inc/block-styles.php:136 dist/js/editor/editor.js:10
+#: inc/block-styles.php:48 inc/block-styles.php:136 dist/js/editor/editor.js:4
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: inc/block-styles.php:56 inc/block-styles.php:160 dist/js/editor/editor.js:10
+#: inc/block-styles.php:56 inc/block-styles.php:160 dist/js/editor/editor.js:4
 msgid "Bordered"
 msgstr "ボーダー"
 
-#: inc/block-styles.php:64 dist/js/editor/editor.js:10
+#: inc/block-styles.php:64 dist/js/editor/editor.js:4
 msgid "Stripe"
 msgstr "ストライプ"
 
@@ -1631,15 +1631,15 @@ msgid "Size of h6"
 msgstr "h6 のサイズ"
 
 #: App/Controller/Manager/dist/js/app.js:7 dist/blocks/texture/index.js:1
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7
 msgid "Size"
 msgstr "サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:1
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:7
 msgid "Content Width"
 msgstr "コンテンツ幅"
 
-#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:1
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:7
 msgid "Wide"
 msgstr "幅広"
 
@@ -1833,7 +1833,8 @@ msgstr "アブストラクト背景"
 #: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
 #: dist/blocks/masonry/index.js:1 dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
-#: dist/blocks/responsive-grid/index.js:1 dist/blocks/section/index.js:13
+#: dist/blocks/responsive-grid/index.js:1
+#: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:1
 #: dist/blocks/tabs/index.js:1 dist/blocks/text/index.js:1
@@ -1890,12 +1891,12 @@ msgstr "ここに概要を入力"
 msgid "A"
 msgstr "A"
 
-#: dist/blocks/breadcrumbs/index.js:1 dist/js/editor/editor.js:10
+#: dist/blocks/breadcrumbs/index.js:1 dist/js/editor/editor.js:4
 msgid "Divider"
 msgstr "区切り"
 
 #: dist/blocks/breadcrumbs/index.js:1 dist/blocks/texture/index.js:1
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "Slash"
 msgstr "スラッシュ"
 
@@ -2063,6 +2064,7 @@ msgid "Tablet / Mobile"
 msgstr "タブレット / モバイル"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/responsive-switcher-container/index.js:1
 #: dist/js/editor/editor.js:1 dist/js/editor/editor.js:13
 msgid "Mobile"
 msgstr "モバイル"
@@ -2106,7 +2108,7 @@ msgid "Free input"
 msgstr "自由入力"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:7
 msgid "Auto repeat"
 msgstr "自動反復"
 
@@ -2284,6 +2286,19 @@ msgstr ""
 "「auto-repeat」が 「auto-fill」の場合、カラムはこのサイズを維持します。"
 "「auto-fit」の場合、空きスペースを埋めるようにカラムが伸長します。"
 
+#: dist/blocks/responsive-switcher-container/index.js:1
+msgid "Desktoop"
+msgstr "デスクトップ"
+
+#: dist/blocks/responsive-switcher/index.js:1
+#: dist/blocks/timeline-dots/index.js:1
+msgid "Dot size"
+msgstr "ドットの大きさ"
+
+#: dist/blocks/responsive-switcher/index.js:1
+msgid "Break point"
+msgstr "ブレイクポイント"
+
 #. translators: %1$s: position
 #: dist/blocks/section/index.js:4 dist/blocks/section/index.js:7
 #: dist/blocks/section/index.js:10 dist/blocks/section/index.js:13
@@ -2330,7 +2345,7 @@ msgstr "バレット"
 msgid "Progress bar"
 msgstr "プログレスバー"
 
-#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:7
 msgid "Align items top"
 msgstr "項目を上揃え"
 
@@ -2338,7 +2353,7 @@ msgstr "項目を上揃え"
 msgid "Align items top (Inside)"
 msgstr "項目を上揃え（内側）"
 
-#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:7
 msgid "Align items center"
 msgstr "項目を中央揃え"
 
@@ -2346,7 +2361,7 @@ msgstr "項目を中央揃え"
 msgid "Align items bottom (Inside)"
 msgstr "項目を下揃え（内側）"
 
-#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:7
 msgid "Align items bottom"
 msgstr "項目を下揃え"
 
@@ -2355,7 +2370,7 @@ msgid "Justify items left"
 msgstr "項目を左揃え"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:7
 msgid "Justify items center"
 msgstr "項目を中央揃え"
 
@@ -2363,7 +2378,7 @@ msgstr "項目を中央揃え"
 msgid "Justify items right"
 msgstr "項目を右揃え"
 
-#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:1
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:7
 msgid "Justify items space-between"
 msgstr "項目を両端揃え"
 
@@ -2522,7 +2537,7 @@ msgstr ""
 "1列表示のとき、デフォルトでは2列表示時の左側の要素が上に表示されますが、有効"
 "化すると、2列表示時の右側の要素が上に表示されるようになります。"
 
-#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:1
+#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:7
 msgid "Fill"
 msgstr "塗りつぶし"
 
@@ -2550,8 +2565,8 @@ msgstr "子要素の内在的なサイズによって中央揃えする"
 msgid "Multi columns"
 msgstr "マルチカラム"
 
-#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:10
-#: dist/js/editor/editor.js:13
+#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
 msgid "Type"
 msgstr "種類"
 
@@ -2632,10 +2647,6 @@ msgid "Dot - Main"
 msgstr "ドット - メイン"
 
 #: dist/blocks/timeline-dots/index.js:1
-msgid "Dot size"
-msgstr "ドットの大きさ"
-
-#: dist/blocks/timeline-dots/index.js:1
 msgid "Line width"
 msgstr "ラインの幅"
 
@@ -2667,13 +2678,13 @@ msgstr "サブとして扱うカラム"
 
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
 msgid "Right"
 msgstr "右"
 
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
 msgid "Left"
 msgstr "左"
 
@@ -2685,7 +2696,7 @@ msgid ""
 msgstr "未指定の場合、サブカラムの幅は子要素の幅から算出されます。"
 
 #: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:7
 msgid "Min width"
 msgstr "最小幅"
 
@@ -2738,7 +2749,7 @@ msgstr "X"
 msgid "Y"
 msgstr "Y"
 
-#: dist/formats/formats.js:1 dist/js/editor/editor.js:13
+#: dist/formats/formats.js:1 dist/js/editor/editor.js:7
 msgid "Blur"
 msgstr "ぼかし"
 
@@ -2782,215 +2793,35 @@ msgstr "ネガティブマージンを使用する"
 msgid "Overflow"
 msgstr "オーバーフロー"
 
-#: dist/js/editor/editor.js:1
-msgid "Justify content left"
-msgstr "コンテンツを左揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify content center"
-msgstr "コンテンツを中央揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify content right"
-msgstr "コンテンツを右揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify content space-between"
-msgstr "コンテンツを両端揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify content space-around"
-msgstr "コンテンツを均等配置（space-around）"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify content space-evenly"
-msgstr "コンテンツを均等配置（space-evenly）"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify content"
-msgstr "コンテンツの水平配置"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items top"
-msgstr "項目を上揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items bottom"
-msgstr "項目を下揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Stretch to fill"
-msgstr "埋めるように拡張"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify items"
-msgstr "項目の水平配置"
-
-#: dist/js/editor/editor.js:1
-msgid "Align items"
-msgstr "項目の垂直配置"
-
-#: dist/js/editor/editor.js:1
-msgid "Align content top"
-msgstr "コンテンツを上揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Align content center"
-msgstr "コンテンツを中央揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Align content bottom"
-msgstr "コンテンツを下揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Align content space-between"
-msgstr "コンテンツを両端揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Align content space-around"
-msgstr "コンテンツを均等配置（space-around）"
-
-#: dist/js/editor/editor.js:1
-msgid "Align content space-evenly"
-msgstr "コンテンツを均等配置（space-evenly）"
-
-#: dist/js/editor/editor.js:1
-msgid "Align content"
-msgstr "コンテンツの垂直配置"
-
-#: dist/js/editor/editor.js:1
-msgid "Center"
-msgstr "中央"
-
-#: dist/js/editor/editor.js:1
-msgid "Block alignment"
-msgstr "ブロックの配置"
-
-#: dist/js/editor/editor.js:1
-msgid "Recommended width"
-msgstr "推奨幅"
-
-#: dist/js/editor/editor.js:1
-msgid "Fit"
-msgstr "フィット"
-
-#: dist/js/editor/editor.js:1
-msgid "Max width"
-msgstr "最大幅"
-
-#: dist/js/editor/editor.js:1
-msgid ""
-"If the specified width exceeds the parent's width, it will be internally "
-"adjusted to ensure it does not exceed the parent's width."
-msgstr ""
-"指定した幅が親の幅を超えた場合、親の幅は超えないよう内部的に調整されます。"
-
-#: dist/js/editor/editor.js:1
-msgid "Max height"
-msgstr "最大の高さ"
-
-#: dist/js/editor/editor.js:1
-msgid "Min height"
-msgstr "最小の高さ"
-
-#: dist/js/editor/editor.js:1
-msgid "auto-fill"
-msgstr "auto-fill"
-
-#: dist/js/editor/editor.js:1
-msgid "auto-fit"
-msgstr "auto-fit"
-
-#: dist/js/editor/editor.js:1
-msgid "Align self top"
-msgstr "このブロックを上揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Align self center"
-msgstr "このブロックを中央揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Align self bottom"
-msgstr "このブロックを下揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Align self"
-msgstr "このブロックの垂直配置"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify self left"
-msgstr "このブロックを左揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify self center"
-msgstr "このブロックを中央揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify self right"
-msgstr "このブロックを右揃え"
-
-#: dist/js/editor/editor.js:1
-msgid "Justify self"
-msgstr "このブロックの水平配置"
-
-#: dist/js/editor/editor.js:1
-msgid "A grid item's size and location within a grid column"
-msgstr "グリッド列の中におけるグリッドアイテムの寸法と位置"
-
-#: dist/js/editor/editor.js:1
-msgid "A grid item's size and location within the grid row"
-msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
-
-#. translators: %1$s: <code>, %2$s: </code>
-#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
-msgid ""
-"For example, enter %1$s1 / -2%2$s (fill from the first grid line to the "
-"second-to-last grid line)."
-msgstr ""
-"例えば、%1$s1 / -2%2$s（1番目のグリッド線から、最後から2番目のグリッド線まで"
-"を埋める）のように入力します。"
-
-#: dist/js/editor/editor.js:7
-msgid "Apply to the block with the upper overlap order."
-msgstr "重なり順が上のブロックに適用します。"
-
-#: dist/js/editor/editor.js:7
-msgid "Layer"
-msgstr "レイヤー"
-
-#: dist/js/editor/editor.js:7
-msgid "Mix blend mode"
-msgstr "ミックスブレンドモード"
-
 #. translators: %1$s: <code>wbr</code>
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "Use %1$s to indicate a line break at an arbitrary position."
 msgstr "任意の位置で改行を指示したい場合は %1$s を使用してください。"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid ""
 "When enabled, font size and line-height will change fluidly with screen "
 "width."
 msgstr ""
 "有効な場合、文字サイズと line-height が画面幅に応じて流動的に変化します。"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "When enabled, line-height will change fluidly with screen width."
 msgstr "有効な場合、line-height が画面幅に応じて流動的に変化します。"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "Custom font size isn't fluid and can't be enabled."
 msgstr "カスタムフォントサイズが流動的でないため有効化できません。"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "Cut the background with text"
 msgstr "テキストで背景を切り取る"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "Half leading"
 msgstr "ハーフレディング"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid ""
 "If custom font sizes are enabled and fluid typography isn't enabled, it is "
 "recommended that half-reading be specified."
@@ -2998,15 +2829,15 @@ msgstr ""
 "カスタムフォントサイズが有効、かつ流体タイポグラフィが有効でない場合は、ハー"
 "フレディングを指定することを推奨します。"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "Fluid typography"
 msgstr "流体タイポグラフィ"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "Auto line breaks"
 msgstr "自動改行"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid ""
 "This can be set when a background image or background gradient is set for "
 "this block."
@@ -3014,36 +2845,36 @@ msgstr ""
 "このブロックに背景画像または背景グラデーションが設定されている場合に設定でき"
 "ます。"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "Stripe (Vertical)"
 msgstr "ストライプ（縦）"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "Divide"
 msgstr "分割"
 
-#: dist/js/editor/editor.js:10
+#: dist/js/editor/editor.js:4
 msgid "Divide (Vertical)"
 msgstr "分割（縦）"
 
-#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid "Background color or background image must be set."
 msgstr "背景色または背景画像を設定する必要があります。"
 
-#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid "Triangle"
 msgstr "三角"
 
-#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid "Wave"
 msgstr "波"
 
-#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid "Scattering Wave"
 msgstr "散乱波"
 
 #. translators: %1$s: Overlap the previous block, %2$s: Level, %3$s: Amount of content trimming
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7
 msgid ""
 "If “%1$s” is enabled in the next block, the balance can be aligned by "
 "setting the “%2$s” and “%3$s” to the same values as in the next block."
@@ -3051,33 +2882,257 @@ msgstr ""
 "後続のブロックで「%1$s」が有効になっている場合、「%2$s」と「%3$s」を後続のブ"
 "ロックと同じ値に設定することで、バランスを揃えることができます。"
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7
 msgid "Overlap the previous block"
 msgstr "前のブロックに重ねる"
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7
 msgid "Level"
 msgstr "レベル"
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7
 msgid "Amount of content trimming"
 msgstr "コンテンツのトリミング量"
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7
 msgid "Expand space"
 msgstr "スペースを拡張"
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7
 msgid "Section divider (Top)"
 msgstr "セクション区切り（上部）"
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7
 msgid "Horizontal position"
 msgstr "水平位置"
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:7
 msgid "Section divider (Bottom)"
 msgstr "セクション区切り（下部）"
+
+#: dist/js/editor/editor.js:7
+msgid "Brightness"
+msgstr "明るさ"
+
+#: dist/js/editor/editor.js:7
+msgid "Contrast"
+msgstr "コントラスト"
+
+#: dist/js/editor/editor.js:7
+msgid "Grayscale"
+msgstr "グレースケール"
+
+#: dist/js/editor/editor.js:7
+msgid "Hue Rotate"
+msgstr "色相回転"
+
+#: dist/js/editor/editor.js:7
+msgid "Invert"
+msgstr "色反転"
+
+#: dist/js/editor/editor.js:7
+msgid "Saturate"
+msgstr "彩度"
+
+#: dist/js/editor/editor.js:7
+msgid "Sepia"
+msgstr "セピア"
+
+#: dist/js/editor/editor.js:7
+msgid "Progressive"
+msgstr "プログレッシブ"
+
+#: dist/js/editor/editor.js:7
+msgid "Start position"
+msgstr "開始位置"
+
+#: dist/js/editor/editor.js:7
+msgid "Backdrop Filter"
+msgstr "背景フィルター"
+
+#: dist/js/editor/editor.js:7
+msgid "Add your own CSS to customize the appearance of this block."
+msgstr "独自の CSS を追加して、このブロックの外観をカスタマイズできます。"
+
+#: dist/js/editor/editor.js:7
+msgid ""
+"Using \"&\" as a selector acts as a unique selector that applies only to "
+"this block."
+msgstr ""
+"セレクターとして \"&\" を使用すると、このブロックのみに適用されるユニークなセ"
+"レクターとして機能します。"
+
+#: dist/js/editor/editor.js:7
+msgid "Selectors and CSS beginning with anything other than \"&\" are ignored."
+msgstr "\"&\" 以外から始まるセレクターおよび CSS は無視されます。"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify content left"
+msgstr "コンテンツを左揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify content center"
+msgstr "コンテンツを中央揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify content right"
+msgstr "コンテンツを右揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify content space-between"
+msgstr "コンテンツを両端揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify content space-around"
+msgstr "コンテンツを均等配置（space-around）"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify content space-evenly"
+msgstr "コンテンツを均等配置（space-evenly）"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify content"
+msgstr "コンテンツの水平配置"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify items top"
+msgstr "項目を上揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify items bottom"
+msgstr "項目を下揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Stretch to fill"
+msgstr "埋めるように拡張"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify items"
+msgstr "項目の水平配置"
+
+#: dist/js/editor/editor.js:7
+msgid "Align items"
+msgstr "項目の垂直配置"
+
+#: dist/js/editor/editor.js:7
+msgid "Align content top"
+msgstr "コンテンツを上揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Align content center"
+msgstr "コンテンツを中央揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Align content bottom"
+msgstr "コンテンツを下揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Align content space-between"
+msgstr "コンテンツを両端揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Align content space-around"
+msgstr "コンテンツを均等配置（space-around）"
+
+#: dist/js/editor/editor.js:7
+msgid "Align content space-evenly"
+msgstr "コンテンツを均等配置（space-evenly）"
+
+#: dist/js/editor/editor.js:7
+msgid "Align content"
+msgstr "コンテンツの垂直配置"
+
+#: dist/js/editor/editor.js:7
+msgid "Center"
+msgstr "中央"
+
+#: dist/js/editor/editor.js:7
+msgid "Block alignment"
+msgstr "ブロックの配置"
+
+#: dist/js/editor/editor.js:7
+msgid "Recommended width"
+msgstr "推奨幅"
+
+#: dist/js/editor/editor.js:7
+msgid "Fit"
+msgstr "フィット"
+
+#: dist/js/editor/editor.js:7
+msgid "Max width"
+msgstr "最大幅"
+
+#: dist/js/editor/editor.js:7
+msgid ""
+"If the specified width exceeds the parent's width, it will be internally "
+"adjusted to ensure it does not exceed the parent's width."
+msgstr ""
+"指定した幅が親の幅を超えた場合、親の幅は超えないよう内部的に調整されます。"
+
+#: dist/js/editor/editor.js:7
+msgid "Max height"
+msgstr "最大の高さ"
+
+#: dist/js/editor/editor.js:7
+msgid "Min height"
+msgstr "最小の高さ"
+
+#: dist/js/editor/editor.js:7
+msgid "auto-fill"
+msgstr "auto-fill"
+
+#: dist/js/editor/editor.js:7
+msgid "auto-fit"
+msgstr "auto-fit"
+
+#: dist/js/editor/editor.js:7
+msgid "Align self top"
+msgstr "このブロックを上揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Align self center"
+msgstr "このブロックを中央揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Align self bottom"
+msgstr "このブロックを下揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Align self"
+msgstr "このブロックの垂直配置"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify self left"
+msgstr "このブロックを左揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify self center"
+msgstr "このブロックを中央揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify self right"
+msgstr "このブロックを右揃え"
+
+#: dist/js/editor/editor.js:7
+msgid "Justify self"
+msgstr "このブロックの水平配置"
+
+#: dist/js/editor/editor.js:7
+msgid "A grid item's size and location within a grid column"
+msgstr "グリッド列の中におけるグリッドアイテムの寸法と位置"
+
+#: dist/js/editor/editor.js:7
+msgid "A grid item's size and location within the grid row"
+msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
+
+#. translators: %1$s: <code>, %2$s: </code>
+#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
+msgid ""
+"For example, enter %1$s1 / -2%2$s (fill from the first grid line to the "
+"second-to-last grid line)."
+msgstr ""
+"例えば、%1$s1 / -2%2$s（1番目のグリッド線から、最後から2番目のグリッド線まで"
+"を埋める）のように入力します。"
 
 #: dist/js/editor/editor.js:13
 msgid "Filter"
@@ -3098,46 +3153,6 @@ msgstr "下"
 #: dist/js/editor/editor.js:13
 msgid "The stack level"
 msgstr "重ね合わせレベル"
-
-#: dist/js/editor/editor.js:13
-msgid "Brightness"
-msgstr "明るさ"
-
-#: dist/js/editor/editor.js:13
-msgid "Contrast"
-msgstr "コントラスト"
-
-#: dist/js/editor/editor.js:13
-msgid "Grayscale"
-msgstr "グレースケール"
-
-#: dist/js/editor/editor.js:13
-msgid "Hue Rotate"
-msgstr "色相回転"
-
-#: dist/js/editor/editor.js:13
-msgid "Invert"
-msgstr "色反転"
-
-#: dist/js/editor/editor.js:13
-msgid "Saturate"
-msgstr "彩度"
-
-#: dist/js/editor/editor.js:13
-msgid "Sepia"
-msgstr "セピア"
-
-#: dist/js/editor/editor.js:13
-msgid "Progressive"
-msgstr "プログレッシブ"
-
-#: dist/js/editor/editor.js:13
-msgid "Start position"
-msgstr "開始位置"
-
-#: dist/js/editor/editor.js:13
-msgid "Backdrop Filter"
-msgstr "背景フィルター"
 
 #: dist/js/editor/editor.js:13
 msgid "Parallax"
@@ -3180,20 +3195,16 @@ msgid "Animation"
 msgstr "アニメーション"
 
 #: dist/js/editor/editor.js:13
-msgid "Add your own CSS to customize the appearance of this block."
-msgstr "独自の CSS を追加して、このブロックの外観をカスタマイズできます。"
+msgid "Apply to the block with the upper overlap order."
+msgstr "重なり順が上のブロックに適用します。"
 
 #: dist/js/editor/editor.js:13
-msgid ""
-"Using \"&\" as a selector acts as a unique selector that applies only to "
-"this block."
-msgstr ""
-"セレクターとして \"&\" を使用すると、このブロックのみに適用されるユニークなセ"
-"レクターとして機能します。"
+msgid "Layer"
+msgstr "レイヤー"
 
 #: dist/js/editor/editor.js:13
-msgid "Selectors and CSS beginning with anything other than \"&\" are ignored."
-msgstr "\"&\" 以外から始まるセレクターおよび CSS は無視されます。"
+msgid "Mix blend mode"
+msgstr "ミックスブレンドモード"
 
 #: dist/js/editor/editor.js:13
 msgid "Overlay"
@@ -3981,6 +3992,30 @@ msgstr "メイソンリー"
 msgctxt "block description"
 msgid "Elements of different sizes are laid out without gaps."
 msgstr "異なるサイズの要素が隙間なくレイアウトされます。"
+
+#: dist/blocks/responsive-switcher-container/block.json
+msgctxt "block title"
+msgid "Responsive switcher container"
+msgstr "レスポンシブスイッチャーコンテナー"
+
+#: dist/blocks/responsive-switcher-container/block.json
+msgctxt "block description"
+msgid ""
+"This block is the container for the content that the responsive switcher "
+"block displays."
+msgstr ""
+"このブロックはレスポンシブスイッチャーブロックが表示するコンテンツのコンテ"
+"ナーです。"
+
+#: dist/blocks/responsive-switcher/block.json
+msgctxt "block title"
+msgid "Responsive switcher"
+msgstr "レスポンシブスイッチャー"
+
+#: dist/blocks/responsive-switcher/block.json
+msgctxt "block description"
+msgid "Switch between desktop and mobile contents."
+msgstr "デスクトップとモバイルのコンテンツを切り替えます。"
 
 #: dist/blocks/tab-panel/block.json
 msgctxt "block title"

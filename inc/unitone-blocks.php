@@ -51,6 +51,8 @@ function unitone_register_blocks() {
 
 	register_block_type( get_template_directory() . '/dist/blocks/abstract-background' );
 	register_block_type( get_template_directory() . '/dist/blocks/accordion' );
+	register_block_type( get_template_directory() . '/dist/blocks/responsive-switcher' );
+	register_block_type( get_template_directory() . '/dist/blocks/responsive-switcher-container' );
 	register_block_type( get_template_directory() . '/dist/blocks/section' );
 	register_block_type( get_template_directory() . '/dist/blocks/timeline-dots' );
 	register_block_type( get_template_directory() . '/dist/blocks/timeline-dots-row' );

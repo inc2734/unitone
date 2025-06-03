@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "unitone",
+	"name": "unitone/responsive-switcher-container",
+	"title": "Responsive switcher container",
+	"description": "This block is the container for the content that the responsive switcher block displays.",
+	"attributes": {
+		"viewport": {
+			"type": "string",
+			"enum": [ "desktop", "mobile" ],
+			"default": "desktop"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ],
+			"default": false
+		}
+	},
+	"selectors": {
+		"root": ".responsive-switcher-container"
+	},
+	"parent": [ "unitone/responsive-switcher" ],
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"inserter": false
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

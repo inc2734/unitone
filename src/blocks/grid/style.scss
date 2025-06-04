@@ -4,6 +4,9 @@
 }
 
 .unitone-grid {
+	--unitone--align-items: stretch;
+	--unitone--justify-items: stretch;
+
 	--unitone--gap: var(--unitone--global--text-gap);
 	--unitone--column-gap: var(--unitone--gap);
 	--unitone--row-gap: var(--unitone--gap);
@@ -31,12 +34,14 @@
 	--unitone--sm-grid-template-rows: var(--unitone--md-grid-template-rows);
 
 	display: grid;
+	align-items: var(--unitone--align-items);
+	justify-items: var(--unitone--justify-items);
 	column-gap: var(--unitone--column-gap);
 	row-gap: var(--unitone--row-gap);
 
 	> * {
-		--unitone--justify-self: stretch;
-		--unitone--align-self: stretch;
+		--unitone--justify-self: auto;
+		--unitone--align-self: auto;
 		--unitone--grid-column: auto;
 		--unitone--md-grid-column: var(--unitone--grid-column);
 		--unitone--sm-grid-column: var(--unitone--md-grid-column);

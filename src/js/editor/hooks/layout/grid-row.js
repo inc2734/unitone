@@ -124,8 +124,8 @@ export function GridRowEdit( {
 			...unitone,
 			gridRow: {
 				lg: newValue || undefined,
-				md: unitone?.gridRow?.md || undefined,
-				sm: unitone?.gridRow?.sm || undefined,
+				md: unitone?.gridRow?.md,
+				sm: unitone?.gridRow?.sm,
 			},
 		};
 
@@ -138,9 +138,9 @@ export function GridRowEdit( {
 		const newUnitone = {
 			...unitone,
 			gridRow: {
-				lg: unitone?.gridRow?.lg || fallbackValue || undefined,
+				lg: unitone?.gridRow?.lg ?? fallbackValue,
 				md: newValue || undefined,
-				sm: unitone?.gridRow?.sm || undefined,
+				sm: unitone?.gridRow?.sm,
 			},
 		};
 
@@ -153,8 +153,8 @@ export function GridRowEdit( {
 		const newUnitone = {
 			...unitone,
 			gridRow: {
-				lg: unitone?.gridRow?.lg || fallbackValue || undefined,
-				md: unitone?.gridRow?.md || undefined,
+				lg: unitone?.gridRow?.lg ?? fallbackValue,
+				md: unitone?.gridRow?.md,
 				sm: newValue || undefined,
 			},
 		};
@@ -174,7 +174,8 @@ export function GridRowEdit( {
 					hideLabelFromVision
 					help={ help }
 					value={
-						( unitone?.gridRow?.lg || fallbackValue ) ??
+						unitone?.gridRow?.lg ??
+						fallbackValue ??
 						defaultValue?.lg ??
 						''
 					}
@@ -188,10 +189,11 @@ export function GridRowEdit( {
 					hideLabelFromVision
 					help={ help }
 					value={
-						( unitone?.gridRow?.md ||
-							unitone?.gridRow?.lg ||
-							fallbackValue ) ??
-						( defaultValue?.md || defaultValue?.lg ) ??
+						unitone?.gridRow?.md ??
+						unitone?.gridRow?.lg ??
+						fallbackValue ??
+						defaultValue?.md ??
+						defaultValue?.lg ??
 						''
 					}
 					onChange={ onChangeGridRowMd }
@@ -204,13 +206,13 @@ export function GridRowEdit( {
 					hideLabelFromVision
 					help={ help }
 					value={
-						( unitone?.gridRow?.sm ||
-							unitone?.gridRow?.md ||
-							unitone?.gridRow?.lg ||
-							fallbackValue ) ??
-						( defaultValue?.sm ||
-							defaultValue?.md ||
-							defaultValue?.lg ) ??
+						unitone?.gridRow?.sm ??
+						unitone?.gridRow?.md ??
+						unitone?.gridRow?.lg ??
+						fallbackValue ??
+						defaultValue?.sm ??
+						defaultValue?.md ??
+						defaultValue?.lg ??
 						''
 					}
 					onChange={ onChangeGridRowSm }
@@ -253,12 +255,10 @@ export function useGridRowBlockProps( settings ) {
 				...settings.wrapperProps?.style,
 				'--unitone--grid-row':
 					typeof newGridRow === 'string'
-						? newGridRow || undefined
-						: newGridRow?.lg || undefined,
-				'--unitone--md-grid-row':
-					null != newGridRow?.md ? newGridRow?.md : undefined,
-				'--unitone--sm-grid-row':
-					null != newGridRow?.sm ? newGridRow?.sm : undefined,
+						? newGridRow
+						: newGridRow?.lg,
+				'--unitone--md-grid-row': newGridRow?.md,
+				'--unitone--sm-grid-row': newGridRow?.sm,
 			},
 		},
 	};

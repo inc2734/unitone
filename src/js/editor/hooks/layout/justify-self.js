@@ -119,11 +119,16 @@ export function JustifySelfToolbar( {
 	const deviceType = useDeviceType();
 	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );
 	let defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
+	const fallbackValue =
+		typeof unitone?.justifySelf === 'string'
+			? unitone?.justifySelf
+			: undefined;
 
 	const onChangeJustifySelf = ( newValue ) => {
 		const newUnitone = {
 			...unitone,
-			justifySelf: newValue || undefined,
+			justifySelf:
+				newValue !== unitone?.justifySelf ? newValue : undefined,
 		};
 
 		setAttributes( {
@@ -135,9 +140,12 @@ export function JustifySelfToolbar( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: newValue || undefined,
-				md: unitone?.justifySelf?.md || undefined,
-				sm: unitone?.justifySelf?.sm || undefined,
+				lg:
+					newValue !== unitone?.justifySelf?.lg
+						? newValue
+						: undefined,
+				md: unitone?.justifySelf?.md,
+				sm: unitone?.justifySelf?.sm,
 			},
 		};
 
@@ -150,9 +158,12 @@ export function JustifySelfToolbar( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: unitone?.justifySelf?.lg || undefined,
-				md: newValue || undefined,
-				sm: unitone?.justifySelf?.sm || undefined,
+				lg: unitone?.justifySelf?.lg ?? fallbackValue,
+				md:
+					newValue !== unitone?.justifySelf?.md
+						? newValue
+						: undefined,
+				sm: unitone?.justifySelf?.sm,
 			},
 		};
 
@@ -165,9 +176,12 @@ export function JustifySelfToolbar( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: unitone?.justifySelf?.lg || undefined,
-				md: unitone?.justifySelf?.md || undefined,
-				sm: newValue || undefined,
+				lg: unitone?.justifySelf?.lg ?? fallbackValue,
+				md: unitone?.justifySelf?.md,
+				sm:
+					newValue !== unitone?.justifySelf?.sm
+						? newValue
+						: undefined,
 			},
 		};
 
@@ -179,19 +193,18 @@ export function JustifySelfToolbar( {
 	let value = unitone?.justifySelf;
 	let onChange = onChangeJustifySelf;
 	if ( isResponsive ) {
-		const fallbackValue = typeof value === 'string' ? value : undefined;
 		if ( 'desktop' === deviceType ) {
-			value = value?.lg || fallbackValue;
+			value = value?.lg ?? fallbackValue;
 			defaultValue = defaultValue?.lg;
 			onChange = onChangeJustifySelfLg;
 		} else if ( 'tablet' === deviceType ) {
-			value = value?.md || value?.lg || fallbackValue;
-			defaultValue = defaultValue?.md || defaultValue?.lg;
+			value = value?.md ?? value?.lg ?? fallbackValue;
+			defaultValue = defaultValue?.md ?? defaultValue?.lg;
 			onChange = onChangeJustifySelfMd;
 		} else if ( 'mobile' === deviceType ) {
-			value = value?.sm || value?.md || value?.lg || fallbackValue;
+			value = value?.sm ?? value?.md ?? value?.lg ?? fallbackValue;
 			defaultValue =
-				defaultValue?.sm || defaultValue?.md || defaultValue?.lg;
+				defaultValue?.sm ?? defaultValue?.md ?? defaultValue?.lg;
 			onChange = onChangeJustifySelfSm;
 		}
 	}
@@ -250,7 +263,8 @@ export function JustifySelfEdit( {
 	const onChangeJustifySelf = ( newValue ) => {
 		const newUnitone = {
 			...unitone,
-			justifySelf: newValue || undefined,
+			justifySelf:
+				newValue !== unitone?.justifySelf ? newValue : undefined,
 		};
 
 		setAttributes( {
@@ -262,9 +276,12 @@ export function JustifySelfEdit( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: newValue || undefined,
-				md: unitone?.justifySelf?.md || undefined,
-				sm: unitone?.justifySelf?.sm || undefined,
+				lg:
+					newValue !== unitone?.justifySelf?.lg
+						? newValue
+						: undefined,
+				md: unitone?.justifySelf?.md,
+				sm: unitone?.justifySelf?.sm,
 			},
 		};
 
@@ -277,9 +294,12 @@ export function JustifySelfEdit( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: unitone?.justifySelf?.lg || fallbackValue || undefined,
-				md: newValue || undefined,
-				sm: unitone?.justifySelf?.sm || undefined,
+				lg: unitone?.justifySelf?.lg ?? fallbackValue,
+				md:
+					newValue !== unitone?.justifySelf?.md
+						? newValue
+						: undefined,
+				sm: unitone?.justifySelf?.sm,
 			},
 		};
 
@@ -292,9 +312,12 @@ export function JustifySelfEdit( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: unitone?.justifySelf?.lg || fallbackValue || undefined,
-				md: unitone?.justifySelf?.md || undefined,
-				sm: newValue || undefined,
+				lg: unitone?.justifySelf?.lg ?? fallbackValue,
+				md: unitone?.justifySelf?.md,
+				sm:
+					newValue !== unitone?.justifySelf?.sm
+						? newValue
+						: undefined,
 			},
 		};
 
@@ -313,9 +336,11 @@ export function JustifySelfEdit( {
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={
-							( unitone?.justifySelf?.lg || fallbackValue ) ??
+							unitone?.justifySelf?.lg ??
+							fallbackValue ??
 							defaultValue?.lg
 						}
+						isDeselectable={ ! fallbackValue && ! defaultValue?.lg }
 						onChange={ onChangeJustifySelfLg }
 					>
 						{ justifySelfOptions.map(
@@ -338,10 +363,17 @@ export function JustifySelfEdit( {
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={
-							( unitone?.justifySelf?.md ||
-								unitone?.justifySelf?.lg ||
-								fallbackValue ) ??
-							( defaultValue?.md || defaultValue?.lg )
+							unitone?.justifySelf?.md ??
+							unitone?.justifySelf?.lg ??
+							fallbackValue ??
+							defaultValue?.md ??
+							defaultValue?.lg
+						}
+						isDeselectable={
+							! unitone?.justifySelf?.lg &&
+							! fallbackValue &&
+							! defaultValue?.md &&
+							! defaultValue?.lg
 						}
 						onChange={ onChangeJustifySelfMd }
 					>
@@ -365,13 +397,21 @@ export function JustifySelfEdit( {
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={
-							( unitone?.justifySelf?.sm ||
-								unitone?.justifySelf?.md ||
-								unitone?.justifySelf?.lg ||
-								fallbackValue ) ??
-							( defaultValue?.sm ||
-								defaultValue?.md ||
-								defaultValue?.lg )
+							unitone?.justifySelf?.sm ??
+							unitone?.justifySelf?.md ??
+							unitone?.justifySelf?.lg ??
+							fallbackValue ??
+							defaultValue?.sm ??
+							defaultValue?.md ??
+							defaultValue?.lg
+						}
+						isDeselectable={
+							! unitone?.justifySelf?.md &&
+							! unitone?.justifySelf?.lg &&
+							! fallbackValue &&
+							! defaultValue?.sm &&
+							! defaultValue?.md &&
+							! defaultValue?.lg
 						}
 						onChange={ onChangeJustifySelfSm }
 					>
@@ -395,7 +435,8 @@ export function JustifySelfEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.justifySelf ?? defaultValue }
+				value={ unitone?.justifySelf }
+				isDeselectable={ ! defaultValue }
 				onChange={ onChangeJustifySelf }
 			>
 				{ justifySelfOptions.map(

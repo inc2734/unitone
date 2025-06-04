@@ -127,8 +127,8 @@ export function GridColumnEdit( {
 			...unitone,
 			gridColumn: {
 				lg: newValue || undefined,
-				md: unitone?.gridColumn?.md || undefined,
-				sm: unitone?.gridColumn?.sm || undefined,
+				md: unitone?.gridColumn?.md,
+				sm: unitone?.gridColumn?.sm,
 			},
 		};
 
@@ -141,9 +141,9 @@ export function GridColumnEdit( {
 		const newUnitone = {
 			...unitone,
 			gridColumn: {
-				lg: unitone?.gridColumn?.lg || fallbackValue || undefined,
+				lg: unitone?.gridColumn?.lg ?? fallbackValue,
 				md: newValue || undefined,
-				sm: unitone?.gridColumn?.sm || undefined,
+				sm: unitone?.gridColumn?.sm,
 			},
 		};
 
@@ -156,8 +156,8 @@ export function GridColumnEdit( {
 		const newUnitone = {
 			...unitone,
 			gridColumn: {
-				lg: unitone?.gridColumn?.lg || fallbackValue || undefined,
-				md: unitone?.gridColumn?.md || undefined,
+				lg: unitone?.gridColumn?.lg ?? fallbackValue,
+				md: unitone?.gridColumn?.md,
 				sm: newValue || undefined,
 			},
 		};
@@ -177,7 +177,8 @@ export function GridColumnEdit( {
 					hideLabelFromVision
 					help={ help }
 					value={
-						( unitone?.gridColumn?.lg || fallbackValue ) ??
+						unitone?.gridColumn?.lg ??
+						fallbackValue ??
 						defaultValue?.lg ??
 						''
 					}
@@ -191,10 +192,11 @@ export function GridColumnEdit( {
 					hideLabelFromVision
 					help={ help }
 					value={
-						( unitone?.gridColumn?.md ||
-							unitone?.gridColumn?.lg ||
-							fallbackValue ) ??
-						( defaultValue?.md || defaultValue?.lg ) ??
+						unitone?.gridColumn?.md ??
+						unitone?.gridColumn?.lg ??
+						fallbackValue ??
+						defaultValue?.md ??
+						defaultValue?.lg ??
 						''
 					}
 					onChange={ onChangeGridColumnMd }
@@ -207,13 +209,13 @@ export function GridColumnEdit( {
 					hideLabelFromVision
 					help={ help }
 					value={
-						( unitone?.gridColumn?.sm ||
-							unitone?.gridColumn?.md ||
-							unitone?.gridColumn?.lg ||
-							fallbackValue ) ??
-						( defaultValue?.sm ||
-							defaultValue?.md ||
-							defaultValue?.lg ) ??
+						unitone?.gridColumn?.sm ??
+						unitone?.gridColumn?.md ??
+						unitone?.gridColumn?.lg ??
+						fallbackValue ??
+						defaultValue?.sm ??
+						defaultValue?.md ??
+						defaultValue?.lg ??
 						''
 					}
 					onChange={ onChangeGridColumnSm }
@@ -256,12 +258,10 @@ export function useGridColumnBlockProps( settings ) {
 				...settings.wrapperProps?.style,
 				'--unitone--grid-column':
 					typeof newGridColumn === 'string'
-						? newGridColumn || undefined
-						: newGridColumn?.lg || undefined,
-				'--unitone--md-grid-column':
-					null != newGridColumn?.md ? newGridColumn?.md : undefined,
-				'--unitone--sm-grid-column':
-					null != newGridColumn?.sm ? newGridColumn?.sm : undefined,
+						? newGridColumn
+						: newGridColumn?.lg,
+				'--unitone--md-grid-column': newGridColumn?.md,
+				'--unitone--sm-grid-column': newGridColumn?.sm,
 			},
 		},
 	};

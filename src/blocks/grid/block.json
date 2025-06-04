@@ -142,6 +142,8 @@
 			}
 		},
 		"unitone": {
+			"alignItems": true,
+			"justifyItems": true,
 			"gap": {
 				"splitOnAxis": true
 			},

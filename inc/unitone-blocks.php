@@ -51,7 +51,6 @@ function unitone_register_blocks() {
 
 	register_block_type( get_template_directory() . '/dist/blocks/abstract-background' );
 	register_block_type( get_template_directory() . '/dist/blocks/accordion' );
-	register_block_type( get_template_directory() . '/dist/blocks/responsive-switcher' );
 	register_block_type( get_template_directory() . '/dist/blocks/responsive-switcher-container' );
 	register_block_type( get_template_directory() . '/dist/blocks/section' );
 	register_block_type( get_template_directory() . '/dist/blocks/timeline-dots' );
@@ -61,6 +60,7 @@ function unitone_register_blocks() {
 	require_once get_template_directory() . '/dist/blocks/mega-menu/index.php';
 	require_once get_template_directory() . '/dist/blocks/breadcrumbs/index.php';
 	require_once get_template_directory() . '/dist/blocks/child-pages/index.php';
+	require_once get_template_directory() . '/dist/blocks/responsive-switcher/index.php';
 	require_once get_template_directory() . '/dist/blocks/tab-panel/index.php';
 	require_once get_template_directory() . '/dist/blocks/tabs/index.php';
 

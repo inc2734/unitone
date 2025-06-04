@@ -29,5 +29,6 @@
 		"align": [ "full", "wide" ]
 	},
 	"category": "unitone/component",
-	"editorScript": "file:./index.js"
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
 }

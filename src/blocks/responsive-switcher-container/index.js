@@ -5,8 +5,6 @@ import edit from './edit';
 import save from './save';
 import variations from './variations';
 
-import './style.scss';
-
 registerBlockType( 'unitone/responsive-switcher-container', {
 	icon: {
 		src: desktop,

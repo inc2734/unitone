@@ -36,8 +36,12 @@ export default function ( { attributes } ) {
 						: style?.border?.color,
 				},
 			} ) }
+			data-wp-interactive='{ "namespace": "unitone/accordion" }'
 		>
-			<summary className="unitone-accordion__summary">
+			<summary
+				className="unitone-accordion__summary"
+				data-wp-on--click="actions.toggle"
+			>
 				<span
 					className="unitone-accordion__summary-inner"
 					data-unitone-layout="with-sidebar -sidebar:right"

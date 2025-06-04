@@ -59,6 +59,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"interactivity": true,
 		"color": {
 			"background": true,
 			"color": true,
@@ -122,5 +123,6 @@
 	},
 	"category": "unitone/component",
 	"editorScript": "file:./index.js",
-	"style": [ "file:./style-index.css", "unitone-with-sidebar-style" ]
+	"style": [ "file:./style-index.css", "unitone-with-sidebar-style" ],
+	"viewScriptModule": "file:./view.js"
 }

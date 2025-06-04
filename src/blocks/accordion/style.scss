@@ -19,6 +19,7 @@
 	&__summary {
 		display: block;
 		cursor: pointer;
+		user-select: none;
 
 		&::-webkit-details-marker {
 			display: none;

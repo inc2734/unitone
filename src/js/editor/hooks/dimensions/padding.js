@@ -27,6 +27,8 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	allSides,
+	verticalSides,
+	horizontalSides,
 	topSides,
 	rightSides,
 	bottomSides,
@@ -175,6 +177,15 @@ export function PaddingEdit( {
 	}, [] );
 
 	const split = getBlockSupport( name, 'unitone.padding.split' ) || false;
+	const isAllSides = true === split;
+	const applyTop = Array.isArray( split ) && split?.includes( 'top' );
+	const applyRight = Array.isArray( split ) && split?.includes( 'right' );
+	const applyBottom = Array.isArray( split ) && split?.includes( 'bottom' );
+	const applyLeft = Array.isArray( split ) && split?.includes( 'left' );
+	const isVerticalSides =
+		applyTop && applyBottom && ! applyRight && ! applyLeft;
+	const isHorizontalSides =
+		! applyTop && ! applyBottom && applyRight && applyLeft;
 
 	const conpactedValue = compacting( unitone?.padding, defaultValue );
 	const conpactedDefaultValue = compacting( defaultValue );
@@ -219,6 +230,22 @@ export function PaddingEdit( {
 
 		newPadding[ side ] = newValue || expandedDefault?.[ side ];
 
+		// If the side you use is restricted, remove unnecessary values.
+		if ( ! isAllSides ) {
+			if ( ! applyTop ) {
+				newPadding.top = undefined;
+			}
+			if ( ! applyRight ) {
+				newPadding.right = undefined;
+			}
+			if ( ! applyBottom ) {
+				newPadding.bottom = undefined;
+			}
+			if ( ! applyLeft ) {
+				newPadding.left = undefined;
+			}
+		}
+
 		setAttributes( {
 			unitone: cleanEmptyObject( {
 				...unitone,
@@ -227,6 +254,13 @@ export function PaddingEdit( {
 		} );
 	};
 
+	let linkedIcon = allSides;
+	if ( isVerticalSides ) {
+		linkedIcon = verticalSides;
+	} else if ( isHorizontalSides ) {
+		linkedIcon = horizontalSides;
+	}
+
 	return (
 		<div className="spacing-sizes-control">
 			<Flex>
@@ -234,7 +268,7 @@ export function PaddingEdit( {
 					<BaseControl.VisualLabel>{ label }</BaseControl.VisualLabel>
 				</FlexBlock>
 
-				{ split && (
+				{ !! split && (
 					<FlexItem>
 						<LinkedButton
 							isLinked={ isLinked }
@@ -254,7 +288,7 @@ export function PaddingEdit( {
 					{ isLinked ? (
 						<Flex align="center">
 							<FlexItem>
-								<Icon icon={ allSides } size={ 16 } />
+								<Icon icon={ linkedIcon } size={ 16 } />
 							</FlexItem>
 
 							<FlexBlock>
@@ -276,97 +310,108 @@ export function PaddingEdit( {
 								gap: '8px',
 							} }
 						>
-							<Flex align="center">
-								<FlexItem>
-									<Icon icon={ topSides } size={ 16 } />
-								</FlexItem>
+							{ ( isAllSides || applyTop ) && (
+								<Flex align="center">
+									<FlexItem>
+										<Icon icon={ topSides } size={ 16 } />
+									</FlexItem>
 
-								<FlexBlock>
-									<SpacingSizeControl
-										value={
-											unitone?.padding?.top ??
-											unitone?.padding ??
-											defaultValue?.top ??
-											defaultValue
-										}
-										onChange={ ( newValue ) =>
-											onChangePaddingSide(
-												'top',
-												newValue
-											)
-										}
-									/>
-								</FlexBlock>
-							</Flex>
+									<FlexBlock>
+										<SpacingSizeControl
+											value={
+												unitone?.padding?.top ??
+												unitone?.padding ??
+												defaultValue?.top ??
+												defaultValue
+											}
+											onChange={ ( newValue ) =>
+												onChangePaddingSide(
+													'top',
+													newValue
+												)
+											}
+										/>
+									</FlexBlock>
+								</Flex>
+							) }
 
-							<Flex align="center">
-								<FlexItem>
-									<Icon icon={ rightSides } size={ 16 } />
-								</FlexItem>
+							{ ( isAllSides || applyRight ) && (
+								<Flex align="center">
+									<FlexItem>
+										<Icon icon={ rightSides } size={ 16 } />
+									</FlexItem>
 
-								<FlexBlock>
-									<SpacingSizeControl
-										value={
-											unitone?.padding?.right ??
-											unitone?.padding ??
-											defaultValue?.right ??
-											defaultValue
-										}
-										onChange={ ( newValue ) =>
-											onChangePaddingSide(
-												'right',
-												newValue
-											)
-										}
-									/>
-								</FlexBlock>
-							</Flex>
+									<FlexBlock>
+										<SpacingSizeControl
+											value={
+												unitone?.padding?.right ??
+												unitone?.padding ??
+												defaultValue?.right ??
+												defaultValue
+											}
+											onChange={ ( newValue ) =>
+												onChangePaddingSide(
+													'right',
+													newValue
+												)
+											}
+										/>
+									</FlexBlock>
+								</Flex>
+							) }
 
-							<Flex align="center">
-								<FlexItem>
-									<Icon icon={ bottomSides } size={ 16 } />
-								</FlexItem>
+							{ ( isAllSides || applyBottom ) && (
+								<Flex align="center">
+									<FlexItem>
+										<Icon
+											icon={ bottomSides }
+											size={ 16 }
+										/>
+									</FlexItem>
 
-								<FlexBlock>
-									<SpacingSizeControl
-										value={
-											unitone?.padding?.bottom ??
-											unitone?.padding ??
-											defaultValue?.bottom ??
-											defaultValue
-										}
-										onChange={ ( newValue ) =>
-											onChangePaddingSide(
-												'bottom',
-												newValue
-											)
-										}
-									/>
-								</FlexBlock>
-							</Flex>
+									<FlexBlock>
+										<SpacingSizeControl
+											value={
+												unitone?.padding?.bottom ??
+												unitone?.padding ??
+												defaultValue?.bottom ??
+												defaultValue
+											}
+											onChange={ ( newValue ) =>
+												onChangePaddingSide(
+													'bottom',
+													newValue
+												)
+											}
+										/>
+									</FlexBlock>
+								</Flex>
+							) }
 
-							<Flex align="center">
-								<FlexItem>
-									<Icon icon={ leftSides } size={ 16 } />
-								</FlexItem>
+							{ ( isAllSides || applyLeft ) && (
+								<Flex align="center">
+									<FlexItem>
+										<Icon icon={ leftSides } size={ 16 } />
+									</FlexItem>
 
-								<FlexBlock>
-									<SpacingSizeControl
-										value={
-											unitone?.padding?.left ??
-											unitone?.padding ??
-											defaultValue?.left ??
-											defaultValue
-										}
-										onChange={ ( newValue ) =>
-											onChangePaddingSide(
-												'left',
-												newValue
-											)
-										}
-									/>
-								</FlexBlock>
-							</Flex>
+									<FlexBlock>
+										<SpacingSizeControl
+											value={
+												unitone?.padding?.left ??
+												unitone?.padding ??
+												defaultValue?.left ??
+												defaultValue
+											}
+											onChange={ ( newValue ) =>
+												onChangePaddingSide(
+													'left',
+													newValue
+												)
+											}
+										/>
+									</FlexBlock>
+								</Flex>
+							) }
 						</div>
 					) }
 				</>

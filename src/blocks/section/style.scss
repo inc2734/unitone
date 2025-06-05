@@ -3,6 +3,8 @@
 	--unitone--gutters: var(--unitone--global--gutters);
 	--unitone--max-width: var(--wp--style--global--wide-size);
 	--unitone--padding: var(--unitone--s4);
+	--unitone--padding-top: var(--unitone--padding);
+	--unitone--padding-bottom: var(--unitone--padding);
 	--unitone--overflow: visible;
 	--unitone--backdrop-filter: none;
 	--unitone--position: relative;
@@ -16,6 +18,8 @@
 	--unitone--section--gutters: var(--unitone--gutters);
 	--unitone--section--max-width: var(--unitone--max-width);
 	--unitone--section--padding: var(--unitone--padding);
+	--unitone--section--padding-top: var(--unitone--padding-top);
+	--unitone--section--padding-bottom: var(--unitone--padding-bottom);
 
 	max-width: none;
 	overflow: var(--unitone--overflow);
@@ -28,7 +32,8 @@
 	z-index: var(--unitone--z-index);
 
 	> [data-unitone-layout~="gutters"] {
-		--unitone--padding: var(--unitone--section--padding);
+		padding-top: var(--unitone--section--padding-top);
+		padding-bottom: var(--unitone--section--padding-bottom);
 
 		> [data-unitone-layout~="container"] {
 			--unitone--gutters: var(--unitone--section--gutters);
@@ -45,17 +50,41 @@
 	.unitone-section[data-unitone-layout~="-padding\:#{ $i }"] {
 		--unitone--padding: var(--unitone--s#{ $i }) !important;
 	}
+
+	.unitone-section[data-unitone-layout~="-padding-top\:#{ $i }"] {
+		--unitone--padding-top: var(--unitone--s#{ $i }) !important;
+	}
+
+	.unitone-section[data-unitone-layout~="-padding-bottom\:#{ $i }"] {
+		--unitone--padding-bottom: var(--unitone--s#{ $i }) !important;
+	}
 }
 
 @for $i from 1 through 7 {
 	.unitone-section[data-unitone-layout~="-padding\:#{ $i }s"] {
 		--unitone--padding: var(--unitone--s#{ $i }s) !important;
 	}
+
+	.unitone-section[data-unitone-layout~="-padding-top\:#{ $i }s"] {
+		--unitone--padding-top: var(--unitone--s#{ $i }s) !important;
+	}
+
+	.unitone-section[data-unitone-layout~="-padding-bottom\:#{ $i }s"] {
+		--unitone--padding-bottom: var(--unitone--s#{ $i }s) !important;
+	}
 }
 
 @for $i from 2 through 7 {
 	.unitone-section[data-unitone-layout~="-padding\:#{ $i }m"] {
 		--unitone--padding: var(--unitone--s#{ $i }m) !important;
+	}
+
+	.unitone-section[data-unitone-layout~="-padding-top\:#{ $i }m"] {
+		--unitone--padding-top: var(--unitone--s#{ $i }m) !important;
+	}
+
+	.unitone-section[data-unitone-layout~="-padding-bottom\:#{ $i }m"] {
+		--unitone--padding-bottom: var(--unitone--s#{ $i }m) !important;
 	}
 }
 

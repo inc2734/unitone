@@ -5,7 +5,7 @@
  * Inserter: false
  */
 ?>
-<!-- wp:unitone/section {"tagName":"header","align":"full","unitone":{"padding":"0","gutters":"0","gap":"-2"}} -->
+<!-- wp:unitone/section {"tagName":"header","align":"full","unitone":{"padding":"0","gutters":"root","gap":"-2"}} -->
 <header class="alignfull unitone-section">
 	<div data-unitone-layout="gutters">
 		<div data-unitone-layout="container">

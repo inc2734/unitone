@@ -6,6 +6,20 @@
 	--unitone--min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
 }
 
+[data-unitone-layout~="cover__content"] {
+	--unitone--padding: 0px;
+	--unitone--padding-top: var(--unitone--padding);
+	--unitone--padding-right: var(--unitone--padding);
+	--unitone--padding-bottom: var(--unitone--padding);
+	--unitone--padding-left: var(--unitone--padding);
+
+	padding:
+		var(--unitone--padding-top)
+		var(--unitone--padding-right)
+		var(--unitone--padding-bottom)
+		var(--unitone--padding-left);
+}
+
 [data-unitone-layout~="cover__content"][data-unitone-layout~="-fill"] {
 	flex-grow: 1;
 }

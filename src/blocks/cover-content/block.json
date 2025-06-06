@@ -34,7 +34,7 @@
 		"className": false,
 		"anchor": true,
 		"color": {
-			"background": false,
+			"background": true,
 			"link": true,
 			"text": true
 		},
@@ -50,7 +50,15 @@
 				"fontSize": true
 			}
 		},
+		"shadow": {
+			"__experimentalDefaultControls": {
+				"shadow": true
+			}
+		},
 		"unitone": {
+			"padding": {
+				"split": true
+			},
 			"position": true,
 			"fluidTypography": true,
 			"halfLeading": true

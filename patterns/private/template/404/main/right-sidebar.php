@@ -21,25 +21,29 @@
 								<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--sidebar-width:300px;--unitone--content-min-width:600px">
 									<!-- wp:unitone/with-sidebar-content {"type":"main","tagName":"main"} -->
 									<main data-unitone-layout="with-sidebar__content">
-										<!-- wp:unitone/stack {"unitone":{"gap":"3"}} -->
-										<div data-unitone-layout="stack">
-											<!-- wp:unitone/text {"className":"entry-content","unitone":{"maxWidth":"100%","gutters":"0"}} -->
-											<div data-unitone-layout="text -gap" class="entry-content">
-												<!-- wp:paragraph -->
-												<p><?php esc_html_e( 'Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box.', 'unitone' ); ?></p>
-												<!-- /wp:paragraph -->
+										<div data-unitone-layout="with-sidebar__content__content">
+											<!-- wp:unitone/stack {"unitone":{"gap":"3"}} -->
+											<div data-unitone-layout="stack">
+												<!-- wp:unitone/text {"className":"entry-content","unitone":{"maxWidth":"100%","gutters":"0"}} -->
+												<div data-unitone-layout="text -gap" class="entry-content">
+													<!-- wp:paragraph -->
+													<p><?php esc_html_e( 'Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box.', 'unitone' ); ?></p>
+													<!-- /wp:paragraph -->
 
-												<!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search","buttonUseIcon":true} /-->
+													<!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search","buttonUseIcon":true} /-->
+												</div>
+												<!-- /wp:unitone/text -->
 											</div>
-											<!-- /wp:unitone/text -->
+											<!-- /wp:unitone/stack -->
 										</div>
-										<!-- /wp:unitone/stack -->
 									</main>
 									<!-- /wp:unitone/with-sidebar-content -->
 
 									<!-- wp:unitone/with-sidebar-content {"type":"aside","tagName":"aside"} -->
 									<aside data-unitone-layout="with-sidebar__content">
-										<!-- wp:pattern {"slug":"unitone/sidebar/blog"} /-->
+										<div data-unitone-layout="with-sidebar__content__content">
+											<!-- wp:pattern {"slug":"unitone/sidebar/blog"} /-->
+										</div>
 									</aside>
 									<!-- /wp:unitone/with-sidebar-content -->
 								</div>

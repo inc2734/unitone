@@ -11,32 +11,36 @@
 				<div data-unitone-layout="with-sidebar -sidebar:left" style="--unitone--sidebar-width:40px;--unitone--content-min-width:50%">
 					<!-- wp:unitone/with-sidebar-content {"type":"aside"} -->
 					<div data-unitone-layout="with-sidebar__content">
-						<!-- wp:avatar {"size":40,"style":{"border":{"radius":"20px"}}} /-->
+						<div data-unitone-layout="with-sidebar__content__content">
+							<!-- wp:avatar {"size":40,"style":{"border":{"radius":"20px"}}} /-->
+						</div>
 					</div>
 					<!-- /wp:unitone/with-sidebar-content -->
 
 					<!-- wp:unitone/with-sidebar-content {"type":"main"} -->
 					<div data-unitone-layout="with-sidebar__content">
-						<!-- wp:unitone/stack {"unitone":{"gap":"-1"}} -->
-						<div data-unitone-layout="stack">
-							<!-- wp:unitone/stack {"unitone":{"gap":"0"}} -->
+						<div data-unitone-layout="with-sidebar__content__content">
+							<!-- wp:unitone/stack {"unitone":{"gap":"-1"}} -->
 							<div data-unitone-layout="stack">
-								<!-- wp:comment-author-name /-->
+								<!-- wp:unitone/stack {"unitone":{"gap":"0"}} -->
+								<div data-unitone-layout="stack">
+									<!-- wp:comment-author-name /-->
 
-								<!-- wp:unitone/cluster {"fontSize":"unitone-xs","unitone":{"gap":"-1"}} -->
-								<div data-unitone-layout="cluster" class="has-unitone-xs-font-size">
-									<!-- wp:comment-date /-->
-									<!-- wp:comment-edit-link /-->
+									<!-- wp:unitone/cluster {"fontSize":"unitone-xs","unitone":{"gap":"-1"}} -->
+									<div data-unitone-layout="cluster" class="has-unitone-xs-font-size">
+										<!-- wp:comment-date /-->
+										<!-- wp:comment-edit-link /-->
+									</div>
+									<!-- /wp:unitone/cluster -->
 								</div>
-								<!-- /wp:unitone/cluster -->
+								<!-- /wp:unitone/stack -->
+
+								<!-- wp:comment-content /-->
+
+								<!-- wp:comment-reply-link /-->
 							</div>
 							<!-- /wp:unitone/stack -->
-
-							<!-- wp:comment-content /-->
-
-							<!-- wp:comment-reply-link /-->
 						</div>
-						<!-- /wp:unitone/stack -->
 					</div>
 					<!-- /wp:unitone/with-sidebar-content -->
 				</div>

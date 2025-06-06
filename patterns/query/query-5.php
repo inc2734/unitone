@@ -15,12 +15,16 @@
 			<div data-unitone-layout="with-sidebar -sidebar:left" style="--unitone--sidebar-width:10em;--unitone--content-min-width:60%">
 				<!-- wp:unitone/with-sidebar-content {"type":"aside"} -->
 				<div data-unitone-layout="with-sidebar__content">
-					<!-- wp:post-date {"fontSize":"unitone-xs"} /-->
+					<div data-unitone-layout="with-sidebar__content__content">
+						<!-- wp:post-date {"fontSize":"unitone-xs"} /-->
+					</div>
 				</div>
 				<!-- /wp:unitone/with-sidebar-content -->
 				<!-- wp:unitone/with-sidebar-content {"type":"main"} -->
 				<div data-unitone-layout="with-sidebar__content">
-					<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}},"fontSize":"unitone-l"} /-->
+					<div data-unitone-layout="with-sidebar__content__content">
+						<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}},"fontSize":"unitone-l"} /-->
+					</div>
 				</div>
 				<!-- /wp:unitone/with-sidebar-content -->
 			</div>

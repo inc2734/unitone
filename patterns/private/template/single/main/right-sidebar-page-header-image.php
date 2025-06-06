@@ -21,19 +21,23 @@
 								<div data-unitone-layout="with-sidebar -sidebar:right" style="--unitone--sidebar-width:300px;--unitone--content-min-width:600px">
 									<!-- wp:unitone/with-sidebar-content {"type":"main","tagName":"main"} -->
 									<main data-unitone-layout="with-sidebar__content">
-										<!-- wp:unitone/stack {"unitone":{"gap":"3"}} -->
-										<div data-unitone-layout="stack">
-											<!-- wp:post-content {"layout":{"type":"constrained","contentSize":"100%"},"unitone":{"gutters":"0"}} /-->
+										<div data-unitone-layout="with-sidebar__content__content">
+											<!-- wp:unitone/stack {"unitone":{"gap":"3"}} -->
+											<div data-unitone-layout="stack">
+												<!-- wp:post-content {"layout":{"type":"constrained","contentSize":"100%"},"unitone":{"gutters":"0"}} /-->
 
-											<!-- wp:template-part {"slug":"comments"} /-->
+												<!-- wp:template-part {"slug":"comments"} /-->
+											</div>
+											<!-- /wp:unitone/stack -->
 										</div>
-										<!-- /wp:unitone/stack -->
 									</main>
 									<!-- /wp:unitone/with-sidebar-content -->
 
 									<!-- wp:unitone/with-sidebar-content {"type":"aside","tagName":"aside"} -->
 									<aside data-unitone-layout="with-sidebar__content">
-										<!-- wp:pattern {"slug":"unitone/sidebar/blog"} /-->
+										<div data-unitone-layout="with-sidebar__content__content">
+											<!-- wp:pattern {"slug":"unitone/sidebar/blog"} /-->
+										</div>
 									</aside>
 									<!-- /wp:unitone/with-sidebar-content -->
 								</div>

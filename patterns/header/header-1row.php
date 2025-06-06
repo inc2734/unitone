@@ -6,7 +6,7 @@
  * Block Types: core/template-part/header
  */
 ?>
-<!-- wp:unitone/section {"tagName":"div","align":"full","unitone":{"maxWidth":"100%","padding":"-1"}} -->
+<!-- wp:unitone/section {"tagName":"div","align":"full","unitone":{"maxWidth":"100%","padding":"-2"}} -->
 <div class="alignfull unitone-section">
 	<div data-unitone-layout="gutters">
 		<div data-unitone-layout="container">

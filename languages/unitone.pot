@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 19.8.1\n"
+"Project-Id-Version: unitone 19.9.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-02T09:03:10+00:00\n"
+"POT-Creation-Date: 2025-06-06T06:47:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -846,10 +846,10 @@ msgctxt "Pattern title"
 msgid "Main Area (One Column / Page Header (Image)) for 404"
 msgstr ""
 
-#: patterns/private/template/404/main/one-column-page-header-image.php:20
-#: patterns/private/template/404/main/one-column.php:20
-#: patterns/private/template/404/main/right-sidebar-page-header-image.php:26
-#: patterns/private/template/404/main/right-sidebar.php:26
+#: patterns/private/template/404/main/one-column-page-header-image.php:23
+#: patterns/private/template/404/main/one-column.php:23
+#: patterns/private/template/404/main/right-sidebar-page-header-image.php:29
+#: patterns/private/template/404/main/right-sidebar.php:29
 msgid "Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box."
 msgstr ""
 
@@ -1211,269 +1211,449 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: patterns/template-404-left-header-page-header-image.php
+#: patterns/template/404/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "404: Left Header / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-404-left-header.php
+#: patterns/template/404/left-header.php
 msgctxt "Pattern title"
 msgid "404: Left Header"
 msgstr ""
 
-#: patterns/template-404-one-column-page-header-image.php
+#: patterns/template/404/one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "404: One Column / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-404-one-column.php
+#: patterns/template/404/one-column.php
 msgctxt "Pattern title"
 msgid "404: One Column"
 msgstr ""
 
-#: patterns/template-404-right-sidebar-page-header-image.php
+#: patterns/template/404/right-sidebar-page-header-image.php
 msgctxt "Pattern title"
 msgid "404: Right Sidebar / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-404-right-sidebar.php
+#: patterns/template/404/right-sidebar.php
 msgctxt "Pattern title"
 msgid "404: Right Sidebar"
 msgstr ""
 
-#: patterns/template-archive-left-header-page-header-image.php
+#: patterns/template/404/sticky-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: Sticky Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/404/sticky-header-one-column.php
+msgctxt "Pattern title"
+msgid "404: Sticky Header / One Column"
+msgstr ""
+
+#: patterns/template/404/sticky-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: Sticky Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/404/sticky-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "404: Sticky Header / Right Sidebar"
+msgstr ""
+
+#: patterns/template/archive/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "All Archives: Left Header / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-archive-left-header.php
+#: patterns/template/archive/left-header.php
 msgctxt "Pattern title"
 msgid "All Archives: Left Header"
 msgstr ""
 
-#: patterns/template-archive-one-column-page-header-image.php
+#: patterns/template/archive/one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "All Archives: One Column / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-archive-one-column.php
+#: patterns/template/archive/one-column.php
 msgctxt "Pattern title"
 msgid "All Archives: One Column"
 msgstr ""
 
-#: patterns/template-archive-right-sidebar-page-header-image.php
+#: patterns/template/archive/right-sidebar-page-header-image.php
 msgctxt "Pattern title"
 msgid "All Archives: Right Sidebar / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-archive-right-sidebar.php
+#: patterns/template/archive/right-sidebar.php
 msgctxt "Pattern title"
 msgid "All Archives: Right Sidebar"
 msgstr ""
 
-#: patterns/template-front-page-header-footer.php
+#: patterns/template/archive/sticky-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Sticky Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/archive/sticky-header-one-column.php
+msgctxt "Pattern title"
+msgid "All Archives: Sticky Header / One Column"
+msgstr ""
+
+#: patterns/template/archive/sticky-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Sticky Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/archive/sticky-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "All Archives: Sticky Header / Right Sidebar"
+msgstr ""
+
+#: patterns/template/ftont-page/fixed-header.php
+msgctxt "Pattern title"
+msgid "Front Page: Fixed Header"
+msgstr ""
+
+#: patterns/template/ftont-page/header-footer.php
 msgctxt "Pattern title"
 msgid "Front Page: Only Header and Footer"
 msgstr ""
 
-#: patterns/template-front-page-left-header.php
+#: patterns/template/ftont-page/left-header.php
 msgctxt "Pattern title"
 msgid "Front Page: Left Header"
 msgstr ""
 
-#: patterns/template-home-left-header-page-header-image.php
+#: patterns/template/ftont-page/sticky-header.php
+msgctxt "Pattern title"
+msgid "Front Page: Sticky Header"
+msgstr ""
+
+#: patterns/template/home/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Blog Home: Left Header / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-home-left-header.php
+#: patterns/template/home/left-header.php
 msgctxt "Pattern title"
 msgid "Blog Home: Left Header"
 msgstr ""
 
-#: patterns/template-home-one-column-page-header-image.php
+#: patterns/template/home/one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "Blog Home: One Column / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-home-one-column.php
+#: patterns/template/home/one-column.php
 msgctxt "Pattern title"
 msgid "Blog Home: One Column"
 msgstr ""
 
-#: patterns/template-home-right-sidebar-page-header-image.php
+#: patterns/template/home/right-sidebar-page-header-image.php
 msgctxt "Pattern title"
 msgid "Blog Home: Right Sidebar / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-home-right-sidebar.php
+#: patterns/template/home/right-sidebar.php
 msgctxt "Pattern title"
 msgid "Blog Home: Right Sidebar"
 msgstr ""
 
-#: patterns/template-page-blank.php
+#: patterns/template/home/sticky-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Sticky Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/home/sticky-header-one-column.php
+msgctxt "Pattern title"
+msgid "Blog Home: Sticky Header / One Column"
+msgstr ""
+
+#: patterns/template/home/sticky-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Sticky Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/home/sticky-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Blog Home: Sticky Header / Right Sidebar"
+msgstr ""
+
+#: patterns/template/page/blank.php
 msgctxt "Pattern title"
 msgid "Pages: Blank"
 msgstr ""
 
-#: patterns/template-page-header-footer.php
+#: patterns/template/page/header-footer.php
 msgctxt "Pattern title"
 msgid "Pages: Only Header and Footer"
 msgstr ""
 
-#: patterns/template-page-left-header-header-footer.php
+#: patterns/template/page/left-header-header-footer.php
 msgctxt "Pattern title"
 msgid "Pages: Left Header / Only Header and Footer"
 msgstr ""
 
-#: patterns/template-page-left-header-page-header-featured.php
+#: patterns/template/page/left-header-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Pages: Left Header / Page Header (Featured Image)"
 msgstr ""
 
-#: patterns/template-page-left-header-page-header-image.php
+#: patterns/template/page/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Pages: Left Header / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-page-left-header.php
+#: patterns/template/page/left-header.php
 msgctxt "Pattern title"
 msgid "Pages: Left Header"
 msgstr ""
 
-#: patterns/template-page-one-column-page-header-featured.php
+#: patterns/template/page/one-column-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Pages: One Column / Page Header (Featured Image)"
 msgstr ""
 
-#: patterns/template-page-one-column-page-header-image.php
+#: patterns/template/page/one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "Pages: One Column / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-page-one-column-page-header-slim.php
+#: patterns/template/page/one-column-page-header-slim.php
 msgctxt "Pattern title"
 msgid "Pages: One Column / Page Header (Slim)"
 msgstr ""
 
-#: patterns/template-page-one-column-page-header-wide.php
+#: patterns/template/page/one-column-page-header-wide.php
 msgctxt "Pattern title"
 msgid "Pages: One Column / Page Header (Wide)"
 msgstr ""
 
-#: patterns/template-page-one-column.php
+#: patterns/template/page/one-column.php
 msgctxt "Pattern title"
 msgid "Pages: One Column"
 msgstr ""
 
-#: patterns/template-page-right-sidebar-page-header-featured.php
+#: patterns/template/page/right-sidebar-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Pages: Right Sidebar / Page Header (Featured Image)"
 msgstr ""
 
-#: patterns/template-page-right-sidebar-page-header-image.php
+#: patterns/template/page/right-sidebar-page-header-image.php
 msgctxt "Pattern title"
 msgid "Pages: Right Sidebar / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-page-right-sidebar.php
+#: patterns/template/page/right-sidebar.php
 msgctxt "Pattern title"
 msgid "Pages: Right Sidebar"
 msgstr ""
 
-#: patterns/template-search-left-header-page-header-image.php
+#: patterns/template/page/sticky-header-one-column-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Sticky Header / One Column / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template/page/sticky-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Sticky Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/page/sticky-header-one-column-page-header-slim.php
+msgctxt "Pattern title"
+msgid "Pages: Sticky Header / One Column / Page Header (Slim)"
+msgstr ""
+
+#: patterns/template/page/sticky-header-one-column-page-header-wide.php
+msgctxt "Pattern title"
+msgid "Pages: Sticky Header / One Column / Page Header (Wide)"
+msgstr ""
+
+#: patterns/template/page/sticky-header-one-column.php
+msgctxt "Pattern title"
+msgid "Pages: Sticky Header / One Column"
+msgstr ""
+
+#: patterns/template/page/sticky-header-right-sidebar-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Sticky Header / Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template/page/sticky-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Sticky Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/page/sticky-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Pages: Sticky Header / Right Sidebar"
+msgstr ""
+
+#: patterns/template/page/sticky-header.php
+msgctxt "Pattern title"
+msgid "Pages: Sticky Header"
+msgstr ""
+
+#: patterns/template/search/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Search Results: Left Header / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-search-left-header.php
+#: patterns/template/search/left-header.php
 msgctxt "Pattern title"
 msgid "Search Results: Left Header"
 msgstr ""
 
-#: patterns/template-search-one-column-page-header-image.php
+#: patterns/template/search/one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "Search Results: One Column / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-search-one-column.php
+#: patterns/template/search/one-column.php
 msgctxt "Pattern title"
 msgid "Search Results: One Column"
 msgstr ""
 
-#: patterns/template-search-right-sidebar-page-header-image.php
+#: patterns/template/search/right-sidebar-page-header-image.php
 msgctxt "Pattern title"
 msgid "Search Results: Right Sidebar / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-search-right-sidebar.php
+#: patterns/template/search/right-sidebar.php
 msgctxt "Pattern title"
 msgid "Search Results: Right Sidebar"
 msgstr ""
 
-#: patterns/template-single-header-footer.php
+#: patterns/template/search/sticky-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Sticky Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/search/sticky-header-one-column.php
+msgctxt "Pattern title"
+msgid "Search Results: Sticky Header / One Column"
+msgstr ""
+
+#: patterns/template/search/sticky-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Sticky Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/search/sticky-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Search Results: Sticky Header / Right Sidebar"
+msgstr ""
+
+#: patterns/template/single/header-footer.php
 msgctxt "Pattern title"
 msgid "Single Posts: Only Header and Footer"
 msgstr ""
 
-#: patterns/template-single-left-header-header-footer.php
+#: patterns/template/single/left-header-header-footer.php
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header / Only Header and Footer"
 msgstr ""
 
-#: patterns/template-single-left-header-page-header-featured.php
+#: patterns/template/single/left-header-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header / Page Header (Featured Image)"
 msgstr ""
 
-#: patterns/template-single-left-header-page-header-image.php
+#: patterns/template/single/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-single-left-header.php
+#: patterns/template/single/left-header.php
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header"
 msgstr ""
 
-#: patterns/template-single-one-column-page-header-featured.php
+#: patterns/template/single/one-column-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column / Page Header (Featured Image)"
 msgstr ""
 
-#: patterns/template-single-one-column-page-header-image.php
+#: patterns/template/single/one-column-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-single-one-column-page-header-slim.php
+#: patterns/template/single/one-column-page-header-slim.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column / Page Header (Slim)"
 msgstr ""
 
-#: patterns/template-single-one-column-page-header-wide.php
+#: patterns/template/single/one-column-page-header-wide.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column / Page Header (Wide)"
 msgstr ""
 
-#: patterns/template-single-one-column.php
+#: patterns/template/single/one-column.php
 msgctxt "Pattern title"
 msgid "Single Posts: One Column"
 msgstr ""
 
-#: patterns/template-single-right-sidebar-page-header-featured.php
+#: patterns/template/single/right-sidebar-page-header-featured.php
 msgctxt "Pattern title"
 msgid "Single Posts: Right Sidebar / Page Header (Featured Image)"
 msgstr ""
 
-#: patterns/template-single-right-sidebar-page-header-image.php
+#: patterns/template/single/right-sidebar-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Posts: Right Sidebar / Page Header (Image)"
 msgstr ""
 
-#: patterns/template-single-right-sidebar.php
+#: patterns/template/single/right-sidebar.php
 msgctxt "Pattern title"
 msgid "Single Posts: Right Sidebar"
+msgstr ""
+
+#: patterns/template/single/sticky-header-one-column-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Sticky Header / One Column / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template/single/sticky-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Sticky Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/single/sticky-header-one-column-page-header-slim.php
+msgctxt "Pattern title"
+msgid "Single Posts: Sticky Header / One Column / Page Header (Slim)"
+msgstr ""
+
+#: patterns/template/single/sticky-header-one-column-page-header-wide.php
+msgctxt "Pattern title"
+msgid "Single Posts: Sticky Header / One Column / Page Header (Wide)"
+msgstr ""
+
+#: patterns/template/single/sticky-header-one-column.php
+msgctxt "Pattern title"
+msgid "Single Posts: Sticky Header / One Column"
+msgstr ""
+
+#: patterns/template/single/sticky-header-right-sidebar-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Sticky Header / Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template/single/sticky-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Sticky Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/single/sticky-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Single Posts: Sticky Header / Right Sidebar"
+msgstr ""
+
+#: patterns/template/single/sticky-header.php
+msgctxt "Pattern title"
+msgid "Single Posts: Sticky Header"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
@@ -4574,6 +4754,51 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Pages: Sticky Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Sticky Header / One Column"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Sticky Header / One Column / Page Header (Featured Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Sticky Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Sticky Header / One Column / Page Header (Slim)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Sticky Header / One Column / Page Header (Wide)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Sticky Header / Right Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Sticky Header / Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Sticky Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Pages: Blank"
 msgstr ""
 
@@ -4640,6 +4865,51 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Posts: Left Header / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Sticky Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Sticky Header / One Column"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Sticky Header / One Column / Page Header (Featured Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Sticky Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Sticky Header / One Column / Page Header (Slim)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Sticky Header / One Column / Page Header (Wide)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Sticky Header / Right Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Sticky Header / Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Sticky Header / Right Sidebar / Page Header (Image)"
 msgstr ""
 
 #: theme.json

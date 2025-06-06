@@ -667,6 +667,69 @@
 			]
 		},
 		{
+			"name": "template-page-sticky-header",
+			"title": "Pages: Sticky Header",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-sticky-header-one-column",
+			"title": "Pages: Sticky Header / One Column",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-sticky-header-one-column-page-header-featured",
+			"title": "Pages: Sticky Header / One Column / Page Header (Featured Image)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-sticky-header-one-column-page-header-image",
+			"title": "Pages: Sticky Header / One Column / Page Header (Image)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-sticky-header-one-column-page-header-slim",
+			"title": "Pages: Sticky Header / One Column / Page Header (Slim)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-sticky-header-one-column-page-header-wide",
+			"title": "Pages: Sticky Header / One Column / Page Header (Wide)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-sticky-header-right-sidebar",
+			"title": "Pages: Sticky Header / Right Sidebar",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-sticky-header-right-sidebar-page-header-featured",
+			"title": "Pages: Sticky Header / Right Sidebar / Page Header (Featured Image)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-sticky-header-right-sidebar-page-header-image",
+			"title": "Pages: Sticky Header / Right Sidebar / Page Header (Image)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
 			"name": "template-page-blank",
 			"title": "Pages: Blank",
 			"postTypes": [
@@ -760,6 +823,69 @@
 		{
 			"name": "template-single-left-header-page-header-image",
 			"title": "Single Posts: Left Header / Page Header (Image)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-sticky-header",
+			"title": "Single Posts: Sticky Header",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-sticky-header-one-column",
+			"title": "Single Posts: Sticky Header / One Column",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-sticky-header-one-column-page-header-featured",
+			"title": "Single Posts: Sticky Header / One Column / Page Header (Featured Image)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-sticky-header-one-column-page-header-image",
+			"title": "Single Posts: Sticky Header / One Column / Page Header (Image)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-sticky-header-one-column-page-header-slim",
+			"title": "Single Posts: Sticky Header / One Column / Page Header (Slim)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-sticky-header-one-column-page-header-wide",
+			"title": "Single Posts: Sticky Header / One Column / Page Header (Wide)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-sticky-header-right-sidebar",
+			"title": "Single Posts: Sticky Header / Right Sidebar",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-sticky-header-right-sidebar-page-header-featured",
+			"title": "Single Posts: Sticky Header / Right Sidebar / Page Header (Featured Image)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-sticky-header-right-sidebar-page-header-image",
+			"title": "Single Posts: Sticky Header / Right Sidebar / Page Header (Image)",
 			"postTypes": [
 				"post"
 			]

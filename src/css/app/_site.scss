@@ -23,18 +23,27 @@
 			top: var(--wp-admin--admin-bar--height, 0px);
 			z-index: 2;
 			max-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
-			padding-top: var(--unitone--s2);
-			padding-bottom: var(--unitone--s2);
+			padding-top: var(--unitone--s3);
+			padding-bottom: var(--unitone--s3);
 			overflow: auto;
 
 			&:where(.block-editor-block-list__layout) {
 				overflow: visible;
 			}
 
-			> .unitone-section > [data-unitone-layout~="gutters"],
+			> .unitone-section,
 			> [data-unitone-layout~="container"] > [data-unitone-layout~="gutters"] {
 				--unitone--padding: 0 !important;
 			}
+
+			> .unitone-section,
+			> [data-unitone-layout~="container"] {
+				--unitone--gutters: var(--unitone--s1) !important;
+			}
+		}
+
+		.wp-block-navigation:where(.is-style-unitone, .is-style-unitone-accordion) {
+			--unitone--navigation-item--padding-block: var(--unitone--s-1);
 		}
 	}
 }

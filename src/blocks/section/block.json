@@ -133,6 +133,5 @@
 		"unitone-gutters-style",
 		"unitone-container-style",
 		"unitone-stack-style"
-	],
-	"editorStyle": "file:./index.css"
+	]
 }

@@ -5,7 +5,7 @@
  * Categories: unitone-headers
  */
 ?>
-<!-- wp:unitone/section {"tagName":"div","unitone":{"maxWidth":"100%","padding":"-2"}} -->
+<!-- wp:unitone/section {"tagName":"div","unitone":{"maxWidth":"100%","padding":"-1"}} -->
 <div class="unitone-section">
 	<div data-unitone-layout="gutters">
 		<div data-unitone-layout="container">

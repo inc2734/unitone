@@ -23,15 +23,15 @@
 			top: var(--wp-admin--admin-bar--height, 0px);
 			z-index: 2;
 			max-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
-			padding-top: var(--unitone--s3);
-			padding-bottom: var(--unitone--s3);
+			padding-top: var(--unitone--s2);
+			padding-bottom: var(--unitone--s2);
 			overflow: auto;
 
 			&:where(.block-editor-block-list__layout) {
 				overflow: visible;
 			}
 
-			> .unitone-section,
+			> .unitone-section > [data-unitone-layout~="gutters"],
 			> [data-unitone-layout~="container"] > [data-unitone-layout~="gutters"] {
 				--unitone--padding: 0 !important;
 			}

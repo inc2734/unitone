@@ -10,6 +10,7 @@ import transforms from './transforms';
 import variations from './variations';
 
 import './style.scss';
+import './index.scss';
 
 registerBlockType( 'unitone/section', {
 	icon: {

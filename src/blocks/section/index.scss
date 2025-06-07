@@ -1,0 +1,5 @@
+@use 'sass:meta';
+
+.editor-styles-wrapper {
+	@include meta.load-css('style');
+}

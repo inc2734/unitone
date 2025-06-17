@@ -51,3 +51,9 @@
 		}
 	}
 }
+
+[data-unitone-layout~="decorator__inner"],
+[data-unitone-layout~="decorator__inner"] > div,
+[data-unitone-layout~="decorator"] > [data-unitone-layout~="-outer-block-link"] {
+	height: 100%;
+}

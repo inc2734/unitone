@@ -6,25 +6,42 @@
 	--unitone--position: relative;
 }
 
-[data-unitone-layout~="decorator"]:has(> [data-unitone-layout~="decorator__inner"]) {
-	padding: 0;
-
-	> [data-unitone-layout~="decorator__inner"] {
-		padding-top: var(--unitone--padding-top);
-		padding-right: var(--unitone--padding-right);
-		padding-bottom: var(--unitone--padding-bottom);
-		padding-left: var(--unitone--padding-left);
-	}
-}
-
-[data-unitone-layout~="decorator"][data-unitone-layout~="-has-link"],
-[data-unitone-layout~="decorator"]:has(> [data-unitone-layout~="decorator__inner"] > [data-unitone-layout~="decorator__link"]) {
+[data-unitone-layout~="decorator"][data-unitone-layout~="-has-link"] {
 	cursor: pointer;
+	align-content: stretch;
+	justify-items: stretch;
+	padding: 0;
 
 	&:has(:focus-visible) {
 		outline: auto;
 		outline: auto -webkit-focus-ring-color; /* for Chrome */
 	}
+}
+
+[data-unitone-layout~="decorator__inner"] {
+	padding-top: var(--unitone--padding-top);
+	padding-right: var(--unitone--padding-right);
+	padding-bottom: var(--unitone--padding-bottom);
+	padding-left: var(--unitone--padding-left);
+
+	> div {
+		display: grid;
+		align-content: var(--unitone--align-content);
+		justify-items: var(--unitone--justify-items);
+		gap: var(--unitone--gap);
+	}
+}
+
+[data-unitone-layout~="decorator"] > [data-unitone-layout~="-outer-block-link"] {
+	display: block;
+	color: inherit;
+	text-decoration: none;
+}
+
+[data-unitone-layout~="decorator__inner"],
+[data-unitone-layout~="decorator__inner"] > div,
+[data-unitone-layout~="decorator"] > [data-unitone-layout~="-outer-block-link"] {
+	height: 100%;
 }
 
 [data-unitone-layout~="decorator__link"] {
@@ -33,27 +50,4 @@
 	height: 0 !important;
 	width: 0 !important;
 	text-indent: -99999px !important;
-}
-
-[data-unitone-layout~="decorator"]:has(> [data-unitone-layout~="-outer-block-link"]) {
-	padding: 0;
-
-	> [data-unitone-layout~="-outer-block-link"] {
-		display: block;
-		color: inherit;
-		text-decoration: none;
-
-		> [data-unitone-layout~="decorator__inner"] {
-			padding-top: var(--unitone--padding-top);
-			padding-right: var(--unitone--padding-right);
-			padding-bottom: var(--unitone--padding-bottom);
-			padding-left: var(--unitone--padding-left);
-		}
-	}
-}
-
-[data-unitone-layout~="decorator__inner"],
-[data-unitone-layout~="decorator__inner"] > div,
-[data-unitone-layout~="decorator"] > [data-unitone-layout~="-outer-block-link"] {
-	height: 100%;
 }

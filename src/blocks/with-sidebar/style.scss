@@ -19,7 +19,9 @@
 }
 
 [data-unitone-layout~="with-sidebar__content__content"] {
+	display: grid;
 	align-content: var(--unitone--align-content);
+	align-items: var(--unitone--align-items); // Specified by with-sidebar.
 	background-color: var(--unitone--background-color);
 	background-image: var(--unitone--background-image);
 	height: 100%;

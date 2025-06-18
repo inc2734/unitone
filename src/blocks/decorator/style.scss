@@ -25,10 +25,21 @@
 	padding-left: var(--unitone--padding-left);
 
 	> div {
-		display: grid;
 		align-content: var(--unitone--align-content);
 		justify-items: var(--unitone--justify-items);
 		gap: var(--unitone--gap);
+	}
+}
+
+// To maintain backward compatibility, we will only use grid when necessary.
+[data-unitone-layout~="decorator"]:where(
+	[data-unitone-layout*="-gap\:"],
+	[data-unitone-layout*="-align-content\:"],
+	[data-unitone-layout*="-justify-items\:"]
+) {
+	> [data-unitone-layout~="decorator__inner"] > div,
+	> [data-unitone-layout~="-outer-block-link"] > [data-unitone-layout~="decorator__inner"] > div {
+		display: grid;
 	}
 }
 

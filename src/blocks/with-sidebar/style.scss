@@ -13,6 +13,7 @@
 	--unitone--padding-left: var(--unitone--padding);
 
 	&:has(> [data-unitone-layout~="with-sidebar__content__content"]) {
+		align-items: var(--unitone--align-items); // Specified by with-sidebar.
 		background-color: transparent !important;
 		background-image: none !important;
 	}
@@ -21,12 +22,18 @@
 [data-unitone-layout~="with-sidebar__content__content"] {
 	display: grid;
 	align-content: var(--unitone--align-content);
-	align-items: var(--unitone--align-items); // Specified by with-sidebar.
 	background-color: var(--unitone--background-color);
 	background-image: var(--unitone--background-image);
-	height: 100%;
 	padding-top: var(--unitone--padding-top);
 	padding-right: var(--unitone--padding-right);
 	padding-bottom: var(--unitone--padding-bottom);
 	padding-left: var(--unitone--padding-left);
+}
+
+[data-unitone-layout~="with-sidebar"][data-unitone-layout~="-align-items\:stretch"] {
+	> [data-unitone-layout~="with-sidebar__content"] {
+		> [data-unitone-layout~="with-sidebar__content__content"] {
+			height: 100%;
+		}
+	}
 }

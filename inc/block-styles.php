@@ -18,7 +18,7 @@ function unitone_register_block_styles() {
 	);
 
 	register_block_style(
-		'core/post-terms',
+		array( 'core/post-terms', 'core/tag-cloud' ),
 		array(
 			'name'  => 'badge',
 			'label' => __( 'Badge', 'unitone' ),
@@ -26,7 +26,7 @@ function unitone_register_block_styles() {
 	);
 
 	register_block_style(
-		'core/post-terms',
+		array( 'core/post-terms', 'core/tag-cloud' ),
 		array(
 			'name'  => 'outline',
 			'label' => __( 'Outline', 'unitone' ),

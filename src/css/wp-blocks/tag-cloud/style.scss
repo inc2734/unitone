@@ -1,0 +1,107 @@
+.wp-block-tag-cloud {
+	--unitone--column-gap: var(--unitone--s-2);
+	--unitone--row-gap: 0px;
+
+	display: flex;
+	column-gap: var(--unitone--column-gap);
+	row-gap: var(--unitone--row-gap);
+	flex-wrap: wrap;
+	align-items: center;
+
+	a.tag-cloud-link {
+		margin: 0;
+	}
+}
+
+.wp-block-tag-cloud.is-style-badge,
+.wp-block-tag-cloud.is-style-outline {
+	--unitone--column-gap: var(--unitone--s-2);
+	--unitone--row-gap: var(--unitone--s-2);
+
+	background-color: transparent !important;
+	border: none !important;
+
+	a.tag-cloud-link {
+		display: inline-block;
+		font-size: var(--unitone--font-size) !important;
+		text-decoration: none;
+	}
+}
+
+:root :where(.wp-block-tag-cloud.is-style-badge),
+:root :where(.wp-block-tag-cloud.is-style-outline) {
+	--unitone--tag-cloud--border-top-color: var(--unitone--tag-cloud--border-color);
+	--unitone--tag-cloud--border-right-color: var(--unitone--tag-cloud--border-color);
+	--unitone--tag-cloud--border-bottom-color: var(--unitone--tag-cloud--border-color);
+	--unitone--tag-cloud--border-left-color: var(--unitone--tag-cloud--border-color);
+
+	--unitone--tag-cloud--border-top-style: var(--unitone--tag-cloud--border-style);
+	--unitone--tag-cloud--border-right-style: var(--unitone--tag-cloud--border-style);
+	--unitone--tag-cloud--border-bottom-style: var(--unitone--tag-cloud--border-style);
+	--unitone--tag-cloud--border-left-style: var(--unitone--tag-cloud--border-style);
+
+	--unitone--tag-cloud--border-top-width: var(--unitone--tag-cloud--border-width);
+	--unitone--tag-cloud--border-right-width: var(--unitone--tag-cloud--border-width);
+	--unitone--tag-cloud--border-bottom-width: var(--unitone--tag-cloud--border-width);
+	--unitone--tag-cloud--border-left-width: var(--unitone--tag-cloud--border-width);
+
+	--unitone--tag-cloud--border-top-left-radius: var(--unitone--tag-cloud--border-radius);
+	--unitone--tag-cloud--border-top-right-radius: var(--unitone--tag-cloud--border-radius);
+	--unitone--tag-cloud--border-bottom-right-radius: var(--unitone--tag-cloud--border-radius);
+	--unitone--tag-cloud--border-bottom-left-radius: var(--unitone--tag-cloud--border-radius);
+
+	a.tag-cloud-link {
+		background-color: var(--unitone--tag-cloud--background-color);
+		padding: var(--unitone--tag-cloud--padding);
+
+		border-top-color: var(--unitone--tag-cloud--border-top-color);
+		border-right-color: var(--unitone--tag-cloud--border-right-color);
+		border-bottom-color: var(--unitone--tag-cloud--border-bottom-color);
+		border-left-color: var(--unitone--tag-cloud--border-left-color);
+
+		border-top-style: var(--unitone--tag-cloud--border-top-style);
+		border-right-style: var(--unitone--tag-cloud--border-right-style);
+		border-bottom-style: var(--unitone--tag-cloud--border-bottom-style);
+		border-left-style: var(--unitone--tag-cloud--border-left-style);
+
+		border-top-width: var(--unitone--tag-cloud--border-top-width);
+		border-right-width: var(--unitone--tag-cloud--border-right-width);
+		border-bottom-width: var(--unitone--tag-cloud--border-bottom-width);
+		border-left-width: var(--unitone--tag-cloud--border-left-width);
+
+		border-top-left-radius: var(--unitone--tag-cloud--border-top-left-radius);
+		border-top-right-radius: var(--unitone--tag-cloud--border-top-right-radius);
+		border-bottom-right-radius: var(--unitone--tag-cloud--border-bottom-right-radius);
+		border-bottom-left-radius: var(--unitone--tag-cloud--border-bottom-left-radius);
+	}
+}
+
+:root :where(.wp-block-tag-cloud.is-style-badge) {
+	--unitone--font-size: -2;
+	--unitone--tag-cloud--background-color: var(--wp--preset--color--unitone-accent);
+	--unitone--tag-cloud--padding: calc(var(--unitone--p-1) / 2) var(--unitone--p-1);
+
+	--unitone--tag-cloud--border-color: transparent;
+	--unitone--tag-cloud--border-radius: var(--unitone--global--border-radius);
+	--unitone--tag-cloud--border-width: 0px;
+	--unitone--tag-cloud--border-style: solid;
+
+	a.tag-cloud-link {
+		color: var(--wp--preset--color--unitone-background);
+	}
+}
+
+:root :where(.wp-block-tag-cloud.is-style-outline) {
+	--unitone--font-size: -2;
+	--unitone--tag-cloud--background-color: transparent;
+	--unitone--tag-cloud--padding: calc(var(--unitone--p-2) / 2) var(--unitone--p-2);
+
+	--unitone--tag-cloud--border-color: currentColor;
+	--unitone--tag-cloud--border-radius: var(--unitone--global--border-radius);
+	--unitone--tag-cloud--border-width: 1px;
+	--unitone--tag-cloud--border-style: solid;
+
+	a.tag-cloud-link {
+		color: var(--wp--preset--color--unitone-accent);
+	}
+}

@@ -166,6 +166,7 @@ function unitone_enqueue_block_styles() {
 		'core/site-title'         => array(),
 		'core/social-links'       => array(),
 		'core/table'              => array(),
+		'core/tag-cloud'          => array(),
 		'core/video'              => array(),
 	);
 

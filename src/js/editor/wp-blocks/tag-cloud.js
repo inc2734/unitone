@@ -8,7 +8,7 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 
 		const className = attributes?.className;
 		if (
-			'core/post-terms' !== props.name ||
+			'core/tag-cloud' !== props.name ||
 			! className ||
 			( -1 === className.indexOf( 'is-style-badge' ) &&
 				-1 === className.indexOf( 'is-style-outline' ) )
@@ -22,66 +22,66 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 				...wrapperProps,
 				style: {
 					...wrapperProps?.style,
-					'--unitone--post-term--background-color':
+					'--unitone--tag-cloud--background-color':
 						!! attributes?.backgroundColor
 							? `var(--wp--preset--color--${ attributes?.backgroundColor })`
 							: attributes?.style?.color?.background,
 
-					'--unitone--post-term--border-color':
+					'--unitone--tag-cloud--border-color':
 						!! attributes?.borderColor
 							? `var(--wp--preset--color--${ attributes?.borderColor })`
 							: attributes?.style?.border?.color,
-					'--unitone--post-term--border-top-color':
+					'--unitone--tag-cloud--border-top-color':
 						getCSSValueFromRawStyle(
 							attributes?.style?.border?.top?.color
 						),
-					'--unitone--post-term--border-right-color':
+					'--unitone--tag-cloud--border-right-color':
 						getCSSValueFromRawStyle(
 							attributes?.style?.border?.right?.color
 						),
-					'--unitone--post-term--border-bottom-color':
+					'--unitone--tag-cloud--border-bottom-color':
 						getCSSValueFromRawStyle(
 							attributes?.style?.border?.bottom?.color
 						),
-					'--unitone--post-term--border-left-color':
+					'--unitone--tag-cloud--border-left-color':
 						getCSSValueFromRawStyle(
 							attributes?.style?.border?.left?.color
 						),
 
-					'--unitone--post-term--border-style':
+					'--unitone--tag-cloud--border-style':
 						attributes?.style?.border?.style,
-					'--unitone--post-term--border-top-style':
+					'--unitone--tag-cloud--border-top-style':
 						attributes?.style?.border?.top?.style,
-					'--unitone--post-term--border-right-style':
+					'--unitone--tag-cloud--border-right-style':
 						attributes?.style?.border?.right?.style,
-					'--unitone--post-term--border-bottom-style':
+					'--unitone--tag-cloud--border-bottom-style':
 						attributes?.style?.border?.bottom?.style,
-					'--unitone--post-term--border-left-style':
+					'--unitone--tag-cloud--border-left-style':
 						attributes?.style?.border?.left?.style,
 
-					'--unitone--post-term--border-width':
+					'--unitone--tag-cloud--border-width':
 						attributes?.style?.border?.width,
-					'--unitone--post-term--border-top-width':
+					'--unitone--tag-cloud--border-top-width':
 						attributes?.style?.border?.top?.width,
-					'--unitone--post-term--border-right-width':
+					'--unitone--tag-cloud--border-right-width':
 						attributes?.style?.border?.right?.width,
-					'--unitone--post-term--border-bottom-width':
+					'--unitone--tag-cloud--border-bottom-width':
 						attributes?.style?.border?.bottom?.width,
-					'--unitone--post-term--border-left-width':
+					'--unitone--tag-cloud--border-left-width':
 						attributes?.style?.border?.left?.width,
 
-					'--unitone--post-term--border-radius':
+					'--unitone--tag-cloud--border-radius':
 						null != attributes?.style?.border?.radius &&
 						'object' !== typeof attributes?.style?.border?.radius
 							? attributes?.style?.border?.radius
 							: undefined,
-					'--unitone--post-term--border-top-left-radius':
+					'--unitone--tag-cloud--border-top-left-radius':
 						attributes?.style?.border?.radius?.topLeft,
-					'--unitone--post-term--border-top-right-radius':
+					'--unitone--tag-cloud--border-top-right-radius':
 						attributes?.style?.border?.radius?.topRight,
-					'--unitone--post-term--border-bottom-left-radius':
+					'--unitone--tag-cloud--border-bottom-left-radius':
 						attributes?.style?.border?.radius?.bottomLeft,
-					'--unitone--post-term--border-bottom-right-radius':
+					'--unitone--tag-cloud--border-bottom-right-radius':
 						attributes?.style?.border?.radius?.bottomRight,
 				},
 			},
@@ -93,6 +93,6 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 
 addFilter(
 	'editor.BlockListBlock',
-	'unitone/postTerms/useBlockProps',
+	'unitone/tagCloud/useBlockProps',
 	useBlockProps
 );

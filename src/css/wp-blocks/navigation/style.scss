@@ -78,11 +78,9 @@
 }
 
 // Setting a minimum width for a button block within a navigation block does not work.
-.wp-block-navigation__container.block-editor-block-list__layout, // for Site Editor.
-.wp-block-navigation__responsive-container-content {
-	> * {
-		flex: 1 1 auto;
-	}
+.wp-block-navigation__responsive-container-content > *,
+.wp-block-navigation__container.block-editor-block-list__layout > .wp-block-buttons {
+	flex: 1 1 auto;
 }
 
 .wp-block-navigation__container.block-editor-block-list__layout {

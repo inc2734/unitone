@@ -3,7 +3,7 @@
 @include with-sidebar.with-sidebar();
 
 [data-unitone-layout~="with-sidebar__content"] {
-	--unitone--align-content: start;
+	--unitone--align-content: normal;
 	--unitone--background-color: transparent;
 	--unitone--background-image: none;
 	--unitone--padding: 0px;

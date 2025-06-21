@@ -4,8 +4,8 @@
 }
 
 .unitone-grid {
-	--unitone--align-items: stretch;
-	--unitone--justify-items: stretch;
+	--unitone--align-items: normal;
+	--unitone--justify-items: legacy;
 
 	--unitone--gap: var(--unitone--global--text-gap);
 	--unitone--column-gap: var(--unitone--gap);

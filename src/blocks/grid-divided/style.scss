@@ -1,12 +1,34 @@
-.unitone-grid .unitone-grid__content {
-	display: grid;
+.unitone-grid__content {
+	--unitone--align-content: normal;
+	--unitone--background-color: transparent;
+	--unitone--background-image: none;
+	--unitone--padding: 0px;
+	--unitone--padding-top: var(--unitone--padding);
+	--unitone--padding-right: var(--unitone--padding);
+	--unitone--padding-bottom: var(--unitone--padding);
+	--unitone--padding-left: var(--unitone--padding);
+
 	align-self: stretch;
 	justify-self: stretch;
+	display: grid;
+
+	&:not(:root) {
+		background-color: transparent !important;
+		background-image: none !important;
+	}
 }
 
 .unitone-grid__content__content {
 	align-self: var(--unitone--align-self);
 	justify-self: var(--unitone--justify-self);
+	display: grid;
+	align-content: var(--unitone--align-content);
+	background-color: var(--unitone--background-color);
+	background-image: var(--unitone--background-image);
+	padding-top: var(--unitone--padding-top);
+	padding-right: var(--unitone--padding-right);
+	padding-bottom: var(--unitone--padding-bottom);
+	padding-left: var(--unitone--padding-left);
 }
 
 .unitone-grid:where([data-unitone-layout*="-divider\:"]) {
@@ -33,32 +55,6 @@
 		border-width: 0;
 		border-style: var(--unitone--divider-style);
 		border-color: var(--unitone--divider-color);
-	}
-
-	> .unitone-grid__content {
-		--unitone--align-content: normal;
-		--unitone--background-color: transparent;
-		--unitone--background-image: none;
-		--unitone--padding: 0px;
-		--unitone--padding-top: var(--unitone--padding);
-		--unitone--padding-right: var(--unitone--padding);
-		--unitone--padding-bottom: var(--unitone--padding);
-		--unitone--padding-left: var(--unitone--padding);
-
-		&:not(:root) {
-			background-color: transparent !important;
-			background-image: none !important;
-		}
-
-		> .unitone-grid__content__content {
-			align-content: var(--unitone--align-content);
-			background-color: var(--unitone--background-color);
-			background-image: var(--unitone--background-image);
-			padding-top: var(--unitone--padding-top);
-			padding-right: var(--unitone--padding-right);
-			padding-bottom: var(--unitone--padding-bottom);
-			padding-left: var(--unitone--padding-left);
-		}
 	}
 }
 

@@ -3,7 +3,7 @@
 @include with-sidebar.with-sidebar();
 
 [data-unitone-layout~="with-sidebar__content"] {
-	--unitone--align-content: normal;
+	--unitone--align-content: start;
 	--unitone--background-color: transparent;
 	--unitone--background-image: none;
 	--unitone--padding: 0px;
@@ -11,6 +11,8 @@
 	--unitone--padding-right: var(--unitone--padding);
 	--unitone--padding-bottom: var(--unitone--padding);
 	--unitone--padding-left: var(--unitone--padding);
+
+	display: grid;
 
 	&:has(> [data-unitone-layout~="with-sidebar__content__content"]) {
 		align-items: var(--unitone--align-items); // Specified by with-sidebar.
@@ -28,12 +30,4 @@
 	padding-right: var(--unitone--padding-right);
 	padding-bottom: var(--unitone--padding-bottom);
 	padding-left: var(--unitone--padding-left);
-}
-
-[data-unitone-layout~="with-sidebar"][data-unitone-layout~="-align-items\:stretch"] {
-	> [data-unitone-layout~="with-sidebar__content"] {
-		> [data-unitone-layout~="with-sidebar__content__content"] {
-			height: 100%;
-		}
-	}
 }

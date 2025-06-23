@@ -161,29 +161,41 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		'[data-unitone-scroll-animation]'
 	);
 
-	const observerCallback = ( entries ) => {
-		entries.forEach( ( entry ) => {
-			if ( ! entry.isIntersecting ) {
-				return;
-			}
-
-			const target = entry.target;
-			const type = target.getAttribute( 'data-unitone-scroll-animation' );
-
-			target.setAttribute(
-				'data-unitone-scroll-animation',
-				`${ type } -fired`
-			);
-
-			observer.unobserve( target );
-		} );
-	};
-
-	const observer = new IntersectionObserver( observerCallback, {
-		rootMargin: '-25% 0px',
-	} );
-
 	Array.from( targets ).forEach( ( target ) => {
+		const observerCallback = ( entries ) => {
+			entries.forEach( ( entry ) => {
+				if ( ! entry.isIntersecting ) {
+					return;
+				}
+
+				const _target = entry.target;
+				const type = _target.getAttribute(
+					'data-unitone-scroll-animation'
+				);
+
+				_target.setAttribute(
+					'data-unitone-scroll-animation',
+					`${ type } -fired`
+				);
+
+				observer.unobserve( _target );
+			} );
+		};
+
+		const rootMargin = target.getAttribute(
+			'data-unitone-scroll-animation-root-margin'
+		);
+		const threshold = target.getAttribute(
+			'data-unitone-scroll-animation-threshold'
+		);
+
+		const observer = new IntersectionObserver( observerCallback, {
+			rootMargin: rootMargin || '0px',
+			threshold: !! threshold
+				? threshold.split( ',' ).map( ( v ) => parseFloat( v.trim() ) )
+				: [ 0.25 ],
+		} );
+
 		observer.observe( target );
 	} );
 } );

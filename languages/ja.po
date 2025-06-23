@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-06-06T06:47:18+00:00\n"
-"PO-Revision-Date: 2025-06-06 16:00+0900\n"
+"POT-Creation-Date: 2025-06-23T13:49:23+00:00\n"
+"PO-Revision-Date: 2025-06-23 22:49+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -50,18 +50,18 @@ msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
 #: App/Controller/Manager/Manager.php:373 patterns/footer/footer-2.php:21
-#: patterns/footer/footer-3.php:50 patterns/footer/footer-3.php:58
-#: patterns/footer/footer-3.php:66 patterns/footer/footer-4.php:30
-#: patterns/footer/footer-4.php:38 patterns/footer/footer-4.php:46
+#: patterns/footer/footer-3.php:53 patterns/footer/footer-3.php:61
+#: patterns/footer/footer-3.php:69 patterns/footer/footer-4.php:31
+#: patterns/footer/footer-4.php:39 patterns/footer/footer-4.php:47
 #: patterns/footer/footer-5.php:28 patterns/footer/footer-5.php:36
 #: patterns/footer/footer-5.php:44
 msgid "Home"
 msgstr "ホーム"
 
 #: App/Controller/Manager/Manager.php:416 patterns/footer/footer-2.php:24
-#: patterns/footer/footer-3.php:53 patterns/footer/footer-3.php:61
-#: patterns/footer/footer-3.php:69 patterns/footer/footer-4.php:33
-#: patterns/footer/footer-4.php:41 patterns/footer/footer-4.php:49
+#: patterns/footer/footer-3.php:56 patterns/footer/footer-3.php:64
+#: patterns/footer/footer-3.php:72 patterns/footer/footer-4.php:34
+#: patterns/footer/footer-4.php:42 patterns/footer/footer-4.php:50
 #: patterns/footer/footer-5.php:31 patterns/footer/footer-5.php:39
 #: patterns/footer/footer-5.php:47
 #: patterns/private/template/home/page-header/default.php:14
@@ -739,26 +739,26 @@ msgctxt "Pattern title"
 msgid "Footer 2"
 msgstr "フッター2"
 
-#: patterns/footer/footer-2.php:22 patterns/footer/footer-3.php:51
-#: patterns/footer/footer-3.php:59 patterns/footer/footer-3.php:67
-#: patterns/footer/footer-4.php:31 patterns/footer/footer-4.php:39
-#: patterns/footer/footer-4.php:47 patterns/footer/footer-5.php:29
+#: patterns/footer/footer-2.php:22 patterns/footer/footer-3.php:54
+#: patterns/footer/footer-3.php:62 patterns/footer/footer-3.php:70
+#: patterns/footer/footer-4.php:32 patterns/footer/footer-4.php:40
+#: patterns/footer/footer-4.php:48 patterns/footer/footer-5.php:29
 #: patterns/footer/footer-5.php:37 patterns/footer/footer-5.php:45
 msgid "About"
 msgstr "このサイトについて"
 
-#: patterns/footer/footer-2.php:23 patterns/footer/footer-3.php:52
-#: patterns/footer/footer-3.php:60 patterns/footer/footer-3.php:68
-#: patterns/footer/footer-4.php:32 patterns/footer/footer-4.php:40
-#: patterns/footer/footer-4.php:48 patterns/footer/footer-5.php:30
+#: patterns/footer/footer-2.php:23 patterns/footer/footer-3.php:55
+#: patterns/footer/footer-3.php:63 patterns/footer/footer-3.php:71
+#: patterns/footer/footer-4.php:33 patterns/footer/footer-4.php:41
+#: patterns/footer/footer-4.php:49 patterns/footer/footer-5.php:30
 #: patterns/footer/footer-5.php:38 patterns/footer/footer-5.php:46
 msgid "Services"
 msgstr "サービス"
 
-#: patterns/footer/footer-2.php:25 patterns/footer/footer-3.php:54
-#: patterns/footer/footer-3.php:62 patterns/footer/footer-3.php:70
-#: patterns/footer/footer-4.php:34 patterns/footer/footer-4.php:42
-#: patterns/footer/footer-4.php:50 patterns/footer/footer-5.php:32
+#: patterns/footer/footer-2.php:25 patterns/footer/footer-3.php:57
+#: patterns/footer/footer-3.php:65 patterns/footer/footer-3.php:73
+#: patterns/footer/footer-4.php:35 patterns/footer/footer-4.php:43
+#: patterns/footer/footer-4.php:51 patterns/footer/footer-5.php:32
 #: patterns/footer/footer-5.php:40 patterns/footer/footer-5.php:48
 msgid "Contact"
 msgstr "お問い合わせ"
@@ -810,8 +810,8 @@ msgstr "404のメインエリア（1カラム / ページヘッダー（画像�
 
 #: patterns/private/template/404/main/one-column-page-header-image.php:23
 #: patterns/private/template/404/main/one-column.php:23
-#: patterns/private/template/404/main/right-sidebar-page-header-image.php:29
-#: patterns/private/template/404/main/right-sidebar.php:29
+#: patterns/private/template/404/main/right-sidebar-page-header-image.php:30
+#: patterns/private/template/404/main/right-sidebar.php:30
 msgid ""
 "Woops! Page not found. The page you are looking for may be moved or deleted. "
 "Please search this search box."
@@ -3378,6 +3378,32 @@ msgid "Check behavior"
 msgstr "動作を確認する"
 
 #: dist/js/editor/editor.js:13
+msgid "IntersectionObserver"
+msgstr "IntersectionObserver"
+
+#: dist/js/editor/editor.js:13
+msgctxt "intersectionObserver"
+msgid "rootMargin"
+msgstr "rootMargin"
+
+#: dist/js/editor/editor.js:13
+msgid "Sets the intersection area size to expand or shrink. e.g. -25% 0"
+msgstr "交差領域を拡大または縮小できます。例：-25% 0"
+
+#: dist/js/editor/editor.js:13
+msgctxt "intersectionObserver"
+msgid "threshold"
+msgstr "threshold"
+
+#: dist/js/editor/editor.js:13
+msgid ""
+"Specifies how much of the target must be intersect to fire the animation. "
+"e.g. 0.5"
+msgstr ""
+"要素と交差領域がどの程度交差した場合にアニメーションを発火するかを指定できま"
+"す。例：0.5"
+
+#: dist/js/editor/editor.js:13
 msgid "Animation"
 msgstr "アニメーション"
 
@@ -4877,3 +4903,6 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#~ msgid "IntersectionObserver:rootMargin"
+#~ msgstr "IntersectionObserver:rootMargin"

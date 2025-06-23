@@ -6,18 +6,20 @@ import {
 	__experimentalHStack as HStack,
 	__experimentalItemGroup as ItemGroup,
 	__experimentalDropdownContentWrapper as DropdownContentWrapper,
+	BaseControl,
 	Button,
 	FlexItem,
 	Dropdown,
 	RangeControl,
 	SelectControl,
+	TextControl,
 } from '@wordpress/components';
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { useRef } from '@wordpress/element';
 import { Icon, reset } from '@wordpress/icons';
-import { __ } from '@wordpress/i18n';
+import { __, _x } from '@wordpress/i18n';
 
 import { scroll as iconScrollAnimation } from './icons';
 import { cleanEmptyObject } from '../utils';
@@ -119,6 +121,10 @@ function ScrollAnimationPopover( {
 	onChangeEasing,
 	initial,
 	onChangeInitial,
+	rootMargin,
+	onChangeRootMargin,
+	threshold,
+	onChangeThreshold,
 	onMouseDownCheckBehavior,
 	onClickCheckBehavior,
 } ) {
@@ -470,6 +476,51 @@ function ScrollAnimationPopover( {
 								{ __( 'Check behavior', 'unitone' ) }
 							</Button>
 						</VStack>
+
+						<div
+							style={ {
+								borderTop: '1px solid rgb(221, 221, 221)',
+								margin: '16px -16px',
+							} }
+						/>
+
+						<VStack spacing={ 4 }>
+							<BaseControl.VisualLabel style={ { margin: 0 } }>
+								{ __( 'IntersectionObserver', 'unitone' ) }
+							</BaseControl.VisualLabel>
+
+							<TextControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={ _x(
+									'rootMargin',
+									'intersectionObserver',
+									'unitone'
+								) }
+								help={ __(
+									'Sets the intersection area size to expand or shrink. e.g. -25% 0',
+									'unitone'
+								) }
+								value={ rootMargin || '0px' }
+								onChange={ onChangeRootMargin }
+							/>
+
+							<TextControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={ _x(
+									'threshold',
+									'intersectionObserver',
+									'unitone'
+								) }
+								help={ __(
+									'Specifies how much of the target must be intersect to fire the animation. e.g. 0.5',
+									'unitone'
+								) }
+								value={ threshold || '0.25' }
+								onChange={ onChangeThreshold }
+							/>
+						</VStack>
 					</div>
 				</DropdownContentWrapper>
 			) }
@@ -492,6 +543,10 @@ export function ScrollAnimationEdit( {
 	const delay = unitone?.scrollAnimation?.delay ?? defaultValue?.delay;
 	const easing = unitone?.scrollAnimation?.easing ?? defaultValue?.easing;
 	const initial = unitone?.scrollAnimation?.initial;
+	const rootMargin =
+		unitone?.scrollAnimation?.rootMargin ?? defaultValue?.rootMargin;
+	const threshold =
+		unitone?.scrollAnimation?.threshold ?? defaultValue?.threshold;
 
 	return (
 		<ItemGroup isBordered isSeparated>
@@ -511,6 +566,8 @@ export function ScrollAnimationEdit( {
 				delay={ null != delay ? parseFloat( delay ) : undefined }
 				easing={ easing ?? '' }
 				initial={ null != initial ? parseFloat( initial ) : undefined }
+				rootMargin={ rootMargin ?? '' }
+				threshold={ threshold ?? '' }
 				onChangeType={ ( newAttribute ) => {
 					const newUnitone = {
 						...unitone,
@@ -603,6 +660,48 @@ export function ScrollAnimationEdit( {
 						},
 					} );
 				} }
+				onChangeRootMargin={ ( newAttribute ) => {
+					if ( '0px' === newAttribute ) {
+						newAttribute = undefined;
+					}
+
+					const newUnitone = {
+						...unitone,
+						scrollAnimation: {
+							...unitone?.scrollAnimation,
+							rootMargin: newAttribute || undefined,
+						},
+					};
+
+					setAttributes( {
+						unitone: cleanEmptyObject( newUnitone ),
+						__unitoneStates: {
+							...__unitoneStates,
+							scrollAnimationFired: false,
+						},
+					} );
+				} }
+				onChangeThreshold={ ( newAttribute ) => {
+					if ( '0.25' === newAttribute ) {
+						newAttribute = undefined;
+					}
+
+					const newUnitone = {
+						...unitone,
+						scrollAnimation: {
+							...unitone?.scrollAnimation,
+							threshold: newAttribute || undefined,
+						},
+					};
+
+					setAttributes( {
+						unitone: cleanEmptyObject( newUnitone ),
+						__unitoneStates: {
+							...__unitoneStates,
+							scrollAnimationFired: false,
+						},
+					} );
+				} }
 				onMouseDownCheckBehavior={ () => {
 					if ( __unitoneStates?.scrollAnimationFired ) {
 						setAttributes( {
@@ -678,6 +777,9 @@ export function useScrollAnimationBlockProps( settings ) {
 		}
 	}
 
+	const rootMargin = newScrollAnimation?.rootMargin;
+	const threshold = newScrollAnimation?.threshold;
+
 	const dataScrollAnimation = clsx( type, {
 		[ `-animation-timing-function:${ easing }` ]: easing,
 	} );
@@ -691,6 +793,9 @@ export function useScrollAnimationBlockProps( settings ) {
 					!! dataScrollAnimation &&
 					attributes?.__unitoneStates?.scrollAnimationFired,
 			} ),
+			'data-unitone-scroll-animation-root-margin':
+				rootMargin || undefined,
+			'data-unitone-scroll-animation-threshold': threshold || undefined,
 			style: {
 				...settings.wrapperProps?.style,
 				'--unitone--animation-duration':

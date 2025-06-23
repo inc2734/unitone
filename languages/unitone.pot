@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 19.9.1\n"
+"Project-Id-Version: unitone 20.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-06T06:47:18+00:00\n"
+"POT-Creation-Date: 2025-06-23T13:49:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: unitone\n"
@@ -54,12 +54,12 @@ msgstr ""
 
 #: App/Controller/Manager/Manager.php:373
 #: patterns/footer/footer-2.php:21
-#: patterns/footer/footer-3.php:50
-#: patterns/footer/footer-3.php:58
-#: patterns/footer/footer-3.php:66
-#: patterns/footer/footer-4.php:30
-#: patterns/footer/footer-4.php:38
-#: patterns/footer/footer-4.php:46
+#: patterns/footer/footer-3.php:53
+#: patterns/footer/footer-3.php:61
+#: patterns/footer/footer-3.php:69
+#: patterns/footer/footer-4.php:31
+#: patterns/footer/footer-4.php:39
+#: patterns/footer/footer-4.php:47
 #: patterns/footer/footer-5.php:28
 #: patterns/footer/footer-5.php:36
 #: patterns/footer/footer-5.php:44
@@ -68,12 +68,12 @@ msgstr ""
 
 #: App/Controller/Manager/Manager.php:416
 #: patterns/footer/footer-2.php:24
-#: patterns/footer/footer-3.php:53
-#: patterns/footer/footer-3.php:61
-#: patterns/footer/footer-3.php:69
-#: patterns/footer/footer-4.php:33
-#: patterns/footer/footer-4.php:41
-#: patterns/footer/footer-4.php:49
+#: patterns/footer/footer-3.php:56
+#: patterns/footer/footer-3.php:64
+#: patterns/footer/footer-3.php:72
+#: patterns/footer/footer-4.php:34
+#: patterns/footer/footer-4.php:42
+#: patterns/footer/footer-4.php:50
 #: patterns/footer/footer-5.php:31
 #: patterns/footer/footer-5.php:39
 #: patterns/footer/footer-5.php:47
@@ -763,12 +763,12 @@ msgid "Footer 2"
 msgstr ""
 
 #: patterns/footer/footer-2.php:22
-#: patterns/footer/footer-3.php:51
-#: patterns/footer/footer-3.php:59
-#: patterns/footer/footer-3.php:67
-#: patterns/footer/footer-4.php:31
-#: patterns/footer/footer-4.php:39
-#: patterns/footer/footer-4.php:47
+#: patterns/footer/footer-3.php:54
+#: patterns/footer/footer-3.php:62
+#: patterns/footer/footer-3.php:70
+#: patterns/footer/footer-4.php:32
+#: patterns/footer/footer-4.php:40
+#: patterns/footer/footer-4.php:48
 #: patterns/footer/footer-5.php:29
 #: patterns/footer/footer-5.php:37
 #: patterns/footer/footer-5.php:45
@@ -776,12 +776,12 @@ msgid "About"
 msgstr ""
 
 #: patterns/footer/footer-2.php:23
-#: patterns/footer/footer-3.php:52
-#: patterns/footer/footer-3.php:60
-#: patterns/footer/footer-3.php:68
-#: patterns/footer/footer-4.php:32
-#: patterns/footer/footer-4.php:40
-#: patterns/footer/footer-4.php:48
+#: patterns/footer/footer-3.php:55
+#: patterns/footer/footer-3.php:63
+#: patterns/footer/footer-3.php:71
+#: patterns/footer/footer-4.php:33
+#: patterns/footer/footer-4.php:41
+#: patterns/footer/footer-4.php:49
 #: patterns/footer/footer-5.php:30
 #: patterns/footer/footer-5.php:38
 #: patterns/footer/footer-5.php:46
@@ -789,12 +789,12 @@ msgid "Services"
 msgstr ""
 
 #: patterns/footer/footer-2.php:25
-#: patterns/footer/footer-3.php:54
-#: patterns/footer/footer-3.php:62
-#: patterns/footer/footer-3.php:70
-#: patterns/footer/footer-4.php:34
-#: patterns/footer/footer-4.php:42
-#: patterns/footer/footer-4.php:50
+#: patterns/footer/footer-3.php:57
+#: patterns/footer/footer-3.php:65
+#: patterns/footer/footer-3.php:73
+#: patterns/footer/footer-4.php:35
+#: patterns/footer/footer-4.php:43
+#: patterns/footer/footer-4.php:51
 #: patterns/footer/footer-5.php:32
 #: patterns/footer/footer-5.php:40
 #: patterns/footer/footer-5.php:48
@@ -848,8 +848,8 @@ msgstr ""
 
 #: patterns/private/template/404/main/one-column-page-header-image.php:23
 #: patterns/private/template/404/main/one-column.php:23
-#: patterns/private/template/404/main/right-sidebar-page-header-image.php:29
-#: patterns/private/template/404/main/right-sidebar.php:29
+#: patterns/private/template/404/main/right-sidebar-page-header-image.php:30
+#: patterns/private/template/404/main/right-sidebar.php:30
 msgid "Woops! Page not found. The page you are looking for may be moved or deleted. Please search this search box."
 msgstr ""
 
@@ -3404,6 +3404,28 @@ msgstr ""
 
 #: dist/js/editor/editor.js:13
 msgid "Check behavior"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "IntersectionObserver"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgctxt "intersectionObserver"
+msgid "rootMargin"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Sets the intersection area size to expand or shrink. e.g. -25% 0"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgctxt "intersectionObserver"
+msgid "threshold"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Specifies how much of the target must be intersect to fire the animation. e.g. 0.5"
 msgstr ""
 
 #: dist/js/editor/editor.js:13

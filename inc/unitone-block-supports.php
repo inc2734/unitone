@@ -775,6 +775,16 @@ add_filter(
 					}
 					$add_style( '--unitone--animation-initial', $scroll_animation_initial );
 				}
+
+				$scroll_animation_root_margin = $get_attribute( 'scrollAnimation.rootMargin' );
+				if ( $scroll_animation_root_margin ) {
+					$add_data_attribute( 'data-unitone-scroll-animation-root-margin', $scroll_animation_root_margin );
+				}
+
+				$scroll_animation_threshold = $get_attribute( 'scrollAnimation.threshold' );
+				if ( $scroll_animation_threshold || '0' === $scroll_animation_threshold ) {
+					$add_data_attribute( 'data-unitone-scroll-animation-threshold', $scroll_animation_threshold );
+				}
 			}
 		}
 

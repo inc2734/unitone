@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-06-23T13:49:23+00:00\n"
-"PO-Revision-Date: 2025-06-23 22:49+0900\n"
+"POT-Creation-Date: 2025-06-24T00:53:56+00:00\n"
+"PO-Revision-Date: 2025-06-24 10:29+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2216,6 +2216,22 @@ msgstr "フレックス（区切り：スラッシュ）"
 msgid "Flex (Divider: Bordered)"
 msgstr "フレックス（区切り：ボーダー）"
 
+#: dist/blocks/flex/index.js:1 dist/blocks/stack-divided/index.js:1
+#: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:4
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Revert"
+msgstr "逆転する"
+
+#: dist/blocks/flex/index.js:1 dist/blocks/switcher/index.js:4
+msgid ""
+"In single-column display, by default, the elements on the left side of the "
+"multi-column display are displayed on top, but when enabled, the elements on "
+"the right side of the multi-column display are displayed on top."
+msgstr ""
+"1列表示のとき、デフォルトでは複数列表示時の左側の要素が上に表示されますが、有"
+"効化すると、複数列表示時の右側の要素が上に表示されるようになります。"
+
 #: dist/blocks/frame/index.js:1
 msgid "Framed image"
 msgstr "フレーム画像"
@@ -2689,12 +2705,6 @@ msgstr "スタック（区切り：アンダーライン）"
 msgid "Stack (Divider: Bordered)"
 msgstr "スタック（区切り：ボーダー）"
 
-#: dist/blocks/stack-divided/index.js:1 dist/blocks/stack/index.js:1
-#: dist/blocks/switcher/index.js:4 dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Revert"
-msgstr "逆転する"
-
 #: dist/blocks/stack/index.js:1
 msgid "hgroup"
 msgstr "hgroup"
@@ -2713,16 +2723,6 @@ msgid ""
 "When this block is smaller than this width, the contents are arranged in a "
 "single column."
 msgstr "このブロックがこの幅より小さくなったとき、コンテンツは1列に並びます。"
-
-#: dist/blocks/switcher/index.js:4 dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid ""
-"In single-column display, by default, the elements on the left side of the "
-"two-column display are displayed on top, but when enabled, the elements on "
-"the right side of the two-column display are displayed on top."
-msgstr ""
-"1列表示のとき、デフォルトでは2列表示時の左側の要素が上に表示されますが、有効"
-"化すると、2列表示時の右側の要素が上に表示されるようになります。"
 
 #: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:7
 msgid "Fill"
@@ -2857,6 +2857,16 @@ msgstr "ライティングモードの切り替え"
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Switch writing mode when portrait and mobile width."
 msgstr "ポートレートかつモバイル幅のとライティンググモードを切り替える。"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid ""
+"In single-column display, by default, the elements on the left side of the "
+"two-column display are displayed on top, but when enabled, the elements on "
+"the right side of the two-column display are displayed on top."
+msgstr ""
+"1列表示のとき、デフォルトでは2列表示時の左側の要素が上に表示されますが、有効"
+"化すると、2列表示時の右側の要素が上に表示されるようになります。"
 
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1

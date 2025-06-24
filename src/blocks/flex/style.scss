@@ -11,6 +11,14 @@
 		row-gap: var(--unitone--row-gap);
 	}
 
+	&.is-horizontal[data-unitone-layout~="-revert"] {
+		flex-direction: row-reverse;
+	}
+
+	&.is-vertical[data-unitone-layout~="-revert"] {
+		flex-direction: column-reverse;
+	}
+
 	> * {
 		--unitone--flex-grow: initial;
 		--unitone--flex-shrink: initial;

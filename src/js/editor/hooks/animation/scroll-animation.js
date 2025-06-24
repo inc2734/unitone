@@ -498,7 +498,7 @@ function ScrollAnimationPopover( {
 									'unitone'
 								) }
 								help={ __(
-									'Sets the intersection area size to expand or shrink. e.g. -25% 0',
+									'Sets the intersection area size to expand or shrink. e.g. -25% 0px',
 									'unitone'
 								) }
 								value={ rootMargin || '0px' }

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-06-24T00:53:56+00:00\n"
-"PO-Revision-Date: 2025-06-24 10:29+0900\n"
+"POT-Creation-Date: 2025-06-24T03:00:26+00:00\n"
+"PO-Revision-Date: 2025-06-24 12:00+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3397,8 +3397,8 @@ msgid "rootMargin"
 msgstr "rootMargin"
 
 #: dist/js/editor/editor.js:13
-msgid "Sets the intersection area size to expand or shrink. e.g. -25% 0"
-msgstr "交差領域を拡大または縮小できます。例：-25% 0"
+msgid "Sets the intersection area size to expand or shrink. e.g. -25% 0px"
+msgstr "交差領域を拡大または縮小できます。例：-25% 0px"
 
 #: dist/js/editor/editor.js:13
 msgctxt "intersectionObserver"
@@ -4913,6 +4913,3 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
-
-#~ msgid "IntersectionObserver:rootMargin"
-#~ msgstr "IntersectionObserver:rootMargin"

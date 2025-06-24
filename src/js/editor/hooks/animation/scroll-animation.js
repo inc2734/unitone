@@ -497,6 +497,7 @@ function ScrollAnimationPopover( {
 									'intersectionObserver',
 									'unitone'
 								) }
+								// eslint-disable-next-line @wordpress/i18n-translator-comments
 								help={ __(
 									'Sets the intersection area size to expand or shrink. e.g. -25% 0px',
 									'unitone'

@@ -49,8 +49,6 @@ import {
 	useBackgroundClipBlockProps,
 } from './background-clip';
 
-import './fluid-font-size-magnification';
-
 export const useTypographyBlockProps = compose(
 	useAutoPhraseBlockProps,
 	useFluidTypographyBlockProps,

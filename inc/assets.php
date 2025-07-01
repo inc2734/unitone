@@ -27,6 +27,13 @@ function unitone_theme_scripts() {
 		array( 'wp-block-library' ),
 		filemtime( get_theme_file_path( 'dist/css/app/app.css' ) )
 	);
+
+	wp_enqueue_style(
+		'unitone-global-styles',
+		get_theme_file_uri( 'dist/css/app/global-styles.css' ),
+		array( 'global-styles' ),
+		filemtime( get_theme_file_path( 'dist/css/app/global-styles.css' ) )
+	);
 }
 add_action( 'wp_enqueue_scripts', 'unitone_theme_scripts', 9 );
 
@@ -119,6 +126,27 @@ function unitone_enqueue_block_editor_assets() {
 	do_action( 'unitone_enqueue_block_editor_assets' );
 }
 add_action( 'enqueue_block_assets', 'unitone_enqueue_block_editor_assets', 9 );
+
+/**
+ * Add CSS for global styles in the editor.
+ *
+ * @param array $editor_settings Default editor settings.
+ * @return array
+ */
+function unitone_override_block_editor_global_styles( $editor_settings ) {
+	if ( ! isset( $editor_settings['styles'] ) || ! is_array( $editor_settings['styles'] ) ) {
+		$editor_settings['styles'] = array();
+	}
+
+	$editor_settings['styles'][] = array(
+		'css'            => file_get_contents( get_theme_file_path( 'dist/css/app/global-styles.css' ) ), // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		'__unstableType' => 'theme',
+		'isGlobalStyles' => false,
+	);
+
+	return $editor_settings;
+}
+add_filter( 'block_editor_settings_all', 'unitone_override_block_editor_global_styles' );
 
 /**
  * Add global variables for block editor.

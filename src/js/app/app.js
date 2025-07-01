@@ -1,17 +1,9 @@
 import {
-	fluidFontSizeResizeObserver,
 	dividersResizeObserver,
 	stairsResizeObserver,
 } from '@inc2734/unitone-css/library';
 
 document.addEventListener( 'DOMContentLoaded', () => {
-	const fluidFontSizeElements = document.querySelectorAll(
-		'[data-unitone-layout~="-fluid-typography"]'
-	);
-	fluidFontSizeElements.forEach( ( target ) => {
-		fluidFontSizeResizeObserver( target );
-	} );
-
 	const dividers = document.querySelectorAll(
 		'[data-unitone-layout*="-divider:"]'
 	);

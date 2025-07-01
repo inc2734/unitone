@@ -19,6 +19,10 @@
 	margin-block-start: 0;
 }
 
+.alignfull:has(+ .alignfull) {
+	margin-block-end: 0;
+}
+
 .is-layout-flow,
 .is-layout-constrained,
 .is-root-container {

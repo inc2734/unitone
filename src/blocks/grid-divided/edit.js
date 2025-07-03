@@ -19,8 +19,9 @@ import {
 	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components';
 
+import { useResizeObserver } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
-import { useRef, useEffect } from '@wordpress/element';
+import { useRef, useEffect, useLayoutEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -31,10 +32,7 @@ import { ResponsiveSettingsContainer } from '../../js/editor/hooks/components';
 
 import metadata from './block.json';
 
-import {
-	dividersResizeObserver,
-	setDividerLinewrap,
-} from '@inc2734/unitone-css/library';
+import { setDividerLinewrap, debounce } from '@inc2734/unitone-css/library';
 
 const parseString = ( value ) => {
 	value = String( value );
@@ -86,30 +84,20 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const ref = useRef( null );
 
-	useEffect( () => {
-		const target = ref.current;
+	const resizeObserve = useResizeObserver(
+		debounce(
+			( entries ) => setDividerLinewrap( entries?.[ 0 ]?.target ),
+			250
+		)
+	);
 
-		setTimeout( () => {
-			setDividerLinewrap( target );
-		}, 250 );
-
-		const observers = dividersResizeObserver( target, {
-			ignore: {
-				className: [ 'is-hovered', 'is-highlighted' ],
-			},
-		} );
-
-		return () => {
-			if ( !! target ) {
-				observers.resizeObserver.unobserve( target );
-			}
-			observers.mutationObserver.disconnect();
-		};
-	}, [] );
+	useLayoutEffect( () => {
+		resizeObserve( ref.current );
+	}, [ ref.current ] );
 
 	useEffect( () => {
 		setDividerLinewrap( ref.current );
-	}, [ innerBlocksLength ] );
+	}, [ innerBlocksLength, attributes ] );
 
 	const TagName = tagName;
 

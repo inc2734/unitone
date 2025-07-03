@@ -14,8 +14,9 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import { useResizeObserver } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
-import { useRef, useEffect } from '@wordpress/element';
+import { useRef, useEffect, useLayoutEffect } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 
 import {
@@ -25,10 +26,7 @@ import {
 
 import metadata from './block.json';
 
-import {
-	stairsResizeObserver,
-	setStairsStep,
-} from '@inc2734/unitone-css/library';
+import { setStairsStep, debounce } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { columnMinWidth, templateLock, __unstableUnitoneBlockOutline } =
@@ -44,25 +42,17 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const ref = useRef( null );
 
-	useEffect( () => {
-		const target = ref.current;
+	const resizeObserve = useResizeObserver(
+		debounce( ( entries ) => setStairsStep( entries?.[ 0 ]?.target ), 250 )
+	);
 
-		const observer = stairsResizeObserver( target );
-
-		return () => {
-			if ( !! target ) {
-				observer.unobserve( target );
-			}
-		};
-	}, [] );
+	useLayoutEffect( () => {
+		resizeObserve( ref.current );
+	}, [ ref.current ] );
 
 	useEffect( () => {
 		setStairsStep( ref.current );
-	}, [
-		innerBlocksLength,
-		attributes?.unitone?.stairs,
-		attributes?.unitone?.stairsUp,
-	] );
+	}, [ innerBlocksLength, attributes ] );
 
 	const blockProps = useBlockProps( {
 		ref,

@@ -15,18 +15,16 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import { useResizeObserver } from '@wordpress/compose';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect, useRef } from '@wordpress/element';
+import { useRef, useEffect, useLayoutEffect } from '@wordpress/element';
 import { __, _x } from '@wordpress/i18n';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
-import {
-	dividersResizeObserver,
-	setDividerLinewrap,
-} from '@inc2734/unitone-css/library';
+import { setDividerLinewrap, debounce } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const {
@@ -53,28 +51,23 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			updateBlockAttributes( blocks[ 1 ], { type: 'aside' } );
 		}
 	}, [ sidebar, revert ] );
+
 	const ref = useRef( null );
 
+	const resizeObserve = useResizeObserver(
+		debounce(
+			( entries ) => setDividerLinewrap( entries?.[ 0 ]?.target ),
+			250
+		)
+	);
+
+	useLayoutEffect( () => {
+		resizeObserve( ref.current );
+	}, [ ref.current ] );
+
 	useEffect( () => {
-		const target = ref.current;
-
-		setTimeout( () => {
-			setDividerLinewrap( target );
-		}, 250 );
-
-		const observers = dividersResizeObserver( target, {
-			ignore: {
-				className: [ 'is-hovered', 'is-highlighted' ],
-			},
-		} );
-
-		return () => {
-			if ( !! target ) {
-				observers.resizeObserver.unobserve( target );
-			}
-			observers.mutationObserver.disconnect();
-		};
-	}, [] );
+		setDividerLinewrap( ref.current );
+	}, [ attributes ] );
 
 	const blockProps = useBlockProps( {
 		ref,

@@ -16,15 +16,15 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { useRefEffect } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
+import { useRef, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
-import { verticalsResizeObserver } from '@inc2734/unitone-css/library';
+import { setColumnCountForVertical } from '@inc2734/unitone-css/library';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const {
@@ -35,23 +35,60 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		templateLock,
 	} = attributes;
 
-	const hasInnerBlocks = useSelect(
+	const innerBlocksLength = useSelect(
 		( select ) =>
-			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
+			select( blockEditorStore ).getBlock( clientId )?.innerBlocks
 				?.length,
 		[ clientId ]
 	);
+	const hasInnerBlocks = !! innerBlocksLength;
 
-	const ref = useRefEffect( ( target ) => {
-		const observers = verticalsResizeObserver( target );
+	const ref = useRef( null );
+	const intervalIdRef = useRef( null );
+
+	useEffect( () => {
+		const observer = new IntersectionObserver(
+			( entries ) => {
+				const entry = entries[ 0 ];
+				if ( entry.isIntersecting ) {
+					intervalIdRef.current = setInterval( () => {
+						const lastChild = ref.current.lastElementChild;
+						if ( lastChild ) {
+							const lastChildRect =
+								lastChild.getBoundingClientRect();
+							const lastChildEnd =
+								lastChildRect.top + lastChildRect.height;
+
+							const parentRect =
+								ref.current.parentNode.getBoundingClientRect();
+							const parentEnd =
+								parentRect.top + parentRect.height;
+
+							if ( 1 < Math.abs( parentEnd - lastChildEnd ) ) {
+								setColumnCountForVertical( ref.current );
+							}
+						}
+					}, 250 );
+				} else if ( intervalIdRef.current ) {
+					clearInterval( intervalIdRef.current );
+					intervalIdRef.current = null;
+				}
+			},
+			{
+				rootMargin: '-100px 0px',
+			}
+		);
+
+		observer.observe( ref.current.parentNode );
 
 		return () => {
-			if ( !! target ) {
-				observers.resizeObserver.unobserve( target );
+			observer.disconnect();
+			if ( intervalIdRef.current ) {
+				clearInterval( intervalIdRef.current );
+				intervalIdRef.current = null;
 			}
-			observers.mutationObserver.disconnect();
 		};
-	}, [] );
+	}, [ ref.current ] );
 
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = clsx(

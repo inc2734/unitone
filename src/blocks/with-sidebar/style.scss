@@ -19,6 +19,10 @@
 		background-color: transparent !important;
 		background-image: none !important;
 	}
+
+	> * {
+		min-width: 0;
+	}
 }
 
 [data-unitone-layout~="with-sidebar__content__content"] {
@@ -30,4 +34,8 @@
 	padding-right: var(--unitone--padding-right);
 	padding-bottom: var(--unitone--padding-bottom);
 	padding-left: var(--unitone--padding-left);
+
+	> * {
+		min-width: 0;
+	}
 }

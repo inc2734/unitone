@@ -32,14 +32,21 @@
 }
 
 // To maintain backward compatibility, we will only use grid when necessary.
+// @todo Instead of using a pure div, I would like to add a class and keep the selector shallow.
 [data-unitone-layout~="decorator"]:where(
 	[data-unitone-layout*="-gap\:"],
 	[data-unitone-layout*="-align-content\:"],
 	[data-unitone-layout*="-justify-items\:"]
 ) {
-	> [data-unitone-layout~="decorator__inner"] > div,
-	> [data-unitone-layout~="-outer-block-link"] > [data-unitone-layout~="decorator__inner"] > div {
+	> :where(
+		[data-unitone-layout~="decorator__inner"],
+		[data-unitone-layout~="-outer-block-link"]
+	) > :where(div) {
 		display: grid;
+
+		> * {
+			min-width: 0;
+		}
 	}
 }
 

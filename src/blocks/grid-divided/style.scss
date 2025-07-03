@@ -29,6 +29,10 @@
 	padding-right: var(--unitone--padding-right);
 	padding-bottom: var(--unitone--padding-bottom);
 	padding-left: var(--unitone--padding-left);
+
+	> * {
+		min-width: 0;
+	}
 }
 
 .unitone-grid:where([data-unitone-layout*="-divider\:"]) {

@@ -28,7 +28,7 @@ export function resetBackgroundClip( {
 	} );
 }
 
-export function useIsBackgroundClipDisabled( { name } ) {
+export function isBackgroundClipSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.backgroundClip' );
 }
 
@@ -104,7 +104,7 @@ export function BackgroundClipEdit( {
 	);
 }
 
-export function useBackgroundClipBlockProps( settings ) {
+export function withBackgroundClipBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.backgroundClip' ) ) {

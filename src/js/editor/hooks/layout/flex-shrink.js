@@ -49,7 +49,7 @@ export function resetFlexShrink( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsFlexShrinkDisabled( {
+export function isFlexShrinkSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -121,7 +121,7 @@ export function FlexShrinkEdit( {
 	);
 }
 
-export function useFlexShrinkBlockProps( settings ) {
+export function withFlexShrinkBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

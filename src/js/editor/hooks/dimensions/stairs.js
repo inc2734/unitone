@@ -61,7 +61,7 @@ export function resetStairsUp( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsStairsDisabled( { name } ) {
+export function isStairsSupportDisabled( { name } ) {
 	if ( ! hasBlockSupport( name, 'unitone.stairs' ) ) {
 		return true;
 	}
@@ -168,7 +168,7 @@ export function StairsUpEdit( {
 	);
 }
 
-export function useStairsBlockProps( settings ) {
+export function withStairsBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.stairs' ) ) {

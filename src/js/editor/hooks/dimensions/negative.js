@@ -25,7 +25,7 @@ export function resetNegative( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsNegativeDisabled( { name } ) {
+export function isNegativeSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.negative' );
 }
 
@@ -68,7 +68,7 @@ export function NegativeEdit( {
 	);
 }
 
-export function useNegativeBlockProps( settings ) {
+export function withNegativeBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.negative' ) ) {

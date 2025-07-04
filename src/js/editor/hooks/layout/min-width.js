@@ -28,7 +28,7 @@ export function resetMinWidth( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsMinWidthDisabled( {
+export function isMinWidthSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -93,7 +93,7 @@ export function MinWidthEdit( {
 	);
 }
 
-export function useMinWidthBlockProps( settings ) {
+export function withMinWidthBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

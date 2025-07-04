@@ -7,25 +7,19 @@ import deepmerge from 'deepmerge';
 import fastDeepEqual from 'fast-deep-equal/es6';
 
 import {
-	getBlockSupport,
-	hasBlockSupport,
-	store as blocksStore,
-} from '@wordpress/blocks';
-
-import {
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
-import { useSelect } from '@wordpress/data';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
-	useIsBlurDisabled,
+	isBlurSupportDisabled,
 	hasBlurValue,
 	resetBlurFilter,
 	resetBlur,
@@ -34,7 +28,7 @@ import {
 } from './blur';
 
 import {
-	useIsBrightnessDisabled,
+	isBrightnessSupportDisabled,
 	hasBrightnessValue,
 	resetBrightnessFilter,
 	resetBrightness,
@@ -43,7 +37,7 @@ import {
 } from './brightness';
 
 import {
-	useIsContrastDisabled,
+	isContrastSupportDisabled,
 	hasContrastValue,
 	resetContrastFilter,
 	resetContrast,
@@ -105,11 +99,11 @@ import {
 	ProgressiveEdit,
 } from './progressive';
 
-export const useResetBackdropFilter = ( props ) => {
+export const resetBackdropFilter = ( props ) => {
 	const filters = [
-		[ useIsBlurDisabled, resetBlurFilter ],
-		[ useIsBrightnessDisabled, resetBrightnessFilter ],
-		[ useIsContrastDisabled, resetContrastFilter ],
+		[ isBlurSupportDisabled, resetBlurFilter ],
+		[ isBrightnessSupportDisabled, resetBrightnessFilter ],
+		[ isContrastSupportDisabled, resetContrastFilter ],
 		[ useIsGrayscaleDisabled, resetGrayscaleFilter ],
 		[ useIsHueRotateDisabled, resetHueRotateFilter ],
 		[ useIsInvertDisabled, resetInvertFilter ],
@@ -130,21 +124,13 @@ export const useResetBackdropFilter = ( props ) => {
 	return { ...props, attributes: { ...props.attributes, unitone } };
 };
 
-export function useBackdropFilterBlockProps( settings ) {
+export function withBackdropFilterBlockProps( settings ) {
 	const {
 		attributes: { unitone },
 		name,
 	} = settings;
 
 	const backdropFilter = unitone?.backdropFilter;
-
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.backdropFilter;
-		},
-		[ name ]
-	);
 
 	const backdropFilterProps = [];
 	const hasBackdropFilterSupport =
@@ -154,7 +140,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBlockSupport( name, 'unitone.backdropFilter.blur' ) ||
 		hasBackdropFilterSupport
 	) {
-		const blur = backdropFilter?.blur ?? defaultValue?.blur;
+		const blur = backdropFilter?.blur;
 		if ( null != blur && 0 !== blur ) {
 			backdropFilterProps.push( {
 				blur: `${ blur }px`,
@@ -166,8 +152,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBlockSupport( name, 'unitone.backdropFilter.brightness' ) ||
 		hasBackdropFilterSupport
 	) {
-		const brightness =
-			backdropFilter?.brightness ?? defaultValue?.brightness;
+		const brightness = backdropFilter?.brightness;
 		if ( null != brightness && 100 !== brightness ) {
 			backdropFilterProps.push( {
 				brightness: `${ brightness }%`,
@@ -179,7 +164,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBlockSupport( name, 'unitone.backdropFilter.contrast' ) ||
 		hasBackdropFilterSupport
 	) {
-		const contrast = backdropFilter?.contrast ?? defaultValue?.contrast;
+		const contrast = backdropFilter?.contrast;
 		if ( null != contrast && 100 !== contrast ) {
 			backdropFilterProps.push( {
 				contrast: `${ contrast }%`,
@@ -191,7 +176,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBlockSupport( name, 'unitone.backdropFilter.grayscale' ) ||
 		hasBackdropFilterSupport
 	) {
-		const grayscale = backdropFilter?.grayscale ?? defaultValue?.grayscale;
+		const grayscale = backdropFilter?.grayscale;
 		if ( null != grayscale && 0 !== grayscale ) {
 			backdropFilterProps.push( {
 				grayscale: `${ grayscale }%`,
@@ -203,7 +188,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBlockSupport( name, 'unitone.backdropFilter.hueRotate' ) ||
 		hasBackdropFilterSupport
 	) {
-		const hueRotate = backdropFilter?.hueRotate ?? defaultValue?.hueRotate;
+		const hueRotate = backdropFilter?.hueRotate;
 		if ( null != hueRotate && 0 !== hueRotate ) {
 			backdropFilterProps.push( {
 				'hue-rotate': `${ hueRotate }deg`,
@@ -215,7 +200,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBlockSupport( name, 'unitone.backdropFilter.invert' ) ||
 		hasBackdropFilterSupport
 	) {
-		const invert = backdropFilter?.invert ?? defaultValue?.invert;
+		const invert = backdropFilter?.invert;
 		if ( null != invert && 0 !== invert ) {
 			backdropFilterProps.push( {
 				invert: `${ invert }%`,
@@ -227,7 +212,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBlockSupport( name, 'unitone.backdropFilter.saturate' ) ||
 		hasBackdropFilterSupport
 	) {
-		const saturate = backdropFilter?.saturate ?? defaultValue?.saturate;
+		const saturate = backdropFilter?.saturate;
 		if ( null != saturate && 100 !== saturate ) {
 			backdropFilterProps.push( {
 				saturate: `${ saturate }%`,
@@ -239,7 +224,7 @@ export function useBackdropFilterBlockProps( settings ) {
 		hasBlockSupport( name, 'unitone.backdropFilter.sepia' ) ||
 		hasBackdropFilterSupport
 	) {
-		const sepia = backdropFilter?.sepia ?? defaultValue?.sepia;
+		const sepia = backdropFilter?.sepia;
 		if ( null != sepia && 0 !== sepia ) {
 			backdropFilterProps.push( {
 				sepia: `${ sepia }%`,
@@ -247,10 +232,8 @@ export function useBackdropFilterBlockProps( settings ) {
 		}
 	}
 
-	const progressiveAngle =
-		backdropFilter?.progressive?.angle ?? defaultValue?.progressive?.angle;
-	const progressiveStart =
-		backdropFilter?.progressive?.start ?? defaultValue?.progressive?.start;
+	const progressiveAngle = backdropFilter?.progressive?.angle;
+	const progressiveStart = backdropFilter?.progressive?.start;
 	const hasProgressiveSupport =
 		( hasBlockSupport( name, 'unitone.backdropFilter.progressive' ) ||
 			hasBackdropFilterSupport ) &&
@@ -321,9 +304,9 @@ function BackdropFilterPanelPure( props ) {
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
-	const isBlurDisabled = useIsBlurDisabled( { name } );
-	const isBrightnessDisabled = useIsBrightnessDisabled( { name } );
-	const isContrastDisabled = useIsContrastDisabled( { name } );
+	const isBlurDisabled = isBlurSupportDisabled( { name } );
+	const isBrightnessDisabled = isBrightnessSupportDisabled( { name } );
+	const isContrastDisabled = isContrastSupportDisabled( { name } );
 	const isGrayscaleDisabled = useIsGrayscaleDisabled( { name } );
 	const isHueRotateDisabled = useIsHueRotateDisabled( { name } );
 	const isInvertDisabled = useIsInvertDisabled( { name } );

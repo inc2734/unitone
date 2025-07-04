@@ -63,7 +63,7 @@ export function resetGridRow( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsGridRowDisabled( {
+export function isGridRowSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -231,7 +231,7 @@ export function GridRowEdit( {
 	);
 }
 
-export function useGridRowBlockProps( settings ) {
+export function withGridRowBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

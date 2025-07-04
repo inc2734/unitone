@@ -16,18 +16,20 @@ import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
-	useIsMixBlendModeDisabled,
+	isMixBlendModeSupportDisabled,
 	hasMixBlendModeValue,
 	resetMixBlendModeFilter,
 	resetMixBlendMode,
 	MixBlendModeEdit,
-	useMixBlendModeBlockProps,
+	withMixBlendModeBlockProps,
 } from './mix-blend-mode';
 
-export const useLayerBlockProps = useMixBlendModeBlockProps;
+export const withLayerBlockProps = withMixBlendModeBlockProps;
 
-export const useResetLayer = ( props ) => {
-	const filters = [ [ useIsMixBlendModeDisabled, resetMixBlendModeFilter ] ];
+export const resetLayer = ( props ) => {
+	const filters = [
+		[ isMixBlendModeSupportDisabled, resetMixBlendModeFilter ],
+	];
 
 	const unitone = filters.reduce(
 		( accumulator, [ isDisabled, resetFilter ] ) => {
@@ -56,7 +58,9 @@ function LayerPanelPure( props ) {
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
-	const isMixBlendModeDisabled = useIsMixBlendModeDisabled( { ...props } );
+	const isMixBlendModeDisabled = isMixBlendModeSupportDisabled( {
+		...props,
+	} );
 
 	if ( isMixBlendModeDisabled ) {
 		return null;

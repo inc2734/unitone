@@ -101,7 +101,7 @@ export function resetJustifySelf( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsJustifySelfDisabled( {
+export function isJustifySelfSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -454,7 +454,7 @@ export function JustifySelfEdit( {
 	);
 }
 
-export function useJustifySelfBlockProps( settings ) {
+export function withJustifySelfBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

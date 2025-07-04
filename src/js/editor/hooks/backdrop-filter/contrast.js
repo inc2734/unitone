@@ -63,7 +63,7 @@ export function getContrastEditLabel( {
 	);
 }
 
-export function useIsContrastDisabled( { name } = {} ) {
+export function isContrastSupportDisabled( { name } = {} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.contrast' ) &&
 		true !== getBlockSupport( name, 'unitone.backdropFilter' )

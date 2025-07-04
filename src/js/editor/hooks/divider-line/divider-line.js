@@ -13,8 +13,8 @@ import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
-	useDividerTypeBlockProps,
-	useIsDividerTypeDisabled,
+	withDividerTypeBlockProps,
+	isDividerTypeSupportDisabled,
 	resetDividerTypeFilter,
 	resetDividerType,
 	hasDividerTypeValue,
@@ -23,8 +23,8 @@ import {
 } from './divider-type';
 
 import {
-	useDividerBlockProps,
-	useIsDividerDisabled,
+	withDividerBlockProps,
+	isDividerSupportDisabled,
 	resetDividerFilter,
 	resetDivider,
 	hasDividerValue,
@@ -32,15 +32,15 @@ import {
 	DividerEdit,
 } from './divider';
 
-export const useDividerLineBlockProps = compose(
-	useDividerTypeBlockProps,
-	useDividerBlockProps
+export const withDividerLineBlockProps = compose(
+	withDividerTypeBlockProps,
+	withDividerBlockProps
 );
 
-export const useResetDividerLine = ( props ) => {
+export const resetDividerLine = ( props ) => {
 	const filters = [
-		[ useIsDividerTypeDisabled, resetDividerTypeFilter ],
-		[ useIsDividerDisabled, resetDividerFilter ],
+		[ isDividerTypeSupportDisabled, resetDividerTypeFilter ],
+		[ isDividerSupportDisabled, resetDividerFilter ],
 	];
 
 	const unitone = filters.reduce(
@@ -71,8 +71,8 @@ export function DividerLinePanelPure( props ) {
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
-	const isDividerTypeDisabled = useIsDividerTypeDisabled( { name } );
-	const isDividerDisabled = useIsDividerDisabled( { name } );
+	const isDividerTypeDisabled = isDividerTypeSupportDisabled( { name } );
+	const isDividerDisabled = isDividerSupportDisabled( { name } );
 
 	if ( isDividerTypeDisabled || isDividerDisabled ) {
 		return null;

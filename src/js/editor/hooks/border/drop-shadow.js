@@ -45,7 +45,7 @@ export function resetDropShadow( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsDropShadowDisabled( { name } ) {
+export function isDropShadowSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.dropShadow' );
 }
 
@@ -339,22 +339,14 @@ export function DropShadowEdit( {
 	);
 }
 
-export function useDropShadowBlockProps( settings ) {
+export function withDropShadowBlockProps( settings ) {
 	const { attributes, name } = settings;
-
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.dropShadow;
-		},
-		[ name ]
-	);
 
 	if ( ! hasBlockSupport( name, 'unitone.dropShadow' ) ) {
 		return settings;
 	}
 
-	const newDropShadow = attributes?.unitone?.dropShadow ?? defaultValue;
+	const newDropShadow = attributes?.unitone?.dropShadow;
 
 	if ( null == newDropShadow ) {
 		return settings;

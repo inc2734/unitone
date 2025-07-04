@@ -51,7 +51,7 @@ export function resetScrollAnimation( {
 	} );
 }
 
-export function useIsScrollAnimationDisabled( { name } ) {
+export function isScrollAnimationSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.scrollAnimation' );
 }
 
@@ -728,23 +728,14 @@ export function ScrollAnimationEdit( {
 	);
 }
 
-export function useScrollAnimationBlockProps( settings ) {
+export function withScrollAnimationBlockProps( settings ) {
 	const { attributes, name } = settings;
-
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.scrollAnimation;
-		},
-		[ name ]
-	);
 
 	if ( ! hasBlockSupport( name, 'unitone.scrollAnimation' ) ) {
 		return settings;
 	}
 
 	const newScrollAnimation = {
-		...defaultValue,
 		...attributes?.unitone?.scrollAnimation,
 	};
 

@@ -44,7 +44,7 @@ export function resetParallax( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsParallaxDisabled( { name } ) {
+export function isParallaxSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.parallax' );
 }
 
@@ -188,23 +188,14 @@ export function ParallaxEdit( {
 	);
 }
 
-export function useParallaxBlockProps( settings ) {
+export function withParallaxBlockProps( settings ) {
 	const { attributes, name } = settings;
-
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.parallax;
-		},
-		[ name ]
-	);
 
 	if ( ! hasBlockSupport( name, 'unitone.parallax' ) ) {
 		return settings;
 	}
 
 	const newParallax = {
-		...defaultValue,
 		...attributes?.unitone?.parallax,
 	};
 

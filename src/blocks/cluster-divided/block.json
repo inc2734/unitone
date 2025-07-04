@@ -56,7 +56,7 @@
 			}
 		},
 		"unitone": {
-			"justifyContent": [ "left", "center", "right" ],
+			"justifyContent": [ "start", "center", "end" ],
 			"gap": {
 				"splitOnAxis": true
 			},

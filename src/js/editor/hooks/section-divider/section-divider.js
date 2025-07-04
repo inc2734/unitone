@@ -7,9 +7,8 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import { hasBlockSupport } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
-import { useSelect } from '@wordpress/data';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -93,12 +92,12 @@ import {
 	SectionDividerBottomTrimEdit,
 } from './bottom-trim';
 
-function useIsSectionDividerDisabled( { name } ) {
+function isSectionDividerSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.sectionDivider' );
 }
 
-export const useResetSectionDivider = ( props ) => {
-	if ( ! useIsSectionDividerDisabled( { ...props } ) ) {
+export const resetSectionDivider = ( props ) => {
+	if ( ! isSectionDividerSupportDisabled( { ...props } ) ) {
 		return props;
 	}
 
@@ -124,16 +123,8 @@ export const useResetSectionDivider = ( props ) => {
 	};
 };
 
-export function useSectionDividerBlockProps( settings ) {
+export function withSectionDividerBlockProps( settings ) {
 	const { attributes, name } = settings;
-
-	const defaultValue = useSelect(
-		( select ) => {
-			return select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.sectionDivider;
-		},
-		[ name ]
-	);
 
 	if ( ! hasBlockSupport( name, 'unitone.sectionDivider' ) ) {
 		return settings;
@@ -141,11 +132,9 @@ export function useSectionDividerBlockProps( settings ) {
 
 	const sectionDivider = cleanEmptyObject( {
 		top: {
-			...defaultValue?.top,
 			...attributes?.unitone?.sectionDivider?.top,
 		},
 		bottom: {
-			...defaultValue?.bottom,
 			...attributes?.unitone?.sectionDivider?.bottom,
 		},
 	} );
@@ -235,7 +224,9 @@ export function SectionDividerPanelPure( props ) {
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
-	const isSectionDividerDisabled = useIsSectionDividerDisabled( { name } );
+	const isSectionDividerDisabled = isSectionDividerSupportDisabled( {
+		name,
+	} );
 
 	if ( isSectionDividerDisabled ) {
 		return null;

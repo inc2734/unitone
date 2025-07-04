@@ -5,21 +5,21 @@ import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/compo
 import { memo } from '@wordpress/element';
 
 import {
-	useIsDropShadowDisabled,
+	isDropShadowSupportDisabled,
 	hasDropShadowValue,
 	resetDropShadowFilter,
 	resetDropShadow,
 	getDropShadowEditLabel,
 	DropShadowEdit,
-	useDropShadowBlockProps,
+	withDropShadowBlockProps,
 } from './drop-shadow';
 
 import { cleanEmptyObject } from '../utils';
 
-export const useBorderBlockProps = useDropShadowBlockProps;
+export const withBorderBlockProps = withDropShadowBlockProps;
 
-export const useResetBorder = ( props ) => {
-	const filters = [ [ useIsDropShadowDisabled, resetDropShadowFilter ] ];
+export const resetBorder = ( props ) => {
+	const filters = [ [ isDropShadowSupportDisabled, resetDropShadowFilter ] ];
 
 	const unitone = filters.reduce(
 		( accumulator, [ isDisabled, resetFilter ] ) => {
@@ -36,7 +36,7 @@ export const useResetBorder = ( props ) => {
 function BorderPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 
-	const isDropShadowDisabled = useIsDropShadowDisabled( { name } );
+	const isDropShadowDisabled = isDropShadowSupportDisabled( { name } );
 
 	if ( isDropShadowDisabled ) {
 		return null;

@@ -5,6 +5,8 @@
  * @license GPL-2.0+
  */
 
+use Unitone\App\Controller\Manager\Manager;
+
 /**
  * Enqueue theme scripts and styles.
  */
@@ -156,9 +158,11 @@ foreach ( array( 'unitone_enqueue_block_editor_assets', 'unitone_setup_enqueue_a
 		'wp-block-editor',
 		'unitone',
 		array(
-			'uploadBaseUrl' => wp_upload_dir()['baseurl'],
-			'path'          => get_template_directory(),
-			'url'           => get_template_directory_uri(),
+			'uploadBaseUrl'  => wp_upload_dir()['baseurl'],
+			'path'           => get_template_directory(),
+			'url'            => get_template_directory_uri(),
+			'halfLeading'    => Manager::get_setting( 'half-leading' ),
+			'minHalfLeading' => Manager::get_setting( 'min-half-leading' ),
 		)
 	);
 }

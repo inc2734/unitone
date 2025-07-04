@@ -283,7 +283,7 @@ export function saveStyleProp( extraProps, blockType, attributes ) {
 	};
 }
 
-export function useStyleBlockProps( settings ) {
+export function withStyleBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
 
 	return {

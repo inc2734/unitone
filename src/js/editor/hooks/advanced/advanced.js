@@ -8,14 +8,14 @@ import {
 	resetStyleFilter,
 	StyleTag,
 	StyleEdit,
-	useStyleBlockProps,
+	withStyleBlockProps,
 } from './style';
 
 export { StyleTag };
 
-export const useAdvancedBlockProps = useStyleBlockProps;
+export const withAdvancedBlockProps = withStyleBlockProps;
 
-export const useResetAdvanced = ( props ) => {
+export const resetAdvanced = ( props ) => {
 	const filters = [ [ useIsStyleDisabled, resetStyleFilter ] ];
 
 	const unitone = filters.reduce(

@@ -72,7 +72,7 @@ export function resetJustifyContentColumn( {
 	} );
 }
 
-export function useIsJustifyContentColumnDisabled( { name } ) {
+export function isJustifyContentColumnSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.justifyContentColumn' );
 }
 
@@ -187,7 +187,7 @@ export function JustifyContentColumnEdit( {
 	);
 }
 
-export function useJustifyContentColumnBlockProps( settings ) {
+export function withJustifyContentColumnBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.justifyContentColumn' ) ) {

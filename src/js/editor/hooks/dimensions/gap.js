@@ -46,7 +46,7 @@ export function resetGap( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsGapDisabled( { name, className } ) {
+export function isGapSupportDisabled( { name, className } ) {
 	if ( ! hasBlockSupport( name, 'unitone.gap' ) ) {
 		return true;
 	}
@@ -346,7 +346,7 @@ export function GapEdit( {
 	);
 }
 
-export function useGapBlockProps( settings ) {
+export function withGapBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.gap' ) ) {

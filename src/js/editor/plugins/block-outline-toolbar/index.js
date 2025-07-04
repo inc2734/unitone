@@ -1,11 +1,7 @@
-import {
-	BlockControls,
-	store as blockEditorStore,
-} from '@wordpress/block-editor';
+import { BlockControls } from '@wordpress/block-editor';
 
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
 import { useState } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
 import { seen } from '@wordpress/icons';
@@ -13,19 +9,15 @@ import { __ } from '@wordpress/i18n';
 
 const withBlockOutlineToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { setAttributes, clientId, isSelected } = props;
+		const { setAttributes, isSelected } = props;
 
 		const [ isPressed, setIsPressed ] = useState( false );
 
-		const allowedBlocks = useSelect( ( select ) =>
-			select( blockEditorStore ).getAllowedBlocks( clientId )
-		);
-
-		const canDisplayed = 0 < allowedBlocks.length;
+		const canDisplayed = isSelected;
 
 		return (
 			<>
-				{ isSelected && canDisplayed && (
+				{ canDisplayed && (
 					<BlockControls>
 						<ToolbarGroup>
 							<ToolbarButton

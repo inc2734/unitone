@@ -100,7 +100,7 @@ export function resetDivider( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsDividerDisabled( { name } ) {
+export function isDividerSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.divider' );
 }
 
@@ -207,21 +207,8 @@ export function DividerEdit( {
 	);
 }
 
-export function useDividerBlockProps( settings ) {
+export function withDividerBlockProps( settings ) {
 	const { attributes, name } = settings;
-
-	const { defaultDivider, defaultDividerColor } = useSelect(
-		( select ) => {
-			const blockTypeAttributes =
-				select( blocksStore ).getBlockType( name )?.attributes;
-			return {
-				defaultDivider: blockTypeAttributes?.unitone?.default?.divider,
-				defaultDividerColor:
-					blockTypeAttributes?.unitone?.default?.dividerColor,
-			};
-		},
-		[ name ]
-	);
 
 	if ( ! hasBlockSupport( name, 'unitone.divider' ) ) {
 		return settings;
@@ -229,9 +216,9 @@ export function useDividerBlockProps( settings ) {
 
 	const newDivider = {
 		divider: {
-			...( attributes?.unitone?.divider ?? defaultDivider ),
+			...attributes?.unitone?.divider,
 		},
-		dividerColor: attributes?.unitone?.dividerColor ?? defaultDividerColor,
+		dividerColor: attributes?.unitone?.dividerColor,
 	};
 
 	if ( null == newDivider?.divider && null == newDivider?.dividerColor ) {

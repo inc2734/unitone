@@ -59,7 +59,7 @@ export function resetPadding( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsPaddingDisabled( { name } ) {
+export function isPaddingSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.padding' );
 }
 
@@ -420,7 +420,7 @@ export function PaddingEdit( {
 	);
 }
 
-export function usePaddingBlockProps( settings ) {
+export function withPaddingBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.padding' ) ) {

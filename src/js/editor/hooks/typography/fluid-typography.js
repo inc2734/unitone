@@ -27,7 +27,7 @@ export function resetFluidTypography( {
 	} );
 }
 
-export function useIsFluidTypographyDisabled( { name } ) {
+export function isFluidTypographySupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.fluidTypography' );
 }
 
@@ -73,7 +73,7 @@ export function FluidTypographyEdit( { label, attributes, setAttributes } ) {
 	);
 }
 
-export function useFluidTypographyBlockProps( settings ) {
+export function withFluidTypographyBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.fluidTypography' ) ) {

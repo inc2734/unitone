@@ -13,55 +13,55 @@ import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
 import {
-	useIsAutoPhraseDisabled,
+	isAutoPhraseSupportDisabled,
 	hasAutoPhraseValue,
 	resetAutoPhraseFilter,
 	resetAutoPhrase,
 	AutoPhraseEdit,
-	useAutoPhraseBlockProps,
+	withAutoPhraseBlockProps,
 } from './auto-phrase';
 
 import {
-	useIsFluidTypographyDisabled,
+	isFluidTypographySupportDisabled,
 	hasFluidTypographyValue,
 	resetFluidTypographyFilter,
 	resetFluidTypography,
 	FluidTypographyEdit,
-	useFluidTypographyBlockProps,
+	withFluidTypographyBlockProps,
 } from './fluid-typography';
 
 import {
-	useIsHalfLeadingDisabled,
+	isHalfLeadingSupportDisabled,
 	hasHalfLeadingValue,
 	resetHalfLeadingFilter,
 	resetHalfLeading,
 	HalfLeadingEdit,
-	useHalfLeadingBlockProps,
+	withHalfLeadingBlockProps,
 } from './half-leading';
 
 import {
-	useIsBackgroundClipDisabled,
+	isBackgroundClipSupportDisabled,
 	getBackgroundClipEditLabel,
 	hasBackgroundClipValue,
 	resetBackgroundClipFilter,
 	resetBackgroundClip,
 	BackgroundClipEdit,
-	useBackgroundClipBlockProps,
+	withBackgroundClipBlockProps,
 } from './background-clip';
 
-export const useTypographyBlockProps = compose(
-	useAutoPhraseBlockProps,
-	useFluidTypographyBlockProps,
-	useHalfLeadingBlockProps,
-	useBackgroundClipBlockProps
+export const withTypographyBlockProps = compose(
+	withAutoPhraseBlockProps,
+	withFluidTypographyBlockProps,
+	withHalfLeadingBlockProps,
+	withBackgroundClipBlockProps
 );
 
-export const useResetTypography = ( props ) => {
+export const resetTypography = ( props ) => {
 	const filters = [
-		[ useIsAutoPhraseDisabled, resetAutoPhraseFilter ],
-		[ useIsBackgroundClipDisabled, resetBackgroundClipFilter ],
-		[ useIsFluidTypographyDisabled, resetFluidTypographyFilter ],
-		[ useIsHalfLeadingDisabled, resetHalfLeadingFilter ],
+		[ isAutoPhraseSupportDisabled, resetAutoPhraseFilter ],
+		[ isFluidTypographySupportDisabled, resetFluidTypographyFilter ],
+		[ isHalfLeadingSupportDisabled, resetHalfLeadingFilter ],
+		[ isBackgroundClipSupportDisabled, resetBackgroundClipFilter ],
 	];
 
 	const unitone = filters.reduce(
@@ -79,10 +79,14 @@ export const useResetTypography = ( props ) => {
 function TypographyPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId } = props;
 
-	const isAutoPhraseDisabled = useIsAutoPhraseDisabled( { name } );
-	const isFluidTypographyDisabled = useIsFluidTypographyDisabled( { name } );
-	const isHalfLeadingDisabled = useIsHalfLeadingDisabled( { name } );
-	const isBackgroundClipDisabled = useIsBackgroundClipDisabled( { name } );
+	const isAutoPhraseDisabled = isAutoPhraseSupportDisabled( { name } );
+	const isFluidTypographyDisabled = isFluidTypographySupportDisabled( {
+		name,
+	} );
+	const isHalfLeadingDisabled = isHalfLeadingSupportDisabled( { name } );
+	const isBackgroundClipDisabled = isBackgroundClipSupportDisabled( {
+		name,
+	} );
 
 	if (
 		isAutoPhraseDisabled &&

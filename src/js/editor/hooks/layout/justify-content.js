@@ -26,7 +26,7 @@ import { cleanEmptyObject } from '../utils';
 
 const justifyContentOptions = [
 	{
-		value: 'left',
+		value: 'start',
 		icon: justifyLeft,
 		label: __( 'Justify content left', 'unitone' ),
 	},
@@ -36,7 +36,7 @@ const justifyContentOptions = [
 		label: __( 'Justify content center', 'unitone' ),
 	},
 	{
-		value: 'right',
+		value: 'end',
 		icon: justifyRight,
 		label: __( 'Justify content right', 'unitone' ),
 	},
@@ -84,7 +84,7 @@ export function resetJustifyContent( {
 	} );
 }
 
-export function useIsJustifyContentDisabled( { name } ) {
+export function isJustifyContentSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.justifyContent' );
 }
 
@@ -214,7 +214,7 @@ export function JustifyContentEdit( {
 	);
 }
 
-export function useJustifyContentBlockProps( settings ) {
+export function withJustifyContentBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.justifyContent' ) ) {

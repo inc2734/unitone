@@ -12,37 +12,37 @@ import { memo } from '@wordpress/element';
 import { cleanEmptyObject } from '../utils';
 
 import {
-	useIsPaddingDisabled,
+	isPaddingSupportDisabled,
 	hasPaddingValue,
 	resetPaddingFilter,
 	resetPadding,
 	getPaddingEditLabel,
 	PaddingEdit,
-	usePaddingBlockProps,
+	withPaddingBlockProps,
 } from './padding';
 
 import {
-	useIsGuttersDisabled,
+	isGuttersSupportDisabled,
 	hasGuttersValue,
 	resetGuttersFilter,
 	resetGutters,
 	getGuttersEditLabel,
 	GuttersEdit,
-	useGuttersBlockProps,
+	withGuttersBlockProps,
 } from './gutters';
 
 import {
-	useIsGapDisabled,
+	isGapSupportDisabled,
 	hasGapValue,
 	resetGapFilter,
 	resetGap,
 	getGapEditLabel,
 	GapEdit,
-	useGapBlockProps,
+	withGapBlockProps,
 } from './gap';
 
 import {
-	useIsStairsDisabled,
+	isStairsSupportDisabled,
 	hasStairsValue,
 	hasStairsUpValue,
 	resetStairsFilter,
@@ -53,46 +53,46 @@ import {
 	StairsEdit,
 	getStairsUpEditLabel,
 	StairsUpEdit,
-	useStairsBlockProps,
+	withStairsBlockProps,
 } from './stairs';
 
 import {
-	useIsNegativeDisabled,
+	isNegativeSupportDisabled,
 	hasNegativeValue,
 	resetNegativeFilter,
 	resetNegative,
 	getNegativeEditLabel,
 	NegativeEdit,
-	useNegativeBlockProps,
+	withNegativeBlockProps,
 } from './negative';
 
 import {
-	useIsOverflowDisabled,
+	isOverflowSupportDisabled,
 	hasOverflowValue,
 	resetOverflowFilter,
 	resetOverflow,
 	getOverflowEditLabel,
 	OverflowEdit,
-	useOverflowBlockProps,
+	withOverflowBlockProps,
 } from './overflow';
 
-export const useDimensionsBlockProps = compose(
-	useGapBlockProps,
-	useGuttersBlockProps,
-	useNegativeBlockProps,
-	useOverflowBlockProps,
-	usePaddingBlockProps,
-	useStairsBlockProps
+export const withDimensionsBlockProps = compose(
+	withGapBlockProps,
+	withGuttersBlockProps,
+	withNegativeBlockProps,
+	withOverflowBlockProps,
+	withPaddingBlockProps,
+	withStairsBlockProps
 );
 
-export const useResetDimensions = ( props ) => {
+export const resetDimensions = ( props ) => {
 	const filters = [
-		[ useIsPaddingDisabled, resetPaddingFilter ],
-		[ useIsGuttersDisabled, resetGuttersFilter ],
-		[ useIsGapDisabled, resetGapFilter ],
-		[ useIsStairsDisabled, resetStairsFilter ],
-		[ useIsNegativeDisabled, resetNegativeFilter ],
-		[ useIsOverflowDisabled, resetOverflowFilter ],
+		[ isPaddingSupportDisabled, resetPaddingFilter ],
+		[ isGuttersSupportDisabled, resetGuttersFilter ],
+		[ isGapSupportDisabled, resetGapFilter ],
+		[ isStairsSupportDisabled, resetStairsFilter ],
+		[ isNegativeSupportDisabled, resetNegativeFilter ],
+		[ isOverflowSupportDisabled, resetOverflowFilter ],
 	];
 
 	const unitone = filters.reduce(
@@ -110,12 +110,12 @@ export const useResetDimensions = ( props ) => {
 function DimensionsPanelPure( props ) {
 	const { name, attributes, setAttributes, clientId, className } = props;
 
-	const isPaddingDisabled = useIsPaddingDisabled( { name } );
-	const isGuttersDisabled = useIsGuttersDisabled( { name } );
-	const isGapDisabled = useIsGapDisabled( { name, className } );
-	const isStairsDisabled = useIsStairsDisabled( { name } );
-	const isNegativeDisabled = useIsNegativeDisabled( { name } );
-	const isOverflowDisabled = useIsOverflowDisabled( { name } );
+	const isPaddingDisabled = isPaddingSupportDisabled( { name } );
+	const isGuttersDisabled = isGuttersSupportDisabled( { name } );
+	const isGapDisabled = isGapSupportDisabled( { name, className } );
+	const isStairsDisabled = isStairsSupportDisabled( { name } );
+	const isNegativeDisabled = isNegativeSupportDisabled( { name } );
+	const isOverflowDisabled = isOverflowSupportDisabled( { name } );
 
 	if (
 		isPaddingDisabled &&

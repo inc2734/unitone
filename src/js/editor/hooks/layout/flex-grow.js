@@ -48,7 +48,7 @@ export function resetFlexGrow( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsFlexGrowDisabled( {
+export function isFlexGrowSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -120,7 +120,7 @@ export function FlexGrowEdit( {
 	);
 }
 
-export function useFlexGrowBlockProps( settings ) {
+export function withFlexGrowBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

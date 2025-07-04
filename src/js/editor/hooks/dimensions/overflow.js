@@ -54,7 +54,7 @@ export function resetOverflow( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsOverflowDisabled( { name } ) {
+export function isOverflowSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.overflow' );
 }
 
@@ -110,7 +110,7 @@ export function OverflowEdit( {
 	);
 }
 
-export function useOverflowBlockProps( settings ) {
+export function withOverflowBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.overflow' ) ) {

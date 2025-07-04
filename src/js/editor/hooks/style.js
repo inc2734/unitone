@@ -3,93 +3,100 @@
  */
 
 import { createHigherOrderComponent, compose } from '@wordpress/compose';
+import { useMemo } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
 
 import {
 	DimensionsPanel,
-	useDimensionsBlockProps,
-	useResetDimensions,
+	withDimensionsBlockProps,
+	resetDimensions,
 } from './dimensions/dimensions';
 
 import {
 	TypographyPanel,
-	useTypographyBlockProps,
-	useResetTypography,
+	withTypographyBlockProps,
+	resetTypography,
 } from './typography/typography';
 
 import {
 	DividerLinePanel,
-	useDividerLineBlockProps,
-	useResetDividerLine,
+	withDividerLineBlockProps,
+	resetDividerLine,
 } from './divider-line/divider-line';
 
 import {
 	SectionDividerPanel,
-	useSectionDividerBlockProps,
-	useResetSectionDivider,
+	withSectionDividerBlockProps,
+	resetSectionDivider,
 } from './section-divider/section-divider';
 
 import {
 	BackdropFilterPanel,
-	useBackdropFilterBlockProps,
-	useResetBackdropFilter,
+	withBackdropFilterBlockProps,
+	resetBackdropFilter,
 } from './backdrop-filter/backdrop-filter';
 
 import {
 	AdvancedPanel,
-	useAdvancedBlockProps,
+	withAdvancedBlockProps,
 	StyleTag,
-	useResetAdvanced,
+	resetAdvanced,
 } from './advanced/advanced';
 
 import {
 	LayoutPanel,
-	useLayoutBlockProps,
-	useResetLayout,
+	withLayoutBlockProps,
+	resetLayout,
 } from './layout/layout';
 
 import {
 	BorderPanel,
-	useBorderBlockProps,
-	useResetBorder,
+	withBorderBlockProps,
+	resetBorder,
 } from './border/border';
 
 import {
 	PositionPanel,
-	usePositionBlockProps,
-	useResetPosition,
+	withPositionBlockProps,
+	resetPositions,
 } from './position/position';
 
 import {
 	AnimationPanel,
-	useAnimationProps,
-	useResetAnimation,
+	withAnimationProps,
+	resetAnimation,
 } from './animation/animation';
 
-import { LayerPanel, useLayerBlockProps, useResetLayer } from './layer/layer';
+import { LayerPanel, withLayerBlockProps, resetLayer } from './layer/layer';
 
-const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
+const withBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
-		props = useTypographyBlockProps( props );
-		props = useLayoutBlockProps( props );
-		props = useDimensionsBlockProps( props );
-		props = usePositionBlockProps( props );
-		props = useDividerLineBlockProps( props );
-		props = useSectionDividerBlockProps( props );
-		props = useLayerBlockProps( props );
-		props = useBorderBlockProps( props );
-		props = useBackdropFilterBlockProps( props );
-		props = useAnimationProps( props );
-		props = useAdvancedBlockProps( props );
+		const newProps = useMemo(
+			() =>
+				compose( [
+					withTypographyBlockProps,
+					withLayoutBlockProps,
+					withDimensionsBlockProps,
+					withPositionBlockProps,
+					withDividerLineBlockProps,
+					withSectionDividerBlockProps,
+					withLayerBlockProps,
+					withBorderBlockProps,
+					withBackdropFilterBlockProps,
+					withAnimationProps,
+					withAdvancedBlockProps,
+				] )( props ),
+			[ props ]
+		);
 
 		return (
 			<>
-				<BlockListBlock { ...props } />
-				<StyleTag { ...{ unitone: props?.attributes?.unitone } } />
+				<BlockListBlock { ...newProps } />
+				<StyleTag { ...{ unitone: newProps?.attributes?.unitone } } />
 			</>
 		);
 	};
-}, 'useBlockProps' );
+}, 'withBlockProps' );
 
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
@@ -130,8 +137,8 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 addFilter(
 	'editor.BlockListBlock',
-	'unitone/style/useBlockProps',
-	useBlockProps
+	'unitone/style/withBlockProps',
+	withBlockProps
 );
 
 addFilter(
@@ -142,17 +149,17 @@ addFilter(
 
 export const resetUnitoneStyles = ( props ) => {
 	const newProps = compose( [
-		useResetTypography,
-		useResetDimensions,
-		useResetLayout,
-		useResetDividerLine,
-		useResetSectionDivider,
-		useResetPosition,
-		useResetLayer,
-		useResetBorder,
-		useResetBackdropFilter,
-		useResetAnimation,
-		useResetAdvanced,
+		resetTypography,
+		resetDimensions,
+		resetLayout,
+		resetDividerLine,
+		resetSectionDivider,
+		resetPositions,
+		resetLayer,
+		resetBorder,
+		resetBackdropFilter,
+		resetAnimation,
+		resetAdvanced,
 	] )( props );
 
 	return newProps;

@@ -226,7 +226,7 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 				postId: getCurrentPostId(),
 				postTitle: getEditedPostAttribute( 'title' ),
 			};
-		} );
+		}, [] );
 		const { editPost } = useDispatch( editorStore );
 
 		const setFeaturedImage = async ( mediaId ) => {

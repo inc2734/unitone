@@ -63,7 +63,7 @@ export function getBrightnessEditLabel( {
 	);
 }
 
-export function useIsBrightnessDisabled( { name } = {} ) {
+export function isBrightnessSupportDisabled( { name } = {} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.brightness' ) &&
 		true !== getBlockSupport( name, 'unitone.backdropFilter' )

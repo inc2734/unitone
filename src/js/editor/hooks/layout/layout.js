@@ -17,234 +17,237 @@ import { sprintf, __ } from '@wordpress/i18n';
 import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
-	useIsJustifyContentDisabled,
+	isJustifyContentSupportDisabled,
 	hasJustifyContentValue,
 	resetJustifyContentFilter,
 	resetJustifyContent,
 	JustifyContentToolbar,
 	getJustifyContentEditLabel,
 	JustifyContentEdit,
-	useJustifyContentBlockProps,
+	withJustifyContentBlockProps,
 } from './justify-content';
 
 import {
-	useIsJustifyItemsDisabled,
+	isJustifyItemsSupportDisabled,
 	hasJustifyItemsValue,
 	resetJustifyItemsFilter,
 	resetJustifyItems,
 	JustifyItemsToolbar,
 	getJustifyItemsEditLabel,
 	JustifyItemsEdit,
-	useJustifyItemsBlockProps,
+	withJustifyItemsBlockProps,
 } from './justify-items';
 
 import {
-	useIsJustifyContentColumnDisabled,
+	isJustifyContentColumnSupportDisabled,
 	hasJustifyContentColumnValue,
 	resetJustifyContentColumnFilter,
 	resetJustifyContentColumn,
 	JustifyContentColumnToolbar,
 	getJustifyContentColumnEditLabel,
 	JustifyContentColumnEdit,
-	useJustifyContentColumnBlockProps,
+	withJustifyContentColumnBlockProps,
 } from './justify-content-column';
 
 import {
-	useIsAlignContentDisabled,
+	isAlignContentSupportDisabled,
 	hasAlignContentValue,
 	resetAlignContentFilter,
 	resetAlignContent,
 	AlignContentToolbar,
 	getAlignContentEditLabel,
 	AlignContentEdit,
-	useAlignContentBlockProps,
+	withAlignContentBlockProps,
 } from './align-content';
 
 import {
-	useIsAlignItemsDisabled,
+	isAlignItemsSupportDisabled,
 	hasAlignItemsValue,
 	resetAlignItemsFilter,
 	resetAlignItems,
 	AlignItemsToolbar,
 	getAlignItemsEditLabel,
 	AlignItemsEdit,
-	useAlignItemsBlockProps,
+	withAlignItemsBlockProps,
 } from './align-items';
 
 import {
-	useIsBlockAlignDisabled,
+	isBlockAlignSupportDisabled,
 	hasBlockAlignValue,
 	resetBlockAlignFilter,
 	resetBlockAlign,
 	BlockAlignToolbar,
 	getBlockAlignEditLabel,
 	BlockAlignEdit,
-	useBlockAlignBlockProps,
+	withBlockAlignBlockProps,
 } from './block-align';
 
 import {
-	useIsFlexBasisDisabled,
+	isFlexBasisSupportDisabled,
 	hasFlexBasisValue,
 	resetFlexBasisFilter,
 	resetFlexBasis,
 	getFlexBasisEditLabel,
 	FlexBasisEdit,
-	useFlexBasisBlockProps,
+	withFlexBasisBlockProps,
 } from './flex-basis';
 
 import {
-	useIsFlexGrowDisabled,
+	isFlexGrowSupportDisabled,
 	hasFlexGrowValue,
 	resetFlexGrowFilter,
 	resetFlexGrow,
 	getFlexGrowEditLabel,
 	FlexGrowEdit,
-	useFlexGrowBlockProps,
+	withFlexGrowBlockProps,
 } from './flex-grow';
 
 import {
-	useIsFlexShrinkDisabled,
+	isFlexShrinkSupportDisabled,
 	hasFlexShrinkValue,
 	resetFlexShrinkFilter,
 	resetFlexShrink,
 	getFlexShrinkEditLabel,
 	FlexShrinkEdit,
-	useFlexShrinkBlockProps,
+	withFlexShrinkBlockProps,
 } from './flex-shrink';
 
 import {
-	useIsMaxWidthDisabled,
+	isMaxWidthSupportDisabled,
 	hasMaxWidthValue,
 	resetMaxWidthFilter,
 	resetMaxWidth,
 	getMaxWidthEditLabel,
 	MaxWidthEdit,
-	useMaxWidthBlockProps,
+	withMaxWidthBlockProps,
 } from './max-width';
 
 import {
-	useIsMinWidthDisabled,
+	isMinWidthSupportDisabled,
 	hasMinWidthValue,
 	resetMinWidthFilter,
 	resetMinWidth,
 	getMinWidthEditLabel,
 	MinWidthEdit,
-	useMinWidthBlockProps,
+	withMinWidthBlockProps,
 } from './min-width';
 
 import {
-	useIsMaxHeightDisabled,
+	isMaxHeightSupportDisabled,
 	hasMaxHeightValue,
 	resetMaxHeightFilter,
 	resetMaxHeight,
 	getMaxHeightEditLabel,
 	MaxHeightEdit,
-	useMaxHeightBlockProps,
+	withMaxHeightBlockProps,
 } from './max-height';
 
 import {
-	useIsMinHeightDisabled,
+	isMinHeightSupportDisabled,
 	hasMinHeightValue,
 	resetMinHeightFilter,
 	resetMinHeight,
 	getMinHeightEditLabel,
 	MinHeightEdit,
-	useMinHeightBlockProps,
+	withMinHeightBlockProps,
 } from './min-height';
 
 import {
-	useIsAutoRepeatDisabled,
+	isAutoRepeatSupportDisabled,
 	hasAutoRepeatValue,
 	resetAutoRepeatFilter,
 	resetAutoRepeat,
 	getAutoRepeatEditLabel,
 	AutoRepeatEdit,
-	useAutoRepeatBlockProps,
+	withAutoRepeatBlockProps,
 } from './auto-repeat';
 
 import {
-	useIsAlignSelfDisabled,
+	isAlignSelfSupportDisabled,
 	hasAlignSelfValue,
 	resetAlignSelfFilter,
 	resetAlignSelf,
 	AlignSelfToolbar,
 	getAlignSelfEditLabel,
 	AlignSelfEdit,
-	useAlignSelfBlockProps,
+	withAlignSelfBlockProps,
 } from './align-self';
 
 import {
-	useIsJustifySelfDisabled,
+	isJustifySelfSupportDisabled,
 	hasJustifySelfValue,
 	resetJustifySelfFilter,
 	resetJustifySelf,
 	JustifySelfToolbar,
 	getJustifySelfEditLabel,
 	JustifySelfEdit,
-	useJustifySelfBlockProps,
+	withJustifySelfBlockProps,
 } from './justify-self';
 
 import {
-	useIsGridColumnDisabled,
+	isGridColumnSupportDisabled,
 	hasGridColumnValue,
 	resetGridColumnFilter,
 	resetGridColumn,
 	getGridColumnEditLabel,
 	GridColumnEdit,
-	useGridColumnBlockProps,
+	withGridColumnBlockProps,
 } from './grid-column';
 
 import {
-	useIsGridRowDisabled,
+	isGridRowSupportDisabled,
 	hasGridRowValue,
 	resetGridRowFilter,
 	resetGridRow,
 	getGridRowEditLabel,
 	GridRowEdit,
-	useGridRowBlockProps,
+	withGridRowBlockProps,
 } from './grid-row';
 
-export const useLayoutBlockProps = compose(
-	useAlignContentBlockProps,
-	useAlignItemsBlockProps,
-	useAlignSelfBlockProps,
-	useAutoRepeatBlockProps,
-	useBlockAlignBlockProps,
-	useFlexBasisBlockProps,
-	useFlexGrowBlockProps,
-	useFlexShrinkBlockProps,
-	useGridColumnBlockProps,
-	useGridRowBlockProps,
-	useJustifyContentBlockProps,
-	useJustifyContentColumnBlockProps,
-	useJustifyItemsBlockProps,
-	useJustifySelfBlockProps,
-	useMaxHeightBlockProps,
-	useMaxWidthBlockProps,
-	useMinHeightBlockProps,
-	useMinWidthBlockProps
+export const withLayoutBlockProps = compose(
+	withAlignContentBlockProps,
+	withAlignItemsBlockProps,
+	withAlignSelfBlockProps,
+	withAutoRepeatBlockProps,
+	withBlockAlignBlockProps,
+	withFlexBasisBlockProps,
+	withFlexGrowBlockProps,
+	withFlexShrinkBlockProps,
+	withGridColumnBlockProps,
+	withGridRowBlockProps,
+	withJustifyContentBlockProps,
+	withJustifyContentColumnBlockProps,
+	withJustifyItemsBlockProps,
+	withJustifySelfBlockProps,
+	withMaxHeightBlockProps,
+	withMaxWidthBlockProps,
+	withMinHeightBlockProps,
+	withMinWidthBlockProps
 );
 
-export const useResetLayout = ( props ) => {
+export const resetLayout = ( props ) => {
 	const filters = [
-		[ useIsJustifyContentDisabled, resetJustifyContentFilter ],
-		[ useIsJustifyContentColumnDisabled, resetJustifyContentColumnFilter ],
-		[ useIsJustifyItemsDisabled, resetJustifyItemsFilter ],
-		[ useIsAlignContentDisabled, resetAlignContentFilter ],
-		[ useIsAlignItemsDisabled, resetAlignItemsFilter ],
-		[ useIsBlockAlignDisabled, resetBlockAlignFilter ],
-		[ useIsFlexBasisDisabled, resetFlexBasisFilter ],
-		[ useIsFlexGrowDisabled, resetFlexGrowFilter ],
-		[ useIsFlexShrinkDisabled, resetFlexShrinkFilter ],
-		[ useIsMaxWidthDisabled, resetMaxWidthFilter ],
-		[ useIsMinWidthDisabled, resetMinWidthFilter ],
-		[ useIsMaxHeightDisabled, resetMaxHeightFilter ],
-		[ useIsMinHeightDisabled, resetMinHeightFilter ],
-		[ useIsAutoRepeatDisabled, resetAutoRepeatFilter ],
-		[ useIsAlignSelfDisabled, resetAlignSelfFilter ],
-		[ useIsJustifySelfDisabled, resetJustifySelfFilter ],
-		[ useIsGridColumnDisabled, resetGridColumnFilter ],
-		[ useIsGridRowDisabled, resetGridRowFilter ],
+		[ isJustifyContentSupportDisabled, resetJustifyContentFilter ],
+		[
+			isJustifyContentColumnSupportDisabled,
+			resetJustifyContentColumnFilter,
+		],
+		[ isJustifyItemsSupportDisabled, resetJustifyItemsFilter ],
+		[ isAlignContentSupportDisabled, resetAlignContentFilter ],
+		[ isAlignItemsSupportDisabled, resetAlignItemsFilter ],
+		[ isBlockAlignSupportDisabled, resetBlockAlignFilter ],
+		[ isFlexBasisSupportDisabled, resetFlexBasisFilter ],
+		[ isFlexGrowSupportDisabled, resetFlexGrowFilter ],
+		[ isFlexShrinkSupportDisabled, resetFlexShrinkFilter ],
+		[ isMaxWidthSupportDisabled, resetMaxWidthFilter ],
+		[ isMinWidthSupportDisabled, resetMinWidthFilter ],
+		[ isMaxHeightSupportDisabled, resetMaxHeightFilter ],
+		[ isMinHeightSupportDisabled, resetMinHeightFilter ],
+		[ isAutoRepeatSupportDisabled, resetAutoRepeatFilter ],
+		[ isAlignSelfSupportDisabled, resetAlignSelfFilter ],
+		[ isJustifySelfSupportDisabled, resetJustifySelfFilter ],
+		[ isGridColumnSupportDisabled, resetGridColumnFilter ],
+		[ isGridRowSupportDisabled, resetGridRowFilter ],
 	];
 
 	const unitone = filters.reduce(
@@ -292,35 +295,59 @@ function LayoutPanelPure( props ) {
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
-	const isJustifyContentDisabled = useIsJustifyContentDisabled( { name } );
-	const isJustifyContentColumnDisabled = useIsJustifyContentColumnDisabled( {
+	const isJustifyContentDisabled = isJustifyContentSupportDisabled( {
 		name,
 	} );
-	const isJustifyItemsDisabled = useIsJustifyItemsDisabled( { name } );
-	const isAlignContentDisabled = useIsAlignContentDisabled( { name } );
-	const isAlignItemsDisabled = useIsAlignItemsDisabled( { name } );
-	const isBlockAlignDisabled = useIsBlockAlignDisabled( { name } );
-	const isFlexBasisDisabled = useIsFlexBasisDisabled( { name, attributes } );
-	const isFlexGrowDisabled = useIsFlexGrowDisabled( { name, attributes } );
-	const isFlexShrinkDisabled = useIsFlexShrinkDisabled( {
-		name,
-		attributes,
-	} );
-	const isMaxWidthDisabled = useIsMaxWidthDisabled( { name, attributes } );
-	const isMinWidthDisabled = useIsMinWidthDisabled( { name, attributes } );
-	const isMaxHeightDisabled = useIsMaxHeightDisabled( { name, attributes } );
-	const isMinHeightDisabled = useIsMinHeightDisabled( { name, attributes } );
-	const isAutoRepeatDisabled = useIsAutoRepeatDisabled( { name } );
-	const isAlignSelfDisabled = useIsAlignSelfDisabled( { name, attributes } );
-	const isJustifySelfDisabled = useIsJustifySelfDisabled( {
+	const isJustifyContentColumnDisabled =
+		isJustifyContentColumnSupportDisabled( {
+			name,
+		} );
+	const isJustifyItemsDisabled = isJustifyItemsSupportDisabled( { name } );
+	const isAlignContentDisabled = isAlignContentSupportDisabled( { name } );
+	const isAlignItemsDisabled = isAlignItemsSupportDisabled( { name } );
+	const isBlockAlignDisabled = isBlockAlignSupportDisabled( { name } );
+	const isFlexBasisDisabled = isFlexBasisSupportDisabled( {
 		name,
 		attributes,
 	} );
-	const isGridColumnDisabled = useIsGridColumnDisabled( {
+	const isFlexGrowDisabled = isFlexGrowSupportDisabled( {
 		name,
 		attributes,
 	} );
-	const isGridRowDisabled = useIsGridRowDisabled( { name, attributes } );
+	const isFlexShrinkDisabled = isFlexShrinkSupportDisabled( {
+		name,
+		attributes,
+	} );
+	const isMaxWidthDisabled = isMaxWidthSupportDisabled( {
+		name,
+		attributes,
+	} );
+	const isMinWidthDisabled = isMinWidthSupportDisabled( {
+		name,
+		attributes,
+	} );
+	const isMaxHeightDisabled = isMaxHeightSupportDisabled( {
+		name,
+		attributes,
+	} );
+	const isMinHeightDisabled = isMinHeightSupportDisabled( {
+		name,
+		attributes,
+	} );
+	const isAutoRepeatDisabled = isAutoRepeatSupportDisabled( { name } );
+	const isAlignSelfDisabled = isAlignSelfSupportDisabled( {
+		name,
+		attributes,
+	} );
+	const isJustifySelfDisabled = isJustifySelfSupportDisabled( {
+		name,
+		attributes,
+	} );
+	const isGridColumnDisabled = isGridColumnSupportDisabled( {
+		name,
+		attributes,
+	} );
+	const isGridRowDisabled = isGridRowSupportDisabled( { name, attributes } );
 
 	if (
 		isJustifyContentDisabled &&

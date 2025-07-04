@@ -33,7 +33,7 @@ export function resetPosition( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsPositionDisabled( { name } ) {
+export function isPositionSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.position' );
 }
 
@@ -385,7 +385,7 @@ export function ZIndexEdit( {
 	);
 }
 
-export function usePositionBlockProps( settings ) {
+export function withPositionBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.position' ) ) {

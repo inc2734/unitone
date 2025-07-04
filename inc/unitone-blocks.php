@@ -84,6 +84,13 @@ function unitone_register_blocks() {
 				'role' => 'local',
 			);
 		}
+
+		if ( ! isset( $block_type->attributes['__unstableUnitoneBlockOutline'] ) ) {
+			$block_type->attributes['__unstableUnitoneBlockOutline'] = array(
+				'type' => 'boolean',
+				'role' => 'local',
+			);
+		}
 	}
 }
 add_action( 'init', 'unitone_register_blocks' );

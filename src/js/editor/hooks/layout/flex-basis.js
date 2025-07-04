@@ -48,7 +48,7 @@ export function resetFlexBasis( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsFlexBasisDisabled( {
+export function isFlexBasisSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -106,7 +106,7 @@ export function FlexBasisEdit( {
 	);
 }
 
-export function useFlexBasisBlockProps( settings ) {
+export function withFlexBasisBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

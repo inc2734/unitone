@@ -29,7 +29,7 @@ export function resetGutters( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsGuttersDisabled( { name } ) {
+export function isGuttersSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.gutters' );
 }
 
@@ -114,7 +114,7 @@ export function GuttersEdit( {
 	);
 }
 
-export function useGuttersBlockProps( settings ) {
+export function withGuttersBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.gutters' ) ) {

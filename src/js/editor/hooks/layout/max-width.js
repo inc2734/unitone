@@ -37,7 +37,7 @@ export function resetMaxWidth( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsMaxWidthDisabled( {
+export function isMaxWidthSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -152,7 +152,7 @@ export function MaxWidthEdit( {
 	);
 }
 
-export function useMaxWidthBlockProps( settings ) {
+export function withMaxWidthBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

@@ -17,32 +17,32 @@ import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
 
 import {
-	useIsParallaxDisabled,
+	isParallaxSupportDisabled,
 	hasParallaxValue,
 	resetParallaxFilter,
 	resetParallax,
 	ParallaxEdit,
-	useParallaxBlockProps,
+	withParallaxBlockProps,
 } from './parallax';
 
 import {
-	useIsScrollAnimationDisabled,
+	isScrollAnimationSupportDisabled,
 	hasScrollAnimationValue,
 	resetScrollAnimationFilter,
 	resetScrollAnimation,
 	ScrollAnimationEdit,
-	useScrollAnimationBlockProps,
+	withScrollAnimationBlockProps,
 } from './scroll-animation';
 
-export const useAnimationProps = compose(
-	useParallaxBlockProps,
-	useScrollAnimationBlockProps
+export const withAnimationProps = compose(
+	withParallaxBlockProps,
+	withScrollAnimationBlockProps
 );
 
-export const useResetAnimation = ( props ) => {
+export const resetAnimation = ( props ) => {
 	const filters = [
-		[ useIsParallaxDisabled, resetParallaxFilter ],
-		[ useIsScrollAnimationDisabled, resetScrollAnimationFilter ],
+		[ isParallaxSupportDisabled, resetParallaxFilter ],
+		[ isScrollAnimationSupportDisabled, resetScrollAnimationFilter ],
 	];
 
 	const unitone = filters.reduce(
@@ -73,8 +73,10 @@ function AnimationPanelPure( props ) {
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
-	const isParallaxDisabled = useIsParallaxDisabled( { name } );
-	const isScrollAnimationDisabled = useIsScrollAnimationDisabled( { name } );
+	const isParallaxDisabled = isParallaxSupportDisabled( { name } );
+	const isScrollAnimationDisabled = isScrollAnimationSupportDisabled( {
+		name,
+	} );
 
 	if ( isParallaxDisabled && isScrollAnimationDisabled ) {
 		return null;

@@ -24,7 +24,7 @@ export function resetAutoPhrase( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsAutoPhraseDisabled( { name } ) {
+export function isAutoPhraseSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.autoPhrase' );
 }
 
@@ -66,7 +66,7 @@ export function AutoPhraseEdit( {
 	);
 }
 
-export function useAutoPhraseBlockProps( settings ) {
+export function withAutoPhraseBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.autoPhrase' ) ) {

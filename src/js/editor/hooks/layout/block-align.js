@@ -56,7 +56,7 @@ export function resetBlockAlign( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsBlockAlignDisabled( { name } ) {
+export function isBlockAlignSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.blockAlign' );
 }
 
@@ -152,7 +152,7 @@ export function BlockAlignEdit( {
 	);
 }
 
-export function useBlockAlignBlockProps( settings ) {
+export function withBlockAlignBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.blockAlign' ) ) {

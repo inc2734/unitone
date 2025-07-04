@@ -235,7 +235,7 @@ export const GridVisualizer = forwardRef( ( { attributes }, ref ) => {
 				observer.disconnect();
 			}
 		};
-	}, [] );
+	}, [ ref.current ] );
 
 	useEffect( () => {
 		const gridElement = ref.current;

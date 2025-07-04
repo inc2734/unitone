@@ -61,7 +61,7 @@ export function getBlurEditLabel( {
 	);
 }
 
-export function useIsBlurDisabled( { name } = {} ) {
+export function isBlurSupportDisabled( { name } = {} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.blur' ) &&
 		true !== getBlockSupport( name, 'unitone.backdropFilter' )

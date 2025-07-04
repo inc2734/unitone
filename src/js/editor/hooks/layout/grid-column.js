@@ -64,7 +64,7 @@ export function resetGridColumn( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsGridColumnDisabled( {
+export function isGridColumnSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -234,7 +234,7 @@ export function GridColumnEdit( {
 	);
 }
 
-export function useGridColumnBlockProps( settings ) {
+export function withGridColumnBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

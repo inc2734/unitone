@@ -1,9 +1,5 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
-import { useState, useEffect } from '@wordpress/element';
-import { addQueryArgs } from '@wordpress/url';
-
-import apiFetch from '@wordpress/api-fetch';
 
 import { cleanEmptyObject, isNumber } from '../utils';
 
@@ -25,7 +21,7 @@ export function resetHalfLeading( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsHalfLeadingDisabled( { name } ) {
+export function isHalfLeadingSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.halfLeading' );
 }
 
@@ -60,45 +56,27 @@ export function HalfLeadingEdit( {
 	);
 }
 
-export function useHalfLeadingBlockProps( settings ) {
+export function withHalfLeadingBlockProps( settings ) {
 	const { attributes, name } = settings;
-
-	const [ baseHalfLeading, setBaseHalfLeading ] = useState();
-	const [ baseMinHalfLeading, setBaseMinHalfLeading ] = useState();
-
-	const newHalfLeading = attributes?.unitone?.halfLeading;
-
-	useEffect( () => {
-		if ( ! hasBlockSupport( name, 'unitone.halfLeading' ) ) {
-			return;
-		}
-
-		if ( null != newHalfLeading ) {
-			apiFetch( {
-				path: addQueryArgs( '/unitone/v1/settings', {
-					keys: [ 'half-leading', 'min-half-leading' ],
-				} ),
-			} ).then( ( themeSettings ) => {
-				setBaseHalfLeading(
-					parseFloat( themeSettings?.[ 'half-leading' ] )
-				);
-				setBaseMinHalfLeading(
-					parseFloat( themeSettings?.[ 'min-half-leading' ] )
-				);
-			} );
-		} else {
-			setBaseHalfLeading( undefined );
-			setBaseMinHalfLeading( undefined );
-		}
-	}, [ newHalfLeading ] );
 
 	if ( ! hasBlockSupport( name, 'unitone.halfLeading' ) ) {
 		return settings;
 	}
 
+	const newHalfLeading = attributes?.unitone?.halfLeading;
+
 	if ( undefined === newHalfLeading ) {
 		return settings;
 	}
+
+	const baseHalfLeading =
+		null != unitone?.halfLeading
+			? parseFloat( unitone?.halfLeading )
+			: undefined;
+	const baseMinHalfLeading =
+		null != unitone?.minHalfLeading
+			? parseFloat( unitone?.minHalfLeading )
+			: undefined;
 
 	const diff =
 		null != newHalfLeading &&

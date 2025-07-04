@@ -69,7 +69,7 @@ export function resetJustifyItems( {
 	} );
 }
 
-export function useIsJustifyItemsDisabled( { name } ) {
+export function isJustifyItemsSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.justifyItems' );
 }
 
@@ -184,7 +184,7 @@ export function JustifyItemsEdit( {
 	);
 }
 
-export function useJustifyItemsBlockProps( settings ) {
+export function withJustifyItemsBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.justifyItems' ) ) {

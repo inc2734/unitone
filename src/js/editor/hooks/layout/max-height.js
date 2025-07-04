@@ -28,7 +28,7 @@ export function resetMaxHeight( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsMaxHeightDisabled( {
+export function isMaxHeightSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -89,7 +89,7 @@ export function MaxHeightEdit( {
 	);
 }
 
-export function useMaxHeightBlockProps( settings ) {
+export function withMaxHeightBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

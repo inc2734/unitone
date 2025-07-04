@@ -22,7 +22,7 @@ const autoRepeatOptions = [
 	},
 ];
 
-export function useIsAutoRepeatDisabled( { name } ) {
+export function isAutoRepeatSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.autoRepeat' );
 }
 
@@ -102,7 +102,7 @@ export function AutoRepeatEdit( {
 	);
 }
 
-export function useAutoRepeatBlockProps( settings ) {
+export function withAutoRepeatBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.autoRepeat' ) ) {

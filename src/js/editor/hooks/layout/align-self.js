@@ -95,7 +95,7 @@ export function resetAlignSelf( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsAlignSelfDisabled( {
+export function isAlignSelfSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -424,7 +424,7 @@ export function AlignSelfEdit( {
 	);
 }
 
-export function useAlignSelfBlockProps( settings ) {
+export function withAlignSelfBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

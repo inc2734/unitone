@@ -28,7 +28,7 @@ export function resetMinHeight( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsMinHeightDisabled( {
+export function isMinHeightSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
 } ) {
@@ -89,7 +89,7 @@ export function MinHeightEdit( {
 	);
 }
 
-export function useMinHeightBlockProps( settings ) {
+export function withMinHeightBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 

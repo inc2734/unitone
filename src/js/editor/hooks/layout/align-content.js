@@ -79,7 +79,7 @@ export function resetAlignContent( {
 	} );
 }
 
-export function useIsAlignContentDisabled( { name } ) {
+export function isAlignContentSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.alignContent' );
 }
 
@@ -194,7 +194,7 @@ export function AlignContentEdit( {
 	);
 }
 
-export function useAlignContentBlockProps( settings ) {
+export function withAlignContentBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.alignContent' ) ) {

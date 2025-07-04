@@ -60,7 +60,7 @@ export function resetAlignItems( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function useIsAlignItemsDisabled( { name } ) {
+export function isAlignItemsSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.alignItems' );
 }
 
@@ -174,7 +174,7 @@ export function AlignItemsEdit( {
 	);
 }
 
-export function useAlignItemsBlockProps( settings ) {
+export function withAlignItemsBlockProps( settings ) {
 	const { attributes, name } = settings;
 
 	if ( ! hasBlockSupport( name, 'unitone.alignItems' ) ) {

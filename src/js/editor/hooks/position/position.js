@@ -16,7 +16,7 @@ import {
 	hasPositionValue,
 	resetPositionFilter,
 	resetPosition,
-	useIsPositionDisabled,
+	isPositionSupportDisabled,
 	PositionEdit,
 	hasTopValue,
 	resetTopFilter,
@@ -38,13 +38,13 @@ import {
 	resetZIndexFilter,
 	resetZIndex,
 	ZIndexEdit,
-	usePositionBlockProps,
+	withPositionBlockProps,
 } from './position-object';
 
-export { usePositionBlockProps };
+export { withPositionBlockProps };
 
-export const useResetPosition = ( props ) => {
-	if ( ! useIsPositionDisabled( { ...props } ) ) {
+export const resetPositions = ( props ) => {
+	if ( ! isPositionSupportDisabled( { ...props } ) ) {
 		return props;
 	}
 
@@ -85,7 +85,7 @@ function PositionPanelPure( props ) {
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
-	const isPositionDisabled = useIsPositionDisabled( { name } );
+	const isPositionDisabled = isPositionSupportDisabled( { name } );
 
 	if ( isPositionDisabled ) {
 		return null;

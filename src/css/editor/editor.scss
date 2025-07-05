@@ -173,6 +173,15 @@
 	inset: auto 0 0 auto;
 }
 
+// Set the color of button-block-appender to be the same as the text color.
+.block-editor-inserter {
+	color: inherit;
+}
+.block-editor-button-block-appender {
+	color: inherit;
+	box-shadow: inset 0 0 0 1px currentColor;
+}
+
 // Variaton picker.
 .block-editor-block-variation-picker {
 	&.has-many-variations {

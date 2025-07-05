@@ -1,4 +1,4 @@
-[data-type="unitone/both-sides"] {
+[data-type="unitone/cover-content"] {
 	&:not(.is-selected) {
 		> .block-list-appender:only-child {
 			pointer-events: none;
@@ -7,7 +7,7 @@
 				content: "";
 				position: absolute;
 				inset: 0;
-				border: 1px dashed;
+				border: 1px dashed !important;
 				pointer-events: none;
 			}
 

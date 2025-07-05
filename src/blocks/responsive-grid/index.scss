@@ -1,6 +1,19 @@
 [data-type="unitone/responsive-grid"] {
-	> .block-list-appender {
-		position: absolute;
-		inset: auto 0 0 auto;
+	&:not(.is-selected) {
+		> .block-list-appender:only-child {
+			pointer-events: none;
+
+			&::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				border: 1px dashed;
+				pointer-events: none;
+			}
+
+			.block-editor-inserter {
+				opacity: 0;
+			}
+		}
 	}
 }

@@ -13,6 +13,7 @@ import transforms from './transforms';
 import { applyGridChildStyles } from './utils';
 
 import './style.scss';
+import './index.scss';
 
 registerBlockType( 'unitone/grid', {
 	icon: {

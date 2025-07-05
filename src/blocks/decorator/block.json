@@ -139,5 +139,6 @@
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js",
 	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css",
 	"viewScript": "file:./app.js"
 }

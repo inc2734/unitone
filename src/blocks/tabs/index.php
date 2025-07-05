@@ -76,7 +76,7 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 		}
 
 		$html .= '>';
-		$html .= sprintf( '<div class="unitone-tab__label">%1$s</div>', wp_kses_post( $tab_panel['attrs']['tabLabel'] ) );
+		$html .= sprintf( '<div class="unitone-tab__label">%1$s</div>', wp_kses_post( $tab_panel['attrs']['tabLabel'] ?? '' ) );
 		$html .= '</button>';
 	}
 

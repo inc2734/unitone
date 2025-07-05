@@ -182,6 +182,14 @@
 	box-shadow: inset 0 0 0 1px currentColor;
 }
 
+// The core specifies bottom and right but not top and left, so they may be overwritten by the block's CSS.
+.block-editor-block-list__block .block-list-appender {
+	top: auto;
+	left: auto;
+	margin: 0;
+	padding: 0;
+}
+
 // Variaton picker.
 .block-editor-block-variation-picker {
 	&.has-many-variations {

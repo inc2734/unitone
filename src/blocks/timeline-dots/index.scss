@@ -1,4 +1,4 @@
-[data-type="unitone/flex-divided"] {
+[data-type="unitone/timeline-dots"] {
 	&:not(.is-selected) {
 		> .block-list-appender:only-child {
 			pointer-events: none;
@@ -16,20 +16,11 @@
 			}
 		}
 	}
-
-	> .block-list-appender {
-		padding: 0;
-		margin: 0;
-
-		&::before {
-			display: none;
-		}
-	}
 }
 
-[data-type="unitone/flex-divided-content"]{
+[data-type="unitone/timeline-dots-column"] {
 	&:not(.is-selected) {
-		> .block-editor-block-list__layout > .block-list-appender:only-child {
+		> .block-list-appender:only-child {
 			pointer-events: none;
 
 			&::after {

@@ -73,7 +73,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				],
 			],
 			renderAppender: hasInnerBlocks
-				? undefined
+				? false
 				: InnerBlocks.ButtonBlockAppender,
 		}
 	);

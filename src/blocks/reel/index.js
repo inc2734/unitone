@@ -6,6 +6,7 @@ import save from './save';
 import deprecated from './deprecated';
 
 import './style.scss';
+import './index.scss';
 
 registerBlockType( 'unitone/reel', {
 	icon: {

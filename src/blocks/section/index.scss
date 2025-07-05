@@ -1,0 +1,25 @@
+[data-type="unitone/section"] {
+	&:not(.is-selected) {
+		> [data-unitone-layout~="gutters"] {
+			> [data-unitone-layout~="container"] {
+				> .block-editor-block-list__layout {
+					> .block-list-appender:only-child {
+						pointer-events: none;
+
+						&::after {
+							content: "";
+							position: absolute;
+							inset: 0;
+							border: 1px dashed;
+							pointer-events: none;
+						}
+
+						.block-editor-inserter {
+							opacity: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

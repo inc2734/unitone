@@ -3,3 +3,23 @@
 		width: 100%;
 	}
 }
+
+[data-type="unitone/flex"] {
+	&:not(.is-selected) {
+		> .block-list-appender:only-child {
+			pointer-events: none;
+
+			&::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				border: 1px dashed;
+				pointer-events: none;
+			}
+
+			.block-editor-inserter {
+				opacity: 0;
+			}
+		}
+	}
+}

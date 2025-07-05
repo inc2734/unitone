@@ -6,6 +6,7 @@ import save from './save';
 import transforms from './transforms';
 
 import './style.scss';
+import './index.scss';
 
 registerBlockType( 'unitone/texture', {
 	icon: {

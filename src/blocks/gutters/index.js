@@ -10,6 +10,7 @@ import transforms from './transforms';
 import deprecated from './deprecated';
 
 import './style.scss';
+import './index.scss';
 
 registerBlockType( 'unitone/gutters', {
 	icon: {

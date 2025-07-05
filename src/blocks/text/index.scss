@@ -1,0 +1,9 @@
+[data-type="unitone/text"].is-layout-constrained {
+	&:not(.is-selected) {
+		> .block-list-appender:only-child {
+			&::after {
+				border: 1px dashed !important;
+			}
+		}
+	}
+}

@@ -1,6 +1,6 @@
-[data-type="unitone/both-sides"] {
-	&:not(.is-selected) {
-		> .block-list-appender:only-child {
+[data-type="unitone/responsive-switcher"] {
+	&:not(.is-selected):not(.has-child-selected) {
+		> [data-type="unitone/responsive-switcher-container"] > .block-list-appender:only-child {
 			pointer-events: none;
 
 			&::after {

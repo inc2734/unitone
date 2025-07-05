@@ -5,6 +5,7 @@ import edit from './edit';
 import save from './save';
 
 import './style.scss';
+import './index.scss';
 
 registerBlockType( 'unitone/masonry', {
 	icon: {

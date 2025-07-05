@@ -1,7 +1,19 @@
 [data-type="unitone/switcher"] {
-	> .block-list-appender {
-		position: absolute;
-		right: 0;
-		bottom: 0;
+	&:not(.is-selected) {
+		> .block-list-appender:only-child {
+			pointer-events: none;
+
+			&::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				border: 1px dashed;
+				pointer-events: none;
+			}
+
+			.block-editor-inserter {
+				opacity: 0;
+			}
+		}
 	}
 }

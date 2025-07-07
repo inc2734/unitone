@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import { get } from 'lodash';
 
 import {
+	ButtonBlockAppender,
 	InspectorControls,
-	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
 	__experimentalBlockVariationPicker as BlockVariationPicker,
@@ -22,8 +22,16 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import {
+	useEffect,
+	useState,
+	useRef,
+	useMemo,
+	memo,
+	useCallback,
+} from '@wordpress/element';
+
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useEffect, useState, useRef, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -33,6 +41,8 @@ import {
 } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
+
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 export default function ( { name, attributes, setAttributes, clientId } ) {
 	const {
@@ -118,11 +128,14 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		}
 	);
 
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
+	);
+
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock,
-		renderAppender: hasInnerBlocks
-			? undefined
-			: InnerBlocks.ButtonBlockAppender,
+		renderAppender: hasInnerBlocks ? undefined : renderAppender,
 	} );
 
 	const { replaceInnerBlocks } = useDispatch( blockEditorStore );

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 import {
-	InnerBlocks,
+	ButtonBlockAppender,
 	useBlockProps,
 	useInnerBlocksProps,
 	InspectorControls,
@@ -21,7 +21,7 @@ import {
 } from '@wordpress/components';
 
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useEffect, memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
@@ -31,6 +31,8 @@ import iconDotSubMain from './icons/dot-sub-main';
 import iconSubDotMain from './icons/sub-dot-main';
 
 import metadata from './block.json';
+
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 function Edit( {
 	attributes,
@@ -92,12 +94,15 @@ function Edit( {
 		},
 	} );
 
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
+	);
+
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock,
 		allowedBlocks,
-		renderAppender: hasInnerBlocks
-			? undefined
-			: InnerBlocks.ButtonBlockAppender,
+		renderAppender: hasInnerBlocks ? undefined : renderAppender,
 		template: [
 			[
 				'unitone/timeline-dots-row',

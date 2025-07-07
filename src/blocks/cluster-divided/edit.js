@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
 import {
+	ButtonBlockAppender,
 	InspectorControls,
-	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
@@ -14,16 +14,20 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { useResizeObserver } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
-import { useRef, useEffect, useLayoutEffect } from '@wordpress/element';
+import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	useToolsPanelDropdownMenuProps,
+	useVisibleResizeObserver,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
-import { setDividerLinewrap, debounce } from '@inc2734/unitone-css/library';
+import { setDividerLinewrap } from '@inc2734/unitone-css/library';
+
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { tagName, allowedBlocks, templateLock } = attributes;
@@ -36,22 +40,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 	const hasInnerBlocks = !! innerBlocksLength;
 
-	const ref = useRef( null );
-
-	const resizeObserve = useResizeObserver(
-		debounce(
-			( entries ) => setDividerLinewrap( entries?.[ 0 ]?.target ),
-			250
-		)
+	const ref = useVisibleResizeObserver(
+		( target ) => setDividerLinewrap( target ),
+		[ attributes ]
 	);
-
-	useLayoutEffect( () => {
-		resizeObserve( ref.current );
-	}, [ ref.current ] );
-
-	useEffect( () => {
-		setDividerLinewrap( ref.current );
-	}, [ innerBlocksLength, attributes ] );
 
 	const blockProps = useBlockProps( { ref } );
 	blockProps[ 'data-unitone-layout' ] = clsx(
@@ -59,13 +51,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		blockProps[ 'data-unitone-layout' ]
 	);
 
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
+	);
+
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		orientation: 'horizontal',
 		templateLock,
 		allowedBlocks,
-		renderAppender: hasInnerBlocks
-			? undefined
-			: InnerBlocks.ButtonBlockAppender,
+		renderAppender: hasInnerBlocks ? undefined : renderAppender,
 	} );
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();

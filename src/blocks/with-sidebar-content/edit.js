@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
 import {
+	ButtonBlockAppender,
 	InspectorControls,
-	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
@@ -15,11 +15,14 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
+import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
+
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { tagName, templateLock } = attributes;
@@ -46,15 +49,18 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		blockProps[ 'data-unitone-layout' ]
 	);
 
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
+	);
+
 	const innerBlocksProps = useInnerBlocksProps(
 		{
 			'data-unitone-layout': 'with-sidebar__content__content',
 		},
 		{
 			templateLock,
-			renderAppender: hasInnerBlocks
-				? undefined
-				: InnerBlocks.ButtonBlockAppender,
+			renderAppender: hasInnerBlocks ? undefined : renderAppender,
 		}
 	);
 

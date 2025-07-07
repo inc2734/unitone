@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
 import {
+	ButtonBlockAppender,
 	BlockControls,
-	InnerBlocks,
 	InspectorControls,
 	RichText,
 	store as blockEditorStore,
@@ -32,6 +32,7 @@ import {
 	useRef,
 	useMemo,
 	useLayoutEffect,
+	memo,
 } from '@wordpress/element';
 
 import { speak } from '@wordpress/a11y';
@@ -51,6 +52,8 @@ const LINK_SETTINGS = [
 		title: __( 'Mark as nofollow' ),
 	},
 ];
+
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 function Edit( {
 	attributes,
@@ -244,6 +247,11 @@ function Edit( {
 		} ),
 	} );
 
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
+	);
+
 	const { children, ...innerBlocksProps } = useInnerBlocksProps(
 		{
 			className: clsx( 'unitone-mega-menu__container', {
@@ -263,7 +271,7 @@ function Edit( {
 		},
 		{
 			templateLock,
-			renderAppender: InnerBlocks.ButtonBlockAppender,
+			renderAppender,
 		}
 	);
 

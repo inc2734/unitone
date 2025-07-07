@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
 import {
+	ButtonBlockAppender,
 	InspectorControls,
-	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
@@ -17,14 +17,15 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { useRef, useEffect } from '@wordpress/element';
+import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import { useVerticalWritingLayout } from './hooks/use-vertical-writing-layout';
 
 import metadata from './block.json';
 
-import { setColumnCountForVertical } from '@inc2734/unitone-css/library';
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const {
@@ -43,57 +44,17 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 	const hasInnerBlocks = !! innerBlocksLength;
 
-	const ref = useRef( null );
-	const intervalIdRef = useRef( null );
-
-	useEffect( () => {
-		const observer = new IntersectionObserver(
-			( entries ) => {
-				const entry = entries[ 0 ];
-				if ( entry.isIntersecting ) {
-					intervalIdRef.current = setInterval( () => {
-						const lastChild = ref.current.lastElementChild;
-						if ( lastChild ) {
-							const lastChildRect =
-								lastChild.getBoundingClientRect();
-							const lastChildEnd =
-								lastChildRect.top + lastChildRect.height;
-
-							const parentRect =
-								ref.current.parentNode.getBoundingClientRect();
-							const parentEnd =
-								parentRect.top + parentRect.height;
-
-							if ( 1 < Math.abs( parentEnd - lastChildEnd ) ) {
-								setColumnCountForVertical( ref.current );
-							}
-						}
-					}, 250 );
-				} else if ( intervalIdRef.current ) {
-					clearInterval( intervalIdRef.current );
-					intervalIdRef.current = null;
-				}
-			},
-			{
-				rootMargin: '-100px 0px',
-			}
-		);
-
-		observer.observe( ref.current.parentNode );
-
-		return () => {
-			observer.disconnect();
-			if ( intervalIdRef.current ) {
-				clearInterval( intervalIdRef.current );
-				intervalIdRef.current = null;
-			}
-		};
-	}, [ ref.current ] );
+	const ref = useVerticalWritingLayout();
 
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'vertical-writing-wrapper',
 		blockProps[ 'data-unitone-layout' ]
+	);
+
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
 	);
 
 	const innerBlocksProps = useInnerBlocksProps(
@@ -115,9 +76,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		{
 			templateLock,
 			allowedBlocks,
-			renderAppender: hasInnerBlocks
-				? undefined
-				: InnerBlocks.ButtonBlockAppender,
+			renderAppender: hasInnerBlocks ? undefined : renderAppender,
 		}
 	);
 

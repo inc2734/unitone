@@ -3,7 +3,16 @@ import { useViewportMatch } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { store as editorStore } from '@wordpress/editor';
 import { store as editPostStore } from '@wordpress/edit-post';
-import { useEffect, useState, forwardRef, memo } from '@wordpress/element';
+import {
+	useRef,
+	useEffect,
+	useLayoutEffect,
+	useState,
+	forwardRef,
+	memo,
+} from '@wordpress/element';
+
+import { debounce } from '@inc2734/unitone-css/library';
 
 /**
  * Removed falsy values from nested object.
@@ -286,4 +295,90 @@ export function useToolsPanelDropdownMenuProps() {
 				},
 		  }
 		: {};
+}
+
+export function useVisibleResizeObserver( onResize, deps = [] ) {
+	const ref = useRef( null );
+	const prevRef = useRef( null ); // 前回の DOM ノードを保持
+
+	const [ isIntersecting, setIsIntersecting ] = useState( false );
+
+	const observer = new IntersectionObserver(
+		( [ entry ] ) => {
+			if ( entry.rootBounds !== null ) {
+				// console.log( 'setIsIntersecting:' + entry.isIntersecting );
+				onResize( entry.target );
+				setIsIntersecting( entry.isIntersecting );
+			}
+		},
+		{
+			rootMargin: '200px 0px',
+		}
+	);
+
+	const resizeObserver = new ResizeObserver(
+		debounce( ( [ entry ] ) => {
+			onResize( entry.target );
+		}, 250 )
+	);
+
+	useLayoutEffect( () => {
+		if ( ! ref.current || ! isIntersecting ) {
+			return;
+		}
+
+		if ( prevRef.current !== ref.current ) {
+			// console.log( `Update ref. / isIntersecting: ${ isIntersecting }` );
+			prevRef.current = ref.current;
+			resizeObserver.observe( ref.current );
+		}
+	}, [ isIntersecting, ref.current, ...deps ] );
+
+	/**
+	 * Intersection Observer.
+	 */
+	useEffect( () => {
+		if ( ! ref.current ) {
+			return;
+		}
+
+		// console.log( 'Intersection Observer Start' );
+		observer.observe( ref.current );
+
+		return () => {
+			// console.log( 'Intersection Observer Terminated' );
+			observer.disconnect();
+		};
+	}, [] );
+
+	/**
+	 * Resize Observer.
+	 */
+	useEffect( () => {
+		if ( ! ref.current ) {
+			return;
+		}
+
+		if ( isIntersecting ) {
+			// console.log( 'Resize Observer Start' );
+			resizeObserver.observe( ref.current );
+		} else {
+			// console.log( 'Resize Observer Stop' );
+			resizeObserver.unobserve( ref.current );
+		}
+
+		return () => {
+			// console.log( 'Resize Observer Terminated' );
+			resizeObserver.disconnect();
+		};
+	}, [ isIntersecting ] );
+
+	// useEffect( () => {
+	// 	console.log( isIntersecting );
+	// 	if ( ref.current && isIntersecting ) {
+	// 		onResize( ref.current );
+	// 	}
+	// }, [ isIntersecting, ...deps ] );
+
+	return ref;
 }

@@ -1,8 +1,8 @@
 import { get } from 'lodash';
 
 import {
+	ButtonBlockAppender,
 	InspectorControls,
-	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
@@ -20,8 +20,15 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import {
+	useEffect,
+	useState,
+	useMemo,
+	memo,
+	useCallback,
+} from '@wordpress/element';
+
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useEffect, useState, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -30,6 +37,8 @@ import {
 } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
+
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 export default function ( { name, attributes, setAttributes, clientId } ) {
 	const { tagName, templateLock } = attributes;
@@ -79,15 +88,18 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 
 	const blockProps = useBlockProps( { className: 'unitone-section' } );
 
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
+	);
+
 	const innerBlocksProps = useInnerBlocksProps(
 		{
 			'data-unitone-layout': 'stack',
 		},
 		{
 			templateLock,
-			renderAppender: hasInnerBlocks
-				? undefined
-				: InnerBlocks.ButtonBlockAppender,
+			renderAppender: hasInnerBlocks ? undefined : renderAppender,
 		}
 	);
 

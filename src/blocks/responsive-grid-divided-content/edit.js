@@ -1,14 +1,16 @@
 import clsx from 'clsx';
 
 import {
-	InnerBlocks,
+	ButtonBlockAppender,
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import { useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useEffect, memo, useCallback } from '@wordpress/element';
+
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 export default function ( { attributes, setAttributes, clientId, context } ) {
 	const { tagName, templateLock } = attributes;
@@ -45,15 +47,18 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 		blockProps[ 'data-unitone-layout' ]
 	);
 
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
+	);
+
 	const innerBlocksProps = useInnerBlocksProps(
 		{
 			'data-unitone-layout': 'responsive-grid__content__content',
 		},
 		{
 			templateLock,
-			renderAppender: hasInnerBlocks
-				? undefined
-				: InnerBlocks.ButtonBlockAppender,
+			renderAppender: hasInnerBlocks ? undefined : renderAppender,
 		}
 	);
 

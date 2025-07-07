@@ -7,6 +7,7 @@ module.exports = {
 		unitone: true,
 		Swiper: true,
 		IntersectionObserver: true,
+		ResizeObserver: true,
 		DOMParser: true,
 		TextEncoder: true,
 		Image: true,

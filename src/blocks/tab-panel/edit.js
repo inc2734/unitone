@@ -1,12 +1,14 @@
 import {
-	InnerBlocks,
+	ButtonBlockAppender,
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useEffect, memo, useCallback } from '@wordpress/element';
+
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 export default function ( {
 	attributes,
@@ -50,14 +52,17 @@ export default function ( {
 		'aria-hidden': ariaHidden ? 'true' : 'false',
 	} );
 
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
+	);
+
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock,
 		template: [
 			[ 'unitone/text', { unitone: { maxWidth: '100%', gap: '-1' } } ],
 		],
-		renderAppender: hasInnerBlocks
-			? undefined
-			: InnerBlocks.ButtonBlockAppender,
+		renderAppender: hasInnerBlocks ? undefined : renderAppender,
 	} );
 
 	return <div { ...innerBlocksProps } />;

@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 
 import {
+	ButtonBlockAppender,
 	BlockControls,
 	InspectorControls,
-	InnerBlocks,
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
@@ -25,6 +25,7 @@ import {
 	useState,
 	useRef,
 	useMemo,
+	memo,
 } from '@wordpress/element';
 
 import { useMergeRefs } from '@wordpress/compose';
@@ -49,6 +50,8 @@ const LINK_SETTINGS = [
 ];
 
 import metadata from './block.json';
+
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 /**
  * Updates the link attributes.
@@ -159,11 +162,14 @@ export default function ( {
 		}
 	);
 
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
+	);
+
 	const innerBlocksPropsArgs = {
 		templateLock,
-		renderAppender: hasInnerBlocks
-			? undefined
-			: InnerBlocks.ButtonBlockAppender,
+		renderAppender: hasInnerBlocks ? undefined : renderAppender,
 	};
 
 	useEffect( () => {

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 import {
-	InnerBlocks,
+	ButtonBlockAppender,
 	InspectorControls,
 	useBlockProps,
 	useInnerBlocksProps,
@@ -20,7 +20,7 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { useRef } from '@wordpress/element';
+import { useRef, memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -48,6 +48,8 @@ const parseNumber = ( value ) => {
 	value = parseInt( value );
 	return ! isNaN( value ) ? value : undefined;
 };
+
+const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const {
@@ -156,11 +158,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		}
 	);
 
+	const renderAppender = useCallback(
+		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
+		[ clientId ]
+	);
+
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock,
-		renderAppender: hasInnerBlocks
-			? undefined
-			: InnerBlocks.ButtonBlockAppender,
+		renderAppender: hasInnerBlocks ? undefined : renderAppender,
 	} );
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();

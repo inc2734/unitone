@@ -299,14 +299,13 @@ export function useToolsPanelDropdownMenuProps() {
 
 export function useVisibleResizeObserver( onResize, deps = [] ) {
 	const ref = useRef( null );
-	const prevRef = useRef( null ); // 前回の DOM ノードを保持
+	const prevRef = useRef( null );
 
 	const [ isIntersecting, setIsIntersecting ] = useState( false );
 
 	const observer = new IntersectionObserver(
 		( [ entry ] ) => {
 			if ( entry.rootBounds !== null ) {
-				// console.log( 'setIsIntersecting:' + entry.isIntersecting );
 				onResize( entry.target );
 				setIsIntersecting( entry.isIntersecting );
 			}
@@ -328,7 +327,6 @@ export function useVisibleResizeObserver( onResize, deps = [] ) {
 		}
 
 		if ( prevRef.current !== ref.current ) {
-			// console.log( `Update ref. / isIntersecting: ${ isIntersecting }` );
 			prevRef.current = ref.current;
 			resizeObserver.observe( ref.current );
 		}
@@ -342,13 +340,9 @@ export function useVisibleResizeObserver( onResize, deps = [] ) {
 			return;
 		}
 
-		// console.log( 'Intersection Observer Start' );
 		observer.observe( ref.current );
 
-		return () => {
-			// console.log( 'Intersection Observer Terminated' );
-			observer.disconnect();
-		};
+		return () => observer.disconnect();
 	}, [] );
 
 	/**
@@ -360,25 +354,19 @@ export function useVisibleResizeObserver( onResize, deps = [] ) {
 		}
 
 		if ( isIntersecting ) {
-			// console.log( 'Resize Observer Start' );
 			resizeObserver.observe( ref.current );
 		} else {
-			// console.log( 'Resize Observer Stop' );
 			resizeObserver.unobserve( ref.current );
 		}
 
-		return () => {
-			// console.log( 'Resize Observer Terminated' );
-			resizeObserver.disconnect();
-		};
+		return () => resizeObserver.disconnect();
 	}, [ isIntersecting ] );
 
-	// useEffect( () => {
-	// 	console.log( isIntersecting );
-	// 	if ( ref.current && isIntersecting ) {
-	// 		onResize( ref.current );
-	// 	}
-	// }, [ isIntersecting, ...deps ] );
+	useEffect( () => {
+		if ( ref.current ) {
+			onResize( ref.current );
+		}
+	}, [ ...deps ] );
 
 	return ref;
 }

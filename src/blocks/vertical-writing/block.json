@@ -1,8 +1,8 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
+	"version": "21.0.0",
 	"textdomain": "unitone",
-	"version": "19.3.5",
 	"name": "unitone/vertical-writing",
 	"title": "Vertical writing (Beta)",
 	"description": "This block is used to place vertically written text. This block is a beta version. In the future, disruptive changes may be made or the block may become obsolete.",

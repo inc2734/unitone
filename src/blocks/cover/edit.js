@@ -13,7 +13,7 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect, useMemo } from '@wordpress/element';
 
 export default function ( { name, attributes, setAttributes, clientId } ) {
-	const { allowedBlocks } = attributes;
+	const { allowedBlocks, templateLock } = attributes;
 
 	const innerBlocks = useSelect(
 		( select ) =>
@@ -46,7 +46,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 	);
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		templateLock: false,
+		templateLock,
 		allowedBlocks,
 		renderAppender: false,
 	} );

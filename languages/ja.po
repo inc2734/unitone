@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-06-24T03:00:26+00:00\n"
-"PO-Revision-Date: 2025-06-24 12:00+0900\n"
+"POT-Creation-Date: 2025-07-08T06:16:15+00:00\n"
+"PO-Revision-Date: 2025-07-08 15:17+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3444,6 +3444,14 @@ msgstr "セルの最小幅"
 #: dist/js/editor/editor.js:13
 msgid "Show block outline"
 msgstr "ブロックのアウトラインを表示"
+
+#: dist/js/editor/editor.js:13
+msgid "Unlock content only locking"
+msgstr "コンテンツのみロックを解除"
+
+#: dist/js/editor/editor.js:13
+msgid "Modify content only"
+msgstr "コンテンツのみの編集"
 
 #: dist/js/editor/editor.js:13
 msgid "Featured image generator settings"

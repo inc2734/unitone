@@ -33,10 +33,7 @@ div:where(.editor-styles-wrapper.block-editor-writing-flow),
 		}
 	}
 
-	[data-type="core/image"] .components-resizable-box__container {
-		// @todo If these is present, the aspect ratio will not be reflected correctly.
-		// max-height: none !important;
-		// height: auto !important;
+	[data-type="core/image"] .components-resizable-box__container:not([style*="aspect-ratio\:"]) {
 		max-width: 100% !important;
 	}
 

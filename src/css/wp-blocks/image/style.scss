@@ -51,7 +51,11 @@
 		height: 100% !important;
 		width: 100% !important;
 		max-height: 100% !important;
-		max-width: 100% !important;
 		vertical-align: bottom;
+	}
+
+	.components-resizable-box__container:not([style*="aspect-ratio\:"]),
+	> div:not([class]):not([style*="aspect-ratio\:"]) {
+		max-width: 100% !important;
 	}
 }

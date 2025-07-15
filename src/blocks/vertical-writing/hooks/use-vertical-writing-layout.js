@@ -39,10 +39,15 @@ export function useVerticalWritingLayout() {
 
 	const onIntersection = ( [ entry ] ) => {
 		const { isIntersecting, target } = entry;
-		const doc = target.ownerDocument;
-		const win = doc.defaultView;
+		const doc = target?.ownerDocument;
+		const win = doc?.defaultView;
 
-		if ( isIntersecting && ! listenerAttachedRef.current ) {
+		if (
+			!! doc &&
+			!! win &&
+			isIntersecting &&
+			! listenerAttachedRef.current
+		) {
 			updateColumnLayout( ref.current );
 			doc.addEventListener( 'click', debouncedHandler );
 			win.addEventListener( 'keydown', debouncedHandler );
@@ -68,11 +73,14 @@ export function useVerticalWritingLayout() {
 			observer.disconnect();
 
 			if ( listenerAttachedRef.current ) {
-				const doc = ref.current.ownerDocument;
-				const win = doc.defaultView;
-				doc.removeEventListener( 'click', debouncedHandler );
-				win.removeEventListener( 'keydown', debouncedHandler );
-				listenerAttachedRef.current = false;
+				const doc = ref.current?.ownerDocument;
+				const win = doc?.defaultView;
+
+				if ( !! doc && !! win ) {
+					doc.removeEventListener( 'click', debouncedHandler );
+					win.removeEventListener( 'keydown', debouncedHandler );
+					listenerAttachedRef.current = false;
+				}
 			}
 		};
 	}, [] );

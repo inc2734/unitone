@@ -89,11 +89,10 @@ function apply_css_vars_from_settings() {
 		$h5_size,
 		$h6_size
 	);
-	wp_add_inline_style( get_stylesheet(), $stylesheet );
-	wp_add_inline_style( get_stylesheet() . '/settings', $stylesheet );
+	wp_add_inline_style( 'unitone', $stylesheet );
+	wp_add_inline_style( 'unitone/settings', $stylesheet );
 }
 add_action( 'wp_enqueue_scripts', 'apply_css_vars_from_settings' );
-add_action( 'admin_enqueue_scripts', 'apply_css_vars_from_settings' );
 
 /**
  * Apply CSS Vars from settings for editor.

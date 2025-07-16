@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-07-08T06:16:15+00:00\n"
-"PO-Revision-Date: 2025-07-08 15:17+0900\n"
+"POT-Creation-Date: 2025-07-15T01:26:06+00:00\n"
+"PO-Revision-Date: 2025-07-15 10:26+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -41,6 +41,7 @@ msgstr "https://2inc.org"
 #. translators: Accessibility text. %s: Parent page title.
 #: App/Controller/Manager/dist/js/blocks/mega-menu/render.php:9
 #: dist/blocks/mega-menu/index.php:30
+#, php-format
 msgid "%s mega menu"
 msgstr "%sのメガメニュー"
 
@@ -83,6 +84,7 @@ msgstr "セットアップ画面へ"
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
 #: App/Controller/Manager/Manager.php:549
+#, php-format
 msgid ""
 "You have not set a valid license key. Setting a license key will allow you "
 "to use patterns registered in %3$sthe pattern library%4$s. It will also "
@@ -1781,15 +1783,15 @@ msgstr "リンク色（:focus）"
 msgid "Typography"
 msgstr "タイポグラフィ"
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:23
 msgid "Font"
 msgstr "フォント"
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:23
 msgid "Base Font Size"
 msgstr "基本の文字サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:23
 msgid "Half Leading"
 msgstr "ハーフレディング"
 
@@ -1823,10 +1825,12 @@ msgid "Size"
 msgstr "サイズ"
 
 #: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:23
 msgid "Content Width"
 msgstr "コンテンツ幅"
 
 #: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:23
 msgid "Wide"
 msgstr "幅広"
 
@@ -1911,6 +1915,7 @@ msgstr "スタイル"
 
 #: App/Controller/Manager/dist/js/app.js:9 dist/blocks/layers/index.js:1
 #: dist/blocks/section/index.js:1 dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:23
 msgid "Default"
 msgstr "デフォルト"
 
@@ -3579,6 +3584,26 @@ msgstr "テキスト生成中にエラーが発生しました。"
 msgid "Paste styles"
 msgstr "スタイルを貼り付け"
 
+#: dist/js/editor/editor.js:23
+msgid "Reset"
+msgstr "リセット"
+
+#: dist/js/editor/editor.js:23
+msgid "Override settings"
+msgstr "設定の上書き"
+
+#: dist/js/editor/editor.js:23
+msgid "Accent color"
+msgstr "アクセントカラー"
+
+#: dist/js/editor/editor.js:23
+msgid "Background color"
+msgstr "背景色"
+
+#: dist/js/editor/editor.js:23
+msgid "Text color"
+msgstr "文字色"
+
 #: dist/variations/variations.js:1
 msgid "Post to X"
 msgstr "X にポスト"
@@ -4308,232 +4333,142 @@ msgctxt "block title"
 msgid "With sidebar (Divided)"
 msgstr "サイドバー（区切りあり）"
 
-#: styles/colors/dark-blue-base.json
-msgctxt "Style variation name"
-msgid "Dark: Blue base"
-msgstr "ダーク：ブルーベース"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Accent"
-msgstr "アクセント"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Text (Black / Immutable)"
-msgstr "テキスト（黒 / 不変）"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Background"
-msgstr "背景"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Text"
-msgstr "テキスト"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Background Alt"
-msgstr "背景（Alt）"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Text Alt"
-msgstr "テキスト（Alt）"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Pale Gray"
-msgstr "ペールグレー"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Bright Gray"
-msgstr "ブライトグレー"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Light Gray"
-msgstr "ライトグレー"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Gray"
-msgstr "グレー"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Dark Gray"
-msgstr "ダークグレー"
-
-#: styles/colors/dark-blue-base.json styles/colors/dark-red-base.json
-#: styles/colors/dark-yellow-base.json styles/colors/dark.json
-#: styles/colors/light-blue-base.json styles/colors/light-red-base.json
-#: styles/colors/light-yellow-base.json styles/colors/light.json
-#: styles/colors/pale-gray-blue-base.json styles/colors/pale-gray-red-base.json
-#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
-#: theme.json
-msgctxt "Color name"
-msgid "Heavy Gray"
-msgstr "ヘビーグレー"
-
-#: styles/colors/dark-red-base.json
-msgctxt "Style variation name"
-msgid "Dark: Red base"
-msgstr "ダーク：レッドベース"
-
-#: styles/colors/dark-yellow-base.json
-msgctxt "Style variation name"
-msgid "Dark: Yellow base"
-msgstr "ダーク：イエローベース"
-
-#: styles/colors/dark.json styles/section/section-dark.json
-msgctxt "Style variation name"
-msgid "Dark"
-msgstr "ダーク"
-
-#: styles/colors/light-blue-base.json
-msgctxt "Style variation name"
-msgid "Light: Blue base"
-msgstr "ライト：ブルーベース"
-
-#: styles/colors/light-red-base.json
-msgctxt "Style variation name"
-msgid "Light: Red base"
-msgstr "ライト：レッドベース"
-
-#: styles/colors/light-yellow-base.json
-msgctxt "Style variation name"
-msgid "Light: Yellow base"
-msgstr "ライト：イエローベース"
-
-#: styles/colors/light.json
-msgctxt "Style variation name"
-msgid "Light"
-msgstr "ライト"
-
-#: styles/colors/pale-gray-blue-base.json
-msgctxt "Style variation name"
-msgid "Pale Gray: Blue base"
-msgstr "ペールグレー：ブルーベース"
-
-#: styles/colors/pale-gray-red-base.json
-msgctxt "Style variation name"
-msgid "Pale Gray: Red base"
-msgstr "ペールグレー：レッドベース"
-
-#: styles/colors/pale-gray-yellow-base.json
-msgctxt "Style variation name"
-msgid "Pale Gray: Yello base"
-msgstr "ペールグレー：イエローベース"
-
-#: styles/colors/pale-gray.json
-msgctxt "Style variation name"
-msgid "Pale Gray"
-msgstr "ペールグレー"
-
-#: styles/section/section-accent.json
-msgctxt "Style variation name"
-msgid "Accent"
-msgstr "アクセント"
-
-#: styles/section/section-gray.json
-msgctxt "Style variation name"
-msgid "Gray"
-msgstr "グレー"
-
-#: styles/typography/biz-udpgothic.json
-msgctxt "Style variation name"
-msgid "BIZ UDPGothic"
-msgstr "BIZ UDPGothic"
-
-#: styles/typography/biz-udpmincho.json
-msgctxt "Style variation name"
-msgid "BIZ UDPMincho"
-msgstr "BIZ UDPMincho"
-
-#: styles/typography/noto-sans-jp.json
-msgctxt "Style variation name"
-msgid "Noto Sans JP"
-msgstr "Noto Sans JP"
-
-#: styles/typography/noto-serif-jp.json
-msgctxt "Style variation name"
-msgid "Noto Serif JP"
-msgstr "Noto Serif JP"
-
 #: theme.json
 msgctxt "Gradient name"
 msgid "Accent gradation"
 msgstr "アクセントグラデーション"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr "アクセント"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Text (Black / Immutable)"
+msgstr "テキスト（黒 / 不変）"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Background"
+msgstr "背景"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Text"
+msgstr "テキスト"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Background Alt"
+msgstr "背景（Alt）"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Text Alt"
+msgstr "テキスト（Alt）"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Pale Gray"
+msgstr "ペールグレー"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Bright Gray"
+msgstr "ブライトグレー"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Light Gray"
+msgstr "ライトグレー"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Gray"
+msgstr "グレー"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Dark Gray"
+msgstr "ダークグレー"
+
+#: theme.json styles/colors/dark-blue-base.json
+#: styles/colors/dark-red-base.json styles/colors/dark-yellow-base.json
+#: styles/colors/dark.json styles/colors/light-blue-base.json
+#: styles/colors/light-red-base.json styles/colors/light-yellow-base.json
+#: styles/colors/light.json styles/colors/pale-gray-blue-base.json
+#: styles/colors/pale-gray-red-base.json
+#: styles/colors/pale-gray-yellow-base.json styles/colors/pale-gray.json
+msgctxt "Color name"
+msgid "Heavy Gray"
+msgstr "ヘビーグレー"
 
 #: theme.json
 msgctxt "Shadow name"
@@ -4921,3 +4856,93 @@ msgstr "コメント"
 msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
+
+#: styles/colors/dark-blue-base.json
+msgctxt "Style variation name"
+msgid "Dark: Blue base"
+msgstr "ダーク：ブルーベース"
+
+#: styles/colors/dark-red-base.json
+msgctxt "Style variation name"
+msgid "Dark: Red base"
+msgstr "ダーク：レッドベース"
+
+#: styles/colors/dark-yellow-base.json
+msgctxt "Style variation name"
+msgid "Dark: Yellow base"
+msgstr "ダーク：イエローベース"
+
+#: styles/colors/dark.json styles/section/section-dark.json
+msgctxt "Style variation name"
+msgid "Dark"
+msgstr "ダーク"
+
+#: styles/colors/light-blue-base.json
+msgctxt "Style variation name"
+msgid "Light: Blue base"
+msgstr "ライト：ブルーベース"
+
+#: styles/colors/light-red-base.json
+msgctxt "Style variation name"
+msgid "Light: Red base"
+msgstr "ライト：レッドベース"
+
+#: styles/colors/light-yellow-base.json
+msgctxt "Style variation name"
+msgid "Light: Yellow base"
+msgstr "ライト：イエローベース"
+
+#: styles/colors/light.json
+msgctxt "Style variation name"
+msgid "Light"
+msgstr "ライト"
+
+#: styles/colors/pale-gray-blue-base.json
+msgctxt "Style variation name"
+msgid "Pale Gray: Blue base"
+msgstr "ペールグレー：ブルーベース"
+
+#: styles/colors/pale-gray-red-base.json
+msgctxt "Style variation name"
+msgid "Pale Gray: Red base"
+msgstr "ペールグレー：レッドベース"
+
+#: styles/colors/pale-gray-yellow-base.json
+msgctxt "Style variation name"
+msgid "Pale Gray: Yello base"
+msgstr "ペールグレー：イエローベース"
+
+#: styles/colors/pale-gray.json
+msgctxt "Style variation name"
+msgid "Pale Gray"
+msgstr "ペールグレー"
+
+#: styles/section/section-accent.json
+msgctxt "Style variation name"
+msgid "Accent"
+msgstr "アクセント"
+
+#: styles/section/section-gray.json
+msgctxt "Style variation name"
+msgid "Gray"
+msgstr "グレー"
+
+#: styles/typography/biz-udpgothic.json
+msgctxt "Style variation name"
+msgid "BIZ UDPGothic"
+msgstr "BIZ UDPGothic"
+
+#: styles/typography/biz-udpmincho.json
+msgctxt "Style variation name"
+msgid "BIZ UDPMincho"
+msgstr "BIZ UDPMincho"
+
+#: styles/typography/noto-sans-jp.json
+msgctxt "Style variation name"
+msgid "Noto Sans JP"
+msgstr "Noto Sans JP"
+
+#: styles/typography/noto-serif-jp.json
+msgctxt "Style variation name"
+msgid "Noto Serif JP"
+msgstr "Noto Serif JP"

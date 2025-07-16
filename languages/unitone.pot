@@ -2,16 +2,16 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 21.0.0\n"
+"Project-Id-Version: unitone 21.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-08T06:16:15+00:00\n"
+"POT-Creation-Date: 2025-07-15T01:26:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
@@ -43,6 +43,7 @@ msgstr ""
 #. translators: Accessibility text. %s: Parent page title.
 #: App/Controller/Manager/dist/js/blocks/mega-menu/render.php:9
 #: dist/blocks/mega-menu/index.php:30
+#, php-format
 msgid "%s mega menu"
 msgstr ""
 
@@ -96,6 +97,7 @@ msgstr ""
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
 #: App/Controller/Manager/Manager.php:549
+#, php-format
 msgid "You have not set a valid license key. Setting a license key will allow you to use patterns registered in %3$sthe pattern library%4$s. It will also enable theme updates. A license key is issued when you subscribe to %1$sunitone license key subscription%2$s. The license key is set %5$shere%6$s."
 msgstr ""
 
@@ -1694,6 +1696,7 @@ msgstr ""
 
 #. translators: %1$s: <a>, %2$s: </a>, %3$s: <a>, %4$s: </a>
 #: App/Controller/Manager/dist/js/app.js:4
+#, js-format
 msgid "If the license key is valid, patterns from %1$sthe patterns library%2$s and styles from %3$sthe styles library%4$s can be used."
 msgstr ""
 
@@ -1742,6 +1745,7 @@ msgstr ""
 
 #. translators: %s: Site icon size in pixels.
 #: App/Controller/Manager/dist/js/app.js:7
+#, js-format
 msgid "Site Icons should be square and at least %s pixels."
 msgstr ""
 
@@ -1786,14 +1790,17 @@ msgid "Typography"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
+#: dist/js/editor/editor.js:23
 msgid "Font"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
+#: dist/js/editor/editor.js:23
 msgid "Base Font Size"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
+#: dist/js/editor/editor.js:23
 msgid "Half Leading"
 msgstr ""
 
@@ -1829,11 +1836,13 @@ msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
 #: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:23
 msgid "Content Width"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
 #: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:23
 msgid "Wide"
 msgstr ""
 
@@ -1873,6 +1882,7 @@ msgstr ""
 #. translators: %1$s: Post ID
 #: App/Controller/Manager/dist/js/app.js:8
 #: App/Controller/Manager/dist/js/app.js:9
+#, js-format
 msgid "#%1$s (No title)"
 msgstr ""
 
@@ -1916,6 +1926,7 @@ msgstr ""
 #: dist/blocks/layers/index.js:1
 #: dist/blocks/section/index.js:1
 #: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:23
 msgid "Default"
 msgstr ""
 
@@ -2158,6 +2169,7 @@ msgstr ""
 #: dist/blocks/child-pages/index.js:4
 #: dist/blocks/responsive-grid-divided/index.js:4
 #: dist/blocks/responsive-grid/index.js:4
+#, js-format
 msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr ""
 
@@ -2391,6 +2403,7 @@ msgstr ""
 #: dist/blocks/layers/index.js:19
 #: dist/blocks/layers/index.js:22
 #: dist/blocks/layers/index.js:25
+#, js-format
 msgid "Hero (%1$s)"
 msgstr ""
 
@@ -2541,6 +2554,7 @@ msgstr ""
 #: dist/blocks/section/index.js:7
 #: dist/blocks/section/index.js:10
 #: dist/blocks/section/index.js:13
+#, js-format
 msgid "Section (%1$s)"
 msgstr ""
 
@@ -2759,6 +2773,7 @@ msgstr ""
 
 #. translators: %1$s: <code>, %2$s: </code>
 #: dist/blocks/switcher/index.js:4
+#, js-format
 msgid "Inside the %1$sflex-basis%2$s formula"
 msgstr ""
 
@@ -3037,6 +3052,7 @@ msgstr ""
 
 #. translators: %1$s: <code>wbr</code>
 #: dist/js/editor/editor.js:4
+#, js-format
 msgid "Use %1$s to indicate a line break at an arbitrary position."
 msgstr ""
 
@@ -3110,6 +3126,7 @@ msgstr ""
 
 #. translators: %1$s: Overlap the previous block, %2$s: Level, %3$s: Amount of content trimming
 #: dist/js/editor/editor.js:7
+#, js-format
 msgid "If “%1$s” is enabled in the next block, the balance can be aligned by setting the “%2$s” and “%3$s” to the same values as in the next block."
 msgstr ""
 
@@ -3352,6 +3369,7 @@ msgstr ""
 #. translators: %1$s: <code>, %2$s: </code>
 #: dist/js/editor/editor.js:10
 #: dist/js/editor/editor.js:13
+#, js-format
 msgid "For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line)."
 msgstr ""
 
@@ -3581,6 +3599,26 @@ msgstr ""
 #. Translators: The number of the blocks.
 #: dist/js/editor/editor.js:23
 msgid "Paste styles"
+msgstr ""
+
+#: dist/js/editor/editor.js:23
+msgid "Reset"
+msgstr ""
+
+#: dist/js/editor/editor.js:23
+msgid "Override settings"
+msgstr ""
+
+#: dist/js/editor/editor.js:23
+msgid "Accent color"
+msgstr ""
+
+#: dist/js/editor/editor.js:23
+msgid "Background color"
+msgstr ""
+
+#: dist/js/editor/editor.js:23
+msgid "Text color"
 msgstr ""
 
 #: dist/variations/variations.js:1
@@ -4292,11 +4330,12 @@ msgctxt "block title"
 msgid "With sidebar (Divided)"
 msgstr ""
 
-#: styles/colors/dark-blue-base.json
-msgctxt "Style variation name"
-msgid "Dark: Blue base"
+#: theme.json
+msgctxt "Gradient name"
+msgid "Accent gradation"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4309,11 +4348,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Accent"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4326,11 +4365,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Text (Black / Immutable)"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4343,11 +4382,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Background"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4360,11 +4399,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Text"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4377,11 +4416,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Background Alt"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4394,11 +4433,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Text Alt"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4411,11 +4450,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Pale Gray"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4428,11 +4467,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Bright Gray"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4445,11 +4484,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Light Gray"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4462,11 +4501,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Gray"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4479,11 +4518,11 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Dark Gray"
 msgstr ""
 
+#: theme.json
 #: styles/colors/dark-blue-base.json
 #: styles/colors/dark-red-base.json
 #: styles/colors/dark-yellow-base.json
@@ -4496,100 +4535,8 @@ msgstr ""
 #: styles/colors/pale-gray-red-base.json
 #: styles/colors/pale-gray-yellow-base.json
 #: styles/colors/pale-gray.json
-#: theme.json
 msgctxt "Color name"
 msgid "Heavy Gray"
-msgstr ""
-
-#: styles/colors/dark-red-base.json
-msgctxt "Style variation name"
-msgid "Dark: Red base"
-msgstr ""
-
-#: styles/colors/dark-yellow-base.json
-msgctxt "Style variation name"
-msgid "Dark: Yellow base"
-msgstr ""
-
-#: styles/colors/dark.json
-#: styles/section/section-dark.json
-msgctxt "Style variation name"
-msgid "Dark"
-msgstr ""
-
-#: styles/colors/light-blue-base.json
-msgctxt "Style variation name"
-msgid "Light: Blue base"
-msgstr ""
-
-#: styles/colors/light-red-base.json
-msgctxt "Style variation name"
-msgid "Light: Red base"
-msgstr ""
-
-#: styles/colors/light-yellow-base.json
-msgctxt "Style variation name"
-msgid "Light: Yellow base"
-msgstr ""
-
-#: styles/colors/light.json
-msgctxt "Style variation name"
-msgid "Light"
-msgstr ""
-
-#: styles/colors/pale-gray-blue-base.json
-msgctxt "Style variation name"
-msgid "Pale Gray: Blue base"
-msgstr ""
-
-#: styles/colors/pale-gray-red-base.json
-msgctxt "Style variation name"
-msgid "Pale Gray: Red base"
-msgstr ""
-
-#: styles/colors/pale-gray-yellow-base.json
-msgctxt "Style variation name"
-msgid "Pale Gray: Yello base"
-msgstr ""
-
-#: styles/colors/pale-gray.json
-msgctxt "Style variation name"
-msgid "Pale Gray"
-msgstr ""
-
-#: styles/section/section-accent.json
-msgctxt "Style variation name"
-msgid "Accent"
-msgstr ""
-
-#: styles/section/section-gray.json
-msgctxt "Style variation name"
-msgid "Gray"
-msgstr ""
-
-#: styles/typography/biz-udpgothic.json
-msgctxt "Style variation name"
-msgid "BIZ UDPGothic"
-msgstr ""
-
-#: styles/typography/biz-udpmincho.json
-msgctxt "Style variation name"
-msgid "BIZ UDPMincho"
-msgstr ""
-
-#: styles/typography/noto-sans-jp.json
-msgctxt "Style variation name"
-msgid "Noto Sans JP"
-msgstr ""
-
-#: styles/typography/noto-serif-jp.json
-msgctxt "Style variation name"
-msgid "Noto Serif JP"
-msgstr ""
-
-#: theme.json
-msgctxt "Gradient name"
-msgid "Accent gradation"
 msgstr ""
 
 #: theme.json
@@ -4970,4 +4917,95 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "Loop"
+msgstr ""
+
+#: styles/colors/dark-blue-base.json
+msgctxt "Style variation name"
+msgid "Dark: Blue base"
+msgstr ""
+
+#: styles/colors/dark-red-base.json
+msgctxt "Style variation name"
+msgid "Dark: Red base"
+msgstr ""
+
+#: styles/colors/dark-yellow-base.json
+msgctxt "Style variation name"
+msgid "Dark: Yellow base"
+msgstr ""
+
+#: styles/colors/dark.json
+#: styles/section/section-dark.json
+msgctxt "Style variation name"
+msgid "Dark"
+msgstr ""
+
+#: styles/colors/light-blue-base.json
+msgctxt "Style variation name"
+msgid "Light: Blue base"
+msgstr ""
+
+#: styles/colors/light-red-base.json
+msgctxt "Style variation name"
+msgid "Light: Red base"
+msgstr ""
+
+#: styles/colors/light-yellow-base.json
+msgctxt "Style variation name"
+msgid "Light: Yellow base"
+msgstr ""
+
+#: styles/colors/light.json
+msgctxt "Style variation name"
+msgid "Light"
+msgstr ""
+
+#: styles/colors/pale-gray-blue-base.json
+msgctxt "Style variation name"
+msgid "Pale Gray: Blue base"
+msgstr ""
+
+#: styles/colors/pale-gray-red-base.json
+msgctxt "Style variation name"
+msgid "Pale Gray: Red base"
+msgstr ""
+
+#: styles/colors/pale-gray-yellow-base.json
+msgctxt "Style variation name"
+msgid "Pale Gray: Yello base"
+msgstr ""
+
+#: styles/colors/pale-gray.json
+msgctxt "Style variation name"
+msgid "Pale Gray"
+msgstr ""
+
+#: styles/section/section-accent.json
+msgctxt "Style variation name"
+msgid "Accent"
+msgstr ""
+
+#: styles/section/section-gray.json
+msgctxt "Style variation name"
+msgid "Gray"
+msgstr ""
+
+#: styles/typography/biz-udpgothic.json
+msgctxt "Style variation name"
+msgid "BIZ UDPGothic"
+msgstr ""
+
+#: styles/typography/biz-udpmincho.json
+msgctxt "Style variation name"
+msgid "BIZ UDPMincho"
+msgstr ""
+
+#: styles/typography/noto-sans-jp.json
+msgctxt "Style variation name"
+msgid "Noto Sans JP"
+msgstr ""
+
+#: styles/typography/noto-serif-jp.json
+msgctxt "Style variation name"
+msgid "Noto Serif JP"
 msgstr ""

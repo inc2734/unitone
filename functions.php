@@ -139,6 +139,9 @@ require get_template_directory() . '/inc/ogp.php';
 // OpenAI.
 require get_template_directory() . '/inc/openai.php';
 
+// Settings override.
+require get_template_directory() . '/inc/override-settings.php';
+
 // Add unitone blocks.
 require get_template_directory() . '/inc/unitone-blocks.php';
 

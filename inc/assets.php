@@ -106,6 +106,15 @@ function unitone_enqueue_block_editor_assets() {
 	);
 
 	$css = str_replace( '}:where(.editor-styles-wrapper)', '}html :where(.editor-styles-wrapper)', $css );
+	$css = str_replace(
+		array(
+			':where(.editor-styles-wrapper.block-editor-iframe__body) :root ',
+			'div:where(.editor-styles-wrapper.block-editor-writing-flow) :root ',
+		),
+		':root ',
+		$css
+	);
+
 	wp_add_inline_style(
 		'unitone',
 		$css

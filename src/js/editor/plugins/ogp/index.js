@@ -54,6 +54,7 @@ const OGPPanel = () => {
 		useState( null );
 
 	const popoverRef = useRef( null );
+	const ref = useMergeRefs( [ setSettingsPopoverAnchor, popoverRef ] );
 
 	// Memoize popoverProps to avoid returning a new object every time.
 	const settingsPopoverProps = useMemo(
@@ -72,19 +73,26 @@ const OGPPanel = () => {
 
 	const { getSettings } = useSelect( blockEditorStore );
 
-	const postType = useSelect(
-		( select ) => select( editorStore ).getCurrentPostType(),
-		[]
+	const { postId, postType } = useSelect( ( select ) => {
+		const { getCurrentPostId, getCurrentPostType } = select( editorStore );
+		return {
+			postId: getCurrentPostId(),
+			postType: getCurrentPostType(),
+		};
+	}, [] );
+
+	const [ meta, setMeta ] = useEntityProp(
+		'postType',
+		postType,
+		'meta',
+		postId
 	);
 
-	const [ meta, setMeta ] = useEntityProp( 'postType', postType, 'meta' );
-
-	const { ogpImageId, media, isRequestingOGPImageMedia, postId, postTitle } =
+	const { ogpImageId, media, isRequestingOGPImageMedia, postTitle } =
 		useSelect(
 			( select ) => {
 				const { getMedia, hasFinishedResolution } = select( coreStore );
-				const { getEditedPostAttribute, getCurrentPostId } =
-					select( editorStore );
+				const { getEditedPostAttribute } = select( editorStore );
 
 				const _ogpImageId = meta?.[ 'unitone-ogp-image-id' ];
 				const _media = _ogpImageId
@@ -104,7 +112,6 @@ const OGPPanel = () => {
 							_ogpImageId,
 							{ context: 'view' },
 						] ),
-					postId: getCurrentPostId(),
 					postTitle: getEditedPostAttribute( 'title' ),
 				};
 			},
@@ -180,193 +187,205 @@ const OGPPanel = () => {
 	};
 
 	return (
-		<PluginDocumentSettingPanel
-			name="unitone-ogp-panel"
-			title={ __( 'OGP', 'unitone' ) }
-			className="unitone-ogp-panel"
-		>
-			<VStack spacing="16px">
-				<MediaUploadCheck>
-					<MediaUpload
-						onSelect={ onUpdateImage }
-						allowedTypes={ [ 'image' ] }
-						value={ ogpImageId }
-						render={ ( { open } ) => (
-							<div className="editor-post-featured-image__container">
-								{ isMissingMedia ? (
-									<Notice
-										status="warning"
-										isDismissible={ false }
-									>
-										{ __(
-											'Could not retrieve the OGP image data.',
-											'unitone'
-										) }
-									</Notice>
-								) : (
-									<Button
-										__next40pxDefaultSize
-										ref={ returnFocus }
-										className={
-											! ogpImageId
-												? 'editor-post-featured-image__toggle'
-												: 'editor-post-featured-image__preview'
-										}
-										onClick={ open }
-										aria-label={
-											! ogpImageId
-												? null
-												: __(
-														'Edit or replace the OGP image',
-														'unitone'
-												  )
-										}
-										aria-describedby={
-											! ogpImageId
-												? null
-												: `editor-post-featured-image-${ ogpImageId }-describedby`
-										}
-										aria-haspopup="dialog"
-										disabled={ isLoading }
-										accessibleWhenDisabled
-									>
-										{ !! ogpImageId && (
-											<img
-												className="editor-post-featured-image__preview-image"
-												src={ ogpImageUrl }
-												alt=""
-											/>
-										) }
-										{ ( isLoading ||
-											isRequestingOGPImageMedia ) && (
-											<Spinner />
-										) }
-										{ ! ogpImageId &&
-											! isLoading &&
-											__( 'OGP image', 'unitone' ) }
-									</Button>
-								) }
-								{ !! ogpImageId && (
-									<HStack
-										className={ clsx(
-											'editor-post-featured-image__actions',
-											{
-												'editor-post-featured-image__actions-missing-image':
-													isMissingMedia,
-												'editor-post-featured-image__actions-is-requesting-image':
-													isRequestingOGPImageMedia,
-											}
-										) }
-									>
-										<Button
-											__next40pxDefaultSize
-											className="editor-post-featured-image__action"
-											onClick={ open }
-											aria-haspopup="dialog"
-											variant={
-												isMissingMedia
-													? 'secondary'
-													: undefined
-											}
-										>
-											{ __( 'Replace' ) }
-										</Button>
-
-										<Button
-											__next40pxDefaultSize
-											className="editor-post-featured-image__action"
-											onClick={ () => {
-												onRemoveImage();
-												// Signal that the toggle button should be focused,
-												// when it is rendered. Can't focus it directly here
-												// because it's rendered conditionally.
-												returnsFocusRef.current = true;
-											} }
-											variant={
-												isMissingMedia
-													? 'secondary'
-													: undefined
-											}
-											isDestructive={ isMissingMedia }
-										>
-											{ __( 'Remove' ) }
-										</Button>
-									</HStack>
-								) }
-								<DropZone onFilesDrop={ onDropFiles } />
-							</div>
-						) }
-					/>
-				</MediaUploadCheck>
-
-				<div
-					ref={ useMergeRefs( [
-						setSettingsPopoverAnchor,
-						popoverRef,
-					] ) }
-					className="unitone-button-group"
+		! [ 'wp_template', 'wp_template_part' ].includes( postType ) && (
+			<>
+				<PluginDocumentSettingPanel
+					name="unitone-ogp-panel"
+					title={ __( 'OGP', 'unitone' ) }
+					className="unitone-ogp-panel"
 				>
-					<Button
-						onClick={ handleGenerate }
-						disabled={ isGenerating }
-						style={ { width: '100%', justifyContent: 'center' } }
-					>
-						{ isGenerating ? (
-							<Spinner />
-						) : (
-							__( 'Generate OGP image', 'unitone' )
+					<VStack spacing="16px">
+						<MediaUploadCheck>
+							<MediaUpload
+								onSelect={ onUpdateImage }
+								allowedTypes={ [ 'image' ] }
+								value={ ogpImageId }
+								render={ ( { open } ) => (
+									<div className="editor-post-featured-image__container">
+										{ isMissingMedia ? (
+											<Notice
+												status="warning"
+												isDismissible={ false }
+											>
+												{ __(
+													'Could not retrieve the OGP image data.',
+													'unitone'
+												) }
+											</Notice>
+										) : (
+											<Button
+												__next40pxDefaultSize
+												ref={ returnFocus }
+												className={
+													! ogpImageId
+														? 'editor-post-featured-image__toggle'
+														: 'editor-post-featured-image__preview'
+												}
+												onClick={ open }
+												aria-label={
+													! ogpImageId
+														? null
+														: __(
+																'Edit or replace the OGP image',
+																'unitone'
+														  )
+												}
+												aria-describedby={
+													! ogpImageId
+														? null
+														: `editor-post-featured-image-${ ogpImageId }-describedby`
+												}
+												aria-haspopup="dialog"
+												disabled={ isLoading }
+												accessibleWhenDisabled
+											>
+												{ !! ogpImageId && (
+													<img
+														className="editor-post-featured-image__preview-image"
+														src={ ogpImageUrl }
+														alt=""
+													/>
+												) }
+												{ ( isLoading ||
+													isRequestingOGPImageMedia ) && (
+													<Spinner />
+												) }
+												{ ! ogpImageId &&
+													! isLoading &&
+													__(
+														'OGP image',
+														'unitone'
+													) }
+											</Button>
+										) }
+										{ !! ogpImageId && (
+											<HStack
+												className={ clsx(
+													'editor-post-featured-image__actions',
+													{
+														'editor-post-featured-image__actions-missing-image':
+															isMissingMedia,
+														'editor-post-featured-image__actions-is-requesting-image':
+															isRequestingOGPImageMedia,
+													}
+												) }
+											>
+												<Button
+													__next40pxDefaultSize
+													className="editor-post-featured-image__action"
+													onClick={ open }
+													aria-haspopup="dialog"
+													variant={
+														isMissingMedia
+															? 'secondary'
+															: undefined
+													}
+												>
+													{ __( 'Replace' ) }
+												</Button>
+
+												<Button
+													__next40pxDefaultSize
+													className="editor-post-featured-image__action"
+													onClick={ () => {
+														onRemoveImage();
+														// Signal that the toggle button should be focused,
+														// when it is rendered. Can't focus it directly here
+														// because it's rendered conditionally.
+														returnsFocusRef.current = true;
+													} }
+													variant={
+														isMissingMedia
+															? 'secondary'
+															: undefined
+													}
+													isDestructive={
+														isMissingMedia
+													}
+												>
+													{ __( 'Remove' ) }
+												</Button>
+											</HStack>
+										) }
+										<DropZone onFilesDrop={ onDropFiles } />
+									</div>
+								) }
+							/>
+						</MediaUploadCheck>
+
+						<div ref={ ref } className="unitone-button-group">
+							<Button
+								onClick={ handleGenerate }
+								disabled={ isGenerating }
+								style={ {
+									width: '100%',
+									justifyContent: 'center',
+								} }
+							>
+								{ isGenerating ? (
+									<Spinner />
+								) : (
+									__( 'Generate OGP image', 'unitone' )
+								) }
+							</Button>
+
+							<Button
+								label={ __( 'Settings', 'unitone' ) }
+								id="unitone-ogp-image-generator-button"
+								icon={ settings }
+								onMouseDown={ ( event ) => {
+									event.preventDefault();
+								} }
+								onClick={ () =>
+									setIsOpenSettingsPopover(
+										( state ) => ! state
+									)
+								}
+							/>
+						</div>
+
+						{ isOpenSettingsPopover && (
+							<Popover
+								className="unitone-featured-image-generator-popover"
+								onClose={ () =>
+									setIsOpenSettingsPopover( false )
+								}
+								focusOnMount
+								{ ...settingsPopoverProps }
+							>
+								<InspectorPopoverHeader
+									title={ __(
+										'OGP image generator settings',
+										'unitone'
+									) }
+									onClose={ () =>
+										setIsOpenSettingsPopover( false )
+									}
+								/>
+
+								<BackgroundControl
+									background={ background }
+									setBackground={ setBackground }
+								/>
+							</Popover>
 						) }
-					</Button>
 
-					<Button
-						label={ __( 'Settings', 'unitone' ) }
-						id="unitone-ogp-image-generator-button"
-						icon={ settings }
-						onMouseDown={ ( event ) => {
-							event.preventDefault();
-						} }
-						onClick={ () =>
-							setIsOpenSettingsPopover( ( state ) => ! state )
-						}
-					/>
-				</div>
-
-				{ isOpenSettingsPopover && (
-					<Popover
-						className="unitone-featured-image-generator-popover"
-						onClose={ () => setIsOpenSettingsPopover( false ) }
-						focusOnMount
-						{ ...settingsPopoverProps }
-					>
-						<InspectorPopoverHeader
-							title={ __(
-								'OGP image generator settings',
+						<span
+							style={ {
+								lineHeight: 1.4,
+								fontSize: '13px',
+								color: '#757575',
+							} }
+						>
+							{ __(
+								'If no OGP image is set, the featured image will be used as the og:image.',
 								'unitone'
 							) }
-							onClose={ () => setIsOpenSettingsPopover( false ) }
-						/>
-
-						<BackgroundControl
-							background={ background }
-							setBackground={ setBackground }
-						/>
-					</Popover>
-				) }
-
-				<span
-					style={ {
-						lineHeight: 1.4,
-						fontSize: '13px',
-						color: '#757575',
-					} }
-				>
-					{ __(
-						'If no OGP image is set, the featured image will be used as the og:image.',
-						'unitone'
-					) }
-				</span>
-			</VStack>
-		</PluginDocumentSettingPanel>
+						</span>
+					</VStack>
+				</PluginDocumentSettingPanel>
+			</>
+		)
 	);
 };
 

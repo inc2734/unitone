@@ -12,6 +12,15 @@ body {
 	overflow-x: clip;
 }
 
+// When background color and text color are specified in the site editor or theme.json,
+// WordPress outputs the value directly without going through CSS Custom Property.
+// To improve customizability, overwrite the CSS via custom property.
+:root :where(body) {
+	background-color: var(--wp--preset--color--unitone-background);
+	color: var(--wp--preset--color--unitone-text);
+	font-family: var(--unitone--font-family);
+}
+
 code,
 kbd {
 	--unitone--font-size: -1;

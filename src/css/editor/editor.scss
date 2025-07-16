@@ -42,6 +42,10 @@
 // iframe preview
 .block-editor-block-preview__content-iframe {
 	.is-root-container {
+		> .wp-block {
+			max-width: none;
+		}
+
 		> .wp-block-query {
 			margin: var(--unitone--global--gutters);
 		}
@@ -316,6 +320,22 @@
 	grid-row: var(--unitne--grid-row);
 	outline: 1px solid color-mix(in srgb, pink, transparent 40%);
 	pointer-events: none;
+}
+
+.unitone-settings-colors-settigs-dropdown {
+	border: 1px solid var(--unitone--color--light-gray);
+
+	> :not(:first-child) {
+		border-top: 1px solid var(--unitone--color--light-gray);
+	}
+
+	.components-popover__content {
+		overflow: visible !important;
+	}
+
+	.components-circular-option-picker__option-wrapper:hover {
+		z-index: 1000000;
+	}
 }
 
 [data-rich-text-placeholder] {

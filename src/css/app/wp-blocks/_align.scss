@@ -7,8 +7,7 @@
 	}
 }
 
-.is-layout-constrained,
-.is-root-container {
+.wp-block-post-content, .entry-content {
 	> .alignfull {
 		margin-right: calc(var(--unitone--global--gutters) * -1) !important;
 		margin-left: calc(var(--unitone--global--gutters) * -1) !important;

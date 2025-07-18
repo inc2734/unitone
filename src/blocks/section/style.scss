@@ -24,7 +24,7 @@
 	max-width: none;
 	overflow: var(--unitone--overflow);
   backdrop-filter: var(--unitone--backdrop-filter);
-	position: var(--unitone--position);
+	position: var(--unitone--position) !important;
 	top: var(--unitone--top);
 	right: var(--unitone--right);
 	bottom: var(--unitone--bottom);

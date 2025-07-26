@@ -46,10 +46,6 @@
 	&__wrapper {
 		z-index: auto;
 		user-select: none;
-
-		> *:not(:last-child) {
-			margin-right: var(--unitone--gap);
-		}
 	}
 
 	&__slide {

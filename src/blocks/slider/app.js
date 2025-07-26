@@ -9,6 +9,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		const next = slider.querySelector( '.swiper-button-next' );
 		const prev = slider.querySelector( '.swiper-button-prev' );
 
+		const dummy = document.createElement( 'div' );
+		slider.appendChild( dummy );
+		dummy.style.gap = `var(--unitone--gap)`;
+		const spaceBetween = parseFloat( window.getComputedStyle( dummy ).gap );
+		slider.removeChild( dummy );
+
 		const centeredSlides =
 			canvas.getAttribute( 'data-unitone-swiper-centered-slides' ) ||
 			undefined;
@@ -38,6 +44,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			grabCursor: true,
 			slidesPerView: 'auto',
 			watchSlidesProgress: true,
+			spaceBetween,
 			pagination: {
 				el: pagination,
 				clickable: true,

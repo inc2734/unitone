@@ -30,6 +30,12 @@
 	}
 }
 
+.unitone-slider__wrapper {
+	> *:not(:last-child) {
+		margin-right: var(--unitone--gap);
+	}
+}
+
 [data-unitone-swiper-centered-slides="true"][data-unitone-swiper-loop="true"] {
 	.unitone-slider__wrapper {
 		&::before {

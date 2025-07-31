@@ -6,7 +6,10 @@
 
 .unitone-slider {
 	--unitone--gap: var(--unitone--global--gap);
+	--unitone--controls-gap: var(--unitone--global--text-gap);
 	--unitone--slide-width: 100%;
+	--unitone--thumbnails-gap: var(--unitone--s-2);
+	--unitone--thumbnails-columns: 4;
 	--swiper-navigation-size: .5em;
 	--swiper-navigation-color: var(--wp--preset--color--unitone-accent);
 	--swiper-navigation-background-color: transparent;
@@ -63,7 +66,7 @@
 		pointer-events: none;
 
 		&--alignment\:top {
-			margin-bottom: var(--swiper-buttons-gap);
+			margin-bottom: var(--unitone--controls-gap);
 		}
 
 		&--alignment\:top-inside {
@@ -88,7 +91,7 @@
 		}
 
 		&--alignment\:bottom {
-			margin-top: var(--swiper-buttons-gap);
+			margin-top: var(--unitone--controls-gap);
 		}
 
 		&--justification\:left {
@@ -171,7 +174,7 @@
 		pointer-events: none;
 
 		&--alignment\:top {
-			margin-bottom: var(--swiper-pagination-gap);
+			margin-bottom: var(--unitone--controls-gap);
 		}
 
 		&--alignment\:top-inside {
@@ -181,7 +184,7 @@
 		}
 
 		&--alignment\:bottom {
-			margin-top: var(--swiper-pagination-gap);
+			margin-top: var(--unitone--controls-gap);
 		}
 
 		&--alignment\:bottom-inside {
@@ -250,5 +253,31 @@
 	}
 	.swiper-fade .swiper-slide.swiper-slide-visible.swiper-slide-active {
 		opacity: 1 !important;
+	}
+
+	.unitone-slider-thumbnails {
+		margin-top: var(--unitone--controls-gap);
+		display: grid;
+		grid-template-columns: repeat(var(--unitone--thumbnails-columns), 1fr);
+		gap: var(--unitone--thumbnails-gap);
+
+		> :where(.unitone-slider__slide) {
+			position: relative;
+			cursor: pointer;
+			width: auto;
+			zoom: calc(1 / var(--unitone--thumbnails-columns));
+			overflow: hidden;
+			opacity: .25;
+			transition: opacity .2s;
+
+			> * {
+				pointer-events: none;
+				user-select: none;
+			}
+
+			&:where(:focus-visible, :hover, :active, [data-slide-active=true]) {
+				opacity: 1;
+			}
+		}
 	}
 }

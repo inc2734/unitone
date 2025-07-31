@@ -20,6 +20,8 @@ import {
 
 import { SettingsInspectorControls } from './inspector-controls';
 
+import metadata from './block.json';
+
 const moveToCurrentSlide = ( slide ) => {
 	if ( ! slide ) {
 		return;
@@ -73,6 +75,8 @@ export default function ( props ) {
 		paginationAlignment,
 		paginationJustification,
 		paginationIcon,
+		thumbnails,
+		thumbnailsColumns,
 		slideWidth,
 		autoplay,
 		autoplayDelay,
@@ -85,9 +89,11 @@ export default function ( props ) {
 
 	const isDisplayArrowsSettings = ! autoplay || 0 < autoplayDelay;
 	const isDisplayPaginationSettings = ! autoplay || 0 < autoplayDelay;
+	const isDisplayThumbnailsSettings = ! autoplay || 0 < autoplayDelay;
 
 	const isDisplayArrows = arrows && isDisplayArrowsSettings;
 	const isDisplayPagination = pagination && isDisplayPaginationSettings;
+	const isDisplayThumbnails = thumbnails && isDisplayThumbnailsSettings;
 	const canMultiSlides = 'slide' === effect;
 	const canCenterdSlides = canMultiSlides && centeredSlides;
 
@@ -203,6 +209,11 @@ export default function ( props ) {
 		style: {
 			'--unitone--slide-width':
 				canMultiSlides && !! slideWidth ? slideWidth : undefined,
+			'--unitone--thumbnails-columns':
+				metadata.attributes.thumbnailsColumns.default !==
+					thumbnailsColumns && null != thumbnailsColumns
+					? thumbnailsColumns
+					: undefined,
 		},
 	} );
 
@@ -225,6 +236,7 @@ export default function ( props ) {
 				{ ...props }
 				isDisplayArrowsSettings={ isDisplayArrowsSettings }
 				isDisplayPaginationSettings={ isDisplayPaginationSettings }
+				isDisplayThumbnailsSettings={ isDisplayThumbnailsSettings }
 				canMultiSlides={ canMultiSlides }
 			/>
 
@@ -338,6 +350,14 @@ export default function ( props ) {
 							justification={ paginationJustification }
 						/>
 					) }
+
+				{ isDisplayThumbnails && (
+					<div className="unitone-slider-thumbnails">
+						{ slides.map( ( _, index ) => (
+							<div key={ index } />
+						) ) }
+					</div>
+				) }
 
 				{ ( isSelected || hasChildSelected ) && (
 					<div className="unitone-slider-pagination">

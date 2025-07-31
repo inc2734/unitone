@@ -113,6 +113,7 @@ export const SettingsInspectorControls = ( {
 	setAttributes,
 	isDisplayArrowsSettings,
 	isDisplayPaginationSettings,
+	isDisplayThumbnailsSettings,
 	canMultiSlides,
 } ) => {
 	const {
@@ -125,6 +126,8 @@ export const SettingsInspectorControls = ( {
 		paginationAlignment,
 		paginationJustification,
 		paginationIcon,
+		thumbnails,
+		thumbnailsColumns,
 		slideWidth,
 		autoplay,
 		autoplayDelay,
@@ -1044,6 +1047,78 @@ export const SettingsInspectorControls = ( {
 								</fieldset>
 							</ToolsPanelItem>
 						</>
+					) }
+				</ToolsPanel>
+			) }
+
+			{ isDisplayThumbnailsSettings && (
+				<ToolsPanel
+					label={ __( 'Thumbnails', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
+					<ToolsPanelItem
+						hasValue={ () =>
+							thumbnails !==
+							metadata.attributes.thumbnails.default
+						}
+						isShownByDefault
+						label={ __( 'Using the thumbnails', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								pagination:
+									metadata.attributes.thumbnails.default,
+							} )
+						}
+					>
+						<ToggleControl
+							__nextHasNoMarginBottom
+							label={ __( 'Using the thumbnails', 'unitone' ) }
+							checked={ thumbnails }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									thumbnails: newAttribute,
+								} );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					{ thumbnails && (
+						<ToolsPanelItem
+							hasValue={ () =>
+								thumbnailsColumns !==
+								metadata.attributes.thumbnailsColumns.default
+							}
+							isShownByDefault
+							label={ __(
+								'Number of columns of thumbnails',
+								'unitone'
+							) }
+							onDeselect={ () =>
+								setAttributes( {
+									pagination:
+										metadata.attributes.thumbnailsColumns
+											.default,
+								} )
+							}
+						>
+							<RangeControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={ __(
+									'Number of columns of thumbnails',
+									'unitone'
+								) }
+								value={ parseFloat( thumbnailsColumns ) }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										thumbnailsColumns:
+											String( newAttribute ),
+									} );
+								} }
+								min={ 2 }
+								max={ 8 }
+							/>
+						</ToolsPanelItem>
 					) }
 				</ToolsPanel>
 			) }

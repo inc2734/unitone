@@ -6,6 +6,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	canvases.forEach( ( canvas ) => {
 		const slider = canvas.closest( '.unitone-slider' );
 		const pagination = slider.querySelector( '.swiper-pagination' );
+		const thumbnails = slider.querySelector( '.unitone-slider-thumbnails' );
 		const next = slider.querySelector( '.swiper-button-next' );
 		const prev = slider.querySelector( '.swiper-button-prev' );
 
@@ -82,6 +83,35 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			swiperOptions.loop = true;
 		} else {
 			swiperOptions.rewind = true;
+		}
+
+		if ( thumbnails ) {
+			swiperOptions.on = {
+				afterInit: ( swiper ) => {
+					thumbnails.children[ swiper.realIndex ].setAttribute(
+						'data-slide-active',
+						'true'
+					);
+					for ( let i = 0; i < thumbnails.children.length; i++ ) {
+						thumbnails.children[ i ].onclick = () => {
+							if ( swiper.params.loop ) {
+								swiper.slideToLoop( i );
+							} else {
+								swiper.slideTo( i );
+							}
+						};
+					}
+				},
+				slideChange: ( swiper ) => {
+					thumbnails
+						.querySelector( '[data-slide-active=true' )
+						?.removeAttribute( 'data-slide-active' );
+					thumbnails.children[ swiper.realIndex ].setAttribute(
+						'data-slide-active',
+						'true'
+					);
+				},
+			};
 		}
 
 		new Swiper( canvas, swiperOptions );

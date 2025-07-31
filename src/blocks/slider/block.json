@@ -49,6 +49,14 @@
 				"type": "bullets"
 			}
 		},
+		"thumbnails": {
+			"type": "boolean",
+			"default": false
+		},
+		"thumbnailsColumns": {
+			"type": "string",
+			"default": "4"
+		},
 		"slideWidth": {
 			"type": "string",
 			"default": ""

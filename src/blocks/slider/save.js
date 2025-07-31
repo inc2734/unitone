@@ -9,6 +9,8 @@ import {
 	Pagination,
 } from './components';
 
+import metadata from './block.json';
+
 export default function ( { attributes } ) {
 	const {
 		arrows,
@@ -20,6 +22,8 @@ export default function ( { attributes } ) {
 		paginationAlignment,
 		paginationJustification,
 		paginationIcon,
+		thumbnails,
+		thumbnailsColumns,
 		slideWidth,
 		autoplay,
 		autoplayDelay,
@@ -32,6 +36,8 @@ export default function ( { attributes } ) {
 	const isDisplayArrows = arrows && ! ( autoplay && 0 === autoplayDelay );
 	const isDisplayPagination =
 		pagination && ! ( autoplay && 0 === autoplayDelay );
+	const isDisplayThumbnails =
+		thumbnails && ! ( autoplay && 0 === autoplayDelay );
 	const canMultiSlides = 'slide' === effect;
 	const canCenterdSlides = canMultiSlides && centeredSlides;
 
@@ -47,6 +53,11 @@ export default function ( { attributes } ) {
 					'--unitone--slide-width':
 						canMultiSlides && !! slideWidth
 							? slideWidth
+							: undefined,
+					'--unitone--thumbnails-columns':
+						metadata.attributes.thumbnailsColumns.default !==
+							thumbnailsColumns && null != thumbnailsColumns
+							? thumbnailsColumns
 							: undefined,
 				},
 			} ) }
@@ -166,6 +177,10 @@ export default function ( { attributes } ) {
 						justification={ paginationJustification }
 					/>
 				) }
+
+			{ isDisplayThumbnails && (
+				<div className="unitone-slider-thumbnails"></div>
+			) }
 		</div>
 	);
 }

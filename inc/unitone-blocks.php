@@ -167,3 +167,36 @@ function unitone_remove_timeline_dots_column_nonentity( $block_content, $block )
 	return $block_content;
 }
 add_filter( 'render_block_unitone/timeline-dots-column', 'unitone_remove_timeline_dots_column_nonentity', 10, 2 );
+
+/**
+ * Add thumbnails to slider block.
+ *
+ * @param string $block_content The block content.
+ * @param array $block The full block, including name and attributes.
+ * @return string
+ */
+function unitone_apply_slider_thumbnails( $block_content, $block ) {
+	$inner_blocks = $block['innerBlocks'] ?? array();
+	$attributes   = $block['attrs'];
+	$thumbnails   = $attributes['thumbnails'] ?? false;
+
+	if ( ! $thumbnails ) {
+		return $block_content;
+	}
+
+	$thumbnails_html = '';
+	foreach ( $inner_blocks as $slide ) {
+		if ( 'unitone/slide' === $slide['blockName'] ) {
+			$thumbnails_html .= preg_replace( '|^<div |s', '<div role="button" tabindex="0" ', trim( render_block( $slide ) ) );
+		}
+	}
+
+	$block_content = preg_replace(
+		'|<div class="unitone-slider-thumbnails"></div>|s',
+		'<div class="unitone-slider-thumbnails">' . $thumbnails_html . '</div>',
+		$block_content
+	);
+
+	return $block_content;
+}
+add_filter( 'render_block_unitone/slider', 'unitone_apply_slider_thumbnails', 10, 2 );

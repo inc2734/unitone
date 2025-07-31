@@ -164,7 +164,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							} )
 						}
 					>
-						<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+						<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 							<legend>
 								{ __( 'Tab bar justification', 'unitone' ) }
 							</legend>

@@ -330,7 +330,7 @@ export function JustifySelfEdit( {
 		<ResponsiveSettingsContainer
 			label={ label }
 			desktopControls={ () => (
-				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+				<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 					<ToggleGroupControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
@@ -357,7 +357,7 @@ export function JustifySelfEdit( {
 				</fieldset>
 			) }
 			tabletControls={ () => (
-				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+				<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 					<ToggleGroupControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
@@ -391,7 +391,7 @@ export function JustifySelfEdit( {
 				</fieldset>
 			) }
 			mobileControls={ () => (
-				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+				<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 					<ToggleGroupControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
@@ -430,7 +430,7 @@ export function JustifySelfEdit( {
 			) }
 		/>
 	) : (
-		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+		<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 			<ToggleGroupControl
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom

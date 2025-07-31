@@ -692,7 +692,7 @@ export const SettingsInspectorControls = ( {
 									} )
 								}
 							>
-								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+								<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 									<legend>
 										{ __( 'Arrows alignment', 'unitone' ) }
 									</legend>
@@ -739,7 +739,7 @@ export const SettingsInspectorControls = ( {
 									} )
 								}
 							>
-								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+								<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 									<legend>
 										{ __(
 											'Arrows justification',
@@ -953,7 +953,7 @@ export const SettingsInspectorControls = ( {
 									} )
 								}
 							>
-								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+								<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 									<legend>
 										{ __(
 											'Pagination alignment',
@@ -1009,7 +1009,7 @@ export const SettingsInspectorControls = ( {
 									} )
 								}
 							>
-								<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+								<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 									<legend>
 										{ __(
 											'Pagination justification',

@@ -158,7 +158,7 @@ export function AlignContentEdit( {
 	}, [] );
 
 	return (
-		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+		<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 			<ToggleGroupControl
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom

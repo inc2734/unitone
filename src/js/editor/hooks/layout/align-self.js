@@ -300,7 +300,7 @@ export function AlignSelfEdit( {
 		<ResponsiveSettingsContainer
 			label={ label }
 			desktopControls={ () => (
-				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+				<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 					<ToggleGroupControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
@@ -327,7 +327,7 @@ export function AlignSelfEdit( {
 				</fieldset>
 			) }
 			tabletControls={ () => (
-				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+				<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 					<ToggleGroupControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
@@ -361,7 +361,7 @@ export function AlignSelfEdit( {
 				</fieldset>
 			) }
 			mobileControls={ () => (
-				<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+				<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 					<ToggleGroupControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
@@ -400,7 +400,7 @@ export function AlignSelfEdit( {
 			) }
 		/>
 	) : (
-		<fieldset className="block-editor-hooks__flex-layout-justification-controls">
+		<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 			<ToggleGroupControl
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom

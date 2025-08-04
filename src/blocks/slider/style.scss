@@ -142,10 +142,6 @@
 
 		&.has-background-color {
 			gap: 0;
-
-			.swiper-button:has(svg) {
-				padding: .75em;
-			}
 		}
 	}
 
@@ -159,7 +155,7 @@
 		pointer-events: auto;
 
 		&:has(svg) {
-			padding: 0;
+			padding: .75em;
 			width: auto;
 
 			> span {

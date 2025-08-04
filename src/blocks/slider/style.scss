@@ -39,6 +39,16 @@
 	}
 
 	&__canvas {
+		visibility: hidden;
+
+		&.swiper-initialized {
+			visibility: visible;
+		}
+
+		&[data-unitone-swiper-effect="fade"] {
+			overflow: hidden;
+		}
+
 		&[data-unitone-swiper-autoplay-delay="0"] {
 			.swiper-wrapper {
 				transition-timing-function:linear;
@@ -241,10 +251,6 @@
 
 	.swiper-pagination-progressbar-fill {
 		background-color: var(--swiper-pagination-progressbar-active-color);
-	}
-
-	.swiper-fade {
-		overflow: hidden;
 	}
 
 	// For some reason, the slide before the first one is not fully transparent.

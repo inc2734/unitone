@@ -44,7 +44,7 @@
 	}
 
 	&__canvas {
-		&[data-unitone-swiper-effect="fade"] {
+		&:is([data-unitone-swiper-effect="fade"], .swiper-fade) {
 			overflow: hidden;
 		}
 

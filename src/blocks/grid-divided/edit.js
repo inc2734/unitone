@@ -270,6 +270,26 @@ export default function ( { attributes, setAttributes, clientId } ) {
 											setAttributes( {
 												columnsOption: value,
 											} );
+
+											if (
+												! mdColumns &&
+												! mdColumnMinWidth &&
+												! mdGridTemplateColumns
+											) {
+												setAttributes( {
+													mdColumnsOption: value,
+												} );
+											}
+
+											if (
+												! smColumns &&
+												! smColumnMinWidth &&
+												! smGridTemplateColumns
+											) {
+												setAttributes( {
+													smColumnsOption: value,
+												} );
+											}
 										} }
 										isBlock
 									>
@@ -393,6 +413,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 											setAttributes( {
 												mdColumnsOption: value,
 											} );
+
+											if (
+												! smColumns &&
+												! smColumnMinWidth &&
+												! smGridTemplateColumns
+											) {
+												setAttributes( {
+													smColumnsOption: value,
+												} );
+											}
 										} }
 										isBlock
 									>
@@ -430,7 +460,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={ mdColumnMinWidth }
+												value={
+													mdColumnMinWidth ||
+													( 'min' === columnsOption &&
+														columnMinWidth ) ||
+													undefined
+												}
 												onChange={ ( value ) =>
 													setAttributes( {
 														mdColumnMinWidth: value,
@@ -451,7 +486,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'unitone'
 												) })` }
 												value={ parseNumber(
-													mdColumns
+													mdColumns ||
+														( 'columns' ===
+															columnsOption &&
+															columns ) ||
+														undefined
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -479,7 +518,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={ mdGridTemplateColumns }
+												value={
+													mdGridTemplateColumns ||
+													( 'free' ===
+														columnsOption &&
+														gridTemplateColumns ) ||
+													undefined
+												}
 												onChange={ ( value ) =>
 													setAttributes( {
 														mdGridTemplateColumns:
@@ -540,7 +585,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={ smColumnMinWidth }
+												value={
+													smColumnMinWidth ||
+													( 'min' ===
+														mdColumnsOption &&
+														mdColumnMinWidth ) ||
+													( 'min' === columnsOption &&
+														columnMinWidth ) ||
+													undefined
+												}
 												onChange={ ( value ) =>
 													setAttributes( {
 														smColumnMinWidth: value,
@@ -561,7 +614,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'unitone'
 												) })` }
 												value={ parseNumber(
-													smColumns
+													smColumns ||
+														( 'columns' ===
+															mdColumnsOption &&
+															mdColumns ) ||
+														( 'columns' ===
+															columnsOption &&
+															columns ) ||
+														undefined
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -589,7 +649,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={ smGridTemplateColumns }
+												value={
+													smGridTemplateColumns ||
+													( 'free' ===
+														mdColumnsOption &&
+														mdGridTemplateColumns ) ||
+													( 'free' ===
+														columnsOption &&
+														gridTemplateColumns ) ||
+													undefined
+												}
 												onChange={ ( value ) =>
 													setAttributes( {
 														smGridTemplateColumns:
@@ -656,13 +725,25 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										onChange={ ( value ) => {
 											setAttributes( {
 												rowsOption: value,
-												rows: metadata.attributes.rows
-													.default,
-												gridTemplateRows:
-													metadata.attributes
-														.gridTemplateRows
-														.default,
 											} );
+
+											if (
+												! mdRows &&
+												! mdGridTemplateRows
+											) {
+												setAttributes( {
+													mdRowsOption: value,
+												} );
+											}
+
+											if (
+												! smRows &&
+												! smGridTemplateRows
+											) {
+												setAttributes( {
+													smRowsOption: value,
+												} );
+											}
 										} }
 										isBlock
 									>
@@ -732,6 +813,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 											setAttributes( {
 												mdRowsOption: value,
 											} );
+
+											if (
+												! smRows &&
+												! smGridTemplateRows
+											) {
+												setAttributes( {
+													smRowsOption: value,
+												} );
+											}
 										} }
 										isBlock
 									>
@@ -763,7 +853,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={ parseNumber( mdRows ) }
+												value={ parseNumber(
+													mdRows ||
+														( 'rows' ===
+															rowsOption &&
+															rows ) ||
+														undefined
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
 														mdRows: parseNumber(
@@ -789,7 +885,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={ mdGridTemplateRows }
+												value={
+													mdGridTemplateRows ||
+													( 'free' === rowsOption &&
+														gridTemplateRows ) ||
+													undefined
+												}
 												onChange={ ( value ) =>
 													setAttributes( {
 														mdGridTemplateRows:
@@ -811,7 +912,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 											'unitone'
 										) })` }
 										className="unitone-toggle-group-control"
-										value={ mdRowsOption }
+										value={ smRowsOption }
 										onChange={ ( value ) => {
 											setAttributes( {
 												smRowsOption: value,
@@ -836,7 +937,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									</ToggleGroupControl>
 
 									<div className="unitone-toggle-group-control__body">
-										{ 'rows' === mdRowsOption && (
+										{ 'rows' === smRowsOption && (
 											<RangeControl
 												__next40pxDefaultSize
 												__nextHasNoMarginBottom
@@ -847,7 +948,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={ parseNumber( smRows ) }
+												value={ parseNumber(
+													smRows ||
+														( 'rows' ===
+															mdRowsOption &&
+															mdRows ) ||
+														( 'rows' ===
+															rowsOption &&
+															rows ) ||
+														undefined
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
 														smRows: parseNumber(
@@ -873,7 +983,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={ smGridTemplateRows }
+												value={
+													smGridTemplateRows ||
+													( 'free' === mdRowsOption &&
+														mdGridTemplateRows ) ||
+													( 'free' === rowsOption &&
+														gridTemplateRows ) ||
+													undefined
+												}
 												onChange={ ( value ) =>
 													setAttributes( {
 														smGridTemplateRows:

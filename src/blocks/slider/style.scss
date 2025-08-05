@@ -26,6 +26,11 @@
 	max-width: 100%;
 	position: relative;
 	z-index: auto !important;
+	visibility: hidden;
+
+	&:has(> .unitone-slider__canvas-wrapper > .unitone-slider__canvas.swiper-initialized) {
+		visibility: visible;
+	}
 
 	&--hide-outside {
 		.unitone-slider__canvas {
@@ -39,12 +44,6 @@
 	}
 
 	&__canvas {
-		visibility: hidden;
-
-		&.swiper-initialized {
-			visibility: visible;
-		}
-
 		&[data-unitone-swiper-effect="fade"] {
 			overflow: hidden;
 		}

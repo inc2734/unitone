@@ -30,6 +30,10 @@
 	}
 }
 
+.unitone-slider {
+	visibility: visible !important;
+}
+
 .unitone-slider__wrapper {
 	> *:not(:last-child) {
 		margin-right: var(--unitone--gap);

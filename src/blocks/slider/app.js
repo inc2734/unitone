@@ -1,5 +1,11 @@
 import Swiper from 'swiper';
-import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
+import {
+	Autoplay,
+	EffectFade,
+	Navigation,
+	Pagination,
+	A11y,
+} from 'swiper/modules';
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	const canvases = document.querySelectorAll( '.unitone-slider__canvas' );
@@ -39,7 +45,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			canvas.getAttribute( 'data-unitone-swiper-effect' ) || 'slide';
 
 		const swiperOptions = {
-			modules: [ Autoplay, EffectFade, Navigation, Pagination ],
+			modules: [ Autoplay, EffectFade, Navigation, Pagination, A11y ],
 			effect,
 			followFinger: false,
 			grabCursor: true,

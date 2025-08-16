@@ -1,24 +1,23 @@
-import { store, getContext, getElement } from '@wordpress/interactivity';
-
-const focusableSelectors = [
-	'a[href]',
-	'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
-	'select:not([disabled]):not([aria-hidden])',
-	'textarea:not([disabled]):not([aria-hidden])',
-	'button:not([disabled]):not([aria-hidden])',
-	'[contenteditable]',
-	'[tabindex]:not([tabindex^="-"])',
-];
+import {
+	store,
+	getContext,
+	getElement,
+	withScope,
+} from '@wordpress/interactivity';
 
 const { state, actions } = store( 'unitone/mega-menu', {
 	state: {
 		get top() {
 			const context = getContext();
-			return context.top;
+			return `${ context.rect.top }px`;
 		},
 		get left() {
 			const context = getContext();
-			return context.left;
+			return `${ context.rect.left }px`;
+		},
+		get right() {
+			const context = getContext();
+			return `${ context.rect.left + context.rect.width }px`;
 		},
 		get isMenuOpen() {
 			// The menu is opened if either `click`, `hover` or `focus` is true.
@@ -28,29 +27,54 @@ const { state, actions } = store( 'unitone/mega-menu', {
 		},
 		get menuOpenedBy() {
 			const context = getContext();
-
-			return context?.submenuOpenedBy ?? [];
+			return context?.submenuOpenedBy ?? ( context.submenuOpenedBy = {} );
 		},
+
+		hoverTimeout: null,
 	},
 	actions: {
+		clearHoverTimeout() {
+			if ( state.hoverTimeout ) {
+				clearTimeout( state.hoverTimeout );
+				state.hoverTimeout = null;
+			}
+		},
+		setHoverTimeout( callback, delay ) {
+			actions.clearHoverTimeout();
+			state.hoverTimeout = setTimeout( withScope( callback ), delay );
+		},
 		openMenuOnHover() {
-			actions.openMenu( 'hover' );
+			actions.clearHoverTimeout();
+
+			actions.setHoverTimeout( () => {
+				const { menuOpenedBy } = state;
+
+				if ( ! menuOpenedBy.click ) {
+					actions.openMenu( 'hover' );
+				}
+			}, 300 );
 		},
 		closeMenuOnHover() {
-			actions.closeMenu( 'hover' );
+			actions.setHoverTimeout( () => {
+				actions.closeMenu( 'hover' );
+			}, 300 );
 		},
 		openMenuOnClick() {
 			const context = getContext();
 			const { ref } = getElement();
 
+			actions.clearHoverTimeout();
+
 			context.previousFocus = ref;
 			actions.openMenu( 'click' );
 		},
 		closeMenuOnClick() {
+			actions.clearHoverTimeout();
 			actions.closeMenu( 'click' );
 			actions.closeMenu( 'focus' );
 		},
 		openMenuOnFocus() {
+			actions.clearHoverTimeout();
 			actions.openMenu( 'focus' );
 		},
 		toggleMenuOnClick() {
@@ -65,21 +89,21 @@ const { state, actions } = store( 'unitone/mega-menu', {
 			const { menuOpenedBy } = state;
 
 			if ( menuOpenedBy.click || menuOpenedBy.focus ) {
+				actions.clearHoverTimeout();
 				actions.closeMenu( 'click' );
 				actions.closeMenu( 'hover' );
 				actions.closeMenu( 'focus' );
 			} else {
+				actions.clearHoverTimeout();
 				context.previousFocus = ref;
 				actions.openMenu( 'click' );
 			}
 		},
 		handleMenuKeydown( event ) {
-			if ( state.menuOpenedBy.click ) {
-				// If Escape close the menu.
-				if ( event?.key === 'Escape' ) {
-					actions.closeMenu( 'click' );
-					actions.closeMenu( 'focus' );
-				}
+			if ( state.menuOpenedBy.click && event?.key === 'Escape' ) {
+				actions.clearHoverTimeout();
+				actions.closeMenu( 'click' );
+				actions.closeMenu( 'focus' );
 			}
 		},
 		handleMenuFocusout( event ) {
@@ -96,11 +120,11 @@ const { state, actions } = store( 'unitone/mega-menu', {
 				( ! modal?.contains( event.relatedTarget ) &&
 					event.target !== window.document.activeElement )
 			) {
+				actions.clearHoverTimeout();
 				actions.closeMenu( 'click' );
 				actions.closeMenu( 'focus' );
 			}
 		},
-
 		openMenu( menuOpenedOn = 'click' ) {
 			const context = getContext();
 			const { ref } = getElement();
@@ -108,18 +132,13 @@ const { state, actions } = store( 'unitone/mega-menu', {
 			state.menuOpenedBy[ menuOpenedOn ] = true;
 
 			const target = ref.closest( '.unitone-mega-menu' );
-
-			const top =
-				target.getBoundingClientRect().y +
-				target.getBoundingClientRect().height;
-			context.top = `${ top }px`;
-
-			const left =
-				target.getBoundingClientRect().x +
-				target.getBoundingClientRect().width;
-			context.left = `${ left }px`;
+			const rect = target.getBoundingClientRect();
+			context.rect = {
+				top: rect.y,
+				left: rect.x,
+				width: rect.width,
+			};
 		},
-
 		closeMenu( menuClosedOn = 'click' ) {
 			const context = getContext();
 
@@ -134,8 +153,11 @@ const { state, actions } = store( 'unitone/mega-menu', {
 				}
 				context.modal = null;
 				context.previousFocus = null;
-				context.top = 0;
-				context.left = 0;
+				context.rect = {
+					top: 0,
+					left: 0,
+					width: 0,
+				};
 			}
 		},
 	},
@@ -144,20 +166,26 @@ const { state, actions } = store( 'unitone/mega-menu', {
 			const context = getContext();
 			const { ref } = getElement();
 			if ( state.isMenuOpen ) {
-				const focusableElements =
-					ref.querySelectorAll( focusableSelectors );
+				const focusableSelectors = [
+					'a[href]',
+					'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
+					'select:not([disabled]):not([aria-hidden])',
+					'textarea:not([disabled]):not([aria-hidden])',
+					'button:not([disabled]):not([aria-hidden])',
+					'[contenteditable]',
+					'[tabindex]:not([tabindex^="-"])',
+				];
+				const focusableElements = ref.querySelectorAll(
+					focusableSelectors.join( ',' )
+				);
 				context.modal = ref;
 				context.firstFocusableElement = focusableElements[ 0 ];
 				context.lastFocusableElement =
 					focusableElements[ focusableElements.length - 1 ];
 			}
 		},
-		documentScroll() {
-			actions.closeMenu( 'hover' );
-			actions.closeMenu( 'click' );
-			actions.closeMenu( 'focus' );
-		},
 		windowResize() {
+			actions.clearHoverTimeout();
 			actions.closeMenu( 'hover' );
 			actions.closeMenu( 'click' );
 			actions.closeMenu( 'focus' );

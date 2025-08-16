@@ -54,10 +54,13 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 
 	$html  = '<li ' . $block_wrapper_attributes;
 	$html .= ' data-wp-interactive="unitone/mega-menu"';
-	$html .= ' data-wp-context=\'{ "submenuOpenedBy": { "click": false, "hover": false, "focus": false }, "top": 0, "left": 0 }\'';
+	$html .= ' data-wp-context=\'{ "submenuOpenedBy": { "click": false, "hover": false, "focus": false }, rect: { "top": 0, "left": 0, "width": 0 } }\'';
 	$html .= ' data-wp-watch="callbacks.initMenu"';
 	$html .= ' data-wp-on--focusout="actions.handleMenuFocusout"';
 	$html .= ' data-wp-on--keydown="actions.handleMenuKeydown"';
+	$html .= ' data-wp-style----unitone--rect-top="state.top"';
+	$html .= ' data-wp-style----unitone--rect-left="state.left"';
+	$html .= ' data-wp-style----unitone--rect-right="state.right"';
 	$html .= ' tabindex="-1"';
 
 	if ( ! $open_on_click ) {
@@ -128,11 +131,9 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 	$html .= '<div';
 	$html .= ' class="' . esc_attr( implode( ' ', $inner_blocks_classes ) ) . '"';
 	$html .= ' style="' . esc_attr( implode( ';', $inner_blocks_styles ) ) . '"';
-	$html .= ' data-wp-on-document--scroll="callbacks.documentScroll"';
+	$html .= ' data-wp-on--wheel="callbacks.wheel"';
 	$html .= ' data-wp-on-window--resize="callbacks.windowResize"';
 	$html .= ' data-wp-bind--aria-hidden="!state.isMenuOpen"';
-	$html .= ' data-wp-style----unitone--top="state.top"';
-	$html .= ' data-wp-style----unitone--left="state.left"';
 	$html .= ' data-wp-watch="callbacks.initMenu"';
 	$html .= ' data-wp-on-async--focus="actions.openMenuOnFocus"';
 	$html .= ' id="' . esc_attr( $unique_id ) . '"';

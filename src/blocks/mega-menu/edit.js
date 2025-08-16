@@ -81,8 +81,7 @@ function Edit( {
 	const [ isLinkOpen, setIsLinkOpen ] = useState( false );
 	const [ isMegaMenuOpen, setIsMegaMenuOpen ] = useState( false );
 	const [ parentWidth, setParentWidth ] = useState( 0 );
-	const [ top, setTop ] = useState( 0 );
-	const [ left, setLeft ] = useState( 0 );
+	const [ rect, setRect ] = useState( { top: 0, left: 0, width: 0 } );
 	// Use internal state instead of a ref to make sure that the component
 	// re-renders when the popover's anchor updates.
 	const [ popoverAnchor, setPopoverAnchor ] = useState( null );
@@ -98,19 +97,13 @@ function Edit( {
 	);
 
 	const setPositionMegaMenu = useCallback( () => {
-		setTop(
-			`${
-				listItemRef.current.getBoundingClientRect().y +
-				listItemRef.current.getBoundingClientRect().height
-			}px`
-		);
-		setLeft(
-			`${
-				listItemRef.current.getBoundingClientRect().x +
-				listItemRef.current.getBoundingClientRect().width
-			}px`
-		);
-	}, [ setTop, setLeft ] );
+		const listItemRect = listItemRef.current.getBoundingClientRect();
+		setRect( {
+			top: listItemRect.y,
+			left: listItemRect.x,
+			width: listItemRect.width,
+		} );
+	}, [ setRect ] );
 
 	const openMegaMenu = useCallback( () => {
 		setPositionMegaMenu();
@@ -118,10 +111,9 @@ function Edit( {
 	}, [ setPositionMegaMenu, setIsMegaMenuOpen ] );
 
 	const closeMegaMenu = useCallback( () => {
-		setTop( 0 );
-		setLeft( 0 );
+		setRect( { top: 0, left: 0, width: 0 } );
 		setIsMegaMenuOpen( false );
-	}, [ setTop, setLeft, setIsMegaMenuOpen ] );
+	}, [ setRect, setIsMegaMenuOpen ] );
 
 	/**
 	 * Focus the Link label text and select it.
@@ -245,6 +237,11 @@ function Edit( {
 			'has-link': !! url,
 			'open-on-click': openSubmenusOnClick,
 		} ),
+		style: {
+			'--unitone--rect-top': `${ rect.top }px`,
+			'--unitone--rect-left': `${ rect.left }px`,
+			'--unitone--rect-right': `${ rect.left + rect.width }px`,
+		},
 	} );
 
 	const renderAppender = useCallback(
@@ -262,8 +259,6 @@ function Edit( {
 					overlayBackgroundColor.slug,
 			} ),
 			style: {
-				'--unitone--top': top,
-				'--unitone--left': left,
 				backgroundColor: overlayBackgroundColor.slug
 					? `var( --wp--preset--color--${ overlayBackgroundColor.slug } )`
 					: customOverlayBackgroundColor,

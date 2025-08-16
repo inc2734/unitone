@@ -237,8 +237,8 @@
 				> :where(.wp-block-navigation-item) {
 					> .wp-block-navigation__submenu-container {
 						position: fixed;
-						top: var(--unitone--top);
-						left: var(--unitone--left);
+						top: var(--unitone--rect-top);
+						left: var(--unitone--rect-right);
 					}
 
 					> .wp-block-navigation__submenu-container.block-editor-block-list__layout {
@@ -250,10 +250,19 @@
 			}
 
 			[aria-expanded=true] ~ .unitone-mega-menu__container {
-				inset: 0 0 0 var(--unitone--left);
-				height: 100vh;
+				position: fixed;
+				inset: var(--unitone--rect-top) 0 auto var(--unitone--rect-right);
+				max-height: calc(100vh - var(--unitone--rect-top));
+				width: calc(95vw - var(--unitone--rect-right));
+				overflow-y: auto;
+			}
+
+			[aria-expanded=true] ~ .unitone-mega-menu__container.block-editor-block-list__layout {
+				position: absolute;
+				top: 0;
+				left: 100%;
 				max-height: none;
-				max-width: calc(95vw - var(--unitone--left));
+				overflow: visible;
 			}
 		}
 	}

@@ -1,11 +1,12 @@
 .unitone-mega-menu__container {
-	--unitone--top: 0px;
+	// --unitone--top: 0px;
 
 	height: 0;
 	opacity: 0;
 	visibility: hidden;
 
-	position: fixed;
+	// position: fixed;
+	position: absolute;
 	transition: opacity .1s linear;
 	overflow: hidden;
 
@@ -32,10 +33,13 @@
 	opacity: 1;
 	visibility: visible;
 
-	inset: var(--unitone--top) 0 auto;
-	max-width: 100%;
-	max-height: calc(100vh - var(--unitone--top));
-	overflow: auto;
+	// inset: var(--unitone--top) 0 auto;
+	inset: 100% 0 auto calc(var(--unitone--rect-left) * -1);
+	// max-width: 100%;
+	max-width: 100vw;
+		width: 100vw;
+	// max-height: calc(100vh - var(--unitone--top));
+	// overflow: auto;
 }
 
 // Overlay.
@@ -47,7 +51,7 @@
 
 		position: relative;
 		inset: auto;
-		max-height: none;
+		// max-height: none;
 	}
 }
 

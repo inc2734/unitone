@@ -26,9 +26,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	const setSubmenusPosition = ( submenus ) => {
 		Array.from( submenus ).forEach( ( submenu ) => {
 			const rect = submenu.parentElement.getBoundingClientRect();
-			submenu.style.setProperty( '--unitone--top', `${ rect.y }px` );
+			submenu.style.setProperty( '--unitone--rect-top', `${ rect.y }px` );
 			submenu.style.setProperty(
-				'--unitone--left',
+				'--unitone--rect-right',
 				`${ rect.x + rect.width }px`
 			);
 		} );
@@ -41,7 +41,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		const submenus = navigation.querySelectorAll(
 			[
 				'.wp-block-navigation__container > .wp-block-page-list > .wp-block-pages-list__item > .wp-block-navigation__submenu-container',
-				'.wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation__submenu-container',
+				'.wp-block-navigation__container > .wp-block-navigation-item > :is(.wp-block-navigation__submenu-container, .unitone-mega-menu__container)',
 			].join( ',' )
 		);
 

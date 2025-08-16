@@ -35,6 +35,10 @@
 		--unitone--gap: var(--unitone--s-1);
 	}
 
+	:where([data-unitone-layout~="-divider:stripe"] [data-unitone-layout~="-divider:stripe"] > :last-child)::before {
+		border-bottom-width: 0px !important;
+	}
+
 	:where(li li a) { margin-left: 1em; }
 	:where(li li li a) { margin-left: 2em; }
 	:where(li li li li a) { margin-left: 3em; }

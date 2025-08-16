@@ -112,7 +112,7 @@ export function MaxWidthEdit( {
 					>
 						<ToggleGroupControlOption
 							value="var(--wp--style--global--wide-size)"
-							label={ __( 'Wide', 'unitone' ) }
+							label={ __( 'Wide Width', 'unitone' ) }
 						/>
 						<ToggleGroupControlOption
 							value="var(--wp--style--global--content-size)"

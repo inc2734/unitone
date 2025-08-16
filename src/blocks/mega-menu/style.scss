@@ -1,11 +1,9 @@
 .unitone-mega-menu__container {
-	// --unitone--top: 0px;
-
+	pointer-events: none;
 	height: 0;
 	opacity: 0;
 	visibility: hidden;
 
-	// position: fixed;
 	position: absolute;
 	transition: opacity .1s linear;
 	overflow: hidden;
@@ -17,6 +15,9 @@
 .unitone-mega-menu__placement {
 	--unitone--font-size: 0;
 
+	pointer-events: initial;
+	margin-right: auto;
+	margin-left: auto;
 	background-color: var(--wp--preset--color--unitone-background);
 	color: var(--wp--preset--color--unitone-text-black);
 	font-weight: normal;
@@ -33,17 +34,23 @@
 	opacity: 1;
 	visibility: visible;
 
-	// inset: var(--unitone--top) 0 auto;
-	inset: 100% 0 auto calc(var(--unitone--rect-left) * -1);
-	// max-width: 100%;
+	inset: 100% auto auto calc(var(--unitone--rect-left) * -1);
 	max-width: 100vw;
-		width: 100vw;
-	// max-height: calc(100vh - var(--unitone--top));
-	// overflow: auto;
+	width: 100vw;
+}
+
+:where(.unitone-mega-menu--width\:wide) .unitone-mega-menu__placement {
+	max-width: var(--wp--style--global--wide-size);
+}
+
+:where(.unitone-mega-menu--width\:content [aria-expanded=true]) ~ .unitone-mega-menu__container {
+	left: 50%;
+	translate: -50% 0;
+	max-width: var(--wp--style--global--content-size);
 }
 
 // Overlay.
-:where(.wp-block-navigation__responsive-container.is-menu-open){
+:where(.wp-block-navigation__responsive-container.is-menu-open) {
 	.unitone-mega-menu__container {
 		height: auto;
 		opacity: 1;
@@ -51,7 +58,12 @@
 
 		position: relative;
 		inset: auto;
-		// max-height: none;
+		max-width: 100%;
+		width: auto;
+	}
+
+	.unitone-mega-menu__placement {
+		max-width: 100%;
 	}
 }
 

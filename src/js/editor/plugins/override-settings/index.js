@@ -318,7 +318,7 @@ const PageSettingsPanel = () => {
 						/>
 
 						<UnitControl
-							label={ __( 'Wide', 'unitone' ) }
+							label={ __( 'Wide Width', 'unitone' ) }
 							value={ newWideSize || '' }
 							onChange={ ( newSetting ) =>
 								setMeta( {

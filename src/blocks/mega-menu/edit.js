@@ -15,6 +15,7 @@ import {
 } from '@wordpress/block-editor';
 
 import {
+	Button,
 	Notice,
 	PanelBody,
 	Popover,
@@ -31,14 +32,19 @@ import {
 	useEffect,
 	useRef,
 	useMemo,
-	useLayoutEffect,
 	memo,
 } from '@wordpress/element';
+
+import {
+	link as linkIcon,
+	stretchFullWidth,
+	stretchWide,
+	alignNone,
+} from '@wordpress/icons';
 
 import { speak } from '@wordpress/a11y';
 import { useMergeRefs } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
-import { link as linkIcon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import { displayShortcut } from '@wordpress/keycodes';
 import { isURL, prependHTTP, safeDecodeURI } from '@wordpress/url';
@@ -54,6 +60,24 @@ const LINK_SETTINGS = [
 ];
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
+
+const widthOptions = [
+	{
+		value: 'full',
+		icon: stretchFullWidth,
+		label: __( 'Full Width', 'unitone' ),
+	},
+	{
+		value: 'wide',
+		icon: stretchWide,
+		label: __( 'Wide Width', 'unitone' ),
+	},
+	{
+		value: 'content',
+		icon: alignNone,
+		label: __( 'Content Width', 'unitone' ),
+	},
+];
 
 function Edit( {
 	attributes,
@@ -73,6 +97,7 @@ function Edit( {
 		openSubmenusOnClick,
 		opensInNewTab,
 		customOverlayBackgroundColor,
+		width,
 		templateLock,
 	} = attributes;
 
@@ -138,7 +163,7 @@ function Edit( {
 	);
 
 	// Update props when the viewport is resized or the block is resized.
-	useLayoutEffect( () => {
+	useEffect( () => {
 		const parent =
 			listItemRef.current.closest( '.site-header' ) ??
 			listItemRef.current.closest( '.wp-block-navigation' );
@@ -146,14 +171,23 @@ function Edit( {
 		const ownerDocument = listItemRef.current?.ownerDocument;
 
 		let resizeObserver;
+		let documentResizeObserver;
+
 		const defaultView = ownerDocument?.defaultView;
 		if ( defaultView.ResizeObserver ) {
 			resizeObserver = new defaultView.ResizeObserver( ( entries ) =>
-				defaultView.requestAnimationFrame( () =>
-					setParentWidth( entries[ 0 ].contentBoxSize )
-				)
+				defaultView.requestAnimationFrame( () => {
+					setParentWidth( entries[ 0 ].contentBoxSize );
+				} )
 			);
 			resizeObserver.observe( parent );
+
+			documentResizeObserver = new defaultView.ResizeObserver( () =>
+				defaultView.requestAnimationFrame( () => {
+					setPositionMegaMenu();
+				} )
+			);
+			documentResizeObserver.observe( ownerDocument.documentElement );
 		}
 
 		const target = ownerDocument?.documentElement?.classList?.contains(
@@ -169,6 +203,12 @@ function Edit( {
 		return () => {
 			if ( resizeObserver ) {
 				resizeObserver.unobserve( parent );
+			}
+
+			if ( documentResizeObserver ) {
+				documentResizeObserver.unobserve(
+					ownerDocument.documentElement
+				);
 			}
 
 			target.removeEventListener( 'scroll', setPositionMegaMenu );
@@ -236,6 +276,7 @@ function Edit( {
 		className: clsx( 'unitone-mega-menu', 'wp-block-navigation-item', {
 			'has-link': !! url,
 			'open-on-click': openSubmenusOnClick,
+			[ `unitone-mega-menu--width:${ width }` ]: !! width,
 		} ),
 		style: {
 			'--unitone--rect-top': `${ rect.top }px`,
@@ -298,7 +339,7 @@ function Edit( {
 			</BlockControls>
 
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings' ) }>
+				<PanelBody title={ __( 'Settings of menu item', 'unitone' ) }>
 					<TextControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
@@ -358,6 +399,30 @@ function Edit( {
 							'The relationship of the linked URL as space-separated link types.'
 						) }
 					/>
+				</PanelBody>
+
+				<PanelBody title={ __( 'Settings of mega menu', 'unitone' ) }>
+					<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
+						<legend>{ __( 'Width', 'unitone' ) }</legend>
+						<div>
+							{ widthOptions.map(
+								( { value, icon, label: buttonLabel } ) => (
+									<Button
+										key={ value }
+										label={ buttonLabel }
+										icon={ icon }
+										isPressed={ width === value }
+										onClick={ () => {
+											setAttributes( {
+												width: value,
+											} );
+											setPositionMegaMenu();
+										} }
+									/>
+								)
+							) }
+						</div>
+					</fieldset>
 				</PanelBody>
 
 				<PanelBody title={ __( 'Display' ) }>

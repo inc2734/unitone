@@ -114,7 +114,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 							<UnitControl
 								__next40pxDefaultSize
-								label={ __( 'Wide', 'unitone' ) }
+								label={ __( 'Wide Width', 'unitone' ) }
 								value={
 									settings?.settings?.layout?.wideSize || ''
 								}

@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 22.0.1\n"
+"Project-Id-Version: unitone 22.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-31T09:04:29+00:00\n"
+"POT-Creation-Date: 2025-08-16T07:25:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -1835,15 +1835,17 @@ msgid "Size"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
+#: dist/blocks/mega-menu/index.js:1
 #: dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:23
 msgid "Content Width"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
+#: dist/blocks/mega-menu/index.js:1
 #: dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:23
-msgid "Wide"
+msgid "Wide Width"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
@@ -2086,6 +2088,7 @@ msgid "Using label of the question"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:1
+#: dist/blocks/mega-menu/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 msgid "Width"
@@ -2470,6 +2473,18 @@ msgstr ""
 
 #: dist/blocks/masonry/index.js:1
 msgid "Child blocks settings"
+msgstr ""
+
+#: dist/blocks/mega-menu/index.js:1
+msgid "Full Width"
+msgstr ""
+
+#: dist/blocks/mega-menu/index.js:1
+msgid "Settings of menu item"
+msgstr ""
+
+#: dist/blocks/mega-menu/index.js:1
+msgid "Settings of mega menu"
 msgstr ""
 
 #: dist/blocks/mega-menu/index.js:1

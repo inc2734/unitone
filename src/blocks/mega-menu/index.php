@@ -37,6 +37,7 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 	$show_submenu_indicators = isset( $attributes['showSubmenuIcon'] ) && $attributes['showSubmenuIcon'];
 	$open_on_click           = ( isset( $attributes['openSubmenusOnClick'] ) && $attributes['openSubmenusOnClick'] ) || ! $item_url;
 	$open_on_hover_and_click = isset( $attributes['openSubmenusOnClick'] ) && ! $attributes['openSubmenusOnClick'] && $show_submenu_indicators;
+	$has_width               = isset( $attributes['width'] );
 
 	$classes = array( 'unitone-mega-menu', 'wp-block-navigation-item' );
 	if ( $open_on_click ) {
@@ -44,6 +45,9 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 	}
 	if ( $open_on_hover_and_click ) {
 		$classes[] = 'open-on-hover-click';
+	}
+	if ( $has_width ) {
+		$classes[] = 'unitone-mega-menu--width:' . $attributes['width'];
 	}
 
 	$block_wrapper_attributes = get_block_wrapper_attributes(

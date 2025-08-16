@@ -251,16 +251,21 @@
 
 			[aria-expanded=true] ~ .unitone-mega-menu__container {
 				position: fixed;
-				inset: var(--unitone--rect-top) 0 auto var(--unitone--rect-right);
+				inset: var(--unitone--rect-top) auto auto var(--unitone--rect-right) !important;
 				max-height: calc(100vh - var(--unitone--rect-top));
 				width: calc(95vw - var(--unitone--rect-right));
 				overflow-y: auto;
+				translate: 0 !important;
+
+				.unitone-mega-menu__placement {
+					margin-left: 0 !important;
+				}
 			}
 
 			[aria-expanded=true] ~ .unitone-mega-menu__container.block-editor-block-list__layout {
 				position: absolute;
-				top: 0;
-				left: 100%;
+				top: 0 !important;
+				left: 100% !important;
 				max-height: none;
 				overflow: visible;
 			}

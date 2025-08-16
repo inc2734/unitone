@@ -41,6 +41,11 @@
 		"customOverlayBackgroundColor": {
 			"type": "string"
 		},
+		"width": {
+			"type": "string",
+			"default": "full",
+			"enum": [ "full", "wide", "content" ]
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

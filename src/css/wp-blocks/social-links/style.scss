@@ -6,6 +6,10 @@
 		font-size: inherit;
 		line-height: inherit;
 	}
+
+	.wp-block-social-link.wp-social-link {
+		display: inline-flex;
+	}
 }
 
 .wp-block-social-links:not(:root) {

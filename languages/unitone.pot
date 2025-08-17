@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-16T07:25:03+00:00\n"
+"POT-Creation-Date: 2025-08-17T22:55:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -142,17 +142,22 @@ msgid "Query"
 msgstr ""
 
 #: inc/block-patterns.php:16
+#: inc/template-part-areas.php:125
+msgid "Overlay Menus"
+msgstr ""
+
+#: inc/block-patterns.php:17
 #: inc/template-part-areas.php:27
-#: inc/template-part-areas.php:162
+#: inc/template-part-areas.php:169
 #: App/Controller/Manager/dist/js/app.js:9
 msgid "Pages"
 msgstr ""
 
-#: inc/block-patterns.php:17
+#: inc/block-patterns.php:18
 msgid "Templates"
 msgstr ""
 
-#: inc/block-patterns.php:18
+#: inc/block-patterns.php:19
 msgid "Others"
 msgstr ""
 
@@ -609,12 +614,12 @@ msgid "Heavy Pink"
 msgstr ""
 
 #: inc/template-part-areas.php:20
-#: inc/template-part-areas.php:141
+#: inc/template-part-areas.php:148
 msgid "Single Posts"
 msgstr ""
 
 #: inc/template-part-areas.php:34
-#: inc/template-part-areas.php:183
+#: inc/template-part-areas.php:190
 msgid "404"
 msgstr ""
 
@@ -623,32 +628,32 @@ msgid "Front Page"
 msgstr ""
 
 #: inc/template-part-areas.php:48
-#: inc/template-part-areas.php:204
+#: inc/template-part-areas.php:211
 msgid "Blog Home"
 msgstr ""
 
 #: inc/template-part-areas.php:55
-#: inc/template-part-areas.php:225
+#: inc/template-part-areas.php:232
 msgid "All Archives"
 msgstr ""
 
 #: inc/template-part-areas.php:62
-#: inc/template-part-areas.php:246
+#: inc/template-part-areas.php:253
 msgid "Search Results"
 msgstr ""
 
 #: inc/template-part-areas.php:69
-#: inc/template-part-areas.php:267
+#: inc/template-part-areas.php:274
 msgid "Product Catalog"
 msgstr ""
 
 #: inc/template-part-areas.php:76
-#: inc/template-part-areas.php:288
+#: inc/template-part-areas.php:295
 msgid "Single Products"
 msgstr ""
 
 #: inc/template-part-areas.php:83
-#: inc/template-part-areas.php:309
+#: inc/template-part-areas.php:316
 msgid "bbPress"
 msgstr ""
 
@@ -665,7 +670,7 @@ msgid "Order Confirmation"
 msgstr ""
 
 #: inc/template-part-areas.php:111
-#: inc/template-part-areas.php:330
+#: inc/template-part-areas.php:337
 msgid "Comments"
 msgstr ""
 
@@ -674,79 +679,79 @@ msgstr ""
 msgid "Loop"
 msgstr ""
 
-#: inc/template-part-areas.php:148
+#: inc/template-part-areas.php:155
 msgid "Page Header for Single Posts"
 msgstr ""
 
-#: inc/template-part-areas.php:155
+#: inc/template-part-areas.php:162
 msgid "Main Area for Single Posts"
 msgstr ""
 
-#: inc/template-part-areas.php:169
+#: inc/template-part-areas.php:176
 msgid "Page Header for Pages"
 msgstr ""
 
-#: inc/template-part-areas.php:176
+#: inc/template-part-areas.php:183
 msgid "Main Area for Pages"
 msgstr ""
 
-#: inc/template-part-areas.php:190
+#: inc/template-part-areas.php:197
 msgid "Main Area for 404"
 msgstr ""
 
-#: inc/template-part-areas.php:197
+#: inc/template-part-areas.php:204
 msgid "Page Header for 404"
 msgstr ""
 
-#: inc/template-part-areas.php:211
+#: inc/template-part-areas.php:218
 msgid "Page Header for Blog Home"
 msgstr ""
 
-#: inc/template-part-areas.php:218
+#: inc/template-part-areas.php:225
 msgid "Main Area for Blog Home"
 msgstr ""
 
-#: inc/template-part-areas.php:232
+#: inc/template-part-areas.php:239
 msgid "Main Area for All Archives"
 msgstr ""
 
-#: inc/template-part-areas.php:239
+#: inc/template-part-areas.php:246
 msgid "Page Header for All Archives"
 msgstr ""
 
-#: inc/template-part-areas.php:253
+#: inc/template-part-areas.php:260
 msgid "Page Header for Search Results"
 msgstr ""
 
-#: inc/template-part-areas.php:260
+#: inc/template-part-areas.php:267
 msgid "Main Area of Search Results"
 msgstr ""
 
-#: inc/template-part-areas.php:274
+#: inc/template-part-areas.php:281
 msgid "Main Area for Product Catalog"
 msgstr ""
 
-#: inc/template-part-areas.php:281
+#: inc/template-part-areas.php:288
 msgid "Page Header for Product Catalog"
 msgstr ""
 
-#: inc/template-part-areas.php:295
+#: inc/template-part-areas.php:302
 msgid "Page Header for Single Products"
 msgstr ""
 
-#: inc/template-part-areas.php:302
+#: inc/template-part-areas.php:309
 msgid "Main Area for Single Products"
 msgstr ""
 
-#: inc/template-part-areas.php:316
+#: inc/template-part-areas.php:323
 msgid "Page Header for bbPress"
 msgstr ""
 
-#: inc/template-part-areas.php:323
+#: inc/template-part-areas.php:330
 msgid "Main Area for bbPress"
 msgstr ""
 
-#: inc/template-part-areas.php:337
+#: inc/template-part-areas.php:344
 msgid "Footer breadcrumbs"
 msgstr ""
 
@@ -841,6 +846,16 @@ msgstr ""
 #: patterns/image.php
 msgctxt "Pattern title"
 msgid "Image"
+msgstr ""
+
+#: patterns/overlay-menu/overlay-menu-1.php
+msgctxt "Pattern title"
+msgid "Overlay Menu 1"
+msgstr ""
+
+#: patterns/overlay-menu/overlay-menu-2.php
+msgctxt "Pattern title"
+msgid "Overlay Menu 2"
 msgstr ""
 
 #: patterns/private/template/404/main/one-column-page-header-image.php
@@ -3503,6 +3518,22 @@ msgid "Overlay opacity"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
+msgid "The template part overlay-menu is used as an overlay menu."
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Edit template"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Overlay menu"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Use template parts for overlay menu"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
 msgid "Cell Min Width"
 msgstr ""
 
@@ -4944,6 +4975,11 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "Loop"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Overlay Menu"
 msgstr ""
 
 #: styles/colors/dark-blue-base.json

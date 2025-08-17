@@ -120,6 +120,13 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 				'description' => '',
 				'area_tag'    => 'div',
 			),
+			array(
+				'area'        => 'unitone/overlay-menu',
+				'label'       => __( 'Overlay Menus', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => '',
+				'area_tag'    => 'div',
+			),
 		)
 	);
 }

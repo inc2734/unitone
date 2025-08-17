@@ -10,12 +10,13 @@
  */
 function unitone_register_block_pattern_categories() {
 	$block_pattern_categories = array(
-		'unitone-headers'   => array( 'label' => '[unitone] ' . __( 'Headers', 'unitone' ) ),
-		'unitone-footers'   => array( 'label' => '[unitone] ' . __( 'Footers', 'unitone' ) ),
-		'unitone-query'     => array( 'label' => '[unitone] ' . __( 'Query', 'unitone' ) ),
-		'unitone-pages'     => array( 'label' => '[unitone] ' . __( 'Pages', 'unitone' ) ),
-		'unitone-templates' => array( 'label' => '[unitone] ' . __( 'Templates', 'unitone' ) ),
-		'unitone-others'    => array( 'label' => '[unitone] ' . __( 'Others', 'unitone' ) ),
+		'unitone-headers'       => array( 'label' => '[unitone] ' . __( 'Headers', 'unitone' ) ),
+		'unitone-footers'       => array( 'label' => '[unitone] ' . __( 'Footers', 'unitone' ) ),
+		'unitone-query'         => array( 'label' => '[unitone] ' . __( 'Query', 'unitone' ) ),
+		'unitone-overlay-menus' => array( 'label' => '[unitone] ' . __( 'Overlay Menus', 'unitone' ) ),
+		'unitone-pages'         => array( 'label' => '[unitone] ' . __( 'Pages', 'unitone' ) ),
+		'unitone-templates'     => array( 'label' => '[unitone] ' . __( 'Templates', 'unitone' ) ),
+		'unitone-others'        => array( 'label' => '[unitone] ' . __( 'Others', 'unitone' ) ),
 	);
 
 	/**

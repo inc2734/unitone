@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-08-16T07:25:03+00:00\n"
-"PO-Revision-Date: 2025-08-16 16:25+0900\n"
+"POT-Creation-Date: 2025-08-17T22:55:53+00:00\n"
+"PO-Revision-Date: 2025-08-18 07:56+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -137,16 +137,20 @@ msgstr "フッター"
 msgid "Query"
 msgstr "クエリー"
 
-#: inc/block-patterns.php:16 inc/template-part-areas.php:27
-#: inc/template-part-areas.php:162 App/Controller/Manager/dist/js/app.js:9
+#: inc/block-patterns.php:16 inc/template-part-areas.php:125
+msgid "Overlay Menus"
+msgstr "オーバーレイメニュー"
+
+#: inc/block-patterns.php:17 inc/template-part-areas.php:27
+#: inc/template-part-areas.php:169 App/Controller/Manager/dist/js/app.js:9
 msgid "Pages"
 msgstr "ページ"
 
-#: inc/block-patterns.php:17
+#: inc/block-patterns.php:18
 msgid "Templates"
 msgstr "テンプレート"
 
-#: inc/block-patterns.php:18
+#: inc/block-patterns.php:19
 msgid "Others"
 msgstr "その他"
 
@@ -595,11 +599,11 @@ msgctxt "Color name"
 msgid "Heavy Pink"
 msgstr "ヘビーピンク"
 
-#: inc/template-part-areas.php:20 inc/template-part-areas.php:141
+#: inc/template-part-areas.php:20 inc/template-part-areas.php:148
 msgid "Single Posts"
 msgstr "個別投稿"
 
-#: inc/template-part-areas.php:34 inc/template-part-areas.php:183
+#: inc/template-part-areas.php:34 inc/template-part-areas.php:190
 msgid "404"
 msgstr "404"
 
@@ -607,27 +611,27 @@ msgstr "404"
 msgid "Front Page"
 msgstr "フロントページ"
 
-#: inc/template-part-areas.php:48 inc/template-part-areas.php:204
+#: inc/template-part-areas.php:48 inc/template-part-areas.php:211
 msgid "Blog Home"
 msgstr "ブログホーム"
 
-#: inc/template-part-areas.php:55 inc/template-part-areas.php:225
+#: inc/template-part-areas.php:55 inc/template-part-areas.php:232
 msgid "All Archives"
 msgstr "アーカイブ"
 
-#: inc/template-part-areas.php:62 inc/template-part-areas.php:246
+#: inc/template-part-areas.php:62 inc/template-part-areas.php:253
 msgid "Search Results"
 msgstr "検索結果"
 
-#: inc/template-part-areas.php:69 inc/template-part-areas.php:267
+#: inc/template-part-areas.php:69 inc/template-part-areas.php:274
 msgid "Product Catalog"
 msgstr "商品カタログ"
 
-#: inc/template-part-areas.php:76 inc/template-part-areas.php:288
+#: inc/template-part-areas.php:76 inc/template-part-areas.php:295
 msgid "Single Products"
 msgstr "単一の商品"
 
-#: inc/template-part-areas.php:83 inc/template-part-areas.php:309
+#: inc/template-part-areas.php:83 inc/template-part-areas.php:316
 msgid "bbPress"
 msgstr "bbPress"
 
@@ -643,7 +647,7 @@ msgstr "購入手続き"
 msgid "Order Confirmation"
 msgstr "注文確認"
 
-#: inc/template-part-areas.php:111 inc/template-part-areas.php:330
+#: inc/template-part-areas.php:111 inc/template-part-areas.php:337
 msgid "Comments"
 msgstr "コメント"
 
@@ -651,79 +655,79 @@ msgstr "コメント"
 msgid "Loop"
 msgstr "ループ"
 
-#: inc/template-part-areas.php:148
+#: inc/template-part-areas.php:155
 msgid "Page Header for Single Posts"
 msgstr "個別投稿のページヘッダー"
 
-#: inc/template-part-areas.php:155
+#: inc/template-part-areas.php:162
 msgid "Main Area for Single Posts"
 msgstr "個別投稿のメインエリア"
 
-#: inc/template-part-areas.php:169
+#: inc/template-part-areas.php:176
 msgid "Page Header for Pages"
 msgstr "固定ページのページヘッダー"
 
-#: inc/template-part-areas.php:176
+#: inc/template-part-areas.php:183
 msgid "Main Area for Pages"
 msgstr "固定ページのメインエリア"
 
-#: inc/template-part-areas.php:190
+#: inc/template-part-areas.php:197
 msgid "Main Area for 404"
 msgstr "404 のメインエリア"
 
-#: inc/template-part-areas.php:197
+#: inc/template-part-areas.php:204
 msgid "Page Header for 404"
 msgstr "404のページヘッダー"
 
-#: inc/template-part-areas.php:211
+#: inc/template-part-areas.php:218
 msgid "Page Header for Blog Home"
 msgstr "ブログホームのページヘッダー"
 
-#: inc/template-part-areas.php:218
+#: inc/template-part-areas.php:225
 msgid "Main Area for Blog Home"
 msgstr "ブログホームのメインエリア"
 
-#: inc/template-part-areas.php:232
+#: inc/template-part-areas.php:239
 msgid "Main Area for All Archives"
 msgstr "アーカイブのメインエリア"
 
-#: inc/template-part-areas.php:239
+#: inc/template-part-areas.php:246
 msgid "Page Header for All Archives"
 msgstr "アーカイブのページヘッダー"
 
-#: inc/template-part-areas.php:253
+#: inc/template-part-areas.php:260
 msgid "Page Header for Search Results"
 msgstr "検索結果のページヘッダー"
 
-#: inc/template-part-areas.php:260
+#: inc/template-part-areas.php:267
 msgid "Main Area of Search Results"
 msgstr "検索結果のメインエリア"
 
-#: inc/template-part-areas.php:274
+#: inc/template-part-areas.php:281
 msgid "Main Area for Product Catalog"
 msgstr "商品カタログのメインエリア"
 
-#: inc/template-part-areas.php:281
+#: inc/template-part-areas.php:288
 msgid "Page Header for Product Catalog"
 msgstr "商品カタログのページヘッダー"
 
-#: inc/template-part-areas.php:295
+#: inc/template-part-areas.php:302
 msgid "Page Header for Single Products"
 msgstr "個別投稿のページヘッダー"
 
-#: inc/template-part-areas.php:302
+#: inc/template-part-areas.php:309
 msgid "Main Area for Single Products"
 msgstr "単一の商品のメインエリア"
 
-#: inc/template-part-areas.php:316
+#: inc/template-part-areas.php:323
 msgid "Page Header for bbPress"
 msgstr "bbPress のページヘッダー"
 
-#: inc/template-part-areas.php:323
+#: inc/template-part-areas.php:330
 msgid "Main Area for bbPress"
 msgstr "bbPress のメインエリア"
 
-#: inc/template-part-areas.php:337
+#: inc/template-part-areas.php:344
 msgid "Footer breadcrumbs"
 msgstr "フッターのパンくずリスト"
 
@@ -804,6 +808,16 @@ msgstr "ヘッダー（縦）"
 msgctxt "Pattern title"
 msgid "Image"
 msgstr "画像"
+
+#: patterns/overlay-menu/overlay-menu-1.php
+msgctxt "Pattern title"
+msgid "Overlay Menu 1"
+msgstr "オーバーレイメニュー 1"
+
+#: patterns/overlay-menu/overlay-menu-2.php
+msgctxt "Pattern title"
+msgid "Overlay Menu 2"
+msgstr "オーバーレイメニュー 2"
 
 #: patterns/private/template/404/main/one-column-page-header-image.php
 msgctxt "Pattern title"
@@ -3468,6 +3482,23 @@ msgid "Overlay opacity"
 msgstr "オーバーレイの不透明度"
 
 #: dist/js/editor/editor.js:13
+msgid "The template part overlay-menu is used as an overlay menu."
+msgstr ""
+"オーバーレイメニューとしてoverlay-menu テンプレートパーツが使用されます。"
+
+#: dist/js/editor/editor.js:13
+msgid "Edit template"
+msgstr "テンプレートを編集"
+
+#: dist/js/editor/editor.js:13
+msgid "Overlay menu"
+msgstr "オーバーレイメニュー"
+
+#: dist/js/editor/editor.js:13
+msgid "Use template parts for overlay menu"
+msgstr "オーバーレイメニューにテンプレートパーツを使用する"
+
+#: dist/js/editor/editor.js:13
 msgid "Cell Min Width"
 msgstr "セルの最小幅"
 
@@ -4882,6 +4913,11 @@ msgctxt "Template part name"
 msgid "Loop"
 msgstr "ループ"
 
+#: theme.json
+msgctxt "Template part name"
+msgid "Overlay Menu"
+msgstr "オーバーレイメニュー"
+
 #: styles/colors/dark-blue-base.json
 msgctxt "Style variation name"
 msgid "Dark: Blue base"
@@ -4971,6 +5007,3 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
-
-#~ msgid "Wide"
-#~ msgstr "幅広"

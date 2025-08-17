@@ -118,6 +118,32 @@ function unitone_add_gap_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_gap_support' );
 
 /**
+ * Add supports to core/navigation.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_supports_to_core_navigation( $metadata ) {
+	if ( 'core/navigation' !== $metadata['name'] ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'replaceOverlayMenu' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_supports_to_core_navigation' );
+
+/**
  * Add supports to core/table.
  *
  * @param array $metadata Metadata for registering a block type.

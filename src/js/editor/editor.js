@@ -2,6 +2,7 @@ import './hooks/embed';
 import './hooks/style';
 
 import './wp-blocks/image';
+import './wp-blocks/navigation';
 import './wp-blocks/table';
 import './wp-blocks/post-terms';
 import './wp-blocks/tag-cloud';

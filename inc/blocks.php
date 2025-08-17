@@ -8,42 +8,21 @@
 /**
  * If site-logo block is empty, display unitone logo.
  *
- * @param string $block_content The block content.
- * @param array $block The full block, including name and attributes.
+ * @param string $html Custom logo HTML output.
  * @return string
  */
-function unitone_set_default_site_logo( $block_content, $block ) {
-	if ( $block_content ) {
-		return $block_content;
+function unitone_set_default_site_logo( $html ) {
+	if ( $html ) {
+		return $html;
 	}
 
-	if ( is_admin() ) {
-		return $block_content;
-	}
-
-	$metadata = wp_json_file_decode( ABSPATH . WPINC . '/blocks/site-logo/block.json', array( 'associative' => true ) );
-
-	$set_default_custom_logo = function () {
-		return '<a href="' . get_home_url() . '" rel="home"><img loading="lazy" width="141" height="20" src="' . get_theme_file_uri( 'dist/img/logo.svg' ) . '" class="custom-logo" alt="unitone"></a>';
-	};
-
-	$default_attributes = array();
-	foreach ( $metadata['attributes'] as $key => $values ) {
-		$default                    = isset( $values['default'] ) ? $values['default'] : null;
-		$default_attributes[ $key ] = $default;
-	}
-
-	add_filter( 'get_custom_logo', $set_default_custom_logo );
-
-	$attributes    = array_merge( $default_attributes, $block['attrs'] );
-	$block_content = render_block_core_site_logo( $attributes );
-	$block_content = preg_replace( '|class="[^"]+"|ms', 'class="wp-block-site-logo"', $block_content );
-
-	remove_filter( 'get_custom_logo', $set_default_custom_logo );
-
-	return $block_content;
+	return sprintf(
+		'<a href="%1$s" rel="home"><img loading="lazy" width="141" height="20" src="%2$s" class="custom-logo" alt="unitone"></a>',
+		esc_url( get_home_url() ),
+		esc_url( get_theme_file_uri( 'dist/img/logo.svg' ) )
+	);
 }
-add_filter( 'render_block_core/site-logo', 'unitone_set_default_site_logo', 10, 2 );
+add_filter( 'get_custom_logo', 'unitone_set_default_site_logo' );
 
 /**
  * A patch for `blocks.getSaveContent.extraProps`.
@@ -128,6 +107,46 @@ add_filter(
 		return $block_content;
 	},
 	1000,
+	2
+);
+
+/**
+ * Replace overlay menu to template part.
+ */
+add_filter(
+	'render_block_core/navigation',
+	function ( $block_content, $block ) {
+		if ( ! ( $block['attrs']['unitone']['replaceOverlayMenu'] ?? false ) ) {
+			return $block_content;
+		}
+
+		$responsive_container_pattern = '/<div[^>]+?class="[^"]*wp-block-navigation__responsive-container-content[^"]*"[^>]*?>/';
+
+		if ( ! preg_match( $responsive_container_pattern, $block_content ) ) {
+			return $block_content;
+		}
+
+		ob_start();
+		block_template_part( 'overlay-menu' );
+		$mobile_menu_content = ob_get_clean();
+
+		if ( empty( $mobile_menu_content ) ) {
+			return $block_content;
+		}
+
+		$mobile_menu_html = sprintf(
+			'<div class="unitone-overlay-menu">%s</div>',
+			$mobile_menu_content
+		);
+
+		return preg_replace(
+			$responsive_container_pattern,
+			'$0' . $mobile_menu_html,
+			$block_content,
+			1
+		);
+	},
+	10,
 	2
 );
 

@@ -916,6 +916,11 @@
 			"name": "loop",
 			"title": "Loop",
 			"area": "unitone/loop"
+		},
+		{
+			"name": "overlay-menu",
+			"title": "Overlay Menu",
+			"area": "unitone/overlay-menu"
 		}
 	]
 }

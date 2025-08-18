@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-08-17T22:55:53+00:00\n"
-"PO-Revision-Date: 2025-08-18 07:56+0900\n"
+"POT-Creation-Date: 2025-08-18T01:58:19+00:00\n"
+"PO-Revision-Date: 2025-08-18 11:02+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3489,6 +3489,22 @@ msgstr ""
 #: dist/js/editor/editor.js:13
 msgid "Edit template"
 msgstr "テンプレートを編集"
+
+#: dist/js/editor/editor.js:13
+msgid "Button text"
+msgstr "ボタンテキスト"
+
+#: dist/js/editor/editor.js:13
+msgid "Button background"
+msgstr "ボタン背景"
+
+#: dist/js/editor/editor.js:13
+msgid "Overlay menu text"
+msgstr "オーバーレイメニューテキスト"
+
+#: dist/js/editor/editor.js:13
+msgid "Overlay menu background"
+msgstr "オーバーレイメニュー背景"
 
 #: dist/js/editor/editor.js:13
 msgid "Overlay menu"

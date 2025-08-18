@@ -111,6 +111,103 @@ add_filter(
 );
 
 /**
+ * Add CSS vars to core/navigation.
+ */
+add_filter(
+	'render_block_core/navigation',
+	function ( $block_content, $block ) {
+		$attrs = $block['attrs'] ?? array();
+
+		$hamburger_button_color                   = $attrs['unitone']['hamburgerButtonColor'] ?? false;
+		$hamburger_button_custom_color            = $attrs['unitone']['hamburgerButtonCustomColor'] ?? false;
+		$hamburger_button_background_color        = $attrs['unitone']['hamburgerButtonBackgroundColor'] ?? false;
+		$hamburger_button_custom_background_color = $attrs['unitone']['hamburgerButtonCustomBackgroundColor'] ?? false;
+
+		$overlay_menu_color                   = $attrs['unitone']['overlayMenuColor'] ?? false;
+		$overlay_menu_custom_color            = $attrs['unitone']['overlayMenuCustomColor'] ?? false;
+		$overlay_menu_background_color        = $attrs['unitone']['overlayMenuBackgroundColor'] ?? false;
+		$overlay_menu_custom_background_color = $attrs['unitone']['overlayMenuCustomBackgroundColor'] ?? false;
+
+		if (
+			! $hamburger_button_color &&
+			! $hamburger_button_custom_color &&
+			! $hamburger_button_background_color &&
+			! $hamburger_button_custom_background_color &&
+			! $overlay_menu_color &&
+			! $overlay_menu_custom_color &&
+			! $overlay_menu_background_color &&
+			! $overlay_menu_custom_background_color
+		) {
+			return $block_content;
+		}
+
+		$p = new \WP_HTML_Tag_Processor( $block_content );
+
+		if ( $p->next_tag() ) {
+			$hamburger_button_color            = $hamburger_button_color
+				? 'var(--wp--preset--color--' . $hamburger_button_color . ')'
+				: $hamburger_button_custom_color;
+			$hamburger_button_background_color = $hamburger_button_background_color
+				? 'var(--wp--preset--color--' . $hamburger_button_background_color . ')'
+				: $hamburger_button_custom_background_color;
+
+			$overlay_menu_color            = $overlay_menu_color
+				? 'var(--wp--preset--color--' . $overlay_menu_color . ')'
+				: $overlay_menu_custom_color;
+			$overlay_menu_background_color = $overlay_menu_background_color
+				? 'var(--wp--preset--color--' . $overlay_menu_background_color . ')'
+				: $overlay_menu_custom_background_color;
+
+			$classes = $p->get_attribute( 'class' );
+			$classes = $classes ? explode( ' ', $classes ) : array();
+
+			if ( $hamburger_button_color ) {
+				$classes[] = 'has-hamburger-button-color';
+			}
+			if ( $hamburger_button_background_color ) {
+				$classes[] = 'has-hamburger-button-background-color';
+			}
+
+			if ( $overlay_menu_color ) {
+				$classes[] = 'has-overlay-menu-color';
+			}
+			if ( $overlay_menu_background_color ) {
+				$classes[] = 'has-overlay-menu-background-color';
+			}
+
+			$p->set_attribute( 'class', trim( implode( ' ', $classes ) ) );
+
+			$style = $p->get_attribute( 'style' );
+			$style = $style ? explode( ';', $style ) : array();
+
+			$new_styles = array(
+				'--unitone--hamburger-button-color'        => $hamburger_button_color,
+				'--unitone--hamburger-button-background-color' => $hamburger_button_background_color,
+				'--unitone--overlay-menu-color'            => $overlay_menu_color,
+				'--unitone--overlay-menu-background-color' => $overlay_menu_background_color,
+			);
+
+			$new_styles = array_filter(
+				$new_styles,
+				function ( $value ) {
+					return false !== $value && ! is_null( $value ) && '' !== $value;
+				}
+			);
+
+			foreach ( $new_styles as $new_style_key => $new_style_value ) {
+				$style[] = sprintf( '%1$s: %2$s', $new_style_key, $new_style_value );
+			}
+
+			$p->set_attribute( 'style', trim( implode( ';', $style ) ) );
+		}
+
+		return $p->get_updated_html();
+	},
+	10,
+	2
+);
+
+/**
  * Replace overlay menu to template part.
  */
 add_filter(

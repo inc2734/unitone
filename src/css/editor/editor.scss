@@ -229,6 +229,12 @@
 	fill: #1e1e1e !important;
 }
 
+// Block breadcrumbs.
+.block-editor-block-breadcrumb {
+	white-space: nowrap;
+	overflow-x: auto;
+}
+
 .components-text-control__input[disabled] {
 	background-color: #f0f0f0;
 }

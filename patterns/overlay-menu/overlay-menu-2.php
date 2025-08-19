@@ -6,7 +6,7 @@
  * Block Types: core/template-part/unitone/overlay-menu
  */
 ?>
-<!-- wp:unitone/decorator {"unitone":{"position":{"position":"relative"},"overflow":"visible","gap":"2"}} -->
+<!-- wp:unitone/decorator {"unitone":{"position":{"position":"relative"},"overflow":"visible","gap":"2","padding":"-1"}} -->
 <div data-unitone-layout="decorator">
 	<!-- wp:site-logo {"align":"center"} /-->
 

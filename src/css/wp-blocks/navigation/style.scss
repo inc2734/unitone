@@ -59,7 +59,10 @@
 
 	.wp-block-navigation__responsive-container {
 		color: inherit !important;
-		padding: var(--unitone--padding);
+	}
+
+	:where(.wp-block-navigation__container) {
+		padding: 0 var(--unitone--padding) var(--unitone--padding);
 	}
 
 	:where(.wp-block-buttons) {
@@ -69,6 +72,12 @@
 	/**
 	 * Buttons
 	 */
+	.wp-block-navigation__responsive-container-close {
+		position: static;
+		display: block;
+		margin: var(--unitone--padding) var(--unitone--padding) 0 auto;
+	}
+
 	&.has-hamburger-button-color {
 		:is(.wp-block-navigation__responsive-container-open, .wp-block-navigation__responsive-container-close) {
 			color: var(--unitone--hamburger-button-color) !important;
@@ -140,7 +149,7 @@
 
 .wp-block-navigation__responsive-container.is-menu-open {
 	.wp-block-navigation__responsive-container-content {
-		padding-top: calc(var(--unitone--s-1) + 2rem); // The hamburger button size is 2rem.
+		padding-top: var(--unitone--s-1);
 	}
 }
 

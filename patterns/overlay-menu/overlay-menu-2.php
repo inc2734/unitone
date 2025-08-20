@@ -31,7 +31,7 @@
 		<!-- wp:buttons {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50"}}}} -->
 		<div class="wp-block-buttons">
 			<!-- wp:button {"backgroundColor":"unitone-bright-gray","textColor":"unitone-text-black","width":100,"style":{"elements":{"link":{"color":{"text":"var:preset|color|unitone-text-black"}}}}} -->
-			<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link has-unitone-text-black-color has-unitone-bright-gray-background-color has-text-color has-background has-link-color wp-element-button">Service</a></div>
+			<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link has-unitone-text-black-color has-unitone-bright-gray-background-color has-text-color has-background has-link-color wp-element-button">Services</a></div>
 			<!-- /wp:button -->
 		</div>
 		<!-- /wp:buttons -->

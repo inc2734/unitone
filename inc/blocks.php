@@ -217,6 +217,8 @@ add_filter(
 			return $block_content;
 		}
 
+		$slug = $block['attrs']['unitone']['overlayMenuSlug'] ?? 'overlay-menu';
+
 		$responsive_container_pattern = '/<div[^>]+?class="[^"]*wp-block-navigation__responsive-container-content[^"]*"[^>]*?>/';
 
 		if ( ! preg_match( $responsive_container_pattern, $block_content ) ) {
@@ -224,7 +226,7 @@ add_filter(
 		}
 
 		ob_start();
-		block_template_part( 'overlay-menu' );
+		block_template_part( $slug );
 		$mobile_menu_content = ob_get_clean();
 
 		if ( empty( $mobile_menu_content ) ) {

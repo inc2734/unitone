@@ -235,6 +235,20 @@
 	overflow-x: auto;
 }
 
+:is(.component-color-indicator, .components-circular-option-picker__option) {
+	&:is([style*="inherit"], [style*="currentcolor"]) {
+		color: transparent !important;
+	}
+
+	&[style*="inherit"] {
+		background-image: linear-gradient(90deg, #333 50%, #666 0) !important;
+	}
+
+	&[style*="currentcolor"] {
+		background-image: linear-gradient(0deg, #333 50%, #666 0) !important;
+	}
+}
+
 .components-text-control__input[disabled] {
 	background-color: #f0f0f0;
 }

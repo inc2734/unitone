@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-18T01:58:19+00:00\n"
+"POT-Creation-Date: 2025-08-19T05:45:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: inc/block-categories.php:44
 #: inc/block-categories.php:55
 #: inc/block-styles.php:112
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "unitone"
 msgstr ""
 
@@ -142,12 +142,12 @@ msgid "Query"
 msgstr ""
 
 #: inc/block-patterns.php:16
-#: inc/template-part-areas.php:125
+#: inc/template-part-areas.php:20
 msgid "Overlay Menus"
 msgstr ""
 
 #: inc/block-patterns.php:17
-#: inc/template-part-areas.php:27
+#: inc/template-part-areas.php:41
 #: inc/template-part-areas.php:169
 #: App/Controller/Manager/dist/js/app.js:9
 msgid "Pages"
@@ -613,70 +613,74 @@ msgctxt "Color name"
 msgid "Heavy Pink"
 msgstr ""
 
-#: inc/template-part-areas.php:20
+#: inc/template-part-areas.php:22
+msgid "The overlay menu templates can be used as an overlay menu for the navigation block."
+msgstr ""
+
+#: inc/template-part-areas.php:27
+#: dist/blocks/slider/index.js:1
+msgid "Loop"
+msgstr ""
+
+#: inc/template-part-areas.php:34
 #: inc/template-part-areas.php:148
 msgid "Single Posts"
 msgstr ""
 
-#: inc/template-part-areas.php:34
+#: inc/template-part-areas.php:48
 #: inc/template-part-areas.php:190
 msgid "404"
 msgstr ""
 
-#: inc/template-part-areas.php:41
+#: inc/template-part-areas.php:55
 msgid "Front Page"
 msgstr ""
 
-#: inc/template-part-areas.php:48
+#: inc/template-part-areas.php:62
 #: inc/template-part-areas.php:211
 msgid "Blog Home"
 msgstr ""
 
-#: inc/template-part-areas.php:55
+#: inc/template-part-areas.php:69
 #: inc/template-part-areas.php:232
 msgid "All Archives"
 msgstr ""
 
-#: inc/template-part-areas.php:62
+#: inc/template-part-areas.php:76
 #: inc/template-part-areas.php:253
 msgid "Search Results"
 msgstr ""
 
-#: inc/template-part-areas.php:69
+#: inc/template-part-areas.php:83
 #: inc/template-part-areas.php:274
 msgid "Product Catalog"
 msgstr ""
 
-#: inc/template-part-areas.php:76
+#: inc/template-part-areas.php:90
 #: inc/template-part-areas.php:295
 msgid "Single Products"
 msgstr ""
 
-#: inc/template-part-areas.php:83
+#: inc/template-part-areas.php:97
 #: inc/template-part-areas.php:316
 msgid "bbPress"
 msgstr ""
 
-#: inc/template-part-areas.php:90
+#: inc/template-part-areas.php:104
 msgid "Cart"
 msgstr ""
 
-#: inc/template-part-areas.php:97
+#: inc/template-part-areas.php:111
 msgid "Checkout"
 msgstr ""
 
-#: inc/template-part-areas.php:104
+#: inc/template-part-areas.php:118
 msgid "Order Confirmation"
 msgstr ""
 
-#: inc/template-part-areas.php:111
+#: inc/template-part-areas.php:125
 #: inc/template-part-areas.php:337
 msgid "Comments"
-msgstr ""
-
-#: inc/template-part-areas.php:118
-#: dist/blocks/slider/index.js:1
-msgid "Loop"
 msgstr ""
 
 #: inc/template-part-areas.php:155
@@ -1805,17 +1809,17 @@ msgid "Typography"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Font"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Base Font Size"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Half Leading"
 msgstr ""
 
@@ -1852,14 +1856,14 @@ msgstr ""
 #: App/Controller/Manager/dist/js/app.js:7
 #: dist/blocks/mega-menu/index.js:1
 #: dist/js/editor/editor.js:7
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Content Width"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
 #: dist/blocks/mega-menu/index.js:1
 #: dist/js/editor/editor.js:7
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Wide Width"
 msgstr ""
 
@@ -1942,8 +1946,8 @@ msgstr ""
 #: App/Controller/Manager/dist/js/app.js:9
 #: dist/blocks/layers/index.js:1
 #: dist/blocks/section/index.js:1
-#: dist/js/editor/editor.js:13
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:16
+#: dist/js/editor/editor.js:26
 msgid "Default"
 msgstr ""
 
@@ -1968,7 +1972,7 @@ msgid "Simple"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:9
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "OGP"
 msgstr ""
 
@@ -2010,7 +2014,7 @@ msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:9
 #: dist/blocks/abstract-background/index.js:1
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Background"
 msgstr ""
 
@@ -2078,7 +2082,7 @@ msgstr ""
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Settings"
 msgstr ""
 
@@ -2317,7 +2321,7 @@ msgstr ""
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Desktop"
 msgstr ""
 
@@ -2331,7 +2335,7 @@ msgstr ""
 #: dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-switcher-container/index.js:1
 #: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Mobile"
 msgstr ""
 
@@ -3522,176 +3526,190 @@ msgid "The template part overlay-menu is used as an overlay menu."
 msgstr ""
 
 #: dist/js/editor/editor.js:13
-msgid "Edit template"
+msgid "Edit the selected template part"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#. translators: %1$s: <a>, %2$s: </a>
+#: dist/js/editor/editor.js:16
+#, js-format
+msgid "Select an existing template part or %1$screate a new one%2$s."
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Refresh list"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
 msgid "Button text"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Button background"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Overlay menu text"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Overlay menu background"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Overlay menu"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Use template parts for overlay menu"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
+msgid "Template part to use"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
 msgid "Cell Min Width"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Show block outline"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Unlock content only locking"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Modify content only"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Featured image generator settings"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Generate featured image"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Aspect ratio"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Select parent block"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Select child block"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "OGP image generator settings"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Could not retrieve the OGP image data."
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Edit or replace the OGP image"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "OGP image"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Generate OGP image"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "If no OGP image is set, the featured image will be used as the og:image."
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Wireframe Generator"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Generates a wireframe using the unitone patterns. When inserted, images are replaced with dummy images."
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Now generating…"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Generate for homepage"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Generate for lower-level pages"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Generate text to be reflected in the wireframe with ChatGPT"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "To use this function, you must set an OpenAI API key on the unitone setup"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "The wireframe generator will send the generated wireframe information to ChatGPT. Enter any instructions you have so that the wireframe reflects your intended text. Note that the function is supported only for Japanese."
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "The text you want to generate"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Insert wireframe"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Now inserting…"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Reflect the generated text in the wireframe and insert"
 msgstr ""
 
-#: dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16
 msgid "Tablet"
 msgstr ""
 
 #. translators: %s: block pattern title.
-#: dist/js/editor/editor.js:17
+#: dist/js/editor/editor.js:20
 msgid "Wireframe"
 msgstr ""
 
-#: dist/js/editor/editor.js:17
+#: dist/js/editor/editor.js:20
 msgid "An error occurred during text generation."
 msgstr ""
 
 #. Translators: The number of the blocks.
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Paste styles"
 msgstr ""
 
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Reset"
 msgstr ""
 
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Override settings"
 msgstr ""
 
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Accent color"
 msgstr ""
 
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Background color"
 msgstr ""
 
-#: dist/js/editor/editor.js:23
+#: dist/js/editor/editor.js:26
 msgid "Text color"
 msgstr ""
 

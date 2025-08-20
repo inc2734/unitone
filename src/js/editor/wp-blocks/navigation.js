@@ -7,19 +7,23 @@ import {
 } from '@wordpress/block-editor';
 
 import {
+	BaseControl,
 	Button,
 	ToggleControl,
+	SelectControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
+	__experimentalHStack as HStack,
 	__experimentalVStack as VStack,
 } from '@wordpress/components';
 
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { store as coreStore } from '@wordpress/core-data';
+import { useEntityRecords, store as coreStore } from '@wordpress/core-data';
 import { useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
-import { edit } from '@wordpress/icons';
-import { __ } from '@wordpress/i18n';
+import { edit, rotateRight } from '@wordpress/icons';
+import { sprintf, __ } from '@wordpress/i18n';
 
 import {
 	cleanEmptyObject,
@@ -92,7 +96,32 @@ addFilter(
 	useBlockProps
 );
 
-const EditButton = () => {
+const TemplatePartSelectControl = ( { label, value, onChange } ) => {
+	const [ refreshKey, setRefreshKey ] = useState( 0 );
+
+	const { hasResolved, records } = useEntityRecords(
+		'postType',
+		'wp_template_part',
+		{
+			per_page: -1,
+			_refresh: refreshKey,
+		}
+	);
+
+	const overlayMenuSlugOptions = hasResolved
+		? records
+				.filter( ( item ) => item.area === 'unitone/overlay-menu' )
+				.map( ( item ) => ( {
+					label: item.title.rendered,
+					value: item.slug,
+				} ) )
+		: [
+				{
+					label: __( 'List updating…', 'unitone' ),
+					value: undefined,
+				},
+		  ];
+
 	const { siteUrl, currentTheme } = useSelect( ( select ) => {
 		const { getSite, getCurrentTheme } = select( coreStore );
 
@@ -102,19 +131,71 @@ const EditButton = () => {
 		};
 	}, [] );
 
-	const slug = 'overlay-menu';
+	if ( ! value ) {
+		value = 'overlay-menu';
+	}
 
 	return (
-		<Button
-			variant="secondary"
-			icon={ edit }
-			href={ `${ siteUrl }/wp-admin/site-editor.php?p=%2Fwp_template_part%2F${
-				currentTheme || ''
-			}%2F%2F${ slug }&canvas=edit` }
-			target="_blank"
-		>
-			{ __( 'Edit template', 'unitone' ) }
-		</Button>
+		<VStack>
+			<div>
+				<BaseControl.VisualLabel as="legend">
+					{ label }
+				</BaseControl.VisualLabel>
+
+				<p
+					className="components-base-control__help"
+					style={ {
+						marginTop: '2px',
+						marginBottom: '8px',
+						fontSize: '12px',
+						color: 'rgb(117, 117, 117)',
+					} }
+					dangerouslySetInnerHTML={ {
+						__html: sprintf(
+							// translators: %1$s: <a>, %2$s: </a>
+							__(
+								'Select an existing template part or %1$screate a new one%2$s.',
+								'unitone'
+							),
+							`<a href="${ siteUrl }/wp-admin/site-editor.php?p=%2Fpattern&postType=wp_template_part&categoryId=unitone%2Foverlay-menu" target="_blank">`,
+							'</a>'
+						),
+					} }
+				/>
+
+				<HStack spacing={ 0 }>
+					<div style={ { flex: 1 } }>
+						<SelectControl
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							options={ overlayMenuSlugOptions }
+							value={ value }
+							onChange={ onChange }
+						/>
+					</div>
+
+					<Button
+						label={ __( 'Refresh list', 'unitone' ) }
+						icon={ rotateRight }
+						onClick={ () => setRefreshKey( ( k ) => k + 1 ) }
+						style={ { flex: 0 } }
+					/>
+
+					<Button
+						label={ __(
+							'Edit the selected template part',
+							'unitone'
+						) }
+						icon={ edit }
+						href={ `${ siteUrl }/wp-admin/site-editor.php?p=%2Fwp_template_part%2F${
+							currentTheme || ''
+						}%2F%2F${ value }&canvas=edit` }
+						target="_blank"
+						style={ { flex: 0 } }
+					/>
+				</HStack>
+			</div>
+		</VStack>
 	);
 };
 
@@ -314,35 +395,59 @@ const NavigationInspectorControls = ( {
 						panelId={ clientId }
 						dropdownMenuProps={ dropdownMenuProps }
 					>
-						<VStack spacing="16px">
-							<ToggleControl
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
-								label={ __(
-									'Use template parts for overlay menu',
-									'unitone'
-								) }
-								checked={
-									attributes?.unitone?.replaceOverlayMenu ??
-									false
-								}
-								onChange={ ( newSetting ) =>
-									setAttributes( {
-										unitone: cleanEmptyObject( {
-											...unitone,
-											replaceOverlayMenu: newSetting,
-										} ),
-									} )
-								}
-							/>
-
-							{ !! unitone?.replaceOverlayMenu && (
-								<div>
-									<EditButton />
-								</div>
+						<ToggleControl
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							label={ __(
+								'Use template parts for overlay menu',
+								'unitone'
 							) }
-						</VStack>
+							checked={ unitone?.replaceOverlayMenu ?? false }
+							onChange={ ( newSetting ) =>
+								setAttributes( {
+									unitone: cleanEmptyObject( {
+										...unitone,
+										replaceOverlayMenu: newSetting,
+									} ),
+								} )
+							}
+						/>
 					</ToolsPanelItem>
+
+					{ !! unitone?.replaceOverlayMenu && (
+						<ToolsPanelItem
+							hasValue={ () => null != unitone?.overlayMenuSlug }
+							label={ __( 'Template part to use', 'unitone' ) }
+							onDeselect={ () => {
+								unitone.overlayMenuSlug = undefined;
+
+								setAttributes( {
+									unitone: cleanEmptyObject( unitone ),
+								} );
+							} }
+							isShownByDefault
+							panelId={ clientId }
+							dropdownMenuProps={ dropdownMenuProps }
+						>
+							<VStack spacing="16px">
+								<TemplatePartSelectControl
+									label={ __(
+										'Template part to use',
+										'unitone'
+									) }
+									value={ unitone?.overlayMenuSlug }
+									onChange={ ( newAttribute ) => {
+										setAttributes( {
+											unitone: cleanEmptyObject( {
+												...unitone,
+												overlayMenuSlug: newAttribute,
+											} ),
+										} );
+									} }
+								/>
+							</VStack>
+						</ToolsPanelItem>
+					) }
 				</ToolsPanel>
 			</InspectorControls>
 		</>

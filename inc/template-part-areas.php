@@ -16,6 +16,20 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 		$default_area_definitions,
 		array(
 			array(
+				'area'        => 'unitone/overlay-menu',
+				'label'       => __( 'Overlay Menus', 'unitone' ),
+				'icon'        => 'navigation',
+				'description' => __( 'The overlay menu templates can be used as an overlay menu for the navigation block.', 'unitone' ),
+				'area_tag'    => 'div',
+			),
+			array(
+				'area'        => 'unitone/loop',
+				'label'       => __( 'Loop', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => '',
+				'area_tag'    => 'div',
+			),
+			array(
 				'area'        => 'unitone/single',
 				'label'       => __( 'Single Posts', 'unitone' ),
 				'icon'        => 'layout',
@@ -109,20 +123,6 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 			array(
 				'area'        => 'unitone/comments',
 				'label'       => __( 'Comments', 'unitone' ),
-				'icon'        => 'layout',
-				'description' => '',
-				'area_tag'    => 'div',
-			),
-			array(
-				'area'        => 'unitone/loop',
-				'label'       => __( 'Loop', 'unitone' ),
-				'icon'        => 'layout',
-				'description' => '',
-				'area_tag'    => 'div',
-			),
-			array(
-				'area'        => 'unitone/overlay-menu',
-				'label'       => __( 'Overlay Menus', 'unitone' ),
 				'icon'        => 'layout',
 				'description' => '',
 				'area_tag'    => 'div',

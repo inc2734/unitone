@@ -150,6 +150,12 @@
 .wp-block-navigation__responsive-container.is-menu-open {
 	.wp-block-navigation__responsive-container-content {
 		padding-top: var(--unitone--s-1);
+
+		&:where(:not(:has(.unitone-overlay-menu))) {
+			padding-right: var(--unitone--padding);
+			padding-bottom: var(--unitone--padding);
+			padding-left: var(--unitone--padding);
+		}
 	}
 }
 

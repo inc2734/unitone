@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-19T05:45:22+00:00\n"
+"POT-Creation-Date: 2025-08-21T06:00:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -860,6 +860,11 @@ msgstr ""
 #: patterns/overlay-menu/overlay-menu-2.php
 msgctxt "Pattern title"
 msgid "Overlay Menu 2"
+msgstr ""
+
+#: patterns/overlay-menu/overlay-menu-3.php
+msgctxt "Pattern title"
+msgid "Overlay Menu 3"
 msgstr ""
 
 #: patterns/private/template/404/main/one-column-page-header-image.php
@@ -3526,7 +3531,7 @@ msgid "The template part overlay-menu is used as an overlay menu."
 msgstr ""
 
 #: dist/js/editor/editor.js:13
-msgid "Edit the selected template part"
+msgid "List updating…"
 msgstr ""
 
 #. translators: %1$s: <a>, %2$s: </a>
@@ -3537,6 +3542,10 @@ msgstr ""
 
 #: dist/js/editor/editor.js:16
 msgid "Refresh list"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Edit the selected template part"
 msgstr ""
 
 #: dist/js/editor/editor.js:16

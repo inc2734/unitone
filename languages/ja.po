@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-08-19T05:45:22+00:00\n"
-"PO-Revision-Date: 2025-08-19 14:46+0900\n"
+"POT-Creation-Date: 2025-08-21T06:00:51+00:00\n"
+"PO-Revision-Date: 2025-08-21 15:01+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
@@ -826,6 +826,11 @@ msgstr "オーバーレイメニュー 1"
 msgctxt "Pattern title"
 msgid "Overlay Menu 2"
 msgstr "オーバーレイメニュー 2"
+
+#: patterns/overlay-menu/overlay-menu-3.php
+msgctxt "Pattern title"
+msgid "Overlay Menu 3"
+msgstr "オーバーレイメニュー 3"
 
 #: patterns/private/template/404/main/one-column-page-header-image.php
 msgctxt "Pattern title"
@@ -3495,8 +3500,8 @@ msgstr ""
 "オーバーレイメニューとしてoverlay-menu テンプレートパーツが使用されます。"
 
 #: dist/js/editor/editor.js:13
-msgid "Edit the selected template part"
-msgstr "選択したテンプレートパーツを編集"
+msgid "List updating…"
+msgstr "リストを更新中…"
 
 #. translators: %1$s: <a>, %2$s: </a>
 #: dist/js/editor/editor.js:16
@@ -3506,6 +3511,10 @@ msgstr "既存のテンプレートパーツを選択するか、%1$s新規に�
 #: dist/js/editor/editor.js:16
 msgid "Refresh list"
 msgstr "リストを更新"
+
+#: dist/js/editor/editor.js:16
+msgid "Edit the selected template part"
+msgstr "選択したテンプレートパーツを編集"
 
 #: dist/js/editor/editor.js:16
 msgid "Button text"

@@ -114,6 +114,66 @@ export function StyleEdit( {
 		let buffer = '';
 		const blockStack = [];
 
+		// Collapse consecutive spaces/tabs ONLY outside of quoted strings.
+		function collapseSpacesOutsideStrings( s ) {
+			let out = '';
+			let inSingle = false;
+			let inDouble = false;
+			let escaped = false;
+			let pendingSpace = false;
+
+			for ( let i = 0; i < s.length; i++ ) {
+				const ch = s[ i ];
+
+				if ( escaped ) {
+					// Keep escaped char as-is and clear escape state
+					out += ch;
+					escaped = false;
+					continue;
+				}
+				if ( ch === '\\' ) {
+					// Preserve escape and mark next char as escaped
+					out += ch;
+					escaped = true;
+					continue;
+				}
+				if ( ! inDouble && ch === "'" ) {
+					inSingle = ! inSingle;
+					out += ch;
+					continue;
+				}
+				if ( ! inSingle && ch === '"' ) {
+					inDouble = ! inDouble;
+					out += ch;
+					continue;
+				}
+
+				// Outside quotes: compress runs of space/tab to a single space
+				if (
+					! inSingle &&
+					! inDouble &&
+					( ch === ' ' || ch === '\t' )
+				) {
+					pendingSpace = true;
+					continue;
+				}
+
+				// Flush one space if there was a pending run
+				if ( pendingSpace ) {
+					out += ' ';
+					pendingSpace = false;
+				}
+
+				out += ch;
+			}
+
+			// If the string ends with a run of spaces/tabs, emit a single space
+			if ( pendingSpace ) {
+				out += ' ';
+			}
+			return out;
+		}
+
 		const pushLine = ( line ) => {
 			const trimmed = line.trim();
 			if ( trimmed !== '' ) {
@@ -153,29 +213,41 @@ export function StyleEdit( {
 
 		let formatted = lines.join( '\n' );
 
-		// Format only declaration lines (avoid affecting selectors like &:hover)
+		// Format only declaration lines. Do not touch ':' inside values (e.g., URLs).
 		formatted = formatted
 			.split( '\n' )
 			.map( ( line ) => {
 				const trimmed = line.trim();
-				// Skip selector lines or block starts
+
+				// Leave selector lines, block starts, and at-rules untouched
 				if ( trimmed.endsWith( '{' ) || trimmed.startsWith( '@' ) ) {
 					return line;
 				}
-				// Apply colon formatting to property declarations only
-				if ( trimmed.includes( ':' ) && trimmed.endsWith( ';' ) ) {
-					return line
-						.replace( /\s+:/g, ':' )
-						.replace( /:\s*/g, ': ' );
+
+				// Process declaration lines (must end with ;)
+				if ( trimmed.endsWith( ';' ) && trimmed.includes( ':' ) ) {
+					// Preserve leading indentation
+					const leading = ( line.match( /^\s*/ ) || [ '' ] )[ 0 ];
+					// Split at the first colon only
+					const firstColonIdx = trimmed.indexOf( ':' );
+					const prop = trimmed.slice( 0, firstColonIdx ).trim();
+					let value = trimmed.slice( firstColonIdx + 1 ).trim();
+
+					// Collapse consecutive spaces/tabs outside quoted strings
+					value = collapseSpacesOutsideStrings( value );
+
+					// Normalize to "prop: value;"
+					return `${ leading }${ prop }: ${ value }`;
 				}
+
 				return line;
 			} )
 			.join( '\n' );
 
-		// Add one space before !important
+		// Ensure a single space before !important
 		formatted = formatted.replace( /\s*!important/g, ' !important' );
 
-		// Format @rules like @media or @supports
+		// Normalize conditions inside @media or @supports
 		formatted = formatted.replace(
 			/@([a-z\-]+)(\s*)\(([^)]+?)\)/gi,
 			( _, atRule, space, conditions ) => {
@@ -187,7 +259,7 @@ export function StyleEdit( {
 			}
 		);
 
-		// Insert blank lines before top-level selectors or at-rules
+		// Insert blank lines before top-level selectors or at-rules for readability
 		const formattedLines = formatted.split( '\n' );
 		const resultLines = [];
 

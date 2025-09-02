@@ -387,6 +387,11 @@
 				"spacing": {
 					"blockGap": false
 				}
+			},
+			"core/social-links": {
+				"spacing": {
+					"blockGap": false
+				}
 			}
 		}
 	},

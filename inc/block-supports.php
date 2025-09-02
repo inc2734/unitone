@@ -92,13 +92,13 @@ function unitone_add_half_leading_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_half_leading_support' );
 
 /**
- * Add support "gap" to core/post-content and core/post-template.
+ * Add support "gap" to core/navigation, core/post-content,  core/post-template and core/social-links.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
  */
 function unitone_add_gap_support( $metadata ) {
-	if ( ! in_array( $metadata['name'], array( 'core/navigation', 'core/post-content', 'core/post-template' ), true ) ) {
+	if ( ! in_array( $metadata['name'], array( 'core/navigation', 'core/post-content', 'core/post-template', 'core/social-links' ), true ) ) {
 		return $metadata;
 	}
 

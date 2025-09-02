@@ -36,8 +36,8 @@ function PatternsListHeader( { filterValue, filteredBlockPatternsLength } ) {
 		>
 			{ sprintf(
 				/* translators:
-				 * %1$d: Number of patterns found.
-				 * %2$s: Block pattern search query.
+				 * 1: Number of patterns found.
+				 * 2: Block pattern search query.
 				 */
 				_n(
 					'%1$d pattern found for "%2$s"',

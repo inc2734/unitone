@@ -259,7 +259,7 @@ export default function usePasteUnitoneAndCoreStyles() {
 				const title = getBlockType( targetBlocks[ 0 ].name )?.title;
 				createSuccessNotice(
 					sprintf(
-						// Translators: Name of the block being pasted, e.g. "Paragraph".
+						// Translators: %s: Name of the block being pasted, e.g. "Paragraph".
 						__( 'Pasted styles to %s.' ),
 						title
 					),
@@ -268,7 +268,7 @@ export default function usePasteUnitoneAndCoreStyles() {
 			} else {
 				createSuccessNotice(
 					sprintf(
-						// Translators: The number of the blocks.
+						// Translators: %d: The number of the blocks.
 						__( 'Pasted styles to %d blocks.' ),
 						targetBlocks.length
 					),

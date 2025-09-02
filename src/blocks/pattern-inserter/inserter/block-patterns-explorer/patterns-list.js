@@ -35,10 +35,7 @@ function PatternsListHeader( { filterValue, filteredBlockPatternsLength } ) {
 			className="block-editor-block-patterns-explorer__search-results-count"
 		>
 			{ sprintf(
-				/* translators:
-				 * 1: Number of patterns found.
-				 * 2: Block pattern search query.
-				 */
+				/* translators: 1: Number of patterns found, 2: Block pattern search query. */
 				_n(
 					'%1$d pattern found for "%2$s"',
 					'%1$d patterns found for "%2$s"',

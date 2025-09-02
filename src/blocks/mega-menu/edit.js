@@ -107,6 +107,11 @@ function Edit( {
 	const [ isMegaMenuOpen, setIsMegaMenuOpen ] = useState( false );
 	const [ parentWidth, setParentWidth ] = useState( 0 );
 	const [ rect, setRect ] = useState( { top: 0, left: 0, width: 0 } );
+	const [ megaMenuRect, setMegaMenuRect ] = useState( {
+		left: 0,
+		width: 0,
+		diff: 0,
+	} );
 	// Use internal state instead of a ref to make sure that the component
 	// re-renders when the popover's anchor updates.
 	const [ popoverAnchor, setPopoverAnchor ] = useState( null );
@@ -122,13 +127,37 @@ function Edit( {
 	);
 
 	const setPositionMegaMenu = useCallback( () => {
-		const listItemRect = listItemRef.current.getBoundingClientRect();
+		const listItem = listItemRef.current;
+		const listItemRect = listItem.getBoundingClientRect();
 		setRect( {
 			top: listItemRect.y,
 			left: listItemRect.x,
 			width: listItemRect.width,
 		} );
-	}, [ setRect ] );
+
+		const documentElement = listItem.ownerDocument.documentElement;
+		const viewport = {
+			width: documentElement.clientWidth,
+			height: documentElement.clientHeight,
+		};
+
+		const megaMenuContainer = listItem.querySelector(
+			'.unitone-mega-menu__container'
+		);
+		const _megaMenuRect = megaMenuContainer.getBoundingClientRect();
+		let diff = 0;
+		if ( viewport.width < _megaMenuRect.left + _megaMenuRect.width ) {
+			diff =
+				viewport.width - ( _megaMenuRect.left + _megaMenuRect.width );
+		} else if ( 0 > _megaMenuRect.left ) {
+			diff = _megaMenuRect.left * -1;
+		}
+		setMegaMenuRect( {
+			left: _megaMenuRect.x,
+			width: _megaMenuRect.width,
+			diff,
+		} );
+	}, [ setRect, setMegaMenuRect ] );
 
 	const openMegaMenu = useCallback( () => {
 		setPositionMegaMenu();
@@ -137,8 +166,9 @@ function Edit( {
 
 	const closeMegaMenu = useCallback( () => {
 		setRect( { top: 0, left: 0, width: 0 } );
+		setMegaMenuRect( { left: 0, width: 0, diff: 0 } );
 		setIsMegaMenuOpen( false );
-	}, [ setRect, setIsMegaMenuOpen ] );
+	}, [ setRect, setMegaMenuRect, setIsMegaMenuOpen ] );
 
 	/**
 	 * Focus the Link label text and select it.
@@ -282,6 +312,7 @@ function Edit( {
 			'--unitone--rect-top': `${ rect.top }px`,
 			'--unitone--rect-left': `${ rect.left }px`,
 			'--unitone--rect-right': `${ rect.left + rect.width }px`,
+			'--unitone--mega-menu-diff': `${ megaMenuRect.diff }px`,
 		},
 	} );
 

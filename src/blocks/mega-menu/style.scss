@@ -28,25 +28,31 @@
 	background-color: transparent;
 }
 
-:where(.unitone-mega-menu [aria-expanded=true]) ~ .unitone-mega-menu__container {
-	z-index: 11; // If it is not 10 or higher, the editor will give priority to the hover of the template part on the virtual layer.
-
+:where(.unitone-mega-menu) .unitone-mega-menu__container {
 	height: auto;
-	opacity: 1;
-	visibility: visible;
 
 	inset: 100% auto auto calc(var(--unitone--rect-left) * -1);
 	max-width: 100vw;
 	width: 100vw;
 }
 
-:where(.unitone-mega-menu--width\:wide) .unitone-mega-menu__placement {
+:where(.unitone-mega-menu [aria-expanded=true]) ~ .unitone-mega-menu__container {
+	z-index: 11; // If it is not 10 or higher, the editor will give priority to the hover of the template part on the virtual layer.
+
+	opacity: 1;
+	visibility: visible;
+}
+
+:where(.unitone-mega-menu--width\:content, .unitone-mega-menu--width\:wide) .unitone-mega-menu__container {
+	left: calc(50% + var(--unitone--mega-menu-diff, 0px));
+	translate: -50% 0;
+}
+
+:where(.unitone-mega-menu--width\:wide) .unitone-mega-menu__container {
 	max-width: var(--wp--style--global--wide-size);
 }
 
-:where(.unitone-mega-menu--width\:content [aria-expanded=true]) ~ .unitone-mega-menu__container {
-	left: 50%;
-	translate: -50% 0;
+:where(.unitone-mega-menu--width\:content) .unitone-mega-menu__container {
 	max-width: var(--wp--style--global--content-size);
 }
 

@@ -19,6 +19,10 @@ const { state, actions } = store( 'unitone/mega-menu', {
 			const context = getContext();
 			return `${ context.rect.left + context.rect.width }px`;
 		},
+		get diff() {
+			const context = getContext();
+			return `${ context.megaMenuRect.diff }px`;
+		},
 		get isMenuOpen() {
 			// The menu is opened if either `click`, `hover` or `focus` is true.
 			return (
@@ -138,6 +142,36 @@ const { state, actions } = store( 'unitone/mega-menu', {
 				left: rect.x,
 				width: rect.width,
 			};
+
+			const documentElement = target.ownerDocument.documentElement;
+			context.viewport = {
+				width: documentElement.clientWidth,
+				height: documentElement.clientHeight,
+			};
+
+			const megaMenu = target.querySelector(
+				'.unitone-mega-menu__container'
+			);
+			const megaMenuRect = megaMenu.getBoundingClientRect();
+
+			let diff = 0;
+
+			if (
+				context.viewport.width <
+				megaMenuRect.left + megaMenuRect.width
+			) {
+				diff =
+					context.viewport.width -
+					( megaMenuRect.left + megaMenuRect.width );
+			} else if ( 0 > megaMenuRect.left ) {
+				diff = megaMenuRect.left * -1;
+			}
+
+			context.megaMenuRect = {
+				left: megaMenuRect.x,
+				width: megaMenuRect.width,
+				diff,
+			};
 		},
 		closeMenu( menuClosedOn = 'click' ) {
 			const context = getContext();
@@ -157,6 +191,15 @@ const { state, actions } = store( 'unitone/mega-menu', {
 					top: 0,
 					left: 0,
 					width: 0,
+				};
+				context.megaMenuRect = {
+					left: 0,
+					width: 0,
+					diff: 0,
+				};
+				context.viewport = {
+					width: 0,
+					height: 0,
 				};
 			}
 		},

@@ -58,13 +58,14 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 
 	$html  = '<li ' . $block_wrapper_attributes;
 	$html .= ' data-wp-interactive="unitone/mega-menu"';
-	$html .= ' data-wp-context=\'{ "submenuOpenedBy": { "click": false, "hover": false, "focus": false }, rect: { "top": 0, "left": 0, "width": 0 } }\'';
+	$html .= ' data-wp-context=\'{ "submenuOpenedBy": { "click": false, "hover": false, "focus": false }, rect: { "top": 0, "left": 0, "width": 0 }, megaMenuRect: { "left": 0, "width": 0, "diff": 0 }, viewport: { "width": 0, "height": 0 } }\'';
 	$html .= ' data-wp-watch="callbacks.initMenu"';
 	$html .= ' data-wp-on--focusout="actions.handleMenuFocusout"';
 	$html .= ' data-wp-on--keydown="actions.handleMenuKeydown"';
 	$html .= ' data-wp-style----unitone--rect-top="state.top"';
 	$html .= ' data-wp-style----unitone--rect-left="state.left"';
 	$html .= ' data-wp-style----unitone--rect-right="state.right"';
+	$html .= ' data-wp-style----unitone--mega-menu-diff="state.diff"';
 	$html .= ' tabindex="-1"';
 
 	if ( ! $open_on_click ) {

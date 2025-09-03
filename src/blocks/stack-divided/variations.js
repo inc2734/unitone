@@ -67,4 +67,26 @@ export default [
 			[ 'unitone/stack-divided-content' ],
 		],
 	},
+	{
+		name: 'stack-divided-divided',
+		title: __( 'Stack (Divider: Divide)', 'unitone' ),
+		isDefault: false,
+		attributes: {
+			unitone: {
+				dividerType: 'divide',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+			},
+		},
+		isActive: ( blockAttributes, variationAttributes ) =>
+			!! blockAttributes?.unitone?.dividerType &&
+			!! variationAttributes?.unitone?.dividerType &&
+			blockAttributes.unitone.dividerType ===
+				variationAttributes.unitone.dividerType,
+		scope: [ 'inserter' ],
+		innerBlocks: [
+			[ 'unitone/stack-divided-content' ],
+			[ 'unitone/stack-divided-content' ],
+		],
+	},
 ];

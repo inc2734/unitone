@@ -46,3 +46,7 @@
 		}
 	}
 }
+
+[data-type="unitone/stack-divided"] > [data-type="unitone/stack-divided-content"]:where(:has(+ .block-list-appender)) {
+	padding-bottom: 0;
+}

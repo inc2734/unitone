@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-08-21T06:00:51+00:00\n"
-"PO-Revision-Date: 2025-08-21 15:01+0900\n"
+"POT-Creation-Date: 2025-09-03T00:18:19+00:00\n"
+"PO-Revision-Date: 2025-09-03 09:18+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2762,6 +2762,10 @@ msgstr "スタック（区切り：アンダーライン）"
 msgid "Stack (Divider: Bordered)"
 msgstr "スタック（区切り：ボーダー）"
 
+#: dist/blocks/stack-divided/index.js:1
+msgid "Stack (Divider: Divide)"
+msgstr "スタック（区切り：分割）"
+
 #: dist/blocks/stack/index.js:1
 msgid "hgroup"
 msgstr "hgroup"
@@ -3681,7 +3685,7 @@ msgstr "ワイヤーフレーム"
 msgid "An error occurred during text generation."
 msgstr "テキスト生成中にエラーが発生しました。"
 
-#. Translators: The number of the blocks.
+#. Translators: %d: The number of the blocks.
 #: dist/js/editor/editor.js:26
 msgid "Paste styles"
 msgstr "スタイルを貼り付け"

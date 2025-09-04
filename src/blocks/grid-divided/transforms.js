@@ -158,6 +158,11 @@ export default {
 			},
 		},
 	],
-	ungroup: ( attributes, innerBlocks ) =>
-		innerBlocks.flatMap( ( innerBlock ) => innerBlock ),
+	ungroup: ( attributes, innerBlocks ) => {
+		return innerBlocks.flatMap( ( innerBlock ) =>
+			innerBlock.innerBlocks.flatMap(
+				( childInnerBlock ) => childInnerBlock
+			)
+		);
+	},
 };

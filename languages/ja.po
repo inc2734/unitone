@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-03T00:18:19+00:00\n"
-"PO-Revision-Date: 2025-09-03 09:18+0900\n"
+"POT-Creation-Date: 2025-09-08T04:22:44+00:00\n"
+"PO-Revision-Date: 2025-09-08 13:23+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,9 +19,9 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css inc/block-categories.php:22 inc/block-categories.php:33
 #: inc/block-categories.php:44 inc/block-categories.php:55
-#: inc/block-styles.php:112 dist/js/editor/editor.js:16
+#: inc/block-styles.php:120 dist/js/editor/editor.js:16
 msgid "unitone"
-msgstr "unitone"
+msgstr "[unitone] Dark"
 
 #. Theme URI of the theme
 #: style.css
@@ -154,59 +154,63 @@ msgstr "テンプレート"
 msgid "Others"
 msgstr "その他"
 
-#: inc/block-styles.php:16 inc/block-styles.php:40
+#: inc/block-styles.php:16 inc/block-styles.php:48
 msgid "Text"
 msgstr "テキスト"
 
 #: inc/block-styles.php:24
+msgid "No marker"
+msgstr "マーカーなし"
+
+#: inc/block-styles.php:32
 msgid "Badge"
 msgstr "バッジ"
 
-#: inc/block-styles.php:32
+#: inc/block-styles.php:40
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:48 inc/block-styles.php:136 dist/js/editor/editor.js:4
+#: inc/block-styles.php:56 inc/block-styles.php:144 dist/js/editor/editor.js:4
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: inc/block-styles.php:56 inc/block-styles.php:160 dist/js/editor/editor.js:4
+#: inc/block-styles.php:64 inc/block-styles.php:168 dist/js/editor/editor.js:4
 msgid "Bordered"
 msgstr "ボーダー"
 
-#: inc/block-styles.php:64 dist/js/editor/editor.js:4
+#: inc/block-styles.php:72 dist/js/editor/editor.js:4
 msgid "Stripe"
 msgstr "ストライプ"
 
-#: inc/block-styles.php:72
+#: inc/block-styles.php:80
 msgid "Block link"
 msgstr "ブロックリンク"
 
-#: inc/block-styles.php:80
+#: inc/block-styles.php:88
 msgid "Block link (Underline)"
 msgstr "ブロックリンク（アンダーライン）"
 
-#: inc/block-styles.php:88 inc/block-styles.php:104
+#: inc/block-styles.php:96 inc/block-styles.php:112
 msgid "Block link (Bordered)"
 msgstr "ブロックリンク（ボーダー）"
 
-#: inc/block-styles.php:96
+#: inc/block-styles.php:104
 msgid "Block link (Stripe)"
 msgstr "ブロックリンク（ストライプ）"
 
-#: inc/block-styles.php:120
+#: inc/block-styles.php:128
 msgid "unitone (Accordion)"
 msgstr "unitone（アコーディオン）"
 
-#: inc/block-styles.php:128
+#: inc/block-styles.php:136
 msgid "Cover"
 msgstr "カバー"
 
-#: inc/block-styles.php:144
+#: inc/block-styles.php:152
 msgid "Vertical fill"
 msgstr "縦塗りつぶし"
 
-#: inc/block-styles.php:152
+#: inc/block-styles.php:160
 msgid "Vertical line"
 msgstr "縦線"
 

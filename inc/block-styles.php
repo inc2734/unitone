@@ -18,6 +18,14 @@ function unitone_register_block_styles() {
 	);
 
 	register_block_style(
+		'core/list',
+		array(
+			'name'  => 'no-marker',
+			'label' => __( 'No marker', 'unitone' ),
+		)
+	);
+
+	register_block_style(
 		array( 'core/post-terms', 'core/tag-cloud' ),
 		array(
 			'name'  => 'badge',

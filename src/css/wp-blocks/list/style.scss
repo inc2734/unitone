@@ -5,3 +5,11 @@
 		margin-inline-start: 1.5rem;
 	}
 }
+
+:root :where(.wp-block-list.is-style-no-marker) {
+	list-style-type: none;
+
+	:where(li) {
+		margin-inline-start: 0;
+	}
+}

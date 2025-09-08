@@ -267,6 +267,11 @@ add_filter(
 			}
 		}
 
+		// -link-decoration
+		if ( $has_support( 'linkDecoration' ) ) {
+			$add_attribute( '-link-decoration', $get_attribute( 'linkDecoration' ) );
+		}
+
 		// -align-content
 		if ( $has_support( 'alignContent' ) ) {
 			$add_attribute( '-align-content', $get_attribute( 'alignContent' ) );

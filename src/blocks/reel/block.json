@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "21.0.0",
+	"version": "23.2.0",
 	"textdomain": "unitone",
 	"name": "unitone/reel",
 	"title": "Reel",
@@ -50,7 +50,8 @@
 		"unitone": {
 			"gap": true,
 			"fluidTypography": true,
-			"halfLeading": true
+			"halfLeading": true,
+			"linkDecoration": true
 		}
 	},
 	"example": {

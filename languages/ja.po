@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-08T04:22:44+00:00\n"
-"PO-Revision-Date: 2025-09-08 13:23+0900\n"
+"POT-Creation-Date: 2025-09-08T13:30:28+00:00\n"
+"PO-Revision-Date: 2025-09-08 22:31+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -37,13 +37,6 @@ msgstr "Takashi Kitajima"
 #: style.css
 msgid "https://2inc.org"
 msgstr "https://2inc.org"
-
-#. translators: Accessibility text. %s: Parent page title.
-#: App/Controller/Manager/dist/js/blocks/mega-menu/render.php:9
-#: dist/blocks/mega-menu/index.php:30
-#, php-format
-msgid "%s mega menu"
-msgstr "%sのメガメニュー"
 
 #: App/Controller/Manager/Manager.php:42 App/Controller/Manager/Manager.php:43
 #: App/Controller/Manager/dist/js/app.js:9
@@ -107,6 +100,12 @@ msgstr ""
 #: dist/blocks/decorator/index.js:1
 msgid "Learn more"
 msgstr "さらに詳しく"
+
+#. translators: Accessibility text. %s: Parent page title.
+#: dist/blocks/mega-menu/index.php:30
+#, php-format
+msgid "%s mega menu"
+msgstr "%sのメガメニュー"
 
 #: inc/block-categories.php:25 App/Controller/Manager/dist/js/app.js:7
 #: dist/js/editor/editor.js:7
@@ -3080,6 +3079,10 @@ msgid "Cut the background with text"
 msgstr "テキストで背景を切り取る"
 
 #: dist/js/editor/editor.js:4
+msgid "Link decoration"
+msgstr "リンクの装飾"
+
+#: dist/js/editor/editor.js:4
 msgid "Half leading"
 msgstr "ハーフレディング"
 
@@ -3734,598 +3737,6 @@ msgstr "はてなブックマークに追加"
 msgid "B! Bookmark"
 msgstr "B! ブックマーク"
 
-#: App/Controller/Manager/dist/js/blocks/accordion/block.json
-#: dist/blocks/accordion/block.json
-msgctxt "block title"
-msgid "Accordion"
-msgstr "アコーディオン"
-
-#: App/Controller/Manager/dist/js/blocks/accordion/block.json
-#: dist/blocks/accordion/block.json
-msgctxt "block description"
-msgid "This block displays folded content."
-msgstr "折り畳まれたコンテンツを表示するブロックです。"
-
-#: App/Controller/Manager/dist/js/blocks/accordion/block.json
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
-#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
-#: dist/blocks/tabs/block.json
-msgctxt "block style label"
-msgid "Default"
-msgstr "デフォルト"
-
-#: App/Controller/Manager/dist/js/blocks/accordion/block.json
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
-#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Box"
-msgstr "ボックス"
-
-#: App/Controller/Manager/dist/js/blocks/accordion/block.json
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
-#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Panel"
-msgstr "パネル"
-
-#: App/Controller/Manager/dist/js/blocks/both-sides-content/block.json
-msgctxt "block title"
-msgid "Both sides content"
-msgstr "両端のコンテンツ"
-
-#: App/Controller/Manager/dist/js/blocks/both-sides-content/block.json
-#: dist/blocks/both-sides-content/block.json
-msgctxt "block description"
-msgid "The content of the both-sides block."
-msgstr "両端ブロックのコンテンツです。"
-
-#: App/Controller/Manager/dist/js/blocks/both-sides/block.json
-#: dist/blocks/both-sides/block.json
-msgctxt "block title"
-msgid "Both sides"
-msgstr "両端"
-
-#: App/Controller/Manager/dist/js/blocks/both-sides/block.json
-#: dist/blocks/both-sides/block.json
-msgctxt "block description"
-msgid "This block aligns children on both sides."
-msgstr "子要素を両端に配置します。"
-
-#: App/Controller/Manager/dist/js/blocks/breadcrumbs/block.json
-#: dist/blocks/breadcrumbs/block.json
-msgctxt "block title"
-msgid "Breadcrumbs"
-msgstr "パンくずリスト"
-
-#: App/Controller/Manager/dist/js/blocks/breadcrumbs/block.json
-#: dist/blocks/breadcrumbs/block.json
-msgctxt "block description"
-msgid "This block indicates the current page location."
-msgstr "現在のページの位置を示します。"
-
-#: App/Controller/Manager/dist/js/blocks/center/block.json
-#: dist/blocks/center/block.json
-msgctxt "block title"
-msgid "Center"
-msgstr "センター"
-
-#: App/Controller/Manager/dist/js/blocks/center/block.json
-#: dist/blocks/center/block.json
-msgctxt "block description"
-msgid "This block centers the children."
-msgstr "子要素を中央揃えします。"
-
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
-#: dist/blocks/child-pages/block.json
-msgctxt "block title"
-msgid "Child pages"
-msgstr "子ページの一覧"
-
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
-#: dist/blocks/child-pages/block.json
-msgctxt "block description"
-msgid "This block displays child pages."
-msgstr "このブロックは子ページの一覧を表示します。"
-
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Cluster (Stripe)"
-msgstr "クラスター（区切り：ストライプ）"
-
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Cluster (Slash)"
-msgstr "クラスター（区切り：スラッシュ）"
-
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Stack (Stripe)"
-msgstr "スタック（区切り：ストライプ）"
-
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Rich media"
-msgstr "リッチメディア"
-
-#: App/Controller/Manager/dist/js/blocks/cluster-divided-content/block.json
-msgctxt "block title"
-msgid "Cluster (Divided) content"
-msgstr "クラスター（区切りあり）のコンテンツ"
-
-#: App/Controller/Manager/dist/js/blocks/cluster-divided-content/block.json
-#: dist/blocks/cluster-divided-content/block.json
-msgctxt "block description"
-msgid "This block places the content inside the cluster (Divided) block."
-msgstr ""
-"このブロックはクラスター（区切りあり）ブロックの中にコンテンツを配置します。"
-
-#: App/Controller/Manager/dist/js/blocks/cluster-divided/block.json
-#: dist/blocks/cluster-divided/block.json
-msgctxt "block title"
-msgid "Cluster (Divided)"
-msgstr "クラスター（区切りあり）"
-
-#: App/Controller/Manager/dist/js/blocks/cluster-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/cluster/block.json
-#: dist/blocks/cluster-divided/block.json dist/blocks/cluster/block.json
-msgctxt "block description"
-msgid "This block arranges children horizontally."
-msgstr "子要素を水平に並べます。"
-
-#: App/Controller/Manager/dist/js/blocks/cluster/block.json
-#: dist/blocks/cluster/block.json
-msgctxt "block title"
-msgid "Cluster"
-msgstr "クラスター"
-
-#: App/Controller/Manager/dist/js/blocks/container/block.json
-#: dist/blocks/container/block.json
-msgctxt "block title"
-msgid "Container"
-msgstr "コンテナー"
-
-#: App/Controller/Manager/dist/js/blocks/container/block.json
-#: dist/blocks/container/block.json
-msgctxt "block description"
-msgid ""
-"Keep the content area within a certain width, plus appropriate margins on "
-"the left and right."
-msgstr "コンテンツ領域を一定の幅に収め、さらに左右に適切な余白を確保します。"
-
-#: App/Controller/Manager/dist/js/blocks/cover-content/block.json
-msgctxt "block title"
-msgid "Cover content"
-msgstr "カバーコンテンツ"
-
-#: App/Controller/Manager/dist/js/blocks/cover-content/block.json
-#: dist/blocks/cover-content/block.json
-msgctxt "block description"
-msgid "This block places the content inside the cover block."
-msgstr "このブロックはカバーブロックの中にコンテンツを配置します。"
-
-#: App/Controller/Manager/dist/js/blocks/cover/block.json
-#: dist/blocks/cover/block.json
-msgctxt "block title"
-msgid "Cover"
-msgstr "カバー"
-
-#: App/Controller/Manager/dist/js/blocks/cover/block.json
-#: dist/blocks/cover/block.json
-msgctxt "block description"
-msgid ""
-"This block allows you to specify how the child blocks are placed vertically "
-"within a certain height. It is designed primarily to cover a large area of "
-"the screen (by default, the minimum height is the same height as the screen)."
-msgstr ""
-"一定の高さの中で子ブロックを垂直方向にどのように配置するかを指定できるブロッ"
-"クです。主に画面の広い範囲をカバーするようにデザインされています（デフォルト"
-"では最小の高さが画面と同じ高さになっています）。"
-
-#: App/Controller/Manager/dist/js/blocks/decorator/block.json
-#: dist/blocks/decorator/block.json
-msgctxt "block title"
-msgid "Decorator"
-msgstr "デコレーター"
-
-#: App/Controller/Manager/dist/js/blocks/decorator/block.json
-#: dist/blocks/decorator/block.json
-msgctxt "block description"
-msgid "Decorative block. Color, padding and position can be set."
-msgstr "装飾用ブロック。色、パディング、位置が設定できます。"
-
-#: App/Controller/Manager/dist/js/blocks/decorator/block.json
-#: dist/blocks/decorator/block.json
-msgctxt "block keyword"
-msgid "Box"
-msgstr "ボックス"
-
-#: App/Controller/Manager/dist/js/blocks/div/block.json
-#: dist/blocks/div/block.json
-msgctxt "block title"
-msgid "div"
-msgstr "div"
-
-#: App/Controller/Manager/dist/js/blocks/div/block.json
-#: dist/blocks/div/block.json
-msgctxt "block description"
-msgid "A simple div element without any decoration."
-msgstr "装飾されていないシンプルな div要素です。"
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided-content/block.json
-msgctxt "block title"
-msgid "Flex (Divided) content"
-msgstr "フレックス（区切りあり）のコンテンツ"
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided-content/block.json
-#: dist/blocks/flex-divided-content/block.json
-msgctxt "block description"
-msgid "This block places the content inside the flex (Divided) block."
-msgstr ""
-"このブロックはフレックス（区切りあり）ブロックの中にコンテンツを配置します。"
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: dist/blocks/flex-divided/block.json
-msgctxt "block title"
-msgid "Flex (Divided)"
-msgstr "フレックス（区切りあり）"
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
-msgctxt "block description"
-msgid "Child blocks can be layout in flex box."
-msgstr "子ブロックをフレックスボックス内にレイアウトできます。"
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
-msgctxt "block keyword"
-msgid "flex"
-msgstr "フレックス"
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
-msgctxt "block keyword"
-msgid "flex-box"
-msgstr "flex-box"
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
-msgctxt "block keyword"
-msgid "flexbox"
-msgstr "flexbox"
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: App/Controller/Manager/dist/js/blocks/grid-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/grid/block.json
-#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
-#: dist/blocks/grid-divided/block.json dist/blocks/grid/block.json
-msgctxt "block keyword"
-msgid "auto-layout"
-msgstr "auto-layout"
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: App/Controller/Manager/dist/js/blocks/grid-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/grid/block.json
-#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
-#: dist/blocks/grid-divided/block.json dist/blocks/grid/block.json
-msgctxt "block keyword"
-msgid "AutoLayout"
-msgstr "AutoLayout"
-
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: dist/blocks/flex/block.json
-msgctxt "block title"
-msgid "Flex"
-msgstr "フレックス"
-
-#: App/Controller/Manager/dist/js/blocks/frame/block.json
-#: dist/blocks/frame/block.json
-msgctxt "block title"
-msgid "Frame"
-msgstr "フレーム"
-
-#: App/Controller/Manager/dist/js/blocks/frame/block.json
-#: dist/blocks/frame/block.json
-msgctxt "block description"
-msgid "This block is used to fit the image into a fixed angle of view."
-msgstr "画像を一定の画角に収めるために使用されます。"
-
-#: App/Controller/Manager/dist/js/blocks/grid-divided-content/block.json
-msgctxt "block title"
-msgid "Grid (Divided) content"
-msgstr "グリッド（区切りあり）のコンテンツ"
-
-#: App/Controller/Manager/dist/js/blocks/grid-divided-content/block.json
-#: dist/blocks/grid-divided-content/block.json
-msgctxt "block description"
-msgid "This block places the content inside the grid (Divided) block."
-msgstr ""
-"このブロックはグリッド（区切りあり）ブロックの中にコンテンツを配置します。"
-
-#: App/Controller/Manager/dist/js/blocks/grid-divided/block.json
-#: dist/blocks/grid-divided/block.json
-msgctxt "block title"
-msgid "Grid (Divided)"
-msgstr "グリッド（区切りあり）"
-
-#: App/Controller/Manager/dist/js/blocks/grid-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/grid/block.json
-#: dist/blocks/grid-divided/block.json dist/blocks/grid/block.json
-msgctxt "block description"
-msgid "Child blocks can be layout in grid."
-msgstr "子ブロックをグリッド内にレイアウトできます。"
-
-#: App/Controller/Manager/dist/js/blocks/grid/block.json
-#: dist/blocks/grid/block.json
-msgctxt "block title"
-msgid "Grid"
-msgstr "グリッド"
-
-#: App/Controller/Manager/dist/js/blocks/gutters/block.json
-#: dist/blocks/gutters/block.json
-msgctxt "block title"
-msgid "Gutters"
-msgstr "ガター"
-
-#: App/Controller/Manager/dist/js/blocks/gutters/block.json
-#: dist/blocks/gutters/block.json
-msgctxt "block description"
-msgid "A block for separating content with top and bottom padding."
-msgstr "上下のパディングでコンテンツを区切るためのブロック。"
-
-#: App/Controller/Manager/dist/js/blocks/layer/block.json
-#: dist/blocks/layer/block.json
-msgctxt "block title"
-msgid "Layer"
-msgstr "レイヤー"
-
-#: App/Controller/Manager/dist/js/blocks/layer/block.json
-#: dist/blocks/layer/block.json
-msgctxt "block description"
-msgid ""
-"The layer of the layers block. If grid-row is deleted, the elements overlap "
-"completely."
-msgstr ""
-"レイヤーブロックのレイヤーです。grid-rowを削除すると、要素が完全に重なりま"
-"す。"
-
-#: App/Controller/Manager/dist/js/blocks/layers/block.json
-#: dist/blocks/layers/block.json
-msgctxt "block title"
-msgid "Layers"
-msgstr "レイヤー"
-
-#: App/Controller/Manager/dist/js/blocks/layers/block.json
-#: dist/blocks/layers/block.json
-msgctxt "block description"
-msgid "This block layers the children."
-msgstr "子要素を重ねます。"
-
-#: App/Controller/Manager/dist/js/blocks/mega-menu/block.json
-#: dist/blocks/mega-menu/block.json
-msgctxt "block title"
-msgid "Mega Menu"
-msgstr "メガメニュー"
-
-#: App/Controller/Manager/dist/js/blocks/mega-menu/block.json
-#: dist/blocks/mega-menu/block.json
-msgctxt "block description"
-msgid "Add a mega menu to your navigation."
-msgstr "ナビゲーションにメガメニューを追加します。"
-
-#: App/Controller/Manager/dist/js/blocks/pattern-inserter/block.json
-#: dist/blocks/pattern-inserter/block.json
-msgctxt "block title"
-msgid "Insert pattern (Beta)"
-msgstr "パターンを挿入（ベータ版）"
-
-#: App/Controller/Manager/dist/js/blocks/pattern-inserter/block.json
-#: dist/blocks/pattern-inserter/block.json
-msgctxt "block description"
-msgid ""
-"Insert a pattern (Only root). This block is beta version. This block may be "
-"significantly modified or discontinued in the future. In that case, however, "
-"the inserted patterns will not be affected."
-msgstr ""
-"パターンを挿入します（ルートのみ）。このブロックはベータ版です。今後、このブ"
-"ロックは大幅に変更されたり、廃止されたりする可能性があります。ただし、その場"
-"合でも挿入したパターンには影響がありません。"
-
-#: App/Controller/Manager/dist/js/blocks/reel/block.json
-#: dist/blocks/reel/block.json
-msgctxt "block title"
-msgid "Reel"
-msgstr "リール"
-
-#: App/Controller/Manager/dist/js/blocks/reel/block.json
-#: App/Controller/Manager/dist/js/blocks/slider/block.json
-#: dist/blocks/reel/block.json dist/blocks/slider/block.json
-msgctxt "block description"
-msgid "This block displays children scrolling horizontally."
-msgstr "子要素を水平スクロールして表示します。"
-
-#: App/Controller/Manager/dist/js/blocks/responsive-grid-divided-content/block.json
-msgctxt "block title"
-msgid "Responsive grid (Divided) content"
-msgstr "レスポンシブグリッド（区切りあり）のコンテンツ"
-
-#: App/Controller/Manager/dist/js/blocks/responsive-grid-divided-content/block.json
-#: dist/blocks/responsive-grid-divided-content/block.json
-msgctxt "block description"
-msgid ""
-"This block places the content inside the responsive grid (Divided) block."
-msgstr ""
-"このブロックはレスポンシブグリッド（区切りあり）ブロックの中にコンテンツを配"
-"置します。"
-
-#: App/Controller/Manager/dist/js/blocks/responsive-grid-divided/block.json
-#: dist/blocks/responsive-grid-divided/block.json
-msgctxt "block title"
-msgid "Responsive grid (Divided)"
-msgstr "レスポンシブグリッド（区切りあり）"
-
-#: App/Controller/Manager/dist/js/blocks/responsive-grid-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/responsive-grid/block.json
-#: dist/blocks/responsive-grid-divided/block.json
-#: dist/blocks/responsive-grid/block.json
-msgctxt "block description"
-msgid "This block generates a simple grid."
-msgstr "シンプルなグリッドを生成します。"
-
-#: App/Controller/Manager/dist/js/blocks/responsive-grid/block.json
-#: dist/blocks/responsive-grid/block.json
-msgctxt "block title"
-msgid "Responsive grid"
-msgstr "レスポンシブグリッド"
-
-#: App/Controller/Manager/dist/js/blocks/section/block.json
-#: dist/blocks/section/block.json
-msgctxt "block title"
-msgid "Section"
-msgstr "セクション"
-
-#: App/Controller/Manager/dist/js/blocks/section/block.json
-#: dist/blocks/section/block.json
-msgctxt "block description"
-msgid "This block represents a generic standalone section of a document."
-msgstr "このブロックはドキュメントの一般的な独立したセクションを表します。"
-
-#: App/Controller/Manager/dist/js/blocks/slide/block.json
-#: dist/blocks/slide/block.json
-msgctxt "block title"
-msgid "Slide"
-msgstr "スライド"
-
-#: App/Controller/Manager/dist/js/blocks/slider/block.json
-#: dist/blocks/slider/block.json
-msgctxt "block title"
-msgid "Slider"
-msgstr "スライダー"
-
-#: App/Controller/Manager/dist/js/blocks/stack-divided-content/block.json
-msgctxt "block title"
-msgid "Stack (Divided) content"
-msgstr "スタック（区切りあり）のコンテンツ"
-
-#: App/Controller/Manager/dist/js/blocks/stack-divided-content/block.json
-#: dist/blocks/stack-divided-content/block.json
-msgctxt "block description"
-msgid "This block places the content inside the stack (Divided) block."
-msgstr ""
-"このブロックはスタック（区切りあり）ブロックの中にコンテンツを配置します。"
-
-#: App/Controller/Manager/dist/js/blocks/stack-divided/block.json
-#: dist/blocks/stack-divided/block.json
-msgctxt "block title"
-msgid "Stack (Divided)"
-msgstr "スタック（区切りあり）"
-
-#: App/Controller/Manager/dist/js/blocks/stack-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/stack/block.json
-#: dist/blocks/stack-divided/block.json dist/blocks/stack/block.json
-msgctxt "block description"
-msgid "This block is used to arrange children vertically at regular intervals."
-msgstr "子要素を一定間隔で縦に並べます。"
-
-#: App/Controller/Manager/dist/js/blocks/stack/block.json
-#: dist/blocks/stack/block.json
-msgctxt "block title"
-msgid "Stack"
-msgstr "スタック"
-
-#: App/Controller/Manager/dist/js/blocks/switcher/block.json
-#: dist/blocks/switcher/block.json
-msgctxt "block title"
-msgid "Switcher"
-msgstr "スイッチャー"
-
-#: App/Controller/Manager/dist/js/blocks/switcher/block.json
-#: dist/blocks/switcher/block.json
-msgctxt "block description"
-msgid ""
-"This block switches the direction of contents flow depending on its contents."
-msgstr "内容によってコンテンツの流れる方向が切り替わります。"
-
-#: App/Controller/Manager/dist/js/blocks/text/block.json
-#: dist/blocks/text/block.json
-msgctxt "block title"
-msgid "Text"
-msgstr "テキスト"
-
-#: App/Controller/Manager/dist/js/blocks/text/block.json
-#: dist/blocks/text/block.json
-msgctxt "block description"
-msgid "This block is designed to display easy-to-read text."
-msgstr "読みやすいテキストを表示するためにデザインされています。"
-
-#: App/Controller/Manager/dist/js/blocks/texture/block.json
-#: dist/blocks/texture/block.json
-msgctxt "block title"
-msgid "Texture"
-msgstr "テクスチャー"
-
-#: App/Controller/Manager/dist/js/blocks/texture/block.json
-#: dist/blocks/texture/block.json
-msgctxt "block description"
-msgid "Display texture."
-msgstr "テクスチャーを表示します。"
-
-#: App/Controller/Manager/dist/js/blocks/texture/block.json
-#: dist/blocks/texture/block.json
-msgctxt "block keyword"
-msgid "Texture"
-msgstr "テクスチャー"
-
-#: App/Controller/Manager/dist/js/blocks/vertical-writing/block.json
-#: dist/blocks/vertical-writing/block.json
-msgctxt "block title"
-msgid "Vertical writing (Beta)"
-msgstr "縦書き（ベータ版）"
-
-#: App/Controller/Manager/dist/js/blocks/vertical-writing/block.json
-#: dist/blocks/vertical-writing/block.json
-msgctxt "block description"
-msgid ""
-"This block is used to place vertically written text. This block is a beta "
-"version. In the future, disruptive changes may be made or the block may "
-"become obsolete."
-msgstr ""
-"縦書きの文字を配置するためのブロックです。このブロックはベータ版です。将来、"
-"破壊的な変更が加えられたり、廃止されたりする可能性があります。"
-
-#: App/Controller/Manager/dist/js/blocks/with-sidebar-content/block.json
-msgctxt "block title"
-msgid "With sidebar content"
-msgstr "サイドバーのコンテンツ"
-
-#: App/Controller/Manager/dist/js/blocks/with-sidebar-content/block.json
-#: dist/blocks/with-sidebar-content/block.json
-msgctxt "block description"
-msgid "The content of the with sidebar block."
-msgstr "サイドバーブロックのコンテンツです。"
-
-#: App/Controller/Manager/dist/js/blocks/with-sidebar/block.json
-#: dist/blocks/with-sidebar/block.json
-msgctxt "block title"
-msgid "With sidebar"
-msgstr "サイドバー"
-
-#: App/Controller/Manager/dist/js/blocks/with-sidebar/block.json
-#: dist/blocks/with-sidebar-divided/block.json
-#: dist/blocks/with-sidebar/block.json
-msgctxt "block description"
-msgid "This block is used to assemble components with sidebars."
-msgstr "サイドバー付きのコンポーネントを組み立てます。"
-
 #: dist/blocks/abstract-background/block.json
 msgctxt "block title"
 msgid "Abstract background"
@@ -4335,6 +3746,32 @@ msgstr "アブストラクト背景"
 msgctxt "block description"
 msgid "Displays a frame using an abstract background image."
 msgstr "抽象的な背景画像を使用したフレームを表示します。"
+
+#: dist/blocks/accordion/block.json
+msgctxt "block title"
+msgid "Accordion"
+msgstr "アコーディオン"
+
+#: dist/blocks/accordion/block.json
+msgctxt "block description"
+msgid "This block displays folded content."
+msgstr "折り畳まれたコンテンツを表示するブロックです。"
+
+#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
+#: dist/blocks/tabs/block.json
+msgctxt "block style label"
+msgid "Default"
+msgstr "デフォルト"
+
+#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Box"
+msgstr "ボックス"
+
+#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Panel"
+msgstr "パネル"
 
 #: dist/blocks/both-sides-content/block.json
 #: dist/blocks/cluster-divided-content/block.json
@@ -4349,6 +3786,263 @@ msgctxt "block title"
 msgid "Content"
 msgstr "コンテンツ"
 
+#: dist/blocks/both-sides-content/block.json
+msgctxt "block description"
+msgid "The content of the both-sides block."
+msgstr "両端ブロックのコンテンツです。"
+
+#: dist/blocks/both-sides/block.json
+msgctxt "block title"
+msgid "Both sides"
+msgstr "両端"
+
+#: dist/blocks/both-sides/block.json
+msgctxt "block description"
+msgid "This block aligns children on both sides."
+msgstr "子要素を両端に配置します。"
+
+#: dist/blocks/breadcrumbs/block.json
+msgctxt "block title"
+msgid "Breadcrumbs"
+msgstr "パンくずリスト"
+
+#: dist/blocks/breadcrumbs/block.json
+msgctxt "block description"
+msgid "This block indicates the current page location."
+msgstr "現在のページの位置を示します。"
+
+#: dist/blocks/center/block.json
+msgctxt "block title"
+msgid "Center"
+msgstr "センター"
+
+#: dist/blocks/center/block.json
+msgctxt "block description"
+msgid "This block centers the children."
+msgstr "子要素を中央揃えします。"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block title"
+msgid "Child pages"
+msgstr "子ページの一覧"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block description"
+msgid "This block displays child pages."
+msgstr "このブロックは子ページの一覧を表示します。"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Cluster (Stripe)"
+msgstr "クラスター（区切り：ストライプ）"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Cluster (Slash)"
+msgstr "クラスター（区切り：スラッシュ）"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Stack (Stripe)"
+msgstr "スタック（区切り：ストライプ）"
+
+#: dist/blocks/child-pages/block.json
+msgctxt "block style label"
+msgid "Rich media"
+msgstr "リッチメディア"
+
+#: dist/blocks/cluster-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the cluster (Divided) block."
+msgstr ""
+"このブロックはクラスター（区切りあり）ブロックの中にコンテンツを配置します。"
+
+#: dist/blocks/cluster-divided/block.json
+msgctxt "block title"
+msgid "Cluster (Divided)"
+msgstr "クラスター（区切りあり）"
+
+#: dist/blocks/cluster-divided/block.json dist/blocks/cluster/block.json
+msgctxt "block description"
+msgid "This block arranges children horizontally."
+msgstr "子要素を水平に並べます。"
+
+#: dist/blocks/cluster/block.json
+msgctxt "block title"
+msgid "Cluster"
+msgstr "クラスター"
+
+#: dist/blocks/container/block.json
+msgctxt "block title"
+msgid "Container"
+msgstr "コンテナー"
+
+#: dist/blocks/container/block.json
+msgctxt "block description"
+msgid ""
+"Keep the content area within a certain width, plus appropriate margins on "
+"the left and right."
+msgstr "コンテンツ領域を一定の幅に収め、さらに左右に適切な余白を確保します。"
+
+#: dist/blocks/cover-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the cover block."
+msgstr "このブロックはカバーブロックの中にコンテンツを配置します。"
+
+#: dist/blocks/cover/block.json
+msgctxt "block title"
+msgid "Cover"
+msgstr "カバー"
+
+#: dist/blocks/cover/block.json
+msgctxt "block description"
+msgid ""
+"This block allows you to specify how the child blocks are placed vertically "
+"within a certain height. It is designed primarily to cover a large area of "
+"the screen (by default, the minimum height is the same height as the screen)."
+msgstr ""
+"一定の高さの中で子ブロックを垂直方向にどのように配置するかを指定できるブロッ"
+"クです。主に画面の広い範囲をカバーするようにデザインされています（デフォルト"
+"では最小の高さが画面と同じ高さになっています）。"
+
+#: dist/blocks/decorator/block.json
+msgctxt "block title"
+msgid "Decorator"
+msgstr "デコレーター"
+
+#: dist/blocks/decorator/block.json
+msgctxt "block description"
+msgid "Decorative block. Color, padding and position can be set."
+msgstr "装飾用ブロック。色、パディング、位置が設定できます。"
+
+#: dist/blocks/decorator/block.json
+msgctxt "block keyword"
+msgid "Box"
+msgstr "ボックス"
+
+#: dist/blocks/div/block.json
+msgctxt "block title"
+msgid "div"
+msgstr "div"
+
+#: dist/blocks/div/block.json
+msgctxt "block description"
+msgid "A simple div element without any decoration."
+msgstr "装飾されていないシンプルな div要素です。"
+
+#: dist/blocks/flex-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the flex (Divided) block."
+msgstr ""
+"このブロックはフレックス（区切りあり）ブロックの中にコンテンツを配置します。"
+
+#: dist/blocks/flex-divided/block.json
+msgctxt "block title"
+msgid "Flex (Divided)"
+msgstr "フレックス（区切りあり）"
+
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
+msgctxt "block description"
+msgid "Child blocks can be layout in flex box."
+msgstr "子ブロックをフレックスボックス内にレイアウトできます。"
+
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "flex"
+msgstr "フレックス"
+
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "flex-box"
+msgstr "flex-box"
+
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "flexbox"
+msgstr "flexbox"
+
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
+#: dist/blocks/grid-divided/block.json dist/blocks/grid/block.json
+msgctxt "block keyword"
+msgid "auto-layout"
+msgstr "auto-layout"
+
+#: dist/blocks/flex-divided/block.json dist/blocks/flex/block.json
+#: dist/blocks/grid-divided/block.json dist/blocks/grid/block.json
+msgctxt "block keyword"
+msgid "AutoLayout"
+msgstr "AutoLayout"
+
+#: dist/blocks/flex/block.json
+msgctxt "block title"
+msgid "Flex"
+msgstr "フレックス"
+
+#: dist/blocks/frame/block.json
+msgctxt "block title"
+msgid "Frame"
+msgstr "フレーム"
+
+#: dist/blocks/frame/block.json
+msgctxt "block description"
+msgid "This block is used to fit the image into a fixed angle of view."
+msgstr "画像を一定の画角に収めるために使用されます。"
+
+#: dist/blocks/grid-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the grid (Divided) block."
+msgstr ""
+"このブロックはグリッド（区切りあり）ブロックの中にコンテンツを配置します。"
+
+#: dist/blocks/grid-divided/block.json
+msgctxt "block title"
+msgid "Grid (Divided)"
+msgstr "グリッド（区切りあり）"
+
+#: dist/blocks/grid-divided/block.json dist/blocks/grid/block.json
+msgctxt "block description"
+msgid "Child blocks can be layout in grid."
+msgstr "子ブロックをグリッド内にレイアウトできます。"
+
+#: dist/blocks/grid/block.json
+msgctxt "block title"
+msgid "Grid"
+msgstr "グリッド"
+
+#: dist/blocks/gutters/block.json
+msgctxt "block title"
+msgid "Gutters"
+msgstr "ガター"
+
+#: dist/blocks/gutters/block.json
+msgctxt "block description"
+msgid "A block for separating content with top and bottom padding."
+msgstr "上下のパディングでコンテンツを区切るためのブロック。"
+
+#: dist/blocks/layer/block.json
+msgctxt "block title"
+msgid "Layer"
+msgstr "レイヤー"
+
+#: dist/blocks/layer/block.json
+msgctxt "block description"
+msgid ""
+"The layer of the layers block. If grid-row is deleted, the elements overlap "
+"completely."
+msgstr ""
+"レイヤーブロックのレイヤーです。grid-rowを削除すると、要素が完全に重なりま"
+"す。"
+
+#: dist/blocks/layers/block.json
+msgctxt "block title"
+msgid "Layers"
+msgstr "レイヤー"
+
+#: dist/blocks/layers/block.json
+msgctxt "block description"
+msgid "This block layers the children."
+msgstr "子要素を重ねます。"
+
 #: dist/blocks/masonry/block.json
 msgctxt "block title"
 msgid "Masonry"
@@ -4358,6 +4052,66 @@ msgstr "メイソンリー"
 msgctxt "block description"
 msgid "Elements of different sizes are laid out without gaps."
 msgstr "異なるサイズの要素が隙間なくレイアウトされます。"
+
+#: dist/blocks/mega-menu/block.json
+msgctxt "block title"
+msgid "Mega Menu"
+msgstr "メガメニュー"
+
+#: dist/blocks/mega-menu/block.json
+msgctxt "block description"
+msgid "Add a mega menu to your navigation."
+msgstr "ナビゲーションにメガメニューを追加します。"
+
+#: dist/blocks/pattern-inserter/block.json
+msgctxt "block title"
+msgid "Insert pattern (Beta)"
+msgstr "パターンを挿入（ベータ版）"
+
+#: dist/blocks/pattern-inserter/block.json
+msgctxt "block description"
+msgid ""
+"Insert a pattern (Only root). This block is beta version. This block may be "
+"significantly modified or discontinued in the future. In that case, however, "
+"the inserted patterns will not be affected."
+msgstr ""
+"パターンを挿入します（ルートのみ）。このブロックはベータ版です。今後、このブ"
+"ロックは大幅に変更されたり、廃止されたりする可能性があります。ただし、その場"
+"合でも挿入したパターンには影響がありません。"
+
+#: dist/blocks/reel/block.json
+msgctxt "block title"
+msgid "Reel"
+msgstr "リール"
+
+#: dist/blocks/reel/block.json dist/blocks/slider/block.json
+msgctxt "block description"
+msgid "This block displays children scrolling horizontally."
+msgstr "子要素を水平スクロールして表示します。"
+
+#: dist/blocks/responsive-grid-divided-content/block.json
+msgctxt "block description"
+msgid ""
+"This block places the content inside the responsive grid (Divided) block."
+msgstr ""
+"このブロックはレスポンシブグリッド（区切りあり）ブロックの中にコンテンツを配"
+"置します。"
+
+#: dist/blocks/responsive-grid-divided/block.json
+msgctxt "block title"
+msgid "Responsive grid (Divided)"
+msgstr "レスポンシブグリッド（区切りあり）"
+
+#: dist/blocks/responsive-grid-divided/block.json
+#: dist/blocks/responsive-grid/block.json
+msgctxt "block description"
+msgid "This block generates a simple grid."
+msgstr "シンプルなグリッドを生成します。"
+
+#: dist/blocks/responsive-grid/block.json
+msgctxt "block title"
+msgid "Responsive grid"
+msgstr "レスポンシブグリッド"
 
 #: dist/blocks/responsive-switcher-container/block.json
 msgctxt "block title"
@@ -4382,6 +4136,58 @@ msgstr "レスポンシブスイッチャー"
 msgctxt "block description"
 msgid "Switch between desktop and mobile contents."
 msgstr "デスクトップとモバイルのコンテンツを切り替えます。"
+
+#: dist/blocks/section/block.json
+msgctxt "block title"
+msgid "Section"
+msgstr "セクション"
+
+#: dist/blocks/section/block.json
+msgctxt "block description"
+msgid "This block represents a generic standalone section of a document."
+msgstr "このブロックはドキュメントの一般的な独立したセクションを表します。"
+
+#: dist/blocks/slide/block.json
+msgctxt "block title"
+msgid "Slide"
+msgstr "スライド"
+
+#: dist/blocks/slider/block.json
+msgctxt "block title"
+msgid "Slider"
+msgstr "スライダー"
+
+#: dist/blocks/stack-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the stack (Divided) block."
+msgstr ""
+"このブロックはスタック（区切りあり）ブロックの中にコンテンツを配置します。"
+
+#: dist/blocks/stack-divided/block.json
+msgctxt "block title"
+msgid "Stack (Divided)"
+msgstr "スタック（区切りあり）"
+
+#: dist/blocks/stack-divided/block.json dist/blocks/stack/block.json
+msgctxt "block description"
+msgid "This block is used to arrange children vertically at regular intervals."
+msgstr "子要素を一定間隔で縦に並べます。"
+
+#: dist/blocks/stack/block.json
+msgctxt "block title"
+msgid "Stack"
+msgstr "スタック"
+
+#: dist/blocks/switcher/block.json
+msgctxt "block title"
+msgid "Switcher"
+msgstr "スイッチャー"
+
+#: dist/blocks/switcher/block.json
+msgctxt "block description"
+msgid ""
+"This block switches the direction of contents flow depending on its contents."
+msgstr "内容によってコンテンツの流れる方向が切り替わります。"
 
 #: dist/blocks/tab-panel/block.json
 msgctxt "block title"
@@ -4413,6 +4219,31 @@ msgctxt "block style label"
 msgid "Bar"
 msgstr "バー"
 
+#: dist/blocks/text/block.json
+msgctxt "block title"
+msgid "Text"
+msgstr "テキスト"
+
+#: dist/blocks/text/block.json
+msgctxt "block description"
+msgid "This block is designed to display easy-to-read text."
+msgstr "読みやすいテキストを表示するためにデザインされています。"
+
+#: dist/blocks/texture/block.json
+msgctxt "block title"
+msgid "Texture"
+msgstr "テクスチャー"
+
+#: dist/blocks/texture/block.json
+msgctxt "block description"
+msgid "Display texture."
+msgstr "テクスチャーを表示します。"
+
+#: dist/blocks/texture/block.json
+msgctxt "block keyword"
+msgid "Texture"
+msgstr "テクスチャー"
+
 #: dist/blocks/timeline-dots-column/block.json
 msgctxt "block description"
 msgid "This block displays a content of the timeline item."
@@ -4438,10 +4269,41 @@ msgctxt "block description"
 msgid "This block can display a timeline."
 msgstr "タイムラインを表示することができるブロックです。"
 
+#: dist/blocks/vertical-writing/block.json
+msgctxt "block title"
+msgid "Vertical writing (Beta)"
+msgstr "縦書き（ベータ版）"
+
+#: dist/blocks/vertical-writing/block.json
+msgctxt "block description"
+msgid ""
+"This block is used to place vertically written text. This block is a beta "
+"version. In the future, disruptive changes may be made or the block may "
+"become obsolete."
+msgstr ""
+"縦書きの文字を配置するためのブロックです。このブロックはベータ版です。将来、"
+"破壊的な変更が加えられたり、廃止されたりする可能性があります。"
+
+#: dist/blocks/with-sidebar-content/block.json
+msgctxt "block description"
+msgid "The content of the with sidebar block."
+msgstr "サイドバーブロックのコンテンツです。"
+
 #: dist/blocks/with-sidebar-divided/block.json
 msgctxt "block title"
 msgid "With sidebar (Divided)"
 msgstr "サイドバー（区切りあり）"
+
+#: dist/blocks/with-sidebar-divided/block.json
+#: dist/blocks/with-sidebar/block.json
+msgctxt "block description"
+msgid "This block is used to assemble components with sidebars."
+msgstr "サイドバー付きのコンポーネントを組み立てます。"
+
+#: dist/blocks/with-sidebar/block.json
+msgctxt "block title"
+msgid "With sidebar"
+msgstr "サイドバー"
 
 #: theme.json
 msgctxt "Gradient name"
@@ -5061,6 +4923,3 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
-
-#~ msgid "Edit template"
-#~ msgstr "テンプレートを編集"

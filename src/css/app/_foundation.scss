@@ -97,6 +97,12 @@ legend {
 	padding-left: var(--unitone--s-2);
 }
 
+[data-unitone-layout*="-link-decoration\:"] {
+	a:where(:not(.wp-element-button)) {
+		text-decoration-line: var(--unitone--link-decoration)
+	}
+}
+
 $justify-self-values: (
 	start: start,
 	end: end,

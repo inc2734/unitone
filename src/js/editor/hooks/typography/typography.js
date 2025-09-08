@@ -49,11 +49,22 @@ import {
 	withBackgroundClipBlockProps,
 } from './background-clip';
 
+import {
+	isLinkDecorationSupportDisabled,
+	getLinkDecorationEditLabel,
+	hasLinkDecorationValue,
+	resetLinkDecorationFilter,
+	resetLinkDecoration,
+	LinkDecorationEdit,
+	withLinkDecorationBlockProps,
+} from './link-decoration';
+
 export const withTypographyBlockProps = compose(
 	withAutoPhraseBlockProps,
 	withFluidTypographyBlockProps,
 	withHalfLeadingBlockProps,
-	withBackgroundClipBlockProps
+	withBackgroundClipBlockProps,
+	withLinkDecorationBlockProps
 );
 
 export const resetTypography = ( props ) => {
@@ -62,6 +73,7 @@ export const resetTypography = ( props ) => {
 		[ isFluidTypographySupportDisabled, resetFluidTypographyFilter ],
 		[ isHalfLeadingSupportDisabled, resetHalfLeadingFilter ],
 		[ isBackgroundClipSupportDisabled, resetBackgroundClipFilter ],
+		[ isLinkDecorationSupportDisabled, resetLinkDecorationFilter ],
 	];
 
 	const unitone = filters.reduce(
@@ -87,12 +99,16 @@ function TypographyPanelPure( props ) {
 	const isBackgroundClipDisabled = isBackgroundClipSupportDisabled( {
 		name,
 	} );
+	const isLinkDecorationDisabled = isLinkDecorationSupportDisabled( {
+		name,
+	} );
 
 	if (
 		isAutoPhraseDisabled &&
 		isFluidTypographyDisabled &&
 		isHalfLeadingDisabled &&
-		isBackgroundClipDisabled
+		isBackgroundClipDisabled &&
+		isLinkDecorationDisabled
 	) {
 		return null;
 	}
@@ -109,7 +125,8 @@ function TypographyPanelPure( props ) {
 								resetAutoPhraseFilter(),
 								resetFluidTypographyFilter(),
 								resetHalfLeadingFilter(),
-								resetBackgroundClipFilter()
+								resetBackgroundClipFilter(),
+								resetLinkDecorationFilter()
 							)
 						),
 					} );
@@ -193,6 +210,25 @@ function TypographyPanelPure( props ) {
 								'This can be set when a background image or background gradient is set for this block.',
 								'unitone'
 							) }
+						/>
+					</ToolsPanelItem>
+				) }
+
+				{ ! isLinkDecorationDisabled && (
+					<ToolsPanelItem
+						hasValue={ () =>
+							hasLinkDecorationValue( { ...props } )
+						}
+						label={ getLinkDecorationEditLabel( { ...props } ) }
+						onDeselect={ () => resetLinkDecoration( { ...props } ) }
+						isShownByDefault={ false }
+						panelId={ clientId }
+					>
+						<LinkDecorationEdit
+							{ ...props }
+							label={ getLinkDecorationEditLabel( {
+								...props,
+							} ) }
 						/>
 					</ToolsPanelItem>
 				) }

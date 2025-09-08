@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "23.1.2",
+	"version": "23.2.0",
 	"textdomain": "unitone",
 	"name": "unitone/flex-divided",
 	"title": "Flex (Divided)",
@@ -73,7 +73,8 @@
 			"dividerType": [ "stripe", "slash", "bordered" ],
 			"divider": true,
 			"fluidTypography": true,
-			"halfLeading": true
+			"halfLeading": true,
+			"linkDecoration": true
 		}
 	},
 	"example": {

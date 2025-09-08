@@ -91,6 +91,40 @@ function unitone_add_half_leading_support( $metadata ) {
 }
 add_filter( 'block_type_metadata', 'unitone_add_half_leading_support' );
 
+
+/**
+ * Add support "linkDecoration" to core blocks with typography.textDecoration.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_link_decoration_support( $metadata ) {
+	if ( false === strpos( $metadata['name'], 'core/' ) ) {
+		return $metadata;
+	}
+
+	if (
+		empty( $metadata['supports']['typography']['textDecoration'] ) &&
+		empty( $metadata['supports']['typography']['__experimentalTextDecoration'] )
+	) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'linkDecoration' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_link_decoration_support' );
+
 /**
  * Add support "gap" to core/list, core/navigation, core/post-content,  core/post-template and core/social-links.
  *

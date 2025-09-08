@@ -11,5 +11,9 @@
 
 	:where(li) {
 		margin-inline-start: 0;
+
+		> :where(.wp-block-list) {
+			margin-inline-start: 1.5rem;
+		}
 	}
 }

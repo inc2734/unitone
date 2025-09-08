@@ -92,7 +92,7 @@ function unitone_add_half_leading_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_half_leading_support' );
 
 /**
- * Add support "gap" to core/navigation, core/post-content,  core/post-template and core/social-links.
+ * Add support "gap" to core/list, core/navigation, core/post-content,  core/post-template and core/social-links.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
@@ -124,6 +124,37 @@ function unitone_add_gap_support( $metadata ) {
 	return $metadata;
 }
 add_filter( 'block_type_metadata', 'unitone_add_gap_support' );
+
+/**
+ * Add supports to core/list.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_divider_support( $metadata ) {
+	$target = array(
+		'core/list',
+	);
+
+	if ( ! in_array( $metadata['name'], $target, true ) ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'divider'     => true,
+					'dividerType' => array( 'stripe', 'underline', 'bordered', 'divide' ),
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_divider_support' );
 
 /**
  * Add supports to core/navigation.

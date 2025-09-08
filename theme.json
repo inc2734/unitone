@@ -373,6 +373,11 @@
 			]
 		},
 		"blocks": {
+			"core/list": {
+				"spacing": {
+					"blockGap": false
+				}
+			},
 			"core/navigation": {
 				"spacing": {
 					"blockGap": false

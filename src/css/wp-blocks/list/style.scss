@@ -1,8 +1,22 @@
 .wp-block-list {
+	--unitone--gap: 0px;
+
 	padding-inline-start: 0;
 
 	:where(li) {
 		margin-inline-start: 1.5rem;
+	}
+
+	> * + * {
+		margin-block-start: var(--unitone--gap);
+	}
+
+	:where(.wp-block-list) {
+		margin-block-start: var(--unitone--gap);
+
+		&:where(:not([data-unitone-layout*="-gap\:"])) {
+			--unitone--gap: inherit;
+		}
 	}
 }
 
@@ -11,9 +25,9 @@
 
 	:where(li) {
 		margin-inline-start: 0;
+	}
 
-		> :where(.wp-block-list) {
-			margin-inline-start: 1.5rem;
-		}
+	:where(.wp-block-list) {
+		margin-inline-start: 1.5rem;
 	}
 }

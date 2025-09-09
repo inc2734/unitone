@@ -1,9 +1,11 @@
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 
 if ( defaultConfig?.plugins ) {
-	const plugins = [ ...defaultConfig.plugins ];
+	if ('clean' in defaultConfig?.output) {
+		delete defaultConfig.output.clean; //delete output.clean
+	}
 
-	// plugins.splice(1, 1); //delete plugins.CleanWebpackPlugin
+	const plugins = [ ...defaultConfig?.plugins ];
 	plugins.splice(2, 1); //delete plugins.CopyWebpackPlugin
 
 	module.exports = {

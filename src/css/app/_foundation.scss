@@ -99,7 +99,21 @@ legend {
 
 [data-unitone-layout*="-link-decoration\:"] {
 	a:where(:not(.wp-element-button)) {
-		text-decoration-line: var(--unitone--link-decoration)
+		text-decoration-line: var(--unitone--link-decoration);
+	}
+}
+
+[data-unitone-layout~="-link-decoration\:none"] {
+	a:where(:not(.wp-element-button)) {
+		&:where(:focus-visible) {
+			text-decoration-line: underline;
+		}
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				text-decoration-line: underline;
+			}
+		}
 	}
 }
 

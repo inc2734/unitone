@@ -24,6 +24,7 @@
 	--unitone--divider-width: 1px;
 	--unitone--divider-style: solid;
 	--unitone--divider-color: var(--wp--preset--color--unitone-light-gray);
+	--unitone--gap: var(--unitone--s-2);
 	--unitone--indent: 1em;
 
 	list-style-type: none;
@@ -172,7 +173,7 @@
 	> * {
 		padding:
 			var(--unitone--gap)
-			calc(var(--unitone--gap) + var(--unitone--divider-width))
+			calc(var(--unitone--indent) + var(--unitone--divider-width))
 			calc(var(--unitone--gap) + var(--unitone--divider-width));
 
 		&::before {
@@ -221,17 +222,17 @@
 	}
 
 	> * li {
-		margin-inline: calc(var(--unitone--gap) * -1);
-		padding-inline: var(--unitone--gap);
+		margin-inline: calc(var(--unitone--indent) * -1);
+		padding-inline: var(--unitone--indent);
 	}
 
 	> * li li {
-		padding-inline-start: calc(var(--unitone--gap) * 2);
+		padding-inline-start: calc(var(--unitone--indent) * 2);
 	}
 
 	> * li li li {
-		margin-inline-start: calc(var(--unitone--gap) * -2);
-		padding-inline-start: calc(var(--unitone--gap) * 3);
+		margin-inline-start: calc(var(--unitone--indent) * -2);
+		padding-inline-start: calc(var(--unitone--indent) * 3);
 	}
 }
 

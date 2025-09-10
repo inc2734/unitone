@@ -74,46 +74,6 @@ function unitone_register_block_styles() {
 	);
 
 	register_block_style(
-		'core/query',
-		array(
-			'name'  => 'block-link',
-			'label' => __( 'Block link', 'unitone' ),
-		)
-	);
-
-	register_block_style(
-		'core/query',
-		array(
-			'name'  => 'block-link-underline',
-			'label' => __( 'Block link (Underline)', 'unitone' ),
-		)
-	);
-
-	register_block_style(
-		'core/query',
-		array(
-			'name'  => 'block-link-bordered',
-			'label' => __( 'Block link (Bordered)', 'unitone' ),
-		)
-	);
-
-	register_block_style(
-		'core/query',
-		array(
-			'name'  => 'block-link-stripe',
-			'label' => __( 'Block link (Stripe)', 'unitone' ),
-		)
-	);
-
-	register_block_style(
-		'core/template-part/header',
-		array(
-			'name'  => 'block-link-bordered',
-			'label' => __( 'Block link (Bordered)', 'unitone' ),
-		)
-	);
-
-	register_block_style(
 		'core/navigation',
 		array(
 			'name'  => 'unitone',

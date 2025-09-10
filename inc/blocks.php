@@ -456,18 +456,33 @@ add_filter(
  */
 function unitone_apply_block_link( $block_content, $block ) {
 	$attrs      = $block['attrs'] ?? array();
+	$block_link = $attrs['unitone']['blockLink'] ?? false;
 	$class_name = $attrs['className'] ?? false;
-	if ( ! $class_name || ( false === strpos( $class_name, 'is-style-block-link' ) ) ) {
+	if ( ! $block_link && ( ! $class_name || ( false === strpos( $class_name, 'is-style-block-link' ) ) ) ) {
 		return $block_content;
 	}
+
+	$p = new \WP_HTML_Tag_Processor( $block_content );
+	$p->next_tag();
+	$p->set_attribute(
+		'data-unitone-layout',
+		implode(
+			' ',
+			array_filter(
+				array(
+					$p->get_attribute( 'data-unitone-layout' ),
+					'-block-link',
+				)
+			)
+		)
+	);
+	$block_content = $p->get_updated_html();
 
 	$is_outer_link = apply_filters( 'unitone_is_outer_block_link', false, $block_content, $block );
 	if ( ! $is_outer_link ) {
 		return $block_content;
 	}
 
-	$p = new \WP_HTML_Tag_Processor( $block_content );
-	$p->next_tag();
 	$p->set_attribute(
 		'data-unitone-layout',
 		implode(

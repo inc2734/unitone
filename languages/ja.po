@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-08T13:30:28+00:00\n"
-"PO-Revision-Date: 2025-09-08 22:31+0900\n"
+"POT-Creation-Date: 2025-09-10T00:40:51+00:00\n"
+"PO-Revision-Date: 2025-09-10 09:41+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: inc/block-categories.php:44 inc/block-categories.php:55
 #: inc/block-styles.php:120 dist/js/editor/editor.js:16
 msgid "unitone"
-msgstr "[unitone] Dark"
+msgstr "unitone"
 
 #. Theme URI of the theme
 #: style.css
@@ -3554,6 +3554,10 @@ msgstr "オーバーレイメニューにテンプレートパーツを使用す
 #: dist/js/editor/editor.js:16
 msgid "Template part to use"
 msgstr "使用するテンプレートパーツ"
+
+#: dist/js/editor/editor.js:16
+msgid "Use block links"
+msgstr "ブロックリンクを使用する"
 
 #: dist/js/editor/editor.js:16
 msgid "Cell Min Width"

@@ -196,9 +196,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
  * Block link with Query block.
  */
 document.addEventListener( 'DOMContentLoaded', () => {
-	const blockPosts = document.querySelectorAll(
-		'.wp-block-query[class*="is-style-block-link"] .wp-block-post'
-	);
+	const selectors = [
+		'.wp-block-query[data-unitone-layout~="-block-link"] .wp-block-post',
+		'.wp-block-query[class*="is-style-block-link"] .wp-block-post',
+	];
+	const blockPosts = document.querySelectorAll( selectors.join( ',' ) );
 
 	Array.from( blockPosts ).forEach( ( blockPost ) => {
 		let down, up;
@@ -254,9 +256,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
  * Outer block link with Query block.
  */
 document.addEventListener( 'DOMContentLoaded', () => {
-	const blockPosts = document.querySelectorAll(
-		'.wp-block-query[class*="is-style-block-link"][data-unitone-layout~="-has-outer-block-link"] .wp-block-post'
-	);
+	const selectors = [
+		'.wp-block-query[data-unitone-layout~="-block-link"][data-unitone-layout~="-has-outer-block-link"] .wp-block-post',
+		'.wp-block-query[class*="is-style-block-link"][data-unitone-layout~="-has-outer-block-link"] .wp-block-post',
+	];
+	const blockPosts = document.querySelectorAll( selectors.join( ',' ) );
 
 	Array.from( blockPosts ).forEach( ( blockPost ) => {
 		/**

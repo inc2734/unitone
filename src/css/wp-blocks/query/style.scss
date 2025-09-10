@@ -132,9 +132,9 @@
 	.wp-block-query.is-style-underline,
 	.wp-block-query.is-style-bordered,
 	.wp-block-query.is-style-stripe,
-	.wp-block-query.is-style-block-link-underline,
-	.wp-block-query.is-style-block-link-bordered,
-	.wp-block-query.is-style-block-link-stripe
+	.wp-block-query.is-style-block-link-underline, /* @deprecated */
+	.wp-block-query.is-style-block-link-bordered, /* @deprecated */
+	.wp-block-query.is-style-block-link-stripe /* @deprecated */
 ) {
 	--unitone--divider-color: var(--wp--preset--color--unitone-light-gray);
 	--unitone--divider-style: solid;
@@ -158,10 +158,11 @@
  * Common styles of all block styles with block link.
  */
 :root :where(
-	.wp-block-query.is-style-block-link,
-	.wp-block-query.is-style-block-link-underline,
-	.wp-block-query.is-style-block-link-bordered,
-	.wp-block-query.is-style-block-link-stripe
+	.wp-block-query[data-unitone-layout~="-block-link"],
+	.wp-block-query.is-style-block-link, /* @deprecated */
+	.wp-block-query.is-style-block-link-underline, /* @deprecated */
+	.wp-block-query.is-style-block-link-bordered, /* @deprecated */
+	.wp-block-query.is-style-block-link-stripe /* @deprecated */
 ) {
 	.wp-block-post:has(.wp-block-post-title > a) {
 		cursor: pointer;
@@ -174,8 +175,8 @@
 :root :where(
 	.wp-block-query.is-style-underline,
 	.wp-block-query.is-style-stripe,
-	.wp-block-query.is-style-block-link-underline,
-	.wp-block-query.is-style-block-link-stripe
+	.wp-block-query.is-style-block-link-underline, /* @deprecated */
+	.wp-block-query.is-style-block-link-stripe /* @deprecated */
 ) {
 	:where(.wp-block-post) {
 		--unitone--padding-top: var(--unitone--padding);
@@ -202,7 +203,7 @@
  */
 :root :where(
 	.wp-block-query.is-style-stripe,
-	.wp-block-query.is-style-block-link-stripe
+	.wp-block-query.is-style-block-link-stripe /* @deprecated */
 ) {
 	border-top: var(--unitone--divider-width) var(--unitone--divider-style) var(--unitone--divider-color);
 }
@@ -212,7 +213,7 @@
  */
 :root :where(
 	.wp-block-query.is-style-underline,
-	.wp-block-query.is-style-block-link-underline
+	.wp-block-query.is-style-block-link-underline /* @deprecated */
 ) {
 	:where(.wp-block-post-template.is-layout-flow .wp-block-post:first-child) {
 		padding-top: 0;
@@ -249,7 +250,7 @@
  */
 :root :where(
 	.wp-block-query.is-style-bordered,
-	.wp-block-query.is-style-block-link-bordered
+	.wp-block-query.is-style-block-link-bordered /* @deprecated */
 ) {
 	:where(.wp-block-post) {
 		--unitone--padding-top: var(--unitone--padding);

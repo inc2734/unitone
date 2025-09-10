@@ -15,3 +15,13 @@
 .wp-block-social-links:not(:root) {
 	gap: var(--unitone--gap);
 }
+
+:root :where(.wp-block-social-links.has-visible-labels) {
+	:where(.wp-block-social-link) {
+		border-radius: var(--unitone--global--border-radius);
+	}
+
+	:where(.wp-block-social-link-anchor) {
+		padding: calc(var(--unitone--p-2) / 1.5) var(--unitone--p-2);
+	}
+}

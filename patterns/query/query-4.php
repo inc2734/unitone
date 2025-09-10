@@ -12,7 +12,7 @@
 		<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
 		<div data-unitone-layout="stack">
 			<!-- wp:post-date {"fontSize":"unitone-xs"} /-->
-			<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}},"fontSize":"unitone-xl"} /-->
+			<!-- wp:post-title {"level":3,"isLink":true,"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}},"fontSize":"unitone-xl"} /-->
 		</div>
 		<!-- /wp:unitone/stack -->
 	<!-- /wp:post-template -->

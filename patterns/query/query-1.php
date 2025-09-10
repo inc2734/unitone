@@ -26,7 +26,7 @@
 						<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
 						<div data-unitone-layout="stack">
 							<!-- wp:post-terms {"term":"category","style":{"elements":{"link":{"color":{"text":"var:preset|color|unitone-accent"}}}},"className":"is-style-outline","fontSize":"unitone-xs"} /-->
-							<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontStyle":"normal","fontWeight":"400"}}} /-->
+							<!-- wp:post-title {"level":3,"isLink":true,"style":{"typography":{"fontStyle":"normal","fontWeight":"400"}}} /-->
 						</div>
 						<!-- /wp:unitone/stack -->
 					</div>

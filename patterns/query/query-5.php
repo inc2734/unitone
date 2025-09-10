@@ -23,7 +23,7 @@
 				<!-- wp:unitone/with-sidebar-content {"type":"main"} -->
 				<div data-unitone-layout="with-sidebar__content">
 					<div data-unitone-layout="with-sidebar__content__content">
-						<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}},"fontSize":"unitone-l"} /-->
+						<!-- wp:post-title {"level":3,"isLink":true,"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}},"fontSize":"unitone-l"} /-->
 					</div>
 				</div>
 				<!-- /wp:unitone/with-sidebar-content -->

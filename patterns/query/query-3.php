@@ -19,7 +19,7 @@
 
 			<!-- wp:unitone/stack {"unitone":{"gap":"-2"}} -->
 			<div data-unitone-layout="stack">
-				<!-- wp:post-title {"isLink":true} /-->
+				<!-- wp:post-title {"level":3,"isLink":true} /-->
 
 				<!-- wp:unitone/cluster {"fontSize":"unitone-xs","unitone":{"gap":"-1","alignItems":"center"}} -->
 				<div data-unitone-layout="cluster" class="has-unitone-xs-font-size">

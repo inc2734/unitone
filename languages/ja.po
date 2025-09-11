@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-10T00:40:51+00:00\n"
-"PO-Revision-Date: 2025-09-10 09:41+0900\n"
+"POT-Creation-Date: 2025-09-11T02:11:45+00:00\n"
+"PO-Revision-Date: 2025-09-11 11:12+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css inc/block-categories.php:22 inc/block-categories.php:33
 #: inc/block-categories.php:44 inc/block-categories.php:55
-#: inc/block-styles.php:120 dist/js/editor/editor.js:16
+#: inc/block-styles.php:80 dist/js/editor/editor.js:16
 msgid "unitone"
 msgstr "unitone"
 
@@ -169,11 +169,11 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:56 inc/block-styles.php:144 dist/js/editor/editor.js:4
+#: inc/block-styles.php:56 inc/block-styles.php:104 dist/js/editor/editor.js:4
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: inc/block-styles.php:64 inc/block-styles.php:168 dist/js/editor/editor.js:4
+#: inc/block-styles.php:64 inc/block-styles.php:128 dist/js/editor/editor.js:4
 msgid "Bordered"
 msgstr "ボーダー"
 
@@ -181,35 +181,19 @@ msgstr "ボーダー"
 msgid "Stripe"
 msgstr "ストライプ"
 
-#: inc/block-styles.php:80
-msgid "Block link"
-msgstr "ブロックリンク"
-
 #: inc/block-styles.php:88
-msgid "Block link (Underline)"
-msgstr "ブロックリンク（アンダーライン）"
-
-#: inc/block-styles.php:96 inc/block-styles.php:112
-msgid "Block link (Bordered)"
-msgstr "ブロックリンク（ボーダー）"
-
-#: inc/block-styles.php:104
-msgid "Block link (Stripe)"
-msgstr "ブロックリンク（ストライプ）"
-
-#: inc/block-styles.php:128
 msgid "unitone (Accordion)"
 msgstr "unitone（アコーディオン）"
 
-#: inc/block-styles.php:136
+#: inc/block-styles.php:96
 msgid "Cover"
 msgstr "カバー"
 
-#: inc/block-styles.php:152
+#: inc/block-styles.php:112
 msgid "Vertical fill"
 msgstr "縦塗りつぶし"
 
-#: inc/block-styles.php:160
+#: inc/block-styles.php:120
 msgid "Vertical line"
 msgstr "縦線"
 
@@ -2424,6 +2408,14 @@ msgstr "背景画像/動画を使用（Fill）"
 msgid ""
 "The background image/video is enlarged according to the amount of content."
 msgstr "コンテンツ量に応じて、背景画像/動画を拡大表示します。"
+
+#: dist/blocks/layers/index.js:25
+msgid "Use background image/video (Fixed)"
+msgstr "背景画像/動画を使用（Fixed）"
+
+#: dist/blocks/layers/index.js:25
+msgid "Display the background image/video as fixed."
+msgstr "背景画像/動画を固定表示します。"
 
 #: dist/blocks/layers/index.js:25
 msgid "Blur the background image/video"

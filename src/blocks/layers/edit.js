@@ -48,6 +48,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 	const {
 		cover,
 		fill,
+		fixed,
 		blur,
 		portrait,
 		columns,
@@ -123,6 +124,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		{
 			'-cover': cover,
 			'-fill': fill,
+			'-fixed': fixed,
 			'-blur': !! blur,
 			'-portrait': portrait,
 		}
@@ -202,7 +204,8 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
 									cover: newAttribute,
-									fill: fill && ! newAttribute,
+									fill: fill && newAttribute && false,
+									fixed: fixed && newAttribute && false,
 								} );
 							} }
 						/>
@@ -243,7 +246,50 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
 									fill: newAttribute,
-									cover: cover && ! newAttribute,
+									cover: cover && newAttribute && false,
+									fixed: fixed && newAttribute && false,
+								} );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							fixed !== metadata.attributes.fixed.default
+						}
+						isShownByDefault
+						label={ __(
+							'Use background image/video (Fixed)',
+							'unitone'
+						) }
+						onDeselect={ () =>
+							setAttributes( {
+								fixed: metadata.attributes.fixed.default,
+							} )
+						}
+					>
+						<ToggleControl
+							__nextHasNoMarginBottom
+							label={ __(
+								'Use background image/video (Fixed)',
+								'unitone'
+							) }
+							help={
+								__(
+									'Treat the first child block as a background image/video.',
+									'unitone'
+								) +
+								__(
+									'Display the background image/video as fixed.',
+									'unitone'
+								)
+							}
+							checked={ fixed }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									fixed: newAttribute,
+									cover: cover && newAttribute && false,
+									fill: fill && newAttribute && false,
 								} );
 							} }
 						/>

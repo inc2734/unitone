@@ -5,7 +5,7 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import metadata from './block.json';
 
 export default function ( { attributes } ) {
-	const { cover, fill, blur, portrait, columns, rows } = attributes;
+	const { cover, fill, fixed, blur, portrait, columns, rows } = attributes;
 
 	return (
 		<div
@@ -27,6 +27,7 @@ export default function ( { attributes } ) {
 					'data-unitone-layout': clsx( 'layers', {
 						'-cover': cover,
 						'-fill': fill,
+						'-fixed': fixed,
 						'-blur': !! blur,
 						'-portrait': portrait,
 					} ),

@@ -70,6 +70,20 @@ function unitone_add_page_scrolled_class( $classes ) {
 add_filter( 'body_class', 'unitone_add_page_scrolled_class' );
 
 /**
+ * Add "Loading Checker" class.
+ *
+ * @param array $classes An array of body class names.
+ * @return array
+ */
+function unitone_add_page_loaded_class( $classes ) {
+	return array_merge(
+		$classes,
+		array( 'unitone-page-loaded:false' )
+	);
+}
+add_filter( 'body_class', 'unitone_add_page_loaded_class' );
+
+/**
  * Restores the Customizer since we still rely on it.
  */
 if ( wp_get_custom_css() ) {

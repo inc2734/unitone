@@ -351,3 +351,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		window.requestAnimationFrame( updateScrollState );
 	} );
 } )();
+
+/**
+ * Page loaded checker.
+ */
+( () => {
+	window.addEventListener( 'load', () => {
+		document.body.classList.remove( 'unitone-page-loaded:false' );
+		document.body.classList.add( 'unitone-page-loaded:true' );
+	} );
+} )();

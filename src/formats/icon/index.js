@@ -25,6 +25,7 @@ import { store as preferencesStore } from '@wordpress/preferences';
 import { __ } from '@wordpress/i18n';
 
 import icons from './feather-icons';
+import spinners from './spinner-icons';
 
 const name = 'unitone/inline-icon';
 const title = __( 'Inline icon', 'unitone' );
@@ -90,6 +91,15 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 			};
 		} );
 
+	const filteredSpinners = spinners.map( ( icon ) => {
+		return {
+			name: icon.name,
+			svg: icon.svg( {
+				strokeWidth: strokeWidth || DEFAULT_STROKE_WIDTH,
+			} ),
+		};
+	} );
+
 	return (
 		<Popover
 			placement="bottom"
@@ -132,51 +142,58 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 				/>
 
 				<div>
-					{ filteredIcons.map( ( icon, index ) => {
-						return (
-							<Button
-								key={ index }
-								className="has-icon"
-								onClick={ () => {
-									const newInlineSvg =
-										`url(data:image/svg+xml;charset=UTF-8,${ encodeURIComponent(
+					{ [ ...filteredIcons, ...filteredSpinners ].map(
+						( icon, index ) => {
+							return (
+								<Button
+									key={ index }
+									className="has-icon"
+									onClick={ () => {
+										const encodedSvg = encodeURIComponent(
 											icon.svg
-										) })`.trim();
+										)
+											.replace( /\(/g, '%28' )
+											.replace( /\)/g, '%29' );
+										const newInlineSvg =
+											`url("data:image/svg+xml;charset=UTF-8,${ encodedSvg }")`.trim();
 
-									const newValue = insertObject(
-										value,
-										{
-											...DEFAULT_ICON_OBJECT_SETTINGS,
-											attributes: {
-												...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
-												style: `--unitone--inline-svg: ${ newInlineSvg }`,
+										const newValue = insertObject(
+											value,
+											{
+												...DEFAULT_ICON_OBJECT_SETTINGS,
+												attributes: {
+													...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
+													style: `--unitone--inline-svg: ${ newInlineSvg }`,
+												},
 											},
-										},
-										value.end,
-										value.end
-									);
-									newValue.start = newValue.end - 1;
-									onChange( newValue );
-
-									if ( strokeWidth !== savedStrokeWidth ) {
-										dispatch( preferencesStore ).set(
-											PREFERENCE_SCOPE,
-											'inlineIconStrokeWidth',
-											strokeWidth
+											value.end,
+											value.end
 										);
-									}
+										newValue.start = newValue.end - 1;
+										onChange( newValue );
 
-									onClose();
-								} }
-							>
-								<span
-									dangerouslySetInnerHTML={ {
-										__html: icon.svg,
+										if (
+											strokeWidth !== savedStrokeWidth
+										) {
+											dispatch( preferencesStore ).set(
+												PREFERENCE_SCOPE,
+												'inlineIconStrokeWidth',
+												strokeWidth
+											);
+										}
+
+										onClose();
 									} }
-								/>
-							</Button>
-						);
-					} ) }
+								>
+									<span
+										dangerouslySetInnerHTML={ {
+											__html: icon.svg,
+										} }
+									/>
+								</Button>
+							);
+						}
+					) }
 				</div>
 
 				<div>

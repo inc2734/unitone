@@ -11,6 +11,7 @@
 @include meta.load-css("foundation");
 @include meta.load-css("wp-blocks/wp-blocks");
 @include meta.load-css("site");
+@include meta.load-css("components");
 
 @include meta.load-css("../../js/editor/hooks/section-divider/section-divider");
 @include meta.load-css("../../js/editor/hooks/animation/parallax");

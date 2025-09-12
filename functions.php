@@ -150,6 +150,9 @@ require get_template_directory() . '/inc/thumbnail.php';
 // OGP settings.
 require get_template_directory() . '/inc/ogp.php';
 
+// Loading animation settings.
+require get_template_directory() . '/inc/loading-animation.php';
+
 // OpenAI.
 require get_template_directory() . '/inc/openai.php';
 

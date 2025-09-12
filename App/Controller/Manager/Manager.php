@@ -102,9 +102,10 @@ class Manager {
 
 		do_action( 'unitone_setup_enqueue_assets' );
 
-		$global_settings        = wp_get_global_settings();
-		$custom_templates       = Settings::get_custom_templates();
-		$using_custom_templates = Settings::get_using_custom_templates();
+		$global_settings                  = wp_get_global_settings();
+		$loading_animation_template_parts = static::get_loading_animation_template_parts();
+		$custom_templates                 = static::get_custom_templates();
+		$using_custom_templates           = static::get_using_custom_templates();
 
 		wp_localize_script(
 			'unitone/settings',
@@ -121,16 +122,16 @@ class Manager {
 			array_merge(
 				static::_convert_preset_value( Settings::get_merged_settings() ),
 				array(
-					'adminUrl'                => admin_url(),
-					'homeUrl'                 => home_url(),
-					'templateDirectoryUri'    => get_template_directory_uri(),
-					'siteTitle'               => get_option( 'blogname' ),
-					'siteLogoUrl'             => wp_get_attachment_url( get_option( 'site_logo' ) ),
-					'siteIconUrl'             => wp_get_attachment_url( get_option( 'site_icon' ) ),
-					'defaultFeaturedImageUrl' => wp_get_attachment_url( static::get_setting( 'default-featured-image' ) ),
-					'hasHomepage'             => ! is_null( get_page_by_path( static::_get_homepage_slug(), OBJECT, array( 'page' ) ) ),
-					'hasPostsPage'            => ! is_null( get_page_by_path( static::_get_posts_page_slug(), OBJECT, array( 'page' ) ) ),
-					'palette'                 => ( function () use ( $global_settings ) {
+					'adminUrl'                      => admin_url(),
+					'homeUrl'                       => home_url(),
+					'templateDirectoryUri'          => get_template_directory_uri(),
+					'siteTitle'                     => get_option( 'blogname' ),
+					'siteLogoUrl'                   => wp_get_attachment_url( get_option( 'site_logo' ) ),
+					'siteIconUrl'                   => wp_get_attachment_url( get_option( 'site_icon' ) ),
+					'defaultFeaturedImageUrl'       => wp_get_attachment_url( static::get_setting( 'default-featured-image' ) ),
+					'hasHomepage'                   => ! is_null( get_page_by_path( static::_get_homepage_slug(), OBJECT, array( 'page' ) ) ),
+					'hasPostsPage'                  => ! is_null( get_page_by_path( static::_get_posts_page_slug(), OBJECT, array( 'page' ) ) ),
+					'palette'                       => ( function () use ( $global_settings ) {
 						return array_reverse(
 							array_map(
 								function ( $palette, $key ) {
@@ -144,7 +145,7 @@ class Manager {
 							)
 						);
 					} )(),
-					'fontFamilies'            => ( function () use ( $global_settings ) {
+					'fontFamilies'                  => ( function () use ( $global_settings ) {
 						return array_map(
 							function ( $font_family ) {
 								return array(
@@ -159,7 +160,7 @@ class Manager {
 							)
 						);
 					} )(),
-					'fontSizes'               => ( function () use ( $global_settings ) {
+					'fontSizes'                     => ( function () use ( $global_settings ) {
 						$scale = -2;
 						return array_map(
 							function ( $font_size ) use ( &$scale ) {
@@ -175,8 +176,9 @@ class Manager {
 							$global_settings['typography']['fontSizes']['theme']
 						);
 					} )(),
-					'customTemplates'         => $custom_templates,
-					'usingCustomTemplates'    => $using_custom_templates,
+					'loadingAnimationTemplateParts' => $loading_animation_template_parts,
+					'customTemplates'               => $custom_templates,
+					'usingCustomTemplates'          => $using_custom_templates,
 				)
 			)
 		);
@@ -666,6 +668,15 @@ class Manager {
 	 */
 	protected static function _get_posts_page_slug() {
 		return 'blog';
+	}
+
+	/**
+	 * Retrieves a list of "loading animation" template part objects.
+	 *
+	 * @return WP_Block_Template[] Array of block templates.
+	 */
+	public static function get_loading_animation_template_parts() {
+		return Settings::get_loading_animation_template_parts();
 	}
 
 	/**

@@ -34,6 +34,7 @@ class Settings {
 		'h5-size'                               => '0',
 		'h6-size'                               => '0',
 		'accent-color'                          => '#090a0b', // settings.color.palette > unitone-accent.
+		'loading-animation'                     => false,
 		'enabled-custom-templates'              => array( 'template-page-header-footer', 'template-page-blank' ),
 		'wp-oembed-blog-card-style'             => 'default',
 		'output-ogp-tags'                       => false,
@@ -303,6 +304,47 @@ class Settings {
 		wp_cache_set( self::SETTINGS_NAME, $settings );
 
 		return $settings;
+	}
+
+	/**
+	 * Retrieves a list of "loading animation" template part objects.
+	 *
+	 * @return WP_Block_Template[] Array of block templates.
+	 */
+	public static function get_loading_animation_template_parts() {
+		$cache_key = 'unitone_get_loading_animation_template_parts';
+		$cache     = wp_cache_get( $cache_key );
+		if ( false !== $cache ) {
+			return $cache;
+		}
+
+		$parts = get_block_templates(
+			array(
+				'area' => 'unitone/loading-animation',
+			),
+			'wp_template_part'
+		);
+
+		$parts = array_filter(
+			$parts,
+			function ( $part ) {
+				return 'publish' === $part->status;
+			}
+		);
+
+		$parts = array_map(
+			function ( $part ) {
+				return array(
+					'title' => $part->title,
+					'slug'  => $part->slug,
+				);
+			},
+			$parts
+		);
+
+		wp_cache_set( $cache_key, $parts );
+
+		return $parts;
 	}
 
 	/**

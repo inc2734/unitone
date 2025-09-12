@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-11T02:11:45+00:00\n"
-"PO-Revision-Date: 2025-09-11 11:12+0900\n"
+"POT-Creation-Date: 2025-09-12T14:12:37+00:00\n"
+"PO-Revision-Date: 2025-09-12 23:13+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -43,7 +43,7 @@ msgstr "https://2inc.org"
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
-#: App/Controller/Manager/Manager.php:373 patterns/footer/footer-2.php:21
+#: App/Controller/Manager/Manager.php:375 patterns/footer/footer-2.php:21
 #: patterns/footer/footer-3.php:53 patterns/footer/footer-3.php:61
 #: patterns/footer/footer-3.php:69 patterns/footer/footer-4.php:31
 #: patterns/footer/footer-4.php:39 patterns/footer/footer-4.php:47
@@ -52,7 +52,7 @@ msgstr "unitone セットアップ"
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:416 patterns/footer/footer-2.php:24
+#: App/Controller/Manager/Manager.php:418 patterns/footer/footer-2.php:24
 #: patterns/footer/footer-3.php:56 patterns/footer/footer-3.php:64
 #: patterns/footer/footer-3.php:72 patterns/footer/footer-4.php:34
 #: patterns/footer/footer-4.php:42 patterns/footer/footer-4.php:50
@@ -63,20 +63,20 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:519
+#: App/Controller/Manager/Manager.php:521
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:522
+#: App/Controller/Manager/Manager.php:524
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:526
+#: App/Controller/Manager/Manager.php:528
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
-#: App/Controller/Manager/Manager.php:549
+#: App/Controller/Manager/Manager.php:551
 #, php-format
 msgid ""
 "You have not set a valid license key. Setting a license key will allow you "
@@ -140,16 +140,20 @@ msgstr "クエリー"
 msgid "Overlay Menus"
 msgstr "オーバーレイメニュー"
 
-#: inc/block-patterns.php:17 inc/template-part-areas.php:41
-#: inc/template-part-areas.php:169 App/Controller/Manager/dist/js/app.js:9
+#: inc/block-patterns.php:17 inc/template-part-areas.php:27
+msgid "Loading Animations"
+msgstr "ローディングアニメーション"
+
+#: inc/block-patterns.php:18 inc/template-part-areas.php:48
+#: inc/template-part-areas.php:176 App/Controller/Manager/dist/js/app.js:9
 msgid "Pages"
 msgstr "ページ"
 
-#: inc/block-patterns.php:18
+#: inc/block-patterns.php:19
 msgid "Templates"
 msgstr "テンプレート"
 
-#: inc/block-patterns.php:19
+#: inc/block-patterns.php:20
 msgid "Others"
 msgstr "その他"
 
@@ -594,135 +598,143 @@ msgstr ""
 "オーバーレイメニューテンプレートは、ナビゲーションブロックのオーバーレイメ"
 "ニューとして使用できます。"
 
-#: inc/template-part-areas.php:27 dist/blocks/slider/index.js:1
+#: inc/template-part-areas.php:29
+msgid ""
+"The loading animation template part will cover the page until the page is "
+"fully loaded."
+msgstr ""
+"ローディングアニメーションテンプレートパーツは、ページ読み込み完了までの間"
+"ページを覆う形で表示されます。"
+
+#: inc/template-part-areas.php:34 dist/blocks/slider/index.js:1
 msgid "Loop"
 msgstr "ループ"
 
-#: inc/template-part-areas.php:34 inc/template-part-areas.php:148
+#: inc/template-part-areas.php:41 inc/template-part-areas.php:155
 msgid "Single Posts"
 msgstr "個別投稿"
 
-#: inc/template-part-areas.php:48 inc/template-part-areas.php:190
+#: inc/template-part-areas.php:55 inc/template-part-areas.php:197
 msgid "404"
 msgstr "404"
 
-#: inc/template-part-areas.php:55
+#: inc/template-part-areas.php:62
 msgid "Front Page"
 msgstr "フロントページ"
 
-#: inc/template-part-areas.php:62 inc/template-part-areas.php:211
+#: inc/template-part-areas.php:69 inc/template-part-areas.php:218
 msgid "Blog Home"
 msgstr "ブログホーム"
 
-#: inc/template-part-areas.php:69 inc/template-part-areas.php:232
+#: inc/template-part-areas.php:76 inc/template-part-areas.php:239
 msgid "All Archives"
 msgstr "アーカイブ"
 
-#: inc/template-part-areas.php:76 inc/template-part-areas.php:253
+#: inc/template-part-areas.php:83 inc/template-part-areas.php:260
 msgid "Search Results"
 msgstr "検索結果"
 
-#: inc/template-part-areas.php:83 inc/template-part-areas.php:274
+#: inc/template-part-areas.php:90 inc/template-part-areas.php:281
 msgid "Product Catalog"
 msgstr "商品カタログ"
 
-#: inc/template-part-areas.php:90 inc/template-part-areas.php:295
+#: inc/template-part-areas.php:97 inc/template-part-areas.php:302
 msgid "Single Products"
 msgstr "単一の商品"
 
-#: inc/template-part-areas.php:97 inc/template-part-areas.php:316
+#: inc/template-part-areas.php:104 inc/template-part-areas.php:323
 msgid "bbPress"
 msgstr "bbPress"
 
-#: inc/template-part-areas.php:104
+#: inc/template-part-areas.php:111
 msgid "Cart"
 msgstr "お買い物カゴ"
 
-#: inc/template-part-areas.php:111
+#: inc/template-part-areas.php:118
 msgid "Checkout"
 msgstr "購入手続き"
 
-#: inc/template-part-areas.php:118
+#: inc/template-part-areas.php:125
 msgid "Order Confirmation"
 msgstr "注文確認"
 
-#: inc/template-part-areas.php:125 inc/template-part-areas.php:337
+#: inc/template-part-areas.php:132 inc/template-part-areas.php:344
 msgid "Comments"
 msgstr "コメント"
 
-#: inc/template-part-areas.php:155
+#: inc/template-part-areas.php:162
 msgid "Page Header for Single Posts"
 msgstr "個別投稿のページヘッダー"
 
-#: inc/template-part-areas.php:162
+#: inc/template-part-areas.php:169
 msgid "Main Area for Single Posts"
 msgstr "個別投稿のメインエリア"
 
-#: inc/template-part-areas.php:176
+#: inc/template-part-areas.php:183
 msgid "Page Header for Pages"
 msgstr "固定ページのページヘッダー"
 
-#: inc/template-part-areas.php:183
+#: inc/template-part-areas.php:190
 msgid "Main Area for Pages"
 msgstr "固定ページのメインエリア"
 
-#: inc/template-part-areas.php:197
+#: inc/template-part-areas.php:204
 msgid "Main Area for 404"
 msgstr "404 のメインエリア"
 
-#: inc/template-part-areas.php:204
+#: inc/template-part-areas.php:211
 msgid "Page Header for 404"
 msgstr "404のページヘッダー"
 
-#: inc/template-part-areas.php:218
+#: inc/template-part-areas.php:225
 msgid "Page Header for Blog Home"
 msgstr "ブログホームのページヘッダー"
 
-#: inc/template-part-areas.php:225
+#: inc/template-part-areas.php:232
 msgid "Main Area for Blog Home"
 msgstr "ブログホームのメインエリア"
 
-#: inc/template-part-areas.php:239
+#: inc/template-part-areas.php:246
 msgid "Main Area for All Archives"
 msgstr "アーカイブのメインエリア"
 
-#: inc/template-part-areas.php:246
+#: inc/template-part-areas.php:253
 msgid "Page Header for All Archives"
 msgstr "アーカイブのページヘッダー"
 
-#: inc/template-part-areas.php:260
+#: inc/template-part-areas.php:267
 msgid "Page Header for Search Results"
 msgstr "検索結果のページヘッダー"
 
-#: inc/template-part-areas.php:267
+#: inc/template-part-areas.php:274
 msgid "Main Area of Search Results"
 msgstr "検索結果のメインエリア"
 
-#: inc/template-part-areas.php:281
+#: inc/template-part-areas.php:288
 msgid "Main Area for Product Catalog"
 msgstr "商品カタログのメインエリア"
 
-#: inc/template-part-areas.php:288
+#: inc/template-part-areas.php:295
 msgid "Page Header for Product Catalog"
 msgstr "商品カタログのページヘッダー"
 
-#: inc/template-part-areas.php:302
+#: inc/template-part-areas.php:309
 msgid "Page Header for Single Products"
 msgstr "個別投稿のページヘッダー"
 
-#: inc/template-part-areas.php:309
+#: inc/template-part-areas.php:316
 msgid "Main Area for Single Products"
 msgstr "単一の商品のメインエリア"
 
-#: inc/template-part-areas.php:323
+#: inc/template-part-areas.php:330
 msgid "Page Header for bbPress"
 msgstr "bbPress のページヘッダー"
 
-#: inc/template-part-areas.php:330
+#: inc/template-part-areas.php:337
 msgid "Main Area for bbPress"
 msgstr "bbPress のメインエリア"
 
-#: inc/template-part-areas.php:344
+#: inc/template-part-areas.php:351
 msgid "Footer breadcrumbs"
 msgstr "フッターのパンくずリスト"
 
@@ -803,6 +815,26 @@ msgstr "ヘッダー（縦）"
 msgctxt "Pattern title"
 msgid "Image"
 msgstr "画像"
+
+#: patterns/loading-animation/loading-animation-bar-pulse.php
+msgctxt "Pattern title"
+msgid "Loading Animation (Bar Pulse)"
+msgstr "ローディングアニメーション（バーパルス）"
+
+#: patterns/loading-animation/loading-animation-ring-resize.php
+msgctxt "Pattern title"
+msgid "Loading Animation (Ring Resize)"
+msgstr "ローディングアニメーション（リングリサイズ）"
+
+#: patterns/loading-animation/loading-animation-ring.php
+msgctxt "Pattern title"
+msgid "Loading Animation (Ring)"
+msgstr "ローディングアニメーション（リング）"
+
+#: patterns/loading-animation/loading-animation-twelve-spokes.php
+msgctxt "Pattern title"
+msgid "Loading Animation (Twelve Spokes)"
+msgstr "ローディング・アニメーション（12本のスポーク）"
 
 #: patterns/overlay-menu/overlay-menu-1.php
 msgctxt "Pattern title"
@@ -1849,6 +1881,27 @@ msgid "Wide Width"
 msgstr "幅広"
 
 #: App/Controller/Manager/dist/js/app.js:7
+msgid "Loading Animation"
+msgstr "ローディングアニメーション"
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgid "Template Parts to Use"
+msgstr "使用するテンプレート・パーツ"
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgid ""
+"You can choose from the template parts assigned to the template part area "
+"\"Loading Animation\"."
+msgstr ""
+"テンプレートパーツエリア「ローディングアニメーション」に割り当てられたテンプ"
+"レートパーツから選択できます。"
+
+#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:8
+msgid "— Select —"
+msgstr "— 選択 —"
+
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Your Homepage Displays"
 msgstr "ホームページ設定"
 
@@ -1875,11 +1928,6 @@ msgstr "新規に空ページを作成する"
 #: App/Controller/Manager/dist/js/app.js:7
 msgid "Select existing page for the homepage"
 msgstr "既存のページをホームページ用に選択"
-
-#: App/Controller/Manager/dist/js/app.js:7
-#: App/Controller/Manager/dist/js/app.js:8
-msgid "— Select —"
-msgstr "— 選択 —"
 
 #. translators: %1$s: Post ID
 #: App/Controller/Manager/dist/js/app.js:8
@@ -4829,6 +4877,11 @@ msgstr "ループ"
 msgctxt "Template part name"
 msgid "Overlay Menu"
 msgstr "オーバーレイメニュー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Loading Animation"
+msgstr "ローディングアニメーション"
 
 #: styles/colors/dark-blue-base.json
 msgctxt "Style variation name"

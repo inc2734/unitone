@@ -1,5 +1,6 @@
 import {
 	Button,
+	SelectControl,
 	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components';
 
@@ -11,12 +12,16 @@ import apiFetch from '@wordpress/api-fetch';
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 
+	const loadingAnimationTemplateParts =
+		settings?.loadingAnimationTemplateParts ?? [];
+
 	const saveSettings = () => {
 		setSettingsSaving( true );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
 			data: {
+				'loading-animation': settings?.[ 'loading-animation' ] ?? null,
 				'content-size': null, // Deprecated.
 				'wide-size': null, // Deprecated.
 				settings: {
@@ -36,6 +41,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		setSettingsSaving( true );
 		setSettings( {
 			...settings,
+			'loading-animation': defaultSettings[ 'loading-animation' ],
 			'content-size': null, // Deprecated.
 			'wide-size': null, // Deprecated.
 			settings: {
@@ -51,6 +57,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			path: '/unitone/v1/settings',
 			method: 'POST',
 			data: {
+				'loading-animation': null,
 				'content-size': null, // Deprecated.
 				'wide-size': null, // Deprecated.
 				settings: {
@@ -131,6 +138,57 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										},
 									} )
 								}
+							/>
+						</div>
+					</div>
+
+					<div
+						data-unitone-layout="with-sidebar -sidebar:left"
+						style={ { '--unitone--sidebar-width': '20em' } }
+					>
+						<div data-unitone-layout="stack">
+							<h3>{ __( 'Loading Animation', 'unitone' ) }</h3>
+						</div>
+						<div data-unitone-layout="stack">
+							<SelectControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={ __(
+									'Template Parts to Use',
+									'unitone'
+								) }
+								help={ __(
+									'You can choose from the template parts assigned to the template part area "Loading Animation".',
+									'unitone'
+								) }
+								value={
+									settings?.[ 'loading-animation' ] || ''
+								}
+								options={ [
+									...[
+										{
+											label: __(
+												'— Select —',
+												'unitone'
+											),
+											value: '',
+										},
+									],
+									...loadingAnimationTemplateParts.map(
+										( part ) => {
+											return {
+												label: part.title,
+												value: part.slug,
+											};
+										}
+									),
+								] }
+								onChange={ ( newSetting ) => {
+									setSettings( {
+										...settings,
+										'loading-animation': newSetting,
+									} );
+								} }
 							/>
 						</div>
 					</div>

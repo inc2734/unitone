@@ -23,6 +23,13 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 				'area_tag'    => 'div',
 			),
 			array(
+				'area'        => 'unitone/loading-animation',
+				'label'       => __( 'Loading Animations', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => __( 'The loading animation template part will cover the page until the page is fully loaded.', 'unitone' ),
+				'area_tag'    => 'div',
+			),
+			array(
 				'area'        => 'unitone/loop',
 				'label'       => __( 'Loop', 'unitone' ),
 				'icon'        => 'layout',

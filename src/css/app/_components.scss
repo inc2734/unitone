@@ -1,0 +1,27 @@
+.unitone-loading-animation {
+	--unitone--transition-duration: .2s;
+	--unitone--transition-delay: 1s;
+
+	z-index: 2;
+	display: grid;
+	place-content: center;
+	background-color: var(--wp--preset--color--unitone-background);
+	opacity: 0;
+	visibility: hidden;
+	transition-property: opacity, visibility;
+	transition-duration: var(--unitone--transition-duration);
+	transition-delay: var(--unitone--transition-delay);
+}
+
+:where(.unitone-page-loaded\:false, .unitone-page-loaded\:true) {
+	.unitone-loading-animation {
+		position: fixed;
+		inset: 0;
+		overflow: hidden;
+	}
+}
+
+.unitone-page-loaded\:false .unitone-loading-animation {
+	opacity: 1;
+	visibility: visible;
+}

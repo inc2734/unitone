@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 23.2.0\n"
+"Project-Id-Version: unitone 23.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-11T02:11:45+00:00\n"
+"POT-Creation-Date: 2025-09-12T14:12:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -46,7 +46,7 @@ msgstr ""
 msgid "unitone Setup"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:373
+#: App/Controller/Manager/Manager.php:375
 #: patterns/footer/footer-2.php:21
 #: patterns/footer/footer-3.php:53
 #: patterns/footer/footer-3.php:61
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:416
+#: App/Controller/Manager/Manager.php:418
 #: patterns/footer/footer-2.php:24
 #: patterns/footer/footer-3.php:56
 #: patterns/footer/footer-3.php:64
@@ -76,20 +76,20 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:519
+#: App/Controller/Manager/Manager.php:521
 msgid "unitone theme has been activated"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:522
+#: App/Controller/Manager/Manager.php:524
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:526
+#: App/Controller/Manager/Manager.php:528
 msgid "Go to the setup screen"
 msgstr ""
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
-#: App/Controller/Manager/Manager.php:549
+#: App/Controller/Manager/Manager.php:551
 #, php-format
 msgid "You have not set a valid license key. Setting a license key will allow you to use patterns registered in %3$sthe pattern library%4$s. It will also enable theme updates. A license key is issued when you subscribe to %1$sunitone license key subscription%2$s. The license key is set %5$shere%6$s."
 msgstr ""
@@ -146,17 +146,22 @@ msgid "Overlay Menus"
 msgstr ""
 
 #: inc/block-patterns.php:17
-#: inc/template-part-areas.php:41
-#: inc/template-part-areas.php:169
+#: inc/template-part-areas.php:27
+msgid "Loading Animations"
+msgstr ""
+
+#: inc/block-patterns.php:18
+#: inc/template-part-areas.php:48
+#: inc/template-part-areas.php:176
 #: App/Controller/Manager/dist/js/app.js:9
 msgid "Pages"
 msgstr ""
 
-#: inc/block-patterns.php:18
+#: inc/block-patterns.php:19
 msgid "Templates"
 msgstr ""
 
-#: inc/block-patterns.php:19
+#: inc/block-patterns.php:20
 msgid "Others"
 msgstr ""
 
@@ -603,145 +608,149 @@ msgstr ""
 msgid "The overlay menu templates can be used as an overlay menu for the navigation block."
 msgstr ""
 
-#: inc/template-part-areas.php:27
+#: inc/template-part-areas.php:29
+msgid "The loading animation template part will cover the page until the page is fully loaded."
+msgstr ""
+
+#: inc/template-part-areas.php:34
 #: dist/blocks/slider/index.js:1
 msgid "Loop"
 msgstr ""
 
-#: inc/template-part-areas.php:34
-#: inc/template-part-areas.php:148
+#: inc/template-part-areas.php:41
+#: inc/template-part-areas.php:155
 msgid "Single Posts"
 msgstr ""
 
-#: inc/template-part-areas.php:48
-#: inc/template-part-areas.php:190
+#: inc/template-part-areas.php:55
+#: inc/template-part-areas.php:197
 msgid "404"
 msgstr ""
 
-#: inc/template-part-areas.php:55
+#: inc/template-part-areas.php:62
 msgid "Front Page"
 msgstr ""
 
-#: inc/template-part-areas.php:62
-#: inc/template-part-areas.php:211
+#: inc/template-part-areas.php:69
+#: inc/template-part-areas.php:218
 msgid "Blog Home"
 msgstr ""
 
-#: inc/template-part-areas.php:69
-#: inc/template-part-areas.php:232
+#: inc/template-part-areas.php:76
+#: inc/template-part-areas.php:239
 msgid "All Archives"
 msgstr ""
 
-#: inc/template-part-areas.php:76
-#: inc/template-part-areas.php:253
+#: inc/template-part-areas.php:83
+#: inc/template-part-areas.php:260
 msgid "Search Results"
 msgstr ""
 
-#: inc/template-part-areas.php:83
-#: inc/template-part-areas.php:274
+#: inc/template-part-areas.php:90
+#: inc/template-part-areas.php:281
 msgid "Product Catalog"
 msgstr ""
 
-#: inc/template-part-areas.php:90
-#: inc/template-part-areas.php:295
+#: inc/template-part-areas.php:97
+#: inc/template-part-areas.php:302
 msgid "Single Products"
 msgstr ""
 
-#: inc/template-part-areas.php:97
-#: inc/template-part-areas.php:316
+#: inc/template-part-areas.php:104
+#: inc/template-part-areas.php:323
 msgid "bbPress"
 msgstr ""
 
-#: inc/template-part-areas.php:104
+#: inc/template-part-areas.php:111
 msgid "Cart"
 msgstr ""
 
-#: inc/template-part-areas.php:111
+#: inc/template-part-areas.php:118
 msgid "Checkout"
 msgstr ""
 
-#: inc/template-part-areas.php:118
+#: inc/template-part-areas.php:125
 msgid "Order Confirmation"
 msgstr ""
 
-#: inc/template-part-areas.php:125
-#: inc/template-part-areas.php:337
+#: inc/template-part-areas.php:132
+#: inc/template-part-areas.php:344
 msgid "Comments"
 msgstr ""
 
-#: inc/template-part-areas.php:155
+#: inc/template-part-areas.php:162
 msgid "Page Header for Single Posts"
 msgstr ""
 
-#: inc/template-part-areas.php:162
+#: inc/template-part-areas.php:169
 msgid "Main Area for Single Posts"
 msgstr ""
 
-#: inc/template-part-areas.php:176
+#: inc/template-part-areas.php:183
 msgid "Page Header for Pages"
 msgstr ""
 
-#: inc/template-part-areas.php:183
+#: inc/template-part-areas.php:190
 msgid "Main Area for Pages"
 msgstr ""
 
-#: inc/template-part-areas.php:197
+#: inc/template-part-areas.php:204
 msgid "Main Area for 404"
 msgstr ""
 
-#: inc/template-part-areas.php:204
+#: inc/template-part-areas.php:211
 msgid "Page Header for 404"
 msgstr ""
 
-#: inc/template-part-areas.php:218
+#: inc/template-part-areas.php:225
 msgid "Page Header for Blog Home"
 msgstr ""
 
-#: inc/template-part-areas.php:225
+#: inc/template-part-areas.php:232
 msgid "Main Area for Blog Home"
 msgstr ""
 
-#: inc/template-part-areas.php:239
+#: inc/template-part-areas.php:246
 msgid "Main Area for All Archives"
 msgstr ""
 
-#: inc/template-part-areas.php:246
+#: inc/template-part-areas.php:253
 msgid "Page Header for All Archives"
 msgstr ""
 
-#: inc/template-part-areas.php:260
+#: inc/template-part-areas.php:267
 msgid "Page Header for Search Results"
 msgstr ""
 
-#: inc/template-part-areas.php:267
+#: inc/template-part-areas.php:274
 msgid "Main Area of Search Results"
 msgstr ""
 
-#: inc/template-part-areas.php:281
+#: inc/template-part-areas.php:288
 msgid "Main Area for Product Catalog"
 msgstr ""
 
-#: inc/template-part-areas.php:288
+#: inc/template-part-areas.php:295
 msgid "Page Header for Product Catalog"
 msgstr ""
 
-#: inc/template-part-areas.php:302
+#: inc/template-part-areas.php:309
 msgid "Page Header for Single Products"
 msgstr ""
 
-#: inc/template-part-areas.php:309
+#: inc/template-part-areas.php:316
 msgid "Main Area for Single Products"
 msgstr ""
 
-#: inc/template-part-areas.php:323
+#: inc/template-part-areas.php:330
 msgid "Page Header for bbPress"
 msgstr ""
 
-#: inc/template-part-areas.php:330
+#: inc/template-part-areas.php:337
 msgid "Main Area for bbPress"
 msgstr ""
 
-#: inc/template-part-areas.php:344
+#: inc/template-part-areas.php:351
 msgid "Footer breadcrumbs"
 msgstr ""
 
@@ -836,6 +845,26 @@ msgstr ""
 #: patterns/image.php
 msgctxt "Pattern title"
 msgid "Image"
+msgstr ""
+
+#: patterns/loading-animation/loading-animation-bar-pulse.php
+msgctxt "Pattern title"
+msgid "Loading Animation (Bar Pulse)"
+msgstr ""
+
+#: patterns/loading-animation/loading-animation-ring-resize.php
+msgctxt "Pattern title"
+msgid "Loading Animation (Ring Resize)"
+msgstr ""
+
+#: patterns/loading-animation/loading-animation-ring.php
+msgctxt "Pattern title"
+msgid "Loading Animation (Ring)"
+msgstr ""
+
+#: patterns/loading-animation/loading-animation-twelve-spokes.php
+msgctxt "Pattern title"
+msgid "Loading Animation (Twelve Spokes)"
 msgstr ""
 
 #: patterns/overlay-menu/overlay-menu-1.php
@@ -1859,6 +1888,23 @@ msgid "Wide Width"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
+msgid "Loading Animation"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgid "Template Parts to Use"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgid "You can choose from the template parts assigned to the template part area \"Loading Animation\"."
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:8
+msgid "— Select —"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Your Homepage Displays"
 msgstr ""
 
@@ -1884,11 +1930,6 @@ msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
 msgid "Select existing page for the homepage"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:7
-#: App/Controller/Manager/dist/js/app.js:8
-msgid "— Select —"
 msgstr ""
 
 #. translators: %1$s: Post ID
@@ -4888,6 +4929,11 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "Overlay Menu"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Loading Animation"
 msgstr ""
 
 #: styles/colors/dark-blue-base.json

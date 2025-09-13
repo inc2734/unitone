@@ -73,21 +73,34 @@ function InlineUI( {
 	const styleProperties = getStyleProperties( style );
 
 	const [ color, setColor ] = useState(
-		style?.match( /--unitone--color: ?([^;]+);?/ )?.[ 1 ]
+		style?.match( /--unitone--text-shadow-color: ?([^;]+);?/ )?.[ 1 ] ||
+			style?.match( /--unitone--color: ?([^;]+);?/ )?.[ 1 ]
 	);
 	const [ offsetX, setOffsetX ] = useState(
 		parseInt(
-			style?.match( /--unitone--offset-x: ?([^;]+)px;?/ )?.[ 1 ] || 0
+			style?.match(
+				/--unitone--text-shadow-offset-x: ?([^;]+)px;?/
+			)?.[ 1 ] ||
+				style?.match( /--unitone--offset-x: ?([^;]+)px;?/ )?.[ 1 ] ||
+				0
 		)
 	);
 	const [ offsetY, setOffsetY ] = useState(
 		parseInt(
-			style?.match( /--unitone--offset-y: ?([^;]+)px;?/ )?.[ 1 ] || 0
+			style?.match(
+				/--unitone--text-shadow-offset-y: ?([^;]+)px;?/
+			)?.[ 1 ] ||
+				style?.match( /--unitone--offset-y: ?([^;]+)px;?/ )?.[ 1 ] ||
+				0
 		)
 	);
 	const [ blurRadius, setBlurRadius ] = useState(
 		parseInt(
-			style?.match( /--unitone--blur-radius: ?([^;]+)px;?/ )?.[ 1 ] || 0
+			style?.match(
+				/--unitone--text-shadow-blur-radius: ?([^;]+)px;?/
+			)?.[ 1 ] ||
+				style?.match( /--unitone--blur-radius: ?([^;]+)px;?/ )?.[ 1 ] ||
+				0
 		)
 	);
 
@@ -110,9 +123,9 @@ function InlineUI( {
 					attributes: {
 						style: getStyleAttribute( {
 							...styleProperties,
-							'--unitone--offset-x': `${ newOffsetX }px`,
-							'--unitone--offset-y': `${ newOffsetY }px`,
-							'--unitone--blur-radius': `${ newBlurRadius }px`,
+							'--unitone--text-shadow-offset-x': `${ newOffsetX }px`,
+							'--unitone--text-shadow-offset-y': `${ newOffsetY }px`,
+							'--unitone--text-shadow-blur-radius': `${ newBlurRadius }px`,
 						} ),
 					},
 				} )
@@ -165,9 +178,11 @@ function InlineUI( {
 								attributes: {
 									style: getStyleAttribute( {
 										...styleProperties,
-										'--unitone--offset-x': !! newOffsetX
-											? `${ newOffsetX }px`
-											: undefined,
+										'--unitone--offset-x': undefined, // @deprecated,
+										'--unitone--text-shadow-offset-x':
+											!! newOffsetX
+												? `${ newOffsetX }px`
+												: undefined,
 									} ),
 								},
 							} )
@@ -192,9 +207,11 @@ function InlineUI( {
 								attributes: {
 									style: getStyleAttribute( {
 										...styleProperties,
-										'--unitone--offset-y': !! newOffsetY
-											? `${ newOffsetY }px`
-											: undefined,
+										'--unitone--offset-y': undefined, // @deprecated,
+										'--unitone--text-shadow-offset-y':
+											!! newOffsetY
+												? `${ newOffsetY }px`
+												: undefined,
 									} ),
 								},
 							} )
@@ -219,7 +236,8 @@ function InlineUI( {
 								attributes: {
 									style: getStyleAttribute( {
 										...styleProperties,
-										'--unitone--blur-radius':
+										'--unitone--blur-radius': undefined, // @deprecated,
+										'--unitone--text-shadow-blur-radius':
 											!! newBlurRadius
 												? `${ newBlurRadius }px`
 												: undefined,
@@ -252,7 +270,9 @@ function InlineUI( {
 									attributes: {
 										style: getStyleAttribute( {
 											...styleProperties,
-											'--unitone--color': newColor,
+											'--unitone--color': undefined, // @deprecated,
+											'--unitone--text-shadow-color':
+												newColor,
 										} ),
 									},
 								} )
@@ -297,7 +317,9 @@ function Edit( { value, onChange, isActive, activeAttributes, contentRef } ) {
 	}, [ value.start ] );
 
 	const { style } = activeAttributes;
-	const color = style?.match( /--unitone--color: ?([^;]+);?/ )?.[ 1 ];
+	const color =
+		style?.match( /--unitone--text-shadow-color: ?([^;]+);?/ )?.[ 1 ] ||
+		style?.match( /--unitone--color: ?([^;]+);?/ )?.[ 1 ];
 
 	return (
 		<>

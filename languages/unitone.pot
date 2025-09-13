@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-13T13:40:37+00:00\n"
+"POT-Creation-Date: 2025-09-13T15:15:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2146,6 +2146,7 @@ msgstr ""
 #: dist/blocks/mega-menu/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
+#: dist/formats/formats.js:1
 msgid "Width"
 msgstr ""
 
@@ -3085,6 +3086,10 @@ msgstr ""
 
 #: dist/formats/formats.js:1
 msgid "Close"
+msgstr ""
+
+#: dist/formats/formats.js:1
+msgid "Text stroke"
 msgstr ""
 
 #: dist/formats/formats.js:1

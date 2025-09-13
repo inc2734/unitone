@@ -35,6 +35,7 @@ class Settings {
 		'h6-size'                               => '0',
 		'accent-color'                          => '#090a0b', // settings.color.palette > unitone-accent.
 		'loading-animation'                     => false,
+		'loading-animation-delay'               => '1',
 		'enabled-custom-templates'              => array( 'template-page-header-footer', 'template-page-blank' ),
 		'wp-oembed-blog-card-style'             => 'default',
 		'output-ogp-tags'                       => false,

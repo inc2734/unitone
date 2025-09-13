@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-12T14:12:37+00:00\n"
-"PO-Revision-Date: 2025-09-12 23:13+0900\n"
+"POT-Creation-Date: 2025-09-13T13:40:37+00:00\n"
+"PO-Revision-Date: 2025-09-13 22:41+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1900,6 +1900,10 @@ msgstr ""
 #: App/Controller/Manager/dist/js/app.js:8
 msgid "— Select —"
 msgstr "— 選択 —"
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgid "Minimum Time to Display Loading Animation (s)"
+msgstr "ローディングアニメーションの最低表示時間（秒）"
 
 #: App/Controller/Manager/dist/js/app.js:7
 msgid "Your Homepage Displays"

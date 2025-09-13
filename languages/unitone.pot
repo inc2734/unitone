@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-12T14:12:37+00:00\n"
+"POT-Creation-Date: 2025-09-13T13:40:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -1902,6 +1902,10 @@ msgstr ""
 #: App/Controller/Manager/dist/js/app.js:7
 #: App/Controller/Manager/dist/js/app.js:8
 msgid "— Select —"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgid "Minimum Time to Display Loading Animation (s)"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7

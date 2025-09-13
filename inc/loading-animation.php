@@ -15,8 +15,13 @@ function unitone_display_loading_animation() {
 	if ( ! $template_part ) {
 		return;
 	}
+
+	$delay  = Manager::get_setting( 'loading-animation-delay' );
+	$styles = array(
+		'--unitone--transition-delay: ' . $delay . 's',
+	);
 	?>
-	<div class="unitone-loading-animation" aria-hidden="false">
+	<div class="unitone-loading-animation" aria-hidden="false" style="<?php echo esc_attr( implode( ' ', $styles ) ); ?>">
 		<?php block_template_part( $template_part ); ?>
 	</div>
 	<?php

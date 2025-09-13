@@ -1,5 +1,6 @@
 import {
 	Button,
+	RangeControl,
 	SelectControl,
 	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components';
@@ -22,6 +23,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			method: 'POST',
 			data: {
 				'loading-animation': settings?.[ 'loading-animation' ] ?? null,
+				'loading-animation-delay':
+					settings?.[ 'loading-animation-delay' ] ?? null,
 				'content-size': null, // Deprecated.
 				'wide-size': null, // Deprecated.
 				settings: {
@@ -42,6 +45,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		setSettings( {
 			...settings,
 			'loading-animation': defaultSettings[ 'loading-animation' ],
+			'loading-animation-delay':
+				defaultSettings[ 'loading-animation-delay' ],
 			'content-size': null, // Deprecated.
 			'wide-size': null, // Deprecated.
 			settings: {
@@ -189,6 +194,27 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										'loading-animation': newSetting,
 									} );
 								} }
+							/>
+
+							<RangeControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={ __(
+									'Minimum Time to Display Loading Animation (s)',
+									'unitone'
+								) }
+								value={ parseFloat(
+									settings?.[ 'loading-animation-delay' ]
+								) }
+								onChange={ ( newSetting ) =>
+									setSettings( {
+										...settings,
+										'loading-animation-delay': newSetting,
+									} )
+								}
+								min={ 0.5 }
+								step={ 0.1 }
+								max={ 5 }
 							/>
 						</div>
 					</div>

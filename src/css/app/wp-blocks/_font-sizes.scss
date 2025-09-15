@@ -52,7 +52,6 @@ $font-sizes: (
 	$splited-slug: list.join(string.split(map.get($font-size, slug), '-'), '');
 	$non-hyphen-slug: #{ list.nth($splited-slug, 1) }-#{ list.nth($splited-slug, 2) }#{ list.nth($splited-slug, 3) };
 
-
 	.has-#{ $slug }-font-size {
 		--unitone--font-size: #{ $size } !important;
 		--wp--preset--font-size--#{ $slug }: #{ variables.$font-size } !important;
@@ -60,6 +59,10 @@ $font-sizes: (
 		&[data-unitone-layout~="-fluid-typography"] {
 			--wp--preset--font-size--#{ $slug }: #{ variables.$fluid-font-size } !important;
 		}
+	}
+
+	:where(.has-#{ $slug }-font-size *) {
+		font-size: inherit;
 	}
 
 	// For WooCommerce
@@ -72,6 +75,9 @@ $font-sizes: (
 		&[data-unitone-layout~="-fluid-typography"] {
 			--wp--preset--font-size--#{ $non-hyphen-slug }: #{ variables.$fluid-font-size } !important;
 		}
+	}
+	:where(.has-#{ $non-hyphen-slug }-font-size *) {
+		font-size: inherit;
 	}
 	.wc-block-components-product-price {
 		--wp--preset--font-size--#{ $non-hyphen-slug }: calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - #{ $size }) * 1rem) !important;

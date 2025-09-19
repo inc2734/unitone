@@ -58,8 +58,36 @@ function render_block_unitone_child_pages( $attributes ) {
 
 	$background_color       = $attributes['backgroundColor'] ?? null;
 	$style_background_color = $attributes['style']['color']['background'] ?? null;
-	$text_color             = $attributes['textColor'] ?? null;
-	$style_text_color       = $attributes['style']['color']['text'] ?? null;
+
+	$text_color       = $attributes['textColor'] ?? null;
+	$style_text_color = $attributes['style']['color']['text'] ?? null;
+
+	$border_color              = $attributes['borderColor'] ?? false;
+	$style_border_color        = $attributes['style']['border']['color'] ?? false;
+	$style_border_top_color    = unitone_get_preset_css_var( $attributes['style']['border']['top']['color'] ?? false );
+	$style_border_right_color  = unitone_get_preset_css_var( $attributes['style']['border']['right']['color'] ?? false );
+	$style_border_bottom_color = unitone_get_preset_css_var( $attributes['style']['border']['bottom']['color'] ?? false );
+	$style_border_left_color   = unitone_get_preset_css_var( $attributes['style']['border']['left']['color'] ?? false );
+
+	$style_border_style        = $attributes['style']['border']['style'] ?? false;
+	$style_border_top_style    = $attributes['style']['border']['top']['style'] ?? false;
+	$style_border_right_style  = $attributes['style']['border']['right']['style'] ?? false;
+	$style_border_bottom_style = $attributes['style']['border']['bottom']['style'] ?? false;
+	$style_border_left_style   = $attributes['style']['border']['left']['style'] ?? false;
+
+	$style_border_width        = $attributes['style']['border']['width'] ?? false;
+	$style_border_top_width    = $attributes['style']['border']['top']['width'] ?? false;
+	$style_border_right_width  = $attributes['style']['border']['right']['width'] ?? false;
+	$style_border_bottom_width = $attributes['style']['border']['bottom']['width'] ?? false;
+	$style_border_left_width   = $attributes['style']['border']['left']['width'] ?? false;
+
+	$style_border_radius              = isset( $attributes['style']['border']['radius'] ) && ! is_array( $attributes['style']['border']['radius'] )
+		? $attributes['style']['border']['radius']
+		: false;
+	$style_border_top_left_radius     = $attributes['style']['border']['radius']['topLeft'] ?? false;
+	$style_border_top_right_radius    = $attributes['style']['border']['radius']['topRight'] ?? false;
+	$style_border_bottom_left_radius  = $attributes['style']['border']['radius']['bottomLeft'] ?? false;
+	$style_border_bottom_right_radius = $attributes['style']['border']['radius']['bottomRight'] ?? false;
 
 	ob_start();
 	require $template;

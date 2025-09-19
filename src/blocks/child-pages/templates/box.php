@@ -35,9 +35,93 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 		if ( $style_background_color ) {
 			$item_style[] = 'background-color: ' . $style_background_color;
 		}
+
+		if ( $border_color ) {
+			$item_class[] = 'has-' . $border_color . '-border-color';
+		}
+
+		if ( $style_border_color ) {
+			$item_style[] = 'border-color: ' . $style_border_color;
+		}
+
+		if ( $style_border_top_color ) {
+			$item_style[] = 'border-top-color: ' . $style_border_top_color;
+		}
+
+		if ( $style_border_right_color ) {
+			$item_style[] = 'border-right-color: ' . $style_border_right_color;
+		}
+
+		if ( $style_border_bottom_color ) {
+			$item_style[] = 'border-bottom-color: ' . $style_border_bottom_color;
+		}
+
+		if ( $style_border_left_color ) {
+			$item_style[] = 'border-left-color: ' . $style_border_left_color;
+		}
+
+		if ( $style_border_style ) {
+			$item_style[] = 'border-style: ' . $style_border_style;
+		}
+
+		if ( $style_border_top_style ) {
+			$item_style[] = 'border-top-style: ' . $style_border_top_style;
+		}
+
+		if ( $style_border_right_style ) {
+			$item_style[] = 'border-right-style: ' . $style_border_right_style;
+		}
+
+		if ( $style_border_bottom_style ) {
+			$item_style[] = 'border-bottom-style: ' . $style_border_bottom_style;
+		}
+
+		if ( $style_border_left_style ) {
+			$item_style[] = 'border-left-style: ' . $style_border_left_style;
+		}
+
+		if ( $style_border_width ) {
+			$item_style[] = 'border-width: ' . $style_border_width;
+		}
+
+		if ( $style_border_top_width ) {
+			$item_style[] = 'border-top-width: ' . $style_border_top_width;
+		}
+
+		if ( $style_border_right_width ) {
+			$item_style[] = 'border-right-width: ' . $style_border_right_width;
+		}
+
+		if ( $style_border_bottom_width ) {
+			$item_style[] = 'border-bottom-width: ' . $style_border_bottom_width;
+		}
+
+		if ( $style_border_left_width ) {
+			$item_style[] = 'border-left-width: ' . $style_border_left_width;
+		}
+
+		if ( $style_border_radius ) {
+			$item_style[] = 'border-radius: ' . $style_border_radius;
+		}
+
+		if ( $style_border_top_left_radius ) {
+			$item_style[] = 'border-top-left-radius: ' . $style_border_top_left_radius;
+		}
+
+		if ( $style_border_top_right_radius ) {
+			$item_style[] = 'border-top-right-radius: ' . $style_border_top_right_radius;
+		}
+
+		if ( $style_border_bottom_left_radius ) {
+			$item_style[] = 'border-bottom-left-radius: ' . $style_border_bottom_left_radius;
+		}
+
+		if ( $style_border_bottom_right_radius ) {
+			$item_style[] = 'border-bottom-right-radius: ' . $style_border_bottom_right_radius;
+		}
 		?>
 		<div
-			data-unitone-layout="decorator -padding:1 -has-link"
+			data-unitone-layout="decorator -has-link"
 			class="<?php echo esc_attr( implode( ' ', $item_class ) ); ?>"
 			style="<?php echo esc_attr( implode( ';', $item_style ) ); ?>"
 		>

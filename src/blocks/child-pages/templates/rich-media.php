@@ -40,11 +40,100 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 			$item_style[] = 'background-color: ' . $style_background_color;
 		}
 
-		$item_inner_class   = array( 'stack' );
-		$item_inner_class[] = $background_color || $style_background_color ? '-gap:0' : '-gap:-1';
+		if ( $border_color ) {
+			$item_class[] = 'has-' . $border_color . '-border-color';
+		}
 
-		$item_content_class   = array( 'decorator' );
-		$item_content_class[] = $background_color || $style_background_color ? '-padding:1' : '-padding:0';
+		if ( $style_border_color ) {
+			$item_style[] = 'border-color: ' . $style_border_color;
+		}
+
+		if ( $style_border_top_color ) {
+			$item_style[] = 'border-top-color: ' . $style_border_top_color;
+		}
+
+		if ( $style_border_right_color ) {
+			$item_style[] = 'border-right-color: ' . $style_border_right_color;
+		}
+
+		if ( $style_border_bottom_color ) {
+			$item_style[] = 'border-bottom-color: ' . $style_border_bottom_color;
+		}
+
+		if ( $style_border_left_color ) {
+			$item_style[] = 'border-left-color: ' . $style_border_left_color;
+		}
+
+		if ( $style_border_style ) {
+			$item_style[] = 'border-style: ' . $style_border_style;
+		}
+
+		if ( $style_border_top_style ) {
+			$item_style[] = 'border-top-style: ' . $style_border_top_style;
+		}
+
+		if ( $style_border_right_style ) {
+			$item_style[] = 'border-right-style: ' . $style_border_right_style;
+		}
+
+		if ( $style_border_bottom_style ) {
+			$item_style[] = 'border-bottom-style: ' . $style_border_bottom_style;
+		}
+
+		if ( $style_border_left_style ) {
+			$item_style[] = 'border-left-style: ' . $style_border_left_style;
+		}
+
+		if ( $style_border_width ) {
+			$item_style[] = 'border-width: ' . $style_border_width;
+		}
+
+		if ( $style_border_top_width ) {
+			$item_style[] = 'border-top-width: ' . $style_border_top_width;
+		}
+
+		if ( $style_border_right_width ) {
+			$item_style[] = 'border-right-width: ' . $style_border_right_width;
+		}
+
+		if ( $style_border_bottom_width ) {
+			$item_style[] = 'border-bottom-width: ' . $style_border_bottom_width;
+		}
+
+		if ( $style_border_left_width ) {
+			$item_style[] = 'border-left-width: ' . $style_border_left_width;
+		}
+
+		if ( $style_border_radius ) {
+			$item_style[] = 'border-radius: ' . $style_border_radius;
+		}
+
+		if ( $style_border_top_left_radius ) {
+			$item_style[] = 'border-top-left-radius: ' . $style_border_top_left_radius;
+		}
+
+		if ( $style_border_top_right_radius ) {
+			$item_style[] = 'border-top-right-radius: ' . $style_border_top_right_radius;
+		}
+
+		if ( $style_border_bottom_left_radius ) {
+			$item_style[] = 'border-bottom-left-radius: ' . $style_border_bottom_left_radius;
+		}
+
+		if ( $style_border_bottom_right_radius ) {
+			$item_style[] = 'border-bottom-right-radius: ' . $style_border_bottom_right_radius;
+		}
+
+		$item_inner_unitone_layout   = array( 'stack' );
+		$item_inner_unitone_layout[] = ( $background_color || $style_background_color ) || ( $border_color || $style_border_color )
+			? '-gap:0'
+			: '-gap:-1';
+
+		$item_content_class          = array( 'unitone-child-pages__item__content' );
+		$item_content_unitone_layout = array( 'decorator' );
+
+		$item_action_class          = array( 'unitone-child-pages__item__action' );
+		$item_action_unitone_layout = array( 'decorator' );
 		?>
 		<div
 			data-unitone-layout="decorator"
@@ -54,14 +143,14 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 			<div data-unitone-layout="decorator__inner" style="height: 100%">
 				<div data-unitone-layout="cover -gap:-2 -padding:0" style="--unitone--min-height: 100%">
 					<div data-unitone-layout="cover__content -valign:top">
-						<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $item_inner_class ) ); ?>">
+						<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $item_inner_unitone_layout ) ); ?>">
 							<div data-unitone-layout="frame">
 								<figure class="wp-block-post-featured-image">
 									<?php the_post_thumbnail(); ?>
 								</figure>
 							</div>
 
-							<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $item_content_class ) ); ?>">
+							<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $item_content_unitone_layout ) ); ?>" class="<?php echo esc_attr( implode( ' ', $item_content_class ) ); ?>">
 								<div data-unitone-layout="stack -gap:-2">
 									<p><strong><?php the_title(); ?></strong></p>
 
@@ -73,7 +162,7 @@ if ( ! empty( $attributes['columnMinWidth'] ) ) {
 						</div>
 					</div>
 					<div data-unitone-layout="cover__content -valign:bottom">
-						<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $item_content_class ) ); ?>">
+						<div data-unitone-layout="<?php echo esc_attr( implode( ' ', $item_action_unitone_layout ) ); ?>" class="<?php echo esc_attr( implode( ' ', $item_action_class ) ); ?>">
 							<p class="has-unitone-xs-font-size has-text-align-right">
 								<a aria-hidden="true"><?php esc_html_e( 'Learn more', 'unitone' ); ?></a>
 							</p>

@@ -41,17 +41,33 @@ function render_block_unitone_child_pages( $attributes ) {
 		return;
 	}
 
-	$class_name  = ! empty( $attributes['className'] ) ? $attributes['className'] : null;
-	$block_style = $class_name && preg_match( '|is-style-([^ ]+)|', $class_name, $match ) ? $match[1] : null;
-	$template    = __DIR__ . $block_style . '.php';
-	$template    = $block_style ? __DIR__ . '/templates/' . $block_style . '.php' : __DIR__ . '/templates/default.php';
+	$layout       = $attributes['layout'];
+	$divider_type = $attributes['unitone']['dividerType'] ?? $attributes['__unstableUnitoneSupports']['dividerType']['default'] ?? null;
+
+	// @deprecated
+	if ( 'default' === $layout && ! empty( $attributes['className'] ) ) {
+		if ( preg_match( '|is-style-(.+?)-divided-(.+)$|', $attributes['className'], $match ) ) {
+			$layout       = $match[1];
+			$divider_type = $match[2];
+		} elseif ( preg_match( '|is-style-(.+)$|', $attributes['className'], $match ) ) {
+			$layout = $match[1];
+		}
+	}
+
+	$template = __DIR__ . '/templates/' . $layout . '.php';
 	if ( ! file_exists( $template ) ) {
-		return;
+		$template = __DIR__ . '/templates/default.php';
 	}
 
 	$block_wrapper_attributes = get_block_wrapper_attributes(
 		array(
-			'class' => 'unitone-child-pages',
+			'class' => implode(
+				' ',
+				array(
+					'unitone-child-pages',
+					'unitone-child-pages--layout:' . $layout,
+				)
+			),
 			'id'    => ! empty( $attributes['anchor'] ) ? $attributes['anchor'] : false,
 		)
 	);

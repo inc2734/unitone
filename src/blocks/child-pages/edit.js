@@ -7,6 +7,7 @@ import {
 import {
 	BaseControl,
 	Disabled,
+	SelectControl,
 	TextControl,
 	ToggleControl,
 	__experimentalToolsPanel as ToolsPanel,
@@ -32,8 +33,14 @@ const multiIncludes = ( haystack, needles ) => {
 };
 
 export default function ( { attributes, setAttributes } ) {
-	const { showTopLevel, parent, parentTitle, className, columnMinWidth } =
-		attributes;
+	const {
+		showTopLevel,
+		parent,
+		parentTitle,
+		className,
+		layout,
+		columnMinWidth,
+	} = attributes;
 
 	// linkcontrol returns value.title if present, so updating parent does not update the title.
 	// In the past, parent.title was saved, so if it is saved, it is removed.
@@ -47,7 +54,43 @@ export default function ( { attributes, setAttributes } ) {
 		} );
 	}, [] );
 
+	// @deprecated
+	// Remove old block style classNames.
+	useEffect( () => {
+		if ( 'default' === layout ) {
+			return;
+		}
+
+		const deprecatedBlockStyles = [
+			'is-style-cluster-divided-stripe',
+			'is-style-cluster-divided-slash',
+			'is-style-stack-divided-stripe',
+			'is-style-rich-media',
+			'is-style-box',
+			'is-style-panel',
+		];
+
+		if ( multiIncludes( className, deprecatedBlockStyles ) ) {
+			setAttributes( {
+				className: className
+					.split( /\s+/ )
+					.filter( Boolean )
+					.filter( ( v ) => ! deprecatedBlockStyles.includes( v ) )
+					.join( ' ' ),
+			} );
+		}
+	}, [ layout ] );
+
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
+	// @deprecated
+	const isDisplayColumnMinWidthSetting =
+		[ 'box', 'panel', 'rich-media' ].includes( layout ) ||
+		multiIncludes( className, [
+			'is-style-box',
+			'is-style-panel',
+			'is-style-rich-media',
+		] );
 
 	return (
 		<>
@@ -155,11 +198,56 @@ export default function ( { attributes, setAttributes } ) {
 						</ToolsPanelItem>
 					) }
 
-					{ multiIncludes( className, [
-						'is-style-box',
-						'is-style-panel',
-						'is-style-rich-media',
-					] ) && (
+					<ToolsPanelItem
+						hasValue={ () =>
+							layout !== metadata.attributes.layout.default
+						}
+						isShownByDefault
+						label={ __( 'Layout', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								layout: metadata.attributes.layout.default,
+							} )
+						}
+					>
+						<SelectControl
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							label={ __( 'Layout', 'unitone' ) }
+							value={ layout }
+							options={ [
+								{
+									label: __( 'Default', 'unitone' ),
+									value: 'default',
+								},
+								{
+									label: __( 'Box', 'unitone' ),
+									value: 'box',
+								},
+								{
+									label: __( 'Panel', 'unitone' ),
+									value: 'panel',
+								},
+								{
+									label: __( 'Rich media', 'unitone' ),
+									value: 'rich-media',
+								},
+								{
+									label: __( 'Cluster', 'unitone' ),
+									value: 'cluster',
+								},
+								{
+									label: __( 'Stack', 'unitone' ),
+									value: 'stack',
+								},
+							] }
+							onChange={ ( newAttribute ) => {
+								setAttributes( { layout: newAttribute } );
+							} }
+						/>
+					</ToolsPanelItem>
+
+					{ isDisplayColumnMinWidthSetting && (
 						<ToolsPanelItem
 							hasValue={ () =>
 								columnMinWidth !==

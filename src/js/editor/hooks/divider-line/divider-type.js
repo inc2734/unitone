@@ -12,8 +12,14 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
-const getDividerTypeOptions = ( { name } ) => {
-	const options = getBlockSupport( name, 'unitone.dividerType' );
+const getDividerTypeOptions = ( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) => {
+	const options =
+		getBlockSupport( name, 'unitone.dividerType' ) ||
+		__unstableUnitoneSupports?.dividerType?.options ||
+		__unstableUnitoneSupports?.dividerType;
 
 	const list = [
 		{
@@ -51,20 +57,44 @@ const getDividerTypeOptions = ( { name } ) => {
 	];
 
 	return list.filter( ( value ) => {
-		return options.includes( value.value ) || '' === value.value;
+		return options?.includes( value.value ) || '' === value.value;
 	} );
 };
 
-export function isDividerTypeSupportDisabled( { name } ) {
+function getDefaultValue( { name, __unstableUnitoneSupports } ) {
+	return null != __unstableUnitoneSupports?.dividerType?.default
+		? __unstableUnitoneSupports?.dividerType?.default
+		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.dividerType;
+}
+
+function useDefaultValue( { name, __unstableUnitoneSupports } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.dividerType;
+	}, [] );
+
+	return null != __unstableUnitoneSupports?.dividerType?.default
+		? __unstableUnitoneSupports?.dividerType?.default
+		: defaultValue;
+}
+
+export function isDividerTypeSupportDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.divider' ) &&
-		! getBlockSupport( name, 'unitone.dividerType' )
+		! getBlockSupport( name, 'unitone.dividerType' ) &&
+		! __unstableUnitoneSupports?.dividerType
 	);
 }
 
-export function hasDividerTypeValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.dividerType;
+export function hasDividerTypeValue( {
+	name,
+	attributes: { unitone, __unstableUnitoneSupports },
+} ) {
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
 	return (
 		defaultValue !== unitone?.dividerType &&
@@ -94,16 +124,14 @@ export function getDividerTypeEditLabel( {
 	);
 }
 
-export function DividerTypeEdit( {
-	name,
-	label,
-	attributes: { unitone },
-	setAttributes,
-} ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.dividerType;
-	}, [] );
+export function DividerTypeEdit( props ) {
+	const {
+		name,
+		label,
+		attributes: { unitone, __unstableUnitoneSupports },
+		setAttributes,
+	} = props;
+	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
 	return (
 		<SelectControl
@@ -111,7 +139,7 @@ export function DividerTypeEdit( {
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ unitone?.dividerType ?? defaultValue ?? '' }
-			options={ getDividerTypeOptions( { name } ) }
+			options={ getDividerTypeOptions( { ...props } ) }
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,
@@ -128,9 +156,12 @@ export function DividerTypeEdit( {
 
 export function withDividerTypeBlockProps( settings ) {
 	const { attributes, name } = settings;
+	const { __unstableUnitoneSupports } = attributes;
 
 	if ( ! hasBlockSupport( name, 'unitone.dividerType' ) ) {
-		return settings;
+		if ( ! __unstableUnitoneSupports?.dividerType ) {
+			return settings;
+		}
 	}
 
 	const newDividerType = attributes?.unitone?.dividerType;

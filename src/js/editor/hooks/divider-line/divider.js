@@ -70,11 +70,45 @@ const getDivider = (
 	return divider;
 };
 
-export function hasDividerValue( { name, attributes: { unitone } } ) {
+function getDefaultValue( { name, __unstableUnitoneSupports } ) {
 	const blockType = wp.data.select( blocksStore ).getBlockType( name );
-	const defaultDivider = blockType?.attributes?.unitone?.default?.divider;
-	const defaultDividerColor =
-		blockType?.attributes?.unitone?.default?.dividerColor;
+
+	return {
+		divider:
+			null != __unstableUnitoneSupports?.divider?.default
+				? __unstableUnitoneSupports?.divider?.default
+				: blockType?.attributes?.unitone?.default?.divider,
+		dividerColor:
+			null != __unstableUnitoneSupports?.dividerColor?.default
+				? __unstableUnitoneSupports?.dividerColor?.default
+				: blockType?.attributes?.unitone?.default?.dividerColor,
+	};
+}
+
+function useDefaultValue( { name, __unstableUnitoneSupports } ) {
+	const blockType = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name );
+	} );
+
+	return {
+		divider:
+			null != __unstableUnitoneSupports?.divider?.default
+				? __unstableUnitoneSupports?.divider?.default
+				: blockType?.attributes?.unitone?.default?.divider,
+		dividerColor:
+			null != __unstableUnitoneSupports?.dividerColor?.default
+				? __unstableUnitoneSupports?.dividerColor?.default
+				: blockType?.attributes?.unitone?.default?.dividerColor,
+	};
+}
+
+export function hasDividerValue( {
+	name,
+	attributes: { unitone, __unstableUnitoneSupports },
+} ) {
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
+	const defaultDivider = defaultValue?.divider;
+	const defaultDividerColor = defaultValue?.dividerColor;
 
 	return (
 		( JSON.stringify( defaultDivider ) !==
@@ -100,8 +134,14 @@ export function resetDivider( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function isDividerSupportDisabled( { name } ) {
-	return ! hasBlockSupport( name, 'unitone.divider' );
+export function isDividerSupportDisabled( {
+	name,
+	attributes: { __unstableUnitoneSupports },
+} ) {
+	return (
+		! hasBlockSupport( name, 'unitone.divider' ) &&
+		! __unstableUnitoneSupports?.divider
+	);
 }
 
 export function getDividerEditLabel( {
@@ -115,21 +155,12 @@ export function getDividerEditLabel( {
 export function DividerEdit( {
 	name,
 	label,
-	attributes: { unitone },
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
-	const { defaultDivider, defaultDividerColor } = useSelect(
-		( select ) => {
-			const blockType = select( blocksStore ).getBlockType( name );
-			return {
-				defaultDivider:
-					blockType?.attributes?.unitone?.default?.divider,
-				defaultDividerColor:
-					blockType?.attributes?.unitone?.default?.dividerColor,
-			};
-		},
-		[ name ]
-	);
+	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
+	const defaultDivider = defaultValue?.divider;
+	const defaultDividerColor = defaultValue?.dividerColor;
 
 	const { colors } = useMultipleOriginColorsAndGradients();
 
@@ -209,9 +240,12 @@ export function DividerEdit( {
 
 export function withDividerBlockProps( settings ) {
 	const { attributes, name } = settings;
+	const { __unstableUnitoneSupports } = attributes;
 
 	if ( ! hasBlockSupport( name, 'unitone.divider' ) ) {
-		return settings;
+		if ( ! __unstableUnitoneSupports?.divider ) {
+			return settings;
+		}
 	}
 
 	const newDivider = {

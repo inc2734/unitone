@@ -298,7 +298,7 @@ add_filter(
 		}
 
 		// --unitone--divier-color
-		if ( $has_support( 'divider' ) ) {
+		if ( $has_support( 'divider' ) || $has_supported_attribute( 'divider' ) ) {
 			$divider_color        = $get_attribute( 'divider.color' );
 			$divider_preset_color = $get_attribute( 'dividerColor' );
 
@@ -310,12 +310,12 @@ add_filter(
 		}
 
 		// --unitone--divider-style
-		if ( $has_support( 'divider' ) ) {
+		if ( $has_support( 'divider' ) || $has_supported_attribute( 'divider' ) ) {
 			$add_style( '--unitone--divider-style', $get_attribute( 'divider.style' ) );
 		}
 
 		// --unitone--divider-width
-		if ( $has_support( 'divider' ) ) {
+		if ( $has_support( 'divider' ) || $has_supported_attribute( 'divider' ) ) {
 			$add_style( '--unitone--divider-width', $get_attribute( 'divider.width' ) );
 		}
 

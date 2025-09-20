@@ -5,10 +5,12 @@
  * @license GPL-2.0+
  */
 
-$data_unitone_layout = array(
-	'cluster',
-	'-divider:stripe',
-);
+$data_unitone_layout = array( 'cluster' );
+
+if ( ! empty( $divider_type ) ) {
+	$data_unitone_layout[] = '-divider:' . $divider_type;
+}
+
 if ( ! empty( $attributes['unitone']['gap'] ) ) {
 	$data_unitone_layout[] = '-gap:' . $attributes['unitone']['gap'];
 }

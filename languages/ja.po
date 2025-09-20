@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-13T15:15:26+00:00\n"
-"PO-Revision-Date: 2025-09-14 00:16+0900\n"
+"POT-Creation-Date: 2025-09-20T09:01:31+00:00\n"
+"PO-Revision-Date: 2025-09-20 18:02+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -91,12 +91,12 @@ msgstr ""
 "ンスキーサブスクリプション%2$sを契約すると発行されます。ライセンスキーは%5$s"
 "ここで設定します%6$s。"
 
-#: dist/blocks/child-pages/templates/box.php:57
-#: dist/blocks/child-pages/templates/box.php:61
-#: dist/blocks/child-pages/templates/panel.php:57
-#: dist/blocks/child-pages/templates/panel.php:61
-#: dist/blocks/child-pages/templates/rich-media.php:78
-#: dist/blocks/child-pages/templates/rich-media.php:83
+#: dist/blocks/child-pages/templates/box.php:141
+#: dist/blocks/child-pages/templates/box.php:145
+#: dist/blocks/child-pages/templates/panel.php:141
+#: dist/blocks/child-pages/templates/panel.php:145
+#: dist/blocks/child-pages/templates/rich-media.php:167
+#: dist/blocks/child-pages/templates/rich-media.php:172
 #: dist/blocks/decorator/index.js:1
 msgid "Learn more"
 msgstr "さらに詳しく"
@@ -108,7 +108,7 @@ msgid "%s mega menu"
 msgstr "%sのメガメニュー"
 
 #: inc/block-categories.php:25 App/Controller/Manager/dist/js/app.js:7
-#: dist/js/editor/editor.js:7
+#: dist/blocks/child-pages/index.js:1 dist/js/editor/editor.js:7
 msgid "Layout"
 msgstr "レイアウト"
 
@@ -1979,9 +1979,9 @@ msgstr "ブログカード"
 msgid "Style"
 msgstr "スタイル"
 
-#: App/Controller/Manager/dist/js/app.js:9 dist/blocks/layers/index.js:1
-#: dist/blocks/section/index.js:1 dist/js/editor/editor.js:16
-#: dist/js/editor/editor.js:26
+#: App/Controller/Manager/dist/js/app.js:9 dist/blocks/child-pages/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
+#: dist/js/editor/editor.js:16 dist/js/editor/editor.js:26
 msgid "Default"
 msgstr "デフォルト"
 
@@ -2194,6 +2194,26 @@ msgstr "実際の画面では、このページが子ページを持っている
 #: dist/blocks/child-pages/index.js:1
 msgid "Search"
 msgstr "検索"
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Box"
+msgstr "ボックス"
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Panel"
+msgstr "パネル"
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Rich media"
+msgstr "リッチメディア"
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Cluster"
+msgstr "クラスター"
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Stack"
+msgstr "スタック"
 
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
@@ -3809,18 +3829,17 @@ msgctxt "block description"
 msgid "This block displays folded content."
 msgstr "折り畳まれたコンテンツを表示するブロックです。"
 
-#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
-#: dist/blocks/tabs/block.json
+#: dist/blocks/accordion/block.json dist/blocks/tabs/block.json
 msgctxt "block style label"
 msgid "Default"
 msgstr "デフォルト"
 
-#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
+#: dist/blocks/accordion/block.json
 msgctxt "block style label"
 msgid "Box"
 msgstr "ボックス"
 
-#: dist/blocks/accordion/block.json dist/blocks/child-pages/block.json
+#: dist/blocks/accordion/block.json
 msgctxt "block style label"
 msgid "Panel"
 msgstr "パネル"
@@ -3882,26 +3901,6 @@ msgstr "子ページの一覧"
 msgctxt "block description"
 msgid "This block displays child pages."
 msgstr "このブロックは子ページの一覧を表示します。"
-
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Cluster (Stripe)"
-msgstr "クラスター（区切り：ストライプ）"
-
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Cluster (Slash)"
-msgstr "クラスター（区切り：スラッシュ）"
-
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Stack (Stripe)"
-msgstr "スタック（区切り：ストライプ）"
-
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Rich media"
-msgstr "リッチメディア"
 
 #: dist/blocks/cluster-divided-content/block.json
 msgctxt "block description"
@@ -4980,3 +4979,15 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
+
+#~ msgctxt "block style label"
+#~ msgid "Cluster (Stripe)"
+#~ msgstr "クラスター（区切り：ストライプ）"
+
+#~ msgctxt "block style label"
+#~ msgid "Cluster (Slash)"
+#~ msgstr "クラスター（区切り：スラッシュ）"
+
+#~ msgctxt "block style label"
+#~ msgid "Stack (Stripe)"
+#~ msgstr "スタック（区切り：ストライプ）"

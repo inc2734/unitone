@@ -7,7 +7,12 @@
 
 $current_id = get_the_ID();
 
-$data_unitone_layout      = array( 'stack', '-divider:stripe' );
+$data_unitone_layout = array( 'stack' );
+
+if ( ! empty( $divider_type ) ) {
+	$data_unitone_layout[] = '-divider:' . $divider_type;
+}
+
 $item_data_unitone_layout = array( 'stack' );
 
 if ( ! empty( $attributes['unitone']['gap'] ) ) {

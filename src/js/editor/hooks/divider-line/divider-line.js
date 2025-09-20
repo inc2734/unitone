@@ -39,7 +39,7 @@ export const withDividerLineBlockProps = compose(
 
 export const resetDividerLine = ( props ) => {
 	const filters = [
-		[ isDividerTypeSupportDisabled, resetDividerTypeFilter ],
+		//[ isDividerTypeSupportDisabled, resetDividerTypeFilter ],
 		[ isDividerSupportDisabled, resetDividerFilter ],
 	];
 
@@ -56,7 +56,7 @@ export const resetDividerLine = ( props ) => {
 };
 
 export function DividerLinePanelPure( props ) {
-	const { name, attributes, setAttributes, clientId } = props;
+	const { attributes, setAttributes, clientId } = props;
 
 	const resetAll = () => {
 		setAttributes( {
@@ -71,8 +71,8 @@ export function DividerLinePanelPure( props ) {
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
-	const isDividerTypeDisabled = isDividerTypeSupportDisabled( { name } );
-	const isDividerDisabled = isDividerSupportDisabled( { name } );
+	const isDividerTypeDisabled = isDividerTypeSupportDisabled( { ...props } );
+	const isDividerDisabled = isDividerSupportDisabled( { ...props } );
 
 	if ( isDividerTypeDisabled || isDividerDisabled ) {
 		return null;

@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 23.3.0\n"
+"Project-Id-Version: unitone 23.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-13T15:15:26+00:00\n"
+"POT-Creation-Date: 2025-09-20T09:01:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -94,12 +94,12 @@ msgstr ""
 msgid "You have not set a valid license key. Setting a license key will allow you to use patterns registered in %3$sthe pattern library%4$s. It will also enable theme updates. A license key is issued when you subscribe to %1$sunitone license key subscription%2$s. The license key is set %5$shere%6$s."
 msgstr ""
 
-#: dist/blocks/child-pages/templates/box.php:57
-#: dist/blocks/child-pages/templates/box.php:61
-#: dist/blocks/child-pages/templates/panel.php:57
-#: dist/blocks/child-pages/templates/panel.php:61
-#: dist/blocks/child-pages/templates/rich-media.php:78
-#: dist/blocks/child-pages/templates/rich-media.php:83
+#: dist/blocks/child-pages/templates/box.php:141
+#: dist/blocks/child-pages/templates/box.php:145
+#: dist/blocks/child-pages/templates/panel.php:141
+#: dist/blocks/child-pages/templates/panel.php:145
+#: dist/blocks/child-pages/templates/rich-media.php:167
+#: dist/blocks/child-pages/templates/rich-media.php:172
 #: dist/blocks/decorator/index.js:1
 msgid "Learn more"
 msgstr ""
@@ -112,6 +112,7 @@ msgstr ""
 
 #: inc/block-categories.php:25
 #: App/Controller/Manager/dist/js/app.js:7
+#: dist/blocks/child-pages/index.js:1
 #: dist/js/editor/editor.js:7
 msgid "Layout"
 msgstr ""
@@ -1980,6 +1981,7 @@ msgid "Style"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:9
+#: dist/blocks/child-pages/index.js:1
 #: dist/blocks/layers/index.js:1
 #: dist/blocks/section/index.js:1
 #: dist/js/editor/editor.js:16
@@ -2216,6 +2218,26 @@ msgstr ""
 
 #: dist/blocks/child-pages/index.js:1
 msgid "Search"
+msgstr ""
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Box"
+msgstr ""
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Panel"
+msgstr ""
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Rich media"
+msgstr ""
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Cluster"
+msgstr ""
+
+#: dist/blocks/child-pages/index.js:1
+msgid "Stack"
 msgstr ""
 
 #: dist/blocks/child-pages/index.js:1
@@ -3819,20 +3841,17 @@ msgid "This block displays folded content."
 msgstr ""
 
 #: dist/blocks/accordion/block.json
-#: dist/blocks/child-pages/block.json
 #: dist/blocks/tabs/block.json
 msgctxt "block style label"
 msgid "Default"
 msgstr ""
 
 #: dist/blocks/accordion/block.json
-#: dist/blocks/child-pages/block.json
 msgctxt "block style label"
 msgid "Box"
 msgstr ""
 
 #: dist/blocks/accordion/block.json
-#: dist/blocks/child-pages/block.json
 msgctxt "block style label"
 msgid "Panel"
 msgstr ""
@@ -3893,26 +3912,6 @@ msgstr ""
 #: dist/blocks/child-pages/block.json
 msgctxt "block description"
 msgid "This block displays child pages."
-msgstr ""
-
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Cluster (Stripe)"
-msgstr ""
-
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Cluster (Slash)"
-msgstr ""
-
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Stack (Stripe)"
-msgstr ""
-
-#: dist/blocks/child-pages/block.json
-msgctxt "block style label"
-msgid "Rich media"
 msgstr ""
 
 #: dist/blocks/cluster-divided-content/block.json

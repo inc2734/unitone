@@ -5,9 +5,12 @@
 }
 
 :root :where(
-	.unitone-child-pages.is-style-box,
-	.unitone-child-pages.is-style-panel,
-	.unitone-child-pages.is-style-rich-media
+	.unitone-child-pages--layout\:box,
+	.unitone-child-pages--layout\:panel,
+	.unitone-child-pages--layout\:rich-media,
+	.unitone-child-pages.is-style-box, /* @deprecated */
+	.unitone-child-pages.is-style-panel, /* @deprecated */
+	.unitone-child-pages.is-style-rich-media /* @deprecated */
 ) {
 	--unitone--item-padding: var(--unitone--padding);
 
@@ -24,13 +27,40 @@
 }
 
 :root :where(
-	.unitone-child-pages.is-style-box,
-	.unitone-child-pages.is-style-panel
+	.unitone-child-pages--layout\:box,
+	.unitone-child-pages--layout\:panel,
+	.unitone-child-pages.is-style-box, /* @deprecated */
+	.unitone-child-pages.is-style-panel /* @deprecated */
 ) {
 	--unitone--padding: var(--unitone--p1);
 }
 
-:root :where(.unitone-child-pages.is-style-box) {
+:root :where(
+	.unitone-child-pages--layout\:cluster,
+	.unitone-child-pages--layout\:stack
+) {
+	--unitone--divider-width: 1px;
+	--unitone--divider-style: solid;
+	--unitone--divider-color: var(--wp--preset--color--unitone-light-gray);
+
+	--unitone--layout-divider-width: var(--unitone--divider-width);
+	--unitone--layout-divider-style: var(--unitone--divider-style);
+	--unitone--layout-divider-color: var(--unitone--divider-color);
+
+	:where(
+		[data-unitone-layout~="cluster"][data-unitone-layout*="-divider\:"],
+		[data-unitone-layout~="stack"][data-unitone-layout*="-divider\:"]
+	) {
+		--unitone--divider-width: var(--unitone--layout-divider-width);
+		--unitone--divider-style: var(--unitone--layout-divider-style);
+		--unitone--divider-color: var(--unitone--layout-divider-color);
+	}
+}
+
+:root :where(
+	.unitone-child-pages--layout\:box,
+	.unitone-child-pages.is-style-box /* @deprecated */
+) {
 	> :where([data-unitone-layout~="responsive-grid"]) {
 		> :where([data-unitone-layout~="decorator"]) {
 			--unitone--padding: var(--unitone--item-padding);
@@ -40,7 +70,10 @@
 	}
 }
 
-:root :where(.unitone-child-pages.is-style-panel) {
+:root :where(
+	.unitone-child-pages--layout\:panel,
+	.unitone-child-pages.is-style-panel /* @deprecated */
+) {
 	> :where([data-unitone-layout~="responsive-grid"]) {
 		> :where([data-unitone-layout~="decorator"]) {
 			--unitone--padding: var(--unitone--item-padding);
@@ -50,7 +83,10 @@
 	}
 }
 
-:root :where(.unitone-child-pages.is-style-rich-media) {
+:root :where(
+	.unitone-child-pages--layout\:rich-media,
+	.unitone-child-pages.is-style-rich-media /* @deprecated */
+) {
 	--unitone--padding: 0px;
 
 	&:where(.has-background, .has-border-color) {
@@ -72,7 +108,10 @@
 	}
 }
 
-:root :where(.unitone-child-pages.is-style-stack-divided-stripe) {
+:root :where(
+	.unitone-child-pages--layout\:stack:has([data-unitone-layout~="-divider:stripe"]),
+	.unitone-child-pages.is-style-stack-divided-stripe /* @deprecated */
+) {
 	:where([data-unitone-layout~="stack"]) {
 		--unitone--gap: var(--unitone--s-1);
 	}

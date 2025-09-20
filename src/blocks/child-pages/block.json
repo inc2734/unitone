@@ -19,6 +19,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"layout": {
+			"type": "string",
+			"default": "default"
+		},
 		"columnMinWidth": {
 			"type": "string",
 			"default": ""
@@ -71,37 +75,6 @@
 			"padding": true
 		}
 	},
-	"styles": [
-		{
-			"name": "default",
-			"label": "Default",
-			"isDefault": true
-		},
-		{
-			"name": "cluster-divided-stripe",
-			"label": "Cluster (Stripe)"
-		},
-		{
-			"name": "cluster-divided-slash",
-			"label": "Cluster (Slash)"
-		},
-		{
-			"name": "stack-divided-stripe",
-			"label": "Stack (Stripe)"
-		},
-		{
-			"name": "rich-media",
-			"label": "Rich media"
-		},
-		{
-			"name": "box",
-			"label": "Box"
-		},
-		{
-			"name": "panel",
-			"label": "Panel"
-		}
-	],
 	"category": "unitone/component",
 	"style": [
 		"unitone-cluster-style",

@@ -11,7 +11,7 @@ if ( ! empty( $divider_type ) ) {
 	$data_unitone_layout[] = '-divider:' . $divider_type;
 }
 
-if ( ! empty( $attributes['unitone']['gap'] ) ) {
+if ( ! is_null( $attributes['unitone']['gap'] ?? null ) ) {
 	$data_unitone_layout[] = '-gap:' . $attributes['unitone']['gap'];
 }
 ?>

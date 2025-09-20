@@ -17,7 +17,7 @@
 	&:not(:root) {
 		background-color: transparent !important;
 		border: none !important;
-		border-radius: none !important;
+		border-radius: initial !important;
 		padding: 0 !important;
 	}
 

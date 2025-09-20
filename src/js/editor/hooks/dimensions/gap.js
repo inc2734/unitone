@@ -193,12 +193,7 @@ export function GapEdit( {
 
 		const newUnitone = {
 			...unitone,
-			gap:
-				newValue ||
-				( null ==
-				( defaultValue?.column ?? defaultValue?.row ?? defaultValue )
-					? undefined
-					: '' ),
+			gap: newValue || undefined,
 		};
 
 		setAttributes( {

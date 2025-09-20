@@ -209,7 +209,7 @@ export function PaddingEdit( {
 
 		const newUnitone = {
 			...unitone,
-			padding: newValue || ( null != defaultValue ? undefined : '' ),
+			padding: newValue || undefined,
 		};
 
 		setAttributes( {

@@ -8,12 +8,12 @@
 $data_unitone_layout = array(
 	'responsive-grid',
 );
-if ( ! empty( $attributes['unitone']['gap'] ) ) {
+if ( ! is_null( $attributes['unitone']['gap'] ?? null ) ) {
 	$data_unitone_layout[] = '-gap:' . $attributes['unitone']['gap'];
 }
 
 $style = array();
-if ( ! empty( $attributes['columnMinWidth'] ) ) {
+if ( $attributes['columnMinWidth'] ) {
 	$style[] = '--unitone--column-min-width: ' . $attributes['columnMinWidth'];
 }
 ?>

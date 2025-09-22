@@ -109,14 +109,6 @@
 	:where(tbody td) {
 		background-color: var(--wp--preset--color--unitone-bright-gray);
 	}
-
-	// &:where(:not(.has-header-section-background-color)) :where(thead th) {
-	// 	background-color: var(--wp--preset--color--unitone-bright-gray);
-	// }
-
-	// &:where(:not(.has-footer-section-background-color)) :where(tfoot td) {
-	// 	background-color: var(--wp--preset--color--unitone-bright-gray);
-	// }
 }
 
 :root :where(.wp-block-table.is-style-vertical-line) {

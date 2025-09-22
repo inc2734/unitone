@@ -162,6 +162,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											label: __( 'Simple', 'unitone' ),
 											value: 'simple',
 										},
+										{
+											label: __( 'Box', 'unitone' ),
+											value: 'box',
+										},
 									] }
 									onChange={ ( newSetting ) =>
 										setSettings( {

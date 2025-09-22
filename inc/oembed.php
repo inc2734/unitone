@@ -103,6 +103,7 @@ add_action(
 			'dark',
 			'media',
 			'simple',
+			'box',
 		);
 
 		foreach ( $styles as $style ) {

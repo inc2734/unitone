@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-22T01:10:06+00:00\n"
-"PO-Revision-Date: 2025-09-22 10:37+0900\n"
+"POT-Creation-Date: 2025-09-22T02:09:43+00:00\n"
+"PO-Revision-Date: 2025-09-22 11:10+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2005,6 +2005,10 @@ msgstr "メディア"
 msgid "Simple"
 msgstr "シンプル"
 
+#: App/Controller/Manager/dist/js/app.js:9 dist/blocks/child-pages/index.js:1
+msgid "Box"
+msgstr "ボックス"
+
 #: App/Controller/Manager/dist/js/app.js:9 dist/js/editor/editor.js:16
 msgid "OGP"
 msgstr "OGP"
@@ -2194,10 +2198,6 @@ msgstr "実際の画面では、このページが子ページを持っている
 #: dist/blocks/child-pages/index.js:1
 msgid "Search"
 msgstr "検索"
-
-#: dist/blocks/child-pages/index.js:1
-msgid "Box"
-msgstr "ボックス"
 
 #: dist/blocks/child-pages/index.js:1
 msgid "Panel"

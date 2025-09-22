@@ -1,13 +1,20 @@
 .wp-block-table {
 	--unitone--padding: var(--unitone--p-1);
-	--unitone--padding-block: var(--unitone--padding);
-	--unitone--padding-inline: var(--unitone--padding);
+	--unitone--padding-top: var(--unitone--padding);
+	--unitone--padding-right: var(--unitone--padding);
+	--unitone--padding-bottom: var(--unitone--padding);
+	--unitone--padding-left: var(--unitone--padding);
 	--unitone--cell-min-width: 0px;
 	--unitone--scrollbar-thumb-color: #ddd;
 	--unitone--scrollbar-track-color: transparent;
+	--unitone--header-section-color: inherit;
+	--unitone--header-section-background-color: transparent;
+	--unitone--footer-section-color: inherit;
+	--unitone--footer-section-background-color: transparent;
 
 	&:where(:has(> table)) {
 		overflow-x: auto;
+		overflow-y: hidden;
 		scrollbar-color: var(--unitone--scrollbar-thumb-color) var(--unitone--scrollbar-track-color);
 		scrollbar-width: 1rem;
 
@@ -40,8 +47,22 @@
 
 	th,
 	td {
-		padding: var(--unitone--padding-block) var(--unitone--padding-inline);
+		padding:
+			var(--unitone--padding-top)
+			var(--unitone--padding-right)
+			var(--unitone--padding-bottom)
+			var(--unitone--padding-left);
 		min-width: var(--unitone--cell-min-width);
+	}
+
+	:where(thead th) {
+		background-color: var(--unitone--header-section-background-color);
+		color: var(--unitone--header-section-color);
+	}
+
+	:where(tfoot td) {
+		background-color: var(--unitone--footer-section-background-color);
+		color: var(--unitone--footer-section-color);
 	}
 
 	.has-fixed-layout {
@@ -50,6 +71,10 @@
 			width: var(--unitone--cell-min-width);
 		}
 	}
+}
+
+:root :where(.wp-block-table.has-footer-section-background-color tfoot td) {
+
 }
 
 :root :where(.wp-block-table.is-style-stripes) {
@@ -69,6 +94,8 @@
 
 :root :where(.wp-block-table.is-style-vertical-fill) {
 	--unitone--gap: var(--unitone--global--text-gap);
+	--unitone--header-section-background-color: var(--wp--preset--color--unitone-bright-gray);
+	--unitone--footer-section-background-color: var(--wp--preset--color--unitone-bright-gray);
 
 	overflow: hidden;
 
@@ -79,16 +106,20 @@
 		width: calc(100% + var(--unitone--gap) * 2) !important;
 	}
 
-	:where(tr) > * {
+	:where(tbody td) {
 		background-color: var(--wp--preset--color--unitone-bright-gray);
 	}
+
+	// &:where(:not(.has-header-section-background-color)) :where(thead th) {
+	// 	background-color: var(--wp--preset--color--unitone-bright-gray);
+	// }
+
+	// &:where(:not(.has-footer-section-background-color)) :where(tfoot td) {
+	// 	background-color: var(--wp--preset--color--unitone-bright-gray);
+	// }
 }
 
 :root :where(.wp-block-table.is-style-vertical-line) {
-	--unitone--padding: var(--unitone--p1);
-	--unitone--padding-block: calc(var(--unitone--padding) / 1.5);
-	--unitone--padding-inline: var(--unitone--padding);
-
 	:where(tr) > :where(:not(:last-child)) {
 		border-top-width: 0 !important;
 		border-right-width: 1px !important;

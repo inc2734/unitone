@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-20T09:01:31+00:00\n"
-"PO-Revision-Date: 2025-09-20 18:02+0900\n"
+"POT-Creation-Date: 2025-09-22T01:10:06+00:00\n"
+"PO-Revision-Date: 2025-09-22 10:37+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3626,6 +3626,22 @@ msgstr "使用するテンプレートパーツ"
 #: dist/js/editor/editor.js:16
 msgid "Use block links"
 msgstr "ブロックリンクを使用する"
+
+#: dist/js/editor/editor.js:16
+msgid "Header section text"
+msgstr "ヘッダーセクションのテキスト"
+
+#: dist/js/editor/editor.js:16
+msgid "Header section background"
+msgstr "ヘッダーセクションの背景"
+
+#: dist/js/editor/editor.js:16
+msgid "Footer section text"
+msgstr "フッターセクションのテキスト"
+
+#: dist/js/editor/editor.js:16
+msgid "Footer section background"
+msgstr "フッターセクションの背景"
 
 #: dist/js/editor/editor.js:16
 msgid "Cell Min Width"

@@ -499,3 +499,100 @@ function unitone_apply_block_link( $block_content, $block ) {
 	return $p->get_updated_html();
 }
 add_filter( 'render_block_core/query', 'unitone_apply_block_link', 10, 2 );
+
+/**
+ * Add CSS vars to core/table.
+ */
+add_filter(
+	'render_block_core/table',
+	function ( $block_content, $block ) {
+		$attrs = $block['attrs'] ?? array();
+
+		$header_section_color                   = $attrs['unitone']['headerSectionColor'] ?? false;
+		$header_section_custom_color            = $attrs['unitone']['headerSectionCustomColor'] ?? false;
+		$header_section_background_color        = $attrs['unitone']['headerSectionBackgroundColor'] ?? false;
+		$header_section_custom_background_color = $attrs['unitone']['headerSectionCustomBackgroundColor'] ?? false;
+
+		$footer_section_color                   = $attrs['unitone']['footerSectionColor'] ?? false;
+		$footer_section_custom_color            = $attrs['unitone']['footerSectionCustomColor'] ?? false;
+		$footer_section_background_color        = $attrs['unitone']['footerSectionBackgroundColor'] ?? false;
+		$footer_section_custom_background_color = $attrs['unitone']['footerSectionCustomBackgroundColor'] ?? false;
+
+		if (
+			! $header_section_color &&
+			! $header_section_custom_color &&
+			! $header_section_background_color &&
+			! $header_section_custom_background_color &&
+			! $footer_section_color &&
+			! $footer_section_custom_color &&
+			! $footer_section_background_color &&
+			! $footer_section_custom_background_color
+		) {
+			return $block_content;
+		}
+
+		$p = new \WP_HTML_Tag_Processor( $block_content );
+
+		if ( $p->next_tag() ) {
+			$header_section_color            = $header_section_color
+				? 'var(--wp--preset--color--' . $header_section_color . ')'
+				: $header_section_custom_color;
+			$header_section_background_color = $header_section_background_color
+				? 'var(--wp--preset--color--' . $header_section_background_color . ')'
+				: $header_section_custom_background_color;
+
+			$footer_section_color            = $footer_section_color
+				? 'var(--wp--preset--color--' . $footer_section_color . ')'
+				: $footer_section_custom_color;
+			$footer_section_background_color = $footer_section_background_color
+				? 'var(--wp--preset--color--' . $footer_section_background_color . ')'
+				: $footer_section_custom_background_color;
+
+			$classes = $p->get_attribute( 'class' );
+			$classes = $classes ? explode( ' ', $classes ) : array();
+
+			if ( $header_section_color ) {
+				$classes[] = 'has-header-section-color';
+			}
+			if ( $header_section_background_color ) {
+				$classes[] = 'has-header-section-background-color';
+			}
+
+			if ( $footer_section_color ) {
+				$classes[] = 'has-footer-section-color';
+			}
+			if ( $footer_section_background_color ) {
+				$classes[] = 'has-footer-section-background-color';
+			}
+
+			$p->set_attribute( 'class', trim( implode( ' ', $classes ) ) );
+
+			$style = $p->get_attribute( 'style' );
+			$style = $style ? explode( ';', $style ) : array();
+
+			$new_styles = array(
+				'--unitone--header-section-color' => $header_section_color,
+				'--unitone--header-section-background-color' => $header_section_background_color,
+				'--unitone--footer-section-color' => $footer_section_color,
+				'--unitone--footer-section-background-color' => $footer_section_background_color,
+			);
+
+			$new_styles = array_filter(
+				$new_styles,
+				function ( $value ) {
+					return false !== $value && ! is_null( $value ) && '' !== $value;
+				}
+			);
+
+			foreach ( $new_styles as $new_style_key => $new_style_value ) {
+				$style[] = sprintf( '%1$s: %2$s', $new_style_key, $new_style_value );
+			}
+
+			$p->set_attribute( 'style', trim( implode( ';', $style ) ) );
+		}
+
+		return $p->get_updated_html();
+	},
+	10,
+	2
+);

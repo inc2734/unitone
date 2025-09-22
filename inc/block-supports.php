@@ -234,6 +234,9 @@ function unitone_add_supports_to_core_table( $metadata ) {
 				$metadata['supports']['unitone'] ?? array(),
 				array(
 					'cellMinWidth' => true,
+					'padding'      => array(
+						'split' => true,
+					),
 				)
 			),
 		)

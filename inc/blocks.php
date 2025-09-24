@@ -78,6 +78,60 @@ add_filter(
 );
 
 /**
+ * Add CSS vars to core/list and core/list-item.
+ */
+foreach ( array( 'core/list', 'core/list-item' ) as $hook_name ) {
+	add_filter(
+		'render_block_' . $hook_name,
+		function ( $block_content, $block ) {
+			$attrs = $block['attrs'] ?? array();
+
+			$marker_color        = $attrs['unitone']['markerColor'] ?? false;
+			$marker_custom_color = $attrs['unitone']['markerCustomColor'] ?? false;
+
+			if (
+				! $marker_color &&
+				! $marker_custom_color
+			) {
+				return $block_content;
+			}
+
+			$p = new \WP_HTML_Tag_Processor( $block_content );
+
+			if ( $p->next_tag() ) {
+				$marker_color = $marker_color
+					? 'var(--wp--preset--color--' . $marker_color . ')'
+					: $marker_custom_color;
+
+				$style = $p->get_attribute( 'style' );
+				$style = $style ? explode( ';', $style ) : array();
+
+				$new_styles = array(
+					'--unitone--marker-color' => $marker_color,
+				);
+
+				$new_styles = array_filter(
+					$new_styles,
+					function ( $value ) {
+						return false !== $value && ! is_null( $value ) && '' !== $value;
+					}
+				);
+
+				foreach ( $new_styles as $new_style_key => $new_style_value ) {
+					$style[] = sprintf( '%1$s: %2$s', $new_style_key, $new_style_value );
+				}
+
+				$p->set_attribute( 'style', trim( implode( ';', $style ) ) );
+			}
+
+			return $p->get_updated_html();
+		},
+		10,
+		2
+	);
+}
+
+/**
  * The HTML of the navigation block differs between the front page and the editor.
  * Match the front HTML to the editor.
  */

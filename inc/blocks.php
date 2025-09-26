@@ -17,9 +17,9 @@ function unitone_set_default_site_logo( $html ) {
 	}
 
 	return sprintf(
-		'<a href="%1$s" rel="home"><img loading="lazy" width="141" height="20" src="%2$s" class="custom-logo" alt="unitone"></a>',
+		'<a href="%1$s" rel="home"><img loading="lazy" width="150" height="28" src="%2$s" class="custom-logo" alt="unitone"></a>',
 		esc_url( get_home_url() ),
-		esc_url( get_theme_file_uri( 'dist/img/logo.svg' ) )
+		esc_url( get_theme_file_uri( 'dist/img/logo.svg?v=2' ) )
 	);
 }
 add_filter( 'get_custom_logo', 'unitone_set_default_site_logo' );

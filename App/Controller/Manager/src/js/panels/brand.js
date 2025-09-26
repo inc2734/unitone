@@ -1,6 +1,7 @@
 import {
 	BaseControl,
 	Button,
+	RangeControl,
 	__experimentalItemGroup as ItemGroup,
 } from '@wordpress/components';
 
@@ -12,9 +13,12 @@ import apiFetch from '@wordpress/api-fetch';
 
 import ColorGradientSettingsDropdown from '../color-gradient-settings-dropdown';
 
+const MIN_SIZE = 20;
+
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 	const [ siteLogoUrl, setSiteLogoUrl ] = useState( undefined );
+	const [ { naturalWidth, naturalHeight }, setNaturalSize ] = useState( {} );
 	const [ siteIconUrl, setSiteIconUrl ] = useState( undefined );
 	const [ defaultFeaturedImageUrl, setDefaultFeaturedImageUrl ] =
 		useState( undefined );
@@ -26,6 +30,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			method: 'POST',
 			data: {
 				'site-logo': settings?.[ 'site-logo' ] ?? null,
+				'site-logo-width': settings?.[ 'site-logo-width' ] ?? null,
 				'site-icon': settings?.[ 'site-icon' ] ?? null,
 				'default-featured-image':
 					settings?.[ 'default-featured-image' ] ?? null,
@@ -74,6 +79,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		setSettings( {
 			...settings,
 			'site-logo': undefined,
+			'site-logo-width': undefined,
 			'site-icon': undefined,
 			'default-featured-image': undefined,
 			'accent-color': defaultSettings[ 'accent-color' ],
@@ -116,6 +122,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			method: 'POST',
 			data: {
 				'site-logo': null,
+				'site-logo-width': null,
 				'site-icon': null,
 				'default-featured-image': null,
 				'accent-color': null,
@@ -157,6 +164,14 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			window.currentSettings.defaultFeaturedImageUrl
 		);
 	}, [] );
+
+	// Set the default width to a responsible size.
+	// Note that this width is also set in the attached frontend CSS file.
+	const defaultWidth = 120;
+
+	const ratio = naturalWidth / naturalHeight;
+	const minWidth =
+		naturalWidth < naturalHeight ? MIN_SIZE : Math.ceil( MIN_SIZE * ratio );
 
 	const paletteColors = [
 		...window.currentSettings.palette?.[ 0 ]?.colors,
@@ -250,7 +265,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						<div data-unitone-layout="stack">
 							<h3>{ __( 'Site Logo', 'unitone' ) }</h3>
 						</div>
-						<div>
+						<div data-unitone-layout="stack">
 							<BaseControl
 								__nextHasNoMarginBottom
 								id="unitone-settings-site-logo"
@@ -299,8 +314,23 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 															'unitone'
 														) }
 														style={ {
-															maxWidth: '120px',
+															maxWidth:
+																!! settings?.[
+																	'site-logo-width'
+																]
+																	? `${ settings?.[ 'site-logo-width' ] }px`
+																	: `${ defaultWidth }px`,
 															height: 'auto',
+														} }
+														onLoad={ ( event ) => {
+															setNaturalSize( {
+																naturalWidth:
+																	event.target
+																		.naturalWidth,
+																naturalHeight:
+																	event.target
+																		.naturalHeight,
+															} );
 														} }
 													/>
 												</div>
@@ -321,6 +351,34 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									} }
 								/>
 							</BaseControl>
+
+							{ !! siteLogoUrl &&
+								!! naturalWidth &&
+								!! naturalHeight && (
+									<RangeControl
+										__next40pxDefaultSize
+										__nextHasNoMarginBottom
+										label={ __(
+											'Site Logo Width',
+											'unitone'
+										) }
+										value={ parseFloat(
+											settings?.[ 'site-logo-width' ]
+										) }
+										onChange={ ( newSetting ) =>
+											setSettings( {
+												...settings,
+												'site-logo-width': newSetting,
+											} )
+										}
+										min={ minWidth }
+										max={ naturalWidth }
+										initialPosition={ Math.min(
+											defaultWidth,
+											naturalWidth
+										) }
+									/>
+								) }
 						</div>
 					</div>
 

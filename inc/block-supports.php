@@ -5,6 +5,8 @@
  * @license GPL-2.0+
  */
 
+use Unitone\App\Controller\Manager\Manager;
+
 /**
  * Add support "autoPhrase" to core blocks.
  *
@@ -335,3 +337,23 @@ function unitone_add_supports_to_core_image( $metadata ) {
 	return $metadata;
 }
 add_filter( 'block_type_metadata', 'unitone_add_supports_to_core_image' );
+
+/**
+ * Set site logo default width.
+ *
+ * @param array $settings Array of determined settings for registering a block type.
+ * @return array
+ */
+function unitone_set_site_logo_default_width( $settings ) {
+	if ( 'core/site-logo' !== $settings['name'] ) {
+		return $settings;
+	}
+
+	$site_logo_width = Manager::get_setting( 'site-logo-width' );
+	if ( $site_logo_width ) {
+		$settings['attributes']['width']['default'] = $site_logo_width;
+	}
+
+	return $settings;
+}
+add_filter( 'block_type_metadata_settings', 'unitone_set_site_logo_default_width' );

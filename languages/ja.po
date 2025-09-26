@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-24T13:16:59+00:00\n"
-"PO-Revision-Date: 2025-09-24 22:17+0900\n"
+"POT-Creation-Date: 2025-09-26T14:42:40+00:00\n"
+"PO-Revision-Date: 2025-09-26 23:43+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1767,6 +1767,10 @@ msgstr "画像を削除"
 #: App/Controller/Manager/dist/js/app.js:7
 msgid "Select Image"
 msgstr "画像を選択"
+
+#: App/Controller/Manager/dist/js/app.js:4
+msgid "Site Logo Width"
+msgstr "サイトロゴの幅"
 
 #: App/Controller/Manager/dist/js/app.js:4
 #: App/Controller/Manager/dist/js/app.js:7

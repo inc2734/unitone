@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-09-26T14:42:40+00:00\n"
-"PO-Revision-Date: 2025-09-26 23:43+0900\n"
+"POT-Creation-Date: 2025-09-26T14:59:47+00:00\n"
+"PO-Revision-Date: 2025-09-27 00:04+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1769,8 +1769,16 @@ msgid "Select Image"
 msgstr "画像を選択"
 
 #: App/Controller/Manager/dist/js/app.js:4
-msgid "Site Logo Width"
-msgstr "サイトロゴの幅"
+msgid "Site Logo Default Width"
+msgstr "サイトロゴのデフォルトの幅"
+
+#: App/Controller/Manager/dist/js/app.js:4
+msgid ""
+"If you set the width of the site logo block in the editor, that will take "
+"precedence."
+msgstr ""
+"エディターでサイトロゴブロックの幅を設定した場合は、そちらが優先的に使用され"
+"ます。"
 
 #: App/Controller/Manager/dist/js/app.js:4
 #: App/Controller/Manager/dist/js/app.js:7

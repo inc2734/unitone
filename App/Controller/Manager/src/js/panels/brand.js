@@ -295,6 +295,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 																...settings,
 																'site-logo':
 																	null,
+																'site-logo-width':
+																	null,
 															} );
 															setSiteLogoUrl(
 																undefined
@@ -359,7 +361,11 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										label={ __(
-											'Site Logo Width',
+											'Site Logo Default Width',
+											'unitone'
+										) }
+										help={ __(
+											'If you set the width of the site logo block in the editor, that will take precedence.',
 											'unitone'
 										) }
 										value={ parseFloat(

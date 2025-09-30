@@ -369,7 +369,11 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											'unitone'
 										) }
 										value={ parseFloat(
-											settings?.[ 'site-logo-width' ]
+											settings?.[ 'site-logo-width' ] ??
+												Math.min(
+													defaultWidth,
+													naturalWidth
+												)
 										) }
 										onChange={ ( newSetting ) =>
 											setSettings( {
@@ -383,6 +387,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											defaultWidth,
 											naturalWidth
 										) }
+										allowReset
 									/>
 								) }
 						</div>

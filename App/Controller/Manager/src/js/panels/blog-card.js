@@ -45,7 +45,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			{ 'default' !== value && null != value && (
 				<link
 					rel="stylesheet"
-					href={ `${ window.currentSettings.templateDirectoryUri }/dist/css/wp-oembed-blog-card/${ value }.css` }
+					href={ `${ settings?.templateDirectoryUri }/dist/css/wp-oembed-blog-card/${ value }.css` }
 				/>
 			) }
 
@@ -66,7 +66,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							<div className="wp-oembed-blog-card__figure">
 								<img
 									decoding="async"
-									src={ `${ window.currentSettings.templateDirectoryUri }/dist/img/stocksnap_lgg8nat9jy.jpg` }
+									src={ `${ settings?.templateDirectoryUri }/dist/img/stocksnap_lgg8nat9jy.jpg` }
 									alt=""
 								/>
 							</div>

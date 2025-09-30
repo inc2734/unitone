@@ -132,9 +132,9 @@ export default function ( { settings, setSettings } ) {
 
 	useEffect( () => {
 		loadPages();
-		setIsCreatedHomepage( window.currentSettings.hasHomepage );
-		setIsCreatedPostsPage( window.currentSettings.hasPostsPage );
-	}, [] );
+		setIsCreatedHomepage( settings?.hasHomepage );
+		setIsCreatedPostsPage( settings.hasPostsPage );
+	}, [ settings?.hasHomepage, settings.hasPostsPage ] );
 
 	return (
 		<div

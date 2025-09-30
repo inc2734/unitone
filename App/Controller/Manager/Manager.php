@@ -116,6 +116,41 @@ class Manager {
 			),
 		);
 
+		$new_palette   = array_map(
+			function ( $palette, $key ) {
+				return array(
+					'name'   => ( function () use ( $key ) {
+						switch ( $key ) {
+							case 'theme':
+								return __( 'Theme', 'unitone' );
+							case 'default':
+								return __( 'Default', 'unitone' );
+							case 'custom':
+								return __( 'Custom', 'unitone' );
+						}
+						return $key;
+					} )(),
+					'slug'   => $key,
+					'colors' => $palette,
+				);
+			},
+			$global_settings['color']['palette'],
+			array_keys( $global_settings['color']['palette'] )
+		);
+		$palette_order = array( 'theme', 'default', 'custom' );
+		usort(
+			$new_palette,
+			function ( $a, $b ) use ( $palette_order ) {
+				$pos_a = array_search( $a['slug'], $palette_order, true );
+				$pos_b = array_search( $b['slug'], $palette_order, true );
+
+				$pos_a = ( false === $pos_a ) ? PHP_INT_MAX : $pos_a;
+				$pos_b = ( false === $pos_b ) ? PHP_INT_MAX : $pos_b;
+
+				return $pos_a <=> $pos_b;
+			}
+		);
+
 		wp_localize_script(
 			'unitone/settings',
 			'currentSettings',
@@ -131,20 +166,7 @@ class Manager {
 					'defaultFeaturedImageUrl'       => wp_get_attachment_url( static::get_setting( 'default-featured-image' ) ),
 					'hasHomepage'                   => ! is_null( get_page_by_path( static::_get_homepage_slug(), OBJECT, array( 'page' ) ) ),
 					'hasPostsPage'                  => ! is_null( get_page_by_path( static::_get_posts_page_slug(), OBJECT, array( 'page' ) ) ),
-					'palette'                       => ( function () use ( $global_settings ) {
-						return array_reverse(
-							array_map(
-								function ( $palette, $key ) {
-									return array(
-										'name'   => $key,
-										'colors' => $palette,
-									);
-								},
-								$global_settings['color']['palette'],
-								array_keys( $global_settings['color']['palette'] )
-							)
-						);
-					} )(),
+					'palette'                       => $new_palette,
 					'fontFamilies'                  => ( function () use ( $global_settings ) {
 						return array_map(
 							function ( $font_family ) {

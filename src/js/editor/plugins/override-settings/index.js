@@ -67,16 +67,27 @@ const PageSettingsPanel = () => {
 	);
 
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+
 	const colors = useMemo(
 		() =>
-			colorGradientSettings.colors
-				.flatMap( ( palette ) => palette.colors )
-				.filter(
-					( color ) =>
-						! [ 'unitone-accent', 'unitone-background' ].includes(
-							color.slug
-						)
-				),
+			colorGradientSettings.colors.map( ( palette ) =>
+				palette.slug === 'theme'
+					? {
+							...palette,
+							colors: palette.colors.filter(
+								( color ) =>
+									! [
+										'unitone-accent',
+										'unitone-background',
+										'unitone-background-alt',
+										'unitone-text',
+										'unitone-text-alt',
+										'unitone-text-black',
+									].includes( color.slug )
+							),
+					  }
+					: palette
+			),
 		[ colorGradientSettings.colors ]
 	);
 
@@ -165,7 +176,6 @@ const PageSettingsPanel = () => {
 							<ColorGradientSettingsDropdown
 								__experimentalIsRenderedInSidebar
 								disableCustomColors={ false }
-								colors={ colors }
 								settings={ [
 									{
 										colorValue: newAccentColor,
@@ -221,6 +231,7 @@ const PageSettingsPanel = () => {
 										clearable: true,
 									},
 								] }
+								colors={ colors }
 								style={ {
 									padding: 0,
 								} }

@@ -6,7 +6,7 @@ import {
 } from '@wordpress/components';
 
 import { MediaUpload } from '@wordpress/block-editor';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useMemo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
@@ -158,12 +158,14 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	};
 
 	useEffect( () => {
-		setSiteLogoUrl( window.currentSettings.siteLogoUrl );
-		setSiteIconUrl( window.currentSettings.siteIconUrl );
-		setDefaultFeaturedImageUrl(
-			window.currentSettings.defaultFeaturedImageUrl
-		);
-	}, [] );
+		setSiteLogoUrl( settings?.siteLogoUrl );
+		setSiteIconUrl( settings?.siteIconUrl );
+		setDefaultFeaturedImageUrl( settings?.defaultFeaturedImageUrl );
+	}, [
+		settings?.siteLogoUrl,
+		settings?.siteIconUrl,
+		settings?.defaultFeaturedImageUrl,
+	] );
 
 	// Set the default width to a responsible size.
 	// Note that this width is also set in the attached frontend CSS file.
@@ -173,13 +175,36 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	const minWidth =
 		naturalWidth < naturalHeight ? MIN_SIZE : Math.ceil( MIN_SIZE * ratio );
 
-	const paletteColors = [
-		...window.currentSettings.palette?.[ 0 ]?.colors,
-		...window.currentSettings.palette?.[ 1 ]?.colors,
-	];
+	const colors = useMemo(
+		() =>
+			settings?.palette?.map( ( palette ) =>
+				palette.slug === 'theme'
+					? {
+							...palette,
+							colors: palette.colors.filter(
+								( color ) =>
+									! [
+										'unitone-accent',
+										'unitone-background',
+										'unitone-background-alt',
+										'unitone-text',
+										'unitone-text-alt',
+										'unitone-text-black',
+									].includes( color.slug )
+							),
+					  }
+					: palette
+			),
+		[ settings?.palette ]
+	);
+
+	const flatPalette = useMemo(
+		() => colors?.flatMap( ( palette ) => palette.colors ),
+		[ colors ]
+	);
 
 	const backgroundColor =
-		paletteColors.find(
+		flatPalette?.find(
 			( color ) =>
 				color.slug ===
 				settings?.styles?.color?.background?.replace(
@@ -191,7 +216,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		defaultSettings?.styles?.color?.background;
 
 	const textColor =
-		paletteColors.find(
+		flatPalette?.find(
 			( color ) =>
 				color.slug ===
 				settings?.styles?.color?.text?.replace(
@@ -203,7 +228,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		defaultSettings?.styles?.color?.text;
 
 	const linkColor =
-		paletteColors.find(
+		flatPalette?.find(
 			( color ) =>
 				color.slug ===
 				settings?.styles?.elements?.link?.color?.text?.replace(
@@ -219,7 +244,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		'inherit' ===
 		settings?.styles?.elements?.link?.[ ':hover' ]?.color?.text
 			? undefined
-			: paletteColors.find(
+			: flatPalette?.find(
 					( color ) =>
 						color.slug ===
 						settings?.styles?.elements?.link?.[
@@ -232,7 +257,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		'inherit' ===
 		settings?.styles?.elements?.link?.[ ':focus' ]?.color?.text
 			? undefined
-			: paletteColors.find(
+			: flatPalette?.find(
 					( color ) =>
 						color.slug ===
 						settings?.styles?.elements?.link?.[
@@ -808,7 +833,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											clearable: true,
 										},
 									] }
-									colors={ settings.palette }
+									colors={ colors }
 								/>
 							</ItemGroup>
 						</div>

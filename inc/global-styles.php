@@ -121,9 +121,8 @@ function unitone_set_color_palette( $theme_json ) {
 		return $theme_json;
 	}
 
-	$theme_palette = $data['settings']['color']['palette']['theme'] ?? array();
+	$theme_palette = $data['settings']['color']['palette']['default'] ?? array();
 	$theme_palette = array_merge(
-		$theme_palette,
 		array(
 			array(
 				'slug'  => 'unitone-twilight-light',
@@ -530,7 +529,8 @@ function unitone_set_color_palette( $theme_json ) {
 				'color' => 'transparent',
 				'name'  => 'transparent',
 			),
-		)
+		),
+		$theme_palette
 	);
 
 	$new_data = array(
@@ -538,7 +538,7 @@ function unitone_set_color_palette( $theme_json ) {
 		'settings' => array(
 			'color' => array(
 				'palette' => array(
-					'theme' => $theme_palette,
+					'default' => $theme_palette,
 				),
 			),
 		),
@@ -546,7 +546,7 @@ function unitone_set_color_palette( $theme_json ) {
 
 	return $theme_json->update_with( $new_data );
 }
-add_filter( 'wp_theme_json_data_theme', 'unitone_set_color_palette' );
+add_filter( 'wp_theme_json_data_default', 'unitone_set_color_palette' );
 
 /**
  * Convert deprecated color names to new color names.

@@ -98,6 +98,27 @@ add_action(
 				':root {' . implode( ';', $css ) . '}'
 			);
 		}
+
+		$override_styles = array_diff(
+			array(
+				'background-color' => $new_background_color,
+				'color'            => $new_text_color,
+				'font-family'      => unitone_get_preset_css_var( $new_font_family ),
+			),
+			array( null )
+		);
+
+		if ( $override_styles ) {
+			$css = array();
+			foreach ( $override_styles as $property => $value ) {
+				$css[] = $property . ':' . $value;
+			}
+
+			wp_add_inline_style(
+				'unitone',
+				'body {' . implode( ';', $css ) . '}'
+			);
+		}
 	}
 );
 

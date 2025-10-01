@@ -6,6 +6,7 @@
  */
 
 use Unitone\App\Controller\Manager\Manager;
+use Unitone\App\Controller\Manager\Model\Settings;
 
 /**
  * Apply CSS Vars from settings.
@@ -31,8 +32,14 @@ function apply_css_vars_from_settings() {
 	$wide_size        = $deprecated_wide_size ? $deprecated_wide_size : $wide_size; // Deprecated.
 	$accent_color     = Manager::get_setting( 'accent-color' );
 	$background_color = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['background'] );
+	$background_color = 'var(--wp--preset--color--unitone-background)' === $background_color
+		? Settings::get_default_global_styles()['styles']['color']['background']
+		: $background_color;
 	$background_color = $deprecated_background_color ? $deprecated_background_color : $background_color; // Deprecated.
 	$text_color       = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['text'] );
+	$text_color       = 'var(--wp--preset--color--unitone-text)' === $text_color
+		? Settings::get_default_global_styles()['styles']['color']['text']
+		: $text_color;
 	$text_color       = $deprecated_text_color ? $deprecated_text_color : $text_color; // Deprecated.
 	$h2_size          = Manager::get_setting( 'h2-size' );
 	$h3_size          = Manager::get_setting( 'h3-size' );
@@ -50,9 +57,7 @@ function apply_css_vars_from_settings() {
 			--unitone--container-max-width: %6$s;
 			--unitone--color--accent: %7$s;
 			--unitone--color--background: %8$s;
-			--unitone--color--background-alt: %9$s;
 			--unitone--color--text: %9$s;
-			--unitone--color--text-alt: %8$s;
 		}
 		[data-unitone-layout~="text"] > h2,
 		[data-unitone-layout~="vertical-writing"] > h2 {
@@ -514,21 +519,6 @@ function unitone_set_color_palette( $theme_json ) {
 				'color' => 'var(--unitone--color--heavy-pink)',
 				'name'  => _x( 'Heavy Pink', 'Color name', 'unitone' ),
 			),
-			array(
-				'slug'  => 'unitone-inherit',
-				'color' => 'inherit',
-				'name'  => 'inherit',
-			),
-			array(
-				'slug'  => 'unitone-current',
-				'color' => 'currentColor',
-				'name'  => 'currentColor',
-			),
-			array(
-				'slug'  => 'unitone-transparent',
-				'color' => 'transparent',
-				'name'  => 'transparent',
-			),
 		),
 		$theme_palette
 	);
@@ -547,6 +537,50 @@ function unitone_set_color_palette( $theme_json ) {
 	return $theme_json->update_with( $new_data );
 }
 add_filter( 'wp_theme_json_data_default', 'unitone_set_color_palette' );
+
+/**
+ * Set color palette with specific colors.
+ *
+ * @param WP_Theme_JSON_Data $theme_json Class to access and update the underlying data.
+ * @return WP_Theme_JSON_Data
+ */
+function unitone_set_color_palette_with_specific_colors( $theme_json ) {
+	$data = $theme_json->get_data();
+	if ( empty( $data['settings'] ) ) {
+		return $theme_json;
+	}
+
+	$background_color = $data['styles']['color']['background'] ?? null;
+	$text_color       = $data['styles']['color']['text'] ?? null;
+
+	$theme_palette = $data['settings']['color']['palette']['theme'] ?? array();
+
+	foreach ( $theme_palette as $key => $color_object ) {
+		if ( 'unitone-background' === $color_object['slug'] || 'unitone-text-alt' === $color_object['slug'] ) {
+			if ( 'var(--wp--preset--color--unitone-background)' !== $background_color ) {
+				$theme_palette[ $key ]['color'] = $background_color;
+			}
+		} elseif ( 'unitone-text' === $color_object['slug'] || 'unitone-background-alt' === $color_object['slug'] ) {
+			if ( 'var(--wp--preset--color--unitone-text)' !== $text_color ) {
+				$theme_palette[ $key ]['color'] = $text_color;
+			}
+		}
+	}
+
+	$new_data = array(
+		'version'  => 3,
+		'settings' => array(
+			'color' => array(
+				'palette' => array(
+					'theme' => $theme_palette,
+				),
+			),
+		),
+	);
+
+	return $theme_json->update_with( $new_data );
+}
+add_filter( 'wp_theme_json_data_user', 'unitone_set_color_palette_with_specific_colors' );
 
 /**
  * Convert deprecated color names to new color names.

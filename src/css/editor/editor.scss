@@ -249,6 +249,41 @@
 	}
 }
 
+// @todo Prevent specific colors in the color palette from being changed in the site editor.
+.edit-site-global-styles-color-palette-panel {
+	// Global Styles > Colors > Palette
+	> :first-child .components-circular-option-picker__option-wrapper:where(
+		:nth-child(2), /* Text (Immutable) */
+		:nth-child(3), /* Background */
+		:nth-child(4), /* Text */
+		:nth-child(5), /* Background (Alt) */
+		:nth-child(6), /* Text (Alt) */
+		:has(
+			[style*="inherit"],
+			[style*="currentcolor"],
+			[style*="transparent"]
+		)
+	) .components-button,
+	// Global Styles > Colors > Palette > Detail
+	> :first-child [role="listitem"]:where(
+		:nth-child(2), /* Text (Immutable) */
+		:nth-child(3), /* Background */
+		:nth-child(4), /* Text */
+		:nth-child(5), /* Background (Alt) */
+		:nth-child(6), /* Text (Alt) */
+		:has(
+			[style*="inherit"],
+			[style*="currentcolor"],
+			[style*="transparent"]
+		)
+	) .components-button {
+		pointer-events: none !important;
+		background-image: linear-gradient(45deg, transparent 0%, transparent 49%, #999 49%, #999 51%, transparent 51%, transparent 100%) !important;
+		color: transparent !important;
+		background-color: #ccc !important;
+	}
+}
+
 .components-text-control__input[disabled] {
 	background-color: #f0f0f0;
 }

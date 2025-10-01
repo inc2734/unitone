@@ -199,8 +199,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	);
 
 	const flatPalette = useMemo(
-		() => colors?.flatMap( ( palette ) => palette.colors ),
-		[ colors ]
+		() => settings?.palette?.flatMap( ( palette ) => palette.colors ),
+		[ settings?.palette ]
 	);
 
 	const backgroundColor =

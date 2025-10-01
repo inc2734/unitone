@@ -84,6 +84,13 @@ class Manager {
 			filemtime( get_template_directory() . '/App/Controller/Manager/dist/css/app.css' )
 		);
 
+		wp_enqueue_style(
+			'unitone',
+			get_theme_file_uri( 'dist/css/editor/editor.css' ),
+			array( 'unitone/settings' ),
+			filemtime( get_theme_file_path( 'dist/css/editor/editor.css' ) )
+		);
+
 		wp_enqueue_media();
 
 		$asset_file = include get_template_directory() . '/App/Controller/Manager/dist/js/app.asset.php';

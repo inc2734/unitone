@@ -42,12 +42,14 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 	const BlogCard = ( { value } ) => (
 		<>
-			{ 'default' !== value && null != value && (
-				<link
-					rel="stylesheet"
-					href={ `${ settings?.templateDirectoryUri }/dist/css/wp-oembed-blog-card/${ value }.css` }
-				/>
-			) }
+			{ 'default' !== value &&
+				null != value &&
+				null != settings?.templateDirectoryUri && (
+					<link
+						rel="stylesheet"
+						href={ `${ settings?.templateDirectoryUri }/dist/css/wp-oembed-blog-card/${ value }.css` }
+					/>
+				) }
 
 			<figure className="wp-block-embed is-type-rich is-provider-wp-oembed-blog-card wp-block-embed-wp-oembed-blog-card">
 				<div className="wp-block-embed__wrapper">
@@ -64,11 +66,13 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 					>
 						<span>
 							<div className="wp-oembed-blog-card__figure">
-								<img
-									decoding="async"
-									src={ `${ settings?.templateDirectoryUri }/dist/img/stocksnap_lgg8nat9jy.jpg` }
-									alt=""
-								/>
+								{ null != settings?.templateDirectoryUri && (
+									<img
+										decoding="async"
+										src={ `${ settings?.templateDirectoryUri }/dist/img/stocksnap_lgg8nat9jy.jpg` }
+										alt=""
+									/>
+								) }
 							</div>
 							<div className="wp-oembed-blog-card__body">
 								<div className="wp-oembed-blog-card__content">

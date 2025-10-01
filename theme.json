@@ -44,12 +44,12 @@
 				},
 				{
 					"slug": "unitone-background-alt",
-					"color": "var(--unitone--color--background-alt)",
+					"color": "var(--unitone--color--text)",
 					"name": "Background Alt"
 				},
 				{
 					"slug": "unitone-text-alt",
-					"color": "var(--unitone--color--text-alt)",
+					"color": "var(--unitone--color--background)",
 					"name": "Text Alt"
 				},
 				{
@@ -81,6 +81,21 @@
 					"slug": "unitone-heavy-gray",
 					"color": "var(--unitone--color--heavy-gray)",
 					"name": "Heavy Gray"
+				},
+				{
+					"slug": "unitone-inherit",
+					"color": "inherit",
+					"name": "inherit"
+				},
+				{
+					"slug": "unitone-current",
+					"color": "currentColor",
+					"name": "currentColor"
+				},
+				{
+					"slug": "unitone-transparent",
+					"color": "transparent",
+					"name": "transparent"
 				}
 			]
 		},
@@ -402,14 +417,14 @@
 	},
 	"styles": {
 		"color": {
-			"background": "var(--wp--preset--color--unitone-background)",
-			"text": "var(--wp--preset--color--unitone-text)"
+			"background": "var:preset|color|unitone-background",
+			"text": "var:preset|color|unitone-text"
 		},
 		"elements": {
 			"button": {
 				"color": {
-					"background": "var(--wp--preset--color--unitone-accent)",
-					"text": "var(--wp--preset--color--unitone-background)"
+					"background": "var:preset|color|unitone-accent",
+					"text": "var:preset|color|white"
 				},
 				"border": {
 					"radius": "var(--unitone--border-radius)"
@@ -467,8 +482,8 @@
 			},
 			"core/code": {
 				"color": {
-					"background": "var(--wp--preset--color--unitone-text)",
-					"text": "var(--wp--preset--color--unitone-text-alt)"
+					"background": "var:preset|color|unitone-text",
+					"text": "var:preset|color|unitone-text-alt"
 				}
 			},
 			"core/comment-author-name": {
@@ -536,7 +551,7 @@
 				"elements": {
 					"link": {
 						"color": {
-							"text": "var(--wp--preset--color--unitone-accent)"
+							"text": "var:preset|color|unitone-accent"
 						}
 					}
 				},
@@ -572,7 +587,7 @@
 				"border": {
 					"width": "0px",
 					"style": "solid",
-					"color": "var(--wp--preset--color--unitone-light-gray)"
+					"color": "var:preset|color|unitone-light-gray"
 				},
 				"variations": {
 					"stripes": {},

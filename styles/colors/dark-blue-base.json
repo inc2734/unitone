@@ -7,7 +7,7 @@
 			"palette": [
 				{
 					"slug": "unitone-accent",
-					"color": "color-mix(in srgb, #fff 98%, #00f)",
+					"color": "var(--unitone--color--accent)",
 					"name": "Accent"
 				},
 				{
@@ -17,22 +17,22 @@
 				},
 				{
 					"slug": "unitone-background",
-					"color": "color-mix(in srgb, var(--unitone--color--background-alt) 98%, #00f)",
+					"color": "color-mix(in srgb, var(--unitone--color--text-immutable) 98%, #00f)",
 					"name": "Background"
 				},
 				{
 					"slug": "unitone-text",
-					"color": "var(--unitone--color--text-alt)",
+					"color": "#fff",
 					"name": "Text"
 				},
 				{
 					"slug": "unitone-background-alt",
-					"color": "var(--unitone--color--background)",
+					"color": "#fff",
 					"name": "Background Alt"
 				},
 				{
 					"slug": "unitone-text-alt",
-					"color": "color-mix(in srgb, var(--unitone--color--background-alt) 98%, #00f)",
+					"color": "color-mix(in srgb, var(--unitone--color--text-immutable) 98%, #00f)",
 					"name": "Text Alt"
 				},
 				{
@@ -64,15 +64,34 @@
 					"slug": "unitone-heavy-gray",
 					"color": "color-mix(in srgb, #a7a7a7 98%, #00f)",
 					"name": "Heavy Gray"
+				},
+				{
+					"slug": "unitone-inherit",
+					"color": "inherit",
+					"name": "inherit"
+				},
+				{
+					"slug": "unitone-current",
+					"color": "currentColor",
+					"name": "currentColor"
+				},
+				{
+					"slug": "unitone-transparent",
+					"color": "transparent",
+					"name": "transparent"
 				}
 			]
 		}
 	},
 	"styles": {
+		"color": {
+			"background": "var:preset|color|unitone-background",
+			"text": "var:preset|color|unitone-text"
+		},
 		"elements": {
 			"link": {
 				"color": {
-					"text": "#fff"
+					"text": "var:preset|color|unitone-text"
 				}
 			}
 		}

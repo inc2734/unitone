@@ -50,6 +50,24 @@ const tryDetectInnerRoot = ( outerDocument ) => {
 	return null;
 };
 
+const tryDetectInnerBody = ( outerDocument ) => {
+	const iframe = outerDocument.querySelector(
+		'iframe[name="editor-canvas"]'
+	);
+	if ( iframe?.contentDocument?.body ) {
+		return iframe.contentDocument.body;
+	}
+
+	const nonIframeCanvas = outerDocument.querySelector(
+		'.editor-styles-wrapper'
+	);
+	if ( nonIframeCanvas ) {
+		return nonIframeCanvas;
+	}
+
+	return null;
+};
+
 const PageSettingsPanel = () => {
 	const { postId, postType } = useSelect( ( select ) => {
 		const { getCurrentPostId, getCurrentPostType } = select( editorStore );
@@ -137,6 +155,20 @@ const PageSettingsPanel = () => {
 		]
 	);
 
+	const overrideStylesForBody = useMemo(
+		() => ( {
+			'background-color': newBackgroundColor,
+			color: newTextColor,
+			'font-family': !! newFontFamily
+				? `var(--wp--preset--font-family--${ newFontFamily?.replace(
+						'var:preset|font-family|',
+						''
+				  ) })`
+				: undefined,
+		} ),
+		[ newBackgroundColor, newTextColor, newFontFamily ]
+	);
+
 	useEffect( () => {
 		if ( ! ref.current ) {
 			return;
@@ -154,13 +186,19 @@ const PageSettingsPanel = () => {
 			if ( innerRoot ) {
 				clearInterval( interval );
 				applyStyles( innerRoot, overrideStyles );
+				applyStyles( innerRoot?.body, overrideStylesForBody );
+			}
+
+			const innerBody = tryDetectInnerBody( outerDocument );
+			if ( innerBody ) {
+				applyStyles( innerBody, overrideStylesForBody );
 			}
 		}, 250 );
 
 		return () => {
 			clearInterval( interval );
 		};
-	}, [ overrideStyles ] );
+	}, [ overrideStyles, overrideStylesForBody ] );
 
 	return (
 		! [ 'wp_template', 'wp_template_part' ].includes( postType ) && (

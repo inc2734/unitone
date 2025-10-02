@@ -126,8 +126,9 @@ function unitone_set_color_palette( $theme_json ) {
 		return $theme_json;
 	}
 
-	$theme_palette = $data['settings']['color']['palette']['default'] ?? array();
-	$theme_palette = array_merge(
+	$palette         = $data['settings']['color']['palette'] ?? array();
+	$default_palette = $palette['default'] ?? array();
+	$default_palette = array_merge(
 		array(
 			array(
 				'slug'  => 'unitone-twilight-light',
@@ -520,16 +521,16 @@ function unitone_set_color_palette( $theme_json ) {
 				'name'  => _x( 'Heavy Pink', 'Color name', 'unitone' ),
 			),
 		),
-		$theme_palette
+		$default_palette
 	);
+
+	$palette['default'] = $default_palette;
 
 	$new_data = array(
 		'version'  => 3,
 		'settings' => array(
 			'color' => array(
-				'palette' => array(
-					'default' => $theme_palette,
-				),
+				'palette' => $palette,
 			),
 		),
 	);
@@ -537,50 +538,6 @@ function unitone_set_color_palette( $theme_json ) {
 	return $theme_json->update_with( $new_data );
 }
 add_filter( 'wp_theme_json_data_default', 'unitone_set_color_palette' );
-
-/**
- * Set color palette with specific colors.
- *
- * @param WP_Theme_JSON_Data $theme_json Class to access and update the underlying data.
- * @return WP_Theme_JSON_Data
- */
-function unitone_set_color_palette_with_specific_colors( $theme_json ) {
-	$data = $theme_json->get_data();
-	if ( empty( $data['settings'] ) ) {
-		return $theme_json;
-	}
-
-	$background_color = $data['styles']['color']['background'] ?? null;
-	$text_color       = $data['styles']['color']['text'] ?? null;
-
-	$theme_palette = $data['settings']['color']['palette']['theme'] ?? array();
-
-	foreach ( $theme_palette as $key => $color_object ) {
-		if ( 'unitone-background' === $color_object['slug'] || 'unitone-text-alt' === $color_object['slug'] ) {
-			if ( 'var(--wp--preset--color--unitone-background)' !== $background_color ) {
-				$theme_palette[ $key ]['color'] = $background_color;
-			}
-		} elseif ( 'unitone-text' === $color_object['slug'] || 'unitone-background-alt' === $color_object['slug'] ) {
-			if ( 'var(--wp--preset--color--unitone-text)' !== $text_color ) {
-				$theme_palette[ $key ]['color'] = $text_color;
-			}
-		}
-	}
-
-	$new_data = array(
-		'version'  => 3,
-		'settings' => array(
-			'color' => array(
-				'palette' => array(
-					'theme' => $theme_palette,
-				),
-			),
-		),
-	);
-
-	return $theme_json->update_with( $new_data );
-}
-add_filter( 'wp_theme_json_data_user', 'unitone_set_color_palette_with_specific_colors' );
 
 /**
  * Convert deprecated color names to new color names.

@@ -22,6 +22,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ siteIconUrl, setSiteIconUrl ] = useState( undefined );
 	const [ defaultFeaturedImageUrl, setDefaultFeaturedImageUrl ] =
 		useState( undefined );
+	const [ defaultAccentColor, setDefaultAccentColor ] = useState( undefined );
 
 	const saveSettings = () => {
 		setSettingsSaving( true );
@@ -203,6 +204,23 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		[ settings?.palette ]
 	);
 
+	useEffect( () => {
+		const accentColorFromPalette = flatPalette?.find(
+			( color ) => color.slug === 'unitone-accent'
+		)?.color;
+
+		setDefaultAccentColor(
+			'var(--unitone--color--accent)' !== accentColorFromPalette
+				? accentColorFromPalette
+				: undefined
+		);
+	}, [ flatPalette ] );
+
+	const accentColor =
+		defaultAccentColor ??
+		settings[ 'accent-color' ] ??
+		defaultSettings?.[ 'accent-color' ];
+
 	const backgroundColor =
 		flatPalette?.find(
 			( color ) =>
@@ -237,7 +255,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				)
 		)?.color ||
 		settings?.styles?.elements?.link?.color?.text ||
-		settings?.[ 'accent-color' ] ||
+		accentColor ||
 		defaultSettings?.styles?.elements?.link?.color?.text;
 
 	const linkHoverColor =
@@ -660,16 +678,16 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 												'Accent Color',
 												'unitone'
 											),
-											colorValue:
-												settings?.[ 'accent-color' ] ||
-												defaultSettings?.[
-													'accent-color'
-												],
-											onColorChange: ( newSetting ) =>
+											colorValue: accentColor,
+											onColorChange: ( newSetting ) => {
 												setSettings( {
 													...settings,
 													'accent-color': newSetting,
-												} ),
+												} );
+												setDefaultAccentColor(
+													undefined
+												);
+											},
 											clearable: true,
 										},
 										{

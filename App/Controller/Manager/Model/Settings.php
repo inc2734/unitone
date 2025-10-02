@@ -34,7 +34,6 @@ class Settings {
 		'h4-size'                               => '1',
 		'h5-size'                               => '0',
 		'h6-size'                               => '0',
-		'accent-color'                          => '#090a0b', // settings.color.palette > unitone-accent.
 		'loading-animation'                     => false,
 		'loading-animation-delay'               => '1',
 		'enabled-custom-templates'              => array( 'template-page-header-footer', 'template-page-blank' ),
@@ -42,6 +41,7 @@ class Settings {
 		'output-ogp-tags'                       => false,
 		'twitter-site'                          => '',
 		'generated-thumbnail-background'        => '',
+		'accent-color'                          => null, // Deprecated.
 		'font-family'                           => null, // Deprecated.
 		'background-color'                      => null, // Deprecated.
 		'text-color'                            => null, // Deprecated.
@@ -95,6 +95,16 @@ class Settings {
 			),
 		),
 		'settings' => array(
+			'color'  => array(
+				'palette' => array(
+					'theme' => array(
+						array(
+							'slug'  => 'unitone-accent',
+							'color' => '#090a0b',
+						),
+					),
+				),
+			),
 			'layout' => array(
 				'contentSize' => '46rem',
 				'wideSize'    => '1334px',
@@ -226,6 +236,29 @@ class Settings {
 		$user_cpt           = \WP_Theme_JSON_Resolver::get_user_data_from_wp_global_styles( wp_get_theme() );
 		$json_global_styles = $user_cpt['post_content'];
 		$global_styles      = json_decode( $json_global_styles, true ) ?? array();
+
+		// @todo global style にはパレット全部を保存する必要があるので、テーマのデフォルト値をマージする。
+		$theme_palette    = \WP_Theme_JSON_Resolver::get_theme_data()->get_raw_data()['settings']['color']['palette']['theme'] ?? array();
+		$settings_palette = $settings['settings']['color']['palette']['theme'] ?? array();
+		$theme_map        = array_column( $theme_palette, null, 'slug' );
+		$settings_map     = array();
+		foreach ( $settings_palette as $i ) {
+			if ( empty( $i['slug'] ) ) {
+				continue;
+			}
+				$slug = $i['slug'];
+
+			if ( empty( $i['color'] ) && ! empty( $theme_map[ $slug ]['color'] ) ) {
+					$i['color'] = $theme_map[ $slug ]['color'];
+			}
+			if ( ! empty( $theme_map[ $slug ]['name'] ) ) {
+					$i['name'] = $theme_map[ $slug ]['name'];
+			}
+
+				$settings_map[ $slug ] = $i;
+		}
+		$merged_palette                                    = array_values( $settings_map + array_diff_key( $theme_map, $settings_map ) );
+		$settings['settings']['color']['palette']['theme'] = $merged_palette;
 
 		$new_global_styles = static::_remove_nulls(
 			unitone_array_override_replace_recursive(

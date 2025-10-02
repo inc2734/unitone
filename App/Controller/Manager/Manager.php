@@ -328,13 +328,6 @@ class Manager {
 						array( 'settings' => $settings['settings'] ?? array() )
 					);
 
-					$new_global_styles = static::_apply_theme_palette(
-						$new_global_styles,
-						array(
-							'unitone-accent' => $new_settings['accent-color'] ? $new_settings['accent-color'] : $default_settings['accent-color'],
-						)
-					);
-
 					$new_options = unitone_array_filter_override_replace_recursive(
 						$default_options,
 						$saved_options,
@@ -554,10 +547,10 @@ class Manager {
 			<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center">
 				<div style="flex: 1">
 					<div style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.2rem">
-						<?php echo esc_html_e( 'unitone theme has been activated', 'unitone' ); ?>
+					<?php echo esc_html_e( 'unitone theme has been activated', 'unitone' ); ?>
 					</div>
 					<div style="font-size: 1.2rem">
-						<?php echo esc_html_e( 'Let\'s start with the initial setup on the unitone setup screen.', 'unitone' ); ?>
+					<?php echo esc_html_e( 'Let\'s start with the initial setup on the unitone setup screen.', 'unitone' ); ?>
 					</div>
 				</div>
 				<div>
@@ -583,7 +576,7 @@ class Manager {
 		}
 
 		$message = sprintf(
-			// translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
+		// translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
 			__( 'You have not set a valid license key. Setting a license key will allow you to use patterns registered in %3$sthe pattern library%4$s. It will also enable theme updates. A license key is issued when you subscribe to %1$sunitone license key subscription%2$s. The license key is set %5$shere%6$s.', 'unitone' ),
 			'<a href="https://unitone.2inc.org/product/unitone-license-key/" target="_blank" rel="noreferrer">',
 			'</a>',
@@ -778,35 +771,5 @@ class Manager {
 		}
 
 		return $result;
-	}
-
-	/**
-	 * Apply theme palette overrides to global styles.
-	 *
-	 * @param array $global_styles Global styles array.
-	 * @param array $map           Associative array of slug-to-color mappings used to override theme palette colors.
-	 *
-	 * @return array
-	 */
-	protected static function _apply_theme_palette( $global_styles, $map ) {
-		if ( empty( $global_styles['settings']['color']['palette']['theme'] ) ) {
-			$tree           = \WP_Theme_JSON_Resolver::get_theme_data( array(), array( 'with_supports' => false ) );
-			$theme_json_raw = $tree->get_data();
-			$theme_palette  = $theme_json_raw['settings']['color']['palette'] ?? array();
-		} else {
-			$theme_palette = $global_styles['settings']['color']['palette']['theme'];
-		}
-
-		foreach ( $theme_palette as $key => $color_object ) {
-			if ( $map[ $color_object['slug'] ] ) {
-				$theme_palette[ $key ]['color'] = $map[ $color_object['slug'] ];
-			}
-		}
-
-		if ( $theme_palette ) {
-			$global_styles['settings']['color']['palette']['theme'] = $theme_palette;
-		}
-
-		return $global_styles;
 	}
 }

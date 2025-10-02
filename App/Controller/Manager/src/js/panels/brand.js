@@ -22,7 +22,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ siteIconUrl, setSiteIconUrl ] = useState( undefined );
 	const [ defaultFeaturedImageUrl, setDefaultFeaturedImageUrl ] =
 		useState( undefined );
-	const [ defaultAccentColor, setDefaultAccentColor ] = useState( undefined );
 
 	const saveSettings = () => {
 		setSettingsSaving( true );
@@ -35,9 +34,21 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				'site-icon': settings?.[ 'site-icon' ] ?? null,
 				'default-featured-image':
 					settings?.[ 'default-featured-image' ] ?? null,
-				'accent-color': settings?.[ 'accent-color' ] ?? null,
+				'accent-color': null, // Deprecated.
 				'background-color': null, // Deprecated.
 				'text-color': null, // Deprecated.
+				settings: {
+					color: {
+						palette: {
+							theme: [
+								...settings?.settings?.color?.palette?.theme?.filter(
+									( colorObject ) =>
+										'unitone-accent' === colorObject.slug
+								),
+							],
+						},
+					},
+				},
 				styles: {
 					color: {
 						background: settings?.styles?.color?.background ?? null,
@@ -83,9 +94,18 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			'site-logo-width': undefined,
 			'site-icon': undefined,
 			'default-featured-image': undefined,
-			'accent-color': undefined,
+			'accent-color': null, // Deprecated.
 			'background-color': null, // Deprecated.
 			'text-color': null, // Deprecated.
+			settings: {
+				color: {
+					palette: {
+						theme: [
+							...defaultSettings.settings.color.palette.theme,
+						],
+					},
+				},
+			},
 			styles: {
 				color: {
 					background: defaultSettings.styles.color.background,
@@ -118,7 +138,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		setSiteLogoUrl( undefined );
 		setSiteIconUrl( undefined );
 		setDefaultFeaturedImageUrl( undefined );
-		setDefaultAccentColor( undefined );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',
@@ -127,9 +146,20 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				'site-logo-width': null,
 				'site-icon': null,
 				'default-featured-image': null,
-				'accent-color': null,
+				'accent-color': null, // Deprecated.
 				'background-color': null, // Deprecated.
 				'text-color': null, // Deprecated.
+				settings: {
+					color: {
+						palette: {
+							theme: [
+								// @todo 本当は他と合わせて空値を返したいが、theme.json の値（e.g. var(--unitone--color--accent）で
+								// 補完されてしまうため、正しく表示されなくなってしまう。
+								...defaultSettings.settings.color.palette.theme,
+							],
+						},
+					},
+				},
 				styles: {
 					color: {
 						background: null,
@@ -205,22 +235,22 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		[ settings?.palette ]
 	);
 
-	useEffect( () => {
-		const accentColorFromPalette = flatPalette?.find(
-			( color ) => color.slug === 'unitone-accent'
-		)?.color;
-
-		setDefaultAccentColor(
-			'var(--unitone--color--accent)' !== accentColorFromPalette
-				? accentColorFromPalette
-				: undefined
-		);
-	}, [ flatPalette ] );
-
 	const accentColor =
-		defaultAccentColor ??
-		settings[ 'accent-color' ] ??
-		defaultSettings?.[ 'accent-color' ];
+		flatPalette?.find(
+			( color ) =>
+				color.slug ===
+				settings?.settings?.color?.palette?.theme
+					?.filter(
+						( colorObject ) => 'unitone-accent' === colorObject.slug
+					)?.[ 0 ]
+					?.color?.replace( 'var:preset|color|', '' )
+		)?.color ||
+		settings?.settings?.color?.palette?.theme?.filter(
+			( colorObject ) => 'unitone-accent' === colorObject.slug
+		)?.[ 0 ]?.color ||
+		defaultSettings?.settings?.color?.palette?.theme?.filter(
+			( colorObject ) => 'unitone-accent' === colorObject.slug
+		)?.[ 0 ]?.color;
 
 	const backgroundColor =
 		flatPalette?.find(
@@ -256,7 +286,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				)
 		)?.color ||
 		settings?.styles?.elements?.link?.color?.text ||
-		accentColor ||
+		// accentColor ||
 		defaultSettings?.styles?.elements?.link?.color?.text;
 
 	const linkHoverColor =
@@ -683,11 +713,37 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											onColorChange: ( newSetting ) => {
 												setSettings( {
 													...settings,
-													'accent-color': newSetting,
+													settings: {
+														...settings?.settings,
+														color: {
+															...settings
+																?.settings
+																?.color,
+															palette: {
+																...settings
+																	?.settings
+																	?.color
+																	?.palette,
+																theme: [
+																	...settings?.settings?.color?.palette?.theme?.map(
+																		(
+																			colorObject
+																		) => {
+																			if (
+																				'unitone-accent' ===
+																				colorObject.slug
+																			) {
+																				colorObject.color =
+																					newSetting;
+																			}
+																			return colorObject;
+																		}
+																	),
+																],
+															},
+														},
+													},
 												} );
-												setDefaultAccentColor(
-													undefined
-												);
 											},
 											clearable: true,
 										},

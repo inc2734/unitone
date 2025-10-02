@@ -199,6 +199,47 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		settings?.defaultFeaturedImageUrl,
 	] );
 
+	// Deprecated proccess.
+	useEffect( () => {
+		if ( ! settings[ 'accent-color' ] ) {
+			return;
+		}
+
+		setSettings( ( currentSettings ) => {
+			const deprecatedAccentColor = currentSettings?.[ 'accent-color' ];
+			if ( ! deprecatedAccentColor ) {
+				return currentSettings;
+			}
+
+			return {
+				...currentSettings,
+				'accent-color': null,
+				settings: {
+					...currentSettings?.settings,
+					color: {
+						...currentSettings?.settings?.color,
+						palette: {
+							...currentSettings?.settings?.color?.palette,
+							theme: [
+								{
+									slug: 'unitone-accent',
+									color: deprecatedAccentColor,
+								},
+								...(
+									currentSettings.settings.color.palette
+										.theme ?? []
+								).filter(
+									( entry ) =>
+										'unitone-accent' !== entry?.slug
+								),
+							],
+						},
+					},
+				},
+			};
+		} );
+	}, [ settings[ 'accent-color' ] ] );
+
 	// Set the default width to a responsible size.
 	// Note that this width is also set in the attached frontend CSS file.
 	const defaultWidth = 120;

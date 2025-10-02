@@ -83,7 +83,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			'site-logo-width': undefined,
 			'site-icon': undefined,
 			'default-featured-image': undefined,
-			'accent-color': defaultSettings[ 'accent-color' ],
+			'accent-color': undefined,
 			'background-color': null, // Deprecated.
 			'text-color': null, // Deprecated.
 			styles: {
@@ -118,6 +118,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		setSiteLogoUrl( undefined );
 		setSiteIconUrl( undefined );
 		setDefaultFeaturedImageUrl( undefined );
+		setDefaultAccentColor( undefined );
 		apiFetch( {
 			path: '/unitone/v1/settings',
 			method: 'POST',

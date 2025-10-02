@@ -30,7 +30,13 @@ function apply_css_vars_from_settings() {
 	$content_size     = $deprecated_content_size ? $deprecated_content_size : $content_size; // Deprecated.
 	$wide_size        = Manager::get_setting( 'settings' )['layout']['wideSize'];
 	$wide_size        = $deprecated_wide_size ? $deprecated_wide_size : $wide_size; // Deprecated.
-	$accent_color     = Manager::get_setting( 'accent-color' );
+	$accent_color     = array_filter(
+		Manager::get_setting( 'settings' )['color']['palette']['theme'] ?? array(),
+		function ( $color_object ) {
+			return 'unitone-accent' === $color_object['slug'] && 'var(--unitone--color--accent)' !== $color_object['color'];
+		}
+	)[0]['color'] ?? null;
+	$accent_color     = unitone_get_preset_css_var( $accent_color ?? Manager::get_setting( 'accent-color' ) );
 	$background_color = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['background'] );
 	$background_color = 'var(--wp--preset--color--unitone-background)' === $background_color
 		? Settings::get_default_global_styles()['styles']['color']['background']

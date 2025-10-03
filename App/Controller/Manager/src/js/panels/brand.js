@@ -152,8 +152,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 					color: {
 						palette: {
 							theme: [
-								// @todo 本当は他と合わせて空値を返したいが、theme.json の値（e.g. var(--unitone--color--accent）で
-								// 補完されてしまうため、正しく表示されなくなってしまう。
+								// In reality, we want to return null along with the others,
+								// but since this may result in the item not being displayed correctly,
+								// we return the default value.
 								...defaultSettings.settings.color.palette.theme,
 							],
 						},

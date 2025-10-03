@@ -57,7 +57,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						className="wp-oembed-blog-card"
 						style={ {
 							'--wp--preset--color--unitone-accent':
-								settings?.[ 'accent-color' ],
+								settings?.settings?.color?.palette?.theme.find(
+									( colorObject ) =>
+										'unitone-accent' === colorObject.slug
+								)?.color,
 							'--wp--preset--color--unitone-text':
 								settings?.styles?.color?.text,
 							'--wp--preset--color--unitone-text-alt':

@@ -205,6 +205,7 @@ class Settings {
 
 	/**
 	 * Update settings.
+	 * You don't need to pass all the settings as arguments. Just the data you want to update is OK.
 	 *
 	 * @param array $settings Array of settings.
 	 */
@@ -216,6 +217,7 @@ class Settings {
 			static::_remove_nulls(
 				unitone_array_filter_override_replace_recursive(
 					static::$default_settings,
+					self::get_settings(),
 					$settings
 				)
 			)
@@ -224,6 +226,7 @@ class Settings {
 
 	/**
 	 * Update global styles.
+	 * You don't need to pass all the settings as arguments. Just the data you want to update is OK.
 	 *
 	 * @param array $settings Array of settings.
 	 */
@@ -237,7 +240,7 @@ class Settings {
 		$json_global_styles = $user_cpt['post_content'];
 		$global_styles      = json_decode( $json_global_styles, true ) ?? array();
 
-		// @todo global style にはパレット全部を保存する必要があるので、テーマのデフォルト値をマージする。
+		// The global style needs to store the entire palette, so merge the theme's default values.
 		$theme_palette    = \WP_Theme_JSON_Resolver::get_theme_data()->get_raw_data()['settings']['color']['palette']['theme'] ?? array();
 		$settings_palette = $settings['settings']['color']['palette']['theme'] ?? array();
 		$theme_map        = array_column( $theme_palette, null, 'slug' );
@@ -246,29 +249,30 @@ class Settings {
 			if ( empty( $i['slug'] ) ) {
 				continue;
 			}
-				$slug = $i['slug'];
+
+			$slug = $i['slug'];
 
 			if ( empty( $i['color'] ) && ! empty( $theme_map[ $slug ]['color'] ) ) {
-					$i['color'] = $theme_map[ $slug ]['color'];
-			}
-			if ( ! empty( $theme_map[ $slug ]['name'] ) ) {
-					$i['name'] = $theme_map[ $slug ]['name'];
+				$i['color'] = $theme_map[ $slug ]['color'];
 			}
 
-				$settings_map[ $slug ] = $i;
+			if ( ! empty( $theme_map[ $slug ]['name'] ) ) {
+				$i['name'] = $theme_map[ $slug ]['name'];
+			}
+
+			$settings_map[ $slug ] = $i;
 		}
 		$merged_palette                                    = array_values( $settings_map + array_diff_key( $theme_map, $settings_map ) );
 		$settings['settings']['color']['palette']['theme'] = $merged_palette;
 
-		// @todo 更新差分だけが渡されるため、ここでは必ず既存の設定をマージする
 		$new_global_styles = static::_remove_nulls(
 			unitone_array_override_replace_recursive(
 				array(
 					'version'                     => 3,
 					'isGlobalStylesUserThemeJSON' => true,
 				),
-				$global_styles,
 				static::$default_global_styles,
+				$global_styles,
 				$settings
 			)
 		);

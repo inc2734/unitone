@@ -13,6 +13,10 @@ import apiFetch from '@wordpress/api-fetch';
 
 import ColorGradientSettingsDropdown from '../color-gradient-settings-dropdown';
 
+import { useMigrationAccentColor } from './hooks/useMigrationAccentColor';
+import { useMigrationBackgroundColor } from './hooks/useMigrationBackgroundColor';
+import { useMigrationTextColor } from './hooks/useMigrationTextColor';
+
 const MIN_SIZE = 20;
 
 export default function ( { settings, defaultSettings, setSettings } ) {
@@ -22,6 +26,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ siteIconUrl, setSiteIconUrl ] = useState( undefined );
 	const [ defaultFeaturedImageUrl, setDefaultFeaturedImageUrl ] =
 		useState( undefined );
+
+	useMigrationAccentColor( settings, setSettings );
+	useMigrationBackgroundColor( settings, setSettings );
+	useMigrationTextColor( settings, setSettings );
 
 	const saveSettings = () => {
 		setSettingsSaving( true );
@@ -34,9 +42,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				'site-icon': settings?.[ 'site-icon' ] ?? null,
 				'default-featured-image':
 					settings?.[ 'default-featured-image' ] ?? null,
-				'accent-color': null, // Deprecated.
-				'background-color': null, // Deprecated.
-				'text-color': null, // Deprecated.
 				settings: {
 					color: {
 						palette: {
@@ -94,9 +99,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			'site-logo-width': undefined,
 			'site-icon': undefined,
 			'default-featured-image': undefined,
-			'accent-color': null, // Deprecated.
-			'background-color': null, // Deprecated.
-			'text-color': null, // Deprecated.
 			settings: {
 				color: {
 					palette: {
@@ -146,9 +148,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				'site-logo-width': null,
 				'site-icon': null,
 				'default-featured-image': null,
-				'accent-color': null, // Deprecated.
-				'background-color': null, // Deprecated.
-				'text-color': null, // Deprecated.
 				settings: {
 					color: {
 						palette: {
@@ -198,47 +197,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		settings?.siteIconUrl,
 		settings?.defaultFeaturedImageUrl,
 	] );
-
-	// Deprecated proccess.
-	useEffect( () => {
-		if ( ! settings[ 'accent-color' ] ) {
-			return;
-		}
-
-		setSettings( ( currentSettings ) => {
-			const deprecatedAccentColor = currentSettings?.[ 'accent-color' ];
-			if ( ! deprecatedAccentColor ) {
-				return currentSettings;
-			}
-
-			return {
-				...currentSettings,
-				'accent-color': null,
-				settings: {
-					...currentSettings?.settings,
-					color: {
-						...currentSettings?.settings?.color,
-						palette: {
-							...currentSettings?.settings?.color?.palette,
-							theme: [
-								{
-									slug: 'unitone-accent',
-									color: deprecatedAccentColor,
-								},
-								...(
-									currentSettings.settings.color.palette
-										.theme ?? []
-								).filter(
-									( entry ) =>
-										'unitone-accent' !== entry?.slug
-								),
-							],
-						},
-					},
-				},
-			};
-		} );
-	}, [ settings[ 'accent-color' ] ] );
 
 	// Set the default width to a responsible size.
 	// Note that this width is also set in the attached frontend CSS file.

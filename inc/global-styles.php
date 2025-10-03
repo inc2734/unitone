@@ -11,16 +11,13 @@ use Unitone\App\Controller\Manager\Model\Settings;
 /**
  * Apply CSS Vars from settings.
  */
-function apply_css_vars_from_settings() {
-	$deprecated_font_family      = Manager::get_setting( 'font-family' );
-	$deprecated_font_family      = $deprecated_font_family && unitone_get_preset_css_var( $deprecated_font_family ) === $deprecated_font_family
+function unitone_apply_css_vars_from_settings() {
+	$deprecated_font_family  = Manager::get_setting( 'font-family' );
+	$deprecated_font_family  = $deprecated_font_family && unitone_get_preset_css_var( $deprecated_font_family ) === $deprecated_font_family
 		? 'var(--wp--preset--font-family--' . $deprecated_font_family . ')'
 		: $deprecated_font_family;
-	$deprecated_content_size     = Manager::get_setting( 'content-size' );
-	$deprecated_wide_size        = Manager::get_setting( 'wide-size' );
-	$deprecated_accent_color     = unitone_get_preset_css_var( Manager::get_setting( 'accent-color' ) );
-	$deprecated_background_color = unitone_get_preset_css_var( Manager::get_setting( 'background-color' ) );
-	$deprecated_text_color       = unitone_get_preset_css_var( Manager::get_setting( 'text-color' ) );
+	$deprecated_content_size = Manager::get_setting( 'content-size' );
+	$deprecated_wide_size    = Manager::get_setting( 'wide-size' );
 
 	$font_family      = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['typography']['fontFamily'] );
 	$font_family      = $deprecated_font_family ? $deprecated_font_family : $font_family; // Deprecated.
@@ -35,11 +32,8 @@ function apply_css_vars_from_settings() {
 	$accent_color     = 'var(--unitone--color--accent)' === $accent_color
 		? unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', Settings::get_default_global_styles() ) )
 		: $accent_color;
-	$accent_color     = $deprecated_accent_color ? $deprecated_accent_color : $accent_color; // Deprecated.
 	$background_color = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['background'] );
-	$background_color = $deprecated_background_color ? $deprecated_background_color : $background_color; // Deprecated.
 	$text_color       = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['text'] );
-	$text_color       = $deprecated_text_color ? $deprecated_text_color : $text_color; // Deprecated.
 	$h2_size          = Manager::get_setting( 'h2-size' );
 	$h3_size          = Manager::get_setting( 'h3-size' );
 	$h4_size          = Manager::get_setting( 'h4-size' );
@@ -118,50 +112,7 @@ function apply_css_vars_from_settings() {
 		wp_add_inline_style( 'unitone/settings', $stylesheet );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'apply_css_vars_from_settings' );
-
-/**
- * @todo
- * $deprecated_accent_color とグローバルスタイルの unitone-accent が異なる場合は、フォールバック処理が必要
- */
-add_action(
-	'after_setup_theme',
-	function () {
-		$deprecated_accent_color = unitone_get_preset_css_var( Manager::get_setting( 'accent-color' ) );
-		if ( ! $deprecated_accent_color ) {
-			return;
-		}
-
-		$merged_raw_data      = \WP_Theme_JSON_Resolver::get_merged_data( 'user' )->get_raw_data();
-		$current_accent_color = unitone_get_palette_color( 'unitone-accent', $merged_raw_data );
-		if ( $deprecated_accent_color && $deprecated_accent_color !== $current_accent_color ) {
-			Settings::update_global_styles(
-				unitone_array_override_replace_recursive(
-					Settings::get_global_styles(),
-					array(
-						'settings' => array(
-							'color' => array(
-								'palette' => array(
-									'theme' => array(
-										array(
-											'slug'  => 'unitone-accent',
-											'color' => $deprecated_accent_color,
-										),
-									),
-								),
-							),
-						),
-					)
-				)
-			);
-			Settings::update_settings(
-				array(
-					'accent-color' => null,
-				)
-			);
-		}
-	}
-);
+add_action( 'wp_enqueue_scripts', 'unitone_apply_css_vars_from_settings' );
 
 /**
  * Apply CSS Vars from settings for editor.
@@ -634,4 +585,104 @@ add_filter(
 		return $theme_json->update_with( $data );
 	},
 	9
+);
+
+/**
+ * Migrate the old settings in settings to the new settings.
+ */
+add_action(
+	'after_setup_theme',
+	function () {
+		$deprecated_accent_color     = unitone_get_preset_css_var( Manager::get_setting( 'accent-color' ) );
+		$deprecated_background_color = unitone_get_preset_css_var( Manager::get_setting( 'background-color' ) );
+		$deprecated_text_color       = unitone_get_preset_css_var( Manager::get_setting( 'text-color' ) );
+
+		if ( ! $deprecated_accent_color && ! $deprecated_background_color && ! $deprecated_text_color ) {
+			return;
+		}
+
+		$merged_raw_data = \WP_Theme_JSON_Resolver::get_merged_data( 'user' )->get_raw_data();
+
+		if ( $deprecated_accent_color ) {
+			$current_accent_color = unitone_get_palette_color( 'unitone-accent', $merged_raw_data );
+
+			if ( $deprecated_accent_color !== $current_accent_color ) {
+				Settings::update_global_styles(
+					unitone_array_override_replace_recursive(
+						Settings::get_global_styles(),
+						array(
+							'settings' => array(
+								'color' => array(
+									'palette' => array(
+										'theme' => array(
+											array(
+												'slug'  => 'unitone-accent',
+												'color' => $deprecated_accent_color,
+											),
+										),
+									),
+								),
+							),
+						)
+					)
+				);
+
+				Settings::update_settings(
+					array(
+						'accent-color' => null,
+					)
+				);
+			}
+		}
+
+		if ( $deprecated_background_color ) {
+			$current_background_color = $merged_raw_data['styles']['color']['background'] ?? false;
+
+			if ( $deprecated_background_color !== $current_background_color ) {
+				Settings::update_global_styles(
+					unitone_array_override_replace_recursive(
+						Settings::get_global_styles(),
+						array(
+							'styles' => array(
+								'color' => array(
+									'background' => $deprecated_background_color,
+								),
+							),
+						)
+					)
+				);
+
+				Settings::update_settings(
+					array(
+						'background-color' => null,
+					)
+				);
+			}
+		}
+
+		if ( $deprecated_text_color ) {
+			$current_text_color = $merged_raw_data['styles']['color']['text'] ?? false;
+
+			if ( $deprecated_text_color !== $current_text_color ) {
+				Settings::update_global_styles(
+					unitone_array_override_replace_recursive(
+						Settings::get_global_styles(),
+						array(
+							'styles' => array(
+								'color' => array(
+									'text' => $deprecated_text_color,
+								),
+							),
+						)
+					)
+				);
+
+				Settings::update_settings(
+					array(
+						'text-color' => null,
+					)
+				);
+			}
+		}
+	}
 );

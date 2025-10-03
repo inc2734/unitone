@@ -17,22 +17,22 @@
 				},
 				{
 					"slug": "unitone-background",
-					"color": "#222",
+					"color": "var(--unitone--color--background)",
 					"name": "Background"
 				},
 				{
 					"slug": "unitone-text",
-					"color": "#fff",
+					"color": "var(--unitone--color--text)",
 					"name": "Text"
 				},
 				{
 					"slug": "unitone-background-alt",
-					"color": "#fff",
+					"color": "var(--unitone--color--text)",
 					"name": "Background Alt"
 				},
 				{
 					"slug": "unitone-text-alt",
-					"color": "#222",
+					"color": "var(--unitone--color--background)",
 					"name": "Text Alt"
 				},
 				{
@@ -85,13 +85,13 @@
 	},
 	"styles": {
 		"color": {
-			"background": "var:preset|color|unitone-background",
-			"text": "var:preset|color|unitone-text"
+			"background": "#222",
+			"text": "#fff"
 		},
 		"elements": {
 			"link": {
 				"color": {
-					"text": "var:preset|color|unitone-text"
+					"text": "#222"
 				}
 			}
 		}

@@ -130,6 +130,7 @@ const PageSettingsPanel = () => {
 	const overrideStyles = useMemo(
 		() => ( {
 			'--unitone--color--accent': newAccentColor,
+			'--wp--preset--color--unitone-accent': newAccentColor,
 			'--unitone--color--background': newBackgroundColor,
 			'--unitone--color--text': newTextColor,
 			'--unitone--base-font-size': newBaseFontSize,

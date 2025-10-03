@@ -7,7 +7,7 @@
 			"palette": [
 				{
 					"slug": "unitone-accent",
-					"color": "var(--unitone--color--accent)",
+					"color": "#a16207",
 					"name": "Accent"
 				},
 				{
@@ -17,7 +17,7 @@
 				},
 				{
 					"slug": "unitone-background",
-					"color": "color-mix(in srgb, var(--unitone--color--text-immutable) 98%, #ff0)",
+					"color": "color-mix(in srgb, var(--unitone--color--text-immutable) 98%, #a16207)",
 					"name": "Background"
 				},
 				{
@@ -32,37 +32,37 @@
 				},
 				{
 					"slug": "unitone-text-alt",
-					"color": "color-mix(in srgb, var(--unitone--color--text-immutable) 98%, #ff0)",
+					"color": "color-mix(in srgb, var(--unitone--color--text-immutable) 98%, #a16207)",
 					"name": "Text Alt"
 				},
 				{
 					"slug": "unitone-pale-gray",
-					"color": "color-mix(in srgb, #272727 98%, #ff0)",
+					"color": "color-mix(in srgb, #272727 98%, #a16207)",
 					"name": "Pale Gray"
 				},
 				{
 					"slug": "unitone-bright-gray",
-					"color": "color-mix(in srgb, #2f2f2f 98%, #ff0)",
+					"color": "color-mix(in srgb, #2f2f2f 98%, #a16207)",
 					"name": "Bright Gray"
 				},
 				{
 					"slug": "unitone-light-gray",
-					"color": "color-mix(in srgb, #3d3d3d 98%, #ff0)",
+					"color": "color-mix(in srgb, #3d3d3d 98%, #a16207)",
 					"name": "Light Gray"
 				},
 				{
 					"slug": "unitone-gray",
-					"color": "color-mix(in srgb, #575757 98%, #ff0)",
+					"color": "color-mix(in srgb, #575757 98%, #a16207)",
 					"name": "Gray"
 				},
 				{
 					"slug": "unitone-dark-gray",
-					"color": "color-mix(in srgb, #7b7b7b 98%, #ff0)",
+					"color": "color-mix(in srgb, #7b7b7b 98%, #a16207)",
 					"name": "Dark Gray"
 				},
 				{
 					"slug": "unitone-heavy-gray",
-					"color": "color-mix(in srgb, #a7a7a7 98%, #ff0)",
+					"color": "color-mix(in srgb, #a7a7a7 98%, #a16207)",
 					"name": "Heavy Gray"
 				},
 				{
@@ -85,13 +85,13 @@
 	},
 	"styles": {
 		"color": {
-			"background": "var(--wp--preset--color--unitone-background)",
-			"text": "var(--wp--preset--color--unitone-text)"
+			"background": "var:preset|color|unitone-background",
+			"text": "var:preset|color|unitone-text"
 		},
 		"elements": {
 			"link": {
 				"color": {
-					"text": "#fff"
+					"text": "var:preset|color|unitone-text"
 				}
 			}
 		}

@@ -116,3 +116,38 @@ function unitone_array_filter_override_replace_recursive( array ...$arrays ) {
 
 	return $result;
 }
+
+/**
+ * Retrieve a color value from the theme color palette.
+ *
+ * @param string $slug          Palette slug to look up.
+ * @param array  $global_styles Optional global styles array to search within.
+ * @return string|false
+ */
+function unitone_get_palette_color( $slug, array $global_styles = array() ) {
+	if ( ! $slug || ! $global_styles ) {
+		return false;
+	}
+
+	$palette = $global_styles['settings']['color']['palette'];
+	$keys    = array_keys( $palette );
+	$is_flat = array_keys( $keys ) === $keys;
+
+	if ( $is_flat ) {
+		foreach ( $palette as $color_object ) {
+			if ( $slug === $color_object['slug'] ) {
+				return $color_object;
+			}
+		}
+	} else {
+		foreach ( $palette as $group ) {
+			foreach ( $group as $color_object ) {
+				if ( $slug === $color_object['slug'] ) {
+					return $color_object['color'];
+				}
+			}
+		}
+	}
+
+	return false;
+}

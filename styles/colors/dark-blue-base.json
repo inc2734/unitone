@@ -7,7 +7,7 @@
 			"palette": [
 				{
 					"slug": "unitone-accent",
-					"color": "var(--unitone--color--accent)",
+					"color": "#1d4ed8",
 					"name": "Accent"
 				},
 				{
@@ -17,7 +17,7 @@
 				},
 				{
 					"slug": "unitone-background",
-					"color": "color-mix(in srgb, var(--unitone--color--text-immutable) 98%, #00f)",
+					"color": "color-mix(in srgb, var(--unitone--color--text-immutable) 98%, #1d4ed8)",
 					"name": "Background"
 				},
 				{
@@ -32,37 +32,37 @@
 				},
 				{
 					"slug": "unitone-text-alt",
-					"color": "color-mix(in srgb, var(--unitone--color--text-immutable) 98%, #00f)",
+					"color": "color-mix(in srgb, var(--unitone--color--text-immutable) 98%, #1d4ed8)",
 					"name": "Text Alt"
 				},
 				{
 					"slug": "unitone-pale-gray",
-					"color": "color-mix(in srgb, #272727 98%, #00f)",
+					"color": "color-mix(in srgb, #272727 98%, #1d4ed8)",
 					"name": "Pale Gray"
 				},
 				{
 					"slug": "unitone-bright-gray",
-					"color": "color-mix(in srgb, #2f2f2f 98%, #00f)",
+					"color": "color-mix(in srgb, #2f2f2f 98%, #1d4ed8)",
 					"name": "Bright Gray"
 				},
 				{
 					"slug": "unitone-light-gray",
-					"color": "color-mix(in srgb, #3d3d3d 98%, #00f)",
+					"color": "color-mix(in srgb, #3d3d3d 98%, #1d4ed8)",
 					"name": "Light Gray"
 				},
 				{
 					"slug": "unitone-gray",
-					"color": "color-mix(in srgb, #575757 98%, #00f)",
+					"color": "color-mix(in srgb, #575757 98%, #1d4ed8)",
 					"name": "Gray"
 				},
 				{
 					"slug": "unitone-dark-gray",
-					"color": "color-mix(in srgb, #7b7b7b 98%, #00f)",
+					"color": "color-mix(in srgb, #7b7b7b 98%, #1d4ed8)",
 					"name": "Dark Gray"
 				},
 				{
 					"slug": "unitone-heavy-gray",
-					"color": "color-mix(in srgb, #a7a7a7 98%, #00f)",
+					"color": "color-mix(in srgb, #a7a7a7 98%, #1d4ed8)",
 					"name": "Heavy Gray"
 				},
 				{

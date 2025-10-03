@@ -24,7 +24,7 @@
 			"palette": [
 				{
 					"slug": "unitone-accent",
-					"color": "var(--unitone--color--accent)",
+					"color": "#090a0b",
 					"name": "Accent"
 				},
 				{
@@ -54,32 +54,32 @@
 				},
 				{
 					"slug": "unitone-pale-gray",
-					"color": "var(--unitone--color--pale-gray)",
+					"color": "#f9fafb",
 					"name": "Pale Gray"
 				},
 				{
 					"slug": "unitone-bright-gray",
-					"color": "var(--unitone--color--bright-gray)",
+					"color": "#f3f4f6",
 					"name": "Bright Gray"
 				},
 				{
 					"slug": "unitone-light-gray",
-					"color": "var(--unitone--color--light-gray)",
+					"color": "#e5e7eb",
 					"name": "Light Gray"
 				},
 				{
 					"slug": "unitone-gray",
-					"color": "var(--unitone--color--gray)",
+					"color": "#9ca3af",
 					"name": "Gray"
 				},
 				{
 					"slug": "unitone-dark-gray",
-					"color": "var(--unitone--color--dark-gray)",
+					"color": "#374151",
 					"name": "Dark Gray"
 				},
 				{
 					"slug": "unitone-heavy-gray",
-					"color": "var(--unitone--color--heavy-gray)",
+					"color": "#030712",
 					"name": "Heavy Gray"
 				},
 				{

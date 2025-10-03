@@ -281,17 +281,17 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			( color ) =>
 				color.slug ===
 				settings?.settings?.color?.palette?.theme
-					?.filter(
+					?.find(
 						( colorObject ) => 'unitone-accent' === colorObject.slug
-					)?.[ 0 ]
+					)
 					?.color?.replace( 'var:preset|color|', '' )
 		)?.color ||
-		settings?.settings?.color?.palette?.theme?.filter(
+		settings?.settings?.color?.palette?.theme?.find(
 			( colorObject ) => 'unitone-accent' === colorObject.slug
-		)?.[ 0 ]?.color ||
-		defaultSettings?.settings?.color?.palette?.theme?.filter(
+		)?.color ||
+		defaultSettings?.settings?.color?.palette?.theme?.find(
 			( colorObject ) => 'unitone-accent' === colorObject.slug
-		)?.[ 0 ]?.color;
+		)?.color;
 
 	const backgroundColor =
 		flatPalette?.find(
@@ -327,7 +327,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				)
 		)?.color ||
 		settings?.styles?.elements?.link?.color?.text ||
-		// accentColor ||
 		defaultSettings?.styles?.elements?.link?.color?.text;
 
 	const linkHoverColor =

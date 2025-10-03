@@ -85,8 +85,8 @@
 	},
 	"styles": {
 		"color": {
-			"background": "var(--wp--preset--color--unitone-background)",
-			"text": "var(--wp--preset--color--unitone-text)"
+			"background": "var:preset|color|unitone-background",
+			"text": "var:preset|color|unitone-text"
 		}
 	}
 }

@@ -31,32 +31,14 @@ function apply_css_vars_from_settings() {
 	$content_size     = $deprecated_content_size ? $deprecated_content_size : $content_size; // Deprecated.
 	$wide_size        = Manager::get_setting( 'settings' )['layout']['wideSize'];
 	$wide_size        = $deprecated_wide_size ? $deprecated_wide_size : $wide_size; // Deprecated.
-	$accent_color     = unitone_get_preset_css_var(
-		array_filter(
-			Manager::get_setting( 'settings' )['color']['palette']['theme'] ?? array(),
-			function ( $color_object ) {
-				return 'unitone-accent' === $color_object['slug'];
-			}
-		)[0]['color'] ?? null
-	);
+	$accent_color     = unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', array( 'settings' => Manager::get_setting( 'settings' ) ) ) );
 	$accent_color     = 'var(--unitone--color--accent)' === $accent_color
-		? array_filter(
-			Settings::get_default_global_styles()['settings']['color']['palette']['theme'] ?? array(),
-			function ( $color_object ) {
-				return 'unitone-accent' === $color_object['slug'];
-			}
-		)[0]['color'] ?? null
+		? unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', Settings::get_default_global_styles() ) )
 		: $accent_color;
 	$accent_color     = $deprecated_accent_color ? $deprecated_accent_color : $accent_color; // Deprecated.
 	$background_color = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['background'] );
-	$background_color = 'var(--wp--preset--color--unitone-background)' === $background_color
-		? Settings::get_default_global_styles()['styles']['color']['background']
-		: $background_color;
 	$background_color = $deprecated_background_color ? $deprecated_background_color : $background_color; // Deprecated.
 	$text_color       = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['text'] );
-	$text_color       = 'var(--wp--preset--color--unitone-text)' === $text_color
-		? Settings::get_default_global_styles()['styles']['color']['text']
-		: $text_color;
 	$text_color       = $deprecated_text_color ? $deprecated_text_color : $text_color; // Deprecated.
 	$h2_size          = Manager::get_setting( 'h2-size' );
 	$h3_size          = Manager::get_setting( 'h3-size' );
@@ -73,28 +55,26 @@ function apply_css_vars_from_settings() {
 			--unitone--measure: %5$s;
 			--unitone--container-max-width: %6$s;
 			--unitone--color--accent: %7$s;
-			--unitone--color--background: %8$s;
-			--unitone--color--text: %9$s;
 		}
 		[data-unitone-layout~="text"] > h2,
 		[data-unitone-layout~="vertical-writing"] > h2 {
-			--unitone--font-size: %10$s;
+			--unitone--font-size: %8$s;
 		}
 		[data-unitone-layout~="text"] > h3,
 		[data-unitone-layout~="vertical-writing"] > h3 {
-			--unitone--font-size: %11$s;
+			--unitone--font-size: %9$s;
 		}
 		[data-unitone-layout~="text"] > h4,
 		[data-unitone-layout~="vertical-writing"] > h4 {
-			--unitone--font-size: %12$s;
+			--unitone--font-size: %10$s;
 		}
 		[data-unitone-layout~="text"] > h5,
 		[data-unitone-layout~="vertical-writing"] > h5 {
-			--unitone--font-size: %13$s;
+			--unitone--font-size: %11$s;
 		}
 		[data-unitone-layout~="text"] > h6,
 		[data-unitone-layout~="vertical-writing"] > h6 {
-			--unitone--font-size: %14$s;
+			--unitone--font-size: %12$s;
 		}',
 		$font_family,
 		$base_font_size,
@@ -103,8 +83,6 @@ function apply_css_vars_from_settings() {
 		$content_size,
 		$wide_size,
 		$accent_color,
-		$background_color,
-		$text_color,
 		$h2_size,
 		$h3_size,
 		$h4_size,
@@ -113,8 +91,77 @@ function apply_css_vars_from_settings() {
 	);
 	wp_add_inline_style( 'unitone', $stylesheet );
 	wp_add_inline_style( 'unitone/settings', $stylesheet );
+
+	if ( 'var(--unitone--color--background)' !== $background_color && 'var(--wp--preset--color--unitone-background)' !== $background_color ) {
+		$stylesheet = sprintf(
+			':root {
+				--unitone--color--background: %1$s;
+				--unitone--color--text-alt: %1$s;
+			}',
+			$background_color
+		);
+
+		wp_add_inline_style( 'unitone', $stylesheet );
+		wp_add_inline_style( 'unitone/settings', $stylesheet );
+	}
+
+	if ( 'var(--unitone--color--text)' !== $text_color && 'var(--wp--preset--color--unitone-text)' !== $text_color ) {
+		$stylesheet = sprintf(
+			':root {
+				--unitone--color--text: %1$s;
+				--unitone--color--background-alt: %1$s;
+			}',
+			$text_color
+		);
+
+		wp_add_inline_style( 'unitone', $stylesheet );
+		wp_add_inline_style( 'unitone/settings', $stylesheet );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'apply_css_vars_from_settings' );
+
+/**
+ * @todo
+ * $deprecated_accent_color とグローバルスタイルの unitone-accent が異なる場合は、フォールバック処理が必要
+ */
+add_action(
+	'after_setup_theme',
+	function () {
+		$deprecated_accent_color = unitone_get_preset_css_var( Manager::get_setting( 'accent-color' ) );
+		if ( ! $deprecated_accent_color ) {
+			return;
+		}
+
+		$merged_raw_data      = \WP_Theme_JSON_Resolver::get_merged_data( 'user' )->get_raw_data();
+		$current_accent_color = unitone_get_palette_color( 'unitone-accent', $merged_raw_data );
+		if ( $deprecated_accent_color && $deprecated_accent_color !== $current_accent_color ) {
+			Settings::update_global_styles(
+				unitone_array_override_replace_recursive(
+					Settings::get_global_styles(),
+					array(
+						'settings' => array(
+							'color' => array(
+								'palette' => array(
+									'theme' => array(
+										array(
+											'slug'  => 'unitone-accent',
+											'color' => $deprecated_accent_color,
+										),
+									),
+								),
+							),
+						),
+					)
+				)
+			);
+			Settings::update_settings(
+				array(
+					'accent-color' => null,
+				)
+			);
+		}
+	}
+);
 
 /**
  * Apply CSS Vars from settings for editor.
@@ -149,392 +196,392 @@ function unitone_set_color_palette( $theme_json ) {
 		array(
 			array(
 				'slug'  => 'unitone-twilight-light',
-				'color' => 'var(--unitone--color--twilight-light)',
+				'color' => 'rgba(255, 255, 255, .3)',
 				'name'  => _x( 'Twilight (Light)', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-twilight',
-				'color' => 'var(--unitone--color--twilight)',
+				'color' => 'rgba(255, 255, 255, .5)',
 				'name'  => _x( 'Twilight', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-twilight-heavy',
-				'color' => 'var(--unitone--color--twilight-heavy)',
+				'color' => 'rgba(255, 255, 255, .7)',
 				'name'  => _x( 'Twilight (Heavy)', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dimmed-light',
-				'color' => 'var(--unitone--color--dimmed-light)',
+				'color' => 'rgba(0, 0, 0, .3)',
 				'name'  => _x( 'Dimmed (Light)', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dimmed',
-				'color' => 'var(--unitone--color--dimmed)',
+				'color' => 'rgba(0, 0, 0, .5)',
 				'name'  => _x( 'Dimmed', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dimmed-heavy',
-				'color' => 'var(--unitone--color--dimmed-heavy)',
+				'color' => 'rgba(0, 0, 0, .7)',
 				'name'  => _x( 'Dimmed (Heavy)', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-red',
-				'color' => 'var(--unitone--color--pale-red)',
+				'color' => '#fef2f2',
 				'name'  => _x( 'Pale Red', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-red',
-				'color' => 'var(--unitone--color--bright-red)',
+				'color' => '#fee2e2',
 				'name'  => _x( 'Bright Red', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-red',
-				'color' => 'var(--unitone--color--light-red)',
+				'color' => '#fecaca',
 				'name'  => _x( 'Light Red', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-red',
-				'color' => 'var(--unitone--color--red)',
+				'color' => '#f87171',
 				'name'  => _x( 'Red', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-red',
-				'color' => 'var(--unitone--color--dark-red)',
+				'color' => '#b91c1c',
 				'name'  => _x( 'Dark Red', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-red',
-				'color' => 'var(--unitone--color--heavy-red)',
+				'color' => '#450a0a',
 				'name'  => _x( 'Heavy Red', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-orange',
-				'color' => 'var(--unitone--color--pale-orange)',
+				'color' => '#fff7ed',
 				'name'  => _x( 'Pale Orange', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-orange',
-				'color' => 'var(--unitone--color--bright-orange)',
+				'color' => '#ffedd5',
 				'name'  => _x( 'Bright Orange', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-orange',
-				'color' => 'var(--unitone--color--light-orange)',
+				'color' => '#fed7aa',
 				'name'  => _x( 'Light Orange', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-orange',
-				'color' => 'var(--unitone--color--orange)',
+				'color' => '#fb923c',
 				'name'  => _x( 'Orange', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-orange',
-				'color' => 'var(--unitone--color--dark-orange)',
+				'color' => '#c2410c',
 				'name'  => _x( 'Dark Orange', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-orange',
-				'color' => 'var(--unitone--color--heavy-orange)',
+				'color' => '#431407',
 				'name'  => _x( 'Heavy Orange', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-yellow',
-				'color' => 'var(--unitone--color--pale-yellow)',
+				'color' => '#fefce8',
 				'name'  => _x( 'Pale Yellow', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-yellow',
-				'color' => 'var(--unitone--color--bright-yellow)',
+				'color' => '#fef9c3',
 				'name'  => _x( 'Bright Yellow', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-yellow',
-				'color' => 'var(--unitone--color--light-yellow)',
+				'color' => '#fef08a',
 				'name'  => _x( 'Light Yellow', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-yellow',
-				'color' => 'var(--unitone--color--yellow)',
+				'color' => '#facc15',
 				'name'  => _x( 'Yellow', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-yellow',
-				'color' => 'var(--unitone--color--dark-yellow)',
+				'color' => '#a16207',
 				'name'  => _x( 'Dark Yellow', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-yellow',
-				'color' => 'var(--unitone--color--heavy-yellow)',
+				'color' => '#422006',
 				'name'  => _x( 'Heavy Yellow', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-lime',
-				'color' => 'var(--unitone--color--pale-lime)',
+				'color' => '#f7fee7',
 				'name'  => _x( 'Pale Lime', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-lime',
-				'color' => 'var(--unitone--color--bright-lime)',
+				'color' => '#ecfccb',
 				'name'  => _x( 'Bright Lime', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-lime',
-				'color' => 'var(--unitone--color--light-lime)',
+				'color' => '#d9f99d',
 				'name'  => _x( 'Light Lime', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-lime',
-				'color' => 'var(--unitone--color--lime)',
+				'color' => '#a3e635',
 				'name'  => _x( 'Lime', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-lime',
-				'color' => 'var(--unitone--color--dark-lime)',
+				'color' => '#4d7c0f',
 				'name'  => _x( 'Dark Lime', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-lime',
-				'color' => 'var(--unitone--color--heavy-lime)',
+				'color' => '#1a2e05',
 				'name'  => _x( 'Heavy Lime', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-green',
-				'color' => 'var(--unitone--color--pale-green)',
+				'color' => '#f0fdf4',
 				'name'  => _x( 'Pale Green', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-green',
-				'color' => 'var(--unitone--color--bright-green)',
+				'color' => '#dcfce7',
 				'name'  => __( 'Bright Green', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-green',
-				'color' => 'var(--unitone--color--light-green)',
+				'color' => '#bbf7d0',
 				'name'  => _x( 'Light Green', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-green',
-				'color' => 'var(--unitone--color--green)',
+				'color' => '#4ade80',
 				'name'  => _x( 'Green', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-green',
-				'color' => 'var(--unitone--color--dark-green)',
+				'color' => '#15803d',
 				'name'  => _x( 'Dark Green', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-green',
-				'color' => 'var(--unitone--color--heavy-green)',
+				'color' => '#052e16',
 				'name'  => _x( 'Heavy Green', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-teal',
-				'color' => 'var(--unitone--color--pale-teal)',
+				'color' => '#f0fdfa',
 				'name'  => _x( 'Pale Teal', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-teal',
-				'color' => 'var(--unitone--color--bright-teal)',
+				'color' => '#ccfbf1',
 				'name'  => _x( 'Bright Teal', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-teal',
-				'color' => 'var(--unitone--color--light-teal)',
+				'color' => '#99f6e4',
 				'name'  => _x( 'Light Teal', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-teal',
-				'color' => 'var(--unitone--color--teal)',
+				'color' => '#2dd4bf',
 				'name'  => _x( 'Teal', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-teal',
-				'color' => 'var(--unitone--color--dark-teal)',
+				'color' => '#0f766e',
 				'name'  => _x( 'Dark Teal', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-teal',
-				'color' => 'var(--unitone--color--heavy-teal)',
+				'color' => '#042f2e',
 				'name'  => _x( 'Heavy Teal', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-cyan',
-				'color' => 'var(--unitone--color--pale-cyan)',
+				'color' => '#ecfeff',
 				'name'  => _x( 'Pale Cyan', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-cyan',
-				'color' => 'var(--unitone--color--bright-cyan)',
+				'color' => '#cffafe',
 				'name'  => _x( 'Bright Cyan', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-cyan',
-				'color' => 'var(--unitone--color--light-cyan)',
+				'color' => '#a5f3fc',
 				'name'  => _x( 'Light Cyan', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-cyan',
-				'color' => 'var(--unitone--color--cyan)',
+				'color' => '#22d3ee',
 				'name'  => _x( 'Cyan', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-cyan',
-				'color' => 'var(--unitone--color--dark-cyan)',
+				'color' => '#0e7490',
 				'name'  => _x( 'Dark Cyan', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-cyan',
-				'color' => 'var(--unitone--color--heavy-cyan)',
+				'color' => '#083344',
 				'name'  => _x( 'Heavy Cyan', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-blue',
-				'color' => 'var(--unitone--color--pale-blue)',
+				'color' => '#eff6ff',
 				'name'  => _x( 'Pale Blue', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-blue',
-				'color' => 'var(--unitone--color--bright-blue)',
+				'color' => '#dbeafe',
 				'name'  => _x( 'Bright Blue', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-blue',
-				'color' => 'var(--unitone--color--light-blue)',
+				'color' => '#bfdbfe',
 				'name'  => _x( 'Light Blue', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-blue',
-				'color' => 'var(--unitone--color--blue)',
+				'color' => '#60a5fa',
 				'name'  => _x( 'Blue', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-blue',
-				'color' => 'var(--unitone--color--dark-blue)',
+				'color' => '#1d4ed8',
 				'name'  => _x( 'Dark Blue', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-blue',
-				'color' => 'var(--unitone--color--heavy-blue)',
+				'color' => '#172554',
 				'name'  => _x( 'Heavy Blue', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-indigo',
-				'color' => 'var(--unitone--color--pale-indigo)',
+				'color' => '#eef2ff',
 				'name'  => _x( 'Pale Indigo', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-indigo',
-				'color' => 'var(--unitone--color--bright-indigo)',
+				'color' => '#e0e7ff',
 				'name'  => _x( 'Bright Indigo', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-indigo',
-				'color' => 'var(--unitone--color--light-indigo)',
+				'color' => '#c7d2fe',
 				'name'  => _x( 'Light Indigo', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-indigo',
-				'color' => 'var(--unitone--color--indigo)',
+				'color' => '#818cf8',
 				'name'  => _x( 'Indigo', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-indigo',
-				'color' => 'var(--unitone--color--dark-indigo)',
+				'color' => '#4338ca',
 				'name'  => _x( 'Dark Indigo', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-indigo',
-				'color' => 'var(--unitone--color--heavy-indigo)',
+				'color' => '#1e1b4b',
 				'name'  => _x( 'Heavy Indigo', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-violet',
-				'color' => 'var(--unitone--color--pale-violet)',
+				'color' => '#f5f3ff',
 				'name'  => _x( 'Pale Violet', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-violet',
-				'color' => 'var(--unitone--color--bright-violet)',
+				'color' => '#ede9fe',
 				'name'  => _x( 'Bright Violet', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-violet',
-				'color' => 'var(--unitone--color--light-violet)',
+				'color' => '#ddd6fe',
 				'name'  => _x( 'Light Violet', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-violet',
-				'color' => 'var(--unitone--color--violet)',
+				'color' => '#a78bfa',
 				'name'  => _x( 'Violet', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-violet',
-				'color' => 'var(--unitone--color--dark-violet)',
+				'color' => '#6d28d9',
 				'name'  => _x( 'Dark Violet', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-violet',
-				'color' => 'var(--unitone--color--heavy-violet)',
+				'color' => '#2e1065',
 				'name'  => _x( 'Heavy Violet', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-purple',
-				'color' => 'var(--unitone--color--pale-purple)',
+				'color' => '#faf5ff',
 				'name'  => _x( 'Pale Purple', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-purple',
-				'color' => 'var(--unitone--color--bright-purple)',
+				'color' => '#f3e8ff',
 				'name'  => _x( 'Bright Purple', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-purple',
-				'color' => 'var(--unitone--color--light-purple)',
+				'color' => '#e9d5ff',
 				'name'  => _x( 'Light Purple', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-purple',
-				'color' => 'var(--unitone--color--purple)',
+				'color' => '#c084fc',
 				'name'  => _x( 'Purple', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-purple',
-				'color' => 'var(--unitone--color--dark-purple)',
+				'color' => '#7e22ce',
 				'name'  => _x( 'Dark Purple', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-purple',
-				'color' => 'var(--unitone--color--heavy-purple)',
+				'color' => '#3b0764',
 				'name'  => _x( 'Heavy Purple', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pale-pink',
-				'color' => 'var(--unitone--color--pale-pink)',
+				'color' => '#fdf2f8',
 				'name'  => _x( 'Pale Pink', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-bright-pink',
-				'color' => 'var(--unitone--color--bright-pink)',
+				'color' => '#fce7f3',
 				'name'  => _x( 'Bright Pink', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-light-pink',
-				'color' => 'var(--unitone--color--light-pink)',
+				'color' => '#fbcfe8',
 				'name'  => _x( 'Light Pink', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-pink',
-				'color' => 'var(--unitone--color--pink)',
+				'color' => '#f472b6',
 				'name'  => _x( 'Pink', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dark-pink',
-				'color' => 'var(--unitone--color--dark-pink)',
+				'color' => '#be185d',
 				'name'  => _x( 'Dark Pink', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-heavy-pink',
-				'color' => 'var(--unitone--color--heavy-pink)',
+				'color' => '#500724',
 				'name'  => _x( 'Heavy Pink', 'Color name', 'unitone' ),
 			),
 		),

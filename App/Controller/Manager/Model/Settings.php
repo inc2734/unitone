@@ -70,8 +70,8 @@ class Settings {
 	protected static $default_global_styles = array(
 		'styles'   => array(
 			'color'      => array(
-				'background' => '#fff',
-				'text'       => '#222',
+				'background' => 'var:preset|color|unitone-background',
+				'text'       => 'var:preset|color|unitone-text',
 			),
 			'elements'   => array(
 				'link' => array(

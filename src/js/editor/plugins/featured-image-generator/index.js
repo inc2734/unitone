@@ -39,30 +39,70 @@ export const fetchSVGData = async ( {
 		} );
 
 		if ( ! response.ok ) {
-			throw new Error( 'Failed to upload media.' );
+			const txt = await response.text();
+
+			throw new Error(
+				`Thumbnail endpoint not ok: ${ response.status } ${
+					response.statusText
+				} :: ${ txt?.slice?.( 0, 300 ) }`
+			);
 		}
 
-		return response.text();
+		const svg = await response.text();
+
+		return svg;
 	} catch ( error ) {
-		console.error( error ); // eslint-disable-line no-console
+		console.error( 'fetchSVGData error:', error ); // eslint-disable-line no-console
+		throw error;
 	}
 };
 
 export const convertSVGToPNGBlob = ( svgData ) => {
 	return new Promise( ( resolve, reject ) => {
-		const encoder = new TextEncoder();
-		const uint8Array = encoder.encode( svgData );
-		const base64 = btoa( String.fromCharCode( ...uint8Array ) );
-		const dataUrl = 'data:image/svg+xml;base64,' + base64;
+		if ( typeof svgData !== 'string' || ! svgData.startsWith( '<svg' ) ) {
+			return reject(
+				new Error( 'convertSVGToPNGBlob: invalid svgData' )
+			);
+		}
+
+		let dataUrl;
+		try {
+			const base64 = btoa( unescape( encodeURIComponent( svgData ) ) );
+			dataUrl = 'data:image/svg+xml;base64,' + base64;
+		} catch ( e1 ) {
+			console.error( 'btoa(utf8) failed, try chunked:', e1 ); // eslint-disable-line no-console
+
+			try {
+				const enc = new TextEncoder();
+				const bytes = enc.encode( svgData );
+				let binary = '';
+				const CHUNK = 0x8000; // 32KB
+				for ( let i = 0; i < bytes.length; i += CHUNK ) {
+					binary += String.fromCharCode.apply(
+						null,
+						bytes.subarray( i, i + CHUNK )
+					);
+				}
+				const base64 = btoa( binary );
+				dataUrl = 'data:image/svg+xml;base64,' + base64;
+			} catch ( e2 ) {
+				return reject(
+					new Error(
+						'base64 encoding failed: ' + ( e2?.message || e2 )
+					)
+				);
+			}
+		}
 
 		const parser = new DOMParser();
 		const svgDoc = parser.parseFromString( svgData, 'image/svg+xml' );
 		const svgEl = svgDoc.querySelector( 'svg' );
 
-		const width = parseInt( svgEl.getAttribute( 'width' ) ) || 1200;
-		const height = parseInt( svgEl.getAttribute( 'height' ) ) || 630;
+		const width = parseInt( svgEl?.getAttribute( 'width' ) ) || 1200;
+		const height = parseInt( svgEl?.getAttribute( 'height' ) ) || 630;
 
 		const img = new Image();
+		img.crossOrigin = 'anonymous';
 		img.onload = () => {
 			const canvas = document.createElement( 'canvas' );
 			canvas.width = width;
@@ -71,21 +111,42 @@ export const convertSVGToPNGBlob = ( svgData ) => {
 
 			// @see https://stackoverflow.com/questions/69949555/convert-svg-with-image-not-working-in-safari/69968513
 			setTimeout( function () {
-				ctx.drawImage( img, 0, 0, width, height );
+				try {
+					ctx.drawImage( img, 0, 0, width, height );
+
+					try {
+						ctx.getImageData( 0, 0, 1, 1 );
+					} catch ( taintErr ) {
+						console.error( 'Canvas tainted:', taintErr ); // eslint-disable-line no-console
+						return reject(
+							new Error(
+								'Canvas tainted (cross-origin resource in SVG)'
+							)
+						);
+					}
+				} catch ( drawErr ) {
+					console.error( 'drawImage failed:', drawErr ); // eslint-disable-line no-console
+					return reject( drawErr );
+				}
 
 				canvas.toBlob( ( blob ) => {
 					if ( blob ) {
 						resolve( blob );
 					} else {
+						console.error( 'toBlob returned null' ); // eslint-disable-line no-console
 						reject(
-							new Error( 'Failed to convert SVG to PNG blob.' )
+							new Error(
+								'Failed to convert SVG to PNG blob (null).'
+							)
 						);
 					}
 				}, 'image/png' );
 			}, 500 );
 		};
 
-		img.onerror = () => {
+		img.onerror = ( e ) => {
+			console.error( 'Image load failed:', e ); // eslint-disable-line no-console
+
 			reject( new Error( 'Image failed to load.' ) );
 		};
 
@@ -107,7 +168,8 @@ export const uploadMedia = async ( { blob, postId, filename } ) => {
 
 		return media; // media object
 	} catch ( error ) {
-		console.error( error ); // eslint-disable-line no-console
+		console.error( 'uploadMedia error:', error ); // eslint-disable-line no-console
+		throw error;
 	}
 };
 
@@ -251,7 +313,17 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 					aspectRatio,
 					background,
 				} );
+
+				if ( typeof svgData !== 'string' ) {
+					throw new Error( 'SVG data is not a string' );
+				}
+
 				const blob = await convertSVGToPNGBlob( svgData );
+
+				if ( ! blob || ! blob.size ) {
+					throw new Error( 'PNG blob is empty' );
+				}
+
 				const media = await uploadMedia( {
 					blob,
 					postId,
@@ -260,10 +332,9 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 
 				await setFeaturedImage( media.id );
 				editPost( { featured_media: media.id } );
-
-				setIsGenerating( false );
 			} catch ( error ) {
-				console.error( error ); // eslint-disable-line no-console
+				console.error( 'Generate error:', error ); // eslint-disable-line no-console
+			} finally {
 				setIsGenerating( false );
 			}
 		};

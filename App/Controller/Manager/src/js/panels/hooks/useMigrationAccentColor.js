@@ -14,7 +14,9 @@ export function useMigrationAccentColor( settings, setSettings ) {
 				return currentSettings;
 			}
 
-			const currentThemePalette = Array.isArray( currentSettings?.settings?.color?.palette?.theme )
+			const currentThemePalette = Array.isArray(
+				currentSettings?.settings?.color?.palette?.theme
+			)
 				? currentSettings.settings.color.palette.theme
 				: [];
 			let accentEntryReplaced = false;

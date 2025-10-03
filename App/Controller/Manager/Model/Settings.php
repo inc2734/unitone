@@ -260,6 +260,7 @@ class Settings {
 		$merged_palette                                    = array_values( $settings_map + array_diff_key( $theme_map, $settings_map ) );
 		$settings['settings']['color']['palette']['theme'] = $merged_palette;
 
+		// @todo 更新差分だけが渡されるため、ここでは必ず既存の設定をマージする
 		$new_global_styles = static::_remove_nulls(
 			unitone_array_override_replace_recursive(
 				array(

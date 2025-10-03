@@ -10,8 +10,14 @@ import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
+import { useMigrationContentSize } from './hooks/useMigrationContentSize';
+import { useMigrationWideSize } from './hooks/useMigrationWideSize';
+
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
+
+	useMigrationContentSize( settings, setSettings );
+	useMigrationWideSize( settings, setSettings );
 
 	const loadingAnimationTemplateParts =
 		settings?.loadingAnimationTemplateParts ?? [];
@@ -25,8 +31,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				'loading-animation': settings?.[ 'loading-animation' ] ?? null,
 				'loading-animation-delay':
 					settings?.[ 'loading-animation-delay' ] ?? null,
-				'content-size': null, // Deprecated.
-				'wide-size': null, // Deprecated.
 				settings: {
 					layout: {
 						contentSize:
@@ -47,8 +51,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			'loading-animation': defaultSettings[ 'loading-animation' ],
 			'loading-animation-delay':
 				defaultSettings[ 'loading-animation-delay' ],
-			'content-size': null, // Deprecated.
-			'wide-size': null, // Deprecated.
 			settings: {
 				...settings?.settings,
 				layout: {
@@ -63,8 +65,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			method: 'POST',
 			data: {
 				'loading-animation': null,
-				'content-size': null, // Deprecated.
-				'wide-size': null, // Deprecated.
 				settings: {
 					layout: {
 						contentSize: null,

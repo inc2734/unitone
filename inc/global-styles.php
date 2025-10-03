@@ -12,22 +12,12 @@ use Unitone\App\Controller\Manager\Model\Settings;
  * Apply CSS Vars from settings.
  */
 function unitone_apply_css_vars_from_settings() {
-	$deprecated_font_family  = Manager::get_setting( 'font-family' );
-	$deprecated_font_family  = $deprecated_font_family && unitone_get_preset_css_var( $deprecated_font_family ) === $deprecated_font_family
-		? 'var(--wp--preset--font-family--' . $deprecated_font_family . ')'
-		: $deprecated_font_family;
-	$deprecated_content_size = Manager::get_setting( 'content-size' );
-	$deprecated_wide_size    = Manager::get_setting( 'wide-size' );
-
 	$font_family      = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['typography']['fontFamily'] );
-	$font_family      = $deprecated_font_family ? $deprecated_font_family : $font_family; // Deprecated.
 	$base_font_size   = Manager::get_setting( 'base-font-size' );
 	$half_leading     = Manager::get_setting( 'half-leading' );
 	$min_half_leading = Manager::get_setting( 'min-half-leading' );
 	$content_size     = Manager::get_setting( 'settings' )['layout']['contentSize'];
-	$content_size     = $deprecated_content_size ? $deprecated_content_size : $content_size; // Deprecated.
 	$wide_size        = Manager::get_setting( 'settings' )['layout']['wideSize'];
-	$wide_size        = $deprecated_wide_size ? $deprecated_wide_size : $wide_size; // Deprecated.
 	$accent_color     = unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', array( 'settings' => Manager::get_setting( 'settings' ) ) ) );
 	$accent_color     = 'var(--unitone--color--accent)' === $accent_color
 		? unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', Settings::get_default_global_styles() ) )
@@ -117,14 +107,14 @@ add_action( 'wp_enqueue_scripts', 'unitone_apply_css_vars_from_settings' );
 /**
  * Apply CSS Vars from settings for editor.
  */
-function apply_css_vars_from_settings_for_editor() {
+function unitone_apply_css_vars_from_settings_for_editor() {
 	if ( ! is_admin() ) {
 		return;
 	}
 
-	apply_css_vars_from_settings();
+	unitone_apply_css_vars_from_settings();
 }
-add_action( 'enqueue_block_assets', 'apply_css_vars_from_settings_for_editor' );
+add_action( 'enqueue_block_assets', 'unitone_apply_css_vars_from_settings_for_editor' );
 
 /**
  * Set color palette.
@@ -593,37 +583,112 @@ add_filter(
 add_action(
 	'after_setup_theme',
 	function () {
+		$deprecated_font_family = Manager::get_setting( 'font-family' );
+
+		$deprecated_content_size = Manager::get_setting( 'content-size' );
+		$deprecated_wide_size    = Manager::get_setting( 'wide-size' );
+
 		$deprecated_accent_color     = unitone_get_preset_css_var( Manager::get_setting( 'accent-color' ) );
 		$deprecated_background_color = unitone_get_preset_css_var( Manager::get_setting( 'background-color' ) );
 		$deprecated_text_color       = unitone_get_preset_css_var( Manager::get_setting( 'text-color' ) );
 
-		if ( ! $deprecated_accent_color && ! $deprecated_background_color && ! $deprecated_text_color ) {
+		if (
+			! $deprecated_font_family &&
+			! $deprecated_content_size &&
+			! $deprecated_wide_size &&
+			! $deprecated_accent_color &&
+			! $deprecated_background_color &&
+			! $deprecated_text_color
+		) {
 			return;
 		}
 
 		$merged_raw_data = \WP_Theme_JSON_Resolver::get_merged_data( 'user' )->get_raw_data();
+
+		if ( $deprecated_font_family ) {
+			$current_font_family = $merged_raw_data['styles']['typography']['fontFamily'] ?? false;
+
+			if ( $deprecated_font_family !== $current_font_family ) {
+				Settings::update_global_styles(
+					array(
+						'settings' => array(
+							'layout' => array(
+								'contentSize' => $deprecated_font_family,
+							),
+						),
+					)
+				);
+
+				Settings::update_settings(
+					array(
+						'font-family' => null,
+					)
+				);
+			}
+		}
+
+		if ( $deprecated_content_size ) {
+			$current_content_size = $merged_raw_data['settings']['layout']['contentSize'] ?? false;
+
+			if ( $deprecated_content_size !== $current_content_size ) {
+				Settings::update_global_styles(
+					array(
+						'settings' => array(
+							'layout' => array(
+								'contentSize' => $deprecated_content_size,
+							),
+						),
+					)
+				);
+
+				Settings::update_settings(
+					array(
+						'content-size' => null,
+					)
+				);
+			}
+		}
+
+		if ( $deprecated_wide_size ) {
+			$current_wide_size = $merged_raw_data['settings']['layout']['wideSize'] ?? false;
+
+			if ( $deprecated_wide_size !== $current_wide_size ) {
+				Settings::update_global_styles(
+					array(
+						'settings' => array(
+							'layout' => array(
+								'wideSize' => $deprecated_wide_size,
+							),
+						),
+					)
+				);
+
+				Settings::update_settings(
+					array(
+						'wide-size' => null,
+					)
+				);
+			}
+		}
 
 		if ( $deprecated_accent_color ) {
 			$current_accent_color = unitone_get_palette_color( 'unitone-accent', $merged_raw_data );
 
 			if ( $deprecated_accent_color !== $current_accent_color ) {
 				Settings::update_global_styles(
-					unitone_array_override_replace_recursive(
-						Settings::get_global_styles(),
-						array(
-							'settings' => array(
-								'color' => array(
-									'palette' => array(
-										'theme' => array(
-											array(
-												'slug'  => 'unitone-accent',
-												'color' => $deprecated_accent_color,
-											),
+					array(
+						'settings' => array(
+							'color' => array(
+								'palette' => array(
+									'theme' => array(
+										array(
+											'slug'  => 'unitone-accent',
+											'color' => $deprecated_accent_color,
 										),
 									),
 								),
 							),
-						)
+						),
 					)
 				);
 
@@ -640,15 +705,12 @@ add_action(
 
 			if ( $deprecated_background_color !== $current_background_color ) {
 				Settings::update_global_styles(
-					unitone_array_override_replace_recursive(
-						Settings::get_global_styles(),
-						array(
-							'styles' => array(
-								'color' => array(
-									'background' => $deprecated_background_color,
-								),
+					array(
+						'styles' => array(
+							'color' => array(
+								'background' => $deprecated_background_color,
 							),
-						)
+						),
 					)
 				);
 
@@ -665,15 +727,12 @@ add_action(
 
 			if ( $deprecated_text_color !== $current_text_color ) {
 				Settings::update_global_styles(
-					unitone_array_override_replace_recursive(
-						Settings::get_global_styles(),
-						array(
-							'styles' => array(
-								'color' => array(
-									'text' => $deprecated_text_color,
-								),
+					array(
+						'styles' => array(
+							'color' => array(
+								'text' => $deprecated_text_color,
 							),
-						)
+						),
 					)
 				);
 

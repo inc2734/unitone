@@ -7,7 +7,8 @@ export function useMigrationBackgroundColor( settings, setSettings ) {
 		}
 
 		setSettings( ( currentSettings ) => {
-			const deprecatedBackgroundColor = currentSettings?.[ 'background-color' ];
+			const deprecatedBackgroundColor =
+				currentSettings?.[ 'background-color' ];
 			if ( ! deprecatedBackgroundColor ) {
 				return currentSettings;
 			}

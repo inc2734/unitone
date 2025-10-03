@@ -81,6 +81,8 @@ function unitone_apply_css_vars_from_settings() {
 			':root {
 				--unitone--color--background: %1$s;
 				--unitone--color--text-alt: %1$s;
+				--wp--preset--color--unitone-background: %1$s;
+				--wp--preset--color--unitone-text-alt: %1$s;
 			}',
 			$background_color
 		);
@@ -94,6 +96,8 @@ function unitone_apply_css_vars_from_settings() {
 			':root {
 				--unitone--color--text: %1$s;
 				--unitone--color--background-alt: %1$s;
+				--wp--preset--color--unitone-text: %1$s;
+				--wp--preset--color--unitone-background-alt: %1$s;
 			}',
 			$text_color
 		);
@@ -576,6 +580,41 @@ add_filter(
 	},
 	9
 );
+
+/**
+ * background, text, background-alt, text-alt は強制的に CSS vars に変換する。
+ * CSS vars になっていないと、セットアップ画面で設定した色がカラーパレットに反映されない。
+ *
+ * @param WP_Theme_JSON_Data $theme_json Class to access and update the underlying data.
+ * @return WP_Theme_JSON_Data
+ */
+function unitone_apply_css_vars_to_utility_colors( $theme_json ) {
+	$data = $theme_json->get_data();
+
+	if ( empty( $data['settings']['color']['palette']['theme'] ) ) {
+		return $theme_json;
+	}
+
+	$data['settings']['color']['palette']['theme'] = array_map(
+		function ( $color_object ) {
+			if ( 'unitone-background' === $color_object['slug'] ) {
+				$color_object['color'] = 'var(--unitone--color--background)';
+			} elseif ( 'unitone-text' === $color_object['slug'] ) {
+				$color_object['color'] = 'var(--unitone--color--text)';
+			} elseif ( 'unitone-background-alt' === $color_object['slug'] ) {
+				$color_object['color'] = 'var(--unitone--color--background-alt)';
+			} elseif ( 'unitone-text-alt' === $color_object['slug'] ) {
+				$color_object['color'] = 'var(--unitone--color--text-alt)';
+			}
+			return $color_object;
+		},
+		$data['settings']['color']['palette']['theme']
+	);
+
+	return $theme_json->update_with( $data );
+}
+add_filter( 'wp_theme_json_data_theme', 'unitone_apply_css_vars_to_utility_colors', 10000 );
+add_filter( 'wp_theme_json_data_user', 'unitone_apply_css_vars_to_utility_colors', 10000 );
 
 /**
  * Migrate the old settings in settings to the new settings.

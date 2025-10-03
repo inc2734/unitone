@@ -44,12 +44,12 @@
 				},
 				{
 					"slug": "unitone-background-alt",
-					"color": "var(--unitone--color--text)",
+					"color": "var(--unitone--color--background-alt)",
 					"name": "Background Alt"
 				},
 				{
 					"slug": "unitone-text-alt",
-					"color": "var(--unitone--color--background)",
+					"color": "var(--unitone--color--text-alt)",
 					"name": "Text Alt"
 				},
 				{

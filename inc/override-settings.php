@@ -75,15 +75,21 @@ add_action(
 
 		$override_styles = array_diff(
 			array(
-				'--unitone--color--accent'            => $new_accent_color,
-				'--wp--preset--color--unitone-accent' => $new_accent_color,
-				'--unitone--color--background'        => $new_background_color,
-				'--unitone--color--text'              => $new_text_color,
-				'--unitone--base-font-size'           => $new_base_font_size,
-				'--unitone--font-family'              => unitone_get_preset_css_var( $new_font_family ),
-				'--unitone--half-leading'             => $new_half_leading,
-				'--wp--style--global--content-size'   => $new_content_size,
-				'--wp--style--global--wide-size'      => $new_wide_size,
+				'--unitone--color--accent'                => $new_accent_color,
+				'--unitone--color--background'            => $new_background_color,
+				'--unitone--color--text'                  => $new_text_color,
+				'--unitone--color--background-alt'        => $new_text_color,
+				'--unitone--color--text-alt'              => $new_background_color,
+				'--wp--preset--color--unitone-accent'     => $new_accent_color,
+				'--wp--preset--color--unitone-background' => $new_background_color,
+				'--wp--preset--color--unitone-text'       => $new_text_color,
+				'--wp--preset--color--unitone-background-alt' => $new_text_color,
+				'--wp--preset--color--unitone-text-text'  => $new_background_color,
+				'--unitone--base-font-size'               => $new_base_font_size,
+				'--unitone--font-family'                  => unitone_get_preset_css_var( $new_font_family ),
+				'--unitone--half-leading'                 => $new_half_leading,
+				'--wp--style--global--content-size'       => $new_content_size,
+				'--wp--style--global--wide-size'          => $new_wide_size,
 			),
 			array( null )
 		);

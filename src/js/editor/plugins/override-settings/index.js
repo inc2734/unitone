@@ -130,9 +130,15 @@ const PageSettingsPanel = () => {
 	const overrideStyles = useMemo(
 		() => ( {
 			'--unitone--color--accent': newAccentColor,
-			'--wp--preset--color--unitone-accent': newAccentColor,
 			'--unitone--color--background': newBackgroundColor,
 			'--unitone--color--text': newTextColor,
+			'--unitone--color--background-alt': newTextColor,
+			'--unitone--color--text-alt': newBackgroundColor,
+			'--wp--preset--color--unitone-accent': newAccentColor,
+			'--wp--preset--color--unitone-background': newBackgroundColor,
+			'--wp--preset--color--unitone-text': newTextColor,
+			'--wp--preset--color--unitone-background-alt': newTextColor,
+			'--wp--preset--color--unitone-text-alt': newBackgroundColor,
 			'--unitone--base-font-size': newBaseFontSize,
 			'--unitone--font-family': !! newFontFamily
 				? `var(--wp--preset--font-family--${ newFontFamily?.replace(

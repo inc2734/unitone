@@ -6,7 +6,6 @@ import {
 } from '@wordpress/rich-text';
 
 import {
-	useCachedTruthy,
 	RichTextToolbarButton,
 	getColorObjectByColorValue,
 	store as blockEditorStore,
@@ -114,9 +113,6 @@ function InlineUI( {
 		editableContentElement: contentRef.current,
 		settings,
 	} );
-
-	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
-	popoverAnchor.getBoundingClientRect = () => cachedRect;
 
 	return (
 		<Popover

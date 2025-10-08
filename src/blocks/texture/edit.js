@@ -204,7 +204,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								} )
 							}
 							min={ 1 }
-							max={ 150 }
+							max={ 500 }
 							step={ 1 }
 						/>
 					</ToolsPanelItem>
@@ -233,7 +233,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									} )
 								}
 								min={ 1 }
-								max={ 10 }
+								max={ 500 }
 								step={ 1 }
 							/>
 						</ToolsPanelItem>

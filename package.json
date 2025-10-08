@@ -7,16 +7,16 @@
 		"node": "20.11.1"
 	},
 	"devDependencies": {
-		"@inc2734/unitone-css": "^0.86.0",
-		"@wordpress/env": "^10.30.0",
-		"@wordpress/icons": "^10.30.0",
-		"@wordpress/interface": "^9.15.0",
-		"@wordpress/scripts": "^30.23.0",
-		"@wordpress/style-engine": "^2.30.0",
+		"@inc2734/unitone-css": "^0.86.1",
+		"@wordpress/env": "^10.32.0",
+		"@wordpress/icons": "^10.32.0",
+		"@wordpress/interface": "^9.17.0",
+		"@wordpress/scripts": "^30.25.0",
+		"@wordpress/style-engine": "^2.32.0",
 		"autoprefixer": "^10.4.21",
 		"clsx": "^2.1.1",
 		"cpy-cli": "^6.0.0",
-		"cross-env": "^10.0.0",
+		"cross-env": "^10.1.0",
 		"cssnano": "^7.1.1",
 		"deepmerge": "^4.3.1",
 		"eslint-import-resolver-exports": "^1.0.0-beta.5",
@@ -28,7 +28,7 @@
 		"postcss-import": "^16.1.1",
 		"prettier": "npm:wp-prettier@3.0.3",
 		"rimraf": "^6.0.1",
-		"sass": "^1.92.1",
+		"sass": "^1.93.2",
 		"swiper": "^11"
 	},
 	"scripts": {

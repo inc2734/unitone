@@ -29,7 +29,7 @@
 		"prettier": "npm:wp-prettier@3.0.3",
 		"rimraf": "^6.0.1",
 		"sass": "^1.93.2",
-		"swiper": "^11"
+		"swiper": "^12"
 	},
 	"scripts": {
 		"export:wp-content:plugins": "npm run cli cp -- -r ../../plugins .export/wp-content",

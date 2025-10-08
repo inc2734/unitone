@@ -1,9 +1,9 @@
-@import '../../../node_modules/swiper/swiper.scss';
-@import '../../../node_modules/swiper/modules/autoplay.scss';
-@import '../../../node_modules/swiper/modules/effect-fade.scss';
-@import '../../../node_modules/swiper/modules/navigation.scss';
-@import '../../../node_modules/swiper/modules/pagination.scss';
-@import '../../../node_modules/swiper/modules/a11y.scss';
+@import '../../../node_modules/swiper/swiper.css';
+@import '../../../node_modules/swiper/modules/autoplay.css';
+@import '../../../node_modules/swiper/modules/effect-fade.css';
+@import '../../../node_modules/swiper/modules/navigation.css';
+@import '../../../node_modules/swiper/modules/pagination.css';
+@import '../../../node_modules/swiper/modules/a11y.css';
 
 .unitone-slider {
 	--unitone--gap: var(--unitone--global--gap);
@@ -165,6 +165,10 @@
 			&::after {
 				display: none;
 			}
+		}
+
+		svg.feather {
+			fill: transparent !important;
 		}
 	}
 

@@ -17,6 +17,12 @@
 		<!-- /wp:unitone/stack -->
 	<!-- /wp:post-template -->
 
+	<!-- wp:query-no-results -->
+		<!-- wp:paragraph {"placeholder":" <?php esc_html_e( 'Add text or blocks that will display when a query returns no results.', 'unitone' ); ?>"} -->
+		<p><?php esc_html_e( 'No posts were found.', 'unitone' ); ?></p>
+		<!-- /wp:paragraph -->
+	<!-- /wp:query-no-results -->
+
 	<!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex","justifyContent":"center"}} -->
 		<!-- wp:query-pagination-numbers /-->
 	<!-- /wp:query-pagination -->

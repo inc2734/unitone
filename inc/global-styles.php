@@ -140,33 +140,63 @@ function unitone_set_color_palette( $theme_json ) {
 	$default_palette = array_merge(
 		array(
 			array(
+				'slug'  => 'unitone-twilight-pale',
+				'color' => '#ffffff1a',
+				'name'  => _x( 'Twilight (Pale)', 'Color name', 'unitone' ),
+			),
+			array(
+				'slug'  => 'unitone-twilight-mild',
+				'color' => '#ffffff33',
+				'name'  => _x( 'Twilight (Mild)', 'Color name', 'unitone' ),
+			),
+			array(
 				'slug'  => 'unitone-twilight-light',
-				'color' => 'rgba(255, 255, 255, .3)',
+				'color' => '#ffffff4d',
 				'name'  => _x( 'Twilight (Light)', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-twilight',
-				'color' => 'rgba(255, 255, 255, .5)',
+				'color' => '#ffffff80',
 				'name'  => _x( 'Twilight', 'Color name', 'unitone' ),
 			),
 			array(
+				'slug'  => 'unitone-twilight-strong',
+				'color' => '#ffffff99',
+				'name'  => _x( 'Twilight (Strong)', 'Color name', 'unitone' ),
+			),
+			array(
 				'slug'  => 'unitone-twilight-heavy',
-				'color' => 'rgba(255, 255, 255, .7)',
+				'color' => '#ffffffb3',
 				'name'  => _x( 'Twilight (Heavy)', 'Color name', 'unitone' ),
 			),
 			array(
+				'slug'  => 'unitone-dimmed-pale',
+				'color' => '#0000001a',
+				'name'  => _x( 'Dimmed (Pale)', 'Color name', 'unitone' ),
+			),
+			array(
+				'slug'  => 'unitone-dimmed-mild',
+				'color' => '#00000033',
+				'name'  => _x( 'Dimmed (Mild)', 'Color name', 'unitone' ),
+			),
+			array(
 				'slug'  => 'unitone-dimmed-light',
-				'color' => 'rgba(0, 0, 0, .3)',
+				'color' => '#0000004d',
 				'name'  => _x( 'Dimmed (Light)', 'Color name', 'unitone' ),
 			),
 			array(
 				'slug'  => 'unitone-dimmed',
-				'color' => 'rgba(0, 0, 0, .5)',
+				'color' => '#00000080',
 				'name'  => _x( 'Dimmed', 'Color name', 'unitone' ),
 			),
 			array(
+				'slug'  => 'unitone-dimmed-strong',
+				'color' => '#00000099',
+				'name'  => _x( 'Dimmed (Strong)', 'Color name', 'unitone' ),
+			),
+			array(
 				'slug'  => 'unitone-dimmed-heavy',
-				'color' => 'rgba(0, 0, 0, .7)',
+				'color' => '#000000b3',
 				'name'  => _x( 'Dimmed (Heavy)', 'Color name', 'unitone' ),
 			),
 			array(

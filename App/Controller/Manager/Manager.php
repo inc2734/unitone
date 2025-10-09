@@ -123,38 +123,38 @@ class Manager {
 			),
 		);
 
-		$new_palette   = array_map(
-			function ( $palette, $key ) {
-				return array(
-					'name'   => ( function () use ( $key ) {
-						switch ( $key ) {
-							case 'theme':
-								return __( 'Theme', 'unitone' );
-							case 'default':
-								return __( 'Default', 'unitone' );
-							case 'custom':
-								return __( 'Custom', 'unitone' );
-						}
-						return $key;
-					} )(),
-					'slug'   => $key,
-					'colors' => $palette,
-				);
-			},
-			$global_settings['color']['palette'],
-			array_keys( $global_settings['color']['palette'] )
+		$new_palette = array(
+			'theme'   => array(
+				'name'   => __( 'Theme', 'unitone' ),
+				'slug'   => 'theme',
+				'colors' => array(),
+			),
+			'default' => array(
+				'name'   => __( 'Default', 'unitone' ),
+				'slug'   => 'default',
+				'colors' => array(),
+			),
+			'custom'  => array(
+				'name'   => __( 'Custom', 'unitone' ),
+				'slug'   => 'custom',
+				'colors' => array(),
+			),
 		);
-		$palette_order = array( 'theme', 'default', 'custom' );
-		usort(
-			$new_palette,
-			function ( $a, $b ) use ( $palette_order ) {
-				$pos_a = array_search( $a['slug'], $palette_order, true );
-				$pos_b = array_search( $b['slug'], $palette_order, true );
 
-				$pos_a = ( false === $pos_a ) ? PHP_INT_MAX : $pos_a;
-				$pos_b = ( false === $pos_b ) ? PHP_INT_MAX : $pos_b;
-
-				return $pos_a <=> $pos_b;
+		$new_palette = array_filter(
+			array_map(
+				function ( $palette_slug ) use ( $new_palette, $global_settings ) {
+					return array_merge(
+						$new_palette[ $palette_slug ],
+						array(
+							'colors' => $global_settings['color']['palette'][ $palette_slug ] ?? array(),
+						),
+					);
+				},
+				array_keys( $new_palette )
+			),
+			function ( $palette ) {
+				return ! empty( $palette['colors'] );
 			}
 		);
 

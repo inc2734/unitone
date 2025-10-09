@@ -27,6 +27,7 @@ export default function ( { attributes } ) {
 		slideWidth,
 		autoplay,
 		autoplayDelay,
+		autoplayReverseDirection,
 		speed,
 		loop,
 		centeredSlides,
@@ -40,6 +41,7 @@ export default function ( { attributes } ) {
 		thumbnails && ! ( autoplay && 0 === autoplayDelay );
 	const canMultiSlides = 'slide' === effect;
 	const canCenterdSlides = canMultiSlides && centeredSlides;
+	const canAutoplayReverseDirection = autoplay && 'slide' === effect;
 
 	return (
 		<div
@@ -111,6 +113,11 @@ export default function ( { attributes } ) {
 					}
 					data-unitone-swiper-autoplay-delay={
 						autoplay ? autoplayDelay * 1000 : undefined
+					}
+					data-unitone-swiper-autoplay-reverse={
+						canAutoplayReverseDirection && autoplayReverseDirection
+							? 'true'
+							: undefined
 					}
 					data-unitone-swiper-speed={
 						0 < speed ? speed * 1000 : undefined

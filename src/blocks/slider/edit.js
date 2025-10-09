@@ -90,6 +90,8 @@ export default function ( props ) {
 	const isDisplayArrowsSettings = ! autoplay || 0 < autoplayDelay;
 	const isDisplayPaginationSettings = ! autoplay || 0 < autoplayDelay;
 	const isDisplayThumbnailsSettings = ! autoplay || 0 < autoplayDelay;
+	const isDisplayAutoplayReverseDirectionSettings =
+		autoplay && 'slide' === effect;
 
 	const isDisplayArrows = arrows && isDisplayArrowsSettings;
 	const isDisplayPagination = pagination && isDisplayPaginationSettings;
@@ -237,6 +239,9 @@ export default function ( props ) {
 				isDisplayArrowsSettings={ isDisplayArrowsSettings }
 				isDisplayPaginationSettings={ isDisplayPaginationSettings }
 				isDisplayThumbnailsSettings={ isDisplayThumbnailsSettings }
+				isDisplayAutoplayReverseDirectionSettings={
+					isDisplayAutoplayReverseDirectionSettings
+				}
 				canMultiSlides={ canMultiSlides }
 			/>
 

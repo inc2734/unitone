@@ -36,6 +36,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 						)
 				  )
 				: undefined;
+		const autoplayReverseDirection =
+			'true' ===
+			canvas.getAttribute( 'data-unitone-swiper-autoplay-reverse' );
 		const loop =
 			'true' === canvas.getAttribute( 'data-unitone-swiper-loop' );
 		const paginationType = canvas.getAttribute(
@@ -83,6 +86,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			};
 			swiperOptions.allowTouchMove = false;
 			swiperOptions.grabCursor = false;
+
+			if ( autoplayReverseDirection ) {
+				swiperOptions.autoplay.reverseDirection =
+					autoplayReverseDirection;
+			}
 		}
 
 		if ( loop ) {

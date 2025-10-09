@@ -114,6 +114,7 @@ export const SettingsInspectorControls = ( {
 	isDisplayArrowsSettings,
 	isDisplayPaginationSettings,
 	isDisplayThumbnailsSettings,
+	isDisplayAutoplayReverseDirectionSettings,
 	canMultiSlides,
 } ) => {
 	const {
@@ -131,6 +132,7 @@ export const SettingsInspectorControls = ( {
 		slideWidth,
 		autoplay,
 		autoplayDelay,
+		autoplayReverseDirection,
 		speed,
 		loop,
 		centeredSlides,
@@ -355,39 +357,78 @@ export const SettingsInspectorControls = ( {
 				</ToolsPanelItem>
 
 				{ autoplay && (
-					<ToolsPanelItem
-						hasValue={ () =>
-							autoplayDelay !==
-							metadata.attributes.autoplayDelay.default
-						}
-						isShownByDefault
-						label={ __( 'Delay (s)', 'unitone' ) }
-						onDeselect={ () =>
-							setAttributes( {
-								autoplayDelay:
-									metadata.attributes.autoplayDelay.default,
-							} )
-						}
-					>
-						<RangeControl
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
+					<>
+						<ToolsPanelItem
+							hasValue={ () =>
+								autoplayDelay !==
+								metadata.attributes.autoplayDelay.default
+							}
+							isShownByDefault
 							label={ __( 'Delay (s)', 'unitone' ) }
-							value={ autoplayDelay }
-							help={ __(
-								'When 0, the prev/next buttons and the pagination will not be displayed.',
-								'unitone'
-							) }
-							onChange={ ( newAttribute ) => {
+							onDeselect={ () =>
 								setAttributes( {
-									autoplayDelay: parseFloat( newAttribute ),
-								} );
-							} }
-							min={ 0 }
-							max={ 10 }
-							step={ 0.1 }
-						/>
-					</ToolsPanelItem>
+									autoplayDelay:
+										metadata.attributes.autoplayDelay
+											.default,
+								} )
+							}
+						>
+							<RangeControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={ __( 'Delay (s)', 'unitone' ) }
+								value={ autoplayDelay }
+								help={ __(
+									'When 0, the prev/next buttons and the pagination will not be displayed.',
+									'unitone'
+								) }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										autoplayDelay:
+											parseFloat( newAttribute ),
+									} );
+								} }
+								min={ 0 }
+								max={ 10 }
+								step={ 0.1 }
+							/>
+						</ToolsPanelItem>
+
+						{ isDisplayAutoplayReverseDirectionSettings && (
+							<ToolsPanelItem
+								hasValue={ () =>
+									autoplayReverseDirection !==
+									metadata.attributes.autoplayReverseDirection
+										.default
+								}
+								isShownByDefault
+								label={ __( 'Reverse direction', 'unitone' ) }
+								onDeselect={ () =>
+									setAttributes( {
+										autoplayReverseDirection:
+											metadata.attributes
+												.autoplayReverseDirection
+												.default,
+									} )
+								}
+							>
+								<ToggleControl
+									__nextHasNoMarginBottom
+									label={ __(
+										'Reverse direction',
+										'unitone'
+									) }
+									checked={ autoplayReverseDirection }
+									onChange={ ( newAttribute ) => {
+										setAttributes( {
+											autoplayReverseDirection:
+												newAttribute,
+										} );
+									} }
+								/>
+							</ToolsPanelItem>
+						) }
+					</>
 				) }
 			</ToolsPanel>
 

@@ -43,6 +43,9 @@ function Edit( { attributes, clientId, context, dotColor, setDotColor } ) {
 		}
 	);
 
+	const multipleOriginColorsAndGradients =
+		useMultipleOriginColorsAndGradients();
+
 	return (
 		<>
 			<InspectorControls group="color">
@@ -53,11 +56,15 @@ function Edit( { attributes, clientId, context, dotColor, setDotColor } ) {
 							label: __( 'Dot color', 'unitone' ),
 							colorValue: dotColor.color,
 							onColorChange: setDotColor,
+							resetAllFilter: () => ( {
+								dotColor: undefined,
+								customDotColor: undefined,
+							} ),
 							clearable: true,
 						},
 					] }
 					panelId={ clientId }
-					{ ...useMultipleOriginColorsAndGradients() }
+					{ ...multipleOriginColorsAndGradients }
 					gradients={ [] }
 					disableCustomGradients
 				/>

@@ -116,6 +116,8 @@ function Edit( {
 	} );
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+	const multipleOriginColorsAndGradients =
+		useMultipleOriginColorsAndGradients();
 
 	const units = useCustomUnits( {
 		availableUnits: [ 'px', 'em', 'rem' ],
@@ -231,17 +233,25 @@ function Edit( {
 							label: __( 'Dot color', 'unitone' ),
 							colorValue: dotColor.color,
 							onColorChange: setDotColor,
+							resetAllFilter: () => ( {
+								dotColor: undefined,
+								customDotColor: undefined,
+							} ),
 							clearable: true,
 						},
 						{
 							label: __( 'Line color', 'unitone' ),
 							colorValue: lineColor.color,
 							onColorChange: setLineColor,
+							resetAllFilter: () => ( {
+								lineColor: undefined,
+								customLineColor: undefined,
+							} ),
 							clearable: true,
 						},
 					] }
 					panelId={ clientId }
-					{ ...useMultipleOriginColorsAndGradients() }
+					{ ...multipleOriginColorsAndGradients }
 					gradients={ [] }
 					disableCustomGradients
 				/>

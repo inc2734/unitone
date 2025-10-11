@@ -351,6 +351,9 @@ function Edit( {
 
 	const ParentElement = openSubmenusOnClick ? 'button' : 'a';
 
+	const multipleOriginColorsAndGradients =
+		useMultipleOriginColorsAndGradients();
+
 	return (
 		<>
 			<BlockControls>
@@ -511,12 +514,16 @@ function Edit( {
 									customOverlayBackgroundColor: value,
 								} );
 							},
+							resetAllFilter: () => ( {
+								overlayBackgroundColor: undefined,
+								customOverlayBackgroundColor: undefined,
+							} ),
 							enableAlpha: true,
 							clearable: true,
 						},
 					] }
 					panelId={ clientId }
-					{ ...useMultipleOriginColorsAndGradients() }
+					{ ...multipleOriginColorsAndGradients }
 					gradients={ [] }
 					disableCustomGradients
 				/>

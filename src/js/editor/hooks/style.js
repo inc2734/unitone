@@ -55,6 +55,8 @@ import {
 	resetBorder,
 } from './border/border';
 
+import { ColorPanel, withColorBlockProps, resetColor } from './color/color';
+
 import {
 	PositionPanel,
 	withPositionBlockProps,
@@ -82,6 +84,7 @@ const withBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 					withSectionDividerBlockProps,
 					withLayerBlockProps,
 					withBorderBlockProps,
+					withColorBlockProps,
 					withBackdropFilterBlockProps,
 					withAnimationProps,
 					withAdvancedBlockProps,
@@ -126,6 +129,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<PositionPanel { ...passedProps } />
 				<LayerPanel { ...passedProps } />
 				<BorderPanel { ...passedProps } />
+				<ColorPanel { ...passedProps } />
 				<BackdropFilterPanel { ...passedProps } />
 				<AnimationPanel { ...passedProps } />
 
@@ -157,6 +161,7 @@ export const resetUnitoneStyles = ( props ) => {
 		resetPositions,
 		resetLayer,
 		resetBorder,
+		resetColor,
 		resetBackdropFilter,
 		resetAnimation,
 		resetAdvanced,

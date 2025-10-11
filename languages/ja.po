@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-10-09T05:11:12+00:00\n"
-"PO-Revision-Date: 2025-10-09 14:12+0900\n"
+"POT-Creation-Date: 2025-10-11T02:13:17+00:00\n"
+"PO-Revision-Date: 2025-10-11 11:14+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3538,6 +3538,18 @@ msgstr ""
 #: dist/js/editor/editor.js:13
 msgid "Filter"
 msgstr "フィルター"
+
+#: dist/js/editor/editor.js:13
+msgid "[:hover] Text"
+msgstr "[:hover] テキスト"
+
+#: dist/js/editor/editor.js:13
+msgid "[:hover] Background"
+msgstr "[:hover] 背景"
+
+#: dist/js/editor/editor.js:13
+msgid "[:hover] Border"
+msgstr "[:hover] 枠線"
 
 #: dist/js/editor/editor.js:13
 msgid "Position"

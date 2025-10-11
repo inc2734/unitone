@@ -12,7 +12,7 @@ use Unitone\App\Controller\Manager\Manager;
  */
 add_filter(
 	'render_block',
-	function ( $block_content, $block ) {
+	function ( $block_content, $block, $instance ) {
 		if ( ! $block['blockName'] ) {
 			return $block_content;
 		}
@@ -20,99 +20,10 @@ add_filter(
 		$p = new \WP_HTML_Tag_Processor( $block_content );
 		$p->next_tag();
 
-		$registry = \WP_Block_Type_Registry::get_instance();
-		$metadata = $registry->get_registered( $block['blockName'] );
+		$metadata = $instance->block_type;
 		if ( ! $metadata ) {
 			return $block_content;
 		}
-
-		/**
-		 * Return true when supported.
-		 *
-		 * @param string $support The supported attribute name. Dot-accessible.
-		 * @return boolean
-		 */
-		$has_support = function ( $support ) use ( $metadata, $block ) {
-			return null !== unitone_array_get( $metadata->supports['unitone'] ?? array(), $support );
-		};
-
-		/**
-		 * Return supported value.
-		 *
-		 * @param string $support The supported attribute name. Dot-accessible.
-		 * @return mixed
-		 */
-		$get_support = function ( $support ) use ( $metadata, $block ) {
-			return unitone_array_get( $metadata->supports['unitone'] ?? array(), $support );
-		};
-
-		/**
-		 * Converts a global style into a custom value.
-		 *
-		 * @param string $value Value to convert.
-		 * @return string CSS var string for given global style value.
-		 */
-		$get_global_style_css_var = function ( $value ) {
-			if ( null === $value || '' === $value ) {
-				return $value;
-			}
-
-			preg_match( '/var:style\|global\|(.+)/', $value, $match );
-			if ( ! $match ) {
-				return $value;
-			}
-
-			return 'var(--wp--style--global--' . $match[1] . ')';
-		};
-
-		/**
-		 * Converts a custom value to global style value if one can be found.
-		 *
-		 * Returns value as-is if no match is found.
-		 *
-		 * @param string $value Value to convert
-		 * @return string The global style value if it can be found.
-		 */
-		$get_global_style_value_from_custom_value = function ( $value ) {
-			if ( null === $value || '' === $value ) {
-				return $value;
-			}
-
-			preg_match( '/^var\(--wp--style--global--(.+)\)$/', $value, $match );
-			if ( ! $match ) {
-				return $value;
-			}
-
-			return 'var:style|global|' . $match[1];
-		};
-
-		/**
-		 * Checks is given value is a global style.
-		 *
-		 * @param string $value Value to check
-		 * @return boolean Return true if value is string in format var:style|global|.
-		 */
-		$is_value_global_style = function ( $value ) {
-			if ( null === $value || '' === $value || is_array( $value ) ) {
-				return false;
-			}
-
-			return 0 === strpos( $value, 'var:style|global|' );
-		};
-
-		/**
-		 * Checks is given value is a preset.
-		 *
-		 * @param string $value Value to check
-		 * @return boolean Return true if value is string in format var:preset|.
-		 */
-		$is_value_preset = function ( $value ) {
-			if ( null === $value || '' === $value || is_array( $value ) ) {
-				return false;
-			}
-
-			return 0 === strpos( $value, 'var:preset|' );
-		};
 
 		/**
 		 * Get supported attribute value.
@@ -124,21 +35,18 @@ add_filter(
 			$support
 		) use (
 			$block,
-			$metadata,
-			$is_value_global_style,
-			$get_global_style_css_var,
-			$is_value_preset
+			$metadata
 		) {
 			$attribute = unitone_array_get( $block['attrs']['unitone'] ?? array(), $support ) ?? null;
 			if ( is_null( $attribute ) ) {
 				$attribute = unitone_array_get( $metadata->get_attributes()['unitone']['default'] ?? array(), $support ) ?? null;
 			}
 
-			if ( $is_value_global_style( $attribute ) ) {
-				return $get_global_style_css_var( $attribute );
+			if ( unitone_is_global_style_value( $attribute ) ) {
+				return unitone_get_global_style_css_var( $attribute );
 			}
 
-			if ( $is_value_preset( $attribute ) ) {
+			if ( unitone_is_preset_value( $attribute ) ) {
 				return unitone_get_preset_css_var( $attribute );
 			}
 
@@ -229,22 +137,22 @@ add_filter(
 		}
 
 		// -auto-phrase
-		if ( $has_support( 'autoPhrase' ) ) {
+		if ( unitone_has_block_support( 'unitone.autoPhrase', $metadata ) ) {
 			$add_attribute( '-auto-phrase', $get_attribute( 'autoPhrase' ) );
 		}
 
 		// -fluid-typography
-		if ( $has_support( 'fluidTypography' ) ) {
+		if ( unitone_has_block_support( 'unitone.fluidTypography', $metadata ) ) {
 			$add_attribute( '-fluid-typography', $get_attribute( 'fluidTypography' ) );
 		}
 
 		// -background-clip
-		if ( $has_support( 'backgroundClip' ) ) {
+		if ( unitone_has_block_support( 'unitone.backgroundClip', $metadata ) ) {
 			$add_attribute( '-background-clip', $get_attribute( 'backgroundClip' ) );
 		}
 
 		// --unitone--half-leading
-		if ( $has_support( 'halfLeading' ) ) {
+		if ( unitone_has_block_support( 'unitone.halfLeading', $metadata ) ) {
 			$new_half_leading = $get_attribute( 'halfLeading' );
 			if ( ! is_null( $new_half_leading ) ) {
 				$add_style( '--unitone--half-leading', $new_half_leading );
@@ -268,37 +176,37 @@ add_filter(
 		}
 
 		// -link-decoration
-		if ( $has_support( 'linkDecoration' ) ) {
+		if ( unitone_has_block_support( 'unitone.linkDecoration', $metadata ) ) {
 			$add_attribute( '-link-decoration', $get_attribute( 'linkDecoration' ) );
 		}
 
 		// -align-content
-		if ( $has_support( 'alignContent' ) ) {
+		if ( unitone_has_block_support( 'unitone.alignContent', $metadata ) ) {
 			$add_attribute( '-align-content', $get_attribute( 'alignContent' ) );
 		}
 
 		// -align-items
-		if ( $has_support( 'alignItems' ) ) {
+		if ( unitone_has_block_support( 'unitone.alignItems', $metadata ) ) {
 			$add_attribute( '-align-items', $get_attribute( 'alignItems' ) );
 		}
 
 		// -auto-repeat
-		if ( $has_support( 'autoRepeat' ) ) {
+		if ( unitone_has_block_support( 'unitone.autoRepeat', $metadata ) ) {
 			$add_attribute( '-auto-repeat', $get_attribute( 'autoRepeat' ) );
 		}
 
 		// -align
-		if ( $has_support( 'blockAlign' ) ) {
+		if ( unitone_has_block_support( 'unitone.blockAlign', $metadata ) ) {
 			$add_attribute( '-align', $get_attribute( 'blockAlign' ) );
 		}
 
 		// -divider
-		if ( $has_support( 'divider' ) ) {
+		if ( unitone_has_block_support( 'unitone.divider', $metadata ) ) {
 			$add_attribute( '-divider', $get_attribute( 'dividerType' ) );
 		}
 
 		// --unitone--divier-color
-		if ( $has_support( 'divider' ) || $has_supported_attribute( 'divider' ) ) {
+		if ( unitone_has_block_support( 'unitone.divider', $metadata ) || $has_supported_attribute( 'divider' ) ) {
 			$divider_color        = $get_attribute( 'divider.color' );
 			$divider_preset_color = $get_attribute( 'dividerColor' );
 
@@ -310,17 +218,17 @@ add_filter(
 		}
 
 		// --unitone--divider-style
-		if ( $has_support( 'divider' ) || $has_supported_attribute( 'divider' ) ) {
+		if ( unitone_has_block_support( 'unitone.divider', $metadata ) || $has_supported_attribute( 'divider' ) ) {
 			$add_style( '--unitone--divider-style', $get_attribute( 'divider.style' ) );
 		}
 
 		// --unitone--divider-width
-		if ( $has_support( 'divider' ) || $has_supported_attribute( 'divider' ) ) {
+		if ( unitone_has_block_support( 'unitone.divider', $metadata ) || $has_supported_attribute( 'divider' ) ) {
 			$add_style( '--unitone--divider-width', $get_attribute( 'divider.width' ) );
 		}
 
 		// -section-divider
-		if ( $has_support( 'sectionDivider' ) ) {
+		if ( unitone_has_block_support( 'unitone.sectionDivider', $metadata ) ) {
 			$top_divider_type = $get_attribute( 'sectionDivider.top.type' );
 			if ( $top_divider_type ) {
 				$add_attribute( '-section-divider-top', $top_divider_type );
@@ -347,12 +255,12 @@ add_filter(
 		}
 
 		// --unitone--drop-shadow
-		if ( $has_support( 'dropShadow' ) ) {
+		if ( unitone_has_block_support( 'unitone.dropShadow', $metadata ) ) {
 			$add_style( '--unitone--drop-shadow', $get_attribute( 'dropShadow' ) );
 		}
 
 		// -gap
-		if ( $has_support( 'gap' ) ) {
+		if ( unitone_has_block_support( 'unitone.gap', $metadata ) ) {
 			$column_gap = $get_attribute( 'gap.column' );
 			if ( ! is_null( $column_gap ) ) {
 				$add_attribute( '-column-gap', $column_gap );
@@ -369,64 +277,64 @@ add_filter(
 		}
 
 		// -gutters
-		if ( $has_support( 'gutters' ) ) {
+		if ( unitone_has_block_support( 'unitone.gutters', $metadata ) ) {
 			$add_attribute( '-gutters', $get_attribute( 'gutters' ) );
 		}
 
 		// -justify-content
-		if ( $has_support( 'justifyContent' ) ) {
+		if ( unitone_has_block_support( 'unitone.justifyContent', $metadata ) ) {
 			$add_attribute( '-justify-content', $get_attribute( 'justifyContent' ) );
 		}
 
 		// -justify-items
-		if ( $has_support( 'justifyItems' ) ) {
+		if ( unitone_has_block_support( 'unitone.justifyItems', $metadata ) ) {
 			$add_attribute( '-justify-items', $get_attribute( 'justifyItems' ) );
 		}
 
 		// -stairs
-		if ( $has_support( 'stairs' ) ) {
+		if ( unitone_has_block_support( 'unitone.stairs', $metadata ) ) {
 			$add_attribute( '-stairs', $get_attribute( 'stairs' ) );
 		}
 
 		// -stairs-up
-		if ( $has_support( 'stairs' ) ) {
+		if ( unitone_has_block_support( 'unitone.stairs', $metadata ) ) {
 			if ( $get_attribute( 'stairs' ) ) {
 				$add_attribute( '-stairs-up', $get_attribute( 'stairsUp' ) );
 			}
 		}
 
 		// --unitone--max-width
-		if ( $has_support( 'maxWidth' ) || $has_supported_attribute( 'maxWidth' ) ) {
+		if ( unitone_has_block_support( 'unitone.maxWidth', $metadata ) || $has_supported_attribute( 'maxWidth' ) ) {
 			$add_style( '--unitone--max-width', $get_attribute( 'maxWidth' ) );
 		}
 
 		// --unitone--min-width
-		if ( $has_support( 'minWidth' ) ) {
+		if ( unitone_has_block_support( 'unitone.minWidth', $metadata ) ) {
 			$add_style( '--unitone--min-width', $get_attribute( 'minWidth' ) );
 		}
 
 		// --unitone--max-height
-		if ( $has_support( 'maxHeight' ) ) {
+		if ( unitone_has_block_support( 'unitone.maxHeight', $metadata ) ) {
 			$add_style( '--unitone--max-height', $get_attribute( 'maxHeight' ) );
 		}
 
 		// --unitone--min-height
-		if ( $has_support( 'minHeight' ) || $has_supported_attribute( 'minHeight' ) ) {
+		if ( unitone_has_block_support( 'unitone.minHeight', $metadata ) || $has_supported_attribute( 'minHeight' ) ) {
 			$add_style( '--unitone--min-height', $get_attribute( 'minHeight' ) );
 		}
 
 		// -negative
-		if ( $has_support( 'negative' ) ) {
+		if ( unitone_has_block_support( 'unitone.negative', $metadata ) ) {
 			$add_attribute( '-negative', $get_attribute( 'negative' ) );
 		}
 
 		// -overflow
-		if ( $has_support( 'overflow' ) ) {
+		if ( unitone_has_block_support( 'unitone.overflow', $metadata ) ) {
 			$add_attribute( '-overflow', $get_attribute( 'overflow' ) );
 		}
 
 		// -padding
-		if ( $has_support( 'padding' ) ) {
+		if ( unitone_has_block_support( 'unitone.padding', $metadata ) ) {
 			$padding_top = $get_attribute( 'padding.top' );
 			if ( ! is_null( $padding_top ) ) {
 				$add_attribute( '-padding-top', $padding_top );
@@ -453,52 +361,52 @@ add_filter(
 		}
 
 		// -position
-		if ( $has_support( 'position' ) ) {
+		if ( unitone_has_block_support( 'unitone.position', $metadata ) ) {
 			$add_attribute( '-position', $get_attribute( 'position.position' ) );
 		}
 
 		// --unitone--top
-		if ( $has_support( 'position' ) ) {
+		if ( unitone_has_block_support( 'unitone.position', $metadata ) ) {
 			$add_style( '--unitone--top', $get_attribute( 'position.top' ) );
 		}
 
 		// --unitone--right
-		if ( $has_support( 'position' ) ) {
+		if ( unitone_has_block_support( 'unitone.position', $metadata ) ) {
 			$add_style( '--unitone--right', $get_attribute( 'position.right' ) );
 		}
 
 		// --unitone--bottom
-		if ( $has_support( 'position' ) ) {
+		if ( unitone_has_block_support( 'unitone.position', $metadata ) ) {
 			$add_style( '--unitone--bottom', $get_attribute( 'position.bottom' ) );
 		}
 
 		// --unitone--left
-		if ( $has_support( 'position' ) ) {
+		if ( unitone_has_block_support( 'unitone.position', $metadata ) ) {
 			$add_style( '--unitone--left', $get_attribute( 'position.left' ) );
 		}
 
 		// --unitone--z-index
-		if ( $has_support( 'position' ) ) {
+		if ( unitone_has_block_support( 'unitone.position', $metadata ) ) {
 			$add_style( '--unitone--z-index', $get_attribute( 'position.zIndex' ) );
 		}
 
 		// --unitone--flex-grow
-		if ( $has_support( 'flexGrow' ) || $has_supported_attribute( 'flexGrow' ) ) {
+		if ( unitone_has_block_support( 'unitone.flexGrow', $metadata ) || $has_supported_attribute( 'flexGrow' ) ) {
 			$add_style( '--unitone--flex-grow', $get_attribute( 'flexGrow' ) );
 		}
 
 		// --unitone--flex-shrink
-		if ( $has_support( 'flexShrink' ) || $has_supported_attribute( 'flexShrink' ) ) {
+		if ( unitone_has_block_support( 'unitone.flexShrink', $metadata ) || $has_supported_attribute( 'flexShrink' ) ) {
 			$add_style( '--unitone--flex-shrink', $get_attribute( 'flexShrink' ) );
 		}
 
 		// --unitone--flex-basis
-		if ( $has_support( 'flexBasis' ) || $has_supported_attribute( 'flexBasis' ) ) {
+		if ( unitone_has_block_support( 'unitone.flexBasis', $metadata ) || $has_supported_attribute( 'flexBasis' ) ) {
 			$add_style( '--unitone--flex-basis', $get_attribute( 'flexBasis' ) );
 		}
 
 		// -align-self
-		if ( $has_support( 'alignSelf' ) || $has_supported_attribute( 'alignSelf' ) ) {
+		if ( unitone_has_block_support( 'unitone.alignSelf', $metadata ) || $has_supported_attribute( 'alignSelf' ) ) {
 			$align_self_lg = $get_attribute( 'alignSelf.lg' );
 			if ( ! is_null( $align_self_lg ) ) {
 				$add_attribute( '-align-self', $align_self_lg );
@@ -520,7 +428,7 @@ add_filter(
 		}
 
 		// -justify-self
-		if ( $has_support( 'justifySelf' ) || $has_supported_attribute( 'justifySelf' ) ) {
+		if ( unitone_has_block_support( 'unitone.justifySelf', $metadata ) || $has_supported_attribute( 'justifySelf' ) ) {
 			$justify_self_lg = $get_attribute( 'justifySelf.lg' );
 			if ( ! is_null( $justify_self_lg ) ) {
 				$add_attribute( '-justify-self', $justify_self_lg );
@@ -542,7 +450,7 @@ add_filter(
 		}
 
 		// --unitone--grid-column
-		if ( $has_support( 'gridColumn' ) || $has_supported_attribute( 'gridColumn' ) ) {
+		if ( unitone_has_block_support( 'unitone.gridColumn', $metadata ) || $has_supported_attribute( 'gridColumn' ) ) {
 			$grid_column_lg = $get_attribute( 'gridColumn.lg' );
 			if ( ! is_null( $grid_column_lg ) ) {
 				$add_style( '--unitone--grid-column', $grid_column_lg );
@@ -564,7 +472,7 @@ add_filter(
 		}
 
 		// --unitone--grid-row
-		if ( $has_support( 'gridRow' ) || $has_supported_attribute( 'gridRow' ) ) {
+		if ( unitone_has_block_support( 'unitone.gridRow', $metadata ) || $has_supported_attribute( 'gridRow' ) ) {
 			$grid_row_lg = $get_attribute( 'gridRow.lg' );
 			if ( ! is_null( $grid_row_lg ) ) {
 				$add_style( '--unitone--grid-row', $grid_row_lg );
@@ -586,23 +494,23 @@ add_filter(
 		}
 
 		// -text-orientation
-		if ( $has_support( 'textOrientation' ) ) {
+		if ( unitone_has_block_support( 'unitone.textOrientation', $metadata ) ) {
 			$add_attribute( '-text-orientation', $get_attribute( 'textOrientation' ) );
 		}
 
 		// -mix-blend-mode
-		if ( $has_support( 'mixBlendMode' ) || $has_supported_attribute( 'mixBlendMode' ) ) {
+		if ( unitone_has_block_support( 'unitone.mixBlendMode', $metadata ) || $has_supported_attribute( 'mixBlendMode' ) ) {
 			$add_attribute( '-mix-blend-mode', $get_attribute( 'mixBlendMode' ) );
 		}
 
 		// --unitone--cell-min-width
-		if ( $has_support( 'cellMinWidth' ) ) {
+		if ( unitone_has_block_support( 'unitone.cellMinWidth', $metadata ) ) {
 			$deprecated_attribute = $block['attrs']['cellMinWidth'] ?? null;
 			$add_style( '--unitone--cell-min-width', $get_attribute( 'cellMinWidth' ) ?? $deprecated_attribute );
 		}
 
 		// -overlay
-		if ( $has_support( 'overlay' ) ) {
+		if ( unitone_has_block_support( 'unitone.overlay', $metadata ) ) {
 			$color           = $get_attribute( 'overlay.color' );
 			$custom_color    = $get_attribute( 'overlay.customColor' );
 			$gradient        = $get_attribute( 'overlay.gradient' );
@@ -632,12 +540,12 @@ add_filter(
 		}
 
 		// --unitone--backdrop-filter
-		$backdrop_filter_props = ( function () use ( $get_support, $has_support, $get_attribute ) {
+		$backdrop_filter_props = ( function () use ( $metadata, $get_attribute ) {
 			$backdrop_filter_props = array();
 
 			// Blur.
-			$has_backdrop_filter_support = true === $get_support( 'backdropFilter' );
-			if ( $has_support( 'backdropFilter.blur' ) || $has_backdrop_filter_support ) {
+			$has_backdrop_filter_support = true === unitone_get_block_support( 'backdropFilter', $metadata );
+			if ( unitone_has_block_support( 'unitone.backdropFilter.blur', $metadata ) || $has_backdrop_filter_support ) {
 				$blur = $get_attribute( 'backdropFilter.blur' );
 
 				if ( ! is_null( $blur ) && 0 !== $blur ) {
@@ -646,7 +554,7 @@ add_filter(
 			}
 
 			// Brightness.
-			if ( $has_support( 'backdropFilter.brightness' ) || true === $get_support( 'backdropFilter' ) ) {
+			if ( unitone_has_block_support( 'unitone.backdropFilter.brightness', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
 				$brightness = $get_attribute( 'backdropFilter.brightness' );
 
 				if ( ! is_null( $brightness ) && 100 !== $brightness ) {
@@ -655,7 +563,7 @@ add_filter(
 			}
 
 			// Contrast.
-			if ( $has_support( 'backdropFilter.contrast' ) || true === $get_support( 'backdropFilter' ) ) {
+			if ( unitone_has_block_support( 'unitone.backdropFilter.contrast', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
 				$contrast = $get_attribute( 'backdropFilter.contrast' );
 
 				if ( ! is_null( $contrast ) && 0 !== $contrast ) {
@@ -664,7 +572,7 @@ add_filter(
 			}
 
 			// Grayscale.
-			if ( $has_support( 'backdropFilter.grayscale' ) || true === $get_support( 'backdropFilter' ) ) {
+			if ( unitone_has_block_support( 'unitone.backdropFilter.grayscale', $metadata ) || true === unitone_get_block_support( 'backdropFilter', $metadata ) ) {
 				$grayscale = $get_attribute( 'backdropFilter.grayscale' );
 
 				if ( ! is_null( $grayscale ) && 0 !== $grayscale ) {
@@ -673,7 +581,7 @@ add_filter(
 			}
 
 			// Hue Rotate.
-			if ( $has_support( 'backdropFilter.hueRotate' ) || true === $get_support( 'backdropFilter' ) ) {
+			if ( unitone_has_block_support( 'unitone.backdropFilter.hueRotate', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
 				$hue_rotate = $get_attribute( 'backdropFilter.hueRotate' );
 
 				if ( ! is_null( $hue_rotate ) && 0 !== $hue_rotate ) {
@@ -682,7 +590,7 @@ add_filter(
 			}
 
 			// Invert.
-			if ( $has_support( 'backdropFilter.invert' ) || true === $get_support( 'backdropFilter' ) ) {
+			if ( unitone_has_block_support( 'unitone.backdropFilter.invert', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
 				$invert = $get_attribute( 'backdropFilter.invert' );
 
 				if ( ! is_null( $invert ) && 0 !== $invert ) {
@@ -691,7 +599,7 @@ add_filter(
 			}
 
 			// Saturate.
-			if ( $has_support( 'backdropFilter.saturate' ) || true === $get_support( 'backdropFilter' ) ) {
+			if ( unitone_has_block_support( 'unitone.backdropFilter.saturate', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
 				$saturate = $get_attribute( 'backdropFilter.saturate' );
 
 				if ( ! is_null( $saturate ) && 100 !== $saturate ) {
@@ -700,7 +608,7 @@ add_filter(
 			}
 
 			// Sepia.
-			if ( $has_support( 'backdropFilter.sepia' ) || true === $get_support( 'backdropFilter' ) ) {
+			if ( unitone_has_block_support( 'unitone.backdropFilter.sepia', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
 				$sepia = $get_attribute( 'backdropFilter.sepia' );
 
 				if ( ! is_null( $sepia ) && 0 !== $sepia ) {
@@ -725,8 +633,8 @@ add_filter(
 		}
 
 		// --unitone--progressive-backdrop-filter
-		$has_backdrop_filter_support = true === $get_support( 'backdropFilter' );
-		if ( $has_support( 'backdropFilter.progressive' ) || $has_backdrop_filter_support ) {
+		$has_backdrop_filter_support = true === unitone_get_block_support( 'unitone.backdropFilter', $metadata );
+		if ( unitone_has_block_support( 'unitone.backdropFilter.progressive', $metadata ) || $has_backdrop_filter_support ) {
 			$angle = $get_attribute( 'backdropFilter.progressive.angle' );
 			$start = $get_attribute( 'backdropFilter.progressive.start' );
 
@@ -746,7 +654,7 @@ add_filter(
 		}
 
 		// Parallax.
-		if ( $has_support( 'parallax' ) ) {
+		if ( unitone_has_block_support( 'unitone.parallax', $metadata ) ) {
 			$parallax_speed = $get_attribute( 'parallax.speed' );
 			if ( $parallax_speed ) {
 				$add_data_attribute( 'data-unitone-parallax', 'disable' );
@@ -755,7 +663,7 @@ add_filter(
 		}
 
 		// Scroll animation.
-		if ( $has_support( 'scrollAnimation' ) ) {
+		if ( unitone_has_block_support( 'unitone.scrollAnimation', $metadata ) ) {
 			$scroll_animation_type  = $get_attribute( 'scrollAnimation.type' );
 			$scroll_animation_speed = $get_attribute( 'scrollAnimation.speed' );
 
@@ -794,7 +702,7 @@ add_filter(
 		}
 
 		// Additional style.
-		if ( $has_support( 'style' ) ) {
+		if ( unitone_has_block_support( 'unitone.style', $metadata ) ) {
 			$instance_id = $get_attribute( 'instanceId' );
 			$custom_css  = $get_attribute( 'style' );
 
@@ -840,5 +748,5 @@ add_filter(
 		return $block_content;
 	},
 	10,
-	2
+	3
 );

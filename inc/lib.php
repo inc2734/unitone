@@ -25,6 +25,53 @@ function unitone_get_preset_css_var( $value ) {
 }
 
 /**
+ * Checks is given value is a preset.
+ *
+ * @param string $value Value to check.
+ * @return boolean Return true if value is string in format var:preset|.
+ */
+function unitone_is_preset_value( $value ) {
+	if ( null === $value || '' === $value || is_array( $value ) ) {
+		return false;
+	}
+
+	return 0 === strpos( $value, 'var:preset|' );
+}
+
+/**
+ * Converts a global style into a custom value.
+ *
+ * @param string $value Value to convert.
+ * @return string CSS var string for given global style value.
+ */
+function unitone_get_global_style_css_var( $value ) {
+	if ( null === $value || '' === $value ) {
+		return $value;
+	}
+
+	preg_match( '/var:style\|global\|(.+)/', $value, $match );
+	if ( ! $match ) {
+		return $value;
+	}
+
+	return 'var(--wp--style--global--' . $match[1] . ')';
+}
+
+/**
+ * Checks is given value is a global style.
+ *
+ * @param string $value Value to check.
+ * @return boolean Return true if value is string in format var:style|global|.
+ */
+function unitone_is_global_style_value( $value ) {
+	if ( null === $value || '' === $value || is_array( $value ) ) {
+		return false;
+	}
+
+	return 0 === strpos( $value, 'var:style|global|' );
+}
+
+/**
  * Get the value of a nested array.
  *
  * @param array $vars Array to search.
@@ -39,6 +86,28 @@ function unitone_array_get( array $vars, $format ) {
 		$vars = $vars[ $key ];
 	}
 	return $vars;
+}
+
+/**
+ * Return true when supported.
+ *
+ * @param string $support The supported attribute name. Dot-accessible.
+ * @param WP_Block_Type $metadata WP_Block_Type object.
+ * @return boolean
+ */
+function unitone_has_block_support( $support, $metadata ) {
+	return null !== unitone_array_get( $metadata->supports ?? array(), $support );
+}
+
+/**
+ * Return supported value.
+ *
+ * @param string $support The supported attribute name. Dot-accessible.
+ * @param WP_Block_Type $metadata WP_Block_Type object.
+ * @return mixed
+ */
+function unitone_get_block_support( $support, $metadata ) {
+	return unitone_array_get( $metadata->supports ?? array(), $support );
 }
 
 /**

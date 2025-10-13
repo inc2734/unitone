@@ -544,7 +544,7 @@ add_filter(
 			$backdrop_filter_props = array();
 
 			// Blur.
-			$has_backdrop_filter_support = true === unitone_get_block_support( 'backdropFilter', $metadata );
+			$has_backdrop_filter_support = true === unitone_get_block_support( 'unitone.backdropFilter', $metadata );
 			if ( unitone_has_block_support( 'unitone.backdropFilter.blur', $metadata ) || $has_backdrop_filter_support ) {
 				$blur = $get_attribute( 'backdropFilter.blur' );
 
@@ -572,7 +572,7 @@ add_filter(
 			}
 
 			// Grayscale.
-			if ( unitone_has_block_support( 'unitone.backdropFilter.grayscale', $metadata ) || true === unitone_get_block_support( 'backdropFilter', $metadata ) ) {
+			if ( unitone_has_block_support( 'unitone.backdropFilter.grayscale', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
 				$grayscale = $get_attribute( 'backdropFilter.grayscale' );
 
 				if ( ! is_null( $grayscale ) && 0 !== $grayscale ) {

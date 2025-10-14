@@ -559,21 +559,6 @@ function unitone_set_color_palette( $theme_json ) {
 				'color' => '#500724',
 				'name'  => _x( 'Heavy Pink', 'Color name', 'unitone' ),
 			),
-			array(
-				'slug'  => 'unitone-inherit',
-				'color' => 'inherit',
-				'name'  => 'inherit',
-			),
-			array(
-				'slug'  => 'unitone-current',
-				'color' => 'currentColor',
-				'name'  => 'currentColor',
-			),
-			array(
-				'slug'  => 'unitone-transparent',
-				'color' => 'transparent',
-				'name'  => 'transparent',
-			),
 		),
 		$default_palette
 	);

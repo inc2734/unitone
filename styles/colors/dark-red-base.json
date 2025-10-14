@@ -64,21 +64,6 @@
 					"slug": "unitone-heavy-gray",
 					"color": "color-mix(in srgb, #a7a7a7 98%, #b91c1c)",
 					"name": "Heavy Gray"
-				},
-				{
-					"slug": "unitone-inherit",
-					"color": "inherit",
-					"name": "inherit"
-				},
-				{
-					"slug": "unitone-current",
-					"color": "currentColor",
-					"name": "currentColor"
-				},
-				{
-					"slug": "unitone-transparent",
-					"color": "transparent",
-					"name": "transparent"
 				}
 			]
 		}

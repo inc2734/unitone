@@ -1,3 +1,7 @@
 figure.wp-block-video {
 	width: 100%;
 }
+
+:where(.wp-block-video) {
+	background-color: #000;
+}

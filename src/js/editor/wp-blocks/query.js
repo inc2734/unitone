@@ -74,7 +74,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 					>
 						<ToolsPanelItem
 							hasValue={ () =>
-								props.attributes?.unitone?.cellMinWidth !==
+								props.attributes?.unitone?.blockLink !==
 								defaultValue
 							}
 							label={ __( 'Use block links', 'unitone' ) }

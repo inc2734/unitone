@@ -165,7 +165,7 @@ add_filter( 'block_editor_settings_all', 'unitone_override_block_editor_global_s
 foreach ( array( 'unitone_enqueue_block_editor_assets', 'unitone_setup_enqueue_assets' ) as $hook ) {
 	wp_localize_script(
 		'wp-block-editor',
-		'unitone',
+		'unitoneSettings',
 		array(
 			'uploadBaseUrl'  => wp_upload_dir()['baseurl'],
 			'path'           => get_template_directory(),

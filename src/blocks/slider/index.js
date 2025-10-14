@@ -46,7 +46,7 @@ registerBlockType( 'unitone/slider', {
 										name: 'core/image',
 										attributes: {
 											id: 1,
-											url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+											url: `${ window.unitoneSettings.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
 										},
 									},
 								],
@@ -90,7 +90,7 @@ registerBlockType( 'unitone/slider', {
 										name: 'core/image',
 										attributes: {
 											id: 1,
-											url: `${ unitone.url }/dist/img/stocksnap_ydxj69toal.jpg`,
+											url: `${ window.unitoneSettings.url }/dist/img/stocksnap_ydxj69toal.jpg`,
 										},
 									},
 								],
@@ -134,7 +134,7 @@ registerBlockType( 'unitone/slider', {
 										name: 'core/image',
 										attributes: {
 											id: 1,
-											url: `${ unitone.url }/dist/img/swing-ocean-sea2875.jpg`,
+											url: `${ window.unitoneSettings.url }/dist/img/swing-ocean-sea2875.jpg`,
 										},
 									},
 								],

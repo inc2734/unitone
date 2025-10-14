@@ -11,7 +11,7 @@ export default [
 				'core/image',
 				{
 					id: 1,
-					url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+					url: `${ window.unitoneSettings.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
 					lock: { move: true, remove: true },
 				},
 			],
@@ -22,7 +22,7 @@ export default [
 					name: 'core/image',
 					attributes: {
 						id: 1,
-						url: `${ unitone.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
+						url: `${ window.unitoneSettings.url }/dist/img/stocksnap_lgg8nat9jy.jpg`,
 					},
 				},
 			],
@@ -37,7 +37,7 @@ export default [
 				'core/video',
 				{
 					id: 1,
-					src: `${ unitone.url }/dist/img/sample.mp4`,
+					src: `${ window.unitoneSettings.url }/dist/img/sample.mp4`,
 					lock: { move: true, remove: true },
 				},
 			],
@@ -48,7 +48,7 @@ export default [
 					name: 'core/video',
 					attributes: {
 						id: 1,
-						src: `${ unitone.url }/dist/img/sample.mp4`,
+						src: `${ window.unitoneSettings.url }/dist/img/sample.mp4`,
 					},
 				},
 			],

@@ -70,12 +70,12 @@ export function withHalfLeadingBlockProps( settings ) {
 	}
 
 	const baseHalfLeading =
-		null != unitone?.halfLeading
-			? parseFloat( unitone?.halfLeading )
+		null != window.unitoneSettings?.halfLeading
+			? parseFloat( window.unitoneSettings?.halfLeading )
 			: undefined;
 	const baseMinHalfLeading =
-		null != unitone?.minHalfLeading
-			? parseFloat( unitone?.minHalfLeading )
+		null != window.unitoneSettings?.minHalfLeading
+			? parseFloat( window.unitoneSettings?.minHalfLeading )
 			: undefined;
 
 	const diff =

@@ -46,7 +46,7 @@ const replaceUnitonePatternImages = createHigherOrderComponent(
 
 			const regExpUnitone = new RegExp( 'https://unitone.2inc.org' );
 
-			if ( window.unitone.url.match( regExpTheme ) ) {
+			if ( window.unitoneSettings.url.match( regExpTheme ) ) {
 				return <BlockListBlock { ...props } />;
 			}
 
@@ -58,7 +58,7 @@ const replaceUnitonePatternImages = createHigherOrderComponent(
 			}
 
 			if ( isFileInUnitone && ! isFileInTheme ) {
-				attributes.url = `${ window.unitone.url }/dist/img/dummy.jpg`;
+				attributes.url = `${ window.unitoneSettings.url }/dist/img/dummy.jpg`;
 				block.attributes.url = attributes.url;
 
 				return (
@@ -69,7 +69,7 @@ const replaceUnitonePatternImages = createHigherOrderComponent(
 			if ( isFileInTheme ) {
 				const newFileUrl = fileUrl.replace(
 					regExpTheme,
-					window.unitone.url
+					window.unitoneSettings.url
 				);
 				fileExist( newFileUrl ).then( ( isExist ) => {
 					if ( isExist ) {

@@ -270,14 +270,11 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 							}
 							label={ __( 'Cell Min Width', 'unitone' ) }
 							onDeselect={ () => {
-								const newUnitone = {
-									...props.attributes?.unitone,
-									cellMinWidth: defaultValue,
-								};
 								props.setAttributes( {
-									unitone: !! Object.keys( newUnitone ).length
-										? newUnitone
-										: undefined,
+									unitone: cleanEmptyObject( {
+										...props.attributes?.unitone,
+										cellMinWidth: defaultValue,
+									} ),
 								} );
 							} }
 							isShownByDefault
@@ -291,23 +288,12 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 									''
 								}
 								onChange={ ( newValue ) => {
-									const newUnitone = {
-										...unitone,
-										cellMinWidth: newValue,
-									};
-									if ( null == newUnitone.cellMinWidth ) {
-										if ( null == defaultValue ) {
-											delete newUnitone.cellMinWidth;
-										} else {
-											newUnitone.cellMinWidth = '';
-										}
-									}
-
 									props.setAttributes( {
-										unitone: !! Object.keys( newUnitone )
-											.length
-											? newUnitone
-											: undefined,
+										unitone: cleanEmptyObject( {
+											...props.attributes?.unitone,
+											cellMinWidth:
+												newValue ?? defaultValue,
+										} ),
 									} );
 								} }
 							/>

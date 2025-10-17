@@ -221,44 +221,39 @@ add_filter( 'template_include', 'unitone_display_deprecated_parts_for_template',
  * Display deprecated parts at the frontend.
  * Note: Not displayed in the Site Editor.
  *
- * @see https://github.com/WordPress/wordpress-develop/blob/trunk/src/wp-includes/block-template-utils.php#L319
+ * @param array $parsed An associative array of the block being rendered. See WP_Block_Parser_Block.
  */
-function unitone_display_deprecated_parts() {
-	if ( WP_Block_Type_Registry::get_instance()->is_registered( 'core/template-part' ) ) {
-		// If it is already registered, unregister first.
-		unregister_block_type( 'core/template-part' );
+function unitone_deprecated_template_part_render( $parsed ) {
+	if (
+		is_admin() ||
+		wp_is_serving_rest_request()
+	) {
+		return $parsed;
 	}
 
-	register_block_type_from_metadata(
-		ABSPATH . WPINC . '/blocks/template-part',
-		array(
-			'variations'      => build_template_part_block_variations(),
-			'render_callback' => function ( $attributes ) {
-				$template_part_id = null;
-				$content          = null;
-				$area             = WP_TEMPLATE_PART_AREA_UNCATEGORIZED;
-				$stylesheet       = get_stylesheet();
+	if ( empty( $parsed['blockName'] ) || 'core/template-part' !== $parsed['blockName'] ) {
+		return $parsed;
+	}
 
-				if (
-					isset( $attributes['slug'] ) &&
-					isset( $attributes['theme'] ) &&
-					$stylesheet === $attributes['theme']
-				) {
-					if (
-						'footer-breadcrumbs' === $attributes['slug']
-						|| 0 === strpos( $attributes['slug'], 'contents-' )
-						|| 0 === strpos( $attributes['slug'], 'page-header-' )
-						|| 0 === strpos( $attributes['slug'], 'template-' )
-					) {
-						// Rewrite the slug (= path).
-						// Now the HTML of the file will be output for now, but customization will be skipped.
-						$attributes['slug'] = 'deprecated/' . $attributes['slug'];
-					}
-				}
+	$attrs      = $parsed['attrs'] ?? array();
+	$stylesheet = get_stylesheet();
 
-				return render_block_core_template_part( $attributes );
-			},
-		)
-	);
+	if (
+		isset( $attrs['slug'], $attrs['theme'] ) &&
+		$attrs['theme'] === $stylesheet
+	) {
+		$slug = $attrs['slug'];
+
+		if (
+			'footer-breadcrumbs' === $slug ||
+			0 === strpos( $slug, 'contents-' ) ||
+			0 === strpos( $slug, 'page-header-' ) ||
+			0 === strpos( $slug, 'template-' )
+		) {
+			$parsed['attrs']['slug'] = 'deprecated/' . $slug;
+		}
+	}
+
+	return $parsed;
 }
-add_action( 'init', 'unitone_display_deprecated_parts', 21 );
+add_filter( 'render_block_data', 'unitone_deprecated_template_part_render' );

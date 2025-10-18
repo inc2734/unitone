@@ -107,8 +107,6 @@ function unitone_register_remote_block_styles() {
 		}
 	}
 
-	$registry = WP_Block_Styles_Registry::get_instance();
-
 	foreach ( $block_styles as $style ) {
 		if ( ! $style['name'] || ! $style['label'] || ! $style['blockTypes'] ) {
 			continue;

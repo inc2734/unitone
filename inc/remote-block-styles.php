@@ -82,10 +82,9 @@ function unitone_get_premium_remote_block_styles() {
  *     ],
  * ]
  *
- * @param array $_map Map of block type.
+ * @param array $map Map of block type.
  */
-function _unitone_enqueue_remote_block_styles_for_front( $_map ) {
-	static $map  = $_map;
+function _unitone_enqueue_remote_block_styles_for_front( $map ) {
 	static $hits = array();
 
 	add_filter(

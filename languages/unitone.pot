@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 24.0.0-beta2\n"
+"Project-Id-Version: unitone 24.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-11T02:13:17+00:00\n"
+"POT-Creation-Date: 2025-10-27T01:22:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -170,8 +170,6 @@ msgid "Loading Animations"
 msgstr ""
 
 #: inc/block-patterns.php:18
-#: inc/template-part-areas.php:48
-#: inc/template-part-areas.php:176
 #: App/Controller/Manager/dist/js/app.js:9
 msgid "Pages"
 msgstr ""
@@ -667,140 +665,7 @@ msgid "Loop"
 msgstr ""
 
 #: inc/template-part-areas.php:41
-#: inc/template-part-areas.php:155
-msgid "Single Posts"
-msgstr ""
-
-#: inc/template-part-areas.php:55
-#: inc/template-part-areas.php:197
-msgid "404"
-msgstr ""
-
-#: inc/template-part-areas.php:62
-msgid "Front Page"
-msgstr ""
-
-#: inc/template-part-areas.php:69
-#: inc/template-part-areas.php:218
-msgid "Blog Home"
-msgstr ""
-
-#: inc/template-part-areas.php:76
-#: inc/template-part-areas.php:239
-msgid "All Archives"
-msgstr ""
-
-#: inc/template-part-areas.php:83
-#: inc/template-part-areas.php:260
-msgid "Search Results"
-msgstr ""
-
-#: inc/template-part-areas.php:90
-#: inc/template-part-areas.php:281
-msgid "Product Catalog"
-msgstr ""
-
-#: inc/template-part-areas.php:97
-#: inc/template-part-areas.php:302
-msgid "Single Products"
-msgstr ""
-
-#: inc/template-part-areas.php:104
-#: inc/template-part-areas.php:323
-msgid "bbPress"
-msgstr ""
-
-#: inc/template-part-areas.php:111
-msgid "Cart"
-msgstr ""
-
-#: inc/template-part-areas.php:118
-msgid "Checkout"
-msgstr ""
-
-#: inc/template-part-areas.php:125
-msgid "Order Confirmation"
-msgstr ""
-
-#: inc/template-part-areas.php:132
-#: inc/template-part-areas.php:344
 msgid "Comments"
-msgstr ""
-
-#: inc/template-part-areas.php:162
-msgid "Page Header for Single Posts"
-msgstr ""
-
-#: inc/template-part-areas.php:169
-msgid "Main Area for Single Posts"
-msgstr ""
-
-#: inc/template-part-areas.php:183
-msgid "Page Header for Pages"
-msgstr ""
-
-#: inc/template-part-areas.php:190
-msgid "Main Area for Pages"
-msgstr ""
-
-#: inc/template-part-areas.php:204
-msgid "Main Area for 404"
-msgstr ""
-
-#: inc/template-part-areas.php:211
-msgid "Page Header for 404"
-msgstr ""
-
-#: inc/template-part-areas.php:225
-msgid "Page Header for Blog Home"
-msgstr ""
-
-#: inc/template-part-areas.php:232
-msgid "Main Area for Blog Home"
-msgstr ""
-
-#: inc/template-part-areas.php:246
-msgid "Main Area for All Archives"
-msgstr ""
-
-#: inc/template-part-areas.php:253
-msgid "Page Header for All Archives"
-msgstr ""
-
-#: inc/template-part-areas.php:267
-msgid "Page Header for Search Results"
-msgstr ""
-
-#: inc/template-part-areas.php:274
-msgid "Main Area of Search Results"
-msgstr ""
-
-#: inc/template-part-areas.php:288
-msgid "Main Area for Product Catalog"
-msgstr ""
-
-#: inc/template-part-areas.php:295
-msgid "Page Header for Product Catalog"
-msgstr ""
-
-#: inc/template-part-areas.php:309
-msgid "Page Header for Single Products"
-msgstr ""
-
-#: inc/template-part-areas.php:316
-msgid "Main Area for Single Products"
-msgstr ""
-
-#: inc/template-part-areas.php:330
-msgid "Page Header for bbPress"
-msgstr ""
-
-#: inc/template-part-areas.php:337
-msgid "Main Area for bbPress"
-msgstr ""
-
-#: inc/template-part-areas.php:351
-msgid "Footer breadcrumbs"
 msgstr ""
 
 #: inc/variations.php:36
@@ -1941,6 +1806,7 @@ msgid "Size of h6"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
+#: dist/blocks/badge/index.js:1
 #: dist/blocks/texture/index.js:1
 #: dist/js/editor/editor.js:7
 msgid "Size"
@@ -2073,6 +1939,7 @@ msgid "Simple"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:9
+#: dist/blocks/badge/index.js:1
 #: dist/blocks/child-pages/index.js:1
 msgid "Box"
 msgstr ""
@@ -2158,6 +2025,7 @@ msgstr ""
 
 #: dist/blocks/abstract-background/index.js:1
 #: dist/blocks/accordion/index.js:1
+#: dist/blocks/badge/index.js:1
 #: dist/blocks/breadcrumbs/index.js:1
 #: dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1
@@ -2238,6 +2106,74 @@ msgstr ""
 
 #: dist/blocks/accordion/index.js:1
 msgid "A"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Circle"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Ribbon"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Crown"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Square"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Diamond"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Speech (Left)"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Speech (Right)"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Thorn ball"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Box cutter (Left)"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Box cutter (Right)"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Corner (Top Left)"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Inspiration"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Radiation"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Dot circle"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Slash (Top)"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Slash (Bottom)"
+msgstr ""
+
+#: dist/blocks/badge/index.js:1
+msgid "Shape"
 msgstr ""
 
 #: dist/blocks/breadcrumbs/index.js:1
@@ -3954,6 +3890,16 @@ msgstr ""
 #: dist/blocks/accordion/block.json
 msgctxt "block style label"
 msgid "Panel"
+msgstr ""
+
+#: dist/blocks/badge/block.json
+msgctxt "block title"
+msgid "Badge"
+msgstr ""
+
+#: dist/blocks/badge/block.json
+msgctxt "block description"
+msgid "This block displays an icon with text."
 msgstr ""
 
 #: dist/blocks/both-sides-content/block.json

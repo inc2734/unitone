@@ -1,0 +1,72 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "24.1.0",
+	"textdomain": "unitone",
+	"name": "unitone/badge",
+	"title": "Badge",
+	"description": "This block displays an icon with text.",
+	"attributes": {
+		"content": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": "p",
+			"role": "content"
+		},
+		"shape": {
+			"type": "string",
+			"default": "circle"
+		},
+		"minHeight": {
+			"type": "string"
+		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"position": {
+					"position": "relative",
+					"zIndex": "1"
+				},
+				"alignSelf": "start",
+				"justifySelf": "start"
+			}
+		}
+	},
+	"selectors": {
+		"root": "[data-unitone-layout~=badge]"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"color": {
+			"__experimentalSkipSerialization": true,
+			"background": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"unitone": {
+			"position": true
+		}
+	},
+	"example": {
+		"attributes": {
+			"content": "1",
+			"shape": "thorn-ball"
+		}
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}

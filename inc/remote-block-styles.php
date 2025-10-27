@@ -207,7 +207,7 @@ function unitone_register_remote_block_styles() {
 		$block_types = $get_block_types_from_remote_block_styles_block_type( $style['blockTypes'] );
 
 		foreach ( $block_types as $block_type ) {
-			$map[ $block_type ][ $name ] = $css;
+			$map[ $block_type ][ $name ] = $style['inline_style'];
 		}
 	}
 

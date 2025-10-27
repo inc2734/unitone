@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-10-11T02:13:17+00:00\n"
-"PO-Revision-Date: 2025-10-11 11:14+0900\n"
+"POT-Creation-Date: 2025-10-27T01:22:54+00:00\n"
+"PO-Revision-Date: 2025-10-27 10:29+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
@@ -159,8 +159,7 @@ msgstr "オーバーレイメニュー"
 msgid "Loading Animations"
 msgstr "ローディングアニメーション"
 
-#: inc/block-patterns.php:18 inc/template-part-areas.php:48
-#: inc/template-part-areas.php:176 App/Controller/Manager/dist/js/app.js:9
+#: inc/block-patterns.php:18 App/Controller/Manager/dist/js/app.js:9
 msgid "Pages"
 msgstr "ページ"
 
@@ -655,133 +654,9 @@ msgstr ""
 msgid "Loop"
 msgstr "ループ"
 
-#: inc/template-part-areas.php:41 inc/template-part-areas.php:155
-msgid "Single Posts"
-msgstr "個別投稿"
-
-#: inc/template-part-areas.php:55 inc/template-part-areas.php:197
-msgid "404"
-msgstr "404"
-
-#: inc/template-part-areas.php:62
-msgid "Front Page"
-msgstr "フロントページ"
-
-#: inc/template-part-areas.php:69 inc/template-part-areas.php:218
-msgid "Blog Home"
-msgstr "ブログホーム"
-
-#: inc/template-part-areas.php:76 inc/template-part-areas.php:239
-msgid "All Archives"
-msgstr "アーカイブ"
-
-#: inc/template-part-areas.php:83 inc/template-part-areas.php:260
-msgid "Search Results"
-msgstr "検索結果"
-
-#: inc/template-part-areas.php:90 inc/template-part-areas.php:281
-msgid "Product Catalog"
-msgstr "商品カタログ"
-
-#: inc/template-part-areas.php:97 inc/template-part-areas.php:302
-msgid "Single Products"
-msgstr "単一の商品"
-
-#: inc/template-part-areas.php:104 inc/template-part-areas.php:323
-msgid "bbPress"
-msgstr "bbPress"
-
-#: inc/template-part-areas.php:111
-msgid "Cart"
-msgstr "お買い物カゴ"
-
-#: inc/template-part-areas.php:118
-msgid "Checkout"
-msgstr "購入手続き"
-
-#: inc/template-part-areas.php:125
-msgid "Order Confirmation"
-msgstr "注文確認"
-
-#: inc/template-part-areas.php:132 inc/template-part-areas.php:344
+#: inc/template-part-areas.php:41
 msgid "Comments"
 msgstr "コメント"
-
-#: inc/template-part-areas.php:162
-msgid "Page Header for Single Posts"
-msgstr "個別投稿のページヘッダー"
-
-#: inc/template-part-areas.php:169
-msgid "Main Area for Single Posts"
-msgstr "個別投稿のメインエリア"
-
-#: inc/template-part-areas.php:183
-msgid "Page Header for Pages"
-msgstr "固定ページのページヘッダー"
-
-#: inc/template-part-areas.php:190
-msgid "Main Area for Pages"
-msgstr "固定ページのメインエリア"
-
-#: inc/template-part-areas.php:204
-msgid "Main Area for 404"
-msgstr "404 のメインエリア"
-
-#: inc/template-part-areas.php:211
-msgid "Page Header for 404"
-msgstr "404のページヘッダー"
-
-#: inc/template-part-areas.php:225
-msgid "Page Header for Blog Home"
-msgstr "ブログホームのページヘッダー"
-
-#: inc/template-part-areas.php:232
-msgid "Main Area for Blog Home"
-msgstr "ブログホームのメインエリア"
-
-#: inc/template-part-areas.php:246
-msgid "Main Area for All Archives"
-msgstr "アーカイブのメインエリア"
-
-#: inc/template-part-areas.php:253
-msgid "Page Header for All Archives"
-msgstr "アーカイブのページヘッダー"
-
-#: inc/template-part-areas.php:267
-msgid "Page Header for Search Results"
-msgstr "検索結果のページヘッダー"
-
-#: inc/template-part-areas.php:274
-msgid "Main Area of Search Results"
-msgstr "検索結果のメインエリア"
-
-#: inc/template-part-areas.php:288
-msgid "Main Area for Product Catalog"
-msgstr "商品カタログのメインエリア"
-
-#: inc/template-part-areas.php:295
-msgid "Page Header for Product Catalog"
-msgstr "商品カタログのページヘッダー"
-
-#: inc/template-part-areas.php:309
-msgid "Page Header for Single Products"
-msgstr "個別投稿のページヘッダー"
-
-#: inc/template-part-areas.php:316
-msgid "Main Area for Single Products"
-msgstr "単一の商品のメインエリア"
-
-#: inc/template-part-areas.php:330
-msgid "Page Header for bbPress"
-msgstr "bbPress のページヘッダー"
-
-#: inc/template-part-areas.php:337
-msgid "Main Area for bbPress"
-msgstr "bbPress のメインエリア"
-
-#: inc/template-part-areas.php:351
-msgid "Footer breadcrumbs"
-msgstr "フッターのパンくずリスト"
 
 #: inc/variations.php:36
 msgid "Share Button"
@@ -1935,8 +1810,8 @@ msgstr "h5 のサイズ"
 msgid "Size of h6"
 msgstr "h6 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:7 dist/blocks/texture/index.js:1
-#: dist/js/editor/editor.js:7
+#: App/Controller/Manager/dist/js/app.js:7 dist/blocks/badge/index.js:1
+#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:7
 msgid "Size"
 msgstr "サイズ"
 
@@ -2069,7 +1944,8 @@ msgstr "メディア"
 msgid "Simple"
 msgstr "シンプル"
 
-#: App/Controller/Manager/dist/js/app.js:9 dist/blocks/child-pages/index.js:1
+#: App/Controller/Manager/dist/js/app.js:9 dist/blocks/badge/index.js:1
+#: dist/blocks/child-pages/index.js:1
 msgid "Box"
 msgstr "ボックス"
 
@@ -2151,14 +2027,14 @@ msgid "Abstract background"
 msgstr "アブストラクト背景"
 
 #: dist/blocks/abstract-background/index.js:1 dist/blocks/accordion/index.js:1
-#: dist/blocks/breadcrumbs/index.js:1 dist/blocks/center/index.js:1
-#: dist/blocks/child-pages/index.js:1 dist/blocks/cluster-divided/index.js:1
-#: dist/blocks/cover-content/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
-#: dist/blocks/frame/index.js:1 dist/blocks/grid-divided/index.js:1
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
-#: dist/blocks/masonry/index.js:1 dist/blocks/reel/index.js:1
-#: dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/badge/index.js:1 dist/blocks/breadcrumbs/index.js:1
+#: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
+#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cover-content/index.js:1
+#: dist/blocks/decorator/index.js:1 dist/blocks/flex-divided/index.js:1
+#: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/layers/index.js:25 dist/blocks/masonry/index.js:1
+#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
@@ -2217,6 +2093,74 @@ msgstr "ここに概要を入力"
 #: dist/blocks/accordion/index.js:1
 msgid "A"
 msgstr "A"
+
+#: dist/blocks/badge/index.js:1
+msgid "Circle"
+msgstr "丸"
+
+#: dist/blocks/badge/index.js:1
+msgid "Ribbon"
+msgstr "リボン"
+
+#: dist/blocks/badge/index.js:1
+msgid "Crown"
+msgstr "王冠"
+
+#: dist/blocks/badge/index.js:1
+msgid "Square"
+msgstr "四角"
+
+#: dist/blocks/badge/index.js:1
+msgid "Diamond"
+msgstr "ダイヤモンド"
+
+#: dist/blocks/badge/index.js:1
+msgid "Speech (Left)"
+msgstr "吹き出し（左）"
+
+#: dist/blocks/badge/index.js:1
+msgid "Speech (Right)"
+msgstr "吹き出し（右）"
+
+#: dist/blocks/badge/index.js:1
+msgid "Thorn ball"
+msgstr "トゲボール"
+
+#: dist/blocks/badge/index.js:1
+msgid "Box cutter (Left)"
+msgstr "カッター（左）"
+
+#: dist/blocks/badge/index.js:1
+msgid "Box cutter (Right)"
+msgstr "カッター（右）"
+
+#: dist/blocks/badge/index.js:1
+msgid "Corner (Top Left)"
+msgstr "コーナー（左上）"
+
+#: dist/blocks/badge/index.js:1
+msgid "Inspiration"
+msgstr "インスピレーション"
+
+#: dist/blocks/badge/index.js:1
+msgid "Radiation"
+msgstr "放射状"
+
+#: dist/blocks/badge/index.js:1
+msgid "Dot circle"
+msgstr "ドットサークル"
+
+#: dist/blocks/badge/index.js:1
+msgid "Slash (Top)"
+msgstr "スラッシュ（上部）"
+
+#: dist/blocks/badge/index.js:1
+msgid "Slash (Bottom)"
+msgstr "スラッシュ（下部）"
+
+#: dist/blocks/badge/index.js:1
+msgid "Shape"
+msgstr "形状"
 
 #: dist/blocks/breadcrumbs/index.js:1 dist/js/editor/editor.js:4
 msgid "Divider"
@@ -3944,6 +3888,16 @@ msgctxt "block style label"
 msgid "Panel"
 msgstr "パネル"
 
+#: dist/blocks/badge/block.json
+msgctxt "block title"
+msgid "Badge"
+msgstr "バッジ"
+
+#: dist/blocks/badge/block.json
+msgctxt "block description"
+msgid "This block displays an icon with text."
+msgstr "テキスト入りのアイコンを表示するブロックです。"
+
 #: dist/blocks/both-sides-content/block.json
 #: dist/blocks/cluster-divided-content/block.json
 #: dist/blocks/cover-content/block.json
@@ -5112,3 +5066,96 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
+
+#~ msgid "Single Posts"
+#~ msgstr "個別投稿"
+
+#~ msgid "404"
+#~ msgstr "404"
+
+#~ msgid "Front Page"
+#~ msgstr "フロントページ"
+
+#~ msgid "Blog Home"
+#~ msgstr "ブログホーム"
+
+#~ msgid "All Archives"
+#~ msgstr "アーカイブ"
+
+#~ msgid "Search Results"
+#~ msgstr "検索結果"
+
+#~ msgid "Product Catalog"
+#~ msgstr "商品カタログ"
+
+#~ msgid "Single Products"
+#~ msgstr "単一の商品"
+
+#~ msgid "bbPress"
+#~ msgstr "bbPress"
+
+#~ msgid "Cart"
+#~ msgstr "お買い物カゴ"
+
+#~ msgid "Checkout"
+#~ msgstr "購入手続き"
+
+#~ msgid "Order Confirmation"
+#~ msgstr "注文確認"
+
+#~ msgid "Page Header for Single Posts"
+#~ msgstr "個別投稿のページヘッダー"
+
+#~ msgid "Main Area for Single Posts"
+#~ msgstr "個別投稿のメインエリア"
+
+#~ msgid "Page Header for Pages"
+#~ msgstr "固定ページのページヘッダー"
+
+#~ msgid "Main Area for Pages"
+#~ msgstr "固定ページのメインエリア"
+
+#~ msgid "Main Area for 404"
+#~ msgstr "404 のメインエリア"
+
+#~ msgid "Page Header for 404"
+#~ msgstr "404のページヘッダー"
+
+#~ msgid "Page Header for Blog Home"
+#~ msgstr "ブログホームのページヘッダー"
+
+#~ msgid "Main Area for Blog Home"
+#~ msgstr "ブログホームのメインエリア"
+
+#~ msgid "Main Area for All Archives"
+#~ msgstr "アーカイブのメインエリア"
+
+#~ msgid "Page Header for All Archives"
+#~ msgstr "アーカイブのページヘッダー"
+
+#~ msgid "Page Header for Search Results"
+#~ msgstr "検索結果のページヘッダー"
+
+#~ msgid "Main Area of Search Results"
+#~ msgstr "検索結果のメインエリア"
+
+#~ msgid "Main Area for Product Catalog"
+#~ msgstr "商品カタログのメインエリア"
+
+#~ msgid "Page Header for Product Catalog"
+#~ msgstr "商品カタログのページヘッダー"
+
+#~ msgid "Page Header for Single Products"
+#~ msgstr "個別投稿のページヘッダー"
+
+#~ msgid "Main Area for Single Products"
+#~ msgstr "単一の商品のメインエリア"
+
+#~ msgid "Page Header for bbPress"
+#~ msgstr "bbPress のページヘッダー"
+
+#~ msgid "Main Area for bbPress"
+#~ msgstr "bbPress のメインエリア"
+
+#~ msgid "Footer breadcrumbs"
+#~ msgstr "フッターのパンくずリスト"

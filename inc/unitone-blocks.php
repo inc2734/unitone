@@ -9,6 +9,7 @@
  * Register blocks.
  */
 function unitone_register_blocks() {
+	register_block_type( get_template_directory() . '/dist/blocks/badge' );
 	register_block_type( get_template_directory() . '/dist/blocks/both-sides' );
 	register_block_type( get_template_directory() . '/dist/blocks/both-sides-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/center' );
@@ -200,3 +201,16 @@ function unitone_apply_slider_thumbnails( $block_content, $block ) {
 	return $block_content;
 }
 add_filter( 'render_block_unitone/slider', 'unitone_apply_slider_thumbnails', 10, 2 );
+
+/**
+ * Filters the supported block attributes for block bindings of unitone/badge.
+ *
+ * @param array $supported_block_attributes The block's attributes that are supported by block bindings.
+ */
+add_filter(
+	'block_bindings_supported_attributes_unitone/badge',
+	function ( $supported_block_attributes ) {
+		$supported_block_attributes[] = 'content';
+		return $supported_block_attributes;
+	}
+);

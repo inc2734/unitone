@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "24.2.0",
+	"textdomain": "unitone",
+	"name": "unitone/reference-sources",
+	"title": "Referene sources",
+	"description": "Collects the URLs of embedded blocks in an article and displays them as a linked list.",
+	"attributes": {
+		"templateLock": {
+			"type": [ "boolean" ],
+			"enum": [ false ]
+		}
+	},
+	"allowedBlocks": [ "core/list-item" ],
+	"selectors": {
+		"root": ".unitone-reference-sources"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"color": {
+			"background": false,
+			"link": true,
+			"text": false
+		},
+		"typography": {
+			"fontSize": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"unitone": {
+			"fluidTypography": true,
+			"halfLeading": true,
+			"linkDecoration": true
+		}
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}

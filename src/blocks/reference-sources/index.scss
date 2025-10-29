@@ -1,0 +1,23 @@
+.unitone-reference-sources {
+	&__loading {
+		display: flex;
+		gap: var(--unitone--s-2);
+		align-items: center;
+		padding: var(--unitone--s1);
+
+		.components-spinner {
+			margin: 0 !important;
+		}
+	}
+
+	.components-placeholder {
+		.components-placeholder__fieldset {
+			align-items: center;
+		}
+	}
+}
+
+.unitone-reference-sources__inner:has(+ .unitone-reference-sources__loading),
+.unitone-reference-sources__inner:has(+ .components-placeholder) {
+	visibility: hidden;
+}

@@ -52,6 +52,7 @@ function unitone_register_blocks() {
 
 	register_block_type( get_template_directory() . '/dist/blocks/abstract-background' );
 	register_block_type( get_template_directory() . '/dist/blocks/accordion' );
+	register_block_type( get_template_directory() . '/dist/blocks/reference-sources' );
 	register_block_type( get_template_directory() . '/dist/blocks/responsive-switcher-container' );
 	register_block_type( get_template_directory() . '/dist/blocks/section' );
 	register_block_type( get_template_directory() . '/dist/blocks/timeline-dots' );
@@ -212,5 +213,21 @@ add_filter(
 	function ( $supported_block_attributes ) {
 		$supported_block_attributes[] = 'content';
 		return $supported_block_attributes;
+	}
+);
+
+/**
+ * Make core/list-item injectable into unitone/reference-sources.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+add_filter(
+	'block_type_metadata',
+	function ( $metadata ) {
+		if ( 'core/list-item' === $metadata['name'] ) {
+			$metadata['parent'] = array( 'unitone/reference-sources' );
+		}
+		return $metadata;
 	}
 );

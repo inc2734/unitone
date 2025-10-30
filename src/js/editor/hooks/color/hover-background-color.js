@@ -106,17 +106,6 @@ export function withHoverBackgroundColorBlockProps( settings ) {
 		customHoverGradient,
 	} = attributes;
 
-	// @todo
-	// const blockType = wp.data.select( blocksStore ).getBlockType( name );
-	// const hasAttributes =
-	// 	( !! blockType?.attributes?.hoverBackgroundColor &&
-	// 		!! blockType?.attributes?.customHoverBackgroundColor ) ||
-	// 	( !! blockType?.attributes?.hoverGradient &&
-	// 		!! blockType?.attributes?.customHoverGradient );
-	// if ( ! hasAttributes ) {
-	// 	return settings;
-	// }
-
 	if (
 		isHoverBackgroundColorSupportDisabled( { name } ) &&
 		isHoverGradientSupportDisabled( { name } )

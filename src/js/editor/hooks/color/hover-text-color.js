@@ -54,15 +54,6 @@ export function withHoverTextColorBlockProps( settings ) {
 	const { name, attributes } = settings;
 	const { hoverTextColor, customHoverTextColor } = attributes;
 
-	// @todo
-	// const blockType = wp.data.select( blocksStore ).getBlockType( name );
-	// const hasAttributes =
-	// 	!! blockType?.attributes?.hoverTextColor &&
-	// 	!! blockType?.attributes?.customHoverTextColor;
-	// if ( ! hasAttributes ) {
-	// 	return settings;
-	// }
-
 	if ( isHoverTextColorSupportDisabled( { name } ) ) {
 		return settings;
 	}

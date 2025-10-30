@@ -58,19 +58,7 @@ export function resetStairsUp( { attributes: { unitone }, setAttributes } ) {
 }
 
 export function isStairsSupportDisabled( { name } ) {
-	// @todo
 	return ! hasBlockSupport( name, 'unitone.stairs' );
-
-	// if ( ! hasBlockSupport( name, 'unitone.stairs' ) ) {
-	// 	return true;
-	// }
-
-	// const blockSupport = getBlockSupport( name, 'unitone.stairs' );
-	// if ( true === blockSupport ) {
-	// 	return false;
-	// }
-
-	// return true;
 }
 
 export function getStairsEditLabel( {

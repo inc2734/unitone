@@ -56,15 +56,6 @@ export function withHoverBorderColorBlockProps( settings ) {
 	const { name, attributes } = settings;
 	const { hoverBorderColor, customHoverBorderColor } = attributes;
 
-	// @todo
-	// const blockType = wp.data.select( blocksStore ).getBlockType( name );
-	// const hasAttributes =
-	// 	!! blockType?.attributes?.hoverBorderColor &&
-	// 	!! blockType?.attributes?.customHoverBorderColor;
-	// if ( ! hasAttributes ) {
-	// 	return settings;
-	// }
-
 	if ( isHoverBorderColorSupportDisabled( { name } ) ) {
 		return settings;
 	}

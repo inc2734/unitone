@@ -63,7 +63,7 @@ export function getSaturateEditLabel( {
 	);
 }
 
-export function useIsSaturateDisabled( { name } = {} ) {
+export function isSaturateDisabled( { name } = {} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.saturate' ) &&
 		true !== getBlockSupport( name, 'unitone.backdropFilter' )

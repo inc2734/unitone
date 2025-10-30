@@ -124,10 +124,13 @@ export function withFlexGrowBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.flexGrow' ) ) {
-		if ( ! __unstableUnitoneSupports?.flexGrow ) {
-			return settings;
-		}
+	if (
+		isFlexGrowSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newFlexGrow = attributes?.unitone?.flexGrow;

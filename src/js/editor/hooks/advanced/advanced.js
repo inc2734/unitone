@@ -4,7 +4,7 @@ import { InspectorAdvancedControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 
 import {
-	useIsStyleDisabled,
+	isStyleDisabled,
 	resetStyleFilter,
 	StyleTag,
 	StyleEdit,
@@ -16,7 +16,7 @@ export { StyleTag };
 export const withAdvancedBlockProps = withStyleBlockProps;
 
 export const resetAdvanced = ( props ) => {
-	const filters = [ [ useIsStyleDisabled, resetStyleFilter ] ];
+	const filters = [ [ isStyleDisabled, resetStyleFilter ] ];
 
 	const unitone = filters.reduce(
 		( accumulator, [ isDisabled, resetFilter ] ) => {
@@ -33,15 +33,15 @@ export const resetAdvanced = ( props ) => {
 function AdvancedPanelPure( props ) {
 	const { name } = props;
 
-	const isStyleDisabled = useIsStyleDisabled( { name } );
+	const isStylePanelDisabled = isStyleDisabled( { name } );
 
-	if ( isStyleDisabled ) {
+	if ( isStylePanelDisabled ) {
 		return null;
 	}
 
 	return (
 		<InspectorAdvancedControls>
-			{ ! isStyleDisabled && <StyleEdit { ...props } /> }
+			{ ! isStylePanelDisabled && <StyleEdit { ...props } /> }
 		</InspectorAdvancedControls>
 	);
 }

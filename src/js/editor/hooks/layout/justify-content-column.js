@@ -190,7 +190,7 @@ export function JustifyContentColumnEdit( {
 export function withJustifyContentColumnBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.justifyContentColumn' ) ) {
+	if ( isJustifyContentColumnSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

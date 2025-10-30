@@ -731,7 +731,7 @@ export function ScrollAnimationEdit( {
 export function withScrollAnimationBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.scrollAnimation' ) ) {
+	if ( isScrollAnimationSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

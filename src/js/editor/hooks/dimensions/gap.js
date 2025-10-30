@@ -46,24 +46,8 @@ export function resetGap( { attributes: { unitone }, setAttributes } ) {
 	} );
 }
 
-export function isGapSupportDisabled( { name, className } ) {
-	if ( ! hasBlockSupport( name, 'unitone.gap' ) ) {
-		return true;
-	}
-
-	const blockSupport = getBlockSupport( name, 'unitone.gap' );
-	if ( !! blockSupport ) {
-		return false;
-	}
-
-	if ( !! className ) {
-		return ! className.split( ' ' ).some( ( needle ) => {
-			needle = needle.replace( 'is-style-', '' );
-			return blockSupport.styles?.[ needle ];
-		} );
-	}
-
-	return true;
+export function isGapSupportDisabled( { name } ) {
+	return ! hasBlockSupport( name, 'unitone.gap' );
 }
 
 export function getGapEditLabel( {
@@ -344,7 +328,7 @@ export function GapEdit( {
 export function withGapBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.gap' ) ) {
+	if ( isGapSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

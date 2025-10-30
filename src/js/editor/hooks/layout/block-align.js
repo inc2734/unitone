@@ -155,7 +155,7 @@ export function BlockAlignEdit( {
 export function withBlockAlignBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.blockAlign' ) ) {
+	if ( isBlockAlignSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

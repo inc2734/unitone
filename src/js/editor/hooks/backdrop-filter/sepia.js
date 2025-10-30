@@ -61,7 +61,7 @@ export function getSepiaEditLabel( {
 	);
 }
 
-export function useIsSepiaDisabled( { name } = {} ) {
+export function isSepiaDisabled( { name } = {} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.sepia' ) &&
 		true !== getBlockSupport( name, 'unitone.backdropFilter' )

@@ -126,7 +126,7 @@ export function LinkDecorationEdit( { label, attributes, setAttributes } ) {
 export function withLinkDecorationBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.linkDecoration' ) ) {
+	if ( isLinkDecorationSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

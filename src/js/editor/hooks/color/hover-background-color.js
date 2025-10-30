@@ -6,7 +6,7 @@ import {
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import { hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
 export function resetHoverBackgroundColorFilter() {
@@ -24,21 +24,11 @@ export function resetHoverGradientFilter() {
 }
 
 export function isHoverBackgroundColorSupportDisabled( { name } ) {
-	const blockType = wp.data.select( blocksStore ).getBlockType( name );
-	const hasAttributes =
-		!! blockType?.attributes?.hoverBackgroundColor &&
-		!! blockType?.attributes?.customHoverBackgroundColor;
-
-	return ! hasAttributes || ! hasBlockSupport( name, 'color' );
+	return ! hasBlockSupport( name, 'color' );
 }
 
 export function isHoverGradientSupportDisabled( { name } ) {
-	const blockType = wp.data.select( blocksStore ).getBlockType( name );
-	const hasAttributes =
-		!! blockType?.attributes?.hoverGradient &&
-		!! blockType?.attributes?.customHoverGradient;
-
-	return ! hasAttributes || ! hasBlockSupport( name, 'color.gradients' );
+	return ! hasBlockSupport( name, 'color.gradients' );
 }
 
 export function HoverBackgroundColorEditPure( {
@@ -116,17 +106,21 @@ export function withHoverBackgroundColorBlockProps( settings ) {
 		customHoverGradient,
 	} = attributes;
 
-	const blockType = wp.data.select( blocksStore ).getBlockType( name );
-	const hasAttributes =
-		( !! blockType?.attributes?.hoverBackgroundColor &&
-			!! blockType?.attributes?.customHoverBackgroundColor ) ||
-		( !! blockType?.attributes?.hoverGradient &&
-			!! blockType?.attributes?.customHoverGradient );
-	if ( ! hasAttributes ) {
-		return settings;
-	}
+	// @todo
+	// const blockType = wp.data.select( blocksStore ).getBlockType( name );
+	// const hasAttributes =
+	// 	( !! blockType?.attributes?.hoverBackgroundColor &&
+	// 		!! blockType?.attributes?.customHoverBackgroundColor ) ||
+	// 	( !! blockType?.attributes?.hoverGradient &&
+	// 		!! blockType?.attributes?.customHoverGradient );
+	// if ( ! hasAttributes ) {
+	// 	return settings;
+	// }
 
-	if ( ! hasBlockSupport( name, 'color' ) ) {
+	if (
+		isHoverBackgroundColorSupportDisabled( { name } ) &&
+		isHoverGradientSupportDisabled( { name } )
+	) {
 		return settings;
 	}
 

@@ -6,7 +6,7 @@ import {
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import { hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
 export function resetHoverBorderColorFilter() {
@@ -17,15 +17,7 @@ export function resetHoverBorderColorFilter() {
 }
 
 export function isHoverBorderColorSupportDisabled( { name } ) {
-	const blockType = wp.data.select( blocksStore ).getBlockType( name );
-	const hasAttributes =
-		!! blockType?.attributes?.hoverBorderColor &&
-		!! blockType?.attributes?.customHoverBorderColor;
-
-	return (
-		! hasAttributes ||
-		! hasBlockSupport( name, '__experimentalBorder.color' )
-	);
+	return ! hasBlockSupport( name, '__experimentalBorder.color' );
 }
 
 export function HoverBorderColorEditPure( {
@@ -64,15 +56,16 @@ export function withHoverBorderColorBlockProps( settings ) {
 	const { name, attributes } = settings;
 	const { hoverBorderColor, customHoverBorderColor } = attributes;
 
-	const blockType = wp.data.select( blocksStore ).getBlockType( name );
-	const hasAttributes =
-		!! blockType?.attributes?.hoverBorderColor &&
-		!! blockType?.attributes?.customHoverBorderColor;
-	if ( ! hasAttributes ) {
-		return settings;
-	}
+	// @todo
+	// const blockType = wp.data.select( blocksStore ).getBlockType( name );
+	// const hasAttributes =
+	// 	!! blockType?.attributes?.hoverBorderColor &&
+	// 	!! blockType?.attributes?.customHoverBorderColor;
+	// if ( ! hasAttributes ) {
+	// 	return settings;
+	// }
 
-	if ( ! hasBlockSupport( name, '__experimentalBorder.color' ) ) {
+	if ( isHoverBorderColorSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

@@ -125,10 +125,13 @@ export function withFlexShrinkBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.flexShrink' ) ) {
-		if ( ! __unstableUnitoneSupports?.flexShrink ) {
-			return settings;
-		}
+	if (
+		isFlexShrinkSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newFlexShrink = attributes?.unitone?.flexShrink;

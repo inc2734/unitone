@@ -342,7 +342,7 @@ export function DropShadowEdit( {
 export function withDropShadowBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.dropShadow' ) ) {
+	if ( isDropShadowSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

@@ -108,7 +108,7 @@ export function resetMixBlendMode( {
 export function isMixBlendModeSupportDisabled( {
 	name,
 	attributes: { __unstableUnitoneSupports },
-} = {} ) {
+} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.mixBlendMode' ) &&
 		! __unstableUnitoneSupports?.mixBlendMode
@@ -155,10 +155,13 @@ export function withMixBlendModeBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.mixBlendMode' ) ) {
-		if ( ! __unstableUnitoneSupports?.mixBlendMode ) {
-			return settings;
-		}
+	if (
+		isMixBlendModeSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newMixBlendMode = attributes?.unitone?.mixBlendMode;

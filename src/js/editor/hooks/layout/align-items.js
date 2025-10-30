@@ -177,7 +177,7 @@ export function AlignItemsEdit( {
 export function withAlignItemsBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.alignItems' ) ) {
+	if ( isAlignItemsSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

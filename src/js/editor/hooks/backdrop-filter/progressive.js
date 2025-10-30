@@ -57,7 +57,7 @@ export function getProgressiveEditLabel( {
 	);
 }
 
-export function useIsProgressiveDisabled( { name } = {} ) {
+export function isProgressiveDisabled( { name } = {} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.progressive' ) &&
 		true !== getBlockSupport( name, 'unitone.backdropFilter' )

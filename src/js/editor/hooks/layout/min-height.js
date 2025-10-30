@@ -93,10 +93,13 @@ export function withMinHeightBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.minHeight' ) ) {
-		if ( ! __unstableUnitoneSupports?.minHeight ) {
-			return settings;
-		}
+	if (
+		isMinHeightSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newMinHeight = attributes?.unitone?.minHeight;

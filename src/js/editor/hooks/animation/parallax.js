@@ -191,7 +191,7 @@ export function ParallaxEdit( {
 export function withParallaxBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.parallax' ) ) {
+	if ( isParallaxSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

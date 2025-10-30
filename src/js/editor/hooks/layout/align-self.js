@@ -428,10 +428,13 @@ export function withAlignSelfBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.alignSelf' ) ) {
-		if ( ! __unstableUnitoneSupports?.alignSelf ) {
-			return settings;
-		}
+	if (
+		isAlignSelfSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newAlignSelf = attributes?.unitone?.alignSelf;

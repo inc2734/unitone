@@ -197,7 +197,7 @@ export function AlignContentEdit( {
 export function withAlignContentBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.alignContent' ) ) {
+	if ( isAlignContentSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

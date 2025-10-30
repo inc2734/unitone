@@ -113,7 +113,7 @@ export function OverflowEdit( {
 export function withOverflowBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.overflow' ) ) {
+	if ( isOverflowSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

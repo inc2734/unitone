@@ -107,7 +107,7 @@ export function BackgroundClipEdit( {
 export function withBackgroundClipBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.backgroundClip' ) ) {
+	if ( isBackgroundClipSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

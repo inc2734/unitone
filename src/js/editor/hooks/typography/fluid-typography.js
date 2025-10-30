@@ -76,7 +76,7 @@ export function FluidTypographyEdit( { label, attributes, setAttributes } ) {
 export function withFluidTypographyBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.fluidTypography' ) ) {
+	if ( isFluidTypographySupportDisabled( { name } ) ) {
 		return settings;
 	}
 

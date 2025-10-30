@@ -105,7 +105,7 @@ export function AutoRepeatEdit( {
 export function withAutoRepeatBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.autoRepeat' ) ) {
+	if ( isAutoRepeatSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

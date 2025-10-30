@@ -63,7 +63,7 @@ export function getHueRotateEditLabel( {
 	);
 }
 
-export function useIsHueRotateDisabled( { name } = {} ) {
+export function isHueRotateDisabled( { name } = {} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.hueRotate' ) &&
 		true !== getBlockSupport( name, 'unitone.backdropFilter' )

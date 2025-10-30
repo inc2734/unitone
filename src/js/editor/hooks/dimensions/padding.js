@@ -423,7 +423,7 @@ export function PaddingEdit( {
 export function withPaddingBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.padding' ) ) {
+	if ( isPaddingSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

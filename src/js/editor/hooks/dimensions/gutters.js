@@ -117,7 +117,7 @@ export function GuttersEdit( {
 export function withGuttersBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.gutters' ) ) {
+	if ( isGuttersSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

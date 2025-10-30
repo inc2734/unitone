@@ -388,7 +388,7 @@ export function ZIndexEdit( {
 export function withPositionBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.position' ) ) {
+	if ( isPositionSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

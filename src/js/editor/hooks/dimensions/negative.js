@@ -71,7 +71,7 @@ export function NegativeEdit( {
 export function withNegativeBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.negative' ) ) {
+	if ( isNegativeSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

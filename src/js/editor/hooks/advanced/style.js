@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
-export function useIsStyleDisabled( { name } ) {
+export function isStyleDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.style' );
 }
 
@@ -345,7 +345,7 @@ export function StyleEdit( {
 }
 
 export function saveStyleProp( extraProps, blockType, attributes ) {
-	if ( ! hasBlockSupport( blockType, 'unitone.style' ) ) {
+	if ( isStyleDisabled( { name: blockType } ) ) {
 		return extraProps;
 	}
 
@@ -357,6 +357,10 @@ export function saveStyleProp( extraProps, blockType, attributes ) {
 
 export function withStyleBlockProps( settings ) {
 	const { attributes, name, wrapperProps } = settings;
+
+	if ( isStyleDisabled( { name } ) ) {
+		return settings;
+	}
 
 	return {
 		...settings,

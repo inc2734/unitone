@@ -11,7 +11,6 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -46,7 +45,7 @@ import {
 } from './contrast';
 
 import {
-	useIsGrayscaleDisabled,
+	isGrayscaleDisabled,
 	hasGrayscaleValue,
 	resetGrayscaleFilter,
 	resetGrayscale,
@@ -55,7 +54,7 @@ import {
 } from './grayscale';
 
 import {
-	useIsHueRotateDisabled,
+	isHueRotateDisabled,
 	hasHueRotateValue,
 	resetHueRotateFilter,
 	resetHueRotate,
@@ -64,7 +63,7 @@ import {
 } from './hue-rotate';
 
 import {
-	useIsInvertDisabled,
+	isInvertDisabled,
 	hasInvertValue,
 	resetInvertFilter,
 	resetInvert,
@@ -73,7 +72,7 @@ import {
 } from './invert';
 
 import {
-	useIsSaturateDisabled,
+	isSaturateDisabled,
 	hasSaturateValue,
 	resetSaturateFilter,
 	resetSaturate,
@@ -82,7 +81,7 @@ import {
 } from './saturate';
 
 import {
-	useIsSepiaDisabled,
+	isSepiaDisabled,
 	hasSepiaValue,
 	resetSepiaFilter,
 	resetSepia,
@@ -91,7 +90,7 @@ import {
 } from './sepia';
 
 import {
-	useIsProgressiveDisabled,
+	isProgressiveDisabled,
 	hasProgressiveValue,
 	resetProgressiveFilter,
 	resetProgressive,
@@ -104,12 +103,12 @@ export const resetBackdropFilter = ( props ) => {
 		[ isBlurSupportDisabled, resetBlurFilter ],
 		[ isBrightnessSupportDisabled, resetBrightnessFilter ],
 		[ isContrastSupportDisabled, resetContrastFilter ],
-		[ useIsGrayscaleDisabled, resetGrayscaleFilter ],
-		[ useIsHueRotateDisabled, resetHueRotateFilter ],
-		[ useIsInvertDisabled, resetInvertFilter ],
-		[ useIsSaturateDisabled, resetSaturateFilter ],
-		[ useIsSepiaDisabled, resetSepiaFilter ],
-		[ useIsProgressiveDisabled, resetProgressiveFilter ],
+		[ isGrayscaleDisabled, resetGrayscaleFilter ],
+		[ isHueRotateDisabled, resetHueRotateFilter ],
+		[ isInvertDisabled, resetInvertFilter ],
+		[ isSaturateDisabled, resetSaturateFilter ],
+		[ isSepiaDisabled, resetSepiaFilter ],
+		[ isProgressiveDisabled, resetProgressiveFilter ],
 	];
 
 	const unitone = filters.reduce(
@@ -133,13 +132,8 @@ export function withBackdropFilterBlockProps( settings ) {
 	const backdropFilter = unitone?.backdropFilter;
 
 	const backdropFilterProps = [];
-	const hasBackdropFilterSupport =
-		true === getBlockSupport( name, 'unitone.backdropFilter' );
 
-	if (
-		hasBlockSupport( name, 'unitone.backdropFilter.blur' ) ||
-		hasBackdropFilterSupport
-	) {
+	if ( ! isBlurSupportDisabled( { name } ) ) {
 		const blur = backdropFilter?.blur;
 		if ( null != blur && 0 !== blur ) {
 			backdropFilterProps.push( {
@@ -148,10 +142,7 @@ export function withBackdropFilterBlockProps( settings ) {
 		}
 	}
 
-	if (
-		hasBlockSupport( name, 'unitone.backdropFilter.brightness' ) ||
-		hasBackdropFilterSupport
-	) {
+	if ( ! isBrightnessSupportDisabled( { name } ) ) {
 		const brightness = backdropFilter?.brightness;
 		if ( null != brightness && 100 !== brightness ) {
 			backdropFilterProps.push( {
@@ -160,10 +151,7 @@ export function withBackdropFilterBlockProps( settings ) {
 		}
 	}
 
-	if (
-		hasBlockSupport( name, 'unitone.backdropFilter.contrast' ) ||
-		hasBackdropFilterSupport
-	) {
+	if ( ! isContrastSupportDisabled( { name } ) ) {
 		const contrast = backdropFilter?.contrast;
 		if ( null != contrast && 100 !== contrast ) {
 			backdropFilterProps.push( {
@@ -172,10 +160,7 @@ export function withBackdropFilterBlockProps( settings ) {
 		}
 	}
 
-	if (
-		hasBlockSupport( name, 'unitone.backdropFilter.grayscale' ) ||
-		hasBackdropFilterSupport
-	) {
+	if ( ! isGrayscaleDisabled( { name } ) ) {
 		const grayscale = backdropFilter?.grayscale;
 		if ( null != grayscale && 0 !== grayscale ) {
 			backdropFilterProps.push( {
@@ -184,10 +169,7 @@ export function withBackdropFilterBlockProps( settings ) {
 		}
 	}
 
-	if (
-		hasBlockSupport( name, 'unitone.backdropFilter.hueRotate' ) ||
-		hasBackdropFilterSupport
-	) {
+	if ( ! isHueRotateDisabled( { name } ) ) {
 		const hueRotate = backdropFilter?.hueRotate;
 		if ( null != hueRotate && 0 !== hueRotate ) {
 			backdropFilterProps.push( {
@@ -196,10 +178,7 @@ export function withBackdropFilterBlockProps( settings ) {
 		}
 	}
 
-	if (
-		hasBlockSupport( name, 'unitone.backdropFilter.invert' ) ||
-		hasBackdropFilterSupport
-	) {
+	if ( ! isInvertDisabled( { name } ) ) {
 		const invert = backdropFilter?.invert;
 		if ( null != invert && 0 !== invert ) {
 			backdropFilterProps.push( {
@@ -208,10 +187,7 @@ export function withBackdropFilterBlockProps( settings ) {
 		}
 	}
 
-	if (
-		hasBlockSupport( name, 'unitone.backdropFilter.saturate' ) ||
-		hasBackdropFilterSupport
-	) {
+	if ( ! isSaturateDisabled( { name } ) ) {
 		const saturate = backdropFilter?.saturate;
 		if ( null != saturate && 100 !== saturate ) {
 			backdropFilterProps.push( {
@@ -220,10 +196,7 @@ export function withBackdropFilterBlockProps( settings ) {
 		}
 	}
 
-	if (
-		hasBlockSupport( name, 'unitone.backdropFilter.sepia' ) ||
-		hasBackdropFilterSupport
-	) {
+	if ( ! isSepiaDisabled( { name } ) ) {
 		const sepia = backdropFilter?.sepia;
 		if ( null != sepia && 0 !== sepia ) {
 			backdropFilterProps.push( {
@@ -235,8 +208,7 @@ export function withBackdropFilterBlockProps( settings ) {
 	const progressiveAngle = backdropFilter?.progressive?.angle;
 	const progressiveStart = backdropFilter?.progressive?.start;
 	const hasProgressiveSupport =
-		( hasBlockSupport( name, 'unitone.backdropFilter.progressive' ) ||
-			hasBackdropFilterSupport ) &&
+		! isProgressiveDisabled( { name } ) &&
 		null != progressiveStart &&
 		0 < progressiveStart;
 
@@ -307,23 +279,23 @@ function BackdropFilterPanelPure( props ) {
 	const isBlurDisabled = isBlurSupportDisabled( { name } );
 	const isBrightnessDisabled = isBrightnessSupportDisabled( { name } );
 	const isContrastDisabled = isContrastSupportDisabled( { name } );
-	const isGrayscaleDisabled = useIsGrayscaleDisabled( { name } );
-	const isHueRotateDisabled = useIsHueRotateDisabled( { name } );
-	const isInvertDisabled = useIsInvertDisabled( { name } );
-	const isSaturateDisabled = useIsSaturateDisabled( { name } );
-	const isSepiaDisabled = useIsSepiaDisabled( { name } );
-	const isProgressiveDisabled = useIsProgressiveDisabled( { name } );
+	const grayscaleDisabled = isGrayscaleDisabled( { name } );
+	const hueRotateDisabled = isHueRotateDisabled( { name } );
+	const invertDisabled = isInvertDisabled( { name } );
+	const saturateDisabled = isSaturateDisabled( { name } );
+	const sepiaDisabled = isSepiaDisabled( { name } );
+	const progressiveDisabled = isProgressiveDisabled( { name } );
 
 	if (
 		isBlurDisabled &&
 		isBrightnessDisabled &&
 		isContrastDisabled &&
-		isGrayscaleDisabled &&
-		isHueRotateDisabled &&
-		isInvertDisabled &&
-		isSaturateDisabled &&
-		isSepiaDisabled &&
-		isProgressiveDisabled
+		grayscaleDisabled &&
+		hueRotateDisabled &&
+		invertDisabled &&
+		saturateDisabled &&
+		sepiaDisabled &&
+		progressiveDisabled
 	) {
 		return null;
 	}
@@ -397,7 +369,7 @@ function BackdropFilterPanelPure( props ) {
 					</ToolsPanelItem>
 				) }
 
-				{ ! isGrayscaleDisabled && (
+				{ ! grayscaleDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasGrayscaleValue( { ...props } ) }
 						label={ getGrayscaleEditLabel( {
@@ -417,7 +389,7 @@ function BackdropFilterPanelPure( props ) {
 					</ToolsPanelItem>
 				) }
 
-				{ ! isHueRotateDisabled && (
+				{ ! hueRotateDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasHueRotateValue( { ...props } ) }
 						label={ getHueRotateEditLabel( {
@@ -437,7 +409,7 @@ function BackdropFilterPanelPure( props ) {
 					</ToolsPanelItem>
 				) }
 
-				{ ! isInvertDisabled && (
+				{ ! invertDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasInvertValue( { ...props } ) }
 						label={ getInvertEditLabel( {
@@ -457,7 +429,7 @@ function BackdropFilterPanelPure( props ) {
 					</ToolsPanelItem>
 				) }
 
-				{ ! isSaturateDisabled && (
+				{ ! saturateDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasSaturateValue( { ...props } ) }
 						label={ getSaturateEditLabel( {
@@ -477,7 +449,7 @@ function BackdropFilterPanelPure( props ) {
 					</ToolsPanelItem>
 				) }
 
-				{ ! isSepiaDisabled && (
+				{ ! sepiaDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasSepiaValue( { ...props } ) }
 						label={ getSepiaEditLabel( {
@@ -497,7 +469,7 @@ function BackdropFilterPanelPure( props ) {
 					</ToolsPanelItem>
 				) }
 
-				{ ! isProgressiveDisabled && (
+				{ ! progressiveDisabled && (
 					<ToolsPanelItem
 						hasValue={ () => hasProgressiveValue( { ...props } ) }
 						label={ getProgressiveEditLabel( {

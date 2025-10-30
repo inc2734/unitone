@@ -126,7 +126,7 @@ export const resetSectionDivider = ( props ) => {
 export function withSectionDividerBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.sectionDivider' ) ) {
+	if ( isSectionDividerSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

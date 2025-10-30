@@ -110,10 +110,13 @@ export function withFlexBasisBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.flexBasis' ) ) {
-		if ( ! __unstableUnitoneSupports?.flexBasis ) {
-			return settings;
-		}
+	if (
+		isFlexBasisSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newFlexBasis = attributes?.unitone?.flexBasis;

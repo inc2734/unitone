@@ -242,10 +242,13 @@ export function withDividerBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.divider' ) ) {
-		if ( ! __unstableUnitoneSupports?.divider ) {
-			return settings;
-		}
+	if (
+		isDividerSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newDivider = {

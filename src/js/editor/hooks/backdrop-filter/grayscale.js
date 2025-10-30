@@ -63,7 +63,7 @@ export function getGrayscaleEditLabel( {
 	);
 }
 
-export function useIsGrayscaleDisabled( { name } = {} ) {
+export function isGrayscaleDisabled( { name } = {} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.grayscale' ) &&
 		true !== getBlockSupport( name, 'unitone.backdropFilter' )

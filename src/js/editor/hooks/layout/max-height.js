@@ -93,10 +93,13 @@ export function withMaxHeightBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.maxHeight' ) ) {
-		if ( ! __unstableUnitoneSupports?.maxHeight ) {
-			return settings;
-		}
+	if (
+		isMaxHeightSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newMaxHeight = attributes?.unitone?.maxHeight;

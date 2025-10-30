@@ -217,7 +217,7 @@ export function JustifyContentEdit( {
 export function withJustifyContentBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.justifyContent' ) ) {
+	if ( isJustifyContentSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

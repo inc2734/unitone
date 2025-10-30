@@ -1,10 +1,6 @@
 import clsx from 'clsx';
 
-import {
-	hasBlockSupport,
-	getBlockSupport,
-	store as blocksStore,
-} from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 
 import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
@@ -62,16 +58,19 @@ export function resetStairsUp( { attributes: { unitone }, setAttributes } ) {
 }
 
 export function isStairsSupportDisabled( { name } ) {
-	if ( ! hasBlockSupport( name, 'unitone.stairs' ) ) {
-		return true;
-	}
+	// @todo
+	return ! hasBlockSupport( name, 'unitone.stairs' );
 
-	const blockSupport = getBlockSupport( name, 'unitone.stairs' );
-	if ( true === blockSupport ) {
-		return false;
-	}
+	// if ( ! hasBlockSupport( name, 'unitone.stairs' ) ) {
+	// 	return true;
+	// }
 
-	return true;
+	// const blockSupport = getBlockSupport( name, 'unitone.stairs' );
+	// if ( true === blockSupport ) {
+	// 	return false;
+	// }
+
+	// return true;
 }
 
 export function getStairsEditLabel( {
@@ -171,7 +170,7 @@ export function StairsUpEdit( {
 export function withStairsBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.stairs' ) ) {
+	if ( isStairsSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

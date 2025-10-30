@@ -187,7 +187,7 @@ export function JustifyItemsEdit( {
 export function withJustifyItemsBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.justifyItems' ) ) {
+	if ( isJustifyItemsSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

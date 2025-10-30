@@ -59,7 +59,7 @@ export function HalfLeadingEdit( {
 export function withHalfLeadingBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.halfLeading' ) ) {
+	if ( isHalfLeadingSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

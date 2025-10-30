@@ -97,10 +97,13 @@ export function withMinWidthBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.minWidth' ) ) {
-		if ( ! __unstableUnitoneSupports?.minWidth ) {
-			return settings;
-		}
+	if (
+		isMinWidthSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newMinWidth = attributes?.unitone?.minWidth;

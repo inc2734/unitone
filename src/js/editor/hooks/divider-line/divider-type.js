@@ -85,7 +85,6 @@ export function isDividerTypeSupportDisabled( {
 } ) {
 	return (
 		! hasBlockSupport( name, 'unitone.divider' ) &&
-		! getBlockSupport( name, 'unitone.dividerType' ) &&
 		! __unstableUnitoneSupports?.dividerType
 	);
 }
@@ -158,10 +157,13 @@ export function withDividerTypeBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.dividerType' ) ) {
-		if ( ! __unstableUnitoneSupports?.dividerType ) {
-			return settings;
-		}
+	if (
+		isDividerTypeSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newDividerType = attributes?.unitone?.dividerType;

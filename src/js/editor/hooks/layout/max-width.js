@@ -156,10 +156,13 @@ export function withMaxWidthBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.maxWidth' ) ) {
-		if ( ! __unstableUnitoneSupports?.maxWidth ) {
-			return settings;
-		}
+	if (
+		isMaxWidthSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newMaxWidth = attributes?.unitone?.maxWidth;

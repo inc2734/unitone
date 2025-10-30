@@ -235,10 +235,13 @@ export function withGridRowBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.gridRow' ) ) {
-		if ( ! __unstableUnitoneSupports?.gridRow ) {
-			return settings;
-		}
+	if (
+		isGridRowSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newGridRow = attributes?.unitone?.gridRow;

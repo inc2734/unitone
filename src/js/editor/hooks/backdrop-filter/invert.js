@@ -61,7 +61,7 @@ export function getInvertEditLabel( {
 	);
 }
 
-export function useIsInvertDisabled( { name } = {} ) {
+export function isInvertDisabled( { name } = {} ) {
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.invert' ) &&
 		true !== getBlockSupport( name, 'unitone.backdropFilter' )

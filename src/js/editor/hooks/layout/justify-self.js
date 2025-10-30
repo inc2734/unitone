@@ -458,10 +458,13 @@ export function withJustifySelfBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.justifySelf' ) ) {
-		if ( ! __unstableUnitoneSupports?.justifySelf ) {
-			return settings;
-		}
+	if (
+		isJustifySelfSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newJustifySelf = attributes?.unitone?.justifySelf;

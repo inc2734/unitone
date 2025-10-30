@@ -238,10 +238,13 @@ export function withGridColumnBlockProps( settings ) {
 	const { attributes, name } = settings;
 	const { __unstableUnitoneSupports } = attributes;
 
-	if ( ! hasBlockSupport( name, 'unitone.gridColumn' ) ) {
-		if ( ! __unstableUnitoneSupports?.gridColumn ) {
-			return settings;
-		}
+	if (
+		isGridColumnSupportDisabled( {
+			name,
+			attributes: { __unstableUnitoneSupports },
+		} )
+	) {
+		return settings;
 	}
 
 	const newGridColumn = attributes?.unitone?.gridColumn;

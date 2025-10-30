@@ -69,7 +69,7 @@ export function AutoPhraseEdit( {
 export function withAutoPhraseBlockProps( settings ) {
 	const { attributes, name } = settings;
 
-	if ( ! hasBlockSupport( name, 'unitone.autoPhrase' ) ) {
+	if ( isAutoPhraseSupportDisabled( { name } ) ) {
 		return settings;
 	}
 

@@ -106,7 +106,7 @@ export function GridColumnEdit( {
 } ) {
 	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
-	const fallbackValue =
+	const primitiveValue =
 		typeof unitone?.gridColumn === 'string'
 			? unitone?.gridColumn
 			: undefined;
@@ -141,7 +141,7 @@ export function GridColumnEdit( {
 		const newUnitone = {
 			...unitone,
 			gridColumn: {
-				lg: unitone?.gridColumn?.lg ?? fallbackValue,
+				lg: unitone?.gridColumn?.lg ?? primitiveValue,
 				md: newValue || undefined,
 				sm: unitone?.gridColumn?.sm,
 			},
@@ -156,7 +156,7 @@ export function GridColumnEdit( {
 		const newUnitone = {
 			...unitone,
 			gridColumn: {
-				lg: unitone?.gridColumn?.lg ?? fallbackValue,
+				lg: unitone?.gridColumn?.lg ?? primitiveValue,
 				md: unitone?.gridColumn?.md,
 				sm: newValue || undefined,
 			},
@@ -178,7 +178,7 @@ export function GridColumnEdit( {
 					help={ help }
 					value={
 						unitone?.gridColumn?.lg ??
-						fallbackValue ??
+						primitiveValue ??
 						defaultValue?.lg ??
 						''
 					}
@@ -194,7 +194,7 @@ export function GridColumnEdit( {
 					value={
 						unitone?.gridColumn?.md ??
 						unitone?.gridColumn?.lg ??
-						fallbackValue ??
+						primitiveValue ??
 						defaultValue?.md ??
 						defaultValue?.lg ??
 						''
@@ -212,7 +212,7 @@ export function GridColumnEdit( {
 						unitone?.gridColumn?.sm ??
 						unitone?.gridColumn?.md ??
 						unitone?.gridColumn?.lg ??
-						fallbackValue ??
+						primitiveValue ??
 						defaultValue?.sm ??
 						defaultValue?.md ??
 						defaultValue?.lg ??

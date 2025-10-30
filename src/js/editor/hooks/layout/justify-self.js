@@ -119,7 +119,7 @@ export function JustifySelfToolbar( {
 	const deviceType = useDeviceType();
 	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );
 	let defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
-	const fallbackValue =
+	const primitiveValue =
 		typeof unitone?.justifySelf === 'string'
 			? unitone?.justifySelf
 			: undefined;
@@ -158,7 +158,7 @@ export function JustifySelfToolbar( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: unitone?.justifySelf?.lg ?? fallbackValue,
+				lg: unitone?.justifySelf?.lg ?? primitiveValue,
 				md:
 					newValue !== unitone?.justifySelf?.md
 						? newValue
@@ -176,7 +176,7 @@ export function JustifySelfToolbar( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: unitone?.justifySelf?.lg ?? fallbackValue,
+				lg: unitone?.justifySelf?.lg ?? primitiveValue,
 				md: unitone?.justifySelf?.md,
 				sm:
 					newValue !== unitone?.justifySelf?.sm
@@ -194,15 +194,15 @@ export function JustifySelfToolbar( {
 	let onChange = onChangeJustifySelf;
 	if ( isResponsive ) {
 		if ( 'desktop' === deviceType ) {
-			value = value?.lg ?? fallbackValue;
+			value = value?.lg ?? primitiveValue;
 			defaultValue = defaultValue?.lg;
 			onChange = onChangeJustifySelfLg;
 		} else if ( 'tablet' === deviceType ) {
-			value = value?.md ?? value?.lg ?? fallbackValue;
+			value = value?.md ?? value?.lg ?? primitiveValue;
 			defaultValue = defaultValue?.md ?? defaultValue?.lg;
 			onChange = onChangeJustifySelfMd;
 		} else if ( 'mobile' === deviceType ) {
-			value = value?.sm ?? value?.md ?? value?.lg ?? fallbackValue;
+			value = value?.sm ?? value?.md ?? value?.lg ?? primitiveValue;
 			defaultValue =
 				defaultValue?.sm ?? defaultValue?.md ?? defaultValue?.lg;
 			onChange = onChangeJustifySelfSm;
@@ -255,7 +255,7 @@ export function JustifySelfEdit( {
 } ) {
 	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
-	const fallbackValue =
+	const primitiveValue =
 		typeof unitone?.justifySelf === 'string'
 			? unitone?.justifySelf
 			: undefined;
@@ -294,7 +294,7 @@ export function JustifySelfEdit( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: unitone?.justifySelf?.lg ?? fallbackValue,
+				lg: unitone?.justifySelf?.lg ?? primitiveValue,
 				md:
 					newValue !== unitone?.justifySelf?.md
 						? newValue
@@ -312,7 +312,7 @@ export function JustifySelfEdit( {
 		const newUnitone = {
 			...unitone,
 			justifySelf: {
-				lg: unitone?.justifySelf?.lg ?? fallbackValue,
+				lg: unitone?.justifySelf?.lg ?? primitiveValue,
 				md: unitone?.justifySelf?.md,
 				sm:
 					newValue !== unitone?.justifySelf?.sm
@@ -337,10 +337,10 @@ export function JustifySelfEdit( {
 						hideLabelFromVision
 						value={
 							unitone?.justifySelf?.lg ??
-							fallbackValue ??
+							primitiveValue ??
 							defaultValue?.lg
 						}
-						isDeselectable={ ! fallbackValue && ! defaultValue?.lg }
+						isDeselectable={ ! defaultValue?.lg }
 						onChange={ onChangeJustifySelfLg }
 					>
 						{ justifySelfOptions.map(
@@ -365,16 +365,11 @@ export function JustifySelfEdit( {
 						value={
 							unitone?.justifySelf?.md ??
 							unitone?.justifySelf?.lg ??
-							fallbackValue ??
+							primitiveValue ??
 							defaultValue?.md ??
 							defaultValue?.lg
 						}
-						isDeselectable={
-							! unitone?.justifySelf?.lg &&
-							! fallbackValue &&
-							! defaultValue?.md &&
-							! defaultValue?.lg
-						}
+						isDeselectable={ false }
 						onChange={ onChangeJustifySelfMd }
 					>
 						{ justifySelfOptions.map(
@@ -400,19 +395,12 @@ export function JustifySelfEdit( {
 							unitone?.justifySelf?.sm ??
 							unitone?.justifySelf?.md ??
 							unitone?.justifySelf?.lg ??
-							fallbackValue ??
+							primitiveValue ??
 							defaultValue?.sm ??
 							defaultValue?.md ??
 							defaultValue?.lg
 						}
-						isDeselectable={
-							! unitone?.justifySelf?.md &&
-							! unitone?.justifySelf?.lg &&
-							! fallbackValue &&
-							! defaultValue?.sm &&
-							! defaultValue?.md &&
-							! defaultValue?.lg
-						}
+						isDeselectable={ false }
 						onChange={ onChangeJustifySelfSm }
 					>
 						{ justifySelfOptions.map(
@@ -435,7 +423,7 @@ export function JustifySelfEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.justifySelf }
+				value={ unitone?.justifySelf ?? defaultValue }
 				isDeselectable={ ! defaultValue }
 				onChange={ onChangeJustifySelf }
 			>

@@ -113,7 +113,7 @@ export function AlignSelfToolbar( {
 	const deviceType = useDeviceType();
 	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );
 	let defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
-	const fallbackValue =
+	const primitiveValue =
 		typeof unitone?.alignSelf === 'string' ? unitone?.alignSelf : undefined;
 
 	const onChangeAlignSelf = ( newValue ) => {
@@ -146,7 +146,7 @@ export function AlignSelfToolbar( {
 		const newUnitone = {
 			...unitone,
 			alignSelf: {
-				lg: unitone?.alignSelf?.lg ?? fallbackValue,
+				lg: unitone?.alignSelf?.lg ?? primitiveValue,
 				md: newValue !== unitone?.alignSelf?.md ? newValue : undefined,
 				sm: unitone?.alignSelf?.sm,
 			},
@@ -161,7 +161,7 @@ export function AlignSelfToolbar( {
 		const newUnitone = {
 			...unitone,
 			alignSelf: {
-				lg: unitone?.alignSelf?.lg ?? fallbackValue,
+				lg: unitone?.alignSelf?.lg ?? primitiveValue,
 				md: unitone?.alignSelf?.md,
 				sm: newValue !== unitone?.alignSelf?.sm ? newValue : undefined,
 			},
@@ -176,15 +176,15 @@ export function AlignSelfToolbar( {
 	let onChange = onChangeAlignSelf;
 	if ( isResponsive ) {
 		if ( 'desktop' === deviceType ) {
-			value = value?.lg ?? fallbackValue;
+			value = value?.lg ?? primitiveValue;
 			defaultValue = defaultValue?.lg;
 			onChange = onChangeAlignSelfLg;
 		} else if ( 'tablet' === deviceType ) {
-			value = value?.md ?? value?.lg ?? fallbackValue;
+			value = value?.md ?? value?.lg ?? primitiveValue;
 			defaultValue = defaultValue?.md ?? defaultValue?.lg;
 			onChange = onChangeAlignSelfMd;
 		} else if ( 'mobile' === deviceType ) {
-			value = value?.sm ?? value?.md ?? value?.lg ?? fallbackValue;
+			value = value?.sm ?? value?.md ?? value?.lg ?? primitiveValue;
 			defaultValue =
 				defaultValue?.sm ?? defaultValue?.md ?? defaultValue?.lg;
 			onChange = onChangeAlignSelfSm;
@@ -237,7 +237,7 @@ export function AlignSelfEdit( {
 } ) {
 	const isResponsive = getIsResponsive( { name, __unstableUnitoneSupports } );
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
-	const fallbackValue =
+	const primitiveValue =
 		typeof unitone?.alignSelf === 'string' ? unitone?.alignSelf : undefined;
 
 	const onChangeAlignSelf = ( newValue ) => {
@@ -270,7 +270,7 @@ export function AlignSelfEdit( {
 		const newUnitone = {
 			...unitone,
 			alignSelf: {
-				lg: unitone?.alignSelf?.lg ?? fallbackValue,
+				lg: unitone?.alignSelf?.lg ?? primitiveValue,
 				md: newValue !== unitone?.alignSelf?.md ? newValue : undefined,
 				sm: unitone?.alignSelf?.sm,
 			},
@@ -285,7 +285,7 @@ export function AlignSelfEdit( {
 		const newUnitone = {
 			...unitone,
 			alignSelf: {
-				lg: unitone?.alignSelf?.lg ?? fallbackValue,
+				lg: unitone?.alignSelf?.lg ?? primitiveValue,
 				md: unitone?.alignSelf?.md,
 				sm: newValue !== unitone?.alignSelf?.sm ? newValue : undefined,
 			},
@@ -307,10 +307,10 @@ export function AlignSelfEdit( {
 						hideLabelFromVision
 						value={
 							unitone?.alignSelf?.lg ??
-							fallbackValue ??
+							primitiveValue ??
 							defaultValue?.lg
 						}
-						isDeselectable={ ! fallbackValue && ! defaultValue?.lg }
+						isDeselectable={ ! defaultValue?.lg }
 						onChange={ onChangeAlignSelfLg }
 					>
 						{ alignSelfOptions.map(
@@ -335,16 +335,11 @@ export function AlignSelfEdit( {
 						value={
 							unitone?.alignSelf?.md ??
 							unitone?.alignSelf?.lg ??
-							fallbackValue ??
+							primitiveValue ??
 							defaultValue?.md ??
 							defaultValue?.lg
 						}
-						isDeselectable={
-							! unitone?.alignSelf?.lg &&
-							! fallbackValue &&
-							! defaultValue?.md &&
-							! defaultValue?.lg
-						}
+						isDeselectable={ false }
 						onChange={ onChangeAlignSelfMd }
 					>
 						{ alignSelfOptions.map(
@@ -370,19 +365,12 @@ export function AlignSelfEdit( {
 							unitone?.alignSelf?.sm ??
 							unitone?.alignSelf?.md ??
 							unitone?.alignSelf?.lg ??
-							fallbackValue ??
+							primitiveValue ??
 							defaultValue?.sm ??
 							defaultValue?.md ??
 							defaultValue?.lg
 						}
-						isDeselectable={
-							! unitone?.alignSelf?.md &&
-							! unitone?.alignSelf?.lg &&
-							! fallbackValue &&
-							! defaultValue?.sm &&
-							! defaultValue?.md &&
-							! defaultValue?.lg
-						}
+						isDeselectable={ false }
 						onChange={ onChangeAlignSelfSm }
 					>
 						{ alignSelfOptions.map(
@@ -405,7 +393,7 @@ export function AlignSelfEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.alignSelf }
+				value={ unitone?.alignSelf ?? defaultValue }
 				isDeselectable={ ! defaultValue }
 				onChange={ onChangeAlignSelf }
 			>

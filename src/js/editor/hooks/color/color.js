@@ -27,10 +27,19 @@ import {
 	withHoverBorderColorBlockProps,
 } from './hover-border-color';
 
+import {
+	isMarkerColorSupportDisabled,
+	resetMarkerColorFilter,
+	MarkerColorEdit,
+	withMarkerColorBlockProps,
+} from './marker-color';
+
 export const withColorBlockProps = compose(
+	withMarkerColorBlockProps,
 	withHoverTextColorBlockProps,
 	withHoverBackgroundColorBlockProps,
-	withHoverBorderColorBlockProps
+	withHoverBorderColorBlockProps,
+	withMarkerColorBlockProps
 );
 
 export const resetColor = ( props ) => {
@@ -42,6 +51,7 @@ export const resetColor = ( props ) => {
 		],
 		[ isHoverGradientSupportDisabled, resetHoverGradientFilter ],
 		[ isHoverBorderColorSupportDisabled, resetHoverBorderColorFilter ],
+		[ isMarkerColorSupportDisabled, resetMarkerColorFilter ],
 	];
 
 	const attributes = filters.reduce(
@@ -70,12 +80,14 @@ function ColorPanelPure( props ) {
 	const isHoverBorderColorDisabled = isHoverBorderColorSupportDisabled( {
 		name,
 	} );
+	const isMarkerColorDisabled = isMarkerColorSupportDisabled( { name } );
 
 	if (
 		isHoverTextColorDisabled &&
 		isHoverBackgroundColorDisabled &&
 		isHoverGradientDisabled &&
-		isHoverBorderColorDisabled
+		isHoverBorderColorDisabled &&
+		isMarkerColorDisabled
 	) {
 		return null;
 	}
@@ -90,6 +102,7 @@ function ColorPanelPure( props ) {
 						...resetHoverBackgroundColorFilter(),
 						...resetHoverGradientFilter(),
 						...resetHoverBorderColorFilter(),
+						...resetMarkerColorFilter(),
 					} );
 				} }
 			>
@@ -105,6 +118,8 @@ function ColorPanelPure( props ) {
 				{ ! isHoverBorderColorDisabled && (
 					<HoverBorderColorEdit { ...props } />
 				) }
+
+				{ ! isMarkerColorDisabled && <MarkerColorEdit { ...props } /> }
 			</InspectorControls>
 		</>
 	);

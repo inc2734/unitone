@@ -1,5 +1,24 @@
 .unitone-reference-sources {
+	--unitone--gap: 0px;
+	--unitone--marker-color: inherit;
+
 	display: grid;
+
+	&__list {
+		padding-inline-start: 0;
+
+		> :where(li) {
+			margin-inline-start: 1.5rem;
+
+			&::marker {
+				color: var(--unitone--marker-color);
+			}
+		}
+
+		> * + * {
+			margin-block-start: var(--unitone--gap);
+		}
+	}
 
 	> * {
 		grid-column: 1 / 1;

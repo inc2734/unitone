@@ -226,7 +226,10 @@ add_filter(
 	'block_type_metadata',
 	function ( $metadata ) {
 		if ( 'core/list-item' === $metadata['name'] ) {
-			$metadata['parent'] = array( 'unitone/reference-sources' );
+			$metadata['parent'] = array_merge(
+				$metadata['parent'],
+				array( 'unitone/reference-sources' )
+			);
 		}
 		return $metadata;
 	}

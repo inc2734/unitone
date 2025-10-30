@@ -15,14 +15,14 @@ import {
 
 import { createBlock } from '@wordpress/blocks';
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useCallback, useState } from '@wordpress/element';
+import { useCallback, useEffect, useState } from '@wordpress/element';
 import { rotateRight } from '@wordpress/icons';
 import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
-export default function ( { attributes, clientId } ) {
+export default function ( { attributes, setAttributes, clientId } ) {
 	const { allowedBlocks, templateLock } = attributes;
 
 	const [ isLoading, setIsLoading ] = useState( false );
@@ -39,6 +39,10 @@ export default function ( { attributes, clientId } ) {
 		},
 		[ clientId, isLoading ]
 	);
+
+	useEffect( () => {
+		setAttributes( { hasInnerBlocks: !! hasInnerBlocks } );
+	}, [ hasInnerBlocks ] );
 
 	const { replaceInnerBlocks } = useDispatch( blockEditorStore );
 
@@ -121,7 +125,7 @@ export default function ( { attributes, clientId } ) {
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{
-			className: 'unitone-reference-sources__inner',
+			className: 'unitone-reference-sources__list',
 		},
 		{
 			templateLock,
@@ -135,7 +139,7 @@ export default function ( { attributes, clientId } ) {
 			<BlockControls>
 				<ToolbarGroup>
 					<ToolbarButton
-						label={ __( 'Recollect referral sources', 'unitone' ) }
+						label={ __( 'Regenerate the list', 'unitone' ) }
 						icon={ rotateRight }
 						onClick={ onReload }
 						disabled={ isLoading }
@@ -157,7 +161,7 @@ export default function ( { attributes, clientId } ) {
 					<Placeholder>
 						<p>
 							{ __(
-								'No embeddable URLs were found. Click to try generating the list.',
+								'No embeddable URLs were found or the list has not been generated yet. Click to try generating the list.',
 								'unitone'
 							) }
 						</p>

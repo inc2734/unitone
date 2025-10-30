@@ -7,6 +7,10 @@
 	"title": "Referene sources",
 	"description": "Collects the URLs of embedded blocks in an article and displays them as a linked list.",
 	"attributes": {
+		"hasInnerBlocks": {
+			"type": "boolean",
+			"default": false
+		},
 		"templateLock": {
 			"type": [ "boolean" ],
 			"enum": [ false ]
@@ -39,7 +43,11 @@
 		"unitone": {
 			"fluidTypography": true,
 			"halfLeading": true,
-			"linkDecoration": true
+			"linkDecoration": true,
+			"gap": true,
+			"color": {
+				"marker": true
+			}
 		}
 	},
 	"category": "unitone/component",

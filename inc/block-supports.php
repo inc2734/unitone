@@ -162,7 +162,7 @@ function unitone_add_gap_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_gap_support' );
 
 /**
- * Add supports to core/list.
+ * Add divider supports to core/list.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
@@ -191,6 +191,44 @@ function unitone_add_divider_support( $metadata ) {
 	return $metadata;
 }
 add_filter( 'block_type_metadata', 'unitone_add_divider_support' );
+
+
+
+/**
+ * Add marker color supports to core/list and core/list-item.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_marker_color_support( $metadata ) {
+	$target = array(
+		'core/list',
+		'core/list-item',
+	);
+
+	if ( ! in_array( $metadata['name'], $target, true ) ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'color' => array_merge(
+						$metadata['supports']['unitone']['color'] ?? array(),
+						array(
+							'marker' => true,
+						),
+					),
+				),
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_marker_color_support' );
 
 /**
  * Add supports to core/navigation.

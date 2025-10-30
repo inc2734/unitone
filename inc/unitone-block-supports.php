@@ -146,6 +146,20 @@ add_filter(
 			$add_attribute( '-fluid-typography', $get_attribute( 'fluidTypography' ) );
 		}
 
+		// --unitone--marker-color
+		if ( unitone_has_block_support( 'unitone.color.marker', $metadata ) ) {
+			$marker_color        = $get_attribute( 'markerColor' );
+			$marker_custom_color = $get_attribute( 'markerCustomColor' );
+
+			if ( $marker_color || $marker_custom_color ) {
+				$marker_color = $marker_color
+					? 'var(--wp--preset--color--' . $marker_color . ')'
+					: $marker_custom_color;
+
+				$add_style( '--unitone--marker-color', $marker_color );
+			}
+		}
+
 		// -background-clip
 		if ( unitone_has_block_support( 'unitone.backgroundClip', $metadata ) ) {
 			$add_attribute( '-background-clip', $get_attribute( 'backgroundClip' ) );

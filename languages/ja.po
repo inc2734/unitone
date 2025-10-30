@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-10-27T01:22:54+00:00\n"
-"PO-Revision-Date: 2025-10-27 10:29+0900\n"
+"POT-Creation-Date: 2025-10-30T04:05:13+00:00\n"
+"PO-Revision-Date: 2025-10-30 13:05+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2573,6 +2573,26 @@ msgstr "各項目の幅"
 msgid "No scrollbar"
 msgstr "スクロールバーなし"
 
+#: dist/blocks/reference-sources/index.js:1
+msgid "Regenerate the list"
+msgstr "リストを再生成"
+
+#: dist/blocks/reference-sources/index.js:1
+msgid "Loading…"
+msgstr "読み込み中…"
+
+#: dist/blocks/reference-sources/index.js:1
+msgid ""
+"No embeddable URLs were found or the list has not been generated yet. Click "
+"to try generating the list."
+msgstr ""
+"埋め込み可能な URL が見つからないか、リストがまだ生成されていません。クリック"
+"してリストを生成してください。"
+
+#: dist/blocks/reference-sources/index.js:1
+msgid "Generate list"
+msgstr "リストを生成"
+
 #: dist/blocks/responsive-grid-divided/index.js:1
 msgid "Responsive grid (Divider: Stripe)"
 msgstr "レスポンシブグリッド（区切り：ストライプ）"
@@ -3496,6 +3516,10 @@ msgid "[:hover] Border"
 msgstr "[:hover] 枠線"
 
 #: dist/js/editor/editor.js:13
+msgid "Marker"
+msgstr "マーカー"
+
+#: dist/js/editor/editor.js:13
 msgid "Position"
 msgstr "位置"
 
@@ -3596,10 +3620,6 @@ msgstr "オーバーレイ"
 #: dist/js/editor/editor.js:13
 msgid "Overlay opacity"
 msgstr "オーバーレイの不透明度"
-
-#: dist/js/editor/editor.js:13
-msgid "Marker"
-msgstr "マーカー"
 
 #: dist/js/editor/editor.js:13
 msgid "The template part overlay-menu is used as an overlay menu."
@@ -4193,6 +4213,19 @@ msgstr "リール"
 msgctxt "block description"
 msgid "This block displays children scrolling horizontally."
 msgstr "子要素を水平スクロールして表示します。"
+
+#: dist/blocks/reference-sources/block.json
+msgctxt "block title"
+msgid "Referene sources"
+msgstr "参照元"
+
+#: dist/blocks/reference-sources/block.json
+msgctxt "block description"
+msgid ""
+"Collects the URLs of embedded blocks in an article and displays them as a "
+"linked list."
+msgstr ""
+"記事中の埋め込みブロックの URL を収集し、リンク付きのリストとして表示します。"
 
 #: dist/blocks/responsive-grid-divided-content/block.json
 msgctxt "block description"
@@ -5066,96 +5099,3 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
-
-#~ msgid "Single Posts"
-#~ msgstr "個別投稿"
-
-#~ msgid "404"
-#~ msgstr "404"
-
-#~ msgid "Front Page"
-#~ msgstr "フロントページ"
-
-#~ msgid "Blog Home"
-#~ msgstr "ブログホーム"
-
-#~ msgid "All Archives"
-#~ msgstr "アーカイブ"
-
-#~ msgid "Search Results"
-#~ msgstr "検索結果"
-
-#~ msgid "Product Catalog"
-#~ msgstr "商品カタログ"
-
-#~ msgid "Single Products"
-#~ msgstr "単一の商品"
-
-#~ msgid "bbPress"
-#~ msgstr "bbPress"
-
-#~ msgid "Cart"
-#~ msgstr "お買い物カゴ"
-
-#~ msgid "Checkout"
-#~ msgstr "購入手続き"
-
-#~ msgid "Order Confirmation"
-#~ msgstr "注文確認"
-
-#~ msgid "Page Header for Single Posts"
-#~ msgstr "個別投稿のページヘッダー"
-
-#~ msgid "Main Area for Single Posts"
-#~ msgstr "個別投稿のメインエリア"
-
-#~ msgid "Page Header for Pages"
-#~ msgstr "固定ページのページヘッダー"
-
-#~ msgid "Main Area for Pages"
-#~ msgstr "固定ページのメインエリア"
-
-#~ msgid "Main Area for 404"
-#~ msgstr "404 のメインエリア"
-
-#~ msgid "Page Header for 404"
-#~ msgstr "404のページヘッダー"
-
-#~ msgid "Page Header for Blog Home"
-#~ msgstr "ブログホームのページヘッダー"
-
-#~ msgid "Main Area for Blog Home"
-#~ msgstr "ブログホームのメインエリア"
-
-#~ msgid "Main Area for All Archives"
-#~ msgstr "アーカイブのメインエリア"
-
-#~ msgid "Page Header for All Archives"
-#~ msgstr "アーカイブのページヘッダー"
-
-#~ msgid "Page Header for Search Results"
-#~ msgstr "検索結果のページヘッダー"
-
-#~ msgid "Main Area of Search Results"
-#~ msgstr "検索結果のメインエリア"
-
-#~ msgid "Main Area for Product Catalog"
-#~ msgstr "商品カタログのメインエリア"
-
-#~ msgid "Page Header for Product Catalog"
-#~ msgstr "商品カタログのページヘッダー"
-
-#~ msgid "Page Header for Single Products"
-#~ msgstr "個別投稿のページヘッダー"
-
-#~ msgid "Main Area for Single Products"
-#~ msgstr "単一の商品のメインエリア"
-
-#~ msgid "Page Header for bbPress"
-#~ msgstr "bbPress のページヘッダー"
-
-#~ msgid "Main Area for bbPress"
-#~ msgstr "bbPress のメインエリア"
-
-#~ msgid "Footer breadcrumbs"
-#~ msgstr "フッターのパンくずリスト"

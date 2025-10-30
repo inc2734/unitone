@@ -13,11 +13,11 @@
 	.components-placeholder {
 		.components-placeholder__fieldset {
 			align-items: center;
+			justify-content: space-between;
 		}
 	}
 }
 
-.unitone-reference-sources__inner:has(+ .unitone-reference-sources__loading),
-.unitone-reference-sources__inner:has(+ .components-placeholder) {
+.unitone-reference-sources__list:has(+ .unitone-reference-sources__loading) {
 	visibility: hidden;
 }

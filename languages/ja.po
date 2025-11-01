@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "POT-Creation-Date: 2025-10-30T04:05:13+00:00\n"
-"PO-Revision-Date: 2025-10-30 13:05+0900\n"
+"PO-Revision-Date: 2025-11-01 15:52+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -4217,7 +4217,7 @@ msgstr "子要素を水平スクロールして表示します。"
 #: dist/blocks/reference-sources/block.json
 msgctxt "block title"
 msgid "Referene sources"
-msgstr "参照元"
+msgstr "参照元一覧"
 
 #: dist/blocks/reference-sources/block.json
 msgctxt "block description"

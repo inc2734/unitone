@@ -28,10 +28,6 @@
 	> .wp-block-separator,
 	> .wp-block-gallery {
 		--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
-
-		&:not(.alignleft):not(.alignright) + * {
-			--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
-		}
 	}
 }
 

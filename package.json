@@ -8,9 +8,9 @@
 	},
 	"devDependencies": {
 		"@inc2734/unitone-css": "^0.86.3",
+		"@wordpress/admin-ui": "^1.2.0",
 		"@wordpress/env": "^10.34.0",
 		"@wordpress/icons": "^11.1.0",
-		"@wordpress/interface": "^9.19.0",
 		"@wordpress/scripts": "^30.27.0",
 		"@wordpress/style-engine": "^2.34.0",
 		"autoprefixer": "^10.4.21",

@@ -6,7 +6,7 @@ import {
 	__experimentalVStack as VStack,
 } from '@wordpress/components';
 
-import { NavigableRegion } from '@wordpress/interface';
+import { NavigableRegion } from '@wordpress/admin-ui';
 import { chevronLeft, wordpress, external, Icon } from '@wordpress/icons';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';

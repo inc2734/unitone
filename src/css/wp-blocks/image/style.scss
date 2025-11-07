@@ -27,6 +27,10 @@
 	}
 }
 
+:where(.wp-block-image) {
+	width: fit-content;
+}
+
 .wp-block-image.is-style-rounded[data-unitone-layout~="-overlay"]::after {
 	border-radius: 9999px;
 }

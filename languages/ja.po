@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-10-30T04:05:13+00:00\n"
-"PO-Revision-Date: 2025-11-01 15:52+0900\n"
+"POT-Creation-Date: 2025-11-09T07:45:20+00:00\n"
+"PO-Revision-Date: 2025-11-09 16:46+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2427,6 +2427,22 @@ msgstr "モバイル用"
 #: dist/blocks/layers/index.js:25
 msgid "Rows count"
 msgstr "行数"
+
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+msgid "Tablet breakpoint (max width)"
+msgstr "タブレットのブレークポイント（最大幅）"
+
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+msgid "Anything less than this width will be considered tablet size."
+msgstr "この幅より小さいものはタブレットサイズと見なされます。"
+
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+msgid "Mobile breakpoint (max width)"
+msgstr "モバイル用ブレークポイント（最大幅）"
+
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+msgid "Anything less than this width will be considered mobile size."
+msgstr "この幅より小さいものはモバイルサイズと見なされます。"
 
 #: dist/blocks/gutters/index.js:1 dist/blocks/section/index.js:13
 msgid "Top and bottom padding"

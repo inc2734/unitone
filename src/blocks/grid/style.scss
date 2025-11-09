@@ -25,6 +25,10 @@
 	--unitone--sm-column-min-width: var(--unitone--md-column-min-width);
 	--unitone--sm-grid-template-columns: var(--unitone--md-grid-template-columns);
 
+	--unitone--active--columns: var(--unitone--columns);
+	--unitone--active--column-min-width: var(--unitone--column-min-width);
+	--unitone--active--grid-template-columns: var(--unitone--grid-template-columns);
+
 	--unitone--rows: 1;
 	--unitone--grid-template-rows: none;
 
@@ -33,6 +37,9 @@
 
 	--unitone--sm-rows: var(--unitone--md-rows);
 	--unitone--sm-grid-template-rows: var(--unitone--md-grid-template-rows);
+
+	--unitone--active--rows: var(--unitone--rows);
+	--unitone--active--grid-template-rows: var(--unitone--grid-template-rows);
 
 	display: grid;
 	align-items: var(--unitone--align-items);
@@ -44,9 +51,11 @@
 		--unitone--justify-self: auto;
 		--unitone--align-self: auto;
 		--unitone--grid-column: auto;
+		--unitone--active--grid-column: var(--unitone--grid-column);
 		--unitone--md-grid-column: var(--unitone--grid-column);
 		--unitone--sm-grid-column: var(--unitone--md-grid-column);
 		--unitone--grid-row: auto;
+		--unitone--active--grid-row: var(--unitone--grid-row);
 		--unitone--md-grid-row: var(--unitone--grid-row);
 		--unitone--sm-grid-row: var(--unitone--md-grid-row);
 
@@ -55,31 +64,30 @@
 		min-width: 0;
 		justify-self: var(--unitone--justify-self);
 		align-self: var(--unitone--align-self);
-		grid-column: var(--unitone--grid-column);
-		grid-row: var(--unitone--grid-row);
-
+		grid-column: var(--unitone--active--grid-column);
+		grid-row: var(--unitone--active--grid-row);
 	}
 }
 
 [data-unitone-layout~="-columns\:columns"] {
-	grid-template-columns: repeat(var(--unitone--columns), 1fr);
+	grid-template-columns: repeat(var(--unitone--active--columns), 1fr);
 }
 
 [data-unitone-layout~="-columns\:min"] {
-	grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(--unitone--column-min-width), 100%), 1fr));
+	grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(--unitone--active--column-min-width), 100%), 1fr));
 }
 
 [data-unitone-layout~="-columns\:free"] {
-	grid-template-columns: var(--unitone--grid-template-columns);
+	grid-template-columns: var(--unitone--active--grid-template-columns);
 }
 
 
 [data-unitone-layout~="-rows\:rows"] {
-	grid-template-rows: repeat(var(--unitone--rows), 1fr);
+	grid-template-rows: repeat(var(--unitone--active--rows), 1fr);
 }
 
 [data-unitone-layout~="-rows\:free"] {
-	grid-template-rows: var(--unitone--grid-template-rows);
+	grid-template-rows: var(--unitone--active--grid-template-rows);
 }
 
 .editor-styles-wrapper .unitone-grid {

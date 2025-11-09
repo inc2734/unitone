@@ -156,7 +156,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 		$prefix = '--unitone--' . $size;
 
 		return sprintf(
-			'@media not all and (min-width: %1$s) { %2$s > * { grid-column: var(%3$s-grid-column); grid-row: var(%3$s-grid-row); } %2$s[data-unitone-layout~="-columns\\:%4$s\\:columns"] { grid-template-columns: repeat(var(%3$s-columns), 1fr); }\ %2$s[data-unitone-layout~="-columns\\:%4$s\\:min"] { grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(%3$s-column-min-width), 100%%), 1fr)); }\ %2$s[data-unitone-layout~="-columns\\:%4$s\\:free"] { grid-template-columns: var(%3$s-grid-template-columns); }\ %2$s[data-unitone-layout~="-rows\\:%4$s\\:rows"] { grid-template-rows: repeat(var(%3$s-rows), 1fr); }\ %2$s[data-unitone-layout~="-rows\\:%4$s\\:free"] { grid-template-rows: var(%3$s-grid-template-rows); } }',
+			'@media not all and (min-width: %1$s) { %2$s > * { --unitone--active--grid-column: var(%3$s-grid-column); --unitone--active--grid-row: var(%3$s-grid-row); } %2$s[data-unitone-layout~="-columns\\:%4$s\\:columns"] { --unitone--active--columns: var(%3$s-columns); }\ %2$s[data-unitone-layout~="-columns\\:%4$s\\:min"] { --unitone--active--column-min-width: var(%3$s-column-min-width); }\ %2$s[data-unitone-layout~="-columns\\:%4$s\\:free"] { --unitone--active--grid-template-columns: var(%3$s-grid-template-columns); }\ %2$s[data-unitone-layout~="-rows\\:%4$s\\:rows"] { --unitone--active--rows: var(%3$s-rows); }\ %2$s[data-unitone-layout~="-rows\\:%4$s\\:free"] { --unitone--active--grid-template-rows: var(%3$s-grid-template-rows); } }',
 			esc_attr( $breakpoint ),
 			$selector,
 			$prefix,

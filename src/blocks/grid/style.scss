@@ -57,15 +57,6 @@
 		grid-column: var(--unitone--grid-column);
 		grid-row: var(--unitone--grid-row);
 
-		@media not all and (min-width: 960px) {
-			grid-column: var(--unitone--md-grid-column);
-			grid-row: var(--unitone--md-grid-row);
-		}
-
-		@media not all and (min-width: 600px) {
-			grid-column: var(--unitone--sm-grid-column);
-			grid-row: var(--unitone--sm-grid-row);
-		}
 	}
 }
 
@@ -81,33 +72,6 @@
 	grid-template-columns: var(--unitone--grid-template-columns);
 }
 
-@media not all and (min-width: 960px) {
-	[data-unitone-layout~="-columns\:md\:columns"] {
-		grid-template-columns: repeat(var(--unitone--md-columns), 1fr);
-	}
-
-	[data-unitone-layout~="-columns\:md\:min"] {
-		grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(--unitone--md-column-min-width), 100%), 1fr));
-	}
-
-	[data-unitone-layout~="-columns\:md\:free"] {
-		grid-template-columns: var(--unitone--md-grid-template-columns);
-	}
-}
-
-@media not all and (min-width: 600px) {
-	[data-unitone-layout~="-columns\:sm\:columns"] {
-		grid-template-columns: repeat(var(--unitone--sm-columns), 1fr);
-	}
-
-	[data-unitone-layout~="-columns\:sm\:min"] {
-		grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(--unitone--sm-column-min-width), 100%), 1fr));
-	}
-
-	[data-unitone-layout~="-columns\:sm\:free"] {
-		grid-template-columns: var(--unitone--sm-grid-template-columns);
-	}
-}
 
 [data-unitone-layout~="-rows\:rows"] {
 	grid-template-rows: repeat(var(--unitone--rows), 1fr);
@@ -120,24 +84,4 @@
 .editor-styles-wrapper .unitone-grid {
 	column-gap: var(--unitone--column-gap);
 	row-gap: var(--unitone--row-gap);
-}
-
-@media not all and (min-width: 960px) {
-	[data-unitone-layout~="-rows\:md\:rows"] {
-		grid-template-rows: repeat(var(--unitone--md-rows), 1fr);
-	}
-
-	[data-unitone-layout~="-rows\:md\:free"] {
-		grid-template-rows: var(--unitone--md-grid-template-rows);
-	}
-}
-
-@media not all and (min-width: 600px) {
-	[data-unitone-layout~="-rows\:sm\:rows"] {
-		grid-template-rows: repeat(var(--unitone--sm-rows), 1fr);
-	}
-
-	[data-unitone-layout~="-rows\:sm\:free"] {
-		grid-template-rows: var(--unitone--sm-grid-template-rows);
-	}
 }

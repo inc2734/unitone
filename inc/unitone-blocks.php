@@ -117,59 +117,76 @@ add_filter(
 
 /**
  * Add styles with breakpoints fto unitoone/grid.
+ *
+ * @param string $block_content The block content.
+ * @param array $block The full block, including name and attributes.
+ * @return string
  */
+function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
+	if ( ! $block_content ) {
+		return $block_content;
+	}
+
+	$attributes = $block['attrs'] ?? array();
+
+	static $defaults = null;
+	if ( null === $defaults ) {
+		$block_type = \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/grid' );
+
+		$defaults = array(
+			'md' => $block_type->attributes['mdBreakpoint']['default'],
+			'sm' => $block_type->attributes['smBreakpoint']['default'],
+		);
+	}
+
+	$md_breakpoint = $attributes['mdBreakpoint'] ?? $defaults['md'];
+	$sm_breakpoint = $attributes['smBreakpoint'] ?? $defaults['sm'];
+	$client_id     = $attributes['clientId'] ?? wp_rand();
+
+	$p = new \WP_HTML_Tag_Processor( $block_content );
+	if ( ! $p->next_tag() ) {
+		return $block_content;
+	}
+
+	if ( ! $p->get_attribute( 'data-unitone-client-id' ) ) {
+		$p->set_attribute( 'data-unitone-client-id', $client_id );
+	}
+
+	static $build_css = function ( $selector, $breakpoint, $size ) {
+		$prefix = '--unitone--' . $size;
+
+		return sprintf(
+			'@media not all and (min-width: %1$s) { %2$s > * { grid-column: var(%3$s-grid-column); grid-row: var(%3$s-grid-row); } %2$s[data-unitone-layout~="-columns\\:%4$s\\:columns"] { grid-template-columns: repeat(var(%3$s-columns), 1fr); }\ %2$s[data-unitone-layout~="-columns\\:%4$s\\:min"] { grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(%3$s-column-min-width), 100%%), 1fr)); }\ %2$s[data-unitone-layout~="-columns\\:%4$s\\:free"] { grid-template-columns: var(%3$s-grid-template-columns); }\ %2$s[data-unitone-layout~="-rows\\:%4$s\\:rows"] { grid-template-rows: repeat(var(%3$s-rows), 1fr); }\ %2$s[data-unitone-layout~="-rows\\:%4$s\\:free"] { grid-template-rows: var(%3$s-grid-template-rows); } }',
+			esc_attr( $breakpoint ),
+			$selector,
+			$prefix,
+			$size
+		);
+	};
+
+	$selector = '[data-unitone-client-id="' . esc_attr( $client_id ) . '"]';
+
+	wp_add_inline_style(
+		'unitone-grid-style',
+		$build_css( $selector, $md_breakpoint, 'md' ) . $build_css( $selector, $sm_breakpoint, 'sm' )
+	);
+
+	return $p->get_updated_html();
+}
+
 add_filter(
 	'render_block_unitone/grid',
 	function ( $block_content, $block ) {
-		if ( ! $block_content ) {
-			return $block_content;
-		}
+		return unitone_apply_responsive_styles_for_grid( $block_content, $block );
+	},
+	10,
+	2
+);
 
-		$attributes = $block['attrs'] ?? array();
-
-		static $defaults = null;
-		if ( null === $defaults ) {
-			$block_type = \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/grid' );
-
-			$defaults = array(
-				'md' => $block_type->attributes['mdBreakpoint']['default'],
-				'sm' => $block_type->attributes['smBreakpoint']['default'],
-			);
-		}
-
-		$md_breakpoint = $attributes['mdBreakpoint'] ?? $defaults['md'];
-		$sm_breakpoint = $attributes['smBreakpoint'] ?? $defaults['sm'];
-		$client_id     = $attributes['clientId'] ?? wp_rand();
-
-		$p = new \WP_HTML_Tag_Processor( $block_content );
-		if ( ! $p->next_tag() ) {
-			return $block_content;
-		}
-
-		if ( ! $p->get_attribute( 'data-unitone-client-id' ) ) {
-			$p->set_attribute( 'data-unitone-client-id', $client_id );
-		}
-
-		static $build_css = function ( $selector, $breakpoint, $size ) {
-			$prefix = '--unitone--' . $size;
-
-			return sprintf(
-				'@media not all and (min-width: %1$s) { %2$s > * { grid-column: var(%3$s-grid-column); grid-row: var(%3$s-grid-row); } %2$s[data-unitone-layout~="-columns\\:%4$s\\:columns"] { grid-template-columns: repeat(var(%3$s-columns), 1fr); }\ %2$s[data-unitone-layout~="-columns\\:%4$s\\:min"] { grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(%3$s-column-min-width), 100%%), 1fr)); }\ %2$s[data-unitone-layout~="-columns\\:%4$s\\:free"] { grid-template-columns: var(%3$s-grid-template-columns); }\ %2$s[data-unitone-layout~="-rows\\:%4$s\\:rows"] { grid-template-rows: repeat(var(%3$s-rows), 1fr); }\ %2$s[data-unitone-layout~="-rows\\:%4$s\\:free"] { grid-template-rows: var(%3$s-grid-template-rows); } }',
-				esc_attr( $breakpoint ),
-				$selector,
-				$prefix,
-				$size
-			);
-		};
-
-		$selector = '[data-unitone-client-id="' . esc_attr( $client_id ) . '"]';
-
-		wp_add_inline_style(
-			'unitone-grid-style',
-			$build_css( $selector, $md_breakpoint, 'md' ) . $build_css( $selector, $sm_breakpoint, 'sm' )
-		);
-
-		return $p->get_updated_html();
+add_filter(
+	'render_block_unitone/grid-divided',
+	function ( $block_content, $block ) {
+		return unitone_apply_responsive_styles_for_grid( $block_content, $block );
 	},
 	10,
 	2

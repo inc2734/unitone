@@ -17,10 +17,11 @@ import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalUnitControl as UnitControl,
+	__experimentalUseCustomUnits as useCustomUnits,
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { memo, useCallback } from '@wordpress/element';
+import { memo, useCallback, useMemo, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -72,6 +73,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		smRowsOption,
 		smRows,
 		smGridTemplateRows,
+		mdBreakpoint,
+		smBreakpoint,
 		allowedBlocks,
 		templateLock,
 		__unstableUnitoneBlockOutline,
@@ -91,6 +94,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const TagName = tagName;
+	const breakpointUnits = useCustomUnits( {
+		availableUnits: [ 'px', 'em', 'rem' ],
+	} );
+
+	useEffect( () => {
+		setAttributes( { clientId } );
+	}, [ clientId, setAttributes ] );
 
 	const styles = {
 		'--unitone--columns':
@@ -136,6 +146,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		ref,
 		className: 'unitone-grid',
 		style: styles,
+		'data-unitone-client-id': clientId,
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		blockProps[ 'data-unitone-layout' ],
@@ -171,6 +182,48 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	} );
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
+	const responsiveCSS = useMemo( () => {
+		const selector = `[data-unitone-client-id="${ clientId }"]`;
+
+		const buildCSS = ( breakpoint, size ) => {
+			const prefix = `--unitone--${ size }`;
+
+			return `@media not all and (min-width: ${ breakpoint }) {
+				${ selector } > * {
+					grid-column: var(${ prefix }-grid-column);
+					grid-row: var(${ prefix }-grid-row);
+				}
+
+				${ selector }[data-unitone-layout~="-columns\\:${ size }\\:columns"] {
+					grid-template-columns: repeat(var(${ prefix }-columns), 1fr);
+				}
+
+				${ selector }[data-unitone-layout~="-columns\\:${ size }\\:min"] {
+					grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(${ prefix }-column-min-width), 100%), 1fr));
+				}
+
+				${ selector }[data-unitone-layout~="-columns\\:${ size }\\:free"] {
+					grid-template-columns: var(${ prefix }-grid-template-columns);
+				}
+
+				${ selector }[data-unitone-layout~="-rows\\:${ size }\\:rows"] {
+					grid-template-rows: repeat(var(${ prefix }-rows), 1fr);
+				}
+
+				${ selector }[data-unitone-layout~="-rows\\:${ size }\\:free"] {
+					grid-template-rows: var(${ prefix }-grid-template-rows);
+				}
+			}`;
+		};
+
+		return [
+			buildCSS( mdBreakpoint, 'md' ),
+			buildCSS( smBreakpoint, 'sm' ),
+		]
+			.filter( Boolean )
+			.join( '\n' );
+	}, [ clientId, mdBreakpoint, smBreakpoint ] );
 
 	return (
 		<>
@@ -1004,6 +1057,76 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							) }
 						/>
 					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							mdBreakpoint !==
+							metadata.attributes.mdBreakpoint.default
+						}
+						isShownByDefault
+						label={ __(
+							'Tablet breakpoint (max width)',
+							'unitone'
+						) }
+						onDeselect={ () =>
+							setAttributes( {
+								mdBreakpoint:
+									metadata.attributes.mdBreakpoint.default,
+							} )
+						}
+					>
+						<UnitControl
+							__next40pxDefaultSize
+							label={ __(
+								'Tablet breakpoint (max width)',
+								'unitone'
+							) }
+							help={ __(
+								'Anything less than this width will be considered tablet size.',
+								'unitone'
+							) }
+							value={ mdBreakpoint }
+							onChange={ ( value ) =>
+								setAttributes( { mdBreakpoint: value } )
+							}
+							units={ breakpointUnits }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							smBreakpoint !==
+							metadata.attributes.smBreakpoint.default
+						}
+						isShownByDefault
+						label={ __(
+							'Mobile breakpoint (max width)',
+							'unitone'
+						) }
+						onDeselect={ () =>
+							setAttributes( {
+								smBreakpoint:
+									metadata.attributes.smBreakpoint.default,
+							} )
+						}
+					>
+						<UnitControl
+							__next40pxDefaultSize
+							label={ __(
+								'Mobile breakpoint (max width)',
+								'unitone'
+							) }
+							help={ __(
+								'Anything less than this width will be considered mobile size.',
+								'unitone'
+							) }
+							value={ smBreakpoint }
+							onChange={ ( value ) =>
+								setAttributes( { smBreakpoint: value } )
+							}
+							units={ breakpointUnits }
+						/>
+					</ToolsPanelItem>
 				</ToolsPanel>
 			</InspectorControls>
 
@@ -1011,6 +1134,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				<GridVisualizer ref={ ref } attributes={ attributes } />
 			) }
 			<TagName { ...innerBlocksProps } />
+			{ responsiveCSS && <style>{ responsiveCSS }</style> }
 		</>
 	);
 }

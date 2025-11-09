@@ -22,7 +22,7 @@ import { useEntityRecords, store as coreStore } from '@wordpress/core-data';
 import { useSelect } from '@wordpress/data';
 import { useState } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
-import { edit, rotateRight } from '@wordpress/icons';
+import { pencil, rotateRight } from '@wordpress/icons';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import {
@@ -186,7 +186,7 @@ const TemplatePartSelectControl = ( { label, value, onChange } ) => {
 							'Edit the selected template part',
 							'unitone'
 						) }
-						icon={ edit }
+						icon={ pencil }
 						href={ `${ siteUrl }/wp-admin/site-editor.php?p=%2Fwp_template_part%2F${
 							currentTheme || ''
 						}%2F%2F${ value }&canvas=edit` }

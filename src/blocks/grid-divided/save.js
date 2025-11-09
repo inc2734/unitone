@@ -32,6 +32,7 @@ export default function ( { attributes } ) {
 		smRowsOption,
 		smRows,
 		smGridTemplateRows,
+		clientId,
 	} = attributes;
 
 	const TagName = tagName;
@@ -82,6 +83,7 @@ export default function ( { attributes } ) {
 				...useBlockProps.save( {
 					className: 'unitone-grid',
 					style: styles,
+					'data-unitone-client-id': clientId,
 					'data-unitone-layout': clsx( {
 						[ `-columns:${ columnsOption }` ]: !! columnsOption,
 						[ `-columns:md:${ mdColumnsOption }` ]:

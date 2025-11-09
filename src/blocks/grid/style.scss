@@ -1,6 +1,7 @@
+@use "sass:string";
 
 @function min($values...) {
-	@return unquote('min(#{$values})');
+	@return string.unquote('min(#{$values})');
 }
 
 .unitone-grid {

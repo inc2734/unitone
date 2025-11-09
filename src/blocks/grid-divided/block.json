@@ -100,6 +100,18 @@
 			"type": "string",
 			"default": ""
 		},
+		"mdBreakpoint": {
+			"type": "string",
+			"default": "960px"
+		},
+		"smBreakpoint": {
+			"type": "string",
+			"default": "600px"
+		},
+		"clientId": {
+			"type": "string",
+			"default": ""
+		},
 		"unitone": {
 			"type": "object",
 			"default": {

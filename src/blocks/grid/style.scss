@@ -69,8 +69,38 @@
 		--unitone--active--grid-column: var(--unitone--grid-column);
 		--unitone--active--grid-row: var(--unitone--grid-row);
 
-		margin-top: 0;
-		margin-bottom: 0;
+		$_self-values: (
+			start: start,
+			end: end,
+			center: center,
+			stretch: stretch,
+		);
+
+		@each $key, $value in $_self-values {
+			&[data-unitone-layout~="-justify-self\:md\:#{ $key }"] {
+				--unitone--md-justify-self: #{ $value } !important;
+			}
+		}
+
+		@each $key, $value in $_self-values {
+			&[data-unitone-layout~="-justify-self\:sm\:#{ $key }"] {
+				--unitone--sm-justify-self: #{ $value } !important;
+			}
+		}
+
+		@each $key, $value in $_self-values {
+			&[data-unitone-layout~="-align-self\:md\:#{ $key }"] {
+				--unitone--md-align-self: #{ $value } !important;
+			}
+		}
+
+		@each $key, $value in $_self-values {
+			&[data-unitone-layout~="-align-self\:sm\:#{ $key }"] {
+				--unitone--sm-align-self: #{ $value } !important;
+			}
+		}
+
+		margin: 0;
 		min-width: 0;
 		justify-self: var(--unitone--active--justify-self);
 		align-self: var(--unitone--active--align-self);

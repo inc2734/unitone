@@ -38,42 +38,6 @@ export const useResponsiveGridCSS = ( {
 					--unitone--active--align-self: var(${ prefix }-align-self);
 					--unitone--active--justify-self: var(${ prefix }-justify-self);
 				}
-
-				${ selector } > [data-unitone-layout~="-align-self\:${ size }\:start"] {
-					${ prefix }-align-self: start;
-					margin-top: 0;
-				}
-
-				${ selector } > [data-unitone-layout~="-align-self\:${ size }\:end"] {
-					${ prefix }-align-self: end;
-					margin-bottom: 0;
-				}
-
-				${ selector } > [data-unitone-layout~="-align-self\:${ size }\:center"] {
-					${ prefix }-align-self: center;
-				}
-
-				${ selector } > [data-unitone-layout~="-align-self\:${ size }\:stretch"] {
-					${ prefix }-align-self: stretch;
-				}
-
-				${ selector } > [data-unitone-layout~="-justify-self\:${ size }\:start"] {
-					${ prefix }-justify-self: start;
-					margin-left: 0;
-				}
-
-				${ selector } > [data-unitone-layout~="-justify-self\:${ size }\:end"] {
-					${ prefix }-justify-self: end;
-					margin-right: 0;
-				}
-
-				${ selector } > [data-unitone-layout~="-justify-self\:${ size }\:center"] {
-					${ prefix }-justify-self: center;
-				}
-
-				${ selector } > [data-unitone-layout~="-justify-self\:${ size }\:stretch"] {
-					${ prefix }-justify-self: stretch;
-				}
 			}`;
 		};
 

@@ -49,21 +49,31 @@
 
 	> * {
 		--unitone--justify-self: auto;
+		--unitone--md-justify-self: var(--unitone--justify-self);
+		--unitone--sm-justify-self: var(--unitone--md-justify-self);
+
 		--unitone--align-self: auto;
+		--unitone--md-align-self: var(--unitone--align-self);
+		--unitone--sm-align-self: var(--unitone--md-align-self);
+
 		--unitone--grid-column: auto;
-		--unitone--active--grid-column: var(--unitone--grid-column);
 		--unitone--md-grid-column: var(--unitone--grid-column);
 		--unitone--sm-grid-column: var(--unitone--md-grid-column);
+
 		--unitone--grid-row: auto;
-		--unitone--active--grid-row: var(--unitone--grid-row);
 		--unitone--md-grid-row: var(--unitone--grid-row);
 		--unitone--sm-grid-row: var(--unitone--md-grid-row);
+
+		--unitone--active--justify-self: var(--unitone--justify-self);
+		--unitone--active--align-self: var(--unitone--align-self);
+		--unitone--active--grid-column: var(--unitone--grid-column);
+		--unitone--active--grid-row: var(--unitone--grid-row);
 
 		margin-top: 0;
 		margin-bottom: 0;
 		min-width: 0;
-		justify-self: var(--unitone--justify-self);
-		align-self: var(--unitone--align-self);
+		justify-self: var(--unitone--active--justify-self);
+		align-self: var(--unitone--active--align-self);
 		grid-column: var(--unitone--active--grid-column);
 		grid-row: var(--unitone--active--grid-row);
 	}

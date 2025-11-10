@@ -4,6 +4,7 @@ import deepmerge from 'deepmerge';
 import { SelectControl, TextControl } from '@wordpress/components';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
@@ -48,11 +49,21 @@ export function PositionEdit( {
 			?.default?.position;
 	}, [] );
 
+	const value = unitone?.position?.position ?? defaultValue?.position ?? '';
+
 	return (
 		<SelectControl
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
+			help={
+				'sticky' === value
+					? __(
+							'If you select "sticky", you need to specify the position where you want it to be fixed (for example, if you want it to be firmly fixed, specify "0" for "top").',
+							'unitone'
+					  )
+					: undefined
+			}
 			options={ [
 				{ label: '', value: '' },
 				{
@@ -72,10 +83,24 @@ export function PositionEdit( {
 					label: 'sticky',
 					value: 'sticky',
 				},
+				{
+					label: '----------',
+					value: undefined,
+					disabled: true,
+				},
+				{
+					label: __( 'Sticky (Top)', 'unitone' ),
+					value: 'sticky-top',
+				},
+				{
+					label: __(
+						'Sticky (Top / Admin bar compatible)',
+						'unitone'
+					),
+					value: 'sticky-top-admin-bar',
+				},
 			] }
-			value={
-				unitone?.position?.position ?? defaultValue?.position ?? ''
-			}
+			value={ value }
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,

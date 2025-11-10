@@ -172,6 +172,18 @@ legend {
 	}
 }
 
+[data-unitone-layout~="-position\:sticky-top"]:not(:root) {
+	--unitone--position: sticky !important;
+	--unitone--top: 0px;
+	--unitone--z-index: 1;
+}
+
+[data-unitone-layout~="-position\:sticky-top-admin-bar"]:not(:root) {
+	--unitone--position: sticky !important;
+	--unitone--top: var(--wp-admin--admin-bar--height, 0px);
+	--unitone--z-index: 1;
+}
+
 $justify-self-values: (
 	start: start,
 	end: end,

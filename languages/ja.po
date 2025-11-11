@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-11-09T07:45:20+00:00\n"
-"PO-Revision-Date: 2025-11-09 16:46+0900\n"
+"POT-Creation-Date: 2025-11-11T05:47:52+00:00\n"
+"PO-Revision-Date: 2025-11-11 14:52+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3534,6 +3534,27 @@ msgstr "[:hover] 枠線"
 #: dist/js/editor/editor.js:13
 msgid "Marker"
 msgstr "マーカー"
+
+#: dist/js/editor/editor.js:13
+msgid ""
+"If you select \"sticky\", you need to specify the position where you want it "
+"to be fixed (for example, if you want it to be firmly fixed, specify \"0\" "
+"for \"top\")."
+msgstr ""
+"「sticky」を選択した場合、固定したい位置を指定する必要があります（例：上部で"
+"固定したい場合は、「top」に「0」を指定します）。"
+
+#: dist/js/editor/editor.js:13
+msgid "sticky (Top)"
+msgstr "sticky（上部）"
+
+#: dist/js/editor/editor.js:13
+msgid "sticky (Top / Admin bar compatible)"
+msgstr "sticky（上部 / 管理バー対応）"
+
+#: dist/js/editor/editor.js:13
+msgid "fixed (Top / Admin bar compatible)"
+msgstr "fixed（上部 / 管理バー対応）"
 
 #: dist/js/editor/editor.js:13
 msgid "Position"

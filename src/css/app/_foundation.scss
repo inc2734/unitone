@@ -181,7 +181,15 @@ legend {
 [data-unitone-layout~="-position\:sticky-top-admin-bar"]:not(:root) {
 	--unitone--position: sticky !important;
 	--unitone--top: var(--wp-admin--admin-bar--height, 0px);
-	--unitone--z-index: 1;
+	--unitone--z-index: 2;
+}
+
+[data-unitone-layout~="-position\:fixed-top-admin-bar"]:not(:root) {
+	--unitone--position: fixed !important;
+	--unitone--top: var(--wp-admin--admin-bar--height, 0px);
+	--unitone--right: 0px;
+	--unitone--left: 0px;
+	--unitone--z-index: 2;
 }
 
 :where([data-unitone-layout~="-background-clip"] [data-unitone-block-list~="block"]),

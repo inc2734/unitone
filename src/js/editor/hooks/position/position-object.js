@@ -89,15 +89,22 @@ export function PositionEdit( {
 					disabled: true,
 				},
 				{
-					label: __( 'Sticky (Top)', 'unitone' ),
+					label: __( 'sticky (Top)', 'unitone' ),
 					value: 'sticky-top',
 				},
 				{
 					label: __(
-						'Sticky (Top / Admin bar compatible)',
+						'sticky (Top / Admin bar compatible)',
 						'unitone'
 					),
 					value: 'sticky-top-admin-bar',
+				},
+				{
+					label: __(
+						'fixed (Top / Admin bar compatible)',
+						'unitone'
+					),
+					value: 'fixed-top-admin-bar',
 				},
 			] }
 			value={ value }

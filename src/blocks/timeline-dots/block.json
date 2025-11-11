@@ -35,6 +35,12 @@
 		"customLineColor": {
 			"type": "string"
 		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"alignItems": "start"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

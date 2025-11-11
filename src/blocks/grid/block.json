@@ -112,6 +112,13 @@
 			"type": "string",
 			"default": ""
 		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"alignItems": "stretch",
+				"justifyItems": "stretch"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

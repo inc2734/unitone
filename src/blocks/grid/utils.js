@@ -7,10 +7,10 @@ export const applyGridChildStyles = ( attributes, parentBlock ) => {
 
 	const DEFAULT_VALUES = {
 		alignSelf: {
-			lg: undefined,
+			lg: 'auto',
 		},
 		justifySelf: {
-			lg: undefined,
+			lg: 'auto',
 		},
 		gridColumn: {
 			lg: 'auto',

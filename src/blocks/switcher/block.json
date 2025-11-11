@@ -18,6 +18,7 @@
 		"unitone": {
 			"type": "object",
 			"default": {
+				"alignItems": "stretch",
 				"stairsUp": "left"
 			}
 		},

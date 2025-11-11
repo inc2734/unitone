@@ -146,3 +146,9 @@ export const leftSides = (
 		/>
 	</SVG>
 );
+
+export const auto = (
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+		<Path d="M12 8.5H4V7.5H12V8.5Z" fill="currentColor" />
+	</SVG>
+);

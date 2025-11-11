@@ -23,6 +23,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
+import { auto } from '../icons';
 import { cleanEmptyObject, useDeviceType } from '../utils';
 
 const justifySelfOptions = [
@@ -45,6 +46,11 @@ const justifySelfOptions = [
 		value: 'stretch',
 		icon: justifyStretch,
 		label: __( 'Stretch to fill', 'unitone' ),
+	},
+	{
+		value: 'auto',
+		icon: auto,
+		label: __( 'Auto', 'unitone' ),
 	},
 ];
 

@@ -50,6 +50,12 @@ import {
 } from './layout/layout';
 
 import {
+	AlignmentDistributionPanel,
+	withAlignmentDistributionBlockProps,
+	resetAlignmentDistribution,
+} from './alignment-distribution/alignment-distribution';
+
+import {
 	BorderPanel,
 	withBorderBlockProps,
 	resetBorder,
@@ -78,6 +84,7 @@ const withBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 				compose( [
 					withTypographyBlockProps,
 					withLayoutBlockProps,
+					withAlignmentDistributionBlockProps,
 					withDimensionsBlockProps,
 					withPositionBlockProps,
 					withDividerLineBlockProps,
@@ -124,6 +131,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<TypographyPanel { ...passedProps } />
 				<DimensionsPanel { ...passedProps } />
 				<LayoutPanel { ...passedProps } />
+				<AlignmentDistributionPanel { ...passedProps } />
 				<DividerLinePanel { ...passedProps } />
 				<SectionDividerPanel { ...passedProps } />
 				<PositionPanel { ...passedProps } />
@@ -156,6 +164,7 @@ export const resetUnitoneStyles = ( props ) => {
 		resetTypography,
 		resetDimensions,
 		resetLayout,
+		resetAlignmentDistribution,
 		resetDividerLine,
 		resetSectionDivider,
 		resetPositions,

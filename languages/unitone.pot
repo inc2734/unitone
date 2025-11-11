@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-11T05:47:52+00:00\n"
+"POT-Creation-Date: 2025-11-11T10:24:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2736,7 +2736,7 @@ msgid "Progress bar"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
 msgid "Align items top"
 msgstr ""
 
@@ -2745,7 +2745,7 @@ msgid "Align items top (Inside)"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
 msgid "Align items center"
 msgstr ""
 
@@ -2754,7 +2754,7 @@ msgid "Align items bottom (Inside)"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
 msgid "Align items bottom"
 msgstr ""
 
@@ -2765,7 +2765,7 @@ msgstr ""
 
 #: dist/blocks/slider/index.js:1
 #: dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
 msgid "Justify items center"
 msgstr ""
 
@@ -2775,7 +2775,7 @@ msgid "Justify items right"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
 msgid "Justify items space-between"
 msgstr ""
 
@@ -3089,7 +3089,6 @@ msgstr ""
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:13
 msgid "Right"
 msgstr ""
@@ -3097,7 +3096,6 @@ msgstr ""
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:13
 msgid "Left"
 msgstr ""
@@ -3376,90 +3374,6 @@ msgid "Selectors and CSS beginning with anything other than \"&\" are ignored."
 msgstr ""
 
 #: dist/js/editor/editor.js:7
-msgid "Justify content left"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify content center"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify content right"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify content space-between"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify content space-around"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify content space-evenly"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify content"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify items top"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify items bottom"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Stretch to fill"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify items"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align items"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align content top"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align content center"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align content bottom"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align content space-between"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align content space-around"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align content space-evenly"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align content"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Center"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Block alignment"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
 msgid "Recommended width"
 msgstr ""
 
@@ -3492,38 +3406,6 @@ msgid "auto-fit"
 msgstr ""
 
 #: dist/js/editor/editor.js:7
-msgid "Align self top"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align self center"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align self bottom"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Align self"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify self left"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify self center"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify self right"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Justify self"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
 msgid "A grid item's size and location within a grid column"
 msgstr ""
 
@@ -3536,6 +3418,130 @@ msgstr ""
 #: dist/js/editor/editor.js:13
 #, js-format
 msgid "For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line)."
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify content left"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify content center"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify content right"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify content space-between"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify content space-around"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify content space-evenly"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify content"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify items top"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify items bottom"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Stretch to fill"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify items"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align items"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align content top"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align content center"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align content bottom"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align content space-between"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align content space-around"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align content space-evenly"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align content"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Center"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Block alignment"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align self top"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align self center"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align self bottom"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Auto"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align self"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify self left"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify self center"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify self right"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Justify self"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Alignment & Distribution"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
@@ -3563,15 +3569,15 @@ msgid "If you select \"sticky\", you need to specify the position where you want
 msgstr ""
 
 #: dist/js/editor/editor.js:13
+msgid "fixed (Top / Admin bar compatible)"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
 msgid "sticky (Top)"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
 msgid "sticky (Top / Admin bar compatible)"
-msgstr ""
-
-#: dist/js/editor/editor.js:13
-msgid "fixed (Top / Admin bar compatible)"
 msgstr ""
 
 #: dist/js/editor/editor.js:13

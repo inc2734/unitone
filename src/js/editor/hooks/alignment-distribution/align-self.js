@@ -16,7 +16,13 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer } from '../components';
-import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
+import {
+	alignBottom,
+	alignCenter,
+	alignTop,
+	alignStretch,
+	auto,
+} from '../icons';
 import { cleanEmptyObject, useDeviceType } from '../utils';
 
 const alignSelfOptions = [
@@ -39,6 +45,11 @@ const alignSelfOptions = [
 		value: 'stretch',
 		icon: alignStretch,
 		label: __( 'Stretch to fill', 'unitone' ),
+	},
+	{
+		value: 'auto',
+		icon: auto,
+		label: __( 'Auto', 'unitone' ),
 	},
 ];
 

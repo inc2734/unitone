@@ -89,6 +89,13 @@ export function PositionEdit( {
 					disabled: true,
 				},
 				{
+					label: __(
+						'fixed (Top / Admin bar compatible)',
+						'unitone'
+					),
+					value: 'fixed-top-admin-bar',
+				},
+				{
 					label: __( 'sticky (Top)', 'unitone' ),
 					value: 'sticky-top',
 				},
@@ -98,13 +105,6 @@ export function PositionEdit( {
 						'unitone'
 					),
 					value: 'sticky-top-admin-bar',
-				},
-				{
-					label: __(
-						'fixed (Top / Admin bar compatible)',
-						'unitone'
-					),
-					value: 'fixed-top-admin-bar',
 				},
 			] }
 			value={ value }

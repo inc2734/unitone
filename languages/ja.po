@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "POT-Creation-Date: 2025-11-11T10:24:29+00:00\n"
-"PO-Revision-Date: 2025-11-11 19:29+0900\n"
+"PO-Revision-Date: 2025-11-12 22:16+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2430,7 +2430,7 @@ msgstr "行数"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 msgid "Tablet breakpoint (max width)"
-msgstr "タブレットのブレークポイント（最大幅）"
+msgstr "タブレットのブレイクポイント（最大幅）"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 msgid "Anything less than this width will be considered tablet size."
@@ -2438,7 +2438,7 @@ msgstr "この幅より小さいものはタブレットサイズと見なされ
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 msgid "Mobile breakpoint (max width)"
-msgstr "モバイル用ブレークポイント（最大幅）"
+msgstr "モバイル用ブレイクポイント（最大幅）"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 msgid "Anything less than this width will be considered mobile size."

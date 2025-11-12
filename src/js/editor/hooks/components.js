@@ -9,17 +9,12 @@ import {
 	SelectControl,
 } from '@wordpress/components';
 
-import {
-	desktop,
-	tablet,
-	mobile,
-	moreHorizontal,
-	closeSmall,
-} from '@wordpress/icons';
+import { desktop, tablet, mobile, closeSmall } from '@wordpress/icons';
 
 import { useState, useMemo, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { help as iconHelp } from './icons';
 import { useDeviceType } from './utils';
 
 function Controls( { value, onChange, options } ) {
@@ -272,7 +267,7 @@ export function HelpContainer( { help, children, layout = 'vertical' } ) {
 				<Button
 					ref={ ref }
 					label={ __( 'Help', 'unitone' ) }
-					icon={ moreHorizontal }
+					icon={ iconHelp }
 					size="small"
 					style={ {
 						verticalAlign: 'top',

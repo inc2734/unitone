@@ -91,14 +91,16 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 			};
 		} );
 
-	const filteredSpinners = spinners.map( ( icon ) => {
-		return {
-			name: icon.name,
-			svg: icon.svg( {
-				strokeWidth: strokeWidth || DEFAULT_STROKE_WIDTH,
-			} ),
-		};
-	} );
+	const filteredSpinners = spinners
+		.filter( ( icon ) => icon.name.includes( searchText ) )
+		.map( ( icon ) => {
+			return {
+				name: icon.name,
+				svg: icon.svg( {
+					strokeWidth: strokeWidth || DEFAULT_STROKE_WIDTH,
+				} ),
+			};
+		} );
 
 	return (
 		<Popover

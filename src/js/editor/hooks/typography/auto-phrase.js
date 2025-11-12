@@ -4,6 +4,7 @@ import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { sprintf, __ } from '@wordpress/i18n';
 
+import { HelpContainer } from '../components';
 import { cleanEmptyObject } from '../utils';
 
 export function hasAutoPhraseValue( { attributes: { unitone } } ) {
@@ -34,9 +35,7 @@ export function AutoPhraseEdit( {
 	setAttributes,
 } ) {
 	return (
-		<ToggleControl
-			__nextHasNoMarginBottom
-			label={ label }
+		<HelpContainer
 			help={
 				<span
 					dangerouslySetInnerHTML={ {
@@ -51,18 +50,24 @@ export function AutoPhraseEdit( {
 					} }
 				/>
 			}
-			checked={ unitone?.autoPhrase ?? false }
-			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...unitone,
-					autoPhrase: newValue || undefined,
-				};
+			layout="horizontal"
+		>
+			<ToggleControl
+				__nextHasNoMarginBottom
+				label={ label }
+				checked={ unitone?.autoPhrase ?? false }
+				onChange={ ( newValue ) => {
+					const newUnitone = {
+						...unitone,
+						autoPhrase: newValue || undefined,
+					};
 
-				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
-				} );
-			} }
-		/>
+					setAttributes( {
+						unitone: cleanEmptyObject( newUnitone ),
+					} );
+				} }
+			/>
+		</HelpContainer>
 	);
 }
 

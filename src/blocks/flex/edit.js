@@ -19,6 +19,7 @@ import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { HelpContainer } from '../../js/editor/hooks/components';
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
@@ -110,18 +111,22 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							} )
 						}
 					>
-						<ToggleControl
-							__nextHasNoMarginBottom
-							label={ __( 'Revert', 'unitone' ) }
+						<HelpContainer
 							help={ __(
 								'In single-column display, by default, the elements on the left side of the multi-column display are displayed on top, but when enabled, the elements on the right side of the multi-column display are displayed on top.',
 								'unitone'
 							) }
-							checked={ revert }
-							onChange={ ( newAttribute ) => {
-								setAttributes( { revert: newAttribute } );
-							} }
-						/>
+							layout="horizontal"
+						>
+							<ToggleControl
+								__nextHasNoMarginBottom
+								label={ __( 'Revert', 'unitone' ) }
+								checked={ revert }
+								onChange={ ( newAttribute ) => {
+									setAttributes( { revert: newAttribute } );
+								} }
+							/>
+						</HelpContainer>
 					</ToolsPanelItem>
 				</ToolsPanel>
 			</InspectorControls>

@@ -20,6 +20,7 @@ import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { HelpContainer } from '../../js/editor/hooks/components';
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 import { useVerticalWritingLayout } from './hooks/use-vertical-writing-layout';
 
@@ -173,20 +174,24 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							} )
 						}
 					>
-						<ToggleControl
-							__nextHasNoMarginBottom
-							label={ __( 'Switch writing mode', 'unitone' ) }
+						<HelpContainer
 							help={ __(
 								'Switch writing mode when portrait and mobile width.',
 								'unitone'
 							) }
-							checked={ switchWritingMode }
-							onChange={ ( newAttribute ) =>
-								setAttributes( {
-									switchWritingMode: newAttribute,
-								} )
-							}
-						/>
+							layout="horizontal"
+						>
+							<ToggleControl
+								__nextHasNoMarginBottom
+								label={ __( 'Switch writing mode', 'unitone' ) }
+								checked={ switchWritingMode }
+								onChange={ ( newAttribute ) =>
+									setAttributes( {
+										switchWritingMode: newAttribute,
+									} )
+								}
+							/>
+						</HelpContainer>
 					</ToolsPanelItem>
 				</ToolsPanel>
 			</InspectorControls>

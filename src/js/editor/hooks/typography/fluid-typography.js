@@ -4,6 +4,7 @@ import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
+import { HelpContainer } from '../components';
 import { cleanEmptyObject } from '../utils';
 
 export function hasFluidTypographyValue( { attributes: { unitone } } ) {
@@ -53,23 +54,24 @@ export function FluidTypographyEdit( { label, attributes, setAttributes } ) {
 	}
 
 	return (
-		<ToggleControl
-			__nextHasNoMarginBottom
-			label={ label }
-			help={ help }
-			disabled={ fontSizeStatus.fixed }
-			checked={ attributes?.unitone?.fluidTypography ?? false }
-			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...attributes?.unitone,
-					fluidTypography: newValue || undefined,
-				};
+		<HelpContainer help={ help } layout="horizontal">
+			<ToggleControl
+				__nextHasNoMarginBottom
+				label={ label }
+				disabled={ fontSizeStatus.fixed }
+				checked={ attributes?.unitone?.fluidTypography ?? false }
+				onChange={ ( newValue ) => {
+					const newUnitone = {
+						...attributes?.unitone,
+						fluidTypography: newValue || undefined,
+					};
 
-				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
-				} );
-			} }
-		/>
+					setAttributes( {
+						unitone: cleanEmptyObject( newUnitone ),
+					} );
+				} }
+			/>
+		</HelpContainer>
 	);
 }
 

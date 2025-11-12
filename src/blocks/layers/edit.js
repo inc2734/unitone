@@ -34,6 +34,8 @@ import {
 import { useSelect, useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import { HelpContainer } from '../../js/editor/hooks/components';
+
 import {
 	GridVisualizer,
 	cleanEmptyObject,
@@ -184,12 +186,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							} )
 						}
 					>
-						<ToggleControl
-							__nextHasNoMarginBottom
-							label={ __(
-								'Use background image/video (Cover)',
-								'unitone'
-							) }
+						<HelpContainer
 							help={
 								__(
 									'Treat the first child block as a background image/video.',
@@ -200,15 +197,24 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 									'unitone'
 								)
 							}
-							checked={ cover }
-							onChange={ ( newAttribute ) => {
-								setAttributes( {
-									cover: newAttribute,
-									fill: fill && newAttribute && false,
-									fixed: fixed && newAttribute && false,
-								} );
-							} }
-						/>
+							layout="horizontal"
+						>
+							<ToggleControl
+								__nextHasNoMarginBottom
+								label={ __(
+									'Use background image/video (Cover)',
+									'unitone'
+								) }
+								checked={ cover }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										cover: newAttribute,
+										fill: fill && newAttribute && false,
+										fixed: fixed && newAttribute && false,
+									} );
+								} }
+							/>
+						</HelpContainer>
 					</ToolsPanelItem>
 
 					<ToolsPanelItem
@@ -226,12 +232,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							} )
 						}
 					>
-						<ToggleControl
-							__nextHasNoMarginBottom
-							label={ __(
-								'Use background image/video (Fill)',
-								'unitone'
-							) }
+						<HelpContainer
 							help={
 								__(
 									'Treat the first child block as a background image/video.',
@@ -242,15 +243,24 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 									'unitone'
 								)
 							}
-							checked={ fill }
-							onChange={ ( newAttribute ) => {
-								setAttributes( {
-									fill: newAttribute,
-									cover: cover && newAttribute && false,
-									fixed: fixed && newAttribute && false,
-								} );
-							} }
-						/>
+							layout="horizontal"
+						>
+							<ToggleControl
+								__nextHasNoMarginBottom
+								label={ __(
+									'Use background image/video (Fill)',
+									'unitone'
+								) }
+								checked={ fill }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										fill: newAttribute,
+										cover: cover && newAttribute && false,
+										fixed: fixed && newAttribute && false,
+									} );
+								} }
+							/>
+						</HelpContainer>
 					</ToolsPanelItem>
 
 					<ToolsPanelItem
@@ -268,12 +278,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							} )
 						}
 					>
-						<ToggleControl
-							__nextHasNoMarginBottom
-							label={ __(
-								'Use background image/video (Fixed)',
-								'unitone'
-							) }
+						<HelpContainer
 							help={
 								__(
 									'Treat the first child block as a background image/video.',
@@ -284,15 +289,24 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 									'unitone'
 								)
 							}
-							checked={ fixed }
-							onChange={ ( newAttribute ) => {
-								setAttributes( {
-									fixed: newAttribute,
-									cover: cover && newAttribute && false,
-									fill: fill && newAttribute && false,
-								} );
-							} }
-						/>
+							layout="horizontal"
+						>
+							<ToggleControl
+								__nextHasNoMarginBottom
+								label={ __(
+									'Use background image/video (Fixed)',
+									'unitone'
+								) }
+								checked={ fixed }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										fixed: newAttribute,
+										cover: cover && newAttribute && false,
+										fill: fill && newAttribute && false,
+									} );
+								} }
+							/>
+						</HelpContainer>
 					</ToolsPanelItem>
 
 					<ToolsPanelItem
@@ -343,21 +357,25 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							} )
 						}
 					>
-						<ToggleControl
-							__nextHasNoMarginBottom
-							label={ __(
-								'Switch grid lines direction',
-								'unitone'
-							) }
+						<HelpContainer
 							help={ __(
 								'Switch vertical and horizontal grid lines direction when portrait and mobile width.',
 								'unitone'
 							) }
-							checked={ portrait }
-							onChange={ ( newAttribute ) => {
-								setAttributes( { portrait: newAttribute } );
-							} }
-						/>
+							layout="horizontal"
+						>
+							<ToggleControl
+								__nextHasNoMarginBottom
+								label={ __(
+									'Switch grid lines direction',
+									'unitone'
+								) }
+								checked={ portrait }
+								onChange={ ( newAttribute ) => {
+									setAttributes( { portrait: newAttribute } );
+								} }
+							/>
+						</HelpContainer>
 					</ToolsPanelItem>
 
 					<ToolsPanelItem

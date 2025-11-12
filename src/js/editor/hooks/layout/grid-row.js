@@ -8,7 +8,7 @@ import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { ResponsiveSettingsContainer } from '../components';
+import { ResponsiveSettingsContainer, HelpContainer } from '../components';
 import { cleanEmptyObject } from '../utils';
 
 function getIsResponsive( { name, __unstableUnitoneSupports } ) {
@@ -168,66 +168,70 @@ export function GridRowEdit( {
 		<ResponsiveSettingsContainer
 			label={ label }
 			desktopControls={ () => (
-				<TextControl
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-					hideLabelFromVision
-					help={ help }
-					value={
-						unitone?.gridRow?.lg ??
-						primitiveValue ??
-						defaultValue?.lg ??
-						''
-					}
-					onChange={ onChangeGridRowLg }
-				/>
+				<HelpContainer help={ help } layout="horizontal">
+					<TextControl
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+						hideLabelFromVision
+						value={
+							unitone?.gridRow?.lg ??
+							primitiveValue ??
+							defaultValue?.lg ??
+							''
+						}
+						onChange={ onChangeGridRowLg }
+					/>
+				</HelpContainer>
 			) }
 			tabletControls={ () => (
-				<TextControl
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-					hideLabelFromVision
-					help={ help }
-					value={
-						unitone?.gridRow?.md ??
-						unitone?.gridRow?.lg ??
-						primitiveValue ??
-						defaultValue?.md ??
-						defaultValue?.lg ??
-						''
-					}
-					onChange={ onChangeGridRowMd }
-				/>
+				<HelpContainer help={ help } layout="horizontal">
+					<TextControl
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+						hideLabelFromVision
+						value={
+							unitone?.gridRow?.md ??
+							unitone?.gridRow?.lg ??
+							primitiveValue ??
+							defaultValue?.md ??
+							defaultValue?.lg ??
+							''
+						}
+						onChange={ onChangeGridRowMd }
+					/>
+				</HelpContainer>
 			) }
 			mobileControls={ () => (
-				<TextControl
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-					hideLabelFromVision
-					help={ help }
-					value={
-						unitone?.gridRow?.sm ??
-						unitone?.gridRow?.md ??
-						unitone?.gridRow?.lg ??
-						primitiveValue ??
-						defaultValue?.sm ??
-						defaultValue?.md ??
-						defaultValue?.lg ??
-						''
-					}
-					onChange={ onChangeGridRowSm }
-				/>
+				<HelpContainer help={ help } layout="horizontal">
+					<TextControl
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+						hideLabelFromVision
+						value={
+							unitone?.gridRow?.sm ??
+							unitone?.gridRow?.md ??
+							unitone?.gridRow?.lg ??
+							primitiveValue ??
+							defaultValue?.sm ??
+							defaultValue?.md ??
+							defaultValue?.lg ??
+							''
+						}
+						onChange={ onChangeGridRowSm }
+					/>
+				</HelpContainer>
 			) }
 		/>
 	) : (
-		<TextControl
-			__next40pxDefaultSize
-			__nextHasNoMarginBottom
-			label={ label }
-			help={ help }
-			value={ unitone?.gridRow ?? defaultValue ?? '' }
-			onChange={ onChangeGridRow }
-		/>
+		<HelpContainer help={ help } layout="horizontal">
+			<TextControl
+				__next40pxDefaultSize
+				__nextHasNoMarginBottom
+				label={ label }
+				value={ unitone?.gridRow ?? defaultValue ?? '' }
+				onChange={ onChangeGridRow }
+			/>
+		</HelpContainer>
 	);
 }
 

@@ -5,6 +5,7 @@ import { ToggleControl } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { HelpContainer } from '../components';
 import { cleanEmptyObject } from '../utils';
 
 export function hasBackgroundClipValue( { attributes: { unitone } } ) {
@@ -80,27 +81,28 @@ export function BackgroundClipEdit( {
 	] );
 
 	return (
-		<ToggleControl
-			__nextHasNoMarginBottom
-			label={ label }
-			help={ help }
-			disabled={
-				! attributes?.gradient &&
-				! attributes?.style?.color?.gradient &&
-				! attributes?.style?.background?.backgroundImage
-			}
-			checked={ attributes?.unitone?.backgroundClip ?? false }
-			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...attributes?.unitone,
-					backgroundClip: newValue || undefined,
-				};
+		<HelpContainer help={ help } layout="horizontal">
+			<ToggleControl
+				__nextHasNoMarginBottom
+				label={ label }
+				disabled={
+					! attributes?.gradient &&
+					! attributes?.style?.color?.gradient &&
+					! attributes?.style?.background?.backgroundImage
+				}
+				checked={ attributes?.unitone?.backgroundClip ?? false }
+				onChange={ ( newValue ) => {
+					const newUnitone = {
+						...attributes?.unitone,
+						backgroundClip: newValue || undefined,
+					};
 
-				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
-				} );
-			} }
-		/>
+					setAttributes( {
+						unitone: cleanEmptyObject( newUnitone ),
+					} );
+				} }
+			/>
+		</HelpContainer>
 	);
 }
 

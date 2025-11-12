@@ -21,6 +21,7 @@ import { useRef } from '@wordpress/element';
 import { Icon, reset } from '@wordpress/icons';
 import { __, _x } from '@wordpress/i18n';
 
+import { HelpContainer } from '../components';
 import { scroll as iconScrollAnimation } from './icons';
 import { cleanEmptyObject } from '../utils';
 
@@ -489,38 +490,46 @@ function ScrollAnimationPopover( {
 								{ __( 'IntersectionObserver', 'unitone' ) }
 							</BaseControl.VisualLabel>
 
-							<TextControl
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
-								label={ _x(
-									'rootMargin',
-									'intersectionObserver',
-									'unitone'
-								) }
+							<HelpContainer
 								// eslint-disable-next-line @wordpress/i18n-translator-comments
 								help={ __(
 									'Sets the intersection area size to expand or shrink. e.g. -25% 0px',
 									'unitone'
 								) }
-								value={ rootMargin || '0px' }
-								onChange={ onChangeRootMargin }
-							/>
+								layout="horizontal"
+							>
+								<TextControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={ _x(
+										'rootMargin',
+										'intersectionObserver',
+										'unitone'
+									) }
+									value={ rootMargin || '0px' }
+									onChange={ onChangeRootMargin }
+								/>
+							</HelpContainer>
 
-							<TextControl
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
-								label={ _x(
-									'threshold',
-									'intersectionObserver',
-									'unitone'
-								) }
+							<HelpContainer
 								help={ __(
 									'Specifies how much of the target must be intersect to fire the animation. e.g. 0.5',
 									'unitone'
 								) }
-								value={ threshold || '0.25' }
-								onChange={ onChangeThreshold }
-							/>
+								layout="horizontal"
+							>
+								<TextControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={ _x(
+										'threshold',
+										'intersectionObserver',
+										'unitone'
+									) }
+									value={ threshold || '0.25' }
+									onChange={ onChangeThreshold }
+								/>
+							</HelpContainer>
 						</VStack>
 					</div>
 				</DropdownContentWrapper>

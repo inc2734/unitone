@@ -1,14 +1,23 @@
 import {
 	BaseControl,
+	Button,
 	DropdownMenu,
 	Flex,
 	FlexBlock,
 	FlexItem,
+	Popover,
 	SelectControl,
 } from '@wordpress/components';
 
-import { useState, useMemo, useEffect } from '@wordpress/element';
-import { desktop, tablet, mobile } from '@wordpress/icons';
+import {
+	desktop,
+	tablet,
+	mobile,
+	moreHorizontal,
+	closeSmall,
+} from '@wordpress/icons';
+
+import { useState, useMemo, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { useDeviceType } from './utils';
@@ -249,5 +258,57 @@ export function ResponsiveSettingsContainer( {
 				</div>
 			</div>
 		</>
+	);
+}
+
+export function HelpContainer( { help, children, layout = 'vertical' } ) {
+	const [ isHelpPopoverOpen, setIsHelpPopoverOpen ] = useState( false );
+	const ref = useRef( null );
+
+	return !! help ? (
+		<div className={ `unitone-help-container -layout:${ layout }` }>
+			<div className="unitone-help-container__content">{ children }</div>
+			<div className="unitone-help-container__action">
+				<Button
+					ref={ ref }
+					label={ __( 'Help', 'unitone' ) }
+					icon={ moreHorizontal }
+					size="small"
+					style={ {
+						verticalAlign: 'top',
+					} }
+					onClick={ () => {
+						setIsHelpPopoverOpen( ! isHelpPopoverOpen );
+					} }
+					aria-expanded={ isHelpPopoverOpen }
+				/>
+
+				{ isHelpPopoverOpen && (
+					<Popover
+						anchor={ ref.current }
+						className="unitone-help-popover"
+						placement="bottom-start"
+						focusOnMount
+						onClose={ () => setIsHelpPopoverOpen( false ) }
+					>
+						<div className="unitone-help-popover__content">
+							<div>{ help }</div>
+							<div className="unitone-help-popover__action">
+								<Button
+									label={ __( 'Close', 'unitone' ) }
+									icon={ closeSmall }
+									size="small"
+									onClick={ () => {
+										setIsHelpPopoverOpen( false );
+									} }
+								/>
+							</div>
+						</div>
+					</Popover>
+				) }
+			</div>
+		</div>
+	) : (
+		{ children }
 	);
 }

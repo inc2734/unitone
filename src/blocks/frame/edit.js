@@ -15,6 +15,7 @@ import {
 
 import { __ } from '@wordpress/i18n';
 
+import { HelpContainer } from '../../js/editor/hooks/components';
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
@@ -96,18 +97,24 @@ export default function ( { attributes, setAttributes } ) {
 							} )
 						}
 					>
-						<ToggleControl
-							__nextHasNoMarginBottom
-							label={ __( 'Switch aspect ratio', 'unitone' ) }
+						<HelpContainer
 							help={ __(
 								'Switch aspect ratio when portrait and mobile width.',
 								'unitone'
 							) }
-							checked={ switchRatio }
-							onChange={ ( newAttribute ) => {
-								setAttributes( { switchRatio: newAttribute } );
-							} }
-						/>
+							layout="horizontal"
+						>
+							<ToggleControl
+								__nextHasNoMarginBottom
+								label={ __( 'Switch aspect ratio', 'unitone' ) }
+								checked={ switchRatio }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										switchRatio: newAttribute,
+									} );
+								} }
+							/>
+						</HelpContainer>
 					</ToolsPanelItem>
 				</ToolsPanel>
 			</InspectorControls>

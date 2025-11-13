@@ -522,6 +522,9 @@ function unitone_apply_hover_color( $block_content, $block ) {
 	}
 
 	$metadata = \WP_Block_Type_Registry::get_instance()->get_registered( $block['blockName'] );
+	if ( ! $metadata ) {
+		return $block_content;
+	}
 
 	$has_hover_background_support   = unitone_has_block_support( 'unitone.hover.color.background', $metadata );
 	$has_hover_gradient_support     = unitone_has_block_support( 'unitone.hover.color.gradients', $metadata );

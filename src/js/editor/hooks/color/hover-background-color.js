@@ -24,11 +24,11 @@ export function resetHoverGradientFilter() {
 }
 
 export function isHoverBackgroundColorSupportDisabled( { name } ) {
-	return ! hasBlockSupport( name, 'color' );
+	return ! hasBlockSupport( name, 'unitone.hover.color.background' );
 }
 
 export function isHoverGradientSupportDisabled( { name } ) {
-	return ! hasBlockSupport( name, 'color.gradients' );
+	return ! hasBlockSupport( name, 'unitone.hover.color.gradients' );
 }
 
 export function HoverBackgroundColorEditPure( {

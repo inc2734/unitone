@@ -17,7 +17,7 @@ export function resetHoverBorderColorFilter() {
 }
 
 export function isHoverBorderColorSupportDisabled( { name } ) {
-	return ! hasBlockSupport( name, '__experimentalBorder.color' );
+	return ! hasBlockSupport( name, 'unitone.hover.border.color' );
 }
 
 export function HoverBorderColorEditPure( {

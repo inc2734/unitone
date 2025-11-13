@@ -397,107 +397,142 @@ function unitone_set_site_logo_default_width( $settings ) {
 add_filter( 'block_type_metadata_settings', 'unitone_set_site_logo_default_width' );
 
 /**
- * Add hover color support.
+ * Add hover color supports.
  *
- * @param array $settings Array of determined settings for registering a block type.
+ * @param array $metadata Metadata for registering a block type.
  * @return array
  */
-function unitone_add_hover_color_support( $settings ) {
-	if ( ! in_array( $settings['name'], array( 'core/button', 'unitone/decorator' ), true ) ) {
-		return $settings;
+function unitone_add_hover_color_support( $metadata ) {
+	if ( ! in_array( $metadata['name'], array( 'core/button' ), true ) ) {
+		return $metadata;
 	}
 
-	$settings['attributes'] = array_merge(
-		$settings['attributes'],
+	$metadata['supports'] = array_merge(
+		$metadata['supports'],
 		array(
-			'hoverTextColor'             => array(
-				'type' => 'string',
-			),
-			'customHoverTextColor'       => array(
-				'type' => 'string',
-			),
-			'hoverBackgroundColor'       => array(
-				'type' => 'string',
-			),
-			'customHoverBackgroundColor' => array(
-				'type' => 'string',
-			),
-			'hoverGradient'              => array(
-				'type' => 'string',
-			),
-			'customHoverGradient'        => array(
-				'type' => 'string',
-			),
-			'hoverBorderColor'           => array(
-				'type' => 'string',
-			),
-			'customHoverBorderColor'     => array(
-				'type' => 'string',
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'hover' => array(
+						'color'  => array(
+							'background' => true,
+							'gradients'  => true,
+							'text'       => true,
+						),
+						'border' => array(
+							'color' => true,
+						),
+					),
+				),
 			),
 		)
 	);
 
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_hover_color_support' );
+
+/**
+ * Add hover color attributes.
+ *
+ * @param array $settings Array of determined settings for registering a block type.
+ * @return array
+ */
+function unitone_add_hover_color_attributes( $settings ) {
+	$has_hover_background_support   = unitone_has_block_support( 'unitone.hover.color.background', $settings );
+	$has_hover_gradient_support     = unitone_has_block_support( 'unitone.hover.color.gradients', $settings );
+	$has_hover_color_support        = unitone_has_block_support( 'unitone.hover.color.text', $settings );
+	$has_hover_border_color_support = unitone_has_block_support( 'unitone.hover.border.color', $settings );
+
+	if ( $has_hover_background_support ) {
+		$settings['attributes'] = array_merge(
+			$settings['attributes'],
+			array(
+				'hoverBackgroundColor'       => array(
+					'type' => 'string',
+				),
+				'customHoverBackgroundColor' => array(
+					'type' => 'string',
+				),
+			)
+		);
+	}
+
+	if ( $has_hover_gradient_support ) {
+		$settings['attributes'] = array_merge(
+			$settings['attributes'],
+			array(
+				'hoverGradient'       => array(
+					'type' => 'string',
+				),
+				'customHoverGradient' => array(
+					'type' => 'string',
+				),
+			)
+		);
+	}
+
+	if ( $has_hover_color_support ) {
+		$settings['attributes'] = array_merge(
+			$settings['attributes'],
+			array(
+				'hoverTextColor'       => array(
+					'type' => 'string',
+				),
+				'customHoverTextColor' => array(
+					'type' => 'string',
+				),
+			)
+		);
+	}
+
+	if ( $has_hover_border_color_support ) {
+		$settings['attributes'] = array_merge(
+			$settings['attributes'],
+			array(
+				'hoverBorderColor'       => array(
+					'type' => 'string',
+				),
+				'customHoverBorderColor' => array(
+					'type' => 'string',
+				),
+			)
+		);
+	}
+
 	return $settings;
 }
-add_filter( 'block_type_metadata_settings', 'unitone_add_hover_color_support' );
+add_filter( 'block_type_metadata_settings', 'unitone_add_hover_color_attributes' );
 
 /**
  * Apply hover color.
  *
  * @param string $block_content The block content.
  * @param array $block The full block, including name and attributes.
- * @param WP_Block $instance The block instance.
  * @return string
  */
-function unitone_apply_hover_color( $block_content, $block, $instance ) {
+function unitone_apply_hover_color( $block_content, $block ) {
 	if ( ! $block['blockName'] ) {
 		return $block_content;
 	}
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
-	$p->next_tag();
-
-	$metadata = $instance->block_type;
-	if ( ! $metadata ) {
+	if ( ! $p->next_tag() ) {
 		return $block_content;
 	}
 
-	$has_color_support        = unitone_has_block_support( 'color', $metadata );
-	$has_gradient_support     = unitone_has_block_support( 'color.gradient', $metadata );
-	$has_border_color_support = unitone_has_block_support( '__experimentalBorder.color', $metadata );
+	$metadata = \WP_Block_Type_Registry::get_instance()->get_registered( $block['blockName'] );
+
+	$has_hover_background_support   = unitone_has_block_support( 'unitone.hover.color.background', $metadata );
+	$has_hover_gradient_support     = unitone_has_block_support( 'unitone.hover.color.gradients', $metadata );
+	$has_hover_color_support        = unitone_has_block_support( 'unitone.hover.color.text', $metadata );
+	$has_hover_border_color_support = unitone_has_block_support( 'unitone.hover.border.color', $metadata );
 
 	if (
-		! $has_color_support &&
-		! $has_gradient_support &&
-		! $has_border_color_support
-	) {
-		return $block_content;
-	}
-
-	// Hover text color.
-	$has_hover_text_color_attributes =
-		( $metadata->attributes['hoverTextColor'] ?? false ) &&
-		( $metadata->attributes['customHoverTextColor'] ?? false );
-
-	// Hover background color and gradient.
-	$has_hover_background_color_attributes =
-		(
-			( $metadata->attributes['hoverBackgroundColor'] ?? false ) &&
-			( $metadata->attributes['customHoverBackgroundColor'] ?? false )
-		) || (
-			( $metadata->attributes['hoverGradient'] ?? false ) &&
-			( $metadata->attributes['customHoverGradient'] ?? false )
-		);
-
-	// Hover border color.
-	$has_hover_border_color_attributes =
-		( $metadata->attributes['hoverBorderColor'] ?? false ) &&
-		( $metadata->attributes['customHoverBorderColor'] ?? false );
-
-	if (
-		! $has_hover_text_color_attributes &&
-		! $has_hover_background_color_attributes &&
-		! $has_hover_border_color_attributes
+		! $has_hover_background_support &&
+		! $has_hover_gradient_support &&
+		! $has_hover_color_support &&
+		! $has_hover_border_color_support
 	) {
 		return $block_content;
 	}
@@ -520,24 +555,8 @@ function unitone_apply_hover_color( $block_content, $block, $instance ) {
 		}
 	};
 
-	// Apply hover text color.
-	if ( $has_color_support && $has_hover_text_color_attributes ) {
-		$hover_text_color        = $block['attrs']['hoverTextColor'] ?? null;
-		$custom_hover_text_color = $block['attrs']['customHoverTextColor'] ?? null;
-
-		if ( $hover_text_color || $custom_hover_text_color ) {
-			$p->add_class( 'has-text-color-hover' );
-
-			if ( $hover_text_color ) {
-				$add_style( '--unitone--color--hover', 'var(--wp--preset--color--' . $hover_text_color . ')' );
-			} elseif ( $custom_hover_text_color ) {
-				$add_style( '--unitone--color--hover', $custom_hover_text_color );
-			}
-		}
-	}
-
 	// Apply hover background color.
-	if ( $has_color_support && $has_hover_background_color_attributes ) {
+	if ( $has_hover_background_support ) {
 		$hover_background_color        = $block['attrs']['hoverBackgroundColor'] ?? null;
 		$custom_hover_background_color = $block['attrs']['customHoverBackgroundColor'] ?? null;
 
@@ -553,7 +572,7 @@ function unitone_apply_hover_color( $block_content, $block, $instance ) {
 	}
 
 	// Apply hover gradient.
-	if ( $has_gradient_support && $has_hover_background_color_attributes ) {
+	if ( $has_hover_gradient_support ) {
 		$hover_gradient        = $block['attrs']['hoverGradient'] ?? null;
 		$custom_hover_gradient = $block['attrs']['customHoverGradient'] ?? null;
 
@@ -568,8 +587,24 @@ function unitone_apply_hover_color( $block_content, $block, $instance ) {
 		}
 	}
 
+	// Apply hover text color.
+	if ( $has_hover_color_support ) {
+		$hover_text_color        = $block['attrs']['hoverTextColor'] ?? null;
+		$custom_hover_text_color = $block['attrs']['customHoverTextColor'] ?? null;
+
+		if ( $hover_text_color || $custom_hover_text_color ) {
+			$p->add_class( 'has-text-color-hover' );
+
+			if ( $hover_text_color ) {
+				$add_style( '--unitone--color--hover', 'var(--wp--preset--color--' . $hover_text_color . ')' );
+			} elseif ( $custom_hover_text_color ) {
+				$add_style( '--unitone--color--hover', $custom_hover_text_color );
+			}
+		}
+	}
+
 	// Apply hover border color.
-	if ( $has_border_color_support && $has_hover_border_color_attributes ) {
+	if ( $has_hover_border_color_support ) {
 		$hover_border_color        = $block['attrs']['hoverBorderColor'] ?? null;
 		$custom_hover_border_color = $block['attrs']['customHoverBorderColor'] ?? null;
 
@@ -584,7 +619,6 @@ function unitone_apply_hover_color( $block_content, $block, $instance ) {
 		}
 	}
 
-	$block_content = $p->get_updated_html();
-	return $block_content;
+	return $p->get_updated_html();
 }
-add_filter( 'render_block', 'unitone_apply_hover_color', 10, 3 );
+add_filter( 'render_block', 'unitone_apply_hover_color', 10, 2 );

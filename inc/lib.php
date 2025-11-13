@@ -96,6 +96,10 @@ function unitone_array_get( array $vars, $format ) {
  * @return boolean
  */
 function unitone_has_block_support( $support, $metadata ) {
+	if ( is_array( $metadata ) ) {
+		$metadata = (object) $metadata;
+	}
+
 	return null !== unitone_array_get( $metadata->supports ?? array(), $support );
 }
 

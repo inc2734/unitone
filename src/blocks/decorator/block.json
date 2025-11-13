@@ -110,6 +110,16 @@
 			"backgroundClip": true,
 			"parallax": true,
 			"scrollAnimation": true,
+			"hover": {
+				"color": {
+					"background": true,
+					"gradients": true,
+					"text": true
+				},
+				"border": {
+					"color": true
+				}
+			},
 			"style": true
 		}
 	},

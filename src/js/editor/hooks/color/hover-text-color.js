@@ -17,7 +17,7 @@ export function resetHoverTextColorFilter() {
 }
 
 export function isHoverTextColorSupportDisabled( { name } ) {
-	return ! hasBlockSupport( name, 'color' );
+	return ! hasBlockSupport( name, 'unitone.hover.color.text' );
 }
 
 export function HoverTextColorEditPure( {

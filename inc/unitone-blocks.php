@@ -127,7 +127,8 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 		return $block_content;
 	}
 
-	$attributes = $block['attrs'] ?? array();
+	$attributes   = $block['attrs'] ?? array();
+	$inner_blocks = $block['innerBlocks'] ?? array();
 
 	static $defaults = null;
 	if ( null === $defaults ) {
@@ -143,6 +144,62 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 	$sm_breakpoint = $attributes['smBreakpoint'] ?? $defaults['sm'];
 	$client_id     = $attributes['clientId'] ?? wp_rand();
 
+	$has_md_item_responsive = false;
+	$has_sm_item_responsive = false;
+
+	foreach ( $inner_blocks as $inner_block ) {
+		$unitone = $inner_block['attrs']['unitone'] ?? array();
+
+		if ( ! $has_md_item_responsive ) {
+			if (
+				( is_array( $unitone['alignSelf'] ?? null ) && ( $unitone['alignSelf']['md'] ?? null ) ) ||
+				( is_array( $unitone['justifySelf'] ?? null ) && ( $unitone['justifySelf']['md'] ?? null ) ) ||
+				( is_array( $unitone['gridColumn'] ?? null ) && ( $unitone['gridColumn']['md'] ?? null ) ) ||
+				( is_array( $unitone['gridRow'] ?? null ) && ( $unitone['gridRow']['md'] ?? null ) )
+			) {
+				$has_md_item_responsive = true;
+			}
+		}
+
+		if ( ! $has_sm_item_responsive ) {
+			if (
+				( is_array( $unitone['alignSelf'] ?? null ) && ( $unitone['alignSelf']['sm'] ?? null ) ) ||
+				( is_array( $unitone['justifySelf'] ?? null ) && ( $unitone['justifySelf']['sm'] ?? null ) ) ||
+				( is_array( $unitone['gridColumn'] ?? null ) && ( $unitone['gridColumn']['sm'] ?? null ) ) ||
+				( is_array( $unitone['gridRow'] ?? null ) && ( $unitone['gridRow']['sm'] ?? null ) )
+			) {
+				$has_sm_item_responsive = true;
+			}
+		}
+
+		if ( $has_md_item_responsive && $has_sm_item_responsive ) {
+			break;
+		}
+	}
+
+	$md_columns_option = $attributes['mdColumnsOption'] ?? null;
+	$sm_columns_option = $attributes['smColumnsOption'] ?? null;
+	$md_rows_option    = $attributes['mdRowsOption'] ?? null;
+	$sm_rows_option    = $attributes['smRowsOption'] ?? null;
+
+	$md_conditions = array(
+		'columns_columns' => 'columns' === $md_columns_option && ( $attributes['mdColumns'] ?? null ),
+		'columns_min'     => 'min' === $md_columns_option && ( $attributes['mdColumnMinWidth'] ?? null ),
+		'columns_free'    => 'free' === $md_columns_option && ( $attributes['mdGridTemplateColumns'] ?? null ),
+		'rows_rows'       => 'rows' === $md_rows_option && ( $attributes['mdRows'] ?? null ),
+		'rows_free'       => 'free' === $md_rows_option && ( $attributes['mdGridTemplateRows'] ?? null ),
+		'items'           => $has_md_item_responsive,
+	);
+
+	$sm_conditions = array(
+		'columns_columns' => 'columns' === $sm_columns_option && ( $attributes['smColumns'] ?? null ),
+		'columns_min'     => 'min' === $sm_columns_option && ( $attributes['smColumnMinWidth'] ?? null ),
+		'columns_free'    => 'free' === $sm_columns_option && ( $attributes['smGridTemplateColumns'] ?? null ),
+		'rows_rows'       => 'rows' === $sm_rows_option && ( $attributes['smRows'] ?? null ),
+		'rows_free'       => 'free' === $sm_rows_option && ( $attributes['smGridTemplateRows'] ?? null ),
+		'items'           => $has_sm_item_responsive,
+	);
+
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	if ( ! $p->next_tag() ) {
 		return $block_content;
@@ -154,25 +211,96 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 
 	static $build_css = null;
 	if ( null === $build_css ) {
-		$build_css = function ( $selector, $breakpoint, $size ) {
+		$build_css = function ( $selector, $breakpoint, $size, $condition ) {
+			$columns_columns = $condition['columns_columns'] ?? false;
+			$columns_min     = $condition['columns_min'] ?? false;
+			$columns_free    = $condition['columns_free'] ?? false;
+			$rows_rows       = $condition['rows_rows'] ?? false;
+			$rows_free       = $condition['rows_free'] ?? false;
+			$items           = $condition['items'] ?? false;
+
+			if (
+				! $columns_columns &&
+				! $columns_min &&
+				! $columns_free &&
+				! $rows_rows &&
+				! $rows_free &&
+				! $items
+			) {
+				return '';
+			}
+
 			$prefix = '--unitone--' . $size;
+			$rules  = array();
+
+			if ( $columns_columns ) {
+				$rules[] = sprintf(
+					'%1$s[data-unitone-layout~="-columns\\:%2$s\\:columns"] { --unitone--active--columns: var(%3$s-columns); }',
+					$selector,
+					$size,
+					$prefix
+				);
+			}
+
+			if ( $columns_min ) {
+				$rules[] = sprintf(
+					'%1$s[data-unitone-layout~="-columns\\:%2$s\\:min"] { --unitone--active--column-min-width: var(%3$s-column-min-width); }',
+					$selector,
+					$size,
+					$prefix
+				);
+			}
+
+			if ( $columns_free ) {
+				$rules[] = sprintf(
+					'%1$s[data-unitone-layout~="-columns\\:%2$s\\:free"] { --unitone--active--grid-template-columns: var(%3$s-grid-template-columns); }',
+					$selector,
+					$size,
+					$prefix
+				);
+			}
+
+			if ( $rows_rows ) {
+				$rules[] = sprintf(
+					'%1$s[data-unitone-layout~="-rows\\:%2$s\\:rows"] { --unitone--active--rows: var(%3$s-rows); }',
+					$selector,
+					$size,
+					$prefix
+				);
+			}
+
+			if ( $rows_free ) {
+				$rules[] = sprintf(
+					'%1$s[data-unitone-layout~="-rows\\:%2$s\\:free"] { --unitone--active--grid-template-rows: var(%3$s-grid-template-rows); }',
+					$selector,
+					$size,
+					$prefix
+				);
+			}
+
+			if ( $items ) {
+				$rules[] = sprintf(
+					'%1$s > * { --unitone--active--grid-column: var(%2$s-grid-column); --unitone--active--grid-row: var(%2$s-grid-row); --unitone--active--align-self: var(%2$s-align-self); --unitone--active--justify-self: var(%2$s-justify-self); }',
+					$selector,
+					$prefix
+				);
+			}
 
 			return sprintf(
-				'@media not all and (min-width: %1$s) { %2$s[data-unitone-layout~="-columns\\:%4$s\\:columns"] { --unitone--active--columns: var(%3$s-columns); } %2$s[data-unitone-layout~="-columns\\:%4$s\\:min"] { --unitone--active--column-min-width: var(%3$s-column-min-width); }\ %2$s[data-unitone-layout~="-columns\\:%4$s\\:free"] { --unitone--active--grid-template-columns: var(%3$s-grid-template-columns); }\ %2$s[data-unitone-layout~="-rows\\:%4$s\\:rows"] { --unitone--active--rows: var(%3$s-rows); } %2$s[data-unitone-layout~="-rows\\:%4$s\\:free"] { --unitone--active--grid-template-rows: var(%3$s-grid-template-rows); } %2$s > * { --unitone--active--grid-column: var(%3$s-grid-column); --unitone--active--grid-row: var(%3$s-grid-row); --unitone--active--align-self: var(%3$s-align-self); --unitone--active--justify-self: var(%3$s-justify-self); } }',
+				'@media not all and (min-width: %1$s) { %2$s }',
 				esc_attr( $breakpoint ),
-				$selector,
-				$prefix,
-				$size
+				implode( ' ', $rules )
 			);
 		};
 	}
 
 	$selector = '[data-unitone-client-id="' . esc_attr( $client_id ) . '"]';
-
-	wp_add_inline_style(
-		'unitone-grid-style',
-		$build_css( $selector, $md_breakpoint, 'md' ) . $build_css( $selector, $sm_breakpoint, 'sm' )
-	);
+	$css      =
+		$build_css( $selector, $md_breakpoint, 'md', $md_conditions ) .
+		$build_css( $selector, $sm_breakpoint, 'sm', $sm_conditions );
+	if ( $css ) {
+		wp_add_inline_style( 'unitone-grid-style', $css );
+	}
 
 	return $p->get_updated_html();
 }

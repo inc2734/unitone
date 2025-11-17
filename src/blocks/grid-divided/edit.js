@@ -101,7 +101,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	useEffect( () => {
 		setAttributes( { clientId } );
-	}, [ clientId, setAttributes ] );
+	}, [ clientId ] );
 
 	const styles = {
 		'--unitone--columns':

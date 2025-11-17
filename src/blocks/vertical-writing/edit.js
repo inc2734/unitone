@@ -96,13 +96,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							metadata.attributes.textOrientation.default
 						}
 						isShownByDefault
-						label={
-							<>
-								{ __( 'Text orientation', 'unitone' ) }
-								&nbsp;:&nbsp;
-								<code>text-orientation</code>
-							</>
-						}
+						label={ __( 'Text orientation', 'unitone' ) }
 						onDeselect={ () =>
 							setAttributes( {
 								textOrientation:

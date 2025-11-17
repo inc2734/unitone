@@ -373,11 +373,31 @@
 				}
 			}
 
+			.unitone-help-container__content {
+				display: grid;
+				grid-template-rows: subgrid;
+				grid-column: 1 / -2;
+				grid-row: 1 / -1;
+				gap: 0;
+			}
+
 			.unitone-help-container__action {
 				display: grid;
 				grid-template-rows: subgrid;
+				grid-column: 2 / -1;
 				grid-row: -2 / -1;
 				align-items: center;
+			}
+		}
+	}
+
+	&__action {
+		.has-icon {
+			box-shadow: none !important;
+			outline: none !important;
+
+			&:focus-visible {
+				color: var(--wp-components-color-accent, var(--wp-admin-theme-color, #3858e9));
 			}
 		}
 	}

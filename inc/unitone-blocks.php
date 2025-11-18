@@ -135,8 +135,12 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 		$block_type = \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/grid' );
 
 		$defaults = array(
-			'md' => $block_type->attributes['mdBreakpoint']['default'],
-			'sm' => $block_type->attributes['smBreakpoint']['default'],
+			'md'                => $block_type->attributes['mdBreakpoint']['default'] ?? null,
+			'sm'                => $block_type->attributes['smBreakpoint']['default'] ?? null,
+			'md_columns_option' => $block_type->attributes['mdColumnsOption']['default'] ?? null,
+			'sm_columns_option' => $block_type->attributes['smColumnsOption']['default'] ?? null,
+			'md_rows_option'    => $block_type->attributes['mdRowsOption']['default'] ?? null,
+			'sm_rows_option'    => $block_type->attributes['smRowsOption']['default'] ?? null,
 		);
 	}
 
@@ -177,10 +181,10 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 		}
 	}
 
-	$md_columns_option = $attributes['mdColumnsOption'] ?? null;
-	$sm_columns_option = $attributes['smColumnsOption'] ?? null;
-	$md_rows_option    = $attributes['mdRowsOption'] ?? null;
-	$sm_rows_option    = $attributes['smRowsOption'] ?? null;
+	$md_columns_option = $attributes['mdColumnsOption'] ?? $defaults['md_columns_option'];
+	$sm_columns_option = $attributes['smColumnsOption'] ?? $defaults['sm_columns_option'];
+	$md_rows_option    = $attributes['mdRowsOption'] ?? $defaults['md_rows_option'];
+	$sm_rows_option    = $attributes['smRowsOption'] ?? $defaults['sm_rows_option'];
 
 	$md_conditions = array(
 		'columns_columns' => 'columns' === $md_columns_option && ( $attributes['mdColumns'] ?? null ),

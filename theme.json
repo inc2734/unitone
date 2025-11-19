@@ -593,6 +593,11 @@
 					"stripes": {},
 					"underline": {}
 				}
+			},
+			"core/term-template": {
+				"spacing": {
+					"blockGap": "0px"
+				}
 			}
 		},
 		"spacing": {

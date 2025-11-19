@@ -208,6 +208,7 @@ function unitone_enqueue_block_styles() {
 		'core/social-links'       => array(),
 		'core/table'              => array(),
 		'core/tag-cloud'          => array(),
+		'core/term-template'      => array(),
 		'core/video'              => array(),
 	);
 

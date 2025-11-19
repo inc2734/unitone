@@ -1,0 +1,7 @@
+.wp-block-term {
+	margin-inline-start: 0;
+
+	> :where(.wp-block-group) {
+		--unitone--margin-block: var(--unitone--s-2);
+	}
+}

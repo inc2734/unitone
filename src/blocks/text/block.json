@@ -47,6 +47,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"blockAlign": true,
 			"gap": true,

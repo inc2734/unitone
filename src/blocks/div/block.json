@@ -19,6 +19,7 @@
 		"className": false,
 		"anchor": true,
 		"align": [ "full", "wide" ],
+		"allowedBlocks": true,
 		"unitone": {
 			"style": true
 		}

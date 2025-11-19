@@ -80,6 +80,7 @@
 				"width": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"gap": true,
 			"gutters": true,

@@ -40,7 +40,8 @@
 			"background": true,
 			"link": true,
 			"text": true
-		}
+		},
+		"allowedBlocks": true
 	},
 	"category": "unitone/component",
 	"editorScript": "file:./index.js",

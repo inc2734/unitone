@@ -56,9 +56,33 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 		)
 	);
 
+	$context = wp_json_encode(
+		array(
+			'submenuOpenedBy' => array(
+				'click' => false,
+				'hover' => false,
+				'focus' => false,
+			),
+			'rect'         => array(
+				'top'   => 0,
+				'left'  => 0,
+				'width' => 0,
+			),
+			'megaMenuRect' => array(
+				'left' => 0,
+				'width' => 0,
+				'diff' => 0,
+			),
+			'viewport'     => array(
+				'width'  => 0,
+				'height' => 0,
+			),
+		)
+	);
+
 	$html  = '<li ' . $block_wrapper_attributes;
 	$html .= ' data-wp-interactive="unitone/mega-menu"';
-	$html .= ' data-wp-context=\'{ "submenuOpenedBy": { "click": false, "hover": false, "focus": false }, rect: { "top": 0, "left": 0, "width": 0 }, megaMenuRect: { "left": 0, "width": 0, "diff": 0 }, viewport: { "width": 0, "height": 0 } }\'';
+	$html .= ' data-wp-context=\'' . esc_attr( $context ) . '\'';
 	$html .= ' data-wp-watch="callbacks.initMenu"';
 	$html .= ' data-wp-on--focusout="actions.handleMenuFocusout"';
 	$html .= ' data-wp-on--keydown="actions.handleMenuKeydown"';

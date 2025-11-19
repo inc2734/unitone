@@ -63,17 +63,17 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 				'hover' => false,
 				'focus' => false,
 			),
-			'rect'         => array(
+			'rect'            => array(
 				'top'   => 0,
 				'left'  => 0,
 				'width' => 0,
 			),
-			'megaMenuRect' => array(
-				'left' => 0,
+			'megaMenuRect'    => array(
+				'left'  => 0,
 				'width' => 0,
-				'diff' => 0,
+				'diff'  => 0,
 			),
-			'viewport'     => array(
+			'viewport'        => array(
 				'width'  => 0,
 				'height' => 0,
 			),

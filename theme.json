@@ -103,8 +103,8 @@
 			"minHeight": true
 		},
 		"custom": {
-			"container-max-width": "min(100%, var(--unitone--container-max-width))",
-			"content-max-width": "min(100%, var(--unitone--measure))"
+			"container-max-width": "1334px",
+			"content-max-width": "46rem"
 		},
 		"layout": {
 			"contentSize": "var(--wp--custom--content-max-width)",

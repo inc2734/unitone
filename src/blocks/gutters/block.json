@@ -35,6 +35,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"padding": true,
 			"fluidTypography": true,

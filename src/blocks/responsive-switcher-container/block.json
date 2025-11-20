@@ -24,7 +24,8 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
-		"inserter": false
+		"inserter": false,
+		"allowedBlocks": true
 	},
 	"category": "unitone/component",
 	"editorScript": "file:./index.js"

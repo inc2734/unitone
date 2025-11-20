@@ -42,6 +42,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"alignItems": true,
 			"justifyContent": [ "start", "center", "end" ],

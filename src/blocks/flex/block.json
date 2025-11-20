@@ -67,6 +67,7 @@
 				"verticalAlignment": "stretch"
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"gap": {
 				"splitOnAxis": true

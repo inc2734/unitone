@@ -48,6 +48,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"alignContent": true,
 			"padding": {

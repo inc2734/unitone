@@ -42,7 +42,8 @@
 			"background": true,
 			"color": true,
 			"link": true
-		}
+		},
+		"allowedBlocks": true
 	},
 	"example": {
 		"innerBlocks": [

@@ -42,6 +42,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"maxWidth": true,
 			"gutters": true,

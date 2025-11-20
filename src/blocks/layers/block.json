@@ -64,6 +64,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"gap": true,
 			"minHeight": true,

@@ -34,6 +34,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"flexBasis": true,
 			"fluidTypography": true,

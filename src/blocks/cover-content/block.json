@@ -56,6 +56,7 @@
 				"shadow": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"padding": {
 				"split": true

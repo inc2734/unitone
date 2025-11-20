@@ -53,6 +53,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"fluidTypography": true,
 			"halfLeading": true,

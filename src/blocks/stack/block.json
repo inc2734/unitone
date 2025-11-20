@@ -43,6 +43,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"gap": true,
 			"negative": true,

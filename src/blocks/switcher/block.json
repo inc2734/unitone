@@ -50,6 +50,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"alignItems": true,
 			"gap": {

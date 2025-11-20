@@ -51,6 +51,7 @@
 				"fontSize": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"gap": {
 				"splitOnAxis": true

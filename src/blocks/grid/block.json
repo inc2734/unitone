@@ -160,6 +160,7 @@
 				"width": true
 			}
 		},
+		"allowedBlocks": true,
 		"unitone": {
 			"alignItems": true,
 			"justifyItems": true,

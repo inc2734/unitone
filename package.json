@@ -65,7 +65,7 @@
 		"blocks:php": "cpy \"src/blocks/**/*.php\" \"dist/blocks\"",
 		"blocks:img": "cpy \"src/blocks/**/img/*\" \"dist/blocks\"",
 		"blocks": "rimraf dist/blocks && run-s format:blocks blocks:build blocks:php blocks:img",
-		"js:app": "rimraf dist/js/app && wp-scripts build src/js/app/app.js --output-path=dist/js/app",
+		"js:app": "rimraf dist/js/app && wp-scripts build src/js/app/app.js src/js/app/media-link.js --output-path=dist/js/app",
 		"js:editor": "rimraf dist/js/editor && wp-scripts build src/js/editor/editor.js --output-path=dist/js/editor",
 		"js": "run-s format:js && run-p js:*",
 		"formats:build": "wp-scripts build src/formats/formats.js --output-path=dist/formats",

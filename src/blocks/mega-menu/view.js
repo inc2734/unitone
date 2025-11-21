@@ -26,7 +26,7 @@ const { state, actions } = store( 'unitone/mega-menu', {
 		get isMenuOpen() {
 			// The menu is opened if either `click`, `hover` or `focus` is true.
 			return (
-				Object.values( state.menuOpenedBy ).filter( Boolean ).length > 0
+				Object.values( this.menuOpenedBy ).filter( Boolean ).length > 0
 			);
 		},
 		get menuOpenedBy() {

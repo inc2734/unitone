@@ -91,12 +91,19 @@ const OGPPanel = () => {
 	const { ogpImageId, media, isRequestingOGPImageMedia, postTitle } =
 		useSelect(
 			( select ) => {
-				const { getMedia, hasFinishedResolution } = select( coreStore );
+				const { getEntityRecord, hasFinishedResolution } =
+					select( coreStore );
 				const { getEditedPostAttribute } = select( editorStore );
 
 				const _ogpImageId = meta?.[ 'unitone-ogp-image-id' ];
+				const entityArgs = [
+					'postType',
+					'attachment',
+					_ogpImageId,
+					{ context: 'view' },
+				];
 				const _media = _ogpImageId
-					? getMedia( _ogpImageId, { context: 'view' } )
+					? getEntityRecord( ...entityArgs )
 					: null;
 
 				setOgpImageUrl( _media?.source_url );
@@ -104,14 +111,14 @@ const OGPPanel = () => {
 				return {
 					ogpImageId: _ogpImageId,
 					media: _ogpImageId
-						? getMedia( _ogpImageId, { context: 'view' } )
+						? getEntityRecord( ...entityArgs )
 						: null,
 					isRequestingOGPImageMedia:
 						!! _ogpImageId &&
-						! hasFinishedResolution( 'getMedia', [
-							_ogpImageId,
-							{ context: 'view' },
-						] ),
+						! hasFinishedResolution(
+							'getEntityRecord',
+							entityArgs
+						),
 					postTitle: getEditedPostAttribute( 'title' ),
 				};
 			},

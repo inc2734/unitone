@@ -250,7 +250,11 @@ function MediaInlinePopover( {
 			if ( ! mediaId ) {
 				return null;
 			}
-			return select( coreStore ).getMedia( mediaId );
+			return select( coreStore ).getEntityRecord(
+				'postType',
+				'attachment',
+				mediaId
+			);
 		},
 		[ mediaId ]
 	);

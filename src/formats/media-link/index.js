@@ -47,6 +47,8 @@ const settings = {
 		'data-unitone-media-id': 'data-unitone-media-id',
 		'data-unitone-media-type': 'data-unitone-media-type',
 		'data-unitone-media-alt': 'data-unitone-media-alt',
+		'data-unitone-media-width': 'data-unitone-media-width',
+		'data-unitone-media-height': 'data-unitone-media-height',
 	},
 	contentEditable: true,
 	edit: Edit,
@@ -72,6 +74,8 @@ function buildAttributesFromMedia( media ) {
 	}
 	const mediaType = getMediaType( media );
 	const altText = media.alt_text || media.alt || '';
+	const width = media?.media_details?.width ?? media?.width ?? null;
+	const height = media?.media_details?.height ?? media?.height ?? null;
 	const attributes = {
 		href: media.url,
 		target: '_blank',
@@ -79,6 +83,12 @@ function buildAttributesFromMedia( media ) {
 		'data-unitone-media-type': mediaType,
 		'data-unitone-media-alt': altText,
 	};
+	if ( width ) {
+		attributes[ 'data-unitone-media-width' ] = String( width );
+	}
+	if ( height ) {
+		attributes[ 'data-unitone-media-height' ] = String( height );
+	}
 	return attributes;
 }
 

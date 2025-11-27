@@ -5,6 +5,7 @@
 	display: inline-flex;
 
 	.wp-block-button__link {
+		--unitone--border-radius: inherit;
 		--unitone--padding: inherit;
 	}
 }

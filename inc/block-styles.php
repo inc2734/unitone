@@ -18,6 +18,14 @@ function unitone_register_block_styles() {
 	);
 
 	register_block_style(
+		'core/button',
+		array(
+			'name'  => 'underline',
+			'label' => __( 'underline', 'unitone' ),
+		)
+	);
+
+	register_block_style(
 		'core/list',
 		array(
 			'name'  => 'no-marker',

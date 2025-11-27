@@ -17,3 +17,15 @@
 		color: var(--wp--preset--color--unitone--text);
 	}
 }
+
+:root :where(.wp-block-button.is-style-underline) {
+	--unitone--border-radius: 0px;
+	--unitone--padding: 0px;
+
+	.wp-block-button__link {
+		background-color: transparent;
+		color: var(--wp--preset--color--unitone--text);
+		padding-bottom: 2px;
+		border-bottom: 1px solid currentColor;
+	}
+}

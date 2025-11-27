@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-11-27T05:11:04+00:00\n"
-"PO-Revision-Date: 2025-11-27 14:11+0900\n"
+"POT-Creation-Date: 2025-11-27T12:44:30+00:00\n"
+"PO-Revision-Date: 2025-11-27 21:45+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3391,6 +3391,18 @@ msgstr "最大の高さ"
 #: dist/js/editor/editor.js:7
 msgid "Min height"
 msgstr "最小の高さ"
+
+#: dist/js/editor/editor.js:7
+msgid "Full Height"
+msgstr "全高"
+
+#: dist/js/editor/editor.js:7
+msgid "Full Height (>= 840px)"
+msgstr "全高（840px 以下）"
+
+#: dist/js/editor/editor.js:7
+msgid "Full Height (<= 667px)"
+msgstr "全高（667px 以上）"
 
 #: dist/js/editor/editor.js:7
 msgid "auto-fill"

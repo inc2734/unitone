@@ -198,3 +198,15 @@ legend {
 		position: static;
 	}
 }
+
+[data-unitone-layout~="-min-height\:full"] {
+	--unitone--min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+}
+
+[data-unitone-layout~="-min-height\:full-max"] {
+	--unitone--min-height: min(100svh - var(--wp-admin--admin-bar--height, 0px), 840px);
+}
+
+[data-unitone-layout~="-min-height\:full-min"] {
+	--unitone--min-height: max(100svh - var(--wp-admin--admin-bar--height, 0px), 667px);
+}

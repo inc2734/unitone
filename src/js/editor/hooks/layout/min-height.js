@@ -1,9 +1,21 @@
+import clsx from 'clsx';
+
+import {
+	BaseControl,
+	Button,
+	SelectControl,
+	TextControl,
+	__experimentalHStack as HStack,
+} from '@wordpress/components';
+
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
-import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { settings as settingsIcon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
+
+const PRESETS = [ 'full', 'full-max', 'full-min' ];
 
 export function hasMinHeightValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
@@ -69,23 +81,76 @@ export function MinHeightEdit( {
 			?.default?.minHeight;
 	}, [] );
 
-	return (
-		<TextControl
-			__next40pxDefaultSize
-			__nextHasNoMarginBottom
-			label={ label }
-			value={ unitone?.minHeight ?? defaultValue ?? '' }
-			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...unitone,
-					minHeight: newValue || undefined,
-				};
+	const isPresetValue = PRESETS.includes( unitone?.minHeight );
 
-				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
-				} );
-			} }
-		/>
+	const options = [
+		{
+			label: __( 'Full Height', 'unitone' ),
+			value: 'full',
+		},
+		{
+			label: __( 'Full Height (>= 840px)', 'unitone' ),
+			value: 'full-max',
+		},
+		{
+			label: __( 'Full Height (<= 667px)', 'unitone' ),
+			value: 'full-min',
+		},
+	];
+
+	const onChangeMinHeight = ( newValue ) => {
+		const newUnitone = {
+			...unitone,
+			minHeight: newValue || undefined,
+		};
+
+		setAttributes( {
+			unitone: cleanEmptyObject( newUnitone ),
+		} );
+	};
+
+	return (
+		<BaseControl
+			__nextHasNoMarginBottom
+			className="unitone-width-control"
+			label={ label }
+			id="unitone-min-height-control"
+		>
+			<HStack alignment="center">
+				{ isPresetValue ? (
+					<SelectControl
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+						options={ options }
+						value={ unitone?.minHeight ?? defaultValue ?? '' }
+						onChange={ onChangeMinHeight }
+					/>
+				) : (
+					<TextControl
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+						id="unitone-min-height-control"
+						value={ unitone?.minHeight ?? defaultValue ?? '' }
+						onChange={ onChangeMinHeight }
+					/>
+				) }
+
+				<Button
+					label={
+						! isPresetValue
+							? __( 'Use size preset' )
+							: __( 'Set custom size' )
+					}
+					icon={ settingsIcon }
+					onClick={ () => {
+						onChangeMinHeight( ! isPresetValue ? 'full' : '' );
+					} }
+					isPressed={ ! isPresetValue }
+					size="small"
+					iconSize={ 24 }
+				/>
+			</HStack>
+		</BaseControl>
 	);
 }
 
@@ -108,13 +173,23 @@ export function withMinHeightBlockProps( settings ) {
 		return settings;
 	}
 
+	const isPresetValue = PRESETS.includes( attributes?.unitone?.minHeight );
+
 	return {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
+			'data-unitone-layout': clsx(
+				settings.wrapperProps?.[ 'data-unitone-layout' ],
+				{
+					[ `-min-height:${ newMinHeight }` ]: isPresetValue,
+				}
+			),
 			style: {
 				...settings.wrapperProps?.style,
-				'--unitone--min-height': newMinHeight,
+				'--unitone--min-height': ! isPresetValue
+					? newMinHeight
+					: undefined,
 			},
 		},
 	};

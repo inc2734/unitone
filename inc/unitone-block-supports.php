@@ -334,7 +334,14 @@ add_filter(
 
 		// --unitone--min-height
 		if ( unitone_has_block_support( 'unitone.minHeight', $metadata ) || $has_supported_attribute( 'minHeight' ) ) {
-			$add_style( '--unitone--min-height', $get_attribute( 'minHeight' ) );
+			$presets   = array( 'full', 'full-max', 'full-min' );
+			$attribute = $get_attribute( 'minHeight' );
+
+			if ( in_array( $attribute, $presets, true ) ) {
+				$add_attribute( '-min-height', $attribute );
+			} else {
+				$add_style( '--unitone--min-height', $attribute );
+			}
 		}
 
 		// -negative

@@ -4,7 +4,6 @@ import {
 	__experimentalVStack as VStack,
 	__experimentalHeading as Heading,
 	__experimentalHStack as HStack,
-	__experimentalItemGroup as ItemGroup,
 	__experimentalDropdownContentWrapper as DropdownContentWrapper,
 	BaseControl,
 	Button,
@@ -194,7 +193,10 @@ function renderToggle( { hasValue, resetValue } ) {
 
 		const toggleProps = {
 			onClick: onToggle,
-			className: clsx( { 'is-open': isOpen } ),
+			className: clsx(
+				'block-editor-global-styles__shadow-dropdown-toggle',
+				{ 'is-open': isOpen }
+			),
 			'aria-expanded': isOpen,
 			ref,
 		};
@@ -301,40 +303,37 @@ export function DropShadowEdit( {
 				{ __( 'Filter', 'unitone' ) }
 			</BaseControl.VisualLabel>
 
-			<ItemGroup isBordered isSeparated>
-				<ShadowPopover
-					label={ label }
-					hasValue={ hasDropShadowValue( {
-						name,
+			<ShadowPopover
+				label={ label }
+				hasValue={ hasDropShadowValue( {
+					name,
+					attributes: { unitone },
+				} ) }
+				resetValue={ () => {
+					resetDropShadow( {
 						attributes: { unitone },
-					} ) }
-					resetValue={ () => {
-						resetDropShadow( {
-							attributes: { unitone },
-							setAttributes,
-						} );
-					} }
-					shadow={ shadow ?? defaultShadow }
-					settings={ settings }
-					onShadowChange={ ( newValue ) => {
-						const slug = mergedShadowPresets?.find(
-							( { shadow: shadowName } ) =>
-								shadowName === newValue
-						)?.slug;
+						setAttributes,
+					} );
+				} }
+				shadow={ shadow ?? defaultShadow }
+				settings={ settings }
+				onShadowChange={ ( newValue ) => {
+					const slug = mergedShadowPresets?.find(
+						( { shadow: shadowName } ) => shadowName === newValue
+					)?.slug;
 
-						const newUnitone = {
-							...unitone,
-							dropShadow: slug
-								? `var:preset|shadow|${ slug }`
-								: newValue || undefined,
-						};
+					const newUnitone = {
+						...unitone,
+						dropShadow: slug
+							? `var:preset|shadow|${ slug }`
+							: newValue || undefined,
+					};
 
-						setAttributes( {
-							unitone: cleanEmptyObject( newUnitone ),
-						} );
-					} }
-				/>
-			</ItemGroup>
+					setAttributes( {
+						unitone: cleanEmptyObject( newUnitone ),
+					} );
+				} }
+			/>
 		</>
 	);
 }

@@ -431,8 +431,24 @@
 	grid-column: 1 / -1;
 
 	> .components-tools-panel-item:not(:first-child) {
-		> .components-item-group {
+		> .block-editor-global-styles__shadow-dropdown {
 			border-top: none;
+		}
+	}
+
+	> .components-tools-panel-item {
+		&:first-child {
+			> .block-editor-global-styles__shadow-dropdown {
+				border-bottom-right-radius: 0px;
+				border-bottom-left-radius: 0px;
+			}
+		}
+
+		&:nth-child(2) {
+			> .block-editor-global-styles__shadow-dropdown {
+				border-top-right-radius: 0px;
+				border-top-left-radius: 0px;
+			}
 		}
 	}
 }

@@ -4,7 +4,6 @@ import {
 	__experimentalVStack as VStack,
 	__experimentalHeading as Heading,
 	__experimentalHStack as HStack,
-	__experimentalItemGroup as ItemGroup,
 	__experimentalDropdownContentWrapper as DropdownContentWrapper,
 	Button,
 	FlexItem,
@@ -54,7 +53,10 @@ function renderToggle( { hasValue, resetValue } ) {
 
 		const toggleProps = {
 			onClick: onToggle,
-			className: clsx( { 'is-open': isOpen } ),
+			className: clsx(
+				'block-editor-global-styles__shadow-dropdown-toggle',
+				{ 'is-open': isOpen }
+			),
 			'aria-expanded': isOpen,
 			ref,
 		};
@@ -155,36 +157,34 @@ export function ParallaxEdit( {
 	}, [] );
 
 	return (
-		<ItemGroup isBordered isSeparated>
-			<ParallaxPopover
-				hasValue={ hasParallaxValue( {
-					name,
+		<ParallaxPopover
+			hasValue={ hasParallaxValue( {
+				name,
+				attributes: { unitone },
+			} ) }
+			resetValue={ () => {
+				resetParallax( {
 					attributes: { unitone },
-				} ) }
-				resetValue={ () => {
-					resetParallax( {
-						attributes: { unitone },
-						setAttributes,
-					} );
-				} }
-				speed={ parseFloat(
-					unitone?.parallax?.speed ?? defaultValue ?? 0
-				) }
-				onChangeSpeed={ ( newAttribute ) => {
-					const newUnitone = {
-						...unitone,
-						parallax: {
-							...unitone?.parallax,
-							speed: newAttribute || undefined,
-						},
-					};
+					setAttributes,
+				} );
+			} }
+			speed={ parseFloat(
+				unitone?.parallax?.speed ?? defaultValue ?? 0
+			) }
+			onChangeSpeed={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					parallax: {
+						...unitone?.parallax,
+						speed: newAttribute || undefined,
+					},
+				};
 
-					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
-					} );
-				} }
-			/>
-		</ItemGroup>
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+				} );
+			} }
+		/>
 	);
 }
 

@@ -4,7 +4,6 @@ import {
 	__experimentalVStack as VStack,
 	__experimentalHeading as Heading,
 	__experimentalHStack as HStack,
-	__experimentalItemGroup as ItemGroup,
 	__experimentalDropdownContentWrapper as DropdownContentWrapper,
 	BaseControl,
 	Button,
@@ -62,7 +61,10 @@ function renderToggle( { hasValue, resetValue } ) {
 
 		const toggleProps = {
 			onClick: onToggle,
-			className: clsx( { 'is-open': isOpen } ),
+			className: clsx(
+				'block-editor-global-styles__shadow-dropdown-toggle',
+				{ 'is-open': isOpen }
+			),
 			'aria-expanded': isOpen,
 			ref,
 		};
@@ -559,181 +561,179 @@ export function ScrollAnimationEdit( {
 		unitone?.scrollAnimation?.threshold ?? defaultValue?.threshold;
 
 	return (
-		<ItemGroup isBordered isSeparated>
-			<ScrollAnimationPopover
-				hasValue={ hasScrollAnimationValue( {
-					name,
+		<ScrollAnimationPopover
+			hasValue={ hasScrollAnimationValue( {
+				name,
+				attributes: { unitone },
+			} ) }
+			resetValue={ () => {
+				resetScrollAnimation( {
 					attributes: { unitone },
-				} ) }
-				resetValue={ () => {
-					resetScrollAnimation( {
-						attributes: { unitone },
-						setAttributes,
-					} );
-				} }
-				type={ type ?? '' }
-				speed={ null != speed ? parseFloat( speed ) : undefined }
-				delay={ null != delay ? parseFloat( delay ) : undefined }
-				easing={ easing ?? '' }
-				initial={ null != initial ? parseFloat( initial ) : undefined }
-				rootMargin={ rootMargin ?? '' }
-				threshold={ threshold ?? '' }
-				onChangeType={ ( newAttribute ) => {
-					const newUnitone = {
-						...unitone,
-						scrollAnimation: {
-							...unitone?.scrollAnimation,
-							type: newAttribute || undefined,
-							initial: undefined,
-						},
-					};
+					setAttributes,
+				} );
+			} }
+			type={ type ?? '' }
+			speed={ null != speed ? parseFloat( speed ) : undefined }
+			delay={ null != delay ? parseFloat( delay ) : undefined }
+			easing={ easing ?? '' }
+			initial={ null != initial ? parseFloat( initial ) : undefined }
+			rootMargin={ rootMargin ?? '' }
+			threshold={ threshold ?? '' }
+			onChangeType={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					scrollAnimation: {
+						...unitone?.scrollAnimation,
+						type: newAttribute || undefined,
+						initial: undefined,
+					},
+				};
 
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+					__unitoneStates: {
+						...__unitoneStates,
+						scrollAnimationFired: false,
+					},
+				} );
+			} }
+			onChangeSpeed={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					scrollAnimation: {
+						...unitone?.scrollAnimation,
+						speed: newAttribute || undefined,
+					},
+				};
+
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+					__unitoneStates: {
+						...__unitoneStates,
+						scrollAnimationFired: false,
+					},
+				} );
+			} }
+			onChangeDelay={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					scrollAnimation: {
+						...unitone?.scrollAnimation,
+						delay: newAttribute || undefined,
+					},
+				};
+
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+					__unitoneStates: {
+						...__unitoneStates,
+						scrollAnimationFired: false,
+					},
+				} );
+			} }
+			onChangeEasing={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					scrollAnimation: {
+						...unitone?.scrollAnimation,
+						easing: newAttribute || undefined,
+					},
+				};
+
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+					__unitoneStates: {
+						...__unitoneStates,
+						scrollAnimationFired: false,
+					},
+				} );
+			} }
+			onChangeInitial={ ( newAttribute ) => {
+				if ( null != newAttribute ) {
+					// RangeControl returns Int, SelectControl returns String.
+					// So cast Int all values.
+					newAttribute = String( newAttribute );
+				}
+
+				const newUnitone = {
+					...unitone,
+					scrollAnimation: {
+						...unitone?.scrollAnimation,
+						initial: newAttribute || undefined,
+					},
+				};
+
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+					__unitoneStates: {
+						...__unitoneStates,
+						scrollAnimationFired: false,
+					},
+				} );
+			} }
+			onChangeRootMargin={ ( newAttribute ) => {
+				if ( '0px' === newAttribute ) {
+					newAttribute = undefined;
+				}
+
+				const newUnitone = {
+					...unitone,
+					scrollAnimation: {
+						...unitone?.scrollAnimation,
+						rootMargin: newAttribute || undefined,
+					},
+				};
+
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+					__unitoneStates: {
+						...__unitoneStates,
+						scrollAnimationFired: false,
+					},
+				} );
+			} }
+			onChangeThreshold={ ( newAttribute ) => {
+				if ( '0.25' === newAttribute ) {
+					newAttribute = undefined;
+				}
+
+				const newUnitone = {
+					...unitone,
+					scrollAnimation: {
+						...unitone?.scrollAnimation,
+						threshold: newAttribute || undefined,
+					},
+				};
+
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+					__unitoneStates: {
+						...__unitoneStates,
+						scrollAnimationFired: false,
+					},
+				} );
+			} }
+			onMouseDownCheckBehavior={ () => {
+				if ( __unitoneStates?.scrollAnimationFired ) {
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
 						__unitoneStates: {
 							...__unitoneStates,
 							scrollAnimationFired: false,
 						},
 					} );
-				} }
-				onChangeSpeed={ ( newAttribute ) => {
-					const newUnitone = {
-						...unitone,
-						scrollAnimation: {
-							...unitone?.scrollAnimation,
-							speed: newAttribute || undefined,
-						},
-					};
-
+				}
+			} }
+			onClickCheckBehavior={ () => {
+				if ( ! __unitoneStates?.scrollAnimationFired ) {
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
 						__unitoneStates: {
 							...__unitoneStates,
-							scrollAnimationFired: false,
+							scrollAnimationFired: true,
 						},
 					} );
-				} }
-				onChangeDelay={ ( newAttribute ) => {
-					const newUnitone = {
-						...unitone,
-						scrollAnimation: {
-							...unitone?.scrollAnimation,
-							delay: newAttribute || undefined,
-						},
-					};
-
-					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
-						__unitoneStates: {
-							...__unitoneStates,
-							scrollAnimationFired: false,
-						},
-					} );
-				} }
-				onChangeEasing={ ( newAttribute ) => {
-					const newUnitone = {
-						...unitone,
-						scrollAnimation: {
-							...unitone?.scrollAnimation,
-							easing: newAttribute || undefined,
-						},
-					};
-
-					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
-						__unitoneStates: {
-							...__unitoneStates,
-							scrollAnimationFired: false,
-						},
-					} );
-				} }
-				onChangeInitial={ ( newAttribute ) => {
-					if ( null != newAttribute ) {
-						// RangeControl returns Int, SelectControl returns String.
-						// So cast Int all values.
-						newAttribute = String( newAttribute );
-					}
-
-					const newUnitone = {
-						...unitone,
-						scrollAnimation: {
-							...unitone?.scrollAnimation,
-							initial: newAttribute || undefined,
-						},
-					};
-
-					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
-						__unitoneStates: {
-							...__unitoneStates,
-							scrollAnimationFired: false,
-						},
-					} );
-				} }
-				onChangeRootMargin={ ( newAttribute ) => {
-					if ( '0px' === newAttribute ) {
-						newAttribute = undefined;
-					}
-
-					const newUnitone = {
-						...unitone,
-						scrollAnimation: {
-							...unitone?.scrollAnimation,
-							rootMargin: newAttribute || undefined,
-						},
-					};
-
-					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
-						__unitoneStates: {
-							...__unitoneStates,
-							scrollAnimationFired: false,
-						},
-					} );
-				} }
-				onChangeThreshold={ ( newAttribute ) => {
-					if ( '0.25' === newAttribute ) {
-						newAttribute = undefined;
-					}
-
-					const newUnitone = {
-						...unitone,
-						scrollAnimation: {
-							...unitone?.scrollAnimation,
-							threshold: newAttribute || undefined,
-						},
-					};
-
-					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
-						__unitoneStates: {
-							...__unitoneStates,
-							scrollAnimationFired: false,
-						},
-					} );
-				} }
-				onMouseDownCheckBehavior={ () => {
-					if ( __unitoneStates?.scrollAnimationFired ) {
-						setAttributes( {
-							__unitoneStates: {
-								...__unitoneStates,
-								scrollAnimationFired: false,
-							},
-						} );
-					}
-				} }
-				onClickCheckBehavior={ () => {
-					if ( ! __unitoneStates?.scrollAnimationFired ) {
-						setAttributes( {
-							__unitoneStates: {
-								...__unitoneStates,
-								scrollAnimationFired: true,
-							},
-						} );
-					}
-				} }
-			/>
-		</ItemGroup>
+				}
+			} }
+		/>
 	);
 }
 

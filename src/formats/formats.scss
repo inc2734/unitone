@@ -142,3 +142,21 @@
 .unitone-lightbox-overlay.zoom.active .lightbox-image-container {
 	animation: none;
 }
+
+.block-editor-format-toolbar__image-popover {
+	.block-editor-color-gradient-control {
+		.components-custom-gradient-picker__gradient-bar {
+			.components-custom-gradient-picker__control-point-button {
+				padding: 0;
+			}
+		}
+	}
+}
+
+.unitone-text-gradient {
+	@supports (background-clip: text) {
+		background-image: var(--unitone--text-gradient-gradient);
+		background-clip: text !important;
+		-webkit-text-fill-color: transparent !important;
+	}
+}

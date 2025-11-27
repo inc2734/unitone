@@ -7,30 +7,30 @@ import {
 
 import {
 	RichTextToolbarButton,
-	getColorObjectByColorValue,
+	getGradientSlugByValue,
 	store as blockEditorStore,
 	__experimentalColorGradientControl as ColorGradientControl,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 
-import { Popover, RangeControl } from '@wordpress/components';
+import { Popover } from '@wordpress/components';
+import { useCallback, useEffect, useState } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
-import { useState, useCallback, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { getStyleAttribute, getStyleProperties } from '../utils';
 
-const name = 'unitone/text-stroke';
-const title = __( 'Text stroke', 'unitone' );
+const name = 'unitone/text-gradient';
+const title = __( 'Text gradient', 'unitone' );
 
 const settings = {
 	name,
 	title,
 	tagName: 'span',
-	className: 'unitone-text-stroke',
+	className: 'unitone-text-gradient',
 	attributes: {
-		className: 'class',
 		style: 'style',
+		class: 'class',
 	},
 	edit: Edit,
 };
@@ -45,41 +45,12 @@ function InlineUI( {
 	const { style } = activeAttributes;
 	const styleProperties = getStyleProperties( style );
 
-	const [ width, setWidth ] = useState(
-		parseInt(
-			style?.match(
-				/--unitone--text-stroke-width: ?([^;]+)px;?/
-			)?.[ 1 ] || 0
-		)
-	);
 	const [ color, setColor ] = useState(
-		style?.match( /--unitone--text-stroke-color: ?([^;]+);?/ )?.[ 1 ]
+		style?.match( /--unitone--text-gradient-gradient: ?([^;]+);?/ )?.[ 1 ]
 	);
 
-	const shouldSetDefaultStyles = 0 === width && null == color;
-
-	useEffect( () => {
-		if ( shouldSetDefaultStyles ) {
-			const newWidth = 1;
-
-			setWidth( newWidth );
-
-			onChange(
-				applyFormat( value, {
-					type: name,
-					attributes: {
-						style: getStyleAttribute( {
-							...styleProperties,
-							'--unitone--text-stroke-width': `${ newWidth }px`,
-						} ),
-					},
-				} )
-			);
-		}
-	}, [ shouldSetDefaultStyles ] );
-
-	const colors = useSelect(
-		( select ) => select( blockEditorStore ).getSettings()?.colors ?? [],
+	const gradients = useSelect(
+		( select ) => select( blockEditorStore ).getSettings()?.gradients ?? [],
 		[]
 	);
 
@@ -103,46 +74,18 @@ function InlineUI( {
 					padding: '16px',
 				} }
 			>
-				<RangeControl
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-					label={ __( 'Width', 'unitone' ) }
-					value={ width }
-					min={ 0 }
-					max={ 10 }
-					onChange={ ( newValue ) => {
-						const newWidth = newValue;
-						setWidth( newWidth );
-
-						onChange(
-							applyFormat( value, {
-								type: name,
-								attributes: {
-									style: getStyleAttribute( {
-										...styleProperties,
-										'--unitone--text-stroke-width':
-											!! newWidth
-												? `${ newWidth }px`
-												: undefined,
-									} ),
-								},
-							} )
-						);
-					} }
-				/>
-
-				<ColorPicker
+				<GradientPicker
 					value={ color }
 					onChange={ ( newValue ) => {
 						if ( !! newValue ) {
-							const colorObj = getColorObjectByColorValue(
-								colors,
+							const gradientSlug = getGradientSlugByValue(
+								gradients,
 								newValue
 							);
 
 							const cssVarValue =
-								!! colorObj?.slug &&
-								`var(--wp--preset--color--${ colorObj?.slug })`;
+								!! gradientSlug &&
+								`var(--wp--preset--color--${ gradientSlug })`;
 
 							const newColor = cssVarValue || newValue;
 							setColor( newColor );
@@ -153,7 +96,7 @@ function InlineUI( {
 									attributes: {
 										style: getStyleAttribute( {
 											...styleProperties,
-											'--unitone--text-stroke-color':
+											'--unitone--text-gradient-gradient':
 												newColor,
 										} ),
 									},
@@ -170,12 +113,12 @@ function InlineUI( {
 	);
 }
 
-function ColorPicker( { value, onChange } ) {
+function GradientPicker( { value, onChange } ) {
 	return (
 		<ColorGradientControl
 			label={ __( 'Color', 'unitone' ) }
-			colorValue={ value }
-			onColorChange={ onChange }
+			gradientValue={ value }
+			onGradientChange={ onChange }
 			{ ...useMultipleOriginColorsAndGradients() }
 			__experimentalHasMultipleOrigins={ true }
 			__experimentalIsRenderedInSidebar={ true }
@@ -198,11 +141,6 @@ function Edit( { value, onChange, isActive, activeAttributes, contentRef } ) {
 		closeModal();
 	}, [ value.start ] );
 
-	const { style } = activeAttributes;
-	const color = style?.match(
-		/--unitone--text-stroke-color: ?([^;]+);?/
-	)?.[ 1 ];
-
 	return (
 		<>
 			<RichTextToolbarButton
@@ -210,14 +148,13 @@ function Edit( { value, onChange, isActive, activeAttributes, contentRef } ) {
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 24 24"
-						width="24"
-						height="24"
+						strokeWidth="0"
 					>
 						<path
-							d="M13.6748 4.5L13.7949 4.82812L18.9355 18.8281L19.1826 19.5H15.6211L15.5029 19.167L14.2891 15.75H10.1768L8.96387 19.167L8.8457 19.5H5.28418L5.53027 18.8281L10.6709 4.82812L10.792 4.5H13.6748ZM11.3057 12.5693H13.1602L12.2324 9.95703L11.3057 12.5693Z"
-							fill="white"
-							stroke={ color || 'black' }
+							d="M8 20H10.4922L11.8234 16.25H16.6426L17.9738 20H20.466L15.3254 6H13.1406L8 20ZM12.5977 14.069L14.233 9.46227L15.8683 14.069H12.5977Z"
+							fillOpacity="0.2"
 						/>
+						<path d="M4 18H6.49224L7.82344 14.25H12.6426L13.9738 18H16.466L11.3254 4H9.14063L4 18ZM8.59768 12.069L10.233 7.46227L11.8683 12.069H8.59768Z" />
 					</svg>
 				}
 				title={ title }

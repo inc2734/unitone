@@ -6,6 +6,10 @@
 	--unitone--position: relative;
 }
 
+[data-unitone-layout~="decorator"][style*="--unitone--max-width\:"] {
+	max-width: var(--unitone--max-width) !important;
+}
+
 [data-unitone-layout~="decorator"][data-unitone-layout~="-has-link"] {
 	cursor: pointer;
 	align-content: stretch;

@@ -100,7 +100,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 								}
 								onChange={ ( newValue ) => {
 									const newUnitone = {
-										...unitone,
+										...props.attributes?.unitone,
 										blockLink: newValue || undefined,
 									};
 

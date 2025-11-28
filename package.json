@@ -7,7 +7,7 @@
 		"node": "20.11.1"
 	},
 	"devDependencies": {
-		"@inc2734/unitone-css": "^0.87.0",
+		"@inc2734/unitone-css": "^0.88.0",
 		"@wordpress/admin-ui": "^1.4.0",
 		"@wordpress/env": "^10.36.0",
 		"@wordpress/icons": "^11.3.0",

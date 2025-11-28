@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-11-27T12:44:30+00:00\n"
-"PO-Revision-Date: 2025-11-27 21:45+0900\n"
+"POT-Creation-Date: 2025-11-28T14:30:20+00:00\n"
+"PO-Revision-Date: 2025-11-28 23:30+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3179,6 +3179,14 @@ msgstr "階段グリッド"
 #: dist/js/editor/editor.js:1
 msgid "Stairs climbing direction"
 msgstr "階段の上り方向"
+
+#: dist/js/editor/editor.js:1
+msgid "Up-Down"
+msgstr "アップ・ダウン"
+
+#: dist/js/editor/editor.js:1
+msgid "Down-Up"
+msgstr "ダウン・アップ"
 
 #: dist/js/editor/editor.js:1
 msgid "Using negative margin"

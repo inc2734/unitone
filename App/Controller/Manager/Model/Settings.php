@@ -28,7 +28,7 @@ class Settings {
 		'generated-featured-image-aspect-ratio' => '4:3',
 		'base-font-size'                        => '16',
 		'half-leading'                          => '0.4',
-		'min-half-leading'                      => '0.1',
+		'min-half-leading'                      => '0.05',
 		'h2-size'                               => '3',
 		'h3-size'                               => '2',
 		'h4-size'                               => '1',

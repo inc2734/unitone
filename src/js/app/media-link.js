@@ -2,8 +2,13 @@
  * Media link.
  */
 document.addEventListener( 'DOMContentLoaded', () => {
-	const getMediaTypeFromDataset = ( target ) =>
-		target?.dataset?.unitoneMediaType === 'video' ? 'video' : 'image';
+	const getMediaTypeFromDataset = ( target ) => {
+		const datasetType = target?.dataset?.unitoneMediaType;
+		if ( 'video' === datasetType || 'embed' === datasetType ) {
+			return datasetType;
+		}
+		return 'image';
+	};
 
 	const resetFigure = ( figure ) => {
 		if ( ! figure ) {
@@ -59,10 +64,48 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		return;
 	}
 
+	const preloadContainer = overlay.ownerDocument?.querySelector(
+		'.unitone-lightbox-embed-preload'
+	);
+
+	const findPreloadedEmbed = ( url ) => {
+		if ( ! preloadContainer || ! url ) {
+			return null;
+		}
+
+		if ( typeof window.CSS?.escape === 'function' ) {
+			return preloadContainer.querySelector(
+				`.unitone-lightbox-embed-container__embed[data-unitone-embed-url="${ window.CSS.escape(
+					url
+				) }"]`
+			);
+		}
+
+		const children = preloadContainer.querySelectorAll(
+			'.unitone-lightbox-embed-container__embed[data-unitone-embed-url]'
+		);
+		for ( const node of children ) {
+			if ( node.dataset.unitoneEmbedUrl === url ) {
+				return node;
+			}
+		}
+
+		return null;
+	};
+
 	const scrim = overlay.querySelector( '.scrim' );
 	const closeButton = overlay.querySelector( '.close-button' );
-	const figures = overlay.querySelectorAll(
+	const lightboxImageContainer = overlay.querySelector(
+		'.lightbox-image-container:not(.unitone-lightbox-embed-container)'
+	);
+	const lightboxFigure = overlay.querySelector(
 		'.lightbox-image-container > figure'
+	);
+	const lightboxEmbedContainer = overlay.querySelector(
+		'.unitone-lightbox-embed-container'
+	);
+	const embedWrapper = overlay.querySelector(
+		'.unitone-lightbox-embed-container__inner'
 	);
 
 	const parseDimensionValue = ( value ) => {
@@ -93,6 +136,41 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		LIGHTBOX_STYLE_PROPERTIES.forEach( ( property ) => {
 			overlay.style.removeProperty( property );
 		} );
+	};
+
+	const resetEmbed = () => {
+		if ( ! embedWrapper ) {
+			return;
+		}
+		while ( embedWrapper.firstChild ) {
+			embedWrapper.removeChild( embedWrapper.firstChild );
+		}
+	};
+
+	const setOverlayMode = ( type ) => {
+		const isEmbed = type === 'embed';
+
+		if ( lightboxImageContainer ) {
+			if ( isEmbed ) {
+				lightboxImageContainer.setAttribute( 'hidden', '' );
+			} else {
+				lightboxImageContainer.removeAttribute( 'hidden' );
+			}
+		}
+
+		if ( lightboxEmbedContainer ) {
+			if ( isEmbed ) {
+				lightboxEmbedContainer.removeAttribute( 'hidden' );
+			} else {
+				lightboxEmbedContainer.setAttribute( 'hidden', '' );
+			}
+		}
+
+		overlay.classList.toggle( 'unitone-lightbox-overlay--embed', isEmbed );
+		overlay.classList.toggle(
+			'unitone-lightbox-overlay--media',
+			! isEmbed
+		);
 	};
 
 	const calculateOverlayStyleValues = ( media ) => {
@@ -265,8 +343,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		overlay.classList.remove( 'active' );
 		overlay.removeAttribute( 'aria-modal' );
 		overlay.removeAttribute( 'role' );
-		figures.forEach( ( figure ) => resetFigure( figure ) );
+		resetFigure( lightboxFigure );
 		resetOverlayStyles();
+		resetEmbed();
+		setOverlayMode( 'media' );
 
 		if ( returnFocusTo ) {
 			returnFocusTo.focus();
@@ -275,18 +355,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		returnFocusTo = null;
 	};
 
-	const openOverlay = ( media ) => {
+	const openOverlay = async ( media ) => {
 		if ( ! media?.url ) {
 			return;
 		}
-
-		applyOverlayStyles( media );
-
-		figures.forEach( ( figure ) => {
-			resetFigure( figure );
-			const element = createMediaElement( media );
-			figure.appendChild( element );
-		} );
 
 		const ownerDocument = overlay.ownerDocument || window.document;
 		const activeElement =
@@ -297,6 +369,70 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		returnFocusTo = activeElement;
 
+		if ( media.type === 'embed' ) {
+			resetOverlayStyles();
+			resetFigure( lightboxFigure );
+			resetEmbed();
+			setOverlayMode( 'embed' );
+
+			overlay.classList.add( 'active' );
+			overlay.setAttribute( 'aria-modal', 'true' );
+			overlay.setAttribute( 'role', 'dialog' );
+
+			const preloadedNode = findPreloadedEmbed( media.url );
+			const iframe = preloadedNode?.querySelector( 'iframe' );
+			const newMedia = {
+				...media,
+				width: iframe?.getAttribute( 'width' ),
+				height: iframe?.getAttribute( 'height' ),
+			};
+
+			if ( !! newMedia?.width && !! newMedia?.height ) {
+				lightboxEmbedContainer.classList.remove( 'indeterminate-size' );
+				applyOverlayStyles( newMedia );
+			} else {
+				lightboxEmbedContainer.classList.add( 'indeterminate-size' );
+			}
+
+			if ( embedWrapper ) {
+				resetEmbed();
+
+				if ( !! preloadedNode ) {
+					const clone = preloadedNode.cloneNode( true );
+					embedWrapper.appendChild( clone );
+				} else {
+					const fallback = document.createElement( 'div' );
+					const fallbackText = document.createElement( 'p' );
+					fallbackText.textContent = 'Unable to load embed.';
+					fallback.appendChild( fallbackText );
+
+					const fallbackLink = document.createElement( 'a' );
+					fallbackLink.href = media.url;
+					fallbackLink.target = '_blank';
+					fallbackLink.rel = 'noopener';
+					fallbackLink.textContent = media.url;
+					fallback.appendChild( fallbackLink );
+
+					embedWrapper.appendChild( fallback );
+				}
+			}
+
+			if ( closeButton ) {
+				overlay.focus();
+			}
+
+			return;
+		}
+
+		setOverlayMode( 'media' );
+		applyOverlayStyles( media );
+
+		resetFigure( lightboxFigure );
+		if ( lightboxFigure ) {
+			const element = createMediaElement( media );
+			lightboxFigure.appendChild( element );
+		}
+
 		overlay.classList.add( 'active' );
 		overlay.setAttribute( 'aria-modal', 'true' );
 		overlay.setAttribute( 'role', 'dialog' );
@@ -306,30 +442,30 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 	};
 
-	const targets = document.querySelectorAll( '.unitone-media-link' );
-	targets.forEach( ( target ) => {
-		target.addEventListener( 'click', ( event ) => {
-			event.preventDefault();
+	document.addEventListener( 'click', ( event ) => {
+		const link = event.target.closest( '.unitone-media-link' );
+		if ( ! link ) {
+			return;
+		}
 
-			const link = event.currentTarget || target;
+		event.preventDefault();
 
-			const url = link.getAttribute( 'href' );
-			if ( ! url ) {
-				return;
-			}
+		const url = link.getAttribute( 'href' );
+		if ( ! url ) {
+			return;
+		}
 
-			const alt =
-				link.dataset.unitoneMediaAlt || link.textContent?.trim() || '';
-			const width = link.dataset.unitoneMediaWidth || '';
-			const height = link.dataset.unitoneMediaHeight || '';
+		const alt =
+			link.dataset.unitoneMediaAlt || link.textContent?.trim() || '';
+		const width = link.dataset.unitoneMediaWidth || '';
+		const height = link.dataset.unitoneMediaHeight || '';
 
-			openOverlay( {
-				url,
-				type: getMediaTypeFromDataset( link ),
-				alt,
-				width,
-				height,
-			} );
+		void openOverlay( {
+			url,
+			type: getMediaTypeFromDataset( link ),
+			alt,
+			width,
+			height,
 		} );
 	} );
 

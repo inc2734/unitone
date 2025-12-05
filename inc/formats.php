@@ -45,8 +45,32 @@ add_action( 'enqueue_block_assets', 'unitone_enqueue_formats_assets' );
  */
 function unitone_detect_media_link( $block_content ) {
 	static $has_media_link = false;
+	static $embed_urls     = array();
 
-	if ( ! $has_media_link && false !== strpos( $block_content, 'unitone-media-link' ) ) {
+	$contains_media_link = false !== strpos( $block_content, 'unitone-media-link' );
+
+	if ( $contains_media_link ) {
+		$processor = new WP_HTML_Tag_Processor( $block_content );
+
+		while ( $processor->next_tag( array( 'tag_name' => 'a' ) ) ) {
+			$class_attribute = $processor->get_attribute( 'class' );
+			if ( false === strpos( ' ' . $class_attribute . ' ', ' unitone-media-link ' ) ) {
+				continue;
+			}
+
+			$media_type = $processor->get_attribute( 'data-unitone-media-type' );
+			if ( 'embed' !== $media_type ) {
+				continue;
+			}
+
+			$href = $processor->get_attribute( 'href' );
+			if ( ! empty( $href ) ) {
+				$embed_urls[ $href ] = true;
+			}
+		}
+	}
+
+	if ( ! $has_media_link && $contains_media_link ) {
 		$has_media_link = true;
 
 		// For lightbox styles.
@@ -66,7 +90,7 @@ function unitone_detect_media_link( $block_content ) {
 
 		add_action(
 			'wp_footer',
-			static function () use ( &$has_media_link ) {
+			static function () use ( &$has_media_link, &$embed_urls ) {
 				if ( ! $has_media_link ) {
 					return;
 				}
@@ -99,12 +123,41 @@ function unitone_detect_media_link( $block_content ) {
 							<div class="lightbox-image-container">
 								<figure></figure>
 							</div>
+							<div class="lightbox-image-container unitone-lightbox-embed-container" hidden>
+								<div class="unitone-lightbox-embed-container__inner"></div>
+							</div>
 							<div class="scrim" style="background-color: %3$s" aria-hidden="true"></div>
 					</div>',
 					esc_attr__( 'Close', 'unitone' ),
 					esc_attr( $close_button_color ),
 					esc_attr( $background_color )
 				);
+
+				$preloaded_embeds = array();
+				foreach ( array_keys( $embed_urls ) as $embed_url ) {
+					$html = wp_oembed_get( $embed_url, array( 'width' => '1024px' ) );
+					if ( empty( $html ) && class_exists( '\Inc2734\WP_OEmbed_Blog_Card\App\View\View' ) ) {
+						$html = \Inc2734\WP_OEmbed_Blog_Card\App\View\View::get_template( $embed_url );
+					}
+
+					if ( ! empty( $html ) ) {
+						$preloaded_embeds[ $embed_url ] = $html;
+					}
+				}
+
+				if ( ! empty( $preloaded_embeds ) ) {
+					echo '<div class="unitone-lightbox-embed-preload" hidden aria-hidden="true" style="display: none">';
+					foreach ( $preloaded_embeds as $url => $html ) {
+						printf(
+							'<div class="unitone-lightbox-embed-container__embed" data-unitone-embed-url="%1$s">%2$s</div>',
+							esc_url( $url ),
+							$html // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						);
+					}
+					echo '</div>';
+				}
+
+				$embed_urls = array();
 			},
 			20
 		);

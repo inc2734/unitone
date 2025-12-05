@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-11-28T14:30:20+00:00\n"
-"PO-Revision-Date: 2025-11-28 23:30+0900\n"
+"POT-Creation-Date: 2025-12-05T14:07:07+00:00\n"
+"PO-Revision-Date: 2025-12-05 23:07+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -219,7 +219,7 @@ msgstr "縦塗りつぶし"
 msgid "Vertical line"
 msgstr "縦線"
 
-#: inc/formats.php:104 dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
+#: inc/formats.php:131 dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
 #: dist/blocks/layers/index.js:1 dist/blocks/switcher/index.js:1
 #: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
@@ -1949,7 +1949,8 @@ msgstr "ボーダー（アクセントカラー）"
 msgid "Dark"
 msgstr "ダーク"
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:9 dist/formats/formats.js:1
+#: dist/formats/formats.js:2
 msgid "Media"
 msgstr "メディア"
 
@@ -3144,7 +3145,44 @@ msgstr "ぼかし"
 msgid "Text gradient"
 msgstr "テキストグラデーション"
 
-#: dist/formats/formats.js:1
+#. translators: Accessibility text for the link preview when editing a link.
+#: dist/formats/formats.js:2
+msgid "Media information"
+msgstr "メディア情報"
+
+#: dist/formats/formats.js:2
+msgid "Select media"
+msgstr "メディアを選択"
+
+#: dist/formats/formats.js:2
+msgid "Change to different media"
+msgstr "別のメディアに変更"
+
+#: dist/formats/formats.js:2
+msgid "Remove media"
+msgstr "メディアを削除"
+
+#: dist/formats/formats.js:2
+msgid "Embed"
+msgstr "埋め込み"
+
+#: dist/formats/formats.js:2
+msgid "Enter URL to embed here…"
+msgstr "埋め込む URL をここに入力…"
+
+#: dist/formats/formats.js:2
+msgid "Edit link"
+msgstr "リンクを編集"
+
+#: dist/formats/formats.js:2
+msgid "Apply URL"
+msgstr "URL を適用"
+
+#: dist/formats/formats.js:2
+msgid "Remove link"
+msgstr "リンクを削除"
+
+#: dist/formats/formats.js:2
 msgid "Media link"
 msgstr "メディアリンク"
 
@@ -5311,8 +5349,3 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
-
-#~ msgid ""
-#~ "If unspecified, the width of the secondary column is calculated from the "
-#~ "width of the child elements."
-#~ msgstr "未指定の場合、サブカラムの幅は子要素の幅から算出されます。"

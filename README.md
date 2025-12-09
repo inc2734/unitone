@@ -20,6 +20,10 @@ https://unitone.2inc.org/
 - https://feathericons.com/
 	- License: MIT License
 
+## Flowbite Icons
+- https://flowbite.com/icons/
+	- License: MIT License
+
 ## Photos
 
 **Donald Tong**

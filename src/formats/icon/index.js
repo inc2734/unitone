@@ -25,8 +25,9 @@ import { useState, useCallback, useEffect } from '@wordpress/element';
 import { store as preferencesStore } from '@wordpress/preferences';
 import { __ } from '@wordpress/i18n';
 
-import icons from './feather-icons';
-import spinners from './spinner-icons';
+import fetherIcons from './feather-icons';
+import flowbiteIcons from './flowbite-icons.js';
+import spinnerIcons from './spinner-icons';
 
 const name = 'unitone/inline-icon';
 const title = __( 'Inline icon', 'unitone' );
@@ -82,7 +83,7 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 	);
 	const isSearching = !! searchText;
 
-	const filteredIcons = Object.values( icons )
+	const filteredFetherIcons = Object.values( fetherIcons )
 		.filter( ( icon ) => icon.name.includes( searchText ) )
 		.map( ( icon ) => {
 			return {
@@ -93,7 +94,7 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 			};
 		} );
 
-	const filteredSpinners = spinners
+	const filteredFlowbiteIcons = flowbiteIcons
 		.filter( ( icon ) => icon.name.includes( searchText ) )
 		.map( ( icon ) => {
 			return {
@@ -103,6 +104,23 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 				} ),
 			};
 		} );
+
+	const filteredSpinnerIcons = spinnerIcons
+		.filter( ( icon ) => icon.name.includes( searchText ) )
+		.map( ( icon ) => {
+			return {
+				name: icon.name,
+				svg: icon.svg( {
+					strokeWidth: strokeWidth || DEFAULT_STROKE_WIDTH,
+				} ),
+			};
+		} );
+
+	const filteredIcons = [
+		...filteredFetherIcons,
+		...filteredFlowbiteIcons,
+		...filteredSpinnerIcons,
+	];
 
 	return (
 		<Popover
@@ -154,134 +172,155 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 								title: __( 'Feather', 'unitone' ),
 							},
 							{
+								name: 'flowbite',
+								title: __( 'Flowbite', 'unitone' ),
+							},
+							{
 								name: 'unitone',
 								title: __( 'unitone', 'unitone' ),
 							},
 						] }
 					>
-						{ ( tab ) => (
-							<div style={ { paddingTop: '1rem' } }>
-								{ ( tab.name === 'feather'
-									? filteredIcons
-									: filteredSpinners
-								).map( ( icon, index ) => {
-									return (
-										<Button
-											key={ index }
-											className="has-icon"
-											onClick={ () => {
-												const encodedSvg =
-													encodeURIComponent(
-														icon.svg
-													)
-														.replace( /\(/g, '%28' )
-														.replace(
-															/\)/g,
-															'%29'
+						{ ( tab ) => {
+							let iconsForTab = [];
+							switch ( tab.name ) {
+								case 'feather':
+									iconsForTab = filteredFetherIcons;
+									break;
+								case 'flowbite':
+									iconsForTab = filteredFlowbiteIcons;
+									break;
+								case 'unitone':
+									iconsForTab = filteredSpinnerIcons;
+									break;
+							}
+
+							return (
+								<div style={ { paddingTop: '1rem' } }>
+									{ iconsForTab.map( ( icon, index ) => {
+										return (
+											<Button
+												key={ index }
+												label={ icon.name }
+												showTooltip
+												className="has-icon"
+												onClick={ () => {
+													const encodedSvg =
+														encodeURIComponent(
+															icon.svg
+														)
+															.replace(
+																/\(/g,
+																'%28'
+															)
+															.replace(
+																/\)/g,
+																'%29'
+															);
+													const newInlineSvg =
+														`url("data:image/svg+xml;charset=UTF-8,${ encodedSvg }")`.trim();
+
+													const newValue =
+														insertObject(
+															value,
+															{
+																...DEFAULT_ICON_OBJECT_SETTINGS,
+																attributes: {
+																	...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
+																	style: `--unitone--inline-svg: ${ newInlineSvg }`,
+																},
+															},
+															value.end,
+															value.end
 														);
-												const newInlineSvg =
-													`url("data:image/svg+xml;charset=UTF-8,${ encodedSvg }")`.trim();
+													newValue.start =
+														newValue.end - 1;
+													onChange( newValue );
 
-												const newValue = insertObject(
-													value,
-													{
-														...DEFAULT_ICON_OBJECT_SETTINGS,
-														attributes: {
-															...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
-															style: `--unitone--inline-svg: ${ newInlineSvg }`,
-														},
-													},
-													value.end,
-													value.end
-												);
-												newValue.start =
-													newValue.end - 1;
-												onChange( newValue );
+													if (
+														strokeWidth !==
+														savedStrokeWidth
+													) {
+														dispatch(
+															preferencesStore
+														).set(
+															PREFERENCE_SCOPE,
+															'inlineIconStrokeWidth',
+															strokeWidth
+														);
+													}
 
-												if (
-													strokeWidth !==
-													savedStrokeWidth
-												) {
-													dispatch(
-														preferencesStore
-													).set(
-														PREFERENCE_SCOPE,
-														'inlineIconStrokeWidth',
-														strokeWidth
-													);
-												}
-
-												onClose();
-											} }
-										>
-											<span
-												dangerouslySetInnerHTML={ {
-													__html: icon.svg,
+													onClose();
 												} }
-											/>
-										</Button>
-									);
-								} ) }
-							</div>
-						) }
+											>
+												<span
+													dangerouslySetInnerHTML={ {
+														__html: icon.svg,
+													} }
+												/>
+											</Button>
+										);
+									} ) }
+								</div>
+							);
+						} }
 					</TabPanel>
 				) }
 
 				{ isSearching && (
 					<div>
-						{ [ ...filteredIcons, ...filteredSpinners ].map(
-							( icon, index ) => {
-								return (
-									<Button
-										key={ index }
-										className="has-icon"
-										onClick={ () => {
-											const encodedSvg =
-												encodeURIComponent( icon.svg )
-													.replace( /\(/g, '%28' )
-													.replace( /\)/g, '%29' );
-											const newInlineSvg =
-												`url("data:image/svg+xml;charset=UTF-8,${ encodedSvg }")`.trim();
+						{ filteredIcons.map( ( icon, index ) => {
+							return (
+								<Button
+									key={ index }
+									label={ icon.name }
+									showTooltip
+									className="has-icon"
+									onClick={ () => {
+										const encodedSvg = encodeURIComponent(
+											icon.svg
+										)
+											.replace( /\(/g, '%28' )
+											.replace( /\)/g, '%29' );
+										const newInlineSvg =
+											`url("data:image/svg+xml;charset=UTF-8,${ encodedSvg }")`.trim();
 
-											const newValue = insertObject(
-												value,
-												{
-													...DEFAULT_ICON_OBJECT_SETTINGS,
-													attributes: {
-														...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
-														style: `--unitone--inline-svg: ${ newInlineSvg }`,
-													},
+										const newValue = insertObject(
+											value,
+											{
+												...DEFAULT_ICON_OBJECT_SETTINGS,
+												attributes: {
+													...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
+													style: `--unitone--inline-svg: ${ newInlineSvg }`,
 												},
-												value.end,
-												value.end
+											},
+											value.end,
+											value.end
+										);
+										newValue.start = newValue.end - 1;
+										onChange( newValue );
+
+										if (
+											strokeWidth !== savedStrokeWidth
+										) {
+											dispatch( preferencesStore ).set(
+												PREFERENCE_SCOPE,
+												'inlineIconStrokeWidth',
+												strokeWidth
 											);
-											newValue.start = newValue.end - 1;
-											onChange( newValue );
+										}
 
-											if (
-												strokeWidth !== savedStrokeWidth
-											) {
-												dispatch(
-													preferencesStore
-												).set(
-													PREFERENCE_SCOPE,
-													'inlineIconStrokeWidth',
-													strokeWidth
-												);
-											}
-
-											onClose();
+										onClose();
+									} }
+								>
+									<span
+										dangerouslySetInnerHTML={ {
+											__html: icon.svg,
 										} }
-									>
-										<span
-											dangerouslySetInnerHTML={ {
-												__html: icon.svg,
-											} }
-										/>
-									</Button>
-								);
-							}
-						) }
+									/>
+								</Button>
+							);
+						} ) }
 					</div>
 				) }
 

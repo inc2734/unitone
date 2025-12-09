@@ -17,6 +17,7 @@ import {
 	Button,
 	RangeControl,
 	SearchControl,
+	TabPanel,
 } from '@wordpress/components';
 
 import { useSelect, dispatch } from '@wordpress/data';
@@ -79,6 +80,7 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 	const [ strokeWidth, setStrokeWidth ] = useState(
 		! isNaN( savedStrokeWidth ) ? savedStrokeWidth : DEFAULT_STROKE_WIDTH
 	);
+	const isSearching = !! searchText;
 
 	const filteredIcons = Object.values( icons )
 		.filter( ( icon ) => icon.name.includes( searchText ) )
@@ -143,60 +145,145 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 					onChange={ ( newValue ) => setStrokeWidth( newValue ) }
 				/>
 
-				<div>
-					{ [ ...filteredIcons, ...filteredSpinners ].map(
-						( icon, index ) => {
-							return (
-								<Button
-									key={ index }
-									className="has-icon"
-									onClick={ () => {
-										const encodedSvg = encodeURIComponent(
-											icon.svg
-										)
-											.replace( /\(/g, '%28' )
-											.replace( /\)/g, '%29' );
-										const newInlineSvg =
-											`url("data:image/svg+xml;charset=UTF-8,${ encodedSvg }")`.trim();
+				{ ! isSearching && (
+					<TabPanel
+						activeClass="is-active"
+						tabs={ [
+							{
+								name: 'feather',
+								title: __( 'Feather', 'unitone' ),
+							},
+							{
+								name: 'unitone',
+								title: __( 'unitone', 'unitone' ),
+							},
+						] }
+					>
+						{ ( tab ) => (
+							<div style={ { paddingTop: '1rem' } }>
+								{ ( tab.name === 'feather'
+									? filteredIcons
+									: filteredSpinners
+								).map( ( icon, index ) => {
+									return (
+										<Button
+											key={ index }
+											className="has-icon"
+											onClick={ () => {
+												const encodedSvg =
+													encodeURIComponent(
+														icon.svg
+													)
+														.replace( /\(/g, '%28' )
+														.replace(
+															/\)/g,
+															'%29'
+														);
+												const newInlineSvg =
+													`url("data:image/svg+xml;charset=UTF-8,${ encodedSvg }")`.trim();
 
-										const newValue = insertObject(
-											value,
-											{
-												...DEFAULT_ICON_OBJECT_SETTINGS,
-												attributes: {
-													...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
-													style: `--unitone--inline-svg: ${ newInlineSvg }`,
+												const newValue = insertObject(
+													value,
+													{
+														...DEFAULT_ICON_OBJECT_SETTINGS,
+														attributes: {
+															...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
+															style: `--unitone--inline-svg: ${ newInlineSvg }`,
+														},
+													},
+													value.end,
+													value.end
+												);
+												newValue.start =
+													newValue.end - 1;
+												onChange( newValue );
+
+												if (
+													strokeWidth !==
+													savedStrokeWidth
+												) {
+													dispatch(
+														preferencesStore
+													).set(
+														PREFERENCE_SCOPE,
+														'inlineIconStrokeWidth',
+														strokeWidth
+													);
+												}
+
+												onClose();
+											} }
+										>
+											<span
+												dangerouslySetInnerHTML={ {
+													__html: icon.svg,
+												} }
+											/>
+										</Button>
+									);
+								} ) }
+							</div>
+						) }
+					</TabPanel>
+				) }
+
+				{ isSearching && (
+					<div>
+						{ [ ...filteredIcons, ...filteredSpinners ].map(
+							( icon, index ) => {
+								return (
+									<Button
+										key={ index }
+										className="has-icon"
+										onClick={ () => {
+											const encodedSvg =
+												encodeURIComponent( icon.svg )
+													.replace( /\(/g, '%28' )
+													.replace( /\)/g, '%29' );
+											const newInlineSvg =
+												`url("data:image/svg+xml;charset=UTF-8,${ encodedSvg }")`.trim();
+
+											const newValue = insertObject(
+												value,
+												{
+													...DEFAULT_ICON_OBJECT_SETTINGS,
+													attributes: {
+														...DEFAULT_ICON_OBJECT_SETTINGS.attributes,
+														style: `--unitone--inline-svg: ${ newInlineSvg }`,
+													},
 												},
-											},
-											value.end,
-											value.end
-										);
-										newValue.start = newValue.end - 1;
-										onChange( newValue );
-
-										if (
-											strokeWidth !== savedStrokeWidth
-										) {
-											dispatch( preferencesStore ).set(
-												PREFERENCE_SCOPE,
-												'inlineIconStrokeWidth',
-												strokeWidth
+												value.end,
+												value.end
 											);
-										}
+											newValue.start = newValue.end - 1;
+											onChange( newValue );
 
-										onClose();
-									} }
-								>
-									<span
-										dangerouslySetInnerHTML={ {
-											__html: icon.svg,
+											if (
+												strokeWidth !== savedStrokeWidth
+											) {
+												dispatch(
+													preferencesStore
+												).set(
+													PREFERENCE_SCOPE,
+													'inlineIconStrokeWidth',
+													strokeWidth
+												);
+											}
+
+											onClose();
 										} }
-									/>
-								</Button>
-							);
-						}
-					) }
-				</div>
+									>
+										<span
+											dangerouslySetInnerHTML={ {
+												__html: icon.svg,
+											} }
+										/>
+									</Button>
+								);
+							}
+						) }
+					</div>
+				) }
 
 				<div>
 					<Button variant="tertiary" onClick={ onClose }>

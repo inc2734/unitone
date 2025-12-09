@@ -50,7 +50,7 @@
 		"wp": "wp-env run --env-cwd=wp-content/themes/unitone cli wp",
 		"composer": "wp-env run --env-cwd=\"wp-content/themes/unitone\" cli composer",
 		"format:blocks": "wp-scripts format src/blocks",
-		"format:formats": "wp-scripts format src/formats",
+		"format:formats": "node bin/generate-flowbite-icons.js && wp-scripts format src/formats",
 		"format:variations": "wp-scripts format src/variations",
 		"format:js": "wp-scripts format src/js",
 		"format:settings": "wp-scripts format App/Controller/Manager/src/js",

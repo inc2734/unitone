@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-12-05T14:07:07+00:00\n"
-"PO-Revision-Date: 2025-12-05 23:07+0900\n"
+"POT-Creation-Date: 2025-12-09T08:54:35+00:00\n"
+"PO-Revision-Date: 2025-12-09 17:55+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,7 +19,8 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css inc/block-categories.php:22 inc/block-categories.php:33
 #: inc/block-categories.php:44 inc/block-categories.php:55
-#: inc/block-styles.php:88 dist/js/editor/editor.js:16
+#: inc/block-styles.php:88 dist/formats/formats.js:1
+#: dist/js/editor/editor.js:16
 msgid "unitone"
 msgstr "unitone"
 
@@ -3120,6 +3121,14 @@ msgstr "インラインアイコン"
 #: dist/formats/formats.js:1
 msgid "Stroke width"
 msgstr "線の太さ"
+
+#: dist/formats/formats.js:1
+msgid "Feather"
+msgstr "Feather"
+
+#: dist/formats/formats.js:1
+msgid "Flowbite"
+msgstr "Flowbite"
 
 #: dist/formats/formats.js:1
 msgid "Text stroke"

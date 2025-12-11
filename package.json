@@ -7,8 +7,8 @@
 		"node": "20.11.1"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.2.416",
-		"@inc2734/unitone-css": "^0.88.0",
+		"@iconify/json": "^2.2.417",
+		"@inc2734/unitone-css": "^0.88.1",
 		"@wordpress/admin-ui": "^1.4.0",
 		"@wordpress/env": "^10.36.0",
 		"@wordpress/icons": "^11.3.0",
@@ -29,7 +29,7 @@
 		"postcss-import": "^16.1.1",
 		"prettier": "npm:wp-prettier@3.0.3",
 		"rimraf": "^6.1.2",
-		"sass": "^1.94.2",
+		"sass": "^1.96.0",
 		"swiper": "^12"
 	},
 	"scripts": {

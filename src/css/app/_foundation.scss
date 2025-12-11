@@ -59,12 +59,18 @@ kbd {
 	[type=submit]:not(.wp-element-button)
 ) {
 	--unitone--border-radius: var(--unitone--global--border-radius);
-	--unitone--padding: var(--unitone--p-1);
-	--unitone--padding-block: calc(var(--unitone--padding) / 1.5);
-	--unitone--padding-inline: var(--unitone--padding);
+	--unitone--padding: initial;
+	--unitone--padding-top: var(--unitone--padding, var(--unitone--p-2));
+	--unitone--padding-right: var(--unitone--padding, var(--unitone--p-1));
+	--unitone--padding-bottom: var(--unitone--padding, var(--unitone--p-2));
+	--unitone--padding-left: var(--unitone--padding, var(--unitone--p-1));
 
 	border: 1px solid var(--wp--preset--color--unitone-gray);
-	padding: var(--unitone--padding-block) var(--unitone--padding-inline);
+	padding:
+		var(--unitone--padding-top)
+		var(--unitone--padding-right)
+		var(--unitone--padding-bottom)
+		var(--unitone--padding-left);
 	border-radius: var(--unitone--border-radius);
 	font-family: inherit;
 

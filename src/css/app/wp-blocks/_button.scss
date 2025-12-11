@@ -1,6 +1,10 @@
 :where(.wp-block-button, .wp-element-button) {
 	--unitone--border-radius: var(--unitone--global--border-radius);
-	--unitone--padding: var(--unitone--p-1);
+	--unitone--padding: initial;
+	--unitone--padding-top: var(--unitone--padding, var(--unitone--p-2));
+	--unitone--padding-right: var(--unitone--padding, var(--unitone--p-1));
+	--unitone--padding-bottom: var(--unitone--padding, var(--unitone--p-2));
+	--unitone--padding-left: var(--unitone--padding, var(--unitone--p-1));
 
 	display: inline-flex;
 

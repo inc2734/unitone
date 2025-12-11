@@ -9,6 +9,7 @@ module.exports = {
 				'default',
 				{
 					calc: false,
+					convertValues: false,
 				},
 			],
 		} ),

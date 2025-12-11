@@ -431,10 +431,10 @@
 				},
 				"spacing": {
 					"padding": {
-						"top": "calc(var(--unitone--padding) / 1.5)",
-						"right": "var(--unitone--padding)",
-						"bottom": "calc(var(--unitone--padding) / 1.5)",
-						"left": "var(--unitone--padding)"
+						"top": "var(--unitone--padding-top)",
+						"right": "var(--unitone--padding-right)",
+						"bottom": "var(--unitone--padding-bottom)",
+						"left": "var(--unitone--padding-left)"
 					}
 				}
 			},
@@ -458,10 +458,10 @@
 			"core/button": {
 				"spacing": {
 					"padding": {
-						"top": "calc(var(--unitone--padding) / 1.5)",
-						"right": "var(--unitone--padding)",
-						"bottom": "calc(var(--unitone--padding) / 1.5)",
-						"left": "var(--unitone--padding)"
+						"top": "var(--unitone--padding-top)",
+						"right": "var(--unitone--padding-right)",
+						"bottom": "var(--unitone--padding-bottom)",
+						"left": "var(--unitone--padding-left)"
 					}
 				},
 				"variations": {
@@ -471,10 +471,10 @@
 						},
 						"spacing": {
 							"padding": {
-								"top": "calc(var(--unitone--padding) / 1.5)",
-								"right": "var(--unitone--padding)",
-								"bottom": "calc(var(--unitone--padding) / 1.5)",
-								"left": "var(--unitone--padding)"
+								"top": "var(--unitone--padding-top)",
+								"right": "var(--unitone--padding-right)",
+								"bottom": "var(--unitone--padding-bottom)",
+								"left": "var(--unitone--padding-left)"
 							}
 						}
 					}

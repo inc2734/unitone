@@ -23,6 +23,7 @@ import {
 import { useSelect, dispatch } from '@wordpress/data';
 import { useState, useCallback, useEffect } from '@wordpress/element';
 import { store as preferencesStore } from '@wordpress/preferences';
+import { Icon, cog as cogIcon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import fetherIcons from './feather-icons';
@@ -78,6 +79,7 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 	} );
 
 	const [ searchText, setSearchText ] = useState( '' );
+	const [ isSettingsOpen, setIsSettingsOpen ] = useState( false );
 	const [ strokeWidth, setStrokeWidth ] = useState(
 		! isNaN( savedStrokeWidth ) ? savedStrokeWidth : DEFAULT_STROKE_WIDTH
 	);
@@ -131,6 +133,7 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 			className="block-editor-format-toolbar__image-popover"
 			onClose={ () => {
 				setSearchText( '' );
+				setIsSettingsOpen( false );
 				onClose();
 			} }
 		>
@@ -143,25 +146,55 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 					gap: '8px',
 				} }
 			>
-				<SearchControl
-					__nextHasNoMarginBottom
-					SearchControl
-					value={ searchText }
-					onChange={ ( newValue ) => setSearchText( newValue ) }
-				/>
+				<div
+					style={ {
+						display: 'grid',
+						gridTemplateColumns: '1fr auto',
+						alignItems: 'center',
+						gap: '8px',
+					} }
+				>
+					<SearchControl
+						__nextHasNoMarginBottom
+						SearchControl
+						value={ searchText }
+						onChange={ ( newValue ) => setSearchText( newValue ) }
+					/>
+					<Button
+						icon={ <Icon icon={ cogIcon } /> }
+						label={ __( 'Settings', 'unitone' ) }
+						showTooltip
+						onClick={ () =>
+							setIsSettingsOpen( ( current ) => ! current )
+						}
+						aria-expanded={ isSettingsOpen }
+					/>
+				</div>
 
-				<RangeControl
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-					label={ __( 'Stroke width', 'unitone' ) }
-					value={ strokeWidth }
-					allowReset
-					initialPosition={ strokeWidth }
-					min={ 1 }
-					max={ 2 }
-					step={ 0.1 }
-					onChange={ ( newValue ) => setStrokeWidth( newValue ) }
-				/>
+				{ isSettingsOpen && (
+					<div
+						style={ {
+							border: '1px solid #f0f0f0',
+							borderRadius: '4px',
+							padding: '1em',
+						} }
+					>
+						<RangeControl
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							label={ __( 'Stroke width', 'unitone' ) }
+							value={ strokeWidth }
+							allowReset
+							initialPosition={ strokeWidth }
+							min={ 1 }
+							max={ 2 }
+							step={ 0.1 }
+							onChange={ ( newValue ) =>
+								setStrokeWidth( newValue )
+							}
+						/>
+					</div>
+				) }
 
 				{ ! isSearching && (
 					<TabPanel

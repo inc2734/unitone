@@ -103,6 +103,7 @@
 			"maxHeight": true,
 			"minHeight": true,
 			"maxWidth": true,
+			"minWidth": true,
 			"alignContent": true,
 			"justifyItems": true,
 			"fluidTypography": true,

@@ -31,6 +31,15 @@ import {
 } from './fluid-typography';
 
 import {
+	isFluidTypographyMinLengthSupportDisabled,
+	hasFluidTypographyMinLengthValue,
+	resetFluidTypographyMinLengthFilter,
+	resetFluidTypographyMinLength,
+	FluidTypographyMinLengthEdit,
+	withFluidTypographyMinLengthBlockProps,
+} from './fluid-typography-min-length';
+
+import {
 	isHalfLeadingSupportDisabled,
 	hasHalfLeadingValue,
 	resetHalfLeadingFilter,
@@ -62,6 +71,7 @@ import {
 export const withTypographyBlockProps = compose(
 	withAutoPhraseBlockProps,
 	withFluidTypographyBlockProps,
+	withFluidTypographyMinLengthBlockProps,
 	withHalfLeadingBlockProps,
 	withBackgroundClipBlockProps,
 	withLinkDecorationBlockProps
@@ -71,6 +81,10 @@ export const resetTypography = ( props ) => {
 	const filters = [
 		[ isAutoPhraseSupportDisabled, resetAutoPhraseFilter ],
 		[ isFluidTypographySupportDisabled, resetFluidTypographyFilter ],
+		[
+			isFluidTypographyMinLengthSupportDisabled,
+			resetFluidTypographyMinLengthFilter,
+		],
 		[ isHalfLeadingSupportDisabled, resetHalfLeadingFilter ],
 		[ isBackgroundClipSupportDisabled, resetBackgroundClipFilter ],
 		[ isLinkDecorationSupportDisabled, resetLinkDecorationFilter ],
@@ -95,6 +109,10 @@ function TypographyPanelPure( props ) {
 	const isFluidTypographyDisabled = isFluidTypographySupportDisabled( {
 		name,
 	} );
+	const isFluidTypographyMinLengthDisabled =
+		isFluidTypographyMinLengthSupportDisabled( {
+			name,
+		} );
 	const isHalfLeadingDisabled = isHalfLeadingSupportDisabled( { name } );
 	const isBackgroundClipDisabled = isBackgroundClipSupportDisabled( {
 		name,
@@ -106,6 +124,7 @@ function TypographyPanelPure( props ) {
 	if (
 		isAutoPhraseDisabled &&
 		isFluidTypographyDisabled &&
+		isFluidTypographyMinLengthDisabled &&
 		isHalfLeadingDisabled &&
 		isBackgroundClipDisabled &&
 		isLinkDecorationDisabled
@@ -124,6 +143,7 @@ function TypographyPanelPure( props ) {
 								{ ...attributes?.unitone },
 								resetAutoPhraseFilter(),
 								resetFluidTypographyFilter(),
+								resetFluidTypographyMinLengthFilter(),
 								resetHalfLeadingFilter(),
 								resetBackgroundClipFilter(),
 								resetLinkDecorationFilter()
@@ -171,6 +191,25 @@ function TypographyPanelPure( props ) {
 						<FluidTypographyEdit
 							{ ...props }
 							label={ __( 'Fluid typography', 'unitone' ) }
+						/>
+					</ToolsPanelItem>
+				) }
+
+				{ ! isFluidTypographyMinLengthDisabled && (
+					<ToolsPanelItem
+						hasValue={ () =>
+							hasFluidTypographyMinLengthValue( { ...props } )
+						}
+						label={ __( 'Minimum font size', 'unitone' ) }
+						onDeselect={ () =>
+							resetFluidTypographyMinLength( { ...props } )
+						}
+						isShownByDefault
+						panelId={ clientId }
+					>
+						<FluidTypographyMinLengthEdit
+							{ ...props }
+							label={ __( 'Minimum font size', 'unitone' ) }
 						/>
 					</ToolsPanelItem>
 				) }

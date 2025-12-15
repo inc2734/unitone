@@ -54,10 +54,10 @@ $font-sizes: (
 
 	.has-#{ $slug }-font-size {
 		--unitone--font-size: #{ $size } !important;
-		--wp--preset--font-size--#{ $slug }: #{ variables.$font-size } !important;
+		--wp--preset--font-size--#{ $slug }: var(--unitone--font-size-rem) !important;
 
 		&[data-unitone-layout~="-fluid-typography"] {
-			--wp--preset--font-size--#{ $slug }: #{ variables.$fluid-font-size } !important;
+			--wp--preset--font-size--#{ $slug }: var(--unitone--font-size-fluid) !important;
 		}
 	}
 
@@ -70,10 +70,10 @@ $font-sizes: (
 	// @todo At WooCommerce 9.7, setting typography in product-price block does not give .has-{slug}-font-size.
 	.has-#{ $non-hyphen-slug }-font-size {
 		--unitone--font-size: #{ $size } !important;
-		--wp--preset--font-size--#{ $non-hyphen-slug }: #{ variables.$font-size } !important;
+		--wp--preset--font-size--#{ $non-hyphen-slug }: var(--unitone--font-size-rem) !important;
 
 		&[data-unitone-layout~="-fluid-typography"] {
-			--wp--preset--font-size--#{ $non-hyphen-slug }: #{ variables.$fluid-font-size } !important;
+			--wp--preset--font-size--#{ $non-hyphen-slug }: var(--unitone--font-size-fluid) !important;
 		}
 	}
 	:where(.has-#{ $non-hyphen-slug }-font-size *) {

@@ -142,8 +142,10 @@ add_filter(
 		}
 
 		// -fluid-typography
+		// --unitone--fluid-typography-min-length
 		if ( unitone_has_block_support( 'unitone.fluidTypography', $metadata ) ) {
 			$add_attribute( '-fluid-typography', $get_attribute( 'fluidTypography' ) );
+			$add_style( '--unitone--fluid-typography-min-length', $get_attribute( 'fluidTypographyMinLength' ) );
 		}
 
 		// --unitone--marker-color

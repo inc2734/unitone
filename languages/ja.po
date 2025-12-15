@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-12-09T08:54:35+00:00\n"
-"PO-Revision-Date: 2025-12-09 17:55+0900\n"
+"POT-Creation-Date: 2025-12-15T05:13:03+00:00\n"
+"PO-Revision-Date: 2025-12-15 14:17+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2059,7 +2059,8 @@ msgstr "アブストラクト背景"
 #: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:16
+#: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
+#: dist/js/editor/editor.js:16
 msgid "Settings"
 msgstr "設定"
 
@@ -3286,6 +3287,10 @@ msgstr ""
 #: dist/js/editor/editor.js:4
 msgid "Fluid typography"
 msgstr "流体タイポグラフィ"
+
+#: dist/js/editor/editor.js:4
+msgid "Minimum font size"
+msgstr "最小フォントサイズ"
 
 #: dist/js/editor/editor.js:4
 msgid "Auto line breaks"

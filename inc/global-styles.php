@@ -579,6 +579,38 @@ function unitone_set_color_palette( $theme_json ) {
 add_filter( 'wp_theme_json_data_default', 'unitone_set_color_palette' );
 
 /**
+ * Fix Noto Sans JP and Noto Serif JP baseline shift.
+ * This is a fallback since it's also written in theme.json.
+ *
+ * @param WP_Theme_JSON_Data $theme_json Class to access and update the underlying data.
+ * @return WP_Theme_JSON_Data
+ */
+function unitone_fix_noto_sans_baseline( $theme_json ) {
+	$data = $theme_json->get_data();
+
+	if ( empty( $data['settings']['typography']['fontFamilies']['theme'] ) ) {
+		return $theme_json;
+	}
+
+	$targets = array( 'noto-sans-jp', 'noto-serif-jp' );
+
+	foreach ( $data['settings']['typography']['fontFamilies']['theme'] as &$family ) {
+		if ( empty( $family['slug'] ) || ! in_array( $family['slug'], $targets, true ) ) {
+			continue;
+		}
+
+		foreach ( $family['fontFace'] as &$face ) {
+			if ( empty( $face['ascentOverride'] ) ) {
+				$face['ascentOverride'] = '100%';
+			}
+		}
+	}
+
+	return new \WP_Theme_JSON_Data( $data, 'theme' );
+}
+add_filter( 'wp_theme_json_data_theme', 'unitone_fix_noto_sans_baseline' );
+
+/**
  * Convert deprecated color names to new color names.
  */
 add_filter(

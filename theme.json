@@ -150,7 +150,8 @@
 							"fontStyle": "normal",
 							"src": [
 								"file:./dist/fonts/noto-sans-jp/NotoSansJP-Regular.woff2"
-							]
+							],
+							"ascentOverride": "100%"
 						},
 						{
 							"fontFamily": "'Noto Sans JP'",
@@ -158,7 +159,8 @@
 							"fontStyle": "normal",
 							"src": [
 								"file:./dist/fonts/noto-sans-jp/NotoSansJP-Bold.woff2"
-							]
+							],
+							"ascentOverride": "100%"
 						}
 					]
 				},
@@ -173,7 +175,8 @@
 							"fontStyle": "normal",
 							"src": [
 								"file:./dist/fonts/noto-serif-jp/NotoSerifJP-Regular.woff2"
-							]
+							],
+							"ascentOverride": "100%"
 						},
 						{
 							"fontFamily": "'Noto Serif JP'",
@@ -181,7 +184,8 @@
 							"fontStyle": "normal",
 							"src": [
 								"file:./dist/fonts/noto-serif-jp/NotoSerifJP-Bold.woff2"
-							]
+							],
+							"ascentOverride": "100%"
 						}
 					]
 				},

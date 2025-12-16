@@ -701,6 +701,34 @@
 			]
 		},
 		{
+			"name": "template-page-left-header-thin",
+			"title": "Pages: Left Header (Thin)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-left-header-thin-header-footer",
+			"title": "Pages: Left Header (Thin) / Only Header and Footer",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-left-header-thin-page-header-featured",
+			"title": "Pages: Left Header (Thin) / Page Header (Featured Image)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-left-header-thin-page-header-image",
+			"title": "Pages: Left Header (Thin) / Page Header (Image)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
 			"name": "template-page-sticky-header",
 			"title": "Pages: Sticky Header",
 			"postTypes": [
@@ -857,6 +885,34 @@
 		{
 			"name": "template-single-left-header-page-header-image",
 			"title": "Single Posts: Left Header / Page Header (Image)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-left-header-thin",
+			"title": "Single Posts: Left Header (Thin)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-left-header-thin-header-footer",
+			"title": "Single Posts: Left Header (Thin) / Only Header and Footer",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-left-header-thin-page-header-featured",
+			"title": "Single Posts: Left Header (Thin) / Page Header (Featured Image)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-left-header-thin-page-header-image",
+			"title": "Single Posts: Left Header (Thin) / Page Header (Image)",
 			"postTypes": [
 				"post"
 			]

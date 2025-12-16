@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 24.7.1\n"
+"Project-Id-Version: unitone 24.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-15T05:13:03+00:00\n"
+"POT-Creation-Date: 2025-12-16T10:21:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -769,6 +769,11 @@ msgctxt "Pattern title"
 msgid "Header (Simple)"
 msgstr ""
 
+#: patterns/header/header-vertical-thin.php
+msgctxt "Pattern title"
+msgid "Header (Vertical / Thin)"
+msgstr ""
+
 #: patterns/header/header-vertical.php
 msgctxt "Pattern title"
 msgid "Header (Vertical)"
@@ -1205,6 +1210,16 @@ msgctxt "Pattern title"
 msgid "404: Left Header / Page Header (Image)"
 msgstr ""
 
+#: patterns/template/404/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: Left Header (Thin) / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/404/left-header-thin.php
+msgctxt "Pattern title"
+msgid "404: Left Header (Thin)"
+msgstr ""
+
 #: patterns/template/404/left-header.php
 msgctxt "Pattern title"
 msgid "404: Left Header"
@@ -1253,6 +1268,16 @@ msgstr ""
 #: patterns/template/archive/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "All Archives: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/archive/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Left Header (Thin) / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/archive/left-header-thin.php
+msgctxt "Pattern title"
+msgid "All Archives: Left Header (Thin)"
 msgstr ""
 
 #: patterns/template/archive/left-header.php
@@ -1310,6 +1335,11 @@ msgctxt "Pattern title"
 msgid "Front Page: Only Header and Footer"
 msgstr ""
 
+#: patterns/template/ftont-page/left-header-thin.php
+msgctxt "Pattern title"
+msgid "Front Page: Left Header (Thin)"
+msgstr ""
+
 #: patterns/template/ftont-page/left-header.php
 msgctxt "Pattern title"
 msgid "Front Page: Left Header"
@@ -1323,6 +1353,16 @@ msgstr ""
 #: patterns/template/home/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Blog Home: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/home/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Left Header (Thin) / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/home/left-header-thin.php
+msgctxt "Pattern title"
+msgid "Blog Home: Left Header (Thin)"
 msgstr ""
 
 #: patterns/template/home/left-header.php
@@ -1393,6 +1433,26 @@ msgstr ""
 #: patterns/template/page/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Pages: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/page/left-header-thin-header-footer.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header (Thin) / Only Header and Footer"
+msgstr ""
+
+#: patterns/template/page/left-header-thin-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header (Thin) / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template/page/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header (Thin) / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/page/left-header-thin.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header (Thin)"
 msgstr ""
 
 #: patterns/template/page/left-header.php
@@ -1490,6 +1550,16 @@ msgctxt "Pattern title"
 msgid "Search Results: Left Header / Page Header (Image)"
 msgstr ""
 
+#: patterns/template/search/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Left Header (Thin) / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/search/left-header-thin.php
+msgctxt "Pattern title"
+msgid "Search Results: Left Header (Thin)"
+msgstr ""
+
 #: patterns/template/search/left-header.php
 msgctxt "Pattern title"
 msgid "Search Results: Left Header"
@@ -1553,6 +1623,26 @@ msgstr ""
 #: patterns/template/single/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/single/left-header-thin-header-footer.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header (Thin) / Only Header and Footer"
+msgstr ""
+
+#: patterns/template/single/left-header-thin-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header (Thin) / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template/single/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header (Thin) / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/single/left-header-thin.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header (Thin)"
 msgstr ""
 
 #: patterns/template/single/left-header.php
@@ -5145,6 +5235,26 @@ msgstr ""
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Pages: Left Header (Thin)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Left Header (Thin) / Only Header and Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Left Header (Thin) / Page Header (Featured Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Left Header (Thin) / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Pages: Sticky Header"
 msgstr ""
 
@@ -5256,6 +5366,26 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Single Posts: Left Header / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Left Header (Thin)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Left Header (Thin) / Only Header and Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Left Header (Thin) / Page Header (Featured Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Left Header (Thin) / Page Header (Image)"
 msgstr ""
 
 #: theme.json

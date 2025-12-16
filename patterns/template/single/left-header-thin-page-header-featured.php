@@ -1,0 +1,30 @@
+<?php
+/**
+ * Title: Single Posts: Left Header (Thin) / Page Header (Featured Image)
+ * Slug: unitone/template/single/left-header-thin-page-header-featured
+ * Categories: unitone-templates
+ * Template Types: single
+ * Inserter: no
+ */
+?>
+<!-- wp:unitone/grid {"className":"site-container-left-header site-container-left-header--thin","columnsOption":"free","gridTemplateColumns":"100px 1fr","smColumnsOption":"free","smGridTemplateColumns":"auto","align":"full","unitone":{"gap":"0"}} -->
+<div class="alignfull unitone-grid site-container-left-header site-container-left-header--thin" style="--unitone--grid-template-columns:100px 1fr;--unitone--sm-grid-template-columns:auto;--unitone--rows:1" data-unitone-layout="-columns:free -columns:sm:free -rows:rows">
+	<!-- wp:template-part {"slug":"header-vertical-thin","tagName":"header","className":"site-header"} /-->
+
+	<!-- wp:unitone/cover {"unitone":{"gap":"0","padding":"0"}} -->
+	<div data-unitone-layout="cover">
+		<!-- wp:unitone/cover-content {"position":"top"} -->
+		<div data-unitone-layout="cover__content -valign:top">
+			<!-- wp:pattern {"slug":"unitone/template/single/main/one-column-page-header-featured"} /-->
+		</div>
+		<!-- /wp:unitone/cover-content -->
+
+		<!-- wp:unitone/cover-content {"position":"bottom"} -->
+		<div data-unitone-layout="cover__content -valign:bottom">
+			<!-- wp:template-part {"slug":"footer","tagName":"footer","className":"site-footer"} /-->
+		</div>
+		<!-- /wp:unitone/cover-content -->
+	</div>
+	<!-- /wp:unitone/cover -->
+</div>
+<!-- /wp:unitone/grid -->

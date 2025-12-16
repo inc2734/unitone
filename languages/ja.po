@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-12-15T05:13:03+00:00\n"
-"PO-Revision-Date: 2025-12-15 14:17+0900\n"
+"POT-Creation-Date: 2025-12-16T10:21:20+00:00\n"
+"PO-Revision-Date: 2025-12-16 19:25+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -740,6 +740,11 @@ msgctxt "Pattern title"
 msgid "Header (Simple)"
 msgstr "ヘッダー（シンプル）"
 
+#: patterns/header/header-vertical-thin.php
+msgctxt "Pattern title"
+msgid "Header (Vertical / Thin)"
+msgstr "ヘッダー（縦 / 細）"
+
 #: patterns/header/header-vertical.php
 msgctxt "Pattern title"
 msgid "Header (Vertical)"
@@ -1177,6 +1182,16 @@ msgctxt "Pattern title"
 msgid "404: Left Header / Page Header (Image)"
 msgstr "404：左ヘッダー / ページヘッダー（画像）"
 
+#: patterns/template/404/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: Left Header (Thin) / Page Header (Image)"
+msgstr "404：左ヘッダー（細） / ページヘッダー（画像）"
+
+#: patterns/template/404/left-header-thin.php
+msgctxt "Pattern title"
+msgid "404: Left Header (Thin)"
+msgstr "404：左ヘッダー（細）"
+
 #: patterns/template/404/left-header.php
 msgctxt "Pattern title"
 msgid "404: Left Header"
@@ -1226,6 +1241,16 @@ msgstr "404：上部固定ヘッダー / 右サイドバー"
 msgctxt "Pattern title"
 msgid "All Archives: Left Header / Page Header (Image)"
 msgstr "アーカイブ：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template/archive/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Left Header (Thin) / Page Header (Image)"
+msgstr "アーカイブ：左ヘッダー（細） / ページヘッダー（画像）"
+
+#: patterns/template/archive/left-header-thin.php
+msgctxt "Pattern title"
+msgid "All Archives: Left Header (Thin)"
+msgstr "アーカイブ：左ヘッダー（細）"
 
 #: patterns/template/archive/left-header.php
 msgctxt "Pattern title"
@@ -1282,6 +1307,11 @@ msgctxt "Pattern title"
 msgid "Front Page: Only Header and Footer"
 msgstr "フロントページ：ヘッダー・フッター"
 
+#: patterns/template/ftont-page/left-header-thin.php
+msgctxt "Pattern title"
+msgid "Front Page: Left Header (Thin)"
+msgstr "フロントページ：左ヘッダー（細）"
+
 #: patterns/template/ftont-page/left-header.php
 msgctxt "Pattern title"
 msgid "Front Page: Left Header"
@@ -1296,6 +1326,16 @@ msgstr "フロントページ：上部固定ヘッダー"
 msgctxt "Pattern title"
 msgid "Blog Home: Left Header / Page Header (Image)"
 msgstr "ブログホーム：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template/home/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Left Header (Thin) / Page Header (Image)"
+msgstr "ブログホーム：左ヘッダー（細） / ページヘッダー（画像）"
+
+#: patterns/template/home/left-header-thin.php
+msgctxt "Pattern title"
+msgid "Blog Home: Left Header (Thin)"
+msgstr "ブログホーム：左ヘッダー（細）"
 
 #: patterns/template/home/left-header.php
 msgctxt "Pattern title"
@@ -1366,6 +1406,26 @@ msgstr "固定ページ：左ヘッダー / ページヘッダー（アイキャ
 msgctxt "Pattern title"
 msgid "Pages: Left Header / Page Header (Image)"
 msgstr "固定ページ：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template/page/left-header-thin-header-footer.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header (Thin) / Only Header and Footer"
+msgstr "固定ページ：左ヘッダー（細） / ヘッダー・フッター"
+
+#: patterns/template/page/left-header-thin-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header (Thin) / Page Header (Featured Image)"
+msgstr "固定ページ：左ヘッダー（細） / ページヘッダー（アイキャッチ画像）"
+
+#: patterns/template/page/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header (Thin) / Page Header (Image)"
+msgstr "固定ページ：左ヘッダー（細） / ページヘッダー（画像）"
+
+#: patterns/template/page/left-header-thin.php
+msgctxt "Pattern title"
+msgid "Pages: Left Header (Thin)"
+msgstr "固定ページ：左ヘッダー（細）"
 
 #: patterns/template/page/left-header.php
 msgctxt "Pattern title"
@@ -1465,6 +1525,16 @@ msgctxt "Pattern title"
 msgid "Search Results: Left Header / Page Header (Image)"
 msgstr "検索結果：左ヘッダー / ページヘッダー（画像）"
 
+#: patterns/template/search/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Left Header (Thin) / Page Header (Image)"
+msgstr "検索結果：左ヘッダー（細） / ページヘッダー（画像）"
+
+#: patterns/template/search/left-header-thin.php
+msgctxt "Pattern title"
+msgid "Search Results: Left Header (Thin)"
+msgstr "検索結果：左ヘッダー（細）"
+
 #: patterns/template/search/left-header.php
 msgctxt "Pattern title"
 msgid "Search Results: Left Header"
@@ -1529,6 +1599,26 @@ msgstr "個別投稿：左ヘッダー / ページヘッダー（アイキャッ
 msgctxt "Pattern title"
 msgid "Single Posts: Left Header / Page Header (Image)"
 msgstr "個別投稿：左ヘッダー / ページヘッダー（画像）"
+
+#: patterns/template/single/left-header-thin-header-footer.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header (Thin) / Only Header and Footer"
+msgstr "個別投稿：左ヘッダー（細） / ヘッダー・フッター"
+
+#: patterns/template/single/left-header-thin-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header (Thin) / Page Header (Featured Image)"
+msgstr "個別投稿：左ヘッダー（細） / ページヘッダー（アイキャッチ画像）"
+
+#: patterns/template/single/left-header-thin-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header (Thin) / Page Header (Image)"
+msgstr "個別投稿：左ヘッダー（細） / ページヘッダー（画像）"
+
+#: patterns/template/single/left-header-thin.php
+msgctxt "Pattern title"
+msgid "Single Posts: Left Header (Thin)"
+msgstr "個別投稿：左ヘッダー（細）"
 
 #: patterns/template/single/left-header.php
 msgctxt "Pattern title"
@@ -5074,6 +5164,26 @@ msgstr "固定ページ：左ヘッダー / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"
+msgid "Pages: Left Header (Thin)"
+msgstr "固定ページ：左ヘッダー（細）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Left Header (Thin) / Only Header and Footer"
+msgstr "固定ページ：左ヘッダー（細） / ヘッダー・フッター"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Left Header (Thin) / Page Header (Featured Image)"
+msgstr "固定ページ：左ヘッダー（細） / ページヘッダー（アイキャッチ画像）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Left Header (Thin) / Page Header (Image)"
+msgstr "固定ページ：左ヘッダー（細） / ページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Custom template name"
 msgid "Pages: Sticky Header"
 msgstr "固定ページ：上部固定ヘッダー"
 
@@ -5189,6 +5299,26 @@ msgstr "個別投稿：左ヘッダー / ページヘッダー（アイキャッ
 msgctxt "Custom template name"
 msgid "Single Posts: Left Header / Page Header (Image)"
 msgstr "個別投稿：左ヘッダー / ページヘッダー（画像）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Left Header (Thin)"
+msgstr "個別投稿：左ヘッダー（細）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Left Header (Thin) / Only Header and Footer"
+msgstr "個別投稿：左ヘッダー（細） / ヘッダー・フッター"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Left Header (Thin) / Page Header (Featured Image)"
+msgstr "個別投稿：左ヘッダー（細） / ページヘッダー（アイキャッチ画像）"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Left Header (Thin) / Page Header (Image)"
+msgstr "個別投稿：左ヘッダー（細） / ページヘッダー（画像）"
 
 #: theme.json
 msgctxt "Custom template name"

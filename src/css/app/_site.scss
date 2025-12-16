@@ -38,12 +38,24 @@
 
 			> .unitone-section,
 			> [data-unitone-layout~="container"] {
-				--unitone--gutters: var(--unitone--s1) !important;
+				--unitone--gutters: var(--unitone--s-2) !important;
 			}
 		}
 
 		.wp-block-navigation:where(.is-style-unitone, .is-style-unitone-accordion) {
 			--unitone--navigation-item--padding-block: var(--unitone--s-1);
+		}
+	}
+}
+.site-container-left-header--thin {
+	@media (min-width: 600px) {
+		.site-header {
+			border-right: 1px solid var(--wp--preset--color--unitone-bright-gray);
+		}
+
+		.wp-block-navigation:where(.is-style-unitone, .is-style-unitone-accordion) {
+			position: fixed;
+			top: 50%;
 		}
 	}
 }

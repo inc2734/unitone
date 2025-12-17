@@ -30,6 +30,11 @@ const alignItemsOptions = [
 		label: __( 'Align items bottom', 'unitone' ),
 	},
 	{
+		value: 'baseline',
+		icon: alignBottom,
+		label: __( 'Align items baseline', 'unitone' ),
+	},
+	{
 		value: 'stretch',
 		icon: alignStretch,
 		label: __( 'Stretch to fill', 'unitone' ),

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-12-16T10:21:20+00:00\n"
-"PO-Revision-Date: 2025-12-16 19:25+0900\n"
+"POT-Creation-Date: 2025-12-17T06:18:01+00:00\n"
+"PO-Revision-Date: 2025-12-17 15:18+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3654,6 +3654,10 @@ msgstr "コンテンツを均等配置（space-evenly）"
 #: dist/js/editor/editor.js:13
 msgid "Align content"
 msgstr "コンテンツの垂直配置"
+
+#: dist/js/editor/editor.js:13
+msgid "Align items baseline"
+msgstr "項目をベースライン揃え"
 
 #: dist/js/editor/editor.js:13
 msgid "Center"

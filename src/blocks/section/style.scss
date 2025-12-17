@@ -5,6 +5,7 @@
 	--unitone--padding: var(--unitone--s4);
 	--unitone--padding-top: var(--unitone--padding);
 	--unitone--padding-bottom: var(--unitone--padding);
+	--unitone--mix-blend-mode: normal;
 	--unitone--overflow: visible;
 	--unitone--backdrop-filter: none;
 	--unitone--position: relative;
@@ -22,6 +23,7 @@
 	--unitone--section--padding-bottom: var(--unitone--padding-bottom);
 
 	max-width: none;
+	mix-blend-mode: var(--unitone--mix-blend-mode);
 	overflow: var(--unitone--overflow);
   backdrop-filter: var(--unitone--backdrop-filter);
 	position: var(--unitone--position) !important;

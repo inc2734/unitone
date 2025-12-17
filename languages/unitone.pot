@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-16T10:21:20+00:00\n"
+"POT-Creation-Date: 2025-12-17T06:18:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -3684,6 +3684,10 @@ msgstr ""
 
 #: dist/js/editor/editor.js:13
 msgid "Align content"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Align items baseline"
 msgstr ""
 
 #: dist/js/editor/editor.js:13

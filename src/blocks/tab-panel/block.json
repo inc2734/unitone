@@ -5,6 +5,7 @@
 	"name": "unitone/tab-panel",
 	"title": "Tab panel",
 	"description": "This block displays tab panel.",
+	"parent": [ "unitone/tabs" ],
 	"attributes": {
 		"tabLabel": {
 			"type": "string",

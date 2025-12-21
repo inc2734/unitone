@@ -59,7 +59,7 @@ const DEFAULT_ICON_OBJECT_SETTINGS = {
 
 const PREFERENCE_SCOPE = 'unitone/preferences';
 
-function InlineUI( { value, onChange, onClose, contentRef } ) {
+function InlineUI( { value, onChange, onClose, contentRef, isObjectActive } ) {
 	dispatch( preferencesStore ).setDefaults( PREFERENCE_SCOPE, {
 		inlineIconStrokeWidth: DEFAULT_STROKE_WIDTH,
 	} );
@@ -75,7 +75,7 @@ function InlineUI( { value, onChange, onClose, contentRef } ) {
 
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
-		settings,
+		settings: { ...settings, isActive: isObjectActive },
 	} );
 
 	const [ searchText, setSearchText ] = useState( '' );
@@ -385,6 +385,7 @@ function ColorPickerUI( {
 	onChange,
 	activeObjectAttributes,
 	contentRef,
+	isObjectActive,
 } ) {
 	const { style } = activeObjectAttributes;
 
@@ -400,7 +401,7 @@ function ColorPickerUI( {
 
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
-		settings,
+		settings: { ...settings, isActive: isObjectActive },
 	} );
 
 	return (
@@ -514,6 +515,7 @@ function Edit( {
 					onChange={ onChange }
 					onClose={ closeModal }
 					contentRef={ contentRef }
+					isObjectActive={ isObjectActive }
 				/>
 			) }
 
@@ -523,6 +525,7 @@ function Edit( {
 					onChange={ onChange }
 					activeObjectAttributes={ activeObjectAttributes }
 					contentRef={ contentRef }
+					isObjectActive={ isObjectActive }
 				/>
 			) }
 		</>

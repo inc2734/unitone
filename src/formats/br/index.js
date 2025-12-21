@@ -37,7 +37,13 @@ const DEFAULT_OBJECT_SETTINGS = {
 	innerHTML: '<br />',
 };
 
-function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
+function InlineUI( {
+	value,
+	onChange,
+	activeObjectAttributes,
+	contentRef,
+	isObjectActive,
+} ) {
 	const className =
 		value.replacements.slice()?.[ value.start ]?.attributes?.class;
 
@@ -56,7 +62,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
-		settings,
+		settings: { ...settings, isActive: isObjectActive },
 	} );
 
 	const onChangeDesktop = useCallback(
@@ -241,6 +247,7 @@ function Edit( {
 					onChange={ onChange }
 					activeObjectAttributes={ activeObjectAttributes }
 					contentRef={ contentRef }
+					isObjectActive={ isObjectActive }
 				/>
 			) }
 		</>

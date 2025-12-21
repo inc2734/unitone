@@ -41,6 +41,7 @@ function InlineUI( {
 	onClose,
 	activeAttributes,
 	contentRef,
+	isActive,
 } ) {
 	const { style } = activeAttributes;
 	const styleProperties = getStyleProperties( style );
@@ -113,7 +114,7 @@ function InlineUI( {
 
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
-		settings,
+		settings: { ...settings, isActive },
 	} );
 
 	return (
@@ -320,6 +321,7 @@ function Edit( { value, onChange, isActive, activeAttributes, contentRef } ) {
 					onClose={ closeModal }
 					activeAttributes={ activeAttributes }
 					contentRef={ contentRef }
+					isActive={ isActive }
 				/>
 			) }
 		</>

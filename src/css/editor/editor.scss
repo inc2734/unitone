@@ -284,6 +284,17 @@
 	}
 }
 
+// @todo Prevent specific colors in the hilights.
+.format-library__inline-color-popover {
+	.components-circular-option-picker__option-wrapper:has(
+		[style*="inherit"],
+		[style*="currentcolor"],
+		[style*="transparent"]
+	) {
+		display: none;
+	}
+}
+
 .components-text-control__input[disabled] {
 	background-color: #f0f0f0;
 }

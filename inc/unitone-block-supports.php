@@ -743,7 +743,7 @@ add_filter(
 				$filtered_blocks = array();
 				foreach ( $matches[0] as $block ) {
 					if ( preg_match( '/@/', $block ) ) {
-						if ( preg_match( '/\{\s*&[^{]+\{[^}]*\}\s*\}/s', $block ) ) {
+						if ( preg_match( '/\{[^{}]*&[^{]+\{[^}]*\}/s', $block ) ) {
 							$filtered_blocks[] = $block;
 						}
 					} elseif ( preg_match( '/^\s*&[^{]+\{[^}]*\}/s', $block ) ) {

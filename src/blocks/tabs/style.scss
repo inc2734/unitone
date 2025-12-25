@@ -3,9 +3,9 @@
 	 * General
 	 */
 	--unitone--active-background-color: var(--wp--preset--color--white);
-	--unitone--active-color: var(--wp--preset--color--unitone--text-immutable);
+	--unitone--active-color: var(--wp--preset--color--unitone--text-black);
 	--unitone--inactive-background-color: var(--wp--preset--color--unitone-bright-gray);
-	--unitone--inactive-color: var(--wp--preset--color--unitone--text-immutable);
+	--unitone--inactive-color: var(--wp--preset--color--unitone--text-black);
 	--unitone--border-width: 1px;
 	--unitone--border-style: solid;
 	--unitone--border-color: var(--wp--preset--color--unitone-light-gray);
@@ -242,7 +242,6 @@
  * Style: Bar
  */
 :root :where(.unitone-tabs.is-style-bar) {
-	--unitone--inactive-color: inherit;
 	--unitone--border-width: 0px;
 	--unitone--gap: var(--unitone--s1);
 
@@ -263,6 +262,27 @@
 		:where(.unitone-tab) {
 			--unitone--inactive-background-color: transparent !important;
 
+			border-radius: 3em;
+		}
+	}
+}
+
+/**
+ * Style: Badge
+ */
+:root :where(.unitone-tabs.is-style-badge) {
+	--unitone--border-width: 0px;
+	--unitone--gap: var(--unitone--s1);
+
+	--unitone--tab--active-background-color: var(--wp--preset--color--unitone-accent);
+	--unitone--tab--active-color: var(--wp--preset--color--white);
+
+	> :where(.unitone-tabs__tab-bar) {
+		:where(.unitone-tab-bar) {
+			gap: var(--unitone--s-1);
+		}
+
+		:where(.unitone-tab) {
 			border-radius: 3em;
 		}
 	}

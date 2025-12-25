@@ -25,6 +25,7 @@ module.exports = {
 		...defaultConfig.rules,
 		'import/no-extraneous-dependencies': 'off',
 		'@wordpress/no-unsafe-wp-apis': 'off',
+		'import/no-unresolved': [ 'error', { ignore: [ '^@wordpress/' ] } ],
 		'eqeqeq': ['error', 'allow-null'],
 	},
 };

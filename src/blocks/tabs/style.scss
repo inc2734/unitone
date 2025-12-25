@@ -277,6 +277,8 @@
 	--unitone--tab--active-background-color: var(--wp--preset--color--unitone-accent);
 	--unitone--tab--active-color: var(--wp--preset--color--white);
 
+	--unitone--tab-panel--padding: 0px;
+
 	> :where(.unitone-tabs__tab-bar) {
 		:where(.unitone-tab-bar) {
 			gap: var(--unitone--s-1);

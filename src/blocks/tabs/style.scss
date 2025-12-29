@@ -243,11 +243,12 @@
  */
 :root :where(.unitone-tabs.is-style-bar) {
 	--unitone--border-width: 0px;
-	--unitone--gap: var(--unitone--s1);
+	--unitone--gap: var(--unitone--s2m);
 
 	--unitone--tab--active-background-color: var(--wp--preset--color--unitone-accent);
 	--unitone--tab--active-color: var(--wp--preset--color--white);
 
+	--unitone--tab-panel--background-color: transparent;
 	--unitone--tab-panel--padding: 0px;
 
 	> :where(.unitone-tabs__tab-bar) {
@@ -272,11 +273,12 @@
  */
 :root :where(.unitone-tabs.is-style-badge) {
 	--unitone--border-width: 0px;
-	--unitone--gap: var(--unitone--s1);
+	--unitone--gap: var(--unitone--s2m);
 
 	--unitone--tab--active-background-color: var(--wp--preset--color--unitone-accent);
 	--unitone--tab--active-color: var(--wp--preset--color--white);
 
+	--unitone--tab-panel--background-color: transparent;
 	--unitone--tab-panel--padding: 0px;
 
 	> :where(.unitone-tabs__tab-bar) {

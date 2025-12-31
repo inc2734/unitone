@@ -1,3 +1,5 @@
+@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
+
 :where(.wp-block-button, .wp-element-button) {
 	--unitone--border-radius: var(--unitone--global--border-radius);
 	--unitone--padding: initial;
@@ -16,4 +18,8 @@
 
 .wp-element-button {
 	display: inline-block;
+}
+
+:where(a.wp-block-button__link, a.wp-element-button) {
+	@include variables.typography();
 }

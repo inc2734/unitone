@@ -1,6 +1,7 @@
 import {
 	dividersResizeObserver,
 	stairsResizeObserver,
+	result1emPxForFireFoxObserver,
 } from '@inc2734/unitone-css/library';
 
 document.addEventListener( 'DOMContentLoaded', () => {
@@ -17,6 +18,19 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	stairs.forEach( ( target ) => {
 		stairsResizeObserver( target );
 	} );
+
+	const computedStyle = window.getComputedStyle( document.documentElement );
+	const isFirefox = computedStyle
+		.getPropertyValue( '--unitone--is-firefox' )
+		.trim();
+	if ( isFirefox ) {
+		const lineHeightTargets = document.querySelectorAll(
+			'[style*="font-size:"], [data-unitone-layout~="-fluid-typography"]'
+		);
+		lineHeightTargets.forEach( ( target ) => {
+			result1emPxForFireFoxObserver( target );
+		} );
+	}
 } );
 
 /**

@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import {
 	useBlockProps,
 	BlockControls,
@@ -5,14 +7,16 @@ import {
 	MediaUpload,
 	MediaUploadCheck,
 	MediaPlaceholder,
-	__experimentalImageURLInputUI as ImageURLInputUI,
 	MediaReplaceFlow,
+	__experimentalUseBorderProps as useBorderProps,
+	__experimentalGetShadowClassesAndStyles as getShadowClassesAndStyles,
+	__experimentalImageURLInputUI as ImageURLInputUI,
 } from '@wordpress/block-editor';
 
 import {
 	Button,
 	SelectControl,
-	RangeControl,
+	__experimentalUnitControl as UnitControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
@@ -73,6 +77,8 @@ export default function ( { attributes, setAttributes } ) {
 		const newSource = {
 			url: media.url,
 			breakpoint: '600',
+			originalWidth: media.width,
+			originalHeight: media.height,
 		};
 
 		setAttributes( { sources: [ ...sources, newSource ] } );
@@ -101,6 +107,8 @@ export default function ( { attributes, setAttributes } ) {
 		newSources[ index ] = {
 			...newSources[ index ],
 			url: media.url,
+			originalWidth: media.width,
+			originalHeight: media.height,
 		};
 		setAttributes( { sources: newSources } );
 	};
@@ -108,6 +116,39 @@ export default function ( { attributes, setAttributes } ) {
 	const updateSourceBreakpoint = ( index, breakpoint ) => {
 		const newSources = [ ...sources ];
 		newSources[ index ] = { ...newSources[ index ], breakpoint };
+		setAttributes( { sources: newSources } );
+	};
+
+	const updateSourceWidth = ( index, value ) => {
+		const newSources = [ ...sources ];
+		const currentSource = newSources[ index ];
+		const parsedValue =
+			'' === value || null == value ? undefined : Number( value );
+		const originalWidth = currentSource.originalWidth;
+		const originalHeight = currentSource.originalHeight;
+
+		let nextWidth = currentSource.width;
+		let nextHeight = currentSource.height;
+
+		if ( null == parsedValue ) {
+			nextWidth = originalWidth;
+			nextHeight = originalHeight;
+		} else if ( originalWidth && originalHeight ) {
+			nextWidth = parsedValue;
+			nextHeight = Math.round(
+				( parsedValue * originalHeight ) / originalWidth
+			);
+		} else {
+			nextWidth = undefined;
+			nextHeight = undefined;
+		}
+
+		newSources[ index ] = {
+			...currentSource,
+			width: nextWidth,
+			height: nextHeight,
+		};
+
 		setAttributes( { sources: newSources } );
 	};
 
@@ -172,6 +213,9 @@ export default function ( { attributes, setAttributes } ) {
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
+	const borderProps = useBorderProps( attributes );
+	const shadowProps = getShadowClassesAndStyles( attributes );
+
 	const TagName = tagName;
 
 	const pictureMarkup = mainImage ? (
@@ -186,6 +230,8 @@ export default function ( { attributes, setAttributes } ) {
 						key={ image.url }
 						media={ `(max-width: ${ image.breakpoint }px)` }
 						srcSet={ image.url }
+						width={ image.width }
+						height={ image.height }
 					/>
 				);
 			} ) }
@@ -195,9 +241,24 @@ export default function ( { attributes, setAttributes } ) {
 				alt={ mainImage.alt }
 				title={ mainImage.title }
 				className={ mainImageClassName }
+				style={ {
+					...borderProps.style,
+					...shadowProps.style,
+				} }
 			/>
 		</picture>
 	) : null;
+
+	const classes = clsx( 'unitone-responsive-image', {
+		'has-custom-border':
+			!! borderProps.className ||
+			( borderProps.style &&
+				Object.keys( borderProps.style ).length > 0 ),
+	} );
+
+	const blockProps = useBlockProps( {
+		className: classes,
+	} );
 
 	return (
 		<>
@@ -248,11 +309,11 @@ export default function ( { attributes, setAttributes } ) {
 						{ sources.length > 0 &&
 							sources.map( ( image, index ) => (
 								<div
-									key={ image.id }
+									key={ image.url }
 									style={ {
 										borderBottom: '1px solid #ddd',
 										marginBottom: '1.25rem',
-										paddingBottom: '.25rem',
+										paddingBottom: '.5rem',
 									} }
 								>
 									<div>
@@ -260,21 +321,28 @@ export default function ( { attributes, setAttributes } ) {
 											src={ image.url }
 											alt={ image.alt }
 											title={ image.title }
+											style={ {
+												verticalAlign: 'bottom',
+											} }
 										/>
 									</div>
 
-									<div style={ { marginTop: '.25rem' } }>
-										<RangeControl
+									<div
+										style={ {
+											marginTop: '.75rem',
+											display: 'grid',
+											gap: '.75rem',
+										} }
+									>
+										<UnitControl
 											__next40pxDefaultSize
-											__nextHasNoMarginBottom
 											label={ __(
-												'Max viewport width (px)',
+												'Target max viewport width',
 												'unitone'
 											) }
-											help={ __(
-												'Show this image when viewport is less than this width',
-												'unitone'
-											) }
+											units={ [] }
+											disableUnits={ false }
+											min={ 1 }
 											value={
 												image.breakpoint
 													? parseInt(
@@ -287,78 +355,105 @@ export default function ( { attributes, setAttributes } ) {
 												updateSourceBreakpoint(
 													index,
 													undefined === value
-														? '600'
-														: String( value )
+														? 600
+														: parseInt( value )
 												)
 											}
-											min={ 1 }
-											max={ 2560 }
-											step={ 1 }
-											allowReset
-										/>
-									</div>
-
-									<div
-										style={ {
-											display: 'flex',
-											gap: '.25rem',
-										} }
-									>
-										<MediaUploadCheck>
-											<MediaUpload
-												onSelect={ ( media ) =>
-													updateSource( index, media )
-												}
-												allowedTypes={ [ 'image' ] }
-												multiple={ false }
-												value={ image.id }
-												render={ ( { open } ) => (
-													<Button
-														onClick={ open }
-														icon={ pencil }
-														iconSize={ 20 }
-														label={ __(
-															'Change image',
-															'unitone'
-														) }
-													/>
-												) }
-											/>
-										</MediaUploadCheck>
-
-										<Button
-											onClick={ () =>
-												removeSource( index )
-											}
-											icon={ trash }
-											iconSize={ 20 }
-											label={ __( 'Remove', 'unitone' ) }
 										/>
 
-										<Button
-											onClick={ () =>
-												moveSource( index, -1 )
-											}
-											disabled={ 0 === index }
-											icon={ arrowUp }
-											iconSize={ 20 }
-											label={ __( 'Move up', 'unitone' ) }
-										/>
-
-										<Button
-											onClick={ () =>
-												moveSource( index, 1 )
-											}
-											disabled={
-												index === sources.length - 1
-											}
-											icon={ arrowDown }
-											iconSize={ 20 }
-											label={ __(
-												'Move down',
+										<UnitControl
+											__next40pxDefaultSize
+											label={ __( 'Width', 'unitone' ) }
+											placeholder={ __(
+												'Auto',
 												'unitone'
 											) }
+											units={ [] }
+											value={
+												null == image.width
+													? undefined
+													: parseInt( image.width )
+											}
+											onChange={ ( value ) =>
+												updateSourceWidth(
+													index,
+													null == value
+														? undefined
+														: parseInt( value )
+												)
+											}
 										/>
+
+										<div
+											style={ {
+												display: 'flex',
+												gap: '.25rem',
+											} }
+										>
+											<MediaUploadCheck>
+												<MediaUpload
+													onSelect={ ( media ) =>
+														updateSource(
+															index,
+															media
+														)
+													}
+													allowedTypes={ [ 'image' ] }
+													multiple={ false }
+													render={ ( { open } ) => (
+														<Button
+															onClick={ open }
+															icon={ pencil }
+															iconSize={ 20 }
+															label={ __(
+																'Change image',
+																'unitone'
+															) }
+														/>
+													) }
+												/>
+											</MediaUploadCheck>
+
+											<Button
+												onClick={ () =>
+													removeSource( index )
+												}
+												icon={ trash }
+												iconSize={ 20 }
+												label={ __(
+													'Remove',
+													'unitone'
+												) }
+											/>
+
+											<Button
+												onClick={ () =>
+													moveSource( index, -1 )
+												}
+												disabled={ 0 === index }
+												icon={ arrowUp }
+												iconSize={ 20 }
+												label={ __(
+													'Move up',
+													'unitone'
+												) }
+											/>
+
+											<Button
+												onClick={ () =>
+													moveSource( index, 1 )
+												}
+												disabled={
+													index === sources.length - 1
+												}
+												icon={ arrowDown }
+												iconSize={ 20 }
+												label={ __(
+													'Move down',
+													'unitone'
+												) }
+											/>
+										</div>
 									</div>
 								</div>
 							) ) }
@@ -414,11 +509,7 @@ export default function ( { attributes, setAttributes } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<TagName
-				{ ...useBlockProps( {
-					className: 'unitone-responsive-image',
-				} ) }
-			>
+			<TagName { ...blockProps }>
 				{ ! mainImage ? (
 					<MediaPlaceholder
 						icon="format-image"

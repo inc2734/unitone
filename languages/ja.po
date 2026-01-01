@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-01-01T15:35:26+00:00\n"
-"PO-Revision-Date: 2026-01-02 00:38+0900\n"
+"POT-Creation-Date: 2026-01-01T17:11:53+00:00\n"
+"PO-Revision-Date: 2026-01-02 02:13+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2176,6 +2176,7 @@ msgid "Using label of the question"
 msgstr "質問のラベルを使用する"
 
 #: dist/blocks/accordion/index.js:1 dist/blocks/mega-menu/index.js:1
+#: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
 msgid "Width"
@@ -2770,12 +2771,12 @@ msgid "Sources"
 msgstr "ソース"
 
 #: dist/blocks/responsive-image/index.js:1
-msgid "Max viewport width (px)"
-msgstr "最大のビューポート幅（px）"
+msgid "Target max viewport width"
+msgstr "対象の最大ビューポート幅"
 
-#: dist/blocks/responsive-image/index.js:1
-msgid "Show this image when viewport is less than this width"
-msgstr "ビューポートがこの幅より小さい場合にこの画像を表示する"
+#: dist/blocks/responsive-image/index.js:1 dist/js/editor/editor.js:13
+msgid "Auto"
+msgstr "自動"
 
 #: dist/blocks/responsive-image/index.js:1
 msgid "Change image"
@@ -3720,10 +3721,6 @@ msgstr "このブロックを中央揃え"
 #: dist/js/editor/editor.js:13
 msgid "Align self bottom"
 msgstr "このブロックを下揃え"
-
-#: dist/js/editor/editor.js:13
-msgid "Auto"
-msgstr "自動"
 
 #: dist/js/editor/editor.js:13
 msgid "Align self"

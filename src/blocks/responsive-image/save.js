@@ -1,4 +1,10 @@
-import { useBlockProps } from '@wordpress/block-editor';
+import clsx from 'clsx';
+
+import {
+	useBlockProps,
+	__experimentalGetBorderClassesAndStyles as getBorderClassesAndStyles,
+	__experimentalGetShadowClassesAndStyles as getShadowClassesAndStyles,
+} from '@wordpress/block-editor';
 
 export default function ( { attributes } ) {
 	const {
@@ -27,13 +33,23 @@ export default function ( { attributes } ) {
 	);
 
 	const mainImageClassName = id ? `wp-image-${ id }` : undefined;
+	const borderProps = getBorderClassesAndStyles( attributes );
+	const shadowProps = getShadowClassesAndStyles( attributes );
+	const imageClassName = borderProps.className || mainImageClassName;
+
+	const classes = clsx( 'unitone-responsive-image', {
+		'has-custom-border':
+			!! borderProps.className ||
+			( borderProps.style &&
+				Object.keys( borderProps.style ).length > 0 ),
+	} );
+
+	const blockProps = useBlockProps.save( {
+		className: classes,
+	} );
 
 	return (
-		<TagName
-			{ ...useBlockProps.save( {
-				className: 'unitone-responsive-image',
-			} ) }
-		>
+		<TagName { ...blockProps }>
 			{ linkUrl ? (
 				<a
 					href={ linkUrl }
@@ -52,6 +68,8 @@ export default function ( { attributes } ) {
 									key={ image.url }
 									media={ `(max-width: ${ image.breakpoint }px)` }
 									srcSet={ image.url }
+									width={ image.width }
+									height={ image.height }
 								/>
 							);
 						} ) }
@@ -60,7 +78,11 @@ export default function ( { attributes } ) {
 							src={ url }
 							alt={ alt }
 							title={ title }
-							className={ mainImageClassName }
+							className={ imageClassName }
+							style={ {
+								...borderProps.style,
+								...shadowProps.style,
+							} }
 						/>
 					</picture>
 				</a>
@@ -76,6 +98,8 @@ export default function ( { attributes } ) {
 								key={ image.url }
 								media={ `(max-width: ${ image.breakpoint }px)` }
 								srcSet={ image.url }
+								width={ image.width }
+								height={ image.height }
 							/>
 						);
 					} ) }
@@ -84,7 +108,11 @@ export default function ( { attributes } ) {
 						src={ url }
 						alt={ alt }
 						title={ title }
-						className={ mainImageClassName }
+						className={ imageClassName }
+						style={ {
+							...borderProps.style,
+							...shadowProps.style,
+						} }
 					/>
 				</picture>
 			) }

@@ -68,8 +68,7 @@
 			"attribute": "class"
 		},
 		"linkDestination": {
-			"type": "string",
-			"default": "none"
+			"type": "string"
 		}
 	},
 	"selectors": {
@@ -103,7 +102,10 @@
 			}
 		},
 		"shadow": {
-			"__experimentalSkipSerialization": true
+			"__experimentalSkipSerialization": true,
+			"__experimentalDefaultControls": {
+				"shadow": true
+			}
 		}
 	},
 	"category": "unitone/component",

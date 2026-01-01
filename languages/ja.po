@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2025-12-25T16:29:44+00:00\n"
-"PO-Revision-Date: 2025-12-26 01:30+0900\n"
+"POT-Creation-Date: 2026-01-01T15:35:26+00:00\n"
+"PO-Revision-Date: 2026-01-02 00:38+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2141,6 +2141,7 @@ msgstr "アブストラクト背景"
 #: dist/blocks/layers/index.js:25 dist/blocks/masonry/index.js:1
 #: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
+#: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:1
@@ -2358,8 +2359,9 @@ msgstr "クラスター（区切り：ボーダー）"
 #: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
-#: dist/blocks/section/index.js:13 dist/blocks/stack-divided/index.js:1
-#: dist/blocks/stack/index.js:1 dist/blocks/with-sidebar-content/index.js:1
+#: dist/blocks/responsive-image/index.js:1 dist/blocks/section/index.js:13
+#: dist/blocks/stack-divided/index.js:1 dist/blocks/stack/index.js:1
+#: dist/blocks/with-sidebar-content/index.js:1
 msgid "HTML element"
 msgstr "HTML 要素"
 
@@ -2758,6 +2760,46 @@ msgid ""
 msgstr ""
 "「auto-repeat」が 「auto-fill」の場合、カラムはこのサイズを維持します。"
 "「auto-fit」の場合、空きスペースを埋めるようにカラムが伸長します。"
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Replace"
+msgstr "置換"
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Sources"
+msgstr "ソース"
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Max viewport width (px)"
+msgstr "最大のビューポート幅（px）"
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Show this image when viewport is less than this width"
+msgstr "ビューポートがこの幅より小さい場合にこの画像を表示する"
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Change image"
+msgstr "画像を変更"
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Remove"
+msgstr "削除"
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Move up"
+msgstr "上げる"
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Move down"
+msgstr "下げる"
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Add source"
+msgstr "ソースを追加"
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Responsive image"
+msgstr "レスポンシブ画像"
 
 #: dist/blocks/responsive-switcher-container/index.js:1
 msgid "Desktoop"
@@ -4800,6 +4842,35 @@ msgstr "サイドバー付きのコンポーネントを組み立てます。"
 msgctxt "block title"
 msgid "With sidebar"
 msgstr "サイドバー"
+
+#: dist/blocks/responsive-image/block.json
+msgctxt "block title"
+msgid "Responsive image"
+msgstr "レスポンシブ画像"
+
+#: dist/blocks/responsive-image/block.json
+msgctxt "block description"
+msgid ""
+"Display responsive images with art direction using picture and source "
+"elements."
+msgstr ""
+"picture 要素と source 要素を使用して、アートディレクションを施したレスポンシ"
+"ブ画像を表示します。"
+
+#: dist/blocks/responsive-image/block.json
+msgctxt "block keyword"
+msgid "img"
+msgstr "img"
+
+#: dist/blocks/responsive-image/block.json
+msgctxt "block keyword"
+msgid "photo"
+msgstr "photo"
+
+#: dist/blocks/responsive-image/block.json
+msgctxt "block keyword"
+msgid "picture"
+msgstr "picture"
 
 #: dist/blocks/tabs/block.json
 msgctxt "block style label"

@@ -1,0 +1,113 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "24.11.0",
+	"textdomain": "unitone",
+	"name": "unitone/responsive-image",
+	"title": "Responsive image",
+	"description": "Display responsive images with art direction using picture and source elements.",
+	"keywords": [ "img", "photo", "picture" ],
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "figure"
+		},
+		"id": {
+			"type": "number",
+			"role": "content"
+		},
+		"url": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src",
+			"role": "content"
+		},
+		"alt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt",
+			"default": "",
+			"role": "content"
+		},
+		"title": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "title",
+			"role": "content"
+		},
+		"sources": {
+			"type": "array",
+			"default": []
+		},
+		"linkUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "href",
+			"role": "content"
+		},
+		"linkTarget": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "target"
+		},
+		"rel": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "rel"
+		},
+		"linkClass": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure > a",
+			"attribute": "class"
+		},
+		"linkDestination": {
+			"type": "string",
+			"default": "none"
+		}
+	},
+	"selectors": {
+		"root": ".unitone-responsive-image",
+		"border": ".unitone-responsive-image img",
+		"shadow": ".unitone-responsive-image img",
+		"filter": {
+			"duotone": ".unitone-responsive-image img"
+		}
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"color": {
+			"text": false,
+			"background": false
+		},
+		"filter": {
+			"duotone": true
+		},
+		"align": [ "left", "center", "right", "wide", "full" ],
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"__experimentalSkipSerialization": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true
+			}
+		},
+		"shadow": {
+			"__experimentalSkipSerialization": true
+		}
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

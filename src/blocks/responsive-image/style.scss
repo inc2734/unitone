@@ -1,0 +1,19 @@
+.unitone-responsive-image {
+	--unitone--font-size: 0;
+
+	picture {
+		display: contents;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+		vertical-align: bottom;
+	}
+}
+
+:where(.is-layout-constrained) {
+	> .unitone-responsive-image {
+		--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
+	}
+}

@@ -1,15 +1,15 @@
-# Copyright (C) 2025 Takashi Kitajima
+# Copyright (C) 2026 Takashi Kitajima
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 24.9.3\n"
+"Project-Id-Version: unitone 24.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-25T16:29:44+00:00\n"
+"POT-Creation-Date: 2026-01-01T15:35:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2152,6 +2152,7 @@ msgstr ""
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
+#: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/responsive-switcher/index.js:1
 #: dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1
@@ -2384,6 +2385,7 @@ msgstr ""
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/section/index.js:13
 #: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1
@@ -2793,6 +2795,46 @@ msgstr ""
 #: dist/blocks/responsive-grid-divided/index.js:4
 #: dist/blocks/responsive-grid/index.js:4
 msgid "If \"auto-repeat\" is \"auto-fill\" the column will maintain this size.\" auto-fit\", the column will stretch to fill the available space."
+msgstr ""
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Replace"
+msgstr ""
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Sources"
+msgstr ""
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Max viewport width (px)"
+msgstr ""
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Show this image when viewport is less than this width"
+msgstr ""
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Change image"
+msgstr ""
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Remove"
+msgstr ""
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Move up"
+msgstr ""
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Move down"
+msgstr ""
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Add source"
+msgstr ""
+
+#: dist/blocks/responsive-image/index.js:1
+msgid "Responsive image"
 msgstr ""
 
 #: dist/blocks/responsive-switcher-container/index.js:1
@@ -4780,6 +4822,31 @@ msgstr ""
 #: dist/blocks/with-sidebar/block.json
 msgctxt "block title"
 msgid "With sidebar"
+msgstr ""
+
+#: dist/blocks/responsive-image/block.json
+msgctxt "block title"
+msgid "Responsive image"
+msgstr ""
+
+#: dist/blocks/responsive-image/block.json
+msgctxt "block description"
+msgid "Display responsive images with art direction using picture and source elements."
+msgstr ""
+
+#: dist/blocks/responsive-image/block.json
+msgctxt "block keyword"
+msgid "img"
+msgstr ""
+
+#: dist/blocks/responsive-image/block.json
+msgctxt "block keyword"
+msgid "photo"
+msgstr ""
+
+#: dist/blocks/responsive-image/block.json
+msgctxt "block keyword"
+msgid "picture"
 msgstr ""
 
 #: dist/blocks/tabs/block.json

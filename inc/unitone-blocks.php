@@ -35,6 +35,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/responsive-grid' );
 	register_block_type( get_template_directory() . '/dist/blocks/responsive-grid-divided' );
 	register_block_type( get_template_directory() . '/dist/blocks/responsive-grid-divided-content' );
+	register_block_type( get_template_directory() . '/dist/blocks/responsive-image' );
 	register_block_type( get_template_directory() . '/dist/blocks/slide' );
 	register_block_type( get_template_directory() . '/dist/blocks/slider' );
 	register_block_type( get_template_directory() . '/dist/blocks/gutters' );

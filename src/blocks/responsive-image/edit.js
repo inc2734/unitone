@@ -4,8 +4,6 @@ import {
 	useBlockProps,
 	BlockControls,
 	InspectorControls,
-	MediaUpload,
-	MediaUploadCheck,
 	MediaPlaceholder,
 	MediaReplaceFlow,
 	__experimentalUseBorderProps as useBorderProps,
@@ -21,8 +19,9 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { arrowDown, arrowUp, pencil, trash } from '@wordpress/icons';
+import { Icon, arrowDown, arrowUp, pencil, trash } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
+import { useState } from '@wordpress/element';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
@@ -42,6 +41,37 @@ export default function ( { attributes, setAttributes } ) {
 		linkClass,
 		linkDestination,
 	} = attributes;
+
+	const [ newSourceBreakpoint, setNewSourceBreakpoint ] = useState( 600 );
+	const [ newSourceWidth, setNewSourceWidth ] = useState( undefined );
+	const [ newSourceKey, setNewSourceKey ] = useState( 0 );
+
+	const getSizedDimensions = (
+		originalWidth,
+		originalHeight,
+		targetWidth
+	) => {
+		if ( null == targetWidth ) {
+			return {
+				width: originalWidth,
+				height: originalHeight,
+			};
+		}
+
+		if ( originalWidth && originalHeight ) {
+			return {
+				width: targetWidth,
+				height: Math.round(
+					( targetWidth * originalHeight ) / originalWidth
+				),
+			};
+		}
+
+		return {
+			width: targetWidth,
+			height: undefined,
+		};
+	};
 
 	const setMainImage = ( media ) => {
 		if ( ! media ) {
@@ -69,19 +99,37 @@ export default function ( { attributes, setAttributes } ) {
 		} );
 	};
 
+	const resetNewSourceFields = () => {
+		setNewSourceBreakpoint( 600 );
+		setNewSourceWidth( undefined );
+		setNewSourceKey( ( previousKey ) => previousKey + 1 );
+	};
+
 	const addSource = ( media ) => {
 		if ( ! media ) {
 			return;
 		}
 
+		const targetWidth =
+			null == newSourceWidth ? undefined : Number( newSourceWidth );
+		const sizedDimensions = getSizedDimensions(
+			media.width,
+			media.height,
+			targetWidth
+		);
+
 		const newSource = {
+			id: media.id,
 			url: media.url,
-			breakpoint: '600',
+			breakpoint: String( newSourceBreakpoint || 600 ),
+			width: sizedDimensions.width,
+			height: sizedDimensions.height,
 			originalWidth: media.width,
 			originalHeight: media.height,
 		};
 
 		setAttributes( { sources: [ ...sources, newSource ] } );
+		resetNewSourceFields();
 	};
 
 	const addSourceFromUrl = ( newUrl ) => {
@@ -89,13 +137,19 @@ export default function ( { attributes, setAttributes } ) {
 			return;
 		}
 
+		const targetWidth =
+			null == newSourceWidth ? undefined : Number( newSourceWidth );
 		const newSource = {
+			id: 0,
 			url: newUrl,
-			breakpoint: '600',
+			breakpoint: String( newSourceBreakpoint || 600 ),
+			width: targetWidth,
 		};
+
 		setAttributes( {
 			sources: [ ...sources, newSource ],
 		} );
+		resetNewSourceFields();
 	};
 
 	const updateSource = ( index, media ) => {
@@ -106,10 +160,31 @@ export default function ( { attributes, setAttributes } ) {
 		const newSources = [ ...sources ];
 		newSources[ index ] = {
 			...newSources[ index ],
+			id: media.id,
 			url: media.url,
 			originalWidth: media.width,
 			originalHeight: media.height,
 		};
+
+		setAttributes( { sources: newSources } );
+	};
+
+	const updateSourceFromUrl = ( index, newUrl ) => {
+		if ( ! newUrl ) {
+			return;
+		}
+
+		const newSources = [ ...sources ];
+		newSources[ index ] = {
+			...newSources[ index ],
+			id: 0,
+			url: newUrl,
+			width: undefined,
+			height: undefined,
+			originalWidth: undefined,
+			originalHeight: undefined,
+		};
+
 		setAttributes( { sources: newSources } );
 	};
 
@@ -363,7 +438,10 @@ export default function ( { attributes, setAttributes } ) {
 
 										<UnitControl
 											__next40pxDefaultSize
-											label={ __( 'Width', 'unitone' ) }
+											label={ __(
+												'Image width',
+												'unitone'
+											) }
 											placeholder={ __(
 												'Auto',
 												'unitone'
@@ -385,34 +463,36 @@ export default function ( { attributes, setAttributes } ) {
 										/>
 
 										<div
+											className="unitone-responsive-image-source-actions"
 											style={ {
 												display: 'flex',
 												gap: '.25rem',
 											} }
 										>
-											<MediaUploadCheck>
-												<MediaUpload
-													onSelect={ ( media ) =>
-														updateSource(
-															index,
-															media
-														)
-													}
-													allowedTypes={ [ 'image' ] }
-													multiple={ false }
-													render={ ( { open } ) => (
-														<Button
-															onClick={ open }
-															icon={ pencil }
-															iconSize={ 20 }
-															label={ __(
-																'Change image',
-																'unitone'
-															) }
-														/>
-													) }
-												/>
-											</MediaUploadCheck>
+											<MediaReplaceFlow
+												mediaId={ image.id }
+												mediaURL={ image.url }
+												allowedTypes={ [ 'image' ] }
+												onSelect={ ( media ) =>
+													updateSource( index, media )
+												}
+												onSelectURL={ ( newUrl ) =>
+													updateSourceFromUrl(
+														index,
+														newUrl
+													)
+												}
+												name={
+													<Icon
+														icon={ pencil }
+														size={ 20 }
+													/>
+												}
+												aria-label={ __(
+													'Change image',
+													'unitone'
+												) }
+											/>
 
 											<Button
 												onClick={ () =>
@@ -459,18 +539,69 @@ export default function ( { attributes, setAttributes } ) {
 							) ) }
 
 						<div>
-							<MediaPlaceholder
-								className="unitone-responsive-image__url-placeholder"
-								labels={ {
-									title: __( 'Add source', 'unitone' ),
-									instructions: '',
+							<div
+								className="unitone-responsive-image-add-source-box"
+								style={ {
+									display: 'grid',
+									gap: '.75rem',
+									marginBottom: '.75rem',
 								} }
-								onSelect={ addSource }
-								onSelectURL={ addSourceFromUrl }
-								allowedTypes={ [ 'image' ] }
-								multiple={ false }
-								accept="image/*"
-							/>
+							>
+								<div className="components-placeholder__label">
+									{ __( 'Add source', 'unitone' ) }
+								</div>
+
+								<UnitControl
+									__next40pxDefaultSize
+									label={ __(
+										'Target max viewport width',
+										'unitone'
+									) }
+									units={ [] }
+									disableUnits={ false }
+									min={ 1 }
+									value={ newSourceBreakpoint }
+									onChange={ ( value ) =>
+										setNewSourceBreakpoint(
+											undefined === value
+												? 600
+												: parseInt( value )
+										)
+									}
+								/>
+
+								<UnitControl
+									__next40pxDefaultSize
+									label={ __( 'Image width', 'unitone' ) }
+									placeholder={ __( 'Auto', 'unitone' ) }
+									units={ [] }
+									value={
+										null == newSourceWidth
+											? undefined
+											: parseInt( newSourceWidth )
+									}
+									onChange={ ( value ) =>
+										setNewSourceWidth(
+											null == value
+												? undefined
+												: parseInt( value )
+										)
+									}
+								/>
+
+								<MediaPlaceholder
+									key={ newSourceKey }
+									labels={ {
+										title: '',
+										instructions: '',
+									} }
+									onSelect={ addSource }
+									onSelectURL={ addSourceFromUrl }
+									allowedTypes={ [ 'image' ] }
+									multiple={ false }
+									accept="image/*"
+								/>
+							</div>
 						</div>
 					</ToolsPanelItem>
 				</ToolsPanel>

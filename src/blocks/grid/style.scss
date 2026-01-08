@@ -60,7 +60,7 @@
 		$_self-values: (
 			start: start,
 			end: end,
-			center: center,
+			center: safe center,
 			stretch: stretch,
 		);
 

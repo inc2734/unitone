@@ -79,7 +79,7 @@
 
 	&--justification\:center {
 		--unitone--grid-auto-columns: max-content !important;
-		--unitone--justify-self: center !important;
+		--unitone--justify-self: safe center !important;
 	}
 
 	&--justification\:right {

@@ -80,7 +80,7 @@ export default [
 						shadow: 'var:preset|shadow|unitone-dark',
 					},
 					unitone: {
-						padding: '1',
+						padding: '1s',
 					},
 					lock: { move: true, remove: true },
 				},
@@ -95,7 +95,7 @@ export default [
 							shadow: 'var:preset|shadow|unitone-dark',
 						},
 						unitone: {
-							padding: '1',
+							padding: '1s',
 						},
 					},
 					innerBlocks: [

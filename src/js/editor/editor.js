@@ -18,3 +18,4 @@ import './plugins/remote-pattern/index';
 import './plugins/wireframe-generator/index';
 import './plugins/paste-styles/index';
 import './plugins/override-settings/index';
+import './plugins/ai-text-insert/index';

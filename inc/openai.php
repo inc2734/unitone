@@ -85,12 +85,20 @@ add_action(
 					);
 
 					if ( ! $response || is_wp_error( $response ) ) {
-						return array();
+						return new \WP_REST_Response(
+							array( 'message' => 'Failed to request OpenAI.' ),
+							500
+						);
 					}
 
 					$response_code = wp_remote_retrieve_response_code( $response );
 					if ( 200 !== $response_code ) {
-						return array();
+						$body = json_decode( wp_remote_retrieve_body( $response ), true );
+						$error_message = $body['error']['message'] ?? 'OpenAI returned an error.';
+						return new \WP_REST_Response(
+							array( 'message' => $error_message ),
+							$response_code
+						);
 					}
 
 					return json_decode( wp_remote_retrieve_body( $response ), true );

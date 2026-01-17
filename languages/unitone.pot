@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 24.10.0\n"
+"Project-Id-Version: unitone 25.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-08T13:48:38+00:00\n"
+"POT-Creation-Date: 2026-01-17T13:38:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -4129,6 +4129,82 @@ msgstr ""
 
 #: dist/js/editor/editor.js:26
 msgid "Text color"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Copied."
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Text Generator"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "To use this feature, you must set an OpenAI API key. Configure it from the <link>unitone setup screen</link>."
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "unitone setup screen"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Prompt"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Example: Generate customer testimonials for a web design agency."
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Tone (optional)"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Polite"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Casual"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Formal"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Friendly"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Logical"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "High energy"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Please enter a prompt."
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Failed to generate. Please try again."
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Generate"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Results"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Copy"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Copy all"
 msgstr ""
 
 #: dist/variations/variations.js:1

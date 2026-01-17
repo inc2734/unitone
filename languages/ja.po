@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-01-08T13:48:38+00:00\n"
-"PO-Revision-Date: 2026-01-08 22:49+0900\n"
+"POT-Creation-Date: 2026-01-17T13:38:37+00:00\n"
+"PO-Revision-Date: 2026-01-17 22:44+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -4123,6 +4123,86 @@ msgstr "背景色"
 #: dist/js/editor/editor.js:26
 msgid "Text color"
 msgstr "文字色"
+
+#: dist/js/editor/editor.js:26
+msgid "Copied."
+msgstr "コピーしました。"
+
+#: dist/js/editor/editor.js:26
+msgid "Text Generator"
+msgstr "テキストジェネレーター"
+
+#: dist/js/editor/editor.js:26
+msgid ""
+"To use this feature, you must set an OpenAI API key. Configure it from the "
+"<link>unitone setup screen</link>."
+msgstr ""
+"この機能を使用するには <link>unitone のセットアップ画面</link>で OpenAI の "
+"API キーを設定する必要があります"
+
+#: dist/js/editor/editor.js:26
+msgid "unitone setup screen"
+msgstr "unitone セットアップ画面"
+
+#: dist/js/editor/editor.js:26
+msgid "Prompt"
+msgstr "プロンプト"
+
+#: dist/js/editor/editor.js:26
+msgid "Example: Generate customer testimonials for a web design agency."
+msgstr "例：web 制作会社向けのお客様の声を生成してください。"
+
+#: dist/js/editor/editor.js:26
+msgid "Tone (optional)"
+msgstr "トーン（任意）"
+
+#: dist/js/editor/editor.js:26
+msgid "Polite"
+msgstr "丁寧"
+
+#: dist/js/editor/editor.js:26
+msgid "Casual"
+msgstr "カジュアル"
+
+#: dist/js/editor/editor.js:26
+msgid "Formal"
+msgstr "フォーマル"
+
+#: dist/js/editor/editor.js:26
+msgid "Friendly"
+msgstr "フレンドリー"
+
+#: dist/js/editor/editor.js:26
+msgid "Logical"
+msgstr "ロジカル"
+
+#: dist/js/editor/editor.js:26
+msgid "High energy"
+msgstr "熱量高め"
+
+#: dist/js/editor/editor.js:26
+msgid "Please enter a prompt."
+msgstr "プロンプトを入力してください。"
+
+#: dist/js/editor/editor.js:26
+msgid "Failed to generate. Please try again."
+msgstr "生成に失敗しました。再度実行してください。"
+
+#: dist/js/editor/editor.js:26
+msgid "Generate"
+msgstr "生成"
+
+#: dist/js/editor/editor.js:26
+msgid "Results"
+msgstr "結果"
+
+#: dist/js/editor/editor.js:26
+msgid "Copy"
+msgstr "コピー"
+
+#: dist/js/editor/editor.js:26
+msgid "Copy all"
+msgstr "すべてコピー"
 
 #: dist/variations/variations.js:1
 msgid "Post to X"

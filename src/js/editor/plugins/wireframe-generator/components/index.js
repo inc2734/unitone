@@ -1,13 +1,4 @@
-import {
-	Button,
-	Modal,
-	Popover,
-	ToggleControl,
-	TextareaControl,
-	Spinner,
-} from '@wordpress/components';
-
-import { useEntityProp } from '@wordpress/core-data';
+import { Button, Modal, Popover, Spinner } from '@wordpress/components';
 import { BlockPreview } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { Icon, desktop, tablet, mobile, help } from '@wordpress/icons';
@@ -30,26 +21,14 @@ const WireframeGeneratorModalPure = ( {
 	setIsOpenHelpPopover,
 	isGeneratingHomepage,
 	isGeneratingLowerLevel,
-	isLoading,
 	previewPatterns,
 	previewMode,
 	setPreviewMode,
 	onClickGenerate,
 	onClickGenerateForLowerLevel,
 	onClickInsert,
-	usingChatGPT,
-	setUsingChatGPT,
-	customPromptPlaceholder,
-	customPrompt,
-	setCustomPrompt,
 	canvasRef,
 } ) => {
-	const [ apiKey ] = useEntityProp(
-		'root',
-		'site',
-		'unitone_openai_api_key'
-	);
-
 	return (
 		<Modal
 			title={
@@ -140,99 +119,15 @@ const WireframeGeneratorModalPure = ( {
 
 						<hr />
 
-						<ToggleControl
-							__nextHasNoMarginBottom
-							label={ __(
-								'Generate text to be reflected in the wireframe with ChatGPT',
-								'unitone'
-							) }
-							checked={ usingChatGPT }
-							disabled={
-								! apiKey ||
-								! Array.isArray( previewPatterns ) ||
-								1 > previewPatterns.length
-							}
-							onChange={ () => {
-								setUsingChatGPT( ! usingChatGPT );
-								setCustomPrompt( '' );
-							} }
-							help={
-								! apiKey &&
-								__(
-									'To use this function, you must set an OpenAI API key on the unitone setup',
-									'unitone'
-								)
-							}
-						/>
-
-						<hr />
-
-						{ usingChatGPT && (
-							<>
-								<div>
-									<p
-										style={ {
-											marginTop: 0,
-											backgroundColor: '#fff9e6',
-											border: '1px solid #fff3cd',
-											padding: '.75em',
-										} }
-									>
-										{ __(
-											'The wireframe generator will send the generated wireframe information to ChatGPT. Enter any instructions you have so that the wireframe reflects your intended text. Note that the function is supported only for Japanese.',
-											'unitone'
-										) }
-									</p>
-
-									<div style={ { width: '100%' } }>
-										<TextareaControl
-											__nextHasNoMarginBottom
-											label={ __(
-												'The text you want to generate',
-												'unitone'
-											) }
-											placeholder={ `例: ${ customPromptPlaceholder }` }
-											value={ customPrompt }
-											onChange={ ( value ) =>
-												setCustomPrompt( value.trim() )
-											}
-										/>
-									</div>
-								</div>
-
-								<hr />
-							</>
-						) }
-
 						<Button
 							variant="primary"
 							onClick={ onClickInsert }
 							disabled={
 								! Array.isArray( previewPatterns ) ||
-								1 > previewPatterns.length ||
-								isLoading
+								1 > previewPatterns.length
 							}
 						>
-							{ ( () => {
-								let label = __( 'Insert wireframe', 'unitone' );
-								if ( isLoading ) {
-									label = (
-										<>
-											<Spinner />
-											{ __(
-												'Now inserting…',
-												'unitone'
-											) }
-										</>
-									);
-								} else if ( usingChatGPT ) {
-									label = __(
-										'Reflect the generated text in the wireframe and insert',
-										'unitone'
-									);
-								}
-								return label;
-							} )() }
+							{ __( 'Insert wireframe', 'unitone' ) }
 						</Button>
 					</div>
 				</div>

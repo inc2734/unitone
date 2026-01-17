@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-17T13:38:37+00:00\n"
+"POT-Creation-Date: 2026-01-17T13:51:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -4066,31 +4066,7 @@ msgid "Generate for lower-level pages"
 msgstr ""
 
 #: dist/js/editor/editor.js:16
-msgid "Generate text to be reflected in the wireframe with ChatGPT"
-msgstr ""
-
-#: dist/js/editor/editor.js:16
-msgid "To use this function, you must set an OpenAI API key on the unitone setup"
-msgstr ""
-
-#: dist/js/editor/editor.js:16
-msgid "The wireframe generator will send the generated wireframe information to ChatGPT. Enter any instructions you have so that the wireframe reflects your intended text. Note that the function is supported only for Japanese."
-msgstr ""
-
-#: dist/js/editor/editor.js:16
-msgid "The text you want to generate"
-msgstr ""
-
-#: dist/js/editor/editor.js:16
 msgid "Insert wireframe"
-msgstr ""
-
-#: dist/js/editor/editor.js:16
-msgid "Now inserting…"
-msgstr ""
-
-#: dist/js/editor/editor.js:16
-msgid "Reflect the generated text in the wireframe and insert"
 msgstr ""
 
 #: dist/js/editor/editor.js:16
@@ -4100,10 +4076,6 @@ msgstr ""
 #. translators: %s: block pattern title.
 #: dist/js/editor/editor.js:20
 msgid "Wireframe"
-msgstr ""
-
-#: dist/js/editor/editor.js:20
-msgid "An error occurred during text generation."
 msgstr ""
 
 #. Translators: %d: The number of the blocks.

@@ -11,12 +11,6 @@ export const useWireFrameGenerator = () => {
 	const [ isGeneratingLowerLevel, setIsGeneratingLowerLevel ] =
 		useState( false );
 	const [ previewMode, setPreviewMode ] = useState( 'desktop' );
-	const [ usingChatGPT, setUsingChatGPT ] = useState( false );
-	const [ customPromptPlaceholder ] = useState(
-		'トップページを想定。職種は web 制作会社。会社の所在地は東京都渋谷区。キャッチコピーは「課題解決のその先に、体験価値を。」'
-	);
-	const [ customPrompt, setCustomPrompt ] = useState( '' );
-	const [ isLoading, setIsLoading ] = useState( false );
 
 	const canvasRef = useRef( null );
 
@@ -134,13 +128,6 @@ export const useWireFrameGenerator = () => {
 		setIsGeneratingLowerLevel,
 		previewMode,
 		setPreviewMode,
-		usingChatGPT,
-		setUsingChatGPT,
-		customPromptPlaceholder,
-		customPrompt,
-		setCustomPrompt,
-		isLoading,
-		setIsLoading,
 		canvasRef,
 		onSelectBlockPattern,
 		heroPatterns,

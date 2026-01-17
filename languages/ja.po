@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-01-17T13:38:37+00:00\n"
-"PO-Revision-Date: 2026-01-17 22:44+0900\n"
+"POT-Creation-Date: 2026-01-17T13:51:37+00:00\n"
+"PO-Revision-Date: 2026-01-17 22:52+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -4050,41 +4050,8 @@ msgid "Generate for lower-level pages"
 msgstr "下層ページ用を生成"
 
 #: dist/js/editor/editor.js:16
-msgid "Generate text to be reflected in the wireframe with ChatGPT"
-msgstr "ChatGPT でワイヤーフレームに反映させるテキストを生成"
-
-#: dist/js/editor/editor.js:16
-msgid ""
-"To use this function, you must set an OpenAI API key on the unitone setup"
-msgstr ""
-"この機能を使用するには、unitoneのセットアップで OpenAI の API キーを設定する"
-"必要があります"
-
-#: dist/js/editor/editor.js:16
-msgid ""
-"The wireframe generator will send the generated wireframe information to "
-"ChatGPT. Enter any instructions you have so that the wireframe reflects your "
-"intended text. Note that the function is supported only for Japanese."
-msgstr ""
-"ワイヤーフレームジェネレータは、生成されたワイヤフレームの情報を ChatGPT に送"
-"信します。ワイヤーフレームにあなたの意図したテキストが反映されるように、任意"
-"の指示を入力してください。なお、本機能は日本語にのみ対応しています。"
-
-#: dist/js/editor/editor.js:16
-msgid "The text you want to generate"
-msgstr "生成したいテキスト"
-
-#: dist/js/editor/editor.js:16
 msgid "Insert wireframe"
 msgstr "ワイヤーフレームを挿入"
-
-#: dist/js/editor/editor.js:16
-msgid "Now inserting…"
-msgstr "挿入しています…"
-
-#: dist/js/editor/editor.js:16
-msgid "Reflect the generated text in the wireframe and insert"
-msgstr "生成されたテキストをワイヤーフレームに反映し、挿入"
 
 #: dist/js/editor/editor.js:16
 msgid "Tablet"
@@ -4094,10 +4061,6 @@ msgstr "タブレット"
 #: dist/js/editor/editor.js:20
 msgid "Wireframe"
 msgstr "ワイヤーフレーム"
-
-#: dist/js/editor/editor.js:20
-msgid "An error occurred during text generation."
-msgstr "テキスト生成中にエラーが発生しました。"
 
 #. Translators: %d: The number of the blocks.
 #: dist/js/editor/editor.js:26
@@ -4138,7 +4101,7 @@ msgid ""
 "<link>unitone setup screen</link>."
 msgstr ""
 "この機能を使用するには <link>unitone のセットアップ画面</link>で OpenAI の "
-"API キーを設定する必要があります"
+"API キーを設定する必要があります。"
 
 #: dist/js/editor/editor.js:26
 msgid "unitone setup screen"

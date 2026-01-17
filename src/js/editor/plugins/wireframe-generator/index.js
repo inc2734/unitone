@@ -9,7 +9,7 @@ import {
 } from './components';
 
 import { useWireFrameGenerator } from './hooks';
-import { onClickInsertOnly, onClickInsertAndReplace } from './inserter';
+import { onClickInsertOnly } from './inserter';
 
 const PluginSidebarWireFrameGenerator = () => {
 	const {
@@ -25,13 +25,6 @@ const PluginSidebarWireFrameGenerator = () => {
 		setIsGeneratingLowerLevel,
 		previewMode,
 		setPreviewMode,
-		usingChatGPT,
-		setUsingChatGPT,
-		customPromptPlaceholder,
-		customPrompt,
-		setCustomPrompt,
-		isLoading,
-		setIsLoading,
 		canvasRef,
 		onSelectBlockPattern,
 		heroPatterns,
@@ -296,32 +289,12 @@ const PluginSidebarWireFrameGenerator = () => {
 
 		const allBlocks = [ ...newBlocks ];
 
-		if ( ! usingChatGPT ) {
-			onClickInsertOnly( {
-				blocks: allBlocks,
-				onSelectBlockPattern,
-				setIsOpen,
-			} );
-		} else {
-			onClickInsertAndReplace( {
-				blocks: allBlocks,
-				previewPatterns,
-				setIsLoading,
-				onSelectBlockPattern,
-				setIsOpen,
-				customPromptPlaceholder,
-				customPrompt,
-			} );
-		}
-	}, [
-		customPrompt,
-		onSelectBlockPattern,
-		previewPatterns,
-		customPromptPlaceholder,
-		setIsLoading,
-		setIsOpen,
-		usingChatGPT,
-	] );
+		onClickInsertOnly( {
+			blocks: allBlocks,
+			onSelectBlockPattern,
+			setIsOpen,
+		} );
+	}, [ onSelectBlockPattern, previewPatterns, setIsOpen ] );
 
 	return (
 		<>
@@ -339,7 +312,6 @@ const PluginSidebarWireFrameGenerator = () => {
 						setIsOpenHelpPopover,
 						isGeneratingHomepage,
 						isGeneratingLowerLevel,
-						isLoading,
 						previewPatterns,
 						setPreviewPatterns,
 						previewMode,
@@ -347,11 +319,6 @@ const PluginSidebarWireFrameGenerator = () => {
 						onClickGenerate,
 						onClickGenerateForLowerLevel,
 						onClickInsert,
-						usingChatGPT,
-						setUsingChatGPT,
-						customPromptPlaceholder,
-						customPrompt,
-						setCustomPrompt,
 						canvasRef,
 					} }
 				/>

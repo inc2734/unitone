@@ -111,12 +111,12 @@ const AIGenerateSidebar = () => {
 
 	return (
 		<>
-			<PluginSidebarMoreMenuItem target="unitone-ai-text-insert">
+			<PluginSidebarMoreMenuItem target="unitone-text-generator">
 				{ __( 'Text Generator', 'unitone' ) }
 			</PluginSidebarMoreMenuItem>
 
 			<PluginSidebar
-				name="unitone-ai-text-insert"
+				name="unitone-text-generator"
 				title={ __( 'Text Generator', 'unitone' ) }
 			>
 				<PanelBody>
@@ -334,7 +334,7 @@ const AIGenerateSidebar = () => {
 	);
 };
 
-registerPlugin( 'unitone-ai-text-insert', {
+registerPlugin( 'unitone-text-generator', {
 	icon,
 	render: AIGenerateSidebar,
 } );

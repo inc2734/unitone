@@ -1,6 +1,6 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { group } from '@wordpress/icons';
 
+import icon from './icon';
 import edit from './edit';
 import save from './save';
 import transforms from './transforms';
@@ -9,7 +9,7 @@ import './index.scss';
 
 registerBlockType( 'unitone/div', {
 	icon: {
-		src: group,
+		src: icon,
 	},
 	edit,
 	save,

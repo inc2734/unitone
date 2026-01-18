@@ -26,7 +26,7 @@ export default [
 			__( 'Section (%1$s)', 'unitone' ),
 			__( 'Centered title', 'unitone' )
 		),
-		scope: [ 'block', 'inserter' ],
+		scope: [ 'block' ],
 		category: 'unitone/section',
 		icon: {
 			src: iconCentedTitle,
@@ -126,7 +126,7 @@ export default [
 			__( 'Section (%1$s)', 'unitone' ),
 			__( 'Centered title / Subtitle', 'unitone' )
 		),
-		scope: [ 'block', 'inserter' ],
+		scope: [ 'block' ],
 		category: 'unitone/section',
 		icon: {
 			src: iconCentedTitleSubtitle,
@@ -282,7 +282,7 @@ export default [
 			__( 'Section (%1$s)', 'unitone' ),
 			__( 'Left title', 'unitone' )
 		),
-		scope: [ 'block', 'inserter' ],
+		scope: [ 'block' ],
 		category: 'unitone/section',
 		icon: {
 			src: iconLeftTitle,
@@ -362,7 +362,7 @@ export default [
 			__( 'Section (%1$s)', 'unitone' ),
 			__( 'Left title / Subtitle', 'unitone' )
 		),
-		scope: [ 'block', 'inserter' ],
+		scope: [ 'block' ],
 		category: 'unitone/section',
 		icon: {
 			src: iconLeftTitleSubtitle,

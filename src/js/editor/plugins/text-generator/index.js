@@ -9,18 +9,12 @@ import {
 	TextareaControl,
 } from '@wordpress/components';
 
-import {
-	createInterpolateElement,
-	useCallback,
-	useMemo,
-	useState,
-} from '@wordpress/element';
-
 import { useDispatch } from '@wordpress/data';
 import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/editor';
+import { useCallback, useMemo, useState } from '@wordpress/element';
 import { copy as copyIcon } from '@wordpress/icons';
 import { registerPlugin } from '@wordpress/plugins';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 import { generateText } from './api/client';
 import { ai as icon } from './icons';
@@ -122,25 +116,19 @@ const AIGenerateSidebar = () => {
 				<PanelBody>
 					<div style={ { display: 'grid', gap: '1rem' } }>
 						<div>
-							{ createInterpolateElement(
-								__(
-									'To use this feature, you must set an OpenAI API key. Configure it from the <link>unitone setup screen</link>.',
-									'unitone'
-								),
-								{
-									link: (
-										<a
-											href={ setupUrl }
-											target="_blank"
-											rel="noopener noreferrer"
-											aria-label={ __(
-												'unitone setup screen',
-												'unitone'
-											) }
-										/>
+							<span
+								dangerouslySetInnerHTML={ {
+									__html: sprintf(
+										// translators: %1$s: <a>, %2$s: </a>
+										__(
+											'To use this feature, you must set an OpenAI API key. Configure it from the %1$sunitone setup screen%2$s.',
+											'unitone'
+										),
+										`<a href="${ setupUrl }" target="_blank" rel="noopener noreferrer">`,
+										'</a>'
 									),
-								}
-							) }
+								} }
+							/>
 						</div>
 
 						<TextareaControl

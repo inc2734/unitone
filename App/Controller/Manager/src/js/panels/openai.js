@@ -1,7 +1,13 @@
-import { Button, TextControl } from '@wordpress/components';
+import {
+	Button,
+	Notice,
+	SelectControl,
+	TextControl,
+} from '@wordpress/components';
+
 import { useEntityProp } from '@wordpress/core-data';
-import { useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
+import { useEffect, useState } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
@@ -14,32 +20,115 @@ export default function () {
 		'unitone_openai_api_key'
 	);
 
+	const [ model, setModel ] = useEntityProp(
+		'root',
+		'site',
+		'unitone_openai_model'
+	);
+
+	const [ models, setModels ] = useState( [] );
+	const [ modelsLoading, setModelsLoading ] = useState( false );
+	const [ modelsError, setModelsError ] = useState( null );
+
+	useEffect( () => {
+		setModelsLoading( true );
+		setModelsError( null );
+
+		apiFetch( { path: '/unitone/v1/openai-models' } )
+			.then( ( response ) => {
+				const fetchedModels = response?.models ?? [];
+				setModels( fetchedModels );
+			} )
+			.catch( ( fetchError ) => {
+				const errorMessage =
+					fetchError?.data?.message ||
+					fetchError?.message ||
+					__( 'Failed to load models.', 'unitone' );
+				setModelsError( errorMessage );
+				setModels( [] );
+			} )
+			.finally( () => {
+				setModelsLoading( false );
+			} );
+	}, [] );
+
 	const saveSettings = () => {
 		setSettingsSaving( true );
-		apiFetch( {
-			path: '/unitone/v1/openai-api-key',
-			method: 'POST',
-			data: {
-				key: apiKey,
-			},
-		} ).then( () => {
+		Promise.all( [
+			apiFetch( {
+				path: '/unitone/v1/openai-api-key',
+				method: 'POST',
+				data: {
+					key: apiKey,
+				},
+			} ),
+			apiFetch( {
+				path: '/unitone/v1/openai-model',
+				method: 'POST',
+				data: {
+					model,
+				},
+			} ),
+		] ).finally( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
 		setSettingsSaving( true );
-		setApiKey( '' );
-		apiFetch( {
-			path: '/unitone/v1/openai-api-key',
-			method: 'POST',
-			data: {
-				key: '',
-			},
-		} ).then( () => {
+		setApiKey( undefined );
+		setModel( undefined );
+		Promise.all( [
+			apiFetch( {
+				path: '/unitone/v1/openai-api-key',
+				method: 'POST',
+				data: {
+					key: undefined,
+				},
+			} ),
+
+			apiFetch( {
+				path: '/unitone/v1/openai-model',
+				method: 'POST',
+				data: {
+					model: undefined,
+				},
+			} ),
+		] ).finally( () => {
 			setSettingsSaving( false );
 		} );
 	};
+
+	const filteredModels = models.filter( ( value ) => {
+		if ( ! value || 'string' !== typeof value ) {
+			return false;
+		}
+
+		if ( ! value.match( '^gpt-[\\d]' ) ) {
+			return false;
+		}
+
+		if ( value.includes( 'codex' ) ) {
+			return false;
+		}
+
+		const suffixes = [ 'mini', 'nano', 'pro' ];
+		const dashCount = ( value.match( /-/g ) || [] ).length;
+		const isBase = dashCount <= 1;
+		const hasAllowedSuffix = suffixes.some( ( suffix ) =>
+			value.endsWith( `-${ suffix }` )
+		);
+
+		return isBase || hasAllowedSuffix;
+	} );
+
+	const modelOptions = [
+		{ label: '', value: '' },
+		...filteredModels.map( ( value ) => ( {
+			label: value,
+			value,
+		} ) ),
+	];
 
 	return (
 		<div
@@ -76,6 +165,54 @@ export default function () {
 									}
 									type="password"
 								/>
+							</div>
+						</div>
+					</div>
+
+					<div
+						data-unitone-layout="with-sidebar -sidebar:left"
+						style={ { '--unitone--sidebar-width': '20em' } }
+					>
+						<div data-unitone-layout="stack">
+							<h3>{ __( 'Model to use', 'unitone' ) }</h3>
+						</div>
+						<div data-unitone-layout="stack">
+							<div data-unitone-layout="stack -gap:-2">
+								<SelectControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									value={ model }
+									onChange={ ( newSetting ) =>
+										setModel( newSetting )
+									}
+									options={ modelOptions }
+									disabled={ modelsLoading }
+								/>
+
+								<div>
+									<span
+										dangerouslySetInnerHTML={ {
+											__html: sprintf(
+												// translators: %1$s: <a>, %2$s: </a>
+												__(
+													'Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for details.',
+													'unitone'
+												),
+												'<a href="https://openai.com/api/pricing/" target="_blank" rel="noopener noreferrer">',
+												'</a>'
+											),
+										} }
+									/>
+								</div>
+
+								{ modelsError && (
+									<Notice
+										status="error"
+										isDismissible={ false }
+									>
+										{ modelsError }
+									</Notice>
+								) }
 							</div>
 						</div>
 					</div>

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-01-17T13:51:37+00:00\n"
-"PO-Revision-Date: 2026-01-17 22:52+0900\n"
+"POT-Creation-Date: 2026-01-19T09:55:55+00:00\n"
+"PO-Revision-Date: 2026-01-19 18:56+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -40,7 +40,7 @@ msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
 #: App/Controller/Manager/Manager.php:42 App/Controller/Manager/Manager.php:43
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
@@ -52,6 +52,7 @@ msgstr "テーマ"
 #: App/Controller/Manager/dist/js/app.js:9 dist/blocks/child-pages/index.js:1
 #: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
 #: dist/js/editor/editor.js:16 dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Default"
 msgstr "デフォルト"
 
@@ -1736,12 +1737,14 @@ msgstr "入力したライセンスキーが有効な場合、テーマのアッ
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:7
 #: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Save Settings"
 msgstr "設定を保存"
 
 #: App/Controller/Manager/dist/js/app.js:1
 #: App/Controller/Manager/dist/js/app.js:7
 #: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Reset All Settings"
 msgstr "すべての設定をリセット"
 
@@ -2100,6 +2103,10 @@ msgid "Background"
 msgstr "背景"
 
 #: App/Controller/Manager/dist/js/app.js:9
+msgid "Failed to load models."
+msgstr "モデルの読み込みに失敗しました。"
+
+#: App/Controller/Manager/dist/js/app.js:9
 msgid "OpenAI"
 msgstr "OpenAI"
 
@@ -2108,14 +2115,27 @@ msgid "API Key"
 msgstr "API キー"
 
 #: App/Controller/Manager/dist/js/app.js:9
+msgid "Model to use"
+msgstr "使用するモデル"
+
+#. translators: %1$s: <a>, %2$s: </a>
+#: App/Controller/Manager/dist/js/app.js:12
+msgid ""
+"Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for "
+"details."
+msgstr ""
+"API の利用には料金が発生します。詳細は %1$sAPI の料金体系%2$sページをご確認く"
+"ださい。"
+
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Go to the Dashboard"
 msgstr "ダッシュボードに戻る"
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "View site (opens in a new tab)"
 msgstr "サイトを表示 (新しいタブで開く)"
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Navigation"
 msgstr "ナビゲーション"
 
@@ -4095,75 +4115,72 @@ msgstr "コピーしました。"
 msgid "Text Generator"
 msgstr "テキストジェネレーター"
 
-#: dist/js/editor/editor.js:26
+#. translators: %1$s: <a>, %2$s: </a>
+#: dist/js/editor/editor.js:29
 msgid ""
 "To use this feature, you must set an OpenAI API key. Configure it from the "
-"<link>unitone setup screen</link>."
+"%1$sunitone setup screen%2$s."
 msgstr ""
-"この機能を使用するには <link>unitone のセットアップ画面</link>で OpenAI の "
-"API キーを設定する必要があります。"
+"この機能を使用するには、OpenAI API キーを設定する必要があります。%1$sunitone "
+"設定画面%2$sから設定してください。"
 
-#: dist/js/editor/editor.js:26
-msgid "unitone setup screen"
-msgstr "unitone セットアップ画面"
-
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Prompt"
 msgstr "プロンプト"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Example: Generate customer testimonials for a web design agency."
 msgstr "例：web 制作会社向けのお客様の声を生成してください。"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Tone (optional)"
 msgstr "トーン（任意）"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Polite"
 msgstr "丁寧"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Casual"
 msgstr "カジュアル"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Formal"
 msgstr "フォーマル"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Friendly"
 msgstr "フレンドリー"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Logical"
 msgstr "ロジカル"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "High energy"
 msgstr "熱量高め"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Please enter a prompt."
 msgstr "プロンプトを入力してください。"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Failed to generate. Please try again."
 msgstr "生成に失敗しました。再度実行してください。"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Generate"
 msgstr "生成"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Results"
 msgstr "結果"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Copy"
 msgstr "コピー"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Copy all"
 msgstr "すべてコピー"
 

@@ -195,24 +195,25 @@ function TypographyPanelPure( props ) {
 					</ToolsPanelItem>
 				) }
 
-				{ ! isFluidTypographyMinLengthDisabled && (
-					<ToolsPanelItem
-						hasValue={ () =>
-							hasFluidTypographyMinLengthValue( { ...props } )
-						}
-						label={ __( 'Minimum font size', 'unitone' ) }
-						onDeselect={ () =>
-							resetFluidTypographyMinLength( { ...props } )
-						}
-						isShownByDefault
-						panelId={ clientId }
-					>
-						<FluidTypographyMinLengthEdit
-							{ ...props }
+				{ ! isFluidTypographyMinLengthDisabled &&
+					hasFluidTypographyValue( { ...props } ) && (
+						<ToolsPanelItem
+							hasValue={ () =>
+								hasFluidTypographyMinLengthValue( { ...props } )
+							}
 							label={ __( 'Minimum font size', 'unitone' ) }
-						/>
-					</ToolsPanelItem>
-				) }
+							onDeselect={ () =>
+								resetFluidTypographyMinLength( { ...props } )
+							}
+							isShownByDefault
+							panelId={ clientId }
+						>
+							<FluidTypographyMinLengthEdit
+								{ ...props }
+								label={ __( 'Minimum font size', 'unitone' ) }
+							/>
+						</ToolsPanelItem>
+					) }
 
 				{ ! isAutoPhraseDisabled && (
 					<ToolsPanelItem

@@ -2,7 +2,6 @@ import { __experimentalUnitControl as UnitControl } from '@wordpress/components'
 
 import { hasBlockSupport } from '@wordpress/blocks';
 
-import { hasFluidTypographyValue } from './fluid-typography';
 import { cleanEmptyObject } from '../utils';
 
 export function hasFluidTypographyMinLengthValue( {
@@ -41,28 +40,22 @@ export function FluidTypographyMinLengthEdit( {
 	setAttributes,
 } ) {
 	return (
-		<>
-			{ hasFluidTypographyValue( { attributes } ) && (
-				<UnitControl
-					__next40pxDefaultSize
-					label={ label }
-					value={
-						attributes?.unitone?.fluidTypographyMinLength || ''
-					}
-					style={ { width: '100%' } }
-					onChange={ ( newValue ) => {
-						const newUnitone = {
-							...attributes?.unitone,
-							fluidTypographyMinLength: newValue || undefined,
-						};
+		<UnitControl
+			__next40pxDefaultSize
+			label={ label }
+			value={ attributes?.unitone?.fluidTypographyMinLength || '' }
+			style={ { width: '100%' } }
+			onChange={ ( newValue ) => {
+				const newUnitone = {
+					...attributes?.unitone,
+					fluidTypographyMinLength: newValue || undefined,
+				};
 
-						setAttributes( {
-							unitone: cleanEmptyObject( newUnitone ),
-						} );
-					} }
-				/>
-			) }
-		</>
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+				} );
+			} }
+		/>
 	);
 }
 

@@ -1,3 +1,7 @@
 @use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/center/center';
 
 @include center.center();
+
+[data-unitone-layout~="center"] {
+	max-width: min(100%, var(--unitone--max-width)) !important;
+}

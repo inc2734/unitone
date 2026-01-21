@@ -206,13 +206,13 @@ legend {
 }
 
 [data-unitone-layout~="-min-height\:full"] {
-	--unitone--min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+	--unitone--min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px)) !important;
 }
 
 [data-unitone-layout~="-min-height\:full-max"] {
-	--unitone--min-height: min(100svh - var(--wp-admin--admin-bar--height, 0px), 840px);
+	--unitone--min-height: min(100svh - var(--wp-admin--admin-bar--height, 0px), 840px) !important;
 }
 
 [data-unitone-layout~="-min-height\:full-min"] {
-	--unitone--min-height: max(100svh - var(--wp-admin--admin-bar--height, 0px), 667px);
+	--unitone--min-height: max(100svh - var(--wp-admin--admin-bar--height, 0px), 667px) !important;
 }

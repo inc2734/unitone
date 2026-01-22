@@ -170,6 +170,7 @@ add_filter( 'block_type_metadata', 'unitone_add_gap_support' );
 function unitone_add_divider_support( $metadata ) {
 	$target = array(
 		'core/list',
+		'core/post-template',
 	);
 
 	if ( ! in_array( $metadata['name'], $target, true ) ) {
@@ -183,7 +184,7 @@ function unitone_add_divider_support( $metadata ) {
 				$metadata['supports']['unitone'] ?? array(),
 				array(
 					'divider'     => true,
-					'dividerType' => array( 'stripe', 'underline', 'bordered', 'divide' ),
+					'dividerType' => array( 'stripe', 'underline', 'bordered' ),
 				)
 			),
 		)
@@ -191,8 +192,6 @@ function unitone_add_divider_support( $metadata ) {
 	return $metadata;
 }
 add_filter( 'block_type_metadata', 'unitone_add_divider_support' );
-
-
 
 /**
  * Add marker color supports to core/list and core/list-item.

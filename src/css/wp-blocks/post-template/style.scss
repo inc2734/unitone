@@ -1,0 +1,238 @@
+:root :where(.wp-block-post) {
+	--unitone--padding: var(--unitone--post--padding);
+	--unitone--padding-top: 0;
+	--unitone--padding-right: 0;
+	--unitone--padding-bottom: 0;
+	--unitone--padding-left: 0;
+
+	padding-top: var(--unitone--padding-top);
+	padding-right: var(--unitone--padding-right);
+	padding-bottom: var(--unitone--padding-bottom);
+	padding-left: var(--unitone--padding-left);
+
+	&:has(> [data-unitone-layout~="-outer-block-link"]) {
+		padding: 0;
+
+		> [data-unitone-layout~="-outer-block-link"] {
+			display: block;
+			color: inherit;
+			text-decoration: none;
+			padding-top: var(--unitone--padding-top);
+			padding-right: var(--unitone--padding-right);
+			padding-bottom: var(--unitone--padding-bottom);
+			padding-left: var(--unitone--padding-left);
+		}
+	}
+}
+
+:root :where(.wp-block-post-template) {
+	--unitone--gap: var(--unitone--global--text-gap);
+	--unitone--post--padding: var(--unitone--gap);
+
+	gap: var(--unitone--gap) !important;
+
+	> * {
+		margin: 0;
+	}
+
+	&:where(:not(.is-layout-grid)) > * + * {
+		margin-top: var(--unitone--gap);
+		margin-bottom: 0;
+	}
+
+	&.is-flex-container.is-flex-container[class*=columns-] > .wp-block-post {
+		width: auto;
+	}
+
+	&.is-flex-container[class*=columns-] {
+		display: grid;
+
+		@media (min-width: 782px) {
+			@for $i from 2 through 6 {
+				&.columns-#{ $i } {
+					grid-template-columns: repeat(#{ $i }, minmax(0, 1fr));
+				}
+			}
+		}
+
+		@media (min-width: 601px) and (max-width: 781px) {
+			@for $i from 3 through 6 {
+				&.columns-#{ $i } {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+		}
+	}
+
+	&.is-layout-grid[class*=columns-] {
+		@media (min-width: 601px) and (max-width: 781px) {
+			@for $i from 3 through 6 {
+				&.columns-#{ $i } {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+		}
+	}
+
+	&:where([data-unitone-layout*="-divider\:"]) {
+		--unitone--divider-color: var(--wp--preset--color--unitone-light-gray);
+		--unitone--divider-style: solid;
+		--unitone--divider-width: 1px;
+
+		gap: 0 !important;
+
+		&:where(:not(.block-editor-block-list__block)) {
+			visibility: hidden;
+		}
+
+		&:where([data-unitone-layout~="divider\:initialized"]) {
+			visibility: visible;
+		}
+
+		> * {
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
+		}
+
+		.wp-block-post,
+		.block-editor-block-preview__live-content {
+			position: relative;
+		}
+	}
+
+	/**
+	 * Common styles of all block styles with underline / stripe.
+	 */
+	&:where(
+		[data-unitone-layout~="-divider\:underline"],
+		[data-unitone-layout~="-divider\:stripe"]
+	) {
+		:where(.wp-block-post) {
+			--unitone--padding-top: var(--unitone--padding);
+			--unitone--padding-bottom: var(--unitone--padding);
+
+			border-bottom:
+				var(--unitone--divider-width)
+				var(--unitone--divider-style)
+				var(--unitone--divider-color);
+		}
+
+		@media (min-width: 600px) {
+			&:where(
+				.is-layout-grid,
+				.is-flex-container[class*=columns-]
+			) {
+				:where(.wp-block-post) {
+					--unitone--padding-right: calc(var(--unitone--padding) / 2);
+					--unitone--padding-left: calc(var(--unitone--padding) / 2);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Common styles of all block styles with stripe.
+	 */
+	&:where([data-unitone-layout~="-divider\:stripe"]) {
+		border-top:
+			var(--unitone--divider-width)
+			var(--unitone--divider-style)
+			var(--unitone--divider-color);
+	}
+
+	/**
+	 * Common styles of all block styles with underline.
+	 */
+	&:where([data-unitone-layout~="-divider\:underline"]) {
+		&:where(:not(.is-layout-grid)) :where(.wp-block-post:first-child) {
+			padding-top: 0;
+		}
+
+		@media not all and (min-width: 600px) {
+			&:where(
+				.is-layout-grid,
+				.is-flex-container[class*=columns-]
+			) {
+				:where(.wp-block-post:first-child) {
+					padding-top: 0;
+				}
+			}
+		}
+
+		@media (min-width: 600px) {
+			@for $i from 2 through 6 {
+				&:where(
+					.is-layout-grid.columns-#{ $i },
+					.is-flex-container.columns-#{ $i }
+				) {
+					:where(.wp-block-post:nth-child(-n + #{ $i } of :not([style*=display]))) {
+						padding-top: 0;
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Common styles of all block styles with bordered.
+	 */
+	&:where([data-unitone-layout~="-divider\:bordered"]) {
+		:where(.wp-block-post) {
+			--unitone--padding-top: var(--unitone--padding);
+			--unitone--padding-right: var(--unitone--padding);
+			--unitone--padding-bottom: var(--unitone--padding);
+			--unitone--padding-left: var(--unitone--padding);
+
+			border: var(--unitone--divider-width) var(--unitone--divider-style) var(--unitone--divider-color);
+		}
+
+		&:where(:not(.is-layout-grid):not(.is-flex-container[class*=columns-])) .wp-block-post:not(:first-child) {
+			border-top: none;
+		}
+
+		&:where(
+			.is-layout-grid,
+			.is-flex-container[class*=columns-]
+		) {
+			border-left: var(--unitone--divider-width) var(--unitone--divider-style) var(--unitone--divider-color);
+
+			:where(.wp-block-post) {
+				border-left: none;
+			}
+
+			@media not all and (min-width: 600px) {
+				border-bottom: var(--unitone--divider-width) var(--unitone--divider-style) var(--unitone--divider-color);
+
+				:where(.wp-block-post) {
+					border-bottom: none;
+				}
+			}
+		}
+
+		@media (min-width: 600px) {
+			@for $i from 2 through 6 {
+				&:where(
+					.is-layout-grid.columns-#{ $i },
+					.is-flex-container.columns-#{ $i }
+				) {
+					:where(.wp-block-post:nth-child(n + #{ $i + 1} of :not([style*=display]))) {
+						border-top: none;
+					}
+				}
+			}
+		}
+
+		@media (min-width: 600px) {
+			&:where(
+				.is-layout-grid.columns-5,
+				.is-flex-container.columns-5,
+				.is-layout-grid.columns-6,
+				.is-flex-container.columns-6
+			) {
+				:where(.wp-block-post) {
+					--unitone--padding: var(--unitone--global--text-gap);
+				}
+			}
+		}
+	}
+}

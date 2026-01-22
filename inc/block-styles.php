@@ -58,30 +58,6 @@ function unitone_register_block_styles() {
 	);
 
 	register_block_style(
-		'core/query',
-		array(
-			'name'  => 'underline',
-			'label' => __( 'Underline', 'unitone' ),
-		)
-	);
-
-	register_block_style(
-		'core/query',
-		array(
-			'name'  => 'bordered',
-			'label' => __( 'Bordered', 'unitone' ),
-		)
-	);
-
-	register_block_style(
-		'core/query',
-		array(
-			'name'  => 'stripe',
-			'label' => __( 'Stripe', 'unitone' ),
-		)
-	);
-
-	register_block_style(
 		'core/navigation',
 		array(
 			'name'  => 'unitone',

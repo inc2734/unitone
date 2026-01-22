@@ -10,82 +10,6 @@
 	}
 }
 
-.wp-block-post-template {
-	--unitone--gap: var(--unitone--global--text-gap);
-	--unitone--post--padding: var(--unitone--gap);
-
-	gap: var(--unitone--gap) !important;
-
-	> * {
-		margin: 0;
-	}
-
-	&.is-layout-flow > * + * {
-		margin-top: var(--unitone--gap);
-	}
-
-	&.is-flex-container.is-flex-container[class*=columns-] > .wp-block-post {
-		width: auto;
-	}
-
-	&.is-flex-container[class*=columns-] {
-		display: grid;
-
-		@media (min-width: 782px) {
-			@for $i from 2 through 6 {
-				&.columns-#{ $i } {
-					grid-template-columns: repeat(#{ $i }, minmax(0, 1fr));
-				}
-			}
-		}
-
-		@media (min-width: 601px) and (max-width: 781px) {
-			@for $i from 3 through 6 {
-				&.columns-#{ $i } {
-					grid-template-columns: repeat(2, minmax(0, 1fr));
-				}
-			}
-		}
-	}
-
-	&.is-layout-grid[class*=columns-] {
-		@media (min-width: 601px) and (max-width: 781px) {
-			@for $i from 3 through 6 {
-				&.columns-#{ $i } {
-					grid-template-columns: repeat(2, minmax(0, 1fr));
-				}
-			}
-		}
-	}
-}
-
-.wp-block-post {
-	--unitone--padding: var(--unitone--post--padding);
-	--unitone--padding-top: 0;
-	--unitone--padding-right: 0;
-	--unitone--padding-bottom: 0;
-	--unitone--padding-left: 0;
-
-	padding-top: var(--unitone--padding-top);
-	padding-right: var(--unitone--padding-right);
-	padding-bottom: var(--unitone--padding-bottom);
-	padding-left: var(--unitone--padding-left);
-
-	&:has(> [data-unitone-layout~="-outer-block-link"]) {
-		padding: 0;
-
-		> [data-unitone-layout~="-outer-block-link"] {
-			display: block;
-			color: inherit;
-			text-decoration: none;
-			padding-top: var(--unitone--padding-top);
-			padding-right: var(--unitone--padding-right);
-			padding-bottom: var(--unitone--padding-bottom);
-			padding-left: var(--unitone--padding-left);
-		}
-	}
-}
-
 .wp-block-post-title a {
 	color: inherit;
 	text-decoration: none;
@@ -129,9 +53,9 @@
  * Common styles fo all block styles with divider.
  */
 :root :where(
-	.wp-block-query.is-style-underline,
-	.wp-block-query.is-style-bordered,
-	.wp-block-query.is-style-stripe,
+	.wp-block-query.is-style-underline, /* @deprecated */
+	.wp-block-query.is-style-bordered, /* @deprecated */
+	.wp-block-query.is-style-stripe, /* @deprecated */
 	.wp-block-query.is-style-block-link-underline, /* @deprecated */
 	.wp-block-query.is-style-block-link-bordered, /* @deprecated */
 	.wp-block-query.is-style-block-link-stripe /* @deprecated */
@@ -173,8 +97,8 @@
  * Common styles of all block styles with underline / stripe.
  */
 :root :where(
-	.wp-block-query.is-style-underline,
-	.wp-block-query.is-style-stripe,
+	.wp-block-query.is-style-underline, /* @deprecated */
+	.wp-block-query.is-style-stripe, /* @deprecated */
 	.wp-block-query.is-style-block-link-underline, /* @deprecated */
 	.wp-block-query.is-style-block-link-stripe /* @deprecated */
 ) {
@@ -202,7 +126,7 @@
  * Common styles of all block styles with stripe.
  */
 :root :where(
-	.wp-block-query.is-style-stripe,
+	.wp-block-query.is-style-stripe, /* @deprecated */
 	.wp-block-query.is-style-block-link-stripe /* @deprecated */
 ) {
 	border-top: var(--unitone--divider-width) var(--unitone--divider-style) var(--unitone--divider-color);
@@ -212,7 +136,7 @@
  * Common styles of all block styles with underline.
  */
 :root :where(
-	.wp-block-query.is-style-underline,
+	.wp-block-query.is-style-underline, /* @deprecated */
 	.wp-block-query.is-style-block-link-underline /* @deprecated */
 ) {
 	:where(.wp-block-post-template.is-layout-flow .wp-block-post:first-child) {
@@ -249,7 +173,7 @@
  * Common styles of all block styles with bordered.
  */
 :root :where(
-	.wp-block-query.is-style-bordered,
+	.wp-block-query.is-style-bordered, /* @deprecated */
 	.wp-block-query.is-style-block-link-bordered /* @deprecated */
 ) {
 	:where(.wp-block-post) {

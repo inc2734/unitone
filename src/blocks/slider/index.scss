@@ -35,8 +35,22 @@
 }
 
 .unitone-slider__wrapper {
+	transition: transform .5s ease-in-out;
+
 	> *:not(:last-child) {
 		margin-right: var(--unitone--gap);
+	}
+}
+
+.unitone-slider__canvas {
+	> .unitone-slider__wrapper {
+		contain: layout;
+	}
+
+	&.swiper-fade {
+		> .unitone-slider__wrapper {
+			contain: initial;
+		}
 	}
 }
 

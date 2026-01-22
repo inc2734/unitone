@@ -30,33 +30,24 @@ const moveToCurrentSlide = ( slide ) => {
 	const canvas = slide.closest( '.unitone-slider__canvas' );
 	const wrapper = slide.closest( '.unitone-slider__wrapper' );
 	const slider = wrapper.closest( '.unitone-slider' );
-	const lastSlide = slide.parentNode.lastChild;
+	const lastSlide = wrapper.lastElementChild;
 	const canCenterdSlides =
 		'true' === canvas.getAttribute( 'data-unitone-swiper-centered-slides' );
 
-	let x =
-		wrapper.getBoundingClientRect().left -
-		slide.getBoundingClientRect().left;
+	let x = -slide.offsetLeft;
 
 	if ( canCenterdSlides ) {
-		x =
-			x +
-			( canvas.getBoundingClientRect().width -
-				slide.getBoundingClientRect().width ) /
-				2;
+		x = x + ( canvas.clientWidth - slide.offsetWidth ) / 2;
 	}
 
 	wrapper.style.transform = `translateX(${ x }px)`;
 
-	if ( ! canCenterdSlides ) {
-		const lastSlideRight =
-			lastSlide.getBoundingClientRect().left + lastSlide.offsetWidth;
+	if ( ! canCenterdSlides && lastSlide ) {
+		const contentWidth = lastSlide.offsetLeft + lastSlide.offsetWidth;
+		const canvasWidth = canvas.clientWidth;
 
-		const sliderRight =
-			slider.getBoundingClientRect().left + slider.offsetWidth;
-
-		if ( lastSlideRight < sliderRight ) {
-			x = x + sliderRight - lastSlideRight;
+		if ( contentWidth < canvasWidth ) {
+			x = x + canvasWidth - contentWidth;
 			wrapper.style.transform = `translateX(${ x }px)`;
 		}
 	}

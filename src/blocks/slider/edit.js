@@ -29,7 +29,6 @@ const moveToCurrentSlide = ( slide ) => {
 
 	const canvas = slide.closest( '.unitone-slider__canvas' );
 	const wrapper = slide.closest( '.unitone-slider__wrapper' );
-	const slider = wrapper.closest( '.unitone-slider' );
 	const lastSlide = wrapper.lastElementChild;
 	const canCenterdSlides =
 		'true' === canvas.getAttribute( 'data-unitone-swiper-centered-slides' );

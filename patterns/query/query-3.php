@@ -6,9 +6,9 @@
  * Block Types: core/query
  */
 ?>
-<!-- wp:query {"query":{"perPage":6,"offset":0,"postType":"post","inherit":true},"className":"is-style-bordered","unitone":{"blockLink":true}} -->
-<div class="wp-block-query is-style-bordered">
-	<!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:query {"query":{"perPage":6,"offset":0,"postType":"post","inherit":true},"unitone":{"blockLink":true}} -->
+<div class="wp-block-query">
+	<!-- wp:post-template {"layout":{"type":"grid","columnCount":3},"unitone":{"dividerType":"bordered"}} -->
 		<!-- wp:unitone/stack {"unitone":{"gap":"-1"}} -->
 		<div data-unitone-layout="stack">
 			<!-- wp:unitone/frame {"ratio":"4/3"} -->

@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "21.0.0",
+	"version": "25.3.0",
 	"textdomain": "unitone",
 	"name": "unitone/texture",
 	"title": "Texture",
@@ -25,6 +25,24 @@
 		"size": {
 			"type": "number",
 			"default": 1
+		},
+		"offset": {
+			"type": "object",
+			"default": {
+				"top": "0px",
+				"right": "0px",
+				"bottom": "0px",
+				"left": "0px"
+			}
+		},
+		"radius": {
+			"type": "object",
+			"default": {
+				"top": "0px",
+				"right": "0px",
+				"bottom": "0px",
+				"left": "0px"
+			}
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

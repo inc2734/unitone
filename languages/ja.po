@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-01-19T09:55:55+00:00\n"
-"PO-Revision-Date: 2026-01-19 18:56+0900\n"
+"POT-Creation-Date: 2026-01-26T23:48:00+00:00\n"
+"PO-Revision-Date: 2026-01-27 08:48+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css inc/block-categories.php:22 inc/block-categories.php:33
 #: inc/block-categories.php:44 inc/block-categories.php:55
-#: inc/block-styles.php:88 dist/formats/formats.js:1
+#: inc/block-styles.php:64 dist/formats/formats.js:1
 #: dist/js/editor/editor.js:16
 msgid "unitone"
 msgstr "unitone"
@@ -193,33 +193,29 @@ msgstr "バッジ"
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:64 inc/block-styles.php:112 dist/js/editor/editor.js:4
-msgid "Underline"
-msgstr "アンダーライン"
-
-#: inc/block-styles.php:72 inc/block-styles.php:136 dist/js/editor/editor.js:4
-msgid "Bordered"
-msgstr "ボーダー"
-
-#: inc/block-styles.php:80 dist/js/editor/editor.js:4
-msgid "Stripe"
-msgstr "ストライプ"
-
-#: inc/block-styles.php:96
+#: inc/block-styles.php:72
 msgid "unitone (Accordion)"
 msgstr "unitone（アコーディオン）"
 
-#: inc/block-styles.php:104
+#: inc/block-styles.php:80
 msgid "Cover"
 msgstr "カバー"
 
-#: inc/block-styles.php:120
+#: inc/block-styles.php:88 dist/js/editor/editor.js:4
+msgid "Underline"
+msgstr "アンダーライン"
+
+#: inc/block-styles.php:96
 msgid "Vertical fill"
 msgstr "縦塗りつぶし"
 
-#: inc/block-styles.php:128
+#: inc/block-styles.php:104
 msgid "Vertical line"
 msgstr "縦線"
+
+#: inc/block-styles.php:112 dist/js/editor/editor.js:4
+msgid "Bordered"
+msgstr "ボーダー"
 
 #: inc/formats.php:131 dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
 #: dist/blocks/layers/index.js:1 dist/blocks/switcher/index.js:1
@@ -3108,11 +3104,6 @@ msgstr "子要素の内在的なサイズによって中央揃えする"
 msgid "Multi columns"
 msgstr "マルチカラム"
 
-#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:4
-#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
-msgid "Type"
-msgstr "種類"
-
 #: dist/blocks/texture/index.js:1
 msgid "Dots"
 msgstr "ドット"
@@ -3145,6 +3136,20 @@ msgstr "方眼紙"
 msgid "Backslash"
 msgstr "バックスラッシュ"
 
+#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:7
+msgid "Wave"
+msgstr "波"
+
+#: dist/blocks/texture/index.js:1
+msgid "Solid color"
+msgstr "ベタ塗り"
+
+#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
+msgid "Type"
+msgstr "種類"
+
 #: dist/blocks/texture/index.js:1 dist/formats/formats.js:1
 msgid "Color"
 msgstr "色"
@@ -3152,6 +3157,30 @@ msgstr "色"
 #: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:1
 msgid "Gap"
 msgstr "間隔"
+
+#: dist/blocks/texture/index.js:1
+msgid "Offset"
+msgstr "オフセット"
+
+#: dist/blocks/texture/index.js:1
+msgid "Distance from top"
+msgstr "上からの距離"
+
+#: dist/blocks/texture/index.js:1
+msgid "Distance from right"
+msgstr "右からの距離"
+
+#: dist/blocks/texture/index.js:1
+msgid "Distance from bottom"
+msgstr "下からの距離"
+
+#: dist/blocks/texture/index.js:1
+msgid "Distance from left"
+msgstr "左からの距離"
+
+#: dist/blocks/texture/index.js:1
+msgid "Border radius"
+msgstr "角丸"
 
 #: dist/blocks/timeline-dots-column/index.js:1
 #: dist/blocks/with-sidebar-content/index.js:1
@@ -3461,6 +3490,10 @@ msgstr ""
 "ます。"
 
 #: dist/js/editor/editor.js:4
+msgid "Stripe"
+msgstr "ストライプ"
+
+#: dist/js/editor/editor.js:4
 msgid "Stripe (Vertical)"
 msgstr "ストライプ（縦）"
 
@@ -3479,10 +3512,6 @@ msgstr "背景色または背景画像を設定する必要があります。"
 #: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid "Triangle"
 msgstr "三角"
-
-#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
-msgid "Wave"
-msgstr "波"
 
 #: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid "Scattering Wave"

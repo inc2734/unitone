@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 25.0.0\n"
+"Project-Id-Version: unitone 25.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-19T09:55:55+00:00\n"
+"POT-Creation-Date: 2026-01-26T23:48:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: inc/block-categories.php:33
 #: inc/block-categories.php:44
 #: inc/block-categories.php:55
-#: inc/block-styles.php:88
+#: inc/block-styles.php:64
 #: dist/formats/formats.js:1
 #: dist/js/editor/editor.js:16
 msgid "unitone"
@@ -205,37 +205,30 @@ msgstr ""
 msgid "Outline"
 msgstr ""
 
-#: inc/block-styles.php:64
-#: inc/block-styles.php:112
+#: inc/block-styles.php:72
+msgid "unitone (Accordion)"
+msgstr ""
+
+#: inc/block-styles.php:80
+msgid "Cover"
+msgstr ""
+
+#: inc/block-styles.php:88
 #: dist/js/editor/editor.js:4
 msgid "Underline"
 msgstr ""
 
-#: inc/block-styles.php:72
-#: inc/block-styles.php:136
-#: dist/js/editor/editor.js:4
-msgid "Bordered"
-msgstr ""
-
-#: inc/block-styles.php:80
-#: dist/js/editor/editor.js:4
-msgid "Stripe"
-msgstr ""
-
 #: inc/block-styles.php:96
-msgid "unitone (Accordion)"
-msgstr ""
-
-#: inc/block-styles.php:104
-msgid "Cover"
-msgstr ""
-
-#: inc/block-styles.php:120
 msgid "Vertical fill"
 msgstr ""
 
-#: inc/block-styles.php:128
+#: inc/block-styles.php:104
 msgid "Vertical line"
+msgstr ""
+
+#: inc/block-styles.php:112
+#: dist/js/editor/editor.js:4
+msgid "Bordered"
 msgstr ""
 
 #: inc/formats.php:131
@@ -3154,13 +3147,6 @@ msgid "Multi columns"
 msgstr ""
 
 #: dist/blocks/texture/index.js:1
-#: dist/js/editor/editor.js:4
-#: dist/js/editor/editor.js:7
-#: dist/js/editor/editor.js:13
-msgid "Type"
-msgstr ""
-
-#: dist/blocks/texture/index.js:1
 msgid "Dots"
 msgstr ""
 
@@ -3193,6 +3179,23 @@ msgid "Backslash"
 msgstr ""
 
 #: dist/blocks/texture/index.js:1
+#: dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:7
+msgid "Wave"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Solid color"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+#: dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
+msgid "Type"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
 #: dist/formats/formats.js:1
 msgid "Color"
 msgstr ""
@@ -3200,6 +3203,30 @@ msgstr ""
 #: dist/blocks/texture/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Gap"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Offset"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Distance from top"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Distance from right"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Distance from bottom"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Distance from left"
+msgstr ""
+
+#: dist/blocks/texture/index.js:1
+msgid "Border radius"
 msgstr ""
 
 #: dist/blocks/timeline-dots-column/index.js:1
@@ -3498,6 +3525,10 @@ msgid "This can be set when a background image or background gradient is set for
 msgstr ""
 
 #: dist/js/editor/editor.js:4
+msgid "Stripe"
+msgstr ""
+
+#: dist/js/editor/editor.js:4
 msgid "Stripe (Vertical)"
 msgstr ""
 
@@ -3517,11 +3548,6 @@ msgstr ""
 #: dist/js/editor/editor.js:4
 #: dist/js/editor/editor.js:7
 msgid "Triangle"
-msgstr ""
-
-#: dist/js/editor/editor.js:4
-#: dist/js/editor/editor.js:7
-msgid "Wave"
 msgstr ""
 
 #: dist/js/editor/editor.js:4

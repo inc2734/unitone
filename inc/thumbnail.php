@@ -10,29 +10,41 @@ use Unitone\App\Controller\Manager\Manager;
 /**
  * Filters the post thumbnail HTML.
  *
- * @param string $html The post thumbnail HTML.
+ * @param string       $html The post thumbnail HTML.
+ * @param int          $post_id The post ID.
+ * @param int          $post_thumbnail_id The post thumbnail ID.
+ * @param string|array $size The post thumbnail size.
+ * @param array        $attr The post thumbnail attributes.
  * @return string
  */
-function unitone_set_empty_thumbnail( $html ) {
-	if ( ! $html ) {
-		$defualt_featured_image     = Manager::get_setting( 'default-featured-image' );
-		$defualt_featured_image_url = $defualt_featured_image
-			? wp_get_attachment_url( $defualt_featured_image )
-			: false;
-
-		if ( $defualt_featured_image_url ) {
-			return sprintf(
-				'<img src="%1$s" alt="">',
-				esc_url( $defualt_featured_image_url )
-			);
-		}
-
-		return '<div style="background-color: var(--wp--preset--color--unitone-bright-gray); aspect-ratio: var(--unitone--ratio); height: 100%; width: 100%"></div>';
+function unitone_set_empty_thumbnail( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+	if ( $html ) {
+		return $html;
 	}
 
-	return $html;
+	$defualt_featured_image     = Manager::get_setting( 'default-featured-image' );
+	$defualt_featured_image_url = $defualt_featured_image
+		? wp_get_attachment_url( $defualt_featured_image )
+		: false;
+
+	if ( $defualt_featured_image_url ) {
+		if ( empty( $attr ) ) {
+			$attr = array();
+		}
+
+		$attr['class'] = trim( ( $attr['class'] ?? '' ) . ' wp-post-image' );
+
+		return wp_get_attachment_image(
+			$defualt_featured_image,
+			$size,
+			false,
+			$attr
+		);
+	}
+
+	return '<div style="background-color: var(--wp--preset--color--unitone-bright-gray); aspect-ratio: var(--unitone--ratio); height: 100%; width: 100%"></div>';
 }
-add_filter( 'post_thumbnail_html', 'unitone_set_empty_thumbnail' );
+add_filter( 'post_thumbnail_html', 'unitone_set_empty_thumbnail', 10, 5 );
 
 /**
  * Registers a REST API route.

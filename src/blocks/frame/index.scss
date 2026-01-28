@@ -18,4 +18,13 @@
 	.block-editor-media-placeholder {
 		height: 100%;
 	}
+
+	.wp-block-post-featured-image {
+		:is(
+			.components-placeholder,
+			.wp-block-post-featured-image__placeholder
+		) {
+			min-height: 1px;
+		}
+	}
 }

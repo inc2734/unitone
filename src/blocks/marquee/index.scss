@@ -1,0 +1,12 @@
+[data-unitone-layout~="marquee-wrapper"] {
+	overflow: visible !important;
+}
+
+[data-unitone-layout~="marquee-wrapper"][data-unitone-layout~="-reverse"] {
+	flex-direction: initial !important;
+}
+
+[data-unitone-layout~="marquee"] {
+	max-width: 100% !important;
+	overflow: auto hidden !important;
+}

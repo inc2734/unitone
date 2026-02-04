@@ -1,0 +1,76 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "25.4.0",
+	"textdomain": "unitone",
+	"name": "unitone/marquee",
+	"title": "Marquee",
+	"description": "This block displays child blocks in a continuous horizontal scrolling format.",
+	"attributes": {
+		"itemWidth": {
+			"type": "string",
+			"default": "auto"
+		},
+		"duration": {
+			"type": "number",
+			"default": 20
+		},
+		"reverse": {
+			"type": "boolean",
+			"default": false
+		},
+		"pauseOnHover": {
+			"type": "boolean",
+			"default": false
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": "[data-unitone-layout~=marquee-wrapper]"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"allowedBlocks": true,
+		"unitone": {
+			"gap": true,
+			"fluidTypography": true,
+			"halfLeading": true,
+			"linkDecoration": true
+		}
+	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
+				}
+			}
+		]
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}

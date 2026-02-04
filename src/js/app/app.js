@@ -2,6 +2,7 @@ import {
 	dividersResizeObserver,
 	stairsResizeObserver,
 	result1emPxForFireFoxObserver,
+	marqueeResizeObserver,
 } from '@inc2734/unitone-css/library';
 
 document.addEventListener( 'DOMContentLoaded', () => {
@@ -31,6 +32,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			result1emPxForFireFoxObserver( target );
 		} );
 	}
+
+	const marquees = document.querySelectorAll(
+		'[data-unitone-layout~="marquee-wrapper"]'
+	);
+	marquees.forEach( ( target ) => {
+		marqueeResizeObserver( target );
+	} );
 } );
 
 /**

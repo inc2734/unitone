@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 25.2.1\n"
+"Project-Id-Version: unitone 25.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-26T23:48:00+00:00\n"
+"POT-Creation-Date: 2026-02-04T08:10:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2158,6 +2158,7 @@ msgstr ""
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/blocks/layers/index.js:25
+#: dist/blocks/marquee/index.js:1
 #: dist/blocks/masonry/index.js:1
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
@@ -2327,6 +2328,7 @@ msgid "Arrow"
 msgstr ""
 
 #: dist/blocks/center/index.js:1
+#: dist/blocks/marquee/index.js:1
 msgid "Text is also centered"
 msgstr ""
 
@@ -2702,6 +2704,26 @@ msgstr ""
 msgid "Switch vertical and horizontal grid lines direction when portrait and mobile width."
 msgstr ""
 
+#: dist/blocks/marquee/index.js:1
+#: dist/blocks/reel/index.js:1
+#: dist/blocks/slider/index.js:1
+msgid "Each items width"
+msgstr ""
+
+#: dist/blocks/marquee/index.js:1
+#: dist/blocks/slider/index.js:1
+msgid "Speed (s)"
+msgstr ""
+
+#: dist/blocks/marquee/index.js:1
+#: dist/blocks/slider/index.js:1
+msgid "Reverse direction"
+msgstr ""
+
+#: dist/blocks/marquee/index.js:1
+msgid "Pause on hover"
+msgstr ""
+
 #: dist/blocks/masonry/index.js:1
 msgid "Shuffle child blocks"
 msgstr ""
@@ -2750,11 +2772,6 @@ msgstr ""
 
 #: dist/blocks/reel/index.js:1
 msgid "Height"
-msgstr ""
-
-#: dist/blocks/reel/index.js:1
-#: dist/blocks/slider/index.js:1
-msgid "Each items width"
 msgstr ""
 
 #: dist/blocks/reel/index.js:1
@@ -2987,10 +3004,6 @@ msgid "Hide parts that extend beyond the canvas"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-msgid "Speed (s)"
-msgstr ""
-
-#: dist/blocks/slider/index.js:1
 msgid "Autoplay"
 msgstr ""
 
@@ -3004,10 +3017,6 @@ msgstr ""
 
 #: dist/blocks/slider/index.js:1
 msgid "When 0, the prev/next buttons and the pagination will not be displayed."
-msgstr ""
-
-#: dist/blocks/slider/index.js:1
-msgid "Reverse direction"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -4912,6 +4921,16 @@ msgstr ""
 #: dist/blocks/with-sidebar/block.json
 msgctxt "block title"
 msgid "With sidebar"
+msgstr ""
+
+#: dist/blocks/marquee/block.json
+msgctxt "block title"
+msgid "Marquee"
+msgstr ""
+
+#: dist/blocks/marquee/block.json
+msgctxt "block description"
+msgid "This block displays child blocks in a continuous horizontal scrolling format."
 msgstr ""
 
 #: dist/blocks/responsive-image/block.json

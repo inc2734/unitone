@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-01-26T23:48:00+00:00\n"
-"PO-Revision-Date: 2026-01-27 08:48+0900\n"
+"POT-Creation-Date: 2026-02-04T08:10:00+00:00\n"
+"PO-Revision-Date: 2026-02-04 17:10+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2154,8 +2154,9 @@ msgstr "アブストラクト背景"
 #: dist/blocks/decorator/index.js:1 dist/blocks/flex-divided/index.js:1
 #: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:25 dist/blocks/masonry/index.js:1
-#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/layers/index.js:25 dist/blocks/marquee/index.js:1
+#: dist/blocks/masonry/index.js:1 dist/blocks/reel/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:13
@@ -2310,7 +2311,7 @@ msgstr "大なり"
 msgid "Arrow"
 msgstr "矢印"
 
-#: dist/blocks/center/index.js:1
+#: dist/blocks/center/index.js:1 dist/blocks/marquee/index.js:1
 msgid "Text is also centered"
 msgstr "テキストも一緒に中央揃え"
 
@@ -2659,6 +2660,23 @@ msgid ""
 "width."
 msgstr "ポートレートかつモバイル幅のとき、縦横のグリッド線の向きを切り替える。"
 
+#: dist/blocks/marquee/index.js:1 dist/blocks/reel/index.js:1
+#: dist/blocks/slider/index.js:1
+msgid "Each items width"
+msgstr "各項目の幅"
+
+#: dist/blocks/marquee/index.js:1 dist/blocks/slider/index.js:1
+msgid "Speed (s)"
+msgstr "スピード（秒）"
+
+#: dist/blocks/marquee/index.js:1 dist/blocks/slider/index.js:1
+msgid "Reverse direction"
+msgstr "逆方向"
+
+#: dist/blocks/marquee/index.js:1
+msgid "Pause on hover"
+msgstr "ホバーで一時停止"
+
 #: dist/blocks/masonry/index.js:1
 msgid "Shuffle child blocks"
 msgstr "子ブロックをシャッフル"
@@ -2712,10 +2730,6 @@ msgstr "このプレースホルダーを削除"
 #: dist/blocks/reel/index.js:1
 msgid "Height"
 msgstr "高さ"
-
-#: dist/blocks/reel/index.js:1 dist/blocks/slider/index.js:1
-msgid "Each items width"
-msgstr "各項目の幅"
 
 #: dist/blocks/reel/index.js:1
 msgid "No scrollbar"
@@ -2946,10 +2960,6 @@ msgid "Hide parts that extend beyond the canvas"
 msgstr "キャンバスからはみ出した部分を隠す"
 
 #: dist/blocks/slider/index.js:1
-msgid "Speed (s)"
-msgstr "スピード（秒）"
-
-#: dist/blocks/slider/index.js:1
 msgid "Autoplay"
 msgstr "自動再生"
 
@@ -2964,10 +2974,6 @@ msgstr "遅延（秒）"
 #: dist/blocks/slider/index.js:1
 msgid "When 0, the prev/next buttons and the pagination will not be displayed."
 msgstr "0の場合、前へ/次へボタンおよびページネーションは表示されません。"
-
-#: dist/blocks/slider/index.js:1
-msgid "Reverse direction"
-msgstr "逆方向"
 
 #: dist/blocks/slider/index.js:1
 msgid "The prev/next buttons"
@@ -4931,6 +4937,17 @@ msgstr "サイドバー付きのコンポーネントを組み立てます。"
 msgctxt "block title"
 msgid "With sidebar"
 msgstr "サイドバー"
+
+#: dist/blocks/marquee/block.json
+msgctxt "block title"
+msgid "Marquee"
+msgstr "マーキー"
+
+#: dist/blocks/marquee/block.json
+msgctxt "block description"
+msgid ""
+"This block displays child blocks in a continuous horizontal scrolling format."
+msgstr "このブロックは子ブロックを連続した水平スクロールの形式で表示します。"
 
 #: dist/blocks/responsive-image/block.json
 msgctxt "block title"

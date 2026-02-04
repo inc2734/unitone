@@ -73,6 +73,10 @@ export function SectionDividerTopTypeEdit( {
 					value: 'triangle',
 				},
 				{
+					label: __( 'Curve', 'unitone' ),
+					value: 'curve',
+				},
+				{
 					label: __( 'Wave', 'unitone' ),
 					value: 'wave',
 				},

@@ -240,6 +240,10 @@ export function SectionDividerPanelPure( props ) {
 	} );
 
 	const isBottomExpand = isSectionDividerBottomExpand( { ...props } );
+	const disableTopX =
+		'curve' === attributes?.unitone?.sectionDivider?.top?.type;
+	const disableBottomX =
+		'curve' === attributes?.unitone?.sectionDivider?.bottom?.type;
 
 	return (
 		<InspectorControls>
@@ -300,22 +304,27 @@ export function SectionDividerPanelPure( props ) {
 							/>
 						</ToolsPanelItem>
 
-						<ToolsPanelItem
-							hasValue={ () =>
-								hasSectionDividerTopXValue( { ...props } )
-							}
-							label={ __( 'Horizontal position', 'unitone' ) }
-							onDeselect={ () =>
-								resetSectionDividerTopX( { ...props } )
-							}
-							isShownByDefault
-							panelId={ clientId }
-						>
-							<SectionDividerTopXEdit
-								{ ...props }
+						{ ! disableTopX && (
+							<ToolsPanelItem
+								hasValue={ () =>
+									hasSectionDividerTopXValue( { ...props } )
+								}
 								label={ __( 'Horizontal position', 'unitone' ) }
-							/>
-						</ToolsPanelItem>
+								onDeselect={ () =>
+									resetSectionDividerTopX( { ...props } )
+								}
+								isShownByDefault
+								panelId={ clientId }
+							>
+								<SectionDividerTopXEdit
+									{ ...props }
+									label={ __(
+										'Horizontal position',
+										'unitone'
+									) }
+								/>
+							</ToolsPanelItem>
+						) }
 
 						<ToolsPanelItem
 							hasValue={ () =>
@@ -433,32 +442,34 @@ export function SectionDividerPanelPure( props ) {
 									/>
 								</ToolsPanelItem>
 
-								<ToolsPanelItem
-									hasValue={ () =>
-										hasSectionDividerBottomXValue( {
-											...props,
-										} )
-									}
-									label={ __(
-										'Horizontal position',
-										'unitone'
-									) }
-									onDeselect={ () =>
-										resetSectionDividerBottomX( {
-											...props,
-										} )
-									}
-									isShownByDefault
-									panelId={ clientId }
-								>
-									<SectionDividerBottomXEdit
-										{ ...props }
+								{ ! disableBottomX && (
+									<ToolsPanelItem
+										hasValue={ () =>
+											hasSectionDividerBottomXValue( {
+												...props,
+											} )
+										}
 										label={ __(
 											'Horizontal position',
 											'unitone'
 										) }
-									/>
-								</ToolsPanelItem>
+										onDeselect={ () =>
+											resetSectionDividerBottomX( {
+												...props,
+											} )
+										}
+										isShownByDefault
+										panelId={ clientId }
+									>
+										<SectionDividerBottomXEdit
+											{ ...props }
+											label={ __(
+												'Horizontal position',
+												'unitone'
+											) }
+										/>
+									</ToolsPanelItem>
+								) }
 							</>
 						) }
 

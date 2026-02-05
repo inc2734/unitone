@@ -35,7 +35,10 @@ import {
 	alignTopExpanded,
 } from '../../js/editor/hooks/icons';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	useToolsPanelDropdownMenuProps,
+	cleanEmptyObject,
+} from '../../js/editor/hooks/utils';
 
 import { arrowsIconTypes, paginationIconTypes } from './components';
 
@@ -436,6 +439,18 @@ export const SettingsInspectorControls = ( {
 				<ToolsPanel
 					label={ __( 'The prev/next buttons', 'unitone' ) }
 					dropdownMenuProps={ dropdownMenuProps }
+					resetAll={ () => {
+						setAttributes( {
+							arrows: metadata.attributes.arrows.default,
+							arrowsIcon: cleanEmptyObject( {
+								...metadata.attributes.arrowsIcon.default,
+							} ),
+							arrowsAlignment:
+								metadata.attributes.arrowsAlignment.default,
+							arrowsJustification:
+								metadata.attributes.arrowsJustification.default,
+						} );
+					} }
 				>
 					<ToolsPanelItem
 						hasValue={ () =>
@@ -472,11 +487,12 @@ export const SettingsInspectorControls = ( {
 								isShownByDefault
 								label={ __( 'Arrows icon', 'unitone' ) }
 								onDeselect={ () => {
-									arrowsIcon.type =
-										metadata.attributes.arrowsIcon.default?.type;
-
 									setAttributes( {
-										arrowsIcon: { ...arrowsIcon },
+										arrowsIcon: {
+											...arrowsIcon,
+											type: metadata.attributes.arrowsIcon
+												.default?.type,
+										},
 									} );
 								} }
 							>
@@ -567,14 +583,12 @@ export const SettingsInspectorControls = ( {
 															colorObject?.color ||
 															newAttribute;
 
-														arrowsIcon.color =
-															newColor;
-														arrowsIcon.customColor =
-															newCustomColor;
-
 														setAttributes( {
 															arrowsIcon: {
 																...arrowsIcon,
+																color: newColor,
+																customColor:
+																	newCustomColor,
 															},
 														} );
 													},
@@ -586,10 +600,10 @@ export const SettingsInspectorControls = ( {
 														'unitone'
 													),
 													colorValue:
-														arrowsIcon.customBackgroundColor ||
+														arrowsIcon?.customBackgroundColor ||
 														colors.filter(
 															( c ) =>
-																arrowsIcon.backgroundColor ===
+																arrowsIcon?.backgroundColor ===
 																c.slug
 														)?.[ 0 ]?.color,
 													onColorChange: (
@@ -607,14 +621,13 @@ export const SettingsInspectorControls = ( {
 															colorObject?.color ||
 															newAttribute;
 
-														arrowsIcon.backgroundColor =
-															newColor;
-														arrowsIcon.customBackgroundColor =
-															newCustomColor;
-
 														setAttributes( {
 															arrowsIcon: {
 																...arrowsIcon,
+																backgroundColor:
+																	newColor,
+																customBackgroundColor:
+																	newCustomColor,
 															},
 														} );
 													},
@@ -640,11 +653,13 @@ export const SettingsInspectorControls = ( {
 											'unitone'
 										) }
 										onDeselect={ () => {
-											arrowsIcon.stroke =
-												metadata.attributes.arrowsIcon.default.stroke;
-
 											setAttributes( {
-												arrowsIcon: { ...arrowsIcon },
+												arrowsIcon: {
+													...arrowsIcon,
+													stroke: metadata.attributes
+														.arrowsIcon.default
+														.stroke,
+												},
 											} );
 										} }
 									>
@@ -684,11 +699,13 @@ export const SettingsInspectorControls = ( {
 											'unitone'
 										) }
 										onDeselect={ () => {
-											arrowsIcon.size =
-												metadata.attributes.arrowsIcon.default.size;
-
 											setAttributes( {
-												arrowsIcon: { ...arrowsIcon },
+												arrowsIcon: {
+													...arrowsIcon,
+													size: metadata.attributes
+														.arrowsIcon.default
+														.size,
+												},
 											} );
 										} }
 									>
@@ -819,6 +836,19 @@ export const SettingsInspectorControls = ( {
 				<ToolsPanel
 					label={ __( 'The pagination', 'unitone' ) }
 					dropdownMenuProps={ dropdownMenuProps }
+					resetAll={ () => {
+						setAttributes( {
+							pagination: metadata.attributes.pagination.default,
+							paginationIcon: cleanEmptyObject( {
+								...metadata.attributes.paginationIcon.default,
+							} ),
+							paginationAlignment:
+								metadata.attributes.paginationAlignment.default,
+							paginationJustification:
+								metadata.attributes.paginationJustification
+									.default,
+						} );
+					} }
 				>
 					<ToolsPanelItem
 						hasValue={ () =>
@@ -956,13 +986,12 @@ export const SettingsInspectorControls = ( {
 													colorObject?.color ||
 													newAttribute;
 
-												paginationIcon.color = newColor;
-												paginationIcon.customColor =
-													newCustomColor;
-
 												setAttributes( {
 													paginationIcon: {
 														...paginationIcon,
+														color: newColor,
+														customColor:
+															newCustomColor,
 													},
 												} );
 											},

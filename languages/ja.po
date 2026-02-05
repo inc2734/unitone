@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-02-04T15:21:52+00:00\n"
-"PO-Revision-Date: 2026-02-05 00:22+0900\n"
+"POT-Creation-Date: 2026-02-05T00:22:45+00:00\n"
+"PO-Revision-Date: 2026-02-05 09:23+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -217,9 +217,10 @@ msgstr "縦線"
 msgid "Bordered"
 msgstr "ボーダー"
 
-#: inc/formats.php:131 dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/layers/index.js:1 dist/blocks/switcher/index.js:1
-#: dist/blocks/vertical-writing/index.js:1
+#: inc/formats.php:131 dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/cluster/index.js:1 dist/blocks/flex/index.js:1
+#: dist/blocks/frame/index.js:1 dist/blocks/layers/index.js:1
+#: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
 #: dist/js/editor/editor.js:1
@@ -2150,13 +2151,13 @@ msgstr "アブストラクト背景"
 #: dist/blocks/abstract-background/index.js:1 dist/blocks/accordion/index.js:1
 #: dist/blocks/badge/index.js:1 dist/blocks/breadcrumbs/index.js:1
 #: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
-#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cover-content/index.js:1
-#: dist/blocks/decorator/index.js:1 dist/blocks/flex-divided/index.js:1
-#: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:25 dist/blocks/marquee/index.js:1
-#: dist/blocks/masonry/index.js:1 dist/blocks/reel/index.js:1
-#: dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cluster/index.js:1
+#: dist/blocks/cover-content/index.js:1 dist/blocks/decorator/index.js:1
+#: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
+#: dist/blocks/frame/index.js:1 dist/blocks/grid-divided/index.js:1
+#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
+#: dist/blocks/marquee/index.js:1 dist/blocks/masonry/index.js:1
+#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:13
@@ -2360,6 +2361,15 @@ msgstr "カラムの最小幅"
 msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr "%1$sgrid-template-columns%2$sの計算式の中"
 
+#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cluster/index.js:1
+#: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/switcher/index.js:1
+#: dist/blocks/vertical-writing/index.js:1
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+msgid "Help"
+msgstr "ヘルプ"
+
 #: dist/blocks/cluster-divided/index.js:1
 msgid "Cluster (Divider: Stripe)"
 msgstr "クラスター（区切り：ストライプ）"
@@ -2381,6 +2391,19 @@ msgstr "クラスター（区切り：ボーダー）"
 #: dist/blocks/with-sidebar-content/index.js:1
 msgid "HTML element"
 msgstr "HTML 要素"
+
+#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cluster/index.js:1
+msgid "No wrapping"
+msgstr "折り返し無し"
+
+#: dist/blocks/cluster-divided/index.js:1 dist/blocks/cluster/index.js:1
+msgid ""
+"The overhanging part will not automatically scroll horizontally, so if there "
+"is a possibility that it may overhang, it must be enclosed in a parent "
+"element that allows horizontal scrolling."
+msgstr ""
+"はみ出した部分は自動的に水平スクロールしないため、はみ出す可能性がある場合"
+"は、水平スクロールを許可する親要素でラップする必要があります。"
 
 #: dist/blocks/cover-content/index.js:1
 msgctxt "cover"
@@ -2440,14 +2463,6 @@ msgstr "フレックス（区切り：スラッシュ）"
 #: dist/blocks/flex-divided/index.js:1
 msgid "Flex (Divider: Bordered)"
 msgstr "フレックス（区切り：ボーダー）"
-
-#: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/layers/index.js:1 dist/blocks/switcher/index.js:1
-#: dist/blocks/vertical-writing/index.js:1
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-msgid "Help"
-msgstr "ヘルプ"
 
 #: dist/blocks/flex/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:4

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-04T15:21:52+00:00\n"
+"POT-Creation-Date: 2026-02-05T00:22:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -232,6 +232,8 @@ msgid "Bordered"
 msgstr ""
 
 #: inc/formats.php:131
+#: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/cluster/index.js:1
 #: dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1
 #: dist/blocks/layers/index.js:1
@@ -2150,6 +2152,7 @@ msgstr ""
 #: dist/blocks/center/index.js:1
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/cluster/index.js:1
 #: dist/blocks/cover-content/index.js:1
 #: dist/blocks/decorator/index.js:1
 #: dist/blocks/flex-divided/index.js:1
@@ -2379,6 +2382,19 @@ msgid "Inside the %1$sgrid-template-columns%2$s formula"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/cluster/index.js:1
+#: dist/blocks/flex/index.js:1
+#: dist/blocks/frame/index.js:1
+#: dist/blocks/layers/index.js:1
+#: dist/blocks/switcher/index.js:1
+#: dist/blocks/vertical-writing/index.js:1
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Help"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
 msgid "Cluster (Divider: Stripe)"
 msgstr ""
 
@@ -2403,6 +2419,16 @@ msgstr ""
 #: dist/blocks/stack/index.js:1
 #: dist/blocks/with-sidebar-content/index.js:1
 msgid "HTML element"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/cluster/index.js:1
+msgid "No wrapping"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+#: dist/blocks/cluster/index.js:1
+msgid "The overhanging part will not automatically scroll horizontally, so if there is a possibility that it may overhang, it must be enclosed in a parent element that allows horizontal scrolling."
 msgstr ""
 
 #: dist/blocks/cover-content/index.js:1
@@ -2462,17 +2488,6 @@ msgstr ""
 
 #: dist/blocks/flex-divided/index.js:1
 msgid "Flex (Divider: Bordered)"
-msgstr ""
-
-#: dist/blocks/flex/index.js:1
-#: dist/blocks/frame/index.js:1
-#: dist/blocks/layers/index.js:1
-#: dist/blocks/switcher/index.js:1
-#: dist/blocks/vertical-writing/index.js:1
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "Help"
 msgstr ""
 
 #: dist/blocks/flex/index.js:1

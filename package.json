@@ -8,7 +8,7 @@
 	},
 	"devDependencies": {
 		"@iconify/json": "^2.2.435",
-		"@inc2734/unitone-css": "^0.93.0",
+		"@inc2734/unitone-css": "^0.94.1",
 		"@wordpress/admin-ui": "^1.7.0",
 		"@wordpress/env": "^10.39.0",
 		"@wordpress/icons": "^11.6.0",

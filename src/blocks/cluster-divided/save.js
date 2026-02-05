@@ -1,7 +1,9 @@
+import clsx from 'clsx';
+
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function ( { attributes } ) {
-	const { tagName } = attributes;
+	const { tagName, nowrap } = attributes;
 
 	const TagName = tagName;
 
@@ -9,7 +11,9 @@ export default function ( { attributes } ) {
 		<TagName
 			{ ...useInnerBlocksProps.save(
 				useBlockProps.save( {
-					'data-unitone-layout': 'cluster',
+					'data-unitone-layout': clsx( 'cluster', {
+						'-nowrap': nowrap,
+					} ),
 				} )
 			) }
 		/>

@@ -144,6 +144,8 @@ export function withSectionDividerBlockProps( settings ) {
 	}
 
 	const isBottomExpand = isSectionDividerBottomExpand( { ...settings } );
+	const topLevel = parseFloat( sectionDivider?.top?.level );
+	const bottomLevel = parseFloat( sectionDivider?.bottom?.level );
 
 	return {
 		...settings,
@@ -154,8 +156,12 @@ export function withSectionDividerBlockProps( settings ) {
 				{
 					[ `-section-divider-top:${ sectionDivider?.top?.type }` ]:
 						!! sectionDivider?.top?.type,
+					'-section-divider-top:invert':
+						Number.isFinite( topLevel ) && topLevel < 0,
 					[ `-section-divider-bottom:${ sectionDivider?.bottom?.type }` ]:
 						!! sectionDivider?.bottom?.type,
+					'-section-divider-bottom:invert':
+						Number.isFinite( bottomLevel ) && bottomLevel < 0,
 					'-section-overlap:top': sectionDivider?.top?.overlap,
 				}
 			),

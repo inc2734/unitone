@@ -75,7 +75,7 @@ export function SectionDividerTopLevelEdit( {
 					unitone: cleanEmptyObject( newUnitone ),
 				} );
 			} }
-			min={ 0 }
+			min={ -100 }
 			step={ 1 }
 			max={ 100 }
 		/>

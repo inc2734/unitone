@@ -69,6 +69,7 @@
 		--unitone--gap: var(--unitone--s1);
 		--unitone--children-max-width: min(100%, var(--wp--style--global--wide-size));
 
+		min-width: 0;
 		padding: var(--unitone--padding);
 
 		> * {

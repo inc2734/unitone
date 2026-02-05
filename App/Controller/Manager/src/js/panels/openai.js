@@ -6,6 +6,7 @@ import {
 } from '@wordpress/components';
 
 import { useEntityProp } from '@wordpress/core-data';
+import { useSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 
@@ -26,11 +27,28 @@ export default function () {
 		'unitone_openai_model'
 	);
 
+	const savedApiKey = useSelect( ( select ) => {
+		const { getEntityRecord } = select( 'core' );
+		const site = getEntityRecord( 'root', 'site' );
+		return site?.unitone_openai_api_key;
+	}, [] );
+
+	const isApiKeyDirty = ( apiKey ?? '' ) !== ( savedApiKey ?? '' );
+
 	const [ models, setModels ] = useState( [] );
 	const [ modelsLoading, setModelsLoading ] = useState( false );
 	const [ modelsError, setModelsError ] = useState( null );
 
 	useEffect( () => {
+		const hasApiKey = !! ( savedApiKey ?? '' );
+
+		if ( ! hasApiKey ) {
+			setModels( [] );
+			setModelsLoading( false );
+			setModelsError( null );
+			return;
+		}
+
 		setModelsLoading( true );
 		setModelsError( null );
 
@@ -50,7 +68,7 @@ export default function () {
 			.finally( () => {
 				setModelsLoading( false );
 			} );
-	}, [] );
+	}, [ savedApiKey ] );
 
 	const saveSettings = () => {
 		setSettingsSaving( true );
@@ -169,53 +187,57 @@ export default function () {
 						</div>
 					</div>
 
-					<div
-						data-unitone-layout="with-sidebar -sidebar:left"
-						style={ { '--unitone--sidebar-width': '20em' } }
-					>
-						<div data-unitone-layout="stack">
-							<h3>{ __( 'Model to use', 'unitone' ) }</h3>
-						</div>
-						<div data-unitone-layout="stack">
-							<div data-unitone-layout="stack -gap:-2">
-								<SelectControl
-									__next40pxDefaultSize
-									__nextHasNoMarginBottom
-									value={ model }
-									onChange={ ( newSetting ) =>
-										setModel( newSetting )
-									}
-									options={ modelOptions }
-									disabled={ modelsLoading }
-								/>
-
-								<div>
-									<span
-										dangerouslySetInnerHTML={ {
-											__html: sprintf(
-												// translators: %1$s: <a>, %2$s: </a>
-												__(
-													'Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for details.',
-													'unitone'
-												),
-												'<a href="https://openai.com/api/pricing/" target="_blank" rel="noopener noreferrer">',
-												'</a>'
-											),
-										} }
+					{ !! ( savedApiKey ?? '' ) && (
+						<div
+							data-unitone-layout="with-sidebar -sidebar:left"
+							style={ { '--unitone--sidebar-width': '20em' } }
+						>
+							<div data-unitone-layout="stack">
+								<h3>{ __( 'Model to use', 'unitone' ) }</h3>
+							</div>
+							<div data-unitone-layout="stack">
+								<div data-unitone-layout="stack -gap:-2">
+									<SelectControl
+										__next40pxDefaultSize
+										__nextHasNoMarginBottom
+										value={ model }
+										onChange={ ( newSetting ) =>
+											setModel( newSetting )
+										}
+										options={ modelOptions }
+										disabled={
+											modelsLoading || isApiKeyDirty
+										}
 									/>
-								</div>
 
-								{ modelsError && (
-									<Notice
-										status="error"
-										isDismissible={ false }
-									>
-										{ modelsError }
-									</Notice>
-								) }
+									<div>
+										<span
+											dangerouslySetInnerHTML={ {
+												__html: sprintf(
+													// translators: %1$s: <a>, %2$s: </a>
+													__(
+														'Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for details.',
+														'unitone'
+													),
+													'<a href="https://openai.com/api/pricing/" target="_blank" rel="noopener noreferrer">',
+													'</a>'
+												),
+											} }
+										/>
+									</div>
+
+									{ modelsError && (
+										<Notice
+											status="warning"
+											isDismissible={ false }
+										>
+											{ modelsError }
+										</Notice>
+									) }
+								</div>
 							</div>
 						</div>
-					</div>
+					) }
 				</div>
 
 				<div data-unitone-layout="cluster -gap:-1">

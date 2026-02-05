@@ -45,6 +45,9 @@ add_action(
 				},
 				'callback'            => function ( $request ) {
 					$key = $request->get_param( 'key' );
+					if ( is_string( $key ) ) {
+						$key = trim( $key );
+					}
 
 					update_option( 'unitone_openai_api_key', $key );
 
@@ -69,6 +72,9 @@ add_action(
 				},
 				'callback'            => function ( $request ) {
 					$model = $request->get_param( 'model' );
+					if ( is_string( $model ) ) {
+						$model = trim( $model );
+					}
 
 					update_option( 'unitone_openai_model', $model );
 

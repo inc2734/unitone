@@ -248,17 +248,23 @@ add_filter(
 			$top_divider_type = $get_attribute( 'sectionDivider.top.type' );
 			if ( $top_divider_type ) {
 				$add_attribute( '-section-divider-top', $top_divider_type );
-				$add_style( '--unitone--section-divider-top-level', $get_attribute( 'sectionDivider.top.level' ) );
+				$top_level = $get_attribute( 'sectionDivider.top.level' );
+				$add_style( '--unitone--section-divider-top-level', $top_level );
 				$add_style( '--unitone--section-divider-top-size', $get_attribute( 'sectionDivider.top.size' ) );
 				$add_style( '--unitone--section-divider-top-x', $get_attribute( 'sectionDivider.top.x' ) );
 				$add_style( '--unitone--section-divider-top-trim', $get_attribute( 'sectionDivider.top.trim' ) );
 				$add_attribute( '-section-overlap:top', $get_attribute( 'sectionDivider.top.overlap' ) );
+
+				if ( is_finite( $top_level ) && 0 > $top_level ) {
+					$add_attribute( '-section-divider-top:invert', true );
+				}
 			}
 
 			$bottom_divider_type = $get_attribute( 'sectionDivider.bottom.type' );
 			if ( $bottom_divider_type ) {
 				$add_attribute( '-section-divider-bottom', $bottom_divider_type );
-				$add_style( '--unitone--section-divider-bottom-level', $get_attribute( 'sectionDivider.bottom.level' ) );
+				$bottom_level = $get_attribute( 'sectionDivider.bottom.level' );
+				$add_style( '--unitone--section-divider-bottom-level', $bottom_level );
 
 				$is_bottom_divider_expand = 'expand' === $bottom_divider_type;
 				if ( ! $is_bottom_divider_expand ) {
@@ -267,6 +273,10 @@ add_filter(
 				}
 
 				$add_style( '--unitone--section-divider-bottom-trim', $get_attribute( 'sectionDivider.bottom.trim' ) );
+
+				if ( is_finite( $bottom_level ) && 0 > $bottom_level ) {
+					$add_attribute( '-section-divider-bottom:invert', true );
+				}
 			}
 		}
 

@@ -1,9 +1,10 @@
 [data-unitone-layout*="-section-divider-"] {
 	--unitone--section-divider-max-height: var(--unitone--s4);
 
-	--unitone--section-divider-top-level: 0;
-	--unitone--section-divider-top-size: 0;
-	--unitone--section-divider-top-x: 0;
+	--unitone--section-divider-top-level: 25;
+	--unitone--section-divider-top-size: 50;
+	--unitone--section-divider-top-x: 50;
+	--unitone--section-divider-top-trim: 50;
 	--unitone--section-divider-top-level-abs: max(
 		var(--unitone--section-divider-top-level),
 		calc(var(--unitone--section-divider-top-level) * -1)
@@ -11,10 +12,10 @@
 	--unitone--section-divider-top-clip-path: 0 0, 100% 0;
 	--unitone--section-divider-top-clip-path-invert: var(--unitone--section-divider-top-clip-path);
 
-	--unitone--section-divider-bottom-level: 0;
-	--unitone--section-divider-bottom-size: 0;
-	--unitone--section-divider-bottom-x: 0;
-	--unitone--section-divider-bottom-trim: 100;
+	--unitone--section-divider-bottom-level: 25;
+	--unitone--section-divider-bottom-size: 50;
+	--unitone--section-divider-bottom-x: 50;
+	--unitone--section-divider-bottom-trim: 50;
 	--unitone--section-divider-bottom-level-abs: max(
 		var(--unitone--section-divider-bottom-level),
 		calc(var(--unitone--section-divider-bottom-level) * -1)

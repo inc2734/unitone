@@ -24,6 +24,7 @@ function unitone_apply_css_vars_from_settings() {
 		: $accent_color;
 	$background_color = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['background'] );
 	$text_color       = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['text'] );
+	$h1_size          = Manager::get_setting( 'h1-size' );
 	$h2_size          = Manager::get_setting( 'h2-size' );
 	$h3_size          = Manager::get_setting( 'h3-size' );
 	$h4_size          = Manager::get_setting( 'h4-size' );
@@ -40,25 +41,41 @@ function unitone_apply_css_vars_from_settings() {
 			--unitone--container-max-width: %6$s;
 			--unitone--color--accent: %7$s;
 		}
-		[data-unitone-layout~="text"] > h2,
-		[data-unitone-layout~="vertical-writing"] > h2 {
+		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h1,
+		:where(.is-root-container) > h1,
+		[data-unitone-layout~="text"] > h1,
+		[data-unitone-layout~="vertical-writing"] > h1 {
 			--unitone--font-size: %8$s;
 		}
-		[data-unitone-layout~="text"] > h3,
-		[data-unitone-layout~="vertical-writing"] > h3 {
+		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h2,
+		:where(.is-root-container) > h2,
+		[data-unitone-layout~="text"] > h2,
+		[data-unitone-layout~="vertical-writing"] > h2 {
 			--unitone--font-size: %9$s;
 		}
-		[data-unitone-layout~="text"] > h4,
-		[data-unitone-layout~="vertical-writing"] > h4 {
+		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h3,
+		:where(.is-root-container) > h3,
+		[data-unitone-layout~="text"] > h3,
+		[data-unitone-layout~="vertical-writing"] > h3 {
 			--unitone--font-size: %10$s;
 		}
-		[data-unitone-layout~="text"] > h5,
-		[data-unitone-layout~="vertical-writing"] > h5 {
+		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h4,
+		:where(.is-root-container) > h4,
+		[data-unitone-layout~="text"] > h4,
+		[data-unitone-layout~="vertical-writing"] > h4 {
 			--unitone--font-size: %11$s;
 		}
+		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h5,
+		:where(.is-root-container) > h5,
+		[data-unitone-layout~="text"] > h5,
+		[data-unitone-layout~="vertical-writing"] > h5 {
+			--unitone--font-size: %12$s;
+		}
+		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h6,
+		:where(.is-root-container) > h6,
 		[data-unitone-layout~="text"] > h6,
 		[data-unitone-layout~="vertical-writing"] > h6 {
-			--unitone--font-size: %12$s;
+			--unitone--font-size: %13$s;
 		}',
 		$font_family,
 		$base_font_size,
@@ -67,6 +84,7 @@ function unitone_apply_css_vars_from_settings() {
 		$content_size,
 		$wide_size,
 		$accent_color,
+		$h1_size,
 		$h2_size,
 		$h3_size,
 		$h4_size,

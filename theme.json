@@ -286,52 +286,52 @@
 			"fontSizes": [
 				{
 					"slug": "unitone-xs",
-					"size": "var(--unitone--dummy-font-size-xs)",
+					"size": "var(--unitone--dummy-font-size-xs, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) + 2) * 1rem))",
 					"name": "XS"
 				},
 				{
 					"slug": "unitone-s",
-					"size": "var(--unitone--dummy-font-size-s)",
+					"size": "var(--unitone--dummy-font-size-s, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) + 1) * 1rem))",
 					"name": "S"
 				},
 				{
 					"slug": "unitone-m",
-					"size": "var(--unitone--dummy-font-size-m)",
+					"size": "var(--unitone--dummy-font-size-m, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base)) * 1rem))",
 					"name": "M"
 				},
 				{
 					"slug": "unitone-l",
-					"size": "var(--unitone--dummy-font-size-l)",
+					"size": "var(--unitone--dummy-font-size-l, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - 1) * 1rem))",
 					"name": "L"
 				},
 				{
 					"slug": "unitone-xl",
-					"size": "var(--unitone--dummy-font-size-xl)",
+					"size": "var(--unitone--dummy-font-size-xl, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - 2) * 1rem))",
 					"name": "XL"
 				},
 				{
 					"slug": "unitone-2xl",
-					"size": "var(--unitone--dummy-font-size-2-xl)",
+					"size": "var(--unitone--dummy-font-size-2-xl, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - 3) * 1rem))",
 					"name": "2XL"
 				},
 				{
 					"slug": "unitone-3xl",
-					"size": "var(--unitone--dummy-font-size-3-xl)",
+					"size": "var(--unitone--dummy-font-size-3-xl, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - 4) * 1rem))",
 					"name": "3XL"
 				},
 				{
 					"slug": "unitone-4xl",
-					"size": "var(--unitone--dummy-font-size-4-xl)",
+					"size": "var(--unitone--dummy-font-size-4-xl, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - 5) * 1rem))",
 					"name": "4XL"
 				},
 				{
 					"slug": "unitone-5xl",
-					"size": "var(--unitone--dummy-font-size-5-xl)",
+					"size": "var(--unitone--dummy-font-size-5-xl, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - 6) * 1rem))",
 					"name": "5XL"
 				},
 				{
 					"slug": "unitone-6xl",
-					"size": "var(--unitone--dummy-font-size-6-xl)",
+					"size": "var(--unitone--dummy-font-size-6-xl, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - 7) * 1rem))",
 					"name": "6XL"
 				}
 			]

@@ -26,6 +26,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				'base-font-size': settings?.[ 'base-font-size' ] ?? null,
 				'half-leading': settings?.[ 'half-leading' ] ?? null,
 				'min-half-leading': settings?.[ 'min-half-leading' ] ?? null,
+				'h1-size': settings?.[ 'h1-size' ] ?? null,
 				'h2-size': settings?.[ 'h2-size' ] ?? null,
 				'h3-size': settings?.[ 'h3-size' ] ?? null,
 				'h4-size': settings?.[ 'h4-size' ] ?? null,
@@ -50,6 +51,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			'base-font-size': defaultSettings[ 'base-font-size' ],
 			'half-leading': defaultSettings[ 'half-leading' ],
 			'min-half-leading': defaultSettings[ 'min-half-leading' ],
+			'h1-size': defaultSettings[ 'h1-size' ],
 			'h2-size': defaultSettings[ 'h2-size' ],
 			'h3-size': defaultSettings[ 'h3-size' ],
 			'h4-size': defaultSettings[ 'h4-size' ],
@@ -68,6 +70,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				'base-font-size': null,
 				'half-leading': null,
 				'min-half-leading': null,
+				'h1-size': null,
 				'h2-size': null,
 				'h3-size': null,
 				'h4-size': null,
@@ -138,6 +141,16 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									} }
 								>
 									<div data-unitone-layout="stack">
+										<div
+											data-unitone-layout="-typography:em"
+											style={ {
+												'--unitone--font-size':
+													settings?.[ 'h1-size' ],
+												fontWeight: 'bold',
+											} }
+										>
+											見出し1
+										</div>
 										<div
 											data-unitone-layout="-typography:em"
 											style={ {
@@ -324,6 +337,34 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									) / 2
 								}
 							/>
+
+							<div data-unitone-layout="with-sidebar -sidebar:left">
+								<div>{ __( 'Size of h1', 'unitone' ) }</div>
+								<div>
+									<FontSizePicker
+										__next40pxDefaultSize
+										disableCustomFontSizes
+										fontSizes={ settings?.fontSizes }
+										value={
+											settings?.fontSizes?.find(
+												( fontSize ) =>
+													String(
+														settings?.[ 'h1-size' ]
+													) ===
+													String( fontSize.slug )
+											)?.size
+										}
+										onChange={ ( newSetting, fontSizes ) =>
+											setSettings( {
+												...settings,
+												'h1-size':
+													!! newSetting &&
+													parseInt( fontSizes.slug ),
+											} )
+										}
+									/>
+								</div>
+							</div>
 
 							<div data-unitone-layout="with-sidebar -sidebar:left">
 								<div>{ __( 'Size of h2', 'unitone' ) }</div>

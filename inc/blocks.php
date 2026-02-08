@@ -504,6 +504,59 @@ function unitone_apply_block_link( $block_content, $block ) {
 add_filter( 'render_block_core/query', 'unitone_apply_block_link', 10, 2 );
 
 /**
+ * Apply media link to core/image custom links.
+ *
+ * @param string $block_content The block content.
+ * @param array  $block The full block, including name and attributes.
+ * @return string
+ */
+function unitone_apply_image_media_link( $block_content, $block ) {
+	$attrs          = $block['attrs'] ?? array();
+	$unitone        = $attrs['unitone'] ?? array();
+	$link_type      = $attrs['linkDestination'] ?? '';
+	$use_media_link = ! empty( $unitone['mediaLink'] );
+
+	if ( ! $use_media_link ) {
+		return $block_content;
+	}
+
+	if ( in_array( $link_type, array( 'media', 'attachment', 'none' ), true ) ) {
+		return $block_content;
+	}
+
+	$p = new \WP_HTML_Tag_Processor( $block_content );
+
+	while ( $p->next_tag( array( 'tag_name' => 'a' ) ) ) {
+		$link_url = $p->get_attribute( 'href' );
+		if ( empty( $link_url ) ) {
+			return $block_content;
+		}
+
+		if ( '' === $link_type ) {
+			$image_url = $attrs['url'] ?? '';
+			if ( ! empty( $image_url ) && $link_url === $image_url ) {
+				return $block_content;
+			}
+		}
+
+		$class_attribute = $p->get_attribute( 'class' ) ?? '';
+		if ( false === strpos( ' ' . $class_attribute . ' ', ' unitone-media-link ' ) ) {
+			$p->set_attribute(
+				'class',
+				trim( $class_attribute . ' unitone-media-link' )
+			);
+		}
+
+		$p->set_attribute( 'data-unitone-media-type', 'embed' );
+
+		return $p->get_updated_html();
+	}
+
+	return $block_content;
+}
+add_filter( 'render_block_core/image', 'unitone_apply_image_media_link', 10, 2 );
+
+/**
  * Add CSS vars to core/table.
  */
 add_filter(

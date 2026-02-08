@@ -52,7 +52,7 @@ add_action( 'load-post.php', 'unitone_patch_for_extraprops' );
 
 /**
  * Remove width/height of style attribute at core/image.
- * For WordPress 6.3.0. Fixed in 6.3.1.
+ * For WordPress 6.3.0.
  *
  * @see https://github.com/WordPress/gutenberg/issues/53555
  */
@@ -64,11 +64,14 @@ add_filter(
 		$h     = $attrs['height'] ?? '';
 
 		if ( $w && preg_match( '@^\d+@ms', $w ) && $h && preg_match( '@^\d+@ms', $h ) ) {
-			$w             = str_replace( 'px', '', $w );
-			$h             = str_replace( 'px', '', $h );
-			$size_style    = "width:{$w}px;height:{$h}px";
-			$ratio         = "{$w}/{$h}";
-			$block_content = str_replace( $size_style, "aspect-ratio:{$ratio}", $block_content );
+			$w          = str_replace( 'px', '', $w );
+			$h          = str_replace( 'px', '', $h );
+			$size_style = "width:{$w}px;height:{$h}px";
+
+			if ( false !== strpos( $block_content, $size_style ) ) {
+				$ratio         = "{$w}/{$h}";
+				$block_content = str_replace( "height:{$h}px", "aspect-ratio:{$ratio}", $block_content );
+			}
 		}
 
 		return $block_content;

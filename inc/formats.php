@@ -126,6 +126,9 @@ function unitone_detect_media_link( $block_content ) {
 							<div class="lightbox-image-container unitone-lightbox-embed-container" hidden>
 								<div class="unitone-lightbox-embed-container__inner"></div>
 							</div>
+							<div class="lightbox-image-container unitone-lightbox-target-container" hidden>
+								<div class="unitone-lightbox-target-container__inner"></div>
+							</div>
 							<div class="scrim" style="background-color: %3$s" aria-hidden="true"></div>
 					</div>',
 					esc_attr__( 'Close', 'unitone' ),

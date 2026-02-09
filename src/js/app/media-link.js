@@ -4,7 +4,11 @@
 document.addEventListener( 'DOMContentLoaded', () => {
 	const getMediaTypeFromDataset = ( target ) => {
 		const datasetType = target?.dataset?.unitoneMediaType;
-		if ( 'video' === datasetType || 'embed' === datasetType ) {
+		if (
+			'video' === datasetType ||
+			'embed' === datasetType ||
+			'target' === datasetType
+		) {
 			return datasetType;
 		}
 		return 'image';
@@ -96,7 +100,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	const scrim = overlay.querySelector( '.scrim' );
 	const closeButton = overlay.querySelector( '.close-button' );
 	const lightboxImageContainer = overlay.querySelector(
-		'.lightbox-image-container:not(.unitone-lightbox-embed-container)'
+		'.lightbox-image-container:not(.unitone-lightbox-embed-container):not(.unitone-lightbox-target-container)'
 	);
 	const lightboxFigure = overlay.querySelector(
 		'.lightbox-image-container > figure'
@@ -106,6 +110,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	);
 	const embedWrapper = overlay.querySelector(
 		'.unitone-lightbox-embed-container__inner'
+	);
+	const lightboxTargetContainer = overlay.querySelector(
+		'.unitone-lightbox-target-container'
+	);
+	const targetWrapper = overlay.querySelector(
+		'.unitone-lightbox-target-container__inner'
 	);
 
 	const parseDimensionValue = ( value ) => {
@@ -147,11 +157,22 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 	};
 
+	const resetTarget = () => {
+		if ( ! targetWrapper ) {
+			return;
+		}
+		while ( targetWrapper.firstChild ) {
+			targetWrapper.removeChild( targetWrapper.firstChild );
+		}
+	};
+
 	const setOverlayMode = ( type ) => {
 		const isEmbed = type === 'embed';
+		const isTarget = type === 'target';
+		const isMedia = ! isEmbed && ! isTarget;
 
 		if ( lightboxImageContainer ) {
-			if ( isEmbed ) {
+			if ( isEmbed || isTarget ) {
 				lightboxImageContainer.setAttribute( 'hidden', '' );
 			} else {
 				lightboxImageContainer.removeAttribute( 'hidden' );
@@ -166,10 +187,19 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			}
 		}
 
+		if ( lightboxTargetContainer ) {
+			if ( isTarget ) {
+				lightboxTargetContainer.removeAttribute( 'hidden' );
+			} else {
+				lightboxTargetContainer.setAttribute( 'hidden', '' );
+			}
+		}
+
 		overlay.classList.toggle( 'unitone-lightbox-overlay--embed', isEmbed );
+		overlay.classList.toggle( 'unitone-lightbox-overlay--media', isMedia );
 		overlay.classList.toggle(
-			'unitone-lightbox-overlay--media',
-			! isEmbed
+			'unitone-lightbox-overlay--target',
+			isTarget
 		);
 	};
 
@@ -346,6 +376,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		resetFigure( lightboxFigure );
 		resetOverlayStyles();
 		resetEmbed();
+		resetTarget();
 		setOverlayMode( 'media' );
 
 		if ( returnFocusTo ) {
@@ -356,7 +387,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	};
 
 	const openOverlay = async ( media ) => {
-		if ( ! media?.url ) {
+		if ( media?.type !== 'target' && ! media?.url ) {
 			return;
 		}
 
@@ -373,6 +404,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			resetOverlayStyles();
 			resetFigure( lightboxFigure );
 			resetEmbed();
+			resetTarget();
 			setOverlayMode( 'embed' );
 
 			overlay.classList.add( 'active' );
@@ -424,6 +456,54 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			return;
 		}
 
+		if ( media.type === 'target' ) {
+			const ownerDocument = overlay.ownerDocument || window.document;
+			const targetId = media?.targetId?.trim?.() || '';
+			if ( ! targetId ) {
+				return;
+			}
+
+			resetOverlayStyles();
+			resetFigure( lightboxFigure );
+			resetEmbed();
+			resetTarget();
+			setOverlayMode( 'target' );
+
+			const targetElement = ownerDocument.getElementById( targetId );
+			if ( targetWrapper ) {
+				if (
+					targetElement &&
+					! targetElement.closest( '.unitone-lightbox-overlay' )
+				) {
+					const clone = targetElement.cloneNode( true );
+					clone.removeAttribute( 'id' );
+
+					const descendantsWithId = clone.querySelectorAll( '[id]' );
+					descendantsWithId.forEach( ( node ) => {
+						node.removeAttribute( 'id' );
+					} );
+
+					targetWrapper.appendChild( clone );
+				} else {
+					const fallback = document.createElement( 'div' );
+					const fallbackText = document.createElement( 'p' );
+					fallbackText.textContent = 'Unable to find target element.';
+					fallback.appendChild( fallbackText );
+					targetWrapper.appendChild( fallback );
+				}
+			}
+
+			overlay.classList.add( 'active' );
+			overlay.setAttribute( 'aria-modal', 'true' );
+			overlay.setAttribute( 'role', 'dialog' );
+
+			if ( closeButton ) {
+				overlay.focus();
+			}
+
+			return;
+		}
+
 		setOverlayMode( 'media' );
 		applyOverlayStyles( media );
 
@@ -450,7 +530,23 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		event.preventDefault();
 
+		const mediaType = getMediaTypeFromDataset( link );
+		const overlayTarget = link.dataset.unitoneOverlayTarget || '';
 		const url = link.getAttribute( 'href' );
+
+		if ( 'target' === mediaType ) {
+			if ( ! overlayTarget ) {
+				return;
+			}
+
+			void openOverlay( {
+				type: 'target',
+				targetId: overlayTarget,
+			} );
+
+			return;
+		}
+
 		if ( ! url ) {
 			return;
 		}
@@ -462,7 +558,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		void openOverlay( {
 			url,
-			type: getMediaTypeFromDataset( link ),
+			type: mediaType,
 			alt,
 			width,
 			height,

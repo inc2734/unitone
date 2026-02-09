@@ -60,6 +60,19 @@ function buildAttributesFromUrl( url ) {
 	};
 }
 
+function buildAttributesFromTarget( targetId ) {
+	const normalizedTargetId = targetId?.trim?.() ?? '';
+	if ( ! normalizedTargetId ) {
+		return null;
+	}
+
+	return {
+		href: `#${ normalizedTargetId.replace( /^#/, '' ) }`,
+		'data-unitone-media-type': 'target',
+		'data-unitone-overlay-target': normalizedTargetId.replace( /^#/, '' ),
+	};
+}
+
 function clearMediaFormat( value, onChange, formatName = DEFAULT_FORMAT_NAME ) {
 	onChange( removeFormat( value, formatName ) );
 }
@@ -103,11 +116,33 @@ function applyEmbedFormat(
 	);
 }
 
+function applyTargetFormat(
+	value,
+	onChange,
+	targetId,
+	formatName = DEFAULT_FORMAT_NAME
+) {
+	const attributes = buildAttributesFromTarget( targetId );
+	if ( ! attributes ) {
+		clearMediaFormat( value, onChange, formatName );
+		return;
+	}
+
+	onChange(
+		applyFormat( value, {
+			type: formatName,
+			attributes,
+		} )
+	);
+}
+
 export {
 	getMediaType,
 	buildAttributesFromMedia,
 	buildAttributesFromUrl,
+	buildAttributesFromTarget,
 	clearMediaFormat,
 	applyMediaFormat,
 	applyEmbedFormat,
+	applyTargetFormat,
 };

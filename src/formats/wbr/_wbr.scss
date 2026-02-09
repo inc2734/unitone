@@ -1,0 +1,11 @@
+.editor-styles-wrapper .unitone-wbr {
+	position: relative;
+
+	&::before {
+		content: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 0.5C11.8284 0.5 12.5 1.17157 12.5 2V8C12.5 8.82843 11.8284 9.5 11 9.5H6.69661V13L0 8L6.69661 3V6.5H9.5V2C9.5 1.17157 10.1716 0.5 11 0.5Z" fill="#cc1818" stroke="#fff" stroke-width="1.5"/></svg>');
+		position: absolute;
+		right: -.5em;
+		line-height: 0;
+		top: calc(50% - 6px);
+	}
+}

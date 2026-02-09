@@ -1,0 +1,17 @@
+.unitone-text-shadow {
+	--unitone--offset-x: 0px; // @deprecated
+	--unitone--offset-y: 0px; // @deprecated
+	--unitone--blur-radius: 0px; // @deprecated
+	--unitone--color: currentColor; // @deprecated
+
+	--unitone--text-shadow-offset-x: var(--unitone--offset-x);
+	--unitone--text-shadow-offset-y: var(--unitone--offset-y);
+	--unitone--text-shadow-blur-radius: var(--unitone--blur-radius);
+	--unitone--text-shadow-color: var(--unitone--color);
+
+	text-shadow:
+		var(--unitone--text-shadow-offset-x)
+		var(--unitone--text-shadow-offset-y)
+		var(--unitone--text-shadow-blur-radius)
+		var(--unitone--text-shadow-color);
+}

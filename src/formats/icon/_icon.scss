@@ -1,0 +1,30 @@
+.unitone-inline-icon {
+	--unitone--color: inherit;
+
+	position: relative !important;
+	display: inline-block;
+	color: var(--unitone--color);
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		display: block;
+		background: currentcolor;
+		mask-image: var(--unitone--inline-svg);
+		mask-position: center center;
+		mask-repeat: no-repeat;
+		mask-size: contain;
+	}
+
+	a,
+	span {
+		display: inline-block;
+		width: 1em;
+		text-decoration: none !important;
+	}
+}
+
+.components-button .feather {
+	fill: none;
+}

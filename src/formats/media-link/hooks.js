@@ -61,14 +61,27 @@ export function useEmbedControls( {
 	mediaUrl,
 	mediaAlt,
 	mediaType,
+	overlayTarget,
 } ) {
 	const previewType =
 		mediaType ||
-		( activeAttributes?.href ? 'embed' : getMediaType( media ) );
-	const initialTab = previewType === 'embed' ? 'embed' : 'media';
-	const tabPanelKey = [ media?.id ?? '', mediaUrl ?? '', initialTab ].join(
-		':'
-	);
+		( overlayTarget
+			? 'target'
+			: activeAttributes?.href
+			? 'embed'
+			: getMediaType( media ) );
+	const initialTab =
+		previewType === 'embed'
+			? 'embed'
+			: previewType === 'target'
+			? 'target'
+			: 'media';
+	const tabPanelKey = [
+		media?.id ?? '',
+		mediaUrl ?? '',
+		overlayTarget ?? '',
+		initialTab,
+	].join( ':' );
 
 	const [ embedUrlInput, setEmbedUrlInput ] = useState(
 		previewType === 'embed' ? mediaUrl : ''
@@ -76,14 +89,24 @@ export function useEmbedControls( {
 	const [ isEditingEmbed, setIsEditingEmbed ] = useState(
 		previewType !== 'embed'
 	);
+	const [ targetIdInput, setTargetIdInput ] = useState(
+		previewType === 'target' ? overlayTarget : ''
+	);
+	const [ isEditingTarget, setIsEditingTarget ] = useState(
+		previewType !== 'target'
+	);
 
 	useEffect( () => {
 		setEmbedUrlInput( previewType === 'embed' ? mediaUrl : '' );
 		setIsEditingEmbed( previewType !== 'embed' );
-	}, [ tabPanelKey, mediaUrl, previewType ] );
+		setTargetIdInput( previewType === 'target' ? overlayTarget : '' );
+		setIsEditingTarget( previewType !== 'target' );
+	}, [ tabPanelKey, mediaUrl, overlayTarget, previewType ] );
 
 	const mediaPreviewUrl =
-		mediaType === 'embed' ? '' : media?.source_url || mediaUrl || '';
+		mediaType === 'embed' || mediaType === 'target'
+			? ''
+			: media?.source_url || mediaUrl || '';
 	const embedPreviewUrl =
 		mediaType === 'embed' ? mediaUrl : embedUrlInput || '';
 
@@ -98,6 +121,10 @@ export function useEmbedControls( {
 		setEmbedUrlInput,
 		isEditingEmbed,
 		setIsEditingEmbed,
+		targetIdInput,
+		setTargetIdInput,
+		isEditingTarget,
+		setIsEditingTarget,
 		mediaPreviewUrl,
 		embedPreviewUrl,
 		mediaDisplayMeta,

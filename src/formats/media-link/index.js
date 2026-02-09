@@ -39,6 +39,7 @@ const settings = {
 		'data-unitone-media-alt': 'data-unitone-media-alt',
 		'data-unitone-media-width': 'data-unitone-media-width',
 		'data-unitone-media-height': 'data-unitone-media-height',
+		'data-unitone-overlay-target': 'data-unitone-overlay-target',
 	},
 	contentEditable: true,
 	edit: Edit,

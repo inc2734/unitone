@@ -457,7 +457,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 
 		if ( media.type === 'target' ) {
-			const ownerDocument = overlay.ownerDocument || window.document;
 			const targetId = media?.targetId?.trim?.() || '';
 			if ( ! targetId ) {
 				return;
@@ -531,10 +530,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		event.preventDefault();
 
 		const mediaType = getMediaTypeFromDataset( link );
-		const overlayTarget = link.dataset.unitoneOverlayTarget || '';
-		const url = link.getAttribute( 'href' );
 
 		if ( 'target' === mediaType ) {
+			const overlayTarget = link.dataset.unitoneOverlayTarget || '';
 			if ( ! overlayTarget ) {
 				return;
 			}
@@ -547,6 +545,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			return;
 		}
 
+		const url = link.getAttribute( 'href' );
 		if ( ! url ) {
 			return;
 		}

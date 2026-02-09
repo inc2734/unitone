@@ -50,22 +50,7 @@ export default function InlineUI( {
 
 	const media = useMediaRecord( mediaId );
 
-	const {
-		initialTab,
-		tabPanelKey,
-		embedUrlInput,
-		setEmbedUrlInput,
-		isEditingEmbed,
-		setIsEditingEmbed,
-		targetIdInput,
-		setTargetIdInput,
-		isEditingTarget,
-		setIsEditingTarget,
-		mediaPreviewUrl,
-		embedPreviewUrl,
-		mediaDisplayMeta,
-		embedDisplayMeta,
-	} = useEmbedControls( {
+	const { initialTab, tabPanelKey, controls } = useEmbedControls( {
 		activeAttributes,
 		media,
 		mediaUrl,
@@ -74,12 +59,18 @@ export default function InlineUI( {
 		overlayTarget,
 	} );
 
+	const {
+		media: mediaControl,
+		embed: embedControl,
+		target: targetControl,
+	} = controls;
+
 	const showIconLabels = useIconLabelPreference();
 
 	const handleApplyUrl = ( event ) => {
 		event?.preventDefault?.();
-		applyEmbedFormat( value, onChange, embedUrlInput?.trim(), name );
-		setIsEditingEmbed( false );
+		applyEmbedFormat( value, onChange, embedControl.input?.trim(), name );
+		embedControl.setIsEditing( false );
 	};
 
 	const handleApplyTarget = ( event ) => {
@@ -87,10 +78,10 @@ export default function InlineUI( {
 		applyTargetFormat(
 			value,
 			onChange,
-			targetIdInput?.trim?.().replace( /^#/, '' ),
+			targetControl.input?.trim?.().replace( /^#/, '' ),
 			name
 		);
-		setIsEditingTarget( false );
+		targetControl.setIsEditing( false );
 	};
 
 	const renderPanel = ( {
@@ -134,21 +125,21 @@ export default function InlineUI( {
 					/* translators: Accessibility text for the link preview when editing a link. */
 					__( 'Media information', 'unitone' ),
 				icon: <Icon icon={ customLink } size="24" />,
-				details: ! mediaDisplayMeta.isEmptyURL ? (
+				details: ! mediaControl.displayMeta.isEmptyURL ? (
 					<>
 						<ExternalLink
 							className="block-editor-link-control__search-item-title"
-							href={ mediaPreviewUrl }
+							href={ mediaControl.previewUrl }
 						>
 							<Truncate numberOfLines={ 1 }>
-								{ mediaDisplayMeta.displayTitle }
+								{ mediaControl.displayMeta.displayTitle }
 							</Truncate>
 						</ExternalLink>
 
-						{ ! mediaDisplayMeta.isUrlRedundant && (
+						{ ! mediaControl.displayMeta.isUrlRedundant && (
 							<span className="block-editor-link-control__search-item-info">
 								<Truncate numberOfLines={ 1 }>
-									{ mediaDisplayMeta.displayURL }
+									{ mediaControl.displayMeta.displayURL }
 								</Truncate>
 							</span>
 						) }
@@ -162,7 +153,7 @@ export default function InlineUI( {
 				),
 				actions: (
 					<>
-						{ ! mediaDisplayMeta.isEmptyURL && (
+						{ ! mediaControl.displayMeta.isEmptyURL && (
 							<Button
 								icon={ pencil }
 								label={ __(
@@ -190,15 +181,7 @@ export default function InlineUI( {
 					</>
 				),
 			} ),
-		[
-			mediaDisplayMeta,
-			mediaPreviewUrl,
-			onChange,
-			onClose,
-			onOpenMedia,
-			showIconLabels,
-			value,
-		]
+		[ mediaControl, onChange, onClose, onOpenMedia, showIconLabels, value ]
 	);
 
 	const embedPanel = useMemo(
@@ -208,13 +191,13 @@ export default function InlineUI( {
 				icon: <Icon icon={ customLink } size="24" />,
 				detailsClassName: 'unitone-media-link__embed-input',
 				details:
-					! isEditingEmbed && embedPreviewUrl ? (
+					! embedControl.isEditing && embedControl.previewUrl ? (
 						<ExternalLink
 							className="block-editor-link-control__search-item-title"
-							href={ embedPreviewUrl }
+							href={ embedControl.previewUrl }
 						>
 							<Truncate numberOfLines={ 1 }>
-								{ embedDisplayMeta.displayTitle }
+								{ embedControl.displayMeta.displayTitle }
 							</Truncate>
 						</ExternalLink>
 					) : (
@@ -225,8 +208,8 @@ export default function InlineUI( {
 								'Enter URL to embed here…',
 								'unitone'
 							) }
-							value={ embedUrlInput }
-							onChange={ setEmbedUrlInput }
+							value={ embedControl.input }
+							onChange={ embedControl.setInput }
 							onKeyDown={ ( event ) => {
 								if ( event.key === 'Enter' ) {
 									event.preventDefault();
@@ -237,13 +220,16 @@ export default function InlineUI( {
 					),
 				actions: (
 					<>
-						{ ! isEditingEmbed && embedPreviewUrl ? (
+						{ ! embedControl.isEditing &&
+						embedControl.previewUrl ? (
 							<Button
 								icon={ pencil }
 								label={ __( 'Edit link', 'unitone' ) }
 								onClick={ () => {
-									setIsEditingEmbed( true );
-									setEmbedUrlInput( embedPreviewUrl );
+									embedControl.setIsEditing( true );
+									embedControl.setInput(
+										embedControl.previewUrl
+									);
 								} }
 								size="compact"
 								showTooltip={ ! showIconLabels }
@@ -254,7 +240,7 @@ export default function InlineUI( {
 								variant="primary"
 								icon={ customLink }
 								aria-label={ __( 'Apply URL', 'unitone' ) }
-								disabled={ ! embedUrlInput?.trim() }
+								disabled={ ! embedControl.input?.trim() }
 								size="compact"
 								showTooltip={ ! showIconLabels }
 								type="button"
@@ -268,8 +254,8 @@ export default function InlineUI( {
 							onClick={ () => {
 								clearMediaFormat( value, onChange, name );
 								onClose?.();
-								setIsEditingEmbed( true );
-								setEmbedUrlInput( '' );
+								embedControl.setIsEditing( true );
+								embedControl.setInput( '' );
 							} }
 							size="compact"
 							showTooltip={ ! showIconLabels }
@@ -278,18 +264,13 @@ export default function InlineUI( {
 				),
 			} ),
 		[
-			embedDisplayMeta,
-			embedPreviewUrl,
-			embedUrlInput,
+			embedControl,
 			handleApplyUrl,
 			onChange,
 			onClose,
-			setEmbedUrlInput,
 			showIconLabels,
 			value,
-			isEditingEmbed,
 			name,
-			setIsEditingEmbed,
 		]
 	);
 
@@ -300,10 +281,10 @@ export default function InlineUI( {
 				icon: '#',
 				detailsClassName: 'unitone-media-link__target-input',
 				details:
-					! isEditingTarget && targetIdInput ? (
+					! targetControl.isEditing && targetControl.input ? (
 						<span className="block-editor-link-control__search-item-title">
 							<Truncate numberOfLines={ 1 }>
-								{ targetIdInput.replace( /^#/, '' ) }
+								{ targetControl.input.replace( /^#/, '' ) }
 							</Truncate>
 						</span>
 					) : (
@@ -314,8 +295,8 @@ export default function InlineUI( {
 								'Enter target ID to open in overlay…',
 								'unitone'
 							) }
-							value={ targetIdInput }
-							onChange={ setTargetIdInput }
+							value={ targetControl.input }
+							onChange={ targetControl.setInput }
 							onKeyDown={ ( event ) => {
 								if ( event.key === 'Enter' ) {
 									event.preventDefault();
@@ -326,12 +307,12 @@ export default function InlineUI( {
 					),
 				actions: (
 					<>
-						{ ! isEditingTarget && targetIdInput ? (
+						{ ! targetControl.isEditing && targetControl.input ? (
 							<Button
 								icon={ pencil }
 								label={ __( 'Edit target', 'unitone' ) }
 								onClick={ () => {
-									setIsEditingTarget( true );
+									targetControl.setIsEditing( true );
 								} }
 								size="compact"
 								showTooltip={ ! showIconLabels }
@@ -342,7 +323,7 @@ export default function InlineUI( {
 								variant="primary"
 								icon={ customLink }
 								aria-label={ __( 'Apply link', 'unitone' ) }
-								disabled={ ! targetIdInput?.trim() }
+								disabled={ ! targetControl.input?.trim() }
 								size="compact"
 								showTooltip={ ! showIconLabels }
 								type="button"
@@ -356,8 +337,8 @@ export default function InlineUI( {
 							onClick={ () => {
 								clearMediaFormat( value, onChange, name );
 								onClose?.();
-								setTargetIdInput( '' );
-								setIsEditingTarget( true );
+								targetControl.setInput( '' );
+								targetControl.setIsEditing( true );
 							} }
 							size="compact"
 							showTooltip={ ! showIconLabels }
@@ -370,12 +351,9 @@ export default function InlineUI( {
 			name,
 			onChange,
 			onClose,
-			setTargetIdInput,
-			setIsEditingTarget,
 			showIconLabels,
-			targetIdInput,
+			targetControl,
 			value,
-			isEditingTarget,
 		]
 	);
 

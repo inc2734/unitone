@@ -63,19 +63,23 @@ export function useEmbedControls( {
 	mediaType,
 	overlayTarget,
 } ) {
-	const previewType =
-		mediaType ||
-		( overlayTarget
-			? 'target'
-			: activeAttributes?.href
-			? 'embed'
-			: getMediaType( media ) );
-	const initialTab =
-		previewType === 'embed'
-			? 'embed'
-			: previewType === 'target'
-			? 'target'
-			: 'media';
+	let previewType = mediaType;
+	if ( ! previewType ) {
+		if ( overlayTarget ) {
+			previewType = 'target';
+		} else if ( activeAttributes?.href ) {
+			previewType = 'embed';
+		} else {
+			previewType = getMediaType( media );
+		}
+	}
+
+	let initialTab = 'media';
+	if ( previewType === 'embed' ) {
+		initialTab = 'embed';
+	} else if ( previewType === 'target' ) {
+		initialTab = 'target';
+	}
 	const tabPanelKey = [
 		media?.id ?? '',
 		mediaUrl ?? '',
@@ -110,24 +114,29 @@ export function useEmbedControls( {
 	const embedPreviewUrl =
 		mediaType === 'embed' ? mediaUrl : embedUrlInput || '';
 
-	const mediaDisplayMeta = getDisplayMeta( mediaPreviewUrl, mediaAlt );
-	const embedDisplayMeta = getDisplayMeta( embedPreviewUrl, mediaAlt );
-
 	return {
 		previewType,
 		initialTab,
 		tabPanelKey,
-		embedUrlInput,
-		setEmbedUrlInput,
-		isEditingEmbed,
-		setIsEditingEmbed,
-		targetIdInput,
-		setTargetIdInput,
-		isEditingTarget,
-		setIsEditingTarget,
-		mediaPreviewUrl,
-		embedPreviewUrl,
-		mediaDisplayMeta,
-		embedDisplayMeta,
+		controls: {
+			media: {
+				previewUrl: mediaPreviewUrl,
+				displayMeta: getDisplayMeta( mediaPreviewUrl, mediaAlt ),
+			},
+			embed: {
+				input: embedUrlInput,
+				setInput: setEmbedUrlInput,
+				isEditing: isEditingEmbed,
+				setIsEditing: setIsEditingEmbed,
+				previewUrl: embedPreviewUrl,
+				displayMeta: getDisplayMeta( embedPreviewUrl, mediaAlt ),
+			},
+			target: {
+				input: targetIdInput,
+				setInput: setTargetIdInput,
+				isEditing: isEditingTarget,
+				setIsEditing: setIsEditingTarget,
+			},
+		},
 	};
 }

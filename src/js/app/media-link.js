@@ -400,21 +400,31 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		returnFocusTo = activeElement;
 
-		if ( media.type === 'embed' ) {
+		const prepareOverlay = ( type ) => {
 			resetOverlayStyles();
 			resetFigure( lightboxFigure );
 			resetEmbed();
 			resetTarget();
-			setOverlayMode( 'embed' );
+			setOverlayMode( type );
+		};
 
+		const activateOverlay = () => {
 			overlay.classList.add( 'active' );
 			overlay.setAttribute( 'aria-modal', 'true' );
 			overlay.setAttribute( 'role', 'dialog' );
 
-			const preloadedNode = findPreloadedEmbed( media.url );
+			if ( closeButton ) {
+				overlay.focus();
+			}
+		};
+
+		const openEmbedOverlay = ( embedMedia ) => {
+			prepareOverlay( 'embed' );
+
+			const preloadedNode = findPreloadedEmbed( embedMedia.url );
 			const iframe = preloadedNode?.querySelector( 'iframe' );
 			const newMedia = {
-				...media,
+				...embedMedia,
 				width: iframe?.getAttribute( 'width' ),
 				height: iframe?.getAttribute( 'height' ),
 			};
@@ -427,8 +437,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			}
 
 			if ( embedWrapper ) {
-				resetEmbed();
-
 				if ( !! preloadedNode ) {
 					const clone = preloadedNode.cloneNode( true );
 					embedWrapper.appendChild( clone );
@@ -439,34 +447,26 @@ document.addEventListener( 'DOMContentLoaded', () => {
 					fallback.appendChild( fallbackText );
 
 					const fallbackLink = document.createElement( 'a' );
-					fallbackLink.href = media.url;
+					fallbackLink.href = embedMedia.url;
 					fallbackLink.target = '_blank';
 					fallbackLink.rel = 'noopener';
-					fallbackLink.textContent = media.url;
+					fallbackLink.textContent = embedMedia.url;
 					fallback.appendChild( fallbackLink );
 
 					embedWrapper.appendChild( fallback );
 				}
 			}
 
-			if ( closeButton ) {
-				overlay.focus();
-			}
+			activateOverlay();
+		};
 
-			return;
-		}
-
-		if ( media.type === 'target' ) {
-			const targetId = media?.targetId?.trim?.() || '';
+		const openTargetOverlay = ( targetMedia ) => {
+			const targetId = targetMedia?.targetId?.trim?.() || '';
 			if ( ! targetId ) {
 				return;
 			}
 
-			resetOverlayStyles();
-			resetFigure( lightboxFigure );
-			resetEmbed();
-			resetTarget();
-			setOverlayMode( 'target' );
+			prepareOverlay( 'target' );
 
 			const targetElement = ownerDocument.getElementById( targetId );
 			if ( targetWrapper ) {
@@ -492,33 +492,32 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				}
 			}
 
-			overlay.classList.add( 'active' );
-			overlay.setAttribute( 'aria-modal', 'true' );
-			overlay.setAttribute( 'role', 'dialog' );
+			activateOverlay();
+		};
 
-			if ( closeButton ) {
-				overlay.focus();
+		const openMediaOverlay = ( mediaItem ) => {
+			prepareOverlay( 'media' );
+			applyOverlayStyles( mediaItem );
+
+			if ( lightboxFigure ) {
+				const element = createMediaElement( mediaItem );
+				lightboxFigure.appendChild( element );
 			}
 
+			activateOverlay();
+		};
+
+		if ( media.type === 'embed' ) {
+			openEmbedOverlay( media );
 			return;
 		}
 
-		setOverlayMode( 'media' );
-		applyOverlayStyles( media );
-
-		resetFigure( lightboxFigure );
-		if ( lightboxFigure ) {
-			const element = createMediaElement( media );
-			lightboxFigure.appendChild( element );
+		if ( media.type === 'target' ) {
+			openTargetOverlay( media );
+			return;
 		}
 
-		overlay.classList.add( 'active' );
-		overlay.setAttribute( 'aria-modal', 'true' );
-		overlay.setAttribute( 'role', 'dialog' );
-
-		if ( closeButton ) {
-			overlay.focus();
-		}
+		openMediaOverlay( media );
 	};
 
 	document.addEventListener( 'click', ( event ) => {

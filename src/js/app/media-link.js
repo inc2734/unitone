@@ -265,13 +265,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			return;
 		}
 
-		const lightboxMediaContainer = overlay.querySelector(
+		const mediaContainer = overlay.querySelector(
 			'.unitone-lightbox-media-container'
 		);
-		const lightboxEmbedContainer = overlay.querySelector(
+		const embedContainer = overlay.querySelector(
 			'.unitone-lightbox-embed-container'
 		);
-		const lightboxTargetContainer = overlay.querySelector(
+		const targetContainer = overlay.querySelector(
 			'.unitone-lightbox-target-container'
 		);
 		const mediaInner = overlay.querySelector(
@@ -286,22 +286,20 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		const isEmbed = media.type === 'embed';
 		const isTarget = media.type === 'target';
+		const isMedia = ! isEmbed && ! isTarget;
 
-		if ( lightboxMediaContainer ) {
-			lightboxMediaContainer.hidden = isEmbed || isTarget;
+		if ( mediaContainer ) {
+			mediaContainer.hidden = ! isMedia;
 		}
-		if ( lightboxEmbedContainer ) {
-			lightboxEmbedContainer.hidden = ! isEmbed;
+		if ( embedContainer ) {
+			embedContainer.hidden = ! isEmbed;
 		}
-		if ( lightboxTargetContainer ) {
-			lightboxTargetContainer.hidden = ! isTarget;
+		if ( targetContainer ) {
+			targetContainer.hidden = ! isTarget;
 		}
 
 		overlay.classList.toggle( 'unitone-lightbox-overlay--embed', isEmbed );
-		overlay.classList.toggle(
-			'unitone-lightbox-overlay--media',
-			! isEmbed && ! isTarget
-		);
+		overlay.classList.toggle( 'unitone-lightbox-overlay--media', isMedia );
 		overlay.classList.toggle(
 			'unitone-lightbox-overlay--target',
 			isTarget
@@ -371,11 +369,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			const height = iframe?.getAttribute( 'height' );
 
 			if ( width && height ) {
-				lightboxEmbedContainer.classList.remove( 'indeterminate-size' );
+				embedContainer.classList.remove( 'indeterminate-size' );
 				applyOverlayStyles( overlay, { ...media, width, height } );
 			} else {
-				lightboxEmbedContainer.classList.add( 'indeterminate-size' );
+				embedContainer.classList.add( 'indeterminate-size' );
 			}
+
 			if ( embedInner ) {
 				embedInner.appendChild( node.cloneNode( true ) );
 			}
@@ -389,11 +388,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			const targetElement = targetId
 				? document.getElementById( targetId )
 				: null;
-
-			if (
+			const existTarget =
 				targetElement &&
-				! targetElement.closest( '.unitone-lightbox-overlay' )
-			) {
+				! targetElement.closest( '.unitone-lightbox-overlay' );
+
+			if ( existTarget ) {
 				const clone = targetElement.cloneNode( true );
 				clone.removeAttribute( 'id' );
 				clone
@@ -422,6 +421,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		overlay.focus();
 	};
 
+	/**
+	 * Focus trap.
+	 */
 	document.addEventListener( 'focusin', ( event ) => {
 		const overlay = activeOverlay;
 		if ( ! overlay ) {
@@ -434,6 +436,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 	} );
 
+	/**
+	 * Apply media link.
+	 */
 	document.addEventListener( 'click', ( event ) => {
 		const link = event.target.closest( '.unitone-media-link' );
 		if ( ! link ) {
@@ -467,28 +472,19 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		);
 		if ( 0 < targetContainers.length ) {
 			targetContainers.forEach( ( targetContainer ) => {
-				targetContainer.addEventListener(
-					'click',
-					( targetContainerEvent ) => {
-						if ( targetContainerEvent.target === targetContainer ) {
-							closeOverlay();
-						}
-					}
-				);
-
 				const targetInner = targetContainer.querySelector(
 					'.unitone-lightbox-container__inner'
 				);
-				if ( targetInner ) {
-					targetInner.addEventListener(
-						'click',
-						( targetInnerEvent ) => {
-							if ( targetInnerEvent.target === targetInner ) {
+
+				[ targetContainer, targetInner ]
+					.filter( ( v ) => v )
+					.forEach( ( element ) => {
+						element.addEventListener( 'click', ( elementEvent ) => {
+							if ( elementEvent.target === element ) {
 								closeOverlay();
 							}
-						}
-					);
-				}
+						} );
+					} );
 			} );
 		}
 
@@ -515,6 +511,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 	} );
 
+	/**
+	 * Escape key.
+	 */
 	window.addEventListener( 'keydown', ( event ) => {
 		if (
 			activeOverlay?.classList.contains( 'active' ) &&

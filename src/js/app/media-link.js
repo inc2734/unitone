@@ -1,211 +1,54 @@
-/**
- * Media link.
- */
 document.addEventListener( 'DOMContentLoaded', () => {
-	const getMediaTypeFromDataset = ( target ) => {
-		const datasetType = target?.dataset?.unitoneMediaType;
-		if (
-			'video' === datasetType ||
-			'embed' === datasetType ||
-			'target' === datasetType
-		) {
-			return datasetType;
-		}
-		return 'image';
-	};
-
-	const resetFigure = ( figure ) => {
-		if ( ! figure ) {
-			return;
-		}
-
-		while ( figure.firstChild ) {
-			const child = figure.firstChild;
-			if ( child.tagName === 'VIDEO' ) {
-				child.pause();
-				child.removeAttribute( 'src' );
-				child.load();
-			}
-			figure.removeChild( child );
-		}
-	};
-
-	const createMediaElement = ( { url, type, alt, width, height } ) => {
-		const isVideo = type === 'video';
-		const element = document.createElement( isVideo ? 'video' : 'img' );
-		element.src = url;
-
-		if ( isVideo ) {
-			element.controls = true;
-			element.playsInline = true;
-			element.preload = 'metadata';
-		} else {
-			element.decoding = 'async';
-			element.loading = 'lazy';
-		}
-
-		if ( width ) {
-			element.setAttribute( 'width', width );
-		}
-
-		if ( height ) {
-			element.setAttribute( 'height', height );
-		}
-
-		if ( alt ) {
-			if ( isVideo ) {
-				element.setAttribute( 'aria-label', alt );
-			} else {
-				element.alt = alt;
-			}
-		}
-
-		return element;
-	};
-
-	const overlay = document.querySelector( '.unitone-lightbox-overlay' );
-	if ( ! overlay ) {
-		return;
-	}
-
-	const preloadContainer = overlay.ownerDocument?.querySelector(
-		'.unitone-lightbox-embed-preload'
-	);
-
-	const findPreloadedEmbed = ( url ) => {
-		if ( ! preloadContainer || ! url ) {
-			return null;
-		}
-
-		if ( typeof window.CSS?.escape === 'function' ) {
-			return preloadContainer.querySelector(
-				`.unitone-lightbox-embed-container__embed[data-unitone-embed-url="${ window.CSS.escape(
-					url
-				) }"]`
-			);
-		}
-
-		const children = preloadContainer.querySelectorAll(
-			'.unitone-lightbox-embed-container__embed[data-unitone-embed-url]'
-		);
-		for ( const node of children ) {
-			if ( node.dataset.unitoneEmbedUrl === url ) {
-				return node;
-			}
-		}
-
-		return null;
-	};
-
-	const scrim = overlay.querySelector( '.scrim' );
-	const closeButton = overlay.querySelector( '.close-button' );
-	const lightboxImageContainer = overlay.querySelector(
-		'.lightbox-image-container:not(.unitone-lightbox-embed-container):not(.unitone-lightbox-target-container)'
-	);
-	const lightboxFigure = overlay.querySelector(
-		'.lightbox-image-container > figure'
-	);
-	const lightboxEmbedContainer = overlay.querySelector(
-		'.unitone-lightbox-embed-container'
-	);
-	const embedWrapper = overlay.querySelector(
-		'.unitone-lightbox-embed-container__inner'
-	);
-	const lightboxTargetContainer = overlay.querySelector(
-		'.unitone-lightbox-target-container'
-	);
-	const targetWrapper = overlay.querySelector(
-		'.unitone-lightbox-target-container__inner'
-	);
-
+	/**
+	 * Parse a dimension value into a positive number.
+	 *
+	 * @param {unknown} value Raw value.
+	 * @return {number|null} Positive number or null.
+	 */
 	const parseDimensionValue = ( value ) => {
-		if ( value === undefined || value === null || value === '' ) {
-			return null;
-		}
-
 		const parsed = Number( value );
 		return Number.isFinite( parsed ) && parsed > 0 ? parsed : null;
 	};
 
-	const getRatio = ( width, height ) => {
-		return ! width || ! height ? 1 : width / height;
-	};
+	/**
+	 * Calculate aspect ratio.
+	 *
+	 * @param {number} width  Width.
+	 * @param {number} height Height.
+	 * @return {number} Ratio.
+	 */
+	const getRatio = ( width, height ) =>
+		! width || ! height ? 1 : width / height;
 
-	const LIGHTBOX_STYLE_PROPERTIES = [
-		'--wp--lightbox-initial-top-position',
-		'--wp--lightbox-initial-left-position',
-		'--wp--lightbox-container-width',
-		'--wp--lightbox-container-height',
-		'--wp--lightbox-image-width',
-		'--wp--lightbox-image-height',
-		'--wp--lightbox-scale',
-		'--wp--lightbox-scrollbar-width',
-	];
+	/**
+	 * Reset container contents and stop media playback.
+	 *
+	 * @param {HTMLElement|null} container Container element.
+	 */
+	const resetContainer = ( container ) => {
+		if ( ! container ) {
+			return;
+		}
 
-	const resetOverlayStyles = () => {
-		LIGHTBOX_STYLE_PROPERTIES.forEach( ( property ) => {
-			overlay.style.removeProperty( property );
+		const mediaElements = container.querySelectorAll( 'video, audio' );
+		mediaElements.forEach( ( media ) => {
+			media.pause();
+			media.removeAttribute( 'src' );
+			media.load();
 		} );
+
+		container.replaceChildren();
 	};
 
-	const resetEmbed = () => {
-		if ( ! embedWrapper ) {
-			return;
-		}
-		while ( embedWrapper.firstChild ) {
-			embedWrapper.removeChild( embedWrapper.firstChild );
-		}
-	};
+	/**
+	 * Calculate overlay style variables for the media.
+	 *
+	 * @param {Object} media Media data.
+	 * @return {Object} CSS custom properties map.
+	 */
+	const calculateStyles = ( media ) => {
+		const docEl = document.documentElement;
 
-	const resetTarget = () => {
-		if ( ! targetWrapper ) {
-			return;
-		}
-		while ( targetWrapper.firstChild ) {
-			targetWrapper.removeChild( targetWrapper.firstChild );
-		}
-	};
-
-	const setOverlayMode = ( type ) => {
-		const isEmbed = type === 'embed';
-		const isTarget = type === 'target';
-		const isMedia = ! isEmbed && ! isTarget;
-
-		if ( lightboxImageContainer ) {
-			if ( isEmbed || isTarget ) {
-				lightboxImageContainer.setAttribute( 'hidden', '' );
-			} else {
-				lightboxImageContainer.removeAttribute( 'hidden' );
-			}
-		}
-
-		if ( lightboxEmbedContainer ) {
-			if ( isEmbed ) {
-				lightboxEmbedContainer.removeAttribute( 'hidden' );
-			} else {
-				lightboxEmbedContainer.setAttribute( 'hidden', '' );
-			}
-		}
-
-		if ( lightboxTargetContainer ) {
-			if ( isTarget ) {
-				lightboxTargetContainer.removeAttribute( 'hidden' );
-			} else {
-				lightboxTargetContainer.setAttribute( 'hidden', '' );
-			}
-		}
-
-		overlay.classList.toggle( 'unitone-lightbox-overlay--embed', isEmbed );
-		overlay.classList.toggle( 'unitone-lightbox-overlay--media', isMedia );
-		overlay.classList.toggle(
-			'unitone-lightbox-overlay--target',
-			isTarget
-		);
-	};
-
-	const calculateOverlayStyleValues = ( media ) => {
-		const screenPosX = 0;
-		const screenPosY = 0;
 		let originalWidth = parseDimensionValue( media.width );
 		let originalHeight = parseDimensionValue( media.height );
 
@@ -219,39 +62,32 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 
 		const originalRatio = getRatio( originalWidth, originalHeight );
-		const naturalWidth = originalWidth;
-		const naturalHeight = originalHeight;
-		const naturalRatio = originalRatio;
 
-		let imgMaxWidth = Math.max( naturalWidth || originalWidth, 1 );
-		let imgMaxHeight = Math.max( naturalHeight || originalHeight, 1 );
+		let imgMaxWidth = Math.max( originalWidth, 1 );
+		let imgMaxHeight = Math.max( originalHeight, 1 );
 		let imgRatio = getRatio( imgMaxWidth, imgMaxHeight );
 		let containerMaxWidth = imgMaxWidth;
 		let containerMaxHeight = imgMaxHeight;
-		let containerWidth = imgMaxWidth;
-		let containerHeight = imgMaxHeight;
 
-		if ( naturalRatio.toFixed( 2 ) !== imgRatio.toFixed( 2 ) ) {
-			if ( naturalRatio > imgRatio ) {
-				const reducedHeight = imgMaxWidth / naturalRatio;
+		if ( originalRatio.toFixed( 2 ) !== imgRatio.toFixed( 2 ) ) {
+			if ( originalRatio > imgRatio ) {
+				const reducedHeight = imgMaxWidth / originalRatio;
 				if ( imgMaxHeight - reducedHeight > imgMaxWidth ) {
 					imgMaxHeight = reducedHeight;
-					imgMaxWidth = reducedHeight * naturalRatio;
+					imgMaxWidth = reducedHeight * originalRatio;
 				} else {
-					imgMaxHeight = imgMaxWidth / naturalRatio;
+					imgMaxHeight = imgMaxWidth / originalRatio;
 				}
 			} else {
-				const reducedWidth = imgMaxHeight * naturalRatio;
+				const reducedWidth = imgMaxHeight * originalRatio;
 				if ( imgMaxWidth - reducedWidth > imgMaxHeight ) {
 					imgMaxWidth = reducedWidth;
-					imgMaxHeight = reducedWidth / naturalRatio;
+					imgMaxHeight = reducedWidth / originalRatio;
 				} else {
-					imgMaxWidth = imgMaxHeight * naturalRatio;
+					imgMaxWidth = imgMaxHeight * originalRatio;
 				}
 			}
 
-			containerWidth = imgMaxWidth;
-			containerHeight = imgMaxHeight;
 			imgRatio = getRatio( imgMaxWidth, imgMaxHeight );
 
 			if ( originalRatio > imgRatio ) {
@@ -263,22 +99,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			}
 		}
 
-		if (
-			originalWidth > containerWidth ||
-			originalHeight > containerHeight
-		) {
-			containerWidth = originalWidth;
-			containerHeight = originalHeight;
-		}
+		const containerWidth = Math.max( originalWidth, containerMaxWidth );
+		const containerHeight = Math.max( originalHeight, containerMaxHeight );
 
-		const ownerDocument = overlay.ownerDocument || window.document;
-		const documentElement = ownerDocument?.documentElement;
 		const viewportWidth =
-			window.innerWidth || documentElement?.clientWidth || containerWidth;
+			window.innerWidth || docEl?.clientWidth || containerWidth;
 		const viewportHeight =
-			window.innerHeight ||
-			documentElement?.clientHeight ||
-			containerHeight;
+			window.innerHeight || docEl?.clientHeight || containerHeight;
 
 		let horizontalPadding = 0;
 		if ( viewportWidth > 1920 ) {
@@ -286,12 +113,14 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		} else if ( viewportWidth > 480 ) {
 			horizontalPadding = 80;
 		}
+
 		const verticalPadding = 80;
 
 		const paddedViewportWidth = Math.max(
 			viewportWidth - horizontalPadding,
 			0
 		);
+
 		const paddedViewportHeight = Math.max(
 			viewportHeight - verticalPadding,
 			0
@@ -302,6 +131,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			paddedViewportHeight,
 			containerHeight
 		);
+
 		const effectiveTargetWidth = targetMaxWidth || containerWidth;
 		const effectiveTargetHeight = targetMaxHeight || containerHeight;
 		const targetRatio = getRatio(
@@ -311,11 +141,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		let finalContainerWidth = effectiveTargetWidth;
 		let finalContainerHeight = effectiveTargetHeight;
+
 		if ( originalRatio > targetRatio ) {
-			finalContainerWidth = effectiveTargetWidth;
 			finalContainerHeight = finalContainerWidth / ( originalRatio || 1 );
 		} else {
-			finalContainerHeight = effectiveTargetHeight;
 			finalContainerWidth = finalContainerHeight * ( originalRatio || 1 );
 		}
 
@@ -325,59 +154,100 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		const normalizedScale = Number.isFinite( containerScale )
 			? containerScale
 			: 1;
-		const widthScale = containerMaxWidth
-			? finalContainerWidth / containerMaxWidth
-			: 1;
-		const heightScale = containerMaxHeight
-			? finalContainerHeight / containerMaxHeight
-			: 1;
-		const lightboxImgWidth = imgMaxWidth * widthScale;
-		const lightboxImgHeight = imgMaxHeight * heightScale;
+
 		const scrollbarWidth = Math.max(
 			( window.innerWidth || viewportWidth ) -
-				( documentElement?.clientWidth || viewportWidth ),
+				( docEl?.clientWidth || viewportWidth ),
 			0
 		);
 
 		return {
-			'--wp--lightbox-initial-top-position': `${ screenPosY }px`,
-			'--wp--lightbox-initial-left-position': `${ screenPosX }px`,
+			'--wp--lightbox-initial-top-position': '0px',
+			'--wp--lightbox-initial-left-position': '0px',
 			'--wp--lightbox-container-width': `${ finalContainerWidth + 1 }px`,
 			'--wp--lightbox-container-height': `${
 				finalContainerHeight + 1
 			}px`,
-			'--wp--lightbox-image-width': `${ lightboxImgWidth }px`,
-			'--wp--lightbox-image-height': `${ lightboxImgHeight }px`,
+			'--wp--lightbox-image-width': `${
+				imgMaxWidth *
+				( containerMaxWidth
+					? finalContainerWidth / containerMaxWidth
+					: 1 )
+			}px`,
+			'--wp--lightbox-image-height': `${
+				imgMaxHeight *
+				( containerMaxHeight
+					? finalContainerHeight / containerMaxHeight
+					: 1 )
+			}px`,
 			'--wp--lightbox-scale': `${ normalizedScale }`,
 			'--wp--lightbox-scrollbar-width': `${ scrollbarWidth }px`,
 		};
 	};
 
-	const applyOverlayStyles = ( media ) => {
-		if ( ! overlay?.style ) {
-			return;
-		}
-		resetOverlayStyles();
-		const styles = calculateOverlayStyleValues( media );
-		Object.entries( styles ).forEach( ( [ property, value ] ) => {
-			if ( value === null || value === undefined || value === '' ) {
-				return;
+	/**
+	 * Apply calculated overlay styles.
+	 *
+	 * @param {HTMLElement} overlay Overlay element.
+	 * @param {Object}      media   Media data.
+	 */
+	const applyOverlayStyles = ( overlay, media ) => {
+		const styles = calculateStyles( media );
+		[
+			'initial-top-position',
+			'initial-left-position',
+			'container-width',
+			'container-height',
+			'image-width',
+			'image-height',
+			'scale',
+			'scrollbar-width',
+		].forEach( ( prop ) =>
+			overlay.style.removeProperty( `--wp--lightbox-${ prop }` )
+		);
+
+		Object.entries( styles ).forEach( ( [ prop, value ] ) => {
+			if ( value !== null && value !== undefined ) {
+				overlay.style.setProperty( prop, value );
 			}
-			overlay.style.setProperty( property, value );
 		} );
 	};
 
+	const templateOverlay = document.querySelector(
+		'.unitone-lightbox-overlay'
+	);
+	if ( ! templateOverlay ) {
+		return;
+	}
+
+	let activeOverlay = null;
 	let returnFocusTo = null;
 
+	/**
+	 * Close the active overlay and clean up.
+	 */
 	const closeOverlay = () => {
-		overlay.classList.remove( 'active' );
-		overlay.removeAttribute( 'aria-modal' );
-		overlay.removeAttribute( 'role' );
-		resetFigure( lightboxFigure );
-		resetOverlayStyles();
-		resetEmbed();
-		resetTarget();
-		setOverlayMode( 'media' );
+		if ( ! activeOverlay ) {
+			return;
+		}
+
+		const embedWrapper = activeOverlay.querySelector(
+			'.unitone-lightbox-embed-container__inner'
+		);
+		const targetWrapper = activeOverlay.querySelector(
+			'.unitone-lightbox-target-container__inner'
+		);
+		const lightboxFigure = activeOverlay.querySelector(
+			'.lightbox-image-container > figure'
+		);
+
+		[ embedWrapper, targetWrapper, lightboxFigure ].forEach(
+			resetContainer
+		);
+
+		activeOverlay.classList.remove( 'active' );
+		activeOverlay.remove();
+		activeOverlay = null;
 
 		if ( returnFocusTo ) {
 			returnFocusTo.focus();
@@ -386,139 +256,184 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		returnFocusTo = null;
 	};
 
-	const openOverlay = async ( media ) => {
-		if ( media?.type !== 'target' && ! media?.url ) {
+	/**
+	 * Open the overlay with the provided media data.
+	 *
+	 * @param {Object} media Media data.
+	 */
+	const openOverlay = ( media ) => {
+		if ( ! media.url && media.type !== 'target' ) {
 			return;
 		}
 
-		const ownerDocument = overlay.ownerDocument || window.document;
-		const activeElement =
-			ownerDocument?.activeElement &&
-			ownerDocument.activeElement !== ownerDocument.body
-				? ownerDocument.activeElement
+		const active = document.activeElement; // eslint-disable-line @wordpress/no-global-active-element
+
+		returnFocusTo = active && active !== document.body ? active : null;
+
+		const overlay = activeOverlay;
+		if ( ! overlay ) {
+			return;
+		}
+
+		const lightboxImageContainer = overlay.querySelector(
+			'.lightbox-image-container:not(.unitone-lightbox-embed-container):not(.unitone-lightbox-target-container)'
+		);
+		const lightboxEmbedContainer = overlay.querySelector(
+			'.unitone-lightbox-embed-container'
+		);
+		const lightboxTargetContainer = overlay.querySelector(
+			'.unitone-lightbox-target-container'
+		);
+		const lightboxFigure = overlay.querySelector(
+			'.lightbox-image-container > figure'
+		);
+		const embedWrapper = overlay.querySelector(
+			'.unitone-lightbox-embed-container__inner'
+		);
+		const targetWrapper = overlay.querySelector(
+			'.unitone-lightbox-target-container__inner'
+		);
+
+		const isEmbed = media.type === 'embed';
+		const isTarget = media.type === 'target';
+
+		if ( lightboxImageContainer ) {
+			lightboxImageContainer.hidden = isEmbed || isTarget;
+		}
+		if ( lightboxEmbedContainer ) {
+			lightboxEmbedContainer.hidden = ! isEmbed;
+		}
+		if ( lightboxTargetContainer ) {
+			lightboxTargetContainer.hidden = ! isTarget;
+		}
+
+		overlay.classList.toggle( 'unitone-lightbox-overlay--embed', isEmbed );
+		overlay.classList.toggle(
+			'unitone-lightbox-overlay--media',
+			! isEmbed && ! isTarget
+		);
+		overlay.classList.toggle(
+			'unitone-lightbox-overlay--target',
+			isTarget
+		);
+
+		[ lightboxFigure, embedWrapper, targetWrapper ].forEach(
+			resetContainer
+		);
+
+		if ( isEmbed ) {
+			const preloadContainer = document.querySelector(
+				'.unitone-lightbox-embed-preload'
+			);
+			let node = null;
+
+			if ( preloadContainer ) {
+				if ( window.CSS?.escape ) {
+					node = preloadContainer.querySelector(
+						`[data-unitone-embed-url="${ window.CSS.escape(
+							media.url
+						) }"]`
+					);
+				} else {
+					node = Array.from( preloadContainer.children ).find(
+						( n ) => n.dataset.unitoneEmbedUrl === media.url
+					);
+				}
+			}
+
+			if ( node ) {
+				const iframe = node.querySelector( 'iframe' );
+				const width = iframe?.getAttribute( 'width' );
+				const height = iframe?.getAttribute( 'height' );
+
+				if ( width && height ) {
+					lightboxEmbedContainer.classList.remove(
+						'indeterminate-size'
+					);
+					applyOverlayStyles( overlay, { ...media, width, height } );
+				} else {
+					lightboxEmbedContainer.classList.add(
+						'indeterminate-size'
+					);
+				}
+				if ( embedWrapper ) {
+					embedWrapper.appendChild( node.cloneNode( true ) );
+				}
+			} else if ( embedWrapper ) {
+				embedWrapper.innerHTML = `<div><p>Unable to load embed.</p><a href="${ media.url }" target="_blank" rel="noopener">${ media.url }</a></div>`;
+			}
+		} else if ( isTarget ) {
+			const targetId = media.targetId?.trim();
+			const targetElement = targetId
+				? document.getElementById( targetId )
 				: null;
 
-		returnFocusTo = activeElement;
-
-		const prepareOverlay = ( type ) => {
-			resetOverlayStyles();
-			resetFigure( lightboxFigure );
-			resetEmbed();
-			resetTarget();
-			setOverlayMode( type );
-		};
-
-		const activateOverlay = () => {
-			overlay.classList.add( 'active' );
-			overlay.setAttribute( 'aria-modal', 'true' );
-			overlay.setAttribute( 'role', 'dialog' );
-
-			if ( closeButton ) {
-				overlay.focus();
-			}
-		};
-
-		const openEmbedOverlay = ( embedMedia ) => {
-			prepareOverlay( 'embed' );
-
-			const preloadedNode = findPreloadedEmbed( embedMedia.url );
-			const iframe = preloadedNode?.querySelector( 'iframe' );
-			const newMedia = {
-				...embedMedia,
-				width: iframe?.getAttribute( 'width' ),
-				height: iframe?.getAttribute( 'height' ),
-			};
-
-			if ( !! newMedia?.width && !! newMedia?.height ) {
-				lightboxEmbedContainer.classList.remove( 'indeterminate-size' );
-				applyOverlayStyles( newMedia );
-			} else {
-				lightboxEmbedContainer.classList.add( 'indeterminate-size' );
-			}
-
-			if ( embedWrapper ) {
-				if ( !! preloadedNode ) {
-					const clone = preloadedNode.cloneNode( true );
-					embedWrapper.appendChild( clone );
-				} else {
-					const fallback = document.createElement( 'div' );
-					const fallbackText = document.createElement( 'p' );
-					fallbackText.textContent = 'Unable to load embed.';
-					fallback.appendChild( fallbackText );
-
-					const fallbackLink = document.createElement( 'a' );
-					fallbackLink.href = embedMedia.url;
-					fallbackLink.target = '_blank';
-					fallbackLink.rel = 'noopener';
-					fallbackLink.textContent = embedMedia.url;
-					fallback.appendChild( fallbackLink );
-
-					embedWrapper.appendChild( fallback );
-				}
-			}
-
-			activateOverlay();
-		};
-
-		const openTargetOverlay = ( targetMedia ) => {
-			const targetId = targetMedia?.targetId?.trim?.() || '';
-			if ( ! targetId ) {
-				return;
-			}
-
-			prepareOverlay( 'target' );
-
-			const targetElement = ownerDocument.getElementById( targetId );
-			if ( targetWrapper ) {
-				if (
-					targetElement &&
-					! targetElement.closest( '.unitone-lightbox-overlay' )
-				) {
-					const clone = targetElement.cloneNode( true );
-					clone.removeAttribute( 'id' );
-
-					const descendantsWithId = clone.querySelectorAll( '[id]' );
-					descendantsWithId.forEach( ( node ) => {
-						node.removeAttribute( 'id' );
-					} );
-
+			if (
+				targetElement &&
+				! targetElement.closest( '.unitone-lightbox-overlay' )
+			) {
+				const clone = targetElement.cloneNode( true );
+				clone.removeAttribute( 'id' );
+				clone
+					.querySelectorAll( '[id]' )
+					.forEach( ( n ) => n.removeAttribute( 'id' ) );
+				if ( targetWrapper ) {
 					targetWrapper.appendChild( clone );
-				} else {
-					const fallback = document.createElement( 'div' );
-					const fallbackText = document.createElement( 'p' );
-					fallbackText.textContent = 'Unable to find target element.';
-					fallback.appendChild( fallbackText );
-					targetWrapper.appendChild( fallback );
+				}
+			} else if ( targetWrapper ) {
+				targetWrapper.innerHTML =
+					'<div><p>Unable to find target element.</p></div>';
+			}
+		} else {
+			applyOverlayStyles( overlay, media );
+			const isVideo = media.type === 'video';
+			const element = document.createElement( isVideo ? 'video' : 'img' );
+			element.src = media.url;
+
+			if ( isVideo ) {
+				element.controls = true;
+				element.playsInline = true;
+				element.preload = 'metadata';
+				if ( media.alt ) {
+					element.setAttribute( 'aria-label', media.alt );
+				}
+			} else {
+				element.decoding = 'async';
+				element.loading = 'lazy';
+				if ( media.alt ) {
+					element.alt = media.alt;
 				}
 			}
 
-			activateOverlay();
-		};
-
-		const openMediaOverlay = ( mediaItem ) => {
-			prepareOverlay( 'media' );
-			applyOverlayStyles( mediaItem );
+			if ( media.width ) {
+				element.setAttribute( 'width', media.width );
+			}
+			if ( media.height ) {
+				element.setAttribute( 'height', media.height );
+			}
 
 			if ( lightboxFigure ) {
-				const element = createMediaElement( mediaItem );
 				lightboxFigure.appendChild( element );
 			}
-
-			activateOverlay();
-		};
-
-		if ( media.type === 'embed' ) {
-			openEmbedOverlay( media );
-			return;
 		}
 
-		if ( media.type === 'target' ) {
-			openTargetOverlay( media );
-			return;
-		}
-
-		openMediaOverlay( media );
+		overlay.classList.add( 'active' );
+		overlay.setAttribute( 'aria-modal', 'true' );
+		overlay.setAttribute( 'role', 'dialog' );
+		overlay.focus();
 	};
+
+	document.addEventListener( 'focusin', ( event ) => {
+		const overlay = activeOverlay;
+		if ( ! overlay ) {
+			return;
+		}
+
+		if ( ! overlay.contains( event.target ) ) {
+			const closeButton = overlay.querySelector( '.close-button' );
+			closeButton.focus();
+		}
+	} );
 
 	document.addEventListener( 'click', ( event ) => {
 		const link = event.target.closest( '.unitone-media-link' );
@@ -527,69 +442,57 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 
 		event.preventDefault();
+		const ds = link.dataset;
 
-		const mediaType = getMediaTypeFromDataset( link );
+		let mediaType = 'image';
+		if ( [ 'video', 'embed', 'target' ].includes( ds.unitoneMediaType ) ) {
+			mediaType = ds.unitoneMediaType;
+		}
 
-		if ( 'target' === mediaType ) {
-			const overlayTarget = link.dataset.unitoneOverlayTarget || '';
-			if ( ! overlayTarget ) {
+		const overlayClone = templateOverlay.cloneNode( true );
+		overlayClone.classList.remove( 'active' );
+		overlayClone.setAttribute( 'tabindex', '-1' );
+		overlayClone.removeAttribute( 'aria-hidden' );
+
+		link.insertAdjacentElement( 'afterend', overlayClone );
+		activeOverlay = overlayClone;
+
+		const scrim = overlayClone.querySelector( '.scrim' );
+		const closeButton = overlayClone.querySelector( '.close-button' );
+		[ scrim, closeButton ].forEach( ( el ) =>
+			el?.addEventListener( 'click', closeOverlay )
+		);
+
+		if ( mediaType === 'target' ) {
+			const targetId = ds.unitoneOverlayTarget;
+			if ( ! targetId ) {
+				closeOverlay();
 				return;
 			}
-
-			void openOverlay( {
-				type: 'target',
-				targetId: overlayTarget,
+			openOverlay( { type: 'target', targetId } );
+		} else {
+			const url = link.getAttribute( 'href' );
+			if ( ! url ) {
+				closeOverlay();
+				return;
+			}
+			openOverlay( {
+				url,
+				type: mediaType,
+				alt: ds.unitoneMediaAlt || link.textContent?.trim() || '',
+				width: ds.unitoneMediaWidth || '',
+				height: ds.unitoneMediaHeight || '',
 			} );
-
-			return;
-		}
-
-		const url = link.getAttribute( 'href' );
-		if ( ! url ) {
-			return;
-		}
-
-		const alt =
-			link.dataset.unitoneMediaAlt || link.textContent?.trim() || '';
-		const width = link.dataset.unitoneMediaWidth || '';
-		const height = link.dataset.unitoneMediaHeight || '';
-
-		void openOverlay( {
-			url,
-			type: mediaType,
-			alt,
-			width,
-			height,
-		} );
-	} );
-
-	[ scrim, closeButton ].forEach( ( element ) => {
-		if ( element ) {
-			element.addEventListener( 'click', closeOverlay );
 		}
 	} );
 
 	window.addEventListener( 'keydown', ( event ) => {
-		if ( ! overlay.classList.contains( 'active' ) ) {
-			return;
-		}
-
-		if ( event.defaultPrevented ) {
-			return;
-		}
-
-		if ( event.key === 'Escape' ) {
+		if (
+			activeOverlay?.classList.contains( 'active' ) &&
+			event.key === 'Escape'
+		) {
 			event.preventDefault();
 			closeOverlay();
-			return;
-		}
-
-		if ( event.key === 'Tab' ) {
-			event.preventDefault();
-
-			if ( closeButton ) {
-				closeButton.focus();
-			}
 		}
 	} );
 } );

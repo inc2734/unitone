@@ -265,47 +265,41 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			return;
 		}
 
-		const mediaContainer = overlay.querySelector(
-			'.unitone-lightbox-media-container'
+		const container = overlay.querySelector(
+			'.unitone-lightbox-container'
 		);
-		const embedContainer = overlay.querySelector(
-			'.unitone-lightbox-embed-container'
+		const containerInner = overlay.querySelector(
+			'.unitone-lightbox-container__inner'
 		);
-		const targetContainer = overlay.querySelector(
-			'.unitone-lightbox-target-container'
-		);
-		const mediaInner = overlay.querySelector(
-			'.unitone-lightbox-media-container__inner'
-		);
-		const embedInner = overlay.querySelector(
-			'.unitone-lightbox-embed-container__inner'
-		);
-		const targetInner = overlay.querySelector(
-			'.unitone-lightbox-target-container__inner'
-		);
+		if ( ! container || ! containerInner ) {
+			return;
+		}
 
 		const isEmbed = media.type === 'embed';
 		const isTarget = media.type === 'target';
 		const isMedia = ! isEmbed && ! isTarget;
 
-		if ( mediaContainer ) {
-			mediaContainer.hidden = ! isMedia;
-		}
-		if ( embedContainer ) {
-			embedContainer.hidden = ! isEmbed;
-		}
-		if ( targetContainer ) {
-			targetContainer.hidden = ! isTarget;
+		if ( ! isEmbed ) {
+			overlay.classList.remove( 'indeterminate-size' );
 		}
 
-		overlay.classList.toggle( 'unitone-lightbox-overlay--embed', isEmbed );
-		overlay.classList.toggle( 'unitone-lightbox-overlay--media', isMedia );
-		overlay.classList.toggle(
-			'unitone-lightbox-overlay--target',
-			isTarget
-		);
+		container.hidden = false;
 
-		[ mediaInner, embedInner, targetInner ].forEach( resetContainer );
+		const modifires = [
+			[ 'embed', isEmbed ],
+			[ 'media', isMedia ],
+			[ 'target', isTarget ],
+		];
+		modifires.forEach( ( modifireArr ) => {
+			overlay.classList.toggle(
+				`unitone-lightbox-overlay--${ modifireArr[ 0 ] }`,
+				modifireArr[ 1 ]
+			);
+		} );
+
+		containerInner.classList.toggle( 'is-layout-constrained', isTarget );
+
+		resetContainer( containerInner );
 
 		/**
 		 * Apply media contents.
@@ -338,9 +332,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				element.setAttribute( 'height', media.height );
 			}
 
-			if ( mediaInner ) {
-				mediaInner.appendChild( element );
-			}
+			containerInner.appendChild( element );
 		};
 
 		/**
@@ -358,9 +350,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				`[data-unitone-embed-url="${ window.CSS.escape( media.url ) }"]`
 			);
 			if ( ! node ) {
-				if ( embedInner ) {
-					embedInner.innerHTML = `<div><p>Unable to load embed.</p><a href="${ media.url }" target="_blank" rel="noopener">${ media.url }</a></div>`;
-				}
+				containerInner.innerHTML = `<div><p>Unable to load embed.</p><a href="${ media.url }" target="_blank" rel="noopener">${ media.url }</a></div>`;
 				return;
 			}
 
@@ -369,15 +359,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			const height = iframe?.getAttribute( 'height' );
 
 			if ( width && height ) {
-				embedContainer.classList.remove( 'indeterminate-size' );
+				overlay.classList.remove( 'indeterminate-size' );
 				applyOverlayStyles( overlay, { ...media, width, height } );
 			} else {
-				embedContainer.classList.add( 'indeterminate-size' );
+				overlay.classList.add( 'indeterminate-size' );
 			}
 
-			if ( embedInner ) {
-				embedInner.appendChild( node.cloneNode( true ) );
-			}
+			containerInner.appendChild( node.cloneNode( true ) );
 		};
 
 		/**
@@ -398,11 +386,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				clone
 					.querySelectorAll( '[id]' )
 					.forEach( ( n ) => n.removeAttribute( 'id' ) );
-				if ( targetInner ) {
-					targetInner.appendChild( clone );
-				}
-			} else if ( targetInner ) {
-				targetInner.innerHTML =
+				containerInner.appendChild( clone );
+			} else {
+				containerInner.innerHTML =
 					'<div><p>Unable to find target element.</p></div>';
 			}
 		};
@@ -446,61 +432,72 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 
 		event.preventDefault();
-		const ds = link.dataset;
-
-		let mediaType = 'image';
-		if ( [ 'video', 'embed', 'target' ].includes( ds.unitoneMediaType ) ) {
-			mediaType = ds.unitoneMediaType;
-		}
 
 		const overlayClone = templateOverlay.cloneNode( true );
-		overlayClone.classList.remove( 'active' );
-		overlayClone.setAttribute( 'tabindex', '-1' );
+		const container = overlayClone.querySelector(
+			'.unitone-lightbox-container'
+		);
+		const containerInner = container.querySelector(
+			'.unitone-lightbox-container__inner'
+		);
+		const scrim = overlayClone.querySelector( '.scrim' );
+		const closeButton = overlayClone.querySelector( '.close-button' );
+		if ( ! container || ! containerInner || ! scrim || ! closeButton ) {
+			return;
+		}
+
+		const ds = link.dataset;
+
+		const isMediaTypeSupported = [
+			'image',
+			'video',
+			'embed',
+			'target',
+		].includes( ds.unitoneMediaType );
+
+		const mediaType = isMediaTypeSupported ? ds.unitoneMediaType : null;
+		if ( ! mediaType ) {
+			return;
+		}
+
 		overlayClone.removeAttribute( 'aria-hidden' );
 
 		link.insertAdjacentElement( 'afterend', overlayClone );
 		activeOverlay = overlayClone;
 
-		const scrim = overlayClone.querySelector( '.scrim' );
-		const closeButton = overlayClone.querySelector( '.close-button' );
 		[ scrim, closeButton ].forEach( ( el ) =>
-			el?.addEventListener( 'click', closeOverlay )
+			el.addEventListener( 'click', closeOverlay )
 		);
 
-		const targetContainers = overlayClone.querySelectorAll(
-			'.unitone-lightbox-container'
-		);
-		if ( 0 < targetContainers.length ) {
-			targetContainers.forEach( ( targetContainer ) => {
-				const targetInner = targetContainer.querySelector(
-					'.unitone-lightbox-container__inner'
-				);
-
-				[ targetContainer, targetInner ]
-					.filter( ( v ) => v )
-					.forEach( ( element ) => {
-						element.addEventListener( 'click', ( elementEvent ) => {
-							if ( elementEvent.target === element ) {
-								closeOverlay();
-							}
-						} );
-					} );
+		[ container, containerInner ].forEach( ( el ) => {
+			el.addEventListener( 'click', ( elementEvent ) => {
+				if ( elementEvent.target === el ) {
+					closeOverlay();
+				}
 			} );
-		}
+		} );
 
-		if ( mediaType === 'target' ) {
+		/**
+		 * Open overlay with target.
+		 */
+		const openOverlayWithTarget = () => {
 			const targetId = ds.unitoneOverlayTarget;
 			if ( ! targetId ) {
-				closeOverlay();
 				return;
 			}
+
 			openOverlay( { type: 'target', targetId } );
-		} else {
+		};
+
+		/**
+		 * Open overlay with URL. For embed or media.
+		 */
+		const openOverlayWithUrl = () => {
 			const url = link.getAttribute( 'href' );
 			if ( ! url ) {
-				closeOverlay();
 				return;
 			}
+
 			openOverlay( {
 				url,
 				type: mediaType,
@@ -508,6 +505,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				width: ds.unitoneMediaWidth || '',
 				height: ds.unitoneMediaHeight || '',
 			} );
+		};
+
+		if ( mediaType === 'target' ) {
+			openOverlayWithTarget();
+		} else {
+			openOverlayWithUrl();
 		}
 	} );
 

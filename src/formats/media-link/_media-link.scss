@@ -37,57 +37,46 @@
 		background-color: var(--wp--preset--color--white) !important;
 	}
 
-	&:has(.unitone-lightbox-embed-container.indeterminate-size) {
+	&.indeterminate-size {
 		display: grid;
 		place-items: center;
-	}
-}
 
-html:has(.unitone-lightbox-overlay.zoom.active) {
-	overflow: clip;
-}
+		.unitone-lightbox-container {
+			--wp--lightbox-container-width: min(100%, var(--wp--style--global--content-size));
 
-.unitone-lightbox-embed-container {
-	&.indeterminate-size {
-		--wp--lightbox-container-width: min(100%, var(--wp--style--global--content-size));
+			position: relative;
+			inset: auto;
+			display: flex;
+			transform: initial;
+			padding: var(--unitone--global--gutters);
+			max-height: 100%;
+			overflow: hidden;
+		}
 
-		position: relative;
-		inset: auto;
-		display: flex;
-		transform: initial;
-		padding: var(--unitone--global--gutters);
-		max-height: 100%;
-		overflow: hidden;
-
-		.unitone-lightbox-embed-container__inner {
+		.unitone-lightbox-container__inner {
 			display: block;
 			overflow: auto;
 		}
 	}
+}
 
-	&__inner {
+.unitone-lightbox-overlay--embed {
+	.unitone-lightbox-container__inner {
 		display: contents;
 
 		p:last-child {
 			margin: 0;
 		}
 	}
-
-	&__embed {
-		display: contents;
-
-		iframe {
-			max-width: 100%;
-			max-height: 100%;
-		}
-	}
 }
 
-.unitone-lightbox-target-container {
-	--wp--lightbox-container-width: 100%;
+.unitone-lightbox-overlay--target {
+	.unitone-lightbox-container {
+		--wp--lightbox-container-width: 100%;
 
-	cursor: zoom-out;
-	padding: var(--unitone--global--gutters);
+		cursor: zoom-out;
+		padding: var(--unitone--global--gutters);
+	}
 
 	.unitone-lightbox-container__inner {
 		max-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
@@ -101,4 +90,17 @@ html:has(.unitone-lightbox-overlay.zoom.active) {
 
 .unitone-lightbox-container[hidden] {
 	display: none;
+}
+
+html:has(.unitone-lightbox-overlay.zoom.active) {
+	overflow: clip;
+}
+
+.unitone-lightbox-embed-container__embed {
+	display: contents;
+
+	iframe {
+		max-width: 100%;
+		max-height: 100%;
+	}
 }

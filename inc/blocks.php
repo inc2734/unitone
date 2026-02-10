@@ -548,6 +548,14 @@ function unitone_apply_image_media_link( $block_content, $block ) {
 		}
 
 		$p->set_attribute( 'data-unitone-media-type', 'embed' );
+		if ( 0 === strpos( $link_url, '#' ) ) {
+			$target_id = ltrim( $link_url, '#' );
+
+			if ( '' !== $target_id ) {
+				$p->set_attribute( 'data-unitone-media-type', 'target' );
+				$p->set_attribute( 'data-unitone-overlay-target', $target_id );
+			}
+		}
 
 		return $p->get_updated_html();
 	}

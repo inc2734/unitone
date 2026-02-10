@@ -120,14 +120,14 @@ function unitone_detect_media_link( $block_content ) {
 							<button type="button" aria-label="%1$s" style="fill: %2$s" class="close-button">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg>
 							</button>
-							<div class="lightbox-image-container">
-								<figure></figure>
+							<div class="lightbox-image-container unitone-lightbox-container unitone-lightbox-media-container">
+								<figure class="unitone-lightbox-container__inner unitone-lightbox-media-container__inner"></figure>
 							</div>
-							<div class="lightbox-image-container unitone-lightbox-embed-container" hidden>
-								<div class="unitone-lightbox-embed-container__inner"></div>
+							<div class="lightbox-image-container unitone-lightbox-container unitone-lightbox-embed-container" hidden>
+								<div class="unitone-lightbox-container__inner unitone-lightbox-embed-container__inner"></div>
 							</div>
-							<div class="lightbox-image-container unitone-lightbox-target-container" hidden>
-								<div class="unitone-lightbox-target-container__inner"></div>
+							<div class="lightbox-image-container unitone-lightbox-container unitone-lightbox-target-container" hidden>
+								<div class="unitone-lightbox-container__inner unitone-lightbox-target-container__inner is-layout-constrained"></div>
 							</div>
 							<div class="scrim" style="background-color: %3$s" aria-hidden="true"></div>
 					</div>',

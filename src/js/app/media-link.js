@@ -231,20 +231,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			return;
 		}
 
-		const embedWrapper = activeOverlay.querySelector(
-			'.unitone-lightbox-embed-container__inner'
+		const inners = activeOverlay.querySelectorAll(
+			'.unitone-lightbox-container__inner'
 		);
-		const targetWrapper = activeOverlay.querySelector(
-			'.unitone-lightbox-target-container__inner'
-		);
-		const lightboxFigure = activeOverlay.querySelector(
-			'.lightbox-image-container > figure'
-		);
-
-		[ embedWrapper, targetWrapper, lightboxFigure ].forEach(
-			resetContainer
-		);
-
+		inners.forEach( resetContainer );
 		activeOverlay.classList.remove( 'active' );
 		activeOverlay.remove();
 		activeOverlay = null;
@@ -275,8 +265,8 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			return;
 		}
 
-		const lightboxImageContainer = overlay.querySelector(
-			'.lightbox-image-container:not(.unitone-lightbox-embed-container):not(.unitone-lightbox-target-container)'
+		const lightboxMediaContainer = overlay.querySelector(
+			'.unitone-lightbox-media-container'
 		);
 		const lightboxEmbedContainer = overlay.querySelector(
 			'.unitone-lightbox-embed-container'
@@ -284,21 +274,21 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		const lightboxTargetContainer = overlay.querySelector(
 			'.unitone-lightbox-target-container'
 		);
-		const lightboxFigure = overlay.querySelector(
-			'.lightbox-image-container > figure'
+		const mediaInner = overlay.querySelector(
+			'.unitone-lightbox-media-container__inner'
 		);
-		const embedWrapper = overlay.querySelector(
+		const embedInner = overlay.querySelector(
 			'.unitone-lightbox-embed-container__inner'
 		);
-		const targetWrapper = overlay.querySelector(
+		const targetInner = overlay.querySelector(
 			'.unitone-lightbox-target-container__inner'
 		);
 
 		const isEmbed = media.type === 'embed';
 		const isTarget = media.type === 'target';
 
-		if ( lightboxImageContainer ) {
-			lightboxImageContainer.hidden = isEmbed || isTarget;
+		if ( lightboxMediaContainer ) {
+			lightboxMediaContainer.hidden = isEmbed || isTarget;
 		}
 		if ( lightboxEmbedContainer ) {
 			lightboxEmbedContainer.hidden = ! isEmbed;
@@ -317,74 +307,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			isTarget
 		);
 
-		[ lightboxFigure, embedWrapper, targetWrapper ].forEach(
-			resetContainer
-		);
+		[ mediaInner, embedInner, targetInner ].forEach( resetContainer );
 
-		if ( isEmbed ) {
-			const preloadContainer = document.querySelector(
-				'.unitone-lightbox-embed-preload'
-			);
-			let node = null;
-
-			if ( preloadContainer ) {
-				if ( window.CSS?.escape ) {
-					node = preloadContainer.querySelector(
-						`[data-unitone-embed-url="${ window.CSS.escape(
-							media.url
-						) }"]`
-					);
-				} else {
-					node = Array.from( preloadContainer.children ).find(
-						( n ) => n.dataset.unitoneEmbedUrl === media.url
-					);
-				}
-			}
-
-			if ( node ) {
-				const iframe = node.querySelector( 'iframe' );
-				const width = iframe?.getAttribute( 'width' );
-				const height = iframe?.getAttribute( 'height' );
-
-				if ( width && height ) {
-					lightboxEmbedContainer.classList.remove(
-						'indeterminate-size'
-					);
-					applyOverlayStyles( overlay, { ...media, width, height } );
-				} else {
-					lightboxEmbedContainer.classList.add(
-						'indeterminate-size'
-					);
-				}
-				if ( embedWrapper ) {
-					embedWrapper.appendChild( node.cloneNode( true ) );
-				}
-			} else if ( embedWrapper ) {
-				embedWrapper.innerHTML = `<div><p>Unable to load embed.</p><a href="${ media.url }" target="_blank" rel="noopener">${ media.url }</a></div>`;
-			}
-		} else if ( isTarget ) {
-			const targetId = media.targetId?.trim();
-			const targetElement = targetId
-				? document.getElementById( targetId )
-				: null;
-
-			if (
-				targetElement &&
-				! targetElement.closest( '.unitone-lightbox-overlay' )
-			) {
-				const clone = targetElement.cloneNode( true );
-				clone.removeAttribute( 'id' );
-				clone
-					.querySelectorAll( '[id]' )
-					.forEach( ( n ) => n.removeAttribute( 'id' ) );
-				if ( targetWrapper ) {
-					targetWrapper.appendChild( clone );
-				}
-			} else if ( targetWrapper ) {
-				targetWrapper.innerHTML =
-					'<div><p>Unable to find target element.</p></div>';
-			}
-		} else {
+		/**
+		 * Apply media contents.
+		 */
+		const applyMediaContents = () => {
 			applyOverlayStyles( overlay, media );
 			const isVideo = media.type === 'video';
 			const element = document.createElement( isVideo ? 'video' : 'img' );
@@ -412,9 +340,80 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				element.setAttribute( 'height', media.height );
 			}
 
-			if ( lightboxFigure ) {
-				lightboxFigure.appendChild( element );
+			if ( mediaInner ) {
+				mediaInner.appendChild( element );
 			}
+		};
+
+		/**
+		 * Apply embed contents.
+		 */
+		const applyEmbedContents = () => {
+			const preloadContainer = document.querySelector(
+				'.unitone-lightbox-embed-preload'
+			);
+			if ( ! preloadContainer ) {
+				return;
+			}
+
+			const node = preloadContainer.querySelector(
+				`[data-unitone-embed-url="${ window.CSS.escape( media.url ) }"]`
+			);
+			if ( ! node ) {
+				if ( embedInner ) {
+					embedInner.innerHTML = `<div><p>Unable to load embed.</p><a href="${ media.url }" target="_blank" rel="noopener">${ media.url }</a></div>`;
+				}
+				return;
+			}
+
+			const iframe = node.querySelector( 'iframe' );
+			const width = iframe?.getAttribute( 'width' );
+			const height = iframe?.getAttribute( 'height' );
+
+			if ( width && height ) {
+				lightboxEmbedContainer.classList.remove( 'indeterminate-size' );
+				applyOverlayStyles( overlay, { ...media, width, height } );
+			} else {
+				lightboxEmbedContainer.classList.add( 'indeterminate-size' );
+			}
+			if ( embedInner ) {
+				embedInner.appendChild( node.cloneNode( true ) );
+			}
+		};
+
+		/**
+		 * Apply target contents.
+		 */
+		const applyTargetContents = () => {
+			const targetId = media.targetId?.trim();
+			const targetElement = targetId
+				? document.getElementById( targetId )
+				: null;
+
+			if (
+				targetElement &&
+				! targetElement.closest( '.unitone-lightbox-overlay' )
+			) {
+				const clone = targetElement.cloneNode( true );
+				clone.removeAttribute( 'id' );
+				clone
+					.querySelectorAll( '[id]' )
+					.forEach( ( n ) => n.removeAttribute( 'id' ) );
+				if ( targetInner ) {
+					targetInner.appendChild( clone );
+				}
+			} else if ( targetInner ) {
+				targetInner.innerHTML =
+					'<div><p>Unable to find target element.</p></div>';
+			}
+		};
+
+		if ( isEmbed ) {
+			applyEmbedContents();
+		} else if ( isTarget ) {
+			applyTargetContents();
+		} else {
+			applyMediaContents();
 		}
 
 		overlay.classList.add( 'active' );
@@ -462,6 +461,36 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		[ scrim, closeButton ].forEach( ( el ) =>
 			el?.addEventListener( 'click', closeOverlay )
 		);
+
+		const targetContainers = overlayClone.querySelectorAll(
+			'.unitone-lightbox-container'
+		);
+		if ( 0 < targetContainers.length ) {
+			targetContainers.forEach( ( targetContainer ) => {
+				targetContainer.addEventListener(
+					'click',
+					( targetContainerEvent ) => {
+						if ( targetContainerEvent.target === targetContainer ) {
+							closeOverlay();
+						}
+					}
+				);
+
+				const targetInner = targetContainer.querySelector(
+					'.unitone-lightbox-container__inner'
+				);
+				if ( targetInner ) {
+					targetInner.addEventListener(
+						'click',
+						( targetInnerEvent ) => {
+							if ( targetInnerEvent.target === targetInner ) {
+								closeOverlay();
+							}
+						}
+					);
+				}
+			} );
+		}
 
 		if ( mediaType === 'target' ) {
 			const targetId = ds.unitoneOverlayTarget;

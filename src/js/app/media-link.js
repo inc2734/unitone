@@ -1,4 +1,18 @@
 document.addEventListener( 'DOMContentLoaded', () => {
+	const templateOverlay = document.querySelector(
+		'.unitone-lightbox-overlay'
+	);
+	if ( ! templateOverlay ) {
+		return;
+	}
+
+	const preloadContainer = document.querySelector(
+		'.unitone-lightbox-embed-preload'
+	);
+	if ( ! preloadContainer ) {
+		return;
+	}
+
 	/**
 	 * Parse a dimension value into a positive number.
 	 *
@@ -192,33 +206,14 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	 * @param {Object}      media   Media data.
 	 */
 	const applyOverlayStyles = ( overlay, media ) => {
-		const styles = calculateStyles( media );
-		[
-			'initial-top-position',
-			'initial-left-position',
-			'container-width',
-			'container-height',
-			'image-width',
-			'image-height',
-			'scale',
-			'scrollbar-width',
-		].forEach( ( prop ) =>
-			overlay.style.removeProperty( `--wp--lightbox-${ prop }` )
-		);
-
-		Object.entries( styles ).forEach( ( [ prop, value ] ) => {
-			if ( value !== null && value !== undefined ) {
-				overlay.style.setProperty( prop, value );
+		Object.entries( calculateStyles( media ) ).forEach(
+			( [ prop, value ] ) => {
+				if ( null != value ) {
+					overlay.style.setProperty( prop, value );
+				}
 			}
-		} );
+		);
 	};
-
-	const templateOverlay = document.querySelector(
-		'.unitone-lightbox-overlay'
-	);
-	if ( ! templateOverlay ) {
-		return;
-	}
 
 	let activeOverlay = null;
 	let returnFocusTo = null;
@@ -231,11 +226,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			return;
 		}
 
-		const inners = activeOverlay.querySelectorAll(
+		const inner = activeOverlay.querySelector(
 			'.unitone-lightbox-container__inner'
 		);
-		inners.forEach( resetContainer );
-		activeOverlay.classList.remove( 'active' );
+		resetContainer( inner );
 		activeOverlay.remove();
 		activeOverlay = null;
 
@@ -277,7 +271,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		const isEmbed = media.type === 'embed';
 		const isTarget = media.type === 'target';
-		const isMedia = ! isEmbed && ! isTarget;
+		const isImage = media.type === 'image';
+		const isVideo = media.type === 'video';
+		const isMedia = isImage && isVideo;
 
 		if ( ! isEmbed ) {
 			overlay.classList.remove( 'indeterminate-size' );
@@ -299,14 +295,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		containerInner.classList.toggle( 'is-layout-constrained', isTarget );
 
-		resetContainer( containerInner );
-
 		/**
 		 * Apply media contents.
 		 */
 		const applyMediaContents = () => {
 			applyOverlayStyles( overlay, media );
-			const isVideo = media.type === 'video';
 			const element = document.createElement( isVideo ? 'video' : 'img' );
 			element.src = media.url;
 
@@ -314,23 +307,15 @@ document.addEventListener( 'DOMContentLoaded', () => {
 				element.controls = true;
 				element.playsInline = true;
 				element.preload = 'metadata';
-				if ( media.alt ) {
-					element.setAttribute( 'aria-label', media.alt );
-				}
-			} else {
+				element.setAttribute( 'aria-label', media?.alt );
+			} else if ( isImage ) {
 				element.decoding = 'async';
 				element.loading = 'lazy';
-				if ( media.alt ) {
-					element.alt = media.alt;
-				}
+				element.alt = media?.alt;
 			}
 
-			if ( media.width ) {
-				element.setAttribute( 'width', media.width );
-			}
-			if ( media.height ) {
-				element.setAttribute( 'height', media.height );
-			}
+			element.setAttribute( 'width', media?.width );
+			element.setAttribute( 'height', media?.height );
 
 			containerInner.appendChild( element );
 		};
@@ -339,13 +324,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		 * Apply embed contents.
 		 */
 		const applyEmbedContents = () => {
-			const preloadContainer = document.querySelector(
-				'.unitone-lightbox-embed-preload'
-			);
-			if ( ! preloadContainer ) {
-				return;
-			}
-
 			const node = preloadContainer.querySelector(
 				`[data-unitone-embed-url="${ window.CSS.escape( media.url ) }"]`
 			);

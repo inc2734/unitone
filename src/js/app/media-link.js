@@ -243,9 +243,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			return;
 		}
 
-		const active = document.activeElement; // eslint-disable-line @wordpress/no-global-active-element
-
-		returnFocusTo = active && active !== document.body ? active : null;
+		if ( ! returnFocusTo ) {
+			const active = document.activeElement; // eslint-disable-line @wordpress/no-global-active-element
+			returnFocusTo = active && active !== document.body ? active : null;
+		}
 
 		const overlay = activeOverlay;
 		if ( ! overlay ) {
@@ -410,6 +411,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 
 		event.preventDefault();
+		returnFocusTo = link;
 
 		const overlayClone = templateOverlay.cloneNode( true );
 		const container = overlayClone.querySelector(
@@ -440,7 +442,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 		overlayClone.removeAttribute( 'aria-hidden' );
 
-		link.insertAdjacentElement( 'afterend', overlayClone );
+		document.body.insertAdjacentElement( 'afterbegin', overlayClone );
 		activeOverlay = overlayClone;
 
 		[ scrim, closeButton ].forEach( ( el ) =>

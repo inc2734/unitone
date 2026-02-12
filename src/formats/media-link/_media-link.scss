@@ -30,7 +30,7 @@
 		z-index: 9999999 !important; // > .close-button
 	}
 
-	&.zoom.active .close-button {
+	.close-button {
 		right: env(safe-area-inset-right);
 		top: env(safe-area-inset-top);
 		z-index: 99999999; // > .unitone-lightbox-container
@@ -73,13 +73,15 @@
 .unitone-lightbox-overlay--target {
 	.unitone-lightbox-container {
 		--wp--lightbox-container-width: 100%;
+		--wp--lightbox-container-height: 100%;
 
 		cursor: zoom-out;
 		padding: var(--unitone--global--gutters);
+		align-content: safe center;
 	}
 
 	.unitone-lightbox-container__inner {
-		max-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+		max-height: 100%;
 		overflow-y: auto;
 
 		> * {

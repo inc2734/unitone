@@ -6,13 +6,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		return;
 	}
 
-	const preloadContainer = document.querySelector(
-		'.unitone-lightbox-embed-preload'
-	);
-	if ( ! preloadContainer ) {
-		return;
-	}
-
 	/**
 	 * Parse a dimension value into a positive number.
 	 *
@@ -324,6 +317,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		 * Apply embed contents.
 		 */
 		const applyEmbedContents = () => {
+			const preloadContainer = document.querySelector(
+				'.unitone-lightbox-embed-preload'
+			);
+			if ( ! preloadContainer ) {
+				return;
+			}
+
 			const node = preloadContainer.querySelector(
 				`[data-unitone-embed-url="${ window.CSS.escape( media.url ) }"]`
 			);

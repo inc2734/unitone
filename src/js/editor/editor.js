@@ -1,6 +1,7 @@
 import './hooks/embed';
 import './hooks/style';
 
+import './wp-blocks/button';
 import './wp-blocks/image';
 import './wp-blocks/navigation';
 import './wp-blocks/query';

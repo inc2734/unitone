@@ -177,7 +177,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						>
 							<HelpContainer
 								help={ __(
-									'This can only be enabled if a custom link is set up.',
+									'This can only be enabled if a link is set up.',
 									'unitone'
 								) }
 								layout="horizontal"

@@ -510,13 +510,18 @@ add_filter( 'render_block_core/query', 'unitone_apply_block_link', 10, 2 );
  * @param array  $block The full block, including name and attributes.
  * @return string
  */
-function unitone_apply_image_media_link( $block_content, $block ) {
+function unitone_apply_media_link( $block_content, $block ) {
+	$block_name     = $block['blockName'] ?? '';
 	$attrs          = $block['attrs'] ?? array();
 	$unitone        = $attrs['unitone'] ?? array();
 	$link_type      = $attrs['linkDestination'] ?? '';
 	$use_media_link = ! empty( $unitone['mediaLink'] );
 
 	if ( ! $use_media_link ) {
+		return $block_content;
+	}
+
+	if ( 'core/image' !== $block_name && 'core/button' !== $block_name ) {
 		return $block_content;
 	}
 
@@ -530,13 +535,6 @@ function unitone_apply_image_media_link( $block_content, $block ) {
 		$link_url = $p->get_attribute( 'href' );
 		if ( empty( $link_url ) ) {
 			return $block_content;
-		}
-
-		if ( '' === $link_type ) {
-			$image_url = $attrs['url'] ?? '';
-			if ( ! empty( $image_url ) && $link_url === $image_url ) {
-				return $block_content;
-			}
 		}
 
 		$class_attribute = $p->get_attribute( 'class' ) ?? '';
@@ -562,7 +560,8 @@ function unitone_apply_image_media_link( $block_content, $block ) {
 
 	return $block_content;
 }
-add_filter( 'render_block_core/image', 'unitone_apply_image_media_link', 10, 2 );
+add_filter( 'render_block_core/image', 'unitone_apply_media_link', 10, 2 );
+add_filter( 'render_block_core/button', 'unitone_apply_media_link', 10, 2 );
 
 /**
  * Add CSS vars to core/table.

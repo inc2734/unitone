@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-02-08T06:44:49+00:00\n"
-"PO-Revision-Date: 2026-02-08 15:47+0900\n"
+"POT-Creation-Date: 2026-02-12T00:37:57+00:00\n"
+"PO-Revision-Date: 2026-02-12 09:39+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -217,7 +217,7 @@ msgstr "縦線"
 msgid "Bordered"
 msgstr "ボーダー"
 
-#: inc/formats.php:131 dist/blocks/cluster-divided/index.js:1
+#: inc/formats.php:128 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cluster/index.js:1 dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1 dist/blocks/layers/index.js:1
 #: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
@@ -2044,8 +2044,7 @@ msgstr "ボーダー（アクセントカラー）"
 msgid "Dark"
 msgstr "ダーク"
 
-#: App/Controller/Manager/dist/js/app.js:9 dist/formats/formats.js:1
-#: dist/formats/formats.js:2
+#: App/Controller/Manager/dist/js/app.js:9 dist/formats/formats.js:2
 msgid "Media"
 msgstr "メディア"
 
@@ -3403,6 +3402,22 @@ msgid "Remove link"
 msgstr "リンクを削除"
 
 #: dist/formats/formats.js:2
+msgid ":target"
+msgstr ":target"
+
+#: dist/formats/formats.js:2
+msgid "Enter target ID to open in overlay…"
+msgstr "オーバーレイで開く対象の ID を入力…"
+
+#: dist/formats/formats.js:2
+msgid "Edit target"
+msgstr "対象を編集"
+
+#: dist/formats/formats.js:2
+msgid "Apply link"
+msgstr "リンクを適用"
+
+#: dist/formats/formats.js:2
 msgid "Media link"
 msgstr "メディアリンク"
 
@@ -3967,8 +3982,8 @@ msgid "Open link as media link"
 msgstr "リンクをメディアリンクとして開く"
 
 #: dist/js/editor/editor.js:13
-msgid "This can only be enabled if a custom link is set up."
-msgstr "カスタムリンクが設定されている場合にのみ有効化できます。"
+msgid "This can only be enabled if a link is set up."
+msgstr "リンクが設定されている場合にのみ有効化できます。"
 
 #: dist/js/editor/editor.js:13
 msgid "Overlay"

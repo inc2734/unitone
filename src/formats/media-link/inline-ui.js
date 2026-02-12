@@ -277,7 +277,7 @@ export default function InlineUI( {
 	const targetPanel = useMemo(
 		() =>
 			renderPanel( {
-				ariaLabel: __( 'Target', 'unitone' ),
+				ariaLabel: __( ':target', 'unitone' ),
 				icon: '#',
 				detailsClassName: 'unitone-media-link__target-input',
 				details:

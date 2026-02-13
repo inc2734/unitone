@@ -4,6 +4,8 @@ import {
 	ButtonBlockAppender,
 	BlockControls,
 	InspectorControls,
+	MediaUpload,
+	MediaUploadCheck,
 	useBlockProps,
 	useInnerBlocksProps,
 	useSettings,
@@ -27,9 +29,11 @@ import {
 	image as imageIcon,
 	linkOff,
 	fullscreen,
+	plus,
 	shuffle,
 } from '@wordpress/icons';
 
+import { createBlock } from '@wordpress/blocks';
 import { store as coreStore } from '@wordpress/core-data';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { memo, useCallback, useEffect, useRef } from '@wordpress/element';
@@ -131,7 +135,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const { moveBlockToPosition, updateBlockAttributes } =
+	const { moveBlockToPosition, updateBlockAttributes, insertBlocks } =
 		useDispatch( blockEditorStore );
 	const { createSuccessNotice } = useDispatch( noticesStore );
 
@@ -193,6 +197,52 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		shuffled.forEach( ( childClientId, index ) => {
 			moveBlockToPosition( childClientId, clientId, clientId, index );
 		} );
+	};
+
+	const lastSelectionKeyRef = useRef( '' );
+
+	const onSelectImages = ( mediaItems ) => {
+		const items = Array.isArray( mediaItems ) ? mediaItems : [ mediaItems ];
+
+		if ( ! items?.length ) {
+			return;
+		}
+
+		const uniqueItems = items.filter( ( media, index, array ) => {
+			if ( ! media ) {
+				return false;
+			}
+
+			return (
+				index ===
+				array.findIndex(
+					( target ) =>
+						target?.id === media.id && target?.url === media.url
+				)
+			);
+		} );
+
+		const selectionKey = uniqueItems
+			.map( ( media ) => media?.id || media?.url )
+			.join( ',' );
+
+		if ( lastSelectionKeyRef.current === selectionKey ) {
+			return;
+		}
+
+		lastSelectionKeyRef.current = selectionKey;
+
+		const blocks = uniqueItems.map( ( media ) =>
+			createBlock( 'core/image', {
+				id: media.id,
+				url: media.url,
+				alt: media.alt,
+				caption: media.caption,
+				title: media.title,
+			} )
+		);
+
+		insertBlocks( blocks, innerBlockClientIds.length, clientId );
 	};
 
 	const setLinkTo = ( value ) => {
@@ -286,6 +336,23 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	return (
 		<>
 			<BlockControls group="block">
+				<MediaUploadCheck>
+					<MediaUpload
+						onSelect={ onSelectImages }
+						allowedTypes={ [ 'image', 'video' ] }
+						gallery
+						multiple
+						value={ [] }
+						render={ ( { open } ) => (
+							<ToolbarButton
+								icon={ plus }
+								label={ __( 'Add from Media', 'unitone' ) }
+								onClick={ open }
+							/>
+						) }
+					/>
+				</MediaUploadCheck>
+
 				<ToolbarDropdownMenu
 					label={ __( 'Link', 'unitone' ) }
 					icon={ linkIcon }

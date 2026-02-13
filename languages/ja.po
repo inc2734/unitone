@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-02-12T00:37:57+00:00\n"
-"PO-Revision-Date: 2026-02-12 09:39+0900\n"
+"POT-Creation-Date: 2026-02-13T06:50:23+00:00\n"
+"PO-Revision-Date: 2026-02-13 15:50+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2159,7 +2159,7 @@ msgstr "アブストラクト背景"
 #: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1 dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
-#: dist/blocks/marquee/index.js:1 dist/blocks/masonry/index.js:1
+#: dist/blocks/marquee/index.js:1 dist/blocks/masonry/index.js:2
 #: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/responsive-image/index.js:1
@@ -2696,14 +2696,23 @@ msgid "Pause on hover"
 msgstr "ホバーで一時停止"
 
 #: dist/blocks/masonry/index.js:1
+msgid "Link"
+msgstr "リンク"
+
+#. translators: %s: image link destination
+#: dist/blocks/masonry/index.js:2
+msgid "All image links updated to: %s"
+msgstr "すべての画像リンクを更新しました：%s"
+
+#: dist/blocks/masonry/index.js:2
 msgid "Shuffle child blocks"
 msgstr "子ブロックをシャッフル"
 
-#: dist/blocks/masonry/index.js:1 dist/blocks/text/index.js:1
+#: dist/blocks/masonry/index.js:2 dist/blocks/text/index.js:1
 msgid "Column width"
 msgstr "カラム幅"
 
-#: dist/blocks/masonry/index.js:1
+#: dist/blocks/masonry/index.js:2
 msgid "Child blocks settings"
 msgstr "子ブロックの設定"
 

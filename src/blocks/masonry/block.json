@@ -11,6 +11,10 @@
 			"type": "string",
 			"default": "calc(var(--wp--style--global--content-size) / 3)"
 		},
+		"linkTo": {
+			"type": "string",
+			"default": "none"
+		},
 		"childrenBorder": {
 			"type": "object"
 		},

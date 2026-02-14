@@ -158,7 +158,11 @@ export default function () {
 											setSettings={ setSettings }
 										/>
 
-										<PatternLibrary settings={ settings } />
+										<PatternLibrary
+											settings={ settings }
+											defaultSettings={ defaultSettings }
+											setSettings={ setSettings }
+										/>
 
 										<Brand
 											settings={ settings }

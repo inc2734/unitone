@@ -2,12 +2,13 @@ import { pick } from 'lodash';
 
 import apiFetch from '@wordpress/api-fetch';
 
-import { Button } from '@wordpress/components';
+import { Button, ToggleControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 
-export default function ( { settings } ) {
+export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ remotePatternsSaving, setRemotePatternsSaving ] = useState( false );
+	const [ settingsSaving, setSettingsSaving ] = useState( false );
 
 	const resetRemotePattenrsCache = () => {
 		setRemotePatternsSaving( true );
@@ -17,6 +18,38 @@ export default function ( { settings } ) {
 			data: pick( settings, 'license-key' ),
 		} ).then( () => {
 			setRemotePatternsSaving( false );
+		} );
+	};
+
+	const saveSettings = () => {
+		setSettingsSaving( true );
+		apiFetch( {
+			path: '/unitone/v1/settings',
+			method: 'POST',
+			data: {
+				'disable-remote-block-patterns':
+					settings?.[ 'disable-remote-block-patterns' ] ?? null,
+			},
+		} ).then( () => {
+			setSettingsSaving( false );
+		} );
+	};
+
+	const resetSettings = () => {
+		setSettingsSaving( true );
+		setSettings( {
+			...settings,
+			'disable-remote-block-patterns':
+				defaultSettings?.[ 'disable-remote-block-patterns' ] ?? false,
+		} );
+		apiFetch( {
+			path: '/unitone/v1/settings',
+			method: 'POST',
+			data: {
+				'disable-remote-block-patterns': null,
+			},
+		} ).then( () => {
+			setSettingsSaving( false );
 		} );
 	};
 
@@ -35,6 +68,74 @@ export default function ( { settings } ) {
 					style={ {
 						'--unitone--divider-color':
 							'var(--unitone--color--light-gray)',
+					} }
+				>
+					<div
+						data-unitone-layout="with-sidebar -sidebar:left"
+						style={ {
+							'--unitone--sidebar-width': '20em',
+						} }
+					>
+						<div>
+							<h3>{ __( 'Pattern Library', 'unitone' ) }</h3>
+						</div>
+						<div data-unitone-layout="stack">
+							<div data-unitone-layout="stack -gap:-2">
+								<ToggleControl
+									__nextHasNoMarginBottom
+									label={ __(
+										'Disable pattenrs of the Pattern Library',
+										'unitone'
+									) }
+									help={ __(
+										'Disables loading of patterns from the pattern library. Already placed patterns will still be displayed.',
+										'unitone'
+									) }
+									checked={
+										settings?.[
+											'disable-remote-block-patterns'
+										] ?? false
+									}
+									onChange={ ( newSetting ) =>
+										setSettings( {
+											...settings,
+											'disable-remote-block-patterns':
+												newSetting,
+										} )
+									}
+									disabled={ settingsSaving }
+								/>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<div data-unitone-layout="cluster -gap:-1">
+							<Button
+								variant="primary"
+								onClick={ saveSettings }
+								disabled={ settingsSaving }
+							>
+								{ __( 'Save Settings', 'unitone' ) }
+							</Button>
+
+							<Button
+								variant="secondary"
+								onClick={ resetSettings }
+								disabled={ settingsSaving }
+							>
+								{ __( 'Reset All Settings', 'unitone' ) }
+							</Button>
+						</div>
+					</div>
+				</div>
+
+				<div
+					data-unitone-layout="decorator -padding:2m"
+					style={ {
+						'--unitone--border-color':
+							'var(--unitone--color--light-gray)',
+						'--unitone--border-width': '1px',
 					} }
 				>
 					<div
@@ -68,7 +169,7 @@ export default function ( { settings } ) {
 									'unitone'
 								) }
 								{ __(
-									'To force reacquisition of the latest pattern data, click the button below.',
+									'To force reacquisition of the latest data, click the button below.',
 									'unitone'
 								) }
 							</p>
@@ -79,10 +180,7 @@ export default function ( { settings } ) {
 									onClick={ resetRemotePattenrsCache }
 									disabled={ remotePatternsSaving }
 								>
-									{ __(
-										'Retrieve data from the pattern / style library',
-										'unitone'
-									) }
+									{ __( 'Retrieve data', 'unitone' ) }
 								</Button>
 							</div>
 						</div>

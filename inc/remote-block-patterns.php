@@ -144,6 +144,10 @@ function unitone_register_remote_block_patterns() {
 		return;
 	}
 
+	if ( Manager::get_setting( 'disable-remote-block-patterns' ) ) {
+		return;
+	}
+
 	$license_key = Manager::get_setting( 'license-key' );
 	$status      = Manager::get_license_status( $license_key );
 

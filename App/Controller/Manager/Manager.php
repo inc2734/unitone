@@ -495,9 +495,6 @@ class Manager {
 					delete_transient( 'unitone-free-remote-patterns' );
 					delete_transient( 'unitone-remote-styles' );
 
-					unitone_register_remote_block_patterns();
-					unitone_register_remote_block_styles();
-
 					return new \WP_REST_Response( array( 'message' => 'OK' ), 200 );
 				},
 				'permission_callback' => function () {

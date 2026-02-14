@@ -23,6 +23,7 @@ class Settings {
 	 */
 	protected static $default_settings = array(
 		'license-key'                           => '',
+		'disable-remote-block-patterns'         => false,
 		'site-logo-width'                       => '120',
 		'default-featured-image'                => false,
 		'generated-featured-image-aspect-ratio' => '4:3',

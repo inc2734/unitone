@@ -1,5 +1,4 @@
 import {
-	Button,
 	RangeControl,
 	SelectControl,
 	__experimentalUnitControl as UnitControl,
@@ -10,8 +9,10 @@ import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
+import { ResetButton, SaveButton } from '../components/buttons';
 import { useMigrationContentSize } from './hooks/useMigrationContentSize';
 import { useMigrationWideSize } from './hooks/useMigrationWideSize';
+import { withMinDelay } from '../utils/utils';
 
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
@@ -23,29 +24,34 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		settings?.loadingAnimationTemplateParts ?? [];
 
 	const saveSettings = () => {
-		setSettingsSaving( true );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'loading-animation': settings?.[ 'loading-animation' ] ?? null,
-				'loading-animation-delay':
-					settings?.[ 'loading-animation-delay' ] ?? null,
-				settings: {
-					layout: {
-						contentSize:
-							settings?.settings?.layout?.contentSize ?? null,
-						wideSize: settings?.settings?.layout?.wideSize ?? null,
+		setSettingsSaving( 'save' );
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'loading-animation':
+						settings?.[ 'loading-animation' ] ?? null,
+					'loading-animation-delay':
+						settings?.[ 'loading-animation-delay' ] ?? null,
+					settings: {
+						layout: {
+							contentSize:
+								settings?.settings?.layout?.contentSize ?? null,
+							wideSize:
+								settings?.settings?.layout?.wideSize ?? null,
+						},
 					},
 				},
-			},
-		} ).then( () => {
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		setSettingsSaving( true );
+		setSettingsSaving( 'reset' );
+
 		setSettings( {
 			...settings,
 			'loading-animation': defaultSettings[ 'loading-animation' ],
@@ -60,19 +66,22 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				},
 			},
 		} );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'loading-animation': null,
-				settings: {
-					layout: {
-						contentSize: null,
-						wideSize: null,
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'loading-animation': null,
+					settings: {
+						layout: {
+							contentSize: null,
+							wideSize: null,
+						},
 					},
 				},
-			},
-		} ).then( () => {
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
@@ -221,21 +230,15 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				</div>
 
 				<div data-unitone-layout="cluster -gap:-1">
-					<Button
-						variant="primary"
+					<SaveButton
 						onClick={ saveSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Save Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 
-					<Button
-						variant="secondary"
+					<ResetButton
 						onClick={ resetSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Reset All Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 				</div>
 			</div>
 		</div>

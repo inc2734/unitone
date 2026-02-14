@@ -13,9 +13,11 @@ import apiFetch from '@wordpress/api-fetch';
 
 import ColorGradientSettingsDropdown from '../color-gradient-settings-dropdown';
 
+import { ResetButton, SaveButton } from '../components/buttons';
 import { useMigrationAccentColor } from './hooks/useMigrationAccentColor';
 import { useMigrationBackgroundColor } from './hooks/useMigrationBackgroundColor';
 import { useMigrationTextColor } from './hooks/useMigrationTextColor';
+import { withMinDelay } from '../utils/utils';
 
 const MIN_SIZE = 20;
 
@@ -32,67 +34,73 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	useMigrationTextColor( settings, setSettings );
 
 	const saveSettings = () => {
-		setSettingsSaving( true );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'site-logo': settings?.[ 'site-logo' ] ?? null,
-				'site-logo-width': settings?.[ 'site-logo-width' ] ?? null,
-				'site-icon': settings?.[ 'site-icon' ] ?? null,
-				'default-featured-image':
-					settings?.[ 'default-featured-image' ] ?? null,
-				settings: {
-					color: {
-						palette: {
-							theme: [
-								...settings?.settings?.color?.palette?.theme?.filter(
-									( colorObject ) =>
-										'unitone-accent' === colorObject.slug
-								),
-							],
-						},
-					},
-				},
-				styles: {
-					color: {
-						background: settings?.styles?.color?.background ?? null,
-						text: settings?.styles?.color?.text ?? null,
-					},
-					elements: {
-						link: {
-							color: {
-								text:
-									settings?.styles?.elements?.link?.color
-										?.text ?? null,
-							},
-							':hover': {
-								color: {
-									text:
-										settings?.styles?.elements?.link?.[
-											':hover'
-										]?.color?.text ?? null,
-								},
-							},
-							':focus': {
-								color: {
-									text:
-										settings?.styles?.elements?.link?.[
-											':focus'
-										]?.color?.text ?? null,
-								},
+		setSettingsSaving( 'save' );
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'site-logo': settings?.[ 'site-logo' ] ?? null,
+					'site-logo-width': settings?.[ 'site-logo-width' ] ?? null,
+					'site-icon': settings?.[ 'site-icon' ] ?? null,
+					'default-featured-image':
+						settings?.[ 'default-featured-image' ] ?? null,
+					settings: {
+						color: {
+							palette: {
+								theme: [
+									...settings?.settings?.color?.palette?.theme?.filter(
+										( colorObject ) =>
+											'unitone-accent' ===
+											colorObject.slug
+									),
+								],
 							},
 						},
 					},
+					styles: {
+						color: {
+							background:
+								settings?.styles?.color?.background ?? null,
+							text: settings?.styles?.color?.text ?? null,
+						},
+						elements: {
+							link: {
+								color: {
+									text:
+										settings?.styles?.elements?.link?.color
+											?.text ?? null,
+								},
+								':hover': {
+									color: {
+										text:
+											settings?.styles?.elements?.link?.[
+												':hover'
+											]?.color?.text ?? null,
+									},
+								},
+								':focus': {
+									color: {
+										text:
+											settings?.styles?.elements?.link?.[
+												':focus'
+											]?.color?.text ?? null,
+									},
+								},
+							},
+						},
+					},
 				},
-			},
-		} ).then( () => {
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		setSettingsSaving( true );
+		setSettingsSaving( 'reset' );
+
 		setSettings( {
 			...settings,
 			'site-logo': undefined,
@@ -137,54 +145,59 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				},
 			},
 		} );
+
 		setSiteLogoUrl( undefined );
 		setSiteIconUrl( undefined );
 		setDefaultFeaturedImageUrl( undefined );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'site-logo': null,
-				'site-logo-width': null,
-				'site-icon': null,
-				'default-featured-image': null,
-				settings: {
-					color: {
-						palette: {
-							theme: [
-								// In reality, we want to return null along with the others,
-								// but since this may result in the item not being displayed correctly,
-								// we return the default value.
-								...defaultSettings.settings.color.palette.theme,
-							],
-						},
-					},
-				},
-				styles: {
-					color: {
-						background: null,
-						text: null,
-					},
-					elements: {
-						link: {
-							color: {
-								text: null,
-							},
-							':hover': {
-								color: {
-									text: null,
-								},
-							},
-							':focus': {
-								color: {
-									text: null,
-								},
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'site-logo': null,
+					'site-logo-width': null,
+					'site-icon': null,
+					'default-featured-image': null,
+					settings: {
+						color: {
+							palette: {
+								theme: [
+									// In reality, we want to return null along with the others,
+									// but since this may result in the item not being displayed correctly,
+									// we return the default value.
+									...defaultSettings.settings.color.palette
+										.theme,
+								],
 							},
 						},
 					},
+					styles: {
+						color: {
+							background: null,
+							text: null,
+						},
+						elements: {
+							link: {
+								color: {
+									text: null,
+								},
+								':hover': {
+									color: {
+										text: null,
+									},
+								},
+								':focus': {
+									color: {
+										text: null,
+									},
+								},
+							},
+						},
+					},
 				},
-			},
-		} ).then( () => {
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
@@ -915,21 +928,15 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				</div>
 
 				<div data-unitone-layout="cluster -gap:-1">
-					<Button
-						variant="primary"
+					<SaveButton
 						onClick={ saveSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Save Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 
-					<Button
-						variant="secondary"
+					<ResetButton
 						onClick={ resetSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Reset All Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 				</div>
 			</div>
 		</div>
@@ -960,9 +967,9 @@ const Preview = ( props ) => {
 					color: finalLinkColor,
 				} }
 			>
-				するとどこかで見たわ姉は
+				波が静かに寄せては返し
 			</a>
-			細い銀いろの空から、さっきの入口から暗い牛舎の前へまた来ました。そういうふうに、眼の前を通るのですから、この次の理科の時間にお話します。
+			、波が静かに寄せては返し、砂を優しく撫でる。遠くの水平線に白い帆が浮かび、ゆっくりと進んでいく。潮の香りが漂い、カモメの声が響く。空は澄み渡り、風が心地よく頬を撫でていた。
 		</div>
 	);
 };

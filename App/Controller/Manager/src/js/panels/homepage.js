@@ -1,9 +1,12 @@
-import { Button, RadioControl, SelectControl } from '@wordpress/components';
+import { RadioControl, SelectControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
+
+import { ResetButton, SaveButton } from '../components/buttons';
+import { withMinDelay } from '../utils/utils';
 
 export default function ( { settings, setSettings } ) {
 	const [ pages, setPages ] = useState( [] );
@@ -23,109 +26,117 @@ export default function ( { settings, setSettings } ) {
 	};
 
 	async function saveSettings() {
-		setSettingsSaving( true );
+		setSettingsSaving( 'save' );
 
-		const newSettings = { ...settings };
+		const saveOperation = ( async () => {
+			const newSettings = { ...settings };
 
-		if ( !! homepagePattern && ! isCreatedHomepage ) {
-			try {
-				const responseHomepage = await apiFetch( {
-					path: '/unitone/v1/homepage',
-					method: 'POST',
-					data: { pattern: homepagePattern },
-				} );
-
-				if ( !! responseHomepage?.ID ) {
-					setIsCreatedHomepage( true );
-
-					setPages( [
-						...[
-							{
-								id: responseHomepage.ID,
-								title: {
-									rendered: responseHomepage.post_title,
-								},
-							},
-						],
-						...pages,
-					] );
-
-					setSettings( {
-						...settings,
-						'page-on-front': responseHomepage.ID,
+			if ( !! homepagePattern && ! isCreatedHomepage ) {
+				try {
+					const responseHomepage = await apiFetch( {
+						path: '/unitone/v1/homepage',
+						method: 'POST',
+						data: { pattern: homepagePattern },
 					} );
 
-					newSettings[ 'page-on-front' ] = responseHomepage.ID;
-				}
-			} catch ( error ) {
-				console.error( error ); // eslint-disable-line no-console
-			}
-		}
+					if ( !! responseHomepage?.ID ) {
+						setIsCreatedHomepage( true );
 
-		if ( shouldCreatePostsPage && ! isCreatedPostsPage ) {
-			try {
-				const responsePostsPage = await apiFetch( {
-					path: '/unitone/v1/posts-page',
-					method: 'POST',
-				} );
-
-				if ( !! responsePostsPage?.ID ) {
-					setIsCreatedPostsPage( true );
-
-					setPages( [
-						...[
-							{
-								id: responsePostsPage.ID,
-								title: {
-									rendered: responsePostsPage.post_title,
+						setPages( [
+							...[
+								{
+									id: responseHomepage.ID,
+									title: {
+										rendered: responseHomepage.post_title,
+									},
 								},
-							},
-						],
-						...pages,
-					] );
+							],
+							...pages,
+						] );
 
-					setSettings( {
-						...settings,
-						'page-for-posts': responsePostsPage.ID,
+						setSettings( {
+							...settings,
+							'page-on-front': responseHomepage.ID,
+						} );
+
+						newSettings[ 'page-on-front' ] = responseHomepage.ID;
+					}
+				} catch ( error ) {
+					console.error( error ); // eslint-disable-line no-console
+				}
+			}
+
+			if ( shouldCreatePostsPage && ! isCreatedPostsPage ) {
+				try {
+					const responsePostsPage = await apiFetch( {
+						path: '/unitone/v1/posts-page',
+						method: 'POST',
 					} );
 
-					newSettings[ 'page-for-posts' ] = responsePostsPage.ID;
-				}
-			} catch ( error ) {
-				console.error( error ); // eslint-disable-line no-console
-			}
-		}
+					if ( !! responsePostsPage?.ID ) {
+						setIsCreatedPostsPage( true );
 
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'show-on-front': newSettings?.[ 'show-on-front' ] ?? null,
-				'page-on-front': newSettings?.[ 'page-on-front' ] ?? null,
-				'page-for-posts': newSettings?.[ 'page-for-posts' ] ?? null,
-			},
-		} ).then( () => {
+						setPages( [
+							...[
+								{
+									id: responsePostsPage.ID,
+									title: {
+										rendered: responsePostsPage.post_title,
+									},
+								},
+							],
+							...pages,
+						] );
+
+						setSettings( {
+							...settings,
+							'page-for-posts': responsePostsPage.ID,
+						} );
+
+						newSettings[ 'page-for-posts' ] = responsePostsPage.ID;
+					}
+				} catch ( error ) {
+					console.error( error ); // eslint-disable-line no-console
+				}
+			}
+
+			await apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'show-on-front': newSettings?.[ 'show-on-front' ] ?? null,
+					'page-on-front': newSettings?.[ 'page-on-front' ] ?? null,
+					'page-for-posts': newSettings?.[ 'page-for-posts' ] ?? null,
+				},
+			} );
+		} )();
+
+		withMinDelay( saveOperation ).then( () => {
 			setSettingsSaving( false );
 		} );
 	}
 
 	const resetSettings = () => {
-		setSettingsSaving( true );
+		setSettingsSaving( 'reset' );
+
 		setSettings( {
 			...settings,
 			'show-on-front': 'posts',
 			'page-on-front': undefined,
 			'page-for-posts': undefined,
 		} );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'show-on-front': 'posts',
-				'page-on-front': null,
-				'page-for-posts': null,
-			},
-		} ).then( () => {
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'show-on-front': 'posts',
+					'page-on-front': null,
+					'page-for-posts': null,
+				},
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
@@ -364,21 +375,15 @@ export default function ( { settings, setSettings } ) {
 					) }
 				</div>
 				<div data-unitone-layout="cluster -gap:-1">
-					<Button
-						variant="primary"
+					<SaveButton
 						onClick={ saveSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Save Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 
-					<Button
-						variant="secondary"
+					<ResetButton
 						onClick={ resetSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Reset All Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 				</div>
 			</div>
 		</div>

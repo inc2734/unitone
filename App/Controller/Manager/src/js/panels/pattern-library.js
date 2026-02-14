@@ -1,10 +1,13 @@
 import { pick } from 'lodash';
 
-import apiFetch from '@wordpress/api-fetch';
-
-import { Button, ToggleControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
+
+import apiFetch from '@wordpress/api-fetch';
+
+import { LoadingButton, ResetButton, SaveButton } from '../components/buttons';
+import { withMinDelay } from '../utils/utils';
 
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ remotePatternsSaving, setRemotePatternsSaving ] = useState( false );
@@ -12,43 +15,53 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 	const resetRemotePattenrsCache = () => {
 		setRemotePatternsSaving( true );
-		apiFetch( {
-			path: '/unitone/v1/remote-block-patterns',
-			method: 'DELETE',
-			data: pick( settings, 'license-key' ),
-		} ).then( () => {
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/remote-block-patterns',
+				method: 'DELETE',
+				data: pick( settings, 'license-key' ),
+			} )
+		).then( () => {
 			setRemotePatternsSaving( false );
 		} );
 	};
 
 	const saveSettings = () => {
-		setSettingsSaving( true );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'disable-remote-block-patterns':
-					settings?.[ 'disable-remote-block-patterns' ] ?? null,
-			},
-		} ).then( () => {
+		setSettingsSaving( 'save' );
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'disable-remote-block-patterns':
+						settings?.[ 'disable-remote-block-patterns' ] ?? null,
+				},
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		setSettingsSaving( true );
+		setSettingsSaving( 'reset' );
+
 		setSettings( {
 			...settings,
 			'disable-remote-block-patterns':
 				defaultSettings?.[ 'disable-remote-block-patterns' ] ?? false,
 		} );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'disable-remote-block-patterns': null,
-			},
-		} ).then( () => {
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'disable-remote-block-patterns': null,
+				},
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
@@ -103,7 +116,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 												newSetting,
 										} )
 									}
-									disabled={ settingsSaving }
+									disabled={ !! settingsSaving }
 								/>
 							</div>
 						</div>
@@ -111,21 +124,15 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 					<div>
 						<div data-unitone-layout="cluster -gap:-1">
-							<Button
-								variant="primary"
+							<SaveButton
 								onClick={ saveSettings }
-								disabled={ settingsSaving }
-							>
-								{ __( 'Save Settings', 'unitone' ) }
-							</Button>
+								isSaving={ settingsSaving }
+							/>
 
-							<Button
-								variant="secondary"
+							<ResetButton
 								onClick={ resetSettings }
-								disabled={ settingsSaving }
-							>
-								{ __( 'Reset All Settings', 'unitone' ) }
-							</Button>
+								isSaving={ settingsSaving }
+							/>
 						</div>
 					</div>
 				</div>
@@ -175,13 +182,11 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							</p>
 
 							<div>
-								<Button
-									variant="primary"
+								<LoadingButton
+									label={ __( 'Retrieve data', 'unitone' ) }
 									onClick={ resetRemotePattenrsCache }
-									disabled={ remotePatternsSaving }
-								>
-									{ __( 'Retrieve data', 'unitone' ) }
-								</Button>
+									isLoading={ remotePatternsSaving }
+								/>
 							</div>
 						</div>
 					</div>

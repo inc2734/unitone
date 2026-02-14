@@ -1,8 +1,11 @@
-import { Button, ToggleControl } from '@wordpress/components';
+import { ToggleControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
+
+import { ResetButton, SaveButton } from '../components/buttons';
+import { withMinDelay } from '../utils/utils';
 
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
@@ -13,21 +16,24 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		settings?.[ 'enabled-custom-templates' ] ?? [];
 
 	const saveSettings = () => {
-		setSettingsSaving( true );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'enabled-custom-templates':
-					settings?.[ 'enabled-custom-templates' ] ?? null,
-			},
-		} ).then( () => {
+		setSettingsSaving( 'save' );
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'enabled-custom-templates':
+						settings?.[ 'enabled-custom-templates' ] ?? null,
+				},
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		setSettingsSaving( true );
+		setSettingsSaving( 'reset' );
 
 		const newEnabledCustomTemplates = [
 			...new Set( [
@@ -41,13 +47,15 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			'enabled-custom-templates': newEnabledCustomTemplates,
 		} );
 
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'enabled-custom-templates': newEnabledCustomTemplates,
-			},
-		} ).then( () => {
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'enabled-custom-templates': newEnabledCustomTemplates,
+				},
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
@@ -187,21 +195,15 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 					) }
 				</div>
 				<div data-unitone-layout="cluster -gap:-1">
-					<Button
-						variant="primary"
+					<SaveButton
 						onClick={ saveSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Save Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 
-					<Button
-						variant="secondary"
+					<ResetButton
 						onClick={ resetSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Reset All Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 				</div>
 			</div>
 		</div>

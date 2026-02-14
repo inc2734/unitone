@@ -1,16 +1,13 @@
-import {
-	Button,
-	Notice,
-	SelectControl,
-	TextControl,
-} from '@wordpress/components';
-
+import { Notice, SelectControl, TextControl } from '@wordpress/components';
 import { useEntityProp } from '@wordpress/core-data';
 import { useSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
+
+import { ResetButton, SaveButton } from '../components/buttons';
+import { withMinDelay } from '../utils/utils';
 
 export default function () {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
@@ -71,48 +68,54 @@ export default function () {
 	}, [ savedApiKey ] );
 
 	const saveSettings = () => {
-		setSettingsSaving( true );
-		Promise.all( [
-			apiFetch( {
-				path: '/unitone/v1/openai-api-key',
-				method: 'POST',
-				data: {
-					key: apiKey,
-				},
-			} ),
-			apiFetch( {
-				path: '/unitone/v1/openai-model',
-				method: 'POST',
-				data: {
-					model,
-				},
-			} ),
-		] ).finally( () => {
+		setSettingsSaving( 'save' );
+
+		withMinDelay(
+			Promise.all( [
+				apiFetch( {
+					path: '/unitone/v1/openai-api-key',
+					method: 'POST',
+					data: {
+						key: apiKey,
+					},
+				} ),
+				apiFetch( {
+					path: '/unitone/v1/openai-model',
+					method: 'POST',
+					data: {
+						model,
+					},
+				} ),
+			] )
+		).finally( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		setSettingsSaving( true );
+		setSettingsSaving( 'reset' );
 		setApiKey( undefined );
 		setModel( undefined );
-		Promise.all( [
-			apiFetch( {
-				path: '/unitone/v1/openai-api-key',
-				method: 'POST',
-				data: {
-					key: undefined,
-				},
-			} ),
 
-			apiFetch( {
-				path: '/unitone/v1/openai-model',
-				method: 'POST',
-				data: {
-					model: undefined,
-				},
-			} ),
-		] ).finally( () => {
+		withMinDelay(
+			Promise.all( [
+				apiFetch( {
+					path: '/unitone/v1/openai-api-key',
+					method: 'POST',
+					data: {
+						key: undefined,
+					},
+				} ),
+
+				apiFetch( {
+					path: '/unitone/v1/openai-model',
+					method: 'POST',
+					data: {
+						model: undefined,
+					},
+				} ),
+			] )
+		).finally( () => {
 			setSettingsSaving( false );
 		} );
 	};
@@ -241,21 +244,15 @@ export default function () {
 				</div>
 
 				<div data-unitone-layout="cluster -gap:-1">
-					<Button
-						variant="primary"
+					<SaveButton
 						onClick={ saveSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Save Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 
-					<Button
-						variant="secondary"
+					<ResetButton
 						onClick={ resetSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Reset All Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 				</div>
 			</div>
 		</div>

@@ -1,41 +1,50 @@
-import { Button, RadioControl } from '@wordpress/components';
-
+import { RadioControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
+import { ResetButton, SaveButton } from '../components/buttons';
+import { withMinDelay } from '../utils/utils';
+
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 
 	const saveSettings = () => {
-		setSettingsSaving( true );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'wp-oembed-blog-card-style':
-					settings?.[ 'wp-oembed-blog-card-style' ] ?? null,
-			},
-		} ).then( () => {
+		setSettingsSaving( 'save' );
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'wp-oembed-blog-card-style':
+						settings?.[ 'wp-oembed-blog-card-style' ] ?? null,
+				},
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		setSettingsSaving( true );
+		setSettingsSaving( 'reset' );
+
 		setSettings( {
 			...settings,
 			'wp-oembed-blog-card-style':
 				defaultSettings[ 'wp-oembed-blog-card-style' ],
 		} );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'wp-oembed-blog-card-style': null,
-			},
-		} ).then( () => {
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'wp-oembed-blog-card-style': null,
+				},
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
@@ -200,21 +209,15 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				</div>
 
 				<div data-unitone-layout="cluster -gap:-1">
-					<Button
-						variant="primary"
+					<SaveButton
 						onClick={ saveSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Save Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 
-					<Button
-						variant="secondary"
+					<ResetButton
 						onClick={ resetSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Reset All Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 				</div>
 			</div>
 		</div>

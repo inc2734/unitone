@@ -1,10 +1,13 @@
-import { Button, TextControl } from '@wordpress/components';
+import { TextControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { Icon, check, close } from '@wordpress/icons';
 import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
+
+import { ResetButton, SaveButton } from '../components/buttons';
+import { withMinDelay } from '../utils/utils';
 
 /**
  * If a value is stored in License key, use this value instead, since it is secret.
@@ -26,8 +29,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		} );
 	};
 
-	const resetRemotePattenrsCache = () => {
-		setRemotePatternsSaving( true );
+	const resetRemotePattenrsCache = ( action ) => {
+		setRemotePatternsSaving( action );
+
 		apiFetch( {
 			path: '/unitone/v1/remote-block-patterns',
 			method: 'DELETE',
@@ -37,37 +41,45 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	};
 
 	const saveSettings = () => {
-		setSettingsSaving( true );
+		setSettingsSaving( 'save' );
 		setLicenseStatus( undefined );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'license-key': settings?.[ 'license-key' ] ?? null,
-			},
-		} ).then( () => {
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'license-key': settings?.[ 'license-key' ] ?? null,
+				},
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 			loadLicenseStatus( { force: true } );
-			resetRemotePattenrsCache();
+			resetRemotePattenrsCache( 'save' );
 		} );
 	};
 
 	const resetSettings = () => {
-		setSettingsSaving( true );
+		setSettingsSaving( 'reset' );
+
 		setSettings( {
 			...settings,
 			'license-key': defaultSettings[ 'license-key' ],
 		} );
+
 		setLicenseStatus( false );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'license-key': null,
-			},
-		} ).then( () => {
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'license-key': null,
+				},
+			} )
+		).then( () => {
 			setSettingsSaving( false );
-			resetRemotePattenrsCache();
+			resetRemotePattenrsCache( 'reset' );
 		} );
 	};
 
@@ -168,21 +180,19 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				</div>
 
 				<div data-unitone-layout="cluster -gap:-1">
-					<Button
-						variant="primary"
+					<SaveButton
 						onClick={ saveSettings }
-						disabled={ settingsSaving || remotePatternsSaving }
-					>
-						{ __( 'Save Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+						disabled={ !! remotePatternsSaving }
+						isProcessing={ 'save' === remotePatternsSaving }
+					/>
 
-					<Button
-						variant="secondary"
+					<ResetButton
 						onClick={ resetSettings }
-						disabled={ settingsSaving || remotePatternsSaving }
-					>
-						{ __( 'Reset All Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+						disabled={ !! remotePatternsSaving }
+						isProcessing={ 'reset' === remotePatternsSaving }
+					/>
 				</div>
 			</div>
 		</div>

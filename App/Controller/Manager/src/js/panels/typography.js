@@ -1,5 +1,4 @@
 import {
-	Button,
 	FontSizePicker,
 	RangeControl,
 	SelectControl,
@@ -10,7 +9,9 @@ import { __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
+import { ResetButton, SaveButton } from '../components/buttons';
 import { useMigrationFontFamily } from './hooks/useMigrationFontFamily';
+import { withMinDelay } from '../utils/utils';
 
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
@@ -18,34 +19,40 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	useMigrationFontFamily( settings, setSettings );
 
 	const saveSettings = () => {
-		setSettingsSaving( true );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'base-font-size': settings?.[ 'base-font-size' ] ?? null,
-				'half-leading': settings?.[ 'half-leading' ] ?? null,
-				'min-half-leading': settings?.[ 'min-half-leading' ] ?? null,
-				'h1-size': settings?.[ 'h1-size' ] ?? null,
-				'h2-size': settings?.[ 'h2-size' ] ?? null,
-				'h3-size': settings?.[ 'h3-size' ] ?? null,
-				'h4-size': settings?.[ 'h4-size' ] ?? null,
-				'h5-size': settings?.[ 'h5-size' ] ?? null,
-				'h6-size': settings?.[ 'h6-size' ] ?? null,
-				styles: {
-					typography: {
-						fontFamily:
-							settings?.styles?.typography?.fontFamily ?? null,
+		setSettingsSaving( 'save' );
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'base-font-size': settings?.[ 'base-font-size' ] ?? null,
+					'half-leading': settings?.[ 'half-leading' ] ?? null,
+					'min-half-leading':
+						settings?.[ 'min-half-leading' ] ?? null,
+					'h1-size': settings?.[ 'h1-size' ] ?? null,
+					'h2-size': settings?.[ 'h2-size' ] ?? null,
+					'h3-size': settings?.[ 'h3-size' ] ?? null,
+					'h4-size': settings?.[ 'h4-size' ] ?? null,
+					'h5-size': settings?.[ 'h5-size' ] ?? null,
+					'h6-size': settings?.[ 'h6-size' ] ?? null,
+					styles: {
+						typography: {
+							fontFamily:
+								settings?.styles?.typography?.fontFamily ??
+								null,
+						},
 					},
 				},
-			},
-		} ).then( () => {
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
-		setSettingsSaving( true );
+		setSettingsSaving( 'reset' );
+
 		setSettings( {
 			...settings,
 			'base-font-size': defaultSettings[ 'base-font-size' ],
@@ -63,26 +70,29 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				},
 			},
 		} );
-		apiFetch( {
-			path: '/unitone/v1/settings',
-			method: 'POST',
-			data: {
-				'base-font-size': null,
-				'half-leading': null,
-				'min-half-leading': null,
-				'h1-size': null,
-				'h2-size': null,
-				'h3-size': null,
-				'h4-size': null,
-				'h5-size': null,
-				'h6-size': null,
-				styles: {
-					typography: {
-						fontFamily: null,
+
+		withMinDelay(
+			apiFetch( {
+				path: '/unitone/v1/settings',
+				method: 'POST',
+				data: {
+					'base-font-size': null,
+					'half-leading': null,
+					'min-half-leading': null,
+					'h1-size': null,
+					'h2-size': null,
+					'h3-size': null,
+					'h4-size': null,
+					'h5-size': null,
+					'h6-size': null,
+					styles: {
+						typography: {
+							fontFamily: null,
+						},
 					},
 				},
-			},
-		} ).then( () => {
+			} )
+		).then( () => {
 			setSettingsSaving( false );
 		} );
 	};
@@ -202,7 +212,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											見出し6
 										</div>
 										<div>
-											するとどこかで見たわ姉は細い銀いろの空から、さっきの入口から暗い牛舎の前へまた来ました。そういうふうに、眼の前を通るのですから、この次の理科の時間にお話します。
+											波が静かに寄せては返し、砂を優しく撫でる。遠くの水平線に白い帆が浮かび、ゆっくりと進んでいく。潮の香りが漂い、カモメの声が響く。空は澄み渡り、風が心地よく頬を撫でていた。
 										</div>
 									</div>
 								</div>
@@ -510,21 +520,15 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				</div>
 
 				<div data-unitone-layout="cluster -gap:-1">
-					<Button
-						variant="primary"
+					<SaveButton
 						onClick={ saveSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Save Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 
-					<Button
-						variant="secondary"
+					<ResetButton
 						onClick={ resetSettings }
-						disabled={ settingsSaving }
-					>
-						{ __( 'Reset All Settings', 'unitone' ) }
-					</Button>
+						isSaving={ settingsSaving }
+					/>
 				</div>
 			</div>
 		</div>

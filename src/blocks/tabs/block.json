@@ -31,7 +31,10 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
-		"interactivity": true
+		"interactivity": true,
+		"unitone": {
+			"gap": true
+		}
 	},
 	"styles": [
 		{

@@ -10,6 +10,7 @@ module.exports = {
 				{
 					calc: false,
 					convertValues: false,
+					mergeLonghand: false,
 				},
 			],
 		} ),

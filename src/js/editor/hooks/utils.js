@@ -15,6 +15,16 @@ import {
 import { debounce } from '@inc2734/unitone-css/library';
 
 /**
+ * Check if the value is object.
+ *
+ * @param {*} value The value to check.
+ * @return {boolean} Return true if the value is object.
+ */
+export function isObject( value ) {
+	return null != value && 'object' === typeof value;
+}
+
+/**
  * Removed falsy values from nested object.
  *
  * @see https://github.com/WordPress/gutenberg/blob/857356c1602a42f342a61976ba67eb41284050ca/packages/block-editor/src/hooks/utils.js
@@ -24,10 +34,9 @@ import { debounce } from '@inc2734/unitone-css/library';
  */
 export const cleanEmptyObject = ( object ) => {
 	if (
-		object === null ||
-		typeof object !== 'object' ||
+		! isObject( object ) ||
 		Array.isArray( object ) ||
-		( object.$$typeof && typeof object.$$typeof === 'symbol' )
+		( object.$$typeof && 'symbol' === typeof object.$$typeof )
 	) {
 		return object;
 	}

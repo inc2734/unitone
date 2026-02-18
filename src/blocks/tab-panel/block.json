@@ -6,6 +6,7 @@
 	"title": "Tab panel",
 	"description": "This block displays tab panel.",
 	"parent": [ "unitone/tabs" ],
+	"usesContext": [ "unitone/tabPanelPadding" ],
 	"attributes": {
 		"tabLabel": {
 			"type": "string",

@@ -11,6 +11,12 @@
 			"type": "string",
 			"default": ""
 		},
+		"tabPadding": {
+			"type": [ "string", "object" ]
+		},
+		"tabPanelPadding": {
+			"type": [ "string", "object" ]
+		},
 		"matchHeight": {
 			"type": "boolean",
 			"default": false
@@ -25,6 +31,10 @@
 		}
 	},
 	"allowedBlocks": [ "unitone/tab-panel" ],
+	"providesContext": {
+		"unitone/tabPadding": "tabPadding",
+		"unitone/tabPanelPadding": "tabPanelPadding"
+	},
 	"selectors": {
 		"root": ".unitone-tabs"
 	},

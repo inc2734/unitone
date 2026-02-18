@@ -6,18 +6,26 @@
 	--unitone--background-color: initial;
 	--unitone--color: initial;
 	--unitone--padding: initial;
+	--unitone--padding-top: var(--unitone--padding);
+	--unitone--padding-right: var(--unitone--padding);
+	--unitone--padding-bottom: var(--unitone--padding);
+	--unitone--padding-left: var(--unitone--padding);
 
 	background-color: var(--unitone--background-color);
 	color: var(--unitone--color);
 	border: var(--unitone--border-width) var(--unitone--border-style) var(--unitone--border-color);
-	padding: var(--unitone--padding);
+	padding:
+		var(--unitone--padding-top)
+		var(--unitone--padding-right)
+		var(--unitone--padding-bottom)
+		var(--unitone--padding-left);
 
 	&[aria-hidden="true"] {
 		visibility: hidden;
 		opacity: 0;
 	}
 
-	&.has-background {
+	&.has-background:not([data-unitone-layout*="-padding\:"]) {
 		--unitone--padding: var(--unitone--p1);
 	}
 }

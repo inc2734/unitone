@@ -29,7 +29,17 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	compacting as compactPadding,
+	expand as expandPadding,
+} from '../../js/editor/hooks/dimensions/padding';
+
+import {
+	useToolsPanelDropdownMenuProps,
+	isObject,
+} from '../../js/editor/hooks/utils';
+
+import { PaddingControl } from '../../js/editor/hooks/components';
 
 import metadata from './block.json';
 
@@ -57,8 +67,14 @@ const JUSTIFICATION_OPTIONS = [
 ];
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { tabBarJustification, matchHeight, allowedBlocks, templateLock } =
-		attributes;
+	const {
+		tabBarJustification,
+		tabPadding,
+		tabPanelPadding,
+		matchHeight,
+		allowedBlocks,
+		templateLock,
+	} = attributes;
 
 	const { insertBlocks, updateBlockAttributes } =
 		useDispatch( blockEditorStore );
@@ -75,6 +91,39 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			attributes: tabPanel?.attributes,
 		};
 	} );
+
+	const compactedTabPadding = compactPadding( tabPadding );
+	const expandedTabPadding = expandPadding( compactedTabPadding );
+	const compactedTabPanelPadding = compactPadding( tabPanelPadding );
+	const expandedTabPanelPadding = expandPadding( compactedTabPanelPadding );
+	const isMixedTabPadding = isObject( compactedTabPadding );
+	const isMixedTabPanelPadding = isObject( compactedTabPanelPadding );
+
+	const onChangeTabPaddingSide = ( side, newValue ) => {
+		if ( null != newValue ) {
+			newValue = String( newValue );
+		}
+
+		setAttributes( {
+			tabPadding: compactPadding( {
+				...expandedTabPadding,
+				[ side ]: newValue || undefined,
+			} ),
+		} );
+	};
+
+	const onChangeTabPanelPaddingSide = ( side, newValue ) => {
+		if ( null != newValue ) {
+			newValue = String( newValue );
+		}
+
+		setAttributes( {
+			tabPanelPadding: compactPadding( {
+				...expandedTabPanelPadding,
+				[ side ]: newValue || undefined,
+			} ),
+		} );
+	};
 
 	/**
 	 * Update tab panels aria-hidden attribute.
@@ -117,6 +166,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			'unitone-tabs--match-height': matchHeight,
 		} ),
 	} );
+
 	const innerBlocksProps = useInnerBlocksProps(
 		{
 			className: 'unitone-tab-view',
@@ -146,7 +196,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		<>
 			<InspectorControls>
 				<ToolsPanel
-					label={ __( 'Settings', 'unitone' ) }
+					label={ __( 'Tabs settings', 'unitone' ) }
 					dropdownMenuProps={ dropdownMenuProps }
 				>
 					<ToolsPanelItem
@@ -195,6 +245,83 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					</ToolsPanelItem>
 
 					<ToolsPanelItem
+						hasValue={ () => null != compactPadding( tabPadding ) }
+						isShownByDefault
+						label={ __( 'Padding', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								tabPadding:
+									metadata.attributes.tabPadding.default,
+							} )
+						}
+					>
+						<PaddingControl
+							label={
+								<>
+									{ __( 'Padding', 'unitone' ) }
+									&nbsp;:&nbsp;
+									<code>padding</code>
+								</>
+							}
+							split
+							isMixed={ isMixedTabPadding }
+							value={ compactedTabPadding }
+							onChange={ ( newAttribute ) => {
+								if ( null != newAttribute ) {
+									newAttribute = String( newAttribute );
+								}
+
+								setAttributes( {
+									tabPadding: newAttribute || undefined,
+								} );
+							} }
+							sideControls={ [
+								{
+									key: 'top',
+									value: expandedTabPadding?.top,
+									onChange: ( newAttribute ) =>
+										onChangeTabPaddingSide(
+											'top',
+											newAttribute
+										),
+								},
+								{
+									key: 'right',
+									value: expandedTabPadding?.right,
+									onChange: ( newAttribute ) =>
+										onChangeTabPaddingSide(
+											'right',
+											newAttribute
+										),
+								},
+								{
+									key: 'bottom',
+									value: expandedTabPadding?.bottom,
+									onChange: ( newAttribute ) =>
+										onChangeTabPaddingSide(
+											'bottom',
+											newAttribute
+										),
+								},
+								{
+									key: 'left',
+									value: expandedTabPadding?.left,
+									onChange: ( newAttribute ) =>
+										onChangeTabPaddingSide(
+											'left',
+											newAttribute
+										),
+								},
+							] }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
+
+				<ToolsPanel
+					label={ __( 'Tab panels settings', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
+					<ToolsPanelItem
 						hasValue={ () =>
 							matchHeight !==
 							metadata.attributes.matchHeight.default
@@ -223,6 +350,80 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							} }
 						/>
 					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							null != compactPadding( tabPanelPadding )
+						}
+						isShownByDefault
+						label={ __( 'Padding', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								tabPanelPadding:
+									metadata.attributes.tabPanelPadding.default,
+							} )
+						}
+					>
+						<PaddingControl
+							label={
+								<>
+									{ __( 'Padding', 'unitone' ) }
+									&nbsp;:&nbsp;
+									<code>padding</code>
+								</>
+							}
+							split
+							isMixed={ isMixedTabPanelPadding }
+							value={ compactedTabPanelPadding }
+							onChange={ ( newAttribute ) => {
+								if ( null != newAttribute ) {
+									newAttribute = String( newAttribute );
+								}
+
+								setAttributes( {
+									tabPanelPadding: newAttribute || undefined,
+								} );
+							} }
+							sideControls={ [
+								{
+									key: 'top',
+									value: expandedTabPanelPadding?.top,
+									onChange: ( newAttribute ) =>
+										onChangeTabPanelPaddingSide(
+											'top',
+											newAttribute
+										),
+								},
+								{
+									key: 'right',
+									value: expandedTabPanelPadding?.right,
+									onChange: ( newAttribute ) =>
+										onChangeTabPanelPaddingSide(
+											'right',
+											newAttribute
+										),
+								},
+								{
+									key: 'bottom',
+									value: expandedTabPanelPadding?.bottom,
+									onChange: ( newAttribute ) =>
+										onChangeTabPanelPaddingSide(
+											'bottom',
+											newAttribute
+										),
+								},
+								{
+									key: 'left',
+									value: expandedTabPanelPadding?.left,
+									onChange: ( newAttribute ) =>
+										onChangeTabPanelPaddingSide(
+											'left',
+											newAttribute
+										),
+								},
+							] }
+						/>
+					</ToolsPanelItem>
 				</ToolsPanel>
 			</InspectorControls>
 
@@ -241,6 +442,19 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									key={ i }
 									role="tab"
 									className="unitone-tab"
+									data-unitone-layout={ clsx( {
+										[ `-padding:${ compactedTabPadding }` ]:
+											null != compactedTabPadding &&
+											! isObject( compactedTabPadding ),
+										[ `-padding-top:${ compactedTabPadding?.top }` ]:
+											null != compactedTabPadding?.top,
+										[ `-padding-right:${ compactedTabPadding?.right }` ]:
+											null != compactedTabPadding?.right,
+										[ `-padding-bottom:${ compactedTabPadding?.bottom }` ]:
+											null != compactedTabPadding?.bottom,
+										[ `-padding-left:${ compactedTabPadding?.left }` ]:
+											null != compactedTabPadding?.left,
+									} ) }
 									aria-controls={
 										tabPanel.attributes.anchor ||
 										tabPanel.clientId

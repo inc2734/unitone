@@ -7,6 +7,10 @@ import {
 
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect, memo, useCallback } from '@wordpress/element';
+import clsx from 'clsx';
+
+import { compacting as compactPadding } from '../../js/editor/hooks/dimensions/padding';
+import { isObject } from '../../js/editor/hooks/utils';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
@@ -15,8 +19,13 @@ export default function ( {
 	setAttributes,
 	isSelected,
 	clientId,
+	context,
 } ) {
 	const { ariaHidden, templateLock } = attributes;
+
+	const tabPanelPadding = context?.[ 'unitone/tabPanelPadding' ];
+
+	const compactedTabPanelPadding = compactPadding( tabPanelPadding );
 
 	const { updateBlockAttributes } = useDispatch( blockEditorStore );
 
@@ -50,6 +59,19 @@ export default function ( {
 		role: 'tabpanel',
 		className: 'unitone-tab-panel',
 		'aria-hidden': ariaHidden ? 'true' : 'false',
+		'data-unitone-layout': clsx( {
+			[ `-padding:${ compactedTabPanelPadding }` ]:
+				null != compactedTabPanelPadding &&
+				! isObject( compactedTabPanelPadding ),
+			[ `-padding-top:${ compactedTabPanelPadding?.top }` ]:
+				null != compactedTabPanelPadding?.top,
+			[ `-padding-right:${ compactedTabPanelPadding?.right }` ]:
+				null != compactedTabPanelPadding?.right,
+			[ `-padding-bottom:${ compactedTabPanelPadding?.bottom }` ]:
+				null != compactedTabPanelPadding?.bottom,
+			[ `-padding-left:${ compactedTabPanelPadding?.left }` ]:
+				null != compactedTabPanelPadding?.left,
+		} ),
 	} );
 
 	const renderAppender = useCallback(

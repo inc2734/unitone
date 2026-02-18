@@ -5,16 +5,35 @@ import {
 	Flex,
 	FlexBlock,
 	FlexItem,
+	Icon,
 	Popover,
 	SelectControl,
+	Tooltip,
 } from '@wordpress/components';
 
-import { desktop, tablet, mobile, closeSmall } from '@wordpress/icons';
+import {
+	desktop,
+	tablet,
+	mobile,
+	closeSmall,
+	link,
+	linkOff,
+} from '@wordpress/icons';
 
 import { useState, useMemo, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { help as iconHelp } from './icons';
+import {
+	help as iconHelp,
+	allSides,
+	verticalSides,
+	horizontalSides,
+	topSides,
+	rightSides,
+	bottomSides,
+	leftSides,
+} from './icons';
+
 import { useDeviceType } from './utils';
 
 function Controls( { value, onChange, options } ) {
@@ -26,6 +45,139 @@ function Controls( { value, onChange, options } ) {
 			onChange={ onChange }
 			options={ options }
 		/>
+	);
+}
+
+function LinkedButton( { isLinked, ...props } ) {
+	const label = isLinked
+		? __( 'Unlink sides', 'unitone' )
+		: __( 'Link sides', 'unitone' );
+
+	return (
+		<Tooltip text={ label }>
+			<Button
+				{ ...props }
+				className="component-box-control__linked-button"
+				size="small"
+				icon={ isLinked ? link : linkOff }
+				iconSize={ 24 }
+				aria-label={ label }
+			/>
+		</Tooltip>
+	);
+}
+
+export function PaddingControl( {
+	label,
+	split = false,
+	isMixed = false,
+	value,
+	onChange,
+	sideControls = [],
+} ) {
+	const [ isLinked, setIsLinked ] = useState( ! isMixed );
+
+	const linkedSpacingIcon = useMemo( () => {
+		const sides = sideControls.map( ( { key } ) => key );
+		const hasTop = sides.includes( 'top' );
+		const hasRight = sides.includes( 'right' );
+		const hasBottom = sides.includes( 'bottom' );
+		const hasLeft = sides.includes( 'left' );
+
+		if ( hasTop && hasBottom && ! hasRight && ! hasLeft ) {
+			return verticalSides;
+		}
+
+		if ( ! hasTop && ! hasBottom && hasRight && hasLeft ) {
+			return horizontalSides;
+		}
+
+		return allSides;
+	}, [ sideControls ] );
+
+	const getSideIcon = ( key ) => {
+		if ( 'top' === key ) {
+			return topSides;
+		}
+		if ( 'right' === key ) {
+			return rightSides;
+		}
+		if ( 'bottom' === key ) {
+			return bottomSides;
+		}
+		if ( 'left' === key ) {
+			return leftSides;
+		}
+		return allSides;
+	};
+
+	return (
+		<div className="spacing-sizes-control">
+			<Flex>
+				<FlexBlock>
+					<BaseControl.VisualLabel>{ label }</BaseControl.VisualLabel>
+				</FlexBlock>
+
+				{ !! split && (
+					<FlexItem>
+						<LinkedButton
+							isLinked={ isLinked }
+							onClick={ () => setIsLinked( ! isLinked ) }
+						/>
+					</FlexItem>
+				) }
+			</Flex>
+
+			{ ! split ? (
+				<SpacingSizeControl value={ value } onChange={ onChange } />
+			) : (
+				<>
+					{ isLinked ? (
+						<Flex align="center">
+							<FlexItem>
+								<Icon icon={ linkedSpacingIcon } size={ 16 } />
+							</FlexItem>
+
+							<FlexBlock>
+								<SpacingSizeControl
+									value={ ! isMixed ? value : undefined }
+									isMixed={ isMixed }
+									onChange={ onChange }
+								/>
+							</FlexBlock>
+						</Flex>
+					) : (
+						<div
+							style={ {
+								display: 'grid',
+								gridTemplateColumns: 'repeat(2, 1fr)',
+								gap: '8px',
+							} }
+						>
+							{ sideControls.map(
+								( { key, value, onChange: onSideChange } ) => (
+									<Flex key={ key } align="center">
+										<FlexItem>
+											<Icon
+												icon={ getSideIcon( key ) }
+												size={ 16 }
+											/>
+										</FlexItem>
+
+										<FlexBlock>
+											<SpacingSizeControl
+												value={ value }
+												onChange={ onSideChange }
+											/>
+										</FlexBlock>
+									</Flex>
+								)
+							) }
+						</div>
+					) }
+				</>
+			) }
+		</div>
 	);
 }
 

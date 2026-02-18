@@ -10,33 +10,11 @@ import {
 	store as blocksStore,
 } from '@wordpress/blocks';
 
-import {
-	BaseControl,
-	Button,
-	Icon,
-	Tooltip,
-	Flex,
-	FlexBlock,
-	FlexItem,
-} from '@wordpress/components';
-
 import { useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
-import { link, linkOff } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
-import {
-	allSides,
-	verticalSides,
-	horizontalSides,
-	topSides,
-	rightSides,
-	bottomSides,
-	leftSides,
-} from '../icons';
-
-import { SpacingSizeControl } from '../components';
-import { cleanEmptyObject, isNumber, isString } from '../utils';
+import { PaddingControl } from '../components';
+import { cleanEmptyObject, isObject } from '../utils';
 
 export function hasPaddingValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
@@ -83,24 +61,7 @@ export function getPaddingEditLabel( {
 	);
 }
 
-function LinkedButton( { isLinked, ...props } ) {
-	const label = isLinked ? __( 'Unlink sides' ) : __( 'Link sides' );
-
-	return (
-		<Tooltip text={ label }>
-			<Button
-				{ ...props }
-				className="component-box-control__linked-button"
-				size="small"
-				icon={ isLinked ? link : linkOff }
-				iconSize={ 24 }
-				aria-label={ label }
-			/>
-		</Tooltip>
-	);
-}
-
-function compacting( attribute, defaultValue = undefined ) {
+export function compacting( attribute, defaultValue = undefined ) {
 	if ( 0 === attribute ) {
 		return 0;
 	}
@@ -115,11 +76,7 @@ function compacting( attribute, defaultValue = undefined ) {
 
 	const compactedAttribute = allEqual ? values[ 0 ] : attribute;
 
-	if (
-		! isNumber( compactedAttribute ) &&
-		! isString( compactedAttribute ) &&
-		null != defaultValue
-	) {
+	if ( isObject( compactedAttribute ) && null != defaultValue ) {
 		if ( compactedAttribute?.top === defaultValue?.top ) {
 			compactedAttribute.top = undefined;
 		}
@@ -149,19 +106,19 @@ function compacting( attribute, defaultValue = undefined ) {
 	return compactedAttribute;
 }
 
-function expand( attribute ) {
-	return isNumber( attribute ) || isString( attribute )
+export function expand( attribute ) {
+	return isObject( attribute )
 		? {
-				top: attribute,
-				right: attribute,
-				bottom: attribute,
-				left: attribute,
-		  }
-		: {
 				top: attribute?.top,
 				right: attribute?.right,
 				bottom: attribute?.bottom,
 				left: attribute?.left,
+		  }
+		: {
+				top: attribute,
+				right: attribute,
+				bottom: attribute,
+				left: attribute,
 		  };
 }
 
@@ -182,23 +139,12 @@ export function PaddingEdit( {
 	const applyRight = Array.isArray( split ) && split?.includes( 'right' );
 	const applyBottom = Array.isArray( split ) && split?.includes( 'bottom' );
 	const applyLeft = Array.isArray( split ) && split?.includes( 'left' );
-	const isVerticalSides =
-		applyTop && applyBottom && ! applyRight && ! applyLeft;
-	const isHorizontalSides =
-		! applyTop && ! applyBottom && applyRight && applyLeft;
 
-	const conpactedValue = compacting( unitone?.padding, defaultValue );
-	const conpactedDefaultValue = compacting( defaultValue );
+	const compactedValue = compacting( unitone?.padding, defaultValue );
+	const compactedDefaultValue = compacting( defaultValue );
 
 	const isMixed =
-		( null != unitone?.padding &&
-			! isNumber( conpactedValue ) &&
-			! isString( conpactedValue ) ) ||
-		( null != defaultValue &&
-			! isNumber( conpactedDefaultValue ) &&
-			! isString( conpactedDefaultValue ) );
-
-	const [ isLinked, setIsLinked ] = useState( ! isMixed );
+		isObject( compactedValue ) || isObject( compactedDefaultValue );
 
 	const onChangePadding = ( newValue ) => {
 		if ( null != newValue ) {
@@ -254,169 +200,65 @@ export function PaddingEdit( {
 		} );
 	};
 
-	let linkedIcon = allSides;
-	if ( isVerticalSides ) {
-		linkedIcon = verticalSides;
-	} else if ( isHorizontalSides ) {
-		linkedIcon = horizontalSides;
+	const sideControls = [];
+
+	if ( isAllSides || applyTop ) {
+		sideControls.push( {
+			key: 'top',
+			value:
+				unitone?.padding?.top ??
+				unitone?.padding ??
+				defaultValue?.top ??
+				defaultValue,
+			onChange: ( newValue ) => onChangePaddingSide( 'top', newValue ),
+		} );
+	}
+
+	if ( isAllSides || applyRight ) {
+		sideControls.push( {
+			key: 'right',
+			value:
+				unitone?.padding?.right ??
+				unitone?.padding ??
+				defaultValue?.right ??
+				defaultValue,
+			onChange: ( newValue ) => onChangePaddingSide( 'right', newValue ),
+		} );
+	}
+
+	if ( isAllSides || applyBottom ) {
+		sideControls.push( {
+			key: 'bottom',
+			value:
+				unitone?.padding?.bottom ??
+				unitone?.padding ??
+				defaultValue?.bottom ??
+				defaultValue,
+			onChange: ( newValue ) => onChangePaddingSide( 'bottom', newValue ),
+		} );
+	}
+
+	if ( isAllSides || applyLeft ) {
+		sideControls.push( {
+			key: 'left',
+			value:
+				unitone?.padding?.left ??
+				unitone?.padding ??
+				defaultValue?.left ??
+				defaultValue,
+			onChange: ( newValue ) => onChangePaddingSide( 'left', newValue ),
+		} );
 	}
 
 	return (
-		<div className="spacing-sizes-control">
-			<Flex>
-				<FlexBlock>
-					<BaseControl.VisualLabel>{ label }</BaseControl.VisualLabel>
-				</FlexBlock>
-
-				{ !! split && (
-					<FlexItem>
-						<LinkedButton
-							isLinked={ isLinked }
-							onClick={ () => setIsLinked( ! isLinked ) }
-						/>
-					</FlexItem>
-				) }
-			</Flex>
-
-			{ ! split ? (
-				<SpacingSizeControl
-					value={ unitone?.padding ?? defaultValue }
-					onChange={ onChangePadding }
-				/>
-			) : (
-				<>
-					{ isLinked ? (
-						<Flex align="center">
-							<FlexItem>
-								<Icon icon={ linkedIcon } size={ 16 } />
-							</FlexItem>
-
-							<FlexBlock>
-								<SpacingSizeControl
-									value={
-										! isMixed &&
-										( unitone?.padding ?? defaultValue )
-									}
-									isMixed={ isMixed }
-									onChange={ onChangePadding }
-								/>
-							</FlexBlock>
-						</Flex>
-					) : (
-						<div
-							style={ {
-								display: 'grid',
-								gridTemplateColumns: 'repeat(2, 1fr)',
-								gap: '8px',
-							} }
-						>
-							{ ( isAllSides || applyTop ) && (
-								<Flex align="center">
-									<FlexItem>
-										<Icon icon={ topSides } size={ 16 } />
-									</FlexItem>
-
-									<FlexBlock>
-										<SpacingSizeControl
-											value={
-												unitone?.padding?.top ??
-												unitone?.padding ??
-												defaultValue?.top ??
-												defaultValue
-											}
-											onChange={ ( newValue ) =>
-												onChangePaddingSide(
-													'top',
-													newValue
-												)
-											}
-										/>
-									</FlexBlock>
-								</Flex>
-							) }
-
-							{ ( isAllSides || applyRight ) && (
-								<Flex align="center">
-									<FlexItem>
-										<Icon icon={ rightSides } size={ 16 } />
-									</FlexItem>
-
-									<FlexBlock>
-										<SpacingSizeControl
-											value={
-												unitone?.padding?.right ??
-												unitone?.padding ??
-												defaultValue?.right ??
-												defaultValue
-											}
-											onChange={ ( newValue ) =>
-												onChangePaddingSide(
-													'right',
-													newValue
-												)
-											}
-										/>
-									</FlexBlock>
-								</Flex>
-							) }
-
-							{ ( isAllSides || applyBottom ) && (
-								<Flex align="center">
-									<FlexItem>
-										<Icon
-											icon={ bottomSides }
-											size={ 16 }
-										/>
-									</FlexItem>
-
-									<FlexBlock>
-										<SpacingSizeControl
-											value={
-												unitone?.padding?.bottom ??
-												unitone?.padding ??
-												defaultValue?.bottom ??
-												defaultValue
-											}
-											onChange={ ( newValue ) =>
-												onChangePaddingSide(
-													'bottom',
-													newValue
-												)
-											}
-										/>
-									</FlexBlock>
-								</Flex>
-							) }
-
-							{ ( isAllSides || applyLeft ) && (
-								<Flex align="center">
-									<FlexItem>
-										<Icon icon={ leftSides } size={ 16 } />
-									</FlexItem>
-
-									<FlexBlock>
-										<SpacingSizeControl
-											value={
-												unitone?.padding?.left ??
-												unitone?.padding ??
-												defaultValue?.left ??
-												defaultValue
-											}
-											onChange={ ( newValue ) =>
-												onChangePaddingSide(
-													'left',
-													newValue
-												)
-											}
-										/>
-									</FlexBlock>
-								</Flex>
-							) }
-						</div>
-					) }
-				</>
-			) }
-		</div>
+		<PaddingControl
+			label={ label }
+			split={ !! split }
+			isMixed={ isMixed }
+			value={ unitone?.padding ?? defaultValue }
+			onChange={ onChangePadding }
+			sideControls={ sideControls }
+		/>
 	);
 }
 
@@ -441,7 +283,7 @@ export function withPaddingBlockProps( settings ) {
 				settings.wrapperProps?.[ 'data-unitone-layout' ],
 				{
 					[ `-padding:${ newPadding }` ]:
-						isNumber( newPadding ) || isString( newPadding ),
+						null != newPadding && ! isObject( newPadding ),
 					[ `-padding-top:${ newPadding?.top }` ]:
 						null != newPadding?.top,
 					[ `-padding-right:${ newPadding?.right }` ]:

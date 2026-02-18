@@ -22,6 +22,33 @@ register_block_type(
  */
 function render_block_unitone_tabs( $attributes, $content, $block ) {
 	$inner_blocks = $block->parsed_block['innerBlocks'] ?? array();
+	$tab_padding  = $attributes['tabPadding'] ?? null;
+
+	$unitone_layout = array();
+
+	$padding_top = $tab_padding['top'] ?? null;
+	if ( ! is_null( $padding_top ) ) {
+		$unitone_layout[] = '-padding-top:' . $padding_top;
+	}
+
+	$padding_right = $tab_padding['right'] ?? null;
+	if ( ! is_null( $padding_right ) ) {
+		$unitone_layout[] = '-padding-right:' . $padding_right;
+	}
+
+	$padding_bottom = $tab_padding['bottom'] ?? null;
+	if ( ! is_null( $padding_bottom ) ) {
+		$unitone_layout[] = '-padding-bottom:' . $padding_bottom;
+	}
+
+	$padding_left = $tab_padding['left'] ?? null;
+	if ( ! is_null( $padding_left ) ) {
+		$unitone_layout[] = '-padding-left:' . $padding_left;
+	}
+
+	if ( is_null( $padding_top ) && is_null( $padding_right ) && is_null( $padding_bottom ) && is_null( $padding_left ) ) {
+		$unitone_layout[] = '-padding:' . $tab_padding;
+	}
 
 	$block_wrapper_attributes = get_block_wrapper_attributes(
 		array(
@@ -70,6 +97,10 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 		$html .= ' data-wp-context=\'{ "clientId": "' . esc_attr( $client_id ) . '" }\'';
 		$html .= ' data-wp-bind--aria-selected="state.selected"';
 		$html .= ' data-wp-on--click="actions.handleTabClick"';
+
+		if ( $unitone_layout ) {
+			$html .= ' data-unitone-layout="' . esc_attr( implode( ' ', $unitone_layout ) ) . '"';
+		}
 
 		if ( $style ) {
 			$html .= ' style="' . esc_attr( implode( ';', $style ) ) . '"';

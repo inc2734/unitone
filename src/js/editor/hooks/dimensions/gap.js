@@ -22,7 +22,7 @@ import { link, linkOff } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
-import { cleanEmptyObject, isNumber, isString } from '../utils';
+import { cleanEmptyObject, isObject } from '../utils';
 import { allSides, verticalSides, horizontalSides } from '../icons';
 
 export function hasGapValue( { name, attributes: { unitone } } ) {
@@ -102,11 +102,7 @@ function compacting( attribute, defaultValue = undefined ) {
 
 	const compactedAttribute = allEqual ? values[ 0 ] : attribute;
 
-	if (
-		! isNumber( compactedAttribute ) &&
-		! isString( compactedAttribute ) &&
-		null != defaultValue
-	) {
+	if ( isObject( compactedAttribute ) && null != defaultValue ) {
 		if ( compactedAttribute?.column === defaultValue?.column ) {
 			compactedAttribute.column = undefined;
 		}
@@ -129,14 +125,14 @@ function compacting( attribute, defaultValue = undefined ) {
 }
 
 function expand( attribute ) {
-	return isNumber( attribute ) || isString( attribute )
+	return isObject( attribute )
 		? {
-				column: attribute,
-				row: attribute,
-		  }
-		: {
 				column: attribute?.column,
 				row: attribute?.row,
+		  }
+		: {
+				column: attribute,
+				row: attribute,
 		  };
 }
 
@@ -155,16 +151,10 @@ export function GapEdit( {
 		getBlockSupport( name, 'unitone.gap.splitOnAxis' ) || false;
 	const isVertical = getBlockSupport( name, 'unitone.gap.vertical' ) || false;
 
-	const conpactedValue = compacting( unitone?.gap, defaultValue );
-	const conpactedDefaultValue = compacting( defaultValue );
-
+	const compactedValue = compacting( unitone?.gap, defaultValue );
+	const compactedDefaultValue = compacting( defaultValue );
 	const isMixed =
-		( null != unitone?.gap &&
-			! isNumber( conpactedValue ) &&
-			! isString( conpactedValue ) ) ||
-		( null != defaultValue &&
-			! isNumber( conpactedDefaultValue ) &&
-			! isString( conpactedDefaultValue ) );
+		isObject( compactedValue ) || isObject( compactedDefaultValue );
 
 	const [ isLinked, setIsLinked ] = useState( ! isMixed );
 
@@ -238,10 +228,7 @@ export function GapEdit( {
 
 							<FlexBlock>
 								<SpacingSizeControl
-									value={
-										! isMixed &&
-										( unitone?.gap ?? defaultValue )
-									}
+									value={ compactedValue ?? defaultValue }
 									isMixed={ isMixed }
 									onChange={ onChangeGap }
 								/>
@@ -346,7 +333,7 @@ export function withGapBlockProps( settings ) {
 				settings.wrapperProps?.[ 'data-unitone-layout' ],
 				{
 					[ `-gap:${ newGap }` ]:
-						isNumber( newGap ) || isString( newGap ),
+						null != newGap && ! isObject( newGap ),
 					[ `-column-gap:${ newGap?.column }` ]:
 						null != newGap?.column,
 					[ `-row-gap:${ newGap?.row }` ]: null != newGap?.row,

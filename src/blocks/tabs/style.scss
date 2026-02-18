@@ -103,6 +103,10 @@
 		--unitone--border-style: var(--unitone--tab--border-style);
 		--unitone--border-color: var(--unitone--tab--inactive-border-color);
 		--unitone--padding: var(--unitone--tab--padding);
+		--unitone--padding-top: calc(var(--unitone--padding) / 2);
+		--unitone--padding-right: var(--unitone--padding);
+		--unitone--padding-bottom: calc(var(--unitone--padding) / 2);
+		--unitone--padding-left: var(--unitone--padding);
 
 		position: relative;
 	}
@@ -121,6 +125,10 @@
 		--unitone--border-style: var(--unitone--tab-panel--border-style);
 		--unitone--border-color: var(--unitone--tab-panel--border-color);
 		--unitone--padding: var(--unitone--tab-panel--padding);
+		--unitone--padding-top: var(--unitone--padding);
+		--unitone--padding-right: var(--unitone--padding);
+		--unitone--padding-bottom: var(--unitone--padding);
+		--unitone--padding-left: var(--unitone--padding);
 
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
@@ -150,6 +158,10 @@
 	--unitone--background-color: initial;
 	--unitone--color: initial;
 	--unitone--padding: initial;
+	--unitone--padding-top: var(--unitone--padding);
+	--unitone--padding-right: var(--unitone--padding);
+	--unitone--padding-bottom: var(--unitone--padding);
+	--unitone--padding-left: var(--unitone--padding);
 
 	appearance: none;
 	display: flex;
@@ -159,7 +171,11 @@
 	background-color: var(--unitone--background-color);
 	color: var(--unitone--color);
 	border: var(--unitone--border-width) var(--unitone--border-style) var(--unitone--border-color);
-	padding: calc(var(--unitone--padding) / 2) var(--unitone--padding);
+	padding:
+		var(--unitone--padding-top)
+		var(--unitone--padding-right)
+		var(--unitone--padding-bottom)
+		var(--unitone--padding-left);
 	text-align: initial;
 	white-space: nowrap;
 
@@ -243,7 +259,7 @@
  */
 :root :where(.unitone-tabs.is-style-bar) {
 	--unitone--border-width: 0px;
-	--unitone--gap: var(--unitone--s2m);
+	--unitone--gap: var(--unitone--s1);
 
 	--unitone--tab--active-background-color: var(--wp--preset--color--unitone-accent);
 	--unitone--tab--active-color: var(--wp--preset--color--white);
@@ -273,7 +289,7 @@
  */
 :root :where(.unitone-tabs.is-style-badge) {
 	--unitone--border-width: 0px;
-	--unitone--gap: var(--unitone--s2m);
+	--unitone--gap: var(--unitone--s1);
 
 	--unitone--tab--active-background-color: var(--wp--preset--color--unitone-accent);
 	--unitone--tab--active-color: var(--wp--preset--color--white);

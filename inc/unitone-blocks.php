@@ -148,7 +148,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 
 	$md_breakpoint = $attributes['mdBreakpoint'] ?? $defaults['md'];
 	$sm_breakpoint = $attributes['smBreakpoint'] ?? $defaults['sm'];
-	$client_id     = $attributes['clientId'] ?? wp_rand();
+	$client_id     = wp_unique_id( 'unitone-grid-' );
 
 	$has_md_item_responsive = false;
 	$has_sm_item_responsive = false;
@@ -211,9 +211,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 		return $block_content;
 	}
 
-	if ( ! $p->get_attribute( 'data-unitone-client-id' ) ) {
-		$p->set_attribute( 'data-unitone-client-id', $client_id );
-	}
+	$p->set_attribute( 'data-unitone-client-id', $client_id );
 
 	static $build_css = null;
 	if ( null === $build_css ) {
@@ -304,6 +302,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 	$css      =
 		$build_css( $selector, $md_breakpoint, 'md', $md_conditions ) .
 		$build_css( $selector, $sm_breakpoint, 'sm', $sm_conditions );
+
 	if ( $css ) {
 		wp_add_inline_style( 'unitone-grid-style', $css );
 	}

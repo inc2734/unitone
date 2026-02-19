@@ -21,7 +21,7 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { memo, useCallback, useEffect } from '@wordpress/element';
+import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
@@ -98,10 +98,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const breakpointUnits = useCustomUnits( {
 		availableUnits: [ 'px', 'em', 'rem' ],
 	} );
-
-	useEffect( () => {
-		setAttributes( { clientId } );
-	}, [ clientId ] );
 
 	const styles = {
 		'--unitone--columns':

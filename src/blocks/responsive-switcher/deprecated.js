@@ -6,6 +6,38 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
+			clientId: {
+				type: 'string',
+				default: '',
+			},
+		},
+
+		supports: {
+			...metadata.supports,
+		},
+
+		save( { attributes } ) {
+			const { clientId } = attributes;
+
+			return (
+				<div
+					{ ...useInnerBlocksProps.save(
+						useBlockProps.save( {
+							className: 'unitone-responsive-switcher',
+							'data-unitone-client-id': clientId || undefined,
+						} )
+					) }
+				/>
+			);
+		},
+	},
+	{
+		attributes: {
+			...metadata.attributes,
+			clientId: {
+				type: 'string',
+				default: '',
+			},
 		},
 
 		supports: {
@@ -21,7 +53,7 @@ export default [
 						{ ...useInnerBlocksProps.save(
 							useBlockProps.save( {
 								className: 'unitone-responsive-switcher',
-								'data-unitone-client-id': clientId,
+								'data-unitone-client-id': clientId || undefined,
 							} )
 						) }
 					/>

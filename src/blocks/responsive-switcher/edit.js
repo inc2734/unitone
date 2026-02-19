@@ -11,7 +11,6 @@ import {
 	__experimentalUseCustomUnits as useCustomUnits,
 } from '@wordpress/components';
 
-import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
@@ -20,10 +19,6 @@ import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { breakpoint, allowedBlocks } = attributes;
-
-	useEffect( () => {
-		setAttributes( { clientId } );
-	}, [ clientId ] );
 
 	const blockProps = useBlockProps( {
 		className: 'unitone-responsive-switcher',

@@ -21,13 +21,14 @@ import {
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { useRef, memo, useCallback, useEffect } from '@wordpress/element';
+import { useRef, memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
 	GridVisualizer,
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
+
 import { ResponsiveSettingsContainer } from '../../js/editor/hooks/components';
 import { useResponsiveGridCSS } from './hooks';
 
@@ -95,10 +96,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const breakpointUnits = useCustomUnits( {
 		availableUnits: [ 'px', 'em', 'rem' ],
 	} );
-
-	useEffect( () => {
-		setAttributes( { clientId } );
-	}, [ clientId ] );
 
 	const styles = {
 		'--unitone--columns':

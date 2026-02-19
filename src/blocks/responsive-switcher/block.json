@@ -11,10 +11,6 @@
 			"type": "string",
 			"default": "600px"
 		},
-		"clientId": {
-			"type": "string",
-			"default": ""
-		},
 		"templateLock": {
 			"type": [ "string" ],
 			"enum": [ "all", "contentOnly", false ]

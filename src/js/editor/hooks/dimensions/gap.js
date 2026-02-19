@@ -6,24 +6,11 @@ import {
 	store as blocksStore,
 } from '@wordpress/blocks';
 
-import {
-	BaseControl,
-	Button,
-	Icon,
-	Tooltip,
-	Flex,
-	FlexBlock,
-	FlexItem,
-} from '@wordpress/components';
-
 import { useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
-import { link, linkOff } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
-import { SpacingSizeControl } from '../components';
+import { GapControl } from '../components';
 import { cleanEmptyObject, isObject } from '../utils';
-import { allSides, verticalSides, horizontalSides } from '../icons';
 
 export function hasGapValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
@@ -67,23 +54,6 @@ export function getGapEditLabel( {
 			&nbsp;:&nbsp;
 			{ __unstableUnitoneSupports?.gap?.code || defaultCode }
 		</>
-	);
-}
-
-function LinkedButton( { isLinked, ...props } ) {
-	const label = isLinked ? __( 'Unlink sides' ) : __( 'Link sides' );
-
-	return (
-		<Tooltip text={ label }>
-			<Button
-				{ ...props }
-				className="component-box-control__linked-button"
-				size="small"
-				icon={ isLinked ? link : linkOff }
-				iconSize={ 24 }
-				aria-label={ label }
-			/>
-		</Tooltip>
 	);
 }
 
@@ -156,8 +126,6 @@ export function GapEdit( {
 	const isMixed =
 		isObject( compactedValue ) || isObject( compactedDefaultValue );
 
-	const [ isLinked, setIsLinked ] = useState( ! isMixed );
-
 	const onChangeGap = ( newValue ) => {
 		if ( null != newValue ) {
 			// RangeControl returns Int, SelectControl returns String.
@@ -197,118 +165,30 @@ export function GapEdit( {
 	};
 
 	return (
-		<div className="spacing-sizes-control">
-			<Flex>
-				<FlexBlock>
-					<BaseControl.VisualLabel>{ label }</BaseControl.VisualLabel>
-				</FlexBlock>
-
-				{ splitOnAxis && (
-					<FlexItem>
-						<LinkedButton
-							isLinked={ isLinked }
-							onClick={ () => setIsLinked( ! isLinked ) }
-						/>
-					</FlexItem>
-				) }
-			</Flex>
-
-			{ ! splitOnAxis ? (
-				<SpacingSizeControl
-					value={ unitone?.gap ?? defaultValue }
-					onChange={ onChangeGap }
-				/>
-			) : (
-				<>
-					{ isLinked ? (
-						<Flex align="center">
-							<FlexItem>
-								<Icon icon={ allSides } size={ 16 } />
-							</FlexItem>
-
-							<FlexBlock>
-								<SpacingSizeControl
-									value={ compactedValue ?? defaultValue }
-									isMixed={ isMixed }
-									onChange={ onChangeGap }
-								/>
-							</FlexBlock>
-						</Flex>
-					) : (
-						<div
-							style={ {
-								display: 'grid',
-								gridTemplateColumns: 'repeat(2, 1fr)',
-								gap: '8px',
-							} }
-						>
-							<Flex align="center">
-								<FlexItem>
-									{ ! isVertical ? (
-										<Icon
-											icon={ verticalSides }
-											size={ 16 }
-										/>
-									) : (
-										<Icon
-											icon={ horizontalSides }
-											size={ 16 }
-										/>
-									) }
-								</FlexItem>
-
-								<FlexBlock>
-									<SpacingSizeControl
-										value={
-											unitone?.gap?.row ??
-											unitone?.gap ??
-											defaultValue?.row ??
-											defaultValue
-										}
-										onChange={ ( newValue ) =>
-											onChangeGapSide( 'row', newValue )
-										}
-									/>
-								</FlexBlock>
-							</Flex>
-
-							<Flex align="center">
-								<FlexItem>
-									{ ! isVertical ? (
-										<Icon
-											icon={ horizontalSides }
-											size={ 16 }
-										/>
-									) : (
-										<Icon
-											icon={ verticalSides }
-											size={ 16 }
-										/>
-									) }
-								</FlexItem>
-
-								<FlexBlock>
-									<SpacingSizeControl
-										value={
-											unitone?.gap?.column ??
-											unitone?.gap ??
-											defaultValue?.column ??
-											defaultValue
-										}
-										onChange={ ( newValue ) =>
-											onChangeGapSide(
-												'column',
-												newValue
-											)
-										}
-									/>
-								</FlexBlock>
-							</Flex>
-						</div>
-					) }
-				</>
-			) }
-		</div>
+		<GapControl
+			label={ label }
+			splitOnAxis={ splitOnAxis }
+			isVertical={ isVertical }
+			isMixed={ isMixed }
+			value={ compactedValue ?? defaultValue }
+			onChange={ onChangeGap }
+			rowValue={
+				unitone?.gap?.row ??
+				unitone?.gap ??
+				defaultValue?.row ??
+				defaultValue
+			}
+			onChangeRow={ ( newValue ) => onChangeGapSide( 'row', newValue ) }
+			columnValue={
+				unitone?.gap?.column ??
+				unitone?.gap ??
+				defaultValue?.column ??
+				defaultValue
+			}
+			onChangeColumn={ ( newValue ) =>
+				onChangeGapSide( 'column', newValue )
+			}
+		/>
 	);
 }
 

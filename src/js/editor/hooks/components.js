@@ -183,6 +183,116 @@ export function PaddingControl( {
 	);
 }
 
+export function GapControl( {
+	label,
+	splitOnAxis = false,
+	isVertical = false,
+	isMixed = false,
+	value,
+	onChange,
+	rowValue,
+	onChangeRow,
+	columnValue,
+	onChangeColumn,
+} ) {
+	const [ isLinked, setIsLinked ] = useState( ! isMixed );
+
+	return (
+		<div className="spacing-sizes-control">
+			<Flex>
+				<FlexBlock>
+					<BaseControl.VisualLabel>{ label }</BaseControl.VisualLabel>
+				</FlexBlock>
+
+				{ splitOnAxis && (
+					<FlexItem>
+						<LinkedButton
+							isLinked={ isLinked }
+							onClick={ () => setIsLinked( ! isLinked ) }
+						/>
+					</FlexItem>
+				) }
+			</Flex>
+
+			{ ! splitOnAxis ? (
+				<SpacingSizeControl value={ value } onChange={ onChange } />
+			) : (
+				<>
+					{ isLinked ? (
+						<Flex align="center">
+							<FlexItem>
+								<Icon icon={ allSides } size={ 16 } />
+							</FlexItem>
+
+							<FlexBlock>
+								<SpacingSizeControl
+									value={ ! isMixed ? value : undefined }
+									isMixed={ isMixed }
+									onChange={ onChange }
+								/>
+							</FlexBlock>
+						</Flex>
+					) : (
+						<div
+							style={ {
+								display: 'grid',
+								gridTemplateColumns: 'repeat(2, 1fr)',
+								gap: '8px',
+							} }
+						>
+							<Flex align="center">
+								<FlexItem>
+									{ ! isVertical ? (
+										<Icon
+											icon={ verticalSides }
+											size={ 16 }
+										/>
+									) : (
+										<Icon
+											icon={ horizontalSides }
+											size={ 16 }
+										/>
+									) }
+								</FlexItem>
+
+								<FlexBlock>
+									<SpacingSizeControl
+										value={ rowValue }
+										onChange={ onChangeRow }
+									/>
+								</FlexBlock>
+							</Flex>
+
+							<Flex align="center">
+								<FlexItem>
+									{ ! isVertical ? (
+										<Icon
+											icon={ horizontalSides }
+											size={ 16 }
+										/>
+									) : (
+										<Icon
+											icon={ verticalSides }
+											size={ 16 }
+										/>
+									) }
+								</FlexItem>
+
+								<FlexBlock>
+									<SpacingSizeControl
+										value={ columnValue }
+										onChange={ onChangeColumn }
+									/>
+								</FlexBlock>
+							</Flex>
+						</div>
+					) }
+				</>
+			) }
+		</div>
+	);
+}
+
 export function SpacingSizeControl( {
 	options,
 	onChange,

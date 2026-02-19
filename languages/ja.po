@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-02-19T04:59:34+00:00\n"
-"PO-Revision-Date: 2026-02-19 14:00+0900\n"
+"POT-Creation-Date: 2026-02-19T05:20:52+00:00\n"
+"PO-Revision-Date: 2026-02-19 14:21+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2932,6 +2932,21 @@ msgstr "バレット"
 msgid "Progress bar"
 msgstr "プログレスバー"
 
+#: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "None"
+msgstr "無し"
+
+#: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "(Mobile: S)"
+msgstr "（モバイル時：S）"
+
+#: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "(Mobile: M)"
+msgstr "（モバイル時：M）"
+
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:13
 msgid "Align items top"
 msgstr "項目を上揃え"
@@ -3050,6 +3065,10 @@ msgid "Icons size"
 msgstr "アイコンのサイズ"
 
 #: dist/blocks/slider/index.js:1
+msgid "Arrows gap"
+msgstr "矢印の間隔"
+
+#: dist/blocks/slider/index.js:1
 msgid "Arrows alignment"
 msgstr "矢印の垂直位置"
 
@@ -3127,18 +3146,6 @@ msgid ""
 "When this block is smaller than this width, the contents are arranged in a "
 "single column."
 msgstr "このブロックがこの幅より小さくなったとき、コンテンツは1列に並びます。"
-
-#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:1
-msgid "None"
-msgstr "無し"
-
-#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:1
-msgid "(Mobile: S)"
-msgstr "（モバイル時：S）"
-
-#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:1
-msgid "(Mobile: M)"
-msgstr "（モバイル時：M）"
 
 #: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:7
 msgid "Fill"
@@ -5757,9 +5764,6 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
-
-#~ msgid "Arrows icon"
-#~ msgstr "矢印のアイコン"
 
 #~ msgid "Arrows icon color"
 #~ msgstr "矢印のアイコンの色"

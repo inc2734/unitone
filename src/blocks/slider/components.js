@@ -53,6 +53,18 @@ export const paginationIconTypes = [
 	},
 ];
 
+const toSpacingCssVar = ( value ) => {
+	if ( null == value || '' === value ) {
+		return undefined;
+	}
+
+	if ( 0 === value || '0' === value ) {
+		return '0px';
+	}
+
+	return `var(--unitone--s${ value })`;
+};
+
 export const Arrows = ( {
 	icons,
 	iconStroke,
@@ -62,6 +74,7 @@ export const Arrows = ( {
 	iconBackgroundColor,
 	iconCustomBackgroundColor,
 	border,
+	gap,
 	alignment,
 	justification,
 } ) => {
@@ -110,6 +123,9 @@ export const Arrows = ( {
 			border?.radius?.bottomLeft;
 		styles[ '--swiper-navigation-border-bottom-right-radius' ] =
 			border?.radius?.bottomRight;
+	}
+	if ( null != gap ) {
+		styles[ '--swiper-buttons-gap' ] = toSpacingCssVar( gap );
 	}
 
 	return (

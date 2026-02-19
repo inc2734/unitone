@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-19T04:59:34+00:00\n"
+"POT-Creation-Date: 2026-02-19T05:20:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2969,6 +2969,24 @@ msgid "Progress bar"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "None"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+#: dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "(Mobile: S)"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+#: dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "(Mobile: M)"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
 #: dist/js/editor/editor.js:13
 msgid "Align items top"
 msgstr ""
@@ -3094,6 +3112,10 @@ msgid "Icons size"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+msgid "Arrows gap"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
 msgid "Arrows alignment"
 msgstr ""
 
@@ -3170,21 +3192,6 @@ msgstr ""
 
 #: dist/blocks/switcher/index.js:4
 msgid "When this block is smaller than this width, the contents are arranged in a single column."
-msgstr ""
-
-#: dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "None"
-msgstr ""
-
-#: dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "(Mobile: S)"
-msgstr ""
-
-#: dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "(Mobile: M)"
 msgstr ""
 
 #: dist/blocks/tabs/index.js:1

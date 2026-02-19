@@ -61,6 +61,7 @@ export default function ( props ) {
 		arrowsJustification,
 		arrowsIcon,
 		arrowsBorder,
+		arrowsGap,
 		hideOutside,
 		pagination,
 		paginationAlignment,
@@ -279,6 +280,7 @@ export default function ( props ) {
 									arrowsIcon?.customBackgroundColor
 								}
 								border={ arrowsBorder }
+								gap={ arrowsGap }
 								alignment={ arrowsAlignment }
 								justification={ arrowsJustification }
 							/>
@@ -324,6 +326,7 @@ export default function ( props ) {
 									arrowsIcon?.customBackgroundColor
 								}
 								border={ arrowsBorder }
+								gap={ arrowsGap }
 								alignment={ arrowsAlignment }
 								justification={ arrowsJustification }
 							/>

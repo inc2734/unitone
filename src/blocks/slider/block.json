@@ -31,6 +31,9 @@
 			"type": "object",
 			"default": {}
 		},
+		"arrowsGap": {
+			"type": "string"
+		},
 		"hideOutside": {
 			"type": "boolean",
 			"default": false

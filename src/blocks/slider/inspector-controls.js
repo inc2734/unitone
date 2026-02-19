@@ -42,6 +42,8 @@ import {
 	cleanEmptyObject,
 } from '../../js/editor/hooks/utils';
 
+import { GapControl } from '../../js/editor/hooks/components';
+
 import { arrowsIconTypes, paginationIconTypes } from './components';
 
 import metadata from './block.json';
@@ -128,6 +130,7 @@ export const SettingsInspectorControls = ( {
 		arrowsJustification,
 		arrowsIcon,
 		arrowsBorder,
+		arrowsGap,
 		hideOutside,
 		pagination,
 		paginationAlignment,
@@ -451,6 +454,7 @@ export const SettingsInspectorControls = ( {
 							arrowsBorder: cleanEmptyObject( {
 								...metadata.attributes.arrowsBorder.default,
 							} ),
+							arrowsGap: metadata.attributes.arrowsGap.default,
 							arrowsAlignment:
 								metadata.attributes.arrowsAlignment.default,
 							arrowsJustification:
@@ -649,13 +653,15 @@ export const SettingsInspectorControls = ( {
 
 									<ToolsPanelItem
 										hasValue={ () =>
-											JSON.stringify(
-												arrowsBorder || {}
-											) !==
-											JSON.stringify(
+											arrowsBorder?.width !==
 												metadata.attributes.arrowsBorder
-													.default || {}
-											)
+													.default?.width ||
+											arrowsBorder?.style !==
+												metadata.attributes.arrowsBorder
+													.default?.style ||
+											arrowsBorder?.color !==
+												metadata.attributes.arrowsBorder
+													.default?.color
 										}
 										isShownByDefault
 										label={ __( 'Border', 'unitone' ) }
@@ -663,9 +669,19 @@ export const SettingsInspectorControls = ( {
 											setAttributes( {
 												arrowsBorder: cleanEmptyObject(
 													{
-														...metadata.attributes
+														...arrowsBorder,
+														width: metadata
+															.attributes
 															.arrowsBorder
-															.default,
+															.default?.width,
+														style: metadata
+															.attributes
+															.arrowsBorder
+															.default?.style,
+														color: metadata
+															.attributes
+															.arrowsBorder
+															.default?.color,
 													}
 												),
 											} );
@@ -679,13 +695,10 @@ export const SettingsInspectorControls = ( {
 											onChange={ ( newAttribute ) => {
 												setAttributes( {
 													arrowsBorder:
-														cleanEmptyObject(
-															newAttribute
-																? {
-																		...newAttribute,
-																  }
-																: {}
-														),
+														cleanEmptyObject( {
+															...arrowsBorder,
+															...newAttribute,
+														} ),
 												} );
 											} }
 											colors={
@@ -831,6 +844,38 @@ export const SettingsInspectorControls = ( {
 									</ToolsPanelItem>
 								</>
 							) }
+
+							<ToolsPanelItem
+								hasValue={ () =>
+									arrowsGap !==
+									metadata.attributes.arrowsGap.default
+								}
+								isShownByDefault
+								label={ __( 'Arrows gap', 'unitone' ) }
+								onDeselect={ () => {
+									setAttributes( {
+										arrowsGap:
+											metadata.attributes.arrowsGap
+												.default,
+									} );
+								} }
+							>
+								<GapControl
+									label={ __( 'Arrows gap', 'unitone' ) }
+									value={
+										arrowsGap ??
+										metadata.attributes.arrowsGap.default
+									}
+									onChange={ ( newAttribute ) => {
+										setAttributes( {
+											arrowsGap:
+												newAttribute ||
+												metadata.attributes.arrowsGap
+													.default,
+										} );
+									} }
+								/>
+							</ToolsPanelItem>
 
 							<ToolsPanelItem
 								hasValue={ () =>

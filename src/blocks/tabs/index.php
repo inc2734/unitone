@@ -21,9 +21,27 @@ register_block_type(
  * @return string
  */
 function render_block_unitone_tabs( $attributes, $content, $block ) {
-	$inner_blocks = $block->parsed_block['innerBlocks'] ?? array();
-	$tab_padding  = $attributes['tabPadding'] ?? null;
-	$panel_ids    = array();
+	$inner_blocks  = $block->parsed_block['innerBlocks'] ?? array();
+	$tab_padding   = $attributes['tabPadding'] ?? null;
+	$panel_ids     = array();
+	$wrapper_style = array();
+
+	$border_width = $attributes['style']['border']['width'] ?? null;
+	if ( ! is_null( $border_width ) ) {
+		$wrapper_style[] = '--unitone--border-width:' . $border_width;
+	}
+
+	$border_style = $attributes['style']['border']['style'] ?? null;
+	if ( ! is_null( $border_style ) ) {
+		$wrapper_style[] = '--unitone--border-style:' . $border_style;
+	}
+
+	$border_color = $attributes['borderColor'] ?? null;
+	if ( ! is_null( $border_color ) ) {
+		$wrapper_style[] = '--unitone--border-color:var(--wp--preset--color--' . $border_color . ')';
+	} elseif ( ! empty( $attributes['style']['border']['color'] ) ) {
+		$wrapper_style[] = '--unitone--border-color:' . $attributes['style']['border']['color'];
+	}
 
 	foreach ( $inner_blocks as $tab_panel ) {
 		$anchor      = $tab_panel['attrs']['anchor'] ?? null;
@@ -77,6 +95,7 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 		array(
 			'class' => 'unitone-tabs',
 			'id'    => ! empty( $attributes['anchor'] ) ? $attributes['anchor'] : false,
+			'style' => $wrapper_style ? implode( ';', $wrapper_style ) . ';' : false,
 		)
 	);
 

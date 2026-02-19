@@ -42,6 +42,16 @@
 		"className": false,
 		"anchor": true,
 		"interactivity": true,
+		"__experimentalBorder": {
+			"color": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"style": true,
+				"width": true
+			}
+		},
 		"unitone": {
 			"gap": true
 		}

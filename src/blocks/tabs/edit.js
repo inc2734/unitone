@@ -74,6 +74,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		matchHeight,
 		allowedBlocks,
 		templateLock,
+		borderColor,
+		style,
 	} = attributes;
 
 	const { insertBlocks, updateBlockAttributes } =
@@ -165,6 +167,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		className: clsx( 'unitone-tabs', {
 			'unitone-tabs--match-height': matchHeight,
 		} ),
+		style: {
+			'--unitone--border-width': style?.border?.width,
+			'--unitone--border-style': style?.border?.style,
+			'--unitone--border-color': !! borderColor
+				? `var(--wp--preset--color--${ borderColor })`
+				: style?.border?.color,
+		},
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps(

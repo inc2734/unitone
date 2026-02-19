@@ -38,6 +38,7 @@
 	grid-auto-flow: row;
 	gap: var(--unitone--gap);
 	visibility: hidden;
+	border: none !important;
 
 	&:has(.unitone-tab-panel[aria-hidden=false]) {
 		visibility: visible;
@@ -279,6 +280,7 @@
 		:where(.unitone-tab) {
 			--unitone--inactive-background-color: transparent !important;
 
+			border: none;
 			border-radius: 3em;
 		}
 	}
@@ -303,6 +305,7 @@
 		}
 
 		:where(.unitone-tab) {
+			border: none;
 			border-radius: 3em;
 		}
 	}

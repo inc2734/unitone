@@ -23,6 +23,29 @@ register_block_type(
 function render_block_unitone_tabs( $attributes, $content, $block ) {
 	$inner_blocks = $block->parsed_block['innerBlocks'] ?? array();
 	$tab_padding  = $attributes['tabPadding'] ?? null;
+	$panel_ids    = array();
+
+	foreach ( $inner_blocks as $tab_panel ) {
+		$anchor      = $tab_panel['attrs']['anchor'] ?? null;
+		$panel_ids[] = $anchor ? $anchor : wp_unique_id( 'unitone-tab-panel-' );
+	}
+
+	$panel_index = 0;
+	$p           = new \WP_HTML_Tag_Processor( $content );
+	while ( $p->next_tag(
+		array(
+			'tag_name'   => 'DIV',
+			'class_name' => 'unitone-tab-panel',
+		)
+	) ) {
+		$panel_id = $panel_ids[ $panel_index ] ?? null;
+		if ( $panel_id ) {
+			$p->set_attribute( 'id', $panel_id );
+			$p->set_attribute( 'data-wp-context', wp_json_encode( array( 'clientId' => $panel_id ) ) );
+		}
+		++$panel_index;
+	}
+	$content = $p->get_updated_html();
 
 	$unitone_layout = array();
 
@@ -59,7 +82,7 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 
 	$interactivity_context = wp_interactivity_data_wp_context(
 		array(
-			'current' => $inner_blocks[0]['attrs']['clientId'] ?? false,
+			'current' => $panel_ids[0] ?? false,
 		)
 	);
 
@@ -89,11 +112,13 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 			$style[] = '--unitone--active-color: ' . $tab_panel['attrs']['style']['color']['text'];
 		}
 
-		$anchor    = $tab_panel['attrs']['anchor'] ?? null;
-		$client_id = $tab_panel['attrs']['clientId'] ?? null;
+		$client_id = $panel_ids[ $i ] ?? null;
+		if ( ! $client_id ) {
+			continue;
+		}
 
 		$html .= '<button role="tab" class="unitone-tab"';
-		$html .= ' aria-controls="' . esc_attr( $anchor ? $anchor : $client_id ) . '"';
+		$html .= ' aria-controls="' . esc_attr( $client_id ) . '"';
 		$html .= ' data-wp-context=\'{ "clientId": "' . esc_attr( $client_id ) . '" }\'';
 		$html .= ' data-wp-bind--aria-selected="state.selected"';
 		$html .= ' data-wp-on--click="actions.handleTabClick"';

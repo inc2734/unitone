@@ -22,10 +22,13 @@ register_block_type(
  */
 function render_block_unitone_tab_panel( $attributes, $content, $block ) {
 	$tab_panel_padding = $block->context['unitone/tabPanelPadding'] ?? null;
+	$panel_id          = ! empty( $attributes['anchor'] )
+		? $attributes['anchor']
+		: wp_unique_id( 'unitone-tab-panel-' );
 
 	$wrapper_attributes = array(
 		'class' => 'unitone-tab-panel',
-		'id'    => ! empty( $attributes['anchor'] ) ? $attributes['anchor'] : $attributes['clientId'],
+		'id'    => $panel_id,
 	);
 
 	$unitone_layout = array();
@@ -71,7 +74,7 @@ function render_block_unitone_tab_panel( $attributes, $content, $block ) {
 			%3$s
 		</div>',
 		$block_wrapper_attributes,
-		esc_attr( $attributes['clientId'] ),
+		esc_attr( $panel_id ),
 		$content
 	);
 }

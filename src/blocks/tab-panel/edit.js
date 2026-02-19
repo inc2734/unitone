@@ -14,13 +14,7 @@ import { isObject } from '../../js/editor/hooks/utils';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
-export default function ( {
-	attributes,
-	setAttributes,
-	isSelected,
-	clientId,
-	context,
-} ) {
+export default function ( { attributes, isSelected, clientId, context } ) {
 	const { ariaHidden, templateLock } = attributes;
 
 	const tabPanelPadding = context?.[ 'unitone/tabPanelPadding' ];
@@ -33,10 +27,6 @@ export default function ( {
 	const parentClientId = getBlockParents( clientId )?.[ 0 ];
 	const tabPanels =
 		( !! parentClientId && getBlocks( parentClientId ) ) || [];
-
-	useEffect( () => {
-		setAttributes( { clientId } );
-	}, [ clientId ] );
 
 	useEffect( () => {
 		if ( isSelected ) {

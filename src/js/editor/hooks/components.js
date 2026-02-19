@@ -155,7 +155,11 @@ export function PaddingControl( {
 							} }
 						>
 							{ sideControls.map(
-								( { key, value, onChange: onSideChange } ) => (
+								( {
+									key,
+									sideValue,
+									onChange: onSideChange,
+								} ) => (
 									<Flex key={ key } align="center">
 										<FlexItem>
 											<Icon
@@ -166,7 +170,7 @@ export function PaddingControl( {
 
 										<FlexBlock>
 											<SpacingSizeControl
-												value={ value }
+												value={ sideValue }
 												onChange={ onSideChange }
 											/>
 										</FlexBlock>

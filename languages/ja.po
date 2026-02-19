@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-02-19T05:20:52+00:00\n"
-"PO-Revision-Date: 2026-02-19 14:21+0900\n"
+"POT-Creation-Date: 2026-02-19T05:34:45+00:00\n"
+"PO-Revision-Date: 2026-02-19 14:37+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2182,6 +2182,10 @@ msgstr "アブストラクト背景"
 #: dist/js/editor/editor.js:16
 msgid "Settings"
 msgstr "設定"
+
+#: dist/blocks/accordion/index.js:1
+msgid "Open by default"
+msgstr "デフォルトで開く"
 
 #: dist/blocks/accordion/index.js:1
 msgid "Mark"

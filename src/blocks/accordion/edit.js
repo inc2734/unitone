@@ -10,6 +10,7 @@ import {
 } from '@wordpress/block-editor';
 
 import {
+	BaseControl,
 	Button,
 	TextControl,
 	ToggleControl,
@@ -32,6 +33,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const {
 		summary,
 		mark,
+		openByDefault,
 		q,
 		qLabel,
 		qWidth,
@@ -119,34 +121,69 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							} )
 						}
 					>
-						<fieldset className="block-editor-text-transform-control">
-							<div className="block-editor-text-transform-control__buttons">
-								<Button
-									isPressed={ 'chevron-down' === mark }
-									label={ __( 'Chevron down', 'unitone' ) }
-									icon={ () => (
-										<ChevronDown
-											width={ 16 }
-											height={ 16 }
-										/>
-									) }
-									onClick={ () =>
-										setAttributes( { mark: undefined } )
-									}
-								/>
+						<BaseControl
+							__nextHasNoMarginBottom
+							label={ __( 'Mark', 'unitone' ) }
+							id={ `unitone-accordion-mark-${ clientId }` }
+						>
+							<fieldset className="block-editor-text-transform-control">
+								<div className="block-editor-text-transform-control__buttons">
+									<Button
+										isPressed={ 'chevron-down' === mark }
+										label={ __(
+											'Chevron down',
+											'unitone'
+										) }
+										icon={ () => (
+											<ChevronDown
+												width={ 16 }
+												height={ 16 }
+											/>
+										) }
+										onClick={ () =>
+											setAttributes( { mark: undefined } )
+										}
+									/>
 
-								<Button
-									isPressed={ 'cross' === mark }
-									label={ __( 'cross', 'unitone' ) }
-									icon={ () => (
-										<Cross width={ 16 } height={ 16 } />
-									) }
-									onClick={ () =>
-										setAttributes( { mark: 'cross' } )
-									}
-								/>
-							</div>
-						</fieldset>
+									<Button
+										isPressed={ 'cross' === mark }
+										label={ __( 'cross', 'unitone' ) }
+										icon={ () => (
+											<Cross width={ 16 } height={ 16 } />
+										) }
+										onClick={ () =>
+											setAttributes( { mark: 'cross' } )
+										}
+									/>
+								</div>
+							</fieldset>
+						</BaseControl>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							openByDefault !==
+							metadata.attributes.openByDefault.default
+						}
+						isShownByDefault
+						label={ __( 'Open by default', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								openByDefault:
+									metadata.attributes.openByDefault.default,
+							} )
+						}
+					>
+						<ToggleControl
+							__nextHasNoMarginBottom
+							label={ __( 'Open by default', 'unitone' ) }
+							checked={ openByDefault }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									openByDefault: newAttribute,
+								} );
+							} }
+						/>
 					</ToolsPanelItem>
 				</ToolsPanel>
 
@@ -273,7 +310,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<details { ...blockProps } open={ hasSelection }>
+			<details { ...blockProps } open={ hasSelection || openByDefault }>
 				<summary // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 					className="unitone-accordion__summary"
 					onClick={ ( event ) => event.preventDefault() }

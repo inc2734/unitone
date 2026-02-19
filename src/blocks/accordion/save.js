@@ -12,6 +12,7 @@ export default function ( { attributes } ) {
 	const {
 		summary,
 		mark,
+		openByDefault,
 		q,
 		qLabel,
 		qWidth,
@@ -36,6 +37,7 @@ export default function ( { attributes } ) {
 						: style?.border?.color,
 				},
 			} ) }
+			open={ openByDefault }
 			data-wp-interactive='{ "namespace": "unitone/accordion" }'
 		>
 			<summary

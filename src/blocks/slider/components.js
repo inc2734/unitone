@@ -3,6 +3,8 @@ import feather from 'feather-icons';
 
 import { __ } from '@wordpress/i18n';
 
+import { isObject } from '../../js/editor/hooks/utils';
+
 export const arrowsIconTypes = [
 	{
 		name: 'arrow',
@@ -59,6 +61,7 @@ export const Arrows = ( {
 	iconCustomColor,
 	iconBackgroundColor,
 	iconCustomBackgroundColor,
+	border,
 	alignment,
 	justification,
 } ) => {
@@ -85,6 +88,28 @@ export const Arrows = ( {
 	} else if ( !! iconCustomBackgroundColor ) {
 		styles[ '--swiper-navigation-background-color' ] =
 			iconCustomBackgroundColor;
+	}
+	if ( !! border?.width ) {
+		styles[ '--swiper-navigation-border-width' ] = border?.width;
+	}
+	if ( !! border?.style ) {
+		styles[ '--swiper-navigation-border-style' ] = border?.style;
+	}
+	if ( !! border?.color ) {
+		styles[ '--swiper-navigation-border-color' ] = border?.color;
+	}
+	if ( null != border?.radius && ! isObject( border?.radius ) ) {
+		styles[ '--swiper-navigation-border-radius' ] = border?.radius;
+	}
+	if ( isObject( border?.radius ) ) {
+		styles[ '--swiper-navigation-border-top-left-radius' ] =
+			border?.radius?.topLeft;
+		styles[ '--swiper-navigation-border-top-right-radius' ] =
+			border?.radius?.topRight;
+		styles[ '--swiper-navigation-border-bottom-left-radius' ] =
+			border?.radius?.bottomLeft;
+		styles[ '--swiper-navigation-border-bottom-right-radius' ] =
+			border?.radius?.bottomRight;
 	}
 
 	return (

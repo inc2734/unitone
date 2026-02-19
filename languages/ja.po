@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-02-14T06:21:52+00:00\n"
-"PO-Revision-Date: 2026-02-14 15:29+0900\n"
+"POT-Creation-Date: 2026-02-19T04:59:34+00:00\n"
+"PO-Revision-Date: 2026-02-19 14:00+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -1713,6 +1713,14 @@ msgid "Single Posts: Sticky Header"
 msgstr "個別投稿：上部固定ヘッダー"
 
 #: App/Controller/Manager/dist/js/app.js:1
+msgid "Save Settings"
+msgstr "設定を保存"
+
+#: App/Controller/Manager/dist/js/app.js:1
+msgid "Reset All Settings"
+msgstr "すべての設定をリセット"
+
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "License"
 msgstr "ライセンス"
 
@@ -1730,20 +1738,6 @@ msgstr ""
 #: App/Controller/Manager/dist/js/app.js:1
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
-
-#: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:7
-#: App/Controller/Manager/dist/js/app.js:9
-#: App/Controller/Manager/dist/js/app.js:12
-msgid "Save Settings"
-msgstr "設定を保存"
-
-#: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:7
-#: App/Controller/Manager/dist/js/app.js:9
-#: App/Controller/Manager/dist/js/app.js:12
-msgid "Reset All Settings"
-msgstr "すべての設定をリセット"
 
 #: App/Controller/Manager/dist/js/app.js:1
 msgid "Patterns / Styles Library"
@@ -2180,9 +2174,8 @@ msgstr "アブストラクト背景"
 #: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:13
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:1
-#: dist/blocks/tabs/index.js:1 dist/blocks/text/index.js:1
-#: dist/blocks/texture/index.js:1 dist/blocks/timeline-dots/index.js:1
-#: dist/blocks/vertical-writing/index.js:1
+#: dist/blocks/text/index.js:1 dist/blocks/texture/index.js:1
+#: dist/blocks/timeline-dots/index.js:1 dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
@@ -3029,24 +3022,32 @@ msgid "Using the prev/next buttons"
 msgstr "前へ/次へボタンを使用する"
 
 #: dist/blocks/slider/index.js:1
-msgid "Arrows icon"
-msgstr "矢印のアイコン"
+msgid "Icon"
+msgstr "アイコン"
 
 #: dist/blocks/slider/index.js:1
-msgid "Arrows icon color"
-msgstr "矢印のアイコンの色"
+msgid "Icons color"
+msgstr "アイコンの色"
 
 #: dist/blocks/slider/index.js:1
-msgid "Arrows icon background color"
-msgstr "矢印のアイコンの背景色"
+msgid "Icons background color"
+msgstr "アイコンの背景色"
 
 #: dist/blocks/slider/index.js:1
-msgid "Arrows icon line thickness"
-msgstr "矢印のアイコンの太さ"
+msgid "Border"
+msgstr "枠線"
+
+#: dist/blocks/slider/index.js:1 dist/blocks/texture/index.js:1
+msgid "Border radius"
+msgstr "角丸"
 
 #: dist/blocks/slider/index.js:1
-msgid "Arrows icon size"
-msgstr "矢印のアイコンのサイズ"
+msgid "Icons line thickness"
+msgstr "アイコンの線の太さ"
+
+#: dist/blocks/slider/index.js:1
+msgid "Icons size"
+msgstr "アイコンのサイズ"
 
 #: dist/blocks/slider/index.js:1
 msgid "Arrows alignment"
@@ -3127,13 +3128,37 @@ msgid ""
 "single column."
 msgstr "このブロックがこの幅より小さくなったとき、コンテンツは1列に並びます。"
 
+#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:1
+msgid "None"
+msgstr "無し"
+
+#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:1
+msgid "(Mobile: S)"
+msgstr "（モバイル時：S）"
+
+#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:1
+msgid "(Mobile: M)"
+msgstr "（モバイル時：M）"
+
 #: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:7
 msgid "Fill"
 msgstr "塗りつぶし"
 
 #: dist/blocks/tabs/index.js:1
+msgid "Tabs settings"
+msgstr "タブの設定"
+
+#: dist/blocks/tabs/index.js:1
 msgid "Tab bar justification"
 msgstr "タブバーの配置"
+
+#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:1
+msgid "Padding"
+msgstr "パディング"
+
+#: dist/blocks/tabs/index.js:1
+msgid "Tab panels settings"
+msgstr "タブパネルの設定"
 
 #: dist/blocks/tabs/index.js:1
 msgid "Make tab panels the same height"
@@ -3228,10 +3253,6 @@ msgstr "下からの距離"
 #: dist/blocks/texture/index.js:1
 msgid "Distance from left"
 msgstr "左からの距離"
-
-#: dist/blocks/texture/index.js:1
-msgid "Border radius"
-msgstr "角丸"
 
 #: dist/blocks/timeline-dots-column/index.js:1
 #: dist/blocks/with-sidebar-content/index.js:1
@@ -3447,22 +3468,6 @@ msgstr "リンクを適用"
 #: dist/formats/formats.js:2
 msgid "Media link"
 msgstr "メディアリンク"
-
-#: dist/js/editor/editor.js:1
-msgid "None"
-msgstr "無し"
-
-#: dist/js/editor/editor.js:1
-msgid "(Mobile: S)"
-msgstr "（モバイル時：S）"
-
-#: dist/js/editor/editor.js:1
-msgid "(Mobile: M)"
-msgstr "（モバイル時：M）"
-
-#: dist/js/editor/editor.js:1
-msgid "Padding"
-msgstr "パディング"
 
 #: dist/js/editor/editor.js:1
 msgid "Margins at both ends"
@@ -5752,3 +5757,12 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
+
+#~ msgid "Arrows icon"
+#~ msgstr "矢印のアイコン"
+
+#~ msgid "Arrows icon color"
+#~ msgstr "矢印のアイコンの色"
+
+#~ msgid "Arrows icon size"
+#~ msgstr "矢印のアイコンのサイズ"

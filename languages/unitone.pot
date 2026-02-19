@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 25.6.1\n"
+"Project-Id-Version: unitone 25.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-14T06:21:52+00:00\n"
+"POT-Creation-Date: 2026-02-19T04:59:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -1732,6 +1732,14 @@ msgid "Single Posts: Sticky Header"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
+msgid "Save Settings"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:1
+msgid "Reset All Settings"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "License"
 msgstr ""
 
@@ -1745,20 +1753,6 @@ msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
 msgid "If the license key entered is valid, the theme can be updated."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:7
-#: App/Controller/Manager/dist/js/app.js:9
-#: App/Controller/Manager/dist/js/app.js:12
-msgid "Save Settings"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:1
-#: App/Controller/Manager/dist/js/app.js:7
-#: App/Controller/Manager/dist/js/app.js:9
-#: App/Controller/Manager/dist/js/app.js:12
-msgid "Reset All Settings"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:1
@@ -2188,7 +2182,6 @@ msgstr ""
 #: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1
 #: dist/blocks/switcher/index.js:1
-#: dist/blocks/tabs/index.js:1
 #: dist/blocks/text/index.js:1
 #: dist/blocks/texture/index.js:1
 #: dist/blocks/timeline-dots/index.js:1
@@ -3072,23 +3065,32 @@ msgid "Using the prev/next buttons"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-msgid "Arrows icon"
+msgid "Icon"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-msgid "Arrows icon color"
+msgid "Icons color"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-msgid "Arrows icon background color"
+msgid "Icons background color"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-msgid "Arrows icon line thickness"
+msgid "Border"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
-msgid "Arrows icon size"
+#: dist/blocks/texture/index.js:1
+msgid "Border radius"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Icons line thickness"
+msgstr ""
+
+#: dist/blocks/slider/index.js:1
+msgid "Icons size"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -3171,12 +3173,40 @@ msgid "When this block is smaller than this width, the contents are arranged in 
 msgstr ""
 
 #: dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "None"
+msgstr ""
+
+#: dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "(Mobile: S)"
+msgstr ""
+
+#: dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "(Mobile: M)"
+msgstr ""
+
+#: dist/blocks/tabs/index.js:1
 #: dist/js/editor/editor.js:7
 msgid "Fill"
 msgstr ""
 
 #: dist/blocks/tabs/index.js:1
+msgid "Tabs settings"
+msgstr ""
+
+#: dist/blocks/tabs/index.js:1
 msgid "Tab bar justification"
+msgstr ""
+
+#: dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+msgid "Padding"
+msgstr ""
+
+#: dist/blocks/tabs/index.js:1
+msgid "Tab panels settings"
 msgstr ""
 
 #: dist/blocks/tabs/index.js:1
@@ -3276,10 +3306,6 @@ msgstr ""
 
 #: dist/blocks/texture/index.js:1
 msgid "Distance from left"
-msgstr ""
-
-#: dist/blocks/texture/index.js:1
-msgid "Border radius"
 msgstr ""
 
 #: dist/blocks/timeline-dots-column/index.js:1
@@ -3493,22 +3519,6 @@ msgstr ""
 
 #: dist/formats/formats.js:2
 msgid "Media link"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "None"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "(Mobile: S)"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "(Mobile: M)"
-msgstr ""
-
-#: dist/js/editor/editor.js:1
-msgid "Padding"
 msgstr ""
 
 #: dist/js/editor/editor.js:1

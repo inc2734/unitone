@@ -17,6 +17,7 @@ export default function ( { attributes } ) {
 		arrowsAlignment,
 		arrowsJustification,
 		arrowsIcon,
+		arrowsBorder,
 		hideOutside,
 		pagination,
 		paginationAlignment,
@@ -101,6 +102,7 @@ export default function ( { attributes } ) {
 							iconCustomBackgroundColor={
 								arrowsIcon?.customBackgroundColor
 							}
+							border={ arrowsBorder }
 							alignment={ arrowsAlignment }
 							justification={ arrowsJustification }
 						/>
@@ -161,6 +163,7 @@ export default function ( { attributes } ) {
 							iconCustomBackgroundColor={
 								arrowsIcon?.customBackgroundColor
 							}
+							border={ arrowsBorder }
 							alignment={ arrowsAlignment }
 							justification={ arrowsJustification }
 						/>

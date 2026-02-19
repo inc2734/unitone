@@ -49,9 +49,7 @@ function Controls( { value, onChange, options } ) {
 }
 
 function LinkedButton( { isLinked, ...props } ) {
-	const label = isLinked
-		? __( 'Unlink sides', 'unitone' )
-		: __( 'Link sides', 'unitone' );
+	const label = isLinked ? __( 'Unlink sides' ) : __( 'Link sides' );
 
 	return (
 		<Tooltip text={ label }>

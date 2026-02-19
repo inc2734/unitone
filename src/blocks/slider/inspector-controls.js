@@ -2,12 +2,14 @@ import feather from 'feather-icons';
 
 import {
 	InspectorControls,
+	__experimentalBorderRadiusControl as BorderRadiusControl,
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 
 import {
 	BaseControl,
+	BorderControl,
 	Button,
 	RangeControl,
 	SelectControl,
@@ -125,6 +127,7 @@ export const SettingsInspectorControls = ( {
 		arrowsAlignment,
 		arrowsJustification,
 		arrowsIcon,
+		arrowsBorder,
 		hideOutside,
 		pagination,
 		paginationAlignment,
@@ -445,6 +448,9 @@ export const SettingsInspectorControls = ( {
 							arrowsIcon: cleanEmptyObject( {
 								...metadata.attributes.arrowsIcon.default,
 							} ),
+							arrowsBorder: cleanEmptyObject( {
+								...metadata.attributes.arrowsBorder.default,
+							} ),
 							arrowsAlignment:
 								metadata.attributes.arrowsAlignment.default,
 							arrowsJustification:
@@ -485,7 +491,7 @@ export const SettingsInspectorControls = ( {
 									metadata.attributes.arrowsIcon.default.type
 								}
 								isShownByDefault
-								label={ __( 'Arrows icon', 'unitone' ) }
+								label={ __( 'Icon', 'unitone' ) }
 								onDeselect={ () => {
 									setAttributes( {
 										arrowsIcon: {
@@ -498,7 +504,7 @@ export const SettingsInspectorControls = ( {
 							>
 								<BaseControl
 									__nextHasNoMarginBottom
-									label={ __( 'Arrows icon', 'unitone' ) }
+									label={ __( 'Icon', 'unitone' ) }
 									id="unitone/slider/arrowsIcon"
 								>
 									<fieldset className="block-editor-text-transform-control">
@@ -558,7 +564,7 @@ export const SettingsInspectorControls = ( {
 											settings={ [
 												{
 													label: __(
-														'Arrows icon color',
+														'Icons color',
 														'unitone'
 													),
 													colorValue:
@@ -596,7 +602,7 @@ export const SettingsInspectorControls = ( {
 												},
 												{
 													label: __(
-														'Arrows icon background color',
+														'Icons background color',
 														'unitone'
 													),
 													colorValue:
@@ -643,13 +649,107 @@ export const SettingsInspectorControls = ( {
 
 									<ToolsPanelItem
 										hasValue={ () =>
+											JSON.stringify(
+												arrowsBorder || {}
+											) !==
+											JSON.stringify(
+												metadata.attributes.arrowsBorder
+													.default || {}
+											)
+										}
+										isShownByDefault
+										label={ __( 'Border', 'unitone' ) }
+										onDeselect={ () => {
+											setAttributes( {
+												arrowsBorder: cleanEmptyObject(
+													{
+														...metadata.attributes
+															.arrowsBorder
+															.default,
+													}
+												),
+											} );
+										} }
+									>
+										<BorderControl
+											__next40pxDefaultSize
+											label={ __( 'Border', 'unitone' ) }
+											value={ arrowsBorder }
+											withSlider={ true }
+											onChange={ ( newAttribute ) => {
+												setAttributes( {
+													arrowsBorder:
+														cleanEmptyObject(
+															newAttribute
+																? {
+																		...newAttribute,
+																  }
+																: {}
+														),
+												} );
+											} }
+											colors={
+												colorGradientSettings.colors
+											}
+											width={ 116 }
+											__experimentalIsRenderedInSidebar={
+												true
+											}
+										/>
+									</ToolsPanelItem>
+
+									<ToolsPanelItem
+										hasValue={ () =>
+											JSON.stringify(
+												arrowsBorder?.radius
+											) !==
+											JSON.stringify(
+												metadata.attributes.arrowsBorder
+													.default?.radius
+											)
+										}
+										isShownByDefault
+										label={ __(
+											'Border radius',
+											'unitone'
+										) }
+										onDeselect={ () => {
+											setAttributes( {
+												arrowsBorder: cleanEmptyObject(
+													{
+														...arrowsBorder,
+														radius: metadata
+															.attributes
+															.arrowsBorder
+															.default?.radius,
+													}
+												),
+											} );
+										} }
+									>
+										<BorderRadiusControl
+											values={ arrowsBorder?.radius }
+											onChange={ ( newAttribute ) => {
+												setAttributes( {
+													arrowsBorder:
+														cleanEmptyObject( {
+															...arrowsBorder,
+															radius: newAttribute,
+														} ),
+												} );
+											} }
+										/>
+									</ToolsPanelItem>
+
+									<ToolsPanelItem
+										hasValue={ () =>
 											arrowsIcon?.stroke !==
 											metadata.attributes.arrowsIcon
 												.default.stroke
 										}
 										isShownByDefault
 										label={ __(
-											'Arrows icon line thickness',
+											'Icons line thickness',
 											'unitone'
 										) }
 										onDeselect={ () => {
@@ -667,7 +767,7 @@ export const SettingsInspectorControls = ( {
 											__next40pxDefaultSize
 											__nextHasNoMarginBottom
 											label={ __(
-												'Arrows icon line thickness',
+												'Icons line thickness',
 												'unitone'
 											) }
 											value={ arrowsIcon?.stroke }
@@ -694,10 +794,7 @@ export const SettingsInspectorControls = ( {
 												.default.size
 										}
 										isShownByDefault
-										label={ __(
-											'Arrows icon size',
-											'unitone'
-										) }
+										label={ __( 'Icons size', 'unitone' ) }
 										onDeselect={ () => {
 											setAttributes( {
 												arrowsIcon: {
@@ -713,7 +810,7 @@ export const SettingsInspectorControls = ( {
 											__next40pxDefaultSize
 											__nextHasNoMarginBottom
 											label={ __(
-												'Arrows icon size',
+												'Icons size',
 												'unitone'
 											) }
 											value={ arrowsIcon?.size }

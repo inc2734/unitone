@@ -417,6 +417,28 @@ function unitone_apply_slider_thumbnails( $block_content, $block ) {
 add_filter( 'render_block_unitone/slider', 'unitone_apply_slider_thumbnails', 10, 2 );
 
 /**
+ * Patch for image display instability in iOS Safari.
+ * Use eager loading for images in marquee block.
+ *
+ * @param string $block_content The block content.
+ * @return string
+ */
+function unitone_apply_ios_marquee_image_fix( $block_content ) {
+	if ( false === strpos( $block_content, '<img' ) ) {
+		return $block_content;
+	}
+
+	$p = new \WP_HTML_Tag_Processor( $block_content );
+
+	while ( $p->next_tag( array( 'tag_name' => 'IMG' ) ) ) {
+		$p->set_attribute( 'loading', 'eager' );
+	}
+
+	return $p->get_updated_html();
+}
+add_filter( 'render_block_unitone/marquee', 'unitone_apply_ios_marquee_image_fix' );
+
+/**
  * Filters the supported block attributes for block bindings of unitone/badge.
  *
  * @param array $supported_block_attributes The block's attributes that are supported by block bindings.

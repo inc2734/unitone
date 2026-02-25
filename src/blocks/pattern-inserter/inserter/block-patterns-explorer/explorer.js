@@ -15,7 +15,12 @@ import { __ } from '@wordpress/i18n';
 import PatternExplorerSidebar from './sidebar';
 import PatternList from './patterns-list';
 
-function PatternsExplorer( { initialCategory, patternCategories } ) {
+function PatternsExplorer( {
+	initialCategory,
+	patternCategories,
+	insertionPointClientId,
+	onSelectPattern,
+} ) {
 	const [ filterValue, setFilterValue ] = useState( '' );
 	const [ selectedCategory, setSelectedCategory ] = useState(
 		initialCategory?.name
@@ -33,6 +38,8 @@ function PatternsExplorer( { initialCategory, patternCategories } ) {
 				filterValue={ filterValue }
 				selectedCategory={ selectedCategory }
 				patternCategories={ patternCategories }
+				insertionPointClientId={ insertionPointClientId }
+				onSelectPattern={ onSelectPattern }
 			/>
 		</div>
 	);

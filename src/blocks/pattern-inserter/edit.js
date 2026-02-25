@@ -82,6 +82,10 @@ export default function ( { clientId } ) {
 	const [ showPatternsExplorer, setShowPatternsExplorer ] = useState( false );
 
 	const { removeBlocks } = useDispatch( blockEditorStore );
+	const onSelectPattern = useCallback( () => {
+		setShowPatternsExplorer( false );
+		removeBlocks( clientId, false );
+	}, [ clientId, removeBlocks ] );
 
 	const rootClientId = null;
 	const categories = usePatternsCategories( rootClientId );
@@ -123,6 +127,8 @@ export default function ( { clientId } ) {
 				<PatternsExplorerModal
 					initialCategory={ selectedCategory }
 					patternCategories={ categories }
+					insertionPointClientId={ clientId }
+					onSelectPattern={ onSelectPattern }
 					onModalClose={ () => setShowPatternsExplorer( false ) }
 				/>
 			) }

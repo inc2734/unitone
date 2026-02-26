@@ -517,6 +517,37 @@
 	display: none;
 }
 
+.unitone-spacing-sizes-control {
+	&__option--disabled {
+		color: var(--unitone--color--gray);
+		pointer-events: none;
+	}
+
+	&__blank {
+		&::before {
+			content: '\00a0';
+		}
+	}
+
+	&__separator {
+		padding-block: 0;
+		min-height: 12px;
+		line-height: 12px;
+		pointer-events: none;
+
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			border-top: 1px solid color-mix(in srgb, currentColor, transparent 60%);
+		}
+
+		span {
+			display: none !important;
+		}
+	}
+}
+
 // @todo Support for the fact that the preview and draft buttons are hidden on the top toolbar, depending on the screen size.
 @media (min-width: 960px) {
 	.is-fullscreen-mode .block-editor-block-contextual-toolbar.is-fixed {

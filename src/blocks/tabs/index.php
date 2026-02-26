@@ -23,6 +23,7 @@ register_block_type(
 function render_block_unitone_tabs( $attributes, $content, $block ) {
 	$inner_blocks  = $block->parsed_block['innerBlocks'] ?? array();
 	$tab_padding   = $attributes['tabPadding'] ?? null;
+	$tab_ids       = array();
 	$panel_ids     = array();
 	$wrapper_style = array();
 
@@ -45,7 +46,9 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 
 	foreach ( $inner_blocks as $tab_panel ) {
 		$anchor      = $tab_panel['attrs']['anchor'] ?? null;
-		$panel_ids[] = $anchor ? $anchor : wp_unique_id( 'unitone-tab-panel-' );
+		$panel_id    = $anchor ? $anchor : wp_unique_id( 'unitone-tab-panel-' );
+		$panel_ids[] = $panel_id;
+		$tab_ids[]   = 'unitone-tab-for-' . $panel_id;
 	}
 
 	$panel_index = 0;
@@ -57,9 +60,13 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 		)
 	) ) {
 		$panel_id = $panel_ids[ $panel_index ] ?? null;
+		$tab_id   = $tab_ids[ $panel_index ] ?? null;
 		if ( $panel_id ) {
 			$p->set_attribute( 'id', $panel_id );
 			$p->set_attribute( 'data-wp-context', wp_json_encode( array( 'clientId' => $panel_id ) ) );
+			if ( $tab_id ) {
+				$p->set_attribute( 'aria-labelledby', $tab_id );
+			}
 		}
 		++$panel_index;
 	}
@@ -111,7 +118,7 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 	}
 
 	$html  = sprintf(
-		'<div %1$s data-wp-interactive="unitone/tabs" %2$s>',
+		'<div %1$s data-wp-interactive="unitone/tabs" data-wp-init="callbacks.syncFromHash" data-wp-on-window--hashchange="callbacks.syncFromHash" data-wp-on-document--click="actions.handleDocumentClick" %2$s>',
 		$block_wrapper_attributes,
 		$interactivity_context
 	);
@@ -132,11 +139,13 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 		}
 
 		$client_id = $panel_ids[ $i ] ?? null;
-		if ( ! $client_id ) {
+		$tab_id    = $tab_ids[ $i ] ?? null;
+		if ( ! $client_id || ! $tab_id ) {
 			continue;
 		}
 
 		$html .= '<button role="tab" class="unitone-tab"';
+		$html .= ' id="' . esc_attr( $tab_id ) . '"';
 		$html .= ' aria-controls="' . esc_attr( $client_id ) . '"';
 		$html .= ' data-wp-context=\'{ "clientId": "' . esc_attr( $client_id ) . '" }\'';
 		$html .= ' data-wp-bind--aria-selected="state.selected"';

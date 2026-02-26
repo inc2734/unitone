@@ -104,7 +104,7 @@
 	pointer-events: none;
 }
 
-.block-editor-block-list__layout .block-editor-block-list__block.is-highlighted:not(.has-fit-text):after,
+.block-editor-block-list__layout .block-editor-block-list__block.is-highlighted:not(.has-fit-text):not(.wp-block-table):after,
 .block-editor-block-list__layout .block-editor-block-list__block.is-highlighted ~ .is-multi-selected:after,
 .block-editor-block-list__layout .block-editor-block-list__block:not([contenteditable=true]):focus:after {
   inset: -1px !important;

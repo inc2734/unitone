@@ -27,7 +27,7 @@
 	}
 }
 
-:where(.wp-block-image) {
+:where(.wp-block-image:not(:has(.components-placeholder))) {
 	width: fit-content;
 }
 

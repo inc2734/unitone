@@ -12,6 +12,10 @@
 	--unitone--footer-section-color: inherit;
 	--unitone--footer-section-background-color: transparent;
 
+	&:where(:has(.components-placeholder)) {
+		overflow-x: visible;
+	}
+
 	&:where(:has(> table)) {
 		overflow-x: auto;
 		overflow-y: hidden;

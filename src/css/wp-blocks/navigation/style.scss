@@ -273,6 +273,10 @@
 		--navigation-layout-align: stretch;
 		--navigation-layout-justification-setting: stretch;
 
+		> .wp-block-navigation__container {
+			width: stretch;
+		}
+
 		.wp-block-navigation__responsive-container-content,
 		.wp-block-navigation__container {
 			> .wp-block-buttons {
@@ -430,6 +434,7 @@
 .wp-block-navigation:has(.is-menu-open) {
 	.unitone-overlay-menu {
 		display: block;
+		width: stretch;
 	}
 
 	.unitone-overlay-menu ~ * {

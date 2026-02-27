@@ -7,7 +7,7 @@ export default function ( { attributes } ) {
 		className: 'unitone-timeline-dots-row',
 		style: {
 			'--unitone--dot-color': !! dotColor
-				? `var(--wp--preset--color--${ dotColor } )`
+				? `var(--wp--preset--color--${ dotColor })`
 				: customDotColor,
 		},
 	} );

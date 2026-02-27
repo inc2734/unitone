@@ -86,10 +86,10 @@ function Edit( {
 			'--unitone--dot-size': dotSize || undefined,
 			'--unitone--line-width': lineWidth || undefined,
 			'--unitone--dot-color': dotColor?.slug
-				? `var(--wp--preset--color--${ dotColor?.slug } )`
+				? `var(--wp--preset--color--${ dotColor?.slug })`
 				: dotColor?.color,
 			'--unitone--line-color': lineColor?.slug
-				? `var(--wp--preset--color--${ lineColor?.slug } )`
+				? `var(--wp--preset--color--${ lineColor?.slug })`
 				: lineColor?.color,
 		},
 	} );

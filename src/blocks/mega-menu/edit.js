@@ -332,7 +332,7 @@ function Edit( {
 			} ),
 			style: {
 				backgroundColor: overlayBackgroundColor.slug
-					? `var( --wp--preset--color--${ overlayBackgroundColor.slug } )`
+					? `var(--wp--preset--color--${ overlayBackgroundColor.slug })`
 					: customOverlayBackgroundColor,
 			},
 		},

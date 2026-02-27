@@ -27,10 +27,10 @@ export default function ( { attributes } ) {
 						'--unitone--dot-size': dotSize || undefined,
 						'--unitone--line-width': lineWidth || undefined,
 						'--unitone--dot-color': !! dotColor
-							? `var(--wp--preset--color--${ dotColor } )`
+							? `var(--wp--preset--color--${ dotColor })`
 							: customDotColor,
 						'--unitone--line-color': !! lineColor
-							? `var(--wp--preset--color--${ lineColor } )`
+							? `var(--wp--preset--color--${ lineColor })`
 							: customLineColor,
 					},
 				} )

@@ -16,7 +16,7 @@ function Edit( { attributes, clientId, context, dotColor, setDotColor } ) {
 		className: 'unitone-timeline-dots-row',
 		style: {
 			'--unitone--dot-color': dotColor?.slug
-				? `var(--wp--preset--color--${ dotColor?.slug } )`
+				? `var(--wp--preset--color--${ dotColor?.slug })`
 				: dotColor?.color,
 		},
 	} );

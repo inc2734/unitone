@@ -10,6 +10,19 @@ export function useVerticalWritingLayout() {
 	const ref = useRef( null );
 	const listenerAttachedRef = useRef( false );
 	const previousWidthRef = useRef( null );
+	const isComposingRef = useRef( false );
+
+	const isInputting = ( doc ) => {
+		const activeElement = doc?.activeElement;
+		if ( ! activeElement ) {
+			return false;
+		}
+
+		return (
+			activeElement.isContentEditable ||
+			[ 'INPUT', 'TEXTAREA' ].includes( activeElement.tagName )
+		);
+	};
 
 	const updateColumnLayout = ( element ) => {
 		if ( ! element?.lastElementChild ) {
@@ -37,6 +50,28 @@ export function useVerticalWritingLayout() {
 		}
 	}, 250 );
 
+	const onKeydown = ( event ) => {
+		const doc = event?.target?.ownerDocument;
+		if (
+			event?.isComposing ||
+			isComposingRef.current ||
+			isInputting( doc )
+		) {
+			return;
+		}
+
+		debouncedHandler();
+	};
+
+	const onCompositionStart = () => {
+		isComposingRef.current = true;
+	};
+
+	const onCompositionEnd = () => {
+		isComposingRef.current = false;
+		debouncedHandler();
+	};
+
 	const onIntersection = ( [ entry ] ) => {
 		const { isIntersecting, target } = entry;
 		const doc = target?.ownerDocument;
@@ -50,11 +85,15 @@ export function useVerticalWritingLayout() {
 		) {
 			updateColumnLayout( ref.current );
 			doc.addEventListener( 'click', debouncedHandler );
-			win.addEventListener( 'keydown', debouncedHandler );
+			win.addEventListener( 'keydown', onKeydown );
+			doc.addEventListener( 'compositionstart', onCompositionStart );
+			doc.addEventListener( 'compositionend', onCompositionEnd );
 			listenerAttachedRef.current = true;
 		} else if ( ! isIntersecting && listenerAttachedRef.current ) {
 			doc.removeEventListener( 'click', debouncedHandler );
-			win.removeEventListener( 'keydown', debouncedHandler );
+			win.removeEventListener( 'keydown', onKeydown );
+			doc.removeEventListener( 'compositionstart', onCompositionStart );
+			doc.removeEventListener( 'compositionend', onCompositionEnd );
 			listenerAttachedRef.current = false;
 		}
 	};
@@ -78,7 +117,15 @@ export function useVerticalWritingLayout() {
 
 				if ( !! doc && !! win ) {
 					doc.removeEventListener( 'click', debouncedHandler );
-					win.removeEventListener( 'keydown', debouncedHandler );
+					win.removeEventListener( 'keydown', onKeydown );
+					doc.removeEventListener(
+						'compositionstart',
+						onCompositionStart
+					);
+					doc.removeEventListener(
+						'compositionend',
+						onCompositionEnd
+					);
 					listenerAttachedRef.current = false;
 				}
 			}

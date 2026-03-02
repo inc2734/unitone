@@ -244,6 +244,15 @@
 	}
 }
 
+// @todo Patch for bug that background is slightly visible when scrolling inline.
+.components-custom-select-control {
+	.components-input-control__container {
+		> div:not([class]) {
+			background-color: var(--wp-components-color-background, #fff);
+		}
+	}
+}
+
 // @todo Prevent specific colors in the color palette from being changed in the site editor.
 .edit-site-global-styles-color-palette-panel {
 	// Global Styles > Colors > Palette

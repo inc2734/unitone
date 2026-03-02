@@ -66,6 +66,7 @@ function Controls( { value, onChange, options } ) {
 			label=""
 			hideLabelFromVision
 			value={ selectedOption }
+			isLegacy={ false }
 			onChange={ ( { selectedItem } ) => {
 				if ( selectedItem?.isDisabled || selectedItem?.disabled ) {
 					return;

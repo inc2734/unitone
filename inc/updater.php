@@ -52,24 +52,68 @@ add_filter(
 
 /**
  * Customize request URL that for updating.
- * Access https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/...?repository=unitone
+ * Access https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/?repository=unitone&version=...
  * and return json after authentication passes.
  *
  * @return string
  */
 add_filter(
 	'inc2734_github_theme_updater_request_url_inc2734/unitone',
-	function () {
+	function ( $url, $user_name, $repository, $version ) {
 		$license_key    = Manager::get_setting( 'license-key' );
 		$license_status = Manager::get_license_status( $license_key );
 
 		if ( 'true' === $license_status ) {
-			return sprintf(
-				'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/%1$s?repository=unitone',
-				esc_attr( $license_key )
+			return add_query_arg(
+				array(
+					'repository' => 'unitone',
+					'version'    => (string) $version,
+				),
+				'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/'
 			);
 		}
 
 		return '';
-	}
+	},
+	10,
+	4
+);
+
+/**
+ * Add the request headers for unitone license update API.
+ *
+ * @param array  $args Request args.
+ * @param string $url Request URL.
+ * @param string $user_name GitHub user name.
+ * @param string $repository GitHub repository name.
+ * @return array
+ */
+add_filter(
+	'inc2734_github_theme_updater_requester_args',
+	function ( $args, $url, $user_name, $repository ) {
+		if (
+			'inc2734' !== $user_name
+			|| 'unitone' !== $repository
+			|| 0 !== strpos( $url, 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/update/' )
+		) {
+			return $args;
+		}
+
+		$license_key = Manager::get_setting( 'license-key' );
+		if ( ! $license_key ) {
+			return $args;
+		}
+
+		$args['headers'] = array_merge(
+			isset( $args['headers'] ) && is_array( $args['headers'] ) ? $args['headers'] : array(),
+			array(
+				'Accept-Encoding'       => '',
+				'X-Unitone-License-Key' => $license_key,
+			)
+		);
+
+		return $args;
+	},
+	10,
+	4
 );

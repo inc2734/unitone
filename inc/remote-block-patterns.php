@@ -125,7 +125,7 @@ function unitone_get_premium_remote_block_patterns() {
 	return _unitone_get_remote_block_patterns(
 		$url,
 		array(
-			'X-Unitone-License-key' => Manager::get_setting( 'license-key' ),
+			'X-Unitone-License-Key' => Manager::get_setting( 'license-key' ),
 			'X-Unitone-Locale'      => get_locale(),
 		)
 	);

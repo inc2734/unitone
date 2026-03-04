@@ -647,13 +647,19 @@ class Manager {
 		global $wp_version;
 
 		$response = wp_remote_get(
-			'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/validate/?repository=unitone&force=' . (int) $force,
+			add_query_arg(
+				array(
+					'repository' => 'unitone',
+					'force'      => (int) $force,
+				),
+				'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/validate/'
+			),
 			array(
 				'user-agent' => 'WordPress/' . $wp_version,
 				'timeout'    => 30,
 				'headers'    => array(
 					'Accept-Encoding'       => '',
-					'X-Unitone-License-key' => $license_key,
+					'X-Unitone-License-Key' => $license_key,
 					'X-Unitone-Version'     => wp_get_theme()->get( 'Version' ),
 					'X-Unitone-URL'         => home_url(),
 				),

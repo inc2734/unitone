@@ -17,9 +17,9 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 		array(
 			array(
 				'area'        => 'unitone/overlay-menu',
-				'label'       => __( 'Overlay Menus', 'unitone' ),
+				'label'       => __( 'unitone overlay Menus (Deprecated)', 'unitone' ),
 				'icon'        => 'navigation',
-				'description' => __( 'The overlay menu templates can be used as an overlay menu for the navigation block.', 'unitone' ),
+				'description' => __( 'The unitone overlay menu templates can be used as an unitone overlay menu for the navigation block.', 'unitone' ),
 				'area_tag'    => 'div',
 			),
 			array(

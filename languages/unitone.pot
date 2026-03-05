@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-05T01:46:21+00:00\n"
+"POT-Creation-Date: 2026-03-05T01:55:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -162,7 +162,6 @@ msgid "Query"
 msgstr ""
 
 #: inc/block-patterns.php:16
-#: inc/template-part-areas.php:20
 msgid "Overlay Menus"
 msgstr ""
 
@@ -665,8 +664,12 @@ msgctxt "Color name"
 msgid "Heavy Pink"
 msgstr ""
 
+#: inc/template-part-areas.php:20
+msgid "unitone overlay Menus (Deprecated)"
+msgstr ""
+
 #: inc/template-part-areas.php:22
-msgid "The overlay menu templates can be used as an overlay menu for the navigation block."
+msgid "The unitone overlay menu templates can be used as an unitone overlay menu for the navigation block."
 msgstr ""
 
 #: inc/template-part-areas.php:29

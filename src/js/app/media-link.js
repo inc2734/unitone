@@ -396,7 +396,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		}
 
 		if ( ! overlay.contains( event.target ) ) {
-			const closeButton = overlay.querySelector( '.close-button' );
+			const closeButton = overlay.querySelector(
+				'.wp-lightbox-close-button'
+			);
 			closeButton.focus();
 		}
 	} );
@@ -421,7 +423,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			'.unitone-lightbox-container__inner'
 		);
 		const scrim = overlayClone.querySelector( '.scrim' );
-		const closeButton = overlayClone.querySelector( '.close-button' );
+		const closeButton = overlayClone.querySelector(
+			'.wp-lightbox-close-button'
+		);
 		if ( ! container || ! containerInner || ! scrim || ! closeButton ) {
 			return;
 		}

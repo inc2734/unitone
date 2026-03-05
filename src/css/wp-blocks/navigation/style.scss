@@ -148,10 +148,13 @@
 }
 
 .wp-block-navigation__responsive-container.is-menu-open {
-	.wp-block-navigation__responsive-container-content {
+	.wp-block-navigation__responsive-container-content,
+	.wp-block-navigation__responsive-container-content:has(.unitone-overlay-menu) {
 		padding-top: var(--unitone--s-1);
+	}
 
-		&:where(:not(:has(.unitone-overlay-menu))) {
+	.wp-block-navigation__responsive-container-content {
+		&:where(:not(:has(:is(.unitone-overlay-menu, .wp-block-navigation__overlay-container)))) {
 			padding-right: var(--unitone--padding);
 			padding-bottom: var(--unitone--padding);
 			padding-left: var(--unitone--padding);

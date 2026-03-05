@@ -30,6 +30,17 @@ import {
 	useToolsPanelDropdownMenuProps,
 } from '../hooks/utils';
 
+const hasCoreOverlay = ( attributes ) => {
+	return !! attributes?.overlay;
+};
+
+const hasUnitoneOverlay = ( attributes ) => {
+	return !! (
+		attributes?.unitone?.replaceOverlayMenu ||
+		attributes?.unitone?.overlayMenuSlug
+	);
+};
+
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const { attributes, name, wrapperProps } = props;
@@ -75,13 +86,14 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 					'--unitone--overlay-menu-color': overlayMenuColor,
 					'--unitone--overlay-menu-background-color':
 						overlayMenuBackgroundColor,
-					'--unitone--help-text': !! attributes?.unitone
-						?.replaceOverlayMenu
-						? `"${ __(
-								'The template part overlay-menu is used as an overlay menu.',
-								'unitone'
-						  ) }"`
-						: undefined,
+					'--unitone--help-text':
+						!! attributes?.unitone?.replaceOverlayMenu &&
+						! hasCoreOverlay( attributes )
+							? `"${ __(
+									'The template part overlay-menu is used as an overlay menu.',
+									'unitone'
+							  ) }"`
+							: undefined,
 				},
 			},
 		};
@@ -203,6 +215,7 @@ const NavigationInspectorControls = ( {
 	attributes,
 	setAttributes,
 	clientId,
+	showUnitoneOverlaySettings,
 } ) => {
 	const { unitone = {} } = attributes;
 
@@ -371,55 +384,24 @@ const NavigationInspectorControls = ( {
 				/>
 			</InspectorControls>
 
-			<InspectorControls>
-				<ToolsPanel
-					label={ __( 'Overlay menu', 'unitone' ) }
-					resetAll={ resetAll }
-					panelId={ clientId }
-					dropdownMenuProps={ dropdownMenuProps }
-				>
-					<ToolsPanelItem
-						hasValue={ () => null != unitone?.replaceOverlayMenu }
-						label={ __(
-							'Use template parts for overlay menu',
-							'unitone'
-						) }
-						onDeselect={ () => {
-							unitone.replaceOverlayMenu = undefined;
-
-							setAttributes( {
-								unitone: cleanEmptyObject( unitone ),
-							} );
-						} }
-						isShownByDefault
+			{ showUnitoneOverlaySettings && (
+				<InspectorControls>
+					<ToolsPanel
+						label={ __( 'unitone overlay menu', 'unitone' ) }
+						resetAll={ resetAll }
 						panelId={ clientId }
 						dropdownMenuProps={ dropdownMenuProps }
 					>
-						<ToggleControl
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
+						<ToolsPanelItem
+							hasValue={ () =>
+								null != unitone?.replaceOverlayMenu
+							}
 							label={ __(
-								'Use template parts for overlay menu',
+								'Use template parts for unitone overlay menu',
 								'unitone'
 							) }
-							checked={ unitone?.replaceOverlayMenu ?? false }
-							onChange={ ( newSetting ) =>
-								setAttributes( {
-									unitone: cleanEmptyObject( {
-										...unitone,
-										replaceOverlayMenu: newSetting,
-									} ),
-								} )
-							}
-						/>
-					</ToolsPanelItem>
-
-					{ !! unitone?.replaceOverlayMenu && (
-						<ToolsPanelItem
-							hasValue={ () => null != unitone?.overlayMenuSlug }
-							label={ __( 'Template part to use', 'unitone' ) }
 							onDeselect={ () => {
-								unitone.overlayMenuSlug = undefined;
+								unitone.replaceOverlayMenu = undefined;
 
 								setAttributes( {
 									unitone: cleanEmptyObject( unitone ),
@@ -429,27 +411,68 @@ const NavigationInspectorControls = ( {
 							panelId={ clientId }
 							dropdownMenuProps={ dropdownMenuProps }
 						>
-							<VStack spacing="16px">
-								<TemplatePartSelectControl
-									label={ __(
-										'Template part to use',
-										'unitone'
-									) }
-									value={ unitone?.overlayMenuSlug }
-									onChange={ ( newAttribute ) => {
-										setAttributes( {
-											unitone: cleanEmptyObject( {
-												...unitone,
-												overlayMenuSlug: newAttribute,
-											} ),
-										} );
-									} }
-								/>
-							</VStack>
+							<ToggleControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={ __(
+									'Use template parts for unitone overlay menu',
+									'unitone'
+								) }
+								checked={ unitone?.replaceOverlayMenu ?? false }
+								onChange={ ( newSetting ) =>
+									setAttributes( {
+										unitone: cleanEmptyObject( {
+											...unitone,
+											replaceOverlayMenu: newSetting,
+										} ),
+									} )
+								}
+							/>
 						</ToolsPanelItem>
-					) }
-				</ToolsPanel>
-			</InspectorControls>
+
+						{ !! unitone?.replaceOverlayMenu && (
+							<ToolsPanelItem
+								hasValue={ () =>
+									null != unitone?.overlayMenuSlug
+								}
+								label={ __(
+									'Template part to use',
+									'unitone'
+								) }
+								onDeselect={ () => {
+									unitone.overlayMenuSlug = undefined;
+
+									setAttributes( {
+										unitone: cleanEmptyObject( unitone ),
+									} );
+								} }
+								isShownByDefault
+								panelId={ clientId }
+								dropdownMenuProps={ dropdownMenuProps }
+							>
+								<VStack spacing="16px">
+									<TemplatePartSelectControl
+										label={ __(
+											'Template part to use',
+											'unitone'
+										) }
+										value={ unitone?.overlayMenuSlug }
+										onChange={ ( newAttribute ) => {
+											setAttributes( {
+												unitone: cleanEmptyObject( {
+													...unitone,
+													overlayMenuSlug:
+														newAttribute,
+												} ),
+											} );
+										} }
+									/>
+								</VStack>
+							</ToolsPanelItem>
+						) }
+					</ToolsPanel>
+				</InspectorControls>
+			) }
 		</>
 	);
 };
@@ -460,11 +483,18 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 			return <BlockEdit { ...props } />;
 		}
 
+		const showUnitoneOverlaySettings =
+			hasUnitoneOverlay( props.attributes ) &&
+			! hasCoreOverlay( props.attributes );
+
 		return (
 			<>
 				<BlockEdit { ...props } />
 
-				<NavigationInspectorControls { ...props } />
+				<NavigationInspectorControls
+					{ ...props }
+					showUnitoneOverlaySettings={ showUnitoneOverlaySettings }
+				/>
 			</>
 		);
 	};

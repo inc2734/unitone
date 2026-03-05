@@ -212,10 +212,18 @@ add_filter(
 
 /**
  * Replace overlay menu to template part.
+ *
+ * Starting with WordPress 7.0, the core mobile overlay has been implemented,
+ * so disable the core mobile overlay if it is in use.
  */
 add_filter(
 	'render_block_core/navigation',
 	function ( $block_content, $block ) {
+		// Core Mobile Overlay Enabled.
+		if ( ! empty( $block['attrs']['overlay'] ) ) {
+			return $block_content;
+		}
+
 		if ( ! ( $block['attrs']['unitone']['replaceOverlayMenu'] ?? false ) ) {
 			return $block_content;
 		}

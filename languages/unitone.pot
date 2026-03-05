@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 25.7.0\n"
+"Project-Id-Version: unitone 25.9.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-19T05:34:45+00:00\n"
+"POT-Creation-Date: 2026-03-05T01:46:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2195,10 +2195,6 @@ msgid "Settings"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:1
-msgid "Open by default"
-msgstr ""
-
-#: dist/blocks/accordion/index.js:1
 msgid "Mark"
 msgstr ""
 
@@ -2208,6 +2204,10 @@ msgstr ""
 
 #: dist/blocks/accordion/index.js:1
 msgid "cross"
+msgstr ""
+
+#: dist/blocks/accordion/index.js:1
+msgid "Open by default"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:1
@@ -2976,18 +2976,6 @@ msgstr ""
 #: dist/blocks/tabs/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "None"
-msgstr ""
-
-#: dist/blocks/slider/index.js:1
-#: dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "(Mobile: S)"
-msgstr ""
-
-#: dist/blocks/slider/index.js:1
-#: dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "(Mobile: M)"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -4100,11 +4088,11 @@ msgid "Overlay menu background"
 msgstr ""
 
 #: dist/js/editor/editor.js:16
-msgid "Overlay menu"
+msgid "unitone overlay menu"
 msgstr ""
 
 #: dist/js/editor/editor.js:16
-msgid "Use template parts for overlay menu"
+msgid "Use template parts for unitone overlay menu"
 msgstr ""
 
 #: dist/js/editor/editor.js:16

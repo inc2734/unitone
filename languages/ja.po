@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-02-19T05:34:45+00:00\n"
-"PO-Revision-Date: 2026-02-19 14:37+0900\n"
+"POT-Creation-Date: 2026-03-05T01:46:21+00:00\n"
+"PO-Revision-Date: 2026-03-05 10:47+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2184,10 +2184,6 @@ msgid "Settings"
 msgstr "設定"
 
 #: dist/blocks/accordion/index.js:1
-msgid "Open by default"
-msgstr "デフォルトで開く"
-
-#: dist/blocks/accordion/index.js:1
 msgid "Mark"
 msgstr "マーク"
 
@@ -2198,6 +2194,10 @@ msgstr "下矢印"
 #: dist/blocks/accordion/index.js:1
 msgid "cross"
 msgstr "バツ"
+
+#: dist/blocks/accordion/index.js:1
+msgid "Open by default"
+msgstr "デフォルトで開く"
 
 #: dist/blocks/accordion/index.js:1
 msgid "Question"
@@ -2940,16 +2940,6 @@ msgstr "プログレスバー"
 #: dist/js/editor/editor.js:1
 msgid "None"
 msgstr "無し"
-
-#: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "(Mobile: S)"
-msgstr "（モバイル時：S）"
-
-#: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
-msgid "(Mobile: M)"
-msgstr "（モバイル時：M）"
 
 #: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:13
 msgid "Align items top"
@@ -4075,12 +4065,12 @@ msgid "Overlay menu background"
 msgstr "オーバーレイメニュー背景"
 
 #: dist/js/editor/editor.js:16
-msgid "Overlay menu"
-msgstr "オーバーレイメニュー"
+msgid "unitone overlay menu"
+msgstr "unitone オーバーレイメニュー"
 
 #: dist/js/editor/editor.js:16
-msgid "Use template parts for overlay menu"
-msgstr "オーバーレイメニューにテンプレートパーツを使用する"
+msgid "Use template parts for unitone overlay menu"
+msgstr "unitone オーバーレイメニューにテンプレートパーツを使用する"
 
 #: dist/js/editor/editor.js:16
 msgid "Template part to use"
@@ -5768,6 +5758,12 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
+
+#~ msgid "(Mobile: S)"
+#~ msgstr "（モバイル時：S）"
+
+#~ msgid "(Mobile: M)"
+#~ msgstr "（モバイル時：M）"
 
 #~ msgid "Arrows icon color"
 #~ msgstr "矢印のアイコンの色"

@@ -3,7 +3,7 @@
  * Title: Overlay Menu 2
  * Slug: unitone/overlay-menu/2
  * Categories: unitone-overlay-menus
- * Block Types: core/template-part/unitone/overlay-menu
+ * Block Types: core/template-part/unitone/overlay-menu, core/template-part/navigation-overlay
  */
 ?>
 <!-- wp:unitone/decorator {"unitone":{"position":{"position":"relative"},"overflow":"visible","gap":"2","padding":"-1"}} -->

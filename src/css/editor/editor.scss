@@ -244,11 +244,41 @@
 	}
 }
 
-// @todo Patch for bug that background is slightly visible when scrolling inline.
-.components-custom-select-control {
-	.components-input-control__container {
-		> div:not([class]) {
-			background-color: var(--wp-components-color-background, #fff);
+.components-select-control__input,
+.components-select-control__input::picker(select) {
+	appearance: base-select !important;
+}
+.components-select-control__input {
+	align-content: center;
+
+	&::picker-icon {
+		display: none;
+	}
+
+	&::picker(select) {
+		margin: 8px 0;
+		max-height: min(var(--popover-available-height, 400px), 400px);
+		overscroll-behavior: none;
+	}
+
+	option {
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		padding: 3px 12px;
+	}
+
+	option:empty[disabled] {
+		position: relative;
+		height: 1px;
+		min-height: 0;
+		padding: 2px 0 1px;
+
+		&::before {
+			content: '';
+			height: 1px;
+			background-color: #ddd;
+			position: absolute;
+			inset: calc(50% - .5px) 0 auto 0;
 		}
 	}
 }

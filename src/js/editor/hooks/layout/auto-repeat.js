@@ -9,8 +9,13 @@ import { cleanEmptyObject } from '../utils';
 
 const autoRepeatOptions = [
 	{
-		label: '',
+		label: __( 'Default', 'unitone' ),
 		value: '',
+	},
+	{
+		label: '',
+		value: undefined,
+		disabled: true,
 	},
 	{
 		label: __( 'auto-fill', 'unitone' ),

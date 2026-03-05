@@ -65,7 +65,12 @@ export function PositionEdit( {
 					: undefined
 			}
 			options={ [
-				{ label: '', value: '' },
+				{ label: __( 'Default', 'unitone' ), value: '' },
+				{
+					label: '',
+					value: undefined,
+					disabled: true,
+				},
 				{
 					label: 'static',
 					value: 'static',
@@ -84,7 +89,7 @@ export function PositionEdit( {
 					value: 'sticky',
 				},
 				{
-					label: '----------',
+					label: '',
 					value: undefined,
 					disabled: true,
 				},

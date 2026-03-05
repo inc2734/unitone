@@ -1,13 +1,13 @@
 import {
 	BaseControl,
 	Button,
-	CustomSelectControl,
 	DropdownMenu,
 	Flex,
 	FlexBlock,
 	FlexItem,
 	Icon,
 	Popover,
+	SelectControl,
 	Tooltip,
 } from '@wordpress/components';
 
@@ -37,44 +37,13 @@ import {
 import { useDeviceType } from './utils';
 
 function Controls( { value, onChange, options } ) {
-	const optionsWithKeys = options.map( ( option, index ) => {
-		const disabledClassName =
-			option.isDisabled || option.disabled
-				? 'unitone-spacing-sizes-control__option--disabled'
-				: '';
-
-		return {
-			...option,
-			key: `option-${ index }`,
-			className: [ option.className, disabledClassName ]
-				.filter( Boolean )
-				.join( ' ' ),
-		};
-	} );
-
-	const selectedOption = optionsWithKeys.find( ( option ) => {
-		if ( null == option.optionValue || null == value ) {
-			return option.optionValue === value;
-		}
-
-		return String( option.optionValue ) === String( value );
-	} );
-
 	return (
-		<CustomSelectControl
+		<SelectControl
 			__next40pxDefaultSize
-			label=""
-			hideLabelFromVision
-			value={ selectedOption }
-			isLegacy={ false }
-			onChange={ ( { selectedItem } ) => {
-				if ( selectedItem?.isDisabled || selectedItem?.disabled ) {
-					return;
-				}
-
-				onChange?.( selectedItem?.optionValue );
-			} }
-			options={ optionsWithKeys }
+			__nextHasNoMarginBottom
+			value={ value ?? '' }
+			onChange={ onChange }
+			options={ options }
 		/>
 	);
 }
@@ -335,129 +304,125 @@ export function SpacingSizeControl( {
 
 	const defaultOptions = [
 		{
-			name: '',
-			optionValue: undefined,
-			className: 'unitone-spacing-sizes-control__blank',
+			label: __( 'Default', 'unitone' ),
+			value: '',
 		},
 		{
-			name: '',
-			optionValue: '__unitone-separator-1__',
-			isDisabled: true,
-			className: 'unitone-spacing-sizes-control__separator',
+			label: '',
+			value: undefined,
+			disabled: true,
 		},
 		{
-			name: 'XS',
-			optionValue: -2,
+			label: 'XS',
+			value: -2,
 		},
 		{
-			name: 'S',
-			optionValue: -1,
+			label: 'S',
+			value: -1,
 		},
 		{
-			name: __( 'None', 'unitone' ),
-			optionValue: 0,
+			label: __( 'None', 'unitone' ),
+			value: 0,
 		},
 		{
-			name: 'M',
-			optionValue: 1,
+			label: 'M',
+			value: 1,
 		},
 		{
-			name: 'L',
-			optionValue: 2,
+			label: 'L',
+			value: 2,
 		},
 		{
-			name: 'XL',
-			optionValue: 3,
+			label: 'XL',
+			value: 3,
 		},
 		{
-			name: '2XL',
-			optionValue: 4,
+			label: '2XL',
+			value: 4,
 		},
 		{
-			name: '3XL',
-			optionValue: 5,
+			label: '3XL',
+			value: 5,
 		},
 		{
-			name: '4XL',
-			optionValue: 6,
+			label: '4XL',
+			value: 6,
 		},
 		{
-			name: '5XL',
-			optionValue: 7,
+			label: '5XL',
+			value: 7,
 		},
 		{
-			name: '',
-			optionValue: '__unitone-separator-2__',
-			isDisabled: true,
-			className: 'unitone-spacing-sizes-control__separator',
+			label: '',
+			value: undefined,
+			disabled: true,
 		},
 		{
-			name: 'M - S',
-			optionValue: '1s',
+			label: 'M - S',
+			value: '1s',
 		},
 		{
-			name: 'L - S',
-			optionValue: '2s',
+			label: 'L - S',
+			value: '2s',
 		},
 		{
-			name: 'XL - S',
-			optionValue: '3s',
+			label: 'XL - S',
+			value: '3s',
 		},
 		{
-			name: '2XL - S',
-			optionValue: '4s',
+			label: '2XL - S',
+			value: '4s',
 		},
 		{
-			name: '3XL - S',
-			optionValue: '5s',
+			label: '3XL - S',
+			value: '5s',
 		},
 		{
-			name: '4XL - S',
-			optionValue: '6s',
+			label: '4XL - S',
+			value: '6s',
 		},
 		{
-			name: '5XL - S',
-			optionValue: '7s',
+			label: '5XL - S',
+			value: '7s',
 		},
 		{
-			name: '',
-			optionValue: '__unitone-separator-3__',
-			isDisabled: true,
-			className: 'unitone-spacing-sizes-control__separator',
+			label: '',
+			value: undefined,
+			disabled: true,
 		},
 		{
-			name: 'L - M',
-			optionValue: '2m',
+			label: 'L - M',
+			value: '2m',
 		},
 		{
-			name: 'XL - M',
-			optionValue: '3m',
+			label: 'XL - M',
+			value: '3m',
 		},
 		{
-			name: '2XL - M',
-			optionValue: '4m',
+			label: '2XL - M',
+			value: '4m',
 		},
 		{
-			name: '3XL - M',
-			optionValue: '5m',
+			label: '3XL - M',
+			value: '5m',
 		},
 		{
-			name: '4XL - M',
-			optionValue: '6m',
+			label: '4XL - M',
+			value: '6m',
 		},
 		{
-			name: '5XL - M',
-			optionValue: '7m',
+			label: '5XL - M',
+			value: '7m',
 		},
 	];
 
-	options = ! options ? defaultOptions : [ ...options ];
+	options = ! options ? defaultOptions : options;
 
 	if ( isMixed ) {
 		options.unshift( {
-			name: __( 'Mixed' ),
-			optionValue: 'mixed',
-			isDisabled: true,
+			label: __( 'Mixed' ),
+			value: 'mixed',
+			disabled: true,
 		} );
 	}
 
@@ -468,12 +433,12 @@ export function SpacingSizeControl( {
 					__nextHasNoMarginBottom
 					id={ label }
 					label={ label }
-					className="spacing-sizes-control unitone-spacing-size-control"
+					className="spacing-sizes-control"
 				>
 					<Controls { ...{ value, onChange, options } } />
 				</BaseControl>
 			) : (
-				<div className="spacing-sizes-control unitone-spacing-size-control">
+				<div className="spacing-sizes-control">
 					<Controls { ...{ value, onChange, options } } />
 				</div>
 			) }

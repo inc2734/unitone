@@ -109,7 +109,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							__nextHasNoMarginBottom
 							label={ __( 'Text orientation', 'unitone' ) }
 							options={ [
-								{ label: '', value: '' },
+								{
+									label: __( 'Default', 'unitone' ),
+									value: '',
+								},
+								{
+									label: '',
+									value: undefined,
+									disabled: true,
+								},
 								{ label: 'mixed', value: 'mixed' },
 								{ label: 'upright', value: 'upright' },
 								{ label: 'sideways', value: 'sideways' },

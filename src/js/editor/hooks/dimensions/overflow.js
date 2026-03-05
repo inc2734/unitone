@@ -8,7 +8,12 @@ import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
 const overflowOptions = [
-	{ label: '', value: '' },
+	{ label: __( 'Default', 'unitone' ), value: '' },
+	{
+		label: '',
+		value: undefined,
+		disabled: true,
+	},
 	{
 		label: 'visible',
 		value: 'visible',

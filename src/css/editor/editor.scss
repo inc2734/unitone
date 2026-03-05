@@ -373,6 +373,15 @@
 		min-width: 24px;
 		height: 24px;
 	}
+
+	.unitone-toggle-group-control {
+		border: 1px solid var(--wp-components-color-gray-700, #757575);
+		outline: none !important;
+
+		&:hover {
+			border-color: var(--wp-components-color-gray-700, #757575);
+		}
+	}
 }
 
 .unitone-help-container {

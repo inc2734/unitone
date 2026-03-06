@@ -81,7 +81,7 @@ export function MaxWidthEdit( {
 	const isPresetValue = [
 		'var(--wp--style--global--wide-size)',
 		'var(--wp--style--global--content-size)',
-	].includes( unitone?.maxWidth );
+	].includes( unitone?.maxWidth ?? defaultValue );
 
 	const onChangeMaxWidth = ( newValue ) => {
 		const newUnitone = {

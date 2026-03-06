@@ -15,7 +15,22 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
-const PRESETS = [ 'full', 'full-max', 'full-min' ];
+const PRESETS = [
+	{
+		label: __( 'Full Height', 'unitone' ),
+		value: 'full',
+	},
+	{
+		label: __( 'Full Height (>= 840px)', 'unitone' ),
+		value: 'full-max',
+	},
+	{
+		label: __( 'Full Height (<= 667px)', 'unitone' ),
+		value: 'full-min',
+	},
+];
+
+const PRESET_VALUES = PRESETS.map( ( preset ) => preset.value );
 
 export function hasMinHeightValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
@@ -81,22 +96,9 @@ export function MinHeightEdit( {
 			?.default?.minHeight;
 	}, [] );
 
-	const isPresetValue = PRESETS.includes( unitone?.minHeight );
-
-	const options = [
-		{
-			label: __( 'Full Height', 'unitone' ),
-			value: 'full',
-		},
-		{
-			label: __( 'Full Height (>= 840px)', 'unitone' ),
-			value: 'full-max',
-		},
-		{
-			label: __( 'Full Height (<= 667px)', 'unitone' ),
-			value: 'full-min',
-		},
-	];
+	const isPresetValue = PRESET_VALUES.includes(
+		unitone?.minHeight ?? defaultValue ?? ''
+	);
 
 	const onChangeMinHeight = ( newValue ) => {
 		const newUnitone = {
@@ -121,7 +123,7 @@ export function MinHeightEdit( {
 					<SelectControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
-						options={ options }
+						options={ PRESETS }
 						value={ unitone?.minHeight ?? defaultValue ?? '' }
 						onChange={ onChangeMinHeight }
 					/>
@@ -173,7 +175,7 @@ export function withMinHeightBlockProps( settings ) {
 		return settings;
 	}
 
-	const isPresetValue = PRESETS.includes( attributes?.unitone?.minHeight );
+	const isPresetValue = PRESET_VALUES.includes( newMinHeight );
 
 	return {
 		...settings,

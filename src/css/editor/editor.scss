@@ -264,7 +264,8 @@
 	option {
 		flex-direction: row-reverse;
 		justify-content: space-between;
-		padding: 3px 12px;
+		line-height: 28px;
+		padding: 6px 12px;
 	}
 
 	option:empty[disabled] {

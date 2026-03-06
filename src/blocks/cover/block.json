@@ -11,6 +11,13 @@
 			"type": "string",
 			"default": ""
 		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"minHeight": "full",
+				"padding": "2"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

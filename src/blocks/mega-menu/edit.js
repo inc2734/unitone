@@ -49,6 +49,11 @@ import { __ } from '@wordpress/i18n';
 import { displayShortcut } from '@wordpress/keycodes';
 import { isURL, prependHTTP, safeDecodeURI } from '@wordpress/url';
 
+import {
+	normalizeForTextareaControl,
+	normalizeForToggleControl,
+} from '../../js/editor/hooks/utils';
+
 import { ItemSubmenuIcon } from './toggle-icon';
 
 const LINK_SETTINGS = [
@@ -396,10 +401,11 @@ function Edit( {
 					/>
 					<TextareaControl
 						__nextHasNoMarginBottom
-						value={ description || '' }
-						onChange={ ( descriptionValue ) => {
+						value={ normalizeForTextareaControl( description ) }
+						onChange={ ( newAttribute ) => {
 							setAttributes( {
-								description: descriptionValue,
+								description:
+									normalizeForTextareaControl( newAttribute ),
 							} );
 						} }
 						label={ __( 'Description' ) }
@@ -410,9 +416,13 @@ function Edit( {
 					<TextControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
-						value={ title || '' }
-						onChange={ ( titleValue ) => {
-							setAttributes( { title: titleValue } );
+						value={ normalizeForTextareaControl( title ) }
+						onChange={ ( newAttribute ) => {
+							setAttributes( {
+								title: normalizeForTextareaControl(
+									newAttribute
+								),
+							} );
 						} }
 						label={ __( 'Title attribute' ) }
 						autoComplete="off"
@@ -423,9 +433,13 @@ function Edit( {
 					<TextControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
-						value={ rel || '' }
-						onChange={ ( relValue ) => {
-							setAttributes( { rel: relValue } );
+						value={ normalizeForTextareaControl( rel ) }
+						onChange={ ( newAttribute ) => {
+							setAttributes( {
+								rel: normalizeForTextareaControl(
+									newAttribute
+								),
+							} );
 						} }
 						label={ __( 'Rel attribute' ) }
 						autoComplete="off"
@@ -462,11 +476,15 @@ function Edit( {
 				<PanelBody title={ __( 'Display' ) }>
 					<ToggleControl
 						__nextHasNoMarginBottom
-						checked={ openSubmenusOnClick }
+						checked={ normalizeForToggleControl(
+							openSubmenusOnClick
+						) }
 						onChange={ ( value ) => {
+							const normalizedValue =
+								normalizeForToggleControl( value );
 							setAttributes( {
-								openSubmenusOnClick: value,
-								...( value && {
+								openSubmenusOnClick: normalizedValue,
+								...( normalizedValue && {
 									showSubmenuIcon: true,
 								} ), // Make sure arrows are shown when we toggle this on.
 							} );
@@ -476,10 +494,11 @@ function Edit( {
 
 					<ToggleControl
 						__nextHasNoMarginBottom
-						checked={ showSubmenuIcon }
+						checked={ normalizeForToggleControl( showSubmenuIcon ) }
 						onChange={ ( value ) => {
 							setAttributes( {
-								showSubmenuIcon: value,
+								showSubmenuIcon:
+									normalizeForToggleControl( value ),
 							} );
 						} }
 						disabled={ attributes.openSubmenusOnClick }

@@ -22,7 +22,11 @@ import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForTextControl,
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import { ChevronDown, Cross } from './mark';
 import metadata from './block.json';
@@ -141,7 +145,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 											/>
 										) }
 										onClick={ () =>
-											setAttributes( { mark: undefined } )
+											setAttributes( {
+												mark: 'chevron-down',
+											} )
 										}
 									/>
 
@@ -177,10 +183,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'Open by default', 'unitone' ) }
-							checked={ openByDefault }
+							checked={ normalizeForToggleControl(
+								openByDefault
+							) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									openByDefault: newAttribute,
+									openByDefault:
+										normalizeForToggleControl(
+											newAttribute
+										),
 								} );
 							} }
 						/>
@@ -207,9 +218,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								'Using label of the question',
 								'unitone'
 							) }
-							checked={ q }
+							checked={ normalizeForToggleControl( q ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { q: newAttribute } );
+								setAttributes( {
+									q: normalizeForToggleControl(
+										newAttribute
+									),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -237,10 +252,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										<code>flex-basis</code>
 									</>
 								}
-								value={ qWidth }
+								value={ normalizeForTextControl( qWidth ) }
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
-										qWidth: newAttribute,
+										qWidth: normalizeForTextControl(
+											newAttribute
+										),
 									} );
 								} }
 							/>
@@ -268,9 +285,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								'Using labe of the answer',
 								'unitone'
 							) }
-							checked={ a }
+							checked={ normalizeForToggleControl( a ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { a: newAttribute } );
+								setAttributes( {
+									a: normalizeForToggleControl(
+										newAttribute
+									),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -298,10 +319,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										<code>flex-basis</code>
 									</>
 								}
-								value={ aWidth }
+								value={ normalizeForTextControl( aWidth ) }
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
-										aWidth: newAttribute,
+										aWidth: normalizeForTextControl(
+											newAttribute
+										),
 									} );
 								} }
 							/>

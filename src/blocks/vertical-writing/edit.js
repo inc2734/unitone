@@ -21,7 +21,12 @@ import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { HelpContainer } from '../../js/editor/hooks/components';
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForSelectControl,
+	normalizeForTextControl,
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 import { useVerticalWritingLayout } from './hooks/use-vertical-writing-layout';
 
 import metadata from './block.json';
@@ -122,10 +127,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								{ label: 'upright', value: 'upright' },
 								{ label: 'sideways', value: 'sideways' },
 							] }
-							value={ textOrientation }
+							value={ normalizeForSelectControl(
+								textOrientation
+							) }
 							onChange={ ( newAttribute ) =>
 								setAttributes( {
-									textOrientation: newAttribute,
+									textOrientation:
+										normalizeForSelectControl(
+											newAttribute
+										),
 								} )
 							}
 						/>
@@ -152,10 +162,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								'When this block is smaller than this width, switch to writing horizontally.',
 								'unitone'
 							) }
-							value={ threshold }
+							value={ normalizeForTextControl( threshold ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									threshold: newAttribute,
+									threshold:
+										normalizeForTextControl( newAttribute ),
 								} );
 							} }
 						/>
@@ -186,10 +197,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __( 'Switch writing mode', 'unitone' ) }
-								checked={ switchWritingMode }
+								checked={ normalizeForToggleControl(
+									switchWritingMode
+								) }
 								onChange={ ( newAttribute ) =>
 									setAttributes( {
-										switchWritingMode: newAttribute,
+										switchWritingMode:
+											normalizeForToggleControl(
+												newAttribute
+											),
 									} )
 								}
 							/>

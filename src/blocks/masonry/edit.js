@@ -47,8 +47,13 @@ import {
 	LINK_DESTINATION_LIGHTBOX,
 } from './constants';
 
+import {
+	normalizeForSelectControl,
+	normalizeForTextControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
+
 import { getHrefAndDestination } from './utils';
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -246,7 +251,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	};
 
 	const setLinkTo = ( value ) => {
-		setAttributes( { linkTo: value } );
+		setAttributes( { linkTo: normalizeForSelectControl( value ) } );
 
 		const changedAttributes = {};
 		const blocks = [];
@@ -425,9 +430,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>column-width</code>
 								</>
 							}
-							value={ columnWidth }
+							value={ normalizeForTextControl( columnWidth ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { columnWidth: newAttribute } );
+								setAttributes( {
+									columnWidth:
+										normalizeForTextControl( newAttribute ),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>

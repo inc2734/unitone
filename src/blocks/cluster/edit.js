@@ -18,8 +18,12 @@ import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import {
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
+
 import { HelpContainer } from '../../js/editor/hooks/components';
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -86,9 +90,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __( 'No wrapping', 'unitone' ) }
-								checked={ nowrap }
+								checked={ normalizeForToggleControl( nowrap ) }
 								onChange={ ( newAttribute ) => {
-									setAttributes( { nowrap: newAttribute } );
+									setAttributes( {
+										nowrap: normalizeForToggleControl(
+											newAttribute
+										),
+									} );
 								} }
 							/>
 						</HelpContainer>

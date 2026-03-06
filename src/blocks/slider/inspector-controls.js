@@ -38,6 +38,11 @@ import {
 } from '../../js/editor/hooks/icons';
 
 import {
+	normalizeForRangeControl,
+	normalizeForSelectControl,
+	normalizeForStringControl,
+	normalizeForTextControl,
+	normalizeForToggleControl,
 	useToolsPanelDropdownMenuProps,
 	cleanEmptyObject,
 } from '../../js/editor/hooks/utils';
@@ -177,10 +182,14 @@ export const SettingsInspectorControls = ( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Effect', 'unitone' ) }
-						value={ effect }
+						value={ normalizeForSelectControl( effect ) }
 						options={ effectOptions }
 						onChange={ ( newAttribute ) => {
-							setAttributes( { effect: newAttribute } );
+							setAttributes( {
+								effect: normalizeForSelectControl(
+									newAttribute
+								),
+							} );
 						} }
 					/>
 				</ToolsPanelItem>
@@ -211,10 +220,13 @@ export const SettingsInspectorControls = ( {
 										<code>width</code>
 									</>
 								}
-								value={ slideWidth }
+								value={ normalizeForTextControl( slideWidth ) }
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
-										slideWidth: newAttribute,
+										slideWidth:
+											normalizeForTextControl(
+												newAttribute
+											),
 									} );
 								} }
 							/>
@@ -235,9 +247,13 @@ export const SettingsInspectorControls = ( {
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __( 'Loop', 'unitone' ) }
-								checked={ loop }
+								checked={ normalizeForToggleControl( loop ) }
 								onChange={ ( newAttribute ) => {
-									setAttributes( { loop: newAttribute } );
+									setAttributes( {
+										loop: normalizeForToggleControl(
+											newAttribute
+										),
+									} );
 								} }
 							/>
 						</ToolsPanelItem>
@@ -267,10 +283,15 @@ export const SettingsInspectorControls = ( {
 									"The display isn't reflected on the editor.",
 									'unitone'
 								) }
-								checked={ centeredSlides }
+								checked={ normalizeForToggleControl(
+									centeredSlides
+								) }
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
-										centeredSlides: newAttribute,
+										centeredSlides:
+											normalizeForToggleControl(
+												newAttribute
+											),
 									} );
 								} }
 							/>
@@ -299,10 +320,15 @@ export const SettingsInspectorControls = ( {
 									'Hide parts that extend beyond the canvas',
 									'unitone'
 								) }
-								checked={ hideOutside }
+								checked={ normalizeForToggleControl(
+									hideOutside
+								) }
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
-										hideOutside: newAttribute,
+										hideOutside:
+											normalizeForToggleControl(
+												newAttribute
+											),
 									} );
 								} }
 							/>
@@ -326,10 +352,10 @@ export const SettingsInspectorControls = ( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Speed (s)', 'unitone' ) }
-						value={ speed ?? 0.3 }
+						value={ normalizeForRangeControl( speed ) }
 						onChange={ ( newAttribute ) => {
 							setAttributes( {
-								speed: parseFloat( newAttribute ),
+								speed: normalizeForRangeControl( newAttribute ),
 							} );
 						} }
 						min={ 0.1 }
@@ -358,9 +384,12 @@ export const SettingsInspectorControls = ( {
 					<ToggleControl
 						__nextHasNoMarginBottom
 						label={ __( 'Using the autoplay', 'unitone' ) }
-						checked={ autoplay }
+						checked={ normalizeForToggleControl( autoplay ) }
 						onChange={ ( newAttribute ) => {
-							setAttributes( { autoplay: newAttribute } );
+							setAttributes( {
+								autoplay:
+									normalizeForToggleControl( newAttribute ),
+							} );
 						} }
 					/>
 				</ToolsPanelItem>
@@ -386,7 +415,9 @@ export const SettingsInspectorControls = ( {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Delay (s)', 'unitone' ) }
-								value={ autoplayDelay }
+								value={ normalizeForRangeControl(
+									autoplayDelay
+								) }
 								help={ __(
 									'When 0, the prev/next buttons and the pagination will not be displayed.',
 									'unitone'
@@ -394,7 +425,9 @@ export const SettingsInspectorControls = ( {
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
 										autoplayDelay:
-											parseFloat( newAttribute ),
+											normalizeForRangeControl(
+												newAttribute
+											),
 									} );
 								} }
 								min={ 0 }
@@ -427,11 +460,15 @@ export const SettingsInspectorControls = ( {
 										'Reverse direction',
 										'unitone'
 									) }
-									checked={ autoplayReverseDirection }
+									checked={ normalizeForToggleControl(
+										autoplayReverseDirection
+									) }
 									onChange={ ( newAttribute ) => {
 										setAttributes( {
 											autoplayReverseDirection:
-												newAttribute,
+												normalizeForToggleControl(
+													newAttribute
+												),
 										} );
 									} }
 								/>
@@ -480,9 +517,13 @@ export const SettingsInspectorControls = ( {
 								'Using the prev/next buttons',
 								'unitone'
 							) }
-							checked={ arrows }
+							checked={ normalizeForToggleControl( arrows ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { arrows: newAttribute } );
+								setAttributes( {
+									arrows: normalizeForToggleControl(
+										newAttribute
+									),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -783,12 +824,14 @@ export const SettingsInspectorControls = ( {
 												'Icons line thickness',
 												'unitone'
 											) }
-											value={ arrowsIcon?.stroke }
+											value={ normalizeForRangeControl(
+												arrowsIcon?.stroke
+											) }
 											onChange={ ( newAttribute ) => {
 												setAttributes( {
 													arrowsIcon: {
 														...arrowsIcon,
-														stroke: parseFloat(
+														stroke: normalizeForRangeControl(
 															newAttribute
 														),
 													},
@@ -826,12 +869,14 @@ export const SettingsInspectorControls = ( {
 												'Icons size',
 												'unitone'
 											) }
-											value={ arrowsIcon?.size }
+											value={ normalizeForRangeControl(
+												arrowsIcon?.size
+											) }
 											onChange={ ( newAttribute ) => {
 												setAttributes( {
 													arrowsIcon: {
 														...arrowsIcon,
-														size: parseFloat(
+														size: normalizeForRangeControl(
 															newAttribute
 														),
 													},
@@ -862,16 +907,15 @@ export const SettingsInspectorControls = ( {
 							>
 								<GapControl
 									label={ __( 'Arrows gap', 'unitone' ) }
-									value={
-										arrowsGap ??
-										metadata.attributes.arrowsGap.default
-									}
+									value={ normalizeForStringControl(
+										arrowsGap
+									) }
 									onChange={ ( newAttribute ) => {
 										setAttributes( {
 											arrowsGap:
-												newAttribute ||
-												metadata.attributes.arrowsGap
-													.default,
+												normalizeForStringControl(
+													newAttribute
+												),
 										} );
 									} }
 								/>
@@ -1009,10 +1053,13 @@ export const SettingsInspectorControls = ( {
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'Using the pagination', 'unitone' ) }
-							checked={ pagination }
+							checked={ normalizeForToggleControl( pagination ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									pagination: newAttribute,
+									pagination:
+										normalizeForToggleControl(
+											newAttribute
+										),
 								} );
 							} }
 						/>
@@ -1285,10 +1332,13 @@ export const SettingsInspectorControls = ( {
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'Using the thumbnails', 'unitone' ) }
-							checked={ thumbnails }
+							checked={ normalizeForToggleControl( thumbnails ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									thumbnails: newAttribute,
+									thumbnails:
+										normalizeForToggleControl(
+											newAttribute
+										),
 								} );
 							} }
 						/>
@@ -1320,11 +1370,15 @@ export const SettingsInspectorControls = ( {
 									'Number of columns of thumbnails',
 									'unitone'
 								) }
-								value={ parseFloat( thumbnailsColumns ) }
+								value={ normalizeForRangeControl(
+									thumbnailsColumns
+								) }
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
 										thumbnailsColumns:
-											String( newAttribute ),
+											normalizeForRangeControl(
+												newAttribute
+											),
 									} );
 								} }
 								min={ 2 }

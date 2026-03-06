@@ -19,7 +19,11 @@ import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForTextControl,
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -90,9 +94,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>height</code>
 								</>
 							}
-							value={ height }
+							value={ normalizeForTextControl( height ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { height: newAttribute } );
+								setAttributes( {
+									height: normalizeForTextControl(
+										newAttribute
+									),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -119,9 +127,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>flex-basis</code>
 								</>
 							}
-							value={ itemWidth }
+							value={ normalizeForTextControl( itemWidth ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { itemWidth: newAttribute } );
+								setAttributes( {
+									itemWidth:
+										normalizeForTextControl( newAttribute ),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -141,9 +152,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'No scrollbar', 'unitone' ) }
-							checked={ noBar }
+							checked={ normalizeForToggleControl( noBar ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { noBar: newAttribute } );
+								setAttributes( {
+									noBar: normalizeForToggleControl(
+										newAttribute
+									),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>

@@ -20,7 +20,12 @@ import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForRangeControl,
+	normalizeForTextControl,
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -101,9 +106,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>flex-basis</code>
 								</>
 							}
-							value={ itemWidth }
+							value={ normalizeForTextControl( itemWidth ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { itemWidth: newAttribute } );
+								setAttributes( {
+									itemWidth:
+										normalizeForTextControl( newAttribute ),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -124,10 +132,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Speed (s)', 'unitone' ) }
-							value={ duration ?? 20 }
+							value={ normalizeForRangeControl( duration ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									duration: parseFloat( newAttribute ),
+									duration:
+										normalizeForRangeControl(
+											newAttribute
+										),
 								} );
 							} }
 							min={ 1 }
@@ -151,10 +162,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'Reverse direction', 'unitone' ) }
-							checked={ reverse }
+							checked={ normalizeForToggleControl( reverse ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									reverse: newAttribute,
+									reverse:
+										normalizeForToggleControl(
+											newAttribute
+										),
 								} );
 							} }
 						/>
@@ -177,9 +191,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'Pause on hover', 'unitone' ) }
-							checked={ pauseOnHover }
+							checked={ normalizeForToggleControl(
+								pauseOnHover
+							) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { pauseOnHover: newAttribute } );
+								setAttributes( {
+									pauseOnHover:
+										normalizeForToggleControl(
+											newAttribute
+										),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>

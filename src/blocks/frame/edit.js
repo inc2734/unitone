@@ -15,8 +15,13 @@ import {
 
 import { __ } from '@wordpress/i18n';
 
+import {
+	normalizeForTextControl,
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
+
 import { HelpContainer } from '../../js/editor/hooks/components';
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -76,9 +81,13 @@ export default function ( { attributes, setAttributes } ) {
 									<code>aspect-ratio</code>
 								</>
 							}
-							value={ ratio }
+							value={ normalizeForTextControl( ratio ) }
 							onChange={ ( newAttribute ) =>
-								setAttributes( { ratio: newAttribute } )
+								setAttributes( {
+									ratio: normalizeForTextControl(
+										newAttribute
+									),
+								} )
 							}
 						/>
 					</ToolsPanelItem>
@@ -107,10 +116,15 @@ export default function ( { attributes, setAttributes } ) {
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __( 'Switch aspect ratio', 'unitone' ) }
-								checked={ switchRatio }
+								checked={ normalizeForToggleControl(
+									switchRatio
+								) }
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
-										switchRatio: newAttribute,
+										switchRatio:
+											normalizeForToggleControl(
+												newAttribute
+											),
 									} );
 								} }
 							/>

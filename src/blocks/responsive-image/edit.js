@@ -23,7 +23,11 @@ import { Icon, arrowDown, arrowUp, pencil, trash } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForSelectControl,
+	normalizeForUnitControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -560,7 +564,9 @@ export default function ( { attributes, setAttributes } ) {
 									units={ [] }
 									disableUnits={ false }
 									min={ 1 }
-									value={ newSourceBreakpoint }
+									value={ normalizeForUnitControl(
+										newSourceBreakpoint
+									) }
 									onChange={ ( value ) =>
 										setNewSourceBreakpoint(
 											undefined === value
@@ -626,14 +632,16 @@ export default function ( { attributes, setAttributes } ) {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'HTML element', 'unitone' ) }
-							value={ tagName }
+							value={ normalizeForSelectControl( tagName ) }
 							options={ [
 								{ label: 'figure', value: 'figure' },
 								{ label: 'div', value: 'div' },
 								{ label: 'h1', value: 'h1' },
 							] }
 							onChange={ ( value ) =>
-								setAttributes( { tagName: value } )
+								setAttributes( {
+									tagName: normalizeForSelectControl( value ),
+								} )
 							}
 						/>
 					</ToolsPanelItem>

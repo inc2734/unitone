@@ -18,7 +18,10 @@ import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -77,9 +80,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'Text is also centered', 'unitone' ) }
-							checked={ withText }
+							checked={ normalizeForToggleControl( withText ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { withText: newAttribute } );
+								setAttributes( {
+									withText:
+										normalizeForToggleControl(
+											newAttribute
+										),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>

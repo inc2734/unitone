@@ -35,6 +35,8 @@ import {
 } from '../../js/editor/hooks/dimensions/padding';
 
 import {
+	normalizeForStringControl,
+	normalizeForToggleControl,
 	useToolsPanelDropdownMenuProps,
 	isObject,
 } from '../../js/editor/hooks/utils';
@@ -281,7 +283,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								}
 
 								setAttributes( {
-									tabPadding: newAttribute || undefined,
+									tabPadding:
+										normalizeForStringControl(
+											newAttribute
+										) || undefined,
 								} );
 							} }
 							sideControls={ [
@@ -353,9 +358,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								'Make tab panels the same height',
 								'unitone'
 							) }
-							checked={ matchHeight }
+							checked={ normalizeForToggleControl( matchHeight ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { matchHeight: newAttribute } );
+								setAttributes( {
+									matchHeight:
+										normalizeForToggleControl(
+											newAttribute
+										),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -385,12 +395,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							isMixed={ isMixedTabPanelPadding }
 							value={ compactedTabPanelPadding }
 							onChange={ ( newAttribute ) => {
-								if ( null != newAttribute ) {
-									newAttribute = String( newAttribute );
-								}
-
 								setAttributes( {
-									tabPanelPadding: newAttribute || undefined,
+									tabPanelPadding:
+										normalizeForStringControl(
+											newAttribute
+										) || undefined,
 								} );
 							} }
 							sideControls={ [

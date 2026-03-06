@@ -18,7 +18,10 @@ import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -78,9 +81,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'Fill a space', 'unitone' ) }
-							checked={ fill }
+							checked={ normalizeForToggleControl( fill ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { fill: newAttribute } );
+								setAttributes( {
+									fill: normalizeForToggleControl(
+										newAttribute
+									),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>

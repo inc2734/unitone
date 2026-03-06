@@ -20,6 +20,8 @@ import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import {
+	normalizeForSelectControl,
+	normalizeForToggleControl,
 	useToolsPanelDropdownMenuProps,
 	useVisibleResizeObserver,
 } from '../../js/editor/hooks/utils';
@@ -101,9 +103,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								{ label: '<ul>', value: 'ul' },
 								{ label: '<ol>', value: 'ol' },
 							] }
-							value={ tagName }
+							value={ normalizeForSelectControl( tagName ) }
 							onChange={ ( newAttribute ) =>
-								setAttributes( { tagName: newAttribute } )
+								setAttributes( {
+									tagName:
+										normalizeForSelectControl(
+											newAttribute
+										),
+								} )
 							}
 						/>
 					</ToolsPanelItem>
@@ -130,9 +137,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __( 'No wrapping', 'unitone' ) }
-								checked={ nowrap }
+								checked={ normalizeForToggleControl( nowrap ) }
 								onChange={ ( newAttribute ) => {
-									setAttributes( { nowrap: newAttribute } );
+									setAttributes( {
+										nowrap: normalizeForToggleControl(
+											newAttribute
+										),
+									} );
 								} }
 							/>
 						</HelpContainer>

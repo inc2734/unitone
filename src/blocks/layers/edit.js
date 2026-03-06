@@ -34,13 +34,15 @@ import {
 import { useSelect, useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { HelpContainer } from '../../js/editor/hooks/components';
-
 import {
 	GridVisualizer,
 	cleanEmptyObject,
+	normalizeForRangeControl,
+	normalizeForToggleControl,
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
+
+import { HelpContainer } from '../../js/editor/hooks/components';
 
 import metadata from './block.json';
 
@@ -205,12 +207,17 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 									'Use background image/video (Cover)',
 									'unitone'
 								) }
-								checked={ cover }
+								checked={ normalizeForToggleControl( cover ) }
 								onChange={ ( newAttribute ) => {
+									const normalizedValue =
+										normalizeForToggleControl(
+											newAttribute
+										);
 									setAttributes( {
-										cover: newAttribute,
-										fill: fill && newAttribute && false,
-										fixed: fixed && newAttribute && false,
+										cover: normalizedValue,
+										fill: fill && normalizedValue && false,
+										fixed:
+											fixed && normalizedValue && false,
 									} );
 								} }
 							/>
@@ -251,12 +258,18 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 									'Use background image/video (Fill)',
 									'unitone'
 								) }
-								checked={ fill }
+								checked={ normalizeForToggleControl( fill ) }
 								onChange={ ( newAttribute ) => {
+									const normalizedValue =
+										normalizeForToggleControl(
+											newAttribute
+										);
 									setAttributes( {
-										fill: newAttribute,
-										cover: cover && newAttribute && false,
-										fixed: fixed && newAttribute && false,
+										fill: normalizedValue,
+										cover:
+											cover && normalizedValue && false,
+										fixed:
+											fixed && normalizedValue && false,
 									} );
 								} }
 							/>
@@ -297,12 +310,17 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 									'Use background image/video (Fixed)',
 									'unitone'
 								) }
-								checked={ fixed }
+								checked={ normalizeForToggleControl( fixed ) }
 								onChange={ ( newAttribute ) => {
+									const normalizedValue =
+										normalizeForToggleControl(
+											newAttribute
+										);
 									setAttributes( {
-										fixed: newAttribute,
-										cover: cover && newAttribute && false,
-										fill: fill && newAttribute && false,
+										fixed: normalizedValue,
+										cover:
+											cover && normalizedValue && false,
+										fill: fill && normalizedValue && false,
 									} );
 								} }
 							/>
@@ -331,12 +349,12 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 								'Blur the background image/video',
 								'unitone'
 							) }
-							value={ blur }
+							value={ normalizeForRangeControl( blur ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									blur: !! newAttribute
-										? parseFloat( newAttribute )
-										: undefined,
+									blur: normalizeForRangeControl(
+										newAttribute
+									),
 								} );
 							} }
 							initialPosition={ metadata.attributes.blur.default }
@@ -370,9 +388,16 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 									'Switch grid lines direction',
 									'unitone'
 								) }
-								checked={ portrait }
+								checked={ normalizeForToggleControl(
+									portrait
+								) }
 								onChange={ ( newAttribute ) => {
-									setAttributes( { portrait: newAttribute } );
+									setAttributes( {
+										portrait:
+											normalizeForToggleControl(
+												newAttribute
+											),
+									} );
 								} }
 							/>
 						</HelpContainer>
@@ -394,12 +419,13 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Columns count', 'unitone' ) }
-							value={ parseInt( columns ) }
+							value={ normalizeForRangeControl( columns ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									columns: !! newAttribute
-										? parseInt( newAttribute )
-										: undefined,
+									columns:
+										normalizeForRangeControl(
+											newAttribute
+										),
 								} );
 							} }
 							initialPosition={
@@ -426,12 +452,12 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Rows count', 'unitone' ) }
-							value={ parseInt( rows ) }
+							value={ normalizeForRangeControl( rows ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									rows: !! newAttribute
-										? parseInt( newAttribute )
-										: undefined,
+									rows: normalizeForRangeControl(
+										newAttribute
+									),
 								} );
 							} }
 							initialPosition={ metadata.attributes.rows.default }

@@ -26,6 +26,11 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	GridVisualizer,
+	normalizeForRangeControl,
+	normalizeForSelectControl,
+	normalizeForTextControl,
+	normalizeForToggleGroupControl,
+	normalizeForUnitControl,
 	useToolsPanelDropdownMenuProps,
 	useVisibleResizeObserver,
 } from '../../js/editor/hooks/utils';
@@ -40,11 +45,6 @@ import { useResponsiveGridCSS } from '../grid/hooks';
 const parseString = ( value ) => {
 	value = String( value );
 	return null !== value && '' !== value ? value : undefined;
-};
-
-const parseNumber = ( value ) => {
-	value = parseInt( value );
-	return ! isNaN( value ) ? value : undefined;
 };
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
@@ -214,9 +214,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								{ label: '<ul>', value: 'ul' },
 								{ label: '<ol>', value: 'ol' },
 							] }
-							value={ tagName }
+							value={ normalizeForSelectControl( tagName ) }
 							onChange={ ( newAttribute ) =>
-								setAttributes( { tagName: newAttribute } )
+								setAttributes( {
+									tagName:
+										normalizeForSelectControl(
+											newAttribute
+										),
+								} )
 							}
 						/>
 					</ToolsPanelItem>
@@ -279,10 +284,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
-										value={ columnsOption }
+										value={ normalizeForToggleGroupControl(
+											columnsOption
+										) }
 										onChange={ ( value ) => {
 											setAttributes( {
-												columnsOption: value,
+												columnsOption:
+													normalizeForToggleGroupControl(
+														value
+													),
 											} );
 
 											if (
@@ -291,7 +301,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												! mdGridTemplateColumns
 											) {
 												setAttributes( {
-													mdColumnsOption: value,
+													mdColumnsOption:
+														normalizeForToggleGroupControl(
+															value
+														),
 												} );
 											}
 
@@ -301,7 +314,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												! smGridTemplateColumns
 											) {
 												setAttributes( {
-													smColumnsOption: value,
+													smColumnsOption:
+														normalizeForToggleGroupControl(
+															value
+														),
 												} );
 											}
 										} }
@@ -339,11 +355,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 														'Minimum width',
 														'unitone'
 													) }
-													value={ columnMinWidth }
+													value={ normalizeForUnitControl(
+														columnMinWidth
+													) }
 													onChange={ ( value ) =>
 														setAttributes( {
 															columnMinWidth:
-																value,
+																normalizeForUnitControl(
+																	value
+																),
 														} )
 													}
 												/>
@@ -355,11 +375,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 														'Auto repeat',
 														'unitone'
 													) }
-													value={ columnAutoRepeat }
+													value={ normalizeForToggleGroupControl(
+														columnAutoRepeat
+													) }
 													onChange={ ( value ) => {
 														setAttributes( {
 															columnAutoRepeat:
-																value,
+																normalizeForToggleGroupControl(
+																	value
+																),
 														} );
 													} }
 													isBlock
@@ -384,11 +408,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'Columns count',
 													'unitone'
 												) }
-												value={ parseNumber( columns ) }
+												value={ normalizeForRangeControl(
+													columns
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
 														columns:
-															parseNumber(
+															normalizeForRangeControl(
 																value
 															),
 													} )
@@ -403,11 +429,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 											<TextControl
 												__next40pxDefaultSize
 												__nextHasNoMarginBottom
-												value={ gridTemplateColumns }
+												value={ normalizeForTextControl(
+													gridTemplateColumns
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
 														gridTemplateColumns:
-															value,
+															normalizeForTextControl(
+																value
+															),
 													} )
 												}
 											/>
@@ -422,10 +452,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
-										value={ mdColumnsOption }
+										value={ normalizeForToggleGroupControl(
+											mdColumnsOption
+										) }
 										onChange={ ( value ) => {
 											setAttributes( {
-												mdColumnsOption: value,
+												mdColumnsOption:
+													normalizeForToggleGroupControl(
+														value
+													),
 											} );
 
 											if (
@@ -434,7 +469,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												! smGridTemplateColumns
 											) {
 												setAttributes( {
-													smColumnsOption: value,
+													smColumnsOption:
+														normalizeForToggleGroupControl(
+															value
+														),
 												} );
 											}
 										} }
@@ -474,15 +512,18 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={
+												value={ normalizeForUnitControl(
 													mdColumnMinWidth ||
-													( 'min' === columnsOption &&
-														columnMinWidth ) ||
-													undefined
-												}
+														( 'min' ===
+															columnsOption &&
+															columnMinWidth )
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
-														mdColumnMinWidth: value,
+														mdColumnMinWidth:
+															normalizeForUnitControl(
+																value
+															),
 													} )
 												}
 											/>
@@ -499,17 +540,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={ parseNumber(
+												value={ normalizeForRangeControl(
 													mdColumns ||
 														( 'columns' ===
 															columnsOption &&
-															columns ) ||
-														undefined
+															columns )
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
 														mdColumns:
-															parseNumber(
+															normalizeForRangeControl(
 																value
 															),
 													} )
@@ -532,17 +572,18 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={
+												value={ normalizeForTextControl(
 													mdGridTemplateColumns ||
-													( 'free' ===
-														columnsOption &&
-														gridTemplateColumns ) ||
-													undefined
-												}
+														( 'free' ===
+															columnsOption &&
+															gridTemplateColumns )
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
 														mdGridTemplateColumns:
-															value,
+															normalizeForTextControl(
+																value
+															),
 													} )
 												}
 											/>
@@ -557,10 +598,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
-										value={ smColumnsOption }
+										value={ normalizeForToggleGroupControl(
+											smColumnsOption
+										) }
 										onChange={ ( value ) => {
 											setAttributes( {
-												smColumnsOption: value,
+												smColumnsOption:
+													normalizeForToggleGroupControl(
+														value
+													),
 											} );
 										} }
 										isBlock
@@ -599,18 +645,21 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={
+												value={ normalizeForUnitControl(
 													smColumnMinWidth ||
-													( 'min' ===
-														mdColumnsOption &&
-														mdColumnMinWidth ) ||
-													( 'min' === columnsOption &&
-														columnMinWidth ) ||
-													undefined
-												}
+														( 'min' ===
+															mdColumnsOption &&
+															mdColumnMinWidth ) ||
+														( 'min' ===
+															columnsOption &&
+															columnMinWidth )
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
-														smColumnMinWidth: value,
+														smColumnMinWidth:
+															normalizeForUnitControl(
+																value
+															),
 													} )
 												}
 											/>
@@ -627,20 +676,19 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={ parseNumber(
+												value={ normalizeForRangeControl(
 													smColumns ||
 														( 'columns' ===
 															mdColumnsOption &&
 															mdColumns ) ||
 														( 'columns' ===
 															columnsOption &&
-															columns ) ||
-														undefined
+															columns )
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
 														smColumns:
-															parseNumber(
+															normalizeForRangeControl(
 																value
 															),
 													} )
@@ -663,20 +711,21 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={
+												value={ normalizeForTextControl(
 													smGridTemplateColumns ||
-													( 'free' ===
-														mdColumnsOption &&
-														mdGridTemplateColumns ) ||
-													( 'free' ===
-														columnsOption &&
-														gridTemplateColumns ) ||
-													undefined
-												}
+														( 'free' ===
+															mdColumnsOption &&
+															mdGridTemplateColumns ) ||
+														( 'free' ===
+															columnsOption &&
+															gridTemplateColumns )
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
 														smGridTemplateColumns:
-															value,
+															normalizeForTextControl(
+																value
+															),
 													} )
 												}
 											/>
@@ -735,10 +784,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
-										value={ rowsOption }
+										value={ normalizeForToggleGroupControl(
+											rowsOption
+										) }
 										onChange={ ( value ) => {
 											setAttributes( {
-												rowsOption: value,
+												rowsOption:
+													normalizeForToggleGroupControl(
+														value
+													),
 											} );
 
 											if (
@@ -746,7 +800,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												! mdGridTemplateRows
 											) {
 												setAttributes( {
-													mdRowsOption: value,
+													mdRowsOption:
+														normalizeForToggleGroupControl(
+															value
+														),
 												} );
 											}
 
@@ -755,7 +812,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												! smGridTemplateRows
 											) {
 												setAttributes( {
-													smRowsOption: value,
+													smRowsOption:
+														normalizeForToggleGroupControl(
+															value
+														),
 												} );
 											}
 										} }
@@ -786,10 +846,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'Rows count',
 													'unitone'
 												) }
-												value={ parseNumber( rows ) }
+												value={ normalizeForRangeControl(
+													rows
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
-														rows: parseNumber(
+														rows: normalizeForRangeControl(
 															value
 														),
 													} )
@@ -804,10 +866,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 											<TextControl
 												__next40pxDefaultSize
 												__nextHasNoMarginBottom
-												value={ gridTemplateRows }
+												value={ normalizeForTextControl(
+													gridTemplateRows
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
-														gridTemplateRows: value,
+														gridTemplateRows:
+															normalizeForTextControl(
+																value
+															),
 													} )
 												}
 											/>
@@ -822,10 +889,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										__nextHasNoMarginBottom
 										hideLabelFromVision
 										className="unitone-toggle-group-control"
-										value={ mdRowsOption }
+										value={ normalizeForToggleGroupControl(
+											mdRowsOption
+										) }
 										onChange={ ( value ) => {
 											setAttributes( {
-												mdRowsOption: value,
+												mdRowsOption:
+													normalizeForToggleGroupControl(
+														value
+													),
 											} );
 
 											if (
@@ -833,7 +905,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 												! smGridTemplateRows
 											) {
 												setAttributes( {
-													smRowsOption: value,
+													smRowsOption:
+														normalizeForToggleGroupControl(
+															value
+														),
 												} );
 											}
 										} }
@@ -867,16 +942,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={ parseNumber(
+												value={ normalizeForRangeControl(
 													mdRows ||
 														( 'rows' ===
 															rowsOption &&
-															rows ) ||
-														undefined
+															rows )
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
-														mdRows: parseNumber(
+														mdRows: normalizeForRangeControl(
 															value
 														),
 													} )
@@ -899,16 +973,18 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={
+												value={ normalizeForTextControl(
 													mdGridTemplateRows ||
-													( 'free' === rowsOption &&
-														gridTemplateRows ) ||
-													undefined
-												}
+														( 'free' ===
+															rowsOption &&
+															gridTemplateRows )
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
 														mdGridTemplateRows:
-															value,
+															normalizeForTextControl(
+																value
+															),
 													} )
 												}
 											/>
@@ -926,10 +1002,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 											'unitone'
 										) })` }
 										className="unitone-toggle-group-control"
-										value={ smRowsOption }
+										value={ normalizeForToggleGroupControl(
+											smRowsOption
+										) }
 										onChange={ ( value ) => {
 											setAttributes( {
-												smRowsOption: value,
+												smRowsOption:
+													normalizeForToggleGroupControl(
+														value
+													),
 											} );
 										} }
 										isBlock
@@ -962,19 +1043,18 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={ parseNumber(
+												value={ normalizeForRangeControl(
 													smRows ||
 														( 'rows' ===
 															mdRowsOption &&
 															mdRows ) ||
 														( 'rows' ===
 															rowsOption &&
-															rows ) ||
-														undefined
+															rows )
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
-														smRows: parseNumber(
+														smRows: normalizeForRangeControl(
 															value
 														),
 													} )
@@ -997,18 +1077,21 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={
+												value={ normalizeForTextControl(
 													smGridTemplateRows ||
-													( 'free' === mdRowsOption &&
-														mdGridTemplateRows ) ||
-													( 'free' === rowsOption &&
-														gridTemplateRows ) ||
-													undefined
-												}
+														( 'free' ===
+															mdRowsOption &&
+															mdGridTemplateRows ) ||
+														( 'free' ===
+															rowsOption &&
+															gridTemplateRows )
+												) }
 												onChange={ ( value ) =>
 													setAttributes( {
 														smGridTemplateRows:
-															value,
+															normalizeForTextControl(
+																value
+															),
 													} )
 												}
 											/>
@@ -1046,9 +1129,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								'Anything less than this width will be considered tablet size.',
 								'unitone'
 							) }
-							value={ mdBreakpoint }
+							value={ normalizeForUnitControl( mdBreakpoint ) }
 							onChange={ ( value ) =>
-								setAttributes( { mdBreakpoint: value } )
+								setAttributes( {
+									mdBreakpoint:
+										normalizeForUnitControl( value ),
+								} )
 							}
 							units={ breakpointUnits }
 						/>
@@ -1081,9 +1167,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								'Anything less than this width will be considered mobile size.',
 								'unitone'
 							) }
-							value={ smBreakpoint }
+							value={ normalizeForUnitControl( smBreakpoint ) }
 							onChange={ ( value ) =>
-								setAttributes( { smBreakpoint: value } )
+								setAttributes( {
+									smBreakpoint:
+										normalizeForUnitControl( value ),
+								} )
 							}
 							units={ breakpointUnits }
 						/>

@@ -45,7 +45,7 @@ export default function ( { attributes, setAttributes } ) {
 									label={ __( 'Slash', 'unitone' ) }
 									icon={ () => <>/</> }
 									onClick={ () =>
-										setAttributes( { divider: undefined } )
+										setAttributes( { divider: 'slash' } )
 									}
 								/>
 

@@ -20,7 +20,12 @@ import { __, sprintf } from '@wordpress/i18n';
 
 import ServerSideRender from '@wordpress/server-side-render';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForSelectControl,
+	normalizeForTextControl,
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -119,9 +124,16 @@ export default function ( { attributes, setAttributes } ) {
 								'Show top-level child pages',
 								'unitone'
 							) }
-							checked={ showTopLevel }
+							checked={ normalizeForToggleControl(
+								showTopLevel
+							) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { showTopLevel: newAttribute } );
+								setAttributes( {
+									showTopLevel:
+										normalizeForToggleControl(
+											newAttribute
+										),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -214,7 +226,7 @@ export default function ( { attributes, setAttributes } ) {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Layout', 'unitone' ) }
-							value={ layout }
+							value={ normalizeForSelectControl( layout ) }
 							options={ [
 								{
 									label: __( 'Default', 'unitone' ),
@@ -242,7 +254,11 @@ export default function ( { attributes, setAttributes } ) {
 								},
 							] }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { layout: newAttribute } );
+								setAttributes( {
+									layout: normalizeForSelectControl(
+										newAttribute
+									),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -285,11 +301,15 @@ export default function ( { attributes, setAttributes } ) {
 										/>
 									</>
 								}
-								value={ columnMinWidth }
+								value={ normalizeForTextControl(
+									columnMinWidth
+								) }
 								onChange={ ( newAttribute ) =>
 									setAttributes( {
 										columnMinWidth:
-											newAttribute || undefined,
+											normalizeForTextControl(
+												newAttribute
+											),
 									} )
 								}
 							/>

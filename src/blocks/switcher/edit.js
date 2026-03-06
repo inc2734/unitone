@@ -22,6 +22,8 @@ import { __, sprintf } from '@wordpress/i18n';
 import { HelpContainer } from '../../js/editor/hooks/components';
 
 import {
+	normalizeForTextControl,
+	normalizeForToggleControl,
 	useToolsPanelDropdownMenuProps,
 	useVisibleResizeObserver,
 } from '../../js/editor/hooks/utils';
@@ -124,10 +126,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								'When this block is smaller than this width, the contents are arranged in a single column.',
 								'unitone'
 							) }
-							value={ threshold }
+							value={ normalizeForTextControl( threshold ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									threshold: newAttribute,
+									threshold:
+										normalizeForTextControl( newAttribute ),
 								} );
 							} }
 						/>
@@ -155,9 +158,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __( 'Revert', 'unitone' ) }
-								checked={ revert }
+								checked={ normalizeForToggleControl( revert ) }
 								onChange={ ( newAttribute ) => {
-									setAttributes( { revert: newAttribute } );
+									setAttributes( {
+										revert: normalizeForToggleControl(
+											newAttribute
+										),
+									} );
 								} }
 							/>
 						</HelpContainer>

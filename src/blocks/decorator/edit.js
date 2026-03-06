@@ -35,7 +35,11 @@ import { displayShortcut } from '@wordpress/keycodes';
 import { prependHTTP } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForSelectControl,
+	normalizeForTextControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 const NEW_TAB_REL = 'noreferrer noopener';
 const NEW_TAB_TARGET = '_blank';
@@ -114,7 +118,7 @@ export default function ( {
 
 	const onSetLinkRel = useCallback(
 		( value ) => {
-			setAttributes( { rel: value } );
+			setAttributes( { rel: normalizeForTextControl( value ) } );
 		},
 		[ setAttributes ]
 	);
@@ -221,9 +225,14 @@ export default function ( {
 								{ label: '<footer>', value: 'footer' },
 								{ label: '<div>', value: 'div' },
 							] }
-							value={ tagName }
+							value={ normalizeForSelectControl( tagName ) }
 							onChange={ ( newAttribute ) =>
-								setAttributes( { tagName: newAttribute } )
+								setAttributes( {
+									tagName:
+										normalizeForSelectControl(
+											newAttribute
+										),
+								} )
 							}
 						/>
 					</ToolsPanelItem>
@@ -305,7 +314,7 @@ export default function ( {
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					label={ __( 'Link rel' ) }
-					value={ rel }
+					value={ normalizeForTextControl( rel ) }
 					onChange={ onSetLinkRel }
 				/>
 			</InspectorControls>

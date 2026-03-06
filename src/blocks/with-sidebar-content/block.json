@@ -9,7 +9,8 @@
 	"parent": [ "unitone/with-sidebar" ],
 	"attributes": {
 		"type": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"tagName": {
 			"type": "string",

@@ -77,6 +77,85 @@ export function isString( value ) {
 }
 
 /**
+ * Normalize value from text-like controls.
+ *
+ * @param {*} value Raw value from control.
+ * @return {string} Normalized value.
+ */
+export function normalizeForStringControl( value ) {
+	if ( null == value ) {
+		return '';
+	}
+
+	return String( value );
+}
+
+/**
+ * Alias of normalizeForStringControl for TextControl.
+ *
+ * @param {*} value Raw value from control.
+ * @return {string} Normalized value.
+ */
+export const normalizeForTextControl = normalizeForStringControl;
+
+/**
+ * Alias of normalizeForStringControl for TextareaControl.
+ *
+ * @param {*} value Raw value from control.
+ * @return {string} Normalized value.
+ */
+export const normalizeForTextareaControl = normalizeForStringControl;
+
+/**
+ * Alias of normalizeForStringControl for SelectControl.
+ *
+ * @param {*} value Raw value from control.
+ * @return {string} Normalized value.
+ */
+export const normalizeForSelectControl = normalizeForStringControl;
+
+/**
+ * Alias of normalizeForStringControl for ToggleGroupControl.
+ *
+ * @param {*} value Raw value from control.
+ * @return {string} Normalized value.
+ */
+export const normalizeForToggleGroupControl = normalizeForStringControl;
+
+/**
+ * Alias of normalizeForStringControl for UnitControl.
+ *
+ * @param {*} value Raw value from control.
+ * @return {string} Normalized value.
+ */
+export const normalizeForUnitControl = normalizeForStringControl;
+
+/**
+ * Normalize value from RangeControl.
+ *
+ * @param {*} value Raw value from control.
+ * @return {number|string} Normalized value.
+ */
+export function normalizeForRangeControl( value ) {
+	if ( '' === value || null == value ) {
+		return undefined;
+	}
+
+	const normalizedValue = Number( value );
+	return Number.isNaN( normalizedValue ) ? undefined : normalizedValue;
+}
+
+/**
+ * Normalize value from ToggleControl.
+ *
+ * @param {*} value Raw value from control.
+ * @return {boolean} Normalized value.
+ */
+export function normalizeForToggleControl( value ) {
+	return Boolean( value );
+}
+
+/**
  * Converts a global style into a custom value.
  *
  * @param {string} value Value to convert.

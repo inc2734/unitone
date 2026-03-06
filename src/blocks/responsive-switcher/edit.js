@@ -13,7 +13,10 @@ import {
 
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForUnitControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -68,11 +71,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						<UnitControl
 							__next40pxDefaultSize
 							label={ __( 'Break point', 'unitone' ) }
-							value={ breakpoint || '' }
+							value={ normalizeForUnitControl( breakpoint ) }
 							units={ units }
 							onChange={ ( value ) =>
 								setAttributes( {
-									breakpoint: value,
+									breakpoint:
+										normalizeForUnitControl( value ),
 								} )
 							}
 						/>

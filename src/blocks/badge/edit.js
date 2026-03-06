@@ -17,7 +17,10 @@ import {
 
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForUnitControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -280,11 +283,12 @@ export default function ( { attributes, setAttributes } ) {
 						<UnitControl
 							__next40pxDefaultSize
 							label={ __( 'Size', 'unitone' ) }
-							value={ minHeight }
+							value={ normalizeForUnitControl( minHeight ) }
 							style={ { width: '100%' } }
 							onChange={ ( newAttribute ) =>
 								setAttributes( {
-									minHeight: newAttribute || minHeight,
+									minHeight:
+										normalizeForUnitControl( newAttribute ),
 								} )
 							}
 						/>

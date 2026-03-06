@@ -6,7 +6,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleControl } from '../utils';
 
 export function hasGuttersValue( { name, attributes: { unitone } } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
@@ -77,10 +77,12 @@ export function GuttersEdit( {
 					label={ __( 'Using root padding', 'unitone' ) }
 					checked={ 'root' === ( unitone?.gutters ?? defaultValue ) }
 					onChange={ ( newValue ) => {
+						const normalizedValue =
+							normalizeForToggleControl( newValue );
 						setAttributes( {
 							unitone: cleanEmptyObject( {
 								...unitone,
-								gutters: newValue ? 'root' : '0',
+								gutters: normalizedValue ? 'root' : '0',
 							} ),
 						} );
 					} }

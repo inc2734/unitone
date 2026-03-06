@@ -37,7 +37,7 @@ export default function ( { attributes } ) {
 				),
 				style: {
 					...textColorProps.style,
-					'--unitone--min-height': minHeight,
+					'--unitone--min-height': minHeight || undefined,
 				},
 			} ) }
 		>

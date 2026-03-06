@@ -24,7 +24,11 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect, memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForToggleGroupControl,
+	normalizeForUnitControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import iconDotMain from './icons/dot-main';
 import iconDotSubMain from './icons/dot-sub-main';
@@ -148,10 +152,15 @@ function Edit( {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Column layout', 'unitone' ) }
-							value={ columnLayout }
+							value={ normalizeForToggleGroupControl(
+								columnLayout
+							) }
 							isBlock
 							onChange={ ( value ) =>
-								setAttributes( { columnLayout: value } )
+								setAttributes( {
+									columnLayout:
+										normalizeForToggleGroupControl( value ),
+								} )
 							}
 						>
 							<ToggleGroupControlOptionIcon
@@ -187,11 +196,11 @@ function Edit( {
 						<UnitControl
 							__next40pxDefaultSize
 							label={ __( 'Dot size', 'unitone' ) }
-							value={ dotSize || '' }
+							value={ normalizeForUnitControl( dotSize ) }
 							units={ units }
 							onChange={ ( value ) =>
 								setAttributes( {
-									dotSize: value,
+									dotSize: normalizeForUnitControl( value ),
 								} )
 							}
 						/>
@@ -213,11 +222,11 @@ function Edit( {
 						<UnitControl
 							__next40pxDefaultSize
 							label={ __( 'Line width', 'unitone' ) }
-							value={ lineWidth || '' }
+							value={ normalizeForUnitControl( lineWidth ) }
 							units={ units }
 							onChange={ ( value ) =>
 								setAttributes( {
-									lineWidth: value,
+									lineWidth: normalizeForUnitControl( value ),
 								} )
 							}
 						/>

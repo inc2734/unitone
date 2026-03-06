@@ -13,7 +13,8 @@
 			"default": false
 		},
 		"position": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"unitone": {
 			"type": "object",

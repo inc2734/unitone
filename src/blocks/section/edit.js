@@ -33,6 +33,7 @@ import { __ } from '@wordpress/i18n';
 
 import {
 	cleanEmptyObject,
+	normalizeForSelectControl,
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
 
@@ -159,9 +160,14 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 								{ label: '<footer>', value: 'footer' },
 								{ label: '<div>', value: 'div' },
 							] }
-							value={ tagName }
+							value={ normalizeForSelectControl( tagName ) }
 							onChange={ ( newAttribute ) =>
-								setAttributes( { tagName: newAttribute } )
+								setAttributes( {
+									tagName:
+										normalizeForSelectControl(
+											newAttribute
+										),
+								} )
 							}
 						/>
 					</ToolsPanelItem>

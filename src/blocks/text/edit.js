@@ -20,7 +20,11 @@ import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForTextControl,
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -103,9 +107,13 @@ export default function ( {
 								'Centering by intrinsic size of children',
 								'unitone'
 							) }
-							checked={ center }
+							checked={ normalizeForToggleControl( center ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { center: newAttribute } );
+								setAttributes( {
+									center: normalizeForToggleControl(
+										newAttribute
+									),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -125,9 +133,13 @@ export default function ( {
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'Multi columns', 'unitone' ) }
-							checked={ column }
+							checked={ normalizeForToggleControl( column ) }
 							onChange={ ( newAttribute ) => {
-								setAttributes( { column: newAttribute } );
+								setAttributes( {
+									column: normalizeForToggleControl(
+										newAttribute
+									),
+								} );
 							} }
 						/>
 					</ToolsPanelItem>
@@ -157,10 +169,13 @@ export default function ( {
 										<code>colum-width</code>
 									</>
 								}
-								value={ columnWidth || '' }
+								value={ normalizeForTextControl( columnWidth ) }
 								onChange={ ( newAttribute ) => {
 									setAttributes( {
-										columnWidth: newAttribute,
+										columnWidth:
+											normalizeForTextControl(
+												newAttribute
+											),
 									} );
 								} }
 							/>

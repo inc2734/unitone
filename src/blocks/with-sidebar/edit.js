@@ -20,7 +20,12 @@ import { useEffect } from '@wordpress/element';
 import { __, _x } from '@wordpress/i18n';
 
 import { HelpContainer } from '../../js/editor/hooks/components';
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForSelectControl,
+	normalizeForTextControl,
+	normalizeForToggleControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -112,9 +117,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __( 'Revert', 'unitone' ) }
-								checked={ revert }
+								checked={ normalizeForToggleControl( revert ) }
 								onChange={ ( newAttribute ) => {
-									setAttributes( { revert: newAttribute } );
+									setAttributes( {
+										revert: normalizeForToggleControl(
+											newAttribute
+										),
+									} );
 								} }
 							/>
 						</HelpContainer>
@@ -147,7 +156,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								'A column to be treated as secondary',
 								'unitone'
 							) }
-							value={ sidebar }
+							value={ normalizeForSelectControl( sidebar ) }
 							options={ [
 								{
 									label: __( 'Right', 'unitone' ),
@@ -160,7 +169,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							] }
 							onChange={ ( newAttribute ) =>
 								setAttributes( {
-									sidebar: newAttribute,
+									sidebar:
+										normalizeForSelectControl(
+											newAttribute
+										),
 								} )
 							}
 						/>
@@ -189,10 +201,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<code>flex-basis</code>
 								</>
 							}
-							value={ sidebarWidth }
+							value={ normalizeForTextControl( sidebarWidth ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									sidebarWidth: newAttribute,
+									sidebarWidth:
+										normalizeForTextControl( newAttribute ),
 								} );
 							} }
 						/>
@@ -231,10 +244,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								'Wrap when content equals this width.',
 								'unitone'
 							) }
-							value={ contentMinWidth }
+							value={ normalizeForTextControl( contentMinWidth ) }
 							onChange={ ( newAttribute ) => {
 								setAttributes( {
-									contentMinWidth: newAttribute || undefined,
+									contentMinWidth:
+										normalizeForTextControl(
+											newAttribute
+										) || undefined,
 								} );
 							} }
 						/>

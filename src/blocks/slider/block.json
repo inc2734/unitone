@@ -32,7 +32,8 @@
 			"default": {}
 		},
 		"arrowsGap": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"hideOutside": {
 			"type": "boolean",
@@ -89,7 +90,8 @@
 			"default": false
 		},
 		"speed": {
-			"type": "number"
+			"type": "number",
+			"default": 0.3
 		},
 		"effect": {
 			"type": "string",

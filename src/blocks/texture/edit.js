@@ -23,7 +23,12 @@ import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	normalizeForRangeControl,
+	normalizeForSelectControl,
+	normalizeForUnitControl,
+	useToolsPanelDropdownMenuProps,
+} from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
@@ -204,9 +209,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								label: o.label,
 								value: o.value,
 							} ) ) }
-							value={ type }
+							value={ normalizeForSelectControl( type ) }
 							onChange={ ( newAttribute ) =>
-								setAttributes( { type: newAttribute } )
+								setAttributes( {
+									type: normalizeForSelectControl(
+										newAttribute
+									),
+								} )
 							}
 						/>
 					</ToolsPanelItem>
@@ -274,10 +283,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Gap', 'unitone' ) }
-								value={ gap }
+								value={ normalizeForRangeControl( gap ) }
 								onChange={ ( newAttribute ) =>
 									setAttributes( {
-										gap: newAttribute,
+										gap: normalizeForRangeControl(
+											newAttribute
+										),
 									} )
 								}
 								min={ 1 }
@@ -304,10 +315,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Size', 'unitone' ) }
-								value={ size }
+								value={ normalizeForRangeControl( size ) }
 								onChange={ ( newAttribute ) =>
 									setAttributes( {
-										size: newAttribute,
+										size: normalizeForRangeControl(
+											newAttribute
+										),
 									} )
 								}
 								min={ 1 }
@@ -342,12 +355,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										'Distance from top',
 										'unitone'
 									) }
-									value={ offset?.top }
+									value={ normalizeForUnitControl(
+										offset?.top
+									) }
 									onChange={ ( value ) =>
 										setAttributes( {
 											offset: {
 												...offset,
-												top: value,
+												top: normalizeForUnitControl(
+													value
+												),
 											},
 										} )
 									}
@@ -359,12 +376,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										'Distance from right',
 										'unitone'
 									) }
-									value={ offset?.right }
+									value={ normalizeForUnitControl(
+										offset?.right
+									) }
 									onChange={ ( value ) =>
 										setAttributes( {
 											offset: {
 												...offset,
-												right: value,
+												right: normalizeForUnitControl(
+													value
+												),
 											},
 										} )
 									}
@@ -376,12 +397,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										'Distance from bottom',
 										'unitone'
 									) }
-									value={ offset?.bottom }
+									value={ normalizeForUnitControl(
+										offset?.bottom
+									) }
 									onChange={ ( value ) =>
 										setAttributes( {
 											offset: {
 												...offset,
-												bottom: value,
+												bottom: normalizeForUnitControl(
+													value
+												),
 											},
 										} )
 									}
@@ -393,12 +418,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										'Distance from left',
 										'unitone'
 									) }
-									value={ offset?.left }
+									value={ normalizeForUnitControl(
+										offset?.left
+									) }
 									onChange={ ( value ) =>
 										setAttributes( {
 											offset: {
 												...offset,
-												left: value,
+												left: normalizeForUnitControl(
+													value
+												),
 											},
 										} )
 									}

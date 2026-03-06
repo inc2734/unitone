@@ -21,6 +21,8 @@ import { __, sprintf } from '@wordpress/i18n';
 
 import {
 	GridVisualizer,
+	normalizeForSelectControl,
+	normalizeForTextControl,
 	useToolsPanelDropdownMenuProps,
 	useVisibleResizeObserver,
 } from '../../js/editor/hooks/utils';
@@ -107,9 +109,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								{ label: '<ul>', value: 'ul' },
 								{ label: '<ol>', value: 'ol' },
 							] }
-							value={ tagName }
+							value={ normalizeForSelectControl( tagName ) }
 							onChange={ ( newAttribute ) =>
-								setAttributes( { tagName: newAttribute } )
+								setAttributes( {
+									tagName:
+										normalizeForSelectControl(
+											newAttribute
+										),
+								} )
 							}
 						/>
 					</ToolsPanelItem>
@@ -160,10 +167,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									'unitone'
 								)
 							}
-							value={ columnMinWidth }
+							value={ normalizeForTextControl( columnMinWidth ) }
 							onChange={ ( newAttribute ) =>
 								setAttributes( {
-									columnMinWidth: newAttribute,
+									columnMinWidth:
+										normalizeForTextControl( newAttribute ),
 								} )
 							}
 						/>

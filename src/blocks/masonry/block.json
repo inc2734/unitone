@@ -16,7 +16,8 @@
 			"default": "none"
 		},
 		"childrenBorder": {
-			"type": "object"
+			"type": "object",
+			"default": {}
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],

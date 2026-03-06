@@ -20,6 +20,7 @@ import { __, sprintf } from '@wordpress/i18n';
 
 import {
 	GridVisualizer,
+	normalizeForTextControl,
 	useToolsPanelDropdownMenuProps,
 	useVisibleResizeObserver,
 } from '../../js/editor/hooks/utils';
@@ -128,10 +129,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									'unitone'
 								)
 							}
-							value={ columnMinWidth }
+							value={ normalizeForTextControl( columnMinWidth ) }
 							onChange={ ( newAttribute ) =>
 								setAttributes( {
-									columnMinWidth: newAttribute,
+									columnMinWidth:
+										normalizeForTextControl( newAttribute ),
 								} )
 							}
 						/>

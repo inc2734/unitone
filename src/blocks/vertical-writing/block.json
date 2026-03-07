@@ -19,6 +19,13 @@
 			"type": "string",
 			"default": ""
 		},
+		"unitone": {
+			"type": "object",
+			"default": {
+				"gutters": "root",
+				"blockAlign": "right"
+			}
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]

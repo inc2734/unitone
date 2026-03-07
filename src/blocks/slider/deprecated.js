@@ -9,6 +9,8 @@ import {
 	paginationIconTypes,
 } from './components';
 
+import { isNumber } from '../../js/editor/hooks/utils';
+
 import metadata from './block.json';
 
 export default [
@@ -22,6 +24,15 @@ export default [
 
 		supports: {
 			...metadata.supports,
+		},
+
+		migrate( attributes, innerBlocks ) {
+			const migratedAttributes = {
+				...attributes,
+				speed: isNumber( attributes.speed ) ? attributes.speed : 0.3,
+			};
+
+			return [ migratedAttributes, innerBlocks ];
 		},
 
 		save( { attributes } ) {
@@ -254,25 +265,23 @@ export default [
 		},
 
 		migrate( attributes, innerBlocks ) {
-			return [
-				{
-					...{
-						...attributes,
-						arrowsIcon: {
-							...attributes.arrowsIcon,
-							type: attributes?.arrowsIcon?.type || 'chevron',
-							color: attributes?.arrowsIconColor,
-							customColor: attributes?.customArrowsIconColor,
-						},
-						paginationIcon: {
-							...attributes.paginationIcon,
-							color: attributes?.paginationIconColor,
-							customColor: attributes?.customPaginationIconColor,
-						},
-					},
-					innerBlocks,
+			const migratedAttributes = {
+				...attributes,
+				arrowsIcon: {
+					...attributes.arrowsIcon,
+					type: attributes?.arrowsIcon?.type || 'chevron',
+					color: attributes?.arrowsIconColor,
+					customColor: attributes?.customArrowsIconColor,
 				},
-			];
+				paginationIcon: {
+					...attributes.paginationIcon,
+					color: attributes?.paginationIconColor,
+					customColor: attributes?.customPaginationIconColor,
+				},
+				speed: isNumber( attributes.speed ) ? attributes.speed : 0.3,
+			};
+
+			return [ migratedAttributes, innerBlocks ];
 		},
 
 		save( { attributes } ) {
@@ -463,25 +472,23 @@ export default [
 		},
 
 		migrate( attributes, innerBlocks ) {
-			return [
-				{
-					...{
-						...attributes,
-						arrowsIcon: {
-							...attributes.arrowsIcon,
-							type: attributes?.arrowsIcon?.type || 'chevron',
-							color: attributes?.arrowsIconColor,
-							customColor: attributes?.customArrowsIconColor,
-						},
-						paginationIcon: {
-							...attributes.paginationIcon,
-							color: attributes?.paginationIconColor,
-							customColor: attributes?.customPaginationIconColor,
-						},
-					},
-					innerBlocks,
+			const migratedAttributes = {
+				...attributes,
+				arrowsIcon: {
+					...attributes.arrowsIcon,
+					type: attributes?.arrowsIcon?.type || 'chevron',
+					color: attributes?.arrowsIconColor,
+					customColor: attributes?.customArrowsIconColor,
 				},
-			];
+				paginationIcon: {
+					...attributes.paginationIcon,
+					color: attributes?.paginationIconColor,
+					customColor: attributes?.customPaginationIconColor,
+				},
+				speed: isNumber( attributes.speed ) ? attributes.speed : 0.3,
+			};
+
+			return [ migratedAttributes, innerBlocks ];
 		},
 
 		save( { attributes } ) {
@@ -582,9 +589,6 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
-			speed: {
-				type: 'number',
-			},
 			arrowsIcon: {
 				...metadata.attributes.arrowsIcon,
 				default: {
@@ -611,25 +615,22 @@ export default [
 		},
 
 		migrate( attributes, innerBlocks ) {
-			return [
-				{
-					...{
-						...attributes,
-						arrowsIcon: {
-							...attributes.arrowsIcon,
-							type: attributes?.arrowsIcon?.type || 'chevron',
-							color: attributes?.arrowsIconColor,
-							customColor: attributes?.customArrowsIconColor,
-						},
-						paginationIcon: {
-							...attributes.paginationIcon,
-							color: attributes?.paginationIconColor,
-							customColor: attributes?.customPaginationIconColor,
-						},
-					},
-					innerBlocks,
+			const migratedAttributes = {
+				...attributes,
+				arrowsIcon: {
+					...attributes.arrowsIcon,
+					type: attributes?.arrowsIcon?.type || 'chevron',
+					color: attributes?.arrowsIconColor,
+					customColor: attributes?.customArrowsIconColor,
 				},
-			];
+				paginationIcon: {
+					...attributes.paginationIcon,
+					color: attributes?.paginationIconColor,
+					customColor: attributes?.customPaginationIconColor,
+				},
+			};
+
+			return [ migratedAttributes, innerBlocks ];
 		},
 
 		save( { attributes } ) {
@@ -675,9 +676,6 @@ export default [
 	{
 		attributes: {
 			...metadata.attributes,
-			speed: {
-				type: 'number',
-			},
 			arrowsIcon: {
 				...metadata.attributes.arrowsIcon,
 				default: {
@@ -704,25 +702,22 @@ export default [
 		},
 
 		migrate( attributes, innerBlocks ) {
-			return [
-				{
-					...{
-						...attributes,
-						arrowsIcon: {
-							...attributes.arrowsIcon,
-							type: attributes?.arrowsIcon?.type || 'chevron',
-							color: attributes?.arrowsIconColor,
-							customColor: attributes?.customArrowsIconColor,
-						},
-						paginationIcon: {
-							...attributes.paginationIcon,
-							color: attributes?.paginationIconColor,
-							customColor: attributes?.customPaginationIconColor,
-						},
-					},
-					innerBlocks,
+			const migratedAttributes = {
+				...attributes,
+				arrowsIcon: {
+					...attributes.arrowsIcon,
+					type: attributes?.arrowsIcon?.type || 'chevron',
+					color: attributes?.arrowsIconColor,
+					customColor: attributes?.customArrowsIconColor,
 				},
-			];
+				paginationIcon: {
+					...attributes.paginationIcon,
+					color: attributes?.paginationIconColor,
+					customColor: attributes?.customPaginationIconColor,
+				},
+			};
+
+			return [ migratedAttributes, innerBlocks ];
 		},
 
 		save( { attributes } ) {

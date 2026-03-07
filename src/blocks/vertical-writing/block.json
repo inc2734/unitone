@@ -23,7 +23,7 @@
 			"type": "object",
 			"default": {
 				"gutters": "root",
-				"blockAlign": "right"
+				"blockAlign": "none"
 			}
 		},
 		"templateLock": {

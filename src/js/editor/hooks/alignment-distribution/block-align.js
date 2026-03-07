@@ -5,11 +5,17 @@ import {
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
 
+import {
+	justifyLeft,
+	justifyCenter,
+	justifyRight,
+	justifyStretch,
+} from '@wordpress/icons';
+
 import { BlockAlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { justifyLeft, justifyCenter, justifyRight } from '@wordpress/icons';
 
 import { cleanEmptyObject } from '../utils';
 import { physicalToLogical, logicalToPhysical } from '../../../helper';
@@ -29,6 +35,11 @@ const blockAlignOptions = [
 		value: 'right',
 		icon: justifyRight,
 		label: __( 'Right', 'unitone' ),
+	},
+	{
+		value: 'none',
+		icon: justifyStretch,
+		label: __( 'None', 'unitone' ),
 	},
 ];
 

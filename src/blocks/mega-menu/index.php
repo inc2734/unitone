@@ -132,7 +132,7 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 		$html .= ' aria-controls="' . esc_attr( $unique_id ) . '"';
 		$html .= ' aria-label="' . esc_html( $aria_label ) . '"';
 		$html .= '>';
-		$html .= block_core_navigation_submenu_render_submenu_icon();
+		$html .= block_core_navigation_render_submenu_icon();
 		$html .= '</button>';
 	}
 

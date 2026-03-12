@@ -23,11 +23,20 @@
 			}
 		}
 
+		.block-editor-link-control__search-item-title {
+			display: flex;
+		}
+
 		.block-editor-link-control__search-item-top {
 			align-items: center;
 			display: flex;
 			flex-direction: row;
 			width: 100%;
+		}
+
+		.block-editor-link-control__search-item-icon {
+			display: grid;
+			place-content: center;
 		}
 	}
 

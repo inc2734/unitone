@@ -281,7 +281,7 @@ const GridCells = memo(
 /**
  * Display grid visualizer.
  *
- * @return {JSX.Element}
+ * @return {React.JSX.Element}
  */
 export const GridVisualizer = forwardRef( ( { attributes }, ref ) => {
 	const [ gridInfo, setGridInfo ] = useState( {} );

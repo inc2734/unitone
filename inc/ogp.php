@@ -134,7 +134,7 @@ add_action( 'wp_insert_post', 'unitone_delete_old_generated_ogp_image' );
  * Add global variables.
  */
 add_action(
-	'unitone_enqueue_block_editor_assets',
+	'unitone_enqueue_block_editor_scripts',
 	function () {
 		wp_localize_script(
 			'unitone/editor',

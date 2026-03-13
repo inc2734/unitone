@@ -40,13 +40,9 @@ function unitone_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'unitone_theme_scripts', 9 );
 
 /**
- * Enqueue theme scripts and styles for the block editor.
+ * Enqueue theme scripts for the block editor.
  */
-function unitone_enqueue_block_editor_assets() {
-	if ( ! is_admin() ) {
-		return;
-	}
-
+function unitone_enqueue_block_editor_scripts() {
 	$asset = include get_theme_file_path( 'dist/js/editor/editor.asset.php' );
 	wp_enqueue_script(
 		'unitone/editor',
@@ -65,6 +61,21 @@ function unitone_enqueue_block_editor_assets() {
 			$handle = str_replace( '/', '-', $block_type ) . '-editor-script';
 			wp_set_script_translations( $handle, 'unitone', get_template_directory() . '/languages' );
 		}
+	}
+
+	// @todo Deprecated.
+	do_action( 'unitone_enqueue_block_editor_assets' );
+
+	do_action( 'unitone_enqueue_block_editor_scripts' );
+}
+add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_scripts', 9 );
+
+/**
+ * Enqueue theme styles for the block editor.
+ */
+function unitone_enqueue_block_editor_styles() {
+	if ( ! is_admin() ) {
+		return;
 	}
 
 	wp_enqueue_style(
@@ -134,9 +145,9 @@ function unitone_enqueue_block_editor_assets() {
 		);
 	}
 
-	do_action( 'unitone_enqueue_block_editor_assets' );
+	do_action( 'unitone_enqueue_block_editor_styles' );
 }
-add_action( 'enqueue_block_assets', 'unitone_enqueue_block_editor_assets', 9 );
+add_action( 'enqueue_block_assets', 'unitone_enqueue_block_editor_styles', 9 );
 
 /**
  * Add CSS for global styles in the editor.
@@ -162,7 +173,7 @@ add_filter( 'block_editor_settings_all', 'unitone_override_block_editor_global_s
 /**
  * Add global variables for block editor.
  */
-foreach ( array( 'unitone_enqueue_block_editor_assets', 'unitone_setup_enqueue_assets' ) as $hook ) {
+foreach ( array( 'unitone_enqueue_block_editor_scripts', 'unitone_setup_enqueue_assets' ) as $hook ) {
 	wp_localize_script(
 		'wp-block-editor',
 		'unitoneSettings',

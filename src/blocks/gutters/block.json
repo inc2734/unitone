@@ -36,6 +36,7 @@
 			}
 		},
 		"allowedBlocks": true,
+		"contentRole": true,
 		"unitone": {
 			"padding": true,
 			"fluidTypography": true,

@@ -26,7 +26,8 @@
 			"type": "string",
 			"source": "attribute",
 			"selector": "a",
-			"attribute": "href"
+			"attribute": "href",
+			"role": "content"
 		},
 		"rel": {
 			"type": "string",
@@ -40,6 +41,7 @@
 			"selector": "a",
 			"attribute": "target"
 		},
+		"contentRole": true,
 		"unitone": {
 			"type": "object",
 			"default": {

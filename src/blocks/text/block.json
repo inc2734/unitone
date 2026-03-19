@@ -55,6 +55,7 @@
 			}
 		},
 		"allowedBlocks": true,
+		"contentRole": true,
 		"unitone": {
 			"blockAlign": true,
 			"gap": true,

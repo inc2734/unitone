@@ -47,6 +47,7 @@
 			}
 		},
 		"allowedBlocks": true,
+		"contentRole": true,
 		"unitone": {
 			"alignItems": true,
 			"justifyContent": [ "start", "center", "end" ],

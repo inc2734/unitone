@@ -42,6 +42,7 @@
 			}
 		},
 		"allowedBlocks": true,
+		"contentRole": true,
 		"unitone": {
 			"gap": {
 				"splitOnAxis": true

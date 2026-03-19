@@ -29,6 +29,7 @@
 		"className": false,
 		"anchor": true,
 		"align": [ "full", "wide" ],
+		"contentRole": true,
 		"unitone": {
 			"padding": true,
 			"backdropFilter": true

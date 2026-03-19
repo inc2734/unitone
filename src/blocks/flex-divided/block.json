@@ -66,6 +66,7 @@
 				"flexWrap": "wrap"
 			}
 		},
+		"contentRole": true,
 		"unitone": {
 			"gap": {
 				"splitOnAxis": true

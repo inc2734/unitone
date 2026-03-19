@@ -49,6 +49,7 @@
 			}
 		},
 		"allowedBlocks": true,
+		"contentRole": true,
 		"unitone": {
 			"alignContent": true,
 			"padding": {

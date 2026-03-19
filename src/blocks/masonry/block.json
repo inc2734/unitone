@@ -49,6 +49,7 @@
 				"fontFamily": true
 			}
 		},
+		"contentRole": true,
 		"unitone": {
 			"gap": true,
 			"halfLeading": true,

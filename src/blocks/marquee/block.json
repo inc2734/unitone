@@ -52,6 +52,7 @@
 			}
 		},
 		"allowedBlocks": true,
+		"contentRole": true,
 		"unitone": {
 			"gap": true,
 			"fluidTypography": true,

@@ -61,7 +61,8 @@
 			"color": true,
 			"link": true
 		},
-		"allowedBlocks": true
+		"allowedBlocks": true,
+		"contentRole": true
 	},
 	"example": {
 		"innerBlocks": [

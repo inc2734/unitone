@@ -44,6 +44,7 @@
 			}
 		},
 		"allowedBlocks": true,
+		"contentRole": true,
 		"unitone": {
 			"gap": true,
 			"negative": true,

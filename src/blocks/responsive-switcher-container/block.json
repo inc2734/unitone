@@ -25,7 +25,8 @@
 		"className": false,
 		"anchor": true,
 		"inserter": false,
-		"allowedBlocks": true
+		"allowedBlocks": true,
+		"contentRole": true
 	},
 	"category": "unitone/component",
 	"editorScript": "file:./index.js"

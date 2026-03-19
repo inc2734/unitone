@@ -58,6 +58,7 @@
 				"fontSize": true
 			}
 		},
+		"contentRole": true,
 		"unitone": {
 			"gap": true,
 			"dividerType": [ "stripe", "underline", "bordered", "divide" ],

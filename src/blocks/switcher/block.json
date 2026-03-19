@@ -51,6 +51,7 @@
 			}
 		},
 		"allowedBlocks": true,
+		"contentRole": true,
 		"unitone": {
 			"alignItems": true,
 			"gap": {

@@ -15,6 +15,7 @@
 			"type": "boolean",
 			"default": false
 		},
+		"contentRole": true,
 		"unitone": {
 			"type": "object",
 			"default": {

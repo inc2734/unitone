@@ -20,6 +20,7 @@
 		"anchor": true,
 		"align": [ "full", "wide" ],
 		"allowedBlocks": true,
+		"contentRole": true,
 		"unitone": {
 			"style": true
 		}

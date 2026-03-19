@@ -9,10 +9,12 @@
 	"parent": [ "core/navigation" ],
 	"attributes": {
 		"label": {
-			"type": "string"
+			"type": "string",
+			"role": "content"
 		},
 		"description": {
-			"type": "string"
+			"type": "string",
+			"role": "content"
 		},
 		"rel": {
 			"type": "string"
@@ -22,10 +24,12 @@
 			"default": false
 		},
 		"url": {
-			"type": "string"
+			"type": "string",
+			"role": "content"
 		},
 		"title": {
-			"type": "string"
+			"type": "string",
+			"role": "content"
 		},
 		"showSubmenuIcon": {
 			"type": "boolean",
@@ -61,7 +65,8 @@
 			"link": false,
 			"text": true
 		},
-		"interactivity": true
+		"interactivity": true,
+		"contentRole": true
 	},
 	"category": "unitone/component",
 	"editorScript": "file:./index.js",

@@ -63,6 +63,7 @@
 				"fontSize": true
 			}
 		},
+		"contentRole": true,
 		"unitone": {
 			"blockAlign": true,
 			"gap": {

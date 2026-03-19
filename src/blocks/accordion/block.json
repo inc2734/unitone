@@ -10,7 +10,8 @@
 		"summary": {
 			"type": "string",
 			"source": "html",
-			"selector": ".unitone-accordion__summary-text"
+			"selector": ".unitone-accordion__summary-text",
+			"role": "content"
 		},
 		"mark": {
 			"type": "string",
@@ -27,7 +28,8 @@
 		"qLabel": {
 			"type": "string",
 			"source": "html",
-			"selector": ".unitone-accordion__q-text"
+			"selector": ".unitone-accordion__q-text",
+			"role": "content"
 		},
 		"qWidth": {
 			"type": "string",
@@ -40,7 +42,8 @@
 		"aLabel": {
 			"type": "string",
 			"source": "html",
-			"selector": ".unitone-accordion__a-text"
+			"selector": ".unitone-accordion__a-text",
+			"role": "content"
 		},
 		"aWidth": {
 			"type": "string",
@@ -95,6 +98,7 @@
 			}
 		},
 		"allowedBlocks": true,
+		"contentRole": true,
 		"unitone": {
 			"padding": true,
 			"fluidTypography": true,

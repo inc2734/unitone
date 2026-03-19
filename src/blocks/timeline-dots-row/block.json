@@ -15,7 +15,7 @@
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
-			"enum": [ "all", "insert", "contentOnly", false ]
+			"enum": [ "all", "contentOnly", false ]
 		}
 	},
 	"usesContext": [ "unitone/column-layout" ],

@@ -49,6 +49,7 @@
 				"fontSize": true
 			}
 		},
+		"contentRole": true,
 		"unitone": {
 			"gap": true,
 			"minHeight": true,

@@ -152,6 +152,7 @@
 				"fontSize": true
 			}
 		},
+		"contentRole": true,
 		"unitone": {
 			"gap": {
 				"splitOnAxis": true

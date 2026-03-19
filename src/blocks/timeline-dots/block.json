@@ -73,6 +73,8 @@
 				"fontSize": true
 			}
 		},
+		"contentRole": true,
+		"listView": true,
 		"unitone": {
 			"alignItems": true,
 			"gap": {

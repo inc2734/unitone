@@ -126,6 +126,8 @@
 				"fontSize": true
 			}
 		},
+		"contentRole": true,
+		"listView": true,
 		"unitone": {
 			"gap": true,
 			"fluidTypography": true,

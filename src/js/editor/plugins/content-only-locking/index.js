@@ -8,30 +8,46 @@ import { __ } from '@wordpress/i18n';
 function UnitoneContentOnlyLocking() {
 	const { updateBlockAttributes } = useDispatch( blockEditorStore );
 
-	const { selectedBlock } = useSelect( ( select ) => {
+	const { selectedBlock, isInPattern } = useSelect( ( select ) => {
 		const clientId = select( blockEditorStore ).getSelectedBlockClientId();
 		if ( ! clientId ) {
 			return {};
 		}
 
-		const { getBlock } = select( blockEditorStore );
+		const { getBlock, getBlockParents } = select( blockEditorStore );
+
+		const block = getBlock( clientId );
+		const parentClientIds = getBlockParents( clientId ) || [];
+		const isDescendantOfPattern = parentClientIds.some(
+			( parentClientId ) =>
+				!! getBlock( parentClientId )?.attributes?.metadata?.patternName
+		);
 
 		return {
-			selectedBlock: getBlock( clientId ),
+			selectedBlock: block,
+			isInPattern:
+				!! block?.attributes?.metadata?.patternName ||
+				isDescendantOfPattern,
 		};
 	}, [] );
 
 	const templateLock = selectedBlock?.attributes?.templateLock;
 	const isLocking = 'contentOnly' === templateLock;
 
-	if ( ! selectedBlock || ( !! templateLock && ! isLocking ) ) {
+	if (
+		! selectedBlock ||
+		isInPattern ||
+		( !! templateLock && ! isLocking )
+	) {
 		return null;
 	}
 
 	const label = ! isLocking
 		? __( 'Modify content only', 'unitone' )
 		: __( 'Unlock content only locking', 'unitone' );
+
 	const icon = ! isLocking ? lockOutline : unlock;
+
 	const onClick = () =>
 		updateBlockAttributes( selectedBlock.clientId, {
 			templateLock: ! isLocking ? 'contentOnly' : undefined,

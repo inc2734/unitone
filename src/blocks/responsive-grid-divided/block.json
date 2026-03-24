@@ -76,7 +76,8 @@
 				"underline",
 				"bordered"
 			],
-			"divider": true
+			"divider": true,
+			"syncChildren": true
 		}
 	},
 	"example": {

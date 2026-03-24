@@ -132,7 +132,8 @@
 			"gap": true,
 			"fluidTypography": true,
 			"halfLeading": true,
-			"linkDecoration": true
+			"linkDecoration": true,
+			"syncChildren": true
 		}
 	},
 	"category": "unitone/component",

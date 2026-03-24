@@ -18,6 +18,7 @@ const EXCLUDED_SYNC_ATTRIBUTE_KEYS = new Set( [
 	'__unstableUnitoneSupports',
 	'__unitoneStates',
 	'__unstableUnitoneBlockOutline',
+	'anchor',
 ] );
 
 const hasOwn = ( object, key ) =>

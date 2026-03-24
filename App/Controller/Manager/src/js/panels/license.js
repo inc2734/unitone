@@ -9,14 +9,13 @@ import apiFetch from '@wordpress/api-fetch';
 import { ResetButton, SaveButton } from '../components/buttons';
 import { withMinDelay } from '../utils/utils';
 
-export default function ( { settings, defaultSettings, setSettings } ) {
+export default function () {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 	const [ licenseStatus, setLicenseStatus ] = useState( undefined );
 	const [ remotePatternsSaving, setRemotePatternsSaving ] = useState( false );
-	const hasSavedLicenseKey =
-		!! window.currentSettings?.[ 'license-key' ] &&
-		settings?.[ 'license-key' ] ===
-			window.currentSettings?.[ 'license-key' ];
+	const [ licenseKey, setLicenseKey ] = useState( '' );
+	const [ hasSavedLicenseKey, setHasSavedLicenseKey ] = useState( false );
+	const [ isLicenseKeyTouched, setIsLicenseKeyTouched ] = useState( false );
 
 	const loadLicenseStatus = ( { force } ) => {
 		apiFetch( {
@@ -43,19 +42,24 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 		setSettingsSaving( 'save' );
 		setLicenseStatus( undefined );
 
+		if ( ! isLicenseKeyTouched ) {
+			setSettingsSaving( false );
+			loadLicenseStatus( { force: true } );
+			return;
+		}
+
 		withMinDelay(
 			apiFetch( {
 				path: '/unitone/v1/settings',
 				method: 'POST',
 				data: {
-					'license-key': settings?.[ 'license-key' ] ?? null,
+					'license-key': licenseKey || null,
 				},
 			} )
 		).then( () => {
-			window.currentSettings = {
-				...window.currentSettings,
-				'license-key': settings?.[ 'license-key' ] ?? null,
-			};
+			setHasSavedLicenseKey( !! licenseKey );
+			setLicenseKey( '' );
+			setIsLicenseKeyTouched( false );
 			setSettingsSaving( false );
 			loadLicenseStatus( { force: true } );
 			resetRemotePattenrsCache( 'save' );
@@ -64,11 +68,9 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 	const resetSettings = () => {
 		setSettingsSaving( 'reset' );
-
-		setSettings( {
-			...settings,
-			'license-key': defaultSettings[ 'license-key' ],
-		} );
+		setLicenseKey( '' );
+		setHasSavedLicenseKey( false );
+		setIsLicenseKeyTouched( false );
 
 		setLicenseStatus( false );
 
@@ -81,10 +83,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				},
 			} )
 		).then( () => {
-			window.currentSettings = {
-				...window.currentSettings,
-				'license-key': null,
-			};
 			setSettingsSaving( false );
 			resetRemotePattenrsCache( 'reset' );
 		} );
@@ -92,6 +90,26 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 	useEffect( () => {
 		loadLicenseStatus( { force: false } );
+	}, [] );
+
+	useEffect( () => {
+		let isMounted = true;
+
+		apiFetch( { path: '/unitone/v1/license-key' } )
+			.then( ( response ) => {
+				if ( isMounted ) {
+					setHasSavedLicenseKey( !! response?.has_license_key );
+				}
+			} )
+			.catch( () => {
+				if ( isMounted ) {
+					setHasSavedLicenseKey( false );
+				}
+			} );
+
+		return () => {
+			isMounted = false;
+		};
 	}, [] );
 
 	return (
@@ -131,7 +149,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							>
 								<TextControl
 									key={
-										hasSavedLicenseKey
+										hasSavedLicenseKey &&
+										! isLicenseKeyTouched
 											? 'saved-license-key'
 											: 'editing-license-key'
 									}
@@ -143,9 +162,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									) }
 									type="password"
 									value={
-										hasSavedLicenseKey
+										hasSavedLicenseKey &&
+										! isLicenseKeyTouched
 											? ''
-											: settings?.[ 'license-key' ] ?? ''
+											: licenseKey
 									}
 									placeholder={
 										hasSavedLicenseKey
@@ -153,12 +173,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											: ''
 									}
 									style={ { width: '100%' } }
-									onChange={ ( newSetting ) =>
-										setSettings( {
-											...settings,
-											'license-key': newSetting,
-										} )
-									}
+									onChange={ ( newSetting ) => {
+										setLicenseKey( newSetting );
+										setIsLicenseKeyTouched( true );
+									} }
 								/>
 
 								<div style={ { paddingTop: '4px' } }>

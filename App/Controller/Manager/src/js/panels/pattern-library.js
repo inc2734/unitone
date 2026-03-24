@@ -1,5 +1,3 @@
-import { pick } from 'lodash';
-
 import { ToggleControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
@@ -20,7 +18,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			apiFetch( {
 				path: '/unitone/v1/remote-block-patterns',
 				method: 'DELETE',
-				data: pick( settings, 'license-key' ),
 			} )
 		).then( () => {
 			setRemotePatternsSaving( false );

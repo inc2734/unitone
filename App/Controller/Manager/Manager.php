@@ -158,11 +158,14 @@ class Manager {
 			}
 		);
 
+		$current_settings = static::_convert_preset_value( Settings::get_merged_settings() );
+		unset( $current_settings['license-key'] );
+
 		wp_localize_script(
 			'unitone/settings',
 			'currentSettings',
 			array_merge(
-				static::_convert_preset_value( Settings::get_merged_settings() ),
+				$current_settings,
 				array(
 					'adminUrl'                      => admin_url(),
 					'homeUrl'                       => home_url(),
@@ -253,6 +256,22 @@ class Manager {
 		 */
 		register_rest_route(
 			'unitone/v1',
+			'/license-key',
+			array(
+				'methods'             => 'GET',
+				'callback'            => function () {
+					return array(
+						'has_license_key' => ! empty( static::get_setting( 'license-key' ) ),
+					);
+				},
+				'permission_callback' => function () {
+					return current_user_can( 'manage_options' );
+				},
+			)
+		);
+
+		register_rest_route(
+			'unitone/v1',
 			'/settings',
 			array(
 				'methods'             => 'GET',
@@ -263,9 +282,7 @@ class Manager {
 						? Settings::get_merged_settings()
 						: Settings::get_settings();
 
-					if ( ! current_user_can( 'manage_options' ) ) {
-						unset( $settings['license-key'] );
-					}
+					unset( $settings['license-key'] );
 
 					if ( ! $keys ) {
 						return $settings;

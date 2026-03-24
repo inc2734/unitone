@@ -30,6 +30,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"inserter": false,
 		"reusable": false,
 		"color": {

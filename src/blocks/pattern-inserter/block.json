@@ -11,6 +11,7 @@
 	"supports": {
 		"customClassName": false,
 		"html": false,
-		"reusable": false
+		"reusable": false,
+		"customCSS": false
 	}
 }

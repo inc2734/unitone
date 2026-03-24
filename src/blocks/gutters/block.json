@@ -18,6 +18,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"color": {
 			"background": false,
 			"link": true,

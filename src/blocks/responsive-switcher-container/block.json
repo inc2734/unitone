@@ -24,6 +24,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"inserter": false,
 		"allowedBlocks": true,
 		"contentRole": true

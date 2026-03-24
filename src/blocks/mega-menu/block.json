@@ -60,6 +60,7 @@
 	},
 	"supports": {
 		"className": false,
+		"customCSS": false,
 		"color": {
 			"background": true,
 			"link": false,

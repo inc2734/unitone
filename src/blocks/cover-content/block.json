@@ -35,6 +35,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"color": {
 			"background": true,
 			"link": true,

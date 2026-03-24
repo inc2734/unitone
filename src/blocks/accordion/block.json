@@ -66,6 +66,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"interactivity": true,
 		"color": {
 			"background": true,

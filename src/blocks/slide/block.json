@@ -17,6 +17,7 @@
 	},
 	"supports": {
 		"className": false,
+		"customCSS": false,
 		"color": {
 			"background": false,
 			"link": true,

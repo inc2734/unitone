@@ -28,6 +28,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"align": [ "full", "wide" ],
 		"contentRole": true,
 		"unitone": {

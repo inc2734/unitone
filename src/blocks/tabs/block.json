@@ -37,6 +37,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"interactivity": true,
 		"__experimentalBorder": {
 			"color": true,

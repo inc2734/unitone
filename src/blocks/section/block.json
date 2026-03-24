@@ -46,6 +46,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"align": [ "wide", "full" ],
 		"background": {
 			"backgroundImage": true,

@@ -27,6 +27,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"shadow": {
 			"__experimentalDefaultControls": {
 				"shadow": true

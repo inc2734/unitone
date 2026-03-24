@@ -39,6 +39,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"color": {
 			"__experimentalSkipSerialization": true,
 			"background": true,

@@ -18,6 +18,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"align": [ "full", "wide" ],
 		"allowedBlocks": true,
 		"contentRole": true,

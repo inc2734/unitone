@@ -82,6 +82,7 @@
 	"supports": {
 		"className": false,
 		"anchor": true,
+		"customCSS": false,
 		"color": {
 			"text": false,
 			"background": false

@@ -56,7 +56,6 @@ function render_block_unitone_breadcrumbs( $attributes ) {
 	$block_wrapper_attributes = get_block_wrapper_attributes(
 		array(
 			'class' => implode( ' ', $classes ),
-			'id'    => ! empty( $attributes['anchor'] ) ? $attributes['anchor'] : false,
 		)
 	);
 

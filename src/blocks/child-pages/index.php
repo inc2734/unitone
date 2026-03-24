@@ -68,7 +68,6 @@ function render_block_unitone_child_pages( $attributes ) {
 					'unitone-child-pages--layout:' . $layout,
 				)
 			),
-			'id'    => ! empty( $attributes['anchor'] ) ? $attributes['anchor'] : false,
 		)
 	);
 

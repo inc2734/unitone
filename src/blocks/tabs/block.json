@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "25.7.0",
+	"version": "26.0.0",
 	"textdomain": "unitone",
 	"name": "unitone/tabs",
 	"title": "Tabs",
@@ -24,10 +24,6 @@
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
-		},
-		"anchor": {
-			"type": "string",
-			"default": ""
 		}
 	},
 	"allowedBlocks": [ "unitone/tab-panel" ],

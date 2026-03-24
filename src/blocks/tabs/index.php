@@ -101,7 +101,6 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 	$block_wrapper_attributes = get_block_wrapper_attributes(
 		array(
 			'class' => 'unitone-tabs',
-			'id'    => ! empty( $attributes['anchor'] ) ? $attributes['anchor'] : false,
 			'style' => $wrapper_style ? implode( ';', $wrapper_style ) . ';' : false,
 		)
 	);

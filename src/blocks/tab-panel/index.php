@@ -28,8 +28,10 @@ function render_block_unitone_tab_panel( $attributes, $content, $block ) {
 
 	$wrapper_attributes = array(
 		'class' => 'unitone-tab-panel',
-		'id'    => $panel_id,
 	);
+	if ( empty( $attributes['anchor'] ) ) {
+		$wrapper_attributes['id'] = $panel_id;
+	}
 
 	$unitone_layout = array();
 

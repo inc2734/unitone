@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-05T01:55:47+00:00\n"
+"POT-Creation-Date: 2026-03-24T06:09:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: App/Controller/Manager/Manager.php:42
 #: App/Controller/Manager/Manager.php:43
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "unitone Setup"
 msgstr ""
 
@@ -56,6 +56,12 @@ msgstr ""
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/layers/index.js:1
 #: dist/blocks/section/index.js:1
+#: dist/blocks/slider/index.js:1
+#: dist/blocks/tabs/index.js:1
+#: dist/blocks/vertical-writing/index.js:1
+#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
 #: dist/js/editor/editor.js:16
 #: dist/js/editor/editor.js:26
 #: dist/js/editor/editor.js:29
@@ -2116,32 +2122,42 @@ msgid "Failed to load models."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:9
-msgid "OpenAI"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:9
-msgid "API Key"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:9
-msgid "Model to use"
+msgid "OpenAI (Deprecated)"
 msgstr ""
 
 #. translators: %1$s: <a>, %2$s: </a>
 #: App/Controller/Manager/dist/js/app.js:12
 #, js-format
+msgid "Starting with WordPress 7.0, the use of %1$sWordPress AI Connectors%2$s is recommended. This setup is scheduled to be rolled out, so please migrate to WordPress AI Connectors as soon as possible."
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:12
+msgid "WordPress AI Connectors are already configured and currently in use. The OpenAI settings below are only used as a legacy fallback."
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:12
+msgid "API Key"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:12
+msgid "Model to use"
+msgstr ""
+
+#. translators: %1$s: <a>, %2$s: </a>
+#: App/Controller/Manager/dist/js/app.js:15
+#, js-format
 msgid "Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for details."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Go to the Dashboard"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "View site (opens in a new tab)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Navigation"
 msgstr ""
 
@@ -2978,6 +2994,7 @@ msgstr ""
 #: dist/blocks/slider/index.js:1
 #: dist/blocks/tabs/index.js:1
 #: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:13
 msgid "None"
 msgstr ""
 
@@ -3748,10 +3765,6 @@ msgid "Max height"
 msgstr ""
 
 #: dist/js/editor/editor.js:7
-msgid "Min height"
-msgstr ""
-
-#: dist/js/editor/editor.js:7
 msgid "Full Height"
 msgstr ""
 
@@ -3761,6 +3774,10 @@ msgstr ""
 
 #: dist/js/editor/editor.js:7
 msgid "Full Height (<= 667px)"
+msgstr ""
+
+#: dist/js/editor/editor.js:7
+msgid "Min height"
 msgstr ""
 
 #: dist/js/editor/editor.js:7
@@ -4183,6 +4200,10 @@ msgid "If no OGP image is set, the featured image will be used as the og:image."
 msgstr ""
 
 #: dist/js/editor/editor.js:16
+msgid "Sync children's settings"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
 msgid "Wireframe Generator"
 msgstr ""
 
@@ -4251,7 +4272,7 @@ msgstr ""
 #. translators: %1$s: <a>, %2$s: </a>
 #: dist/js/editor/editor.js:29
 #, js-format
-msgid "To use this feature, you must set an OpenAI API key. Configure it from the %1$sunitone setup screen%2$s."
+msgid "To use this feature, configure WordPress AI Connectors from the %1$sConnectors settings screen%2$s."
 msgstr ""
 
 #: dist/js/editor/editor.js:29
@@ -4292,6 +4313,10 @@ msgstr ""
 
 #: dist/js/editor/editor.js:29
 msgid "Please enter a prompt."
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "[unitone] Starting with WordPress 7.0, the use of WordPress AI Connectors is recommended. This setup is scheduled to be rolled out, so please migrate to WordPress AI Connectors as soon as possible."
 msgstr ""
 
 #: dist/js/editor/editor.js:29

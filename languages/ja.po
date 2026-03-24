@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-03-05T01:55:47+00:00\n"
-"PO-Revision-Date: 2026-03-05 10:56+0900\n"
+"POT-Creation-Date: 2026-03-24T06:09:30+00:00\n"
+"PO-Revision-Date: 2026-03-24 15:16+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Domain: unitone\n"
 
 #. Theme Name of the theme
@@ -40,7 +40,7 @@ msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
 #: App/Controller/Manager/Manager.php:42 App/Controller/Manager/Manager.php:43
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
@@ -51,6 +51,9 @@ msgstr "テーマ"
 #: App/Controller/Manager/Manager.php:133
 #: App/Controller/Manager/dist/js/app.js:9 dist/blocks/child-pages/index.js:1
 #: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
+#: dist/blocks/vertical-writing/index.js:1 dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
 #: dist/js/editor/editor.js:16 dist/js/editor/editor.js:26
 #: dist/js/editor/editor.js:29
 msgid "Default"
@@ -2119,19 +2122,33 @@ msgid "Failed to load models."
 msgstr "モデルの読み込みに失敗しました。"
 
 #: App/Controller/Manager/dist/js/app.js:9
-msgid "OpenAI"
-msgstr "OpenAI"
+msgid "OpenAI (Deprecated)"
+msgstr "OpenAI（非推奨）"
 
-#: App/Controller/Manager/dist/js/app.js:9
+#. translators: %1$s: <a>, %2$s: </a>
+#: App/Controller/Manager/dist/js/app.js:12
+msgid ""
+"Starting with WordPress 7.0, the use of %1$sWordPress AI Connectors%2$s is "
+"recommended. This setup is scheduled to be rolled out, so please migrate to "
+"WordPress AI Connectors as soon as possible."
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:12
+msgid ""
+"WordPress AI Connectors are already configured and currently in use. The "
+"OpenAI settings below are only used as a legacy fallback."
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "API Key"
 msgstr "API キー"
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Model to use"
 msgstr "使用するモデル"
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid ""
 "Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for "
 "details."
@@ -2139,15 +2156,15 @@ msgstr ""
 "API の利用には料金が発生します。詳細は %1$sAPI の料金体系%2$sページをご確認く"
 "ださい。"
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Go to the Dashboard"
 msgstr "ダッシュボードに戻る"
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "View site (opens in a new tab)"
 msgstr "サイトを表示 (新しいタブで開く)"
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Navigation"
 msgstr "ナビゲーション"
 
@@ -2941,7 +2958,7 @@ msgid "Progress bar"
 msgstr "プログレスバー"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:13
 msgid "None"
 msgstr "無し"
 
@@ -3715,10 +3732,6 @@ msgid "Max height"
 msgstr "最大の高さ"
 
 #: dist/js/editor/editor.js:7
-msgid "Min height"
-msgstr "最小の高さ"
-
-#: dist/js/editor/editor.js:7
 msgid "Full Height"
 msgstr "全高"
 
@@ -3729,6 +3742,10 @@ msgstr "全高（840px 以下）"
 #: dist/js/editor/editor.js:7
 msgid "Full Height (<= 667px)"
 msgstr "全高（667px 以上）"
+
+#: dist/js/editor/editor.js:7
+msgid "Min height"
+msgstr "最小の高さ"
 
 #: dist/js/editor/editor.js:7
 msgid "auto-fill"
@@ -4164,6 +4181,10 @@ msgstr ""
 "す。"
 
 #: dist/js/editor/editor.js:16
+msgid "Sync children's settings"
+msgstr "子ブロックの設定を同期"
+
+#: dist/js/editor/editor.js:16
 msgid "Wireframe Generator"
 msgstr "ワイヤーフレームジェネレーター"
 
@@ -4236,11 +4257,9 @@ msgstr "テキストジェネレーター"
 #. translators: %1$s: <a>, %2$s: </a>
 #: dist/js/editor/editor.js:29
 msgid ""
-"To use this feature, you must set an OpenAI API key. Configure it from the "
-"%1$sunitone setup screen%2$s."
+"To use this feature, configure WordPress AI Connectors from the "
+"%1$sConnectors settings screen%2$s."
 msgstr ""
-"この機能を使用するには、OpenAI API キーを設定する必要があります。%1$sunitone "
-"設定画面%2$sから設定してください。"
 
 #: dist/js/editor/editor.js:29
 msgid "Prompt"
@@ -4281,6 +4300,13 @@ msgstr "熱量高め"
 #: dist/js/editor/editor.js:29
 msgid "Please enter a prompt."
 msgstr "プロンプトを入力してください。"
+
+#: dist/js/editor/editor.js:29
+msgid ""
+"[unitone] Starting with WordPress 7.0, the use of WordPress AI Connectors is "
+"recommended. This setup is scheduled to be rolled out, so please migrate to "
+"WordPress AI Connectors as soon as possible."
+msgstr ""
 
 #: dist/js/editor/editor.js:29
 msgid "Failed to generate. Please try again."
@@ -5762,6 +5788,9 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
+
+#~ msgid "OpenAI"
+#~ msgstr "OpenAI"
 
 #~ msgid "(Mobile: S)"
 #~ msgstr "（モバイル時：S）"

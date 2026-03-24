@@ -14,7 +14,6 @@ add_action(
 			array(
 				'type'              => 'string',
 				'sanitize_callback' => 'esc_attr',
-				'show_in_rest'      => true,
 			)
 		);
 
@@ -39,20 +38,33 @@ add_action(
 			'unitone/v1',
 			'/openai-api-key',
 			array(
-				'methods'             => 'POST',
-				'permission_callback' => function () {
-					return current_user_can( 'manage_options' );
-				},
-				'callback'            => function ( $request ) {
-					$key = $request->get_param( 'key' );
-					if ( is_string( $key ) ) {
-						$key = trim( $key );
-					}
+				array(
+					'methods'             => 'GET',
+					'permission_callback' => function () {
+						return current_user_can( 'manage_options' );
+					},
+					'callback'            => function () {
+						return array(
+							'has_api_key' => ! empty( get_option( 'unitone_openai_api_key' ) ),
+						);
+					},
+				),
+				array(
+					'methods'             => 'POST',
+					'permission_callback' => function () {
+						return current_user_can( 'manage_options' );
+					},
+					'callback'            => function ( $request ) {
+						$key = $request->get_param( 'key' );
+						if ( is_string( $key ) ) {
+							$key = trim( $key );
+						}
 
-					update_option( 'unitone_openai_api_key', $key );
+						update_option( 'unitone_openai_api_key', $key );
 
-					return true;
-				},
+						return true;
+					},
+				),
 			)
 		);
 

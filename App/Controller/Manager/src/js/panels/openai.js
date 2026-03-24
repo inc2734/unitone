@@ -1,6 +1,5 @@
 import { Notice, SelectControl, TextControl } from '@wordpress/components';
 import { useEntityProp } from '@wordpress/core-data';
-import { useSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 
@@ -11,12 +10,9 @@ import { withMinDelay } from '../utils/utils';
 
 export default function () {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
-
-	const [ apiKey, setApiKey ] = useEntityProp(
-		'root',
-		'site',
-		'unitone_openai_api_key'
-	);
+	const [ apiKey, setApiKey ] = useState( '' );
+	const [ hasSavedApiKey, setHasSavedApiKey ] = useState( false );
+	const [ isApiKeyTouched, setIsApiKeyTouched ] = useState( false );
 
 	const [ model, setModel ] = useEntityProp(
 		'root',
@@ -24,13 +20,7 @@ export default function () {
 		'unitone_openai_model'
 	);
 
-	const savedApiKey = useSelect( ( select ) => {
-		const { getEntityRecord } = select( 'core' );
-		const site = getEntityRecord( 'root', 'site' );
-		return site?.unitone_openai_api_key;
-	}, [] );
-
-	const isApiKeyDirty = ( apiKey ?? '' ) !== ( savedApiKey ?? '' );
+	const isApiKeyDirty = isApiKeyTouched;
 
 	const [ models, setModels ] = useState( [] );
 	const [ modelsLoading, setModelsLoading ] = useState( false );
@@ -71,9 +61,27 @@ export default function () {
 	}, [] );
 
 	useEffect( () => {
-		const hasApiKey = !! ( savedApiKey ?? '' );
+		let isMounted = true;
 
-		if ( ! hasApiKey ) {
+		apiFetch( { path: '/unitone/v1/openai-api-key' } )
+			.then( ( response ) => {
+				if ( isMounted ) {
+					setHasSavedApiKey( !! response?.has_api_key );
+				}
+			} )
+			.catch( () => {
+				if ( isMounted ) {
+					setHasSavedApiKey( false );
+				}
+			} );
+
+		return () => {
+			isMounted = false;
+		};
+	}, [] );
+
+	useEffect( () => {
+		if ( ! hasSavedApiKey ) {
 			setModels( [] );
 			setModelsLoading( false );
 			setModelsError( null );
@@ -99,36 +107,47 @@ export default function () {
 			.finally( () => {
 				setModelsLoading( false );
 			} );
-	}, [ savedApiKey ] );
+	}, [ hasSavedApiKey ] );
 
 	const saveSettings = () => {
 		setSettingsSaving( 'save' );
+		const requests = [
+			apiFetch( {
+				path: '/unitone/v1/openai-model',
+				method: 'POST',
+				data: {
+					model,
+				},
+			} ),
+		];
 
-		withMinDelay(
-			Promise.all( [
+		if ( isApiKeyTouched ) {
+			requests.unshift(
 				apiFetch( {
 					path: '/unitone/v1/openai-api-key',
 					method: 'POST',
 					data: {
 						key: apiKey,
 					},
-				} ),
-				apiFetch( {
-					path: '/unitone/v1/openai-model',
-					method: 'POST',
-					data: {
-						model,
-					},
-				} ),
-			] )
-		).finally( () => {
+				} )
+			);
+		}
+
+		withMinDelay( Promise.all( requests ) ).finally( () => {
+			if ( isApiKeyTouched ) {
+				setHasSavedApiKey( !! apiKey );
+				setApiKey( '' );
+				setIsApiKeyTouched( false );
+			}
 			setSettingsSaving( false );
 		} );
 	};
 
 	const resetSettings = () => {
 		setSettingsSaving( 'reset' );
-		setApiKey( undefined );
+		setApiKey( '' );
+		setHasSavedApiKey( false );
+		setIsApiKeyTouched( false );
 		setModel( undefined );
 
 		withMinDelay(
@@ -237,19 +256,30 @@ export default function () {
 						<div data-unitone-layout="stack">
 							<div data-unitone-layout="stack -gap:-2">
 								<TextControl
+									key={
+										hasSavedApiKey && ! isApiKeyTouched
+											? 'saved-api-key'
+											: 'editing-api-key'
+									}
 									__next40pxDefaultSize
 									__nextHasNoMarginBottom
-									value={ apiKey ?? '' }
-									onChange={ ( newSetting ) =>
-										setApiKey( newSetting )
-									}
+									value={ apiKey }
+									onChange={ ( newSetting ) => {
+										setApiKey( newSetting );
+										setIsApiKeyTouched( true );
+									} }
 									type="password"
+									placeholder={
+										hasSavedApiKey
+											? '**************************************************'
+											: ''
+									}
 								/>
 							</div>
 						</div>
 					</div>
 
-					{ !! ( savedApiKey ?? '' ) && (
+					{ hasSavedApiKey && (
 						<div
 							data-unitone-layout="with-sidebar -sidebar:left"
 							style={ { '--unitone--sidebar-width': '20em' } }

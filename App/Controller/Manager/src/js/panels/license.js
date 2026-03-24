@@ -9,15 +9,14 @@ import apiFetch from '@wordpress/api-fetch';
 import { ResetButton, SaveButton } from '../components/buttons';
 import { withMinDelay } from '../utils/utils';
 
-/**
- * If a value is stored in License key, use this value instead, since it is secret.
- */
-const SAVED_VALUE = 'THIS_IS_DUMMY_SAVED_VALUE_BECAUSE_THIS_VALUE_IS_SECRET';
-
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 	const [ licenseStatus, setLicenseStatus ] = useState( undefined );
 	const [ remotePatternsSaving, setRemotePatternsSaving ] = useState( false );
+	const hasSavedLicenseKey =
+		!! window.currentSettings?.[ 'license-key' ] &&
+		settings?.[ 'license-key' ] ===
+			window.currentSettings?.[ 'license-key' ];
 
 	const loadLicenseStatus = ( { force } ) => {
 		apiFetch( {
@@ -53,6 +52,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				},
 			} )
 		).then( () => {
+			window.currentSettings = {
+				...window.currentSettings,
+				'license-key': settings?.[ 'license-key' ] ?? null,
+			};
 			setSettingsSaving( false );
 			loadLicenseStatus( { force: true } );
 			resetRemotePattenrsCache( 'save' );
@@ -78,6 +81,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				},
 			} )
 		).then( () => {
+			window.currentSettings = {
+				...window.currentSettings,
+				'license-key': null,
+			};
 			setSettingsSaving( false );
 			resetRemotePattenrsCache( 'reset' );
 		} );
@@ -123,6 +130,11 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								style={ { '--unitone--sidebar-width': '25px' } }
 							>
 								<TextControl
+									key={
+										hasSavedLicenseKey
+											? 'saved-license-key'
+											: 'editing-license-key'
+									}
 									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									help={ __(
@@ -130,22 +142,16 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										'unitone'
 									) }
 									type="password"
-									value={ ( () => {
-										if ( !! settings?.[ 'license-key' ] ) {
-											if (
-												settings?.[ 'license-key' ] !==
-												window.currentSettings?.[
-													'license-key'
-												]
-											) {
-												return settings?.[
-													'license-key'
-												];
-											}
-											return SAVED_VALUE;
-										}
-										return '';
-									} )() }
+									value={
+										hasSavedLicenseKey
+											? ''
+											: settings?.[ 'license-key' ] ?? ''
+									}
+									placeholder={
+										hasSavedLicenseKey
+											? '**************************************************'
+											: ''
+									}
 									style={ { width: '100%' } }
 									onChange={ ( newSetting ) =>
 										setSettings( {

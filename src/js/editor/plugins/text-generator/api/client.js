@@ -1,6 +1,117 @@
 import apiFetch from '@wordpress/api-fetch';
 import { getLocaleData } from '@wordpress/i18n';
 
+const sanitizeText = ( text ) => {
+	const trimmed = text.trim();
+	if ( ! trimmed ) {
+		return '';
+	}
+
+	return trimmed.replace( /^(["'“”「『])(.*?)(["'“”」』])$/u, '$2' );
+};
+
+const normalizeLegacyOpenAIResults = ( response ) => {
+	if ( Array.isArray( response?.results ) && 0 < response.results.length ) {
+		return response.results
+			.map( ( result, index ) => {
+				const text = result?.text ?? '';
+				if ( 'string' !== typeof text ) {
+					return null;
+				}
+
+				const cleaned = sanitizeText( text );
+				if ( ! cleaned ) {
+					return null;
+				}
+
+				return {
+					id: result?.id || `r${ index + 1 }`,
+					text: cleaned,
+				};
+			} )
+			.filter( Boolean );
+	}
+
+	if ( Array.isArray( response?.choices ) && 0 < response.choices.length ) {
+		return response.choices
+			.map( ( choice, index ) => {
+				const text = choice?.message?.content ?? '';
+				if ( 'string' !== typeof text ) {
+					return null;
+				}
+
+				const cleaned = sanitizeText( text );
+				if ( ! cleaned ) {
+					return null;
+				}
+
+				return {
+					id: `r${ index + 1 }`,
+					text: cleaned,
+				};
+			} )
+			.filter( Boolean );
+	}
+
+	return [];
+};
+
+const isWpAiConfiguredForTextGeneration = async () => {
+	try {
+		const response = await apiFetch( {
+			path: '/unitone/v1/ai-connectors-status',
+		} );
+		return response;
+	} catch ( e ) {
+		return false;
+	}
+};
+
+const generateTextByWordPressAI = async ( prompt ) => {
+	const response = await apiFetch( {
+		path: '/unitone/v1/ai-generate',
+		method: 'POST',
+		data: {
+			prompt,
+		},
+	} );
+
+	const text = response?.results?.[ 0 ]?.text || '';
+	const cleaned = sanitizeText( text );
+	if ( ! cleaned ) {
+		throw new Error( 'WordPress AI returned an empty response.' );
+	}
+
+	return {
+		results: [
+			{
+				id: 'r1',
+				text: cleaned,
+			},
+		],
+	};
+};
+
+const generateTextByLegacyOpenAI = async ( prompt, data ) => {
+	const response = await apiFetch( {
+		path: '/unitone/v1/openai',
+		method: 'POST',
+		data: {
+			...data,
+			prompt,
+		},
+	} );
+
+	return {
+		results: normalizeLegacyOpenAIResults( response ),
+		meta: {
+			source: 'legacy-openai',
+			isFallback: true,
+			isDeprecated: true,
+		},
+	};
+};
+
 export const generateText = async ( { prompt, n } ) => {
 	const localeData = getLocaleData();
 	const language =
@@ -28,38 +139,9 @@ export const generateText = async ( { prompt, n } ) => {
 		.map( ( line ) => `- ${ line }` )
 		.join( '\n' ) }`;
 
-	const response = await apiFetch( {
-		path: '/unitone/v1/openai',
-		method: 'POST',
-		data: {
-			...data,
-			prompt: combinedPrompt,
-		},
-	} );
+	if ( await isWpAiConfiguredForTextGeneration() ) {
+		return await generateTextByWordPressAI( combinedPrompt );
+	}
 
-	const results = ( response?.choices || [] )
-		.map( ( choice, index ) => {
-			const text = choice?.message?.content ?? '';
-			if ( 'string' !== typeof text ) {
-				return null;
-			}
-
-			const trimmed = text.trim();
-			if ( ! trimmed ) {
-				return null;
-			}
-
-			const cleaned = trimmed.replace(
-				/^(["'“”「『])(.*?)(["'“”」』])$/u,
-				'$2'
-			);
-
-			return {
-				id: `r${ index + 1 }`,
-				text: cleaned,
-			};
-		} )
-		.filter( Boolean );
-
-	return { results };
+	return await generateTextByLegacyOpenAI( combinedPrompt, data );
 };

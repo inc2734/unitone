@@ -11,7 +11,7 @@ import {
 
 import { useDispatch } from '@wordpress/data';
 import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/editor';
-import { useCallback, useMemo, useState } from '@wordpress/element';
+import { useCallback, useMemo, useRef, useState } from '@wordpress/element';
 import { copy as copyIcon } from '@wordpress/icons';
 import { registerPlugin } from '@wordpress/plugins';
 import { __, sprintf } from '@wordpress/i18n';
@@ -43,14 +43,15 @@ const AIGenerateSidebar = () => {
 	const [ isLoading, setIsLoading ] = useState( false );
 	const [ error, setError ] = useState( null );
 	const [ results, setResults ] = useState( [] );
+	const hasShownLegacyWarning = useRef( false );
 
 	const { createNotice, removeNotice } = useDispatch( 'core/notices' );
 
-	const setupUrl = useMemo( () => {
+	const connectorsSettingsUrl = useMemo( () => {
 		const adminBase = window?.ajaxurl
 			? window.ajaxurl.replace( /admin-ajax\.php$/, '' )
 			: '/wp-admin/';
-		return `${ adminBase }themes.php?page=unitone`;
+		return `${ adminBase }options-connectors.php`;
 	}, [] );
 
 	const onClickGenerate = async () => {
@@ -80,6 +81,21 @@ const AIGenerateSidebar = () => {
 				prompt: combinedPrompt,
 			} );
 			setResults( response?.results ?? [] );
+
+			if (
+				response?.meta?.isFallback &&
+				response?.meta?.isDeprecated &&
+				! hasShownLegacyWarning.current
+			) {
+				// eslint-disable-next-line no-console
+				console.warn(
+					__(
+						'[unitone] Starting with WordPress 7.0, the use of WordPress AI Connectors is recommended. This setup is scheduled to be rolled out, so please migrate to WordPress AI Connectors as soon as possible.',
+						'unitone'
+					)
+				);
+				hasShownLegacyWarning.current = true;
+			}
 		} catch ( fetchError ) {
 			const errorMessage =
 				fetchError?.data?.message ||
@@ -121,10 +137,10 @@ const AIGenerateSidebar = () => {
 									__html: sprintf(
 										// translators: %1$s: <a>, %2$s: </a>
 										__(
-											'To use this feature, you must set an OpenAI API key. Configure it from the %1$sunitone setup screen%2$s.',
+											'To use this feature, configure WordPress AI Connectors from the %1$sConnectors settings screen%2$s.',
 											'unitone'
 										),
-										`<a href="${ setupUrl }" target="_blank" rel="noopener noreferrer">`,
+										`<a href="${ connectorsSettingsUrl }" target="_blank" rel="noopener noreferrer">`,
 										'</a>'
 									),
 								} }

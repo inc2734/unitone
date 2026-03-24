@@ -35,6 +35,40 @@ export default function () {
 	const [ models, setModels ] = useState( [] );
 	const [ modelsLoading, setModelsLoading ] = useState( false );
 	const [ modelsError, setModelsError ] = useState( null );
+	const [ isWpAiConnectorsConfigured, setIsWpAiConnectorsConfigured ] =
+		useState( false );
+	const connectorsSettingsUrl = window?.ajaxurl
+		? `${ window.ajaxurl.replace(
+				/admin-ajax\.php$/,
+				''
+		  ) }options-connectors.php`
+		: '/wp-admin/options-connectors.php';
+
+	useEffect( () => {
+		let isMounted = true;
+
+		const checkWpAiConnectors = async () => {
+			try {
+				const response = await apiFetch( {
+					path: '/unitone/v1/ai-connectors-status',
+				} );
+
+				if ( isMounted ) {
+					setIsWpAiConnectorsConfigured( response );
+				}
+			} catch ( e ) {
+				if ( isMounted ) {
+					setIsWpAiConnectorsConfigured( false );
+				}
+			}
+		};
+
+		checkWpAiConnectors();
+
+		return () => {
+			isMounted = false;
+		};
+	}, [] );
 
 	useEffect( () => {
 		const hasApiKey = !! ( savedApiKey ?? '' );
@@ -160,7 +194,32 @@ export default function () {
 			} }
 		>
 			<div data-unitone-layout="stack -gap:2">
-				<h2>{ __( 'OpenAI', 'unitone' ) }</h2>
+				<h2>{ __( 'OpenAI (Deprecated)', 'unitone' ) }</h2>
+				<Notice status="warning" isDismissible={ false }>
+					<span
+						dangerouslySetInnerHTML={ {
+							__html: sprintf(
+								// translators: %1$s: <a>, %2$s: </a>
+								__(
+									'Starting with WordPress 7.0, the use of %1$sWordPress AI Connectors%2$s is recommended. This setup is scheduled to be rolled out, so please migrate to WordPress AI Connectors as soon as possible.',
+									'unitone'
+								),
+								`<a href="${ connectorsSettingsUrl }" target="_blank" rel="noopener noreferrer">`,
+								'</a>'
+							),
+						} }
+					/>
+				</Notice>
+
+				{ isWpAiConnectorsConfigured && (
+					<Notice status="success" isDismissible={ false }>
+						{ __(
+							'WordPress AI Connectors are already configured and currently in use. The OpenAI settings below are only used as a legacy fallback.',
+							'unitone'
+						) }
+					</Notice>
+				) }
+
 				<div
 					data-unitone-layout="stack -divider:stripe -gap:2"
 					style={ {

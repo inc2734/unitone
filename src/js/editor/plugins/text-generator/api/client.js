@@ -1,6 +1,8 @@
 import apiFetch from '@wordpress/api-fetch';
 import { getLocaleData } from '@wordpress/i18n';
 
+let wpAiConfiguredStatusPromise;
+
 const sanitizeText = ( text ) => {
 	const trimmed = text.trim();
 	if ( ! trimmed ) {
@@ -57,12 +59,19 @@ const normalizeLegacyOpenAIResults = ( response ) => {
 };
 
 const isWpAiConfiguredForTextGeneration = async () => {
-	try {
-		const response = await apiFetch( {
+	if ( ! wpAiConfiguredStatusPromise ) {
+		wpAiConfiguredStatusPromise = apiFetch( {
 			path: '/unitone/v1/ai-connectors-status',
+		} ).catch( () => {
+			wpAiConfiguredStatusPromise = undefined;
+			return false;
 		} );
-		return response;
+	}
+
+	try {
+		return await wpAiConfiguredStatusPromise;
 	} catch ( e ) {
+		wpAiConfiguredStatusPromise = undefined;
 		return false;
 	}
 };

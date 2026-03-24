@@ -249,7 +249,7 @@ add_action(
 					if ( false === $candidate_rows ) {
 						// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 						$candidate_rows = $wpdb->get_results(
-							"SELECT option_value FROM {$wpdb->options} WHERE option_name LIKE '%ai%' AND option_name LIKE '%connectors_ai_%' LIMIT 100",
+							"SELECT option_value FROM {$wpdb->options} WHERE option_name LIKE '%connectors_ai_%' LIMIT 100",
 							ARRAY_A
 						);
 						wp_cache_set( $cache_key, $candidate_rows, $cache_group, MINUTE_IN_SECONDS );

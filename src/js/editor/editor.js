@@ -4,6 +4,7 @@ import './hooks/style';
 import './wp-blocks/button';
 import './wp-blocks/image';
 import './wp-blocks/navigation';
+import './wp-blocks/post-template';
 import './wp-blocks/query';
 import './wp-blocks/table';
 import './wp-blocks/post-terms';

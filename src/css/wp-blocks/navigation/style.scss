@@ -25,6 +25,7 @@
 // Fix core CSS bug.
 .wp-block-navigation__container {
 	gap: inherit !important;
+	align-items: stretch !important;
 }
 .wp-block-navigation:where(:not([class*=has-text-decoration])) a:not(.wp-element-button) {
 	text-decoration: none;

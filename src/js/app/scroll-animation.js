@@ -1,12 +1,26 @@
-export default function initEffects() {
+export default function initScrollAnimationFeatures() {
 	const parallaxTargets = Array.from(
 		document.querySelectorAll( '[data-unitone-parallax]' )
 	);
 
 	if ( parallaxTargets.length ) {
+		const activeParallaxTargets = new Set();
+		const initializedTargets = new WeakSet();
+
 		const isCoverElement = ( target ) =>
 			'cover' ===
 			window.getComputedStyle( target ).getPropertyValue( 'object-fit' );
+
+		const resetPosition = ( target ) => {
+			const child = target.children[ 0 ];
+
+			if ( child && isCoverElement( child ) ) {
+				child.style.objectPosition = '';
+				return;
+			}
+
+			target.style.transform = '';
+		};
 
 		const updatePosition = ( target ) => {
 			const viewPortHeight = Math.max(
@@ -37,20 +51,14 @@ export default function initEffects() {
 			target.style.transform = `translate3d(0, ${ translateY }px, 0)`;
 		};
 
-		const enabled = ( target ) =>
-			'enable' === target.getAttribute( 'data-unitone-parallax' );
-
-		let onscreenTargets = 0;
 		let scrollRafId = 0;
 		let isListening = false;
 
 		const runParallax = () => {
 			scrollRafId = 0;
 
-			parallaxTargets.forEach( ( target ) => {
-				if ( enabled( target ) ) {
-					updatePosition( target );
-				}
+			activeParallaxTargets.forEach( ( target ) => {
+				updatePosition( target );
 			} );
 		};
 
@@ -69,6 +77,7 @@ export default function initEffects() {
 
 			isListening = true;
 			window.addEventListener( 'scroll', onScroll, { passive: true } );
+			window.addEventListener( 'resize', onScroll, { passive: true } );
 			document.addEventListener( 'touchmove', onScroll, {
 				passive: true,
 			} );
@@ -81,6 +90,7 @@ export default function initEffects() {
 
 			isListening = false;
 			window.removeEventListener( 'scroll', onScroll );
+			window.removeEventListener( 'resize', onScroll );
 			document.removeEventListener( 'touchmove', onScroll );
 		};
 
@@ -90,23 +100,27 @@ export default function initEffects() {
 					const target = entry.target;
 
 					if ( entry.isIntersecting ) {
-						onscreenTargets += 1;
+						activeParallaxTargets.add( target );
 						target.setAttribute(
 							'data-unitone-parallax',
 							'enable'
 						);
+
+						if ( ! initializedTargets.has( target ) ) {
+							updatePosition( target );
+							updatePosition( target );
+							initializedTargets.add( target );
+						}
+
 						return;
 					}
 
-					if ( enabled( target ) ) {
-						onscreenTargets -= 1;
-					}
-
+					activeParallaxTargets.delete( target );
 					target.setAttribute( 'data-unitone-parallax', 'disable' );
-					target.style.transform = '';
+					resetPosition( target );
 				} );
 
-				if ( 0 < onscreenTargets ) {
+				if ( 0 < activeParallaxTargets.size ) {
 					startListeners();
 					onScroll();
 					return;
@@ -121,8 +135,6 @@ export default function initEffects() {
 
 		parallaxTargets.forEach( ( target ) => {
 			observer.observe( target );
-			updatePosition( target );
-			updatePosition( target );
 		} );
 	}
 

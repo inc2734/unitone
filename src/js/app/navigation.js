@@ -11,37 +11,48 @@ export default function initNavigation() {
 
 	let rafId = 0;
 
-	const refreshers = navigations.map( ( navigation ) => {
-		const submenus = navigation.querySelectorAll(
-			[
-				'.wp-block-navigation__container > .wp-block-page-list > .wp-block-pages-list__item > .wp-block-navigation__submenu-container',
-				'.wp-block-navigation__container > .wp-block-navigation-item > :is(.wp-block-navigation__submenu-container, .unitone-mega-menu__container)',
-			].join( ',' )
-		);
+	const items = navigations.flatMap( ( navigation ) =>
+		Array.from(
+			navigation.querySelectorAll(
+				[
+					'.wp-block-navigation__container > .wp-block-page-list > .wp-block-pages-list__item > .wp-block-navigation__submenu-container',
+					'.wp-block-navigation__container > .wp-block-navigation-item > :is(.wp-block-navigation__submenu-container, .unitone-mega-menu__container)',
+				].join( ',' )
+			)
+		).map( ( submenu ) => ( {
+			submenu,
+			anchor: submenu.parentElement,
+		} ) )
+	);
 
-		return () => {
-			Array.from( submenus ).forEach( ( submenu ) => {
-				const rect = submenu.parentElement?.getBoundingClientRect();
-				if ( ! rect ) {
-					return;
-				}
+	if ( ! items.length ) {
+		return;
+	}
 
-				submenu.style.setProperty(
-					'--unitone--rect-top',
-					`${ rect.y }px`
-				);
-				submenu.style.setProperty(
-					'--unitone--rect-right',
-					`${ rect.x + rect.width }px`
-				);
-			} );
-		};
-	} );
+	const refreshItem = ( { submenu, anchor } ) => {
+		if ( ! submenu?.isConnected || ! anchor?.isConnected ) {
+			return;
+		}
+
+		const rect = anchor.getBoundingClientRect();
+		const top = `${ rect.y }px`;
+		const right = `${ rect.x + rect.width }px`;
+
+		if ( submenu.style.getPropertyValue( '--unitone--rect-top' ) !== top ) {
+			submenu.style.setProperty( '--unitone--rect-top', top );
+		}
+
+		if (
+			submenu.style.getPropertyValue( '--unitone--rect-right' ) !== right
+		) {
+			submenu.style.setProperty( '--unitone--rect-right', right );
+		}
+	};
 
 	const refreshAll = () => {
 		rafId = 0;
-		refreshers.forEach( ( refresh ) => {
-			refresh();
+		items.forEach( ( item ) => {
+			refreshItem( item );
 		} );
 	};
 
@@ -67,7 +78,17 @@ export default function initNavigation() {
 	} );
 
 	const resizeObserver = new window.ResizeObserver( scheduleRefreshAll );
-	resizeObserver.observe( document.body );
+	const observedElements = new Set( navigations );
+
+	items.forEach( ( { anchor } ) => {
+		if ( anchor ) {
+			observedElements.add( anchor );
+		}
+	} );
+
+	observedElements.forEach( ( element ) => {
+		resizeObserver.observe( element );
+	} );
 
 	scheduleRefreshAll();
 }

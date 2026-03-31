@@ -85,65 +85,12 @@ function unitone_enqueue_block_editor_styles() {
 		filemtime( get_theme_file_path( 'dist/css/editor/editor.css' ) )
 	);
 
-	$css = file_get_contents( get_template_directory() . '/dist/css/app/editor-style.css' );
-
-	// For non iframe editor and iframe editor.
-	$css = str_replace(
-		array(
-			':where(body)',
-		),
-		':where(.editor-styles-wrapper)',
-		$css
-	);
-
-	// For non iframe editor.
-	$css = str_replace(
-		array(
-			'div:where(.editor-styles-wrapper.block-editor-writing-flow) html',
-			'div:where(.editor-styles-wrapper.block-editor-writing-flow) body',
-		),
-		'div:where(.editor-styles-wrapper.block-editor-writing-flow)',
-		$css
-	);
-
-	// For iframe editor.
-	$css = str_replace(
-		array(
-			':where(.editor-styles-wrapper.block-editor-iframe__body) html',
-			':where(.editor-styles-wrapper.block-editor-iframe__body) body',
-		),
-		':where(.editor-styles-wrapper.block-editor-iframe__body)',
-		$css
-	);
-
-	$css = str_replace( '}:where(.editor-styles-wrapper)', '}html :where(.editor-styles-wrapper)', $css );
-	$css = str_replace(
-		array(
-			':where(.editor-styles-wrapper.block-editor-iframe__body) :root',
-			'div:where(.editor-styles-wrapper.block-editor-writing-flow) :root',
-		),
-		':root',
-		$css
-	);
+	$css = file_get_contents( get_theme_file_path( 'dist/css/app/editor-style.css' ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 
 	wp_add_inline_style(
 		'unitone',
 		$css
 	);
-
-	// For color picker.
-	$css = file_get_contents( get_template_directory() . '/dist/css/app/editor-style.css' );
-	$css = preg_match_all(
-		'|--unitone--color--[^:]+:#[a-f0-9]{3,6};|ims',
-		$css,
-		$matches
-	);
-	if ( $matches ) {
-		wp_add_inline_style(
-			'global-styles-css-custom-properties',
-			':root{' . implode( '', $matches[0] ) . '}'
-		);
-	}
 
 	do_action( 'unitone_enqueue_block_editor_styles' );
 }

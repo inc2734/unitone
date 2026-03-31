@@ -58,7 +58,7 @@
 		"css:wp-oembed-blog-card": "rimraf dist/css/wp-oembed-blog-card && sass --no-source-map src/css/wp-oembed-blog-card:dist/css/wp-oembed-blog-card && postcss dist/css/wp-oembed-blog-card -r",
 		"css:app": "sass --no-source-map src/css/app/app.scss:dist/css/app/app.css && postcss dist/css/app/app.css -r",
 		"css:global-styles": "sass --no-source-map src/css/app/global-styles.scss:dist/css/app/global-styles.css && postcss dist/css/app/global-styles.css -r",
-		"css:editor-styles": "sass --no-source-map src/css/app/editor-style.scss:dist/css/app/editor-style.css && postcss dist/css/app/editor-style.css -r",
+		"css:editor-styles": "sass --no-source-map src/css/app/editor-styles.tmp.scss:dist/css/app/editor-styles.tmp.css && postcss dist/css/app/editor-styles.tmp.css -r && node bin/generate-editor-styles.js",
 		"css:editor": "sass --no-source-map src/css/editor/editor.scss:dist/css/editor/editor.css && postcss dist/css/editor/editor.css -r",
 		"css": "run-p css:*",
 		"dev:js:editor": "rimraf dist/js/app && cross-env NODE_ENV=development wp-scripts build src/js/editor/editor.js --output-path=dist/js/editor",

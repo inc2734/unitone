@@ -3,7 +3,7 @@
  * The order of loading CSS for the core editor changes depending on the WP_DEBUG status.
  * Therefore, load CSS with enqueue_block_editor_assets instead of add_editor_styles().
  * However, the CSS output by @use settings includes :root, html and body,
- * which should be replaced by .editor-styles-wrapper in PHP.
+ * which should be replaced by .editor-styles-wrapper in the build step.
  */
 
 @use "sass:meta";
@@ -20,7 +20,7 @@
  * ## iframe
  * .editor-styles-wrapper.block-editor-iframe__body
  *  .is-root-container.wp-block-post-content.block-editor-block-list__layout
-*/
+ */
 div:where(.editor-styles-wrapper.block-editor-writing-flow),
 :where(.editor-styles-wrapper.block-editor-iframe__body) {
 	@include meta.load-css("foundation");

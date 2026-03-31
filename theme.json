@@ -244,40 +244,45 @@
 							"fontFamily": "'Cormorant Garamond'",
 							"fontWeight": "300",
 							"fontStyle": "normal",
+							"fontDisplay": "swap",
 							"src": [
-								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Light.ttf"
+								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Light.woff2"
 							]
 						},
 						{
 							"fontFamily": "'Cormorant Garamond'",
 							"fontWeight": "300",
 							"fontStyle": "italic",
+							"fontDisplay": "swap",
 							"src": [
-								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-LightItalic.ttf"
+								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-LightItalic.woff2"
 							]
 						},
 						{
 							"fontFamily": "'Cormorant Garamond'",
 							"fontWeight": "400",
 							"fontStyle": "normal",
+							"fontDisplay": "swap",
 							"src": [
-								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Regular.ttf"
+								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Regular.woff2"
 							]
 						},
 						{
 							"fontFamily": "'Cormorant Garamond'",
 							"fontWeight": "400",
 							"fontStyle": "italic",
+							"fontDisplay": "swap",
 							"src": [
-								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Italic.ttf"
+								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Italic.woff2"
 							]
 						},
 						{
 							"fontFamily": "'Cormorant Garamond'",
 							"fontWeight": "700",
 							"fontStyle": "normal",
+							"fontDisplay": "swap",
 							"src": [
-								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Bold.ttf"
+								"file:./dist/fonts/cormorant-garamond/CormorantGaramond-Bold.woff2"
 							]
 						}
 					]

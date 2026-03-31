@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-24T06:09:30+00:00\n"
+"POT-Creation-Date: 2026-03-31T07:33:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -72,7 +72,7 @@ msgstr ""
 msgid "Custom"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:404
+#: App/Controller/Manager/Manager.php:421
 #: patterns/footer/footer-2.php:21
 #: patterns/footer/footer-3.php:53
 #: patterns/footer/footer-3.php:61
@@ -86,7 +86,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:447
+#: App/Controller/Manager/Manager.php:464
 #: patterns/footer/footer-2.php:24
 #: patterns/footer/footer-3.php:56
 #: patterns/footer/footer-3.php:64
@@ -102,20 +102,20 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:547
+#: App/Controller/Manager/Manager.php:564
 msgid "unitone theme has been activated"
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:550
+#: App/Controller/Manager/Manager.php:567
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr ""
 
-#: App/Controller/Manager/Manager.php:554
+#: App/Controller/Manager/Manager.php:571
 msgid "Go to the setup screen"
 msgstr ""
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
-#: App/Controller/Manager/Manager.php:577
+#: App/Controller/Manager/Manager.php:594
 #, php-format
 msgid "You have not set a valid license key. Setting a license key will allow you to use patterns registered in %3$sthe pattern library%4$s. It will also enable theme updates. A license key is issued when you subscribe to %1$sunitone license key subscription%2$s. The license key is set %5$shere%6$s."
 msgstr ""
@@ -3385,6 +3385,22 @@ msgstr ""
 
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Switch writing mode when portrait and mobile width."
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+msgid "With sidebar (Divider: Stripe)"
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+msgid "With sidebar (Divider: Divide)"
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+msgid "With sidebar (Divider: Slash)"
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+msgid "With sidebar (Divider: Bordered)"
 msgstr ""
 
 #: dist/blocks/with-sidebar-divided/index.js:1

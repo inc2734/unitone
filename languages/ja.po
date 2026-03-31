@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-03-24T06:09:30+00:00\n"
-"PO-Revision-Date: 2026-03-24 15:16+0900\n"
+"POT-Creation-Date: 2026-03-31T07:33:42+00:00\n"
+"PO-Revision-Date: 2026-03-31 16:34+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -63,7 +63,7 @@ msgstr "デフォルト"
 msgid "Custom"
 msgstr "カスタム"
 
-#: App/Controller/Manager/Manager.php:404 patterns/footer/footer-2.php:21
+#: App/Controller/Manager/Manager.php:421 patterns/footer/footer-2.php:21
 #: patterns/footer/footer-3.php:53 patterns/footer/footer-3.php:61
 #: patterns/footer/footer-3.php:69 patterns/footer/footer-4.php:31
 #: patterns/footer/footer-4.php:39 patterns/footer/footer-4.php:47
@@ -72,7 +72,7 @@ msgstr "カスタム"
 msgid "Home"
 msgstr "ホーム"
 
-#: App/Controller/Manager/Manager.php:447 patterns/footer/footer-2.php:24
+#: App/Controller/Manager/Manager.php:464 patterns/footer/footer-2.php:24
 #: patterns/footer/footer-3.php:56 patterns/footer/footer-3.php:64
 #: patterns/footer/footer-3.php:72 patterns/footer/footer-4.php:34
 #: patterns/footer/footer-4.php:42 patterns/footer/footer-4.php:50
@@ -83,20 +83,20 @@ msgstr "ホーム"
 msgid "Blog"
 msgstr "ブログ"
 
-#: App/Controller/Manager/Manager.php:547
+#: App/Controller/Manager/Manager.php:564
 msgid "unitone theme has been activated"
 msgstr "unitone テーマが有効化されました"
 
-#: App/Controller/Manager/Manager.php:550
+#: App/Controller/Manager/Manager.php:567
 msgid "Let's start with the initial setup on the unitone setup screen."
 msgstr "unitone のセットアップ画面で初期設定をはじめましょう。"
 
-#: App/Controller/Manager/Manager.php:554
+#: App/Controller/Manager/Manager.php:571
 msgid "Go to the setup screen"
 msgstr "セットアップ画面へ"
 
 #. translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
-#: App/Controller/Manager/Manager.php:577
+#: App/Controller/Manager/Manager.php:594
 #, php-format
 msgid ""
 "You have not set a valid license key. Setting a license key will allow you "
@@ -3336,6 +3336,22 @@ msgstr "ライティングモードの切り替え"
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Switch writing mode when portrait and mobile width."
 msgstr "ポートレートかつモバイル幅のとライティンググモードを切り替える。"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+msgid "With sidebar (Divider: Stripe)"
+msgstr "サイドバー（区切りあり：ストライプ）"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+msgid "With sidebar (Divider: Divide)"
+msgstr "サイドバー（区切りあり：分割）"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+msgid "With sidebar (Divider: Slash)"
+msgstr "サイドバー（区切りあり：スラッシュ）"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+msgid "With sidebar (Divider: Bordered)"
+msgstr "サイドバー（区切りあり：ボーダー）"
 
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1

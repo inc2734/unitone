@@ -4,6 +4,7 @@ import icon from '../with-sidebar/icon';
 import edit from './edit';
 import save from './save';
 import transforms from './transforms';
+import variations from './variations';
 
 import './style.scss';
 import './index.scss';
@@ -15,4 +16,5 @@ registerBlockType( 'unitone/with-sidebar-divided', {
 	edit,
 	save,
 	transforms,
+	variations,
 } );

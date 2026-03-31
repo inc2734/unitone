@@ -1,7 +1,3 @@
-[data-unitone-layout~="cluster"]:where([data-unitone-layout*="-divider:"]) {
-	visibility: visible;
-}
-
 .block-editor-block-list__block.unitone-child-pages:has(.unitone-child-pages) {
 	background-color: transparent !important;
 	border: none !important;

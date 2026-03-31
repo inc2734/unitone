@@ -6,7 +6,7 @@
 	"name": "unitone/with-sidebar-content",
 	"title": "Content",
 	"description": "The content of the with sidebar block.",
-	"parent": [ "unitone/with-sidebar" ],
+	"parent": [ "unitone/with-sidebar", "unitone/with-sidebar-divided" ],
 	"attributes": {
 		"type": {
 			"type": "string",

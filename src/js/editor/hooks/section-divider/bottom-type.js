@@ -7,12 +7,25 @@ import { __, sprintf } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.sectionDivider?.bottom?.type;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.sectionDivider?.bottom?.type;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasSectionDividerBottomTypeValue( {
 	name,
 	attributes: { unitone },
 } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.sectionDivider?.bottom?.type;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.sectionDivider?.bottom?.type &&
@@ -47,10 +60,7 @@ export function SectionDividerBottomTypeEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.sectionDivider?.bottom?.type;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	const value = unitone?.sectionDivider?.bottom?.type ?? defaultValue ?? '';
 	const isBottomExpand = isSectionDividerBottomExpand( {

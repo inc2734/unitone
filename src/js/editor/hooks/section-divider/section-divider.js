@@ -7,7 +7,8 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { hasBlockSupport } from '@wordpress/blocks';
+import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+
 import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -130,14 +131,18 @@ export function withSectionDividerBlockProps( settings ) {
 		return settings;
 	}
 
-	const sectionDivider = cleanEmptyObject( {
-		top: {
-			...attributes?.unitone?.sectionDivider?.top,
-		},
-		bottom: {
-			...attributes?.unitone?.sectionDivider?.bottom,
-		},
-	} );
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.sectionDivider;
+
+	const sectionDivider =
+		cleanEmptyObject( {
+			top: {
+				...attributes?.unitone?.sectionDivider?.top,
+			},
+			bottom: {
+				...attributes?.unitone?.sectionDivider?.bottom,
+			},
+		} ) ?? defaultValue;
 
 	if ( null == sectionDivider ) {
 		return settings;

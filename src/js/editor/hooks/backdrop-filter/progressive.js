@@ -20,9 +20,22 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.backdropFilter?.progressive;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.backdropFilter?.progressive;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasProgressiveValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.backdropFilter?.progressive;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.backdropFilter?.progressive &&
@@ -58,9 +71,14 @@ export function getProgressiveEditLabel( {
 }
 
 export function isProgressiveDisabled( { name } = {} ) {
+	const support = getBlockSupport( name, 'unitone.backdropFilter' );
+
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.progressive' ) &&
-		true !== getBlockSupport( name, 'unitone.backdropFilter' )
+		true !== support &&
+		( ! support ||
+			'object' !== typeof support ||
+			false === support?.progressive )
 	);
 }
 
@@ -70,10 +88,7 @@ export function ProgressiveEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.backdropFilter?.progressive;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<div className="unitone-backdrop-filter-progressive-control">

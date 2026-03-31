@@ -20,9 +20,22 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.dropShadow;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.dropShadow;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasDropShadowValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.dropShadow;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.dropShadow &&
@@ -282,11 +295,7 @@ export function DropShadowEdit( {
 } ) {
 	const [ settings ] = useSettings( 'shadow' );
 
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.dropShadow;
-	}, [] );
-
+	const defaultValue = useDefaultValue( { name } );
 	const mergedShadowPresets = useShadowPresets( settings ) ?? [];
 
 	const defaultShadow = mergedShadowPresets?.find( ( { slug } ) => {
@@ -345,9 +354,10 @@ export function withDropShadowBlockProps( settings ) {
 		return settings;
 	}
 
-	const newDropShadow = attributes?.unitone?.dropShadow;
+	const defaultValue = getDefaultValue( { name } );
+	const newDropShadow = attributes?.unitone?.dropShadow ?? defaultValue ?? '';
 
-	if ( null == newDropShadow ) {
+	if ( '' === newDropShadow ) {
 		return settings;
 	}
 

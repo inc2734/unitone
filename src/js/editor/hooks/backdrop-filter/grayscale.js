@@ -12,9 +12,22 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.backdropFilter?.grayscale;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.backdropFilter?.grayscale;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasGrayscaleValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.backdropFilter?.grayscale;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.backdropFilter?.grayscale &&
@@ -64,9 +77,14 @@ export function getGrayscaleEditLabel( {
 }
 
 export function isGrayscaleDisabled( { name } = {} ) {
+	const support = getBlockSupport( name, 'unitone.backdropFilter' );
+
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.grayscale' ) &&
-		true !== getBlockSupport( name, 'unitone.backdropFilter' )
+		true !== support &&
+		( ! support ||
+			'object' !== typeof support ||
+			false === support?.grayscale )
 	);
 }
 
@@ -76,10 +94,7 @@ export function GrayscaleEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.backdropFilter?.grayscale;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<RangeControl

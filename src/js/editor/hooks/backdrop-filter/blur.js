@@ -12,9 +12,22 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.backdropFilter?.blur;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.backdropFilter?.blur;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasBlurValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.backdropFilter?.blur;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.backdropFilter?.blur &&
@@ -62,9 +75,12 @@ export function getBlurEditLabel( {
 }
 
 export function isBlurSupportDisabled( { name } = {} ) {
+	const support = getBlockSupport( name, 'unitone.backdropFilter' );
+
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.blur' ) &&
-		true !== getBlockSupport( name, 'unitone.backdropFilter' )
+		true !== support &&
+		( ! support || 'object' !== typeof support || false === support?.blur )
 	);
 }
 
@@ -74,10 +90,7 @@ export function BlurEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.backdropFilter?.blur;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<RangeControl

@@ -27,9 +27,7 @@
 				"position": {
 					"position": "relative",
 					"zIndex": "1"
-				},
-				"alignSelf": "start",
-				"justifySelf": "start"
+				}
 			}
 		}
 	},

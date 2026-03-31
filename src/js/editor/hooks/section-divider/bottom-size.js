@@ -6,12 +6,25 @@ import { useSelect } from '@wordpress/data';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.sectionDivider?.bottom?.size;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.sectionDivider?.bottom?.size;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasSectionDividerBottomSizeValue( {
 	name,
 	attributes: { unitone },
 } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.sectionDivider?.bottom?.size;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.sectionDivider?.bottom?.size &&
@@ -46,10 +59,7 @@ export function SectionDividerBottomSizeEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.sectionDivider?.bottom?.size;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<RangeControl

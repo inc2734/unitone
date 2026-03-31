@@ -33,7 +33,9 @@
 		"contentRole": true,
 		"unitone": {
 			"padding": true,
-			"backdropFilter": true
+			"backdropFilter": {
+				"progressive": false
+			}
 		}
 	},
 	"category": "unitone/component",

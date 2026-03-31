@@ -12,9 +12,22 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.backdropFilter?.hueRotate;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.backdropFilter?.hueRotate;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasHueRotateValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.backdropFilter?.hueRotate;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.backdropFilter?.hueRotate &&
@@ -64,9 +77,14 @@ export function getHueRotateEditLabel( {
 }
 
 export function isHueRotateDisabled( { name } = {} ) {
+	const support = getBlockSupport( name, 'unitone.backdropFilter' );
+
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.hueRotate' ) &&
-		true !== getBlockSupport( name, 'unitone.backdropFilter' )
+		true !== support &&
+		( ! support ||
+			'object' !== typeof support ||
+			false === support?.hueRotate )
 	);
 }
 
@@ -76,10 +94,7 @@ export function HueRotateEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.backdropFilter?.hueRotate;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<RangeControl

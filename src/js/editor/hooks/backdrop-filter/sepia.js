@@ -12,9 +12,22 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.backdropFilter?.sepia;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.backdropFilter?.sepia;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasSepiaValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.backdropFilter?.sepia;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.backdropFilter?.sepia &&
@@ -62,9 +75,12 @@ export function getSepiaEditLabel( {
 }
 
 export function isSepiaDisabled( { name } = {} ) {
+	const support = getBlockSupport( name, 'unitone.backdropFilter' );
+
 	return (
 		! hasBlockSupport( name, 'unitone.backdropFilter.sepia' ) &&
-		true !== getBlockSupport( name, 'unitone.backdropFilter' )
+		true !== support &&
+		( ! support || 'object' !== typeof support || false === support?.sepia )
 	);
 }
 
@@ -74,10 +90,7 @@ export function SepiaEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.backdropFilter?.sepia;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<RangeControl

@@ -23,7 +23,7 @@ const getDividerTypeOptions = ( {
 
 	const list = [
 		{
-			label: '',
+			label: __( 'None', 'unitone' ),
 			value: '',
 		},
 		{
@@ -57,15 +57,16 @@ const getDividerTypeOptions = ( {
 	];
 
 	return list.filter( ( value ) => {
-		return options?.includes( value.value ) || '' === value.value;
+		return options?.includes( value.value );
 	} );
 };
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
-	return null != __unstableUnitoneSupports?.dividerType?.default
-		? __unstableUnitoneSupports?.dividerType?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.dividerType;
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.dividerType;
+	const unstableDefaultValue =
+		__unstableUnitoneSupports?.dividerType?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 function useDefaultValue( { name, __unstableUnitoneSupports } ) {
@@ -73,10 +74,9 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.dividerType;
 	}, [] );
-
-	return null != __unstableUnitoneSupports?.dividerType?.default
-		? __unstableUnitoneSupports?.dividerType?.default
-		: defaultValue;
+	const unstableDefaultValue =
+		__unstableUnitoneSupports?.dividerType?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 export function isDividerTypeSupportDisabled( {
@@ -130,6 +130,7 @@ export function DividerTypeEdit( props ) {
 		attributes: { unitone, __unstableUnitoneSupports },
 		setAttributes,
 	} = props;
+
 	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
 	return (
@@ -142,7 +143,7 @@ export function DividerTypeEdit( props ) {
 			onChange={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,
-					dividerType: newAttribute || undefined,
+					dividerType: newAttribute ?? undefined,
 				};
 
 				setAttributes( {
@@ -166,9 +167,11 @@ export function withDividerTypeBlockProps( settings ) {
 		return settings;
 	}
 
-	const newDividerType = attributes?.unitone?.dividerType;
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
+	const newDividerType =
+		attributes?.unitone?.dividerType ?? defaultValue ?? '';
 
-	if ( null == newDividerType ) {
+	if ( '' === newDividerType ) {
 		return settings;
 	}
 

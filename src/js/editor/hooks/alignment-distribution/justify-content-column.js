@@ -42,12 +42,25 @@ const justifyContentColumnOptions = [
 	},
 ];
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.justifyContent;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.justifyContent;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasJustifyContentColumnValue( {
 	name,
 	attributes: { unitone },
 } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.justifyContent;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.justifyContent &&
@@ -81,10 +94,7 @@ export function JustifyContentColumnToolbar( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.justifyContent;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<ToolbarDropdownMenu
@@ -146,10 +156,7 @@ export function JustifyContentColumnEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.justifyContent;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
@@ -194,9 +201,11 @@ export function withJustifyContentColumnBlockProps( settings ) {
 		return settings;
 	}
 
-	const newJustifyContentColumn = attributes?.unitone?.justifyContent;
+	const defaultValue = getDefaultValue( { name } );
+	const newJustifyContentColumn =
+		attributes?.unitone?.justifyContent ?? defaultValue ?? '';
 
-	if ( null == newJustifyContentColumn ) {
+	if ( '' === newJustifyContentColumn ) {
 		return settings;
 	}
 

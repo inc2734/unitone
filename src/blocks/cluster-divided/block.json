@@ -38,7 +38,7 @@
 	},
 	"allowedBlocks": [ "unitone/cluster-divided-content" ],
 	"selectors": {
-		"root": "[data-unitone-layout~=cluster][data-unitone-layout*=-divider:]"
+		"root": "[data-unitone-layout~=cluster][data-unitone-layout*=\"-divider:\"]"
 	},
 	"supports": {
 		"className": false,

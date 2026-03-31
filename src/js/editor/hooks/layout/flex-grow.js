@@ -6,10 +6,10 @@ import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
-	return null != __unstableUnitoneSupports?.flexGrow?.default
-		? __unstableUnitoneSupports?.flexGrow?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.flexGrow;
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.flexGrow;
+	const unstableDefaultValue = __unstableUnitoneSupports?.flexGrow?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 function useDefaultValue( { name, __unstableUnitoneSupports } ) {
@@ -17,10 +17,8 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.flexGrow;
 	}, [] );
-
-	return null != __unstableUnitoneSupports?.flexGrow?.default
-		? __unstableUnitoneSupports?.flexGrow?.default
-		: defaultValue;
+	const unstableDefaultValue = __unstableUnitoneSupports?.flexGrow?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 export function hasFlexGrowValue( {
@@ -133,9 +131,10 @@ export function withFlexGrowBlockProps( settings ) {
 		return settings;
 	}
 
-	const newFlexGrow = attributes?.unitone?.flexGrow;
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
+	const newFlexGrow = attributes?.unitone?.flexGrow ?? defaultValue ?? '';
 
-	if ( null == newFlexGrow ) {
+	if ( '' === newFlexGrow ) {
 		return settings;
 	}
 

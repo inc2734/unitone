@@ -24,9 +24,22 @@ import { HelpContainer } from '../components';
 import { scroll as iconScrollAnimation } from './icons';
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.scrollAnimation;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.scrollAnimation;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasScrollAnimationValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.scrollAnimation;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.scrollAnimation &&
@@ -545,10 +558,7 @@ export function ScrollAnimationEdit( {
 	attributes: { unitone, __unitoneStates },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.scrollAnimation;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	const type = unitone?.scrollAnimation?.type ?? defaultValue?.type;
 	const speed = unitone?.scrollAnimation?.speed ?? defaultValue?.speed;
@@ -744,8 +754,9 @@ export function withScrollAnimationBlockProps( settings ) {
 		return settings;
 	}
 
+	const defaultValue = getDefaultValue( { name } );
 	const newScrollAnimation = {
-		...attributes?.unitone?.scrollAnimation,
+		...( attributes?.unitone?.scrollAnimation ?? defaultValue ),
 	};
 
 	if ( null == newScrollAnimation ) {

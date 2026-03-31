@@ -57,9 +57,22 @@ const justifyContentOptions = [
 	},
 ];
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.justifyContent;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.justifyContent;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasJustifyContentValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.justifyContent;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.justifyContent &&
@@ -93,10 +106,7 @@ export function JustifyContentToolbar( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.justifyContent;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	const support = getBlockSupport( name, 'unitone.justifyContent' );
 	const filteredOptions = Array.isArray( support )
@@ -165,10 +175,7 @@ export function JustifyContentEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.justifyContent;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	const support = getBlockSupport( name, 'unitone.justifyContent' );
 	const filteredOptions = Array.isArray( support )
@@ -221,9 +228,11 @@ export function withJustifyContentBlockProps( settings ) {
 		return settings;
 	}
 
-	const newJustifyContent = attributes?.unitone?.justifyContent;
+	const defaultValue = getDefaultValue( { name } );
+	const newJustifyContent =
+		attributes?.unitone?.justifyContent ?? defaultValue ?? '';
 
-	if ( null == newJustifyContent ) {
+	if ( '' === newJustifyContent ) {
 		return settings;
 	}
 

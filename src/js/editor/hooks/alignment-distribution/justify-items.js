@@ -42,9 +42,22 @@ const justifyItemsOptions = [
 	},
 ];
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.justifyItems;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.justifyItems;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasJustifyItemsValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.justifyItems;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.justifyItems &&
@@ -78,10 +91,7 @@ export function JustifyItemsToolbar( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.justifyItems;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<ToolbarDropdownMenu
@@ -142,10 +152,7 @@ export function JustifyItemsEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.justifyItems;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
@@ -191,9 +198,11 @@ export function withJustifyItemsBlockProps( settings ) {
 		return settings;
 	}
 
-	const newJustifyItems = attributes?.unitone?.justifyItems;
+	const defaultValue = getDefaultValue( { name } );
+	const newJustifyItems =
+		attributes?.unitone?.justifyItems ?? defaultValue ?? '';
 
-	if ( null == newJustifyItems ) {
+	if ( '' === newJustifyItems ) {
 		return settings;
 	}
 

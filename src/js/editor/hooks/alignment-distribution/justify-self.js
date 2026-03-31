@@ -63,10 +63,11 @@ function getIsResponsive( { name, __unstableUnitoneSupports } ) {
 }
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
-	return null != __unstableUnitoneSupports?.justifySelf?.default
-		? __unstableUnitoneSupports?.justifySelf?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.justifySelf;
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.justifySelf;
+	const unstableDefaultValue =
+		__unstableUnitoneSupports?.justifySelf?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 function useDefaultValue( { name, __unstableUnitoneSupports } ) {
@@ -74,10 +75,9 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.justifySelf;
 	}, [] );
-
-	return null != __unstableUnitoneSupports?.justifySelf?.default
-		? __unstableUnitoneSupports?.justifySelf?.default
-		: defaultValue;
+	const unstableDefaultValue =
+		__unstableUnitoneSupports?.justifySelf?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 export function hasJustifySelfValue( {
@@ -461,7 +461,8 @@ export function withJustifySelfBlockProps( settings ) {
 		return settings;
 	}
 
-	const newJustifySelf = attributes?.unitone?.justifySelf;
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
+	const newJustifySelf = attributes?.unitone?.justifySelf ?? defaultValue;
 
 	if ( null == newJustifySelf ) {
 		return settings;

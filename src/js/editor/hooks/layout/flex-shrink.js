@@ -6,10 +6,10 @@ import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
-	return null != __unstableUnitoneSupports?.flexShrink?.default
-		? __unstableUnitoneSupports?.flexShrink?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.flexShrink;
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.flexShrink;
+	const unstableDefaultValue = __unstableUnitoneSupports?.flexShrink?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 function useDefaultValue( { name, __unstableUnitoneSupports } ) {
@@ -17,10 +17,8 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.flexShrink;
 	}, [] );
-
-	return null != __unstableUnitoneSupports?.flexShrink?.default
-		? __unstableUnitoneSupports?.flexShrink?.default
-		: defaultValue;
+	const unstableDefaultValue = __unstableUnitoneSupports?.flexShrink?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 export function hasFlexShrinkValue( {
@@ -134,9 +132,10 @@ export function withFlexShrinkBlockProps( settings ) {
 		return settings;
 	}
 
-	const newFlexShrink = attributes?.unitone?.flexShrink;
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
+	const newFlexShrink = attributes?.unitone?.flexShrink ?? defaultValue ?? '';
 
-	if ( null == newFlexShrink ) {
+	if ( '' === newFlexShrink ) {
 		return settings;
 	}
 

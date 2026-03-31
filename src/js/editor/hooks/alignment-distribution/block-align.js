@@ -43,9 +43,22 @@ const blockAlignOptions = [
 	},
 ];
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.blockAlign;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.blockAlign;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasBlockAlignValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.blockAlign;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.blockAlign &&
@@ -76,10 +89,7 @@ export function BlockAlignToolbar( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.blockAlign;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<BlockControls group="block">
@@ -120,10 +130,7 @@ export function BlockAlignEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.blockAlign;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
@@ -170,9 +177,10 @@ export function withBlockAlignBlockProps( settings ) {
 		return settings;
 	}
 
-	const newBlockAlign = attributes?.unitone?.blockAlign;
+	const defaultValue = getDefaultValue( { name } );
+	const newBlockAlign = attributes?.unitone?.blockAlign ?? defaultValue ?? '';
 
-	if ( null == newBlockAlign ) {
+	if ( '' === newBlockAlign ) {
 		return settings;
 	}
 

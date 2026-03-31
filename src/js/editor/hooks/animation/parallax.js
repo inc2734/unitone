@@ -20,9 +20,22 @@ import { __ } from '@wordpress/i18n';
 import { parallax as iconParallax } from './icons';
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.parallax;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.parallax;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasParallaxValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.parallax;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.parallax && undefined !== unitone?.parallax
@@ -151,10 +164,7 @@ export function ParallaxEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.parallax;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<ParallaxPopover
@@ -169,7 +179,7 @@ export function ParallaxEdit( {
 				} );
 			} }
 			speed={ parseFloat(
-				unitone?.parallax?.speed ?? defaultValue ?? 0
+				unitone?.parallax?.speed ?? defaultValue?.speed ?? 0
 			) }
 			onChangeSpeed={ ( newAttribute ) => {
 				const newUnitone = {
@@ -195,8 +205,9 @@ export function withParallaxBlockProps( settings ) {
 		return settings;
 	}
 
+	const defaultValue = getDefaultValue( { name } );
 	const newParallax = {
-		...attributes?.unitone?.parallax,
+		...( attributes?.unitone?.parallax ?? defaultValue ),
 	};
 
 	if ( null == newParallax ) {

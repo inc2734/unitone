@@ -8,9 +8,22 @@ import { __ } from '@wordpress/i18n';
 import { SpacingSizeControl } from '../components';
 import { cleanEmptyObject, normalizeForToggleControl } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.gutters;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.gutters;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasGuttersValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.gutters;
+	const defaultValue = getDefaultValue( { name } );
 
 	return defaultValue !== unitone?.gutters && undefined !== unitone?.gutters;
 }
@@ -59,10 +72,7 @@ export function GuttersEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.gutters;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<BaseControl __nextHasNoMarginBottom id={ label } label={ label }>
@@ -101,9 +111,7 @@ export function GuttersEdit( {
 
 						const newUnitone = {
 							...unitone,
-							gutters:
-								newValue ||
-								( null != defaultValue ? undefined : '' ),
+							gutters: newValue || undefined,
 						};
 
 						setAttributes( {
@@ -123,9 +131,10 @@ export function withGuttersBlockProps( settings ) {
 		return settings;
 	}
 
-	const newGutters = attributes?.unitone?.gutters;
+	const defaultValue = getDefaultValue( { name } );
+	const newGutters = attributes?.unitone?.gutters ?? defaultValue ?? '';
 
-	if ( null == newGutters ) {
+	if ( '' === newGutters ) {
 		return settings;
 	}
 

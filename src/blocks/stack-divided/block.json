@@ -35,7 +35,7 @@
 		"unitone/stack-divided/tagName": "tagName"
 	},
 	"selectors": {
-		"root": "[data-unitone-layout~=stack][data-unitone-layout*=-divider:]"
+		"root": "[data-unitone-layout~=stack][data-unitone-layout*=\"-divider:\"]"
 	},
 	"allowedBlocks": [ "unitone/stack-divided-content" ],
 	"supports": {

@@ -37,7 +37,7 @@
 	},
 	"allowedBlocks": [ "unitone/responsive-grid-divided-content" ],
 	"selectors": {
-		"root": "[data-unitone-layout~=responsive-grid][data-unitone-layout*=-divider:]"
+		"root": "[data-unitone-layout~=responsive-grid][data-unitone-layout*=\"-divider:\"]"
 	},
 	"supports": {
 		"className": false,

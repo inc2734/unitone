@@ -32,7 +32,7 @@
 		"unitone/flex-divided/tagName": "tagName"
 	},
 	"selectors": {
-		"root": ".unitone-flex[data-unitone-layout*=-divider:]"
+		"root": ".unitone-flex[data-unitone-layout*=\"-divider:\"]"
 	},
 	"allowedBlocks": [ "unitone/flex-divided-content" ],
 	"supports": {

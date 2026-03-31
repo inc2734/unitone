@@ -73,15 +73,17 @@ const getDivider = (
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
 	const blockType = wp.data.select( blocksStore ).getBlockType( name );
 
+	const defaultDivider = blockType?.attributes?.unitone?.default?.divider;
+	const unstableDefaultDivider = __unstableUnitoneSupports?.divider?.default;
+
+	const defaultdividerColor =
+		blockType?.attributes?.unitone?.default?.dividerColor;
+	const unstableDefaultDividerColor =
+		__unstableUnitoneSupports?.dividerColor?.default;
+
 	return {
-		divider:
-			null != __unstableUnitoneSupports?.divider?.default
-				? __unstableUnitoneSupports?.divider?.default
-				: blockType?.attributes?.unitone?.default?.divider,
-		dividerColor:
-			null != __unstableUnitoneSupports?.dividerColor?.default
-				? __unstableUnitoneSupports?.dividerColor?.default
-				: blockType?.attributes?.unitone?.default?.dividerColor,
+		divider: unstableDefaultDivider ?? defaultDivider,
+		dividerColor: unstableDefaultDividerColor ?? defaultdividerColor,
 	};
 }
 
@@ -90,15 +92,17 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 		return select( blocksStore ).getBlockType( name );
 	} );
 
+	const defaultDivider = blockType?.attributes?.unitone?.default?.divider;
+	const unstableDefaultDivider = __unstableUnitoneSupports?.divider?.default;
+
+	const defaultdividerColor =
+		blockType?.attributes?.unitone?.default?.dividerColor;
+	const unstableDefaultDividerColor =
+		__unstableUnitoneSupports?.dividerColor?.default;
+
 	return {
-		divider:
-			null != __unstableUnitoneSupports?.divider?.default
-				? __unstableUnitoneSupports?.divider?.default
-				: blockType?.attributes?.unitone?.default?.divider,
-		dividerColor:
-			null != __unstableUnitoneSupports?.dividerColor?.default
-				? __unstableUnitoneSupports?.dividerColor?.default
-				: blockType?.attributes?.unitone?.default?.dividerColor,
+		divider: unstableDefaultDivider ?? defaultDivider,
+		dividerColor: unstableDefaultDividerColor ?? defaultdividerColor,
 	};
 }
 
@@ -251,11 +255,13 @@ export function withDividerBlockProps( settings ) {
 		return settings;
 	}
 
+	const defaultValue = getDefaultValue( { name } );
 	const newDivider = {
 		divider: {
-			...attributes?.unitone?.divider,
+			...( attributes?.unitone?.divider ?? defaultValue?.divider ),
 		},
-		dividerColor: attributes?.unitone?.dividerColor,
+		dividerColor:
+			attributes?.unitone?.dividerColor ?? defaultValue?.dividerColor,
 	};
 
 	if ( null == newDivider?.divider && null == newDivider?.dividerColor ) {

@@ -57,16 +57,28 @@ const downUpIcon = (
 	</svg>
 );
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasStairsValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.stairs;
+	const defaultValue = getDefaultValue( { name } )?.stairs;
 
 	return defaultValue !== unitone?.stairs && undefined !== unitone?.stairs;
 }
 
 export function hasStairsUpValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.stairsUp;
+	const defaultValue = getDefaultValue( { name } )?.stairsUp;
 
 	return (
 		defaultValue !== unitone?.stairsUp && undefined !== unitone?.stairsUp
@@ -120,10 +132,7 @@ export function StairsEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.stairs;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } )?.stairs;
 
 	return (
 		<SpacingSizeControl
@@ -138,8 +147,7 @@ export function StairsEdit( {
 
 				const newUnitone = {
 					...unitone,
-					stairs:
-						newValue || ( null == defaultValue ? undefined : '' ),
+					stairs: newValue || undefined,
 				};
 
 				setAttributes( {
@@ -163,10 +171,7 @@ export function StairsUpEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.stairsUp;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } )?.stairsUp;
 
 	return (
 		<ToggleGroupControl
@@ -220,12 +225,13 @@ export function withStairsBlockProps( settings ) {
 		return settings;
 	}
 
+	const defaultValue = getDefaultValue( { name } );
 	const newStairs = {
-		stairs: attributes?.unitone?.stairs,
-		stairsUp: attributes?.unitone?.stairsUp,
+		stairs: attributes?.unitone?.stairs ?? defaultValue?.stairs ?? '',
+		stairsUp: attributes?.unitone?.stairsUp ?? defaultValue?.stairsUp ?? '',
 	};
 
-	if ( null == newStairs?.stairs && null == newStairs?.stairsUp ) {
+	if ( '' === newStairs?.stairs && '' === newStairs?.stairsUp ) {
 		return settings;
 	}
 

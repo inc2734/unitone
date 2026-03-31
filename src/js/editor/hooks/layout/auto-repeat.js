@@ -27,13 +27,26 @@ const autoRepeatOptions = [
 	},
 ];
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.autoRepeat;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.autoRepeat;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function isAutoRepeatSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.autoRepeat' );
 }
 
 export function hasAutoRepeatValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.autoRepeat;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.autoRepeat &&
@@ -81,10 +94,7 @@ export function AutoRepeatEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.autoRepeat;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<SelectControl
@@ -114,9 +124,10 @@ export function withAutoRepeatBlockProps( settings ) {
 		return settings;
 	}
 
-	const newAutoRepeat = attributes?.unitone?.autoRepeat;
+	const defaultValue = getDefaultValue( { name } );
+	const newAutoRepeat = attributes?.unitone?.autoRepeat ?? defaultValue ?? '';
 
-	if ( null == newAutoRepeat ) {
+	if ( '' === newAutoRepeat ) {
 		return settings;
 	}
 

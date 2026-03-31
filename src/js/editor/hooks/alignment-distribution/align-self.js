@@ -15,7 +15,6 @@ import {
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { ResponsiveSettingsContainer } from '../components';
 import {
 	alignBottom,
 	alignCenter,
@@ -23,6 +22,8 @@ import {
 	alignStretch,
 	auto,
 } from '../icons';
+
+import { ResponsiveSettingsContainer } from '../components';
 import { cleanEmptyObject, useDeviceType } from '../utils';
 
 const alignSelfOptions = [
@@ -62,10 +63,10 @@ function getIsResponsive( { name, __unstableUnitoneSupports } ) {
 }
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
-	return null != __unstableUnitoneSupports?.alignSelf?.default
-		? __unstableUnitoneSupports?.alignSelf?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.alignSelf;
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.alignSelf;
+	const unstableDefaultValue = __unstableUnitoneSupports?.alignSelf?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 function useDefaultValue( { name, __unstableUnitoneSupports } ) {
@@ -73,10 +74,8 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.alignSelf;
 	}, [] );
-
-	return null != __unstableUnitoneSupports?.alignSelf?.default
-		? __unstableUnitoneSupports?.alignSelf?.default
-		: defaultValue;
+	const unstableDefaultValue = __unstableUnitoneSupports?.alignSelf?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 export function hasAlignSelfValue( {
@@ -436,7 +435,8 @@ export function withAlignSelfBlockProps( settings ) {
 		return settings;
 	}
 
-	const newAlignSelf = attributes?.unitone?.alignSelf;
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
+	const newAlignSelf = attributes?.unitone?.alignSelf ?? defaultValue;
 
 	if ( null == newAlignSelf ) {
 		return settings;

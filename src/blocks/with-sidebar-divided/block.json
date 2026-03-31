@@ -41,7 +41,7 @@
 		}
 	},
 	"selectors": {
-		"root": "[data-unitone-layout~=with-sidebar][data-unitone-layout*=-divider:]"
+		"root": "[data-unitone-layout~=with-sidebar][data-unitone-layout*=\"-divider:\"]"
 	},
 	"allowedBlocks": [ "unitone/with-sidebar-content" ],
 	"supports": {

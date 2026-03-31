@@ -14,9 +14,22 @@ import { settings as settingsIcon } from '@wordpress/icons';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.maxWidth;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.maxWidth;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasMaxWidthValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.maxWidth;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.maxWidth && undefined !== unitone?.maxWidth
@@ -73,10 +86,7 @@ export function MaxWidthEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.maxWidth;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	const isPresetValue = [
 		'var(--wp--style--global--wide-size)',
@@ -165,9 +175,10 @@ export function withMaxWidthBlockProps( settings ) {
 		return settings;
 	}
 
-	const newMaxWidth = attributes?.unitone?.maxWidth;
+	const defaultValue = getDefaultValue( { name } );
+	const newMaxWidth = attributes?.unitone?.maxWidth ?? defaultValue ?? '';
 
-	if ( null == newMaxWidth ) {
+	if ( '' === newMaxWidth ) {
 		return settings;
 	}
 

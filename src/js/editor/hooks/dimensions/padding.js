@@ -16,9 +16,22 @@ import { __ } from '@wordpress/i18n';
 import { PaddingControl } from '../components';
 import { cleanEmptyObject, isObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.padding;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.padding;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasPaddingValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.padding;
+	const defaultValue = getDefaultValue( { name } );
 
 	return defaultValue !== unitone?.padding && undefined !== unitone?.padding;
 }
@@ -128,10 +141,7 @@ export function PaddingEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.padding;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	const split = getBlockSupport( name, 'unitone.padding.split' ) || false;
 	const isAllSides = true === split;
@@ -269,7 +279,10 @@ export function withPaddingBlockProps( settings ) {
 		return settings;
 	}
 
-	const newPadding = compacting( attributes.unitone?.padding );
+	const defaultValue = getDefaultValue( { name } );
+	const newPadding = compacting(
+		attributes.unitone?.padding ?? defaultValue
+	);
 
 	if ( null == newPadding ) {
 		return settings;

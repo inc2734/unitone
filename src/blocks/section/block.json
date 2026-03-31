@@ -95,7 +95,9 @@
 			"fluidTypography": true,
 			"halfLeading": true,
 			"linkDecoration": true,
-			"backdropFilter": true,
+			"backdropFilter": {
+				"progressive": false
+			},
 			"backgroundClip": true,
 			"position": true,
 			"mixBlendMode": true,

@@ -8,9 +8,22 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.position;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.position;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasPositionValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.position;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue?.position !== unitone?.position?.position &&
@@ -44,10 +57,7 @@ export function PositionEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.position;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	const value = unitone?.position?.position ?? defaultValue?.position ?? '';
 
@@ -131,8 +141,7 @@ export function PositionEdit( {
 }
 
 export function hasTopValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.position;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue?.top !== unitone?.position?.top &&
@@ -160,10 +169,7 @@ export function TopEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.position;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<TextControl
@@ -189,8 +195,7 @@ export function TopEdit( {
 }
 
 export function hasRightValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.position;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue?.right !== unitone?.position?.right &&
@@ -218,10 +223,7 @@ export function RightEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.position;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<TextControl
@@ -249,8 +251,7 @@ export function RightEdit( {
 }
 
 export function hasBottomValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.position;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue?.bottom !== unitone?.position?.bottom &&
@@ -278,10 +279,7 @@ export function BottomEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.position;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<TextControl
@@ -307,8 +305,7 @@ export function BottomEdit( {
 }
 
 export function hasLeftValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.position;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue?.left !== unitone?.position?.left &&
@@ -336,10 +333,7 @@ export function LeftEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.position;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<TextControl
@@ -365,8 +359,7 @@ export function LeftEdit( {
 }
 
 export function hasZIndexValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.position;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue?.zIndex !== unitone?.position?.zIndex &&
@@ -394,10 +387,7 @@ export function ZIndexEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.position;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<TextControl
@@ -429,7 +419,8 @@ export function withPositionBlockProps( settings ) {
 		return settings;
 	}
 
-	const newPosition = attributes?.unitone?.position;
+	const defaultValue = getDefaultValue( { name } );
+	const newPosition = attributes?.unitone?.position ?? defaultValue;
 
 	if ( null == newPosition ) {
 		return settings;

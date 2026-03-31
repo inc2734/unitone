@@ -7,8 +7,26 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
-export function hasNegativeValue( { attributes: { unitone } } ) {
-	return !! unitone?.negative;
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.negative;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.negative;
+	}, [] );
+
+	return defaultValue;
+}
+
+export function hasNegativeValue( { name, attributes: { unitone } } ) {
+	const defaultValue = getDefaultValue( { name } );
+
+	return (
+		defaultValue !== unitone?.negative && undefined !== unitone?.negative
+	);
 }
 
 export function resetNegativeFilter() {
@@ -44,10 +62,7 @@ export function NegativeEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return !! select( blocksStore ).getBlockType( name )?.attributes
-			?.unitone?.default?.negative;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<ToggleControl
@@ -75,9 +90,10 @@ export function withNegativeBlockProps( settings ) {
 		return settings;
 	}
 
-	const newNegative = attributes?.unitone?.negative;
+	const defaultValue = getDefaultValue( { name } );
+	const newNegative = attributes?.unitone?.negative ?? defaultValue;
 
-	if ( null == newNegative ) {
+	if ( true !== newNegative ) {
 		return settings;
 	}
 

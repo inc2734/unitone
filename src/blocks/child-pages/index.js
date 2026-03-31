@@ -39,8 +39,10 @@ const withChildBlockAttributes = createHigherOrderComponent(
 			let dividerColor;
 			if ( 'cluster' === layout ) {
 				dividerType = {
-					options:
-						clusterDividedMetadata.supports.unitone.dividerType,
+					options: [
+						'',
+						...clusterDividedMetadata.supports.unitone.dividerType,
+					],
 					default:
 						clusterDividedMetadata.attributes?.unitone?.default
 							?.dividerType,
@@ -58,7 +60,10 @@ const withChildBlockAttributes = createHigherOrderComponent(
 				};
 			} else if ( 'stack' === layout ) {
 				dividerType = {
-					options: stackDividedMetadata.supports.unitone.dividerType,
+					options: [
+						'',
+						stackDividedMetadata.supports.unitone.dividerType,
+					],
 					default:
 						stackDividedMetadata.attributes?.unitone?.default
 							?.dividerType,

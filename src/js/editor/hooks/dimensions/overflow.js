@@ -36,9 +36,22 @@ const overflowOptions = [
 	},
 ];
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.overflow;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.overflow;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasOverflowValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.overflow;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.overflow && undefined !== unitone?.overflow
@@ -89,10 +102,7 @@ export function OverflowEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.overflow;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<SelectControl
@@ -122,9 +132,10 @@ export function withOverflowBlockProps( settings ) {
 		return settings;
 	}
 
-	const newOverflow = attributes?.unitone?.overflow;
+	const defaultValue = getDefaultValue( { name } );
+	const newOverflow = attributes?.unitone?.overflow ?? defaultValue ?? '';
 
-	if ( null == newOverflow ) {
+	if ( '' === newOverflow ) {
 		return settings;
 	}
 

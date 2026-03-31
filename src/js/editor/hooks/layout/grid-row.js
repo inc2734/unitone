@@ -20,10 +20,10 @@ function getIsResponsive( { name, __unstableUnitoneSupports } ) {
 }
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
-	return null != __unstableUnitoneSupports?.gridRow?.default
-		? __unstableUnitoneSupports?.gridRow?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.gridRow;
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.gridRow;
+	const unstableDefaultValue = __unstableUnitoneSupports?.gridRow?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 function useDefaultValue( { name, __unstableUnitoneSupports } ) {
@@ -31,10 +31,8 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.gridRow;
 	}, [] );
-
-	return null != __unstableUnitoneSupports?.gridRow?.default
-		? __unstableUnitoneSupports?.gridRow?.default
-		: defaultValue;
+	const unstableDefaultValue = __unstableUnitoneSupports?.gridRow?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 export function hasGridRowValue( {
@@ -248,7 +246,8 @@ export function withGridRowBlockProps( settings ) {
 		return settings;
 	}
 
-	const newGridRow = attributes?.unitone?.gridRow;
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
+	const newGridRow = attributes?.unitone?.gridRow ?? defaultValue;
 
 	if ( null == newGridRow ) {
 		return settings;

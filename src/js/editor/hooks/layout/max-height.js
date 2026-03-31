@@ -5,9 +5,22 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.maxHeight;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.maxHeight;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasMaxHeightValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.maxHeight;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.maxHeight && undefined !== unitone?.maxHeight
@@ -64,10 +77,7 @@ export function MaxHeightEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.maxHeight;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<TextControl
@@ -102,9 +112,10 @@ export function withMaxHeightBlockProps( settings ) {
 		return settings;
 	}
 
-	const newMaxHeight = attributes?.unitone?.maxHeight;
+	const defaultValue = getDefaultValue( { name } );
+	const newMaxHeight = attributes?.unitone?.maxHeight ?? defaultValue ?? '';
 
-	if ( null == newMaxHeight ) {
+	if ( '' === newMaxHeight ) {
 		return settings;
 	}
 

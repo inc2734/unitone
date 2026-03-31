@@ -12,9 +12,22 @@ import { __ } from '@wordpress/i18n';
 import { GapControl } from '../components';
 import { cleanEmptyObject, isObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.gap;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.gap;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasGapValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.gap;
+	const defaultValue = getDefaultValue( { name } );
 
 	return defaultValue !== unitone?.gap && undefined !== unitone?.gap;
 }
@@ -112,10 +125,7 @@ export function GapEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.gap;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	const splitOnAxis =
 		getBlockSupport( name, 'unitone.gap.splitOnAxis' ) || false;
@@ -199,7 +209,8 @@ export function withGapBlockProps( settings ) {
 		return settings;
 	}
 
-	const newGap = compacting( attributes.unitone?.gap );
+	const defaultValue = getDefaultValue( { name } );
+	const newGap = compacting( attributes.unitone?.gap ?? defaultValue );
 
 	if ( null == newGap ) {
 		return settings;

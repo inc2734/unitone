@@ -5,9 +5,22 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.minWidth;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.minWidth;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasMinWidthValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.minWidth;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.minWidth && undefined !== unitone?.minWidth
@@ -64,10 +77,7 @@ export function MinWidthEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.minWidth;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	return (
 		<TextControl
@@ -106,9 +116,10 @@ export function withMinWidthBlockProps( settings ) {
 		return settings;
 	}
 
-	const newMinWidth = attributes?.unitone?.minWidth;
+	const defaultValue = getDefaultValue( { name } );
+	const newMinWidth = attributes?.unitone?.minWidth ?? defaultValue ?? '';
 
-	if ( null == newMinWidth ) {
+	if ( '' === newMinWidth ) {
 		return settings;
 	}
 

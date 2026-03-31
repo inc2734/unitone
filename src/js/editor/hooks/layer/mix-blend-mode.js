@@ -78,9 +78,29 @@ const mixBlendModeOptions = [
 	},
 ];
 
-export function hasMixBlendModeValue( { name, attributes: { unitone } } ) {
+function getDefaultValue( { name, __unstableUnitoneSupports } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.mixBlendMode;
+	const unstableDefaultValue =
+		__unstableUnitoneSupports?.mixBlendMode?.default;
+	return unstableDefaultValue ?? defaultValue;
+}
+
+function useDefaultValue( { name, __unstableUnitoneSupports } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.mixBlendMode;
+	}, [] );
+	const unstableDefaultValue =
+		__unstableUnitoneSupports?.mixBlendMode?.default;
+	return unstableDefaultValue ?? defaultValue;
+}
+
+export function hasMixBlendModeValue( {
+	name,
+	attributes: { unitone, __unstableUnitoneSupports },
+} ) {
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
 
 	return (
 		defaultValue !== unitone?.mixBlendMode &&
@@ -118,13 +138,10 @@ export function isMixBlendModeSupportDisabled( {
 export function MixBlendModeEdit( {
 	label,
 	name,
-	attributes: { unitone },
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.mixBlendMode;
-	}, [] );
+	const defaultValue = useDefaultValue( { name, __unstableUnitoneSupports } );
 
 	return (
 		<SelectControl
@@ -164,9 +181,11 @@ export function withMixBlendModeBlockProps( settings ) {
 		return settings;
 	}
 
-	const newMixBlendMode = attributes?.unitone?.mixBlendMode;
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
+	const newMixBlendMode =
+		attributes?.unitone?.mixBlendMode ?? defaultValue ?? '';
 
-	if ( null == newMixBlendMode ) {
+	if ( '' === newMixBlendMode ) {
 		return settings;
 	}
 

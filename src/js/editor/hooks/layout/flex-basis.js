@@ -6,10 +6,10 @@ import { __ } from '@wordpress/i18n';
 import { cleanEmptyObject } from '../utils';
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
-	return null != __unstableUnitoneSupports?.flexBasis?.default
-		? __unstableUnitoneSupports?.flexBasis?.default
-		: wp.data.select( blocksStore ).getBlockType( name )?.attributes
-				?.unitone?.default?.flexBasis;
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.flexBasis;
+	const unstableDefaultValue = __unstableUnitoneSupports?.flexBasis?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 function useDefaultValue( { name, __unstableUnitoneSupports } ) {
@@ -17,10 +17,8 @@ function useDefaultValue( { name, __unstableUnitoneSupports } ) {
 		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
 			?.default?.flexBasis;
 	}, [] );
-
-	return null != __unstableUnitoneSupports?.flexBasis?.default
-		? __unstableUnitoneSupports?.flexBasis?.default
-		: defaultValue;
+	const unstableDefaultValue = __unstableUnitoneSupports?.flexBasis?.default;
+	return unstableDefaultValue ?? defaultValue;
 }
 
 export function hasFlexBasisValue( {
@@ -119,9 +117,10 @@ export function withFlexBasisBlockProps( settings ) {
 		return settings;
 	}
 
-	const newFlexBasis = attributes?.unitone?.flexBasis;
+	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
+	const newFlexBasis = attributes?.unitone?.flexBasis ?? defaultValue ?? '';
 
-	if ( null == newFlexBasis ) {
+	if ( '' === newFlexBasis ) {
 		return settings;
 	}
 

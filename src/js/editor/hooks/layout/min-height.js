@@ -32,9 +32,22 @@ const PRESETS = [
 
 const PRESET_VALUES = PRESETS.map( ( preset ) => preset.value );
 
+function getDefaultValue( { name } ) {
+	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
+		?.unitone?.default?.minHeight;
+}
+
+function useDefaultValue( { name } ) {
+	const defaultValue = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
+			?.default?.minHeight;
+	}, [] );
+
+	return defaultValue;
+}
+
 export function hasMinHeightValue( { name, attributes: { unitone } } ) {
-	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
-		?.attributes?.unitone?.default?.minHeight;
+	const defaultValue = getDefaultValue( { name } );
 
 	return (
 		defaultValue !== unitone?.minHeight && undefined !== unitone?.minHeight
@@ -91,10 +104,7 @@ export function MinHeightEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.minHeight;
-	}, [] );
+	const defaultValue = useDefaultValue( { name } );
 
 	const isPresetValue = PRESET_VALUES.includes(
 		unitone?.minHeight ?? defaultValue ?? ''
@@ -169,9 +179,10 @@ export function withMinHeightBlockProps( settings ) {
 		return settings;
 	}
 
-	const newMinHeight = attributes?.unitone?.minHeight;
+	const defaultValue = getDefaultValue( { name } );
+	const newMinHeight = attributes?.unitone?.minHeight ?? defaultValue ?? '';
 
-	if ( null == newMinHeight ) {
+	if ( '' === newMinHeight ) {
 		return settings;
 	}
 

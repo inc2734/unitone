@@ -128,7 +128,7 @@
 		"unitone/grid-divided/tagName": "tagName"
 	},
 	"selectors": {
-		"root": ".unitone-grid[data-unitone-layout*=-divider:]"
+		"root": ".unitone-grid[data-unitone-layout*=\"-divider:\"]"
 	},
 	"allowedBlocks": [ "unitone/grid-divided-content" ],
 	"supports": {

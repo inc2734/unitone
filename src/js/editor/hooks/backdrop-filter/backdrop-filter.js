@@ -11,6 +11,7 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+import { store as blocksStore } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -129,7 +130,9 @@ export function withBackdropFilterBlockProps( settings ) {
 		name,
 	} = settings;
 
-	const backdropFilter = unitone?.backdropFilter;
+	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
+		?.attributes?.unitone?.default?.backdropFilter;
+	const backdropFilter = unitone?.backdropFilter ?? defaultValue;
 
 	const backdropFilterProps = [];
 

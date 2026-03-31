@@ -3,11 +3,12 @@ import { useViewportMatch } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { store as editorStore } from '@wordpress/editor';
 import { store as editPostStore } from '@wordpress/edit-post';
+
 import {
 	useRef,
 	useEffect,
-	useLayoutEffect,
 	useState,
+	useCallback,
 	forwardRef,
 	memo,
 } from '@wordpress/element';
@@ -387,74 +388,107 @@ export function useToolsPanelDropdownMenuProps() {
 
 export function useVisibleResizeObserver( onResize, deps = [] ) {
 	const ref = useRef( null );
-	const prevRef = useRef( null );
+	const onResizeRef = useRef( onResize );
+	const observedTargetRef = useRef( null );
+	const intersectionObserverRef = useRef( null );
+	const resizeObserverRef = useRef( null );
 
-	const [ isIntersecting, setIsIntersecting ] = useState( false );
+	onResizeRef.current = onResize;
 
-	const observer = new IntersectionObserver(
-		( [ entry ] ) => {
-			if ( entry.rootBounds !== null ) {
-				onResize( entry.target );
-				setIsIntersecting( entry.isIntersecting );
+	const disconnectObservers = useCallback( () => {
+		const target = observedTargetRef.current;
+
+		if ( intersectionObserverRef.current ) {
+			intersectionObserverRef.current.disconnect();
+			intersectionObserverRef.current = null;
+		}
+
+		if ( resizeObserverRef.current ) {
+			if ( target ) {
+				resizeObserverRef.current.unobserve( target );
 			}
-		},
-		{
-			rootMargin: '200px 0px',
-		}
-	);
-
-	const resizeObserver = new ResizeObserver(
-		debounce( ( [ entry ] ) => {
-			onResize( entry.target );
-		}, 250 )
-	);
-
-	useLayoutEffect( () => {
-		if ( ! ref.current || ! isIntersecting ) {
-			return;
+			resizeObserverRef.current.disconnect();
+			resizeObserverRef.current = null;
 		}
 
-		if ( prevRef.current !== ref.current ) {
-			prevRef.current = ref.current;
-			resizeObserver.observe( ref.current );
-		}
-	}, [ isIntersecting, ref.current, ...deps ] );
-
-	/**
-	 * Intersection Observer.
-	 */
-	useEffect( () => {
-		if ( ! ref.current ) {
-			return;
-		}
-
-		observer.observe( ref.current );
-
-		return () => observer.disconnect();
+		observedTargetRef.current = null;
 	}, [] );
 
-	/**
-	 * Resize Observer.
-	 */
+	const refreshTarget = useCallback( ( target ) => {
+		if ( target ) {
+			onResizeRef.current( target );
+		}
+	}, [] );
+
 	useEffect( () => {
-		if ( ! ref.current ) {
+		const node = ref.current;
+
+		if ( observedTargetRef.current === node ) {
 			return;
 		}
 
-		if ( isIntersecting ) {
-			resizeObserver.observe( ref.current );
-		} else {
-			resizeObserver.unobserve( ref.current );
+		disconnectObservers();
+
+		if ( ! node ) {
+			return;
 		}
 
-		return () => resizeObserver.disconnect();
-	}, [ isIntersecting ] );
+		observedTargetRef.current = node;
+
+		const defaultView = node.ownerDocument?.defaultView;
+		if (
+			! defaultView?.IntersectionObserver ||
+			! defaultView?.ResizeObserver
+		) {
+			refreshTarget( node );
+			return;
+		}
+
+		const resizeObserver = new defaultView.ResizeObserver(
+			debounce( ( [ entry ] ) => {
+				refreshTarget( entry?.target ?? observedTargetRef.current );
+			}, 250 )
+		);
+
+		const intersectionObserver = new defaultView.IntersectionObserver(
+			( [ entry ] ) => {
+				if ( entry?.rootBounds === null ) {
+					return;
+				}
+
+				refreshTarget( entry.target );
+
+				if ( entry.isIntersecting ) {
+					resizeObserver.observe( entry.target );
+				} else {
+					resizeObserver.unobserve( entry.target );
+				}
+			},
+			{
+				rootMargin: '200px 0px',
+			}
+		);
+
+		resizeObserverRef.current = resizeObserver;
+		intersectionObserverRef.current = intersectionObserver;
+		intersectionObserver.observe( node );
+
+		return () => {
+			if ( observedTargetRef.current === node ) {
+				disconnectObservers();
+			}
+		};
+	}, [ disconnectObservers, refreshTarget, ref.current ] );
 
 	useEffect( () => {
-		if ( ref.current ) {
-			onResize( ref.current );
-		}
-	}, [ ...deps ] );
+		refreshTarget( ref.current );
+	}, [ refreshTarget, ...deps ] );
+
+	useEffect( () => {
+		return () => {
+			disconnectObservers();
+		};
+	}, [ disconnectObservers ] );
 
 	return ref;
 }

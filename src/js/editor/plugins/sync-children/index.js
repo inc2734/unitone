@@ -76,10 +76,15 @@ const isEqual = ( a, b ) => {
 	return true;
 };
 
-const getAttributeChanges = ( previousAttributes, attributes ) => {
+const getSyncAttributeChanges = (
+	blockName,
+	previousAttributes,
+	attributes
+) => {
 	const prevAttrs = previousAttributes || {};
 	const currentAttrs = attributes || {};
 	const changedKeys = [];
+	const contentAttributeKeys = getContentAttributeKeys( blockName );
 
 	const keys = new Set( [
 		...Object.keys( prevAttrs ),
@@ -88,6 +93,10 @@ const getAttributeChanges = ( previousAttributes, attributes ) => {
 
 	keys.forEach( ( key ) => {
 		if ( EXCLUDED_SYNC_ATTRIBUTE_KEYS.has( key ) ) {
+			return;
+		}
+
+		if ( contentAttributeKeys.has( key ) ) {
 			return;
 		}
 
@@ -120,19 +129,6 @@ const getContentAttributeKeys = ( name ) => {
 	);
 	contentAttributeKeysCache.set( name, contentAttributeKeys );
 	return contentAttributeKeys;
-};
-
-const hasOnlyContentChanges = ( blockName, changedKeys ) => {
-	if ( 0 === changedKeys.length ) {
-		return false;
-	}
-
-	const contentAttributeKeys = getContentAttributeKeys( blockName );
-	if ( 0 === contentAttributeKeys.size ) {
-		return false;
-	}
-
-	return changedKeys.every( ( key ) => contentAttributeKeys.has( key ) );
 };
 
 const mergeTemplateAttributes = ( {
@@ -370,7 +366,8 @@ subscribe( () => {
 		return;
 	}
 
-	const changedKeys = getAttributeChanges(
+	const changedKeys = getSyncAttributeChanges(
+		selectedBlock.name,
 		previousSelectedAttributes,
 		selectedBlock.attributes
 	);
@@ -378,10 +375,6 @@ subscribe( () => {
 	updateSelectedBaseline( selectedClientId, selectedBlock.attributes );
 
 	if ( 0 === changedKeys.length ) {
-		return;
-	}
-
-	if ( hasOnlyContentChanges( selectedBlock.name, changedKeys ) ) {
 		return;
 	}
 

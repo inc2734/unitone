@@ -12,13 +12,33 @@ import './wp-blocks/tag-cloud';
 
 import './plugins/block-outline-toolbar/index';
 import './plugins/content-only-locking/index';
-import './plugins/featured-image-generator/index';
 import './plugins/highlight-selected-block/index';
 import './plugins/lineage-toolbar/index';
-import './plugins/ogp/index';
 import './plugins/remote-pattern/index';
 import './plugins/sync-children/index';
-import './plugins/wireframe-generator/index';
 import './plugins/paste-styles/index';
 import './plugins/override-settings/index';
-import './plugins/text-generator/index';
+
+const loadWhenIdle = ( loader, timeout = 2000 ) => {
+	const requestIdleCallback =
+		globalThis.requestIdleCallback?.bind( globalThis );
+
+	if ( requestIdleCallback ) {
+		requestIdleCallback(
+			() => {
+				void loader();
+			},
+			{ timeout }
+		);
+		return;
+	}
+
+	globalThis.setTimeout( () => {
+		void loader();
+	}, 1 );
+};
+
+loadWhenIdle( () => import( './plugins/featured-image-generator/index' ) );
+loadWhenIdle( () => import( './plugins/ogp/index' ) );
+loadWhenIdle( () => import( './plugins/text-generator/index' ) );
+loadWhenIdle( () => import( './plugins/wireframe-generator/index' ) );

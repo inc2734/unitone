@@ -110,6 +110,11 @@ const PageSettingsPanel = () => {
 	);
 
 	const ref = useRef( null );
+	const outerRootRef = useRef( null );
+	const innerRootRef = useRef( null );
+	const innerBodyRef = useRef( null );
+	const overrideStylesRef = useRef( {} );
+	const overrideStylesForBodyRef = useRef( {} );
 
 	const newAccentColor =
 		meta?.[ 'unitone-override-settings' ]?.[ 'accent-color' ];
@@ -177,35 +182,57 @@ const PageSettingsPanel = () => {
 	);
 
 	useEffect( () => {
+		overrideStylesRef.current = overrideStyles;
+		overrideStylesForBodyRef.current = overrideStylesForBody;
+
+		applyStyles( outerRootRef.current, overrideStyles );
+		applyStyles( innerRootRef.current, overrideStyles );
+		applyStyles( innerBodyRef.current, overrideStylesForBody );
+	}, [ overrideStyles, overrideStylesForBody ] );
+
+	useEffect( () => {
 		if ( ! ref.current ) {
 			return;
 		}
 
 		const outerDocument = ref.current.ownerDocument;
+		outerRootRef.current = outerDocument?.documentElement ?? null;
+		applyStyles( outerRootRef.current, overrideStylesRef.current );
 
-		const outerRoot = outerDocument?.documentElement;
-		if ( outerRoot ) {
-			applyStyles( outerRoot, overrideStyles );
+		const detectInnerCanvas = () => {
+			const nextInnerRoot = tryDetectInnerRoot( outerDocument );
+			const nextInnerBody = tryDetectInnerBody( outerDocument );
+
+			if ( nextInnerRoot ) {
+				innerRootRef.current = nextInnerRoot;
+				applyStyles( innerRootRef.current, overrideStylesRef.current );
+			}
+
+			if ( nextInnerBody ) {
+				innerBodyRef.current = nextInnerBody;
+				applyStyles(
+					innerBodyRef.current,
+					overrideStylesForBodyRef.current
+				);
+			}
+
+			return !! nextInnerRoot && !! nextInnerBody;
+		};
+
+		if ( detectInnerCanvas() ) {
+			return;
 		}
 
 		const interval = setInterval( () => {
-			const innerRoot = tryDetectInnerRoot( outerDocument );
-			if ( innerRoot ) {
+			if ( detectInnerCanvas() ) {
 				clearInterval( interval );
-				applyStyles( innerRoot, overrideStyles );
-				applyStyles( innerRoot?.body, overrideStylesForBody );
-			}
-
-			const innerBody = tryDetectInnerBody( outerDocument );
-			if ( innerBody ) {
-				applyStyles( innerBody, overrideStylesForBody );
 			}
 		}, 250 );
 
 		return () => {
 			clearInterval( interval );
 		};
-	}, [ overrideStyles, overrideStylesForBody ] );
+	}, [] );
 
 	return (
 		! [ 'wp_template', 'wp_template_part' ].includes( postType ) && (

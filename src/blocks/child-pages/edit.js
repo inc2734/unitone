@@ -14,11 +14,13 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
-import { useEffect } from '@wordpress/element';
+import { useEffect, useRef } from '@wordpress/element';
 import { Icon, globe } from '@wordpress/icons';
 import { __, sprintf } from '@wordpress/i18n';
 
 import ServerSideRender from '@wordpress/server-side-render';
+
+import { debounce, setDividerLinewrap } from '@inc2734/unitone-css/library';
 
 import {
 	normalizeForSelectControl,
@@ -28,6 +30,17 @@ import {
 } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
+
+const dividerLinewrapSelector = [
+	'[data-unitone-layout~="cluster"][data-unitone-layout*="-divider:"]',
+	'[data-unitone-layout~="stack"][data-unitone-layout*="-divider:"]',
+].join( ', ' );
+
+const refreshDividerLinewrap = ( target ) => {
+	target
+		?.querySelectorAll( dividerLinewrapSelector )
+		.forEach( setDividerLinewrap );
+};
 
 const multiIncludes = ( haystack, needles ) => {
 	if ( ! Array.isArray( haystack ) ) {
@@ -46,6 +59,9 @@ export default function ( { attributes, setAttributes } ) {
 		layout,
 		columnMinWidth,
 	} = attributes;
+	const blockRef = useRef( null );
+	const refreshRef = useRef();
+	const shouldSetDividerLinewrap = [ 'cluster', 'stack' ].includes( layout );
 
 	// linkcontrol returns value.title if present, so updating parent does not update the title.
 	// In the past, parent.title was saved, so if it is saved, it is removed.
@@ -96,6 +112,57 @@ export default function ( { attributes, setAttributes } ) {
 			'is-style-panel',
 			'is-style-rich-media',
 		] );
+
+	useEffect( () => {
+		if ( ! shouldSetDividerLinewrap || ! blockRef.current ) {
+			refreshRef.current = undefined;
+			return;
+		}
+
+		const target = blockRef.current;
+		const defaultView = target.ownerDocument?.defaultView;
+		const refresh = debounce( () => {
+			if ( target.isConnected ) {
+				refreshDividerLinewrap( target );
+			}
+		}, 250 );
+
+		refreshRef.current = refresh;
+
+		if (
+			! defaultView?.MutationObserver ||
+			! defaultView?.ResizeObserver
+		) {
+			refresh();
+			return () => {
+				refreshRef.current = undefined;
+			};
+		}
+
+		const mutationObserver = new defaultView.MutationObserver( refresh );
+		const resizeObserver = new defaultView.ResizeObserver( refresh );
+
+		mutationObserver.observe( target, {
+			childList: true,
+			subtree: true,
+		} );
+
+		resizeObserver.observe( target );
+		refresh();
+
+		return () => {
+			refresh();
+			mutationObserver.disconnect();
+			resizeObserver.disconnect();
+			refreshRef.current = undefined;
+		};
+	}, [ shouldSetDividerLinewrap ] );
+
+	useEffect( () => {
+		if ( shouldSetDividerLinewrap ) {
+			refreshRef.current?.();
+		}
+	}, [ shouldSetDividerLinewrap, attributes ] );
 
 	return (
 		<>
@@ -318,7 +385,12 @@ export default function ( { attributes, setAttributes } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<div { ...useBlockProps( { className: 'unitone-child-pages' } ) }>
+			<div
+				{ ...useBlockProps( {
+					ref: blockRef,
+					className: 'unitone-child-pages',
+				} ) }
+			>
 				<Disabled>
 					<ServerSideRender
 						block="unitone/child-pages"

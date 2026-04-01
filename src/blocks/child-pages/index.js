@@ -62,7 +62,7 @@ const withChildBlockAttributes = createHigherOrderComponent(
 				dividerType = {
 					options: [
 						'',
-						stackDividedMetadata.supports.unitone.dividerType,
+						...stackDividedMetadata.supports.unitone.dividerType,
 					],
 					default:
 						stackDividedMetadata.attributes?.unitone?.default

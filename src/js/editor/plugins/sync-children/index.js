@@ -251,16 +251,23 @@ const { updateBlockAttributes } = dispatch( blockEditorStore );
 
 let previousSelectedClientId = null;
 let previousSelectedAttributes = null;
+let previousSelectedSyncContext = null;
 let isApplyingSync = false;
 
-const updateSelectedBaseline = ( selectedClientId, selectedAttributes ) => {
+const updateSelectedBaseline = (
+	selectedClientId,
+	selectedAttributes,
+	selectedSyncContext = previousSelectedSyncContext
+) => {
 	previousSelectedClientId = selectedClientId;
 	previousSelectedAttributes = selectedAttributes;
+	previousSelectedSyncContext = selectedSyncContext;
 };
 
 const resetSelectedBaseline = () => {
 	previousSelectedClientId = null;
 	previousSelectedAttributes = null;
+	previousSelectedSyncContext = null;
 };
 
 const getChildPositionInParent = ( parentBlock, childClientId, childName ) => {
@@ -351,7 +358,11 @@ subscribe( () => {
 	}
 
 	if ( selectedClientId !== previousSelectedClientId ) {
-		updateSelectedBaseline( selectedClientId, selectedBlock.attributes );
+		updateSelectedBaseline(
+			selectedClientId,
+			selectedBlock.attributes,
+			resolveSyncContextFromSelected( selectedClientId )
+		);
 		return;
 	}
 
@@ -374,7 +385,7 @@ subscribe( () => {
 		return;
 	}
 
-	const syncContext = resolveSyncContextFromSelected( selectedClientId );
+	const syncContext = previousSelectedSyncContext;
 	if ( ! syncContext ) {
 		return;
 	}

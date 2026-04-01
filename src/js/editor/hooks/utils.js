@@ -331,6 +331,23 @@ const GridCells = memo(
 	}
 );
 
+const hasSameGridInfo = ( prevGridInfo, nextGridInfo ) => {
+	if ( ! prevGridInfo || ! nextGridInfo ) {
+		return false;
+	}
+
+	return (
+		prevGridInfo.width === nextGridInfo.width &&
+		prevGridInfo.height === nextGridInfo.height &&
+		prevGridInfo.gridTemplateColumns === nextGridInfo.gridTemplateColumns &&
+		prevGridInfo.gridTemplateRows === nextGridInfo.gridTemplateRows &&
+		prevGridInfo.gap === nextGridInfo.gap &&
+		prevGridInfo.cellsCount === nextGridInfo.cellsCount &&
+		prevGridInfo.border === nextGridInfo.border &&
+		prevGridInfo.padding === nextGridInfo.padding
+	);
+};
+
 /**
  * Display grid visualizer.
  *
@@ -338,11 +355,19 @@ const GridCells = memo(
  */
 export const GridVisualizer = forwardRef( ( { attributes }, ref ) => {
 	const [ gridInfo, setGridInfo ] = useState( {} );
+	const gridInfoRef = useRef( null );
+	const rafIdRef = useRef( null );
+	const rafViewRef = useRef( null );
 
 	const getGridInfo = ( gridElement ) => {
+		if ( ! gridElement ) {
+			return null;
+		}
+
 		const ownerDocument = gridElement.ownerDocument;
 		const defaultView = ownerDocument.defaultView;
 		const cssStyleDeclaration = defaultView.getComputedStyle( gridElement );
+		const rect = gridElement.getBoundingClientRect();
 
 		const gridTemplateColumns = cssStyleDeclaration.getPropertyValue(
 			'grid-template-columns'
@@ -354,10 +379,11 @@ export const GridVisualizer = forwardRef( ( { attributes }, ref ) => {
 		const padding = cssStyleDeclaration.getPropertyValue( 'padding' );
 
 		return {
+			width: rect.width,
+			height: rect.height,
 			gridTemplateColumns,
 			gridTemplateRows,
 			gap,
-			rect: gridElement.getBoundingClientRect(),
 			cellsCount:
 				( gridTemplateColumns?.split( ' ' )?.length ?? 0 ) *
 				( gridTemplateRows?.split( ' ' )?.length ?? 0 ),
@@ -366,31 +392,94 @@ export const GridVisualizer = forwardRef( ( { attributes }, ref ) => {
 		};
 	};
 
+	const cancelScheduledUpdate = useCallback( () => {
+		if ( rafIdRef.current && rafViewRef.current ) {
+			rafViewRef.current.cancelAnimationFrame( rafIdRef.current );
+		}
+
+		rafIdRef.current = null;
+		rafViewRef.current = null;
+	}, [] );
+
+	const updateGridInfo = useCallback( ( gridElement ) => {
+		const nextGridInfo = getGridInfo( gridElement );
+		if ( ! nextGridInfo ) {
+			return;
+		}
+
+		if ( hasSameGridInfo( gridInfoRef.current, nextGridInfo ) ) {
+			return;
+		}
+
+		gridInfoRef.current = nextGridInfo;
+		setGridInfo( nextGridInfo );
+	}, [] );
+
+	const scheduleGridInfoUpdate = useCallback(
+		( gridElement = ref.current ) => {
+			if ( ! gridElement ) {
+				return;
+			}
+
+			const defaultView = gridElement.ownerDocument?.defaultView;
+			if ( ! defaultView ) {
+				updateGridInfo( gridElement );
+				return;
+			}
+
+			if ( rafIdRef.current ) {
+				return;
+			}
+
+			rafViewRef.current = defaultView;
+			rafIdRef.current = defaultView.requestAnimationFrame( () => {
+				rafIdRef.current = null;
+				rafViewRef.current = null;
+				updateGridInfo(
+					gridElement.isConnected ? gridElement : ref.current
+				);
+			} );
+		},
+		[ ref, updateGridInfo ]
+	);
+
 	useEffect( () => {
 		const gridElement = ref.current;
+		if ( ! gridElement ) {
+			return;
+		}
+
 		const ownerDocument = gridElement.ownerDocument;
 		const defaultView = ownerDocument.defaultView;
 
-		const observers = [];
-		for ( const element of [ gridElement, ...gridElement.children ] ) {
-			const observer = new defaultView.ResizeObserver( () => {
-				setGridInfo( getGridInfo( gridElement ) );
-			} );
-			observer.observe( element );
-			observers.push( observer );
-		}
+		const resizeObserver = new defaultView.ResizeObserver( () => {
+			scheduleGridInfoUpdate( gridElement );
+		} );
+		resizeObserver.observe( gridElement );
+
+		const mutationObserver = new defaultView.MutationObserver( () => {
+			scheduleGridInfoUpdate( gridElement );
+		} );
+		mutationObserver.observe( gridElement, {
+			childList: true,
+			subtree: true,
+			characterData: true,
+			attributes: true,
+			attributeFilter: [ 'style', 'class', 'data-unitone-layout' ],
+		} );
+
+		scheduleGridInfoUpdate( gridElement );
 
 		return () => {
-			for ( const observer of observers ) {
-				observer.disconnect();
-			}
+			resizeObserver.disconnect();
+			mutationObserver.disconnect();
+			cancelScheduledUpdate();
 		};
-	}, [ ref.current ] );
+	}, [ ref.current, scheduleGridInfoUpdate, cancelScheduledUpdate ] );
 
 	useEffect( () => {
-		const gridElement = ref.current;
-		setGridInfo( getGridInfo( gridElement ) );
-	}, [ attributes?.unitone?.gap ] );
+		scheduleGridInfoUpdate();
+	}, [ attributes, scheduleGridInfoUpdate ] );
 
 	if ( ! gridInfo?.cellsCount ) {
 		return null;
@@ -409,8 +498,8 @@ export const GridVisualizer = forwardRef( ( { attributes }, ref ) => {
 			flip={ false }
 		>
 			<GridCells
-				width={ gridInfo?.rect?.width }
-				height={ gridInfo?.rect?.height }
+				width={ gridInfo?.width }
+				height={ gridInfo?.height }
 				gridTemplateColumns={ gridInfo?.gridTemplateColumns }
 				gridTemplateRows={ gridInfo?.gridTemplateRows }
 				gap={ gridInfo?.gap }

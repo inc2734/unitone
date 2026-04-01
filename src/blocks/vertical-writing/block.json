@@ -22,7 +22,6 @@
 		"unitone": {
 			"type": "object",
 			"default": {
-				"gutters": "root",
 				"blockAlign": "none"
 			}
 		},

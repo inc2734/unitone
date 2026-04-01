@@ -13,8 +13,13 @@ import {
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import {
+	cleanEmptyObject,
+	isObject,
+	mergeObjectWithDefaultValue,
+} from '../utils';
+
 import { PaddingControl } from '../components';
-import { cleanEmptyObject, isObject } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -152,6 +157,11 @@ export function PaddingEdit( {
 
 	const compactedValue = compacting( unitone?.padding, defaultValue );
 	const compactedDefaultValue = compacting( defaultValue );
+	const expandedDefaultValue = expand( compactedDefaultValue );
+	const displayedPadding = mergeObjectWithDefaultValue(
+		expand( unitone?.padding ),
+		expandedDefaultValue
+	);
 
 	const isMixed =
 		isObject( compactedValue ) || isObject( compactedDefaultValue );
@@ -180,11 +190,9 @@ export function PaddingEdit( {
 			newValue = String( newValue );
 		}
 
-		const compactedDefault = compacting( defaultValue );
-		const expandedDefault = expand( compactedDefault );
 		const newPadding = expand( unitone?.padding );
 
-		newPadding[ side ] = newValue || expandedDefault?.[ side ];
+		newPadding[ side ] = newValue || expandedDefaultValue?.[ side ];
 
 		// If the side you use is restricted, remove unnecessary values.
 		if ( ! isAllSides ) {
@@ -215,11 +223,7 @@ export function PaddingEdit( {
 	if ( isAllSides || applyTop ) {
 		sideControls.push( {
 			key: 'top',
-			value:
-				unitone?.padding?.top ??
-				unitone?.padding ??
-				defaultValue?.top ??
-				defaultValue,
+			value: displayedPadding?.top,
 			onChange: ( newValue ) => onChangePaddingSide( 'top', newValue ),
 		} );
 	}
@@ -227,11 +231,7 @@ export function PaddingEdit( {
 	if ( isAllSides || applyRight ) {
 		sideControls.push( {
 			key: 'right',
-			value:
-				unitone?.padding?.right ??
-				unitone?.padding ??
-				defaultValue?.right ??
-				defaultValue,
+			value: displayedPadding?.right,
 			onChange: ( newValue ) => onChangePaddingSide( 'right', newValue ),
 		} );
 	}
@@ -239,11 +239,7 @@ export function PaddingEdit( {
 	if ( isAllSides || applyBottom ) {
 		sideControls.push( {
 			key: 'bottom',
-			value:
-				unitone?.padding?.bottom ??
-				unitone?.padding ??
-				defaultValue?.bottom ??
-				defaultValue,
+			value: displayedPadding?.bottom,
 			onChange: ( newValue ) => onChangePaddingSide( 'bottom', newValue ),
 		} );
 	}
@@ -251,11 +247,7 @@ export function PaddingEdit( {
 	if ( isAllSides || applyLeft ) {
 		sideControls.push( {
 			key: 'left',
-			value:
-				unitone?.padding?.left ??
-				unitone?.padding ??
-				defaultValue?.left ??
-				defaultValue,
+			value: displayedPadding?.left,
 			onChange: ( newValue ) => onChangePaddingSide( 'left', newValue ),
 		} );
 	}
@@ -281,7 +273,10 @@ export function withPaddingBlockProps( settings ) {
 
 	const defaultValue = getDefaultValue( { name } );
 	const newPadding = compacting(
-		attributes.unitone?.padding ?? defaultValue
+		mergeObjectWithDefaultValue(
+			expand( attributes.unitone?.padding ),
+			expand( defaultValue )
+		)
 	);
 
 	if ( null == newPadding ) {

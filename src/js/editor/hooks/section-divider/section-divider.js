@@ -13,7 +13,11 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
+import {
+	cleanEmptyObject,
+	mergeObjectWithDefaultValue,
+	useToolsPanelDropdownMenuProps,
+} from '../utils';
 
 import {
 	resetSectionDividerTopTypeFilter,
@@ -134,15 +138,10 @@ export function withSectionDividerBlockProps( settings ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.sectionDivider;
 
-	const sectionDivider =
-		cleanEmptyObject( {
-			top: {
-				...attributes?.unitone?.sectionDivider?.top,
-			},
-			bottom: {
-				...attributes?.unitone?.sectionDivider?.bottom,
-			},
-		} ) ?? defaultValue;
+	const sectionDivider = mergeObjectWithDefaultValue(
+		attributes?.unitone?.sectionDivider,
+		defaultValue
+	);
 
 	if ( null == sectionDivider ) {
 		return settings;

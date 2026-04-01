@@ -24,7 +24,11 @@ import {
 } from '../icons';
 
 import { ResponsiveSettingsContainer } from '../components';
-import { cleanEmptyObject, useDeviceType } from '../utils';
+import {
+	cleanEmptyObject,
+	mergeObjectWithDefaultValue,
+	useDeviceType,
+} from '../utils';
 
 const alignSelfOptions = [
 	{
@@ -436,7 +440,10 @@ export function withAlignSelfBlockProps( settings ) {
 	}
 
 	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
-	const newAlignSelf = attributes?.unitone?.alignSelf ?? defaultValue;
+	const newAlignSelf = mergeObjectWithDefaultValue(
+		attributes?.unitone?.alignSelf,
+		defaultValue
+	);
 
 	if ( null == newAlignSelf ) {
 		return settings;

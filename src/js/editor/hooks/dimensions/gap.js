@@ -9,8 +9,13 @@ import {
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import {
+	cleanEmptyObject,
+	isObject,
+	mergeObjectWithDefaultValue,
+} from '../utils';
+
 import { GapControl } from '../components';
-import { cleanEmptyObject, isObject } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -133,6 +138,11 @@ export function GapEdit( {
 
 	const compactedValue = compacting( unitone?.gap, defaultValue );
 	const compactedDefaultValue = compacting( defaultValue );
+	const expandedDefaultValue = expand( compactedDefaultValue );
+	const displayedGap = mergeObjectWithDefaultValue(
+		expand( unitone?.gap ),
+		expandedDefaultValue
+	);
 	const isMixed =
 		isObject( compactedValue ) || isObject( compactedDefaultValue );
 
@@ -160,11 +170,9 @@ export function GapEdit( {
 			newValue = String( newValue );
 		}
 
-		const compactedDefault = compacting( defaultValue );
-		const expandedDefault = expand( compactedDefault );
 		const newGap = expand( unitone?.gap );
 
-		newGap[ side ] = newValue || expandedDefault?.[ side ];
+		newGap[ side ] = newValue || expandedDefaultValue?.[ side ];
 
 		setAttributes( {
 			unitone: cleanEmptyObject( {
@@ -182,19 +190,9 @@ export function GapEdit( {
 			isMixed={ isMixed }
 			value={ compactedValue ?? defaultValue }
 			onChange={ onChangeGap }
-			rowValue={
-				unitone?.gap?.row ??
-				unitone?.gap ??
-				defaultValue?.row ??
-				defaultValue
-			}
+			rowValue={ displayedGap?.row }
 			onChangeRow={ ( newValue ) => onChangeGapSide( 'row', newValue ) }
-			columnValue={
-				unitone?.gap?.column ??
-				unitone?.gap ??
-				defaultValue?.column ??
-				defaultValue
-			}
+			columnValue={ displayedGap?.column }
 			onChangeColumn={ ( newValue ) =>
 				onChangeGapSide( 'column', newValue )
 			}
@@ -210,7 +208,12 @@ export function withGapBlockProps( settings ) {
 	}
 
 	const defaultValue = getDefaultValue( { name } );
-	const newGap = compacting( attributes.unitone?.gap ?? defaultValue );
+	const newGap = compacting(
+		mergeObjectWithDefaultValue(
+			expand( attributes.unitone?.gap ),
+			expand( defaultValue )
+		)
+	);
 
 	if ( null == newGap ) {
 		return settings;

@@ -22,9 +22,14 @@ import {
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import {
+	cleanEmptyObject,
+	mergeObjectWithDefaultValue,
+	useDeviceType,
+} from '../utils';
+
 import { ResponsiveSettingsContainer } from '../components';
 import { auto } from '../icons';
-import { cleanEmptyObject, useDeviceType } from '../utils';
 
 const justifySelfOptions = [
 	{
@@ -462,7 +467,10 @@ export function withJustifySelfBlockProps( settings ) {
 	}
 
 	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
-	const newJustifySelf = attributes?.unitone?.justifySelf ?? defaultValue;
+	const newJustifySelf = mergeObjectWithDefaultValue(
+		attributes?.unitone?.justifySelf,
+		defaultValue
+	);
 
 	if ( null == newJustifySelf ) {
 		return settings;

@@ -9,7 +9,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { ResponsiveSettingsContainer, HelpContainer } from '../components';
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
 function getIsResponsive( { name, __unstableUnitoneSupports } ) {
 	return (
@@ -247,7 +247,10 @@ export function withGridRowBlockProps( settings ) {
 	}
 
 	const defaultValue = getDefaultValue( { name, __unstableUnitoneSupports } );
-	const newGridRow = attributes?.unitone?.gridRow ?? defaultValue;
+	const newGridRow = mergeObjectWithDefaultValue(
+		attributes?.unitone?.gridRow,
+		defaultValue
+	);
 
 	if ( null == newGridRow ) {
 		return settings;

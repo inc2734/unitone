@@ -22,7 +22,7 @@ import { __, _x } from '@wordpress/i18n';
 
 import { HelpContainer } from '../components';
 import { scroll as iconScrollAnimation } from './icons';
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -76,7 +76,9 @@ function renderToggle( { hasValue, resetValue } ) {
 			onClick: onToggle,
 			className: clsx(
 				'block-editor-global-styles__shadow-dropdown-toggle',
-				{ 'is-open': isOpen }
+				{
+					'is-open': isOpen,
+				}
 			),
 			'aria-expanded': isOpen,
 			ref,
@@ -755,9 +757,10 @@ export function withScrollAnimationBlockProps( settings ) {
 	}
 
 	const defaultValue = getDefaultValue( { name } );
-	const newScrollAnimation = {
-		...( attributes?.unitone?.scrollAnimation ?? defaultValue ),
-	};
+	const newScrollAnimation = mergeObjectWithDefaultValue(
+		attributes?.unitone?.scrollAnimation,
+		defaultValue
+	);
 
 	if ( null == newScrollAnimation ) {
 		return settings;

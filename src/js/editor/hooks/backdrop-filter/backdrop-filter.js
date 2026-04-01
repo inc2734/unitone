@@ -16,7 +16,11 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
+import {
+	cleanEmptyObject,
+	mergeObjectWithDefaultValue,
+	useToolsPanelDropdownMenuProps,
+} from '../utils';
 
 import {
 	isBlurSupportDisabled,
@@ -132,7 +136,10 @@ export function withBackdropFilterBlockProps( settings ) {
 
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
 		?.attributes?.unitone?.default?.backdropFilter;
-	const backdropFilter = unitone?.backdropFilter ?? defaultValue;
+	const backdropFilter = mergeObjectWithDefaultValue(
+		unitone?.backdropFilter,
+		defaultValue
+	);
 
 	const backdropFilterProps = [];
 

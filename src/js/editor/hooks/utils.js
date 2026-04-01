@@ -26,6 +26,22 @@ export function isObject( value ) {
 }
 
 /**
+ * Check if the value is a plain mergeable object.
+ *
+ * Arrays and React elements are excluded.
+ *
+ * @param {*} value The value to check.
+ * @return {boolean} Return true if the value can be merged recursively.
+ */
+function isMergeableObject( value ) {
+	return (
+		isObject( value ) &&
+		! Array.isArray( value ) &&
+		( ! value.$$typeof || 'symbol' !== typeof value.$$typeof )
+	);
+}
+
+/**
  * Removed falsy values from nested object.
  *
  * @see https://github.com/WordPress/gutenberg/blob/857356c1602a42f342a61976ba67eb41284050ca/packages/block-editor/src/hooks/utils.js
@@ -34,11 +50,7 @@ export function isObject( value ) {
  * @return {*} Object cleaned from falsy values
  */
 export const cleanEmptyObject = ( object ) => {
-	if (
-		! isObject( object ) ||
-		Array.isArray( object ) ||
-		( object.$$typeof && 'symbol' === typeof object.$$typeof )
-	) {
+	if ( ! isMergeableObject( object ) ) {
 		return object;
 	}
 
@@ -49,6 +61,46 @@ export const cleanEmptyObject = ( object ) => {
 		? undefined
 		: Object.fromEntries( cleanedNestedObjects );
 };
+
+/**
+ * Merge an object with its default value recursively.
+ *
+ * If a property in value is null or undefined, the property from defaultValue is used.
+ *
+ * @param {*} value        The current value.
+ * @param {*} defaultValue The default value.
+ * @return {*} Merged value.
+ */
+export function mergeObjectWithDefaultValue( value, defaultValue ) {
+	if ( null == value ) {
+		return defaultValue;
+	}
+
+	if ( null == defaultValue ) {
+		return value;
+	}
+
+	if ( ! isMergeableObject( value ) || ! isMergeableObject( defaultValue ) ) {
+		return value;
+	}
+
+	return cleanEmptyObject(
+		Object.fromEntries(
+			[
+				...new Set( [
+					...Object.keys( defaultValue ),
+					...Object.keys( value ),
+				] ),
+			].map( ( key ) => [
+				key,
+				mergeObjectWithDefaultValue(
+					value?.[ key ],
+					defaultValue?.[ key ]
+				),
+			] )
+		)
+	);
+}
 
 /**
  * Check if the value is number or string type number.

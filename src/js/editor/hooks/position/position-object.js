@@ -6,7 +6,7 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -420,7 +420,10 @@ export function withPositionBlockProps( settings ) {
 	}
 
 	const defaultValue = getDefaultValue( { name } );
-	const newPosition = attributes?.unitone?.position ?? defaultValue;
+	const newPosition = mergeObjectWithDefaultValue(
+		attributes?.unitone?.position,
+		defaultValue
+	);
 
 	if ( null == newPosition ) {
 		return settings;

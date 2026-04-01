@@ -18,7 +18,7 @@ import { Icon, reset } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 import { parallax as iconParallax } from './icons';
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -68,7 +68,9 @@ function renderToggle( { hasValue, resetValue } ) {
 			onClick: onToggle,
 			className: clsx(
 				'block-editor-global-styles__shadow-dropdown-toggle',
-				{ 'is-open': isOpen }
+				{
+					'is-open': isOpen,
+				}
 			),
 			'aria-expanded': isOpen,
 			ref,
@@ -206,9 +208,10 @@ export function withParallaxBlockProps( settings ) {
 	}
 
 	const defaultValue = getDefaultValue( { name } );
-	const newParallax = {
-		...( attributes?.unitone?.parallax ?? defaultValue ),
-	};
+	const newParallax = mergeObjectWithDefaultValue(
+		attributes?.unitone?.parallax,
+		defaultValue
+	);
 
 	if ( null == newParallax ) {
 		return settings;

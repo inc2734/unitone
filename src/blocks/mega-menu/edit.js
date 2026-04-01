@@ -84,6 +84,11 @@ const widthOptions = [
 	},
 ];
 
+const getInlineSize = ( entry ) =>
+	entry?.borderBoxSize?.[ 0 ]?.inlineSize ??
+	entry?.contentBoxSize?.[ 0 ]?.inlineSize ??
+	entry?.contentRect?.width;
+
 function Edit( {
 	attributes,
 	setAttributes,
@@ -110,7 +115,6 @@ function Edit( {
 
 	const [ isLinkOpen, setIsLinkOpen ] = useState( false );
 	const [ isMegaMenuOpen, setIsMegaMenuOpen ] = useState( false );
-	const [ parentWidth, setParentWidth ] = useState( 0 );
 	const [ rect, setRect ] = useState( { top: 0, left: 0, width: 0 } );
 	const [ megaMenuRect, setMegaMenuRect ] = useState( {
 		left: 0,
@@ -123,6 +127,7 @@ function Edit( {
 	const itemLabelPlaceholder = __( 'Add text…' );
 	const ref = useRef( null );
 	const listItemRef = useRef( null );
+	const positionRafIdRef = useRef( null );
 
 	// Memoize link value to avoid overriding the LinkControl's internal state.
 	// This is a temporary fix. See https://github.com/WordPress/gutenberg/issues/51256.
@@ -133,6 +138,10 @@ function Edit( {
 
 	const setPositionMegaMenu = useCallback( () => {
 		const listItem = listItemRef.current;
+		if ( ! listItem ) {
+			return;
+		}
+
 		const listItemRect = listItem.getBoundingClientRect();
 		setRect( {
 			top: listItemRect.y,
@@ -149,6 +158,10 @@ function Edit( {
 		const megaMenuContainer = listItem.querySelector(
 			'.unitone-mega-menu__container'
 		);
+		if ( ! megaMenuContainer ) {
+			return;
+		}
+
 		const _megaMenuRect = megaMenuContainer.getBoundingClientRect();
 		let diff = 0;
 		if ( viewport.width < _megaMenuRect.left + _megaMenuRect.width ) {
@@ -164,12 +177,34 @@ function Edit( {
 		} );
 	}, [ setRect, setMegaMenuRect ] );
 
+	const schedulePositionMegaMenu = useCallback( () => {
+		if ( positionRafIdRef.current ) {
+			return;
+		}
+
+		const defaultView = listItemRef.current?.ownerDocument?.defaultView;
+		if ( ! defaultView ) {
+			setPositionMegaMenu();
+			return;
+		}
+
+		positionRafIdRef.current = defaultView.requestAnimationFrame( () => {
+			positionRafIdRef.current = null;
+			setPositionMegaMenu();
+		} );
+	}, [ setPositionMegaMenu ] );
+
 	const openMegaMenu = useCallback( () => {
-		setPositionMegaMenu();
 		setIsMegaMenuOpen( true );
-	}, [ setPositionMegaMenu, setIsMegaMenuOpen ] );
+	}, [ setIsMegaMenuOpen ] );
 
 	const closeMegaMenu = useCallback( () => {
+		const defaultView = listItemRef.current?.ownerDocument?.defaultView;
+		if ( positionRafIdRef.current && defaultView ) {
+			defaultView.cancelAnimationFrame( positionRafIdRef.current );
+			positionRafIdRef.current = null;
+		}
+
 		setRect( { top: 0, left: 0, width: 0 } );
 		setMegaMenuRect( { left: 0, width: 0, diff: 0 } );
 		setIsMegaMenuOpen( false );
@@ -197,32 +232,50 @@ function Edit( {
 		[ clientId ]
 	);
 
-	// Update props when the viewport is resized or the block is resized.
 	useEffect( () => {
-		const parent =
-			listItemRef.current.closest( '.site-header' ) ??
-			listItemRef.current.closest( '.wp-block-navigation' );
+		if ( ! isMegaMenuOpen || ! listItemRef.current ) {
+			return;
+		}
 
-		const ownerDocument = listItemRef.current?.ownerDocument;
+		const listItem = listItemRef.current;
+		const parent =
+			listItem.closest( '.site-header' ) ??
+			listItem.closest( '.wp-block-navigation' );
+		const megaMenuContainer = listItem.querySelector(
+			'.unitone-mega-menu__container'
+		);
+
+		const ownerDocument = listItem.ownerDocument;
 
 		let resizeObserver;
-		let documentResizeObserver;
 
 		const defaultView = ownerDocument?.defaultView;
 		if ( defaultView.ResizeObserver ) {
-			resizeObserver = new defaultView.ResizeObserver( ( entries ) =>
-				defaultView.requestAnimationFrame( () => {
-					setParentWidth( entries[ 0 ].contentBoxSize );
-				} )
-			);
-			resizeObserver.observe( parent );
+			const inlineSizes = new WeakMap();
 
-			documentResizeObserver = new defaultView.ResizeObserver( () =>
-				defaultView.requestAnimationFrame( () => {
-					setPositionMegaMenu();
-				} )
-			);
-			documentResizeObserver.observe( ownerDocument.documentElement );
+			resizeObserver = new defaultView.ResizeObserver( ( entries ) => {
+				const shouldRefresh = entries.some( ( entry ) => {
+					const nextInlineSize = getInlineSize( entry );
+					if ( undefined === nextInlineSize ) {
+						return false;
+					}
+
+					const prevInlineSize = inlineSizes.get( entry.target );
+					inlineSizes.set( entry.target, nextInlineSize );
+
+					return prevInlineSize !== nextInlineSize;
+				} );
+
+				if ( shouldRefresh ) {
+					schedulePositionMegaMenu();
+				}
+			} );
+
+			[ parent, megaMenuContainer ]
+				.filter( Boolean )
+				.forEach( ( element ) => {
+					resizeObserver.observe( element );
+				} );
 		}
 
 		const target = ownerDocument?.documentElement?.classList?.contains(
@@ -233,22 +286,30 @@ function Edit( {
 			  )
 			: ownerDocument;
 
-		target.addEventListener( 'scroll', setPositionMegaMenu );
+		schedulePositionMegaMenu();
+
+		target.addEventListener( 'scroll', schedulePositionMegaMenu, {
+			passive: true,
+		} );
+		defaultView?.addEventListener( 'resize', schedulePositionMegaMenu );
 
 		return () => {
 			if ( resizeObserver ) {
-				resizeObserver.unobserve( parent );
+				resizeObserver.disconnect();
 			}
 
-			if ( documentResizeObserver ) {
-				documentResizeObserver.unobserve(
-					ownerDocument.documentElement
-				);
+			if ( positionRafIdRef.current && defaultView ) {
+				defaultView.cancelAnimationFrame( positionRafIdRef.current );
+				positionRafIdRef.current = null;
 			}
 
-			target.removeEventListener( 'scroll', setPositionMegaMenu );
+			target.removeEventListener( 'scroll', schedulePositionMegaMenu );
+			defaultView?.removeEventListener(
+				'resize',
+				schedulePositionMegaMenu
+			);
 		};
-	}, [] );
+	}, [ isMegaMenuOpen, schedulePositionMegaMenu ] );
 
 	// Check if either the block or the inner blocks are selected.
 	const hasSelection = useSelect(
@@ -270,7 +331,23 @@ function Edit( {
 		} else {
 			closeMegaMenu();
 		}
-	}, [ hasSelection, label, hasInnerBlocks, parentWidth ] );
+	}, [ hasSelection, openMegaMenu, closeMegaMenu ] );
+
+	useEffect( () => {
+		if ( isMegaMenuOpen ) {
+			schedulePositionMegaMenu();
+		}
+	}, [
+		isMegaMenuOpen,
+		label,
+		hasInnerBlocks,
+		width,
+		customOverlayBackgroundColor,
+		overlayBackgroundColor.slug,
+		openSubmenusOnClick,
+		showSubmenuIcon,
+		schedulePositionMegaMenu,
+	] );
 
 	// Show the LinkControl on mount if the URL is empty
 	// ( When adding a new menu item)
@@ -464,7 +541,7 @@ function Edit( {
 											setAttributes( {
 												width: value,
 											} );
-											setPositionMegaMenu();
+											schedulePositionMegaMenu();
 										} }
 									/>
 								)

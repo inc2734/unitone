@@ -20,8 +20,7 @@ import './plugins/paste-styles/index';
 import './plugins/override-settings/index';
 
 const loadWhenIdle = ( loader, timeout = 2000 ) => {
-	const requestIdleCallback =
-		globalThis.requestIdleCallback?.bind( globalThis );
+	const requestIdleCallback = window.requestIdleCallback?.bind( window );
 
 	if ( requestIdleCallback ) {
 		requestIdleCallback(
@@ -33,7 +32,7 @@ const loadWhenIdle = ( loader, timeout = 2000 ) => {
 		return;
 	}
 
-	globalThis.setTimeout( () => {
+	setTimeout( () => {
 		void loader();
 	}, 1 );
 };

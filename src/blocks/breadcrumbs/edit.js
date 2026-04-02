@@ -8,7 +8,7 @@ import {
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
-import ServerSideRender from '@wordpress/server-side-render';
+import { ServerSideRender } from '@wordpress/server-side-render';
 
 import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 

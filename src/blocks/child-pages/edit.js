@@ -18,7 +18,7 @@ import { useEffect, useRef } from '@wordpress/element';
 import { Icon, globe } from '@wordpress/icons';
 import { __, sprintf } from '@wordpress/i18n';
 
-import ServerSideRender from '@wordpress/server-side-render';
+import { ServerSideRender } from '@wordpress/server-side-render';
 
 import { debounce, setDividerLinewrap } from '@inc2734/unitone-css/library';
 

@@ -11,7 +11,7 @@ import {
 
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { store as blocksStore } from '@wordpress/blocks';
-import { useSelect, useDispatch, select } from '@wordpress/data';
+import { useSelect, useDispatch, select as dataSelect } from '@wordpress/data';
 import { useCallback, useMemo } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
@@ -40,19 +40,22 @@ const getVariationTitle = ( blockType, thisAttributes ) =>
 
 const SelectedLineageToolbar = ( { clientId } ) => {
 	const { selectBlock } = useDispatch( blockEditorStore );
+
 	const rawInnerBlocks = useSelect(
 		( select ) =>
 			select( blockEditorStore ).getBlock( clientId )?.innerBlocks ??
 			EMPTY_ARRAY,
 		[ clientId ]
 	);
+
 	const parentClientId = useSelect(
 		( select ) =>
 			select( blockEditorStore ).getBlockParents( clientId, true )?.[ 0 ],
 		[ clientId ]
 	);
+
 	const innerBlocks = useMemo( () => {
-		const { getBlockType } = select( blocksStore );
+		const { getBlockType } = dataSelect( blocksStore );
 
 		return rawInnerBlocks.map( ( innerBlock ) => {
 			const blockType = getBlockType( innerBlock.name );

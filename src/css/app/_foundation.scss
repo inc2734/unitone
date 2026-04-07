@@ -1,7 +1,7 @@
 @use "sass:meta";
 
-@include meta.load-css("../../../node_modules/@inc2734/unitone-css/src/foundation/foundation");
-@include meta.load-css("../../../node_modules/@inc2734/unitone-css/src/helper/helper");
+@use "@inc2734/unitone-css/src/foundation";
+@use "@inc2734/unitone-css/src/behaviors";
 
 :root {
 	--unitone--margin-block: var(--unitone--global--text-gap);

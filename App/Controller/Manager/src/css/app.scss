@@ -1,6 +1,6 @@
-@use '../../../../../node_modules/@inc2734/unitone-css/src/settings/settings';
-@use '../../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/layout-primitives';
-@use '../../../../../node_modules/@inc2734/unitone-css/src/helper/helper';
+@use '@inc2734/unitone-css/src/settings';
+@use '@inc2734/unitone-css/src/layout-primitives';
+@use '@inc2734/unitone-css/src/behaviors';
 
 #wpadminbar,
 #adminmenumain,

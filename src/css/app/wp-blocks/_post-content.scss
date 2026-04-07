@@ -3,7 +3,7 @@
  * CSS must always be loaded, which is inconvenient when a classic editor is required, such as in WooCommerce.
  */
 
-@use '../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
+@use '@inc2734/unitone-css/src/layout-primitives/text';
 
 :where(.is-layout-constrained:not([data-unitone-layout~="text"])),
 :where(.wp-block-post-content.is-layout-flow), // @deprecated

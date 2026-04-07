@@ -1,5 +1,5 @@
 @use "sass:meta";
-@use '../../../node_modules/@inc2734/unitone-css/src/settings/settings';
+@use '@inc2734/unitone-css/src/settings';
 
 :where(
 	[data-unitone-block-list~="layout"],

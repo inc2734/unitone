@@ -1,7 +1,8 @@
 @use "sass:map";
 @use "sass:string";
 @use "sass:list";
-@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
+
+@use '@inc2734/unitone-css/src/variables';
 
 $font-sizes: (
 	(

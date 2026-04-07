@@ -1,4 +1,4 @@
-@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
+@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text';
 
 [data-unitone-layout~="text"].is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
 	&,

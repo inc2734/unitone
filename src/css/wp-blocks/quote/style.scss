@@ -1,5 +1,5 @@
-@use '../../../../node_modules/@inc2734/unitone-css/src/layout-primitives/text/text';
-@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
+@use '@inc2734/unitone-css/src/layout-primitives/text';
+@use '@inc2734/unitone-css/src/variables';
 
 .wp-block-quote {
 	@include text.abstract-text();

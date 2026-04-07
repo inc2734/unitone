@@ -1,4 +1,4 @@
-@use '../../../../node_modules/@inc2734/unitone-css/src/variables/variables';
+@use '@inc2734/unitone-css/src/variables';
 
 :where(.wp-block-button, .wp-element-button) {
 	--unitone--border-radius: var(--unitone--global--border-radius);

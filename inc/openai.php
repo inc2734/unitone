@@ -252,70 +252,16 @@ add_action(
 					return current_user_can( 'edit_posts' ) || current_user_can( 'manage_options' );
 				},
 				'callback'            => function () {
-					global $wpdb;
-
-					$cache_key   = 'unitone_ai_connectors_candidate_rows';
-					$cache_group = 'unitone';
-					$candidate_rows = wp_cache_get( $cache_key, $cache_group );
-
-					if ( false === $candidate_rows ) {
-						// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
-						$candidate_rows = $wpdb->get_results(
-							"SELECT option_value FROM {$wpdb->options} WHERE option_name LIKE '%connectors_ai_%' LIMIT 100",
-							ARRAY_A
-						);
-						wp_cache_set( $cache_key, $candidate_rows, $cache_group, MINUTE_IN_SECONDS );
-					}
-
-					$has_wp_ai_client = function_exists( 'wp_ai_client_prompt' );
-					$active_plugins   = (array) get_option( 'active_plugins', array() );
-					if ( is_multisite() ) {
-						$active_plugins = array_merge(
-							$active_plugins,
-							array_keys( (array) get_site_option( 'active_sitewide_plugins', array() ) )
-						);
-					}
-
-					$has_active_provider_plugin = false;
-					foreach ( $active_plugins as $plugin_file ) {
-						$normalized = (string) $plugin_file;
-						if (
-							false !== strpos( $normalized, 'ai-provider-' ) ||
-							false !== strpos( $normalized, '/ai-provider-' ) ||
-							false !== strpos( $normalized, 'wordpress-ai-services' ) ||
-							false !== strpos( $normalized, '/ai-services' )
-						) {
-							$has_active_provider_plugin = true;
-							break;
-						}
-					}
-
-					$has_connector_credentials = false;
-					$has_non_empty_string      = function ( $value ) use ( &$has_non_empty_string ) {
-						if ( is_string( $value ) ) {
-							return '' !== trim( $value );
-						}
-
-						if ( is_array( $value ) ) {
-							foreach ( $value as $item ) {
-								if ( $has_non_empty_string( $item ) ) {
-									return true;
-								}
-							}
-						}
-
+					if ( ! function_exists( 'wp_ai_client_prompt' ) ) {
 						return false;
-					};
-
-					foreach ( $candidate_rows as $row ) {
-						$value = maybe_unserialize( $row['option_value'] ?? '' );
-						if ( $has_non_empty_string( $value ) ) {
-							$has_connector_credentials = true;
-							break;
-						}
 					}
 
-					return $has_connector_credentials && $has_wp_ai_client && $has_active_provider_plugin;
+					try {
+						$prompt = wp_ai_client_prompt( 'test' );
+						return $prompt->is_supported_for_text_generation();
+					} catch ( \Throwable $e ) {
+						return false;
+					}
 				},
 			)
 		);

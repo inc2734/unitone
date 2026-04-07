@@ -23,7 +23,7 @@ import {
 	normalizeForSelectControl,
 	normalizeForToggleControl,
 	useToolsPanelDropdownMenuProps,
-	useVisibleResizeObserver,
+	useVisibleLayoutObserver,
 } from '../../js/editor/hooks/utils';
 
 import { HelpContainer } from '../../js/editor/hooks/components';
@@ -45,9 +45,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 	const hasInnerBlocks = !! innerBlocksLength;
 
-	const ref = useVisibleResizeObserver(
-		( target ) => setDividerLinewrap( target ),
-		[ attributes ]
+	const ref = useVisibleLayoutObserver( ( target ) =>
+		setDividerLinewrap( target )
 	);
 
 	const blockProps = useBlockProps( { ref } );

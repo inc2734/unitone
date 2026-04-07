@@ -19,7 +19,7 @@ import { __ } from '@wordpress/i18n';
 import {
 	normalizeForSelectControl,
 	useToolsPanelDropdownMenuProps,
-	useVisibleResizeObserver,
+	useVisibleLayoutObserver,
 } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
@@ -39,9 +39,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 	const hasInnerBlocks = !! innerBlocksLength;
 
-	const ref = useVisibleResizeObserver(
-		( target ) => setDividerLinewrap( target ),
-		[ attributes ]
+	const ref = useVisibleLayoutObserver( ( target ) =>
+		setDividerLinewrap( target )
 	);
 
 	const blockProps = useBlockProps( {

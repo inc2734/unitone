@@ -13,8 +13,6 @@ import {
 	memo,
 } from '@wordpress/element';
 
-import { debounce } from '@inc2734/unitone-css/library';
-
 /**
  * Check if the value is object.
  *
@@ -475,7 +473,7 @@ export const GridVisualizer = forwardRef( ( { attributes }, ref ) => {
 			mutationObserver.disconnect();
 			cancelScheduledUpdate();
 		};
-	}, [ ref.current, scheduleGridInfoUpdate, cancelScheduledUpdate ] );
+	}, [ ref, scheduleGridInfoUpdate, cancelScheduledUpdate ] );
 
 	useEffect( () => {
 		scheduleGridInfoUpdate();
@@ -527,39 +525,292 @@ export function useToolsPanelDropdownMenuProps() {
 		: {};
 }
 
-export function useVisibleResizeObserver( onResize, deps = [] ) {
+const OBSERVED_LAYOUT_ATTRIBUTE_FILTER = [
+	'style',
+	'class',
+	'data-unitone-layout',
+];
+
+const IGNORED_LAYOUT_TOKENS = [
+	'divider:initialized',
+	'-stack',
+	'-bol',
+	'-linewrap',
+	'stairs:initialized',
+];
+
+const IGNORED_STYLE_PROPERTIES = [
+	'--unitone--stairs-step-overflow-volume',
+	'--unitone--max-stairs-step',
+	'--unitone--stairs-step',
+];
+
+const normalizeObservedLayoutTokens = ( value ) =>
+	( value ?? '' )
+		.split( /\s+/ )
+		.filter(
+			( token ) => token && ! IGNORED_LAYOUT_TOKENS.includes( token )
+		)
+		.join( ' ' );
+
+const normalizeObservedStyleAttribute = ( value ) =>
+	( value ?? '' )
+		.split( ';' )
+		.map( ( declaration ) => declaration.trim() )
+		.filter( Boolean )
+		.filter( ( declaration ) => {
+			const [ property ] = declaration.split( ':' );
+			return (
+				property &&
+				! IGNORED_STYLE_PROPERTIES.includes( property.trim() )
+			);
+		} )
+		.join( ';' );
+
+const shouldRefreshForAttributeMutation = ( entry ) => {
+	if ( 'attributes' !== entry.type ) {
+		return false;
+	}
+
+	if ( 'class' === entry.attributeName ) {
+		return (
+			( entry.target.getAttribute( 'class' ) ?? '' ) !==
+			( entry.oldValue ?? '' )
+		);
+	}
+
+	if ( 'style' === entry.attributeName ) {
+		return (
+			normalizeObservedStyleAttribute(
+				entry.target.getAttribute( 'style' )
+			) !== normalizeObservedStyleAttribute( entry.oldValue )
+		);
+	}
+
+	if ( 'data-unitone-layout' === entry.attributeName ) {
+		return (
+			normalizeObservedLayoutTokens(
+				entry.target.getAttribute( 'data-unitone-layout' )
+			) !== normalizeObservedLayoutTokens( entry.oldValue )
+		);
+	}
+
+	return false;
+};
+
+export function useVisibleLayoutObserver( onLayout ) {
 	const ref = useRef( null );
-	const onResizeRef = useRef( onResize );
+	const onLayoutRef = useRef( onLayout );
 	const observedTargetRef = useRef( null );
 	const intersectionObserverRef = useRef( null );
-	const resizeObserverRef = useRef( null );
+	const targetResizeObserverRef = useRef( null );
+	const childResizeObserverRef = useRef( null );
+	const targetMutationObserverRef = useRef( null );
+	const childMutationObserverRef = useRef( null );
+	const rafViewRef = useRef( null );
+	const rafIdRef = useRef( null );
+	const activeObserversRef = useRef( false );
 
-	onResizeRef.current = onResize;
+	onLayoutRef.current = onLayout;
+
+	const refreshTarget = useCallback( ( target ) => {
+		if ( target ) {
+			onLayoutRef.current( target );
+		}
+	}, [] );
+
+	const cancelScheduledRefresh = useCallback( () => {
+		if ( rafIdRef.current && rafViewRef.current ) {
+			rafViewRef.current.cancelAnimationFrame( rafIdRef.current );
+		}
+
+		rafIdRef.current = null;
+		rafViewRef.current = null;
+	}, [] );
+
+	const scheduleRefresh = useCallback(
+		( target = observedTargetRef.current ) => {
+			if ( ! target ) {
+				return;
+			}
+
+			const defaultView = target.ownerDocument?.defaultView;
+			if ( ! defaultView ) {
+				refreshTarget( target );
+				return;
+			}
+
+			if ( rafIdRef.current ) {
+				return;
+			}
+
+			rafViewRef.current = defaultView;
+			rafIdRef.current = defaultView.requestAnimationFrame( () => {
+				rafIdRef.current = null;
+				rafViewRef.current = null;
+
+				const currentTarget = target.isConnected
+					? target
+					: observedTargetRef.current;
+				if ( currentTarget?.isConnected ) {
+					refreshTarget( currentTarget );
+				}
+			} );
+		},
+		[ refreshTarget ]
+	);
+
+	const disconnectChildObservers = useCallback( () => {
+		if ( childResizeObserverRef.current ) {
+			childResizeObserverRef.current.disconnect();
+			childResizeObserverRef.current = null;
+		}
+
+		if ( childMutationObserverRef.current ) {
+			childMutationObserverRef.current.disconnect();
+			childMutationObserverRef.current = null;
+		}
+	}, [] );
+
+	const observeChildren = useCallback(
+		( target ) => {
+			disconnectChildObservers();
+
+			const children = [ ...( target?.children ?? [] ) ];
+			if ( ! children.length ) {
+				return;
+			}
+
+			const defaultView = target.ownerDocument?.defaultView;
+			if (
+				! defaultView?.ResizeObserver ||
+				! defaultView?.MutationObserver
+			) {
+				return;
+			}
+
+			const childResizeObserver = new defaultView.ResizeObserver( () => {
+				scheduleRefresh( target );
+			} );
+			const childMutationObserver = new defaultView.MutationObserver(
+				( entries ) => {
+					if (
+						entries.some( ( entry ) =>
+							shouldRefreshForAttributeMutation( entry )
+						)
+					) {
+						scheduleRefresh( target );
+					}
+				}
+			);
+
+			children.forEach( ( child ) => {
+				childResizeObserver.observe( child );
+				childMutationObserver.observe( child, {
+					attributes: true,
+					attributeFilter: OBSERVED_LAYOUT_ATTRIBUTE_FILTER,
+					attributeOldValue: true,
+				} );
+			} );
+
+			childResizeObserverRef.current = childResizeObserver;
+			childMutationObserverRef.current = childMutationObserver;
+		},
+		[ disconnectChildObservers, scheduleRefresh ]
+	);
+
+	const disconnectActiveObservers = useCallback( () => {
+		activeObserversRef.current = false;
+
+		if ( targetResizeObserverRef.current ) {
+			if ( observedTargetRef.current ) {
+				targetResizeObserverRef.current.unobserve(
+					observedTargetRef.current
+				);
+			}
+			targetResizeObserverRef.current.disconnect();
+			targetResizeObserverRef.current = null;
+		}
+
+		if ( targetMutationObserverRef.current ) {
+			targetMutationObserverRef.current.disconnect();
+			targetMutationObserverRef.current = null;
+		}
+
+		disconnectChildObservers();
+		cancelScheduledRefresh();
+	}, [ cancelScheduledRefresh, disconnectChildObservers ] );
 
 	const disconnectObservers = useCallback( () => {
-		const target = observedTargetRef.current;
-
 		if ( intersectionObserverRef.current ) {
 			intersectionObserverRef.current.disconnect();
 			intersectionObserverRef.current = null;
 		}
 
-		if ( resizeObserverRef.current ) {
-			if ( target ) {
-				resizeObserverRef.current.unobserve( target );
-			}
-			resizeObserverRef.current.disconnect();
-			resizeObserverRef.current = null;
-		}
-
+		disconnectActiveObservers();
 		observedTargetRef.current = null;
-	}, [] );
+	}, [ disconnectActiveObservers ] );
 
-	const refreshTarget = useCallback( ( target ) => {
-		if ( target ) {
-			onResizeRef.current( target );
-		}
-	}, [] );
+	const activateObservers = useCallback(
+		( target ) => {
+			if ( activeObserversRef.current ) {
+				return;
+			}
+
+			const defaultView = target.ownerDocument?.defaultView;
+			if (
+				! defaultView?.ResizeObserver ||
+				! defaultView?.MutationObserver
+			) {
+				refreshTarget( target );
+				return;
+			}
+
+			activeObserversRef.current = true;
+
+			targetResizeObserverRef.current = new defaultView.ResizeObserver(
+				() => {
+					scheduleRefresh( target );
+				}
+			);
+			targetResizeObserverRef.current.observe( target );
+
+			targetMutationObserverRef.current =
+				new defaultView.MutationObserver( ( entries ) => {
+					let shouldRefresh = false;
+					let shouldSyncChildren = false;
+
+					entries.forEach( ( entry ) => {
+						if ( 'childList' === entry.type ) {
+							shouldRefresh = true;
+							shouldSyncChildren = true;
+							return;
+						}
+
+						if ( shouldRefreshForAttributeMutation( entry ) ) {
+							shouldRefresh = true;
+						}
+					} );
+
+					if ( shouldSyncChildren ) {
+						observeChildren( target );
+					}
+
+					if ( shouldRefresh ) {
+						scheduleRefresh( target );
+					}
+				} );
+			targetMutationObserverRef.current.observe( target, {
+				childList: true,
+				attributes: true,
+				attributeFilter: OBSERVED_LAYOUT_ATTRIBUTE_FILTER,
+				attributeOldValue: true,
+			} );
+
+			observeChildren( target );
+		},
+		[ observeChildren, refreshTarget, scheduleRefresh ]
+	);
 
 	useEffect( () => {
 		const node = ref.current;
@@ -577,19 +828,16 @@ export function useVisibleResizeObserver( onResize, deps = [] ) {
 		observedTargetRef.current = node;
 
 		const defaultView = node.ownerDocument?.defaultView;
-		if (
-			! defaultView?.IntersectionObserver ||
-			! defaultView?.ResizeObserver
-		) {
+		if ( ! defaultView ) {
 			refreshTarget( node );
 			return;
 		}
 
-		const resizeObserver = new defaultView.ResizeObserver(
-			debounce( ( [ entry ] ) => {
-				refreshTarget( entry?.target ?? observedTargetRef.current );
-			}, 250 )
-		);
+		if ( ! defaultView.IntersectionObserver ) {
+			activateObservers( node );
+			scheduleRefresh( node );
+			return;
+		}
 
 		const intersectionObserver = new defaultView.IntersectionObserver(
 			( [ entry ] ) => {
@@ -597,12 +845,12 @@ export function useVisibleResizeObserver( onResize, deps = [] ) {
 					return;
 				}
 
-				refreshTarget( entry.target );
+				scheduleRefresh( entry.target );
 
 				if ( entry.isIntersecting ) {
-					resizeObserver.observe( entry.target );
+					activateObservers( entry.target );
 				} else {
-					resizeObserver.unobserve( entry.target );
+					disconnectActiveObservers();
 				}
 			},
 			{
@@ -610,20 +858,9 @@ export function useVisibleResizeObserver( onResize, deps = [] ) {
 			}
 		);
 
-		resizeObserverRef.current = resizeObserver;
 		intersectionObserverRef.current = intersectionObserver;
 		intersectionObserver.observe( node );
-
-		return () => {
-			if ( observedTargetRef.current === node ) {
-				disconnectObservers();
-			}
-		};
-	}, [ disconnectObservers, refreshTarget, ref.current ] );
-
-	useEffect( () => {
-		refreshTarget( ref.current );
-	}, [ refreshTarget, ...deps ] );
+	} );
 
 	useEffect( () => {
 		return () => {

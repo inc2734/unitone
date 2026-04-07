@@ -22,7 +22,7 @@ import {
 	GridVisualizer,
 	normalizeForTextControl,
 	useToolsPanelDropdownMenuProps,
-	useVisibleResizeObserver,
+	useVisibleLayoutObserver,
 } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
@@ -43,13 +43,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 	const hasInnerBlocks = !! innerBlocksLength;
 
-	const ref = useVisibleResizeObserver(
-		( target ) => setStairsStep( target ),
-		[
-			innerBlocksLength,
-			attributes?.unitone?.stairsUp,
-			attributes?.unitone?.stairs,
-		]
+	const ref = useVisibleLayoutObserver( ( target ) =>
+		setStairsStep( target )
 	);
 
 	const blockProps = useBlockProps( {

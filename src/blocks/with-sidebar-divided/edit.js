@@ -26,7 +26,7 @@ import {
 	normalizeForTextControl,
 	normalizeForToggleControl,
 	useToolsPanelDropdownMenuProps,
-	useVisibleResizeObserver,
+	useVisibleLayoutObserver,
 } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
@@ -50,6 +50,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	useEffect( () => {
+		if ( ! blocks[ 0 ] || ! blocks[ 1 ] ) {
+			return;
+		}
+
 		if ( ! revert === ( 'left' === sidebar ) ) {
 			updateBlockAttributes( blocks[ 0 ], { type: 'aside' } );
 			updateBlockAttributes( blocks[ 1 ], { type: 'main' } );
@@ -57,11 +61,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			updateBlockAttributes( blocks[ 0 ], { type: 'main' } );
 			updateBlockAttributes( blocks[ 1 ], { type: 'aside' } );
 		}
-	}, [ sidebar, revert ] );
+	}, [ blocks, revert, sidebar, updateBlockAttributes ] );
 
-	const ref = useVisibleResizeObserver(
-		( target ) => setDividerLinewrap( target ),
-		[ attributes ]
+	const ref = useVisibleLayoutObserver( ( target ) =>
+		setDividerLinewrap( target )
 	);
 
 	const blockProps = useBlockProps( {

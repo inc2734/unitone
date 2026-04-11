@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-03-31T07:33:42+00:00\n"
-"PO-Revision-Date: 2026-03-31 16:34+0900\n"
+"POT-Creation-Date: 2026-04-11T01:16:16+00:00\n"
+"PO-Revision-Date: 2026-04-11 10:21+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css inc/block-categories.php:22 inc/block-categories.php:33
 #: inc/block-categories.php:44 inc/block-categories.php:55
-#: inc/block-styles.php:64 dist/formats/formats.js:1
+#: inc/block-styles.php:72 dist/formats/formats.js:1
 #: dist/js/editor/editor.js:16
 msgid "unitone"
 msgstr "unitone"
@@ -52,10 +52,10 @@ msgstr "テーマ"
 #: App/Controller/Manager/dist/js/app.js:9 dist/blocks/child-pages/index.js:1
 #: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/blocks/vertical-writing/index.js:1 dist/js/editor/editor.js:1
+#: dist/blocks/vertical-writing/index.js:1 dist/js/editor/202.js:1
+#: dist/js/editor/577.js:4 dist/js/editor/888.js:1 dist/js/editor/editor.js:1
 #: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
-#: dist/js/editor/editor.js:16 dist/js/editor/editor.js:26
-#: dist/js/editor/editor.js:29
+#: dist/js/editor/editor.js:22
 msgid "Default"
 msgstr "デフォルト"
 
@@ -176,7 +176,7 @@ msgstr "テンプレート"
 msgid "Others"
 msgstr "その他"
 
-#: inc/block-styles.php:16 inc/block-styles.php:56
+#: inc/block-styles.php:16 inc/block-styles.php:64
 msgid "Text"
 msgstr "テキスト"
 
@@ -185,38 +185,42 @@ msgid "underline"
 msgstr "アンダーライン"
 
 #: inc/block-styles.php:32
+msgid "1:1"
+msgstr "1:1"
+
+#: inc/block-styles.php:40
 msgid "No marker"
 msgstr "マーカーなし"
 
-#: inc/block-styles.php:40
+#: inc/block-styles.php:48
 msgid "Badge"
 msgstr "バッジ"
 
-#: inc/block-styles.php:48
+#: inc/block-styles.php:56
 msgid "Outline"
 msgstr "アウトライン"
 
-#: inc/block-styles.php:72
+#: inc/block-styles.php:80
 msgid "unitone (Accordion)"
 msgstr "unitone（アコーディオン）"
 
-#: inc/block-styles.php:80
+#: inc/block-styles.php:88
 msgid "Cover"
 msgstr "カバー"
 
-#: inc/block-styles.php:88 dist/js/editor/editor.js:4
+#: inc/block-styles.php:96 dist/js/editor/editor.js:4
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: inc/block-styles.php:96
+#: inc/block-styles.php:104
 msgid "Vertical fill"
 msgstr "縦塗りつぶし"
 
-#: inc/block-styles.php:104
+#: inc/block-styles.php:112
 msgid "Vertical line"
 msgstr "縦線"
 
-#: inc/block-styles.php:112 dist/js/editor/editor.js:4
+#: inc/block-styles.php:120 dist/js/editor/editor.js:4
 msgid "Bordered"
 msgstr "ボーダー"
 
@@ -1893,15 +1897,15 @@ msgstr "リンク色（:focus）"
 msgid "Typography"
 msgstr "タイポグラフィ"
 
-#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:26
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:22
 msgid "Font"
 msgstr "フォント"
 
-#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:26
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:22
 msgid "Base Font Size"
 msgstr "基本の文字サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:26
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:22
 msgid "Half Leading"
 msgstr "ハーフレディング"
 
@@ -1939,12 +1943,12 @@ msgid "Size"
 msgstr "サイズ"
 
 #: App/Controller/Manager/dist/js/app.js:7 dist/blocks/mega-menu/index.js:1
-#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:22
 msgid "Content Width"
 msgstr "コンテンツ幅"
 
 #: App/Controller/Manager/dist/js/app.js:7 dist/blocks/mega-menu/index.js:1
-#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:22
 msgid "Wide Width"
 msgstr "幅広"
 
@@ -2072,7 +2076,7 @@ msgstr "シンプル"
 msgid "Box"
 msgstr "ボックス"
 
-#: App/Controller/Manager/dist/js/app.js:9 dist/js/editor/editor.js:16
+#: App/Controller/Manager/dist/js/app.js:9 dist/js/editor/888.js:1
 msgid "OGP"
 msgstr "OGP"
 
@@ -2113,7 +2117,8 @@ msgid "The aspect ratio for featured images generated based on post title."
 msgstr "投稿タイトルに基づいて生成されるアイキャッチ画像のアスペクト比。"
 
 #: App/Controller/Manager/dist/js/app.js:9
-#: dist/blocks/abstract-background/index.js:1 dist/js/editor/editor.js:16
+#: dist/blocks/abstract-background/index.js:1 dist/js/editor/202.js:1
+#: dist/js/editor/888.js:1
 msgid "Background"
 msgstr "背景"
 
@@ -2189,7 +2194,8 @@ msgstr "アブストラクト背景"
 #: dist/blocks/frame/index.js:1 dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
 #: dist/blocks/marquee/index.js:1 dist/blocks/masonry/index.js:2
-#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/popover-content/index.js:1 dist/blocks/reel/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:13
@@ -2200,7 +2206,7 @@ msgstr "アブストラクト背景"
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
-#: dist/js/editor/editor.js:16
+#: dist/js/editor/202.js:1 dist/js/editor/888.js:1
 msgid "Settings"
 msgstr "設定"
 
@@ -2540,7 +2546,7 @@ msgid "Switch aspect ratio when portrait and mobile width."
 msgstr "ポートレートかつモバイル幅のときアスペクト比を切り替える。"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:16
+#: dist/js/editor/731.js:1 dist/js/editor/editor.js:1
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -2550,8 +2556,8 @@ msgid "Tablet / Mobile"
 msgstr "タブレット / モバイル"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/responsive-switcher-container/index.js:1
-#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:16
+#: dist/blocks/responsive-switcher-container/index.js:1 dist/js/editor/731.js:1
+#: dist/js/editor/editor.js:1
 msgid "Mobile"
 msgstr "モバイル"
 
@@ -2790,6 +2796,32 @@ msgstr ""
 msgid "Remove this placeholder"
 msgstr "このプレースホルダーを削除"
 
+#: dist/blocks/popover-content/index.js:1
+msgid "Placement"
+msgstr "配置"
+
+#: dist/blocks/popover-content/index.js:1 dist/js/editor/editor.js:13
+msgid "Top"
+msgstr "上"
+
+#: dist/blocks/popover-content/index.js:1
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:13
+msgid "Right"
+msgstr "右"
+
+#: dist/blocks/popover-content/index.js:1 dist/js/editor/editor.js:13
+msgid "Bottom"
+msgstr "下"
+
+#: dist/blocks/popover-content/index.js:1
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:13
+msgid "Left"
+msgstr "左"
+
 #: dist/blocks/reel/index.js:1
 msgid "Height"
 msgstr "高さ"
@@ -2958,7 +2990,8 @@ msgid "Progress bar"
 msgstr "プログレスバー"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:13
 msgid "None"
 msgstr "無し"
 
@@ -3369,18 +3402,6 @@ msgid "A column to be treated as secondary"
 msgstr "サブとして扱うカラム"
 
 #: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:13
-msgid "Right"
-msgstr "右"
-
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:13
-msgid "Left"
-msgstr "左"
-
-#: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:7
 msgid "Min width"
 msgstr "最小幅"
@@ -3506,6 +3527,164 @@ msgstr "リンクを適用"
 #: dist/formats/formats.js:2
 msgid "Media link"
 msgstr "メディアリンク"
+
+#: dist/js/editor/202.js:1 dist/js/editor/888.js:1
+msgid "Featured image generator settings"
+msgstr "アイキャッチ画像ジェネレーターの設定"
+
+#: dist/js/editor/202.js:1 dist/js/editor/888.js:1
+msgid "Generate featured image"
+msgstr "アイキャッチ画像を生成"
+
+#: dist/js/editor/202.js:1 dist/js/editor/888.js:1
+msgid "Aspect ratio"
+msgstr "アスペクト比"
+
+#: dist/js/editor/577.js:1
+msgid "Copied."
+msgstr "コピーしました。"
+
+#: dist/js/editor/577.js:1
+msgid "Text Generator"
+msgstr "テキストジェネレーター"
+
+#. translators: %1$s: <a>, %2$s: </a>
+#: dist/js/editor/577.js:4
+msgid ""
+"To use this feature, configure WordPress AI Connectors from the "
+"%1$sConnectors settings screen%2$s."
+msgstr ""
+
+#: dist/js/editor/577.js:4
+msgid "Prompt"
+msgstr "プロンプト"
+
+#: dist/js/editor/577.js:4
+msgid "Example: Generate customer testimonials for a web design agency."
+msgstr "例：web 制作会社向けのお客様の声を生成してください。"
+
+#: dist/js/editor/577.js:4
+msgid "Tone (optional)"
+msgstr "トーン（任意）"
+
+#: dist/js/editor/577.js:4
+msgid "Polite"
+msgstr "丁寧"
+
+#: dist/js/editor/577.js:4
+msgid "Casual"
+msgstr "カジュアル"
+
+#: dist/js/editor/577.js:4
+msgid "Formal"
+msgstr "フォーマル"
+
+#: dist/js/editor/577.js:4
+msgid "Friendly"
+msgstr "フレンドリー"
+
+#: dist/js/editor/577.js:4
+msgid "Logical"
+msgstr "ロジカル"
+
+#: dist/js/editor/577.js:4
+msgid "High energy"
+msgstr "熱量高め"
+
+#: dist/js/editor/577.js:4
+msgid "Please enter a prompt."
+msgstr "プロンプトを入力してください。"
+
+#: dist/js/editor/577.js:4
+msgid ""
+"[unitone] Starting with WordPress 7.0, the use of WordPress AI Connectors is "
+"recommended. This setup is scheduled to be rolled out, so please migrate to "
+"WordPress AI Connectors as soon as possible."
+msgstr ""
+
+#: dist/js/editor/577.js:4
+msgid "Failed to generate. Please try again."
+msgstr "生成に失敗しました。再度実行してください。"
+
+#: dist/js/editor/577.js:4
+msgid "Generate"
+msgstr "生成"
+
+#: dist/js/editor/577.js:4
+msgid "Results"
+msgstr "結果"
+
+#: dist/js/editor/577.js:4
+msgid "Copy"
+msgstr "コピー"
+
+#: dist/js/editor/577.js:4
+msgid "Copy all"
+msgstr "すべてコピー"
+
+#: dist/js/editor/731.js:1
+msgid "Wireframe Generator"
+msgstr "ワイヤーフレームジェネレーター"
+
+#: dist/js/editor/731.js:1
+msgid ""
+"Generates a wireframe using the unitone patterns. When inserted, images are "
+"replaced with dummy images."
+msgstr ""
+"unitoneのパターンを使ったワイヤーフレームを生成します。挿入すると画像はダミー"
+"画像に置き換わります。"
+
+#: dist/js/editor/731.js:1
+msgid "Now generating…"
+msgstr "生成しています…"
+
+#: dist/js/editor/731.js:1
+msgid "Generate for homepage"
+msgstr "ホームページ用を生成"
+
+#: dist/js/editor/731.js:1
+msgid "Generate for lower-level pages"
+msgstr "下層ページ用を生成"
+
+#: dist/js/editor/731.js:1
+msgid "Insert wireframe"
+msgstr "ワイヤーフレームを挿入"
+
+#: dist/js/editor/731.js:1
+msgid "Tablet"
+msgstr "タブレット"
+
+#. translators: %s: block pattern title.
+#: dist/js/editor/731.js:5
+msgid "Wireframe"
+msgstr "ワイヤーフレーム"
+
+#: dist/js/editor/888.js:1
+msgid "OGP image generator settings"
+msgstr "OGP 画像ジェネレーターの設定"
+
+#: dist/js/editor/888.js:1
+msgid "Could not retrieve the OGP image data."
+msgstr "OGP 画像データを取得できませんでした。"
+
+#: dist/js/editor/888.js:1
+msgid "Edit or replace the OGP image"
+msgstr "OGP 画像の編集または置換"
+
+#: dist/js/editor/888.js:1
+msgid "OGP image"
+msgstr "OGP 画像"
+
+#: dist/js/editor/888.js:1
+msgid "Generate OGP image"
+msgstr "OGP 画像を生成"
+
+#: dist/js/editor/888.js:1
+msgid ""
+"If no OGP image is set, the featured image will be used as the og:image."
+msgstr ""
+"OGP画像が設定されていない場合、アイキャッチ画像が og:image として使用されま"
+"す。"
 
 #: dist/js/editor/editor.js:1
 msgid "Margins at both ends"
@@ -3958,14 +4137,6 @@ msgid "Position"
 msgstr "位置"
 
 #: dist/js/editor/editor.js:13
-msgid "Top"
-msgstr "上"
-
-#: dist/js/editor/editor.js:13
-msgid "Bottom"
-msgstr "下"
-
-#: dist/js/editor/editor.js:13
 msgid "The stack level"
 msgstr "重ね合わせレベル"
 
@@ -4150,18 +4321,6 @@ msgid "Modify content only"
 msgstr "コンテンツのみの編集"
 
 #: dist/js/editor/editor.js:16
-msgid "Featured image generator settings"
-msgstr "アイキャッチ画像ジェネレーターの設定"
-
-#: dist/js/editor/editor.js:16
-msgid "Generate featured image"
-msgstr "アイキャッチ画像を生成"
-
-#: dist/js/editor/editor.js:16
-msgid "Aspect ratio"
-msgstr "アスペクト比"
-
-#: dist/js/editor/editor.js:16
 msgid "Select parent block"
 msgstr "親ブロックを選択"
 
@@ -4170,179 +4329,33 @@ msgid "Select child block"
 msgstr "子ブロックを選択"
 
 #: dist/js/editor/editor.js:16
-msgid "OGP image generator settings"
-msgstr "OGP 画像ジェネレーターの設定"
-
-#: dist/js/editor/editor.js:16
-msgid "Could not retrieve the OGP image data."
-msgstr "OGP 画像データを取得できませんでした。"
-
-#: dist/js/editor/editor.js:16
-msgid "Edit or replace the OGP image"
-msgstr "OGP 画像の編集または置換"
-
-#: dist/js/editor/editor.js:16
-msgid "OGP image"
-msgstr "OGP 画像"
-
-#: dist/js/editor/editor.js:16
-msgid "Generate OGP image"
-msgstr "OGP 画像を生成"
-
-#: dist/js/editor/editor.js:16
-msgid ""
-"If no OGP image is set, the featured image will be used as the og:image."
-msgstr ""
-"OGP画像が設定されていない場合、アイキャッチ画像が og:image として使用されま"
-"す。"
-
-#: dist/js/editor/editor.js:16
 msgid "Sync children's settings"
 msgstr "子ブロックの設定を同期"
 
-#: dist/js/editor/editor.js:16
-msgid "Wireframe Generator"
-msgstr "ワイヤーフレームジェネレーター"
-
-#: dist/js/editor/editor.js:16
-msgid ""
-"Generates a wireframe using the unitone patterns. When inserted, images are "
-"replaced with dummy images."
-msgstr ""
-"unitoneのパターンを使ったワイヤーフレームを生成します。挿入すると画像はダミー"
-"画像に置き換わります。"
-
-#: dist/js/editor/editor.js:16
-msgid "Now generating…"
-msgstr "生成しています…"
-
-#: dist/js/editor/editor.js:16
-msgid "Generate for homepage"
-msgstr "ホームページ用を生成"
-
-#: dist/js/editor/editor.js:16
-msgid "Generate for lower-level pages"
-msgstr "下層ページ用を生成"
-
-#: dist/js/editor/editor.js:16
-msgid "Insert wireframe"
-msgstr "ワイヤーフレームを挿入"
-
-#: dist/js/editor/editor.js:16
-msgid "Tablet"
-msgstr "タブレット"
-
-#. translators: %s: block pattern title.
-#: dist/js/editor/editor.js:20
-msgid "Wireframe"
-msgstr "ワイヤーフレーム"
-
 #. Translators: %d: The number of the blocks.
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:22
 msgid "Paste styles"
 msgstr "スタイルを貼り付け"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:22
 msgid "Reset"
 msgstr "リセット"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:22
 msgid "Override settings"
 msgstr "設定の上書き"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:22
 msgid "Accent color"
 msgstr "アクセントカラー"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:22
 msgid "Background color"
 msgstr "背景色"
 
-#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:22
 msgid "Text color"
 msgstr "文字色"
-
-#: dist/js/editor/editor.js:26
-msgid "Copied."
-msgstr "コピーしました。"
-
-#: dist/js/editor/editor.js:26
-msgid "Text Generator"
-msgstr "テキストジェネレーター"
-
-#. translators: %1$s: <a>, %2$s: </a>
-#: dist/js/editor/editor.js:29
-msgid ""
-"To use this feature, configure WordPress AI Connectors from the "
-"%1$sConnectors settings screen%2$s."
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Prompt"
-msgstr "プロンプト"
-
-#: dist/js/editor/editor.js:29
-msgid "Example: Generate customer testimonials for a web design agency."
-msgstr "例：web 制作会社向けのお客様の声を生成してください。"
-
-#: dist/js/editor/editor.js:29
-msgid "Tone (optional)"
-msgstr "トーン（任意）"
-
-#: dist/js/editor/editor.js:29
-msgid "Polite"
-msgstr "丁寧"
-
-#: dist/js/editor/editor.js:29
-msgid "Casual"
-msgstr "カジュアル"
-
-#: dist/js/editor/editor.js:29
-msgid "Formal"
-msgstr "フォーマル"
-
-#: dist/js/editor/editor.js:29
-msgid "Friendly"
-msgstr "フレンドリー"
-
-#: dist/js/editor/editor.js:29
-msgid "Logical"
-msgstr "ロジカル"
-
-#: dist/js/editor/editor.js:29
-msgid "High energy"
-msgstr "熱量高め"
-
-#: dist/js/editor/editor.js:29
-msgid "Please enter a prompt."
-msgstr "プロンプトを入力してください。"
-
-#: dist/js/editor/editor.js:29
-msgid ""
-"[unitone] Starting with WordPress 7.0, the use of WordPress AI Connectors is "
-"recommended. This setup is scheduled to be rolled out, so please migrate to "
-"WordPress AI Connectors as soon as possible."
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Failed to generate. Please try again."
-msgstr "生成に失敗しました。再度実行してください。"
-
-#: dist/js/editor/editor.js:29
-msgid "Generate"
-msgstr "生成"
-
-#: dist/js/editor/editor.js:29
-msgid "Results"
-msgstr "結果"
-
-#: dist/js/editor/editor.js:29
-msgid "Copy"
-msgstr "コピー"
-
-#: dist/js/editor/editor.js:29
-msgid "Copy all"
-msgstr "すべてコピー"
 
 #: dist/variations/variations.js:1
 msgid "Post to X"
@@ -5073,6 +5086,50 @@ msgctxt "block description"
 msgid ""
 "This block displays child blocks in a continuous horizontal scrolling format."
 msgstr "このブロックは子ブロックを連続した水平スクロールの形式で表示します。"
+
+#: dist/blocks/popover-content/block.json
+msgctxt "block title"
+msgid "Popover content"
+msgstr "ポップオーバーコンテンツ"
+
+#: dist/blocks/popover-content/block.json
+msgctxt "block description"
+msgid "This block places the popover content."
+msgstr "ポップオーバーのコンテンツを表示します。"
+
+#: dist/blocks/popover-dialog/block.json
+msgctxt "block title"
+msgid "Popover dialog"
+msgstr "ポップオーバーダイアログ"
+
+#: dist/blocks/popover-dialog/block.json
+msgctxt "block description"
+msgid "This block displays the popover dialog."
+msgstr "ポップオーバーダイアログを表示します。"
+
+#: dist/blocks/popover-trigger/block.json
+msgctxt "block title"
+msgid "Popover trigger"
+msgstr "ポップオーバートリガー"
+
+#: dist/blocks/popover-trigger/block.json
+msgctxt "block description"
+msgid "This block is used to place the block that triggers the popover."
+msgstr "ポップオーバーをトリガーするブロックを配置するために使用します。"
+
+#: dist/blocks/popover/block.json
+msgctxt "block title"
+msgid "Popover"
+msgstr "ポップオーバー"
+
+#: dist/blocks/popover/block.json
+msgctxt "block description"
+msgid ""
+"Displays floating content anchored to the trigger using Anchor Positioning "
+"and the Popover API."
+msgstr ""
+"Anchor Positioning と Popover API を使用してトリガーに紐付けられたフローティ"
+"ングコンテンツを表示します。"
 
 #: dist/blocks/responsive-image/block.json
 msgctxt "block title"

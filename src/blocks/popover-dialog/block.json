@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "26.0.0",
+	"textdomain": "unitone",
+	"name": "unitone/popover-dialog",
+	"title": "Popover dialog",
+	"description": "This block displays the popover dialog.",
+	"attributes": {
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": "[data-unitone-layout~=popover-dialog]"
+	},
+	"parent": [ "unitone/popover-content" ],
+	"supports": {
+		"className": false,
+		"customCSS": false,
+		"color": {
+			"background": true,
+			"gradients": true,
+			"link": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"allowedBlocks": true,
+		"contentRole": true
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

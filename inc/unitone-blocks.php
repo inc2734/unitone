@@ -41,6 +41,10 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/slider' );
 	register_block_type( get_template_directory() . '/dist/blocks/gutters' );
 	register_block_type( get_template_directory() . '/dist/blocks/pattern-inserter' );
+	register_block_type( get_template_directory() . '/dist/blocks/popover' );
+	register_block_type( get_template_directory() . '/dist/blocks/popover-content' );
+	register_block_type( get_template_directory() . '/dist/blocks/popover-dialog' );
+	register_block_type( get_template_directory() . '/dist/blocks/popover-trigger' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack-divided' );
 	register_block_type( get_template_directory() . '/dist/blocks/stack-divided-content' );
@@ -116,6 +120,117 @@ add_filter(
 	10,
 	2
 );
+
+/**
+ * Converts the first anchor in popover trigger markup into a button.
+ *
+ * @param string $block_content The rendered block content.
+ * @return string
+ */
+function unitone_convert_popover_trigger_anchor_to_button( $block_content ) {
+	if ( ! $block_content || false === stripos( $block_content, '<a' ) ) {
+		return $block_content;
+	}
+
+	$updated_block_content = preg_replace_callback(
+		'/<a\b([^>]*)>/i',
+		function ( $matches ) {
+			$attributes = $matches[1];
+			$attributes = preg_replace(
+				'/\s(?:href|target|rel|download)=(["\']).*?\1/i',
+				'',
+				$attributes
+			);
+			$attributes = preg_replace(
+				'/\s(?:href|target|rel|download)=[^\s>]+/i',
+				'',
+				$attributes
+			);
+
+			if ( ! preg_match( '/\stype=(["\']).*?\1/i', $attributes ) ) {
+				$attributes .= ' type="button"';
+			}
+
+			return '<button' . $attributes . '>';
+		},
+		$block_content,
+		1
+	);
+
+	if ( ! is_string( $updated_block_content ) ) {
+		return $block_content;
+	}
+
+	$updated_block_content = preg_replace(
+		'/<\/a>/i',
+		'</button>',
+		$updated_block_content,
+		1
+	);
+
+	return is_string( $updated_block_content )
+		? $updated_block_content
+		: $block_content;
+}
+add_filter( 'render_block_unitone/popover-trigger', 'unitone_convert_popover_trigger_anchor_to_button', 10, 1 );
+
+/**
+ * Applies popover target attributes to the first trigger button in popover.
+ *
+ * @param string $block_content The rendered block content.
+ * @return string
+ */
+function unitone_apply_popover_trigger_attributes( $block_content ) {
+	if ( ! $block_content ) {
+		return $block_content;
+	}
+
+	$popover_content_id = null;
+
+	$p = new \WP_HTML_Tag_Processor( $block_content );
+
+	while ( $p->next_tag() ) {
+		$layout = $p->get_attribute( 'data-unitone-layout' );
+
+		if ( ! is_string( $layout ) || false === strpos( $layout, 'popover-content' ) ) {
+			continue;
+		}
+
+		$popover_content_id = $p->get_attribute( 'id' );
+		if ( ! is_string( $popover_content_id ) || '' === $popover_content_id ) {
+			$popover_content_id = wp_unique_id( 'unitone-popover-' );
+			$p->set_attribute( 'id', $popover_content_id );
+		}
+		break;
+	}
+
+	if ( ! $popover_content_id ) {
+		return $block_content;
+	}
+
+	$block_content = $p->get_updated_html();
+	$p             = new \WP_HTML_Tag_Processor( $block_content );
+
+	while ( $p->next_tag() ) {
+		$tag_name = $p->get_tag();
+
+		if ( 'BUTTON' !== $tag_name && 'INPUT' !== $tag_name ) {
+			continue;
+		}
+
+		$p->set_attribute( 'popovertarget', $popover_content_id );
+		$p->set_attribute( 'aria-controls', $popover_content_id );
+
+		if ( 'BUTTON' === $tag_name && ! $p->get_attribute( 'type' ) ) {
+			$p->set_attribute( 'type', 'button' );
+		}
+
+		break;
+	}
+
+	return $p->get_updated_html();
+}
+add_filter( 'render_block_unitone/popover', 'unitone_apply_popover_trigger_attributes' );
 
 /**
  * Add styles with breakpoints fto unitoone/grid.

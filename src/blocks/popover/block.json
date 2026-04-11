@@ -1,0 +1,64 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "26.0.0",
+	"textdomain": "unitone",
+	"name": "unitone/popover",
+	"title": "Popover",
+	"description": "Displays floating content anchored to the trigger using Anchor Positioning and the Popover API.",
+	"attributes": {
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": "[data-unitone-layout~=popover]"
+	},
+	"allowedBlocks": [ "unitone/popover-trigger", "unitone/popover-content" ],
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"customCSS": false,
+		"unitone": {
+			"gap": true
+		}
+	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "unitone/popover-trigger",
+				"innerBlocks": [
+					{
+						"name": "core/buttons",
+						"innerBlocks": [
+							{
+								"name": "core/button"
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "unitone/popover-content",
+				"innerBlocks": [
+					{
+						"name": "unitone/popover-dialog",
+						"innerBlocks": [
+							{
+								"name": "core/paragraph",
+								"attributes": {
+									"content": "Popover content."
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}

@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "26.0.0",
+	"textdomain": "unitone",
+	"name": "unitone/popover-content",
+	"title": "Popover content",
+	"description": "This block places the popover content.",
+	"attributes": {
+		"placement": {
+			"type": "string",
+			"default": "bottom",
+			"enum": [ "top", "right", "bottom", "left" ]
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": "[data-unitone-layout~=popover-content]"
+	},
+	"parent": [ "unitone/popover" ],
+	"supports": {
+		"inserter": false,
+		"className": false,
+		"anchor": true,
+		"customCSS": false,
+		"allowedBlocks": true
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

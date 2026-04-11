@@ -29,3 +29,19 @@
 		border-bottom: 1px solid currentColor;
 	}
 }
+
+:root :where(.wp-block-button.is-style-1-1) {
+	--unitone--border-radius: 100%;
+	--unitone--padding: 0px;
+
+	display: inline-flex !important;
+
+	.wp-block-button__link {
+		box-sizing: content-box;
+		aspect-ratio: 1 / 1;
+		place-items: center;
+		min-width: 1lh;
+		min-height: 1lh;
+		padding: calc(var(--unitone--padding) / 10);
+	}
+}

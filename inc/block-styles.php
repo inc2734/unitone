@@ -26,6 +26,14 @@ function unitone_register_block_styles() {
 	);
 
 	register_block_style(
+		'core/button',
+		array(
+			'name'  => '1-1',
+			'label' => __( '1:1', 'unitone' ),
+		)
+	);
+
+	register_block_style(
 		'core/list',
 		array(
 			'name'  => 'no-marker',

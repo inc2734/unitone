@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-11T01:16:16+00:00\n"
+"POT-Creation-Date: 2026-04-13T01:00:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2189,6 +2189,7 @@ msgstr ""
 #: dist/blocks/cluster/index.js:1
 #: dist/blocks/cover-content/index.js:1
 #: dist/blocks/decorator/index.js:1
+#: dist/blocks/dialog-content/index.js:1
 #: dist/blocks/flex-divided/index.js:1
 #: dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1
@@ -2515,6 +2516,30 @@ msgstr ""
 
 #: dist/blocks/cover/index.js:1
 msgid "Cover (Top / Center / Bottom)"
+msgstr ""
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "Closed by"
+msgstr ""
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "any"
+msgstr ""
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "closerequest"
+msgstr ""
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "none"
+msgstr ""
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "Open dialog"
+msgstr ""
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "Close dialog"
 msgstr ""
 
 #: dist/blocks/flex-divided/index.js:1
@@ -5067,6 +5092,36 @@ msgstr ""
 #: dist/blocks/with-sidebar/block.json
 msgctxt "block title"
 msgid "With sidebar"
+msgstr ""
+
+#: dist/blocks/dialog-content/block.json
+msgctxt "block title"
+msgid "Dialog content"
+msgstr ""
+
+#: dist/blocks/dialog-content/block.json
+msgctxt "block description"
+msgid "This block places the dialog content."
+msgstr ""
+
+#: dist/blocks/dialog-trigger/block.json
+msgctxt "block title"
+msgid "Dialog trigger"
+msgstr ""
+
+#: dist/blocks/dialog-trigger/block.json
+msgctxt "block description"
+msgid "This block is used to place the block that triggers the dialog."
+msgstr ""
+
+#: dist/blocks/dialog/block.json
+msgctxt "block title"
+msgid "Dialog"
+msgstr ""
+
+#: dist/blocks/dialog/block.json
+msgctxt "block description"
+msgid "Displays modal content using the dialog element."
 msgstr ""
 
 #: dist/blocks/marquee/block.json

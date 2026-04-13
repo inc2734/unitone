@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "26.0.0",
+	"textdomain": "unitone",
+	"name": "unitone/dialog-trigger",
+	"title": "Dialog trigger",
+	"description": "This block is used to place the block that triggers the dialog.",
+	"attributes": {
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": "[data-unitone-layout~=dialog-trigger]"
+	},
+	"parent": [ "unitone/dialog" ],
+	"allowedBlocks": [ "core/buttons" ],
+	"supports": {
+		"inserter": false,
+		"className": false,
+		"customCSS": false
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js"
+}

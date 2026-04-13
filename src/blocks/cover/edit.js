@@ -8,7 +8,11 @@ import {
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
 
-import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
+import {
+	createBlocksFromInnerBlocksTemplate,
+	store as blocksStore,
+} from '@wordpress/blocks';
+
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useEffect, useMemo } from '@wordpress/element';
 
@@ -69,7 +73,7 @@ function Placeholder( { clientId, name, setAttributes } ) {
 				getBlockVariations,
 				getBlockType,
 				getDefaultBlockVariation,
-			} = select( 'core/blocks' );
+			} = select( blocksStore );
 
 			return {
 				blockType: getBlockType( name ),

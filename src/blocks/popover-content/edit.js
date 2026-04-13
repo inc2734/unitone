@@ -27,6 +27,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { EditorPopover } from '../components';
+
 import {
 	normalizeForToggleGroupControl,
 	useToolsPanelDropdownMenuProps,
@@ -79,57 +80,36 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId, parentClientId ]
 	);
 
-	useEffect( () => {
+	const getTriggerElement = useCallback( () => {
 		const element = ref.current;
-		if ( ! element ) {
-			return;
+		if ( ! element?.parentNode ) {
+			return null;
 		}
 
-		const ownerDocument = element?.ownerDocument;
-		if ( ! ownerDocument ) {
-			return;
-		}
-
-		const trigger = element.parentNode.querySelector(
+		return element.parentNode.querySelector(
 			':scope > [data-unitone-layout~="popover-trigger"] .wp-block-button'
 		);
-		if ( ! trigger ) {
+	}, [] );
+
+	useEffect( () => {
+		const trigger = getTriggerElement();
+		if ( triggerElement === trigger ) {
+			return;
+		}
+
+		if ( triggerElement?.isConnected && trigger ) {
 			return;
 		}
 
 		setTriggerElement( trigger );
-
-		return () => {
-			setTriggerElement( ( currentTriggerElement ) => {
-				return currentTriggerElement === trigger
-					? null
-					: currentTriggerElement;
-			} );
-		};
-	}, [ clientId ] );
-
-	useEffect( () => {
-		const element = ref.current;
-		if ( ! element || triggerElement?.isConnected ) {
-			return;
-		}
-
-		const trigger = element.parentNode.querySelector(
-			':scope > [data-unitone-layout~="popover-trigger"] .wp-block-button'
-		);
-		if ( trigger ) {
-			setTriggerElement( trigger );
-		} else {
-			setTriggerElement( null );
-		}
-	}, [ triggerElement ] );
+	}, [ clientId, getTriggerElement, triggerElement ] );
 
 	const renderAppender = useCallback(
 		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps( { ref } );
+	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'popover-content',
 		blockProps[ 'data-unitone-layout' ],
@@ -138,16 +118,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		}
 	);
 
-	const innerBlocksProps = useInnerBlocksProps(
-		{
-			className: 'unitone-popover-content__editor',
-		},
-		{
-			templateLock,
-			prioritizedInserterBlocks: [ 'unitone/popover-dialog' ],
-			renderAppender: hasInnerBlocks ? undefined : renderAppender,
-		}
-	);
+	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+		templateLock,
+		prioritizedInserterBlocks: [ 'unitone/popover-dialog' ],
+		renderAppender: hasInnerBlocks ? undefined : renderAppender,
+	} );
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
@@ -208,17 +183,17 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<div { ...blockProps }>
-				{ hasSelection && !! triggerElement && (
-					<EditorPopover
-						anchor={ triggerElement }
-						placement={ placement }
-						offset={ 8 }
-					>
-						<div { ...innerBlocksProps } />
-					</EditorPopover>
-				) }
-			</div>
+			<div ref={ ref } style={ { visibility: 'hidden' } }></div>
+
+			{ hasSelection && !! triggerElement && (
+				<EditorPopover
+					anchor={ triggerElement }
+					placement={ placement }
+					offset={ 8 }
+				>
+					<div { ...innerBlocksProps } />
+				</EditorPopover>
+			) }
 		</>
 	);
 }

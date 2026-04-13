@@ -20,6 +20,9 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/cover' );
 	register_block_type( get_template_directory() . '/dist/blocks/cover-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/decorator' );
+	register_block_type( get_template_directory() . '/dist/blocks/dialog' );
+	register_block_type( get_template_directory() . '/dist/blocks/dialog-content' );
+	register_block_type( get_template_directory() . '/dist/blocks/dialog-trigger' );
 	register_block_type( get_template_directory() . '/dist/blocks/div' );
 	register_block_type( get_template_directory() . '/dist/blocks/flex' );
 	register_block_type( get_template_directory() . '/dist/blocks/flex-divided' );
@@ -175,6 +178,17 @@ function unitone_convert_popover_trigger_anchor_to_button( $block_content ) {
 add_filter( 'render_block_unitone/popover-trigger', 'unitone_convert_popover_trigger_anchor_to_button', 10, 1 );
 
 /**
+ * Converts the first anchor in dialog trigger markup into a button.
+ *
+ * @param string $block_content The rendered block content.
+ * @return string
+ */
+function unitone_convert_dialog_trigger_anchor_to_button( $block_content ) {
+	return unitone_convert_popover_trigger_anchor_to_button( $block_content );
+}
+add_filter( 'render_block_unitone/dialog-trigger', 'unitone_convert_dialog_trigger_anchor_to_button', 10, 1 );
+
+/**
  * Applies popover target attributes to the first trigger button in popover.
  *
  * @param string $block_content The rendered block content.
@@ -231,6 +245,65 @@ function unitone_apply_popover_trigger_attributes( $block_content ) {
 	return $p->get_updated_html();
 }
 add_filter( 'render_block_unitone/popover', 'unitone_apply_popover_trigger_attributes' );
+
+/**
+ * Applies dialog target attributes to the first trigger button in dialog.
+ *
+ * @param string $block_content The rendered block content.
+ * @return string
+ */
+function unitone_apply_dialog_trigger_attributes( $block_content ) {
+	if ( ! $block_content ) {
+		return $block_content;
+	}
+
+	$dialog_content_id = null;
+
+	$p = new \WP_HTML_Tag_Processor( $block_content );
+
+	while ( $p->next_tag() ) {
+		$layout = $p->get_attribute( 'data-unitone-layout' );
+
+		if ( ! is_string( $layout ) || false === strpos( $layout, 'dialog-content' ) ) {
+			continue;
+		}
+
+		$dialog_content_id = $p->get_attribute( 'id' );
+		if ( ! is_string( $dialog_content_id ) || '' === $dialog_content_id ) {
+			$dialog_content_id = wp_unique_id( 'unitone-dialog-' );
+			$p->set_attribute( 'id', $dialog_content_id );
+		}
+		break;
+	}
+
+	if ( ! $dialog_content_id ) {
+		return $block_content;
+	}
+
+	$block_content = $p->get_updated_html();
+	$p             = new \WP_HTML_Tag_Processor( $block_content );
+
+	while ( $p->next_tag() ) {
+		$tag_name = $p->get_tag();
+
+		if ( 'BUTTON' !== $tag_name && 'INPUT' !== $tag_name ) {
+			continue;
+		}
+
+		$p->set_attribute( 'commandfor', $dialog_content_id );
+		$p->set_attribute( 'command', 'show-modal' );
+		$p->set_attribute( 'aria-controls', $dialog_content_id );
+
+		if ( 'BUTTON' === $tag_name && ! $p->get_attribute( 'type' ) ) {
+			$p->set_attribute( 'type', 'button' );
+		}
+
+		break;
+	}
+
+	return $p->get_updated_html();
+}
+add_filter( 'render_block_unitone/dialog', 'unitone_apply_dialog_trigger_attributes' );
 
 /**
  * Add styles with breakpoints fto unitoone/grid.

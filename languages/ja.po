@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-04-11T01:16:16+00:00\n"
-"PO-Revision-Date: 2026-04-11 10:21+0900\n"
+"POT-Creation-Date: 2026-04-13T01:00:05+00:00\n"
+"PO-Revision-Date: 2026-04-13 10:02+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2190,12 +2190,12 @@ msgstr "アブストラクト背景"
 #: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/cluster/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
-#: dist/blocks/frame/index.js:1 dist/blocks/grid-divided/index.js:1
-#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
-#: dist/blocks/marquee/index.js:1 dist/blocks/masonry/index.js:2
-#: dist/blocks/popover-content/index.js:1 dist/blocks/reel/index.js:1
-#: dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/dialog-content/index.js:1 dist/blocks/flex-divided/index.js:1
+#: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/layers/index.js:25 dist/blocks/marquee/index.js:1
+#: dist/blocks/masonry/index.js:2 dist/blocks/popover-content/index.js:1
+#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:13
@@ -2492,6 +2492,30 @@ msgstr "カバー（中央 / 下部）"
 #: dist/blocks/cover/index.js:1
 msgid "Cover (Top / Center / Bottom)"
 msgstr "カバー（上部 / 中央 / 下部）"
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "Closed by"
+msgstr "Closed by"
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "any"
+msgstr "any"
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "closerequest"
+msgstr "closerequest"
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "none"
+msgstr "none"
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "Open dialog"
+msgstr "ダイアログを開く"
+
+#: dist/blocks/dialog-content/index.js:1
+msgid "Close dialog"
+msgstr "ダイアログを閉じる"
 
 #: dist/blocks/flex-divided/index.js:1
 msgid "Flex (Divider: Stripe)"
@@ -5075,6 +5099,36 @@ msgstr "サイドバー付きのコンポーネントを組み立てます。"
 msgctxt "block title"
 msgid "With sidebar"
 msgstr "サイドバー"
+
+#: dist/blocks/dialog-content/block.json
+msgctxt "block title"
+msgid "Dialog content"
+msgstr "ダイアログコンテンツ"
+
+#: dist/blocks/dialog-content/block.json
+msgctxt "block description"
+msgid "This block places the dialog content."
+msgstr "ダイアログのコンテンツを表示します。"
+
+#: dist/blocks/dialog-trigger/block.json
+msgctxt "block title"
+msgid "Dialog trigger"
+msgstr "ダイアログトリガー"
+
+#: dist/blocks/dialog-trigger/block.json
+msgctxt "block description"
+msgid "This block is used to place the block that triggers the dialog."
+msgstr "ダイアログをトリガーするブロックを配置するために使用します。"
+
+#: dist/blocks/dialog/block.json
+msgctxt "block title"
+msgid "Dialog"
+msgstr "ダイアログ"
+
+#: dist/blocks/dialog/block.json
+msgctxt "block description"
+msgid "Displays modal content using the dialog element."
+msgstr "dialog 要素を使用してモーダルコンテンツを表示します。"
 
 #: dist/blocks/marquee/block.json
 msgctxt "block title"

@@ -2,19 +2,12 @@ import clsx from 'clsx';
 
 import {
 	ButtonBlockAppender,
-	InspectorControls,
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
-import {
-	Button,
-	SelectControl,
-	Popover,
-	__experimentalToolsPanel as ToolsPanel,
-	__experimentalToolsPanelItem as ToolsPanelItem,
-} from '@wordpress/components';
+import { Button, Popover } from '@wordpress/components';
 
 import {
 	memo,
@@ -28,13 +21,6 @@ import { useMergeRefs } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import {
-	normalizeForSelectControl,
-	useToolsPanelDropdownMenuProps,
-} from '../../js/editor/hooks/utils';
-
-import metadata from './block.json';
-
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 const TEMPLATE = [
@@ -44,14 +30,17 @@ const TEMPLATE = [
 			backgroundColor: 'unitone-background',
 			textColor: 'unitone-text',
 			unitone: {
+				maxWidth: 'var(--wp--style--global--content-size)',
+				maxHeight: '80vh',
 				padding: '1s',
+				overflow: 'auto',
 			},
 		},
 	],
 ];
 
-export default function ( { attributes, setAttributes, clientId } ) {
-	const { closedBy, templateLock } = attributes;
+export default function ( { attributes, clientId } ) {
+	const { templateLock } = attributes;
 	const [ isOpen, setIsOpen ] = useState( false );
 	const [ triggerElement, setTriggerElement ] = useState( null );
 
@@ -153,7 +142,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const blockProps = useBlockProps( {
 		ref: useMergeRefs( [ setPopoverAnchor, ref ] ),
-		closedby: closedBy,
 		onClose: () => setIsOpen( false ),
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
@@ -167,59 +155,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		renderAppender: hasInnerBlocks ? undefined : renderAppender,
 	} );
 
-	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
-
 	return (
 		<>
-			<InspectorControls>
-				<ToolsPanel
-					label={ __( 'Settings', 'unitone' ) }
-					dropdownMenuProps={ dropdownMenuProps }
-				>
-					<ToolsPanelItem
-						hasValue={ () =>
-							closedBy !== metadata.attributes.closedBy.default
-						}
-						isShownByDefault
-						label={ __( 'Closed by', 'unitone' ) }
-						onDeselect={ () =>
-							setAttributes( {
-								closedBy: metadata.attributes.closedBy.default,
-							} )
-						}
-					>
-						<SelectControl
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
-							label={ __( 'Closed by', 'unitone' ) }
-							options={ [
-								{
-									label: __( 'any', 'unitone' ),
-									value: 'any',
-								},
-								{
-									label: __( 'closerequest', 'unitone' ),
-									value: 'closerequest',
-								},
-								{
-									label: __( 'none', 'unitone' ),
-									value: 'none',
-								},
-							] }
-							value={ normalizeForSelectControl( closedBy ) }
-							onChange={ ( newAttribute ) =>
-								setAttributes( {
-									closedBy:
-										normalizeForSelectControl(
-											newAttribute
-										),
-								} )
-							}
-						/>
-					</ToolsPanelItem>
-				</ToolsPanel>
-			</InspectorControls>
-
 			{ hasTriggerSelection && !! triggerElement && (
 				<Popover
 					anchor={ triggerElement }
@@ -227,6 +164,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					offset={ 8 }
 					variant="toolbar"
 					focusOnMount={ false }
+					style={ { zIndex: 10000 } }
 				>
 					<Button
 						variant="tertiary"
@@ -252,6 +190,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					offset={ 8 }
 					variant="toolbar"
 					focusOnMount={ false }
+					style={ { zIndex: 10000 } }
 				>
 					<Button
 						variant="tertiary"

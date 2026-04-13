@@ -20,7 +20,8 @@
 	"supports": {
 		"inserter": false,
 		"className": false,
-		"customCSS": false
+		"customCSS": false,
+		"lock": false
 	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js"

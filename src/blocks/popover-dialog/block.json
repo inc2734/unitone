@@ -37,6 +37,11 @@
 				"fontSize": true
 			}
 		},
+		"shadow": {
+			"__experimentalDefaultControls": {
+				"shadow": true
+			}
+		},
 		"allowedBlocks": true,
 		"contentRole": true
 	},

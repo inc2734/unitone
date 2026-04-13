@@ -1,5 +1,7 @@
 [data-unitone-layout~="popover-content"] {
-	.block-editor-inserter {
-		background-color: white;
+	> .block-list-appender {
+		&:has(> :not(.block-editor-default-block-appender)) {
+			background-color: white;
+		}
 	}
 }

@@ -7,11 +7,6 @@
 	"title": "Dialog content",
 	"description": "This block places the dialog content.",
 	"attributes": {
-		"closedBy": {
-			"type": "string",
-			"default": "any",
-			"enum": [ "any", "closerequest", "none" ]
-		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
@@ -26,30 +21,8 @@
 		"className": false,
 		"anchor": true,
 		"customCSS": false,
-		"color": {
-			"background": true,
-			"gradients": true,
-			"link": true,
-			"text": true
-		},
-		"typography": {
-			"fontSize": true,
-			"__experimentalFontFamily": true,
-			"__experimentalTextDecoration": true,
-			"__experimentalFontStyle": true,
-			"__experimentalFontWeight": true,
-			"__experimentalLetterSpacing": true,
-			"__experimentalTextTransform": true,
-			"__experimentalDefaultControls": {
-				"fontSize": true
-			}
-		},
 		"allowedBlocks": true,
-		"contentRole": true,
-		"unitone": {
-			"maxHeight": true,
-			"maxWidth": true
-		}
+		"lock": false
 	},
 	"category": "unitone/layout",
 	"editorScript": "file:./index.js"

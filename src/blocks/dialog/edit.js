@@ -34,7 +34,10 @@ const TEMPLATE = [
 					backgroundColor: 'unitone-background',
 					textColor: 'unitone-text',
 					unitone: {
+						maxWidth: 'var(--wp--style--global--content-size)',
+						maxHeight: '80vh',
 						padding: '1s',
+						overflow: 'auto',
 					},
 				},
 			],

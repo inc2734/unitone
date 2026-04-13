@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-04-13T01:00:05+00:00\n"
-"PO-Revision-Date: 2026-04-13 10:02+0900\n"
+"POT-Creation-Date: 2026-04-13T06:43:35+00:00\n"
+"PO-Revision-Date: 2026-04-13 15:46+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2190,12 +2190,12 @@ msgstr "アブストラクト背景"
 #: dist/blocks/center/index.js:1 dist/blocks/child-pages/index.js:1
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/cluster/index.js:1
 #: dist/blocks/cover-content/index.js:1 dist/blocks/decorator/index.js:1
-#: dist/blocks/dialog-content/index.js:1 dist/blocks/flex-divided/index.js:1
-#: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:25 dist/blocks/marquee/index.js:1
-#: dist/blocks/masonry/index.js:2 dist/blocks/popover-content/index.js:1
-#: dist/blocks/reel/index.js:1 dist/blocks/responsive-grid-divided/index.js:1
+#: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
+#: dist/blocks/frame/index.js:1 dist/blocks/grid-divided/index.js:1
+#: dist/blocks/grid/index.js:1 dist/blocks/layers/index.js:25
+#: dist/blocks/marquee/index.js:1 dist/blocks/masonry/index.js:2
+#: dist/blocks/popover-content/index.js:1 dist/blocks/reel/index.js:1
+#: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:13
@@ -2492,22 +2492,6 @@ msgstr "カバー（中央 / 下部）"
 #: dist/blocks/cover/index.js:1
 msgid "Cover (Top / Center / Bottom)"
 msgstr "カバー（上部 / 中央 / 下部）"
-
-#: dist/blocks/dialog-content/index.js:1
-msgid "Closed by"
-msgstr "Closed by"
-
-#: dist/blocks/dialog-content/index.js:1
-msgid "any"
-msgstr "any"
-
-#: dist/blocks/dialog-content/index.js:1
-msgid "closerequest"
-msgstr "closerequest"
-
-#: dist/blocks/dialog-content/index.js:1
-msgid "none"
-msgstr "none"
 
 #: dist/blocks/dialog-content/index.js:1
 msgid "Open dialog"
@@ -5915,18 +5899,3 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
-
-#~ msgid "OpenAI"
-#~ msgstr "OpenAI"
-
-#~ msgid "(Mobile: S)"
-#~ msgstr "（モバイル時：S）"
-
-#~ msgid "(Mobile: M)"
-#~ msgstr "（モバイル時：M）"
-
-#~ msgid "Arrows icon color"
-#~ msgstr "矢印のアイコンの色"
-
-#~ msgid "Arrows icon size"
-#~ msgstr "矢印のアイコンのサイズ"

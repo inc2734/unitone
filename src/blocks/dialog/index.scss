@@ -1,5 +1,43 @@
 [data-unitone-layout~="dialog-content"] {
-	.block-editor-inserter {
-		background-color: white;
+	&::after {
+		display: none !important;
+	}
+
+	> .block-list-appender {
+		position: sticky;
+
+		&:has(> :not(.block-editor-default-block-appender)) {
+			background-color: white;
+		}
+
+		&:has(.block-editor-default-block-appender) {
+			.block-editor-default-block-appender {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+		}
+	}
+
+	> [data-unitone-layout~="decorator"] {
+		> .block-list-appender {
+			position: sticky;
+
+			&:has(> :not(.block-editor-default-block-appender)) {
+				background-color: white;
+			}
+
+			&:has(.block-editor-default-block-appender) {
+				.block-editor-default-block-appender {
+					position: absolute;
+					right: calc(-1 * var(--unitone--padding-right));
+					bottom: calc(-1 * var(--unitone--padding-bottom));
+				}
+			}
+		}
+
+		&::after {
+			display: none !important;
+		}
 	}
 }

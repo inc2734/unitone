@@ -218,7 +218,7 @@ export default function ( { attributes, setAttributes } ) {
 				( parsedValue * originalHeight ) / originalWidth
 			);
 		} else {
-			nextWidth = undefined;
+			nextWidth = parsedValue;
 			nextHeight = undefined;
 		}
 

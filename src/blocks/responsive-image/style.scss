@@ -10,6 +10,14 @@
 		height: auto;
 		vertical-align: bottom;
 	}
+
+	&:is(.alignfull, .alignwide) img {
+		width: 100%;
+	}
+}
+
+:where(.unitone-responsive-image:not(:has(.components-placeholder))) {
+	width: fit-content;
 }
 
 :where(.is-layout-constrained) {

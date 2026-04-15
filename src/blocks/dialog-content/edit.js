@@ -7,9 +7,8 @@ import {
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
-import { Button, Popover } from '@wordpress/components';
-
 import {
+	createPortal,
 	memo,
 	useCallback,
 	useEffect,
@@ -17,6 +16,7 @@ import {
 	useState,
 } from '@wordpress/element';
 
+import { Button, Popover } from '@wordpress/components';
 import { useMergeRefs } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
@@ -73,13 +73,20 @@ export default function ( { attributes, clientId, context } ) {
 	const dialogVariation = context[ 'unitone/dialog/variation' ] || '';
 
 	const [ isOpen, setIsOpen ] = useState( false );
+	const [ portalContainer, setPortalContainer ] = useState( null );
 	const [ triggerElement, setTriggerElement ] = useState( null );
 
 	// Use internal state instead of a ref to make sure that the component
 	// re-renders when the popover's anchor updates.
 	const [ popoverAnchor, setPopoverAnchor ] = useState( null );
 
+	const containerRef = useRef( null );
 	const ref = useRef( null );
+
+	const setContainerRef = useCallback( ( node ) => {
+		containerRef.current = node;
+		setPortalContainer( node?.ownerDocument?.body || null );
+	}, [] );
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -127,9 +134,10 @@ export default function ( { attributes, clientId, context } ) {
 		setIsOpen( false );
 
 		ref.current?.ownerDocument?.defaultView?.requestAnimationFrame( () => {
-			const nextTriggerElement = ref.current?.parentNode?.querySelector(
-				':scope > [data-unitone-layout~="dialog-trigger"]'
-			);
+			const nextTriggerElement =
+				containerRef.current?.parentNode?.querySelector(
+					':scope > [data-unitone-layout~="dialog-trigger"]'
+				);
 			const nextTriggerTarget = getTriggerElement(
 				nextTriggerElement,
 				dialogVariation
@@ -145,7 +153,7 @@ export default function ( { attributes, clientId, context } ) {
 	}, [ clientId ] );
 
 	useEffect( () => {
-		const element = ref.current?.parentNode?.querySelector(
+		const element = containerRef.current?.parentNode?.querySelector(
 			':scope > [data-unitone-layout~="dialog-trigger"]'
 		);
 		if ( ! element ) {
@@ -162,14 +170,11 @@ export default function ( { attributes, clientId, context } ) {
 		}
 
 		if ( isOpen ) {
-			if ( ! ref.current?.open ) {
-				ref.current?.showModal();
-			}
-			return;
-		}
-
-		if ( ref.current?.open ) {
-			ref.current?.close();
+			ref.current?.ownerDocument?.defaultView?.requestAnimationFrame(
+				() => {
+					ref.current?.focus();
+				}
+			);
 		}
 	}, [ isOpen ] );
 
@@ -209,7 +214,24 @@ export default function ( { attributes, clientId, context } ) {
 
 	const blockProps = useBlockProps( {
 		ref: useMergeRefs( [ setPopoverAnchor, ref ] ),
-		onClose: () => setIsOpen( false ),
+		role: 'dialog',
+		'aria-modal': 'true',
+		tabIndex: -1,
+		style: isOpen
+			? {
+					position: 'fixed',
+					inset: '50% auto auto 50%',
+					margin: 0,
+					transform: 'translate(-50%, -50%)',
+					maxWidth:
+						'calc(100% - 2 * var(--unitone--global--gutters))',
+					maxHeight:
+						'calc(100vh - 2 * var(--unitone--global--gutters))',
+					zIndex: 9999,
+			  }
+			: {
+					display: 'none',
+			  },
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'dialog-content',
@@ -222,8 +244,26 @@ export default function ( { attributes, clientId, context } ) {
 		renderAppender: hasInnerBlocks ? undefined : renderAppender,
 	} );
 
+	const dialogContent = <div { ...innerBlocksProps } />;
+	const dialogLayer = (
+		<>
+			<div
+				aria-hidden="true"
+				style={ {
+					position: 'fixed',
+					inset: 0,
+					backgroundColor: 'rgb(0 0 0 / 35%)',
+					zIndex: 9998,
+				} }
+			/>
+			{ dialogContent }
+		</>
+	);
+
 	return (
 		<>
+			<div ref={ setContainerRef } style={ { display: 'none' } } />
+
 			{ ! isOpen && hasSelection && !! triggerElement && (
 				<Popover
 					anchor={ triggerElement }
@@ -235,15 +275,7 @@ export default function ( { attributes, clientId, context } ) {
 				>
 					<Button
 						variant="tertiary"
-						onClick={ () => {
-							setIsOpen( true );
-
-							ref.current?.ownerDocument?.defaultView?.requestAnimationFrame(
-								() => {
-									ref.current?.focus();
-								}
-							);
-						} }
+						onClick={ () => setIsOpen( true ) }
 					>
 						{ __( 'Open dialog', 'unitone' ) }
 					</Button>
@@ -265,7 +297,9 @@ export default function ( { attributes, clientId, context } ) {
 				</Popover>
 			) }
 
-			<dialog { ...innerBlocksProps } />
+			{ isOpen && !! portalContainer
+				? createPortal( dialogLayer, portalContainer )
+				: dialogContent }
 		</>
 	);
 }

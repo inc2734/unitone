@@ -55,7 +55,7 @@ const getTriggerElement = ( element, variation ) => {
 	if ( 'dialog-box' === variation ) {
 		return (
 			element.querySelector(
-				':scope > [data-unitone-layout~="decorator"][data-unitone-tag-name="button"]'
+				':scope > [data-unitone-layout~="decorator"]'
 			) || null
 		);
 	}
@@ -142,6 +142,23 @@ export default function ( { attributes, clientId, context } ) {
 		[ clientId ]
 	);
 
+	const closeDialog = useCallback( () => {
+		setIsOpen( false );
+
+		ref.current?.ownerDocument?.defaultView?.requestAnimationFrame( () => {
+			const nextTriggerElement = ref.current?.parentNode?.querySelector(
+				':scope > [data-unitone-layout~="dialog-trigger"]'
+			);
+			const nextTriggerTarget = getTriggerElement(
+				nextTriggerElement,
+				dialogVariation
+			);
+			if ( !! nextTriggerTarget ) {
+				nextTriggerTarget.focus();
+			}
+		} );
+	}, [ dialogVariation ] );
+
 	useEffect( () => {
 		setIsOpen( false );
 	}, [ clientId ] );
@@ -174,6 +191,25 @@ export default function ( { attributes, clientId, context } ) {
 			ref.current?.close();
 		}
 	}, [ isOpen ] );
+
+	useEffect( () => {
+		const dialogElement = ref.current;
+		if ( ! dialogElement ) {
+			return undefined;
+		}
+
+		const handleBackdropClick = ( event ) => {
+			if ( event.target === dialogElement ) {
+				closeDialog();
+			}
+		};
+
+		dialogElement.addEventListener( 'click', handleBackdropClick );
+
+		return () => {
+			dialogElement.removeEventListener( 'click', handleBackdropClick );
+		};
+	}, [ closeDialog ] );
 
 	const blockProps = useBlockProps( {
 		ref: useMergeRefs( [ setPopoverAnchor, ref ] ),
@@ -227,28 +263,7 @@ export default function ( { attributes, clientId, context } ) {
 					focusOnMount={ false }
 					style={ { zIndex: 10000 } }
 				>
-					<Button
-						variant="tertiary"
-						onClick={ () => {
-							setIsOpen( false );
-
-							ref.current?.ownerDocument?.defaultView?.requestAnimationFrame(
-								() => {
-									const nextTriggerElement =
-										ref.current?.parentNode?.querySelector(
-											':scope > [data-unitone-layout~="dialog-trigger"]'
-										);
-									const nextTriggerTarget = getTriggerElement(
-										nextTriggerElement,
-										dialogVariation
-									);
-									if ( !! nextTriggerTarget ) {
-										nextTriggerTarget.focus();
-									}
-								}
-							);
-						} }
-					>
+					<Button variant="tertiary" onClick={ closeDialog }>
 						{ __( 'Close dialog', 'unitone' ) }
 					</Button>
 				</Popover>

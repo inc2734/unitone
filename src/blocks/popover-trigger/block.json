@@ -21,6 +21,7 @@
 		"inserter": false,
 		"className": false,
 		"customCSS": false,
+		"contentRole": true,
 		"lock": false
 	},
 	"category": "unitone/layout",

@@ -8,7 +8,13 @@ export default function ( { attributes } ) {
 
 	const isHrefSet = !! href;
 
-	const TagName = tagName;
+	const TagName = 'button' === tagName ? 'div' : tagName;
+	const elementProps =
+		'button' === tagName
+			? {
+					role: 'button',
+			  }
+			: {};
 
 	const blockProps = useBlockProps.save( {
 		'data-unitone-layout': clsx( 'decorator', {
@@ -19,7 +25,7 @@ export default function ( { attributes } ) {
 	return (
 		<>
 			{ isHrefSet ? (
-				<TagName { ...blockProps }>
+				<TagName { ...blockProps } { ...elementProps }>
 					<div data-unitone-layout="decorator__inner">
 						<div { ...useInnerBlocksProps.save() } />
 						<a
@@ -33,7 +39,10 @@ export default function ( { attributes } ) {
 					</div>
 				</TagName>
 			) : (
-				<TagName { ...useInnerBlocksProps.save( { ...blockProps } ) } />
+				<TagName
+					{ ...elementProps }
+					{ ...useInnerBlocksProps.save( { ...blockProps } ) }
+				/>
 			) }
 		</>
 	);

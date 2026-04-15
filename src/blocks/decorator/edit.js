@@ -155,6 +155,8 @@ export default function ( {
 		setIsEditingHref( false );
 	}
 
+	const TagName = 'button' === tagName ? 'div' : tagName;
+
 	const blockProps = useBlockProps( {
 		ref: useMergeRefs( [ setPopoverAnchor, ref ] ),
 	} );
@@ -165,6 +167,7 @@ export default function ( {
 			'-has-link': isHrefSet,
 		}
 	);
+	blockProps[ 'data-unitone-tag-name' ] = tagName;
 
 	const renderAppender = useCallback(
 		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
@@ -190,8 +193,6 @@ export default function ( {
 	);
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
-
-	const TagName = tagName;
 
 	return (
 		<>
@@ -224,6 +225,10 @@ export default function ( {
 								{ label: '<header>', value: 'header' },
 								{ label: '<footer>', value: 'footer' },
 								{ label: '<div>', value: 'div' },
+								{
+									label: '<div role="button">',
+									value: 'button',
+								},
 							] }
 							value={ normalizeForSelectControl( tagName ) }
 							onChange={ ( newAttribute ) =>

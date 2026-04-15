@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-04-13T06:43:35+00:00\n"
-"PO-Revision-Date: 2026-04-13 15:46+0900\n"
+"POT-Creation-Date: 2026-04-15T08:24:35+00:00\n"
+"PO-Revision-Date: 2026-04-15 17:26+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2493,13 +2493,21 @@ msgstr "カバー（中央 / 下部）"
 msgid "Cover (Top / Center / Bottom)"
 msgstr "カバー（上部 / 中央 / 下部）"
 
-#: dist/blocks/dialog-content/index.js:1
+#: dist/blocks/dialog-content/index.js:1 dist/blocks/dialog/index.js:1
 msgid "Open dialog"
 msgstr "ダイアログを開く"
 
 #: dist/blocks/dialog-content/index.js:1
 msgid "Close dialog"
 msgstr "ダイアログを閉じる"
+
+#: dist/blocks/dialog/index.js:1
+msgid "Dialog (Button)"
+msgstr "ダイアログ（ボタン）"
+
+#: dist/blocks/dialog/index.js:1
+msgid "Dialog (Box)"
+msgstr "ダイアログ（ボックス）"
 
 #: dist/blocks/flex-divided/index.js:1
 msgid "Flex (Divider: Stripe)"
@@ -5101,8 +5109,14 @@ msgstr "ダイアログトリガー"
 
 #: dist/blocks/dialog-trigger/block.json
 msgctxt "block description"
-msgid "This block is used to place the block that triggers the dialog."
-msgstr "ダイアログをトリガーするブロックを配置するために使用します。"
+msgid ""
+"This block is used to place the block that triggers the dialog. The trigger "
+"is fired by clicking a button block or decorator block (role: button) in "
+"this block."
+msgstr ""
+"ダイアログをトリガーするブロックを配置するために使用します。このブロック内の"
+"ボタンブロックまたはデコレーターブロック（role: button）をクリックすると、ト"
+"リガーが発火します。"
 
 #: dist/blocks/dialog/block.json
 msgctxt "block title"
@@ -5111,8 +5125,14 @@ msgstr "ダイアログ"
 
 #: dist/blocks/dialog/block.json
 msgctxt "block description"
-msgid "Displays modal content using the dialog element."
-msgstr "dialog 要素を使用してモーダルコンテンツを表示します。"
+msgid ""
+"Displays modal content using the dialog element. The trigger is fired by "
+"clicking a button block or decorator block (role: button) within the dialog "
+"trigger block."
+msgstr ""
+"dialog要素を使用してモーダルコンテンツを表示します。ダイアログトリガーブロッ"
+"ク内にあるボタンブロックまたはデコレーターブロック（role: button）をクリック"
+"することで発火します。"
 
 #: dist/blocks/marquee/block.json
 msgctxt "block title"
@@ -5899,3 +5919,11 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
+
+#~ msgctxt "block description"
+#~ msgid "This block is used to place the block that triggers the dialog."
+#~ msgstr "ダイアログをトリガーするブロックを配置するために使用します。"
+
+#~ msgctxt "block description"
+#~ msgid "Displays modal content using the dialog element."
+#~ msgstr "dialog 要素を使用してモーダルコンテンツを表示します。"

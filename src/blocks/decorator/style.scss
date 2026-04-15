@@ -10,6 +10,10 @@
 	max-width: var(--unitone--max-width) !important;
 }
 
+[data-unitone-layout~="decorator"][role="button"] {
+	cursor: pointer;
+}
+
 [data-unitone-layout~="decorator"][data-unitone-layout~="-has-link"] {
 	cursor: pointer;
 	align-content: stretch;

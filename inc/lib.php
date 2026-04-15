@@ -224,3 +224,313 @@ function unitone_get_palette_color( $slug, array $global_styles = array() ) {
 
 	return false;
 }
+
+/**
+ * Converts a limited CSS-like selector to XPath.
+ *
+ * Supported syntax:
+ * - `:scope`
+ * - tag names
+ * - `.class`
+ * - `[attr]`
+ * - `[attr="value"]`
+ * - `[attr~="value"]`
+ * - descendant combinator
+ * - child combinator `>`
+ * - comma separated selector groups
+ *
+ * @param string $selector CSS-like selector.
+ * @return string
+ */
+function unitone_css_selector_to_xpath( $selector ) {
+	$selectors = _unitone_split_css_selector_groups( $selector );
+	$xpaths    = array();
+
+	foreach ( $selectors as $selector_group ) {
+		$selector_group = trim( $selector_group );
+		if ( '' === $selector_group ) {
+			continue;
+		}
+
+		$steps = _unitone_tokenize_css_selector_steps( $selector_group );
+		if ( ! $steps ) {
+			continue;
+		}
+
+		$xpaths[] = _unitone_convert_css_selector_steps_to_xpath( $steps );
+	}
+
+	return implode( ' | ', array_filter( $xpaths ) );
+}
+
+/**
+ * Splits comma separated selector groups.
+ *
+ * @param string $selector Selector string.
+ * @return array
+ */
+function _unitone_split_css_selector_groups( $selector ) {
+	$groups         = array();
+	$current        = '';
+	$bracket_depth  = 0;
+	$quote          = null;
+	$selector_chars = str_split( $selector );
+
+	foreach ( $selector_chars as $char ) {
+		if ( $quote ) {
+			$current .= $char;
+			if ( $char === $quote ) {
+				$quote = null;
+			}
+			continue;
+		}
+
+		if ( '"' === $char || "'" === $char ) {
+			$quote    = $char;
+			$current .= $char;
+			continue;
+		}
+
+		if ( '[' === $char ) {
+			++$bracket_depth;
+			$current .= $char;
+			continue;
+		}
+
+		if ( ']' === $char ) {
+			--$bracket_depth;
+			$current .= $char;
+			continue;
+		}
+
+		if ( ',' === $char && 0 === $bracket_depth ) {
+			$groups[] = $current;
+			$current  = '';
+			continue;
+		}
+
+		$current .= $char;
+	}
+
+	if ( '' !== $current ) {
+		$groups[] = $current;
+	}
+
+	return $groups;
+}
+
+/**
+ * Tokenizes selector steps and combinators.
+ *
+ * @param string $selector Selector string.
+ * @return array
+ */
+function _unitone_tokenize_css_selector_steps( $selector ) {
+	$tokens        = array();
+	$current       = '';
+	$bracket_depth = 0;
+	$quote         = null;
+	$length        = strlen( $selector );
+	$pending_space = false;
+
+	for ( $index = 0; $index < $length; $index++ ) {
+		$char = $selector[ $index ];
+
+		if ( $quote ) {
+			$current .= $char;
+			if ( $char === $quote ) {
+				$quote = null;
+			}
+			continue;
+		}
+
+		if ( '"' === $char || "'" === $char ) {
+			$quote    = $char;
+			$current .= $char;
+			continue;
+		}
+
+		if ( '[' === $char ) {
+			++$bracket_depth;
+			$current .= $char;
+			continue;
+		}
+
+		if ( ']' === $char ) {
+			--$bracket_depth;
+			$current .= $char;
+			continue;
+		}
+
+		if ( 0 === $bracket_depth && ctype_space( $char ) ) {
+			if ( '' !== trim( $current ) ) {
+				$tokens[]      = array(
+					'combinator' => $pending_space ? ' ' : null,
+					'selector'   => trim( $current ),
+				);
+				$current       = '';
+				$pending_space = true;
+			}
+			continue;
+		}
+
+		if ( 0 === $bracket_depth && '>' === $char ) {
+			if ( '' !== trim( $current ) ) {
+				$tokens[] = array(
+					'combinator' => $pending_space ? ' ' : null,
+					'selector'   => trim( $current ),
+				);
+				$current  = '';
+			}
+			$pending_space = false;
+			$tokens[]      = array(
+				'combinator' => '>',
+				'selector'   => null,
+			);
+			continue;
+		}
+
+		$current .= $char;
+	}
+
+	if ( '' !== trim( $current ) ) {
+		$tokens[] = array(
+			'combinator' => $pending_space ? ' ' : null,
+			'selector'   => trim( $current ),
+		);
+	}
+
+	return $tokens;
+}
+
+/**
+ * Converts selector steps to XPath.
+ *
+ * @param array $steps Selector steps.
+ * @return string
+ */
+function _unitone_convert_css_selector_steps_to_xpath( array $steps ) {
+	$first_selector   = $steps[0]['selector'] ?? '';
+	$is_relative      = is_string( $first_selector ) && 0 === strpos( ltrim( $first_selector ), ':scope' );
+	$xpath            = $is_relative ? '.' : '';
+	$next_combinator  = null;
+	$is_first_segment = true;
+
+	foreach ( $steps as $step ) {
+		if ( null === $step['selector'] ) {
+			$next_combinator = $step['combinator'];
+			continue;
+		}
+
+		$selector               = $step['selector'];
+		$is_scope_only_selector = ':scope' === trim( $selector );
+		if ( $is_first_segment ) {
+			$combinator = null;
+		} elseif ( null !== $next_combinator ) {
+			$combinator = $next_combinator;
+		} elseif ( null !== $step['combinator'] ) {
+			$combinator = $step['combinator'];
+		} else {
+			$combinator = ' ';
+		}
+		$segment = _unitone_convert_css_simple_selector_to_xpath( $selector );
+
+		if ( $is_first_segment ) {
+			if ( $is_scope_only_selector ) {
+				$next_combinator  = null;
+				$is_first_segment = false;
+				continue;
+			}
+
+			if ( 0 === strpos( $selector, ':scope' ) ) {
+				$xpath .= '/' . $segment;
+			} else {
+				$xpath .= '//' . $segment;
+			}
+		} elseif ( '>' === $combinator ) {
+			$xpath .= '/' . $segment;
+		} else {
+			$xpath .= '//' . $segment;
+		}
+
+		$next_combinator  = null;
+		$is_first_segment = false;
+	}
+
+	return $xpath;
+}
+
+/**
+ * Converts a simple selector to XPath segment.
+ *
+ * @param string $selector Simple selector.
+ * @return string
+ */
+function _unitone_convert_css_simple_selector_to_xpath( $selector ) {
+	$selector = trim( preg_replace( '/:scope\b/', '', $selector ) );
+	if ( '' === $selector ) {
+		return '*';
+	}
+
+	$tag = '*';
+	if ( preg_match( '/^[a-zA-Z][a-zA-Z0-9_-]*/', $selector, $tag_match ) ) {
+		$tag      = $tag_match[0];
+		$selector = substr( $selector, strlen( $tag ) );
+	}
+
+	$conditions = array();
+
+	if ( preg_match_all( '/\.([a-zA-Z0-9_-]+)/', $selector, $class_matches ) ) {
+		foreach ( $class_matches[1] as $class_name ) {
+			$conditions[] = sprintf(
+				'contains(concat(" ", normalize-space(@class), " "), " %s ")',
+				$class_name
+			);
+		}
+	}
+
+	if ( preg_match_all( '/\[([^\]]+)\]/', $selector, $attribute_matches ) ) {
+		foreach ( $attribute_matches[1] as $raw_attribute ) {
+			$conditions[] = _unitone_convert_css_attribute_selector_to_xpath_condition( $raw_attribute );
+		}
+	}
+
+	$conditions = array_filter( $conditions );
+	if ( ! $conditions ) {
+		return $tag;
+	}
+
+	return $tag . '[' . implode( ' and ', $conditions ) . ']';
+}
+
+/**
+ * Converts a CSS attribute selector body to XPath condition.
+ *
+ * @param string $attribute Attribute selector body.
+ * @return string
+ */
+function _unitone_convert_css_attribute_selector_to_xpath_condition( $attribute ) {
+	$attribute = trim( $attribute );
+
+	if ( preg_match( '/^([^\s~=\]]+)~=(["\'])(.*?)\2$/', $attribute, $matches ) ) {
+		return sprintf(
+			'contains(concat(" ", normalize-space(@%1$s), " "), " %2$s ")',
+			$matches[1],
+			$matches[3]
+		);
+	}
+
+	if ( preg_match( '/^([^\s=\]]+)=(["\'])(.*?)\2$/', $attribute, $matches ) ) {
+		return sprintf(
+			'@%1$s="%2$s"',
+			$matches[1],
+			$matches[3]
+		);
+	}
+
+	if ( preg_match( '/^([^\s\]]+)$/', $attribute, $matches ) ) {
+		return sprintf( '@%s', $matches[1] );
+	}
+
+	return '';
+}

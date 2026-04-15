@@ -3,47 +3,7 @@ import clsx from 'clsx';
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 import metadata from './block.json';
-
-const TEMPLATE = [
-	[
-		'unitone/dialog-trigger',
-		{ lock: { move: true, remove: true } },
-		[
-			[
-				'core/buttons',
-				{},
-				[
-					[
-						'core/button',
-						{
-							text: 'Open dialog',
-							tagName: 'button',
-						},
-					],
-				],
-			],
-		],
-	],
-	[
-		'unitone/dialog-content',
-		{ lock: { move: true, remove: true } },
-		[
-			[
-				'unitone/decorator',
-				{
-					backgroundColor: 'unitone-background',
-					textColor: 'unitone-text',
-					unitone: {
-						maxWidth: 'var(--wp--style--global--content-size)',
-						maxHeight: '80vh',
-						padding: '1s',
-						overflow: 'auto',
-					},
-				},
-			],
-		],
-	],
-];
+import { DIALOG_CONTENT_TEMPLATE } from './variations';
 
 export default function ( { attributes } ) {
 	const { templateLock } = attributes;
@@ -57,7 +17,7 @@ export default function ( { attributes } ) {
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: metadata.allowedBlocks,
 		templateLock,
-		template: TEMPLATE,
+		template: DIALOG_CONTENT_TEMPLATE,
 		renderAppender: false,
 	} );
 

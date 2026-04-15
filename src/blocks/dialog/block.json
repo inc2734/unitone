@@ -5,8 +5,12 @@
 	"textdomain": "unitone",
 	"name": "unitone/dialog",
 	"title": "Dialog",
-	"description": "Displays modal content using the dialog element.",
+	"description": "Displays modal content using the dialog element. The trigger is fired by clicking a button block or decorator block (role: button) within the dialog trigger block.",
 	"attributes": {
+		"variation": {
+			"type": "string",
+			"default": ""
+		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
@@ -14,6 +18,9 @@
 	},
 	"selectors": {
 		"root": "[data-unitone-layout~=dialog]"
+	},
+	"providesContext": {
+		"unitone/dialog/variation": "variation"
 	},
 	"allowedBlocks": [ "unitone/dialog-trigger", "unitone/dialog-content" ],
 	"supports": {

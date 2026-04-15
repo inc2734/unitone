@@ -25,9 +25,204 @@ function render_block_unitone_dialog( $attributes, $content, $block ) {
 		return $content;
 	}
 
+	/**
+	 * Returns the valid trigger type for the dialog block.
+	 *
+	 * @param array $attributes Block attributes.
+	 * @return string|null
+	 */
+	$get_dialog_trigger_type = static function ( $attributes ) {
+		$variation = $attributes['variation'] ?? null;
+
+		if ( 'dialog-box' === $variation ) {
+			return 'box';
+		}
+
+		if ( 'dialog-button' === $variation ) {
+			return 'button';
+		}
+
+		return null;
+	};
+
+	/**
+	 * Converts direct dialog button links to buttons.
+	 *
+	 * @param DOMDocument $dom DOM document.
+	 * @param DOMXPath    $xpath XPath instance.
+	 * @param DOMElement  $trigger Trigger element.
+	 * @return void
+	 */
+	$convert_dialog_button_links_to_buttons = static function ( $dom, $xpath, $trigger ) {
+		$targets = $xpath->query(
+			unitone_css_selector_to_xpath(
+				':scope > .wp-block-buttons > .wp-block-button > .wp-block-button__link'
+			),
+			$trigger
+		);
+		if ( ! $targets instanceof \DOMNodeList || 0 === $targets->length ) {
+			return;
+		}
+
+		$anchor_elements = array();
+		foreach ( $targets as $target ) {
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			if ( ! $target instanceof \DOMElement || 'a' !== strtolower( $target->tagName ) ) {
+				continue;
+			}
+
+			$anchor_elements[] = $target;
+		}
+
+		if ( ! $anchor_elements ) {
+			return;
+		}
+
+		foreach ( $anchor_elements as $anchor ) {
+			$button = $dom->createElement( 'button' );
+
+			foreach ( iterator_to_array( $anchor->attributes ) as $attribute ) {
+				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				if ( in_array( $attribute->nodeName, array( 'href', 'target', 'rel', 'download' ), true ) ) {
+					continue;
+				}
+
+				$button->setAttribute( $attribute->nodeName, $attribute->nodeValue ?? '' ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			}
+
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			while ( $anchor->firstChild ) {
+				$button->appendChild( $anchor->firstChild ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			}
+
+			$anchor->parentNode->replaceChild( $button, $anchor ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+		}
+	};
+
+	/**
+	 * Adds role="button" to direct dialog decorators.
+	 *
+	 * @param DOMXPath   $xpath XPath instance.
+	 * @param DOMElement $trigger Trigger element.
+	 * @return void
+	 */
+	$add_role_button_to_dialog_decorators = static function ( $xpath, $trigger ) {
+		$decorators = $xpath->query(
+			unitone_css_selector_to_xpath(
+				':scope > [data-unitone-layout~="decorator"]'
+			),
+			$trigger
+		);
+		if ( ! $decorators instanceof \DOMNodeList || 0 === $decorators->length ) {
+			return;
+		}
+
+		foreach ( $decorators as $decorator ) {
+			if ( ! $decorator instanceof \DOMElement || $decorator->hasAttribute( 'role' ) ) {
+				continue;
+			}
+
+			$decorator->setAttribute( 'role', 'button' );
+		}
+	};
+
+	/**
+	 * Adds dialog trigger attributes to the first valid trigger target.
+	 *
+	 * @param string      $content Rendered block content.
+	 * @param string      $dialog_content_id Dialog content id.
+	 * @param string|null $dialog_content_tag Dialog content tag name.
+	 * @param string|null $trigger_type Dialog trigger type.
+	 * @return string
+	 */
+	$update_dialog_trigger_markup = static function ( $content, $dialog_content_id, $dialog_content_tag, $trigger_type ) use ( $convert_dialog_button_links_to_buttons, $add_role_button_to_dialog_decorators ) {
+		if ( ! class_exists( '\DOMDocument' ) || ! class_exists( '\DOMXPath' ) ) {
+			return $content;
+		}
+
+		$dom             = new \DOMDocument( '1.0', 'UTF-8' );
+		$previous        = libxml_use_internal_errors( true );
+		$encoded_content = mb_encode_numericentity(
+			$content,
+			array( 0x80, 0x10FFFF, 0, 0xFFFF ),
+			'UTF-8'
+		);
+
+		$loaded = $dom->loadHTML(
+			$encoded_content,
+			LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD
+		);
+
+		libxml_clear_errors();
+		libxml_use_internal_errors( $previous );
+
+		if ( ! $loaded ) {
+			return $content;
+		}
+
+		$xpath   = new \DOMXPath( $dom );
+		$trigger = $xpath->query(
+			unitone_css_selector_to_xpath(
+				'[data-unitone-layout~="dialog-trigger"]'
+			)
+		)->item( 0 );
+
+		if ( ! $trigger instanceof \DOMElement ) {
+			return $content;
+		}
+
+		$trigger->setAttribute( 'data-wp-on--click', 'actions.open' );
+
+		if ( 'button' === $trigger_type ) {
+			$convert_dialog_button_links_to_buttons( $dom, $xpath, $trigger );
+		} elseif ( 'box' === $trigger_type ) {
+			$add_role_button_to_dialog_decorators( $xpath, $trigger );
+		}
+
+		if ( 'button' === $trigger_type ) {
+			$query = unitone_css_selector_to_xpath(
+				':scope > .wp-block-buttons > .wp-block-button > .wp-block-button__link'
+			);
+		} elseif ( 'box' === $trigger_type ) {
+			$query = unitone_css_selector_to_xpath(
+				':scope > [data-unitone-layout~="decorator"]'
+			);
+		} else {
+			$query = unitone_css_selector_to_xpath(
+				':scope .wp-block-button__link, :scope [data-unitone-layout~="decorator"][role="button"]'
+			);
+		}
+
+		$targets = $xpath->query( $query, $trigger );
+		if ( ! $targets instanceof \DOMNodeList || 0 === $targets->length ) {
+			return $dom->saveHTML();
+		}
+
+		foreach ( $targets as $target ) {
+			if ( ! $target instanceof \DOMElement ) {
+				continue;
+			}
+
+			$target->setAttribute( 'aria-controls', $dialog_content_id );
+			$target->setAttribute( 'aria-haspopup', $dialog_content_tag ? strtolower( $dialog_content_tag ) : 'dialog' );
+
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			if ( 'button' === strtolower( $target->tagName ) && ! $target->hasAttribute( 'type' ) ) {
+				$target->setAttribute( 'type', 'button' );
+			}
+
+			if ( 'box' === $trigger_type && ! $target->hasAttribute( 'role' ) && $target->hasAttribute( 'data-unitone-layout' ) ) {
+				$target->setAttribute( 'role', 'button' );
+			}
+		}
+
+		return $dom->saveHTML();
+	};
+
 	$inner_blocks       = $block->parsed_block['innerBlocks'] ?? array();
 	$dialog_content_id  = null;
 	$dialog_content_tag = null;
+	$trigger_type       = $get_dialog_trigger_type( $attributes );
 
 	foreach ( $inner_blocks as $inner_block ) {
 		if ( 'unitone/dialog-content' !== ( $inner_block['blockName'] ?? '' ) ) {
@@ -71,28 +266,17 @@ function render_block_unitone_dialog( $attributes, $content, $block ) {
 			'data-wp-context',
 			wp_json_encode(
 				array(
-					'dialogId' => $dialog_content_id,
+					'dialogId'  => $dialog_content_id,
+					'variation' => $attributes['variation'] ?? '',
 				)
 			)
 		);
 	}
 
-	while ( $p->next_tag() ) {
-		$tag_name = $p->get_tag();
-		if ( 'BUTTON' !== $tag_name && 'INPUT' !== $tag_name ) {
-			continue;
-		}
-
-		$p->set_attribute( 'data-wp-on--click', 'actions.open' );
-		$p->set_attribute( 'aria-controls', $dialog_content_id );
-		$p->set_attribute( 'aria-haspopup', $dialog_content_tag ? strtolower( $dialog_content_tag ) : 'dialog' );
-
-		if ( 'BUTTON' === $tag_name && ! $p->get_attribute( 'type' ) ) {
-			$p->set_attribute( 'type', 'button' );
-		}
-
-		break;
-	}
-
-	return $p->get_updated_html();
+	return $update_dialog_trigger_markup(
+		$p->get_updated_html(),
+		$dialog_content_id,
+		$dialog_content_tag,
+		$trigger_type
+	);
 }

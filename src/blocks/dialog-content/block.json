@@ -16,6 +16,7 @@
 		"root": "[data-unitone-layout~=dialog-content]"
 	},
 	"parent": [ "unitone/dialog" ],
+	"usesContext": [ "unitone/dialog/variation" ],
 	"supports": {
 		"inserter": false,
 		"className": false,

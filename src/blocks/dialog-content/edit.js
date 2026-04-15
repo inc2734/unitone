@@ -39,8 +39,39 @@ const TEMPLATE = [
 	],
 ];
 
-export default function ( { attributes, clientId } ) {
+const getTriggerElement = ( element, variation ) => {
+	if ( ! element ) {
+		return null;
+	}
+
+	if ( 'dialog-button' === variation ) {
+		return (
+			element.querySelector(
+				':scope > .wp-block-buttons > .wp-block-button > .wp-block-button__link'
+			) || null
+		);
+	}
+
+	if ( 'dialog-box' === variation ) {
+		return (
+			element.querySelector(
+				':scope > [data-unitone-layout~="decorator"][data-unitone-tag-name="button"]'
+			) || null
+		);
+	}
+
+	return (
+		element.querySelector(
+			'.wp-block-button__link, [data-unitone-layout~="decorator"][data-unitone-tag-name="button"]'
+		) || null
+	);
+};
+
+export default function ( { attributes, clientId, context } ) {
 	const { templateLock } = attributes;
+
+	const dialogVariation = context[ 'unitone/dialog/variation' ] || '';
+
 	const [ isOpen, setIsOpen ] = useState( false );
 	const [ triggerElement, setTriggerElement ] = useState( null );
 
@@ -116,12 +147,16 @@ export default function ( { attributes, clientId } ) {
 	}, [ clientId ] );
 
 	useEffect( () => {
-		const nextTriggerElement = ref.current?.parentNode?.querySelector(
+		const element = ref.current?.parentNode?.querySelector(
 			':scope > [data-unitone-layout~="dialog-trigger"]'
 		);
+		if ( ! element ) {
+			setTriggerElement( null );
+			return;
+		}
 
-		setTriggerElement( nextTriggerElement || null );
-	}, [ clientId ] );
+		setTriggerElement( getTriggerElement( element, dialogVariation ) );
+	}, [ clientId, dialogVariation ] );
 
 	useEffect( () => {
 		if ( ! ref?.current ) {
@@ -203,8 +238,12 @@ export default function ( { attributes, clientId } ) {
 										ref.current?.parentNode?.querySelector(
 											':scope > [data-unitone-layout~="dialog-trigger"]'
 										);
-									if ( !! nextTriggerElement ) {
-										nextTriggerElement.focus();
+									const nextTriggerTarget = getTriggerElement(
+										nextTriggerElement,
+										dialogVariation
+									);
+									if ( !! nextTriggerTarget ) {
+										nextTriggerTarget.focus();
 									}
 								}
 							);

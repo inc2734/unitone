@@ -104,37 +104,18 @@ export default function ( { attributes, clientId, context } ) {
 		[ clientId ]
 	);
 
-	const triggerClientId = useSelect(
+	const hasSelection = useSelect(
 		( select ) => {
-			if ( ! parentClientId ) {
-				return null;
-			}
-
-			const { getBlock } = select( blockEditorStore );
-			return (
-				getBlock( parentClientId )?.innerBlocks?.find(
-					( block ) => block.name === 'unitone/dialog-trigger'
-				)?.clientId || null
-			);
-		},
-		[ parentClientId ]
-	);
-
-	const hasTriggerSelection = useSelect(
-		( select ) => {
-			if ( ! triggerClientId ) {
-				return false;
-			}
-
 			const { isBlockSelected, hasSelectedInnerBlock } =
 				select( blockEditorStore );
+			const targetClientId = parentClientId || clientId;
 
 			return (
-				isBlockSelected( triggerClientId ) ||
-				hasSelectedInnerBlock( triggerClientId, true )
+				isBlockSelected( targetClientId ) ||
+				hasSelectedInnerBlock( targetClientId, true )
 			);
 		},
-		[ triggerClientId ]
+		[ clientId, parentClientId ]
 	);
 
 	const renderAppender = useCallback(
@@ -193,23 +174,38 @@ export default function ( { attributes, clientId, context } ) {
 	}, [ isOpen ] );
 
 	useEffect( () => {
-		const dialogElement = ref.current;
-		if ( ! dialogElement ) {
+		if ( ! isOpen ) {
 			return undefined;
 		}
 
-		const handleBackdropClick = ( event ) => {
-			if ( event.target === dialogElement ) {
-				closeDialog();
+		const dialogElement = ref.current;
+		const ownerDocument = dialogElement?.ownerDocument;
+		if ( ! dialogElement || ! ownerDocument ) {
+			return undefined;
+		}
+
+		const handlePointerDown = ( event ) => {
+			if ( dialogElement.contains( event.target ) ) {
+				return;
 			}
+
+			closeDialog();
 		};
 
-		dialogElement.addEventListener( 'click', handleBackdropClick );
+		ownerDocument.addEventListener(
+			'pointerdown',
+			handlePointerDown,
+			true
+		);
 
 		return () => {
-			dialogElement.removeEventListener( 'click', handleBackdropClick );
+			ownerDocument.removeEventListener(
+				'pointerdown',
+				handlePointerDown,
+				true
+			);
 		};
-	}, [ closeDialog ] );
+	}, [ closeDialog, isOpen ] );
 
 	const blockProps = useBlockProps( {
 		ref: useMergeRefs( [ setPopoverAnchor, ref ] ),
@@ -228,7 +224,7 @@ export default function ( { attributes, clientId, context } ) {
 
 	return (
 		<>
-			{ hasTriggerSelection && !! triggerElement && (
+			{ ! isOpen && hasSelection && !! triggerElement && (
 				<Popover
 					anchor={ triggerElement }
 					placement="bottom"

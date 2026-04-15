@@ -27,6 +27,7 @@
 		"className": false,
 		"anchor": true,
 		"customCSS": false,
+		"contentRole": true,
 		"interactivity": true
 	},
 	"example": {

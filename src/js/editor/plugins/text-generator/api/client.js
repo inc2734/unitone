@@ -70,7 +70,7 @@ const isWpAiConfiguredForTextGeneration = async () => {
 
 	try {
 		return await wpAiConfiguredStatusPromise;
-	} catch ( e ) {
+	} catch {
 		wpAiConfiguredStatusPromise = undefined;
 		return false;
 	}

@@ -313,6 +313,10 @@ export function SpacingSizeControl( {
 			disabled: true,
 		},
 		{
+			label: '2XS',
+			value: -3,
+		},
+		{
 			label: 'XS',
 			value: -2,
 		},

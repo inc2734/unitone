@@ -360,6 +360,11 @@
 			],
 			"spacingSizes": [
 				{
+					"name": "2XS",
+					"slug": "10",
+					"size": "var(--unitone--s-3)"
+				},
+				{
 					"name": "XS",
 					"slug": "20",
 					"size": "var(--unitone--s-2)"
@@ -455,7 +460,7 @@
 			"caption": {
 				"spacing": {
 					"margin": {
-						"top": "var(--unitone--s-2)",
+						"top": "var(--unitone--s-3)",
 						"right": "0",
 						"bottom": "0",
 						"left": "0"

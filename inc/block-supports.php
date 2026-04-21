@@ -327,7 +327,9 @@ function unitone_add_supports_to_core_button( $metadata ) {
 			'unitone' => array_merge(
 				$metadata['supports']['unitone'] ?? array(),
 				array(
-					'padding'  => true,
+					'padding'  => array(
+						'split': true,
+					),
 					'minWidth' => true,
 				)
 			),

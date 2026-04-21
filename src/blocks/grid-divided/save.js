@@ -3,6 +3,10 @@ import clsx from 'clsx';
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 const parseString = ( value ) => {
+	if ( null == value ) {
+		return undefined;
+	}
+
 	value = String( value );
 	return null !== value && '' !== value ? value : undefined;
 };

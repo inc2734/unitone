@@ -43,6 +43,10 @@ import { setDividerLinewrap } from '@inc2734/unitone-css/library';
 import { useResponsiveGridCSS } from '../grid/hooks';
 
 const parseString = ( value ) => {
+	if ( null == value ) {
+		return undefined;
+	}
+
 	value = String( value );
 	return null !== value && '' !== value ? value : undefined;
 };

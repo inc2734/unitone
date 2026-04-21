@@ -4,6 +4,15 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 import metadata from './block.json';
 
+const parseString = ( value ) => {
+	if ( null == value ) {
+		return undefined;
+	}
+
+	value = String( value );
+	return null !== value && '' !== value ? value : undefined;
+};
+
 export default [
 	{
 		attributes: {
@@ -50,7 +59,7 @@ export default [
 
 			const styles = {
 				'--unitone--columns':
-					( 'columns' === columnsOption && String( columns ) ) ||
+					( 'columns' === columnsOption && parseString( columns ) ) ||
 					undefined,
 				'--unitone--column-min-width':
 					( 'min' === columnsOption && columnMinWidth ) || undefined,
@@ -61,7 +70,8 @@ export default [
 					( 'min' === columnsOption && columnAutoRepeat ) ||
 					undefined,
 				'--unitone--md-columns':
-					( 'columns' === mdColumnsOption && String( mdColumns ) ) ||
+					( 'columns' === mdColumnsOption &&
+						parseString( mdColumns ) ) ||
 					undefined,
 				'--unitone--md-column-min-width':
 					( 'min' === mdColumnsOption && mdColumnMinWidth ) ||
@@ -70,7 +80,8 @@ export default [
 					( 'free' === mdColumnsOption && mdGridTemplateColumns ) ||
 					undefined,
 				'--unitone--sm-columns':
-					( 'columns' === smColumnsOption && String( smColumns ) ) ||
+					( 'columns' === smColumnsOption &&
+						parseString( smColumns ) ) ||
 					undefined,
 				'--unitone--sm-column-min-width':
 					( 'min' === smColumnsOption && smColumnMinWidth ) ||
@@ -79,17 +90,18 @@ export default [
 					( 'free' === smColumnsOption && smGridTemplateColumns ) ||
 					undefined,
 				'--unitone--rows':
-					( 'rows' === rowsOption && String( rows ) ) || undefined,
+					( 'rows' === rowsOption && parseString( rows ) ) ||
+					undefined,
 				'--unitone--grid-template-rows':
 					( 'free' === rowsOption && gridTemplateRows ) || undefined,
 				'--unitone--md-rows':
-					( 'rows' === mdRowsOption && String( mdRows ) ) ||
+					( 'rows' === mdRowsOption && parseString( mdRows ) ) ||
 					undefined,
 				'--unitone--md-grid-template-rows':
 					( 'free' === mdRowsOption && mdGridTemplateRows ) ||
 					undefined,
 				'--unitone--sm-rows':
-					( 'rows' === smRowsOption && String( smRows ) ) ||
+					( 'rows' === smRowsOption && parseString( smRows ) ) ||
 					undefined,
 				'--unitone--sm-grid-template-rows':
 					( 'free' === smRowsOption && smGridTemplateRows ) ||
@@ -176,7 +188,7 @@ export default [
 
 			const styles = {
 				'--unitone--columns':
-					( 'columns' === columnsOption && String( columns ) ) ||
+					( 'columns' === columnsOption && parseString( columns ) ) ||
 					undefined,
 				'--unitone--column-min-width':
 					( 'min' === columnsOption && columnMinWidth ) || undefined,
@@ -189,7 +201,7 @@ export default [
 				'--unitone--md-columns':
 					( 'columns' === mdColumnsOption &&
 						!! mdColumns &&
-						String( mdColumns ) ) ||
+						parseString( mdColumns ) ) ||
 					undefined,
 				'--unitone--md-column-min-width':
 					( 'min' === mdColumnsOption && mdColumnMinWidth ) ||
@@ -200,7 +212,7 @@ export default [
 				'--unitone--sm-columns':
 					( 'columns' === smColumnsOption &&
 						!! smColumns &&
-						String( smColumns ) ) ||
+						parseString( smColumns ) ) ||
 					undefined,
 				'--unitone--sm-column-min-width':
 					( 'min' === smColumnsOption && smColumnMinWidth ) ||
@@ -209,17 +221,18 @@ export default [
 					( 'free' === smColumnsOption && smGridTemplateColumns ) ||
 					undefined,
 				'--unitone--rows':
-					( 'rows' === rowsOption && String( rows ) ) || undefined,
+					( 'rows' === rowsOption && parseString( rows ) ) ||
+					undefined,
 				'--unitone--grid-template-rows':
 					( 'free' === rowsOption && gridTemplateRows ) || undefined,
 				'--unitone--md-rows':
-					( 'rows' === mdRowsOption && String( mdRows ) ) ||
+					( 'rows' === mdRowsOption && parseString( mdRows ) ) ||
 					undefined,
 				'--unitone--md-grid-template-rows':
 					( 'free' === mdRowsOption && mdGridTemplateRows ) ||
 					undefined,
 				'--unitone--sm-rows':
-					( 'rows' === smRowsOption && String( smRows ) ) ||
+					( 'rows' === smRowsOption && parseString( smRows ) ) ||
 					undefined,
 				'--unitone--sm-grid-template-rows':
 					( 'free' === smRowsOption && smGridTemplateRows ) ||

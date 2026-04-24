@@ -184,7 +184,7 @@ function unitone_add_divider_support( $metadata ) {
 				$metadata['supports']['unitone'] ?? array(),
 				array(
 					'divider'     => true,
-					'dividerType' => array( 'stripe', 'underline', 'bordered', 'divide' ),
+					'dividerType' => array( '', 'stripe', 'underline', 'bordered', 'divide' ),
 				)
 			),
 		)

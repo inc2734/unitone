@@ -35,7 +35,7 @@
 		margin: 0;
 	}
 
-	&:where(:not(.is-layout-grid)) > * + * {
+	&:not(.is-layout-grid) > * + * {
 		margin-top: var(--unitone--gap);
 		margin-bottom: 0;
 	}

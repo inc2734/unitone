@@ -1,11 +1,9 @@
 {
+	"port": 8889,
 	"testsEnvironment": false,
 	"themes": [ "." ],
 	"config": {
 		"WP_DEBUG": true,
 		"WP_DEVELOPMENT_MODE": "theme"
-	},
-	"mappings": {
-		".export": "./.export"
 	}
 }

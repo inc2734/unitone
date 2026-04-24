@@ -9,7 +9,7 @@
 		"inc2734/wp-ogp": "^2.0"
 	},
 	"require-dev": {
-		"wp-coding-standards/wpcs": "^3.0",
+		"wp-coding-standards/wpcs": "^3.1",
 		"phpcompatibility/phpcompatibility-wp": "*",
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0"
 	},

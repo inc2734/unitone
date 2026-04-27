@@ -112,7 +112,8 @@ const hasValue = ( value ) => {
 };
 
 const hasUnitoneAttributeValue = ( attributes ) =>
-	hasValue( attributes?.unitone );
+	hasValue( attributes?.unitone ) ||
+	hasValue( attributes?.__unstableUnitoneSupports );
 
 const blockTypeHasUnitoneSettings = ( name ) => {
 	if ( blockTypeHasUnitoneCache.has( name ) ) {

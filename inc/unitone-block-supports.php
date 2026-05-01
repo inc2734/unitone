@@ -26,6 +26,43 @@ add_filter(
 		}
 
 		/**
+		 * Returns unitone scoped custom CSS.
+		 *
+		 * @param string $custom_css The custom CSS.
+		 * @param string $selector   The selector to replace "&".
+		 * @return string
+		 */
+		$get_scoped_custom_css = static function ( $custom_css, $selector ) {
+			if ( ! $custom_css || ! $selector ) {
+				return '';
+			}
+
+			$custom_css = wp_strip_all_tags( $custom_css );
+			$custom_css = preg_replace( '/\r?\n/', ' ', $custom_css );
+			$custom_css = preg_replace( '/\s*{\s*/', ' { ', $custom_css );
+			$custom_css = preg_replace( '/\s*;\s*/', '; ', $custom_css );
+			$custom_css = preg_replace( '/\s*}\s*/', ' }', $custom_css );
+			$custom_css = preg_replace( '/}\s*/', "}\n", $custom_css );
+			$custom_css = preg_replace( '/\s+/', ' ', $custom_css );
+			$custom_css = trim( $custom_css );
+
+			preg_match_all( '/(@[^{]+\{(?:[^{}]*\{[^{}]*\}[^{}]*)*\})|(&[^{]+\{[^{}]*\})/s', $custom_css, $matches );
+			$filtered_blocks = array();
+			foreach ( $matches[0] as $block ) {
+				if ( 0 === strpos( ltrim( $block ), '@' ) ) {
+					if ( preg_match( '/\{[^{}]*&[^{]+\{[^}]*\}/s', $block ) ) {
+						$filtered_blocks[] = $block;
+					}
+				} elseif ( preg_match( '/^\s*&[^{]+\{[^}]*\}/s', $block ) ) {
+					$filtered_blocks[] = $block;
+				}
+			}
+			$custom_css = implode( ' ', $filtered_blocks );
+
+			return preg_replace( '|(&)(?=[^{]*\{)|', $selector, $custom_css );
+		};
+
+		/**
 		 * Get supported attribute value.
 		 *
 		 * @param string $support The supported attribute name. Dot-accessible.
@@ -736,37 +773,17 @@ add_filter(
 
 		// Additional style.
 		if ( unitone_has_block_support( 'unitone.style', $metadata ) ) {
-			$instance_id = $get_attribute( 'instanceId' );
-			$custom_css  = $get_attribute( 'style' );
+			$custom_css            = $get_attribute( 'style' );
+			$custom_css_identifier = null;
 
 			if ( $custom_css ) {
-				$custom_css = wp_strip_all_tags( $custom_css );
-				$custom_css = preg_replace( '/\r?\n/', ' ', $custom_css );
-				$custom_css = preg_replace( '/\s*{\s*/', ' { ', $custom_css );
-				$custom_css = preg_replace( '/\s*;\s*/', '; ', $custom_css );
-				$custom_css = preg_replace( '/\s*}\s*/', ' }', $custom_css );
-				$custom_css = preg_replace( '/}\s*/', "}\n", $custom_css );
-				$custom_css = preg_replace( '/\s+/', ' ', $custom_css );
-				$custom_css = trim( $custom_css );
-
-				preg_match_all( '/(@[^{]+\{(?:[^{}]*\{[^{}]*\}[^{}]*)*\})|(&[^{]+\{[^{}]*\})/s', $custom_css, $matches );
-				$filtered_blocks = array();
-				foreach ( $matches[0] as $block ) {
-					if ( preg_match( '/@/', $block ) ) {
-						if ( preg_match( '/\{[^{}]*&[^{]+\{[^}]*\}/s', $block ) ) {
-							$filtered_blocks[] = $block;
-						}
-					} elseif ( preg_match( '/^\s*&[^{]+\{[^}]*\}/s', $block ) ) {
-						$filtered_blocks[] = $block;
-					}
-				}
-				$custom_css = implode( ' ', $filtered_blocks );
-
-				$custom_css = preg_replace( '|(&)(?=[^{]*\{)|', '[data-unitone-instance-id="' . $instance_id . '"]', $custom_css );
+				$custom_css_identifier = wp_unique_id_from_values( $block, 'unitone-custom-css-' );
+				$custom_css            = $get_scoped_custom_css( $custom_css, '.' . $custom_css_identifier );
 			}
 
-			if ( $instance_id && $custom_css ) {
-				$add_data_attribute( 'data-unitone-instance-id', $instance_id );
+			if ( ! empty( $custom_css_identifier ) && $custom_css ) {
+				$p->add_class( 'has-unitone-custom-css' );
+				$p->add_class( $custom_css_identifier );
 
 				add_action(
 					'wp_enqueue_scripts',

@@ -3,8 +3,13 @@
  */
 
 import { getBlockType } from '@wordpress/blocks';
-import { createHigherOrderComponent, compose } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
+
+import {
+	createHigherOrderComponent,
+	compose,
+	useInstanceId,
+} from '@wordpress/compose';
 
 import {
 	DimensionsPanel,
@@ -134,23 +139,39 @@ const shouldSkipBlockProps = ( { name, attributes } ) =>
 	! hasUnitoneAttributeValue( attributes ) &&
 	! blockTypeHasUnitoneSettings( name );
 
-const shouldRenderStyleTag = ( unitone ) =>
-	!! unitone?.style && !! unitone?.instanceId;
+const CUSTOM_CSS_INSTANCE_REFERENCE = {};
+
+const shouldRenderStyleTag = ( unitone ) => !! unitone?.style;
 
 const withBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
+		const customCSSIdentifier = useInstanceId(
+			CUSTOM_CSS_INSTANCE_REFERENCE,
+			'unitone-custom-css'
+		);
+
 		if ( shouldSkipBlockProps( props ) ) {
 			return <BlockListBlock { ...props } />;
 		}
 
-		const newProps = applyBlockProps( props );
+		const newProps = applyBlockProps( {
+			...props,
+			customCSSIdentifier,
+		} );
+		const blockListBlockProps = { ...newProps };
+		delete blockListBlockProps.customCSSIdentifier;
 
 		return (
 			<>
-				<BlockListBlock { ...newProps } />
+				<BlockListBlock { ...blockListBlockProps } />
 
 				{ shouldRenderStyleTag( newProps?.attributes?.unitone ) && (
-					<StyleTag { ...{ unitone: newProps.attributes.unitone } } />
+					<StyleTag
+						{ ...{
+							unitone: newProps.attributes.unitone,
+							customCSSIdentifier,
+						} }
+					/>
 				) }
 			</>
 		);

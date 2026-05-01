@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import {
 	Notice,
 	TextareaControl,
@@ -6,7 +8,7 @@ import {
 
 import { hasBlockSupport } from '@wordpress/blocks';
 import { transformStyles } from '@wordpress/block-editor';
-import { useEffect, useState } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
@@ -18,14 +20,14 @@ export function isStyleDisabled( { name } ) {
 export function resetStyleFilter() {
 	return {
 		style: undefined,
-		instanceId: undefined,
+		instanceId: undefined, // Deprecated.
 	};
 }
 
 // @see https://github.com/WordPress/gutenberg/pull/63656
 // When useStyleOverride() becomes available, replace it with it.
-export function StyleTag( { unitone } ) {
-	if ( ! unitone?.style || ! unitone?.instanceId ) {
+export function StyleTag( { unitone, customCSSIdentifier } ) {
+	if ( ! unitone?.style || ! customCSSIdentifier ) {
 		return null;
 	}
 
@@ -53,24 +55,15 @@ export function StyleTag( { unitone } ) {
 
 	filteredCSS = filteredCSS.replace(
 		/(&)(?=[^{]*\{)/g,
-		`[data-unitone-instance-id="${ unitone.instanceId }"]`
+		`.${ customCSSIdentifier }`
 	);
 
 	return <style>{ filteredCSS }</style>;
 }
 
 // @see https://github.com/WordPress/gutenberg/blob/a55c62c5c810c84258afcdac7da1a7019a69b332/packages/block-editor/src/components/global-styles/advanced-panel.js
-export function StyleEdit( {
-	attributes: { unitone },
-	setAttributes,
-	clientId,
-} ) {
+export function StyleEdit( { attributes: { unitone }, setAttributes } ) {
 	const [ cssError, setCSSError ] = useState( null );
-	const [ instanceId, setInstanceId ] = useState( clientId );
-
-	useEffect( () => {
-		setInstanceId( clientId );
-	}, [ clientId, unitone?.style ] );
 
 	function handleOnChange( newValue ) {
 		let customCSS = newValue ?? undefined;
@@ -85,7 +78,7 @@ export function StyleEdit( {
 			unitone: cleanEmptyObject( {
 				...unitone,
 				style: customCSS || undefined,
-				instanceId: !! customCSS ? instanceId : undefined,
+				instanceId: undefined, // Deprecated.
 			} ),
 		} );
 
@@ -288,7 +281,7 @@ export function StyleEdit( {
 			unitone: cleanEmptyObject( {
 				...unitone,
 				style: customCSS || undefined,
-				instanceId: !! customCSS ? instanceId : undefined,
+				instanceId: undefined, // Deprecated.
 			} ),
 		} );
 
@@ -344,19 +337,32 @@ export function StyleEdit( {
 	);
 }
 
-export function saveStyleProp( extraProps, blockType, attributes ) {
+export function saveStyleProp(
+	extraProps,
+	blockType,
+	attributes,
+	customCSSIdentifier
+) {
 	if ( isStyleDisabled( { name: blockType } ) ) {
+		return extraProps;
+	}
+
+	if ( ! attributes?.unitone?.style ) {
 		return extraProps;
 	}
 
 	return {
 		...extraProps,
-		'data-unitone-instance-id': attributes?.unitone?.instanceId,
+		className: clsx(
+			extraProps?.className,
+			'has-unitone-custom-css',
+			customCSSIdentifier
+		),
 	};
 }
 
 export function withStyleBlockProps( settings ) {
-	const { attributes, name, wrapperProps } = settings;
+	const { attributes, customCSSIdentifier, name, wrapperProps } = settings;
 
 	if ( isStyleDisabled( { name } ) ) {
 		return settings;
@@ -366,7 +372,12 @@ export function withStyleBlockProps( settings ) {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
-			...saveStyleProp( wrapperProps, name, attributes ),
+			...saveStyleProp(
+				wrapperProps,
+				name,
+				attributes,
+				customCSSIdentifier
+			),
 		},
 	};
 }

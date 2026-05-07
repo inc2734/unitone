@@ -11,6 +11,8 @@ import iconHeroBottomLeftTitleInside from './icon/hero-bottom-left-title-inside'
 import iconHeroBottomRightTitleInside from './icon/hero-bottom-right-title-inside';
 import iconHeroBottomLeftTitleInset from './icon/hero-bottom-left-title-inset';
 import iconHeroBottomRightTitleInset from './icon/hero-bottom-right-title-inset';
+import iconHeroCenterTitleInset from './icon/hero-center-title-inset';
+import iconHeroCenterLeftTitleInset from './icon/hero-center-left-title-inset';
 
 export default [
 	{
@@ -165,7 +167,6 @@ export default [
 					ratio: '16/9',
 					switchRatio: true,
 					unitone: {
-						alignSelf: 'end',
 						gridColumn: '2/-1',
 						gridRow: '2/-1',
 					},
@@ -184,7 +185,9 @@ export default [
 				name: 'unitone/stack',
 				attributes: {
 					unitone: {
+						alignSelf: 'start',
 						maxWidth: 'var(--wp--style--global--content-size)',
+						gridColumn: '1/-2',
 					},
 				},
 				innerBlocks: [
@@ -197,6 +200,13 @@ export default [
 							unitone: {
 								fluidTypography: true,
 							},
+						},
+					},
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content:
+								'Clouds floated across the sky. The scent of grass filled the air as the wind brushed gently against the skin.',
 						},
 					},
 				],
@@ -225,7 +235,6 @@ export default [
 					ratio: '16/9',
 					switchRatio: true,
 					unitone: {
-						alignSelf: 'end',
 						gridColumn: '1/-2',
 						gridRow: '2/-1',
 					},
@@ -244,8 +253,10 @@ export default [
 				name: 'unitone/stack',
 				attributes: {
 					unitone: {
+						alignSelf: 'start',
 						justifySelf: 'end',
 						maxWidth: 'var(--wp--style--global--content-size)',
+						gridColumn: '2/-1',
 					},
 				},
 				innerBlocks: [
@@ -258,6 +269,13 @@ export default [
 							unitone: {
 								fluidTypography: true,
 							},
+						},
+					},
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content:
+								'Clouds floated across the sky. The scent of grass filled the air as the wind brushed gently against the skin.',
 						},
 					},
 				],
@@ -306,6 +324,7 @@ export default [
 					unitone: {
 						alignSelf: 'end',
 						maxWidth: 'var(--wp--style--global--content-size)',
+						gridColumn: '1/-2',
 					},
 				},
 				innerBlocks: [
@@ -318,6 +337,13 @@ export default [
 							unitone: {
 								fluidTypography: true,
 							},
+						},
+					},
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content:
+								'Clouds floated across the sky. The scent of grass filled the air as the wind brushed gently against the skin.',
 						},
 					},
 				],
@@ -367,6 +393,7 @@ export default [
 						alignSelf: 'end',
 						justifySelf: 'end',
 						maxWidth: 'var(--wp--style--global--content-size)',
+						gridColumn: '2/-1',
 					},
 				},
 				innerBlocks: [
@@ -379,6 +406,13 @@ export default [
 							unitone: {
 								fluidTypography: true,
 							},
+						},
+					},
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content:
+								'Clouds floated across the sky. The scent of grass filled the air as the wind brushed gently against the skin.',
 						},
 					},
 				],
@@ -414,30 +448,35 @@ export default [
 				},
 			},
 			{
-				name: 'unitone/container',
+				name: 'unitone/section',
 				attributes: {
+					containerAlign: 'start',
 					unitone: {
 						alignSelf: 'end',
-						justifySelf: 'start',
 						maxWidth: 'var(--wp--style--global--content-size)',
+						gridColumn: '1/-2',
+						padding: '0',
+						gap: '1',
 					},
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/stack',
-						innerBlocks: [
-							{
-								name: 'core/heading',
-								attributes: {
-									fontSize: 'unitone-3xl',
-									content:
-										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-									unitone: {
-										fluidTypography: true,
-									},
-								},
+						name: 'core/heading',
+						attributes: {
+							fontSize: 'unitone-3xl',
+							content:
+								'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+							unitone: {
+								fluidTypography: true,
 							},
-						],
+						},
+					},
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content:
+								'Clouds floated across the sky. The scent of grass filled the air as the wind brushed gently against the skin.',
+						},
 					},
 				],
 			},
@@ -472,30 +511,36 @@ export default [
 				},
 			},
 			{
-				name: 'unitone/container',
+				name: 'unitone/section',
 				attributes: {
+					containerAlign: 'end',
 					unitone: {
 						alignSelf: 'end',
 						justifySelf: 'end',
 						maxWidth: 'var(--wp--style--global--content-size)',
+						gridColumn: '2/-1',
+						padding: '0',
+						gap: '1',
 					},
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/stack',
-						innerBlocks: [
-							{
-								name: 'core/heading',
-								attributes: {
-									fontSize: 'unitone-3xl',
-									content:
-										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-									unitone: {
-										fluidTypography: true,
-									},
-								},
+						name: 'core/heading',
+						attributes: {
+							fontSize: 'unitone-3xl',
+							content:
+								'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+							unitone: {
+								fluidTypography: true,
 							},
-						],
+						},
+					},
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content:
+								'Clouds floated across the sky. The scent of grass filled the air as the wind brushed gently against the skin.',
+						},
 					},
 				],
 			},
@@ -517,8 +562,7 @@ export default [
 			cover: true,
 			textColor: 'unitone-text',
 			unitone: {
-				minHeight:
-					'calc(100vh - var(--wp-admin--admin-bar--height, 0px))',
+				minHeight: 'full-min',
 			},
 		},
 		innerBlocks: [
@@ -530,40 +574,35 @@ export default [
 				},
 			},
 			{
-				name: 'unitone/decorator',
+				name: 'unitone/section',
 				attributes: {
+					containerAlign: 'start',
 					unitone: {
-						padding: 1,
+						gutters: '1',
 						alignSelf: 'end',
 						maxWidth: 'var(--wp--style--global--content-size)',
+						gap: '1',
+						padding: '1',
 					},
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/container',
+						name: 'core/heading',
 						attributes: {
+							fontSize: 'unitone-3xl',
+							content:
+								'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
 							unitone: {
-								gutters: 0,
+								fluidTypography: true,
 							},
 						},
-						innerBlocks: [
-							{
-								name: 'unitone/stack',
-								innerBlocks: [
-									{
-										name: 'core/heading',
-										attributes: {
-											fontSize: 'unitone-3xl',
-											content:
-												'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-											unitone: {
-												fluidTypography: true,
-											},
-										},
-									},
-								],
-							},
-						],
+					},
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content:
+								'Clouds floated across the sky. The scent of grass filled the air as the wind brushed gently against the skin.',
+						},
 					},
 				],
 			},
@@ -585,8 +624,7 @@ export default [
 			cover: true,
 			textColor: 'unitone-text',
 			unitone: {
-				minHeight:
-					'calc(100vh - var(--wp-admin--admin-bar--height, 0px))',
+				minHeight: 'full-min',
 			},
 		},
 		innerBlocks: [
@@ -598,39 +636,181 @@ export default [
 				},
 			},
 			{
-				name: 'unitone/decorator',
+				name: 'unitone/section',
 				attributes: {
+					containerAlign: 'end',
 					unitone: {
-						padding: 1,
+						gutters: '1',
 						alignSelf: 'end',
 						justifySelf: 'end',
 						maxWidth: 'var(--wp--style--global--content-size)',
+						gap: '1',
+						padding: '1',
 					},
 				},
 				innerBlocks: [
 					{
-						name: 'unitone/container',
+						name: 'core/heading',
+						attributes: {
+							fontSize: 'unitone-3xl',
+							content:
+								'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+							unitone: {
+								fluidTypography: true,
+							},
+						},
+					},
+					{
+						name: 'core/paragraph',
+						attributes: {
+							content:
+								'Clouds floated across the sky. The scent of grass filled the air as the wind brushed gently against the skin.',
+						},
+					},
+				],
+			},
+		],
+	},
+	{
+		name: 'hero-center-title-inset',
+		title: sprintf(
+			// translators: %1$s: position
+			__( 'Hero (%1$s)', 'unitone' ),
+			__( 'Center', 'unitone' )
+		),
+		scope: [ 'block' ],
+		icon: {
+			src: iconHeroCenterTitleInset,
+		},
+		attributes: {
+			align: 'full',
+			cover: true,
+			textColor: 'unitone-text',
+			unitone: {
+				minHeight: 'full-min',
+			},
+		},
+		innerBlocks: [
+			{
+				name: 'core/image',
+				attributes: {
+					id: 1,
+					url: `${ window.unitoneSettings.url }/dist/img/swing-ocean-sea2875.jpg`,
+				},
+			},
+			{
+				name: 'unitone/section',
+				attributes: {
+					unitone: {
+						alignSelf: 'center',
+						maxWidth: 'var(--wp--style--global--content-size)',
+						gap: '2',
+					},
+				},
+				innerBlocks: [
+					{
+						name: 'unitone/center',
 						attributes: {
 							unitone: {
-								gutters: 0,
+								maxWidth: '100%',
 							},
 						},
 						innerBlocks: [
 							{
-								name: 'unitone/stack',
-								innerBlocks: [
-									{
-										name: 'core/heading',
-										attributes: {
-											fontSize: 'unitone-3xl',
-											content:
-												'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
-											unitone: {
-												fluidTypography: true,
-											},
-										},
+								name: 'core/heading',
+								attributes: {
+									fontSize: 'unitone-4xl',
+									content: 'Lorem ipsum dolor sit amet',
+									unitone: {
+										fluidTypography: true,
 									},
-								],
+								},
+							},
+						],
+					},
+					{
+						name: 'unitone/text',
+						attributes: {
+							unitone: {
+								maxWidth: '100%',
+							},
+						},
+						innerBlocks: [
+							{
+								name: 'core/paragraph',
+								attributes: {
+									content:
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill',
+								},
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		name: 'hero-center-left-title-inset',
+		title: sprintf(
+			// translators: %1$s: position
+			__( 'Hero (%1$s)', 'unitone' ),
+			__( 'Center / Left', 'unitone' )
+		),
+		scope: [ 'block' ],
+		icon: {
+			src: iconHeroCenterLeftTitleInset,
+		},
+		attributes: {
+			align: 'full',
+			cover: true,
+			textColor: 'unitone-text',
+			unitone: {
+				minHeight: 'full-min',
+			},
+		},
+		innerBlocks: [
+			{
+				name: 'core/image',
+				attributes: {
+					id: 1,
+					url: `${ window.unitoneSettings.url }/dist/img/swing-ocean-sea2875.jpg`,
+				},
+			},
+			{
+				name: 'unitone/section',
+				attributes: {
+					containerAlign: 'start',
+					unitone: {
+						alignSelf: 'center',
+						maxWidth: 'var(--wp--style--global--content-size)',
+						gap: '2',
+					},
+				},
+				innerBlocks: [
+					{
+						name: 'core/heading',
+						attributes: {
+							fontSize: 'unitone-4xl',
+							content: 'Lorem ipsum dolor sit amet',
+							unitone: {
+								fluidTypography: true,
+							},
+						},
+					},
+					{
+						name: 'unitone/text',
+						attributes: {
+							unitone: {
+								maxWidth: '100%',
+							},
+						},
+						innerBlocks: [
+							{
+								name: 'core/paragraph',
+								attributes: {
+									content:
+										'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill',
+								},
 							},
 						],
 					},

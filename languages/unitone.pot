@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-15T08:24:35+00:00\n"
+"POT-Creation-Date: 2026-05-07T04:42:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2194,7 +2194,7 @@ msgstr ""
 #: dist/blocks/frame/index.js:1
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 #: dist/blocks/marquee/index.js:1
 #: dist/blocks/masonry/index.js:2
 #: dist/blocks/popover-content/index.js:1
@@ -2638,7 +2638,7 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "Columns count"
 msgstr ""
 
@@ -2665,7 +2665,7 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "Rows count"
 msgstr ""
 
@@ -2711,6 +2711,8 @@ msgstr ""
 #: dist/blocks/layers/index.js:19
 #: dist/blocks/layers/index.js:22
 #: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:28
+#: dist/blocks/layers/index.js:31
 #, js-format
 msgid "Hero (%1$s)"
 msgstr ""
@@ -2735,43 +2737,53 @@ msgstr ""
 msgid "Bottom / Right"
 msgstr ""
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:28
+#: dist/blocks/section/index.js:1
+#: dist/js/editor/editor.js:13
+msgid "Center"
+msgstr ""
+
+#: dist/blocks/layers/index.js:31
+msgid "Center / Left"
+msgstr ""
+
+#: dist/blocks/layers/index.js:31
 msgid "Use background image/video (Cover)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "Treat the first child block as a background image/video."
 msgstr ""
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "The background image/video is enlarged according or reduces to the amount of content."
 msgstr ""
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "Use background image/video (Fill)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "The background image/video is enlarged according to the amount of content."
 msgstr ""
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "Use background image/video (Fixed)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "Display the background image/video as fixed."
 msgstr ""
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "Blur the background image/video"
 msgstr ""
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "Switch grid lines direction"
 msgstr ""
 
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:31
 msgid "Switch vertical and horizontal grid lines direction when portrait and mobile width."
 msgstr ""
 
@@ -2865,6 +2877,7 @@ msgid "Top"
 msgstr ""
 
 #: dist/blocks/popover-content/index.js:1
+#: dist/blocks/section/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
@@ -2878,6 +2891,7 @@ msgid "Bottom"
 msgstr ""
 
 #: dist/blocks/popover-content/index.js:1
+#: dist/blocks/section/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
@@ -2997,6 +3011,15 @@ msgstr ""
 msgid "Break point"
 msgstr ""
 
+#: dist/blocks/section/index.js:1
+#: dist/blocks/slider/index.js:1
+#: dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:13
+msgid "None"
+msgstr ""
+
 #. translators: %1$s: position
 #: dist/blocks/section/index.js:4
 #: dist/blocks/section/index.js:7
@@ -3023,6 +3046,10 @@ msgid "Left title / Subtitle"
 msgstr ""
 
 #: dist/blocks/section/index.js:13
+msgid "Container alignment"
+msgstr ""
+
+#: dist/blocks/section/index.js:13
 msgid "Max width of contents"
 msgstr ""
 
@@ -3044,14 +3071,6 @@ msgstr ""
 
 #: dist/blocks/slider/index.js:1
 msgid "Progress bar"
-msgstr ""
-
-#: dist/blocks/slider/index.js:1
-#: dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:4
-#: dist/js/editor/editor.js:13
-msgid "None"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
@@ -4089,10 +4108,6 @@ msgstr ""
 
 #: dist/js/editor/editor.js:13
 msgid "Align items baseline"
-msgstr ""
-
-#: dist/js/editor/editor.js:13
-msgid "Center"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
@@ -5549,6 +5564,11 @@ msgstr ""
 #: theme.json
 msgctxt "Font size name"
 msgid "6XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XS"
 msgstr ""
 
 #: theme.json

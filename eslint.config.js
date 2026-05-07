@@ -24,6 +24,8 @@ module.exports = [
 			'import/no-extraneous-dependencies': 'off',
 			'@wordpress/no-unsafe-wp-apis': 'off',
 			'import/no-unresolved': 'off',
+			'import/default': 'off',
+			'import/named': 'off',
 			eqeqeq: [ 'error', 'allow-null' ],
 		},
 	},

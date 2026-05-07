@@ -1,7 +1,10 @@
+import clsx from 'clsx';
 import { get } from 'lodash';
 
 import {
 	ButtonBlockAppender,
+	BlockAlignmentToolbar,
+	BlockControls,
 	InspectorControls,
 	useBlockProps,
 	useInnerBlocksProps,
@@ -18,7 +21,16 @@ import {
 	SelectControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
+
+import {
+	justifyCenter,
+	justifyLeft,
+	justifyRight,
+	justifyStretch,
+} from '@wordpress/icons';
 
 import {
 	useEffect,
@@ -37,12 +49,37 @@ import {
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
 
+import { logicalToPhysical, physicalToLogical } from '../../js/helper';
+
 import metadata from './block.json';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
+const blockAlignOptions = [
+	{
+		value: 'left',
+		icon: justifyLeft,
+		label: __( 'Left', 'unitone' ),
+	},
+	{
+		value: 'center',
+		icon: justifyCenter,
+		label: __( 'Center', 'unitone' ),
+	},
+	{
+		value: 'right',
+		icon: justifyRight,
+		label: __( 'Right', 'unitone' ),
+	},
+	{
+		value: 'none',
+		icon: justifyStretch,
+		label: __( 'None', 'unitone' ),
+	},
+];
+
 export default function ( { name, attributes, setAttributes, clientId } ) {
-	const { tagName, templateLock } = attributes;
+	const { tagName, containerAlign, templateLock } = attributes;
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -126,10 +163,32 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
+	const newContainerAlign =
+		containerAlign ?? metadata.attributes.containerAlign.default;
+
 	const TagName = tagName;
 
 	return (
 		<>
+			<BlockControls group="block">
+				<BlockAlignmentToolbar
+					controls={ blockAlignOptions.map(
+						( option ) => option.value
+					) }
+					value={ logicalToPhysical(
+						containerAlign ??
+							metadata.attributes.containerAlign.default
+					) }
+					onChange={ ( newAttribute ) => {
+						setAttributes( {
+							containerAlign: physicalToLogical(
+								newAttribute || 'none'
+							),
+						} );
+					} }
+				/>
+			</BlockControls>
+
 			<InspectorControls>
 				<ToolsPanel
 					label={ __( 'Settings', 'unitone' ) }
@@ -171,6 +230,55 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							}
 						/>
 					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							containerAlign !==
+							metadata.attributes.containerAlign.default
+						}
+						isShownByDefault
+						label={ __( 'Container alignment', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								containerAlign:
+									metadata.attributes.containerAlign.default,
+							} )
+						}
+					>
+						<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
+							<ToggleGroupControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={ __( 'Container alignment', 'unitone' ) }
+								value={ logicalToPhysical(
+									containerAlign ??
+										metadata.attributes.containerAlign
+											.default
+								) }
+								onChange={ ( value ) => {
+									setAttributes( {
+										containerAlign:
+											logicalToPhysical(
+												containerAlign
+											) !== value
+												? physicalToLogical( value )
+												: undefined,
+									} );
+								} }
+							>
+								{ blockAlignOptions.map(
+									( { value, icon, label: iconLabel } ) => (
+										<ToggleGroupControlOptionIcon
+											key={ value }
+											icon={ icon }
+											label={ iconLabel }
+											value={ value }
+										/>
+									)
+								) }
+							</ToggleGroupControl>
+						</fieldset>
+					</ToolsPanelItem>
 				</ToolsPanel>
 			</InspectorControls>
 
@@ -181,7 +289,13 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 			) : (
 				<TagName { ...blockProps }>
 					<div data-unitone-layout="gutters">
-						<div data-unitone-layout="container">
+						<div
+							data-unitone-layout={ clsx(
+								'container',
+								'none' !== newContainerAlign &&
+									`-align:${ newContainerAlign }`
+							) }
+						>
 							<div { ...innerBlocksProps } />
 						</div>
 					</div>

@@ -11,6 +11,10 @@
 			"type": "string",
 			"default": "section"
 		},
+		"containerAlign": {
+			"type": "string",
+			"default": "none"
+		},
 		"unitone": {
 			"type": "object",
 			"default": {

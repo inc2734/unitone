@@ -101,9 +101,7 @@ export function BlockAlignToolbar( {
 				onChange={ ( newAttribute ) => {
 					const newUnitone = {
 						...unitone,
-						blockAlign: physicalToLogical(
-							newAttribute || undefined
-						),
+						blockAlign: physicalToLogical( newAttribute || 'none' ),
 					};
 
 					setAttributes( {
@@ -180,7 +178,7 @@ export function withBlockAlignBlockProps( settings ) {
 	const defaultValue = getDefaultValue( { name } );
 	const newBlockAlign = attributes?.unitone?.blockAlign ?? defaultValue ?? '';
 
-	if ( '' === newBlockAlign ) {
+	if ( '' === newBlockAlign || 'none' === newBlockAlign ) {
 		return settings;
 	}
 

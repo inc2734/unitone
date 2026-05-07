@@ -250,7 +250,10 @@ add_filter(
 
 		// -align
 		if ( unitone_has_block_support( 'unitone.blockAlign', $metadata ) ) {
-			$add_attribute( '-align', $get_attribute( 'blockAlign' ) );
+			$block_align = $get_attribute( 'blockAlign' );
+			if ( 'none' !== $block_align ) {
+				$add_attribute( '-align', $block_align );
+			}
 		}
 
 		// -divider

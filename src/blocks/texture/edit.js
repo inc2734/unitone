@@ -31,14 +31,24 @@ import {
 } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
+
 import {
 	getTextureStyle,
 	getTextureTypeDefaultAttributes,
+	getTextureTypeSettings,
 	isTextureSettingEnabled,
 	typeOptions,
 } from './utils';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
+
+const cloneAttribute = ( value ) => {
+	if ( !! value && 'object' === typeof value ) {
+		return { ...value };
+	}
+
+	return value;
+};
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const {
@@ -97,10 +107,35 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const defaultType = metadata.attributes.type.default;
+	const getTextureTypeEditorDefaultAttributes = ( textureType ) => {
+		const defaultAttributes =
+			getTextureTypeDefaultAttributes( textureType );
+		const settings = getTextureTypeSettings( textureType );
+
+		Object.entries( settings ).forEach( ( [ settingKey, isEnabled ] ) => {
+			if (
+				'color' === settingKey ||
+				true !== isEnabled ||
+				undefined !== defaultAttributes[ settingKey ]
+			) {
+				return;
+			}
+
+			defaultAttributes[ settingKey ] =
+				metadata.attributes[ settingKey ]?.default;
+		} );
+
+		return Object.fromEntries(
+			Object.entries( defaultAttributes ).map( ( [ key, value ] ) => [
+				key,
+				cloneAttribute( value ),
+			] )
+		);
+	};
 	const defaultTypeDefaultAttributes =
-		getTextureTypeDefaultAttributes( defaultType );
+		getTextureTypeEditorDefaultAttributes( defaultType );
 	const currentTypeDefaultAttributes =
-		getTextureTypeDefaultAttributes( type );
+		getTextureTypeEditorDefaultAttributes( type );
 
 	return (
 		<>
@@ -137,7 +172,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 								setAttributes( {
 									type: newType,
-									...getTextureTypeDefaultAttributes(
+									...getTextureTypeEditorDefaultAttributes(
 										newType
 									),
 								} );

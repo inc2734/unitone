@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-05-11T06:53:50+00:00\n"
-"PO-Revision-Date: 2026-05-11 15:55+0900\n"
+"POT-Creation-Date: 2026-05-11T07:49:37+00:00\n"
+"PO-Revision-Date: 2026-05-11 17:01+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2133,16 +2133,20 @@ msgstr "OpenAI（非推奨）"
 #. translators: %1$s: <a>, %2$s: </a>
 #: App/Controller/Manager/dist/js/app.js:12
 msgid ""
-"Starting with WordPress 7.0, the use of %1$sWordPress AI Connectors%2$s is "
+"Starting with WordPress 7.0, the use of %1$sAI Connectors%2$s is "
 "recommended. This setup is scheduled to be rolled out, so please migrate to "
-"WordPress AI Connectors as soon as possible."
+"AI Connectors as soon as possible."
 msgstr ""
+"WordPress 7.0 以降では、%1$sAI コネクタ%2$s の使用が推奨されます。この設定は"
+"順次導入される予定ですので、できるだけ早く AI コネクタへ移行してください。"
 
 #: App/Controller/Manager/dist/js/app.js:12
 msgid ""
-"WordPress AI Connectors are already configured and currently in use. The "
-"OpenAI settings below are only used as a legacy fallback."
+"AI Connectors are already configured and currently in use. The OpenAI "
+"settings below are only used as a legacy fallback."
 msgstr ""
+"AI コネクタはすでに設定済みで、現在使用されています。以下の OpenAI 設定は、レ"
+"ガシーな代替手段としてのみ使用されます。"
 
 #: App/Controller/Manager/dist/js/app.js:12
 msgid "API Key"
@@ -3597,9 +3601,11 @@ msgstr "テキストジェネレーター"
 #. translators: %1$s: <a>, %2$s: </a>
 #: dist/js/editor/577.js:4
 msgid ""
-"To use this feature, configure WordPress AI Connectors from the "
-"%1$sConnectors settings screen%2$s."
+"To use this feature, configure AI Connectors from the %1$sConnectors "
+"settings screen%2$s."
 msgstr ""
+"この機能を使用するには、%1$sコネクタ設定画面%2$sから AI コネクタを設定してく"
+"ださい。"
 
 #: dist/js/editor/577.js:4
 msgid "Prompt"
@@ -3643,10 +3649,12 @@ msgstr "プロンプトを入力してください。"
 
 #: dist/js/editor/577.js:4
 msgid ""
-"[unitone] Starting with WordPress 7.0, the use of WordPress AI Connectors is "
+"[unitone] Starting with WordPress 7.0, the use of AI Connectors is "
 "recommended. This setup is scheduled to be rolled out, so please migrate to "
-"WordPress AI Connectors as soon as possible."
+"AI Connectors as soon as possible."
 msgstr ""
+"[unitone] WordPress 7.0 以降、AI コネクタの使用が推奨されます。この設定は順次"
+"導入される予定ですので、できるだけ早く AI コネクタへ移行してください。"
 
 #: dist/js/editor/577.js:4
 msgid "Failed to generate. Please try again."

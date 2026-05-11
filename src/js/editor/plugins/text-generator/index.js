@@ -90,7 +90,7 @@ const AIGenerateSidebar = () => {
 				// eslint-disable-next-line no-console
 				console.warn(
 					__(
-						'[unitone] Starting with WordPress 7.0, the use of WordPress AI Connectors is recommended. This setup is scheduled to be rolled out, so please migrate to WordPress AI Connectors as soon as possible.',
+						'[unitone] Starting with WordPress 7.0, the use of AI Connectors is recommended. This setup is scheduled to be rolled out, so please migrate to AI Connectors as soon as possible.',
 						'unitone'
 					)
 				);
@@ -137,7 +137,7 @@ const AIGenerateSidebar = () => {
 									__html: sprintf(
 										// translators: %1$s: <a>, %2$s: </a>
 										__(
-											'To use this feature, configure WordPress AI Connectors from the %1$sConnectors settings screen%2$s.',
+											'To use this feature, configure AI Connectors from the %1$sConnectors settings screen%2$s.',
 											'unitone'
 										),
 										`<a href="${ connectorsSettingsUrl }" target="_blank" rel="noopener noreferrer">`,

@@ -190,7 +190,7 @@ add_action(
 					if ( ! $openai_model || ! $openai_key ) {
 						return new \WP_REST_Response(
 							array(
-								'message' => 'OpenAI setup is not configured. Configure WordPress AI Connectors or set the legacy OpenAI API key/model in unitone setup.',
+								'message' => 'OpenAI setup is not configured. Configure AI Connectors or set the legacy OpenAI API key/model in unitone setup.',
 							),
 							400
 						);
@@ -241,7 +241,7 @@ add_action(
 		);
 
 		/**
-		 * Check whether WordPress AI Connectors are configured for text generation.
+		 * Check whether AI Connectors are configured for text generation.
 		 */
 		register_rest_route(
 			'unitone/v1',
@@ -288,7 +288,7 @@ add_action(
 
 					if ( ! function_exists( 'wp_ai_client_prompt' ) ) {
 						return new \WP_REST_Response(
-							array( 'message' => 'WordPress AI client is not available.' ),
+							array( 'message' => 'AI client is not available.' ),
 							500
 						);
 					}

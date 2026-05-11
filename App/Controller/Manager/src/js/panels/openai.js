@@ -220,7 +220,7 @@ export default function () {
 							__html: sprintf(
 								// translators: %1$s: <a>, %2$s: </a>
 								__(
-									'Starting with WordPress 7.0, the use of %1$sWordPress AI Connectors%2$s is recommended. This setup is scheduled to be rolled out, so please migrate to WordPress AI Connectors as soon as possible.',
+									'Starting with WordPress 7.0, the use of %1$sAI Connectors%2$s is recommended. This setup is scheduled to be rolled out, so please migrate to AI Connectors as soon as possible.',
 									'unitone'
 								),
 								`<a href="${ connectorsSettingsUrl }" target="_blank" rel="noopener noreferrer">`,
@@ -233,7 +233,7 @@ export default function () {
 				{ isWpAiConnectorsConfigured && (
 					<Notice status="success" isDismissible={ false }>
 						{ __(
-							'WordPress AI Connectors are already configured and currently in use. The OpenAI settings below are only used as a legacy fallback.',
+							'AI Connectors are already configured and currently in use. The OpenAI settings below are only used as a legacy fallback.',
 							'unitone'
 						) }
 					</Notice>

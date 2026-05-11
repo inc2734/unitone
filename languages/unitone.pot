@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-11T06:53:50+00:00\n"
+"POT-Creation-Date: 2026-05-11T07:49:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2134,11 +2134,11 @@ msgstr ""
 #. translators: %1$s: <a>, %2$s: </a>
 #: App/Controller/Manager/dist/js/app.js:12
 #, js-format
-msgid "Starting with WordPress 7.0, the use of %1$sWordPress AI Connectors%2$s is recommended. This setup is scheduled to be rolled out, so please migrate to WordPress AI Connectors as soon as possible."
+msgid "Starting with WordPress 7.0, the use of %1$sAI Connectors%2$s is recommended. This setup is scheduled to be rolled out, so please migrate to AI Connectors as soon as possible."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:12
-msgid "WordPress AI Connectors are already configured and currently in use. The OpenAI settings below are only used as a legacy fallback."
+msgid "AI Connectors are already configured and currently in use. The OpenAI settings below are only used as a legacy fallback."
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:12
@@ -3659,7 +3659,7 @@ msgstr ""
 #. translators: %1$s: <a>, %2$s: </a>
 #: dist/js/editor/577.js:4
 #, js-format
-msgid "To use this feature, configure WordPress AI Connectors from the %1$sConnectors settings screen%2$s."
+msgid "To use this feature, configure AI Connectors from the %1$sConnectors settings screen%2$s."
 msgstr ""
 
 #: dist/js/editor/577.js:4
@@ -3703,7 +3703,7 @@ msgid "Please enter a prompt."
 msgstr ""
 
 #: dist/js/editor/577.js:4
-msgid "[unitone] Starting with WordPress 7.0, the use of WordPress AI Connectors is recommended. This setup is scheduled to be rolled out, so please migrate to WordPress AI Connectors as soon as possible."
+msgid "[unitone] Starting with WordPress 7.0, the use of AI Connectors is recommended. This setup is scheduled to be rolled out, so please migrate to AI Connectors as soon as possible."
 msgstr ""
 
 #: dist/js/editor/577.js:4

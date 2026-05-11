@@ -24,7 +24,7 @@ const activateTab = ( ref, tabId ) => {
 
 	try {
 		tab.focus( { preventScroll: true } );
-	} catch ( e ) {
+	} catch {
 		tab.focus();
 	}
 
@@ -61,7 +61,7 @@ const { state } = store( 'unitone/tabs', {
 					link.getAttribute( 'href' ),
 					ref.ownerDocument.baseURI
 				);
-			} catch ( e ) {
+			} catch {
 				return;
 			}
 
@@ -78,7 +78,7 @@ const { state } = store( 'unitone/tabs', {
 			let tabId = url.hash?.slice( 1 ) ?? '';
 			try {
 				tabId = decodeURIComponent( tabId );
-			} catch ( e ) {}
+			} catch {}
 
 			activateTab( ref, tabId );
 		},
@@ -98,7 +98,7 @@ const { state } = store( 'unitone/tabs', {
 			let tabId = hash.slice( 1 );
 			try {
 				tabId = decodeURIComponent( tabId );
-			} catch ( e ) {}
+			} catch {}
 
 			if ( ! tabId ) {
 				return;

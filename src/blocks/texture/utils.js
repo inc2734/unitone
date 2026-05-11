@@ -4,95 +4,171 @@ export const typeOptions = [
 	{
 		label: __( 'Dots', 'unitone' ),
 		value: 'dots',
+		default: {
+			gap: 50,
+			size: 1,
+		},
 		settings: {
 			color: true,
 			gap: true,
+			offset: true,
+			radius: true,
 			size: true,
 		},
 	},
 	{
 		label: __( 'Offset dots', 'unitone' ),
 		value: 'offset-dots',
+		default: {
+			gap: 50,
+			size: 1,
+		},
 		settings: {
 			color: true,
 			gap: true,
+			offset: true,
+			radius: true,
 			size: true,
 		},
 	},
 	{
 		label: __( 'Grid', 'unitone' ),
 		value: 'grid',
+		default: {
+			gap: 50,
+			size: 1,
+		},
 		settings: {
 			color: true,
 			gap: true,
+			offset: true,
+			radius: true,
 			size: true,
 		},
 	},
 	{
 		label: __( 'Horizontal stripe', 'unitone' ),
 		value: 'horizontal-stripe',
+		default: {
+			gap: 50,
+			size: 1,
+		},
 		settings: {
 			color: true,
 			gap: true,
+			offset: true,
+			radius: true,
 			size: true,
 		},
 	},
 	{
 		label: __( 'Vertical stripe', 'unitone' ),
 		value: 'vertical-stripe',
+		default: {
+			gap: 50,
+			size: 1,
+		},
 		settings: {
 			color: true,
 			gap: true,
+			offset: true,
+			radius: true,
 			size: true,
 		},
 	},
 	{
 		label: __( 'Checker pattern', 'unitone' ),
 		value: 'checker-pattern',
+		default: {
+			gap: 50,
+		},
 		settings: {
 			color: true,
 			gap: true,
+			offset: true,
+			radius: true,
 		},
 	},
 	{
 		label: __( 'Graph paper', 'unitone' ),
 		value: 'graph-paper',
+		default: {
+			gap: 50,
+			size: 1,
+		},
 		settings: {
 			color: true,
 			gap: true,
+			offset: true,
+			radius: true,
 			size: true,
 		},
 	},
 	{
 		label: __( 'Slash', 'unitone' ),
 		value: 'slash',
+		default: {
+			gap: 50,
+			size: 1,
+		},
 		settings: {
 			color: true,
 			gap: true,
 			size: true,
+			offset: true,
+			radius: true,
 		},
 	},
 	{
 		label: __( 'Backslash', 'unitone' ),
 		value: 'backslash',
+		default: {
+			gap: 50,
+			size: 1,
+		},
 		settings: {
 			color: true,
 			gap: true,
+			offset: true,
+			radius: true,
 			size: true,
 		},
 	},
 	{
 		label: __( 'Wave', 'unitone' ),
 		value: 'wave',
+		default: {
+			size: 1,
+			offset: {
+				top: '0px',
+				right: '0px',
+				bottom: '0px',
+				left: '0px',
+			},
+		},
 		settings: {
 			color: true,
-			size: true,
 			offset: true,
+			size: true,
 		},
 	},
 	{
 		label: __( 'Solid color', 'unitone' ),
 		value: 'solid-color',
+		default: {
+			offset: {
+				top: '0px',
+				right: '0px',
+				bottom: '0px',
+				left: '0px',
+			},
+			radius: {
+				top: '0px',
+				right: '0px',
+				bottom: '0px',
+				left: '0px',
+			},
+		},
 		settings: {
 			color: true,
 			offset: true,
@@ -100,11 +176,31 @@ export const typeOptions = [
 		},
 	},
 	{
-		label: __( 'Diagonal band', 'unitone' ),
-		value: 'diagonal-band',
+		label: __( 'Slash shape', 'unitone' ),
+		value: 'slash-shape',
+		default: {
+			shapeSize: {
+				top: '25%',
+				bottom: '25%',
+			},
+		},
 		settings: {
 			color: true,
-			bandSize: true,
+			shapeSize: true,
+		},
+	},
+	{
+		label: __( 'Backslash shape', 'unitone' ),
+		value: 'backslash-shape',
+		default: {
+			shapeSize: {
+				top: '25%',
+				bottom: '25%',
+			},
+		},
+		settings: {
+			color: true,
+			shapeSize: true,
 		},
 	},
 ];
@@ -114,6 +210,24 @@ export const getTextureTypeSettings = ( type ) =>
 
 export const isTextureSettingEnabled = ( type, settingKey ) =>
 	getTextureTypeSettings( type )[ settingKey ] === true;
+
+const getResetAttributes = () =>
+	Object.fromEntries(
+		[
+			...new Set(
+				typeOptions.flatMap( ( { settings } ) =>
+					Object.keys( settings ).filter(
+						( settingKey ) => 'color' !== settingKey
+					)
+				)
+			),
+		].map( ( settingKey ) => [ settingKey, undefined ] )
+	);
+
+export const getTextureTypeDefaultAttributes = ( type ) => ( {
+	...getResetAttributes(),
+	...typeOptions.find( ( option ) => option.value === type )?.default,
+} );
 
 const getPresetOrCustomColor = ( color, customColor ) => {
 	if ( !! color ) {
@@ -145,7 +259,7 @@ export const getTextureStyle = ( {
 	customColor,
 	gap,
 	size,
-	bandSize,
+	shapeSize,
 	offset,
 	radius,
 } ) => ( {
@@ -160,15 +274,15 @@ export const getTextureStyle = ( {
 		: undefined,
 	'--unitone--texture-band-top-size': isTextureSettingEnabled(
 		type,
-		'bandSize'
+		'shapeSize'
 	)
-		? getPositiveUnitValue( bandSize?.top )
+		? shapeSize?.top
 		: undefined,
 	'--unitone--texture-band-bottom-size': isTextureSettingEnabled(
 		type,
-		'bandSize'
+		'shapeSize'
 	)
-		? getPositiveUnitValue( bandSize?.bottom )
+		? shapeSize?.bottom
 		: undefined,
 	'--unitone--texture-top': isTextureSettingEnabled( type, 'offset' )
 		? getPositiveUnitValue( offset?.top )
@@ -186,24 +300,24 @@ export const getTextureStyle = ( {
 		type,
 		'radius'
 	)
-		? getPositiveUnitValue( radius?.topLeft )
+		? radius?.topLeft
 		: undefined,
 	'--unitone--texture-border-top-right-radius': isTextureSettingEnabled(
 		type,
 		'radius'
 	)
-		? getPositiveUnitValue( radius?.topRight )
+		? radius?.topRight
 		: undefined,
 	'--unitone--texture-border-bottom-right-radius': isTextureSettingEnabled(
 		type,
 		'radius'
 	)
-		? getPositiveUnitValue( radius?.bottomRight )
+		? radius?.bottomRight
 		: undefined,
 	'--unitone--texture-border-bottom-left-radius': isTextureSettingEnabled(
 		type,
 		'radius'
 	)
-		? getPositiveUnitValue( radius?.bottomLeft )
+		? radius?.bottomLeft
 		: undefined,
 } );

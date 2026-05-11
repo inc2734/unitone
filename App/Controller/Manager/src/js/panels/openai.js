@@ -46,7 +46,7 @@ export default function () {
 				if ( isMounted ) {
 					setIsWpAiConnectorsConfigured( response );
 				}
-			} catch ( e ) {
+			} catch {
 				if ( isMounted ) {
 					setIsWpAiConnectorsConfigured( false );
 				}

@@ -5,7 +5,7 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import { getTextureStyle } from './utils';
 
 export default function ( { attributes } ) {
-	const { type, color, customColor, gap, size, bandSize, offset, radius } =
+	const { type, color, customColor, gap, size, shapeSize, offset, radius } =
 		attributes;
 
 	const blockProps = useBlockProps.save( {
@@ -18,7 +18,7 @@ export default function ( { attributes } ) {
 			customColor,
 			gap,
 			size,
-			bandSize,
+			shapeSize,
 			offset,
 			radius,
 		} ),

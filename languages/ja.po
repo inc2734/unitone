@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-05-07T04:42:21+00:00\n"
-"PO-Revision-Date: 2026-05-07 13:43+0900\n"
+"POT-Creation-Date: 2026-05-11T06:53:50+00:00\n"
+"PO-Revision-Date: 2026-05-11 15:55+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3306,6 +3306,14 @@ msgstr "波"
 msgid "Solid color"
 msgstr "ベタ塗り"
 
+#: dist/blocks/texture/index.js:1
+msgid "Slash shape"
+msgstr "スラッシュシェイプ"
+
+#: dist/blocks/texture/index.js:1
+msgid "Backslash shape"
+msgstr "バックスラッシュシェイプ"
+
 #: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:4
 #: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
 msgid "Type"
@@ -3318,6 +3326,14 @@ msgstr "色"
 #: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:1
 msgid "Gap"
 msgstr "間隔"
+
+#: dist/blocks/texture/index.js:1
+msgid "Top size"
+msgstr "上部のサイズ"
+
+#: dist/blocks/texture/index.js:1
+msgid "Bottom size"
+msgstr "下部のサイズ"
 
 #: dist/blocks/texture/index.js:1
 msgid "Offset"
@@ -5934,11 +5950,3 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
-
-#~ msgctxt "block description"
-#~ msgid "This block is used to place the block that triggers the dialog."
-#~ msgstr "ダイアログをトリガーするブロックを配置するために使用します。"
-
-#~ msgctxt "block description"
-#~ msgid "Displays modal content using the dialog element."
-#~ msgstr "dialog 要素を使用してモーダルコンテンツを表示します。"

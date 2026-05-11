@@ -31,7 +31,12 @@ import {
 } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
-import { getTextureStyle, isTextureSettingEnabled, typeOptions } from './utils';
+import {
+	getTextureStyle,
+	getTextureTypeDefaultAttributes,
+	isTextureSettingEnabled,
+	typeOptions,
+} from './utils';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
@@ -42,7 +47,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		customColor,
 		gap,
 		size,
-		bandSize,
+		shapeSize,
 		offset,
 		radius,
 		templateLock,
@@ -67,7 +72,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			customColor,
 			gap,
 			size,
-			bandSize,
+			shapeSize,
 			offset,
 			radius,
 		} ),
@@ -91,6 +96,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	} );
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+	const defaultType = metadata.attributes.type.default;
+	const defaultTypeDefaultAttributes =
+		getTextureTypeDefaultAttributes( defaultType );
+	const currentTypeDefaultAttributes =
+		getTextureTypeDefaultAttributes( type );
 
 	return (
 		<>
@@ -107,7 +117,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						label={ __( 'Type', 'unitone' ) }
 						onDeselect={ () =>
 							setAttributes( {
-								type: metadata.attributes.type.default,
+								type: defaultType,
+								...defaultTypeDefaultAttributes,
 							} )
 						}
 					>
@@ -120,13 +131,17 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								value: o.value,
 							} ) ) }
 							value={ normalizeForSelectControl( type ) }
-							onChange={ ( newAttribute ) =>
+							onChange={ ( newAttribute ) => {
+								const newType =
+									normalizeForSelectControl( newAttribute );
+
 								setAttributes( {
-									type: normalizeForSelectControl(
-										newAttribute
+									type: newType,
+									...getTextureTypeDefaultAttributes(
+										newType
 									),
-								} )
-							}
+								} );
+							} }
 						/>
 					</ToolsPanelItem>
 
@@ -179,13 +194,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					{ isTextureSettingEnabled( type, 'gap' ) && (
 						<ToolsPanelItem
 							hasValue={ () =>
-								gap !== metadata.attributes.gap.default
+								gap !== currentTypeDefaultAttributes.gap
 							}
 							isShownByDefault
 							label={ __( 'Gap', 'unitone' ) }
 							onDeselect={ () =>
 								setAttributes( {
-									gap: metadata.attributes.gap.default,
+									gap: currentTypeDefaultAttributes.gap,
 								} )
 							}
 						>
@@ -211,13 +226,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 					{ isTextureSettingEnabled( type, 'size' ) && (
 						<ToolsPanelItem
 							hasValue={ () =>
-								size !== metadata.attributes.size.default
+								size !== currentTypeDefaultAttributes.size
 							}
 							isShownByDefault
 							label={ __( 'Size', 'unitone' ) }
 							onDeselect={ () =>
 								setAttributes( {
-									size: metadata.attributes.size.default,
+									size: currentTypeDefaultAttributes.size,
 								} )
 							}
 						>
@@ -240,20 +255,20 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						</ToolsPanelItem>
 					) }
 
-					{ isTextureSettingEnabled( type, 'bandSize' ) && (
+					{ isTextureSettingEnabled( type, 'shapeSize' ) && (
 						<ToolsPanelItem
 							hasValue={ () =>
-								JSON.stringify( bandSize ) !==
+								JSON.stringify( shapeSize ) !==
 								JSON.stringify(
-									metadata.attributes.bandSize.default
+									currentTypeDefaultAttributes.shapeSize
 								)
 							}
 							isShownByDefault
-							label={ __( 'Band size', 'unitone' ) }
+							label={ __( 'Size', 'unitone' ) }
 							onDeselect={ () =>
 								setAttributes( {
-									bandSize: {
-										...metadata.attributes.bandSize.default,
+									shapeSize: {
+										...currentTypeDefaultAttributes.shapeSize,
 									},
 								} )
 							}
@@ -264,12 +279,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									label={ __( 'Top size', 'unitone' ) }
 									min={ 0 }
 									value={ normalizeForUnitControl(
-										bandSize?.top
+										shapeSize?.top
 									) }
 									onChange={ ( value ) =>
 										setAttributes( {
-											bandSize: {
-												...bandSize,
+											shapeSize: {
+												...shapeSize,
 												top: normalizeForUnitControl(
 													value
 												),
@@ -283,12 +298,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									label={ __( 'Bottom size', 'unitone' ) }
 									min={ 0 }
 									value={ normalizeForUnitControl(
-										bandSize?.bottom
+										shapeSize?.bottom
 									) }
 									onChange={ ( value ) =>
 										setAttributes( {
-											bandSize: {
-												...bandSize,
+											shapeSize: {
+												...shapeSize,
 												bottom: normalizeForUnitControl(
 													value
 												),
@@ -305,7 +320,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							hasValue={ () =>
 								JSON.stringify( offset ) !==
 								JSON.stringify(
-									metadata.attributes.offset.default
+									currentTypeDefaultAttributes.offset
 								)
 							}
 							isShownByDefault
@@ -313,7 +328,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							onDeselect={ () =>
 								setAttributes( {
 									offset: {
-										...metadata.attributes.offset.default,
+										...currentTypeDefaultAttributes.offset,
 									},
 								} )
 							}
@@ -415,7 +430,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							hasValue={ () =>
 								JSON.stringify( radius ) !==
 								JSON.stringify(
-									metadata.attributes.radius.default
+									currentTypeDefaultAttributes.radius
 								)
 							}
 							isShownByDefault
@@ -423,7 +438,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							onDeselect={ () =>
 								setAttributes( {
 									radius: {
-										...metadata.attributes.radius.default,
+										...currentTypeDefaultAttributes.radius,
 									},
 								} )
 							}

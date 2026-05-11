@@ -26,6 +26,13 @@
 			"type": "number",
 			"default": 1
 		},
+		"bandSize": {
+			"type": "object",
+			"default": {
+				"top": "0px",
+				"bottom": "0px"
+			}
+		},
 		"offset": {
 			"type": "object",
 			"default": {

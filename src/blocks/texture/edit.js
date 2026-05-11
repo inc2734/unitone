@@ -31,66 +31,9 @@ import {
 } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
+import { getTextureStyle, isTextureSettingEnabled, typeOptions } from './utils';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
-
-const typeOptions = [
-	{
-		label: __( 'Dots', 'unitone' ),
-		value: 'dots',
-	},
-	{
-		label: __( 'Offset dots', 'unitone' ),
-		value: 'offset-dots',
-	},
-	{
-		label: __( 'Grid', 'unitone' ),
-		value: 'grid',
-	},
-	{
-		label: __( 'Horizontal stripe', 'unitone' ),
-		value: 'horizontal-stripe',
-	},
-	{
-		label: __( 'Vertical stripe', 'unitone' ),
-		value: 'vertical-stripe',
-	},
-	{
-		label: __( 'Checker pattern', 'unitone' ),
-		value: 'checker-pattern',
-		settings: {
-			size: false,
-		},
-	},
-	{
-		label: __( 'Graph paper', 'unitone' ),
-		value: 'graph-paper',
-	},
-	{
-		label: __( 'Slash', 'unitone' ),
-		value: 'slash',
-	},
-	{
-		label: __( 'Backslash', 'unitone' ),
-		value: 'backslash',
-	},
-	{
-		label: __( 'Wave', 'unitone' ),
-		value: 'wave',
-		settings: {
-			gap: false,
-			radius: false,
-		},
-	},
-	{
-		label: __( 'Solid color', 'unitone' ),
-		value: 'solid-color',
-		settings: {
-			gap: false,
-			size: false,
-		},
-	},
-];
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const {
@@ -99,15 +42,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		customColor,
 		gap,
 		size,
+		bandSize,
 		offset,
 		radius,
 		templateLock,
 	} = attributes;
-
-	const selectedTypeSettings =
-		typeOptions.find( ( option ) => option.value === type )?.settings || {};
-	const isSettingEnabled = ( settingKey ) =>
-		selectedTypeSettings[ settingKey ] !== false;
 
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 	const colors = colorGradientSettings.colors.flatMap(
@@ -122,45 +61,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps( {
-		style: {
-			'--unitone--texture-color': !! color
-				? `var(--wp--preset--color--${ color })`
-				: customColor,
-			'--unitone--texture-gap': !! gap ? `${ gap }px` : undefined,
-			'--unitone--texture-size': !! size ? `${ size }px` : undefined,
-			'--unitone--texture-top':
-				!! offset?.top && 0 < parseInt( offset?.top )
-					? offset?.top
-					: undefined,
-			'--unitone--texture-right':
-				!! offset?.right && 0 < parseInt( offset?.right )
-					? offset?.right
-					: undefined,
-			'--unitone--texture-bottom':
-				!! offset?.bottom && 0 < parseInt( offset?.bottom )
-					? offset?.bottom
-					: undefined,
-			'--unitone--texture-left':
-				!! offset?.left && 0 < parseInt( offset?.left )
-					? offset?.left
-					: undefined,
-			'--unitone--texture-border-top-left-radius':
-				!! radius?.topLeft && 0 < parseInt( radius?.topLeft )
-					? radius?.topLeft
-					: undefined,
-			'--unitone--texture-border-top-right-radius':
-				!! radius?.topRight && 0 < parseInt( radius?.topRight )
-					? radius?.topRight
-					: undefined,
-			'--unitone--texture-border-bottom-right-radius':
-				!! radius?.bottomRight && 0 < parseInt( radius?.bottomRight )
-					? radius?.bottomRight
-					: undefined,
-			'--unitone--texture-border-bottom-left-radius':
-				!! radius?.bottomLeft && 0 < parseInt( radius?.bottomLeft )
-					? radius?.bottomLeft
-					: undefined,
-		},
+		style: getTextureStyle( {
+			type,
+			color,
+			customColor,
+			gap,
+			size,
+			bandSize,
+			offset,
+			radius,
+		} ),
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'texture',
@@ -220,7 +130,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						/>
 					</ToolsPanelItem>
 
-					{ isSettingEnabled( 'color' ) && (
+					{ isTextureSettingEnabled( type, 'color' ) && (
 						<ToolsPanelItem
 							hasValue={ () =>
 								color !== metadata.attributes.color.default
@@ -266,7 +176,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						</ToolsPanelItem>
 					) }
 
-					{ isSettingEnabled( 'gap' ) && (
+					{ isTextureSettingEnabled( type, 'gap' ) && (
 						<ToolsPanelItem
 							hasValue={ () =>
 								gap !== metadata.attributes.gap.default
@@ -298,7 +208,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						</ToolsPanelItem>
 					) }
 
-					{ isSettingEnabled( 'size' ) && (
+					{ isTextureSettingEnabled( type, 'size' ) && (
 						<ToolsPanelItem
 							hasValue={ () =>
 								size !== metadata.attributes.size.default
@@ -330,7 +240,67 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						</ToolsPanelItem>
 					) }
 
-					{ isSettingEnabled( 'offset' ) && (
+					{ isTextureSettingEnabled( type, 'bandSize' ) && (
+						<ToolsPanelItem
+							hasValue={ () =>
+								JSON.stringify( bandSize ) !==
+								JSON.stringify(
+									metadata.attributes.bandSize.default
+								)
+							}
+							isShownByDefault
+							label={ __( 'Band size', 'unitone' ) }
+							onDeselect={ () =>
+								setAttributes( {
+									bandSize: {
+										...metadata.attributes.bandSize.default,
+									},
+								} )
+							}
+						>
+							<div style={ { display: 'grid', gap: '13px' } }>
+								<UnitControl
+									__next40pxDefaultSize
+									label={ __( 'Top size', 'unitone' ) }
+									min={ 0 }
+									value={ normalizeForUnitControl(
+										bandSize?.top
+									) }
+									onChange={ ( value ) =>
+										setAttributes( {
+											bandSize: {
+												...bandSize,
+												top: normalizeForUnitControl(
+													value
+												),
+											},
+										} )
+									}
+								/>
+
+								<UnitControl
+									__next40pxDefaultSize
+									label={ __( 'Bottom size', 'unitone' ) }
+									min={ 0 }
+									value={ normalizeForUnitControl(
+										bandSize?.bottom
+									) }
+									onChange={ ( value ) =>
+										setAttributes( {
+											bandSize: {
+												...bandSize,
+												bottom: normalizeForUnitControl(
+													value
+												),
+											},
+										} )
+									}
+								/>
+							</div>
+						</ToolsPanelItem>
+					) }
+
+					{ isTextureSettingEnabled( type, 'offset' ) && (
 						<ToolsPanelItem
 							hasValue={ () =>
 								JSON.stringify( offset ) !==
@@ -355,6 +325,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										'Distance from top',
 										'unitone'
 									) }
+									min={ 0 }
 									value={ normalizeForUnitControl(
 										offset?.top
 									) }
@@ -376,6 +347,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										'Distance from right',
 										'unitone'
 									) }
+									min={ 0 }
 									value={ normalizeForUnitControl(
 										offset?.right
 									) }
@@ -397,6 +369,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										'Distance from bottom',
 										'unitone'
 									) }
+									min={ 0 }
 									value={ normalizeForUnitControl(
 										offset?.bottom
 									) }
@@ -418,6 +391,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										'Distance from left',
 										'unitone'
 									) }
+									min={ 0 }
 									value={ normalizeForUnitControl(
 										offset?.left
 									) }
@@ -436,7 +410,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						</ToolsPanelItem>
 					) }
 
-					{ isSettingEnabled( 'radius' ) && (
+					{ isTextureSettingEnabled( type, 'radius' ) && (
 						<ToolsPanelItem
 							hasValue={ () =>
 								JSON.stringify( radius ) !==

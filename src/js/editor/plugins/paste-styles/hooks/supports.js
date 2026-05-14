@@ -61,6 +61,11 @@ const TEXT_TRANSFORM_SUPPORT_KEY = 'typography.__experimentalTextTransform';
  */
 const LETTER_SPACING_SUPPORT_KEY = 'typography.__experimentalLetterSpacing';
 const LAYOUT_SUPPORT_KEY = 'layout';
+const UNITONE_HOVER_BACKGROUND_COLOR_SUPPORT_KEY =
+	'unitone.hover.color.background';
+const UNITONE_HOVER_GRADIENT_SUPPORT_KEY = 'unitone.hover.color.gradients';
+const UNITONE_HOVER_TEXT_COLOR_SUPPORT_KEY = 'unitone.hover.color.text';
+const UNITONE_HOVER_BORDER_COLOR_SUPPORT_KEY = 'unitone.hover.border.color';
 const TYPOGRAPHY_SUPPORT_KEYS = [
 	LINE_HEIGHT_SUPPORT_KEY,
 	FONT_SIZE_SUPPORT_KEY,
@@ -348,3 +353,39 @@ export const getLayoutSupport = ( nameOrType ) =>
  */
 export const hasStyleSupport = ( nameOrType ) =>
 	styleSupportKeys.some( ( key ) => hasBlockSupport( nameOrType, key ) );
+
+/**
+ * Returns true if the block defines support for unitone hover background color.
+ *
+ * @param {string|Object} nameOrType Block name or type object.
+ * @return {boolean} Whether the block supports the feature.
+ */
+export const hasUnitoneHoverBackgroundColorSupport = ( nameOrType ) =>
+	hasBlockSupport( nameOrType, UNITONE_HOVER_BACKGROUND_COLOR_SUPPORT_KEY );
+
+/**
+ * Returns true if the block defines support for unitone hover gradient.
+ *
+ * @param {string|Object} nameOrType Block name or type object.
+ * @return {boolean} Whether the block supports the feature.
+ */
+export const hasUnitoneHoverGradientSupport = ( nameOrType ) =>
+	hasBlockSupport( nameOrType, UNITONE_HOVER_GRADIENT_SUPPORT_KEY );
+
+/**
+ * Returns true if the block defines support for unitone hover text color.
+ *
+ * @param {string|Object} nameOrType Block name or type object.
+ * @return {boolean} Whether the block supports the feature.
+ */
+export const hasUnitoneHoverTextColorSupport = ( nameOrType ) =>
+	hasBlockSupport( nameOrType, UNITONE_HOVER_TEXT_COLOR_SUPPORT_KEY );
+
+/**
+ * Returns true if the block defines support for unitone hover border color.
+ *
+ * @param {string|Object} nameOrType Block name or type object.
+ * @return {boolean} Whether the block supports the feature.
+ */
+export const hasUnitoneHoverBorderColorSupport = ( nameOrType ) =>
+	hasBlockSupport( nameOrType, UNITONE_HOVER_BORDER_COLOR_SUPPORT_KEY );

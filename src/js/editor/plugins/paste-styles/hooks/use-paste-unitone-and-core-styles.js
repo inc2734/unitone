@@ -29,6 +29,10 @@ import {
 	hasFontSizeSupport,
 	hasLayoutSupport,
 	hasStyleSupport,
+	hasUnitoneHoverBackgroundColorSupport,
+	hasUnitoneHoverBorderColorSupport,
+	hasUnitoneHoverGradientSupport,
+	hasUnitoneHoverTextColorSupport,
 } from './supports';
 
 /**
@@ -76,6 +80,17 @@ const STYLE_ATTRIBUTES = {
 	style: hasStyleSupport,
 };
 
+const UNITONE_TOP_LEVEL_STYLE_ATTRIBUTES = {
+	hoverBackgroundColor: hasUnitoneHoverBackgroundColorSupport,
+	customHoverBackgroundColor: hasUnitoneHoverBackgroundColorSupport,
+	hoverGradient: hasUnitoneHoverGradientSupport,
+	customHoverGradient: hasUnitoneHoverGradientSupport,
+	hoverTextColor: hasUnitoneHoverTextColorSupport,
+	customHoverTextColor: hasUnitoneHoverTextColorSupport,
+	hoverBorderColor: hasUnitoneHoverBorderColorSupport,
+	customHoverBorderColor: hasUnitoneHoverBorderColorSupport,
+};
+
 /**
  * Get the "style attributes" from a given block to a target block.
  *
@@ -100,6 +115,19 @@ function getStyleAttributes( sourceBlock, targetBlock ) {
 		name: targetBlock.name,
 		attributes: {
 			...targetBlock.attributes,
+			...Object.entries( UNITONE_TOP_LEVEL_STYLE_ATTRIBUTES ).reduce(
+				( attributes, [ attributeKey, hasSupport ] ) => {
+					if (
+						hasSupport( sourceBlock.name ) &&
+						hasSupport( targetBlock.name )
+					) {
+						attributes[ attributeKey ] =
+							sourceBlock.attributes[ attributeKey ];
+					}
+					return attributes;
+				},
+				{}
+			),
 			unitone: {
 				...sourceBlock.attributes?.unitone,
 			},
@@ -122,12 +150,25 @@ function getStyleAttributes( sourceBlock, targetBlock ) {
 		{}
 	);
 
+	const unitoneTopLevelAttributes = Object.entries(
+		UNITONE_TOP_LEVEL_STYLE_ATTRIBUTES
+	).reduce( ( attributes, [ attributeKey, hasSupport ] ) => {
+		if (
+			hasSupport( sourceBlock.name ) &&
+			hasSupport( targetBlock.name )
+		) {
+			attributes[ attributeKey ] = newProps.attributes[ attributeKey ];
+		}
+		return attributes;
+	}, {} );
+
 	return {
 		...{
 			unitone: cleanEmptyObject( {
 				...newProps.attributes?.unitone,
 			} ),
 		},
+		...unitoneTopLevelAttributes,
 		...coreAttributes,
 	};
 }

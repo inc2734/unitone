@@ -51,7 +51,8 @@
 			"negative": true,
 			"fluidTypography": true,
 			"halfLeading": true,
-			"linkDecoration": true
+			"linkDecoration": true,
+			"syncChildren": true
 		}
 	},
 	"example": {

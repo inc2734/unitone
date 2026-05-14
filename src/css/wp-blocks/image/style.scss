@@ -36,12 +36,12 @@
 }
 
 :root :where(.wp-block-image.is-style-cover) {
+	align-self: stretch !important;
 	display: block;
-	height: 100% !important;
 	width: 100% !important;
 
 	:where(img) {
-		height: 100% !important;
+		min-height: 100% !important;
 		width: 100% !important;
 		object-fit: cover !important;
 	}

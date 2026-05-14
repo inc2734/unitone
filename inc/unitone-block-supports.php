@@ -774,6 +774,35 @@ add_filter(
 			}
 		}
 
+		// Loop animation.
+		if ( unitone_has_block_support( 'unitone.loopAnimation', $metadata ) ) {
+			$loop_animation_type  = $get_attribute( 'loopAnimation.type' );
+			$loop_animation_speed = $get_attribute( 'loopAnimation.speed' );
+
+			if ( $loop_animation_type && '0' !== (string) $loop_animation_speed ) {
+				$add_data_attribute( 'data-unitone-loop-animation', $loop_animation_type );
+				$add_style( '--unitone--loop-animation-duration', $loop_animation_speed ? $loop_animation_speed . 's' : null );
+
+				$loop_animation_interval = $get_attribute( 'loopAnimation.interval' );
+				if ( $loop_animation_interval || '0' === $loop_animation_interval ) {
+					$add_style( '--unitone--loop-animation-interval', $loop_animation_interval . 's' );
+				}
+				if ( 0 < (float) $loop_animation_interval ) {
+					$add_data_attribute( 'data-unitone-loop-animation', '-has-interval' );
+				}
+
+				$loop_animation_pause_on_hover = $get_attribute( 'loopAnimation.pauseOnHover' );
+				if ( $loop_animation_pause_on_hover ) {
+					$add_data_attribute( 'data-unitone-loop-animation', '-pause-on-hover' );
+				}
+
+				$loop_animation_easing = $get_attribute( 'loopAnimation.easing' );
+				if ( $loop_animation_easing ) {
+					$add_data_attribute( 'data-unitone-loop-animation', '-animation-timing-function:' . $loop_animation_easing );
+				}
+			}
+		}
+
 		// Additional style.
 		if ( unitone_has_block_support( 'unitone.style', $metadata ) ) {
 			$custom_css            = $get_attribute( 'style' );

@@ -327,10 +327,11 @@ function unitone_add_supports_to_core_button( $metadata ) {
 			'unitone' => array_merge(
 				$metadata['supports']['unitone'] ?? array(),
 				array(
-					'padding'  => array(
+					'padding'       => array(
 						'split' => true,
 					),
-					'minWidth' => true,
+					'minWidth'      => true,
+					'loopAnimation' => true,
 				)
 			),
 		)
@@ -368,6 +369,7 @@ function unitone_add_supports_to_core_image( $metadata ) {
 					'dropShadow'      => true,
 					'parallax'        => true,
 					'scrollAnimation' => true,
+					'loopAnimation'   => true,
 				)
 			),
 		)

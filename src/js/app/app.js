@@ -25,7 +25,11 @@ const loadLayouts = createLoader( () => import( './layouts' ) );
 
 const loadNavigation = createLoader( () => import( './navigation' ) );
 
-const loadEffects = createLoader( () => import( './scroll-animation' ) );
+const loadScrollAnimation = createLoader( () =>
+	import( './scroll-animation' )
+);
+
+const loadLoopAnimation = createLoader( () => import( './loop-animation' ) );
 
 const loadQuery = createLoader( () => import( './block-link' ) );
 
@@ -63,7 +67,11 @@ const initializeFeatures = () => {
 			'[data-unitone-parallax], [data-unitone-scroll-animation]'
 		)
 	) {
-		loadEffects();
+		loadScrollAnimation();
+	}
+
+	if ( document.querySelector( '[data-unitone-loop-animation]' ) ) {
+		loadLoopAnimation();
 	}
 
 	if (

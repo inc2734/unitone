@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-11T07:49:37+00:00\n"
+"POT-Creation-Date: 2026-05-14T05:50:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -689,6 +689,7 @@ msgstr ""
 
 #: inc/template-part-areas.php:34
 #: dist/blocks/slider/index.js:1
+#: dist/js/editor/editor.js:13
 msgid "Loop"
 msgstr ""
 
@@ -4266,6 +4267,10 @@ msgstr ""
 #: dist/js/editor/editor.js:13
 msgctxt "intersectionObserver"
 msgid "threshold"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Interval"
 msgstr ""
 
 #: dist/js/editor/editor.js:13

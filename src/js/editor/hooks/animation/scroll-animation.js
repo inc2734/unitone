@@ -21,6 +21,7 @@ import { Icon, reset } from '@wordpress/icons';
 import { __, _x } from '@wordpress/i18n';
 
 import { HelpContainer } from '../components';
+import { EASING_OPTIONS } from './easing';
 import { scroll as iconScrollAnimation } from './icons';
 import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
@@ -30,10 +31,13 @@ function getDefaultValue( { name } ) {
 }
 
 function useDefaultValue( { name } ) {
-	const defaultValue = useSelect( ( select ) => {
-		return select( blocksStore ).getBlockType( name )?.attributes?.unitone
-			?.default?.scrollAnimation;
-	}, [] );
+	const defaultValue = useSelect(
+		( select ) => {
+			return select( blocksStore ).getBlockType( name )?.attributes
+				?.unitone?.default?.scrollAnimation;
+		},
+		[ name ]
+	);
 
 	return defaultValue;
 }
@@ -68,12 +72,13 @@ export function isScrollAnimationSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.scrollAnimation' );
 }
 
-function renderToggle( { hasValue, resetValue } ) {
+function renderToggle( { hasValue, resetValue, isDisabled } ) {
 	return ( { onToggle, isOpen } ) => {
 		const ref = useRef( undefined );
 
 		const toggleProps = {
 			onClick: onToggle,
+			disabled: isDisabled,
 			className: clsx(
 				'block-editor-global-styles__shadow-dropdown-toggle',
 				{
@@ -129,6 +134,7 @@ function renderToggle( { hasValue, resetValue } ) {
 function ScrollAnimationPopover( {
 	hasValue,
 	resetValue,
+	isDisabled,
 	type,
 	onChangeType,
 	speed,
@@ -159,6 +165,7 @@ function ScrollAnimationPopover( {
 			renderToggle={ renderToggle( {
 				hasValue,
 				resetValue,
+				isDisabled,
 			} ) }
 			renderContent={ () => (
 				<DropdownContentWrapper paddingSize="medium">
@@ -243,125 +250,7 @@ function ScrollAnimationPopover( {
 								label={ __( 'Easing', 'unitone' ) }
 								value={ easing || '' }
 								disabled={ ! type }
-								options={ [
-									{ label: '', value: undefined },
-									{
-										label: 'linear',
-										value: 'linear',
-									},
-									{
-										label: 'ease',
-										value: 'ease',
-									},
-									{
-										label: 'ease-in',
-										value: 'ease-in',
-									},
-									{
-										label: 'ease-out',
-										value: 'ease-out',
-									},
-									{
-										label: 'ease-in-out',
-										value: 'ease-in-out',
-									},
-									{
-										label: 'ease-in-quad',
-										value: 'ease-in-quad',
-									},
-									{
-										label: 'ease-in-cubic',
-										value: 'ease-in-cubic',
-									},
-									{
-										label: 'ease-in-quart',
-										value: 'ease-in-quart',
-									},
-									{
-										label: 'ease-in-quint',
-										value: 'ease-in-quint',
-									},
-									{
-										label: 'ease-in-sine',
-										value: 'ease-in-sine',
-									},
-									{
-										label: 'ease-in-expo',
-										value: 'ease-in-expo',
-									},
-									{
-										label: 'ease-in-circ',
-										value: 'ease-in-circ',
-									},
-									{
-										label: 'ease-in-back',
-										value: 'ease-in-back',
-									},
-									{
-										label: 'ease-out-quad',
-										value: 'ease-out-quad',
-									},
-									{
-										label: 'ease-out-cubic',
-										value: 'ease-out-cubic',
-									},
-									{
-										label: 'ease-out-quart',
-										value: 'ease-out-quart',
-									},
-									{
-										label: 'ease-out-quint',
-										value: 'ease-out-quint',
-									},
-									{
-										label: 'ease-out-sine',
-										value: 'ease-out-sine',
-									},
-									{
-										label: 'ease-out-expo',
-										value: 'ease-out-expo',
-									},
-									{
-										label: 'ease-out-circ',
-										value: 'ease-out-circ',
-									},
-									{
-										label: 'ease-out-back',
-										value: 'ease-out-back',
-									},
-									{
-										label: 'ease-in-out-quad',
-										value: 'ease-in-out-quad',
-									},
-									{
-										label: 'ease-in-out-cubic',
-										value: 'ease-in-out-cubic',
-									},
-									{
-										label: 'ease-in-out-quart',
-										value: 'ease-in-out-quart',
-									},
-									{
-										label: 'ease-in-out-quint',
-										value: 'ease-in-out-quint',
-									},
-									{
-										label: 'ease-in-out-sine',
-										value: 'ease-in-out-sine',
-									},
-									{
-										label: 'ease-in-out-expo',
-										value: 'ease-in-out-expo',
-									},
-									{
-										label: 'ease-in-out-circ',
-										value: 'ease-in-out-circ',
-									},
-									{
-										label: 'ease-in-out-back',
-										value: 'ease-in-out-back',
-									},
-								] }
+								options={ EASING_OPTIONS }
 								onChange={ onChangeEasing }
 							/>
 
@@ -584,6 +473,7 @@ export function ScrollAnimationEdit( {
 					setAttributes,
 				} );
 			} }
+			isDisabled={ undefined !== unitone?.loopAnimation }
 			type={ type ?? '' }
 			speed={ null != speed ? parseFloat( speed ) : undefined }
 			delay={ null != delay ? parseFloat( delay ) : undefined }

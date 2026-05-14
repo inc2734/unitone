@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-05-11T07:49:37+00:00\n"
-"PO-Revision-Date: 2026-05-11 17:01+0900\n"
+"POT-Creation-Date: 2026-05-14T05:50:40+00:00\n"
+"PO-Revision-Date: 2026-05-14 14:52+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -674,6 +674,7 @@ msgstr ""
 "ページを覆う形で表示されます。"
 
 #: inc/template-part-areas.php:34 dist/blocks/slider/index.js:1
+#: dist/js/editor/editor.js:13
 msgid "Loop"
 msgstr "ループ"
 
@@ -4251,6 +4252,10 @@ msgstr ""
 msgctxt "intersectionObserver"
 msgid "threshold"
 msgstr "threshold"
+
+#: dist/js/editor/editor.js:13
+msgid "Interval"
+msgstr "インターバル"
 
 #: dist/js/editor/editor.js:13
 msgid "Animation"

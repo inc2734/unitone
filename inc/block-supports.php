@@ -398,34 +398,77 @@ function unitone_set_site_logo_default_width( $settings ) {
 add_filter( 'block_type_metadata_settings', 'unitone_set_site_logo_default_width' );
 
 /**
+ * Build hover color supports from the default color and border supports.
+ *
+ * @param array $supports Block supports.
+ * @return array
+ */
+function unitone_get_hover_color_support_from_supports( $supports ) {
+	$hover_supports = array();
+	$color_support  = $supports['color'] ?? null;
+	$border_support = $supports['__experimentalBorder'] ?? null;
+
+	if ( true === $color_support ) {
+		$hover_supports['color'] = array(
+			'background' => true,
+			'text'       => true,
+		);
+	} elseif ( is_array( $color_support ) ) {
+		if ( false !== ( $color_support['background'] ?? null ) ) {
+			$hover_supports['color']['background'] = true;
+		}
+
+		if ( ! empty( $color_support['gradients'] ) ) {
+			$hover_supports['color']['gradients'] = true;
+		}
+
+		if ( false !== ( $color_support['text'] ?? null ) ) {
+			$hover_supports['color']['text'] = true;
+		}
+	}
+
+	if (
+		true === $border_support ||
+		( is_array( $border_support ) && ! empty( $border_support['color'] ) )
+	) {
+		$hover_supports['border']['color'] = true;
+	}
+
+	return $hover_supports;
+}
+
+/**
  * Add hover color supports.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
  */
 function unitone_add_hover_color_support( $metadata ) {
-	if ( ! in_array( $metadata['name'], array( 'core/button' ), true ) ) {
+	$name = $metadata['name'] ?? '';
+
+	if (
+		'core/button' !== $name &&
+		0 !== strpos( $name, 'unitone/' )
+	) {
 		return $metadata;
 	}
 
+	$hover_supports = unitone_get_hover_color_support_from_supports(
+		$metadata['supports'] ?? array()
+	);
+
+	if ( empty( $hover_supports ) ) {
+		return $metadata;
+	}
+
+	$unitone_supports          = $metadata['supports']['unitone'] ?? array();
+	$unitone_supports          = is_array( $unitone_supports ) ? $unitone_supports : array();
+	$unitone_supports['hover'] = $hover_supports;
+
 	$metadata['supports'] = array_merge(
-		$metadata['supports'],
+		$metadata['supports'] ?? array(),
 		array(
-			'unitone' => array_merge(
-				$metadata['supports']['unitone'] ?? array(),
-				array(
-					'hover' => array(
-						'color'  => array(
-							'background' => true,
-							'gradients'  => true,
-							'text'       => true,
-						),
-						'border' => array(
-							'color' => true,
-						),
-					),
-				),
-			),
+			'unitone' => $unitone_supports,
 		)
 	);
 

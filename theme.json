@@ -290,6 +290,11 @@
 			],
 			"fontSizes": [
 				{
+					"slug": "unitone-2xs",
+					"size": "var(--unitone--dummy-font-size-2xs, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) + 3) * 1rem))",
+					"name": "2XS"
+				},
+				{
 					"slug": "unitone-xs",
 					"size": "var(--unitone--dummy-font-size-xs, calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) + 2) * 1rem))",
 					"name": "XS"

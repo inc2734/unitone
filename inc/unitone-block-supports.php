@@ -742,11 +742,11 @@ add_filter(
 
 			if ( $scroll_animation_type && 0 !== $scroll_animation_speed ) {
 				$add_data_attribute( 'data-unitone-scroll-animation', $scroll_animation_type );
-				$add_style( '--unitone--animation-duration', $scroll_animation_speed ? $scroll_animation_speed . 's' : null );
+				$add_style( '--unitone--scroll-animation-duration', $scroll_animation_speed ? $scroll_animation_speed . 's' : null );
 
 				$scroll_animation_delay = $get_attribute( 'scrollAnimation.delay' );
 				if ( $scroll_animation_delay ) {
-					$add_style( '--unitone--animation-delay', $scroll_animation_delay . 's' );
+					$add_style( '--unitone--scroll-animation-delay', $scroll_animation_delay . 's' );
 				}
 
 				$scroll_animation_easing = $get_attribute( 'scrollAnimation.easing' );
@@ -759,7 +759,7 @@ add_filter(
 					if ( in_array( $scroll_animation_type, array( 'fade-in-down', 'fade-in-up', 'fade-in-left', 'fade-in-right', 'shake-horizontal', 'shake-vertical' ), true ) ) {
 						$scroll_animation_initial = $scroll_animation_initial . 'px';
 					}
-					$add_style( '--unitone--animation-initial', $scroll_animation_initial );
+					$add_style( '--unitone--scroll-animation-initial', $scroll_animation_initial );
 				}
 
 				$scroll_animation_root_margin = $get_attribute( 'scrollAnimation.rootMargin' );

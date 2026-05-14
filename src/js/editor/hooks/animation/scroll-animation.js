@@ -813,11 +813,11 @@ export function withScrollAnimationBlockProps( settings ) {
 			'data-unitone-scroll-animation-threshold': threshold || undefined,
 			style: {
 				...settings.wrapperProps?.style,
-				'--unitone--animation-duration':
+				'--unitone--scroll-animation-duration':
 					null != speed ? `${ speed }s` : undefined,
-				'--unitone--animation-delay':
+				'--unitone--scroll-animation-delay':
 					null != delay ? `${ delay }s` : undefined,
-				'--unitone--animation-initial': initial ?? undefined,
+				'--unitone--scroll-animation-initial': initial ?? undefined,
 			},
 		},
 	};

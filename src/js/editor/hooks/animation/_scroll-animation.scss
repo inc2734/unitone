@@ -1,10 +1,10 @@
 [data-unitone-scroll-animation]:where([data-unitone-scroll-animation~=-fired]) {
-	--unitone--animation-duration: 0s;
-	--unitone--animation-timing-function: ease;
-	--unitone--animation-delay: 0s;
-	--unitone--animation-name: none;
+	--unitone--scroll-animation-duration: 0s;
+	--unitone--scroll-animation-timing-function: ease;
+	--unitone--scroll-animation-delay: 0s;
+	--unitone--scroll-animation-name: none;
 
-	animation: var(--unitone--animation-duration) var(--unitone--animation-timing-function) var(--unitone--animation-delay) var(--unitone--animation-name);
+	animation: var(--unitone--scroll-animation-duration) var(--unitone--scroll-animation-timing-function) var(--unitone--scroll-animation-delay) var(--unitone--scroll-animation-name);
 	animation-fill-mode: forwards;
 }
 
@@ -44,7 +44,7 @@ $_values: (
 
 @each $_key, $_value in $_values {
 	[data-unitone-scroll-animation~=-animation-timing-function\:#{ $_key }] {
-		--unitone--animation-timing-function: #{ $_value };
+		--unitone--scroll-animation-timing-function: #{ $_value };
 	}
 }
 
@@ -53,14 +53,14 @@ $_values: (
  */
 
 @keyframes unitoneFadeInDown {
-	0%   { opacity: 0; translate: 0 var(--unitone--animation-initial); }
+	0%   { opacity: 0; translate: 0 var(--unitone--scroll-animation-initial); }
 	100% { opacity: 1; translate: 0 0; }
 }
 
 [data-unitone-scroll-animation~=fade-in-down] {
-	--unitone--animation-name: unitoneFadeInDown;
-	--unitone--animation-duration: .6s;
-	--unitone--animation-initial: -100px;
+	--unitone--scroll-animation-name: unitoneFadeInDown;
+	--unitone--scroll-animation-duration: .6s;
+	--unitone--scroll-animation-initial: -100px;
 
 	opacity: 0;
 }
@@ -73,14 +73,14 @@ $_values: (
  */
 
 @keyframes unitoneFadeInUp {
-	0%   { opacity: 0; translate: 0 var(--unitone--animation-initial); }
+	0%   { opacity: 0; translate: 0 var(--unitone--scroll-animation-initial); }
 	100% { opacity: 1; translate: 0 0; }
 }
 
 [data-unitone-scroll-animation~=fade-in-up] {
-	--unitone--animation-name: unitoneFadeInUp;
-	--unitone--animation-duration: .6s;
-	--unitone--animation-initial: 100px;
+	--unitone--scroll-animation-name: unitoneFadeInUp;
+	--unitone--scroll-animation-duration: .6s;
+	--unitone--scroll-animation-initial: 100px;
 
 	opacity: 0;
 }
@@ -93,14 +93,14 @@ $_values: (
  */
 
 @keyframes unitoneFadeInLeft {
-	0%   { opacity: 0; translate: var(--unitone--animation-initial); }
+	0%   { opacity: 0; translate: var(--unitone--scroll-animation-initial); }
 	100% { opacity: 1; translate: 0; }
 }
 
 [data-unitone-scroll-animation~=fade-in-left] {
-	--unitone--animation-name: unitoneFadeInLeft;
-	--unitone--animation-duration: .6s;
-	--unitone--animation-initial: 100px;
+	--unitone--scroll-animation-name: unitoneFadeInLeft;
+	--unitone--scroll-animation-duration: .6s;
+	--unitone--scroll-animation-initial: 100px;
 
 	opacity: 0;
 }
@@ -113,14 +113,14 @@ $_values: (
  */
 
 @keyframes unitoneFadeInRight {
-	0%   { opacity: 0; translate: var(--unitone--animation-initial); }
+	0%   { opacity: 0; translate: var(--unitone--scroll-animation-initial); }
 	100% { opacity: 1; translate: 0; }
 }
 
 [data-unitone-scroll-animation~=fade-in-right] {
-	--unitone--animation-name: unitoneFadeInRight;
-	--unitone--animation-duration: .6s;
-	--unitone--animation-initial: -100px;
+	--unitone--scroll-animation-name: unitoneFadeInRight;
+	--unitone--scroll-animation-duration: .6s;
+	--unitone--scroll-animation-initial: -100px;
 
 	opacity: 0;
 }
@@ -138,8 +138,8 @@ $_values: (
 }
 
 [data-unitone-scroll-animation~=fade-in] {
-	--unitone--animation-name: unitoneFadeIn;
-	--unitone--animation-duration: 1s;
+	--unitone--scroll-animation-name: unitoneFadeIn;
+	--unitone--scroll-animation-duration: 1s;
 
 	opacity: 0;
 }
@@ -152,14 +152,14 @@ $_values: (
  */
 
 @keyframes unitoneZoomIn {
-	0%   { opacity: 0; scale: var(--unitone--animation-initial); }
+	0%   { opacity: 0; scale: var(--unitone--scroll-animation-initial); }
 	100% { opacity: 1; scale: 1; }
 }
 
 [data-unitone-scroll-animation~=zoom-in] {
-	--unitone--animation-name: unitoneZoomIn;
-	--unitone--animation-duration: .4s;
-	--unitone--animation-initial: .6;
+	--unitone--scroll-animation-name: unitoneZoomIn;
+	--unitone--scroll-animation-duration: .4s;
+	--unitone--scroll-animation-initial: .6;
 
 	opacity: 0;
 }
@@ -173,22 +173,22 @@ $_values: (
 
 @keyframes unitoneShakeHorizontal {
 	0%   { translate: 0; }
-	10%  { translate: var(--unitone--animation-initial); }
-	20%  { translate: calc(var(--unitone--animation-initial) * -1); }
-	30%  { translate: var(--unitone--animation-initial); }
-	40%  { translate: calc(var(--unitone--animation-initial) * -1); }
-	50%  { translate: var(--unitone--animation-initial); }
-	60%  { translate: calc(var(--unitone--animation-initial) * -1); }
-	70%  { translate: var(--unitone--animation-initial); }
-	80%  { translate: calc(var(--unitone--animation-initial) * -.8); }
-	90%  { translate: calc(var(--unitone--animation-initial) * .8); }
+	10%  { translate: var(--unitone--scroll-animation-initial); }
+	20%  { translate: calc(var(--unitone--scroll-animation-initial) * -1); }
+	30%  { translate: var(--unitone--scroll-animation-initial); }
+	40%  { translate: calc(var(--unitone--scroll-animation-initial) * -1); }
+	50%  { translate: var(--unitone--scroll-animation-initial); }
+	60%  { translate: calc(var(--unitone--scroll-animation-initial) * -1); }
+	70%  { translate: var(--unitone--scroll-animation-initial); }
+	80%  { translate: calc(var(--unitone--scroll-animation-initial) * -.8); }
+	90%  { translate: calc(var(--unitone--scroll-animation-initial) * .8); }
 	100% { translate: 0; }
 }
 
 [data-unitone-scroll-animation~=shake-horizontal] {
-	--unitone--animation-name: unitoneShakeHorizontal;
-	--unitone--animation-duration: .8s;
-	--unitone--animation-initial: -10px;
+	--unitone--scroll-animation-name: unitoneShakeHorizontal;
+	--unitone--scroll-animation-duration: .8s;
+	--unitone--scroll-animation-initial: -10px;
 }
 
 /**
@@ -197,20 +197,20 @@ $_values: (
 
 @keyframes unitoneShakeVertical {
 	0%   { translate: 0; }
-	10%  { translate: 0 var(--unitone--animation-initial); }
-	20%  { translate: 0 calc(var(--unitone--animation-initial) * -1); }
-	30%  { translate: 0 var(--unitone--animation-initial); }
-	40%  { translate: 0 calc(var(--unitone--animation-initial) * -1); }
-	50%  { translate: 0 var(--unitone--animation-initial); }
-	60%  { translate: 0 calc(var(--unitone--animation-initial) * -1); }
-	70%  { translate: 0 var(--unitone--animation-initial); }
-	80%  { translate: 0 calc(var(--unitone--animation-initial) * -.8); }
-	90%  { translate: 0 calc(var(--unitone--animation-initial) * .8); }
+	10%  { translate: 0 var(--unitone--scroll-animation-initial); }
+	20%  { translate: 0 calc(var(--unitone--scroll-animation-initial) * -1); }
+	30%  { translate: 0 var(--unitone--scroll-animation-initial); }
+	40%  { translate: 0 calc(var(--unitone--scroll-animation-initial) * -1); }
+	50%  { translate: 0 var(--unitone--scroll-animation-initial); }
+	60%  { translate: 0 calc(var(--unitone--scroll-animation-initial) * -1); }
+	70%  { translate: 0 var(--unitone--scroll-animation-initial); }
+	80%  { translate: 0 calc(var(--unitone--scroll-animation-initial) * -.8); }
+	90%  { translate: 0 calc(var(--unitone--scroll-animation-initial) * .8); }
 	100% { translate: 0; }
 }
 
 [data-unitone-scroll-animation~=shake-vertical] {
-	--unitone--animation-name: unitoneShakeVertical;
-	--unitone--animation-duration: .8s;
-	--unitone--animation-initial: -10px;
+	--unitone--scroll-animation-name: unitoneShakeVertical;
+	--unitone--scroll-animation-duration: .8s;
+	--unitone--scroll-animation-initial: -10px;
 }

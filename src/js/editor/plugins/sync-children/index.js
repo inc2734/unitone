@@ -18,6 +18,7 @@ const EXCLUDED_SYNC_ATTRIBUTE_KEYS = new Set( [
 	'__unstableUnitoneSupports',
 	'__unitoneStates',
 	'__unstableUnitoneBlockOutline',
+	'__unitoneSyncChildren',
 	'anchor',
 ] );
 
@@ -177,7 +178,7 @@ const mergeTemplateAttributes = ( {
 
 const isSyncEnabledParent = ( block ) =>
 	hasBlockSupport( block?.name, SUPPORT_KEY ) &&
-	!! block?.attributes?.unitone?.syncChildren;
+	!! block?.attributes?.__unitoneSyncChildren;
 
 const findTargetByPath = ( rootBlock, pathSteps ) => {
 	let currentBlock = rootBlock;
@@ -202,7 +203,7 @@ const withSyncChildrenToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 		const { name, attributes, setAttributes, isSelected } = props;
 
 		const canDisplay = isSelected && hasBlockSupport( name, SUPPORT_KEY );
-		const isSyncing = !! attributes?.unitone?.syncChildren;
+		const isSyncing = !! attributes?.__unitoneSyncChildren;
 
 		return (
 			<>
@@ -218,11 +219,8 @@ const withSyncChildrenToolbar = createHigherOrderComponent( ( BlockEdit ) => {
 								isPressed={ isSyncing }
 								onClick={ () => {
 									setAttributes( {
-										unitone: cleanEmptyObject( {
-											...attributes?.unitone,
-											syncChildren:
-												! isSyncing || undefined,
-										} ),
+										__unitoneSyncChildren:
+											! isSyncing || undefined,
 									} );
 								} }
 							/>

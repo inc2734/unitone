@@ -102,6 +102,13 @@ function unitone_register_blocks() {
 				'role' => 'local',
 			);
 		}
+
+		if ( ! isset( $block_type->attributes['__unitoneSyncChildren'] ) ) {
+			$block_type->attributes['__unitoneSyncChildren'] = array(
+				'type' => 'boolean',
+				'role' => 'local',
+			);
+		}
 	}
 }
 add_action( 'init', 'unitone_register_blocks' );

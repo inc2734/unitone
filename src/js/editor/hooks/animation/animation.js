@@ -43,10 +43,20 @@ import {
 	withLoopAnimationBlockProps,
 } from './loop-animation';
 
+import {
+	isHoverAnimationSupportDisabled,
+	hasHoverAnimationValue,
+	resetHoverAnimationFilter,
+	resetHoverAnimation,
+	HoverAnimationEdit,
+	withHoverAnimationBlockProps,
+} from './hover-animation';
+
 export const withAnimationProps = compose(
 	withParallaxBlockProps,
 	withScrollAnimationBlockProps,
-	withLoopAnimationBlockProps
+	withLoopAnimationBlockProps,
+	withHoverAnimationBlockProps
 );
 
 export const resetAnimation = ( props ) => {
@@ -54,6 +64,7 @@ export const resetAnimation = ( props ) => {
 		[ isParallaxSupportDisabled, resetParallaxFilter ],
 		[ isScrollAnimationSupportDisabled, resetScrollAnimationFilter ],
 		[ isLoopAnimationSupportDisabled, resetLoopAnimationFilter ],
+		[ isHoverAnimationSupportDisabled, resetHoverAnimationFilter ],
 	];
 
 	const unitone = filters.reduce(
@@ -78,7 +89,8 @@ function AnimationPanelPure( props ) {
 					{ ...attributes?.unitone },
 					resetParallaxFilter(),
 					resetScrollAnimationFilter(),
-					resetLoopAnimationFilter()
+					resetLoopAnimationFilter(),
+					resetHoverAnimationFilter()
 				)
 			),
 		} );
@@ -90,11 +102,15 @@ function AnimationPanelPure( props ) {
 		name,
 	} );
 	const isLoopAnimationDisabled = isLoopAnimationSupportDisabled( { name } );
+	const isHoverAnimationDisabled = isHoverAnimationSupportDisabled( {
+		name,
+	} );
 
 	if (
 		isParallaxDisabled &&
 		isScrollAnimationDisabled &&
-		isLoopAnimationDisabled
+		isLoopAnimationDisabled &&
+		isHoverAnimationDisabled
 	) {
 		return null;
 	}
@@ -109,7 +125,8 @@ function AnimationPanelPure( props ) {
 			>
 				{ ( ! isParallaxDisabled ||
 					! isScrollAnimationDisabled ||
-					! isLoopAnimationDisabled ) && (
+					! isLoopAnimationDisabled ||
+					! isHoverAnimationDisabled ) && (
 					<div className="unitone-animation-tools-panel">
 						{ ! isParallaxDisabled && (
 							<ToolsPanelItem
@@ -156,6 +173,22 @@ function AnimationPanelPure( props ) {
 								panelId={ clientId }
 							>
 								<LoopAnimationEdit { ...props } />
+							</ToolsPanelItem>
+						) }
+
+						{ ! isHoverAnimationDisabled && (
+							<ToolsPanelItem
+								hasValue={ () =>
+									hasHoverAnimationValue( { ...props } )
+								}
+								label={ __( 'Hover', 'unitone' ) }
+								onDeselect={ () =>
+									resetHoverAnimation( { ...props } )
+								}
+								isShownByDefault
+								panelId={ clientId }
+							>
+								<HoverAnimationEdit { ...props } />
 							</ToolsPanelItem>
 						) }
 					</div>

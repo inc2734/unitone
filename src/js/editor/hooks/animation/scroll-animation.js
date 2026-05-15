@@ -473,7 +473,10 @@ export function ScrollAnimationEdit( {
 					setAttributes,
 				} );
 			} }
-			isDisabled={ undefined !== unitone?.loopAnimation }
+			isDisabled={
+				undefined !== unitone?.loopAnimation?.type ||
+				undefined !== unitone?.hoverAnimation?.type
+			}
 			type={ type ?? '' }
 			speed={ null != speed ? parseFloat( speed ) : undefined }
 			delay={ null != delay ? parseFloat( delay ) : undefined }

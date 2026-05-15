@@ -803,6 +803,34 @@ add_filter(
 			}
 		}
 
+		// Hover animation.
+		if ( unitone_get_block_support( 'unitone.hoverAnimation', $metadata ) ) {
+			$hover_animation_group = $get_attribute( 'hoverAnimation.group' );
+			if ( $hover_animation_group ) {
+				$add_data_attribute( 'data-unitone-hover-animation-group', true );
+			}
+
+			$hover_animation_type  = $get_attribute( 'hoverAnimation.type' );
+			$hover_animation_speed = $get_attribute( 'hoverAnimation.speed' );
+			$has_scroll_animation  = $get_attribute( 'scrollAnimation.type' );
+			$has_loop_animation    = $get_attribute( 'loopAnimation.type' );
+
+			if ( $hover_animation_type && ! $has_scroll_animation && ! $has_loop_animation && '0' !== (string) $hover_animation_speed ) {
+				$add_data_attribute( 'data-unitone-hover-animation', $hover_animation_type );
+				$add_style( '--unitone--hover-animation-duration', $hover_animation_speed ? $hover_animation_speed . 's' : null );
+
+				$hover_animation_trigger = $get_attribute( 'hoverAnimation.trigger' );
+				if ( 'group' === $hover_animation_trigger ) {
+					$add_data_attribute( 'data-unitone-hover-animation', '-trigger:group' );
+				}
+
+				$hover_animation_easing = $get_attribute( 'hoverAnimation.easing' );
+				if ( $hover_animation_easing ) {
+					$add_data_attribute( 'data-unitone-hover-animation', '-animation-timing-function:' . $hover_animation_easing );
+				}
+			}
+		}
+
 		// Additional style.
 		if ( unitone_has_block_support( 'unitone.style', $metadata ) ) {
 			$custom_css            = $get_attribute( 'style' );

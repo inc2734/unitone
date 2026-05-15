@@ -296,7 +296,10 @@ export function LoopAnimationEdit( {
 					setAttributes,
 				} );
 			} }
-			isDisabled={ undefined !== unitone?.scrollAnimation }
+			isDisabled={
+				undefined !== unitone?.scrollAnimation?.type ||
+				undefined !== unitone?.hoverAnimation?.type
+			}
 			type={ type ?? '' }
 			speed={ null != speed ? parseFloat( speed ) : undefined }
 			interval={ null != interval ? parseFloat( interval ) : undefined }

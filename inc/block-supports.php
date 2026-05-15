@@ -128,6 +128,39 @@ function unitone_add_link_decoration_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_link_decoration_support' );
 
 /**
+ * Add support "hoverAnimation" to core and unitone blocks.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_hover_animation_support( $metadata ) {
+	if (
+		0 !== strpos( $metadata['name'], 'core/' ) &&
+		0 !== strpos( $metadata['name'], 'unitone/' )
+	) {
+		return $metadata;
+	}
+
+	if ( array_key_exists( 'hoverAnimation', $metadata['supports']['unitone'] ?? array() ) ) {
+		return $metadata;
+	}
+
+	$metadata['supports'] = array_merge(
+		$metadata['supports'] ?? array(),
+		array(
+			'unitone' => array_merge(
+				$metadata['supports']['unitone'] ?? array(),
+				array(
+					'hoverAnimation' => true,
+				)
+			),
+		)
+	);
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_hover_animation_support' );
+
+/**
  * Add support "gap" to core/list, core/navigation, core/post-content,  core/post-template and core/social-links.
  *
  * @param array $metadata Metadata for registering a block type.

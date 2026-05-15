@@ -1,0 +1,44 @@
+@use "easing";
+
+[data-unitone-hover-animation] {
+	--unitone--hover-animation-duration: .3s;
+	--unitone--hover-animation-timing-function: ease;
+
+	transition-duration: var(--unitone--hover-animation-duration);
+	transition-property: opacity, transform;
+	transition-timing-function: var(--unitone--hover-animation-timing-function);
+}
+
+@include easing.animation-timing-function("data-unitone-hover-animation", "--unitone--hover-animation-timing-function");
+
+@mixin active-hover-animation {
+	&[data-unitone-hover-animation~=scale] {
+		transform: scale(1.05);
+	}
+
+	&[data-unitone-hover-animation~=fade] {
+		opacity: .65;
+	}
+}
+
+[data-unitone-hover-animation~=-active] {
+	@include active-hover-animation;
+}
+
+[data-unitone-hover-animation-group~=-active] [data-unitone-hover-animation~="-trigger:group"] {
+	@include active-hover-animation;
+}
+
+@media (any-hover: hover) {
+	[data-unitone-hover-animation]:not(.wp-block):not([data-unitone-hover-animation~="-trigger:group"]):hover {
+		@include active-hover-animation;
+	}
+
+	[data-unitone-hover-animation-group]:not(.wp-block):hover [data-unitone-hover-animation~="-trigger:group"] {
+		@include active-hover-animation;
+	}
+}
+
+[data-unitone-hover-animation]:not(.wp-block):not([data-unitone-hover-animation~="-trigger:group"]):focus-visible {
+	@include active-hover-animation;
+}

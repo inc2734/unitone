@@ -6,11 +6,19 @@
 	--unitone--scroll-animation-delay: 0s;
 	--unitone--scroll-animation-name: none;
 
-	animation: var(--unitone--scroll-animation-duration) var(--unitone--scroll-animation-timing-function) var(--unitone--scroll-animation-delay) var(--unitone--scroll-animation-name);
+	animation:
+		var(--unitone--scroll-animation-duration)
+		var(--unitone--scroll-animation-timing-function)
+		var(--unitone--scroll-animation-delay)
+		var(--unitone--scroll-animation-name);
 	animation-fill-mode: forwards;
 }
 
-@include easing.animation-timing-function("data-unitone-scroll-animation", "--unitone--scroll-animation-timing-function");
+@each $_key, $_value in easing.$easings {
+	[data-unitone-scroll-animation~=-animation-timing-function\:#{ $_key }] {
+		--unitone--scroll-animation-timing-function: #{ $_value };
+	}
+}
 
 /**
  * Fade in down

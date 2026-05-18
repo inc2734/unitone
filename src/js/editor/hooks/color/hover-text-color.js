@@ -63,7 +63,9 @@ export function withHoverTextColorBlockProps( settings ) {
 		wrapperProps: {
 			...settings.wrapperProps,
 			className: clsx( settings.wrapperProps?.className, {
-				'has-text-color-hover':
+				'has-unitone-hover':
+					!! hoverTextColor || !! customHoverTextColor,
+				'has-unitone-text-color-hover':
 					!! hoverTextColor || !! customHoverTextColor,
 			} ),
 			style: {

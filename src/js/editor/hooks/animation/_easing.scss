@@ -1,6 +1,6 @@
 // The values of cubic-bezier are copyrighted by Easing Functions Cheat Sheet.
 // @see https://github.com/ai/easings.net
-$_values: (
+$easings: (
 	linear: linear,
 	ease: ease,
 	ease-in: ease-in,
@@ -31,11 +31,3 @@ $_values: (
 	ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1),
 	ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6),
 );
-
-@mixin animation-timing-function($attribute-name, $property) {
-	@each $_key, $_value in $_values {
-		[#{ $attribute-name }~=-animation-timing-function\:#{ $_key }] {
-			#{ $property }: #{ $_value };
-		}
-	}
-}

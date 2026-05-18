@@ -118,9 +118,14 @@ export function withHoverBackgroundColorBlockProps( settings ) {
 		wrapperProps: {
 			...settings.wrapperProps,
 			className: clsx( settings.wrapperProps?.className, {
-				'has-background-hover':
+				'has-unitone-hover':
+					!! hoverBackgroundColor ||
+					!! customHoverBackgroundColor ||
+					!! hoverGradient ||
+					!! customHoverGradient,
+				'has-unitone-background-hover':
 					!! hoverBackgroundColor || !! customHoverBackgroundColor,
-				'has-gradient-background-hover':
+				'has-unitone-gradient-background-hover':
 					!! hoverGradient || !! customHoverGradient,
 			} ),
 			style: {

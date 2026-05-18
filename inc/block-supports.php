@@ -643,7 +643,8 @@ function unitone_apply_hover_color( $block_content, $block ) {
 		$custom_hover_background_color = $block['attrs']['customHoverBackgroundColor'] ?? null;
 
 		if ( $hover_background_color || $custom_hover_background_color ) {
-			$p->add_class( 'has-background-hover' );
+			$p->add_class( 'has-unitone-hover' );
+			$p->add_class( 'has-unitone-background-hover' );
 
 			if ( $hover_background_color ) {
 				$add_style( '--unitone--background-color--hover', 'var(--wp--preset--color--' . $hover_background_color . ')' );
@@ -659,7 +660,8 @@ function unitone_apply_hover_color( $block_content, $block ) {
 		$custom_hover_gradient = $block['attrs']['customHoverGradient'] ?? null;
 
 		if ( $hover_gradient || $custom_hover_gradient ) {
-			$p->add_class( 'has-gradient-background-hover' );
+			$p->add_class( 'has-unitone-hover' );
+			$p->add_class( 'has-unitone-gradient-background-hover' );
 
 			if ( $hover_gradient ) {
 				$add_style( '--unitone--background-image--hover', 'var(--wp--preset--gradient--' . $hover_gradient . ')' );
@@ -675,7 +677,8 @@ function unitone_apply_hover_color( $block_content, $block ) {
 		$custom_hover_text_color = $block['attrs']['customHoverTextColor'] ?? null;
 
 		if ( $hover_text_color || $custom_hover_text_color ) {
-			$p->add_class( 'has-text-color-hover' );
+			$p->add_class( 'has-unitone-hover' );
+			$p->add_class( 'has-unitone-text-color-hover' );
 
 			if ( $hover_text_color ) {
 				$add_style( '--unitone--color--hover', 'var(--wp--preset--color--' . $hover_text_color . ')' );
@@ -691,7 +694,8 @@ function unitone_apply_hover_color( $block_content, $block ) {
 		$custom_hover_border_color = $block['attrs']['customHoverBorderColor'] ?? null;
 
 		if ( $hover_border_color || $custom_hover_border_color ) {
-			$p->add_class( 'has-border-color-hover' );
+			$p->add_class( 'has-unitone-hover' );
+			$p->add_class( 'has-unitone-border-color-hover' );
 
 			if ( $hover_border_color ) {
 				$add_style( '--unitone--border-color--hover', 'var(--wp--preset--color--' . $hover_border_color . ')' );

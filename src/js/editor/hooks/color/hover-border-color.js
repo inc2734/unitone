@@ -65,7 +65,9 @@ export function withHoverBorderColorBlockProps( settings ) {
 		wrapperProps: {
 			...settings.wrapperProps,
 			className: clsx( settings.wrapperProps?.className, {
-				'has-border-color-hover':
+				'has-unitone-hover':
+					!! hoverBorderColor || !! customHoverBorderColor,
+				'has-unitone-border-color-hover':
 					!! hoverBorderColor || !! customHoverBorderColor,
 			} ),
 			style: {

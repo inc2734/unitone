@@ -9,7 +9,10 @@
 
 [data-unitone-loop-animation~=-in-view]:not([data-unitone-loop-animation~=-has-interval]),
 [data-unitone-loop-animation~=-active] {
-	animation: var(--unitone--loop-animation-duration) var(--unitone--loop-animation-timing-function) var(--unitone--loop-animation-name);
+	animation:
+		var(--unitone--loop-animation-duration)
+		var(--unitone--loop-animation-timing-function)
+		var(--unitone--loop-animation-name);
 	animation-fill-mode: both;
 }
 
@@ -31,7 +34,11 @@
 	transform: none;
 }
 
-@include easing.animation-timing-function("data-unitone-loop-animation", "--unitone--loop-animation-timing-function");
+@each $_key, $_value in easing.$easings {
+	[data-unitone-loop-animation~=-animation-timing-function\:#{ $_key }] {
+		--unitone--loop-animation-timing-function: #{ $_value };
+	}
+}
 
 /**
  * Bounce

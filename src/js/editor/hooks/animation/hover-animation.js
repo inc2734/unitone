@@ -31,14 +31,24 @@ const HOVER_ANIMATION_TYPES = [
 	{
 		label: 'scale',
 		value: 'scale',
-		speed: 0.3,
+		speed: 0.2,
 		scale: 1.05,
 	},
 	{
 		label: 'fade',
 		value: 'fade',
-		speed: 0.3,
+		speed: 0.2,
 		opacity: 0.75,
+	},
+	{
+		label: 'shadow-natural',
+		value: 'shadow-natural',
+		speed: 0.2,
+	},
+	{
+		label: 'shadow-dark',
+		value: 'shadow-dark',
+		speed: 0.2,
 	},
 ];
 
@@ -284,7 +294,7 @@ function HoverAnimationPopover( {
 									label={ __( 'Scale', 'unitone' ) }
 									value={ scale }
 									step={ 0.01 }
-									min={ 1.01 }
+									min={ 1 }
 									max={ 2 }
 									onChange={ onChangeScale }
 									allowReset
@@ -299,7 +309,7 @@ function HoverAnimationPopover( {
 									value={ opacity }
 									step={ 0.01 }
 									min={ 0 }
-									max={ 0.99 }
+									max={ 1 }
 									onChange={ onChangeOpacity }
 									allowReset
 								/>
@@ -584,6 +594,9 @@ export function withHoverAnimationBlockProps( settings ) {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
+			className: clsx( settings.wrapperProps?.className, {
+				'has-unitone-hover': !! type,
+			} ),
 			'data-unitone-hover-animation': dataHoverAnimation
 				? clsx( dataHoverAnimation, {
 						'-active':

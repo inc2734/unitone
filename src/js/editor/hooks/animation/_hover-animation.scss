@@ -1,25 +1,46 @@
 @use "easing";
 
+/**
+ * If data-unitone-hover-animation is enabled,
+ * .has-unitone-hover will be added.
+ */
 [data-unitone-hover-animation] {
-	--unitone--hover-animation-duration: .3s;
-	--unitone--hover-animation-opacity: .75;
-	--unitone--hover-animation-scale: 1.05;
+	--unitone--hover-animation-duration: .2s;
 	--unitone--hover-animation-timing-function: ease;
 
-	transition-duration: var(--unitone--hover-animation-duration);
-	transition-property: opacity, transform;
-	transition-timing-function: var(--unitone--hover-animation-timing-function);
+	--unitone--transition-duration: var(--unitone--hover-animation-duration);
+	--unitone--transition-timing-function: var(--unitone--hover-animation-timing-function);
 }
 
-@include easing.animation-timing-function("data-unitone-hover-animation", "--unitone--hover-animation-timing-function");
+[data-unitone-hover-animation~=scale] {
+	--unitone--hover-animation-scale: 1.05;
+}
+
+[data-unitone-hover-animation~=fade] {
+	--unitone--hover-animation-opacity: .75;
+}
+
+@each $_key, $_value in easing.$easings {
+	[data-unitone-hover-animation~=-animation-timing-function\:#{ $_key }] {
+		--unitone--hover-animation-timing-function: #{ $_value };
+	}
+}
 
 @mixin active-hover-animation {
 	&[data-unitone-hover-animation~=scale] {
-		transform: scale(var(--unitone--hover-animation-scale));
+		scale: var(--unitone--hover-animation-scale) !important;
 	}
 
 	&[data-unitone-hover-animation~=fade] {
-		opacity: var(--unitone--hover-animation-opacity);
+		opacity: var(--unitone--hover-animation-opacity) !important;
+	}
+
+	&[data-unitone-hover-animation~=shadow-natural] {
+		box-shadow: var(--wp--preset--shadow--unitone-natural) !important;
+	}
+
+	&[data-unitone-hover-animation~=shadow-dark] {
+		box-shadow: var(--wp--preset--shadow--unitone-dark) !important;
 	}
 }
 

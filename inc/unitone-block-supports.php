@@ -816,6 +816,7 @@ add_filter(
 			$has_loop_animation    = $get_attribute( 'loopAnimation.type' );
 
 			if ( $hover_animation_type && ! $has_scroll_animation && ! $has_loop_animation && '0' !== (string) $hover_animation_speed ) {
+				$p->add_class( 'has-unitone-hover' );
 				$add_data_attribute( 'data-unitone-hover-animation', $hover_animation_type );
 				$add_style( '--unitone--hover-animation-duration', $hover_animation_speed ? $hover_animation_speed . 's' : null );
 

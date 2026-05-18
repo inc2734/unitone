@@ -390,6 +390,16 @@
 	}
 }
 
+.color-block-support-panel {
+	.unitone-opacity-control {
+		grid-column: 1 / -1;
+	}
+
+	.unitone-opacity-control:only-child {
+		margin-top: 0;
+	}
+}
+
 .unitone-responsive-settings-container {
 	.components-base-control__label {
 		margin-bottom: 0 !important;

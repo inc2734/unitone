@@ -10,6 +10,7 @@
 @use '@inc2734/unitone-css/src/settings';
 
 @include meta.load-css("../../js/editor/hooks/section-divider/section-divider");
+@include meta.load-css("../../js/editor/hooks/color/opacity");
 @include meta.load-css("../../js/editor/hooks/animation/scroll-animation");
 @include meta.load-css("../../js/editor/hooks/animation/loop-animation");
 @include meta.load-css("../../js/editor/hooks/animation/hover-animation");

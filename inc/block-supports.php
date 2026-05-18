@@ -400,6 +400,7 @@ function unitone_add_supports_to_core_image( $metadata ) {
 				array(
 					'overlay'         => true,
 					'dropShadow'      => true,
+					'opacity'         => true,
 					'parallax'        => true,
 					'scrollAnimation' => true,
 					'loopAnimation'   => true,

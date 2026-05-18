@@ -46,6 +46,7 @@
 			}
 		},
 		"unitone": {
+			"opacity": true,
 			"parallax": true,
 			"scrollAnimation": true,
 			"loopAnimation": true

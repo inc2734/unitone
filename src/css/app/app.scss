@@ -14,6 +14,7 @@
 @include meta.load-css("components");
 
 @include meta.load-css("../../js/editor/hooks/section-divider/section-divider");
+@include meta.load-css("../../js/editor/hooks/color/opacity");
 @include meta.load-css("../../js/editor/hooks/animation/parallax");
 @include meta.load-css("../../js/editor/hooks/animation/scroll-animation");
 @include meta.load-css("../../js/editor/hooks/animation/loop-animation");

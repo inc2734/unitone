@@ -325,6 +325,11 @@ add_filter(
 			$add_style( '--unitone--drop-shadow', $get_attribute( 'dropShadow' ) );
 		}
 
+		// --unitone--opacity
+		if ( unitone_has_block_support( 'unitone.opacity', $metadata ) ) {
+			$add_style( '--unitone--opacity', $get_attribute( 'opacity' ) );
+		}
+
 		// -gap
 		if ( unitone_has_block_support( 'unitone.gap', $metadata ) ) {
 			$column_gap = $get_attribute( 'gap.column' );

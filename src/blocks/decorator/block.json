@@ -115,6 +115,7 @@
 			"backdropFilter": true,
 			"backgroundClip": true,
 			"mixBlendMode": true,
+			"opacity": true,
 			"parallax": true,
 			"scrollAnimation": true,
 			"loopAnimation": true,

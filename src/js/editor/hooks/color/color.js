@@ -35,9 +35,17 @@ import {
 	withMarkerColorBlockProps,
 } from './marker-color';
 
+import {
+	isOpacitySupportDisabled,
+	resetOpacityFilter,
+	OpacityEdit,
+	withOpacityBlockProps,
+} from './opacity';
+
 import { cleanEmptyObject } from '../utils';
 
 export const withColorBlockProps = compose(
+	withOpacityBlockProps,
 	withMarkerColorBlockProps,
 	withHoverTextColorBlockProps,
 	withHoverBackgroundColorBlockProps,
@@ -54,7 +62,10 @@ export const resetColor = ( props ) => {
 		],
 		[ isHoverGradientSupportDisabled, resetHoverGradientFilter ],
 		[ isHoverBorderColorSupportDisabled, resetHoverBorderColorFilter ],
+	];
+	const unitoneFilters = [
 		[ isMarkerColorSupportDisabled, resetMarkerColorFilter ],
+		[ isOpacitySupportDisabled, resetOpacityFilter ],
 	];
 
 	const attributes = filters.reduce(
@@ -66,7 +77,22 @@ export const resetColor = ( props ) => {
 		{ ...props.attributes }
 	);
 
-	return { ...props, attributes: { ...attributes } };
+	const unitone = unitoneFilters.reduce(
+		( accumulator, [ isDisabled, resetFilter ] ) => {
+			return isDisabled( { ...props } )
+				? { ...accumulator, ...resetFilter() }
+				: accumulator;
+		},
+		{ ...props.attributes?.unitone }
+	);
+
+	return {
+		...props,
+		attributes: {
+			...attributes,
+			unitone: cleanEmptyObject( unitone ),
+		},
+	};
 };
 
 function ColorPanelPure( props ) {
@@ -84,13 +110,15 @@ function ColorPanelPure( props ) {
 		name,
 	} );
 	const isMarkerColorDisabled = isMarkerColorSupportDisabled( { name } );
+	const isOpacityDisabled = isOpacitySupportDisabled( { name } );
 
 	if (
 		isHoverTextColorDisabled &&
 		isHoverBackgroundColorDisabled &&
 		isHoverGradientDisabled &&
 		isHoverBorderColorDisabled &&
-		isMarkerColorDisabled
+		isMarkerColorDisabled &&
+		isOpacityDisabled
 	) {
 		return null;
 	}
@@ -109,6 +137,7 @@ function ColorPanelPure( props ) {
 						deepmerge.all( [
 							{ ...blockAttributes?.unitone },
 							resetMarkerColorFilter(),
+							resetOpacityFilter(),
 						] )
 					),
 				} ) }
@@ -127,6 +156,12 @@ function ColorPanelPure( props ) {
 				) }
 
 				{ ! isMarkerColorDisabled && <MarkerColorEdit { ...props } /> }
+
+				{ ! isOpacityDisabled && (
+					<div className="unitone-opacity-control">
+						<OpacityEdit { ...props } />
+					</div>
+				) }
 			</InspectorControls>
 		</>
 	);

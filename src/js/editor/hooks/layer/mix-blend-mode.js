@@ -9,7 +9,7 @@ import { cleanEmptyObject } from '../utils';
 
 const mixBlendModeOptions = [
 	{
-		label: '',
+		label: __( 'None', 'unitone' ),
 		value: '',
 	},
 	{

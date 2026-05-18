@@ -77,7 +77,7 @@ export function SectionDividerTopTypeEdit( {
 				)
 			}
 			options={ [
-				{ label: '', value: '' },
+				{ label: __( 'None', 'unitone' ), value: '' },
 				{
 					label: __( 'Triangle', 'unitone' ),
 					value: 'triangle',

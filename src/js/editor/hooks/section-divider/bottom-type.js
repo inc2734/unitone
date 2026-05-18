@@ -87,7 +87,7 @@ export function SectionDividerBottomTypeEdit( {
 			label={ label }
 			help={ !! value && help }
 			options={ [
-				{ label: '', value: '' },
+				{ label: __( 'None', 'unitone' ), value: '' },
 				{
 					label: __( 'Triangle', 'unitone' ),
 					value: 'triangle',

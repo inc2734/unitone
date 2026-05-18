@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import deepmerge from 'deepmerge';
 
 import {
 	InspectorControls,
@@ -261,17 +262,19 @@ const NavigationInspectorControls = ( {
 									} ),
 								} );
 							},
-							resetAllFilter: () => {
-								setAttributes( {
-									unitone: cleanEmptyObject(
-										Object.assign( unitone, {
+							resetAllFilter: ( blockAttributes ) => ( {
+								...blockAttributes,
+								unitone: cleanEmptyObject(
+									deepmerge.all( [
+										{ ...blockAttributes?.unitone },
+										{
 											hamburgerButtonColor: undefined,
 											hamburgerButtonCustomColor:
 												undefined,
-										} )
-									),
-								} );
-							},
+										},
+									] )
+								),
+							} ),
 							clearable: true,
 						},
 						{
@@ -296,18 +299,20 @@ const NavigationInspectorControls = ( {
 									} ),
 								} );
 							},
-							resetAllFilter: () => {
-								setAttributes( {
-									unitone: cleanEmptyObject(
-										Object.assign( unitone, {
+							resetAllFilter: ( blockAttributes ) => ( {
+								...blockAttributes,
+								unitone: cleanEmptyObject(
+									deepmerge.all( [
+										{ ...blockAttributes?.unitone },
+										{
 											hamburgerButtonBackgroundColor:
 												undefined,
 											hamburgerButtonCustomBackgroundColor:
 												undefined,
-										} )
-									),
-								} );
-							},
+										},
+									] )
+								),
+							} ),
 							clearable: true,
 						},
 						{
@@ -329,16 +334,18 @@ const NavigationInspectorControls = ( {
 									} ),
 								} );
 							},
-							resetAllFilter: () => {
-								setAttributes( {
-									unitone: cleanEmptyObject(
-										Object.assign( unitone, {
+							resetAllFilter: ( blockAttributes ) => ( {
+								...blockAttributes,
+								unitone: cleanEmptyObject(
+									deepmerge.all( [
+										{ ...blockAttributes?.unitone },
+										{
 											overlayMenuColor: undefined,
 											overlayMenuCustomColor: undefined,
-										} )
-									),
-								} );
-							},
+										},
+									] )
+								),
+							} ),
 							clearable: true,
 						},
 						{
@@ -362,18 +369,20 @@ const NavigationInspectorControls = ( {
 									} ),
 								} );
 							},
-							resetAllFilter: () => {
-								setAttributes( {
-									unitone: cleanEmptyObject(
-										Object.assign( unitone, {
+							resetAllFilter: ( blockAttributes ) => ( {
+								...blockAttributes,
+								unitone: cleanEmptyObject(
+									deepmerge.all( [
+										{ ...blockAttributes?.unitone },
+										{
 											overlayMenuBackgroundColor:
 												undefined,
 											overlayMenuCustomBackgroundColor:
 												undefined,
-										} )
-									),
-								} );
-							},
+										},
+									] )
+								),
+							} ),
 							clearable: true,
 						},
 					] }

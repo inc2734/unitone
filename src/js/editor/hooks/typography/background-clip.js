@@ -63,7 +63,8 @@ export function BackgroundClipEdit( {
 		if (
 			! attributes?.gradient &&
 			! attributes?.style?.color?.gradient &&
-			! attributes?.style?.background?.backgroundImage
+			! attributes?.style?.background?.backgroundImage &&
+			undefined !== attributes?.unitone?.backgroundClip
 		) {
 			const newUnitone = {
 				...attributes?.unitone,

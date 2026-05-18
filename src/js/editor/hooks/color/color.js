@@ -1,4 +1,5 @@
 import fastDeepEqual from 'fast-deep-equal/es6';
+import deepmerge from 'deepmerge';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
@@ -34,6 +35,8 @@ import {
 	withMarkerColorBlockProps,
 } from './marker-color';
 
+import { cleanEmptyObject } from '../utils';
+
 export const withColorBlockProps = compose(
 	withMarkerColorBlockProps,
 	withHoverTextColorBlockProps,
@@ -67,7 +70,7 @@ export const resetColor = ( props ) => {
 };
 
 function ColorPanelPure( props ) {
-	const { name, setAttributes } = props;
+	const { name } = props;
 
 	const isHoverTextColorDisabled = isHoverTextColorSupportDisabled( {
 		name,
@@ -96,15 +99,19 @@ function ColorPanelPure( props ) {
 		<>
 			<InspectorControls
 				group="color"
-				resetAllFilter={ () => {
-					setAttributes( {
-						...resetHoverTextColorFilter(),
-						...resetHoverBackgroundColorFilter(),
-						...resetHoverGradientFilter(),
-						...resetHoverBorderColorFilter(),
-						...resetMarkerColorFilter(),
-					} );
-				} }
+				resetAllFilter={ ( blockAttributes ) => ( {
+					...blockAttributes,
+					...resetHoverTextColorFilter(),
+					...resetHoverBackgroundColorFilter(),
+					...resetHoverGradientFilter(),
+					...resetHoverBorderColorFilter(),
+					unitone: cleanEmptyObject(
+						deepmerge.all( [
+							{ ...blockAttributes?.unitone },
+							resetMarkerColorFilter(),
+						] )
+					),
+				} ) }
 			>
 				{ ! isHoverTextColorDisabled && (
 					<HoverTextColorEdit { ...props } />

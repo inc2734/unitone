@@ -1,4 +1,5 @@
 import fastDeepEqual from 'fast-deep-equal/es6';
+import deepmerge from 'deepmerge';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
@@ -34,7 +35,7 @@ export const resetBorder = ( props ) => {
 };
 
 function BorderPanelPure( props ) {
-	const { name, attributes, setAttributes, clientId } = props;
+	const { name, clientId } = props;
 
 	const isDropShadowDisabled = isDropShadowSupportDisabled( { name } );
 
@@ -46,16 +47,15 @@ function BorderPanelPure( props ) {
 		<>
 			<InspectorControls
 				group="border"
-				resetAllFilter={ () => {
-					setAttributes( {
-						unitone: cleanEmptyObject(
-							Object.assign(
-								{ ...attributes?.unitone },
-								resetDropShadowFilter()
-							)
-						),
-					} );
-				} }
+				resetAllFilter={ ( blockAttributes ) => ( {
+					...blockAttributes,
+					unitone: cleanEmptyObject(
+						deepmerge.all( [
+							{ ...blockAttributes?.unitone },
+							resetDropShadowFilter(),
+						] )
+					),
+				} ) }
 			>
 				{ ! isDropShadowDisabled && (
 					<ToolsPanelItem

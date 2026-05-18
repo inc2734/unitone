@@ -3,6 +3,7 @@
  */
 
 import fastDeepEqual from 'fast-deep-equal/es6';
+import deepmerge from 'deepmerge';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
@@ -103,7 +104,7 @@ export const resetTypography = ( props ) => {
 };
 
 function TypographyPanelPure( props ) {
-	const { name, attributes, setAttributes, clientId } = props;
+	const { name, attributes, clientId } = props;
 
 	const isAutoPhraseDisabled = isAutoPhraseSupportDisabled( { name } );
 	const isFluidTypographyDisabled = isFluidTypographySupportDisabled( {
@@ -136,21 +137,20 @@ function TypographyPanelPure( props ) {
 		<>
 			<InspectorControls
 				group="typography"
-				resetAllFilter={ () => {
-					setAttributes( {
-						unitone: cleanEmptyObject(
-							Object.assign(
-								{ ...attributes?.unitone },
-								resetAutoPhraseFilter(),
-								resetFluidTypographyFilter(),
-								resetFluidTypographyMinLengthFilter(),
-								resetHalfLeadingFilter(),
-								resetBackgroundClipFilter(),
-								resetLinkDecorationFilter()
-							)
-						),
-					} );
-				} }
+				resetAllFilter={ ( blockAttributes ) => ( {
+					...blockAttributes,
+					unitone: cleanEmptyObject(
+						deepmerge.all( [
+							{ ...blockAttributes?.unitone },
+							resetAutoPhraseFilter(),
+							resetFluidTypographyFilter(),
+							resetFluidTypographyMinLengthFilter(),
+							resetHalfLeadingFilter(),
+							resetBackgroundClipFilter(),
+							resetLinkDecorationFilter(),
+						] )
+					),
+				} ) }
 			>
 				{ ! isHalfLeadingDisabled && (
 					<ToolsPanelItem

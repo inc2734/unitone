@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import deepmerge from 'deepmerge';
 
 import {
 	InspectorControls,
@@ -116,16 +117,18 @@ const ColorInspectorControls = ( { attributes, setAttributes, clientId } ) => {
 									} ),
 								} );
 							},
-							resetAllFilter: () => {
-								setAttributes( {
-									unitone: cleanEmptyObject(
-										Object.assign( unitone, {
+							resetAllFilter: ( blockAttributes ) => ( {
+								...blockAttributes,
+								unitone: cleanEmptyObject(
+									deepmerge.all( [
+										{ ...blockAttributes?.unitone },
+										{
 											headerSectionColor: undefined,
 											headerSectionCustomColor: undefined,
-										} )
-									),
-								} );
-							},
+										},
+									] )
+								),
+							} ),
 							clearable: true,
 						},
 						{
@@ -149,18 +152,20 @@ const ColorInspectorControls = ( { attributes, setAttributes, clientId } ) => {
 									} ),
 								} );
 							},
-							resetAllFilter: () => {
-								setAttributes( {
-									unitone: cleanEmptyObject(
-										Object.assign( unitone, {
+							resetAllFilter: ( blockAttributes ) => ( {
+								...blockAttributes,
+								unitone: cleanEmptyObject(
+									deepmerge.all( [
+										{ ...blockAttributes?.unitone },
+										{
 											headerSectionBackgroundColor:
 												undefined,
 											headerSectionCustomBackgroundColor:
 												undefined,
-										} )
-									),
-								} );
-							},
+										},
+									] )
+								),
+							} ),
 							clearable: true,
 						},
 						{
@@ -183,16 +188,18 @@ const ColorInspectorControls = ( { attributes, setAttributes, clientId } ) => {
 									} ),
 								} );
 							},
-							resetAllFilter: () => {
-								setAttributes( {
-									unitone: cleanEmptyObject(
-										Object.assign( unitone, {
+							resetAllFilter: ( blockAttributes ) => ( {
+								...blockAttributes,
+								unitone: cleanEmptyObject(
+									deepmerge.all( [
+										{ ...blockAttributes?.unitone },
+										{
 											footerSectionColor: undefined,
 											footerSectionCustomColor: undefined,
-										} )
-									),
-								} );
-							},
+										},
+									] )
+								),
+							} ),
 							clearable: true,
 						},
 						{
@@ -216,18 +223,20 @@ const ColorInspectorControls = ( { attributes, setAttributes, clientId } ) => {
 									} ),
 								} );
 							},
-							resetAllFilter: () => {
-								setAttributes( {
-									unitone: cleanEmptyObject(
-										Object.assign( unitone, {
+							resetAllFilter: ( blockAttributes ) => ( {
+								...blockAttributes,
+								unitone: cleanEmptyObject(
+									deepmerge.all( [
+										{ ...blockAttributes?.unitone },
+										{
 											footerSectionBackgroundColor:
 												undefined,
 											footerSectionCustomBackgroundColor:
 												undefined,
-										} )
-									),
-								} );
-							},
+										},
+									] )
+								),
+							} ),
 							clearable: true,
 						},
 					] }

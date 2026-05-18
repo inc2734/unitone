@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 import {
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
@@ -52,14 +54,15 @@ export function MarkerColorEdit( props ) {
 							} ),
 						} );
 					},
-					resetAllFilter: () => {
-						setAttributes( {
-							unitone: cleanEmptyObject( {
-								...unitone,
-								...resetMarkerColorFilter(),
-							} ),
-						} );
-					},
+					resetAllFilter: ( blockAttributes ) => ( {
+						...blockAttributes,
+						unitone: cleanEmptyObject(
+							deepmerge.all( [
+								{ ...blockAttributes?.unitone },
+								resetMarkerColorFilter(),
+							] )
+						),
+					} ),
 					clearable: true,
 				},
 			] }

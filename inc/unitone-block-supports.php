@@ -819,6 +819,16 @@ add_filter(
 				$add_data_attribute( 'data-unitone-hover-animation', $hover_animation_type );
 				$add_style( '--unitone--hover-animation-duration', $hover_animation_speed ? $hover_animation_speed . 's' : null );
 
+				$hover_animation_scale = $get_attribute( 'hoverAnimation.scale' );
+				if ( 'scale' === $hover_animation_type && null !== $hover_animation_scale ) {
+					$add_style( '--unitone--hover-animation-scale', $hover_animation_scale );
+				}
+
+				$hover_animation_opacity = $get_attribute( 'hoverAnimation.opacity' );
+				if ( 'fade' === $hover_animation_type && null !== $hover_animation_opacity ) {
+					$add_style( '--unitone--hover-animation-opacity', $hover_animation_opacity );
+				}
+
 				$hover_animation_trigger = $get_attribute( 'hoverAnimation.trigger' );
 				if ( 'group' === $hover_animation_trigger ) {
 					$add_data_attribute( 'data-unitone-hover-animation', '-trigger:group' );

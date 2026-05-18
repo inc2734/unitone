@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-05-18T02:13:12+00:00\n"
-"PO-Revision-Date: 2026-05-18 11:13+0900\n"
+"POT-Creation-Date: 2026-05-18T03:30:09+00:00\n"
+"PO-Revision-Date: 2026-05-18 12:30+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -4107,6 +4107,14 @@ msgid ""
 msgstr ""
 "有効化すると、子孫ブロックに対してホバーアニメーションを発生させることができ"
 "ます。"
+
+#: dist/js/editor/editor.js:13
+msgid "Scale"
+msgstr "拡大率"
+
+#: dist/js/editor/editor.js:13
+msgid "Opacity"
+msgstr "不透明度"
 
 #: dist/js/editor/editor.js:13
 msgid "Trigger"

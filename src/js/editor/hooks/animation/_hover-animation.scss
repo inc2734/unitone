@@ -2,6 +2,8 @@
 
 [data-unitone-hover-animation] {
 	--unitone--hover-animation-duration: .3s;
+	--unitone--hover-animation-opacity: .75;
+	--unitone--hover-animation-scale: 1.05;
 	--unitone--hover-animation-timing-function: ease;
 
 	transition-duration: var(--unitone--hover-animation-duration);
@@ -13,11 +15,11 @@
 
 @mixin active-hover-animation {
 	&[data-unitone-hover-animation~=scale] {
-		transform: scale(1.05);
+		transform: scale(var(--unitone--hover-animation-scale));
 	}
 
 	&[data-unitone-hover-animation~=fade] {
-		opacity: .65;
+		opacity: var(--unitone--hover-animation-opacity);
 	}
 }
 

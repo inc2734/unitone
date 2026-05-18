@@ -173,6 +173,10 @@ function HoverAnimationPopover( {
 	onChangeSpeed,
 	easing,
 	onChangeEasing,
+	scale,
+	onChangeScale,
+	opacity,
+	onChangeOpacity,
 	group,
 	onChangeGroup,
 	trigger,
@@ -250,6 +254,34 @@ function HoverAnimationPopover( {
 								onChange={ onChangeEasing }
 							/>
 
+							{ 'scale' === type && (
+								<RangeControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={ __( 'Scale', 'unitone' ) }
+									value={ scale }
+									step={ 0.01 }
+									min={ 1.01 }
+									max={ 2 }
+									onChange={ onChangeScale }
+									allowReset
+								/>
+							) }
+
+							{ 'fade' === type && (
+								<RangeControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={ __( 'Opacity', 'unitone' ) }
+									value={ opacity }
+									step={ 0.01 }
+									min={ 0 }
+									max={ 0.9 }
+									onChange={ onChangeOpacity }
+									allowReset
+								/>
+							) }
+
 							<ToggleGroupControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
@@ -300,6 +332,8 @@ export function HoverAnimationEdit( {
 	const type = unitone?.hoverAnimation?.type ?? defaultValue?.type;
 	const speed = unitone?.hoverAnimation?.speed ?? defaultValue?.speed;
 	const easing = unitone?.hoverAnimation?.easing ?? defaultValue?.easing;
+	const scale = unitone?.hoverAnimation?.scale ?? defaultValue?.scale;
+	const opacity = unitone?.hoverAnimation?.opacity ?? defaultValue?.opacity;
 	const group =
 		unitone?.hoverAnimation?.group ?? defaultValue?.group ?? false;
 	const trigger =
@@ -410,6 +444,8 @@ export function HoverAnimationEdit( {
 			type={ type ?? '' }
 			speed={ null != speed ? parseFloat( speed ) : undefined }
 			easing={ easing ?? '' }
+			scale={ null != scale ? parseFloat( scale ) : undefined }
+			opacity={ null != opacity ? parseFloat( opacity ) : undefined }
 			group={ group }
 			trigger={ trigger ?? 'self' }
 			onChangeType={ ( newAttribute ) =>
@@ -420,6 +456,12 @@ export function HoverAnimationEdit( {
 			}
 			onChangeEasing={ ( newAttribute ) =>
 				setHoverAnimationAttribute( 'easing', newAttribute )
+			}
+			onChangeScale={ ( newAttribute ) =>
+				setHoverAnimationAttribute( 'scale', newAttribute )
+			}
+			onChangeOpacity={ ( newAttribute ) =>
+				setHoverAnimationAttribute( 'opacity', newAttribute )
 			}
 			onChangeGroup={ ( newAttribute ) =>
 				setHoverAnimationAttribute( 'group', newAttribute || undefined )
@@ -480,6 +522,8 @@ export function withHoverAnimationBlockProps( settings ) {
 	const type = newHoverAnimation?.type;
 	const speed = newHoverAnimation?.speed;
 	const easing = newHoverAnimation?.easing;
+	const scale = newHoverAnimation?.scale;
+	const opacity = newHoverAnimation?.opacity;
 	const group = newHoverAnimation?.group;
 	const trigger = newHoverAnimation?.trigger ?? 'self';
 
@@ -508,6 +552,10 @@ export function withHoverAnimationBlockProps( settings ) {
 				...settings.wrapperProps?.style,
 				'--unitone--hover-animation-duration':
 					null != speed && type ? `${ speed }s` : undefined,
+				'--unitone--hover-animation-scale':
+					null != scale && 'scale' === type ? scale : undefined,
+				'--unitone--hover-animation-opacity':
+					null != opacity && 'fade' === type ? opacity : undefined,
 			},
 		},
 	};

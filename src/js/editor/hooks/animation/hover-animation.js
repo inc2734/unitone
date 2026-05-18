@@ -294,6 +294,7 @@ export function HoverAnimationEdit( {
 } ) {
 	const timeoutIdRef = useRef();
 	const frameIdRef = useRef();
+	const wasActiveOnMouseDownRef = useRef( false );
 	const defaultValue = useDefaultValue( { name } );
 
 	const type = unitone?.hoverAnimation?.type ?? defaultValue?.type;
@@ -307,6 +308,12 @@ export function HoverAnimationEdit( {
 	const clearCheckBehaviorTimer = () => {
 		window.clearTimeout( timeoutIdRef.current );
 		window.cancelAnimationFrame( frameIdRef.current );
+	};
+
+	const requestAfterRender = ( callback ) => {
+		frameIdRef.current = window.requestAnimationFrame( () => {
+			frameIdRef.current = window.requestAnimationFrame( callback );
+		} );
 	};
 
 	const resetCheckBehavior = () => {
@@ -323,33 +330,42 @@ export function HoverAnimationEdit( {
 	const scheduleResetCheckBehavior = () => {
 		clearCheckBehaviorTimer();
 
-		frameIdRef.current = window.requestAnimationFrame( () => {
-			frameIdRef.current = window.requestAnimationFrame( () => {
-				const root = document.querySelector(
-					`[data-block="${ clientId }"]`
-				);
-				const targets = root
-					? [
-							...( type ? [ root ] : [] ),
-							...( group
-								? root.querySelectorAll(
-										'[data-unitone-hover-animation~="-trigger:group"]'
-								  )
-								: [] ),
-					  ]
-					: [];
+		requestAfterRender( () => {
+			const root = document.querySelector(
+				`[data-block="${ clientId }"]`
+			);
+			const targets = root
+				? [
+						...( type ? [ root ] : [] ),
+						...( group
+							? root.querySelectorAll(
+									'[data-unitone-hover-animation~="-trigger:group"]'
+							  )
+							: [] ),
+				  ]
+				: [];
 
-				const duration = Math.max(
-					DEFAULT_PREVIEW_DURATION,
-					...targets.map( getTransitionTotalDuration )
-				);
+			const duration = Math.max(
+				DEFAULT_PREVIEW_DURATION,
+				null != speed && type ? parseFloat( speed ) * 1000 : 0,
+				...targets.map( getTransitionTotalDuration )
+			);
 
-				timeoutIdRef.current = window.setTimeout(
-					resetCheckBehavior,
-					duration
-				);
-			} );
+			timeoutIdRef.current = window.setTimeout(
+				resetCheckBehavior,
+				duration
+			);
 		} );
+	};
+
+	const activateCheckBehavior = () => {
+		setAttributes( {
+			__unitoneStates: {
+				...__unitoneStates,
+				hoverAnimationActive: true,
+			},
+		} );
+		scheduleResetCheckBehavior();
 	};
 
 	const setHoverAnimationAttribute = ( key, newAttribute ) => {
@@ -415,19 +431,22 @@ export function HoverAnimationEdit( {
 				)
 			}
 			onMouseDownCheckBehavior={ () => {
-				if ( __unitoneStates?.hoverAnimationActive ) {
+				wasActiveOnMouseDownRef.current =
+					!! __unitoneStates?.hoverAnimationActive;
+
+				if ( wasActiveOnMouseDownRef.current ) {
 					resetCheckBehavior();
 				}
 			} }
 			onClickCheckBehavior={ () => {
-				if ( ! __unitoneStates?.hoverAnimationActive ) {
-					setAttributes( {
-						__unitoneStates: {
-							...__unitoneStates,
-							hoverAnimationActive: true,
-						},
-					} );
-					scheduleResetCheckBehavior();
+				if ( wasActiveOnMouseDownRef.current ) {
+					clearCheckBehaviorTimer();
+
+					requestAfterRender( activateCheckBehavior );
+
+					wasActiveOnMouseDownRef.current = false;
+				} else if ( ! __unitoneStates?.hoverAnimationActive ) {
+					activateCheckBehavior();
 				}
 			} }
 		/>

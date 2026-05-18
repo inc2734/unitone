@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-14T05:50:40+00:00\n"
+"POT-Creation-Date: 2026-05-18T02:13:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -59,13 +59,12 @@ msgstr ""
 #: dist/blocks/slider/index.js:1
 #: dist/blocks/tabs/index.js:1
 #: dist/blocks/vertical-writing/index.js:1
-#: dist/js/editor/202.js:1
-#: dist/js/editor/577.js:4
-#: dist/js/editor/888.js:1
 #: dist/js/editor/editor.js:1
 #: dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:13
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:16
+#: dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Default"
 msgstr ""
 
@@ -1894,17 +1893,17 @@ msgid "Typography"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Font"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Base Font Size"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Half Leading"
 msgstr ""
 
@@ -1946,14 +1945,14 @@ msgstr ""
 #: App/Controller/Manager/dist/js/app.js:7
 #: dist/blocks/mega-menu/index.js:1
 #: dist/js/editor/editor.js:7
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Content Width"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
 #: dist/blocks/mega-menu/index.js:1
 #: dist/js/editor/editor.js:7
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Wide Width"
 msgstr ""
 
@@ -2077,7 +2076,7 @@ msgid "Box"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:9
-#: dist/js/editor/888.js:1
+#: dist/js/editor/editor.js:16
 msgid "OGP"
 msgstr ""
 
@@ -2119,8 +2118,7 @@ msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:9
 #: dist/blocks/abstract-background/index.js:1
-#: dist/js/editor/202.js:1
-#: dist/js/editor/888.js:1
+#: dist/js/editor/editor.js:16
 msgid "Background"
 msgstr ""
 
@@ -2217,8 +2215,7 @@ msgstr ""
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/formats/formats.js:1
-#: dist/js/editor/202.js:1
-#: dist/js/editor/888.js:1
+#: dist/js/editor/editor.js:16
 msgid "Settings"
 msgstr ""
 
@@ -2587,8 +2584,8 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/js/editor/731.js:1
 #: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:16
 msgid "Desktop"
 msgstr ""
 
@@ -2601,8 +2598,8 @@ msgstr ""
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-switcher-container/index.js:1
-#: dist/js/editor/731.js:1
 #: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:16
 msgid "Mobile"
 msgstr ""
 
@@ -2805,6 +2802,7 @@ msgid "Reverse direction"
 msgstr ""
 
 #: dist/blocks/marquee/index.js:1
+#: dist/js/editor/editor.js:13
 msgid "Pause on hover"
 msgstr ""
 
@@ -3634,156 +3632,6 @@ msgstr ""
 msgid "Media link"
 msgstr ""
 
-#: dist/js/editor/202.js:1
-#: dist/js/editor/888.js:1
-msgid "Featured image generator settings"
-msgstr ""
-
-#: dist/js/editor/202.js:1
-#: dist/js/editor/888.js:1
-msgid "Generate featured image"
-msgstr ""
-
-#: dist/js/editor/202.js:1
-#: dist/js/editor/888.js:1
-msgid "Aspect ratio"
-msgstr ""
-
-#: dist/js/editor/577.js:1
-msgid "Copied."
-msgstr ""
-
-#: dist/js/editor/577.js:1
-msgid "Text Generator"
-msgstr ""
-
-#. translators: %1$s: <a>, %2$s: </a>
-#: dist/js/editor/577.js:4
-#, js-format
-msgid "To use this feature, configure AI Connectors from the %1$sConnectors settings screen%2$s."
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Prompt"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Example: Generate customer testimonials for a web design agency."
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Tone (optional)"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Polite"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Casual"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Formal"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Friendly"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Logical"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "High energy"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Please enter a prompt."
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "[unitone] Starting with WordPress 7.0, the use of AI Connectors is recommended. This setup is scheduled to be rolled out, so please migrate to AI Connectors as soon as possible."
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Failed to generate. Please try again."
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Generate"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Results"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Copy"
-msgstr ""
-
-#: dist/js/editor/577.js:4
-msgid "Copy all"
-msgstr ""
-
-#: dist/js/editor/731.js:1
-msgid "Wireframe Generator"
-msgstr ""
-
-#: dist/js/editor/731.js:1
-msgid "Generates a wireframe using the unitone patterns. When inserted, images are replaced with dummy images."
-msgstr ""
-
-#: dist/js/editor/731.js:1
-msgid "Now generating…"
-msgstr ""
-
-#: dist/js/editor/731.js:1
-msgid "Generate for homepage"
-msgstr ""
-
-#: dist/js/editor/731.js:1
-msgid "Generate for lower-level pages"
-msgstr ""
-
-#: dist/js/editor/731.js:1
-msgid "Insert wireframe"
-msgstr ""
-
-#: dist/js/editor/731.js:1
-msgid "Tablet"
-msgstr ""
-
-#. translators: %s: block pattern title.
-#: dist/js/editor/731.js:5
-msgid "Wireframe"
-msgstr ""
-
-#: dist/js/editor/888.js:1
-msgid "OGP image generator settings"
-msgstr ""
-
-#: dist/js/editor/888.js:1
-msgid "Could not retrieve the OGP image data."
-msgstr ""
-
-#: dist/js/editor/888.js:1
-msgid "Edit or replace the OGP image"
-msgstr ""
-
-#: dist/js/editor/888.js:1
-msgid "OGP image"
-msgstr ""
-
-#: dist/js/editor/888.js:1
-msgid "Generate OGP image"
-msgstr ""
-
-#: dist/js/editor/888.js:1
-msgid "If no OGP image is set, the featured image will be used as the og:image."
-msgstr ""
-
 #: dist/js/editor/editor.js:1
 msgid "Margins at both ends"
 msgstr ""
@@ -4274,6 +4122,30 @@ msgid "Interval"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
+msgid "Hover"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Hover grouping"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "When enabled, it can be used to trigger hover animations for descendant blocks."
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Trigger"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Self"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Hover group"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
 msgid "Animation"
 msgstr ""
 
@@ -4392,6 +4264,18 @@ msgid "Modify content only"
 msgstr ""
 
 #: dist/js/editor/editor.js:16
+msgid "Featured image generator settings"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Generate featured image"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Aspect ratio"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
 msgid "Select parent block"
 msgstr ""
 
@@ -4400,32 +4284,167 @@ msgid "Select child block"
 msgstr ""
 
 #: dist/js/editor/editor.js:16
+msgid "OGP image generator settings"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Could not retrieve the OGP image data."
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Edit or replace the OGP image"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "OGP image"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Generate OGP image"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "If no OGP image is set, the featured image will be used as the og:image."
+msgstr ""
+
+#: dist/js/editor/editor.js:16
 msgid "Sync children's settings"
 msgstr ""
 
+#: dist/js/editor/editor.js:16
+msgid "Wireframe Generator"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Generates a wireframe using the unitone patterns. When inserted, images are replaced with dummy images."
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Now generating…"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Generate for homepage"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Generate for lower-level pages"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Insert wireframe"
+msgstr ""
+
+#: dist/js/editor/editor.js:16
+msgid "Tablet"
+msgstr ""
+
+#. translators: %s: block pattern title.
+#: dist/js/editor/editor.js:20
+msgid "Wireframe"
+msgstr ""
+
 #. Translators: %d: The number of the blocks.
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Paste styles"
 msgstr ""
 
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Reset"
 msgstr ""
 
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Override settings"
 msgstr ""
 
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Accent color"
 msgstr ""
 
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Background color"
 msgstr ""
 
-#: dist/js/editor/editor.js:22
+#: dist/js/editor/editor.js:26
 msgid "Text color"
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Copied."
+msgstr ""
+
+#: dist/js/editor/editor.js:26
+msgid "Text Generator"
+msgstr ""
+
+#. translators: %1$s: <a>, %2$s: </a>
+#: dist/js/editor/editor.js:29
+#, js-format
+msgid "To use this feature, configure AI Connectors from the %1$sConnectors settings screen%2$s."
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Prompt"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Example: Generate customer testimonials for a web design agency."
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Tone (optional)"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Polite"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Casual"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Formal"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Friendly"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Logical"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "High energy"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Please enter a prompt."
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "[unitone] Starting with WordPress 7.0, the use of AI Connectors is recommended. This setup is scheduled to be rolled out, so please migrate to AI Connectors as soon as possible."
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Failed to generate. Please try again."
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Generate"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Results"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Copy"
+msgstr ""
+
+#: dist/js/editor/editor.js:29
+msgid "Copy all"
 msgstr ""
 
 #: dist/variations/variations.js:1
@@ -5535,6 +5554,11 @@ msgstr ""
 #: theme.json
 msgctxt "Font family name"
 msgid "Cormorant Garamond"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "2XS"
 msgstr ""
 
 #: theme.json

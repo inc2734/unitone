@@ -253,7 +253,7 @@ function HoverAnimationPopover( {
 							<ToggleGroupControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
-								label={ __( 'Trigger on hover', 'unitone' ) }
+								label={ __( 'Trigger', 'unitone' ) }
 								value={ trigger || 'self' }
 								disabled={ ! type }
 								isBlock

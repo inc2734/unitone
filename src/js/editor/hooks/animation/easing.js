@@ -1,5 +1,7 @@
+import { __ } from '@wordpress/i18n';
+
 export const EASING_OPTIONS = [
-	{ label: '', value: undefined },
+	{ label: __( 'Default', 'unitone' ), value: undefined },
 	{ label: 'linear', value: 'linear' },
 	{ label: 'ease', value: 'ease' },
 	{ label: 'ease-in', value: 'ease-in' },

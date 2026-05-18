@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-18T03:30:09+00:00\n"
+"POT-Creation-Date: 2026-05-18T14:10:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -3015,6 +3015,7 @@ msgstr ""
 #: dist/blocks/tabs/index.js:1
 #: dist/js/editor/editor.js:1
 #: dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:13
 msgid "None"
 msgstr ""
@@ -4126,6 +4127,10 @@ msgid "Hover"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
+msgid "Hover group"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
 msgid "Hover grouping"
 msgstr ""
 
@@ -4150,7 +4155,7 @@ msgid "Self"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
-msgid "Hover group"
+msgid "Hover group cannot be selected when hover grouping is enabled."
 msgstr ""
 
 #: dist/js/editor/editor.js:13

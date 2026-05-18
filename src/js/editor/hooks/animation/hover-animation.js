@@ -12,6 +12,7 @@ import {
 	Dropdown,
 	RangeControl,
 	SelectControl,
+	Tooltip,
 	ToggleControl,
 } from '@wordpress/components';
 
@@ -227,6 +228,16 @@ function HoverAnimationPopover( {
 		shift: true,
 	};
 
+	const isGroupTriggerDisabled = group;
+
+	const groupTriggerOption = (
+		<ToggleGroupControlOption
+			value="group"
+			label={ __( 'Hover group', 'unitone' ) }
+			disabled={ isGroupTriggerDisabled }
+		/>
+	);
+
 	return (
 		<Dropdown
 			popoverProps={ popoverProps }
@@ -328,10 +339,27 @@ function HoverAnimationPopover( {
 									value="self"
 									label={ __( 'Self', 'unitone' ) }
 								/>
-								<ToggleGroupControlOption
-									value="group"
-									label={ __( 'Hover group', 'unitone' ) }
-								/>
+								{ isGroupTriggerDisabled ? (
+									<Tooltip
+										text={ __(
+											'Hover group cannot be selected when hover grouping is enabled.',
+											'unitone'
+										) }
+										placement="top"
+									>
+										<span
+											style={ {
+												display: 'inline-flex',
+												flex: 1,
+												minWidth: 0,
+											} }
+										>
+											{ groupTriggerOption }
+										</span>
+									</Tooltip>
+								) : (
+									groupTriggerOption
+								) }
 							</ToggleGroupControl>
 
 							<Button
@@ -379,8 +407,9 @@ export function HoverAnimationEdit( {
 		animationType?.opacity;
 	const group =
 		unitone?.hoverAnimation?.group ?? defaultValue?.group ?? false;
-	const trigger =
-		unitone?.hoverAnimation?.trigger ?? defaultValue?.trigger ?? 'self';
+	const trigger = group
+		? 'self'
+		: unitone?.hoverAnimation?.trigger ?? defaultValue?.trigger ?? 'self';
 
 	const clearCheckBehaviorTimer = () => {
 		window.clearTimeout( timeoutIdRef.current );
@@ -521,9 +550,26 @@ export function HoverAnimationEdit( {
 			onChangeOpacity={ ( newAttribute ) =>
 				setHoverAnimationAttribute( 'opacity', newAttribute )
 			}
-			onChangeGroup={ ( newAttribute ) =>
-				setHoverAnimationAttribute( 'group', newAttribute || undefined )
-			}
+			onChangeGroup={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					hoverAnimation: {
+						...unitone?.hoverAnimation,
+						group: newAttribute || undefined,
+						trigger: newAttribute
+							? undefined
+							: unitone?.hoverAnimation?.trigger,
+					},
+				};
+
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+					__unitoneStates: {
+						...__unitoneStates,
+						hoverAnimationActive: false,
+					},
+				} );
+			} }
 			onChangeTrigger={ ( newAttribute ) =>
 				setHoverAnimationAttribute(
 					'trigger',
@@ -583,7 +629,7 @@ export function withHoverAnimationBlockProps( settings ) {
 	const scale = newHoverAnimation?.scale;
 	const opacity = newHoverAnimation?.opacity;
 	const group = newHoverAnimation?.group;
-	const trigger = newHoverAnimation?.trigger ?? 'self';
+	const trigger = group ? 'self' : newHoverAnimation?.trigger ?? 'self';
 
 	const dataHoverAnimation = clsx( type, {
 		'-trigger:group': type && 'group' === trigger,

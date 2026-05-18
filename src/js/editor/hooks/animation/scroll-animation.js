@@ -25,6 +25,76 @@ import { EASING_OPTIONS } from './easing';
 import { scroll as iconScrollAnimation } from './icons';
 import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
+const SCROLL_ANIMATION_TYPES = [
+	{
+		label: 'fade-in',
+		value: 'fade-in',
+		speed: 1,
+		delay: 0,
+	},
+	{
+		label: 'fade-in-up',
+		value: 'fade-in-up',
+		speed: 0.6,
+		delay: 0,
+		initial: 100,
+	},
+	{
+		label: 'fade-in-down',
+		value: 'fade-in-down',
+		speed: 0.6,
+		delay: 0,
+		initial: -100,
+	},
+	{
+		label: 'fade-in-left',
+		value: 'fade-in-left',
+		speed: 0.6,
+		delay: 0,
+		initial: 100,
+	},
+	{
+		label: 'fade-in-right',
+		value: 'fade-in-right',
+		speed: 0.6,
+		delay: 0,
+		initial: -100,
+	},
+	{
+		label: 'zoom-in',
+		value: 'zoom-in',
+		speed: 0.4,
+		delay: 0,
+		initial: 0.6,
+	},
+	{
+		label: 'shake-horizontal',
+		value: 'shake-horizontal',
+		speed: 0.8,
+		delay: 0,
+		initial: -10,
+	},
+	{
+		label: 'shake-vertical',
+		value: 'shake-vertical',
+		speed: 0.8,
+		delay: 0,
+		initial: -10,
+	},
+];
+
+const SCROLL_ANIMATION_TYPE_OPTIONS = [
+	{ label: __( 'None', 'unitone' ), value: '' },
+	...SCROLL_ANIMATION_TYPES.map( ( { label, value } ) => ( {
+		label,
+		value,
+	} ) ),
+];
+
+function getAnimationType( type ) {
+	return SCROLL_ANIMATION_TYPES.find( ( item ) => item.value === type );
+}
+
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
 		?.unitone?.default?.scrollAnimation;
@@ -180,41 +250,7 @@ function ScrollAnimationPopover( {
 								__nextHasNoMarginBottom
 								label={ __( 'Type', 'unitone' ) }
 								value={ type || '' }
-								options={ [
-									{ label: '', value: '' },
-									{
-										label: 'fade-in',
-										value: 'fade-in',
-									},
-									{
-										label: 'fade-in-up',
-										value: 'fade-in-up',
-									},
-									{
-										label: 'fade-in-down',
-										value: 'fade-in-down',
-									},
-									{
-										label: 'fade-in-left',
-										value: 'fade-in-left',
-									},
-									{
-										label: 'fade-in-right',
-										value: 'fade-in-right',
-									},
-									{
-										label: 'zoom-in',
-										value: 'zoom-in',
-									},
-									{
-										label: 'shake-horizontal',
-										value: 'shake-horizontal',
-									},
-									{
-										label: 'shake-vertical',
-										value: 'shake-vertical',
-									},
-								] }
+								options={ SCROLL_ANIMATION_TYPE_OPTIONS }
 								onChange={ onChangeType }
 							/>
 
@@ -452,10 +488,20 @@ export function ScrollAnimationEdit( {
 	const defaultValue = useDefaultValue( { name } );
 
 	const type = unitone?.scrollAnimation?.type ?? defaultValue?.type;
-	const speed = unitone?.scrollAnimation?.speed ?? defaultValue?.speed;
-	const delay = unitone?.scrollAnimation?.delay ?? defaultValue?.delay;
+	const animationType = getAnimationType( type );
+	const speed =
+		unitone?.scrollAnimation?.speed ??
+		defaultValue?.speed ??
+		animationType?.speed;
+	const delay =
+		unitone?.scrollAnimation?.delay ??
+		defaultValue?.delay ??
+		animationType?.delay;
 	const easing = unitone?.scrollAnimation?.easing ?? defaultValue?.easing;
-	const initial = unitone?.scrollAnimation?.initial;
+	const initial =
+		unitone?.scrollAnimation?.initial ??
+		defaultValue?.initial ??
+		animationType?.initial;
 	const rootMargin =
 		unitone?.scrollAnimation?.rootMargin ?? defaultValue?.rootMargin;
 	const threshold =
@@ -487,11 +533,11 @@ export function ScrollAnimationEdit( {
 			onChangeType={ ( newAttribute ) => {
 				const newUnitone = {
 					...unitone,
-					scrollAnimation: {
-						...unitone?.scrollAnimation,
-						type: newAttribute || undefined,
-						initial: undefined,
-					},
+					scrollAnimation: newAttribute
+						? {
+								type: newAttribute || undefined,
+						  }
+						: undefined,
 				};
 
 				setAttributes( {

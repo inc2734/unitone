@@ -25,7 +25,34 @@ import { EASING_OPTIONS } from './easing';
 import { hover as iconHoverAnimation } from './icons';
 import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
-const DEFAULT_PREVIEW_DURATION = 300;
+const MIN_PREVIEW_DURATION = 300;
+
+const HOVER_ANIMATION_TYPES = [
+	{
+		label: 'scale',
+		value: 'scale',
+		speed: 0.3,
+		scale: 1.05,
+	},
+	{
+		label: 'fade',
+		value: 'fade',
+		speed: 0.3,
+		opacity: 0.75,
+	},
+];
+
+const HOVER_ANIMATION_TYPE_OPTIONS = [
+	{ label: __( 'None', 'unitone' ), value: '' },
+	...HOVER_ANIMATION_TYPES.map( ( { label, value } ) => ( {
+		label,
+		value,
+	} ) ),
+];
+
+function getAnimationType( type ) {
+	return HOVER_ANIMATION_TYPES.find( ( item ) => item.value === type );
+}
 
 function parseCSSTime( value ) {
 	if ( ! value ) {
@@ -223,11 +250,7 @@ function HoverAnimationPopover( {
 								__nextHasNoMarginBottom
 								label={ __( 'Type', 'unitone' ) }
 								value={ type || '' }
-								options={ [
-									{ label: '', value: '' },
-									{ label: 'scale', value: 'scale' },
-									{ label: 'fade', value: 'fade' },
-								] }
+								options={ HOVER_ANIMATION_TYPE_OPTIONS }
 								onChange={ onChangeType }
 							/>
 
@@ -276,7 +299,7 @@ function HoverAnimationPopover( {
 									value={ opacity }
 									step={ 0.01 }
 									min={ 0 }
-									max={ 0.9 }
+									max={ 0.99 }
 									onChange={ onChangeOpacity }
 									allowReset
 								/>
@@ -330,10 +353,20 @@ export function HoverAnimationEdit( {
 	const defaultValue = useDefaultValue( { name } );
 
 	const type = unitone?.hoverAnimation?.type ?? defaultValue?.type;
-	const speed = unitone?.hoverAnimation?.speed ?? defaultValue?.speed;
+	const animationType = getAnimationType( type );
+	const speed =
+		unitone?.hoverAnimation?.speed ??
+		defaultValue?.speed ??
+		animationType?.speed;
 	const easing = unitone?.hoverAnimation?.easing ?? defaultValue?.easing;
-	const scale = unitone?.hoverAnimation?.scale ?? defaultValue?.scale;
-	const opacity = unitone?.hoverAnimation?.opacity ?? defaultValue?.opacity;
+	const scale =
+		unitone?.hoverAnimation?.scale ??
+		defaultValue?.scale ??
+		animationType?.scale;
+	const opacity =
+		unitone?.hoverAnimation?.opacity ??
+		defaultValue?.opacity ??
+		animationType?.opacity;
 	const group =
 		unitone?.hoverAnimation?.group ?? defaultValue?.group ?? false;
 	const trigger =
@@ -380,7 +413,7 @@ export function HoverAnimationEdit( {
 				: [];
 
 			const duration = Math.max(
-				DEFAULT_PREVIEW_DURATION,
+				MIN_PREVIEW_DURATION,
 				null != speed && type ? parseFloat( speed ) * 1000 : 0,
 				...targets.map( getTransitionTotalDuration )
 			);
@@ -448,9 +481,24 @@ export function HoverAnimationEdit( {
 			opacity={ null != opacity ? parseFloat( opacity ) : undefined }
 			group={ group }
 			trigger={ trigger ?? 'self' }
-			onChangeType={ ( newAttribute ) =>
-				setHoverAnimationAttribute( 'type', newAttribute )
-			}
+			onChangeType={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					hoverAnimation: newAttribute
+						? {
+								type: newAttribute,
+						  }
+						: undefined,
+				};
+
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+					__unitoneStates: {
+						...__unitoneStates,
+						hoverAnimationActive: false,
+					},
+				} );
+			} }
 			onChangeSpeed={ ( newAttribute ) =>
 				setHoverAnimationAttribute( 'speed', newAttribute )
 			}

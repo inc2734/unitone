@@ -23,6 +23,51 @@ import { EASING_OPTIONS } from './easing';
 import { loop as iconLoopAnimation } from './icons';
 import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
+const LOOP_ANIMATION_TYPES = [
+	{
+		label: 'bounce',
+		value: 'bounce',
+		speed: 1,
+		interval: 0,
+	},
+	{
+		label: 'flash',
+		value: 'flash',
+		speed: 1,
+		interval: 0,
+	},
+	{
+		label: 'pulse',
+		value: 'pulse',
+		speed: 1,
+		interval: 0,
+	},
+	{
+		label: 'shakeX',
+		value: 'shakeX',
+		speed: 1,
+		interval: 0,
+	},
+	{
+		label: 'shakeY',
+		value: 'shakeY',
+		speed: 1,
+		interval: 0,
+	},
+];
+
+const LOOP_ANIMATION_TYPE_OPTIONS = [
+	{ label: __( 'None', 'unitone' ), value: '' },
+	...LOOP_ANIMATION_TYPES.map( ( { label, value } ) => ( {
+		label,
+		value,
+	} ) ),
+];
+
+function getAnimationType( type ) {
+	return LOOP_ANIMATION_TYPES.find( ( item ) => item.value === type );
+}
+
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
 		?.unitone?.default?.loopAnimation;
@@ -173,14 +218,7 @@ function LoopAnimationPopover( {
 								__nextHasNoMarginBottom
 								label={ __( 'Type', 'unitone' ) }
 								value={ type || '' }
-								options={ [
-									{ label: '', value: '' },
-									{ label: 'bounce', value: 'bounce' },
-									{ label: 'flash', value: 'flash' },
-									{ label: 'pulse', value: 'pulse' },
-									{ label: 'shakeX', value: 'shakeX' },
-									{ label: 'shakeY', value: 'shakeY' },
-								] }
+								options={ LOOP_ANIMATION_TYPE_OPTIONS }
 								onChange={ onChangeType }
 							/>
 
@@ -253,8 +291,15 @@ export function LoopAnimationEdit( {
 	const defaultValue = useDefaultValue( { name } );
 
 	const type = unitone?.loopAnimation?.type ?? defaultValue?.type;
-	const speed = unitone?.loopAnimation?.speed ?? defaultValue?.speed;
-	const interval = unitone?.loopAnimation?.interval ?? defaultValue?.interval;
+	const animationType = getAnimationType( type );
+	const speed =
+		unitone?.loopAnimation?.speed ??
+		defaultValue?.speed ??
+		animationType?.speed;
+	const interval =
+		unitone?.loopAnimation?.interval ??
+		defaultValue?.interval ??
+		animationType?.interval;
 	const easing = unitone?.loopAnimation?.easing ?? defaultValue?.easing;
 	const pauseOnHover =
 		unitone?.loopAnimation?.pauseOnHover ??
@@ -305,9 +350,24 @@ export function LoopAnimationEdit( {
 			interval={ null != interval ? parseFloat( interval ) : undefined }
 			easing={ easing ?? '' }
 			pauseOnHover={ pauseOnHover }
-			onChangeType={ ( newAttribute ) =>
-				setLoopAnimationAttribute( 'type', newAttribute )
-			}
+			onChangeType={ ( newAttribute ) => {
+				const newUnitone = {
+					...unitone,
+					loopAnimation: newAttribute
+						? {
+								type: newAttribute,
+						  }
+						: undefined,
+				};
+
+				setAttributes( {
+					unitone: cleanEmptyObject( newUnitone ),
+					__unitoneStates: {
+						...__unitoneStates,
+						loopAnimationActive: false,
+					},
+				} );
+			} }
 			onChangeSpeed={ ( newAttribute ) =>
 				setLoopAnimationAttribute( 'speed', newAttribute )
 			}

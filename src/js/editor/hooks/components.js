@@ -34,15 +34,17 @@ import {
 	leftSides,
 } from './icons';
 
-import { useDeviceType } from './utils';
+import { normalizeForSelectControl, useDeviceType } from './utils';
 
 function Controls( { value, onChange, options } ) {
 	return (
 		<SelectControl
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
-			value={ value ?? '' }
-			onChange={ onChange }
+			value={ normalizeForSelectControl( value ) }
+			onChange={ ( newValue ) => {
+				onChange( normalizeForSelectControl( newValue ) );
+			} }
 			options={ options }
 		/>
 	);
@@ -314,47 +316,47 @@ export function SpacingSizeControl( {
 		},
 		{
 			label: '2XS',
-			value: -3,
+			value: '-3',
 		},
 		{
 			label: 'XS',
-			value: -2,
+			value: '-2',
 		},
 		{
 			label: 'S',
-			value: -1,
+			value: '-1',
 		},
 		{
 			label: __( 'None', 'unitone' ),
-			value: 0,
+			value: '0',
 		},
 		{
 			label: 'M',
-			value: 1,
+			value: '1',
 		},
 		{
 			label: 'L',
-			value: 2,
+			value: '2',
 		},
 		{
 			label: 'XL',
-			value: 3,
+			value: '3',
 		},
 		{
 			label: '2XL',
-			value: 4,
+			value: '4',
 		},
 		{
 			label: '3XL',
-			value: 5,
+			value: '5',
 		},
 		{
 			label: '4XL',
-			value: 6,
+			value: '6',
 		},
 		{
 			label: '5XL',
-			value: 7,
+			value: '7',
 		},
 		{
 			label: '',

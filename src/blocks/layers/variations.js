@@ -37,7 +37,7 @@ export default [
 				name: 'unitone/decorator',
 				attributes: {
 					textColor: 'white',
-					unitone: { padding: 1, alignSelf: 'end' },
+					unitone: { padding: '1', alignSelf: 'end' },
 				},
 			},
 		],
@@ -57,7 +57,7 @@ export default [
 					name: 'unitone/decorator',
 					attributes: {
 						textColor: 'white',
-						unitone: { padding: 1, alignSelf: 'end' },
+						unitone: { padding: '1', alignSelf: 'end' },
 					},
 					innerBlocks: [
 						{
@@ -96,7 +96,7 @@ export default [
 				name: 'unitone/decorator',
 				attributes: {
 					textColor: 'white',
-					unitone: { padding: 1, alignSelf: 'end' },
+					unitone: { padding: '1', alignSelf: 'end' },
 				},
 			},
 		],
@@ -118,7 +118,7 @@ export default [
 					name: 'unitone/decorator',
 					attributes: {
 						textColor: 'white',
-						unitone: { padding: 1, alignSelf: 'end' },
+						unitone: { padding: '1', alignSelf: 'end' },
 					},
 					innerBlocks: [
 						{

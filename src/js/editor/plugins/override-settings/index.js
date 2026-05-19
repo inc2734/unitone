@@ -16,7 +16,9 @@ import { registerPlugin } from '@wordpress/plugins';
 import { __ } from '@wordpress/i18n';
 
 import ColorGradientSettingsDropdown from '../../../../../App/Controller/Manager/src/js/color-gradient-settings-dropdown';
+
 import { FontFamilyControl, UnitControl } from './components';
+import { normalizeForRangeControl } from '../../hooks/utils';
 
 const applyNewSetting = ( root, property, newValue ) => {
 	if ( null == newValue ) {
@@ -314,24 +316,24 @@ const PageSettingsPanel = () => {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Base Font Size', 'unitone' ) }
-							value={
-								null != newBaseFontSize
-									? parseFloat( newBaseFontSize )
-									: undefined
-							}
-							onChange={ ( newSetting ) =>
-								setMeta( {
+							value={ normalizeForRangeControl(
+								newBaseFontSize
+							) }
+							onChange={ ( newSetting ) => {
+								const normalizedNewValue =
+									normalizeForRangeControl( newSetting );
+								return setMeta( {
 									'unitone-override-settings': {
 										...meta?.[
 											'unitone-override-settings'
 										],
 										'base-font-size':
-											null != newSetting
-												? parseFloat( newSetting )
+											null != normalizedNewValue
+												? normalizedNewValue
 												: undefined,
 									},
-								} )
-							}
+								} );
+							} }
 							min={ 14 }
 							step={ 1 }
 							max={ 18 }
@@ -342,24 +344,23 @@ const PageSettingsPanel = () => {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Half Leading', 'unitone' ) }
-							value={
-								null != newHalfLeading
-									? parseFloat( newHalfLeading )
-									: undefined
-							}
-							onChange={ ( newSetting ) =>
-								setMeta( {
+							value={ normalizeForRangeControl( newHalfLeading ) }
+							onChange={ ( newSetting ) => {
+								const normalizedNewValue =
+									normalizeForRangeControl( newSetting );
+
+								return setMeta( {
 									'unitone-override-settings': {
 										...meta?.[
 											'unitone-override-settings'
 										],
 										'half-leading':
-											null != newSetting
-												? parseFloat( newSetting )
+											null != normalizedNewValue
+												? normalizedNewValue
 												: undefined,
 									},
-								} )
-							}
+								} );
+							} }
 							min={ 0.1 }
 							step={ 0.1 }
 							max={ 1 }

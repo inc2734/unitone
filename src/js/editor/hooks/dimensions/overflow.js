@@ -5,7 +5,7 @@ import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForSelectControl } from '../utils';
 
 const overflowOptions = [
 	{ label: __( 'Default', 'unitone' ), value: '' },
@@ -110,15 +110,18 @@ export function OverflowEdit( {
 			__nextHasNoMarginBottom
 			label={ label }
 			options={ overflowOptions }
-			value={ unitone?.overflow ?? defaultValue ?? '' }
+			value={ normalizeForSelectControl(
+				unitone?.overflow ?? defaultValue
+			) }
 			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...unitone,
-					overflow: newValue || undefined,
-				};
+				const normalizedNewValue =
+					normalizeForSelectControl( newValue );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						overflow: normalizedNewValue || undefined,
+					} ),
 				} );
 			} }
 		/>

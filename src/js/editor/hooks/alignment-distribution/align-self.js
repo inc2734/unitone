@@ -23,12 +23,14 @@ import {
 	auto,
 } from '../icons';
 
-import { ResponsiveSettingsContainer } from '../components';
 import {
 	cleanEmptyObject,
 	mergeObjectWithDefaultValue,
 	useDeviceType,
+	normalizeForToggleGroupControl,
 } from '../utils';
+
+import { ResponsiveSettingsContainer } from '../components';
 
 const alignSelfOptions = [
 	{
@@ -131,58 +133,60 @@ export function AlignSelfToolbar( {
 		typeof unitone?.alignSelf === 'string' ? unitone?.alignSelf : undefined;
 
 	const onChangeAlignSelf = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			alignSelf: newValue !== unitone?.alignSelf ? newValue : undefined,
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				alignSelf:
+					newValue !== unitone?.alignSelf ? newValue : undefined,
+			} ),
 		} );
 	};
 
 	const onChangeAlignSelfLg = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			alignSelf: {
-				lg: newValue !== unitone?.alignSelf?.lg ? newValue : undefined,
-				md: unitone?.alignSelf?.md,
-				sm: unitone?.alignSelf?.sm,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				alignSelf: {
+					lg:
+						newValue !== unitone?.alignSelf?.lg
+							? newValue
+							: undefined,
+					md: unitone?.alignSelf?.md,
+					sm: unitone?.alignSelf?.sm,
+				},
+			} ),
 		} );
 	};
 
 	const onChangeAlignSelfMd = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			alignSelf: {
-				lg: unitone?.alignSelf?.lg ?? primitiveValue,
-				md: newValue !== unitone?.alignSelf?.md ? newValue : undefined,
-				sm: unitone?.alignSelf?.sm,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				alignSelf: {
+					lg: unitone?.alignSelf?.lg ?? primitiveValue,
+					md:
+						newValue !== unitone?.alignSelf?.md
+							? newValue
+							: undefined,
+					sm: unitone?.alignSelf?.sm,
+				},
+			} ),
 		} );
 	};
 
 	const onChangeAlignSelfSm = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			alignSelf: {
-				lg: unitone?.alignSelf?.lg ?? primitiveValue,
-				md: unitone?.alignSelf?.md,
-				sm: newValue !== unitone?.alignSelf?.sm ? newValue : undefined,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				alignSelf: {
+					lg: unitone?.alignSelf?.lg ?? primitiveValue,
+					md: unitone?.alignSelf?.md,
+					sm:
+						newValue !== unitone?.alignSelf?.sm
+							? newValue
+							: undefined,
+				},
+			} ),
 		} );
 	};
 
@@ -255,58 +259,62 @@ export function AlignSelfEdit( {
 		typeof unitone?.alignSelf === 'string' ? unitone?.alignSelf : undefined;
 
 	const onChangeAlignSelf = ( newValue ) => {
-		const newUnitone = cleanEmptyObject( {
-			...unitone,
-			alignSelf: newValue !== unitone?.alignSelf ? newValue : undefined,
-		} );
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject(
+				cleanEmptyObject( {
+					...unitone,
+					alignSelf:
+						newValue !== unitone?.alignSelf ? newValue : undefined,
+				} )
+			),
 		} );
 	};
 
 	const onChangeAlignSelfLg = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			alignSelf: {
-				lg: newValue !== unitone?.alignSelf?.lg ? newValue : undefined,
-				md: unitone?.alignSelf?.md,
-				sm: unitone?.alignSelf?.sm,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				alignSelf: {
+					lg:
+						newValue !== unitone?.alignSelf?.lg
+							? newValue
+							: undefined,
+					md: unitone?.alignSelf?.md,
+					sm: unitone?.alignSelf?.sm,
+				},
+			} ),
 		} );
 	};
 
 	const onChangeAlignSelfMd = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			alignSelf: {
-				lg: unitone?.alignSelf?.lg ?? primitiveValue,
-				md: newValue !== unitone?.alignSelf?.md ? newValue : undefined,
-				sm: unitone?.alignSelf?.sm,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				alignSelf: {
+					lg: unitone?.alignSelf?.lg ?? primitiveValue,
+					md:
+						newValue !== unitone?.alignSelf?.md
+							? newValue
+							: undefined,
+					sm: unitone?.alignSelf?.sm,
+				},
+			} ),
 		} );
 	};
 
 	const onChangeAlignSelfSm = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			alignSelf: {
-				lg: unitone?.alignSelf?.lg ?? primitiveValue,
-				md: unitone?.alignSelf?.md,
-				sm: newValue !== unitone?.alignSelf?.sm ? newValue : undefined,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				alignSelf: {
+					lg: unitone?.alignSelf?.lg ?? primitiveValue,
+					md: unitone?.alignSelf?.md,
+					sm:
+						newValue !== unitone?.alignSelf?.sm
+							? newValue
+							: undefined,
+				},
+			} ),
 		} );
 	};
 
@@ -319,13 +327,17 @@ export function AlignSelfEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
-						value={
+						value={ normalizeForToggleGroupControl(
 							unitone?.alignSelf?.lg ??
-							primitiveValue ??
-							defaultValue?.lg
-						}
+								primitiveValue ??
+								defaultValue?.lg
+						) }
 						isDeselectable={ ! defaultValue?.lg }
-						onChange={ onChangeAlignSelfLg }
+						onChange={ ( newValue ) =>
+							onChangeAlignSelfLg(
+								normalizeForToggleGroupControl( newValue )
+							)
+						}
 					>
 						{ alignSelfOptions.map(
 							( { value, icon, label: iconLabel } ) => (
@@ -346,15 +358,19 @@ export function AlignSelfEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
-						value={
+						value={ normalizeForToggleGroupControl(
 							unitone?.alignSelf?.md ??
-							unitone?.alignSelf?.lg ??
-							primitiveValue ??
-							defaultValue?.md ??
-							defaultValue?.lg
-						}
+								unitone?.alignSelf?.lg ??
+								primitiveValue ??
+								defaultValue?.md ??
+								defaultValue?.lg
+						) }
 						isDeselectable={ false }
-						onChange={ onChangeAlignSelfMd }
+						onChange={ ( newValue ) =>
+							onChangeAlignSelfMd(
+								normalizeForToggleGroupControl( newValue )
+							)
+						}
 					>
 						{ alignSelfOptions.map(
 							( { value, icon, label: iconLabel } ) => (
@@ -375,17 +391,21 @@ export function AlignSelfEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
-						value={
+						value={ normalizeForToggleGroupControl(
 							unitone?.alignSelf?.sm ??
-							unitone?.alignSelf?.md ??
-							unitone?.alignSelf?.lg ??
-							primitiveValue ??
-							defaultValue?.sm ??
-							defaultValue?.md ??
-							defaultValue?.lg
-						}
+								unitone?.alignSelf?.md ??
+								unitone?.alignSelf?.lg ??
+								primitiveValue ??
+								defaultValue?.sm ??
+								defaultValue?.md ??
+								defaultValue?.lg
+						) }
 						isDeselectable={ false }
-						onChange={ onChangeAlignSelfSm }
+						onChange={ ( newValue ) =>
+							onChangeAlignSelfSm(
+								normalizeForToggleGroupControl( newValue )
+							)
+						}
 					>
 						{ alignSelfOptions.map(
 							( { value, icon, label: iconLabel } ) => (
@@ -407,9 +427,15 @@ export function AlignSelfEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.alignSelf ?? defaultValue }
+				value={ normalizeForToggleGroupControl(
+					unitone?.alignSelf ?? defaultValue
+				) }
 				isDeselectable={ ! defaultValue }
-				onChange={ onChangeAlignSelf }
+				onChange={ ( newValue ) =>
+					onChangeAlignSelf(
+						normalizeForToggleGroupControl( newValue )
+					)
+				}
 			>
 				{ alignSelfOptions.map(
 					( { value, icon, label: iconLabel } ) => (

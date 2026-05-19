@@ -8,8 +8,13 @@ import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import {
+	cleanEmptyObject,
+	mergeObjectWithDefaultValue,
+	normalizeForTextControl,
+} from '../utils';
+
 import { ResponsiveSettingsContainer, HelpContainer } from '../components';
-import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
 function getIsResponsive( { name, __unstableUnitoneSupports } ) {
 	return (
@@ -107,58 +112,50 @@ export function GridRowEdit( {
 		typeof unitone?.gridRow === 'string' ? unitone?.gridRow : undefined;
 
 	const onChangeGridRow = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			gridRow: newValue || undefined,
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				gridRow: newValue || undefined,
+			} ),
 		} );
 	};
 
 	const onChangeGridRowLg = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			gridRow: {
-				lg: newValue || undefined,
-				md: unitone?.gridRow?.md,
-				sm: unitone?.gridRow?.sm,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				gridRow: {
+					lg: newValue || undefined,
+					md: unitone?.gridRow?.md,
+					sm: unitone?.gridRow?.sm,
+				},
+			} ),
 		} );
 	};
 
 	const onChangeGridRowMd = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			gridRow: {
-				lg: unitone?.gridRow?.lg ?? primitiveValue,
-				md: newValue || undefined,
-				sm: unitone?.gridRow?.sm,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				gridRow: {
+					lg: unitone?.gridRow?.lg ?? primitiveValue,
+					md: newValue || undefined,
+					sm: unitone?.gridRow?.sm,
+				},
+			} ),
 		} );
 	};
 
 	const onChangeGridRowSm = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			gridRow: {
-				lg: unitone?.gridRow?.lg ?? primitiveValue,
-				md: unitone?.gridRow?.md,
-				sm: newValue || undefined,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				gridRow: {
+					lg: unitone?.gridRow?.lg ?? primitiveValue,
+					md: unitone?.gridRow?.md,
+					sm: newValue || undefined,
+				},
+			} ),
 		} );
 	};
 
@@ -171,13 +168,16 @@ export function GridRowEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
-						value={
+						value={ normalizeForTextControl(
 							unitone?.gridRow?.lg ??
-							primitiveValue ??
-							defaultValue?.lg ??
-							''
+								primitiveValue ??
+								defaultValue?.lg
+						) }
+						onChange={ ( newValue ) =>
+							onChangeGridRowLg(
+								normalizeForTextControl( newValue )
+							)
 						}
-						onChange={ onChangeGridRowLg }
 					/>
 				</HelpContainer>
 			) }
@@ -187,15 +187,18 @@ export function GridRowEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
-						value={
+						value={ normalizeForTextControl(
 							unitone?.gridRow?.md ??
-							unitone?.gridRow?.lg ??
-							primitiveValue ??
-							defaultValue?.md ??
-							defaultValue?.lg ??
-							''
+								unitone?.gridRow?.lg ??
+								primitiveValue ??
+								defaultValue?.md ??
+								defaultValue?.lg
+						) }
+						onChange={ ( newValue ) =>
+							onChangeGridRowMd(
+								normalizeForTextControl( newValue )
+							)
 						}
-						onChange={ onChangeGridRowMd }
 					/>
 				</HelpContainer>
 			) }
@@ -205,17 +208,20 @@ export function GridRowEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
-						value={
+						value={ normalizeForTextControl(
 							unitone?.gridRow?.sm ??
-							unitone?.gridRow?.md ??
-							unitone?.gridRow?.lg ??
-							primitiveValue ??
-							defaultValue?.sm ??
-							defaultValue?.md ??
-							defaultValue?.lg ??
-							''
+								unitone?.gridRow?.md ??
+								unitone?.gridRow?.lg ??
+								primitiveValue ??
+								defaultValue?.sm ??
+								defaultValue?.md ??
+								defaultValue?.lg
+						) }
+						onChange={ ( newValue ) =>
+							onChangeGridRowSm(
+								normalizeForTextControl( newValue )
+							)
 						}
-						onChange={ onChangeGridRowSm }
 					/>
 				</HelpContainer>
 			) }
@@ -226,8 +232,12 @@ export function GridRowEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.gridRow ?? defaultValue ?? '' }
-				onChange={ onChangeGridRow }
+				value={ normalizeForTextControl(
+					unitone?.gridRow ?? defaultValue
+				) }
+				onChange={ ( newValue ) =>
+					onChangeGridRow( normalizeForTextControl( newValue ) )
+				}
 			/>
 		</HelpContainer>
 	);

@@ -5,7 +5,7 @@ import { ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleControl } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -68,15 +68,18 @@ export function NegativeEdit( {
 		<ToggleControl
 			__nextHasNoMarginBottom
 			label={ label }
-			checked={ !! ( unitone?.negative ?? defaultValue ) }
+			checked={ normalizeForToggleControl(
+				!! ( unitone?.negative ?? defaultValue )
+			) }
 			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...unitone,
-					negative: newValue || undefined,
-				};
+				const normalizedNewValue =
+					normalizeForToggleControl( newValue );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						negative: normalizedNewValue || undefined,
+					} ),
 				} );
 			} }
 		/>

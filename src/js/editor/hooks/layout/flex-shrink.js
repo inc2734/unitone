@@ -3,7 +3,7 @@ import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForRangeControl } from '../utils';
 
 function getDefaultValue( { name, __unstableUnitoneSupports } ) {
 	const defaultValue = wp.data.select( blocksStore ).getBlockType( name )
@@ -90,26 +90,20 @@ export function FlexShrinkEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={
+			value={ normalizeForRangeControl(
 				null != ( unitone?.flexShrink || defaultValue )
-					? parseInt( unitone?.flexShrink || defaultValue )
-					: ''
-			}
+					? unitone?.flexShrink || defaultValue
+					: undefined
+			) }
 			allowReset={ true }
 			onChange={ ( newValue ) => {
-				if ( null != newValue ) {
-					// RangeControl returns Int, SelectControl returns String.
-					// So cast Int all values.
-					newValue = String( newValue );
-				}
-
-				const newUnitone = {
-					...unitone,
-					flexShrink: newValue || undefined,
-				};
+				const normalizedNewValue = normalizeForRangeControl( newValue );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						flexShrink: normalizedNewValue || undefined,
+					} ),
 				} );
 			} }
 			min={ 0 }

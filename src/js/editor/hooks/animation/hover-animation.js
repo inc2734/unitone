@@ -24,7 +24,14 @@ import { __ } from '@wordpress/i18n';
 
 import { EASING_OPTIONS } from './easing';
 import { hover as iconHoverAnimation } from './icons';
-import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
+import {
+	cleanEmptyObject,
+	mergeObjectWithDefaultValue,
+	normalizeForToggleControl,
+	normalizeForSelectControl,
+	normalizeForRangeControl,
+	normalizeForToggleGroupControl,
+} from '../utils';
 
 const MIN_PREVIEW_DURATION = 300;
 
@@ -262,29 +269,41 @@ function HoverAnimationPopover( {
 									'When enabled, it can be used to trigger hover animations for descendant blocks.',
 									'unitone'
 								) }
-								checked={ group }
-								onChange={ onChangeGroup }
+								checked={ normalizeForToggleControl( group ) }
+								onChange={ ( newValue ) =>
+									onChangeGroup(
+										normalizeForToggleControl( newValue )
+									)
+								}
 							/>
 
 							<SelectControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Type', 'unitone' ) }
-								value={ type || '' }
+								value={ normalizeForSelectControl( type ) }
 								options={ HOVER_ANIMATION_TYPE_OPTIONS }
-								onChange={ onChangeType }
+								onChange={ ( newValue ) =>
+									onChangeType(
+										normalizeForSelectControl( newValue )
+									)
+								}
 							/>
 
 							<RangeControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Speed', 'unitone' ) }
-								value={ speed }
+								value={ normalizeForRangeControl( speed ) }
 								disabled={ ! type }
 								step={ 0.1 }
 								min={ 0 }
 								max={ 5 }
-								onChange={ onChangeSpeed }
+								onChange={ ( newValue ) =>
+									onChangeSpeed(
+										normalizeForRangeControl( newValue )
+									)
+								}
 								allowReset
 							/>
 
@@ -292,10 +311,14 @@ function HoverAnimationPopover( {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Easing', 'unitone' ) }
-								value={ easing || '' }
+								value={ normalizeForSelectControl( easing ) }
 								disabled={ ! type }
 								options={ EASING_OPTIONS }
-								onChange={ onChangeEasing }
+								onChange={ ( newValue ) =>
+									onChangeEasing(
+										normalizeForSelectControl( newValue )
+									)
+								}
 							/>
 
 							{ 'scale' === type && (
@@ -303,11 +326,15 @@ function HoverAnimationPopover( {
 									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ __( 'Scale', 'unitone' ) }
-									value={ scale }
+									value={ normalizeForRangeControl( scale ) }
 									step={ 0.01 }
 									min={ 1 }
 									max={ 2 }
-									onChange={ onChangeScale }
+									onChange={ ( newValue ) =>
+										onChangeScale(
+											normalizeForRangeControl( newValue )
+										)
+									}
 									allowReset
 								/>
 							) }
@@ -317,11 +344,17 @@ function HoverAnimationPopover( {
 									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ __( 'Opacity', 'unitone' ) }
-									value={ opacity }
+									value={ normalizeForRangeControl(
+										opacity
+									) }
 									step={ 0.01 }
 									min={ 0 }
 									max={ 1 }
-									onChange={ onChangeOpacity }
+									onChange={ ( newValue ) =>
+										onChangeOpacity(
+											normalizeForRangeControl( newValue )
+										)
+									}
 									allowReset
 								/>
 							) }
@@ -330,10 +363,18 @@ function HoverAnimationPopover( {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Trigger', 'unitone' ) }
-								value={ trigger || 'self' }
+								value={ normalizeForToggleGroupControl(
+									trigger || 'self'
+								) }
 								disabled={ ! type }
 								isBlock
-								onChange={ onChangeTrigger }
+								onChange={ ( newValue ) =>
+									onChangeTrigger(
+										normalizeForToggleGroupControl(
+											newValue
+										)
+									)
+								}
 							>
 								<ToggleGroupControlOption
 									value="self"
@@ -480,16 +521,14 @@ export function HoverAnimationEdit( {
 				? undefined
 				: newAttribute;
 
-		const newUnitone = {
-			...unitone,
-			hoverAnimation: {
-				...unitone?.hoverAnimation,
-				[ key ]: newValue,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				hoverAnimation: {
+					...unitone?.hoverAnimation,
+					[ key ]: newValue,
+				},
+			} ),
 			__unitoneStates: {
 				...__unitoneStates,
 				hoverAnimationActive: false,
@@ -521,17 +560,15 @@ export function HoverAnimationEdit( {
 			group={ group }
 			trigger={ trigger ?? 'self' }
 			onChangeType={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					hoverAnimation: newAttribute
-						? {
-								type: newAttribute,
-						  }
-						: undefined,
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						hoverAnimation: newAttribute
+							? {
+									type: newAttribute,
+							  }
+							: undefined,
+					} ),
 					__unitoneStates: {
 						...__unitoneStates,
 						hoverAnimationActive: false,
@@ -551,19 +588,17 @@ export function HoverAnimationEdit( {
 				setHoverAnimationAttribute( 'opacity', newAttribute )
 			}
 			onChangeGroup={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					hoverAnimation: {
-						...unitone?.hoverAnimation,
-						group: newAttribute || undefined,
-						trigger: newAttribute
-							? undefined
-							: unitone?.hoverAnimation?.trigger,
-					},
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						hoverAnimation: {
+							...unitone?.hoverAnimation,
+							group: newAttribute || undefined,
+							trigger: newAttribute
+								? undefined
+								: unitone?.hoverAnimation?.trigger,
+						},
+					} ),
 					__unitoneStates: {
 						...__unitoneStates,
 						hoverAnimationActive: false,

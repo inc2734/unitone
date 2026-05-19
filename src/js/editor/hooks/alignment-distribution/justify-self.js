@@ -26,6 +26,7 @@ import {
 	cleanEmptyObject,
 	mergeObjectWithDefaultValue,
 	useDeviceType,
+	normalizeForToggleGroupControl,
 } from '../utils';
 
 import { ResponsiveSettingsContainer } from '../components';
@@ -136,68 +137,60 @@ export function JustifySelfToolbar( {
 			: undefined;
 
 	const onChangeJustifySelf = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			justifySelf:
-				newValue !== unitone?.justifySelf ? newValue : undefined,
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				justifySelf:
+					newValue !== unitone?.justifySelf ? newValue : undefined,
+			} ),
 		} );
 	};
 
 	const onChangeJustifySelfLg = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			justifySelf: {
-				lg:
-					newValue !== unitone?.justifySelf?.lg
-						? newValue
-						: undefined,
-				md: unitone?.justifySelf?.md,
-				sm: unitone?.justifySelf?.sm,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				justifySelf: {
+					lg:
+						newValue !== unitone?.justifySelf?.lg
+							? newValue
+							: undefined,
+					md: unitone?.justifySelf?.md,
+					sm: unitone?.justifySelf?.sm,
+				},
+			} ),
 		} );
 	};
 
 	const onChangeJustifySelfMd = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			justifySelf: {
-				lg: unitone?.justifySelf?.lg ?? primitiveValue,
-				md:
-					newValue !== unitone?.justifySelf?.md
-						? newValue
-						: undefined,
-				sm: unitone?.justifySelf?.sm,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				justifySelf: {
+					lg: unitone?.justifySelf?.lg ?? primitiveValue,
+					md:
+						newValue !== unitone?.justifySelf?.md
+							? newValue
+							: undefined,
+					sm: unitone?.justifySelf?.sm,
+				},
+			} ),
 		} );
 	};
 
 	const onChangeJustifySelfSm = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			justifySelf: {
-				lg: unitone?.justifySelf?.lg ?? primitiveValue,
-				md: unitone?.justifySelf?.md,
-				sm:
-					newValue !== unitone?.justifySelf?.sm
-						? newValue
-						: undefined,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				justifySelf: {
+					lg: unitone?.justifySelf?.lg ?? primitiveValue,
+					md: unitone?.justifySelf?.md,
+					sm:
+						newValue !== unitone?.justifySelf?.sm
+							? newValue
+							: undefined,
+				},
+			} ),
 		} );
 	};
 
@@ -272,68 +265,60 @@ export function JustifySelfEdit( {
 			: undefined;
 
 	const onChangeJustifySelf = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			justifySelf:
-				newValue !== unitone?.justifySelf ? newValue : undefined,
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				justifySelf:
+					newValue !== unitone?.justifySelf ? newValue : undefined,
+			} ),
 		} );
 	};
 
 	const onChangeJustifySelfLg = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			justifySelf: {
-				lg:
-					newValue !== unitone?.justifySelf?.lg
-						? newValue
-						: undefined,
-				md: unitone?.justifySelf?.md,
-				sm: unitone?.justifySelf?.sm,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				justifySelf: {
+					lg:
+						newValue !== unitone?.justifySelf?.lg
+							? newValue
+							: undefined,
+					md: unitone?.justifySelf?.md,
+					sm: unitone?.justifySelf?.sm,
+				},
+			} ),
 		} );
 	};
 
 	const onChangeJustifySelfMd = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			justifySelf: {
-				lg: unitone?.justifySelf?.lg ?? primitiveValue,
-				md:
-					newValue !== unitone?.justifySelf?.md
-						? newValue
-						: undefined,
-				sm: unitone?.justifySelf?.sm,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				justifySelf: {
+					lg: unitone?.justifySelf?.lg ?? primitiveValue,
+					md:
+						newValue !== unitone?.justifySelf?.md
+							? newValue
+							: undefined,
+					sm: unitone?.justifySelf?.sm,
+				},
+			} ),
 		} );
 	};
 
 	const onChangeJustifySelfSm = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			justifySelf: {
-				lg: unitone?.justifySelf?.lg ?? primitiveValue,
-				md: unitone?.justifySelf?.md,
-				sm:
-					newValue !== unitone?.justifySelf?.sm
-						? newValue
-						: undefined,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				justifySelf: {
+					lg: unitone?.justifySelf?.lg ?? primitiveValue,
+					md: unitone?.justifySelf?.md,
+					sm:
+						newValue !== unitone?.justifySelf?.sm
+							? newValue
+							: undefined,
+				},
+			} ),
 		} );
 	};
 
@@ -346,13 +331,17 @@ export function JustifySelfEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
-						value={
+						value={ normalizeForToggleGroupControl(
 							unitone?.justifySelf?.lg ??
-							primitiveValue ??
-							defaultValue?.lg
-						}
+								primitiveValue ??
+								defaultValue?.lg
+						) }
 						isDeselectable={ ! defaultValue?.lg }
-						onChange={ onChangeJustifySelfLg }
+						onChange={ ( newValue ) =>
+							onChangeJustifySelfLg(
+								normalizeForToggleGroupControl( newValue )
+							)
+						}
 					>
 						{ justifySelfOptions.map(
 							( { value, icon, label: iconLabel } ) => (
@@ -373,15 +362,19 @@ export function JustifySelfEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
-						value={
+						value={ normalizeForToggleGroupControl(
 							unitone?.justifySelf?.md ??
-							unitone?.justifySelf?.lg ??
-							primitiveValue ??
-							defaultValue?.md ??
-							defaultValue?.lg
-						}
+								unitone?.justifySelf?.lg ??
+								primitiveValue ??
+								defaultValue?.md ??
+								defaultValue?.lg
+						) }
 						isDeselectable={ false }
-						onChange={ onChangeJustifySelfMd }
+						onChange={ ( newValue ) =>
+							onChangeJustifySelfMd(
+								normalizeForToggleGroupControl( newValue )
+							)
+						}
 					>
 						{ justifySelfOptions.map(
 							( { value, icon, label: iconLabel } ) => (
@@ -402,17 +395,21 @@ export function JustifySelfEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
-						value={
+						value={ normalizeForToggleGroupControl(
 							unitone?.justifySelf?.sm ??
-							unitone?.justifySelf?.md ??
-							unitone?.justifySelf?.lg ??
-							primitiveValue ??
-							defaultValue?.sm ??
-							defaultValue?.md ??
-							defaultValue?.lg
-						}
+								unitone?.justifySelf?.md ??
+								unitone?.justifySelf?.lg ??
+								primitiveValue ??
+								defaultValue?.sm ??
+								defaultValue?.md ??
+								defaultValue?.lg
+						) }
 						isDeselectable={ false }
-						onChange={ onChangeJustifySelfSm }
+						onChange={ ( newValue ) =>
+							onChangeJustifySelfSm(
+								normalizeForToggleGroupControl( newValue )
+							)
+						}
 					>
 						{ justifySelfOptions.map(
 							( { value, icon, label: iconLabel } ) => (
@@ -434,9 +431,15 @@ export function JustifySelfEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.justifySelf ?? defaultValue }
+				value={ normalizeForToggleGroupControl(
+					unitone?.justifySelf ?? defaultValue
+				) }
 				isDeselectable={ ! defaultValue }
-				onChange={ onChangeJustifySelf }
+				onChange={ ( newValue ) =>
+					onChangeJustifySelf(
+						normalizeForToggleGroupControl( newValue )
+					)
+				}
 			>
 				{ justifySelfOptions.map(
 					( { value, icon, label: iconLabel } ) => (

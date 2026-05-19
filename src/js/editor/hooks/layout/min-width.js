@@ -3,7 +3,7 @@ import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForTextControl } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -88,15 +88,17 @@ export function MinWidthEdit( {
 				"If the specified width exceeds the parent's width, it will be internally adjusted to ensure it does not exceed the parent's width.",
 				'unitone'
 			) }
-			value={ unitone?.minWidth ?? defaultValue ?? '' }
+			value={ normalizeForTextControl(
+				unitone?.minWidth ?? defaultValue
+			) }
 			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...unitone,
-					minWidth: newValue || undefined,
-				};
+				const normalizedNewValue = normalizeForTextControl( newValue );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						minWidth: normalizedNewValue || undefined,
+					} ),
 				} );
 			} }
 		/>

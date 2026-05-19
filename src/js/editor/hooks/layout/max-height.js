@@ -3,7 +3,7 @@ import { TextControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForTextControl } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -84,15 +84,17 @@ export function MaxHeightEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={ unitone?.maxHeight ?? defaultValue ?? '' }
+			value={ normalizeForTextControl(
+				unitone?.maxHeight ?? defaultValue
+			) }
 			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...unitone,
-					maxHeight: newValue || undefined,
-				};
+				const normalizedNewValue = normalizeForTextControl( newValue );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						maxHeight: normalizedNewValue || undefined,
+					} ),
 				} );
 			} }
 		/>

@@ -20,12 +20,14 @@ export function OpacityEdit( { attributes: { unitone }, setAttributes } ) {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ __( 'Opacity', 'unitone' ) }
-			value={ unitone?.opacity }
+			value={ normalizeForRangeControl( unitone?.opacity ) }
 			onChange={ ( newValue ) => {
+				const normalizedNewValue = normalizeForRangeControl( newValue );
+
 				setAttributes( {
 					unitone: cleanEmptyObject( {
 						...unitone,
-						opacity: normalizeForRangeControl( newValue ),
+						opacity: normalizedNewValue,
 					} ),
 				} );
 			} }

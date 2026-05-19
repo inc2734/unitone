@@ -147,29 +147,15 @@ export function GapEdit( {
 		isObject( compactedValue ) || isObject( compactedDefaultValue );
 
 	const onChangeGap = ( newValue ) => {
-		if ( null != newValue ) {
-			// RangeControl returns Int, SelectControl returns String.
-			// So cast Int all values.
-			newValue = String( newValue );
-		}
-
-		const newUnitone = {
-			...unitone,
-			gap: newValue || undefined,
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				gap: newValue || undefined,
+			} ),
 		} );
 	};
 
 	const onChangeGapSide = ( side, newValue ) => {
-		if ( null != newValue ) {
-			// RangeControl returns Int, SelectControl returns String.
-			// So cast Int all values.
-			newValue = String( newValue );
-		}
-
 		const newGap = expand( unitone?.gap );
 
 		newGap[ side ] = newValue || expandedDefaultValue?.[ side ];

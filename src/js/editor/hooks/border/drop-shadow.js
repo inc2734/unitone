@@ -331,15 +331,13 @@ export function DropShadowEdit( {
 						( { shadow: shadowName } ) => shadowName === newValue
 					)?.slug;
 
-					const newUnitone = {
-						...unitone,
-						dropShadow: slug
-							? `var:preset|shadow|${ slug }`
-							: newValue || undefined,
-					};
-
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							dropShadow: slug
+								? `var:preset|shadow|${ slug }`
+								: newValue || undefined,
+						} ),
 					} );
 				} }
 			/>

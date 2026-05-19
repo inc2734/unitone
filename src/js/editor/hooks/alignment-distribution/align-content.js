@@ -12,7 +12,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleGroupControl } from '../utils';
 
 const alignContentOptions = [
 	{
@@ -119,16 +119,14 @@ export function AlignContentToolbar( {
 				isActive:
 					option.value === ( unitone?.alignContent ?? defaultValue ),
 				onClick: () => {
-					const newUnitone = {
-						...unitone,
-						alignContent:
-							option.value !== unitone?.alignContent
-								? option.value
-								: undefined,
-					};
-
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							alignContent:
+								option.value !== unitone?.alignContent
+									? option.value
+									: undefined,
+						} ),
 					} );
 				},
 			} ) ) }
@@ -170,19 +168,24 @@ export function AlignContentEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.alignContent ?? defaultValue }
+				value={ normalizeForToggleGroupControl(
+					unitone?.alignContent ?? defaultValue
+				) }
 				isDeselectable={ ! defaultValue }
 				onChange={ ( newValue ) => {
-					const newUnitone = {
-						...unitone,
-						alignContent:
-							unitone?.alignContent !== newValue
-								? newValue
-								: undefined,
-					};
+					const normalizedNewValue =
+						normalizeForToggleGroupControl( newValue );
+					const normalizedCurrentValue =
+						normalizeForToggleGroupControl( unitone?.alignContent );
 
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							alignContent:
+								normalizedCurrentValue !== normalizedNewValue
+									? normalizedNewValue
+									: undefined,
+						} ),
 					} );
 				} }
 			>

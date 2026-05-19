@@ -1,7 +1,7 @@
 import { hasBlockSupport } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 
-import { cleanEmptyObject, isNumber } from '../utils';
+import { cleanEmptyObject, isNumber, normalizeForRangeControl } from '../utils';
 
 export function hasHalfLeadingValue( { attributes: { unitone } } ) {
 	return unitone?.halfLeading !== undefined;
@@ -37,15 +37,17 @@ export function HalfLeadingEdit( {
 			__nextHasNoMarginBottom
 			label={ label }
 			help={ help }
-			value={ unitone?.halfLeading }
+			value={ normalizeForRangeControl( unitone?.halfLeading ) }
 			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...unitone,
-					halfLeading: isNumber( newValue ) ? newValue : undefined,
-				};
+				const normalizedNewValue = normalizeForRangeControl( newValue );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						halfLeading: isNumber( normalizedNewValue )
+							? normalizedNewValue
+							: undefined,
+					} ),
 				} );
 			} }
 			allowReset={ true }

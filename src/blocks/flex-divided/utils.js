@@ -6,8 +6,8 @@ export const applyFlexDividedChildStyles = ( attributes, parentBlock ) => {
 	}
 
 	const DEFAULT_VALUES = {
-		flexGrow: '0',
-		flexShrink: '1',
+		flexGrow: 0,
+		flexShrink: 1,
 		flexBasis: 'auto',
 	};
 

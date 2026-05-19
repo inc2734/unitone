@@ -17,7 +17,7 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleGroupControl } from '../utils';
 import { physicalToLogical, logicalToPhysical } from '../../../helper';
 
 const blockAlignOptions = [
@@ -99,13 +99,13 @@ export function BlockAlignToolbar( {
 					unitone?.blockAlign ?? defaultValue
 				) }
 				onChange={ ( newAttribute ) => {
-					const newUnitone = {
-						...unitone,
-						blockAlign: physicalToLogical( newAttribute || 'none' ),
-					};
-
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							blockAlign: physicalToLogical(
+								newAttribute || 'none'
+							),
+						} ),
 					} );
 				} }
 			/>
@@ -136,20 +136,26 @@ export function BlockAlignEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ logicalToPhysical(
-					unitone?.blockAlign ?? defaultValue
+				value={ normalizeForToggleGroupControl(
+					logicalToPhysical( unitone?.blockAlign ?? defaultValue )
 				) }
 				onChange={ ( value ) => {
-					const newUnitone = {
-						...unitone,
-						blockAlign:
-							logicalToPhysical( unitone?.blockAlign ) !== value
-								? physicalToLogical( value )
-								: undefined,
-					};
+					const normalizedNewValue = normalizeForToggleGroupControl(
+						physicalToLogical( value )
+					);
+					const normalizedCurrentValue =
+						normalizeForToggleGroupControl(
+							logicalToPhysical( unitone?.blockAlign )
+						);
 
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							blockAlign:
+								normalizedCurrentValue !== normalizedNewValue
+									? normalizedNewValue
+									: undefined,
+						} ),
 					} );
 				} }
 			>

@@ -21,6 +21,7 @@ import {
 import {
 	cleanEmptyObject,
 	useToolsPanelDropdownMenuProps,
+	normalizeForTextControl,
 } from '../hooks/utils';
 
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
@@ -292,16 +293,19 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Cell Min Width', 'unitone' ) }
-								value={
-									props.attributes?.unitone?.cellMinWidth ||
-									''
-								}
+								value={ normalizeForTextControl(
+									props.attributes?.unitone?.cellMinWidth
+								) }
 								onChange={ ( newValue ) => {
+									const normalizedNewValue =
+										normalizeForTextControl( newValue );
+
 									props.setAttributes( {
 										unitone: cleanEmptyObject( {
 											...props.attributes?.unitone,
 											cellMinWidth:
-												newValue ?? defaultValue,
+												normalizedNewValue ??
+												defaultValue,
 										} ),
 									} );
 								} }

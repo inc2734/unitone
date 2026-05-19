@@ -22,6 +22,8 @@ import { __ } from '@wordpress/i18n';
 import {
 	cleanEmptyObject,
 	useToolsPanelDropdownMenuProps,
+	normalizeForToggleControl,
+	normalizeForRangeControl,
 } from '../hooks/utils';
 
 import { HelpContainer } from '../hooks/components';
@@ -188,13 +190,21 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 										'Open link as media link',
 										'unitone'
 									) }
-									checked={ !! unitone?.mediaLink }
+									checked={ normalizeForToggleControl(
+										!! unitone?.mediaLink
+									) }
 									onChange={ ( newValue ) => {
+										const normalizedNewValue =
+											normalizeForToggleControl(
+												newValue
+											);
+
 										setAttributes( {
 											unitone: cleanEmptyObject( {
 												...unitone,
 												mediaLink:
-													newValue || undefined,
+													normalizedNewValue ||
+													undefined,
 											} ),
 										} );
 									} }
@@ -299,10 +309,18 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Overlay opacity', 'unitone' ) }
-								value={ attributes?.unitone?.overlay?.dimRatio }
+								value={ normalizeForRangeControl(
+									attributes?.unitone?.overlay?.dimRatio
+								) }
 								onChange={ ( newAttribute ) => {
+									const normalizedNewValue =
+										normalizeForRangeControl(
+											newAttribute
+										);
+
 									unitone.overlay ??= {};
-									unitone.overlay.dimRatio = newAttribute;
+									unitone.overlay.dimRatio =
+										normalizedNewValue;
 
 									setAttributes( {
 										unitone: cleanEmptyObject( unitone ),

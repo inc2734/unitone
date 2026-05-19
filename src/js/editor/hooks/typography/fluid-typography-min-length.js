@@ -2,7 +2,7 @@ import { __experimentalUnitControl as UnitControl } from '@wordpress/components'
 
 import { hasBlockSupport } from '@wordpress/blocks';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForUnitControl } from '../utils';
 
 export function hasFluidTypographyMinLengthValue( {
 	attributes: { unitone },
@@ -43,16 +43,19 @@ export function FluidTypographyMinLengthEdit( {
 		<UnitControl
 			__next40pxDefaultSize
 			label={ label }
-			value={ attributes?.unitone?.fluidTypographyMinLength || '' }
+			value={ normalizeForUnitControl(
+				attributes?.unitone?.fluidTypographyMinLength
+			) }
 			style={ { width: '100%' } }
 			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...attributes?.unitone,
-					fluidTypographyMinLength: newValue || undefined,
-				};
+				const normalizedNewValue = normalizeForUnitControl( newValue );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...attributes?.unitone,
+						fluidTypographyMinLength:
+							normalizedNewValue || undefined,
+					} ),
 				} );
 			} }
 		/>

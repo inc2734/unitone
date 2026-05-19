@@ -10,7 +10,7 @@ import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForRangeControl } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -97,20 +97,21 @@ export function BlurEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={ parseInt(
+			value={ normalizeForRangeControl(
 				unitone?.backdropFilter?.blur ?? defaultValue ?? 0
 			) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					backdropFilter: {
-						...unitone?.backdropFilter,
-						blur: newAttribute,
-					},
-				};
+				const normalizedNewValue =
+					normalizeForRangeControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						backdropFilter: {
+							...unitone?.backdropFilter,
+							blur: normalizedNewValue,
+						},
+					} ),
 				} );
 			} }
 			min={ 0 }

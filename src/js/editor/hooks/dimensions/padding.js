@@ -167,29 +167,15 @@ export function PaddingEdit( {
 		isObject( compactedValue ) || isObject( compactedDefaultValue );
 
 	const onChangePadding = ( newValue ) => {
-		if ( null != newValue ) {
-			// RangeControl returns Int, SelectControl returns String.
-			// So cast Int all values.
-			newValue = String( newValue );
-		}
-
-		const newUnitone = {
-			...unitone,
-			padding: newValue || undefined,
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				padding: newValue || undefined,
+			} ),
 		} );
 	};
 
 	const onChangePaddingSide = ( side, newValue ) => {
-		if ( null != newValue ) {
-			// RangeControl returns Int, SelectControl returns String.
-			// So cast Int all values.
-			newValue = String( newValue );
-		}
-
 		const newPadding = expand( unitone?.padding );
 
 		newPadding[ side ] = newValue || expandedDefaultValue?.[ side ];

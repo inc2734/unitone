@@ -5,7 +5,7 @@ import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForSelectControl } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -95,21 +95,22 @@ export function SectionDividerTopTypeEdit( {
 					value: 'scattering-wave',
 				},
 			] }
-			value={ value }
+			value={ normalizeForSelectControl( value ) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					sectionDivider: {
-						...unitone?.sectionDivider,
-						top: {
-							...unitone?.sectionDivider?.top,
-							type: newAttribute || undefined,
-						},
-					},
-				};
+				const normalizedNewValue =
+					normalizeForSelectControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						sectionDivider: {
+							...unitone?.sectionDivider,
+							top: {
+								...unitone?.sectionDivider?.top,
+								type: normalizedNewValue || undefined,
+							},
+						},
+					} ),
 				} );
 			} }
 		/>

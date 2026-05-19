@@ -18,7 +18,7 @@ import {
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForRangeControl } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -102,26 +102,27 @@ export function ProgressiveEdit( {
 							__nextHasNoMarginBottom
 							hideLabelFromVision
 							label={ __( 'Start position', 'unitone' ) }
-							value={ parseInt(
+							value={ normalizeForRangeControl(
 								unitone?.backdropFilter?.progressive?.start ??
 									defaultValue?.start ??
 									0
 							) }
 							onChange={ ( newAttribute ) => {
-								const newUnitone = {
-									...unitone,
-									backdropFilter: {
-										...unitone?.backdropFilter,
-										progressive: {
-											...unitone?.backdropFilter
-												?.progressive,
-											start: newAttribute,
-										},
-									},
-								};
+								const normalizedNewValue =
+									normalizeForRangeControl( newAttribute );
 
 								setAttributes( {
-									unitone: cleanEmptyObject( newUnitone ),
+									unitone: cleanEmptyObject( {
+										...unitone,
+										backdropFilter: {
+											...unitone?.backdropFilter,
+											progressive: {
+												...unitone?.backdropFilter
+													?.progressive,
+												start: normalizedNewValue,
+											},
+										},
+									} ),
 								} );
 							} }
 							min={ 0 }
@@ -138,20 +139,18 @@ export function ProgressiveEdit( {
 								180
 							}
 							onChange={ ( newAttribute ) => {
-								const newUnitone = {
-									...unitone,
-									backdropFilter: {
-										...unitone?.backdropFilter,
-										progressive: {
-											...unitone?.backdropFilter
-												?.progressive,
-											angle: newAttribute,
-										},
-									},
-								};
-
 								setAttributes( {
-									unitone: cleanEmptyObject( newUnitone ),
+									unitone: cleanEmptyObject( {
+										...unitone,
+										backdropFilter: {
+											...unitone?.backdropFilter,
+											progressive: {
+												...unitone?.backdropFilter
+													?.progressive,
+												angle: newAttribute,
+											},
+										},
+									} ),
 								} );
 							} }
 						/>

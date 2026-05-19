@@ -9,7 +9,7 @@ import { hasBlockSupport } from '@wordpress/blocks';
 import { reset, formatStrikethrough, formatUnderline } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleGroupControl } from '../utils';
 
 const LINK_DECORATIONS = [
 	{
@@ -40,9 +40,18 @@ const LinkDecorationControl = ( { label, value, onChange, className } ) => {
 				'block-editor-text-decoration-control',
 				className
 			) }
-			value={ value }
+			value={ normalizeForToggleGroupControl( value ) }
 			onChange={ ( newValue ) => {
-				onChange( newValue === value ? undefined : newValue );
+				const normalizedNewValue =
+					normalizeForToggleGroupControl( newValue );
+				const normalizedCurrentValue =
+					normalizeForToggleGroupControl( value );
+
+				onChange(
+					normalizedNewValue === normalizedCurrentValue
+						? undefined
+						: normalizedNewValue
+				);
 			} }
 		>
 			{ LINK_DECORATIONS.map( ( option ) => {
@@ -110,13 +119,11 @@ export function LinkDecorationEdit( { label, attributes, setAttributes } ) {
 			label={ label }
 			value={ attributes?.unitone?.linkDecoration }
 			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...attributes?.unitone,
-					linkDecoration: newValue || undefined,
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...attributes?.unitone,
+						linkDecoration: newValue || undefined,
+					} ),
 				} );
 			} }
 		/>

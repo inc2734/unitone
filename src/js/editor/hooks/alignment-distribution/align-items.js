@@ -10,7 +10,7 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleGroupControl } from '../utils';
 import { alignBottom, alignCenter, alignTop, alignStretch } from '../icons';
 
 const alignItemsOptions = [
@@ -104,16 +104,14 @@ export function AlignItemsToolbar( {
 				isActive:
 					option.value === ( unitone?.alignItems ?? defaultValue ),
 				onClick: () => {
-					const newUnitone = {
-						...unitone,
-						alignItems:
-							option.value !== unitone?.alignItems
-								? option.value
-								: undefined,
-					};
-
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							alignItems:
+								option.value !== unitone?.alignItems
+									? option.value
+									: undefined,
+						} ),
 					} );
 				},
 			} ) ) }
@@ -155,19 +153,24 @@ export function AlignItemsEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.alignItems ?? defaultValue }
+				value={ normalizeForToggleGroupControl(
+					unitone?.alignItems ?? defaultValue
+				) }
 				isDeselectable={ ! defaultValue }
 				onChange={ ( newValue ) => {
-					const newUnitone = {
-						...unitone,
-						alignItems:
-							unitone?.alignItems !== newValue
-								? newValue
-								: undefined,
-					};
+					const normalizedNewValue =
+						normalizeForToggleGroupControl( newValue );
+					const normalizedCurrentValue =
+						normalizeForToggleGroupControl( unitone?.alignItems );
 
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							alignItems:
+								normalizedCurrentValue !== normalizedNewValue
+									? normalizedNewValue
+									: undefined,
+						} ),
 					} );
 				} }
 			>

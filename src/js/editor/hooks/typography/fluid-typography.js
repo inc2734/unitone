@@ -5,7 +5,7 @@ import { ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 import { HelpContainer } from '../components';
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleControl } from '../utils';
 
 export function hasFluidTypographyValue( { attributes: { unitone } } ) {
 	return unitone?.fluidTypography !== undefined;
@@ -59,15 +59,18 @@ export function FluidTypographyEdit( { label, attributes, setAttributes } ) {
 				__nextHasNoMarginBottom
 				label={ label }
 				disabled={ fontSizeStatus.fixed }
-				checked={ attributes?.unitone?.fluidTypography ?? false }
+				checked={ normalizeForToggleControl(
+					attributes?.unitone?.fluidTypography
+				) }
 				onChange={ ( newValue ) => {
-					const newUnitone = {
-						...attributes?.unitone,
-						fluidTypography: newValue || undefined,
-					};
+					const normalizedNewValue =
+						normalizeForToggleControl( newValue );
 
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...attributes?.unitone,
+							fluidTypography: normalizedNewValue || undefined,
+						} ),
 					} );
 				} }
 			/>

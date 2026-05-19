@@ -20,6 +20,7 @@ import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 
 import { BACKGROUNDS } from '../../../../blocks/abstract-background/constant';
+import { normalizeForSelectControl } from '../../hooks/utils';
 
 export const fetchSVGData = async ( {
 	postId,
@@ -398,13 +399,16 @@ function addFeaturedImageGenerator( OriginalComponent ) {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Aspect ratio', 'unitone' ) }
-							value={ aspectRatio }
+							value={ normalizeForSelectControl( aspectRatio ) }
 							options={ [
 								{ label: '4:3', value: '4:3' },
 								{ label: '16:9', value: '16:9' },
 							] }
 							onChange={ ( newSetting ) => {
-								setAspectRatio( newSetting );
+								const normalizedNewValue =
+									normalizeForSelectControl( newSetting );
+
+								setAspectRatio( normalizedNewValue );
 							} }
 						/>
 

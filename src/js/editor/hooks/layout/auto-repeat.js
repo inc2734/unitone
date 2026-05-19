@@ -5,7 +5,7 @@ import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForSelectControl } from '../utils';
 
 const autoRepeatOptions = [
 	{
@@ -101,16 +101,19 @@ export function AutoRepeatEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={ unitone?.autoRepeat ?? defaultValue ?? '' }
+			value={ normalizeForSelectControl(
+				unitone?.autoRepeat ?? defaultValue
+			) }
 			options={ autoRepeatOptions }
 			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...unitone,
-					autoRepeat: newValue || undefined,
-				};
+				const normalizedNewValue =
+					normalizeForSelectControl( newValue );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						autoRepeat: normalizedNewValue || undefined,
+					} ),
 				} );
 			} }
 		/>

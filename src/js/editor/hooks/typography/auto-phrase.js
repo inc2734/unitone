@@ -5,7 +5,7 @@ import { ToggleControl } from '@wordpress/components';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import { HelpContainer } from '../components';
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleControl } from '../utils';
 
 export function hasAutoPhraseValue( { attributes: { unitone } } ) {
 	return unitone?.autoPhrase !== undefined;
@@ -55,15 +55,16 @@ export function AutoPhraseEdit( {
 			<ToggleControl
 				__nextHasNoMarginBottom
 				label={ label }
-				checked={ unitone?.autoPhrase ?? false }
+				checked={ normalizeForToggleControl( unitone?.autoPhrase ) }
 				onChange={ ( newValue ) => {
-					const newUnitone = {
-						...unitone,
-						autoPhrase: newValue || undefined,
-					};
+					const normalizedNewValue =
+						normalizeForToggleControl( newValue );
 
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							autoPhrase: normalizedNewValue || undefined,
+						} ),
 					} );
 				} }
 			/>

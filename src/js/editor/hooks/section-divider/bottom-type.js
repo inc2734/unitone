@@ -5,7 +5,7 @@ import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForSelectControl } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -109,21 +109,22 @@ export function SectionDividerBottomTypeEdit( {
 					value: 'expand',
 				},
 			] }
-			value={ value }
+			value={ normalizeForSelectControl( value ) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					sectionDivider: {
-						...unitone?.sectionDivider,
-						bottom: {
-							...unitone?.sectionDivider?.bottom,
-							type: newAttribute || undefined,
-						},
-					},
-				};
+				const normalizedNewValue =
+					normalizeForSelectControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						sectionDivider: {
+							...unitone?.sectionDivider,
+							bottom: {
+								...unitone?.sectionDivider?.bottom,
+								type: normalizedNewValue || undefined,
+							},
+						},
+					} ),
 				} );
 			} }
 		/>

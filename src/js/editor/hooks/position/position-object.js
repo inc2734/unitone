@@ -6,7 +6,12 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
+import {
+	cleanEmptyObject,
+	mergeObjectWithDefaultValue,
+	normalizeForSelectControl,
+	normalizeForTextControl,
+} from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -122,18 +127,19 @@ export function PositionEdit( {
 					value: 'sticky-top-admin-bar',
 				},
 			] }
-			value={ value }
+			value={ normalizeForSelectControl( value ) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					position: {
-						...unitone?.position,
-						position: newAttribute || undefined,
-					},
-				};
+				const normalizedNewValue =
+					normalizeForSelectControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						position: {
+							...unitone?.position,
+							position: normalizedNewValue || undefined,
+						},
+					} ),
 				} );
 			} }
 		/>
@@ -176,18 +182,21 @@ export function TopEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={ unitone?.position?.top ?? defaultValue?.top ?? '' }
+			value={ normalizeForTextControl(
+				unitone?.position?.top ?? defaultValue?.top
+			) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					position: {
-						...unitone?.position,
-						top: newAttribute || undefined,
-					},
-				};
+				const normalizedNewValue =
+					normalizeForTextControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						position: {
+							...unitone?.position,
+							top: normalizedNewValue || undefined,
+						},
+					} ),
 				} );
 			} }
 		/>
@@ -230,20 +239,21 @@ export function RightEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={
-				unitone?.position?.right ?? defaultValue?.position?.right ?? ''
-			}
+			value={ normalizeForTextControl(
+				unitone?.position?.right ?? defaultValue?.position?.right
+			) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					position: {
-						...unitone?.position,
-						right: newAttribute || undefined,
-					},
-				};
+				const normalizedNewValue =
+					normalizeForTextControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						position: {
+							...unitone?.position,
+							right: normalizedNewValue || undefined,
+						},
+					} ),
 				} );
 			} }
 		/>
@@ -286,18 +296,21 @@ export function BottomEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={ unitone?.position?.bottom ?? defaultValue?.bottom ?? '' }
+			value={ normalizeForTextControl(
+				unitone?.position?.bottom ?? defaultValue?.bottom
+			) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					position: {
-						...unitone?.position,
-						bottom: newAttribute || undefined,
-					},
-				};
+				const normalizedNewValue =
+					normalizeForTextControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						position: {
+							...unitone?.position,
+							bottom: normalizedNewValue || undefined,
+						},
+					} ),
 				} );
 			} }
 		/>
@@ -340,18 +353,21 @@ export function LeftEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={ unitone?.position?.left ?? defaultValue?.left ?? '' }
+			value={ normalizeForTextControl(
+				unitone?.position?.left ?? defaultValue?.left
+			) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					position: {
-						...unitone?.position,
-						left: newAttribute || undefined,
-					},
-				};
+				const normalizedNewValue =
+					normalizeForTextControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						position: {
+							...unitone?.position,
+							left: normalizedNewValue || undefined,
+						},
+					} ),
 				} );
 			} }
 		/>
@@ -394,18 +410,21 @@ export function ZIndexEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={ unitone?.position?.zIndex ?? defaultValue?.zIndex ?? '' }
+			value={ normalizeForTextControl(
+				unitone?.position?.zIndex ?? defaultValue?.zIndex
+			) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					position: {
-						...unitone?.position,
-						zIndex: newAttribute || undefined,
-					},
-				};
+				const normalizedNewValue =
+					normalizeForTextControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						position: {
+							...unitone?.position,
+							zIndex: normalizedNewValue || undefined,
+						},
+					} ),
 				} );
 			} }
 		/>

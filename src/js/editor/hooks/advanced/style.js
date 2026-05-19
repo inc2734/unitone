@@ -11,7 +11,7 @@ import { transformStyles } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForTextareaControl } from '../utils';
 
 export function isStyleDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.style' );
@@ -326,8 +326,10 @@ export function StyleEdit( { attributes: { unitone }, setAttributes } ) {
 					'Selectors and CSS beginning with anything other than "&" are ignored.',
 					'unitone'
 				) }` }
-				value={ unitone?.style ?? undefined }
-				onChange={ handleOnChange }
+				value={ normalizeForTextareaControl( unitone?.style ) }
+				onChange={ ( newValue ) =>
+					handleOnChange( normalizeForTextareaControl( newValue ) )
+				}
 				onBlur={ handleOnBlur }
 				className="block-editor-global-styles-advanced-panel__custom-css-input"
 				spellCheck={ false }

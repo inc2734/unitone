@@ -9,6 +9,11 @@ import { useSettings } from '@wordpress/block-editor';
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import {
+	normalizeForSelectControl,
+	normalizeForUnitControl,
+} from '../../hooks/utils';
+
 export const UnitControl = ( { label, value, onChange } ) => {
 	return (
 		<div>
@@ -22,9 +27,11 @@ export const UnitControl = ( { label, value, onChange } ) => {
 			>
 				<BaseUnitControl
 					__next40pxDefaultSize
-					value={ value || '' }
+					value={ normalizeForUnitControl( value ) }
 					style={ { width: '100%' } }
-					onChange={ onChange }
+					onChange={ ( newValue ) =>
+						onChange( normalizeForUnitControl( newValue ) )
+					}
 				/>
 
 				<Button
@@ -64,7 +71,7 @@ export const FontFamilyControl = ( { value, onChange } ) => {
 				<SelectControl
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
-					value={ value || '' }
+					value={ normalizeForSelectControl( value ) }
 					options={ [
 						...[
 							{
@@ -77,7 +84,9 @@ export const FontFamilyControl = ( { value, onChange } ) => {
 							value: fontFamily.slug,
 						} ) ),
 					] }
-					onChange={ onChange }
+					onChange={ ( newValue ) =>
+						onChange( normalizeForSelectControl( newValue ) )
+					}
 				/>
 
 				<Button

@@ -6,7 +6,7 @@ import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { HelpContainer } from '../components';
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleControl } from '../utils';
 
 export function hasBackgroundClipValue( { attributes: { unitone } } ) {
 	return unitone?.backgroundClip !== undefined;
@@ -66,13 +66,11 @@ export function BackgroundClipEdit( {
 			! attributes?.style?.background?.backgroundImage &&
 			undefined !== attributes?.unitone?.backgroundClip
 		) {
-			const newUnitone = {
-				...attributes?.unitone,
-				backgroundClip: undefined,
-			};
-
 			setAttributes( {
-				unitone: cleanEmptyObject( newUnitone ),
+				unitone: cleanEmptyObject( {
+					...attributes?.unitone,
+					backgroundClip: undefined,
+				} ),
 			} );
 		}
 	}, [
@@ -91,15 +89,18 @@ export function BackgroundClipEdit( {
 					! attributes?.style?.color?.gradient &&
 					! attributes?.style?.background?.backgroundImage
 				}
-				checked={ attributes?.unitone?.backgroundClip ?? false }
+				checked={ normalizeForToggleControl(
+					attributes?.unitone?.backgroundClip
+				) }
 				onChange={ ( newValue ) => {
-					const newUnitone = {
-						...attributes?.unitone,
-						backgroundClip: newValue || undefined,
-					};
+					const normalizedNewValue =
+						normalizeForToggleControl( newValue );
 
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...attributes?.unitone,
+							backgroundClip: normalizedNewValue || undefined,
+						} ),
 					} );
 				} }
 			/>

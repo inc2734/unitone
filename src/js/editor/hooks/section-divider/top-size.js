@@ -4,7 +4,7 @@ import { store as blocksStore } from '@wordpress/blocks';
 import { RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForRangeControl } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -66,23 +66,24 @@ export function SectionDividerTopSizeEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={ parseInt(
+			value={ normalizeForRangeControl(
 				unitone?.sectionDivider?.top?.size ?? defaultValue
 			) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					sectionDivider: {
-						...unitone?.sectionDivider,
-						top: {
-							...unitone?.sectionDivider?.top,
-							size: newAttribute,
-						},
-					},
-				};
+				const normalizedNewValue =
+					normalizeForRangeControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						sectionDivider: {
+							...unitone?.sectionDivider,
+							top: {
+								...unitone?.sectionDivider?.top,
+								size: normalizedNewValue,
+							},
+						},
+					} ),
 				} );
 			} }
 			min={ 0 }

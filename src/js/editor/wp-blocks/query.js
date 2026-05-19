@@ -15,6 +15,7 @@ import {
 import {
 	useToolsPanelDropdownMenuProps,
 	cleanEmptyObject,
+	normalizeForToggleControl,
 } from '../hooks/utils';
 
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
@@ -79,12 +80,11 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 							}
 							label={ __( 'Use block links', 'unitone' ) }
 							onDeselect={ () => {
-								const newUnitone = {
-									...props.attributes?.unitone,
-									blockLink: defaultValue,
-								};
 								props.setAttributes( {
-									unitone: cleanEmptyObject( newUnitone ),
+									unitone: cleanEmptyObject( {
+										...props.attributes?.unitone,
+										blockLink: defaultValue,
+									} ),
 								} );
 							} }
 							isShownByDefault
@@ -92,20 +92,22 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __( 'Use block links', 'unitone' ) }
-								checked={
+								checked={ normalizeForToggleControl(
 									!! (
 										props.attributes?.unitone?.blockLink ??
 										defaultValue
 									)
-								}
+								) }
 								onChange={ ( newValue ) => {
-									const newUnitone = {
-										...props.attributes?.unitone,
-										blockLink: newValue || undefined,
-									};
+									const normalizedNewValue =
+										normalizeForToggleControl( newValue );
 
 									props.setAttributes( {
-										unitone: cleanEmptyObject( newUnitone ),
+										unitone: cleanEmptyObject( {
+											...props.attributes?.unitone,
+											blockLink:
+												normalizedNewValue || undefined,
+										} ),
 									} );
 								} }
 							/>

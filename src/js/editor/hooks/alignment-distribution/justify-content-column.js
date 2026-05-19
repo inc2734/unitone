@@ -17,7 +17,7 @@ import {
 	alignSpaceBetween,
 } from '../icons';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleGroupControl } from '../utils';
 
 const justifyContentColumnOptions = [
 	{
@@ -113,16 +113,14 @@ export function JustifyContentColumnToolbar( {
 					option.value ===
 					( unitone?.justifyContent ?? defaultValue ),
 				onClick: () => {
-					const newUnitone = {
-						...unitone,
-						justifyContent:
-							option.value !== unitone?.justifyContent
-								? option.value
-								: undefined,
-					};
-
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							justifyContent:
+								option.value !== unitone?.justifyContent
+									? option.value
+									: undefined,
+						} ),
 					} );
 				},
 			} ) ) }
@@ -164,18 +162,25 @@ export function JustifyContentColumnEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.justifyContent ?? defaultValue }
+				value={ normalizeForToggleGroupControl(
+					unitone?.justifyContent ?? defaultValue
+				) }
 				onChange={ ( newValue ) => {
-					const newUnitone = {
-						...unitone,
-						justifyContent:
-							unitone?.justifyContent !== newValue
-								? newValue
-								: undefined,
-					};
+					const normalizedNewValue =
+						normalizeForToggleGroupControl( newValue );
+					const normalizedCurrentValue =
+						normalizeForToggleGroupControl(
+							unitone?.justifyContent
+						);
 
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							justifyContent:
+								normalizedCurrentValue !== normalizedNewValue
+									? normalizedNewValue
+									: undefined,
+						} ),
 					} );
 				} }
 			>

@@ -5,7 +5,7 @@ import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForSelectControl } from '../utils';
 
 const mixBlendModeOptions = [
 	{
@@ -153,15 +153,18 @@ export function MixBlendModeEdit( {
 				'unitone'
 			) }
 			options={ mixBlendModeOptions }
-			value={ unitone?.mixBlendMode ?? defaultValue ?? '' }
+			value={ normalizeForSelectControl(
+				unitone?.mixBlendMode ?? defaultValue
+			) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					mixBlendMode: newAttribute || undefined,
-				};
+				const normalizedNewValue =
+					normalizeForSelectControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						mixBlendMode: normalizedNewValue || undefined,
+					} ),
 				} );
 			} }
 		/>

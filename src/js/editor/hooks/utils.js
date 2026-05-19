@@ -842,6 +842,8 @@ export function useVisibleLayoutObserver( onLayout ) {
 		const intersectionObserver = new defaultView.IntersectionObserver(
 			( [ entry ] ) => {
 				if ( entry?.rootBounds === null ) {
+					activateObservers( entry.target );
+					scheduleRefresh( entry.target );
 					return;
 				}
 

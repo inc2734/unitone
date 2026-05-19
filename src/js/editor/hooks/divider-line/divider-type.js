@@ -10,7 +10,7 @@ import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForSelectControl } from '../utils';
 
 const getDividerTypeOptions = ( {
 	name,
@@ -138,16 +138,19 @@ export function DividerTypeEdit( props ) {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			value={ unitone?.dividerType ?? defaultValue ?? '' }
+			value={ normalizeForSelectControl(
+				unitone?.dividerType ?? defaultValue
+			) }
 			options={ getDividerTypeOptions( { ...props } ) }
 			onChange={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					dividerType: newAttribute ?? undefined,
-				};
+				const normalizedNewValue =
+					normalizeForSelectControl( newAttribute );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						dividerType: normalizedNewValue || undefined,
+					} ),
 				} );
 			} }
 		/>

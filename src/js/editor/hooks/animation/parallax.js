@@ -17,8 +17,13 @@ import { useRef } from '@wordpress/element';
 import { Icon, reset } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
+import {
+	cleanEmptyObject,
+	mergeObjectWithDefaultValue,
+	normalizeForRangeControl,
+} from '../utils';
+
 import { parallax as iconParallax } from './icons';
-import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -145,12 +150,16 @@ function ParallaxPopover( { hasValue, resetValue, speed, onChangeSpeed } ) {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Speed', 'unitone' ) }
-								value={ speed }
+								value={ normalizeForRangeControl( speed ) }
 								initialPosition={ 0 }
 								step={ 1 }
 								min={ -5 }
 								max={ 5 }
-								onChange={ onChangeSpeed }
+								onChange={ ( newValue ) =>
+									onChangeSpeed(
+										normalizeForRangeControl( newValue )
+									)
+								}
 								allowReset
 							/>
 						</VStack>
@@ -184,16 +193,14 @@ export function ParallaxEdit( {
 				unitone?.parallax?.speed ?? defaultValue?.speed ?? 0
 			) }
 			onChangeSpeed={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					parallax: {
-						...unitone?.parallax,
-						speed: newAttribute || undefined,
-					},
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						parallax: {
+							...unitone?.parallax,
+							speed: newAttribute || undefined,
+						},
+					} ),
 				} );
 			} }
 		/>

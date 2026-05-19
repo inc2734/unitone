@@ -20,10 +20,17 @@ import { useRef } from '@wordpress/element';
 import { Icon, reset } from '@wordpress/icons';
 import { __, _x } from '@wordpress/i18n';
 
+import {
+	cleanEmptyObject,
+	mergeObjectWithDefaultValue,
+	normalizeForSelectControl,
+	normalizeForRangeControl,
+	normalizeForTextControl,
+} from '../utils';
+
 import { HelpContainer } from '../components';
 import { EASING_OPTIONS } from './easing';
 import { scroll as iconScrollAnimation } from './icons';
-import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
 const SCROLL_ANIMATION_TYPES = [
 	{
@@ -249,21 +256,29 @@ function ScrollAnimationPopover( {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Type', 'unitone' ) }
-								value={ type || '' }
+								value={ normalizeForSelectControl( type ) }
 								options={ SCROLL_ANIMATION_TYPE_OPTIONS }
-								onChange={ onChangeType }
+								onChange={ ( newValue ) =>
+									onChangeType(
+										normalizeForSelectControl( newValue )
+									)
+								}
 							/>
 
 							<RangeControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Speed', 'unitone' ) }
-								value={ speed }
+								value={ normalizeForRangeControl( speed ) }
 								disabled={ ! type }
 								step={ 0.1 }
 								min={ 0 }
 								max={ 5 }
-								onChange={ onChangeSpeed }
+								onChange={ ( newValue ) =>
+									onChangeSpeed(
+										normalizeForRangeControl( newValue )
+									)
+								}
 								allowReset
 							/>
 
@@ -271,12 +286,16 @@ function ScrollAnimationPopover( {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Delay', 'unitone' ) }
-								value={ delay }
+								value={ normalizeForRangeControl( delay ) }
 								disabled={ ! type }
 								step={ 0.1 }
 								min={ 0 }
 								max={ 5 }
-								onChange={ onChangeDelay }
+								onChange={ ( newValue ) =>
+									onChangeDelay(
+										normalizeForRangeControl( newValue )
+									)
+								}
 								allowReset
 							/>
 
@@ -284,10 +303,14 @@ function ScrollAnimationPopover( {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Easing', 'unitone' ) }
-								value={ easing || '' }
+								value={ normalizeForSelectControl( easing ) }
 								disabled={ ! type }
 								options={ EASING_OPTIONS }
-								onChange={ onChangeEasing }
+								onChange={ ( newValue ) =>
+									onChangeEasing(
+										normalizeForSelectControl( newValue )
+									)
+								}
 							/>
 
 							{ 'fade-in-down' === type && (
@@ -298,11 +321,17 @@ function ScrollAnimationPopover( {
 										'Initial position (Y)',
 										'unitone'
 									) }
-									value={ initial }
+									value={ normalizeForRangeControl(
+										initial
+									) }
 									step={ 1 }
 									min={ -200 }
 									max={ 1 }
-									onChange={ onChangeInitial }
+									onChange={ ( newValue ) =>
+										onChangeInitial(
+											normalizeForRangeControl( newValue )
+										)
+									}
 									allowReset
 								/>
 							) }
@@ -315,11 +344,17 @@ function ScrollAnimationPopover( {
 										'Initial position (Y)',
 										'unitone'
 									) }
-									value={ initial }
+									value={ normalizeForRangeControl(
+										initial
+									) }
 									step={ 1 }
 									min={ 1 }
 									max={ 200 }
-									onChange={ onChangeInitial }
+									onChange={ ( newValue ) =>
+										onChangeInitial(
+											normalizeForRangeControl( newValue )
+										)
+									}
 									allowReset
 								/>
 							) }
@@ -332,11 +367,17 @@ function ScrollAnimationPopover( {
 										'Initial position (X)',
 										'unitone'
 									) }
-									value={ initial }
+									value={ normalizeForRangeControl(
+										initial
+									) }
 									step={ 1 }
 									min={ 1 }
 									max={ 200 }
-									onChange={ onChangeInitial }
+									onChange={ ( newValue ) =>
+										onChangeInitial(
+											normalizeForRangeControl( newValue )
+										)
+									}
 									allowReset
 								/>
 							) }
@@ -349,11 +390,17 @@ function ScrollAnimationPopover( {
 										'Initial position (X)',
 										'unitone'
 									) }
-									value={ initial }
+									value={ normalizeForRangeControl(
+										initial
+									) }
 									step={ 1 }
 									min={ -200 }
 									max={ -1 }
-									onChange={ onChangeInitial }
+									onChange={ ( newValue ) =>
+										onChangeInitial(
+											normalizeForRangeControl( newValue )
+										)
+									}
 									allowReset
 								/>
 							) }
@@ -366,11 +413,17 @@ function ScrollAnimationPopover( {
 										'Initial shrinkage rate',
 										'unitone'
 									) }
-									value={ initial }
+									value={ normalizeForRangeControl(
+										initial
+									) }
 									step={ 0.1 }
 									min={ 0.1 }
 									max={ 0.9 }
-									onChange={ onChangeInitial }
+									onChange={ ( newValue ) =>
+										onChangeInitial(
+											normalizeForRangeControl( newValue )
+										)
+									}
 									allowReset
 								/>
 							) }
@@ -383,11 +436,17 @@ function ScrollAnimationPopover( {
 										'Initial position (X)',
 										'unitone'
 									) }
-									value={ initial }
+									value={ normalizeForRangeControl(
+										initial
+									) }
 									step={ 1 }
 									min={ -50 }
 									max={ -1 }
-									onChange={ onChangeInitial }
+									onChange={ ( newValue ) =>
+										onChangeInitial(
+											normalizeForRangeControl( newValue )
+										)
+									}
 									allowReset
 								/>
 							) }
@@ -400,11 +459,17 @@ function ScrollAnimationPopover( {
 										'Initial position (X)',
 										'unitone'
 									) }
-									value={ initial }
+									value={ normalizeForRangeControl(
+										initial
+									) }
 									step={ 1 }
 									min={ -50 }
 									max={ -1 }
-									onChange={ onChangeInitial }
+									onChange={ ( newValue ) =>
+										onChangeInitial(
+											normalizeForRangeControl( newValue )
+										)
+									}
 									allowReset
 								/>
 							) }
@@ -448,8 +513,14 @@ function ScrollAnimationPopover( {
 										'intersectionObserver',
 										'unitone'
 									) }
-									value={ rootMargin || '0px' }
-									onChange={ onChangeRootMargin }
+									value={ normalizeForTextControl(
+										rootMargin || '0px'
+									) }
+									onChange={ ( newValue ) =>
+										onChangeRootMargin(
+											normalizeForTextControl( newValue )
+										)
+									}
 								/>
 							</HelpContainer>
 
@@ -468,8 +539,14 @@ function ScrollAnimationPopover( {
 										'intersectionObserver',
 										'unitone'
 									) }
-									value={ threshold || '0.25' }
-									onChange={ onChangeThreshold }
+									value={ normalizeForTextControl(
+										threshold || '0.25'
+									) }
+									onChange={ ( newValue ) =>
+										onChangeThreshold(
+											normalizeForTextControl( newValue )
+										)
+									}
 								/>
 							</HelpContainer>
 						</VStack>
@@ -531,17 +608,15 @@ export function ScrollAnimationEdit( {
 			rootMargin={ rootMargin ?? '' }
 			threshold={ threshold ?? '' }
 			onChangeType={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					scrollAnimation: newAttribute
-						? {
-								type: newAttribute || undefined,
-						  }
-						: undefined,
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						scrollAnimation: newAttribute
+							? {
+									type: newAttribute || undefined,
+							  }
+							: undefined,
+					} ),
 					__unitoneStates: {
 						...__unitoneStates,
 						scrollAnimationFired: false,
@@ -549,16 +624,14 @@ export function ScrollAnimationEdit( {
 				} );
 			} }
 			onChangeSpeed={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					scrollAnimation: {
-						...unitone?.scrollAnimation,
-						speed: newAttribute || undefined,
-					},
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						scrollAnimation: {
+							...unitone?.scrollAnimation,
+							speed: newAttribute || undefined,
+						},
+					} ),
 					__unitoneStates: {
 						...__unitoneStates,
 						scrollAnimationFired: false,
@@ -566,16 +639,14 @@ export function ScrollAnimationEdit( {
 				} );
 			} }
 			onChangeDelay={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					scrollAnimation: {
-						...unitone?.scrollAnimation,
-						delay: newAttribute || undefined,
-					},
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						scrollAnimation: {
+							...unitone?.scrollAnimation,
+							delay: newAttribute || undefined,
+						},
+					} ),
 					__unitoneStates: {
 						...__unitoneStates,
 						scrollAnimationFired: false,
@@ -583,16 +654,14 @@ export function ScrollAnimationEdit( {
 				} );
 			} }
 			onChangeEasing={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					scrollAnimation: {
-						...unitone?.scrollAnimation,
-						easing: newAttribute || undefined,
-					},
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						scrollAnimation: {
+							...unitone?.scrollAnimation,
+							easing: newAttribute || undefined,
+						},
+					} ),
 					__unitoneStates: {
 						...__unitoneStates,
 						scrollAnimationFired: false,
@@ -606,16 +675,14 @@ export function ScrollAnimationEdit( {
 					newAttribute = String( newAttribute );
 				}
 
-				const newUnitone = {
-					...unitone,
-					scrollAnimation: {
-						...unitone?.scrollAnimation,
-						initial: newAttribute || undefined,
-					},
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						scrollAnimation: {
+							...unitone?.scrollAnimation,
+							initial: newAttribute || undefined,
+						},
+					} ),
 					__unitoneStates: {
 						...__unitoneStates,
 						scrollAnimationFired: false,
@@ -627,16 +694,14 @@ export function ScrollAnimationEdit( {
 					newAttribute = undefined;
 				}
 
-				const newUnitone = {
-					...unitone,
-					scrollAnimation: {
-						...unitone?.scrollAnimation,
-						rootMargin: newAttribute || undefined,
-					},
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						scrollAnimation: {
+							...unitone?.scrollAnimation,
+							rootMargin: newAttribute || undefined,
+						},
+					} ),
 					__unitoneStates: {
 						...__unitoneStates,
 						scrollAnimationFired: false,
@@ -648,16 +713,14 @@ export function ScrollAnimationEdit( {
 					newAttribute = undefined;
 				}
 
-				const newUnitone = {
-					...unitone,
-					scrollAnimation: {
-						...unitone?.scrollAnimation,
-						threshold: newAttribute || undefined,
-					},
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						scrollAnimation: {
+							...unitone?.scrollAnimation,
+							threshold: newAttribute || undefined,
+						},
+					} ),
 					__unitoneStates: {
 						...__unitoneStates,
 						scrollAnimationFired: false,

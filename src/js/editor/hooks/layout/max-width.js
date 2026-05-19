@@ -12,7 +12,11 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { settings as settingsIcon } from '@wordpress/icons';
 
-import { cleanEmptyObject } from '../utils';
+import {
+	cleanEmptyObject,
+	normalizeForToggleGroupControl,
+	normalizeForTextControl,
+} from '../utils';
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -94,13 +98,11 @@ export function MaxWidthEdit( {
 	].includes( unitone?.maxWidth ?? defaultValue );
 
 	const onChangeMaxWidth = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			maxWidth: newValue || undefined,
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				maxWidth: newValue || undefined,
+			} ),
 		} );
 	};
 
@@ -116,9 +118,15 @@ export function MaxWidthEdit( {
 					<ToggleGroupControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
-						value={ unitone?.maxWidth ?? defaultValue ?? '' }
+						value={ normalizeForToggleGroupControl(
+							unitone?.maxWidth ?? defaultValue
+						) }
 						isBlock
-						onChange={ onChangeMaxWidth }
+						onChange={ ( newValue ) =>
+							onChangeMaxWidth(
+								normalizeForToggleGroupControl( newValue )
+							)
+						}
 					>
 						<ToggleGroupControlOption
 							value="var(--wp--style--global--wide-size)"
@@ -134,8 +142,14 @@ export function MaxWidthEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						id="unitone-max-width-control"
-						value={ unitone?.maxWidth ?? defaultValue ?? '' }
-						onChange={ onChangeMaxWidth }
+						value={ normalizeForTextControl(
+							unitone?.maxWidth ?? defaultValue
+						) }
+						onChange={ ( newValue ) =>
+							onChangeMaxWidth(
+								normalizeForTextControl( newValue )
+							)
+						}
 					/>
 				) }
 

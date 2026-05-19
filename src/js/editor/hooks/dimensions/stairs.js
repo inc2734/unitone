@@ -11,7 +11,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { SpacingSizeControl } from '../components';
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleGroupControl } from '../utils';
 
 const leftIcon = (
 	<svg
@@ -139,19 +139,11 @@ export function StairsEdit( {
 			label={ label }
 			value={ unitone?.stairs ?? defaultValue }
 			onChange={ ( newValue ) => {
-				if ( null != newValue ) {
-					// RangeControl returns Int, SelectControl returns String.
-					// So cast Int all values.
-					newValue = String( newValue );
-				}
-
-				const newUnitone = {
-					...unitone,
-					stairs: newValue || undefined,
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						stairs: newValue || undefined,
+					} ),
 				} );
 			} }
 		/>
@@ -179,15 +171,18 @@ export function StairsUpEdit( {
 			__nextHasNoMarginBottom
 			isBlock
 			label={ label }
-			value={ unitone?.stairsUp ?? defaultValue }
+			value={ normalizeForToggleGroupControl(
+				unitone?.stairsUp ?? defaultValue
+			) }
 			onChange={ ( newValue ) => {
-				const newUnitone = {
-					...unitone,
-					stairsUp: newValue || undefined,
-				};
+				const normalizedNewValue =
+					normalizeForToggleGroupControl( newValue );
 
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						stairsUp: normalizedNewValue || undefined,
+					} ),
 				} );
 			} }
 		>

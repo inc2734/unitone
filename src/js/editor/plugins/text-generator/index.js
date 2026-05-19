@@ -20,6 +20,11 @@ import { generateText } from './api/client';
 import { ai as icon } from './icons';
 import splitParagraphs from './domain/splitParagraphs';
 
+import {
+	normalizeForTextareaControl,
+	normalizeForSelectControl,
+} from '../../hooks/utils';
+
 const copyTextToClipboard = async ( text ) => {
 	if ( window.navigator.clipboard?.writeText ) {
 		await window.navigator.clipboard.writeText( text );
@@ -154,8 +159,12 @@ const AIGenerateSidebar = () => {
 								'Example: Generate customer testimonials for a web design agency.',
 								'unitone'
 							) }
-							value={ prompt }
-							onChange={ setPrompt }
+							value={ normalizeForTextareaControl( prompt ) }
+							onChange={ ( newValue ) =>
+								setPrompt(
+									normalizeForTextareaControl( newValue )
+								)
+							}
 							rows={ 6 }
 						/>
 
@@ -163,8 +172,10 @@ const AIGenerateSidebar = () => {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Tone (optional)', 'unitone' ) }
-							value={ tone }
-							onChange={ setTone }
+							value={ normalizeForSelectControl( tone ) }
+							onChange={ ( newValue ) =>
+								setTone( normalizeForSelectControl( newValue ) )
+							}
 							options={ [
 								{
 									label: __( 'Default', 'unitone' ),

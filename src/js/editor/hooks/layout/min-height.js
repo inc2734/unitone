@@ -13,7 +13,11 @@ import { useSelect } from '@wordpress/data';
 import { settings as settingsIcon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import {
+	cleanEmptyObject,
+	normalizeForSelectControl,
+	normalizeForTextControl,
+} from '../utils';
 
 const PRESETS = [
 	{
@@ -111,13 +115,11 @@ export function MinHeightEdit( {
 	);
 
 	const onChangeMinHeight = ( newValue ) => {
-		const newUnitone = {
-			...unitone,
-			minHeight: newValue || undefined,
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				minHeight: newValue || undefined,
+			} ),
 		} );
 	};
 
@@ -134,16 +136,28 @@ export function MinHeightEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						options={ PRESETS }
-						value={ unitone?.minHeight ?? defaultValue ?? '' }
-						onChange={ onChangeMinHeight }
+						value={ normalizeForSelectControl(
+							unitone?.minHeight ?? defaultValue
+						) }
+						onChange={ ( newValue ) =>
+							onChangeMinHeight(
+								normalizeForSelectControl( newValue )
+							)
+						}
 					/>
 				) : (
 					<TextControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						id="unitone-min-height-control"
-						value={ unitone?.minHeight ?? defaultValue ?? '' }
-						onChange={ onChangeMinHeight }
+						value={ normalizeForTextControl(
+							unitone?.minHeight ?? defaultValue
+						) }
+						onChange={ ( newValue ) =>
+							onChangeMinHeight(
+								normalizeForTextControl( newValue )
+							)
+						}
 					/>
 				) }
 

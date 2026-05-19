@@ -14,6 +14,7 @@ import { __ } from '@wordpress/i18n';
 import {
 	cleanEmptyObject,
 	useToolsPanelDropdownMenuProps,
+	normalizeForToggleControl,
 } from '../hooks/utils';
 
 import { HelpContainer } from '../hooks/components';
@@ -95,13 +96,21 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 										'Open link as media link',
 										'unitone'
 									) }
-									checked={ !! unitone?.mediaLink }
+									checked={ normalizeForToggleControl(
+										!! unitone?.mediaLink
+									) }
 									onChange={ ( newValue ) => {
+										const normalizedNewValue =
+											normalizeForToggleControl(
+												newValue
+											);
+
 										setAttributes( {
 											unitone: cleanEmptyObject( {
 												...unitone,
 												mediaLink:
-													newValue || undefined,
+													normalizedNewValue ||
+													undefined,
 											} ),
 										} );
 									} }

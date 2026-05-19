@@ -19,9 +19,16 @@ import { useRef } from '@wordpress/element';
 import { Icon, reset } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
+import {
+	cleanEmptyObject,
+	mergeObjectWithDefaultValue,
+	normalizeForSelectControl,
+	normalizeForRangeControl,
+	normalizeForToggleControl,
+} from '../utils';
+
 import { EASING_OPTIONS } from './easing';
 import { loop as iconLoopAnimation } from './icons';
-import { cleanEmptyObject, mergeObjectWithDefaultValue } from '../utils';
 
 const LOOP_ANIMATION_TYPES = [
 	{
@@ -217,21 +224,29 @@ function LoopAnimationPopover( {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Type', 'unitone' ) }
-								value={ type || '' }
+								value={ normalizeForSelectControl( type ) }
 								options={ LOOP_ANIMATION_TYPE_OPTIONS }
-								onChange={ onChangeType }
+								onChange={ ( newValue ) =>
+									onChangeType(
+										normalizeForSelectControl( newValue )
+									)
+								}
 							/>
 
 							<RangeControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Speed', 'unitone' ) }
-								value={ speed }
+								value={ normalizeForRangeControl( speed ) }
 								disabled={ ! type }
 								step={ 0.1 }
 								min={ 0 }
 								max={ 5 }
-								onChange={ onChangeSpeed }
+								onChange={ ( newValue ) =>
+									onChangeSpeed(
+										normalizeForRangeControl( newValue )
+									)
+								}
 								allowReset
 							/>
 
@@ -239,12 +254,16 @@ function LoopAnimationPopover( {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Interval', 'unitone' ) }
-								value={ interval }
+								value={ normalizeForRangeControl( interval ) }
 								disabled={ ! type }
 								step={ 0.1 }
 								min={ 0 }
 								max={ 10 }
-								onChange={ onChangeInterval }
+								onChange={ ( newValue ) =>
+									onChangeInterval(
+										normalizeForRangeControl( newValue )
+									)
+								}
 								allowReset
 							/>
 
@@ -252,18 +271,28 @@ function LoopAnimationPopover( {
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Easing', 'unitone' ) }
-								value={ easing || '' }
+								value={ normalizeForSelectControl( easing ) }
 								disabled={ ! type }
 								options={ EASING_OPTIONS }
-								onChange={ onChangeEasing }
+								onChange={ ( newValue ) =>
+									onChangeEasing(
+										normalizeForSelectControl( newValue )
+									)
+								}
 							/>
 
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __( 'Pause on hover', 'unitone' ) }
-								checked={ pauseOnHover }
+								checked={ normalizeForToggleControl(
+									pauseOnHover
+								) }
 								disabled={ ! type }
-								onChange={ onChangePauseOnHover }
+								onChange={ ( newValue ) =>
+									onChangePauseOnHover(
+										normalizeForToggleControl( newValue )
+									)
+								}
 							/>
 
 							<Button
@@ -312,16 +341,14 @@ export function LoopAnimationEdit( {
 				? undefined
 				: newAttribute;
 
-		const newUnitone = {
-			...unitone,
-			loopAnimation: {
-				...unitone?.loopAnimation,
-				[ key ]: newValue,
-			},
-		};
-
 		setAttributes( {
-			unitone: cleanEmptyObject( newUnitone ),
+			unitone: cleanEmptyObject( {
+				...unitone,
+				loopAnimation: {
+					...unitone?.loopAnimation,
+					[ key ]: newValue,
+				},
+			} ),
 			__unitoneStates: {
 				...__unitoneStates,
 				loopAnimationActive: false,
@@ -351,17 +378,15 @@ export function LoopAnimationEdit( {
 			easing={ easing ?? '' }
 			pauseOnHover={ pauseOnHover }
 			onChangeType={ ( newAttribute ) => {
-				const newUnitone = {
-					...unitone,
-					loopAnimation: newAttribute
-						? {
-								type: newAttribute,
-						  }
-						: undefined,
-				};
-
 				setAttributes( {
-					unitone: cleanEmptyObject( newUnitone ),
+					unitone: cleanEmptyObject( {
+						...unitone,
+						loopAnimation: newAttribute
+							? {
+									type: newAttribute,
+							  }
+							: undefined,
+					} ),
 					__unitoneStates: {
 						...__unitoneStates,
 						loopAnimationActive: false,

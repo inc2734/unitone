@@ -17,7 +17,7 @@ import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, normalizeForToggleGroupControl } from '../utils';
 
 const justifyItemsOptions = [
 	{
@@ -109,16 +109,14 @@ export function JustifyItemsToolbar( {
 				isActive:
 					option.value === ( unitone?.justifyItems ?? defaultValue ),
 				onClick: () => {
-					const newUnitone = {
-						...unitone,
-						justifyItems:
-							option.value !== unitone?.justifyItems
-								? option.value
-								: undefined,
-					};
-
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							justifyItems:
+								option.value !== unitone?.justifyItems
+									? option.value
+									: undefined,
+						} ),
 					} );
 				},
 			} ) ) }
@@ -160,19 +158,24 @@ export function JustifyItemsEdit( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
-				value={ unitone?.justifyItems ?? defaultValue }
+				value={ normalizeForToggleGroupControl(
+					unitone?.justifyItems ?? defaultValue
+				) }
 				isDeselectable={ ! defaultValue }
 				onChange={ ( newValue ) => {
-					const newUnitone = {
-						...unitone,
-						justifyItems:
-							unitone?.justifyItems !== newValue
-								? newValue
-								: undefined,
-					};
+					const normalizedNewValue =
+						normalizeForToggleGroupControl( newValue );
+					const normalizedCurrentValue =
+						normalizeForToggleGroupControl( unitone?.justifyItems );
 
 					setAttributes( {
-						unitone: cleanEmptyObject( newUnitone ),
+						unitone: cleanEmptyObject( {
+							...unitone,
+							justifyItems:
+								normalizedCurrentValue !== normalizedNewValue
+									? normalizedNewValue
+									: undefined,
+						} ),
 					} );
 				} }
 			>

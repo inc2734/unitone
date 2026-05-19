@@ -29,6 +29,8 @@ import { sprintf, __ } from '@wordpress/i18n';
 import {
 	cleanEmptyObject,
 	useToolsPanelDropdownMenuProps,
+	normalizeForSelectControl,
+	normalizeForToggleControl,
 } from '../hooks/utils';
 
 const hasCoreOverlay = ( attributes ) => {
@@ -182,8 +184,12 @@ const TemplatePartSelectControl = ( { label, value, onChange } ) => {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							options={ overlayMenuSlugOptions }
-							value={ value }
-							onChange={ onChange }
+							value={ normalizeForSelectControl( value ) }
+							onChange={ ( newValue ) =>
+								onChange(
+									normalizeForSelectControl( newValue )
+								)
+							}
 						/>
 					</div>
 
@@ -427,15 +433,21 @@ const NavigationInspectorControls = ( {
 									'Use template parts for unitone overlay menu',
 									'unitone'
 								) }
-								checked={ unitone?.replaceOverlayMenu ?? false }
-								onChange={ ( newSetting ) =>
-									setAttributes( {
+								checked={ normalizeForToggleControl(
+									unitone?.replaceOverlayMenu
+								) }
+								onChange={ ( newSetting ) => {
+									const normalizedNewValue =
+										normalizeForToggleControl( newSetting );
+
+									return setAttributes( {
 										unitone: cleanEmptyObject( {
 											...unitone,
-											replaceOverlayMenu: newSetting,
+											replaceOverlayMenu:
+												normalizedNewValue,
 										} ),
-									} )
-								}
+									} );
+								} }
 							/>
 						</ToolsPanelItem>
 

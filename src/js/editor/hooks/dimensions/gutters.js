@@ -85,10 +85,13 @@ export function GuttersEdit( {
 				<ToggleControl
 					__nextHasNoMarginBottom
 					label={ __( 'Using root padding', 'unitone' ) }
-					checked={ 'root' === ( unitone?.gutters ?? defaultValue ) }
+					checked={ normalizeForToggleControl(
+						'root' === ( unitone?.gutters ?? defaultValue )
+					) }
 					onChange={ ( newValue ) => {
 						const normalizedValue =
 							normalizeForToggleControl( newValue );
+
 						setAttributes( {
 							unitone: cleanEmptyObject( {
 								...unitone,
@@ -103,19 +106,11 @@ export function GuttersEdit( {
 				<SpacingSizeControl
 					value={ unitone?.gutters ?? defaultValue }
 					onChange={ ( newValue ) => {
-						if ( null != newValue ) {
-							// RangeControl returns Int, SelectControl returns String.
-							// So cast Int all values.
-							newValue = String( newValue );
-						}
-
-						const newUnitone = {
-							...unitone,
-							gutters: newValue || undefined,
-						};
-
 						setAttributes( {
-							unitone: cleanEmptyObject( newUnitone ),
+							unitone: cleanEmptyObject( {
+								...unitone,
+								gutters: newValue || undefined,
+							} ),
 						} );
 					} }
 				/>

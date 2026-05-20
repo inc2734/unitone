@@ -119,6 +119,7 @@
 			"parallax": true,
 			"scrollAnimation": true,
 			"loopAnimation": true,
+			"hoverAnimation": true,
 			"style": true
 		}
 	},

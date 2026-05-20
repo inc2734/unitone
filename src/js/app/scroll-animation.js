@@ -5,22 +5,10 @@ export default function initScrollAnimationFeatures() {
 
 	if ( parallaxTargets.length ) {
 		const activeParallaxTargets = new Set();
-		const initializedTargets = new WeakSet();
 
 		const isCoverElement = ( target ) =>
 			'cover' ===
 			window.getComputedStyle( target ).getPropertyValue( 'object-fit' );
-
-		const resetPosition = ( target ) => {
-			const child = target.children[ 0 ];
-
-			if ( child && isCoverElement( child ) ) {
-				child.style.objectPosition = '';
-				return;
-			}
-
-			target.style.transform = '';
-		};
 
 		const updatePosition = ( target ) => {
 			const viewPortHeight = Math.max(
@@ -106,18 +94,13 @@ export default function initScrollAnimationFeatures() {
 							'enable'
 						);
 
-						if ( ! initializedTargets.has( target ) ) {
-							updatePosition( target );
-							updatePosition( target );
-							initializedTargets.add( target );
-						}
+						updatePosition( target );
 
 						return;
 					}
 
 					activeParallaxTargets.delete( target );
 					target.setAttribute( 'data-unitone-parallax', 'disable' );
-					resetPosition( target );
 				} );
 
 				if ( 0 < activeParallaxTargets.size ) {

@@ -114,81 +114,8 @@ legend {
 	}
 }
 
-:where(.has-unitone-hover) {
-	--unitone--transition-duration: .2s;
-	--unitone--transition-timing-function: ease;
-
-	transition-property: all;
-	transition-duration: var(--unitone--transition-duration);
-	transition-timing-function: var(--unitone--transition-timing-function);
-}
-
 :where(.wp-block-button__link) {
 	transition: inherit;
-}
-
-@mixin active-hover-color {
-	&:is(
-		.has-unitone-text-color-hover:not(.wp-block-button),
-		.has-unitone-text-color-hover > .wp-block-button__link
-	) {
-		color: var(--unitone--color--hover) !important;
-	}
-
-	&:is(
-		.has-unitone-background-hover:not(.wp-block-button),
-		.has-unitone-background-hover > .wp-block-button__link
-	) {
-		background-color: var(--unitone--background-color--hover) !important;
-		background-image: none !important;
-	}
-
-	&:is(
-		.has-unitone-gradient-background-hover:not(.wp-block-button),
-		.has-unitone-gradient-background-hover > .wp-block-button__link
-	) {
-		background-image: var(--unitone--background-image--hover) !important;
-		background-color: transparent !important;
-	}
-
-	&:is(
-		.has-unitone-border-color-hover:not(.wp-block-button),
-		.has-unitone-border-color-hover > .wp-block-button__link
-	) {
-		border-color: var(--unitone--border-color--hover) !important;
-	}
-}
-
-[data-unitone-hover-animation~=-active] {
-	@include active-hover-color;
-}
-
-[data-unitone-hover-animation-group~=-active] * {
-	@include active-hover-color;
-}
-
-@media (any-hover: hover) {
-	:hover {
-		@include active-hover-color;
-	}
-
-	[data-unitone-hover-animation-group]:hover * {
-		@include active-hover-color;
-	}
-}
-
-:is(
-	:focus-visible,
-	[data-unitone-layout~="decorator"]:has(:focus-visible)
-) {
-	@include active-hover-color;
-}
-
-:is(
-	[data-unitone-hover-animation-group]:focus-visible *,
-	[data-unitone-hover-animation-group][data-unitone-layout~="decorator"]:has(:focus-visible) *
-) {
-	@include active-hover-color;
 }
 
 [data-unitone-layout~="-position\:sticky-top"]:not(:root) {

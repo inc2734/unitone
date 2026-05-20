@@ -820,7 +820,7 @@ add_filter(
 			$has_scroll_animation  = $get_attribute( 'scrollAnimation.type' );
 			$has_loop_animation    = $get_attribute( 'loopAnimation.type' );
 
-			if ( $hover_animation_type && ! $has_scroll_animation && ! $has_loop_animation && '0' !== (string) $hover_animation_speed ) {
+			if ( $hover_animation_type && '0' !== (string) $hover_animation_speed ) {
 				$p->add_class( 'has-unitone-hover' );
 				$add_data_attribute( 'data-unitone-hover-animation', $hover_animation_type );
 				$add_style( '--unitone--hover-animation-duration', $hover_animation_speed ? $hover_animation_speed . 's' : null );
@@ -838,6 +838,8 @@ add_filter(
 				$hover_animation_trigger = $get_attribute( 'hoverAnimation.trigger' );
 				if ( 'group' === $hover_animation_trigger ) {
 					$add_data_attribute( 'data-unitone-hover-animation', '-trigger:group' );
+				} else {
+					$add_data_attribute( 'data-unitone-hover-animation', '-trigger:self' );
 				}
 
 				$hover_animation_easing = $get_attribute( 'hoverAnimation.easing' );

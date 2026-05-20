@@ -668,6 +668,7 @@ export function withHoverAnimationBlockProps( settings ) {
 
 	const dataHoverAnimation = clsx( type, {
 		'-trigger:group': type && 'group' === trigger,
+		'-trigger:self': type && 'group' !== trigger,
 		[ `-animation-timing-function:${ easing }` ]: type && easing,
 	} );
 

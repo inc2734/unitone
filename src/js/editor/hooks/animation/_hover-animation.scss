@@ -53,7 +53,7 @@
 }
 
 @media (any-hover: hover) {
-	[data-unitone-hover-animation]:not(.wp-block):not([data-unitone-hover-animation~="-trigger:group"]):hover {
+	[data-unitone-hover-animation~="-trigger:self"]:not(.wp-block):hover {
 		@include active-hover-animation;
 	}
 
@@ -62,6 +62,16 @@
 	}
 }
 
-[data-unitone-hover-animation]:not(.wp-block):not([data-unitone-hover-animation~="-trigger:group"]):focus-visible {
+:is(
+	[data-unitone-hover-animation~="-trigger:self"]:not(.wp-block):focus-visible,
+	[data-unitone-hover-animation~="-trigger:self"][data-unitone-layout~="decorator"]:not(.wp-block):has(:focus-visible)
+) {
+	@include active-hover-animation;
+}
+
+:is(
+	[data-unitone-hover-animation-group]:not(.wp-block):focus-visible [data-unitone-hover-animation~="-trigger:group"],
+	[data-unitone-hover-animation-group][data-unitone-layout~="decorator"]:not(.wp-block):has(:focus-visible) [data-unitone-hover-animation~="-trigger:group"]
+) {
 	@include active-hover-animation;
 }

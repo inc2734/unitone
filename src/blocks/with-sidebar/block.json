@@ -71,6 +71,7 @@
 				"width": true
 			}
 		},
+		"contentRole": true,
 		"unitone": {
 			"gap": {
 				"splitOnAxis": true

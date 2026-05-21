@@ -12,6 +12,7 @@
 		"customClassName": false,
 		"html": false,
 		"reusable": false,
-		"customCSS": false
+		"customCSS": false,
+		"contentRole": true
 	}
 }

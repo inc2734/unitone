@@ -45,6 +45,7 @@
 				"width": true
 			}
 		},
+		"contentRole": true,
 		"unitone": {
 			"opacity": true,
 			"parallax": true,

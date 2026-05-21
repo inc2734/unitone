@@ -73,7 +73,9 @@
 			"fluidTypography": true,
 			"halfLeading": true,
 			"linkDecoration": true,
-			"scrollAnimation": true
+			"scrollAnimation": true,
+			"loopAnimation": true,
+			"hoverAnimation": true
 		}
 	},
 	"category": "unitone/layout",

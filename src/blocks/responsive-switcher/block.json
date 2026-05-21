@@ -24,7 +24,8 @@
 		"className": false,
 		"anchor": true,
 		"customCSS": false,
-		"align": [ "full", "wide" ]
+		"align": [ "full", "wide" ],
+		"contentRole": true
 	},
 	"category": "unitone/component",
 	"editorScript": "file:./index.js",

@@ -107,7 +107,8 @@
 			"__experimentalDefaultControls": {
 				"shadow": true
 			}
-		}
+		},
+		"contentRole": true
 	},
 	"category": "unitone/component",
 	"editorScript": "file:./index.js",

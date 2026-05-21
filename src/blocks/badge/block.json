@@ -55,6 +55,7 @@
 				"fontSize": true
 			}
 		},
+		"contentRole": true,
 		"unitone": {
 			"position": true
 		}

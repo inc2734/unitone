@@ -45,6 +45,7 @@
 				"fontSize": true
 			}
 		},
+		"contentRole": true,
 		"unitone": {
 			"fluidTypography": true,
 			"halfLeading": true,

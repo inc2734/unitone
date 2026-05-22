@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-05-18T14:10:17+00:00\n"
-"PO-Revision-Date: 2026-05-18 23:11+0900\n"
+"POT-Creation-Date: 2026-05-21T03:13:37+00:00\n"
+"PO-Revision-Date: 2026-05-22 17:55+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2850,6 +2850,10 @@ msgstr "下"
 msgid "Left"
 msgstr "左"
 
+#: dist/blocks/popover-trigger/index.js:1 dist/blocks/popover/index.js:1
+msgid "Open popover"
+msgstr "ポップオーバーを開く"
+
 #: dist/blocks/reel/index.js:1
 msgid "Height"
 msgstr "高さ"
@@ -3999,6 +4003,10 @@ msgid "Marker"
 msgstr "マーカー"
 
 #: dist/js/editor/editor.js:13
+msgid "Opacity"
+msgstr "不透明度"
+
+#: dist/js/editor/editor.js:13
 msgid ""
 "If you select \"sticky\", you need to specify the position where you want it "
 "to be fixed (for example, if you want it to be firmly fixed, specify \"0\" "
@@ -4116,10 +4124,6 @@ msgstr ""
 #: dist/js/editor/editor.js:13
 msgid "Scale"
 msgstr "拡大率"
-
-#: dist/js/editor/editor.js:13
-msgid "Opacity"
-msgstr "不透明度"
 
 #: dist/js/editor/editor.js:13
 msgid "Trigger"

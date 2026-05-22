@@ -7,6 +7,7 @@ import {
 
 import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
@@ -42,7 +43,7 @@ export default function ( { attributes, clientId } ) {
 						[
 							'core/button',
 							{
-								text: 'Open popover',
+								text: __( 'Open popover', 'unitone' ),
 								tagName: 'button',
 							},
 						],

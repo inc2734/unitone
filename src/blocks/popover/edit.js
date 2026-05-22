@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
@@ -16,7 +17,7 @@ const TEMPLATE = [
 					[
 						'core/button',
 						{
-							text: 'Open popover',
+							text: __( 'Open popover', 'unitone' ),
 							tagName: 'button',
 						},
 					],

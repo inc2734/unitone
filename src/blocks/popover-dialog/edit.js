@@ -10,6 +10,8 @@ import { memo, useCallback } from '@wordpress/element';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
+const TEMPLATE = [ [ 'core/paragraph' ] ];
+
 export default function ( { attributes, clientId } ) {
 	const { templateLock } = attributes;
 
@@ -31,7 +33,7 @@ export default function ( { attributes, clientId } ) {
 		} ),
 		{
 			templateLock,
-			template: [ [ 'core/paragraph' ] ],
+			template: TEMPLATE,
 			renderAppender: hasInnerBlocks ? undefined : renderAppender,
 		}
 	);

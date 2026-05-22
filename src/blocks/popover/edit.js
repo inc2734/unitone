@@ -25,7 +25,11 @@ const TEMPLATE = [
 			],
 		],
 	],
-	[ 'unitone/popover-content', { lock: { move: true, remove: true } } ],
+	[
+		'unitone/popover-content',
+		{ lock: { move: true, remove: true } },
+		[ [ 'unitone/popover-dialog', {}, [ [ 'core/paragraph' ] ] ] ],
+	],
 ];
 
 export default function ( { attributes } ) {

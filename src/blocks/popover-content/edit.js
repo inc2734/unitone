@@ -37,6 +37,8 @@ import metadata from './block.json';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
+const TEMPLATE = [ [ 'unitone/popover-dialog', {}, [ [ 'core/paragraph' ] ] ] ];
+
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { placement, templateLock } = attributes;
 
@@ -121,6 +123,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		templateLock,
 		prioritizedInserterBlocks: [ 'unitone/popover-dialog' ],
+		template: TEMPLATE,
 		renderAppender: hasInnerBlocks ? undefined : renderAppender,
 	} );
 

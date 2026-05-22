@@ -82,7 +82,14 @@ import {
 
 import { LayerPanel, withLayerBlockProps, resetLayer } from './layer/layer';
 
+import {
+	OverlayPanel,
+	withOverlayBlockProps,
+	resetOverlay,
+} from './overlay/overlay';
+
 const applyBlockProps = compose( [
+	withOverlayBlockProps,
 	withTypographyBlockProps,
 	withLayoutBlockProps,
 	withAlignmentDistributionBlockProps,
@@ -206,6 +213,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 				<SectionDividerPanel { ...passedProps } />
 				<PositionPanel { ...passedProps } />
 				<LayerPanel { ...passedProps } />
+				<OverlayPanel { ...passedProps } />
 				<BorderPanel { ...passedProps } />
 				<ColorPanel { ...passedProps } />
 				<BackdropFilterPanel { ...passedProps } />
@@ -239,6 +247,7 @@ export const resetUnitoneStyles = ( props ) => {
 		resetSectionDivider,
 		resetPositions,
 		resetLayer,
+		resetOverlay,
 		resetBorder,
 		resetColor,
 		resetBackdropFilter,

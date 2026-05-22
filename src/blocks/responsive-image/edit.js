@@ -44,6 +44,7 @@ export default function ( { attributes, setAttributes } ) {
 		rel,
 		linkClass,
 		linkDestination,
+		unitone,
 	} = attributes;
 
 	const [ newSourceBreakpoint, setNewSourceBreakpoint ] = useState( 600 );
@@ -676,6 +677,10 @@ export default function ( { attributes, setAttributes } ) {
 							pictureMarkup
 						) }
 					</>
+				) }
+
+				{ !! unitone?.overlay && (
+					<div className="unitone-responsive-image__overlay" />
 				) }
 			</TagName>
 		</>

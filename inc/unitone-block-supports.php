@@ -613,7 +613,12 @@ add_filter(
 				$add_style( '--unitone--overlay-color', $color ? 'var(--wp--preset--color--' . $color . ')' : $custom_color );
 				$add_style( '--unitone--overlay-gradient', $gradient ? 'var(--wp--preset--gradient--' . $gradient . ')' : $custom_gradient );
 				$add_style( '--unitone--overlay-opacity', $opacity );
-				$add_style( '--unitone--overlay-radius', $radius );
+
+				if ( is_array( $radius ) ) {
+					$add_style( '--unitone--overlay-radius', implode( ' ', array_values( $radius ) ) );
+				} else {
+					$add_style( '--unitone--overlay-radius', $radius );
+				}
 			}
 		}
 

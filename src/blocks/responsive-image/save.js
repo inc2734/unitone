@@ -18,6 +18,7 @@ export default function ( { attributes } ) {
 		linkTarget,
 		rel,
 		linkClass,
+		unitone,
 	} = attributes;
 
 	if ( ! url ) {
@@ -115,6 +116,10 @@ export default function ( { attributes } ) {
 						} }
 					/>
 				</picture>
+			) }
+
+			{ !! unitone?.overlay && (
+				<div className="unitone-responsive-image__overlay" />
 			) }
 		</TagName>
 	);

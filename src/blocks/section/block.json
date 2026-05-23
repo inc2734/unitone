@@ -105,7 +105,8 @@
 			"backgroundClip": true,
 			"position": true,
 			"mixBlendMode": true,
-			"scrollAnimation": true
+			"scrollAnimation": true,
+			"hoverAnimation": true
 		}
 	},
 	"example": {

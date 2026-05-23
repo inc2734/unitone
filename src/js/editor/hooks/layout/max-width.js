@@ -9,6 +9,7 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { settings as settingsIcon } from '@wordpress/icons';
 
@@ -91,11 +92,17 @@ export function MaxWidthEdit( {
 	setAttributes,
 } ) {
 	const defaultValue = useDefaultValue( { name } );
-
+	const currentValue = unitone?.maxWidth ?? defaultValue ?? '';
 	const isPresetValue = [
 		'var(--wp--style--global--wide-size)',
 		'var(--wp--style--global--content-size)',
-	].includes( unitone?.maxWidth ?? defaultValue );
+	].includes( currentValue );
+
+	const [ isCustomMode, setIsCustomMode ] = useState( ! isPresetValue );
+
+	const isCustomControl = ! isPresetValue || isCustomMode;
+	const customValue =
+		isCustomMode && undefined === unitone?.maxWidth ? '' : currentValue;
 
 	const onChangeMaxWidth = ( newValue ) => {
 		setAttributes( {
@@ -114,19 +121,18 @@ export function MaxWidthEdit( {
 			id="unitone-max-width-control"
 		>
 			<HStack>
-				{ isPresetValue ? (
+				{ ! isCustomControl ? (
 					<ToggleGroupControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
-						value={ normalizeForToggleGroupControl(
-							unitone?.maxWidth ?? defaultValue
-						) }
+						value={ normalizeForToggleGroupControl( currentValue ) }
 						isBlock
-						onChange={ ( newValue ) =>
+						onChange={ ( newValue ) => {
+							setIsCustomMode( false );
 							onChangeMaxWidth(
 								normalizeForToggleGroupControl( newValue )
-							)
-						}
+							);
+						} }
 					>
 						<ToggleGroupControlOption
 							value="var(--wp--style--global--wide-size)"
@@ -142,9 +148,7 @@ export function MaxWidthEdit( {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						id="unitone-max-width-control"
-						value={ normalizeForTextControl(
-							unitone?.maxWidth ?? defaultValue
-						) }
+						value={ normalizeForTextControl( customValue ) }
 						onChange={ ( newValue ) =>
 							onChangeMaxWidth(
 								normalizeForTextControl( newValue )
@@ -155,19 +159,23 @@ export function MaxWidthEdit( {
 
 				<Button
 					label={
-						! isPresetValue
+						isCustomControl
 							? __( 'Use size preset' )
 							: __( 'Set custom size' )
 					}
 					icon={ settingsIcon }
 					onClick={ () => {
-						onChangeMaxWidth(
-							! isPresetValue
-								? 'var(--wp--style--global--wide-size)'
-								: ''
-						);
+						if ( isCustomControl ) {
+							setIsCustomMode( false );
+							onChangeMaxWidth(
+								'var(--wp--style--global--wide-size)'
+							);
+						} else {
+							setIsCustomMode( true );
+							onChangeMaxWidth( undefined );
+						}
 					} }
-					isPressed={ ! isPresetValue }
+					isPressed={ isCustomControl }
 					size="small"
 					iconSize={ 24 }
 				/>

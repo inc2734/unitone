@@ -10,6 +10,7 @@ import {
 
 import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 import { settings as settingsIcon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
@@ -109,10 +110,14 @@ export function MinHeightEdit( {
 	setAttributes,
 } ) {
 	const defaultValue = useDefaultValue( { name } );
+	const currentValue = unitone?.minHeight ?? defaultValue ?? '';
+	const isPresetValue = PRESET_VALUES.includes( currentValue );
 
-	const isPresetValue = PRESET_VALUES.includes(
-		unitone?.minHeight ?? defaultValue ?? ''
-	);
+	const [ isCustomMode, setIsCustomMode ] = useState( ! isPresetValue );
+
+	const isCustomControl = ! isPresetValue || isCustomMode;
+	const customValue =
+		isCustomMode && undefined === unitone?.minHeight ? '' : currentValue;
 
 	const onChangeMinHeight = ( newValue ) => {
 		setAttributes( {
@@ -131,28 +136,25 @@ export function MinHeightEdit( {
 			id="unitone-min-height-control"
 		>
 			<HStack alignment="center">
-				{ isPresetValue ? (
+				{ ! isCustomControl ? (
 					<SelectControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						options={ PRESETS }
-						value={ normalizeForSelectControl(
-							unitone?.minHeight ?? defaultValue
-						) }
-						onChange={ ( newValue ) =>
+						value={ normalizeForSelectControl( currentValue ) }
+						onChange={ ( newValue ) => {
+							setIsCustomMode( false );
 							onChangeMinHeight(
 								normalizeForSelectControl( newValue )
-							)
-						}
+							);
+						} }
 					/>
 				) : (
 					<TextControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						id="unitone-min-height-control"
-						value={ normalizeForTextControl(
-							unitone?.minHeight ?? defaultValue
-						) }
+						value={ normalizeForTextControl( customValue ) }
 						onChange={ ( newValue ) =>
 							onChangeMinHeight(
 								normalizeForTextControl( newValue )
@@ -163,15 +165,21 @@ export function MinHeightEdit( {
 
 				<Button
 					label={
-						! isPresetValue
+						isCustomControl
 							? __( 'Use size preset' )
 							: __( 'Set custom size' )
 					}
 					icon={ settingsIcon }
 					onClick={ () => {
-						onChangeMinHeight( ! isPresetValue ? 'full' : '' );
+						if ( isCustomControl ) {
+							setIsCustomMode( false );
+							onChangeMinHeight( 'full' );
+						} else {
+							setIsCustomMode( true );
+							onChangeMinHeight( undefined );
+						}
 					} }
-					isPressed={ ! isPresetValue }
+					isPressed={ isCustomControl }
 					size="small"
 					iconSize={ 24 }
 				/>

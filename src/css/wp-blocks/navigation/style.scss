@@ -218,6 +218,7 @@
 	.wp-block-navigation-item__content:not(.wp-block-navigation__submenu-icon) {
 		flex-grow: 1;
 		flex-basis: 0%;
+		align-content: center;
 	}
 
 	// Toggle icons

@@ -90,8 +90,8 @@ export function FlexGrowEdit( {
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ normalizeForRangeControl(
-				null != ( unitone?.flexGrow || defaultValue )
-					? unitone?.flexGrow || defaultValue
+				null != ( unitone?.flexGrow ?? defaultValue )
+					? unitone?.flexGrow ?? defaultValue
 					: undefined
 			) }
 			allowReset={ true }
@@ -101,7 +101,7 @@ export function FlexGrowEdit( {
 				setAttributes( {
 					unitone: cleanEmptyObject( {
 						...unitone,
-						flexGrow: normalizedNewValue || undefined,
+						flexGrow: normalizedNewValue,
 					} ),
 				} );
 			} }

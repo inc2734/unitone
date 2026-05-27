@@ -91,8 +91,8 @@ export function FlexShrinkEdit( {
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ normalizeForRangeControl(
-				null != ( unitone?.flexShrink || defaultValue )
-					? unitone?.flexShrink || defaultValue
+				null != ( unitone?.flexShrink ?? defaultValue )
+					? unitone?.flexShrink ?? defaultValue
 					: undefined
 			) }
 			allowReset={ true }
@@ -102,7 +102,7 @@ export function FlexShrinkEdit( {
 				setAttributes( {
 					unitone: cleanEmptyObject( {
 						...unitone,
-						flexShrink: normalizedNewValue || undefined,
+						flexShrink: normalizedNewValue,
 					} ),
 				} );
 			} }

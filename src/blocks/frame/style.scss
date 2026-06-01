@@ -3,7 +3,11 @@
 @include frame.frame();
 
 [data-unitone-layout~="frame"] {
+	.wp-block-image {
+		display: flex !important;
+	}
+
 	figcaption {
-		display: none;
+		display: none !important;
 	}
 }

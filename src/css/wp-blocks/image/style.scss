@@ -37,8 +37,13 @@
 
 :root :where(.wp-block-image.is-style-cover) {
 	align-self: stretch !important;
-	display: block;
+	display: flex !important;
+	max-height: 100% !important;
 	width: 100% !important;
+
+	:where(a) {
+		display: flex !important;
+	}
 
 	:where(img) {
 		min-height: 100% !important;

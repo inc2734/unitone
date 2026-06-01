@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 26.0.1\n"
+"Project-Id-Version: unitone 26.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-21T03:13:37+00:00\n"
+"POT-Creation-Date: 2026-06-01T08:10:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -1937,6 +1937,7 @@ msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
 #: dist/blocks/badge/index.js:1
+#: dist/blocks/divider/index.js:1
 #: dist/blocks/texture/index.js:1
 #: dist/js/editor/editor.js:7
 msgid "Size"
@@ -2188,6 +2189,7 @@ msgstr ""
 #: dist/blocks/cluster/index.js:1
 #: dist/blocks/cover-content/index.js:1
 #: dist/blocks/decorator/index.js:1
+#: dist/blocks/divider/index.js:1
 #: dist/blocks/flex-divided/index.js:1
 #: dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1
@@ -2345,6 +2347,7 @@ msgid "Divider"
 msgstr ""
 
 #: dist/blocks/breadcrumbs/index.js:1
+#: dist/blocks/divider/index.js:1
 #: dist/blocks/texture/index.js:1
 #: dist/js/editor/editor.js:4
 msgid "Slash"
@@ -2530,6 +2533,43 @@ msgstr ""
 
 #: dist/blocks/dialog/index.js:1
 msgid "Dialog (Box)"
+msgstr ""
+
+#: dist/blocks/divider/index.js:1
+#: dist/blocks/texture/index.js:1
+#: dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
+msgid "Type"
+msgstr ""
+
+#: dist/blocks/divider/index.js:1
+msgid "Solid"
+msgstr ""
+
+#: dist/blocks/divider/index.js:1
+msgid "Dashed"
+msgstr ""
+
+#: dist/blocks/divider/index.js:1
+msgid "Dotted"
+msgstr ""
+
+#: dist/blocks/divider/index.js:1
+#: dist/js/editor/editor.js:4
+msgid "Stripe"
+msgstr ""
+
+#: dist/blocks/divider/index.js:1
+msgid "Direction"
+msgstr ""
+
+#: dist/blocks/divider/index.js:1
+msgid "Horizontal"
+msgstr ""
+
+#: dist/blocks/divider/index.js:1
+msgid "Vertical"
 msgstr ""
 
 #: dist/blocks/flex-divided/index.js:1
@@ -3379,13 +3419,6 @@ msgid "Backslash shape"
 msgstr ""
 
 #: dist/blocks/texture/index.js:1
-#: dist/js/editor/editor.js:4
-#: dist/js/editor/editor.js:7
-#: dist/js/editor/editor.js:13
-msgid "Type"
-msgstr ""
-
-#: dist/blocks/texture/index.js:1
 #: dist/formats/formats.js:1
 msgid "Color"
 msgstr ""
@@ -3718,10 +3751,6 @@ msgstr ""
 
 #: dist/js/editor/editor.js:4
 msgid "This can be set when a background image or background gradient is set for this block."
-msgstr ""
-
-#: dist/js/editor/editor.js:4
-msgid "Stripe"
 msgstr ""
 
 #: dist/js/editor/editor.js:4
@@ -4180,19 +4209,19 @@ msgid "Mix blend mode"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
-msgid "Open link as media link"
-msgstr ""
-
-#: dist/js/editor/editor.js:13
-msgid "This can only be enabled if a link is set up."
-msgstr ""
-
-#: dist/js/editor/editor.js:13
 msgid "Overlay"
 msgstr ""
 
 #: dist/js/editor/editor.js:13
 msgid "Overlay opacity"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "Open link as media link"
+msgstr ""
+
+#: dist/js/editor/editor.js:13
+msgid "This can only be enabled if a link is set up."
 msgstr ""
 
 #: dist/js/editor/editor.js:13
@@ -4485,71 +4514,52 @@ msgstr ""
 msgid "B! Bookmark"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/abstract-background/block.json
 #: dist/blocks/abstract-background/block.json
 msgctxt "block title"
 msgid "Abstract background"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/abstract-background/block.json
 #: dist/blocks/abstract-background/block.json
 msgctxt "block description"
 msgid "Displays a frame using an abstract background image."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/accordion/block.json
 #: dist/blocks/accordion/block.json
 msgctxt "block title"
 msgid "Accordion"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/accordion/block.json
 #: dist/blocks/accordion/block.json
 msgctxt "block description"
 msgid "This block displays folded content."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/accordion/block.json
-#: App/Controller/Manager/dist/js/blocks/tabs/block.json
 #: dist/blocks/accordion/block.json
 #: dist/blocks/tabs/block.json
 msgctxt "block style label"
 msgid "Default"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/accordion/block.json
 #: dist/blocks/accordion/block.json
 msgctxt "block style label"
 msgid "Box"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/accordion/block.json
 #: dist/blocks/accordion/block.json
 msgctxt "block style label"
 msgid "Panel"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/badge/block.json
 #: dist/blocks/badge/block.json
 msgctxt "block title"
 msgid "Badge"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/badge/block.json
 #: dist/blocks/badge/block.json
 msgctxt "block description"
 msgid "This block displays an icon with text."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/both-sides-content/block.json
-#: App/Controller/Manager/dist/js/blocks/cluster-divided-content/block.json
-#: App/Controller/Manager/dist/js/blocks/cover-content/block.json
-#: App/Controller/Manager/dist/js/blocks/flex-divided-content/block.json
-#: App/Controller/Manager/dist/js/blocks/grid-divided-content/block.json
-#: App/Controller/Manager/dist/js/blocks/responsive-grid-divided-content/block.json
-#: App/Controller/Manager/dist/js/blocks/stack-divided-content/block.json
-#: App/Controller/Manager/dist/js/blocks/timeline-dots-column/block.json
-#: App/Controller/Manager/dist/js/blocks/with-sidebar-content/block.json
 #: dist/blocks/both-sides-content/block.json
 #: dist/blocks/cluster-divided-content/block.json
 #: dist/blocks/cover-content/block.json
@@ -4563,600 +4573,110 @@ msgctxt "block title"
 msgid "Content"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/both-sides-content/block.json
 #: dist/blocks/both-sides-content/block.json
 msgctxt "block description"
 msgid "The content of the both-sides block."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/both-sides/block.json
 #: dist/blocks/both-sides/block.json
 msgctxt "block title"
 msgid "Both sides"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/both-sides/block.json
 #: dist/blocks/both-sides/block.json
 msgctxt "block description"
 msgid "This block aligns children on both sides."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/breadcrumbs/block.json
 #: dist/blocks/breadcrumbs/block.json
 msgctxt "block title"
 msgid "Breadcrumbs"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/breadcrumbs/block.json
 #: dist/blocks/breadcrumbs/block.json
 msgctxt "block description"
 msgid "This block indicates the current page location."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/center/block.json
 #: dist/blocks/center/block.json
 msgctxt "block title"
 msgid "Center"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/center/block.json
 #: dist/blocks/center/block.json
 msgctxt "block description"
 msgid "This block centers the children."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
 #: dist/blocks/child-pages/block.json
 msgctxt "block title"
 msgid "Child pages"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/child-pages/block.json
 #: dist/blocks/child-pages/block.json
 msgctxt "block description"
 msgid "This block displays child pages."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/cluster-divided-content/block.json
 #: dist/blocks/cluster-divided-content/block.json
 msgctxt "block description"
 msgid "This block places the content inside the cluster (Divided) block."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/cluster-divided/block.json
 #: dist/blocks/cluster-divided/block.json
 msgctxt "block title"
 msgid "Cluster (Divided)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/cluster-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/cluster/block.json
 #: dist/blocks/cluster-divided/block.json
 #: dist/blocks/cluster/block.json
 msgctxt "block description"
 msgid "This block arranges children horizontally."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/cluster/block.json
 #: dist/blocks/cluster/block.json
 msgctxt "block title"
 msgid "Cluster"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/container/block.json
 #: dist/blocks/container/block.json
 msgctxt "block title"
 msgid "Container"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/container/block.json
 #: dist/blocks/container/block.json
 msgctxt "block description"
 msgid "Keep the content area within a certain width, plus appropriate margins on the left and right."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/cover-content/block.json
 #: dist/blocks/cover-content/block.json
 msgctxt "block description"
 msgid "This block places the content inside the cover block."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/cover/block.json
 #: dist/blocks/cover/block.json
 msgctxt "block title"
 msgid "Cover"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/cover/block.json
 #: dist/blocks/cover/block.json
 msgctxt "block description"
 msgid "This block allows you to specify how the child blocks are placed vertically within a certain height. It is designed primarily to cover a large area of the screen (by default, the minimum height is the same height as the screen)."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/decorator/block.json
 #: dist/blocks/decorator/block.json
 msgctxt "block title"
 msgid "Decorator"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/decorator/block.json
 #: dist/blocks/decorator/block.json
 msgctxt "block description"
 msgid "Decorative block. Color, padding and position can be set."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/blocks/decorator/block.json
 #: dist/blocks/decorator/block.json
 msgctxt "block keyword"
 msgid "Box"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/div/block.json
-#: dist/blocks/div/block.json
-msgctxt "block title"
-msgid "div"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/div/block.json
-#: dist/blocks/div/block.json
-msgctxt "block description"
-msgid "A simple div element without any decoration."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided-content/block.json
-#: dist/blocks/flex-divided-content/block.json
-msgctxt "block description"
-msgid "This block places the content inside the flex (Divided) block."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: dist/blocks/flex-divided/block.json
-msgctxt "block title"
-msgid "Flex (Divided)"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: dist/blocks/flex-divided/block.json
-#: dist/blocks/flex/block.json
-msgctxt "block description"
-msgid "Child blocks can be layout in flex box."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: dist/blocks/flex-divided/block.json
-#: dist/blocks/flex/block.json
-msgctxt "block keyword"
-msgid "flex"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: dist/blocks/flex-divided/block.json
-#: dist/blocks/flex/block.json
-msgctxt "block keyword"
-msgid "flex-box"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: dist/blocks/flex-divided/block.json
-#: dist/blocks/flex/block.json
-msgctxt "block keyword"
-msgid "flexbox"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: App/Controller/Manager/dist/js/blocks/grid-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/grid/block.json
-#: dist/blocks/flex-divided/block.json
-#: dist/blocks/flex/block.json
-#: dist/blocks/grid-divided/block.json
-#: dist/blocks/grid/block.json
-msgctxt "block keyword"
-msgid "auto-layout"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/flex-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: App/Controller/Manager/dist/js/blocks/grid-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/grid/block.json
-#: dist/blocks/flex-divided/block.json
-#: dist/blocks/flex/block.json
-#: dist/blocks/grid-divided/block.json
-#: dist/blocks/grid/block.json
-msgctxt "block keyword"
-msgid "AutoLayout"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/flex/block.json
-#: dist/blocks/flex/block.json
-msgctxt "block title"
-msgid "Flex"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/frame/block.json
-#: dist/blocks/frame/block.json
-msgctxt "block title"
-msgid "Frame"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/frame/block.json
-#: dist/blocks/frame/block.json
-msgctxt "block description"
-msgid "This block is used to fit the image into a fixed angle of view."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/grid-divided-content/block.json
-#: dist/blocks/grid-divided-content/block.json
-msgctxt "block description"
-msgid "This block places the content inside the grid (Divided) block."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/grid-divided/block.json
-#: dist/blocks/grid-divided/block.json
-msgctxt "block title"
-msgid "Grid (Divided)"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/grid-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/grid/block.json
-#: dist/blocks/grid-divided/block.json
-#: dist/blocks/grid/block.json
-msgctxt "block description"
-msgid "Child blocks can be layout in grid."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/grid/block.json
-#: dist/blocks/grid/block.json
-msgctxt "block title"
-msgid "Grid"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/gutters/block.json
-#: dist/blocks/gutters/block.json
-msgctxt "block title"
-msgid "Gutters"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/gutters/block.json
-#: dist/blocks/gutters/block.json
-msgctxt "block description"
-msgid "A block for separating content with top and bottom padding."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/layer/block.json
-#: dist/blocks/layer/block.json
-msgctxt "block title"
-msgid "Layer"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/layer/block.json
-#: dist/blocks/layer/block.json
-msgctxt "block description"
-msgid "The layer of the layers block. If grid-row is deleted, the elements overlap completely."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/layers/block.json
-#: dist/blocks/layers/block.json
-msgctxt "block title"
-msgid "Layers"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/layers/block.json
-#: dist/blocks/layers/block.json
-msgctxt "block description"
-msgid "This block layers the children."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/masonry/block.json
-#: dist/blocks/masonry/block.json
-msgctxt "block title"
-msgid "Masonry"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/masonry/block.json
-#: dist/blocks/masonry/block.json
-msgctxt "block description"
-msgid "Elements of different sizes are laid out without gaps."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/mega-menu/block.json
-#: dist/blocks/mega-menu/block.json
-msgctxt "block title"
-msgid "Mega Menu"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/mega-menu/block.json
-#: dist/blocks/mega-menu/block.json
-msgctxt "block description"
-msgid "Add a mega menu to your navigation."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/pattern-inserter/block.json
-#: dist/blocks/pattern-inserter/block.json
-msgctxt "block title"
-msgid "Insert pattern (Beta)"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/pattern-inserter/block.json
-#: dist/blocks/pattern-inserter/block.json
-msgctxt "block description"
-msgid "Insert a pattern (Only root). This block is beta version. This block may be significantly modified or discontinued in the future. In that case, however, the inserted patterns will not be affected."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/reel/block.json
-#: dist/blocks/reel/block.json
-msgctxt "block title"
-msgid "Reel"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/reel/block.json
-#: App/Controller/Manager/dist/js/blocks/slider/block.json
-#: dist/blocks/reel/block.json
-#: dist/blocks/slider/block.json
-msgctxt "block description"
-msgid "This block displays children scrolling horizontally."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/reference-sources/block.json
-#: dist/blocks/reference-sources/block.json
-msgctxt "block title"
-msgid "Referene sources"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/reference-sources/block.json
-#: dist/blocks/reference-sources/block.json
-msgctxt "block description"
-msgid "Collects the URLs of embedded blocks in an article and displays them as a linked list."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/responsive-grid-divided-content/block.json
-#: dist/blocks/responsive-grid-divided-content/block.json
-msgctxt "block description"
-msgid "This block places the content inside the responsive grid (Divided) block."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/responsive-grid-divided/block.json
-#: dist/blocks/responsive-grid-divided/block.json
-msgctxt "block title"
-msgid "Responsive grid (Divided)"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/responsive-grid-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/responsive-grid/block.json
-#: dist/blocks/responsive-grid-divided/block.json
-#: dist/blocks/responsive-grid/block.json
-msgctxt "block description"
-msgid "This block generates a simple grid."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/responsive-grid/block.json
-#: dist/blocks/responsive-grid/block.json
-msgctxt "block title"
-msgid "Responsive grid"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/responsive-switcher-container/block.json
-#: dist/blocks/responsive-switcher-container/block.json
-msgctxt "block title"
-msgid "Responsive switcher container"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/responsive-switcher-container/block.json
-#: dist/blocks/responsive-switcher-container/block.json
-msgctxt "block description"
-msgid "This block is the container for the content that the responsive switcher block displays."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/responsive-switcher/block.json
-#: dist/blocks/responsive-switcher/block.json
-msgctxt "block title"
-msgid "Responsive switcher"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/responsive-switcher/block.json
-#: dist/blocks/responsive-switcher/block.json
-msgctxt "block description"
-msgid "Switch between desktop and mobile contents."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/section/block.json
-#: dist/blocks/section/block.json
-msgctxt "block title"
-msgid "Section"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/section/block.json
-#: dist/blocks/section/block.json
-msgctxt "block description"
-msgid "This block represents a generic standalone section of a document."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/slide/block.json
-#: dist/blocks/slide/block.json
-msgctxt "block title"
-msgid "Slide"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/slider/block.json
-#: dist/blocks/slider/block.json
-msgctxt "block title"
-msgid "Slider"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/stack-divided-content/block.json
-#: dist/blocks/stack-divided-content/block.json
-msgctxt "block description"
-msgid "This block places the content inside the stack (Divided) block."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/stack-divided/block.json
-#: dist/blocks/stack-divided/block.json
-msgctxt "block title"
-msgid "Stack (Divided)"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/stack-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/stack/block.json
-#: dist/blocks/stack-divided/block.json
-#: dist/blocks/stack/block.json
-msgctxt "block description"
-msgid "This block is used to arrange children vertically at regular intervals."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/stack/block.json
-#: dist/blocks/stack/block.json
-msgctxt "block title"
-msgid "Stack"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/switcher/block.json
-#: dist/blocks/switcher/block.json
-msgctxt "block title"
-msgid "Switcher"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/switcher/block.json
-#: dist/blocks/switcher/block.json
-msgctxt "block description"
-msgid "This block switches the direction of contents flow depending on its contents."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/tab-panel/block.json
-#: dist/blocks/tab-panel/block.json
-msgctxt "block title"
-msgid "Tab panel"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/tab-panel/block.json
-#: dist/blocks/tab-panel/block.json
-msgctxt "block description"
-msgid "This block displays tab panel."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/tabs/block.json
-#: dist/blocks/tabs/block.json
-msgctxt "block title"
-msgid "Tabs"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/tabs/block.json
-#: dist/blocks/tabs/block.json
-msgctxt "block description"
-msgid "This block displays tabs."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/tabs/block.json
-#: dist/blocks/tabs/block.json
-msgctxt "block style label"
-msgid "Simple"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/tabs/block.json
-#: dist/blocks/tabs/block.json
-msgctxt "block style label"
-msgid "Bar"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/text/block.json
-#: dist/blocks/text/block.json
-msgctxt "block title"
-msgid "Text"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/text/block.json
-#: dist/blocks/text/block.json
-msgctxt "block description"
-msgid "This block is designed to display easy-to-read text."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/texture/block.json
-#: dist/blocks/texture/block.json
-msgctxt "block title"
-msgid "Texture"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/texture/block.json
-#: dist/blocks/texture/block.json
-msgctxt "block description"
-msgid "Display texture."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/texture/block.json
-#: dist/blocks/texture/block.json
-msgctxt "block keyword"
-msgid "Texture"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/timeline-dots-column/block.json
-#: dist/blocks/timeline-dots-column/block.json
-msgctxt "block description"
-msgid "This block displays a content of the timeline item."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/timeline-dots-row/block.json
-#: dist/blocks/timeline-dots-row/block.json
-msgctxt "block title"
-msgid "Timeline item"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/timeline-dots-row/block.json
-#: dist/blocks/timeline-dots-row/block.json
-msgctxt "block description"
-msgid "This block displays a item of the timeline."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/timeline-dots/block.json
-#: dist/blocks/timeline-dots/block.json
-msgctxt "block title"
-msgid "Timeline dots"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/timeline-dots/block.json
-#: dist/blocks/timeline-dots/block.json
-msgctxt "block description"
-msgid "This block can display a timeline."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/vertical-writing/block.json
-#: dist/blocks/vertical-writing/block.json
-msgctxt "block title"
-msgid "Vertical writing (Beta)"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/vertical-writing/block.json
-#: dist/blocks/vertical-writing/block.json
-msgctxt "block description"
-msgid "This block is used to place vertically written text. This block is a beta version. In the future, disruptive changes may be made or the block may become obsolete."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/with-sidebar-content/block.json
-#: dist/blocks/with-sidebar-content/block.json
-msgctxt "block description"
-msgid "The content of the with sidebar block."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/with-sidebar-divided/block.json
-#: dist/blocks/with-sidebar-divided/block.json
-msgctxt "block title"
-msgid "With sidebar (Divided)"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/with-sidebar-divided/block.json
-#: App/Controller/Manager/dist/js/blocks/with-sidebar/block.json
-#: dist/blocks/with-sidebar-divided/block.json
-#: dist/blocks/with-sidebar/block.json
-msgctxt "block description"
-msgid "This block is used to assemble components with sidebars."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/blocks/with-sidebar/block.json
-#: dist/blocks/with-sidebar/block.json
-msgctxt "block title"
-msgid "With sidebar"
 msgstr ""
 
 #: dist/blocks/dialog-content/block.json
@@ -5189,6 +4709,142 @@ msgctxt "block description"
 msgid "Displays modal content using the dialog element. The trigger is fired by clicking a button block or decorator block (role: button) within the dialog trigger block."
 msgstr ""
 
+#: dist/blocks/div/block.json
+msgctxt "block title"
+msgid "div"
+msgstr ""
+
+#: dist/blocks/div/block.json
+msgctxt "block description"
+msgid "A simple div element without any decoration."
+msgstr ""
+
+#: dist/blocks/divider/block.json
+msgctxt "block title"
+msgid "Divider"
+msgstr ""
+
+#: dist/blocks/divider/block.json
+msgctxt "block description"
+msgid "This block displays a decorative divider line."
+msgstr ""
+
+#: dist/blocks/flex-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the flex (Divided) block."
+msgstr ""
+
+#: dist/blocks/flex-divided/block.json
+msgctxt "block title"
+msgid "Flex (Divided)"
+msgstr ""
+
+#: dist/blocks/flex-divided/block.json
+#: dist/blocks/flex/block.json
+msgctxt "block description"
+msgid "Child blocks can be layout in flex box."
+msgstr ""
+
+#: dist/blocks/flex-divided/block.json
+#: dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "flex"
+msgstr ""
+
+#: dist/blocks/flex-divided/block.json
+#: dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "flex-box"
+msgstr ""
+
+#: dist/blocks/flex-divided/block.json
+#: dist/blocks/flex/block.json
+msgctxt "block keyword"
+msgid "flexbox"
+msgstr ""
+
+#: dist/blocks/flex-divided/block.json
+#: dist/blocks/flex/block.json
+#: dist/blocks/grid-divided/block.json
+#: dist/blocks/grid/block.json
+msgctxt "block keyword"
+msgid "auto-layout"
+msgstr ""
+
+#: dist/blocks/flex-divided/block.json
+#: dist/blocks/flex/block.json
+#: dist/blocks/grid-divided/block.json
+#: dist/blocks/grid/block.json
+msgctxt "block keyword"
+msgid "AutoLayout"
+msgstr ""
+
+#: dist/blocks/flex/block.json
+msgctxt "block title"
+msgid "Flex"
+msgstr ""
+
+#: dist/blocks/frame/block.json
+msgctxt "block title"
+msgid "Frame"
+msgstr ""
+
+#: dist/blocks/frame/block.json
+msgctxt "block description"
+msgid "This block is used to fit the image into a fixed angle of view."
+msgstr ""
+
+#: dist/blocks/grid-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the grid (Divided) block."
+msgstr ""
+
+#: dist/blocks/grid-divided/block.json
+msgctxt "block title"
+msgid "Grid (Divided)"
+msgstr ""
+
+#: dist/blocks/grid-divided/block.json
+#: dist/blocks/grid/block.json
+msgctxt "block description"
+msgid "Child blocks can be layout in grid."
+msgstr ""
+
+#: dist/blocks/grid/block.json
+msgctxt "block title"
+msgid "Grid"
+msgstr ""
+
+#: dist/blocks/gutters/block.json
+msgctxt "block title"
+msgid "Gutters"
+msgstr ""
+
+#: dist/blocks/gutters/block.json
+msgctxt "block description"
+msgid "A block for separating content with top and bottom padding."
+msgstr ""
+
+#: dist/blocks/layer/block.json
+msgctxt "block title"
+msgid "Layer"
+msgstr ""
+
+#: dist/blocks/layer/block.json
+msgctxt "block description"
+msgid "The layer of the layers block. If grid-row is deleted, the elements overlap completely."
+msgstr ""
+
+#: dist/blocks/layers/block.json
+msgctxt "block title"
+msgid "Layers"
+msgstr ""
+
+#: dist/blocks/layers/block.json
+msgctxt "block description"
+msgid "This block layers the children."
+msgstr ""
+
 #: dist/blocks/marquee/block.json
 msgctxt "block title"
 msgid "Marquee"
@@ -5197,6 +4853,36 @@ msgstr ""
 #: dist/blocks/marquee/block.json
 msgctxt "block description"
 msgid "This block displays child blocks in a continuous horizontal scrolling format."
+msgstr ""
+
+#: dist/blocks/masonry/block.json
+msgctxt "block title"
+msgid "Masonry"
+msgstr ""
+
+#: dist/blocks/masonry/block.json
+msgctxt "block description"
+msgid "Elements of different sizes are laid out without gaps."
+msgstr ""
+
+#: dist/blocks/mega-menu/block.json
+msgctxt "block title"
+msgid "Mega Menu"
+msgstr ""
+
+#: dist/blocks/mega-menu/block.json
+msgctxt "block description"
+msgid "Add a mega menu to your navigation."
+msgstr ""
+
+#: dist/blocks/pattern-inserter/block.json
+msgctxt "block title"
+msgid "Insert pattern (Beta)"
+msgstr ""
+
+#: dist/blocks/pattern-inserter/block.json
+msgctxt "block description"
+msgid "Insert a pattern (Only root). This block is beta version. This block may be significantly modified or discontinued in the future. In that case, however, the inserted patterns will not be affected."
 msgstr ""
 
 #: dist/blocks/popover-content/block.json
@@ -5239,6 +4925,48 @@ msgctxt "block description"
 msgid "Displays floating content anchored to the trigger using Anchor Positioning and the Popover API."
 msgstr ""
 
+#: dist/blocks/reel/block.json
+msgctxt "block title"
+msgid "Reel"
+msgstr ""
+
+#: dist/blocks/reel/block.json
+#: dist/blocks/slider/block.json
+msgctxt "block description"
+msgid "This block displays children scrolling horizontally."
+msgstr ""
+
+#: dist/blocks/reference-sources/block.json
+msgctxt "block title"
+msgid "Referene sources"
+msgstr ""
+
+#: dist/blocks/reference-sources/block.json
+msgctxt "block description"
+msgid "Collects the URLs of embedded blocks in an article and displays them as a linked list."
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the responsive grid (Divided) block."
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/block.json
+msgctxt "block title"
+msgid "Responsive grid (Divided)"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/block.json
+#: dist/blocks/responsive-grid/block.json
+msgctxt "block description"
+msgid "This block generates a simple grid."
+msgstr ""
+
+#: dist/blocks/responsive-grid/block.json
+msgctxt "block title"
+msgid "Responsive grid"
+msgstr ""
+
 #: dist/blocks/responsive-image/block.json
 msgctxt "block title"
 msgid "Responsive image"
@@ -5264,9 +4992,191 @@ msgctxt "block keyword"
 msgid "picture"
 msgstr ""
 
+#: dist/blocks/responsive-switcher-container/block.json
+msgctxt "block title"
+msgid "Responsive switcher container"
+msgstr ""
+
+#: dist/blocks/responsive-switcher-container/block.json
+msgctxt "block description"
+msgid "This block is the container for the content that the responsive switcher block displays."
+msgstr ""
+
+#: dist/blocks/responsive-switcher/block.json
+msgctxt "block title"
+msgid "Responsive switcher"
+msgstr ""
+
+#: dist/blocks/responsive-switcher/block.json
+msgctxt "block description"
+msgid "Switch between desktop and mobile contents."
+msgstr ""
+
+#: dist/blocks/section/block.json
+msgctxt "block title"
+msgid "Section"
+msgstr ""
+
+#: dist/blocks/section/block.json
+msgctxt "block description"
+msgid "This block represents a generic standalone section of a document."
+msgstr ""
+
+#: dist/blocks/slide/block.json
+msgctxt "block title"
+msgid "Slide"
+msgstr ""
+
+#: dist/blocks/slider/block.json
+msgctxt "block title"
+msgid "Slider"
+msgstr ""
+
+#: dist/blocks/stack-divided-content/block.json
+msgctxt "block description"
+msgid "This block places the content inside the stack (Divided) block."
+msgstr ""
+
+#: dist/blocks/stack-divided/block.json
+msgctxt "block title"
+msgid "Stack (Divided)"
+msgstr ""
+
+#: dist/blocks/stack-divided/block.json
+#: dist/blocks/stack/block.json
+msgctxt "block description"
+msgid "This block is used to arrange children vertically at regular intervals."
+msgstr ""
+
+#: dist/blocks/stack/block.json
+msgctxt "block title"
+msgid "Stack"
+msgstr ""
+
+#: dist/blocks/switcher/block.json
+msgctxt "block title"
+msgid "Switcher"
+msgstr ""
+
+#: dist/blocks/switcher/block.json
+msgctxt "block description"
+msgid "This block switches the direction of contents flow depending on its contents."
+msgstr ""
+
+#: dist/blocks/tab-panel/block.json
+msgctxt "block title"
+msgid "Tab panel"
+msgstr ""
+
+#: dist/blocks/tab-panel/block.json
+msgctxt "block description"
+msgid "This block displays tab panel."
+msgstr ""
+
+#: dist/blocks/tabs/block.json
+msgctxt "block title"
+msgid "Tabs"
+msgstr ""
+
+#: dist/blocks/tabs/block.json
+msgctxt "block description"
+msgid "This block displays tabs."
+msgstr ""
+
+#: dist/blocks/tabs/block.json
+msgctxt "block style label"
+msgid "Simple"
+msgstr ""
+
+#: dist/blocks/tabs/block.json
+msgctxt "block style label"
+msgid "Bar"
+msgstr ""
+
 #: dist/blocks/tabs/block.json
 msgctxt "block style label"
 msgid "Badge"
+msgstr ""
+
+#: dist/blocks/text/block.json
+msgctxt "block title"
+msgid "Text"
+msgstr ""
+
+#: dist/blocks/text/block.json
+msgctxt "block description"
+msgid "This block is designed to display easy-to-read text."
+msgstr ""
+
+#: dist/blocks/texture/block.json
+msgctxt "block title"
+msgid "Texture"
+msgstr ""
+
+#: dist/blocks/texture/block.json
+msgctxt "block description"
+msgid "Display texture."
+msgstr ""
+
+#: dist/blocks/texture/block.json
+msgctxt "block keyword"
+msgid "Texture"
+msgstr ""
+
+#: dist/blocks/timeline-dots-column/block.json
+msgctxt "block description"
+msgid "This block displays a content of the timeline item."
+msgstr ""
+
+#: dist/blocks/timeline-dots-row/block.json
+msgctxt "block title"
+msgid "Timeline item"
+msgstr ""
+
+#: dist/blocks/timeline-dots-row/block.json
+msgctxt "block description"
+msgid "This block displays a item of the timeline."
+msgstr ""
+
+#: dist/blocks/timeline-dots/block.json
+msgctxt "block title"
+msgid "Timeline dots"
+msgstr ""
+
+#: dist/blocks/timeline-dots/block.json
+msgctxt "block description"
+msgid "This block can display a timeline."
+msgstr ""
+
+#: dist/blocks/vertical-writing/block.json
+msgctxt "block title"
+msgid "Vertical writing (Beta)"
+msgstr ""
+
+#: dist/blocks/vertical-writing/block.json
+msgctxt "block description"
+msgid "This block is used to place vertically written text. This block is a beta version. In the future, disruptive changes may be made or the block may become obsolete."
+msgstr ""
+
+#: dist/blocks/with-sidebar-content/block.json
+msgctxt "block description"
+msgid "The content of the with sidebar block."
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/block.json
+msgctxt "block title"
+msgid "With sidebar (Divided)"
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/block.json
+#: dist/blocks/with-sidebar/block.json
+msgctxt "block description"
+msgid "This block is used to assemble components with sidebars."
+msgstr ""
+
+#: dist/blocks/with-sidebar/block.json
+msgctxt "block title"
+msgid "With sidebar"
 msgstr ""
 
 #: theme.json

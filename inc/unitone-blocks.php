@@ -23,6 +23,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/dialog-content' );
 	register_block_type( get_template_directory() . '/dist/blocks/dialog-trigger' );
 	register_block_type( get_template_directory() . '/dist/blocks/div' );
+	register_block_type( get_template_directory() . '/dist/blocks/divider' );
 	register_block_type( get_template_directory() . '/dist/blocks/flex' );
 	register_block_type( get_template_directory() . '/dist/blocks/flex-divided' );
 	register_block_type( get_template_directory() . '/dist/blocks/flex-divided-content' );

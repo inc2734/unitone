@@ -1,0 +1,17 @@
+@use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/divider';
+
+@include divider.divider();
+
+[data-unitone-layout~="divider-wrapper"] {
+	flex-grow: 1;
+	display: flex;
+	align-content: center;
+
+	> * {
+		flex-grow: 1;
+	}
+
+	> :where([data-unitone-layout~="-direction:vertical"]) {
+		min-inline-size: 1lh;
+	}
+}

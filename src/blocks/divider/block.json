@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "26.0.0",
+	"textdomain": "unitone",
+	"name": "unitone/divider",
+	"title": "Divider",
+	"description": "This block displays a decorative divider line.",
+	"attributes": {
+		"type": {
+			"type": "string",
+			"default": "solid"
+		},
+		"direction": {
+			"type": "string",
+			"default": "horizontal"
+		},
+		"size": {
+			"type": "string"
+		}
+	},
+	"selectors": {
+		"root": "[data-unitone-layout~=divider]"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"customCSS": false,
+		"align": [ "full", "wide" ],
+		"color": {
+			"background": false,
+			"link": false,
+			"text": true
+		}
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}

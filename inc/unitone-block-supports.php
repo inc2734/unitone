@@ -846,6 +846,11 @@ add_filter(
 					$add_style( '--unitone--hover-animation-opacity', $hover_animation_opacity );
 				}
 
+				$hover_animation_flex_grow = $get_attribute( 'hoverAnimation.flexGrow' );
+				if ( 'flex-grow' === $hover_animation_type && null !== $hover_animation_flex_grow ) {
+					$add_style( '--unitone--hover-animation-flex-grow', $hover_animation_flex_grow );
+				}
+
 				$hover_animation_trigger = $get_attribute( 'hoverAnimation.trigger' );
 				if ( 'group' === $hover_animation_trigger ) {
 					$add_data_attribute( 'data-unitone-hover-animation', '-trigger:group' );

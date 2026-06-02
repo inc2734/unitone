@@ -20,6 +20,10 @@
 	--unitone--hover-animation-opacity: .75;
 }
 
+[data-unitone-hover-animation~=flex-grow] {
+	--unitone--hover-animation-flex-grow: initial;
+}
+
 @each $_key, $_value in easing.$easings {
 	[data-unitone-hover-animation~=-animation-timing-function\:#{ $_key }] {
 		--unitone--hover-animation-timing-function: #{ $_value };
@@ -41,6 +45,10 @@
 
 	&[data-unitone-hover-animation~=shadow-dark] {
 		box-shadow: var(--wp--preset--shadow--unitone-dark) !important;
+	}
+
+	&[data-unitone-hover-animation~=flex-grow] {
+		flex-grow: var(--unitone--hover-animation-flex-grow) !important;
 	}
 }
 

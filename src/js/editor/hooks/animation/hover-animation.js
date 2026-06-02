@@ -58,6 +58,11 @@ const HOVER_ANIMATION_TYPES = [
 		value: 'shadow-dark',
 		speed: 0.2,
 	},
+	{
+		label: 'flex-grow',
+		value: 'flex-grow',
+		speed: 0.2,
+	},
 ];
 
 const HOVER_ANIMATION_TYPE_OPTIONS = [
@@ -222,6 +227,8 @@ function HoverAnimationPopover( {
 	onChangeScale,
 	opacity,
 	onChangeOpacity,
+	flexGrow,
+	onChangeFlexGrow,
 	group,
 	onChangeGroup,
 	trigger,
@@ -359,6 +366,32 @@ function HoverAnimationPopover( {
 								/>
 							) }
 
+							{ 'flex-grow' === type && (
+								<RangeControl
+									__next40pxDefaultSize
+									__nextHasNoMarginBottom
+									label={
+										<>
+											{ __( 'Fill', 'unitone' ) }
+											&nbsp;:&nbsp;
+											<code>flex-grow</code>
+										</>
+									}
+									value={ normalizeForRangeControl(
+										flexGrow
+									) }
+									step={ 0.1 }
+									min={ 0 }
+									max={ 10 }
+									onChange={ ( newValue ) =>
+										onChangeFlexGrow(
+											normalizeForRangeControl( newValue )
+										)
+									}
+									allowReset
+								/>
+							) }
+
 							<ToggleGroupControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
@@ -446,6 +479,10 @@ export function HoverAnimationEdit( {
 		unitone?.hoverAnimation?.opacity ??
 		defaultValue?.opacity ??
 		animationType?.opacity;
+	const flexGrow =
+		unitone?.hoverAnimation?.flexGrow ??
+		defaultValue?.flexGrow ??
+		animationType?.flexGrow;
 	const group =
 		unitone?.hoverAnimation?.group ?? defaultValue?.group ?? false;
 	const trigger = group
@@ -557,6 +594,7 @@ export function HoverAnimationEdit( {
 			easing={ easing ?? '' }
 			scale={ null != scale ? parseFloat( scale ) : undefined }
 			opacity={ null != opacity ? parseFloat( opacity ) : undefined }
+			flexGrow={ flexGrow ?? '' }
 			group={ group }
 			trigger={ trigger ?? 'self' }
 			onChangeType={ ( newAttribute ) => {
@@ -586,6 +624,9 @@ export function HoverAnimationEdit( {
 			}
 			onChangeOpacity={ ( newAttribute ) =>
 				setHoverAnimationAttribute( 'opacity', newAttribute )
+			}
+			onChangeFlexGrow={ ( newAttribute ) =>
+				setHoverAnimationAttribute( 'flexGrow', newAttribute )
 			}
 			onChangeGroup={ ( newAttribute ) => {
 				setAttributes( {
@@ -663,6 +704,7 @@ export function withHoverAnimationBlockProps( settings ) {
 	const easing = newHoverAnimation?.easing;
 	const scale = newHoverAnimation?.scale;
 	const opacity = newHoverAnimation?.opacity;
+	const flexGrow = newHoverAnimation?.flexGrow;
 	const group = newHoverAnimation?.group;
 	const trigger = group ? 'self' : newHoverAnimation?.trigger ?? 'self';
 
@@ -699,6 +741,8 @@ export function withHoverAnimationBlockProps( settings ) {
 					null != scale && 'scale' === type ? scale : undefined,
 				'--unitone--hover-animation-opacity':
 					null != opacity && 'fade' === type ? opacity : undefined,
+				'--unitone--hover-animation-flex-grow':
+					flexGrow && 'flex-grow' === type ? flexGrow : undefined,
 			},
 		},
 	};

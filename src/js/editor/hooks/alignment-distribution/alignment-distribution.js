@@ -41,7 +41,6 @@ import {
 import {
 	isJustifyContentColumnSupportDisabled,
 	hasJustifyContentColumnValue,
-	resetJustifyContentColumnFilter,
 	resetJustifyContentColumn,
 	JustifyContentColumnToolbar,
 	getJustifyContentColumnEditLabel,
@@ -70,6 +69,16 @@ import {
 	AlignItemsEdit,
 	withAlignItemsBlockProps,
 } from './align-items';
+
+import {
+	isAlignItemsColumnSupportDisabled,
+	hasAlignItemsColumnValue,
+	resetAlignItemsColumn,
+	AlignItemsColumnToolbar,
+	getAlignItemsColumnEditLabel,
+	AlignItemsColumnEdit,
+	withAlignItemsColumnBlockProps,
+} from './align-items-column';
 
 import {
 	isBlockAlignSupportDisabled,
@@ -107,6 +116,7 @@ import {
 export const withAlignmentDistributionBlockProps = compose(
 	withAlignContentBlockProps,
 	withAlignItemsBlockProps,
+	withAlignItemsColumnBlockProps,
 	withAlignSelfBlockProps,
 	withBlockAlignBlockProps,
 	withJustifyContentBlockProps,
@@ -117,14 +127,20 @@ export const withAlignmentDistributionBlockProps = compose(
 
 export const resetAlignmentDistribution = ( props ) => {
 	const filters = [
-		[ isJustifyContentSupportDisabled, resetJustifyContentFilter ],
 		[
-			isJustifyContentColumnSupportDisabled,
-			resetJustifyContentColumnFilter,
+			( nextProps ) =>
+				isJustifyContentSupportDisabled( nextProps ) &&
+				isJustifyContentColumnSupportDisabled( nextProps ),
+			resetJustifyContentFilter,
 		],
 		[ isJustifyItemsSupportDisabled, resetJustifyItemsFilter ],
 		[ isAlignContentSupportDisabled, resetAlignContentFilter ],
-		[ isAlignItemsSupportDisabled, resetAlignItemsFilter ],
+		[
+			( nextProps ) =>
+				isAlignItemsSupportDisabled( nextProps ) &&
+				isAlignItemsColumnSupportDisabled( nextProps ),
+			resetAlignItemsFilter,
+		],
 		[ isBlockAlignSupportDisabled, resetBlockAlignFilter ],
 		[ isAlignSelfSupportDisabled, resetAlignSelfFilter ],
 		[ isJustifySelfSupportDisabled, resetJustifySelfFilter ],
@@ -151,7 +167,6 @@ function AlignmentDistributionPanelPure( props ) {
 				Object.assign(
 					{ ...attributes?.unitone },
 					resetJustifyContentFilter(),
-					resetJustifyContentColumnFilter(),
 					resetJustifyItemsFilter(),
 					resetAlignContentFilter(),
 					resetAlignItemsFilter(),
@@ -175,6 +190,9 @@ function AlignmentDistributionPanelPure( props ) {
 	const isJustifyItemsDisabled = isJustifyItemsSupportDisabled( { name } );
 	const isAlignContentDisabled = isAlignContentSupportDisabled( { name } );
 	const isAlignItemsDisabled = isAlignItemsSupportDisabled( { name } );
+	const isAlignItemsColumnDisabled = isAlignItemsColumnSupportDisabled( {
+		name,
+	} );
 	const isBlockAlignDisabled = isBlockAlignSupportDisabled( { name } );
 	const isAlignSelfDisabled = isAlignSelfSupportDisabled( {
 		name,
@@ -191,6 +209,7 @@ function AlignmentDistributionPanelPure( props ) {
 		isJustifyItemsDisabled &&
 		isAlignContentDisabled &&
 		isAlignItemsDisabled &&
+		isAlignItemsColumnDisabled &&
 		isBlockAlignDisabled &&
 		isAlignSelfDisabled &&
 		isJustifySelfDisabled
@@ -205,6 +224,7 @@ function AlignmentDistributionPanelPure( props ) {
 				! isJustifyItemsDisabled ||
 				! isAlignContentDisabled ||
 				! isAlignItemsDisabled ||
+				! isAlignItemsColumnDisabled ||
 				! isJustifySelfDisabled ||
 				! isAlignSelfDisabled ||
 				! isBlockAlignDisabled ) && (
@@ -224,6 +244,9 @@ function AlignmentDistributionPanelPure( props ) {
 					{ ! isAlignItemsDisabled && (
 						<AlignItemsToolbar { ...props } />
 					) }
+					{ ! isAlignItemsColumnDisabled && (
+						<AlignItemsColumnToolbar { ...props } />
+					) }
 					{ ! isJustifySelfDisabled && (
 						<JustifySelfToolbar { ...props } />
 					) }
@@ -241,6 +264,7 @@ function AlignmentDistributionPanelPure( props ) {
 				! isJustifyItemsDisabled ||
 				! isAlignContentDisabled ||
 				! isAlignItemsDisabled ||
+				! isAlignItemsColumnDisabled ||
 				! isBlockAlignDisabled ||
 				! isAlignSelfDisabled ||
 				! isJustifySelfDisabled ) && (
@@ -358,6 +382,29 @@ function AlignmentDistributionPanelPure( props ) {
 								<AlignItemsEdit
 									{ ...props }
 									label={ getAlignItemsEditLabel( {
+										...props,
+										__withCode: true,
+									} ) }
+								/>
+							</ToolsPanelItem>
+						) }
+						{ ! isAlignItemsColumnDisabled && (
+							<ToolsPanelItem
+								hasValue={ () =>
+									hasAlignItemsColumnValue( { ...props } )
+								}
+								label={ getAlignItemsColumnEditLabel( {
+									...props,
+								} ) }
+								onDeselect={ () =>
+									resetAlignItemsColumn( { ...props } )
+								}
+								isShownByDefault
+								panelId={ clientId }
+							>
+								<AlignItemsColumnEdit
+									{ ...props }
+									label={ getAlignItemsColumnEditLabel( {
 										...props,
 										__withCode: true,
 									} ) }

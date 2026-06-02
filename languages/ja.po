@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-06-01T08:10:16+00:00\n"
-"PO-Revision-Date: 2026-06-01 17:12+0900\n"
+"POT-Creation-Date: 2026-06-02T06:19:15+00:00\n"
+"PO-Revision-Date: 2026-06-02 15:19+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3088,6 +3088,7 @@ msgid "Align items bottom"
 msgstr "項目を下揃え"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:13
 msgid "Justify items left"
 msgstr "項目を左揃え"
 
@@ -3097,6 +3098,7 @@ msgid "Justify items center"
 msgstr "項目を中央揃え"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
+#: dist/js/editor/editor.js:13
 msgid "Justify items right"
 msgstr "項目を右揃え"
 
@@ -4566,12 +4568,12 @@ msgstr "両端ブロックのコンテンツです。"
 #: dist/blocks/both-sides/block.json
 msgctxt "block title"
 msgid "Both sides"
-msgstr "両端"
+msgstr "左右両端"
 
 #: dist/blocks/both-sides/block.json
 msgctxt "block description"
 msgid "This block aligns children on both sides."
-msgstr "子要素を両端に配置します。"
+msgstr "子要素を左右両端に配置します。"
 
 #: dist/blocks/breadcrumbs/block.json
 msgctxt "block title"
@@ -5174,6 +5176,17 @@ msgstr "タイムラインドット"
 msgctxt "block description"
 msgid "This block can display a timeline."
 msgstr "タイムラインを表示することができるブロックです。"
+
+#: dist/blocks/vertical-ends/block.json
+msgctxt "block title"
+msgid "Vertical ends"
+msgstr "上下両端"
+
+#: dist/blocks/vertical-ends/block.json
+msgctxt "block description"
+msgid ""
+"This block positions its children at the top or bottom of a vertical layout."
+msgstr "このブロックは子要素を垂直レイアウトの上部または下部に配置します。"
 
 #: dist/blocks/vertical-writing/block.json
 msgctxt "block title"

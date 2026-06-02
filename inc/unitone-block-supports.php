@@ -239,7 +239,10 @@ add_filter(
 		}
 
 		// -align-items
-		if ( unitone_has_block_support( 'unitone.alignItems', $metadata ) ) {
+		if (
+			unitone_has_block_support( 'unitone.alignItems', $metadata ) ||
+			unitone_has_block_support( 'unitone.alignItemsColumn', $metadata )
+		) {
 			$add_attribute( '-align-items', $get_attribute( 'alignItems' ) );
 		}
 
@@ -353,7 +356,10 @@ add_filter(
 		}
 
 		// -justify-content
-		if ( unitone_has_block_support( 'unitone.justifyContent', $metadata ) ) {
+		if (
+			unitone_has_block_support( 'unitone.justifyContent', $metadata ) ||
+			unitone_has_block_support( 'unitone.justifyContentColumn', $metadata )
+		) {
 			$add_attribute( '-justify-content', $get_attribute( 'justifyContent' ) );
 		}
 

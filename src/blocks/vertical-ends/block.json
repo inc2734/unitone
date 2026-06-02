@@ -1,0 +1,75 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "26.2.0",
+	"textdomain": "unitone",
+	"name": "unitone/vertical-ends",
+	"title": "Vertical ends",
+	"description": "This block positions its children at the top or bottom of a vertical layout.",
+	"attributes": {
+		"unitone": {
+			"type": "object",
+			"default": {
+				"alignItems": "stretch"
+			}
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": "[data-unitone-layout~=vertical-ends]"
+	},
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"customCSS": false,
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"allowedBlocks": true,
+		"contentRole": true,
+		"unitone": {
+			"gap": true,
+			"alignItemsColumn": true,
+			"fluidTypography": true,
+			"halfLeading": true,
+			"linkDecoration": true
+		}
+	},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Lorem ipsum dolor sit amet"
+				}
+			},
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Ut enim ad minim veniam"
+				}
+			}
+		]
+	},
+	"category": "unitone/layout",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}

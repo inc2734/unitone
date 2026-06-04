@@ -45,7 +45,7 @@ export function AutoPhraseEdit( {
 								'Use %1$s to indicate a line break at an arbitrary position.',
 								'unitone'
 							),
-							'<code>wbr</code>'
+							'<code class="unitone-label-code">wbr</code>'
 						),
 					} }
 				/>

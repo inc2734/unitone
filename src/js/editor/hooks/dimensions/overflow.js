@@ -81,7 +81,7 @@ export function getOverflowEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Overflow', 'unitone' );
-	const defaultCode = <code>overflow</code>;
+	const defaultCode = <code className="unitone-label-code">overflow</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.overflow?.label || defaultLabel;

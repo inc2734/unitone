@@ -88,7 +88,7 @@ export function getMinHeightEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Min height', 'unitone' );
-	const defaultCode = <code>min-height</code>;
+	const defaultCode = <code className="unitone-label-code">min-height</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.minHeight?.label || defaultLabel;

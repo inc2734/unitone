@@ -78,7 +78,9 @@ export default function ( { attributes, setAttributes } ) {
 										'unitone'
 									) }
 									&nbsp;:&nbsp;
-									<code>aspect-ratio</code>
+									<code className="unitone-label-code">
+										aspect-ratio
+									</code>
 								</>
 							}
 							value={ normalizeForTextControl( ratio ) }

@@ -139,7 +139,9 @@ export function getAlignContentEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Align content', 'unitone' );
-	const defaultCode = <code>align-content</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">align-content</code>
+	);
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.alignContent?.label || defaultLabel;

@@ -129,7 +129,9 @@ export function getJustifyItemsEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Justify items', 'unitone' );
-	const defaultCode = <code>justify-items</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">justify-items</code>
+	);
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.justifyItems?.label || defaultLabel;

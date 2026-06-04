@@ -361,7 +361,7 @@ export default function ( { attributes, setAttributes } ) {
 														'Inside the %1$sgrid-template-columns%2$s formula',
 														'unitone'
 													),
-													'<code>',
+													'<code class="unitone-label-code">',
 													'</code>'
 												),
 											} }

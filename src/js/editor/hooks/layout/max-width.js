@@ -70,7 +70,7 @@ export function getMaxWidthEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Max width', 'unitone' );
-	const defaultCode = <code>max-width</code>;
+	const defaultCode = <code className="unitone-label-code">max-width</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.maxWidth?.label || defaultLabel;

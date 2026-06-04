@@ -61,7 +61,7 @@ export function getFlexGrowEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Fill', 'unitone' );
-	const defaultCode = <code>flex-grow</code>;
+	const defaultCode = <code className="unitone-label-code">flex-grow</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.flexGrow?.label || defaultLabel;

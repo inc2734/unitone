@@ -56,7 +56,7 @@ export function getMinWidthEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Min width', 'unitone' );
-	const defaultCode = <code>min-width</code>;
+	const defaultCode = <code className="unitone-label-code">min-width</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.minWidth?.label || defaultLabel;

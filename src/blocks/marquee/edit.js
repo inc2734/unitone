@@ -103,7 +103,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							label={
 								<>
 									{ __( 'Each items width', 'unitone' ) } :
-									<code>flex-basis</code>
+									<code className="unitone-label-code">
+										flex-basis
+									</code>
 								</>
 							}
 							value={ normalizeForTextControl( itemWidth ) }

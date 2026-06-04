@@ -85,7 +85,7 @@ export function getGridColumnEditLabel( {
 		"A grid item's size and location within a grid column",
 		'unitone'
 	);
-	const defaultCode = <code>grid-column</code>;
+	const defaultCode = <code className="unitone-label-code">grid-column</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.gridColumn?.label || defaultLabel;

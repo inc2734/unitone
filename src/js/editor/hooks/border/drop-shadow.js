@@ -66,7 +66,9 @@ export function getDropShadowEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Drop shadow' );
-	const defaultCode = <code>filter:drop-shadow</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">filter:drop-shadow</code>
+	);
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.dropShadow?.label || defaultLabel;

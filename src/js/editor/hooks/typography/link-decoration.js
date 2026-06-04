@@ -98,7 +98,7 @@ export function getLinkDecorationEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Link decoration', 'unitone' );
-	const defaultCode = <code>align-items</code>;
+	const defaultCode = <code className="unitone-label-code">align-items</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.linkDecoration?.label || defaultLabel;

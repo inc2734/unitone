@@ -38,7 +38,9 @@ export function getBackgroundClipEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Cut the background with text', 'unitone' );
-	const defaultCode = <code>background-clip:text</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">background-clip:text</code>
+	);
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.backgroundClip?.label || defaultLabel;

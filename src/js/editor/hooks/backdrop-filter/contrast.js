@@ -56,7 +56,9 @@ export function getContrastEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Contrast', 'unitone' );
-	const defaultCode = <code>backdrop-filter:contrast</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">backdrop-filter:contrast</code>
+	);
 
 	if ( ! __withCode ) {
 		return (

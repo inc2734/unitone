@@ -445,7 +445,7 @@ function LayoutPanelPure( props ) {
 														'For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line).',
 														'unitone'
 													),
-													'<code>',
+													'<code class="unitone-label-code">',
 													'</code>'
 												),
 											} }
@@ -481,7 +481,7 @@ function LayoutPanelPure( props ) {
 														'For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line).',
 														'unitone'
 													),
-													'<code>',
+													'<code class="unitone-label-code">',
 													'</code>'
 												),
 											} }

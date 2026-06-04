@@ -166,7 +166,9 @@ export default function ( {
 									<>
 										{ __( 'Column width', 'unitone' ) }
 										&nbsp;:&nbsp;
-										<code>colum-width</code>
+										<code className="unitone-label-code">
+											colum-width
+										</code>
 									</>
 								}
 								value={ normalizeForTextControl( columnWidth ) }

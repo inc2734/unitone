@@ -236,7 +236,9 @@ export function getJustifySelfEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Justify self', 'unitone' );
-	const defaultCode = <code>justify-self</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">justify-self</code>
+	);
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.justifySelf?.label || defaultLabel;

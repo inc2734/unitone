@@ -61,7 +61,7 @@ export function getFlexBasisEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Recommended width', 'unitone' );
-	const defaultCode = <code>flex-basis</code>;
+	const defaultCode = <code className="unitone-label-code">flex-basis</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.flexBasis?.label || defaultLabel;

@@ -56,7 +56,7 @@ export function getMaxHeightEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Max height', 'unitone' );
-	const defaultCode = <code>max-height</code>;
+	const defaultCode = <code className="unitone-label-code">max-height</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.maxHeight?.label || defaultLabel;

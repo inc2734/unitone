@@ -73,7 +73,7 @@ export function getAutoRepeatEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Auto repeat', 'unitone' );
-	const defaultCode = <code>auto-repeat</code>;
+	const defaultCode = <code className="unitone-label-code">auto-repeat</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.autoRepeat?.label || defaultLabel;

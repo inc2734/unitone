@@ -271,7 +271,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								<>
 									{ __( 'Padding', 'unitone' ) }
 									&nbsp;:&nbsp;
-									<code>padding</code>
+									<code className="unitone-label-code">
+										padding
+									</code>
 								</>
 							}
 							split
@@ -388,7 +390,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								<>
 									{ __( 'Padding', 'unitone' ) }
 									&nbsp;:&nbsp;
-									<code>padding</code>
+									<code className="unitone-label-code">
+										padding
+									</code>
 								</>
 							}
 							split

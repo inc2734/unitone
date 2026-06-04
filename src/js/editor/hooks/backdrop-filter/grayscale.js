@@ -56,7 +56,9 @@ export function getGrayscaleEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Grayscale', 'unitone' );
-	const defaultCode = <code>backdrop-filter:grayscale</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">backdrop-filter:grayscale</code>
+	);
 
 	if ( ! __withCode ) {
 		return (

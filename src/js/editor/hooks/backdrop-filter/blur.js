@@ -54,7 +54,9 @@ export function getBlurEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Blur', 'unitone' );
-	const defaultCode = <code>backdrop-filter:blur</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">backdrop-filter:blur</code>
+	);
 
 	if ( ! __withCode ) {
 		return (

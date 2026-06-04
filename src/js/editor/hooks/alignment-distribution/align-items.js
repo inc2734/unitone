@@ -124,7 +124,7 @@ export function getAlignItemsEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Align items', 'unitone' );
-	const defaultCode = <code>align-items</code>;
+	const defaultCode = <code className="unitone-label-code">align-items</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.alignItems?.label || defaultLabel;

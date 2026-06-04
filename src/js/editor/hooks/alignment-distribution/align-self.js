@@ -232,7 +232,7 @@ export function getAlignSelfEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Align self', 'unitone' );
-	const defaultCode = <code>align-self</code>;
+	const defaultCode = <code className="unitone-label-code">align-self</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.alignSelf?.label || defaultLabel;

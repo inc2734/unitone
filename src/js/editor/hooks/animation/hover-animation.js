@@ -374,7 +374,9 @@ function HoverAnimationPopover( {
 										<>
 											{ __( 'Fill', 'unitone' ) }
 											&nbsp;:&nbsp;
-											<code>flex-grow</code>
+											<code className="unitone-label-code">
+												flex-grow
+											</code>
 										</>
 									}
 									value={ normalizeForRangeControl(

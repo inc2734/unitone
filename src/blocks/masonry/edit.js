@@ -427,7 +427,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							label={
 								<>
 									{ __( 'Column width', 'unitone' ) } :
-									<code>column-width</code>
+									<code className="unitone-label-code">
+										column-width
+									</code>
 								</>
 							}
 							value={ normalizeForTextControl( columnWidth ) }

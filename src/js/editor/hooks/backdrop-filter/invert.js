@@ -54,7 +54,9 @@ export function getInvertEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Invert', 'unitone' );
-	const defaultCode = <code>backdrop-filter:invert</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">backdrop-filter:invert</code>
+	);
 
 	if ( ! __withCode ) {
 		return (

@@ -56,7 +56,9 @@ export function getBrightnessEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Brightness', 'unitone' );
-	const defaultCode = <code>backdrop-filter:brightness</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">backdrop-filter:brightness</code>
+	);
 
 	if ( ! __withCode ) {
 		return (

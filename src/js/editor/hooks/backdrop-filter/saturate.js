@@ -56,7 +56,9 @@ export function getSaturateEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Saturate', 'unitone' );
-	const defaultCode = <code>backdrop-filter:saturate</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">backdrop-filter:saturate</code>
+	);
 
 	if ( ! __withCode ) {
 		return (

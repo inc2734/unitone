@@ -211,7 +211,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							label={
 								<>
 									{ __( 'Width', 'unitone' ) }&nbsp;:&nbsp;
-									<code>flex-basis</code>
+									<code className="unitone-label-code">
+										flex-basis
+									</code>
 								</>
 							}
 							value={ normalizeForTextControl( sidebarWidth ) }
@@ -250,7 +252,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								<>
 									{ __( 'Min width', 'unitone' ) }
 									&nbsp;:&nbsp;
-									<code>min-width</code>
+									<code className="unitone-label-code">
+										min-width
+									</code>
 								</>
 							}
 							help={ __(

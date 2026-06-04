@@ -62,7 +62,7 @@ export function getFlexShrinkEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Fit', 'unitone' );
-	const defaultCode = <code>flex-shrink</code>;
+	const defaultCode = <code className="unitone-label-code">flex-shrink</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.flexShrink?.label || defaultLabel;

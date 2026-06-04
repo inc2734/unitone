@@ -64,7 +64,7 @@ export function getPaddingEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Padding', 'unitone' );
-	const defaultCode = <code>padding</code>;
+	const defaultCode = <code className="unitone-label-code">padding</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.padding?.label || defaultLabel;

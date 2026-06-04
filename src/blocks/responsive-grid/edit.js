@@ -106,7 +106,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'Inside the %1$sgrid-template-columns%2$s formula',
 													'unitone'
 												),
-												'<code>',
+												'<code class="unitone-label-code">',
 												'</code>'
 											),
 										} }

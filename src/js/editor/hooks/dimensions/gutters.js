@@ -51,7 +51,9 @@ export function getGuttersEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Margins at both ends', 'unitone' );
-	const defaultCode = <code>padding-right/left</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">padding-right/left</code>
+	);
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.gutters?.label || defaultLabel;

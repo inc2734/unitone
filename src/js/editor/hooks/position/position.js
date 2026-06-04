@@ -112,7 +112,9 @@ function PositionPanelPure( props ) {
 							label={
 								<>
 									{ __( 'Position', 'unitone' ) }&nbsp;:&nbsp;
-									<code>position</code>
+									<code className="unitone-label-code">
+										position
+									</code>
 								</>
 							}
 						/>
@@ -130,7 +132,9 @@ function PositionPanelPure( props ) {
 							label={
 								<>
 									{ __( 'Top', 'unitone' ) }&nbsp;:&nbsp;
-									<code>top</code>
+									<code className="unitone-label-code">
+										top
+									</code>
 								</>
 							}
 						/>
@@ -148,7 +152,9 @@ function PositionPanelPure( props ) {
 							label={
 								<>
 									{ __( 'Right', 'unitone' ) }&nbsp;:&nbsp;
-									<code>right</code>
+									<code className="unitone-label-code">
+										right
+									</code>
 								</>
 							}
 						/>
@@ -166,7 +172,9 @@ function PositionPanelPure( props ) {
 							label={
 								<>
 									{ __( 'Bottom', 'unitone' ) }&nbsp;:&nbsp;
-									<code>bottom</code>
+									<code className="unitone-label-code">
+										bottom
+									</code>
 								</>
 							}
 						/>
@@ -184,7 +192,9 @@ function PositionPanelPure( props ) {
 							label={
 								<>
 									{ __( 'Left', 'unitone' ) }&nbsp;:&nbsp;
-									<code>left</code>
+									<code className="unitone-label-code">
+										left
+									</code>
 								</>
 							}
 						/>
@@ -203,7 +213,9 @@ function PositionPanelPure( props ) {
 								<>
 									{ __( 'The stack level', 'unitone' ) }
 									&nbsp;:&nbsp;
-									<code>z-index</code>
+									<code className="unitone-label-code">
+										z-index
+									</code>
 								</>
 							}
 						/>

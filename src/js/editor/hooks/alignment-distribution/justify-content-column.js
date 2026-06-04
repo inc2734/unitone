@@ -133,7 +133,9 @@ export function getJustifyContentColumnEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Align items', 'unitone' );
-	const defaultCode = <code>justify-content</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">justify-content</code>
+	);
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.justifyContent?.label || defaultLabel;

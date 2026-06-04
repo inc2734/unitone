@@ -40,7 +40,11 @@ const changeUnitoneSupportsLabels = createHigherOrderComponent(
 						},
 						padding: {
 							label: __( 'Top and bottom padding', 'unitone' ),
-							code: <code>padding-top/bottom</code>,
+							code: (
+								<code className="unitone-label-code">
+									padding-top/bottom
+								</code>
+							),
 						},
 					},
 				},

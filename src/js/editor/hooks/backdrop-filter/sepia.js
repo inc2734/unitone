@@ -54,7 +54,9 @@ export function getSepiaEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Sepia', 'unitone' );
-	const defaultCode = <code>backdrop-filter:sepia</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">backdrop-filter:sepia</code>
+	);
 
 	if ( ! __withCode ) {
 		return (

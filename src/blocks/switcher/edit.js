@@ -110,7 +110,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'Inside the %1$sflex-basis%2$s formula',
 													'unitone'
 												),
-												'<code>',
+												'<code class="unitone-label-code">',
 												'</code>'
 											),
 										} }

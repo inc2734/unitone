@@ -217,7 +217,9 @@ export const SettingsInspectorControls = ( {
 									<>
 										{ __( 'Each items width', 'unitone' ) }
 										&nbsp;:&nbsp;
-										<code>width</code>
+										<code className="unitone-label-code">
+											width
+										</code>
 									</>
 								}
 								value={ normalizeForTextControl( slideWidth ) }

@@ -56,7 +56,9 @@ export function getHueRotateEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Hue Rotate', 'unitone' );
-	const defaultCode = <code>backdrop-filter:hue-rotate</code>;
+	const defaultCode = (
+		<code className="unitone-label-code">backdrop-filter:hue-rotate</code>
+	);
 
 	if ( ! __withCode ) {
 		return (

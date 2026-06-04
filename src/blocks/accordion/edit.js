@@ -249,7 +249,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<>
 										{ __( 'Width', 'unitone' ) }
 										&nbsp;:&nbsp;
-										<code>flex-basis</code>
+										<code className="unitone-label-code">
+											flex-basis
+										</code>
 									</>
 								}
 								value={ normalizeForTextControl( qWidth ) }
@@ -316,7 +318,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 									<>
 										{ __( 'Width', 'unitone' ) }
 										&nbsp;:&nbsp;
-										<code>flex-basis</code>
+										<code className="unitone-label-code">
+											flex-basis
+										</code>
 									</>
 								}
 								value={ normalizeForTextControl( aWidth ) }

@@ -60,7 +60,7 @@ export function getGapEditLabel( {
 	__withCode = false,
 } ) {
 	const defaultLabel = __( 'Gap', 'unitone' );
-	const defaultCode = <code>gap</code>;
+	const defaultCode = <code className="unitone-label-code">gap</code>;
 
 	if ( ! __withCode ) {
 		return __unstableUnitoneSupports?.gap?.label || defaultLabel;

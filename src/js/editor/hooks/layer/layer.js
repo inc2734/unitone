@@ -88,7 +88,9 @@ function LayerPanelPure( props ) {
 								<>
 									{ __( 'Mix blend mode', 'unitone' ) }
 									&nbsp;:&nbsp;
-									<code>mix-blend-mode</code>
+									<code className="unitone-label-code">
+										mix-blend-mode
+									</code>
 								</>
 							}
 						/>

@@ -24,7 +24,11 @@ export default {
 					);
 				} );
 
-				return createBlock( 'unitone/stack', {}, groupInnerBlocks );
+				return createBlock(
+					'unitone/vertical-ends',
+					{},
+					groupInnerBlocks
+				);
 			},
 		},
 	],

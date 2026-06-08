@@ -1,5 +1,6 @@
 @use '../../js/editor/plugins/wireframe-generator';
 @use '../../js/editor/plugins/featured-image-generator';
+@use '../../js/editor/plugins/grid-item-resizer';
 @use '../../js/editor/plugins/paste-styles';
 
 .block-editor-iframe__html {
@@ -536,6 +537,7 @@
 	grid-column: var(--unitne--grid-column);
 	grid-row: var(--unitne--grid-row);
 	outline: 1px solid color-mix(in srgb, pink, transparent 40%);
+	background-color: color-mix(in srgb, pink, transparent 94%);
 	pointer-events: none;
 }
 

@@ -1,0 +1,61 @@
+.unitone-grid-item-resizer {
+	position: fixed;
+	box-sizing: border-box;
+	outline: 1px solid var(--wp-admin-theme-color, #3858e9);
+	outline-offset: -1px;
+	pointer-events: none;
+	visibility: hidden;
+	z-index: 32;
+
+	&.-is-resizing {
+		visibility: visible;
+	}
+
+	&__handle {
+		position: absolute;
+		z-index: 1;
+		box-sizing: border-box;
+		width: 14px;
+		height: 14px;
+		margin: 0;
+		padding: 0;
+		background: var(--wp-admin-theme-color, #3858e9);
+		border: 2px solid #fff;
+		border-radius: 50%;
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+		pointer-events: auto;
+		visibility: visible;
+
+		&.-left,
+		&.-right {
+			top: 50%;
+			cursor: ew-resize;
+		}
+
+		&.-left {
+			left: 0;
+			transform: translate(-50%, -50%);
+		}
+
+		&.-right {
+			right: 0;
+			transform: translate(50%, -50%);
+		}
+
+		&.-top,
+		&.-bottom {
+			left: 50%;
+			cursor: ns-resize;
+		}
+
+		&.-top {
+			top: 0;
+			transform: translate(-50%, -50%);
+		}
+
+		&.-bottom {
+			bottom: 0;
+			transform: translate(-50%, 50%);
+		}
+	}
+}

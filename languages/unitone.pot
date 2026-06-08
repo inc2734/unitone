@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 26.1.2\n"
+"Project-Id-Version: unitone 26.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-02T06:19:15+00:00\n"
+"POT-Creation-Date: 2026-06-08T13:24:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2709,6 +2709,12 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
+#: dist/blocks/layers/index.js:31
+msgid "Row track size"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+#: dist/blocks/grid/index.js:1
 msgid "Tablet breakpoint (max width)"
 msgstr ""
 
@@ -3330,6 +3336,7 @@ msgstr ""
 
 #: dist/blocks/tabs/index.js:1
 #: dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
 msgid "Fill"
 msgstr ""
 

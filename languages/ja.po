@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-06-02T06:19:15+00:00\n"
-"PO-Revision-Date: 2026-06-02 15:19+0900\n"
+"POT-Creation-Date: 2026-06-08T13:24:51+00:00\n"
+"PO-Revision-Date: 2026-06-08 22:25+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2671,6 +2671,11 @@ msgid "Rows count"
 msgstr "行数"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
+#: dist/blocks/layers/index.js:31
+msgid "Row track size"
+msgstr "行のトラックサイズ"
+
+#: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 msgid "Tablet breakpoint (max width)"
 msgstr "タブレットのブレイクポイント（最大幅）"
 
@@ -3270,6 +3275,7 @@ msgid ""
 msgstr "このブロックがこの幅より小さくなったとき、コンテンツは1列に並びます。"
 
 #: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
 msgid "Fill"
 msgstr "塗りつぶし"
 

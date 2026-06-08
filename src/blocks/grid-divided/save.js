@@ -29,15 +29,15 @@ export default function ( { attributes } ) {
 		smGridTemplateColumns,
 		rowsOption,
 		rows,
-		repeatRowHeight,
+		rowTrackSize,
 		gridTemplateRows,
 		mdRowsOption,
 		mdRows,
-		mdRepeatRowHeight,
+		mdRowTrackSize,
 		mdGridTemplateRows,
 		smRowsOption,
 		smRows,
-		smRepeatRowHeight,
+		smRowTrackSize,
 		smGridTemplateRows,
 	} = attributes;
 
@@ -71,20 +71,20 @@ export default function ( { attributes } ) {
 			undefined,
 		'--unitone--rows':
 			( 'rows' === rowsOption && parseString( rows ) ) || undefined,
-		'--unitone--repeat-row-height':
-			( 'rows' === rowsOption && repeatRowHeight ) || undefined,
+		'--unitone--row-track-size':
+			( 'rows' === rowsOption && rowTrackSize ) || undefined,
 		'--unitone--grid-template-rows':
 			( 'free' === rowsOption && gridTemplateRows ) || undefined,
 		'--unitone--md-rows':
 			( 'rows' === mdRowsOption && parseString( mdRows ) ) || undefined,
-		'--unitone--md-repeat-row-height':
-			( 'rows' === mdRowsOption && mdRepeatRowHeight ) || undefined,
+		'--unitone--md-row-track-size':
+			( 'rows' === mdRowsOption && mdRowTrackSize ) || undefined,
 		'--unitone--md-grid-template-rows':
 			( 'free' === mdRowsOption && mdGridTemplateRows ) || undefined,
 		'--unitone--sm-rows':
 			( 'rows' === smRowsOption && parseString( smRows ) ) || undefined,
-		'--unitone--sm-repeat-row-height':
-			( 'rows' === smRowsOption && smRepeatRowHeight ) || undefined,
+		'--unitone--sm-row-track-size':
+			( 'rows' === smRowsOption && smRowTrackSize ) || undefined,
 		'--unitone--sm-grid-template-rows':
 			( 'free' === smRowsOption && smGridTemplateRows ) || undefined,
 	};
@@ -112,12 +112,12 @@ export default function ( { attributes } ) {
 						[ `-rows:${ rowsOption }` ]: !! rowsOption,
 						[ `-rows:md:${ mdRowsOption }` ]:
 							( 'rows' === mdRowsOption &&
-								( !! mdRows || !! mdRepeatRowHeight ) ) ||
+								( !! mdRows || !! mdRowTrackSize ) ) ||
 							( 'free' === mdRowsOption &&
 								!! mdGridTemplateRows ),
 						[ `-rows:sm:${ smRowsOption }` ]:
 							( 'rows' === smRowsOption &&
-								( !! smRows || !! smRepeatRowHeight ) ) ||
+								( !! smRows || !! smRowTrackSize ) ) ||
 							( 'free' === smRowsOption &&
 								!! smGridTemplateRows ),
 					} ),

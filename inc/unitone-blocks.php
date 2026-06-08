@@ -211,7 +211,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 		'columns_free'    => 'free' === $md_columns_option && ( $attributes['mdGridTemplateColumns'] ?? null ),
 		'rows_rows'       => 'rows' === $md_rows_option && (
 			( $attributes['mdRows'] ?? null ) ||
-			( $attributes['mdRepeatRowHeight'] ?? null )
+			( $attributes['mdRowTrackSize'] ?? null )
 		),
 		'rows_free'       => 'free' === $md_rows_option && ( $attributes['mdGridTemplateRows'] ?? null ),
 		'items'           => $has_md_item_responsive,
@@ -223,7 +223,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 		'columns_free'    => 'free' === $sm_columns_option && ( $attributes['smGridTemplateColumns'] ?? null ),
 		'rows_rows'       => 'rows' === $sm_rows_option && (
 			( $attributes['smRows'] ?? null ) ||
-			( $attributes['smRepeatRowHeight'] ?? null )
+			( $attributes['smRowTrackSize'] ?? null )
 		),
 		'rows_free'       => 'free' === $sm_rows_option && ( $attributes['smGridTemplateRows'] ?? null ),
 		'items'           => $has_sm_item_responsive,
@@ -289,7 +289,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 
 			if ( $rows_rows ) {
 				$rules[] = sprintf(
-					'%1$s[data-unitone-layout~="-rows\\:%2$s\\:rows"] { grid-template-rows: repeat(var(%3$s-rows), var(%3$s-repeat-row-height)); }',
+					'%1$s[data-unitone-layout~="-rows\\:%2$s\\:rows"] { grid-template-rows: repeat(var(%3$s-rows), var(%3$s-row-track-size)); }',
 					$selector,
 					$size,
 					$prefix

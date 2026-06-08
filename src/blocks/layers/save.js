@@ -5,7 +5,8 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import metadata from './block.json';
 
 export default function ( { attributes } ) {
-	const { cover, fill, fixed, blur, portrait, columns, rows } = attributes;
+	const { cover, fill, fixed, blur, portrait, columns, rows, rowTrackSize } =
+		attributes;
 
 	return (
 		<div
@@ -23,6 +24,7 @@ export default function ( { attributes } ) {
 							metadata.attributes.rows.default
 								? String( rows )
 								: undefined,
+						'--unitone--row-track-size': rowTrackSize || undefined,
 					},
 					'data-unitone-layout': clsx( 'layers', {
 						'-cover': cover,

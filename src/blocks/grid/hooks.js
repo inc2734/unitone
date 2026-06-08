@@ -25,7 +25,7 @@ export const useResponsiveGridCSS = ( {
 				}
 
 				${ selector }[data-unitone-layout~="-rows\\:${ size }\\:rows"] {
-					grid-template-rows: repeat(var(${ prefix }-rows), var(${ prefix }-repeat-row-height));
+					grid-template-rows: repeat(var(${ prefix }-rows), var(${ prefix }-row-track-size));
 				}
 
 				${ selector }[data-unitone-layout~="-rows\\:${ size }\\:free"] {

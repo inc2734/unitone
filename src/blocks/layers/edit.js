@@ -18,6 +18,8 @@ import {
 import {
 	RangeControl,
 	ToggleControl,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
@@ -38,6 +40,7 @@ import {
 	GridVisualizer,
 	cleanEmptyObject,
 	normalizeForRangeControl,
+	normalizeForToggleGroupControl,
 	normalizeForToggleControl,
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
@@ -57,6 +60,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 		portrait,
 		columns,
 		rows,
+		rowTrackSize,
 		templateLock,
 		__unstableUnitoneBlockOutline,
 	} = attributes;
@@ -114,6 +118,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 			parseInt( rows ) !== metadata.attributes.rows.default
 				? String( rows )
 				: undefined,
+		'--unitone--row-track-size': rowTrackSize || undefined,
 	};
 
 	const ref = useRef();
@@ -464,6 +469,46 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 							min={ 1 }
 							max={ 24 }
 						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () =>
+							rowTrackSize !==
+							metadata.attributes.rowTrackSize.default
+						}
+						isShownByDefault
+						label={ __( 'Row track size', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								rowTrackSize:
+									metadata.attributes.rowTrackSize.default,
+							} )
+						}
+					>
+						<ToggleGroupControl
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							label={ __( 'Row track size', 'unitone' ) }
+							value={ normalizeForToggleGroupControl(
+								rowTrackSize ||
+									metadata.attributes.rowTrackSize.default
+							) }
+							onChange={ ( newAttribute ) => {
+								setAttributes( {
+									rowTrackSize:
+										normalizeForToggleGroupControl(
+											newAttribute
+										),
+								} );
+							} }
+							isBlock
+						>
+							<ToggleGroupControlOption value="1fr" label="1fr" />
+							<ToggleGroupControlOption
+								value="auto"
+								label="auto"
+							/>
+						</ToggleGroupControl>
 					</ToolsPanelItem>
 				</ToolsPanel>
 			</InspectorControls>

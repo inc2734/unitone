@@ -71,15 +71,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		smGridTemplateColumns,
 		rowsOption,
 		rows,
-		repeatRowHeight,
+		rowTrackSize,
 		gridTemplateRows,
 		mdRowsOption,
 		mdRows,
-		mdRepeatRowHeight,
+		mdRowTrackSize,
 		mdGridTemplateRows,
 		smRowsOption,
 		smRows,
-		smRepeatRowHeight,
+		smRowTrackSize,
 		smGridTemplateRows,
 		mdBreakpoint,
 		smBreakpoint,
@@ -133,20 +133,20 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			undefined,
 		'--unitone--rows':
 			( 'rows' === rowsOption && parseString( rows ) ) || undefined,
-		'--unitone--repeat-row-height':
-			( 'rows' === rowsOption && repeatRowHeight ) || undefined,
+		'--unitone--row-track-size':
+			( 'rows' === rowsOption && rowTrackSize ) || undefined,
 		'--unitone--grid-template-rows':
 			( 'free' === rowsOption && gridTemplateRows ) || undefined,
 		'--unitone--md-rows':
 			( 'rows' === mdRowsOption && parseString( mdRows ) ) || undefined,
-		'--unitone--md-repeat-row-height':
-			( 'rows' === mdRowsOption && mdRepeatRowHeight ) || undefined,
+		'--unitone--md-row-track-size':
+			( 'rows' === mdRowsOption && mdRowTrackSize ) || undefined,
 		'--unitone--md-grid-template-rows':
 			( 'free' === mdRowsOption && mdGridTemplateRows ) || undefined,
 		'--unitone--sm-rows':
 			( 'rows' === smRowsOption && parseString( smRows ) ) || undefined,
-		'--unitone--sm-repeat-row-height':
-			( 'rows' === smRowsOption && smRepeatRowHeight ) || undefined,
+		'--unitone--sm-row-track-size':
+			( 'rows' === smRowsOption && smRowTrackSize ) || undefined,
 		'--unitone--sm-grid-template-rows':
 			( 'free' === smRowsOption && smGridTemplateRows ) || undefined,
 	};
@@ -172,11 +172,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			[ `-rows:${ rowsOption }` ]: !! rowsOption,
 			[ `-rows:md:${ mdRowsOption }` ]:
 				( 'rows' === mdRowsOption &&
-					( !! mdRows || !! mdRepeatRowHeight ) ) ||
+					( !! mdRows || !! mdRowTrackSize ) ) ||
 				( 'free' === mdRowsOption && !! mdGridTemplateRows ),
 			[ `-rows:sm:${ smRowsOption }` ]:
 				( 'rows' === smRowsOption &&
-					( !! smRows || !! smRepeatRowHeight ) ) ||
+					( !! smRows || !! smRowTrackSize ) ) ||
 				( 'free' === smRowsOption && !! smGridTemplateRows ),
 		}
 	);
@@ -761,12 +761,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							rows !== metadata.attributes.rows.default ||
 							mdRows !== metadata.attributes.mdRows.default ||
 							smRows !== metadata.attributes.smRows.default ||
-							repeatRowHeight !==
-								metadata.attributes.repeatRowHeight.default ||
-							mdRepeatRowHeight !==
-								metadata.attributes.mdRepeatRowHeight.default ||
-							smRepeatRowHeight !==
-								metadata.attributes.smRepeatRowHeight.default
+							rowTrackSize !==
+								metadata.attributes.rowTrackSize.default ||
+							mdRowTrackSize !==
+								metadata.attributes.mdRowTrackSize.default ||
+							smRowTrackSize !==
+								metadata.attributes.smRowTrackSize.default
 						}
 						isShownByDefault
 						label={ 'grid-template-rows' }
@@ -775,8 +775,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								rowsOption:
 									metadata.attributes.rowsOption.default,
 								rows: metadata.attributes.rows.default,
-								repeatRowHeight:
-									metadata.attributes.repeatRowHeight.default,
+								rowTrackSize:
+									metadata.attributes.rowTrackSize.default,
 								gridTemplateRows:
 									metadata.attributes.gridTemplateRows
 										.default,
@@ -784,9 +784,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								mdRowsOption:
 									metadata.attributes.mdRowsOption.default,
 								mdRows: metadata.attributes.mdRows.default,
-								mdRepeatRowHeight:
-									metadata.attributes.mdRepeatRowHeight
-										.default,
+								mdRowTrackSize:
+									metadata.attributes.mdRowTrackSize.default,
 								mdGridTemplateRows:
 									metadata.attributes.mdGridTemplateRows
 										.default,
@@ -794,9 +793,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								smRowsOption:
 									metadata.attributes.smRowsOption.default,
 								smRows: metadata.attributes.smRows.default,
-								smRepeatRowHeight:
-									metadata.attributes.smRepeatRowHeight
-										.default,
+								smRowTrackSize:
+									metadata.attributes.smRowTrackSize.default,
 								smGridTemplateRows:
 									metadata.attributes.smGridTemplateRows
 										.default,
@@ -889,22 +887,23 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													max={ 12 }
 													step={ 1 }
 												/>
+
 												<ToggleGroupControl
 													__next40pxDefaultSize
 													__nextHasNoMarginBottom
 													label={ __(
-														'Row height',
+														'Row track size',
 														'unitone'
 													) }
 													value={ normalizeForToggleGroupControl(
-														repeatRowHeight ||
+														rowTrackSize ||
 															metadata.attributes
-																.repeatRowHeight
+																.rowTrackSize
 																.default
 													) }
 													onChange={ ( value ) =>
 														setAttributes( {
-															repeatRowHeight:
+															rowTrackSize:
 																normalizeForToggleGroupControl(
 																	value
 																),
@@ -1023,26 +1022,27 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													step={ 1 }
 													allowReset
 												/>
+
 												<ToggleGroupControl
 													__next40pxDefaultSize
 													__nextHasNoMarginBottom
 													label={ `${ __(
-														'Row height',
+														'Row track size',
 														'unitone'
 													) } (${ __(
 														'For tablet / mobile',
 														'unitone'
 													) })` }
 													value={ normalizeForToggleGroupControl(
-														mdRepeatRowHeight ||
-															repeatRowHeight ||
+														mdRowTrackSize ||
+															rowTrackSize ||
 															metadata.attributes
-																.repeatRowHeight
+																.rowTrackSize
 																.default
 													) }
 													onChange={ ( value ) =>
 														setAttributes( {
-															mdRepeatRowHeight:
+															mdRowTrackSize:
 																normalizeForToggleGroupControl(
 																	value
 																),
@@ -1165,27 +1165,28 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													step={ 1 }
 													allowReset
 												/>
+
 												<ToggleGroupControl
 													__next40pxDefaultSize
 													__nextHasNoMarginBottom
 													label={ `${ __(
-														'Row height',
+														'Row track size',
 														'unitone'
 													) } (${ __(
 														'For mobile',
 														'unitone'
 													) })` }
 													value={ normalizeForToggleGroupControl(
-														smRepeatRowHeight ||
-															mdRepeatRowHeight ||
-															repeatRowHeight ||
+														smRowTrackSize ||
+															mdRowTrackSize ||
+															rowTrackSize ||
 															metadata.attributes
-																.repeatRowHeight
+																.rowTrackSize
 																.default
 													) }
 													onChange={ ( value ) =>
 														setAttributes( {
-															smRepeatRowHeight:
+															smRowTrackSize:
 																normalizeForToggleGroupControl(
 																	value
 																),

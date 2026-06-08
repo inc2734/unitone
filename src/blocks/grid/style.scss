@@ -28,15 +28,15 @@
 	);
 
 	--unitone--rows: 1;
-	--unitone--repeat-row-height: 1fr;
+	--unitone--row-track-size: 1fr;
 	--unitone--grid-template-rows: none;
 
 	--unitone--md-rows: var(--unitone--rows);
-	--unitone--md-repeat-row-height: var(--unitone--repeat-row-height);
+	--unitone--md-row-track-size: var(--unitone--row-track-size);
 	--unitone--md-grid-template-rows: var(--unitone--grid-template-rows);
 
 	--unitone--sm-rows: var(--unitone--md-rows);
-	--unitone--sm-repeat-row-height: var(--unitone--md-repeat-row-height);
+	--unitone--sm-row-track-size: var(--unitone--md-row-track-size);
 	--unitone--sm-grid-template-rows: var(--unitone--md-grid-template-rows);
 
 	display: grid;
@@ -120,7 +120,7 @@
 [data-unitone-layout~="-rows\:rows"] {
 	grid-template-rows: repeat(
 		var(--unitone--rows),
-		var(--unitone--repeat-row-height)
+		var(--unitone--row-track-size)
 	);
 }
 

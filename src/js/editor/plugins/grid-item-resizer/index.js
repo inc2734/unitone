@@ -641,6 +641,7 @@ function UnitoneGridItemResizer( { clientId, rootClientId, attributes } ) {
 	const [ rect, setRect ] = useState( null );
 	const [ previewRect, setPreviewRect ] = useState( null );
 	const [ isResizing, setIsResizing ] = useState( false );
+	const [ isMoving, setIsMoving ] = useState( false );
 	const [ settings, setSettings ] = useState( null );
 	const [ gridElement, setGridElement ] = useState( null );
 
@@ -745,11 +746,12 @@ function UnitoneGridItemResizer( { clientId, rootClientId, attributes } ) {
 
 			const win = resolvedBlockElement.ownerDocument.defaultView;
 			const metrics = getGridMetrics( gridElement );
+			const isMove = 'move' === direction;
 			const isColumnResize =
-				( 'left' === direction || 'right' === direction ) &&
+				( isMove || 'left' === direction || 'right' === direction ) &&
 				settings.canResizeColumns;
 			const isRowResize =
-				( 'top' === direction || 'bottom' === direction ) &&
+				( isMove || 'top' === direction || 'bottom' === direction ) &&
 				settings.canResizeRows;
 
 			if (
@@ -778,17 +780,24 @@ function UnitoneGridItemResizer( { clientId, rootClientId, attributes } ) {
 			const maxColumnLine = metrics.columnStartLines.length;
 			const maxRowLine = metrics.rowStartLines.length;
 			const fallbackRect = resolvedBlockElement.getBoundingClientRect();
+			const initialPreviewRect = getPreviewRect( {
+				state,
+				metrics,
+				fallbackRect,
+				useColumns: settings.canResizeColumns,
+				useRows: settings.canResizeRows,
+			} );
+			const pointerOffsetX = event.clientX - initialPreviewRect.left;
+			const pointerOffsetY = event.clientY - initialPreviewRect.top;
+			const previousCursor = win.document.documentElement.style.cursor;
+
+			if ( isMove ) {
+				win.document.documentElement.style.cursor = 'grabbing';
+			}
 
 			setIsResizing( true );
-			setPreviewRect(
-				getPreviewRect( {
-					state,
-					metrics,
-					fallbackRect,
-					useColumns: settings.canResizeColumns,
-					useRows: settings.canResizeRows,
-				} )
-			);
+			setIsMoving( isMove );
+			setPreviewRect( initialPreviewRect );
 
 			const commit = () => {
 				const nextAttributes = { unitone: { ...attributes?.unitone } };
@@ -825,6 +834,35 @@ function UnitoneGridItemResizer( { clientId, rootClientId, attributes } ) {
 			};
 
 			const onPointerMove = ( pointerMoveEvent ) => {
+				if ( isMove ) {
+					const columnSpan = state.columnEnd - state.columnStart;
+					const rowSpan = state.rowEnd - state.rowStart;
+
+					if ( settings.canResizeColumns ) {
+						state.columnStart = clamp(
+							getClosestLine(
+								metrics.columnStartLines,
+								pointerMoveEvent.clientX - pointerOffsetX
+							),
+							1,
+							maxColumnLine - columnSpan
+						);
+						state.columnEnd = state.columnStart + columnSpan;
+					}
+
+					if ( settings.canResizeRows ) {
+						state.rowStart = clamp(
+							getClosestLine(
+								metrics.rowStartLines,
+								pointerMoveEvent.clientY - pointerOffsetY
+							),
+							1,
+							maxRowLine - rowSpan
+						);
+						state.rowEnd = state.rowStart + rowSpan;
+					}
+				}
+
 				if ( 'right' === direction && settings.canResizeColumns ) {
 					state.columnEnd = clamp(
 						getClosestLine(
@@ -884,7 +922,11 @@ function UnitoneGridItemResizer( { clientId, rootClientId, attributes } ) {
 				win.removeEventListener( 'pointermove', onPointerMove );
 				win.removeEventListener( 'pointerup', onPointerEnd );
 				win.removeEventListener( 'pointercancel', onPointerEnd );
+				if ( isMove ) {
+					win.document.documentElement.style.cursor = previousCursor;
+				}
 				setIsResizing( false );
+				setIsMoving( false );
 				commit();
 				win.requestAnimationFrame( () => {
 					setPreviewRect( null );
@@ -917,7 +959,7 @@ function UnitoneGridItemResizer( { clientId, rootClientId, attributes } ) {
 		<div
 			className={ `unitone-grid-item-resizer${
 				isResizing ? ' -is-resizing' : ''
-			}` }
+			}${ isMoving ? ' -is-moving' : '' }` }
 			style={ {
 				top: frameRect.top,
 				left: frameRect.left,
@@ -925,6 +967,7 @@ function UnitoneGridItemResizer( { clientId, rootClientId, attributes } ) {
 				height: frameRect.height,
 			} }
 		>
+			<ResizeHandle direction="move" onPointerDown={ onPointerDown } />
 			{ settings.canResizeColumns && (
 				<>
 					<ResizeHandle

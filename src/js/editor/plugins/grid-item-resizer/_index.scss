@@ -19,12 +19,23 @@
 		height: 14px;
 		margin: 0;
 		padding: 0;
-		background: var(--wp-admin-theme-color, #3858e9);
+		background-color: var(--wp-admin-theme-color, #3858e9);
 		border: 2px solid #fff;
 		border-radius: 50%;
 		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
 		pointer-events: auto;
 		visibility: visible;
+
+		&.-move {
+			top: .5px;
+			right: 0;
+			cursor: move;
+			transform: translate(50%, -50%);
+			width: 10px;
+			height: 10px;
+			background-color: #fff;
+			box-shadow: 0 0 0 1.5px var(--wp-admin-theme-color, #3858e9);
+		}
 
 		&.-left,
 		&.-right {
@@ -57,5 +68,9 @@
 			bottom: 0;
 			transform: translate(-50%, 50%);
 		}
+	}
+
+	&.-is-moving &__handle.-move {
+		cursor: grabbing;
 	}
 }

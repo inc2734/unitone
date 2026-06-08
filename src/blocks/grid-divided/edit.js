@@ -71,12 +71,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		smGridTemplateColumns,
 		rowsOption,
 		rows,
+		repeatRowHeight,
 		gridTemplateRows,
 		mdRowsOption,
 		mdRows,
+		mdRepeatRowHeight,
 		mdGridTemplateRows,
 		smRowsOption,
 		smRows,
+		smRepeatRowHeight,
 		smGridTemplateRows,
 		mdBreakpoint,
 		smBreakpoint,
@@ -130,14 +133,20 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			undefined,
 		'--unitone--rows':
 			( 'rows' === rowsOption && parseString( rows ) ) || undefined,
+		'--unitone--repeat-row-height':
+			( 'rows' === rowsOption && repeatRowHeight ) || undefined,
 		'--unitone--grid-template-rows':
 			( 'free' === rowsOption && gridTemplateRows ) || undefined,
 		'--unitone--md-rows':
 			( 'rows' === mdRowsOption && parseString( mdRows ) ) || undefined,
+		'--unitone--md-repeat-row-height':
+			( 'rows' === mdRowsOption && mdRepeatRowHeight ) || undefined,
 		'--unitone--md-grid-template-rows':
 			( 'free' === mdRowsOption && mdGridTemplateRows ) || undefined,
 		'--unitone--sm-rows':
 			( 'rows' === smRowsOption && parseString( smRows ) ) || undefined,
+		'--unitone--sm-repeat-row-height':
+			( 'rows' === smRowsOption && smRepeatRowHeight ) || undefined,
 		'--unitone--sm-grid-template-rows':
 			( 'free' === smRowsOption && smGridTemplateRows ) || undefined,
 	};
@@ -162,10 +171,12 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				( 'free' === smColumnsOption && !! smGridTemplateColumns ),
 			[ `-rows:${ rowsOption }` ]: !! rowsOption,
 			[ `-rows:md:${ mdRowsOption }` ]:
-				( 'rows' === mdRowsOption && !! mdRows ) ||
+				( 'rows' === mdRowsOption &&
+					( !! mdRows || !! mdRepeatRowHeight ) ) ||
 				( 'free' === mdRowsOption && !! mdGridTemplateRows ),
 			[ `-rows:sm:${ smRowsOption }` ]:
-				( 'rows' === smRowsOption && !! smRows ) ||
+				( 'rows' === smRowsOption &&
+					( !! smRows || !! smRepeatRowHeight ) ) ||
 				( 'free' === smRowsOption && !! smGridTemplateRows ),
 		}
 	);
@@ -749,7 +760,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								metadata.attributes.smRowsOption.default ||
 							rows !== metadata.attributes.rows.default ||
 							mdRows !== metadata.attributes.mdRows.default ||
-							smRows !== metadata.attributes.smRows.default
+							smRows !== metadata.attributes.smRows.default ||
+							repeatRowHeight !==
+								metadata.attributes.repeatRowHeight.default ||
+							mdRepeatRowHeight !==
+								metadata.attributes.mdRepeatRowHeight.default ||
+							smRepeatRowHeight !==
+								metadata.attributes.smRepeatRowHeight.default
 						}
 						isShownByDefault
 						label={ 'grid-template-rows' }
@@ -758,6 +775,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								rowsOption:
 									metadata.attributes.rowsOption.default,
 								rows: metadata.attributes.rows.default,
+								repeatRowHeight:
+									metadata.attributes.repeatRowHeight.default,
 								gridTemplateRows:
 									metadata.attributes.gridTemplateRows
 										.default,
@@ -765,6 +784,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								mdRowsOption:
 									metadata.attributes.mdRowsOption.default,
 								mdRows: metadata.attributes.mdRows.default,
+								mdRepeatRowHeight:
+									metadata.attributes.mdRepeatRowHeight
+										.default,
 								mdGridTemplateRows:
 									metadata.attributes.mdGridTemplateRows
 										.default,
@@ -772,6 +794,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								smRowsOption:
 									metadata.attributes.smRowsOption.default,
 								smRows: metadata.attributes.smRows.default,
+								smRepeatRowHeight:
+									metadata.attributes.smRepeatRowHeight
+										.default,
 								smGridTemplateRows:
 									metadata.attributes.smGridTemplateRows
 										.default,
@@ -842,27 +867,61 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 									<div className="unitone-toggle-group-control__body">
 										{ 'rows' === rowsOption && (
-											<RangeControl
-												__next40pxDefaultSize
-												__nextHasNoMarginBottom
-												label={ __(
-													'Rows count',
-													'unitone'
-												) }
-												value={ normalizeForRangeControl(
-													rows
-												) }
-												onChange={ ( value ) =>
-													setAttributes( {
-														rows: normalizeForRangeControl(
-															value
-														),
-													} )
-												}
-												min={ 1 }
-												max={ 12 }
-												step={ 1 }
-											/>
+											<>
+												<RangeControl
+													__next40pxDefaultSize
+													__nextHasNoMarginBottom
+													label={ __(
+														'Rows count',
+														'unitone'
+													) }
+													value={ normalizeForRangeControl(
+														rows
+													) }
+													onChange={ ( value ) =>
+														setAttributes( {
+															rows: normalizeForRangeControl(
+																value
+															),
+														} )
+													}
+													min={ 1 }
+													max={ 12 }
+													step={ 1 }
+												/>
+												<ToggleGroupControl
+													__next40pxDefaultSize
+													__nextHasNoMarginBottom
+													label={ __(
+														'Row height',
+														'unitone'
+													) }
+													value={ normalizeForToggleGroupControl(
+														repeatRowHeight ||
+															metadata.attributes
+																.repeatRowHeight
+																.default
+													) }
+													onChange={ ( value ) =>
+														setAttributes( {
+															repeatRowHeight:
+																normalizeForToggleGroupControl(
+																	value
+																),
+														} )
+													}
+													isBlock
+												>
+													<ToggleGroupControlOption
+														value="1fr"
+														label="1fr"
+													/>
+													<ToggleGroupControlOption
+														value="auto"
+														label="auto"
+													/>
+												</ToggleGroupControl>
+											</>
 										) }
 
 										{ 'free' === rowsOption && (
@@ -935,34 +994,72 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 									<div className="unitone-toggle-group-control__body">
 										{ 'rows' === mdRowsOption && (
-											<RangeControl
-												__next40pxDefaultSize
-												__nextHasNoMarginBottom
-												label={ `${ __(
-													'Rows count',
-													'unitone'
-												) } (${ __(
-													'For tablet / mobile',
-													'unitone'
-												) })` }
-												value={ normalizeForRangeControl(
-													mdRows ||
-														( 'rows' ===
-															rowsOption &&
-															rows )
-												) }
-												onChange={ ( value ) =>
-													setAttributes( {
-														mdRows: normalizeForRangeControl(
-															value
-														),
-													} )
-												}
-												min={ 1 }
-												max={ 12 }
-												step={ 1 }
-												allowReset
-											/>
+											<>
+												<RangeControl
+													__next40pxDefaultSize
+													__nextHasNoMarginBottom
+													label={ `${ __(
+														'Rows count',
+														'unitone'
+													) } (${ __(
+														'For tablet / mobile',
+														'unitone'
+													) })` }
+													value={ normalizeForRangeControl(
+														mdRows ||
+															( 'rows' ===
+																rowsOption &&
+																rows )
+													) }
+													onChange={ ( value ) =>
+														setAttributes( {
+															mdRows: normalizeForRangeControl(
+																value
+															),
+														} )
+													}
+													min={ 1 }
+													max={ 12 }
+													step={ 1 }
+													allowReset
+												/>
+												<ToggleGroupControl
+													__next40pxDefaultSize
+													__nextHasNoMarginBottom
+													label={ `${ __(
+														'Row height',
+														'unitone'
+													) } (${ __(
+														'For tablet / mobile',
+														'unitone'
+													) })` }
+													value={ normalizeForToggleGroupControl(
+														mdRepeatRowHeight ||
+															repeatRowHeight ||
+															metadata.attributes
+																.repeatRowHeight
+																.default
+													) }
+													onChange={ ( value ) =>
+														setAttributes( {
+															mdRepeatRowHeight:
+																normalizeForToggleGroupControl(
+																	value
+																),
+														} )
+													}
+													isBlock
+												>
+													<ToggleGroupControlOption
+														value="1fr"
+														label="1fr"
+													/>
+													<ToggleGroupControlOption
+														value="auto"
+														label="auto"
+													/>
+												</ToggleGroupControl>
+											</>
 										) }
 
 										{ 'free' === mdRowsOption && (
@@ -1036,37 +1133,76 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 									<div className="unitone-toggle-group-control__body">
 										{ 'rows' === smRowsOption && (
-											<RangeControl
-												__next40pxDefaultSize
-												__nextHasNoMarginBottom
-												label={ `${ __(
-													'Rows count',
-													'unitone'
-												) } (${ __(
-													'For mobile',
-													'unitone'
-												) })` }
-												value={ normalizeForRangeControl(
-													smRows ||
-														( 'rows' ===
-															mdRowsOption &&
-															mdRows ) ||
-														( 'rows' ===
-															rowsOption &&
-															rows )
-												) }
-												onChange={ ( value ) =>
-													setAttributes( {
-														smRows: normalizeForRangeControl(
-															value
-														),
-													} )
-												}
-												min={ 1 }
-												max={ 12 }
-												step={ 1 }
-												allowReset
-											/>
+											<>
+												<RangeControl
+													__next40pxDefaultSize
+													__nextHasNoMarginBottom
+													label={ `${ __(
+														'Rows count',
+														'unitone'
+													) } (${ __(
+														'For mobile',
+														'unitone'
+													) })` }
+													value={ normalizeForRangeControl(
+														smRows ||
+															( 'rows' ===
+																mdRowsOption &&
+																mdRows ) ||
+															( 'rows' ===
+																rowsOption &&
+																rows )
+													) }
+													onChange={ ( value ) =>
+														setAttributes( {
+															smRows: normalizeForRangeControl(
+																value
+															),
+														} )
+													}
+													min={ 1 }
+													max={ 12 }
+													step={ 1 }
+													allowReset
+												/>
+												<ToggleGroupControl
+													__next40pxDefaultSize
+													__nextHasNoMarginBottom
+													label={ `${ __(
+														'Row height',
+														'unitone'
+													) } (${ __(
+														'For mobile',
+														'unitone'
+													) })` }
+													value={ normalizeForToggleGroupControl(
+														smRepeatRowHeight ||
+															mdRepeatRowHeight ||
+															repeatRowHeight ||
+															metadata.attributes
+																.repeatRowHeight
+																.default
+													) }
+													onChange={ ( value ) =>
+														setAttributes( {
+															smRepeatRowHeight:
+																normalizeForToggleGroupControl(
+																	value
+																),
+														} )
+													}
+													isBlock
+												>
+													<ToggleGroupControlOption
+														value="1fr"
+														label="1fr"
+													/>
+													<ToggleGroupControlOption
+														value="auto"
+														label="auto"
+													/>
+												</ToggleGroupControl>
+											</>
 										) }
 
 										{ 'free' === smRowsOption && (

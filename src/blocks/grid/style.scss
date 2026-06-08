@@ -1,7 +1,7 @@
 @use "sass:string";
 
 @function min($values...) {
-	@return string.unquote('min(#{$values})');
+	@return string.unquote("min(#{$values})");
 }
 
 .unitone-grid {
@@ -23,15 +23,20 @@
 
 	--unitone--sm-columns: var(--unitone--md-columns);
 	--unitone--sm-column-min-width: var(--unitone--md-column-min-width);
-	--unitone--sm-grid-template-columns: var(--unitone--md-grid-template-columns);
+	--unitone--sm-grid-template-columns: var(
+		--unitone--md-grid-template-columns
+	);
 
 	--unitone--rows: 1;
+	--unitone--repeat-row-height: 1fr;
 	--unitone--grid-template-rows: none;
 
 	--unitone--md-rows: var(--unitone--rows);
+	--unitone--md-repeat-row-height: var(--unitone--repeat-row-height);
 	--unitone--md-grid-template-rows: var(--unitone--grid-template-rows);
 
 	--unitone--sm-rows: var(--unitone--md-rows);
+	--unitone--sm-repeat-row-height: var(--unitone--md-repeat-row-height);
 	--unitone--sm-grid-template-rows: var(--unitone--md-grid-template-rows);
 
 	display: grid;
@@ -102,16 +107,21 @@
 }
 
 [data-unitone-layout~="-columns\:min"] {
-	grid-template-columns: repeat(var(--unitone--column-auto-repeat), minmax(min(var(--unitone--column-min-width), 100%), 1fr));
+	grid-template-columns: repeat(
+		var(--unitone--column-auto-repeat),
+		minmax(min(var(--unitone--column-min-width), 100%), 1fr)
+	);
 }
 
 [data-unitone-layout~="-columns\:free"] {
 	grid-template-columns: var(--unitone--grid-template-columns);
 }
 
-
 [data-unitone-layout~="-rows\:rows"] {
-	grid-template-rows: repeat(var(--unitone--rows), 1fr);
+	grid-template-rows: repeat(
+		var(--unitone--rows),
+		var(--unitone--repeat-row-height)
+	);
 }
 
 [data-unitone-layout~="-rows\:free"] {

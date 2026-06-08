@@ -209,7 +209,10 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 		'columns_columns' => 'columns' === $md_columns_option && ( $attributes['mdColumns'] ?? null ),
 		'columns_min'     => 'min' === $md_columns_option && ( $attributes['mdColumnMinWidth'] ?? null ),
 		'columns_free'    => 'free' === $md_columns_option && ( $attributes['mdGridTemplateColumns'] ?? null ),
-		'rows_rows'       => 'rows' === $md_rows_option && ( $attributes['mdRows'] ?? null ),
+		'rows_rows'       => 'rows' === $md_rows_option && (
+			( $attributes['mdRows'] ?? null ) ||
+			( $attributes['mdRepeatRowHeight'] ?? null )
+		),
 		'rows_free'       => 'free' === $md_rows_option && ( $attributes['mdGridTemplateRows'] ?? null ),
 		'items'           => $has_md_item_responsive,
 	);
@@ -218,7 +221,10 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 		'columns_columns' => 'columns' === $sm_columns_option && ( $attributes['smColumns'] ?? null ),
 		'columns_min'     => 'min' === $sm_columns_option && ( $attributes['smColumnMinWidth'] ?? null ),
 		'columns_free'    => 'free' === $sm_columns_option && ( $attributes['smGridTemplateColumns'] ?? null ),
-		'rows_rows'       => 'rows' === $sm_rows_option && ( $attributes['smRows'] ?? null ),
+		'rows_rows'       => 'rows' === $sm_rows_option && (
+			( $attributes['smRows'] ?? null ) ||
+			( $attributes['smRepeatRowHeight'] ?? null )
+		),
 		'rows_free'       => 'free' === $sm_rows_option && ( $attributes['smGridTemplateRows'] ?? null ),
 		'items'           => $has_sm_item_responsive,
 	);
@@ -283,7 +289,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 
 			if ( $rows_rows ) {
 				$rules[] = sprintf(
-					'%1$s[data-unitone-layout~="-rows\\:%2$s\\:rows"] { grid-template-rows: repeat(var(%3$s-rows), 1fr); }',
+					'%1$s[data-unitone-layout~="-rows\\:%2$s\\:rows"] { grid-template-rows: repeat(var(%3$s-rows), var(%3$s-repeat-row-height)); }',
 					$selector,
 					$size,
 					$prefix

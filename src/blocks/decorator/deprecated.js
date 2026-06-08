@@ -7,10 +7,18 @@ import metadata from './block.json';
 
 import { cleanEmptyObject } from '../../js/editor/hooks/utils';
 
+const deprecatedAttributes = {
+	...metadata.attributes,
+	unitone: {
+		type: 'object',
+		...metadata.attributes.unitone,
+	},
+};
+
 export default [
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 		},
 
 		supports: {
@@ -55,7 +63,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			shadow: {
 				type: 'boolean',
 				default: false,
@@ -122,7 +130,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			shadow: {
 				type: 'boolean',
 				default: false,
@@ -186,7 +194,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			shadow: {
 				type: 'boolean',
 				default: false,
@@ -301,7 +309,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			shadow: {
 				type: 'boolean',
 				default: false,

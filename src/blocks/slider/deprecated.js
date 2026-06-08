@@ -13,10 +13,18 @@ import { isNumber } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
 
+const deprecatedAttributes = {
+	...metadata.attributes,
+	unitone: {
+		type: 'object',
+		...metadata.attributes.unitone,
+	},
+};
+
 export default [
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			speed: {
 				type: 'number',
 			},
@@ -235,7 +243,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			speed: {
 				type: 'number',
 			},
@@ -442,7 +450,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			speed: {
 				type: 'number',
 			},
@@ -588,7 +596,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			arrowsIcon: {
 				...metadata.attributes.arrowsIcon,
 				default: {
@@ -675,7 +683,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			arrowsIcon: {
 				...metadata.attributes.arrowsIcon,
 				default: {

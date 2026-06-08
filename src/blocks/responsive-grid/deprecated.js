@@ -4,10 +4,18 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 import metadata from './block.json';
 
+const deprecatedAttributes = {
+	...metadata.attributes,
+	unitone: {
+		type: 'object',
+		...metadata.attributes.unitone,
+	},
+};
+
 export default [
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			columnMinWidth: {
 				type: 'string',
 				default: '',
@@ -38,7 +46,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			columnMinWidth: {
 				type: 'string',
 				default: '',
@@ -74,7 +82,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			columnMinWidth: {
 				type: 'string',
 				default: '',

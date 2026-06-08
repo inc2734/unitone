@@ -10,10 +10,18 @@ import { ChevronDown, Cross } from './mark';
 
 import metadata from './block.json';
 
+const deprecatedAttributes = {
+	...metadata.attributes,
+	unitone: {
+		type: 'object',
+		...metadata.attributes.unitone,
+	},
+};
+
 export default [
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 		},
 
 		supports: {
@@ -119,7 +127,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			qWidth: {
 				type: 'string',
 				default: '',
@@ -220,7 +228,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			qWidth: {
 				type: 'string',
 				default: '',
@@ -325,7 +333,7 @@ export default [
 	},
 	{
 		attributes: {
-			...metadata.attributes,
+			...deprecatedAttributes,
 			summary: {
 				type: 'string',
 			},

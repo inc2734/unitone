@@ -34,6 +34,43 @@ function unitone_add_auto_phrase_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_auto_phrase_support' );
 
 /**
+ * Show Font and Appearance controls by default in typography panel.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_default_typography_controls( $metadata ) {
+	if ( empty( $metadata['supports']['typography'] ) || ! is_array( $metadata['supports']['typography'] ) ) {
+		return $metadata;
+	}
+
+	$typography       = $metadata['supports']['typography'];
+	$default_controls = $typography['__experimentalDefaultControls'] ?? array();
+
+	if ( ! is_array( $default_controls ) ) {
+		$default_controls = array();
+	}
+
+	if ( ! empty( $typography['__experimentalFontFamily'] ) || ! empty( $typography['fontFamily'] ) ) {
+		$default_controls['fontFamily'] = true;
+	}
+
+	if (
+		! empty( $typography['__experimentalFontStyle'] ) ||
+		! empty( $typography['fontStyle'] ) ||
+		! empty( $typography['__experimentalFontWeight'] ) ||
+		! empty( $typography['fontWeight'] )
+	) {
+		$default_controls['fontAppearance'] = true;
+	}
+
+	$metadata['supports']['typography']['__experimentalDefaultControls'] = $default_controls;
+
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_default_typography_controls' );
+
+/**
  * Add support "fluidTypography" to core blocks with typography.fontSize.
  *
  * @param array $metadata Metadata for registering a block type.

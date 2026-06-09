@@ -519,7 +519,10 @@
 }
 
 .unitone-grid-visualizer {
+	--wp-ui-popover-z-index: 30;
+
 	pointer-events: none;
+	z-index: 30;
 
 	&__cells {
 		display: grid;

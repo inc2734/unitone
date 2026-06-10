@@ -116,25 +116,6 @@ function unitone_register_blocks() {
 add_action( 'init', 'unitone_register_blocks' );
 
 /**
- * Fallback patch for unitone/cover.
- */
-add_filter(
-	'render_block_unitone/center',
-	function ( $block_content, $block ) {
-		if ( ! isset( $block['attrs']['intrinsic'] ) && false === strpos( $block_content, '-intrinsic' ) ) {
-			$p = new \WP_HTML_Tag_Processor( $block_content );
-			$p->next_tag();
-			$p->set_attribute( 'data-unitone-layout', $p->get_attribute( 'data-unitone-layout' ) . ' -intrinsic' );
-			$block_content = $p->get_updated_html();
-		}
-		return $block_content;
-	},
-	10,
-	2
-);
-
-
-/**
  * Add styles with breakpoints fto unitoone/grid.
  *
  * @param string $block_content The block content.

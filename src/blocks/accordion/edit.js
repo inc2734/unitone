@@ -2,6 +2,7 @@ import clsx from 'clsx';
 
 import {
 	ButtonBlockAppender,
+	BlockControls,
 	InspectorControls,
 	RichText,
 	useBlockProps,
@@ -13,14 +14,16 @@ import {
 	BaseControl,
 	Button,
 	TextControl,
+	ToolbarButton,
 	ToggleControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
 import { useSelect } from '@wordpress/data';
-import { memo, useCallback } from '@wordpress/element';
+import { memo, useCallback, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { pin } from '@wordpress/icons';
 
 import {
 	normalizeForTextControl,
@@ -48,6 +51,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		style,
 		templateLock,
 	} = attributes;
+
+	const [ accordionOpenState, setAccordionOpenState ] = useState();
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -104,10 +109,31 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
+	const isAccordionFixedOpen = 'open' === accordionOpenState;
+	const isAccordionOpen =
+		isAccordionFixedOpen || hasSelection || openByDefault;
+
+	const accordionToggleLabel = isAccordionFixedOpen
+		? __( 'Cancel keep open', 'unitone' )
+		: __( 'keep open', 'unitone' );
+
+	const toggleAccordionOpen = useCallback( () => {
+		setAccordionOpenState( isAccordionFixedOpen ? undefined : 'open' );
+	}, [ isAccordionFixedOpen ] );
+
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 	return (
 		<>
+			<BlockControls group="block">
+				<ToolbarButton
+					icon={ pin }
+					label={ accordionToggleLabel }
+					isPressed={ isAccordionFixedOpen }
+					onClick={ toggleAccordionOpen }
+				/>
+			</BlockControls>
+
 			<InspectorControls>
 				<ToolsPanel
 					label={ __( 'Settings', 'unitone' ) }
@@ -337,8 +363,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<details { ...blockProps } open={ hasSelection || openByDefault }>
-				<summary // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+			<details { ...blockProps } open={ isAccordionOpen }>
+				<summary
 					className="unitone-accordion__summary"
 					onClick={ ( event ) => event.preventDefault() }
 				>

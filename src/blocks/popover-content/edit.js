@@ -38,12 +38,46 @@ import metadata from './block.json';
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 const TEMPLATE = [ [ 'unitone/popover-dialog', {}, [ [ 'core/paragraph' ] ] ] ];
+const DEFAULT_POPOVER_OFFSET = 8;
+
+const getResolvedPixelValue = ( element, value ) => {
+	if ( ! element || ! value ) {
+		return DEFAULT_POPOVER_OFFSET;
+	}
+
+	const ownerDocument = element.ownerDocument;
+	const defaultView = ownerDocument?.defaultView;
+	if ( ! defaultView ) {
+		return DEFAULT_POPOVER_OFFSET;
+	}
+
+	const measuringElement = ownerDocument.createElement( 'div' );
+	measuringElement.style.position = 'absolute';
+	measuringElement.style.visibility = 'hidden';
+	measuringElement.style.pointerEvents = 'none';
+	measuringElement.style.inset = '0 auto auto 0';
+	measuringElement.style.width = value;
+	measuringElement.style.height = '0';
+
+	element.appendChild( measuringElement );
+	const resolvedValue = parseFloat(
+		defaultView.getComputedStyle( measuringElement ).width
+	);
+	measuringElement.remove();
+
+	return Number.isNaN( resolvedValue )
+		? DEFAULT_POPOVER_OFFSET
+		: resolvedValue;
+};
 
 export default function ( { attributes, setAttributes, clientId } ) {
 	const { placement, templateLock } = attributes;
 
 	const ref = useRef();
 	const [ triggerElement, setTriggerElement ] = useState( null );
+	const [ popoverOffset, setPopoverOffset ] = useState(
+		DEFAULT_POPOVER_OFFSET
+	);
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>
@@ -66,6 +100,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			);
 		},
 		[ clientId ]
+	);
+
+	const parentGap = useSelect(
+		( select ) =>
+			parentClientId
+				? select( blockEditorStore ).getBlock( parentClientId )
+						?.attributes?.unitone?.gap
+				: undefined,
+		[ parentClientId ]
 	);
 
 	const hasSelection = useSelect(
@@ -93,6 +136,29 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		);
 	}, [] );
 
+	const updatePopoverOffset = useCallback( () => {
+		const element = ref.current?.parentNode;
+		if ( ! element ) {
+			return;
+		}
+
+		const defaultView = element.ownerDocument?.defaultView;
+		if ( ! defaultView ) {
+			return;
+		}
+
+		const gap =
+			defaultView
+				.getComputedStyle( element )
+				.getPropertyValue( '--unitone--gap' )
+				.trim() || `${ DEFAULT_POPOVER_OFFSET }px`;
+		const nextOffset = getResolvedPixelValue( element, gap );
+
+		setPopoverOffset( ( currentOffset ) =>
+			currentOffset === nextOffset ? currentOffset : nextOffset
+		);
+	}, [] );
+
 	useEffect( () => {
 		const trigger = getTriggerElement();
 		if ( triggerElement === trigger ) {
@@ -105,6 +171,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 		setTriggerElement( trigger );
 	}, [ clientId, getTriggerElement, triggerElement ] );
+
+	useEffect( () => {
+		updatePopoverOffset();
+	}, [ parentGap, updatePopoverOffset ] );
 
 	const renderAppender = useCallback(
 		() => <MemoizedButtonBlockAppender rootClientId={ clientId } />,
@@ -192,7 +262,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				<EditorPopover
 					anchor={ triggerElement }
 					placement={ placement }
-					offset={ 8 }
+					offset={ popoverOffset }
 				>
 					<div { ...innerBlocksProps } />
 				</EditorPopover>

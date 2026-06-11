@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-10T08:34:45+00:00\n"
+"POT-Creation-Date: 2026-06-11T05:50:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2199,6 +2199,7 @@ msgstr ""
 #: dist/blocks/marquee/index.js:1
 #: dist/blocks/masonry/index.js:2
 #: dist/blocks/popover-content/index.js:1
+#: dist/blocks/popover/index.js:1
 #: dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
@@ -2925,11 +2926,13 @@ msgid "Placement"
 msgstr ""
 
 #: dist/blocks/popover-content/index.js:1
+#: dist/blocks/popover/index.js:1
 #: dist/js/editor/editor.js:13
 msgid "Top"
 msgstr ""
 
 #: dist/blocks/popover-content/index.js:1
+#: dist/blocks/popover/index.js:1
 #: dist/blocks/section/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
@@ -2939,11 +2942,13 @@ msgid "Right"
 msgstr ""
 
 #: dist/blocks/popover-content/index.js:1
+#: dist/blocks/popover/index.js:1
 #: dist/js/editor/editor.js:13
 msgid "Bottom"
 msgstr ""
 
 #: dist/blocks/popover-content/index.js:1
+#: dist/blocks/popover/index.js:1
 #: dist/blocks/section/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
@@ -2955,6 +2960,10 @@ msgstr ""
 #: dist/blocks/popover-trigger/index.js:1
 #: dist/blocks/popover/index.js:1
 msgid "Open popover"
+msgstr ""
+
+#: dist/blocks/popover/index.js:1
+msgid "Popover placement"
 msgstr ""
 
 #: dist/blocks/reel/index.js:1

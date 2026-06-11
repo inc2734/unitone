@@ -23,7 +23,7 @@ import {
 	useState,
 } from '@wordpress/element';
 
-import { useSelect } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { EditorPopover } from '../components';
@@ -111,6 +111,35 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ parentClientId ]
 	);
 
+	const parentPlacement = useSelect(
+		( select ) =>
+			parentClientId
+				? select( blockEditorStore ).getBlock( parentClientId )
+						?.attributes?.placement
+				: undefined,
+		[ parentClientId ]
+	);
+
+	const { updateBlockAttributes } = useDispatch( blockEditorStore );
+
+	const setPlacement = useCallback(
+		( newAttribute ) => {
+			const nextPlacement =
+				normalizeForToggleGroupControl( newAttribute );
+
+			setAttributes( {
+				placement: nextPlacement,
+			} );
+
+			if ( parentClientId ) {
+				updateBlockAttributes( parentClientId, {
+					placement: nextPlacement,
+				} );
+			}
+		},
+		[ parentClientId, setAttributes, updateBlockAttributes ]
+	);
+
 	const hasSelection = useSelect(
 		( select ) => {
 			const { isBlockSelected, hasSelectedInnerBlock } =
@@ -182,11 +211,16 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 
 	const blockProps = useBlockProps();
+	const effectivePlacement =
+		placement === metadata.attributes.placement.default && parentPlacement
+			? parentPlacement
+			: placement;
+
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'popover-content',
 		blockProps[ 'data-unitone-layout' ],
 		{
-			[ `-placement:${ placement }` ]: !! placement,
+			[ `-placement:${ effectivePlacement }` ]: !! effectivePlacement,
 		}
 	);
 
@@ -208,15 +242,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				>
 					<ToolsPanelItem
 						hasValue={ () =>
-							placement !== metadata.attributes.placement.default
+							effectivePlacement !==
+							metadata.attributes.placement.default
 						}
 						isShownByDefault
 						label={ __( 'Placement', 'unitone' ) }
 						onDeselect={ () =>
-							setAttributes( {
-								placement:
-									metadata.attributes.placement.default,
-							} )
+							setPlacement(
+								metadata.attributes.placement.default
+							)
 						}
 					>
 						<ToggleGroupControl
@@ -224,16 +258,9 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							__nextHasNoMarginBottom
 							label={ __( 'Placement', 'unitone' ) }
 							value={ normalizeForToggleGroupControl(
-								placement
+								effectivePlacement
 							) }
-							onChange={ ( newAttribute ) =>
-								setAttributes( {
-									placement:
-										normalizeForToggleGroupControl(
-											newAttribute
-										),
-								} )
-							}
+							onChange={ setPlacement }
 						>
 							<ToggleGroupControlOption
 								label={ __( 'Top', 'unitone' ) }
@@ -261,7 +288,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			{ hasSelection && !! triggerElement && (
 				<EditorPopover
 					anchor={ triggerElement }
-					placement={ placement }
+					placement={ effectivePlacement }
 					offset={ popoverOffset }
 				>
 					<div { ...innerBlocksProps } />

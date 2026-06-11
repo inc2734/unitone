@@ -25,6 +25,12 @@ function render_block_unitone_popover( $attributes, $content, $block ) {
 		return $content;
 	}
 
+	$placements = array( 'top', 'right', 'bottom', 'left' );
+	$placement  = $attributes['placement'] ?? null;
+	if ( ! in_array( $placement, $placements, true ) ) {
+		$placement = null;
+	}
+
 	/**
 	 * Updates popover trigger markup.
 	 *
@@ -143,6 +149,32 @@ function render_block_unitone_popover( $attributes, $content, $block ) {
 		$layout = $p->get_attribute( 'data-unitone-layout' );
 		if ( ! is_string( $layout ) || false === strpos( $layout, 'popover-content' ) ) {
 			continue;
+		}
+
+		if ( $placement && 'bottom' !== $placement ) {
+			$layout_items            = preg_split( '/\s+/', trim( $layout ) );
+			$has_content_placement   = false;
+			$next_layout_items       = array();
+			$placement_token_pattern = '/^-placement:(top|right|bottom|left)$/';
+
+			foreach ( $layout_items as $layout_item ) {
+				if ( preg_match( $placement_token_pattern, $layout_item ) ) {
+					if ( '-placement:bottom' !== $layout_item ) {
+						$has_content_placement = true;
+					}
+					continue;
+				}
+
+				$next_layout_items[] = $layout_item;
+			}
+
+			if ( ! $has_content_placement ) {
+				$next_layout_items[] = '-placement:' . $placement;
+				$p->set_attribute(
+					'data-unitone-layout',
+					implode( ' ', $next_layout_items )
+				);
+			}
 		}
 
 		$popover_content_id = $p->get_attribute( 'id' );

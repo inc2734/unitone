@@ -52,7 +52,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		templateLock,
 	} = attributes;
 
-	const [ accordionOpenState, setAccordionOpenState ] = useState();
+	const [ accordionOpenState, setAccordionOpenState ] = useState( 'open' );
 
 	const hasInnerBlocks = useSelect(
 		( select ) =>

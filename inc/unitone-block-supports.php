@@ -630,8 +630,8 @@ add_filter(
 
 		// --unitone--backdrop-filter
 		$backdrop_filter_props = ( function () use ( $metadata, $get_attribute ) {
-			$backdrop_filter_props = array();
-			$backdrop_filter_support = unitone_get_block_support( 'unitone.backdropFilter', $metadata );
+			$backdrop_filter_props            = array();
+			$backdrop_filter_support          = unitone_get_block_support( 'unitone.backdropFilter', $metadata );
 			$has_backdrop_filter_prop_support = function ( $prop ) use ( $metadata, $backdrop_filter_support ) {
 				return (
 					unitone_has_block_support( 'unitone.backdropFilter.' . $prop, $metadata ) ||
@@ -729,7 +729,7 @@ add_filter(
 		}
 
 		// --unitone--progressive-backdrop-filter
-		$backdrop_filter_support = unitone_get_block_support( 'unitone.backdropFilter', $metadata );
+		$backdrop_filter_support                 = unitone_get_block_support( 'unitone.backdropFilter', $metadata );
 		$has_progressive_backdrop_filter_support = (
 			unitone_has_block_support( 'unitone.backdropFilter.progressive', $metadata ) ||
 			true === $backdrop_filter_support ||

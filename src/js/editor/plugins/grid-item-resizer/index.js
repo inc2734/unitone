@@ -532,6 +532,9 @@ const getDocumentCandidates = ( baseDocument = document ) => {
 	return documents;
 };
 
+const isBlockCanvasElement = ( element ) =>
+	element?.classList?.contains( 'block-editor-block-list__block' );
+
 const getBlockElement = ( clientId, baseDocument = document ) => {
 	if ( ! clientId ) {
 		return null;
@@ -541,10 +544,10 @@ const getBlockElement = ( clientId, baseDocument = document ) => {
 
 	for ( const currentDocument of getDocumentCandidates( baseDocument ) ) {
 		const element = currentDocument.querySelector(
-			`[data-block="${ escapedClientId }"]`
+			`[data-block="${ escapedClientId }"].block-editor-block-list__block`
 		);
 
-		if ( element ) {
+		if ( isBlockCanvasElement( element ) ) {
 			return element;
 		}
 	}
@@ -564,7 +567,7 @@ const getGridElement = ( blockElement, rootClientId ) => {
 			`[data-unitone-client-id="${ escapedClientId }"]`
 		) ||
 		blockElement.ownerDocument.querySelector(
-			`[data-block="${ escapedClientId }"]`
+			`[data-block="${ escapedClientId }"].block-editor-block-list__block`
 		) ||
 		getBlockElement( rootClientId, blockElement.ownerDocument ) ||
 		blockElement.parentElement

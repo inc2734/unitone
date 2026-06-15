@@ -1,3 +1,7 @@
 [data-unitone-layout~="with-sidebar"][data-unitone-layout*="-divider:"] {
 	--unitone--divider-color: var(--wp--preset--color--unitone-light-gray);
+
+	> [data-unitone-layout~="with-sidebar__content"] {
+		justify-content: normal;
+	}
 }

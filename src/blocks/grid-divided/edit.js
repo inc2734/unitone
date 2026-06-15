@@ -51,6 +51,20 @@ const parseString = ( value ) => {
 	return null !== value && '' !== value ? value : undefined;
 };
 
+const getRangeControlValue = ( ...values ) => {
+	const value = values.find(
+		( candidate ) => undefined !== parseString( candidate )
+	);
+	return undefined === value ? '' : normalizeForRangeControl( value );
+};
+
+const getStringControlValue = ( ...values ) => {
+	const value = values.find(
+		( candidate ) => undefined !== parseString( candidate )
+	);
+	return parseString( value ) || '';
+};
+
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 export default function ( { attributes, setAttributes, clientId } ) {
@@ -526,11 +540,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={ normalizeForUnitControl(
-													mdColumnMinWidth ||
-														( 'min' ===
-															columnsOption &&
-															columnMinWidth )
+												value={ getStringControlValue(
+													mdColumnMinWidth,
+													'min' === columnsOption
+														? columnMinWidth
+														: undefined
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -554,11 +568,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={ normalizeForRangeControl(
-													mdColumns ||
-														( 'columns' ===
-															columnsOption &&
-															columns )
+												value={ getRangeControlValue(
+													mdColumns,
+													'columns' === columnsOption
+														? columns
+														: undefined
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -586,11 +600,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={ normalizeForTextControl(
-													mdGridTemplateColumns ||
-														( 'free' ===
-															columnsOption &&
-															gridTemplateColumns )
+												value={ getStringControlValue(
+													mdGridTemplateColumns,
+													'free' === columnsOption
+														? gridTemplateColumns
+														: undefined
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -659,14 +673,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={ normalizeForUnitControl(
-													smColumnMinWidth ||
-														( 'min' ===
-															mdColumnsOption &&
-															mdColumnMinWidth ) ||
-														( 'min' ===
-															columnsOption &&
-															columnMinWidth )
+												value={ getStringControlValue(
+													smColumnMinWidth,
+													'min' === mdColumnsOption
+														? mdColumnMinWidth
+														: undefined,
+													'min' === columnsOption
+														? columnMinWidth
+														: undefined
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -690,14 +704,15 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={ normalizeForRangeControl(
-													smColumns ||
-														( 'columns' ===
-															mdColumnsOption &&
-															mdColumns ) ||
-														( 'columns' ===
-															columnsOption &&
-															columns )
+												value={ getRangeControlValue(
+													smColumns,
+													'columns' ===
+														mdColumnsOption
+														? mdColumns
+														: undefined,
+													'columns' === columnsOption
+														? columns
+														: undefined
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -725,14 +740,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={ normalizeForTextControl(
-													smGridTemplateColumns ||
-														( 'free' ===
-															mdColumnsOption &&
-															mdGridTemplateColumns ) ||
-														( 'free' ===
-															columnsOption &&
-															gridTemplateColumns )
+												value={ getStringControlValue(
+													smGridTemplateColumns,
+													'free' === mdColumnsOption
+														? mdGridTemplateColumns
+														: undefined,
+													'free' === columnsOption
+														? gridTemplateColumns
+														: undefined
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -1004,11 +1019,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 														'For tablet / mobile',
 														'unitone'
 													) })` }
-													value={ normalizeForRangeControl(
-														mdRows ||
-															( 'rows' ===
-																rowsOption &&
-																rows )
+													value={ getRangeControlValue(
+														mdRows,
+														'rows' === rowsOption
+															? rows
+															: undefined
 													) }
 													onChange={ ( value ) =>
 														setAttributes( {
@@ -1073,11 +1088,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For tablet / mobile',
 													'unitone'
 												) })` }
-												value={ normalizeForTextControl(
-													mdGridTemplateRows ||
-														( 'free' ===
-															rowsOption &&
-															gridTemplateRows )
+												value={ getStringControlValue(
+													mdGridTemplateRows,
+													'free' === rowsOption
+														? gridTemplateRows
+														: undefined
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -1144,14 +1159,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 														'For mobile',
 														'unitone'
 													) })` }
-													value={ normalizeForRangeControl(
-														smRows ||
-															( 'rows' ===
-																mdRowsOption &&
-																mdRows ) ||
-															( 'rows' ===
-																rowsOption &&
-																rows )
+													value={ getRangeControlValue(
+														smRows,
+														'rows' === mdRowsOption
+															? mdRows
+															: undefined,
+														'rows' === rowsOption
+															? rows
+															: undefined
 													) }
 													onChange={ ( value ) =>
 														setAttributes( {
@@ -1217,14 +1232,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'For mobile',
 													'unitone'
 												) })` }
-												value={ normalizeForTextControl(
-													smGridTemplateRows ||
-														( 'free' ===
-															mdRowsOption &&
-															mdGridTemplateRows ) ||
-														( 'free' ===
-															rowsOption &&
-															gridTemplateRows )
+												value={ getStringControlValue(
+													smGridTemplateRows,
+													'free' === mdRowsOption
+														? mdGridTemplateRows
+														: undefined,
+													'free' === rowsOption
+														? gridTemplateRows
+														: undefined
 												) }
 												onChange={ ( value ) =>
 													setAttributes( {

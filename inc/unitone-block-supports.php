@@ -631,10 +631,17 @@ add_filter(
 		// --unitone--backdrop-filter
 		$backdrop_filter_props = ( function () use ( $metadata, $get_attribute ) {
 			$backdrop_filter_props = array();
+			$backdrop_filter_support = unitone_get_block_support( 'unitone.backdropFilter', $metadata );
+			$has_backdrop_filter_prop_support = function ( $prop ) use ( $metadata, $backdrop_filter_support ) {
+				return (
+					unitone_has_block_support( 'unitone.backdropFilter.' . $prop, $metadata ) ||
+					true === $backdrop_filter_support ||
+					( is_array( $backdrop_filter_support ) && false !== ( $backdrop_filter_support[ $prop ] ?? null ) )
+				);
+			};
 
 			// Blur.
-			$has_backdrop_filter_support = true === unitone_get_block_support( 'unitone.backdropFilter', $metadata );
-			if ( unitone_has_block_support( 'unitone.backdropFilter.blur', $metadata ) || $has_backdrop_filter_support ) {
+			if ( $has_backdrop_filter_prop_support( 'blur' ) ) {
 				$blur = $get_attribute( 'backdropFilter.blur' );
 
 				if ( ! is_null( $blur ) && 0 !== $blur ) {
@@ -643,7 +650,7 @@ add_filter(
 			}
 
 			// Brightness.
-			if ( unitone_has_block_support( 'unitone.backdropFilter.brightness', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
+			if ( $has_backdrop_filter_prop_support( 'brightness' ) ) {
 				$brightness = $get_attribute( 'backdropFilter.brightness' );
 
 				if ( ! is_null( $brightness ) && 100 !== $brightness ) {
@@ -652,16 +659,16 @@ add_filter(
 			}
 
 			// Contrast.
-			if ( unitone_has_block_support( 'unitone.backdropFilter.contrast', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
+			if ( $has_backdrop_filter_prop_support( 'contrast' ) ) {
 				$contrast = $get_attribute( 'backdropFilter.contrast' );
 
-				if ( ! is_null( $contrast ) && 0 !== $contrast ) {
+				if ( ! is_null( $contrast ) && 100 !== $contrast ) {
 					$backdrop_filter_props[] = array( 'contrast' => $contrast . '%' );
 				}
 			}
 
 			// Grayscale.
-			if ( unitone_has_block_support( 'unitone.backdropFilter.grayscale', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
+			if ( $has_backdrop_filter_prop_support( 'grayscale' ) ) {
 				$grayscale = $get_attribute( 'backdropFilter.grayscale' );
 
 				if ( ! is_null( $grayscale ) && 0 !== $grayscale ) {
@@ -670,7 +677,7 @@ add_filter(
 			}
 
 			// Hue Rotate.
-			if ( unitone_has_block_support( 'unitone.backdropFilter.hueRotate', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
+			if ( $has_backdrop_filter_prop_support( 'hueRotate' ) ) {
 				$hue_rotate = $get_attribute( 'backdropFilter.hueRotate' );
 
 				if ( ! is_null( $hue_rotate ) && 0 !== $hue_rotate ) {
@@ -679,7 +686,7 @@ add_filter(
 			}
 
 			// Invert.
-			if ( unitone_has_block_support( 'unitone.backdropFilter.invert', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
+			if ( $has_backdrop_filter_prop_support( 'invert' ) ) {
 				$invert = $get_attribute( 'backdropFilter.invert' );
 
 				if ( ! is_null( $invert ) && 0 !== $invert ) {
@@ -688,7 +695,7 @@ add_filter(
 			}
 
 			// Saturate.
-			if ( unitone_has_block_support( 'unitone.backdropFilter.saturate', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
+			if ( $has_backdrop_filter_prop_support( 'saturate' ) ) {
 				$saturate = $get_attribute( 'backdropFilter.saturate' );
 
 				if ( ! is_null( $saturate ) && 100 !== $saturate ) {
@@ -697,7 +704,7 @@ add_filter(
 			}
 
 			// Sepia.
-			if ( unitone_has_block_support( 'unitone.backdropFilter.sepia', $metadata ) || true === unitone_get_block_support( 'unitone.backdropFilter', $metadata ) ) {
+			if ( $has_backdrop_filter_prop_support( 'sepia' ) ) {
 				$sepia = $get_attribute( 'backdropFilter.sepia' );
 
 				if ( ! is_null( $sepia ) && 0 !== $sepia ) {
@@ -722,8 +729,13 @@ add_filter(
 		}
 
 		// --unitone--progressive-backdrop-filter
-		$has_backdrop_filter_support = true === unitone_get_block_support( 'unitone.backdropFilter', $metadata );
-		if ( unitone_has_block_support( 'unitone.backdropFilter.progressive', $metadata ) || $has_backdrop_filter_support ) {
+		$backdrop_filter_support = unitone_get_block_support( 'unitone.backdropFilter', $metadata );
+		$has_progressive_backdrop_filter_support = (
+			unitone_has_block_support( 'unitone.backdropFilter.progressive', $metadata ) ||
+			true === $backdrop_filter_support ||
+			( is_array( $backdrop_filter_support ) && false !== ( $backdrop_filter_support['progressive'] ?? null ) )
+		);
+		if ( $has_progressive_backdrop_filter_support ) {
 			$angle = $get_attribute( 'backdropFilter.progressive.angle' );
 			$start = $get_attribute( 'backdropFilter.progressive.start' );
 

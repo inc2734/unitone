@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import deepmerge from 'deepmerge';
 
 import {
 	InspectorControls,
@@ -28,6 +27,7 @@ import { sprintf, __ } from '@wordpress/i18n';
 
 import {
 	cleanEmptyObject,
+	resetUnitoneWithBlockAttributes,
 	useToolsPanelDropdownMenuProps,
 	normalizeForSelectControl,
 	normalizeForToggleControl,
@@ -270,16 +270,17 @@ const NavigationInspectorControls = ( {
 							},
 							resetAllFilter: ( blockAttributes ) => ( {
 								...blockAttributes,
-								unitone: cleanEmptyObject(
-									deepmerge.all( [
-										{ ...blockAttributes?.unitone },
+								unitone: resetUnitoneWithBlockAttributes( {
+									unitone: attributes?.unitone,
+									blockAttributes,
+									resetFilters: [
 										{
 											hamburgerButtonColor: undefined,
 											hamburgerButtonCustomColor:
 												undefined,
 										},
-									] )
-								),
+									],
+								} ),
 							} ),
 							clearable: true,
 						},
@@ -307,17 +308,18 @@ const NavigationInspectorControls = ( {
 							},
 							resetAllFilter: ( blockAttributes ) => ( {
 								...blockAttributes,
-								unitone: cleanEmptyObject(
-									deepmerge.all( [
-										{ ...blockAttributes?.unitone },
+								unitone: resetUnitoneWithBlockAttributes( {
+									unitone: attributes?.unitone,
+									blockAttributes,
+									resetFilters: [
 										{
 											hamburgerButtonBackgroundColor:
 												undefined,
 											hamburgerButtonCustomBackgroundColor:
 												undefined,
 										},
-									] )
-								),
+									],
+								} ),
 							} ),
 							clearable: true,
 						},
@@ -342,15 +344,16 @@ const NavigationInspectorControls = ( {
 							},
 							resetAllFilter: ( blockAttributes ) => ( {
 								...blockAttributes,
-								unitone: cleanEmptyObject(
-									deepmerge.all( [
-										{ ...blockAttributes?.unitone },
+								unitone: resetUnitoneWithBlockAttributes( {
+									unitone: attributes?.unitone,
+									blockAttributes,
+									resetFilters: [
 										{
 											overlayMenuColor: undefined,
 											overlayMenuCustomColor: undefined,
 										},
-									] )
-								),
+									],
+								} ),
 							} ),
 							clearable: true,
 						},
@@ -377,17 +380,18 @@ const NavigationInspectorControls = ( {
 							},
 							resetAllFilter: ( blockAttributes ) => ( {
 								...blockAttributes,
-								unitone: cleanEmptyObject(
-									deepmerge.all( [
-										{ ...blockAttributes?.unitone },
+								unitone: resetUnitoneWithBlockAttributes( {
+									unitone: attributes?.unitone,
+									blockAttributes,
+									resetFilters: [
 										{
 											overlayMenuBackgroundColor:
 												undefined,
 											overlayMenuCustomBackgroundColor:
 												undefined,
 										},
-									] )
-								),
+									],
+								} ),
 							} ),
 							clearable: true,
 						},

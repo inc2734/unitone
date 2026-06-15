@@ -1,5 +1,4 @@
 import fastDeepEqual from 'fast-deep-equal/es6';
-import deepmerge from 'deepmerge';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
@@ -42,7 +41,7 @@ import {
 	withOpacityBlockProps,
 } from './opacity';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, resetUnitoneWithBlockAttributes } from '../utils';
 
 export const withColorBlockProps = compose(
 	withOpacityBlockProps,
@@ -96,7 +95,7 @@ export const resetColor = ( props ) => {
 };
 
 function ColorPanelPure( props ) {
-	const { name } = props;
+	const { name, attributes } = props;
 
 	const isHoverTextColorDisabled = isHoverTextColorSupportDisabled( {
 		name,
@@ -133,13 +132,14 @@ function ColorPanelPure( props ) {
 					...resetHoverBackgroundColorFilter(),
 					...resetHoverGradientFilter(),
 					...resetHoverBorderColorFilter(),
-					unitone: cleanEmptyObject(
-						deepmerge.all( [
-							{ ...blockAttributes?.unitone },
+					unitone: resetUnitoneWithBlockAttributes( {
+						unitone: attributes?.unitone,
+						blockAttributes,
+						resetFilters: [
 							resetMarkerColorFilter(),
 							resetOpacityFilter(),
-						] )
-					),
+						],
+					} ),
 				} ) }
 			>
 				{ ! isHoverTextColorDisabled && (

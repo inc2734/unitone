@@ -3,14 +3,13 @@
  */
 
 import fastDeepEqual from 'fast-deep-equal/es6';
-import deepmerge from 'deepmerge';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
 import { memo } from '@wordpress/element';
 
-import { cleanEmptyObject } from '../utils';
+import { resetUnitoneWithBlockAttributes } from '../utils';
 
 import {
 	isPaddingSupportDisabled,
@@ -109,7 +108,7 @@ export const resetDimensions = ( props ) => {
 };
 
 function DimensionsPanelPure( props ) {
-	const { name, clientId, className } = props;
+	const { name, attributes, clientId, className } = props;
 
 	const isPaddingDisabled = isPaddingSupportDisabled( { name } );
 	const isGuttersDisabled = isGuttersSupportDisabled( { name } );
@@ -135,9 +134,10 @@ function DimensionsPanelPure( props ) {
 				group="dimensions"
 				resetAllFilter={ ( blockAttributes ) => ( {
 					...blockAttributes,
-					unitone: cleanEmptyObject(
-						deepmerge.all( [
-							{ ...blockAttributes?.unitone },
+					unitone: resetUnitoneWithBlockAttributes( {
+						unitone: attributes?.unitone,
+						blockAttributes,
+						resetFilters: [
 							resetPaddingFilter(),
 							resetGuttersFilter(),
 							resetGapFilter(),
@@ -145,8 +145,8 @@ function DimensionsPanelPure( props ) {
 							resetStairsUpFilter(),
 							resetNegativeFilter(),
 							resetOverflowFilter(),
-						] )
-					),
+						],
+					} ),
 				} ) }
 			>
 				{ ! isPaddingDisabled && (

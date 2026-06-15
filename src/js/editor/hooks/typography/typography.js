@@ -3,7 +3,6 @@
  */
 
 import fastDeepEqual from 'fast-deep-equal/es6';
-import deepmerge from 'deepmerge';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
@@ -11,7 +10,7 @@ import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/compo
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { resetUnitoneWithBlockAttributes } from '../utils';
 
 import {
 	isAutoPhraseSupportDisabled,
@@ -139,17 +138,18 @@ function TypographyPanelPure( props ) {
 				group="typography"
 				resetAllFilter={ ( blockAttributes ) => ( {
 					...blockAttributes,
-					unitone: cleanEmptyObject(
-						deepmerge.all( [
-							{ ...blockAttributes?.unitone },
+					unitone: resetUnitoneWithBlockAttributes( {
+						unitone: attributes?.unitone,
+						blockAttributes,
+						resetFilters: [
 							resetAutoPhraseFilter(),
 							resetFluidTypographyFilter(),
 							resetFluidTypographyMinLengthFilter(),
 							resetHalfLeadingFilter(),
 							resetBackgroundClipFilter(),
 							resetLinkDecorationFilter(),
-						] )
-					),
+						],
+					} ),
 				} ) }
 			>
 				{ ! isHalfLeadingDisabled && (

@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge';
+
 import { Popover } from '@wordpress/components';
 import { useViewportMatch } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
@@ -59,6 +61,30 @@ export const cleanEmptyObject = ( object ) => {
 		? undefined
 		: Object.fromEntries( cleanedNestedObjects );
 };
+
+/**
+ * Reset unitone attributes from resetAllFilter without dropping unrelated
+ * unitone values missing from the filtered block attributes.
+ *
+ * @param {Object}   args
+ * @param {Object}   args.unitone         Current unitone attribute.
+ * @param {Object}   args.blockAttributes Attributes passed from resetAllFilter.
+ * @param {Object[]} args.resetFilters    Unitone reset filters to apply.
+ * @return {Object|undefined} Reset unitone attribute.
+ */
+export function resetUnitoneWithBlockAttributes( {
+	unitone,
+	blockAttributes,
+	resetFilters,
+} ) {
+	return cleanEmptyObject(
+		deepmerge.all( [
+			{ ...unitone },
+			{ ...blockAttributes?.unitone },
+			...resetFilters,
+		] )
+	);
+}
 
 /**
  * Merge an object with its default value recursively.

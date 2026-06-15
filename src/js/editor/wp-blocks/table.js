@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import deepmerge from 'deepmerge';
 
 import {
 	InspectorControls,
@@ -20,6 +19,7 @@ import {
 
 import {
 	cleanEmptyObject,
+	resetUnitoneWithBlockAttributes,
 	useToolsPanelDropdownMenuProps,
 	normalizeForTextControl,
 } from '../hooks/utils';
@@ -120,15 +120,16 @@ const ColorInspectorControls = ( { attributes, setAttributes, clientId } ) => {
 							},
 							resetAllFilter: ( blockAttributes ) => ( {
 								...blockAttributes,
-								unitone: cleanEmptyObject(
-									deepmerge.all( [
-										{ ...blockAttributes?.unitone },
+								unitone: resetUnitoneWithBlockAttributes( {
+									unitone: attributes?.unitone,
+									blockAttributes,
+									resetFilters: [
 										{
 											headerSectionColor: undefined,
 											headerSectionCustomColor: undefined,
 										},
-									] )
-								),
+									],
+								} ),
 							} ),
 							clearable: true,
 						},
@@ -155,17 +156,18 @@ const ColorInspectorControls = ( { attributes, setAttributes, clientId } ) => {
 							},
 							resetAllFilter: ( blockAttributes ) => ( {
 								...blockAttributes,
-								unitone: cleanEmptyObject(
-									deepmerge.all( [
-										{ ...blockAttributes?.unitone },
+								unitone: resetUnitoneWithBlockAttributes( {
+									unitone: attributes?.unitone,
+									blockAttributes,
+									resetFilters: [
 										{
 											headerSectionBackgroundColor:
 												undefined,
 											headerSectionCustomBackgroundColor:
 												undefined,
 										},
-									] )
-								),
+									],
+								} ),
 							} ),
 							clearable: true,
 						},
@@ -191,15 +193,16 @@ const ColorInspectorControls = ( { attributes, setAttributes, clientId } ) => {
 							},
 							resetAllFilter: ( blockAttributes ) => ( {
 								...blockAttributes,
-								unitone: cleanEmptyObject(
-									deepmerge.all( [
-										{ ...blockAttributes?.unitone },
+								unitone: resetUnitoneWithBlockAttributes( {
+									unitone: attributes?.unitone,
+									blockAttributes,
+									resetFilters: [
 										{
 											footerSectionColor: undefined,
 											footerSectionCustomColor: undefined,
 										},
-									] )
-								),
+									],
+								} ),
 							} ),
 							clearable: true,
 						},
@@ -226,17 +229,18 @@ const ColorInspectorControls = ( { attributes, setAttributes, clientId } ) => {
 							},
 							resetAllFilter: ( blockAttributes ) => ( {
 								...blockAttributes,
-								unitone: cleanEmptyObject(
-									deepmerge.all( [
-										{ ...blockAttributes?.unitone },
+								unitone: resetUnitoneWithBlockAttributes( {
+									unitone: attributes?.unitone,
+									blockAttributes,
+									resetFilters: [
 										{
 											footerSectionBackgroundColor:
 												undefined,
 											footerSectionCustomBackgroundColor:
 												undefined,
 										},
-									] )
-								),
+									],
+								} ),
 							} ),
 							clearable: true,
 						},

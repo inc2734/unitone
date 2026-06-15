@@ -1,5 +1,3 @@
-import deepmerge from 'deepmerge';
-
 import {
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
@@ -8,7 +6,7 @@ import {
 import { hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject, resetUnitoneWithBlockAttributes } from '../utils';
 
 export function isMarkerColorSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.color.marker' );
@@ -56,12 +54,11 @@ export function MarkerColorEdit( props ) {
 					},
 					resetAllFilter: ( blockAttributes ) => ( {
 						...blockAttributes,
-						unitone: cleanEmptyObject(
-							deepmerge.all( [
-								{ ...blockAttributes?.unitone },
-								resetMarkerColorFilter(),
-							] )
-						),
+						unitone: resetUnitoneWithBlockAttributes( {
+							unitone: attributes?.unitone,
+							blockAttributes,
+							resetFilters: [ resetMarkerColorFilter() ],
+						} ),
 					} ),
 					clearable: true,
 				},

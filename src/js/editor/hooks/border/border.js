@@ -1,5 +1,4 @@
 import fastDeepEqual from 'fast-deep-equal/es6';
-import deepmerge from 'deepmerge';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
@@ -15,7 +14,7 @@ import {
 	withDropShadowBlockProps,
 } from './drop-shadow';
 
-import { cleanEmptyObject } from '../utils';
+import { resetUnitoneWithBlockAttributes } from '../utils';
 
 export const withBorderBlockProps = withDropShadowBlockProps;
 
@@ -35,7 +34,7 @@ export const resetBorder = ( props ) => {
 };
 
 function BorderPanelPure( props ) {
-	const { name, clientId } = props;
+	const { name, attributes, clientId } = props;
 
 	const isDropShadowDisabled = isDropShadowSupportDisabled( { name } );
 
@@ -49,12 +48,11 @@ function BorderPanelPure( props ) {
 				group="border"
 				resetAllFilter={ ( blockAttributes ) => ( {
 					...blockAttributes,
-					unitone: cleanEmptyObject(
-						deepmerge.all( [
-							{ ...blockAttributes?.unitone },
-							resetDropShadowFilter(),
-						] )
-					),
+					unitone: resetUnitoneWithBlockAttributes( {
+						unitone: attributes?.unitone,
+						blockAttributes,
+						resetFilters: [ resetDropShadowFilter() ],
+					} ),
 				} ) }
 			>
 				{ ! isDropShadowDisabled && (

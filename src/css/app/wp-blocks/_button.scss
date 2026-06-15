@@ -1,6 +1,6 @@
 @use '@inc2734/unitone-css/src/variables';
 
-:where(.wp-block-button, .wp-element-button) {
+:where(.wp-block-button, .wp-element-button:not(.wp-block-button__link)) {
 	--unitone--border-radius: var(--unitone--global--border-radius);
 	--unitone--padding: initial;
 	--unitone--padding-top: var(--unitone--padding, var(--unitone--p-2));

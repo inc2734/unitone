@@ -1,4 +1,4 @@
-import { __, _x } from '@wordpress/i18n';
+import { _x } from '@wordpress/i18n';
 
 import iconTop from './icon/top';
 import iconCenter from './icon/center';

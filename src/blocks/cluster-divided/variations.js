@@ -14,11 +14,6 @@ export default [
 				justifyContent: 'start',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/cluster-divided-content' ],
@@ -38,11 +33,6 @@ export default [
 				justifyContent: 'start',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/cluster-divided-content' ],
@@ -62,11 +52,6 @@ export default [
 				justifyContent: 'start',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/cluster-divided-content' ],

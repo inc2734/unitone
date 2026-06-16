@@ -13,11 +13,6 @@ export default [
 				autoRepeat: 'auto-fit',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/grid-divided-content' ],
@@ -36,11 +31,6 @@ export default [
 				autoRepeat: 'auto-fit',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/grid-divided-content' ],
@@ -59,11 +49,6 @@ export default [
 				autoRepeat: 'auto-fit',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/grid-divided-content' ],
@@ -82,11 +67,6 @@ export default [
 				autoRepeat: 'auto-fit',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/grid-divided-content' ],
@@ -105,11 +85,6 @@ export default [
 				autoRepeat: 'auto-fit',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/grid-divided-content' ],

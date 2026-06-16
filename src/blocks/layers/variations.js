@@ -1,4 +1,4 @@
-import { sprintf, __ } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 import icon from './icon';
 import iconBackgroundImage from './icon/background-image';
@@ -147,11 +147,7 @@ export default [
 	},
 	{
 		name: 'hero-top-left-title',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Hero (%1$s)', 'unitone' ),
-			__( 'Top / Left', 'unitone' )
-		),
+		title: __( 'Top / Left', 'unitone' ),
 		scope: [ 'block' ],
 		icon: {
 			src: iconHeroTopLeftTitle,
@@ -215,11 +211,7 @@ export default [
 	},
 	{
 		name: 'hero-top-right-title',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Hero (%1$s)', 'unitone' ),
-			__( 'Top / Right', 'unitone' )
-		),
+		title: __( 'Top / Right', 'unitone' ),
 		scope: [ 'block' ],
 		icon: {
 			src: iconHeroTopRightTitle,
@@ -284,11 +276,7 @@ export default [
 	},
 	{
 		name: 'hero-bottom-left-title',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Hero (%1$s)', 'unitone' ),
-			__( 'Bottom / Left', 'unitone' )
-		),
+		title: __( 'Bottom / Left', 'unitone' ),
 		scope: [ 'block' ],
 		icon: {
 			src: iconHeroBottomLeftTitle,
@@ -352,11 +340,7 @@ export default [
 	},
 	{
 		name: 'hero-bottom-right-title',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Hero (%1$s)', 'unitone' ),
-			__( 'Bottom / Right', 'unitone' )
-		),
+		title: __( 'Bottom / Right', 'unitone' ),
 		scope: [ 'block' ],
 		icon: {
 			src: iconHeroBottomRightTitle,
@@ -421,11 +405,7 @@ export default [
 	},
 	{
 		name: 'hero-bottom-left-title-inside',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Hero (%1$s)', 'unitone' ),
-			__( 'Bottom / Left', 'unitone' )
-		),
+		title: __( 'Bottom / Left', 'unitone' ),
 		scope: [ 'block' ],
 		icon: {
 			src: iconHeroBottomLeftTitleInside,
@@ -484,11 +464,7 @@ export default [
 	},
 	{
 		name: 'hero-bottom-right-title-inside',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Hero (%1$s)', 'unitone' ),
-			__( 'Bottom / Right', 'unitone' )
-		),
+		title: __( 'Bottom / Right', 'unitone' ),
 		scope: [ 'block' ],
 		icon: {
 			src: iconHeroBottomRightTitleInside,
@@ -548,11 +524,7 @@ export default [
 	},
 	{
 		name: 'hero-bottom-left-title-inset',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Hero (%1$s)', 'unitone' ),
-			__( 'Bottom / Left', 'unitone' )
-		),
+		title: __( 'Bottom / Left', 'unitone' ),
 		scope: [ 'block' ],
 		icon: {
 			src: iconHeroBottomLeftTitleInset,
@@ -610,11 +582,7 @@ export default [
 	},
 	{
 		name: 'hero-bottom-right-title-inset',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Hero (%1$s)', 'unitone' ),
-			__( 'Bottom / Right', 'unitone' )
-		),
+		title: __( 'Bottom / Right', 'unitone' ),
 		scope: [ 'block' ],
 		icon: {
 			src: iconHeroBottomRightTitleInset,
@@ -673,11 +641,7 @@ export default [
 	},
 	{
 		name: 'hero-center-title-inset',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Hero (%1$s)', 'unitone' ),
-			__( 'Center', 'unitone' )
-		),
+		title: __( 'Center', 'unitone' ),
 		scope: [ 'block' ],
 		icon: {
 			src: iconHeroCenterTitleInset,
@@ -751,11 +715,7 @@ export default [
 	},
 	{
 		name: 'hero-center-left-title-inset',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Hero (%1$s)', 'unitone' ),
-			__( 'Center / Left', 'unitone' )
-		),
+		title: __( 'Center / Left', 'unitone' ),
 		scope: [ 'block' ],
 		icon: {
 			src: iconHeroCenterLeftTitleInset,

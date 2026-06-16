@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-06-16T06:33:16+00:00\n"
-"PO-Revision-Date: 2026-06-16 15:34+0900\n"
+"POT-Creation-Date: 2026-06-16T06:49:46+00:00\n"
+"PO-Revision-Date: 2026-06-16 15:51+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2196,13 +2196,13 @@ msgstr "アブストラクト背景"
 #: dist/blocks/divider/index.js:1 dist/blocks/flex-divided/index.js:1
 #: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:31 dist/blocks/marquee/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/marquee/index.js:1
 #: dist/blocks/masonry/index.js:2 dist/blocks/popover-content/index.js:1
 #: dist/blocks/popover/index.js:1 dist/blocks/reel/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/responsive-image/index.js:1
-#: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:13
+#: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:1
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1 dist/blocks/texture/index.js:1
@@ -2439,7 +2439,7 @@ msgstr "クラスター（区切り：ボーダー）"
 #: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
-#: dist/blocks/responsive-image/index.js:1 dist/blocks/section/index.js:13
+#: dist/blocks/responsive-image/index.js:1 dist/blocks/section/index.js:1
 #: dist/blocks/stack-divided/index.js:1 dist/blocks/stack/index.js:1
 #: dist/blocks/with-sidebar-content/index.js:1
 msgid "HTML element"
@@ -2478,32 +2478,39 @@ msgid "Fill a space"
 msgstr "スペースを埋める"
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Top)"
-msgstr "カバー（上部）"
+msgctxt "cover-variation"
+msgid "Top"
+msgstr "上部"
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Center)"
-msgstr "カバー（中央）"
+msgctxt "cover-variation"
+msgid "Center"
+msgstr "中央"
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Bottom)"
-msgstr "カバー（下部）"
+msgctxt "cover-variation"
+msgid "Bottom"
+msgstr "下部"
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Top / Center)"
-msgstr "カバー（上部 / 中央）"
+msgctxt "cover-variation"
+msgid "Top / Center"
+msgstr "上部 / 中央"
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Top / Bottom)"
-msgstr "カバー（上部 / 下部）"
+msgctxt "cover-variation"
+msgid "Top / Bottom"
+msgstr "上部 / 下部"
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Center / Bottom)"
-msgstr "カバー（中央 / 下部）"
+msgctxt "cover-variation"
+msgid "Center / Bottom"
+msgstr "中央 / 下部"
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Top / Center / Bottom)"
-msgstr "カバー（上部 / 中央 / 下部）"
+msgctxt "cover-variation"
+msgid "Top / Center / Bottom"
+msgstr "上部 / 中央 / 下部"
 
 #: dist/blocks/dialog-content/index.js:1 dist/blocks/dialog/index.js:1
 msgid "Open dialog"
@@ -2653,7 +2660,7 @@ msgid "Minimum width"
 msgstr "最小幅"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Columns count"
 msgstr "カラム数"
 
@@ -2675,12 +2682,12 @@ msgid "For mobile"
 msgstr "モバイル用"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Rows count"
 msgstr "行数"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Row track size"
 msgstr "行のトラックサイズ"
 
@@ -2700,7 +2707,7 @@ msgstr "モバイル用ブレイクポイント（最大幅）"
 msgid "Anything less than this width will be considered mobile size."
 msgstr "この幅より小さいものはモバイルサイズと見なされます。"
 
-#: dist/blocks/gutters/index.js:1 dist/blocks/section/index.js:13
+#: dist/blocks/gutters/index.js:1 dist/blocks/section/index.js:1
 msgid "Top and bottom padding"
 msgstr "上下パディング"
 
@@ -2712,82 +2719,71 @@ msgstr "背景画像"
 msgid "Background framed image"
 msgstr "背景フレーム画像"
 
-#. translators: %1$s: position
-#: dist/blocks/layers/index.js:4 dist/blocks/layers/index.js:7
-#: dist/blocks/layers/index.js:10 dist/blocks/layers/index.js:13
-#: dist/blocks/layers/index.js:16 dist/blocks/layers/index.js:19
-#: dist/blocks/layers/index.js:22 dist/blocks/layers/index.js:25
-#: dist/blocks/layers/index.js:28 dist/blocks/layers/index.js:31
-msgid "Hero (%1$s)"
-msgstr "ヒーロー（%1$s）"
-
-#: dist/blocks/layers/index.js:4
+#: dist/blocks/layers/index.js:1
 msgid "Top / Left"
 msgstr "上 / 左"
 
-#: dist/blocks/layers/index.js:7
+#: dist/blocks/layers/index.js:1
 msgid "Top / Right"
 msgstr "上 / 右"
 
-#: dist/blocks/layers/index.js:10 dist/blocks/layers/index.js:16
-#: dist/blocks/layers/index.js:22
+#: dist/blocks/layers/index.js:1
 msgid "Bottom / Left"
 msgstr "下 / 左"
 
-#: dist/blocks/layers/index.js:13 dist/blocks/layers/index.js:19
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:1
 msgid "Bottom / Right"
 msgstr "下 / 右"
 
-#: dist/blocks/layers/index.js:28 dist/blocks/section/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
 #: dist/js/editor/editor.js:13
 msgid "Center"
 msgstr "中央"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Center / Left"
 msgstr "中央 / 左"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Use background image/video (Cover)"
 msgstr "背景画像/動画を使用（Cover）"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Treat the first child block as a background image/video."
 msgstr "最初の子ブロックを背景画像/動画として扱います。"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid ""
 "The background image/video is enlarged according or reduces to the amount of "
 "content."
 msgstr "コンテンツ量に応じて、背景画像/動画を拡大・縮小表示します。"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Use background image/video (Fill)"
 msgstr "背景画像/動画を使用（Fill）"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid ""
 "The background image/video is enlarged according to the amount of content."
 msgstr "コンテンツ量に応じて、背景画像/動画を拡大表示します。"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Use background image/video (Fixed)"
 msgstr "背景画像/動画を使用（Fixed）"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Display the background image/video as fixed."
 msgstr "背景画像/動画を固定表示します。"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Blur the background image/video"
 msgstr "背景画像/動画をぼかす"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Switch grid lines direction"
 msgstr "グリッド線の方向の切り替え"
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid ""
 "Switch vertical and horizontal grid lines direction when portrait and mobile "
 "width."
@@ -3037,33 +3033,27 @@ msgstr "ブレイクポイント"
 msgid "None"
 msgstr "無し"
 
-#. translators: %1$s: position
-#: dist/blocks/section/index.js:4 dist/blocks/section/index.js:7
-#: dist/blocks/section/index.js:10 dist/blocks/section/index.js:13
-msgid "Section (%1$s)"
-msgstr "セクション（%1$s）"
-
-#: dist/blocks/section/index.js:4
+#: dist/blocks/section/index.js:1
 msgid "Centered title"
 msgstr "中央揃えのタイトル"
 
-#: dist/blocks/section/index.js:7
+#: dist/blocks/section/index.js:1
 msgid "Centered title / Subtitle"
 msgstr "中央揃えのタイトル / サブタイトル"
 
-#: dist/blocks/section/index.js:10
+#: dist/blocks/section/index.js:1
 msgid "Left title"
 msgstr "左寄せのタイトル"
 
-#: dist/blocks/section/index.js:13
+#: dist/blocks/section/index.js:1
 msgid "Left title / Subtitle"
 msgstr "左寄せのタイトル / サブタイトル"
 
-#: dist/blocks/section/index.js:13
+#: dist/blocks/section/index.js:1
 msgid "Container alignment"
 msgstr "コンテナーの配置"
 
-#: dist/blocks/section/index.js:13
+#: dist/blocks/section/index.js:1
 msgid "Max width of contents"
 msgstr "コンテンツの最大幅"
 

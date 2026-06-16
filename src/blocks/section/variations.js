@@ -1,4 +1,4 @@
-import { sprintf, __ } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 import icon from './icon';
 import iconCentedTitle from './icon/centered-title';
@@ -21,11 +21,7 @@ export default [
 	},
 	{
 		name: 'centered-title',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Section (%1$s)', 'unitone' ),
-			__( 'Centered title', 'unitone' )
-		),
+		title: __( 'Centered title', 'unitone' ),
 		scope: [ 'block' ],
 		category: 'unitone/section',
 		icon: {
@@ -121,11 +117,7 @@ export default [
 	},
 	{
 		name: 'centered-title-subtitle',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Section (%1$s)', 'unitone' ),
-			__( 'Centered title / Subtitle', 'unitone' )
-		),
+		title: __( 'Centered title / Subtitle', 'unitone' ),
 		scope: [ 'block' ],
 		category: 'unitone/section',
 		icon: {
@@ -277,11 +269,7 @@ export default [
 	},
 	{
 		name: 'left-title',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Section (%1$s)', 'unitone' ),
-			__( 'Left title', 'unitone' )
-		),
+		title: __( 'Left title', 'unitone' ),
 		scope: [ 'block' ],
 		category: 'unitone/section',
 		icon: {
@@ -357,11 +345,7 @@ export default [
 	},
 	{
 		name: 'left-title-subtitle',
-		title: sprintf(
-			// translators: %1$s: position
-			__( 'Section (%1$s)', 'unitone' ),
-			__( 'Left title / Subtitle', 'unitone' )
-		),
+		title: __( 'Left title / Subtitle', 'unitone' ),
 		scope: [ 'block' ],
 		category: 'unitone/section',
 		icon: {

@@ -12,11 +12,6 @@ export default [
 				dividerColor: 'unitone-light-gray',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/stack-divided-content' ],
@@ -34,11 +29,6 @@ export default [
 				dividerColor: 'unitone-light-gray',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/stack-divided-content' ],
@@ -56,11 +46,6 @@ export default [
 				dividerColor: 'unitone-light-gray',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/stack-divided-content' ],
@@ -78,11 +63,6 @@ export default [
 				dividerColor: 'unitone-light-gray',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
 		scope: [ 'inserter' ],
 		innerBlocks: [
 			[ 'unitone/stack-divided-content' ],

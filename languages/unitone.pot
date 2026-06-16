@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-16T06:33:16+00:00\n"
+"POT-Creation-Date: 2026-06-16T06:49:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -2195,7 +2195,7 @@ msgstr ""
 #: dist/blocks/frame/index.js:1
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 #: dist/blocks/marquee/index.js:1
 #: dist/blocks/masonry/index.js:2
 #: dist/blocks/popover-content/index.js:1
@@ -2205,7 +2205,7 @@ msgstr ""
 #: dist/blocks/responsive-grid/index.js:1
 #: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/responsive-switcher/index.js:1
-#: dist/blocks/section/index.js:13
+#: dist/blocks/section/index.js:1
 #: dist/blocks/slider/index.js:1
 #: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1
@@ -2463,7 +2463,7 @@ msgstr ""
 #: dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-image/index.js:1
-#: dist/blocks/section/index.js:13
+#: dist/blocks/section/index.js:1
 #: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1
 #: dist/blocks/with-sidebar-content/index.js:1
@@ -2500,31 +2500,38 @@ msgid "Fill a space"
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Top)"
+msgctxt "cover-variation"
+msgid "Top"
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Center)"
+msgctxt "cover-variation"
+msgid "Center"
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Bottom)"
+msgctxt "cover-variation"
+msgid "Bottom"
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Top / Center)"
+msgctxt "cover-variation"
+msgid "Top / Center"
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Top / Bottom)"
+msgctxt "cover-variation"
+msgid "Top / Bottom"
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Center / Bottom)"
+msgctxt "cover-variation"
+msgid "Center / Bottom"
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
-msgid "Cover (Top / Center / Bottom)"
+msgctxt "cover-variation"
+msgid "Top / Center / Bottom"
 msgstr ""
 
 #: dist/blocks/dialog-content/index.js:1
@@ -2685,7 +2692,7 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Columns count"
 msgstr ""
 
@@ -2712,13 +2719,13 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Rows count"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Row track size"
 msgstr ""
 
@@ -2743,7 +2750,7 @@ msgid "Anything less than this width will be considered mobile size."
 msgstr ""
 
 #: dist/blocks/gutters/index.js:1
-#: dist/blocks/section/index.js:13
+#: dist/blocks/section/index.js:1
 msgid "Top and bottom padding"
 msgstr ""
 
@@ -2755,88 +2762,69 @@ msgstr ""
 msgid "Background framed image"
 msgstr ""
 
-#. translators: %1$s: position
-#: dist/blocks/layers/index.js:4
-#: dist/blocks/layers/index.js:7
-#: dist/blocks/layers/index.js:10
-#: dist/blocks/layers/index.js:13
-#: dist/blocks/layers/index.js:16
-#: dist/blocks/layers/index.js:19
-#: dist/blocks/layers/index.js:22
-#: dist/blocks/layers/index.js:25
-#: dist/blocks/layers/index.js:28
-#: dist/blocks/layers/index.js:31
-#, js-format
-msgid "Hero (%1$s)"
-msgstr ""
-
-#: dist/blocks/layers/index.js:4
+#: dist/blocks/layers/index.js:1
 msgid "Top / Left"
 msgstr ""
 
-#: dist/blocks/layers/index.js:7
+#: dist/blocks/layers/index.js:1
 msgid "Top / Right"
 msgstr ""
 
-#: dist/blocks/layers/index.js:10
-#: dist/blocks/layers/index.js:16
-#: dist/blocks/layers/index.js:22
+#: dist/blocks/layers/index.js:1
 msgid "Bottom / Left"
 msgstr ""
 
-#: dist/blocks/layers/index.js:13
-#: dist/blocks/layers/index.js:19
-#: dist/blocks/layers/index.js:25
+#: dist/blocks/layers/index.js:1
 msgid "Bottom / Right"
 msgstr ""
 
-#: dist/blocks/layers/index.js:28
+#: dist/blocks/layers/index.js:1
 #: dist/blocks/section/index.js:1
 #: dist/js/editor/editor.js:13
 msgid "Center"
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Center / Left"
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Use background image/video (Cover)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Treat the first child block as a background image/video."
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "The background image/video is enlarged according or reduces to the amount of content."
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Use background image/video (Fill)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "The background image/video is enlarged according to the amount of content."
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Use background image/video (Fixed)"
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Display the background image/video as fixed."
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Blur the background image/video"
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Switch grid lines direction"
 msgstr ""
 
-#: dist/blocks/layers/index.js:31
+#: dist/blocks/layers/index.js:1
 msgid "Switch vertical and horizontal grid lines direction when portrait and mobile width."
 msgstr ""
 
@@ -3088,36 +3076,27 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#. translators: %1$s: position
-#: dist/blocks/section/index.js:4
-#: dist/blocks/section/index.js:7
-#: dist/blocks/section/index.js:10
-#: dist/blocks/section/index.js:13
-#, js-format
-msgid "Section (%1$s)"
-msgstr ""
-
-#: dist/blocks/section/index.js:4
+#: dist/blocks/section/index.js:1
 msgid "Centered title"
 msgstr ""
 
-#: dist/blocks/section/index.js:7
+#: dist/blocks/section/index.js:1
 msgid "Centered title / Subtitle"
 msgstr ""
 
-#: dist/blocks/section/index.js:10
+#: dist/blocks/section/index.js:1
 msgid "Left title"
 msgstr ""
 
-#: dist/blocks/section/index.js:13
+#: dist/blocks/section/index.js:1
 msgid "Left title / Subtitle"
 msgstr ""
 
-#: dist/blocks/section/index.js:13
+#: dist/blocks/section/index.js:1
 msgid "Container alignment"
 msgstr ""
 
-#: dist/blocks/section/index.js:13
+#: dist/blocks/section/index.js:1
 msgid "Max width of contents"
 msgstr ""
 

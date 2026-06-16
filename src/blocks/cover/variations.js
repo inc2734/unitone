@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+import { __, _x } from '@wordpress/i18n';
 
 import iconTop from './icon/top';
 import iconCenter from './icon/center';
@@ -11,9 +11,8 @@ import iconTopCenterBottom from './icon/top-center-bottom';
 export default [
 	{
 		name: 'cover-top',
-		title: __( 'Cover (Top)', 'unitone' ),
+		title: _x( 'Top', 'cover-variation', 'unitone' ),
 		isDefault: false,
-		isActive: [ 'variation' ],
 		scope: [ 'block' ],
 		attributes: {
 			variation: 'cover-top',
@@ -30,9 +29,8 @@ export default [
 	},
 	{
 		name: 'cover-center',
-		title: __( 'Cover (Center)', 'unitone' ),
+		title: _x( 'Center', 'cover-variation', 'unitone' ),
 		isDefault: true,
-		isActive: [ 'variation' ],
 		scope: [ 'block' ],
 		attributes: {
 			variation: 'cover-center',
@@ -49,9 +47,8 @@ export default [
 	},
 	{
 		name: 'cover-bottom',
-		title: __( 'Cover (Bottom)', 'unitone' ),
+		title: _x( 'Bottom', 'cover-variation', 'unitone' ),
 		isDefault: false,
-		isActive: [ 'variation' ],
 		scope: [ 'block' ],
 		attributes: {
 			variation: 'cover-bottom',
@@ -68,9 +65,8 @@ export default [
 	},
 	{
 		name: 'cover-top-center',
-		title: __( 'Cover (Top / Center)', 'unitone' ),
+		title: _x( 'Top / Center', 'cover-variation', 'unitone' ),
 		isDefault: false,
-		isActive: [ 'variation' ],
 		scope: [ 'block' ],
 		attributes: {
 			variation: 'cover-top-center',
@@ -91,9 +87,8 @@ export default [
 	},
 	{
 		name: 'cover-top-bottom',
-		title: __( 'Cover (Top / Bottom)', 'unitone' ),
+		title: _x( 'Top / Bottom', 'cover-variation', 'unitone' ),
 		isDefault: false,
-		isActive: [ 'variation' ],
 		scope: [ 'block' ],
 		attributes: {
 			variation: 'cover-top-bottom',
@@ -114,9 +109,8 @@ export default [
 	},
 	{
 		name: 'cover-center-bottom',
-		title: __( 'Cover (Center / Bottom)', 'unitone' ),
+		title: _x( 'Center / Bottom', 'cover-variation', 'unitone' ),
 		isDefault: false,
-		isActive: [ 'variation' ],
 		scope: [ 'block' ],
 		attributes: {
 			variation: 'cover-center-bottom',
@@ -137,9 +131,8 @@ export default [
 	},
 	{
 		name: 'cover-top-center-bottom',
-		title: __( 'Cover (Top / Center / Bottom)', 'unitone' ),
+		title: _x( 'Top / Center / Bottom', 'cover-variation', 'unitone' ),
 		isDefault: false,
-		isActive: [ 'variation' ],
 		scope: [ 'block' ],
 		attributes: {
 			variation: 'cover-top-center-bottom',

@@ -9,6 +9,7 @@ export const applyFlexChildStyles = ( attributes, parentBlock ) => {
 		flexGrow: 0,
 		flexShrink: 1,
 		flexBasis: 'auto',
+		alignSelf: 'auto',
 	};
 
 	return {
@@ -23,6 +24,9 @@ export const applyFlexChildStyles = ( attributes, parentBlock ) => {
 			},
 			flexBasis: {
 				default: DEFAULT_VALUES.flexBasis,
+			},
+			alignSelf: {
+				default: DEFAULT_VALUES.alignSelf,
 			},
 		},
 	};

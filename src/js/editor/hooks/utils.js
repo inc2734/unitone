@@ -192,12 +192,18 @@ export const normalizeForTextareaControl = normalizeForStringControl;
 export const normalizeForSelectControl = normalizeForStringControl;
 
 /**
- * Alias of normalizeForStringControl for ToggleGroupControl.
+ * Normalize value from ToggleGroupControl.
  *
  * @param {*} value Raw value from control.
- * @return {string} Normalized value.
+ * @return {string|undefined} Normalized value.
  */
-export const normalizeForToggleGroupControl = normalizeForStringControl;
+export function normalizeForToggleGroupControl( value ) {
+	if ( '' === value || null == value ) {
+		return undefined;
+	}
+
+	return String( value );
+}
 
 /**
  * Alias of normalizeForStringControl for UnitControl.

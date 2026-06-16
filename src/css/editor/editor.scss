@@ -563,6 +563,10 @@
 
 	.components-toggle-group-control {
 		flex-wrap: wrap;
+
+		&:has([aria-pressed]):not(:has([aria-pressed="true"]))::before {
+			opacity: 0;
+		}
 	}
 }
 

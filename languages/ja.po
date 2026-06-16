@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-06-11T05:50:08+00:00\n"
-"PO-Revision-Date: 2026-06-11 14:50+0900\n"
+"POT-Creation-Date: 2026-06-16T06:33:16+00:00\n"
+"PO-Revision-Date: 2026-06-16 15:34+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3475,6 +3475,26 @@ msgstr "ライティングモードの切り替え"
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Switch writing mode when portrait and mobile width."
 msgstr "ポートレートかつモバイル幅のとライティンググモードを切り替える。"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "[Sub] Right / Bottom"
+msgstr "[サブ] 右・下"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "[Sub] Right / Top"
+msgstr "[サブ] 右・上"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "[Sub] Left / Top"
+msgstr "[サブ] 左・上"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "[Sub] Left / Bottom"
+msgstr "[サブ] 左・下"
 
 #: dist/blocks/with-sidebar-divided/index.js:1
 msgid "With sidebar (Divider: Stripe)"

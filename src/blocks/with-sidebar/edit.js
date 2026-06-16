@@ -5,7 +5,13 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
+	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
+
+import {
+	createBlocksFromInnerBlocksTemplate,
+	store as blocksStore,
+} from '@wordpress/blocks';
 
 import {
 	ToggleControl,
@@ -29,7 +35,7 @@ import {
 
 import metadata from './block.json';
 
-export default function ( { attributes, setAttributes, clientId } ) {
+export default function ( { name, attributes, setAttributes, clientId } ) {
 	const {
 		sidebarWidth,
 		contentMinWidth,
@@ -44,8 +50,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		( select ) => select( blockEditorStore ).getBlockOrder( clientId ),
 		[ clientId ]
 	);
+	const hasInnerBlocks = !! blocks.length;
 
 	useEffect( () => {
+		if ( ! blocks[ 0 ] || ! blocks[ 1 ] ) {
+			return;
+		}
+
 		if ( ! revert === ( 'left' === sidebar ) ) {
 			updateBlockAttributes( blocks[ 0 ], { type: 'aside' } );
 			updateBlockAttributes( blocks[ 1 ], { type: 'main' } );
@@ -53,7 +64,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			updateBlockAttributes( blocks[ 0 ], { type: 'main' } );
 			updateBlockAttributes( blocks[ 1 ], { type: 'aside' } );
 		}
-	}, [ sidebar, revert ] );
+	}, [ blocks, revert, sidebar, updateBlockAttributes ] );
 
 	const blockProps = useBlockProps( {
 		style: {
@@ -74,16 +85,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		templateLock,
 		allowedBlocks,
 		renderAppender: false,
-		template: [
-			[
-				'unitone/with-sidebar-content',
-				{ type: 'main', lock: { move: true, remove: true } },
-			],
-			[
-				'unitone/with-sidebar-content',
-				{ type: 'aside', lock: { move: true, remove: true } },
-			],
-		],
 	} );
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
@@ -262,7 +263,57 @@ export default function ( { attributes, setAttributes, clientId } ) {
 				</ToolsPanel>
 			</InspectorControls>
 
-			<div { ...innerBlocksProps } />
+			{ hasInnerBlocks ? (
+				<div { ...innerBlocksProps } />
+			) : (
+				<Placeholder { ...{ clientId, name, setAttributes } } />
+			) }
 		</>
+	);
+}
+
+function Placeholder( { clientId, name, setAttributes } ) {
+	const { blockType, defaultVariation, variations } = useSelect(
+		( select ) => {
+			const {
+				getBlockVariations,
+				getBlockType,
+				getDefaultBlockVariation,
+			} = select( blocksStore );
+
+			return {
+				blockType: getBlockType( name ),
+				defaultVariation: getDefaultBlockVariation( name, 'block' ),
+				variations: getBlockVariations( name, 'block' ),
+			};
+		},
+		[ name ]
+	);
+
+	const { replaceInnerBlocks } = useDispatch( blockEditorStore );
+
+	return (
+		<div { ...useBlockProps() }>
+			<BlockVariationPicker
+				icon={ blockType?.icon?.src }
+				label={ blockType?.title }
+				variations={ variations }
+				onSelect={ ( nextVariation = defaultVariation ) => {
+					if ( nextVariation?.attributes ) {
+						setAttributes( nextVariation.attributes );
+					}
+					if ( nextVariation?.innerBlocks ) {
+						replaceInnerBlocks(
+							clientId,
+							createBlocksFromInnerBlocksTemplate(
+								nextVariation.innerBlocks
+							),
+							true
+						);
+					}
+				} }
+				allowSkip={ false }
+			/>
+		</div>
 	);
 }

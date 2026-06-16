@@ -1,17 +1,9 @@
 import { __ } from '@wordpress/i18n';
 
-const defaultInnerBlocks = [
-	[
-		'unitone/with-sidebar-content',
-		{ type: 'main', lock: { move: true, remove: true } },
-	],
-	[
-		'unitone/with-sidebar-content',
-		{ type: 'aside', lock: { move: true, remove: true } },
-	],
-];
+import layoutVariations from '../with-sidebar/variations';
 
 export default [
+	...layoutVariations,
 	{
 		name: 'with-sidebar-divided-stripe',
 		title: __( 'With sidebar (Divider: Stripe)', 'unitone' ),
@@ -24,13 +16,7 @@ export default [
 				dividerColor: 'unitone-light-gray',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
-		scope: [ 'inserter' ],
-		innerBlocks: defaultInnerBlocks,
+		scope: [ 'inserter', 'transform' ],
 	},
 	{
 		name: 'with-sidebar-divided-divide',
@@ -44,13 +30,7 @@ export default [
 				dividerColor: 'unitone-light-gray',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
-		scope: [ 'inserter' ],
-		innerBlocks: defaultInnerBlocks,
+		scope: [ 'inserter', 'transform' ],
 	},
 	{
 		name: 'with-sidebar-divided-slash',
@@ -64,13 +44,7 @@ export default [
 				dividerColor: 'unitone-light-gray',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
-		scope: [ 'inserter' ],
-		innerBlocks: defaultInnerBlocks,
+		scope: [ 'inserter', 'transform' ],
 	},
 	{
 		name: 'with-sidebar-divided-bordered',
@@ -84,12 +58,6 @@ export default [
 				dividerColor: 'unitone-light-gray',
 			},
 		},
-		isActive: ( blockAttributes, variationAttributes ) =>
-			!! blockAttributes?.unitone?.dividerType &&
-			!! variationAttributes?.unitone?.dividerType &&
-			blockAttributes.unitone.dividerType ===
-				variationAttributes.unitone.dividerType,
-		scope: [ 'inserter' ],
-		innerBlocks: defaultInnerBlocks,
+		scope: [ 'inserter', 'transform' ],
 	},
 ];

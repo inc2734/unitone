@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-11T05:50:08+00:00\n"
+"POT-Creation-Date: 2026-06-16T06:33:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -3540,6 +3540,26 @@ msgstr ""
 
 #: dist/blocks/vertical-writing/index.js:1
 msgid "Switch writing mode when portrait and mobile width."
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "[Sub] Right / Bottom"
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "[Sub] Right / Top"
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "[Sub] Left / Top"
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "[Sub] Left / Bottom"
 msgstr ""
 
 #: dist/blocks/with-sidebar-divided/index.js:1

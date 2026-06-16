@@ -1,4 +1,5 @@
 .unitone-flex__content {
+	--unitone--align-content: stretch;
 	--unitone--background-color: transparent;
 	--unitone--background-image: none;
 	--unitone--padding: 0px;
@@ -7,6 +8,10 @@
 	--unitone--padding-bottom: var(--unitone--padding);
 	--unitone--padding-left: var(--unitone--padding);
 
+	align-self: stretch !important;
+	justify-self: stretch !important;
+	display: grid;
+
 	&:not(:root) {
 		background-color: transparent !important;
 		background-image: none !important;
@@ -14,13 +19,20 @@
 }
 
 .unitone-flex__content__content {
+	align-self: var(--unitone--align-self);
+	justify-self: var(--unitone--justify-self);
+	display: grid;
+	align-content: var(--unitone--align-content);
 	background-color: var(--unitone--background-color);
 	background-image: var(--unitone--background-image);
-	min-height: 100%;
 	padding-top: var(--unitone--padding-top);
 	padding-right: var(--unitone--padding-right);
 	padding-bottom: var(--unitone--padding-bottom);
 	padding-left: var(--unitone--padding-left);
+
+	> * {
+		min-width: 0;
+	}
 }
 
 .unitone-flex:where([data-unitone-layout*="-divider\:"]) {
@@ -36,8 +48,8 @@
 
 	> * {
 		position: relative;
-		display: flex;
-		flex-direction: column;
+		// display: flex;
+		// flex-direction: column;
 	}
 
 	> ::before {

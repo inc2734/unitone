@@ -24,6 +24,14 @@ export const applyFlexDividedChildStyles = ( attributes, parentBlock ) => {
 			flexBasis: {
 				default: DEFAULT_VALUES.flexBasis,
 			},
+			alignSelf: {
+				responsive: true,
+				default: DEFAULT_VALUES.alignSelf,
+			},
+			justifySelf: {
+				responsive: true,
+				default: DEFAULT_VALUES.justifySelf,
+			},
 		},
 	};
 };

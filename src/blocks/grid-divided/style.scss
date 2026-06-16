@@ -8,8 +8,8 @@
 	--unitone--padding-bottom: var(--unitone--padding);
 	--unitone--padding-left: var(--unitone--padding);
 
-	align-self: stretch;
-	justify-self: stretch;
+	align-self: stretch !important;
+	justify-self: stretch !important;
 	display: grid;
 
 	&:not(:root) {

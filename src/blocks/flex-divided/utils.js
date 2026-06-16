@@ -9,6 +9,8 @@ export const applyFlexDividedChildStyles = ( attributes, parentBlock ) => {
 		flexGrow: 0,
 		flexShrink: 1,
 		flexBasis: 'auto',
+		alignSelf: 'stretch',
+		justifySelf: 'stretch',
 	};
 
 	return {
@@ -25,11 +27,9 @@ export const applyFlexDividedChildStyles = ( attributes, parentBlock ) => {
 				default: DEFAULT_VALUES.flexBasis,
 			},
 			alignSelf: {
-				responsive: true,
 				default: DEFAULT_VALUES.alignSelf,
 			},
 			justifySelf: {
-				responsive: true,
 				default: DEFAULT_VALUES.justifySelf,
 			},
 		},

@@ -14,16 +14,47 @@ import {
 } from '@wordpress/blocks';
 
 import { useSelect, useDispatch } from '@wordpress/data';
-import { useEffect, useMemo } from '@wordpress/element';
+import { useEffect, useMemo, useRef } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+
+import { cleanEmptyObject } from '../../js/editor/hooks/utils';
+
+const isDefaultCoverContentPosition = ( unitonePosition, defaultValue ) => {
+	const properties = [
+		'position',
+		'top',
+		'right',
+		'bottom',
+		'left',
+		'zIndex',
+	];
+
+	return properties.every(
+		( property ) =>
+			( unitonePosition?.[ property ] ?? defaultValue?.[ property ] ) ===
+			defaultValue?.[ property ]
+	);
+};
 
 export default function ( { name, attributes, setAttributes, clientId } ) {
 	const { allowedBlocks, templateLock } = attributes;
+	const previousBackgroundClipRef = useRef(
+		attributes?.unitone?.backgroundClip
+	);
 
 	const innerBlocks = useSelect(
 		( select ) =>
 			select( blockEditorStore ).getBlock( clientId )?.innerBlocks || [],
 		[ clientId ]
 	);
+
+	const coverContentDefaultPosition = useSelect( ( select ) => {
+		return select( blocksStore ).getBlockType( 'unitone/cover-content' )
+			?.attributes?.unitone?.default?.position;
+	}, [] );
+
+	const { updateBlockAttributes } = useDispatch( blockEditorStore );
+	const { createNotice } = useDispatch( 'core/notices' );
 
 	const innerBlockTypes = useMemo(
 		() =>
@@ -34,6 +65,7 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 	);
 
 	const hasInnerBlocks = !! innerBlocks.length;
+	const backgroundClip = attributes?.unitone?.backgroundClip;
 
 	useEffect( () => {
 		setAttributes( {
@@ -42,6 +74,53 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 				: undefined,
 		} );
 	}, [ innerBlockTypes.toString() ] );
+
+	useEffect( () => {
+		if ( ! previousBackgroundClipRef.current && backgroundClip ) {
+			const updatedCoverContents = innerBlocks.filter(
+				( block ) =>
+					'unitone/cover-content' === block.name &&
+					isDefaultCoverContentPosition(
+						block.attributes?.unitone?.position,
+						coverContentDefaultPosition
+					)
+			);
+
+			updatedCoverContents.forEach( ( block ) => {
+				updateBlockAttributes( block.clientId, {
+					unitone: cleanEmptyObject( {
+						...block.attributes?.unitone,
+						position: {
+							...block.attributes?.unitone?.position,
+							position: 'static',
+						},
+					} ),
+				} );
+			} );
+
+			if ( updatedCoverContents.length ) {
+				createNotice(
+					'success',
+					__(
+						'Updated cover content position to static.',
+						'unitone'
+					),
+					{
+						type: 'snackbar',
+						isDismissible: true,
+					}
+				);
+			}
+		}
+
+		previousBackgroundClipRef.current = backgroundClip;
+	}, [
+		backgroundClip,
+		coverContentDefaultPosition,
+		createNotice,
+		innerBlocks,
+		updateBlockAttributes,
+	] );
 
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = clsx(

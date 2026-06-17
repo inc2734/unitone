@@ -38,7 +38,7 @@
 		"inserter": false,
 		"color": {
 			"background": false,
-			"color": true,
+			"text": true,
 			"link": true
 		},
 		"typography": {

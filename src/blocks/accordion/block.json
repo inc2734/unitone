@@ -70,7 +70,7 @@
 		"interactivity": true,
 		"color": {
 			"background": true,
-			"color": true,
+			"text": true,
 			"gradients": true,
 			"link": true
 		},

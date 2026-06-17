@@ -63,7 +63,7 @@
 		"color": {
 			"background": true,
 			"gradients": true,
-			"color": true,
+			"text": true,
 			"link": true
 		},
 		"typography": {

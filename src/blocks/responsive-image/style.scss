@@ -6,26 +6,33 @@
 	--unitone--overlay-radius: 0px;
 	--unitone--font-size: 0;
 
+	display: grid;
 	border: none !important;
 
-	&[data-unitone-layout~="-overlay"] {
-		.unitone-responsive-image__overlay {
-			&::before {
-				content: '';
-				position: absolute;
-				inset: 0;
-				z-index: auto !important;
-				background-image: var(--unitone--overlay-gradient);
-				background-color: var(--unitone--overlay-color);
-				border-radius: var(--unitone--overlay-radius);
-				opacity: var(--unitone--overlay-opacity);
-				pointer-events: none;
-			}
+	&__overlay {
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+		pointer-events: none;
+
+		&::before {
+			content: '';
+			display: block;
+			height: 100%;
+			width: 100%;
+			background-image: var(--unitone--overlay-gradient);
+			background-color: var(--unitone--overlay-color);
+			border-radius: var(--unitone--overlay-radius);
+			opacity: var(--unitone--overlay-opacity);
 		}
 	}
 
 	&:is(.alignfull, .alignwide) img {
 		width: 100%;
+	}
+
+	&.aligncenter {
+		margin-inline-end: auto;
+		margin-inline-start: auto;
 	}
 
 	&:where(.has-unitone-hover) img {
@@ -49,7 +56,8 @@
 	}
 
 	picture {
-		display: contents;
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
 	}
 
 	img {

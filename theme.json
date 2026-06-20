@@ -403,6 +403,81 @@
 					"name": "3XL",
 					"slug": "80",
 					"size": "var(--unitone--s5)"
+				},
+				{
+					"name": "4XL",
+					"slug": "90",
+					"size": "var(--unitone--s6)"
+				},
+				{
+					"name": "5XL",
+					"slug": "100",
+					"size": "var(--unitone--s7)"
+				},
+				{
+					"name": "M - S",
+					"slug": "110",
+					"size": "var(--unitone--s1s)"
+				},
+				{
+					"name": "L - S",
+					"slug": "120",
+					"size": "var(--unitone--s2s)"
+				},
+				{
+					"name": "XL - S",
+					"slug": "130",
+					"size": "var(--unitone--s3s)"
+				},
+				{
+					"name": "2XL - S",
+					"slug": "140",
+					"size": "var(--unitone--s4s)"
+				},
+				{
+					"name": "3XL - S",
+					"slug": "150",
+					"size": "var(--unitone--s5s)"
+				},
+				{
+					"name": "4XL - S",
+					"slug": "160",
+					"size": "var(--unitone--s6s)"
+				},
+				{
+					"name": "5XL - S",
+					"slug": "170",
+					"size": "var(--unitone--s7s)"
+				},
+				{
+					"name": "L - M",
+					"slug": "180",
+					"size": "var(--unitone--s2m)"
+				},
+				{
+					"name": "XL - M",
+					"slug": "190",
+					"size": "var(--unitone--s3m)"
+				},
+				{
+					"name": "2XL - M",
+					"slug": "200",
+					"size": "var(--unitone--s4m)"
+				},
+				{
+					"name": "3XL - M",
+					"slug": "210",
+					"size": "var(--unitone--s5m)"
+				},
+				{
+					"name": "4XL - M",
+					"slug": "220",
+					"size": "var(--unitone--s6m)"
+				},
+				{
+					"name": "5XL - M",
+					"slug": "230",
+					"size": "var(--unitone--s7m)"
 				}
 			]
 		},

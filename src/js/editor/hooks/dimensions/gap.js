@@ -15,7 +15,30 @@ import {
 	mergeObjectWithDefaultValue,
 } from '../utils';
 
-import { GapControl } from '../components';
+import { GapControl, isDefaultSpacingSizeValue } from '../components';
+
+function isPresetSpacingValue( value ) {
+	return 'string' === typeof value && value.startsWith( 'var:preset|' );
+}
+
+function getPresetCssVar( value ) {
+	if ( ! isPresetSpacingValue( value ) ) {
+		return value;
+	}
+
+	const [ , type, slug ] = value.split( '|' );
+
+	return `var(--wp--preset--${ type }--${ slug })`;
+}
+
+function isCustomSpacingSizeValue( value ) {
+	return (
+		null != value &&
+		'' !== value &&
+		! isObject( value ) &&
+		! isDefaultSpacingSizeValue( value )
+	);
+}
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -209,14 +232,35 @@ export function withGapBlockProps( settings ) {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
+			style: {
+				...settings.wrapperProps?.style,
+				...( isCustomSpacingSizeValue( newGap )
+					? { '--unitone--gap': getPresetCssVar( newGap ) }
+					: {} ),
+				...( isCustomSpacingSizeValue( newGap?.column )
+					? {
+							'--unitone--column-gap': getPresetCssVar(
+								newGap.column
+							),
+					  }
+					: {} ),
+				...( isCustomSpacingSizeValue( newGap?.row )
+					? { '--unitone--row-gap': getPresetCssVar( newGap.row ) }
+					: {} ),
+			},
 			'data-unitone-layout': clsx(
 				settings.wrapperProps?.[ 'data-unitone-layout' ],
 				{
 					[ `-gap:${ newGap }` ]:
-						null != newGap && ! isObject( newGap ),
+						null != newGap &&
+						! isObject( newGap ) &&
+						! isCustomSpacingSizeValue( newGap ),
 					[ `-column-gap:${ newGap?.column }` ]:
-						null != newGap?.column,
-					[ `-row-gap:${ newGap?.row }` ]: null != newGap?.row,
+						null != newGap?.column &&
+						! isCustomSpacingSizeValue( newGap.column ),
+					[ `-row-gap:${ newGap?.row }` ]:
+						null != newGap?.row &&
+						! isCustomSpacingSizeValue( newGap.row ),
 				}
 			),
 		},

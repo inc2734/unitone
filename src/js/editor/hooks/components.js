@@ -20,6 +20,7 @@ import {
 	linkOff,
 } from '@wordpress/icons';
 
+import { useSettings } from '@wordpress/block-editor';
 import { useState, useMemo, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -36,6 +37,18 @@ import {
 
 import { normalizeForSelectControl, useDeviceType } from './utils';
 
+export function isDefaultSpacingSizeValue( value ) {
+	return (
+		null != value &&
+		getDefaultSpacingSizeOptions().some(
+			( option ) =>
+				null != option.value &&
+				'' !== option.value &&
+				String( option.value ) === String( value )
+		)
+	);
+}
+
 function Controls( { value, onChange, options } ) {
 	return (
 		<SelectControl
@@ -48,6 +61,206 @@ function Controls( { value, onChange, options } ) {
 			options={ options }
 		/>
 	);
+}
+
+function getDefaultSpacingSizeOptions() {
+	return [
+		{
+			label: __( 'Default', 'unitone' ),
+			value: '',
+		},
+		{
+			label: '',
+			value: undefined,
+			disabled: true,
+		},
+		{
+			label: '2XS',
+			value: '-3',
+		},
+		{
+			label: 'XS',
+			value: '-2',
+		},
+		{
+			label: 'S',
+			value: '-1',
+		},
+		{
+			label: __( 'None', 'unitone' ),
+			value: '0',
+		},
+		{
+			label: 'M',
+			value: '1',
+		},
+		{
+			label: 'L',
+			value: '2',
+		},
+		{
+			label: 'XL',
+			value: '3',
+		},
+		{
+			label: '2XL',
+			value: '4',
+		},
+		{
+			label: '3XL',
+			value: '5',
+		},
+		{
+			label: '4XL',
+			value: '6',
+		},
+		{
+			label: '5XL',
+			value: '7',
+		},
+		{
+			label: '',
+			value: undefined,
+			disabled: true,
+		},
+		{
+			label: 'M - S',
+			value: '1s',
+		},
+		{
+			label: 'L - S',
+			value: '2s',
+		},
+		{
+			label: 'XL - S',
+			value: '3s',
+		},
+		{
+			label: '2XL - S',
+			value: '4s',
+		},
+		{
+			label: '3XL - S',
+			value: '5s',
+		},
+		{
+			label: '4XL - S',
+			value: '6s',
+		},
+		{
+			label: '5XL - S',
+			value: '7s',
+		},
+		{
+			label: '',
+			value: undefined,
+			disabled: true,
+		},
+		{
+			label: 'L - M',
+			value: '2m',
+		},
+		{
+			label: 'XL - M',
+			value: '3m',
+		},
+		{
+			label: '2XL - M',
+			value: '4m',
+		},
+		{
+			label: '3XL - M',
+			value: '5m',
+		},
+		{
+			label: '4XL - M',
+			value: '6m',
+		},
+		{
+			label: '5XL - M',
+			value: '7m',
+		},
+	];
+}
+
+function getSpacingSizePresets( spacingSizes ) {
+	if ( Array.isArray( spacingSizes ) ) {
+		return spacingSizes;
+	}
+
+	if ( spacingSizes && 'object' === typeof spacingSizes ) {
+		return Object.values( spacingSizes ).flatMap( ( value ) =>
+			Array.isArray( value ) ? value : []
+		);
+	}
+
+	return [];
+}
+
+function trimTrailingDisabledOptions( options ) {
+	const trimmedOptions = [ ...options ];
+
+	while (
+		trimmedOptions.length &&
+		trimmedOptions[ trimmedOptions.length - 1 ]?.disabled
+	) {
+		trimmedOptions.pop();
+	}
+
+	return trimmedOptions;
+}
+
+function useSpacingSizeOptions( defaultOptions ) {
+	const [ spacingSizes ] = useSettings( 'spacing.spacingSizes' );
+
+	return useMemo( () => {
+		const defaultLabels = defaultOptions
+			.filter( ( option ) => !! option.label )
+			.map( ( option ) => option.label );
+
+		const presetOptions = getSpacingSizePresets( spacingSizes )
+			.map( ( { slug, name, size, disabled } ) => {
+				if ( ! slug && ! name ) {
+					return {
+						label: '',
+						value: undefined,
+						disabled: true,
+					};
+				}
+
+				if ( ! slug || ! name || ! size ) {
+					return null;
+				}
+
+				if ( defaultLabels.includes( name ) ) {
+					return null;
+				}
+
+				return {
+					label: name,
+					value: `var:preset|spacing|${ slug }`,
+					disabled,
+				};
+			} )
+			.filter( Boolean );
+
+		const trimmedPresetOptions =
+			trimTrailingDisabledOptions( presetOptions );
+
+		if ( ! trimmedPresetOptions.length ) {
+			return defaultOptions;
+		}
+
+		return [
+			...defaultOptions,
+			{
+				label: '',
+				value: undefined,
+				disabled: true,
+			},
+			...trimmedPresetOptions,
+		];
+	}, [ defaultOptions, spacingSizes ] );
 }
 
 function LinkedButton( { isLinked, ...props } ) {
@@ -304,132 +517,20 @@ export function SpacingSizeControl( {
 } ) {
 	value = isMixed ? 'mixed' : value;
 
-	const defaultOptions = [
-		{
-			label: __( 'Default', 'unitone' ),
-			value: '',
-		},
-		{
-			label: '',
-			value: undefined,
-			disabled: true,
-		},
-		{
-			label: '2XS',
-			value: '-3',
-		},
-		{
-			label: 'XS',
-			value: '-2',
-		},
-		{
-			label: 'S',
-			value: '-1',
-		},
-		{
-			label: __( 'None', 'unitone' ),
-			value: '0',
-		},
-		{
-			label: 'M',
-			value: '1',
-		},
-		{
-			label: 'L',
-			value: '2',
-		},
-		{
-			label: 'XL',
-			value: '3',
-		},
-		{
-			label: '2XL',
-			value: '4',
-		},
-		{
-			label: '3XL',
-			value: '5',
-		},
-		{
-			label: '4XL',
-			value: '6',
-		},
-		{
-			label: '5XL',
-			value: '7',
-		},
-		{
-			label: '',
-			value: undefined,
-			disabled: true,
-		},
-		{
-			label: 'M - S',
-			value: '1s',
-		},
-		{
-			label: 'L - S',
-			value: '2s',
-		},
-		{
-			label: 'XL - S',
-			value: '3s',
-		},
-		{
-			label: '2XL - S',
-			value: '4s',
-		},
-		{
-			label: '3XL - S',
-			value: '5s',
-		},
-		{
-			label: '4XL - S',
-			value: '6s',
-		},
-		{
-			label: '5XL - S',
-			value: '7s',
-		},
-		{
-			label: '',
-			value: undefined,
-			disabled: true,
-		},
-		{
-			label: 'L - M',
-			value: '2m',
-		},
-		{
-			label: 'XL - M',
-			value: '3m',
-		},
-		{
-			label: '2XL - M',
-			value: '4m',
-		},
-		{
-			label: '3XL - M',
-			value: '5m',
-		},
-		{
-			label: '4XL - M',
-			value: '6m',
-		},
-		{
-			label: '5XL - M',
-			value: '7m',
-		},
-	];
+	const defaultOptions = useMemo( () => getDefaultSpacingSizeOptions(), [] );
+	const mergedOptions = useSpacingSizeOptions( defaultOptions );
 
-	options = ! options ? defaultOptions : options;
+	options = ! options ? mergedOptions : options;
 
 	if ( isMixed ) {
-		options.unshift( {
-			label: __( 'Mixed' ),
-			value: 'mixed',
-			disabled: true,
-		} );
+		options = [
+			{
+				label: __( 'Mixed' ),
+				value: 'mixed',
+				disabled: true,
+			},
+			...options,
+		];
 	}
 
 	return (

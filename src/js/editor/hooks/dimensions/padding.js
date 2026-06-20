@@ -19,7 +19,30 @@ import {
 	mergeObjectWithDefaultValue,
 } from '../utils';
 
-import { PaddingControl } from '../components';
+import { PaddingControl, isDefaultSpacingSizeValue } from '../components';
+
+function isPresetSpacingValue( value ) {
+	return 'string' === typeof value && value.startsWith( 'var:preset|' );
+}
+
+function getPresetCssVar( value ) {
+	if ( ! isPresetSpacingValue( value ) ) {
+		return value;
+	}
+
+	const [ , type, slug ] = value.split( '|' );
+
+	return `var(--wp--preset--${ type }--${ slug })`;
+}
+
+function isCustomSpacingSizeValue( value ) {
+	return (
+		null != value &&
+		'' !== value &&
+		! isObject( value ) &&
+		! isDefaultSpacingSizeValue( value )
+	);
+}
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -273,19 +296,59 @@ export function withPaddingBlockProps( settings ) {
 		...settings,
 		wrapperProps: {
 			...settings.wrapperProps,
+			style: {
+				...settings.wrapperProps?.style,
+				...( isCustomSpacingSizeValue( newPadding )
+					? { '--unitone--padding': getPresetCssVar( newPadding ) }
+					: {} ),
+				...( isCustomSpacingSizeValue( newPadding?.top )
+					? {
+							'--unitone--padding-top': getPresetCssVar(
+								newPadding.top
+							),
+					  }
+					: {} ),
+				...( isCustomSpacingSizeValue( newPadding?.right )
+					? {
+							'--unitone--padding-right': getPresetCssVar(
+								newPadding.right
+							),
+					  }
+					: {} ),
+				...( isCustomSpacingSizeValue( newPadding?.bottom )
+					? {
+							'--unitone--padding-bottom': getPresetCssVar(
+								newPadding.bottom
+							),
+					  }
+					: {} ),
+				...( isCustomSpacingSizeValue( newPadding?.left )
+					? {
+							'--unitone--padding-left': getPresetCssVar(
+								newPadding.left
+							),
+					  }
+					: {} ),
+			},
 			'data-unitone-layout': clsx(
 				settings.wrapperProps?.[ 'data-unitone-layout' ],
 				{
 					[ `-padding:${ newPadding }` ]:
-						null != newPadding && ! isObject( newPadding ),
+						null != newPadding &&
+						! isObject( newPadding ) &&
+						! isCustomSpacingSizeValue( newPadding ),
 					[ `-padding-top:${ newPadding?.top }` ]:
-						null != newPadding?.top,
+						null != newPadding?.top &&
+						! isCustomSpacingSizeValue( newPadding.top ),
 					[ `-padding-right:${ newPadding?.right }` ]:
-						null != newPadding?.right,
+						null != newPadding?.right &&
+						! isCustomSpacingSizeValue( newPadding.right ),
 					[ `-padding-bottom:${ newPadding?.bottom }` ]:
-						null != newPadding?.bottom,
+						null != newPadding?.bottom &&
+						! isCustomSpacingSizeValue( newPadding.bottom ),
 					[ `-padding-left:${ newPadding?.left }` ]:
-						null != newPadding?.left,
+						null != newPadding?.left &&
+						! isCustomSpacingSizeValue( newPadding.left ),
 				}
 			),
 		},

@@ -148,6 +148,77 @@ add_filter(
 		};
 
 		/**
+		 * Returns true when the value is a built-in unitone spacing size.
+		 *
+		 * @param string|null $value The spacing size value.
+		 * @return boolean
+		 */
+		$is_default_spacing_size_value = static function ( $value ) {
+			if ( is_null( $value ) ) {
+				return false;
+			}
+
+			return in_array(
+				(string) $value,
+				array(
+					'-3',
+					'-2',
+					'-1',
+					'0',
+					'1',
+					'2',
+					'3',
+					'4',
+					'5',
+					'6',
+					'7',
+					'1s',
+					'2s',
+					'3s',
+					'4s',
+					'5s',
+					'6s',
+					'7s',
+					'2m',
+					'3m',
+					'4m',
+					'5m',
+					'6m',
+					'7m',
+				),
+				true
+			);
+		};
+
+		/**
+		 * Add spacing data attribute for unitone values, or style for custom preset values.
+		 *
+		 * @param string      $attribute_name The unitone data attribute name.
+		 * @param string      $property       The CSS custom property name.
+		 * @param string|null $value          The spacing size value.
+		 */
+		$add_spacing_attribute_or_style = function (
+			$attribute_name,
+			$property,
+			$value
+		) use (
+			$add_attribute,
+			$add_style,
+			$is_default_spacing_size_value
+		) {
+			if ( is_null( $value ) || '' === $value ) {
+				return;
+			}
+
+			if ( $is_default_spacing_size_value( $value ) ) {
+				$add_attribute( $attribute_name, $value );
+				return;
+			}
+
+			$add_style( $property, $value );
+		};
+
+		/**
 		 * Returns true when attributes has a support value.
 		 *
 		 * @param string $support The supported attribute name. Dot-accessible.
@@ -337,16 +408,28 @@ add_filter(
 		if ( unitone_has_block_support( 'unitone.gap', $metadata ) ) {
 			$column_gap = $get_attribute( 'gap.column' );
 			if ( ! is_null( $column_gap ) ) {
-				$add_attribute( '-column-gap', $column_gap );
+				$add_spacing_attribute_or_style(
+					'-column-gap',
+					'--unitone--column-gap',
+					$column_gap
+				);
 			}
 
 			$row_gap = $get_attribute( 'gap.row' );
 			if ( ! is_null( $row_gap ) ) {
-				$add_attribute( '-row-gap', $row_gap );
+				$add_spacing_attribute_or_style(
+					'-row-gap',
+					'--unitone--row-gap',
+					$row_gap
+				);
 			}
 
 			if ( is_null( $column_gap ) && is_null( $row_gap ) ) {
-				$add_attribute( '-gap', $get_attribute( 'gap' ) );
+				$add_spacing_attribute_or_style(
+					'-gap',
+					'--unitone--gap',
+					$get_attribute( 'gap' )
+				);
 			}
 		}
 
@@ -421,26 +504,46 @@ add_filter(
 		if ( unitone_has_block_support( 'unitone.padding', $metadata ) ) {
 			$padding_top = $get_attribute( 'padding.top' );
 			if ( ! is_null( $padding_top ) ) {
-				$add_attribute( '-padding-top', $padding_top );
+				$add_spacing_attribute_or_style(
+					'-padding-top',
+					'--unitone--padding-top',
+					$padding_top
+				);
 			}
 
 			$padding_right = $get_attribute( 'padding.right' );
 			if ( ! is_null( $padding_right ) ) {
-				$add_attribute( '-padding-right', $padding_right );
+				$add_spacing_attribute_or_style(
+					'-padding-right',
+					'--unitone--padding-right',
+					$padding_right
+				);
 			}
 
 			$padding_bottom = $get_attribute( 'padding.bottom' );
 			if ( ! is_null( $padding_bottom ) ) {
-				$add_attribute( '-padding-bottom', $padding_bottom );
+				$add_spacing_attribute_or_style(
+					'-padding-bottom',
+					'--unitone--padding-bottom',
+					$padding_bottom
+				);
 			}
 
 			$padding_left = $get_attribute( 'padding.left' );
 			if ( ! is_null( $padding_left ) ) {
-				$add_attribute( '-padding-left', $padding_left );
+				$add_spacing_attribute_or_style(
+					'-padding-left',
+					'--unitone--padding-left',
+					$padding_left
+				);
 			}
 
 			if ( is_null( $padding_top ) && is_null( $padding_right ) && is_null( $padding_bottom ) && is_null( $padding_left ) ) {
-				$add_attribute( '-padding', $get_attribute( 'padding' ) );
+				$add_spacing_attribute_or_style(
+					'-padding',
+					'--unitone--padding',
+					$get_attribute( 'padding' )
+				);
 			}
 		}
 

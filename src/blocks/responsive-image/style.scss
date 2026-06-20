@@ -6,19 +6,17 @@
 	--unitone--overlay-radius: 0px;
 	--unitone--font-size: 0;
 
-	display: grid;
+	display: flow-root;
 	border: none !important;
 
 	&__overlay {
-		grid-column: 1 / -1;
-		grid-row: 1 / -1;
 		pointer-events: none;
 
 		&::before {
 			content: '';
-			display: block;
-			height: 100%;
-			width: 100%;
+			position: absolute;
+			inset: 0;
+			z-index: auto !important;
 			background-image: var(--unitone--overlay-gradient);
 			background-color: var(--unitone--overlay-color);
 			border-radius: var(--unitone--overlay-radius);
@@ -56,8 +54,7 @@
 	}
 
 	picture {
-		grid-column: 1 / -1;
-		grid-row: 1 / -1;
+		display: contents;
 	}
 
 	img {

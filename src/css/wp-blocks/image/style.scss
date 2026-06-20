@@ -5,6 +5,8 @@
 	--unitone--overlay-opacity: .6;
 	--unitone--overlay-radius: 0px;
 
+	display: flow-root;
+
 	&[data-unitone-layout~="-overlay"] {
 		display: grid;
 

@@ -1,11 +1,12 @@
 import {
+	Notice,
 	RangeControl,
 	SelectControl,
 	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components';
 
 import { useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
+import { __, _x, sprintf } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
@@ -30,6 +31,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				path: '/unitone/v1/settings',
 				method: 'POST',
 				data: {
+					'header-position': settings?.[ 'header-position' ] ?? null,
 					'loading-animation':
 						settings?.[ 'loading-animation' ] ?? null,
 					'loading-animation-delay':
@@ -54,6 +56,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 
 		setSettings( {
 			...settings,
+			'header-position': defaultSettings[ 'header-position' ],
 			'loading-animation': defaultSettings[ 'loading-animation' ],
 			'loading-animation-delay':
 				defaultSettings[ 'loading-animation-delay' ],
@@ -72,6 +75,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				path: '/unitone/v1/settings',
 				method: 'POST',
 				data: {
+					'header-position': null,
 					'loading-animation': null,
 					settings: {
 						layout: {
@@ -153,6 +157,73 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 									} )
 								}
 							/>
+						</div>
+					</div>
+
+					<div
+						data-unitone-layout="with-sidebar -sidebar:left"
+						style={ { '--unitone--sidebar-width': '20em' } }
+					>
+						<div data-unitone-layout="stack">
+							<h3>{ __( 'Header', 'unitone' ) }</h3>
+						</div>
+						<div data-unitone-layout="stack">
+							<SelectControl
+								__next40pxDefaultSize
+								__nextHasNoMarginBottom
+								label={ __( 'Header Position', 'unitone' ) }
+								value={
+									settings?.[ 'header-position' ] || 'normal'
+								}
+								options={ [
+									{
+										label: _x(
+											'Normal',
+											'header-position',
+											'unitone'
+										),
+										value: 'normal',
+									},
+									{
+										label: _x(
+											'Sticky',
+											'header-position',
+											'unitone'
+										),
+										value: 'sticky',
+									},
+									{
+										label: _x(
+											'Fixed',
+											'header-position',
+											'unitone'
+										),
+										value: 'fixed',
+									},
+								] }
+								onChange={ ( newSetting ) => {
+									setSettings( {
+										...settings,
+										'header-position': newSetting,
+									} );
+								} }
+							/>
+
+							<Notice status="warning" isDismissible={ false }>
+								<span
+									dangerouslySetInnerHTML={ {
+										__html: sprintf(
+											// translators: %1$s: <code>, %2$s: </code>
+											__(
+												'This applies to templates that use the "Header Wrapper" template part (%1$sparts/header-wrapper.html%2$s). Additionally, since the changes are applied dynamically on the front end, they are not reflected in the editor.',
+												'unitone'
+											),
+											'<code>',
+											'</code>'
+										),
+									} }
+								/>
+							</Notice>
 						</div>
 					</div>
 

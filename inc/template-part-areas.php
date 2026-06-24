@@ -16,6 +16,20 @@ function unitone_default_wp_template_part_areas( $default_area_definitions ) {
 		$default_area_definitions,
 		array(
 			array(
+				'area'        => 'unitone/header-wrapper',
+				'label'       => __( 'Header Wrappers', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => __( 'The header wrapper template parts can be used to control how the header is positioned.', 'unitone' ),
+				'area_tag'    => 'div',
+			),
+			array(
+				'area'        => 'unitone/header-vertical',
+				'label'       => __( 'Vertical Headers', 'unitone' ),
+				'icon'        => 'layout',
+				'description' => __( 'The vertical header template parts can be used in left header templates.', 'unitone' ),
+				'area_tag'    => 'header',
+			),
+			array(
 				'area'        => 'unitone/overlay-menu',
 				'label'       => __( 'unitone overlay Menus (Deprecated)', 'unitone' ),
 				'icon'        => 'navigation',

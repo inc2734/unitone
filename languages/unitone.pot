@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-17T12:09:54+00:00\n"
+"POT-Creation-Date: 2026-06-24T05:38:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: App/Controller/Manager/Manager.php:42
 #: App/Controller/Manager/Manager.php:43
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "unitone Setup"
 msgstr ""
 
@@ -52,7 +52,7 @@ msgid "Theme"
 msgstr ""
 
 #: App/Controller/Manager/Manager.php:133
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/layers/index.js:1
 #: dist/blocks/section/index.js:1
@@ -172,12 +172,12 @@ msgid "Overlay Menus"
 msgstr ""
 
 #: inc/block-patterns.php:17
-#: inc/template-part-areas.php:27
+#: inc/template-part-areas.php:41
 msgid "Loading Animations"
 msgstr ""
 
 #: inc/block-patterns.php:18
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Pages"
 msgstr ""
 
@@ -675,24 +675,40 @@ msgid "Heavy Pink"
 msgstr ""
 
 #: inc/template-part-areas.php:20
-msgid "unitone overlay Menus (Deprecated)"
+msgid "Header Wrappers"
 msgstr ""
 
 #: inc/template-part-areas.php:22
-msgid "The unitone overlay menu templates can be used as an unitone overlay menu for the navigation block."
+msgid "The header wrapper template parts can be used to control how the header is positioned."
+msgstr ""
+
+#: inc/template-part-areas.php:27
+msgid "Vertical Headers"
 msgstr ""
 
 #: inc/template-part-areas.php:29
-msgid "The loading animation template part will cover the page until the page is fully loaded."
+msgid "The vertical header template parts can be used in left header templates."
 msgstr ""
 
 #: inc/template-part-areas.php:34
+msgid "unitone overlay Menus (Deprecated)"
+msgstr ""
+
+#: inc/template-part-areas.php:36
+msgid "The unitone overlay menu templates can be used as an unitone overlay menu for the navigation block."
+msgstr ""
+
+#: inc/template-part-areas.php:43
+msgid "The loading animation template part will cover the page until the page is fully loaded."
+msgstr ""
+
+#: inc/template-part-areas.php:48
 #: dist/blocks/slider/index.js:1
 #: dist/js/editor/editor.js:13
 msgid "Loop"
 msgstr ""
 
-#: inc/template-part-areas.php:41
+#: inc/template-part-areas.php:55
 msgid "Comments"
 msgstr ""
 
@@ -1215,6 +1231,26 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
+#: patterns/template/404/fixed-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: Fixed Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/404/fixed-header-one-column.php
+msgctxt "Pattern title"
+msgid "404: Fixed Header / One Column"
+msgstr ""
+
+#: patterns/template/404/fixed-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "404: Fixed Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/404/fixed-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "404: Fixed Header / Right Sidebar"
+msgstr ""
+
 #: patterns/template/404/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "404: Left Header / Page Header (Image)"
@@ -1273,6 +1309,26 @@ msgstr ""
 #: patterns/template/404/sticky-header-right-sidebar.php
 msgctxt "Pattern title"
 msgid "404: Sticky Header / Right Sidebar"
+msgstr ""
+
+#: patterns/template/archive/fixed-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Fixed Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/archive/fixed-header-one-column.php
+msgctxt "Pattern title"
+msgid "All Archives: Fixed Header / One Column"
+msgstr ""
+
+#: patterns/template/archive/fixed-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "All Archives: Fixed Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/archive/fixed-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "All Archives: Fixed Header / Right Sidebar"
 msgstr ""
 
 #: patterns/template/archive/left-header-page-header-image.php
@@ -1360,6 +1416,26 @@ msgctxt "Pattern title"
 msgid "Front Page: Sticky Header"
 msgstr ""
 
+#: patterns/template/home/fixed-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Fixed Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/home/fixed-header-one-column.php
+msgctxt "Pattern title"
+msgid "Blog Home: Fixed Header / One Column"
+msgstr ""
+
+#: patterns/template/home/fixed-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Blog Home: Fixed Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/home/fixed-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Blog Home: Fixed Header / Right Sidebar"
+msgstr ""
+
 #: patterns/template/home/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Blog Home: Left Header / Page Header (Image)"
@@ -1423,6 +1499,51 @@ msgstr ""
 #: patterns/template/page/blank.php
 msgctxt "Pattern title"
 msgid "Pages: Blank"
+msgstr ""
+
+#: patterns/template/page/fixed-header-one-column-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Fixed Header / One Column / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template/page/fixed-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Fixed Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/page/fixed-header-one-column-page-header-slim.php
+msgctxt "Pattern title"
+msgid "Pages: Fixed Header / One Column / Page Header (Slim)"
+msgstr ""
+
+#: patterns/template/page/fixed-header-one-column-page-header-wide.php
+msgctxt "Pattern title"
+msgid "Pages: Fixed Header / One Column / Page Header (Wide)"
+msgstr ""
+
+#: patterns/template/page/fixed-header-one-column.php
+msgctxt "Pattern title"
+msgid "Pages: Fixed Header / One Column"
+msgstr ""
+
+#: patterns/template/page/fixed-header-right-sidebar-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Pages: Fixed Header / Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template/page/fixed-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Pages: Fixed Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/page/fixed-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Pages: Fixed Header / Right Sidebar"
+msgstr ""
+
+#: patterns/template/page/fixed-header.php
+msgctxt "Pattern title"
+msgid "Pages: Fixed Header"
 msgstr ""
 
 #: patterns/template/page/header-footer.php
@@ -1555,6 +1676,26 @@ msgctxt "Pattern title"
 msgid "Pages: Sticky Header"
 msgstr ""
 
+#: patterns/template/search/fixed-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Fixed Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/search/fixed-header-one-column.php
+msgctxt "Pattern title"
+msgid "Search Results: Fixed Header / One Column"
+msgstr ""
+
+#: patterns/template/search/fixed-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Search Results: Fixed Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/search/fixed-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Search Results: Fixed Header / Right Sidebar"
+msgstr ""
+
 #: patterns/template/search/left-header-page-header-image.php
 msgctxt "Pattern title"
 msgid "Search Results: Left Header / Page Header (Image)"
@@ -1613,6 +1754,51 @@ msgstr ""
 #: patterns/template/search/sticky-header-right-sidebar.php
 msgctxt "Pattern title"
 msgid "Search Results: Sticky Header / Right Sidebar"
+msgstr ""
+
+#: patterns/template/single/fixed-header-one-column-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Fixed Header / One Column / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template/single/fixed-header-one-column-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Fixed Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/single/fixed-header-one-column-page-header-slim.php
+msgctxt "Pattern title"
+msgid "Single Posts: Fixed Header / One Column / Page Header (Slim)"
+msgstr ""
+
+#: patterns/template/single/fixed-header-one-column-page-header-wide.php
+msgctxt "Pattern title"
+msgid "Single Posts: Fixed Header / One Column / Page Header (Wide)"
+msgstr ""
+
+#: patterns/template/single/fixed-header-one-column.php
+msgctxt "Pattern title"
+msgid "Single Posts: Fixed Header / One Column"
+msgstr ""
+
+#: patterns/template/single/fixed-header-right-sidebar-page-header-featured.php
+msgctxt "Pattern title"
+msgid "Single Posts: Fixed Header / Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: patterns/template/single/fixed-header-right-sidebar-page-header-image.php
+msgctxt "Pattern title"
+msgid "Single Posts: Fixed Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: patterns/template/single/fixed-header-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Single Posts: Fixed Header / Right Sidebar"
+msgstr ""
+
+#: patterns/template/single/fixed-header.php
+msgctxt "Pattern title"
+msgid "Single Posts: Fixed Header"
 msgstr ""
 
 #: patterns/template/single/header-footer.php
@@ -1958,212 +2144,241 @@ msgid "Wide Width"
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:7
+msgid "Header"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgid "Header Position"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgctxt "header-position"
+msgid "Normal"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgctxt "header-position"
+msgid "Sticky"
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:7
+msgctxt "header-position"
+msgid "Fixed"
+msgstr ""
+
+#. translators: %1$s: <code>, %2$s: </code>
+#: App/Controller/Manager/dist/js/app.js:10
+#, js-format
+msgid "This applies to templates that use the \"Header Wrapper\" template part (%1$sparts/header-wrapper.html%2$s). Additionally, since the changes are applied dynamically on the front end, they are not reflected in the editor."
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Loading Animation"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Template Parts to Use"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "You can choose from the template parts assigned to the template part area \"Loading Animation\"."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
-#: App/Controller/Manager/dist/js/app.js:8
+#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:11
 msgid "— Select —"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Minimum Time to Display Loading Animation (s)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Your Homepage Displays"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Homepage Type"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Latest Posts"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Static Page"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Homepage"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Create a new blank page"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Select existing page for the homepage"
 msgstr ""
 
 #. translators: %1$s: Post ID
-#: App/Controller/Manager/dist/js/app.js:8
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:11
+#: App/Controller/Manager/dist/js/app.js:12
 #, js-format
 msgid "#%1$s (No title)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:8
+#: App/Controller/Manager/dist/js/app.js:11
 msgid "Posts Page"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:8
+#: App/Controller/Manager/dist/js/app.js:11
 msgid "Create new page for the posts page"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:8
+#: App/Controller/Manager/dist/js/app.js:11
 msgid "Select existing page for the posts page"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Posts"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Products"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Custom Templates"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Activate the custom template you wish to use. You cannot deactivate a custom template that is already in use."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Blog Card"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Style"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Background color (Accent color)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Border (Accent color)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Dark"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 #: dist/formats/formats.js:2
 msgid "Media"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Simple"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 #: dist/blocks/badge/index.js:1
 #: dist/blocks/child-pages/index.js:1
 msgid "Box"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 #: dist/js/editor/editor.js:16
 msgid "OGP"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "OGP Tags"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Output tags"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Twitter Cards"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "twitter:site"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "@username for the website used in the card footer."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Generated Thumbnail"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Featured Image"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Aspect Ratio"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "The aspect ratio for featured images generated based on post title."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 #: dist/blocks/abstract-background/index.js:1
 #: dist/js/editor/editor.js:16
 msgid "Background"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "Failed to load models."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:9
+#: App/Controller/Manager/dist/js/app.js:12
 msgid "OpenAI (Deprecated)"
 msgstr ""
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 #, js-format
 msgid "Starting with WordPress 7.0, the use of %1$sAI Connectors%2$s is recommended. This setup is scheduled to be rolled out, so please migrate to AI Connectors as soon as possible."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "AI Connectors are already configured and currently in use. The OpenAI settings below are only used as a legacy fallback."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "API Key"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Model to use"
 msgstr ""
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 #, js-format
 msgid "Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for details."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Go to the Dashboard"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "View site (opens in a new tab)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Navigation"
 msgstr ""
 
@@ -5619,6 +5834,81 @@ msgid "3XL"
 msgstr ""
 
 #: theme.json
+msgctxt "Space size name"
+msgid "4XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "M - S"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "L - S"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XL - S"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XL - S"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3XL - S"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4XL - S"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5XL - S"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "L - M"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XL - M"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XL - M"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3XL - M"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4XL - M"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5XL - M"
+msgstr ""
+
+#: theme.json
 msgctxt "Custom template name"
 msgid "Pages: One Column"
 msgstr ""
@@ -5746,6 +6036,51 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Pages: Sticky Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Fixed Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Fixed Header / One Column"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Fixed Header / One Column / Page Header (Featured Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Fixed Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Fixed Header / One Column / Page Header (Slim)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Fixed Header / One Column / Page Header (Wide)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Fixed Header / Right Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Fixed Header / Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Pages: Fixed Header / Right Sidebar / Page Header (Image)"
 msgstr ""
 
 #: theme.json
@@ -5884,13 +6219,83 @@ msgid "Single Posts: Sticky Header / Right Sidebar / Page Header (Image)"
 msgstr ""
 
 #: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Fixed Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Fixed Header / One Column"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Fixed Header / One Column / Page Header (Featured Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Fixed Header / One Column / Page Header (Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Fixed Header / One Column / Page Header (Slim)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Fixed Header / One Column / Page Header (Wide)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Fixed Header / Right Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Fixed Header / Right Sidebar / Page Header (Featured Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Posts: Fixed Header / Right Sidebar / Page Header (Image)"
+msgstr ""
+
+#: theme.json
 msgctxt "Template part name"
 msgid "Header"
 msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
+msgid "Header Wrapper"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header Wrapper (Normal)"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header Wrapper (Sticky)"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header Wrapper (Fixed)"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
 msgid "Header (Vertical)"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header (Vertical / Thin)"
 msgstr ""
 
 #: theme.json

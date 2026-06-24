@@ -52,6 +52,11 @@
 		}
 	}
 
+	// For fixed header preview
+	.is-root-container > [data-unitone-layout~=cover__content ]:only-child {
+		position: relative !important;
+	}
+
 	[data-unitone-layout~=text] {
 		> .block-list-appender:only-child {
 			display: block;

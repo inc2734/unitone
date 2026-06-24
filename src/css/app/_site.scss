@@ -16,6 +16,10 @@
 	}
 }
 
+.site-header-wrapper:where(.wp-block-template-part) {
+	display: contents;
+}
+
 .site-container-left-header:where(.unitone-grid) {
 	@media (min-width: 600px) {
 		.site-header {

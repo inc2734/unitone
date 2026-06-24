@@ -36,6 +36,7 @@ class Settings {
 		'h4-size'                               => '1',
 		'h5-size'                               => '0',
 		'h6-size'                               => '0',
+		'header-position'                       => 'normal',
 		'loading-animation'                     => false,
 		'loading-animation-delay'               => '1',
 		'enabled-custom-templates'              => array( 'template-page-header-footer', 'template-page-blank' ),

@@ -882,6 +882,69 @@
 			]
 		},
 		{
+			"name": "template-page-fixed-header",
+			"title": "Pages: Fixed Header",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-fixed-header-one-column",
+			"title": "Pages: Fixed Header / One Column",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-fixed-header-one-column-page-header-featured",
+			"title": "Pages: Fixed Header / One Column / Page Header (Featured Image)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-fixed-header-one-column-page-header-image",
+			"title": "Pages: Fixed Header / One Column / Page Header (Image)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-fixed-header-one-column-page-header-slim",
+			"title": "Pages: Fixed Header / One Column / Page Header (Slim)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-fixed-header-one-column-page-header-wide",
+			"title": "Pages: Fixed Header / One Column / Page Header (Wide)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-fixed-header-right-sidebar",
+			"title": "Pages: Fixed Header / Right Sidebar",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-fixed-header-right-sidebar-page-header-featured",
+			"title": "Pages: Fixed Header / Right Sidebar / Page Header (Featured Image)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "template-page-fixed-header-right-sidebar-page-header-image",
+			"title": "Pages: Fixed Header / Right Sidebar / Page Header (Image)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
 			"name": "template-page-blank",
 			"title": "Pages: Blank",
 			"postTypes": [
@@ -1069,6 +1132,69 @@
 			"postTypes": [
 				"post"
 			]
+		},
+		{
+			"name": "template-single-fixed-header",
+			"title": "Single Posts: Fixed Header",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-fixed-header-one-column",
+			"title": "Single Posts: Fixed Header / One Column",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-fixed-header-one-column-page-header-featured",
+			"title": "Single Posts: Fixed Header / One Column / Page Header (Featured Image)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-fixed-header-one-column-page-header-image",
+			"title": "Single Posts: Fixed Header / One Column / Page Header (Image)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-fixed-header-one-column-page-header-slim",
+			"title": "Single Posts: Fixed Header / One Column / Page Header (Slim)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-fixed-header-one-column-page-header-wide",
+			"title": "Single Posts: Fixed Header / One Column / Page Header (Wide)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-fixed-header-right-sidebar",
+			"title": "Single Posts: Fixed Header / Right Sidebar",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-fixed-header-right-sidebar-page-header-featured",
+			"title": "Single Posts: Fixed Header / Right Sidebar / Page Header (Featured Image)",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "template-single-fixed-header-right-sidebar-page-header-image",
+			"title": "Single Posts: Fixed Header / Right Sidebar / Page Header (Image)",
+			"postTypes": [
+				"post"
+			]
 		}
 	],
 	"templateParts": [
@@ -1078,9 +1204,34 @@
 			"area": "header"
 		},
 		{
+			"name": "header-wrapper",
+			"title": "Header Wrapper",
+			"area": "unitone/header-wrapper"
+		},
+		{
+			"name": "header-wrapper-normal",
+			"title": "Header Wrapper (Normal)",
+			"area": "unitone/header-wrapper"
+		},
+		{
+			"name": "header-wrapper-sticky",
+			"title": "Header Wrapper (Sticky)",
+			"area": "unitone/header-wrapper"
+		},
+		{
+			"name": "header-wrapper-fixed",
+			"title": "Header Wrapper (Fixed)",
+			"area": "unitone/header-wrapper"
+		},
+		{
 			"name": "header-vertical",
 			"title": "Header (Vertical)",
-			"area": "header"
+			"area": "unitone/header-vertical"
+		},
+		{
+			"name": "header-vertical-thin",
+			"title": "Header (Vertical / Thin)",
+			"area": "unitone/header-vertical"
 		},
 		{
 			"name": "footer",

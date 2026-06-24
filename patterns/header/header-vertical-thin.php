@@ -2,7 +2,6 @@
 /**
  * Title: Header (Vertical / Thin)
  * Slug: unitone/header/vertical-thin
- * Categories: unitone-headers
  */
 ?>
 <!-- wp:unitone/section {"tagName":"div","unitone":{"maxWidth":"100%","padding":"-1"}} -->

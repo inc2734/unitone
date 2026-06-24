@@ -153,8 +153,8 @@ require get_template_directory() . '/inc/ogp.php';
 // Loading animation settings.
 require get_template_directory() . '/inc/loading-animation.php';
 
-// Header wrapper settings.
-require get_template_directory() . '/inc/header-wrapper.php';
+// Header settings.
+require get_template_directory() . '/inc/header.php';
 
 // OpenAI.
 require get_template_directory() . '/inc/openai.php';

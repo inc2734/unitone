@@ -1204,24 +1204,19 @@
 			"area": "header"
 		},
 		{
-			"name": "header-wrapper",
-			"title": "Header Wrapper",
-			"area": "unitone/header-wrapper"
+			"name": "header-normal",
+			"title": "Header (Normal)",
+			"area": "header"
 		},
 		{
-			"name": "header-wrapper-normal",
-			"title": "Header Wrapper (Normal)",
-			"area": "unitone/header-wrapper"
+			"name": "header-sticky",
+			"title": "Header (Sticky)",
+			"area": "header"
 		},
 		{
-			"name": "header-wrapper-sticky",
-			"title": "Header Wrapper (Sticky)",
-			"area": "unitone/header-wrapper"
-		},
-		{
-			"name": "header-wrapper-fixed",
-			"title": "Header Wrapper (Fixed)",
-			"area": "unitone/header-wrapper"
+			"name": "header-fixed",
+			"title": "Header (Fixed)",
+			"area": "header"
 		},
 		{
 			"name": "header-vertical",

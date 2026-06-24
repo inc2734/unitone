@@ -9,7 +9,11 @@
 ?>
 <!-- wp:unitone/cover {"unitone":{"gap":"0","padding":"0"}} -->
 <div data-unitone-layout="cover">
-	<!-- wp:template-part {"slug":"header-wrapper-sticky","tagName":"div","area":"unitone/header-wrapper","className":"site-header-wrapper"} /-->
+	<!-- wp:unitone/cover-content {"position":"top"} -->
+	<div data-unitone-layout="cover__content -valign:top">
+		<!-- wp:template-part {"slug":"header-sticky","tagName":"header","area":"header","className":"site-header"} /-->
+	</div>
+	<!-- /wp:unitone/cover-content -->
 
 	<!-- wp:unitone/cover-content {"fill":true,"position":"center"} -->
 	<div data-unitone-layout="cover__content -fill -valign:center">

@@ -16,8 +16,14 @@
 	}
 }
 
-.site-header-wrapper:where(.wp-block-template-part) {
-	display: contents;
+:where(
+	.site-header,
+	[data-unitone-layout~=cover__content]
+):has(
+	[data-unitone-layout~="-position:sticky"],
+	[data-unitone-layout~="-position:sticky-top-admin-bar"]
+) {
+	display: contents !important;
 }
 
 .site-container-left-header:where(.unitone-grid) {

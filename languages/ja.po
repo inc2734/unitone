@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-06-24T05:38:34+00:00\n"
-"PO-Revision-Date: 2026-06-24 14:39+0900\n"
+"POT-Creation-Date: 2026-06-24T07:56:54+00:00\n"
+"PO-Revision-Date: 2026-06-24 17:01+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -158,7 +158,7 @@ msgstr "クエリー"
 msgid "Overlay Menus"
 msgstr "オーバーレイメニュー"
 
-#: inc/block-patterns.php:17 inc/template-part-areas.php:41
+#: inc/block-patterns.php:17 inc/template-part-areas.php:34
 msgid "Loading Animations"
 msgstr "ローディングアニメーション"
 
@@ -652,33 +652,21 @@ msgid "Heavy Pink"
 msgstr "ヘビーピンク"
 
 #: inc/template-part-areas.php:20
-msgid "Header Wrappers"
-msgstr "ヘッダーラッパー"
-
-#: inc/template-part-areas.php:22
-msgid ""
-"The header wrapper template parts can be used to control how the header is "
-"positioned."
-msgstr ""
-"ヘッダーラッパーのテンプレートパーツを使用すると、ヘッダーの配置を制御できま"
-"す。"
-
-#: inc/template-part-areas.php:27
 msgid "Vertical Headers"
 msgstr "ヘッダー（縦）"
 
-#: inc/template-part-areas.php:29
+#: inc/template-part-areas.php:22
 msgid ""
 "The vertical header template parts can be used in left header templates."
 msgstr ""
 "ヘッダー（縦）のテンプレートパーツは、左ヘッダーのテンプレートで使用できま"
 "す。"
 
-#: inc/template-part-areas.php:34
+#: inc/template-part-areas.php:27
 msgid "unitone overlay Menus (Deprecated)"
 msgstr "unitone オーバーレイメニュー（非推奨）"
 
-#: inc/template-part-areas.php:36
+#: inc/template-part-areas.php:29
 msgid ""
 "The unitone overlay menu templates can be used as an unitone overlay menu "
 "for the navigation block."
@@ -686,7 +674,7 @@ msgstr ""
 "unitone オーバーレイメニューテンプレートは、ナビゲーションブロックの unitone "
 "オーバーレイメニューとして使用できます。"
 
-#: inc/template-part-areas.php:43
+#: inc/template-part-areas.php:36
 msgid ""
 "The loading animation template part will cover the page until the page is "
 "fully loaded."
@@ -694,12 +682,12 @@ msgstr ""
 "ローディングアニメーションテンプレートパーツは、ページ読み込み完了までの間"
 "ページを覆う形で表示されます。"
 
-#: inc/template-part-areas.php:48 dist/blocks/slider/index.js:1
+#: inc/template-part-areas.php:41 dist/blocks/slider/index.js:1
 #: dist/js/editor/editor.js:13
 msgid "Loop"
 msgstr "ループ"
 
-#: inc/template-part-areas.php:55
+#: inc/template-part-areas.php:48
 msgid "Comments"
 msgstr "コメント"
 
@@ -2207,13 +2195,13 @@ msgstr "オーバーレイ（上部固定）"
 #. translators: %1$s: <code>, %2$s: </code>
 #: App/Controller/Manager/dist/js/app.js:10
 msgid ""
-"This applies to templates that use the \"Header Wrapper\" template part "
-"(%1$sparts/header-wrapper.html%2$s). Additionally, since the changes are "
-"applied dynamically on the front end, they are not reflected in the editor."
+"This applies to templates that use the \"Header\" template part (%1$sparts/"
+"header.html%2$s). Additionally, since the changes are applied dynamically on "
+"the front end, they are not reflected in the editor."
 msgstr ""
-"これは、「ヘッダーラッパー」テンプレートパーツ（%1$sparts/header-"
-"wrapper.html%2$s）を使用するテンプレートに適用されます。また、変更はフロント"
-"エンドで動的に適用されるため、エディター上では反映されません。"
+"これは、「ヘッダーラッパー」テンプレートパーツ（%1$sparts/header.html%2$s）を"
+"使用するテンプレートに適用されます。また、変更はフロントエンドで動的に適用さ"
+"れるため、エディター上では反映されません。"
 
 #: App/Controller/Manager/dist/js/app.js:10
 msgid "Loading Animation"
@@ -6299,23 +6287,18 @@ msgstr "ヘッダー"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Header Wrapper"
-msgstr "ヘッダーラッパー"
+msgid "Header (Normal)"
+msgstr "ヘッダー（ノーマル）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Header Wrapper (Normal)"
-msgstr "ヘッダーラッパー（ノーマル）"
+msgid "Header (Sticky)"
+msgstr "ヘッダー（上部固定）"
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Header Wrapper (Sticky)"
-msgstr "ヘッダーラッパー（上部固定）"
-
-#: theme.json
-msgctxt "Template part name"
-msgid "Header Wrapper (Fixed)"
-msgstr "ヘッダーラッパー（オーバーレイ（上部固定））"
+msgid "Header (Fixed)"
+msgstr "ヘッダー（オーバーレイ（上部固定））"
 
 #: theme.json
 msgctxt "Template part name"

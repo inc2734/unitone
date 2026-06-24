@@ -215,7 +215,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										__html: sprintf(
 											// translators: %1$s: <code>, %2$s: </code>
 											__(
-												'This applies to templates that use the "Header Wrapper" template part (%1$sparts/header-wrapper.html%2$s). Additionally, since the changes are applied dynamically on the front end, they are not reflected in the editor.',
+												'This applies to templates that use the "Header" template part (%1$sparts/header.html%2$s). Additionally, since the changes are applied dynamically on the front end, they are not reflected in the editor.',
 												'unitone'
 											),
 											'<code>',

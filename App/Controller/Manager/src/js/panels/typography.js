@@ -510,7 +510,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										__html: sprintf(
 											// translators: %1$s: <code>, %2$s: </code>
 											__(
-												'The header size setting described above applies directly beneath inner blocks use content width (%1$s.is-layout-constrained%2$s), text blocks, and vertical writing blocks. If you have configured header size settings within the Site Editor, the setting mentioned above will not take effect.',
+												'The header size setting described above applies directly beneath inner blocks use content width (%1$s.is-layout-constrained%2$s), text blocks, and vertical writing blocks.',
 												'unitone'
 											),
 											'<code>',

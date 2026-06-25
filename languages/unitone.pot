@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-25T07:55:52+00:00\n"
+"POT-Creation-Date: 2026-06-25T14:18:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: App/Controller/Manager/Manager.php:42
 #: App/Controller/Manager/Manager.php:43
-#: App/Controller/Manager/dist/js/app.js:18
+#: App/Controller/Manager/dist/js/app.js:21
 msgid "unitone Setup"
 msgstr ""
 
@@ -52,7 +52,7 @@ msgid "Theme"
 msgstr ""
 
 #: App/Controller/Manager/Manager.php:133
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/layers/index.js:1
 #: dist/blocks/section/index.js:1
@@ -137,7 +137,7 @@ msgid "%s mega menu"
 msgstr ""
 
 #: inc/block-categories.php:25
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 #: dist/blocks/child-pages/index.js:1
 #: dist/js/editor/editor.js:7
 msgid "Layout"
@@ -177,7 +177,7 @@ msgid "Loading Animations"
 msgstr ""
 
 #: inc/block-patterns.php:18
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Pages"
 msgstr ""
 
@@ -255,421 +255,421 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: inc/global-styles.php:240
+#: inc/global-styles.php:252
 msgctxt "Color name"
 msgid "Twilight (Pale)"
 msgstr ""
 
-#: inc/global-styles.php:245
+#: inc/global-styles.php:257
 msgctxt "Color name"
 msgid "Twilight (Mild)"
 msgstr ""
 
-#: inc/global-styles.php:250
+#: inc/global-styles.php:262
 msgctxt "Color name"
 msgid "Twilight (Light)"
 msgstr ""
 
-#: inc/global-styles.php:255
+#: inc/global-styles.php:267
 msgctxt "Color name"
 msgid "Twilight"
 msgstr ""
 
-#: inc/global-styles.php:260
+#: inc/global-styles.php:272
 msgctxt "Color name"
 msgid "Twilight (Strong)"
 msgstr ""
 
-#: inc/global-styles.php:265
+#: inc/global-styles.php:277
 msgctxt "Color name"
 msgid "Twilight (Heavy)"
 msgstr ""
 
-#: inc/global-styles.php:270
+#: inc/global-styles.php:282
 msgctxt "Color name"
 msgid "Dimmed (Pale)"
 msgstr ""
 
-#: inc/global-styles.php:275
+#: inc/global-styles.php:287
 msgctxt "Color name"
 msgid "Dimmed (Mild)"
 msgstr ""
 
-#: inc/global-styles.php:280
+#: inc/global-styles.php:292
 msgctxt "Color name"
 msgid "Dimmed (Light)"
 msgstr ""
 
-#: inc/global-styles.php:285
+#: inc/global-styles.php:297
 msgctxt "Color name"
 msgid "Dimmed"
 msgstr ""
 
-#: inc/global-styles.php:290
+#: inc/global-styles.php:302
 msgctxt "Color name"
 msgid "Dimmed (Strong)"
 msgstr ""
 
-#: inc/global-styles.php:295
+#: inc/global-styles.php:307
 msgctxt "Color name"
 msgid "Dimmed (Heavy)"
 msgstr ""
 
-#: inc/global-styles.php:300
+#: inc/global-styles.php:312
 msgctxt "Color name"
 msgid "Pale Red"
 msgstr ""
 
-#: inc/global-styles.php:305
+#: inc/global-styles.php:317
 msgctxt "Color name"
 msgid "Bright Red"
 msgstr ""
 
-#: inc/global-styles.php:310
+#: inc/global-styles.php:322
 msgctxt "Color name"
 msgid "Light Red"
 msgstr ""
 
-#: inc/global-styles.php:315
+#: inc/global-styles.php:327
 msgctxt "Color name"
 msgid "Red"
 msgstr ""
 
-#: inc/global-styles.php:320
+#: inc/global-styles.php:332
 msgctxt "Color name"
 msgid "Dark Red"
 msgstr ""
 
-#: inc/global-styles.php:325
+#: inc/global-styles.php:337
 msgctxt "Color name"
 msgid "Heavy Red"
 msgstr ""
 
-#: inc/global-styles.php:330
+#: inc/global-styles.php:342
 msgctxt "Color name"
 msgid "Pale Orange"
 msgstr ""
 
-#: inc/global-styles.php:335
+#: inc/global-styles.php:347
 msgctxt "Color name"
 msgid "Bright Orange"
 msgstr ""
 
-#: inc/global-styles.php:340
+#: inc/global-styles.php:352
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr ""
 
-#: inc/global-styles.php:345
+#: inc/global-styles.php:357
 msgctxt "Color name"
 msgid "Orange"
 msgstr ""
 
-#: inc/global-styles.php:350
+#: inc/global-styles.php:362
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr ""
 
-#: inc/global-styles.php:355
+#: inc/global-styles.php:367
 msgctxt "Color name"
 msgid "Heavy Orange"
 msgstr ""
 
-#: inc/global-styles.php:360
+#: inc/global-styles.php:372
 msgctxt "Color name"
 msgid "Pale Yellow"
 msgstr ""
 
-#: inc/global-styles.php:365
+#: inc/global-styles.php:377
 msgctxt "Color name"
 msgid "Bright Yellow"
 msgstr ""
 
-#: inc/global-styles.php:370
+#: inc/global-styles.php:382
 msgctxt "Color name"
 msgid "Light Yellow"
 msgstr ""
 
-#: inc/global-styles.php:375
+#: inc/global-styles.php:387
 msgctxt "Color name"
 msgid "Yellow"
 msgstr ""
 
-#: inc/global-styles.php:380
+#: inc/global-styles.php:392
 msgctxt "Color name"
 msgid "Dark Yellow"
 msgstr ""
 
-#: inc/global-styles.php:385
+#: inc/global-styles.php:397
 msgctxt "Color name"
 msgid "Heavy Yellow"
 msgstr ""
 
-#: inc/global-styles.php:390
+#: inc/global-styles.php:402
 msgctxt "Color name"
 msgid "Pale Lime"
 msgstr ""
 
-#: inc/global-styles.php:395
+#: inc/global-styles.php:407
 msgctxt "Color name"
 msgid "Bright Lime"
 msgstr ""
 
-#: inc/global-styles.php:400
+#: inc/global-styles.php:412
 msgctxt "Color name"
 msgid "Light Lime"
 msgstr ""
 
-#: inc/global-styles.php:405
+#: inc/global-styles.php:417
 msgctxt "Color name"
 msgid "Lime"
 msgstr ""
 
-#: inc/global-styles.php:410
+#: inc/global-styles.php:422
 msgctxt "Color name"
 msgid "Dark Lime"
 msgstr ""
 
-#: inc/global-styles.php:415
+#: inc/global-styles.php:427
 msgctxt "Color name"
 msgid "Heavy Lime"
 msgstr ""
 
-#: inc/global-styles.php:420
+#: inc/global-styles.php:432
 msgctxt "Color name"
 msgid "Pale Green"
 msgstr ""
 
-#: inc/global-styles.php:425
+#: inc/global-styles.php:437
 msgid "Bright Green"
 msgstr ""
 
-#: inc/global-styles.php:430
+#: inc/global-styles.php:442
 msgctxt "Color name"
 msgid "Light Green"
 msgstr ""
 
-#: inc/global-styles.php:435
+#: inc/global-styles.php:447
 msgctxt "Color name"
 msgid "Green"
 msgstr ""
 
-#: inc/global-styles.php:440
+#: inc/global-styles.php:452
 msgctxt "Color name"
 msgid "Dark Green"
 msgstr ""
 
-#: inc/global-styles.php:445
+#: inc/global-styles.php:457
 msgctxt "Color name"
 msgid "Heavy Green"
 msgstr ""
 
-#: inc/global-styles.php:450
+#: inc/global-styles.php:462
 msgctxt "Color name"
 msgid "Pale Teal"
 msgstr ""
 
-#: inc/global-styles.php:455
+#: inc/global-styles.php:467
 msgctxt "Color name"
 msgid "Bright Teal"
 msgstr ""
 
-#: inc/global-styles.php:460
+#: inc/global-styles.php:472
 msgctxt "Color name"
 msgid "Light Teal"
 msgstr ""
 
-#: inc/global-styles.php:465
+#: inc/global-styles.php:477
 msgctxt "Color name"
 msgid "Teal"
 msgstr ""
 
-#: inc/global-styles.php:470
+#: inc/global-styles.php:482
 msgctxt "Color name"
 msgid "Dark Teal"
 msgstr ""
 
-#: inc/global-styles.php:475
+#: inc/global-styles.php:487
 msgctxt "Color name"
 msgid "Heavy Teal"
 msgstr ""
 
-#: inc/global-styles.php:480
+#: inc/global-styles.php:492
 msgctxt "Color name"
 msgid "Pale Cyan"
 msgstr ""
 
-#: inc/global-styles.php:485
+#: inc/global-styles.php:497
 msgctxt "Color name"
 msgid "Bright Cyan"
 msgstr ""
 
-#: inc/global-styles.php:490
+#: inc/global-styles.php:502
 msgctxt "Color name"
 msgid "Light Cyan"
 msgstr ""
 
-#: inc/global-styles.php:495
+#: inc/global-styles.php:507
 msgctxt "Color name"
 msgid "Cyan"
 msgstr ""
 
-#: inc/global-styles.php:500
+#: inc/global-styles.php:512
 msgctxt "Color name"
 msgid "Dark Cyan"
 msgstr ""
 
-#: inc/global-styles.php:505
+#: inc/global-styles.php:517
 msgctxt "Color name"
 msgid "Heavy Cyan"
 msgstr ""
 
-#: inc/global-styles.php:510
+#: inc/global-styles.php:522
 msgctxt "Color name"
 msgid "Pale Blue"
 msgstr ""
 
-#: inc/global-styles.php:515
+#: inc/global-styles.php:527
 msgctxt "Color name"
 msgid "Bright Blue"
 msgstr ""
 
-#: inc/global-styles.php:520
+#: inc/global-styles.php:532
 msgctxt "Color name"
 msgid "Light Blue"
 msgstr ""
 
-#: inc/global-styles.php:525
+#: inc/global-styles.php:537
 msgctxt "Color name"
 msgid "Blue"
 msgstr ""
 
-#: inc/global-styles.php:530
+#: inc/global-styles.php:542
 msgctxt "Color name"
 msgid "Dark Blue"
 msgstr ""
 
-#: inc/global-styles.php:535
+#: inc/global-styles.php:547
 msgctxt "Color name"
 msgid "Heavy Blue"
 msgstr ""
 
-#: inc/global-styles.php:540
+#: inc/global-styles.php:552
 msgctxt "Color name"
 msgid "Pale Indigo"
 msgstr ""
 
-#: inc/global-styles.php:545
+#: inc/global-styles.php:557
 msgctxt "Color name"
 msgid "Bright Indigo"
 msgstr ""
 
-#: inc/global-styles.php:550
+#: inc/global-styles.php:562
 msgctxt "Color name"
 msgid "Light Indigo"
 msgstr ""
 
-#: inc/global-styles.php:555
+#: inc/global-styles.php:567
 msgctxt "Color name"
 msgid "Indigo"
 msgstr ""
 
-#: inc/global-styles.php:560
+#: inc/global-styles.php:572
 msgctxt "Color name"
 msgid "Dark Indigo"
 msgstr ""
 
-#: inc/global-styles.php:565
+#: inc/global-styles.php:577
 msgctxt "Color name"
 msgid "Heavy Indigo"
 msgstr ""
 
-#: inc/global-styles.php:570
+#: inc/global-styles.php:582
 msgctxt "Color name"
 msgid "Pale Violet"
 msgstr ""
 
-#: inc/global-styles.php:575
+#: inc/global-styles.php:587
 msgctxt "Color name"
 msgid "Bright Violet"
 msgstr ""
 
-#: inc/global-styles.php:580
+#: inc/global-styles.php:592
 msgctxt "Color name"
 msgid "Light Violet"
 msgstr ""
 
-#: inc/global-styles.php:585
+#: inc/global-styles.php:597
 msgctxt "Color name"
 msgid "Violet"
 msgstr ""
 
-#: inc/global-styles.php:590
+#: inc/global-styles.php:602
 msgctxt "Color name"
 msgid "Dark Violet"
 msgstr ""
 
-#: inc/global-styles.php:595
+#: inc/global-styles.php:607
 msgctxt "Color name"
 msgid "Heavy Violet"
 msgstr ""
 
-#: inc/global-styles.php:600
+#: inc/global-styles.php:612
 msgctxt "Color name"
 msgid "Pale Purple"
 msgstr ""
 
-#: inc/global-styles.php:605
+#: inc/global-styles.php:617
 msgctxt "Color name"
 msgid "Bright Purple"
 msgstr ""
 
-#: inc/global-styles.php:610
+#: inc/global-styles.php:622
 msgctxt "Color name"
 msgid "Light Purple"
 msgstr ""
 
-#: inc/global-styles.php:615
+#: inc/global-styles.php:627
 msgctxt "Color name"
 msgid "Purple"
 msgstr ""
 
-#: inc/global-styles.php:620
+#: inc/global-styles.php:632
 msgctxt "Color name"
 msgid "Dark Purple"
 msgstr ""
 
-#: inc/global-styles.php:625
+#: inc/global-styles.php:637
 msgctxt "Color name"
 msgid "Heavy Purple"
 msgstr ""
 
-#: inc/global-styles.php:630
+#: inc/global-styles.php:642
 msgctxt "Color name"
 msgid "Pale Pink"
 msgstr ""
 
-#: inc/global-styles.php:635
+#: inc/global-styles.php:647
 msgctxt "Color name"
 msgid "Bright Pink"
 msgstr ""
 
-#: inc/global-styles.php:640
+#: inc/global-styles.php:652
 msgctxt "Color name"
 msgid "Light Pink"
 msgstr ""
 
-#: inc/global-styles.php:645
+#: inc/global-styles.php:657
 msgctxt "Color name"
 msgid "Pink"
 msgstr ""
 
-#: inc/global-styles.php:650
+#: inc/global-styles.php:662
 msgctxt "Color name"
 msgid "Dark Pink"
 msgstr ""
 
-#: inc/global-styles.php:655
+#: inc/global-styles.php:667
 msgctxt "Color name"
 msgid "Heavy Pink"
 msgstr ""
@@ -2113,7 +2113,13 @@ msgstr ""
 msgid "Minimum half Leading"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#. translators: %1$s: <code>, %2$s: </code>
+#: App/Controller/Manager/dist/js/app.js:10
+#, js-format
+msgid "The header size setting described above applies directly beneath inner blocks use content width (%1$s.is-layout-constrained%2$s), text blocks, and vertical writing blocks."
+msgstr ""
+
+#: App/Controller/Manager/dist/js/app.js:10
 #: dist/blocks/badge/index.js:1
 #: dist/blocks/divider/index.js:1
 #: dist/blocks/texture/index.js:1
@@ -2121,256 +2127,256 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 #: dist/blocks/mega-menu/index.js:1
 #: dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:26
 msgid "Content Width"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 #: dist/blocks/mega-menu/index.js:1
 #: dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:26
 msgid "Wide Width"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Header"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Header Position"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgctxt "header-position"
 msgid "Normal"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgctxt "header-position"
 msgid "Sticky"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:7
+#: App/Controller/Manager/dist/js/app.js:10
 msgctxt "header-position"
 msgid "Fixed"
 msgstr ""
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 #, js-format
 msgid "This applies to templates that use the \"Header\" template part (%1$sparts/header.html%2$s). Additionally, since the changes are applied dynamically on the front end, they are not reflected in the editor."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "Loading Animation"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "Template Parts to Use"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "You can choose from the template parts assigned to the template part area \"Loading Animation\"."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
-#: App/Controller/Manager/dist/js/app.js:11
+#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:14
 msgid "— Select —"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "Minimum Time to Display Loading Animation (s)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "Your Homepage Displays"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "Homepage Type"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "Latest Posts"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "Static Page"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "Homepage"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "Create a new blank page"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:10
+#: App/Controller/Manager/dist/js/app.js:13
 msgid "Select existing page for the homepage"
 msgstr ""
 
 #. translators: %1$s: Post ID
-#: App/Controller/Manager/dist/js/app.js:11
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:14
+#: App/Controller/Manager/dist/js/app.js:15
 #, js-format
 msgid "#%1$s (No title)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:11
+#: App/Controller/Manager/dist/js/app.js:14
 msgid "Posts Page"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:11
+#: App/Controller/Manager/dist/js/app.js:14
 msgid "Create new page for the posts page"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:11
+#: App/Controller/Manager/dist/js/app.js:14
 msgid "Select existing page for the posts page"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Posts"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Products"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Custom Templates"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Activate the custom template you wish to use. You cannot deactivate a custom template that is already in use."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Blog Card"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Style"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Background color (Accent color)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Border (Accent color)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Dark"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 #: dist/formats/formats.js:2
 msgid "Media"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Simple"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 #: dist/blocks/badge/index.js:1
 #: dist/blocks/child-pages/index.js:1
 msgid "Box"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 #: dist/js/editor/editor.js:16
 msgid "OGP"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "OGP Tags"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Output tags"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Twitter Cards"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "twitter:site"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "@username for the website used in the card footer."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Generated Thumbnail"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Featured Image"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Aspect Ratio"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "The aspect ratio for featured images generated based on post title."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 #: dist/blocks/abstract-background/index.js:1
 #: dist/js/editor/editor.js:16
 msgid "Background"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "Failed to load models."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:12
+#: App/Controller/Manager/dist/js/app.js:15
 msgid "OpenAI (Deprecated)"
 msgstr ""
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 #, js-format
 msgid "Starting with WordPress 7.0, the use of %1$sAI Connectors%2$s is recommended. This setup is scheduled to be rolled out, so please migrate to AI Connectors as soon as possible."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "AI Connectors are already configured and currently in use. The OpenAI settings below are only used as a legacy fallback."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "API Key"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Model to use"
 msgstr ""
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:18
+#: App/Controller/Manager/dist/js/app.js:21
 #, js-format
 msgid "Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for details."
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:18
+#: App/Controller/Manager/dist/js/app.js:21
 msgid "Go to the Dashboard"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:18
+#: App/Controller/Manager/dist/js/app.js:21
 msgid "View site (opens in a new tab)"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:18
+#: App/Controller/Manager/dist/js/app.js:21
 msgid "Navigation"
 msgstr ""
 

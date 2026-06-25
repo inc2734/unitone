@@ -214,9 +214,15 @@ function useSpacingSizeOptions( defaultOptions ) {
 	const [ spacingSizes ] = useSettings( 'spacing.spacingSizes' );
 
 	return useMemo( () => {
-		const defaultLabels = defaultOptions
-			.filter( ( option ) => !! option.label )
-			.map( ( option ) => option.label );
+		const isDefaultPreset = ( { name, size } ) =>
+			defaultOptions.some(
+				( option ) =>
+					!! option.label &&
+					null != option.value &&
+					'' !== option.value &&
+					name === option.label &&
+					size === `var(--unitone--s${ option.value })`
+			);
 
 		const presetOptions = getSpacingSizePresets( spacingSizes )
 			.map( ( { slug, name, size, disabled } ) => {
@@ -232,7 +238,7 @@ function useSpacingSizeOptions( defaultOptions ) {
 					return null;
 				}
 
-				if ( defaultLabels.includes( name ) ) {
+				if ( isDefaultPreset( { name, size } ) ) {
 					return null;
 				}
 

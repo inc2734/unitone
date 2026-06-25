@@ -68,54 +68,57 @@ function unitone_apply_css_vars_from_settings() {
 
 	$font_size_map = _unitone_get_font_size_scale_map();
 
-	$get_font_size_scale = function ( $font_size ) use ( $font_size_map ) {
-		$font_size = unitone_get_preset_css_var( $font_size );
-		if ( ! is_string( $font_size ) ) {
-			return null;
+	$get_heading_font_size_style = function ( $font_size ) use ( $font_size_map ) {
+		if ( in_array( $font_size, array( null, false, '' ), true ) ) {
+			return '--unitone--font-size: 0;';
 		}
 
-		if (
-			! preg_match(
-				'/^var\(--wp--preset--font-size--(.+)\)$/',
-				$font_size,
-				$matches
-			)
-		) {
-			return null;
-		}
+		$format_slug = fn( $slug ) => preg_replace( '/-([0-9]+)([a-z]+)/', '-$1-$2', $slug );
 
-		return array_key_exists( $matches[1], $font_size_map )
-			? $font_size_map[ $matches[1] ]
-			: null;
-	};
+		if ( is_numeric( $font_size ) ) {
+			$slug = array_search( (int) $font_size, $font_size_map, true );
 
-	$get_heading_size = function ( $heading ) use ( $styles, $get_font_size_scale ) {
-		$font_size = $styles['elements'][ $heading ]['typography']['fontSize'] ?? null;
-		$scale     = $get_font_size_scale( $font_size );
-		if ( null !== $scale ) {
-			return $scale;
-		}
-
-		if ( empty( $font_size ) ) {
-			$deprecated_scale = Manager::get_setting( $heading . '-size' );
-			if (
-				null !== $deprecated_scale &&
-				false !== $deprecated_scale &&
-				'' !== $deprecated_scale
-			) {
-				return $deprecated_scale;
+			if ( $slug ) {
+				return sprintf(
+					'--unitone--font-size: %1$s; font-size: var(--wp--preset--font-size--%2$s);',
+					$font_size,
+					$format_slug( $slug )
+				);
 			}
+			return sprintf( '--unitone--font-size: %s;', $font_size );
 		}
 
-		return '0';
+		$preset_val = unitone_get_preset_css_var( $font_size );
+		if ( ! is_string( $preset_val ) || '' === $preset_val ) {
+			return '--unitone--font-size: 0;';
+		}
+
+		if ( preg_match( '/^var\(--wp--preset--font-size--(.+)\)$/', $preset_val, $matches ) ) {
+			$slug         = $matches[1];
+			$css_var_slug = $format_slug( $slug );
+
+			$mapped_size = $font_size_map[ $slug ] ?? $font_size_map[ $css_var_slug ] ?? null;
+
+			if ( null !== $mapped_size ) {
+				return sprintf(
+					'--unitone--font-size: %1$s; font-size: var(--wp--preset--font-size--%2$s);',
+					$mapped_size,
+					$css_var_slug
+				);
+			}
+
+			$preset_val = sprintf( 'var(--wp--preset--font-size--%s)', $css_var_slug );
+		}
+
+		return sprintf( '--unitone--font-size: 0; font-size: %s;', $preset_val );
 	};
 
-	$h1_size = $get_heading_size( 'h1' );
-	$h2_size = $get_heading_size( 'h2' );
-	$h3_size = $get_heading_size( 'h3' );
-	$h4_size = $get_heading_size( 'h4' );
-	$h5_size = $get_heading_size( 'h5' );
-	$h6_size = $get_heading_size( 'h6' );
+	$h1_size = $get_heading_font_size_style( Manager::get_setting( 'h1-size' ) );
+	$h2_size = $get_heading_font_size_style( Manager::get_setting( 'h2-size' ) );
+	$h3_size = $get_heading_font_size_style( Manager::get_setting( 'h3-size' ) );
+	$h4_size = $get_heading_font_size_style( Manager::get_setting( 'h4-size' ) );
+	$h5_size = $get_heading_font_size_style( Manager::get_setting( 'h5-size' ) );
+	$h6_size = $get_heading_font_size_style( Manager::get_setting( 'h6-size' ) );
 
 	$stylesheet = sprintf(
 		':root {
@@ -131,37 +134,37 @@ function unitone_apply_css_vars_from_settings() {
 		:where(.is-root-container) > h1,
 		[data-unitone-layout~="text"] > h1,
 		[data-unitone-layout~="vertical-writing"] > h1 {
-			--unitone--font-size: %8$s;
+			%8$s
 		}
 		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h2,
 		:where(.is-root-container) > h2,
 		[data-unitone-layout~="text"] > h2,
 		[data-unitone-layout~="vertical-writing"] > h2 {
-			--unitone--font-size: %9$s;
+			%9$s
 		}
 		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h3,
 		:where(.is-root-container) > h3,
 		[data-unitone-layout~="text"] > h3,
 		[data-unitone-layout~="vertical-writing"] > h3 {
-			--unitone--font-size: %10$s;
+			%10$s
 		}
 		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h4,
 		:where(.is-root-container) > h4,
 		[data-unitone-layout~="text"] > h4,
 		[data-unitone-layout~="vertical-writing"] > h4 {
-			--unitone--font-size: %11$s;
+			%11$s
 		}
 		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h5,
 		:where(.is-root-container) > h5,
 		[data-unitone-layout~="text"] > h5,
 		[data-unitone-layout~="vertical-writing"] > h5 {
-			--unitone--font-size: %12$s;
+			%12$s
 		}
 		:where(.is-layout-constrained:not([data-unitone-layout~="text"])) > h6,
 		:where(.is-root-container) > h6,
 		[data-unitone-layout~="text"] > h6,
 		[data-unitone-layout~="vertical-writing"] > h6 {
-			--unitone--font-size: %13$s;
+			%13$s
 		}',
 		$font_family,
 		$base_font_size,
@@ -796,26 +799,6 @@ add_action(
 		$deprecated_accent_color     = unitone_get_preset_css_var( Manager::get_setting( 'accent-color' ) );
 		$deprecated_background_color = unitone_get_preset_css_var( Manager::get_setting( 'background-color' ) );
 		$deprecated_text_color       = unitone_get_preset_css_var( Manager::get_setting( 'text-color' ) );
-		$saved_settings              = Settings::get_settings();
-		$heading_font_size_settings  = array(
-			'h1' => 'h1-size',
-			'h2' => 'h2-size',
-			'h3' => 'h3-size',
-			'h4' => 'h4-size',
-			'h5' => 'h5-size',
-			'h6' => 'h6-size',
-		);
-		$deprecated_heading_sizes    = array();
-
-		foreach ( $heading_font_size_settings as $heading => $setting_name ) {
-			if (
-				array_key_exists( $setting_name, $saved_settings ) &&
-				null !== $saved_settings[ $setting_name ] &&
-				'' !== $saved_settings[ $setting_name ]
-			) {
-				$deprecated_heading_sizes[ $heading ] = $saved_settings[ $setting_name ];
-			}
-		}
 
 		if (
 			! $deprecated_font_family &&
@@ -823,53 +806,12 @@ add_action(
 			! $deprecated_wide_size &&
 			! $deprecated_accent_color &&
 			! $deprecated_background_color &&
-			! $deprecated_text_color &&
-			! $deprecated_heading_sizes
+			! $deprecated_text_color
 		) {
 			return;
 		}
 
 		$merged_raw_data = \WP_Theme_JSON_Resolver::get_merged_data( 'user' )->get_raw_data();
-		$font_size_map   = _unitone_get_font_size_scale_map();
-
-		if ( $deprecated_heading_sizes ) {
-			$new_elements = array();
-			$new_settings = array();
-
-			foreach ( $deprecated_heading_sizes as $heading => $scale ) {
-				$slug = is_numeric( $scale )
-					? array_search( (int) $scale, $font_size_map, true )
-					: false;
-				if ( ! $slug ) {
-					continue;
-				}
-
-				$font_size = 'var:preset|font-size|' . $slug;
-				if ( ( $merged_raw_data['styles']['elements'][ $heading ]['typography']['fontSize'] ?? null ) !== $font_size ) {
-					$new_elements[ $heading ] = array(
-						'typography' => array(
-							'fontSize' => $font_size,
-						),
-					);
-				}
-
-				$new_settings[ $heading_font_size_settings[ $heading ] ] = null;
-			}
-
-			if ( $new_elements ) {
-				Settings::update_global_styles(
-					array(
-						'styles' => array(
-							'elements' => $new_elements,
-						),
-					)
-				);
-			}
-
-			if ( $new_settings ) {
-				Settings::update_settings( $new_settings );
-			}
-		}
 
 		if ( $deprecated_font_family ) {
 			$current_font_family = $merged_raw_data['styles']['typography']['fontFamily'] ?? false;

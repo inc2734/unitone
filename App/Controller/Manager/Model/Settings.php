@@ -30,12 +30,12 @@ class Settings {
 		'base-font-size'                        => '16',
 		'half-leading'                          => '0.4',
 		'min-half-leading'                      => '0.05',
-		'h1-size'                               => null, // Deprecated.
-		'h2-size'                               => null, // Deprecated.
-		'h3-size'                               => null, // Deprecated.
-		'h4-size'                               => null, // Deprecated.
-		'h5-size'                               => null, // Deprecated.
-		'h6-size'                               => null, // Deprecated.
+		'h1-size'                               => '4',
+		'h2-size'                               => '3',
+		'h3-size'                               => '2',
+		'h4-size'                               => '1',
+		'h5-size'                               => '0',
+		'h6-size'                               => '0',
 		'header-position'                       => 'normal',
 		'loading-animation'                     => false,
 		'loading-animation-delay'               => '1',
@@ -77,36 +77,6 @@ class Settings {
 				'text'       => 'var:preset|color|unitone-text',
 			),
 			'elements'   => array(
-				'h1'   => array(
-					'typography' => array(
-						'fontSize' => 'var:preset|font-size|unitone-3xl',
-					),
-				),
-				'h2'   => array(
-					'typography' => array(
-						'fontSize' => 'var:preset|font-size|unitone-2xl',
-					),
-				),
-				'h3'   => array(
-					'typography' => array(
-						'fontSize' => 'var:preset|font-size|unitone-xl',
-					),
-				),
-				'h4'   => array(
-					'typography' => array(
-						'fontSize' => 'var:preset|font-size|unitone-l',
-					),
-				),
-				'h5'   => array(
-					'typography' => array(
-						'fontSize' => 'var:preset|font-size|unitone-m',
-					),
-				),
-				'h6'   => array(
-					'typography' => array(
-						'fontSize' => 'var:preset|font-size|unitone-m',
-					),
-				),
 				'link' => array(
 					'color'  => array(
 						'text' => '#003c78',

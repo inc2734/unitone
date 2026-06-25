@@ -1,19 +1,20 @@
 import {
+	Notice,
 	FontSizePicker,
 	RangeControl,
 	SelectControl,
 } from '@wordpress/components';
 
 import { useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
+import { sprintf, __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
 
 import { ResetButton, SaveButton } from '../components/buttons';
 import { useMigrationFontFamily } from './hooks/useMigrationFontFamily';
-import { useMigrationHeadingFontSizes } from './hooks/useMigrationHeadingFontSizes';
 
 import {
+	getFontSizeByUnitoneScale,
 	getFontSizeCssVarSlug,
 	getFontSizePresetSlugFromValue,
 	getFontSizePresetValue,
@@ -55,102 +56,50 @@ const HEADING_FONT_SIZE_CONTROLS = [
 	},
 ];
 
-const getHeadingFontSizeValue = ( settings, heading ) =>
-	settings?.styles?.elements?.[ heading ]?.typography?.fontSize;
+const isEmptyHeadingFontSizeSetting = ( value ) =>
+	null == value || '' === value || false === value;
 
 const getFontSizeBySlug = ( settings, slug ) =>
-	settings?.fontSizes?.find(
-		( fontSize ) =>
-			slug === fontSize.slug ||
-			slug === getFontSizeCssVarSlug( fontSize.slug )
-	);
+	slug
+		? settings?.fontSizes?.find(
+				( fontSize ) =>
+					slug === fontSize.slug ||
+					slug === getFontSizeCssVarSlug( fontSize.slug )
+		  )
+		: undefined;
 
-const getHeadingDefaultFontSizeValue = ( defaultSettings, heading ) =>
-	defaultSettings?.styles?.elements?.[ heading ]?.typography?.fontSize;
+const getHeadingFontSize = ( settings, defaultSettings, settingKey ) => {
+	const setting = ! isEmptyHeadingFontSizeSetting( settings?.[ settingKey ] )
+		? settings?.[ settingKey ]
+		: defaultSettings?.[ settingKey ];
 
-const getHeadingFontSizeSlug = ( settings, defaultSettings, heading ) => {
-	const globalStyleSlug = getFontSizePresetSlugFromValue(
-		getHeadingFontSizeValue( settings, heading )
-	);
-
-	if ( globalStyleSlug ) {
-		return getFontSizeBySlug( settings, globalStyleSlug )?.slug;
+	if ( isEmptyHeadingFontSizeSetting( setting ) ) {
+		return undefined;
 	}
 
-	const defaultSlug = getFontSizePresetSlugFromValue(
-		getHeadingDefaultFontSizeValue( defaultSettings, heading )
-	);
-
-	return getFontSizeBySlug( settings, defaultSlug )?.slug ?? defaultSlug;
-};
-
-const getHeadingFontSize = ( settings, defaultSettings, heading ) => {
-	const fontSizeValue = getHeadingFontSizeValue( settings, heading );
-	const presetSlug = getFontSizePresetSlugFromValue( fontSizeValue );
-	if ( presetSlug ) {
-		return getFontSizeBySlug( settings, presetSlug );
+	if (
+		'' !== String( setting ).trim() &&
+		! Number.isNaN( Number( setting ) )
+	) {
+		return getFontSizeByUnitoneScale( settings?.fontSizes, setting );
 	}
 
-	const defaultSlug = getFontSizePresetSlugFromValue(
-		getHeadingDefaultFontSizeValue( defaultSettings, heading )
-	);
-	if ( defaultSlug ) {
-		return getFontSizeBySlug( settings, defaultSlug );
-	}
-
-	return undefined;
+	const presetSlug = getFontSizePresetSlugFromValue( setting );
+	return getFontSizeBySlug( settings, presetSlug );
 };
 
-const getHeadingFontSizeCssValue = ( settings, heading ) => {
-	const fontSizeValue = getHeadingFontSizeValue( settings, heading );
-	const presetSlug = getFontSizePresetSlugFromValue( fontSizeValue );
-	const presetFontSize = getFontSizeBySlug( settings, presetSlug );
-
-	return presetFontSize?.size ?? ( presetSlug ? undefined : fontSizeValue );
-};
-
-const setHeadingElementFontSize = ( elements = {}, heading, fontSize ) => ( {
-	...elements,
-	[ heading ]: {
-		...elements?.[ heading ],
-		typography: {
-			...elements?.[ heading ]?.typography,
-			fontSize,
-		},
-	},
-} );
-
-const getHeadingElementsForRequest = ( settings ) =>
-	HEADING_FONT_SIZE_CONTROLS.reduce(
-		( elements, { heading } ) => ( {
-			...elements,
-			[ heading ]: {
-				typography: {
-					fontSize:
-						getHeadingFontSizeValue( settings, heading ) ?? null,
-				},
-			},
-		} ),
-		{}
-	);
-
-const getHeadingPreviewStyle = ( settings, defaultSettings, heading ) => {
-	const fontSize = getHeadingFontSize( settings, defaultSettings, heading );
-	const fallbackFontSize = getFontSizeBySlug(
+const getHeadingPreviewStyle = ( settings, defaultSettings, settingKey ) => {
+	const fontSize = getHeadingFontSize(
 		settings,
-		getFontSizePresetSlugFromValue(
-			getHeadingDefaultFontSizeValue( defaultSettings, heading )
-		)
+		defaultSettings,
+		settingKey
 	);
-	const isUnitone = Number.isFinite( getUnitoneFontSizeScale( fontSize ) );
+	const unitoneScale = getUnitoneFontSizeScale( fontSize );
+	const isUnitone = Number.isFinite( unitoneScale );
 
 	return {
-		'--unitone--font-size': isUnitone
-			? getUnitoneFontSizeScale( fontSize )
-			: getUnitoneFontSizeScale( fallbackFontSize ),
-		fontSize: isUnitone
-			? undefined
-			: getHeadingFontSizeCssValue( settings, heading ),
+		'--unitone--font-size': isUnitone ? unitoneScale : 0,
+		fontSize: isUnitone ? undefined : fontSize?.size,
 		fontWeight: 'bold',
 	};
 };
@@ -159,7 +108,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 
 	useMigrationFontFamily( settings, setSettings );
-	useMigrationHeadingFontSizes( settings, setSettings );
 
 	const saveSettings = () => {
 		setSettingsSaving( 'save' );
@@ -173,19 +121,19 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 					'half-leading': settings?.[ 'half-leading' ] ?? null,
 					'min-half-leading':
 						settings?.[ 'min-half-leading' ] ?? null,
-					'h1-size': null,
-					'h2-size': null,
-					'h3-size': null,
-					'h4-size': null,
-					'h5-size': null,
-					'h6-size': null,
+					...HEADING_FONT_SIZE_CONTROLS.reduce(
+						( newSettings, { settingKey } ) => ( {
+							...newSettings,
+							[ settingKey ]: settings?.[ settingKey ] ?? null,
+						} ),
+						{}
+					),
 					styles: {
 						typography: {
 							fontFamily:
 								settings?.styles?.typography?.fontFamily ??
 								null,
 						},
-						elements: getHeadingElementsForRequest( settings ),
 					},
 				},
 			} )
@@ -202,32 +150,17 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			'base-font-size': defaultSettings[ 'base-font-size' ],
 			'half-leading': defaultSettings[ 'half-leading' ],
 			'min-half-leading': defaultSettings[ 'min-half-leading' ],
-			'h1-size': null,
-			'h2-size': null,
-			'h3-size': null,
-			'h4-size': null,
-			'h5-size': null,
-			'h6-size': null,
+			'h1-size': defaultSettings[ 'h1-size' ],
+			'h2-size': defaultSettings[ 'h2-size' ],
+			'h3-size': defaultSettings[ 'h3-size' ],
+			'h4-size': defaultSettings[ 'h4-size' ],
+			'h5-size': defaultSettings[ 'h5-size' ],
+			'h6-size': defaultSettings[ 'h6-size' ],
 			styles: {
 				...settings?.styles,
 				typography: {
 					...settings?.styles?.typography,
 					fontFamily: defaultSettings.styles.typography.fontFamily,
-				},
-				elements: {
-					...settings?.styles?.elements,
-					...HEADING_FONT_SIZE_CONTROLS.reduce(
-						( elements, { heading } ) =>
-							setHeadingElementFontSize(
-								elements,
-								heading,
-								getHeadingDefaultFontSizeValue(
-									defaultSettings,
-									heading
-								)
-							),
-						{}
-					),
 				},
 			},
 		} );
@@ -250,19 +183,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						typography: {
 							fontFamily: null,
 						},
-						elements: getHeadingElementsForRequest( {
-							styles: {
-								elements: HEADING_FONT_SIZE_CONTROLS.reduce(
-									( newElements, { heading } ) =>
-										setHeadingElementFontSize(
-											newElements,
-											heading,
-											null
-										),
-									settings?.styles?.elements ?? {}
-								),
-							},
-						} ),
 					},
 				},
 			} )
@@ -330,7 +250,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
-												'h1'
+												'h1-size'
 											) }
 										>
 											見出し1
@@ -340,7 +260,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
-												'h2'
+												'h2-size'
 											) }
 										>
 											見出し2
@@ -350,7 +270,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
-												'h3'
+												'h3-size'
 											) }
 										>
 											見出し3
@@ -360,7 +280,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
-												'h4'
+												'h4-size'
 											) }
 										>
 											見出し4
@@ -370,7 +290,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
-												'h5'
+												'h5-size'
 											) }
 										>
 											見出し5
@@ -380,7 +300,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
-												'h6'
+												'h6-size'
 											) }
 										>
 											見出し6
@@ -536,41 +456,69 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 												fontSizes={
 													settings?.fontSizes
 												}
-												value={ getHeadingFontSizeSlug(
-													settings,
-													defaultSettings,
-													heading
-												) }
+												value={
+													getHeadingFontSize(
+														settings,
+														defaultSettings,
+														settingKey
+													)?.slug
+												}
 												valueMode="slug"
 												onChange={ (
 													newSetting,
 													fontSize
-												) =>
+												) => {
+													const newFontSize =
+														fontSize ??
+														getFontSizeBySlug(
+															settings,
+															newSetting
+														);
+													const unitoneScale =
+														getUnitoneFontSizeScale(
+															newFontSize
+														);
+													let newHeadingFontSizeSetting =
+														null;
+
+													if ( newSetting ) {
+														newHeadingFontSizeSetting =
+															Number.isFinite(
+																unitoneScale
+															)
+																? unitoneScale
+																: getFontSizePresetValue(
+																		newFontSize
+																  );
+													}
+
 													setSettings( {
 														...settings,
-														[ settingKey ]: null,
-														styles: {
-															...settings?.styles,
-															elements:
-																setHeadingElementFontSize(
-																	settings
-																		?.styles
-																		?.elements,
-																	heading,
-																	newSetting
-																		? getFontSizePresetValue(
-																				fontSize
-																		  )
-																		: null
-																),
-														},
-													} )
-												}
+														[ settingKey ]:
+															newHeadingFontSizeSetting,
+													} );
+												} }
 											/>
 										</div>
 									</div>
 								)
 							) }
+
+							<Notice status="warning" isDismissible={ false }>
+								<span
+									dangerouslySetInnerHTML={ {
+										__html: sprintf(
+											// translators: %1$s: <code>, %2$s: </code>
+											__(
+												'The header size setting described above applies directly beneath inner blocks use content width (%1$s.is-layout-constrained%2$s), text blocks, and vertical writing blocks. If you have configured header size settings within the Site Editor, the setting mentioned above will not take effect.',
+												'unitone'
+											),
+											'<code>',
+											'</code>'
+										),
+									} }
+								/>
+							</Notice>
 						</div>
 					</div>
 				</div>

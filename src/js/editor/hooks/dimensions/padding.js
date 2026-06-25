@@ -20,20 +20,7 @@ import {
 } from '../utils';
 
 import { PaddingControl, isDefaultSpacingSizeValue } from '../components';
-
-function isPresetSpacingValue( value ) {
-	return 'string' === typeof value && value.startsWith( 'var:preset|' );
-}
-
-function getPresetCssVar( value ) {
-	if ( ! isPresetSpacingValue( value ) ) {
-		return value;
-	}
-
-	const [ , type, slug ] = value.split( '|' );
-
-	return `var(--wp--preset--${ type }--${ slug })`;
-}
+import { getPresetCssVar } from '../../../utils/preset';
 
 function isCustomSpacingSizeValue( value ) {
 	return (

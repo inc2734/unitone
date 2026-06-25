@@ -9,27 +9,104 @@ use Unitone\App\Controller\Manager\Manager;
 use Unitone\App\Controller\Manager\Model\Settings;
 
 /**
+ * Return unitone font size scale map.
+ *
+ * @return array
+ */
+function unitone_get_font_size_scale_map() {
+	$global_settings = wp_get_global_settings();
+	$scale           = -3;
+	$map             = array();
+
+	foreach (
+		$global_settings['typography']['fontSizes']['theme'] ?? array()
+		as $font_size
+	) {
+		if ( ! empty( $font_size['slug'] ) ) {
+			$slug         = $font_size['slug'];
+			$css_var_slug = preg_replace(
+				'/-([0-9]+)([a-z]+)/',
+				'-$1-$2',
+				$slug
+			);
+
+			$map[ $slug ]         = $scale;
+			$map[ $css_var_slug ] = $scale;
+		}
+		++$scale;
+	}
+
+	return $map;
+}
+
+/**
  * Apply CSS Vars from settings.
  */
 function unitone_apply_css_vars_from_settings() {
-	$font_family      = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['typography']['fontFamily'] );
-	$base_font_size   = Manager::get_setting( 'base-font-size' );
-	$half_leading     = Manager::get_setting( 'half-leading' );
-	$min_half_leading = Manager::get_setting( 'min-half-leading' );
-	$content_size     = Manager::get_setting( 'settings' )['layout']['contentSize'];
-	$wide_size        = Manager::get_setting( 'settings' )['layout']['wideSize'];
-	$accent_color     = unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', array( 'settings' => Manager::get_setting( 'settings' ) ) ) );
-	$accent_color     = 'var(--unitone--color--accent)' === $accent_color
+	$styles              = Manager::get_setting( 'styles' );
+	$font_family         = unitone_get_preset_css_var( $styles['typography']['fontFamily'] );
+	$base_font_size      = Manager::get_setting( 'base-font-size' );
+	$half_leading        = Manager::get_setting( 'half-leading' );
+	$min_half_leading    = Manager::get_setting( 'min-half-leading' );
+	$content_size        = Manager::get_setting( 'settings' )['layout']['contentSize'];
+	$wide_size           = Manager::get_setting( 'settings' )['layout']['wideSize'];
+	$accent_color        = unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', array( 'settings' => Manager::get_setting( 'settings' ) ) ) );
+	$accent_color        = 'var(--unitone--color--accent)' === $accent_color
 		? unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', Settings::get_default_global_styles() ) )
 		: $accent_color;
-	$background_color = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['background'] );
-	$text_color       = unitone_get_preset_css_var( Manager::get_setting( 'styles' )['color']['text'] );
-	$h1_size          = Manager::get_setting( 'h1-size' );
-	$h2_size          = Manager::get_setting( 'h2-size' );
-	$h3_size          = Manager::get_setting( 'h3-size' );
-	$h4_size          = Manager::get_setting( 'h4-size' );
-	$h5_size          = Manager::get_setting( 'h5-size' );
-	$h6_size          = Manager::get_setting( 'h6-size' );
+	$background_color    = unitone_get_preset_css_var( $styles['color']['background'] );
+	$text_color          = unitone_get_preset_css_var( $styles['color']['text'] );
+	$default_styles      = Settings::get_default_global_styles();
+	$font_size_map       = unitone_get_font_size_scale_map();
+	$get_font_size_scale = function ( $font_size ) use ( $font_size_map ) {
+		$font_size = unitone_get_preset_css_var( $font_size );
+		if ( ! is_string( $font_size ) ) {
+			return null;
+		}
+
+		if (
+			! preg_match(
+				'/^var\(--wp--preset--font-size--(.+)\)$/',
+				$font_size,
+				$matches
+			)
+		) {
+			return null;
+		}
+
+		return array_key_exists( $matches[1], $font_size_map )
+			? $font_size_map[ $matches[1] ]
+			: null;
+	};
+	$get_heading_size    = function ( $heading ) use ( $styles, $default_styles, $get_font_size_scale ) {
+		$font_size = $styles['elements'][ $heading ]['typography']['fontSize'] ?? null;
+		$scale     = $get_font_size_scale( $font_size );
+		if ( null !== $scale ) {
+			return $scale;
+		}
+
+		$default_font_size = $default_styles['styles']['elements'][ $heading ]['typography']['fontSize'] ?? null;
+		$default_scale     = $get_font_size_scale( $default_font_size );
+
+		if ( empty( $font_size ) ) {
+			$deprecated_scale = Manager::get_setting( $heading . '-size' );
+			if (
+				null !== $deprecated_scale &&
+				false !== $deprecated_scale &&
+				'' !== $deprecated_scale
+			) {
+				return $deprecated_scale;
+			}
+		}
+
+		return $default_scale;
+	};
+	$h1_size             = $get_heading_size( 'h1' );
+	$h2_size             = $get_heading_size( 'h2' );
+	$h3_size             = $get_heading_size( 'h3' );
+	$h4_size             = $get_heading_size( 'h4' );
+	$h5_size             = $get_heading_size( 'h5' );
+	$h6_size             = $get_heading_size( 'h6' );
 
 	$stylesheet = sprintf(
 		':root {
@@ -710,6 +787,26 @@ add_action(
 		$deprecated_accent_color     = unitone_get_preset_css_var( Manager::get_setting( 'accent-color' ) );
 		$deprecated_background_color = unitone_get_preset_css_var( Manager::get_setting( 'background-color' ) );
 		$deprecated_text_color       = unitone_get_preset_css_var( Manager::get_setting( 'text-color' ) );
+		$saved_settings              = Settings::get_settings();
+		$heading_font_size_settings  = array(
+			'h1' => 'h1-size',
+			'h2' => 'h2-size',
+			'h3' => 'h3-size',
+			'h4' => 'h4-size',
+			'h5' => 'h5-size',
+			'h6' => 'h6-size',
+		);
+		$deprecated_heading_sizes    = array();
+
+		foreach ( $heading_font_size_settings as $heading => $setting_name ) {
+			if (
+				array_key_exists( $setting_name, $saved_settings ) &&
+				null !== $saved_settings[ $setting_name ] &&
+				'' !== $saved_settings[ $setting_name ]
+			) {
+				$deprecated_heading_sizes[ $heading ] = $saved_settings[ $setting_name ];
+			}
+		}
 
 		if (
 			! $deprecated_font_family &&
@@ -717,12 +814,53 @@ add_action(
 			! $deprecated_wide_size &&
 			! $deprecated_accent_color &&
 			! $deprecated_background_color &&
-			! $deprecated_text_color
+			! $deprecated_text_color &&
+			! $deprecated_heading_sizes
 		) {
 			return;
 		}
 
 		$merged_raw_data = \WP_Theme_JSON_Resolver::get_merged_data( 'user' )->get_raw_data();
+		$font_size_map   = unitone_get_font_size_scale_map();
+
+		if ( $deprecated_heading_sizes ) {
+			$new_elements = array();
+			$new_settings = array();
+
+			foreach ( $deprecated_heading_sizes as $heading => $scale ) {
+				$slug = is_numeric( $scale )
+					? array_search( (int) $scale, $font_size_map, true )
+					: false;
+				if ( ! $slug ) {
+					continue;
+				}
+
+				$font_size = 'var:preset|font-size|' . $slug;
+				if ( ( $merged_raw_data['styles']['elements'][ $heading ]['typography']['fontSize'] ?? null ) !== $font_size ) {
+					$new_elements[ $heading ] = array(
+						'typography' => array(
+							'fontSize' => $font_size,
+						),
+					);
+				}
+
+				$new_settings[ $heading_font_size_settings[ $heading ] ] = null;
+			}
+
+			if ( $new_elements ) {
+				Settings::update_global_styles(
+					array(
+						'styles' => array(
+							'elements' => $new_elements,
+						),
+					)
+				);
+			}
+
+			if ( $new_settings ) {
+				Settings::update_settings( $new_settings );
+			}
+		}
 
 		if ( $deprecated_font_family ) {
 			$current_font_family = $merged_raw_data['styles']['typography']['fontFamily'] ?? false;

@@ -258,6 +258,20 @@ export function getGlobalStyleCssVar( value ) {
 }
 
 /**
+ * Checks is given value is a preset value.
+ *
+ * @param {string} value Value to check
+ * @return {boolean} Return true if value is string in format var:preset|.
+ */
+export function isPresetValue( value ) {
+	if ( ! value?.includes ) {
+		return false;
+	}
+
+	return value.includes( 'var:preset|' );
+}
+
+/**
  * Converts a custom value to global style value if one can be found.
  *
  * Returns value as-is if no match is found.

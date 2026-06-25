@@ -49,7 +49,7 @@ import {
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
 
-import { logicalToPhysical, physicalToLogical } from '../../js/helper';
+import { logicalToPhysical, physicalToLogical } from '../../js/utils/direction';
 
 import metadata from './block.json';
 

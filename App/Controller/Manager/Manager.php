@@ -193,19 +193,9 @@ class Manager {
 						);
 					} )(),
 					'fontSizes'                     => ( function () use ( $global_settings ) {
-						$scale = -2;
-						return array_map(
-							function ( $font_size ) use ( &$scale ) {
-								$new_font_size = array_merge(
-									$font_size,
-									array(
-										'slug' => $scale,
-									)
-								);
-								$scale++;
-								return $new_font_size;
-							},
-							$global_settings['typography']['fontSizes']['theme']
+						return array_merge(
+							$global_settings['typography']['fontSizes']['theme'] ?? array(),
+							$global_settings['typography']['fontSizes']['custom'] ?? array()
 						);
 					} )(),
 					'loadingAnimationTemplateParts' => $loading_animation_template_parts,

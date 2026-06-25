@@ -18,7 +18,7 @@ import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject, normalizeForToggleGroupControl } from '../utils';
-import { physicalToLogical, logicalToPhysical } from '../../../helper';
+import { physicalToLogical, logicalToPhysical } from '../../../utils/direction';
 
 const blockAlignOptions = [
 	{

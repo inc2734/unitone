@@ -102,7 +102,21 @@ export function getPaddingEditLabel( {
 	);
 }
 
-export function compacting( attribute, defaultValue = undefined ) {
+const paddingSides = [ 'top', 'right', 'bottom', 'left' ];
+
+function getTargetSides( split ) {
+	if ( Array.isArray( split ) ) {
+		return split.filter( ( side ) => paddingSides.includes( side ) );
+	}
+
+	return paddingSides;
+}
+
+export function compacting(
+	attribute,
+	defaultValue = undefined,
+	targetSides = paddingSides
+) {
 	if ( 0 === attribute ) {
 		return 0;
 	}
@@ -111,40 +125,51 @@ export function compacting( attribute, defaultValue = undefined ) {
 		return undefined;
 	}
 
-	const values = Object.values( attribute );
+	const sides = targetSides.length ? targetSides : paddingSides;
+	const expandedAttribute = expand( attribute );
+	const expandedDefaultValue = expand( defaultValue );
+	const normalizedAttribute = Object.fromEntries(
+		sides
+			.map( ( side ) => [ side, expandedAttribute?.[ side ] ] )
+			.filter( ( [ , value ] ) => null != value )
+	);
+	const values = Object.values( normalizedAttribute );
 	const allEqual =
-		4 === values.length && values.every( ( v ) => v === values[ 0 ] );
+		sides.length === values.length &&
+		values.every( ( v ) => v === values[ 0 ] );
 
-	const compactedAttribute = allEqual ? values[ 0 ] : attribute;
+	const compactedAttribute = allEqual ? values[ 0 ] : normalizedAttribute;
 
 	if ( isObject( compactedAttribute ) && null != defaultValue ) {
-		if ( compactedAttribute?.top === defaultValue?.top ) {
+		if ( compactedAttribute?.top === expandedDefaultValue?.top ) {
 			compactedAttribute.top = undefined;
 		}
 
-		if ( compactedAttribute?.right === defaultValue?.right ) {
+		if ( compactedAttribute?.right === expandedDefaultValue?.right ) {
 			compactedAttribute.right = undefined;
 		}
 
-		if ( compactedAttribute?.bottom === defaultValue?.bottom ) {
+		if ( compactedAttribute?.bottom === expandedDefaultValue?.bottom ) {
 			compactedAttribute.bottom = undefined;
 		}
 
-		if ( compactedAttribute?.left === defaultValue?.left ) {
+		if ( compactedAttribute?.left === expandedDefaultValue?.left ) {
 			compactedAttribute.left = undefined;
 		}
 	}
 
+	const cleanedCompactedAttribute = cleanEmptyObject( compactedAttribute );
+
 	if (
-		JSON.stringify( compactedAttribute ) ===
+		JSON.stringify( cleanedCompactedAttribute ) ===
 			JSON.stringify( defaultValue ) ||
-		JSON.stringify( compactedAttribute ) ===
-			JSON.stringify( compacting( defaultValue ) )
+		JSON.stringify( cleanedCompactedAttribute ) ===
+			JSON.stringify( compacting( defaultValue, undefined, sides ) )
 	) {
 		return undefined;
 	}
 
-	return compactedAttribute;
+	return cleanedCompactedAttribute;
 }
 
 export function expand( attribute ) {
@@ -177,9 +202,18 @@ export function PaddingEdit( {
 	const applyRight = Array.isArray( split ) && split?.includes( 'right' );
 	const applyBottom = Array.isArray( split ) && split?.includes( 'bottom' );
 	const applyLeft = Array.isArray( split ) && split?.includes( 'left' );
+	const targetSides = getTargetSides( split );
 
-	const compactedValue = compacting( unitone?.padding, defaultValue );
-	const compactedDefaultValue = compacting( defaultValue );
+	const compactedValue = compacting(
+		unitone?.padding,
+		defaultValue,
+		targetSides
+	);
+	const compactedDefaultValue = compacting(
+		defaultValue,
+		undefined,
+		targetSides
+	);
 	const expandedDefaultValue = expand( compactedDefaultValue );
 	const displayedPadding = mergeObjectWithDefaultValue(
 		expand( unitone?.padding ),
@@ -222,7 +256,7 @@ export function PaddingEdit( {
 		setAttributes( {
 			unitone: cleanEmptyObject( {
 				...unitone,
-				padding: compacting( newPadding, defaultValue ),
+				padding: compacting( newPadding, defaultValue, targetSides ),
 			} ),
 		} );
 	};
@@ -266,7 +300,7 @@ export function PaddingEdit( {
 			label={ label }
 			split={ !! split }
 			isMixed={ isMixed }
-			value={ unitone?.padding ?? defaultValue }
+			value={ compactedValue ?? compactedDefaultValue ?? defaultValue }
 			onChange={ onChangePadding }
 			sideControls={ sideControls }
 		/>

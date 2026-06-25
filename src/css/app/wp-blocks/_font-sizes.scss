@@ -48,8 +48,22 @@ $font-sizes: (
 	(
 		slug: unitone-6-xl,
 		size: 7,
-	),
+	)
 );
+
+[data-unitone-layout~="-fluid-typography"] {
+	@each $font-size in $font-sizes {
+		$slug: map.get($font-size, slug);
+		$splited-slug: list.join(string.split(map.get($font-size, slug), '-'), '');
+		$non-hyphen-slug: #{ list.nth($splited-slug, 1) }-#{ list.nth($splited-slug, 2) }#{ list.nth($splited-slug, 3) };
+
+		--wp--preset--font-size--#{ $slug }: var(--unitone--font-size-fluid) !important;
+
+		@if $slug != $non-hyphen-slug {
+			--wp--preset--font-size--#{ $non-hyphen-slug }: var(--wp--preset--font-size--#{ $slug }) !important;
+		}
+	}
+}
 
 @each $font-size in $font-sizes {
 	$size: map.get($font-size, size);
@@ -57,13 +71,13 @@ $font-sizes: (
 	$splited-slug: list.join(string.split(map.get($font-size, slug), '-'), '');
 	$non-hyphen-slug: #{ list.nth($splited-slug, 1) }-#{ list.nth($splited-slug, 2) }#{ list.nth($splited-slug, 3) };
 
-	.has-#{ $slug }-font-size {
+	:root {
+		--wp--preset--font-size--#{ $non-hyphen-slug }: var(--wp--preset--font-size--#{ $slug }, var(--unitone--font-size-rem));
+	}
+
+	:where(.has-#{ $slug }-font-size) {
 		--unitone--font-size: #{ $size } !important;
 		--wp--preset--font-size--#{ $slug }: var(--unitone--font-size-rem) !important;
-
-		&[data-unitone-layout~="-fluid-typography"] {
-			--wp--preset--font-size--#{ $slug }: var(--unitone--font-size-fluid) !important;
-		}
 	}
 
 	:where(.has-#{ $slug }-font-size *) {
@@ -73,18 +87,16 @@ $font-sizes: (
 	// For WooCommerce
 	// @todo At WooCommerce 9.7, a hyphen isn't added after the number in the class/CSS vars for font size.
 	// @todo At WooCommerce 9.7, setting typography in product-price block does not give .has-{slug}-font-size.
-	.has-#{ $non-hyphen-slug }-font-size {
-		--unitone--font-size: #{ $size } !important;
-		--wp--preset--font-size--#{ $non-hyphen-slug }: var(--unitone--font-size-rem) !important;
-
-		&[data-unitone-layout~="-fluid-typography"] {
-			--wp--preset--font-size--#{ $non-hyphen-slug }: var(--unitone--font-size-fluid) !important;
+	@if $slug != $non-hyphen-slug {
+		:where(.has-#{ $non-hyphen-slug }-font-size) {
+			--unitone--font-size: #{ $size } !important;
+			--wp--preset--font-size--#{ $non-hyphen-slug }: var(--unitone--font-size-rem) !important;
 		}
-	}
-	:where(.has-#{ $non-hyphen-slug }-font-size *) {
-		font-size: inherit;
-	}
-	.wc-block-components-product-price {
-		--wp--preset--font-size--#{ $non-hyphen-slug }: calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - #{ $size }) * 1rem) !important;
+		:where(.has-#{ $non-hyphen-slug }-font-size *) {
+			font-size: inherit;
+		}
+		.wc-block-components-product-price {
+			--wp--preset--font-size--#{ $non-hyphen-slug }: calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - #{ $size }) * 1rem) !important;
+		}
 	}
 }

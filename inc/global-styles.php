@@ -13,7 +13,7 @@ use Unitone\App\Controller\Manager\Model\Settings;
  *
  * @return array
  */
-function unitone_get_font_size_scale_map() {
+function _unitone_get_font_size_scale_map() {
 	$global_settings = wp_get_global_settings();
 	$scale           = -3;
 	$map             = array();
@@ -43,21 +43,31 @@ function unitone_get_font_size_scale_map() {
  * Apply CSS Vars from settings.
  */
 function unitone_apply_css_vars_from_settings() {
-	$styles              = Manager::get_setting( 'styles' );
-	$font_family         = unitone_get_preset_css_var( $styles['typography']['fontFamily'] );
-	$base_font_size      = Manager::get_setting( 'base-font-size' );
-	$half_leading        = Manager::get_setting( 'half-leading' );
-	$min_half_leading    = Manager::get_setting( 'min-half-leading' );
-	$content_size        = Manager::get_setting( 'settings' )['layout']['contentSize'];
-	$wide_size           = Manager::get_setting( 'settings' )['layout']['wideSize'];
-	$accent_color        = unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', array( 'settings' => Manager::get_setting( 'settings' ) ) ) );
-	$accent_color        = 'var(--unitone--color--accent)' === $accent_color
+	$styles           = Manager::get_setting( 'styles' );
+	$font_family      = unitone_get_preset_css_var( $styles['typography']['fontFamily'] );
+	$base_font_size   = Manager::get_setting( 'base-font-size' );
+	$half_leading     = Manager::get_setting( 'half-leading' );
+	$min_half_leading = Manager::get_setting( 'min-half-leading' );
+	$content_size     = Manager::get_setting( 'settings' )['layout']['contentSize'];
+	$wide_size        = Manager::get_setting( 'settings' )['layout']['wideSize'];
+	$background_color = unitone_get_preset_css_var( $styles['color']['background'] );
+	$text_color       = unitone_get_preset_css_var( $styles['color']['text'] );
+
+	$accent_color = unitone_get_preset_css_var(
+		unitone_get_palette_color(
+			'unitone-accent',
+			array(
+				'settings' => Manager::get_setting( 'settings' ),
+			)
+		)
+	);
+
+	$accent_color = 'var(--unitone--color--accent)' === $accent_color
 		? unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', Settings::get_default_global_styles() ) )
 		: $accent_color;
-	$background_color    = unitone_get_preset_css_var( $styles['color']['background'] );
-	$text_color          = unitone_get_preset_css_var( $styles['color']['text'] );
-	$default_styles      = Settings::get_default_global_styles();
-	$font_size_map       = unitone_get_font_size_scale_map();
+
+	$font_size_map = _unitone_get_font_size_scale_map();
+
 	$get_font_size_scale = function ( $font_size ) use ( $font_size_map ) {
 		$font_size = unitone_get_preset_css_var( $font_size );
 		if ( ! is_string( $font_size ) ) {
@@ -78,15 +88,13 @@ function unitone_apply_css_vars_from_settings() {
 			? $font_size_map[ $matches[1] ]
 			: null;
 	};
-	$get_heading_size    = function ( $heading ) use ( $styles, $default_styles, $get_font_size_scale ) {
+
+	$get_heading_size = function ( $heading ) use ( $styles, $get_font_size_scale ) {
 		$font_size = $styles['elements'][ $heading ]['typography']['fontSize'] ?? null;
 		$scale     = $get_font_size_scale( $font_size );
 		if ( null !== $scale ) {
 			return $scale;
 		}
-
-		$default_font_size = $default_styles['styles']['elements'][ $heading ]['typography']['fontSize'] ?? null;
-		$default_scale     = $get_font_size_scale( $default_font_size );
 
 		if ( empty( $font_size ) ) {
 			$deprecated_scale = Manager::get_setting( $heading . '-size' );
@@ -99,14 +107,15 @@ function unitone_apply_css_vars_from_settings() {
 			}
 		}
 
-		return $default_scale;
+		return '0';
 	};
-	$h1_size             = $get_heading_size( 'h1' );
-	$h2_size             = $get_heading_size( 'h2' );
-	$h3_size             = $get_heading_size( 'h3' );
-	$h4_size             = $get_heading_size( 'h4' );
-	$h5_size             = $get_heading_size( 'h5' );
-	$h6_size             = $get_heading_size( 'h6' );
+
+	$h1_size = $get_heading_size( 'h1' );
+	$h2_size = $get_heading_size( 'h2' );
+	$h3_size = $get_heading_size( 'h3' );
+	$h4_size = $get_heading_size( 'h4' );
+	$h5_size = $get_heading_size( 'h5' );
+	$h6_size = $get_heading_size( 'h6' );
 
 	$stylesheet = sprintf(
 		':root {
@@ -821,7 +830,7 @@ add_action(
 		}
 
 		$merged_raw_data = \WP_Theme_JSON_Resolver::get_merged_data( 'user' )->get_raw_data();
-		$font_size_map   = unitone_get_font_size_scale_map();
+		$font_size_map   = _unitone_get_font_size_scale_map();
 
 		if ( $deprecated_heading_sizes ) {
 			$new_elements = array();

@@ -37,21 +37,10 @@ export function FluidTypographyEdit( { label, attributes, setAttributes } ) {
 		attributes?.style?.typography?.fontSize
 	);
 
-	let help = __(
-		'When enabled, font size and line-height will change fluidly with screen width.',
+	const help = __(
+		'When enabled, font size and line-height will change fluidly with screen width. This will not be applied if the current font size is not one of the unitone preset sizes.',
 		'unitone'
 	);
-	if ( fontSizeStatus.fluid ) {
-		help = __(
-			'When enabled, line-height will change fluidly with screen width.',
-			'unitone'
-		);
-	} else if ( fontSizeStatus.fixed ) {
-		help = __(
-			"Custom font size isn't fluid and can't be enabled.",
-			'unitone'
-		);
-	}
 
 	return (
 		<HelpContainer help={ help } layout="horizontal">

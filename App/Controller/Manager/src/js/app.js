@@ -1,3 +1,5 @@
+import '@inc2734/unitone-css/app';
+
 import { createRoot } from '@wordpress/element';
 
 import SettingsPage from './settings-page';

@@ -23,9 +23,12 @@ import {
 	normalizeForSelectControl,
 	normalizeForToggleControl,
 	useToolsPanelDropdownMenuProps,
+	useVisibleLayoutObserver,
 } from '../../js/editor/hooks/utils';
 
 import metadata from './block.json';
+
+import { setDividerLinewrap } from '@inc2734/unitone-css/library';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
@@ -39,7 +42,11 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		[ clientId ]
 	);
 
-	const blockProps = useBlockProps();
+	const ref = useVisibleLayoutObserver( ( target ) =>
+		setDividerLinewrap( target )
+	);
+
+	const blockProps = useBlockProps( { ref } );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'stack',
 		blockProps[ 'data-unitone-layout' ],

@@ -36,30 +36,7 @@
 }
 
 .unitone-grid:where([data-unitone-layout*="-divider\:"]) {
-	--unitone--divider-width: 1px;
-	--unitone--divider-style: solid;
 	--unitone--divider-color: var(--wp--preset--color--unitone-light-gray);
-
-	visibility: hidden;
-
-	&[data-unitone-layout~="divider:initialized"] {
-		visibility: visible;
-	}
-
-	> * {
-		position: relative;
-	}
-
-	> ::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		user-select: none;
-		pointer-events: none;
-		border-width: 0;
-		border-style: var(--unitone--divider-style);
-		border-color: var(--unitone--divider-color);
-	}
 }
 
 .unitone-grid[data-unitone-layout~="-divider\:stripe"] {

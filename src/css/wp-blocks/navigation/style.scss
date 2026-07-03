@@ -1,14 +1,8 @@
 /**
  * For adminbar.
  */
-.wp-block-navigation__responsive-container {
-	@media (max-width: 599px) {
-		top: var(--wp-admin--admin-bar--height, 0px);
-	}
-}
-
 .has-modal-open .admin-bar .is-menu-open .wp-block-navigation__responsive-dialog {
-	margin-top: 0;
+	overflow: hidden;
 }
 
 /**

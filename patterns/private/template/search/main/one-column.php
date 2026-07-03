@@ -17,7 +17,11 @@
 					<div data-unitone-layout="gutters">
 						<div data-unitone-layout="container">
 							<div data-unitone-layout="stack">
-								<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
+								<!-- wp:unitone/text {"unitone":{"gutters":"0","maxWidth":"var(--wp--style--global--wide-size)"}} -->
+								<div data-unitone-layout="text -gap">
+									<!-- wp:search {"label":"Search","showLabel":false,"width":100,"widthUnit":"%","buttonText":"Search","buttonUseIcon":true} /-->
+								</div>
+								<!-- /wp:unitone/stack -->
 
 								<!-- wp:unitone/text {"className":"entry-content","unitone":{"gutters":"0","maxWidth":"var(--wp--style--global--wide-size)"}} -->
 								<div data-unitone-layout="text -gap" class="entry-content">

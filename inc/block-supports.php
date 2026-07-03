@@ -165,7 +165,7 @@ function unitone_add_link_decoration_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_link_decoration_support' );
 
 /**
- * Add support "gap" to core/list, core/navigation, core/post-content,  core/post-template and core/social-links.
+ * Add support "gap" to core/list, core/navigation, core/post-content, core/post-template, core/social-links and core/query.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
@@ -177,6 +177,7 @@ function unitone_add_gap_support( $metadata ) {
 		'core/post-content',
 		'core/post-template',
 		'core/social-links',
+		'core/query',
 	);
 
 	if ( ! in_array( $metadata['name'], $target, true ) ) {

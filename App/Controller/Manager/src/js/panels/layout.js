@@ -223,6 +223,19 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										),
 									} }
 								/>
+								<span
+									dangerouslySetInnerHTML={ {
+										__html: sprintf(
+											// translators: %1$s: <code>, %2$s: </code>
+											__(
+												'If you change this setting, the frontend will use either %1$sparts/header-sticky.html%2$s or %1$sparts/header-fixed.html%2$s based on the configuration. To customize the header design, please edit the corresponding template part in the template part editing screen.',
+												'unitone'
+											),
+											'<code>',
+											'</code>'
+										),
+									} }
+								/>
 							</Notice>
 						</div>
 					</div>

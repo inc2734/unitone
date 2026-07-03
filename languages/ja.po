@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-06-25T14:18:21+00:00\n"
-"PO-Revision-Date: 2026-06-25 23:19+0900\n"
+"POT-Creation-Date: 2026-07-03T10:09:08+00:00\n"
+"PO-Revision-Date: 2026-07-03 19:10+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -38,7 +38,7 @@ msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
 #: App/Controller/Manager/Manager.php:42 App/Controller/Manager/Manager.php:43
-#: App/Controller/Manager/dist/js/app.js:21
+#: App/Controller/Manager/dist/js/app.js:24
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
@@ -47,7 +47,7 @@ msgid "Theme"
 msgstr "テーマ"
 
 #: App/Controller/Manager/Manager.php:133
-#: App/Controller/Manager/dist/js/app.js:15 dist/blocks/child-pages/index.js:1
+#: App/Controller/Manager/dist/js/app.js:18 dist/blocks/child-pages/index.js:1
 #: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
 #: dist/blocks/vertical-writing/index.js:1 dist/js/editor/editor.js:1
@@ -162,7 +162,7 @@ msgstr "オーバーレイメニュー"
 msgid "Loading Animations"
 msgstr "ローディングアニメーション"
 
-#: inc/block-patterns.php:18 App/Controller/Manager/dist/js/app.js:15
+#: inc/block-patterns.php:18 App/Controller/Manager/dist/js/app.js:18
 msgid "Pages"
 msgstr "ページ"
 
@@ -2214,15 +2214,28 @@ msgstr ""
 "テンプレートに適用されます。また、変更はフロントエンドで動的に適用されるた"
 "め、エディター上では反映されません。"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#. translators: %1$s: <code>, %2$s: </code>
+#: App/Controller/Manager/dist/js/app.js:16
+msgid ""
+"If you change this setting, the frontend will use either %1$sparts/header-"
+"sticky.html%2$s or %1$sparts/header-fixed.html%2$s based on the "
+"configuration. To customize the header design, please edit the corresponding "
+"template part in the template part editing screen."
+msgstr ""
+"この設定を変更した場合、フロントエンドでは設定に応じて %1$sparts/header-"
+"sticky.html%2$s、%1$sparts/header-fixed.html%2$s が使用されるようになります。"
+"ヘッダーのデザインをカスタマイズしたい場合は、テンプレートパーツの編集画面で"
+"該当するテンプレートパーツをカスタマイズしてください。"
+
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Loading Animation"
 msgstr "ローディングアニメーション"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Template Parts to Use"
 msgstr "使用するテンプレート・パーツ"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:16
 msgid ""
 "You can choose from the template parts assigned to the template part area "
 "\"Loading Animation\"."
@@ -2230,74 +2243,74 @@ msgstr ""
 "テンプレートパーツエリア「ローディングアニメーション」に割り当てられたテンプ"
 "レートパーツから選択できます。"
 
-#: App/Controller/Manager/dist/js/app.js:13
-#: App/Controller/Manager/dist/js/app.js:14
+#: App/Controller/Manager/dist/js/app.js:16
+#: App/Controller/Manager/dist/js/app.js:17
 msgid "— Select —"
 msgstr "— 選択 —"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Minimum Time to Display Loading Animation (s)"
 msgstr "ローディングアニメーションの最低表示時間（秒）"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Your Homepage Displays"
 msgstr "ホームページ設定"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Homepage Type"
 msgstr "ホームページのタイプ"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Latest Posts"
 msgstr "最新の投稿"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Static Page"
 msgstr "固定ページ"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Homepage"
 msgstr "ホームページ"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Create a new blank page"
 msgstr "新規に空ページを作成する"
 
-#: App/Controller/Manager/dist/js/app.js:13
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Select existing page for the homepage"
 msgstr "既存のページをホームページ用に選択"
 
 #. translators: %1$s: Post ID
-#: App/Controller/Manager/dist/js/app.js:14
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:17
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "#%1$s (No title)"
 msgstr "#%1$s （タイトルなし）"
 
-#: App/Controller/Manager/dist/js/app.js:14
+#: App/Controller/Manager/dist/js/app.js:17
 msgid "Posts Page"
 msgstr "投稿ページ"
 
-#: App/Controller/Manager/dist/js/app.js:14
+#: App/Controller/Manager/dist/js/app.js:17
 msgid "Create new page for the posts page"
 msgstr "投稿ページ用の固定ページを生成"
 
-#: App/Controller/Manager/dist/js/app.js:14
+#: App/Controller/Manager/dist/js/app.js:17
 msgid "Select existing page for the posts page"
 msgstr "既存のページを投稿ページ用に選択"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Posts"
 msgstr "投稿"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Products"
 msgstr "商品"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Custom Templates"
 msgstr "カスタムテンプレート"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid ""
 "Activate the custom template you wish to use. You cannot deactivate a custom "
 "template that is already in use."
@@ -2305,94 +2318,94 @@ msgstr ""
 "使用したいカスタムテンプレートを有効化してください。既に使用されているカスタ"
 "ムテンプレートは無効化できません。"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Blog Card"
 msgstr "ブログカード"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Style"
 msgstr "スタイル"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Background color (Accent color)"
 msgstr "背景色（アクセントカラー）"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Border (Accent color)"
 msgstr "ボーダー（アクセントカラー）"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Dark"
 msgstr "ダーク"
 
-#: App/Controller/Manager/dist/js/app.js:15 dist/formats/formats.js:2
+#: App/Controller/Manager/dist/js/app.js:18 dist/formats/formats.js:2
 msgid "Media"
 msgstr "メディア"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Simple"
 msgstr "シンプル"
 
-#: App/Controller/Manager/dist/js/app.js:15 dist/blocks/badge/index.js:1
+#: App/Controller/Manager/dist/js/app.js:18 dist/blocks/badge/index.js:1
 #: dist/blocks/child-pages/index.js:1
 msgid "Box"
 msgstr "ボックス"
 
-#: App/Controller/Manager/dist/js/app.js:15 dist/js/editor/editor.js:16
+#: App/Controller/Manager/dist/js/app.js:18 dist/js/editor/editor.js:16
 msgid "OGP"
 msgstr "OGP"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "OGP Tags"
 msgstr "OGP タグ"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Output tags"
 msgstr "タグを出力する"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Twitter Cards"
 msgstr "Twitter Cards"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "twitter:site"
 msgstr "twitter:site"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "@username for the website used in the card footer."
 msgstr "カードフッターで使用されるウェブサイトの@ユーザー名。"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Generated Thumbnail"
 msgstr "生成サムネイル"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Featured Image"
 msgstr "アイキャッチ画像"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Aspect Ratio"
 msgstr "アスペクト比"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "The aspect ratio for featured images generated based on post title."
 msgstr "投稿タイトルに基づいて生成されるアイキャッチ画像のアスペクト比。"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 #: dist/blocks/abstract-background/index.js:1 dist/js/editor/editor.js:16
 msgid "Background"
 msgstr "背景"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Failed to load models."
 msgstr "モデルの読み込みに失敗しました。"
 
-#: App/Controller/Manager/dist/js/app.js:15
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "OpenAI (Deprecated)"
 msgstr "OpenAI（非推奨）"
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:18
+#: App/Controller/Manager/dist/js/app.js:21
 msgid ""
 "Starting with WordPress 7.0, the use of %1$sAI Connectors%2$s is "
 "recommended. This setup is scheduled to be rolled out, so please migrate to "
@@ -2401,7 +2414,7 @@ msgstr ""
 "WordPress 7.0 以降では、%1$sAI コネクタ%2$s の使用が推奨されます。この設定は"
 "順次廃止される予定ですので、できるだけ早く AI コネクタへ移行してください。"
 
-#: App/Controller/Manager/dist/js/app.js:18
+#: App/Controller/Manager/dist/js/app.js:21
 msgid ""
 "AI Connectors are already configured and currently in use. The OpenAI "
 "settings below are only used as a legacy fallback."
@@ -2409,16 +2422,16 @@ msgstr ""
 "AI コネクタはすでに設定済みで、現在使用されています。以下の OpenAI 設定は、レ"
 "ガシーな代替手段としてのみ使用されます。"
 
-#: App/Controller/Manager/dist/js/app.js:18
+#: App/Controller/Manager/dist/js/app.js:21
 msgid "API Key"
 msgstr "API キー"
 
-#: App/Controller/Manager/dist/js/app.js:18
+#: App/Controller/Manager/dist/js/app.js:21
 msgid "Model to use"
 msgstr "使用するモデル"
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:21
+#: App/Controller/Manager/dist/js/app.js:24
 msgid ""
 "Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for "
 "details."
@@ -2426,15 +2439,15 @@ msgstr ""
 "API の利用には料金が発生します。詳細は %1$sAPI の料金体系%2$sページをご確認く"
 "ださい。"
 
-#: App/Controller/Manager/dist/js/app.js:21
+#: App/Controller/Manager/dist/js/app.js:24
 msgid "Go to the Dashboard"
 msgstr "ダッシュボードに戻る"
 
-#: App/Controller/Manager/dist/js/app.js:21
+#: App/Controller/Manager/dist/js/app.js:24
 msgid "View site (opens in a new tab)"
 msgstr "サイトを表示 (新しいタブで開く)"
 
-#: App/Controller/Manager/dist/js/app.js:21
+#: App/Controller/Manager/dist/js/app.js:24
 msgid "Navigation"
 msgstr "ナビゲーション"
 

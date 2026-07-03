@@ -71,10 +71,6 @@ $font-sizes: (
 	$splited-slug: list.join(string.split(map.get($font-size, slug), '-'), '');
 	$non-hyphen-slug: #{ list.nth($splited-slug, 1) }-#{ list.nth($splited-slug, 2) }#{ list.nth($splited-slug, 3) };
 
-	:root {
-		--wp--preset--font-size--#{ $non-hyphen-slug }: var(--wp--preset--font-size--#{ $slug }, var(--unitone--font-size-rem));
-	}
-
 	:where(.has-#{ $slug }-font-size) {
 		--unitone--font-size: #{ $size } !important;
 		--wp--preset--font-size--#{ $slug }: var(--unitone--font-size-rem) !important;

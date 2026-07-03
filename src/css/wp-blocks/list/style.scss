@@ -126,9 +126,11 @@
 	}
 }
 
-:root :where(.wp-block-list[data-unitone-layout~="-divider\:stripe"]),
-:root :where(.wp-block-list[data-unitone-layout~="-divider\:divide"]),
-:root :where(.wp-block-list[data-unitone-layout~="-divider\:underline"]) {
+:root :where(
+	.wp-block-list[data-unitone-layout~="-divider\:stripe"],
+	.wp-block-list[data-unitone-layout~="-divider\:divide"],
+	.wp-block-list[data-unitone-layout~="-divider\:underline"]
+) {
 	:where(.wp-block-list) {
 		> * {
 			padding-block-start: var(--unitone--gap);

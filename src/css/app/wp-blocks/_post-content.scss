@@ -5,9 +5,11 @@
 
 @use '@inc2734/unitone-css/src/layout-primitives/text';
 
-:where(.is-layout-constrained:not([data-unitone-layout~="text"])),
-:where(.wp-block-post-content.is-layout-flow), // @deprecated
-:where(.is-root-container) {
+:where(
+	.is-layout-constrained:not([data-unitone-layout~="text"]),
+	.wp-block-post-content.is-layout-flow, // @deprecated
+	.is-root-container
+) {
 	@include text.abstract-text();
 	@include text.abstract-text--gap();
 
@@ -16,23 +18,26 @@
 	}
 }
 
-:where(.is-layout-constrained),
-:where(.wp-block-post-content.is-layout-flow), // @deprecated
-:where(.is-root-container) {
-	> .wp-block-audio,
-	> .wp-block-embed,
-	> .wp-block-image,
-	> .wp-block-table,
-	> .wp-block-video,
-	> .wp-block-code,
-	> .wp-block-separator,
-	> .wp-block-gallery {
+:where(
+	.is-layout-constrained,
+	.wp-block-post-content.is-layout-flow, // @deprecated
+	.is-root-container
+) {
+	> :is(
+		.wp-block-audio,
+		.wp-block-embed,
+		.wp-block-image,
+		.wp-block-table,
+		.wp-block-video,
+		.wp-block-code,
+		.wp-block-separator,
+		.wp-block-gallery
+	) {
 		--unitone--text-gap-increment: calc(1em * var(--unitone--half-leading));
 	}
 }
 
-.entry-content:where(.is-layout-constrained),
-.wp-block-post-content:where(.is-layout-constrained) {
+:is(.entry-content, .wp-block-post-content):where(.is-layout-constrained) {
 	--unitone--gutters: var(--unitone--global--gutters);
 }
 
@@ -42,8 +47,7 @@
  * Therefore, padding should be 0.
  */
 :where(.unitone-section > [data-unitone-layout~="gutters"] > [data-unitone-layout~="container"] > [data-unitone-layout~="stack"]) {
-	> .entry-content:where(.is-layout-constrained),
-	> .wp-block-post-content:where(.is-layout-constrained) {
+	> :is(.entry-content, .wp-block-post-content):where(.is-layout-constrained) {
 		--unitone--gutters: 0px;
 	}
 }

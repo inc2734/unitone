@@ -1,13 +1,17 @@
-.wp-block-post-terms.is-style-badge,
-.wp-block-post-terms.is-style-outline {
+:root :where(
+	.wp-block-post-terms.is-style-badge,
+	.wp-block-post-terms.is-style-outline
+) {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	background-color: transparent !important;
 	border: none !important;
 
-	a:where(:not(.wp-element-button)),
-	span:where(:not([class]):not([data-rich-text-placeholder])) {
+	:is(
+		a:where(:not(.wp-element-button)),
+		span:where(:not([class]):not([data-rich-text-placeholder]))
+	) {
 		display: inline-block;
 		text-decoration: none;
 	}
@@ -17,8 +21,10 @@
 	}
 }
 
-:root :where(.wp-block-post-terms.is-style-badge),
-:root :where(.wp-block-post-terms.is-style-outline) {
+:root :where(
+	.wp-block-post-terms.is-style-badge,
+	.wp-block-post-terms.is-style-outline
+) {
 	--unitone--post-term--border-top-color: var(--unitone--post-term--border-color);
 	--unitone--post-term--border-right-color: var(--unitone--post-term--border-color);
 	--unitone--post-term--border-bottom-color: var(--unitone--post-term--border-color);
@@ -41,8 +47,10 @@
 
 	gap: var(--unitone--s-2);
 
-	a:where(:not(.wp-element-button)),
-	span:where(:not([class]):not([data-rich-text-placeholder])) {
+	:is(
+		a:where(:not(.wp-element-button)),
+		span:where(:not([class]):not([data-rich-text-placeholder]))
+	) {
 		background-color: var(--unitone--post-term--background-color);
 		padding: var(--unitone--post-term--padding);
 
@@ -78,8 +86,10 @@
 	--unitone--post-term--border-width: 0px;
 	--unitone--post-term--border-style: solid;
 
-	a:where(:not(.wp-element-button)),
-	span:where(:not([class]):not([data-rich-text-placeholder])) {
+	:is(
+		a:where(:not(.wp-element-button)),
+		span:where(:not([class]):not([data-rich-text-placeholder]))
+	) {
 		color: var(--wp--preset--color--unitone-background);
 	}
 }
@@ -94,15 +104,19 @@
 	--unitone--post-term--border-width: 1px;
 	--unitone--post-term--border-style: solid;
 
-	a:where(:not(.wp-element-button)),
-	span:where(:not([class]):not([data-rich-text-placeholder])) {
+	:is(
+		a:where(:not(.wp-element-button)),
+		span:where(:not([class]):not([data-rich-text-placeholder]))
+	) {
 		color: var(--wp--preset--color--unitone-accent);
 	}
 }
 
 :root :where(.wp-block-post-terms.is-style-text) {
-	a:where(:not(.wp-element-button)),
-	span:where(:not([class]):not([data-rich-text-placeholder])) {
+	:is(
+		a:where(:not(.wp-element-button)),
+		span:where(:not([class]):not([data-rich-text-placeholder]))
+	) {
 		color: inherit;
 		text-decoration: none;
 

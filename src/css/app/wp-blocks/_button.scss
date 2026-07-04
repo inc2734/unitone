@@ -20,6 +20,10 @@
 	display: inline-block;
 }
 
+.has-custom-font-size > .wp-block-button {
+	font-size: inherit;
+}
+
 :where(a.wp-block-button__link, a.wp-element-button) {
 	@include variables.typography();
 }

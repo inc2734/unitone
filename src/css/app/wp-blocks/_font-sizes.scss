@@ -51,7 +51,11 @@ $font-sizes: (
 	)
 );
 
-[data-unitone-layout~="-fluid-typography"] {
+// When a font size is applied to `core/button`, a class is added to `.wp-block-button__link`;
+// however, since `-fluid-typography` is applied to `.wp-block-button`,
+// we are making adjustments using the selector.
+[data-unitone-layout~=-fluid-typography],
+[data-unitone-layout~=-fluid-typography] > .wp-block-button__link {
 	@each $font-size in $font-sizes {
 		$slug: map.get($font-size, slug);
 		$splited-slug: list.join(string.split(map.get($font-size, slug), '-'), '');
@@ -65,6 +69,10 @@ $font-sizes: (
 	}
 }
 
+[data-unitone-layout~=-fluid-typography] > .wp-block-button__link {
+	line-height: var(--unitone--line-height);
+}
+
 @each $font-size in $font-sizes {
 	$size: map.get($font-size, size);
 	$slug: map.get($font-size, slug);
@@ -76,10 +84,6 @@ $font-sizes: (
 		--wp--preset--font-size--#{ $slug }: var(--unitone--font-size-rem) !important;
 	}
 
-	:where(.has-#{ $slug }-font-size *) {
-		font-size: inherit;
-	}
-
 	// For WooCommerce
 	// @todo At WooCommerce 9.7, a hyphen isn't added after the number in the class/CSS vars for font size.
 	// @todo At WooCommerce 9.7, setting typography in product-price block does not give .has-{slug}-font-size.
@@ -87,9 +91,6 @@ $font-sizes: (
 		:where(.has-#{ $non-hyphen-slug }-font-size) {
 			--unitone--font-size: #{ $size } !important;
 			--wp--preset--font-size--#{ $non-hyphen-slug }: var(--unitone--font-size-rem) !important;
-		}
-		:where(.has-#{ $non-hyphen-slug }-font-size *) {
-			font-size: inherit;
 		}
 		.wc-block-components-product-price {
 			--wp--preset--font-size--#{ $non-hyphen-slug }: calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - #{ $size }) * 1rem) !important;

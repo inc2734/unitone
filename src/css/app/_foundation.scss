@@ -14,13 +14,13 @@ body {
 
 code,
 kbd {
-	--unitone--font-size: -1;
 	--unitone--border-radius: var(--unitone--global--border-radius);
 
 	display: inline-block;
 	background-color: var(--wp--preset--color--unitone-light-gray);
-	padding: 0 var(--unitone--p-2);
 	border-radius: var(--unitone--border-radius);
+	font-size: var(--unitone--font-size-s);
+	padding: 0 var(--unitone--p-2);
 }
 
 :where(figure) {

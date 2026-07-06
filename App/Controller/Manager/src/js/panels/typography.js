@@ -3,9 +3,10 @@ import {
 	FontSizePicker,
 	RangeControl,
 	SelectControl,
+	TextControl,
 } from '@wordpress/components';
 
-import { useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import apiFetch from '@wordpress/api-fetch';
@@ -18,7 +19,9 @@ import {
 	getFontSizeCssVarSlug,
 	getFontSizePresetSlugFromValue,
 	getFontSizePresetValue,
+	getRootFontSize,
 	getUnitoneFontSizeScale,
+	getUnitoneFontSizeTokenSlug,
 } from '../../../../../../src/js/utils/font-size';
 
 import { withMinDelay } from '../utils/utils';
@@ -59,6 +62,44 @@ const HEADING_FONT_SIZE_CONTROLS = [
 const isEmptyHeadingFontSizeSetting = ( value ) =>
 	null == value || '' === value || false === value;
 
+const getPreviewFontSize = ( fontSize ) =>
+	'string' === typeof fontSize
+		? fontSize.replace( /([+-]?(?:\d+\.?\d*|\.\d+))rem\b/gi, '$1em' )
+		: fontSize;
+
+const getPreviewUnitoneFontSize = ( scale ) =>
+	0 === scale
+		? 'calc(1 * 1em)'
+		: `calc(calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - (${ scale }))) * 1em)`;
+
+const getPreviewFontSizePresetStyles = ( fontSizes ) =>
+	fontSizes?.reduce( ( styles, fontSize ) => {
+		const slug = getFontSizeCssVarSlug( fontSize?.slug );
+		if ( ! slug ) {
+			return styles;
+		}
+
+		const scale = getUnitoneFontSizeScale( fontSize );
+		const tokenSlug = getUnitoneFontSizeTokenSlug( fontSize );
+		if ( Number.isFinite( scale ) && tokenSlug ) {
+			styles[ `--unitone--font-size-${ tokenSlug }` ] =
+				getPreviewUnitoneFontSize( scale );
+		}
+
+		const size = getPreviewFontSize( fontSize?.size );
+		if ( null == size || '' === size ) {
+			return styles;
+		}
+
+		styles[ `--wp--preset--font-size--${ slug }` ] = size;
+
+		if ( slug !== fontSize.slug ) {
+			styles[ `--wp--preset--font-size--${ fontSize.slug }` ] = size;
+		}
+
+		return styles;
+	}, {} ) ?? {};
+
 const getFontSizeBySlug = ( settings, slug ) =>
 	slug
 		? settings?.fontSizes?.find(
@@ -94,20 +135,36 @@ const getHeadingPreviewStyle = ( settings, defaultSettings, settingKey ) => {
 		defaultSettings,
 		settingKey
 	);
-	const unitoneScale = getUnitoneFontSizeScale( fontSize );
-	const isUnitone = Number.isFinite( unitoneScale );
+	const slug = getFontSizeCssVarSlug( fontSize?.slug );
 
 	return {
-		'--unitone--font-size': isUnitone ? unitoneScale : 0,
-		fontSize: isUnitone ? undefined : fontSize?.size,
+		fontSize: slug
+			? `var(--wp--preset--font-size--${ slug })`
+			: getPreviewFontSize( fontSize?.size ),
 		fontWeight: 'bold',
 	};
 };
 
 export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
+	const [ baseFontSizeInput, setBaseFontSizeInput ] = useState( '' );
+	const [ isBaseFontSizeInputDirty, setIsBaseFontSizeInputDirty ] =
+		useState( false );
+	const baseFontSize = settings?.[ 'base-font-size' ];
+	const previewRootFontSize = getRootFontSize( baseFontSize );
+	const previewFontSizePresetStyles = getPreviewFontSizePresetStyles(
+		settings?.fontSizes
+	);
 
 	useMigrationFontFamily( settings, setSettings );
+
+	useEffect( () => {
+		if ( isBaseFontSizeInputDirty ) {
+			return;
+		}
+
+		setBaseFontSizeInput( getRootFontSize( baseFontSize ) ?? '' );
+	}, [ baseFontSize, isBaseFontSizeInputDirty ] );
 
 	const saveSettings = () => {
 		setSettingsSaving( 'save' );
@@ -164,6 +221,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 				},
 			},
 		} );
+		setBaseFontSizeInput(
+			getRootFontSize( defaultSettings[ 'base-font-size' ] ) ?? ''
+		);
+		setIsBaseFontSizeInputDirty( false );
 
 		withMinDelay(
 			apiFetch( {
@@ -216,11 +277,12 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							<div
 								aria-hidden="true"
 								className="unitone-settings-colors-settigs-preview"
-								data-unitone-layout="stack -gap:-2 -root:typography"
+								data-unitone-layout="stack -gap:-2"
 								style={ {
-									'--unitone--base-font-size': String(
-										settings?.[ 'base-font-size' ]
-									),
+									...previewFontSizePresetStyles,
+									'--unitone--root-font-size':
+										previewRootFontSize,
+									fontSize: previewRootFontSize,
 									fontFamily: settings?.fontFamilies?.find(
 										( fontFamily ) =>
 											settings?.styles?.typography?.fontFamily?.replace(
@@ -231,7 +293,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								} }
 							>
 								<div
-									data-unitone-layout="decorator -padding:1 -typography:em"
+									data-unitone-layout="decorator -padding:1"
 									style={ {
 										'--unitone--border-color':
 											'var(--unitone--color--light-gray)',
@@ -246,7 +308,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								>
 									<div data-unitone-layout="stack">
 										<div
-											data-unitone-layout="-typography:em"
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
@@ -256,7 +317,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											見出し1
 										</div>
 										<div
-											data-unitone-layout="-typography:em"
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
@@ -266,7 +326,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											見出し2
 										</div>
 										<div
-											data-unitone-layout="-typography:em"
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
@@ -276,7 +335,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											見出し3
 										</div>
 										<div
-											data-unitone-layout="-typography:em"
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
@@ -286,7 +344,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											見出し4
 										</div>
 										<div
-											data-unitone-layout="-typography:em"
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
@@ -296,7 +353,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 											見出し5
 										</div>
 										<div
-											data-unitone-layout="-typography:em"
 											style={ getHeadingPreviewStyle(
 												settings,
 												defaultSettings,
@@ -341,22 +397,23 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								}
 							/>
 
-							<RangeControl
+							<TextControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Base Font Size', 'unitone' ) }
-								value={ parseFloat(
-									settings?.[ 'base-font-size' ]
-								) }
-								onChange={ ( newSetting ) =>
+								value={ baseFontSizeInput }
+								onChange={ ( newSetting ) => {
+									setBaseFontSizeInput( newSetting );
+									setIsBaseFontSizeInputDirty( true );
+
 									setSettings( {
 										...settings,
-										'base-font-size': newSetting,
-									} )
-								}
-								min={ 14 }
-								step={ 1 }
-								max={ 18 }
+										'base-font-size':
+											'' !== newSetting.trim()
+												? newSetting.trim()
+												: null,
+									} );
+								} }
 							/>
 
 							<RangeControl

@@ -12,8 +12,8 @@
 	&__item-publish-date,
 	&__item-author,
 	&__item-excerpt {
-		--unitone--font-size: -2;
+		@include variables.line-height();
 
-		@include variables.typography();
+		font-size: var(--unitone--font-size-xs);
 	}
 }

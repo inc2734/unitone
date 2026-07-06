@@ -71,9 +71,16 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										'unitone-accent' === colorObject.slug
 								)?.color,
 							'--wp--preset--color--unitone-text':
-								settings?.styles?.color?.text,
+								settings?.settings?.color?.palette?.theme.find(
+									( colorObject ) =>
+										'unitone-text' === colorObject.slug
+								)?.color,
 							'--wp--preset--color--unitone-text-alt':
-								settings?.styles?.color?.background,
+								settings?.settings?.color?.palette?.theme.find(
+									( colorObject ) =>
+										'unitone-background' ===
+										colorObject.slug
+								)?.color,
 						} }
 					>
 						<span>
@@ -193,8 +200,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								/>
 							</div>
 
-							<div data-unitone-layout="-root:typography">
-								<div data-unitone-layout="-typography:em">
+							<div>
+								<div>
 									<BlogCard
 										value={
 											settings?.[

@@ -1,5 +1,6 @@
 import {
 	RangeControl,
+	TextControl,
 	__experimentalVStack as VStack,
 } from '@wordpress/components';
 
@@ -11,14 +12,19 @@ import {
 import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients } from '@wordpress/block-editor';
 import { useEntityProp } from '@wordpress/core-data';
 import { useSelect } from '@wordpress/data';
-import { useMemo, useEffect, useRef } from '@wordpress/element';
+import { useMemo, useEffect, useRef, useState } from '@wordpress/element';
 import { registerPlugin } from '@wordpress/plugins';
 import { __ } from '@wordpress/i18n';
 
 import ColorGradientSettingsDropdown from '../../../../../App/Controller/Manager/src/js/color-gradient-settings-dropdown';
 
+import {
+	normalizeForRangeControl,
+	normalizeForTextControl,
+} from '../../hooks/utils';
+
 import { FontFamilyControl, UnitControl } from './components';
-import { normalizeForRangeControl } from '../../hooks/utils';
+import { getRootFontSize } from '../../../utils/font-size';
 
 const applyNewSetting = ( root, property, newValue ) => {
 	if ( null == newValue ) {
@@ -117,6 +123,9 @@ const PageSettingsPanel = () => {
 	const innerBodyRef = useRef( null );
 	const overrideStylesRef = useRef( {} );
 	const overrideStylesForBodyRef = useRef( {} );
+	const [ baseFontSizeInput, setBaseFontSizeInput ] = useState( '' );
+	const [ isBaseFontSizeInputDirty, setIsBaseFontSizeInputDirty ] =
+		useState( false );
 
 	const newAccentColor =
 		meta?.[ 'unitone-override-settings' ]?.[ 'accent-color' ];
@@ -134,6 +143,14 @@ const PageSettingsPanel = () => {
 		meta?.[ 'unitone-override-settings' ]?.[ 'content-size' ];
 	const newWideSize = meta?.[ 'unitone-override-settings' ]?.[ 'wide-size' ];
 
+	useEffect( () => {
+		if ( isBaseFontSizeInputDirty ) {
+			return;
+		}
+
+		setBaseFontSizeInput( getRootFontSize( newBaseFontSize ) ?? '' );
+	}, [ newBaseFontSize, isBaseFontSizeInputDirty ] );
+
 	const overrideStyles = useMemo(
 		() => ( {
 			'--unitone--color--accent': newAccentColor,
@@ -146,7 +163,7 @@ const PageSettingsPanel = () => {
 			'--wp--preset--color--unitone-text': newTextColor,
 			'--wp--preset--color--unitone-background-alt': newTextColor,
 			'--wp--preset--color--unitone-text-alt': newBackgroundColor,
-			'--unitone--base-font-size': newBaseFontSize,
+			'--unitone--root-font-size': getRootFontSize( newBaseFontSize ),
 			'--unitone--font-family': !! newFontFamily
 				? `var(--wp--preset--font-family--${ newFontFamily?.replace(
 						'var:preset|font-family|',
@@ -312,32 +329,31 @@ const PageSettingsPanel = () => {
 							/>
 						</div>
 
-						<RangeControl
+						<TextControl
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Base Font Size', 'unitone' ) }
-							value={ normalizeForRangeControl(
-								newBaseFontSize
-							) }
+							value={ baseFontSizeInput }
 							onChange={ ( newSetting ) => {
+								setBaseFontSizeInput( newSetting );
+								setIsBaseFontSizeInputDirty( true );
+
 								const normalizedNewValue =
-									normalizeForRangeControl( newSetting );
+									normalizeForTextControl(
+										newSetting
+									).trim();
 								return setMeta( {
 									'unitone-override-settings': {
 										...meta?.[
 											'unitone-override-settings'
 										],
 										'base-font-size':
-											null != normalizedNewValue
+											'' !== normalizedNewValue
 												? normalizedNewValue
 												: undefined,
 									},
 								} );
 							} }
-							min={ 14 }
-							step={ 1 }
-							max={ 18 }
-							allowReset
 						/>
 
 						<RangeControl

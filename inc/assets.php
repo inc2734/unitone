@@ -97,68 +97,6 @@ function unitone_enqueue_block_editor_styles() {
 add_action( 'enqueue_block_assets', 'unitone_enqueue_block_editor_styles', 9 );
 
 /**
- * Return CSS to inherit font size on children of font-size preset classes.
- *
- * @return string
- */
-function _unitone_get_inherit_font_size_styles() {
-	$global_settings = wp_get_global_settings();
-	$font_sizes      = $global_settings['typography']['fontSizes'] ?? array();
-	$selectors       = array();
-
-	foreach ( $font_sizes as $origin_font_sizes ) {
-		if ( ! is_array( $origin_font_sizes ) ) {
-			continue;
-		}
-
-		foreach ( $origin_font_sizes as $font_size ) {
-			if ( empty( $font_size['slug'] ) || ! is_string( $font_size['slug'] ) ) {
-				continue;
-			}
-
-			$slug  = sanitize_html_class( $font_size['slug'] );
-			$slugs = array( $slug );
-
-			$non_hyphen_slug = preg_replace( '/-([0-9]+)-([a-z]+)/', '-$1$2', $slug );
-			if ( $slug !== $non_hyphen_slug ) {
-				$slugs[] = $non_hyphen_slug;
-			}
-
-			$hyphen_slug = preg_replace( '/-([0-9]+)([a-z]+)/', '-$1-$2', $slug );
-			if ( $slug !== $hyphen_slug ) {
-				$slugs[] = $hyphen_slug;
-			}
-
-			foreach ( array_unique( $slugs ) as $preset_slug ) {
-				$selectors[] = sprintf( '.has-%s-font-size *', $preset_slug );
-			}
-		}
-	}
-
-	$selectors = array_unique( array_filter( $selectors ) );
-
-	if ( empty( $selectors ) ) {
-		return '';
-	}
-
-	return sprintf( ':where(%s){font-size:inherit}', implode( ',', $selectors ) );
-}
-
-/**
- * Font sizes applied via font size presets are also inherited by descendant elements.
- */
-function unitone_inherit_font_size() {
-	$stylesheet = _unitone_get_inherit_font_size_styles();
-	if ( ! $stylesheet ) {
-		return;
-	}
-
-	wp_add_inline_style( 'unitone', $stylesheet );
-}
-add_action( 'wp_enqueue_scripts', 'unitone_inherit_font_size' );
-add_action( 'unitone_enqueue_block_editor_styles', 'unitone_inherit_font_size' );
-
-/**
  * Add CSS for global styles in the editor.
  *
  * @param array $editor_settings Default editor settings.

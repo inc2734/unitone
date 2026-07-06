@@ -29,7 +29,7 @@ add_action(
 								'type' => 'string',
 							),
 							'base-font-size'   => array(
-								'type' => 'integer',
+								'type' => 'string',
 							),
 							'font-family'      => array(
 								'type' => 'string',
@@ -85,7 +85,7 @@ add_action(
 				'--wp--preset--color--unitone-text'       => $new_text_color,
 				'--wp--preset--color--unitone-background-alt' => $new_text_color,
 				'--wp--preset--color--unitone-text-text'  => $new_background_color,
-				'--unitone--base-font-size'               => $new_base_font_size,
+				'--unitone--root-font-size'               => _unitone_get_root_font_size( $new_base_font_size ),
 				'--unitone--font-family'                  => unitone_get_preset_css_var( $new_font_family ),
 				'--unitone--half-leading'                 => $new_half_leading,
 				'--wp--style--global--content-size'       => $new_content_size,

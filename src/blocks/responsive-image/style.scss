@@ -4,10 +4,10 @@
 	--unitone--overlay-gradient: none;
 	--unitone--overlay-opacity: .6;
 	--unitone--overlay-radius: 0px;
-	--unitone--font-size: 0;
 
 	display: flow-root;
 	border: none !important;
+	font-size: var(--unitone--font-size-m);
 
 	&__overlay {
 		pointer-events: none;

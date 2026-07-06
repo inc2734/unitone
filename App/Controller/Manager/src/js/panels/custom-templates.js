@@ -97,7 +97,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 			<div data-unitone-layout="stack -gap:2">
 				<div data-unitone-layout="stack -gap:-1">
 					<h2>{ __( 'Custom Templates', 'unitone' ) }</h2>
-					<p style={ { '--unitone--font-size': '-1' } }>
+					<p style={ { fontSize: 'var(--unitone--font-size-s)' } }>
 						{ __(
 							'Activate the custom template you wish to use. You cannot deactivate a custom template that is already in use.',
 							'unitone'

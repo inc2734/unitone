@@ -25,7 +25,7 @@
 
 	a.tag-cloud-link {
 		display: inline-block;
-		font-size: var(--unitone--font-size) !important;
+		font-size: var(--unitone--tag-cloud--font-size) !important;
 		text-decoration: none;
 	}
 }
@@ -81,7 +81,7 @@
 }
 
 :root :where(.wp-block-tag-cloud.is-style-badge) {
-	--unitone--font-size: -2;
+	--unitone--tag-cloud--font-size: var(--unitone--font-size-xs);
 	--unitone--tag-cloud--background-color: var(--wp--preset--color--unitone-accent);
 	--unitone--tag-cloud--padding: calc(var(--unitone--p-1) / 2) var(--unitone--p-1);
 
@@ -96,7 +96,7 @@
 }
 
 :root :where(.wp-block-tag-cloud.is-style-outline) {
-	--unitone--font-size: -2;
+	--unitone--tag-cloud--font-size: var(--unitone--font-size-xs);
 	--unitone--tag-cloud--background-color: transparent;
 	--unitone--tag-cloud--padding: calc(var(--unitone--p-2) / 2) var(--unitone--p-2);
 

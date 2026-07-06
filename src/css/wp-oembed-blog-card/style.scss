@@ -12,10 +12,10 @@
 
 .wp-oembed-blog-card {
 	&__description {
-		--unitone--font-size: -1;
+		font-size: var(--unitone--font-size-s);
 	}
 
 	&__domain {
-		--unitone--font-size: -2;
+		font-size: var(--unitone--font-size-xs);
 	}
 }

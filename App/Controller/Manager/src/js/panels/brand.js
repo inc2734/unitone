@@ -18,6 +18,7 @@ import { useMigrationAccentColor } from './hooks/useMigrationAccentColor';
 import { useMigrationBackgroundColor } from './hooks/useMigrationBackgroundColor';
 import { useMigrationTextColor } from './hooks/useMigrationTextColor';
 import { withMinDelay } from '../utils/utils';
+import { getRootFontSize } from '../../../../../../src/js/utils/font-size';
 
 const MIN_SIZE = 20;
 
@@ -667,9 +668,13 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							<div
 								aria-hidden="true"
 								className="unitone-settings-colors-settigs-preview"
-								data-unitone-layout="stack -gap:-2 -root:typography"
+								data-unitone-layout="stack -gap:-2"
 								style={ {
-									'--unitone--base-font-size': String(
+									'--unitone--root-font-size':
+										getRootFontSize(
+											settings?.[ 'base-font-size' ]
+										),
+									fontSize: getRootFontSize(
 										settings?.[ 'base-font-size' ]
 									),
 									fontFamily: settings?.fontFamilies?.find(
@@ -682,7 +687,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								} }
 							>
 								<div
-									data-unitone-layout="decorator -padding:1 -typography:em"
+									data-unitone-layout="decorator -padding:1"
 									style={ {
 										'--unitone--background-color':
 											backgroundColor,

@@ -2,98 +2,81 @@
 @use "sass:string";
 @use "sass:list";
 
-@use '@inc2734/unitone-css/src/variables';
-
 $font-sizes: (
 	(
 		slug: unitone-2-xs,
-		size: -3,
+		token: 2xs,
 	),
 	(
 		slug: unitone-xs,
-		size: -2,
+		token: xs,
 	),
 	(
 		slug: unitone-s,
-		size: -1,
+		token: s,
 	),
 	(
 		slug: unitone-m,
-		size: 0,
+		token: m,
 	),
 	(
 		slug: unitone-l,
-		size: 1,
+		token: l,
 	),
 	(
 		slug: unitone-xl,
-		size: 2,
+		token: xl,
 	),
 	(
 		slug: unitone-2-xl,
-		size: 3,
+		token: 2xl,
 	),
 	(
 		slug: unitone-3-xl,
-		size: 4,
+		token: 3xl,
 	),
 	(
 		slug: unitone-4-xl,
-		size: 5,
+		token: 4xl,
 	),
 	(
 		slug: unitone-5-xl,
-		size: 6,
+		token: 5xl,
 	),
 	(
 		slug: unitone-6-xl,
-		size: 7,
+		token: 6xl,
 	)
 );
 
-// When a font size is applied to `core/button`, a class is added to `.wp-block-button__link`;
-// however, since `-fluid-typography` is applied to `.wp-block-button`,
-// we are making adjustments using the selector.
-[data-unitone-layout~=-fluid-typography],
-[data-unitone-layout~=-fluid-typography] > .wp-block-button__link {
+// Generate non-hyphen font size CSS var.
+:root {
 	@each $font-size in $font-sizes {
 		$slug: map.get($font-size, slug);
 		$splited-slug: list.join(string.split(map.get($font-size, slug), '-'), '');
 		$non-hyphen-slug: #{ list.nth($splited-slug, 1) }-#{ list.nth($splited-slug, 2) }#{ list.nth($splited-slug, 3) };
 
-		--wp--preset--font-size--#{ $slug }: var(--unitone--font-size-fluid) !important;
-
-		@if $slug != $non-hyphen-slug {
-			--wp--preset--font-size--#{ $non-hyphen-slug }: var(--wp--preset--font-size--#{ $slug }) !important;
+		@if $non-hyphen-slug != $slug {
+			--wp--preset--font-size--#{ $non-hyphen-slug }: var(--wp--preset--font-size--#{ $slug });
 		}
+	}
+}
+
+@each $font-size in $font-sizes {
+	$slug: map.get($font-size, slug);
+	$token: map.get($font-size, token);
+
+	// When a font size is applied to `core/button`, a class is added to `.wp-block-button__link`;
+	// however, since `-fluid-typography` is applied to `.wp-block-button`,
+	// we are making adjustments using the selector.
+	:root :where(
+		.has-#{ $slug }-font-size[data-unitone-layout~=-fluid-typography],
+		[data-unitone-layout~=-fluid-typography] > .wp-block-button__link.has-#{ $slug }-font-size
+	) {
+		font-size: var(--unitone--font-size-#{ $token }-fluid) !important;
 	}
 }
 
 [data-unitone-layout~=-fluid-typography] > .wp-block-button__link {
 	line-height: var(--unitone--line-height);
-}
-
-@each $font-size in $font-sizes {
-	$size: map.get($font-size, size);
-	$slug: map.get($font-size, slug);
-	$splited-slug: list.join(string.split(map.get($font-size, slug), '-'), '');
-	$non-hyphen-slug: #{ list.nth($splited-slug, 1) }-#{ list.nth($splited-slug, 2) }#{ list.nth($splited-slug, 3) };
-
-	:where(.has-#{ $slug }-font-size) {
-		--unitone--font-size: #{ $size } !important;
-		--wp--preset--font-size--#{ $slug }: var(--unitone--font-size-rem) !important;
-	}
-
-	// For WooCommerce
-	// @todo At WooCommerce 9.7, a hyphen isn't added after the number in the class/CSS vars for font size.
-	// @todo At WooCommerce 9.7, setting typography in product-price block does not give .has-{slug}-font-size.
-	@if $slug != $non-hyphen-slug {
-		:where(.has-#{ $non-hyphen-slug }-font-size) {
-			--unitone--font-size: #{ $size } !important;
-			--wp--preset--font-size--#{ $non-hyphen-slug }: var(--unitone--font-size-rem) !important;
-		}
-		.wc-block-components-product-price {
-			--wp--preset--font-size--#{ $non-hyphen-slug }: calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - #{ $size }) * 1rem) !important;
-		}
-	}
 }

@@ -8,35 +8,74 @@
 use Unitone\App\Controller\Manager\Manager;
 use Unitone\App\Controller\Manager\Model\Settings;
 
+const UNITONE_FONT_SIZE_PRESET_CSS_VARS = array(
+	-3 => 'var(--wp--preset--font-size--unitone-2-xs)',
+	-2 => 'var(--wp--preset--font-size--unitone-xs)',
+	-1 => 'var(--wp--preset--font-size--unitone-s)',
+	0  => 'var(--wp--preset--font-size--unitone-m)',
+	1  => 'var(--wp--preset--font-size--unitone-l)',
+	2  => 'var(--wp--preset--font-size--unitone-xl)',
+	3  => 'var(--wp--preset--font-size--unitone-2-xl)',
+	4  => 'var(--wp--preset--font-size--unitone-3-xl)',
+	5  => 'var(--wp--preset--font-size--unitone-4-xl)',
+	6  => 'var(--wp--preset--font-size--unitone-5-xl)',
+	7  => 'var(--wp--preset--font-size--unitone-6-xl)',
+);
+
 /**
- * Return unitone font size scale map.
+ * Return unitone font size CSS variable.
  *
- * @return array
+ * @param string|int|float|null $font_size The font size.
+ * @return string|null
  */
-function _unitone_get_font_size_scale_map() {
-	$global_settings = wp_get_global_settings();
-	$scale           = -3;
-	$map             = array();
-
-	foreach (
-		$global_settings['typography']['fontSizes']['theme'] ?? array()
-		as $font_size
-	) {
-		if ( ! empty( $font_size['slug'] ) ) {
-			$slug         = $font_size['slug'];
-			$css_var_slug = preg_replace(
-				'/-([0-9]+)([a-z]+)/',
-				'-$1-$2',
-				$slug
-			);
-
-			$map[ $slug ]         = $scale;
-			$map[ $css_var_slug ] = $scale;
-		}
-		++$scale;
+function _unitone_get_unitone_font_size_css_var( $font_size ) {
+	if ( is_string( $font_size ) ) {
+		$font_size = trim( $font_size );
 	}
 
-	return $map;
+	if ( ! preg_match( '/^[+-]?\d+$/', (string) $font_size ) ) {
+		return null;
+	}
+
+	return UNITONE_FONT_SIZE_PRESET_CSS_VARS[ (int) $font_size ] ?? null;
+}
+
+/**
+ * Return font-size declaration.
+ *
+ * @param string|null $font_size The font size.
+ * @return string
+ */
+function _unitone_get_font_size_style( $font_size ) {
+	if ( is_string( $font_size ) ) {
+		$font_size = trim( $font_size );
+	}
+
+	if ( ! is_string( $font_size ) || 0 !== strpos( $font_size, 'var(' ) ) {
+		return '';
+	}
+
+	return sprintf( 'font-size: %s;', $font_size );
+}
+
+/**
+ * Return root font size with a CSS unit.
+ *
+ * @param string|int|float|null $font_size The root font size setting.
+ * @return string|null
+ */
+function _unitone_get_root_font_size( $font_size ) {
+	if ( is_string( $font_size ) ) {
+		$font_size = trim( $font_size );
+	}
+
+	if ( in_array( $font_size, array( null, false, '' ), true ) ) {
+		return null;
+	}
+
+	return is_numeric( $font_size )
+		? sprintf( '%spx', $font_size )
+		: (string) $font_size;
 }
 
 /**
@@ -46,6 +85,7 @@ function unitone_apply_css_vars_from_settings() {
 	$styles           = Manager::get_setting( 'styles' );
 	$font_family      = unitone_get_preset_css_var( $styles['typography']['fontFamily'] );
 	$base_font_size   = Manager::get_setting( 'base-font-size' );
+	$root_font_size   = _unitone_get_root_font_size( $base_font_size );
 	$half_leading     = Manager::get_setting( 'half-leading' );
 	$min_half_leading = Manager::get_setting( 'min-half-leading' );
 	$content_size     = Manager::get_setting( 'settings' )['layout']['contentSize'];
@@ -66,51 +106,24 @@ function unitone_apply_css_vars_from_settings() {
 		? unitone_get_preset_css_var( unitone_get_palette_color( 'unitone-accent', Settings::get_default_global_styles() ) )
 		: $accent_color;
 
-	$font_size_map = _unitone_get_font_size_scale_map();
-
-	$get_heading_font_size_style = function ( $font_size ) use ( $font_size_map ) {
-		if ( in_array( $font_size, array( null, false, '' ), true ) ) {
-			return '--unitone--font-size: 0;';
+	$get_heading_font_size_style = function ( $font_size ) {
+		if ( is_bool( $font_size ) || ! is_scalar( $font_size ) ) {
+			return '';
 		}
 
-		$format_slug = fn( $slug ) => preg_replace( '/-([0-9]+)([a-z]+)/', '-$1-$2', $slug );
+		$unitone_font_size = _unitone_get_unitone_font_size_css_var( $font_size );
+		if ( null !== $unitone_font_size ) {
+			return _unitone_get_font_size_style( $unitone_font_size );
+		}
 
-		if ( is_numeric( $font_size ) ) {
-			$slug = array_search( (int) $font_size, $font_size_map, true );
-
-			if ( $slug ) {
-				return sprintf(
-					'--unitone--font-size: %1$s; font-size: var(--wp--preset--font-size--%2$s);',
-					$font_size,
-					$format_slug( $slug )
-				);
-			}
-			return sprintf( '--unitone--font-size: %s;', $font_size );
+		if ( ! is_string( $font_size ) ) {
+			return '';
 		}
 
 		$preset_val = unitone_get_preset_css_var( $font_size );
-		if ( ! is_string( $preset_val ) || '' === $preset_val ) {
-			return '--unitone--font-size: 0;';
-		}
-
-		if ( preg_match( '/^var\(--wp--preset--font-size--(.+)\)$/', $preset_val, $matches ) ) {
-			$slug         = $matches[1];
-			$css_var_slug = $format_slug( $slug );
-
-			$mapped_size = $font_size_map[ $slug ] ?? $font_size_map[ $css_var_slug ] ?? null;
-
-			if ( null !== $mapped_size ) {
-				return sprintf(
-					'--unitone--font-size: %1$s; font-size: var(--wp--preset--font-size--%2$s);',
-					$mapped_size,
-					$css_var_slug
-				);
-			}
-
-			$preset_val = sprintf( 'var(--wp--preset--font-size--%s)', $css_var_slug );
-		}
-
-		return sprintf( '--unitone--font-size: 0; font-size: %s;', $preset_val );
+		return 0 === strpos( $preset_val, 'var(' )
+			? _unitone_get_font_size_style( $preset_val )
+			: '';
 	};
 
 	$h1_size = $get_heading_font_size_style( Manager::get_setting( 'h1-size' ) );
@@ -123,7 +136,7 @@ function unitone_apply_css_vars_from_settings() {
 	$stylesheet = sprintf(
 		':root {
 			--unitone--font-family: %1$s;
-			--unitone--base-font-size: %2$s;
+			--unitone--root-font-size: %2$s;
 			--unitone--half-leading: %3$s;
 			--unitone--min-half-leading: %4$s;
 			--unitone--measure: %5$s;
@@ -167,7 +180,7 @@ function unitone_apply_css_vars_from_settings() {
 			%13$s
 		}',
 		$font_family,
-		$base_font_size,
+		$root_font_size,
 		$half_leading,
 		$min_half_leading,
 		$content_size,

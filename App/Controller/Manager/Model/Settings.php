@@ -27,7 +27,7 @@ class Settings {
 		'site-logo-width'                       => '120',
 		'default-featured-image'                => false,
 		'generated-featured-image-aspect-ratio' => '4:3',
-		'base-font-size'                        => '16',
+		'base-font-size'                        => '16px',
 		'half-leading'                          => '0.4',
 		'min-half-leading'                      => '0.05',
 		'h1-size'                               => '4',

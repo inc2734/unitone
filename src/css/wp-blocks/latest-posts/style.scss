@@ -11,8 +11,8 @@
 
 	&__post-author,
 	&__post-date {
-		--unitone--font-size: -2;
+		@include variables.line-height();
 
-		@include variables.typography();
+		font-size: var(--unitone--font-size-xs);
 	}
 }

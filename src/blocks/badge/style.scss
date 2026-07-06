@@ -177,12 +177,12 @@
 		--unitone--mask-position: top left;
 		--unitone--aspect-ratio: initial;
 		--unitone--color: inherit;
-		--unitone--font-size: 2;
 		--unitone--inset-top: 20%;
 		--unitone--inset-right: .125em;
 		--unitone--inset-left: 1em;
 		--unitone--mask-size: 2.75em;
 
+		font-size: var(--unitone--font-size-xl);
 		place-items: center start;
 		width: fit-content !important;
 	}
@@ -208,7 +208,7 @@
 		--unitone--height: 1.75em;
 		--unitone--aspect-ratio: initial;
 		--unitone--color: inherit;
-		--unitone--font-size: 2;
+		font-size: var(--unitone--font-size-xl);
 	}
 
 	&.-shape\:slash-top {

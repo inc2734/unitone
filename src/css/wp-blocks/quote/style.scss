@@ -15,11 +15,11 @@
 
 	cite,
 	footer {
-		--unitone--font-size: -1;
+		@include variables.line-height();
 
-		@include variables.typography();
 		display: block;
 		color: currentColor;
+		font-size: var(--unitone--font-size-s);
 		font-style: normal;
 	}
 }

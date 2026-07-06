@@ -77,7 +77,6 @@
 }
 
 :root :where(.wp-block-post-terms.is-style-badge) {
-	--unitone--font-size: -2;
 	--unitone--post-term--background-color: var(--wp--preset--color--unitone-accent);
 	--unitone--post-term--padding: calc(var(--unitone--p-1) / 2) var(--unitone--p-1);
 
@@ -85,6 +84,8 @@
 	--unitone--post-term--border-radius: var(--unitone--global--border-radius);
 	--unitone--post-term--border-width: 0px;
 	--unitone--post-term--border-style: solid;
+
+	font-size: var(--unitone--font-size-xs);
 
 	:is(
 		a:where(:not(.wp-element-button)),
@@ -95,7 +96,6 @@
 }
 
 :root :where(.wp-block-post-terms.is-style-outline) {
-	--unitone--font-size: -2;
 	--unitone--post-term--background-color: transparent;
 	--unitone--post-term--padding: calc(var(--unitone--p-2) / 2) var(--unitone--p-2);
 
@@ -103,6 +103,8 @@
 	--unitone--post-term--border-radius: var(--unitone--global--border-radius);
 	--unitone--post-term--border-width: 1px;
 	--unitone--post-term--border-style: solid;
+
+	font-size: var(--unitone--font-size-xs);
 
 	:is(
 		a:where(:not(.wp-element-button)),

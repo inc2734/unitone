@@ -152,6 +152,12 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 	$has_sm_item_responsive = false;
 
 	foreach ( $inner_blocks as $inner_block ) {
+		if ( 'core/pattern' === ( $inner_block['blockName'] ?? null ) ) {
+			$has_md_item_responsive = true;
+			$has_sm_item_responsive = true;
+			break;
+		}
+
 		$unitone = $inner_block['attrs']['unitone'] ?? array();
 
 		if ( ! $has_md_item_responsive ) {

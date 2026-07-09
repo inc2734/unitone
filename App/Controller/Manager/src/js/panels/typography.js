@@ -490,7 +490,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										'min-half-leading': newSetting,
 									} )
 								}
-								min={ 0.0 }
+								min={ -0.1 }
 								step={ 0.05 }
 								max={
 									parseFloat(

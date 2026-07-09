@@ -348,7 +348,7 @@
 		},
 		"spacing": {
 			"blockGap": true,
-			"customSpacingSize": false,
+			"customSpacingSize": true,
 			"margin": false,
 			"padding": false,
 			"defaultSpacingSizes": false,

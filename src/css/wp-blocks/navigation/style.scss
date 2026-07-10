@@ -1,8 +1,12 @@
 /**
  * For adminbar.
  */
-.has-modal-open .admin-bar .is-menu-open .wp-block-navigation__responsive-dialog {
+:where(.has-modal-open .admin-bar .is-menu-open .wp-block-navigation__responsive-dialog) {
 	overflow: hidden;
+}
+
+:where(.has-modal-open .admin-bar .is-menu-open.disable-default-overlay .wp-block-navigation__responsive-dialog) {
+	top: var(--wp-admin--admin-bar--height, 0px);
 }
 
 /**
@@ -131,18 +135,16 @@
 }
 
 .wp-block-navigation__responsive-container.is-menu-open {
+	overscroll-behavior: none;
+
 	.wp-block-navigation__submenu-container {
 		flex: 100%;
 	}
-}
 
-.wp-block-navigation__responsive-container.is-menu-open {
 	:where(.wp-block-navigation-item) {
 		gap: inherit;
 	}
-}
 
-.wp-block-navigation__responsive-container.is-menu-open {
 	.wp-block-navigation__responsive-container-content,
 	.wp-block-navigation__responsive-container-content:has(.unitone-overlay-menu) {
 		padding-top: var(--unitone--s-1);

@@ -6,9 +6,56 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
+function AccordionSummaryContent( {
+	q,
+	qLabel,
+	qWidth,
+	summary,
+	summaryHeadingLevel,
+	mark,
+} ) {
+	return (
+		<>
+			<span
+				className="unitone-accordion__summary-content"
+				data-unitone-layout="with-sidebar -sidebar:left"
+				style={ {
+					'--unitone--sidebar-width': qWidth || undefined,
+				} }
+			>
+				{ q && (
+					<span className="unitone-accordion__q">
+						<RichText.Content
+							className="unitone-accordion__q-text"
+							tagName="span"
+							value={ qLabel }
+						/>
+					</span>
+				) }
+
+				<RichText.Content
+					className="unitone-accordion__summary-text"
+					tagName="span"
+					value={ summary }
+					role={ summaryHeadingLevel ? 'heading' : undefined }
+					aria-level={ summaryHeadingLevel || undefined }
+				/>
+			</span>
+
+			<span
+				className={ clsx( 'unitone-accordion__icon', {
+					'unitone-accordion__icon--cross': 'cross' === mark,
+					'unitone-accordion__icon--chevron-down': 'cross' !== mark,
+				} ) }
+			/>
+		</>
+	);
+}
+
 export default function ( { attributes } ) {
 	const {
 		summary,
+		summaryHeadingLevel,
 		mark,
 		openByDefault,
 		q,
@@ -46,36 +93,13 @@ export default function ( { attributes } ) {
 					className="unitone-accordion__summary-inner"
 					data-unitone-layout="with-sidebar -sidebar:right"
 				>
-					<span
-						className="unitone-accordion__summary-content"
-						data-unitone-layout="with-sidebar -sidebar:left"
-						style={ {
-							'--unitone--sidebar-width': qWidth || undefined,
-						} }
-					>
-						{ q && (
-							<span className="unitone-accordion__q">
-								<RichText.Content
-									className="unitone-accordion__q-text"
-									tagName="span"
-									value={ qLabel }
-								/>
-							</span>
-						) }
-
-						<RichText.Content
-							className="unitone-accordion__summary-text"
-							tagName="span"
-							value={ summary }
-						/>
-					</span>
-
-					<span
-						className={ clsx( 'unitone-accordion__icon', {
-							'unitone-accordion__icon--cross': 'cross' === mark,
-							'unitone-accordion__icon--chevron-down':
-								'cross' !== mark,
-						} ) }
+					<AccordionSummaryContent
+						q={ q }
+						qLabel={ qLabel }
+						qWidth={ qWidth }
+						summary={ summary }
+						summaryHeadingLevel={ summaryHeadingLevel }
+						mark={ mark }
 					/>
 				</span>
 			</summary>

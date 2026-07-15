@@ -13,6 +13,7 @@ import {
 import {
 	BaseControl,
 	Button,
+	SelectControl,
 	TextControl,
 	ToolbarButton,
 	ToggleControl,
@@ -36,9 +37,69 @@ import metadata from './block.json';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
+function AccordionSummaryContent( {
+	q,
+	qLabel,
+	qWidth,
+	summary,
+	summaryHeadingLevel,
+	setAttributes,
+	mark,
+} ) {
+	return (
+		<>
+			<span
+				className="unitone-accordion__summary-content"
+				data-unitone-layout="with-sidebar -sidebar:left"
+				style={ {
+					'--unitone--sidebar-width': qWidth || undefined,
+				} }
+			>
+				{ q && (
+					<span className="unitone-accordion__q">
+						<span className="unitone-accordion__q-text">
+							<RichText
+								value={ qLabel }
+								onChange={ ( newAttribute ) => {
+									setAttributes( {
+										qLabel: newAttribute,
+									} );
+								} }
+								placeholder={ __( 'Q', 'unitone' ) }
+							/>
+						</span>
+					</span>
+				) }
+
+				<span
+					className="unitone-accordion__summary-text"
+					role={ summaryHeadingLevel ? 'heading' : undefined }
+					aria-level={ summaryHeadingLevel || undefined }
+				>
+					<RichText
+						value={ summary }
+						onChange={ ( newAttribute ) => {
+							setAttributes( { summary: newAttribute } );
+						} }
+						placeholder={ __( 'Enter summary here', 'unitone' ) }
+					/>
+				</span>
+			</span>
+
+			<span
+				className={ clsx( 'unitone-accordion__icon', {
+					'unitone-accordion__icon--cross': 'cross' === mark,
+					'unitone-accordion__icon--chevron-down': 'cross' !== mark,
+				} ) }
+			/>
+		</>
+	);
+}
+
 export default function ( { attributes, setAttributes, clientId } ) {
 	const {
 		summary,
+		summaryHeadingLevel,
 		mark,
 		openByDefault,
 		q,
@@ -53,7 +114,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	} = attributes;
 
 	const [ accordionOpenState, setAccordionOpenState ] = useState( 'open' );
-
 	const hasInnerBlocks = useSelect(
 		( select ) =>
 			!! select( blockEditorStore ).getBlock( clientId )?.innerBlocks
@@ -122,7 +182,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	}, [ isAccordionFixedOpen ] );
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
-
 	return (
 		<>
 			<BlockControls group="block">
@@ -220,6 +279,47 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										),
 								} );
 							} }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
+
+				<ToolsPanel
+					label={ __( 'Summary', 'unitone' ) }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
+					<ToolsPanelItem
+						hasValue={ () =>
+							summaryHeadingLevel !==
+							metadata.attributes.summaryHeadingLevel.default
+						}
+						isShownByDefault
+						label={ __( 'Heading level', 'unitone' ) }
+						onDeselect={ () =>
+							setAttributes( {
+								summaryHeadingLevel:
+									metadata.attributes.summaryHeadingLevel
+										.default,
+							} )
+						}
+					>
+						<SelectControl
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							label={ __( 'Heading level', 'unitone' ) }
+							options={ [
+								{ label: __( 'None', 'unitone' ), value: '' },
+								{ label: 'h2', value: '2' },
+								{ label: 'h3', value: '3' },
+								{ label: 'h4', value: '4' },
+								{ label: 'h5', value: '5' },
+								{ label: 'h6', value: '6' },
+							] }
+							value={ summaryHeadingLevel }
+							onChange={ ( newAttribute ) =>
+								setAttributes( {
+									summaryHeadingLevel: newAttribute,
+								} )
+							}
 						/>
 					</ToolsPanelItem>
 				</ToolsPanel>
@@ -372,52 +472,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						className="unitone-accordion__summary-inner"
 						data-unitone-layout="with-sidebar -sidebar:right"
 					>
-						<span
-							className="unitone-accordion__summary-content"
-							data-unitone-layout="with-sidebar -sidebar:left"
-							style={ {
-								'--unitone--sidebar-width': qWidth || undefined,
-							} }
-						>
-							{ q && (
-								<span className="unitone-accordion__q">
-									<span className="unitone-accordion__q-text">
-										<RichText
-											value={ qLabel }
-											onChange={ ( newAttribute ) => {
-												setAttributes( {
-													qLabel: newAttribute,
-												} );
-											} }
-											placeholder={ __( 'Q', 'unitone' ) }
-										/>
-									</span>
-								</span>
-							) }
-
-							<span className="unitone-accordion__summary-text">
-								<RichText
-									value={ summary }
-									onChange={ ( newAttribute ) => {
-										setAttributes( {
-											summary: newAttribute,
-										} );
-									} }
-									placeholder={ __(
-										'Enter summary here',
-										'unitone'
-									) }
-								/>
-							</span>
-						</span>
-
-						<span
-							className={ clsx( 'unitone-accordion__icon', {
-								'unitone-accordion__icon--cross':
-									'cross' === mark,
-								'unitone-accordion__icon--chevron-down':
-									'cross' !== mark,
-							} ) }
+						<AccordionSummaryContent
+							q={ q }
+							qLabel={ qLabel }
+							qWidth={ qWidth }
+							summary={ summary }
+							summaryHeadingLevel={ summaryHeadingLevel }
+							setAttributes={ setAttributes }
+							mark={ mark }
 						/>
 					</span>
 				</summary>

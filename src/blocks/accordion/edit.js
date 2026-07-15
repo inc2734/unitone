@@ -411,9 +411,14 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							</span>
 						</span>
 
-						<span className="unitone-accordion__icon">
-							{ 'cross' === mark ? <Cross /> : <ChevronDown /> }
-						</span>
+						<span
+							className={ clsx( 'unitone-accordion__icon', {
+								'unitone-accordion__icon--cross':
+									'cross' === mark,
+								'unitone-accordion__icon--chevron-down':
+									'cross' !== mark,
+							} ) }
+						/>
 					</span>
 				</summary>
 

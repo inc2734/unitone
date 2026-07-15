@@ -6,8 +6,6 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 
-import { ChevronDown, Cross } from './mark';
-
 export default function ( { attributes } ) {
 	const {
 		summary,
@@ -72,9 +70,13 @@ export default function ( { attributes } ) {
 						/>
 					</span>
 
-					<span className="unitone-accordion__icon">
-						{ 'cross' === mark ? <Cross /> : <ChevronDown /> }
-					</span>
+					<span
+						className={ clsx( 'unitone-accordion__icon', {
+							'unitone-accordion__icon--cross': 'cross' === mark,
+							'unitone-accordion__icon--chevron-down':
+								'cross' !== mark,
+						} ) }
+					/>
 				</span>
 			</summary>
 

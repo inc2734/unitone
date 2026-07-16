@@ -36,7 +36,13 @@ import {
 import { createBlock } from '@wordpress/blocks';
 import { store as coreStore } from '@wordpress/core-data';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { memo, useCallback, useEffect, useRef } from '@wordpress/element';
+import {
+	memo,
+	useCallback,
+	useEffect,
+	useMemo,
+	useRef,
+} from '@wordpress/element';
 import { __, _x, sprintf } from '@wordpress/i18n';
 import { store as noticesStore } from '@wordpress/notices';
 
@@ -58,6 +64,7 @@ import { getHrefAndDestination } from './utils';
 import metadata from './block.json';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
+const EMPTY_ARRAY = [];
 
 const LINK_OPTIONS = [
 	{
@@ -107,37 +114,42 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const { columnWidth, linkTo, childrenBorder, allowedBlocks, templateLock } =
 		attributes;
 
-	const {
-		hasInnerBlocks,
-		innerBlockClientIds,
-		imageBlocks,
-		imageDataByClientId,
-	} = useSelect(
+	const { innerBlocks, innerBlockClientIds } = useSelect(
 		( select ) => {
-			const { getBlock: _getBlock, getBlockOrder } =
-				select( blockEditorStore );
-			const { getMedia } = select( coreStore );
-
-			const innerBlocks = _getBlock( clientId )?.innerBlocks || [];
-			const _imageBlocks = getImageBlocks( innerBlocks );
-			const _imageDataByClientId = {};
-
-			_imageBlocks.forEach( ( block ) => {
-				const imageId = block.attributes?.id;
-				if ( imageId ) {
-					_imageDataByClientId[ block.clientId ] =
-						getMedia( imageId );
-				}
-			} );
+			const { getBlock, getBlockOrder } = select( blockEditorStore );
+			const block = getBlock( clientId );
 
 			return {
-				hasInnerBlocks: !! _getBlock( clientId )?.innerBlocks?.length,
+				innerBlocks: block?.innerBlocks || EMPTY_ARRAY,
 				innerBlockClientIds: getBlockOrder( clientId ),
-				imageBlocks: _imageBlocks,
-				imageDataByClientId: _imageDataByClientId,
 			};
 		},
 		[ clientId ]
+	);
+	const hasInnerBlocks = !! innerBlocks.length;
+	const imageBlocks = useMemo(
+		() => getImageBlocks( innerBlocks ),
+		[ innerBlocks ]
+	);
+	const imageDataByClientId = useSelect(
+		( select ) => {
+			const { getEntityRecord } = select( coreStore );
+			const dataByClientId = {};
+
+			imageBlocks.forEach( ( block ) => {
+				const imageId = block.attributes?.id;
+				if ( imageId ) {
+					dataByClientId[ block.clientId ] = getEntityRecord(
+						'postType',
+						'attachment',
+						imageId
+					);
+				}
+			} );
+
+			return dataByClientId;
+		},
+		[ imageBlocks ]
 	);
 
 	const { moveBlockToPosition, updateBlockAttributes, insertBlocks } =
@@ -336,7 +348,13 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		} );
 
 		updateBlockAttributes( addedIds, changedAttributes, true );
-	}, [ imageBlocks, imageDataByClientId, linkTo, lightboxSetting ] );
+	}, [
+		imageBlocks,
+		imageDataByClientId,
+		linkTo,
+		lightboxSetting,
+		updateBlockAttributes,
+	] );
 
 	return (
 		<>

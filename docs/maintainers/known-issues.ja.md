@@ -73,3 +73,43 @@
 
 - [名称](相対パスまたは URL)
 -->
+
+## 問題: WordPress 6.9 で Masonry ブロックのメディア取得と `useSelect` に警告が出る
+
+- 状態: 解決済み
+- 確認日: 2026-07-16
+- 確認したバージョン・環境: WordPress 6.9、`@wordpress/scripts` 32.3.0
+- 関連領域: `unitone/masonry`、ブロックエディター、`@wordpress/core-data`、`@wordpress/data`
+
+### 確認済みの事実
+
+#### 症状
+
+Masonry ブロックをエディターで使用すると、WordPress 6.9 で `getMedia` の非推奨警告が出る。また、`useSelect` が同じ state と引数に対して異なる値を返すという警告が出て、`imageBlocks` と `imageDataByClientId` が不一致のキーとして示される。
+
+#### 期待する結果
+
+非推奨 API を使用せず、同じ入力に対する `useSelect` の戻り値の参照が安定している。
+
+### 原因
+
+- 原因の確度: 確認済み
+- `getMedia` は WordPress 6.9 で非推奨になった `root/media` エンティティを使用していた。
+- 1つの `useSelect` コールバック内で画像ブロックの配列とメディアデータのオブジェクトを毎回新しく生成していたため、同じ state から得た内容でも参照が異なっていた。
+
+### 解決
+
+- メディア取得を `getEntityRecord( 'postType', 'attachment', imageId )` に変更した。
+- ブロックストアから未加工の `innerBlocks` を取得し、画像ブロック配列は `useMemo` で生成するようにした。
+- メディアデータの取得を独立した `useSelect` に分け、返すオブジェクトをレコード値による浅い比較で安定判定できる形にした。
+
+### 確認
+
+- 対象ファイルの JavaScript lint にエラー・警告がないことを確認した。
+- Masonry ブロックのエントリーポイントがビルドできることを確認した。
+- ブラウザ上での警告消失は未確認。
+
+### 関連ファイル・資料
+
+- [`src/blocks/masonry/edit.js`](../../src/blocks/masonry/edit.js)
+- [WordPress 6.9: Miscellaneous Editor Changes](https://make.wordpress.org/core/2025/11/25/miscellaneous-editor-changes-in-wordpress-6-9/)

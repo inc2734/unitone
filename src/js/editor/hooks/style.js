@@ -187,11 +187,7 @@ const withBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		const { clientId, name, attributes, setAttributes, isSelected } = props;
-
-		if ( ! isSelected ) {
-			return <BlockEdit { ...props } />;
-		}
+		const { clientId, name, attributes, setAttributes } = props;
 
 		const passedProps = {
 			clientId,

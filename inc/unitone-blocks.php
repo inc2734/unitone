@@ -147,6 +147,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 	$md_breakpoint = $attributes['mdBreakpoint'] ?? $defaults['md'];
 	$sm_breakpoint = $attributes['smBreakpoint'] ?? $defaults['sm'];
 	$client_id     = wp_unique_id( 'unitone-grid-' );
+	$query_context = $attributes['unitone']['queryContext'] ?? null;
 
 	$has_md_item_responsive = false;
 	$has_sm_item_responsive = false;
@@ -225,7 +226,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 
 	static $build_css = null;
 	if ( null === $build_css ) {
-		$build_css = function ( $selector, $breakpoint, $size, $condition ) {
+		$build_css = function ( $selector, $breakpoint, $size, $condition, $query_context ) {
 			$columns_columns = $condition['columns_columns'] ?? false;
 			$columns_min     = $condition['columns_min'] ?? false;
 			$columns_free    = $condition['columns_free'] ?? false;
@@ -300,8 +301,11 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 				);
 			}
 
+			$query = 'container' === $query_context ? '@container not' : '@media not all and';
+
 			return sprintf(
-				'@media not all and (min-width: %1$s) { %2$s }',
+				'%1$s (min-width: %2$s) { %3$s }',
+				$query,
 				esc_attr( $breakpoint ),
 				implode( ' ', $rules )
 			);
@@ -310,8 +314,8 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 
 	$selector = '[data-unitone-client-id="' . esc_attr( $client_id ) . '"]';
 	$css      =
-		$build_css( $selector, $md_breakpoint, 'md', $md_conditions ) .
-		$build_css( $selector, $sm_breakpoint, 'sm', $sm_conditions );
+		$build_css( $selector, $md_breakpoint, 'md', $md_conditions, $query_context ) .
+		$build_css( $selector, $sm_breakpoint, 'sm', $sm_conditions, $query_context );
 
 	if ( $css ) {
 		wp_add_inline_style( 'unitone-grid-style', $css );

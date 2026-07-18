@@ -2551,6 +2551,14 @@ msgstr "見出しレベル"
 msgid "None"
 msgstr "無し"
 
+#: src/js/editor/hooks/advanced/container-type.js:27
+msgid "Container type"
+msgstr "コンテナータイプ"
+
+#: src/js/editor/hooks/advanced/query-context.js:29
+msgid "Query context"
+msgstr "クエリーコンテキスト"
+
 #: dist/blocks/accordion/index.js:1
 msgid "Font size"
 msgstr "フォントサイズ"

@@ -4,6 +4,7 @@ export const useResponsiveGridCSS = ( {
 	clientId,
 	mdBreakpoint,
 	smBreakpoint,
+	queryContext,
 } ) =>
 	useMemo( () => {
 		const selector = `[data-unitone-client-id="${ clientId }"]`;
@@ -11,7 +12,12 @@ export const useResponsiveGridCSS = ( {
 		const buildCSS = ( breakpoint, size ) => {
 			const prefix = `--unitone--${ size }`;
 
-			return `@media not all and (min-width: ${ breakpoint }) {
+			const query =
+				'container' === queryContext
+					? '@container not'
+					: '@media not all and';
+
+			return `${ query } (min-width: ${ breakpoint }) {
 				${ selector }[data-unitone-layout~="-columns\\:${ size }\\:columns"] {
 					grid-template-columns: repeat(var(${ prefix }-columns), 1fr);
 				}
@@ -47,4 +53,4 @@ export const useResponsiveGridCSS = ( {
 		]
 			.filter( Boolean )
 			.join( '\n' );
-	}, [ clientId, mdBreakpoint, smBreakpoint ] );
+	}, [ clientId, mdBreakpoint, queryContext, smBreakpoint ] );

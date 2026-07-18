@@ -212,6 +212,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		clientId,
 		mdBreakpoint,
 		smBreakpoint,
+		queryContext: attributes?.unitone?.queryContext,
 	} );
 
 	return (

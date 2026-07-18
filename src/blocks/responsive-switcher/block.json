@@ -25,7 +25,10 @@
 		"anchor": true,
 		"customCSS": false,
 		"align": [ "full", "wide" ],
-		"contentRole": true
+		"contentRole": true,
+		"unitone": {
+			"queryContext": true
+		}
 	},
 	"category": "unitone/component",
 	"editorScript": "file:./index.js",

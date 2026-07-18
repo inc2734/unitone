@@ -65,6 +65,7 @@
 		},
 		"contentRole": true,
 		"unitone": {
+			"queryContext": true,
 			"blockAlign": true,
 			"gap": {
 				"splitOnAxis": true,

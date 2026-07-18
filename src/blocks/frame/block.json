@@ -47,6 +47,7 @@
 		},
 		"contentRole": true,
 		"unitone": {
+			"queryContext": true,
 			"opacity": true,
 			"parallax": true,
 			"scrollAnimation": true,

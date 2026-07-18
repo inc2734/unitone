@@ -97,6 +97,7 @@
 		},
 		"allowedBlocks": true,
 		"unitone": {
+			"containerType": true,
 			"padding": {
 				"split": true
 			},

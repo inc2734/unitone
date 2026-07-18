@@ -229,6 +229,22 @@ add_filter(
 			return ! is_null( $value );
 		};
 
+		// Query context.
+		if ( unitone_has_block_support( 'unitone.queryContext', $metadata ) ) {
+			$query_context = $get_attribute( 'queryContext' );
+			if ( 'container' === $query_context ) {
+				$add_attribute( '@container', true );
+			}
+		}
+
+		// Container type.
+		if ( unitone_has_block_support( 'unitone.containerType', $metadata ) ) {
+			$container_type = $get_attribute( 'containerType' );
+			if ( $container_type ) {
+				$add_attribute( '-container-type', $container_type );
+			}
+		}
+
 		// In the editor, InnerBlocks and its descendant blocks have `position: relative`.
 		// Match the front as well.
 		// @see /wp-includes/css/dist/block-editor/content.css.

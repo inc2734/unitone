@@ -172,6 +172,7 @@
 		"allowedBlocks": true,
 		"contentRole": true,
 		"unitone": {
+			"queryContext": true,
 			"alignItems": true,
 			"justifyItems": true,
 			"gap": {

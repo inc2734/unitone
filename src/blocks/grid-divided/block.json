@@ -167,6 +167,7 @@
 		},
 		"contentRole": true,
 		"unitone": {
+			"queryContext": true,
 			"gap": {
 				"splitOnAxis": true
 			},

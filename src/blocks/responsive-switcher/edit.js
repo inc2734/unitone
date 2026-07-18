@@ -21,7 +21,9 @@ import {
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { breakpoint, allowedBlocks } = attributes;
+	const { breakpoint, allowedBlocks, unitone } = attributes;
+	const query =
+		'container' === unitone?.queryContext ? '@container' : '@media';
 
 	const blockProps = useBlockProps( {
 		className: 'unitone-responsive-switcher',
@@ -85,7 +87,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />
-			<style>{ `@media (min-width: ${ breakpoint }) { [data-unitone-client-id="${ clientId }"] > .unitone-responsive-switcher-container--desktop { display: block; } [data-unitone-client-id="${ clientId }"] > .unitone-responsive-switcher-container--mobile { display: none; } }` }</style>
+			<style>{ `${ query } (min-width: ${ breakpoint }) { [data-unitone-client-id="${ clientId }"] > .unitone-responsive-switcher-container--desktop { display: block; } [data-unitone-client-id="${ clientId }"] > .unitone-responsive-switcher-container--mobile { display: none; } }` }</style>
 		</>
 	);
 }

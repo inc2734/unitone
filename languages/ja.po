@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-07-15T05:26:15+00:00\n"
-"PO-Revision-Date: 2026-07-15 14:26+0900\n"
+"POT-Creation-Date: 2026-07-18T14:40:55+00:00\n"
+"PO-Revision-Date: 2026-07-18 23:42+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -17,8 +17,8 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css inc/block-categories.php:22 inc/block-categories.php:33
 #: inc/block-categories.php:44 inc/block-categories.php:55
-#: inc/block-styles.php:72 dist/formats/formats.js:5894
-#: dist/js/editor/editor.js:16260 dist/js/editor/editor.js:16555
+#: inc/block-styles.php:72 dist/formats/formats.js:1
+#: dist/js/editor/editor.js:16
 msgid "unitone"
 msgstr "unitone"
 
@@ -38,7 +38,7 @@ msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
 #: App/Controller/Manager/Manager.php:42 App/Controller/Manager/Manager.php:43
-#: App/Controller/Manager/dist/js/app.js:6563
+#: App/Controller/Manager/dist/js/app.js:24
 msgid "unitone Setup"
 msgstr "unitone セットアップ"
 
@@ -47,15 +47,13 @@ msgid "Theme"
 msgstr "テーマ"
 
 #: App/Controller/Manager/Manager.php:133
-#: App/Controller/Manager/dist/js/app.js:5433
-#: App/Controller/Manager/dist/js/app.js:5911
-#: dist/blocks/child-pages/index.js:1 dist/blocks/layers/index.js:1
-#: dist/blocks/section/index.js:1 dist/blocks/slider/index.js:1
-#: dist/blocks/tabs/index.js:1 dist/blocks/vertical-writing/index.js:1
-#: dist/js/editor/editor.js:944 dist/js/editor/editor.js:1971
-#: dist/js/editor/editor.js:7498 dist/js/editor/editor.js:12317
-#: dist/js/editor/editor.js:13186 dist/js/editor/editor.js:17155
-#: dist/js/editor/editor.js:20272 dist/js/editor/editor.js:20833
+#: App/Controller/Manager/dist/js/app.js:18 dist/blocks/child-pages/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
+#: dist/blocks/vertical-writing/index.js:1 dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16 dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Default"
 msgstr "デフォルト"
 
@@ -127,8 +125,8 @@ msgstr "さらに詳しく"
 msgid "%s mega menu"
 msgstr "%sのメガメニュー"
 
-#: inc/block-categories.php:25 App/Controller/Manager/dist/js/app.js:4197
-#: dist/blocks/child-pages/index.js:1 dist/js/editor/editor.js:8218
+#: inc/block-categories.php:25 App/Controller/Manager/dist/js/app.js:10
+#: dist/blocks/child-pages/index.js:1 dist/js/editor/editor.js:7
 msgid "Layout"
 msgstr "レイアウト"
 
@@ -164,7 +162,7 @@ msgstr "オーバーレイメニュー"
 msgid "Loading Animations"
 msgstr "ローディングアニメーション"
 
-#: inc/block-patterns.php:18 App/Controller/Manager/dist/js/app.js:5090
+#: inc/block-patterns.php:18 App/Controller/Manager/dist/js/app.js:18
 msgid "Pages"
 msgstr "ページ"
 
@@ -208,7 +206,7 @@ msgstr "unitone（アコーディオン）"
 msgid "Cover"
 msgstr "カバー"
 
-#: inc/block-styles.php:96 dist/js/editor/editor.js:3398
+#: inc/block-styles.php:96 dist/js/editor/editor.js:4
 msgid "Underline"
 msgstr "アンダーライン"
 
@@ -220,7 +218,7 @@ msgstr "縦塗りつぶし"
 msgid "Vertical line"
 msgstr "縦線"
 
-#: inc/block-styles.php:120 dist/js/editor/editor.js:3403
+#: inc/block-styles.php:120 dist/js/editor/editor.js:4
 msgid "Bordered"
 msgstr "ボーダー"
 
@@ -229,8 +227,8 @@ msgstr "ボーダー"
 #: dist/blocks/frame/index.js:1 dist/blocks/layers/index.js:1
 #: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:6041
-#: dist/js/editor/editor.js:1470
+#: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
+#: dist/js/editor/editor.js:1
 msgid "Close"
 msgstr "閉じる"
 
@@ -685,8 +683,7 @@ msgstr ""
 "ページを覆う形で表示されます。"
 
 #: inc/template-part-areas.php:41 dist/blocks/slider/index.js:1
-#: dist/js/editor/editor.js:13832 dist/js/editor/editor.js:13880
-#: dist/js/editor/editor.js:14730
+#: dist/js/editor/editor.js:13
 msgid "Loop"
 msgstr "ループ"
 
@@ -1145,19 +1142,19 @@ msgctxt "Pattern title"
 msgid "Share buttons"
 msgstr "シェアボタン"
 
-#: patterns/share-buttons.php:11 dist/variations/variations.js:22
+#: patterns/share-buttons.php:11 dist/variations/variations.js:1
 msgid "Post this entry to X"
 msgstr "このエントリーを X にポスト"
 
-#: patterns/share-buttons.php:15 dist/variations/variations.js:49
+#: patterns/share-buttons.php:15 dist/variations/variations.js:1
 msgid "Share this entry to Facebook"
 msgstr "このエントリーを Facebook にシェア"
 
-#: patterns/share-buttons.php:19 dist/variations/variations.js:120
+#: patterns/share-buttons.php:19 dist/variations/variations.js:1
 msgid "Add this entry to Hatena Bookmarks"
 msgstr "このエントリーをはてなブックマークに追加"
 
-#: patterns/share-buttons.php:23 dist/variations/variations.js:90
+#: patterns/share-buttons.php:23 dist/variations/variations.js:1
 msgid "Share this entry to LINE"
 msgstr "このエントリーを LINE にシェア"
 
@@ -1942,46 +1939,46 @@ msgctxt "Pattern title"
 msgid "Single Posts: Sticky Header"
 msgstr "個別投稿：上部固定ヘッダー"
 
-#: App/Controller/Manager/dist/js/app.js:1627
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "Save Settings"
 msgstr "設定を保存"
 
-#: App/Controller/Manager/dist/js/app.js:1644
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "Reset All Settings"
 msgstr "すべての設定をリセット"
 
-#: App/Controller/Manager/dist/js/app.js:1725
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "License"
 msgstr "ライセンス"
 
-#: App/Controller/Manager/dist/js/app.js:1741
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "License Key"
 msgstr "ライセンスキー"
 
-#: App/Controller/Manager/dist/js/app.js:1751
+#: App/Controller/Manager/dist/js/app.js:1
 msgid ""
 "If your license key is valid, you will be able to use unitone more "
 "conveniently."
 msgstr ""
 "ライセンスキーが有効な場合、unitone を更に便利に利用できるようになります。"
 
-#: App/Controller/Manager/dist/js/app.js:1771
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "If the license key entered is valid, the theme can be updated."
 msgstr "入力したライセンスキーが有効な場合、テーマのアップデートが可能です。"
 
-#: App/Controller/Manager/dist/js/app.js:1906
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "Patterns / Styles Library"
 msgstr "パターン / スタイルライブラリー"
 
-#: App/Controller/Manager/dist/js/app.js:1925
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "Pattern Library"
 msgstr "パターンライブラリー"
 
-#: App/Controller/Manager/dist/js/app.js:1941
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "Disable pattenrs of the Pattern Library"
 msgstr "パターンライブラリーのパターンを無効化する"
 
-#: App/Controller/Manager/dist/js/app.js:1945
+#: App/Controller/Manager/dist/js/app.js:1
 msgid ""
 "Disables loading of patterns from the pattern library. Already placed "
 "patterns will still be displayed."
@@ -1989,12 +1986,12 @@ msgstr ""
 "パターンライブラリーからのパターンの読み込みを無効にします。既に配置済みのパ"
 "ターンは引き続き表示されます。"
 
-#: App/Controller/Manager/dist/js/app.js:2033
+#: App/Controller/Manager/dist/js/app.js:1
 msgid "Cache"
 msgstr "キャッシュ"
 
 #. translators: %1$s: <a>, %2$s: </a>, %3$s: <a>, %4$s: </a>
-#: App/Controller/Manager/dist/js/app.js:2050
+#: App/Controller/Manager/dist/js/app.js:4
 msgid ""
 "If the license key is valid, patterns from %1$sthe patterns library%2$s and "
 "styles from %3$sthe styles library%4$s can be used."
@@ -2002,7 +1999,7 @@ msgstr ""
 "ライセンスキーが有効であれば、%1$sパターンライブラリー%2$sのパターンと、%3$s"
 "スタイルライブラリ%4$sのスタイルが使用できます。"
 
-#: App/Controller/Manager/dist/js/app.js:2061
+#: App/Controller/Manager/dist/js/app.js:4
 msgid ""
 "Patterns data retrieved from the patterns library and styles data retrieved "
 "from the styles library is cached for a certain period of time to speed up "
@@ -2012,45 +2009,42 @@ msgstr ""
 "したスタイルデータは、動作を高速化するために一定期間キャッシュされるため、新"
 "しいパターンとスタイルがすぐに反映されないことがあります。"
 
-#: App/Controller/Manager/dist/js/app.js:2065
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "To force reacquisition of the latest data, click the button below."
 msgstr ""
 "最新のデータを強制的に再取得するには、下のボタンをクリックしてください。"
 
-#: App/Controller/Manager/dist/js/app.js:2073
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Retrieve data"
 msgstr "データを再取得する"
 
-#: App/Controller/Manager/dist/js/app.js:2455
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Brand"
 msgstr "ブランド"
 
-#: App/Controller/Manager/dist/js/app.js:2472
-#: App/Controller/Manager/dist/js/app.js:2548
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Site Logo"
 msgstr "サイトロゴ"
 
-#: App/Controller/Manager/dist/js/app.js:2484
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Display an image to represent this site."
 msgstr "このサイトを表す画像を表示します。"
 
-#: App/Controller/Manager/dist/js/app.js:2536
-#: App/Controller/Manager/dist/js/app.js:2712
-#: App/Controller/Manager/dist/js/app.js:2826
+#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Remove Image"
 msgstr "画像を削除"
 
-#: App/Controller/Manager/dist/js/app.js:2591
-#: App/Controller/Manager/dist/js/app.js:2747
-#: App/Controller/Manager/dist/js/app.js:2861
+#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Select Image"
 msgstr "画像を選択"
 
-#: App/Controller/Manager/dist/js/app.js:2608
+#: App/Controller/Manager/dist/js/app.js:4
 msgid "Site Logo Default Width"
 msgstr "サイトロゴのデフォルトの幅"
 
-#: App/Controller/Manager/dist/js/app.js:2612
+#: App/Controller/Manager/dist/js/app.js:4
 msgid ""
 "If you set the width of the site logo block in the editor, that will take "
 "precedence."
@@ -2058,12 +2052,12 @@ msgstr ""
 "エディターでサイトロゴブロックの幅を設定した場合は、そちらが優先的に使用され"
 "ます。"
 
-#: App/Controller/Manager/dist/js/app.js:2647
-#: App/Controller/Manager/dist/js/app.js:2724
+#: App/Controller/Manager/dist/js/app.js:4
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Site Icon"
 msgstr "サイトアイコン"
 
-#: App/Controller/Manager/dist/js/app.js:2658
+#: App/Controller/Manager/dist/js/app.js:4
 msgid ""
 "Site Icons are what you see in browser tabs, bookmark bars, and within the "
 "WordPress mobile apps. Upload one here!"
@@ -2072,96 +2066,95 @@ msgstr ""
 "で表示されます。ぜひアップロードしましょう！"
 
 #. translators: %s: Site icon size in pixels.
-#: App/Controller/Manager/dist/js/app.js:2665
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Site Icons should be square and at least %s pixels."
 msgstr "サイトアイコンは%sピクセル以上の正方形にしてください。"
 
-#: App/Controller/Manager/dist/js/app.js:2768
-#: App/Controller/Manager/dist/js/app.js:2838
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Default Featured Image"
 msgstr "デフォルトアイキャッチ画像"
 
-#: App/Controller/Manager/dist/js/app.js:2778
+#: App/Controller/Manager/dist/js/app.js:7
 msgid ""
 "This is the image that will be used as a fallback if no featured image is "
 "set."
 msgstr ""
 "アイキャッチ画像が設定されていない場合にフォールバックとして使用されます。"
 
-#: App/Controller/Manager/dist/js/app.js:2883
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Colors"
 msgstr "色"
 
-#: App/Controller/Manager/dist/js/app.js:2966
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Accent Color"
 msgstr "アクセントカラー"
 
-#: App/Controller/Manager/dist/js/app.js:3009
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Background Color"
 msgstr "背景色"
 
-#: App/Controller/Manager/dist/js/app.js:3033
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Text Color"
 msgstr "文字色"
 
-#: App/Controller/Manager/dist/js/app.js:3056
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Link Color"
 msgstr "リンク色"
 
-#: App/Controller/Manager/dist/js/app.js:3093
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Link Color (:hover)"
 msgstr "リンク色（:hover）"
 
-#: App/Controller/Manager/dist/js/app.js:3141
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Link Color (:focus)"
 msgstr "リンク色（:focus）"
 
-#: App/Controller/Manager/dist/js/app.js:3443
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h1"
 msgstr "h1 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3448
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h2"
 msgstr "h2 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3453
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h3"
 msgstr "h3 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3458
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h4"
 msgstr "h4 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3463
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h5"
 msgstr "h5 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3468
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Size of h6"
 msgstr "h6 のサイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3590
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Typography"
 msgstr "タイポグラフィ"
 
-#: App/Controller/Manager/dist/js/app.js:3743 dist/js/editor/editor.js:20257
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:26
 msgid "Font"
 msgstr "フォント"
 
-#: App/Controller/Manager/dist/js/app.js:3773 dist/js/editor/editor.js:20561
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:26
 msgid "Base Font Size"
 msgstr "基本の文字サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:3797 dist/js/editor/editor.js:20586
+#: App/Controller/Manager/dist/js/app.js:7 dist/js/editor/editor.js:26
 msgid "Half Leading"
 msgstr "ハーフレディング"
 
-#: App/Controller/Manager/dist/js/app.js:3846
+#: App/Controller/Manager/dist/js/app.js:7
 msgid "Minimum half Leading"
 msgstr "最小のハーフレディング"
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: App/Controller/Manager/dist/js/app.js:4003
+#: App/Controller/Manager/dist/js/app.js:10
 msgid ""
 "The header size setting described above applies directly beneath inner "
 "blocks use content width (%1$s.is-layout-constrained%2$s), text blocks, and "
@@ -2171,48 +2164,47 @@ msgstr ""
 "layout-constrained%2$s）、テキストブロック、縦書きブロックの直下の見出しに適"
 "用されます。"
 
-#: App/Controller/Manager/dist/js/app.js:4214 dist/blocks/badge/index.js:1
+#: App/Controller/Manager/dist/js/app.js:10 dist/blocks/badge/index.js:1
 #: dist/blocks/divider/index.js:1 dist/blocks/texture/index.js:1
-#: dist/js/editor/editor.js:4536 dist/js/editor/editor.js:4566
-#: dist/js/editor/editor.js:5033 dist/js/editor/editor.js:5074
+#: dist/js/editor/editor.js:7
 msgid "Size"
 msgstr "サイズ"
 
-#: App/Controller/Manager/dist/js/app.js:4227 dist/blocks/mega-menu/index.js:1
-#: dist/js/editor/editor.js:7244 dist/js/editor/editor.js:20630
+#: App/Controller/Manager/dist/js/app.js:10 dist/blocks/mega-menu/index.js:1
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:26
 msgid "Content Width"
 msgstr "コンテンツ幅"
 
-#: App/Controller/Manager/dist/js/app.js:4255 dist/blocks/mega-menu/index.js:1
-#: dist/js/editor/editor.js:7234 dist/js/editor/editor.js:20648
+#: App/Controller/Manager/dist/js/app.js:10 dist/blocks/mega-menu/index.js:1
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:26
 msgid "Wide Width"
 msgstr "幅広"
 
-#: App/Controller/Manager/dist/js/app.js:4290
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Header"
 msgstr "ヘッダー"
 
-#: App/Controller/Manager/dist/js/app.js:4302
+#: App/Controller/Manager/dist/js/app.js:10
 msgid "Header Position"
 msgstr "ヘッダーの配置"
 
-#: App/Controller/Manager/dist/js/app.js:4311
+#: App/Controller/Manager/dist/js/app.js:10
 msgctxt "header-position"
 msgid "Normal"
 msgstr "ノーマル"
 
-#: App/Controller/Manager/dist/js/app.js:4319
+#: App/Controller/Manager/dist/js/app.js:10
 msgctxt "header-position"
 msgid "Sticky"
 msgstr "上部固定"
 
-#: App/Controller/Manager/dist/js/app.js:4327
+#: App/Controller/Manager/dist/js/app.js:10
 msgctxt "header-position"
 msgid "Fixed"
 msgstr "オーバーレイ（上部固定）"
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: App/Controller/Manager/dist/js/app.js:4353
+#: App/Controller/Manager/dist/js/app.js:13
 msgid ""
 "This applies to templates that use the \"Header\" template part (%1$sparts/"
 "header.html%2$s). Additionally, since the changes are applied dynamically on "
@@ -2223,7 +2215,7 @@ msgstr ""
 "め、エディター上では反映されません。"
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: App/Controller/Manager/dist/js/app.js:4369
+#: App/Controller/Manager/dist/js/app.js:16
 msgid ""
 "If you change this setting, the frontend will use either %1$sparts/header-"
 "sticky.html%2$s or %1$sparts/header-fixed.html%2$s based on the "
@@ -2235,15 +2227,15 @@ msgstr ""
 "ヘッダーのデザインをカスタマイズしたい場合は、テンプレートパーツの編集画面で"
 "該当するテンプレートパーツをカスタマイズしてください。"
 
-#: App/Controller/Manager/dist/js/app.js:4392
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Loading Animation"
 msgstr "ローディングアニメーション"
 
-#: App/Controller/Manager/dist/js/app.js:4404
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Template Parts to Use"
 msgstr "使用するテンプレート・パーツ"
 
-#: App/Controller/Manager/dist/js/app.js:4408
+#: App/Controller/Manager/dist/js/app.js:16
 msgid ""
 "You can choose from the template parts assigned to the template part area "
 "\"Loading Animation\"."
@@ -2251,76 +2243,74 @@ msgstr ""
 "テンプレートパーツエリア「ローディングアニメーション」に割り当てられたテンプ"
 "レートパーツから選択できます。"
 
-#: App/Controller/Manager/dist/js/app.js:4418
-#: App/Controller/Manager/dist/js/app.js:4759
-#: App/Controller/Manager/dist/js/app.js:4901
+#: App/Controller/Manager/dist/js/app.js:16
+#: App/Controller/Manager/dist/js/app.js:17
 msgid "— Select —"
 msgstr "— 選択 —"
 
-#: App/Controller/Manager/dist/js/app.js:4439
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Minimum Time to Display Loading Animation (s)"
 msgstr "ローディングアニメーションの最低表示時間（秒）"
 
-#: App/Controller/Manager/dist/js/app.js:4590
-#: App/Controller/Manager/dist/js/app.js:4624
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Your Homepage Displays"
 msgstr "ホームページ設定"
 
-#: App/Controller/Manager/dist/js/app.js:4613
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Homepage Type"
 msgstr "ホームページのタイプ"
 
-#: App/Controller/Manager/dist/js/app.js:4632
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Latest Posts"
 msgstr "最新の投稿"
 
-#: App/Controller/Manager/dist/js/app.js:4639
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Static Page"
 msgstr "固定ページ"
 
-#: App/Controller/Manager/dist/js/app.js:4678
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Homepage"
 msgstr "ホームページ"
 
-#: App/Controller/Manager/dist/js/app.js:4706
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Create a new blank page"
 msgstr "新規に空ページを作成する"
 
-#: App/Controller/Manager/dist/js/app.js:4749
+#: App/Controller/Manager/dist/js/app.js:16
 msgid "Select existing page for the homepage"
 msgstr "既存のページをホームページ用に選択"
 
 #. translators: %1$s: Post ID
-#: App/Controller/Manager/dist/js/app.js:4777
-#: App/Controller/Manager/dist/js/app.js:4919
+#: App/Controller/Manager/dist/js/app.js:17
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "#%1$s (No title)"
 msgstr "#%1$s （タイトルなし）"
 
-#: App/Controller/Manager/dist/js/app.js:4820
+#: App/Controller/Manager/dist/js/app.js:17
 msgid "Posts Page"
 msgstr "投稿ページ"
 
-#: App/Controller/Manager/dist/js/app.js:4848
+#: App/Controller/Manager/dist/js/app.js:17
 msgid "Create new page for the posts page"
 msgstr "投稿ページ用の固定ページを生成"
 
-#: App/Controller/Manager/dist/js/app.js:4891
+#: App/Controller/Manager/dist/js/app.js:17
 msgid "Select existing page for the posts page"
 msgstr "既存のページを投稿ページ用に選択"
 
-#: App/Controller/Manager/dist/js/app.js:5086
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Posts"
 msgstr "投稿"
 
-#: App/Controller/Manager/dist/js/app.js:5094
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Products"
 msgstr "商品"
 
-#: App/Controller/Manager/dist/js/app.js:5111
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Custom Templates"
 msgstr "カスタムテンプレート"
 
-#: App/Controller/Manager/dist/js/app.js:5120
+#: App/Controller/Manager/dist/js/app.js:18
 msgid ""
 "Activate the custom template you wish to use. You cannot deactivate a custom "
 "template that is already in use."
@@ -2328,94 +2318,94 @@ msgstr ""
 "使用したいカスタムテンプレートを有効化してください。既に使用されているカスタ"
 "ムテンプレートは無効化できません。"
 
-#: App/Controller/Manager/dist/js/app.js:5397
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Blog Card"
 msgstr "ブログカード"
 
-#: App/Controller/Manager/dist/js/app.js:5412
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Style"
 msgstr "スタイル"
 
-#: App/Controller/Manager/dist/js/app.js:5440
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Background color (Accent color)"
 msgstr "背景色（アクセントカラー）"
 
-#: App/Controller/Manager/dist/js/app.js:5447
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Border (Accent color)"
 msgstr "ボーダー（アクセントカラー）"
 
-#: App/Controller/Manager/dist/js/app.js:5454
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Dark"
 msgstr "ダーク"
 
-#: App/Controller/Manager/dist/js/app.js:5461 dist/formats/formats.js:7318
+#: App/Controller/Manager/dist/js/app.js:18 dist/formats/formats.js:2
 msgid "Media"
 msgstr "メディア"
 
-#: App/Controller/Manager/dist/js/app.js:5468
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Simple"
 msgstr "シンプル"
 
-#: App/Controller/Manager/dist/js/app.js:5475 dist/blocks/badge/index.js:1
+#: App/Controller/Manager/dist/js/app.js:18 dist/blocks/badge/index.js:1
 #: dist/blocks/child-pages/index.js:1
 msgid "Box"
 msgstr "ボックス"
 
-#: App/Controller/Manager/dist/js/app.js:5571 dist/js/editor/editor.js:18297
+#: App/Controller/Manager/dist/js/app.js:18 dist/js/editor/editor.js:16
 msgid "OGP"
 msgstr "OGP"
 
-#: App/Controller/Manager/dist/js/app.js:5588
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "OGP Tags"
 msgstr "OGP タグ"
 
-#: App/Controller/Manager/dist/js/app.js:5604
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Output tags"
 msgstr "タグを出力する"
 
-#: App/Controller/Manager/dist/js/app.js:5635
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Twitter Cards"
 msgstr "Twitter Cards"
 
-#: App/Controller/Manager/dist/js/app.js:5653
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "twitter:site"
 msgstr "twitter:site"
 
-#: App/Controller/Manager/dist/js/app.js:5657
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "@username for the website used in the card footer."
 msgstr "カードフッターで使用されるウェブサイトの@ユーザー名。"
 
-#: App/Controller/Manager/dist/js/app.js:5818
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Generated Thumbnail"
 msgstr "生成サムネイル"
 
-#: App/Controller/Manager/dist/js/app.js:5838
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Featured Image"
 msgstr "アイキャッチ画像"
 
-#: App/Controller/Manager/dist/js/app.js:5850
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Aspect Ratio"
 msgstr "アスペクト比"
 
-#: App/Controller/Manager/dist/js/app.js:5854
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "The aspect ratio for featured images generated based on post title."
 msgstr "投稿タイトルに基づいて生成されるアイキャッチ画像のアスペクト比。"
 
-#: App/Controller/Manager/dist/js/app.js:5891
-#: dist/blocks/abstract-background/index.js:1 dist/js/editor/editor.js:17144
+#: App/Controller/Manager/dist/js/app.js:18
+#: dist/blocks/abstract-background/index.js:1 dist/js/editor/editor.js:16
 msgid "Background"
 msgstr "背景"
 
-#: App/Controller/Manager/dist/js/app.js:6137
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "Failed to load models."
 msgstr "モデルの読み込みに失敗しました。"
 
-#: App/Controller/Manager/dist/js/app.js:6172
+#: App/Controller/Manager/dist/js/app.js:18
 msgid "OpenAI (Deprecated)"
 msgstr "OpenAI（非推奨）"
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:6185
+#: App/Controller/Manager/dist/js/app.js:21
 msgid ""
 "Starting with WordPress 7.0, the use of %1$sAI Connectors%2$s is "
 "recommended. This setup is scheduled to be rolled out, so please migrate to "
@@ -2424,7 +2414,7 @@ msgstr ""
 "WordPress 7.0 以降では、%1$sAI コネクタ%2$s の使用が推奨されます。この設定は"
 "順次廃止される予定ですので、できるだけ早く AI コネクタへ移行してください。"
 
-#: App/Controller/Manager/dist/js/app.js:6199
+#: App/Controller/Manager/dist/js/app.js:21
 msgid ""
 "AI Connectors are already configured and currently in use. The OpenAI "
 "settings below are only used as a legacy fallback."
@@ -2432,16 +2422,16 @@ msgstr ""
 "AI コネクタはすでに設定済みで、現在使用されています。以下の OpenAI 設定は、レ"
 "ガシーな代替手段としてのみ使用されます。"
 
-#: App/Controller/Manager/dist/js/app.js:6219
+#: App/Controller/Manager/dist/js/app.js:21
 msgid "API Key"
 msgstr "API キー"
 
-#: App/Controller/Manager/dist/js/app.js:6264
+#: App/Controller/Manager/dist/js/app.js:21
 msgid "Model to use"
 msgstr "使用するモデル"
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:6300
+#: App/Controller/Manager/dist/js/app.js:24
 msgid ""
 "Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for "
 "details."
@@ -2449,17 +2439,15 @@ msgstr ""
 "API の利用には料金が発生します。詳細は %1$sAPI の料金体系%2$sページをご確認く"
 "ださい。"
 
-#: App/Controller/Manager/dist/js/app.js:6430
-#: App/Controller/Manager/dist/js/app.js:6543
+#: App/Controller/Manager/dist/js/app.js:24
 msgid "Go to the Dashboard"
 msgstr "ダッシュボードに戻る"
 
-#: App/Controller/Manager/dist/js/app.js:6480
-#: App/Controller/Manager/dist/js/app.js:6484
+#: App/Controller/Manager/dist/js/app.js:24
 msgid "View site (opens in a new tab)"
 msgstr "サイトを表示 (新しいタブで開く)"
 
-#: App/Controller/Manager/dist/js/app.js:6504
+#: App/Controller/Manager/dist/js/app.js:24
 msgid "Navigation"
 msgstr "ナビゲーション"
 
@@ -2496,8 +2484,8 @@ msgstr "アブストラクト背景"
 #: dist/blocks/timeline-dots/index.js:1 dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:5841
-#: dist/js/editor/editor.js:17315 dist/js/editor/editor.js:18571
+#: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
+#: dist/js/editor/editor.js:16
 msgid "Settings"
 msgstr "設定"
 
@@ -2543,25 +2531,10 @@ msgstr "見出しレベル"
 
 #: dist/blocks/accordion/index.js:1 dist/blocks/section/index.js:1
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:949 dist/js/editor/editor.js:3386
-#: dist/js/editor/editor.js:3815 dist/js/editor/editor.js:4076
-#: dist/js/editor/editor.js:9808 dist/js/editor/editor.js:13270
-#: dist/js/editor/editor.js:13768 dist/js/editor/editor.js:14029
-#: dist/js/editor/editor.js:14775
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
 msgid "None"
 msgstr "無し"
-
-#: src/js/editor/hooks/advanced/container-type.js:27
-msgid "Container type"
-msgstr "コンテナータイプ"
-
-#: src/js/editor/hooks/advanced/query-context.js:29
-msgid "Query context"
-msgstr "クエリーコンテキスト"
-
-#: dist/blocks/accordion/index.js:1
-msgid "Font size"
-msgstr "フォントサイズ"
 
 #: dist/blocks/accordion/index.js:1
 msgid "Question"
@@ -2573,7 +2546,7 @@ msgstr "質問のラベルを使用する"
 
 #: dist/blocks/accordion/index.js:1 dist/blocks/mega-menu/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:6265
+#: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
 msgid "Width"
 msgstr "幅"
 
@@ -2657,13 +2630,12 @@ msgstr "スラッシュ（下部）"
 msgid "Shape"
 msgstr "形状"
 
-#: dist/blocks/breadcrumbs/index.js:1 dist/js/editor/editor.js:3486
-#: dist/js/editor/editor.js:3629
+#: dist/blocks/breadcrumbs/index.js:1 dist/js/editor/editor.js:4
 msgid "Divider"
 msgstr "区切り"
 
 #: dist/blocks/breadcrumbs/index.js:1 dist/blocks/divider/index.js:1
-#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:3401
+#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:4
 msgid "Slash"
 msgstr "スラッシュ"
 
@@ -2737,7 +2709,7 @@ msgstr "%1$sgrid-template-columns%2$sの計算式の中"
 #: dist/blocks/layers/index.js:1 dist/blocks/switcher/index.js:1
 #: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1441
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -2851,10 +2823,8 @@ msgid "Dialog (Box)"
 msgstr "ダイアログ（ボックス）"
 
 #: dist/blocks/divider/index.js:1 dist/blocks/texture/index.js:1
-#: dist/js/editor/editor.js:3421 dist/js/editor/editor.js:4384
-#: dist/js/editor/editor.js:4406 dist/js/editor/editor.js:4872
-#: dist/js/editor/editor.js:4894 dist/js/editor/editor.js:13400
-#: dist/js/editor/editor.js:13885 dist/js/editor/editor.js:14187
+#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
 msgid "Type"
 msgstr "種類"
 
@@ -2870,7 +2840,7 @@ msgstr "破線"
 msgid "Dotted"
 msgstr "点線"
 
-#: dist/blocks/divider/index.js:1 dist/js/editor/editor.js:3387
+#: dist/blocks/divider/index.js:1 dist/js/editor/editor.js:4
 msgid "Stripe"
 msgstr "ストライプ"
 
@@ -2939,23 +2909,23 @@ msgid "Switch aspect ratio when portrait and mobile width."
 msgstr "ポートレートかつモバイル幅のときアスペクト比を切り替える。"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1383 dist/js/editor/editor.js:19130
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:16
 msgid "Desktop"
 msgstr "デスクトップ"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1391
+#: dist/js/editor/editor.js:1
 msgid "Tablet / Mobile"
 msgstr "タブレット / モバイル"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-switcher-container/index.js:1
-#: dist/js/editor/editor.js:1399 dist/js/editor/editor.js:19152
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:16
 msgid "Mobile"
 msgstr "モバイル"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1405
+#: dist/js/editor/editor.js:1
 msgid "Switch to settings based on device size"
 msgstr "デバイスサイズに応じた設定に切り替え"
 
@@ -2993,7 +2963,7 @@ msgid "Free input"
 msgstr "自由入力"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:7517
+#: dist/js/editor/editor.js:7
 msgid "Auto repeat"
 msgstr "自動反復"
 
@@ -3060,7 +3030,7 @@ msgid "Bottom / Right"
 msgstr "下 / 右"
 
 #: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
-#: dist/js/editor/editor.js:9805
+#: dist/js/editor/editor.js:13
 msgid "Center"
 msgstr "中央"
 
@@ -3126,7 +3096,7 @@ msgstr "スピード（秒）"
 msgid "Reverse direction"
 msgstr "逆方向"
 
-#: dist/blocks/marquee/index.js:1 dist/js/editor/editor.js:13925
+#: dist/blocks/marquee/index.js:1 dist/js/editor/editor.js:13
 msgid "Pause on hover"
 msgstr "ホバーで一時停止"
 
@@ -3198,28 +3168,26 @@ msgid "Placement"
 msgstr "配置"
 
 #: dist/blocks/popover-content/index.js:1 dist/blocks/popover/index.js:1
-#: dist/js/editor/editor.js:12657 dist/js/editor/editor.js:12686
+#: dist/js/editor/editor.js:13
 msgid "Top"
 msgstr "上"
 
 #: dist/blocks/popover-content/index.js:1 dist/blocks/popover/index.js:1
 #: dist/blocks/section/index.js:1 dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1913
-#: dist/js/editor/editor.js:9807 dist/js/editor/editor.js:12728
-#: dist/js/editor/editor.js:12757
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:13
 msgid "Right"
 msgstr "右"
 
 #: dist/blocks/popover-content/index.js:1 dist/blocks/popover/index.js:1
-#: dist/js/editor/editor.js:12799 dist/js/editor/editor.js:12828
+#: dist/js/editor/editor.js:13
 msgid "Bottom"
 msgstr "下"
 
 #: dist/blocks/popover-content/index.js:1 dist/blocks/popover/index.js:1
 #: dist/blocks/section/index.js:1 dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1908
-#: dist/js/editor/editor.js:9801 dist/js/editor/editor.js:12870
-#: dist/js/editor/editor.js:12899
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:13
 msgid "Left"
 msgstr "左"
 
@@ -3311,8 +3279,7 @@ msgstr "対象の最大ビューポート幅"
 msgid "Image width"
 msgstr "画像の幅"
 
-#: dist/blocks/responsive-image/index.js:1 dist/js/editor/editor.js:9904
-#: dist/js/editor/editor.js:10245
+#: dist/blocks/responsive-image/index.js:1 dist/js/editor/editor.js:13
 msgid "Auto"
 msgstr "自動"
 
@@ -3397,7 +3364,7 @@ msgstr "バレット"
 msgid "Progress bar"
 msgstr "プログレスバー"
 
-#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:9548
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:13
 msgid "Align items top"
 msgstr "項目を上揃え"
 
@@ -3405,7 +3372,7 @@ msgstr "項目を上揃え"
 msgid "Align items top (Inside)"
 msgstr "項目を上揃え（内側）"
 
-#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:9553
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:13
 msgid "Align items center"
 msgstr "項目を中央揃え"
 
@@ -3413,27 +3380,26 @@ msgstr "項目を中央揃え"
 msgid "Align items bottom (Inside)"
 msgstr "項目を下揃え（内側）"
 
-#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:9558
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:13
 msgid "Align items bottom"
 msgstr "項目を下揃え"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:9671
+#: dist/js/editor/editor.js:13
 msgid "Justify items left"
 msgstr "項目を左揃え"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:9176 dist/js/editor/editor.js:9295
-#: dist/js/editor/editor.js:9676
+#: dist/js/editor/editor.js:13
 msgid "Justify items center"
 msgstr "項目を中央揃え"
 
 #: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/js/editor/editor.js:9681
+#: dist/js/editor/editor.js:13
 msgid "Justify items right"
 msgstr "項目を右揃え"
 
-#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:9305
+#: dist/blocks/slider/index.js:1 dist/js/editor/editor.js:13
 msgid "Justify items space-between"
 msgstr "項目を両端揃え"
 
@@ -3600,8 +3566,8 @@ msgid ""
 "single column."
 msgstr "このブロックがこの幅より小さくなったとき、コンテンツは1列に並びます。"
 
-#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:7023
-#: dist/js/editor/editor.js:14249
+#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13
 msgid "Fill"
 msgstr "塗りつぶし"
 
@@ -3613,7 +3579,7 @@ msgstr "タブの設定"
 msgid "Tab bar justification"
 msgstr "タブバーの配置"
 
-#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:1514
+#: dist/blocks/tabs/index.js:1 dist/js/editor/editor.js:1
 msgid "Padding"
 msgstr "パディング"
 
@@ -3673,8 +3639,8 @@ msgstr "方眼紙"
 msgid "Backslash"
 msgstr "バックスラッシュ"
 
-#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:3821
-#: dist/js/editor/editor.js:4082
+#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:7
 msgid "Wave"
 msgstr "波"
 
@@ -3690,13 +3656,11 @@ msgstr "スラッシュシェイプ"
 msgid "Backslash shape"
 msgstr "バックスラッシュシェイプ"
 
-#: dist/blocks/texture/index.js:1 dist/formats/formats.js:6050
-#: dist/formats/formats.js:6324 dist/formats/formats.js:6615
-#: dist/formats/formats.js:6745
+#: dist/blocks/texture/index.js:1 dist/formats/formats.js:1
 msgid "Color"
 msgstr "色"
 
-#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:1735
+#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:1
 msgid "Gap"
 msgstr "間隔"
 
@@ -3841,7 +3805,7 @@ msgid "A column to be treated as secondary"
 msgstr "サブとして扱うカラム"
 
 #: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:7287
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:7
 msgid "Min width"
 msgstr "最小幅"
 
@@ -3850,161 +3814,161 @@ msgstr "最小幅"
 msgid "Wrap when content equals this width."
 msgstr "コンテンツがこの幅と等しくなった場合に折り返されます。"
 
-#: dist/formats/formats.js:3311
+#: dist/formats/formats.js:1
 msgid "Line break per screen size"
 msgstr "画面サイズ毎の改行"
 
-#: dist/formats/formats.js:3460
+#: dist/formats/formats.js:1
 msgid "Line breaks when on the desktop"
 msgstr "デスクトップのときに改行"
 
-#: dist/formats/formats.js:3470
+#: dist/formats/formats.js:1
 msgid "Line breaks when on the tablet"
 msgstr "タブレットのときに改行"
 
-#: dist/formats/formats.js:3480
+#: dist/formats/formats.js:1
 msgid "Line breaks when on the mobile"
 msgstr "モバイルのときに改行"
 
-#: dist/formats/formats.js:3495
+#: dist/formats/formats.js:1
 msgid "wbr"
 msgstr "wbr"
 
-#: dist/formats/formats.js:5669
+#: dist/formats/formats.js:1
 msgid "Inline icon"
 msgstr "インラインアイコン"
 
-#: dist/formats/formats.js:5861
+#: dist/formats/formats.js:1
 msgid "Stroke width"
 msgstr "線の太さ"
 
-#: dist/formats/formats.js:5880
+#: dist/formats/formats.js:1
 msgid "Feather"
 msgstr "Feather"
 
-#: dist/formats/formats.js:5887
+#: dist/formats/formats.js:1
 msgid "Flowbite"
 msgstr "Flowbite"
 
-#: dist/formats/formats.js:6145
+#: dist/formats/formats.js:1
 msgid "Text stroke"
 msgstr "テキストストローク"
 
-#: dist/formats/formats.js:6335
+#: dist/formats/formats.js:1
 msgid "Text shadow"
 msgstr "テキストシャドウ"
 
-#: dist/formats/formats.js:6496
+#: dist/formats/formats.js:1
 msgid "X"
 msgstr "X"
 
-#: dist/formats/formats.js:6524
+#: dist/formats/formats.js:1
 msgid "Y"
 msgstr "Y"
 
-#: dist/formats/formats.js:6552 dist/js/editor/editor.js:5291
+#: dist/formats/formats.js:1 dist/js/editor/editor.js:7
 msgid "Blur"
 msgstr "ぼかし"
 
-#: dist/formats/formats.js:6626
+#: dist/formats/formats.js:1
 msgid "Text gradient"
 msgstr "テキストグラデーション"
 
 #. translators: Accessibility text for the link preview when editing a link.
-#: dist/formats/formats.js:7027
+#: dist/formats/formats.js:2
 msgid "Media information"
 msgstr "メディア情報"
 
-#: dist/formats/formats.js:7042
+#: dist/formats/formats.js:2
 msgid "Select media"
 msgstr "メディアを選択"
 
-#: dist/formats/formats.js:7087
+#: dist/formats/formats.js:2
 msgid "Change to different media"
 msgstr "別のメディアに変更"
 
-#: dist/formats/formats.js:7099
+#: dist/formats/formats.js:2
 msgid "Remove media"
 msgstr "メディアを削除"
 
-#: dist/formats/formats.js:7117 dist/formats/formats.js:7325
+#: dist/formats/formats.js:2
 msgid "Embed"
 msgstr "埋め込み"
 
-#: dist/formats/formats.js:7143
+#: dist/formats/formats.js:2
 msgid "Enter URL to embed here…"
 msgstr "埋め込む URL をここに入力…"
 
-#: dist/formats/formats.js:7160
+#: dist/formats/formats.js:2
 msgid "Edit link"
 msgstr "リンクを編集"
 
-#: dist/formats/formats.js:7177
+#: dist/formats/formats.js:2
 msgid "Apply URL"
 msgstr "URL を適用"
 
-#: dist/formats/formats.js:7189 dist/formats/formats.js:7277
+#: dist/formats/formats.js:2
 msgid "Remove link"
 msgstr "リンクを削除"
 
-#: dist/formats/formats.js:7210 dist/formats/formats.js:7332
+#: dist/formats/formats.js:2
 msgid ":target"
 msgstr ":target"
 
-#: dist/formats/formats.js:7234
+#: dist/formats/formats.js:2
 msgid "Enter target ID to open in overlay…"
 msgstr "オーバーレイで開く対象の ID を入力…"
 
-#: dist/formats/formats.js:7251
+#: dist/formats/formats.js:2
 msgid "Edit target"
 msgstr "対象を編集"
 
-#: dist/formats/formats.js:7265
+#: dist/formats/formats.js:2
 msgid "Apply link"
 msgstr "リンクを適用"
 
-#: dist/formats/formats.js:7351
+#: dist/formats/formats.js:2
 msgid "Media link"
 msgstr "メディアリンク"
 
-#: dist/js/editor/editor.js:1655
+#: dist/js/editor/editor.js:1
 msgid "Margins at both ends"
 msgstr "両端の余白"
 
-#: dist/js/editor/editor.js:1693
+#: dist/js/editor/editor.js:1
 msgid "Using root padding"
 msgstr "ルートパディングを使用"
 
-#: dist/js/editor/editor.js:1866
+#: dist/js/editor/editor.js:1
 msgid "Stairs grid"
 msgstr "階段グリッド"
 
-#: dist/js/editor/editor.js:1886
+#: dist/js/editor/editor.js:1
 msgid "Stairs climbing direction"
 msgstr "階段の上り方向"
 
-#: dist/js/editor/editor.js:1918
+#: dist/js/editor/editor.js:1
 msgid "Up-Down"
 msgstr "アップ・ダウン"
 
-#: dist/js/editor/editor.js:1923
+#: dist/js/editor/editor.js:1
 msgid "Down-Up"
 msgstr "ダウン・アップ"
 
-#: dist/js/editor/editor.js:1943
+#: dist/js/editor/editor.js:1
 msgid "Using negative margin"
 msgstr "ネガティブマージンを使用する"
 
-#: dist/js/editor/editor.js:1993
+#: dist/js/editor/editor.js:1
 msgid "Overflow"
 msgstr "オーバーフロー"
 
 #. translators: %1$s: <code>wbr</code>
-#: dist/js/editor/editor.js:2639
+#: dist/js/editor/editor.js:4
 msgid "Use %1$s to indicate a line break at an arbitrary position."
 msgstr "任意の位置で改行を指示したい場合は %1$s を使用してください。"
 
-#: dist/js/editor/editor.js:2678
+#: dist/js/editor/editor.js:4
 msgid ""
 "When enabled, font size and line-height will change fluidly with screen "
 "width. This will not be applied if the current font size is not one of the "
@@ -4014,19 +3978,19 @@ msgstr ""
 "し、現在のフォントサイズが unitone のプリセットサイズ以外の場合は、この設定は"
 "適用されません。"
 
-#: dist/js/editor/editor.js:2765
+#: dist/js/editor/editor.js:4
 msgid "Cut the background with text"
 msgstr "テキストで背景を切り取る"
 
-#: dist/js/editor/editor.js:2878
+#: dist/js/editor/editor.js:4
 msgid "Link decoration"
 msgstr "リンクの装飾"
 
-#: dist/js/editor/editor.js:3098 dist/js/editor/editor.js:3125
+#: dist/js/editor/editor.js:4
 msgid "Half leading"
 msgstr "ハーフレディング"
 
-#: dist/js/editor/editor.js:3136
+#: dist/js/editor/editor.js:4
 msgid ""
 "If custom font sizes are enabled and fluid typography isn't enabled, it is "
 "recommended that half-reading be specified."
@@ -4034,19 +3998,19 @@ msgstr ""
 "カスタムフォントサイズが有効、かつ流体タイポグラフィが有効でない場合は、ハー"
 "フレディングを指定することを推奨します。"
 
-#: dist/js/editor/editor.js:3148 dist/js/editor/editor.js:3175
+#: dist/js/editor/editor.js:4
 msgid "Fluid typography"
 msgstr "流体タイポグラフィ"
 
-#: dist/js/editor/editor.js:3198 dist/js/editor/editor.js:3225
+#: dist/js/editor/editor.js:4
 msgid "Minimum font size"
 msgstr "最小フォントサイズ"
 
-#: dist/js/editor/editor.js:3247 dist/js/editor/editor.js:3274
+#: dist/js/editor/editor.js:4
 msgid "Auto line breaks"
 msgstr "自動改行"
 
-#: dist/js/editor/editor.js:3324
+#: dist/js/editor/editor.js:4
 msgid ""
 "This can be set when a background image or background gradient is set for "
 "this block."
@@ -4054,36 +4018,36 @@ msgstr ""
 "このブロックに背景画像または背景グラデーションが設定されている場合に設定でき"
 "ます。"
 
-#: dist/js/editor/editor.js:3389
+#: dist/js/editor/editor.js:4
 msgid "Stripe (Vertical)"
 msgstr "ストライプ（縦）"
 
-#: dist/js/editor/editor.js:3392
+#: dist/js/editor/editor.js:4
 msgid "Divide"
 msgstr "分割"
 
-#: dist/js/editor/editor.js:3394
+#: dist/js/editor/editor.js:4
 msgid "Divide (Vertical)"
 msgstr "分割（縦）"
 
-#: dist/js/editor/editor.js:3810 dist/js/editor/editor.js:4066
+#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid "Background color or background image must be set."
 msgstr "背景色または背景画像を設定する必要があります。"
 
-#: dist/js/editor/editor.js:3817 dist/js/editor/editor.js:4078
+#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid "Triangle"
 msgstr "三角"
 
-#: dist/js/editor/editor.js:3820 dist/js/editor/editor.js:4081
+#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid "Curve"
 msgstr "カーブ"
 
-#: dist/js/editor/editor.js:3823 dist/js/editor/editor.js:4084
+#: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 msgid "Scattering Wave"
 msgstr "散乱波"
 
 #. translators: %1$s: Overlap the previous block, %2$s: Level, %3$s: Amount of content trimming
-#: dist/js/editor/editor.js:4058
+#: dist/js/editor/editor.js:7
 msgid ""
 "If “%1$s” is enabled in the next block, the balance can be aligned by "
 "setting the “%2$s” and “%3$s” to the same values as in the next block."
@@ -4091,85 +4055,79 @@ msgstr ""
 "後続のブロックで「%1$s」が有効になっている場合、「%2$s」と「%3$s」を後続のブ"
 "ロックと同じ値に設定することで、バランスを揃えることができます。"
 
-#: dist/js/editor/editor.js:4062 dist/js/editor/editor.js:4785
-#: dist/js/editor/editor.js:4816
+#: dist/js/editor/editor.js:7
 msgid "Overlap the previous block"
 msgstr "前のブロックに重ねる"
 
-#: dist/js/editor/editor.js:4063 dist/js/editor/editor.js:4455
-#: dist/js/editor/editor.js:4485 dist/js/editor/editor.js:4943
-#: dist/js/editor/editor.js:4973
+#: dist/js/editor/editor.js:7
 msgid "Level"
 msgstr "レベル"
 
-#: dist/js/editor/editor.js:4064 dist/js/editor/editor.js:4704
-#: dist/js/editor/editor.js:4734 dist/js/editor/editor.js:5237
-#: dist/js/editor/editor.js:5267
+#: dist/js/editor/editor.js:7
 msgid "Amount of content trimming"
 msgstr "コンテンツのトリミング量"
 
-#: dist/js/editor/editor.js:4088
+#: dist/js/editor/editor.js:7
 msgid "Expand space"
 msgstr "スペースを拡張"
 
-#: dist/js/editor/editor.js:4336
+#: dist/js/editor/editor.js:7
 msgid "Section divider (Top)"
 msgstr "セクション区切り（上部）"
 
-#: dist/js/editor/editor.js:4618 dist/js/editor/editor.js:4652
-#: dist/js/editor/editor.js:5135 dist/js/editor/editor.js:5183
+#: dist/js/editor/editor.js:7
 msgid "Horizontal position"
 msgstr "水平位置"
 
-#: dist/js/editor/editor.js:4829
+#: dist/js/editor/editor.js:7
 msgid "Section divider (Bottom)"
 msgstr "セクション区切り（下部）"
 
-#: dist/js/editor/editor.js:5354
+#: dist/js/editor/editor.js:7
 msgid "Brightness"
 msgstr "明るさ"
 
-#: dist/js/editor/editor.js:5420
+#: dist/js/editor/editor.js:7
 msgid "Contrast"
 msgstr "コントラスト"
 
-#: dist/js/editor/editor.js:5483
+#: dist/js/editor/editor.js:7
 msgid "Grayscale"
 msgstr "グレースケール"
 
-#: dist/js/editor/editor.js:5546
+#: dist/js/editor/editor.js:7
 msgid "Hue Rotate"
 msgstr "色相回転"
 
-#: dist/js/editor/editor.js:5609
+#: dist/js/editor/editor.js:7
 msgid "Invert"
 msgstr "色反転"
 
-#: dist/js/editor/editor.js:5672
+#: dist/js/editor/editor.js:7
 msgid "Saturate"
 msgstr "彩度"
 
-#: dist/js/editor/editor.js:5735
+#: dist/js/editor/editor.js:7
 msgid "Sepia"
 msgstr "セピア"
 
-#: dist/js/editor/editor.js:5795
+#: dist/js/editor/editor.js:7
 msgid "Progressive"
 msgstr "プログレッシブ"
 
-#: dist/js/editor/editor.js:5836
+#: dist/js/editor/editor.js:7
 msgid "Start position"
 msgstr "開始位置"
 
-#: dist/js/editor/editor.js:5938
+#: dist/js/editor/editor.js:7
 msgid "Backdrop Filter"
 msgstr "背景フィルター"
 
-#: dist/js/editor/editor.js:6724
+#: dist/js/editor/editor.js:7
 msgid "Add your own CSS to customize the appearance of this block."
 msgstr "独自の CSS を追加して、このブロックの外観をカスタマイズできます。"
 
-#: dist/js/editor/editor.js:6727
+#: dist/js/editor/editor.js:7
 msgid ""
 "Using \"&\" as a selector acts as a unique selector that applies only to "
 "this block."
@@ -4177,67 +4135,91 @@ msgstr ""
 "セレクターとして \"&\" を使用すると、このブロックのみに適用されるユニークなセ"
 "レクターとして機能します。"
 
-#: dist/js/editor/editor.js:6730
+#: dist/js/editor/editor.js:7
 msgid "Selectors and CSS beginning with anything other than \"&\" are ignored."
 msgstr "\"&\" 以外から始まるセレクターおよび CSS は無視されます。"
 
-#: dist/js/editor/editor.js:6963
+#: dist/js/editor/editor.js:7
+msgid "Responsive basis for block-specific CSS"
+msgstr "ブロック固有 CSS のレスポンシブの基準"
+
+#: dist/js/editor/editor.js:7
+msgid ""
+"Choose whether this block's specific CSS responds to the viewport width or "
+"the container width. This does not affect CSS generated by WordPress."
+msgstr ""
+"このブロック固有の CSS を画面幅とコンテナー幅のどちらに応じて切り替えるかを選"
+"択します。WordPress が出力する CSS には影響しません。"
+
+#: dist/js/editor/editor.js:7
+msgid "Viewport"
+msgstr "ビューポート"
+
+#: dist/js/editor/editor.js:7
+msgid "Container"
+msgstr "コンテナー"
+
+#: dist/js/editor/editor.js:7
+msgid "Container type"
+msgstr "コンテナータイプ"
+
+#: dist/js/editor/editor.js:7
 msgid "Recommended width"
 msgstr "推奨幅"
 
-#: dist/js/editor/editor.js:7090
+#: dist/js/editor/editor.js:7
 msgid "Fit"
 msgstr "フィット"
 
-#: dist/js/editor/editor.js:7166
+#: dist/js/editor/editor.js:7
 msgid "Max width"
 msgstr "最大幅"
 
-#: dist/js/editor/editor.js:7320
+#: dist/js/editor/editor.js:7
 msgid ""
 "If the specified width exceeds the parent's width, it will be internally "
 "adjusted to ensure it does not exceed the parent's width."
 msgstr ""
 "指定した幅が親の幅を超えた場合、親の幅は超えないよう内部的に調整されます。"
 
-#: dist/js/editor/editor.js:7348
+#: dist/js/editor/editor.js:7
 msgid "Max height"
 msgstr "最大の高さ"
 
-#: dist/js/editor/editor.js:7389
+#: dist/js/editor/editor.js:7
 msgid "Full Height"
 msgstr "全高"
 
-#: dist/js/editor/editor.js:7391
+#: dist/js/editor/editor.js:7
 msgid "Full Height (>= 840px)"
 msgstr "全高（840px 以下）"
 
-#: dist/js/editor/editor.js:7395
+#: dist/js/editor/editor.js:7
 msgid "Full Height (<= 667px)"
 msgstr "全高（667px 以上）"
 
-#: dist/js/editor/editor.js:7417
+#: dist/js/editor/editor.js:7
 msgid "Min height"
 msgstr "最小の高さ"
 
-#: dist/js/editor/editor.js:7500
+#: dist/js/editor/editor.js:7
 msgid "auto-fill"
 msgstr "auto-fill"
 
-#: dist/js/editor/editor.js:7501
+#: dist/js/editor/editor.js:7
 msgid "auto-fit"
 msgstr "auto-fit"
 
-#: dist/js/editor/editor.js:7577
+#: dist/js/editor/editor.js:7
 msgid "A grid item's size and location within a grid column"
 msgstr "グリッド列の中におけるグリッドアイテムの寸法と位置"
 
-#: dist/js/editor/editor.js:7751
+#: dist/js/editor/editor.js:7
 msgid "A grid item's size and location within the grid row"
 msgstr "グリッド行の中におけるグリッドアイテムの寸法と位置"
 
 #. translators: %1$s: <code>, %2$s: </code>
-#: dist/js/editor/editor.js:8876 dist/js/editor/editor.js:8971
+#: dist/js/editor/editor.js:10 dist/js/editor/editor.js:13
 msgid ""
 "For example, enter %1$s1 / -2%2$s (fill from the first grid line to the "
 "second-to-last grid line)."
@@ -4245,155 +4227,151 @@ msgstr ""
 "例えば、%1$s1 / -2%2$s（1番目のグリッド線から、最後から2番目のグリッド線まで"
 "を埋める）のように入力します。"
 
-#: dist/js/editor/editor.js:9025
+#: dist/js/editor/editor.js:13
 msgid "Justify content left"
 msgstr "コンテンツを左揃え"
 
-#: dist/js/editor/editor.js:9030
+#: dist/js/editor/editor.js:13
 msgid "Justify content center"
 msgstr "コンテンツを中央揃え"
 
-#: dist/js/editor/editor.js:9035
+#: dist/js/editor/editor.js:13
 msgid "Justify content right"
 msgstr "コンテンツを右揃え"
 
-#: dist/js/editor/editor.js:9040
+#: dist/js/editor/editor.js:13
 msgid "Justify content space-between"
 msgstr "コンテンツを両端揃え"
 
-#: dist/js/editor/editor.js:9045
+#: dist/js/editor/editor.js:13
 msgid "Justify content space-around"
 msgstr "コンテンツを均等配置（space-around）"
 
-#: dist/js/editor/editor.js:9050
+#: dist/js/editor/editor.js:13
 msgid "Justify content space-evenly"
 msgstr "コンテンツを均等配置（space-evenly）"
 
-#: dist/js/editor/editor.js:9078 dist/js/editor/editor.js:9105
-#: dist/js/editor/editor.js:9707 dist/js/editor/editor.js:9731
+#: dist/js/editor/editor.js:13
 msgid "Justify content"
 msgstr "コンテンツの水平配置"
 
-#: dist/js/editor/editor.js:9171 dist/js/editor/editor.js:9290
+#: dist/js/editor/editor.js:13
 msgid "Justify items top"
 msgstr "項目を上揃え"
 
-#: dist/js/editor/editor.js:9181 dist/js/editor/editor.js:9300
+#: dist/js/editor/editor.js:13
 msgid "Justify items bottom"
 msgstr "項目を下揃え"
 
-#: dist/js/editor/editor.js:9186 dist/js/editor/editor.js:9444
-#: dist/js/editor/editor.js:9568 dist/js/editor/editor.js:9686
-#: dist/js/editor/editor.js:9902 dist/js/editor/editor.js:10243
+#: dist/js/editor/editor.js:13
 msgid "Stretch to fill"
 msgstr "埋めるように拡張"
 
-#: dist/js/editor/editor.js:9210 dist/js/editor/editor.js:9235
+#: dist/js/editor/editor.js:13
 msgid "Justify items"
 msgstr "項目の水平配置"
 
-#: dist/js/editor/editor.js:9326 dist/js/editor/editor.js:9353
-#: dist/js/editor/editor.js:9592 dist/js/editor/editor.js:9616
+#: dist/js/editor/editor.js:13
 msgid "Align items"
 msgstr "項目の垂直配置"
 
-#: dist/js/editor/editor.js:9414
+#: dist/js/editor/editor.js:13
 msgid "Align content top"
 msgstr "コンテンツを上揃え"
 
-#: dist/js/editor/editor.js:9419
+#: dist/js/editor/editor.js:13
 msgid "Align content center"
 msgstr "コンテンツを中央揃え"
 
-#: dist/js/editor/editor.js:9424
+#: dist/js/editor/editor.js:13
 msgid "Align content bottom"
 msgstr "コンテンツを下揃え"
 
-#: dist/js/editor/editor.js:9429
+#: dist/js/editor/editor.js:13
 msgid "Align content space-between"
 msgstr "コンテンツを両端揃え"
 
-#: dist/js/editor/editor.js:9434
+#: dist/js/editor/editor.js:13
 msgid "Align content space-around"
 msgstr "コンテンツを均等配置（space-around）"
 
-#: dist/js/editor/editor.js:9439
+#: dist/js/editor/editor.js:13
 msgid "Align content space-evenly"
 msgstr "コンテンツを均等配置（space-evenly）"
 
-#: dist/js/editor/editor.js:9468 dist/js/editor/editor.js:9493
+#: dist/js/editor/editor.js:13
 msgid "Align content"
 msgstr "コンテンツの垂直配置"
 
-#: dist/js/editor/editor.js:9563
+#: dist/js/editor/editor.js:13
 msgid "Align items baseline"
 msgstr "項目をベースライン揃え"
 
-#: dist/js/editor/editor.js:9845
+#: dist/js/editor/editor.js:13
 msgid "Block alignment"
 msgstr "ブロックの配置"
 
-#: dist/js/editor/editor.js:9887
+#: dist/js/editor/editor.js:13
 msgid "Align self top"
 msgstr "このブロックを上揃え"
 
-#: dist/js/editor/editor.js:9892
+#: dist/js/editor/editor.js:13
 msgid "Align self center"
 msgstr "このブロックを中央揃え"
 
-#: dist/js/editor/editor.js:9897
+#: dist/js/editor/editor.js:13
 msgid "Align self bottom"
 msgstr "このブロックを下揃え"
 
-#: dist/js/editor/editor.js:10004 dist/js/editor/editor.js:10021
+#: dist/js/editor/editor.js:13
 msgid "Align self"
 msgstr "このブロックの垂直配置"
 
-#: dist/js/editor/editor.js:10228
+#: dist/js/editor/editor.js:13
 msgid "Justify self left"
 msgstr "このブロックを左揃え"
 
-#: dist/js/editor/editor.js:10233
+#: dist/js/editor/editor.js:13
 msgid "Justify self center"
 msgstr "このブロックを中央揃え"
 
-#: dist/js/editor/editor.js:10238
+#: dist/js/editor/editor.js:13
 msgid "Justify self right"
 msgstr "このブロックを右揃え"
 
-#: dist/js/editor/editor.js:10354 dist/js/editor/editor.js:10371
+#: dist/js/editor/editor.js:13
 msgid "Justify self"
 msgstr "このブロックの水平配置"
 
-#: dist/js/editor/editor.js:10843
+#: dist/js/editor/editor.js:13
 msgid "Alignment & Distribution"
 msgstr "配置・整列"
 
-#: dist/js/editor/editor.js:11800
+#: dist/js/editor/editor.js:13
 msgid "Filter"
 msgstr "フィルター"
 
-#: dist/js/editor/editor.js:11891
+#: dist/js/editor/editor.js:13
 msgid "[:hover] Text"
 msgstr "[:hover] テキスト"
 
-#: dist/js/editor/editor.js:11947
+#: dist/js/editor/editor.js:13
 msgid "[:hover] Background"
 msgstr "[:hover] 背景"
 
-#: dist/js/editor/editor.js:11994
+#: dist/js/editor/editor.js:13
 msgid "[:hover] Border"
 msgstr "[:hover] 枠線"
 
-#: dist/js/editor/editor.js:12026
+#: dist/js/editor/editor.js:13
 msgid "Marker"
 msgstr "マーカー"
 
-#: dist/js/editor/editor.js:12089 dist/js/editor/editor.js:14232
+#: dist/js/editor/editor.js:13
 msgid "Opacity"
 msgstr "不透明度"
 
-#: dist/js/editor/editor.js:12311
+#: dist/js/editor/editor.js:13
 msgid ""
 "If you select \"sticky\", you need to specify the position where you want it "
 "to be fixed (for example, if you want it to be firmly fixed, specify \"0\" "
@@ -4402,83 +4380,76 @@ msgstr ""
 "「sticky」を選択した場合、固定したい位置を指定する必要があります（例：上部で"
 "固定したい場合は、「top」に「0」を指定します）。"
 
-#: dist/js/editor/editor.js:12326
+#: dist/js/editor/editor.js:13
 msgid "fixed (Top / Admin bar compatible)"
 msgstr "fixed（上部 / 管理バー対応）"
 
-#: dist/js/editor/editor.js:12333
+#: dist/js/editor/editor.js:13
 msgid "sticky (Top)"
 msgstr "sticky（上部）"
 
-#: dist/js/editor/editor.js:12337
+#: dist/js/editor/editor.js:13
 msgid "sticky (Top / Admin bar compatible)"
 msgstr "sticky（上部 / 管理バー対応）"
 
-#: dist/js/editor/editor.js:12521 dist/js/editor/editor.js:12586
-#: dist/js/editor/editor.js:12616
+#: dist/js/editor/editor.js:13
 msgid "Position"
 msgstr "位置"
 
-#: dist/js/editor/editor.js:12941 dist/js/editor/editor.js:12970
+#: dist/js/editor/editor.js:13
 msgid "The stack level"
 msgstr "重ね合わせレベル"
 
-#: dist/js/editor/editor.js:13102 dist/js/editor/editor.js:13137
-#: dist/js/editor/editor.js:14688
+#: dist/js/editor/editor.js:13
 msgid "Parallax"
 msgstr "パララックス"
 
-#: dist/js/editor/editor.js:13145 dist/js/editor/editor.js:13408
-#: dist/js/editor/editor.js:13893 dist/js/editor/editor.js:14195
+#: dist/js/editor/editor.js:13
 msgid "Speed"
 msgstr "スピード"
 
-#: dist/js/editor/editor.js:13336 dist/js/editor/editor.js:13392
-#: dist/js/editor/editor.js:14709
+#: dist/js/editor/editor.js:13
 msgid "Scroll"
 msgstr "スクロール"
 
-#: dist/js/editor/editor.js:13423
+#: dist/js/editor/editor.js:13
 msgid "Delay"
 msgstr "遅延"
 
-#: dist/js/editor/editor.js:13438 dist/js/editor/editor.js:13917
-#: dist/js/editor/editor.js:14207
+#: dist/js/editor/editor.js:13
 msgid "Easing"
 msgstr "イージング"
 
-#: dist/js/editor/editor.js:13451 dist/js/editor/editor.js:13466
+#: dist/js/editor/editor.js:13
 msgid "Initial position (Y)"
 msgstr "初期位置（Y）"
 
-#: dist/js/editor/editor.js:13481 dist/js/editor/editor.js:13496
-#: dist/js/editor/editor.js:13526 dist/js/editor/editor.js:13541
+#: dist/js/editor/editor.js:13
 msgid "Initial position (X)"
 msgstr "初期位置（X）"
 
-#: dist/js/editor/editor.js:13511
+#: dist/js/editor/editor.js:13
 msgid "Initial shrinkage rate"
 msgstr "初期収縮率"
 
-#: dist/js/editor/editor.js:13558 dist/js/editor/editor.js:13939
-#: dist/js/editor/editor.js:14322
+#: dist/js/editor/editor.js:13
 msgid "Check behavior"
 msgstr "動作を確認する"
 
-#: dist/js/editor/editor.js:13576
+#: dist/js/editor/editor.js:13
 msgid "IntersectionObserver"
 msgstr "IntersectionObserver"
 
-#: dist/js/editor/editor.js:13582
+#: dist/js/editor/editor.js:13
 msgid "Sets the intersection area size to expand or shrink. e.g. -25% 0px"
 msgstr "交差領域を拡大または縮小できます。例：-25% 0px"
 
-#: dist/js/editor/editor.js:13590
+#: dist/js/editor/editor.js:13
 msgctxt "intersectionObserver"
 msgid "rootMargin"
 msgstr "rootMargin"
 
-#: dist/js/editor/editor.js:13600
+#: dist/js/editor/editor.js:13
 msgid ""
 "Specifies how much of the target must be intersect to fire the animation. "
 "e.g. 0.5"
@@ -4486,29 +4457,28 @@ msgstr ""
 "要素と交差領域がどの程度交差した場合にアニメーションを発火するかを指定できま"
 "す。例：0.5"
 
-#: dist/js/editor/editor.js:13608
+#: dist/js/editor/editor.js:13
 msgctxt "intersectionObserver"
 msgid "threshold"
 msgstr "threshold"
 
-#: dist/js/editor/editor.js:13905
+#: dist/js/editor/editor.js:13
 msgid "Interval"
 msgstr "インターバル"
 
-#: dist/js/editor/editor.js:14109 dist/js/editor/editor.js:14169
-#: dist/js/editor/editor.js:14751
+#: dist/js/editor/editor.js:13
 msgid "Hover"
 msgstr "ホバー"
 
-#: dist/js/editor/editor.js:14151
+#: dist/js/editor/editor.js:13
 msgid "Hover group"
 msgstr "ホバーグループ"
 
-#: dist/js/editor/editor.js:14173
+#: dist/js/editor/editor.js:13
 msgid "Hover grouping"
 msgstr "ホバーグループ化"
 
-#: dist/js/editor/editor.js:14177
+#: dist/js/editor/editor.js:13
 msgid ""
 "When enabled, it can be used to trigger hover animations for descendant "
 "blocks."
@@ -4516,199 +4486,196 @@ msgstr ""
 "有効化すると、子孫ブロックのホバーアニメーションのトリガーとして使用できるよ"
 "うになります。"
 
-#: dist/js/editor/editor.js:14217
+#: dist/js/editor/editor.js:13
 msgid "Scale"
 msgstr "拡大率"
 
-#: dist/js/editor/editor.js:14273
+#: dist/js/editor/editor.js:13
 msgid "Trigger"
 msgstr "トリガー"
 
-#: dist/js/editor/editor.js:14286
+#: dist/js/editor/editor.js:13
 msgid "Self"
 msgstr "このブロック"
 
-#: dist/js/editor/editor.js:14294
+#: dist/js/editor/editor.js:13
 msgid "Hover group cannot be selected when hover grouping is enabled."
 msgstr "ホバーグループ化した場合、「ホバーグループ」は選択できません。"
 
-#: dist/js/editor/editor.js:14657
+#: dist/js/editor/editor.js:13
 msgid "Animation"
 msgstr "アニメーション"
 
-#: dist/js/editor/editor.js:14828
+#: dist/js/editor/editor.js:13
 msgid "Apply to the block with the upper overlap order."
 msgstr "重なり順が上のブロックに適用します。"
 
-#: dist/js/editor/editor.js:14858
+#: dist/js/editor/editor.js:13
 msgid "Layer"
 msgstr "レイヤー"
 
-#: dist/js/editor/editor.js:14896 dist/js/editor/editor.js:14927
+#: dist/js/editor/editor.js:13
 msgid "Mix blend mode"
 msgstr "ミックスブレンドモード"
 
-#: dist/js/editor/editor.js:14973 dist/js/editor/editor.js:14995
+#: dist/js/editor/editor.js:13
 msgid "Overlay"
 msgstr "オーバーレイ"
 
-#: dist/js/editor/editor.js:15026 dist/js/editor/editor.js:15041
+#: dist/js/editor/editor.js:13
 msgid "Overlay opacity"
 msgstr "オーバーレイの不透明度"
 
-#: dist/js/editor/editor.js:15485 dist/js/editor/editor.js:15510
-#: dist/js/editor/editor.js:15577 dist/js/editor/editor.js:15602
+#: dist/js/editor/editor.js:13
 msgid "Open link as media link"
 msgstr "リンクをメディアリンクとして開く"
 
-#: dist/js/editor/editor.js:15501 dist/js/editor/editor.js:15593
+#: dist/js/editor/editor.js:13
 msgid "This can only be enabled if a link is set up."
 msgstr "リンクが設定されている場合にのみ有効化できます。"
 
-#: dist/js/editor/editor.js:15688
+#: dist/js/editor/editor.js:13
 msgid "The template part overlay-menu is used as an overlay menu."
 msgstr ""
 "オーバーレイメニューとしてoverlay-menu テンプレートパーツが使用されます。"
 
-#: dist/js/editor/editor.js:15724
+#: dist/js/editor/editor.js:13
 msgid "List updating…"
 msgstr "リストを更新中…"
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: dist/js/editor/editor.js:15756
+#: dist/js/editor/editor.js:16
 msgid "Select an existing template part or %1$screate a new one%2$s."
 msgstr "既存のテンプレートパーツを選択するか、%1$s新規に作成%2$sしてください。"
 
-#: dist/js/editor/editor.js:15782
+#: dist/js/editor/editor.js:16
 msgid "Refresh list"
 msgstr "リストを更新"
 
-#: dist/js/editor/editor.js:15791
+#: dist/js/editor/editor.js:16
 msgid "Edit the selected template part"
 msgstr "選択したテンプレートパーツを編集"
 
-#: dist/js/editor/editor.js:15830
+#: dist/js/editor/editor.js:16
 msgid "Button text"
 msgstr "ボタンテキスト"
 
-#: dist/js/editor/editor.js:15869
+#: dist/js/editor/editor.js:16
 msgid "Button background"
 msgstr "ボタン背景"
 
-#: dist/js/editor/editor.js:15909
+#: dist/js/editor/editor.js:16
 msgid "Overlay menu text"
 msgstr "オーバーレイメニューテキスト"
 
-#: dist/js/editor/editor.js:15946
+#: dist/js/editor/editor.js:16
 msgid "Overlay menu background"
 msgstr "オーバーレイメニュー背景"
 
-#: dist/js/editor/editor.js:15998
+#: dist/js/editor/editor.js:16
 msgid "unitone overlay menu"
 msgstr "unitone オーバーレイメニュー"
 
-#: dist/js/editor/editor.js:16019 dist/js/editor/editor.js:16040
+#: dist/js/editor/editor.js:16
 msgid "Use template parts for unitone overlay menu"
 msgstr "unitone オーバーレイメニューにテンプレートパーツを使用する"
 
-#: dist/js/editor/editor.js:16068 dist/js/editor/editor.js:16088
+#: dist/js/editor/editor.js:16
 msgid "Template part to use"
 msgstr "使用するテンプレートパーツ"
 
-#: dist/js/editor/editor.js:16267 dist/js/editor/editor.js:16282
+#: dist/js/editor/editor.js:16
 msgid "Use block links"
 msgstr "ブロックリンクを使用する"
 
-#: dist/js/editor/editor.js:16382
+#: dist/js/editor/editor.js:16
 msgid "Header section text"
 msgstr "ヘッダーセクションのテキスト"
 
-#: dist/js/editor/editor.js:16418
+#: dist/js/editor/editor.js:16
 msgid "Header section background"
 msgstr "ヘッダーセクションの背景"
 
-#: dist/js/editor/editor.js:16457
+#: dist/js/editor/editor.js:16
 msgid "Footer section text"
 msgstr "フッターセクションのテキスト"
 
-#: dist/js/editor/editor.js:16493
+#: dist/js/editor/editor.js:16
 msgid "Footer section background"
 msgstr "フッターセクションの背景"
 
-#: dist/js/editor/editor.js:16563 dist/js/editor/editor.js:16583
+#: dist/js/editor/editor.js:16
 msgid "Cell Min Width"
 msgstr "セルの最小幅"
 
-#: dist/js/editor/editor.js:16810
+#: dist/js/editor/editor.js:16
 msgid "Show block outline"
 msgstr "ブロックのアウトラインを表示"
 
-#: dist/js/editor/editor.js:16901
+#: dist/js/editor/editor.js:16
 msgid "Unlock content only locking"
 msgstr "コンテンツのみロックを解除"
 
-#: dist/js/editor/editor.js:16902
+#: dist/js/editor/editor.js:16
 msgid "Modify content only"
 msgstr "コンテンツのみの編集"
 
-#: dist/js/editor/editor.js:17225 dist/js/editor/editor.js:17229
-#: dist/js/editor/editor.js:17336
+#: dist/js/editor/editor.js:16
 msgid "Featured image generator settings"
 msgstr "アイキャッチ画像ジェネレーターの設定"
 
-#: dist/js/editor/editor.js:17309
+#: dist/js/editor/editor.js:16
 msgid "Generate featured image"
 msgstr "アイキャッチ画像を生成"
 
-#: dist/js/editor/editor.js:17346
+#: dist/js/editor/editor.js:16
 msgid "Aspect ratio"
 msgstr "アスペクト比"
 
-#: dist/js/editor/editor.js:18138
+#: dist/js/editor/editor.js:16
 msgid "Select parent block"
 msgstr "親ブロックを選択"
 
-#: dist/js/editor/editor.js:18148 dist/js/editor/editor.js:18158
+#: dist/js/editor/editor.js:16
 msgid "Select child block"
 msgstr "子ブロックを選択"
 
-#: dist/js/editor/editor.js:18204 dist/js/editor/editor.js:18208
-#: dist/js/editor/editor.js:18603
+#: dist/js/editor/editor.js:16
 msgid "OGP image generator settings"
 msgstr "OGP 画像ジェネレーターの設定"
 
-#: dist/js/editor/editor.js:18335
+#: dist/js/editor/editor.js:16
 msgid "Could not retrieve the OGP image data."
 msgstr "OGP 画像データを取得できませんでした。"
 
-#: dist/js/editor/editor.js:18357
+#: dist/js/editor/editor.js:16
 msgid "Edit or replace the OGP image"
 msgstr "OGP 画像の編集または置換"
 
-#: dist/js/editor/editor.js:18395
+#: dist/js/editor/editor.js:16
 msgid "OGP image"
 msgstr "OGP 画像"
 
-#: dist/js/editor/editor.js:18561
+#: dist/js/editor/editor.js:16
 msgid "Generate OGP image"
 msgstr "OGP 画像を生成"
 
-#: dist/js/editor/editor.js:18628
+#: dist/js/editor/editor.js:16
 msgid ""
 "If no OGP image is set, the featured image will be used as the og:image."
 msgstr ""
 "OGP画像が設定されていない場合、アイキャッチ画像が og:image として使用されま"
 "す。"
 
-#: dist/js/editor/editor.js:18772
+#: dist/js/editor/editor.js:16
 msgid "Sync children's settings"
 msgstr "子ブロックの設定を同期"
 
-#: dist/js/editor/editor.js:18973 dist/js/editor/editor.js:18995
+#: dist/js/editor/editor.js:16
 msgid "Wireframe Generator"
 msgstr "ワイヤーフレームジェネレーター"
 
-#: dist/js/editor/editor.js:19015
+#: dist/js/editor/editor.js:16
 msgid ""
 "Generates a wireframe using the unitone patterns. When inserted, images are "
 "replaced with dummy images."
@@ -4716,64 +4683,66 @@ msgstr ""
 "unitoneのパターンを使ったワイヤーフレームを生成します。挿入すると画像はダミー"
 "画像に置き換わります。"
 
-#: dist/js/editor/editor.js:19061 dist/js/editor/editor.js:19088
+#: dist/js/editor/editor.js:16
 msgid "Now generating…"
 msgstr "生成しています…"
 
-#: dist/js/editor/editor.js:19069
+#: dist/js/editor/editor.js:16
 msgid "Generate for homepage"
 msgstr "ホームページ用を生成"
 
-#: dist/js/editor/editor.js:19096
+#: dist/js/editor/editor.js:16
 msgid "Generate for lower-level pages"
 msgstr "下層ページ用を生成"
 
-#: dist/js/editor/editor.js:19110
+#: dist/js/editor/editor.js:16
 msgid "Insert wireframe"
 msgstr "ワイヤーフレームを挿入"
 
-#: dist/js/editor/editor.js:19141
+#: dist/js/editor/editor.js:16
 msgid "Tablet"
 msgstr "タブレット"
 
-#: dist/js/editor/editor.js:19677
+#. translators: %s: block pattern title.
+#: dist/js/editor/editor.js:20
 msgid "Wireframe"
 msgstr "ワイヤーフレーム"
 
-#: dist/js/editor/editor.js:20101
+#. Translators: %d: The number of the blocks.
+#: dist/js/editor/editor.js:26
 msgid "Paste styles"
 msgstr "スタイルを貼り付け"
 
-#: dist/js/editor/editor.js:20239 dist/js/editor/editor.js:20289
+#: dist/js/editor/editor.js:26
 msgid "Reset"
 msgstr "リセット"
 
-#: dist/js/editor/editor.js:20466
+#: dist/js/editor/editor.js:26
 msgid "Override settings"
 msgstr "設定の上書き"
 
-#: dist/js/editor/editor.js:20486
+#: dist/js/editor/editor.js:26
 msgid "Accent color"
 msgstr "アクセントカラー"
 
-#: dist/js/editor/editor.js:20509
+#: dist/js/editor/editor.js:26
 msgid "Background color"
 msgstr "背景色"
 
-#: dist/js/editor/editor.js:20532
+#: dist/js/editor/editor.js:26
 msgid "Text color"
 msgstr "文字色"
 
-#: dist/js/editor/editor.js:20771
+#: dist/js/editor/editor.js:26
 msgid "Copied."
 msgstr "コピーしました。"
 
-#: dist/js/editor/editor.js:20782 dist/js/editor/editor.js:20786
+#: dist/js/editor/editor.js:26
 msgid "Text Generator"
 msgstr "テキストジェネレーター"
 
 #. translators: %1$s: <a>, %2$s: </a>
-#: dist/js/editor/editor.js:20798
+#: dist/js/editor/editor.js:29
 msgid ""
 "To use this feature, configure AI Connectors from the %1$sConnectors "
 "settings screen%2$s."
@@ -4781,47 +4750,47 @@ msgstr ""
 "この機能を使用するには、%1$sコネクタ設定画面%2$sから AI コネクタを設定してく"
 "ださい。"
 
-#: dist/js/editor/editor.js:20810
+#: dist/js/editor/editor.js:29
 msgid "Prompt"
 msgstr "プロンプト"
 
-#: dist/js/editor/editor.js:20814
+#: dist/js/editor/editor.js:29
 msgid "Example: Generate customer testimonials for a web design agency."
 msgstr "例：web 制作会社向けのお客様の声を生成してください。"
 
-#: dist/js/editor/editor.js:20825
+#: dist/js/editor/editor.js:29
 msgid "Tone (optional)"
 msgstr "トーン（任意）"
 
-#: dist/js/editor/editor.js:20840
+#: dist/js/editor/editor.js:29
 msgid "Polite"
 msgstr "丁寧"
 
-#: dist/js/editor/editor.js:20847
+#: dist/js/editor/editor.js:29
 msgid "Casual"
 msgstr "カジュアル"
 
-#: dist/js/editor/editor.js:20854
+#: dist/js/editor/editor.js:29
 msgid "Formal"
 msgstr "フォーマル"
 
-#: dist/js/editor/editor.js:20861
+#: dist/js/editor/editor.js:29
 msgid "Friendly"
 msgstr "フレンドリー"
 
-#: dist/js/editor/editor.js:20868
+#: dist/js/editor/editor.js:29
 msgid "Logical"
 msgstr "ロジカル"
 
-#: dist/js/editor/editor.js:20875
+#: dist/js/editor/editor.js:29
 msgid "High energy"
 msgstr "熱量高め"
 
-#: dist/js/editor/editor.js:20890
+#: dist/js/editor/editor.js:29
 msgid "Please enter a prompt."
 msgstr "プロンプトを入力してください。"
 
-#: dist/js/editor/editor.js:21053
+#: dist/js/editor/editor.js:29
 msgid ""
 "[unitone] Starting with WordPress 7.0, the use of AI Connectors is "
 "recommended. This setup is scheduled to be rolled out, so please migrate to "
@@ -4830,43 +4799,43 @@ msgstr ""
 "[unitone] WordPress 7.0 以降、AI コネクタの使用が推奨されます。この設定は順次"
 "導入される予定ですので、できるだけ早く AI コネクタへ移行してください。"
 
-#: dist/js/editor/editor.js:21064
+#: dist/js/editor/editor.js:29
 msgid "Failed to generate. Please try again."
 msgstr "生成に失敗しました。再度実行してください。"
 
-#: dist/js/editor/editor.js:21073
+#: dist/js/editor/editor.js:29
 msgid "Generate"
 msgstr "生成"
 
-#: dist/js/editor/editor.js:21091
+#: dist/js/editor/editor.js:29
 msgid "Results"
 msgstr "結果"
 
-#: dist/js/editor/editor.js:21155
+#: dist/js/editor/editor.js:29
 msgid "Copy"
 msgstr "コピー"
 
-#: dist/js/editor/editor.js:21224
+#: dist/js/editor/editor.js:29
 msgid "Copy all"
 msgstr "すべてコピー"
 
-#: dist/variations/variations.js:10
+#: dist/variations/variations.js:1
 msgid "Post to X"
 msgstr "X にポスト"
 
-#: dist/variations/variations.js:37
+#: dist/variations/variations.js:1
 msgid "Share to Facebook"
 msgstr "Facebook にシェア"
 
-#: dist/variations/variations.js:64
+#: dist/variations/variations.js:1
 msgid "Share to LINE"
 msgstr "LINE にシェア"
 
-#: dist/variations/variations.js:105
+#: dist/variations/variations.js:1
 msgid "Add to Hatena Bookmarks"
 msgstr "はてなブックマークに追加"
 
-#: dist/variations/variations.js:118
+#: dist/variations/variations.js:1
 msgid "B! Bookmark"
 msgstr "B! ブックマーク"
 

@@ -105,6 +105,7 @@
 		"allowedBlocks": true,
 		"contentRole": true,
 		"unitone": {
+			"containerType": true,
 			"padding": true,
 			"fluidTypography": true,
 			"halfLeading": true,

@@ -36,6 +36,34 @@
 		width: fit-content;
 		max-width: 100%;
 	}
+
+	&:where(:not([data-unitone-layout~="@container"])) {
+		> [data-unitone-layout~="-switch"] {
+			@media (orientation: portrait) and (width < 600px) {
+				column-count: auto;
+				writing-mode: horizontal-tb;
+
+				> * {
+					box-sizing: border-box;
+					max-inline-size: none;
+				}
+			}
+		}
+	}
+
+	&:where([data-unitone-layout~="@container"]) {
+		> [data-unitone-layout~="-switch"] {
+			@container (width < 600px) {
+				column-count: auto;
+				writing-mode: horizontal-tb;
+
+				> * {
+					box-sizing: border-box;
+					max-inline-size: none;
+				}
+			}
+		}
+	}
 }
 
 [data-unitone-layout~="vertical-writing"] {

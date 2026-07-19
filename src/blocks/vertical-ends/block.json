@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "26.2.0",
+	"version": "27.1.0",
 	"textdomain": "unitone",
 	"name": "unitone/vertical-ends",
 	"title": "Vertical ends",
@@ -45,6 +45,7 @@
 		"allowedBlocks": true,
 		"contentRole": true,
 		"unitone": {
+			"containerType": true,
 			"gap": true,
 			"alignItemsColumn": true,
 			"fluidTypography": true,

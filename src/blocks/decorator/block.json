@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "26.3.1",
+	"version": "27.1.0",
 	"textdomain": "unitone",
 	"name": "unitone/decorator",
 	"title": "Decorator",

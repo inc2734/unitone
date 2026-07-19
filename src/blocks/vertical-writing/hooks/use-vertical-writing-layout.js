@@ -1,4 +1,9 @@
-import { useRef, useEffect, useLayoutEffect } from '@wordpress/element';
+import {
+	useCallback,
+	useRef,
+	useEffect,
+	useLayoutEffect,
+} from '@wordpress/element';
 import { useResizeObserver } from '@wordpress/compose';
 
 import {
@@ -6,11 +11,15 @@ import {
 	debounce,
 } from '@inc2734/unitone-css/library';
 
-export function useVerticalWritingLayout() {
+export function useVerticalWritingLayout( innerBlocksLength ) {
 	const ref = useRef( null );
 	const listenerAttachedRef = useRef( false );
 	const previousWidthRef = useRef( null );
+	const previousInnerBlocksLengthRef = useRef( innerBlocksLength );
 	const isComposingRef = useRef( false );
+	const childResizeObserverRef = useRef( null );
+	const layoutFrameIdRef = useRef( null );
+	const layoutFrameViewRef = useRef( null );
 
 	const isInputting = ( doc ) => {
 		const activeElement = doc?.activeElement;
@@ -24,7 +33,7 @@ export function useVerticalWritingLayout() {
 		);
 	};
 
-	const updateColumnLayout = ( element ) => {
+	const updateColumnLayout = useCallback( ( element ) => {
 		if ( ! element?.lastElementChild ) {
 			return;
 		}
@@ -41,7 +50,74 @@ export function useVerticalWritingLayout() {
 		if ( isSafariMatch || heightMismatch ) {
 			setColumnCountForVertical( element );
 		}
-	};
+	}, [] );
+
+	const cancelScheduledLayout = useCallback( () => {
+		if ( layoutFrameIdRef.current && layoutFrameViewRef.current ) {
+			layoutFrameViewRef.current.cancelAnimationFrame(
+				layoutFrameIdRef.current
+			);
+		}
+
+		layoutFrameIdRef.current = null;
+		layoutFrameViewRef.current = null;
+	}, [] );
+
+	const scheduleColumnLayout = useCallback(
+		( element ) => {
+			const win = element?.ownerDocument?.defaultView;
+			if ( ! element || ! win || layoutFrameIdRef.current ) {
+				return;
+			}
+
+			layoutFrameViewRef.current = win;
+			layoutFrameIdRef.current = win.requestAnimationFrame( () => {
+				layoutFrameIdRef.current = null;
+				layoutFrameViewRef.current = null;
+
+				if ( element.isConnected ) {
+					updateColumnLayout( element );
+				}
+			} );
+		},
+		[ updateColumnLayout ]
+	);
+
+	const disconnectChildResizeObserver = useCallback( () => {
+		if ( childResizeObserverRef.current ) {
+			childResizeObserverRef.current.disconnect();
+			childResizeObserverRef.current = null;
+		}
+	}, [] );
+
+	const observeDirectChildrenResize = useCallback(
+		( element ) => {
+			disconnectChildResizeObserver();
+
+			const win = element?.ownerDocument?.defaultView;
+			if ( ! element || ! win?.ResizeObserver ) {
+				return;
+			}
+
+			const children = [ ...element.children ].filter( ( child ) => {
+				const style = win.getComputedStyle( child );
+				return (
+					! [ 'absolute', 'fixed' ].includes( style.position ) &&
+					'none' !== style.display
+				);
+			} );
+			if ( ! children.length ) {
+				return;
+			}
+
+			const observer = new win.ResizeObserver( () => {
+				scheduleColumnLayout( element );
+			} );
+			children.forEach( ( child ) => observer.observe( child ) );
+			childResizeObserverRef.current = observer;
+		},
+		[ disconnectChildResizeObserver, scheduleColumnLayout ]
+	);
 
 	const debouncedHandler = debounce( () => {
 		const element = ref.current;
@@ -84,6 +160,7 @@ export function useVerticalWritingLayout() {
 			! listenerAttachedRef.current
 		) {
 			updateColumnLayout( ref.current );
+			observeDirectChildrenResize( ref.current );
 			doc.addEventListener( 'click', debouncedHandler );
 			win.addEventListener( 'keydown', onKeydown );
 			doc.addEventListener( 'compositionstart', onCompositionStart );
@@ -94,6 +171,8 @@ export function useVerticalWritingLayout() {
 			win.removeEventListener( 'keydown', onKeydown );
 			doc.removeEventListener( 'compositionstart', onCompositionStart );
 			doc.removeEventListener( 'compositionend', onCompositionEnd );
+			disconnectChildResizeObserver();
+			cancelScheduledLayout();
 			listenerAttachedRef.current = false;
 		}
 	};
@@ -110,6 +189,8 @@ export function useVerticalWritingLayout() {
 
 		return () => {
 			observer.disconnect();
+			disconnectChildResizeObserver();
+			cancelScheduledLayout();
 
 			if ( listenerAttachedRef.current ) {
 				const doc = ref.current?.ownerDocument;
@@ -148,6 +229,28 @@ export function useVerticalWritingLayout() {
 			resizeObserve( ref.current.parentNode );
 		}
 	}, [ ref.current ] );
+
+	useLayoutEffect( () => {
+		if ( previousInnerBlocksLengthRef.current === innerBlocksLength ) {
+			return;
+		}
+
+		previousInnerBlocksLengthRef.current = innerBlocksLength;
+
+		const element = ref.current;
+		if ( ! element ) {
+			return;
+		}
+
+		if ( listenerAttachedRef.current ) {
+			observeDirectChildrenResize( element );
+		}
+		scheduleColumnLayout( element );
+	}, [
+		innerBlocksLength,
+		observeDirectChildrenResize,
+		scheduleColumnLayout,
+	] );
 
 	return ref;
 }

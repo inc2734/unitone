@@ -21,12 +21,14 @@ import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { HelpContainer } from '../../js/editor/hooks/components';
+
 import {
 	normalizeForSelectControl,
 	normalizeForTextControl,
 	normalizeForToggleControl,
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
+
 import { useVerticalWritingLayout } from './hooks/use-vertical-writing-layout';
 
 import metadata from './block.json';
@@ -50,7 +52,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	);
 	const hasInnerBlocks = !! innerBlocksLength;
 
-	const ref = useVerticalWritingLayout();
+	const ref = useVerticalWritingLayout( innerBlocksLength );
 
 	const blockProps = useBlockProps();
 	blockProps[ 'data-unitone-layout' ] = clsx(

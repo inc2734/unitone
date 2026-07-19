@@ -113,3 +113,40 @@ Masonry ブロックをエディターで使用すると、WordPress 6.9 で `ge
 
 - [`src/blocks/masonry/edit.js`](../../src/blocks/masonry/edit.js)
 - [WordPress 6.9: Miscellaneous Editor Changes](https://make.wordpress.org/core/2025/11/25/miscellaneous-editor-changes-in-wordpress-6-9/)
+
+## 問題: Vertical Writing ブロックの内容変更後にエディター上の高さが更新されない
+
+- 状態: 解決済み
+- 確認日: 2026-07-19
+- 確認したバージョン・環境: ソースコードおよび変更履歴による確認
+- 関連領域: `unitone/vertical-writing`、ブロックエディター
+
+### 確認済みの事実
+
+#### 症状
+
+Vertical Writing ブロック内で直接の子ブロックを追加または削除して折り返しが変化しても、エディター上のブロックの高さが更新されない。中のブロックや別の場所をクリックすると更新される。また、子ブロック数が変わらなくても、テキスト量の変更によって最終段落の折り返しが変化する場合は同じ問題が発生する。
+
+### 原因
+
+- 原因の確度: 確認済み
+- エディター側の高さ再計算はクリック、特定のキー操作、表示領域への出入り、および親要素の幅変更を契機としていた。子ブロック数や子ブロックの実寸の変更は再計算の契機になっておらず、幅が変わらない追加・削除やテキストの折り返し変化を検知できなかった。
+- 2025年7月の表示性能改善で、エディター側が DOM の変更監視からイベント駆動へ移行した際に、ブロック構造変更の検知経路が失われていた。
+
+### 解決
+
+- 既存のブロックストア購読から得ている直接の子ブロック数をレイアウトフックへ渡し、その値が変化した場合だけ次の描画フレームで高さを再計算するようにした。
+- 表示領域付近にある間だけ、1つの `ResizeObserver` で直接の子ブロックの実寸を監視するようにした。通知は描画フレームごとに集約し、高さの不一致がある場合だけ再計算する。
+- DOM の文字・属性変更を監視する `MutationObserver` やポーリングは追加していない。
+
+### 確認
+
+- レイアウトフックの JavaScript lint に新規エラー・警告がないことを確認した。既存の警告3件は継続している。
+- Vertical Writing ブロックがビルドできることを確認した。
+- ブラウザ上で、直接の子ブロックを追加・削除した場合の高さ更新が改善したことをユーザー報告により確認した。
+- テキストの折り返し変化に対する `ResizeObserver` 追加後の高さ更新は未確認。
+
+### 関連ファイル・Issue・PR
+
+- [`src/blocks/vertical-writing/edit.js`](../../src/blocks/vertical-writing/edit.js)
+- [`src/blocks/vertical-writing/hooks/use-vertical-writing-layout.js`](../../src/blocks/vertical-writing/hooks/use-vertical-writing-layout.js)

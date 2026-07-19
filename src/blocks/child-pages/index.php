@@ -42,7 +42,7 @@ function render_block_unitone_child_pages( $attributes ) {
 	}
 
 	$layout       = $attributes['layout'];
-	$divider_type = $attributes['unitone']['dividerType'] ?? $attributes['__unstableUnitoneSupports']['dividerType']['default'] ?? null;
+	$divider_type = $attributes['unitone']['dividerType'] ?? null;
 
 	// @deprecated
 	if ( 'default' === $layout && ! empty( $attributes['className'] ) ) {

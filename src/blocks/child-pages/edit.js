@@ -58,7 +58,9 @@ export default function ( { attributes, setAttributes } ) {
 		className,
 		layout,
 		columnMinWidth,
+		unitone,
 	} = attributes;
+
 	const blockRef = useRef( null );
 	const refreshRef = useRef();
 	const shouldSetDividerLinewrap = [ 'cluster', 'stack' ].includes( layout );
@@ -321,11 +323,23 @@ export default function ( { attributes, setAttributes } ) {
 								},
 							] }
 							onChange={ ( newAttribute ) => {
-								setAttributes( {
-									layout: normalizeForSelectControl(
-										newAttribute
-									),
-								} );
+								const newLayout =
+									normalizeForSelectControl( newAttribute );
+								const newAttributes = { layout: newLayout };
+
+								if (
+									[ 'cluster', 'stack' ].includes(
+										newLayout
+									) &&
+									newLayout !== layout
+								) {
+									newAttributes.unitone = {
+										...unitone,
+										dividerType: 'stripe',
+									};
+								}
+
+								setAttributes( newAttributes );
 							} }
 						/>
 					</ToolsPanelItem>

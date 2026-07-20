@@ -1,4 +1,4 @@
-.unitone-child-pages > :where([data-unitone-layout*="-divider:"]) {
+.unitone-child-pages:where([data-unitone-layout*="-divider:"]) {
 	visibility: visible;
 }
 

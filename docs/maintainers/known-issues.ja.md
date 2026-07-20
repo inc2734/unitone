@@ -150,3 +150,37 @@ Vertical Writing ブロック内で直接の子ブロックを追加または削
 
 - [`src/blocks/vertical-writing/edit.js`](../../src/blocks/vertical-writing/edit.js)
 - [`src/blocks/vertical-writing/hooks/use-vertical-writing-layout.js`](../../src/blocks/vertical-writing/hooks/use-vertical-writing-layout.js)
+
+## 問題: Child Pages の区切り付きレイアウトをクリックで選択できない
+
+- 状態: 解決済み
+- 確認日: 2026-07-20
+- 確認したバージョン・環境: ソースコードおよび変更履歴による確認
+- 関連領域: `unitone/child-pages`、ブロックエディター、区切りレイアウト
+
+### 確認済みの事実
+
+#### 症状
+
+Child Pages の Cluster／Stack レイアウトで区切りが有効な場合、一覧は表示されるがクリックしてブロックを選択できない。
+
+### 原因
+
+- 原因の確度: 確認済み
+- エディター上の外側の Child Pages ラッパーにも `-divider:*` が付くが、この要素は区切りレイアウト本体ではないため `divider:initialized` の付与対象にならず、非表示状態に残っていた。
+- 内側の Cluster／Stack の `ul` は Child Pages のレイアウト初期化処理によって `divider:initialized` が付与される。
+
+### 解決
+
+- エディター専用 CSS で、`-divider:*` を持つ外側の Child Pages ラッパーだけを表示状態にした。
+- 内側の `ul` に対する強制表示は行わず、`divider:initialized` による標準の表示制御に任せる。
+
+### 確認
+
+- Child Pages のエントリーポイントがビルドできることを確認した。
+- ブラウザ上でのクリック選択は未確認。
+
+### 関連ファイル・Issue・PR
+
+- [`src/blocks/child-pages/index.scss`](../../src/blocks/child-pages/index.scss)
+- [`src/blocks/child-pages/edit.js`](../../src/blocks/child-pages/edit.js)

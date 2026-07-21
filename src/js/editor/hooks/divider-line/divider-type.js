@@ -149,7 +149,7 @@ export function DividerTypeEdit( props ) {
 				setAttributes( {
 					unitone: cleanEmptyObject( {
 						...unitone,
-						dividerType: normalizedNewValue || undefined,
+						dividerType: normalizedNewValue,
 					} ),
 				} );
 			} }

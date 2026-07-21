@@ -43,6 +43,9 @@ const withChildBlockAttributes = createHigherOrderComponent(
 						'',
 						...clusterDividedMetadata.supports.unitone.dividerType,
 					],
+					default:
+						clusterDividedMetadata.attributes?.unitone?.default
+							?.dividerType,
 				};
 				divider = {
 					default: {
@@ -61,6 +64,9 @@ const withChildBlockAttributes = createHigherOrderComponent(
 						'',
 						...stackDividedMetadata.supports.unitone.dividerType,
 					],
+					default:
+						stackDividedMetadata.attributes?.unitone?.default
+							?.dividerType,
 				};
 				divider = {
 					default: {

@@ -54,6 +54,13 @@ function render_block_unitone_child_pages( $attributes ) {
 		}
 	}
 
+	if ( null === $divider_type && in_array( $layout, array( 'cluster', 'stack' ), true ) ) {
+		$divided_block_type = \WP_Block_Type_Registry::get_instance()->get_registered( 'unitone/' . $layout . '-divided' );
+		if ( $divided_block_type ) {
+			$divider_type = $divided_block_type->attributes['unitone']['default']['dividerType'] ?? null;
+		}
+	}
+
 	$template = __DIR__ . '/templates/' . $layout . '.php';
 	if ( ! file_exists( $template ) ) {
 		$template = __DIR__ . '/templates/default.php';

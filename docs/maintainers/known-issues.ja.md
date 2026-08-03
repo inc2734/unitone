@@ -184,3 +184,33 @@ Child Pages の Cluster／Stack レイアウトで区切りが有効な場合、
 
 - [`src/blocks/child-pages/index.scss`](../../src/blocks/child-pages/index.scss)
 - [`src/blocks/child-pages/edit.js`](../../src/blocks/child-pages/edit.js)
+
+## 問題: 外部レイアウト内の Swiper Scrollbar が終端まで進まない
+
+- 状態: 解決済み
+- 確認日: 2026-07-24
+- 確認したバージョン・環境: Swiper 12.1.3、ヘッドレス Google Chrome
+- 関連領域: `unitone/swiper`、`unitone/swiper-scrollbar`、レイアウトブロック
+
+### 確認済みの事実
+
+#### 症状
+
+Swiper Scrollbar を Layers 内の `justify-self: center` などで内容幅になる Cluster へ配置すると、最終スライドへ移動しても Drag が Scrollbar の終端まで到達しない。
+
+### 原因
+
+- 原因の確度: 確認済み
+- `width: 100%` の Scrollbar 内にある Drag の固定幅が、内容幅で配置された親 Cluster の内在幅計算へ影響していた。Swiper の `updateSize()` は計測前に Drag の幅を消すため、その瞬間だけ親 Cluster と Scrollbar が縮み、縮小時の幅からDrag幅を計算する。Drag幅を書き戻すと親と Scrollbar が再び広がるため、計測値と最終表示幅が一致しない循環レイアウトになっていた。
+- Scrollbar 自身の `ResizeObserver` から再計算しても同じ循環が繰り返されるため、Observer だけでは解決しない。
+
+### 解決
+
+- Scrollbar に `contain: inline-size` を指定し、Drag の幅が親レイアウトの内在幅計算へ影響しないようにした。
+- 接続対象の Scrollbar 自身を `ResizeObserver` で監視し、サイズ変更時に `swiper.scrollbar.updateSize()` と `swiper.scrollbar.setTranslate()` を実行するようにした。
+- Swiper の破棄時に Observer を解除する。
+
+### 確認
+
+- Layers、`justify-self: center` の Cluster、5枚のスライドを組み合わせたブラウザテストで問題を再現した。`contain: inline-size` の適用後はTrack幅とDragの計算基準が一致し、5枚目で右端との差がサブピクセルの丸め誤差だけになることを確認した。
+- 対象ファイルの JavaScript lint とブロックビルドが成功することを確認した。

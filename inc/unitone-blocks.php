@@ -42,6 +42,13 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/responsive-image' );
 	register_block_type( get_template_directory() . '/dist/blocks/slide' );
 	register_block_type( get_template_directory() . '/dist/blocks/slider' );
+	register_block_type( get_template_directory() . '/dist/blocks/swiper' );
+	register_block_type( get_template_directory() . '/dist/blocks/swiper-autoplay-progress' );
+	register_block_type( get_template_directory() . '/dist/blocks/swiper-arrow' );
+	register_block_type( get_template_directory() . '/dist/blocks/swiper-pagination' );
+	register_block_type( get_template_directory() . '/dist/blocks/swiper-scrollbar' );
+	register_block_type( get_template_directory() . '/dist/blocks/swiper-slide' );
+	register_block_type( get_template_directory() . '/dist/blocks/swiper-track' );
 	register_block_type( get_template_directory() . '/dist/blocks/gutters' );
 	register_block_type( get_template_directory() . '/dist/blocks/pattern-inserter' );
 	register_block_type( get_template_directory() . '/dist/blocks/popover-content' );
@@ -74,6 +81,7 @@ function unitone_register_blocks() {
 	require_once get_template_directory() . '/dist/blocks/dialog/index.php';
 	require_once get_template_directory() . '/dist/blocks/popover/index.php';
 	require_once get_template_directory() . '/dist/blocks/responsive-switcher/index.php';
+	require_once get_template_directory() . '/dist/blocks/swiper-autoplay-control/index.php';
 	require_once get_template_directory() . '/dist/blocks/tab-panel/index.php';
 	require_once get_template_directory() . '/dist/blocks/tabs/index.php';
 

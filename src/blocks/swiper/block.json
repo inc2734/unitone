@@ -1,0 +1,68 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "27.1.0",
+	"textdomain": "unitone",
+	"name": "unitone/swiper",
+	"title": "[Swiper] Slider",
+	"description": "This block allows you to build a highly customizable slider where you can freely position controls.",
+	"keywords": [ "slider", "carousel", "swiper" ],
+	"attributes": {
+		"settings": {
+			"type": "object",
+			"default": {}
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": ".unitone-swiper"
+	},
+	"providesContext": {
+		"unitone/swiper/settings": "settings"
+	},
+	"allowedBlocks": true,
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"customCSS": false,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": false,
+			"link": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"allowedBlocks": true,
+		"contentRole": true,
+		"unitone": {
+			"containerType": true,
+			"gap": true,
+			"fluidTypography": true,
+			"halfLeading": true,
+			"linkDecoration": true
+		}
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./app.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css"
+}

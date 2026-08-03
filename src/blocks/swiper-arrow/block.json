@@ -1,0 +1,81 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "27.1.0",
+	"textdomain": "unitone",
+	"name": "unitone/swiper-arrow",
+	"title": "[Swiper] Arrow",
+	"description": "A previous or next arrow button. Connected to the nearest slider block.",
+	"ancestor": [ "unitone/swiper" ],
+	"attributes": {
+		"action": {
+			"type": "string",
+			"default": "previous"
+		},
+		"content": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": "span",
+			"default": ""
+		}
+	},
+	"selectors": {
+		"root": ".unitone-swiper-arrow"
+	},
+	"supports": {
+		"className": false,
+		"customCSS": false,
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true
+		},
+		"typography": {
+			"fontSize": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		},
+		"unitone": {
+			"fluidTypography": true,
+			"halfLeading": true,
+			"padding": {
+				"split": true
+			}
+		}
+	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Default",
+			"isDefault": true
+		},
+		{
+			"name": "1-1",
+			"label": "1:1"
+		}
+	],
+	"category": "unitone/component",
+	"editorScript": "file:./index.js"
+}

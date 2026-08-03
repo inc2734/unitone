@@ -1,6 +1,10 @@
 import clsx from 'clsx';
 
-import { hasBlockSupport, store as blocksStore } from '@wordpress/blocks';
+import {
+	getBlockSupport,
+	hasBlockSupport,
+	store as blocksStore,
+} from '@wordpress/blocks';
 import { SelectControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
@@ -35,6 +39,16 @@ const overflowOptions = [
 		value: 'clip',
 	},
 ];
+
+const getOverflowOptions = ( { name } ) => {
+	const support = getBlockSupport( name, 'unitone.overflow' );
+
+	return Array.isArray( support )
+		? overflowOptions.filter( ( option ) =>
+				support.includes( option.value )
+		  )
+		: overflowOptions;
+};
 
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
@@ -109,7 +123,7 @@ export function OverflowEdit( {
 			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
-			options={ overflowOptions }
+			options={ getOverflowOptions( { name } ) }
 			value={ normalizeForSelectControl(
 				unitone?.overflow ?? defaultValue
 			) }

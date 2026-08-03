@@ -1,0 +1,34 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "27.1.0",
+	"textdomain": "unitone",
+	"name": "unitone/swiper-autoplay-progress",
+	"title": "[Swiper] Autoplay progress",
+	"description": "Displays the progress of the automatic playback. Connected to the nearest slider block.",
+	"ancestor": [ "unitone/swiper" ],
+	"attributes": {
+		"settings": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"selectors": {
+		"root": ".unitone-swiper-autoplay-progress",
+		"color": ".unitone-swiper-autoplay-progress__track"
+	},
+	"supports": {
+		"className": false,
+		"customCSS": false,
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true
+		}
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js"
+}

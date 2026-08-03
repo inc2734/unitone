@@ -4,7 +4,7 @@
 	"version": "27.1.0",
 	"textdomain": "unitone",
 	"name": "unitone/slider",
-	"title": "Slider",
+	"title": "Slider (Deprecated)",
 	"description": "This block displays children scrolling horizontally.",
 	"attributes": {
 		"arrows": {

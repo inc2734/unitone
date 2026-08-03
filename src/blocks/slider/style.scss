@@ -1,5 +1,4 @@
 @import '../../../node_modules/swiper/swiper.css';
-@import '../../../node_modules/swiper/modules/autoplay.css';
 @import '../../../node_modules/swiper/modules/effect-fade.css';
 @import '../../../node_modules/swiper/modules/navigation.css';
 @import '../../../node_modules/swiper/modules/pagination.css';
@@ -72,7 +71,7 @@
 
 		&[data-unitone-swiper-autoplay-delay="0"] {
 			.swiper-wrapper {
-				transition-timing-function:linear;
+				transition-timing-function: linear;
 			}
 		}
 	}

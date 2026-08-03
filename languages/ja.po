@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-07-18T14:40:55+00:00\n"
-"PO-Revision-Date: 2026-07-18 23:42+0900\n"
+"POT-Creation-Date: 2026-08-01T08:37:31+00:00\n"
+"PO-Revision-Date: 2026-08-01 17:38+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -49,11 +49,11 @@ msgstr "テーマ"
 #: App/Controller/Manager/Manager.php:133
 #: App/Controller/Manager/dist/js/app.js:18 dist/blocks/child-pages/index.js:1
 #: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
-#: dist/blocks/slider/index.js:1 dist/blocks/tabs/index.js:1
-#: dist/blocks/vertical-writing/index.js:1 dist/js/editor/editor.js:1
-#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
-#: dist/js/editor/editor.js:16 dist/js/editor/editor.js:26
-#: dist/js/editor/editor.js:29
+#: dist/blocks/slider/index.js:1 dist/blocks/swiper/index.js:1
+#: dist/blocks/tabs/index.js:1 dist/blocks/vertical-writing/index.js:1
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:7
+#: dist/js/editor/editor.js:13 dist/js/editor/editor.js:16
+#: dist/js/editor/editor.js:26 dist/js/editor/editor.js:29
 msgid "Default"
 msgstr "デフォルト"
 
@@ -124,6 +124,16 @@ msgstr "さらに詳しく"
 #, php-format
 msgid "%s mega menu"
 msgstr "%sのメガメニュー"
+
+#: dist/blocks/swiper-autoplay-control/index.php:29
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "Play"
+msgstr "再生"
+
+#: dist/blocks/swiper-autoplay-control/index.php:30
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "Pause"
+msgstr "一時停止"
 
 #: inc/block-categories.php:25 App/Controller/Manager/dist/js/app.js:10
 #: dist/blocks/child-pages/index.js:1 dist/js/editor/editor.js:7
@@ -683,7 +693,7 @@ msgstr ""
 "ページを覆う形で表示されます。"
 
 #: inc/template-part-areas.php:41 dist/blocks/slider/index.js:1
-#: dist/js/editor/editor.js:13
+#: dist/blocks/swiper/index.js:1 dist/js/editor/editor.js:13
 msgid "Loop"
 msgstr "ループ"
 
@@ -2479,7 +2489,12 @@ msgstr "アブストラクト背景"
 #: dist/blocks/responsive-image/index.js:1
 #: dist/blocks/responsive-switcher/index.js:1 dist/blocks/section/index.js:1
 #: dist/blocks/slider/index.js:1 dist/blocks/stack-divided/index.js:1
-#: dist/blocks/stack/index.js:1 dist/blocks/switcher/index.js:1
+#: dist/blocks/stack/index.js:1 dist/blocks/swiper-arrow/index.js:1
+#: dist/blocks/swiper-autoplay-control/index.js:1
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+#: dist/blocks/swiper-pagination/index.js:1
+#: dist/blocks/swiper-scrollbar/index.js:1 dist/blocks/swiper-slide/index.js:1
+#: dist/blocks/swiper/index.js:1 dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1 dist/blocks/texture/index.js:1
 #: dist/blocks/timeline-dots/index.js:1 dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-content/index.js:1
@@ -2822,7 +2837,9 @@ msgstr "ダイアログ（ボタン）"
 msgid "Dialog (Box)"
 msgstr "ダイアログ（ボックス）"
 
-#: dist/blocks/divider/index.js:1 dist/blocks/texture/index.js:1
+#: dist/blocks/divider/index.js:1
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+#: dist/blocks/swiper-pagination/index.js:1 dist/blocks/texture/index.js:1
 #: dist/js/editor/editor.js:4 dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:13
 msgid "Type"
@@ -2909,23 +2926,25 @@ msgid "Switch aspect ratio when portrait and mobile width."
 msgstr "ポートレートかつモバイル幅のときアスペクト比を切り替える。"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:16
+#: dist/blocks/swiper/index.js:1 dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:16
 msgid "Desktop"
 msgstr "デスクトップ"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1
+#: dist/blocks/swiper/index.js:1 dist/js/editor/editor.js:1
 msgid "Tablet / Mobile"
 msgstr "タブレット / モバイル"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-switcher-container/index.js:1
-#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:16
+#: dist/blocks/swiper/index.js:1 dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:16
 msgid "Mobile"
 msgstr "モバイル"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
-#: dist/js/editor/editor.js:1
+#: dist/blocks/swiper/index.js:1 dist/js/editor/editor.js:1
 msgid "Switch to settings based on device size"
 msgstr "デバイスサイズに応じた設定に切り替え"
 
@@ -3093,6 +3112,7 @@ msgid "Speed (s)"
 msgstr "スピード（秒）"
 
 #: dist/blocks/marquee/index.js:1 dist/blocks/slider/index.js:1
+#: dist/blocks/swiper/index.js:1
 msgid "Reverse direction"
 msgstr "逆方向"
 
@@ -3279,7 +3299,8 @@ msgstr "対象の最大ビューポート幅"
 msgid "Image width"
 msgstr "画像の幅"
 
-#: dist/blocks/responsive-image/index.js:1 dist/js/editor/editor.js:13
+#: dist/blocks/responsive-image/index.js:1 dist/blocks/swiper/index.js:1
+#: dist/js/editor/editor.js:13
 msgid "Auto"
 msgstr "自動"
 
@@ -3356,11 +3377,11 @@ msgstr "シェブロン"
 msgid "Chevrons"
 msgstr "シェブロン（二重）"
 
-#: dist/blocks/slider/index.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/swiper-pagination/index.js:1
 msgid "Bullets"
 msgstr "バレット"
 
-#: dist/blocks/slider/index.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/swiper-pagination/index.js:1
 msgid "Progress bar"
 msgstr "プログレスバー"
 
@@ -3407,19 +3428,19 @@ msgstr "項目を両端揃え"
 msgid "Justify items space-between (Expanded)"
 msgstr "項目を両端揃え（拡張）"
 
-#: dist/blocks/slider/index.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/swiper/index.js:1
 msgid "Slide"
 msgstr "スライド"
 
-#: dist/blocks/slider/index.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/swiper/index.js:1
 msgid "Fade"
 msgstr "フェード"
 
-#: dist/blocks/slider/index.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/swiper/index.js:1
 msgid "Effect"
 msgstr "エフェクト"
 
-#: dist/blocks/slider/index.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/swiper/index.js:1
 msgid "Center the active slide"
 msgstr "アクティブなスライドを中央に配置"
 
@@ -3431,7 +3452,7 @@ msgstr "エディター上では表示は反映されません。"
 msgid "Hide parts that extend beyond the canvas"
 msgstr "キャンバスからはみ出した部分を隠す"
 
-#: dist/blocks/slider/index.js:1
+#: dist/blocks/slider/index.js:1 dist/blocks/swiper/index.js:1
 msgid "Autoplay"
 msgstr "自動再生"
 
@@ -3550,6 +3571,230 @@ msgstr "スタック（区切り：分割）"
 #: dist/blocks/stack/index.js:1
 msgid "hgroup"
 msgstr "hgroup"
+
+#: dist/blocks/swiper-arrow/index.js:1
+msgid "[Swiper] Previous arrow"
+msgstr "[Swiper] 前へボタン"
+
+#: dist/blocks/swiper-arrow/index.js:1
+msgid "Previous"
+msgstr "前へ"
+
+#: dist/blocks/swiper-arrow/index.js:1
+msgid "[Swiper] Next arrow"
+msgstr "[Swiper] 次へボタン"
+
+#: dist/blocks/swiper-arrow/index.js:1
+msgid "Next"
+msgstr "次へ"
+
+#: dist/blocks/swiper-arrow/index.js:1
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "Action"
+msgstr "アクション"
+
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "[Swiper] Autoplay start"
+msgstr "[Swiper] 再生ボタン"
+
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "[Swiper] Autoplay pause"
+msgstr "[Swiper] 一時停止ボタン"
+
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+msgid "Bar"
+msgstr "バー"
+
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+msgctxt "autoplay progress type"
+msgid "Circle"
+msgstr "サークル"
+
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+msgid "Circle size"
+msgstr "サークルのサイズ"
+
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+msgid "Thickness"
+msgstr "太さ"
+
+#: dist/blocks/swiper-pagination/index.js:1
+msgid "Fraction"
+msgstr "フラクション"
+
+#: dist/blocks/swiper-pagination/index.js:1
+msgid "Dynamic bullets"
+msgstr "動的バレット"
+
+#: dist/blocks/swiper-pagination/index.js:1
+msgid "Bullet size"
+msgstr "バレットのサイズ"
+
+#: dist/blocks/swiper-pagination/index.js:1
+msgid "Progress bar size"
+msgstr "プログレスバーのサイズ"
+
+#: dist/blocks/swiper-scrollbar/index.js:1
+msgid "Hide after interaction"
+msgstr "インタラクション後に隠す"
+
+#: dist/blocks/swiper-scrollbar/index.js:1
+msgid "Scrollbar size"
+msgstr "スクロールバーのサイズ"
+
+#: dist/blocks/swiper-slide/index.js:1 dist/blocks/swiper/index.js:1
+msgid "Slide width"
+msgstr "スライドの幅"
+
+#: dist/blocks/swiper-slide/index.js:1
+msgid "This applies when \"Slides per view\" is set to \"auto\"."
+msgstr "「1ビューあたりのスライド数」が「自動」のときに適用されます。"
+
+#: dist/blocks/swiper-slide/index.js:1
+msgid "Autoplay delay override (ms)"
+msgstr "自動再生遅延の上書き（ms）"
+
+#. translators: %d: slide number.
+#: dist/blocks/swiper-track/index.js:2
+msgid "Go to slide %d"
+msgstr "スライド %d へ移動"
+
+#: dist/blocks/swiper/app.js:1
+msgid "Previous slide"
+msgstr "前のスライド"
+
+#: dist/blocks/swiper/app.js:1
+msgid "Next slide"
+msgstr "次のスライド"
+
+#: dist/blocks/swiper/app.js:1
+msgid "This is the first slide"
+msgstr "最初のスライド"
+
+#: dist/blocks/swiper/app.js:1
+msgid "This is the last slide"
+msgstr "最後のスライド"
+
+#: dist/blocks/swiper/app.js:1
+msgid "Go to slide {{index}}"
+msgstr "スライド {{index}} へ移動"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Slides per view"
+msgstr "1ビューあたりのスライド数"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Inherit"
+msgstr "継承"
+
+#: dist/blocks/swiper/index.js:1
+msgctxt "Number of slides"
+msgid "Number"
+msgstr "表示枚数"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Space between slides"
+msgstr "スライド間の余白"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Slides per group"
+msgstr "1グループあたりのスライド数"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Effects"
+msgstr "エフェクト"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Cross fade"
+msgstr "クロスフェード"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Responsive slide layout"
+msgstr "レスポンシブスライドレイアウト"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Container beginning offset"
+msgstr "コンテナーの開始オフセット"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Container end offset"
+msgstr "コンテナーの終端オフセット"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Animation speed (ms)"
+msgstr "アニメーションの速さ（ms）"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Off"
+msgstr "オフ"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Rewind"
+msgstr "巻き戻し"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Snap to slide edge"
+msgstr "スライドの端にスナップ"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Auto height"
+msgstr "高さ自動"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Touch"
+msgstr "タッチ"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Allow touch move"
+msgstr "タッチ移動を許可"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Free mode"
+msgstr "フリーモード"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Delay (ms)"
+msgstr "遅延（ms）"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disable on interaction"
+msgstr "インタラクション時に無効化"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Pause on pointer enter over"
+msgstr "ポインターが乗ったときに一時停止"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Responsive settings"
+msgstr "レスポンシブ設定"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Responsive basis"
+msgstr "レスポンシブの基準"
+
+#: dist/blocks/swiper/index.js:1 dist/js/editor/editor.js:7
+msgid "Viewport"
+msgstr "ビューポート"
+
+#: dist/blocks/swiper/index.js:1
+msgid "This block"
+msgstr "このブロック"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Tablet breakpoint"
+msgstr "タブレットのブレイクポイント"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Desktop breakpoint"
+msgstr "デスクトップのブレイクポイント"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Slider"
+msgstr "スライダー"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Only the first Scrollbar block is connected to Swiper."
+msgstr "最初のスクロールバーブロックのみが Swiperに接続されます。"
 
 #: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
 msgid "Threshold"
@@ -4150,10 +4395,6 @@ msgid ""
 msgstr ""
 "このブロック固有の CSS を画面幅とコンテナー幅のどちらに応じて切り替えるかを選"
 "択します。WordPress が出力する CSS には影響しません。"
-
-#: dist/js/editor/editor.js:7
-msgid "Viewport"
-msgstr "ビューポート"
 
 #: dist/js/editor/editor.js:7
 msgid "Container"
@@ -4859,7 +5100,8 @@ msgctxt "block description"
 msgid "This block displays folded content."
 msgstr "折り畳まれたコンテンツを表示するブロックです。"
 
-#: dist/blocks/accordion/block.json dist/blocks/tabs/block.json
+#: dist/blocks/accordion/block.json dist/blocks/swiper-arrow/block.json
+#: dist/blocks/swiper-autoplay-control/block.json dist/blocks/tabs/block.json
 msgctxt "block style label"
 msgid "Default"
 msgstr "デフォルト"
@@ -5394,8 +5636,8 @@ msgstr "スライド"
 
 #: dist/blocks/slider/block.json
 msgctxt "block title"
-msgid "Slider"
-msgstr "スライダー"
+msgid "Slider (Deprecated)"
+msgstr "スライダー（非推奨）"
 
 #: dist/blocks/stack-divided-content/block.json
 msgctxt "block description"
@@ -5417,6 +5659,117 @@ msgstr "子要素を一定間隔で縦に並べます。"
 msgctxt "block title"
 msgid "Stack"
 msgstr "スタック"
+
+#: dist/blocks/swiper-arrow/block.json
+msgctxt "block title"
+msgid "[Swiper] Arrow"
+msgstr "[Swiper] 矢印"
+
+#: dist/blocks/swiper-arrow/block.json
+msgctxt "block description"
+msgid "A previous or next arrow button. Connected to the nearest slider block."
+msgstr ""
+"前へ、または次へ移動する矢印ボタン。最寄りのスライダーブロックに接続されま"
+"す。"
+
+#: dist/blocks/swiper-arrow/block.json
+#: dist/blocks/swiper-autoplay-control/block.json
+msgctxt "block style label"
+msgid "1:1"
+msgstr "1:1"
+
+#: dist/blocks/swiper-autoplay-control/block.json
+msgctxt "block title"
+msgid "[Swiper] Autoplay control"
+msgstr "[Swiper] 自動再生コントロール"
+
+#: dist/blocks/swiper-autoplay-control/block.json
+msgctxt "block description"
+msgid "A play or pause control button. Connected to the nearest slider block."
+msgstr ""
+"再生または一時停止の操作ボタン。最寄りのスライダーブロックに接続されます。"
+
+#: dist/blocks/swiper-autoplay-progress/block.json
+msgctxt "block title"
+msgid "[Swiper] Autoplay progress"
+msgstr "[Swiper] 自動再生プログレス"
+
+#: dist/blocks/swiper-autoplay-progress/block.json
+msgctxt "block description"
+msgid ""
+"Displays the progress of the automatic playback. Connected to the nearest "
+"slider block."
+msgstr ""
+"自動再生の進捗状況を表示します。最寄りのスライダーブロックに接続されます。"
+
+#: dist/blocks/swiper-pagination/block.json
+msgctxt "block title"
+msgid "[Swiper] Pagination"
+msgstr "[Swiper] ページネーション"
+
+#: dist/blocks/swiper-pagination/block.json
+msgctxt "block description"
+msgid "A pagination. Connected to the nearest slider block."
+msgstr "ページネーション。最寄りのスライダーブロックに接続されます。"
+
+#: dist/blocks/swiper-scrollbar/block.json
+msgctxt "block title"
+msgid "[Swiper] Scrollbar"
+msgstr "[Swiper] スクロールバー"
+
+#: dist/blocks/swiper-scrollbar/block.json
+msgctxt "block description"
+msgid "A scrollbar. Connected to the nearest slider block."
+msgstr "スクロールバー。最寄りのスライダーブロックに接続されます。"
+
+#: dist/blocks/swiper-slide/block.json
+msgctxt "block title"
+msgid "[Swiper] Slide"
+msgstr "[Swiper] スライド"
+
+#: dist/blocks/swiper-slide/block.json
+msgctxt "block description"
+msgid "A slide displayed inside slider."
+msgstr "スライダー内に表示されるスライド。"
+
+#: dist/blocks/swiper-track/block.json
+msgctxt "block title"
+msgid "[Swiper] Track"
+msgstr "[Swiper] スライド領域"
+
+#: dist/blocks/swiper-track/block.json
+msgctxt "block description"
+msgid "The track where the slide is placed."
+msgstr "スライドが配置されるスライド領域。"
+
+#: dist/blocks/swiper/block.json
+msgctxt "block title"
+msgid "[Swiper] Slider"
+msgstr "[Swiper] スライダー"
+
+#: dist/blocks/swiper/block.json
+msgctxt "block description"
+msgid ""
+"This block allows you to build a highly customizable slider where you can "
+"freely position controls."
+msgstr ""
+"このブロックを使用すると、コントロールを自由に配置できるカスタマイズ性の高い"
+"スライダーを作成できます。"
+
+#: dist/blocks/swiper/block.json
+msgctxt "block keyword"
+msgid "slider"
+msgstr "スライダー"
+
+#: dist/blocks/swiper/block.json
+msgctxt "block keyword"
+msgid "carousel"
+msgstr "カルーセル"
+
+#: dist/blocks/swiper/block.json
+msgctxt "block keyword"
+msgid "swiper"
+msgstr "swiper"
 
 #: dist/blocks/switcher/block.json
 msgctxt "block title"

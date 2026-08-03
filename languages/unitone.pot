@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 27.0.1\n"
+"Project-Id-Version: unitone 27.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-18T14:40:55+00:00\n"
+"POT-Creation-Date: 2026-08-01T08:37:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -57,6 +57,7 @@ msgstr ""
 #: dist/blocks/layers/index.js:1
 #: dist/blocks/section/index.js:1
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/blocks/tabs/index.js:1
 #: dist/blocks/vertical-writing/index.js:1
 #: dist/js/editor/editor.js:1
@@ -134,6 +135,16 @@ msgstr ""
 #: dist/blocks/mega-menu/index.php:30
 #, php-format
 msgid "%s mega menu"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.php:29
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "Play"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.php:30
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "Pause"
 msgstr ""
 
 #: inc/block-categories.php:25
@@ -696,6 +707,7 @@ msgstr ""
 
 #: inc/template-part-areas.php:41
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/js/editor/editor.js:13
 msgid "Loop"
 msgstr ""
@@ -2428,6 +2440,13 @@ msgstr ""
 #: dist/blocks/slider/index.js:1
 #: dist/blocks/stack-divided/index.js:1
 #: dist/blocks/stack/index.js:1
+#: dist/blocks/swiper-arrow/index.js:1
+#: dist/blocks/swiper-autoplay-control/index.js:1
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+#: dist/blocks/swiper-pagination/index.js:1
+#: dist/blocks/swiper-scrollbar/index.js:1
+#: dist/blocks/swiper-slide/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/text/index.js:1
 #: dist/blocks/texture/index.js:1
@@ -2794,6 +2813,8 @@ msgid "Dialog (Box)"
 msgstr ""
 
 #: dist/blocks/divider/index.js:1
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+#: dist/blocks/swiper-pagination/index.js:1
 #: dist/blocks/texture/index.js:1
 #: dist/js/editor/editor.js:4
 #: dist/js/editor/editor.js:7
@@ -2882,6 +2903,7 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/js/editor/editor.js:1
 #: dist/js/editor/editor.js:16
 msgid "Desktop"
@@ -2889,6 +2911,7 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Tablet / Mobile"
 msgstr ""
@@ -2896,6 +2919,7 @@ msgstr ""
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
 #: dist/blocks/responsive-switcher-container/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/js/editor/editor.js:1
 #: dist/js/editor/editor.js:16
 msgid "Mobile"
@@ -2903,6 +2927,7 @@ msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
 #: dist/blocks/grid/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Switch to settings based on device size"
 msgstr ""
@@ -3083,6 +3108,7 @@ msgstr ""
 
 #: dist/blocks/marquee/index.js:1
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/swiper/index.js:1
 msgid "Reverse direction"
 msgstr ""
 
@@ -3267,6 +3293,7 @@ msgid "Image width"
 msgstr ""
 
 #: dist/blocks/responsive-image/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/js/editor/editor.js:13
 msgid "Auto"
 msgstr ""
@@ -3345,10 +3372,12 @@ msgid "Chevrons"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/swiper-pagination/index.js:1
 msgid "Bullets"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/swiper-pagination/index.js:1
 msgid "Progress bar"
 msgstr ""
 
@@ -3403,18 +3432,22 @@ msgid "Justify items space-between (Expanded)"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/swiper/index.js:1
 msgid "Slide"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/swiper/index.js:1
 msgid "Fade"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/swiper/index.js:1
 msgid "Effect"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/swiper/index.js:1
 msgid "Center the active slide"
 msgstr ""
 
@@ -3427,6 +3460,7 @@ msgid "Hide parts that extend beyond the canvas"
 msgstr ""
 
 #: dist/blocks/slider/index.js:1
+#: dist/blocks/swiper/index.js:1
 msgid "Autoplay"
 msgstr ""
 
@@ -3545,6 +3579,233 @@ msgstr ""
 
 #: dist/blocks/stack/index.js:1
 msgid "hgroup"
+msgstr ""
+
+#: dist/blocks/swiper-arrow/index.js:1
+msgid "[Swiper] Previous arrow"
+msgstr ""
+
+#: dist/blocks/swiper-arrow/index.js:1
+msgid "Previous"
+msgstr ""
+
+#: dist/blocks/swiper-arrow/index.js:1
+msgid "[Swiper] Next arrow"
+msgstr ""
+
+#: dist/blocks/swiper-arrow/index.js:1
+msgid "Next"
+msgstr ""
+
+#: dist/blocks/swiper-arrow/index.js:1
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "Action"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "[Swiper] Autoplay start"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "[Swiper] Autoplay pause"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+msgid "Bar"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+msgctxt "autoplay progress type"
+msgid "Circle"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+msgid "Circle size"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-progress/index.js:1
+msgid "Thickness"
+msgstr ""
+
+#: dist/blocks/swiper-pagination/index.js:1
+msgid "Fraction"
+msgstr ""
+
+#: dist/blocks/swiper-pagination/index.js:1
+msgid "Dynamic bullets"
+msgstr ""
+
+#: dist/blocks/swiper-pagination/index.js:1
+msgid "Bullet size"
+msgstr ""
+
+#: dist/blocks/swiper-pagination/index.js:1
+msgid "Progress bar size"
+msgstr ""
+
+#: dist/blocks/swiper-scrollbar/index.js:1
+msgid "Hide after interaction"
+msgstr ""
+
+#: dist/blocks/swiper-scrollbar/index.js:1
+msgid "Scrollbar size"
+msgstr ""
+
+#: dist/blocks/swiper-slide/index.js:1
+#: dist/blocks/swiper/index.js:1
+msgid "Slide width"
+msgstr ""
+
+#: dist/blocks/swiper-slide/index.js:1
+msgid "This applies when \"Slides per view\" is set to \"auto\"."
+msgstr ""
+
+#: dist/blocks/swiper-slide/index.js:1
+msgid "Autoplay delay override (ms)"
+msgstr ""
+
+#. translators: %d: slide number.
+#: dist/blocks/swiper-track/index.js:2
+#, js-format
+msgid "Go to slide %d"
+msgstr ""
+
+#: dist/blocks/swiper/app.js:1
+msgid "Previous slide"
+msgstr ""
+
+#: dist/blocks/swiper/app.js:1
+msgid "Next slide"
+msgstr ""
+
+#: dist/blocks/swiper/app.js:1
+msgid "This is the first slide"
+msgstr ""
+
+#: dist/blocks/swiper/app.js:1
+msgid "This is the last slide"
+msgstr ""
+
+#: dist/blocks/swiper/app.js:1
+msgid "Go to slide {{index}}"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Slides per view"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Inherit"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgctxt "Number of slides"
+msgid "Number"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Space between slides"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Slides per group"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Effects"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Cross fade"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Responsive slide layout"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Container beginning offset"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Container end offset"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Animation speed (ms)"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Off"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Rewind"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Snap to slide edge"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Auto height"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Touch"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Allow touch move"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Free mode"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Delay (ms)"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disable on interaction"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Pause on pointer enter over"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Responsive settings"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Responsive basis"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+#: dist/js/editor/editor.js:7
+msgid "Viewport"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "This block"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Tablet breakpoint"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Desktop breakpoint"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Slider"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Only the first Scrollbar block is connected to Swiper."
 msgstr ""
 
 #: dist/blocks/switcher/index.js:1
@@ -4126,10 +4387,6 @@ msgstr ""
 
 #: dist/js/editor/editor.js:7
 msgid "Choose whether this block's specific CSS responds to the viewport width or the container width. This does not affect CSS generated by WordPress."
-msgstr ""
-
-#: dist/js/editor/editor.js:7
-msgid "Viewport"
 msgstr ""
 
 #: dist/js/editor/editor.js:7
@@ -4804,6 +5061,8 @@ msgid "This block displays folded content."
 msgstr ""
 
 #: dist/blocks/accordion/block.json
+#: dist/blocks/swiper-arrow/block.json
+#: dist/blocks/swiper-autoplay-control/block.json
 #: dist/blocks/tabs/block.json
 msgctxt "block style label"
 msgid "Default"
@@ -5298,7 +5557,7 @@ msgstr ""
 
 #: dist/blocks/slider/block.json
 msgctxt "block title"
-msgid "Slider"
+msgid "Slider (Deprecated)"
 msgstr ""
 
 #: dist/blocks/stack-divided-content/block.json
@@ -5320,6 +5579,107 @@ msgstr ""
 #: dist/blocks/stack/block.json
 msgctxt "block title"
 msgid "Stack"
+msgstr ""
+
+#: dist/blocks/swiper-arrow/block.json
+msgctxt "block title"
+msgid "[Swiper] Arrow"
+msgstr ""
+
+#: dist/blocks/swiper-arrow/block.json
+msgctxt "block description"
+msgid "A previous or next arrow button. Connected to the nearest slider block."
+msgstr ""
+
+#: dist/blocks/swiper-arrow/block.json
+#: dist/blocks/swiper-autoplay-control/block.json
+msgctxt "block style label"
+msgid "1:1"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/block.json
+msgctxt "block title"
+msgid "[Swiper] Autoplay control"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/block.json
+msgctxt "block description"
+msgid "A play or pause control button. Connected to the nearest slider block."
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-progress/block.json
+msgctxt "block title"
+msgid "[Swiper] Autoplay progress"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-progress/block.json
+msgctxt "block description"
+msgid "Displays the progress of the automatic playback. Connected to the nearest slider block."
+msgstr ""
+
+#: dist/blocks/swiper-pagination/block.json
+msgctxt "block title"
+msgid "[Swiper] Pagination"
+msgstr ""
+
+#: dist/blocks/swiper-pagination/block.json
+msgctxt "block description"
+msgid "A pagination. Connected to the nearest slider block."
+msgstr ""
+
+#: dist/blocks/swiper-scrollbar/block.json
+msgctxt "block title"
+msgid "[Swiper] Scrollbar"
+msgstr ""
+
+#: dist/blocks/swiper-scrollbar/block.json
+msgctxt "block description"
+msgid "A scrollbar. Connected to the nearest slider block."
+msgstr ""
+
+#: dist/blocks/swiper-slide/block.json
+msgctxt "block title"
+msgid "[Swiper] Slide"
+msgstr ""
+
+#: dist/blocks/swiper-slide/block.json
+msgctxt "block description"
+msgid "A slide displayed inside slider."
+msgstr ""
+
+#: dist/blocks/swiper-track/block.json
+msgctxt "block title"
+msgid "[Swiper] Track"
+msgstr ""
+
+#: dist/blocks/swiper-track/block.json
+msgctxt "block description"
+msgid "The track where the slide is placed."
+msgstr ""
+
+#: dist/blocks/swiper/block.json
+msgctxt "block title"
+msgid "[Swiper] Slider"
+msgstr ""
+
+#: dist/blocks/swiper/block.json
+msgctxt "block description"
+msgid "This block allows you to build a highly customizable slider where you can freely position controls."
+msgstr ""
+
+#: dist/blocks/swiper/block.json
+msgctxt "block keyword"
+msgid "slider"
+msgstr ""
+
+#: dist/blocks/swiper/block.json
+msgctxt "block keyword"
+msgid "carousel"
+msgstr ""
+
+#: dist/blocks/swiper/block.json
+msgctxt "block keyword"
+msgid "swiper"
 msgstr ""
 
 #: dist/blocks/switcher/block.json

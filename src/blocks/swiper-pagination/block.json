@@ -1,0 +1,50 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "27.1.0",
+	"textdomain": "unitone",
+	"name": "unitone/swiper-pagination",
+	"title": "[Swiper] Pagination",
+	"description": "A pagination. Connected to the nearest slider block.",
+	"ancestor": [ "unitone/swiper" ],
+	"attributes": {
+		"settings": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"selectors": {
+		"root": ".unitone-swiper-pagination"
+	},
+	"supports": {
+		"className": false,
+		"customCSS": false,
+		"color": {
+			"background": false,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"unitone": {
+			"fluidTypography": true,
+			"halfLeading": true,
+			"gap": true
+		}
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js"
+}

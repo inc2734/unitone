@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"version": "27.1.0",
+	"textdomain": "unitone",
+	"name": "unitone/swiper-track",
+	"title": "[Swiper] Track",
+	"description": "The track where the slide is placed.",
+	"ancestor": [ "unitone/swiper" ],
+	"allowedBlocks": [ "unitone/swiper-slide" ],
+	"attributes": {
+		"unitone": {
+			"type": "object",
+			"default": {
+				"overflow": "clip"
+			}
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"selectors": {
+		"root": ".unitone-swiper-track"
+	},
+	"usesContext": [ "unitone/swiper/settings" ],
+	"supports": {
+		"className": false,
+		"anchor": true,
+		"customCSS": false,
+		"allowedBlocks": false,
+		"contentRole": true,
+		"listView": true,
+		"unitone": {
+			"overflow": [ "visible", "clip" ],
+			"syncChildren": true
+		}
+	},
+	"category": "unitone/component",
+	"editorScript": "file:./index.js"
+}

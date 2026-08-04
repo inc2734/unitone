@@ -14,10 +14,20 @@
 
 [data-unitone-hover-animation~=scale] {
 	--unitone--hover-animation-scale: 1.05;
+	--unitone--hover-animation-initial-scale: 1;
+
+	&:where([data-unitone-hover-animation~=-has-initial]) {
+		scale: var(--unitone--hover-animation-initial-scale);
+	}
 }
 
 [data-unitone-hover-animation~=fade] {
 	--unitone--hover-animation-opacity: .75;
+	--unitone--hover-animation-initial-opacity: 1;
+
+	&:where([data-unitone-hover-animation~=-has-initial]) {
+		opacity: var(--unitone--hover-animation-initial-opacity);
+	}
 }
 
 [data-unitone-hover-animation~=flex-grow] {

@@ -970,11 +970,23 @@ add_filter(
 				$hover_animation_scale = $get_attribute( 'hoverAnimation.scale' );
 				if ( 'scale' === $hover_animation_type && null !== $hover_animation_scale ) {
 					$add_style( '--unitone--hover-animation-scale', $hover_animation_scale );
+
+					$hover_animation_initial_scale = $get_attribute( 'hoverAnimation.initialScale' );
+					if ( null !== $hover_animation_initial_scale ) {
+						$add_data_attribute( 'data-unitone-hover-animation', '-has-initial' );
+						$add_style( '--unitone--hover-animation-initial-scale', $hover_animation_initial_scale );
+					}
 				}
 
 				$hover_animation_opacity = $get_attribute( 'hoverAnimation.opacity' );
 				if ( 'fade' === $hover_animation_type && null !== $hover_animation_opacity ) {
 					$add_style( '--unitone--hover-animation-opacity', $hover_animation_opacity );
+
+					$hover_animation_initial_opacity = $get_attribute( 'hoverAnimation.initialOpacity' );
+					if ( null !== $hover_animation_initial_opacity ) {
+						$add_data_attribute( 'data-unitone-hover-animation', '-has-initial' );
+						$add_style( '--unitone--hover-animation-initial-opacity', $hover_animation_initial_opacity );
+					}
 				}
 
 				$hover_animation_flex_grow = $get_attribute( 'hoverAnimation.flexGrow' );

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-08-01T08:37:31+00:00\n"
-"PO-Revision-Date: 2026-08-01 17:38+0900\n"
+"POT-Creation-Date: 2026-08-04T01:37:04+00:00\n"
+"PO-Revision-Date: 2026-08-04 10:38+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -4730,6 +4730,14 @@ msgstr ""
 #: dist/js/editor/editor.js:13
 msgid "Scale"
 msgstr "拡大率"
+
+#: dist/js/editor/editor.js:13
+msgid "Initial Scale"
+msgstr "拡大率の初期値"
+
+#: dist/js/editor/editor.js:13
+msgid "Initial Opacity"
+msgstr "不透明度の初期値"
 
 #: dist/js/editor/editor.js:13
 msgid "Trigger"

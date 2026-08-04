@@ -24,6 +24,7 @@ import { __ } from '@wordpress/i18n';
 
 import { EASING_OPTIONS } from './easing';
 import { hover as iconHoverAnimation } from './icons';
+
 import {
 	cleanEmptyObject,
 	mergeObjectWithDefaultValue,
@@ -41,12 +42,14 @@ const HOVER_ANIMATION_TYPES = [
 		value: 'scale',
 		speed: 0.2,
 		scale: 1.05,
+		initialScale: 1,
 	},
 	{
 		label: 'fade',
 		value: 'fade',
 		speed: 0.2,
 		opacity: 0.75,
+		initialOpacity: 1,
 	},
 	{
 		label: 'shadow-natural',
@@ -225,8 +228,12 @@ function HoverAnimationPopover( {
 	onChangeEasing,
 	scale,
 	onChangeScale,
+	initialScale,
+	onChangeInitialScale,
 	opacity,
 	onChangeOpacity,
+	initialOpacity,
+	onChangeInitialOpacity,
 	flexGrow,
 	onChangeFlexGrow,
 	group,
@@ -329,41 +336,97 @@ function HoverAnimationPopover( {
 							/>
 
 							{ 'scale' === type && (
-								<RangeControl
-									__next40pxDefaultSize
-									__nextHasNoMarginBottom
-									label={ __( 'Scale', 'unitone' ) }
-									value={ normalizeForRangeControl( scale ) }
-									step={ 0.01 }
-									min={ 1 }
-									max={ 2 }
-									onChange={ ( newValue ) =>
-										onChangeScale(
-											normalizeForRangeControl( newValue )
-										)
-									}
-									allowReset
-								/>
+								<>
+									<RangeControl
+										__next40pxDefaultSize
+										__nextHasNoMarginBottom
+										label={ __( 'Scale', 'unitone' ) }
+										value={ normalizeForRangeControl(
+											scale
+										) }
+										step={ 0.01 }
+										min={ 1 }
+										max={ 2 }
+										onChange={ ( newValue ) =>
+											onChangeScale(
+												normalizeForRangeControl(
+													newValue
+												)
+											)
+										}
+										allowReset
+									/>
+
+									<RangeControl
+										__next40pxDefaultSize
+										__nextHasNoMarginBottom
+										label={ __(
+											'Initial Scale',
+											'unitone'
+										) }
+										value={ normalizeForRangeControl(
+											initialScale
+										) }
+										step={ 0.01 }
+										min={ 0.1 }
+										max={ 2 }
+										onChange={ ( newValue ) =>
+											onChangeInitialScale(
+												normalizeForRangeControl(
+													newValue
+												)
+											)
+										}
+										allowReset
+									/>
+								</>
 							) }
 
 							{ 'fade' === type && (
-								<RangeControl
-									__next40pxDefaultSize
-									__nextHasNoMarginBottom
-									label={ __( 'Opacity', 'unitone' ) }
-									value={ normalizeForRangeControl(
-										opacity
-									) }
-									step={ 0.01 }
-									min={ 0 }
-									max={ 1 }
-									onChange={ ( newValue ) =>
-										onChangeOpacity(
-											normalizeForRangeControl( newValue )
-										)
-									}
-									allowReset
-								/>
+								<>
+									<RangeControl
+										__next40pxDefaultSize
+										__nextHasNoMarginBottom
+										label={ __( 'Opacity', 'unitone' ) }
+										value={ normalizeForRangeControl(
+											opacity
+										) }
+										step={ 0.01 }
+										min={ 0 }
+										max={ 1 }
+										onChange={ ( newValue ) =>
+											onChangeOpacity(
+												normalizeForRangeControl(
+													newValue
+												)
+											)
+										}
+										allowReset
+									/>
+
+									<RangeControl
+										__next40pxDefaultSize
+										__nextHasNoMarginBottom
+										label={ __(
+											'Initial Opacity',
+											'unitone'
+										) }
+										value={ normalizeForRangeControl(
+											initialOpacity
+										) }
+										step={ 0.01 }
+										min={ 0 }
+										max={ 1 }
+										onChange={ ( newValue ) =>
+											onChangeInitialOpacity(
+												normalizeForRangeControl(
+													newValue
+												)
+											)
+										}
+										allowReset
+									/>
+								</>
 							) }
 
 							{ 'flex-grow' === type && (
@@ -477,10 +540,18 @@ export function HoverAnimationEdit( {
 		unitone?.hoverAnimation?.scale ??
 		defaultValue?.scale ??
 		animationType?.scale;
+	const initialScale =
+		unitone?.hoverAnimation?.initialScale ??
+		defaultValue?.initialScale ??
+		animationType?.initialScale;
 	const opacity =
 		unitone?.hoverAnimation?.opacity ??
 		defaultValue?.opacity ??
 		animationType?.opacity;
+	const initialOpacity =
+		unitone?.hoverAnimation?.initialOpacity ??
+		defaultValue?.initialOpacity ??
+		animationType?.initialOpacity;
 	const flexGrow =
 		unitone?.hoverAnimation?.flexGrow ??
 		defaultValue?.flexGrow ??
@@ -595,7 +666,15 @@ export function HoverAnimationEdit( {
 			speed={ null != speed ? parseFloat( speed ) : undefined }
 			easing={ easing ?? '' }
 			scale={ null != scale ? parseFloat( scale ) : undefined }
+			initialScale={
+				null != initialScale ? parseFloat( initialScale ) : undefined
+			}
 			opacity={ null != opacity ? parseFloat( opacity ) : undefined }
+			initialOpacity={
+				null != initialOpacity
+					? parseFloat( initialOpacity )
+					: undefined
+			}
 			flexGrow={ flexGrow ?? '' }
 			group={ group }
 			trigger={ trigger ?? 'self' }
@@ -624,9 +703,27 @@ export function HoverAnimationEdit( {
 			onChangeScale={ ( newAttribute ) =>
 				setHoverAnimationAttribute( 'scale', newAttribute )
 			}
+			onChangeInitialScale={ ( newAttribute ) => {
+				if (
+					parseFloat( animationType?.initialScale ) ===
+					parseFloat( newAttribute )
+				) {
+					newAttribute = undefined;
+				}
+				setHoverAnimationAttribute( 'initialScale', newAttribute );
+			} }
 			onChangeOpacity={ ( newAttribute ) =>
 				setHoverAnimationAttribute( 'opacity', newAttribute )
 			}
+			onChangeInitialOpacity={ ( newAttribute ) => {
+				if (
+					parseFloat( animationType?.initialOpacity ) ===
+					parseFloat( newAttribute )
+				) {
+					newAttribute = undefined;
+				}
+				setHoverAnimationAttribute( 'initialOpacity', newAttribute );
+			} }
 			onChangeFlexGrow={ ( newAttribute ) =>
 				setHoverAnimationAttribute( 'flexGrow', newAttribute )
 			}
@@ -705,15 +802,22 @@ export function withHoverAnimationBlockProps( settings ) {
 	const speed = newHoverAnimation?.speed;
 	const easing = newHoverAnimation?.easing;
 	const scale = newHoverAnimation?.scale;
+	const initialScale = newHoverAnimation?.initialScale;
 	const opacity = newHoverAnimation?.opacity;
+	const initialOpacity = newHoverAnimation?.initialOpacity;
 	const flexGrow = newHoverAnimation?.flexGrow;
 	const group = newHoverAnimation?.group;
 	const trigger = group ? 'self' : newHoverAnimation?.trigger ?? 'self';
+	const isScale = 'scale' === type && null != scale;
+	const isFade = 'fade' === type && null != opacity;
 
 	const dataHoverAnimation = clsx( type, {
 		'-trigger:group': type && 'group' === trigger,
 		'-trigger:self': type && 'group' !== trigger,
 		[ `-animation-timing-function:${ easing }` ]: type && easing,
+		'-has-initial':
+			( isScale && null != initialScale ) ||
+			( isFade && null != initialOpacity ),
 	} );
 
 	return {
@@ -739,10 +843,16 @@ export function withHoverAnimationBlockProps( settings ) {
 				...settings.wrapperProps?.style,
 				'--unitone--hover-animation-duration':
 					null != speed && type ? `${ speed }s` : undefined,
-				'--unitone--hover-animation-scale':
-					null != scale && 'scale' === type ? scale : undefined,
-				'--unitone--hover-animation-opacity':
-					null != opacity && 'fade' === type ? opacity : undefined,
+				'--unitone--hover-animation-scale': isScale ? scale : undefined,
+				'--unitone--hover-animation-initial-scale':
+					isScale && null != initialScale ? initialScale : undefined,
+				'--unitone--hover-animation-opacity': isFade
+					? opacity
+					: undefined,
+				'--unitone--hover-animation-initial-opacity':
+					isFade && null != initialOpacity
+						? initialOpacity
+						: undefined,
 				'--unitone--hover-animation-flex-grow':
 					flexGrow && 'flex-grow' === type ? flexGrow : undefined,
 			},

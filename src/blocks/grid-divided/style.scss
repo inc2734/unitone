@@ -65,12 +65,19 @@
 }
 
 .unitone-grid[data-unitone-layout~="-divider\:stripe-vertical"] {
+	column-gap: 0;
+
+	> * {
+		padding: 0 calc(var(--unitone--column-gap) + var(--unitone--divider-width));
+	}
+
 	// For vertical layout.
 	&[data-unitone-layout~="-stack"] {
 		row-gap: 0;
 
 		> * {
-			padding: calc(var(--unitone--row-gap) + var(--unitone--divider-width)) 0;
+			padding-top: calc(var(--unitone--row-gap) + var(--unitone--divider-width));
+			padding-bottom: calc(var(--unitone--row-gap) + var(--unitone--divider-width));
 
 			&::before {
 				border-width: var(--unitone--divider-width) 0;
@@ -88,11 +95,7 @@
 
 	// For horizontal layout.
 	&:not([data-unitone-layout~="-stack"]) {
-		column-gap: 0;
-
 		> * {
-			padding: 0 calc(var(--unitone--column-gap) + var(--unitone--divider-width));
-
 			&::before {
 				border-width: 0 var(--unitone--divider-width);
 			}
@@ -107,12 +110,12 @@
 }
 
 .unitone-grid[data-unitone-layout~="-divider\:divide-vertical"] {
+	// Keep the inline layout unchanged when -stack is added or removed.
+	column-gap: calc(var(--unitone--column-gap) * 2 + var(--unitone--divider-width));
+
 	// For vertical layout.
 	&[data-unitone-layout~="-stack"] {
 		row-gap: 0;
-
-		// Without this, -stack will be added but there will be times when it does not become one column.
-		column-gap: calc(var(--unitone--column-gap) * 2 + var(--unitone--divider-width));
 
 		> :not(:last-child) {
 			padding-bottom: var(--unitone--row-gap);
@@ -129,11 +132,10 @@
 
 	// For horizontal layout.
 	&:not([data-unitone-layout~="-stack"]) {
-		column-gap: calc(var(--unitone--column-gap) * 2 + var(--unitone--divider-width));
-
 		> :not([data-unitone-layout~="-bol"]) {
 			&::before {
-				left: calc(var(--unitone--column-gap) * -1 - var(--unitone--divider-width));
+				left: calc((var(--unitone--column-gap) + var(--unitone--divider-width)) * -1);
+				right: auto;
 				border-left-width: var(--unitone--divider-width);
 			}
 		}
@@ -173,8 +175,6 @@
 	}
 
 	> :not([data-unitone-layout~="-bol"]) {
-		padding-left: var(--unitone--column-gap);
-
 		&::before {
 			border-left-width: 0;
 		}
@@ -190,7 +190,8 @@
 
 	&[data-unitone-layout~="-stack"] {
 		> * {
-			padding: calc(var(--unitone--row-gap) + var(--unitone--divider-width));
+			padding-top: calc(var(--unitone--row-gap) + var(--unitone--divider-width));
+			padding-bottom: calc(var(--unitone--row-gap) + var(--unitone--divider-width));
 		}
 
 		> [data-unitone-layout~="-linewrap"] {

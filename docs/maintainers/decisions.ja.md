@@ -123,3 +123,48 @@ WordPress コアの `InspectorControls` は、単一選択および同じ種類�
 - [`src/js/editor/hooks/divider-line/divider-type.js`](../../src/js/editor/hooks/divider-line/divider-type.js)
 - [`src/blocks/child-pages/index.js`](../../src/blocks/child-pages/index.js)
 - [`src/blocks/child-pages/index.php`](../../src/blocks/child-pages/index.php)
+
+## 決定: divider の計測トークンでインライン方向の外寸を変えない
+
+- 決定日: 2026-08-04
+- 状態: 採用
+- 関連領域: unitone-css、Divided ブロック、折返し計測、RTL
+
+### 背景
+
+divider behavior は、計測前に子要素から `-bol`／`-linewrap` を、親要素から `-stack` を外して行構成を計測し、結果に応じて再付与する。これらのトークンに応じて padding、margin、width、flex-basis、column-gap などのインライン方向の外寸を変えると、計測時と付与後で折返し位置が変わり、最終配置と一致しないトークンが残る可能性がある。
+
+### 決定内容
+
+- `-bol`／`-linewrap`／`-stack` の付け外しでは、子要素のインライン方向の外寸および列数を決める親要素の gap を変えない。
+- `divide` のような要素間の区切りは、原則として divider 幅を含む一定の gap を先に確保し、その中へボックスサイズに影響しない疑似要素で線を描画する。
+- `stripe`／`bordered` のように余白が装飾の一部である場合は、すべての子要素に同じインライン padding を確保し、計測トークンでは疑似要素の border 表示だけを切り替える。
+- `-linewrap` や `-stack` によるブロック方向の padding、margin、border の調整は、インライン方向の折返し条件を変えない範囲で許容する。
+
+この決定は unitone 内で divider スタイルを独自実装するコードに適用する。divider 本体を unitone-css のレイアウトプリミティブへ委譲するブロックは、unitone-css 側の同じ原則に従う。
+
+### 理由
+
+計測トークンを装飾状態だけに限定すると、計測前後の行構成が安定し、ResizeObserver や属性変更による再計測が誤った状態へ収束する循環を防げるため。また、一定の gap 内へ疑似要素を配置すれば、既存の区切り表現を保ちながら、border を子要素自身のボックスサイズから分離できるため。
+
+### 検討した代替案
+
+- 行頭要素だけ padding を増減して border 分を相殺する:
+  - `-bol` の付与自体が折返し条件を変えるため採用しない。
+- トークン付与後に行構成が変わった場合だけ繰り返し再計測する:
+  - 境界幅で状態が振動する可能性があり、装飾と計測条件を分離する方が安定するため採用しない。
+
+### 影響
+
+- 利点: 幅の拡大縮小、非表示の先頭要素、divider の動的変更でも、最終行構成と `-bol`／`-linewrap`／`-stack` が一致しやすくなる。
+- 欠点・トレードオフ: `stripe`／`bordered` では、線を非表示にする側にも同じ padding を残す必要がある。
+- 移行や互換性への影響: ブロック API とマークアップは変更しない。
+
+### 確認
+
+- 2026-08-04: unitone-css 1.2.0 と Google Chrome の実ブラウザ検証で、Flex Divided と Grid Divided について、幅の拡大縮小、非表示の先頭要素、RTL、縦方向 Flex、divider の動的変更、計測前後のインライン寸法と最終行構成を確認した。
+
+### 関連ファイル・Issue・PR
+
+- [`src/blocks/flex-divided/style.scss`](../../src/blocks/flex-divided/style.scss)
+- [`src/blocks/grid-divided/style.scss`](../../src/blocks/grid-divided/style.scss)

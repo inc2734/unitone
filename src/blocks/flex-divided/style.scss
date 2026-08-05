@@ -40,22 +40,61 @@
 }
 
 .unitone-flex[data-unitone-layout~="-divider\:stripe"] {
-	column-gap: 0 !important;
-	align-items: stretch;
+	&:where(.is-horizontal, :not(.is-vertical)) {
+		column-gap: 0 !important;
+		align-items: stretch;
 
-	> * {
-		padding: 0 calc(var(--unitone--column-gap) + var(--unitone--divider-width));
+		> * {
+			padding: 0 calc(var(--unitone--column-gap) + var(--unitone--divider-width));
 
-		&::before {
-			border-width: 0 var(--unitone--divider-width);
+			&::before {
+				border-width: 0 var(--unitone--divider-width);
+			}
+		}
+
+		> :not([data-unitone-layout~="-bol"]) {
+			&::before {
+				border-left: 0;
+			}
 		}
 	}
 
-	> :not([data-unitone-layout~="-bol"]) {
-		padding-left: var(--unitone--column-gap);
+	&:where(.is-vertical) {
+		row-gap: 0 !important;
 
-		&::before {
-			border-left: 0;
+		> * {
+			padding: calc(var(--unitone--row-gap) + var(--unitone--divider-width)) 0;
+
+			&:not([data-unitone-layout~="-linewrap"])::before {
+				border-width: var(--unitone--divider-width) 0;
+			}
+
+			&[data-unitone-layout~="-linewrap"]::before {
+				border-bottom-width: var(--unitone--divider-width);
+			}
+		}
+	}
+}
+
+.unitone-flex[data-unitone-layout~="-divider\:divide"] {
+	&:where(.is-horizontal, :not(.is-vertical)) {
+		column-gap: calc(var(--unitone--column-gap) * 2 + var(--unitone--divider-width)) !important;
+		align-items: stretch;
+
+		> :not([data-unitone-layout~="-bol"])::before {
+			left: calc((var(--unitone--column-gap) + var(--unitone--divider-width)) * -1);
+			right: auto;
+			border-left-width: var(--unitone--divider-width);
+		}
+	}
+
+	&:where(.is-vertical) {
+		row-gap: calc(var(--unitone--row-gap) * 2 + var(--unitone--divider-width)) !important;
+
+		> [data-unitone-layout~="-linewrap"]::before {
+			top: calc((var(--unitone--row-gap) + var(--unitone--divider-width)) * -1);
+			bottom: auto;
+			border-top-width: var(--unitone--divider-width);
 		}
 	}
 }
@@ -65,11 +104,11 @@
 	align-items: stretch;
 
 	> * + :not([data-unitone-layout~="-bol"])::before {
+		left: calc((var(--unitone--column-gap) + var(--unitone--divider-width)) * -1);
 		right: auto;
-		left: calc(var(--unitone--column-gap) * -1 - var(--unitone--divider-width));
 		border-left-width: var(--unitone--divider-width);
 		border-color: color-mix(in oklab, var(--unitone--divider-color) 97%, #000);
-		transform: rotate(22.5deg) scale(.8);
+		transform: rotate(22.5deg) scale(0.8);
 	}
 }
 
@@ -88,8 +127,6 @@
 	}
 
 	> :not([data-unitone-layout~="-bol"]) {
-		padding-left: var(--unitone--column-gap);
-
 		&::before {
 			border-left-width: 0;
 		}

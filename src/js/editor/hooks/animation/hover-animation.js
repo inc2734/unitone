@@ -808,16 +808,16 @@ export function withHoverAnimationBlockProps( settings ) {
 	const flexGrow = newHoverAnimation?.flexGrow;
 	const group = newHoverAnimation?.group;
 	const trigger = group ? 'self' : newHoverAnimation?.trigger ?? 'self';
-	const isScale = 'scale' === type && null != scale;
-	const isFade = 'fade' === type && null != opacity;
+	const hasScale = 'scale' === type && null != scale;
+	const hasInitialScale = 'scale' === type && null != initialScale;
+	const hasOpacity = 'fade' === type && null != opacity;
+	const hasInitialOpacity = 'fade' === type && null != initialOpacity;
 
 	const dataHoverAnimation = clsx( type, {
 		'-trigger:group': type && 'group' === trigger,
 		'-trigger:self': type && 'group' !== trigger,
 		[ `-animation-timing-function:${ easing }` ]: type && easing,
-		'-has-initial':
-			( isScale && null != initialScale ) ||
-			( isFade && null != initialOpacity ),
+		'-has-initial': hasInitialScale || hasInitialOpacity,
 	} );
 
 	return {
@@ -843,16 +843,18 @@ export function withHoverAnimationBlockProps( settings ) {
 				...settings.wrapperProps?.style,
 				'--unitone--hover-animation-duration':
 					null != speed && type ? `${ speed }s` : undefined,
-				'--unitone--hover-animation-scale': isScale ? scale : undefined,
-				'--unitone--hover-animation-initial-scale':
-					isScale && null != initialScale ? initialScale : undefined,
-				'--unitone--hover-animation-opacity': isFade
+				'--unitone--hover-animation-scale': hasScale
+					? scale
+					: undefined,
+				'--unitone--hover-animation-initial-scale': hasInitialScale
+					? initialScale
+					: undefined,
+				'--unitone--hover-animation-opacity': hasOpacity
 					? opacity
 					: undefined,
-				'--unitone--hover-animation-initial-opacity':
-					isFade && null != initialOpacity
-						? initialOpacity
-						: undefined,
+				'--unitone--hover-animation-initial-opacity': hasInitialOpacity
+					? initialOpacity
+					: undefined,
 				'--unitone--hover-animation-flex-grow':
 					flexGrow && 'flex-grow' === type ? flexGrow : undefined,
 			},

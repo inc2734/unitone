@@ -8,4 +8,5 @@ todo.md
 /unitone
 /unitone.zip
 .wp-env.override.json
+.wp-env.tests.override.json
 /src/formats/icon/flowbite-icons.js

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "POT-Creation-Date: 2026-08-04T01:37:04+00:00\n"
-"PO-Revision-Date: 2026-08-04 10:38+0900\n"
+"PO-Revision-Date: 2026-08-05 18:08+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2733,6 +2733,10 @@ msgid "Cluster (Divider: Stripe)"
 msgstr "クラスター（区切り：ストライプ）"
 
 #: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: Divide)"
+msgstr "クラスター（区切り：分割）"
+
+#: dist/blocks/cluster-divided/index.js:1
 msgid "Cluster (Divider: Slash)"
 msgstr "クラスター（区切り：スラッシュ）"
 
@@ -2876,6 +2880,10 @@ msgstr "垂直"
 #: dist/blocks/flex-divided/index.js:1
 msgid "Flex (Divider: Stripe)"
 msgstr "フレックス（区切り：ストライプ）"
+
+#: dist/blocks/flex-divided/index.js:1
+msgid "Flex (Divider: Divide)"
+msgstr "フレックス（区切り：分割）"
 
 #: dist/blocks/flex-divided/index.js:1
 msgid "Flex (Divider: Slash)"

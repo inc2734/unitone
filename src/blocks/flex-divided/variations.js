@@ -19,6 +19,23 @@ export default [
 		],
 	},
 	{
+		name: 'flex-divided-divide',
+		title: __( 'Flex (Divider: Divide)', 'unitone' ),
+		isDefault: false,
+		attributes: {
+			unitone: {
+				dividerType: 'divide',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+			},
+		},
+		scope: [ 'inserter' ],
+		innerBlocks: [
+			[ 'unitone/flex-divided-content' ],
+			[ 'unitone/flex-divided-content' ],
+		],
+	},
+	{
 		name: 'flex-divided-slash',
 		title: __( 'Flex (Divider: Slash)', 'unitone' ),
 		isDefault: false,

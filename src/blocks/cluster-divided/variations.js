@@ -21,6 +21,25 @@ export default [
 		],
 	},
 	{
+		name: 'cluster-divided-divide',
+		title: __( 'Cluster (Divider: Divide)', 'unitone' ),
+		isDefault: false,
+		attributes: {
+			unitone: {
+				dividerType: 'divide',
+				divider: { style: 'solid', width: '1px' },
+				dividerColor: 'unitone-light-gray',
+				alignItems: 'stretch',
+				justifyContent: 'start',
+			},
+		},
+		scope: [ 'inserter' ],
+		innerBlocks: [
+			[ 'unitone/cluster-divided-content' ],
+			[ 'unitone/cluster-divided-content' ],
+		],
+	},
+	{
 		name: 'cluster-divided-slash',
 		title: __( 'Cluster (Divider: Slash)', 'unitone' ),
 		isDefault: false,

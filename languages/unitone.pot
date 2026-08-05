@@ -2705,6 +2705,10 @@ msgid "Cluster (Divider: Stripe)"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: Divide)"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
 msgid "Cluster (Divider: Slash)"
 msgstr ""
 
@@ -2853,6 +2857,10 @@ msgstr ""
 
 #: dist/blocks/flex-divided/index.js:1
 msgid "Flex (Divider: Stripe)"
+msgstr ""
+
+#: dist/blocks/flex-divided/index.js:1
+msgid "Flex (Divider: Divide)"
 msgstr ""
 
 #: dist/blocks/flex-divided/index.js:1

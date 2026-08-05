@@ -110,7 +110,7 @@
 			content: "";
 			display: block;
 			position: absolute;
-			inset: 0 calc(100% + var(--unitone--gap)) 0 -200%;
+			inset: 0 calc(100% + var(--unitone--editor-space-between)) 0 -200%;
 			background-image: repeating-linear-gradient(
 				-60deg,
 				rgb(255 255 255 / 0.25),

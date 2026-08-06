@@ -79,6 +79,7 @@ unitone の hover サポートは既存コンテンツとテーマの CSS カス
 
 ### 関連ファイル・Issue・PR
 
+- [`inc/assets.php`](../../inc/assets.php)
 - [`inc/block-supports.php`](../../inc/block-supports.php)
 - [`src/js/editor/hooks/color/color.js`](../../src/js/editor/hooks/color/color.js)
 - [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
@@ -115,6 +116,39 @@ WordPress 7.1 では Dimensions ブロックサポートに `minWidth` が追加
 - [`inc/block-supports.php`](../../inc/block-supports.php)
 - [`inc/unitone-block-supports.php`](../../inc/unitone-block-supports.php)
 - [`src/js/editor/hooks/layout/min-width.js`](../../src/js/editor/hooks/layout/min-width.js)
+- [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
+
+## 決定: unitone の汎用色関連サポートを意味別の Inspector パネルに配置する
+
+- 決定日: 2026-08-06
+- 状態: 採用
+- 関連領域: WordPress 7.1、ブロックエディター、Inspector、色、Layer
+
+### 背景
+
+WordPress 7.1 では、従来「色」にまとめられていたコアの色関連設定が、設定対象の意味に応じて「タイポグラフィ」「背景」「枠線」「要素」などへ分割された。unitone の汎用ブロックサポートにも同じ意味を持つ設定がある一方、ブロック内部要素に固有の色設定も存在する。
+
+### 決定内容
+
+- hover 文字色は「タイポグラフィ」、hover 背景色・グラデーションは「背景」、hover 枠線色は「枠線」、リストのマーカー色は「要素」に配置する。
+- 不透明度は「色」ではなく unitone の「Layer」に配置する。
+- Table、Navigation、Timeline、Mega Menu などの内部要素固有色は「色」に残し、Slider、Texture など専用設定を持つものはその専用パネルに残す。
+- パネルの「すべてリセット」は、そのパネルへ配置した unitone 設定だけをリセット対象にする。
+
+### 理由
+
+コアの情報設計に合わせて汎用設定を見つけやすくしつつ、ブロック固有の内部要素色を無理に一般化せず、設定対象の違いを保つため。
+
+### 影響
+
+- 変更対象は Inspector UI の配置とリセット範囲であり、既存属性、保存形式、PHP レンダリング、CSS 出力は移行しない。
+- 新しい汎用色関連サポートを追加する場合も、色そのものではなく設定対象の意味に応じて配置先を決める。
+
+### 関連ファイル・Issue・PR
+
+- [`src/js/editor/hooks/color/color.js`](../../src/js/editor/hooks/color/color.js)
+- [`src/js/editor/hooks/color/opacity.js`](../../src/js/editor/hooks/color/opacity.js)
+- [`src/js/editor/hooks/layer/layer.js`](../../src/js/editor/hooks/layer/layer.js)
 - [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
 
 ## 決定: 独自ブロックサポートの Inspector UI を複数選択に対応させる

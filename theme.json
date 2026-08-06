@@ -507,6 +507,10 @@
 					"blockGap": false
 				}
 			}
+		},
+		"viewport": {
+			"mobile": "600px",
+			"tablet": "960px"
 		}
 	},
 	"styles": {

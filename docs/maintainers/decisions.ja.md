@@ -50,6 +50,73 @@
 - [名称](相対パスまたは URL)
 -->
 
+## 決定: WordPress 7.1 の疑似状態スタイル UI を無効化し unitone の hover 設定を維持する
+
+- 決定日: 2026-08-06
+- 状態: 採用
+- 関連領域: WordPress 7.1、ブロックエディター、状態スタイル、hover 色
+
+### 背景
+
+WordPress 7.1 では `core/button` と `core/navigation-link` に対して `:hover`、`:focus`、`:focus-visible`、`:active` の状態スタイルを編集する UI が追加される。unitone は従来から、unitone ブロックと `core/button` に独自の hover 色設定を提供している。
+
+### 決定内容
+
+- `block_editor_settings_all` の `blockStatesEditingEnabled` を `false` にして、コアの疑似状態スタイル編集 UI を無効化する。
+- unitone の hover 文字色、背景色・グラデーション、枠線色の設定 UI と保存・CSS 出力を継続する。
+- `core/button` でも unitone の hover UI を常時利用可能にし、既存値の有無によって UI を廃止する移行は行わない。
+- レスポンシブ状態の編集は別設定であるため、この決定だけを理由に `responsiveEditingEnabled` は無効化しない。
+
+### 理由
+
+unitone の hover サポートは既存コンテンツとテーマの CSS カスタムプロパティによる出力に統合されている。コアと unitone の2種類の疑似状態 UI を併存させず、従来の操作方法と保存形式を維持するため。
+
+### 影響
+
+- コアの疑似状態スタイル編集 UI はブロックインスペクターとグローバルスタイルで表示されない。
+- `theme.json`、グローバルスタイル、ブロック属性に保存済みのコア状態スタイルは、UIを無効化してもエディターとフロントで引き続き適用される。
+- WordPress 7.1 対応では、unitone の hover UI をコアへの移行用 UI として扱わない。
+
+### 関連ファイル・Issue・PR
+
+- [`inc/block-supports.php`](../../inc/block-supports.php)
+- [`src/js/editor/hooks/color/color.js`](../../src/js/editor/hooks/color/color.js)
+- [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
+- [WordPress エディター設定フィルター](https://github.com/WordPress/gutenberg/blob/wp/7.1/docs/reference-guides/filters/editor-filters.md)
+
+## 決定: Core と unitone の `min-width` サポートを別機能として維持する
+
+- 決定日: 2026-08-06
+- 状態: 採用
+- 関連領域: WordPress 7.1、ブロックサポート、Dimensions、CSS カスタムプロパティ
+
+### 背景
+
+WordPress 7.1 では Dimensions ブロックサポートに `minWidth` が追加される。コアのサポートは `min-width` プロパティを直接出力する一方、unitone の独自サポートは `--unitone--min-width` を出力し、テーマの CSS から利用する。
+
+### 決定内容
+
+- unitone の `unitone.minWidth` と既存属性をコアの `style.dimensions.minWidth` へ移行しない。
+- unitone の `min-width` サポートとコアの Dimensions `minWidth` サポートを、出力と用途が異なる別機能として維持する。
+- unitone の `minWidth` を提供するコアブロックでは、コアの `dimensions.minWidth` を無効化し、重複する UI を表示しない。
+- unitone の対象ではないコアブロックがコアの `minWidth` をサポートすることは妨げない。
+
+### 理由
+
+保存先と CSS 出力の意味が異なり、機械的に移行すると unitone のレイアウト CSS が参照するカスタムプロパティを失うため。
+
+### 影響
+
+- 既存コンテンツの属性と CSS カスタムプロパティは維持される。
+- WordPress が将来 unitone の対象コアブロックへ `dimensions.minWidth` を追加した場合も、unitone 側で明示的に無効化する必要がある。
+
+### 関連ファイル・Issue・PR
+
+- [`inc/block-supports.php`](../../inc/block-supports.php)
+- [`inc/unitone-block-supports.php`](../../inc/unitone-block-supports.php)
+- [`src/js/editor/hooks/layout/min-width.js`](../../src/js/editor/hooks/layout/min-width.js)
+- [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
+
 ## 決定: 独自ブロックサポートの Inspector UI を複数選択に対応させる
 
 - 決定日: 2026-07-16

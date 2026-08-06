@@ -8,10 +8,22 @@ export function isOpacitySupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.opacity' );
 }
 
+export function hasOpacityValue( { attributes: { unitone } } ) {
+	return undefined !== unitone?.opacity;
+}
+
 export function resetOpacityFilter() {
 	return {
 		opacity: undefined,
 	};
+}
+
+export function resetOpacity( { attributes: { unitone }, setAttributes } ) {
+	setAttributes( {
+		unitone: cleanEmptyObject(
+			Object.assign( { ...unitone }, resetOpacityFilter() )
+		),
+	} );
 }
 
 export function OpacityEdit( { attributes: { unitone }, setAttributes } ) {

@@ -10,6 +10,7 @@ import {
 } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
+import { compose } from '@wordpress/compose';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -24,11 +25,24 @@ import {
 	withMixBlendModeBlockProps,
 } from './mix-blend-mode';
 
-export const withLayerBlockProps = withMixBlendModeBlockProps;
+import {
+	isOpacitySupportDisabled,
+	hasOpacityValue,
+	resetOpacityFilter,
+	resetOpacity,
+	OpacityEdit,
+	withOpacityBlockProps,
+} from '../color/opacity';
+
+export const withLayerBlockProps = compose(
+	withMixBlendModeBlockProps,
+	withOpacityBlockProps
+);
 
 export const resetLayer = ( props ) => {
 	const filters = [
 		[ isMixBlendModeSupportDisabled, resetMixBlendModeFilter ],
+		[ isOpacitySupportDisabled, resetOpacityFilter ],
 	];
 
 	const unitone = filters.reduce(
@@ -45,24 +59,26 @@ export const resetLayer = ( props ) => {
 
 function LayerPanelPure( props ) {
 	const { attributes, setAttributes, clientId } = props;
+	const isMixBlendModeDisabled = isMixBlendModeSupportDisabled( {
+		...props,
+	} );
+	const isOpacityDisabled = isOpacitySupportDisabled( { ...props } );
 
 	const resetAll = () => {
 		setAttributes( {
 			unitone: cleanEmptyObject(
 				Object.assign(
 					{ ...attributes?.unitone },
-					resetMixBlendModeFilter()
+					resetMixBlendModeFilter(),
+					resetOpacityFilter()
 				)
 			),
 		} );
 	};
 
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
-	const isMixBlendModeDisabled = isMixBlendModeSupportDisabled( {
-		...props,
-	} );
 
-	if ( isMixBlendModeDisabled ) {
+	if ( isMixBlendModeDisabled && isOpacityDisabled ) {
 		return null;
 	}
 
@@ -94,6 +110,20 @@ function LayerPanelPure( props ) {
 								</>
 							}
 						/>
+					</ToolsPanelItem>
+				) }
+
+				{ ! isOpacityDisabled && (
+					<ToolsPanelItem
+						hasValue={ () => hasOpacityValue( { ...props } ) }
+						label={ __( 'Opacity', 'unitone' ) }
+						onDeselect={ () => resetOpacity( { ...props } ) }
+						isShownByDefault
+						panelId={ clientId }
+					>
+						<div className="unitone-opacity-control">
+							<OpacityEdit { ...props } />
+						</div>
 					</ToolsPanelItem>
 				) }
 			</ToolsPanel>

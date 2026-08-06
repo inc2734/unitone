@@ -243,7 +243,6 @@ export default function ( { settings, setSettings } ) {
 									) }
 
 									<SelectControl
-										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										label={ __(
 											'Select existing page for the homepage',
@@ -328,7 +327,6 @@ export default function ( { settings, setSettings } ) {
 									) }
 
 									<SelectControl
-										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										label={ __(
 											'Select existing page for the posts page',

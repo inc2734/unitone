@@ -445,7 +445,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 								!! naturalWidth &&
 								!! naturalHeight && (
 									<RangeControl
-										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										label={ __(
 											'Site Logo Default Width',

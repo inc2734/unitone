@@ -145,7 +145,6 @@ export function MixBlendModeEdit( {
 
 	return (
 		<SelectControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			help={ __(

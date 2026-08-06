@@ -153,7 +153,6 @@ export function OverlayEdit( { attributes, setAttributes, clientId } ) {
 				dropdownMenuProps={ dropdownMenuProps }
 			>
 				<RangeControl
-					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					label={ __( 'Overlay opacity', 'unitone' ) }
 					value={ normalizeForRangeControl(

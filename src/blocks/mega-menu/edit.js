@@ -457,7 +457,6 @@ function Edit( {
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings of menu item', 'unitone' ) }>
 					<TextControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						value={ label || '' }
 						onChange={ ( labelValue ) => {
@@ -467,7 +466,6 @@ function Edit( {
 						autoComplete="off"
 					/>
 					<TextControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						value={ url || '' }
 						onChange={ ( urlValue ) => {
@@ -491,7 +489,6 @@ function Edit( {
 						) }
 					/>
 					<TextControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						value={ normalizeForTextareaControl( title ) }
 						onChange={ ( newAttribute ) => {
@@ -508,7 +505,6 @@ function Edit( {
 						) }
 					/>
 					<TextControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						value={ normalizeForTextareaControl( rel ) }
 						onChange={ ( newAttribute ) => {

@@ -181,7 +181,6 @@ const TemplatePartSelectControl = ( { label, value, onChange } ) => {
 				<HStack spacing={ 0 }>
 					<div style={ { flex: 1 } }>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							options={ overlayMenuSlugOptions }
 							value={ normalizeForSelectControl( value ) }

@@ -149,7 +149,6 @@ function Edit( {
 						}
 					>
 						<ToggleGroupControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Column layout', 'unitone' ) }
 							value={ normalizeForToggleGroupControl(
@@ -194,7 +193,6 @@ function Edit( {
 						}
 					>
 						<UnitControl
-							__next40pxDefaultSize
 							label={ __( 'Dot size', 'unitone' ) }
 							value={ normalizeForUnitControl( dotSize ) }
 							units={ units }
@@ -220,7 +218,6 @@ function Edit( {
 						}
 					>
 						<UnitControl
-							__next40pxDefaultSize
 							label={ __( 'Line width', 'unitone' ) }
 							value={ normalizeForUnitControl( lineWidth ) }
 							units={ units }

@@ -82,7 +82,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						</div>
 						<div>
 							<SelectControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Aspect Ratio', 'unitone' ) }
 								help={ __(

@@ -92,7 +92,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<TextControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={
 								<>

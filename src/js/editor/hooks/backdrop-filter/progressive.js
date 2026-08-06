@@ -98,7 +98,6 @@ export function ProgressiveEdit( {
 				<Flex>
 					<FlexBlock>
 						<RangeControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							hideLabelFromVision
 							label={ __( 'Start position', 'unitone' ) }

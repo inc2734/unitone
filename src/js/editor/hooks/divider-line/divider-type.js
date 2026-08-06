@@ -135,7 +135,6 @@ export function DividerTypeEdit( props ) {
 
 	return (
 		<SelectControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ normalizeForSelectControl(

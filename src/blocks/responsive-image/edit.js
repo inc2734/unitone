@@ -415,7 +415,6 @@ export default function ( { attributes, setAttributes } ) {
 										} }
 									>
 										<UnitControl
-											__next40pxDefaultSize
 											label={ __(
 												'Target max viewport width',
 												'unitone'
@@ -442,7 +441,6 @@ export default function ( { attributes, setAttributes } ) {
 										/>
 
 										<UnitControl
-											__next40pxDefaultSize
 											label={ __(
 												'Image width',
 												'unitone'
@@ -557,7 +555,6 @@ export default function ( { attributes, setAttributes } ) {
 								</div>
 
 								<UnitControl
-									__next40pxDefaultSize
 									label={ __(
 										'Target max viewport width',
 										'unitone'
@@ -578,7 +575,6 @@ export default function ( { attributes, setAttributes } ) {
 								/>
 
 								<UnitControl
-									__next40pxDefaultSize
 									label={ __( 'Image width', 'unitone' ) }
 									placeholder={ __( 'Auto', 'unitone' ) }
 									units={ [] }
@@ -630,7 +626,6 @@ export default function ( { attributes, setAttributes } ) {
 						}
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'HTML element', 'unitone' ) }
 							value={ normalizeForSelectControl( tagName ) }

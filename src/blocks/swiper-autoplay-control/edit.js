@@ -54,7 +54,6 @@ export default function ( { attributes, setAttributes } ) {
 						onDeselect={ resetAction }
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Action', 'unitone' ) }
 							value={ action }

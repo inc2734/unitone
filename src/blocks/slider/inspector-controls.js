@@ -179,7 +179,6 @@ export const SettingsInspectorControls = ( {
 					}
 				>
 					<SelectControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Effect', 'unitone' ) }
 						value={ normalizeForSelectControl( effect ) }
@@ -211,7 +210,6 @@ export const SettingsInspectorControls = ( {
 							} }
 						>
 							<TextControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={
 									<>
@@ -351,7 +349,6 @@ export const SettingsInspectorControls = ( {
 					}
 				>
 					<RangeControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Speed (s)', 'unitone' ) }
 						value={ normalizeForRangeControl( speed ) }
@@ -414,7 +411,6 @@ export const SettingsInspectorControls = ( {
 							}
 						>
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Delay (s)', 'unitone' ) }
 								value={ normalizeForRangeControl(
@@ -731,7 +727,6 @@ export const SettingsInspectorControls = ( {
 										} }
 									>
 										<BorderControl
-											__next40pxDefaultSize
 											label={ __( 'Border', 'unitone' ) }
 											value={ arrowsBorder }
 											withSlider={ true }
@@ -820,7 +815,6 @@ export const SettingsInspectorControls = ( {
 										} }
 									>
 										<RangeControl
-											__next40pxDefaultSize
 											__nextHasNoMarginBottom
 											label={ __(
 												'Icons line thickness',
@@ -865,7 +859,6 @@ export const SettingsInspectorControls = ( {
 										} }
 									>
 										<RangeControl
-											__next40pxDefaultSize
 											__nextHasNoMarginBottom
 											label={ __(
 												'Icons size',
@@ -1366,7 +1359,6 @@ export const SettingsInspectorControls = ( {
 							}
 						>
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __(
 									'Number of columns of thumbnails',

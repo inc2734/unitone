@@ -203,7 +203,6 @@ export default function InlineUI( {
 					) : (
 						<TextControl
 							__nextHasNoMarginBottom
-							__next40pxDefaultSize
 							placeholder={ __(
 								'Enter URL to embed here…',
 								'unitone'
@@ -290,7 +289,6 @@ export default function InlineUI( {
 					) : (
 						<TextControl
 							__nextHasNoMarginBottom
-							__next40pxDefaultSize
 							placeholder={ __(
 								'Enter target ID to open in overlay…',
 								'unitone'

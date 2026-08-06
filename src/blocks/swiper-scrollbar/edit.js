@@ -84,7 +84,6 @@ export default function ( { attributes, setAttributes } ) {
 						onDeselect={ () => resetSetting( 'size' ) }
 					>
 						<UnitControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Scrollbar size', 'unitone' ) }
 							value={ `${ settings.size }px` }

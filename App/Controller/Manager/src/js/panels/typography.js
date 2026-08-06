@@ -370,7 +370,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						</div>
 						<div data-unitone-layout="stack">
 							<SelectControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Font', 'unitone' ) }
 								value={ settings?.styles?.typography?.fontFamily?.replace(
@@ -398,7 +397,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							/>
 
 							<TextControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Base Font Size', 'unitone' ) }
 								value={ baseFontSizeInput }
@@ -417,7 +415,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							/>
 
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={
 									<>
@@ -454,7 +451,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							/>
 
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={
 									<>
@@ -508,7 +504,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										<div>{ label }</div>
 										<div>
 											<FontSizePicker
-												__next40pxDefaultSize
 												disableCustomFontSizes
 												fontSizes={
 													settings?.fontSizes

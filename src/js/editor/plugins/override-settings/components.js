@@ -26,7 +26,6 @@ export const UnitControl = ( { label, value, onChange } ) => {
 				} }
 			>
 				<BaseUnitControl
-					__next40pxDefaultSize
 					value={ normalizeForUnitControl( value ) }
 					style={ { width: '100%' } }
 					onChange={ ( newValue ) =>
@@ -69,7 +68,6 @@ export const FontFamilyControl = ( { value, onChange } ) => {
 				} }
 			>
 				<SelectControl
-					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					value={ normalizeForSelectControl( value ) }
 					options={ [

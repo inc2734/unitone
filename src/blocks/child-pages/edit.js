@@ -291,7 +291,6 @@ export default function ( { attributes, setAttributes } ) {
 						}
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Layout', 'unitone' ) }
 							value={ normalizeForSelectControl( layout ) }
@@ -348,7 +347,6 @@ export default function ( { attributes, setAttributes } ) {
 							}
 						>
 							<TextControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={
 									<>

@@ -207,7 +207,6 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'HTML element', 'unitone' ) }
 							options={ [
@@ -247,7 +246,6 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 					>
 						<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 							<ToggleGroupControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Container alignment', 'unitone' ) }
 								value={ logicalToPhysical(

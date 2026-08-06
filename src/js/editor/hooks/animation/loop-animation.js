@@ -221,7 +221,6 @@ function LoopAnimationPopover( {
 							</Heading>
 
 							<SelectControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Type', 'unitone' ) }
 								value={ normalizeForSelectControl( type ) }
@@ -234,7 +233,6 @@ function LoopAnimationPopover( {
 							/>
 
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Speed', 'unitone' ) }
 								value={ normalizeForRangeControl( speed ) }
@@ -251,7 +249,6 @@ function LoopAnimationPopover( {
 							/>
 
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Interval', 'unitone' ) }
 								value={ normalizeForRangeControl( interval ) }
@@ -268,7 +265,6 @@ function LoopAnimationPopover( {
 							/>
 
 							<SelectControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Easing', 'unitone' ) }
 								value={ normalizeForSelectControl( easing ) }

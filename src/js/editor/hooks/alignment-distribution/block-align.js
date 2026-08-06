@@ -133,7 +133,6 @@ export function BlockAlignEdit( {
 	return (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 			<ToggleGroupControl
-				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
 				value={ normalizeForToggleGroupControl(

@@ -116,7 +116,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						</div>
 						<div data-unitone-layout="stack">
 							<UnitControl
-								__next40pxDefaultSize
 								label={ __( 'Content Width', 'unitone' ) }
 								value={
 									settings?.settings?.layout?.contentSize ||
@@ -138,7 +137,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							/>
 
 							<UnitControl
-								__next40pxDefaultSize
 								label={ __( 'Wide Width', 'unitone' ) }
 								value={
 									settings?.settings?.layout?.wideSize || ''
@@ -169,7 +167,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						</div>
 						<div data-unitone-layout="stack">
 							<SelectControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Header Position', 'unitone' ) }
 								value={
@@ -249,7 +246,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						</div>
 						<div data-unitone-layout="stack">
 							<SelectControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __(
 									'Template Parts to Use',
@@ -290,7 +286,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							/>
 
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __(
 									'Minimum Time to Display Loading Animation (s)',

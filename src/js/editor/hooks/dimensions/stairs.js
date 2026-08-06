@@ -167,7 +167,6 @@ export function StairsUpEdit( {
 
 	return (
 		<ToggleGroupControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			isBlock
 			label={ label }

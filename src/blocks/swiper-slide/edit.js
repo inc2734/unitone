@@ -88,7 +88,6 @@ export default function ( { attributes, clientId, setAttributes } ) {
 						}
 					>
 						<UnitControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Slide width', 'unitone' ) }
 							help={ __(
@@ -125,7 +124,6 @@ export default function ( { attributes, clientId, setAttributes } ) {
 						}
 					>
 						<TextControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							type="number"
 							label={ __(

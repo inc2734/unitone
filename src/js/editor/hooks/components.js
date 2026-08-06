@@ -52,7 +52,6 @@ export function isDefaultSpacingSizeValue( value ) {
 function Controls( { value, onChange, options } ) {
 	return (
 		<SelectControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			value={ normalizeForSelectControl( value ) }
 			onChange={ ( newValue ) => {

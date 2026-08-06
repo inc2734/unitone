@@ -160,7 +160,6 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __(
 								'A column to be treated as secondary',
@@ -203,7 +202,6 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<TextControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={
 								<>
@@ -243,7 +241,6 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<TextControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={
 								<>

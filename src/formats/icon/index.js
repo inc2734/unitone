@@ -161,6 +161,7 @@ function InlineUI( { value, onChange, onClose, contentRef, isObjectActive } ) {
 						onChange={ ( newValue ) => setSearchText( newValue ) }
 					/>
 					<Button
+						__next40pxDefaultSize
 						icon={ <Icon icon={ cogIcon } /> }
 						label={ __( 'Settings', 'unitone' ) }
 						showTooltip
@@ -180,7 +181,6 @@ function InlineUI( { value, onChange, onClose, contentRef, isObjectActive } ) {
 						} }
 					>
 						<RangeControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Stroke width', 'unitone' ) }
 							value={ strokeWidth }

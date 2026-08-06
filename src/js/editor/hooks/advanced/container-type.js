@@ -22,7 +22,6 @@ export function ContainerTypeEdit( {
 } ) {
 	return (
 		<SelectControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={
 				<>

@@ -105,7 +105,6 @@ function InlineUI( {
 				} }
 			>
 				<RangeControl
-					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					label={ __( 'Width', 'unitone' ) }
 					value={ width }

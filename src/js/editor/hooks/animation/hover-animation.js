@@ -292,7 +292,6 @@ function HoverAnimationPopover( {
 							/>
 
 							<SelectControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Type', 'unitone' ) }
 								value={ normalizeForSelectControl( type ) }
@@ -305,7 +304,6 @@ function HoverAnimationPopover( {
 							/>
 
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Speed', 'unitone' ) }
 								value={ normalizeForRangeControl( speed ) }
@@ -322,7 +320,6 @@ function HoverAnimationPopover( {
 							/>
 
 							<SelectControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Easing', 'unitone' ) }
 								value={ normalizeForSelectControl( easing ) }
@@ -338,7 +335,6 @@ function HoverAnimationPopover( {
 							{ 'scale' === type && (
 								<>
 									<RangeControl
-										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										label={ __( 'Scale', 'unitone' ) }
 										value={ normalizeForRangeControl(
@@ -358,7 +354,6 @@ function HoverAnimationPopover( {
 									/>
 
 									<RangeControl
-										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										label={ __(
 											'Initial Scale',
@@ -385,7 +380,6 @@ function HoverAnimationPopover( {
 							{ 'fade' === type && (
 								<>
 									<RangeControl
-										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										label={ __( 'Opacity', 'unitone' ) }
 										value={ normalizeForRangeControl(
@@ -405,7 +399,6 @@ function HoverAnimationPopover( {
 									/>
 
 									<RangeControl
-										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										label={ __(
 											'Initial Opacity',
@@ -431,7 +424,6 @@ function HoverAnimationPopover( {
 
 							{ 'flex-grow' === type && (
 								<RangeControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={
 										<>
@@ -458,7 +450,6 @@ function HoverAnimationPopover( {
 							) }
 
 							<ToggleGroupControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Trigger', 'unitone' ) }
 								value={ normalizeForToggleGroupControl(

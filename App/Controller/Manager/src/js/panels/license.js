@@ -154,7 +154,6 @@ export default function () {
 											? 'saved-license-key'
 											: 'editing-license-key'
 									}
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									help={ __(
 										'If the license key entered is valid, the theme can be updated.',

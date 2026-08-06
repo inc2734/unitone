@@ -51,7 +51,6 @@ export default function ( { attributes, setAttributes } ) {
 						}
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Type', 'unitone' ) }
 							options={ [
@@ -101,7 +100,6 @@ export default function ( { attributes, setAttributes } ) {
 						}
 					>
 						<ToggleGroupControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							isBlock
 							label={ __( 'Direction', 'unitone' ) }
@@ -139,7 +137,6 @@ export default function ( { attributes, setAttributes } ) {
 						}
 					>
 						<UnitControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Size', 'unitone' ) }
 							value={ normalizeForUnitControl( size ) }

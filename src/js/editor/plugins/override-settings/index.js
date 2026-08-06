@@ -330,7 +330,6 @@ const PageSettingsPanel = () => {
 						</div>
 
 						<TextControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Base Font Size', 'unitone' ) }
 							value={ baseFontSizeInput }
@@ -357,7 +356,6 @@ const PageSettingsPanel = () => {
 						/>
 
 						<RangeControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Half Leading', 'unitone' ) }
 							value={ normalizeForRangeControl( newHalfLeading ) }

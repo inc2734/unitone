@@ -29,7 +29,6 @@ export function resetOpacity( { attributes: { unitone }, setAttributes } ) {
 export function OpacityEdit( { attributes: { unitone }, setAttributes } ) {
 	return (
 		<RangeControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ __( 'Opacity', 'unitone' ) }
 			value={ normalizeForRangeControl( unitone?.opacity ) }

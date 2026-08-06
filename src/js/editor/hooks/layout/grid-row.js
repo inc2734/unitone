@@ -165,7 +165,6 @@ export function GridRowEdit( {
 			desktopControls={ () => (
 				<HelpContainer help={ help } layout="horizontal">
 					<TextControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={ normalizeForTextControl(
@@ -184,7 +183,6 @@ export function GridRowEdit( {
 			tabletControls={ () => (
 				<HelpContainer help={ help } layout="horizontal">
 					<TextControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={ normalizeForTextControl(
@@ -205,7 +203,6 @@ export function GridRowEdit( {
 			mobileControls={ () => (
 				<HelpContainer help={ help } layout="horizontal">
 					<TextControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={ normalizeForTextControl(
@@ -229,7 +226,6 @@ export function GridRowEdit( {
 	) : (
 		<HelpContainer help={ help } layout="horizontal">
 			<TextControl
-				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
 				value={ normalizeForTextControl(

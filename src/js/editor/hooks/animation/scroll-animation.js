@@ -253,7 +253,6 @@ function ScrollAnimationPopover( {
 							</Heading>
 
 							<SelectControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Type', 'unitone' ) }
 								value={ normalizeForSelectControl( type ) }
@@ -266,7 +265,6 @@ function ScrollAnimationPopover( {
 							/>
 
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Speed', 'unitone' ) }
 								value={ normalizeForRangeControl( speed ) }
@@ -283,7 +281,6 @@ function ScrollAnimationPopover( {
 							/>
 
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Delay', 'unitone' ) }
 								value={ normalizeForRangeControl( delay ) }
@@ -300,7 +297,6 @@ function ScrollAnimationPopover( {
 							/>
 
 							<SelectControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Easing', 'unitone' ) }
 								value={ normalizeForSelectControl( easing ) }
@@ -315,7 +311,6 @@ function ScrollAnimationPopover( {
 
 							{ 'fade-in-down' === type && (
 								<RangeControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (Y)',
@@ -338,7 +333,6 @@ function ScrollAnimationPopover( {
 
 							{ 'fade-in-up' === type && (
 								<RangeControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (Y)',
@@ -361,7 +355,6 @@ function ScrollAnimationPopover( {
 
 							{ 'fade-in-left' === type && (
 								<RangeControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (X)',
@@ -384,7 +377,6 @@ function ScrollAnimationPopover( {
 
 							{ 'fade-in-right' === type && (
 								<RangeControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (X)',
@@ -407,7 +399,6 @@ function ScrollAnimationPopover( {
 
 							{ 'zoom-in' === type && (
 								<RangeControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ __(
 										'Initial shrinkage rate',
@@ -430,7 +421,6 @@ function ScrollAnimationPopover( {
 
 							{ 'shake-horizontal' === type && (
 								<RangeControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (X)',
@@ -453,7 +443,6 @@ function ScrollAnimationPopover( {
 
 							{ 'shake-vertical' === type && (
 								<RangeControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ __(
 										'Initial position (X)',
@@ -506,7 +495,6 @@ function ScrollAnimationPopover( {
 								layout="horizontal"
 							>
 								<TextControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ _x(
 										'rootMargin',
@@ -532,7 +520,6 @@ function ScrollAnimationPopover( {
 								layout="horizontal"
 							>
 								<TextControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ _x(
 										'threshold',

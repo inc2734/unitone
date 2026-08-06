@@ -92,7 +92,6 @@ const ResponsiveControls = ( {
 		<div style={ { display: 'grid', gap: '16px' } }>
 			<div style={ { display: 'grid', gap: '8px' } }>
 				<ToggleGroupControl
-					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					isBlock
 					label={ __( 'Slides per view', 'unitone' ) }
@@ -125,7 +124,6 @@ const ResponsiveControls = ( {
 				{ 'number' === slidesPerViewMode && (
 					<RangeControl
 						__nextHasNoMarginBottom
-						__next40pxDefaultSize
 						ariaLabel={ __( 'Slides per view', 'unitone' ) }
 						value={ asNumber(
 							slidesPerView,
@@ -145,7 +143,6 @@ const ResponsiveControls = ( {
 
 				{ 'auto' === slidesPerViewMode && (
 					<UnitControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Slide width', 'unitone' ) }
 						value={ autoSlideWidth }
@@ -160,7 +157,6 @@ const ResponsiveControls = ( {
 			</div>
 
 			<UnitControl
-				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ __( 'Space between slides', 'unitone' ) }
 				value={ '' === spaceBetween ? '' : `${ spaceBetween }px` }
@@ -184,7 +180,6 @@ const ResponsiveControls = ( {
 
 			<RangeControl
 				__nextHasNoMarginBottom
-				__next40pxDefaultSize
 				label={ __( 'Slides per group', 'unitone' ) }
 				value={
 					'' === slidesPerGroup
@@ -335,7 +330,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					onDeselect={ () => resetSetting( 'effect' ) }
 				>
 					<SelectControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Effect', 'unitone' ) }
 						value={ resolved.effect }
@@ -432,7 +426,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 							}
 						>
 							<UnitControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __(
 									'Container beginning offset',
@@ -467,7 +460,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 							}
 						>
 							<UnitControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __(
 									'Container end offset',
@@ -502,7 +494,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					onDeselect={ () => resetSetting( 'speed' ) }
 				>
 					<TextControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						type="number"
 						label={ __( 'Animation speed (ms)', 'unitone' ) }
@@ -527,7 +518,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					onDeselect={ () => resetSetting( 'loopMode' ) }
 				>
 					<ToggleGroupControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						isBlock
 						label={ __( 'Loop', 'unitone' ) }
@@ -694,7 +684,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 							onDeselect={ () => resetSetting( 'autoplayDelay' ) }
 						>
 							<TextControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								type="number"
 								label={ __( 'Delay (ms)', 'unitone' ) }
@@ -814,7 +803,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					onDeselect={ () => resetSetting( 'breakpointsBase' ) }
 				>
 					<ToggleGroupControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						isBlock
 						label={ __( 'Responsive basis', 'unitone' ) }
@@ -841,7 +829,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					onDeselect={ () => resetSetting( 'smBreakpoint' ) }
 				>
 					<UnitControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Tablet breakpoint', 'unitone' ) }
 						value={ `${ resolved.smBreakpoint }px` }
@@ -869,7 +856,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					onDeselect={ () => resetSetting( 'mdBreakpoint' ) }
 				>
 					<UnitControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						label={ __( 'Desktop breakpoint', 'unitone' ) }
 						value={ `${ resolved.mdBreakpoint }px` }

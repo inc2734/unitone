@@ -71,7 +71,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<UnitControl
-							__next40pxDefaultSize
 							label={ __( 'Break point', 'unitone' ) }
 							value={ normalizeForUnitControl( breakpoint ) }
 							units={ units }

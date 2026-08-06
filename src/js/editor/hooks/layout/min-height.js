@@ -138,7 +138,6 @@ export function MinHeightEdit( {
 			<HStack alignment="center">
 				{ ! isCustomControl ? (
 					<SelectControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						options={ PRESETS }
 						value={ normalizeForSelectControl( currentValue ) }
@@ -151,7 +150,6 @@ export function MinHeightEdit( {
 					/>
 				) : (
 					<TextControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						id="unitone-min-height-control"
 						value={ normalizeForTextControl( customValue ) }

@@ -261,7 +261,6 @@ export default function () {
 											? 'saved-api-key'
 											: 'editing-api-key'
 									}
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									value={ apiKey }
 									onChange={ ( newSetting ) => {
@@ -290,7 +289,6 @@ export default function () {
 							<div data-unitone-layout="stack">
 								<div data-unitone-layout="stack -gap:-2">
 									<SelectControl
-										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										value={ model }
 										onChange={ ( newSetting ) =>

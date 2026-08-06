@@ -33,7 +33,6 @@ export function HalfLeadingEdit( {
 } ) {
 	return (
 		<RangeControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			help={ help }

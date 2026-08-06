@@ -158,7 +158,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Type', 'unitone' ) }
 							options={ [ ...typeOptions ].map( ( o ) => ( {
@@ -240,7 +239,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							}
 						>
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Gap', 'unitone' ) }
 								value={ normalizeForRangeControl( gap ) }
@@ -272,7 +270,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							}
 						>
 							<RangeControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Size', 'unitone' ) }
 								value={ normalizeForRangeControl( size ) }
@@ -310,7 +307,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						>
 							<div style={ { display: 'grid', gap: '13px' } }>
 								<UnitControl
-									__next40pxDefaultSize
 									label={ __( 'Top size', 'unitone' ) }
 									min={ 0 }
 									value={ normalizeForUnitControl(
@@ -329,7 +325,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								/>
 
 								<UnitControl
-									__next40pxDefaultSize
 									label={ __( 'Bottom size', 'unitone' ) }
 									min={ 0 }
 									value={ normalizeForUnitControl(
@@ -370,7 +365,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						>
 							<div style={ { display: 'grid', gap: '13px' } }>
 								<UnitControl
-									__next40pxDefaultSize
 									label={ __(
 										'Distance from top',
 										'unitone'
@@ -392,7 +386,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								/>
 
 								<UnitControl
-									__next40pxDefaultSize
 									label={ __(
 										'Distance from right',
 										'unitone'
@@ -414,7 +407,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								/>
 
 								<UnitControl
-									__next40pxDefaultSize
 									label={ __(
 										'Distance from bottom',
 										'unitone'
@@ -436,7 +428,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 								/>
 
 								<UnitControl
-									__next40pxDefaultSize
 									label={ __(
 										'Distance from left',
 										'unitone'

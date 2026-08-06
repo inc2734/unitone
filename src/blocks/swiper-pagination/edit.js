@@ -73,7 +73,6 @@ export default function ( { attributes, setAttributes } ) {
 						onDeselect={ () => resetSetting( 'type' ) }
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Type', 'unitone' ) }
 							value={ settings.type }
@@ -128,7 +127,6 @@ export default function ( { attributes, setAttributes } ) {
 								}
 							>
 								<UnitControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									label={ __( 'Bullet size', 'unitone' ) }
 									value={ `${ settings.bulletSize }px` }
@@ -153,7 +151,6 @@ export default function ( { attributes, setAttributes } ) {
 							}
 						>
 							<UnitControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Progress bar size', 'unitone' ) }
 								value={ `${ settings.progressbarSize }px` }

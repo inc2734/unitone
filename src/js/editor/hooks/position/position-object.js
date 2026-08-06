@@ -68,7 +68,6 @@ export function PositionEdit( {
 
 	return (
 		<SelectControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			help={
@@ -179,7 +178,6 @@ export function TopEdit( {
 
 	return (
 		<TextControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ normalizeForTextControl(
@@ -236,7 +234,6 @@ export function RightEdit( {
 
 	return (
 		<TextControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ normalizeForTextControl(
@@ -293,7 +290,6 @@ export function BottomEdit( {
 
 	return (
 		<TextControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ normalizeForTextControl(
@@ -350,7 +346,6 @@ export function LeftEdit( {
 
 	return (
 		<TextControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ normalizeForTextControl(
@@ -407,7 +402,6 @@ export function ZIndexEdit( {
 
 	return (
 		<TextControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ normalizeForTextControl(

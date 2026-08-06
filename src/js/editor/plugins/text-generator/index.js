@@ -169,7 +169,6 @@ const AIGenerateSidebar = () => {
 						/>
 
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Tone (optional)', 'unitone' ) }
 							value={ normalizeForSelectControl( tone ) }

@@ -41,7 +41,6 @@ export function FluidTypographyMinLengthEdit( {
 } ) {
 	return (
 		<UnitControl
-			__next40pxDefaultSize
 			label={ label }
 			value={ normalizeForUnitControl(
 				attributes?.unitone?.fluidTypographyMinLength

@@ -72,7 +72,6 @@ export default function ( { attributes, setAttributes } ) {
 						onDeselect={ () => resetSetting( 'type' ) }
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Type', 'unitone' ) }
 							value={ settings.type }
@@ -104,7 +103,6 @@ export default function ( { attributes, setAttributes } ) {
 							onDeselect={ () => resetSetting( 'circleSize' ) }
 						>
 							<UnitControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={ __( 'Circle size', 'unitone' ) }
 								value={ `${ settings.circleSize }px` }
@@ -125,7 +123,6 @@ export default function ( { attributes, setAttributes } ) {
 						onDeselect={ () => resetSetting( 'thickness' ) }
 					>
 						<UnitControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Thickness', 'unitone' ) }
 							value={ `${ settings.thickness }px` }

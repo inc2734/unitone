@@ -82,7 +82,6 @@ export function SectionDividerBottomTypeEdit( {
 
 	return (
 		<SelectControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			help={ !! value && help }

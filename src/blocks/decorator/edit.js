@@ -214,7 +214,6 @@ export default function ( {
 						}
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'HTML element', 'unitone' ) }
 							options={ [
@@ -316,7 +315,6 @@ export default function ( {
 
 			<InspectorControls group="advanced">
 				<TextControl
-					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					label={ __( 'Link rel' ) }
 					value={ normalizeForTextControl( rel ) }

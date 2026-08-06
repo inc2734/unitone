@@ -303,7 +303,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<SelectControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Heading level', 'unitone' ) }
 							options={ [
@@ -369,7 +368,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							}
 						>
 							<TextControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={
 									<>
@@ -438,7 +436,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 							}
 						>
 							<TextControl
-								__next40pxDefaultSize
 								__nextHasNoMarginBottom
 								label={
 									<>

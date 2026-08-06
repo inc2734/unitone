@@ -330,7 +330,6 @@ export function JustifySelfEdit( {
 			desktopControls={ () => (
 				<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 					<ToggleGroupControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={ normalizeForToggleGroupControl(
@@ -361,7 +360,6 @@ export function JustifySelfEdit( {
 			tabletControls={ () => (
 				<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 					<ToggleGroupControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={ normalizeForToggleGroupControl(
@@ -394,7 +392,6 @@ export function JustifySelfEdit( {
 			mobileControls={ () => (
 				<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 					<ToggleGroupControl
-						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 						hideLabelFromVision
 						value={ normalizeForToggleGroupControl(
@@ -430,7 +427,6 @@ export function JustifySelfEdit( {
 	) : (
 		<fieldset className="block-editor-hooks__flex-layout-justification-controls unitone-dimension-control">
 			<ToggleGroupControl
-				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ label }
 				value={ normalizeForToggleGroupControl(

@@ -348,7 +348,6 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<RangeControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __(
 								'Blur the background image/video',
@@ -421,7 +420,6 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<RangeControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Columns count', 'unitone' ) }
 							value={ normalizeForRangeControl( columns ) }
@@ -454,7 +452,6 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<RangeControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Rows count', 'unitone' ) }
 							value={ normalizeForRangeControl( rows ) }
@@ -486,7 +483,6 @@ export default function ( { name, attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleGroupControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Row track size', 'unitone' ) }
 							value={ normalizeForToggleGroupControl(

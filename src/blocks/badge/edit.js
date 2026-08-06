@@ -281,7 +281,6 @@ export default function ( { attributes, setAttributes } ) {
 						} }
 					>
 						<UnitControl
-							__next40pxDefaultSize
 							label={ __( 'Size', 'unitone' ) }
 							value={ normalizeForUnitControl( minHeight ) }
 							style={ { width: '100%' } }

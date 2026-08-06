@@ -34,7 +34,6 @@ const LinkDecorationControl = ( { label, value, onChange, className } ) => {
 		<ToggleGroupControl
 			isDeselectable
 			__nextHasNoMarginBottom
-			__next40pxDefaultSize
 			label={ label }
 			className={ clsx(
 				'block-editor-text-decoration-control',

@@ -119,7 +119,6 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						}
 					>
 						<ToggleGroupControl
-							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							label={ __( 'Popover placement', 'unitone' ) }
 							value={ normalizeForToggleGroupControl(

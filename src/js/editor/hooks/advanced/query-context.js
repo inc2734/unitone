@@ -23,7 +23,6 @@ export function resetQueryContextFilter() {
 export function QueryContextEdit( { attributes: { unitone }, setAttributes } ) {
 	return (
 		<ToggleGroupControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			isBlock
 			label={ __( 'Responsive basis for block-specific CSS', 'unitone' ) }

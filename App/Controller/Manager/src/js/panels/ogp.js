@@ -104,7 +104,6 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 							<div data-unitone-layout="stack">
 								<div data-unitone-layout="stack -gap:-2">
 									<TextControl
-										__next40pxDefaultSize
 										__nextHasNoMarginBottom
 										label={ __(
 											'twitter:site',

@@ -63,7 +63,6 @@ export function SectionDividerTopXEdit( {
 
 	return (
 		<RangeControl
-			__next40pxDefaultSize
 			__nextHasNoMarginBottom
 			label={ label }
 			value={ normalizeForRangeControl(

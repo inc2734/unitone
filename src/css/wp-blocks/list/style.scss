@@ -25,6 +25,10 @@
 	}
 }
 
+[data-type="core/list"]:where([data-unitone-layout*="-divider:"]) {
+	visibility: visible;
+}
+
 :root :where(.wp-block-list[data-unitone-layout*="-divider\:"]) {
 	--unitone--divider-width: 1px;
 	--unitone--divider-style: solid;

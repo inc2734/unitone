@@ -1,3 +1,5 @@
+// The editor wrapper receives -divider but not divider:initialized. Keep only
+// that wrapper visible; the inner layout retains the normal initialization gate.
 .unitone-child-pages:where([data-unitone-layout*="-divider:"]) {
 	visibility: visible;
 }

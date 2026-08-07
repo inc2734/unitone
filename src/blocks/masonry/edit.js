@@ -114,6 +114,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const { columnWidth, linkTo, childrenBorder, allowedBlocks, templateLock } =
 		attributes;
 
+	// Keep derived image data outside this selector. Returning newly created
+	// arrays or objects from useSelect makes equal store state look unstable.
 	const { innerBlocks, innerBlockClientIds } = useSelect(
 		( select ) => {
 			const { getBlock, getBlockOrder } = select( blockEditorStore );

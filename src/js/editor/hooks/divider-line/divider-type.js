@@ -103,6 +103,7 @@ export function hasDividerTypeValue( {
 
 export function resetDividerTypeFilter() {
 	return {
+		// undefined restores the block default; '' is an explicit "None".
 		dividerType: undefined,
 	};
 }

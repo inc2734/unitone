@@ -1,83 +1,86 @@
 # Maintainer Knowledge Base
 
-This directory contains internal maintenance material for unitone maintainers
-and AI coding agents. It preserves reusable design decisions, product-specific
-constraints, and confirmed known issues that should survive beyond an
-individual task or conversation.
+This directory preserves only unitone-specific knowledge that cannot be kept
+more effectively next to the implementation. It is a routing layer for
+maintainers and AI coding agents, not a task log or a substitute for issues and
+pull requests.
 
 ## Language policy
 
-The main entries are written in Japanese so that the maintainers can review and
-correct subtle technical details in their working language. AI agents must
-consult the Japanese documents regardless of the language of the current
-request.
+The main entries are written in Japanese so maintainers can review subtle
+technical details in their working language. Do not maintain duplicate Japanese
+and English copies of the same knowledge.
 
-User-facing documentation, general project documentation, and code comments
-remain in English, following the existing project convention. When an English
-speaker needs access to maintainer knowledge, an AI agent may provide a
-translation or summary on demand. Do not maintain duplicate Japanese and
-English copies of the same knowledge, because parallel copies are likely to
-drift.
+## Where knowledge belongs
+
+Use the narrowest durable location that fits:
+
+1. Prefer tests, types, or code structure when they can enforce the constraint.
+2. Put a short reason next to the relevant source when it applies to one
+   implementation and becomes obsolete with that implementation. Explain why,
+   not what the code already says.
+3. Use this directory only for non-obvious product rules or decisions that span
+   files or must be known before choosing which code to change.
+4. Put investigation history, reproduction details, verification logs, and
+   file-by-file implementation notes in the relevant issue or pull request.
+
+Do not duplicate the full explanation across source comments, maintainer
+documents, and issues. A source comment or maintainer entry may link to an issue
+for details, but must state the conclusion needed to maintain the code.
 
 ## Documents
 
 - [`product-context.ja.md`](product-context.ja.md): Stable product behavior,
-  design principles, constraints, terminology, and easy-to-misunderstand facts.
-- [`decisions.ja.md`](decisions.ja.md): Design decisions and the reasons behind
-  them.
-- [`known-issues.ja.md`](known-issues.ja.md): Confirmed bugs, compatibility
-  issues, and environment-dependent problems, with facts distinguished from
-  hypotheses.
+  principles, constraints, and terminology.
+- [`decisions.ja.md`](decisions.ja.md): A compact index of active design
+  decisions. Detailed entries are stored under [`decisions/`](decisions/).
+- [`known-issues.ja.md`](known-issues.ja.md): A compact index of confirmed,
+  currently relevant compatibility or environment problems.
 
-## End-of-task workflow
+## Reading workflow
 
-Before finishing a task:
+- Do not read every maintainer entry by default.
+- Open only the category relevant to the task, start from its compact index,
+  and follow links to matching entries.
+- If the index is insufficient, search titles and text with a focused keyword
+  query, then open only the matching files.
+- Searching all entries for a duplicate does not require loading every file in
+  full.
 
-1. Decide whether the work produced reusable, unitone-specific knowledge.
-2. Search all maintainer documents for an existing equivalent entry.
-3. If an entry already exists, update it when needed instead of adding a
-   duplicate.
-4. Add a concise Japanese entry only when the knowledge meets the criteria
-   below. Do not copy the full conversation.
-5. Review documentation changes together with code changes using `git diff`.
-6. Mention any maintainer-documentation update in the final task report.
+## What merits a maintainer entry
 
-If the user explicitly asks not to update these documents, do not update them.
-If the correct category is unclear, do not force an entry; mention the possible
-documentation update in the final report instead.
-
-## What to record
-
-Record knowledge when at least one of the following applies:
-
-- A bug's symptoms, reproduction conditions, cause, or workaround became known.
-- A unitone-specific behavior, principle, constraint, or term became known.
-- The task established a design decision that future changes should preserve.
-- A maintainer corrected a misconception that an AI agent is likely to repeat.
-- The task established a reusable procedure for similar investigations or
-  implementations.
-- An important compatibility issue with WordPress, Gutenberg, WooCommerce, or
-  another relevant environment was confirmed.
+Record an item only when omitting it would make a future maintainer likely to
+change unitone incorrectly and the reason is not apparent from the relevant
+source. Typical examples are cross-cutting compatibility constraints, product
+principles, and decisions whose rationale survives the current implementation.
 
 Do not record:
 
-- One-off conversation or temporary work status.
-- Unverified speculation by itself.
-- A simple description that is readily apparent from the current code.
-- Information that substantially duplicates an existing entry.
-- General knowledge unrelated to unitone.
-- Information likely to become stale before it can guide future work.
-- API keys, credentials, customer data, or confidential local-environment
-  details.
+- completed task summaries or temporary work state;
+- unverified speculation;
+- behavior readily apparent from code;
+- one-off fixes whose explanation belongs beside the changed code;
+- detailed reproduction steps, investigation logs, or routine test results;
+- exact line numbers or exhaustive file lists that will quickly become stale;
+- general knowledge unrelated to unitone;
+- secrets or local confidential information.
 
-## Editing principles
+Resolved problems should normally be removed. Retain one only when its cause or
+constraint remains important for future compatibility work.
 
-- Separate verified facts from hypotheses, and never present uncertainty as a
-  settled fact.
-- Record the versions and environments used for verification when relevant.
-- Preserve the reason for a decision, not only the resulting code state.
-- Keep entries concise and link to relevant files, issues, and pull requests.
-- When removing obsolete information, preserve the reason for the change when
-  it remains useful.
-- Write additions to the Japanese maintainer documents in Japanese; do not
-  translate them merely because the current request is in English.
+## Editing workflow
+
+Before finishing a task:
+
+1. Decide whether it produced knowledge meeting the threshold above.
+2. Search the indexes, candidate entries, and relevant source comments for an
+   equivalent explanation.
+3. Update the narrowest existing location instead of duplicating it.
+4. If a cross-cutting entry is warranted, keep the repository copy concise and
+   link to the relevant issue or pull request for details.
+5. Review documentation and source-comment changes with `git diff`, and mention
+   maintainer-documentation updates in the final report.
+
+Write maintainer entries in Japanese. Keep verified facts separate from
+hypotheses, preserve the reason for a decision, and avoid links to mutable line
+numbers. If the correct location is unclear, do not force a new entry.

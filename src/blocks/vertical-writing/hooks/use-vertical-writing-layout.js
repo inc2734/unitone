@@ -90,6 +90,8 @@ export function useVerticalWritingLayout( innerBlocksLength ) {
 		}
 	}, [] );
 
+	// Text reflow can change the vertical height without changing the wrapper
+	// width or child count, so observe the rendered size of direct children.
 	const observeDirectChildrenResize = useCallback(
 		( element ) => {
 			disconnectChildResizeObserver();

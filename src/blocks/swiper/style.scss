@@ -157,6 +157,8 @@
 .unitone-swiper-scrollbar.swiper-scrollbar {
 	position: relative;
 	inset: auto;
+	// Keep the drag width out of intrinsic sizing so Swiper does not measure a
+	// temporarily collapsed scrollbar in content-sized parent layouts.
 	contain: inline-size;
 	width: 100%;
 	height: var(--swiper-scrollbar-size);

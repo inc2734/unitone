@@ -189,6 +189,9 @@ const withBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	};
 }, 'withBlockProps' );
 
+// Do not gate this wrapper on isSelected. InspectorControls handles single and
+// multiple selection; an early return here hides unitone controls for a
+// multiple selection of the same block type.
 const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { clientId, name, attributes, setAttributes } = props;

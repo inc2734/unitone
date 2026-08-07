@@ -17,6 +17,9 @@ export const useIsEditingBlockStyleState = ( clientId, isEnabled = true ) =>
 			}
 
 			const blockEditorSelectors = unlock( select( blockEditorStore ) );
+			// WordPress 7.1 has no public selectors for the selected block style
+			// state. Keep these calls optional for older WordPress versions.
+			// See https://github.com/inc2734/unitone/issues/829.
 			const selectedState =
 				blockEditorSelectors.getSelectedBlockStyleState?.( clientId );
 

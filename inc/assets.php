@@ -118,22 +118,6 @@ function unitone_override_block_editor_global_styles( $editor_settings ) {
 add_filter( 'block_editor_settings_all', 'unitone_override_block_editor_global_styles' );
 
 /**
- * Disable the block states editing UI.
- *
- * The unitone theme provides its own hover controls and keeps using them
- * instead of the block states editing UI introduced in WordPress 7.1.
- *
- * @param array $editor_settings Default editor settings.
- * @return array
- */
-function unitone_disable_block_states_editing( $editor_settings ) {
-	$editor_settings['blockStatesEditingEnabled'] = false;
-
-	return $editor_settings;
-}
-add_filter( 'block_editor_settings_all', 'unitone_disable_block_states_editing' );
-
-/**
  * Add global variables for block editor.
  */
 foreach ( array( 'unitone_enqueue_block_editor_scripts', 'unitone_setup_enqueue_assets' ) as $hook ) {

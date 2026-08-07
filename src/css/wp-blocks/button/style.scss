@@ -1,6 +1,7 @@
 :root :where(.wp-block-button) {
 	--unitone--min-width: 0px;
 
+	border: none;
 	min-width: min(var(--unitone--min-width), 100%);
 
 	.wp-block-button__link {

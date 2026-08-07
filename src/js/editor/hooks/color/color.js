@@ -87,6 +87,17 @@ export const resetColor = ( props ) => {
 function ColorPanelPure( props ) {
 	const { name, attributes } = props;
 
+	const {
+		hoverTextColor,
+		customHoverTextColor,
+		hoverBackgroundColor,
+		customHoverBackgroundColor,
+		hoverGradient,
+		customHoverGradient,
+		hoverBorderColor,
+		customHoverBorderColor,
+	} = attributes;
+
 	const isHoverTextColorDisabled = isHoverTextColorSupportDisabled( {
 		name,
 	} );
@@ -99,54 +110,63 @@ function ColorPanelPure( props ) {
 		name,
 	} );
 	const isMarkerColorDisabled = isMarkerColorSupportDisabled( { name } );
+	const shouldHideUnsetHoverColor = 'core/button' === name;
 
-	if (
-		isHoverTextColorDisabled &&
-		isHoverBackgroundColorDisabled &&
-		isHoverGradientDisabled &&
-		isHoverBorderColorDisabled &&
-		isMarkerColorDisabled
-	) {
+	const shouldShowHoverTextColor =
+		! isHoverTextColorDisabled &&
+		( ! shouldHideUnsetHoverColor ||
+			!! hoverTextColor ||
+			!! customHoverTextColor );
+
+	const shouldShowHoverBackground =
+		( ! isHoverBackgroundColorDisabled &&
+			( ! shouldHideUnsetHoverColor ||
+				!! hoverBackgroundColor ||
+				!! customHoverBackgroundColor ) ) ||
+		( ! isHoverGradientDisabled &&
+			( ! shouldHideUnsetHoverColor ||
+				!! hoverGradient ||
+				!! customHoverGradient ) );
+
+	const shouldShowHoverBorderColor =
+		! isHoverBorderColorDisabled &&
+		( ! shouldHideUnsetHoverColor ||
+			!! hoverBorderColor ||
+			!! customHoverBorderColor );
+
+	const shouldShowHoverColor =
+		shouldShowHoverTextColor ||
+		shouldShowHoverBackground ||
+		shouldShowHoverBorderColor;
+
+	if ( ! shouldShowHoverColor && isMarkerColorDisabled ) {
 		return null;
 	}
 
 	return (
 		<>
-			{ ! isHoverTextColorDisabled && (
+			{ shouldShowHoverColor && (
 				<InspectorControls
-					group="typography"
+					group="color"
 					resetAllFilter={ ( blockAttributes ) => ( {
 						...blockAttributes,
 						...resetHoverTextColorFilter(),
-					} ) }
-				>
-					<HoverTextColorEdit { ...props } />
-				</InspectorControls>
-			) }
-
-			{ ( ! isHoverBackgroundColorDisabled ||
-				! isHoverGradientDisabled ) && (
-				<InspectorControls
-					group="background"
-					resetAllFilter={ ( blockAttributes ) => ( {
-						...blockAttributes,
 						...resetHoverBackgroundColorFilter(),
 						...resetHoverGradientFilter(),
-					} ) }
-				>
-					<HoverBackgroundColorEdit { ...props } />
-				</InspectorControls>
-			) }
-
-			{ ! isHoverBorderColorDisabled && (
-				<InspectorControls
-					group="border"
-					resetAllFilter={ ( blockAttributes ) => ( {
-						...blockAttributes,
 						...resetHoverBorderColorFilter(),
 					} ) }
 				>
-					<HoverBorderColorEdit { ...props } />
+					{ shouldShowHoverTextColor && (
+						<HoverTextColorEdit { ...props } />
+					) }
+
+					{ shouldShowHoverBackground && (
+						<HoverBackgroundColorEdit { ...props } />
+					) }
+
+					{ shouldShowHoverBorderColor && (
+						<HoverBorderColorEdit { ...props } />
+					) }
 				</InspectorControls>
 			) }
 

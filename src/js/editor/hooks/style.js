@@ -82,6 +82,8 @@ import {
 
 import { LayerPanel, withLayerBlockProps, resetLayer } from './layer/layer';
 
+import { useIsEditingBlockStyleState } from './block-style-state';
+
 import {
 	OverlayPanel,
 	withOverlayBlockProps,
@@ -189,6 +191,11 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { clientId, name, attributes, setAttributes } = props;
 
+		const isEditingBlockStyleState = useIsEditingBlockStyleState(
+			clientId,
+			'core/button' === name
+		);
+
 		const passedProps = {
 			clientId,
 			name,
@@ -201,21 +208,25 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 			<>
 				<BlockEdit { ...props } />
 
-				<TypographyPanel { ...passedProps } />
-				<DimensionsPanel { ...passedProps } />
-				<LayoutPanel { ...passedProps } />
-				<AlignmentDistributionPanel { ...passedProps } />
-				<DividerLinePanel { ...passedProps } />
-				<SectionDividerPanel { ...passedProps } />
-				<PositionPanel { ...passedProps } />
-				<LayerPanel { ...passedProps } />
-				<OverlayPanel { ...passedProps } />
-				<BorderPanel { ...passedProps } />
-				<ColorPanel { ...passedProps } />
-				<BackdropFilterPanel { ...passedProps } />
-				<AnimationPanel { ...passedProps } />
+				{ ! isEditingBlockStyleState && (
+					<>
+						<TypographyPanel { ...passedProps } />
+						<DimensionsPanel { ...passedProps } />
+						<LayoutPanel { ...passedProps } />
+						<AlignmentDistributionPanel { ...passedProps } />
+						<DividerLinePanel { ...passedProps } />
+						<SectionDividerPanel { ...passedProps } />
+						<PositionPanel { ...passedProps } />
+						<LayerPanel { ...passedProps } />
+						<OverlayPanel { ...passedProps } />
+						<BorderPanel { ...passedProps } />
+						<ColorPanel { ...passedProps } />
+						<BackdropFilterPanel { ...passedProps } />
+						<AnimationPanel { ...passedProps } />
 
-				<AdvancedPanel { ...passedProps } />
+						<AdvancedPanel { ...passedProps } />
+					</>
+				) }
 			</>
 		);
 	};

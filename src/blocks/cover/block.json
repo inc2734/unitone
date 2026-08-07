@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "26.5.0",
+	"version": "28.0.0",
 	"textdomain": "unitone",
 	"name": "unitone/cover",
 	"title": "Cover",
@@ -40,7 +40,11 @@
 			"background": true,
 			"gradients": true,
 			"text": true,
-			"link": true
+			"link": true,
+			"__experimentalDefaultControls": {
+				"text": true,
+				"background": true
+			}
 		},
 		"typography": {
 			"fontSize": true,

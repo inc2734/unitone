@@ -53,8 +53,10 @@
 ## 決定: WordPress 7.1 の疑似状態スタイル UI を無効化し unitone の hover 設定を維持する
 
 - 決定日: 2026-08-06
-- 状態: 採用
+- 置換日: 2026-08-07
+- 状態: 置換
 - 関連領域: WordPress 7.1、ブロックエディター、状態スタイル、hover 色
+- 置換後の決定: 「WordPress 7.1 の状態スタイル UI と unitone の hover 設定をブロック別に使い分ける」
 
 ### 背景
 
@@ -84,6 +86,44 @@ unitone の hover サポートは既存コンテンツとテーマの CSS カス
 - [`src/js/editor/hooks/color/color.js`](../../src/js/editor/hooks/color/color.js)
 - [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
 - [WordPress エディター設定フィルター](https://github.com/WordPress/gutenberg/blob/wp/7.1/docs/reference-guides/filters/editor-filters.md)
+
+## 決定: WordPress 7.1 の状態スタイル UI と unitone の hover 設定をブロック別に使い分ける
+
+- 決定日: 2026-08-07
+- 状態: 採用
+- 置換する決定: 「WordPress 7.1 の疑似状態スタイル UI を無効化し unitone の hover 設定を維持する」
+- 関連領域: WordPress 7.1、ブロックエディター、状態スタイル、unitone 独自ブロックサポート、hover 色
+
+### 背景
+
+`core/button` ではコアの状態スタイル UI と unitone 独自の hover UI が重複し、操作が分かりにくい。一方、`unitone/*` ブロックはコアの疑似状態スタイル編集に対応していないため、従来の unitone hover UI を新規設定にも引き続き使用する必要がある。また、unitone 独自ブロックサポートはコアの状態スタイルへ値を保存しないため、ボタンの状態を切り替えたパネルに表示すると、その状態だけに適用される設定であるように誤認される。
+
+### 決定内容
+
+- `blockStatesEditingEnabled` を無効化せず、WordPress 7.1 の状態スタイル UI を使用する。
+- `core/button` の unitone hover UI は、対応する既存属性に値が保存されている場合だけ通常状態の「色」パネルに表示し、編集・解除できるようにする。未設定の場合は表示せず、新規の状態別色設定にはコアの UI を使用する。
+- `unitone/*` ブロックでは、設定値の有無にかかわらず unitone hover UI を通常状態の「色」パネルに表示し、従来どおり新規設定できるようにする。
+- `core/button` でコアの疑似状態またはレスポンシブ状態のスタイルを編集中は、`editor.BlockEdit` フィルターから追加する unitone 独自ブロックサポートの Inspector UI を表示しない。この制限は `unitone/*` ブロックには適用しない。
+- unitone の既存属性、保存形式、CSS 出力は移行せず、保存済みの hover 設定も引き続き適用する。
+
+### 理由
+
+ボタンの新しい状態別スタイルはコアの UI と保存形式へ集約しつつ、既存コンテンツの unitone hover 設定を失わずに編集・解除できる移行状態を維持するため。コアの状態スタイルを利用できない unitone ブロックでは、従来の設定手段を維持する。また、状態別保存に未対応の独自設定をボタンの状態スタイルパネルから除外し、設定の適用範囲を UI と一致させる。
+
+### 影響
+
+- `core/button` では、unitone の hover 設定がなければ unitone hover UI は表示されず、新規追加もできない。保存済み設定をすべて解除すると UI は非表示になる。
+- `unitone/*` ブロックでは、unitone hover UI から引き続き新規設定できる。
+- 状態スタイルの選択状態は WordPress 7.1 時点で公開 API がないため、非公開の `getSelectedBlockStyleState` と `isResponsiveEditing` セレクターに依存する。WordPress／Gutenberg 更新時には、状態切り替え時の表示条件を確認する。
+- 状態スタイルのセレクターが存在しない旧環境では、unitone 独自 UI を従来どおり表示する。
+
+### 関連ファイル・Issue・PR
+
+- [`inc/assets.php`](../../inc/assets.php)
+- [`src/js/editor/hooks/block-style-state.js`](../../src/js/editor/hooks/block-style-state.js)
+- [`src/js/editor/hooks/style.js`](../../src/js/editor/hooks/style.js)
+- [`src/js/editor/hooks/color/color.js`](../../src/js/editor/hooks/color/color.js)
+- [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
 
 ## 決定: Core と unitone の `min-width` サポートを別機能として維持する
 
@@ -118,9 +158,50 @@ WordPress 7.1 では Dimensions ブロックサポートに `minWidth` が追加
 - [`src/js/editor/hooks/layout/min-width.js`](../../src/js/editor/hooks/layout/min-width.js)
 - [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
 
-## 決定: unitone の汎用色関連サポートを意味別の Inspector パネルに配置する
+## 決定: コアブロックのレスポンシブスタイルを内部要素へ CSS 変数経由で適用する
+
+- 決定日: 2026-08-07
+- 状態: 採用
+- 関連領域: WordPress 7.1、レスポンシブ状態スタイル、viewport、`core/post-terms`、`core/tag-cloud`
+
+### 背景
+
+unitone の badge／outline スタイルは、コアがブロックルートへ出力する背景・枠線を打ち消し、その値を CSS 変数に変換してリンクなどの内部要素へ適用する。WordPress 7.1 の `style.@tablet`／`style.@mobile` は media query 内でブロックルートへ直接適用されるため、通常状態だけを CSS 変数へ変換すると、レスポンシブ状態でコアのスタイルがルート要素へ戻ってしまう。また、viewport の境界値は `theme.json` から変更できるため、unitone 内へ固定値を持てない。
+
+### 決定内容
+
+- 通常状態に加え、`style.@tablet`／`style.@mobile` の背景・枠線も viewport 別の CSS 変数へ変換してブロックルートへ設定する。CSS 変数の breakpoint 接頭辞は unitone の既存規則に合わせ、`@tablet` を `--unitone--md-*`、`@mobile` を `--unitone--sm-*` へ対応させる。
+- WordPress が解決した media query は `WP_Theme_JSON::get_viewport_media_queries()` から取得する。フロントは PHP で使用し、エディターには `enqueue_block_editor_assets` の実行時に `wp_localize_script()` で `unitoneViewportMediaQueries` として同じ値を渡す。`block_editor_settings_all` に追加した独自キーは BlockEditorProvider の `getSettings()` へ引き継がれないため使用しない。また、テーマ読み込み時に viewport を解決すると処理時期が早すぎるため、既存の `unitoneSettings` を出力するコードでは解決しない。
+- viewport 別 CSS では、コアがルートへ直接適用する背景・枠線を対象ブロックのインスタンス単位で打ち消し、内部要素の各プロパティを viewport 別 CSS 変数で上書きする。
+- viewport 別の辺・角の値は、同じ viewport の一括指定、通常状態の辺・角の値の順にフォールバックする。mobile は tablet の値を継承せず、WordPress と同様に通常状態へフォールバックする。
+- フロントの動的 CSS は unitone 独自の追加 CSS と同じ `global-styles` のインラインスタイルへ追加する。エディターでは、ブロックキャンバスが iframe の場合も viewport の media query が正しく評価されるよう、WordPress 7.1 の `useStyleOverride()` でキャンバスのスタイルへ登録する。unitone 独自の追加 CSS も同じ方法で登録する。
+
+### 理由
+
+内部要素へスタイルを移す既存の表示設計を維持しながら、WordPress 7.1 のレスポンシブ状態と変更可能な viewport 境界にエディター／フロントの両方を追従させるため。
+
+### 影響
+
+- 対象は badge／outline スタイルの `core/post-terms` と `core/tag-cloud` に限定する。
+- viewport 設定の既定値や単位が変更されても、WordPress が返す media query に追従する。
+- 変換対象の CSS プロパティを追加する場合は、PHP とエディター JS の抽出・フォールバック定義を同時に更新する。
+
+### 関連ファイル・Issue・PR
+
+- [`inc/lib.php`](../../inc/lib.php)
+- [`inc/assets.php`](../../inc/assets.php)
+- [`inc/blocks.php`](../../inc/blocks.php)
+- [`src/js/editor/wp-blocks/border-css-vars.js`](../../src/js/editor/wp-blocks/border-css-vars.js)
+- [`src/js/editor/wp-blocks/post-terms.js`](../../src/js/editor/wp-blocks/post-terms.js)
+- [`src/js/editor/wp-blocks/tag-cloud.js`](../../src/js/editor/wp-blocks/tag-cloud.js)
+- [Gutenberg `useStyleOverride()`](https://github.com/WordPress/gutenberg/blob/wp/7.1/packages/block-editor/src/hooks/style.js)
+- [WordPress 7.1 のレスポンシブブロックスタイル Dev Note](https://make.wordpress.org/core/2026/08/05/responsive-block-styles-and-configurable-viewports-in-wordpress-7-1/)
+- [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
+
+## 決定: unitone の汎用色関連サポートを Inspector の用途別パネルに配置する
 
 - 決定日: 2026-08-06
+- 更新日: 2026-08-07
 - 状態: 採用
 - 関連領域: WordPress 7.1、ブロックエディター、Inspector、色、Dimensions
 
@@ -130,14 +211,17 @@ WordPress 7.1 では、従来「色」にまとめられていたコアの色関
 
 ### 決定内容
 
-- hover 文字色は「タイポグラフィ」、hover 背景色・グラデーションは「背景」、hover 枠線色は「枠線」、リストのマーカー色は「要素」に配置する。
+- hover 文字色、背景色・グラデーション、枠線色は、関連する hover 設定を一か所で扱えるように、すべて従来の「色」パネルに配置する。
+- `core/button` の hover UI は対応する既存属性に値がある場合だけ表示し、`unitone/*` ブロックでは設定値の有無にかかわらず表示する。
+- `supports.color.text` が有効な `unitone/*` ブロックでは、各 `block.json` の `color.__experimentalDefaultControls.text` を `true` にして、コアのテキスト用「色」をデフォルトで表示する。`supports.color.text` が `false` のブロックは対象外とする。
+- `supports.color.background` が有効な `unitone/*` ブロックでは、各 `block.json` の `color.__experimentalDefaultControls.background` を `true` にして、背景パネルの「色」をデフォルトで表示する。`supports.color.gradients` も有効な場合は、同じ設定によって「グラデーション」もデフォルトで表示する。
 - 不透明度は汎用ブロックサポートとして、コアの「Dimensions」に配置する。
 - Table、Navigation、Timeline、Mega Menu などの内部要素固有色は「色」に残し、Slider、Texture など専用設定を持つものはその専用パネルに残す。
 - パネルの「すべてリセット」は、そのパネルへ配置した unitone 設定だけをリセット対象にする。
 
 ### 理由
 
-コアの情報設計に合わせて汎用設定を見つけやすくしつつ、ブロック固有の内部要素色を無理に一般化せず、設定対象の違いを保つため。
+コアの情報設計に合わせて通常時の汎用設定を見つけやすくしつつ、unitone の hover 設定は UI の位置と表示を安定させるため一つのパネルにまとめる。また、保存済みのボタンの unitone hover 設定は編集可能なまま維持し、unitone ブロックでは従来の新規設定手段を維持しながら、ブロック固有の内部要素色を無理に一般化せず設定対象の違いを保つため。
 
 ### 影響
 
@@ -147,8 +231,11 @@ WordPress 7.1 では、従来「色」にまとめられていたコアの色関
 ### 関連ファイル・Issue・PR
 
 - [`src/js/editor/hooks/color/color.js`](../../src/js/editor/hooks/color/color.js)
+- [`src/js/editor/hooks/color/hover-text-color.js`](../../src/js/editor/hooks/color/hover-text-color.js)
+- [unitone ブロック定義](../../src/blocks)
 - [`src/js/editor/hooks/dimensions/dimensions.js`](../../src/js/editor/hooks/dimensions/dimensions.js)
 - [`src/js/editor/hooks/dimensions/opacity.js`](../../src/js/editor/hooks/dimensions/opacity.js)
+- [`inc/block-supports.php`](../../inc/block-supports.php)
 - [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
 
 ## 決定: 独自ブロックサポートの Inspector UI を複数選択に対応させる

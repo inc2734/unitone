@@ -69,7 +69,7 @@ export const cleanEmptyObject = ( object ) => {
  * @param {Object}   args
  * @param {Object}   args.unitone         Current unitone attribute.
  * @param {Object}   args.blockAttributes Attributes passed from resetAllFilter.
- * @param {Object[]} args.resetFilters    Unitone reset filters to apply.
+ * @param {Object[]} args.resetFilters    unitone reset filters to apply.
  * @return {Object|undefined} Reset unitone attribute.
  */
 export function resetUnitoneWithBlockAttributes( {

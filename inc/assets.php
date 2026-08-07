@@ -120,8 +120,8 @@ add_filter( 'block_editor_settings_all', 'unitone_override_block_editor_global_s
 /**
  * Disable the block states editing UI.
  *
- * Unitone provides its own hover controls and keeps using them instead of the
- * block states editing UI introduced in WordPress 7.1.
+ * The unitone theme provides its own hover controls and keeps using them
+ * instead of the block states editing UI introduced in WordPress 7.1.
  *
  * @param array $editor_settings Default editor settings.
  * @return array

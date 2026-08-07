@@ -214,3 +214,37 @@ Swiper Scrollbar を Layers 内の `justify-self: center` などで内容幅に�
 
 - Layers、`justify-self: center` の Cluster、5枚のスライドを組み合わせたブラウザテストで問題を再現した。`contain: inline-size` の適用後はTrack幅とDragの計算基準が一致し、5枚目で右端との差がサブピクセルの丸め誤差だけになることを確認した。
 - 対象ファイルの JavaScript lint とブロックビルドが成功することを確認した。
+
+## 問題: GitHub Theme Updater が WordPress のプレリリース版を最終版より古いと判定する
+
+- 状態: 回避策あり
+- 確認日: 2026-08-07
+- 確認したバージョン・環境: WordPress 7.1-RC1、inc2734/wp-github-theme-updater 3.1.18
+- 関連領域: テーマ更新、`Requires at least`、WordPress プレリリース
+
+### 確認済みの事実
+
+#### 症状
+
+`style.css` の `Requires at least` が `7.1` の場合、WordPress 7.1-RC1 では GitHub Theme Updater の更新要件を満たさないと判定される。WordPress コアのテーマ有効化要件では、同じ `7.1` の指定で 7.1 Alpha／Beta／RC を許可する。
+
+### 原因
+
+- 原因の確度: 確認済み
+- WordPress コアの `is_wp_version_compatible()` は、現在の WordPress バージョンから `-alpha`、`-beta`、`-RC`、`-src` などの接尾辞を除いてから比較する。
+- GitHub Theme Updater 3.1.18 は、接尾辞を含む `$wp_version` と更新先テーマの `Requires at least` を直接 `version_compare()` する。このため `7.1-RC1` は最終版 `7.1` より古いと判定される。
+
+### 回避策
+
+- WordPress 7.1-RC1 以降を対象にする間は、`style.css` を公式のバージョン表記に合わせて `Requires at least: 7.1-RC1` とする。
+- この指定では 7.1 Beta は更新要件を満たさず、7.1-RC1 以降が対象になる。
+
+### 解決条件
+
+GitHub Theme Updater が `is_wp_version_compatible()` と同等にプレリリース接尾辞を扱うようになれば、`Requires at least` を最終版の `7.1` に戻せる。
+
+### 関連ファイル・Issue・PR
+
+- [`style.css`](../../style.css)
+- [`vendor/inc2734/wp-github-theme-updater/src/Bootstrap.php`](../../vendor/inc2734/wp-github-theme-updater/src/Bootstrap.php)
+- [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)

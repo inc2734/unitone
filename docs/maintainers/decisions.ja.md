@@ -122,7 +122,7 @@ WordPress 7.1 では Dimensions ブロックサポートに `minWidth` が追加
 
 - 決定日: 2026-08-06
 - 状態: 採用
-- 関連領域: WordPress 7.1、ブロックエディター、Inspector、色、Layer
+- 関連領域: WordPress 7.1、ブロックエディター、Inspector、色、Dimensions
 
 ### 背景
 
@@ -131,7 +131,7 @@ WordPress 7.1 では、従来「色」にまとめられていたコアの色関
 ### 決定内容
 
 - hover 文字色は「タイポグラフィ」、hover 背景色・グラデーションは「背景」、hover 枠線色は「枠線」、リストのマーカー色は「要素」に配置する。
-- 不透明度は「色」ではなく unitone の「Layer」に配置する。
+- 不透明度は汎用ブロックサポートとして、コアの「Dimensions」に配置する。
 - Table、Navigation、Timeline、Mega Menu などの内部要素固有色は「色」に残し、Slider、Texture など専用設定を持つものはその専用パネルに残す。
 - パネルの「すべてリセット」は、そのパネルへ配置した unitone 設定だけをリセット対象にする。
 
@@ -147,8 +147,8 @@ WordPress 7.1 では、従来「色」にまとめられていたコアの色関
 ### 関連ファイル・Issue・PR
 
 - [`src/js/editor/hooks/color/color.js`](../../src/js/editor/hooks/color/color.js)
-- [`src/js/editor/hooks/color/opacity.js`](../../src/js/editor/hooks/color/opacity.js)
-- [`src/js/editor/hooks/layer/layer.js`](../../src/js/editor/hooks/layer/layer.js)
+- [`src/js/editor/hooks/dimensions/dimensions.js`](../../src/js/editor/hooks/dimensions/dimensions.js)
+- [`src/js/editor/hooks/dimensions/opacity.js`](../../src/js/editor/hooks/dimensions/opacity.js)
 - [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)
 
 ## 決定: 独自ブロックサポートの Inspector UI を複数選択に対応させる

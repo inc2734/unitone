@@ -6,7 +6,7 @@ import { memo } from '@wordpress/element';
 import {
 	isStyleDisabled,
 	resetStyleFilter,
-	StyleTag,
+	CustomCSSStyleOverride,
 	StyleEdit,
 	withStyleBlockProps,
 } from './style';
@@ -25,7 +25,7 @@ import {
 	withContainerTypeBlockProps,
 } from './container-type';
 
-export { StyleTag };
+export { CustomCSSStyleOverride };
 
 export const withAdvancedBlockProps = ( props ) =>
 	withContainerTypeBlockProps(

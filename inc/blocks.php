@@ -261,99 +261,228 @@ add_filter(
 );
 
 /**
+ * Returns the unitone CSS variable breakpoint for a WordPress viewport state.
+ *
+ * @param string $breakpoint WordPress responsive style-state name.
+ * @return string CSS variable breakpoint.
+ */
+function unitone_get_css_var_breakpoint( $breakpoint ) {
+	$css_var_breakpoints = array(
+		'@tablet' => 'md',
+		'@mobile' => 'sm',
+	);
+
+	return $css_var_breakpoints[ $breakpoint ] ?? ltrim( $breakpoint, '@' );
+}
+
+/**
+ * Returns CSS vars used to move block styles to an inner element.
+ *
+ * @param array       $style              Block style object.
+ * @param string      $css_var_prefix     CSS variable prefix after `--unitone--`.
+ * @param string|null $css_var_breakpoint Responsive CSS variable breakpoint.
+ * @return array CSS variables and values.
+ */
+function unitone_get_border_css_vars( $style, $css_var_prefix, $css_var_breakpoint = null ) {
+	$style           = is_array( $style ) ? $style : array();
+	$border          = is_array( $style['border'] ?? null ) ? $style['border'] : array();
+	$border_radius   = $border['radius'] ?? null;
+	$variable_prefix = '--unitone--' . ( $css_var_breakpoint ? $css_var_breakpoint . '-' : '' ) . $css_var_prefix . '--';
+
+	$css_vars = array(
+		$variable_prefix . 'background-color'           => unitone_get_preset_css_var( $style['color']['background'] ?? null ),
+		$variable_prefix . 'border-color'               => unitone_get_preset_css_var( $border['color'] ?? null ),
+		$variable_prefix . 'border-top-color'           => unitone_get_preset_css_var( $border['top']['color'] ?? null ),
+		$variable_prefix . 'border-right-color'         => unitone_get_preset_css_var( $border['right']['color'] ?? null ),
+		$variable_prefix . 'border-bottom-color'        => unitone_get_preset_css_var( $border['bottom']['color'] ?? null ),
+		$variable_prefix . 'border-left-color'          => unitone_get_preset_css_var( $border['left']['color'] ?? null ),
+		$variable_prefix . 'border-style'               => $border['style'] ?? null,
+		$variable_prefix . 'border-top-style'           => $border['top']['style'] ?? null,
+		$variable_prefix . 'border-right-style'         => $border['right']['style'] ?? null,
+		$variable_prefix . 'border-bottom-style'        => $border['bottom']['style'] ?? null,
+		$variable_prefix . 'border-left-style'          => $border['left']['style'] ?? null,
+		$variable_prefix . 'border-width'               => unitone_get_preset_css_var( $border['width'] ?? null ),
+		$variable_prefix . 'border-top-width'           => unitone_get_preset_css_var( $border['top']['width'] ?? null ),
+		$variable_prefix . 'border-right-width'         => unitone_get_preset_css_var( $border['right']['width'] ?? null ),
+		$variable_prefix . 'border-bottom-width'        => unitone_get_preset_css_var( $border['bottom']['width'] ?? null ),
+		$variable_prefix . 'border-left-width'          => unitone_get_preset_css_var( $border['left']['width'] ?? null ),
+		$variable_prefix . 'border-radius'              => ! is_array( $border_radius )
+			? unitone_get_preset_css_var( $border_radius )
+			: null,
+		$variable_prefix . 'border-top-left-radius'     => unitone_get_preset_css_var( $border_radius['topLeft'] ?? null ),
+		$variable_prefix . 'border-top-right-radius'    => unitone_get_preset_css_var( $border_radius['topRight'] ?? null ),
+		$variable_prefix . 'border-bottom-left-radius'  => unitone_get_preset_css_var( $border_radius['bottomLeft'] ?? null ),
+		$variable_prefix . 'border-bottom-right-radius' => unitone_get_preset_css_var( $border_radius['bottomRight'] ?? null ),
+	);
+
+	return array_filter(
+		$css_vars,
+		static function ( $value ) {
+			return false !== $value && null !== $value && '' !== $value;
+		}
+	);
+}
+
+/**
+ * Returns responsive CSS that applies inner element style variables.
+ *
+ * @param string $identifier       Block instance CSS class.
+ * @param string $block_selector   Block root selector.
+ * @param string $inner_selector   Inner element selector.
+ * @param string $css_var_prefix   CSS variable prefix after `--unitone--`.
+ * @param array  $responsive_styles Responsive styles keyed by style-state name.
+ * @return string Responsive CSS.
+ */
+function unitone_get_responsive_border_css( $identifier, $block_selector, $inner_selector, $css_var_prefix, $responsive_styles ) {
+	$property_fallbacks = array(
+		'background-color'           => array( 'background-color' ),
+		'border-top-color'           => array( 'border-top-color', 'border-color' ),
+		'border-right-color'         => array( 'border-right-color', 'border-color' ),
+		'border-bottom-color'        => array( 'border-bottom-color', 'border-color' ),
+		'border-left-color'          => array( 'border-left-color', 'border-color' ),
+		'border-top-style'           => array( 'border-top-style', 'border-style' ),
+		'border-right-style'         => array( 'border-right-style', 'border-style' ),
+		'border-bottom-style'        => array( 'border-bottom-style', 'border-style' ),
+		'border-left-style'          => array( 'border-left-style', 'border-style' ),
+		'border-top-width'           => array( 'border-top-width', 'border-width' ),
+		'border-right-width'         => array( 'border-right-width', 'border-width' ),
+		'border-bottom-width'        => array( 'border-bottom-width', 'border-width' ),
+		'border-left-width'          => array( 'border-left-width', 'border-width' ),
+		'border-top-left-radius'     => array( 'border-top-left-radius', 'border-radius' ),
+		'border-top-right-radius'    => array( 'border-top-right-radius', 'border-radius' ),
+		'border-bottom-right-radius' => array( 'border-bottom-right-radius', 'border-radius' ),
+		'border-bottom-left-radius'  => array( 'border-bottom-left-radius', 'border-radius' ),
+	);
+
+	$media_queries   = unitone_get_viewport_media_queries();
+	$scoped_selector = $block_selector . '.' . $identifier;
+	$css             = '';
+
+	foreach ( $responsive_styles as $breakpoint => $style_vars ) {
+		if ( empty( $style_vars ) || empty( $media_queries[ $breakpoint ] ) ) {
+			continue;
+		}
+
+		$css_var_breakpoint = unitone_get_css_var_breakpoint( $breakpoint );
+		$declarations       = '';
+
+		foreach ( $property_fallbacks as $property => $fallbacks ) {
+			$value = 'var(--unitone--' . $css_var_prefix . '--' . $fallbacks[0] . ')';
+
+			foreach ( array_reverse( $fallbacks ) as $fallback ) {
+				$value = 'var(--unitone--' . $css_var_breakpoint . '-' . $css_var_prefix . '--' . $fallback . ', ' . $value . ')';
+			}
+
+			$declarations .= $property . ':' . $value . ';';
+		}
+
+		$css .= $media_queries[ $breakpoint ]
+			. '{'
+			. $scoped_selector . ' ' . $inner_selector . '{' . $declarations . '}'
+			. '}';
+	}
+
+	return $css;
+}
+
+/**
+ * Adds CSS vars and responsive inner element styles to a core block.
+ *
+ * @param string $block_content Block HTML.
+ * @param array  $block         Parsed block.
+ * @param array  $args          Block selectors and CSS variable prefix.
+ * @return string Updated block HTML.
+ */
+function unitone_add_border_css_vars( $block_content, $block, $args ) {
+	$attrs      = $block['attrs'] ?? array();
+	$class_name = $attrs['className'] ?? false;
+
+	if (
+		! $class_name ||
+		( false === strpos( $class_name, 'is-style-badge' ) && false === strpos( $class_name, 'is-style-outline' ) )
+	) {
+		return $block_content;
+	}
+
+	$style      = is_array( $attrs['style'] ?? null ) ? $attrs['style'] : array();
+	$new_styles = unitone_get_border_css_vars( $style, $args['css_var_prefix'] );
+
+	if ( ! empty( $attrs['backgroundColor'] ) ) {
+		$new_styles[ '--unitone--' . $args['css_var_prefix'] . '--background-color' ] = 'var(--wp--preset--color--' . $attrs['backgroundColor'] . ')';
+	}
+
+	if ( ! empty( $attrs['borderColor'] ) ) {
+		$new_styles[ '--unitone--' . $args['css_var_prefix'] . '--border-color' ] = 'var(--wp--preset--color--' . $attrs['borderColor'] . ')';
+	}
+
+	$responsive_styles = array();
+	foreach ( array_keys( unitone_get_viewport_media_queries() ) as $breakpoint ) {
+		$viewport_style = unitone_get_border_css_vars(
+			$style[ $breakpoint ] ?? array(),
+			$args['css_var_prefix'],
+			unitone_get_css_var_breakpoint( $breakpoint )
+		);
+
+		if ( empty( $viewport_style ) ) {
+			continue;
+		}
+
+		$responsive_styles[ $breakpoint ] = $viewport_style;
+		$new_styles                       = array_merge( $new_styles, $viewport_style );
+	}
+
+	$p = new \WP_HTML_Tag_Processor( $block_content );
+	if ( ! $p->next_tag() ) {
+		return $block_content;
+	}
+
+	$current_style = $p->get_attribute( 'style' );
+	$current_style = $current_style ? explode( ';', $current_style ) : array();
+	foreach ( $new_styles as $new_style_key => $new_style_value ) {
+		$current_style[] = sprintf( '%1$s: %2$s', $new_style_key, $new_style_value );
+	}
+	$p->set_attribute( 'style', trim( implode( ';', $current_style ) ) );
+
+	if ( ! empty( $responsive_styles ) ) {
+		$identifier     = wp_unique_id_from_values( $block, 'unitone-responsive-style-' );
+		$responsive_css = unitone_get_responsive_border_css(
+			$identifier,
+			$args['block_selector'],
+			$args['inner_selector'],
+			$args['css_var_prefix'],
+			$responsive_styles
+		);
+
+		if ( $responsive_css ) {
+			$p->add_class( $identifier );
+
+			add_action(
+				'wp_enqueue_scripts',
+				static function () use ( $responsive_css ) {
+					wp_add_inline_style( 'global-styles', $responsive_css );
+				}
+			);
+		}
+	}
+
+	return $p->get_updated_html();
+}
+
+/**
  * Add CSS vars to core/post-terms.
  */
 add_filter(
 	'render_block_core/post-terms',
-	function ( $block_content, $block ) {
-		$attrs      = $block['attrs'] ?? array();
-		$class_name = $attrs['className'] ?? false;
-		if (
-			! $class_name ||
-			( false === strpos( $class_name, 'is-style-badge' ) && false === strpos( $class_name, 'is-style-outline' ) )
-		) {
-			return $block_content;
-		}
-
-		$background_color       = $attrs['backgroundColor'] ?? false;
-		$style_color_background = $attrs['style']['color']['background'] ?? false;
-
-		$border_color              = $attrs['borderColor'] ?? false;
-		$style_border_color        = $attrs['style']['border']['color'] ?? false;
-		$style_border_top_color    = unitone_get_preset_css_var( $attrs['style']['border']['top']['color'] ?? false );
-		$style_border_right_color  = unitone_get_preset_css_var( $attrs['style']['border']['right']['color'] ?? false );
-		$style_border_bottom_color = unitone_get_preset_css_var( $attrs['style']['border']['bottom']['color'] ?? false );
-		$style_border_left_color   = unitone_get_preset_css_var( $attrs['style']['border']['left']['color'] ?? false );
-
-		$style_border_style        = $attrs['style']['border']['style'] ?? false;
-		$style_border_top_style    = $attrs['style']['border']['top']['style'] ?? false;
-		$style_border_right_style  = $attrs['style']['border']['right']['style'] ?? false;
-		$style_border_bottom_style = $attrs['style']['border']['bottom']['style'] ?? false;
-		$style_border_left_style   = $attrs['style']['border']['left']['style'] ?? false;
-
-		$style_border_width        = $attrs['style']['border']['width'] ?? false;
-		$style_border_top_width    = $attrs['style']['border']['top']['width'] ?? false;
-		$style_border_right_width  = $attrs['style']['border']['right']['width'] ?? false;
-		$style_border_bottom_width = $attrs['style']['border']['bottom']['width'] ?? false;
-		$style_border_left_width   = $attrs['style']['border']['left']['width'] ?? false;
-
-		$style_border_radius              = isset( $attrs['style']['border']['radius'] ) && ! is_array( $attrs['style']['border']['radius'] )
-			? $attrs['style']['border']['radius']
-			: false;
-		$style_border_top_left_radius     = $attrs['style']['border']['radius']['topLeft'] ?? false;
-		$style_border_top_right_radius    = $attrs['style']['border']['radius']['topRight'] ?? false;
-		$style_border_bottom_left_radius  = $attrs['style']['border']['radius']['bottomLeft'] ?? false;
-		$style_border_bottom_right_radius = $attrs['style']['border']['radius']['bottomRight'] ?? false;
-
-		$p = new \WP_HTML_Tag_Processor( $block_content );
-
-		if ( $p->next_tag() ) {
-			$style = $p->get_attribute( 'style' );
-			$style = $style ? explode( ';', $style ) : array();
-
-			$new_styles = array(
-				'--unitone--post-term--background-color'   => (bool) $background_color
-					? 'var(--wp--preset--color--' . $background_color . ')'
-					: $style_color_background,
-				'--unitone--post-term--border-color'       => (bool) $border_color
-					? 'var(--wp--preset--color--' . $border_color . ')'
-					: $style_border_color,
-				'--unitone--post-term--border-top-color'   => $style_border_top_color,
-				'--unitone--post-term--border-right-color' => $style_border_right_color,
-				'--unitone--post-term--border-bottom-color' => $style_border_bottom_color,
-				'--unitone--post-term--border-left-color'  => $style_border_left_color,
-				'--unitone--post-term--border-style'       => $style_border_style,
-				'--unitone--post-term--border-top-style'   => $style_border_top_style,
-				'--unitone--post-term--border-right-style' => $style_border_right_style,
-				'--unitone--post-term--border-bottom-style' => $style_border_bottom_style,
-				'--unitone--post-term--border-left-style'  => $style_border_left_style,
-				'--unitone--post-term--border-width'       => $style_border_width,
-				'--unitone--post-term--border-top-width'   => $style_border_top_width,
-				'--unitone--post-term--border-right-width' => $style_border_right_width,
-				'--unitone--post-term--border-bottom-width' => $style_border_bottom_width,
-				'--unitone--post-term--border-left-width'  => $style_border_left_width,
-				'--unitone--post-term--border-radius'      => $style_border_radius,
-				'--unitone--post-term--border-top-left-radius' => $style_border_top_left_radius,
-				'--unitone--post-term--border-top-right-radius' => $style_border_top_right_radius,
-				'--unitone--post-term--border-bottom-left-radius' => $style_border_bottom_left_radius,
-				'--unitone--post-term--border-bottom-right-radius' => $style_border_bottom_right_radius,
-			);
-
-			$new_styles = array_filter(
-				$new_styles,
-				function ( $value ) {
-					return false !== $value && ! is_null( $value ) && '' !== $value;
-				}
-			);
-
-			foreach ( $new_styles as $new_style_key => $new_style_value ) {
-				$style[] = sprintf( '%1$s: %2$s', $new_style_key, $new_style_value );
-			}
-
-			$p->set_attribute( 'style', trim( implode( ';', $style ) ) );
-		}
-
-		return $p->get_updated_html();
+	static function ( $block_content, $block ) {
+		return unitone_add_border_css_vars(
+			$block_content,
+			$block,
+			array(
+				'block_selector' => '.wp-block-post-terms',
+				'inner_selector' => ':is(a:where(:not(.wp-element-button)),span:where(:not([class]):not([data-rich-text-placeholder])))',
+				'css_var_prefix' => 'post-term',
+			)
+		);
 	},
 	10,
 	2
@@ -364,95 +493,16 @@ add_filter(
  */
 add_filter(
 	'render_block_core/tag-cloud',
-	function ( $block_content, $block ) {
-		$attrs      = $block['attrs'] ?? array();
-		$class_name = $attrs['className'] ?? false;
-		if (
-			! $class_name ||
-			( false === strpos( $class_name, 'is-style-badge' ) && false === strpos( $class_name, 'is-style-outline' ) )
-		) {
-			return $block_content;
-		}
-
-		$background_color       = $attrs['backgroundColor'] ?? false;
-		$style_color_background = $attrs['style']['color']['background'] ?? false;
-
-		$border_color              = $attrs['borderColor'] ?? false;
-		$style_border_color        = $attrs['style']['border']['color'] ?? false;
-		$style_border_top_color    = unitone_get_preset_css_var( $attrs['style']['border']['top']['color'] ?? false );
-		$style_border_right_color  = unitone_get_preset_css_var( $attrs['style']['border']['right']['color'] ?? false );
-		$style_border_bottom_color = unitone_get_preset_css_var( $attrs['style']['border']['bottom']['color'] ?? false );
-		$style_border_left_color   = unitone_get_preset_css_var( $attrs['style']['border']['left']['color'] ?? false );
-
-		$style_border_style        = $attrs['style']['border']['style'] ?? false;
-		$style_border_top_style    = $attrs['style']['border']['top']['style'] ?? false;
-		$style_border_right_style  = $attrs['style']['border']['right']['style'] ?? false;
-		$style_border_bottom_style = $attrs['style']['border']['bottom']['style'] ?? false;
-		$style_border_left_style   = $attrs['style']['border']['left']['style'] ?? false;
-
-		$style_border_width        = $attrs['style']['border']['width'] ?? false;
-		$style_border_top_width    = $attrs['style']['border']['top']['width'] ?? false;
-		$style_border_right_width  = $attrs['style']['border']['right']['width'] ?? false;
-		$style_border_bottom_width = $attrs['style']['border']['bottom']['width'] ?? false;
-		$style_border_left_width   = $attrs['style']['border']['left']['width'] ?? false;
-
-		$style_border_radius              = isset( $attrs['style']['border']['radius'] ) && ! is_array( $attrs['style']['border']['radius'] )
-			? $attrs['style']['border']['radius']
-			: false;
-		$style_border_top_left_radius     = $attrs['style']['border']['radius']['topLeft'] ?? false;
-		$style_border_top_right_radius    = $attrs['style']['border']['radius']['topRight'] ?? false;
-		$style_border_bottom_left_radius  = $attrs['style']['border']['radius']['bottomLeft'] ?? false;
-		$style_border_bottom_right_radius = $attrs['style']['border']['radius']['bottomRight'] ?? false;
-
-		$p = new \WP_HTML_Tag_Processor( $block_content );
-
-		if ( $p->next_tag() ) {
-			$style = $p->get_attribute( 'style' );
-			$style = $style ? explode( ';', $style ) : array();
-
-			$new_styles = array(
-				'--unitone--tag-cloud--background-color'   => (bool) $background_color
-					? 'var(--wp--preset--color--' . $background_color . ')'
-					: $style_color_background,
-				'--unitone--tag-cloud--border-color'       => (bool) $border_color
-					? 'var(--wp--preset--color--' . $border_color . ')'
-					: $style_border_color,
-				'--unitone--tag-cloud--border-top-color'   => $style_border_top_color,
-				'--unitone--tag-cloud--border-right-color' => $style_border_right_color,
-				'--unitone--tag-cloud--border-bottom-color' => $style_border_bottom_color,
-				'--unitone--tag-cloud--border-left-color'  => $style_border_left_color,
-				'--unitone--tag-cloud--border-style'       => $style_border_style,
-				'--unitone--tag-cloud--border-top-style'   => $style_border_top_style,
-				'--unitone--tag-cloud--border-right-style' => $style_border_right_style,
-				'--unitone--tag-cloud--border-bottom-style' => $style_border_bottom_style,
-				'--unitone--tag-cloud--border-left-style'  => $style_border_left_style,
-				'--unitone--tag-cloud--border-width'       => $style_border_width,
-				'--unitone--tag-cloud--border-top-width'   => $style_border_top_width,
-				'--unitone--tag-cloud--border-right-width' => $style_border_right_width,
-				'--unitone--tag-cloud--border-bottom-width' => $style_border_bottom_width,
-				'--unitone--tag-cloud--border-left-width'  => $style_border_left_width,
-				'--unitone--tag-cloud--border-radius'      => $style_border_radius,
-				'--unitone--tag-cloud--border-top-left-radius' => $style_border_top_left_radius,
-				'--unitone--tag-cloud--border-top-right-radius' => $style_border_top_right_radius,
-				'--unitone--tag-cloud--border-bottom-left-radius' => $style_border_bottom_left_radius,
-				'--unitone--tag-cloud--border-bottom-right-radius' => $style_border_bottom_right_radius,
-			);
-
-			$new_styles = array_filter(
-				$new_styles,
-				function ( $value ) {
-					return false !== $value && ! is_null( $value ) && '' !== $value;
-				}
-			);
-
-			foreach ( $new_styles as $new_style_key => $new_style_value ) {
-				$style[] = sprintf( '%1$s: %2$s', $new_style_key, $new_style_value );
-			}
-
-			$p->set_attribute( 'style', trim( implode( ';', $style ) ) );
-		}
-
-		return $p->get_updated_html();
+	static function ( $block_content, $block ) {
+		return unitone_add_border_css_vars(
+			$block_content,
+			$block,
+			array(
+				'block_selector' => '.wp-block-tag-cloud',
+				'inner_selector' => 'a.tag-cloud-link',
+				'css_var_prefix' => 'tag-cloud',
+			)
+		);
 	},
 	10,
 	2

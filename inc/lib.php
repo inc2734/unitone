@@ -25,6 +25,17 @@ function unitone_get_preset_css_var( $value ) {
 }
 
 /**
+ * Returns CSS media queries for the configured WordPress viewport states.
+ *
+ * @return array Responsive media queries keyed by style-state name.
+ */
+function unitone_get_viewport_media_queries() {
+	return WP_Theme_JSON::get_viewport_media_queries(
+		wp_get_global_settings( array( 'viewport' ) )
+	);
+}
+
+/**
  * Checks is given value is a preset.
  *
  * @param string $value Value to check.

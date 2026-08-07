@@ -1,5 +1,6 @@
 import deepmerge from 'deepmerge';
 
+import { useStyleOverride } from '@wordpress/block-editor';
 import { Popover } from '@wordpress/components';
 import { useViewportMatch } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
@@ -14,6 +15,19 @@ import {
 	forwardRef,
 	memo,
 } from '@wordpress/element';
+
+/**
+ * Registers CSS with the block editor's canvas styles.
+ *
+ * @param {Object} props     Component properties.
+ * @param {string} props.id  Stable style override identifier.
+ * @param {string} props.css CSS to register.
+ * @return {null} This component does not render an element.
+ */
+export function StyleOverride( { id, css } ) {
+	useStyleOverride( { id, css } );
+	return null;
+}
 
 /**
  * Check if the value is object.

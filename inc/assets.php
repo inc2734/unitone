@@ -54,6 +54,13 @@ function unitone_enqueue_block_editor_scripts() {
 			'in_footer' => false,
 		)
 	);
+
+	wp_localize_script(
+		'unitone/editor',
+		'unitoneViewportMediaQueries',
+		unitone_get_viewport_media_queries()
+	);
+
 	wp_set_script_translations( 'unitone/editor', 'unitone', get_template_directory() . '/languages' );
 
 	foreach ( WP_Block_Type_Registry::get_instance()->get_all_registered() as $block_type => $block ) {

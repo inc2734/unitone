@@ -44,7 +44,7 @@ import {
 import {
 	AdvancedPanel,
 	withAdvancedBlockProps,
-	StyleTag,
+	CustomCSSStyleOverride,
 	resetAdvanced,
 } from './advanced/advanced';
 
@@ -150,7 +150,7 @@ const shouldSkipBlockProps = ( { name, attributes } ) =>
 
 const CUSTOM_CSS_INSTANCE_REFERENCE = {};
 
-const shouldRenderStyleTag = ( unitone ) => !! unitone?.style;
+const shouldRenderCustomCSSStyleOverride = ( unitone ) => !! unitone?.style;
 
 const withBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
@@ -174,8 +174,10 @@ const withBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			<>
 				<BlockListBlock { ...blockListBlockProps } />
 
-				{ shouldRenderStyleTag( newProps?.attributes?.unitone ) && (
-					<StyleTag
+				{ shouldRenderCustomCSSStyleOverride(
+					newProps?.attributes?.unitone
+				) && (
+					<CustomCSSStyleOverride
 						{ ...{
 							unitone: newProps.attributes.unitone,
 							customCSSIdentifier,

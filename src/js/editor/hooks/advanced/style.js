@@ -11,7 +11,11 @@ import { transformStyles } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject, normalizeForTextareaControl } from '../utils';
+import {
+	cleanEmptyObject,
+	normalizeForTextareaControl,
+	StyleOverride,
+} from '../utils';
 
 export function isStyleDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.style' );
@@ -24,9 +28,7 @@ export function resetStyleFilter() {
 	};
 }
 
-// @see https://github.com/WordPress/gutenberg/pull/63656
-// When useStyleOverride() becomes available, replace it with it.
-export function StyleTag( { unitone, customCSSIdentifier } ) {
+export function CustomCSSStyleOverride( { unitone, customCSSIdentifier } ) {
 	if ( ! unitone?.style || ! customCSSIdentifier ) {
 		return null;
 	}
@@ -58,7 +60,12 @@ export function StyleTag( { unitone, customCSSIdentifier } ) {
 		`.${ customCSSIdentifier }`
 	);
 
-	return <style>{ filteredCSS }</style>;
+	return (
+		<StyleOverride
+			id={ `${ customCSSIdentifier }-style` }
+			css={ filteredCSS }
+		/>
+	);
 }
 
 // @see https://github.com/WordPress/gutenberg/blob/a55c62c5c810c84258afcdac7da1a7019a69b332/packages/block-editor/src/components/global-styles/advanced-panel.js

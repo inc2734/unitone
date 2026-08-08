@@ -233,7 +233,7 @@ export const BackgroundControl = ( { background, setBackground } ) => {
 								<Icon
 									icon={ published }
 									style={ {
-										fill: '#47f654',
+										color: '#47f654',
 									} }
 								/>
 							</div>

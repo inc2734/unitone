@@ -187,7 +187,7 @@ export default function () {
 									) : (
 										<Icon
 											style={ {
-												fill: licenseStatus
+												color: licenseStatus
 													? '#00d084'
 													: '#cf2e2e',
 											} }

@@ -2,10 +2,14 @@
 @use '@inc2734/unitone-css/src/layout-primitives';
 @use '@inc2734/unitone-css/src/behaviors';
 
-#wpadminbar,
 #adminmenumain,
 #wpfooter {
 	display: none;
+}
+
+.edit-site-layout__sidebar-region {
+	background-color: var(--wpds-color-background-surface-neutral-weak);
+	color: var(--wpds-color-foreground-content-neutral);
 }
 
 .edit-site-layout__canvas {

@@ -183,7 +183,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 													<Icon
 														icon={ published }
 														style={ {
-															fill: '#47f654',
+															color: '#47f654',
 														} }
 													/>
 												</div>

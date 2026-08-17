@@ -28,6 +28,8 @@
 		"color": {
 			"background": false,
 			"link": true,
+			"heading": true,
+			"button": true,
 			"text": true,
 			"__experimentalDefaultControls": {
 				"text": true

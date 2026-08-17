@@ -41,6 +41,8 @@
 			"gradients": true,
 			"text": true,
 			"link": true,
+			"heading": true,
+			"button": true,
 			"__experimentalDefaultControls": {
 				"text": true,
 				"background": true

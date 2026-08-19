@@ -34,9 +34,17 @@ import {
 	withMarkerColorBlockProps,
 } from './marker-color';
 
+import {
+	isOpacitySupportDisabled,
+	resetOpacityFilter,
+	OpacityEdit,
+	withOpacityBlockProps,
+} from './opacity';
+
 import { cleanEmptyObject, resetUnitoneWithBlockAttributes } from '../utils';
 
 export const withColorBlockProps = compose(
+	withOpacityBlockProps,
 	withHoverTextColorBlockProps,
 	withHoverBackgroundColorBlockProps,
 	withHoverBorderColorBlockProps,
@@ -55,6 +63,7 @@ export const resetColor = ( props ) => {
 	];
 	const unitoneFilters = [
 		[ isMarkerColorSupportDisabled, resetMarkerColorFilter ],
+		[ isOpacitySupportDisabled, resetOpacityFilter ],
 	];
 
 	const attributes = filters.reduce(
@@ -110,6 +119,7 @@ function ColorPanelPure( props ) {
 		name,
 	} );
 	const isMarkerColorDisabled = isMarkerColorSupportDisabled( { name } );
+	const isOpacityDisabled = isOpacitySupportDisabled( { name } );
 	const shouldHideUnsetHoverColor = 'core/button' === name;
 
 	const shouldShowHoverTextColor =
@@ -138,14 +148,15 @@ function ColorPanelPure( props ) {
 		shouldShowHoverTextColor ||
 		shouldShowHoverBackground ||
 		shouldShowHoverBorderColor;
+	const shouldShowColor = shouldShowHoverColor || ! isOpacityDisabled;
 
-	if ( ! shouldShowHoverColor && isMarkerColorDisabled ) {
+	if ( ! shouldShowColor && isMarkerColorDisabled ) {
 		return null;
 	}
 
 	return (
 		<>
-			{ shouldShowHoverColor && (
+			{ shouldShowColor && (
 				<InspectorControls
 					group="color"
 					resetAllFilter={ ( blockAttributes ) => ( {
@@ -154,6 +165,11 @@ function ColorPanelPure( props ) {
 						...resetHoverBackgroundColorFilter(),
 						...resetHoverGradientFilter(),
 						...resetHoverBorderColorFilter(),
+						unitone: resetUnitoneWithBlockAttributes( {
+							unitone: attributes?.unitone,
+							blockAttributes,
+							resetFilters: [ resetOpacityFilter() ],
+						} ),
 					} ) }
 				>
 					{ shouldShowHoverTextColor && (
@@ -166,6 +182,12 @@ function ColorPanelPure( props ) {
 
 					{ shouldShowHoverBorderColor && (
 						<HoverBorderColorEdit { ...props } />
+					) }
+
+					{ ! isOpacityDisabled && (
+						<div className="unitone-opacity-control">
+							<OpacityEdit { ...props } />
+						</div>
 					) }
 				</InspectorControls>
 			) }

@@ -8,7 +8,6 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
 import { memo } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 
 import { resetUnitoneWithBlockAttributes } from '../utils';
 
@@ -77,20 +76,10 @@ import {
 	withOverflowBlockProps,
 } from './overflow';
 
-import {
-	isOpacitySupportDisabled,
-	hasOpacityValue,
-	resetOpacityFilter,
-	resetOpacity,
-	OpacityEdit,
-	withOpacityBlockProps,
-} from './opacity';
-
 export const withDimensionsBlockProps = compose(
 	withGapBlockProps,
 	withGuttersBlockProps,
 	withNegativeBlockProps,
-	withOpacityBlockProps,
 	withOverflowBlockProps,
 	withPaddingBlockProps,
 	withStairsBlockProps
@@ -103,7 +92,6 @@ export const resetDimensions = ( props ) => {
 		[ isGapSupportDisabled, resetGapFilter ],
 		[ isStairsSupportDisabled, resetStairsFilter ],
 		[ isNegativeSupportDisabled, resetNegativeFilter ],
-		[ isOpacitySupportDisabled, resetOpacityFilter ],
 		[ isOverflowSupportDisabled, resetOverflowFilter ],
 	];
 
@@ -127,7 +115,6 @@ function DimensionsPanelPure( props ) {
 	const isGapDisabled = isGapSupportDisabled( { name, className } );
 	const isStairsDisabled = isStairsSupportDisabled( { name } );
 	const isNegativeDisabled = isNegativeSupportDisabled( { name } );
-	const isOpacityDisabled = isOpacitySupportDisabled( { name } );
 	const isOverflowDisabled = isOverflowSupportDisabled( { name } );
 
 	if (
@@ -136,7 +123,6 @@ function DimensionsPanelPure( props ) {
 		isGapDisabled &&
 		isStairsDisabled &&
 		isNegativeDisabled &&
-		isOpacityDisabled &&
 		isOverflowDisabled
 	) {
 		return null;
@@ -158,7 +144,6 @@ function DimensionsPanelPure( props ) {
 							resetStairsFilter(),
 							resetStairsUpFilter(),
 							resetNegativeFilter(),
-							resetOpacityFilter(),
 							resetOverflowFilter(),
 						],
 					} ),
@@ -274,20 +259,6 @@ function DimensionsPanelPure( props ) {
 								...props,
 							} ) }
 						/>
-					</ToolsPanelItem>
-				) }
-
-				{ ! isOpacityDisabled && (
-					<ToolsPanelItem
-						hasValue={ () => hasOpacityValue( { ...props } ) }
-						label={ __( 'Opacity', 'unitone' ) }
-						onDeselect={ () => resetOpacity( { ...props } ) }
-						isShownByDefault
-						panelId={ clientId }
-					>
-						<div className="unitone-opacity-control">
-							<OpacityEdit { ...props } />
-						</div>
 					</ToolsPanelItem>
 				) }
 

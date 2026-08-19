@@ -153,6 +153,16 @@ export const resolveSettings = ( settings = {} ) => {
 		resolved.snapToSlideEdge = false;
 	}
 
+	// Free mode relies on touch movement and conflicts with fixed-edge snapping
+	// and single-slide effects.
+	if (
+		isSingleSlideEffect( resolved.effect ) ||
+		! resolved.allowTouchMove ||
+		resolved.snapToSlideEdge
+	) {
+		resolved.freeMode = false;
+	}
+
 	return resolved;
 };
 
@@ -471,11 +481,18 @@ export const getEditorStyle = (
 	rawSettings = {},
 	settings = resolveSettings( rawSettings )
 ) => {
-	const responsiveSettings = isSingleSlideEffect( settings.effect )
+	const singleSlideEffect = isSingleSlideEffect( settings.effect );
+	const responsiveSettings = singleSlideEffect
 		? getSingleSlideResponsiveSettings()
 		: resolveResponsiveSettings( rawSettings, settings );
 
 	return {
+		'--unitone--editor-slides-offset-before': `${
+			singleSlideEffect ? 0 : settings.slidesOffsetBefore
+		}px`,
+		'--unitone--editor-slides-offset-after': `${
+			singleSlideEffect ? 0 : settings.slidesOffsetAfter
+		}px`,
 		...EDITOR_DEVICES.reduce(
 			( style, device ) => ( {
 				...style,

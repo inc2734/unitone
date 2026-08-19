@@ -1,9 +1,13 @@
-@import "../../../node_modules/swiper/swiper.css";
-@import "../../../node_modules/swiper/modules/a11y.css";
-@import "../../../node_modules/swiper/modules/effect-fade.css";
-@import "../../../node_modules/swiper/modules/free-mode.css";
-@import "../../../node_modules/swiper/modules/pagination.css";
-@import "../../../node_modules/swiper/modules/scrollbar.css";
+@use "sass:meta";
+
+:where(.unitone-swiper) {
+	@include meta.load-css("../../../node_modules/swiper/swiper.css");
+	@include meta.load-css("../../../node_modules/swiper/modules/a11y.css");
+	@include meta.load-css("../../../node_modules/swiper/modules/effect-fade.css");
+	@include meta.load-css("../../../node_modules/swiper/modules/free-mode.css");
+	@include meta.load-css("../../../node_modules/swiper/modules/pagination.css");
+	@include meta.load-css("../../../node_modules/swiper/modules/scrollbar.css");
+}
 
 .unitone-swiper {
 	--swiper-pagination-color: currentcolor;

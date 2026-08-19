@@ -636,6 +636,16 @@ export function HelpContainer( { help, children, layout = 'vertical' } ) {
 	const [ isHelpPopoverOpen, setIsHelpPopoverOpen ] = useState( false );
 	const ref = useRef( null );
 
+	const closeHelpPopoverOnFocusOutside = ( event ) => {
+		const relatedTarget = event.relatedTarget;
+
+		if ( relatedTarget && ref.current?.contains( relatedTarget ) ) {
+			return;
+		}
+
+		setIsHelpPopoverOpen( false );
+	};
+
 	return !! help ? (
 		<div className={ `unitone-help-container -layout:${ layout }` }>
 			<div className="unitone-help-container__content">{ children }</div>
@@ -649,7 +659,7 @@ export function HelpContainer( { help, children, layout = 'vertical' } ) {
 						verticalAlign: 'top',
 					} }
 					onClick={ () => {
-						setIsHelpPopoverOpen( ! isHelpPopoverOpen );
+						setIsHelpPopoverOpen( ( isOpen ) => ! isOpen );
 					} }
 					aria-expanded={ isHelpPopoverOpen }
 				/>
@@ -661,6 +671,7 @@ export function HelpContainer( { help, children, layout = 'vertical' } ) {
 						placement="bottom-start"
 						focusOnMount
 						onClose={ () => setIsHelpPopoverOpen( false ) }
+						onFocusOutside={ closeHelpPopoverOnFocusOutside }
 					>
 						<div className="unitone-help-popover__content">
 							<div>{ help }</div>
@@ -680,6 +691,6 @@ export function HelpContainer( { help, children, layout = 'vertical' } ) {
 			</div>
 		</div>
 	) : (
-		{ children }
+		children
 	);
 }

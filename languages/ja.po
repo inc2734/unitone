@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "POT-Creation-Date: 2026-08-04T01:37:04+00:00\n"
-"PO-Revision-Date: 2026-08-05 18:08+0900\n"
+"PO-Revision-Date: 2026-08-19 00:00+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3715,6 +3715,26 @@ msgstr "エフェクト"
 #: dist/blocks/swiper/index.js:1
 msgid "Cross fade"
 msgstr "クロスフェード"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Fade effect."
+msgstr "次の場合は無効になります：フェードエフェクト"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Slide effect."
+msgstr "次の場合は無効になります：スライドエフェクト"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Fade effect, Loop is on, Center the active slide is on."
+msgstr "次の場合は無効になります：フェードエフェクト、「ループ」が有効、「アクティブなスライドを中央に配置」が有効"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Fade effect, Allow touch move is off, Snap to slide edge is on."
+msgstr "次の場合は無効になります：フェードエフェクト、「タッチ移動を許可」が無効、「スライドの端にスナップ」が有効"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Autoplay is off."
+msgstr "次の場合は無効になります：「自動再生」が無効"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Responsive slide layout"

@@ -93,7 +93,9 @@ export default [
 			src: icon,
 		},
 		attributes: {
-			settings: {},
+			settings: {
+				spaceBetween: 20,
+			},
 		},
 		scope: [ 'block' ],
 		innerBlocks: [ createTrack(), createControls() ],
@@ -106,6 +108,7 @@ export default [
 		},
 		attributes: {
 			settings: {
+				spaceBetween: 20,
 				autoplay: true,
 			},
 		},

@@ -51,9 +51,9 @@ const moveToEditorSlide = ( track, slideClientId, settings ) => {
 	}
 
 	const centeredOffset = settings.centeredSlides
-		? ( viewport.clientWidth - activeSlide.offsetWidth ) / 2
+		? ( wrapper.clientWidth - activeSlide.offsetWidth ) / 2
 		: 0;
-	const maxOffset = Math.max( 0, wrapper.scrollWidth - viewport.clientWidth );
+	const maxOffset = Math.max( 0, wrapper.scrollWidth - wrapper.clientWidth );
 	const offset = settings.centeredSlides
 		? activeSlide.offsetLeft - centeredOffset
 		: Math.min( maxOffset, Math.max( 0, activeSlide.offsetLeft ) );
@@ -194,6 +194,8 @@ export default function SwiperTrackEdit( {
 		resolvedSettings.effect,
 		resolvedSettings.mdBreakpoint,
 		resolvedSettings.smBreakpoint,
+		resolvedSettings.slidesOffsetAfter,
+		resolvedSettings.slidesOffsetBefore,
 		resolvedSettings.slidesPerView,
 		resolvedSettings.spaceBetween,
 		rawSettings?.responsive,

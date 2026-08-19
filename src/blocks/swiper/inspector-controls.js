@@ -13,7 +13,10 @@ import {
 import { InspectorControls } from '@wordpress/block-editor';
 import { __, _x } from '@wordpress/i18n';
 
-import { ResponsiveSettingsContainer } from '../../js/editor/hooks/components';
+import {
+	HelpContainer,
+	ResponsiveSettingsContainer,
+} from '../../js/editor/hooks/components';
 
 import {
 	DEFAULT_SETTINGS,
@@ -210,6 +213,14 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 
 	const resolved = resolveSettings( settings );
 	const singleSlideEffect = isSingleSlideEffect( resolved.effect );
+	const snapToSlideEdgeDisabled =
+		singleSlideEffect ||
+		'loop' === resolved.loopMode ||
+		resolved.centeredSlides;
+	const freeModeDisabled =
+		singleSlideEffect ||
+		! resolved.allowTouchMove ||
+		resolved.snapToSlideEdge;
 
 	const hasSetting = ( key ) =>
 		Object.prototype.hasOwnProperty.call( settings, key );
@@ -223,6 +234,14 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 
 		if ( 'centeredSlides' === key && value ) {
 			next = updateSetting( next, 'snapToSlideEdge', false );
+		}
+
+		if (
+			( 'effect' === key && isSingleSlideEffect( value ) ) ||
+			( 'allowTouchMove' === key && ! value ) ||
+			( 'snapToSlideEdge' === key && value )
+		) {
+			next = updateSetting( next, 'freeMode', false );
 		}
 
 		setAttributes( { settings: next } );
@@ -347,23 +366,27 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					/>
 				</ToolsPanelItem>
 
-				{ 'fade' === resolved.effect && (
-					<ToolsPanelItem
-						hasValue={ () => hasSetting( 'fadeCrossFade' ) }
-						isShownByDefault
-						label={ __( 'Cross fade', 'unitone' ) }
-						onDeselect={ () => resetSetting( 'fadeCrossFade' ) }
+				<ToolsPanelItem
+					hasValue={ () => hasSetting( 'fadeCrossFade' ) }
+					isShownByDefault
+					label={ __( 'Cross fade', 'unitone' ) }
+					onDeselect={ () => resetSetting( 'fadeCrossFade' ) }
+				>
+					<HelpContainer
+						help={ __( 'Disabled when: Slide effect.', 'unitone' ) }
+						layout="horizontal"
 					>
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'Cross fade', 'unitone' ) }
 							checked={ resolved.fadeCrossFade }
+							disabled={ ! singleSlideEffect }
 							onChange={ ( value ) =>
 								setSetting( 'fadeCrossFade', value )
 							}
 						/>
-					</ToolsPanelItem>
-				) }
+					</HelpContainer>
+				</ToolsPanelItem>
 			</ToolsPanel>
 
 			<ToolsPanel
@@ -371,121 +394,119 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 				resetAll={ resetSlideSettings }
 			>
 				{ ! singleSlideEffect && (
-					<>
-						<ToolsPanelItem
-							hasValue={ hasResponsiveSetting }
-							isShownByDefault
-							label={ __( 'Responsive slide layout', 'unitone' ) }
-							onDeselect={ resetResponsiveSettings }
-						>
-							<div className="unitone-swiper-responsive-settings">
-								<ResponsiveSettingsContainer
-									label={ __(
-										'Responsive slide layout',
-										'unitone'
-									) }
-									desktopControls={ () => (
-										<ResponsiveControls
-											device="desktop"
-											settings={ settings }
-											resolvedSettings={ resolved }
-											onChange={ setResponsiveSetting }
-										/>
-									) }
-									tabletControls={ () => (
-										<ResponsiveControls
-											device="tablet"
-											settings={ settings }
-											resolvedSettings={ resolved }
-											onChange={ setResponsiveSetting }
-										/>
-									) }
-									mobileControls={ () => (
-										<ResponsiveControls
-											device="mobile"
-											settings={ settings }
-											resolvedSettings={ resolved }
-											onChange={ setResponsiveSetting }
-										/>
-									) }
-								/>
-							</div>
-						</ToolsPanelItem>
+					<ToolsPanelItem
+						hasValue={ hasResponsiveSetting }
+						isShownByDefault
+						label={ __( 'Responsive slide layout', 'unitone' ) }
+						onDeselect={ resetResponsiveSettings }
+					>
+						<div className="unitone-swiper-responsive-settings">
+							<ResponsiveSettingsContainer
+								label={ __(
+									'Responsive slide layout',
+									'unitone'
+								) }
+								desktopControls={ () => (
+									<ResponsiveControls
+										device="desktop"
+										settings={ settings }
+										resolvedSettings={ resolved }
+										onChange={ setResponsiveSetting }
+									/>
+								) }
+								tabletControls={ () => (
+									<ResponsiveControls
+										device="tablet"
+										settings={ settings }
+										resolvedSettings={ resolved }
+										onChange={ setResponsiveSetting }
+									/>
+								) }
+								mobileControls={ () => (
+									<ResponsiveControls
+										device="mobile"
+										settings={ settings }
+										resolvedSettings={ resolved }
+										onChange={ setResponsiveSetting }
+									/>
+								) }
+							/>
+						</div>
+					</ToolsPanelItem>
+				) }
 
-						<ToolsPanelItem
-							hasValue={ () =>
-								hasSetting( 'slidesOffsetBefore' )
-							}
-							isShownByDefault
+				<ToolsPanelItem
+					hasValue={ () => hasSetting( 'slidesOffsetBefore' ) }
+					isShownByDefault
+					label={ __( 'Container beginning offset', 'unitone' ) }
+					onDeselect={ () => resetSetting( 'slidesOffsetBefore' ) }
+				>
+					<HelpContainer
+						help={ __( 'Disabled when: Fade effect.', 'unitone' ) }
+						layout="horizontal"
+					>
+						<UnitControl
+							__nextHasNoMarginBottom
 							label={ __(
 								'Container beginning offset',
 								'unitone'
 							) }
-							onDeselect={ () =>
-								resetSetting( 'slidesOffsetBefore' )
+							value={
+								'' === resolved.slidesOffsetBefore
+									? ''
+									: `${ resolved.slidesOffsetBefore }px`
 							}
-						>
-							<UnitControl
-								__nextHasNoMarginBottom
-								label={ __(
-									'Container beginning offset',
-									'unitone'
-								) }
-								value={
-									'' === resolved.slidesOffsetBefore
+							units={ PIXEL_UNITS }
+							disabled={ singleSlideEffect }
+							onChange={ ( value ) =>
+								setSetting(
+									'slidesOffsetBefore',
+									'' === value
 										? ''
-										: `${ resolved.slidesOffsetBefore }px`
-								}
-								units={ PIXEL_UNITS }
-								onChange={ ( value ) =>
-									setSetting(
-										'slidesOffsetBefore',
-										'' === value
-											? ''
-											: asPixelNumber(
-													value,
-													DEFAULT_SETTINGS.slidesOffsetBefore
-											  )
-									)
-								}
-							/>
-						</ToolsPanelItem>
+										: asPixelNumber(
+												value,
+												DEFAULT_SETTINGS.slidesOffsetBefore
+										  )
+								)
+							}
+						/>
+					</HelpContainer>
+				</ToolsPanelItem>
 
-						<ToolsPanelItem
-							hasValue={ () => hasSetting( 'slidesOffsetAfter' ) }
-							isShownByDefault
+				<ToolsPanelItem
+					hasValue={ () => hasSetting( 'slidesOffsetAfter' ) }
+					isShownByDefault
+					label={ __( 'Container end offset', 'unitone' ) }
+					onDeselect={ () => resetSetting( 'slidesOffsetAfter' ) }
+				>
+					<HelpContainer
+						help={ __( 'Disabled when: Fade effect.', 'unitone' ) }
+						layout="horizontal"
+					>
+						<UnitControl
+							__nextHasNoMarginBottom
 							label={ __( 'Container end offset', 'unitone' ) }
-							onDeselect={ () =>
-								resetSetting( 'slidesOffsetAfter' )
+							value={
+								'' === resolved.slidesOffsetAfter
+									? ''
+									: `${ resolved.slidesOffsetAfter }px`
 							}
-						>
-							<UnitControl
-								__nextHasNoMarginBottom
-								label={ __(
-									'Container end offset',
-									'unitone'
-								) }
-								value={
-									'' === resolved.slidesOffsetAfter
+							units={ PIXEL_UNITS }
+							disabled={ singleSlideEffect }
+							onChange={ ( value ) =>
+								setSetting(
+									'slidesOffsetAfter',
+									'' === value
 										? ''
-										: `${ resolved.slidesOffsetAfter }px`
-								}
-								units={ PIXEL_UNITS }
-								onChange={ ( value ) =>
-									setSetting(
-										'slidesOffsetAfter',
-										'' === value
-											? ''
-											: asPixelNumber(
-													value,
-													DEFAULT_SETTINGS.slidesOffsetAfter
-											  )
-									)
-								}
-							/>
-						</ToolsPanelItem>
-					</>
-				) }
+										: asPixelNumber(
+												value,
+												DEFAULT_SETTINGS.slidesOffsetAfter
+										  )
+								)
+							}
+						/>
+					</HelpContainer>
+				</ToolsPanelItem>
 
 				<ToolsPanelItem
 					hasValue={ () => hasSetting( 'speed' ) }
@@ -541,52 +562,52 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					</ToggleGroupControl>
 				</ToolsPanelItem>
 
-				{ ! singleSlideEffect && (
-					<>
-						<ToolsPanelItem
-							hasValue={ () => hasSetting( 'centeredSlides' ) }
-							isShownByDefault
+				<ToolsPanelItem
+					hasValue={ () => hasSetting( 'centeredSlides' ) }
+					isShownByDefault
+					label={ __( 'Center the active slide', 'unitone' ) }
+					onDeselect={ () => resetSetting( 'centeredSlides' ) }
+				>
+					<HelpContainer
+						help={ __( 'Disabled when: Fade effect.', 'unitone' ) }
+						layout="horizontal"
+					>
+						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __( 'Center the active slide', 'unitone' ) }
-							onDeselect={ () =>
-								resetSetting( 'centeredSlides' )
+							checked={ resolved.centeredSlides }
+							disabled={ singleSlideEffect }
+							onChange={ ( value ) =>
+								setSetting( 'centeredSlides', value )
 							}
-						>
-							<ToggleControl
-								__nextHasNoMarginBottom
-								label={ __(
-									'Center the active slide',
-									'unitone'
-								) }
-								checked={ resolved.centeredSlides }
-								onChange={ ( value ) =>
-									setSetting( 'centeredSlides', value )
-								}
-							/>
-						</ToolsPanelItem>
+						/>
+					</HelpContainer>
+				</ToolsPanelItem>
 
-						<ToolsPanelItem
-							hasValue={ () => hasSetting( 'snapToSlideEdge' ) }
-							isShownByDefault
+				<ToolsPanelItem
+					hasValue={ () => hasSetting( 'snapToSlideEdge' ) }
+					isShownByDefault
+					label={ __( 'Snap to slide edge', 'unitone' ) }
+					onDeselect={ () => resetSetting( 'snapToSlideEdge' ) }
+				>
+					<HelpContainer
+						help={ __(
+							'Disabled when: Fade effect, Loop is on, Center the active slide is on.',
+							'unitone'
+						) }
+						layout="horizontal"
+					>
+						<ToggleControl
+							__nextHasNoMarginBottom
 							label={ __( 'Snap to slide edge', 'unitone' ) }
-							onDeselect={ () =>
-								resetSetting( 'snapToSlideEdge' )
+							checked={ resolved.snapToSlideEdge }
+							disabled={ snapToSlideEdgeDisabled }
+							onChange={ ( value ) =>
+								setSetting( 'snapToSlideEdge', value )
 							}
-						>
-							<ToggleControl
-								__nextHasNoMarginBottom
-								label={ __( 'Snap to slide edge', 'unitone' ) }
-								checked={ resolved.snapToSlideEdge }
-								disabled={
-									'loop' === resolved.loopMode ||
-									resolved.centeredSlides
-								}
-								onChange={ ( value ) =>
-									setSetting( 'snapToSlideEdge', value )
-								}
-							/>
-						</ToolsPanelItem>
-					</>
-				) }
+						/>
+					</HelpContainer>
+				</ToolsPanelItem>
 
 				<ToolsPanelItem
 					hasValue={ () => hasSetting( 'autoHeight' ) }
@@ -636,14 +657,23 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					label={ __( 'Free mode', 'unitone' ) }
 					onDeselect={ () => resetSetting( 'freeMode' ) }
 				>
-					<ToggleControl
-						__nextHasNoMarginBottom
-						label={ __( 'Free mode', 'unitone' ) }
-						checked={ resolved.freeMode }
-						onChange={ ( value ) =>
-							setSetting( 'freeMode', value )
-						}
-					/>
+					<HelpContainer
+						help={ __(
+							'Disabled when: Fade effect, Allow touch move is off, Snap to slide edge is on.',
+							'unitone'
+						) }
+						layout="horizontal"
+					>
+						<ToggleControl
+							__nextHasNoMarginBottom
+							label={ __( 'Free mode', 'unitone' ) }
+							checked={ resolved.freeMode }
+							disabled={ freeModeDisabled }
+							onChange={ ( value ) =>
+								setSetting( 'freeMode', value )
+							}
+						/>
+					</HelpContainer>
 				</ToolsPanelItem>
 			</ToolsPanel>
 

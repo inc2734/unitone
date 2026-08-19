@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-04T01:37:04+00:00\n"
+"POT-Creation-Date: 2026-08-18T15:00:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -3725,6 +3725,26 @@ msgstr ""
 
 #: dist/blocks/swiper/index.js:1
 msgid "Cross fade"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Fade effect."
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Slide effect."
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Fade effect, Loop is on, Center the active slide is on."
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Fade effect, Allow touch move is off, Snap to slide edge is on."
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Autoplay is off."
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1

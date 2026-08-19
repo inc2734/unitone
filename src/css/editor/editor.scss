@@ -289,6 +289,20 @@
 	}
 }
 
+.components-unit-control:has(input:disabled) {
+	.components-input-control__container {
+		background-color: #f0f0f0;
+	}
+
+	.components-input-control__input {
+		color: var(--wp-components-color-foreground, var(--wpds-color-foreground-content-neutral, #1e1e1e));
+	}
+
+	.components-input-control__backdrop {
+		border-color: var(--wp-components-color-gray-600, var(--wpds-color-stroke-interactive-neutral, #8d8d8d));
+	}
+}
+
 // @todo Prevent specific colors in the color palette from being changed in the site editor.
 .edit-site-global-styles-color-palette-panel {
 	// Global Styles > Colors > Palette
@@ -458,6 +472,22 @@
 			.unitone-help-container__action {
 				display: grid;
 				grid-template-rows: subgrid;
+				grid-column: 2 / -1;
+				grid-row: -2 / -1;
+				align-items: center;
+			}
+		}
+
+		&:has(.components-input-control__label) {
+			grid-template-rows: auto 40px;
+
+			.unitone-help-container__content {
+				grid-column: 1 / -2;
+				grid-row: 1 / -1;
+			}
+
+			.unitone-help-container__action {
+				display: grid;
 				grid-column: 2 / -1;
 				grid-row: -2 / -1;
 				align-items: center;

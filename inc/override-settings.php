@@ -88,8 +88,6 @@ add_action(
 				'--unitone--root-font-size'               => _unitone_get_root_font_size( $new_base_font_size ),
 				'--unitone--font-family'                  => unitone_get_preset_css_var( $new_font_family ),
 				'--unitone--half-leading'                 => $new_half_leading,
-				'--wp--style--global--content-size'       => $new_content_size,
-				'--wp--style--global--wide-size'          => $new_wide_size,
 			),
 			array( null )
 		);
@@ -104,6 +102,40 @@ add_action(
 				'global-styles',
 				':root {' . implode( ';', $css ) . '}'
 			);
+		}
+
+		$has_content_size_override = null !== $new_content_size && '' !== $new_content_size;
+		$has_wide_size_override    = null !== $new_wide_size && '' !== $new_wide_size;
+
+		$override_content_styles = array();
+		if ( $has_content_size_override ) {
+			$override_content_styles['--wp--style--global--content-size'] = $new_content_size;
+		}
+		if ( $has_wide_size_override ) {
+			$override_content_styles['--wp--style--global--wide-size'] = $new_wide_size;
+		}
+
+		if ( $override_content_styles ) {
+			$css = array();
+			foreach ( $override_content_styles as $property => $value ) {
+				$css[] = $property . ':' . $value;
+			}
+
+			$inline_css = ':is(.wp-block-post-content, .entry-content) {' . implode( ';', $css ) . '}';
+
+			// A constrained Post Content block may set max-width directly on its children.
+			if ( $has_content_size_override ) {
+				$inline_css .= '.wp-block-post-content.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignwide):not(.alignfull)) {';
+				$inline_css .= 'max-width:var(--wp--style--global--content-size)';
+				$inline_css .= '}';
+			}
+			if ( $has_wide_size_override ) {
+				$inline_css .= '.wp-block-post-content.is-layout-constrained > .alignwide {';
+				$inline_css .= 'max-width:var(--wp--style--global--wide-size)';
+				$inline_css .= '}';
+			}
+
+			wp_add_inline_style( 'global-styles', $inline_css );
 		}
 
 		$override_styles = array_diff(
@@ -130,7 +162,7 @@ add_action(
 );
 
 /**
- * A patch that makes the max width of the block directly below the article a custom property.
+ * A patch that applies page-specific content widths in the editor.
  *
  * @param array $editor_settings Default editor settings.
  * @return array
@@ -140,10 +172,16 @@ function unitone_blocks_max_width_patch_for_editor( $editor_settings ) {
 		$editor_settings['styles'] = array();
 	}
 
-	$css  = ':is(div.editor-visual-editor__post-title-wrapper, div.block-editor-block-list__layout.is-root-container:where(:not(.wp-site-blocks))) > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {';
+	$css  = '.has-unitone-content-size-override .wp-block-post-content {';
+	$css .= '--wp--style--global--content-size: var(--unitone--content-size-override)';
+	$css .= '}';
+	$css .= '.has-unitone-wide-size-override .wp-block-post-content {';
+	$css .= '--wp--style--global--wide-size: var(--unitone--wide-size-override)';
+	$css .= '}';
+	$css .= '.has-unitone-content-size-override :is(div.editor-visual-editor__post-title-wrapper, div.block-editor-block-list__layout.is-root-container:where(:not(.wp-site-blocks))) > :where(:not(.alignleft):not(.alignright):not(.alignwide):not(.alignfull)) {';
 	$css .= 'max-width: var(--wp--style--global--content-size)';
 	$css .= '}';
-	$css .= ':is(div.editor-visual-editor__post-title-wrapper, div.block-editor-block-list__layout.is-root-container:where(:not(.wp-site-blocks))) > .alignwide {';
+	$css .= '.has-unitone-wide-size-override :is(div.editor-visual-editor__post-title-wrapper, div.block-editor-block-list__layout.is-root-container:where(:not(.wp-site-blocks))) > .alignwide {';
 	$css .= 'max-width: var(--wp--style--global--wide-size)';
 	$css .= '}';
 

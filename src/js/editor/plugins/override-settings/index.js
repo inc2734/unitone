@@ -40,6 +40,12 @@ const applyStyles = ( root, styles ) => {
 	} );
 };
 
+const applyOverrideClasses = ( root, classes ) => {
+	Object.entries( classes ).forEach( ( [ className, isActive ] ) => {
+		root?.classList.toggle( className, isActive );
+	} );
+};
+
 const tryDetectInnerRoot = ( outerDocument ) => {
 	const iframe = outerDocument.querySelector(
 		'iframe[name="editor-canvas"]'
@@ -123,6 +129,7 @@ const PageSettingsPanel = () => {
 	const innerBodyRef = useRef( null );
 	const overrideStylesRef = useRef( {} );
 	const overrideStylesForBodyRef = useRef( {} );
+	const overrideClassesRef = useRef( {} );
 	const [ baseFontSizeInput, setBaseFontSizeInput ] = useState( '' );
 	const [ isBaseFontSizeInputDirty, setIsBaseFontSizeInputDirty ] =
 		useState( false );
@@ -171,8 +178,8 @@ const PageSettingsPanel = () => {
 				  ) })`
 				: undefined,
 			'--unitone--half-leading': newHalfLeading,
-			'--wp--style--global--content-size': newContentSize,
-			'--wp--style--global--wide-size': newWideSize,
+			'--unitone--content-size-override': newContentSize,
+			'--unitone--wide-size-override': newWideSize,
 		} ),
 		[
 			newAccentColor,
@@ -200,14 +207,27 @@ const PageSettingsPanel = () => {
 		[ newBackgroundColor, newTextColor, newFontFamily ]
 	);
 
+	const overrideClasses = useMemo(
+		() => ( {
+			'has-unitone-content-size-override':
+				null != newContentSize && '' !== newContentSize,
+			'has-unitone-wide-size-override':
+				null != newWideSize && '' !== newWideSize,
+		} ),
+		[ newContentSize, newWideSize ]
+	);
+
 	useEffect( () => {
 		overrideStylesRef.current = overrideStyles;
 		overrideStylesForBodyRef.current = overrideStylesForBody;
+		overrideClassesRef.current = overrideClasses;
 
 		applyStyles( outerRootRef.current, overrideStyles );
 		applyStyles( innerRootRef.current, overrideStyles );
 		applyStyles( innerBodyRef.current, overrideStylesForBody );
-	}, [ overrideStyles, overrideStylesForBody ] );
+		applyOverrideClasses( outerRootRef.current, overrideClasses );
+		applyOverrideClasses( innerRootRef.current, overrideClasses );
+	}, [ overrideStyles, overrideStylesForBody, overrideClasses ] );
 
 	useEffect( () => {
 		if ( ! ref.current ) {
@@ -217,6 +237,10 @@ const PageSettingsPanel = () => {
 		const outerDocument = ref.current.ownerDocument;
 		outerRootRef.current = outerDocument?.documentElement ?? null;
 		applyStyles( outerRootRef.current, overrideStylesRef.current );
+		applyOverrideClasses(
+			outerRootRef.current,
+			overrideClassesRef.current
+		);
 
 		const detectInnerCanvas = () => {
 			const nextInnerRoot = tryDetectInnerRoot( outerDocument );
@@ -225,6 +249,10 @@ const PageSettingsPanel = () => {
 			if ( nextInnerRoot ) {
 				innerRootRef.current = nextInnerRoot;
 				applyStyles( innerRootRef.current, overrideStylesRef.current );
+				applyOverrideClasses(
+					innerRootRef.current,
+					overrideClassesRef.current
+				);
 			}
 
 			if ( nextInnerBody ) {

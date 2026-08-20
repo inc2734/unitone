@@ -1,5 +1,5 @@
 export const DEFAULT_SETTINGS = {
-	hide: true,
+	hide: false,
 	size: 2,
 };
 
@@ -63,10 +63,10 @@ export const getStyle = ( settings = {} ) => {
 };
 
 export const getDataSettings = ( settings = {} ) => {
-	const resolved = resolveSettings( settings );
+	const source = settings || {};
+	const resolved = resolveSettings( source );
 
 	return {
-		hide:
-			DEFAULT_SETTINGS.hide === resolved.hide ? undefined : resolved.hide,
+		hide: hasSetting( source, 'hide' ) ? resolved.hide : undefined,
 	};
 };

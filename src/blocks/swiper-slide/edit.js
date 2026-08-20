@@ -10,8 +10,8 @@ import {
 	TextControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
-	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components';
+
 import { useSelect } from '@wordpress/data';
 import { memo, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -58,7 +58,7 @@ export default function ( { attributes, clientId, setAttributes } ) {
 	const blockProps = useBlockProps( {
 		className: 'unitone-swiper__slide swiper-slide',
 		style: {
-			width: width || undefined,
+			'--unitone--slide-width': width || undefined,
 		},
 	} );
 
@@ -87,7 +87,7 @@ export default function ( { attributes, clientId, setAttributes } ) {
 							} )
 						}
 					>
-						<UnitControl
+						<TextControl
 							__nextHasNoMarginBottom
 							label={ __( 'Slide width', 'unitone' ) }
 							help={ __(

@@ -528,6 +528,10 @@ const setupAutoSlideWidth = ( root, swiper ) => {
 		const width = swiper.params.unitoneAutoSlideWidth;
 		const value =
 			'string' === typeof width && width.trim() ? width : '100%';
+		root.setAttribute(
+			'data-unitone-swiper-slides-per-view',
+			'auto' === swiper.params.slidesPerView ? 'auto' : 'number'
+		);
 		const hasChanged =
 			root.style.getPropertyValue( '--unitone--auto-slide-width' ) !==
 			value;

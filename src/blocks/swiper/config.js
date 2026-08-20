@@ -522,14 +522,29 @@ export const getEditorResponsiveCSS = (
 	const selector = `[data-unitone-swiper-editor-id="${ editorIdentifier }"]`;
 	const isContainer = 'container' === settings.breakpointsBase;
 	const target = `${ selector } > *`;
+	const slideTarget = [
+		`${ selector }[data-unitone-swiper-slides-per-view]`,
+		'> .unitone-swiper-track',
+		'> .unitone-swiper-track__viewport',
+		'> .unitone-swiper-track__wrapper',
+		'> .unitone-swiper__slide',
+	].join( ' ' );
+	const responsiveSettings = resolveResponsiveSettings(
+		rawSettings,
+		settings
+	);
 	const buildCSS = ( breakpoint, device ) => {
 		const query = isContainer
 			? `@container ${ editorIdentifier } not`
 			: '@media not all and';
+		const slideWidth =
+			'auto' === responsiveSettings[ device ].slidesPerViewMode
+				? 'min(100%, var(--unitone--slide-width))'
+				: 'auto';
 
 		return `${ query } (min-width: ${ breakpoint }px) { ${ target } { ${ getEditorDeviceDeclarations(
 			device
-		) } } }`;
+		) } } ${ slideTarget } { width: ${ slideWidth }; } }`;
 	};
 
 	return [

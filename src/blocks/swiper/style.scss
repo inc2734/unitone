@@ -36,7 +36,14 @@
 		display: flex;
 		flex-direction: column;
 		height: auto;
-		width: var(--unitone--slide-width);
+	}
+
+	&[data-unitone-swiper-slides-per-view="auto"]
+		> .unitone-swiper-track
+		> .unitone-swiper-track__viewport
+		> .unitone-swiper-track__wrapper
+		> .unitone-swiper__slide {
+		width: min(100%, var(--unitone--slide-width));
 	}
 }
 

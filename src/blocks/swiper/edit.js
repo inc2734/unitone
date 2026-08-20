@@ -19,8 +19,10 @@ import {
 	getEditorIdentifier,
 	getEditorResponsiveCSS,
 	getEditorStyle,
+	isSingleSlideEffect,
 	resolveSettings,
 } from './config';
+
 import { SettingsInspectorControls } from './inspector-controls';
 
 const PRIORITIZED_INSERTER_BLOCKS = [
@@ -77,6 +79,11 @@ export default function ( props ) {
 	const blockProps = useBlockProps( {
 		className: 'unitone-swiper',
 		'data-unitone-swiper-editor-id': editorIdentifier,
+		'data-unitone-swiper-slides-per-view':
+			! isSingleSlideEffect( resolvedSettings.effect ) &&
+			'auto' === resolvedSettings.slidesPerViewMode
+				? 'auto'
+				: 'number',
 		style: {
 			...getEditorStyle( settings, resolvedSettings ),
 			...( usesContainerBreakpoints

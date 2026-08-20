@@ -3,6 +3,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import icon from './icon';
 import edit from './edit';
 import save from './save';
+import deprecated from './deprecated';
 
 registerBlockType( 'unitone/swiper-slide', {
 	icon: {
@@ -10,4 +11,5 @@ registerBlockType( 'unitone/swiper-slide', {
 	},
 	edit,
 	save,
+	deprecated,
 } );

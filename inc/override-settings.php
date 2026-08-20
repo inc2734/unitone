@@ -126,12 +126,12 @@ add_action(
 			// A constrained Post Content block may set max-width directly on its children.
 			if ( $has_content_size_override ) {
 				$inline_css .= '.wp-block-post-content.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignwide):not(.alignfull)) {';
-				$inline_css .= 'max-width:var(--wp--style--global--content-size)';
+				$inline_css .= 'max-width: var(--wp--style--global--content-size)';
 				$inline_css .= '}';
 			}
 			if ( $has_wide_size_override ) {
 				$inline_css .= '.wp-block-post-content.is-layout-constrained > .alignwide {';
-				$inline_css .= 'max-width:var(--wp--style--global--wide-size)';
+				$inline_css .= 'max-width: var(--wp--style--global--wide-size)';
 				$inline_css .= '}';
 			}
 
@@ -178,10 +178,10 @@ function unitone_blocks_max_width_patch_for_editor( $editor_settings ) {
 	$css .= '.has-unitone-wide-size-override .wp-block-post-content {';
 	$css .= '--wp--style--global--wide-size: var(--unitone--wide-size-override)';
 	$css .= '}';
-	$css .= '.has-unitone-content-size-override :is(div.editor-visual-editor__post-title-wrapper, div.block-editor-block-list__layout.is-root-container:where(:not(.wp-site-blocks))) > :where(:not(.alignleft):not(.alignright):not(.alignwide):not(.alignfull)) {';
-	$css .= 'max-width: var(--wp--style--global--content-size)';
+	$css .= ':is(div.editor-visual-editor__post-title-wrapper, div.block-editor-block-list__layout.is-root-container:where(:not(.wp-site-blocks))) > :where(:not(.alignleft):not(.alignright):not(.alignwide):not(.alignfull)) {';
+	$css .= 'max-width: var(--wp--style--global--content-size, var(--wp--style--global--content-size))';
 	$css .= '}';
-	$css .= '.has-unitone-wide-size-override :is(div.editor-visual-editor__post-title-wrapper, div.block-editor-block-list__layout.is-root-container:where(:not(.wp-site-blocks))) > .alignwide {';
+	$css .= ':is(div.editor-visual-editor__post-title-wrapper, div.block-editor-block-list__layout.is-root-container:where(:not(.wp-site-blocks))) > .alignwide {';
 	$css .= 'max-width: var(--wp--style--global--wide-size)';
 	$css .= '}';
 

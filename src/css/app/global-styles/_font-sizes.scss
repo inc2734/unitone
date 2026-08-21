@@ -75,6 +75,15 @@ $font-sizes: (
 	) {
 		font-size: var(--unitone--font-size-#{ $token }-fluid) !important;
 	}
+
+	:where([data-unitone-layout~="-container-type\:inline-size"]) {
+		:is(
+			.has-#{ $slug }-font-size[data-unitone-layout~=-fluid-typography],
+			:where([data-unitone-layout~=-fluid-typography] > .wp-block-button__link.has-#{ $slug }-font-size)
+		) {
+			font-size: var(--unitone--font-size-#{ $token }-fluid-c) !important;
+		}
+	}
 }
 
 [data-unitone-layout~=-fluid-typography] > .wp-block-button__link {

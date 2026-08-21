@@ -69,9 +69,9 @@ $font-sizes: (
 	// When a font size is applied to `core/button`, a class is added to `.wp-block-button__link`;
 	// however, since `-fluid-typography` is applied to `.wp-block-button`,
 	// we are making adjustments using the selector.
-	:root :where(
+	:is(
 		.has-#{ $slug }-font-size[data-unitone-layout~=-fluid-typography],
-		[data-unitone-layout~=-fluid-typography] > .wp-block-button__link.has-#{ $slug }-font-size
+		:where([data-unitone-layout~=-fluid-typography] > .wp-block-button__link.has-#{ $slug }-font-size)
 	) {
 		font-size: var(--unitone--font-size-#{ $token }-fluid) !important;
 	}

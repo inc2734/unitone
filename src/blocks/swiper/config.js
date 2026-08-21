@@ -17,7 +17,7 @@ export const DEFAULT_SETTINGS = {
 	freeMode: false,
 	autoplay: false,
 	autoplayDelay: 3000,
-	autoplayDisableOnInteraction: true,
+	autoplayDisableOnInteraction: false,
 	autoplayReverseDirection: false,
 	autoplayPauseOnMouseEnter: false,
 	breakpointsBase: 'window',

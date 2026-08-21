@@ -722,3 +722,20 @@ function unitone_apply_hover_color( $block_content, $block ) {
 	return $p->get_updated_html();
 }
 add_filter( 'render_block', 'unitone_apply_hover_color', 10, 2 );
+
+/**
+ * In sidebar layouts, setting `contentSize` to `100%` for
+ * `core/post-content` also expands the content in the editor, causing
+ * a large discrepancy from the front-end layout.
+ *
+ * Keep it at `950px` to approximate the actual front-end width, and use
+ * this function to override it to `100%` on the front end.
+ */
+function unitone_content_size_for_layout_with_sidebar() {
+	$stylesheet = ':where([data-unitone-layout~=with-sidebar]) :is(.entry-content, .wp-block-post-content) > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+		max-width: 100%;
+	}';
+
+	wp_add_inline_style( 'core-block-supports', $stylesheet );
+}
+add_action( 'wp_enqueue_scripts', 'unitone_content_size_for_layout_with_sidebar' );

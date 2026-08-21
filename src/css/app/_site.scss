@@ -89,8 +89,10 @@
 
 // @deprecated
 .site-container-right-sidebar {
-	.entry-content,
-	.wp-block-post-content {
+	:is(
+		.entry-content,
+		.wp-block-post-content
+	) {
 		--wp--style--global--content-size: 100%;
 		--wp--style--global--wide-size: 100%;
 		--unitone--gutters: 0px;

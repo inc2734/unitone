@@ -24,7 +24,7 @@
 										<div data-unitone-layout="with-sidebar__content__content">
 											<!-- wp:unitone/stack {"unitone":{"gap":"3"}} -->
 											<div data-unitone-layout="stack">
-												<!-- wp:post-content {"layout":{"type":"constrained","contentSize":"100%"},"unitone":{"gutters":"0"}} /-->
+												<!-- wp:post-content {"layout":{"type":"constrained","contentSize":"950px"},"unitone":{"gutters":"0"}} /-->
 											</div>
 											<!-- /wp:unitone/stack -->
 										</div>

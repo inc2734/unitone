@@ -614,14 +614,8 @@
 				}
 			},
 			"core/gallery": {
-				"elements": {
-					"caption": {
-						"spacing": {
-							"margin": {
-								"top": "calc(-1 * var(--wp--style--unstable-gallery-gap) + var(--unitone--s-1))"
-							}
-						}
-					}
+				"spacing": {
+					"blockGap": "var(--unitone--s-1)"
 				}
 			},
 			"core/image": {

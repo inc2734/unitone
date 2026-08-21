@@ -182,6 +182,8 @@
 	--unitone--swiper-autoplay-progress-circle-size: 16px;
 
 	margin: 0;
+	display: grid;
+	align-items: center;
 
 	&:not([data-unitone-swiper-autoplay-state]) {
 		display: none;

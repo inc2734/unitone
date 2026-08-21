@@ -1,8 +1,10 @@
+import metadata from './block.json';
+
 export const DEFAULT_SETTINGS = {
-	type: 'bullets',
-	dynamicBullets: false,
-	bulletSize: 8,
-	progressbarSize: 2,
+	type: metadata.attributes.type.default,
+	dynamicBullets: metadata.attributes.dynamicBullets.default,
+	bulletSize: metadata.attributes.bulletSize.default,
+	progressbarSize: metadata.attributes.progressbarSize.default,
 };
 
 const TYPES = [ 'bullets', 'fraction', 'progressbar' ];
@@ -16,7 +18,7 @@ const asPixelNumber = ( value, fallback ) => {
 	return Number.isFinite( number ) ? Math.max( 1, number ) : fallback;
 };
 
-const normalizeSetting = ( key, value ) => {
+export const normalizeSetting = ( key, value ) => {
 	if ( 'type' === key ) {
 		return TYPES.includes( value ) ? value : DEFAULT_SETTINGS.type;
 	}
@@ -47,19 +49,6 @@ export const resolveSettings = ( settings = {} ) => {
 	}
 
 	return resolved;
-};
-
-export const updateSetting = ( settings = {}, key, value ) => {
-	const next = { ...( settings || {} ) };
-	const normalized = normalizeSetting( key, value );
-
-	if ( DEFAULT_SETTINGS[ key ] === normalized ) {
-		delete next[ key ];
-	} else {
-		next[ key ] = normalized;
-	}
-
-	return next;
 };
 
 export const getStyle = ( settings = {} ) => {

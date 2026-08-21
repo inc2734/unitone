@@ -1,16 +1,29 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "28.0.0",
+	"version": "28.0.1",
 	"textdomain": "unitone",
 	"name": "unitone/swiper-pagination",
 	"title": "[Swiper] Pagination",
 	"description": "A pagination. Connected to the nearest slider block.",
 	"ancestor": [ "unitone/swiper" ],
 	"attributes": {
-		"settings": {
-			"type": "object",
-			"default": {}
+		"type": {
+			"type": "string",
+			"enum": [ "bullets", "fraction", "progressbar" ],
+			"default": "bullets"
+		},
+		"dynamicBullets": {
+			"type": "boolean",
+			"default": false
+		},
+		"bulletSize": {
+			"type": "number",
+			"default": 8
+		},
+		"progressbarSize": {
+			"type": "number",
+			"default": 2
 		}
 	},
 	"selectors": {

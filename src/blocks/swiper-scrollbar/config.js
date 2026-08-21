@@ -1,6 +1,8 @@
+import metadata from './block.json';
+
 export const DEFAULT_SETTINGS = {
-	hide: false,
-	size: 2,
+	hide: metadata.attributes.hide.default,
+	size: metadata.attributes.size.default,
 };
 
 const hasSetting = ( settings, key ) =>
@@ -11,7 +13,7 @@ const asPixelNumber = ( value, fallback ) => {
 	return Number.isFinite( number ) ? Math.max( 1, number ) : fallback;
 };
 
-const normalizeSetting = ( key, value ) => {
+export const normalizeSetting = ( key, value ) => {
 	if ( 'hide' === key ) {
 		return true === value;
 	}
@@ -36,19 +38,6 @@ export const resolveSettings = ( settings = {} ) => {
 	return resolved;
 };
 
-export const updateSetting = ( settings = {}, key, value ) => {
-	const next = { ...( settings || {} ) };
-	const normalized = normalizeSetting( key, value );
-
-	if ( DEFAULT_SETTINGS[ key ] === normalized ) {
-		delete next[ key ];
-	} else {
-		next[ key ] = normalized;
-	}
-
-	return next;
-};
-
 export const getStyle = ( settings = {} ) => {
 	const source = settings || {};
 	const resolved = resolveSettings( source );
@@ -63,10 +52,9 @@ export const getStyle = ( settings = {} ) => {
 };
 
 export const getDataSettings = ( settings = {} ) => {
-	const source = settings || {};
-	const resolved = resolveSettings( source );
+	const resolved = resolveSettings( settings );
 
 	return {
-		hide: hasSetting( source, 'hide' ) ? resolved.hide : undefined,
+		hide: resolved.hide || undefined,
 	};
 };

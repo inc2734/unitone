@@ -1,7 +1,9 @@
+import metadata from './block.json';
+
 export const DEFAULT_SETTINGS = {
-	type: 'bar',
-	thickness: 2,
-	circleSize: 16,
+	type: metadata.attributes.type.default,
+	thickness: metadata.attributes.thickness.default,
+	circleSize: metadata.attributes.circleSize.default,
 };
 
 const TYPES = [ 'bar', 'circle' ];
@@ -15,7 +17,7 @@ const asPixelNumber = ( value, fallback ) => {
 	return Number.isFinite( number ) ? Math.max( 1, number ) : fallback;
 };
 
-const normalizeSetting = ( key, value ) => {
+export const normalizeSetting = ( key, value ) => {
 	if ( 'type' === key ) {
 		return TYPES.includes( value ) ? value : DEFAULT_SETTINGS.type;
 	}
@@ -38,19 +40,6 @@ export const resolveSettings = ( settings = {} ) => {
 	} );
 
 	return resolved;
-};
-
-export const updateSetting = ( settings = {}, key, value ) => {
-	const next = { ...( settings || {} ) };
-	const normalized = normalizeSetting( key, value );
-
-	if ( DEFAULT_SETTINGS[ key ] === normalized ) {
-		delete next[ key ];
-	} else {
-		next[ key ] = normalized;
-	}
-
-	return next;
 };
 
 export const getStyle = ( settings = {} ) => {

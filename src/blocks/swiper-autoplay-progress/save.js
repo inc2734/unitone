@@ -5,7 +5,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 import { getStyle, resolveSettings } from './config';
 
 export default function ( { attributes } ) {
-	const settings = resolveSettings( attributes.settings );
+	const settings = resolveSettings( attributes );
 
 	return (
 		<div
@@ -14,7 +14,7 @@ export default function ( { attributes } ) {
 					'unitone-swiper-autoplay-progress',
 					`unitone-swiper-autoplay-progress--${ settings.type }`
 				),
-				style: getStyle( attributes.settings ),
+				style: getStyle( attributes ),
 				'aria-hidden': true,
 			} ) }
 		>

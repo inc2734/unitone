@@ -13,8 +13,8 @@ import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
 import {
 	DEFAULT_SETTINGS,
 	getStyle,
+	normalizeSetting,
 	resolveSettings,
-	updateSetting,
 } from './config';
 
 const PIXEL_UNITS = [
@@ -22,35 +22,23 @@ const PIXEL_UNITS = [
 ];
 
 export default function ( { attributes, setAttributes } ) {
-	const rawSettings = attributes.settings || {};
-	const settings = resolveSettings( rawSettings );
-
+	const settings = resolveSettings( attributes );
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
-	const hasSetting = ( key ) =>
-		Object.prototype.hasOwnProperty.call( rawSettings, key );
+	const hasSetting = ( key ) => DEFAULT_SETTINGS[ key ] !== settings[ key ];
 
 	const setSetting = ( key, value ) => {
 		setAttributes( {
-			settings: updateSetting( rawSettings, key, value ),
+			[ key ]: normalizeSetting( key, value ),
 		} );
 	};
 
 	const resetSetting = ( key ) => setSetting( key, DEFAULT_SETTINGS[ key ] );
-
-	const resetSettings = () => {
-		const next = Object.keys( DEFAULT_SETTINGS ).reduce(
-			( nextSettings, key ) =>
-				updateSetting( nextSettings, key, DEFAULT_SETTINGS[ key ] ),
-			rawSettings
-		);
-
-		setAttributes( { settings: next } );
-	};
+	const resetSettings = () => setAttributes( DEFAULT_SETTINGS );
 
 	const blockProps = useBlockProps( {
 		className: 'unitone-swiper-scrollbar swiper-scrollbar',
-		style: getStyle( rawSettings ),
+		style: getStyle( attributes ),
 	} );
 
 	return (

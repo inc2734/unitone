@@ -7,9 +7,9 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useBlockProps.save( {
 				className: 'unitone-swiper-scrollbar swiper-scrollbar',
-				style: getStyle( attributes.settings ),
+				style: getStyle( attributes ),
 				'data-unitone-swiper-scrollbar': JSON.stringify(
-					getDataSettings( attributes.settings )
+					getDataSettings( attributes )
 				),
 			} ) }
 		/>

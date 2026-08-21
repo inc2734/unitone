@@ -7,9 +7,9 @@ export default function ( { attributes } ) {
 		<div
 			{ ...useBlockProps.save( {
 				className: 'unitone-swiper-pagination swiper-pagination',
-				style: getStyle( attributes.settings ),
+				style: getStyle( attributes ),
 				'data-unitone-swiper-pagination': JSON.stringify(
-					getDataSettings( attributes.settings )
+					getDataSettings( attributes )
 				),
 			} ) }
 		/>

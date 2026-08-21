@@ -10,6 +10,7 @@
 - [汎用色関連サポートを用途別パネルに配置する](decisions/inspector-color-panels.ja.md): 通常色はコアの情報設計に合わせ、hover 設定は一か所にまとめる。
 - [`dividerType` の未指定と「無し」を区別する](decisions/divider-type-empty-value.ja.md): `undefined` は未指定、空文字は明示的な「無し」とする。
 - [divider の計測トークンでインライン方向の外寸を変えない](decisions/divider-measurement-tokens.ja.md): 計測前後の折返し条件を一定に保つ。
+- [Swiper 関連ブロックの設定属性を用途に応じて分ける](decisions/swiper-settings-attributes.ja.md): 複合的な親設定は object、少数の子ブロック設定は個別属性で保持する。
 
 ## 追加・更新時の注意
 

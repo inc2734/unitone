@@ -1,16 +1,20 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "28.0.0",
+	"version": "28.0.1",
 	"textdomain": "unitone",
 	"name": "unitone/swiper-scrollbar",
 	"title": "[Swiper] Scrollbar",
 	"description": "A scrollbar. Connected to the nearest slider block.",
 	"ancestor": [ "unitone/swiper" ],
 	"attributes": {
-		"settings": {
-			"type": "object",
-			"default": {}
+		"hide": {
+			"type": "boolean",
+			"default": false
+		},
+		"size": {
+			"type": "number",
+			"default": 2
 		}
 	},
 	"selectors": {

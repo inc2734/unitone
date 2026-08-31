@@ -4426,6 +4426,10 @@ msgid "Container type"
 msgstr ""
 
 #: dist/js/editor/editor.js:7
+msgid "Base fluid scaling on ancestor container"
+msgstr ""
+
+#: dist/js/editor/editor.js:7
 msgid "Recommended width"
 msgstr ""
 

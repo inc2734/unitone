@@ -25,11 +25,20 @@ import {
 	withContainerTypeBlockProps,
 } from './container-type';
 
+import {
+	FluidReferenceEdit,
+	isFluidReferenceDisabled,
+	resetFluidReferenceFilter,
+	withFluidReferenceBlockProps,
+} from './fluid-reference';
+
 export { CustomCSSStyleOverride };
 
 export const withAdvancedBlockProps = ( props ) =>
-	withContainerTypeBlockProps(
-		withQueryContextBlockProps( withStyleBlockProps( props ) )
+	withFluidReferenceBlockProps(
+		withContainerTypeBlockProps(
+			withQueryContextBlockProps( withStyleBlockProps( props ) )
+		)
 	);
 
 export const resetAdvanced = ( props ) => {
@@ -37,6 +46,7 @@ export const resetAdvanced = ( props ) => {
 		[ isStyleDisabled, resetStyleFilter ],
 		[ isQueryContextDisabled, resetQueryContextFilter ],
 		[ isContainerTypeDisabled, resetContainerTypeFilter ],
+		[ isFluidReferenceDisabled, resetFluidReferenceFilter ],
 	];
 
 	const unitone = filters.reduce(
@@ -57,11 +67,13 @@ function AdvancedPanelPure( props ) {
 	const isStylePanelDisabled = isStyleDisabled( { name } );
 	const isQueryContextPanelDisabled = isQueryContextDisabled( { name } );
 	const isContainerTypePanelDisabled = isContainerTypeDisabled( { name } );
+	const isFluidReferencePanelDisabled = isFluidReferenceDisabled( { name } );
 
 	if (
 		isStylePanelDisabled &&
 		isQueryContextPanelDisabled &&
-		isContainerTypePanelDisabled
+		isContainerTypePanelDisabled &&
+		isFluidReferencePanelDisabled
 	) {
 		return null;
 	}
@@ -70,6 +82,10 @@ function AdvancedPanelPure( props ) {
 		<InspectorAdvancedControls>
 			{ ! isContainerTypePanelDisabled && (
 				<ContainerTypeEdit { ...props } />
+			) }
+
+			{ ! isFluidReferencePanelDisabled && (
+				<FluidReferenceEdit { ...props } />
 			) }
 
 			{ ! isQueryContextPanelDisabled && (

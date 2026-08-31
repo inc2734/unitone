@@ -245,6 +245,13 @@ add_filter(
 			}
 		}
 
+		// -fluid-reference:cqw
+		if ( unitone_has_block_support( 'unitone.fluidReference', $metadata ) ) {
+			if ( $get_attribute( 'fluidReference' ) ) {
+				$add_attribute( '-fluid-reference', 'cqw' );
+			}
+		}
+
 		// In the editor, InnerBlocks and its descendant blocks have `position: relative`.
 		// Match the front as well.
 		// @see /wp-includes/css/dist/block-editor/content.css.

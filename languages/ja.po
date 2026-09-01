@@ -3655,8 +3655,8 @@ msgid "Slide width"
 msgstr "スライドの幅"
 
 #: dist/blocks/swiper-slide/index.js:1
-msgid "This applies when \"Slides per view\" is set to \"auto\"."
-msgstr "「1ビューあたりのスライド数」が「自動」のときに適用されます。"
+msgid "This overrides the default slide width when \"Slide sizing\" is set to \"Width\"."
+msgstr "「スライドのサイズ指定」が「幅」のとき、このスライドだけ標準のスライド幅を上書きします。"
 
 #: dist/blocks/swiper-slide/index.js:1
 msgid "Autoplay delay override (ms)"
@@ -3692,6 +3692,10 @@ msgid "Slides per view"
 msgstr "1ビューあたりのスライド数"
 
 #: dist/blocks/swiper/index.js:1
+msgid "Slide sizing"
+msgstr "スライドのサイズ指定"
+
+#: dist/blocks/swiper/index.js:1
 msgid "Inherit"
 msgstr "継承"
 
@@ -3699,6 +3703,10 @@ msgstr "継承"
 msgctxt "Number of slides"
 msgid "Number"
 msgstr "表示枚数"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Loop mode requires at least the number of visible slides plus \"Slides per group\", and one more slide when centered. Check that there are enough slides at every responsive size."
+msgstr "ループモードでは、表示されるスライド数に「1グループあたりのスライド数」を加えた枚数以上が必要です。中央寄せの場合は、さらに1枚必要です。すべてのレスポンシブサイズでスライドが十分にあることを確認してください。"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Space between slides"

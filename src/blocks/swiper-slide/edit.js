@@ -91,7 +91,7 @@ export default function ( { attributes, clientId, setAttributes } ) {
 							__nextHasNoMarginBottom
 							label={ __( 'Slide width', 'unitone' ) }
 							help={ __(
-								'This applies when "Slides per view" is set to "auto".',
+								'This overrides the default slide width when "Slide sizing" is set to "Width".',
 								'unitone'
 							) }
 							value={ width }

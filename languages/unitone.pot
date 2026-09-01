@@ -3665,7 +3665,7 @@ msgid "Slide width"
 msgstr ""
 
 #: dist/blocks/swiper-slide/index.js:1
-msgid "This applies when \"Slides per view\" is set to \"auto\"."
+msgid "This overrides the default slide width when \"Slide sizing\" is set to \"Width\"."
 msgstr ""
 
 #: dist/blocks/swiper-slide/index.js:1
@@ -3703,12 +3703,20 @@ msgid "Slides per view"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
+msgid "Slide sizing"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
 msgid "Inherit"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
 msgctxt "Number of slides"
 msgid "Number"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Loop mode requires at least the number of visible slides plus \"Slides per group\", and one more slide when centered. Check that there are enough slides at every responsive size."
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1

@@ -1,4 +1,5 @@
 import {
+	Notice,
 	RangeControl,
 	SelectControl,
 	TextControl,
@@ -97,7 +98,7 @@ const ResponsiveControls = ( {
 				<ToggleGroupControl
 					__nextHasNoMarginBottom
 					isBlock
-					label={ __( 'Slides per view', 'unitone' ) }
+					label={ __( 'Slide sizing', 'unitone' ) }
 					value={ slidesPerViewMode }
 					onChange={ ( mode ) =>
 						change(
@@ -118,8 +119,9 @@ const ResponsiveControls = ( {
 						value="number"
 					/>
 
+					{ /* Swiper implements width-based sizing as slidesPerView: 'auto'. */ }
 					<ToggleGroupControlOption
-						label={ __( 'Auto', 'unitone' ) }
+						label={ __( 'Width', 'unitone' ) }
 						value="auto"
 					/>
 				</ToggleGroupControl>
@@ -145,7 +147,8 @@ const ResponsiveControls = ( {
 				) }
 
 				{ 'auto' === slidesPerViewMode && (
-					<UnitControl
+					// Keep arbitrary CSS functions and custom properties intact.
+					<TextControl
 						__nextHasNoMarginBottom
 						label={ __( 'Slide width', 'unitone' ) }
 						value={ autoSlideWidth }
@@ -213,6 +216,9 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 
 	const resolved = resolveSettings( settings );
 	const singleSlideEffect = isSingleSlideEffect( resolved.effect );
+	const usesWidthSizing = Object.values(
+		resolveResponsiveSettings( settings, resolved )
+	).some( ( deviceSettings ) => 'auto' === deviceSettings.slidesPerViewMode );
 	const snapToSlideEdgeDisabled =
 		singleSlideEffect ||
 		'loop' === resolved.loopMode ||
@@ -431,6 +437,19 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 									/>
 								) }
 							/>
+
+							{ 'loop' === resolved.loopMode &&
+								usesWidthSizing && (
+									<Notice
+										status="warning"
+										isDismissible={ false }
+									>
+										{ __(
+											'Loop mode requires at least the number of visible slides plus "Slides per group", and one more slide when centered. Check that there are enough slides at every responsive size.',
+											'unitone'
+										) }
+									</Notice>
+								) }
 						</div>
 					</ToolsPanelItem>
 				) }

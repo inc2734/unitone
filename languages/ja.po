@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-08-04T01:37:04+00:00\n"
-"PO-Revision-Date: 2026-08-19 00:00+0900\n"
+"POT-Creation-Date: 2026-09-02T03:28:48+00:00\n"
+"PO-Revision-Date: 2026-09-02 12:29+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -235,7 +235,8 @@ msgstr "ボーダー"
 #: inc/formats.php:128 dist/blocks/cluster-divided/index.js:1
 #: dist/blocks/cluster/index.js:1 dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1 dist/blocks/layers/index.js:1
-#: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
+#: dist/blocks/swiper/index.js:1 dist/blocks/switcher/index.js:1
+#: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
 #: dist/js/editor/editor.js:1
@@ -2450,28 +2451,12 @@ msgstr ""
 "ださい。"
 
 #: App/Controller/Manager/dist/js/app.js:24
-msgid "Go to the Dashboard"
-msgstr "ダッシュボードに戻る"
-
-#: App/Controller/Manager/dist/js/app.js:24
-msgid "View site (opens in a new tab)"
-msgstr "サイトを表示 (新しいタブで開く)"
-
-#: App/Controller/Manager/dist/js/app.js:24
 msgid "Navigation"
 msgstr "ナビゲーション"
 
-#: dist/blocks/abstract-background/index.js:1
-msgid "Abstract background image"
-msgstr "アブストラクト背景画像"
-
-#: dist/blocks/abstract-background/index.js:1
-msgid "Abstract background video"
-msgstr "アブストラクト背景動画"
-
-#: dist/blocks/abstract-background/index.js:1
-msgid "Abstract background"
-msgstr "アブストラクト背景"
+#: App/Controller/Manager/dist/js/app.js:24
+msgid "Go to the Dashboard"
+msgstr "ダッシュボードに戻る"
 
 #: dist/blocks/abstract-background/index.js:1 dist/blocks/accordion/index.js:1
 #: dist/blocks/badge/index.js:1 dist/blocks/breadcrumbs/index.js:1
@@ -2503,6 +2488,18 @@ msgstr "アブストラクト背景"
 #: dist/js/editor/editor.js:16
 msgid "Settings"
 msgstr "設定"
+
+#: dist/blocks/abstract-background/index.js:1
+msgid "Abstract background image"
+msgstr "アブストラクト背景画像"
+
+#: dist/blocks/abstract-background/index.js:1
+msgid "Abstract background video"
+msgstr "アブストラクト背景動画"
+
+#: dist/blocks/abstract-background/index.js:1
+msgid "Abstract background"
+msgstr "アブストラクト背景"
 
 #: dist/blocks/accordion/index.js:1
 msgid "Q"
@@ -2560,7 +2557,7 @@ msgid "Using label of the question"
 msgstr "質問のラベルを使用する"
 
 #: dist/blocks/accordion/index.js:1 dist/blocks/mega-menu/index.js:1
-#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/swiper/index.js:1 dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
 msgid "Width"
 msgstr "幅"
@@ -2721,28 +2718,12 @@ msgstr "%1$sgrid-template-columns%2$sの計算式の中"
 
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/cluster/index.js:1
 #: dist/blocks/flex/index.js:1 dist/blocks/frame/index.js:1
-#: dist/blocks/layers/index.js:1 dist/blocks/switcher/index.js:1
-#: dist/blocks/vertical-writing/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/swiper/index.js:1
+#: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:1
 msgid "Help"
 msgstr "ヘルプ"
-
-#: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: Stripe)"
-msgstr "クラスター（区切り：ストライプ）"
-
-#: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: Divide)"
-msgstr "クラスター（区切り：分割）"
-
-#: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: Slash)"
-msgstr "クラスター（区切り：スラッシュ）"
-
-#: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: Bordered)"
-msgstr "クラスター（区切り：ボーダー）"
 
 #: dist/blocks/cluster-divided/index.js:1 dist/blocks/decorator/index.js:1
 #: dist/blocks/flex-divided/index.js:1 dist/blocks/flex/index.js:1
@@ -2767,6 +2748,26 @@ msgstr ""
 "はみ出した部分は自動的に水平スクロールしないため、はみ出す可能性がある場合"
 "は、水平スクロールを許可する親要素でラップする必要があります。"
 
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: Stripe)"
+msgstr "クラスター（区切り：ストライプ）"
+
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: Divide)"
+msgstr "クラスター（区切り：分割）"
+
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: Slash)"
+msgstr "クラスター（区切り：スラッシュ）"
+
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: Bordered)"
+msgstr "クラスター（区切り：ボーダー）"
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Fill a space"
+msgstr "スペースを埋める"
+
 #: dist/blocks/cover-content/index.js:1
 msgctxt "cover"
 msgid "Top"
@@ -2782,9 +2783,9 @@ msgctxt "cover"
 msgid "Bottom"
 msgstr "下部"
 
-#: dist/blocks/cover-content/index.js:1
-msgid "Fill a space"
-msgstr "スペースを埋める"
+#: dist/blocks/cover/index.js:1
+msgid "Updated cover content position to static."
+msgstr "カバーコンテンツの「位置」を「static」に更新しました。"
 
 #: dist/blocks/cover/index.js:1
 msgctxt "cover-variation"
@@ -2820,10 +2821,6 @@ msgstr "中央 / 下部"
 msgctxt "cover-variation"
 msgid "Top / Center / Bottom"
 msgstr "上部 / 中央 / 下部"
-
-#: dist/blocks/cover/index.js:1
-msgid "Updated cover content position to static."
-msgstr "カバーコンテンツの「位置」を「static」に更新しました。"
 
 #: dist/blocks/dialog-content/index.js:1 dist/blocks/dialog/index.js:1
 msgid "Open dialog"
@@ -2910,18 +2907,6 @@ msgstr ""
 "効化すると、複数列表示時の右側の要素が上に表示されるようになります。"
 
 #: dist/blocks/frame/index.js:1
-msgid "Framed image"
-msgstr "フレーム画像"
-
-#: dist/blocks/frame/index.js:1
-msgid "Framed video"
-msgstr "フレームビデオ"
-
-#: dist/blocks/frame/index.js:1
-msgid "Framed post featured image"
-msgstr "フレームアイキャッチ画像"
-
-#: dist/blocks/frame/index.js:1
 msgid "Preferred aspect ratio"
 msgstr "推奨アスペクト比"
 
@@ -2932,6 +2917,18 @@ msgstr "アスペクト比の切り替え"
 #: dist/blocks/frame/index.js:1
 msgid "Switch aspect ratio when portrait and mobile width."
 msgstr "ポートレートかつモバイル幅のときアスペクト比を切り替える。"
+
+#: dist/blocks/frame/index.js:1
+msgid "Framed image"
+msgstr "フレーム画像"
+
+#: dist/blocks/frame/index.js:1
+msgid "Framed video"
+msgstr "フレームビデオ"
+
+#: dist/blocks/frame/index.js:1
+msgid "Framed post featured image"
+msgstr "フレームアイキャッチ画像"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 #: dist/blocks/swiper/index.js:1 dist/js/editor/editor.js:1
@@ -2955,26 +2952,6 @@ msgstr "モバイル"
 #: dist/blocks/swiper/index.js:1 dist/js/editor/editor.js:1
 msgid "Switch to settings based on device size"
 msgstr "デバイスサイズに応じた設定に切り替え"
-
-#: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: Stripe)"
-msgstr "グリッド（区切り：ストライプ）"
-
-#: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: Stripe (Vertical))"
-msgstr "グリッド（区切り：ストライプ（縦））"
-
-#: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: Divide (Vertical))"
-msgstr "グリッド（区切り：分割（縦））"
-
-#: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: Underline)"
-msgstr "グリッド（区切り：アンダーライン）"
-
-#: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: Bordered)"
-msgstr "グリッド（区切り：ボーダー）"
 
 #: dist/blocks/grid-divided/index.js:1 dist/blocks/grid/index.js:1
 msgid "Minimum width"
@@ -3028,42 +3005,29 @@ msgstr "モバイル用ブレイクポイント（最大幅）"
 msgid "Anything less than this width will be considered mobile size."
 msgstr "この幅より小さいものはモバイルサイズと見なされます。"
 
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Stripe)"
+msgstr "グリッド（区切り：ストライプ）"
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Stripe (Vertical))"
+msgstr "グリッド（区切り：ストライプ（縦））"
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Divide (Vertical))"
+msgstr "グリッド（区切り：分割（縦））"
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Underline)"
+msgstr "グリッド（区切り：アンダーライン）"
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Bordered)"
+msgstr "グリッド（区切り：ボーダー）"
+
 #: dist/blocks/gutters/index.js:1 dist/blocks/section/index.js:1
 msgid "Top and bottom padding"
 msgstr "上下パディング"
-
-#: dist/blocks/layers/index.js:1
-msgid "Background image"
-msgstr "背景画像"
-
-#: dist/blocks/layers/index.js:1
-msgid "Background framed image"
-msgstr "背景フレーム画像"
-
-#: dist/blocks/layers/index.js:1
-msgid "Top / Left"
-msgstr "上 / 左"
-
-#: dist/blocks/layers/index.js:1
-msgid "Top / Right"
-msgstr "上 / 右"
-
-#: dist/blocks/layers/index.js:1
-msgid "Bottom / Left"
-msgstr "下 / 左"
-
-#: dist/blocks/layers/index.js:1
-msgid "Bottom / Right"
-msgstr "下 / 右"
-
-#: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
-#: dist/js/editor/editor.js:13
-msgid "Center"
-msgstr "中央"
-
-#: dist/blocks/layers/index.js:1
-msgid "Center / Left"
-msgstr "中央 / 左"
 
 #: dist/blocks/layers/index.js:1
 msgid "Use background image/video (Cover)"
@@ -3109,6 +3073,39 @@ msgid ""
 "Switch vertical and horizontal grid lines direction when portrait and mobile "
 "width."
 msgstr "ポートレートかつモバイル幅のとき、縦横のグリッド線の向きを切り替える。"
+
+#: dist/blocks/layers/index.js:1
+msgid "Background image"
+msgstr "背景画像"
+
+#: dist/blocks/layers/index.js:1
+msgid "Background framed image"
+msgstr "背景フレーム画像"
+
+#: dist/blocks/layers/index.js:1
+msgid "Top / Left"
+msgstr "上 / 左"
+
+#: dist/blocks/layers/index.js:1
+msgid "Top / Right"
+msgstr "上 / 右"
+
+#: dist/blocks/layers/index.js:1
+msgid "Bottom / Left"
+msgstr "下 / 左"
+
+#: dist/blocks/layers/index.js:1
+msgid "Bottom / Right"
+msgstr "下 / 右"
+
+#: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
+#: dist/js/editor/editor.js:13
+msgid "Center"
+msgstr "中央"
+
+#: dist/blocks/layers/index.js:1
+msgid "Center / Left"
+msgstr "中央 / 左"
 
 #: dist/blocks/marquee/index.js:1 dist/blocks/reel/index.js:1
 #: dist/blocks/slider/index.js:1
@@ -3255,26 +3252,6 @@ msgstr ""
 msgid "Generate list"
 msgstr "リストを生成"
 
-#: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: Stripe)"
-msgstr "レスポンシブグリッド（区切り：ストライプ）"
-
-#: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: Stripe (Vertical))"
-msgstr "レスポンシブグリッド（区切り：ストライプ（縦））"
-
-#: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: Divide (Vertical))"
-msgstr "レスポンシブグリッド（区切り：分割（縦））"
-
-#: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: Underline)"
-msgstr "レスポンシブグリッド（区切り：アンダーライン）"
-
-#: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: Bordered)"
-msgstr "レスポンシブグリッド（区切り：ボーダー）"
-
 #: dist/blocks/responsive-grid-divided/index.js:4
 #: dist/blocks/responsive-grid/index.js:4
 msgid ""
@@ -3290,6 +3267,26 @@ msgid ""
 msgstr ""
 "「auto-repeat」が 「auto-fill」の場合、カラムはこのサイズを維持します。"
 "「auto-fit」の場合、空きスペースを埋めるようにカラムが伸長します。"
+
+#: dist/blocks/responsive-grid-divided/index.js:4
+msgid "Responsive grid (Divider: Stripe)"
+msgstr "レスポンシブグリッド（区切り：ストライプ）"
+
+#: dist/blocks/responsive-grid-divided/index.js:4
+msgid "Responsive grid (Divider: Stripe (Vertical))"
+msgstr "レスポンシブグリッド（区切り：ストライプ（縦））"
+
+#: dist/blocks/responsive-grid-divided/index.js:4
+msgid "Responsive grid (Divider: Divide (Vertical))"
+msgstr "レスポンシブグリッド（区切り：分割（縦））"
+
+#: dist/blocks/responsive-grid-divided/index.js:4
+msgid "Responsive grid (Divider: Underline)"
+msgstr "レスポンシブグリッド（区切り：アンダーライン）"
+
+#: dist/blocks/responsive-grid-divided/index.js:4
+msgid "Responsive grid (Divider: Bordered)"
+msgstr "レスポンシブグリッド（区切り：ボーダー）"
 
 #: dist/blocks/responsive-image/index.js:1
 msgid "Replace"
@@ -3307,8 +3304,7 @@ msgstr "対象の最大ビューポート幅"
 msgid "Image width"
 msgstr "画像の幅"
 
-#: dist/blocks/responsive-image/index.js:1 dist/blocks/swiper/index.js:1
-#: dist/js/editor/editor.js:13
+#: dist/blocks/responsive-image/index.js:1 dist/js/editor/editor.js:13
 msgid "Auto"
 msgstr "自動"
 
@@ -3350,6 +3346,10 @@ msgid "Break point"
 msgstr "ブレイクポイント"
 
 #: dist/blocks/section/index.js:1
+msgid "Container alignment"
+msgstr "コンテナーの配置"
+
+#: dist/blocks/section/index.js:1
 msgid "Centered title"
 msgstr "中央揃えのタイトル"
 
@@ -3364,10 +3364,6 @@ msgstr "左寄せのタイトル"
 #: dist/blocks/section/index.js:1
 msgid "Left title / Subtitle"
 msgstr "左寄せのタイトル / サブタイトル"
-
-#: dist/blocks/section/index.js:1
-msgid "Container alignment"
-msgstr "コンテナーの配置"
 
 #: dist/blocks/section/index.js:1
 msgid "Max width of contents"
@@ -3581,25 +3577,25 @@ msgid "hgroup"
 msgstr "hgroup"
 
 #: dist/blocks/swiper-arrow/index.js:1
-msgid "[Swiper] Previous arrow"
-msgstr "[Swiper] 前へボタン"
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "Action"
+msgstr "アクション"
 
 #: dist/blocks/swiper-arrow/index.js:1
 msgid "Previous"
 msgstr "前へ"
 
 #: dist/blocks/swiper-arrow/index.js:1
-msgid "[Swiper] Next arrow"
-msgstr "[Swiper] 次へボタン"
-
-#: dist/blocks/swiper-arrow/index.js:1
 msgid "Next"
 msgstr "次へ"
 
 #: dist/blocks/swiper-arrow/index.js:1
-#: dist/blocks/swiper-autoplay-control/index.js:1
-msgid "Action"
-msgstr "アクション"
+msgid "[Swiper] Previous arrow"
+msgstr "[Swiper] 前へボタン"
+
+#: dist/blocks/swiper-arrow/index.js:1
+msgid "[Swiper] Next arrow"
+msgstr "[Swiper] 次へボタン"
 
 #: dist/blocks/swiper-autoplay-control/index.js:1
 msgid "[Swiper] Autoplay start"
@@ -3655,8 +3651,12 @@ msgid "Slide width"
 msgstr "スライドの幅"
 
 #: dist/blocks/swiper-slide/index.js:1
-msgid "This overrides the default slide width when \"Slide sizing\" is set to \"Width\"."
-msgstr "「スライドのサイズ指定」が「幅」のとき、このスライドだけ標準のスライド幅を上書きします。"
+msgid ""
+"This overrides the default slide width when \"Slide sizing\" is set to "
+"\"Width\"."
+msgstr ""
+"「スライドのサイズ指定」が「幅」に設定されている場合、既定の幅を上書きしま"
+"す。"
 
 #: dist/blocks/swiper-slide/index.js:1
 msgid "Autoplay delay override (ms)"
@@ -3688,10 +3688,6 @@ msgid "Go to slide {{index}}"
 msgstr "スライド {{index}} へ移動"
 
 #: dist/blocks/swiper/index.js:1
-msgid "Slides per view"
-msgstr "1ビューあたりのスライド数"
-
-#: dist/blocks/swiper/index.js:1
 msgid "Slide sizing"
 msgstr "スライドのサイズ指定"
 
@@ -3705,8 +3701,8 @@ msgid "Number"
 msgstr "表示枚数"
 
 #: dist/blocks/swiper/index.js:1
-msgid "Loop mode requires at least the number of visible slides plus \"Slides per group\", and one more slide when centered. Check that there are enough slides at every responsive size."
-msgstr "ループモードでは、表示されるスライド数に「1グループあたりのスライド数」を加えた枚数以上が必要です。中央寄せの場合は、さらに1枚必要です。すべてのレスポンシブサイズでスライドが十分にあることを確認してください。"
+msgid "Slides per view"
+msgstr "1ビューあたりのスライド数"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Space between slides"
@@ -3725,32 +3721,30 @@ msgid "Cross fade"
 msgstr "クロスフェード"
 
 #: dist/blocks/swiper/index.js:1
-msgid "Disabled when: Fade effect."
-msgstr "次の場合は無効になります：フェードエフェクト"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Disabled when: Slide effect."
+msgid "Disabled when: Slide effect"
 msgstr "次の場合は無効になります：スライドエフェクト"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Disabled when: Fade effect, Loop is on, Center the active slide is on."
-msgstr "次の場合は無効になります：フェードエフェクト、「ループ」が有効、「アクティブなスライドを中央に配置」が有効"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Disabled when: Fade effect, Allow touch move is off, Snap to slide edge is on."
-msgstr "次の場合は無効になります：フェードエフェクト、「タッチ移動を許可」が無効、「スライドの端にスナップ」が有効"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Disabled when: Autoplay is off."
-msgstr "次の場合は無効になります：「自動再生」が無効"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Responsive slide layout"
 msgstr "レスポンシブスライドレイアウト"
 
 #: dist/blocks/swiper/index.js:1
+msgid ""
+"Loop mode requires at least the number of visible slides plus \"Slides per "
+"group\", and one more slide when centered. Check that there are enough "
+"slides at every responsive size."
+msgstr ""
+"ループモードでは、表示されるスライド数に「1グループあたりのスライド数」を加え"
+"た枚数以上が必要です。中央寄せの場合は、さらに1枚必要です。すべてのレスポンシ"
+"ブサイズでスライドが十分にあることを確認してください。"
+
+#: dist/blocks/swiper/index.js:1
 msgid "Container beginning offset"
 msgstr "コンテナーの開始オフセット"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Fade effect"
+msgstr "次の場合は無効になります：フェードエフェクト"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Container end offset"
@@ -3773,6 +3767,13 @@ msgid "Snap to slide edge"
 msgstr "スライドの端にスナップ"
 
 #: dist/blocks/swiper/index.js:1
+msgid ""
+"Disabled when: Fade effect, Loop is active, Center the active slide is active"
+msgstr ""
+"次の場合は無効になります：フェードエフェクト、「ループ」が有効、「アクティブ"
+"なスライドを中央に配置」が有効"
+
+#: dist/blocks/swiper/index.js:1
 msgid "Auto height"
 msgstr "高さ自動"
 
@@ -3787,6 +3788,14 @@ msgstr "タッチ移動を許可"
 #: dist/blocks/swiper/index.js:1
 msgid "Free mode"
 msgstr "フリーモード"
+
+#: dist/blocks/swiper/index.js:1
+msgid ""
+"Disabled when: Fade effect, Allow touch move is inactive, Snap to slide edge "
+"is active"
+msgstr ""
+"次の場合は無効になります：フェードエフェクト、「タッチ移動を許可」が無効、"
+"「スライドの端にスナップ」が有効"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Delay (ms)"
@@ -3825,12 +3834,12 @@ msgid "Desktop breakpoint"
 msgstr "デスクトップのブレイクポイント"
 
 #: dist/blocks/swiper/index.js:1
-msgid "Slider"
-msgstr "スライダー"
-
-#: dist/blocks/swiper/index.js:1
 msgid "Only the first Scrollbar block is connected to Swiper."
 msgstr "最初のスクロールバーブロックのみが Swiperに接続されます。"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Slider"
+msgstr "スライダー"
 
 #: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
 msgid "Threshold"
@@ -4036,6 +4045,31 @@ msgstr "ポートレートかつモバイル幅のとライティンググモー
 
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
+msgid ""
+"In single-column display, by default, the elements on the left side of the "
+"two-column display are displayed on top, but when enabled, the elements on "
+"the right side of the two-column display are displayed on top."
+msgstr ""
+"1列表示のとき、デフォルトでは2列表示時の左側の要素が上に表示されますが、有効"
+"化すると、2列表示時の右側の要素が上に表示されるようになります。"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "A column to be treated as secondary"
+msgstr "サブとして扱うカラム"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:7
+msgid "Min width"
+msgstr "最小幅"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Wrap when content equals this width."
+msgstr "コンテンツがこの幅と等しくなった場合に折り返されます。"
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
 msgid "[Sub] Right / Bottom"
 msgstr "[サブ] 右・下"
 
@@ -4069,31 +4103,6 @@ msgstr "サイドバー（区切りあり：スラッシュ）"
 #: dist/blocks/with-sidebar-divided/index.js:1
 msgid "With sidebar (Divider: Bordered)"
 msgstr "サイドバー（区切りあり：ボーダー）"
-
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid ""
-"In single-column display, by default, the elements on the left side of the "
-"two-column display are displayed on top, but when enabled, the elements on "
-"the right side of the two-column display are displayed on top."
-msgstr ""
-"1列表示のとき、デフォルトでは2列表示時の左側の要素が上に表示されますが、有効"
-"化すると、2列表示時の右側の要素が上に表示されるようになります。"
-
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "A column to be treated as secondary"
-msgstr "サブとして扱うカラム"
-
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1 dist/js/editor/editor.js:7
-msgid "Min width"
-msgstr "最小幅"
-
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Wrap when content equals this width."
-msgstr "コンテンツがこの幅と等しくなった場合に折り返されます。"
 
 #: dist/formats/formats.js:1
 msgid "Line break per screen size"

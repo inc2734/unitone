@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: unitone 27.1.0\n"
+"Project-Id-Version: unitone 28.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-18T15:00:00+00:00\n"
+"POT-Creation-Date: 2026-09-02T03:28:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -257,6 +257,7 @@ msgstr ""
 #: dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1
 #: dist/blocks/layers/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
@@ -2387,27 +2388,11 @@ msgid "Using the API incurs charges. Please check the %1$sAPI pricing%2$s page f
 msgstr ""
 
 #: App/Controller/Manager/dist/js/app.js:24
-msgid "Go to the Dashboard"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:24
-msgid "View site (opens in a new tab)"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:24
 msgid "Navigation"
 msgstr ""
 
-#: dist/blocks/abstract-background/index.js:1
-msgid "Abstract background image"
-msgstr ""
-
-#: dist/blocks/abstract-background/index.js:1
-msgid "Abstract background video"
-msgstr ""
-
-#: dist/blocks/abstract-background/index.js:1
-msgid "Abstract background"
+#: App/Controller/Manager/dist/js/app.js:24
+msgid "Go to the Dashboard"
 msgstr ""
 
 #: dist/blocks/abstract-background/index.js:1
@@ -2458,6 +2443,18 @@ msgstr ""
 #: dist/formats/formats.js:1
 #: dist/js/editor/editor.js:16
 msgid "Settings"
+msgstr ""
+
+#: dist/blocks/abstract-background/index.js:1
+msgid "Abstract background image"
+msgstr ""
+
+#: dist/blocks/abstract-background/index.js:1
+msgid "Abstract background video"
+msgstr ""
+
+#: dist/blocks/abstract-background/index.js:1
+msgid "Abstract background"
 msgstr ""
 
 #: dist/blocks/accordion/index.js:1
@@ -2521,6 +2518,7 @@ msgstr ""
 
 #: dist/blocks/accordion/index.js:1
 #: dist/blocks/mega-menu/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/formats/formats.js:1
@@ -2692,28 +2690,13 @@ msgstr ""
 #: dist/blocks/flex/index.js:1
 #: dist/blocks/frame/index.js:1
 #: dist/blocks/layers/index.js:1
+#: dist/blocks/swiper/index.js:1
 #: dist/blocks/switcher/index.js:1
 #: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Help"
-msgstr ""
-
-#: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: Stripe)"
-msgstr ""
-
-#: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: Divide)"
-msgstr ""
-
-#: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: Slash)"
-msgstr ""
-
-#: dist/blocks/cluster-divided/index.js:1
-msgid "Cluster (Divider: Bordered)"
 msgstr ""
 
 #: dist/blocks/cluster-divided/index.js:1
@@ -2741,6 +2724,26 @@ msgstr ""
 msgid "The overhanging part will not automatically scroll horizontally, so if there is a possibility that it may overhang, it must be enclosed in a parent element that allows horizontal scrolling."
 msgstr ""
 
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: Stripe)"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: Divide)"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: Slash)"
+msgstr ""
+
+#: dist/blocks/cluster-divided/index.js:1
+msgid "Cluster (Divider: Bordered)"
+msgstr ""
+
+#: dist/blocks/cover-content/index.js:1
+msgid "Fill a space"
+msgstr ""
+
 #: dist/blocks/cover-content/index.js:1
 msgctxt "cover"
 msgid "Top"
@@ -2756,8 +2759,8 @@ msgctxt "cover"
 msgid "Bottom"
 msgstr ""
 
-#: dist/blocks/cover-content/index.js:1
-msgid "Fill a space"
+#: dist/blocks/cover/index.js:1
+msgid "Updated cover content position to static."
 msgstr ""
 
 #: dist/blocks/cover/index.js:1
@@ -2793,10 +2796,6 @@ msgstr ""
 #: dist/blocks/cover/index.js:1
 msgctxt "cover-variation"
 msgid "Top / Center / Bottom"
-msgstr ""
-
-#: dist/blocks/cover/index.js:1
-msgid "Updated cover content position to static."
 msgstr ""
 
 #: dist/blocks/dialog-content/index.js:1
@@ -2886,18 +2885,6 @@ msgid "In single-column display, by default, the elements on the left side of th
 msgstr ""
 
 #: dist/blocks/frame/index.js:1
-msgid "Framed image"
-msgstr ""
-
-#: dist/blocks/frame/index.js:1
-msgid "Framed video"
-msgstr ""
-
-#: dist/blocks/frame/index.js:1
-msgid "Framed post featured image"
-msgstr ""
-
-#: dist/blocks/frame/index.js:1
 msgid "Preferred aspect ratio"
 msgstr ""
 
@@ -2907,6 +2894,18 @@ msgstr ""
 
 #: dist/blocks/frame/index.js:1
 msgid "Switch aspect ratio when portrait and mobile width."
+msgstr ""
+
+#: dist/blocks/frame/index.js:1
+msgid "Framed image"
+msgstr ""
+
+#: dist/blocks/frame/index.js:1
+msgid "Framed video"
+msgstr ""
+
+#: dist/blocks/frame/index.js:1
+msgid "Framed post featured image"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
@@ -2938,26 +2937,6 @@ msgstr ""
 #: dist/blocks/swiper/index.js:1
 #: dist/js/editor/editor.js:1
 msgid "Switch to settings based on device size"
-msgstr ""
-
-#: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: Stripe)"
-msgstr ""
-
-#: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: Stripe (Vertical))"
-msgstr ""
-
-#: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: Divide (Vertical))"
-msgstr ""
-
-#: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: Underline)"
-msgstr ""
-
-#: dist/blocks/grid-divided/index.js:1
-msgid "Grid (Divider: Bordered)"
 msgstr ""
 
 #: dist/blocks/grid-divided/index.js:1
@@ -3024,43 +3003,29 @@ msgstr ""
 msgid "Anything less than this width will be considered mobile size."
 msgstr ""
 
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Stripe)"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Stripe (Vertical))"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Divide (Vertical))"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Underline)"
+msgstr ""
+
+#: dist/blocks/grid-divided/index.js:1
+msgid "Grid (Divider: Bordered)"
+msgstr ""
+
 #: dist/blocks/gutters/index.js:1
 #: dist/blocks/section/index.js:1
 msgid "Top and bottom padding"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Background image"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Background framed image"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Top / Left"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Top / Right"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Bottom / Left"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Bottom / Right"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-#: dist/blocks/section/index.js:1
-#: dist/js/editor/editor.js:13
-msgid "Center"
-msgstr ""
-
-#: dist/blocks/layers/index.js:1
-msgid "Center / Left"
 msgstr ""
 
 #: dist/blocks/layers/index.js:1
@@ -3101,6 +3066,40 @@ msgstr ""
 
 #: dist/blocks/layers/index.js:1
 msgid "Switch vertical and horizontal grid lines direction when portrait and mobile width."
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Background image"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Background framed image"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Top / Left"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Top / Right"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Bottom / Left"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Bottom / Right"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+#: dist/blocks/section/index.js:1
+#: dist/js/editor/editor.js:13
+msgid "Center"
+msgstr ""
+
+#: dist/blocks/layers/index.js:1
+msgid "Center / Left"
 msgstr ""
 
 #: dist/blocks/marquee/index.js:1
@@ -3254,26 +3253,6 @@ msgstr ""
 msgid "Generate list"
 msgstr ""
 
-#: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: Stripe)"
-msgstr ""
-
-#: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: Stripe (Vertical))"
-msgstr ""
-
-#: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: Divide (Vertical))"
-msgstr ""
-
-#: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: Underline)"
-msgstr ""
-
-#: dist/blocks/responsive-grid-divided/index.js:1
-msgid "Responsive grid (Divider: Bordered)"
-msgstr ""
-
 #: dist/blocks/responsive-grid-divided/index.js:4
 #: dist/blocks/responsive-grid/index.js:4
 msgid "When the column width is less than this value, it is aligned in a single column."
@@ -3282,6 +3261,26 @@ msgstr ""
 #: dist/blocks/responsive-grid-divided/index.js:4
 #: dist/blocks/responsive-grid/index.js:4
 msgid "If \"auto-repeat\" is \"auto-fill\" the column will maintain this size.\" auto-fit\", the column will stretch to fill the available space."
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:4
+msgid "Responsive grid (Divider: Stripe)"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:4
+msgid "Responsive grid (Divider: Stripe (Vertical))"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:4
+msgid "Responsive grid (Divider: Divide (Vertical))"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:4
+msgid "Responsive grid (Divider: Underline)"
+msgstr ""
+
+#: dist/blocks/responsive-grid-divided/index.js:4
+msgid "Responsive grid (Divider: Bordered)"
 msgstr ""
 
 #: dist/blocks/responsive-image/index.js:1
@@ -3301,7 +3300,6 @@ msgid "Image width"
 msgstr ""
 
 #: dist/blocks/responsive-image/index.js:1
-#: dist/blocks/swiper/index.js:1
 #: dist/js/editor/editor.js:13
 msgid "Auto"
 msgstr ""
@@ -3344,6 +3342,10 @@ msgid "Break point"
 msgstr ""
 
 #: dist/blocks/section/index.js:1
+msgid "Container alignment"
+msgstr ""
+
+#: dist/blocks/section/index.js:1
 msgid "Centered title"
 msgstr ""
 
@@ -3357,10 +3359,6 @@ msgstr ""
 
 #: dist/blocks/section/index.js:1
 msgid "Left title / Subtitle"
-msgstr ""
-
-#: dist/blocks/section/index.js:1
-msgid "Container alignment"
 msgstr ""
 
 #: dist/blocks/section/index.js:1
@@ -3590,7 +3588,8 @@ msgid "hgroup"
 msgstr ""
 
 #: dist/blocks/swiper-arrow/index.js:1
-msgid "[Swiper] Previous arrow"
+#: dist/blocks/swiper-autoplay-control/index.js:1
+msgid "Action"
 msgstr ""
 
 #: dist/blocks/swiper-arrow/index.js:1
@@ -3598,16 +3597,15 @@ msgid "Previous"
 msgstr ""
 
 #: dist/blocks/swiper-arrow/index.js:1
-msgid "[Swiper] Next arrow"
-msgstr ""
-
-#: dist/blocks/swiper-arrow/index.js:1
 msgid "Next"
 msgstr ""
 
 #: dist/blocks/swiper-arrow/index.js:1
-#: dist/blocks/swiper-autoplay-control/index.js:1
-msgid "Action"
+msgid "[Swiper] Previous arrow"
+msgstr ""
+
+#: dist/blocks/swiper-arrow/index.js:1
+msgid "[Swiper] Next arrow"
 msgstr ""
 
 #: dist/blocks/swiper-autoplay-control/index.js:1
@@ -3699,10 +3697,6 @@ msgid "Go to slide {{index}}"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
-msgid "Slides per view"
-msgstr ""
-
-#: dist/blocks/swiper/index.js:1
 msgid "Slide sizing"
 msgstr ""
 
@@ -3716,7 +3710,7 @@ msgid "Number"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
-msgid "Loop mode requires at least the number of visible slides plus \"Slides per group\", and one more slide when centered. Check that there are enough slides at every responsive size."
+msgid "Slides per view"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
@@ -3736,23 +3730,7 @@ msgid "Cross fade"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
-msgid "Disabled when: Fade effect."
-msgstr ""
-
-#: dist/blocks/swiper/index.js:1
-msgid "Disabled when: Slide effect."
-msgstr ""
-
-#: dist/blocks/swiper/index.js:1
-msgid "Disabled when: Fade effect, Loop is on, Center the active slide is on."
-msgstr ""
-
-#: dist/blocks/swiper/index.js:1
-msgid "Disabled when: Fade effect, Allow touch move is off, Snap to slide edge is on."
-msgstr ""
-
-#: dist/blocks/swiper/index.js:1
-msgid "Disabled when: Autoplay is off."
+msgid "Disabled when: Slide effect"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
@@ -3760,7 +3738,15 @@ msgid "Responsive slide layout"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
+msgid "Loop mode requires at least the number of visible slides plus \"Slides per group\", and one more slide when centered. Check that there are enough slides at every responsive size."
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
 msgid "Container beginning offset"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Fade effect"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
@@ -3784,6 +3770,10 @@ msgid "Snap to slide edge"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Fade effect, Loop is active, Center the active slide is active"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
 msgid "Auto height"
 msgstr ""
 
@@ -3797,6 +3787,10 @@ msgstr ""
 
 #: dist/blocks/swiper/index.js:1
 msgid "Free mode"
+msgstr ""
+
+#: dist/blocks/swiper/index.js:1
+msgid "Disabled when: Fade effect, Allow touch move is inactive, Snap to slide edge is active"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
@@ -3837,11 +3831,11 @@ msgid "Desktop breakpoint"
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
-msgid "Slider"
+msgid "Only the first Scrollbar block is connected to Swiper."
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1
-msgid "Only the first Scrollbar block is connected to Swiper."
+msgid "Slider"
 msgstr ""
 
 #: dist/blocks/switcher/index.js:1
@@ -4052,6 +4046,27 @@ msgstr ""
 
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1
+msgid "In single-column display, by default, the elements on the left side of the two-column display are displayed on top, but when enabled, the elements on the right side of the two-column display are displayed on top."
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "A column to be treated as secondary"
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+#: dist/js/editor/editor.js:7
+msgid "Min width"
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
+msgid "Wrap when content equals this width."
+msgstr ""
+
+#: dist/blocks/with-sidebar-divided/index.js:1
+#: dist/blocks/with-sidebar/index.js:1
 msgid "[Sub] Right / Bottom"
 msgstr ""
 
@@ -4084,27 +4099,6 @@ msgstr ""
 
 #: dist/blocks/with-sidebar-divided/index.js:1
 msgid "With sidebar (Divider: Bordered)"
-msgstr ""
-
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "In single-column display, by default, the elements on the left side of the two-column display are displayed on top, but when enabled, the elements on the right side of the two-column display are displayed on top."
-msgstr ""
-
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "A column to be treated as secondary"
-msgstr ""
-
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-#: dist/js/editor/editor.js:7
-msgid "Min width"
-msgstr ""
-
-#: dist/blocks/with-sidebar-divided/index.js:1
-#: dist/blocks/with-sidebar/index.js:1
-msgid "Wrap when content equals this width."
 msgstr ""
 
 #: dist/formats/formats.js:1

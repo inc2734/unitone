@@ -379,7 +379,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					onDeselect={ () => resetSetting( 'fadeCrossFade' ) }
 				>
 					<HelpContainer
-						help={ __( 'Disabled when: Slide effect.', 'unitone' ) }
+						help={ __( 'Disabled when: Slide effect', 'unitone' ) }
 						layout="horizontal"
 					>
 						<ToggleControl
@@ -461,7 +461,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					onDeselect={ () => resetSetting( 'slidesOffsetBefore' ) }
 				>
 					<HelpContainer
-						help={ __( 'Disabled when: Fade effect.', 'unitone' ) }
+						help={ __( 'Disabled when: Fade effect', 'unitone' ) }
 						layout="horizontal"
 					>
 						<UnitControl
@@ -499,7 +499,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					onDeselect={ () => resetSetting( 'slidesOffsetAfter' ) }
 				>
 					<HelpContainer
-						help={ __( 'Disabled when: Fade effect.', 'unitone' ) }
+						help={ __( 'Disabled when: Fade effect', 'unitone' ) }
 						layout="horizontal"
 					>
 						<UnitControl
@@ -588,7 +588,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					onDeselect={ () => resetSetting( 'centeredSlides' ) }
 				>
 					<HelpContainer
-						help={ __( 'Disabled when: Fade effect.', 'unitone' ) }
+						help={ __( 'Disabled when: Fade effect', 'unitone' ) }
 						layout="horizontal"
 					>
 						<ToggleControl
@@ -611,7 +611,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 				>
 					<HelpContainer
 						help={ __(
-							'Disabled when: Fade effect, Loop is on, Center the active slide is on.',
+							'Disabled when: Fade effect, Loop is active, Center the active slide is active',
 							'unitone'
 						) }
 						layout="horizontal"
@@ -678,7 +678,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 				>
 					<HelpContainer
 						help={ __(
-							'Disabled when: Fade effect, Allow touch move is off, Snap to slide edge is on.',
+							'Disabled when: Fade effect, Allow touch move is inactive, Snap to slide edge is active',
 							'unitone'
 						) }
 						layout="horizontal"

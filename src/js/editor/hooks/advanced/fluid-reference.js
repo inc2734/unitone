@@ -24,7 +24,7 @@ export function FluidReferenceEdit( {
 		<ToggleControl
 			__nextHasNoMarginBottom
 			label={ __(
-				'Base fluid scaling on ancestor container',
+				'Base fluid scaling on ancestor container context',
 				'unitone'
 			) }
 			checked={ normalizeForToggleControl( unitone?.fluidReference ) }

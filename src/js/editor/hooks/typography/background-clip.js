@@ -65,6 +65,7 @@ export function BackgroundClipEdit( {
 		if (
 			! attributes?.gradient &&
 			! attributes?.style?.color?.gradient &&
+			! attributes?.style?.background?.gradient &&
 			! attributes?.style?.background?.backgroundImage &&
 			undefined !== attributes?.unitone?.backgroundClip
 		) {
@@ -78,6 +79,7 @@ export function BackgroundClipEdit( {
 	}, [
 		attributes?.gradient,
 		attributes?.style?.color?.gradient,
+		attributes?.style?.background?.gradient,
 		attributes?.style?.background?.backgroundImage,
 	] );
 
@@ -89,6 +91,7 @@ export function BackgroundClipEdit( {
 				disabled={
 					! attributes?.gradient &&
 					! attributes?.style?.color?.gradient &&
+					! attributes?.style?.background?.gradient &&
 					! attributes?.style?.background?.backgroundImage
 				}
 				checked={ normalizeForToggleControl(

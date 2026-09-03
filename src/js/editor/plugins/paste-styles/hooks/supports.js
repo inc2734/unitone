@@ -9,6 +9,7 @@ import { Platform } from '@wordpress/element';
 const ALIGN_SUPPORT_KEY = 'align';
 const ALIGN_WIDE_SUPPORT_KEY = 'alignWide';
 const BORDER_SUPPORT_KEY = '__experimentalBorder';
+const BACKGROUND_GRADIENT_SUPPORT_KEY = 'background.gradient';
 const COLOR_SUPPORT_KEY = 'color';
 const CUSTOM_CLASS_NAME_SUPPORT_KEY = 'customClassName';
 const FONT_FAMILY_SUPPORT_KEY = 'typography.__experimentalFontFamily';
@@ -84,6 +85,7 @@ const SPACING_SUPPORT_KEY = 'spacing';
 const styleSupportKeys = [
 	...EFFECTS_SUPPORT_KEYS,
 	...TYPOGRAPHY_SUPPORT_KEYS,
+	BACKGROUND_GRADIENT_SUPPORT_KEY,
 	BORDER_SUPPORT_KEY,
 	COLOR_SUPPORT_KEY,
 	SPACING_SUPPORT_KEY,
@@ -214,9 +216,10 @@ export const hasGradientSupport = ( nameOrType ) => {
 	const colorSupport = getBlockSupport( nameOrType, COLOR_SUPPORT_KEY );
 
 	return (
-		colorSupport !== null &&
-		typeof colorSupport === 'object' &&
-		!! colorSupport.gradients
+		hasBlockSupport( nameOrType, BACKGROUND_GRADIENT_SUPPORT_KEY ) ||
+		( colorSupport !== null &&
+			typeof colorSupport === 'object' &&
+			!! colorSupport.gradients )
 	);
 };
 

@@ -32,6 +32,12 @@
 		"className": false,
 		"anchor": true,
 		"customCSS": false,
+		"background": {
+			"gradient": true,
+			"__experimentalDefaultControls": {
+				"gradient": true
+			}
+		},
 		"color": {
 			"background": true,
 			"gradients": true,

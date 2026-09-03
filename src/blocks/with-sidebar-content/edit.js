@@ -23,6 +23,8 @@ import {
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
 
+import { getBackgroundGradientCSSValue } from '../../js/utils/background';
+
 import metadata from './block.json';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
@@ -42,9 +44,8 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			'--unitone--background-color': !! attributes?.backgroundColor
 				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
 				: attributes?.style?.color?.background,
-			'--unitone--background-image': !! attributes?.gradient
-				? `var(--wp--preset--gradient--${ attributes?.gradient })`
-				: attributes?.style?.color?.gradient,
+			'--unitone--background-image':
+				getBackgroundGradientCSSValue( attributes ),
 		},
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(

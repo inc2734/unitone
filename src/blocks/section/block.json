@@ -54,7 +54,12 @@
 		"align": [ "wide", "full" ],
 		"background": {
 			"backgroundImage": true,
-			"backgroundSize": true
+			"backgroundSize": true,
+			"gradient": true,
+			"__experimentalDefaultControls": {
+				"backgroundImage": true,
+				"gradient": true
+			}
 		},
 		"color": {
 			"background": true,

@@ -1,5 +1,7 @@
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
+import { getBackgroundGradientCSSValue } from '../../js/utils/background';
+
 export default function ( { attributes } ) {
 	const { tagName } = attributes;
 
@@ -10,9 +12,8 @@ export default function ( { attributes } ) {
 			'--unitone--background-color': !! attributes?.backgroundColor
 				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
 				: attributes?.style?.color?.background,
-			'--unitone--background-image': !! attributes?.gradient
-				? `var(--wp--preset--gradient--${ attributes?.gradient })`
-				: attributes?.style?.color?.gradient,
+			'--unitone--background-image':
+				getBackgroundGradientCSSValue( attributes ),
 		},
 		'data-unitone-layout': 'responsive-grid__content',
 	} );

@@ -72,6 +72,12 @@
 		"anchor": true,
 		"customCSS": false,
 		"interactivity": true,
+		"background": {
+			"gradient": true,
+			"__experimentalDefaultControls": {
+				"gradient": true
+			}
+		},
 		"color": {
 			"background": true,
 			"text": true,

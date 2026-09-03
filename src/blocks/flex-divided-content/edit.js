@@ -8,6 +8,8 @@ import {
 import { useSelect } from '@wordpress/data';
 import { useEffect, memo, useCallback } from '@wordpress/element';
 
+import { getBackgroundGradientCSSValue } from '../../js/utils/background';
+
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
 export default function ( { attributes, setAttributes, clientId, context } ) {
@@ -36,9 +38,8 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 			'--unitone--background-color': !! attributes?.backgroundColor
 				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
 				: attributes?.style?.color?.background,
-			'--unitone--background-image': !! attributes?.gradient
-				? `var(--wp--preset--gradient--${ attributes?.gradient })`
-				: attributes?.style?.color?.gradient,
+			'--unitone--background-image':
+				getBackgroundGradientCSSValue( attributes ),
 		},
 	} );
 

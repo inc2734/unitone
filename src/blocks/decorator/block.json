@@ -60,6 +60,12 @@
 		"anchor": true,
 		"customCSS": false,
 		"align": [ "full", "wide" ],
+		"background": {
+			"gradient": true,
+			"__experimentalDefaultControls": {
+				"gradient": true
+			}
+		},
 		"color": {
 			"background": true,
 			"gradients": true,

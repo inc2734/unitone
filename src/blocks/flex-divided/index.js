@@ -3,6 +3,7 @@ import { store as blockEditorStore } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
+import { __ } from '@wordpress/i18n';
 
 import './style.scss';
 import './index.scss';
@@ -24,6 +25,41 @@ registerBlockType( 'unitone/flex-divided', {
 	transforms,
 	variations,
 } );
+
+const changeUnitoneSupportsLabels = createHigherOrderComponent(
+	( BlockListBlock ) => {
+		return ( props ) => {
+			if ( ! props.isSelected || 'unitone/flex-divided' !== props.name ) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			return (
+				<BlockListBlock
+					{ ...props }
+					attributes={ {
+						...props.attributes,
+						__unstableUnitoneSupports: {
+							...props.attributes?.__unstableUnitoneSupports,
+							padding: {
+								...props.attributes?.__unstableUnitoneSupports
+									?.padding,
+								label: __( 'Children padding', 'unitone' ),
+							},
+						},
+					} }
+				/>
+			);
+		};
+	},
+	'changeUnitoneSupportsLabels'
+);
+
+addFilter(
+	'editor.BlockListBlock',
+	'unitone/flex-divided/change-unitone-supports-labels',
+	changeUnitoneSupportsLabels,
+	11
+);
 
 const withChildBlockAttributes = createHigherOrderComponent(
 	( BlockListBlock ) => {

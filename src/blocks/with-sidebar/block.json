@@ -81,6 +81,9 @@
 			"gap": {
 				"splitOnAxis": true
 			},
+			"padding": {
+				"split": true
+			},
 			"alignItems": true,
 			"overflow": true,
 			"fluidTypography": true,

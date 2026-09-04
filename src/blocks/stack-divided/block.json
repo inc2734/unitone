@@ -67,6 +67,9 @@
 		"contentRole": true,
 		"unitone": {
 			"gap": true,
+			"padding": {
+				"split": true
+			},
 			"dividerType": [ "stripe", "underline", "bordered", "divide" ],
 			"divider": true,
 			"fluidTypography": true,

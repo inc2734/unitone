@@ -6,11 +6,11 @@
 	--unitone--background-repeat: repeat;
 	--unitone--background-size: auto;
 	--unitone--background-attachment: scroll;
-	--unitone--padding: 0px;
-	--unitone--padding-top: var(--unitone--padding);
-	--unitone--padding-right: var(--unitone--padding);
-	--unitone--padding-bottom: var(--unitone--padding);
-	--unitone--padding-left: var(--unitone--padding);
+	--unitone--padding: initial;
+	--unitone--padding-top: var(--unitone--padding, var(--unitone--children-padding-top));
+	--unitone--padding-right: var(--unitone--padding, var(--unitone--children-padding-right));
+	--unitone--padding-bottom: var(--unitone--padding, var(--unitone--children-padding-bottom));
+	--unitone--padding-left: var(--unitone--padding, var(--unitone--children-padding-left));
 
 	align-self: stretch !important;
 	justify-self: stretch !important;
@@ -45,6 +45,15 @@
 
 .unitone-grid:where([data-unitone-layout*="-divider\:"]) {
 	--unitone--divider-color: var(--wp--preset--color--unitone-light-gray);
+	--unitone--padding: 0px;
+	--unitone--padding-top: var(--unitone--padding);
+	--unitone--padding-right: var(--unitone--padding);
+	--unitone--padding-bottom: var(--unitone--padding);
+	--unitone--padding-left: var(--unitone--padding);
+	--unitone--children-padding-top: var(--unitone--padding-top);
+	--unitone--children-padding-right: var(--unitone--padding-right);
+	--unitone--children-padding-bottom: var(--unitone--padding-bottom);
+	--unitone--children-padding-left: var(--unitone--padding-left);
 }
 
 .unitone-grid[data-unitone-layout~="-divider\:stripe"] {

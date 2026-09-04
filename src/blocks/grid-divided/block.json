@@ -176,6 +176,9 @@
 			"gap": {
 				"splitOnAxis": true
 			},
+			"padding": {
+				"split": true
+			},
 			"fluidTypography": true,
 			"halfLeading": true,
 			"linkDecoration": true,

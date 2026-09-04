@@ -75,6 +75,9 @@
 			"gap": {
 				"splitOnAxis": true
 			},
+			"padding": {
+				"split": true
+			},
 			"alignItems": true,
 			"dividerType": [ "stripe", "divide", "slash", "bordered" ],
 			"divider": true,

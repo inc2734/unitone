@@ -71,6 +71,9 @@
 			"gap": {
 				"splitOnAxis": true
 			},
+			"padding": {
+				"split": true
+			},
 			"autoRepeat": true,
 			"fluidTypography": true,
 			"halfLeading": true,

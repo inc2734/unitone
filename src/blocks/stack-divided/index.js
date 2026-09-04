@@ -1,4 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { __ } from '@wordpress/i18n';
 
 import icon from '../stack/icon';
 import edit from './edit';
@@ -20,3 +23,41 @@ registerBlockType( 'unitone/stack-divided', {
 	transforms,
 	variations,
 } );
+
+const changeUnitoneSupportsLabels = createHigherOrderComponent(
+	( BlockListBlock ) => {
+		return ( props ) => {
+			if (
+				! props.isSelected ||
+				'unitone/stack-divided' !== props.name
+			) {
+				return <BlockListBlock { ...props } />;
+			}
+
+			return (
+				<BlockListBlock
+					{ ...props }
+					attributes={ {
+						...props.attributes,
+						__unstableUnitoneSupports: {
+							...props.attributes?.__unstableUnitoneSupports,
+							padding: {
+								...props.attributes?.__unstableUnitoneSupports
+									?.padding,
+								label: __( 'Children padding', 'unitone' ),
+							},
+						},
+					} }
+				/>
+			);
+		};
+	},
+	'changeUnitoneSupportsLabels'
+);
+
+addFilter(
+	'editor.BlockListBlock',
+	'unitone/stack-divided/change-unitone-supports-labels',
+	changeUnitoneSupportsLabels,
+	11
+);

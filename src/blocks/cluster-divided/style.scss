@@ -5,6 +5,10 @@
 [data-unitone-layout~="cluster__content"] {
 	--unitone--background-color: transparent;
 	--unitone--background-image: none;
+	--unitone--background-position: 0% 0%;
+	--unitone--background-repeat: repeat;
+	--unitone--background-size: auto;
+	--unitone--background-attachment: scroll;
 	--unitone--padding: 0px;
 	--unitone--padding-top: var(--unitone--padding);
 	--unitone--padding-right: var(--unitone--padding);
@@ -20,6 +24,10 @@
 [data-unitone-layout~="cluster__content__content"] {
 	background-color: var(--unitone--background-color);
 	background-image: var(--unitone--background-image);
+	background-position: var(--unitone--background-position);
+	background-repeat: var(--unitone--background-repeat);
+	background-size: var(--unitone--background-size);
+	background-attachment: var(--unitone--background-attachment);
 	min-height: 100%;
 	padding-top: var(--unitone--padding-top);
 	padding-right: var(--unitone--padding-right);

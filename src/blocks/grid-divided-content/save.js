@@ -1,6 +1,6 @@
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
-import { getBackgroundGradientCSSValue } from '../../js/utils/background';
+import { getBackgroundCSSVariables } from '../../js/utils/background';
 
 export default function ( { attributes } ) {
 	const { tagName } = attributes;
@@ -13,8 +13,7 @@ export default function ( { attributes } ) {
 			'--unitone--background-color': !! attributes?.backgroundColor
 				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
 				: attributes?.style?.color?.background,
-			'--unitone--background-image':
-				getBackgroundGradientCSSValue( attributes ),
+			...getBackgroundCSSVariables( attributes ),
 		},
 	} );
 

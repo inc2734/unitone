@@ -23,7 +23,7 @@ import {
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
 
-import { getBackgroundGradientCSSValue } from '../../js/utils/background';
+import { getBackgroundCSSVariables } from '../../js/utils/background';
 
 import metadata from './block.json';
 
@@ -44,8 +44,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			'--unitone--background-color': !! attributes?.backgroundColor
 				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
 				: attributes?.style?.color?.background,
-			'--unitone--background-image':
-				getBackgroundGradientCSSValue( attributes ),
+			...getBackgroundCSSVariables( attributes ),
 		},
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(

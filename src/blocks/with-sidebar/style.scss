@@ -2,7 +2,7 @@
 
 @include with-sidebar.with-sidebar();
 
-[data-unitone-layout~="with-sidebar"] {
+[data-unitone-layout~="with-sidebar"]:has(> [data-unitone-layout~="with-sidebar__content"]) {
 	--unitone--padding: 0px;
 	--unitone--padding-top: var(--unitone--padding);
 	--unitone--padding-right: var(--unitone--padding);

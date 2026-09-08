@@ -47,7 +47,7 @@
 	&.is-flex-container[class*=columns-] {
 		display: grid;
 
-		@media (min-width: 782px) {
+		@media (width >= 782px) {
 			@for $i from 2 through 6 {
 				&.columns-#{ $i } {
 					grid-template-columns: repeat(#{ $i }, minmax(0, 1fr));
@@ -55,7 +55,7 @@
 			}
 		}
 
-		@media (min-width: 601px) and (max-width: 781px) {
+		@media (600px < width < 782px) {
 			@for $i from 3 through 6 {
 				&.columns-#{ $i } {
 					grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -65,7 +65,7 @@
 	}
 
 	&.is-layout-grid[class*=columns-] {
-		@media (min-width: 601px) and (max-width: 781px) {
+		@media (600px < width < 782px) {
 			@for $i from 3 through 6 {
 				&.columns-#{ $i } {
 					grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -118,7 +118,7 @@
 				var(--unitone--divider-color);
 		}
 
-		@media (min-width: 600px) {
+		@media (width >= 600px) {
 			&:where(
 				.is-layout-grid,
 				.is-flex-container[class*=columns-]
@@ -144,7 +144,7 @@
 			border-bottom: none;
 		}
 
-		@media not all and (min-width: 600px) {
+		@media (width < 600px) {
 			&:where(
 				.is-layout-grid,
 				.is-flex-container[class*=columns-]
@@ -160,7 +160,7 @@
 			}
 		}
 
-		@media (min-width: 600px) {
+		@media (width >= 600px) {
 			&:where(
 				.is-layout-grid,
 				.is-flex-container[class*=columns-]
@@ -198,7 +198,7 @@
 			padding-top: 0;
 		}
 
-		@media not all and (min-width: 600px) {
+		@media (width < 600px) {
 			&:where(
 				.is-layout-grid,
 				.is-flex-container[class*=columns-]
@@ -209,7 +209,7 @@
 			}
 		}
 
-		@media (min-width: 600px) {
+		@media (width >= 600px) {
 			@for $i from 2 through 6 {
 				&:where(
 					.is-layout-grid.columns-#{ $i },
@@ -250,7 +250,7 @@
 				border-left: none;
 			}
 
-			@media not all and (min-width: 600px) {
+			@media (width < 600px) {
 				border-bottom: var(--unitone--divider-width) var(--unitone--divider-style) var(--unitone--divider-color);
 
 				:where(.wp-block-post) {
@@ -259,7 +259,7 @@
 			}
 		}
 
-		@media (min-width: 600px) {
+		@media (width >= 600px) {
 			@for $i from 2 through 6 {
 				&:where(
 					.is-layout-grid.columns-#{ $i },
@@ -272,7 +272,7 @@
 			}
 		}
 
-		@media (min-width: 600px) {
+		@media (width >= 600px) {
 			&:where(
 				.is-layout-grid.columns-5,
 				.is-flex-container.columns-5,

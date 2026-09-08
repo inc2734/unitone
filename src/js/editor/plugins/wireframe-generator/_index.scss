@@ -17,7 +17,7 @@
 	display: grid;
 	gap: var(--unitone--s2);
 
-	@container (min-width: 1180px) {
+	@container (width >= 1180px) {
 		grid-auto-flow: column;
 		grid-template-columns: 400px auto;
 		height: 100%;
@@ -68,7 +68,7 @@
 	margin-top: var(--unitone--s-2);
 	margin-bottom: var(--unitone--s-2);
 
-	@container (max-width: 780px) {
+	@container (width <= 780px) {
 		display: none;
 	}
 }

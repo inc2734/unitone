@@ -27,7 +27,7 @@
 }
 
 .site-container-left-header:where(.unitone-grid) {
-	@media (min-width: 600px) {
+	@media (width >= 600px) {
 		.site-header {
 			position: sticky;
 			top: var(--wp-admin--admin-bar--height, 0px);
@@ -58,7 +58,7 @@
 	}
 }
 .site-container-left-header--thin {
-	@media (min-width: 600px) {
+	@media (width >= 600px) {
 		.site-header {
 			border-right: 1px solid var(--wp--preset--color--unitone-bright-gray);
 		}
@@ -103,7 +103,7 @@
 .site-container-left-header:where([data-unitone-layout~="cover"]) {
 	--unitone--sidebar-width: clamp(var(--unitone--cg2), 30%, var(--unitone--cg3));
 
-	@media (min-width: 600px) {
+	@media (width >= 600px) {
 		display: grid;
 		grid-template-rows: 1fr auto;
 		grid-template-columns: var(--unitone--sidebar-width) minmax(0, 1fr);

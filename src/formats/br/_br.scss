@@ -1,19 +1,19 @@
 .unitone-br {
 	display: inline;
 
-	@media (min-width: 960px) {
+	@media (width >= 960px) {
 		&--disable\:desktop br {
 			display: none;
 		}
 	}
 
-	@media (max-width: 959px) and (min-width: 600px) {
+	@media (600px <= width < 960px) {
 		&--disable\:tablet br {
 			display: none;
 		}
 	}
 
-	@media not all and (min-width: 600px) {
+	@media (width < 600px) {
 		&--disable\:mobile br {
 			display: none;
 		}

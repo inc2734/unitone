@@ -15,7 +15,7 @@ export const useResponsiveGridCSS = ( {
 		const buildCSS = ( querySelector, query, breakpoint, size ) => {
 			const prefix = `--unitone--${ size }`;
 
-			return `${ query } (min-width: ${ breakpoint }) {
+			return `${ query } (width < ${ breakpoint }) {
 				${ querySelector }[data-unitone-layout~="-columns\\:${ size }\\:columns"] {
 					grid-template-columns: repeat(var(${ prefix }-columns), 1fr);
 				}
@@ -64,18 +64,8 @@ export const useResponsiveGridCSS = ( {
 				[ mdBreakpoint, 'md' ],
 				[ smBreakpoint, 'sm' ],
 			].flatMap( ( [ breakpoint, size ] ) => [
-				buildCSS(
-					selectors.media,
-					'@media not all and',
-					breakpoint,
-					size
-				),
-				buildCSS(
-					selectors.container,
-					'@container not',
-					breakpoint,
-					size
-				),
+				buildCSS( selectors.media, '@media', breakpoint, size ),
+				buildCSS( selectors.container, '@container', breakpoint, size ),
 			] ),
 			`${ selector } > * { ${ itemRules.join( '\n' ) } }`,
 		].join( '\n' );

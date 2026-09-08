@@ -30,7 +30,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const responsiveCSS = Object.entries( selectors )
 		.map(
 			( [ query, selector ] ) =>
-				`@${ query } (min-width: ${ breakpoint }) { ${ selector } { --unitone--responsive-switcher-desktop-display: block; --unitone--responsive-switcher-mobile-display: none; } }`
+				`@${ query } (width >= ${ breakpoint }) { ${ selector } { --unitone--responsive-switcher-desktop-display: block; --unitone--responsive-switcher-mobile-display: none; } }`
 		)
 		.join( '\n' );
 

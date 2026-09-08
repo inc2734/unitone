@@ -308,7 +308,7 @@ export default function ( { attributes, setAttributes } ) {
 				return (
 					<source
 						key={ image.url }
-						media={ `(max-width: ${ image.breakpoint }px)` }
+						media={ `(width <= ${ image.breakpoint }px)` }
 						srcSet={ image.url }
 						width={ image.width }
 						height={ image.height }

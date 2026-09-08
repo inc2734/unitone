@@ -310,7 +310,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 			}
 
 			return sprintf(
-				'%1$s (min-width: %2$s) { %3$s }',
+				'%1$s (width < %2$s) { %3$s }',
 				$query,
 				esc_attr( $breakpoint ),
 				implode( ' ', $rules )
@@ -325,8 +325,8 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 	foreach ( array( 'md', 'sm' ) as $size ) {
 		$breakpoint = 'md' === $size ? $md_breakpoint : $sm_breakpoint;
 		$conditions = 'md' === $size ? $md_conditions : $sm_conditions;
-		$css       .= $build_css( $selectors['media'], '@media not all and', $breakpoint, $size, $conditions, $client_id );
-		$css       .= $build_css( $selectors['container'], '@container not', $breakpoint, $size, $conditions, $client_id );
+		$css       .= $build_css( $selectors['media'], '@media', $breakpoint, $size, $conditions, $client_id );
+		$css       .= $build_css( $selectors['container'], '@container', $breakpoint, $size, $conditions, $client_id );
 	}
 
 	if ( $has_md_item_responsive || $has_sm_item_responsive ) {

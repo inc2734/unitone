@@ -37,7 +37,7 @@
 	--swiper-pagination-progressbar-active-color: currentColor;
 	--swiper-pagination-progressbar-inactive-color: rgba(0 0 0 / .2);
 
-	@include responsive-context.responsive-query('(min-width: 960px)') {
+	@include responsive-context.responsive-query('(width >= 960px)') {
 		--unitone--expanded-controls-offset: var(--unitone--s-1);
 	}
 

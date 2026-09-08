@@ -535,14 +535,14 @@ export const getEditorResponsiveCSS = (
 	);
 	const buildCSS = ( breakpoint, device ) => {
 		const query = isContainer
-			? `@container ${ editorIdentifier } not`
-			: '@media not all and';
+			? `@container ${ editorIdentifier }`
+			: '@media';
 		const slideWidth =
 			'auto' === responsiveSettings[ device ].slidesPerViewMode
 				? 'min(100%, var(--unitone--slide-width))'
 				: 'auto';
 
-		return `${ query } (min-width: ${ breakpoint }px) { ${ target } { ${ getEditorDeviceDeclarations(
+		return `${ query } (width < ${ breakpoint }px) { ${ target } { ${ getEditorDeviceDeclarations(
 			device
 		) } } ${ slideTarget } { width: ${ slideWidth }; } }`;
 	};

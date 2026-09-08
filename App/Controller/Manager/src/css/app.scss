@@ -15,7 +15,7 @@
 .edit-site-layout__canvas {
 	margin-top: 60px;
 
-	@media (min-width: 782px) {
+	@media (width >= 782px) {
 		margin-top: 0;
 	}
 }
@@ -23,7 +23,7 @@
 .edit-site-layout__sidebar-region {
 	display: none;
 
-	@media (min-width: 782px) {
+	@media (width >= 782px) {
 		display: block;
 	}
 }
@@ -35,7 +35,7 @@
 	overflow: auto;
 	padding: 16px;
 
-	@media (min-width: 782px) {
+	@media (width >= 782px) {
 		padding: 32px;
 	}
 

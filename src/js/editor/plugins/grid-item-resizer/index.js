@@ -369,8 +369,7 @@ const isMediaBreakpointActive = ( breakpoint, win ) => {
 	}
 
 	if ( win.matchMedia ) {
-		return win.matchMedia( `not all and (min-width: ${ breakpoint })` )
-			.matches;
+		return win.matchMedia( `(width < ${ breakpoint })` ).matches;
 	}
 
 	const breakpointPixels = getBreakpointPixels( breakpoint, win );

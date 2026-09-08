@@ -42,7 +42,7 @@ function render_block_unitone_responsive_switcher( $attributes, $content ) {
 	$css       = '';
 	foreach ( $selectors as $query => $selector ) {
 		$css .= sprintf(
-			'@%1$s (min-width: %2$s) { %3$s { --unitone--responsive-switcher-desktop-display: block; --unitone--responsive-switcher-mobile-display: none; } }',
+			'@%1$s (width >= %2$s) { %3$s { --unitone--responsive-switcher-desktop-display: block; --unitone--responsive-switcher-mobile-display: none; } }',
 			$query,
 			esc_attr( $breakpoint ),
 			$selector

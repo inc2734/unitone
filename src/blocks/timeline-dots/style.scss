@@ -21,7 +21,7 @@
 			> .unitone-timeline-dots-row__columns {
 				grid-column: 2 / -1;
 
-				@container (min-width: 480px) {
+				@container (width >= 480px) {
 					display: contents;
 				}
 			}
@@ -33,14 +33,14 @@
 			> .unitone-timeline-dots-row__columns {
 				grid-column: 2 / -1;
 
-				@container (min-width: 480px) {
+				@container (width >= 480px) {
 					display: contents;
 				}
 			}
 		}
 
 		.unitone-timeline-dots-column:first-child {
-			@container (min-width: 480px) {
+			@container (width >= 480px) {
 				order: -1;
 			}
 		}

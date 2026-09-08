@@ -67,7 +67,7 @@ export default function ( { attributes } ) {
 							return (
 								<source
 									key={ image.url }
-									media={ `(max-width: ${ image.breakpoint }px)` }
+									media={ `(width <= ${ image.breakpoint }px)` }
 									srcSet={ image.url }
 									width={ image.width }
 									height={ image.height }
@@ -97,7 +97,7 @@ export default function ( { attributes } ) {
 						return (
 							<source
 								key={ image.url }
-								media={ `(max-width: ${ image.breakpoint }px)` }
+								media={ `(width <= ${ image.breakpoint }px)` }
 								srcSet={ image.url }
 								width={ image.width }
 								height={ image.height }

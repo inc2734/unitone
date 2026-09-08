@@ -440,6 +440,10 @@
 	}
 }
 
+.unitone-css-container-panel .components-v-stack > * {
+	margin-bottom: 0;
+}
+
 .unitone-help-container {
 	&.-layout\:horizontal {
 		display: grid;

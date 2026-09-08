@@ -7,12 +7,14 @@
 }
 
 [data-unitone-layout~="cover__content"] {
+	--unitone--container-type: initial;
 	--unitone--padding: 0px;
 	--unitone--padding-top: var(--unitone--padding);
 	--unitone--padding-right: var(--unitone--padding);
 	--unitone--padding-bottom: var(--unitone--padding);
 	--unitone--padding-left: var(--unitone--padding);
 
+	container-type: var(--unitone--container-type);
 	padding:
 		var(--unitone--padding-top)
 		var(--unitone--padding-right)

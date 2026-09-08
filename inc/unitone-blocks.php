@@ -155,7 +155,6 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 	$md_breakpoint = $attributes['mdBreakpoint'] ?? $defaults['md'];
 	$sm_breakpoint = $attributes['smBreakpoint'] ?? $defaults['sm'];
 	$client_id     = wp_unique_id( 'unitone-grid-' );
-	$query_context = $attributes['unitone']['queryContext'] ?? null;
 
 	$has_md_item_responsive = false;
 	$has_sm_item_responsive = false;
@@ -234,7 +233,7 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 
 	static $build_css = null;
 	if ( null === $build_css ) {
-		$build_css = function ( $selector, $breakpoint, $size, $condition, $query_context ) {
+		$build_css = function ( $selector, $query, $breakpoint, $size, $condition, $client_id ) {
 			$columns_columns = $condition['columns_columns'] ?? false;
 			$columns_min     = $condition['columns_min'] ?? false;
 			$columns_free    = $condition['columns_free'] ?? false;
@@ -303,13 +302,12 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 
 			if ( $items ) {
 				$rules[] = sprintf(
-					'%1$s > * { grid-column: var(%2$s-grid-column); grid-row: var(%2$s-grid-row); align-self: var(%2$s-align-self); justify-self: var(%2$s-justify-self); }',
+					'%1$s { --unitone--%2$s-%3$s: ; }',
 					$selector,
-					$prefix
+					$client_id,
+					$size
 				);
 			}
-
-			$query = 'container' === $query_context ? '@container not' : '@media not all and';
 
 			return sprintf(
 				'%1$s (min-width: %2$s) { %3$s }',
@@ -320,10 +318,31 @@ function unitone_apply_responsive_styles_for_grid( $block_content, $block ) {
 		};
 	}
 
-	$selector = '[data-unitone-client-id="' . esc_attr( $client_id ) . '"]';
-	$css      =
-		$build_css( $selector, $md_breakpoint, 'md', $md_conditions, $query_context ) .
-		$build_css( $selector, $sm_breakpoint, 'sm', $sm_conditions, $query_context );
+	$selector  = '[data-unitone-client-id="' . esc_attr( $client_id ) . '"]';
+	$selectors = unitone_get_responsive_query_selectors( $selector );
+	$css       = '';
+
+	foreach ( array( 'md', 'sm' ) as $size ) {
+		$breakpoint = 'md' === $size ? $md_breakpoint : $sm_breakpoint;
+		$conditions = 'md' === $size ? $md_conditions : $sm_conditions;
+		$css       .= $build_css( $selectors['media'], '@media not all and', $breakpoint, $size, $conditions, $client_id );
+		$css       .= $build_css( $selectors['container'], '@container not', $breakpoint, $size, $conditions, $client_id );
+	}
+
+	if ( $has_md_item_responsive || $has_sm_item_responsive ) {
+		// Inherit query flags from the grid so items use its query result, even if
+		// it is itself a container. Unique flags also isolate nested grids.
+		// Empty flags enable breakpoint values; missing flags trigger var() fallbacks.
+		$item_rules = array();
+		foreach ( array( 'grid-column', 'grid-row', 'align-self', 'justify-self' ) as $property ) {
+			$item_rules[] = sprintf(
+				'--unitone--responsive-grid-md-%1$s: var(--unitone--%2$s-md) var(--unitone--md-%1$s); --unitone--responsive-grid-sm-%1$s: var(--unitone--%2$s-sm) var(--unitone--sm-%1$s); %1$s: var(--unitone--responsive-grid-sm-%1$s, var(--unitone--responsive-grid-md-%1$s, var(--unitone--%1$s)));',
+				$property,
+				$client_id
+			);
+		}
+		$css .= $selector . ' > * { ' . implode( ' ', $item_rules ) . ' }';
+	}
 
 	if ( $css ) {
 		wp_add_inline_style( 'unitone-grid-style', $css );

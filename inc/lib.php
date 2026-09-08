@@ -36,6 +36,23 @@ function unitone_get_viewport_media_queries() {
 }
 
 /**
+ * Returns selectors for viewport and container responsive contexts.
+ *
+ * @param string $selector The block selector.
+ * @return array Selectors keyed by query type.
+ */
+function unitone_get_responsive_query_selectors( $selector ) {
+	// Keep aligned with unitone-css's responsive-query mixin and getResponsiveQuerySelectors().
+	// A paired context affects descendants only; markers may also be utility classes.
+	$container_context = '[data-unitone-layout~="@container"], :is([data-unitone-layout~="-responsive-context:container"], .-responsive-context\\:container):where([data-unitone-layout~="-container-type:inline-size"], .-container-type\\:inline-size) *';
+
+	return array(
+		'media'     => $selector . ':where(:not(' . $container_context . '))',
+		'container' => $selector . ':where(' . $container_context . ')',
+	);
+}
+
+/**
  * Checks is given value is a preset.
  *
  * @param string $value Value to check.

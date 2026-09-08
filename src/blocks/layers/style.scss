@@ -7,3 +7,9 @@
 		position: relative;
 	}
 }
+
+[data-unitone-layout~="layers__layer"] {
+	--unitone--container-type: initial;
+
+	container-type: var(--unitone--container-type);
+}

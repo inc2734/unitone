@@ -1,8 +1,10 @@
 .unitone-flex {
+	--unitone--container-type: initial;
 	--unitone--gap: var(--unitone--global--text-gap);
 	--unitone--column-gap: var(--unitone--gap);
 	--unitone--row-gap: var(--unitone--gap);
 
+	container-type: var(--unitone--container-type);
 	flex-direction: row;
 	justify-content: start;
 

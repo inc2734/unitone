@@ -42,6 +42,12 @@ import {
 } from './backdrop-filter/backdrop-filter';
 
 import {
+	CSSContainerPanel,
+	withCSSContainerBlockProps,
+	resetCSSContainer,
+} from './css-container/css-container';
+
+import {
 	AdvancedPanel,
 	withAdvancedBlockProps,
 	CustomCSSStyleOverride,
@@ -104,6 +110,7 @@ const applyBlockProps = compose( [
 	withColorBlockProps,
 	withBackdropFilterBlockProps,
 	withAnimationProps,
+	withCSSContainerBlockProps,
 	withAdvancedBlockProps,
 ] );
 
@@ -229,6 +236,7 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						<BackdropFilterPanel { ...passedProps } />
 						<AnimationPanel { ...passedProps } />
 
+						<CSSContainerPanel { ...passedProps } />
 						<AdvancedPanel { ...passedProps } />
 					</>
 				) }
@@ -264,6 +272,7 @@ export const resetUnitoneStyles = ( props ) => {
 		resetColor,
 		resetBackdropFilter,
 		resetAnimation,
+		resetCSSContainer,
 		resetAdvanced,
 	] )( props );
 

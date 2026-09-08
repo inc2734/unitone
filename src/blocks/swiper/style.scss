@@ -10,6 +10,7 @@
 }
 
 .unitone-swiper {
+	--unitone--container-type: initial;
 	--swiper-pagination-color: currentcolor;
 	--swiper-pagination-bullet-size: 8px;
 	--swiper-pagination-progressbar-size: 2px;
@@ -23,6 +24,7 @@
 	--unitone--auto-slide-width: 100%;
 	--unitone--slide-width: var(--unitone--auto-slide-width);
 
+	container-type: var(--unitone--container-type);
 	position: relative;
 	display: grid;
 	gap: var(--unitone--gap);
@@ -33,6 +35,9 @@
 	}
 
 	&__slide {
+		--unitone--container-type: initial;
+
+		container-type: var(--unitone--container-type);
 		display: flex;
 		flex-direction: column;
 		height: auto;

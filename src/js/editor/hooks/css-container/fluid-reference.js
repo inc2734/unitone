@@ -4,6 +4,7 @@ import { hasBlockSupport } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
+import { HelpContainer } from '../components';
 import { cleanEmptyObject, normalizeForToggleControl } from '../utils';
 
 export function isFluidReferenceDisabled( { name } ) {
@@ -16,28 +17,39 @@ export function resetFluidReferenceFilter() {
 	};
 }
 
+export function getFluidReferenceEditLabel() {
+	return __(
+		'Base fluid scaling on ancestor container context (deprecated)',
+		'unitone'
+	);
+}
+
 export function FluidReferenceEdit( {
 	attributes: { unitone },
 	setAttributes,
 } ) {
+	const help = __(
+		'For new settings, set an ancestor block’s container type to inline-size and enable “Base descendant blocks’ responsive behavior on container width”.',
+		'unitone'
+	);
+
 	return (
-		<ToggleControl
-			__nextHasNoMarginBottom
-			label={ __(
-				'Base fluid scaling on ancestor container context',
-				'unitone'
-			) }
-			checked={ normalizeForToggleControl( unitone?.fluidReference ) }
-			onChange={ ( value ) =>
-				setAttributes( {
-					unitone: cleanEmptyObject( {
-						...unitone,
-						fluidReference:
-							normalizeForToggleControl( value ) || undefined,
-					} ),
-				} )
-			}
-		/>
+		<HelpContainer help={ help } layout="horizontal">
+			<ToggleControl
+				__nextHasNoMarginBottom
+				label={ getFluidReferenceEditLabel() }
+				checked={ normalizeForToggleControl( unitone?.fluidReference ) }
+				onChange={ ( value ) =>
+					setAttributes( {
+						unitone: cleanEmptyObject( {
+							...unitone,
+							fluidReference:
+								normalizeForToggleControl( value ) || undefined,
+						} ),
+					} )
+				}
+			/>
+		</HelpContainer>
 	);
 }
 

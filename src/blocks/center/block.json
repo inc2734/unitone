@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "28.1.0",
+	"version": "28.3.0",
 	"textdomain": "unitone",
 	"name": "unitone/center",
 	"title": "Center",
@@ -48,8 +48,6 @@
 		"allowedBlocks": true,
 		"contentRole": true,
 		"unitone": {
-			"containerType": true,
-			"fluidReference": true,
 			"gutters": true,
 			"maxWidth": true,
 			"fluidTypography": true,

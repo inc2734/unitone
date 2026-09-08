@@ -15,6 +15,7 @@
 }
 
 [data-unitone-layout~="responsive-grid__content"] {
+	--unitone--container-type: initial;
 	--unitone--align-content: stretch;
 	--unitone--background-color: transparent;
 	--unitone--background-image: none;
@@ -28,6 +29,7 @@
 	--unitone--padding-bottom: var(--unitone--padding, var(--unitone--children-padding-bottom));
 	--unitone--padding-left: var(--unitone--padding, var(--unitone--children-padding-left));
 
+	container-type: var(--unitone--container-type);
 	display: grid;
 
 	&:not(:root) {

@@ -1,4 +1,5 @@
 .unitone-accordion {
+	--unitone--container-type: initial;
 	--unitone--border-width: 0px;
 	--unitone--border-style: solid;
 	--unitone--border-color: transparent;
@@ -28,6 +29,7 @@
 
 	&__content {
 		border-top: var(--unitone--border-width) var(--unitone--border-style) var(--unitone--border-color);
+		container-type: var(--unitone--container-type);
 	}
 
 	&__summary,

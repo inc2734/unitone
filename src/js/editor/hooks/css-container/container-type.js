@@ -16,6 +16,10 @@ export function resetContainerTypeFilter() {
 	};
 }
 
+export function getContainerTypeEditLabel() {
+	return __( 'Container type', 'unitone' );
+}
+
 export function ContainerTypeEdit( {
 	attributes: { unitone },
 	setAttributes,
@@ -25,7 +29,7 @@ export function ContainerTypeEdit( {
 			__nextHasNoMarginBottom
 			label={
 				<>
-					{ __( 'Container type', 'unitone' ) }
+					{ getContainerTypeEditLabel() }
 					&nbsp;:&nbsp;
 					<code className="unitone-label-code">container-type</code>
 				</>

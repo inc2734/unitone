@@ -22,7 +22,6 @@ register_block_type(
 function render_block_unitone_responsive_switcher( $attributes, $content ) {
 	$breakpoint = $attributes['breakpoint'] ?? null;
 	$client_id  = wp_unique_id( 'unitone-responsive-switcher-' );
-	$query      = 'container' === ( $attributes['unitone']['queryContext'] ?? null ) ? '@container' : '@media';
 
 	if ( is_null( $breakpoint ) ) {
 		return $content;
@@ -39,10 +38,18 @@ function render_block_unitone_responsive_switcher( $attributes, $content ) {
 
 	$p->set_attribute( 'data-unitone-client-id', $client_id );
 
-	wp_add_inline_style(
-		'unitone-responsive-switcher-style',
-		$query . ' (min-width: ' . esc_attr( $breakpoint ) . ') { [data-unitone-client-id="' . esc_attr( $client_id ) . '"] > .unitone-responsive-switcher-container--desktop { display: block; } [data-unitone-client-id="' . esc_attr( $client_id ) . '"] > .unitone-responsive-switcher-container--mobile { display: none; } }'
-	);
+	$selectors = unitone_get_responsive_query_selectors( '[data-unitone-client-id="' . esc_attr( $client_id ) . '"]' );
+	$css       = '';
+	foreach ( $selectors as $query => $selector ) {
+		$css .= sprintf(
+			'@%1$s (min-width: %2$s) { %3$s { --unitone--responsive-switcher-desktop-display: block; --unitone--responsive-switcher-mobile-display: none; } }',
+			$query,
+			esc_attr( $breakpoint ),
+			$selector
+		);
+	}
+
+	wp_add_inline_style( 'unitone-responsive-switcher-style', $css );
 
 	return $p->get_updated_html();
 }

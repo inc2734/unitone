@@ -1,5 +1,18 @@
+.unitone-responsive-switcher {
+	--unitone--responsive-switcher-desktop-display: none;
+	--unitone--responsive-switcher-mobile-display: block;
+}
+
 .unitone-responsive-switcher-container {
+	--unitone--container-type: initial;
+
+	container-type: var(--unitone--container-type);
+
+	&--mobile {
+		display: var(--unitone--responsive-switcher-mobile-display);
+	}
+
 	&--desktop {
-		display: none;
+		display: var(--unitone--responsive-switcher-desktop-display);
 	}
 }

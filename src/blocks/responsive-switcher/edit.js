@@ -18,12 +18,21 @@ import {
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
 
+import { getResponsiveQuerySelectors } from '../../js/utils/css-container';
+
 import metadata from './block.json';
 
 export default function ( { attributes, setAttributes, clientId } ) {
-	const { breakpoint, allowedBlocks, unitone } = attributes;
-	const query =
-		'container' === unitone?.queryContext ? '@container' : '@media';
+	const { breakpoint, allowedBlocks } = attributes;
+	const selectors = getResponsiveQuerySelectors(
+		`[data-unitone-client-id="${ clientId }"]`
+	);
+	const responsiveCSS = Object.entries( selectors )
+		.map(
+			( [ query, selector ] ) =>
+				`@${ query } (min-width: ${ breakpoint }) { ${ selector } { --unitone--responsive-switcher-desktop-display: block; --unitone--responsive-switcher-mobile-display: none; } }`
+		)
+		.join( '\n' );
 
 	const blockProps = useBlockProps( {
 		className: 'unitone-responsive-switcher',
@@ -86,7 +95,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />
-			<style>{ `${ query } (min-width: ${ breakpoint }) { [data-unitone-client-id="${ clientId }"] > .unitone-responsive-switcher-container--desktop { display: block; } [data-unitone-client-id="${ clientId }"] > .unitone-responsive-switcher-container--mobile { display: none; } }` }</style>
+			<style>{ responsiveCSS }</style>
 		</>
 	);
 }

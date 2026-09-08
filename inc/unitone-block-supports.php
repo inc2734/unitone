@@ -232,7 +232,7 @@ add_filter(
 		// Query context.
 		if ( unitone_has_block_support( 'unitone.queryContext', $metadata ) ) {
 			$query_context = $get_attribute( 'queryContext' );
-			if ( 'container' === $query_context ) {
+			if ( true === $query_context || 'container' === $query_context ) {
 				$add_attribute( '@container', true );
 			}
 		}
@@ -243,6 +243,16 @@ add_filter(
 			if ( $container_type ) {
 				$add_attribute( '-container-type', $container_type );
 			}
+		}
+
+		// -responsive-context
+		if (
+			unitone_has_block_support( 'unitone.responsiveContext', $metadata ) &&
+			unitone_has_block_support( 'unitone.containerType', $metadata ) &&
+			'inline-size' === $get_attribute( 'containerType' ) &&
+			true === $get_attribute( 'responsiveContext' )
+		) {
+			$add_attribute( '-responsive-context', 'container' );
 		}
 
 		// -fluid-reference:cqw

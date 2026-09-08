@@ -191,6 +191,10 @@
 }
 
 .unitone-timeline-dots-column {
+	--unitone--container-type: initial;
+
+	container-type: var(--unitone--container-type);
+
 	&--nonentity {
 		display: none !important;
 	}

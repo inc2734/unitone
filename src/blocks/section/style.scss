@@ -1,4 +1,5 @@
 .unitone-section {
+	--unitone--container-type: initial;
 	--unitone--gap: var(--unitone--s3);
 	--unitone--gutters: var(--unitone--global--gutters);
 	--unitone--max-width: var(--wp--style--global--wide-size);
@@ -15,6 +16,7 @@
 	--unitone--left: auto;
 	--unitone--z-index: auto;
 
+	--unitone--section--container-type: var(--unitone--container-type);
 	--unitone--section--gap: var(--unitone--gap);
 	--unitone--section--gutters: var(--unitone--gutters);
 	--unitone--section--max-width: var(--unitone--max-width);
@@ -43,6 +45,7 @@
 
 			> [data-unitone-layout~="stack"] {
 				--unitone--gap: var(--unitone--section--gap);
+				--unitone--container-type: var(--unitone--section--container-type);
 			}
 		}
 	}

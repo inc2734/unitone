@@ -1,4 +1,5 @@
 @use "sass:meta";
+@use "../../../node_modules/@inc2734/unitone-css/src/behaviors/responsive-context";
 
 :where(.unitone-slider) {
 	@include meta.load-css("../../../node_modules/swiper/swiper.css");
@@ -36,16 +37,8 @@
 	--swiper-pagination-progressbar-active-color: currentColor;
 	--swiper-pagination-progressbar-inactive-color: rgba(0 0 0 / .2);
 
-	&:not([data-unitone-layout~="@container"]) {
-		@media (min-width: 960px) {
-			--unitone--expanded-controls-offset: var(--unitone--s-1);
-		}
-	}
-
-	&[data-unitone-layout~="@container"] {
-		@container (min-width: 960px) {
-			--unitone--expanded-controls-offset: var(--unitone--s-1);
-		}
+	@include responsive-context.responsive-query('(min-width: 960px)') {
+		--unitone--expanded-controls-offset: var(--unitone--s-1);
 	}
 
 	max-width: 100%;
@@ -86,6 +79,9 @@
 	}
 
 	&__slide {
+		--unitone--container-type: initial;
+
+		container-type: var(--unitone--container-type);
 		display: flex;
 		flex-direction: column;
 		height: auto;

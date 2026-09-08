@@ -5,6 +5,7 @@
 }
 
 .unitone-grid {
+	--unitone--container-type: initial;
 	--unitone--align-items: stretch;
 	--unitone--justify-items: stretch;
 
@@ -39,6 +40,7 @@
 	--unitone--sm-row-track-size: var(--unitone--md-row-track-size);
 	--unitone--sm-grid-template-rows: var(--unitone--md-grid-template-rows);
 
+	container-type: var(--unitone--container-type);
 	display: grid;
 	align-items: var(--unitone--align-items);
 	justify-items: var(--unitone--justify-items);

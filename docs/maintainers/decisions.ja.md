@@ -4,6 +4,7 @@
 
 ## 採用中
 
+- [CSS コンテナー関連設定の適用範囲と保存値の互換性を維持する](decisions/css-container-supports.ja.md): 旧 `queryContext` 値を読み取り、適用範囲が異なる `fluidReference` は自動移行しない。
 - [WordPress 7.1 の状態スタイル UI と unitone の hover 設定を使い分ける](decisions/wp-7-1-block-state-hover.ja.md): コアの状態 UI を優先しつつ、既存値と unitone ブロックを維持する。
 - [Core と unitone の `min-width` サポートを分離する](decisions/core-and-unitone-min-width.ja.md): 保存先と CSS 出力が異なるため移行しない。
 - [コアブロックのレスポンシブスタイルを CSS カスタムプロパティで適用する](decisions/responsive-styles-for-some-core-blocks.ja.md): viewport 別 CSS 変数を使って既存の表示設計を維持する。

@@ -1,4 +1,5 @@
 @use '../../../node_modules/@inc2734/unitone-css/src/layout-primitives/vertical-writing';
+@use '../../../node_modules/@inc2734/unitone-css/src/behaviors/responsive-context';
 
 @include vertical-writing.vertical-writing();
 
@@ -8,6 +9,10 @@
   --unitone--row-gap: var(--unitone--gap);
 	--unitone--max-width: min(100%, var(--wp--style--global--wide-size));
 	--unitone--max-height: 25rem;
+	--unitone--vertical-writing--switch-writing-mode: initial;
+	--unitone--vertical-writing--switch-column-count: initial;
+	--unitone--vertical-writing--switch-box-sizing: initial;
+	--unitone--vertical-writing--switch-max-inline-size: initial;
 
 	margin-right: auto;
 	margin-left: auto;
@@ -37,31 +42,26 @@
 		max-width: 100%;
 	}
 
-	&:where(:not([data-unitone-layout~="@container"])) {
-		> [data-unitone-layout~="-switch"] {
-			@media (orientation: portrait) and (width < 600px) {
-				column-count: auto;
-				writing-mode: horizontal-tb;
-
-				> * {
-					box-sizing: border-box;
-					max-inline-size: none;
-				}
-			}
-		}
+	// Block supports belong to the wrapper, while the primitive renders inside it.
+	// Share the wrapper's query result to override the primitive's independent queries.
+	@include responsive-context.responsive-query('(width < 600px)') {
+		--unitone--vertical-writing--switch-writing-mode: horizontal-tb;
+		--unitone--vertical-writing--switch-column-count: auto;
+		--unitone--vertical-writing--switch-box-sizing: border-box;
+		--unitone--vertical-writing--switch-max-inline-size: none;
 	}
 
-	&:where([data-unitone-layout~="@container"]) {
-		> [data-unitone-layout~="-switch"] {
-			@container (width < 600px) {
-				column-count: auto;
-				writing-mode: horizontal-tb;
+	> [data-unitone-layout~="-switch"]:not([data-unitone-layout~="-force-switch"]) {
+		column-count: var(--unitone--vertical-writing--switch-column-count, 1);
+		writing-mode: var(--unitone--vertical-writing--switch-writing-mode, vertical-rl);
 
-				> * {
-					box-sizing: border-box;
-					max-inline-size: none;
-				}
-			}
+		&:where([data-unitone-layout~="vertical-writing:safari"]) {
+			column-count: var(--unitone--vertical-writing--switch-column-count, 2);
+		}
+
+		> * {
+			box-sizing: var(--unitone--vertical-writing--switch-box-sizing, content-box);
+			max-inline-size: var(--unitone--vertical-writing--switch-max-inline-size, var(--unitone--max-height));
 		}
 	}
 }

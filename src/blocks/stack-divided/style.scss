@@ -15,6 +15,7 @@
 }
 
 [data-unitone-layout~="stack__content"] {
+	--unitone--container-type: initial;
 	--unitone--background-color: transparent;
 	--unitone--background-image: none;
 	--unitone--background-position: 0% 0%;
@@ -26,6 +27,8 @@
 	--unitone--padding-right: var(--unitone--padding, var(--unitone--children-padding-right));
 	--unitone--padding-bottom: var(--unitone--padding, var(--unitone--children-padding-bottom));
 	--unitone--padding-left: var(--unitone--padding, var(--unitone--children-padding-left));
+
+	container-type: var(--unitone--container-type);
 
 	&:not(:root) {
 		background-color: transparent !important;

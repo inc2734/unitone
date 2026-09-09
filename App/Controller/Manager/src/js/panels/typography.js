@@ -69,8 +69,8 @@ const getPreviewFontSize = ( fontSize ) =>
 
 const getPreviewUnitoneFontSize = ( scale ) =>
 	0 === scale
-		? 'calc(1 * 1em)'
-		: `calc(calc(var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - (${ scale }))) * 1em)`;
+		? '1em'
+		: `calc((var(--unitone--harmonic-sequence-base) / (var(--unitone--harmonic-sequence-base) - (${ scale }))) * 1em)`;
 
 const getPreviewFontSizePresetStyles = ( fontSizes ) =>
 	fontSizes?.reduce( ( styles, fontSize ) => {

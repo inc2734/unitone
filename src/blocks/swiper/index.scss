@@ -20,11 +20,7 @@
 		// both offsets. Use the wrapper as that effective viewport in the editor.
 		width: max(
 			0px,
-			calc(
-				100% - var(--unitone--editor-slides-offset-before) - var(
-						--unitone--editor-slides-offset-after
-					)
-			)
+			calc(100% - var(--unitone--editor-slides-offset-before) - var(--unitone--editor-slides-offset-after))
 		);
 		margin-inline-start: var(--unitone--editor-slides-offset-before);
 		gap: var(--unitone--editor-space-between);

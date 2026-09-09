@@ -5,10 +5,10 @@
 	--unitone--section-divider-top-size: 50;
 	--unitone--section-divider-top-x: 50;
 	--unitone--section-divider-top-trim: 50;
-	--unitone--section-divider-top-level-abs: max(
+	--unitone--section-divider-top-level-abs: #{ max(
 		var(--unitone--section-divider-top-level),
 		calc(var(--unitone--section-divider-top-level) * -1)
-	);
+	) };
 	--unitone--section-divider-top-clip-path: 0 0, 100% 0;
 	--unitone--section-divider-top-clip-path-invert: var(--unitone--section-divider-top-clip-path);
 
@@ -16,10 +16,10 @@
 	--unitone--section-divider-bottom-size: 50;
 	--unitone--section-divider-bottom-x: 50;
 	--unitone--section-divider-bottom-trim: 50;
-	--unitone--section-divider-bottom-level-abs: max(
+	--unitone--section-divider-bottom-level-abs: #{ max(
 		var(--unitone--section-divider-bottom-level),
 		calc(var(--unitone--section-divider-bottom-level) * -1)
-	);
+	) };
 	--unitone--section-divider-bottom-clip-path: 100% 100%, 0 100%;
 	--unitone--section-divider-bottom-clip-path-invert: var(--unitone--section-divider-bottom-clip-path);
 
@@ -51,13 +51,13 @@
 	--unitone--section-divider-top-clip-path:
 		0 0,
 		#{ $x2 } 0,
-		clamp(#{ $x2 }, #{ $x3 }, #{ $x4 }) #{ $y3 },
+		#{ clamp($x2, $x3, $x4) } #{ $y3 },
 		#{ $x4 } 0,
 		100% 0;
 	--unitone--section-divider-top-clip-path-invert:
 		0 #{ $y3 },
 		#{ $x2 } #{ $y3 },
-		clamp(#{ $x2 }, #{ $x3 }, #{ $x4 }) 0,
+		#{ clamp($x2, $x3, $x4) } 0,
 		#{ $x4 } #{ $y3 },
 		100% #{ $y3 };
 }
@@ -71,13 +71,13 @@
 	--unitone--section-divider-bottom-clip-path:
 		100% 100%,
 		#{ $x6 } 100%,
-		clamp(#{ $x8 }, #{ $x7 }, #{ $x6 }) #{ $y7 },
+		#{ clamp($x8, $x7, $x6) } #{ $y7 },
 		#{ $x8 } 100%,
 		0% 100%;
 	--unitone--section-divider-bottom-clip-path-invert:
 		100% #{ $y7 },
 		#{ $x6 } #{ $y7 },
-		clamp(#{ $x8 }, #{ $x7 }, #{ $x6 }) 100%,
+		#{ clamp($x8, $x7, $x6) } 100%,
 		#{ $x8 } #{ $y7 },
 		0% #{ $y7 };
 }

@@ -229,10 +229,10 @@
 	}
 
 	&--circle {
-		--unitone--swiper-autoplay-progress-circle-thickness: min(
+		--unitone--swiper-autoplay-progress-circle-thickness: #{ min(
 			var(--unitone--swiper-autoplay-progress-thickness),
 			calc(var(--unitone--swiper-autoplay-progress-circle-size) / 2)
-		);
+		) };
 
 		.unitone-swiper-autoplay-progress {
 			&__track {
@@ -241,26 +241,15 @@
 				border-radius: 100%;
 				mask-image: radial-gradient(
 					farthest-side,
-					transparent
-						calc(
-							100% - var(
-									--unitone--swiper-autoplay-progress-circle-thickness
-								)
-						),
-					#000
-						calc(
-							100% - var(
-									--unitone--swiper-autoplay-progress-circle-thickness
-								)
-						)
+					transparent calc(100% - var(--unitone--swiper-autoplay-progress-circle-thickness)),
+					#000 calc(100% - var(--unitone--swiper-autoplay-progress-circle-thickness))
 				);
 			}
 
 			&__fill {
 				background: conic-gradient(
 					from -90deg,
-					currentcolor
-						calc(var(--unitone--swiper-autoplay-progress) * 1turn),
+					currentcolor calc(var(--unitone--swiper-autoplay-progress) * 1turn),
 					transparent 0
 				);
 			}

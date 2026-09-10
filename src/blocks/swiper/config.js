@@ -74,7 +74,7 @@ export const parseSlidesPerView = (
 ) =>
 	Math.min(
 		10,
-		Math.max( 0.5, Math.round( asNumber( value, fallback ) * 2 ) / 2 )
+		Math.max( 0.1, Math.round( asNumber( value, fallback ) * 10 ) / 10 )
 	);
 
 export const resolveSettings = ( settings = {} ) => {

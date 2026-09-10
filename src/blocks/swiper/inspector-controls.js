@@ -1,5 +1,4 @@
 import {
-	Notice,
 	RangeControl,
 	SelectControl,
 	TextControl,
@@ -184,29 +183,37 @@ const ResponsiveControls = ( {
 				}
 			/>
 
-			<RangeControl
-				__nextHasNoMarginBottom
-				label={ __( 'Slides per group', 'unitone' ) }
-				value={
-					'' === slidesPerGroup
-						? undefined
-						: asNumber(
-								slidesPerGroup,
-								DEFAULT_SETTINGS.slidesPerGroup
-						  )
-				}
-				currentInput={ asNumber(
-					inheritedSlidesPerGroup,
-					DEFAULT_SETTINGS.slidesPerGroup
+			<HelpContainer
+				layout="horizontal"
+				help={ __(
+					'Loop mode requires at least the number of visible slides plus "Slides per group", and one more slide when centered. Check that there are enough slides at every responsive size.',
+					'unitone'
 				) }
-				min={ 1 }
-				max={ 10 }
-				step={ 1 }
-				allowReset={ ! isDesktop }
-				onChange={ ( value ) =>
-					change( 'slidesPerGroup', value ?? '' )
-				}
-			/>
+			>
+				<RangeControl
+					__nextHasNoMarginBottom
+					label={ __( 'Slides per group', 'unitone' ) }
+					value={
+						'' === slidesPerGroup
+							? undefined
+							: asNumber(
+									slidesPerGroup,
+									DEFAULT_SETTINGS.slidesPerGroup
+							  )
+					}
+					currentInput={ asNumber(
+						inheritedSlidesPerGroup,
+						DEFAULT_SETTINGS.slidesPerGroup
+					) }
+					min={ 1 }
+					max={ 10 }
+					step={ 1 }
+					allowReset={ ! isDesktop }
+					onChange={ ( value ) =>
+						change( 'slidesPerGroup', value ?? '' )
+					}
+				/>
+			</HelpContainer>
 		</div>
 	);
 };
@@ -216,9 +223,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 
 	const resolved = resolveSettings( settings );
 	const singleSlideEffect = isSingleSlideEffect( resolved.effect );
-	const usesWidthSizing = Object.values(
-		resolveResponsiveSettings( settings, resolved )
-	).some( ( deviceSettings ) => 'auto' === deviceSettings.slidesPerViewMode );
 	const snapToSlideEdgeDisabled =
 		singleSlideEffect ||
 		'loop' === resolved.loopMode ||
@@ -437,19 +441,6 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 									/>
 								) }
 							/>
-
-							{ 'loop' === resolved.loopMode &&
-								usesWidthSizing && (
-									<Notice
-										status="warning"
-										isDismissible={ false }
-									>
-										{ __(
-											'Loop mode requires at least the number of visible slides plus "Slides per group", and one more slide when centered. Check that there are enough slides at every responsive size.',
-											'unitone'
-										) }
-									</Notice>
-								) }
 						</div>
 					</ToolsPanelItem>
 				) }

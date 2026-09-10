@@ -12,6 +12,7 @@ export const DEFAULT_SETTINGS = {
 	autoHeight: false,
 	loopMode: 'loop',
 	effect: 'slide',
+	easing: '',
 	fadeCrossFade: false,
 	allowTouchMove: true,
 	freeMode: false,
@@ -26,6 +27,19 @@ export const DEFAULT_SETTINGS = {
 };
 
 const SLIDES_PER_VIEW_MODES = [ 'number', 'auto' ];
+
+const EASING_VALUES = {
+	linear: 'linear',
+	ease: 'ease',
+	'ease-in': 'ease-in',
+	'ease-out': 'ease-out',
+	'ease-in-out': 'ease-in-out',
+	// Keep custom curves aligned with js/editor/hooks/animation/_easing.scss.
+	'ease-out-cubic': 'cubic-bezier(0.33, 1, 0.68, 1)',
+	'ease-in-out-cubic': 'cubic-bezier(0.65, 0, 0.35, 1)',
+};
+
+export const EASINGS = Object.keys( EASING_VALUES );
 
 export const isSingleSlideEffect = ( effect ) => 'fade' === effect;
 
@@ -135,6 +149,11 @@ export const resolveSettings = ( settings = {} ) => {
 		[ 'slide', 'fade' ],
 		DEFAULT_SETTINGS.effect
 	);
+	resolved.easing = asEnum(
+		resolved.easing,
+		EASINGS,
+		DEFAULT_SETTINGS.easing
+	);
 	resolved.breakpointsBase = asEnum(
 		resolved.breakpointsBase,
 		[ 'window', 'container' ],
@@ -164,6 +183,20 @@ export const resolveSettings = ( settings = {} ) => {
 	}
 
 	return resolved;
+};
+
+export const getEasing = ( rawSettings = {} ) => {
+	const settings = resolveSettings( rawSettings );
+
+	if ( settings.easing ) {
+		return EASING_VALUES[ settings.easing ];
+	}
+
+	if ( settings.autoplay && Math.max( 0, settings.autoplayDelay ) === 0 ) {
+		return 'linear';
+	}
+
+	return settings.freeMode ? 'ease-out' : 'ease';
 };
 
 export const updateSetting = ( settings = {}, key, value ) => {
@@ -487,6 +520,7 @@ export const getEditorStyle = (
 		: resolveResponsiveSettings( rawSettings, settings );
 
 	return {
+		'--unitone--swiper-easing': getEasing( rawSettings ),
 		'--unitone--editor-slides-offset-before': `${
 			singleSlideEffect ? 0 : settings.slidesOffsetBefore
 		}px`,

@@ -24,8 +24,7 @@
 		);
 		margin-inline-start: var(--unitone--editor-slides-offset-before);
 		gap: var(--unitone--editor-space-between);
-		// transition: none !important;
-		transition: transform 0.5s ease-in-out;
+		transition: transform 0.5s var(--unitone--swiper-easing, ease);
 	}
 
 	&__slide {

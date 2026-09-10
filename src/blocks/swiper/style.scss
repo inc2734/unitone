@@ -70,6 +70,15 @@
 		&.swiper-initialized {
 			visibility: visible;
 		}
+
+		> .unitone-swiper-track__wrapper {
+			transition-timing-function: var(--unitone--swiper-easing, ease);
+		}
+
+		// Fade transitions opacity on each slide instead of moving the wrapper.
+		&.swiper-fade > .unitone-swiper-track__wrapper > .unitone-swiper__slide {
+			transition-timing-function: var(--unitone--swiper-easing, ease);
+		}
 	}
 
 	&__wrapper {

@@ -20,6 +20,7 @@ import {
 
 import {
 	DEFAULT_SETTINGS,
+	EASINGS,
 	isSingleSlideEffect,
 	resolveResponsiveSettings,
 	resolveSettings,
@@ -349,7 +350,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 			<ToolsPanel
 				label={ __( 'Effects', 'unitone' ) }
 				resetAll={ () =>
-					resetSettings( [ 'effect', 'fadeCrossFade' ] )
+					resetSettings( [ 'effect', 'easing', 'fadeCrossFade' ] )
 				}
 			>
 				<ToolsPanelItem
@@ -373,6 +374,27 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 							},
 						] }
 						onChange={ ( value ) => setSetting( 'effect', value ) }
+					/>
+				</ToolsPanelItem>
+
+				<ToolsPanelItem
+					hasValue={ () => hasSetting( 'easing' ) }
+					isShownByDefault
+					label={ __( 'Easing', 'unitone' ) }
+					onDeselect={ () => resetSetting( 'easing' ) }
+				>
+					<SelectControl
+						__nextHasNoMarginBottom
+						label={ __( 'Easing', 'unitone' ) }
+						value={ resolved.easing }
+						options={ [
+							{ label: __( 'Default', 'unitone' ), value: '' },
+							...EASINGS.map( ( easing ) => ( {
+								label: easing,
+								value: easing,
+							} ) ),
+						] }
+						onChange={ ( value ) => setSetting( 'easing', value ) }
 					/>
 				</ToolsPanelItem>
 

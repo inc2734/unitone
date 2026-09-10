@@ -14,7 +14,7 @@ import { __ } from '@wordpress/i18n';
 import { resolveSettings as resolvePaginationSettings } from '../swiper-pagination/config';
 import { resolveSettings as resolveScrollbarSettings } from '../swiper-scrollbar/config';
 
-import { buildSwiperOptions } from './config';
+import { buildSwiperOptions, getEasing } from './config';
 
 const ROOT_SELECTOR = '.unitone-swiper[data-unitone-swiper-settings]';
 const initializingRoots = new WeakSet();
@@ -573,6 +573,11 @@ const initializeSwiper = ( root ) => {
 		root.getAttribute( 'data-unitone-swiper-settings' )
 	);
 	const options = buildSwiperOptions( settings );
+	// Apply at runtime so existing saved block markup remains valid.
+	viewport.style.setProperty(
+		'--unitone--swiper-easing',
+		getEasing( settings )
+	);
 	const previous = getOwnedElements(
 		root,
 		'.unitone-swiper-arrow--previous'

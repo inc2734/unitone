@@ -8,7 +8,10 @@ import {
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
-import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+import {
+	DuplicateSwiperPart,
+	useIsDuplicateSwiperPart,
+} from '../swiper/editor-parts';
 
 import {
 	DEFAULT_SETTINGS,
@@ -17,11 +20,24 @@ import {
 	resolveSettings,
 } from './config';
 
+import { useToolsPanelDropdownMenuProps } from '../../js/editor/hooks/utils';
+
 const PIXEL_UNITS = [
 	{ value: 'px', label: 'px', default: DEFAULT_SETTINGS.size },
 ];
 
-export default function ( { attributes, setAttributes } ) {
+export default function SwiperScrollbarEdit( props ) {
+	const blockName = 'unitone/swiper-scrollbar';
+	const isDuplicate = useIsDuplicateSwiperPart( props.clientId, blockName );
+
+	return isDuplicate ? (
+		<DuplicateSwiperPart blockName={ blockName } />
+	) : (
+		<SwiperScrollbarContent { ...props } />
+	);
+}
+
+function SwiperScrollbarContent( { attributes, setAttributes } ) {
 	const settings = resolveSettings( attributes );
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 

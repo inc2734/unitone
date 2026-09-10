@@ -10,10 +10,7 @@ import {
 	store as blocksStore,
 } from '@wordpress/blocks';
 
-import { Notice } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 
 import {
 	getEditorIdentifier,
@@ -35,22 +32,6 @@ const PRIORITIZED_INSERTER_BLOCKS = [
 	'unitone/swiper-autoplay-progress',
 ];
 
-const inspectOwnedParts = ( blocks, result = { scrollbarCount: 0 } ) => {
-	for ( const block of blocks ) {
-		if ( 'unitone/swiper' === block.name ) {
-			continue;
-		}
-
-		if ( 'unitone/swiper-scrollbar' === block.name ) {
-			result.scrollbarCount++;
-		}
-
-		inspectOwnedParts( block.innerBlocks || [], result );
-	}
-
-	return result;
-};
-
 export default function ( props ) {
 	const { attributes, clientId, name: blockName, setAttributes } = props;
 
@@ -69,11 +50,6 @@ export default function ( props ) {
 	const innerBlocks = useSelect(
 		( select ) => select( blockEditorStore ).getBlocks( clientId ),
 		[ clientId ]
-	);
-
-	const { scrollbarCount } = useMemo(
-		() => inspectOwnedParts( innerBlocks ),
-		[ innerBlocks ]
 	);
 
 	const blockProps = useBlockProps( {
@@ -127,15 +103,6 @@ export default function ( props ) {
 					'loop' === resolvedSettings?.loopMode ? 'true' : undefined
 				}
 			>
-				{ 1 < scrollbarCount && (
-					<Notice status="warning" isDismissible={ false }>
-						{ __(
-							'Only the first Scrollbar block is connected to Swiper.',
-							'unitone'
-						) }
-					</Notice>
-				) }
-
 				{ innerBlocksProps.children }
 			</div>
 

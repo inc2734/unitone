@@ -3840,8 +3840,10 @@ msgstr ""
 msgid "Desktop breakpoint"
 msgstr ""
 
-#: dist/blocks/swiper/index.js:1
-msgid "Only the first Scrollbar block is connected to Swiper."
+#. translators: %s: Block title.
+#: dist/blocks/swiper-track/index.js:1 dist/blocks/swiper-scrollbar/index.js:1
+#, javascript-format
+msgid "This block is not displayed. Only the first %s is displayed."
 msgstr ""
 
 #: dist/blocks/swiper/index.js:1

@@ -11,6 +11,11 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { memo, useEffect, useMemo, useRef, useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 
+import {
+	DuplicateSwiperPart,
+	useIsDuplicateSwiperPart,
+} from '../swiper/editor-parts';
+
 import { isSingleSlideEffect, resolveSettings } from '../swiper/config';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
@@ -61,12 +66,18 @@ const moveToEditorSlide = ( track, slideClientId, settings ) => {
 	wrapper.style.transform = `translate3d(${ -offset }px, 0, 0)`;
 };
 
-export default function SwiperTrackEdit( {
-	attributes,
-	clientId,
-	context,
-	isSelected,
-} ) {
+export default function SwiperTrackEdit( props ) {
+	const blockName = 'unitone/swiper-track';
+	const isDuplicate = useIsDuplicateSwiperPart( props.clientId, blockName );
+
+	return isDuplicate ? (
+		<DuplicateSwiperPart blockName={ blockName } />
+	) : (
+		<SwiperTrackContent { ...props } />
+	);
+}
+
+function SwiperTrackContent( { attributes, clientId, context, isSelected } ) {
 	const { templateLock } = attributes;
 	const rawSettings = context?.[ 'unitone/swiper/settings' ];
 	const resolvedSettings = resolveSettings( rawSettings );
@@ -85,7 +96,7 @@ export default function SwiperTrackEdit( {
 			const selector = select( blockEditorStore );
 			const currentSelectedBlockClientId =
 				selector.getSelectedBlockClientId();
-			const blockParents = selector.getBlockParents( clientId );
+			const blockParents = selector.getBlockParents( clientId, true );
 			const swiperClientId = blockParents.find(
 				( parentClientId ) =>
 					'unitone/swiper' ===

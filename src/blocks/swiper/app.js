@@ -549,6 +549,15 @@ const setupAutoSlideWidth = ( root, swiper ) => {
 };
 
 const initializeSwiper = ( root ) => {
+	// Remove duplicates only within their nearest Swiper, preserving other Swipers' first parts.
+	// Remove tracks first so controls inside discarded tracks cannot be connected.
+	[ '.unitone-swiper-track', '.unitone-swiper-scrollbar' ].forEach(
+		( selector ) =>
+			getOwnedElements( root, selector )
+				.slice( 1 )
+				.forEach( ( element ) => element.remove() )
+	);
+
 	const viewport = getOwnedElement( root, '.unitone-swiper-track__viewport' );
 	if (
 		! viewport ||
@@ -564,8 +573,11 @@ const initializeSwiper = ( root ) => {
 		root.getAttribute( 'data-unitone-swiper-settings' )
 	);
 	const options = buildSwiperOptions( settings );
-	const previous = getOwnedElement( root, '.unitone-swiper-arrow--previous' );
-	const next = getOwnedElement( root, '.unitone-swiper-arrow--next' );
+	const previous = getOwnedElements(
+		root,
+		'.unitone-swiper-arrow--previous'
+	);
+	const next = getOwnedElements( root, '.unitone-swiper-arrow--next' );
 	const scrollbar = getOwnedElement( root, '.unitone-swiper-scrollbar' );
 
 	options.a11y = {
@@ -577,7 +589,7 @@ const initializeSwiper = ( root ) => {
 	};
 
 	options.navigation =
-		previous || next
+		previous.length || next.length
 			? {
 					prevEl: previous,
 					nextEl: next,
@@ -632,7 +644,12 @@ const initializeSwiper = ( root ) => {
 };
 
 const initializeAll = () => {
-	document.querySelectorAll( ROOT_SELECTOR ).forEach( initializeSwiper );
+	document.querySelectorAll( ROOT_SELECTOR ).forEach( ( root ) => {
+		// Skip nested Swipers removed along with duplicate tracks.
+		if ( root.isConnected ) {
+			initializeSwiper( root );
+		}
+	} );
 };
 
 if ( 'loading' === document.readyState ) {

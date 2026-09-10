@@ -12,6 +12,7 @@
 - [`dividerType` の未指定と「無し」を区別する](decisions/divider-type-empty-value.ja.md): `undefined` は未指定、空文字は明示的な「無し」とする。
 - [divider の計測トークンでインライン方向の外寸を変えない](decisions/divider-measurement-tokens.ja.md): 計測前後の折返し条件を一定に保つ。
 - [Swiper 関連ブロックの設定属性を用途に応じて分ける](decisions/swiper-settings-attributes.ja.md): 複合的な親設定は object、少数の子ブロック設定は個別属性で保持する。
+- [Swiper の単一部品を最も近い親ごとに判定する](decisions/swiper-owned-parts.ja.md): トラックとスクロールバーの重複は保存データを保持して非表示にし、その他の操作部品は複数接続する。
 
 ## 追加・更新時の注意
 

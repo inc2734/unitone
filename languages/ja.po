@@ -3842,9 +3842,11 @@ msgstr "タブレットのブレイクポイント"
 msgid "Desktop breakpoint"
 msgstr "デスクトップのブレイクポイント"
 
-#: dist/blocks/swiper/index.js:1
-msgid "Only the first Scrollbar block is connected to Swiper."
-msgstr "最初のスクロールバーブロックのみが Swiperに接続されます。"
+#. translators: %s: Block title.
+#: dist/blocks/swiper-track/index.js:1 dist/blocks/swiper-scrollbar/index.js:1
+#, javascript-format
+msgid "This block is not displayed. Only the first %s is displayed."
+msgstr "このブロックは表示されません。最初の %s だけが表示されます。"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Slider"

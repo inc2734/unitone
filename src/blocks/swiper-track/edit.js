@@ -16,7 +16,11 @@ import {
 	useIsDuplicateSwiperPart,
 } from '../swiper/editor-parts';
 
-import { isSingleSlideEffect, resolveSettings } from '../swiper/config';
+import {
+	isSingleSlideEffect,
+	resolveResponsiveSettings,
+	resolveSettings,
+} from '../swiper/config';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 const EMPTY_ARRAY = [];
@@ -25,6 +29,53 @@ const getOwnedSlideElements = ( track ) =>
 	Array.from( track.querySelectorAll( '.unitone-swiper__slide' ) ).filter(
 		( slide ) => slide.closest( '.unitone-swiper-track' ) === track
 	);
+
+const getEditorSlideOffset = ( wrapper, slide, settings ) => {
+	if ( settings.centeredSlides ) {
+		return (
+			slide.offsetLeft - ( wrapper.clientWidth - slide.offsetWidth ) / 2
+		);
+	}
+
+	const maxOffset = Math.max( 0, wrapper.scrollWidth - wrapper.clientWidth );
+	return Math.min( maxOffset, Math.max( 0, slide.offsetLeft ) );
+};
+
+const getNearestEditorSlideClientId = ( track, slideClientId, settings ) => {
+	const slides = getOwnedSlideElements( track );
+	const wrapper = slides[ 0 ]?.closest( '.unitone-swiper-track__wrapper' );
+	const defaultView = track.ownerDocument?.defaultView;
+	if (
+		! wrapper ||
+		! defaultView ||
+		isSingleSlideEffect( settings.effect )
+	) {
+		return slideClientId;
+	}
+
+	// Use the rendered position, including during transitions, rather than the
+	// destination specified by the inline transform.
+	const transform = defaultView.getComputedStyle( wrapper ).transform;
+	const currentOffset =
+		'none' === transform
+			? 0
+			: -new defaultView.DOMMatrixReadOnly( transform ).m41;
+	const getDistance = ( slide ) =>
+		Math.abs(
+			getEditorSlideOffset( wrapper, slide, settings ) - currentOffset
+		);
+	// Preserve the active slide when destinations coincide, such as at the end.
+	const currentSlide = slides.find(
+		( slide ) => `block-${ slideClientId }` === slide.id
+	);
+	const nearestSlide = slides.reduce(
+		( nearest, slide ) =>
+			getDistance( slide ) < getDistance( nearest ) ? slide : nearest,
+		currentSlide || slides[ 0 ]
+	);
+
+	return nearestSlide.id.replace( /^block-/, '' );
+};
 
 const moveToEditorSlide = ( track, slideClientId, settings ) => {
 	const slides = getOwnedSlideElements( track );
@@ -55,13 +106,7 @@ const moveToEditorSlide = ( track, slideClientId, settings ) => {
 		return;
 	}
 
-	const centeredOffset = settings.centeredSlides
-		? ( wrapper.clientWidth - activeSlide.offsetWidth ) / 2
-		: 0;
-	const maxOffset = Math.max( 0, wrapper.scrollWidth - wrapper.clientWidth );
-	const offset = settings.centeredSlides
-		? activeSlide.offsetLeft - centeredOffset
-		: Math.min( maxOffset, Math.max( 0, activeSlide.offsetLeft ) );
+	const offset = getEditorSlideOffset( wrapper, activeSlide, settings );
 
 	wrapper.style.transform = `translate3d(${ -offset }px, 0, 0)`;
 };
@@ -82,8 +127,22 @@ function SwiperTrackContent( { attributes, clientId, context, isSelected } ) {
 	const rawSettings = context?.[ 'unitone/swiper/settings' ];
 	const resolvedSettings = resolveSettings( rawSettings );
 	const rootRef = useRef();
+	const previousLayoutKey = useRef();
 	const isRestoringSlide = useRef( false );
 	const [ activeSlideClientId, setActiveSlideClientId ] = useState();
+
+	// Include any new settings that affect editor slide dimensions, positions,
+	// or alignment so changing them triggers correction to the nearest slide.
+	const layoutKey = JSON.stringify( {
+		responsive: resolveResponsiveSettings( rawSettings, resolvedSettings ),
+		centeredSlides: resolvedSettings.centeredSlides,
+		effect: resolvedSettings.effect,
+		breakpointsBase: resolvedSettings.breakpointsBase,
+		mdBreakpoint: resolvedSettings.mdBreakpoint,
+		smBreakpoint: resolvedSettings.smBreakpoint,
+		slidesOffsetBefore: resolvedSettings.slidesOffsetBefore,
+		slidesOffsetAfter: resolvedSettings.slidesOffsetAfter,
+	} );
 
 	const {
 		hasChildSelected,
@@ -176,7 +235,8 @@ function SwiperTrackContent( { attributes, clientId, context, isSelected } ) {
 
 	useEffect( () => {
 		const track = rootRef.current;
-		if ( ! track || ! activeSlideClientId ) {
+		const defaultView = track?.ownerDocument?.defaultView;
+		if ( ! track || ! activeSlideClientId || ! defaultView ) {
 			return;
 		}
 
@@ -184,32 +244,63 @@ function SwiperTrackContent( { attributes, clientId, context, isSelected } ) {
 			centeredSlides: resolvedSettings.centeredSlides,
 			effect: resolvedSettings.effect,
 		};
-		const updatePosition = () =>
-			moveToEditorSlide( track, activeSlideClientId, editorSettings );
 
-		updatePosition();
+		let frameId;
+		let targetSlideClientId = activeSlideClientId;
 
-		const defaultView = track.ownerDocument?.defaultView;
-		if ( ! defaultView?.ResizeObserver ) {
-			return;
+		const updatePosition = () => {
+			if (
+				undefined !== previousLayoutKey.current &&
+				previousLayoutKey.current !== layoutKey
+			) {
+				targetSlideClientId = getNearestEditorSlideClientId(
+					track,
+					targetSlideClientId,
+					editorSettings
+				);
+				setActiveSlideClientId( targetSlideClientId );
+			}
+			previousLayoutKey.current = layoutKey;
+
+			// Recalculate with the new dimensions even if the active slide is unchanged.
+			moveToEditorSlide( track, targetSlideClientId, editorSettings );
+		};
+
+		const scheduleUpdatePosition = () => {
+			defaultView.cancelAnimationFrame( frameId );
+			frameId = defaultView.requestAnimationFrame( updatePosition );
+		};
+
+		// Wait for the parent block's CSS and child block's settings before measuring.
+		scheduleUpdatePosition();
+
+		let resizeObserver;
+		if ( defaultView.ResizeObserver ) {
+			resizeObserver = new defaultView.ResizeObserver(
+				scheduleUpdatePosition
+			);
+			resizeObserver.observe( track );
+			const slideElements = getOwnedSlideElements( track );
+			const wrapper = slideElements[ 0 ]?.closest(
+				'.unitone-swiper-track__wrapper'
+			);
+			if ( wrapper ) {
+				resizeObserver.observe( wrapper );
+			}
+			slideElements.forEach( ( slide ) =>
+				resizeObserver.observe( slide )
+			);
 		}
 
-		const resizeObserver = new defaultView.ResizeObserver( updatePosition );
-		resizeObserver.observe( track );
-
-		return () => resizeObserver.disconnect();
+		return () => {
+			defaultView.cancelAnimationFrame( frameId );
+			resizeObserver?.disconnect();
+		};
 	}, [
 		activeSlideClientId,
+		layoutKey,
 		resolvedSettings.centeredSlides,
-		resolvedSettings.breakpointsBase,
 		resolvedSettings.effect,
-		resolvedSettings.mdBreakpoint,
-		resolvedSettings.smBreakpoint,
-		resolvedSettings.slidesOffsetAfter,
-		resolvedSettings.slidesOffsetBefore,
-		resolvedSettings.slidesPerView,
-		resolvedSettings.spaceBetween,
-		rawSettings?.responsive,
 		slideClientIds,
 	] );
 

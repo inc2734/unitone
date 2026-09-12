@@ -126,7 +126,6 @@
 		]
 	},
 	"category": "unitone/layout",
-	"viewScript": "file:./view.js",
 	"editorScript": "file:./index.js",
 	"style": "file:./style-index.css",
 	"editorStyle": "file:./index.css"

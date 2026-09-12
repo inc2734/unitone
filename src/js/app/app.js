@@ -45,6 +45,7 @@ const initializeFeatures = () => {
 				'[data-unitone-layout*="-divider:"]',
 				'[data-unitone-layout*="-stairs:"]',
 				'[data-unitone-layout~="marquee-wrapper"]',
+				'[data-unitone-layout~="vertical-writing"]',
 				'[data-unitone-layout~="-fluid-typography"]',
 			].join( ',' )
 		) ||

@@ -102,13 +102,46 @@ export default [
 	},
 	{
 		name: 'autoplay-slider',
-		title: __( 'Autoplay', 'unitone' ),
+		title: __( 'Autoplay slider', 'unitone' ),
 		icon: {
 			src: icon,
 		},
 		attributes: {
 			settings: {
 				spaceBetween: 20,
+				autoplay: true,
+			},
+		},
+		scope: [ 'block' ],
+		innerBlocks: [
+			createTrack(),
+			[ 'unitone/swiper-autoplay-progress' ],
+			createControls( true ),
+		],
+	},
+	{
+		name: 'fade',
+		title: __( 'Fade', 'unitone' ),
+		icon: {
+			src: icon,
+		},
+		attributes: {
+			settings: {
+				effect: 'fade',
+			},
+		},
+		scope: [ 'block' ],
+		innerBlocks: [ createTrack(), createControls() ],
+	},
+	{
+		name: 'autoplay-fade',
+		title: __( 'Autoplay fade', 'unitone' ),
+		icon: {
+			src: icon,
+		},
+		attributes: {
+			settings: {
+				effect: 'fade',
 				autoplay: true,
 			},
 		},

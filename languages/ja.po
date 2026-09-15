@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-09-15T07:21:06+00:00\n"
-"PO-Revision-Date: 2026-09-15 16:23+0900\n"
+"POT-Creation-Date: 2026-09-15T08:01:53+00:00\n"
+"PO-Revision-Date: 2026-09-15 17:02+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3860,6 +3860,14 @@ msgstr "デスクトップのブレイクポイント"
 #: dist/blocks/swiper/index.js:1
 msgid "Slider"
 msgstr "スライダー"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Autoplay slider"
+msgstr "自動再生スライダー"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Autoplay fade"
+msgstr "自動再生フェード"
 
 #: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
 msgid "Threshold"

@@ -2,6 +2,7 @@
 	/**
 	 * General
 	 */
+	--unitone--container-type: initial;
 	--unitone--active-background-color: var(--wp--preset--color--white);
 	--unitone--active-color: var(--wp--preset--color--unitone--text-black);
 	--unitone--inactive-background-color: var(--wp--preset--color--unitone-bright-gray);
@@ -34,6 +35,7 @@
 	--unitone--tab-panel--border-color: var(--unitone--border-color);
 	--unitone--tab-panel--padding: var(--unitone--p1);
 
+	container-type: var(--unitone--container-type);
 	display: grid;
 	grid-auto-flow: row;
 	gap: var(--unitone--gap);

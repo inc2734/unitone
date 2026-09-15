@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "28.3.0",
+	"version": "28.4.0",
 	"textdomain": "unitone",
 	"name": "unitone/responsive-grid-divided",
 	"title": "Responsive grid (Divided)",
@@ -68,6 +68,8 @@
 		},
 		"contentRole": true,
 		"unitone": {
+			"containerType": true,
+			"responsiveContext": true,
 			"gap": {
 				"splitOnAxis": true
 			},

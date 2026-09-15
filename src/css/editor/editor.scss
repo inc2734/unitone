@@ -82,17 +82,6 @@
 	}
 }
 
-.block-editor-block-inspector {
-	> div:not([class]) {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.components-panel__body:not([class*="block-editor-"]) {
-		order: -1;
-	}
-}
-
 .block-editor-block-list__block .block-list-appender.block-list-appender:only-child {
 	align-self: initial;
 }

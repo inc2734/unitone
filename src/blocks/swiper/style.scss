@@ -177,6 +177,81 @@
 	}
 }
 
+.unitone-swiper-thumbnails {
+	--unitone--column-min-width: 200px;
+	--unitone--gap: var(--unitone--s-2);
+	--unitone--thumbnail-aspect-ratio: 4 / 3;
+
+	display: grid;
+	// Keep empty columns so a small number of thumbnails does not fill the row.
+	grid-template-columns: repeat(auto-fill, minmax(min(var(--unitone--column-min-width), 100%), 1fr));
+	gap: var(--unitone--gap);
+	min-width: 0;
+	max-width: 100%;
+
+	&__item {
+		position: relative;
+		min-width: 0;
+		aspect-ratio: var(--unitone--thumbnail-aspect-ratio);
+		overflow: hidden;
+		opacity: 0.4;
+		transition: opacity 0.2s;
+
+		&:has(> .unitone-swiper-thumbnails__button:is(:hover, :focus-visible, [aria-current="true"])) {
+			opacity: 1;
+		}
+	}
+
+	&__preview {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: var(--unitone--thumbnail-width);
+		height: var(--unitone--thumbnail-height);
+		transform: translate(-50%, -50%) scale(var(--unitone--thumbnail-scale));
+		transform-origin: center;
+		pointer-events: none;
+		user-select: none;
+		visibility: hidden;
+
+		> .unitone-swiper__slide {
+			box-sizing: border-box;
+			width: 100% !important;
+			height: 100% !important;
+			min-width: 0 !important;
+			max-width: none !important;
+			margin: 0 !important;
+			transform: none !important;
+			opacity: 1 !important;
+		}
+	}
+
+	&__button {
+		appearance: none;
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: transparent;
+		color: inherit;
+		cursor: pointer;
+
+		&:focus-visible {
+			outline: 2px solid currentcolor;
+			outline-offset: -2px;
+		}
+	}
+
+	&[data-unitone-swiper-thumbnails-ready] > &__item > &__preview {
+		visibility: visible;
+	}
+}
+
 .unitone-swiper-scrollbar.swiper-scrollbar {
 	position: relative;
 	inset: auto;

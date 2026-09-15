@@ -14,6 +14,11 @@ import { __ } from '@wordpress/i18n';
 import { resolveSettings as resolvePaginationSettings } from '../swiper-pagination/config';
 import { resolveSettings as resolveScrollbarSettings } from '../swiper-scrollbar/config';
 
+import {
+	THUMBNAIL_PREVIEW_SELECTOR,
+	setupThumbnails,
+} from '../swiper-thumbnails/frontend';
+
 import { buildSwiperOptions, getEasing } from './config';
 
 const ROOT_SELECTOR = '.unitone-swiper[data-unitone-swiper-settings]';
@@ -39,7 +44,9 @@ const parseObject = ( value ) => {
 
 const getOwnedElements = ( root, selector ) =>
 	Array.from( root.querySelectorAll( selector ) ).filter(
-		( element ) => element.closest( ROOT_SELECTOR ) === root
+		( element ) =>
+			element.closest( ROOT_SELECTOR ) === root &&
+			! element.closest( THUMBNAIL_PREVIEW_SELECTOR )
 	);
 
 const getOwnedElement = ( root, selector ) =>
@@ -636,6 +643,11 @@ const initializeSwiper = ( root ) => {
 		options.modules.push( Scrollbar );
 	}
 
+	// Capture document order before loop mode reorders slides or adds blanks.
+	const slides = Array.from(
+		viewport.querySelector( '.unitone-swiper-track__wrapper' ).children
+	).filter( ( slide ) => slide.matches( '.unitone-swiper__slide' ) );
+	const thumbnails = getOwnedElements( root, '.unitone-swiper-thumbnails' );
 	const swiper = new Swiper( viewport, options );
 
 	setupAutoSlideWidth( root, swiper );
@@ -646,15 +658,26 @@ const initializeSwiper = ( root ) => {
 	setupFocusPause( root, swiper );
 
 	initializingRoots.delete( root );
+
+	return () => setupThumbnails( thumbnails, swiper, slides );
 };
 
 const initializeAll = () => {
+	const thumbnailInitializers = [];
 	document.querySelectorAll( ROOT_SELECTOR ).forEach( ( root ) => {
 		// Skip nested Swipers removed along with duplicate tracks.
-		if ( root.isConnected ) {
-			initializeSwiper( root );
+		if (
+			root.isConnected &&
+			! root.closest( THUMBNAIL_PREVIEW_SELECTOR )
+		) {
+			const initializeThumbnails = initializeSwiper( root );
+			if ( initializeThumbnails ) {
+				thumbnailInitializers.push( initializeThumbnails );
+			}
 		}
 	} );
+	// Capture nested sliders after they and their controls have been initialized.
+	thumbnailInitializers.reverse().forEach( ( initialize ) => initialize() );
 };
 
 if ( 'loading' === document.readyState ) {

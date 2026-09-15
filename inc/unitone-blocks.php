@@ -48,6 +48,7 @@ function unitone_register_blocks() {
 	register_block_type( get_template_directory() . '/dist/blocks/swiper-pagination' );
 	register_block_type( get_template_directory() . '/dist/blocks/swiper-scrollbar' );
 	register_block_type( get_template_directory() . '/dist/blocks/swiper-slide' );
+	register_block_type( get_template_directory() . '/dist/blocks/swiper-thumbnails' );
 	register_block_type( get_template_directory() . '/dist/blocks/swiper-track' );
 	register_block_type( get_template_directory() . '/dist/blocks/gutters' );
 	register_block_type( get_template_directory() . '/dist/blocks/pattern-inserter' );

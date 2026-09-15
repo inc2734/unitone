@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-09-04T01:49:59+00:00\n"
-"PO-Revision-Date: 2026-09-04 11:02+0900\n"
+"POT-Creation-Date: 2026-09-15T07:21:06+00:00\n"
+"PO-Revision-Date: 2026-09-15 16:23+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -2478,10 +2478,11 @@ msgstr "ダッシュボードに戻る"
 #: dist/blocks/swiper-autoplay-control/index.js:1
 #: dist/blocks/swiper-autoplay-progress/index.js:1
 #: dist/blocks/swiper-pagination/index.js:1
-#: dist/blocks/swiper-scrollbar/index.js:1 dist/blocks/swiper-slide/index.js:1
-#: dist/blocks/swiper/index.js:1 dist/blocks/switcher/index.js:1
-#: dist/blocks/text/index.js:1 dist/blocks/texture/index.js:1
-#: dist/blocks/timeline-dots/index.js:1 dist/blocks/vertical-writing/index.js:1
+#: dist/blocks/swiper-scrollbar/index.js:2 dist/blocks/swiper-slide/index.js:1
+#: dist/blocks/swiper-thumbnails/index.js:1 dist/blocks/swiper/index.js:1
+#: dist/blocks/switcher/index.js:1 dist/blocks/text/index.js:1
+#: dist/blocks/texture/index.js:1 dist/blocks/timeline-dots/index.js:1
+#: dist/blocks/vertical-writing/index.js:1
 #: dist/blocks/with-sidebar-content/index.js:1
 #: dist/blocks/with-sidebar-divided/index.js:1
 #: dist/blocks/with-sidebar/index.js:1 dist/formats/formats.js:1
@@ -2706,6 +2707,7 @@ msgstr "スタック"
 #: dist/blocks/child-pages/index.js:1
 #: dist/blocks/responsive-grid-divided/index.js:1
 #: dist/blocks/responsive-grid/index.js:1
+#: dist/blocks/swiper-thumbnails/index.js:1
 msgid "Column min width"
 msgstr "カラムの最小幅"
 
@@ -3647,11 +3649,16 @@ msgstr "バレットのサイズ"
 msgid "Progress bar size"
 msgstr "プログレスバーのサイズ"
 
-#: dist/blocks/swiper-scrollbar/index.js:1
+#. translators: %s: Block title.
+#: dist/blocks/swiper-scrollbar/index.js:2 dist/blocks/swiper-track/index.js:2
+msgid "This block is not displayed. Only the first %s is displayed."
+msgstr "このブロックは表示されません。最初の %s だけが表示されます。"
+
+#: dist/blocks/swiper-scrollbar/index.js:2
 msgid "Hide after interaction"
 msgstr "インタラクション後に隠す"
 
-#: dist/blocks/swiper-scrollbar/index.js:1
+#: dist/blocks/swiper-scrollbar/index.js:2
 msgid "Scrollbar size"
 msgstr "スクロールバーのサイズ"
 
@@ -3671,8 +3678,12 @@ msgstr ""
 msgid "Autoplay delay override (ms)"
 msgstr "自動再生遅延の上書き（ms）"
 
+#: dist/blocks/swiper-thumbnails/index.js:1
+msgid "Thumbnails wrap automatically and share the same column width."
+msgstr "サムネイルは自動的に折り返され、同じ列幅になります。"
+
 #. translators: %d: slide number.
-#: dist/blocks/swiper-track/index.js:2
+#: dist/blocks/swiper-track/index.js:3
 msgid "Go to slide %d"
 msgstr "スライド %d へ移動"
 
@@ -3718,12 +3729,26 @@ msgid "Space between slides"
 msgstr "スライド間の余白"
 
 #: dist/blocks/swiper/index.js:1
+msgid ""
+"Loop mode requires at least the number of visible slides plus \"Slides per "
+"group\", and one more slide when centered. Check that there are enough "
+"slides at every responsive size."
+msgstr ""
+"ループモードでは、表示されるスライド数に「1グループあたりのスライド数」を加え"
+"た枚数以上が必要です。中央寄せの場合は、さらに1枚必要です。すべてのレスポンシ"
+"ブサイズでスライドが十分にあることを確認してください。"
+
+#: dist/blocks/swiper/index.js:1
 msgid "Slides per group"
 msgstr "1グループあたりのスライド数"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Effects"
 msgstr "エフェクト"
+
+#: dist/blocks/swiper/index.js:1 dist/js/editor/editor.js:13
+msgid "Easing"
+msgstr "イージング"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Cross fade"
@@ -3736,16 +3761,6 @@ msgstr "次の場合は無効になります：スライドエフェクト"
 #: dist/blocks/swiper/index.js:1
 msgid "Responsive slide layout"
 msgstr "レスポンシブスライドレイアウト"
-
-#: dist/blocks/swiper/index.js:1
-msgid ""
-"Loop mode requires at least the number of visible slides plus \"Slides per "
-"group\", and one more slide when centered. Check that there are enough "
-"slides at every responsive size."
-msgstr ""
-"ループモードでは、表示されるスライド数に「1グループあたりのスライド数」を加え"
-"た枚数以上が必要です。中央寄せの場合は、さらに1枚必要です。すべてのレスポンシ"
-"ブサイズでスライドが十分にあることを確認してください。"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Container beginning offset"
@@ -3826,7 +3841,7 @@ msgstr "レスポンシブ設定"
 msgid "Responsive basis"
 msgstr "レスポンシブの基準"
 
-#: dist/blocks/swiper/index.js:1 dist/js/editor/editor.js:7
+#: dist/blocks/swiper/index.js:1
 msgid "Viewport"
 msgstr "ビューポート"
 
@@ -3841,12 +3856,6 @@ msgstr "タブレットのブレイクポイント"
 #: dist/blocks/swiper/index.js:1
 msgid "Desktop breakpoint"
 msgstr "デスクトップのブレイクポイント"
-
-#. translators: %s: Block title.
-#: dist/blocks/swiper-track/index.js:1 dist/blocks/swiper-scrollbar/index.js:1
-#, javascript-format
-msgid "This block is not displayed. Only the first %s is displayed."
-msgstr "このブロックは表示されません。最初の %s だけが表示されます。"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Slider"
@@ -4425,6 +4434,53 @@ msgid "Backdrop Filter"
 msgstr "背景フィルター"
 
 #: dist/js/editor/editor.js:7
+msgid "Container type"
+msgstr "コンテナータイプ"
+
+#: dist/js/editor/editor.js:7
+msgid ""
+"Base descendant blocks’ fluid sizes (text, spacing, and more) and block-"
+"specific responsive CSS on container width. This can be enabled when this "
+"block’s container type is inline-size."
+msgstr ""
+"子孫ブロックの流体サイズ（文字・余白など）とブロック固有のレスポンシブ CSS を"
+"コンテナー幅に応じて変化させます。このブロックのコンテナータイプが inline-"
+"size の場合に有効化できます。"
+
+#: dist/js/editor/editor.js:7
+msgid "Base descendant blocks’ responsive behavior on container width"
+msgstr "子孫ブロックのレスポンシブの基準をコンテナー幅にする"
+
+#: dist/js/editor/editor.js:7
+msgid ""
+"This block’s responsive CSS switches according to the width of an ancestor "
+"container. An ancestor container is required. This does not affect CSS "
+"generated by WordPress."
+msgstr ""
+"このブロック固有のレスポンシブ CSS を、先祖コンテナーの幅に応じて切り替えま"
+"す。先祖にコンテナーが必要です。WordPress が出力する CSS には影響しません。"
+
+#: dist/js/editor/editor.js:7
+msgid "Base this block’s own responsive CSS on container width"
+msgstr "このブロック固有のレスポンシブ CSS の基準をコンテナー幅にする"
+
+#: dist/js/editor/editor.js:7
+msgid ""
+"For new settings, set an ancestor block’s container type to inline-size and "
+"enable “Base descendant blocks’ responsive behavior on container width”."
+msgstr ""
+"新しく設定する場合は、先祖ブロックでコンテナータイプを inline-size にし、「子"
+"孫ブロックのレスポンシブの基準をコンテナー幅にする」を有効にしてください。"
+
+#: dist/js/editor/editor.js:7
+msgid "Base fluid scaling on ancestor container context (deprecated)"
+msgstr "流体の基準を先祖コンテナーコンテキストにする（非推奨）"
+
+#: dist/js/editor/editor.js:7
+msgid "CSS container"
+msgstr "CSS コンテナー"
+
+#: dist/js/editor/editor.js:7
 msgid "Add your own CSS to customize the appearance of this block."
 msgstr "独自の CSS を追加して、このブロックの外観をカスタマイズできます。"
 
@@ -4439,30 +4495,6 @@ msgstr ""
 #: dist/js/editor/editor.js:7
 msgid "Selectors and CSS beginning with anything other than \"&\" are ignored."
 msgstr "\"&\" 以外から始まるセレクターおよび CSS は無視されます。"
-
-#: dist/js/editor/editor.js:7
-msgid "Responsive basis for block-specific CSS"
-msgstr "ブロック固有 CSS のレスポンシブの基準"
-
-#: dist/js/editor/editor.js:7
-msgid ""
-"Choose whether this block's specific CSS responds to the viewport width or "
-"the container width. This does not affect CSS generated by WordPress."
-msgstr ""
-"このブロック固有の CSS を画面幅とコンテナー幅のどちらに応じて切り替えるかを選"
-"択します。WordPress が出力する CSS には影響しません。"
-
-#: dist/js/editor/editor.js:7
-msgid "Container"
-msgstr "コンテナー"
-
-#: dist/js/editor/editor.js:7
-msgid "Container type"
-msgstr "コンテナータイプ"
-
-#: dist/js/editor/editor.js:7
-msgid "Base fluid scaling on ancestor container context"
-msgstr "流体の基準を先祖コンテナーコンテキストにする"
 
 #: dist/js/editor/editor.js:7
 msgid "Recommended width"
@@ -4716,10 +4748,6 @@ msgstr "スクロール"
 #: dist/js/editor/editor.js:13
 msgid "Delay"
 msgstr "遅延"
-
-#: dist/js/editor/editor.js:13
-msgid "Easing"
-msgstr "イージング"
 
 #: dist/js/editor/editor.js:13
 msgid "Initial position (Y)"
@@ -5799,6 +5827,16 @@ msgstr "[Swiper] スライド"
 msgctxt "block description"
 msgid "A slide displayed inside slider."
 msgstr "スライダー内に表示されるスライド。"
+
+#: dist/blocks/swiper-thumbnails/block.json
+msgctxt "block title"
+msgid "[Swiper] Thumbnails"
+msgstr "[Swiper] サムネイル"
+
+#: dist/blocks/swiper-thumbnails/block.json
+msgctxt "block description"
+msgid "Scaled previews of each slide. Connected to the nearest slider block."
+msgstr "各スライドの縮小プレビュー。最も近いスライダーブロックに接続されます。"
 
 #: dist/blocks/swiper-track/block.json
 msgctxt "block title"
@@ -6896,31 +6934,3 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
-
-#: dist/js/editor/editor.js
-msgid "CSS container"
-msgstr "CSS コンテナー"
-
-#: dist/js/editor/editor.js
-msgid "Base descendant blocks’ responsive behavior on container width"
-msgstr "子孫ブロックのレスポンシブの基準をコンテナー幅にする"
-
-#: dist/js/editor/editor.js
-msgid "Base descendant blocks’ fluid sizes (text, spacing, and more) and block-specific responsive CSS on container width. This can be enabled when this block’s container type is inline-size."
-msgstr "子孫ブロックの流体サイズ（文字・余白など）とブロック固有のレスポンシブ CSS をコンテナー幅に応じて変化させます。このブロックのコンテナータイプが inline-size の場合に有効化できます。"
-
-#: dist/js/editor/editor.js
-msgid "Base this block’s own responsive CSS on container width"
-msgstr "このブロック固有のレスポンシブ CSS の基準をコンテナー幅にする"
-
-#: dist/js/editor/editor.js
-msgid "This block’s responsive CSS switches according to the width of an ancestor container. An ancestor container is required. This does not affect CSS generated by WordPress."
-msgstr "このブロック固有のレスポンシブ CSS を、先祖コンテナーの幅に応じて切り替えます。先祖にコンテナーが必要です。WordPress が出力する CSS には影響しません。"
-
-#: dist/js/editor/editor.js
-msgid "Base fluid scaling on ancestor container context (deprecated)"
-msgstr "流体の基準を先祖コンテナーコンテキストにする（非推奨）"
-
-#: dist/js/editor/editor.js
-msgid "For new settings, set an ancestor block’s container type to inline-size and enable “Base descendant blocks’ responsive behavior on container width”."
-msgstr "新しく設定する場合は、先祖ブロックでコンテナータイプを inline-size にし、「子孫ブロックのレスポンシブの基準をコンテナー幅にする」を有効にしてください。"

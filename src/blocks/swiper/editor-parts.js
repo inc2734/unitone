@@ -10,7 +10,7 @@ import { __, sprintf } from '@wordpress/i18n';
 
 const SINGLE_PARTS = [ 'unitone/swiper-track', 'unitone/swiper-scrollbar' ];
 
-const getFirstOwnedParts = ( blocks, result = {} ) => {
+export const getFirstOwnedParts = ( blocks, result = {} ) => {
 	for ( const block of blocks ) {
 		if ( 'unitone/swiper' === block.name ) {
 			continue;

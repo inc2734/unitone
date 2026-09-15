@@ -27,6 +27,7 @@ const PRIORITIZED_INSERTER_BLOCKS = [
 	'unitone/swiper-arrow/previous',
 	'unitone/swiper-arrow/next',
 	'unitone/swiper-pagination',
+	'unitone/swiper-thumbnails',
 	'unitone/swiper-scrollbar',
 	'unitone/swiper-autoplay-control',
 	'unitone/swiper-autoplay-progress',

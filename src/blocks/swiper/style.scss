@@ -265,8 +265,10 @@
 
 .unitone-swiper-autoplay-progress {
 	--unitone--swiper-autoplay-progress: 0;
+	// Match swiper-autoplay-progress/block.json because default-valued attributes
+	// do not emit inline style overrides.
 	--unitone--swiper-autoplay-progress-thickness: 2px;
-	--unitone--swiper-autoplay-progress-circle-size: 16px;
+	--unitone--swiper-autoplay-progress-circle-size: 12px;
 
 	margin: 0;
 	display: grid;

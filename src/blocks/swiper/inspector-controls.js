@@ -28,6 +28,21 @@ import {
 	updateSetting,
 } from './config';
 
+export function EffectControl( { value, onChange } ) {
+	return (
+		<SelectControl
+			__nextHasNoMarginBottom
+			label={ __( 'Effect', 'unitone' ) }
+			value={ value }
+			options={ [
+				{ label: __( 'Slide', 'unitone' ), value: 'slide' },
+				{ label: __( 'Fade', 'unitone' ), value: 'fade' },
+			] }
+			onChange={ onChange }
+		/>
+	);
+}
+
 const asNumber = ( value, fallback ) => {
 	if ( '' === value || null == value ) {
 		return fallback;
@@ -359,20 +374,8 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 					label={ __( 'Effect', 'unitone' ) }
 					onDeselect={ () => resetSetting( 'effect' ) }
 				>
-					<SelectControl
-						__nextHasNoMarginBottom
-						label={ __( 'Effect', 'unitone' ) }
+					<EffectControl
 						value={ resolved.effect }
-						options={ [
-							{
-								label: __( 'Slide', 'unitone' ),
-								value: 'slide',
-							},
-							{
-								label: __( 'Fade', 'unitone' ),
-								value: 'fade',
-							},
-						] }
 						onChange={ ( value ) => setSetting( 'effect', value ) }
 					/>
 				</ToolsPanelItem>

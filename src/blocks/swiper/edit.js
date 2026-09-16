@@ -2,7 +2,6 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
-	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
 
 import {
@@ -11,6 +10,9 @@ import {
 } from '@wordpress/blocks';
 
 import { useDispatch, useSelect } from '@wordpress/data';
+import { Button, Placeholder, ToggleControl } from '@wordpress/components';
+import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 import {
 	getEditorIdentifier,
@@ -20,7 +22,8 @@ import {
 	resolveSettings,
 } from './config';
 
-import { SettingsInspectorControls } from './inspector-controls';
+import { EffectControl, SettingsInspectorControls } from './inspector-controls';
+import { createEmptySwiperTemplate, createSwiperTemplate } from './template';
 
 const PRIORITIZED_INSERTER_BLOCKS = [
 	'unitone/swiper-track',
@@ -82,7 +85,7 @@ export default function ( props ) {
 			<>
 				<SettingsInspectorControls { ...props } />
 
-				<Placeholder
+				<SetupPlaceholder
 					clientId={ clientId }
 					name={ blockName }
 					setAttributes={ setAttributes }
@@ -112,49 +115,96 @@ export default function ( props ) {
 	);
 }
 
-function Placeholder( { clientId, name, setAttributes } ) {
-	const { blockType, defaultVariation, variations } = useSelect(
-		( select ) => {
-			const {
-				getBlockVariations,
-				getBlockType,
-				getDefaultBlockVariation,
-			} = select( blocksStore );
+function SetupPlaceholder( { clientId, name, setAttributes } ) {
+	const [ effect, setEffect ] = useState( 'slide' );
+	const [ autoplay, setAutoplay ] = useState( false );
+	const [ fullBleed, setFullBleed ] = useState( false );
+	const [ overlayControls, setOverlayControls ] = useState( false );
 
-			return {
-				blockType: getBlockType( name ),
-				defaultVariation: getDefaultBlockVariation( name, 'block' ),
-				variations: getBlockVariations( name, 'block' ),
-			};
-		},
+	const blockType = useSelect(
+		( select ) => select( blocksStore ).getBlockType( name ),
 		[ name ]
 	);
 
 	const { replaceInnerBlocks } = useDispatch( blockEditorStore );
 
+	const insertTemplate = ( template ) => {
+		setAttributes( template.attributes );
+		replaceInnerBlocks(
+			clientId,
+			createBlocksFromInnerBlocksTemplate( template.innerBlocks ),
+			true
+		);
+	};
+
 	return (
 		<div { ...useBlockProps() }>
-			<BlockVariationPicker
+			<Placeholder
 				icon={ blockType?.icon?.src }
 				label={ blockType?.title }
-				variations={ variations }
-				onSelect={ ( nextVariation = defaultVariation ) => {
-					if ( nextVariation?.attributes ) {
-						setAttributes( nextVariation.attributes );
-					}
+				className="block-editor-block-variation-picker unitone-swiper-setup"
+			>
+				<div className="unitone-swiper-setup__controls">
+					<EffectControl
+						value={ effect }
+						onChange={ ( value ) => {
+							setEffect( value );
+							if ( 'slide' !== value ) {
+								setFullBleed( false );
+							}
+						} }
+					/>
 
-					if ( nextVariation?.innerBlocks ) {
-						replaceInnerBlocks(
-							clientId,
-							createBlocksFromInnerBlocksTemplate(
-								nextVariation.innerBlocks
-							),
-							true
-						);
-					}
-				} }
-				allowSkip={ false }
-			/>
+					<ToggleControl
+						__nextHasNoMarginBottom
+						label={ __( 'Autoplay', 'unitone' ) }
+						checked={ autoplay }
+						onChange={ setAutoplay }
+					/>
+
+					<ToggleControl
+						__nextHasNoMarginBottom
+						label={ __( 'Overflow the container', 'unitone' ) }
+						checked={ fullBleed }
+						disabled={ 'slide' !== effect }
+						onChange={ setFullBleed }
+					/>
+
+					<ToggleControl
+						__nextHasNoMarginBottom
+						label={ __( 'Overlay controls', 'unitone' ) }
+						checked={ overlayControls }
+						onChange={ setOverlayControls }
+					/>
+
+					<div className="unitone-swiper-setup__actions">
+						<Button
+							variant="primary"
+							onClick={ () =>
+								insertTemplate(
+									createSwiperTemplate( {
+										effect,
+										autoplay,
+										fullBleed,
+										overlayControls,
+									} )
+								)
+							}
+						>
+							{ __( 'Insert with settings', 'unitone' ) }
+						</Button>
+
+						<Button
+							variant="secondary"
+							onClick={ () =>
+								insertTemplate( createEmptySwiperTemplate() )
+							}
+						>
+							{ __( 'Insert an empty slider', 'unitone' ) }
+						</Button>
+					</div>
+				</div>
+			</Placeholder>
 		</div>
 	);
 }

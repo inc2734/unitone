@@ -19,7 +19,7 @@
 		},
 		"circleSize": {
 			"type": "number",
-			"default": 16
+			"default": 12
 		}
 	},
 	"selectors": {

@@ -555,6 +555,42 @@ const setupAutoSlideWidth = ( root, swiper ) => {
 	swiper.on( 'breakpoint', update );
 };
 
+const updateLoopAdditionalSlides = ( swiper ) => {
+	const { params, slides, slidesSizesGrid, size } = swiper;
+	params.loopAdditionalSlides = 0;
+
+	// Extra slides can break grouped navigation and offset compensation in Swiper.
+	if (
+		! params.loop ||
+		1 !== params.slidesPerGroup ||
+		params.slidesOffsetBefore ||
+		params.slidesOffsetAfter
+	) {
+		return;
+	}
+
+	let slidesPerView;
+	if ( 'auto' === params.slidesPerView ) {
+		const gap = Number( params.spaceBetween );
+		const step = Math.min( ...slidesSizesGrid ) + gap;
+		if ( ! Number.isFinite( step ) || step <= 0 || ! size ) {
+			return;
+		}
+
+		// Count partial slides too, independently of the active slide's position.
+		slidesPerView = Math.max( 1, Math.ceil( ( size + gap ) / step ) );
+	} else {
+		slidesPerView = Math.ceil( params.slidesPerView );
+		if ( params.centeredSlides && 0 === slidesPerView % 2 ) {
+			slidesPerView += 1;
+		}
+	}
+
+	// Reserve enough slides on both sides; three slides cannot sustain one extra.
+	params.loopAdditionalSlides =
+		slides.length >= 2 * ( slidesPerView + 1 ) ? 1 : 0;
+};
+
 const initializeSwiper = ( root ) => {
 	// Remove duplicates only within their nearest Swiper, preserving other Swipers' first parts.
 	// Remove tracks first so controls inside discarded tracks cannot be connected.
@@ -580,6 +616,10 @@ const initializeSwiper = ( root ) => {
 		root.getAttribute( 'data-unitone-swiper-settings' )
 	);
 	const options = buildSwiperOptions( settings );
+	options.on = {
+		// Recheck current dimensions and breakpoint settings before each loop fix.
+		beforeLoopFix: updateLoopAdditionalSlides,
+	};
 	// Apply at runtime so existing saved block markup remains valid.
 	viewport.style.setProperty(
 		'--unitone--swiper-easing',

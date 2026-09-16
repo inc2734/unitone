@@ -1,3 +1,15 @@
+.unitone-swiper-setup__controls {
+	display: grid;
+	gap: 16px;
+	width: 100%;
+}
+
+.unitone-swiper-setup__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
 .unitone-swiper-responsive-settings {
 	margin-bottom: 16px;
 	padding: 12px !important;

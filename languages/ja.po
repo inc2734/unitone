@@ -3866,12 +3866,28 @@ msgid "Autoplay slider"
 msgstr "自動再生スライダー"
 
 #: dist/blocks/swiper/index.js:1
+msgid "Insert with settings"
+msgstr "設定を反映して挿入"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Insert an empty slider"
+msgstr "空のスライダーを挿入"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Overflow the container"
+msgstr "コンテナーからはみ出す"
+
+#: dist/blocks/swiper/index.js:1
 msgid "Full bleed slider"
 msgstr "フルブリードスライダー"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Full bleed autoplay slider"
 msgstr "フルブリード自動再生スライダー"
+
+#: dist/blocks/swiper/index.js:1
+msgid "Overlay controls"
+msgstr "コントロールを重ねる"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Overlay controls slider"

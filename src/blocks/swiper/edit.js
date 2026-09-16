@@ -133,7 +133,7 @@ function SetupPlaceholder( { clientId, name, setAttributes } ) {
 		replaceInnerBlocks(
 			clientId,
 			createBlocksFromInnerBlocksTemplate( template.innerBlocks ),
-			true
+			false
 		);
 	};
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-09-15T12:57:53+00:00\n"
-"PO-Revision-Date: 2026-09-15 21:59+0900\n"
+"POT-Creation-Date: 2026-09-16T05:28:36+00:00\n"
+"PO-Revision-Date: 2026-09-16 14:30+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -3601,20 +3601,20 @@ msgid "Next"
 msgstr "次へ"
 
 #: dist/blocks/swiper-arrow/index.js:1
-msgid "[Swiper] Previous arrow"
-msgstr "[Swiper] 前へボタン"
+msgid "Swiper Previous arrow"
+msgstr "Swiper 前へボタン"
 
 #: dist/blocks/swiper-arrow/index.js:1
-msgid "[Swiper] Next arrow"
-msgstr "[Swiper] 次へボタン"
+msgid "Swiper Next arrow"
+msgstr "Swiper 次へボタン"
 
 #: dist/blocks/swiper-autoplay-control/index.js:1
-msgid "[Swiper] Autoplay start"
-msgstr "[Swiper] 再生ボタン"
+msgid "Swiper Autoplay start"
+msgstr "Swiper 再生ボタン"
 
 #: dist/blocks/swiper-autoplay-control/index.js:1
-msgid "[Swiper] Autoplay pause"
-msgstr "[Swiper] 一時停止ボタン"
+msgid "Swiper Autoplay pause"
+msgstr "Swiper 一時停止ボタン"
 
 #: dist/blocks/swiper-autoplay-progress/index.js:1
 msgid "Bar"
@@ -3858,12 +3858,12 @@ msgid "Desktop breakpoint"
 msgstr "デスクトップのブレイクポイント"
 
 #: dist/blocks/swiper/index.js:1
-msgid "Slider"
-msgstr "スライダー"
+msgid "Overflow the container"
+msgstr "コンテナーからはみ出す"
 
 #: dist/blocks/swiper/index.js:1
-msgid "Autoplay slider"
-msgstr "自動再生スライダー"
+msgid "Overlay controls"
+msgstr "コントロールを重ねる"
 
 #: dist/blocks/swiper/index.js:1
 msgid "Insert with settings"
@@ -3872,42 +3872,6 @@ msgstr "設定を反映して挿入"
 #: dist/blocks/swiper/index.js:1
 msgid "Insert an empty slider"
 msgstr "空のスライダーを挿入"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Overflow the container"
-msgstr "コンテナーからはみ出す"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Full bleed slider"
-msgstr "フルブリードスライダー"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Full bleed autoplay slider"
-msgstr "フルブリード自動再生スライダー"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Overlay controls"
-msgstr "コントロールを重ねる"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Overlay controls slider"
-msgstr "オーバーレイコントロールスライダー"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Overlay controls autoplay slider"
-msgstr "オーバーレイコントロール自動再生スライダー"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Autoplay fade"
-msgstr "自動再生フェード"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Overlay controls fade"
-msgstr "オーバーレイコントロールフェード"
-
-#: dist/blocks/swiper/index.js:1
-msgid "Overlay controls autoplay fade"
-msgstr "オーバーレイコントロール自動再生フェード"
 
 #: dist/blocks/switcher/index.js:1 dist/blocks/vertical-writing/index.js:1
 msgid "Threshold"
@@ -5806,8 +5770,8 @@ msgstr "スタック"
 
 #: dist/blocks/swiper-arrow/block.json
 msgctxt "block title"
-msgid "[Swiper] Arrow"
-msgstr "[Swiper] 矢印"
+msgid "Swiper Arrow"
+msgstr "Swiper 矢印"
 
 #: dist/blocks/swiper-arrow/block.json
 msgctxt "block description"
@@ -5824,8 +5788,8 @@ msgstr "1:1"
 
 #: dist/blocks/swiper-autoplay-control/block.json
 msgctxt "block title"
-msgid "[Swiper] Autoplay control"
-msgstr "[Swiper] 自動再生コントロール"
+msgid "Swiper Autoplay control"
+msgstr "Swiper 自動再生コントロール"
 
 #: dist/blocks/swiper-autoplay-control/block.json
 msgctxt "block description"
@@ -5835,8 +5799,8 @@ msgstr ""
 
 #: dist/blocks/swiper-autoplay-progress/block.json
 msgctxt "block title"
-msgid "[Swiper] Autoplay progress"
-msgstr "[Swiper] 自動再生プログレス"
+msgid "Swiper Autoplay progress"
+msgstr "Swiper 自動再生プログレス"
 
 #: dist/blocks/swiper-autoplay-progress/block.json
 msgctxt "block description"
@@ -5848,8 +5812,8 @@ msgstr ""
 
 #: dist/blocks/swiper-pagination/block.json
 msgctxt "block title"
-msgid "[Swiper] Pagination"
-msgstr "[Swiper] ページネーション"
+msgid "Swiper Pagination"
+msgstr "Swiper ページネーション"
 
 #: dist/blocks/swiper-pagination/block.json
 msgctxt "block description"
@@ -5858,8 +5822,8 @@ msgstr "ページネーション。最寄りのスライダーブロックに接
 
 #: dist/blocks/swiper-scrollbar/block.json
 msgctxt "block title"
-msgid "[Swiper] Scrollbar"
-msgstr "[Swiper] スクロールバー"
+msgid "Swiper Scrollbar"
+msgstr "Swiper スクロールバー"
 
 #: dist/blocks/swiper-scrollbar/block.json
 msgctxt "block description"
@@ -5868,8 +5832,8 @@ msgstr "スクロールバー。最寄りのスライダーブロックに接続
 
 #: dist/blocks/swiper-slide/block.json
 msgctxt "block title"
-msgid "[Swiper] Slide"
-msgstr "[Swiper] スライド"
+msgid "Swiper Slide"
+msgstr "Swiper スライド"
 
 #: dist/blocks/swiper-slide/block.json
 msgctxt "block description"
@@ -5878,8 +5842,8 @@ msgstr "スライダー内に表示されるスライド。"
 
 #: dist/blocks/swiper-thumbnails/block.json
 msgctxt "block title"
-msgid "[Swiper] Thumbnails"
-msgstr "[Swiper] サムネイル"
+msgid "Swiper Thumbnails"
+msgstr "Swiper サムネイル"
 
 #: dist/blocks/swiper-thumbnails/block.json
 msgctxt "block description"
@@ -5888,8 +5852,8 @@ msgstr "各スライドの縮小プレビュー。最も近いスライダーブ
 
 #: dist/blocks/swiper-track/block.json
 msgctxt "block title"
-msgid "[Swiper] Track"
-msgstr "[Swiper] スライド領域"
+msgid "Swiper Track"
+msgstr "Swiper スライド領域"
 
 #: dist/blocks/swiper-track/block.json
 msgctxt "block description"
@@ -5898,8 +5862,8 @@ msgstr "スライドが配置されるスライド領域。"
 
 #: dist/blocks/swiper/block.json
 msgctxt "block title"
-msgid "[Swiper] Slider"
-msgstr "[Swiper] スライダー"
+msgid "Swiper Slider"
+msgstr "Swiper スライダー"
 
 #: dist/blocks/swiper/block.json
 msgctxt "block description"

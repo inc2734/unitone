@@ -4,7 +4,7 @@
 	"version": "28.0.1",
 	"textdomain": "unitone",
 	"name": "unitone/swiper-pagination",
-	"title": "[Swiper] Pagination",
+	"title": "Swiper Pagination",
 	"description": "A pagination. Connected to the nearest slider block.",
 	"ancestor": [ "unitone/swiper" ],
 	"attributes": {

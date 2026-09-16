@@ -4,7 +4,7 @@
 	"version": "28.4.0",
 	"textdomain": "unitone",
 	"name": "unitone/swiper",
-	"title": "[Swiper] Slider",
+	"title": "Swiper Slider",
 	"description": "This block allows you to build a highly customizable slider where you can freely position controls.",
 	"keywords": [ "slider", "carousel", "swiper" ],
 	"attributes": {

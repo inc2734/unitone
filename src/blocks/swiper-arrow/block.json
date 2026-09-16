@@ -4,7 +4,7 @@
 	"version": "28.0.0",
 	"textdomain": "unitone",
 	"name": "unitone/swiper-arrow",
-	"title": "[Swiper] Arrow",
+	"title": "Swiper Arrow",
 	"description": "A previous or next arrow button. Connected to the nearest slider block.",
 	"ancestor": [ "unitone/swiper" ],
 	"attributes": {

@@ -5,7 +5,7 @@ import { next, prev } from './icons';
 export default [
 	{
 		name: 'previous',
-		title: __( '[Swiper] Previous arrow', 'unitone' ),
+		title: __( 'Swiper Previous arrow', 'unitone' ),
 		icon: {
 			src: prev,
 		},
@@ -19,7 +19,7 @@ export default [
 	},
 	{
 		name: 'next',
-		title: __( '[Swiper] Next arrow', 'unitone' ),
+		title: __( 'Swiper Next arrow', 'unitone' ),
 		icon: {
 			src: next,
 		},

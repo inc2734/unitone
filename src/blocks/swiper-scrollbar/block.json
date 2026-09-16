@@ -4,7 +4,7 @@
 	"version": "28.0.1",
 	"textdomain": "unitone",
 	"name": "unitone/swiper-scrollbar",
-	"title": "[Swiper] Scrollbar",
+	"title": "Swiper Scrollbar",
 	"description": "A scrollbar. Connected to the nearest slider block.",
 	"ancestor": [ "unitone/swiper" ],
 	"attributes": {

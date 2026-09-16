@@ -4,7 +4,7 @@
 	"version": "28.3.0",
 	"textdomain": "unitone",
 	"name": "unitone/swiper-slide",
-	"title": "[Swiper] Slide",
+	"title": "Swiper Slide",
 	"description": "A slide displayed inside slider.",
 	"parent": [ "unitone/swiper-track" ],
 	"attributes": {

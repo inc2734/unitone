@@ -70,3 +70,9 @@
 		max-width: 100% !important;
 	}
 }
+:root :where(
+	.wp-block-image.is-style-cover:not(.editor-styles-wrapper *):only-child,
+	.editor-styles-wrapper .wp-block-image.is-style-cover:nth-child(1 of [data-type]):nth-last-child(1 of [data-type])
+) {
+	height: 100% !important;
+}

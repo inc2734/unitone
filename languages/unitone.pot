@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-16T05:28:36+00:00\n"
+"POT-Creation-Date: 2026-09-18T09:25:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unitone\n"
@@ -61,6 +61,7 @@ msgstr ""
 #: dist/blocks/tabs/index.js:1
 #: dist/blocks/vertical-writing/index.js:1
 #: dist/js/editor/editor.js:1
+#: dist/js/editor/editor.js:4
 #: dist/js/editor/editor.js:7
 #: dist/js/editor/editor.js:13
 #: dist/js/editor/editor.js:16
@@ -4290,6 +4291,10 @@ msgstr ""
 #: dist/js/editor/editor.js:4
 #, js-format
 msgid "Use %1$s to indicate a line break at an arbitrary position."
+msgstr ""
+
+#: dist/js/editor/editor.js:4
+msgid "Text Wrapping"
 msgstr ""
 
 #: dist/js/editor/editor.js:4

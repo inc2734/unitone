@@ -8,7 +8,7 @@
 use Unitone\App\Controller\Manager\Manager;
 
 /**
- * Add support "autoPhrase" to core blocks.
+ * Add supports "autoPhrase" and "textWrap" to core blocks.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
@@ -25,6 +25,7 @@ function unitone_add_auto_phrase_support( $metadata ) {
 				$metadata['supports']['unitone'] ?? array(),
 				array(
 					'autoPhrase' => true,
+					'textWrap'   => true,
 				)
 			),
 		)

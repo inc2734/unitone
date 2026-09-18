@@ -22,6 +22,16 @@ import {
 } from './auto-phrase';
 
 import {
+	isTextWrapSupportDisabled,
+	getTextWrapEditLabel,
+	hasTextWrapValue,
+	resetTextWrapFilter,
+	resetTextWrap,
+	TextWrapEdit,
+	withTextWrapBlockProps,
+} from './text-wrap';
+
+import {
 	isFluidTypographySupportDisabled,
 	hasFluidTypographyValue,
 	resetFluidTypographyFilter,
@@ -70,6 +80,7 @@ import {
 
 export const withTypographyBlockProps = compose(
 	withAutoPhraseBlockProps,
+	withTextWrapBlockProps,
 	withFluidTypographyBlockProps,
 	withFluidTypographyMinLengthBlockProps,
 	withHalfLeadingBlockProps,
@@ -80,6 +91,7 @@ export const withTypographyBlockProps = compose(
 export const resetTypography = ( props ) => {
 	const filters = [
 		[ isAutoPhraseSupportDisabled, resetAutoPhraseFilter ],
+		[ isTextWrapSupportDisabled, resetTextWrapFilter ],
 		[ isFluidTypographySupportDisabled, resetFluidTypographyFilter ],
 		[
 			isFluidTypographyMinLengthSupportDisabled,
@@ -106,6 +118,7 @@ function TypographyPanelPure( props ) {
 	const { name, attributes, clientId } = props;
 
 	const isAutoPhraseDisabled = isAutoPhraseSupportDisabled( { name } );
+	const isTextWrapDisabled = isTextWrapSupportDisabled( { name } );
 	const isFluidTypographyDisabled = isFluidTypographySupportDisabled( {
 		name,
 	} );
@@ -123,6 +136,7 @@ function TypographyPanelPure( props ) {
 
 	if (
 		isAutoPhraseDisabled &&
+		isTextWrapDisabled &&
 		isFluidTypographyDisabled &&
 		isFluidTypographyMinLengthDisabled &&
 		isHalfLeadingDisabled &&
@@ -143,6 +157,7 @@ function TypographyPanelPure( props ) {
 						blockAttributes,
 						resetFilters: [
 							resetAutoPhraseFilter(),
+							resetTextWrapFilter(),
 							resetFluidTypographyFilter(),
 							resetFluidTypographyMinLengthFilter(),
 							resetHalfLeadingFilter(),
@@ -226,6 +241,24 @@ function TypographyPanelPure( props ) {
 						<AutoPhraseEdit
 							{ ...props }
 							label={ __( 'Auto line breaks', 'unitone' ) }
+						/>
+					</ToolsPanelItem>
+				) }
+
+				{ ! isTextWrapDisabled && (
+					<ToolsPanelItem
+						hasValue={ () => hasTextWrapValue( { ...props } ) }
+						label={ getTextWrapEditLabel( { ...props } ) }
+						onDeselect={ () => resetTextWrap( { ...props } ) }
+						isShownByDefault
+						panelId={ clientId }
+					>
+						<TextWrapEdit
+							{ ...props }
+							label={ getTextWrapEditLabel( {
+								...props,
+								__withCode: true,
+							} ) }
 						/>
 					</ToolsPanelItem>
 				) }

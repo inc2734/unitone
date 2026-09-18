@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unitone 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/unitone\n"
-"POT-Creation-Date: 2026-09-16T05:28:36+00:00\n"
-"PO-Revision-Date: 2026-09-16 14:30+0900\n"
+"POT-Creation-Date: 2026-09-18T09:25:31+00:00\n"
+"PO-Revision-Date: 2026-09-18 19:17+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -51,9 +51,10 @@ msgstr "テーマ"
 #: dist/blocks/layers/index.js:1 dist/blocks/section/index.js:1
 #: dist/blocks/slider/index.js:1 dist/blocks/swiper/index.js:1
 #: dist/blocks/tabs/index.js:1 dist/blocks/vertical-writing/index.js:1
-#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:7
-#: dist/js/editor/editor.js:13 dist/js/editor/editor.js:16
-#: dist/js/editor/editor.js:26 dist/js/editor/editor.js:29
+#: dist/js/editor/editor.js:1 dist/js/editor/editor.js:4
+#: dist/js/editor/editor.js:7 dist/js/editor/editor.js:13
+#: dist/js/editor/editor.js:16 dist/js/editor/editor.js:26
+#: dist/js/editor/editor.js:29
 msgid "Default"
 msgstr "デフォルト"
 
@@ -4289,6 +4290,10 @@ msgstr "オーバーフロー"
 #: dist/js/editor/editor.js:4
 msgid "Use %1$s to indicate a line break at an arbitrary position."
 msgstr "任意の位置で改行を指示したい場合は %1$s を使用してください。"
+
+#: dist/js/editor/editor.js:4
+msgid "Text Wrapping"
+msgstr "テキストの折り返し"
 
 #: dist/js/editor/editor.js:4
 msgid ""

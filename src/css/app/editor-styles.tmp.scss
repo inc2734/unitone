@@ -44,6 +44,17 @@ div:where(.editor-styles-wrapper.block-editor-writing-flow),
 	:where(h1, h2, h3, h4, h5, h6) {
 		text-wrap: wrap;
 	}
+	[data-unitone-layout*="-text-wrap\:"].is-highlighted {
+		outline:
+			calc(1 * var(--wp-admin-border-width-focus) / var(--wp-block-editor-iframe-zoom-out-scale, 1))
+			solid
+			var(--wp-admin-theme-color) !important;
+		outline-offset: -.5px;
+
+		&::after {
+			display: none;
+		}
+	}
 
 	.wp-block-video:not(.is-selected),
 	.wp-block-image:not(.is-selected) {

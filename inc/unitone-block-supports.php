@@ -282,6 +282,11 @@ add_filter(
 			$add_attribute( '-auto-phrase', $get_attribute( 'autoPhrase' ) );
 		}
 
+		// -text-wrap
+		if ( unitone_has_block_support( 'unitone.textWrap', $metadata ) ) {
+			$add_attribute( '-text-wrap', $get_attribute( 'textWrap' ) );
+		}
+
 		// -fluid-typography
 		// --unitone--fluid-typography-min-length
 		if ( unitone_has_block_support( 'unitone.fluidTypography', $metadata ) ) {

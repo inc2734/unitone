@@ -4,17 +4,14 @@
 
 import fastDeepEqual from 'fast-deep-equal/es6';
 
-import {
-	__experimentalToolsPanel as ToolsPanel,
-	__experimentalToolsPanelItem as ToolsPanelItem,
-} from '@wordpress/components';
+import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
 import { memo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
-import { cleanEmptyObject, useToolsPanelDropdownMenuProps } from '../utils';
+import { resetUnitoneWithBlockAttributes } from '../utils';
 
 import {
 	isFlexBasisSupportDisabled,
@@ -156,29 +153,7 @@ export const resetLayout = ( props ) => {
 };
 
 function LayoutPanelPure( props ) {
-	const { name, attributes, setAttributes, clientId } = props;
-
-	const resetAll = () => {
-		setAttributes( {
-			unitone: cleanEmptyObject(
-				Object.assign(
-					{ ...attributes?.unitone },
-					resetFlexBasisFilter(),
-					resetFlexGrowFilter(),
-					resetFlexShrinkFilter(),
-					resetMaxWidthFilter(),
-					resetMinWidthFilter(),
-					resetMaxHeightFilter(),
-					resetMinHeightFilter(),
-					resetAutoRepeatFilter(),
-					resetGridColumnFilter(),
-					resetGridRowFilter()
-				)
-			),
-		} );
-	};
-
-	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+	const { name, attributes, clientId } = props;
 
 	const isFlexBasisDisabled = isFlexBasisSupportDisabled( {
 		name,
@@ -231,269 +206,238 @@ function LayoutPanelPure( props ) {
 	}
 
 	return (
-		<>
-			{ ( ! isFlexBasisDisabled ||
-				! isFlexGrowDisabled ||
-				! isFlexShrinkDisabled ||
-				! isMaxWidthDisabled ||
-				! isMinWidthDisabled ||
-				! isMaxHeightDisabled ||
-				! isMinHeightDisabled ||
-				! isAutoRepeatDisabled ||
-				! isAutoRepeatDisabled ||
-				! isGridColumnDisabled ||
-				! isGridRowDisabled ) && (
-				<InspectorControls>
-					<ToolsPanel
-						label={ __( 'Layout', 'unitone' ) }
-						resetAll={ resetAll }
-						panelId={ clientId }
-						dropdownMenuProps={ dropdownMenuProps }
-					>
-						{ ! isFlexGrowDisabled && (
-							<ToolsPanelItem
-								hasValue={ () =>
-									hasFlexGrowValue( { ...props } )
-								}
-								label={ getFlexGrowEditLabel( { ...props } ) }
-								onDeselect={ () =>
-									resetFlexGrow( { ...props } )
-								}
-								isShownByDefault
-								panelId={ clientId }
-							>
-								<FlexGrowEdit
-									{ ...props }
-									label={ getFlexGrowEditLabel( {
-										...props,
-										__withCode: true,
-									} ) }
-								/>
-							</ToolsPanelItem>
-						) }
-						{ ! isFlexShrinkDisabled && (
-							<ToolsPanelItem
-								hasValue={ () =>
-									hasFlexShrinkValue( { ...props } )
-								}
-								label={ getFlexShrinkEditLabel( { ...props } ) }
-								onDeselect={ () =>
-									resetFlexShrink( { ...props } )
-								}
-								isShownByDefault
-								panelId={ clientId }
-							>
-								<FlexShrinkEdit
-									{ ...props }
-									label={ getFlexShrinkEditLabel( {
-										...props,
-										__withCode: true,
-									} ) }
-								/>
-							</ToolsPanelItem>
-						) }
-						{ ! isFlexBasisDisabled && (
-							<ToolsPanelItem
-								hasValue={ () =>
-									hasFlexBasisValue( { ...props } )
-								}
-								label={ getFlexBasisEditLabel( { ...props } ) }
-								onDeselect={ () =>
-									resetFlexBasis( { ...props } )
-								}
-								isShownByDefault
-								panelId={ clientId }
-							>
-								<FlexBasisEdit
-									{ ...props }
-									label={ getFlexBasisEditLabel( {
-										...props,
-										__withCode: true,
-									} ) }
-								/>
-							</ToolsPanelItem>
-						) }
-						{ ! isMaxWidthDisabled && (
-							<ToolsPanelItem
-								hasValue={ () =>
-									hasMaxWidthValue( { ...props } )
-								}
-								label={ getMaxWidthEditLabel( { ...props } ) }
-								onDeselect={ () =>
-									resetMaxWidth( { ...props } )
-								}
-								isShownByDefault
-								panelId={ clientId }
-							>
-								<MaxWidthEdit
-									{ ...props }
-									label={ getMaxWidthEditLabel( {
-										...props,
-										__withCode: true,
-									} ) }
-								/>
-							</ToolsPanelItem>
-						) }
-						{ ! isMinWidthDisabled && (
-							<ToolsPanelItem
-								hasValue={ () =>
-									hasMinWidthValue( { ...props } )
-								}
-								label={ getMinWidthEditLabel( { ...props } ) }
-								onDeselect={ () =>
-									resetMinWidth( { ...props } )
-								}
-								isShownByDefault
-								panelId={ clientId }
-							>
-								<MinWidthEdit
-									{ ...props }
-									label={ getMinWidthEditLabel( {
-										...props,
-										__withCode: true,
-									} ) }
-								/>
-							</ToolsPanelItem>
-						) }
-						{ ! isMaxHeightDisabled && (
-							<ToolsPanelItem
-								hasValue={ () =>
-									hasMaxHeightValue( { ...props } )
-								}
-								label={ getMaxHeightEditLabel( { ...props } ) }
-								onDeselect={ () =>
-									resetMaxHeight( { ...props } )
-								}
-								isShownByDefault
-								panelId={ clientId }
-							>
-								<MaxHeightEdit
-									{ ...props }
-									label={ getMaxHeightEditLabel( {
-										...props,
-										__withCode: true,
-									} ) }
-								/>
-							</ToolsPanelItem>
-						) }
-						{ ! isMinHeightDisabled && (
-							<ToolsPanelItem
-								hasValue={ () =>
-									hasMinHeightValue( { ...props } )
-								}
-								label={ getMinHeightEditLabel( { ...props } ) }
-								onDeselect={ () =>
-									resetMinHeight( { ...props } )
-								}
-								isShownByDefault
-								panelId={ clientId }
-							>
-								<MinHeightEdit
-									{ ...props }
-									label={ getMinHeightEditLabel( {
-										...props,
-										__withCode: true,
-									} ) }
-								/>
-							</ToolsPanelItem>
-						) }
-						{ ! isAutoRepeatDisabled && (
-							<ToolsPanelItem
-								hasValue={ () =>
-									hasAutoRepeatValue( { ...props } )
-								}
-								label={ getAutoRepeatEditLabel( { ...props } ) }
-								onDeselect={ () =>
-									resetAutoRepeat( { ...props } )
-								}
-								isShownByDefault
-								panelId={ clientId }
-							>
-								<AutoRepeatEdit
-									{ ...props }
-									label={ getAutoRepeatEditLabel( {
-										...props,
-										__withCode: true,
-									} ) }
-								/>
-							</ToolsPanelItem>
-						) }
-						{ ! isGridColumnDisabled && (
-							<ToolsPanelItem
-								hasValue={ () =>
-									hasGridColumnValue( { ...props } )
-								}
-								label={ getGridColumnEditLabel( { ...props } ) }
-								onDeselect={ () =>
-									resetGridColumn( { ...props } )
-								}
-								isShownByDefault
-								panelId={ clientId }
-							>
-								<GridColumnEdit
-									{ ...props }
-									label={ getGridColumnEditLabel( {
-										...props,
-										__withCode: true,
-									} ) }
-									help={
-										<span
-											dangerouslySetInnerHTML={ {
-												__html: sprintf(
-													// translators: %1$s: <code>, %2$s: </code>
-													__(
-														'For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line).',
-														'unitone'
-													),
-													'<code class="unitone-label-code">',
-													'</code>'
-												),
-											} }
-										/>
-									}
-								/>
-							</ToolsPanelItem>
-						) }
-						{ ! isGridRowDisabled && (
-							<ToolsPanelItem
-								hasValue={ () =>
-									hasGridRowValue( { ...props } )
-								}
-								label={ getGridRowEditLabel( { ...props } ) }
-								onDeselect={ () =>
-									resetGridRow( { ...props } )
-								}
-								isShownByDefault
-								panelId={ clientId }
-							>
-								<GridRowEdit
-									{ ...props }
-									label={ getGridRowEditLabel( {
-										...props,
-										__withCode: true,
-									} ) }
-									help={
-										<span
-											dangerouslySetInnerHTML={ {
-												__html: sprintf(
-													// translators: %1$s: <code>, %2$s: </code>
-													__(
-														'For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line).',
-														'unitone'
-													),
-													'<code class="unitone-label-code">',
-													'</code>'
-												),
-											} }
-										/>
-									}
-								/>
-							</ToolsPanelItem>
-						) }
-					</ToolsPanel>
-				</InspectorControls>
+		<InspectorControls
+			group="layout"
+			resetAllFilter={ ( blockAttributes ) => ( {
+				...blockAttributes,
+				unitone: resetUnitoneWithBlockAttributes( {
+					unitone: attributes?.unitone,
+					blockAttributes,
+					resetFilters: [
+						resetFlexBasisFilter(),
+						resetFlexGrowFilter(),
+						resetFlexShrinkFilter(),
+						resetMaxWidthFilter(),
+						resetMinWidthFilter(),
+						resetMaxHeightFilter(),
+						resetMinHeightFilter(),
+						resetAutoRepeatFilter(),
+						resetGridColumnFilter(),
+						resetGridRowFilter(),
+					],
+				} ),
+			} ) }
+		>
+			{ ! isFlexGrowDisabled && (
+				<ToolsPanelItem
+					hasValue={ () => hasFlexGrowValue( { ...props } ) }
+					label={ getFlexGrowEditLabel( { ...props } ) }
+					onDeselect={ () => resetFlexGrow( { ...props } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<FlexGrowEdit
+						{ ...props }
+						label={ getFlexGrowEditLabel( {
+							...props,
+							__withCode: true,
+						} ) }
+					/>
+				</ToolsPanelItem>
 			) }
-		</>
+
+			{ ! isFlexShrinkDisabled && (
+				<ToolsPanelItem
+					hasValue={ () => hasFlexShrinkValue( { ...props } ) }
+					label={ getFlexShrinkEditLabel( { ...props } ) }
+					onDeselect={ () => resetFlexShrink( { ...props } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<FlexShrinkEdit
+						{ ...props }
+						label={ getFlexShrinkEditLabel( {
+							...props,
+							__withCode: true,
+						} ) }
+					/>
+				</ToolsPanelItem>
+			) }
+
+			{ ! isFlexBasisDisabled && (
+				<ToolsPanelItem
+					hasValue={ () => hasFlexBasisValue( { ...props } ) }
+					label={ getFlexBasisEditLabel( { ...props } ) }
+					onDeselect={ () => resetFlexBasis( { ...props } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<FlexBasisEdit
+						{ ...props }
+						label={ getFlexBasisEditLabel( {
+							...props,
+							__withCode: true,
+						} ) }
+					/>
+				</ToolsPanelItem>
+			) }
+
+			{ ! isMaxWidthDisabled && (
+				<ToolsPanelItem
+					hasValue={ () => hasMaxWidthValue( { ...props } ) }
+					label={ getMaxWidthEditLabel( { ...props } ) }
+					onDeselect={ () => resetMaxWidth( { ...props } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<MaxWidthEdit
+						{ ...props }
+						label={ getMaxWidthEditLabel( {
+							...props,
+							__withCode: true,
+						} ) }
+					/>
+				</ToolsPanelItem>
+			) }
+
+			{ ! isMinWidthDisabled && (
+				<ToolsPanelItem
+					hasValue={ () => hasMinWidthValue( { ...props } ) }
+					label={ getMinWidthEditLabel( { ...props } ) }
+					onDeselect={ () => resetMinWidth( { ...props } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<MinWidthEdit
+						{ ...props }
+						label={ getMinWidthEditLabel( {
+							...props,
+							__withCode: true,
+						} ) }
+					/>
+				</ToolsPanelItem>
+			) }
+
+			{ ! isMaxHeightDisabled && (
+				<ToolsPanelItem
+					hasValue={ () => hasMaxHeightValue( { ...props } ) }
+					label={ getMaxHeightEditLabel( { ...props } ) }
+					onDeselect={ () => resetMaxHeight( { ...props } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<MaxHeightEdit
+						{ ...props }
+						label={ getMaxHeightEditLabel( {
+							...props,
+							__withCode: true,
+						} ) }
+					/>
+				</ToolsPanelItem>
+			) }
+
+			{ ! isMinHeightDisabled && (
+				<ToolsPanelItem
+					hasValue={ () => hasMinHeightValue( { ...props } ) }
+					label={ getMinHeightEditLabel( { ...props } ) }
+					onDeselect={ () => resetMinHeight( { ...props } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<MinHeightEdit
+						{ ...props }
+						label={ getMinHeightEditLabel( {
+							...props,
+							__withCode: true,
+						} ) }
+					/>
+				</ToolsPanelItem>
+			) }
+
+			{ ! isAutoRepeatDisabled && (
+				<ToolsPanelItem
+					hasValue={ () => hasAutoRepeatValue( { ...props } ) }
+					label={ getAutoRepeatEditLabel( { ...props } ) }
+					onDeselect={ () => resetAutoRepeat( { ...props } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<AutoRepeatEdit
+						{ ...props }
+						label={ getAutoRepeatEditLabel( {
+							...props,
+							__withCode: true,
+						} ) }
+					/>
+				</ToolsPanelItem>
+			) }
+
+			{ ! isGridColumnDisabled && (
+				<ToolsPanelItem
+					hasValue={ () => hasGridColumnValue( { ...props } ) }
+					label={ getGridColumnEditLabel( { ...props } ) }
+					onDeselect={ () => resetGridColumn( { ...props } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<GridColumnEdit
+						{ ...props }
+						label={ getGridColumnEditLabel( {
+							...props,
+							__withCode: true,
+						} ) }
+						help={
+							<span
+								dangerouslySetInnerHTML={ {
+									__html: sprintf(
+										// translators: %1$s: <code>, %2$s: </code>
+										__(
+											'For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line).',
+											'unitone'
+										),
+										'<code class="unitone-label-code">',
+										'</code>'
+									),
+								} }
+							/>
+						}
+					/>
+				</ToolsPanelItem>
+			) }
+
+			{ ! isGridRowDisabled && (
+				<ToolsPanelItem
+					hasValue={ () => hasGridRowValue( { ...props } ) }
+					label={ getGridRowEditLabel( { ...props } ) }
+					onDeselect={ () => resetGridRow( { ...props } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<GridRowEdit
+						{ ...props }
+						label={ getGridRowEditLabel( {
+							...props,
+							__withCode: true,
+						} ) }
+						help={
+							<span
+								dangerouslySetInnerHTML={ {
+									__html: sprintf(
+										// translators: %1$s: <code>, %2$s: </code>
+										__(
+											'For example, enter %1$s1 / -2%2$s (fill from the first grid line to the second-to-last grid line).',
+											'unitone'
+										),
+										'<code class="unitone-label-code">',
+										'</code>'
+									),
+								} }
+							/>
+						}
+					/>
+				</ToolsPanelItem>
+			) }
+		</InspectorControls>
 	);
 }
 

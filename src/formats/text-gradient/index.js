@@ -86,7 +86,7 @@ function InlineUI( {
 
 							const cssVarValue =
 								!! gradientSlug &&
-								`var(--wp--preset--color--${ gradientSlug })`;
+								`var(--wp--preset--gradient--${ gradientSlug })`;
 
 							const newColor = cssVarValue || newValue;
 							setColor( newColor );

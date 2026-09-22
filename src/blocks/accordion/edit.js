@@ -32,6 +32,8 @@ import {
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
 
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
+
 import { ChevronDown, Cross } from './mark';
 import metadata from './block.json';
 
@@ -129,7 +131,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			'--unitone--border-width': style?.border?.width,
 			'--unitone--border-style': style?.border?.style,
 			'--unitone--border-color': !! borderColor
-				? `var(--wp--preset--color--${ borderColor })`
+				? getPresetCssVarFromSlug( 'color', borderColor )
 				: style?.border?.color,
 		},
 	} );

@@ -54,6 +54,7 @@ import {
 	normalizeForToggleControl,
 } from '../../js/editor/hooks/utils';
 
+import { getPresetCssVarFromSlug, getPresetSlug } from '../../js/utils/preset';
 import { ItemSubmenuIcon } from './toggle-icon';
 
 const LINK_SETTINGS = [
@@ -409,12 +410,16 @@ function Edit( {
 				'open-on-click': openSubmenusOnClick,
 				'has-background':
 					overlayBackgroundColor.slug || customOverlayBackgroundColor,
-				[ `has-${ overlayBackgroundColor.slug }-background-color` ]:
-					overlayBackgroundColor.slug,
+				[ `has-${ getPresetSlug(
+					overlayBackgroundColor.slug
+				) }-background-color` ]: overlayBackgroundColor.slug,
 			} ),
 			style: {
 				backgroundColor: overlayBackgroundColor.slug
-					? `var(--wp--preset--color--${ overlayBackgroundColor.slug })`
+					? getPresetCssVarFromSlug(
+							'color',
+							overlayBackgroundColor.slug
+					  )
 					: customOverlayBackgroundColor,
 			},
 		},

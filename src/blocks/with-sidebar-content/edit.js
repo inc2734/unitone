@@ -24,6 +24,7 @@ import {
 } from '../../js/editor/hooks/utils';
 
 import { getBackgroundCSSVariables } from '../../js/utils/background';
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
 
 import metadata from './block.json';
 
@@ -42,7 +43,10 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const blockProps = useBlockProps( {
 		style: {
 			'--unitone--background-color': !! attributes?.backgroundColor
-				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
+				? getPresetCssVarFromSlug(
+						'color',
+						attributes?.backgroundColor
+				  )
 				: attributes?.style?.color?.background,
 			...getBackgroundCSSVariables( attributes ),
 		},

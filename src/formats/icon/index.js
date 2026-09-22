@@ -26,6 +26,8 @@ import { store as preferencesStore } from '@wordpress/preferences';
 import { Icon, cog as cogIcon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
+
 import fetherIcons from './feather-icons';
 import flowbiteIcons from './flowbite-icons.js';
 import spinnerIcons from './spinner-icons';
@@ -436,7 +438,10 @@ function ColorPickerUI( {
 							);
 							const cssVarValue =
 								!! colorObj?.slug &&
-								`var(--wp--preset--color--${ colorObj?.slug })`;
+								getPresetCssVarFromSlug(
+									'color',
+									colorObj?.slug
+								);
 
 							newStye.push(
 								`--unitone--color: ${ cssVarValue || newValue }`

@@ -20,6 +20,8 @@ import { __ } from '@wordpress/i18n';
 
 import { getStyleAttribute, getStyleProperties } from '../utils';
 
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
+
 const name = 'unitone/text-gradient';
 const title = __( 'Text gradient', 'unitone' );
 
@@ -86,7 +88,10 @@ function InlineUI( {
 
 							const cssVarValue =
 								!! gradientSlug &&
-								`var(--wp--preset--gradient--${ gradientSlug })`;
+								getPresetCssVarFromSlug(
+									'gradient',
+									gradientSlug
+								);
 
 							const newColor = cssVarValue || newValue;
 							setColor( newColor );

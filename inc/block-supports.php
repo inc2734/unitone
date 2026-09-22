@@ -662,7 +662,7 @@ function unitone_apply_hover_color( $block_content, $block ) {
 			$p->add_class( 'has-unitone-background-hover' );
 
 			if ( $hover_background_color ) {
-				$add_style( '--unitone--background-color--hover', 'var(--wp--preset--color--' . $hover_background_color . ')' );
+				$add_style( '--unitone--background-color--hover', unitone_get_preset_css_var_from_slug( 'color', $hover_background_color ) );
 			} elseif ( $custom_hover_background_color ) {
 				$add_style( '--unitone--background-color--hover', $custom_hover_background_color );
 			}
@@ -679,7 +679,7 @@ function unitone_apply_hover_color( $block_content, $block ) {
 			$p->add_class( 'has-unitone-gradient-background-hover' );
 
 			if ( $hover_gradient ) {
-				$add_style( '--unitone--background-image--hover', 'var(--wp--preset--gradient--' . $hover_gradient . ')' );
+				$add_style( '--unitone--background-image--hover', unitone_get_preset_css_var_from_slug( 'gradient', $hover_gradient ) );
 			} elseif ( $custom_hover_gradient ) {
 				$add_style( '--unitone--background-image--hover', $custom_hover_gradient );
 			}
@@ -696,7 +696,7 @@ function unitone_apply_hover_color( $block_content, $block ) {
 			$p->add_class( 'has-unitone-text-color-hover' );
 
 			if ( $hover_text_color ) {
-				$add_style( '--unitone--color--hover', 'var(--wp--preset--color--' . $hover_text_color . ')' );
+				$add_style( '--unitone--color--hover', unitone_get_preset_css_var_from_slug( 'color', $hover_text_color ) );
 			} elseif ( $custom_hover_text_color ) {
 				$add_style( '--unitone--color--hover', $custom_hover_text_color );
 			}
@@ -713,7 +713,7 @@ function unitone_apply_hover_color( $block_content, $block ) {
 			$p->add_class( 'has-unitone-border-color-hover' );
 
 			if ( $hover_border_color ) {
-				$add_style( '--unitone--border-color--hover', 'var(--wp--preset--color--' . $hover_border_color . ')' );
+				$add_style( '--unitone--border-color--hover', unitone_get_preset_css_var_from_slug( 'color', $hover_border_color ) );
 			} elseif ( $custom_hover_border_color ) {
 				$add_style( '--unitone--border-color--hover', $custom_hover_border_color );
 			}

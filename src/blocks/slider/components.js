@@ -3,6 +3,7 @@ import feather from 'feather-icons';
 
 import { __ } from '@wordpress/i18n';
 
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
 import { isObject } from '../../js/editor/hooks/utils';
 
 export const arrowsIconTypes = [
@@ -65,7 +66,9 @@ const toSpacingCssVar = ( value ) => {
 	return `var(--unitone--s${ value })`;
 };
 
+// Keep saved HTML stable, including the components used by deprecated blocks.
 export const Arrows = ( {
+	normalizePresets = false,
 	icons,
 	iconStroke,
 	iconSize,
@@ -88,16 +91,16 @@ export const Arrows = ( {
 
 	const styles = {};
 	if ( !! iconColor ) {
-		styles[
-			'--swiper-navigation-color'
-		] = `var(--wp--preset--color--${ iconColor })`;
+		styles[ '--swiper-navigation-color' ] = normalizePresets
+			? getPresetCssVarFromSlug( 'color', iconColor )
+			: `var(--wp--preset--color--${ iconColor })`;
 	} else if ( !! iconCustomColor ) {
 		styles[ '--swiper-navigation-color' ] = iconCustomColor;
 	}
 	if ( !! iconBackgroundColor ) {
-		styles[
-			'--swiper-navigation-background-color'
-		] = `var(--wp--preset--color--${ iconBackgroundColor })`;
+		styles[ '--swiper-navigation-background-color' ] = normalizePresets
+			? getPresetCssVarFromSlug( 'color', iconBackgroundColor )
+			: `var(--wp--preset--color--${ iconBackgroundColor })`;
 	} else if ( !! iconCustomBackgroundColor ) {
 		styles[ '--swiper-navigation-background-color' ] =
 			iconCustomBackgroundColor;
@@ -162,6 +165,7 @@ export const Arrows = ( {
 };
 
 export const Pagination = ( {
+	normalizePresets = false,
 	slides = [],
 	icon,
 	iconColor,
@@ -183,13 +187,15 @@ export const Pagination = ( {
 	const styles = {};
 	if ( !! iconColor ) {
 		if ( icon === 'progressbar' ) {
-			styles[
-				`--swiper-pagination-progressbar-active-color`
-			] = `var(--wp--preset--color--${ iconColor })`;
+			styles[ `--swiper-pagination-progressbar-active-color` ] =
+				normalizePresets
+					? getPresetCssVarFromSlug( 'color', iconColor )
+					: `var(--wp--preset--color--${ iconColor })`;
 		} else {
-			styles[
-				`--swiper-pagination-bullet-active-color`
-			] = `var(--wp--preset--color--${ iconColor })`;
+			styles[ `--swiper-pagination-bullet-active-color` ] =
+				normalizePresets
+					? getPresetCssVarFromSlug( 'color', iconColor )
+					: `var(--wp--preset--color--${ iconColor })`;
 		}
 	} else if ( !! iconCustomColor ) {
 		if ( icon === 'progressbar' ) {

@@ -9,6 +9,8 @@ import {
 import { hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
+import { getPresetCssVarFromSlug } from '../../../utils/preset';
+
 export function resetHoverBackgroundColorFilter() {
 	return {
 		hoverBackgroundColor: undefined,
@@ -131,10 +133,10 @@ export function withHoverBackgroundColorBlockProps( settings ) {
 			style: {
 				...settings.wrapperProps?.style,
 				'--unitone--background-color--hover': !! hoverBackgroundColor
-					? `var(--wp--preset--color--${ hoverBackgroundColor })`
+					? getPresetCssVarFromSlug( 'color', hoverBackgroundColor )
 					: customHoverBackgroundColor,
 				'--unitone--background-image--hover': !! hoverGradient
-					? `var(--wp--preset--gradient--${ hoverGradient })`
+					? getPresetCssVarFromSlug( 'gradient', hoverGradient )
 					: customHoverGradient,
 			},
 		},

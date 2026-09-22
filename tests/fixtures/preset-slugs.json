@@ -1,0 +1,16 @@
+[
+	[ "unitone-accent", "unitone-accent" ],
+	[ "custom-", "custom" ],
+	[ "BrandBlue", "brand-blue" ],
+	[ "brand_blue", "brand-blue" ],
+	[ "brand--blue", "brand-blue" ],
+	[ "unitone-2xl", "unitone-2-xl" ],
+	[ "unitone/accent", "unitone-accent" ],
+	[ "custom-日本語", "custom-日本語" ],
+	[ "中文123", "中文-123" ],
+	[ "ÉcoleBleue", "École-bleue" ],
+	[ "I'mBlue", "im-blue" ],
+	[ "foo😀Bar", "foo😀-bar" ],
+	[ "1stBlue", "1st-blue" ],
+	[ "100", "100" ]
+]

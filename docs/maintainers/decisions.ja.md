@@ -4,6 +4,7 @@
 
 ## 採用中
 
+- [プリセットの CSS 識別子を正規化し、保存値と旧 HTML を維持する](decisions/preset-slug-normalization.ja.md): PHP の変数生成に合わせ、保存スラッグの照合と表示時の互換処理を分離する。
 - [CSS コンテナー関連設定の適用範囲と保存値の互換性を維持する](decisions/css-container-supports.ja.md): 旧 `queryContext` 値を読み取り、適用範囲が異なる `fluidReference` は自動移行しない。
 - [WordPress 7.1 の状態スタイル UI と unitone の hover 設定を使い分ける](decisions/wp-7-1-block-state-hover.ja.md): コアの状態 UI を優先しつつ、既存値と unitone ブロックを維持する。
 - [Core と unitone の `min-width` サポートを分離する](decisions/core-and-unitone-min-width.ja.md): 保存先と CSS 出力が異なるため移行しない。

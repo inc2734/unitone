@@ -242,6 +242,7 @@ export default function ( props ) {
 					( 'top' === paginationAlignment ||
 						'top-inside' === paginationAlignment ) && (
 						<Pagination
+							normalizePresets
 							slides={ slides }
 							icon={
 								paginationIconTypes.filter(
@@ -262,6 +263,7 @@ export default function ( props ) {
 						( 'top' === arrowsAlignment ||
 							'top-inside' === arrowsAlignment ) && (
 							<Arrows
+								normalizePresets
 								icons={
 									arrowsIconTypes.filter(
 										( arrowsIconType ) =>
@@ -308,6 +310,7 @@ export default function ( props ) {
 							'bottom-inside' === arrowsAlignment ||
 							'center' === arrowsAlignment ) && (
 							<Arrows
+								normalizePresets
 								icons={
 									arrowsIconTypes.filter(
 										( arrowsIconType ) =>
@@ -337,6 +340,7 @@ export default function ( props ) {
 					( 'bottom' === paginationAlignment ||
 						'bottom-inside' === paginationAlignment ) && (
 						<Pagination
+							normalizePresets
 							slides={ slides }
 							icon={
 								paginationIconTypes.filter(

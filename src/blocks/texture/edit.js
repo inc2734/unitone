@@ -77,6 +77,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 
 	const blockProps = useBlockProps( {
 		style: getTextureStyle( {
+			normalizePresets: true,
 			type,
 			color,
 			customColor,

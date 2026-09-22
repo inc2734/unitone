@@ -11,6 +11,7 @@ import { useSelect } from '@wordpress/data';
 import { useEffect, memo, useCallback } from '@wordpress/element';
 
 import { getBackgroundCSSVariables } from '../../js/utils/background';
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
 
 const MemoizedButtonBlockAppender = memo( ButtonBlockAppender );
 
@@ -37,7 +38,10 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 	const blockProps = useBlockProps( {
 		style: {
 			'--unitone--background-color': !! attributes?.backgroundColor
-				? `var(--wp--preset--color--${ attributes?.backgroundColor })`
+				? getPresetCssVarFromSlug(
+						'color',
+						attributes?.backgroundColor
+				  )
 				: attributes?.style?.color?.background,
 			...getBackgroundCSSVariables( attributes ),
 		},

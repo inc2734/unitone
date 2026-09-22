@@ -1,4 +1,4 @@
-import { getPresetCssVar } from './preset';
+import { getPresetSlug } from './preset';
 
 const UNITONE_FONT_SIZE_SCALES = {
 	'unitone-2-xs': -3,
@@ -28,8 +28,7 @@ const UNITONE_FONT_SIZE_TOKEN_SLUGS = {
 	'unitone-6-xl': '6xl',
 };
 
-export const getFontSizeCssVarSlug = ( slug ) =>
-	slug?.replace( /-([0-9]+)([a-z]+)/, '-$1-$2' );
+export const getFontSizeCssVarSlug = ( slug ) => getPresetSlug( slug );
 
 export const getUnitoneFontSizeScale = ( fontSize ) => {
 	const slug = 'string' === typeof fontSize ? fontSize : fontSize?.slug;
@@ -56,12 +55,15 @@ export const getFontSizePresetValue = ( fontSize ) => {
 };
 
 export const getFontSizePresetSlugFromValue = ( value ) => {
-	const cssVar = getPresetCssVar( value );
-	if ( ! cssVar?.match ) {
+	if ( 'string' !== typeof value ) {
 		return undefined;
 	}
 
-	return cssVar.match( /^var\(--wp--preset--font-size--(.+)\)$/ )?.[ 1 ];
+	// Palette lookup needs the original slug, not its CSS representation.
+	return (
+		value.match( /^var:preset\|font-size\|([^|]+)$/ )?.[ 1 ] ??
+		value.match( /^var\(--wp--preset--font-size--(.+)\)$/ )?.[ 1 ]
+	);
 };
 
 export const getFontSizeByUnitoneScale = ( fontSizes, scale ) =>

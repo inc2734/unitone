@@ -8,6 +8,8 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject, resetUnitoneWithBlockAttributes } from '../utils';
 
+import { getPresetCssVarFromSlug } from '../../../utils/preset';
+
 export function isMarkerColorSupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.color.marker' );
 }
@@ -80,7 +82,7 @@ export function withMarkerColorBlockProps( settings ) {
 	}
 
 	const markerColor = !! unitone?.markerColor
-		? `var(--wp--preset--color--${ unitone?.markerColor })`
+		? getPresetCssVarFromSlug( 'color', unitone?.markerColor )
 		: unitone?.markerCustomColor;
 
 	if ( ! markerColor ) {

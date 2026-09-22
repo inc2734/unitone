@@ -9,6 +9,8 @@ import {
 import { hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
+import { getPresetCssVarFromSlug } from '../../../utils/preset';
+
 export function resetHoverBorderColorFilter() {
 	return {
 		hoverBorderColor: undefined,
@@ -73,7 +75,7 @@ export function withHoverBorderColorBlockProps( settings ) {
 			style: {
 				...settings.wrapperProps.style,
 				'--unitone--border-color--hover': !! hoverBorderColor
-					? `var(--wp--preset--color--${ hoverBorderColor })`
+					? getPresetCssVarFromSlug( 'color', hoverBorderColor )
 					: customHoverBorderColor,
 			},
 		},

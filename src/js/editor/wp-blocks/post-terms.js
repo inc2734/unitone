@@ -12,6 +12,8 @@ import {
 	getViewportMediaQueries,
 } from './border-css-vars';
 
+import { getPresetCssVarFromSlug } from '../../utils/preset';
+
 const BLOCK_SELECTOR = '.wp-block-post-terms';
 const INNER_SELECTOR =
 	':is(a:where(:not(.wp-element-button)),span:where(:not([class]):not([data-rich-text-placeholder])))';
@@ -34,14 +36,12 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 		const viewportMediaQueries = getViewportMediaQueries();
 		const style = getBorderCSSVars( attributes?.style, CSS_VAR_PREFIX );
 		if ( attributes?.backgroundColor ) {
-			style[
-				`--unitone--${ CSS_VAR_PREFIX }--background-color`
-			] = `var(--wp--preset--color--${ attributes.backgroundColor })`;
+			style[ `--unitone--${ CSS_VAR_PREFIX }--background-color` ] =
+				getPresetCssVarFromSlug( 'color', attributes.backgroundColor );
 		}
 		if ( attributes?.borderColor ) {
-			style[
-				`--unitone--${ CSS_VAR_PREFIX }--border-color`
-			] = `var(--wp--preset--color--${ attributes.borderColor })`;
+			style[ `--unitone--${ CSS_VAR_PREFIX }--border-color` ] =
+				getPresetCssVarFromSlug( 'color', attributes.borderColor );
 		}
 
 		const responsiveStyles = getResponsiveBorderCSSVars(

@@ -90,6 +90,7 @@
 		"test:settings:lint": "wp-scripts lint-js App/Controller/Manager/src/js",
 		"test:settings": "run-s test:settings:*",
 		"test:js:lint": "wp-scripts lint-js src/js",
+		"test:js:presets": "wp-scripts test-unit-js --runInBand tests/preset.test.js",
 		"test:js": "run-s test:js:*",
 		"test:php:start": "wp-env start --config=.wp-env.tests.json",
 		"pretest:php:lint": "npm run test:php:start && npm run test-composer install -- --no-interaction",

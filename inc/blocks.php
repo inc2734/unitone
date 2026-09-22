@@ -148,17 +148,17 @@ add_filter(
 
 		if ( $p->next_tag() ) {
 			$hamburger_button_color            = $hamburger_button_color
-				? 'var(--wp--preset--color--' . $hamburger_button_color . ')'
+				? unitone_get_preset_css_var_from_slug( 'color', $hamburger_button_color )
 				: $hamburger_button_custom_color;
 			$hamburger_button_background_color = $hamburger_button_background_color
-				? 'var(--wp--preset--color--' . $hamburger_button_background_color . ')'
+				? unitone_get_preset_css_var_from_slug( 'color', $hamburger_button_background_color )
 				: $hamburger_button_custom_background_color;
 
 			$overlay_menu_color            = $overlay_menu_color
-				? 'var(--wp--preset--color--' . $overlay_menu_color . ')'
+				? unitone_get_preset_css_var_from_slug( 'color', $overlay_menu_color )
 				: $overlay_menu_custom_color;
 			$overlay_menu_background_color = $overlay_menu_background_color
-				? 'var(--wp--preset--color--' . $overlay_menu_background_color . ')'
+				? unitone_get_preset_css_var_from_slug( 'color', $overlay_menu_background_color )
 				: $overlay_menu_custom_background_color;
 
 			$classes = $p->get_attribute( 'class' );
@@ -408,11 +408,11 @@ function unitone_add_border_css_vars( $block_content, $block, $args ) {
 	$new_styles = unitone_get_border_css_vars( $style, $args['css_var_prefix'] );
 
 	if ( ! empty( $attrs['backgroundColor'] ) ) {
-		$new_styles[ '--unitone--' . $args['css_var_prefix'] . '--background-color' ] = 'var(--wp--preset--color--' . $attrs['backgroundColor'] . ')';
+		$new_styles[ '--unitone--' . $args['css_var_prefix'] . '--background-color' ] = unitone_get_preset_css_var_from_slug( 'color', $attrs['backgroundColor'] );
 	}
 
 	if ( ! empty( $attrs['borderColor'] ) ) {
-		$new_styles[ '--unitone--' . $args['css_var_prefix'] . '--border-color' ] = 'var(--wp--preset--color--' . $attrs['borderColor'] . ')';
+		$new_styles[ '--unitone--' . $args['css_var_prefix'] . '--border-color' ] = unitone_get_preset_css_var_from_slug( 'color', $attrs['borderColor'] );
 	}
 
 	$responsive_styles = array();
@@ -656,17 +656,17 @@ add_filter(
 
 		if ( $p->next_tag() ) {
 			$header_section_color            = $header_section_color
-				? 'var(--wp--preset--color--' . $header_section_color . ')'
+				? unitone_get_preset_css_var_from_slug( 'color', $header_section_color )
 				: $header_section_custom_color;
 			$header_section_background_color = $header_section_background_color
-				? 'var(--wp--preset--color--' . $header_section_background_color . ')'
+				? unitone_get_preset_css_var_from_slug( 'color', $header_section_background_color )
 				: $header_section_custom_background_color;
 
 			$footer_section_color            = $footer_section_color
-				? 'var(--wp--preset--color--' . $footer_section_color . ')'
+				? unitone_get_preset_css_var_from_slug( 'color', $footer_section_color )
 				: $footer_section_custom_color;
 			$footer_section_background_color = $footer_section_background_color
-				? 'var(--wp--preset--color--' . $footer_section_background_color . ')'
+				? unitone_get_preset_css_var_from_slug( 'color', $footer_section_background_color )
 				: $footer_section_custom_background_color;
 
 			$classes = $p->get_attribute( 'class' );

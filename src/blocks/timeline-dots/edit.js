@@ -30,6 +30,8 @@ import {
 	useToolsPanelDropdownMenuProps,
 } from '../../js/editor/hooks/utils';
 
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
+
 import iconDotMain from './icons/dot-main';
 import iconDotSubMain from './icons/dot-sub-main';
 import iconSubDotMain from './icons/sub-dot-main';
@@ -90,10 +92,10 @@ function Edit( {
 			'--unitone--dot-size': dotSize || undefined,
 			'--unitone--line-width': lineWidth || undefined,
 			'--unitone--dot-color': dotColor?.slug
-				? `var(--wp--preset--color--${ dotColor?.slug })`
+				? getPresetCssVarFromSlug( 'color', dotColor?.slug )
 				: dotColor?.color,
 			'--unitone--line-color': lineColor?.slug
-				? `var(--wp--preset--color--${ lineColor?.slug })`
+				? getPresetCssVarFromSlug( 'color', lineColor?.slug )
 				: lineColor?.color,
 		},
 	} );

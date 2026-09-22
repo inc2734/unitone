@@ -25,6 +25,7 @@ import {
 
 import { FontFamilyControl, UnitControl } from './components';
 import { getRootFontSize } from '../../../utils/font-size';
+import { getPresetCssVar } from '../../../utils/preset';
 
 const applyNewSetting = ( root, property, newValue ) => {
 	if ( null == newValue ) {
@@ -172,10 +173,7 @@ const PageSettingsPanel = () => {
 			'--wp--preset--color--unitone-text-alt': newBackgroundColor,
 			'--unitone--root-font-size': getRootFontSize( newBaseFontSize ),
 			'--unitone--font-family': !! newFontFamily
-				? `var(--wp--preset--font-family--${ newFontFamily?.replace(
-						'var:preset|font-family|',
-						''
-				  ) })`
+				? getPresetCssVar( newFontFamily )
 				: undefined,
 			'--unitone--half-leading': newHalfLeading,
 			'--unitone--content-size-override': newContentSize,
@@ -198,10 +196,7 @@ const PageSettingsPanel = () => {
 			'background-color': newBackgroundColor,
 			color: newTextColor,
 			'font-family': !! newFontFamily
-				? `var(--wp--preset--font-family--${ newFontFamily?.replace(
-						'var:preset|font-family|',
-						''
-				  ) })`
+				? getPresetCssVar( newFontFamily )
 				: undefined,
 		} ),
 		[ newBackgroundColor, newTextColor, newFontFamily ]

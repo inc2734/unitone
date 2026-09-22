@@ -20,6 +20,8 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+import { getPresetCssVarFromSlug } from '../../../utils/preset';
+
 function getDefaultValue( { name } ) {
 	return wp.data.select( blocksStore ).getBlockType( name )?.attributes
 		?.unitone?.default?.dropShadow;
@@ -210,7 +212,9 @@ function renderToggle( { hasValue, resetValue } ) {
 			onClick: onToggle,
 			className: clsx(
 				'block-editor-global-styles__shadow-dropdown-toggle',
-				{ 'is-open': isOpen }
+				{
+					'is-open': isOpen,
+				}
 			),
 			'aria-expanded': isOpen,
 			ref,
@@ -370,7 +374,7 @@ export function withDropShadowBlockProps( settings ) {
 			style: {
 				...settings.wrapperProps?.style,
 				'--unitone--drop-shadow': !! slug
-					? `var(--wp--preset--shadow--${ slug })`
+					? getPresetCssVarFromSlug( 'shadow', slug )
 					: newDropShadow,
 			},
 		},

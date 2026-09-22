@@ -20,6 +20,8 @@ import { __ } from '@wordpress/i18n';
 
 import { getStyleAttribute, getStyleProperties } from '../utils';
 
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
+
 const name = 'unitone/text-shadow';
 const title = __( 'Text shadow', 'unitone' );
 
@@ -227,7 +229,10 @@ function InlineUI( {
 
 							const cssVarValue =
 								!! colorObj?.slug &&
-								`var(--wp--preset--color--${ colorObj?.slug })`;
+								getPresetCssVarFromSlug(
+									'color',
+									colorObj?.slug
+								);
 
 							const newColor = cssVarValue || newValue;
 							setColor( newColor );

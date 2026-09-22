@@ -98,6 +98,7 @@ if ( wp_get_custom_css() ) {
 
 // function library.
 require get_template_directory() . '/inc/lib.php';
+require get_template_directory() . '/inc/preset-compatibility.php';
 
 // Updater.
 require get_template_directory() . '/inc/updater.php';

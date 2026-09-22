@@ -9,6 +9,8 @@ import {
 import { hasBlockSupport } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
+import { getPresetCssVarFromSlug } from '../../../utils/preset';
+
 export function resetHoverTextColorFilter() {
 	return {
 		hoverTextColor: undefined,
@@ -71,7 +73,7 @@ export function withHoverTextColorBlockProps( settings ) {
 			style: {
 				...settings.wrapperProps.style,
 				'--unitone--color--hover': !! hoverTextColor
-					? `var(--wp--preset--color--${ hoverTextColor })`
+					? getPresetCssVarFromSlug( 'color', hoverTextColor )
 					: customHoverTextColor,
 			},
 		},

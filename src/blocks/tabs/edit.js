@@ -41,6 +41,7 @@ import {
 	isObject,
 } from '../../js/editor/hooks/utils';
 
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
 import { PaddingControl } from '../../js/editor/hooks/components';
 
 import metadata from './block.json';
@@ -173,7 +174,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			'--unitone--border-width': style?.border?.width,
 			'--unitone--border-style': style?.border?.style,
 			'--unitone--border-color': !! borderColor
-				? `var(--wp--preset--color--${ borderColor })`
+				? getPresetCssVarFromSlug( 'color', borderColor )
 				: style?.border?.color,
 		},
 	} );
@@ -500,12 +501,20 @@ export default function ( { attributes, setAttributes, clientId } ) {
 										'--unitone--active-background-color':
 											!! tabPanel.attributes
 												?.backgroundColor
-												? `var(--wp--preset--color--${ tabPanel.attributes?.backgroundColor })`
+												? getPresetCssVarFromSlug(
+														'color',
+														tabPanel.attributes
+															?.backgroundColor
+												  )
 												: tabPanel.attributes?.style
 														?.color?.background,
 										'--unitone--active-color': !! tabPanel
 											.attributes?.textColor
-											? `var(--wp--preset--color--${ tabPanel.attributes?.textColor })`
+											? getPresetCssVarFromSlug(
+													'color',
+													tabPanel.attributes
+														?.textColor
+											  )
 											: tabPanel.attributes?.style?.color
 													?.text,
 									} }

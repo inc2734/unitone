@@ -301,7 +301,7 @@ add_filter(
 
 			if ( $marker_color || $marker_custom_color ) {
 				$marker_color = $marker_color
-					? 'var(--wp--preset--color--' . $marker_color . ')'
+					? unitone_get_preset_css_var_from_slug( 'color', $marker_color )
 					: $marker_custom_color;
 
 				$add_style( '--unitone--marker-color', $marker_color );
@@ -379,7 +379,7 @@ add_filter(
 			$divider_preset_color = $get_attribute( 'dividerColor' );
 
 			if ( is_null( $divider_color ) && $divider_preset_color ) {
-				$divider_color = 'var(--wp--preset--color--' . str_replace( '/', '-', $divider_preset_color ) . ')';
+				$divider_color = unitone_get_preset_css_var_from_slug( 'color', $divider_preset_color );
 			}
 
 			$add_style( '--unitone--divider-color', $divider_color );
@@ -757,8 +757,8 @@ add_filter(
 				$radius = $block['attrs']['style']['border']['radius'] ?? null;
 
 				$add_attribute( '-overlay', true );
-				$add_style( '--unitone--overlay-color', $color ? 'var(--wp--preset--color--' . $color . ')' : $custom_color );
-				$add_style( '--unitone--overlay-gradient', $gradient ? 'var(--wp--preset--gradient--' . $gradient . ')' : $custom_gradient );
+				$add_style( '--unitone--overlay-color', $color ? unitone_get_preset_css_var_from_slug( 'color', $color ) : $custom_color );
+				$add_style( '--unitone--overlay-gradient', $gradient ? unitone_get_preset_css_var_from_slug( 'gradient', $gradient ) : $custom_gradient );
 				$add_style( '--unitone--overlay-opacity', $opacity );
 
 				if ( is_array( $radius ) ) {

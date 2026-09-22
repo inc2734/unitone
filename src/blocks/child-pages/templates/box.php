@@ -29,7 +29,7 @@ if ( $attributes['columnMinWidth'] ) {
 		$item_style = array();
 
 		if ( $background_color ) {
-			$item_class[] = 'has-' . $background_color . '-background-color';
+			$item_class[] = 'has-' . _wp_to_kebab_case( $background_color ) . '-background-color';
 		}
 
 		if ( $style_background_color ) {
@@ -37,7 +37,7 @@ if ( $attributes['columnMinWidth'] ) {
 		}
 
 		if ( $border_color ) {
-			$item_class[] = 'has-' . $border_color . '-border-color';
+			$item_class[] = 'has-' . _wp_to_kebab_case( $border_color ) . '-border-color';
 		}
 
 		if ( $style_border_color ) {

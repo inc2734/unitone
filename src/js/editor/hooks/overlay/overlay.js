@@ -26,6 +26,8 @@ import {
 	useToolsPanelDropdownMenuProps,
 } from '../utils';
 
+import { getPresetCssVarFromSlug } from '../../../utils/preset';
+
 export function isOverlaySupportDisabled( { name } ) {
 	return ! hasBlockSupport( name, 'unitone.overlay' );
 }
@@ -218,10 +220,10 @@ export function withOverlayBlockProps( settings ) {
 			style: {
 				...wrapperProps?.style,
 				'--unitone--overlay-color': !! color
-					? `var(--wp--preset--color--${ color })`
+					? getPresetCssVarFromSlug( 'color', color )
 					: customColor,
 				'--unitone--overlay-gradient': !! gradient
-					? `var(--wp--preset--gradient--${ gradient })`
+					? getPresetCssVarFromSlug( 'gradient', gradient )
 					: customGradient,
 				'--unitone--overlay-opacity':
 					null != attributes?.unitone?.overlay?.dimRatio

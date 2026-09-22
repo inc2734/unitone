@@ -7,6 +7,8 @@ import { __ } from '@wordpress/i18n';
 
 import { cleanEmptyObject } from '../utils';
 
+import { getPresetCssVarFromSlug } from '../../../utils/preset';
+
 const getColorByProperty = ( colors, property, value ) => {
 	let matchedColor;
 
@@ -269,10 +271,10 @@ export function withDividerBlockProps( settings ) {
 
 	let presetColor;
 	if ( !! newDivider?.dividerColor ) {
-		presetColor = `var(--wp--preset--color--${ newDivider?.dividerColor.replace(
-			'/',
-			'-'
-		) })`;
+		presetColor = getPresetCssVarFromSlug(
+			'color',
+			newDivider?.dividerColor
+		);
 	}
 
 	return {

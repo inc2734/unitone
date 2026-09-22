@@ -1,5 +1,7 @@
 import { __ } from '@wordpress/i18n';
 
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
+
 export const typeOptions = [
 	{
 		label: __( 'Dots', 'unitone' ),
@@ -229,9 +231,11 @@ export const getTextureTypeDefaultAttributes = ( type ) => ( {
 	...typeOptions.find( ( option ) => option.value === type )?.default,
 } );
 
-const getPresetOrCustomColor = ( color, customColor ) => {
+const getPresetOrCustomColor = ( color, customColor, normalizePresets ) => {
 	if ( !! color ) {
-		return `var(--wp--preset--color--${ color })`;
+		return normalizePresets
+			? getPresetCssVarFromSlug( 'color', color )
+			: `var(--wp--preset--color--${ color })`;
 	}
 
 	return customColor;
@@ -253,7 +257,9 @@ const getPositiveUnitValue = ( value ) => {
 	return value;
 };
 
+// Keep the default output stable for save() and normalize only editor previews.
 export const getTextureStyle = ( {
+	normalizePresets = false,
 	type,
 	color,
 	customColor,
@@ -264,7 +270,7 @@ export const getTextureStyle = ( {
 	radius,
 } ) => ( {
 	'--unitone--texture-color': isTextureSettingEnabled( type, 'color' )
-		? getPresetOrCustomColor( color, customColor )
+		? getPresetOrCustomColor( color, customColor, normalizePresets )
 		: undefined,
 	'--unitone--texture-gap': isTextureSettingEnabled( type, 'gap' )
 		? getPixelValue( gap )

@@ -12,16 +12,27 @@
  * @return string CSS var string for given preset value.
  */
 function unitone_get_preset_css_var( $value ) {
-	if ( null === $value || '' === $value ) {
+	if ( ! is_string( $value ) || '' === $value ) {
 		return $value;
 	}
 
-	preg_match( '/var:preset\|([^\|]+)\|(.+)/', $value, $match );
+	preg_match( '/^var:preset\|([^|]+)\|([^|]+)$/', $value, $match );
 	if ( ! $match ) {
 		return $value;
 	}
 
-	return 'var(--wp--preset--' . $match[1] . '--' . $match[2] . ')';
+	return unitone_get_preset_css_var_from_slug( $match[1], $match[2] );
+}
+
+/**
+ * Create a CSS reference without changing the saved preset identifier.
+ *
+ * @param string $type Preset type.
+ * @param string $slug Saved preset identifier.
+ * @return string CSS variable reference.
+ */
+function unitone_get_preset_css_var_from_slug( $type, $slug ) {
+	return 'var(--wp--preset--' . _wp_to_kebab_case( $type ) . '--' . _wp_to_kebab_case( $slug ) . ')';
 }
 
 /**

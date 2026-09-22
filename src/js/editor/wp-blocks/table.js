@@ -24,24 +24,38 @@ import {
 	normalizeForTextControl,
 } from '../hooks/utils';
 
+import { getPresetCssVarFromSlug } from '../../utils/preset';
+
 const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const { attributes, name, wrapperProps } = props;
 
 		const headerSectionColor = !! attributes?.unitone?.headerSectionColor
-			? `var(--wp--preset--color--${ attributes?.unitone?.headerSectionColor })`
+			? getPresetCssVarFromSlug(
+					'color',
+					attributes?.unitone?.headerSectionColor
+			  )
 			: attributes?.unitone?.headerSectionCustomColor;
 		const headerSectionBackgroundColor = !! attributes?.unitone
 			?.headerSectionBackgroundColor
-			? `var(--wp--preset--color--${ attributes?.unitone?.headerSectionBackgroundColor })`
+			? getPresetCssVarFromSlug(
+					'color',
+					attributes?.unitone?.headerSectionBackgroundColor
+			  )
 			: attributes?.unitone?.headerSectionCustomBackgroundColor;
 
 		const footerSectionColor = !! attributes?.unitone?.footerSectionColor
-			? `var(--wp--preset--color--${ attributes?.unitone?.footerSectionColor })`
+			? getPresetCssVarFromSlug(
+					'color',
+					attributes?.unitone?.footerSectionColor
+			  )
 			: attributes?.unitone?.footerSectionCustomColor;
 		const footerSectionBackgroundColor = !! attributes?.unitone
 			?.footerSectionBackgroundColor
-			? `var(--wp--preset--color--${ attributes?.unitone?.footerSectionBackgroundColor })`
+			? getPresetCssVarFromSlug(
+					'color',
+					attributes?.unitone?.footerSectionBackgroundColor
+			  )
 			: attributes?.unitone?.footerSectionCustomBackgroundColor;
 
 		props = {

@@ -33,6 +33,8 @@ import {
 	normalizeForToggleControl,
 } from '../hooks/utils';
 
+import { getPresetCssVarFromSlug } from '../../utils/preset';
+
 const hasCoreOverlay = ( attributes ) => {
 	return !! attributes?.overlay;
 };
@@ -54,19 +56,31 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 
 		const hamburgerButtonColor = !! attributes?.unitone
 			?.hamburgerButtonColor
-			? `var(--wp--preset--color--${ attributes?.unitone?.hamburgerButtonColor })`
+			? getPresetCssVarFromSlug(
+					'color',
+					attributes?.unitone?.hamburgerButtonColor
+			  )
 			: attributes?.unitone?.hamburgerButtonCustomColor;
 		const hamburgerButtonBackgroundColor = !! attributes?.unitone
 			?.hamburgerButtonBackgroundColor
-			? `var(--wp--preset--color--${ attributes?.unitone?.hamburgerButtonBackgroundColor })`
+			? getPresetCssVarFromSlug(
+					'color',
+					attributes?.unitone?.hamburgerButtonBackgroundColor
+			  )
 			: attributes?.unitone?.hamburgerButtonCustomBackgroundColor;
 
 		const overlayMenuColor = !! attributes?.unitone?.overlayMenuColor
-			? `var(--wp--preset--color--${ attributes?.unitone?.overlayMenuColor })`
+			? getPresetCssVarFromSlug(
+					'color',
+					attributes?.unitone?.overlayMenuColor
+			  )
 			: attributes?.unitone?.overlayMenuCustomColor;
 		const overlayMenuBackgroundColor = !! attributes?.unitone
 			?.overlayMenuBackgroundColor
-			? `var(--wp--preset--color--${ attributes?.unitone?.overlayMenuBackgroundColor })`
+			? getPresetCssVarFromSlug(
+					'color',
+					attributes?.unitone?.overlayMenuBackgroundColor
+			  )
 			: attributes?.unitone?.overlayMenuCustomBackgroundColor;
 
 		props = {

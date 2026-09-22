@@ -9,6 +9,8 @@ import {
 
 import { __ } from '@wordpress/i18n';
 
+import { getPresetCssVarFromSlug } from '../../js/utils/preset';
+
 function Edit( { attributes, clientId, context, dotColor, setDotColor } ) {
 	const { allowedBlocks, templateLock } = attributes;
 
@@ -16,7 +18,7 @@ function Edit( { attributes, clientId, context, dotColor, setDotColor } ) {
 		className: 'unitone-timeline-dots-row',
 		style: {
 			'--unitone--dot-color': dotColor?.slug
-				? `var(--wp--preset--color--${ dotColor?.slug })`
+				? getPresetCssVarFromSlug( 'color', dotColor?.slug )
 				: dotColor?.color,
 		},
 	} );

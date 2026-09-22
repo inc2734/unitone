@@ -151,7 +151,7 @@ function render_block_unitone_mega_menu( $attributes, $content ) {
 
 	if ( $has_named_background_color ) {
 		// Add the background-color class.
-		$inner_blocks_classes[] = sprintf( 'has-%s-background-color', $attributes['overlayBackgroundColor'] );
+		$inner_blocks_classes[] = sprintf( 'has-%s-background-color', _wp_to_kebab_case( $attributes['overlayBackgroundColor'] ) );
 	} elseif ( $has_custom_background_color ) {
 		// Add the custom background-color inline style.
 		$inner_blocks_styles[] = sprintf( 'background-color: %s', $attributes['customOverlayBackgroundColor'] );

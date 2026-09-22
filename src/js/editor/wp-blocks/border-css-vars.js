@@ -1,4 +1,4 @@
-import { getCSSValueFromRawStyle } from '@wordpress/style-engine';
+import { getPresetCssVar } from '../../utils/preset';
 
 const PROPERTY_FALLBACKS = {
 	'background-color': [ 'background-color' ],
@@ -66,22 +66,20 @@ export function getBorderCSSVars( style, cssVarPrefix, cssVarBreakpoint = '' ) {
 	}${ cssVarPrefix }--`;
 
 	return removeEmptyValues( {
-		[ `${ variablePrefix }background-color` ]: getCSSValueFromRawStyle(
+		[ `${ variablePrefix }background-color` ]: getPresetCssVar(
 			style?.color?.background
 		),
-		[ `${ variablePrefix }border-color` ]: getCSSValueFromRawStyle(
-			border?.color
-		),
-		[ `${ variablePrefix }border-top-color` ]: getCSSValueFromRawStyle(
+		[ `${ variablePrefix }border-color` ]: getPresetCssVar( border?.color ),
+		[ `${ variablePrefix }border-top-color` ]: getPresetCssVar(
 			border?.top?.color
 		),
-		[ `${ variablePrefix }border-right-color` ]: getCSSValueFromRawStyle(
+		[ `${ variablePrefix }border-right-color` ]: getPresetCssVar(
 			border?.right?.color
 		),
-		[ `${ variablePrefix }border-bottom-color` ]: getCSSValueFromRawStyle(
+		[ `${ variablePrefix }border-bottom-color` ]: getPresetCssVar(
 			border?.bottom?.color
 		),
-		[ `${ variablePrefix }border-left-color` ]: getCSSValueFromRawStyle(
+		[ `${ variablePrefix }border-left-color` ]: getPresetCssVar(
 			border?.left?.color
 		),
 		[ `${ variablePrefix }border-style` ]: border?.style,
@@ -89,33 +87,35 @@ export function getBorderCSSVars( style, cssVarPrefix, cssVarBreakpoint = '' ) {
 		[ `${ variablePrefix }border-right-style` ]: border?.right?.style,
 		[ `${ variablePrefix }border-bottom-style` ]: border?.bottom?.style,
 		[ `${ variablePrefix }border-left-style` ]: border?.left?.style,
-		[ `${ variablePrefix }border-width` ]: getCSSValueFromRawStyle(
-			border?.width
-		),
-		[ `${ variablePrefix }border-top-width` ]: getCSSValueFromRawStyle(
+		[ `${ variablePrefix }border-width` ]: getPresetCssVar( border?.width ),
+		[ `${ variablePrefix }border-top-width` ]: getPresetCssVar(
 			border?.top?.width
 		),
-		[ `${ variablePrefix }border-right-width` ]: getCSSValueFromRawStyle(
+		[ `${ variablePrefix }border-right-width` ]: getPresetCssVar(
 			border?.right?.width
 		),
-		[ `${ variablePrefix }border-bottom-width` ]: getCSSValueFromRawStyle(
+		[ `${ variablePrefix }border-bottom-width` ]: getPresetCssVar(
 			border?.bottom?.width
 		),
-		[ `${ variablePrefix }border-left-width` ]: getCSSValueFromRawStyle(
+		[ `${ variablePrefix }border-left-width` ]: getPresetCssVar(
 			border?.left?.width
 		),
 		[ `${ variablePrefix }border-radius` ]:
 			null != borderRadius && 'object' !== typeof borderRadius
-				? getCSSValueFromRawStyle( borderRadius )
+				? getPresetCssVar( borderRadius )
 				: undefined,
-		[ `${ variablePrefix }border-top-left-radius` ]:
-			getCSSValueFromRawStyle( borderRadius?.topLeft ),
-		[ `${ variablePrefix }border-top-right-radius` ]:
-			getCSSValueFromRawStyle( borderRadius?.topRight ),
-		[ `${ variablePrefix }border-bottom-left-radius` ]:
-			getCSSValueFromRawStyle( borderRadius?.bottomLeft ),
-		[ `${ variablePrefix }border-bottom-right-radius` ]:
-			getCSSValueFromRawStyle( borderRadius?.bottomRight ),
+		[ `${ variablePrefix }border-top-left-radius` ]: getPresetCssVar(
+			borderRadius?.topLeft
+		),
+		[ `${ variablePrefix }border-top-right-radius` ]: getPresetCssVar(
+			borderRadius?.topRight
+		),
+		[ `${ variablePrefix }border-bottom-left-radius` ]: getPresetCssVar(
+			borderRadius?.bottomLeft
+		),
+		[ `${ variablePrefix }border-bottom-right-radius` ]: getPresetCssVar(
+			borderRadius?.bottomRight
+		),
 	} );
 }
 

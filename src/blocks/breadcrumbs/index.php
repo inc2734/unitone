@@ -50,7 +50,7 @@ function render_block_unitone_breadcrumbs( $attributes ) {
 		$classes[] = 'unitone-breadcrumbs--divider:' . $attributes['divider'];
 	}
 	if ( ! empty( $attributes['fontSize'] ) ) {
-		$classes[] = 'has-' . $attributes['fontSize'] . '-font-size';
+		$classes[] = 'has-' . _wp_to_kebab_case( $attributes['fontSize'] ) . '-font-size';
 	}
 
 	$block_wrapper_attributes = get_block_wrapper_attributes(

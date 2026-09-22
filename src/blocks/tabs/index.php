@@ -39,7 +39,7 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 
 	$border_color = $attributes['borderColor'] ?? null;
 	if ( ! is_null( $border_color ) ) {
-		$wrapper_style[] = '--unitone--border-color:var(--wp--preset--color--' . $border_color . ')';
+		$wrapper_style[] = '--unitone--border-color:' . unitone_get_preset_css_var_from_slug( 'color', $border_color );
 	} elseif ( ! empty( $attributes['style']['border']['color'] ) ) {
 		$wrapper_style[] = '--unitone--border-color:' . $attributes['style']['border']['color'];
 	}
@@ -127,12 +127,12 @@ function render_block_unitone_tabs( $attributes, $content, $block ) {
 	foreach ( $inner_blocks as $i => $tab_panel ) {
 		$style = array();
 		if ( ! empty( $tab_panel['attrs']['backgroundColor'] ) ) {
-			$style[] = '--unitone--active-background-color: var(--wp--preset--color--' . $tab_panel['attrs']['backgroundColor'] . ')';
+			$style[] = '--unitone--active-background-color: ' . unitone_get_preset_css_var_from_slug( 'color', $tab_panel['attrs']['backgroundColor'] );
 		} elseif ( ! empty( $tab_panel['attrs']['style']['color']['background'] ) ) {
 			$style[] = '--unitone--active-background-color: ' . $tab_panel['attrs']['style']['color']['background'];
 		}
 		if ( ! empty( $tab_panel['attrs']['textColor'] ) ) {
-			$style[] = '--unitone--active-color: var(--wp--preset--color--' . $tab_panel['attrs']['textColor'] . ')';
+			$style[] = '--unitone--active-color: ' . unitone_get_preset_css_var_from_slug( 'color', $tab_panel['attrs']['textColor'] );
 		} elseif ( ! empty( $tab_panel['attrs']['style']['color']['text'] ) ) {
 			$style[] = '--unitone--active-color: ' . $tab_panel['attrs']['style']['color']['text'];
 		}

@@ -114,6 +114,46 @@ add_filter(
 );
 
 /**
+ * Keep accordion submenus independent of the overlay's open state.
+ *
+ * WordPress 7.1 forces isSubmenuOpen to true inside an open overlay, but
+ * the accordion style uses aria-expanded to collapse individual submenus.
+ *
+ * @see https://github.com/WordPress/gutenberg/pull/77563
+ */
+add_filter(
+	'render_block_core/navigation',
+	function ( $block_content ) {
+		$p = new \WP_HTML_Tag_Processor( $block_content );
+		if ( ! $p->next_tag( array( 'tag_name' => 'NAV' ) ) || ! $p->has_class( 'is-style-unitone-accordion' ) ) {
+			return $block_content;
+		}
+
+		$navigation_depth = 1;
+		while ( $p->next_tag( array( 'tag_closers' => 'visit' ) ) ) {
+			if ( 'NAV' === $p->get_tag() ) {
+				$navigation_depth += $p->is_tag_closer() ? -1 : 1;
+			}
+
+			// Nested navigation blocks retain their own submenu behavior.
+			if ( 1 !== $navigation_depth || $p->is_tag_closer() ) {
+				continue;
+			}
+
+			if (
+				'BUTTON' === $p->get_tag() &&
+				$p->has_class( 'wp-block-navigation-submenu__toggle' ) &&
+				'state.isSubmenuOpen' === $p->get_attribute( 'data-wp-bind--aria-expanded' )
+			) {
+				$p->set_attribute( 'data-wp-bind--aria-expanded', 'state.isMenuOpen' );
+			}
+		}
+
+		return $p->get_updated_html();
+	}
+);
+
+/**
  * Add CSS vars to core/navigation.
  */
 add_filter(

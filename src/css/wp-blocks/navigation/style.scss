@@ -459,6 +459,16 @@
 }
 
 /**
+ * Style: unitone
+ */
+.wp-block-navigation:where(.is-style-unitone) {
+	// Toggle icons
+	.wp-block-navigation__submenu-icon {
+		display: none !important;
+	}
+}
+
+/**
  * Style: unitone (Accordion)
  */
 .wp-block-navigation:where(.is-style-unitone-accordion) {

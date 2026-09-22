@@ -39,6 +39,7 @@
 		--unitone--gap: var(--unitone--s-1);
 		--unitone--column-gap: var(--unitone--gap);
 		--unitone--row-gap: 0px;
+		--unitone--max-width: var(--wp--style--global--wide-size, 100%);
 
 		--unitone--navigation-buttons--gap: var(--unitone--s-1);
 
@@ -60,6 +61,10 @@
 		color: inherit !important;
 	}
 
+	:where(.wp-block-navigation__responsive-container.has-modal-open) .wp-block-navigation__responsive-close {
+		max-width: var(--unitone--max-width);
+	}
+
 	:where(.wp-block-navigation__container) {
 		padding: 0;
 	}
@@ -74,7 +79,7 @@
 	.wp-block-navigation__responsive-container-close {
 		position: static;
 		display: block;
-		margin: var(--unitone--padding) var(--unitone--padding) 0 auto;
+		margin: var(--unitone--s-1) var(--unitone--padding) 0 auto;
 	}
 
 	&.has-hamburger-button-color {
@@ -100,17 +105,25 @@
 		}
 
 		&.has-overlay-menu-color {
-			.wp-block-navigation__responsive-container-content {
-				color: var(--unitone--overlay-menu-color) !important;
+			> .wp-block-navigation__responsive-container:where(:not(.disable-default-overlay)):not(:has(.unitone-overlay-menu)) {
+				.wp-block-navigation__responsive-container-content {
+					color: var(--unitone--overlay-menu-color) !important;
+				}
 			}
 		}
 
 		&.has-overlay-menu-background-color {
-			.wp-block-navigation__responsive-container {
+			> .wp-block-navigation__responsive-container:where(:not(.disable-default-overlay)):not(:has(.unitone-overlay-menu)) {
 				background-color: var(--unitone--overlay-menu-background-color) !important;
 			}
 		}
 	}
+}
+
+// Template parts use site defaults, just as they do in their standalone editor.
+.wp-block-navigation .wp-block-navigation__responsive-container:where(.disable-default-overlay, :has(.unitone-overlay-menu)) {
+	background-color: var(--wp--preset--color--unitone-background) !important;
+	color: var(--wp--preset--color--unitone-text) !important;
 }
 
 // Setting a minimum width for a button block within a navigation block does not work.
@@ -145,12 +158,16 @@
 		gap: inherit;
 	}
 
-	.wp-block-navigation__responsive-container-content,
-	.wp-block-navigation__responsive-container-content:has(.unitone-overlay-menu) {
+	.wp-block-navigation__responsive-container-content:where(:not(:has(:is(.unitone-overlay-menu, .wp-block-navigation__overlay-container)))) {
 		padding-top: var(--unitone--s-1);
 	}
 
 	.wp-block-navigation__responsive-container-content {
+		// Legacy templates manage their own spacing below the external close button.
+		&:has(> .unitone-overlay-menu) {
+			padding-top: 0;
+		}
+
 		&:where(:not(:has(:is(.unitone-overlay-menu, .wp-block-navigation__overlay-container)))) {
 			padding-right: var(--unitone--padding);
 			padding-bottom: var(--unitone--padding);
@@ -430,6 +447,11 @@
  */
 .unitone-overlay-menu {
 	display: none;
+
+	// The legacy overlay keeps its own close button outside the template part.
+	.unitone-overlay-menu__close {
+		display: none;
+	}
 }
 
 .wp-block-navigation:has(.is-menu-open) {

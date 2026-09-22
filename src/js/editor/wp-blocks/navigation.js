@@ -39,6 +39,13 @@ const hasCoreOverlay = ( attributes ) => {
 	return !! attributes?.overlay;
 };
 
+const hasOverlayTemplate = ( attributes ) => {
+	return (
+		hasCoreOverlay( attributes ) ||
+		!! attributes?.unitone?.replaceOverlayMenu
+	);
+};
+
 const hasUnitoneOverlay = ( attributes ) => {
 	return !! (
 		attributes?.unitone?.replaceOverlayMenu ||
@@ -82,6 +89,7 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 					attributes?.unitone?.overlayMenuBackgroundColor
 			  )
 			: attributes?.unitone?.overlayMenuCustomBackgroundColor;
+		const usesOverlayTemplate = hasOverlayTemplate( attributes );
 
 		props = {
 			...props,
@@ -91,18 +99,23 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 					'has-hamburger-button-color': !! hamburgerButtonColor,
 					'has-hamburger-button-background-color':
 						!! hamburgerButtonBackgroundColor,
-					'has-overlay-menu-color': !! overlayMenuColor,
+					'has-overlay-menu-color':
+						! usesOverlayTemplate && !! overlayMenuColor,
 					'has-overlay-menu-background-color':
-						!! overlayMenuBackgroundColor,
+						! usesOverlayTemplate && !! overlayMenuBackgroundColor,
 				} ),
 				style: {
 					...wrapperProps?.style,
 					'--unitone--hamburger-button-color': hamburgerButtonColor,
 					'--unitone--hamburger-button-background-color':
 						hamburgerButtonBackgroundColor,
-					'--unitone--overlay-menu-color': overlayMenuColor,
+					'--unitone--overlay-menu-color': usesOverlayTemplate
+						? undefined
+						: overlayMenuColor,
 					'--unitone--overlay-menu-background-color':
-						overlayMenuBackgroundColor,
+						usesOverlayTemplate
+							? undefined
+							: overlayMenuBackgroundColor,
 					'--unitone--help-text':
 						!! attributes?.unitone?.replaceOverlayMenu &&
 						! hasCoreOverlay( attributes )
@@ -408,7 +421,10 @@ const NavigationInspectorControls = ( {
 							} ),
 							clearable: true,
 						},
-					] }
+					].filter(
+						( setting, index ) =>
+							index < 2 || ! hasOverlayTemplate( attributes )
+					) }
 					{ ...colorGradientSettings }
 					gradients={ [] }
 					disableCustomGradients

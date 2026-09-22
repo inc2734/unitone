@@ -1,3 +1,8 @@
 #wpadminbar {
 	position: fixed !important;
 }
+
+.admin-bar:has(.wp-block-navigation__responsive-container.is-menu-open) #wpadminbar {
+	// Keep the admin bar visible above the navigation overlay (z-index: 100000).
+	z-index: 100001;
+}

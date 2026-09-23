@@ -57,7 +57,7 @@ const initializeFeatures = () => {
 
 	if (
 		document.querySelector(
-			'.wp-block-navigation:is(.is-style-unitone, .is-style-unitone-accordion).is-vertical'
+			'.wp-block-navigation:is(.is-style-unitone, .is-style-unitone-accordion).is-vertical, .wp-block-navigation.is-style-unitone-accordion'
 		)
 	) {
 		loadNavigation();

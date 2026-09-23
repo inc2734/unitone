@@ -13,3 +13,11 @@ npm run wp -- eval-file tests/preset.php
 ```
 
 両言語で `fixtures/preset-slugs.json` を共有し、WordPress の PHP が生成する識別子との一致を確認する。
+
+## ナビゲーションのサブメニュー
+
+オーバーレイ内のアコーディオンで、合成マウスイベントを含む `mousedown` 時のフォーカス移動をクリック後まで遅らせる処理を確認する。他のスタイルや通常表示には作用しない。
+
+```sh
+npm run test:js:navigation
+```

@@ -1,4 +1,8 @@
+import initNavigationPointer from './navigation-pointer';
+
 export default function initNavigation() {
+	initNavigationPointer();
+
 	const navigations = Array.from(
 		document.querySelectorAll(
 			'.wp-block-navigation:is(.is-style-unitone, .is-style-unitone-accordion).is-vertical'

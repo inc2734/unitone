@@ -69,6 +69,10 @@
 		width: auto;
 	}
 
+	:where(.unitone-mega-menu--width\:content, .unitone-mega-menu--width\:wide) .unitone-mega-menu__container {
+		left: calc(50% + var(--unitone--mega-menu-diff, 0px));
+	}
+
 	.unitone-mega-menu__placement {
 		max-width: 100%;
 	}

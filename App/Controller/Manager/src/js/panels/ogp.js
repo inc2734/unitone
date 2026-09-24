@@ -11,6 +11,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 
 	const saveSettings = () => {
+		if ( settingsSaving ) {
+			return;
+		}
+
 		setSettingsSaving( 'save' );
 
 		withMinDelay(
@@ -28,6 +32,10 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	};
 
 	const resetSettings = () => {
+		if ( settingsSaving ) {
+			return;
+		}
+
 		setSettingsSaving( 'reset' );
 
 		setSettings( {

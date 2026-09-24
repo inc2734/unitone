@@ -150,7 +150,12 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 	const [ baseFontSizeInput, setBaseFontSizeInput ] = useState( '' );
 	const [ isBaseFontSizeInputDirty, setIsBaseFontSizeInputDirty ] =
 		useState( false );
-	const baseFontSize = settings?.[ 'base-font-size' ];
+	const rawBaseFontSize = settings?.[ 'base-font-size' ];
+	const baseFontSize =
+		'number' === typeof rawBaseFontSize &&
+		Number.isFinite( rawBaseFontSize )
+			? rawBaseFontSize
+			: undefined;
 	const previewRootFontSize = getRootFontSize( baseFontSize );
 	const previewFontSizePresetStyles = getPreviewFontSizePresetStyles(
 		settings?.fontSizes

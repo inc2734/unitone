@@ -66,6 +66,18 @@ const HOVER_ANIMATION_TYPES = [
 		value: 'flex-grow',
 		speed: 0.2,
 	},
+	{
+		label: 'shakeX',
+		value: 'shakeX',
+		speed: 0.4,
+		distance: 10,
+	},
+	{
+		label: 'shakeY',
+		value: 'shakeY',
+		speed: 0.4,
+		distance: 10,
+	},
 ];
 
 const HOVER_ANIMATION_TYPE_OPTIONS = [
@@ -236,6 +248,8 @@ function HoverAnimationPopover( {
 	onChangeInitialOpacity,
 	flexGrow,
 	onChangeFlexGrow,
+	distance,
+	onChangeDistance,
 	group,
 	onChangeGroup,
 	trigger,
@@ -449,6 +463,25 @@ function HoverAnimationPopover( {
 								/>
 							) }
 
+							{ ( 'shakeX' === type || 'shakeY' === type ) && (
+								<RangeControl
+									__nextHasNoMarginBottom
+									label={ __( 'Distance', 'unitone' ) }
+									value={ normalizeForRangeControl(
+										distance
+									) }
+									step={ 1 }
+									min={ 0 }
+									max={ 50 }
+									onChange={ ( newValue ) =>
+										onChangeDistance(
+											normalizeForRangeControl( newValue )
+										)
+									}
+									allowReset
+								/>
+							) }
+
 							<ToggleGroupControl
 								__nextHasNoMarginBottom
 								label={ __( 'Trigger', 'unitone' ) }
@@ -547,6 +580,10 @@ export function HoverAnimationEdit( {
 		unitone?.hoverAnimation?.flexGrow ??
 		defaultValue?.flexGrow ??
 		animationType?.flexGrow;
+	const distance =
+		unitone?.hoverAnimation?.distance ??
+		defaultValue?.distance ??
+		animationType?.distance;
 	const group =
 		unitone?.hoverAnimation?.group ?? defaultValue?.group ?? false;
 	const trigger = group
@@ -667,6 +704,7 @@ export function HoverAnimationEdit( {
 					: undefined
 			}
 			flexGrow={ flexGrow ?? '' }
+			distance={ null != distance ? parseFloat( distance ) : undefined }
 			group={ group }
 			trigger={ trigger ?? 'self' }
 			onChangeType={ ( newAttribute ) => {
@@ -717,6 +755,9 @@ export function HoverAnimationEdit( {
 			} }
 			onChangeFlexGrow={ ( newAttribute ) =>
 				setHoverAnimationAttribute( 'flexGrow', newAttribute )
+			}
+			onChangeDistance={ ( newAttribute ) =>
+				setHoverAnimationAttribute( 'distance', newAttribute )
 			}
 			onChangeGroup={ ( newAttribute ) => {
 				setAttributes( {
@@ -797,6 +838,7 @@ export function withHoverAnimationBlockProps( settings ) {
 	const opacity = newHoverAnimation?.opacity;
 	const initialOpacity = newHoverAnimation?.initialOpacity;
 	const flexGrow = newHoverAnimation?.flexGrow;
+	const distance = newHoverAnimation?.distance;
 	const group = newHoverAnimation?.group;
 	const trigger = group ? 'self' : newHoverAnimation?.trigger ?? 'self';
 	const hasScale = 'scale' === type && null != scale;
@@ -848,6 +890,11 @@ export function withHoverAnimationBlockProps( settings ) {
 					: undefined,
 				'--unitone--hover-animation-flex-grow':
 					flexGrow && 'flex-grow' === type ? flexGrow : undefined,
+				'--unitone--hover-animation-distance':
+					( 'shakeX' === type || 'shakeY' === type ) &&
+					null != distance
+						? distance
+						: undefined,
 			},
 		},
 	};

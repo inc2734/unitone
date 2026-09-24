@@ -1043,6 +1043,13 @@ add_filter(
 					$add_style( '--unitone--hover-animation-flex-grow', $hover_animation_flex_grow );
 				}
 
+				if ( in_array( $hover_animation_type, array( 'shakeX', 'shakeY' ), true ) ) {
+					$hover_animation_distance = $get_attribute( 'hoverAnimation.distance' );
+					if ( null !== $hover_animation_distance ) {
+						$add_style( '--unitone--hover-animation-distance', $hover_animation_distance );
+					}
+				}
+
 				$hover_animation_trigger = $get_attribute( 'hoverAnimation.trigger' );
 				if ( 'group' === $hover_animation_trigger ) {
 					$add_data_attribute( 'data-unitone-hover-animation', '-trigger:group' );

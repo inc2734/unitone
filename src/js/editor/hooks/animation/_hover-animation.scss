@@ -34,6 +34,30 @@
 	--unitone--hover-animation-flex-grow: initial;
 }
 
+@keyframes unitoneHoverShakeX {
+	0%, 100% { translate: 0 0; }
+	20%, 60% { translate: calc(var(--unitone--hover-animation-distance) * -1px) 0; }
+	40%, 80% { translate: calc(var(--unitone--hover-animation-distance) * 1px) 0; }
+}
+
+[data-unitone-hover-animation~=shakeX] {
+	--unitone--hover-animation-name: unitoneHoverShakeX;
+	--unitone--hover-animation-duration: .4s;
+	--unitone--hover-animation-distance: 10;
+}
+
+@keyframes unitoneHoverShakeY {
+	0%, 100% { translate: 0 0; }
+	20%, 60% { translate: 0 calc(var(--unitone--hover-animation-distance) * -1px); }
+	40%, 80% { translate: 0 calc(var(--unitone--hover-animation-distance) * 1px); }
+}
+
+[data-unitone-hover-animation~=shakeY] {
+	--unitone--hover-animation-name: unitoneHoverShakeY;
+	--unitone--hover-animation-duration: .4s;
+	--unitone--hover-animation-distance: 10;
+}
+
 @each $_key, $_value in easing.$easings {
 	[data-unitone-hover-animation~=-animation-timing-function\:#{ $_key }] {
 		--unitone--hover-animation-timing-function: #{ $_value };
@@ -59,6 +83,13 @@
 
 	&[data-unitone-hover-animation~=flex-grow] {
 		flex-grow: var(--unitone--hover-animation-flex-grow) !important;
+	}
+
+	&:is([data-unitone-hover-animation~=shakeX], [data-unitone-hover-animation~=shakeY]) {
+		animation:
+			var(--unitone--hover-animation-duration)
+			var(--unitone--hover-animation-timing-function)
+			var(--unitone--hover-animation-name);
 	}
 }
 
@@ -92,4 +123,11 @@
 	[data-unitone-hover-animation-group][data-unitone-layout~="decorator"]:not(.wp-block):has(:focus-visible) [data-unitone-hover-animation~="-trigger:group"]
 ) {
 	@include active-hover-animation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-unitone-hover-animation~=shakeX],
+	[data-unitone-hover-animation~=shakeY] {
+		animation: none !important;
+	}
 }

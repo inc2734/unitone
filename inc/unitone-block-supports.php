@@ -952,6 +952,27 @@ add_filter(
 				$add_data_attribute( 'data-unitone-loop-animation', $loop_animation_type );
 				$add_style( '--unitone--loop-animation-duration', $loop_animation_speed ? $loop_animation_speed . 's' : null );
 
+				if ( in_array( $loop_animation_type, array( 'bounce', 'shakeX', 'shakeY' ), true ) ) {
+					$loop_animation_distance = $get_attribute( 'loopAnimation.distance' );
+					if ( null !== $loop_animation_distance ) {
+						$add_style( '--unitone--loop-animation-distance', $loop_animation_distance );
+					}
+				}
+
+				if ( 'flash' === $loop_animation_type ) {
+					$loop_animation_opacity = $get_attribute( 'loopAnimation.opacity' );
+					if ( null !== $loop_animation_opacity ) {
+						$add_style( '--unitone--loop-animation-opacity', $loop_animation_opacity );
+					}
+				}
+
+				if ( 'pulse' === $loop_animation_type ) {
+					$loop_animation_scale = $get_attribute( 'loopAnimation.scale' );
+					if ( null !== $loop_animation_scale ) {
+						$add_style( '--unitone--loop-animation-scale', $loop_animation_scale );
+					}
+				}
+
 				$loop_animation_interval = $get_attribute( 'loopAnimation.interval' );
 				if ( $loop_animation_interval || '0' === $loop_animation_interval ) {
 					$add_style( '--unitone--loop-animation-interval', $loop_animation_interval . 's' );

@@ -36,30 +36,35 @@ const LOOP_ANIMATION_TYPES = [
 		value: 'bounce',
 		speed: 1,
 		interval: 0,
+		distance: 30,
 	},
 	{
 		label: 'flash',
 		value: 'flash',
 		speed: 1,
 		interval: 0,
+		opacity: 0,
 	},
 	{
 		label: 'pulse',
 		value: 'pulse',
 		speed: 1,
 		interval: 0,
+		scale: 1.05,
 	},
 	{
 		label: 'shakeX',
 		value: 'shakeX',
 		speed: 1,
 		interval: 0,
+		distance: 10,
 	},
 	{
 		label: 'shakeY',
 		value: 'shakeY',
 		speed: 1,
 		interval: 0,
+		distance: 10,
 	},
 ];
 
@@ -192,6 +197,12 @@ function LoopAnimationPopover( {
 	onChangeInterval,
 	easing,
 	onChangeEasing,
+	distance,
+	onChangeDistance,
+	opacity,
+	onChangeOpacity,
+	scale,
+	onChangeScale,
 	pauseOnHover,
 	onChangePauseOnHover,
 	onMouseDownCheckBehavior,
@@ -277,6 +288,80 @@ function LoopAnimationPopover( {
 								}
 							/>
 
+							{ 'bounce' === type && (
+								<RangeControl
+									__nextHasNoMarginBottom
+									label={ __( 'Distance', 'unitone' ) }
+									value={ normalizeForRangeControl(
+										distance
+									) }
+									step={ 1 }
+									min={ 0 }
+									max={ 60 }
+									onChange={ ( newValue ) =>
+										onChangeDistance(
+											normalizeForRangeControl( newValue )
+										)
+									}
+									allowReset
+								/>
+							) }
+
+							{ 'flash' === type && (
+								<RangeControl
+									__nextHasNoMarginBottom
+									label={ __( 'Opacity', 'unitone' ) }
+									value={ normalizeForRangeControl(
+										opacity
+									) }
+									step={ 0.01 }
+									min={ 0 }
+									max={ 1 }
+									onChange={ ( newValue ) =>
+										onChangeOpacity(
+											normalizeForRangeControl( newValue )
+										)
+									}
+									allowReset
+								/>
+							) }
+
+							{ 'pulse' === type && (
+								<RangeControl
+									__nextHasNoMarginBottom
+									label={ __( 'Scale', 'unitone' ) }
+									value={ normalizeForRangeControl( scale ) }
+									step={ 0.01 }
+									min={ 1 }
+									max={ 2 }
+									onChange={ ( newValue ) =>
+										onChangeScale(
+											normalizeForRangeControl( newValue )
+										)
+									}
+									allowReset
+								/>
+							) }
+
+							{ ( 'shakeX' === type || 'shakeY' === type ) && (
+								<RangeControl
+									__nextHasNoMarginBottom
+									label={ __( 'Distance', 'unitone' ) }
+									value={ normalizeForRangeControl(
+										distance
+									) }
+									step={ 1 }
+									min={ 0 }
+									max={ 50 }
+									onChange={ ( newValue ) =>
+										onChangeDistance(
+											normalizeForRangeControl( newValue )
+										)
+									}
+									allowReset
+								/>
+							) }
+
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __( 'Pause on hover', 'unitone' ) }
@@ -326,6 +411,18 @@ export function LoopAnimationEdit( {
 		defaultValue?.interval ??
 		animationType?.interval;
 	const easing = unitone?.loopAnimation?.easing ?? defaultValue?.easing;
+	const distance =
+		unitone?.loopAnimation?.distance ??
+		defaultValue?.distance ??
+		animationType?.distance;
+	const opacity =
+		unitone?.loopAnimation?.opacity ??
+		defaultValue?.opacity ??
+		animationType?.opacity;
+	const scale =
+		unitone?.loopAnimation?.scale ??
+		defaultValue?.scale ??
+		animationType?.scale;
 	const pauseOnHover =
 		unitone?.loopAnimation?.pauseOnHover ??
 		defaultValue?.pauseOnHover ??
@@ -372,6 +469,9 @@ export function LoopAnimationEdit( {
 			speed={ null != speed ? parseFloat( speed ) : undefined }
 			interval={ null != interval ? parseFloat( interval ) : undefined }
 			easing={ easing ?? '' }
+			distance={ null != distance ? parseFloat( distance ) : undefined }
+			opacity={ null != opacity ? parseFloat( opacity ) : undefined }
+			scale={ null != scale ? parseFloat( scale ) : undefined }
 			pauseOnHover={ pauseOnHover }
 			onChangeType={ ( newAttribute ) => {
 				setAttributes( {
@@ -397,6 +497,15 @@ export function LoopAnimationEdit( {
 			}
 			onChangeEasing={ ( newAttribute ) =>
 				setLoopAnimationAttribute( 'easing', newAttribute )
+			}
+			onChangeDistance={ ( newAttribute ) =>
+				setLoopAnimationAttribute( 'distance', newAttribute )
+			}
+			onChangeOpacity={ ( newAttribute ) =>
+				setLoopAnimationAttribute( 'opacity', newAttribute )
+			}
+			onChangeScale={ ( newAttribute ) =>
+				setLoopAnimationAttribute( 'scale', newAttribute )
 			}
 			onChangePauseOnHover={ ( newAttribute ) =>
 				setLoopAnimationAttribute( 'pauseOnHover', newAttribute )
@@ -451,6 +560,9 @@ export function withLoopAnimationBlockProps( settings ) {
 	const speed = newLoopAnimation?.speed;
 	const interval = newLoopAnimation?.interval;
 	const easing = newLoopAnimation?.easing;
+	const distance = newLoopAnimation?.distance;
+	const opacity = newLoopAnimation?.opacity;
+	const scale = newLoopAnimation?.scale;
 	const pauseOnHover = newLoopAnimation?.pauseOnHover;
 	const hasInterval = null != interval && 0 < parseFloat( interval );
 
@@ -475,6 +587,17 @@ export function withLoopAnimationBlockProps( settings ) {
 					null != speed ? `${ speed }s` : undefined,
 				'--unitone--loop-animation-interval':
 					null != interval ? `${ interval }s` : undefined,
+				'--unitone--loop-animation-distance':
+					( 'bounce' === type ||
+						'shakeX' === type ||
+						'shakeY' === type ) &&
+					null != distance
+						? distance
+						: undefined,
+				'--unitone--loop-animation-opacity':
+					'flash' === type && null != opacity ? opacity : undefined,
+				'--unitone--loop-animation-scale':
+					'pulse' === type && null != scale ? scale : undefined,
 			},
 		},
 	};

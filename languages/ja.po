@@ -3236,7 +3236,7 @@ msgstr "ポップオーバーを開く"
 msgid "Popover placement"
 msgstr "ポップオーバーの配置"
 
-#: dist/blocks/reel/index.js:1
+#: dist/blocks/reel/index.js:1 dist/js/editor/editor.js:13
 msgid "Height"
 msgstr "高さ"
 
@@ -4811,6 +4811,10 @@ msgstr "threshold"
 #: dist/js/editor/editor.js:13
 msgid "Interval"
 msgstr "インターバル"
+
+#: dist/js/editor/editor.js:13
+msgid "Distance"
+msgstr "移動距離"
 
 #: dist/js/editor/editor.js:13
 msgid "Hover"

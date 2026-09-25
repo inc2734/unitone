@@ -5,8 +5,17 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import { getTextureStyle } from './utils';
 
 export default function ( { attributes } ) {
-	const { type, color, customColor, gap, size, shapeSize, offset, radius } =
-		attributes;
+	const {
+		type,
+		color,
+		customColor,
+		gap,
+		size,
+		shapeSize,
+		shapePoints,
+		offset,
+		radius,
+	} = attributes;
 
 	const blockProps = useBlockProps.save( {
 		'data-unitone-layout': clsx( 'texture', {
@@ -19,6 +28,7 @@ export default function ( { attributes } ) {
 			gap,
 			size,
 			shapeSize,
+			shapePoints,
 			offset,
 			radius,
 		} ),

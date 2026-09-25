@@ -12,6 +12,7 @@ import {
 } from '@wordpress/block-editor';
 
 import {
+	Button,
 	SelectControl,
 	RangeControl,
 	__experimentalToolsPanel as ToolsPanel,
@@ -33,10 +34,13 @@ import {
 import metadata from './block.json';
 
 import {
+	getShapePoints,
+	getShapePointsFromShapeSize,
 	getTextureStyle,
 	getTextureTypeDefaultAttributes,
 	getTextureTypeSettings,
 	isTextureSettingEnabled,
+	legacyShapeSizeDefaults,
 	typeOptions,
 } from './utils';
 
@@ -58,6 +62,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		gap,
 		size,
 		shapeSize,
+		shapePoints,
 		offset,
 		radius,
 		templateLock,
@@ -84,6 +89,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 			gap,
 			size,
 			shapeSize,
+			shapePoints,
 			offset,
 			radius,
 		} ),
@@ -137,6 +143,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 		getTextureTypeEditorDefaultAttributes( defaultType );
 	const currentTypeDefaultAttributes =
 		getTextureTypeEditorDefaultAttributes( type );
+	const currentShapePoints = getShapePoints( type, shapePoints );
 
 	return (
 		<>
@@ -288,60 +295,137 @@ export default function ( { attributes, setAttributes, clientId } ) {
 						</ToolsPanelItem>
 					) }
 
-					{ isTextureSettingEnabled( type, 'shapeSize' ) && (
+					{ isTextureSettingEnabled( type, 'shapeSize' ) &&
+						! currentShapePoints && (
+							<ToolsPanelItem
+								hasValue={ () =>
+									JSON.stringify( shapeSize ) !==
+									JSON.stringify( legacyShapeSizeDefaults )
+								}
+								isShownByDefault
+								label={ __( 'Size', 'unitone' ) }
+								onDeselect={ () =>
+									setAttributes( {
+										shapeSize: {
+											...legacyShapeSizeDefaults,
+										},
+									} )
+								}
+							>
+								<div style={ { display: 'grid', gap: '13px' } }>
+									<UnitControl
+										label={ __( 'Top size', 'unitone' ) }
+										min={ 0 }
+										value={ normalizeForUnitControl(
+											shapeSize?.top
+										) }
+										onChange={ ( value ) =>
+											setAttributes( {
+												shapeSize: {
+													...shapeSize,
+													top: normalizeForUnitControl(
+														value
+													),
+												},
+											} )
+										}
+									/>
+
+									<UnitControl
+										label={ __( 'Bottom size', 'unitone' ) }
+										min={ 0 }
+										value={ normalizeForUnitControl(
+											shapeSize?.bottom
+										) }
+										onChange={ ( value ) =>
+											setAttributes( {
+												shapeSize: {
+													...shapeSize,
+													bottom: normalizeForUnitControl(
+														value
+													),
+												},
+											} )
+										}
+									/>
+
+									<Button
+										variant="secondary"
+										onClick={ () =>
+											setAttributes( {
+												shapeSize: undefined,
+												shapePoints:
+													getShapePointsFromShapeSize(
+														type,
+														shapeSize
+													),
+											} )
+										}
+									>
+										{ __(
+											'Convert to new format',
+											'unitone'
+										) }
+									</Button>
+								</div>
+							</ToolsPanelItem>
+						) }
+
+					{ currentShapePoints && (
 						<ToolsPanelItem
 							hasValue={ () =>
-								JSON.stringify( shapeSize ) !==
+								JSON.stringify( currentShapePoints ) !==
 								JSON.stringify(
-									currentTypeDefaultAttributes.shapeSize
+									currentTypeDefaultAttributes.shapePoints
 								)
 							}
 							isShownByDefault
-							label={ __( 'Size', 'unitone' ) }
+							label={ __( 'Position', 'unitone' ) }
 							onDeselect={ () =>
 								setAttributes( {
-									shapeSize: {
-										...currentTypeDefaultAttributes.shapeSize,
+									shapePoints: {
+										...currentTypeDefaultAttributes.shapePoints,
 									},
 								} )
 							}
 						>
 							<div style={ { display: 'grid', gap: '13px' } }>
-								<UnitControl
-									label={ __( 'Top size', 'unitone' ) }
-									min={ 0 }
-									value={ normalizeForUnitControl(
-										shapeSize?.top
-									) }
-									onChange={ ( value ) =>
-										setAttributes( {
-											shapeSize: {
-												...shapeSize,
-												top: normalizeForUnitControl(
-													value
-												),
-											},
-										} )
-									}
-								/>
-
-								<UnitControl
-									label={ __( 'Bottom size', 'unitone' ) }
-									min={ 0 }
-									value={ normalizeForUnitControl(
-										shapeSize?.bottom
-									) }
-									onChange={ ( value ) =>
-										setAttributes( {
-											shapeSize: {
-												...shapeSize,
-												bottom: normalizeForUnitControl(
-													value
-												),
-											},
-										} )
-									}
-								/>
+								{ [
+									[
+										'topLeft',
+										__( 'Top / Left', 'unitone' ),
+									],
+									[
+										'bottomLeft',
+										__( 'Bottom / Left', 'unitone' ),
+									],
+									[
+										'topRight',
+										__( 'Top / Right', 'unitone' ),
+									],
+									[
+										'bottomRight',
+										__( 'Bottom / Right', 'unitone' ),
+									],
+								].map( ( [ key, label ] ) => (
+									<UnitControl
+										key={ key }
+										label={ label }
+										min={ 0 }
+										value={ currentShapePoints[ key ] }
+										onChange={ ( value ) =>
+											setAttributes( {
+												shapePoints: {
+													...currentShapePoints,
+													[ key ]:
+														normalizeForUnitControl(
+															value
+														),
+												},
+											} )
+										}
+									/>
+								) ) }
 							</div>
 						</ToolsPanelItem>
 					) }

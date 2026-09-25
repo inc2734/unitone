@@ -3094,19 +3094,19 @@ msgstr "背景画像"
 msgid "Background framed image"
 msgstr "背景フレーム画像"
 
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/texture/index.js:1
 msgid "Top / Left"
 msgstr "上 / 左"
 
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/texture/index.js:1
 msgid "Top / Right"
 msgstr "上 / 右"
 
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/texture/index.js:1
 msgid "Bottom / Left"
 msgstr "下 / 左"
 
-#: dist/blocks/layers/index.js:1
+#: dist/blocks/layers/index.js:1 dist/blocks/texture/index.js:1
 msgid "Bottom / Right"
 msgstr "下 / 右"
 
@@ -3996,6 +3996,10 @@ msgid "Bottom size"
 msgstr "下部のサイズ"
 
 #: dist/blocks/texture/index.js:1
+msgid "Convert to new format"
+msgstr "新方式へ変換"
+
+#: dist/blocks/texture/index.js:1
 msgid "Offset"
 msgstr "オフセット"
 
@@ -4742,7 +4746,7 @@ msgstr "sticky（上部）"
 msgid "sticky (Top / Admin bar compatible)"
 msgstr "sticky（上部 / 管理バー対応）"
 
-#: dist/js/editor/editor.js:13
+#: dist/blocks/texture/index.js:1 dist/js/editor/editor.js:13
 msgid "Position"
 msgstr "位置"
 

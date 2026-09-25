@@ -181,28 +181,34 @@ export const typeOptions = [
 		label: __( 'Slash shape', 'unitone' ),
 		value: 'slash-shape',
 		default: {
-			shapeSize: {
-				top: '25%',
-				bottom: '25%',
+			shapePoints: {
+				topLeft: '75%',
+				bottomLeft: '100%',
+				topRight: '0%',
+				bottomRight: '25%',
 			},
 		},
 		settings: {
 			color: true,
 			shapeSize: true,
+			shapePoints: true,
 		},
 	},
 	{
 		label: __( 'Backslash shape', 'unitone' ),
 		value: 'backslash-shape',
 		default: {
-			shapeSize: {
-				top: '25%',
-				bottom: '25%',
+			shapePoints: {
+				topLeft: '0%',
+				bottomLeft: '25%',
+				topRight: '75%',
+				bottomRight: '100%',
 			},
 		},
 		settings: {
 			color: true,
 			shapeSize: true,
+			shapePoints: true,
 		},
 	},
 ];
@@ -257,6 +263,78 @@ const getPositiveUnitValue = ( value ) => {
 	return value;
 };
 
+const getShapePointValue = ( value, fallback ) =>
+	'string' === typeof value && value.trim() ? value : fallback;
+
+export const legacyShapeSizeDefaults = { top: '25%', bottom: '25%' };
+
+const getTopPositionFromBottomSize = ( bottomSize, fallback ) => {
+	const value = 'string' === typeof bottomSize ? bottomSize.trim() : '';
+	const percentage = /^(\d*\.?\d+)%$/.exec( value );
+
+	if ( percentage ) {
+		const position = 100 - Number( percentage[ 1 ] );
+		return 0 <= position ? `${ position }%` : fallback;
+	}
+
+	if ( /^0(?:\.0+)?(?:[a-z]+)?$/i.test( value ) ) {
+		return '100%';
+	}
+
+	return fallback;
+};
+
+export const getShapePoints = ( type, shapePoints ) => {
+	if ( ! shapePoints || ! isTextureSettingEnabled( type, 'shapePoints' ) ) {
+		return undefined;
+	}
+
+	const defaults = typeOptions.find( ( option ) => option.value === type )
+		.default.shapePoints;
+	return {
+		topLeft: getShapePointValue( shapePoints?.topLeft, defaults.topLeft ),
+		bottomLeft: getShapePointValue(
+			shapePoints?.bottomLeft,
+			defaults.bottomLeft
+		),
+		topRight: getShapePointValue(
+			shapePoints?.topRight,
+			defaults.topRight
+		),
+		bottomRight: getShapePointValue(
+			shapePoints?.bottomRight,
+			defaults.bottomRight
+		),
+	};
+};
+
+export const getShapePointsFromShapeSize = ( type, shapeSize ) => {
+	const top = shapeSize?.top || legacyShapeSizeDefaults.top;
+	const bottom = shapeSize?.bottom || legacyShapeSizeDefaults.bottom;
+	const defaults = typeOptions.find( ( option ) => option.value === type )
+		?.default?.shapePoints;
+
+	if ( 'slash-shape' === type ) {
+		return {
+			topLeft: getTopPositionFromBottomSize( bottom, defaults.topLeft ),
+			bottomLeft: defaults.bottomLeft,
+			topRight: defaults.topRight,
+			bottomRight: top,
+		};
+	}
+
+	if ( 'backslash-shape' === type ) {
+		return {
+			topLeft: defaults.topLeft,
+			bottomLeft: defaults.bottomLeft,
+			topRight: getTopPositionFromBottomSize( bottom, defaults.topRight ),
+			bottomRight: defaults.bottomRight,
+		};
+	}
+
+	return undefined;
+};
+
 // Keep the default output stable for save() and normalize only editor previews.
 export const getTextureStyle = ( {
 	normalizePresets = false,
@@ -266,64 +344,75 @@ export const getTextureStyle = ( {
 	gap,
 	size,
 	shapeSize,
+	shapePoints,
 	offset,
 	radius,
-} ) => ( {
-	'--unitone--texture-color': isTextureSettingEnabled( type, 'color' )
-		? getPresetOrCustomColor( color, customColor, normalizePresets )
-		: undefined,
-	'--unitone--texture-gap': isTextureSettingEnabled( type, 'gap' )
-		? getPixelValue( gap )
-		: undefined,
-	'--unitone--texture-size': isTextureSettingEnabled( type, 'size' )
-		? getPixelValue( size )
-		: undefined,
-	'--unitone--texture-band-top-size': isTextureSettingEnabled(
-		type,
-		'shapeSize'
-	)
-		? shapeSize?.top
-		: undefined,
-	'--unitone--texture-band-bottom-size': isTextureSettingEnabled(
-		type,
-		'shapeSize'
-	)
-		? shapeSize?.bottom
-		: undefined,
-	'--unitone--texture-top': isTextureSettingEnabled( type, 'offset' )
-		? getPositiveUnitValue( offset?.top )
-		: undefined,
-	'--unitone--texture-right': isTextureSettingEnabled( type, 'offset' )
-		? getPositiveUnitValue( offset?.right )
-		: undefined,
-	'--unitone--texture-bottom': isTextureSettingEnabled( type, 'offset' )
-		? getPositiveUnitValue( offset?.bottom )
-		: undefined,
-	'--unitone--texture-left': isTextureSettingEnabled( type, 'offset' )
-		? getPositiveUnitValue( offset?.left )
-		: undefined,
-	'--unitone--texture-border-top-left-radius': isTextureSettingEnabled(
-		type,
-		'radius'
-	)
-		? radius?.topLeft
-		: undefined,
-	'--unitone--texture-border-top-right-radius': isTextureSettingEnabled(
-		type,
-		'radius'
-	)
-		? radius?.topRight
-		: undefined,
-	'--unitone--texture-border-bottom-right-radius': isTextureSettingEnabled(
-		type,
-		'radius'
-	)
-		? radius?.bottomRight
-		: undefined,
-	'--unitone--texture-border-bottom-left-radius': isTextureSettingEnabled(
-		type,
-		'radius'
-	)
-		? radius?.bottomLeft
-		: undefined,
-} );
+} ) => {
+	const points = getShapePoints( type, shapePoints );
+
+	return {
+		'--unitone--texture-color': isTextureSettingEnabled( type, 'color' )
+			? getPresetOrCustomColor( color, customColor, normalizePresets )
+			: undefined,
+		'--unitone--texture-gap': isTextureSettingEnabled( type, 'gap' )
+			? getPixelValue( gap )
+			: undefined,
+		'--unitone--texture-size': isTextureSettingEnabled( type, 'size' )
+			? getPixelValue( size )
+			: undefined,
+		'--unitone--texture-band-top-size':
+			isTextureSettingEnabled( type, 'shapeSize' ) && ! points
+				? shapeSize?.top
+				: undefined,
+		'--unitone--texture-band-bottom-size':
+			isTextureSettingEnabled( type, 'shapeSize' ) && ! points
+				? shapeSize?.bottom
+				: undefined,
+		'--unitone--texture-shape-top-left-y': points
+			? points.topLeft
+			: undefined,
+		'--unitone--texture-shape-bottom-left-y': points
+			? points.bottomLeft
+			: undefined,
+		'--unitone--texture-shape-top-right-y': points
+			? points.topRight
+			: undefined,
+		'--unitone--texture-shape-bottom-right-y': points
+			? points.bottomRight
+			: undefined,
+		'--unitone--texture-top': isTextureSettingEnabled( type, 'offset' )
+			? getPositiveUnitValue( offset?.top )
+			: undefined,
+		'--unitone--texture-right': isTextureSettingEnabled( type, 'offset' )
+			? getPositiveUnitValue( offset?.right )
+			: undefined,
+		'--unitone--texture-bottom': isTextureSettingEnabled( type, 'offset' )
+			? getPositiveUnitValue( offset?.bottom )
+			: undefined,
+		'--unitone--texture-left': isTextureSettingEnabled( type, 'offset' )
+			? getPositiveUnitValue( offset?.left )
+			: undefined,
+		'--unitone--texture-border-top-left-radius': isTextureSettingEnabled(
+			type,
+			'radius'
+		)
+			? radius?.topLeft
+			: undefined,
+		'--unitone--texture-border-top-right-radius': isTextureSettingEnabled(
+			type,
+			'radius'
+		)
+			? radius?.topRight
+			: undefined,
+		'--unitone--texture-border-bottom-right-radius':
+			isTextureSettingEnabled( type, 'radius' )
+				? radius?.bottomRight
+				: undefined,
+		'--unitone--texture-border-bottom-left-radius': isTextureSettingEnabled(
+			type,
+			'radius'
+		)
+			? radius?.bottomLeft
+			: undefined,
+	};
+};

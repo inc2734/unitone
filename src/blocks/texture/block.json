@@ -33,6 +33,9 @@
 				"bottom": "0px"
 			}
 		},
+		"shapePoints": {
+			"type": "object"
+		},
 		"offset": {
 			"type": "object",
 			"default": {

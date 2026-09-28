@@ -11,7 +11,7 @@
 - hover 色の各項目は未設定時に初期表示せず、パネルのメニューから追加できるようにする。設定済みの項目は表示する。
 - 通常のテキスト色・背景色は、対応する `unitone/*` ブロックの `color.__experimentalDefaultControls` を有効にしてコアの用途別パネルへ表示する。
 - 汎用のレイアウト／コンテンツコンテナでは、コアの `color.heading`／`color.button` サポートを有効にし、内部の見出しと標準ボタンの色を「要素」パネルで設定できるようにする。
-- 内部要素固有の色と専用機能の色は、それぞれ従来の色パネルまたは専用パネルに残す。
+- マーカー色は「要素」パネルに配置し、その他の内部要素固有の色と専用機能の色は、それぞれ従来の色パネルまたは専用パネルに残す。
 - 「すべてリセット」は、そのパネルに配置した unitone 設定だけを対象にする。
 - 通常の背景グラデーションは `background.gradient` を使用する。ただし、既存コンテンツの `gradient` と `style.color.gradient` を引き続き認識・描画するため、Core ブロックと同様に `color.gradients` も併存させる。既存値の一括変換は行わず、Core の編集処理による `style.background.gradient` への移行に委ねる。
 
@@ -22,5 +22,6 @@
 ## 関連情報
 
 - [`src/js/editor/hooks/color/color.js`](../../../src/js/editor/hooks/color/color.js)
+- [`src/js/editor/hooks/elements/elements.js`](../../../src/js/editor/hooks/elements/elements.js)
 - [`src/js/utils/background.js`](../../../src/js/utils/background.js)
 - [WordPress 7.1 対応 Issue](https://github.com/inc2734/unitone/issues/829)

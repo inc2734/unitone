@@ -61,18 +61,18 @@ import {
 } from './layout/layout';
 
 import {
-	AlignmentDistributionPanel,
-	withAlignmentDistributionBlockProps,
-	resetAlignmentDistribution,
-} from './alignment-distribution/alignment-distribution';
-
-import {
 	BorderPanel,
 	withBorderBlockProps,
 	resetBorder,
 } from './border/border';
 
 import { ColorPanel, withColorBlockProps, resetColor } from './color/color';
+
+import {
+	ElementsPanel,
+	withElementsBlockProps,
+	resetElements,
+} from './elements/elements';
 
 import {
 	PositionPanel,
@@ -100,7 +100,6 @@ const applyBlockProps = compose( [
 	withOverlayBlockProps,
 	withTypographyBlockProps,
 	withLayoutBlockProps,
-	withAlignmentDistributionBlockProps,
 	withDimensionsBlockProps,
 	withPositionBlockProps,
 	withDividerLineBlockProps,
@@ -108,6 +107,7 @@ const applyBlockProps = compose( [
 	withLayerBlockProps,
 	withBorderBlockProps,
 	withColorBlockProps,
+	withElementsBlockProps,
 	withBackdropFilterBlockProps,
 	withAnimationProps,
 	withCSSContainerBlockProps,
@@ -225,13 +225,13 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						<TypographyPanel { ...passedProps } />
 						<DimensionsPanel { ...passedProps } />
 						<LayoutPanel { ...passedProps } />
-						<AlignmentDistributionPanel { ...passedProps } />
 						<DividerLinePanel { ...passedProps } />
 						<SectionDividerPanel { ...passedProps } />
 						<PositionPanel { ...passedProps } />
 						<LayerPanel { ...passedProps } />
 						<OverlayPanel { ...passedProps } />
 						<BorderPanel { ...passedProps } />
+						<ElementsPanel { ...passedProps } />
 						<ColorPanel { ...passedProps } />
 						<BackdropFilterPanel { ...passedProps } />
 						<AnimationPanel { ...passedProps } />
@@ -262,7 +262,6 @@ export const resetUnitoneStyles = ( props ) => {
 		resetTypography,
 		resetDimensions,
 		resetLayout,
-		resetAlignmentDistribution,
 		resetDividerLine,
 		resetSectionDivider,
 		resetPositions,
@@ -270,6 +269,7 @@ export const resetUnitoneStyles = ( props ) => {
 		resetOverlay,
 		resetBorder,
 		resetColor,
+		resetElements,
 		resetBackdropFilter,
 		resetAnimation,
 		resetCSSContainer,

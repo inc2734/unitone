@@ -14,6 +14,12 @@ import { sprintf, __ } from '@wordpress/i18n';
 import { resetUnitoneWithBlockAttributes } from '../utils';
 
 import {
+	AlignmentDistributionPanel,
+	withAlignmentDistributionBlockProps,
+	resetAlignmentDistribution,
+} from './alignment-distribution';
+
+import {
 	isFlexBasisSupportDisabled,
 	hasFlexBasisValue,
 	resetFlexBasisFilter,
@@ -123,10 +129,12 @@ export const withLayoutBlockProps = compose(
 	withMaxHeightBlockProps,
 	withMaxWidthBlockProps,
 	withMinHeightBlockProps,
-	withMinWidthBlockProps
+	withMinWidthBlockProps,
+	withAlignmentDistributionBlockProps
 );
 
 export const resetLayout = ( props ) => {
+	const alignmentProps = resetAlignmentDistribution( props );
 	const filters = [
 		[ isFlexBasisSupportDisabled, resetFlexBasisFilter ],
 		[ isFlexGrowSupportDisabled, resetFlexGrowFilter ],
@@ -142,17 +150,20 @@ export const resetLayout = ( props ) => {
 
 	const unitone = filters.reduce(
 		( accumulator, [ isDisabled, resetFilter ] ) => {
-			return isDisabled( { ...props } )
+			return isDisabled( { ...alignmentProps } )
 				? { ...accumulator, ...resetFilter() }
 				: accumulator;
 		},
-		{ ...props.attributes?.unitone }
+		{ ...alignmentProps.attributes?.unitone }
 	);
 
-	return { ...props, attributes: { ...props.attributes, unitone } };
+	return {
+		...alignmentProps,
+		attributes: { ...alignmentProps.attributes, unitone },
+	};
 };
 
-function LayoutPanelPure( props ) {
+function LayoutSupportPanel( props ) {
 	const { name, attributes, clientId } = props;
 
 	const isFlexBasisDisabled = isFlexBasisSupportDisabled( {
@@ -438,6 +449,15 @@ function LayoutPanelPure( props ) {
 				</ToolsPanelItem>
 			) }
 		</InspectorControls>
+	);
+}
+
+function LayoutPanelPure( props ) {
+	return (
+		<>
+			<AlignmentDistributionPanel { ...props } />
+			<LayoutSupportPanel { ...props } />
+		</>
 	);
 }
 

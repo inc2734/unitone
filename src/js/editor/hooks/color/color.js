@@ -28,13 +28,6 @@ import {
 } from './hover-border-color';
 
 import {
-	isMarkerColorSupportDisabled,
-	resetMarkerColorFilter,
-	MarkerColorEdit,
-	withMarkerColorBlockProps,
-} from './marker-color';
-
-import {
 	isOpacitySupportDisabled,
 	resetOpacityFilter,
 	OpacityEdit,
@@ -47,8 +40,7 @@ export const withColorBlockProps = compose(
 	withOpacityBlockProps,
 	withHoverTextColorBlockProps,
 	withHoverBackgroundColorBlockProps,
-	withHoverBorderColorBlockProps,
-	withMarkerColorBlockProps
+	withHoverBorderColorBlockProps
 );
 
 export const resetColor = ( props ) => {
@@ -61,10 +53,7 @@ export const resetColor = ( props ) => {
 		[ isHoverGradientSupportDisabled, resetHoverGradientFilter ],
 		[ isHoverBorderColorSupportDisabled, resetHoverBorderColorFilter ],
 	];
-	const unitoneFilters = [
-		[ isMarkerColorSupportDisabled, resetMarkerColorFilter ],
-		[ isOpacitySupportDisabled, resetOpacityFilter ],
-	];
+	const unitoneFilters = [ [ isOpacitySupportDisabled, resetOpacityFilter ] ];
 
 	const attributes = filters.reduce(
 		( accumulator, [ isDisabled, resetFilter ] ) => {
@@ -118,7 +107,6 @@ function ColorPanelPure( props ) {
 	const isHoverBorderColorDisabled = isHoverBorderColorSupportDisabled( {
 		name,
 	} );
-	const isMarkerColorDisabled = isMarkerColorSupportDisabled( { name } );
 	const isOpacityDisabled = isOpacitySupportDisabled( { name } );
 	const shouldHideUnsetHoverColor = 'core/button' === name;
 
@@ -150,64 +138,42 @@ function ColorPanelPure( props ) {
 		shouldShowHoverBorderColor;
 	const shouldShowColor = shouldShowHoverColor || ! isOpacityDisabled;
 
-	if ( ! shouldShowColor && isMarkerColorDisabled ) {
+	if ( ! shouldShowColor ) {
 		return null;
 	}
 
 	return (
-		<>
-			{ shouldShowColor && (
-				<InspectorControls
-					group="color"
-					resetAllFilter={ ( blockAttributes ) => ( {
-						...blockAttributes,
-						...resetHoverTextColorFilter(),
-						...resetHoverBackgroundColorFilter(),
-						...resetHoverGradientFilter(),
-						...resetHoverBorderColorFilter(),
-						unitone: resetUnitoneWithBlockAttributes( {
-							unitone: attributes?.unitone,
-							blockAttributes,
-							resetFilters: [ resetOpacityFilter() ],
-						} ),
-					} ) }
-				>
-					{ shouldShowHoverTextColor && (
-						<HoverTextColorEdit { ...props } />
-					) }
+		<InspectorControls
+			group="color"
+			resetAllFilter={ ( blockAttributes ) => ( {
+				...blockAttributes,
+				...resetHoverTextColorFilter(),
+				...resetHoverBackgroundColorFilter(),
+				...resetHoverGradientFilter(),
+				...resetHoverBorderColorFilter(),
+				unitone: resetUnitoneWithBlockAttributes( {
+					unitone: attributes?.unitone,
+					blockAttributes,
+					resetFilters: [ resetOpacityFilter() ],
+				} ),
+			} ) }
+		>
+			{ shouldShowHoverTextColor && <HoverTextColorEdit { ...props } /> }
 
-					{ shouldShowHoverBackground && (
-						<HoverBackgroundColorEdit { ...props } />
-					) }
-
-					{ shouldShowHoverBorderColor && (
-						<HoverBorderColorEdit { ...props } />
-					) }
-
-					{ ! isOpacityDisabled && (
-						<div className="unitone-opacity-control">
-							<OpacityEdit { ...props } />
-						</div>
-					) }
-				</InspectorControls>
+			{ shouldShowHoverBackground && (
+				<HoverBackgroundColorEdit { ...props } />
 			) }
 
-			{ ! isMarkerColorDisabled && (
-				<InspectorControls
-					group="elements"
-					resetAllFilter={ ( blockAttributes ) => ( {
-						...blockAttributes,
-						unitone: resetUnitoneWithBlockAttributes( {
-							unitone: attributes?.unitone,
-							blockAttributes,
-							resetFilters: [ resetMarkerColorFilter() ],
-						} ),
-					} ) }
-				>
-					<MarkerColorEdit { ...props } />
-				</InspectorControls>
+			{ shouldShowHoverBorderColor && (
+				<HoverBorderColorEdit { ...props } />
 			) }
-		</>
+
+			{ ! isOpacityDisabled && (
+				<div className="unitone-opacity-control">
+					<OpacityEdit { ...props } />
+				</div>
+			) }
+		</InspectorControls>
 	);
 }
 

@@ -411,7 +411,6 @@
 		order: 1;
 	}
 }
-
 .block-editor-block-inspector:not(:has(> .block-editor-block-inspector__tabs)):has(> .color-block-support-panel)
 	> :has(> .block-editor-block-inspector__advanced) {
 	order: 2;

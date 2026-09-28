@@ -78,6 +78,45 @@ function unitone_enqueue_block_editor_scripts() {
 add_action( 'enqueue_block_editor_assets', 'unitone_enqueue_block_editor_scripts', 9 );
 
 /**
+ * Keep core JavaScript layout control labels distinct when their Japanese translations collide.
+ *
+ * @see https://github.com/inc2734/unitone/issues/863
+ */
+function unitone_fix_core_layout_control_labels() {
+	wp_add_inline_script(
+		'wp-block-editor',
+		<<<'JS'
+( function () {
+	wp.hooks.addFilter(
+		'i18n.gettext_default',
+		'unitone/fix-core-layout-control-labels',
+		( translation, text ) => {
+			if (
+				'配置' !== translation ||
+				( 'Justification' !== text && 'Alignment' !== text )
+			) {
+				return translation;
+			}
+
+			const localeData = wp.i18n.getLocaleData( 'default' );
+			if (
+				'配置' !== localeData?.Justification?.[ 0 ] ||
+				'配置' !== localeData?.Alignment?.[ 0 ]
+			) {
+				return translation;
+			}
+
+			return 'Justification' === text ? '配置（横方向）' : '配置（縦方向）';
+		}
+	);
+} )();
+JS,
+		'before'
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'unitone_fix_core_layout_control_labels', 9 );
+
+/**
  * Enqueue theme styles for the block editor.
  */
 function unitone_enqueue_block_editor_styles() {

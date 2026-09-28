@@ -35,6 +35,7 @@ export function HoverBorderColorEditPure( {
 			settings={ [
 				{
 					label: __( '[:hover] Border', 'unitone' ),
+					isShownByDefault: false,
 					colorValue: hoverBorderColor?.color,
 					onColorChange: setHoverBorderColor,
 					resetAllFilter: () => ( {

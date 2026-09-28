@@ -62,6 +62,7 @@ export function HoverBackgroundColorEditPure( {
 			settings={ [
 				{
 					label: __( '[:hover] Background', 'unitone' ),
+					isShownByDefault: false,
 					colorValue: hoverBackgroundColor?.color,
 					onColorChange: setHoverBackgroundColor,
 					gradientValue:

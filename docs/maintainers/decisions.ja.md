@@ -10,7 +10,7 @@
 - [WordPress 7.1 の状態スタイル UI と unitone の hover 設定を使い分ける](decisions/wp-7-1-block-state-hover.ja.md): コアの状態 UI を優先しつつ、既存値と unitone ブロックを維持する。
 - [Core と unitone の `min-width` サポートを分離する](decisions/core-and-unitone-min-width.ja.md): 保存先と CSS 出力が異なるため移行しない。
 - [コアブロックのレスポンシブスタイルを CSS カスタムプロパティで適用する](decisions/responsive-styles-for-some-core-blocks.ja.md): viewport 別 CSS 変数を使って既存の表示設計を維持する。
-- [汎用色関連サポートを用途別パネルに配置する](decisions/inspector-color-panels.ja.md): 通常色はコアの情報設計に合わせ、hover 設定は一か所にまとめる。
+- [汎用色関連サポートを用途別パネルに配置する](decisions/inspector-color-panels.ja.md): 通常色はコアの情報設計に合わせ、hover 設定は一か所にまとめて未設定時は初期非表示にする。
 - [`dividerType` の未指定と「無し」を区別する](decisions/divider-type-empty-value.ja.md): `undefined` は未指定、空文字は明示的な「無し」とする。
 - [テクスチャーの旧2値シェイプは明示操作で4点へ変換する](https://github.com/inc2734/unitone/issues/862): 既存ブロックは旧設定を維持し、新規選択と変換後に4点を使う。
 - [divider の計測トークンでインライン方向の外寸を変えない](decisions/divider-measurement-tokens.ja.md): 計測前後の折返し条件を一定に保つ。

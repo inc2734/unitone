@@ -402,6 +402,21 @@
 	}
 }
 
+// Keep Color last among style panels, but before Advanced when tabs are absent.
+.block-editor-block-inspector__tabs > [role="tabpanel"]:has(> .color-block-support-panel),
+.block-editor-block-inspector:not(:has(> .block-editor-block-inspector__tabs)):has(> .color-block-support-panel) {
+	display: grid;
+
+	> .color-block-support-panel {
+		order: 1;
+	}
+}
+
+.block-editor-block-inspector:not(:has(> .block-editor-block-inspector__tabs)):has(> .color-block-support-panel)
+	> :has(> .block-editor-block-inspector__advanced) {
+	order: 2;
+}
+
 .color-block-support-panel {
 	.unitone-opacity-control {
 		grid-column: 1 / -1;

@@ -35,6 +35,7 @@ export function HoverTextColorEditPure( {
 			settings={ [
 				{
 					label: __( '[:hover] Text', 'unitone' ),
+					isShownByDefault: false,
 					colorValue: hoverTextColor?.color,
 					onColorChange: setHoverTextColor,
 					resetAllFilter: () => resetHoverTextColorFilter(),

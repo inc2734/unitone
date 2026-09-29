@@ -1,8 +1,10 @@
 import fastDeepEqual from 'fast-deep-equal/es6';
 
 import { InspectorControls } from '@wordpress/block-editor';
+import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
 import { memo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 import {
 	isHoverTextColorSupportDisabled,
@@ -83,7 +85,7 @@ export const resetColor = ( props ) => {
 };
 
 function ColorPanelPure( props ) {
-	const { name, attributes } = props;
+	const { name, attributes, clientId, setAttributes } = props;
 
 	const {
 		hoverTextColor,
@@ -158,6 +160,26 @@ function ColorPanelPure( props ) {
 				} ),
 			} ) }
 		>
+			{ ! isOpacityDisabled && (
+				<ToolsPanelItem
+					className="unitone-opacity-control"
+					hasValue={ () => null != attributes?.unitone?.opacity }
+					label={ __( 'Opacity', 'unitone' ) }
+					onDeselect={ () =>
+						setAttributes( {
+							unitone: cleanEmptyObject( {
+								...attributes?.unitone,
+								...resetOpacityFilter(),
+							} ),
+						} )
+					}
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<OpacityEdit { ...props } />
+				</ToolsPanelItem>
+			) }
+
 			{ shouldShowHoverTextColor && <HoverTextColorEdit { ...props } /> }
 
 			{ shouldShowHoverBackground && (
@@ -166,12 +188,6 @@ function ColorPanelPure( props ) {
 
 			{ shouldShowHoverBorderColor && (
 				<HoverBorderColorEdit { ...props } />
-			) }
-
-			{ ! isOpacityDisabled && (
-				<div className="unitone-opacity-control">
-					<OpacityEdit { ...props } />
-				</div>
 			) }
 		</InspectorControls>
 	);

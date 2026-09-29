@@ -418,11 +418,13 @@
 
 .color-block-support-panel {
 	.unitone-opacity-control {
-		grid-column: 1 / -1;
-	}
+		&.first {
+			margin-top: 0 !important;
+		}
 
-	.unitone-opacity-control:only-child {
-		margin-top: 0;
+		&:not(.last) {
+			margin-bottom: 24px !important;
+		}
 	}
 }
 

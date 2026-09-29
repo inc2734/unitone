@@ -62,9 +62,6 @@
 			"containerType": true,
 			"responsiveContext": true,
 			"fluidReference": true,
-			"gap": {
-				"splitOnAxis": true
-			},
 			"fluidTypography": true,
 			"halfLeading": true,
 			"linkDecoration": true

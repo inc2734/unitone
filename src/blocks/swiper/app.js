@@ -20,8 +20,8 @@ import {
 } from '../swiper-thumbnails/frontend';
 
 import { buildSwiperOptions, getEasing } from './config';
+import { ROOT_SELECTOR, initializeSwipersWhenVisible } from './initialize';
 
-const ROOT_SELECTOR = '.unitone-swiper[data-unitone-swiper-settings]';
 const initializingRoots = new WeakSet();
 const EFFECT_MODULES = {
 	fade: EffectFade,
@@ -702,23 +702,7 @@ const initializeSwiper = ( root ) => {
 	return () => setupThumbnails( thumbnails, swiper, slides );
 };
 
-const initializeAll = () => {
-	const thumbnailInitializers = [];
-	document.querySelectorAll( ROOT_SELECTOR ).forEach( ( root ) => {
-		// Skip nested Swipers removed along with duplicate tracks.
-		if (
-			root.isConnected &&
-			! root.closest( THUMBNAIL_PREVIEW_SELECTOR )
-		) {
-			const initializeThumbnails = initializeSwiper( root );
-			if ( initializeThumbnails ) {
-				thumbnailInitializers.push( initializeThumbnails );
-			}
-		}
-	} );
-	// Capture nested sliders after they and their controls have been initialized.
-	thumbnailInitializers.reverse().forEach( ( initialize ) => initialize() );
-};
+const initializeAll = () => initializeSwipersWhenVisible( initializeSwiper );
 
 if ( 'loading' === document.readyState ) {
 	document.addEventListener( 'DOMContentLoaded', initializeAll );

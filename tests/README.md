@@ -21,3 +21,11 @@ npm run wp -- eval-file tests/preset.php
 ```sh
 npm run test:js:navigation
 ```
+
+## Swiper の自動再生
+
+「動きを減らす」が有効な場合の初期停止、設置済みボタンからの再生・一時停止、待ち時間0、ボタン未設置時、通常設定の自動再生を Swiper 本体で確認する。
+
+```sh
+npm run test:blocks:autoplay
+```

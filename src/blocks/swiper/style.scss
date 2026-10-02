@@ -350,7 +350,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.unitone-swiper-track__wrapper {
+	.unitone-swiper-track__viewport:not([data-unitone-swiper-motion-allowed]) > .unitone-swiper-track__wrapper {
 		transition-duration: 0s !important;
 	}
 }

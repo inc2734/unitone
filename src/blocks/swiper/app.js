@@ -397,6 +397,10 @@ const setupAutoplayControls = ( root, swiper ) => {
 
 			if ( 'play' === control.dataset.unitoneSwiperAutoplayAction ) {
 				isPlayRequested = true;
+				swiper.el.setAttribute(
+					'data-unitone-swiper-motion-allowed',
+					''
+				);
 
 				if ( ! swiper.autoplay.running ) {
 					swiper.autoplay.start();
@@ -657,11 +661,14 @@ const initializeSwiper = ( root ) => {
 		options.nested = true;
 	}
 
-	if (
+	const reduceMotion = Boolean(
 		options.autoplay &&
-		window.matchMedia?.( '(prefers-reduced-motion: reduce)' ).matches
-	) {
-		options.autoplay = false;
+			window.matchMedia?.( '(prefers-reduced-motion: reduce)' ).matches
+	);
+	const autoplayDelay = options.autoplay?.delay;
+	if ( reduceMotion ) {
+		// Swiper cannot cancel the queued slide move when autoplay delay is zero.
+		options.autoplay.delay = Math.max( 1, autoplayDelay );
 	}
 
 	options.modules = [ A11y ];
@@ -689,6 +696,12 @@ const initializeSwiper = ( root ) => {
 	).filter( ( slide ) => slide.matches( '.unitone-swiper__slide' ) );
 	const thumbnails = getOwnedElements( root, '.unitone-swiper-thumbnails' );
 	const swiper = new Swiper( viewport, options );
+	if ( reduceMotion ) {
+		// Keep autoplay available for an explicit play request, but stop before rendering.
+		swiper.autoplay.stop();
+		swiper.params.autoplay.delay = autoplayDelay;
+		swiper.originalParams.autoplay.delay = autoplayDelay;
+	}
 
 	setupAutoSlideWidth( root, swiper );
 	setupScrollbarResizeObserver( swiper );

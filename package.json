@@ -85,6 +85,7 @@
 		"build": "run-p css blocks js formats variations settings img fonts",
 		"test:blocks:lint": "wp-scripts lint-js src/blocks",
 		"test:blocks:initialization": "wp-scripts test-unit-js --runInBand tests/swiper-initialization.test.js",
+		"test:blocks:autoplay": "wp-scripts test-unit-js --runInBand --config=tests/swiper-autoplay.config.js",
 		"test:blocks": "run-s test:blocks:*",
 		"test:formats:lint": "wp-scripts lint-js src/formats",
 		"test:formats": "run-s test:formats:*",

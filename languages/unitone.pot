@@ -6911,7 +6911,7 @@ msgid "Edit the selected button text on the canvas."
 msgstr ""
 
 #: dist/blocks/swiper-autoplay-control/index.js
-msgid "Swiper Autoplay play / pause"
+msgid "Swiper Autoplay start / pause"
 msgstr ""
 
 #: dist/blocks/swiper-autoplay-control/index.php

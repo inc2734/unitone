@@ -6977,7 +6977,7 @@ msgid "Edit the selected button text on the canvas."
 msgstr "選択したボタンのテキストを、キャンバス上で編集できます。"
 
 #: dist/blocks/swiper-autoplay-control/index.js
-msgid "Swiper Autoplay play / pause"
+msgid "Swiper Autoplay start / pause"
 msgstr "Swiper 再生 / 停止ボタン"
 
 #: dist/blocks/swiper-autoplay-control/index.php

@@ -5,7 +5,7 @@ import { pause, start } from './icons';
 export default [
 	{
 		name: 'toggle',
-		title: __( 'Swiper Autoplay play / pause', 'unitone' ),
+		title: __( 'Swiper Autoplay start / pause', 'unitone' ),
 		icon: { src: start },
 		attributes: {
 			action: 'toggle',

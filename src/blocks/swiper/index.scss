@@ -10,6 +10,28 @@
 	gap: 8px;
 }
 
+.unitone-swiper-setup {
+	&.is-medium,
+	&.is-small {
+		// Core centers fieldset children and makes every button full width.
+		.components-placeholder__fieldset > .unitone-swiper-setup__controls {
+			justify-content: stretch;
+		}
+
+		.unitone-swiper-setup__actions {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+
+			> .components-button {
+				min-width: 0;
+				min-height: 36px;
+				height: auto;
+				white-space: normal;
+			}
+		}
+	}
+}
+
 .unitone-swiper-responsive-settings {
 	margin-bottom: 16px;
 	padding: 12px !important;

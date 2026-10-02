@@ -60,17 +60,9 @@ const createAutoplayControls = () => [
 				[
 					'unitone/swiper-autoplay-control',
 					{
-						action: 'play',
-						content: PLAY_BUTTON_CONTENT,
-						className: 'is-style-1-1',
-						unitone: { padding: '1' },
-					},
-				],
-				[
-					'unitone/swiper-autoplay-control',
-					{
-						action: 'pause',
-						content: PAUSE_BUTTON_CONTENT,
+						action: 'toggle',
+						playContent: PLAY_BUTTON_CONTENT,
+						pauseContent: PAUSE_BUTTON_CONTENT,
 						className: 'is-style-1-1',
 						unitone: { padding: '1' },
 					},
@@ -87,6 +79,7 @@ const createControls = ( autoplay = false, overlay = false ) => [
 		unitone: {
 			alignItems: 'center',
 			justifyContent: 'center',
+			gap: { row: '0' },
 		},
 		...( overlay
 			? {
@@ -102,33 +95,39 @@ const createControls = ( autoplay = false, overlay = false ) => [
 			: {} ),
 	},
 	[
-		...( overlay
-			? []
+		overlay
+			? [ 'unitone/swiper-pagination' ]
 			: [
+					'unitone/grid',
+					{
+						columnsOption: 'free',
+						gridTemplateColumns: 'auto 1fr auto auto',
+						mdColumnsOption: 'free',
+						smColumnsOption: 'free',
+						smGridTemplateColumns: 'auto 1fr auto',
+					},
 					[
-						'unitone/swiper-arrow',
-						{
-							action: 'previous',
-							content: PREVIOUS_BUTTON_CONTENT,
-							className: 'is-style-1-1',
-							unitone: { padding: '1' },
-						},
+						[
+							'unitone/swiper-arrow',
+							{
+								action: 'previous',
+								content: PREVIOUS_BUTTON_CONTENT,
+								className: 'is-style-1-1',
+								unitone: { padding: '1' },
+							},
+						],
+						[ 'unitone/swiper-pagination' ],
+						[
+							'unitone/swiper-arrow',
+							{
+								action: 'next',
+								content: NEXT_BUTTON_CONTENT,
+								className: 'is-style-1-1',
+								unitone: { padding: '1' },
+							},
+						],
 					],
-			  ] ),
-		[ 'unitone/swiper-pagination' ],
-		...( overlay
-			? []
-			: [
-					[
-						'unitone/swiper-arrow',
-						{
-							action: 'next',
-							content: NEXT_BUTTON_CONTENT,
-							className: 'is-style-1-1',
-							unitone: { padding: '1' },
-						},
-					],
-			  ] ),
+			  ],
 		...( autoplay ? [ createAutoplayControls() ] : [] ),
 	],
 ];
@@ -136,7 +135,7 @@ const createControls = ( autoplay = false, overlay = false ) => [
 const createOverlayBlocks = ( track = createTrack(), autoplay = false ) => [
 	[
 		'unitone/layers',
-		{},
+		{ unitone: { gap: '0' } },
 		[
 			track,
 			[

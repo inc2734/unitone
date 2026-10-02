@@ -6893,3 +6893,39 @@ msgstr ""
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Play / Pause"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Stop"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Button to edit"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Edit the selected button text on the canvas."
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Swiper Autoplay play / pause"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.php
+msgid "Start autoplay"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.php
+msgid "Pause autoplay"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Edit play button"
+msgstr ""
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Edit stop button"
+msgstr ""

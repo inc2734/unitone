@@ -6959,3 +6959,39 @@ msgstr "Noto Sans JP"
 msgctxt "Style variation name"
 msgid "Noto Serif JP"
 msgstr "Noto Serif JP"
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Play / Pause"
+msgstr "再生 / 停止"
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Stop"
+msgstr "停止"
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Button to edit"
+msgstr "編集するボタン"
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Edit the selected button text on the canvas."
+msgstr "選択したボタンのテキストを、キャンバス上で編集できます。"
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Swiper Autoplay play / pause"
+msgstr "Swiper 再生 / 停止ボタン"
+
+#: dist/blocks/swiper-autoplay-control/index.php
+msgid "Start autoplay"
+msgstr "自動再生を開始"
+
+#: dist/blocks/swiper-autoplay-control/index.php
+msgid "Pause autoplay"
+msgstr "自動再生を停止"
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Edit play button"
+msgstr "再生ボタンを編集"
+
+#: dist/blocks/swiper-autoplay-control/index.js
+msgid "Edit stop button"
+msgstr "停止用ボタンを編集"

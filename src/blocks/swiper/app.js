@@ -360,10 +360,7 @@ const updateAutoplayControls = ( swiper, controls, isPlaying ) => {
 	const isEnabled = isAutoplayEnabled( swiper );
 
 	controls.forEach( ( control ) => {
-		const action =
-			'play' === control.dataset.unitoneSwiperAutoplayAction
-				? 'play'
-				: 'pause';
+		const action = control.dataset.unitoneSwiperAutoplayAction;
 
 		control.hidden = ! isEnabled;
 		control.disabled =
@@ -373,6 +370,29 @@ const updateAutoplayControls = ( swiper, controls, isPlaying ) => {
 		control.dataset.unitoneSwiperAutoplayState = isPlaying
 			? 'playing'
 			: 'paused';
+
+		if ( 'toggle' === action ) {
+			const labelAction = isPlaying ? 'pause' : 'play';
+			control.setAttribute(
+				'aria-label',
+				control.dataset[
+					isPlaying
+						? 'unitoneSwiperAutoplayLabelPause'
+						: 'unitoneSwiperAutoplayLabelPlay'
+				] ||
+					( isPlaying
+						? __( 'Pause autoplay', 'unitone' )
+						: __( 'Start autoplay', 'unitone' ) )
+			);
+			[ 'play', 'pause' ].forEach( ( contentAction ) => {
+				const content = control.querySelector(
+					`.unitone-swiper-autoplay-control__${ contentAction }`
+				);
+				if ( content ) {
+					content.hidden = contentAction !== labelAction;
+				}
+			} );
+		}
 	} );
 };
 
@@ -388,14 +408,44 @@ const setupAutoplayControls = ( root, swiper, speed ) => {
 
 	let isPlayRequested =
 		Boolean( swiper.autoplay?.running ) && ! swiper.autoplay?.paused;
+	const requestPause = () => {
+		isPlayRequested = false;
+		updateAutoplayControls( swiper, controls, false );
+	};
 
 	controls.forEach( ( control ) => {
-		control.addEventListener( 'click', () => {
+		let pointerAction;
+		const getAction = () => {
+			const action = control.dataset.unitoneSwiperAutoplayAction;
+			if ( 'toggle' !== action ) {
+				return action;
+			}
+			return 'playing' === control.dataset.unitoneSwiperAutoplayState
+				? 'pause'
+				: 'play';
+		};
+
+		control.addEventListener( 'pointerdown', ( event ) => {
+			if ( 0 === event.button ) {
+				// Focus can pause autoplay before the following click reaches this button.
+				pointerAction = getAction();
+			}
+		} );
+		control.addEventListener( 'pointercancel', () => {
+			pointerAction = undefined;
+		} );
+		control.addEventListener( 'keydown', () => {
+			pointerAction = undefined;
+		} );
+		control.addEventListener( 'click', ( event ) => {
+			const action =
+				event.detail > 0 && pointerAction ? pointerAction : getAction();
+			pointerAction = undefined;
 			if ( ! isAutoplayEnabled( swiper ) ) {
 				return;
 			}
 
-			if ( 'play' === control.dataset.unitoneSwiperAutoplayAction ) {
+			if ( 'play' === action ) {
 				isPlayRequested = true;
 				swiper.params.speed = speed;
 				swiper.originalParams.speed = speed;
@@ -427,15 +477,22 @@ const setupAutoplayControls = ( root, swiper, speed ) => {
 		updateAutoplayControls( swiper, controls, false );
 	} );
 
-	swiper.on( 'autoplayPause', () => {
+	const updatePausedState = () => {
 		window.requestAnimationFrame( () => {
-			if ( swiper.destroyed || swiper.animating ) {
+			if (
+				swiper.destroyed ||
+				swiper.animating ||
+				! swiper.autoplay?.paused
+			) {
 				return;
 			}
 
 			updateAutoplayControls( swiper, controls, false );
 		} );
-	} );
+	};
+	swiper.on( 'autoplayPause', updatePausedState );
+	// Hover can keep the internal transition pause active after the animation ends.
+	swiper.on( 'transitionEnd', updatePausedState );
 
 	swiper.on( 'autoplayResume', () => {
 		if ( ! isPlayRequested ) {
@@ -447,6 +504,7 @@ const setupAutoplayControls = ( root, swiper, speed ) => {
 	} );
 
 	updateAutoplayControls( swiper, controls, isPlayRequested );
+	return requestPause;
 };
 
 const updateAutoplayProgressState = ( swiper, progresses, state ) => {
@@ -507,7 +565,11 @@ const setupAutoplayProgresses = ( root, swiper ) => {
 	} );
 
 	swiper.on( 'autoplayResume', () => {
-		updateAutoplayProgressState( swiper, progresses, 'playing' );
+		updateAutoplayProgressState(
+			swiper,
+			progresses,
+			swiper.autoplay.paused ? 'paused' : 'playing'
+		);
 	} );
 
 	updateValue( 1 );
@@ -520,12 +582,14 @@ const setupAutoplayProgresses = ( root, swiper ) => {
 	);
 };
 
-const setupFocusPause = ( root, swiper ) => {
+const setupFocusPause = ( root, swiper, requestPause ) => {
 	if ( ! isAutoplayEnabled( swiper ) ) {
 		return;
 	}
 
 	root.addEventListener( 'focusin', () => {
+		// Focus pauses persist until an explicit play request, like the pause button.
+		requestPause?.();
 		if ( swiper.autoplay.running && ! swiper.autoplay.paused ) {
 			swiper.autoplay.pause();
 		}
@@ -708,9 +772,9 @@ const initializeSwiper = ( root ) => {
 	setupAutoSlideWidth( root, swiper );
 	setupScrollbarResizeObserver( swiper );
 	setupPagination( root, swiper );
-	setupAutoplayControls( root, swiper, speed );
+	const requestPause = setupAutoplayControls( root, swiper, speed );
 	setupAutoplayProgresses( root, swiper );
-	setupFocusPause( root, swiper );
+	setupFocusPause( root, swiper, requestPause );
 
 	initializingRoots.delete( root );
 

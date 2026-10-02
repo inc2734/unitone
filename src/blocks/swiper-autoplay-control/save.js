@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 
 import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 export default function ( { attributes } ) {
-	const { action, content } = attributes;
+	const { action, content, playContent, pauseContent } = attributes;
 
 	const blockProps = useBlockProps.save( {
 		className: clsx(
@@ -16,7 +17,22 @@ export default function ( { attributes } ) {
 
 	return (
 		<button { ...blockProps }>
-			<RichText.Content tagName="span" value={ content } />
+			{ 'toggle' === action ? (
+				<>
+					<RichText.Content
+						tagName="span"
+						className="unitone-swiper-autoplay-control__play"
+						value={ playContent || __( 'Play', 'unitone' ) }
+					/>
+					<RichText.Content
+						tagName="span"
+						className="unitone-swiper-autoplay-control__pause"
+						value={ pauseContent || __( 'Stop', 'unitone' ) }
+					/>
+				</>
+			) : (
+				<RichText.Content tagName="span" value={ content } />
+			) }
 		</button>
 	);
 }

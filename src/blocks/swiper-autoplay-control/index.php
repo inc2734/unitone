@@ -24,7 +24,7 @@ function render_block_unitone_swiper_autoplay_control( $attributes, $content ) {
 		return $content;
 	}
 
-	$action = 'play' === ( $attributes['action'] ?? 'pause' ) ? 'play' : 'pause';
+	$action = $attributes['action'] ?? 'pause';
 	$label  = 'play' === $action
 		? __( 'Play', 'unitone' )
 		: __( 'Pause', 'unitone' );
@@ -40,6 +40,11 @@ function render_block_unitone_swiper_autoplay_control( $attributes, $content ) {
 	}
 
 	$p->set_attribute( 'aria-label', $label );
+	if ( 'toggle' === $action ) {
+		$p->set_attribute( 'aria-label', __( 'Pause autoplay', 'unitone' ) );
+		$p->set_attribute( 'data-unitone-swiper-autoplay-label-play', __( 'Start autoplay', 'unitone' ) );
+		$p->set_attribute( 'data-unitone-swiper-autoplay-label-pause', __( 'Pause autoplay', 'unitone' ) );
+	}
 
 	return $p->get_updated_html();
 }

@@ -119,8 +119,8 @@
 		display: block;
 	}
 
-	.unitone-swiper-autoplay-control {
-		display: inline-flex;
+	.unitone-swiper-autoplay-control:not([data-unitone-swiper-autoplay-state]) {
+		display: inline-flex !important;
 	}
 }
 

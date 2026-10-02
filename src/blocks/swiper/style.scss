@@ -339,8 +339,13 @@
 }
 
 .unitone-swiper-autoplay-control {
+	&[hidden],
+	> [hidden] {
+		display: none !important;
+	}
+
 	&:not([data-unitone-swiper-autoplay-state]) {
-		display: none;
+		display: none !important;
 	}
 
 	&:disabled {

@@ -27,6 +27,9 @@ const render = ( {
 	autoplay = true,
 	delay = 50,
 	controls = true,
+	toggleCount = 0,
+	pauseOnMouseEnter = false,
+	disableOnInteraction = false,
 	effect = 'slide',
 	loopMode = 'none',
 	speed = 30,
@@ -50,6 +53,11 @@ const render = ( {
 						<button class="unitone-swiper-autoplay-control" data-unitone-swiper-autoplay-action="pause">Pause</button>`
 					: ''
 			}
+			${ Array.from(
+				{ length: toggleCount },
+				() =>
+					`<button class="unitone-swiper-autoplay-control" data-unitone-swiper-autoplay-action="toggle" data-unitone-swiper-autoplay-label-play="Start autoplay" data-unitone-swiper-autoplay-label-pause="Pause autoplay"><span class="unitone-swiper-autoplay-control__play"><span aria-hidden="true">▶</span> Play</span><span class="unitone-swiper-autoplay-control__pause"><span aria-hidden="true">Ⅱ</span> Stop</span></button>`
+			).join( '' ) }
 			<div class="unitone-swiper-autoplay-progress"></div>
 		</div>`;
 	const root = document.querySelector( '.unitone-swiper' );
@@ -58,6 +66,8 @@ const render = ( {
 		JSON.stringify( {
 			autoplay,
 			autoplayDelay: delay,
+			autoplayPauseOnMouseEnter: pauseOnMouseEnter,
+			autoplayDisableOnInteraction: disableOnInteraction,
 			speed,
 			loopMode,
 			effect,
@@ -71,7 +81,11 @@ const render = ( {
 	document.dispatchEvent( new window.Event( 'DOMContentLoaded' ) );
 	swiper = viewport.swiper;
 	return {
+		root,
 		viewport,
+		toggles: root.querySelectorAll(
+			'[data-unitone-swiper-autoplay-action="toggle"]'
+		),
 		next: root.querySelector( '.unitone-swiper-arrow--next' ),
 		previous: root.querySelector( '.unitone-swiper-arrow--previous' ),
 		play: root.querySelector(
@@ -140,10 +154,213 @@ it( 'does not create controls or restart on visibility changes before explicit p
 } );
 
 it( 'keeps autoplay disabled in the block settings', () => {
-	const { play } = render( { autoplay: false } );
-	expect( play.hidden ).toBe( true );
-	play.click();
+	const { play, pause, toggles } = render( {
+		autoplay: false,
+		toggleCount: 1,
+	} );
+	[ play, pause, ...toggles ].forEach( ( control ) => {
+		expect( control.hidden ).toBe( true );
+		control.click();
+	} );
 	expect( swiper.autoplay ).toBeUndefined();
+} );
+
+const expectToggleAction = ( toggle, action ) => {
+	expect( toggle.disabled ).toBe( false );
+	expect( toggle.hidden ).toBe( false );
+	expect( toggle.getAttribute( 'aria-label' ) ).toBe(
+		'play' === action ? 'Start autoplay' : 'Pause autoplay'
+	);
+	expect( toggle.hasAttribute( 'aria-pressed' ) ).toBe( false );
+	[ 'play', 'pause' ].forEach( ( contentAction ) => {
+		expect(
+			toggle.querySelector(
+				`.unitone-swiper-autoplay-control__${ contentAction }`
+			).hidden
+		).toBe( contentAction !== action );
+	} );
+};
+
+it.each( [ 50, 0 ] )(
+	'starts the toggle as play with reduced motion and delay %i',
+	( delay ) => {
+		const {
+			toggles: [ toggle ],
+		} = render( { delay, controls: false, toggleCount: 1 } );
+		expectToggleAction( toggle, 'play' );
+		jest.advanceTimersByTime( 200 );
+		expect( swiper.activeIndex ).toBe( 0 );
+		toggle.focus();
+		toggle.click();
+		expectToggleAction( toggle, 'pause' );
+		expect( swiper.autoplay.running ).toBe( true );
+		expect( swiper.params.speed ).toBe( 30 );
+		expect( document.activeElement ).toBe( toggle );
+		// Delay zero queues an uncancellable frame; allow its transition to begin.
+		if ( 0 === delay ) {
+			jest.advanceTimersByTime( 20 );
+		}
+		toggle.click();
+		expectToggleAction( toggle, 'play' );
+		const pausedIndex = swiper.activeIndex;
+		swiper.wrapperEl.dispatchEvent( new window.Event( 'transitionend' ) );
+		jest.advanceTimersByTime( 200 );
+		// Swiper may finish one queued zero-delay move, but must not keep rotating.
+		expect( swiper.activeIndex ).toBeLessThanOrEqual(
+			pausedIndex + ( 0 === delay ? 1 : 0 )
+		);
+		expect( swiper.autoplay.paused ).toBe( true );
+		const settledIndex = swiper.activeIndex;
+		jest.advanceTimersByTime( 200 );
+		expect( swiper.activeIndex ).toBe( settledIndex );
+		toggle.click();
+		expectToggleAction( toggle, 'pause' );
+		expect( document.activeElement ).toBe( toggle );
+	}
+);
+
+it( 'synchronizes multiple toggles with fixed play and pause controls', () => {
+	reduceMotion = false;
+	const { play, pause, toggles } = render( { toggleCount: 2 } );
+	toggles.forEach( ( toggle ) => expectToggleAction( toggle, 'pause' ) );
+	toggles[ 0 ].click();
+	toggles.forEach( ( toggle ) => expectToggleAction( toggle, 'play' ) );
+	expect( play.disabled ).toBe( false );
+	expect( pause.disabled ).toBe( true );
+	play.click();
+	toggles.forEach( ( toggle ) => expectToggleAction( toggle, 'pause' ) );
+	pause.click();
+	toggles.forEach( ( toggle ) => expectToggleAction( toggle, 'play' ) );
+	toggles[ 1 ].click();
+	toggles.forEach( ( toggle ) => expectToggleAction( toggle, 'pause' ) );
+} );
+
+it.each( [ 'mouse', 'touch' ] )(
+	'preserves the pause action across %s pointer focus',
+	( pointerType ) => {
+		reduceMotion = false;
+		const {
+			toggles: [ toggle ],
+		} = render( { controls: false, toggleCount: 1 } );
+		expectToggleAction( toggle, 'pause' );
+		const pointerDown = new window.MouseEvent( 'pointerdown', {
+			bubbles: true,
+			button: 0,
+		} );
+		Object.defineProperty( pointerDown, 'pointerType', {
+			value: pointerType,
+		} );
+		toggle.dispatchEvent( pointerDown );
+		toggle.focus();
+		jest.advanceTimersByTime( 20 );
+		toggle.dispatchEvent(
+			new window.MouseEvent( 'click', { bubbles: true, detail: 1 } )
+		);
+		expectToggleAction( toggle, 'play' );
+		expect( swiper.autoplay.paused ).toBe( true );
+		jest.advanceTimersByTime( 200 );
+		expect( swiper.activeIndex ).toBe( 0 );
+	}
+);
+
+it( 'keeps keyboard focus pauses stopped until an explicit play request', () => {
+	reduceMotion = false;
+	const {
+		toggles: [ toggle ],
+	} = render( { controls: false, toggleCount: 1 } );
+	toggle.focus();
+	expectToggleAction( toggle, 'play' );
+	document.dispatchEvent( new window.Event( 'visibilitychange' ) );
+	jest.advanceTimersByTime( 200 );
+	expect( swiper.activeIndex ).toBe( 0 );
+	expectToggleAction( toggle, 'play' );
+	toggle.click();
+	// A queued pause update must not overwrite the explicit play request.
+	jest.advanceTimersByTime( 20 );
+	expectToggleAction( toggle, 'pause' );
+} );
+
+it( 'keeps pause displayed during internal slide transitions', () => {
+	reduceMotion = false;
+	const {
+		toggles: [ toggle ],
+	} = render( { controls: false, toggleCount: 1 } );
+	jest.advanceTimersByTime( 80 );
+	expect( swiper.animating ).toBe( true );
+	expect( swiper.autoplay.paused ).toBe( true );
+	expectToggleAction( toggle, 'pause' );
+	swiper.wrapperEl.dispatchEvent( new window.Event( 'transitionend' ) );
+	expectToggleAction( toggle, 'pause' );
+} );
+
+const dispatchMousePointer = ( target, type ) => {
+	const event = new window.Event( type );
+	Object.defineProperty( event, 'pointerType', { value: 'mouse' } );
+	target.dispatchEvent( event );
+};
+
+it( 'reflects hover pauses and keeps an explicit pause stopped on pointer leave', () => {
+	reduceMotion = false;
+	const {
+		viewport,
+		toggles: [ toggle ],
+	} = render( { controls: false, toggleCount: 1, pauseOnMouseEnter: true } );
+	dispatchMousePointer( viewport, 'pointerenter' );
+	jest.advanceTimersByTime( 20 );
+	expectToggleAction( toggle, 'play' );
+	dispatchMousePointer( viewport, 'pointerleave' );
+	expectToggleAction( toggle, 'pause' );
+	toggle.click();
+	dispatchMousePointer( viewport, 'pointerleave' );
+	document.dispatchEvent( new window.Event( 'visibilitychange' ) );
+	jest.advanceTimersByTime( 200 );
+	expect( swiper.activeIndex ).toBe( 0 );
+	expectToggleAction( toggle, 'play' );
+} );
+
+it( 'reflects autoplay stopping after slide interaction', () => {
+	reduceMotion = false;
+	const {
+		next,
+		toggles: [ toggle ],
+	} = render( { toggleCount: 1, disableOnInteraction: true } );
+	next.click();
+	expect( swiper.autoplay.running ).toBe( false );
+	expectToggleAction( toggle, 'play' );
+	swiper.wrapperEl.dispatchEvent( new window.Event( 'transitionend' ) );
+	toggle.click();
+	expect( swiper.autoplay.running ).toBe( true );
+	expectToggleAction( toggle, 'pause' );
+} );
+
+it( 'reflects a hover pause that continues after an internal slide transition', () => {
+	reduceMotion = false;
+	const {
+		viewport,
+		toggles: [ toggle ],
+	} = render( { controls: false, toggleCount: 1, pauseOnMouseEnter: true } );
+	jest.advanceTimersByTime( 80 );
+	expectToggleAction( toggle, 'pause' );
+	dispatchMousePointer( viewport, 'pointerenter' );
+	swiper.wrapperEl.dispatchEvent( new window.Event( 'transitionend' ) );
+	jest.advanceTimersByTime( 20 );
+	expect( swiper.autoplay.paused ).toBe( true );
+	expectToggleAction( toggle, 'play' );
+	dispatchMousePointer( viewport, 'pointerleave' );
+	expectToggleAction( toggle, 'pause' );
+} );
+
+it( 'keeps a paused progress indicator stopped when automatic resume is rejected', () => {
+	reduceMotion = false;
+	const {
+		progress,
+		toggles: [ toggle ],
+	} = render( { controls: false, toggleCount: 1 } );
+	toggle.click();
+	document.dispatchEvent( new window.Event( 'visibilitychange' ) );
+	expect( swiper.autoplay.paused ).toBe( true );
+	expect( progress.dataset.unitoneSwiperAutoplayState ).toBe( 'paused' );
+	expectToggleAction( toggle, 'play' );
 } );
 
 it( 'starts autoplay normally without reduced motion', () => {

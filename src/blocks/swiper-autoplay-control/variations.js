@@ -4,6 +4,18 @@ import { pause, start } from './icons';
 
 export default [
 	{
+		name: 'toggle',
+		title: __( 'Swiper Autoplay play / pause', 'unitone' ),
+		icon: { src: start },
+		attributes: {
+			action: 'toggle',
+			playContent: __( 'Play', 'unitone' ),
+			pauseContent: __( 'Stop', 'unitone' ),
+		},
+		isActive: [ 'action' ],
+		scope: [ 'inserter', 'transform' ],
+	},
+	{
 		name: 'start',
 		title: __( 'Swiper Autoplay start', 'unitone' ),
 		icon: {

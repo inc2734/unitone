@@ -376,7 +376,7 @@ const updateAutoplayControls = ( swiper, controls, isPlaying ) => {
 	} );
 };
 
-const setupAutoplayControls = ( root, swiper ) => {
+const setupAutoplayControls = ( root, swiper, speed ) => {
 	const controls = getOwnedElements(
 		root,
 		'.unitone-swiper-autoplay-control'
@@ -397,10 +397,8 @@ const setupAutoplayControls = ( root, swiper ) => {
 
 			if ( 'play' === control.dataset.unitoneSwiperAutoplayAction ) {
 				isPlayRequested = true;
-				swiper.el.setAttribute(
-					'data-unitone-swiper-motion-allowed',
-					''
-				);
+				swiper.params.speed = speed;
+				swiper.originalParams.speed = speed;
 
 				if ( ! swiper.autoplay.running ) {
 					swiper.autoplay.start();
@@ -662,11 +660,15 @@ const initializeSwiper = ( root ) => {
 	}
 
 	const reduceMotion = Boolean(
-		options.autoplay &&
-			window.matchMedia?.( '(prefers-reduced-motion: reduce)' ).matches
+		window.matchMedia?.( '(prefers-reduced-motion: reduce)' ).matches
 	);
-	const autoplayDelay = options.autoplay?.delay;
+	const speed = options.speed;
 	if ( reduceMotion ) {
+		// CSS-only suppression leaves loop navigation waiting for transitionend.
+		options.speed = 0;
+	}
+	const autoplayDelay = options.autoplay?.delay;
+	if ( reduceMotion && options.autoplay ) {
 		// Swiper cannot cancel the queued slide move when autoplay delay is zero.
 		options.autoplay.delay = Math.max( 1, autoplayDelay );
 	}
@@ -696,7 +698,7 @@ const initializeSwiper = ( root ) => {
 	).filter( ( slide ) => slide.matches( '.unitone-swiper__slide' ) );
 	const thumbnails = getOwnedElements( root, '.unitone-swiper-thumbnails' );
 	const swiper = new Swiper( viewport, options );
-	if ( reduceMotion ) {
+	if ( reduceMotion && options.autoplay ) {
 		// Keep autoplay available for an explicit play request, but stop before rendering.
 		swiper.autoplay.stop();
 		swiper.params.autoplay.delay = autoplayDelay;
@@ -706,7 +708,7 @@ const initializeSwiper = ( root ) => {
 	setupAutoSlideWidth( root, swiper );
 	setupScrollbarResizeObserver( swiper );
 	setupPagination( root, swiper );
-	setupAutoplayControls( root, swiper );
+	setupAutoplayControls( root, swiper, speed );
 	setupAutoplayProgresses( root, swiper );
 	setupFocusPause( root, swiper );
 

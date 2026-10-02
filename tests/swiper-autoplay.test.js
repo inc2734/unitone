@@ -23,7 +23,14 @@ afterEach( () => {
 	jest.useRealTimers();
 } );
 
-const render = ( { autoplay = true, delay = 50, controls = true } = {} ) => {
+const render = ( {
+	autoplay = true,
+	delay = 50,
+	controls = true,
+	effect = 'slide',
+	loopMode = 'none',
+	speed = 30,
+} = {} ) => {
 	document.body.innerHTML = `
 		<div class="unitone-swiper">
 			<div class="unitone-swiper-track">
@@ -35,6 +42,8 @@ const render = ( { autoplay = true, delay = 50, controls = true } = {} ) => {
 					</div>
 				</div>
 			</div>
+			<button class="unitone-swiper-arrow unitone-swiper-arrow--previous swiper-button-prev">Previous</button>
+			<button class="unitone-swiper-arrow unitone-swiper-arrow--next swiper-button-next">Next</button>
 			${
 				controls
 					? `<button class="unitone-swiper-autoplay-control" data-unitone-swiper-autoplay-action="play">Play</button>
@@ -49,8 +58,9 @@ const render = ( { autoplay = true, delay = 50, controls = true } = {} ) => {
 		JSON.stringify( {
 			autoplay,
 			autoplayDelay: delay,
-			speed: 30,
-			loopMode: 'none',
+			speed,
+			loopMode,
+			effect,
 		} )
 	);
 	const viewport = root.querySelector( '.unitone-swiper-track__viewport' );
@@ -62,6 +72,8 @@ const render = ( { autoplay = true, delay = 50, controls = true } = {} ) => {
 	swiper = viewport.swiper;
 	return {
 		viewport,
+		next: root.querySelector( '.unitone-swiper-arrow--next' ),
+		previous: root.querySelector( '.unitone-swiper-arrow--previous' ),
 		play: root.querySelector(
 			'[data-unitone-swiper-autoplay-action="play"]'
 		),
@@ -89,12 +101,12 @@ it.each( [ 50, 0 ] )(
 );
 
 it( 'plays multiple slides after explicit activation and can pause and resume', () => {
-	const { viewport, play, pause, progress } = render();
+	const { play, pause, progress } = render();
+	expect( swiper.params.speed ).toBe( 0 );
 	play.focus();
 	play.click();
-	expect(
-		viewport.hasAttribute( 'data-unitone-swiper-motion-allowed' )
-	).toBe( true );
+	expect( swiper.params.speed ).toBe( 30 );
+	expect( swiper.originalParams.speed ).toBe( 30 );
 	expect( swiper.autoplay.running ).toBe( true );
 	expect( play.disabled ).toBe( true );
 	expect( pause.disabled ).toBe( false );
@@ -140,4 +152,40 @@ it( 'starts autoplay normally without reduced motion', () => {
 	expect( swiper.autoplay.running ).toBe( true );
 	jest.advanceTimersByTime( 60 );
 	expect( swiper.activeIndex ).toBe( 1 );
+} );
+
+it.each( [
+	[ 'slide', false ],
+	[ 'slide', true ],
+	[ 'fade', false ],
+	[ 'fade', true ],
+] )(
+	'finishes repeated loop navigation with reduced motion: effect=%s autoplay=%s',
+	( effect, autoplay ) => {
+		const { next, previous } = render( {
+			effect,
+			autoplay,
+			loopMode: 'loop',
+		} );
+		expect( swiper.params.speed ).toBe( 0 );
+		const transitionEnd = jest.fn();
+		swiper.on( 'transitionEnd', transitionEnd );
+		[ next, next, previous ].forEach( ( button, index ) => {
+			button.click();
+			expect( swiper.realIndex ).toBe( [ 1, 2, 1 ][ index ] );
+			expect( swiper.animating ).toBe( false );
+		} );
+		expect( transitionEnd ).toHaveBeenCalledTimes( 3 );
+		expect( Boolean( swiper.autoplay?.running ) ).toBe( false );
+	}
+);
+
+it( 'keeps the configured navigation speed without reduced motion', () => {
+	reduceMotion = false;
+	const { next } = render( { autoplay: false, loopMode: 'loop' } );
+	expect( swiper.params.speed ).toBe( 30 );
+	next.click();
+	expect( swiper.animating ).toBe( true );
+	swiper.wrapperEl.dispatchEvent( new window.Event( 'transitionend' ) );
+	expect( swiper.animating ).toBe( false );
 } );

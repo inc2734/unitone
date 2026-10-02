@@ -6,12 +6,14 @@
 	--unitone--scroll-animation-delay: 0s;
 	--unitone--scroll-animation-name: none;
 
-	animation:
-		var(--unitone--scroll-animation-duration)
-		var(--unitone--scroll-animation-timing-function)
-		var(--unitone--scroll-animation-delay)
-		var(--unitone--scroll-animation-name);
-	animation-fill-mode: forwards;
+	@media (prefers-reduced-motion: no-preference) {
+		animation:
+			var(--unitone--scroll-animation-duration)
+			var(--unitone--scroll-animation-timing-function)
+			var(--unitone--scroll-animation-delay)
+			var(--unitone--scroll-animation-name);
+		animation-fill-mode: forwards;
+	}
 }
 
 @each $_key, $_value in easing.$easings {
@@ -34,7 +36,9 @@
 	--unitone--scroll-animation-duration: .6s;
 	--unitone--scroll-animation-initial: -100px;
 
-	opacity: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
 }
 [data-unitone-scroll-animation~=fade-in-down].wp-block {
 	opacity: 1;
@@ -54,7 +58,9 @@
 	--unitone--scroll-animation-duration: .6s;
 	--unitone--scroll-animation-initial: 100px;
 
-	opacity: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
 }
 [data-unitone-scroll-animation~=fade-in-up].wp-block {
 	opacity: 1;
@@ -74,7 +80,9 @@
 	--unitone--scroll-animation-duration: .6s;
 	--unitone--scroll-animation-initial: 100px;
 
-	opacity: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
 }
 [data-unitone-scroll-animation~=fade-in-left].wp-block {
 	opacity: 1;
@@ -94,7 +102,9 @@
 	--unitone--scroll-animation-duration: .6s;
 	--unitone--scroll-animation-initial: -100px;
 
-	opacity: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
 }
 [data-unitone-scroll-animation~=fade-in-right].wp-block {
 	opacity: 1;
@@ -113,7 +123,9 @@
 	--unitone--scroll-animation-name: unitoneFadeIn;
 	--unitone--scroll-animation-duration: 1s;
 
-	opacity: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
 }
 [data-unitone-scroll-animation~=fade-in].wp-block {
 	opacity: 1;
@@ -133,7 +145,9 @@
 	--unitone--scroll-animation-duration: .4s;
 	--unitone--scroll-animation-initial: .6;
 
-	opacity: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
 }
 [data-unitone-scroll-animation~=zoom-in].wp-block {
 	opacity: 1;

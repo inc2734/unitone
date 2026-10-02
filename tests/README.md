@@ -29,3 +29,11 @@ npm run test:js:navigation
 ```sh
 npm run test:blocks:autoplay
 ```
+
+## パララックスと端末の動きを減らす設定
+
+初期表示と閲覧中の設定変更でパララックスを停止し、要素を隠さず元の変形・画像位置を保持すること、停止時の未実行スクロール更新の取り消し、設定解除時の再開対象を確認する。
+
+```sh
+npm run test:js:animation
+```

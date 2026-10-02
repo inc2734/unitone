@@ -15,3 +15,9 @@
 [data-unitone-parallax=enable] {
 	visibility: visible;
 }
+
+@media (prefers-reduced-motion: reduce) {
+	[data-unitone-parallax=disable] {
+		visibility: visible;
+	}
+}

@@ -5,6 +5,23 @@ export default function initScrollAnimationFeatures() {
 
 	if ( parallaxTargets.length ) {
 		const activeParallaxTargets = new Set();
+		const mediaQuery = window.matchMedia(
+			'(prefers-reduced-motion: reduce)'
+		);
+		const originalStyles = new WeakMap(
+			parallaxTargets.map( ( target ) => [
+				target,
+				{
+					transform: target.style.transform,
+					image:
+						target.children.length === 1
+							? target.children[ 0 ]
+							: null,
+					objectPosition:
+						target.children[ 0 ]?.style.objectPosition || '',
+				},
+			] )
+		);
 
 		const isCoverElement = ( target ) =>
 			'cover' ===
@@ -44,6 +61,9 @@ export default function initScrollAnimationFeatures() {
 
 		const runParallax = () => {
 			scrollRafId = 0;
+			if ( mediaQuery.matches ) {
+				return;
+			}
 
 			activeParallaxTargets.forEach( ( target ) => {
 				updatePosition( target );
@@ -82,6 +102,38 @@ export default function initScrollAnimationFeatures() {
 			document.removeEventListener( 'touchmove', onScroll );
 		};
 
+		const updateParallaxState = () => {
+			if ( mediaQuery.matches ) {
+				stopListeners();
+				window.cancelAnimationFrame( scrollRafId );
+				scrollRafId = 0;
+				parallaxTargets.forEach( ( target ) => {
+					const original = originalStyles.get( target );
+					// Restore authored positions instead of leaving the last parallax offset.
+					target.style.transform = original.transform;
+					if ( original.image ) {
+						original.image.style.objectPosition =
+							original.objectPosition;
+					}
+					target.setAttribute( 'data-unitone-parallax', 'enable' );
+				} );
+				return;
+			}
+
+			parallaxTargets.forEach( ( target ) =>
+				target.setAttribute(
+					'data-unitone-parallax',
+					activeParallaxTargets.has( target ) ? 'enable' : 'disable'
+				)
+			);
+			if ( activeParallaxTargets.size ) {
+				startListeners();
+				onScroll();
+			} else {
+				stopListeners();
+			}
+		};
+
 		const observer = new IntersectionObserver(
 			( entries ) => {
 				entries.forEach( ( entry ) => {
@@ -89,27 +141,12 @@ export default function initScrollAnimationFeatures() {
 
 					if ( entry.isIntersecting ) {
 						activeParallaxTargets.add( target );
-						target.setAttribute(
-							'data-unitone-parallax',
-							'enable'
-						);
-
-						updatePosition( target );
-
 						return;
 					}
 
 					activeParallaxTargets.delete( target );
-					target.setAttribute( 'data-unitone-parallax', 'disable' );
 				} );
-
-				if ( 0 < activeParallaxTargets.size ) {
-					startListeners();
-					onScroll();
-					return;
-				}
-
-				stopListeners();
+				updateParallaxState();
 			},
 			{
 				rootMargin: '200px 0px',
@@ -119,6 +156,12 @@ export default function initScrollAnimationFeatures() {
 		parallaxTargets.forEach( ( target ) => {
 			observer.observe( target );
 		} );
+		updateParallaxState();
+		if ( mediaQuery.addEventListener ) {
+			mediaQuery.addEventListener( 'change', updateParallaxState );
+		} else {
+			mediaQuery.addListener( updateParallaxState );
+		}
 	}
 
 	document

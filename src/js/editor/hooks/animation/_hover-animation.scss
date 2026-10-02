@@ -17,7 +17,9 @@
 	--unitone--hover-animation-initial-scale: 1;
 
 	&:where([data-unitone-hover-animation~=-has-initial]) {
-		scale: var(--unitone--hover-animation-initial-scale);
+		@media (prefers-reduced-motion: no-preference) {
+			scale: var(--unitone--hover-animation-initial-scale);
+		}
 	}
 }
 
@@ -65,10 +67,6 @@
 }
 
 @mixin active-hover-animation {
-	&[data-unitone-hover-animation~=scale] {
-		scale: var(--unitone--hover-animation-scale) !important;
-	}
-
 	&[data-unitone-hover-animation~=fade] {
 		opacity: var(--unitone--hover-animation-opacity) !important;
 	}
@@ -81,15 +79,21 @@
 		box-shadow: var(--wp--preset--shadow--unitone-dark) !important;
 	}
 
-	&[data-unitone-hover-animation~=flex-grow] {
-		flex-grow: var(--unitone--hover-animation-flex-grow) !important;
-	}
+	@media (prefers-reduced-motion: no-preference) {
+		&[data-unitone-hover-animation~=scale] {
+			scale: var(--unitone--hover-animation-scale) !important;
+		}
 
-	&:is([data-unitone-hover-animation~=shakeX], [data-unitone-hover-animation~=shakeY]) {
-		animation:
-			var(--unitone--hover-animation-duration)
-			var(--unitone--hover-animation-timing-function)
-			var(--unitone--hover-animation-name);
+		&[data-unitone-hover-animation~=flex-grow] {
+			flex-grow: var(--unitone--hover-animation-flex-grow) !important;
+		}
+
+		&:is([data-unitone-hover-animation~=shakeX], [data-unitone-hover-animation~=shakeY]) {
+			animation:
+				var(--unitone--hover-animation-duration)
+				var(--unitone--hover-animation-timing-function)
+				var(--unitone--hover-animation-name);
+		}
 	}
 }
 
@@ -123,11 +127,4 @@
 	[data-unitone-hover-animation-group][data-unitone-layout~="decorator"]:not(.wp-block):has(:focus-visible) [data-unitone-hover-animation~="-trigger:group"]
 ) {
 	@include active-hover-animation;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	[data-unitone-hover-animation~=shakeX],
-	[data-unitone-hover-animation~=shakeY] {
-		animation: none !important;
-	}
 }

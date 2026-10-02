@@ -8,7 +8,7 @@
 	},
 	"devDependencies": {
 		"@iconify/json": "^2.2.523",
-		"@inc2734/unitone-css": "^1.7.0",
+		"@inc2734/unitone-css": "^1.7.1",
 		"@wordpress/admin-ui": "^2.9.0",
 		"@wordpress/env": "^11.14.0",
 		"@wordpress/icons": "^15.5.0",
@@ -94,6 +94,7 @@
 		"test:js:lint": "wp-scripts lint-js src/js",
 		"test:js:presets": "wp-scripts test-unit-js --runInBand tests/preset.test.js",
 		"test:js:navigation": "wp-scripts test-unit-js --runInBand tests/navigation-pointer.test.js",
+		"test:js:animation": "wp-scripts test-unit-js --runInBand tests/animation-motion.test.js",
 		"test:js": "run-s test:js:*",
 		"test:php:start": "wp-env start --config=.wp-env.tests.json",
 		"pretest:php:lint": "npm run test:php:start && npm run test-composer install -- --no-interaction",

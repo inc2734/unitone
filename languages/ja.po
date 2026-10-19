@@ -6995,3 +6995,166 @@ msgstr "再生ボタンを編集"
 #: dist/blocks/swiper-autoplay-control/index.js
 msgid "Edit stop button"
 msgstr "停止用ボタンを編集"
+
+#: dist/js/editor/editor.js
+msgid "Headings"
+msgstr "見出し"
+
+#: dist/js/editor/editor.js
+msgid "Text (paragraphs)"
+msgstr "テキスト（段落）"
+
+#: dist/js/editor/editor.js
+msgid "Images"
+msgstr "画像"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: attributes could not be retained: %2$s."
+msgstr "%1$s：属性を引き継げませんでした：%2$s。"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: attributes changed: %2$s."
+msgstr "%1$s：属性が変更されました：%2$s。"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: style properties could not be retained: %2$s."
+msgstr "%1$s：style のプロパティを引き継げませんでした：%2$s。"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: style values or priorities changed: %2$s."
+msgstr "%1$s：style の値または優先度が変更されました：%2$s。"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: style properties moved to another element: %2$s."
+msgstr "%1$s：style のプロパティを別の要素に移しました：%2$s。"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: attributes moved to %2$s: %3$s."
+msgstr "%1$s：属性を %2$s に移しました：%3$s。"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: dimension attributes were converted to styles: %2$s."
+msgstr "%1$s：寸法の属性を style に変換しました：%2$s。"
+
+#: dist/js/editor/editor.js
+msgid "The image is now wrapped in a figure element."
+msgstr "画像を figure 要素で囲む構造に変更しました。"
+
+#: dist/js/editor/editor.js
+msgid "The markup inside the text changed."
+msgstr "テキスト内部の HTML が変更されました。"
+
+#: dist/js/editor/editor.js
+msgid "The HTML structure was normalized during conversion."
+msgstr "変換時に HTML の構造を補正しました。"
+
+#: dist/js/editor/editor.js
+msgid "Some text changed during conversion. Please check the result."
+msgstr "変換時にテキストの一部が変更されました。結果を確認してください。"
+
+#: dist/js/editor/editor.js
+msgid "This element already contains blocks. The original HTML was retained."
+msgstr "この要素には既にブロックが含まれています。元の HTML を維持しました。"
+
+#: dist/js/editor/editor.js
+msgid "The destination block is unavailable. The original HTML was retained."
+msgstr "変換先のブロックが利用できません。元の HTML を維持しました。"
+
+#: dist/js/editor/editor.js
+msgid "This image structure could not be converted. The original HTML was retained."
+msgstr "この画像の構造は変換できませんでした。元の HTML を維持しました。"
+
+#: dist/js/editor/editor.js
+msgid "The image has no source URL. The original HTML was retained."
+msgstr "画像の URL がありません。元の HTML を維持しました。"
+
+#: dist/js/editor/editor.js
+msgid "Converting this inline image would create invalid HTML. The original HTML was retained."
+msgstr "このインライン画像を変換すると HTML が不正になるため、元の HTML を維持しました。"
+
+#: dist/js/editor/editor.js
+msgid "This text contains media or other unsupported content. The original HTML was retained."
+msgstr "このテキストには画像などの未対応の内容が含まれています。元の HTML を維持しました。"
+
+#: dist/js/editor/editor.js
+msgid "Conversion failed. The original HTML was retained."
+msgstr "変換できませんでした。元の HTML を維持しました。"
+
+#: dist/js/editor/editor.js
+msgid "Image"
+msgstr "画像"
+
+#: dist/js/editor/editor.js
+msgid "(Empty text)"
+msgstr "（空のテキスト）"
+
+#: dist/js/editor/editor.js
+msgid "Not converted"
+msgstr "未変換"
+
+#: dist/js/editor/editor.js
+msgid "Select block"
+msgstr "ブロックを選択"
+
+#: dist/js/editor/editor.js
+msgid "Select Custom HTML block"
+msgstr "カスタム HTML ブロックを選択"
+
+#: dist/js/editor/editor.js
+msgid "The converter could not be loaded. Please reopen this panel."
+msgstr "変換機能を読み込めませんでした。このパネルを開き直してください。"
+
+#: dist/js/editor/editor.js
+msgid "Convert HTML to blocks"
+msgstr "HTML をブロックに変換"
+
+#: dist/js/editor/editor.js
+msgid "Some attributes and appearance may change during conversion."
+msgstr "変換時に一部の属性や表示が変わる場合があります。"
+
+#: dist/js/editor/editor.js
+msgid "Convert selected elements"
+msgstr "選択した要素を変換"
+
+#: dist/js/editor/editor.js
+msgid "No elements remain to convert."
+msgstr "変換対象の要素は残っていません。"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "Converted: headings %1$d, paragraphs %2$d, images %3$d."
+msgstr "見出し %1$d件、段落 %2$d件、画像 %3$d件を変換しました。"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "Notes: %d"
+msgstr "注意点：%d件"
+
+#: dist/js/editor/editor.js
+msgid "Conversion details"
+msgstr "変換の詳細"
+
+#: dist/js/editor/editor.js
+msgid "Convert"
+msgstr "変換"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: attributes were removed for safety: %2$s."
+msgstr "%1$s：安全のため属性を除去しました：%2$s。"
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: URL attributes were removed for safety: %2$s."
+msgstr "%1$s：安全のため URL 属性を除去しました：%2$s。"
+
+#: dist/js/editor/editor.js
+msgid "This image URL cannot be safely retained. The image was not converted and the original HTML was retained."
+msgstr "この画像の URL は安全に引き継げません。変換せず、元の HTML を維持しました。"

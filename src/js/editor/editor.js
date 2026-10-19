@@ -11,6 +11,7 @@ import './wp-blocks/post-terms';
 import './wp-blocks/tag-cloud';
 
 import './plugins/block-outline-toolbar/index';
+import './plugins/html-converter/index';
 import './plugins/content-only-locking/index';
 import './plugins/featured-image-generator/index';
 import './plugins/grid-item-resizer/index';

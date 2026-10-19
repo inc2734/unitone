@@ -6929,3 +6929,166 @@ msgstr ""
 #: dist/blocks/swiper-autoplay-control/index.js
 msgid "Edit stop button"
 msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Headings"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Text (paragraphs)"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Images"
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: attributes could not be retained: %2$s."
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: attributes changed: %2$s."
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: style properties could not be retained: %2$s."
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: style values or priorities changed: %2$s."
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: style properties moved to another element: %2$s."
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: attributes moved to %2$s: %3$s."
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: dimension attributes were converted to styles: %2$s."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "The image is now wrapped in a figure element."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "The markup inside the text changed."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "The HTML structure was normalized during conversion."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Some text changed during conversion. Please check the result."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "This element already contains blocks. The original HTML was retained."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "The destination block is unavailable. The original HTML was retained."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "This image structure could not be converted. The original HTML was retained."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "The image has no source URL. The original HTML was retained."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Converting this inline image would create invalid HTML. The original HTML was retained."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "This text contains media or other unsupported content. The original HTML was retained."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Conversion failed. The original HTML was retained."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Image"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "(Empty text)"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Not converted"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Select block"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Select Custom HTML block"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "The converter could not be loaded. Please reopen this panel."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Convert HTML to blocks"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Some attributes and appearance may change during conversion."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Convert selected elements"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "No elements remain to convert."
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "Converted: headings %1$d, paragraphs %2$d, images %3$d."
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "Notes: %d"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Conversion details"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Convert"
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: attributes were removed for safety: %2$s."
+msgstr ""
+
+#: dist/js/editor/editor.js
+#, javascript-format
+msgid "%1$s: URL attributes were removed for safety: %2$s."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "This image URL cannot be safely retained. The image was not converted and the original HTML was retained."
+msgstr ""

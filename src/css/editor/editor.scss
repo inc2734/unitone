@@ -2,6 +2,7 @@
 @use '../../js/editor/plugins/featured-image-generator';
 @use '../../js/editor/plugins/grid-item-resizer';
 @use '../../js/editor/plugins/paste-styles';
+@use '../../js/editor/plugins/html-converter';
 
 .block-editor-iframe__html {
 	overflow-x: clip;

@@ -1,0 +1,100 @@
+.unitone-html-converter {
+	display: flex;
+	flex-direction: column;
+	gap: var(--unitone--s-1);
+	max-height: 75vh;
+	overflow: auto;
+	padding: var(--unitone--p-1);
+	width: min(420px, calc(100vw - 32px));
+
+	p {
+		margin: 0;
+	}
+
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--unitone--s-2);
+	}
+
+	&__title {
+		font-weight: bold;
+	}
+
+	&__help,
+	&__kind {
+		color: #757575;
+		font-size: var(--unitone--font-size-s);
+	}
+
+	&__report {
+		border-top: 1px solid #ddd;
+		font-size: var(--unitone--font-size-s);
+
+		p + p,
+		details {
+			margin-top: var(--unitone--s-2);
+		}
+	}
+
+	summary {
+		cursor: pointer;
+	}
+
+	&__details-title {
+		font-size: var(--unitone--font-size-s);
+		font-weight: bold;
+	}
+
+	&__entries {
+		list-style: none;
+		padding: 0;
+		margin: var(--unitone--s-1) 0 0;
+	}
+
+	&__entry + &__entry {
+		border-top: 1px solid #ddd;
+		margin-top: var(--unitone--s-1);
+		padding-top: var(--unitone--s-1);
+	}
+
+	&__target {
+		display: flex;
+		align-items: center;
+		gap: var(--unitone--s-2);
+		overflow-wrap: anywhere;
+
+		.components-button {
+			text-align: start;
+			white-space: normal;
+		}
+	}
+
+	&__kind {
+		display: block;
+		margin-bottom: var(--unitone--s-3);
+	}
+
+	&__thumbnail {
+		width: 40px;
+		height: 40px;
+		flex-shrink: 0;
+		object-fit: contain;
+		background: #f0f0f0;
+	}
+
+	&__notes {
+		list-style: disc;
+		margin: 8px 0;
+		padding-inline-start: 20px;
+
+		code {
+			padding: 1px 4px;
+			border-radius: 2px;
+			background: #f0f0f0;
+			font-size: 12px;
+			overflow-wrap: anywhere;
+		}
+	}
+}

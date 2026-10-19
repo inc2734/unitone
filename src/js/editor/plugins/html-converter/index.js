@@ -16,6 +16,7 @@ import {
 	createInterpolateElement,
 	useEffect,
 	useMemo,
+	useRef,
 	useState,
 } from '@wordpress/element';
 
@@ -26,6 +27,7 @@ import { closeSmall } from '@wordpress/icons';
 import { __, sprintf } from '@wordpress/i18n';
 
 import { getImageFilename, shortenText } from './labels';
+import { scrollBlockIntoView } from './navigation';
 import { getPreviewURL } from './urls';
 
 // Logs survive block selection and popover dismissal, but never enter post data.
@@ -218,7 +220,17 @@ function ReportEntry( { entry, onSelect } ) {
 
 	return (
 		<li className="unitone-html-converter__entry">
-			<div className="unitone-html-converter__target">
+			<span className="unitone-html-converter__kind">
+				{ getKindLabel( entry.kind ) }
+				{ entry.status === 'failed' &&
+					` — ${ __( 'Not converted', 'unitone' ) }` }
+			</span>
+
+			<Button
+				className="unitone-html-converter__target"
+				variant="link"
+				onClick={ onSelect }
+			>
 				{ isImage && previewURL && ! imageFailed && (
 					<img
 						className="unitone-html-converter__thumbnail"
@@ -230,42 +242,14 @@ function ReportEntry( { entry, onSelect } ) {
 					/>
 				) }
 
-				<div>
-					<span className="unitone-html-converter__kind">
-						{ getKindLabel( entry.kind ) }
-						{ entry.status === 'failed' &&
-							` — ${ __( 'Not converted', 'unitone' ) }` }
-					</span>
-
-					{ isImage && previewURL ? (
-						<a
-							href={ previewURL }
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{ shortText }
-						</a>
-					) : (
-						<Button variant="link" onClick={ onSelect }>
-							{ shortText }
-						</Button>
-					) }
-				</div>
-			</div>
+				<span>{ shortText }</span>
+			</Button>
 
 			<ul className="unitone-html-converter__notes">
 				{ entry.notes.map( ( note, index ) => (
 					<li key={ index }>{ getNoteContent( note ) }</li>
 				) ) }
 			</ul>
-
-			{ isImage && (
-				<Button variant="link" onClick={ onSelect }>
-					{ entry.blockId
-						? __( 'Select block', 'unitone' )
-						: __( 'Select Custom HTML block', 'unitone' ) }
-				</Button>
-			) }
 		</li>
 	);
 }
@@ -286,6 +270,9 @@ function ConversionPanel( { clientId, onClose } ) {
 	const [ report, setReport ] = useState( () => reports.get( clientId ) );
 	const [ error, setError ] = useState();
 	const [ conversion, setConversion ] = useState( conversionModule );
+	const cancelScroll = useRef();
+
+	useEffect( () => () => cancelScroll.current?.(), [] );
 
 	useEffect( () => {
 		let cancelled = false;
@@ -374,11 +361,26 @@ function ConversionPanel( { clientId, onClose } ) {
 		}
 	};
 
-	const selectEntry = ( entry ) => {
+	const selectEntry = ( entry, event ) => {
 		const { getBlock } = registry.select( blockEditorStore );
 		const target = getBlock( entry.blockId ) ? entry.blockId : clientId;
+		const { ownerDocument } = event.currentTarget;
+		const view = ownerDocument.defaultView;
 
+		cancelScroll.current?.();
 		registry.dispatch( blockEditorStore ).selectBlock( target );
+		// Wait for selection and focus to settle before moving the editor canvas.
+		const frame = view.requestAnimationFrame( () => {
+			cancelScroll.current = undefined;
+			if (
+				registry
+					.select( blockEditorStore )
+					.getSelectedBlockClientId() === target
+			) {
+				scrollBlockIntoView( target, ownerDocument );
+			}
+		} );
+		cancelScroll.current = () => view.cancelAnimationFrame( frame );
 	};
 
 	const notes = report?.entries.filter( ( entry ) => entry.notes.length );
@@ -471,7 +473,9 @@ function ConversionPanel( { clientId, onClose } ) {
 									<ReportEntry
 										key={ `${ entry.start }-${ entry.kind }` }
 										entry={ entry }
-										onSelect={ () => selectEntry( entry ) }
+										onSelect={ ( event ) =>
+											selectEntry( entry, event )
+										}
 									/>
 								) ) }
 							</ul>

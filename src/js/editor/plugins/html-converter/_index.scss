@@ -11,6 +11,12 @@
 		margin: 0;
 	}
 
+	.components-button {
+		text-align: start;
+		white-space: normal;
+		width: fit-content;
+	}
+
 	&__header {
 		display: flex;
 		align-items: center;
@@ -25,12 +31,11 @@
 	&__help,
 	&__kind {
 		color: #757575;
-		font-size: var(--unitone--font-size-s);
 	}
 
 	&__report {
 		border-top: 1px solid #ddd;
-		font-size: var(--unitone--font-size-s);
+		padding-top: var(--unitone--s-2);
 
 		p + p,
 		details {
@@ -43,7 +48,6 @@
 	}
 
 	&__details-title {
-		font-size: var(--unitone--font-size-s);
 		font-weight: bold;
 	}
 
@@ -59,15 +63,16 @@
 		padding-top: var(--unitone--s-1);
 	}
 
-	&__target {
+	&__target.components-button {
 		display: flex;
 		align-items: center;
 		gap: var(--unitone--s-2);
+		height: auto;
+		max-width: 100%;
 		overflow-wrap: anywhere;
 
-		.components-button {
-			text-align: start;
-			white-space: normal;
+		> span {
+			min-width: 0;
 		}
 	}
 

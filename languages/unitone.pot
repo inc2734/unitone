@@ -7034,14 +7034,6 @@ msgid "Not converted"
 msgstr ""
 
 #: dist/js/editor/editor.js
-msgid "Select block"
-msgstr ""
-
-#: dist/js/editor/editor.js
-msgid "Select Custom HTML block"
-msgstr ""
-
-#: dist/js/editor/editor.js
 msgid "The converter could not be loaded. Please reopen this panel."
 msgstr ""
 

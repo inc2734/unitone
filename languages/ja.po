@@ -7100,14 +7100,6 @@ msgid "Not converted"
 msgstr "未変換"
 
 #: dist/js/editor/editor.js
-msgid "Select block"
-msgstr "ブロックを選択"
-
-#: dist/js/editor/editor.js
-msgid "Select Custom HTML block"
-msgstr "カスタム HTML ブロックを選択"
-
-#: dist/js/editor/editor.js
 msgid "The converter could not be loaded. Please reopen this panel."
 msgstr "変換機能を読み込めませんでした。このパネルを開き直してください。"
 

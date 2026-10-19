@@ -30,8 +30,6 @@ import { getImageFilename, shortenText } from './labels';
 import { scrollBlockIntoView } from './navigation';
 import { getPreviewURL } from './urls';
 
-// Logs survive block selection and popover dismissal, but never enter post data.
-const reports = new Map();
 let conversionModule;
 
 const getKindLabel = ( kind ) =>
@@ -275,7 +273,9 @@ function ConversionPanel( { clientId, onClose } ) {
 		list: true,
 		image: false,
 	} );
-	const [ report, setReport ] = useState( () => reports.get( clientId ) );
+
+	// Keep logs for this open panel only; dismissal unmounts and discards them.
+	const [ report, setReport ] = useState();
 	const [ error, setError ] = useState();
 	const [ conversion, setConversion ] = useState( conversionModule );
 	const cancelScroll = useRef();
@@ -357,7 +357,6 @@ function ConversionPanel( { clientId, onClose } ) {
 					replaceInnerBlocks( clientId, result.innerBlocks, false );
 				} );
 			}
-			reports.set( clientId, result );
 			setReport( result );
 		} catch {
 			setError(

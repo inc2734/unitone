@@ -9,6 +9,8 @@ import { analyzeHTML } from './source';
 import { normalizeText } from './labels';
 import { applyStyles, getDeclaredStyleProperties } from './styles';
 import { hasUnsupportedContent, sanitizeElement } from './security';
+import { copyRootAttributes } from './attributes';
+import { createList, getListItemContent } from './lists';
 
 export { analyzeHTML } from './source';
 
@@ -19,15 +21,6 @@ const getElement = ( html ) => {
 };
 
 const tokens = ( value ) => ( value ?? '' ).split( /\s+/ ).filter( Boolean );
-
-const copyRootAttributes = ( element, attributes ) => {
-	if ( element.hasAttribute( 'class' ) ) {
-		attributes.className = element.getAttribute( 'class' );
-	}
-	if ( element.id ) {
-		attributes.anchor = element.id;
-	}
-};
 
 const hasOnlyImageContent = ( element ) =>
 	Array.from( element.childNodes ).every(
@@ -316,6 +309,9 @@ function compareElement( source, target, alternatives = [] ) {
 
 function getNotes( source, saved, kind ) {
 	const notes = [];
+	if ( kind === 'list' ) {
+		return compareElement( source, saved );
+	}
 
 	if ( kind === 'image' ) {
 		if ( source.tagName !== 'FIGURE' ) {
@@ -396,7 +392,7 @@ export function convertHTML( block, selected ) {
 	const source = analyzeHTML( block );
 	const replacements = [ ...source.slots ];
 	const entries = [];
-	const counts = { heading: 0, paragraph: 0, image: 0 };
+	const counts = { heading: 0, paragraph: 0, list: 0, image: 0 };
 	let convertedEnd = -1;
 
 	for ( const candidate of source.candidates ) {
@@ -429,20 +425,35 @@ export function convertHTML( block, selected ) {
 
 		try {
 			const original = getElement( candidate.html );
+			let listResult;
+			if ( candidate.kind === 'list' ) {
+				listResult = createList( original );
+				if ( listResult.error ) {
+					fail( listResult.error );
+					continue;
+				}
+			}
 
-			if ( hasUnsupportedContent( original, candidate.kind ) ) {
+			if (
+				! listResult &&
+				hasUnsupportedContent( original, candidate.kind )
+			) {
 				fail(
 					candidate.kind === 'image' ? 'complex-image' : 'mixed-text'
 				);
 				continue;
 			}
 
-			const sanitized = sanitizeElement( original );
+			const sanitized = listResult
+				? { element: original, notes: [] }
+				: sanitizeElement( original );
 			const { element } = sanitized;
 
 			let nextBlock;
 
-			if ( candidate.kind === 'image' ) {
+			if ( listResult ) {
+				nextBlock = listResult.block;
+			} else if ( candidate.kind === 'image' ) {
 				if ( candidate.inlineImage ) {
 					fail( 'inline-image' );
 					continue;
@@ -484,7 +495,11 @@ export function convertHTML( block, selected ) {
 			}
 
 			const saved = getElement(
-				getSaveContent( nextBlock.name, nextBlock.attributes )
+				getSaveContent(
+					nextBlock.name,
+					nextBlock.attributes,
+					nextBlock.innerBlocks
+				)
 			);
 
 			if ( ! saved ) {
@@ -492,10 +507,49 @@ export function convertHTML( block, selected ) {
 				continue;
 			}
 
-			entry.notes = [
-				...sanitized.notes,
-				...getNotes( element, saved, candidate.kind ),
-			];
+			const listEntries = [];
+			if ( listResult ) {
+				const targets = [
+					saved,
+					...saved.querySelectorAll( 'ul,ol,li' ),
+				];
+				if ( targets.length !== listResult.records.length ) {
+					fail( 'conversion-error' );
+					continue;
+				}
+				for ( const [
+					index,
+					record,
+				] of listResult.records.entries() ) {
+					const target = targets[ index ];
+					if ( target.tagName !== record.source.tagName ) {
+						throw new Error( 'Unexpected list structure.' );
+					}
+					listEntries.push( {
+						kind: record.kind,
+						start: candidate.start,
+						text: record.text,
+						blockId: record.block.clientId,
+						status: 'converted',
+						notes: [
+							...record.notes,
+							...getNotes(
+								record.source,
+								record.kind === 'list-item'
+									? getListItemContent( target )
+									: target,
+								record.kind
+							),
+						],
+					} );
+				}
+				entry.notes = listEntries.shift().notes;
+			} else {
+				entry.notes = [
+					...sanitized.notes,
+					...getNotes( element, saved, candidate.kind ),
+				];
+			}
 
 			if ( candidate.markupNormalized ) {
 				entry.notes.push( { code: 'markup-normalized' } );
@@ -504,6 +558,7 @@ export function convertHTML( block, selected ) {
 			entry.blockId = nextBlock.clientId;
 			entry.status = 'converted';
 			entries.push( entry );
+			entries.push( ...listEntries );
 			replacements.push( {
 				start: candidate.start,
 				end: candidate.end,

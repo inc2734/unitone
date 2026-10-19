@@ -38,6 +38,8 @@ const getKindLabel = ( kind ) =>
 	( {
 		heading: __( 'Headings', 'unitone' ),
 		paragraph: __( 'Text (paragraphs)', 'unitone' ),
+		list: __( 'Lists', 'unitone' ),
+		'list-item': __( 'List items', 'unitone' ),
 		image: __( 'Images', 'unitone' ),
 	} )[ kind ];
 
@@ -123,9 +125,9 @@ const getNoteTemplate = ( note ) => {
 			);
 		case 'attribute-to-style':
 			return sprintf(
-				/* translators: 1: HTML tag, 2: dimension attribute names. */
+				/* translators: 1: HTML tag, 2: attribute names. */
 				__(
-					'%1$s: dimension attributes were converted to styles: %2$s.',
+					'%1$s: attributes were converted to styles: %2$s.',
 					'unitone'
 				),
 				tag,
@@ -161,6 +163,11 @@ const getNoteTemplate = ( note ) => {
 		case 'complex-image':
 			return __(
 				'This image structure could not be converted. The original HTML was retained.',
+				'unitone'
+			);
+		case 'complex-list':
+			return __(
+				'This list contains unsupported content or structure. The original HTML was retained.',
 				'unitone'
 			);
 		case 'missing-image-url':
@@ -265,6 +272,7 @@ function ConversionPanel( { clientId, onClose } ) {
 	const [ selected, setSelected ] = useState( {
 		heading: true,
 		paragraph: true,
+		list: true,
 		image: false,
 	} );
 	const [ report, setReport ] = useState( () => reports.get( clientId ) );
@@ -313,7 +321,7 @@ function ConversionPanel( { clientId, onClose } ) {
 			result[ candidate.kind ]++;
 			return result;
 		},
-		{ heading: 0, paragraph: 0, image: 0 }
+		{ heading: 0, paragraph: 0, list: 0, image: 0 }
 	);
 
 	const canConvert = Object.keys( selected ).some(
@@ -440,13 +448,14 @@ function ConversionPanel( { clientId, onClose } ) {
 					<div role="status" aria-live="polite">
 						<p>
 							{ sprintf(
-								/* translators: 1: heading count, 2: paragraph count, 3: image count. */
+								/* translators: 1: heading count, 2: paragraph count, 3: list count, 4: image count. */
 								__(
-									'Converted: headings %1$d, paragraphs %2$d, images %3$d.',
+									'Converted: headings %1$d, paragraphs %2$d, lists %3$d, images %4$d.',
 									'unitone'
 								),
 								report.counts.heading,
 								report.counts.paragraph,
+								report.counts.list,
 								report.counts.image
 							) }
 						</p>
@@ -471,7 +480,10 @@ function ConversionPanel( { clientId, onClose } ) {
 							<ul className="unitone-html-converter__entries">
 								{ notes.map( ( entry ) => (
 									<ReportEntry
-										key={ `${ entry.start }-${ entry.kind }` }
+										key={
+											entry.blockId ??
+											`${ entry.start }-${ entry.kind }`
+										}
 										entry={ entry }
 										onSelect={ ( event ) =>
 											selectEntry( entry, event )

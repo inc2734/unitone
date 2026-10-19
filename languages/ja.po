@@ -7040,8 +7040,8 @@ msgstr "%1$s：属性を %2$s に移しました：%3$s。"
 
 #: dist/js/editor/editor.js
 #, javascript-format
-msgid "%1$s: dimension attributes were converted to styles: %2$s."
-msgstr "%1$s：寸法の属性を style に変換しました：%2$s。"
+msgid "%1$s: attributes were converted to styles: %2$s."
+msgstr "%1$s：属性を style に変換しました：%2$s。"
 
 #: dist/js/editor/editor.js
 msgid "The image is now wrapped in a figure element."
@@ -7121,8 +7121,8 @@ msgstr "変換対象の要素は残っていません。"
 
 #: dist/js/editor/editor.js
 #, javascript-format
-msgid "Converted: headings %1$d, paragraphs %2$d, images %3$d."
-msgstr "見出し %1$d件、段落 %2$d件、画像 %3$d件を変換しました。"
+msgid "Converted: headings %1$d, paragraphs %2$d, lists %3$d, images %4$d."
+msgstr "見出し %1$d件、段落 %2$d件、リスト %3$d件、画像 %4$d件を変換しました。"
 
 #: dist/js/editor/editor.js
 #, javascript-format
@@ -7150,3 +7150,15 @@ msgstr "%1$s：安全のため URL 属性を除去しました：%2$s。"
 #: dist/js/editor/editor.js
 msgid "This image URL cannot be safely retained. The image was not converted and the original HTML was retained."
 msgstr "この画像の URL は安全に引き継げません。変換せず、元の HTML を維持しました。"
+
+#: dist/js/editor/editor.js
+msgid "Lists"
+msgstr "リスト"
+
+#: dist/js/editor/editor.js
+msgid "List items"
+msgstr "リスト項目"
+
+#: dist/js/editor/editor.js
+msgid "This list contains unsupported content or structure. The original HTML was retained."
+msgstr "このリストには未対応の内容や構造が含まれています。元の HTML を維持しました。"

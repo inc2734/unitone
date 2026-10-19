@@ -42,8 +42,17 @@ const getText = ( node ) => {
 		return '\n';
 	}
 
-	return ( node.childNodes ?? [] ).map( getText ).join( '' );
+	return (
+		( [ 'ul', 'ol' ].includes( node.tagName ) ? ' ' : '' ) +
+		( node.childNodes ?? [] ).map( getText ).join( '' ) +
+		( node.tagName === 'li' ? ' ' : '' )
+	);
 };
+
+const hasImplicitListEndTag = ( node ) =>
+	( [ 'ul', 'ol', 'li' ].includes( node.tagName ) &&
+		! node.sourceCodeLocation?.endTag ) ||
+	getElements( node ).some( hasImplicitListEndTag );
 
 /**
  * Parse the complete shell, since individual innerContent fragments may contain
@@ -122,6 +131,8 @@ export function analyzeHTML( block ) {
 			kind = 'heading';
 		} else if ( node.tagName === 'p' ) {
 			kind = 'paragraph';
+		} else if ( [ 'ul', 'ol' ].includes( node.tagName ) ) {
+			kind = 'list';
 		} else if ( node.tagName === 'img' || isImageContainer ) {
 			kind = 'image';
 		}
@@ -158,6 +169,7 @@ export function analyzeHTML( block ) {
 				inlineImage,
 				markupNormalized:
 					( kind !== 'image' && ! location.endTag ) ||
+					( kind === 'list' && hasImplicitListEndTag( node ) ) ||
 					errors.some(
 						( error ) =>
 							error.startOffset >= location.startOffset &&
@@ -166,7 +178,9 @@ export function analyzeHTML( block ) {
 			} );
 		}
 
-		if ( isImageContainer ) {
+		// Lists are atomic candidates; rejected or unselected lists must not be
+		// partially rewritten by conversion of their paragraphs or images.
+		if ( isImageContainer || kind === 'list' ) {
 			return;
 		}
 

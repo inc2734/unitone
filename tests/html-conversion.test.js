@@ -25,7 +25,9 @@ jest.mock(
 			return template.content.firstElementChild;
 		};
 		return {
-			getBlockType: jest.fn( () => ( {} ) ),
+			getBlockType: jest.fn( ( name ) => ( {
+				supports: { className: name !== 'core/list-item' },
+			} ) ),
 			hasBlockSupport: ( name, support, fallback = false ) => {
 				if ( name === 'core/image' ) {
 					return [
@@ -41,11 +43,11 @@ jest.mock(
 					support.startsWith( 'spacing.' )
 				);
 			},
-			createBlock: ( name, attributes ) => ( {
+			createBlock: ( name, attributes, innerBlocks = [] ) => ( {
 				name,
 				attributes,
 				clientId: `converted-${ ++nextId }`,
-				innerBlocks: [],
+				innerBlocks,
 			} ),
 			getBlockAttributes: ( name, html, attributes ) => {
 				const element = getElement( html );
@@ -57,21 +59,57 @@ jest.mock(
 			},
 			// The unit tests exercise source preservation and diagnostics with a small
 			// block adapter. Core serialization is also checked against WordPress 7.1.
-			getSaveContent: jest.fn( ( name, attributes ) => {
+			getSaveContent: jest.fn( function save(
+				name,
+				attributes,
+				innerBlocks = []
+			) {
 				let tagName = 'p';
 				if ( name === 'core/image' ) {
 					tagName = 'figure';
 				} else if ( name === 'core/heading' ) {
 					tagName = `h${ attributes.level }`;
+				} else if ( name === 'core/list' ) {
+					tagName = attributes.ordered ? 'ol' : 'ul';
+				} else if ( name === 'core/list-item' ) {
+					tagName = 'li';
 				}
 				const root = document.createElement( tagName );
-				root.className = attributes.className || '';
+				if ( attributes.className ) {
+					root.className = attributes.className;
+				}
 				if ( attributes.anchor ) {
 					root.id = attributes.anchor;
 				}
 				root.style.cssText = compileCSS( attributes.style ?? {} );
+				if ( name === 'core/list' ) {
+					if ( attributes.ordered ) {
+						if ( attributes.start !== undefined ) {
+							root.setAttribute( 'start', attributes.start );
+						}
+						if ( attributes.reversed ) {
+							root.setAttribute( 'reversed', '' );
+						}
+						if (
+							attributes.type &&
+							attributes.type !== 'decimal'
+						) {
+							root.style.listStyleType = attributes.type;
+						}
+					}
+				}
 				if ( name !== 'core/image' ) {
-					root.innerHTML = attributes.content;
+					root.innerHTML = attributes.content ?? '';
+					for ( const child of innerBlocks ) {
+						root.insertAdjacentHTML(
+							'beforeend',
+							save(
+								child.name,
+								child.attributes,
+								child.innerBlocks
+							)
+						);
+					}
 					if ( attributes.direction ) {
 						root.dir = attributes.direction;
 					}
@@ -131,7 +169,7 @@ const htmlBlock = ( html ) => ( {
 	innerContent: [ html ],
 	innerBlocks: [],
 } );
-const all = { heading: true, paragraph: true, image: true };
+const all = { heading: true, paragraph: true, list: true, image: true };
 
 describe( 'HTML conversion', () => {
 	afterEach( () => jest.clearAllMocks() );
@@ -184,6 +222,7 @@ describe( 'HTML conversion', () => {
 		expect( convertHTML( { ...block, ...result }, all ).counts ).toEqual( {
 			heading: 0,
 			paragraph: 0,
+			list: 0,
 			image: 0,
 		} );
 	} );
@@ -369,6 +408,7 @@ describe( 'HTML conversion', () => {
 			expect( result.counts ).toEqual( {
 				heading: 0,
 				paragraph: 1,
+				list: 0,
 				image: 0,
 			} );
 			expect( result.innerContent[ 0 ] ).toBe( `<img src="${ url }">` );
@@ -522,6 +562,7 @@ describe( 'HTML conversion', () => {
 		expect( result.counts ).toEqual( {
 			heading: 1,
 			paragraph: 1,
+			list: 0,
 			image: 0,
 		} );
 		expect( result.innerContent ).toEqual( [
@@ -535,6 +576,297 @@ describe( 'HTML conversion', () => {
 		expect( result.entries[ 1 ].notes[ 0 ].code ).toBe(
 			'missing-image-url'
 		);
+	} );
+
+	it( 'builds nested lists without changing the surrounding shell or inline text', () => {
+		const result = convertHTML(
+			htmlBlock(
+				'<section data-shell="keep"><ul class="steps" id="steps" style="color:red"><li id="first">First <strong>step</strong><ol start="3" reversed type="A"><li>Nested <a href="https://example.com/">link</a></li></ol></li><li>Last</li></ul><p>After</p></section>'
+			),
+			all
+		);
+		expect( result.counts ).toEqual( {
+			heading: 0,
+			paragraph: 1,
+			list: 1,
+			image: 0,
+		} );
+		expect( result.innerContent ).toEqual( [
+			'<section data-shell="keep">',
+			null,
+			'',
+			null,
+			'</section>',
+		] );
+		const list = result.innerBlocks[ 0 ];
+		expect( result.entries[ 0 ].text ).toBe(
+			'First step Nested link Last'
+		);
+		expect( list ).toMatchObject( {
+			name: 'core/list',
+			attributes: {
+				ordered: false,
+				className: 'steps',
+				anchor: 'steps',
+				style: { color: { text: 'red' } },
+			},
+		} );
+		const first = list.innerBlocks[ 0 ];
+		expect( first ).toMatchObject( {
+			name: 'core/list-item',
+			attributes: {
+				anchor: 'first',
+				content: 'First <strong>step</strong>',
+			},
+		} );
+		const nested = first.innerBlocks[ 0 ];
+		expect( nested ).toMatchObject( {
+			name: 'core/list',
+			attributes: {
+				ordered: true,
+				start: 3,
+				reversed: true,
+				type: 'upper-alpha',
+			},
+		} );
+		expect( nested.innerBlocks[ 0 ].attributes.content ).toBe(
+			'Nested <a href="https://example.com/">link</a>'
+		);
+		expect( list.innerBlocks[ 1 ].attributes.content ).toBe( 'Last' );
+		expect(
+			result.entries.find(
+				( entry ) => entry.blockId === nested.clientId
+			).notes
+		).toContainEqual( {
+			code: 'attribute-to-style',
+			tag: 'ol',
+			names: [ 'type' ],
+		} );
+	} );
+
+	it( 'separates line breaks in list-item report labels', () => {
+		const result = convertHTML(
+			htmlBlock( '<ul><li data-item="lost">First<br>Second</li></ul>' ),
+			all
+		);
+		expect( result.entries[ 1 ].text ).toBe( 'First Second' );
+	} );
+
+	it.each( [ 0, -2, 7 ] )( 'preserves ordered list start %d', ( start ) => {
+		const result = convertHTML(
+			htmlBlock( `<ol start="${ start }"><li>Item</li></ol>` ),
+			all
+		);
+		expect( result.innerBlocks[ 0 ].attributes.start ).toBe( start );
+		expect(
+			result.entries.every( ( entry ) => ! entry.notes.length )
+		).toBe( true );
+	} );
+
+	it.each( [
+		[ 'a', 'lower-alpha' ],
+		[ 'I', 'upper-roman' ],
+		[ 'i', 'lower-roman' ],
+	] )( 'maps list type %s to %s', ( type, expected ) => {
+		const result = convertHTML(
+			htmlBlock( `<ol type="${ type }"><li>Item</li></ol>` ),
+			all
+		);
+		expect( result.innerBlocks[ 0 ].attributes.type ).toBe( expected );
+		expect( result.entries[ 0 ].notes ).toEqual( [
+			{ code: 'attribute-to-style', tag: 'ol', names: [ 'type' ] },
+		] );
+	} );
+
+	it( 'prefers explicit numbering styles and reports each item loss against its own block', () => {
+		const result = convertHTML(
+			htmlBlock(
+				'<ol data-list="root" type="A" style="list-style-type:lower-roman"><li class="custom" data-item="a">First</li><li style="display:flex">Second<ul data-child="nested"><li value="4">Nested</li></ul></li></ol>'
+			),
+			all
+		);
+		const list = result.innerBlocks[ 0 ];
+		expect( list.attributes.type ).toBe( 'lower-roman' );
+		const withNotes = result.entries.filter(
+			( entry ) => entry.notes.length
+		);
+		expect( withNotes.map( ( entry ) => entry.blockId ) ).toEqual( [
+			list.clientId,
+			list.innerBlocks[ 0 ].clientId,
+			list.innerBlocks[ 1 ].clientId,
+			list.innerBlocks[ 1 ].innerBlocks[ 0 ].clientId,
+			list.innerBlocks[ 1 ].innerBlocks[ 0 ].innerBlocks[ 0 ].clientId,
+		] );
+		expect( withNotes[ 0 ].notes ).toContainEqual( {
+			code: 'attributes-removed',
+			tag: 'ol',
+			names: [ 'data-list', 'type' ],
+		} );
+		expect( withNotes[ 1 ] ).toMatchObject( {
+			kind: 'list-item',
+			text: 'First',
+			notes: [
+				{
+					code: 'attributes-removed',
+					tag: 'li',
+					names: [ 'class', 'data-item' ],
+				},
+			],
+		} );
+		expect( withNotes[ 2 ] ).toMatchObject( {
+			text: 'Second',
+			notes: [
+				{ code: 'styles-removed', tag: 'li', names: [ 'display' ] },
+			],
+		} );
+		expect( withNotes[ 4 ] ).toMatchObject( {
+			text: 'Nested',
+			notes: [
+				{ code: 'attributes-removed', tag: 'li', names: [ 'value' ] },
+			],
+		} );
+	} );
+
+	it.each( [ 'constructor', '__proto__', 'toString' ] )(
+		'does not interpret inherited properties as numbering types: %s',
+		( type ) => {
+			const result = convertHTML(
+				htmlBlock( `<ol type="${ type }"><li>Item</li></ol>` ),
+				all
+			);
+			expect( result.counts.list ).toBe( 1 );
+			expect( result.innerBlocks[ 0 ].attributes.type ).toBeUndefined();
+			expect( result.entries[ 0 ].notes ).toEqual( [
+				{ code: 'attributes-removed', tag: 'ol', names: [ 'type' ] },
+			] );
+		}
+	);
+
+	it( 'sanitizes list and item RichText attributes and URLs with scoped removal notes', () => {
+		const result = convertHTML(
+			htmlBlock(
+				'<ul onclick="bad()"><li is="evil" data-rich-text-onclick="bad()">First<ul><li><a href="java&#x09;script:bad()" data-disable-rich-text-onclick="bad()">Unsafe</a><strong> safe</strong></li></ul></li></ul>'
+			),
+			all
+		);
+		const root = result.innerBlocks[ 0 ];
+		const nestedItem =
+			root.innerBlocks[ 0 ].innerBlocks[ 0 ].innerBlocks[ 0 ];
+		const saved = getSaveContent(
+			root.name,
+			root.attributes,
+			root.innerBlocks
+		);
+		expect( saved ).not.toMatch( /onclick|rich-text|javascript|is="evil"/ );
+		expect( saved ).toContain( '<strong> safe</strong>' );
+		expect( result.entries[ 0 ].notes ).toContainEqual( {
+			code: 'unsafe-attributes-removed',
+			tag: 'ul',
+			names: [ 'onclick' ],
+		} );
+		expect(
+			result.entries.find(
+				( entry ) => entry.blockId === nestedItem.clientId
+			).notes
+		).toEqual(
+			expect.arrayContaining( [
+				{ code: 'unsafe-urls-removed', tag: 'a', names: [ 'href' ] },
+				{
+					code: 'unsafe-attributes-removed',
+					tag: 'a',
+					names: [ 'data-disable-rich-text-onclick' ],
+				},
+			] )
+		);
+	} );
+
+	it.each( [
+		'<ul><li><p>Paragraph</p><img src="image.jpg"></li></ul>',
+		'<ul><li>Before<ul><li>Nested</li></ul>After</li></ul>',
+		'<ul><li>Two child lists<ul></ul><ol><li>Nested</li></ol></li></ul>',
+		'<ul><li><span><ol><li>Not a trailing child</li></ol></span></li></ul>',
+		'<ul><li><input value="x"></li></ul>',
+		'<ul><li><custom-text>Custom</custom-text></li></ul>',
+		'<ul>Loose text<li>Item</li></ul>',
+	] )( 'retains a complex list atomically: %s', ( list ) => {
+		const result = convertHTML( htmlBlock( list + '<p>Outside</p>' ), all );
+		expect( result.counts ).toEqual( {
+			heading: 0,
+			paragraph: 1,
+			list: 0,
+			image: 0,
+		} );
+		expect( result.innerContent ).toEqual( [ list, null, '' ] );
+		expect( result.entries[ 0 ].notes ).toEqual( [
+			{ code: 'complex-list' },
+		] );
+	} );
+
+	it( 'leaves an unselected list and its paragraph/image descendants untouched', () => {
+		const list =
+			'<ul><li><p data-label="keep">Text</p><img src="keep.jpg"></li></ul>';
+		const result = convertHTML( htmlBlock( list ), {
+			...all,
+			list: false,
+		} );
+		expect( result.innerContent ).toEqual( [ list ] );
+		expect( result.entries ).toEqual( [] );
+	} );
+
+	it( 'preserves an existing block inside a list and does not convert sibling items', () => {
+		const existing = { clientId: 'existing-list-child' };
+		const block = {
+			...htmlBlock( '' ),
+			innerContent: [
+				'<ul><li>Before',
+				null,
+				'</li><li>After</li></ul>',
+			],
+			innerBlocks: [ existing ],
+		};
+		const result = convertHTML( block, all );
+		expect( result.innerContent ).toEqual( block.innerContent );
+		expect( result.innerBlocks[ 0 ] ).toBe( existing );
+		expect( result.entries[ 0 ].notes ).toEqual( [
+			{ code: 'contains-blocks' },
+		] );
+	} );
+
+	it( 'retains the whole list if list-item blocks are unavailable', () => {
+		getBlockType.mockReturnValueOnce( {} ).mockReturnValueOnce( undefined );
+		const html = '<ul><li>Item</li></ul>';
+		const result = convertHTML( htmlBlock( html ), all );
+		expect( result.innerContent ).toEqual( [ html ] );
+		expect( result.entries[ 0 ].notes ).toEqual( [
+			{ code: 'unavailable-block' },
+		] );
+	} );
+
+	it( 'normalizes omitted list-item closing tags', () => {
+		const result = convertHTML(
+			htmlBlock( '<ul><li>One<li>Two<ol><li>Three</ol></ul>' ),
+			all
+		);
+		expect( result.counts.list ).toBe( 1 );
+		const list = result.innerBlocks[ 0 ];
+		expect( list.innerBlocks ).toHaveLength( 2 );
+		expect( list.innerBlocks[ 1 ].innerBlocks ).toHaveLength( 1 );
+		expect( result.entries[ 0 ].notes ).toContainEqual( {
+			code: 'markup-normalized',
+		} );
+	} );
+
+	it( 'preserves empty lists at the root and inside an item', () => {
+		const result = convertHTML(
+			htmlBlock( '<ul></ul><ol><li>Item<ul></ul></li></ol>' ),
+			all
+		);
+		expect( result.counts.list ).toBe( 2 );
+		expect( result.innerBlocks[ 0 ].innerBlocks ).toEqual( [] );
+		expect(
+			result.innerBlocks[ 1 ].innerBlocks[ 0 ].innerBlocks[ 0 ]
+				.innerBlocks
+		).toEqual( [] );
 	} );
 
 	it( 'retains unavailable blocks and errors without losing their HTML', () => {

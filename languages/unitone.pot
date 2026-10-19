@@ -6974,7 +6974,7 @@ msgstr ""
 
 #: dist/js/editor/editor.js
 #, javascript-format
-msgid "%1$s: dimension attributes were converted to styles: %2$s."
+msgid "%1$s: attributes were converted to styles: %2$s."
 msgstr ""
 
 #: dist/js/editor/editor.js
@@ -7055,7 +7055,7 @@ msgstr ""
 
 #: dist/js/editor/editor.js
 #, javascript-format
-msgid "Converted: headings %1$d, paragraphs %2$d, images %3$d."
+msgid "Converted: headings %1$d, paragraphs %2$d, lists %3$d, images %4$d."
 msgstr ""
 
 #: dist/js/editor/editor.js
@@ -7083,4 +7083,16 @@ msgstr ""
 
 #: dist/js/editor/editor.js
 msgid "This image URL cannot be safely retained. The image was not converted and the original HTML was retained."
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "Lists"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "List items"
+msgstr ""
+
+#: dist/js/editor/editor.js
+msgid "This list contains unsupported content or structure. The original HTML was retained."
 msgstr ""

@@ -9,7 +9,6 @@ import {
 	Popover,
 	Spinner,
 	ToolbarButton,
-	ToolbarGroup,
 } from '@wordpress/components';
 
 import {
@@ -268,9 +267,9 @@ function ConversionPanel( { clientId, onClose } ) {
 	);
 
 	const [ selected, setSelected ] = useState( {
-		heading: true,
-		paragraph: true,
-		list: true,
+		heading: false,
+		paragraph: false,
+		list: false,
 		image: false,
 	} );
 
@@ -536,16 +535,14 @@ function HTMLConverter( { clientId, isSelected } ) {
 	return (
 		<>
 			{ isSelected && (
-				<BlockControls>
-					<ToolbarGroup>
-						<ToolbarButton
-							onClick={ toggle }
-							aria-expanded={ !! anchor }
-							aria-haspopup="dialog"
-						>
-							{ __( 'Convert', 'unitone' ) }
-						</ToolbarButton>
-					</ToolbarGroup>
+				<BlockControls group="other">
+					<ToolbarButton
+						onClick={ toggle }
+						aria-expanded={ !! anchor }
+						aria-haspopup="dialog"
+					>
+						{ __( 'Convert', 'unitone' ) }
+					</ToolbarButton>
 				</BlockControls>
 			) }
 			{ anchor && (

@@ -157,9 +157,6 @@ require get_template_directory() . '/inc/loading-animation.php';
 // Header settings.
 require get_template_directory() . '/inc/header.php';
 
-// OpenAI.
-require get_template_directory() . '/inc/openai.php';
-
 // Settings override.
 require get_template_directory() . '/inc/override-settings.php';
 

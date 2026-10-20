@@ -22,7 +22,6 @@ import CustomTemplates from './panels/custom-templates';
 import BlogCard from './panels/blog-card';
 import OGP from './panels/ogp';
 import GeneratedThumbnail from './panels/generated-thumbnail';
-import OpenAI from './panels/openai';
 
 export default function ( { adminThemeColors } ) {
 	const [ defaultSettings, setDefaultSettings ] = useState( [] );
@@ -153,8 +152,6 @@ export default function ( { adminThemeColors } ) {
 											defaultSettings={ defaultSettings }
 											setSettings={ setSettings }
 										/>
-
-										<OpenAI />
 									</div>
 								</div>
 							</div>

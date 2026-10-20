@@ -2356,38 +2356,6 @@ msgstr ""
 msgid "Background"
 msgstr ""
 
-#: App/Controller/Manager/dist/js/app.js:18
-msgid "Failed to load models."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:18
-msgid "OpenAI (Deprecated)"
-msgstr ""
-
-#. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:21
-#, js-format
-msgid "Starting with WordPress 7.0, the use of %1$sAI Connectors%2$s is recommended. This setup is scheduled to be rolled out, so please migrate to AI Connectors as soon as possible."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:21
-msgid "AI Connectors are already configured and currently in use. The OpenAI settings below are only used as a legacy fallback."
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:21
-msgid "API Key"
-msgstr ""
-
-#: App/Controller/Manager/dist/js/app.js:21
-msgid "Model to use"
-msgstr ""
-
-#. translators: %1$s: <a>, %2$s: </a>
-#: App/Controller/Manager/dist/js/app.js:24
-#, js-format
-msgid "Using the API incurs charges. Please check the %1$sAPI pricing%2$s page for details."
-msgstr ""
-
 #: App/Controller/Manager/dist/js/app.js:24
 msgid "Navigation"
 msgstr ""
@@ -5030,84 +4998,6 @@ msgstr ""
 
 #: dist/js/editor/editor.js:26
 msgid "Text color"
-msgstr ""
-
-#: dist/js/editor/editor.js:26
-msgid "Copied."
-msgstr ""
-
-#: dist/js/editor/editor.js:26
-msgid "Text Generator"
-msgstr ""
-
-#. translators: %1$s: <a>, %2$s: </a>
-#: dist/js/editor/editor.js:29
-#, js-format
-msgid "To use this feature, configure AI Connectors from the %1$sConnectors settings screen%2$s."
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Prompt"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Example: Generate customer testimonials for a web design agency."
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Tone (optional)"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Polite"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Casual"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Formal"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Friendly"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Logical"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "High energy"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Please enter a prompt."
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "[unitone] Starting with WordPress 7.0, the use of AI Connectors is recommended. This setup is scheduled to be rolled out, so please migrate to AI Connectors as soon as possible."
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Failed to generate. Please try again."
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Generate"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Results"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Copy"
-msgstr ""
-
-#: dist/js/editor/editor.js:29
-msgid "Copy all"
 msgstr ""
 
 #: dist/variations/variations.js:1

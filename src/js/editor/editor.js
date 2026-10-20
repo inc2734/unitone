@@ -23,4 +23,3 @@ import './plugins/sync-children/index';
 import './plugins/wireframe-generator/index';
 import './plugins/paste-styles/index';
 import './plugins/override-settings/index';
-import './plugins/text-generator/index';

@@ -76,11 +76,11 @@ function render_block_unitone_breadcrumbs( $attributes ) {
 				class="unitone-breadcrumbs__item"
 				itemprop="itemListElement"
 				itemscope
-				itemtype="http://schema.org/ListItem"
+				itemtype="https://schema.org/ListItem"
 			>
 				<a
 					itemscope
-					itemtype="http://schema.org/Thing"
+					itemtype="https://schema.org/Thing"
 					itemprop="item"
 					href="%1$s"
 					itemid="%1$s"
@@ -98,7 +98,7 @@ function render_block_unitone_breadcrumbs( $attributes ) {
 	}
 
 	return sprintf(
-		'<ol %1$s itemscope itemtype="http://schema.org/BreadcrumbList">%2$s</ol>',
+		'<ol %1$s itemscope itemtype="https://schema.org/BreadcrumbList">%2$s</ol>',
 		$block_wrapper_attributes,
 		implode( '', $list_items )
 	);

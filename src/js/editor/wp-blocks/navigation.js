@@ -25,6 +25,8 @@ import { addFilter } from '@wordpress/hooks';
 import { pencil, rotateRight } from '@wordpress/icons';
 import { sprintf, __ } from '@wordpress/i18n';
 
+import { withSpacingUIDirection } from '../hooks/dimensions/spacing-ui-direction';
+
 import {
 	cleanEmptyObject,
 	resetUnitoneWithBlockAttributes,
@@ -34,6 +36,21 @@ import {
 } from '../hooks/utils';
 
 import { getPresetCssVarFromSlug } from '../../utils/preset';
+
+addFilter(
+	'editor.BlockListBlock',
+	'unitone/navigation/spacing-ui-direction',
+	withSpacingUIDirection( 'core/navigation', ( { attributes } ) => {
+		if ( 'vertical' === attributes.layout?.orientation ) {
+			return { gap: 'vertical' };
+		}
+		// The same value also spaces the vertical overlay menu.
+		return {
+			gap: 'never' === attributes.overlayMenu ? 'horizontal' : 'all',
+		};
+	} ),
+	11
+);
 
 const hasCoreOverlay = ( attributes ) => {
 	return !! attributes?.overlay;

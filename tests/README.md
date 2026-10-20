@@ -14,6 +14,14 @@ npm run wp -- eval-file tests/preset.php
 
 両言語で `fixtures/preset-slugs.json` を共有し、WordPress の PHP が生成する識別子との一致を確認する。
 
+## gap / padding の方向アイコン
+
+未分割 UI の既定アイコン、方向の上書き優先順位、方向別 padding UI の維持、一時的な方向変更で保存属性や既存ラベルを変更しないことを確認する。
+
+```sh
+npm run test:js:spacing
+```
+
 ## ナビゲーションのサブメニュー
 
 オーバーレイ内のアコーディオンで、合成マウスイベントを含む `mousedown` 時のフォーカス移動をクリック後まで遅らせる処理を確認する。他のスタイルや通常表示には作用しない。

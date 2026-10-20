@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "28.3.0",
+	"version": "28.9.0",
 	"textdomain": "unitone",
 	"name": "unitone/slider",
 	"title": "Slider (Deprecated)",
@@ -134,7 +134,9 @@
 		"listView": true,
 		"unitone": {
 			"queryContext": true,
-			"gap": true,
+			"gap": {
+				"uiDirection": "horizontal"
+			},
 			"fluidTypography": true,
 			"halfLeading": true,
 			"linkDecoration": true,

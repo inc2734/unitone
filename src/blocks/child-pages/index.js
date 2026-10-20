@@ -33,6 +33,15 @@ const withChildBlockAttributes = createHigherOrderComponent(
 			}
 
 			const layout = props.attributes.layout;
+			const legacyLayout = ( props.attributes.className || '' ).match(
+				/(?:^|\s)is-style-(\S+?)(?:-divided-(\S+))?(?:\s|$)/
+			);
+			const effectiveLayout =
+				'default' === layout ? legacyLayout?.[ 1 ] || layout : layout;
+			const effectiveDividerType =
+				( 'default' === layout ? legacyLayout?.[ 2 ] : undefined ) ??
+				props.attributes.unitone?.dividerType ??
+				stackDividedMetadata.attributes.unitone.default.dividerType;
 
 			let dividerType;
 			let divider;
@@ -88,6 +97,15 @@ const withChildBlockAttributes = createHigherOrderComponent(
 						...props.attributes,
 						__unstableUnitoneSupports: {
 							...props.attributes?.__unstableUnitoneSupports,
+							gap: {
+								...props.attributes?.__unstableUnitoneSupports
+									?.gap,
+								uiDirection:
+									'stack' === effectiveLayout &&
+									'bordered' !== effectiveDividerType
+										? 'vertical'
+										: 'all',
+							},
 							dividerType,
 							divider,
 							dividerColor,

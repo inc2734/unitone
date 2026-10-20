@@ -17,6 +17,7 @@ import {
 
 import { GapControl, isDefaultSpacingSizeValue } from '../components';
 import { getPresetCssVar } from '../../../utils/preset';
+import { getSpacingUIDirection } from './spacing-ui-direction';
 
 function isCustomSpacingSizeValue( value ) {
 	return (
@@ -137,7 +138,7 @@ function expand( attribute ) {
 export function GapEdit( {
 	name,
 	label,
-	attributes: { unitone },
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
 	const defaultValue = useDefaultValue( { name } );
@@ -182,6 +183,11 @@ export function GapEdit( {
 		<GapControl
 			label={ label }
 			splitOnAxis={ splitOnAxis }
+			uiDirection={ getSpacingUIDirection(
+				name,
+				__unstableUnitoneSupports,
+				'gap'
+			) }
 			isVertical={ isVertical }
 			isMixed={ isMixed }
 			value={ compactedValue ?? defaultValue }

@@ -41,6 +41,15 @@ const changeUnitoneSupportsLabels = createHigherOrderComponent(
 						...props.attributes,
 						__unstableUnitoneSupports: {
 							...props.attributes?.__unstableUnitoneSupports,
+							gap: {
+								...props.attributes?.__unstableUnitoneSupports
+									?.gap,
+								uiDirection:
+									'bordered' ===
+									props.attributes.unitone?.dividerType
+										? 'all'
+										: 'vertical',
+							},
 							padding: {
 								...props.attributes?.__unstableUnitoneSupports
 									?.padding,

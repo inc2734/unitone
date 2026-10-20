@@ -185,13 +185,18 @@ function unitone_add_gap_support( $metadata ) {
 		return $metadata;
 	}
 
+	$vertical_gap_blocks = array( 'core/list', 'core/post-content', 'core/query' );
+	$gap_support         = in_array( $metadata['name'], $vertical_gap_blocks, true )
+		? array( 'uiDirection' => 'vertical' )
+		: true;
+
 	$metadata['supports'] = array_merge(
 		$metadata['supports'],
 		array(
 			'unitone' => array_merge(
 				$metadata['supports']['unitone'] ?? array(),
 				array(
-					'gap' => true,
+					'gap' => $gap_support,
 				)
 			),
 		)

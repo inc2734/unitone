@@ -21,6 +21,7 @@ import {
 
 import { PaddingControl, isDefaultSpacingSizeValue } from '../components';
 import { getPresetCssVar } from '../../../utils/preset';
+import { getSpacingUIDirection } from './spacing-ui-direction';
 
 function isCustomSpacingSizeValue( value ) {
 	return (
@@ -178,7 +179,7 @@ export function expand( attribute ) {
 export function PaddingEdit( {
 	label,
 	name,
-	attributes: { unitone },
+	attributes: { unitone, __unstableUnitoneSupports },
 	setAttributes,
 } ) {
 	const defaultValue = useDefaultValue( { name } );
@@ -286,6 +287,11 @@ export function PaddingEdit( {
 		<PaddingControl
 			label={ label }
 			split={ !! split }
+			uiDirection={ getSpacingUIDirection(
+				name,
+				__unstableUnitoneSupports,
+				'padding'
+			) }
 			isMixed={ isMixed }
 			value={ compactedValue ?? compactedDefaultValue ?? defaultValue }
 			onChange={ onChangePadding }

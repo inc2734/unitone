@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"version": "24.2.0",
+	"version": "28.9.0",
 	"textdomain": "unitone",
 	"name": "unitone/reference-sources",
 	"title": "Referene sources",
@@ -46,7 +46,9 @@
 			"fluidTypography": true,
 			"halfLeading": true,
 			"linkDecoration": true,
-			"gap": true,
+			"gap": {
+				"uiDirection": "vertical"
+			},
 			"color": {
 				"marker": true
 			}

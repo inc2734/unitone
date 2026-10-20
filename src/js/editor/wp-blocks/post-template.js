@@ -2,7 +2,23 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { useEffect, useRef } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
 
+import { withSpacingUIDirection } from '../hooks/dimensions/spacing-ui-direction';
+
 import { debounce, setDividerLinewrap } from '@inc2734/unitone-css/library';
+
+addFilter(
+	'editor.BlockListBlock',
+	'unitone/post-template/spacing-ui-direction',
+	withSpacingUIDirection( 'core/post-template', ( { attributes } ) => ( {
+		gap:
+			[ 'grid', 'flex' ].includes( attributes.layout?.type ) ||
+			( ! attributes.layout?.type && attributes.columns > 1 ) ||
+			'bordered' === attributes.unitone?.dividerType
+				? 'all'
+				: 'vertical',
+	} ) ),
+	11
+);
 
 const observers = new WeakMap();
 const selector =

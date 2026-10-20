@@ -285,9 +285,20 @@ function LinkedButton( { isLinked, ...props } ) {
 	);
 }
 
+function SpacingDirectionIcon( { uiDirection } ) {
+	const icons = {
+		vertical: verticalSides,
+		horizontal: horizontalSides,
+		all: allSides,
+	};
+
+	return <Icon icon={ icons[ uiDirection ] || allSides } size={ 16 } />;
+}
+
 export function PaddingControl( {
 	label,
 	split = false,
+	uiDirection = 'all',
 	isMixed = false,
 	value,
 	onChange,
@@ -347,12 +358,22 @@ export function PaddingControl( {
 			</Flex>
 
 			{ ! split ? (
-				<SpacingSizeControl value={ value } onChange={ onChange } />
+				<Flex align="center">
+					<FlexItem display="flex">
+						<SpacingDirectionIcon uiDirection={ uiDirection } />
+					</FlexItem>
+					<FlexBlock>
+						<SpacingSizeControl
+							value={ value }
+							onChange={ onChange }
+						/>
+					</FlexBlock>
+				</Flex>
 			) : (
 				<>
 					{ isLinked ? (
 						<Flex align="center">
-							<FlexItem>
+							<FlexItem display="flex">
 								<Icon icon={ linkedSpacingIcon } size={ 16 } />
 							</FlexItem>
 
@@ -379,7 +400,7 @@ export function PaddingControl( {
 									onChange: onSideChange,
 								} ) => (
 									<Flex key={ key } align="center">
-										<FlexItem>
+										<FlexItem display="flex">
 											<Icon
 												icon={ getSideIcon( key ) }
 												size={ 16 }
@@ -406,6 +427,7 @@ export function PaddingControl( {
 export function GapControl( {
 	label,
 	splitOnAxis = false,
+	uiDirection = 'all',
 	isVertical = false,
 	isMixed = false,
 	value,
@@ -435,12 +457,22 @@ export function GapControl( {
 			</Flex>
 
 			{ ! splitOnAxis ? (
-				<SpacingSizeControl value={ value } onChange={ onChange } />
+				<Flex align="center">
+					<FlexItem display="flex">
+						<SpacingDirectionIcon uiDirection={ uiDirection } />
+					</FlexItem>
+					<FlexBlock>
+						<SpacingSizeControl
+							value={ value }
+							onChange={ onChange }
+						/>
+					</FlexBlock>
+				</Flex>
 			) : (
 				<>
 					{ isLinked ? (
 						<Flex align="center">
-							<FlexItem>
+							<FlexItem display="flex">
 								<Icon icon={ allSides } size={ 16 } />
 							</FlexItem>
 
@@ -461,7 +493,7 @@ export function GapControl( {
 							} }
 						>
 							<Flex align="center">
-								<FlexItem>
+								<FlexItem display="flex">
 									{ ! isVertical ? (
 										<Icon
 											icon={ verticalSides }
@@ -484,7 +516,7 @@ export function GapControl( {
 							</Flex>
 
 							<Flex align="center">
-								<FlexItem>
+								<FlexItem display="flex">
 									{ ! isVertical ? (
 										<Icon
 											icon={ horizontalSides }

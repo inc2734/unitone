@@ -902,6 +902,7 @@ export const SettingsInspectorControls = ( {
 							>
 								<GapControl
 									label={ __( 'Arrows gap', 'unitone' ) }
+									uiDirection="horizontal"
 									value={ normalizeForStringControl(
 										arrowsGap
 									) }

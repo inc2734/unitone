@@ -1,4 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { addFilter } from '@wordpress/hooks';
+
+import { withSpacingUIDirection } from '../../js/editor/hooks/dimensions/spacing-ui-direction';
 
 import icon from './icon';
 import edit from './edit';
@@ -18,3 +21,12 @@ registerBlockType( 'unitone/text', {
 	transforms,
 	deprecated,
 } );
+
+addFilter(
+	'editor.BlockListBlock',
+	'unitone/text/spacing-ui-direction',
+	withSpacingUIDirection( 'unitone/text', ( { attributes } ) => ( {
+		gap: attributes.column ? 'all' : 'vertical',
+	} ) ),
+	11
+);

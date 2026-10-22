@@ -667,7 +667,7 @@ class Manager {
 				'headers'    => array(
 					'Accept-Encoding'       => '',
 					'X-Unitone-License-Key' => $license_key,
-					'X-Unitone-Version'     => wp_get_theme()->get( 'Version' ),
+					'X-Unitone-Version'     => wp_get_theme( get_template() )->get( 'Version' ),
 					'X-Unitone-URL'         => home_url(),
 				),
 			)

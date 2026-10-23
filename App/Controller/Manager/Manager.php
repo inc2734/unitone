@@ -214,7 +214,7 @@ class Manager {
 		/**
 		 * The license status getter.
 		 *
-		 * @return string 'true'|'false'|'50x'.
+		 * @return string License status, HTTP status code, or 'error'.
 		 */
 		register_rest_route(
 			'unitone/v1',
@@ -309,8 +309,13 @@ class Manager {
 						return new \WP_REST_Response( array( 'message' => 'Could not save settings' ), 400 );
 					}
 
+					if ( isset( $settings['license-key'] ) && ! is_string( $settings['license-key'] ) ) {
+						return new \WP_Error( 'rest_invalid_param', __( 'Invalid license key.', 'unitone' ), array( 'status' => 400 ) );
+					}
+
 					$default_settings = Settings::get_default_settings();
 					$saved_settings   = Settings::get_settings();
+					$old_license_key  = static::get_setting( 'license-key' );
 
 					$default_global_styles = Settings::get_default_global_styles();
 					$saved_global_styles   = Settings::get_global_styles();
@@ -346,17 +351,7 @@ class Manager {
 					Settings::update_options( $new_options );
 
 					if ( array_key_exists( 'license-key', $settings ) ) {
-						$old_license_key = static::get_setting( 'license-key' );
-						$old_status      = $old_license_key
-							? static::get_license_status( $old_license_key )
-							: 'false';
-
-						// If server error, Do nothing.
-						if ( ! in_array( $old_status, array( 'true', 'false' ), true ) ) {
-							return new \WP_REST_Response( array( 'message' => 'License activation could not be performed' ), 400 );
-						}
-
-						if ( ! empty( $old_license_key ) ) {
+						if ( is_string( $old_license_key ) && '' !== $old_license_key ) {
 							$transient_name = 'unitone-license-status-' . $old_license_key;
 							delete_transient( $transient_name );
 						}
@@ -482,20 +477,7 @@ class Manager {
 			'/remote-block-patterns',
 			array(
 				'methods'             => 'DELETE',
-				'callback'            => function ( $request ) {
-					$settings = $request->get_params();
-					if ( ! $settings ) {
-						return new \WP_REST_Response( array( 'message' => 'Unable to get patterns.' ), 400 );
-					}
-
-					$license_key = static::get_setting( 'license-key' );
-					$status      = static::get_license_status( $license_key );
-
-					// If server error, Do nothing.
-					if ( ! in_array( $status, array( 'true', 'false' ), true ) ) {
-						return new \WP_REST_Response( array( 'message' => 'License activation could not be performedd' ), 400 );
-					}
-
+				'callback'            => function () {
 					delete_transient( 'unitone-remote-pattern-categories' );
 					delete_transient( 'unitone-remote-patterns' ); // Backward compatibility.
 					delete_transient( 'unitone-premium-remote-patterns' );
@@ -578,6 +560,13 @@ class Manager {
 		if ( 'true' === $license_status ) {
 			return;
 		}
+		if ( 'false' !== $license_status ) {
+			wp_admin_notice(
+				__( 'Could not verify the license. Please try again shortly.', 'unitone' ),
+				array( 'type' => 'warning' )
+			);
+			return;
+		}
 
 		$message = sprintf(
 		// translators: %1$s: a start tag, %2$s: a end tag, %3$s: a start tag, %4$s: a end tag.
@@ -614,10 +603,10 @@ class Manager {
 	 *
 	 * @param string $license_key The license key.
 	 * @param boolean $force Whether to request without going through cache.
-	 * @return string 'true'|'false'|'50x'
+	 * @return string License status, HTTP status code, or 'error'.
 	 */
 	public static function get_license_status( $license_key, $force = false ) {
-		if ( empty( $license_key ) ) {
+		if ( empty( $license_key ) || ! is_string( $license_key ) ) {
 			return 'false';
 		}
 
@@ -625,7 +614,7 @@ class Manager {
 
 		if ( ! $force ) {
 			$transient = get_transient( $transient_name );
-			if ( false !== $transient ) {
+			if ( is_string( $transient ) ) {
 				return $transient;
 			}
 		}
@@ -639,7 +628,14 @@ class Manager {
 			$status = (string) $status;
 		}
 
-		set_transient( $transient_name, $status, DAY_IN_SECONDS );
+		set_transient(
+			$transient_name,
+			$status,
+			in_array( $status, array( 'true', 'false' ), true )
+				? DAY_IN_SECONDS
+				: MINUTE_IN_SECONDS
+		);
+
 		return $status;
 	}
 
@@ -648,7 +644,7 @@ class Manager {
 	 *
 	 * @param string $license_key The license key.
 	 * @param boolean $force Whether to request without going through cache.
-	 * @return mixed false|true|50x
+	 * @return bool|int|string
 	 */
 	protected static function _request_license_validate( $license_key, $force = false ) {
 		global $wp_version;
@@ -673,18 +669,17 @@ class Manager {
 			)
 		);
 
-		$status = false;
+		$status = 'error';
 		if ( $response && ! is_wp_error( $response ) ) {
 			$response_code = wp_remote_retrieve_response_code( $response );
+			$body          = json_decode( wp_remote_retrieve_body( $response ) );
 			if ( 200 === $response_code ) {
-				$status = wp_remote_retrieve_body( $response );
-				if ( 'true' === $status ) {
-					$status = true;
-				} elseif ( 'false' === $status ) {
-					$status = false;
-				}
-			} elseif ( 5 === (int) substr( $response_code, 0, 1 ) ) {
-				$status = $response_code;
+				$status = is_bool( $body ) ? $body : 'error';
+			} elseif ( 403 === $response_code && in_array( $body, array( 'Failed request.', 'Blocked.' ), true ) ) {
+				// These JSON strings are explicit license denials, unlike a proxy's 403 HTML.
+				$status = false;
+			} else {
+				$status = $response_code ? $response_code : 'error';
 			}
 		}
 

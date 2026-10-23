@@ -91,6 +91,7 @@
 		"test:formats:lint": "wp-scripts lint-js src/formats",
 		"test:formats": "run-s test:formats:*",
 		"test:settings:lint": "wp-scripts lint-js App/Controller/Manager/src/js",
+		"test:settings:license": "wp-scripts test-unit-js --runInBand tests/license-panel.test.js",
 		"test:settings": "run-s test:settings:*",
 		"test:js:lint": "wp-scripts lint-js src/js",
 		"test:js:presets": "wp-scripts test-unit-js --runInBand tests/preset.test.js",

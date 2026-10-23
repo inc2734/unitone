@@ -12,10 +12,13 @@ use Unitone\App\Controller\Manager\Manager;
  *
  * @param string $url A URL of the remote styles API.
  * @param array $args An array of request arguments.
+ * @param bool|null $success Receives whether the request returned valid library data.
  * @return array
  */
-function _unitone_get_remote_block_styles( $url, array $args = array() ) {
+function _unitone_get_remote_block_styles( $url, array $args = array(), &$success = null ) {
 	global $wp_version;
+
+	$success = false;
 
 	$response = wp_remote_get(
 		$url,
@@ -45,19 +48,57 @@ function _unitone_get_remote_block_styles( $url, array $args = array() ) {
 		return array();
 	}
 
+	$has_styles = ! empty( $styles );
 	foreach ( $styles as $key => $style ) {
+		if ( ! _unitone_is_valid_remote_block_style( $style ) ) {
+			unset( $styles[ $key ] );
+			continue;
+		}
 		$styles[ $key ]['viewportWidth'] = 1440;
 	}
+
+	$success = ! $has_styles || ! empty( $styles );
 
 	return $styles;
 }
 
 /**
+ * Validate both fresh responses and previously cached styles before registration.
+ *
+ * @param mixed $style Style data.
+ * @return bool
+ */
+function _unitone_is_valid_remote_block_style( $style ) {
+	if ( ! is_array( $style ) ) {
+		return false;
+	}
+
+	foreach ( array( 'name', 'label' ) as $key ) {
+		if ( empty( $style[ $key ] ) || ! is_string( $style[ $key ] ) ) {
+			return false;
+		}
+	}
+
+	if ( ! is_string( $style['inline_style'] ?? null ) || empty( $style['blockTypes'] ) || ! is_array( $style['blockTypes'] ) ) {
+		return false;
+	}
+
+	foreach ( $style['blockTypes'] as $block_type ) {
+		if ( ! is_string( $block_type ) || '' === $block_type ) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/**
  * Get premium remote block styles.
  *
+ * @param bool|null $success Receives whether the request returned valid library data.
  * @return array
  */
-function unitone_get_premium_remote_block_styles() {
+function unitone_get_premium_remote_block_styles( &$success = null ) {
 	$url = 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/styles/';
 
 	return _unitone_get_remote_block_styles(
@@ -65,7 +106,8 @@ function unitone_get_premium_remote_block_styles() {
 		array(
 			'X-Unitone-License-Key' => Manager::get_setting( 'license-key' ),
 			'X-Unitone-Locale'      => get_locale(),
-		)
+		),
+		$success
 	);
 }
 
@@ -159,14 +201,26 @@ function unitone_register_remote_block_styles() {
 
 	if ( 'true' === $status ) {
 		if ( false === $block_styles || ! is_array( $block_styles ) ) {
-			$new_block_styles = unitone_get_premium_remote_block_styles();
+			$new_block_styles = unitone_get_premium_remote_block_styles( $success );
 			if ( ! is_array( $new_block_styles ) ) {
 				$new_block_styles = array();
 			}
 
-			set_transient( $transient_name, $new_block_styles, WEEK_IN_SECONDS );
+			set_transient(
+				$transient_name,
+				$new_block_styles,
+				$success
+					? WEEK_IN_SECONDS
+					: MINUTE_IN_SECONDS
+			);
+
 			$block_styles = $new_block_styles;
 		}
+	}
+
+	// A validation outage must preserve styles already in use: https://github.com/inc2734/unitone/issues/491.
+	if ( ! is_array( $block_styles ) ) {
+		return;
 	}
 
 	$get_block_types_from_remote_block_styles_block_type = static function ( $block_types ) {
@@ -185,7 +239,7 @@ function unitone_register_remote_block_styles() {
 
 	if ( ! $on_demand || is_admin() ) {
 		foreach ( $block_styles as $style ) {
-			if ( ! $style['name'] || ! $style['label'] || ! $style['blockTypes'] ) {
+			if ( ! _unitone_is_valid_remote_block_style( $style ) ) {
 				continue;
 			}
 
@@ -198,7 +252,7 @@ function unitone_register_remote_block_styles() {
 
 	$map = array();
 	foreach ( $block_styles as $style ) {
-		if ( ! $style['name'] || ! $style['inline_style'] || ! $style['blockTypes'] ) {
+		if ( ! _unitone_is_valid_remote_block_style( $style ) || ! $style['inline_style'] ) {
 			continue;
 		}
 

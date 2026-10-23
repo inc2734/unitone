@@ -10,10 +10,13 @@ use Unitone\App\Controller\Manager\Manager;
 /**
  * Get remote block pattern categories.
  *
+ * @param bool|null $success Receives whether the request returned valid library data.
  * @return array
  */
-function unitone_get_remote_block_patten_categories() {
+function unitone_get_remote_block_patten_categories( &$success = null ) {
 	global $wp_version;
+
+	$success = false;
 
 	$url = 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/pattern-categories/';
 
@@ -44,11 +47,17 @@ function unitone_get_remote_block_patten_categories() {
 
 	$new_pattern_categories = array();
 	foreach ( $pattern_categories as $pattern_category ) {
+		if ( ! is_array( $pattern_category ) || ! is_string( $pattern_category['slug'] ?? null ) || '' === $pattern_category['slug'] || ! is_string( $pattern_category['name'] ?? null ) ) {
+			continue;
+		}
+
 		$new_pattern_categories[] = array(
 			'name'  => $pattern_category['slug'],
 			'label' => $pattern_category['name'],
 		);
 	}
+
+	$success = empty( $pattern_categories ) || ! empty( $new_pattern_categories );
 
 	return $new_pattern_categories;
 }
@@ -58,10 +67,13 @@ function unitone_get_remote_block_patten_categories() {
  *
  * @param string $url A URL of the remote patterns API.
  * @param array $args An array of request arguments.
+ * @param bool|null $success Receives whether the request returned valid library data.
  * @return array
  */
-function _unitone_get_remote_block_patterns( $url, array $args = array() ) {
+function _unitone_get_remote_block_patterns( $url, array $args = array(), &$success = null ) {
 	global $wp_version;
+
+	$success = false;
 
 	$response = wp_remote_get(
 		$url,
@@ -91,35 +103,71 @@ function _unitone_get_remote_block_patterns( $url, array $args = array() ) {
 		return array();
 	}
 
+	$has_patterns = ! empty( $patterns );
 	foreach ( $patterns as $key => $pattern ) {
+		if ( ! _unitone_is_valid_remote_block_pattern( $pattern ) ) {
+			unset( $patterns[ $key ] );
+			continue;
+		}
 		$patterns[ $key ]['viewportWidth'] = 1440;
 	}
+
+	$success = ! $has_patterns || ! empty( $patterns );
 
 	return $patterns;
 }
 
 /**
+ * Validate both fresh responses and previously cached patterns.
+ *
+ * @param mixed $pattern Pattern data.
+ * @return bool
+ */
+function _unitone_is_valid_remote_block_pattern( $pattern ) {
+	if ( ! is_array( $pattern ) ) {
+		return false;
+	}
+
+	foreach ( array( 'title', 'slug', 'content' ) as $key ) {
+		if ( empty( $pattern[ $key ] ) || ! is_string( $pattern[ $key ] ) ) {
+			return false;
+		}
+	}
+
+	foreach ( array( 'categories', 'keywords', 'blockTypes', 'postTypes', 'templateTypes' ) as $key ) {
+		if ( array_key_exists( $key, $pattern ) && ( ! is_array( $pattern[ $key ] ) || count( array_filter( $pattern[ $key ], 'is_string' ) ) !== count( $pattern[ $key ] ) ) ) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/**
  * Get free remote block patterns.
  *
+ * @param bool|null $success Receives whether the request returned valid library data.
  * @return array
  */
-function unitone_get_free_remote_block_patterns() {
+function unitone_get_free_remote_block_patterns( &$success = null ) {
 	$url = 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/free-patterns/';
 
 	return _unitone_get_remote_block_patterns(
 		$url,
 		array(
 			'X-Unitone-Locale' => get_locale(),
-		)
+		),
+		$success
 	);
 }
 
 /**
  * Get premium remote block patterns.
  *
+ * @param bool|null $success Receives whether the request returned valid library data.
  * @return array
  */
-function unitone_get_premium_remote_block_patterns() {
+function unitone_get_premium_remote_block_patterns( &$success = null ) {
 	$url = 'https://unitone.2inc.org/wp-json/unitone-license-manager/v1/patterns/';
 
 	return _unitone_get_remote_block_patterns(
@@ -127,7 +175,8 @@ function unitone_get_premium_remote_block_patterns() {
 		array(
 			'X-Unitone-License-Key' => Manager::get_setting( 'license-key' ),
 			'X-Unitone-Locale'      => get_locale(),
-		)
+		),
+		$success
 	);
 }
 
@@ -155,11 +204,11 @@ function unitone_register_remote_block_patterns() {
 	$block_pattern_categories_transient_name = 'unitone-remote-pattern-categories';
 	$block_pattern_categories                = get_transient( $block_pattern_categories_transient_name );
 	if ( false === $block_pattern_categories || ! is_array( $block_pattern_categories ) ) {
-		$new_block_pattern_categories = unitone_get_remote_block_patten_categories();
+		$new_block_pattern_categories = unitone_get_remote_block_patten_categories( $success );
 		$block_pattern_categories     = is_array( $new_block_pattern_categories )
 			? $new_block_pattern_categories
 			: array();
-		set_transient( $block_pattern_categories_transient_name, $block_pattern_categories, WEEK_IN_SECONDS );
+		set_transient( $block_pattern_categories_transient_name, $block_pattern_categories, $success ? WEEK_IN_SECONDS : MINUTE_IN_SECONDS );
 	}
 
 	// Get patterns.
@@ -172,12 +221,12 @@ function unitone_register_remote_block_patterns() {
 
 	if ( 'true' === $status ) { // Get premium pattens.
 		if ( false === $premium_block_patterns || ! is_array( $premium_block_patterns ) ) {
-			$premium_block_patterns = unitone_get_premium_remote_block_patterns();
+			$premium_block_patterns = unitone_get_premium_remote_block_patterns( $success );
 			if ( ! is_array( $premium_block_patterns ) ) {
 				$premium_block_patterns = array();
 			}
 
-			set_transient( $premium_block_patterns_transient_name, $premium_block_patterns, WEEK_IN_SECONDS );
+			set_transient( $premium_block_patterns_transient_name, $premium_block_patterns, $success ? WEEK_IN_SECONDS : MINUTE_IN_SECONDS );
 		}
 
 		$block_patterns = $premium_block_patterns;
@@ -185,12 +234,18 @@ function unitone_register_remote_block_patterns() {
 		delete_transient( $premium_block_patterns_transient_name );
 
 		if ( false === $free_block_patterns || ! is_array( $free_block_patterns ) ) {
-			$free_block_patterns = unitone_get_free_remote_block_patterns();
+			$free_block_patterns = unitone_get_free_remote_block_patterns( $success );
 			if ( ! is_array( $free_block_patterns ) ) {
 				$free_block_patterns = array();
 			}
 
-			set_transient( $free_block_patterns_transient_name, $free_block_patterns, WEEK_IN_SECONDS );
+			set_transient(
+				$free_block_patterns_transient_name,
+				$free_block_patterns,
+				$success
+					? WEEK_IN_SECONDS
+					: MINUTE_IN_SECONDS
+			);
 		}
 
 		$block_patterns = $free_block_patterns;
@@ -202,6 +257,10 @@ function unitone_register_remote_block_patterns() {
 
 	// Register pattern categories.
 	foreach ( $block_pattern_categories as $block_pattern_category ) {
+		if ( ! is_array( $block_pattern_category ) || ! is_string( $block_pattern_category['name'] ?? null ) || '' === $block_pattern_category['name'] || ! is_string( $block_pattern_category['label'] ?? null ) ) {
+			continue;
+		}
+
 		register_block_pattern_category(
 			$block_pattern_category['name'],
 			array(
@@ -212,7 +271,7 @@ function unitone_register_remote_block_patterns() {
 
 	// Register patterns.
 	foreach ( $block_patterns as $pattern ) {
-		if ( ! $pattern['title'] || ! $pattern['slug'] || ! $pattern['content'] ) {
+		if ( ! _unitone_is_valid_remote_block_pattern( $pattern ) ) {
 			continue;
 		}
 

@@ -43,7 +43,7 @@ add_action(
 add_filter(
 	'inc2734_github_theme_updater_zip_url_inc2734/unitone',
 	function ( $url ) {
-		if ( 0 !== strpos( $url, 'https://unitone.2inc.org/' ) ) {
+		if ( ! is_string( $url ) || 0 !== strpos( $url, 'https://unitone.2inc.org/' ) ) {
 			return false;
 		}
 		return $url;

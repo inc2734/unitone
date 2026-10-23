@@ -26,7 +26,7 @@ class Manager {
 	 * Get license status.
 	 *
 	 * @param string $license_key The license key.
-	 * @return string 'true'|'false'|'50x'
+	 * @return string License status, HTTP status code, or 'error'.
 	 */
 	public static function get_license_status( $license_key ) {
 		return Base::get_license_status( $license_key );

@@ -1,4 +1,4 @@
-import { TextControl } from '@wordpress/components';
+import { Notice, TextControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { Icon, check, close } from '@wordpress/icons';
 import { addQueryArgs } from '@wordpress/url';
@@ -12,28 +12,48 @@ import { withMinDelay } from '../utils/utils';
 export default function () {
 	const [ settingsSaving, setSettingsSaving ] = useState( false );
 	const [ licenseStatus, setLicenseStatus ] = useState( undefined );
+	const [ licenseError, setLicenseError ] = useState( '' );
 	const [ remotePatternsSaving, setRemotePatternsSaving ] = useState( false );
 	const [ licenseKey, setLicenseKey ] = useState( '' );
 	const [ hasSavedLicenseKey, setHasSavedLicenseKey ] = useState( false );
 	const [ isLicenseKeyTouched, setIsLicenseKeyTouched ] = useState( false );
 
 	const loadLicenseStatus = ( { force } ) => {
-		apiFetch( {
+		return apiFetch( {
 			path: addQueryArgs( '/unitone/v1/license-status', {
 				force: Number( force ),
 			} ),
 		} ).then( ( options ) => {
+			if ( ! [ 'true', 'false' ].includes( options ) ) {
+				throw new Error(
+					__(
+						'Could not verify the license. Please try again shortly.',
+						'unitone'
+					)
+				);
+			}
 			setLicenseStatus( 'true' === options );
 		} );
+	};
+
+	const handleError = ( error ) => {
+		setLicenseStatus( null );
+		setLicenseError(
+			error?.message ||
+				__(
+					'Could not verify the license. Please try again shortly.',
+					'unitone'
+				)
+		);
 	};
 
 	const resetRemotePattenrsCache = ( action ) => {
 		setRemotePatternsSaving( action );
 
-		apiFetch( {
+		return apiFetch( {
 			path: '/unitone/v1/remote-block-patterns',
 			method: 'DELETE',
-		} ).then( () => {
+		} ).finally( () => {
 			setRemotePatternsSaving( false );
 		} );
 	};
@@ -41,10 +61,13 @@ export default function () {
 	const saveSettings = () => {
 		setSettingsSaving( 'save' );
 		setLicenseStatus( undefined );
+		setLicenseError( '' );
 
 		if ( ! isLicenseKeyTouched ) {
-			setSettingsSaving( false );
-			loadLicenseStatus( { force: true } );
+			loadLicenseStatus( { force: true } )
+				.then( () => resetRemotePattenrsCache( 'save' ) )
+				.catch( handleError )
+				.finally( () => setSettingsSaving( false ) );
 			return;
 		}
 
@@ -56,23 +79,21 @@ export default function () {
 					'license-key': licenseKey || null,
 				},
 			} )
-		).then( () => {
-			setHasSavedLicenseKey( !! licenseKey );
-			setLicenseKey( '' );
-			setIsLicenseKeyTouched( false );
-			setSettingsSaving( false );
-			loadLicenseStatus( { force: true } );
-			resetRemotePattenrsCache( 'save' );
-		} );
+		)
+			.then( () => {
+				setHasSavedLicenseKey( !! licenseKey );
+				setLicenseKey( '' );
+				setIsLicenseKeyTouched( false );
+				return loadLicenseStatus( { force: true } );
+			} )
+			.then( () => resetRemotePattenrsCache( 'save' ) )
+			.catch( handleError )
+			.finally( () => setSettingsSaving( false ) );
 	};
 
 	const resetSettings = () => {
 		setSettingsSaving( 'reset' );
-		setLicenseKey( '' );
-		setHasSavedLicenseKey( false );
-		setIsLicenseKeyTouched( false );
-
-		setLicenseStatus( false );
+		setLicenseError( '' );
 
 		withMinDelay(
 			apiFetch( {
@@ -82,14 +103,20 @@ export default function () {
 					'license-key': null,
 				},
 			} )
-		).then( () => {
-			setSettingsSaving( false );
-			resetRemotePattenrsCache( 'reset' );
-		} );
+		)
+			.then( () => {
+				setLicenseKey( '' );
+				setHasSavedLicenseKey( false );
+				setIsLicenseKeyTouched( false );
+				setLicenseStatus( false );
+				return resetRemotePattenrsCache( 'reset' );
+			} )
+			.catch( handleError )
+			.finally( () => setSettingsSaving( false ) );
 	};
 
 	useEffect( () => {
-		loadLicenseStatus( { force: false } );
+		loadLicenseStatus( { force: false } ).catch( handleError );
 	}, [] );
 
 	useEffect( () => {
@@ -122,6 +149,11 @@ export default function () {
 		>
 			<div data-unitone-layout="stack -gap:2">
 				<h2>{ __( 'License', 'unitone' ) }</h2>
+				{ licenseError && (
+					<Notice status="error" isDismissible={ false }>
+						{ licenseError }
+					</Notice>
+				) }
 				<div
 					data-unitone-layout="stack -divider:stripe -gap:2"
 					style={ {
@@ -179,12 +211,13 @@ export default function () {
 								/>
 
 								<div style={ { paddingTop: '4px' } }>
-									{ null == licenseStatus ? (
+									{ undefined === licenseStatus && (
 										<div
 											className="unitone-loading-icon"
 											style={ { margin: '4px' } }
 										></div>
-									) : (
+									) }
+									{ 'boolean' === typeof licenseStatus && (
 										<Icon
 											style={ {
 												color: licenseStatus

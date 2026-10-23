@@ -7,7 +7,7 @@
 
 // phpcs:disable -- Minimal WordPress stand-ins for isolated regression tests.
 namespace Unitone\App\Controller\Manager\Model {
-	class Settings {
+	class Unitone_Test_Settings {
 		public static $values = array( 'license-key' => 'test-key' );
 		public static function get_setting( $key ) { return self::$values[ $key ] ?? false; }
 		public static function get_settings() { return self::$values; }
@@ -20,6 +20,8 @@ namespace Unitone\App\Controller\Manager\Model {
 		public static function update_global_styles( $values ) {}
 		public static function update_options( $values ) {}
 	}
+	// Avoid a duplicate declaration of the production class during repository-wide linting.
+	class_alias( Unitone_Test_Settings::class, __NAMESPACE__ . '\\Settings' );
 }
 
 namespace Inc2734\WP_GitHub_Theme_Updater {

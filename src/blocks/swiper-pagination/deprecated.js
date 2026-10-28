@@ -37,7 +37,7 @@ const normalizeSettings = ( settings = {} ) => {
 			? asPixelNumber(
 					source.progressbarSize,
 					DEFAULT_SETTINGS.progressbarSize
-			  )
+				)
 			: DEFAULT_SETTINGS.progressbarSize,
 	};
 };

@@ -54,9 +54,8 @@ function InlineUI( {
 	const isDisableMobile = () =>
 		!! className?.match( /unitone-br--disable:mobile/ );
 
-	const [ disableDesktop, setDisableDesktop ] = useState(
-		isDisableDesktop()
-	);
+	const [ disableDesktop, setDisableDesktop ] =
+		useState( isDisableDesktop() );
 	const [ disableTablet, setDisableTablet ] = useState( isDisableTablet() );
 	const [ disableMobile, setDisableMobile ] = useState( isDisableMobile() );
 

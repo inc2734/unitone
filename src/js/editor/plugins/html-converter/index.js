@@ -216,8 +216,8 @@ function ReportEntry( { entry, onSelect } ) {
 	const isImage = entry.kind === 'image';
 	const text = isImage
 		? getImageFilename( entry.imageUrl ) ||
-		  entry.imageAlt ||
-		  __( 'Image', 'unitone' )
+			entry.imageAlt ||
+			__( 'Image', 'unitone' )
 		: entry.text || __( '(Empty text)', 'unitone' );
 	const shortText = shortenText( text );
 	const previewURL = getPreviewURL( entry.imageUrl );
@@ -528,7 +528,7 @@ function HTMLConverter( { clientId, isSelected } ) {
 				: {
 						ownerDocument: currentTarget.ownerDocument,
 						getBoundingClientRect: () => rect,
-				  }
+					}
 		);
 	};
 

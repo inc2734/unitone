@@ -228,10 +228,10 @@ export default function ( { attributes, clientId, context } ) {
 					maxHeight:
 						'calc(100vh - 2 * var(--unitone--global--gutters))',
 					zIndex: 9999,
-			  }
+				}
 			: {
 					display: 'none',
-			  },
+				},
 	} );
 	blockProps[ 'data-unitone-layout' ] = clsx(
 		'dialog-content',

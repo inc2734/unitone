@@ -284,7 +284,7 @@ function Edit( {
 		)
 			? ownerDocument.querySelector(
 					'.interface-interface-skeleton__content'
-			  )
+				)
 			: ownerDocument;
 
 		schedulePositionMegaMenu();
@@ -419,7 +419,7 @@ function Edit( {
 					? getPresetCssVarFromSlug(
 							'color',
 							overlayBackgroundColor.slug
-					  )
+						)
 					: customOverlayBackgroundColor,
 			},
 		},
@@ -433,7 +433,7 @@ function Edit( {
 		! showSubmenuIcon && ! openSubmenusOnClick
 			? __(
 					'The current menu options offer reduced accessibility for users and are not recommended. Enabling either "Open on Click" or "Show arrow" offers enhanced accessibility by allowing keyboard users to browse submenus selectively.'
-			  )
+				)
 			: '';
 
 	const ParentElement = openSubmenusOnClick ? 'button' : 'a';

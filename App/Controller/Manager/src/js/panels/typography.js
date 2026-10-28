@@ -106,7 +106,7 @@ const getFontSizeBySlug = ( settings, slug ) =>
 				( fontSize ) =>
 					slug === fontSize.slug ||
 					slug === getFontSizeCssVarSlug( fontSize.slug )
-		  )
+			)
 		: undefined;
 
 const getHeadingFontSize = ( settings, defaultSettings, settingKey ) => {
@@ -541,7 +541,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 																? unitoneScale
 																: getFontSizePresetValue(
 																		newFontSize
-																  );
+																	);
 													}
 
 													setSettings( {

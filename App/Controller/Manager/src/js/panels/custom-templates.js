@@ -146,12 +146,12 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 															? [
 																	...enabledCustomTemplates,
 																	customTemplate.name,
-															  ]
+																]
 															: enabledCustomTemplates.filter(
 																	( v ) =>
 																		v !==
 																		customTemplate.name
-															  );
+																);
 													newEnabledCustomTemplates =
 														[
 															...new Set(

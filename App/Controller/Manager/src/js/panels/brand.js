@@ -238,7 +238,7 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 										'unitone-text-black',
 									].includes( color.slug )
 							),
-					  }
+						}
 					: palette
 			),
 		[ settings?.palette ]
@@ -312,8 +312,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						settings?.styles?.elements?.link?.[
 							':hover'
 						]?.color?.text?.replace( 'var:preset|color|', '' )
-			  )?.color ||
-			  settings?.styles?.elements?.link?.[ ':hover' ]?.color?.text;
+				)?.color ||
+				settings?.styles?.elements?.link?.[ ':hover' ]?.color?.text;
 
 	const linkFocusColor =
 		'inherit' ===
@@ -325,8 +325,8 @@ export default function ( { settings, defaultSettings, setSettings } ) {
 						settings?.styles?.elements?.link?.[
 							':focus'
 						]?.color?.text?.replace( 'var:preset|color|', '' )
-			  )?.color ||
-			  settings?.styles?.elements?.link?.[ ':focus' ]?.color?.text;
+				)?.color ||
+				settings?.styles?.elements?.link?.[ ':focus' ]?.color?.text;
 
 	return (
 		<div

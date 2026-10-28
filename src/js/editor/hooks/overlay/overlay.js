@@ -234,7 +234,7 @@ export function withOverlayBlockProps( settings ) {
 					null !== attributes?.style?.border?.radius
 						? Object.values(
 								attributes?.style?.border?.radius
-						  ).join( ' ' )
+							).join( ' ' )
 						: attributes?.style?.border?.radius,
 			},
 			'data-unitone-layout': clsx(

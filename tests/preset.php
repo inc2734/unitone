@@ -43,7 +43,12 @@
 		'attrs'       => array(),
 		'innerBlocks' => array(),
 	);
-	$assert_same( $expected, apply_filters( 'render_block', $legacy, $parsed, new WP_Block( $parsed ) ) );
+	// Apply the same unrelated render filters to both sides of the comparison.
+	$block = new WP_Block( $parsed );
+	$assert_same(
+		apply_filters( 'render_block', $expected, $parsed, $block ),
+		apply_filters( 'render_block', $legacy, $parsed, $block )
+	);
 
 	// Leave unrelated styles, already valid references, and user-provided fallbacks intact.
 	foreach ( array(

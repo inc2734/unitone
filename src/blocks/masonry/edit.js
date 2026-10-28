@@ -163,7 +163,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 	const linkOptions = ! lightboxSetting?.allowEditing
 		? LINK_OPTIONS.filter(
 				( option ) => option.value !== LINK_DESTINATION_LIGHTBOX
-		  )
+			)
 		: LINK_OPTIONS;
 
 	const blockProps = useBlockProps( {

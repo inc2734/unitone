@@ -601,7 +601,7 @@ export function ScrollAnimationEdit( {
 						scrollAnimation: newAttribute
 							? {
 									type: newAttribute || undefined,
-							  }
+								}
 							: undefined,
 					} ),
 					__unitoneStates: {

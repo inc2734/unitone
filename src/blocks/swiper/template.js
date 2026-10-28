@@ -91,7 +91,7 @@ const createControls = ( autoplay = false, overlay = false ) => [
 						},
 					},
 					textColor: 'white',
-			  }
+				}
 			: {} ),
 	},
 	[
@@ -127,7 +127,7 @@ const createControls = ( autoplay = false, overlay = false ) => [
 							},
 						],
 					],
-			  ],
+				],
 		...( autoplay ? [ createAutoplayControls() ] : [] ),
 	],
 ];

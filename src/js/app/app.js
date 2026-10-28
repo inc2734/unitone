@@ -25,8 +25,8 @@ const loadLayouts = createLoader( () => import( './layouts' ) );
 
 const loadNavigation = createLoader( () => import( './navigation' ) );
 
-const loadScrollAnimation = createLoader( () =>
-	import( './scroll-animation' )
+const loadScrollAnimation = createLoader(
+	() => import( './scroll-animation' )
 );
 
 const loadLoopAnimation = createLoader( () => import( './loop-animation' ) );

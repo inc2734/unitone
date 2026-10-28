@@ -277,7 +277,7 @@ export default function ( { attributes, setAttributes } ) {
 				url,
 				alt: alt || '',
 				title: title || '',
-		  }
+			}
 		: null;
 
 	const sourceImages = [ ...sources ].sort(
@@ -427,7 +427,7 @@ export default function ( { attributes, setAttributes } ) {
 													? parseInt(
 															image.breakpoint,
 															10
-													  )
+														)
 													: 600
 											}
 											onChange={ ( value ) =>

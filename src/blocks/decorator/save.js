@@ -13,7 +13,7 @@ export default function ( { attributes } ) {
 		'button' === tagName
 			? {
 					role: 'button',
-			  }
+				}
 			: {};
 
 	const blockProps = useBlockProps.save( {

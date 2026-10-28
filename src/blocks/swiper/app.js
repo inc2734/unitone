@@ -713,7 +713,7 @@ const initializeSwiper = ( root ) => {
 					nextEl: next,
 					addIcons: false,
 					hideOnClick: false,
-			  }
+				}
 			: false;
 
 	options.scrollbar = getScrollbarOptions( scrollbar );

@@ -184,7 +184,7 @@ function TypographyPanelPure( props ) {
 									? __(
 											"If custom font sizes are enabled and fluid typography isn't enabled, it is recommended that half-reading be specified.",
 											'unitone'
-									  )
+										)
 									: undefined
 							}
 						/>

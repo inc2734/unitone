@@ -81,7 +81,7 @@ export function HoverBackgroundColorEditPure( {
 										? newAttribute
 										: undefined,
 								} );
-						  },
+							},
 					resetAllFilter: () => ( {
 						...resetHoverBackgroundColorFilter(),
 						...resetHoverGradientFilter(),

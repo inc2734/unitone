@@ -480,7 +480,7 @@ export function LoopAnimationEdit( {
 						loopAnimation: newAttribute
 							? {
 									type: newAttribute,
-							  }
+								}
 							: undefined,
 					} ),
 					__unitoneStates: {

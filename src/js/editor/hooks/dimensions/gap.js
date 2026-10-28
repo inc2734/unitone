@@ -128,11 +128,11 @@ function expand( attribute ) {
 		? {
 				column: attribute?.column,
 				row: attribute?.row,
-		  }
+			}
 		: {
 				column: attribute,
 				row: attribute,
-		  };
+			};
 }
 
 export function GapEdit( {
@@ -235,7 +235,7 @@ export function withGapBlockProps( settings ) {
 							'--unitone--column-gap': getPresetCssVar(
 								newGap.column
 							),
-					  }
+						}
 					: {} ),
 				...( isCustomSpacingSizeValue( newGap?.row )
 					? { '--unitone--row-gap': getPresetCssVar( newGap.row ) }

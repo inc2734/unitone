@@ -588,7 +588,9 @@ export function HoverAnimationEdit( {
 		unitone?.hoverAnimation?.group ?? defaultValue?.group ?? false;
 	const trigger = group
 		? 'self'
-		: unitone?.hoverAnimation?.trigger ?? defaultValue?.trigger ?? 'self';
+		: ( unitone?.hoverAnimation?.trigger ??
+			defaultValue?.trigger ??
+			'self' );
 
 	const clearCheckBehaviorTimer = () => {
 		window.clearTimeout( timeoutIdRef.current );
@@ -625,9 +627,9 @@ export function HoverAnimationEdit( {
 						...( group
 							? root.querySelectorAll(
 									'[data-unitone-hover-animation~="-trigger:group"]'
-							  )
+								)
 							: [] ),
-				  ]
+					]
 				: [];
 
 			const duration = Math.max(
@@ -714,7 +716,7 @@ export function HoverAnimationEdit( {
 						hoverAnimation: newAttribute
 							? {
 									type: newAttribute,
-							  }
+								}
 							: undefined,
 					} ),
 					__unitoneStates: {
@@ -840,7 +842,7 @@ export function withHoverAnimationBlockProps( settings ) {
 	const flexGrow = newHoverAnimation?.flexGrow;
 	const distance = newHoverAnimation?.distance;
 	const group = newHoverAnimation?.group;
-	const trigger = group ? 'self' : newHoverAnimation?.trigger ?? 'self';
+	const trigger = group ? 'self' : ( newHoverAnimation?.trigger ?? 'self' );
 	const hasScale = 'scale' === type && null != scale;
 	const hasInitialScale = 'scale' === type && null != initialScale;
 	const hasOpacity = 'fade' === type && null != opacity;
@@ -864,13 +866,13 @@ export function withHoverAnimationBlockProps( settings ) {
 				? clsx( dataHoverAnimation, {
 						'-active':
 							attributes?.__unitoneStates?.hoverAnimationActive,
-				  } )
+					} )
 				: undefined,
 			'data-unitone-hover-animation-group': group
 				? clsx( {
 						'-active':
 							attributes?.__unitoneStates?.hoverAnimationActive,
-				  } )
+					} )
 				: undefined,
 			style: {
 				...settings.wrapperProps?.style,

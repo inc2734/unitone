@@ -46,7 +46,7 @@ const getOverflowOptions = ( { name } ) => {
 	return Array.isArray( support )
 		? overflowOptions.filter( ( option ) =>
 				support.includes( option.value )
-		  )
+			)
 		: overflowOptions;
 };
 

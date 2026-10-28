@@ -8,24 +8,28 @@
     "packages": [
         {
             "name": "inc2734/wp-breadcrumbs",
-            "version": "3.1.9",
+            "version": "3.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inc2734/wp-breadcrumbs.git",
-                "reference": "f1f3ee6dbb2b27092ba57830d75d06026411ac42"
+                "reference": "08e1c933708894f6955f4dc65a0d16faee2bd948"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inc2734/wp-breadcrumbs/zipball/f1f3ee6dbb2b27092ba57830d75d06026411ac42",
-                "reference": "f1f3ee6dbb2b27092ba57830d75d06026411ac42",
+                "url": "https://api.github.com/repos/inc2734/wp-breadcrumbs/zipball/08e1c933708894f6955f4dc65a0d16faee2bd948",
+                "reference": "08e1c933708894f6955f4dc65a0d16faee2bd948",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4"
             },
             "require-dev": {
-                "wp-coding-standards/wpcs": "^2.3",
-                "yoast/phpunit-polyfills": "^1.0"
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "phpcompatibility/phpcompatibility-wp": "^2.1.8",
+                "phpunit/phpunit": "^9.6",
+                "squizlabs/php_codesniffer": "^3.13.6",
+                "wp-coding-standards/wpcs": "^3.4.1",
+                "yoast/phpunit-polyfills": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -46,22 +50,22 @@
             "description": "A library for WordPress breadcrumbs.",
             "support": {
                 "issues": "https://github.com/inc2734/wp-breadcrumbs/issues",
-                "source": "https://github.com/inc2734/wp-breadcrumbs/tree/3.1.9"
+                "source": "https://github.com/inc2734/wp-breadcrumbs/tree/3.1.10"
             },
-            "time": "2023-08-31T23:29:52+00:00"
+            "time": "2026-10-25T10:00:03+00:00"
         },
         {
             "name": "inc2734/wp-github-theme-updater",
-            "version": "3.1.18",
+            "version": "3.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inc2734/wp-github-theme-updater.git",
-                "reference": "2f0cb305ed0cf68d686438ff4338c853c9bb92cb"
+                "reference": "5bd508753b2ff95c6563895b62d6440e565ea5f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inc2734/wp-github-theme-updater/zipball/2f0cb305ed0cf68d686438ff4338c853c9bb92cb",
-                "reference": "2f0cb305ed0cf68d686438ff4338c853c9bb92cb",
+                "url": "https://api.github.com/repos/inc2734/wp-github-theme-updater/zipball/5bd508753b2ff95c6563895b62d6440e565ea5f0",
+                "reference": "5bd508753b2ff95c6563895b62d6440e565ea5f0",
                 "shasum": ""
             },
             "require": {
@@ -70,8 +74,9 @@
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
                 "phpcompatibility/phpcompatibility-wp": "*",
-                "wp-coding-standards/wpcs": "^3.1",
-                "yoast/phpunit-polyfills": "^1.1"
+                "phpunit/phpunit": "^9.6",
+                "wp-coding-standards/wpcs": "^3.4.1",
+                "yoast/phpunit-polyfills": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -92,9 +97,9 @@
             "description": "A library for WordPress that automatic theme updater with GitHub API.",
             "support": {
                 "issues": "https://github.com/inc2734/wp-github-theme-updater/issues",
-                "source": "https://github.com/inc2734/wp-github-theme-updater/tree/3.1.18"
+                "source": "https://github.com/inc2734/wp-github-theme-updater/tree/3.1.19"
             },
-            "time": "2026-08-03T03:02:01+00:00"
+            "time": "2026-10-26T01:43:09+00:00"
         },
         {
             "name": "inc2734/wp-oembed-blog-card",
@@ -144,25 +149,28 @@
         },
         {
             "name": "inc2734/wp-ogp",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inc2734/wp-ogp.git",
-                "reference": "45eecd38662770f2ce4d53f097f23bbcc62a25f2"
+                "reference": "84e86e9c351dead7e0bad18034e2162d270f9697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inc2734/wp-ogp/zipball/45eecd38662770f2ce4d53f097f23bbcc62a25f2",
-                "reference": "45eecd38662770f2ce4d53f097f23bbcc62a25f2",
+                "url": "https://api.github.com/repos/inc2734/wp-ogp/zipball/84e86e9c351dead7e0bad18034e2162d270f9697",
+                "reference": "84e86e9c351dead7e0bad18034e2162d270f9697",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=7.4"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-                "wp-coding-standards/wpcs": "^2.3",
-                "yoast/phpunit-polyfills": "^1.0"
+                "phpcompatibility/phpcompatibility-wp": "^2.1.8",
+                "phpunit/phpunit": "^9.6",
+                "squizlabs/php_codesniffer": "^3.13.6",
+                "wp-coding-standards/wpcs": "^3.4.1",
+                "yoast/phpunit-polyfills": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -183,9 +191,9 @@
             "description": "A library for WordPress OGP.",
             "support": {
                 "issues": "https://github.com/inc2734/wp-ogp/issues",
-                "source": "https://github.com/inc2734/wp-ogp/tree/2.0.3"
+                "source": "https://github.com/inc2734/wp-ogp/tree/2.0.4"
             },
-            "time": "2023-05-26T00:46:19+00:00"
+            "time": "2026-10-25T13:07:31+00:00"
         }
     ],
     "packages-dev": [
@@ -828,5 +836,5 @@
         "php": ">=7.4"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }

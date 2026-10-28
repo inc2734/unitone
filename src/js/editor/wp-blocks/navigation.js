@@ -83,28 +83,28 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			? getPresetCssVarFromSlug(
 					'color',
 					attributes?.unitone?.hamburgerButtonColor
-			  )
+				)
 			: attributes?.unitone?.hamburgerButtonCustomColor;
 		const hamburgerButtonBackgroundColor = !! attributes?.unitone
 			?.hamburgerButtonBackgroundColor
 			? getPresetCssVarFromSlug(
 					'color',
 					attributes?.unitone?.hamburgerButtonBackgroundColor
-			  )
+				)
 			: attributes?.unitone?.hamburgerButtonCustomBackgroundColor;
 
 		const overlayMenuColor = !! attributes?.unitone?.overlayMenuColor
 			? getPresetCssVarFromSlug(
 					'color',
 					attributes?.unitone?.overlayMenuColor
-			  )
+				)
 			: attributes?.unitone?.overlayMenuCustomColor;
 		const overlayMenuBackgroundColor = !! attributes?.unitone
 			?.overlayMenuBackgroundColor
 			? getPresetCssVarFromSlug(
 					'color',
 					attributes?.unitone?.overlayMenuBackgroundColor
-			  )
+				)
 			: attributes?.unitone?.overlayMenuCustomBackgroundColor;
 		const usesOverlayTemplate = hasOverlayTemplate( attributes );
 
@@ -139,7 +139,7 @@ const useBlockProps = createHigherOrderComponent( ( BlockListBlock ) => {
 							? `"${ __(
 									'The template part overlay-menu is used as an overlay menu.',
 									'unitone'
-							  ) }"`
+								) }"`
 							: undefined,
 				},
 			},
@@ -179,7 +179,7 @@ const TemplatePartSelectControl = ( { label, value, onChange } ) => {
 					label: __( 'List updating…', 'unitone' ),
 					value: undefined,
 				},
-		  ];
+			];
 
 	const { siteUrl, currentTheme } = useSelect( ( select ) => {
 		const { getSite, getCurrentTheme } = select( coreStore );

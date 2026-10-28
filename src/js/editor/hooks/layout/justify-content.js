@@ -112,7 +112,7 @@ export function JustifyContentToolbar( {
 	const filteredOptions = Array.isArray( support )
 		? justifyContentOptions.filter( ( option ) =>
 				support.includes( option.value )
-		  )
+			)
 		: justifyContentOptions;
 
 	return (
@@ -181,7 +181,7 @@ export function JustifyContentEdit( {
 	const filteredOptions = Array.isArray( support )
 		? justifyContentOptions.filter( ( option ) =>
 				support.includes( option.value )
-		  )
+			)
 		: justifyContentOptions;
 
 	return (

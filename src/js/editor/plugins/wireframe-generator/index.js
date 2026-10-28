@@ -117,13 +117,13 @@ const PluginSidebarWireFrameGenerator = () => {
 								Math.random() *
 									sectionNoColoredPatternsForHomepage.length
 							)
-					  ]
+						]
 					: sectionColoredPatternsForHomepage[
 							Math.floor(
 								Math.random() *
 									sectionColoredPatternsForHomepage.length
 							)
-					  ];
+						];
 
 				shuffledSectionPatterns.push(
 					...[ queryPattern, fallbackSection ]

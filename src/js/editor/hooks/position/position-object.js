@@ -75,7 +75,7 @@ export function PositionEdit( {
 					? __(
 							'If you select "sticky", you need to specify the position where you want it to be fixed (for example, if you want it to be firmly fixed, specify "0" for "top").',
 							'unitone'
-					  )
+						)
 					: undefined
 			}
 			options={ [

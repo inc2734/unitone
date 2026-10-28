@@ -1,13 +1,14 @@
-const config = require( '@wordpress/scripts/config/jest-unit.config' );
+const config = require( '../jest.config.cjs' );
 
 module.exports = {
 	...config,
 	rootDir: '..',
 	testMatch: [ '<rootDir>/tests/swiper-autoplay*.test.js' ],
 	transform: {
-		'\\.m?[jt]sx?$': require.resolve(
-			'@wordpress/scripts/config/babel-transform'
-		),
+		'\\.m?[jt]sx?$': [
+			'babel-jest',
+			{ presets: [ '@wordpress/babel-preset-default' ] },
+		],
 	},
 	transformIgnorePatterns: [ '/node_modules/(?!swiper/)' ],
 };

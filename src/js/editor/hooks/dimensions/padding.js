@@ -167,13 +167,13 @@ export function expand( attribute ) {
 				right: attribute?.right,
 				bottom: attribute?.bottom,
 				left: attribute?.left,
-		  }
+			}
 		: {
 				top: attribute,
 				right: attribute,
 				bottom: attribute,
 				left: attribute,
-		  };
+			};
 }
 
 export function PaddingEdit( {
@@ -333,28 +333,28 @@ export function withPaddingBlockProps( settings ) {
 							'--unitone--padding-top': getPresetCssVar(
 								newPadding.top
 							),
-					  }
+						}
 					: {} ),
 				...( isCustomSpacingSizeValue( newPadding?.right )
 					? {
 							'--unitone--padding-right': getPresetCssVar(
 								newPadding.right
 							),
-					  }
+						}
 					: {} ),
 				...( isCustomSpacingSizeValue( newPadding?.bottom )
 					? {
 							'--unitone--padding-bottom': getPresetCssVar(
 								newPadding.bottom
 							),
-					  }
+						}
 					: {} ),
 				...( isCustomSpacingSizeValue( newPadding?.left )
 					? {
 							'--unitone--padding-left': getPresetCssVar(
 								newPadding.left
 							),
-					  }
+						}
 					: {} ),
 			},
 			'data-unitone-layout': clsx(

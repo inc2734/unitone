@@ -77,7 +77,7 @@ export function SectionDividerBottomTypeEdit( {
 				__( 'Overlap the previous block', 'unitone' ),
 				__( 'Level', 'unitone' ),
 				__( 'Amount of content trimming', 'unitone' )
-		  )
+			)
 		: __( 'Background color or background image must be set.', 'unitone' );
 
 	return (

@@ -41,7 +41,7 @@ export default function ( { attributes, setAttributes, clientId, context } ) {
 				? getPresetCssVarFromSlug(
 						'color',
 						attributes?.backgroundColor
-				  )
+					)
 				: attributes?.style?.color?.background,
 			...getBackgroundCSSVariables( attributes ),
 		},

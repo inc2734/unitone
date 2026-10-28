@@ -7,7 +7,7 @@ export const shortenText = ( text, length = 40 ) => {
 					granularity: 'grapheme',
 				} ).segment( text ),
 				( item ) => item.segment
-		  )
+			)
 		: Array.from( text );
 
 	return characters.length > length

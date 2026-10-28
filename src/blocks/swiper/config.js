@@ -268,13 +268,13 @@ const resolveResponsiveDeviceSettings = (
 			? parseSlidesPerView(
 					deviceSettings.slidesPerView,
 					DEFAULT_SETTINGS.slidesPerView
-			  )
+				)
 			: inheritedSettings.slidesPerView,
 		autoSlideWidth: hasExplicitSlidesPerViewMode
 			? asAutoSlideWidth(
 					deviceSettings.autoSlideWidth,
 					inheritedSettings.autoSlideWidth
-			  )
+				)
 			: inheritedSettings.autoSlideWidth,
 		slidesPerGroup: Math.min(
 			10,
@@ -366,7 +366,7 @@ export const buildSwiperOptions = ( rawSettings = {} ) => {
 				desktop: { ...singleSlideLayout },
 				tablet: { ...singleSlideLayout },
 				mobile: { ...singleSlideLayout },
-		  }
+			}
 		: configuredResponsive;
 
 	const options = {
@@ -394,7 +394,7 @@ export const buildSwiperOptions = ( rawSettings = {} ) => {
 			? {
 					enabled: true,
 					sticky: false,
-			  }
+				}
 			: false,
 		autoplay: settings.autoplay
 			? {
@@ -402,7 +402,7 @@ export const buildSwiperOptions = ( rawSettings = {} ) => {
 					disableOnInteraction: settings.autoplayDisableOnInteraction,
 					reverseDirection: settings.autoplayReverseDirection,
 					pauseOnMouseEnter: settings.autoplayPauseOnMouseEnter,
-			  }
+				}
 			: false,
 		watchOverflow: true,
 		updateOnWindowResize: true,
@@ -456,10 +456,8 @@ const getEditorDeviceStyle = ( device, deviceSettings ) => {
 	return {
 		[ getEditorDeviceProperty( device, 'auto-slide-width' ) ]:
 			autoSlideWidth,
-		[ getEditorDeviceProperty(
-			device,
-			'space-between'
-		) ]: `${ spaceBetween }px`,
+		[ getEditorDeviceProperty( device, 'space-between' ) ]:
+			`${ spaceBetween }px`,
 		[ getEditorDeviceProperty( device, 'slide-size' ) ]: slideSize,
 		[ getEditorDeviceProperty( device, 'slide-width' ) ]: isAuto
 			? `var(${ getEditorDeviceProperty( device, 'auto-slide-width' ) })`

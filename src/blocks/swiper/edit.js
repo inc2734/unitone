@@ -70,7 +70,7 @@ export default function ( props ) {
 				? {
 						containerName: editorIdentifier,
 						containerType: 'inline-size',
-				  }
+					}
 				: {} ),
 		},
 	} );

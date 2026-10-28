@@ -1,10 +1,32 @@
-const defaultConfig = require( '@wordpress/scripts/config/eslint.config.cjs' );
+const wpPlugin = require( '@wordpress/eslint-plugin' );
+const jestPlugin = require( 'eslint-plugin-jest' );
 
 module.exports = [
 	{
-		ignores: [ 'dist/**' ],
+		ignores: [
+			'**/dist/**',
+			'**/build/**',
+			'**/node_modules/**',
+			'**/vendor/**',
+		],
 	},
-	...defaultConfig,
+	...wpPlugin.configs.recommended,
+	{
+		languageOptions: {
+			parserOptions: {
+				requireConfigFile: false,
+				babelOptions: {
+					presets: [
+						require.resolve( '@wordpress/babel-preset-default' ),
+					],
+				},
+			},
+		},
+	},
+	{
+		...jestPlugin.configs[ 'flat/recommended' ],
+		files: [ 'tests/**/*.test.js' ],
+	},
 	{
 		files: [ '**/*.{js,jsx,mjs,cjs}' ],
 		languageOptions: {

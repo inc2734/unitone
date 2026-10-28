@@ -235,7 +235,7 @@ const OGPPanel = () => {
 														: __(
 																'Edit or replace the OGP image',
 																'unitone'
-														  )
+															)
 												}
 												aria-describedby={
 													! ogpImageId

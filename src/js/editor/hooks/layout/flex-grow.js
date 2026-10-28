@@ -90,7 +90,7 @@ export function FlexGrowEdit( {
 			label={ label }
 			value={ normalizeForRangeControl(
 				null != ( unitone?.flexGrow ?? defaultValue )
-					? unitone?.flexGrow ?? defaultValue
+					? ( unitone?.flexGrow ?? defaultValue )
 					: undefined
 			) }
 			allowReset={ true }

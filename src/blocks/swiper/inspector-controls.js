@@ -82,7 +82,7 @@ const ResponsiveControls = ( {
 			: responsiveSettings.desktop;
 
 	const getValue = ( key ) =>
-		isDesktop ? resolvedSettings[ key ] : deviceSettings[ key ] ?? '';
+		isDesktop ? resolvedSettings[ key ] : ( deviceSettings[ key ] ?? '' );
 
 	const getInheritedValue = ( key ) => inheritedSettings[ key ];
 
@@ -194,7 +194,7 @@ const ResponsiveControls = ( {
 							: asPixelNumber(
 									value,
 									DEFAULT_SETTINGS.spaceBetween
-							  )
+								)
 					)
 				}
 			/>
@@ -215,7 +215,7 @@ const ResponsiveControls = ( {
 							: asNumber(
 									slidesPerGroup,
 									DEFAULT_SETTINGS.slidesPerGroup
-							  )
+								)
 					}
 					currentInput={ asNumber(
 						inheritedSlidesPerGroup,
@@ -501,7 +501,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 										: asPixelNumber(
 												value,
 												DEFAULT_SETTINGS.slidesOffsetBefore
-										  )
+											)
 								)
 							}
 						/>
@@ -536,7 +536,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 										: asPixelNumber(
 												value,
 												DEFAULT_SETTINGS.slidesOffsetAfter
-										  )
+											)
 								)
 							}
 						/>
@@ -762,7 +762,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 											: asNumber(
 													value,
 													DEFAULT_SETTINGS.autoplayDelay
-											  )
+												)
 									)
 								}
 							/>
@@ -908,7 +908,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 									: asPixelNumber(
 											value,
 											DEFAULT_SETTINGS.smBreakpoint
-									  )
+										)
 							)
 						}
 					/>
@@ -935,7 +935,7 @@ export const SettingsInspectorControls = ( { attributes, setAttributes } ) => {
 									: asPixelNumber(
 											value,
 											DEFAULT_SETTINGS.mdBreakpoint
-									  )
+										)
 							)
 						}
 					/>

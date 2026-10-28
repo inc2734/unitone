@@ -505,7 +505,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 														'color',
 														tabPanel.attributes
 															?.backgroundColor
-												  )
+													)
 												: tabPanel.attributes?.style
 														?.color?.background,
 										'--unitone--active-color': !! tabPanel
@@ -514,7 +514,7 @@ export default function ( { attributes, setAttributes, clientId } ) {
 													'color',
 													tabPanel.attributes
 														?.textColor
-											  )
+												)
 											: tabPanel.attributes?.style?.color
 													?.text,
 									} }

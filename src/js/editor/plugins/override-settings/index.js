@@ -118,7 +118,7 @@ const PageSettingsPanel = () => {
 										'unitone-text-black',
 									].includes( color.slug )
 							),
-					  }
+						}
 					: palette
 			),
 		[ colorGradientSettings.colors ]

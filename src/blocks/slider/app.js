@@ -34,7 +34,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 						canvas.getAttribute(
 							'data-unitone-swiper-autoplay-delay'
 						)
-				  )
+					)
 				: undefined;
 		const autoplayReverseDirection =
 			'true' ===

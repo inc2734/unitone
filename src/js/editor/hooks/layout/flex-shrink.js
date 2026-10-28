@@ -91,7 +91,7 @@ export function FlexShrinkEdit( {
 			label={ label }
 			value={ normalizeForRangeControl(
 				null != ( unitone?.flexShrink ?? defaultValue )
-					? unitone?.flexShrink ?? defaultValue
+					? ( unitone?.flexShrink ?? defaultValue )
 					: undefined
 			) }
 			allowReset={ true }

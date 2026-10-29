@@ -36,7 +36,7 @@ function unitone_register_block_bindings_for_share_buttons() {
 			'label'              => __( 'Share Button', 'unitone' ),
 			'uses_context'       => array( 'postId' ),
 			'get_value_callback' => function ( $source_args, $block_instance ) {
-				$current_post_id = $block_instance->context['postId'];
+				$current_post_id = $block_instance->context['postId'] ?? null;
 
 				if ( ! $current_post_id || ! isset( $source_args['key'] ) ) {
 					return;

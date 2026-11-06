@@ -4265,6 +4265,10 @@ msgid "Text Wrapping"
 msgstr "テキストの折り返し"
 
 #: dist/js/editor/editor.js:4
+msgid "Truncate long text"
+msgstr "長いテキストを省略する"
+
+#: dist/js/editor/editor.js:4
 msgid ""
 "When enabled, font size and line-height will change fluidly with screen "
 "width. This will not be applied if the current font size is not one of the "

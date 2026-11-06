@@ -35,6 +35,21 @@ function unitone_add_auto_phrase_support( $metadata ) {
 add_filter( 'block_type_metadata', 'unitone_add_auto_phrase_support' );
 
 /**
+ * Add support "textOverflow" to blocks supporting "textWrap".
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_text_overflow_support( $metadata ) {
+	if ( ! empty( $metadata['supports']['unitone']['textWrap'] ) ) {
+		$metadata['supports']['unitone']['textOverflow'] = true;
+	}
+
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_text_overflow_support' );
+
+/**
  * Show Font and Appearance controls by default in typography panel.
  *
  * @param array $metadata Metadata for registering a block type.

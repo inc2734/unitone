@@ -282,6 +282,14 @@ add_filter(
 			$add_attribute( '-auto-phrase', $get_attribute( 'autoPhrase' ) );
 		}
 
+		// -text-overflow
+		$text_overflow = unitone_has_block_support( 'unitone.textOverflow', $metadata )
+			? $get_attribute( 'textOverflow' )
+			: null;
+		if ( 'ellipsis' === $text_overflow ) {
+			$add_attribute( '-text-overflow', 'ellipsis' );
+		}
+
 		// -text-wrap
 		if ( unitone_has_block_support( 'unitone.textWrap', $metadata ) ) {
 			$add_attribute( '-text-wrap', $get_attribute( 'textWrap' ) );

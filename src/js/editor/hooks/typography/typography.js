@@ -32,6 +32,15 @@ import {
 } from './text-wrap';
 
 import {
+	isTextOverflowSupportDisabled,
+	hasTextOverflowValue,
+	resetTextOverflowFilter,
+	resetTextOverflow,
+	TextOverflowEdit,
+	withTextOverflowBlockProps,
+} from './text-overflow';
+
+import {
 	isFluidTypographySupportDisabled,
 	hasFluidTypographyValue,
 	resetFluidTypographyFilter,
@@ -81,6 +90,7 @@ import {
 export const withTypographyBlockProps = compose(
 	withAutoPhraseBlockProps,
 	withTextWrapBlockProps,
+	withTextOverflowBlockProps,
 	withFluidTypographyBlockProps,
 	withFluidTypographyMinLengthBlockProps,
 	withHalfLeadingBlockProps,
@@ -92,6 +102,7 @@ export const resetTypography = ( props ) => {
 	const filters = [
 		[ isAutoPhraseSupportDisabled, resetAutoPhraseFilter ],
 		[ isTextWrapSupportDisabled, resetTextWrapFilter ],
+		[ isTextOverflowSupportDisabled, resetTextOverflowFilter ],
 		[ isFluidTypographySupportDisabled, resetFluidTypographyFilter ],
 		[
 			isFluidTypographyMinLengthSupportDisabled,
@@ -119,6 +130,7 @@ function TypographyPanelPure( props ) {
 
 	const isAutoPhraseDisabled = isAutoPhraseSupportDisabled( { name } );
 	const isTextWrapDisabled = isTextWrapSupportDisabled( { name } );
+	const isTextOverflowDisabled = isTextOverflowSupportDisabled( { name } );
 	const isFluidTypographyDisabled = isFluidTypographySupportDisabled( {
 		name,
 	} );
@@ -137,6 +149,7 @@ function TypographyPanelPure( props ) {
 	if (
 		isAutoPhraseDisabled &&
 		isTextWrapDisabled &&
+		isTextOverflowDisabled &&
 		isFluidTypographyDisabled &&
 		isFluidTypographyMinLengthDisabled &&
 		isHalfLeadingDisabled &&
@@ -158,6 +171,7 @@ function TypographyPanelPure( props ) {
 						resetFilters: [
 							resetAutoPhraseFilter(),
 							resetTextWrapFilter(),
+							resetTextOverflowFilter(),
 							resetFluidTypographyFilter(),
 							resetFluidTypographyMinLengthFilter(),
 							resetHalfLeadingFilter(),
@@ -259,6 +273,21 @@ function TypographyPanelPure( props ) {
 								...props,
 								__withCode: true,
 							} ) }
+						/>
+					</ToolsPanelItem>
+				) }
+
+				{ ! isTextOverflowDisabled && (
+					<ToolsPanelItem
+						hasValue={ () => hasTextOverflowValue( { ...props } ) }
+						label={ __( 'Truncate long text', 'unitone' ) }
+						onDeselect={ () => resetTextOverflow( { ...props } ) }
+						isShownByDefault
+						panelId={ clientId }
+					>
+						<TextOverflowEdit
+							{ ...props }
+							label={ __( 'Truncate long text', 'unitone' ) }
 						/>
 					</ToolsPanelItem>
 				) }

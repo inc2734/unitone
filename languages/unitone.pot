@@ -4275,6 +4275,10 @@ msgid "Text Wrapping"
 msgstr ""
 
 #: dist/js/editor/editor.js:4
+msgid "Truncate long text"
+msgstr ""
+
+#: dist/js/editor/editor.js:4
 msgid "When enabled, font size and line-height will change fluidly with screen width. This will not be applied if the current font size is not one of the unitone preset sizes."
 msgstr ""
 

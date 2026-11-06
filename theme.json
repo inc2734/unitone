@@ -415,6 +415,46 @@
 					"size": "var(--unitone--s7)"
 				},
 				{
+					"name": "S - XS",
+					"slug": "310",
+					"size": "var(--unitone--s-1xs)"
+				},
+				{
+					"name": "M - XS",
+					"slug": "240",
+					"size": "var(--unitone--s1xs)"
+				},
+				{
+					"name": "L - XS",
+					"slug": "250",
+					"size": "var(--unitone--s2xs)"
+				},
+				{
+					"name": "XL - XS",
+					"slug": "260",
+					"size": "var(--unitone--s3xs)"
+				},
+				{
+					"name": "2XL - XS",
+					"slug": "270",
+					"size": "var(--unitone--s4xs)"
+				},
+				{
+					"name": "3XL - XS",
+					"slug": "280",
+					"size": "var(--unitone--s5xs)"
+				},
+				{
+					"name": "4XL - XS",
+					"slug": "290",
+					"size": "var(--unitone--s6xs)"
+				},
+				{
+					"name": "5XL - XS",
+					"slug": "300",
+					"size": "var(--unitone--s7xs)"
+				},
+				{
 					"name": "M - S",
 					"slug": "110",
 					"size": "var(--unitone--s1s)"

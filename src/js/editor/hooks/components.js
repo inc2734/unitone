@@ -123,6 +123,43 @@ function getDefaultSpacingSizeOptions() {
 			disabled: true,
 		},
 		{
+			label: 'S - XS',
+			value: '-1xs',
+		},
+		{
+			label: 'M - XS',
+			value: '1xs',
+		},
+		{
+			label: 'L - XS',
+			value: '2xs',
+		},
+		{
+			label: 'XL - XS',
+			value: '3xs',
+		},
+		{
+			label: '2XL - XS',
+			value: '4xs',
+		},
+		{
+			label: '3XL - XS',
+			value: '5xs',
+		},
+		{
+			label: '4XL - XS',
+			value: '6xs',
+		},
+		{
+			label: '5XL - XS',
+			value: '7xs',
+		},
+		{
+			label: '',
+			value: undefined,
+			disabled: true,
+		},
+		{
 			label: 'M - S',
 			value: '1s',
 		},

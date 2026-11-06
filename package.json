@@ -9,7 +9,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.29.7",
 		"@iconify/json": "^2.2.523",
-		"@inc2734/unitone-css": "^1.8.1",
+		"@inc2734/unitone-css": "^1.9.1",
 		"@wordpress/admin-ui": "^3.0.0",
 		"@wordpress/babel-preset-default": "8.56.0",
 		"@wordpress/env": "^12.0.0",

@@ -1,0 +1,36 @@
+[data-unitone-layout~="-text-overflow\:ellipsis"] {
+	&.wp-block-post-title > a {
+		// Core uses an inline-block link, which prevents the title itself from drawing an ellipsis.
+		display: inline;
+	}
+
+	// Flatten paragraphs only while truncating. Clamping the wrapper leaks extra lines into its padding.
+	&:is(.wp-block-post-author-biography, .wp-block-term-description),
+	&.wp-block-post-excerpt:not(:has(> .wp-block-post-excerpt__more-text)),
+	&.wp-block-post-excerpt:has(> .wp-block-post-excerpt__more-text) > .wp-block-post-excerpt__excerpt {
+		:where(div, p) {
+			display: inline;
+		}
+
+		p::after {
+			content: " ";
+		}
+
+		br {
+			display: none;
+		}
+	}
+
+	&.wp-block-post-excerpt:has(> .wp-block-post-excerpt__more-text) {
+		// Keep a separate read-more paragraph outside the truncated excerpt.
+		white-space: normal !important;
+		text-overflow: clip !important;
+		overflow: visible !important;
+
+		> .wp-block-post-excerpt__excerpt {
+			white-space: nowrap !important;
+			text-overflow: ellipsis !important;
+			overflow: clip !important;
+		}
+	}
+}

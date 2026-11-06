@@ -6,6 +6,7 @@
 @include meta.load-css("has-background");
 @include meta.load-css("orientation");
 @include meta.load-css("post-content");
+@include meta.load-css("text-overflow");
 
 .required {
 	color: var(--wp--preset--color--vivid-red);

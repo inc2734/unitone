@@ -8,7 +8,7 @@
 use Unitone\App\Controller\Manager\Manager;
 
 /**
- * Add supports "autoPhrase" and "textWrap" to core blocks.
+ * Add support "autoPhrase" to core blocks.
  *
  * @param array $metadata Metadata for registering a block type.
  * @return array
@@ -25,7 +25,6 @@ function unitone_add_auto_phrase_support( $metadata ) {
 				$metadata['supports']['unitone'] ?? array(),
 				array(
 					'autoPhrase' => true,
-					'textWrap'   => true,
 				)
 			),
 		)
@@ -33,6 +32,32 @@ function unitone_add_auto_phrase_support( $metadata ) {
 	return $metadata;
 }
 add_filter( 'block_type_metadata', 'unitone_add_auto_phrase_support' );
+
+/**
+ * Add support "textWrap" independently of automatic phrase breaking.
+ *
+ * @param array $metadata Metadata for registering a block type.
+ * @return array
+ */
+function unitone_add_text_wrap_support( $metadata ) {
+	$block_names = array(
+		'core/paragraph',
+		'core/heading',
+		'core/list-item',
+		'core/post-title',
+		'core/comments-title',
+		'core/post-author-biography',
+		'core/post-excerpt',
+		'core/term-description',
+	);
+
+	if ( in_array( $metadata['name'], $block_names, true ) ) {
+		$metadata['supports']['unitone']['textWrap'] = true;
+	}
+
+	return $metadata;
+}
+add_filter( 'block_type_metadata', 'unitone_add_text_wrap_support' );
 
 /**
  * Add support "textOverflow" to blocks supporting "textWrap".

@@ -21,17 +21,26 @@ const createLoader = ( importer ) => {
 	};
 };
 
-const loadLayouts = createLoader( () => import( './layouts' ) );
-
-const loadNavigation = createLoader( () => import( './navigation' ) );
-
-const loadScrollAnimation = createLoader(
-	() => import( './scroll-animation' )
+// Keep these modules in app.js so HTML-only static exporters do not miss them.
+const loadLayouts = createLoader(
+	() => import( /* webpackMode: "eager" */ './layouts' )
 );
 
-const loadLoopAnimation = createLoader( () => import( './loop-animation' ) );
+const loadNavigation = createLoader(
+	() => import( /* webpackMode: "eager" */ './navigation' )
+);
 
-const loadQuery = createLoader( () => import( './block-link' ) );
+const loadScrollAnimation = createLoader(
+	() => import( /* webpackMode: "eager" */ './scroll-animation' )
+);
+
+const loadLoopAnimation = createLoader(
+	() => import( /* webpackMode: "eager" */ './loop-animation' )
+);
+
+const loadQuery = createLoader(
+	() => import( /* webpackMode: "eager" */ './block-link' )
+);
 
 const initializeFeatures = () => {
 	const isFirefox = !! window

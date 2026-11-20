@@ -160,6 +160,9 @@ require get_template_directory() . '/inc/header.php';
 // Settings override.
 require get_template_directory() . '/inc/override-settings.php';
 
+// Post revision compatibility.
+require get_template_directory() . '/inc/revisions.php';
+
 // Add unitone blocks.
 require get_template_directory() . '/inc/unitone-blocks.php';
 
